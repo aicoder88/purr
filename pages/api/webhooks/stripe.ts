@@ -5,6 +5,7 @@ import * as Sentry from '@sentry/nextjs';
 import prisma from '../../../src/lib/prisma';
 import { buffer } from 'micro';
 import { OrderConfirmationEmailHTML, getOrderConfirmationEmailSubject } from '../../../src/emails/order-confirmation';
+import { recordAffiliateConversion, parseAffiliateMetadata } from '../../../src/lib/affiliate/conversion';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2025-08-27.basil',
@@ -363,6 +364,36 @@ export default async function handler(
             }
           }
 
+          // Process affiliate conversion for Payment Link orders
+          const paymentLinkAffiliateRef = session.metadata?.affiliate_ref;
+          if (paymentLinkAffiliateRef) {
+            const affiliateData = parseAffiliateMetadata(paymentLinkAffiliateRef);
+            if (affiliateData) {
+              const orderSubtotalDollars = (amount || 0) / 100;
+
+              const conversionResult = await recordAffiliateConversion({
+                affiliateCode: affiliateData.code,
+                affiliateSessionId: affiliateData.sessionId,
+                orderId: orderNumber,
+                orderSubtotal: orderSubtotalDollars,
+              });
+
+              if (conversionResult.success) {
+                logger.info('Affiliate conversion recorded for Payment Link', {
+                  conversionId: conversionResult.conversionId,
+                  affiliateCode: affiliateData.code,
+                  orderId: orderNumber,
+                });
+              } else {
+                logger.warn('Failed to record affiliate conversion for Payment Link', {
+                  error: conversionResult.error,
+                  affiliateCode: affiliateData.code,
+                  orderId: orderNumber,
+                });
+              }
+            }
+          }
+
           break;
         }
 
@@ -487,6 +518,37 @@ export default async function handler(
             amount,
             isPaymentLink: false,
           });
+        }
+
+        // Process affiliate conversion if applicable
+        const affiliateRef = session.metadata?.affiliate_ref;
+        if (affiliateRef) {
+          const affiliateData = parseAffiliateMetadata(affiliateRef);
+          if (affiliateData) {
+            // Calculate order subtotal (amount in cents, convert to dollars)
+            const orderSubtotalDollars = (amount || 0) / 100;
+
+            const conversionResult = await recordAffiliateConversion({
+              affiliateCode: affiliateData.code,
+              affiliateSessionId: affiliateData.sessionId,
+              orderId: orderNumber,
+              orderSubtotal: orderSubtotalDollars,
+            });
+
+            if (conversionResult.success) {
+              logger.info('Affiliate conversion recorded', {
+                conversionId: conversionResult.conversionId,
+                affiliateCode: affiliateData.code,
+                orderId: orderNumber,
+              });
+            } else {
+              logger.warn('Failed to record affiliate conversion', {
+                error: conversionResult.error,
+                affiliateCode: affiliateData.code,
+                orderId: orderNumber,
+              });
+            }
+          }
         }
 
         break;

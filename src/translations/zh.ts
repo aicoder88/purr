@@ -2433,6 +2433,117 @@ export const zh = {
     headline: "关注我们获取更多技巧",
     description: "加入我们的社区，获取猫咪护理技巧和独家优惠。",
     followOn: "关注Purrify于"
+  },
+
+  // Affiliate Dashboard
+  affiliateDashboard: {
+    pageTitle: "联盟会员仪表板",
+    loginTitle: "联盟会员登录",
+
+    dashboard: "仪表板",
+    earnings: "收益",
+    payouts: "提现",
+    settings: "设置",
+    logout: "退出登录",
+
+    overview: {
+      welcome: "欢迎回来",
+      yourCode: "您的联盟代码",
+      copyCode: "复制代码",
+      copiedCode: "已复制！",
+      shareLink: "您的分享链接",
+      copyLink: "复制链接",
+      copiedLink: "链接已复制！"
+    },
+
+    stats: {
+      totalClicks: "总点击数",
+      totalConversions: "转化数",
+      conversionRate: "转化率",
+      pendingEarnings: "待结算收益",
+      availableBalance: "可提现余额",
+      totalEarnings: "累计收益",
+      pendingNote: "佣金在30天后结算"
+    },
+
+    conversions: {
+      title: "最近转化",
+      noConversions: "暂无转化记录。分享您的链接开始赚钱！",
+      date: "日期",
+      orderId: "订单号",
+      orderAmount: "订单金额",
+      commission: "佣金",
+      status: "状态",
+      statusPending: "待结算",
+      statusCleared: "已结算",
+      statusPaid: "已支付",
+      statusVoided: "已作废"
+    },
+
+    payoutsSection: {
+      title: "提现记录",
+      requestPayout: "申请提现",
+      minimumPayout: "最低提现金额为$50",
+      payoutMethod: "提现方式",
+      paypalEmail: "PayPal邮箱",
+      etransferEmail: "电子转账邮箱",
+      amount: "金额",
+      requestedDate: "申请日期",
+      processedDate: "处理日期",
+      status: "状态",
+      statusPending: "待处理",
+      statusProcessing: "处理中",
+      statusCompleted: "已完成",
+      statusRejected: "已拒绝",
+      noPayouts: "暂无提现记录",
+      insufficientBalance: "余额不足以提现",
+      payoutRequested: "提现申请已成功提交"
+    },
+
+    settingsSection: {
+      title: "账户设置",
+      payoutSettings: "提现设置",
+      payoutMethodLabel: "首选提现方式",
+      paypalOption: "PayPal",
+      etransferOption: "电子转账（仅限加拿大）",
+      emailLabel: "提现邮箱地址",
+      saveSettings: "保存设置",
+      settingsSaved: "设置保存成功"
+    },
+
+    assets: {
+      title: "营销素材",
+      description: "下载横幅、产品图片和促销文案。",
+      banners: "横幅广告",
+      productImages: "产品图片",
+      socialPosts: "社交媒体文案",
+      brandGuide: "品牌指南",
+      brandColors: "品牌颜色",
+      guidelines: "使用规范",
+      downloadAll: "全部下载",
+      copyText: "复制文案"
+    },
+
+    login: {
+      title: "联盟会员登录",
+      email: "电子邮箱",
+      password: "密码",
+      rememberMe: "记住我",
+      forgotPassword: "忘记密码？",
+      loginButton: "登录",
+      loggingIn: "登录中...",
+      noAccount: "还不是联盟会员？",
+      applyNow: "立即申请",
+      invalidCredentials: "邮箱或密码错误",
+      accountInactive: "您的联盟会员账户未激活"
+    },
+
+    errors: {
+      loadFailed: "加载数据失败",
+      saveFailed: "保存设置失败",
+      payoutFailed: "提现申请失败",
+      sessionExpired: "您的会话已过期，请重新登录。"
+    }
   }
 
 };

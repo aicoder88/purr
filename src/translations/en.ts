@@ -2516,6 +2516,117 @@ export const en = {
     headline: "Follow us for more tips",
     description: "Join our community for cat care tips and exclusive offers.",
     followOn: "Follow Purrify on"
+  },
+
+  // Affiliate Dashboard
+  affiliateDashboard: {
+    pageTitle: "Affiliate Dashboard",
+    loginTitle: "Affiliate Login",
+
+    dashboard: "Dashboard",
+    earnings: "Earnings",
+    payouts: "Payouts",
+    settings: "Settings",
+    logout: "Log Out",
+
+    overview: {
+      welcome: "Welcome back",
+      yourCode: "Your Affiliate Code",
+      copyCode: "Copy Code",
+      copiedCode: "Copied!",
+      shareLink: "Your Share Link",
+      copyLink: "Copy Link",
+      copiedLink: "Link Copied!"
+    },
+
+    stats: {
+      totalClicks: "Total Clicks",
+      totalConversions: "Conversions",
+      conversionRate: "Conversion Rate",
+      pendingEarnings: "Pending Earnings",
+      availableBalance: "Available Balance",
+      totalEarnings: "Lifetime Earnings",
+      pendingNote: "Commissions clear after 30 days"
+    },
+
+    conversions: {
+      title: "Recent Conversions",
+      noConversions: "No conversions yet. Share your link to start earning!",
+      date: "Date",
+      orderId: "Order ID",
+      orderAmount: "Order Amount",
+      commission: "Commission",
+      status: "Status",
+      statusPending: "Pending",
+      statusCleared: "Cleared",
+      statusPaid: "Paid",
+      statusVoided: "Voided"
+    },
+
+    payoutsSection: {
+      title: "Payout History",
+      requestPayout: "Request Payout",
+      minimumPayout: "Minimum payout is $50",
+      payoutMethod: "Payout Method",
+      paypalEmail: "PayPal Email",
+      etransferEmail: "E-Transfer Email",
+      amount: "Amount",
+      requestedDate: "Requested",
+      processedDate: "Processed",
+      status: "Status",
+      statusPending: "Pending",
+      statusProcessing: "Processing",
+      statusCompleted: "Completed",
+      statusRejected: "Rejected",
+      noPayouts: "No payout history yet",
+      insufficientBalance: "Insufficient balance for payout",
+      payoutRequested: "Payout request submitted successfully"
+    },
+
+    settingsSection: {
+      title: "Account Settings",
+      payoutSettings: "Payout Settings",
+      payoutMethodLabel: "Preferred Payout Method",
+      paypalOption: "PayPal",
+      etransferOption: "E-Transfer (Canada only)",
+      emailLabel: "Payout Email Address",
+      saveSettings: "Save Settings",
+      settingsSaved: "Settings saved successfully"
+    },
+
+    assets: {
+      title: "Marketing Assets",
+      description: "Download banners, product images, and copy for your promotions.",
+      banners: "Banners",
+      productImages: "Product Images",
+      socialPosts: "Social Posts",
+      brandGuide: "Brand Guide",
+      brandColors: "Brand Colors",
+      guidelines: "Usage Guidelines",
+      downloadAll: "Download All",
+      copyText: "Copy Text"
+    },
+
+    login: {
+      title: "Affiliate Login",
+      email: "Email Address",
+      password: "Password",
+      rememberMe: "Remember me",
+      forgotPassword: "Forgot password?",
+      loginButton: "Sign In",
+      loggingIn: "Signing in...",
+      noAccount: "Not an affiliate yet?",
+      applyNow: "Apply Now",
+      invalidCredentials: "Invalid email or password",
+      accountInactive: "Your affiliate account is not active"
+    },
+
+    errors: {
+      loadFailed: "Failed to load dashboard data",
+      saveFailed: "Failed to save settings",
+      payoutFailed: "Failed to request payout",
+      sessionExpired: "Your session has expired. Please log in again."
+    }
   }
 
 };

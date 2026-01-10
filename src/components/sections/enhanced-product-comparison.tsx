@@ -155,7 +155,7 @@ export function EnhancedProductComparison() {
         prioritySupport: false,
         freeShipping: true,
       },
-      image: '/optimized/140g.webp',
+      image: '/optimized/60g.webp',
       imageSize: 'md',
       purchaseOptions: [
         {
@@ -194,7 +194,7 @@ export function EnhancedProductComparison() {
         prioritySupport: false,
         freeShipping: true,
       },
-      image: '/images/140g.png',
+      image: '/optimized/140g_transparent.webp',
       imageSize: 'lg',
       purchaseOptions: [
         {

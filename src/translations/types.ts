@@ -2034,6 +2034,127 @@ export interface TranslationType {
     followOn: string;
   };
 
+  // Affiliate Dashboard
+  affiliateDashboard?: {
+    // Page titles
+    pageTitle: string;
+    loginTitle: string;
+
+    // Navigation & common
+    dashboard: string;
+    earnings: string;
+    payouts: string;
+    settings: string;
+    logout: string;
+
+    // Dashboard overview
+    overview: {
+      welcome: string;
+      yourCode: string;
+      copyCode: string;
+      copiedCode: string;
+      shareLink: string;
+      copyLink: string;
+      copiedLink: string;
+    };
+
+    // Stats cards
+    stats: {
+      totalClicks: string;
+      totalConversions: string;
+      conversionRate: string;
+      pendingEarnings: string;
+      availableBalance: string;
+      totalEarnings: string;
+      pendingNote: string;
+    };
+
+    // Recent conversions table
+    conversions: {
+      title: string;
+      noConversions: string;
+      date: string;
+      orderId: string;
+      orderAmount: string;
+      commission: string;
+      status: string;
+      statusPending: string;
+      statusCleared: string;
+      statusPaid: string;
+      statusVoided: string;
+    };
+
+    // Payouts section
+    payoutsSection: {
+      title: string;
+      requestPayout: string;
+      minimumPayout: string;
+      payoutMethod: string;
+      paypalEmail: string;
+      etransferEmail: string;
+      amount: string;
+      requestedDate: string;
+      processedDate: string;
+      status: string;
+      statusPending: string;
+      statusProcessing: string;
+      statusCompleted: string;
+      statusRejected: string;
+      noPayouts: string;
+      insufficientBalance: string;
+      payoutRequested: string;
+    };
+
+    // Settings section
+    settingsSection: {
+      title: string;
+      payoutSettings: string;
+      payoutMethodLabel: string;
+      paypalOption: string;
+      etransferOption: string;
+      emailLabel: string;
+      saveSettings: string;
+      settingsSaved: string;
+    };
+
+    // Marketing assets section
+    assets: {
+      title: string;
+      description: string;
+      banners: string;
+      productImages: string;
+      socialPosts: string;
+      brandGuide: string;
+      brandColors: string;
+      guidelines: string;
+      downloadAll: string;
+      copyText: string;
+    };
+
+    // Login form
+    login: {
+      title: string;
+      email: string;
+      password: string;
+      rememberMe: string;
+      forgotPassword: string;
+      loginButton: string;
+      loggingIn: string;
+      noAccount: string;
+      applyNow: string;
+      invalidCredentials: string;
+      accountInactive: string;
+    };
+
+    // Errors
+    errors: {
+      loadFailed: string;
+      saveFailed: string;
+      payoutFailed: string;
+      sessionExpired: string;
+    };
+  };
+
 }
 
 // Common B2B page structure - permissive to allow fallback strings

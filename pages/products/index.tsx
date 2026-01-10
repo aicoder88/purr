@@ -77,9 +77,9 @@ const ProductsPage: NextPage = () => {
 
   // Product images matching the homepage
   const productImages: Record<string, { src: string; size: 'sm' | 'md' | 'lg' }> = {
-    trial: { src: '/optimized/17gpink.avif', size: 'sm' },
-    regular: { src: '/optimized/60g.avif', size: 'md' },
-    large: { src: '/optimized/140g.avif', size: 'lg' },
+    trial: { src: '/optimized/17gpink.webp', size: 'sm' },
+    regular: { src: '/optimized/60g.webp', size: 'md' },
+    large: { src: '/optimized/140g_transparent.webp', size: 'lg' },
   };
 
   // Display names that de-emphasize grams
@@ -107,7 +107,7 @@ const ProductsPage: NextPage = () => {
   const products = t.productComparison.products.map((product) => {
     const priceKey = productIdAlias[product.id] ?? 'regular';
     const displayName = productDisplayNames[product.id] || { name: product.name, nameFr: product.name, subtitle: product.subtitle, subtitleFr: product.subtitle };
-    const imageData = productImages[product.id] || { src: '/optimized/60g.avif', size: 'md' as const };
+    const imageData = productImages[product.id] || { src: '/optimized/60g.webp', size: 'md' as const };
 
     return {
       ...product,
@@ -407,11 +407,10 @@ const ProductsPage: NextPage = () => {
                   <div className={`bg-gradient-to-r ${product.color} p-6 text-white dark:text-gray-100`}>
                     <div className="flex items-center gap-4">
                       {/* Product Image */}
-                      <div className={`relative flex-shrink-0 ${
-                        product.imageSize === 'sm' ? 'w-20 h-24' :
+                      <div className={`relative flex-shrink-0 ${product.imageSize === 'sm' ? 'w-20 h-24' :
                         product.imageSize === 'md' ? 'w-24 h-28' :
-                        'w-28 h-32'
-                      }`}>
+                          'w-28 h-32'
+                        }`}>
                         <Image
                           src={product.image}
                           alt={product.displayName}

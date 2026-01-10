@@ -238,6 +238,8 @@ model Order {
   // Referral discount tracking
   referralCodeUsed  String? // Referral code applied at checkout
   referralDiscount  Float?  // Discount amount from referral ($5)
+  // Affiliate tracking
+  affiliateCode     String? // Affiliate code that referred this order
 
   @@index([status])
   @@index([createdAt])
@@ -246,6 +248,7 @@ model Order {
   @@index([utmSource, utmCampaign]) // For UTM attribution queries
   @@index([subscriptionId])
   @@index([referralCodeUsed])
+  @@index([affiliateCode])
 }
 
 enum OrderStatus {
@@ -786,4 +789,167 @@ enum ABTestStatus {
   PAUSED // Temporarily stopped
   COMPLETED // Test finished, winner determined
   ARCHIVED // Old test, no longer relevant
+}
+
+// ===== Affiliate Program Models =====
+
+// AffiliateApplication - Stores pending applications before approval
+model AffiliateApplication {
+  id              String                      @id @default(cuid())
+  name            String
+  email           String                      @unique
+  website         String?
+  audience        String                      // Target audience description
+  trafficSource   String                      // blog, youtube, instagram, etc.
+  monthlyVisitors String                      // 0-1000, 1000-5000, etc.
+  experience      String                      // beginner, intermediate, advanced
+  message         String?                     @db.Text
+  status          AffiliateApplicationStatus  @default(PENDING)
+  reviewedAt      DateTime?
+  reviewedBy      String?                     // Admin user ID
+  rejectionReason String?
+  createdAt       DateTime                    @default(now())
+  updatedAt       DateTime                    @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+  @@index([email])
+  @@map("affiliate_applications")
+}
+
+enum AffiliateApplicationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+// Affiliate - Approved affiliate accounts with credentials
+model Affiliate {
+  id               String          @id @default(cuid())
+  code             String          @unique    // e.g., "JOHN-A1B2"
+  name             String
+  email            String          @unique
+  passwordHash     String                     // bcrypt hashed
+  website          String?
+  status           AffiliateStatus @default(ACTIVE)
+  // Stats (denormalized for dashboard performance)
+  totalClicks      Int             @default(0)
+  totalConversions Int             @default(0)
+  totalEarnings    Float           @default(0)
+  pendingEarnings  Float           @default(0)
+  availableBalance Float           @default(0)
+  // Payment info
+  payoutMethod     PayoutMethod    @default(PAYPAL)
+  payoutEmail      String?                    // PayPal email or E-Transfer email
+  // Metadata
+  applicationId    String?         @unique    // Link to original application
+  lastLoginAt      DateTime?
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  // Relations
+  clicks           AffiliateClick[]
+  conversions      AffiliateConversion[]
+  payouts          AffiliatePayout[]
+
+  @@index([code])
+  @@index([status])
+  @@index([email])
+  @@map("affiliates")
+}
+
+enum AffiliateStatus {
+  ACTIVE
+  SUSPENDED
+  TERMINATED
+}
+
+enum PayoutMethod {
+  PAYPAL
+  ETRANSFER
+}
+
+// AffiliateClick - Tracks clicks on affiliate links
+model AffiliateClick {
+  id          String    @id @default(cuid())
+  affiliateId String
+  affiliate   Affiliate @relation(fields: [affiliateId], references: [id], onDelete: Cascade)
+  // Tracking data
+  ipHash      String                // SHA256 of IP (privacy)
+  userAgent   String?   @db.Text
+  referrer    String?               // Where click came from
+  landingPage String                // Which page they landed on
+  // Session tracking
+  sessionId   String                // For attributing conversion
+  convertedAt DateTime?             // If this click led to purchase
+  orderId     String?               // Order if converted
+  createdAt   DateTime  @default(now())
+
+  @@index([affiliateId])
+  @@index([sessionId])
+  @@index([createdAt])
+  @@index([convertedAt])
+  @@map("affiliate_clicks")
+}
+
+// AffiliateConversion - Tracks successful conversions (purchases)
+model AffiliateConversion {
+  id               String            @id @default(cuid())
+  affiliateId      String
+  affiliate        Affiliate         @relation(fields: [affiliateId], references: [id], onDelete: Cascade)
+  orderId          String            @unique
+  orderSubtotal    Float                       // Order subtotal (excl. tax/shipping)
+  commissionRate   Float             @default(0.30)  // 30%
+  commissionAmount Float                       // Calculated commission
+  status           ConversionStatus  @default(PENDING)
+  // Timing
+  purchasedAt      DateTime          @default(now())
+  clearedAt        DateTime?                   // When moved to available (30 days)
+  voidedAt         DateTime?                   // If refunded
+  voidReason       String?
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  @@index([affiliateId])
+  @@index([status])
+  @@index([purchasedAt])
+  @@index([orderId])
+  @@map("affiliate_conversions")
+}
+
+enum ConversionStatus {
+  PENDING    // Within 30-day hold period
+  CLEARED    // Available for payout
+  VOIDED     // Refunded or cancelled
+  PAID       // Included in a payout
+}
+
+// AffiliatePayout - Tracks payout requests and history
+model AffiliatePayout {
+  id             String        @id @default(cuid())
+  affiliateId    String
+  affiliate      Affiliate     @relation(fields: [affiliateId], references: [id], onDelete: Cascade)
+  amount         Float
+  method         PayoutMethod
+  payoutEmail    String                    // Email used for this payout
+  status         PayoutStatus  @default(PENDING)
+  // Processing
+  requestedAt    DateTime      @default(now())
+  processedAt    DateTime?
+  processedBy    String?                   // Admin who processed
+  transactionRef String?                   // PayPal/E-Transfer reference
+  notes          String?       @db.Text
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  @@index([affiliateId])
+  @@index([status])
+  @@index([requestedAt])
+  @@map("affiliate_payouts")
+}
+
+enum PayoutStatus {
+  PENDING     // Requested, awaiting processing
+  PROCESSING  // Admin is processing
+  COMPLETED   // Payout sent
+  REJECTED    // Rejected by admin
 }

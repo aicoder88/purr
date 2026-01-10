@@ -2,7 +2,7 @@
 
 A comprehensive catalog of all images in the Purrify website, organized by category with descriptions for easy reference.
 
-**Total Images:** 517 files
+**Total Images:** 519 files
 **Last Updated:** January 2026
 
 ---
@@ -289,6 +289,8 @@ A comprehensive catalog of all images in the Purrify website, organized by categ
 | science-molecule-lab.jpg | `/public/optimized/blog/science-molecule-lab.jpg` | Lab molecule research |
 | cat-fresh-home-ammonia.jpg | `/public/optimized/blog/cat-fresh-home-ammonia.jpg` | Fresh home, no ammonia |
 | molecular-structure-pore-800.png | `/public/optimized/blog/molecular-structure-pore-800.png` | Molecular pore (800px) |
+| winter-cat-window.png | `/public/optimized/winter-cat-window.png` | Cat looking out snowy window (Ghibli style) - Winter Blog Hero |
+| frosted-winter-window.png | `/public/optimized/frosted-winter-window.png` | Frosted window visual (Ghibli style) - Winter Blog Science |
 
 ---
 

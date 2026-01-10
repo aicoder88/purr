@@ -234,7 +234,7 @@ export default function Home({ priceValidUntil }: InferGetStaticPropsType<typeof
                       "name": t.structuredData.offerCatalog.products.family.name,
                       "description": t.structuredData.offerCatalog.products.family.description,
                       "sku": t.structuredData.offerCatalog.products.family.sku,
-                      "image": "https://www.purrify.ca/optimized/140g.webp",
+                      "image": "https://www.purrify.ca/optimized/60g.webp",
                       "offers": {
                         "@type": "Offer",
                         "price": familyPriceValue,

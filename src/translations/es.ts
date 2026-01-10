@@ -2303,5 +2303,116 @@ export const es: TranslationType = {
     headline: "Síguenos para más consejos",
     description: "Únete a nuestra comunidad para consejos de cuidado de gatos y ofertas exclusivas.",
     followOn: "Sigue a Purrify en"
+  },
+
+  // Affiliate Dashboard
+  affiliateDashboard: {
+    pageTitle: "Panel de Afiliado",
+    loginTitle: "Inicio de Sesión Afiliado",
+
+    dashboard: "Panel",
+    earnings: "Ganancias",
+    payouts: "Pagos",
+    settings: "Configuración",
+    logout: "Cerrar Sesión",
+
+    overview: {
+      welcome: "Bienvenido de nuevo",
+      yourCode: "Tu Código de Afiliado",
+      copyCode: "Copiar Código",
+      copiedCode: "¡Copiado!",
+      shareLink: "Tu Enlace para Compartir",
+      copyLink: "Copiar Enlace",
+      copiedLink: "¡Enlace Copiado!"
+    },
+
+    stats: {
+      totalClicks: "Clics Totales",
+      totalConversions: "Conversiones",
+      conversionRate: "Tasa de Conversión",
+      pendingEarnings: "Ganancias Pendientes",
+      availableBalance: "Saldo Disponible",
+      totalEarnings: "Ganancias Totales",
+      pendingNote: "Las comisiones se liberan después de 30 días"
+    },
+
+    conversions: {
+      title: "Conversiones Recientes",
+      noConversions: "Sin conversiones aún. ¡Comparte tu enlace para empezar a ganar!",
+      date: "Fecha",
+      orderId: "Nº Pedido",
+      orderAmount: "Monto del Pedido",
+      commission: "Comisión",
+      status: "Estado",
+      statusPending: "Pendiente",
+      statusCleared: "Liberada",
+      statusPaid: "Pagada",
+      statusVoided: "Anulada"
+    },
+
+    payoutsSection: {
+      title: "Historial de Pagos",
+      requestPayout: "Solicitar Pago",
+      minimumPayout: "El pago mínimo es de $50",
+      payoutMethod: "Método de Pago",
+      paypalEmail: "Email de PayPal",
+      etransferEmail: "Email de Transferencia",
+      amount: "Monto",
+      requestedDate: "Solicitado",
+      processedDate: "Procesado",
+      status: "Estado",
+      statusPending: "Pendiente",
+      statusProcessing: "Procesando",
+      statusCompleted: "Completado",
+      statusRejected: "Rechazado",
+      noPayouts: "Sin historial de pagos",
+      insufficientBalance: "Saldo insuficiente para el pago",
+      payoutRequested: "Solicitud de pago enviada exitosamente"
+    },
+
+    settingsSection: {
+      title: "Configuración de Cuenta",
+      payoutSettings: "Configuración de Pagos",
+      payoutMethodLabel: "Método de Pago Preferido",
+      paypalOption: "PayPal",
+      etransferOption: "Transferencia Electrónica (solo Canadá)",
+      emailLabel: "Email para Pagos",
+      saveSettings: "Guardar Configuración",
+      settingsSaved: "Configuración guardada exitosamente"
+    },
+
+    assets: {
+      title: "Recursos de Marketing",
+      description: "Descarga banners, imágenes de productos y textos para tus promociones.",
+      banners: "Banners",
+      productImages: "Imágenes de Productos",
+      socialPosts: "Publicaciones Sociales",
+      brandGuide: "Guía de Marca",
+      brandColors: "Colores de Marca",
+      guidelines: "Directrices de Uso",
+      downloadAll: "Descargar Todo",
+      copyText: "Copiar Texto"
+    },
+
+    login: {
+      title: "Inicio de Sesión Afiliado",
+      email: "Correo Electrónico",
+      password: "Contraseña",
+      rememberMe: "Recordarme",
+      forgotPassword: "¿Olvidaste tu contraseña?",
+      loginButton: "Iniciar Sesión",
+      loggingIn: "Iniciando sesión...",
+      noAccount: "¿Aún no eres afiliado?",
+      applyNow: "Aplica Ahora",
+      invalidCredentials: "Email o contraseña inválidos",
+      accountInactive: "Tu cuenta de afiliado no está activa"
+    },
+
+    errors: {
+      loadFailed: "Error al cargar los datos",
+      saveFailed: "Error al guardar la configuración",
+      payoutFailed: "Error al solicitar el pago",
+      sessionExpired: "Tu sesión ha expirado. Por favor, inicia sesión de nuevo."
+    }
   }
 };

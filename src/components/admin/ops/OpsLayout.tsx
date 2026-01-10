@@ -10,7 +10,8 @@ import {
   Share2,
   LogOut,
   User,
-  ExternalLink
+  ExternalLink,
+  UserPlus
 } from 'lucide-react';
 
 interface OpsLayoutProps {
@@ -27,7 +28,8 @@ export default function OpsLayout({ children, title }: OpsLayoutProps) {
     { name: 'Leads', href: '/admin/ops/leads', icon: Users },
     { name: 'Retailers', href: '/admin/ops/retailers', icon: Store },
     { name: 'Orders', href: '/admin/ops/orders', icon: ShoppingCart },
-    { name: 'Social', href: '/admin/ops/social', icon: Share2 }
+    { name: 'Social', href: '/admin/ops/social', icon: Share2 },
+    { name: 'Affiliates', href: '/admin/ops/affiliates', icon: UserPlus }
   ];
 
   const userRole = (session?.user as { role?: string })?.role;

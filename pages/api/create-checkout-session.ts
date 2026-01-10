@@ -43,9 +43,23 @@ interface OrderItemWithProduct {
   };
 }
 
+// Cookie name for affiliate tracking
+const AFFILIATE_COOKIE_NAME = 'purrify_ref';
+
 // Sanitize string input to prevent injection
 function sanitizeString(input: string): string {
   return input.replaceAll(/[<>\"'&]/g, '').trim().substring(0, 255);
+}
+
+// Parse affiliate cookie (format: "CODE:SESSION_ID")
+function parseAffiliateCookie(cookie: string | undefined): string | null {
+  if (!cookie) return null;
+  // Validate format: alphanumeric code, colon, UUID session ID
+  const pattern = /^[A-Za-z0-9]{6,12}:[a-f0-9-]{36}$/;
+  if (pattern.test(cookie)) {
+    return cookie;
+  }
+  return null;
 }
 
 // Validate and sanitize metadata
@@ -255,11 +269,15 @@ async function handler(
       shipping_address_collection: {
         allowed_countries: ['CA', 'US'], // Expand if needed
       },
-      // Sanitize metadata
+      // Sanitize metadata (include affiliate tracking if present)
       metadata: sanitizeMetadata({
         orderId: order.id,
         customerEmail: sanitizedCustomer.email,
         itemCount: order.items.length,
+        // Include affiliate tracking data if cookie is present
+        ...(parseAffiliateCookie(req.cookies[AFFILIATE_COOKIE_NAME]) && {
+          affiliate_ref: parseAffiliateCookie(req.cookies[AFFILIATE_COOKIE_NAME]),
+        }),
       }),
       // Security settings
       expires_at: Math.floor(Date.now() / 1000) + (30 * 60), // 30 minutes

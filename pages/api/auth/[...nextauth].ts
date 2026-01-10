@@ -1,9 +1,13 @@
 import NextAuth, { NextAuthOptions, User } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import bcrypt from 'bcryptjs';
+import prisma from '@/lib/prisma';
 
-// Extend NextAuth types to include role
+// Extend NextAuth types to include role and affiliate data
 interface ExtendedUser extends User {
   role?: string;
+  affiliateId?: string;
+  affiliateCode?: string;
 }
 
 // Simple in-memory rate limiter for login attempts
@@ -111,18 +115,100 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
       }
+    }),
+    // Affiliate credentials provider
+    CredentialsProvider({
+      id: 'affiliate-credentials',
+      name: 'Affiliate',
+      credentials: {
+        email: { label: 'Email', type: 'email' },
+        password: { label: 'Password', type: 'password' }
+      },
+      async authorize(credentials) {
+        try {
+          if (!credentials?.email || !credentials?.password) {
+            console.log('Missing affiliate credentials');
+            return null;
+          }
+
+          // Check rate limit
+          if (!checkLoginRateLimit(credentials.email)) {
+            console.log('Rate limit exceeded for affiliate:', credentials.email);
+            return null;
+          }
+
+          if (!prisma) {
+            console.error('Database connection not established');
+            return null;
+          }
+
+          // Find affiliate by email
+          const affiliate = await prisma.affiliate.findUnique({
+            where: { email: credentials.email.toLowerCase() },
+            select: {
+              id: true,
+              email: true,
+              name: true,
+              code: true,
+              passwordHash: true,
+              status: true,
+            },
+          });
+
+          if (!affiliate) {
+            console.log('Affiliate not found:', credentials.email);
+            return null;
+          }
+
+          // Check if affiliate is active
+          if (affiliate.status !== 'ACTIVE') {
+            console.log('Affiliate account not active:', credentials.email, affiliate.status);
+            return null;
+          }
+
+          // Verify password
+          const isValidPassword = await bcrypt.compare(
+            credentials.password,
+            affiliate.passwordHash
+          );
+
+          if (!isValidPassword) {
+            console.log('Invalid affiliate password');
+            return null;
+          }
+
+          console.log('Affiliate login successful:', affiliate.email);
+          return {
+            id: affiliate.id,
+            email: affiliate.email,
+            name: affiliate.name,
+            role: 'affiliate',
+            affiliateId: affiliate.id,
+            affiliateCode: affiliate.code,
+          };
+        } catch (error) {
+          console.error('Affiliate authorization error:', error);
+          return null;
+        }
+      }
     })
   ],
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.role = (user as ExtendedUser).role;
+        const extUser = user as ExtendedUser;
+        token.role = extUser.role;
+        token.affiliateId = extUser.affiliateId;
+        token.affiliateCode = extUser.affiliateCode;
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
-        (session.user as ExtendedUser).role = token.role as string | undefined;
+        const extUser = session.user as ExtendedUser;
+        extUser.role = token.role as string | undefined;
+        extUser.affiliateId = token.affiliateId as string | undefined;
+        extUser.affiliateCode = token.affiliateCode as string | undefined;
       }
       return session;
     }

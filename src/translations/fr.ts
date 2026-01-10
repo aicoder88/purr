@@ -2455,6 +2455,117 @@ export const fr = {
     headline: "Suivez-nous pour plus de conseils",
     description: "Rejoignez notre communauté pour des conseils de soins pour chats et des offres exclusives.",
     followOn: "Suivre Purrify sur"
+  },
+
+  // Affiliate Dashboard
+  affiliateDashboard: {
+    pageTitle: "Tableau de Bord Affilié",
+    loginTitle: "Connexion Affilié",
+
+    dashboard: "Tableau de bord",
+    earnings: "Revenus",
+    payouts: "Paiements",
+    settings: "Paramètres",
+    logout: "Déconnexion",
+
+    overview: {
+      welcome: "Bienvenue",
+      yourCode: "Votre Code Affilié",
+      copyCode: "Copier le Code",
+      copiedCode: "Copié !",
+      shareLink: "Votre Lien de Partage",
+      copyLink: "Copier le Lien",
+      copiedLink: "Lien Copié !"
+    },
+
+    stats: {
+      totalClicks: "Clics Totaux",
+      totalConversions: "Conversions",
+      conversionRate: "Taux de Conversion",
+      pendingEarnings: "Revenus en Attente",
+      availableBalance: "Solde Disponible",
+      totalEarnings: "Revenus à Vie",
+      pendingNote: "Les commissions sont libérées après 30 jours"
+    },
+
+    conversions: {
+      title: "Conversions Récentes",
+      noConversions: "Pas encore de conversions. Partagez votre lien pour commencer à gagner !",
+      date: "Date",
+      orderId: "Nº Commande",
+      orderAmount: "Montant Commande",
+      commission: "Commission",
+      status: "Statut",
+      statusPending: "En attente",
+      statusCleared: "Libérée",
+      statusPaid: "Payée",
+      statusVoided: "Annulée"
+    },
+
+    payoutsSection: {
+      title: "Historique des Paiements",
+      requestPayout: "Demander un Paiement",
+      minimumPayout: "Le paiement minimum est de 50 $",
+      payoutMethod: "Méthode de Paiement",
+      paypalEmail: "Email PayPal",
+      etransferEmail: "Email Virement Interac",
+      amount: "Montant",
+      requestedDate: "Demandé",
+      processedDate: "Traité",
+      status: "Statut",
+      statusPending: "En attente",
+      statusProcessing: "En traitement",
+      statusCompleted: "Complété",
+      statusRejected: "Rejeté",
+      noPayouts: "Aucun historique de paiement",
+      insufficientBalance: "Solde insuffisant pour le paiement",
+      payoutRequested: "Demande de paiement soumise avec succès"
+    },
+
+    settingsSection: {
+      title: "Paramètres du Compte",
+      payoutSettings: "Paramètres de Paiement",
+      payoutMethodLabel: "Méthode de Paiement Préférée",
+      paypalOption: "PayPal",
+      etransferOption: "Virement Interac (Canada seulement)",
+      emailLabel: "Adresse Email de Paiement",
+      saveSettings: "Enregistrer",
+      settingsSaved: "Paramètres enregistrés avec succès"
+    },
+
+    assets: {
+      title: "Ressources Marketing",
+      description: "Téléchargez des bannières, images de produits et textes pour vos promotions.",
+      banners: "Bannières",
+      productImages: "Images Produits",
+      socialPosts: "Publications Sociales",
+      brandGuide: "Guide de Marque",
+      brandColors: "Couleurs de Marque",
+      guidelines: "Directives d'Utilisation",
+      downloadAll: "Tout Télécharger",
+      copyText: "Copier le Texte"
+    },
+
+    login: {
+      title: "Connexion Affilié",
+      email: "Adresse Email",
+      password: "Mot de Passe",
+      rememberMe: "Se souvenir de moi",
+      forgotPassword: "Mot de passe oublié ?",
+      loginButton: "Se Connecter",
+      loggingIn: "Connexion en cours...",
+      noAccount: "Pas encore affilié ?",
+      applyNow: "Postuler Maintenant",
+      invalidCredentials: "Email ou mot de passe invalide",
+      accountInactive: "Votre compte affilié n'est pas actif"
+    },
+
+    errors: {
+      loadFailed: "Échec du chargement des données",
+      saveFailed: "Échec de l'enregistrement des paramètres",
+      payoutFailed: "Échec de la demande de paiement",
+      sessionExpired: "Votre session a expiré. Veuillez vous reconnecter."
+    }
   }
 
 };

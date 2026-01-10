@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="250" viewBox="0 0 300 250">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9333EA"/>
+      <stop offset="100%" style="stop-color:#7C3AED"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="250" fill="url(#bg)"/>
+  <text x="150" y="80" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="bold" fill="white">Purrify</text>
+  <text x="150" y="115" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="white" opacity="0.9">No More Litter Box Smell</text>
+  <text x="150" y="160" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" fill="white" opacity="0.8">Activated Carbon Technology</text>
+  <text x="150" y="180" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" fill="white" opacity="0.8">Works 7+ Days</text>
+  <rect x="75" y="200" width="150" height="32" rx="16" fill="#22C55E"/>
+  <text x="150" y="221" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="white">Try FREE Sample</text>
+</svg>
