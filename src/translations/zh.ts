@@ -2242,6 +2242,7 @@ export const zh = {
       description: "查找{{province}}全境的Purrify零售商和快速配送选项。各大城市猫主人信赖之选。",
       citiesHeading: "我们在{{province}}服务的城市",
       viewCityGuide: "查看城市指南",
+      cityCardDescription: "了解{{city}}的除臭解决方案",
       exploreOther: "探索其他省份",
       orderOnline: "在线订购快速配送",
       orderDescription: "找不到当地商店？{{province}}全境2-3个工作日内Purrify送货上门。"

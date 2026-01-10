@@ -1,13 +1,13 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
 import { NextSeo } from 'next-seo';
-import { useRouter } from 'next/router';
 
 import {
   Province,
   getProvinceBySlug,
   locationsByProvince,
 } from '../../../src/data/locations';
+import { useTranslation } from '../../../src/lib/translation-context';
 
 interface ProvincePageProps {
   province: Province;
@@ -17,16 +17,23 @@ const PROVINCE_DISPLAY_OVERRIDES: Record<string, string> = {
   'Newfoundland and Labrador': 'Newfoundland & Labrador',
 };
 
+/** Replace {{key}} placeholders with values */
+const interpolate = (template: string, vars: Record<string, string>): string =>
+  Object.entries(vars).reduce(
+    (result, [key, value]) => result.replace(new RegExp(`{{${key}}}`, 'g'), value),
+    template
+  );
+
 const ProvincePage = ({ province }: ProvincePageProps) => {
-  const router = useRouter();
-  const locale = router.locale || 'en';
+  const { t, locale } = useTranslation();
+  const locations = t.locations!;
   const otherProvinces = locationsByProvince.filter(
     (candidateProvince) => candidateProvince.slug !== province.slug
   );
 
   const displayName = PROVINCE_DISPLAY_OVERRIDES[province.name] ?? province.name;
-  const seoTitle = `Cat Litter Odor Control - ${displayName} (${province.code}) | Purrify`;
-  const seoDescription = `Discover natural cat litter odor control trusted by cat parents across ${province.name}. Fast shipping across the province with reliable delivery.`;
+  const seoTitle = `${interpolate(locations.province.heading, { province: displayName })} (${province.code}) | Purrify`;
+  const seoDescription = interpolate(locations.province.description, { province: province.name });
   // Canonical always points to English version for SEO consolidation
   const canonicalUrl = `https://www.purrify.ca/locations/province/${province.slug}`;
 
@@ -49,26 +56,26 @@ const ProvincePage = ({ province }: ProvincePageProps) => {
         <section className="py-20 px-4">
           <div className="max-w-5xl mx-auto text-center space-y-6">
             <span className="inline-flex items-center px-4 py-1 rounded-full bg-white/80 dark:bg-gray-800/70 border border-orange-200 dark:border-orange-500/60 text-xs sm:text-sm font-semibold uppercase tracking-widest text-orange-600 dark:text-orange-300">
-              Province Guide
+              {locations.province.badge}
             </span>
             <h1 className="font-heading text-4xl md:text-6xl font-bold text-gray-900 dark:text-gray-50">
-              Cat Litter Odor Control in {province.name}
+              {interpolate(locations.province.heading, { province: province.name })}
             </h1>
             <p className="text-lg md:text-xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto">
-              Explore town-by-town resources for cat owners throughout {province.name}. Discover where Purrify ships, local retail partners, and tips tailored to your climate.
+              {interpolate(locations.province.description, { province: province.name })}
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link
                 href="/products/trial-size"
                 className="inline-flex items-center px-6 py-3 font-semibold text-white dark:text-gray-100 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg shadow-lg hover:from-orange-600 hover:to-pink-600 transition"
               >
-                Shop Purrify
+                {locations.hub.shopCta}
               </Link>
               <Link
                 href="#province-cities"
                 className="inline-flex items-center px-6 py-3 font-semibold text-orange-600 dark:text-orange-300 bg-white dark:bg-gray-800/80 border border-orange-200 dark:border-orange-500/50 rounded-lg shadow-sm hover:text-orange-700 dark:hover:text-orange-200 transition"
               >
-                View City Guides
+                {locations.province.viewCityGuide}
               </Link>
             </div>
           </div>
@@ -77,7 +84,7 @@ const ProvincePage = ({ province }: ProvincePageProps) => {
         <section id="province-cities" className="py-16 px-4 bg-white dark:bg-gray-900">
           <div className="max-w-5xl mx-auto">
             <h2 className="font-heading text-3xl font-bold text-center mb-10 text-gray-900 dark:text-gray-50">
-              Cities We Serve in {province.name}
+              {interpolate(locations.province.citiesHeading, { province: province.name })}
             </h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {province.cities.map((city) => (
@@ -90,7 +97,7 @@ const ProvincePage = ({ province }: ProvincePageProps) => {
                     {city.name}
                   </span>
                   <span className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-                    Learn about odor control solutions in {city.name}
+                    {interpolate(locations.province.cityCardDescription, { city: city.name })}
                   </span>
                 </Link>
               ))}
@@ -101,7 +108,7 @@ const ProvincePage = ({ province }: ProvincePageProps) => {
         <section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-8">
-              Explore Other Provinces
+              {locations.province.exploreOther}
             </h2>
             <div className="flex flex-wrap justify-center gap-3">
               {otherProvinces.map((candidateProvince) => (

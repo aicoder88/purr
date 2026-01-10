@@ -2325,6 +2325,7 @@ export const en = {
       description: "Find Purrify retailers and fast shipping options across {{province}}. Trusted by cat owners in every major city.",
       citiesHeading: "Cities We Serve in {{province}}",
       viewCityGuide: "View City Guide",
+      cityCardDescription: "Learn about odor control solutions in {{city}}",
       exploreOther: "Explore Other Provinces",
       orderOnline: "Order Online for Fast Delivery",
       orderDescription: "Can't find a local store? Get Purrify delivered to your door in 2-3 business days anywhere in {{province}}."

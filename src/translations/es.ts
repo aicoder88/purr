@@ -2112,6 +2112,7 @@ export const es: TranslationType = {
       description: "Encuentra minoristas de Purrify y opciones de envío rápido en toda {{province}}. Confiado por dueños de gatos en todas las ciudades principales.",
       citiesHeading: "Ciudades que Servimos en {{province}}",
       viewCityGuide: "Ver Guía de la Ciudad",
+      cityCardDescription: "Conoce las soluciones de control de olores en {{city}}",
       exploreOther: "Explorar Otras Provincias",
       orderOnline: "Ordena en Línea para Entrega Rápida",
       orderDescription: "¿No encuentras una tienda local? Recibe Purrify en tu puerta en 2-3 días hábiles en cualquier lugar de {{province}}."

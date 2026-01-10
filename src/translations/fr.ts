@@ -2264,6 +2264,7 @@ export const fr = {
       description: "Trouvez des détaillants Purrify et des options de livraison rapide partout au {{province}}. Fait confiance par les propriétaires de chats dans toutes les grandes villes.",
       citiesHeading: "Villes que nous desservons au {{province}}",
       viewCityGuide: "Voir le guide de la ville",
+      cityCardDescription: "Découvrez les solutions de contrôle des odeurs à {{city}}",
       exploreOther: "Explorer d'autres provinces",
       orderOnline: "Commandez en ligne pour une livraison rapide",
       orderDescription: "Vous ne trouvez pas de magasin local? Faites-vous livrer Purrify à votre porte en 2-3 jours ouvrables partout au {{province}}."

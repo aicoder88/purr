@@ -1841,6 +1841,7 @@ export interface TranslationType {
       description: string;
       citiesHeading: string;
       viewCityGuide: string;
+      cityCardDescription: string;
       exploreOther: string;
       orderOnline: string;
       orderDescription: string;
