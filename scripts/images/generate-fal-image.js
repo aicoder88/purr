@@ -28,7 +28,7 @@ const path = require('node:path');
 
 const FAL_KEY = process.env.FAL_KEY;
 const DEFAULT_DIR = path.join(process.cwd(), 'public/optimized/blog');
-const DEFAULT_MODEL = 'fal-ai/flux-pro/v1.1';
+const DEFAULT_MODEL = 'fal-ai/nano-banana-pro';
 const DEFAULT_SIZE = '1024x1024';
 
 // Parse command line arguments
@@ -120,10 +120,10 @@ Environment:
   FAL_KEY          Your fal.ai API key (required, set in .env)
 
 Models:
-  fal-ai/flux-pro/v1.1       Default, high quality
-  fal-ai/flux/dev            Faster, good quality
-  fal-ai/flux-lora           LoRA customization
-  fal-ai/stable-diffusion-v3 Alternative
+  fal-ai/nano-banana-pro     Default, Google Gemini 3 Pro Image
+  fal-ai/flux-pro/v1.1       High quality alternative
+  fal-ai/flux-pro/v1.1-ultra Higher resolution (upscaled)
+  fal-ai/recraft-v3          SOTA on benchmarks
 
 Examples:
   # Generate a single blog hero image

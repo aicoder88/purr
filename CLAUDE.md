@@ -218,6 +218,46 @@ These require explicit user approval before implementing:
 
 ---
 
+## Image Generation
+
+Use **Nano Banana Pro** (fal.ai) for all generated images:
+
+```bash
+pnpm generate-image --prompt "Your detailed prompt" --output "filename.jpg"
+```
+
+**NEVER generate product images with AI.** Product photos must be real. AI can only edit/improve existing product images (background removal, lighting adjustment, etc.).
+
+**OK to generate:** blog heroes, lifestyle scenes, illustrations, diagrams, decorative images
+
+**Prompt style defaults:** warm, friendly, fun, cute, beautiful, Studio Ghibli-inspired
+
+**Prompt structure:**
+1. **Subject** - what/who is in the image
+2. **Setting** - environment, location, atmosphere
+3. **Style** - lighting, mood, artistic direction
+4. **Quality** - resolution, detail level
+
+**Example prompts:**
+
+```
+# Default style (warm, cute, Ghibli-like)
+"A fluffy orange cat peacefully napping in a sunlit window nook, cozy home interior with houseplants, soft watercolor lighting, warm pastel tones, Studio Ghibli-inspired, gentle and inviting atmosphere"
+
+# Scientific/educational
+"Cross-section diagram of activated carbon molecular structure absorbing odor particles, clean infographic style, soft blue and white color palette, educational yet approachable, warm lighting"
+
+# Hyper-realistic lifestyle
+"A cozy living room with a happy cat stretching on a soft rug, modern minimalist home, golden hour sunlight streaming through sheer curtains, shallow depth of field, photorealistic, warm and inviting"
+```
+
+**When to use each style:**
+- **Warm/cute/Ghibli** → blog heroes, lifestyle content, emotional appeal
+- **Scientific** → how-it-works sections, ingredient explanations
+- **Hyper-realistic** → lifestyle scenes, home interiors (NOT product shots)
+
+---
+
 ## Content Writing
 
 **Before writing ANY product content**, read: `/docs/BLOG_STYLE_GUIDE.md`
