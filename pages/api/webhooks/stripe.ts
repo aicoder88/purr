@@ -277,11 +277,7 @@ export default async function handler(
         const orderId = session.metadata?.orderId;
         const orderType = session.metadata?.type;
 
-        // Determine if this is a Payment Link (no orderId) or website checkout
-        const isPaymentLink = !orderId;
-
         span.setAttribute('sessionId', session.id);
-        span.setAttribute('isPaymentLink', isPaymentLink);
         span.setAttribute('orderType', orderType || 'consumer');
         if (orderId) span.setAttribute('orderId', orderId);
 
@@ -289,9 +285,66 @@ export default async function handler(
           sessionId: session.id,
           orderId,
           orderType,
-          isPaymentLink,
           amount: session.amount_total
         });
+
+        // Handle Affiliate Starter Kit purchase
+        if (orderType === 'affiliate_starter_kit') {
+          const affiliateId = session.metadata?.affiliateId;
+          if (affiliateId && prisma) {
+            try {
+              // Activate the affiliate
+              await prisma.affiliate.update({
+                where: { id: affiliateId },
+                data: {
+                  activatedAt: new Date(),
+                  starterKitOrderId: session.id,
+                },
+              });
+              logger.info('Affiliate activated via starter kit purchase', {
+                affiliateId,
+                sessionId: session.id
+              });
+
+              // Send activation confirmation email
+              const customerEmail = session.customer_details?.email;
+              if (customerEmail) {
+                await resend.emails.send({
+                  from: 'Purrify Affiliates <support@purrify.ca>',
+                  to: customerEmail,
+                  subject: 'Your Purrify Affiliate Account is Now Active! 🎉',
+                  html: `
+                    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                      <h2 style="color: #9333ea;">Your Affiliate Account is Active!</h2>
+                      <p>Thank you for purchasing the Affiliate Starter Kit. Your account is now fully activated and ready to earn commissions!</p>
+                      <h3>What's Next?</h3>
+                      <ol>
+                        <li>Log in to your dashboard and grab your referral link</li>
+                        <li>Start sharing with your audience</li>
+                        <li>Watch your commissions grow!</li>
+                      </ol>
+                      <p><a href="${process.env.NEXT_PUBLIC_SITE_URL}/affiliate/dashboard" style="display: inline-block; background-color: #9333ea; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">Go to Dashboard</a></p>
+                      <p>Your starter kit will be shipped within 1-2 business days. You'll receive a shipping confirmation with tracking information.</p>
+                      <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;" />
+                      <p style="color: #666; font-size: 12px;">The Purrify Affiliate Team</p>
+                    </div>
+                  `,
+                });
+              }
+            } catch (err) {
+              logger.error('Failed to activate affiliate', {
+                affiliateId,
+                error: err instanceof Error ? err.message : 'Unknown error'
+              });
+              Sentry.captureException(err);
+            }
+          }
+          break;
+        }
+
+        // Determine if this is a Payment Link (no orderId) or website checkout
+        const isPaymentLink = !orderId;
+        span.setAttribute('isPaymentLink', isPaymentLink);
 
         // Extract customer details for email
         const customerEmail = session.customer_details?.email || session.customer_email;

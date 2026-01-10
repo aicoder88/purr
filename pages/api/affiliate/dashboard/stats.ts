@@ -2,6 +2,7 @@ import type { NextApiResponse } from 'next';
 import prisma from '@/lib/prisma';
 import { withAffiliateAuth, AffiliateApiRequest } from '@/lib/affiliate/middleware';
 import { clearPendingConversions } from '@/lib/affiliate/clearing';
+import { getTierProgress, checkAndResetMonthlySales } from '@/lib/affiliate/tiers';
 
 async function handler(req: AffiliateApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
@@ -15,8 +16,12 @@ async function handler(req: AffiliateApiRequest, res: NextApiResponse) {
   const { affiliateId } = req.affiliate;
 
   try {
-    // First, clear any pending conversions that are now past the hold period
+    // Lazy operations: clear pending conversions and check monthly reset
     await clearPendingConversions(affiliateId);
+    await checkAndResetMonthlySales(affiliateId);
+
+    // Get tier progress information
+    const tierProgress = await getTierProgress(affiliateId);
 
     // Fetch affiliate data with stats
     const affiliate = await prisma.affiliate.findUnique({
@@ -31,6 +36,10 @@ async function handler(req: AffiliateApiRequest, res: NextApiResponse) {
         pendingEarnings: true,
         availableBalance: true,
         createdAt: true,
+        tier: true,
+        commissionRate: true,
+        currentMonthSales: true,
+        lastRewardMonth: true,
       },
     });
 
@@ -129,6 +138,11 @@ async function handler(req: AffiliateApiRequest, res: NextApiResponse) {
       },
     });
 
+    // Check if eligible for monthly reward (3+ sales this month)
+    const currentMonth = new Date().toISOString().slice(0, 7); // "YYYY-MM"
+    const hasReceivedRewardThisMonth = affiliate.lastRewardMonth === currentMonth;
+    const eligibleForReward = affiliate.currentMonthSales >= 3 && !hasReceivedRewardThisMonth;
+
     return res.status(200).json({
       affiliate: {
         id: affiliate.id,
@@ -142,6 +156,17 @@ async function handler(req: AffiliateApiRequest, res: NextApiResponse) {
         totalEarnings: affiliate.totalEarnings,
         pendingEarnings: affiliate.pendingEarnings,
         availableBalance: affiliate.availableBalance,
+      },
+      tier: {
+        current: affiliate.tier,
+        commissionRate: affiliate.commissionRate,
+        ...tierProgress,
+      },
+      monthlyProgress: {
+        currentMonthSales: affiliate.currentMonthSales,
+        salesForReward: 3,
+        eligibleForReward,
+        rewardValue: 49,
       },
       thisMonth: {
         clicks: clicksThisMonth,

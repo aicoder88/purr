@@ -17,7 +17,11 @@ import {
   Copy,
   Check,
   ExternalLink,
-  ArrowRight
+  ArrowRight,
+  Award,
+  Gift,
+  TrendingUp,
+  Zap
 } from 'lucide-react';
 
 interface DashboardStats {
@@ -33,6 +37,23 @@ interface DashboardStats {
     totalEarnings: number;
     pendingEarnings: number;
     availableBalance: number;
+  };
+  tier: {
+    current: 'STARTER' | 'ACTIVE' | 'PARTNER';
+    commissionRate: number;
+    nextTier: string | null;
+    nextTierRate: number | null;
+    salesNeeded: number;
+    totalClearedSales: number;
+    currentMonthSales: number;
+    partnerQualifyingMonths: number;
+    canUpgrade: boolean;
+  };
+  monthlyProgress: {
+    currentMonthSales: number;
+    salesForReward: number;
+    eligibleForReward: boolean;
+    rewardValue: number;
   };
   thisMonth: {
     clicks: number;
@@ -80,7 +101,7 @@ function QuickLinkCard({ code }: { code: string }) {
         </div>
         <button
           onClick={copyLink}
-          className="flex-shrink-0 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors flex items-center space-x-2"
+          className="flex-shrink-0 px-4 py-2 bg-purple-600 hover:bg-purple-700 dark:bg-purple-600 dark:hover:bg-purple-500 text-white dark:text-gray-100 rounded-lg transition-colors flex items-center space-x-2"
         >
           {copied ? (
             <>
@@ -112,6 +133,132 @@ function QuickLinkCard({ code }: { code: string }) {
           Preview link
           <ExternalLink className="w-3 h-3 ml-1" />
         </a>
+      </div>
+    </div>
+  );
+}
+
+function TierProgressCard({ tier, monthlyProgress }: { tier: DashboardStats['tier']; monthlyProgress: DashboardStats['monthlyProgress'] }) {
+  const tierConfig = {
+    STARTER: { name: 'Starter', color: 'gray', icon: Zap, bgClass: 'bg-gray-100 dark:bg-gray-800' },
+    ACTIVE: { name: 'Active', color: 'blue', icon: TrendingUp, bgClass: 'bg-blue-100 dark:bg-blue-900/30' },
+    PARTNER: { name: 'Partner', color: 'purple', icon: Award, bgClass: 'bg-purple-100 dark:bg-purple-900/30' },
+  };
+
+  const currentTierInfo = tierConfig[tier.current];
+  const TierIcon = currentTierInfo.icon;
+
+  // Calculate progress percentage
+  let progressPercent = 0;
+  let progressLabel = '';
+
+  if (tier.current === 'STARTER' && tier.nextTier === 'ACTIVE') {
+    // Progress towards Active (need 3 cleared sales)
+    progressPercent = Math.min((tier.totalClearedSales / 3) * 100, 100);
+    progressLabel = `${tier.totalClearedSales}/3 cleared sales to Active`;
+  } else if (tier.current === 'ACTIVE' && tier.nextTier === 'PARTNER') {
+    // Progress towards Partner (need 5+ sales/month for 2 months)
+    if (tier.currentMonthSales >= 5) {
+      progressPercent = ((tier.partnerQualifyingMonths + 1) / 2) * 100;
+      progressLabel = `${tier.partnerQualifyingMonths + 1}/2 qualifying months`;
+    } else {
+      progressPercent = (tier.currentMonthSales / 5) * 100;
+      progressLabel = `${tier.currentMonthSales}/5 sales this month`;
+    }
+  } else if (tier.current === 'PARTNER') {
+    progressPercent = 100;
+    progressLabel = 'Maximum tier achieved!';
+  }
+
+  // Monthly reward progress
+  const rewardProgress = Math.min((monthlyProgress.currentMonthSales / monthlyProgress.salesForReward) * 100, 100);
+  const salesUntilReward = Math.max(0, monthlyProgress.salesForReward - monthlyProgress.currentMonthSales);
+
+  return (
+    <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+      <div className="p-6">
+        {/* Current Tier */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-4">
+            <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${currentTierInfo.bgClass}`}>
+              <TierIcon className={`w-6 h-6 ${
+                tier.current === 'PARTNER' ? 'text-purple-600 dark:text-purple-400' :
+                tier.current === 'ACTIVE' ? 'text-blue-600 dark:text-blue-400' :
+                'text-gray-600 dark:text-gray-400'
+              }`} />
+            </div>
+            <div>
+              <h3 className="font-semibold text-gray-900 dark:text-gray-100">{currentTierInfo.name} Tier</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                {(tier.commissionRate * 100).toFixed(0)}% commission rate
+              </p>
+            </div>
+          </div>
+          <div className={`px-3 py-1 rounded-full text-sm font-medium ${
+            tier.current === 'PARTNER' ? 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300' :
+            tier.current === 'ACTIVE' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300' :
+            'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300'
+          }`}>
+            {tier.current}
+          </div>
+        </div>
+
+        {/* Tier Progress */}
+        {tier.nextTier && (
+          <div className="mb-6">
+            <div className="flex justify-between items-center mb-2">
+              <span className="text-sm text-gray-600 dark:text-gray-400">Progress to {tier.nextTier}</span>
+              <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                {tier.nextTierRate ? `${(tier.nextTierRate * 100).toFixed(0)}%` : ''}
+              </span>
+            </div>
+            <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+              <div
+                className={`h-full rounded-full transition-all duration-500 ${
+                  tier.nextTier === 'PARTNER' ? 'bg-purple-500' : 'bg-blue-500'
+                }`}
+                style={{ width: `${progressPercent}%` }}
+              />
+            </div>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{progressLabel}</p>
+          </div>
+        )}
+
+        {tier.current === 'PARTNER' && (
+          <div className="mb-6 p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg border border-purple-200 dark:border-purple-800">
+            <p className="text-sm text-purple-700 dark:text-purple-300 flex items-center gap-2">
+              <Award className="w-4 h-4" />
+              You&apos;ve reached the highest tier! Enjoy 30% commission on all sales.
+            </p>
+          </div>
+        )}
+
+        {/* Monthly Reward Progress */}
+        <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <Gift className={`w-5 h-5 ${monthlyProgress.eligibleForReward ? 'text-green-500 dark:text-green-400' : 'text-gray-400 dark:text-gray-500'}`} />
+              <span className="font-medium text-gray-900 dark:text-gray-100">Monthly Reward</span>
+            </div>
+            {monthlyProgress.eligibleForReward && (
+              <span className="px-2 py-0.5 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300 text-xs font-medium rounded">
+                EARNED!
+              </span>
+            )}
+          </div>
+          <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden mb-2">
+            <div
+              className="h-full bg-green-500 dark:bg-green-400 rounded-full transition-all duration-500"
+              style={{ width: `${rewardProgress}%` }}
+            />
+          </div>
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            {monthlyProgress.eligibleForReward
+              ? `You've earned a $${monthlyProgress.rewardValue} product credit this month!`
+              : `${salesUntilReward} more sale${salesUntilReward === 1 ? '' : 's'} to earn a free $${monthlyProgress.rewardValue} product`
+            }
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -296,12 +443,15 @@ export default function AffiliateDashboard() {
           />
         </div>
 
-        {/* Quick Link Card */}
-        {data?.affiliate?.code && (
-          <div className="mb-8">
+        {/* Quick Link & Tier Progress Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          {data?.affiliate?.code && (
             <QuickLinkCard code={data.affiliate.code} />
-          </div>
-        )}
+          )}
+          {data?.tier && data?.monthlyProgress && (
+            <TierProgressCard tier={data.tier} monthlyProgress={data.monthlyProgress} />
+          )}
+        </div>
 
         {/* Recent Conversions */}
         <RecentConversions conversions={data?.recentConversions || []} />
@@ -314,8 +464,8 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const session = await getServerSession(req, res, authOptions);
 
   // Check if user is authenticated as affiliate
-  const user = session?.user as { role?: string } | undefined;
-  if (!session || user?.role !== 'affiliate') {
+  const user = session?.user as { role?: string; id?: string } | undefined;
+  if (!session || user?.role !== 'affiliate' || !user?.id) {
     return {
       redirect: {
         destination: '/affiliate/login',
@@ -323,6 +473,24 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       },
     };
   }
+
+  // Note: Activation check is now optional - uncomment below to require starter kit purchase
+  // Check if affiliate is activated (has purchased starter kit)
+  // const prismaClient = await import('@/lib/prisma').then(m => m.default);
+  // if (prismaClient) {
+  //   const affiliate = await prismaClient.affiliate.findUnique({
+  //     where: { id: user.id },
+  //     select: { activatedAt: true },
+  //   });
+  //   if (!affiliate?.activatedAt) {
+  //     return {
+  //       redirect: {
+  //         destination: '/affiliate/activate',
+  //         permanent: false,
+  //       },
+  //     };
+  //   }
+  // }
 
   return {
     props: {},
