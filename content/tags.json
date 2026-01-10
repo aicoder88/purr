@@ -6,7 +6,8 @@
     "translations": {
       "en": "Cat Litter",
       "fr": "Litière pour Chat",
-      "zh": "猫砂"
+      "zh": "猫砂",
+      "es": "Arena para Gatos"
     }
   },
   {
@@ -16,7 +17,8 @@
     "translations": {
       "en": "Odor Elimination",
       "fr": "Élimination des Odeurs",
-      "zh": "除臭"
+      "zh": "除臭",
+      "es": "Eliminación de Olores"
     }
   },
   {
@@ -26,7 +28,8 @@
     "translations": {
       "en": "Activated Carbon",
       "fr": "Charbon Actif",
-      "zh": "活性炭"
+      "zh": "活性炭",
+      "es": "Carbón Activado"
     }
   },
   {
@@ -36,7 +39,8 @@
     "translations": {
       "en": "Multi-Cat Households",
       "fr": "Foyers Multi-Chats",
-      "zh": "多猫家庭"
+      "zh": "多猫家庭",
+      "es": "Hogares con Múltiples Gatos"
     }
   },
   {
@@ -46,7 +50,8 @@
     "translations": {
       "en": "Apartment Living",
       "fr": "Vie en Appartement",
-      "zh": "公寓生活"
+      "zh": "公寓生活",
+      "es": "Vida en Apartamento"
     }
   },
   {
@@ -56,7 +61,8 @@
     "translations": {
       "en": "Eco-Friendly",
       "fr": "Écologique",
-      "zh": "环保"
+      "zh": "环保",
+      "es": "Ecológico"
     }
   },
   {
@@ -66,7 +72,8 @@
     "translations": {
       "en": "Pet Care",
       "fr": "Soins des Animaux",
-      "zh": "宠物护理"
+      "zh": "宠物护理",
+      "es": "Cuidado de Mascotas"
     }
   },
   {
@@ -76,7 +83,8 @@
     "translations": {
       "en": "Cleaning Tips",
       "fr": "Conseils de Nettoyage",
-      "zh": "清洁技巧"
+      "zh": "清洁技巧",
+      "es": "Consejos de Limpieza"
     }
   }
 ]

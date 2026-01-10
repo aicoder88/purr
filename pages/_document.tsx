@@ -94,6 +94,17 @@ class PurrifyDocument extends Document<PurrifyDocumentProps> {
           <Main />
           <NextScript />
 
+          {/* Zendesk Web Widget - lazy loaded for performance */}
+          {/* To enable: Get widget key from Zendesk Admin Center > Channels > Classic > Web Widget */}
+          {/* Then add NEXT_PUBLIC_ZENDESK_WIDGET_KEY to .env.local */}
+          {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_ZENDESK_WIDGET_KEY && (
+            <Script
+              id="ze-snippet"
+              src={`https://static.zdassets.com/ekr/snippet.js?key=${process.env.NEXT_PUBLIC_ZENDESK_WIDGET_KEY}`}
+              strategy="lazyOnload"
+            />
+          )}
+
           {/* Chat plugin moved to idle loader in _app.tsx to improve TTI */}
           {/* Removed legacy lazy-image script; Next/Image handles lazy-loading */}
         </body>

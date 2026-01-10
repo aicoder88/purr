@@ -8,7 +8,7 @@ import { useTranslation } from '../../src/lib/translation-context';
 import { LocalizedMeta } from '../../src/components/seo/LocalizedMeta';
 import { PageLayout } from '../../src/components/layout/PageLayout';
 import { Breadcrumbs } from '../../src/components/layout/Breadcrumbs';
-import { enStoryData } from '../../src/lib/page-data';
+import { enStoryData, frStoryData, esStoryData } from '../../src/lib/page-data';
 import { PRODUCT_PRICES } from '../../src/lib/pricing';
 import { generateWebsiteSchema } from '../../src/lib/seo-utils';
 import {
@@ -21,14 +21,23 @@ import {
 
 const OurStoryPage: NextPage = () => {
   const { locale } = useTranslation();
-  const { values, team, stats } = enStoryData;
+
+  // Select story data based on locale
+  const storyDataByLocale: Record<string, typeof enStoryData> = {
+    en: enStoryData,
+    fr: frStoryData,
+    es: esStoryData,
+    zh: enStoryData // Fallback to English for Chinese
+  };
+  const storyData = storyDataByLocale[locale] || enStoryData;
+  const { values, team, stats } = storyData;
 
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
     "name": "Our Story",
     "description": "The story behind Purrify cat litter additive and our mission to help cat owners create fresher, cleaner homes.",
-    "url": `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/about/our-story`,
+    "url": `https://www.purrify.ca${locale === 'fr' ? '/fr' : (locale === 'es' ? '/es' : '')}/about/our-story`,
     "mainEntity": {
       "@type": "Organization",
       "name": "Purrify",
@@ -311,7 +320,7 @@ const OurStoryPage: NextPage = () => {
                 Join thousands of happy cat owners who have transformed their homes with Purrify.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
+                <Link href={`${locale === 'fr' ? '/fr' : (locale === 'es' ? '/es' : '')}/products/trial-size`}>
                   <Button
                     size="lg"
                     className="h-auto py-4 px-8 flex items-center justify-center gap-4 bg-electric-indigo hover:bg-electric-indigo-600 text-white dark:text-gray-100 font-bold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 rounded-full group"
@@ -327,7 +336,7 @@ const OurStoryPage: NextPage = () => {
                     <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/contact`}>
+                <Link href={`${locale === 'fr' ? '/fr' : (locale === 'es' ? '/es' : '')}/contact`}>
                   <Button
                     size="lg"
                     variant="outline"

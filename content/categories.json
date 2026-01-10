@@ -17,6 +17,10 @@
       "zh": {
         "name": "提示与建议",
         "description": "为猫主人提供有用的提示和建议"
+      },
+      "es": {
+        "name": "Consejos y Tips",
+        "description": "Consejos útiles para dueños de gatos"
       }
     }
   },
@@ -38,6 +42,10 @@
       "zh": {
         "name": "气味控制",
         "description": "关于控制猫砂气味的一切"
+      },
+      "es": {
+        "name": "Control de Olores",
+        "description": "Todo sobre el control de olores de arena para gatos"
       }
     }
   },
@@ -59,6 +67,10 @@
       "zh": {
         "name": "猫咪健康",
         "description": "猫咪健康和保健信息"
+      },
+      "es": {
+        "name": "Salud de Gatos",
+        "description": "Información de salud y bienestar para gatos"
       }
     }
   },
@@ -80,6 +92,10 @@
       "zh": {
         "name": "产品指南",
         "description": "有效使用Purrify产品的指南"
+      },
+      "es": {
+        "name": "Guías de Productos",
+        "description": "Guías para usar los productos Purrify de manera efectiva"
       }
     }
   }

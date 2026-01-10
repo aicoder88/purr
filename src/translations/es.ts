@@ -563,6 +563,157 @@ export const es: TranslationType = {
     allRightsReserved: "Todos los Derechos Reservados"
   },
 
+  // Benefits Section (homepage component)
+  benefitsSection: {
+    sectionHeader: "Convierte los Problemas de Olor de Gato en Cosa del Pasado",
+    title: "Beneficios de Purrify",
+    subtitle: "Descubre por que Purrify es la solucion perfecta para duenos de gatos que quieren un hogar con olor fresco.",
+    items: [
+      {
+        title: "Eliminacion de Olores",
+        description: "La formula avanzada de Purrify elimina efectivamente los olores desagradables de la caja de arena en su origen. Di adios a los olores persistentes que pueden permear tu hogar y da la bienvenida a un ambiente mas fresco y acogedor para ti y tu amigo peludo."
+      },
+      {
+        title: "Simple",
+        description: "Purrify esta formulado con cascaras de coco simples, activadas para absorber olores. Puedes confiar en que estas proporcionando a tu gato un ambiente de caja limpia sin exponerlos a quimicos o toxinas."
+      },
+      {
+        title: "Economico",
+        description: "Purrify ayuda a extender la vida de la arena de tu gato previniendo la acumulacion de olores, lo que significa que necesitaras cambiar la arena con menos frecuencia. Esto no solo te ahorra dinero sino que tambien reduce el desperdicio, siendo beneficioso para tu bolsillo y el medio ambiente."
+      }
+    ]
+  },
+
+  // Science Section (homepage component)
+  scienceSection: {
+    badge: "La Ciencia Detras de Purrify",
+    headline: "Como el Carbon Activado",
+    headlineHighlight: "Elimina los Olores",
+    description: "A diferencia de los sprays que enmascaran olores con perfumes pesados, Purrify usa carbon activado para atrapar y neutralizar fisicamente las moleculas causantes de olor a nivel microscopico.",
+    learnMore: "Aprende Mas Sobre la Ciencia",
+    features: [
+      {
+        title: "Tecnologia de Microporos",
+        description: "Millones de poros microscopicos atrapan moleculas de olor instantaneamente al contacto."
+      },
+      {
+        title: "Seguro y No Toxico",
+        description: "100% carbon activado natural. Seguro para mascotas y humanos."
+      },
+      {
+        title: "Ecologico",
+        description: "Materiales sostenibles que son biodegradables y seguros para la tierra."
+      }
+    ],
+    floatingLabel: {
+      title: "Vista Microscopica",
+      description: "La estructura porosa atrapa moleculas de amoniaco instantaneamente."
+    },
+    naturalBadge: {
+      title: "100% Natural",
+      subtitle: "Sin quimicos"
+    }
+  },
+
+  // Features Section (homepage component)
+  featuresSection: {
+    badge: "La Diferencia Purrify",
+    title: "Por que los Gatos y sus Duenos Aman Purrify?",
+    paragraph1: "Amas a tu gato, pero seamos honestos—el olor de la caja de arena es un problema. Has probado arena perfumada, ambientadores y bicarbonato de sodio—pero solo enmascaran el problema, no lo solucionan.",
+    paragraph2: "Imagina entrar a tu casa y oler... nada. Solo aire limpio, sin olores persistentes, y sin olores vergonzosos cuando llegan invitados.",
+    tagline: "Eso es exactamente lo que hace Purrify...",
+    learnMore: "Aprende mas"
+  },
+
+  // Calculator Section (homepage component)
+  calculatorSection: {
+    title: "Ahorra Dinero Mientras Mantienes Tu Hogar Fresco",
+    description: "Purrify extiende la vida de la arena de tu gato hasta un 50%, ahorrandote dinero mientras elimina olores. Mira cuanto podrias ahorrar con nuestra calculadora."
+  },
+
+  // Section Header highlights
+  sectionHeaderHighlights: [
+    "7 Dias de Aire Fresco Garantizado",
+    "Aire Fresco en 60 Segundos - Simple como 1-2-3"
+  ],
+
+  // Trust Bar
+  trustBar: {
+    happyCats: "gatos felices",
+    reviews: "resenas"
+  },
+
+  // Referral Program
+  referral: {
+    dashboard: {
+      title: "Da $5, Recibe $5",
+      loginRequired: "Inicia sesion para acceder a tu panel de referidos y comenzar a ganar recompensas.",
+      signIn: "Iniciar Sesion",
+      retry: "Intentar de Nuevo",
+      generateDescription: "Genera tu codigo de referido unico y compartelo con amigos. Ellos obtienen $5 de descuento en su primer pedido, y tu obtienes $5 de credito cuando compren!",
+      generateButton: "Generar Mi Codigo de Referido",
+      generating: "Generando..."
+    },
+    stats: {
+      completedReferrals: "Referidos Completados",
+      totalEarned: "Total Ganado",
+      availableCredit: "Credito Disponible",
+      pending: "Pendiente"
+    },
+    milestone: {
+      title: "Progreso de Meta",
+      referrals: "referidos",
+      nextReward: "Proxima recompensa"
+    },
+    rewards: {
+      title: "Tus Recompensas",
+      credit: "Credito",
+      available: "Disponible"
+    },
+    activity: {
+      title: "Actividad Reciente",
+      completed: "Completado",
+      pending: "Pendiente"
+    },
+    widget: {
+      title: "Da $5, Recibe $5",
+      giveGet: "Da $5, Recibe $5",
+      description: "Comparte tu codigo con amigos. Ellos obtienen $5 de descuento, tu obtienes $5 de credito!",
+      shareDescription: "Comparte tu codigo con amigos",
+      yourCode: "Tu Codigo de Referido",
+      shareLink: "Enlace para Compartir",
+      copy: "Copiar",
+      copyCode: "Copiar Codigo",
+      copyLink: "Copiar Enlace",
+      copied: "Copiado!",
+      shareVia: "Compartir via",
+      howItWorks: "Como funciona",
+      step1: "Comparte tu codigo o enlace con amigos",
+      step2: "Ellos obtienen $5 de descuento en su primer pedido",
+      step3: "Tu obtienes $5 de credito cuando compren"
+    },
+    share: {
+      email: "Correo",
+      sms: "SMS",
+      link: "Enlace"
+    },
+    checkout: {
+      haveCode: "Tienes un codigo de referido? Haz clic aqui",
+      enterReferralCode: "Ingresa el Codigo de Referido",
+      enterCode: "Por favor ingresa un codigo de referido",
+      emailRequired: "Por favor ingresa tu correo primero",
+      invalidCode: "Codigo de referido invalido",
+      error: "Error al aplicar el codigo. Por favor intenta de nuevo.",
+      apply: "Aplicar",
+      applying: "Aplicando...",
+      applied: "Codigo de referido aplicado!",
+      referredBy: "Referido por {name}",
+      off: "de descuento",
+      remove: "Eliminar",
+      discountNote: "Obtiene $5 de descuento en tu pedido con el codigo de referido de un amigo"
+    }
+  },
+
   // Free Trial
   freeTrial: {
     urgentBanner: "Oferta Por Tiempo Limitado",

@@ -3,6 +3,8 @@ import { z } from 'zod';
 import { Resend } from 'resend';
 import { RESEND_CONFIG, isResendConfigured } from '../../src/lib/resend-config';
 import { withCSRFProtection } from '../../src/lib/security/csrf';
+import { createContactTicket, isZendeskConfigured } from '../../src/lib/zendesk';
+import * as Sentry from '@sentry/nextjs';
 
 // Define validation schema with Zod
 const contactFormSchema = z.object({
@@ -163,18 +165,44 @@ async function handler(
 
     const { name, email, message } = validationResult.data;
 
-    // Generate subject line for the contact form email
-    const subject = `Contact Form Submission from ${name}`;
-
     console.log('Processing contact form submission:', {
       name,
       email,
       messageLength: message.length,
-      subject,
       timestamp: new Date().toISOString()
     });
 
-    // Send email via Resend
+    // Try Zendesk first (primary), then fall back to Resend
+    if (isZendeskConfigured()) {
+      try {
+        console.log('Creating Zendesk ticket...');
+        const ticketResponse = await createContactTicket({
+          name,
+          email,
+          message,
+          locale: (req.headers['accept-language']?.includes('fr') ? 'fr' :
+                   req.headers['accept-language']?.includes('zh') ? 'zh' : 'en'),
+        });
+
+        console.log('Zendesk ticket created successfully:', {
+          ticketId: ticketResponse.ticket.id,
+          status: ticketResponse.ticket.status,
+        });
+
+        return res.status(200).json({
+          success: true,
+          message: 'Thank you for contacting us! We\'ll get back to you within 24 hours.'
+        });
+      } catch (zendeskError) {
+        console.error('Zendesk ticket creation failed:', zendeskError);
+        Sentry.captureException(zendeskError);
+        // Fall through to Resend as backup
+      }
+    }
+
+    // Fallback: Send email via Resend
+    console.log('Using Resend fallback...');
+    const subject = `Contact Form Submission from ${name}`;
     const emailResult = await sendEmailViaResend(
       name,
       email,
@@ -193,7 +221,7 @@ async function handler(
     }
 
     // Log successful submission
-    console.log('Contact form submitted successfully:', {
+    console.log('Contact form submitted successfully via Resend:', {
       name,
       email,
       timestamp: new Date().toISOString()

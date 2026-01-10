@@ -8,6 +8,8 @@ import {
   B2BLeadConfirmationEmailHTML,
   getB2BLeadConfirmationSubject,
 } from '../../src/emails/b2b-lead';
+import { createB2BTicket, isZendeskConfigured } from '../../src/lib/zendesk';
+import * as Sentry from '@sentry/nextjs';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -98,11 +100,36 @@ export default async function handler(
       timestamp: submittedAt,
     });
 
-    // Check if Resend is configured
+    // Create Zendesk ticket first (primary system)
+    if (isZendeskConfigured()) {
+      try {
+        console.log('[B2B Contact] Creating Zendesk ticket...');
+        const ticketResponse = await createB2BTicket({
+          businessName: data.businessName,
+          contactName: data.contactName,
+          email: data.email,
+          phone: data.phone,
+          businessType: data.businessType,
+          location: data.location,
+          catCount: data.catCount ? parseInt(data.catCount, 10) : undefined,
+          message: data.message || `B2B inquiry from ${data.businessName}`,
+          locale: data.locale,
+        });
+
+        console.log('[B2B Contact] Zendesk ticket created:', {
+          ticketId: ticketResponse.ticket.id,
+          status: ticketResponse.ticket.status,
+        });
+      } catch (zendeskError) {
+        console.error('[B2B Contact] Zendesk ticket creation failed:', zendeskError);
+        Sentry.captureException(zendeskError);
+        // Continue with email notification as fallback
+      }
+    }
+
+    // Check if Resend is configured for additional email notifications
     if (!isResendConfigured()) {
-      console.warn('[B2B Contact] Resend not configured, logging lead only');
-      // Still return success but log that email wasn't sent
-      console.log('[B2B Contact] Lead data (email not sent):', data);
+      console.warn('[B2B Contact] Resend not configured, Zendesk ticket only');
       return res.status(200).json({
         success: true,
         message: 'Thank you for your interest! We will contact you within 1-2 business days.',

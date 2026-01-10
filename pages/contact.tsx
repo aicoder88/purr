@@ -26,8 +26,11 @@ export default function ContactPage() {
     message?: string;
   }>({});
 
-  const pageTitle = `Contact Us - ${SITE_NAME} Customer Support & Help`;
-  const pageDescription = "Questions? Fast support for Purrify orders, shipping to USA & Canada, or cat litter odor advice. Email, phone, or WhatsApp. Response within 24 hours.";
+  // Use translated page metadata
+  const pageTitle = t.contactPage?.title
+    ? `${t.contactPage.title} - ${SITE_NAME}`
+    : `Contact Us - ${SITE_NAME} Customer Support & Help`;
+  const pageDescription = t.contactPage?.subtitle || "Questions? Fast support for Purrify orders, shipping to USA & Canada, or cat litter odor advice. Email, phone, or WhatsApp. Response within 24 hours.";
   const canonicalPath = '/contact';
   const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
   const languageAlternates = buildLanguageAlternates(canonicalPath);
@@ -39,35 +42,38 @@ export default function ContactPage() {
     message: ''
   });
 
+  // Contact methods with translated text but preserved icons and actions
+  const translatedContactMethods = t.contactPage?.contactMethods || [];
   const contactMethods = [
     {
       icon: Mail,
-      title: "Email Support",
+      title: translatedContactMethods[0]?.title || "Email Support",
       value: "support@purrify.ca",
-      description: "Get detailed help via email",
-      responseTime: "Usually within 24 hours",
+      description: translatedContactMethods[0]?.description || "Get detailed help via email",
+      responseTime: translatedContactMethods[0]?.responseTime || "Usually within 24 hours",
       action: "mailto:support@purrify.ca"
     },
     {
       icon: Phone,
-      title: "Phone Support",
+      title: translatedContactMethods[1]?.title || "Phone Support",
       value: CONTACT_INFO.phone,
       description: PHONE_NUMBER.tagline,
-      responseTime: "Mon-Fri, 9AM-5PM EST",
+      responseTime: translatedContactMethods[1]?.responseTime || "Mon-Fri, 9AM-5PM EST",
       action: CONTACT_INFO.phoneHref,
       taglineNote: PHONE_NUMBER.description
     },
     {
       icon: MessageCircle,
-      title: "WhatsApp Chat",
-      value: "Chat with us",
-      description: "Instant messaging via WhatsApp",
-      responseTime: "Available 7 days a week",
+      title: translatedContactMethods[2]?.title || "WhatsApp Chat",
+      value: locale === 'es' ? "Chatea con nosotros" : (locale === 'fr' ? "Chattez avec nous" : "Chat with us"),
+      description: translatedContactMethods[2]?.description || "Instant messaging via WhatsApp",
+      responseTime: translatedContactMethods[2]?.responseTime || "Available 7 days a week",
       action: "https://wa.me/385993433344?text=Hi%20I%27m%20interested%20in%20Purrify"
     }
   ];
 
-  const faqs = [
+  // Use translated FAQs
+  const faqs = t.contactPage?.faqs || [
     {
       question: "How quickly will I see results with Purrify?",
       answer: "Most customers notice a significant reduction in odors within the first few hours of application. The activated carbon begins trapping odor molecules immediately upon contact."
@@ -139,7 +145,7 @@ export default function ContactPage() {
 
       setSubmitStatus({
         success: true,
-        message: "Thank you for contacting us! We'll get back to you within 24 hours."
+        message: t.contactPage?.form?.successMessage || "Thank you for contacting us! We'll get back to you within 24 hours."
       });
 
       // Reset form
@@ -246,12 +252,11 @@ export default function ContactPage() {
               </div>
 
               <h1 className="font-heading text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent leading-tight">
-                We're Here to Help! 🐱
+                {t.contactPage?.title || "We're Here to Help!"} 🐱
               </h1>
 
               <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed font-medium">
-                Have questions about Purrify? Need help with your order? <br className="hidden md:block" />
-                Our friendly customer support team is ready to assist you with expert advice and solutions.
+                {t.contactPage?.subtitle || "Have questions about Purrify? Need help with your order? Our friendly customer support team is ready to assist you with expert advice and solutions."}
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 text-sm">
@@ -277,10 +282,12 @@ export default function ContactPage() {
           <Container>
             <div className="text-center mb-16">
               <h2 className="font-heading text-4xl md:text-5xl font-black mb-6 text-gray-900 dark:text-white">
-                Choose Your <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">Preferred Way</span> to Connect
+                {t.contactPage?.chooseContactMethod || "Choose Your"} <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">{locale === 'en' ? 'Preferred Way' : ''}</span> {locale === 'en' ? 'to Connect' : ''}
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                We're available through multiple channels to make it easy for you!
+                {locale === 'es' ? '¡Estamos disponibles a través de múltiples canales para facilitarte las cosas!' :
+                 locale === 'fr' ? 'Nous sommes disponibles via plusieurs canaux pour vous faciliter la vie!' :
+                 "We're available through multiple channels to make it easy for you!"}
               </p>
             </div>
 
@@ -339,7 +346,7 @@ export default function ContactPage() {
                         window.location.href = method.action;
                       }}
                     >
-                      Contact Now →
+                      {t.contactPage?.form?.contactNow || "Contact Now"} →
                     </Button>
                   </div>
                 </div>
@@ -380,7 +387,7 @@ export default function ContactPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
-                        Full Name *
+                        {t.contactPage?.form?.fullName || "Full Name"} *
                       </label>
                       <Input
                         id="name"
@@ -391,16 +398,16 @@ export default function ContactPage() {
                         maxLength={50}
                         value={formData.name}
                         onChange={handleInputChange}
-                        placeholder="Your full name"
+                        placeholder={locale === 'es' ? "Tu nombre completo" : (locale === 'fr' ? "Votre nom complet" : "Your full name")}
                         className="w-full bg-gray-50 dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 focus:border-purple-500 dark:focus:border-purple-500 text-gray-900 dark:text-gray-100 rounded-xl py-3 px-4 text-lg transition-all"
                       />
                       <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                        2-50 characters
+                        {locale === 'es' ? "2-50 caracteres" : (locale === 'fr' ? "2-50 caractères" : "2-50 characters")}
                       </p>
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
-                        Email Address *
+                        {t.contactPage?.form?.emailAddress || "Email Address"} *
                       </label>
                       <Input
                         id="email"
@@ -417,7 +424,7 @@ export default function ContactPage() {
 
                   <div>
                     <label htmlFor="subject" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
-                      Subject *
+                      {t.contactPage?.form?.subject || "Subject"} *
                     </label>
                     <Input
                       id="subject"
@@ -427,17 +434,17 @@ export default function ContactPage() {
                       minLength={3}
                       value={formData.subject}
                       onChange={handleInputChange}
-                      placeholder="Brief description of your inquiry"
+                      placeholder={t.contactPage?.form?.subjectPlaceholder || "Brief description of your inquiry"}
                       className="w-full bg-gray-50 dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 focus:border-purple-500 dark:focus:border-purple-500 text-gray-900 dark:text-gray-100 rounded-xl py-3 px-4 text-lg transition-all"
                     />
                     <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                      At least 3 characters
+                      {locale === 'es' ? "Al menos 3 caracteres" : (locale === 'fr' ? "Au moins 3 caractères" : "At least 3 characters")}
                     </p>
                   </div>
 
                   <div>
                     <label htmlFor="message" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
-                      Message *
+                      {t.contactPage?.form?.message || "Message"} *
                     </label>
                     <Textarea
                       id="message"
@@ -447,12 +454,12 @@ export default function ContactPage() {
                       maxLength={900}
                       value={formData.message}
                       onChange={handleInputChange}
-                      placeholder="Please provide details about your question or concern..."
+                      placeholder={t.contactPage?.form?.messagePlaceholder || "Please provide details about your question or concern..."}
                       rows={6}
                       className="w-full bg-gray-50 dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 focus:border-purple-500 dark:focus:border-purple-500 text-gray-900 dark:text-gray-100 rounded-xl py-3 px-4 text-lg transition-all resize-none"
                     />
                     <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                      {formData.message.length}/900 characters (minimum 10)
+                      {formData.message.length}/900 {locale === 'es' ? "caracteres (mínimo 10)" : (locale === 'fr' ? "caractères (minimum 10)" : "characters (minimum 10)")}
                     </p>
                   </div>
 
@@ -465,12 +472,12 @@ export default function ContactPage() {
                     {isSubmitting ? (
                       <>
                         <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white dark:border-gray-100 mr-3"></div>
-                        Sending Message...
+                        {t.contactPage?.form?.sendingMessage || "Sending Message..."}
                       </>
                     ) : (
                       <>
                         <Send className="w-6 h-6 mr-3" />
-                        Send Message
+                        {t.contactPage?.form?.sendMessage || "Send Message"}
                       </>
                     )}
                   </Button>
@@ -485,10 +492,10 @@ export default function ContactPage() {
           <Container>
             <div className="text-center mb-16">
               <h2 className="font-heading text-4xl md:text-5xl font-black mb-4 text-gray-900 dark:text-white">
-                Frequently Asked <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">Questions</span>
+                {t.contactPage?.frequentlyAskedQuestions || "Frequently Asked"} <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">{locale === 'en' ? 'Questions' : ''}</span>
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-400">
-                Quick answers to common questions 💡
+                {t.contactPage?.quickAnswersCommon || "Quick answers to common questions"} 💡
               </p>
             </div>
 
@@ -508,11 +515,11 @@ export default function ContactPage() {
 
             <div className="text-center mt-16">
               <p className="text-gray-600 dark:text-gray-400 mb-6 text-lg font-semibold">
-                Don't see your question answered here?
+                {t.contactPage?.dontSeeQuestion || "Don't see your question answered here?"}
               </p>
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/#faq`}>
+              <Link href={`${locale === 'fr' ? '/fr' : (locale === 'es' ? '/es' : '')}/#faq`}>
                 <Button variant="outline" size="lg" className="border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white dark:border-purple-400 dark:text-purple-400 dark:hover:bg-purple-600 font-bold text-lg px-8 py-6 rounded-xl transition-all duration-300">
-                  View Full FAQ →
+                  {t.contactPage?.viewCompleteFAQ || "View Full FAQ"} →
                 </Button>
               </Link>
             </div>
@@ -551,28 +558,31 @@ export default function ContactPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div className="text-center md:text-left">
                 <h2 className="font-heading text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50 dark:text-gray-100">
-                  Business Hours
+                  {t.contactPage?.businessHours?.title || "Business Hours"}
                 </h2>
                 <div className="space-y-4">
                   <div className="flex items-center justify-center md:justify-start">
                     <Clock className="w-5 h-5 text-[#FF3131] mr-3" />
                     <div>
-                      <p className="font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100">Monday - Friday</p>
-                      <p className="text-gray-600 dark:text-gray-300">9:00 AM - 5:00 PM EST</p>
+                      <p className="font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100">
+                        {t.contactPage?.businessHours?.weekdays || "Monday - Friday: 9:00 AM - 5:00 PM EST"}
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-center justify-center md:justify-start">
                     <Clock className="w-5 h-5 text-[#FF3131] mr-3" />
                     <div>
-                      <p className="font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100">Saturday</p>
-                      <p className="text-gray-600 dark:text-gray-300">10:00 AM - 2:00 PM EST</p>
+                      <p className="font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100">
+                        {t.contactPage?.businessHours?.saturday || "Saturday: 10:00 AM - 2:00 PM EST"}
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-center justify-center md:justify-start">
                     <Clock className="w-5 h-5 text-[#FF3131] mr-3" />
                     <div>
-                      <p className="font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100">Sunday</p>
-                      <p className="text-gray-600 dark:text-gray-300">Closed</p>
+                      <p className="font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100">
+                        {t.contactPage?.businessHours?.sunday || "Sunday: Closed"}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -580,7 +590,7 @@ export default function ContactPage() {
 
               <div className="text-center md:text-left">
                 <h2 className="font-heading text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50 dark:text-gray-100">
-                  Our Location
+                  {t.contactPage?.location?.title || "Our Location"}
                 </h2>
                 <div className="space-y-4">
                   <div className="flex items-center justify-center md:justify-start">
@@ -594,7 +604,7 @@ export default function ContactPage() {
                   </div>
                   <div className="mt-6">
                     <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-400">
-                      We ship across Canada and offer local pickup in the Mirabel area.
+                      {t.contactPage?.location?.shippingNote || "We ship across Canada and offer local pickup in the Mirabel area."}
                     </p>
                   </div>
                 </div>
@@ -832,10 +842,10 @@ export default function ContactPage() {
         <section className="py-8">
           <Container>
             <div className="text-center">
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/#contact`}>
+              <Link href={`${locale === 'fr' ? '/fr' : (locale === 'es' ? '/es' : '')}/#contact`}>
                 <Button variant="outline" size="lg">
                   <ArrowLeft className="w-5 h-5 mr-2" />
-                  Back to Homepage
+                  {t.contactPage?.backToHome || "Back to Homepage"}
                 </Button>
               </Link>
             </div>

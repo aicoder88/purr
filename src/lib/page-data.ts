@@ -253,3 +253,112 @@ export const frStoryData = {
     }
   ]
 };
+
+// Shared story data for Spanish pages
+export const esStoryData = {
+  milestones: [
+    {
+      year: "2008",
+      title: "El Problema Descubierto",
+      description: "Nuestro fundador, un dueno de gatos con multiples mascotas, luchaba contra los olores persistentes de la caja de arena a pesar de probar todos los productos del mercado.",
+      icon: Lightbulb
+    },
+    {
+      year: "2008-2009",
+      title: "Investigacion y Desarrollo",
+      description: "Nos asociamos con cientificos de materiales para desarrollar una formula de carbon activado disenada especificamente para eliminar los olores de la arena para gatos.",
+      icon: Target
+    },
+    {
+      year: "2009",
+      title: "Primer Prototipo",
+      description: "Creamos el primer prototipo de Purrify y lo probamos con duenos de gatos locales. Los resultados superaron todas las expectativas con un 95% de reduccion de olores.",
+      icon: Zap
+    },
+    {
+      year: "2023",
+      title: "Lanzamiento del Producto",
+      description: "Lanzamiento oficial de Purrify en todo Canada, ayudando a cientos de duenos de gatos a crear hogares mas frescos y limpios.",
+      icon: Award
+    },
+    {
+      year: "2024",
+      title: "Expansion y Crecimiento",
+      description: "Expandimos la linea de productos con multiples tamanos y comenzamos el envio internacional para servir a duenos de gatos en todo el mundo.",
+      icon: Users
+    }
+  ],
+
+  values: [
+    {
+      icon: Heart,
+      title: "Filosofia Mascotas Primero",
+      description: "Cada decision que tomamos considera primero la salud y la felicidad de los gatos y sus familias."
+    },
+    {
+      icon: Shield,
+      title: "Seguridad y Calidad",
+      description: "Todos los productos pasan por controles de calidad y no contienen fragancias ni colorantes anadidos."
+    },
+    {
+      icon: Leaf,
+      title: "Responsabilidad Ambiental",
+      description: "Evaluamos continuamente el empaque y las operaciones para reducir el desperdicio donde sea posible."
+    },
+    {
+      icon: Users,
+      title: "Exito del Cliente",
+      description: "Nuestro exito se mide por la satisfaccion y la mejora en la calidad de vida de nuestros clientes y sus mascotas."
+    }
+  ],
+
+  team: [
+    {
+      name: "Mark Archer",
+      role: "Fundador y CEO",
+      bio: "Un amante de los gatos de toda la vida con experiencia en ciencias ambientales. La lucha personal de Mark contra los olores de la caja de arena llevo a la creacion de Purrify.",
+      location: "Toronto, ON"
+    },
+    {
+      name: "Dr. Michael Rodriguez",
+      role: "Director Cientifico",
+      bio: "Cientifico de materiales con mas de 15 anos de experiencia en tecnologia de carbon activado. Lidera nuestro desarrollo de productos y aseguramiento de calidad.",
+      location: "Vancouver, BC"
+    },
+    {
+      name: "Sage Dean",
+      role: "Directora de Experiencia del Cliente",
+      bio: "Ex tecnica veterinaria apasionada por mejorar la vida de las mascotas y sus familias a traves de mejores productos.",
+      location: "Montreal, QC"
+    },
+    {
+      name: "David Kim",
+      role: "Director de Operaciones",
+      bio: "Experto en cadena de suministro que asegura que cada pedido de Purrify se procese rapidamente y se entregue de manera confiable en todo Canada y mas alla.",
+      location: "Calgary, AB"
+    }
+  ],
+
+  stats: [
+    {
+      number: "1,000+",
+      label: "Clientes Satisfechos",
+      description: "Duenos de gatos en Canada e internacionalmente"
+    },
+    {
+      number: "98%",
+      label: "Tasa de Satisfaccion",
+      description: "Clientes que recomendarian Purrify"
+    },
+    {
+      number: "2,000+",
+      label: "Cambios de Arena Mejorados",
+      description: "Cambios de caja de arena estimados mejorados"
+    },
+    {
+      number: "200+",
+      label: "Pedidos Completados",
+      description: "En todo Canada e internacionalmente"
+    }
+  ]
+};
