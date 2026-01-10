@@ -555,6 +555,20 @@ export const fr = {
     free: "GRATUIT"
   },
 
+  // Social Proof Badges
+  socialProofBadges: {
+    trustedVerified: "Vérifié et Approuvé",
+    findUsOn: "Trouvez-nous Sur",
+    viewOnPlatform: "Voir Purrify sur {{platform}}",
+    platforms: {
+      trustpilot: "Trustpilot",
+      googleBusiness: "Google Business",
+      crunchbase: "Crunchbase",
+      productHunt: "Product Hunt",
+      yelp: "Yelp",
+      wellfound: "Wellfound"
+    }
+  },
   // Enhanced Product Comparison
   enhancedProductComparison: {
     compareAndSave: "Comparer et Économiser",
@@ -1093,6 +1107,42 @@ export const fr = {
       cta: {
         primary: "Voir les tarifs de gros",
         secondary: "Devenir partenaire"
+      },
+      boostYour: "Boostez Vos",
+      petStoreProfits: "Profits d'Animalerie",
+      mainDescription: "Rejoignez 21 détaillants établis qui vendent la solution anti-odeur #1 au Canada avec des marges de 50%+",
+      retailerCount: "21 détaillants établis",
+      marginHighlight: "marges de 50%+",
+      stats: {
+        profitMargins: { value: "50%", label: "Marges de Profit" },
+        repurchaseRate: { value: "89%", label: "Taux de Rachat" },
+        setupTime: { value: "24h", label: "Temps d'Installation" }
+      },
+      valueProps: {
+        highMargin: {
+          title: "Produit à Haute Marge",
+          highlight: "Jusqu'à 55% de marge",
+          description: "Prix premium avec expédition légère. Marges plus élevées que les produits de litière lourds traditionnels."
+        },
+        customerLoyalty: {
+          title: "Fidélité Client",
+          highlight: "Note de 4.8/5 étoiles",
+          description: "Les clients deviennent des ambassadeurs fidèles. Les rachats mensuels et les recommandations génèrent un revenu stable."
+        },
+        completeSupport: {
+          title: "Support Complet",
+          highlight: "Tout inclus",
+          description: "Matériel PLV, formation, support marketing et gestion de compte dédiée inclus."
+        }
+      },
+      trustIndicators: {
+        label: "Approuvé par les détaillants leaders:",
+        types: {
+          petStores: "Animaleries",
+          vetClinics: "Cliniques Vétérinaires",
+          groomers: "Toiletteurs",
+          distributors: "Distributeurs"
+        }
       }
     },
     benefits: {
@@ -1175,12 +1225,176 @@ export const fr = {
         title: "Résultats commerciaux prouvés"
       }
     },
+    wholesalePricing: {
+      sectionBadge: "Prix de Gros Transparents",
+      title: "Choisissez Votre",
+      titleHighlight: "Niveau de Profit",
+      subtitle: "Partenariat avec la solution anti-odeur féline la plus vendue au Canada. Pas de frais cachés, pas de surprises.",
+      packageIncludes: "Le Forfait Comprend:",
+      trustSignals: {
+        noSetupFees: "Pas de Frais d'Installation",
+        approval72hr: "Approbation en 72h",
+        provenROI: "ROI Prouvé"
+      },
+      tiers: {
+        starter: {
+          name: "Forfait Débutant",
+          badge: "Démarrage Rapide",
+          description: "Parfait pour tester les eaux",
+          contents: [
+            "Une boîte format essai (25 petits sacs)",
+            "Une boîte format moyen (15 sacs moyens)",
+            "Une boîte format grand (10 grands sacs)"
+          ],
+          features: [
+            "Produit éprouvé 4.8/5 étoiles",
+            "Avantage d'expédition légère",
+            "Présentoir PLV de base inclus",
+            "Support email et guide d'installation",
+            "Remplacement gratuit des produits endommagés"
+          ],
+          cta: "Commencer"
+        },
+        growth: {
+          name: "Partenaire Croissance",
+          badge: "Meilleure Valeur",
+          description: "Le choix intelligent pour les détaillants en croissance",
+          contents: [
+            "Cinq boîtes format essai (125 petits sacs)",
+            "Cinq boîtes format moyen (75 sacs moyens)",
+            "Cinq boîtes format grand (50 grands sacs)",
+            "BONUS: 5 sacs moyens gratuits"
+          ],
+          features: [
+            "Présentoir comptoir premium",
+            "Matériel de formation du personnel",
+            "Actifs marketing digitaux (posts sociaux, modèles email)",
+            "Support téléphone et email prioritaire"
+          ],
+          cta: "Commencer à Grandir"
+        },
+        scale: {
+          name: "Succès à l'Échelle",
+          badge: "Entreprise",
+          description: "Pour une croissance sérieuse des revenus",
+          contents: [
+            "Dix boîtes format essai (250 petits sacs)",
+            "Dix boîtes format moyen (150 sacs moyens)",
+            "Dix boîtes format grand (100 grands sacs)",
+            "BONUS: 25 sacs essai supplémentaires pour accrocher de nouveaux clients"
+          ],
+          features: [
+            "Tout dans Partenaire Croissance",
+            "Gestionnaire de compte dédié",
+            "Matériel marketing personnalisé et co-branding",
+            "Droits de protection territoriale",
+            "Revues d'affaires trimestrielles et analyses de ventes",
+            "Allocation d'inventaire prioritaire"
+          ],
+          cta: "Commencer"
+        }
+      },
+      bottomCta: {
+        title: "Prêt à Augmenter Vos Revenus?",
+        description: "Rejoignez 21 détaillants établis de Montréal et environs qui gagnent déjà de hautes marges avec Purrify.",
+        setupNote: "L'installation prend moins de 24 heures.",
+        primaryButton: "Postuler pour le Partenariat",
+        secondaryButton: "Appelez-nous"
+      }
+    },
     contact: {
-      title: "Devenir partenaire Purrify",
-      description: "Prêt à ajouter l'additif #1 au Canada à vos tablettes ? Remplissez le formulaire et nous vous répondrons sous 24 heures."
+      title: "Devenez Partenaire Détaillant Purrify",
+      description: "Prêt à ajouter l'additif de litière #1 au Canada à votre magasin? Remplissez le formulaire ci-dessous et nous vous répondrons dans les 24 heures.",
+      sectionBadge: "Rejoignez 21 Partenaires Établis",
+      sectionTitle: "Commencez Votre",
+      sectionTitleHighlight: "Partenariat Aujourd'hui",
+      sectionDescription: "Prêt à gagner des marges de 50%+ avec la solution anti-odeur #1 au Canada?",
+      setupNote: "L'installation prend moins de 24 heures.",
+      urgencyStats: {
+        approvalTime: { value: "72h", label: "Temps d'Approbation" },
+        setupFees: { value: "Zéro", label: "Frais d'Installation" },
+        currentPartners: { value: "21", label: "Partenaires Actuels" }
+      },
+      form: {
+        title: "Candidature de Partenariat",
+        subtitle: "Candidature rapide de 2 minutes. Nous répondons le jour même!",
+        fields: {
+          businessName: { label: "Nom de l'Entreprise", placeholder: "Nom de Votre Animalerie", required: true },
+          contactName: { label: "Nom du Contact", placeholder: "Votre Nom Complet", required: true },
+          position: { label: "Votre Poste dans l'Entreprise", placeholder: "ex. Propriétaire, Gérant, Acheteur, Représentant" },
+          email: { label: "Adresse Email", placeholder: "votre@email.com", required: true },
+          phone: { label: "Numéro de Téléphone", placeholder: "(555) 123-4567" },
+          businessType: {
+            label: "Type d'Entreprise",
+            placeholder: "Sélectionner le Type d'Entreprise",
+            required: true,
+            options: {
+              independentPetStore: "Animalerie Indépendante",
+              petStoreChain: "Chaîne d'Animaleries",
+              veterinaryClinic: "Clinique Vétérinaire",
+              groomingSalon: "Salon de Toilettage",
+              distributor: "Distributeur",
+              other: "Autre"
+            }
+          },
+          locations: { label: "Nombre d'Emplacements", placeholder: "1" },
+          currentProducts: { label: "Marque de Litière la Plus Vendue", placeholder: "Quelle est la marque #1 de litière que vous vendez le plus?" },
+          message: { label: "Informations Supplémentaires", placeholder: "Parlez-nous de votre entreprise et de vos besoins en gros..." }
+        },
+        submitButton: "Soumettre la Candidature de Partenariat",
+        submitting: "Soumission en cours..."
+      },
+      success: {
+        title: "Candidature Reçue!",
+        welcome: "Bienvenue dans le Réseau de Partenaires Purrify!",
+        responseTime: "Nous vous répondrons dans les 72 heures.",
+        nextSteps: {
+          title: "Vos Prochaines Étapes",
+          step1: { title: "Examen de la Candidature", description: "Notre équipe examine les détails de votre magasin" },
+          step2: { title: "Appel de Partenariat", description: "Discussion sur les prix, le support et la logistique" },
+          step3: { title: "Commencer à Vendre", description: "Recevoir l'inventaire et lancer" }
+        },
+        timeline: {
+          title: "Délai Prévu pour les Revenus",
+          approval: { value: "72h", label: "Approbation" },
+          firstShipment: { value: "3-5 jours", label: "Première Expédition" },
+          firstSales: { value: "Semaine 1", label: "Premières Ventes" }
+        },
+        needHelp: "Besoin d'aide immédiate?"
+      },
+      successStories: {
+        title: "Histoires de Succès de Partenaires",
+        stories: {
+          petPalace: {
+            businessName: "Pet Palace Toronto",
+            businessType: "Animalerie Indépendante",
+            quote: "Ajouté 800$/mois de revenus lors de notre premier trimestre. Les clients adorent et reviennent!",
+            metric: "+145% croissance des ventes"
+          },
+          healthyPaws: {
+            businessName: "Healthy Paws Vet",
+            businessType: "Clinique Vétérinaire",
+            quote: "Nos clients font confiance à notre recommandation. Meilleures marges de notre section détail.",
+            metric: "55% marge de profit"
+          }
+        }
+      },
+      contactInfo: {
+        title: "Besoin d'Aide Immédiate?",
+        subtitle: "Parlez avec un spécialiste partenariat maintenant",
+        wholesaleEmail: "wholesale@purrify.ca",
+        emailLabel: "Email Partenariat",
+        emailHint: "Cliquez pour rédiger un email ou copier l'adresse.",
+        copied: "Copié!",
+        copyFailed: "Échec de la copie",
+        businessHours: { title: "Heures d'Ouverture", hours: "Lundi - Vendredi: 9h - 18h EST" }
+      },
+      errors: {
+        submitFailed: "Une erreur s'est produite lors de la soumission. Veuillez réessayer ou nous contacter directement à wholesale@purrify.ca",
+        defaultSuccess: "Candidature de partenariat envoyée avec succès! Nous vous contacterons dans les 72 heures."
+      }
     }
   },
-
   // Privacy Policy
   privacyPolicy: {
     title: "Politique de Confidentialité",

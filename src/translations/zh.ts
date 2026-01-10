@@ -1085,6 +1085,42 @@ export const zh = {
       cta: {
         primary: "查看批发价格",
         secondary: "成为合作伙伴"
+      },
+      boostYour: "提升您的",
+      petStoreProfits: "宠物店利润",
+      mainDescription: "加入21家已建立的零售商，销售加拿大#1的猫砂除臭解决方案，利润率超过50%",
+      retailerCount: "21家成熟零售商",
+      marginHighlight: "50%+利润率",
+      stats: {
+        profitMargins: { value: "50%", label: "利润率" },
+        repurchaseRate: { value: "89%", label: "复购率" },
+        setupTime: { value: "24小时", label: "设置时间" }
+      },
+      valueProps: {
+        highMargin: {
+          title: "高利润产品",
+          highlight: "高达55%利润率",
+          description: "优质定价配合轻便运输。比传统重型猫砂产品利润更高。"
+        },
+        customerLoyalty: {
+          title: "客户忠诚度",
+          highlight: "4.8/5星评分",
+          description: "客户成为忠实推广者。每月复购和推荐带来稳定收入。"
+        },
+        completeSupport: {
+          title: "全面支持",
+          highlight: "一切包含",
+          description: "包含POS材料、培训、营销支持和专属客户经理。"
+        }
+      },
+      trustIndicators: {
+        label: "受领先零售商信赖：",
+        types: {
+          petStores: "宠物店",
+          vetClinics: "兽医诊所",
+          groomers: "美容师",
+          distributors: "分销商"
+        }
       }
     },
     benefits: {
@@ -1167,9 +1203,174 @@ export const zh = {
         title: "经过验证的业务成果"
       }
     },
+    wholesalePricing: {
+      sectionBadge: "透明批发价格",
+      title: "选择您的",
+      titleHighlight: "利润水平",
+      subtitle: "与加拿大最畅销的猫砂除臭解决方案合作。无隐藏费用，无意外。",
+      packageIncludes: "套餐包含：",
+      trustSignals: {
+        noSetupFees: "零设置费",
+        approval72hr: "72小时审批",
+        provenROI: "已验证ROI"
+      },
+      tiers: {
+        starter: {
+          name: "入门套餐",
+          badge: "快速启动",
+          description: "非常适合试水",
+          contents: [
+            "一盒试用装（25小袋）",
+            "一盒中号装（15中袋）",
+            "一盒大号装（10大袋）"
+          ],
+          features: [
+            "经过验证的4.8/5星产品",
+            "轻便运输优势",
+            "包含基本POS展示架",
+            "邮件支持和设置指南",
+            "损坏商品免费更换"
+          ],
+          cta: "开始使用"
+        },
+        growth: {
+          name: "成长伙伴",
+          badge: "最佳价值",
+          description: "成长型零售商的明智选择",
+          contents: [
+            "五盒试用装（125小袋）",
+            "五盒中号装（75中袋）",
+            "五盒大号装（50大袋）",
+            "赠品：5袋免费中号装"
+          ],
+          features: [
+            "高级柜台展示架",
+            "员工培训材料",
+            "数字营销素材（社交帖子、邮件模板）",
+            "优先电话和邮件支持"
+          ],
+          cta: "开始成长"
+        },
+        scale: {
+          name: "规模成功",
+          badge: "企业级",
+          description: "追求认真的收入增长",
+          contents: [
+            "十盒试用装（250小袋）",
+            "十盒中号装（150中袋）",
+            "十盒大号装（100大袋）",
+            "赠品：25袋额外试用装吸引新客户"
+          ],
+          features: [
+            "成长伙伴的所有内容",
+            "专属客户经理",
+            "定制营销材料和联合品牌",
+            "区域保护权",
+            "季度业务回顾和销售分析",
+            "优先库存分配"
+          ],
+          cta: "开始使用"
+        }
+      },
+      bottomCta: {
+        title: "准备好提升收入了吗？",
+        description: "加入已经与Purrify获得高利润的21家蒙特利尔及周边地区零售商。",
+        setupNote: "设置时间不到24小时。",
+        primaryButton: "申请合作伙伴",
+        secondaryButton: "致电我们"
+      }
+    },
     contact: {
-      title: "成为Purrify合作伙伴",
-      description: "准备把加拿大最受欢迎的猫砂添加剂放到货架上了吗？填写表单，我们将在24小时内联系您。"
+      title: "成为Purrify零售合作伙伴",
+      description: "准备好将加拿大#1猫砂添加剂添加到您的商店？填写下面的表格，我们将在24小时内回复您。",
+      sectionBadge: "加入21家成熟伙伴",
+      sectionTitle: "开始您的",
+      sectionTitleHighlight: "合作伙伴关系",
+      sectionDescription: "准备好与加拿大#1猫砂除臭解决方案获得50%+利润率？",
+      setupNote: "设置时间不到24小时。",
+      urgencyStats: {
+        approvalTime: { value: "72小时", label: "审批时间" },
+        setupFees: { value: "零", label: "设置费用" },
+        currentPartners: { value: "21", label: "当前合作伙伴" }
+      },
+      form: {
+        title: "合作伙伴申请",
+        subtitle: "快速2分钟申请。我们当天回复！",
+        fields: {
+          businessName: { label: "企业名称", placeholder: "您的宠物店名称", required: true },
+          contactName: { label: "联系人姓名", placeholder: "您的全名", required: true },
+          position: { label: "您在公司的职位", placeholder: "如：老板、经理、采购、销售代表" },
+          email: { label: "电子邮件地址", placeholder: "your@email.com", required: true },
+          phone: { label: "电话号码", placeholder: "(555) 123-4567" },
+          businessType: {
+            label: "企业类型",
+            placeholder: "选择企业类型",
+            required: true,
+            options: {
+              independentPetStore: "独立宠物店",
+              petStoreChain: "连锁宠物店",
+              veterinaryClinic: "兽医诊所",
+              groomingSalon: "宠物美容沙龙",
+              distributor: "分销商",
+              other: "其他"
+            }
+          },
+          locations: { label: "门店数量", placeholder: "1" },
+          currentProducts: { label: "最畅销猫砂品牌", placeholder: "您卖得最多的#1猫砂品牌是什么？" },
+          message: { label: "补充信息", placeholder: "告诉我们关于您的业务和批发需求..." }
+        },
+        submitButton: "提交合作伙伴申请",
+        submitting: "提交中..."
+      },
+      success: {
+        title: "申请已收到！",
+        welcome: "欢迎加入Purrify合作伙伴网络！",
+        responseTime: "我们将在72小时内回复您。",
+        nextSteps: {
+          title: "您的下一步",
+          step1: { title: "申请审核", description: "我们的团队审核您的店铺详情" },
+          step2: { title: "合作伙伴电话", description: "讨论价格、支持和物流" },
+          step3: { title: "开始销售", description: "接收库存并启动" }
+        },
+        timeline: {
+          title: "预计收入时间线",
+          approval: { value: "72小时", label: "审批" },
+          firstShipment: { value: "3-5天", label: "首次发货" },
+          firstSales: { value: "第1周", label: "首次销售" }
+        },
+        needHelp: "需要即时帮助？"
+      },
+      successStories: {
+        title: "合作伙伴成功案例",
+        stories: {
+          petPalace: {
+            businessName: "Pet Palace Toronto",
+            businessType: "独立宠物店",
+            quote: "第一季度增加了800美元/月的收入。客户喜欢并持续回购！",
+            metric: "+145% 销售增长"
+          },
+          healthyPaws: {
+            businessName: "Healthy Paws Vet",
+            businessType: "兽医诊所",
+            quote: "我们的客户信任我们的推荐。我们零售区利润最高的产品。",
+            metric: "55% 利润率"
+          }
+        }
+      },
+      contactInfo: {
+        title: "需要即时帮助？",
+        subtitle: "立即与合作伙伴专员交谈",
+        wholesaleEmail: "wholesale@purrify.ca",
+        emailLabel: "合作伙伴邮箱",
+        emailHint: "点击撰写邮件或复制地址。",
+        copied: "已复制！",
+        copyFailed: "复制失败",
+        businessHours: { title: "营业时间", hours: "周一至周五：东部时间上午9点至下午6点" }
+      },
+      errors: {
+        submitFailed: "提交时出错。请重试或直接联系我们：wholesale@purrify.ca",
+        defaultSuccess: "合作伙伴申请发送成功！我们将在72小时内联系您。"
+      }
     }
   },
 
@@ -2026,6 +2227,21 @@ export const zh = {
         primary: "申请样品",
         secondary: "查看房东解决方案"
       }
+    }
+  },
+
+  // Social Proof Badges Section
+  socialProofBadges: {
+    trustedVerified: "已验证信赖",
+    findUsOn: "在以下平台找到我们",
+    viewOnPlatform: "在{{platform}}查看Purrify",
+    platforms: {
+      trustpilot: "Trustpilot",
+      googleBusiness: "Google Business",
+      crunchbase: "Crunchbase",
+      productHunt: "Product Hunt",
+      yelp: "Yelp",
+      wellfound: "Wellfound"
     }
   },
 

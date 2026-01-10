@@ -1,17 +1,19 @@
+import { useMemo } from 'react';
 import { ExternalLink } from 'lucide-react';
 import { SOCIAL_LINKS } from '@/lib/constants';
+import { useTranslation } from '@/lib/translation-context';
 
-interface BadgeLink {
-  name: string;
+interface BadgeConfig {
+  key: string;
   url: string;
   icon: React.ReactNode;
   color: string;
   hoverColor: string;
 }
 
-const badges: BadgeLink[] = [
+const badgeConfigs: BadgeConfig[] = [
   {
-    name: 'Trustpilot',
+    key: 'trustpilot',
     url: SOCIAL_LINKS.trustpilot,
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -22,7 +24,7 @@ const badges: BadgeLink[] = [
     hoverColor: 'hover:bg-[#00B67A]/10 dark:hover:bg-[#00B67A]/20',
   },
   {
-    name: 'Google Business',
+    key: 'googleBusiness',
     url: SOCIAL_LINKS.googleBusiness,
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -36,7 +38,7 @@ const badges: BadgeLink[] = [
     hoverColor: 'hover:bg-[#4285F4]/10 dark:hover:bg-[#4285F4]/20',
   },
   {
-    name: 'Crunchbase',
+    key: 'crunchbase',
     url: SOCIAL_LINKS.crunchbase,
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -47,7 +49,7 @@ const badges: BadgeLink[] = [
     hoverColor: 'hover:bg-[#0288D1]/10 dark:hover:bg-[#0288D1]/20',
   },
   {
-    name: 'Product Hunt',
+    key: 'productHunt',
     url: SOCIAL_LINKS.producthunt,
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -58,7 +60,7 @@ const badges: BadgeLink[] = [
     hoverColor: 'hover:bg-[#DA552F]/10 dark:hover:bg-[#DA552F]/20',
   },
   {
-    name: 'Yelp',
+    key: 'yelp',
     url: SOCIAL_LINKS.yelp,
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -69,7 +71,7 @@ const badges: BadgeLink[] = [
     hoverColor: 'hover:bg-[#D32323]/10 dark:hover:bg-[#D32323]/20',
   },
   {
-    name: 'Wellfound',
+    key: 'wellfound',
     url: SOCIAL_LINKS.wellfound,
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -81,23 +83,51 @@ const badges: BadgeLink[] = [
   },
 ];
 
+// Default platform names for fallback
+const defaultPlatformNames: Record<string, string> = {
+  trustpilot: 'Trustpilot',
+  googleBusiness: 'Google Business',
+  crunchbase: 'Crunchbase',
+  productHunt: 'Product Hunt',
+  yelp: 'Yelp',
+  wellfound: 'Wellfound',
+};
+
 interface SocialProofBadgesProps {
   variant?: 'full' | 'compact';
   className?: string;
 }
 
 export function SocialProofBadges({ variant = 'full', className = '' }: SocialProofBadgesProps) {
+  const { t } = useTranslation();
+  const badges = t.socialProofBadges;
+
+  // Build badges with translated names
+  const translatedBadges = useMemo(() =>
+    badgeConfigs.map(config => ({
+      ...config,
+      name: badges?.platforms?.[config.key as keyof typeof badges.platforms] || defaultPlatformNames[config.key] || config.key,
+    })),
+    [badges]
+  );
+
+  // Helper to get aria label
+  const getAriaLabel = (platformName: string) => {
+    const template = badges?.viewOnPlatform || 'View Purrify on {{platform}}';
+    return template.replace('{{platform}}', platformName);
+  };
+
   if (variant === 'compact') {
     return (
       <div className={`flex flex-wrap items-center justify-center gap-3 ${className}`}>
-        {badges.map((badge) => (
+        {translatedBadges.map((badge) => (
           <a
-            key={badge.name}
+            key={badge.key}
             href={badge.url}
             target="_blank"
             rel="noopener noreferrer"
             className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-xs font-medium ${badge.color} ${badge.hoverColor} transition-colors duration-200`}
-            aria-label={`View Purrify on ${badge.name}`}
+            aria-label={getAriaLabel(badge.name)}
           >
             {badge.icon}
             <span>{badge.name}</span>
@@ -112,22 +142,22 @@ export function SocialProofBadges({ variant = 'full', className = '' }: SocialPr
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
           <p className="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-            Trusted & Verified
+            {badges?.trustedVerified || 'Trusted & Verified'}
           </p>
           <h2 className="font-heading mt-2 text-2xl font-bold text-gray-900 dark:text-gray-50">
-            Find Us On
+            {badges?.findUsOn || 'Find Us On'}
           </h2>
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-4">
-          {badges.map((badge) => (
+          {translatedBadges.map((badge) => (
             <a
-              key={badge.name}
+              key={badge.key}
               href={badge.url}
               target="_blank"
               rel="noopener noreferrer"
               className={`inline-flex items-center gap-2 px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm font-medium ${badge.color} ${badge.hoverColor} transition-all duration-200 hover:shadow-md dark:hover:shadow-lg`}
-              aria-label={`View Purrify on ${badge.name}`}
+              aria-label={getAriaLabel(badge.name)}
             >
               {badge.icon}
               <span className="text-gray-700 dark:text-gray-300">{badge.name}</span>

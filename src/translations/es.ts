@@ -643,6 +643,21 @@ export const es: TranslationType = {
     reviews: "resenas"
   },
 
+  // Social Proof Badges Section
+  socialProofBadges: {
+    trustedVerified: "Verificado y Confiable",
+    findUsOn: "Encuentranos En",
+    viewOnPlatform: "Ver Purrify en {{platform}}",
+    platforms: {
+      trustpilot: "Trustpilot",
+      googleBusiness: "Google Business",
+      crunchbase: "Crunchbase",
+      productHunt: "Product Hunt",
+      yelp: "Yelp",
+      wellfound: "Wellfound"
+    }
+  },
+
   // Referral Program
   referral: {
     dashboard: {
@@ -1563,13 +1578,60 @@ export const es: TranslationType = {
       description: "Descubre nuestra red creciente de minoristas y clientes satisfechos en Canada. Unete a nuestra familia de socios exitosos."
     },
     hero: {
-      badge: "Asociacion Comercial",
+      badge: "#1 Socio de Tiendas de Mascotas en Canada",
       title: "Asociate con Purrify",
       subtitle: "Exito Mayorista",
       description: "Unete a cientos de tiendas de mascotas y minoristas que ofrecen el aditivo de carbon activado #1 de Canada. Ventas comprobadas, clientes leales, soporte de marketing incluido.",
+      boostYour: "Aumenta Tus",
+      petStoreProfits: "Ganancias de Tienda",
+      mainDescription: "Unete a <strong class=\"text-[#5B2EFF] dark:text-[#3694FF]\">21 minoristas establecidos</strong> vendiendo la solucion de olores de gatos #1 de Canada con <strong>margenes del 50%+</strong>",
+      retailerCount: "21 minoristas establecidos",
+      marginHighlight: "margenes del 50%+",
+      stats: {
+        profitMargins: {
+          value: "50%",
+          label: "Margenes de Ganancia"
+        },
+        repurchaseRate: {
+          value: "89%",
+          label: "Tasa de Recompra"
+        },
+        setupTime: {
+          value: "24h",
+          label: "Tiempo de Configuracion"
+        }
+      },
       cta: {
         primary: "Ver Precios Mayoristas",
-        secondary: "Convertirse en Socio"
+        secondary: "Convertirse en Socio",
+        startPartnership: "Iniciar Asociacion Hoy",
+        viewPricing: "Ver Precios"
+      },
+      trustIndicators: {
+        label: "Confiado por minoristas lideres:",
+        types: {
+          petStores: "Tiendas de Mascotas",
+          vetClinics: "Clinicas Veterinarias",
+          groomers: "Peluquerias",
+          distributors: "Distribuidores"
+        }
+      },
+      valueProps: {
+        highMargin: {
+          title: "Producto de Alto Margen",
+          highlight: "Hasta 55% de margenes de ganancia",
+          description: "Precios premium con envio liviano. Mayores margenes que productos tradicionales de arena pesada."
+        },
+        customerLoyalty: {
+          title: "Lealtad del Cliente",
+          highlight: "Calificacion 4.8/5 estrellas",
+          description: "Los clientes se vuelven defensores leales. Recompras mensuales y referencias impulsan ingresos constantes."
+        },
+        completeSupport: {
+          title: "Soporte Completo",
+          highlight: "Todo incluido",
+          description: "Materiales POS, capacitacion, soporte de marketing y gestion de cuenta dedicada incluidos."
+        }
       }
     },
     benefits: {
@@ -1652,9 +1714,209 @@ export const es: TranslationType = {
         title: "Resultados Comerciales Comprobados"
       }
     },
+    wholesalePricing: {
+      sectionBadge: "Precios Mayoristas Transparentes",
+      title: "Elige Tu",
+      titleHighlight: "Nivel de Ganancias",
+      subtitle: "Asociate con la solucion de olores de gatos de mas rapida venta de Canada. Sin tarifas ocultas, sin sorpresas.",
+      packageIncludes: "El Paquete Incluye:",
+      tiers: {
+        starter: {
+          name: "Paquete Inicial",
+          description: "Perfecto para probar el mercado",
+          contents: [
+            "Una caja de tamano de prueba (25 bolsas pequenas)",
+            "Una caja de mediano (15 bolsas medianas)",
+            "Una caja de grande (10 bolsas grandes)"
+          ],
+          features: [
+            "Producto probado 4.8/5 estrellas",
+            "Ventaja de envio liviano",
+            "Exhibidor POS basico incluido",
+            "Soporte por correo y guia de configuracion",
+            "Reemplazo gratis de productos danados"
+          ],
+          badge: "Inicio Rapido",
+          cta: "Comenzar"
+        },
+        growth: {
+          name: "Socio de Crecimiento",
+          description: "La opcion inteligente para minoristas en crecimiento",
+          contents: [
+            "Cinco cajas de tamano de prueba (125 bolsas pequenas)",
+            "Cinco cajas de mediano (75 bolsas medianas)",
+            "Cinco cajas de grande (50 bolsas grandes)",
+            "BONUS: 5 bolsas medianas extra gratis"
+          ],
+          features: [
+            "Exhibidor de mostrador premium",
+            "Materiales de capacitacion para personal",
+            "Activos de marketing digital (publicaciones sociales, plantillas de correo)",
+            "Soporte prioritario por telefono y correo"
+          ],
+          badge: "Mejor Valor",
+          cta: "Empezar a Crecer Ahora"
+        },
+        scale: {
+          name: "Escalar Exito",
+          description: "Para crecimiento serio de ingresos",
+          contents: [
+            "Diez cajas de tamano de prueba (250 bolsas pequenas)",
+            "Diez cajas de mediano (150 bolsas medianas)",
+            "Diez cajas de grande (100 bolsas grandes)",
+            "BONUS: 25 bolsas de prueba extra para enganchar nuevos clientes"
+          ],
+          features: [
+            "Todo en Socio de Crecimiento",
+            "Gerente de cuenta dedicado",
+            "Materiales de marketing personalizados y co-branding",
+            "Derechos de proteccion territorial",
+            "Revisiones comerciales trimestrales y analiticas de ventas",
+            "Asignacion prioritaria de inventario"
+          ],
+          badge: "Empresarial",
+          cta: "Comenzar"
+        }
+      },
+      trustSignals: {
+        noSetupFees: "Sin Tarifas de Configuracion",
+        approval72hr: "Aprobacion en 72h",
+        provenROI: "ROI Comprobado"
+      },
+      bottomCta: {
+        title: "Listo para Aumentar Tus Ingresos?",
+        description: "Unete a 21 minoristas establecidos de Montreal y areas circundantes que ya obtienen altos margenes con Purrify.",
+        setupNote: "La configuracion toma menos de 24 horas.",
+        primaryButton: "Solicitar Asociacion"
+      }
+    },
     contact: {
       title: "Conviertete en Socio Minorista de Purrify",
-      description: "Listo para agregar el aditivo de arena #1 de Canada a tu tienda? Completa el formulario abajo y te responderemos en 24 horas."
+      description: "Listo para agregar el aditivo de arena #1 de Canada a tu tienda? Completa el formulario abajo y te responderemos en 24 horas.",
+      sectionBadge: "Respuesta en 24 Horas Garantizada",
+      formTitle: "Solicitud de Asociacion",
+      formSubtitle: "Completa el formulario abajo y nuestro equipo de asociaciones te contactara dentro de 24 horas habiles.",
+      form: {
+        fields: {
+          businessName: {
+            label: "Nombre del Negocio",
+            placeholder: "Tu Tienda de Mascotas"
+          },
+          contactName: {
+            label: "Nombre de Contacto",
+            placeholder: "Tu nombre completo"
+          },
+          email: {
+            label: "Correo Electronico del Negocio",
+            placeholder: "tu@tienda.com"
+          },
+          phone: {
+            label: "Numero de Telefono",
+            placeholder: "(514) 555-0123"
+          },
+          businessType: {
+            label: "Tipo de Negocio",
+            placeholder: "Seleccionar Tipo de Negocio",
+            options: {
+              independentPetStore: "Tienda de Mascotas Independiente",
+              petStoreChain: "Cadena de Tiendas de Mascotas",
+              vetClinic: "Clinica Veterinaria",
+              groomer: "Peluqueria/Spa de Mascotas",
+              breeder: "Criador/Gatil",
+              distributor: "Distribuidor/Mayorista",
+              onlineRetailer: "Minorista en Linea",
+              other: "Otro"
+            }
+          },
+          locations: {
+            label: "Numero de Ubicaciones",
+            placeholder: "ej. 3"
+          },
+          currentProducts: {
+            label: "Productos de Arena Actuales",
+            placeholder: "Que productos de arena/desodorizantes vendes actualmente?"
+          },
+          monthlyVolume: {
+            label: "Volumen Mensual Estimado",
+            placeholder: "ej. 50-100 unidades"
+          },
+          message: {
+            label: "Informacion Adicional",
+            placeholder: "Cuentanos sobre tu negocio y por que te gustaria asociarte con Purrify..."
+          }
+        },
+        submit: "Enviar Solicitud de Asociacion",
+        submitting: "Enviando...",
+        required: "*"
+      },
+      success: {
+        title: "Solicitud de Asociacion Recibida!",
+        description: "Gracias por tu interes en convertirte en socio minorista de Purrify. Nuestro equipo de asociaciones revisara tu solicitud y te contactara dentro de 24 horas habiles.",
+        whatNext: "Que Sigue?",
+        steps: [
+          "Nuestro equipo revisara tu solicitud",
+          "Recibiras un correo de confirmacion en breve",
+          "Un gerente de asociaciones te contactara dentro de 24 horas",
+          "Discutiremos opciones de precios y configuracion"
+        ],
+        submitAnother: "Enviar Otra Solicitud",
+        backToRetailers: "Volver a Pagina de Minoristas"
+      },
+      successStories: {
+        title: "Historias de Exito de Socios",
+        subtitle: "Escucha de minoristas que se han asociado con Purrify",
+        stories: {
+          petPalace: {
+            businessName: "Animaux Montreal",
+            businessType: "Tienda de Mascotas Independiente",
+            quote: "Agregar Purrify fue una de las mejores decisiones que hemos tomado. Nuestros clientes lo adoran y la tasa de recompra es increible.",
+            metric: "+45% ventas de aditivos de arena"
+          },
+          healthyPaws: {
+            businessName: "Pet Paradise",
+            businessType: "Cadena de Tiendas de Mascotas",
+            quote: "Los margenes de ganancia son excelentes y el soporte de marketing nos ha ayudado a aumentar las ventas mensualmente.",
+            metric: "89% tasa de recompra"
+          }
+        }
+      },
+      contactInfo: {
+        title: "Prefieres Contacto Directo?",
+        subtitle: "Nuestro equipo de asociaciones esta disponible para responder tus preguntas",
+        email: {
+          label: "Correo Electronico",
+          value: "partners@purrify.ca"
+        },
+        phone: {
+          label: "Telefono",
+          value: "(514) 577-9665"
+        },
+        hours: {
+          label: "Horario de Atencion",
+          value: "Lun-Vie: 9am-5pm EST"
+        }
+      },
+      urgencyStats: {
+        title: "Por que Asociarse Ahora?",
+        retailers: {
+          value: "21+",
+          label: "Socios Minoristas"
+        },
+        margin: {
+          value: "50%+",
+          label: "Margenes de Ganancia"
+        },
+        support: {
+          value: "24h",
+          label: "Tiempo de Respuesta"
+        }
+      },
+      errors: {
+        general: "Hubo un error al enviar tu solicitud. Por favor intenta de nuevo.",
+        requiredFields: "Por favor completa todos los campos requeridos.",
+        invalidEmail: "Por favor ingresa un correo electronico valido.",
+        invalidPhone: "Por favor ingresa un numero de telefono valido."
+      }
     }
   },
 

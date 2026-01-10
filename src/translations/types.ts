@@ -234,6 +234,21 @@ export interface TranslationType {
     reviews: string;
   };
 
+  // Social Proof Badges
+  socialProofBadges?: {
+    trustedVerified: string;
+    findUsOn: string;
+    viewOnPlatform: string;
+    platforms: {
+      trustpilot: string;
+      googleBusiness: string;
+      crunchbase: string;
+      productHunt: string;
+      yelp: string;
+      wellfound: string;
+    };
+  };
+
   // How It Works
   howItWorks?: {
     simpleAs123: string;
@@ -1223,9 +1238,56 @@ export interface TranslationType {
       title: string;
       subtitle: string;
       description: string;
+      boostYour?: string;
+      petStoreProfits?: string;
+      mainDescription?: string;
+      retailerCount?: string;
+      marginHighlight?: string;
+      stats?: {
+        profitMargins?: {
+          value: string;
+          label: string;
+        };
+        repurchaseRate?: {
+          value: string;
+          label: string;
+        };
+        setupTime?: {
+          value: string;
+          label: string;
+        };
+      };
       cta: {
         primary: string;
         secondary: string;
+        startPartnership?: string;
+        viewPricing?: string;
+      };
+      trustIndicators?: {
+        label: string;
+        types: {
+          petStores: string;
+          vetClinics: string;
+          groomers: string;
+          distributors: string;
+        };
+      };
+      valueProps?: {
+        highMargin?: {
+          title: string;
+          highlight: string;
+          description: string;
+        };
+        customerLoyalty?: {
+          title: string;
+          highlight: string;
+          description: string;
+        };
+        completeSupport?: {
+          title: string;
+          highlight: string;
+          description: string;
+        };
       };
     };
     benefits: {
@@ -1308,9 +1370,259 @@ export interface TranslationType {
         title: string;
       };
     };
+    wholesalePricing?: {
+      sectionBadge?: string;
+      title?: string;
+      titleHighlight?: string;
+      subtitle?: string;
+      packageIncludes?: string;
+      tiers?: {
+        starter?: {
+          name: string;
+          description: string;
+          contents: string[];
+          features: string[];
+          badge: string;
+          cta: string;
+        };
+        growth?: {
+          name: string;
+          description: string;
+          contents: string[];
+          features: string[];
+          badge: string;
+          cta: string;
+        };
+        scale?: {
+          name: string;
+          description: string;
+          contents: string[];
+          features: string[];
+          badge: string;
+          cta: string;
+        };
+      };
+      trustSignals?: {
+        noSetupFees: string;
+        approval72hr: string;
+        provenROI: string;
+      };
+      bottomCta?: {
+        title: string;
+        description: string;
+        setupNote: string;
+        primaryButton: string;
+      };
+    };
     contact: {
       title: string;
       description: string;
+      sectionBadge?: string;
+      sectionTitle?: string;
+      sectionTitleHighlight?: string;
+      sectionDescription?: string;
+      setupNote?: string;
+      formTitle?: string;
+      formSubtitle?: string;
+      form?: {
+        title?: string;
+        subtitle?: string;
+        fields?: {
+          businessName?: {
+            label: string;
+            placeholder: string;
+          };
+          contactName?: {
+            label: string;
+            placeholder: string;
+          };
+          email?: {
+            label: string;
+            placeholder: string;
+          };
+          phone?: {
+            label: string;
+            placeholder: string;
+          };
+          position?: {
+            label: string;
+            placeholder: string;
+          };
+          businessType?: {
+            label: string;
+            placeholder: string;
+            options?: {
+              independentPetStore?: string;
+              petStoreChain?: string;
+              vetClinic?: string;
+              veterinaryClinic?: string;
+              groomer?: string;
+              groomingSalon?: string;
+              breeder?: string;
+              distributor?: string;
+              onlineRetailer?: string;
+              other?: string;
+            };
+          };
+          locations?: {
+            label: string;
+            placeholder: string;
+          };
+          currentProducts?: {
+            label: string;
+            placeholder: string;
+          };
+          monthlyVolume?: {
+            label: string;
+            placeholder: string;
+          };
+          message?: {
+            label: string;
+            placeholder: string;
+          };
+        };
+        submit?: string;
+        submitting?: string;
+        submitButton?: string;
+        required?: string;
+      };
+      success?: {
+        title?: string;
+        description?: string;
+        welcome?: string;
+        responseTime?: string;
+        whatNext?: string;
+        steps?: string[];
+        submitAnother?: string;
+        backToRetailers?: string;
+        nextSteps?: {
+          title?: string;
+          step1?: {
+            title: string;
+            description: string;
+          };
+          step2?: {
+            title: string;
+            description: string;
+          };
+          step3?: {
+            title: string;
+            description: string;
+          };
+        };
+        timeline?: {
+          title?: string;
+          approval?: {
+            value: string;
+            label: string;
+          };
+          firstShipment?: {
+            value: string;
+            label: string;
+          };
+          firstSales?: {
+            value: string;
+            label: string;
+          };
+        };
+        needHelp?: string;
+      };
+      successStories?: {
+        title?: string;
+        subtitle?: string;
+        stories?: {
+          petPalace?: {
+            businessName?: string;
+            business?: string;
+            businessType?: string;
+            quote: string;
+            metric?: string;
+            author?: string;
+            role?: string;
+            location?: string;
+          };
+          healthyPaws?: {
+            businessName?: string;
+            business?: string;
+            businessType?: string;
+            quote: string;
+            metric?: string;
+            author?: string;
+            role?: string;
+            location?: string;
+          };
+          [key: string]: {
+            businessName?: string;
+            business?: string;
+            businessType?: string;
+            quote: string;
+            metric?: string;
+            author?: string;
+            role?: string;
+            location?: string;
+          } | undefined;
+        };
+      };
+      contactInfo?: {
+        title?: string;
+        subtitle?: string;
+        wholesaleEmail?: string;
+        emailLabel?: string;
+        emailHint?: string;
+        businessHours?: {
+          title?: string;
+          hours?: string;
+        };
+        copied?: string;
+        copyFailed?: string;
+        email?: {
+          label: string;
+          value: string;
+        };
+        phone?: {
+          label: string;
+          value: string;
+        };
+        hours?: {
+          label: string;
+          value: string;
+        };
+      };
+      urgencyStats?: {
+        title?: string;
+        approvalTime?: {
+          value: string;
+          label: string;
+        };
+        setupFees?: {
+          value: string;
+          label: string;
+        };
+        currentPartners?: {
+          value: string;
+          label: string;
+        };
+        retailers?: {
+          value: string;
+          label: string;
+        };
+        margin?: {
+          value: string;
+          label: string;
+        };
+        support?: {
+          value: string;
+          label: string;
+        };
+      };
+      errors?: {
+        general?: string;
+        requiredFields?: string;
+        invalidEmail?: string;
+        invalidPhone?: string;
+        defaultSuccess?: string;
+        submitFailed?: string;
+      };
     };
   };
 

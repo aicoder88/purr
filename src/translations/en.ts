@@ -1541,6 +1541,7 @@ export const en = {
     }
   },
 
+
   // Retailers & B2B
   retailers: {
     seo: {
@@ -1554,13 +1555,61 @@ export const en = {
       description: "Discover our growing network of retailers and satisfied clients across Canada. Join our family of successful partners."
     },
     hero: {
-      badge: "Business Partnership",
+      badge: "#1 Pet Store Partner in Canada",
       title: "Partner with Purrify",
       subtitle: "Wholesale Success",
       description: "Join hundreds of pet stores and retailers offering Canada's #1 activated carbon cat litter additive. Proven sales, loyal customers, marketing support included.",
       cta: {
         primary: "View Wholesale Pricing",
-        secondary: "Become a Partner"
+        secondary: "Become a Partner",
+        startPartnership: "Start Partnership Today",
+        viewPricing: "View Pricing"
+      },
+      // Extended hero translations from retailer-hero.tsx
+      boostYour: "Boost Your",
+      petStoreProfits: "Pet Store Profits",
+      mainDescription: "Join 21 established retailers selling Canada's #1 cat odor solution with 50%+ margins",
+      retailerCount: "21 established retailers",
+      marginHighlight: "50%+ margins",
+      stats: {
+        profitMargins: {
+          value: "50%",
+          label: "Profit Margins"
+        },
+        repurchaseRate: {
+          value: "89%",
+          label: "Repurchase Rate"
+        },
+        setupTime: {
+          value: "24h",
+          label: "Setup Time"
+        }
+      },
+      valueProps: {
+        highMargin: {
+          title: "High-Margin Product",
+          highlight: "Up to 55% profit margins",
+          description: "Premium pricing with lightweight shipping. Higher margins than traditional heavy litter products."
+        },
+        customerLoyalty: {
+          title: "Customer Loyalty",
+          highlight: "4.8/5 star rating",
+          description: "Customers become loyal advocates. Monthly repurchases and referrals drive steady revenue."
+        },
+        completeSupport: {
+          title: "Complete Support",
+          highlight: "Everything included",
+          description: "POS materials, training, marketing support, and dedicated account management included."
+        }
+      },
+      trustIndicators: {
+        label: "Trusted by leading retailers:",
+        types: {
+          petStores: "Pet Stores",
+          vetClinics: "Vet Clinics",
+          groomers: "Groomers",
+          distributors: "Distributors"
+        }
       }
     },
     benefits: {
@@ -1628,6 +1677,84 @@ export const en = {
         description: "Looking for larger quantities? We offer custom pricing for chains, distributors, and high-volume retailers. Contact us for a personalized quote."
       }
     },
+    // New wholesalePricing section from wholesale-pricing.tsx
+    wholesalePricing: {
+      sectionBadge: "Transparent Wholesale Pricing",
+      title: "Choose Your",
+      titleHighlight: "Profit Level",
+      subtitle: "Partner with Canada's fastest-selling cat odor solution. No hidden fees, no surprises.",
+      packageIncludes: "Package Includes:",
+      trustSignals: {
+        noSetupFees: "No Setup Fees",
+        approval72hr: "72hr Approval",
+        provenROI: "Proven ROI"
+      },
+      tiers: {
+        starter: {
+          name: "Starter Package",
+          badge: "Quick Start",
+          description: "Perfect for testing the waters",
+          contents: [
+            "One box of trial size (25 small bags)",
+            "One box of medium (15 medium bags)",
+            "One box of large (10 large bags)"
+          ],
+          features: [
+            "Proven 4.8/5 star product",
+            "Lightweight shipping advantage",
+            "Basic POS display included",
+            "Email support & setup guide",
+            "Free product replacement for damaged goods"
+          ],
+          cta: "Get Started"
+        },
+        growth: {
+          name: "Growth Partner",
+          badge: "Best Value",
+          description: "The smart choice for growing retailers",
+          contents: [
+            "Five boxes of trial size (125 small bags)",
+            "Five boxes of medium (75 medium bags)",
+            "Five boxes of large (50 large bags)",
+            "BONUS: 5 extra medium bags free"
+          ],
+          features: [
+            "Premium counter display",
+            "Staff training materials",
+            "Digital marketing assets (social posts, email templates)",
+            "Priority phone & email support"
+          ],
+          cta: "Start Growing Now"
+        },
+        scale: {
+          name: "Scale Success",
+          badge: "Enterprise",
+          description: "For serious revenue growth",
+          contents: [
+            "Ten boxes of trial size (250 small bags)",
+            "Ten boxes of medium (150 medium bags)",
+            "Ten boxes of large (100 large bags)",
+            "BONUS: 25 extra trial bags to hook new customers"
+          ],
+          features: [
+            "Everything in Growth Partner",
+            "Dedicated account manager",
+            "Custom marketing materials & co-branding",
+            "Territory protection rights",
+            "Quarterly business reviews & sales analytics",
+            "Priority inventory allocation"
+          ],
+          cta: "Get Started"
+        }
+      },
+      bottomCta: {
+        title: "Ready to Boost Your Revenue?",
+        description: "Join 21 established Montreal and surrounding-area retailers already earning high margins with Purrify.",
+        setupNote: "Setup takes less than 24 hours.",
+        primaryButton: "Apply for Partnership",
+        secondaryButton: "Call Us"
+      }
+    },
     marketing: {
       title: "Complete Marketing Support",
       description: "We provide everything you need to successfully sell Purrify. From in-store displays to staff training, we've got you covered.",
@@ -1643,9 +1770,162 @@ export const en = {
         title: "Proven Business Results"
       }
     },
+    // Extended contact section from retailer-contact.tsx
     contact: {
       title: "Become a Purrify Retail Partner",
-      description: "Ready to add Canada's #1 cat litter additive to your store? Fill out the form below and we'll get back to you within 24 hours."
+      description: "Ready to add Canada's #1 cat litter additive to your store? Fill out the form below and we'll get back to you within 24 hours.",
+      // Header section
+      sectionBadge: "Join 21 Established Partners",
+      sectionTitle: "Start Your",
+      sectionTitleHighlight: "Partnership Today",
+      sectionDescription: "Ready to earn 50%+ margins with Canada's #1 cat odor solution?",
+      setupNote: "Setup takes less than 24 hours.",
+      // Urgency stats
+      urgencyStats: {
+        approvalTime: {
+          value: "72hrs",
+          label: "Approval Time"
+        },
+        setupFees: {
+          value: "Zero",
+          label: "Setup Fees"
+        },
+        currentPartners: {
+          value: "21",
+          label: "Current Partners"
+        }
+      },
+      // Form section
+      form: {
+        title: "Partnership Application",
+        subtitle: "Quick 2-minute application. We respond same day!",
+        fields: {
+          businessName: {
+            label: "Business Name",
+            placeholder: "Your Pet Store Name",
+            required: true
+          },
+          contactName: {
+            label: "Contact Name",
+            placeholder: "Your Full Name",
+            required: true
+          },
+          position: {
+            label: "Your Position in the Company",
+            placeholder: "e.g., Owner, Manager, Buyer, Sales Representative"
+          },
+          email: {
+            label: "Email Address",
+            placeholder: "your@email.com",
+            required: true
+          },
+          phone: {
+            label: "Phone Number",
+            placeholder: "(555) 123-4567"
+          },
+          businessType: {
+            label: "Business Type",
+            placeholder: "Select Business Type",
+            required: true,
+            options: {
+              independentPetStore: "Independent Pet Store",
+              petStoreChain: "Pet Store Chain",
+              veterinaryClinic: "Veterinary Clinic",
+              groomingSalon: "Grooming Salon",
+              distributor: "Distributor",
+              other: "Other"
+            }
+          },
+          locations: {
+            label: "Number of Locations",
+            placeholder: "1"
+          },
+          currentProducts: {
+            label: "Top-Selling Cat Litter Brand",
+            placeholder: "What's the #1 brand of cat litter that you sell most of?"
+          },
+          message: {
+            label: "Additional Information",
+            placeholder: "Tell us about your business and wholesale needs..."
+          }
+        },
+        submitButton: "Submit Partnership Application",
+        submitting: "Submitting..."
+      },
+      // Success state
+      success: {
+        title: "Application Received!",
+        welcome: "Welcome to the Purrify Partner Network!",
+        responseTime: "We will get back to you within 72 hours.",
+        nextSteps: {
+          title: "Your Next Steps",
+          step1: {
+            title: "Application Review",
+            description: "Our team reviews your store details"
+          },
+          step2: {
+            title: "Partnership Call",
+            description: "Discuss pricing, support & logistics"
+          },
+          step3: {
+            title: "Start Selling",
+            description: "Receive inventory & launch"
+          }
+        },
+        timeline: {
+          title: "Expected Timeline to Revenue",
+          approval: {
+            value: "72hrs",
+            label: "Approval"
+          },
+          firstShipment: {
+            value: "3-5 days",
+            label: "First Shipment"
+          },
+          firstSales: {
+            value: "Week 1",
+            label: "First Sales"
+          }
+        },
+        needHelp: "Need immediate assistance?"
+      },
+      // Success stories
+      successStories: {
+        title: "Partner Success Stories",
+        stories: {
+          petPalace: {
+            businessName: "Pet Palace Toronto",
+            businessType: "Independent Pet Store",
+            quote: "Added $800/month revenue in our first quarter. Customers love it and keep coming back!",
+            metric: "+145% sales growth"
+          },
+          healthyPaws: {
+            businessName: "Healthy Paws Vet",
+            businessType: "Veterinary Clinic",
+            quote: "Our clients trust our recommendation. Best margins in our retail section.",
+            metric: "55% profit margin"
+          }
+        }
+      },
+      // Contact info section
+      contactInfo: {
+        title: "Need Immediate Help?",
+        subtitle: "Speak with a partnership specialist now",
+        wholesaleEmail: "wholesale@purrify.ca",
+        emailLabel: "Partnership Email",
+        emailHint: "Click to draft an email or copy the address.",
+        copied: "Copied!",
+        copyFailed: "Copy failed",
+        businessHours: {
+          title: "Business Hours",
+          hours: "Monday - Friday: 9 AM - 6 PM EST"
+        }
+      },
+      // Error messages
+      errors: {
+        submitFailed: "There was an error submitting your inquiry. Please try again or contact us directly at wholesale@purrify.ca",
+        defaultSuccess: "Partnership application sent successfully! We'll contact you within 72 hours."
+      }
     }
   },
 
@@ -2109,6 +2389,21 @@ export const en = {
       natural: "100% Natural",
       fragrance: "Fragrance-Free",
       secure: "Secure Checkout"
+    }
+  },
+
+  // Social Proof Badges Section
+  socialProofBadges: {
+    trustedVerified: "Trusted & Verified",
+    findUsOn: "Find Us On",
+    viewOnPlatform: "View Purrify on {{platform}}",
+    platforms: {
+      trustpilot: "Trustpilot",
+      googleBusiness: "Google Business",
+      crunchbase: "Crunchbase",
+      productHunt: "Product Hunt",
+      yelp: "Yelp",
+      wellfound: "Wellfound"
     }
   },
 

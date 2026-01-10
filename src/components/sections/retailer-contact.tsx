@@ -1,8 +1,9 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import * as Sentry from '@sentry/nextjs';
 import { Container } from '../ui/container';
 import { Button } from '../ui/button';
 import { CONTACT_INFO, PHONE_MESSAGING } from '../../lib/constants';
+import { useTranslation } from '../../lib/translation-context';
 
 // ============================================================================
 // Types
@@ -53,16 +54,6 @@ const GRADIENTS = {
   section: 'bg-gradient-to-br from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900',
   formCard: 'bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900',
 } as const;
-
-const BUSINESS_TYPES = [
-  { value: '', label: 'Select Business Type' },
-  { value: 'independent-pet-store', label: 'Independent Pet Store' },
-  { value: 'pet-store-chain', label: 'Pet Store Chain' },
-  { value: 'veterinary-clinic', label: 'Veterinary Clinic' },
-  { value: 'grooming-salon', label: 'Grooming Salon' },
-  { value: 'distributor', label: 'Distributor' },
-  { value: 'other', label: 'Other' },
-] as const;
 
 // ============================================================================
 // Subcomponents
@@ -152,11 +143,30 @@ function SuccessStoryCard({ icon, gradient, businessName, businessType, quote, m
 // ============================================================================
 
 export function RetailerContact() {
+  const { t } = useTranslation();
+  const contact = t.retailers?.contact;
+  const form = contact?.form;
+  const success = contact?.success;
+  const stories = contact?.successStories;
+  const contactInfo = contact?.contactInfo;
+  const errors = contact?.errors;
+
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM_DATA);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>({});
   const [copyStatus, setCopyStatus] = useState<'idle' | 'copied' | 'failed'>('idle');
+
+  // Build business types from translations
+  const businessTypes = useMemo(() => [
+    { value: '', label: form?.fields?.businessType?.placeholder || 'Select Business Type' },
+    { value: 'independent-pet-store', label: form?.fields?.businessType?.options?.independentPetStore || 'Independent Pet Store' },
+    { value: 'pet-store-chain', label: form?.fields?.businessType?.options?.petStoreChain || 'Pet Store Chain' },
+    { value: 'veterinary-clinic', label: form?.fields?.businessType?.options?.veterinaryClinic || 'Veterinary Clinic' },
+    { value: 'grooming-salon', label: form?.fields?.businessType?.options?.groomingSalon || 'Grooming Salon' },
+    { value: 'distributor', label: form?.fields?.businessType?.options?.distributor || 'Distributor' },
+    { value: 'other', label: form?.fields?.businessType?.options?.other || 'Other' },
+  ], [form]);
 
   const handleWholesaleEmailClick = useCallback(() => {
     const mailtoLink = `mailto:${WHOLESALE_EMAIL}`;
@@ -261,7 +271,7 @@ export function RetailerContact() {
           setIsSubmitted(true);
           setSubmitStatus({
             success: true,
-            message: result.message || 'Partnership application sent successfully! We\'ll contact you within 72 hours.',
+            message: result.message || errors?.defaultSuccess || 'Partnership application sent successfully! We\'ll contact you within 72 hours.',
           });
 
           // Reset form
@@ -276,7 +286,7 @@ export function RetailerContact() {
             success: false,
             message: err instanceof Error
               ? err.message
-              : 'There was an error submitting your inquiry. Please try again or contact us directly at wholesale@purrify.ca',
+              : errors?.submitFailed || 'There was an error submitting your inquiry. Please try again or contact us directly at wholesale@purrify.ca',
           });
         } finally {
           setIsSubmitting(false);
@@ -294,50 +304,50 @@ export function RetailerContact() {
               <CheckIcon className="w-12 h-12 text-white dark:text-gray-100" />
             </div>
             <h2 className="font-heading text-4xl md:text-5xl font-black text-gray-900 dark:text-gray-50 mb-6">
-              🎉 Application Received!
+              🎉 {success?.title || 'Application Received!'}
             </h2>
             <p className="text-2xl text-gray-700 dark:text-gray-200 mb-8">
-              Welcome to the <strong className="text-[#5B2EFF] dark:text-[#3694FF]">Purrify Partner Network!</strong>
-              <br/>We will get back to you within 72 hours.
+              {success?.welcome || 'Welcome to the'} <strong className="text-[#5B2EFF] dark:text-[#3694FF]">Purrify Partner Network!</strong>
+              <br/>{success?.responseTime || 'We will get back to you within 72 hours.'}
             </p>
 
             <div className="bg-gradient-to-r from-[#5B2EFF]/10 to-[#3694FF]/10 dark:from-[#3694FF]/20 dark:to-[#5B2EFF]/20 rounded-2xl p-8 border-2 border-[#5B2EFF]/20 dark:border-[#3694FF]/30">
-              <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-gray-50 mb-6">🚀 Your Next Steps</h3>
+              <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-gray-50 mb-6">🚀 {success?.nextSteps?.title || 'Your Next Steps'}</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <StepIndicator
                   step={1}
                   gradient={GRADIENTS.purpleBlue}
-                  title="Application Review"
-                  description="Our team reviews your store details"
+                  title={success?.nextSteps?.step1?.title || 'Application Review'}
+                  description={success?.nextSteps?.step1?.description || 'Our team reviews your store details'}
                 />
                 <StepIndicator
                   step={2}
                   gradient={GRADIENTS.redOrange}
-                  title="Partnership Call"
-                  description="Discuss pricing, support & logistics"
+                  title={success?.nextSteps?.step2?.title || 'Partnership Call'}
+                  description={success?.nextSteps?.step2?.description || 'Discuss pricing, support & logistics'}
                 />
                 <StepIndicator
                   step={3}
                   gradient={GRADIENTS.green}
-                  title="Start Selling"
-                  description="Receive inventory & launch"
+                  title={success?.nextSteps?.step3?.title || 'Start Selling'}
+                  description={success?.nextSteps?.step3?.description || 'Receive inventory & launch'}
                 />
               </div>
 
               <div className="mt-8 p-6 bg-white dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
-                <h4 className="font-black text-lg text-gray-900 dark:text-gray-50 mb-3">💰 Expected Timeline to Revenue</h4>
+                <h4 className="font-black text-lg text-gray-900 dark:text-gray-50 mb-3">💰 {success?.timeline?.title || 'Expected Timeline to Revenue'}</h4>
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
-                    <div className="text-2xl font-black text-[#5B2EFF] dark:text-[#3694FF]">72hrs</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-300">Approval</div>
+                    <div className="text-2xl font-black text-[#5B2EFF] dark:text-[#3694FF]">{success?.timeline?.approval?.value || '72hrs'}</div>
+                    <div className="text-xs text-gray-600 dark:text-gray-300">{success?.timeline?.approval?.label || 'Approval'}</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-black text-[#FF3131] dark:text-[#FF5050]">3-5 days</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-300">First Shipment</div>
+                    <div className="text-2xl font-black text-[#FF3131] dark:text-[#FF5050]">{success?.timeline?.firstShipment?.value || '3-5 days'}</div>
+                    <div className="text-xs text-gray-600 dark:text-gray-300">{success?.timeline?.firstShipment?.label || 'First Shipment'}</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-black text-[#10B981] dark:text-[#34D399]">Week 1</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-300">First Sales</div>
+                    <div className="text-2xl font-black text-[#10B981] dark:text-[#34D399]">{success?.timeline?.firstSales?.value || 'Week 1'}</div>
+                    <div className="text-xs text-gray-600 dark:text-gray-300">{success?.timeline?.firstSales?.label || 'First Sales'}</div>
                   </div>
                 </div>
               </div>
@@ -345,7 +355,7 @@ export function RetailerContact() {
 
             <div className="mt-8 text-center">
               <p className="text-gray-600 dark:text-gray-300 mb-4">
-                <strong>Need immediate assistance?</strong>
+                <strong>{success?.needHelp || 'Need immediate assistance?'}</strong>
               </p>
               <a href={CONTACT_INFO.phoneHref} className="text-2xl font-black text-[#5B2EFF] dark:text-[#3694FF] hover:underline">
                 📞 {PHONE_MESSAGING.callout}
@@ -366,32 +376,32 @@ export function RetailerContact() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-[#5B2EFF]/10 to-[#3694FF]/10 dark:from-[#3694FF]/20 dark:to-[#5B2EFF]/20 text-[#5B2EFF] dark:text-[#3694FF] font-bold text-sm mb-6">
-              🤝 Join 21 Established Partners
+              🤝 {contact?.sectionBadge || 'Join 21 Established Partners'}
             </div>
             <h2 className="font-heading text-4xl md:text-6xl font-black text-gray-900 dark:text-gray-50 mb-6">
-              Start Your
+              {contact?.sectionTitle || 'Start Your'}
               <span className="block bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] bg-clip-text text-transparent">
-                Partnership Today
+                {contact?.sectionTitleHighlight || 'Partnership Today'}
               </span>
             </h2>
             <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 max-w-4xl mx-auto mb-8">
-              Ready to earn <strong className="text-[#5B2EFF] dark:text-[#3694FF]">50%+ margins</strong> with Canada's #1 cat odor solution?
-              <br/>Setup takes less than 24 hours.
+              {contact?.sectionDescription || 'Ready to earn'} <strong className="text-[#5B2EFF] dark:text-[#3694FF]">50%+</strong>
+              <br/>{contact?.setupNote || 'Setup takes less than 24 hours.'}
             </p>
 
             {/* Urgency & Social Proof */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-12">
               <div className="bg-gradient-to-r from-[#10B981]/10 to-[#34D399]/10 dark:from-[#10B981]/20 dark:to-[#34D399]/20 rounded-2xl p-4 border border-[#10B981]/20 dark:border-[#34D399]/30">
-                <div className="text-2xl font-black text-[#10B981] dark:text-[#34D399]">72hrs</div>
-                <div className="text-sm font-semibold text-gray-700 dark:text-gray-200">Approval Time</div>
+                <div className="text-2xl font-black text-[#10B981] dark:text-[#34D399]">{contact?.urgencyStats?.approvalTime?.value || '72hrs'}</div>
+                <div className="text-sm font-semibold text-gray-700 dark:text-gray-200">{contact?.urgencyStats?.approvalTime?.label || 'Approval Time'}</div>
               </div>
               <div className="bg-gradient-to-r from-[#FF6B6B]/10 to-[#FF8E8E]/10 dark:from-[#FF6B6B]/20 dark:to-[#FF8E8E]/20 rounded-2xl p-4 border border-[#FF6B6B]/20 dark:border-[#FF8E8E]/30">
-                <div className="text-2xl font-black text-[#FF6B6B] dark:text-[#FF8E8E]">Zero</div>
-                <div className="text-sm font-semibold text-gray-700 dark:text-gray-200">Setup Fees</div>
+                <div className="text-2xl font-black text-[#FF6B6B] dark:text-[#FF8E8E]">{contact?.urgencyStats?.setupFees?.value || 'Zero'}</div>
+                <div className="text-sm font-semibold text-gray-700 dark:text-gray-200">{contact?.urgencyStats?.setupFees?.label || 'Setup Fees'}</div>
               </div>
               <div className="bg-gradient-to-r from-[#5B2EFF]/10 to-[#3694FF]/10 dark:from-[#3694FF]/20 dark:to-[#5B2EFF]/20 rounded-2xl p-4 border border-[#5B2EFF]/20 dark:border-[#3694FF]/30">
-                <div className="text-2xl font-black text-[#5B2EFF] dark:text-[#3694FF]">21</div>
-                <div className="text-sm font-semibold text-gray-700 dark:text-gray-200">Current Partners</div>
+                <div className="text-2xl font-black text-[#5B2EFF] dark:text-[#3694FF]">{contact?.urgencyStats?.currentPartners?.value || '21'}</div>
+                <div className="text-sm font-semibold text-gray-700 dark:text-gray-200">{contact?.urgencyStats?.currentPartners?.label || 'Current Partners'}</div>
               </div>
             </div>
           </div>
@@ -404,10 +414,10 @@ export function RetailerContact() {
                   <FormCheckIcon className="w-8 h-8 text-white dark:text-gray-100" />
                 </div>
                 <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-gray-50 mb-2">
-                  🚀 Partnership Application
+                  🚀 {form?.title || 'Partnership Application'}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Quick 2-minute application. We respond same day!
+                  {form?.subtitle || 'Quick 2-minute application. We respond same day!'}
                 </p>
               </div>
 
@@ -415,7 +425,7 @@ export function RetailerContact() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="businessName" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
-                      Business Name *
+                      {form?.fields?.businessName?.label || 'Business Name'} *
                     </label>
                     <input
                       type="text"
@@ -425,12 +435,12 @@ export function RetailerContact() {
                       onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200"
-                      placeholder="Your Pet Store Name"
+                      placeholder={form?.fields?.businessName?.placeholder || 'Your Pet Store Name'}
                     />
                   </div>
                   <div>
                     <label htmlFor="contactName" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
-                      Contact Name *
+                      {form?.fields?.contactName?.label || 'Contact Name'} *
                     </label>
                     <input
                       type="text"
@@ -440,14 +450,14 @@ export function RetailerContact() {
                       onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200"
-                      placeholder="Your Full Name"
+                      placeholder={form?.fields?.contactName?.placeholder || 'Your Full Name'}
                     />
                   </div>
                 </div>
 
                 <div>
                   <label htmlFor="position" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
-                    Your Position in the Company
+                    {form?.fields?.position?.label || 'Your Position in the Company'}
                   </label>
                   <input
                     type="text"
@@ -456,14 +466,14 @@ export function RetailerContact() {
                     value={formData.position}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200"
-                    placeholder="e.g., Owner, Manager, Buyer, Sales Representative"
+                    placeholder={form?.fields?.position?.placeholder || 'e.g., Owner, Manager, Buyer, Sales Representative'}
                   />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
-                      Email Address *
+                      {form?.fields?.email?.label || 'Email Address'} *
                     </label>
                     <input
                       type="email"
@@ -473,12 +483,12 @@ export function RetailerContact() {
                       onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200"
-                      placeholder="your@email.com"
+                      placeholder={form?.fields?.email?.placeholder || 'your@email.com'}
                     />
                   </div>
                   <div>
                     <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
-                      Phone Number
+                      {form?.fields?.phone?.label || 'Phone Number'}
                     </label>
                     <input
                       type="tel"
@@ -487,7 +497,7 @@ export function RetailerContact() {
                       value={formData.phone}
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200"
-                      placeholder="(555) 123-4567"
+                      placeholder={form?.fields?.phone?.placeholder || '(555) 123-4567'}
                     />
                   </div>
                 </div>
@@ -495,7 +505,7 @@ export function RetailerContact() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="businessType" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
-                      Business Type *
+                      {form?.fields?.businessType?.label || 'Business Type'} *
                     </label>
                     <select
                       id="businessType"
@@ -505,18 +515,14 @@ export function RetailerContact() {
                       required
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200"
                     >
-                      <option value="">Select Business Type</option>
-                      <option value="independent-pet-store">Independent Pet Store</option>
-                      <option value="pet-store-chain">Pet Store Chain</option>
-                      <option value="veterinary-clinic">Veterinary Clinic</option>
-                      <option value="grooming-salon">Grooming Salon</option>
-                      <option value="distributor">Distributor</option>
-                      <option value="other">Other</option>
+                      {businessTypes.map((type) => (
+                        <option key={type.value} value={type.value}>{type.label}</option>
+                      ))}
                     </select>
                   </div>
                   <div>
                     <label htmlFor="locations" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
-                      Number of Locations
+                      {form?.fields?.locations?.label || 'Number of Locations'}
                     </label>
                     <input
                       type="number"
@@ -526,14 +532,14 @@ export function RetailerContact() {
                       onChange={handleInputChange}
                       min="1"
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200"
-                      placeholder="1"
+                      placeholder={form?.fields?.locations?.placeholder || '1'}
                     />
                   </div>
                 </div>
 
                 <div>
                   <label htmlFor="currentProducts" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
-                    Top-Selling Cat Litter Brand
+                    {form?.fields?.currentProducts?.label || 'Top-Selling Cat Litter Brand'}
                   </label>
                   <input
                     type="text"
@@ -542,13 +548,13 @@ export function RetailerContact() {
                     value={formData.currentProducts}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200"
-                    placeholder="What's the #1 brand of cat litter that you sell most of?"
+                    placeholder={form?.fields?.currentProducts?.placeholder || "What's the #1 brand of cat litter that you sell most of?"}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
-                    Additional Information
+                    {form?.fields?.message?.label || 'Additional Information'}
                   </label>
                   <textarea
                     id="message"
@@ -557,7 +563,7 @@ export function RetailerContact() {
                     onChange={handleInputChange}
                     rows={4}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200"
-                    placeholder="Tell us about your business and wholesale needs..."
+                    placeholder={form?.fields?.message?.placeholder || 'Tell us about your business and wholesale needs...'}
                   />
                 </div>
 
@@ -580,7 +586,7 @@ export function RetailerContact() {
                   disabled={isSubmitting}
                   className="w-full bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] hover:from-[#4C1EEB] hover:to-[#2563EB] text-white dark:text-gray-100 font-black py-6 px-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95 text-lg"
                 >
-                  {isSubmitting ? '⏳ Submitting...' : '🚀 Submit Partnership Application'}
+                  {isSubmitting ? `⏳ ${form?.submitting || 'Submitting...'}` : `🚀 ${form?.submitButton || 'Submit Partnership Application'}`}
                 </Button>
               </form>
             </div>
@@ -590,27 +596,27 @@ export function RetailerContact() {
               {/* Success Stories */}
               <div className="bg-gradient-to-br from-[#5B2EFF]/5 to-[#3694FF]/10 dark:from-[#3694FF]/10 dark:to-[#5B2EFF]/5 rounded-3xl p-8 border-2 border-[#5B2EFF]/20 dark:border-[#3694FF]/30">
                 <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-gray-50 mb-6 text-center">
-                  💰 Partner Success Stories
+                  💰 {stories?.title || 'Partner Success Stories'}
                 </h3>
 
                 <div className="space-y-6">
                   <SuccessStoryCard
                     icon="🏪"
                     gradient={GRADIENTS.green}
-                    businessName="Pet Palace Toronto"
-                    businessType="Independent Pet Store"
-                    quote="Added $800/month revenue in our first quarter. Customers love it and keep coming back!"
-                    metric="+145% sales growth"
+                    businessName={stories?.stories?.petPalace?.businessName || 'Pet Palace Toronto'}
+                    businessType={stories?.stories?.petPalace?.businessType || 'Independent Pet Store'}
+                    quote={stories?.stories?.petPalace?.quote || 'Added $800/month revenue in our first quarter. Customers love it and keep coming back!'}
+                    metric={stories?.stories?.petPalace?.metric || '+145% sales growth'}
                     metricColor="text-[#10B981] dark:text-[#34D399]"
                   />
 
                   <SuccessStoryCard
                     icon="🏥"
                     gradient={GRADIENTS.redOrange}
-                    businessName="Healthy Paws Vet"
-                    businessType="Veterinary Clinic"
-                    quote="Our clients trust our recommendation. Best margins in our retail section."
-                    metric="55% profit margin"
+                    businessName={stories?.stories?.healthyPaws?.businessName || 'Healthy Paws Vet'}
+                    businessType={stories?.stories?.healthyPaws?.businessType || 'Veterinary Clinic'}
+                    quote={stories?.stories?.healthyPaws?.quote || 'Our clients trust our recommendation. Best margins in our retail section.'}
+                    metric={stories?.stories?.healthyPaws?.metric || '55% profit margin'}
                     metricColor="text-[#FF6B6B] dark:text-[#FF8E8E]"
                   />
                 </div>
@@ -620,10 +626,10 @@ export function RetailerContact() {
               <div className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-3xl p-8 shadow-2xl border border-gray-200 dark:border-gray-700">
                 <div className="text-center mb-8">
                   <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-gray-50 mb-2">
-                    ⚡ Need Immediate Help?
+                    ⚡ {contactInfo?.title || 'Need Immediate Help?'}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Speak with a partnership specialist now
+                    {contactInfo?.subtitle || 'Speak with a partnership specialist now'}
                   </p>
                 </div>
 
@@ -663,7 +669,7 @@ export function RetailerContact() {
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3">
-                        <div className="font-black text-xl text-gray-900 dark:text-gray-50">✉️ {WHOLESALE_EMAIL}</div>
+                        <div className="font-black text-xl text-gray-900 dark:text-gray-50">✉️ {contactInfo?.wholesaleEmail || WHOLESALE_EMAIL}</div>
                         <button
                           type="button"
                           onClick={handleCopyWholesaleEmail}
@@ -674,20 +680,20 @@ export function RetailerContact() {
                           <span className="sr-only">Click to copy</span>
                         </button>
                         {copyStatus === 'copied' && (
-                          <span className="text-xs font-medium text-[#065F46] dark:text-[#6EE7B7]">Copied!</span>
+                          <span className="text-xs font-medium text-[#065F46] dark:text-[#6EE7B7]">{contactInfo?.copied || 'Copied!'}</span>
                         )}
                         {copyStatus === 'failed' && (
-                          <span className="text-xs font-medium text-red-600 dark:text-red-300">Copy failed</span>
+                          <span className="text-xs font-medium text-red-600 dark:text-red-300">{contactInfo?.copyFailed || 'Copy failed'}</span>
                         )}
                       </div>
-                      <div className="text-gray-600 dark:text-gray-300">Partnership Email</div>
-                      <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Click to draft an email or copy the address.</div>
+                      <div className="text-gray-600 dark:text-gray-300">{contactInfo?.emailLabel || 'Partnership Email'}</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">{contactInfo?.emailHint || 'Click to draft an email or copy the address.'}</div>
                     </div>
                   </div>
 
                   <div className="text-center p-4 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 rounded-2xl">
-                    <div className="font-bold text-gray-900 dark:text-gray-50 mb-1">⏰ Business Hours</div>
-                    <div className="text-gray-600 dark:text-gray-300">Monday - Friday: 9 AM - 6 PM EST</div>
+                    <div className="font-bold text-gray-900 dark:text-gray-50 mb-1">⏰ {contactInfo?.businessHours?.title || 'Business Hours'}</div>
+                    <div className="text-gray-600 dark:text-gray-300">{contactInfo?.businessHours?.hours || 'Monday - Friday: 9 AM - 6 PM EST'}</div>
                   </div>
                 </div>
               </div>
