@@ -838,6 +838,17 @@ model Affiliate {
   totalEarnings    Float           @default(0)
   pendingEarnings  Float           @default(0)
   availableBalance Float           @default(0)
+  // Tiered Commission System (Hormozi Enhancement)
+  tier                     AffiliateTier @default(STARTER)
+  commissionRate           Float         @default(0.20)  // 20% for STARTER
+  currentMonthSales        Int           @default(0)
+  lastMonthSales           Int           @default(0)
+  partnerQualifyingMonths  Int           @default(0)     // Months with 5+ sales
+  lastMonthResetAt         DateTime?                     // For lazy monthly reset
+  lastRewardMonth          String?                       // "YYYY-MM" for Sell 3 Get Free tracking
+  // Activation (Starter Kit Purchase)
+  activatedAt              DateTime?                     // When starter kit purchased
+  starterKitOrderId        String?                       // Stripe order ID
   // Payment info
   payoutMethod     PayoutMethod    @default(PAYPAL)
   payoutEmail      String?                    // PayPal email or E-Transfer email
@@ -854,6 +865,7 @@ model Affiliate {
   @@index([code])
   @@index([status])
   @@index([email])
+  @@index([tier])
   @@map("affiliates")
 }
 
@@ -866,6 +878,12 @@ enum AffiliateStatus {
 enum PayoutMethod {
   PAYPAL
   ETRANSFER
+}
+
+enum AffiliateTier {
+  STARTER   // 20% commission - default tier
+  ACTIVE    // 25% commission - after 3 cleared sales
+  PARTNER   // 30% commission - 5+ sales/month for 2 consecutive months
 }
 
 // AffiliateClick - Tracks clicks on affiliate links

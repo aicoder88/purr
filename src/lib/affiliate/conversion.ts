@@ -2,19 +2,21 @@
  * Affiliate Conversion Processing
  *
  * Handles recording conversions when orders are completed.
+ * Uses tier-based commission rates.
  */
 
 import prisma from '@/lib/prisma';
+import { getCommissionRate, onNewSale, COMMISSION_RATES } from './tiers';
 
-// Default commission rate (30%)
-const DEFAULT_COMMISSION_RATE = 0.30;
+// Default commission rate for STARTER tier
+const DEFAULT_COMMISSION_RATE = COMMISSION_RATES.STARTER;
 
 interface AffiliateConversionData {
   affiliateCode: string;
   affiliateSessionId: string;
   orderId: string;
   orderSubtotal: number; // In dollars (not cents)
-  commissionRate?: number;
+  commissionRate?: number; // If not provided, uses affiliate's tier rate
 }
 
 interface ConversionResult {
