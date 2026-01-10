@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useTranslation } from '../../src/lib/translation-context';
 import { ContentStore } from '../../src/lib/blog/content-store';
 import type { BlogPost as BlogPostType } from '../../src/types/blog';
+import { sampleBlogPosts } from '../../src/data/blog-posts';
 
 interface BlogPost {
   title: string;
@@ -27,9 +28,31 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     console.log(`[BlogIndex] Calling getAllPosts for locale: ${currentLocale}`);
 
     // Fetch all published posts from ContentStore
-    const posts = await store.getAllPosts(currentLocale, false);
+    let posts = await store.getAllPosts(currentLocale, false);
     console.log(`[BlogIndex] getAllPosts returned ${posts.length} posts`);
-    
+
+    // Fallback to sampleBlogPosts if ContentStore returns empty (Vercel serverless filesystem issue)
+    if (posts.length === 0) {
+      console.log('[BlogIndex] ContentStore empty, falling back to sampleBlogPosts');
+      const blogPosts: BlogPost[] = sampleBlogPosts.map((post) => ({
+        title: post.title,
+        excerpt: post.excerpt,
+        author: post.author,
+        date: post.date,
+        image: post.image,
+        link: post.link,
+        locale: post.locale || 'en',
+      }));
+
+      return {
+        props: {
+          blogPosts,
+          locale: currentLocale,
+        },
+        revalidate: 3600,
+      };
+    }
+
     // Transform to match the component's expected format
     const blogPosts: BlogPost[] = posts.map((post: BlogPostType) => ({
       title: post.title,
@@ -51,10 +74,21 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     };
   } catch (err) {
     console.error('Error fetching blog posts:', err);
-    // Return empty array on error
+    // Fallback to sampleBlogPosts on error
+    console.log('[BlogIndex] Error occurred, falling back to sampleBlogPosts');
+    const blogPosts: BlogPost[] = sampleBlogPosts.map((post) => ({
+      title: post.title,
+      excerpt: post.excerpt,
+      author: post.author,
+      date: post.date,
+      image: post.image,
+      link: post.link,
+      locale: post.locale || 'en',
+    }));
+
     return {
       props: {
-        blogPosts: [],
+        blogPosts,
         locale: (locale || 'en') as string,
       },
       revalidate: 3600,
