@@ -99,9 +99,9 @@ function SummaryCard({
       {change !== undefined && (
         <div className="flex items-center mt-1">
           {change > 0 ? (
-            <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
+            <TrendingUp className="w-4 h-4 text-green-500 dark:text-green-400 mr-1" />
           ) : change < 0 ? (
-            <TrendingDown className="w-4 h-4 text-red-500 mr-1" />
+            <TrendingDown className="w-4 h-4 text-red-500 dark:text-red-400 mr-1" />
           ) : null}
           <span
             className={`text-sm ${

@@ -304,7 +304,7 @@ export default function AffiliatePayouts() {
                   </div>
                   <button
                     onClick={() => setShowPayoutModal(true)}
-                    className="mt-4 sm:mt-0 px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors"
+                    className="mt-4 sm:mt-0 px-6 py-2 bg-purple-600 dark:bg-purple-500 hover:bg-purple-700 dark:hover:bg-purple-600 text-white dark:text-gray-100 font-medium rounded-lg transition-colors"
                   >
                     Request Payout
                   </button>

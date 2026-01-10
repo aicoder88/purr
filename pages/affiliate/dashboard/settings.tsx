@@ -313,7 +313,7 @@ export default function AffiliateSettings() {
                   <button
                     type="submit"
                     disabled={paymentSaving}
-                    className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors disabled:opacity-50 flex items-center space-x-2"
+                    className="px-4 py-2 bg-purple-600 dark:bg-purple-500 hover:bg-purple-700 dark:hover:bg-purple-600 text-white dark:text-gray-100 font-medium rounded-lg transition-colors disabled:opacity-50 flex items-center space-x-2"
                   >
                     {paymentSaving ? (
                       <>
@@ -460,7 +460,7 @@ export default function AffiliateSettings() {
                   <button
                     type="submit"
                     disabled={passwordSaving || !currentPassword || !newPassword || !confirmPassword}
-                    className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+                    className="px-4 py-2 bg-purple-600 dark:bg-purple-500 hover:bg-purple-700 dark:hover:bg-purple-600 text-white dark:text-gray-100 font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
                   >
                     {passwordSaving ? (
                       <>

@@ -120,12 +120,12 @@ export default function AffiliatesIndexPage() {
           </div>
           <Link
             href="/admin/ops/affiliates/applications"
-            className="inline-flex items-center px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white dark:text-gray-100 rounded-lg transition-colors"
+            className="inline-flex items-center px-4 py-2 bg-teal-600 dark:bg-teal-500 hover:bg-teal-700 dark:hover:bg-teal-600 text-white dark:text-gray-100 rounded-lg transition-colors"
           >
             <UserPlus className="w-4 h-4 mr-2" />
             Review Applications
             {stats && stats.pendingApplications > 0 && (
-              <span className="ml-2 px-2 py-0.5 bg-white/20 rounded-full text-xs">
+              <span className="ml-2 px-2 py-0.5 bg-white/20 dark:bg-white/10 rounded-full text-xs">
                 {stats.pendingApplications}
               </span>
             )}

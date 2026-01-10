@@ -90,7 +90,7 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
         <div className="flex items-center justify-between px-4 py-3">
           <Link href="/affiliate/dashboard" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-purple-600 dark:bg-purple-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">P</span>
+              <span className="text-white dark:text-gray-100 font-bold text-sm">P</span>
             </div>
             <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">
               Purrify Affiliate
@@ -146,7 +146,7 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
           <div className="flex items-center h-16 px-6 border-b border-gray-200 dark:border-gray-700">
             <Link href="/affiliate/dashboard" className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-purple-600 dark:bg-purple-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">P</span>
+                <span className="text-white dark:text-gray-100 font-bold text-sm">P</span>
               </div>
               <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                 Purrify Affiliate
@@ -167,9 +167,9 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
                 {affiliateCode}
               </code>
               {codeCopied ? (
-                <Check className="w-4 h-4 text-green-500" />
+                <Check className="w-4 h-4 text-green-500 dark:text-green-400" />
               ) : (
-                <Copy className="w-4 h-4 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300" />
+                <Copy className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300" />
               )}
             </button>
           </div>

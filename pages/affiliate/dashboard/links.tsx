@@ -103,7 +103,7 @@ function QRCodeCard({ affiliateCode, baseUrl }: { affiliateCode: string; baseUrl
         Share this QR code to direct people to your referral link.
       </p>
       <div className="flex justify-center">
-        <div className="bg-white p-4 rounded-lg">
+        <div className="bg-white dark:bg-gray-100 p-4 rounded-lg">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={qrCodeUrl}

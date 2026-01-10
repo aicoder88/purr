@@ -188,7 +188,7 @@ function ApplicationCard({
           <button
             onClick={() => onApprove(application.id)}
             disabled={isProcessing}
-            className="px-4 py-2 text-sm font-medium text-white dark:text-gray-100 bg-teal-600 hover:bg-teal-700 rounded-lg transition-colors disabled:opacity-50"
+            className="px-4 py-2 text-sm font-medium text-white dark:text-gray-100 bg-teal-600 dark:bg-teal-500 hover:bg-teal-700 dark:hover:bg-teal-600 rounded-lg transition-colors disabled:opacity-50"
           >
             {isProcessing ? 'Processing...' : 'Approve'}
           </button>
@@ -347,7 +347,7 @@ export default function ApplicationsPage() {
         <div className="mb-6 flex flex-col sm:flex-row gap-4">
           {/* Search */}
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
             <input
               type="text"
               placeholder="Search by name or email..."
@@ -359,7 +359,7 @@ export default function ApplicationsPage() {
 
           {/* Status Filter */}
           <div className="relative">
-            <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
@@ -401,7 +401,7 @@ export default function ApplicationsPage() {
           </div>
         ) : (
           <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
-            <Clock className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+            <Clock className="w-12 h-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
             <p className="text-gray-600 dark:text-gray-400">
               {statusFilter === 'PENDING'
                 ? 'No pending applications'

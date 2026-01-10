@@ -84,7 +84,7 @@ export function LinkGenerator({ affiliateCode, baseUrl }: LinkGeneratorProps) {
             htmlFor="utmCampaign"
             className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
           >
-            Campaign Name <span className="text-gray-400 font-normal">(optional)</span>
+            Campaign Name <span className="text-gray-400 dark:text-gray-500 font-normal">(optional)</span>
           </label>
           <input
             type="text"
@@ -112,7 +112,7 @@ export function LinkGenerator({ affiliateCode, baseUrl }: LinkGeneratorProps) {
             </div>
             <button
               onClick={copyLink}
-              className="flex-shrink-0 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors flex items-center space-x-2"
+              className="flex-shrink-0 px-4 py-2 bg-purple-600 dark:bg-purple-500 hover:bg-purple-700 dark:hover:bg-purple-600 text-white dark:text-gray-100 rounded-lg transition-colors flex items-center space-x-2"
             >
               {copied ? (
                 <>

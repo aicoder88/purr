@@ -37,12 +37,12 @@ export function StatsCard({
 
   const getTrendIcon = () => {
     if (change === undefined || change === 0) {
-      return <Minus className="w-4 h-4 text-gray-400" />;
+      return <Minus className="w-4 h-4 text-gray-400 dark:text-gray-500" />;
     }
     if (change > 0) {
-      return <TrendingUp className="w-4 h-4 text-green-500" />;
+      return <TrendingUp className="w-4 h-4 text-green-500 dark:text-green-400" />;
     }
-    return <TrendingDown className="w-4 h-4 text-red-500" />;
+    return <TrendingDown className="w-4 h-4 text-red-500 dark:text-red-400" />;
   };
 
   const getTrendColor = () => {
