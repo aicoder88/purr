@@ -1,9 +1,11 @@
 /**
  * Affiliate Commission Clearing
  * Handles lazy clearing of pending conversions after 30-day hold period
+ * Also triggers tier upgrade checks when conversions clear
  */
 
 import prisma from '@/lib/prisma';
+import { onConversionCleared } from './tiers';
 
 const CLEARING_PERIOD_DAYS = 30;
 
@@ -75,6 +77,14 @@ export async function clearPendingConversions(affiliateId: string): Promise<{
       availableBalance,
     },
   });
+
+  // If any conversions were cleared, check for tier upgrade
+  if (updateResult.count > 0) {
+    const tierResult = await onConversionCleared(affiliateId);
+    if (tierResult.upgraded) {
+      console.log(`Affiliate ${affiliateId} upgraded to ${tierResult.newTier} after clearing ${updateResult.count} conversions`);
+    }
+  }
 
   return {
     clearedCount: updateResult.count,

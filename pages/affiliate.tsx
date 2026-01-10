@@ -1,21 +1,33 @@
 import { useState } from 'react';
 import { NextSeo } from 'next-seo';
 import { Container } from '../src/components/ui/container';
-import { CheckCircle2, ArrowRight, Star, DollarSign, Users, TrendingUp } from 'lucide-react';
+import { CheckCircle2, ArrowRight, Star, DollarSign, Users, TrendingUp, Award, Zap, Gift } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslation } from '../src/lib/translation-context';
+
+// Tier configuration
+const TIERS = {
+  STARTER: { name: 'Starter', rate: 0.20, color: 'gray', requirement: 'Starting tier' },
+  ACTIVE: { name: 'Active', rate: 0.25, color: 'blue', requirement: '3 cleared sales' },
+  PARTNER: { name: 'Partner', rate: 0.30, color: 'purple', requirement: '5+ sales/mo for 2 months' },
+} as const;
+
+type TierKey = keyof typeof TIERS;
 
 export default function AffiliatePage() {
   const { t } = useTranslation();
   const [standardReferrals, setStandardReferrals] = useState(10);
   const [familyPackReferrals, setFamilyPackReferrals] = useState(5);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [selectedTier, setSelectedTier] = useState<TierKey>('STARTER');
 
-  // Commission: 30% of product price
+  // Product prices
   const standardPrice = 24.99;
   const familyPackPrice = 44.99;
-  const commissionRate = 0.30;
+
+  // Use selected tier's commission rate
+  const commissionRate = TIERS[selectedTier].rate;
 
   const standardCommission = standardPrice * commissionRate;
   const familyPackCommission = familyPackPrice * commissionRate;
@@ -148,9 +160,9 @@ export default function AffiliatePage() {
                     <DollarSign className="w-6 h-6 text-blue-400 dark:text-blue-400" />
                   </div>
                   <div>
-                    <h3 className="font-heading text-xl font-bold text-white dark:text-white mb-2">Uncapped Commissions</h3>
+                    <h3 className="font-heading text-xl font-bold text-white dark:text-white mb-2">Tiered Commissions Up to 30%</h3>
                     <p className="text-gray-400 dark:text-gray-400 leading-relaxed">
-                      Earn 30% on every sale with no limits. The more you share, the more you earn.
+                      Start at 20%, grow to 25% at Active tier, and earn 30% as a Partner. No caps, no limits.
                     </p>
                   </div>
                 </div>
@@ -184,6 +196,124 @@ export default function AffiliatePage() {
         </Container>
       </section>
 
+      {/* Tier System Section */}
+      <section className="py-24 border-b border-gray-800/50 dark:border-gray-800/50">
+        <Container>
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="font-heading text-4xl md:text-5xl font-bold text-white dark:text-white mb-6">
+                Grow Your Commission Rate
+              </h2>
+              <p className="text-xl text-gray-400 dark:text-gray-400 font-light max-w-2xl mx-auto">
+                Start earning immediately and unlock higher rates as you make more sales
+              </p>
+            </div>
+
+            {/* Tier Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+              {/* Starter Tier */}
+              <div className="bg-gray-900/60 dark:bg-gray-900/60 backdrop-blur-xl rounded-2xl p-8 border border-gray-700 dark:border-gray-700 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gray-500/10 dark:bg-gray-500/10 rounded-full blur-2xl"></div>
+                <div className="relative z-10">
+                  <div className="w-12 h-12 bg-gray-700/50 dark:bg-gray-700/50 rounded-xl flex items-center justify-center mb-4">
+                    <Zap className="w-6 h-6 text-gray-400 dark:text-gray-400" />
+                  </div>
+                  <h3 className="font-heading text-2xl font-bold text-white dark:text-white mb-2">Starter</h3>
+                  <div className="text-4xl font-bold text-gray-300 dark:text-gray-300 mb-4">20%</div>
+                  <p className="text-gray-400 dark:text-gray-400 text-sm mb-6">Starting tier for all new affiliates</p>
+                  <ul className="space-y-3 text-sm">
+                    <li className="flex items-center gap-2 text-gray-300 dark:text-gray-300">
+                      <CheckCircle2 className="w-4 h-4 text-gray-500 dark:text-gray-500" />
+                      <span>Immediate access</span>
+                    </li>
+                    <li className="flex items-center gap-2 text-gray-300 dark:text-gray-300">
+                      <CheckCircle2 className="w-4 h-4 text-gray-500 dark:text-gray-500" />
+                      <span>90-day cookie tracking</span>
+                    </li>
+                    <li className="flex items-center gap-2 text-gray-300 dark:text-gray-300">
+                      <CheckCircle2 className="w-4 h-4 text-gray-500 dark:text-gray-500" />
+                      <span>Full dashboard access</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Active Tier */}
+              <div className="bg-gray-900/60 dark:bg-gray-900/60 backdrop-blur-xl rounded-2xl p-8 border border-blue-500/30 dark:border-blue-500/30 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 dark:bg-blue-500/20 rounded-full blur-2xl"></div>
+                <div className="relative z-10">
+                  <div className="w-12 h-12 bg-blue-500/20 dark:bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
+                    <TrendingUp className="w-6 h-6 text-blue-400 dark:text-blue-400" />
+                  </div>
+                  <h3 className="font-heading text-2xl font-bold text-white dark:text-white mb-2">Active</h3>
+                  <div className="text-4xl font-bold text-blue-400 dark:text-blue-400 mb-4">25%</div>
+                  <p className="text-gray-400 dark:text-gray-400 text-sm mb-6">Unlocked after 3 cleared sales</p>
+                  <ul className="space-y-3 text-sm">
+                    <li className="flex items-center gap-2 text-gray-300 dark:text-gray-300">
+                      <CheckCircle2 className="w-4 h-4 text-blue-500 dark:text-blue-500" />
+                      <span>5% commission boost</span>
+                    </li>
+                    <li className="flex items-center gap-2 text-gray-300 dark:text-gray-300">
+                      <CheckCircle2 className="w-4 h-4 text-blue-500 dark:text-blue-500" />
+                      <span>Automatic upgrade</span>
+                    </li>
+                    <li className="flex items-center gap-2 text-gray-300 dark:text-gray-300">
+                      <CheckCircle2 className="w-4 h-4 text-blue-500 dark:text-blue-500" />
+                      <span>Permanent tier</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Partner Tier */}
+              <div className="bg-gray-900/60 dark:bg-gray-900/60 backdrop-blur-xl rounded-2xl p-8 border border-purple-500/30 dark:border-purple-500/30 relative overflow-hidden ring-1 ring-purple-500/20 dark:ring-purple-500/20">
+                <div className="absolute -top-2 -right-2 bg-purple-600 dark:bg-purple-600 text-white dark:text-white text-xs font-bold px-3 py-1 rounded-full">
+                  TOP TIER
+                </div>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/20 dark:bg-purple-500/20 rounded-full blur-2xl"></div>
+                <div className="relative z-10">
+                  <div className="w-12 h-12 bg-purple-500/20 dark:bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
+                    <Award className="w-6 h-6 text-purple-400 dark:text-purple-400" />
+                  </div>
+                  <h3 className="font-heading text-2xl font-bold text-white dark:text-white mb-2">Partner</h3>
+                  <div className="text-4xl font-bold text-purple-400 dark:text-purple-400 mb-4">30%</div>
+                  <p className="text-gray-400 dark:text-gray-400 text-sm mb-6">5+ sales/month for 2 consecutive months</p>
+                  <ul className="space-y-3 text-sm">
+                    <li className="flex items-center gap-2 text-gray-300 dark:text-gray-300">
+                      <CheckCircle2 className="w-4 h-4 text-purple-500 dark:text-purple-500" />
+                      <span>Maximum commission</span>
+                    </li>
+                    <li className="flex items-center gap-2 text-gray-300 dark:text-gray-300">
+                      <CheckCircle2 className="w-4 h-4 text-purple-500 dark:text-purple-500" />
+                      <span>Priority support</span>
+                    </li>
+                    <li className="flex items-center gap-2 text-gray-300 dark:text-gray-300">
+                      <CheckCircle2 className="w-4 h-4 text-purple-500 dark:text-purple-500" />
+                      <span>Exclusive perks</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Monthly Reward Banner */}
+            <div className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 dark:from-green-900/30 dark:to-emerald-900/30 rounded-2xl p-8 border border-green-500/30 dark:border-green-500/30 flex flex-col md:flex-row items-center gap-6">
+              <div className="w-16 h-16 bg-green-500/20 dark:bg-green-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <Gift className="w-8 h-8 text-green-400 dark:text-green-400" />
+              </div>
+              <div className="text-center md:text-left">
+                <h3 className="font-heading text-2xl font-bold text-white dark:text-white mb-2">
+                  Sell 3, Get Free Monthly Reward
+                </h3>
+                <p className="text-gray-400 dark:text-gray-400">
+                  Make 3+ sales in a month and get a free Purrify product ($49 value) credited to your account. Keep using it yourself or gift it to friends!
+                </p>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
       {/* Calculator Section */}
       <section id="calculator" className="py-24 relative overflow-hidden">
         <Container>
@@ -202,6 +332,52 @@ export default function AffiliatePage() {
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
                 <div className="space-y-12">
+                  {/* Tier Selector */}
+                  <div>
+                    <label className="text-xl font-medium text-gray-200 dark:text-gray-200 mb-6 block">
+                      Select Your Tier
+                    </label>
+                    <div className="grid grid-cols-3 gap-3">
+                      {(Object.keys(TIERS) as TierKey[]).map((tier) => {
+                        const isSelected = selectedTier === tier;
+                        const tierInfo = TIERS[tier];
+                        return (
+                          <button
+                            key={tier}
+                            onClick={() => setSelectedTier(tier)}
+                            className={`p-4 rounded-xl border-2 transition-all duration-200 text-left ${
+                              isSelected
+                                ? tier === 'PARTNER'
+                                  ? 'border-purple-500 bg-purple-500/20 dark:border-purple-500 dark:bg-purple-500/20'
+                                  : tier === 'ACTIVE'
+                                  ? 'border-blue-500 bg-blue-500/20 dark:border-blue-500 dark:bg-blue-500/20'
+                                  : 'border-gray-500 bg-gray-500/20 dark:border-gray-500 dark:bg-gray-500/20'
+                                : 'border-gray-700 dark:border-gray-700 hover:border-gray-600 dark:hover:border-gray-600 bg-gray-800/50 dark:bg-gray-800/50'
+                            }`}
+                          >
+                            <div className={`text-2xl font-bold mb-1 ${
+                              isSelected
+                                ? tier === 'PARTNER'
+                                  ? 'text-purple-400 dark:text-purple-400'
+                                  : tier === 'ACTIVE'
+                                  ? 'text-blue-400 dark:text-blue-400'
+                                  : 'text-gray-300 dark:text-gray-300'
+                                : 'text-gray-400 dark:text-gray-400'
+                            }`}>
+                              {(tierInfo.rate * 100).toFixed(0)}%
+                            </div>
+                            <div className="text-sm font-semibold text-gray-300 dark:text-gray-300">
+                              {tierInfo.name}
+                            </div>
+                            <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                              {tierInfo.requirement}
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
                   {/* Standard Product Slider */}
                   <div>
                     <div className="flex justify-between items-end mb-6">

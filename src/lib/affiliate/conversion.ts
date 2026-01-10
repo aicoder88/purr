@@ -39,7 +39,7 @@ export async function recordAffiliateConversion(
       return { success: false, error: 'Database connection not established' };
     }
 
-    // Find the affiliate by code
+    // Find the affiliate by code (include tier info for commission rate)
     const affiliate = await prisma.affiliate.findFirst({
       where: {
         code: affiliateCode.toUpperCase(),
@@ -48,6 +48,8 @@ export async function recordAffiliateConversion(
       select: {
         id: true,
         code: true,
+        tier: true,
+        commissionRate: true,
       },
     });
 
@@ -66,8 +68,11 @@ export async function recordAffiliateConversion(
       return { success: true, conversionId: existingConversion.id };
     }
 
-    // Calculate commission
-    const commissionAmount = orderSubtotal * commissionRate;
+    // Use affiliate's tier-based commission rate if not explicitly provided
+    const effectiveCommissionRate = commissionRate || affiliate.commissionRate || getCommissionRate(affiliate.tier);
+
+    // Calculate commission using the tier-based rate
+    const commissionAmount = orderSubtotal * effectiveCommissionRate;
 
     // Create the conversion record
     const conversion = await prisma.affiliateConversion.create({
@@ -75,7 +80,7 @@ export async function recordAffiliateConversion(
         affiliateId: affiliate.id,
         orderId,
         orderSubtotal,
-        commissionRate,
+        commissionRate: effectiveCommissionRate,
         commissionAmount,
         status: 'PENDING',
         purchasedAt: new Date(),
@@ -95,7 +100,10 @@ export async function recordAffiliateConversion(
       },
     });
 
-    console.log(`Affiliate conversion recorded: ${conversion.id} for affiliate ${affiliateCode}, commission: $${commissionAmount.toFixed(2)}`);
+    // Track this sale for monthly metrics (lazy tier system)
+    await onNewSale(affiliate.id);
+
+    console.log(`Affiliate conversion recorded: ${conversion.id} for affiliate ${affiliateCode} (${affiliate.tier}), commission: $${commissionAmount.toFixed(2)} at ${(effectiveCommissionRate * 100).toFixed(0)}%`);
 
     return { success: true, conversionId: conversion.id };
   } catch (error) {

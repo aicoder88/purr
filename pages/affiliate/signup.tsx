@@ -90,11 +90,11 @@ export default function AffiliateSignupPage() {
     <>
       <NextSeo
         title="Join Purrify Affiliate Program - Apply Now"
-        description="Apply to become a Purrify affiliate partner and earn 30% recurring commission for life. Start earning passive income today."
+        description="Apply to become a Purrify affiliate partner. Start at 20% commission and grow up to 30% as a Partner. Plus get free products every month!"
         canonical={canonicalUrl}
         openGraph={{
           title: "Join Purrify Affiliate Program - Apply Now",
-          description: "Apply to become a Purrify affiliate partner and earn 30% recurring commission for life.",
+          description: "Apply to become a Purrify affiliate partner. Start at 20% commission and grow up to 30% as a Partner.",
           url: canonicalUrl,
         }}
       />
@@ -107,7 +107,7 @@ export default function AffiliateSignupPage() {
               Apply to Join Our Affiliate Program
             </h1>
             <p className="text-xl text-blue-100 dark:text-blue-50 mb-6 font-light">
-              Start earning 30% recurring commission on every sale you refer
+              Start at 20% and grow up to 30% commission as you make more sales
             </p>
             <div className="flex items-center justify-center gap-6 text-white dark:text-gray-100">
               <div className="flex items-center gap-2">
@@ -357,20 +357,44 @@ export default function AffiliateSignupPage() {
       {/* Benefits Reminder */}
       <section className="py-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
         <Container>
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 text-center mb-12">
               What You&apos;ll Get as an Affiliate
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            {/* Tiered Commission Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <div className="bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 text-center">
-                <div className="text-4xl font-bold text-[#2e90fa] dark:text-[#2e90fa] mb-2">30%</div>
-                <div className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">Lifetime Commission</div>
-                <p className="text-xs text-gray-600 dark:text-gray-400">On every sale, forever</p>
+                <div className="text-3xl font-bold text-gray-600 dark:text-gray-400 mb-2">20%</div>
+                <div className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">Starter Tier</div>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Start earning immediately</p>
               </div>
+              <div className="bg-white dark:bg-gray-900 p-6 rounded-xl border border-blue-200 dark:border-blue-800 text-center">
+                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">25%</div>
+                <div className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">Active Tier</div>
+                <p className="text-xs text-gray-600 dark:text-gray-400">After 3 cleared sales</p>
+              </div>
+              <div className="bg-white dark:bg-gray-900 p-6 rounded-xl border border-purple-200 dark:border-purple-800 text-center relative overflow-hidden">
+                <div className="absolute top-2 right-2 bg-purple-600 dark:bg-purple-600 text-white dark:text-white text-xs font-bold px-2 py-0.5 rounded">
+                  TOP
+                </div>
+                <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">30%</div>
+                <div className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">Partner Tier</div>
+                <p className="text-xs text-gray-600 dark:text-gray-400">5+ sales/mo for 2 months</p>
+              </div>
+            </div>
+
+            {/* Other Benefits */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 text-center">
                 <div className="text-4xl font-bold text-[#2e90fa] dark:text-[#2e90fa] mb-2">90</div>
                 <div className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">Day Cookie</div>
                 <p className="text-xs text-gray-600 dark:text-gray-400">Long attribution window</p>
+              </div>
+              <div className="bg-white dark:bg-gray-900 p-6 rounded-xl border border-green-200 dark:border-green-800 text-center">
+                <div className="text-4xl font-bold text-green-600 dark:text-green-400 mb-2">$49</div>
+                <div className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">Monthly Reward</div>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Free product for 3+ sales/mo</p>
               </div>
               <div className="bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 text-center">
                 <div className="text-4xl font-bold text-[#2e90fa] dark:text-[#2e90fa] mb-2">24/7</div>
