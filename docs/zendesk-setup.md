@@ -27,9 +27,12 @@ NEXT_PUBLIC_ZENDESK_WIDGET_KEY=8e02c888-48a7-4c03-b5e4-2d4559050cf4
 ### Getting the Web Widget Key
 
 1. Go to https://purrifyca.zendesk.com/admin
-2. Navigate to: **Channels** > **Classic** > **Web Widget**
-3. Copy the widget key from the embed code
-4. Add to `.env.local` as `NEXT_PUBLIC_ZENDESK_WIDGET_KEY`
+2. Navigate to: **Channels** > **Messaging and social** > **Messaging**
+3. Click on your Web Widget configuration
+4. Copy the widget key from the embed code (the `key=` parameter)
+5. Add to `.env.local` as `NEXT_PUBLIC_ZENDESK_WIDGET_KEY`
+
+**Note:** Widget key is already configured: `8e02c888-48a7-4c03-b5e4-2d4559050cf4`
 
 ## Code Integration
 
