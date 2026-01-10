@@ -78,10 +78,10 @@ Instead of using the library directly, use the CLI tools:
 
 ```bash
 # Run full health check
-npm run seo:health-check
+pnpm seo:health-check
 
 # Apply automated fixes
-npm run seo:fix
+pnpm seo:fix
 ```
 
 ## Documentation

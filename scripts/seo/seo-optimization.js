@@ -33,7 +33,7 @@ class SEOOptimizer {
     try {
       // Use the working sitemap generation script
       const { execSync } = require('node:child_process');
-      execSync('npm run generate-enhanced-sitemap', { cwd: this.projectRoot, stdio: 'inherit' });
+      execSync('pnpm generate-enhanced-sitemap', { cwd: this.projectRoot, stdio: 'inherit' });
       this.log('Sitemap generated successfully', 'success');
     } catch (error) {
       this.log(`Sitemap generation failed: ${error.message}`, 'error');

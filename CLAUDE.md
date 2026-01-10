@@ -47,8 +47,8 @@ pnpm test:e2e:ui                  # Playwright with UI
 pnpm build                        # Production build
 
 # Database
-pnpm dlx prisma studio            # Database GUI
-pnpm dlx prisma migrate dev       # Run migrations
+pnpm prisma studio                # Database GUI
+pnpm prisma migrate dev           # Run migrations
 
 # Debugging
 vercel logs <deployment-url>      # View production logs
@@ -254,7 +254,7 @@ Critical rules:
 | Hot reload broken | `pnpm predev && pnpm dev` |
 | Dark mode validation failing | Add missing `dark:*` variants |
 | Translation missing | Add key to all files in `src/translations/` |
-| Type errors after schema change | `pnpm dlx prisma generate` |
+| Type errors after schema change | `pnpm prisma generate` |
 | E2E tests failing locally | Check `pnpm dev` is running |
 | Stripe webhooks not working locally | Run `stripe listen --forward-to localhost:3000/api/webhooks/stripe` |
 | Module not found after install | `pnpm install --force` |
