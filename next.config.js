@@ -8,9 +8,9 @@ const withBundleAnalyzer =
 /**
  * Image Optimization
  *
- * Image optimization is handled separately via npm scripts:
- * - npm run optimize-images:enhanced - Run enhanced optimization
- * - npm run optimize-images:watch - Watch for changes in development
+ * Image optimization is handled separately via pnpm scripts:
+ * - pnpm optimize-images:enhanced - Run enhanced optimization
+ * - pnpm optimize-images:watch - Watch for changes in development
  *
  * This keeps the build process fast and allows optimization to run
  * independently. Images are optimized once and cached.
@@ -594,6 +594,7 @@ const nextConfig = {
     "/admin/*": ["./content/blog/**/*"],
     "/api/admin/*": ["./content/blog/**/*"],
     "/api/blog-posts": ["./content/blog/**/*"],
+    "/blog": ["./content/blog/**/*"],
     "/blog/*": ["./content/blog/**/*"],
   },
 

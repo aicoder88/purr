@@ -1,8 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "npx prisma generate && npm run build",
-  "devCommand": "npm run dev",
-  "installCommand": "npm install --legacy-peer-deps",
+  "buildCommand": "pnpm dlx prisma generate && pnpm build",
+  "devCommand": "pnpm dev",
+  "installCommand": "pnpm install",
   "outputDirectory": ".next",
   "framework": "nextjs",
   "functions": {
