@@ -54,7 +54,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Tried everything for cat litter odor? Discover activated carbon - the same technology NASA uses in space. No perfumes, no chemicals. Traps ammonia molecules instantly.',
       author: 'Purrify Team',
       date: '2025-12-29', // Fixed publication date
-      image: '/optimized/activated-carbon-benefits.webp',
+      image: '/optimized/blog/scientific-odor-control.png',
       link: '/blog/space-station-secret-fresh-home-cat-owners'
     },
     {
@@ -62,7 +62,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Break down the most powerful odor absorber technologies for cat litter, including how activated carbon outperforms zeolite and perfumes without overwhelming your cat.',
       author: 'Odor Science Research Team',
       date: new Date(now - 0 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // Today
-      image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1600&q=80',
+      image: '/optimized/blog/science-molecule-lab.jpg',
       link: '/blog/most-powerful-odor-absorber'
     },
     {
@@ -86,7 +86,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "Closed windows trapping unbearable cat litter smell? Discover 5 proven solutions that eliminate winter odors without freezing your home.",
       author: 'Seasonal Odor Control Team',
       date: new Date(now - 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 3 days ago
-      image: 'https://images.unsplash.com/photo-1483306130718-042b74ae6faa?auto=format&fit=crop&w=1600&q=80',
+      image: '/optimized/blog/winter-fresh-cat.png',
       link: '/blog/cat-litter-smell-worse-winter'
     },
     {
@@ -94,7 +94,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "Heat doesn't just make you uncomfortable—it makes cat litter ammonia evaporate 10x faster. Discover the science behind summer odor problems and proven solutions.",
       author: 'Seasonal Odor Control Team',
       date: new Date(now - 4 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 4 days ago
-      image: 'https://images.unsplash.com/photo-1561948955-570b270e7c36?auto=format&fit=crop&w=1600&q=80',
+      image: '/optimized/blog/summer-fresh-cat.png',
       link: '/blog/cat-litter-smell-worse-summer'
     },
     {
@@ -150,7 +150,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "Living in a small apartment with cats? Discover the most effective odor control strategies and products specifically designed for compact living spaces.",
       author: "Urban Pet Living Specialist",
       date: new Date(now - 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 14 days ago
-      image: "/optimized/small-apartment-odor-control.webp",
+      image: "/optimized/blog/apartment-cat-lifestyle.png",
       link: "/blog/best-litter-odor-remover-small-apartments"
     },
     {

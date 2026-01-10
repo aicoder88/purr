@@ -20,8 +20,8 @@ ZENDESK_SUBDOMAIN=purrifyca
 ZENDESK_EMAIL=hello@purrify.ca
 ZENDESK_API_TOKEN=<your-api-token>
 
-# Web Widget (get from Zendesk Admin Center > Channels > Classic > Web Widget)
-NEXT_PUBLIC_ZENDESK_WIDGET_KEY=<your-widget-key>
+# Web Widget (from Zendesk Admin Center > Channels > Messaging)
+NEXT_PUBLIC_ZENDESK_WIDGET_KEY=8e02c888-48a7-4c03-b5e4-2d4559050cf4
 ```
 
 ### Getting the Web Widget Key

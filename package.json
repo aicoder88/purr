@@ -17,6 +17,7 @@
     "check-types": "node scripts/check-types.js",
     "check-types:unused": "node scripts/check-unused-identifiers.js",
     "postbuild": "next-sitemap && pnpm generate-enhanced-sitemap",
+    "generate-image": "node scripts/images/generate-fal-image.js",
     "optimize-images": "node scripts/optimize-images.js",
     "optimize-images:enhanced": "node scripts/optimize-images-enhanced.js",
     "optimize-images:watch": "nodemon --watch public/original-images --exec 'pnpm optimize-images:enhanced'",

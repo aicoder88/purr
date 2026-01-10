@@ -17,7 +17,7 @@
     "how-to"
   ],
   "featuredImage": {
-    "url": "/optimized/cat-favorite-litter.webp",
+    "url": "/optimized/blog/frequency-action.png",
     "alt": "Cat litter box with calendar and clock",
     "width": 1200,
     "height": 630
@@ -32,7 +32,7 @@
       "ammonia tracking cat litter"
     ],
     "canonical": "/blog/litter-deodorizer-frequency-guide",
-    "ogImage": "/optimized/cat-favorite-litter.webp"
+    "ogImage": "/optimized/blog/frequency-action.png"
   },
   "readingTime": 7,
   "status": "published",
