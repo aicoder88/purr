@@ -169,6 +169,23 @@ export const zh = {
         description: "批发价格、大宗订购、营销支持",
         cta: "访问批发门户"
       }
+    },
+    simplified: {
+      free: "免费",
+      justPayShipping: "仅需支付4.76美元运费",
+      noMore: "告别",
+      litterBoxSmell: "猫砂异味",
+      valueProposition: "活性炭从源头消除异味。适用于任何猫砂。",
+      trialSize: "试用装",
+      standard: "标准装",
+      familyPack: "家庭装",
+      plusSH: "+ 运费",
+      thirtyDayGuarantee: "30天保证",
+      getFreeSample: "获取免费样品",
+      soldThisWeek: "本周已售87件",
+      limitedStock: "冬季库存有限",
+      moneyBackGuarantee: "30天退款保证",
+      freeShippingOver: "满35美元免运费"
     }
   },
 
@@ -263,7 +280,10 @@ export const zh = {
       natural: "天然砂",
       clay: "粘土砂",
       nonClumping: "非结团砂"
-    }
+    },
+    learnTheScience: "了解科学原理",
+    compareSizes: "比较我们的尺寸",
+    coconutDescription: "纯净、可持续的椰壳通过过滤纯净的高压蒸汽活化，打开数百万个孔洞、隧道和通道，锁住异味分子。"
   },
 
   // Products Section
@@ -356,7 +376,8 @@ export const zh = {
         question: "Purrify与香味猫砂或除臭剂有什么不同？",
         answer: "与掩盖异味的香味产品不同，Purrify使用活性炭技术实际捕获和中和源头的异味分子。它不会为您的家增添任何香味，只是消除难闻的气味。"
       }
-    ]
+    ],
+    learnMore: "了解更多"
   },
 
   // Contact
@@ -393,6 +414,9 @@ export const zh = {
     buttonText: "订阅",
     successMessage: "感谢您的订阅！",
     errorMessage: "订阅失败，请重试。",
+    errorInvalidEmail: "请输入有效的邮箱地址",
+    errorGeneric: "出错了，请重试。",
+    privacyText: "无垃圾邮件，随时退订。我们尊重您的隐私。",
     joinFamily: {
       title: "加入Purrify大家庭",
       subtitle: "首单享10%折扣，获得专属猫咪护理技巧",
@@ -409,11 +433,29 @@ export const zh = {
       emailPlaceholder: "输入您的邮箱地址",
       ctaButton: "首单享10%折扣",
       joinText: "加入 1,000+ 快乐客户 • 无垃圾邮件，随时退订",
+      welcomeMessage: "欢迎加入Purrify！",
       features: {
         weeklyTips: "✓ 每周技巧",
         exclusiveOffers: "✓ 专属优惠",
         earlyAccessProducts: "✓ 抢先体验"
       }
+    },
+    popup: {
+      title: "首单享{discount}%折扣！",
+      description: "加入 1,000+ 快乐客户，获得专属技巧、折扣和新产品抢先体验。",
+      buttonText: "立即享{discount}%折扣"
+    },
+    footer: {
+      title: "与Purrify保持联系",
+      description: "获取猫咪护理技巧和专属优惠，直接发送到您的邮箱。",
+      placeholder: "您的邮箱",
+      buttonText: "订阅"
+    },
+    inline: {
+      title: "加入Purrify社区",
+      description: "获取专家猫咪护理技巧和专属优惠，直接发送到您的邮箱。",
+      buttonText: "免费订阅",
+      successText: "订阅成功！"
     }
   },
 
@@ -472,6 +514,21 @@ export const zh = {
     errorMessage: "提交失败，请重试。",
     errorGeneric: "出现错误，请稍后重试。",
     privacyNotice: "我们尊重您的隐私，绝不会分享您的信息。"
+  },
+
+  // 404 Not Found Page
+  notFoundPage: {
+    title: "404 - 页面未找到",
+    description: "哎呀！您要查找的页面可能已被移动、删除或从未存在过。",
+    lookingFor: "您可能在寻找：",
+    returnHome: "返回首页",
+    suggestedPages: {
+      home: { title: "首页", description: "返回我们的主页" },
+      products: { title: "产品", description: "浏览我们的猫砂添加剂" },
+      howItWorks: { title: "工作原理", description: "了解Purrify如何消除异味" },
+      blog: { title: "博客", description: "阅读我们关于猫咪护理的最新文章" },
+      contact: { title: "联系我们", description: "与我们的团队联系" }
+    }
   },
 
   // SEO
@@ -1763,6 +1820,22 @@ export const zh = {
     }
   },
 
+  // 商店定位器
+  maps: {
+    findNearYou: "在您附近找到Purrify | 零售店位置",
+    discoverWhere: "发现在加拿大各地哪里可以购买Purrify。每个位置代表一个可以找到我们产品的零售店。",
+    retailStores: "Purrify在加拿大各地的零售店 - 蒙特利尔、多伦多、温哥华等",
+    cities: {
+      montreal: "蒙特利尔",
+      quebec: "魁北克市",
+      toronto: "多伦多",
+      vancouver: "温哥华",
+      calgary: "卡尔加里",
+      ottawa: "渥太华"
+    },
+    iframeTitle: "Purrify零售店位置地图"
+  },
+
   // 氨气控制着陆页
   ammonia: {
     meta: {
@@ -1801,6 +1874,7 @@ export const zh = {
     },
     problem: {
       headline: "为什么香味猫砂没有用",
+      intro: "如果您尝试过香味猫砂、小苏打或空气清新剂，但发现它们只能工作一两天，这是有科学原因的：这些方法都不能真正消除氨气。",
       card1: {
         title: "掩盖而非解决",
         description: "香味只能暂时掩盖氨气味，但不能消除来源。异味总是会回来。"
@@ -1842,6 +1916,7 @@ export const zh = {
     },
     benefits: {
       headline: "为什么猫主人选择Purrify",
+      intro: "数千名猫主人选择活性炭除臭是有原因的。",
       pillar1: {
         title: "天然科学",
         intro: "100%天然椰壳活性炭",
@@ -1865,14 +1940,17 @@ export const zh = {
       headline: "如何使用Purrify实现最大氨气控制",
       intro: "三个简单步骤即可获得无异味的猫砂盆",
       step1: {
+        number: "1",
         title: "撒入",
         description: "在干净的猫砂上均匀撒上一层薄薄的Purrify。50g袋装可覆盖标准猫砂盆7天以上。"
       },
       step2: {
+        number: "2",
         title: "混合",
         description: "轻轻搅拌使Purrify与整个猫砂混合。这确保活性炭在整个猫砂盆中分布均匀。"
       },
       step3: {
+        number: "3",
         title: "享受",
         description: "Purrify开始立即吸附氨气。大多数用户注意到24小时内异味显著减少。"
       },
@@ -1952,7 +2030,9 @@ export const zh = {
       days: { value: "7+", label: "天清新" },
       savings: { value: "更少", label: "更换次数" },
       customers: { value: "10,000+", label: "快乐猫咪" },
-      rating: { value: "4.9★", label: "客户评分" }
+      rating: { value: "4.9★", label: "客户评分" },
+      surfaceArea: { value: "1,150", label: "m²/g表面积" },
+      natural: { value: "100%", label: "天然成分" }
     },
     faq: {
       headline: "氨气控制常见问题",
@@ -2759,6 +2839,93 @@ export const zh = {
       saveFailed: "保存设置失败",
       payoutFailed: "提现申请失败",
       sessionExpired: "您的会话已过期，请重新登录。"
+    }
+  },
+
+  // Try Free Landing Page (for Ad Campaigns)
+  tryFreePage: {
+    meta: {
+      title: "免费试用Purrify - 仅需4.76美元运费 | 猫砂异味消除剂",
+      description: "获取您的免费Purrify试用装 - 仅需支付4.76美元运费。30秒内消除猫砂异味。138+条五星评价。30天退款保证。"
+    },
+    hero: {
+      badge: "限时优惠",
+      headline: "免费试用Purrify",
+      subheadline: "仅需4.76美元运费",
+      description: "了解为什么1,000+猫主人信赖Purrify消除猫砂异味。立即获取您的免费试用装，体验不同之处。",
+      cta: "获取我的免费试用装",
+      shippingNote: "加拿大全境配送"
+    },
+    problem: {
+      headline: "厌倦了屏住呼吸？",
+      subheadline: "我们理解。那猫砂异味令人尴尬。",
+      points: [
+        "客人来访时匆忙检查猫砂盒",
+        "冬天也要开窗通风只为驱散异味",
+        "不断购买无效的空气清新剂",
+        "担心家里闻起来像有猫住"
+      ]
+    },
+    howItWorks: {
+      headline: "30秒清新空气",
+      subheadline: "简单三步",
+      steps: [
+        {
+          number: "1",
+          title: "撒入",
+          description: "打开包装，撒在猫砂上"
+        },
+        {
+          number: "2",
+          title: "捕捉",
+          description: "活性炭瞬间捕捉氨气分子"
+        },
+        {
+          number: "3",
+          title: "清新",
+          description: "享受7天以上的无异味清新"
+        }
+      ]
+    },
+    socialProof: {
+      headline: "加入1,000+快乐猫主人",
+      rating: "4.9",
+      reviewCount: "138",
+      reviewLabel: "验证评价",
+      testimonials: [
+        {
+          text: "我原本持怀疑态度，但几小时内我的整个公寓就闻起来很清新了。我的客人根本不知道我养猫！",
+          author: "Sarah M.",
+          location: "Toronto, ON"
+        },
+        {
+          text: "终于有真正有效的产品了。不再需要用空气清新剂掩盖异味。",
+          author: "Mike R.",
+          location: "Vancouver, BC"
+        },
+        {
+          text: "这是我花过的最值的4.76美元。已经订购了完整尺寸！",
+          author: "Jennifer K.",
+          location: "Montreal, QC"
+        }
+      ]
+    },
+    guarantee: {
+      headline: "30天退款保证",
+      description: "如果您对效果不满意，我们将退款。无需任何理由。",
+      badge: "无风险试用"
+    },
+    finalCta: {
+      headline: "准备好轻松呼吸了吗？",
+      description: "立即获取您的免费Purrify试用装。仅需支付4.76美元运费。",
+      buttonText: "获取我的免费试用装",
+      note: "随时取消。无需订阅。"
+    },
+    trust: {
+      madeInCanada: "加拿大制造",
+      natural: "100%天然",
+      fragrance: "无香料",
+      secure: "安全结账"
     }
   }
 

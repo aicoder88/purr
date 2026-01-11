@@ -169,6 +169,23 @@ export const fr = {
         description: "Tarifs de gros, commandes en volume, support marketing",
         cta: "Portail grossiste"
       }
+    },
+    simplified: {
+      free: "GRATUIT",
+      justPayShipping: "Payez seulement 4,76 $ de livraison",
+      noMore: "Fini",
+      litterBoxSmell: "Les Odeurs de Litière",
+      valueProposition: "Le charbon activ\u00e9 \u00e9limine les odeurs \u00e0 la source. Fonctionne avec toute liti\u00e8re.",
+      trialSize: "Format Essai",
+      standard: "Standard",
+      familyPack: "Pack Familial",
+      plusSH: "+ Livraison",
+      thirtyDayGuarantee: "Garantie 30 Jours",
+      getFreeSample: "Obtenir l'\u00c9chantillon GRATUIT",
+      soldThisWeek: "87 vendus cette semaine",
+      limitedStock: "Stock limit\u00e9 hiver",
+      moneyBackGuarantee: "Garantie Satisfait ou Rembours\u00e9 30 Jours",
+      freeShippingOver: "Livraison Gratuite D\u00e8s 35 $"
     }
   },
 
@@ -258,7 +275,10 @@ export const fr = {
       natural: "NATURELLE",
       clay: "ARGILE",
       nonClumping: "NON-AGGLOMÉRANTE"
-    }
+    },
+    learnTheScience: "Découvrez la science",
+    compareSizes: "comparez nos tailles",
+    coconutDescription: "Des coques de noix de coco pures et durables sont activées avec de la vapeur filtrée et pure à haute pression pour ouvrir des millions de trous, tunnels et passages permettant d'emprisonner les molécules d'odeur."
   },
 
   // Products Section
@@ -351,7 +371,8 @@ export const fr = {
         question: "En quoi Purrify est-il différent des litières parfumées ou des désodorisants ?",
         answer: "Contrairement aux produits parfumés qui masquent les odeurs, Purrify utilise la technologie du charbon actif pour piéger et neutraliser les molécules d'odeur à la source. Il n'ajoute aucun parfum à votre maison - il élimine simplement les mauvaises odeurs."
       }
-    ]
+    ],
+    learnMore: "En savoir plus"
   },
 
   // Contact
@@ -388,6 +409,9 @@ export const fr = {
     buttonText: "S'abonner",
     successMessage: "Merci de vous être abonné !",
     errorMessage: "Une erreur s'est produite. Veuillez réessayer.",
+    errorInvalidEmail: "Veuillez entrer une adresse courriel valide",
+    errorGeneric: "Une erreur s'est produite. Veuillez réessayer.",
+    privacyText: "Aucun spam, se désabonner à tout moment. Nous respectons votre vie privée.",
     joinFamily: {
       title: "Rejoignez la Famille Purrify",
       subtitle: "Obtenez 10% de réduction sur votre première commande plus des conseils exclusifs pour chats",
@@ -404,11 +428,29 @@ export const fr = {
       emailPlaceholder: "Entrez votre adresse courriel",
       ctaButton: "Obtenez 10% de Réduction sur Votre Première Commande",
       joinText: "Rejoignez 1 000+ clients heureux • Aucun spam, se désabonner à tout moment",
+      welcomeMessage: "Bienvenue chez Purrify !",
       features: {
         weeklyTips: "✓ Conseils hebdomadaires",
         exclusiveOffers: "✓ Offres exclusives",
         earlyAccessProducts: "✓ Accès anticipé"
       }
+    },
+    popup: {
+      title: "Obtenez {discount}% de réduction sur votre première commande !",
+      description: "Rejoignez 1 000+ clients heureux et recevez des conseils exclusifs, des réductions et un accès anticipé aux nouveaux produits.",
+      buttonText: "Obtenez {discount}% de réduction maintenant"
+    },
+    footer: {
+      title: "Restez informé avec Purrify",
+      description: "Recevez des conseils de soins pour chats et des offres exclusives directement dans votre boîte de réception.",
+      placeholder: "Votre courriel",
+      buttonText: "S'abonner"
+    },
+    inline: {
+      title: "Rejoignez la Communauté Purrify",
+      description: "Recevez des conseils d'experts en soins pour chats et des offres exclusives directement dans votre boîte de réception.",
+      buttonText: "S'abonner gratuitement",
+      successText: "Abonnement réussi !"
     }
   },
 
@@ -426,6 +468,21 @@ export const fr = {
     errorMessage: "Échec de la soumission de votre demande. Veuillez réessayer.",
     errorGeneric: "Une erreur s'est produite. Veuillez réessayer plus tard.",
     privacyNotice: "En soumettant ce formulaire, vous nous autorisez à vous contacter concernant votre échantillon gratuit de Purrify. Nous respectons votre vie privée et ne partagerons jamais vos informations avec des tiers."
+  },
+
+  // 404 Not Found Page
+  notFoundPage: {
+    title: "404 - Page Non Trouvée",
+    description: "Oups ! La page que vous recherchez a peut-être été déplacée, supprimée ou n'a peut-être jamais existé.",
+    lookingFor: "Vous pourriez chercher :",
+    returnHome: "Retour à la Page d'Accueil",
+    suggestedPages: {
+      home: { title: "Accueil", description: "Retour à notre page d'accueil" },
+      products: { title: "Produits", description: "Parcourez nos additifs pour litière de chat" },
+      howItWorks: { title: "Comment Ça Marche", description: "Découvrez comment Purrify élimine les odeurs" },
+      blog: { title: "Blog", description: "Lisez nos derniers articles sur les soins des chats" },
+      contact: { title: "Contact", description: "Contactez notre équipe" }
+    }
   },
 
   // SEO
@@ -2779,6 +2836,93 @@ export const fr = {
       saveFailed: "Échec de l'enregistrement des paramètres",
       payoutFailed: "Échec de la demande de paiement",
       sessionExpired: "Votre session a expiré. Veuillez vous reconnecter."
+    }
+  },
+
+  // Try Free Landing Page (for Ad Campaigns)
+  tryFreePage: {
+    meta: {
+      title: "Essayez Purrify Gratuitement - Seulement 4,76 $ de Livraison | Élimination des Odeurs de Litière pour Chat",
+      description: "Obtenez votre essai GRATUIT de Purrify - payez seulement 4,76 $ de livraison. Éliminez les odeurs de litière en 30 secondes. Plus de 138 avis 5 étoiles. Garantie de remboursement de 30 jours."
+    },
+    hero: {
+      badge: "Offre à Durée Limitée",
+      headline: "Essayez Purrify Gratuitement",
+      subheadline: "Seulement 4,76 $ de Livraison",
+      description: "Découvrez pourquoi plus de 1 000 parents de chats font confiance à Purrify pour éliminer les odeurs de litière. Obtenez votre essai gratuit aujourd'hui et découvrez la différence.",
+      cta: "Obtenir Mon Essai Gratuit",
+      shippingNote: "Livraison partout au Canada"
+    },
+    problem: {
+      headline: "Fatigué de Retenir Votre Respiration ?",
+      subheadline: "On comprend. Cette odeur de litière est embarrassante.",
+      points: [
+        "Les invités arrivent et vous vous précipitez pour vérifier la litière",
+        "Ouvrir les fenêtres en hiver juste pour aérer l'odeur",
+        "Acheter constamment des désodorisants qui ne fonctionnent pas",
+        "S'inquiéter que votre maison sent qu'un chat y vit"
+      ]
+    },
+    howItWorks: {
+      headline: "Air Frais en 30 Secondes",
+      subheadline: "Simple comme 1-2-3",
+      steps: [
+        {
+          number: "1",
+          title: "Saupoudrer",
+          description: "Ouvrez le sac et saupoudrez sur la litière de votre chat"
+        },
+        {
+          number: "2",
+          title: "Piéger",
+          description: "Le charbon actif piège instantanément les molécules d'ammoniac"
+        },
+        {
+          number: "3",
+          title: "Fraîcheur",
+          description: "Profitez de plus de 7 jours de fraîcheur sans odeur"
+        }
+      ]
+    },
+    socialProof: {
+      headline: "Rejoignez Plus de 1 000 Parents de Chats Heureux",
+      rating: "4.9",
+      reviewCount: "138",
+      reviewLabel: "Avis Vérifiés",
+      testimonials: [
+        {
+          text: "J'étais sceptique, mais en quelques heures mon appartement entier sentait frais. Mes invités n'avaient aucune idée que j'avais des chats !",
+          author: "Sarah M.",
+          location: "Toronto, ON"
+        },
+        {
+          text: "Enfin quelque chose qui fonctionne vraiment. Fini de masquer les odeurs avec des désodorisants.",
+          author: "Mike R.",
+          location: "Vancouver, BC"
+        },
+        {
+          text: "Les meilleurs 4,76 $ que j'aie jamais dépensés. J'ai déjà commandé la taille complète !",
+          author: "Jennifer K.",
+          location: "Montréal, QC"
+        }
+      ]
+    },
+    guarantee: {
+      headline: "Garantie Satisfait ou Remboursé de 30 Jours",
+      description: "Si vous n'êtes pas émerveillé par les résultats, nous vous remboursons. Sans poser de questions.",
+      badge: "Essai Sans Risque"
+    },
+    finalCta: {
+      headline: "Prêt à Respirer Facilement ?",
+      description: "Obtenez votre essai gratuit de Purrify aujourd'hui. Payez seulement 4,76 $ de livraison.",
+      buttonText: "Obtenir Mon Essai Gratuit",
+      note: "Annulez à tout moment. Aucun abonnement requis."
+    },
+    trust: {
+      madeInCanada: "Fabriqué au Canada",
+      natural: "100% Naturel",
+      fragrance: "Sans Parfum",
+      secure: "Paiement Sécurisé"
     }
   }
 

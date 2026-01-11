@@ -171,6 +171,23 @@ export const es: TranslationType = {
         description: "Precios mayoristas, pedidos al por mayor, soporte de marketing",
         cta: "Portal Mayorista"
       }
+    },
+    simplified: {
+      free: "GRATIS",
+      justPayShipping: "Solo paga $4.76 de envio",
+      noMore: "Se Acabo",
+      litterBoxSmell: "El Olor a Caja de Arena",
+      valueProposition: "El carbon activado elimina olores en la fuente. Funciona con cualquier arena.",
+      trialSize: "Tamano Prueba",
+      standard: "Estandar",
+      familyPack: "Paquete Familiar",
+      plusSH: "+ Envio",
+      thirtyDayGuarantee: "Garantia 30 Dias",
+      getFreeSample: "Obtener Muestra GRATIS",
+      soldThisWeek: "87 vendidos esta semana",
+      limitedStock: "Stock limitado invierno",
+      moneyBackGuarantee: "Garantia de Devolucion de Dinero 30 Dias",
+      freeShippingOver: "Envio Gratis Sobre $35"
     }
   },
 
@@ -236,7 +253,10 @@ export const es: TranslationType = {
       natural: "NATURAL",
       clay: "ARCILLA",
       nonClumping: "NO AGLOMERANTE"
-    }
+    },
+    learnTheScience: "Aprende la ciencia",
+    compareSizes: "compara nuestros tamanos",
+    coconutDescription: "Cascaras de coco puras y sostenibles son activadas con vapor de agua filtrado puro a alta presion para abrir millones de agujeros, tuneles y pasajes que atrapan las moleculas de olor."
   },
 
   // Products Section
@@ -339,7 +359,8 @@ export const es: TranslationType = {
         answer: "Si! Purrify cumple con los estandares NSF/ANSI 61, AWWA B604 y Food Chemicals Codex (FCC). Tambien tiene certificacion Halal y Kosher. Para especificaciones tecnicas completas, certificaciones e informacion detallada de seguridad incluyendo guias de uso para roedores, visita nuestra pagina de informacion de seguridad.",
         link: "/learn/safety"
       }
-    ]
+    ],
+    learnMore: "Aprende mas"
   },
 
   // Contact
@@ -349,6 +370,7 @@ export const es: TranslationType = {
     address: "109-17680 Rue Charles, Mirabel, QC J7J 0T6",
     phone: CONTACT_INFO.phone,
     email: "hello@purrify.ca",
+    courriel: "hello@purrify.ca",
     hours: {
       title: "Horario de Atencion",
       monday: "08:00 am - 8:00 pm",
@@ -375,6 +397,9 @@ export const es: TranslationType = {
     buttonText: "Suscribirse",
     successMessage: "Gracias por suscribirte!",
     errorMessage: "Ocurrio un error. Por favor intenta de nuevo.",
+    errorInvalidEmail: "Por favor ingresa una direccion de correo valida",
+    errorGeneric: "Algo salio mal. Por favor intenta de nuevo.",
+    privacyText: "Sin spam, cancela cuando quieras. Respetamos tu privacidad.",
     joinFamily: {
       title: "Unete a la Familia Purrify",
       subtitle: "Obtiene 10% de descuento en tu primera orden mas consejos exclusivos de cuidado de gatos",
@@ -391,11 +416,29 @@ export const es: TranslationType = {
       emailPlaceholder: "Ingresa tu direccion de correo",
       ctaButton: "Obtener 10% de Descuento en Tu Primera Orden",
       joinText: "Unete a mas de 1,000 clientes felices - Sin spam, cancela cuando quieras",
+      welcomeMessage: "Bienvenido a Purrify!",
       features: {
         weeklyTips: "Tips semanales",
         exclusiveOffers: "Ofertas exclusivas",
         earlyAccessProducts: "Acceso anticipado"
       }
+    },
+    popup: {
+      title: "Obtien {discount}% de Descuento en Tu Primera Orden!",
+      description: "Unete a mas de 1,000 clientes felices y recibe consejos exclusivos, descuentos y acceso anticipado a nuevos productos.",
+      buttonText: "Obtener {discount}% de Descuento Ahora"
+    },
+    footer: {
+      title: "Mantente Actualizado con Purrify",
+      description: "Recibe consejos de cuidado de gatos y ofertas exclusivas directamente en tu bandeja de entrada.",
+      placeholder: "Tu correo",
+      buttonText: "Suscribirse"
+    },
+    inline: {
+      title: "Unete a la Comunidad Purrify",
+      description: "Recibe consejos expertos de cuidado de gatos y ofertas exclusivas directamente en tu bandeja de entrada.",
+      buttonText: "Suscribirse Gratis",
+      successText: "Suscripcion Exitosa!"
     }
   },
 
@@ -413,6 +456,21 @@ export const es: TranslationType = {
     errorMessage: "Error al enviar tu solicitud. Por favor intenta de nuevo.",
     errorGeneric: "Ocurrio un error. Por favor intenta mas tarde.",
     privacyNotice: "Al enviar este formulario, nos permites contactarte sobre tu muestra gratis de Purrify. Respetamos tu privacidad y nunca compartiremos tu informacion con terceros."
+  },
+
+  // 404 Not Found Page
+  notFoundPage: {
+    title: "404 - Pagina No Encontrada",
+    description: "Oops! La pagina que buscas puede haber sido movida, eliminada o tal vez nunca existio.",
+    lookingFor: "Puede que estes buscando:",
+    returnHome: "Volver a la Pagina de Inicio",
+    suggestedPages: {
+      home: { title: "Inicio", description: "Volver a nuestra pagina principal" },
+      products: { title: "Productos", description: "Explora nuestros aditivos de arena para gatos" },
+      howItWorks: { title: "Como Funciona", description: "Aprende como Purrify elimina olores" },
+      blog: { title: "Blog", description: "Lee nuestros ultimos articulos sobre cuidado de gatos" },
+      contact: { title: "Contacto", description: "Ponte en contacto con nuestro equipo" }
+    }
   },
 
   // SEO
@@ -1787,135 +1845,164 @@ export const es: TranslationType = {
         title: "Listo para Aumentar Tus Ingresos?",
         description: "Unete a 21 minoristas establecidos de Montreal y areas circundantes que ya obtienen altos margenes con Purrify.",
         setupNote: "La configuracion toma menos de 24 horas.",
-        primaryButton: "Solicitar Asociacion"
+        primaryButton: "Solicitar Asociacion",
+        secondaryButton: "Llamanos"
       }
     },
     contact: {
       title: "Conviertete en Socio Minorista de Purrify",
       description: "Listo para agregar el aditivo de arena #1 de Canada a tu tienda? Completa el formulario abajo y te responderemos en 24 horas.",
-      sectionBadge: "Respuesta en 24 Horas Garantizada",
-      formTitle: "Solicitud de Asociacion",
-      formSubtitle: "Completa el formulario abajo y nuestro equipo de asociaciones te contactara dentro de 24 horas habiles.",
+      // Header section
+      sectionBadge: "Unete a 21 Socios Establecidos",
+      sectionTitle: "Inicia Tu",
+      sectionTitleHighlight: "Asociacion Hoy",
+      sectionDescription: "Listo para obtener margenes del 50%+ con la solucion #1 de olores de gatos de Canada?",
+      setupNote: "La configuracion toma menos de 24 horas.",
+      // Urgency stats
+      urgencyStats: {
+        approvalTime: {
+          value: "72h",
+          label: "Tiempo de Aprobacion"
+        },
+        setupFees: {
+          value: "Cero",
+          label: "Tarifas de Configuracion"
+        },
+        currentPartners: {
+          value: "21",
+          label: "Socios Actuales"
+        }
+      },
+      // Form section
       form: {
+        title: "Solicitud de Asociacion",
+        subtitle: "Solicitud rapida de 2 minutos. Respondemos el mismo dia!",
         fields: {
           businessName: {
             label: "Nombre del Negocio",
-            placeholder: "Tu Tienda de Mascotas"
+            placeholder: "Nombre de Tu Tienda de Mascotas",
+            required: true
           },
           contactName: {
             label: "Nombre de Contacto",
-            placeholder: "Tu nombre completo"
+            placeholder: "Tu Nombre Completo",
+            required: true
+          },
+          position: {
+            label: "Tu Posicion en la Empresa",
+            placeholder: "ej., Dueno, Gerente, Comprador, Representante de Ventas"
           },
           email: {
-            label: "Correo Electronico del Negocio",
-            placeholder: "tu@tienda.com"
+            label: "Correo Electronico",
+            placeholder: "tu@email.com",
+            required: true
           },
           phone: {
             label: "Numero de Telefono",
-            placeholder: "(514) 555-0123"
+            placeholder: "(555) 123-4567"
           },
           businessType: {
             label: "Tipo de Negocio",
             placeholder: "Seleccionar Tipo de Negocio",
+            required: true,
             options: {
               independentPetStore: "Tienda de Mascotas Independiente",
               petStoreChain: "Cadena de Tiendas de Mascotas",
-              vetClinic: "Clinica Veterinaria",
-              groomer: "Peluqueria/Spa de Mascotas",
-              breeder: "Criador/Gatil",
-              distributor: "Distribuidor/Mayorista",
-              onlineRetailer: "Minorista en Linea",
+              veterinaryClinic: "Clinica Veterinaria",
+              groomingSalon: "Salon de Peluqueria",
+              distributor: "Distribuidor",
               other: "Otro"
             }
           },
           locations: {
             label: "Numero de Ubicaciones",
-            placeholder: "ej. 3"
+            placeholder: "1"
           },
           currentProducts: {
-            label: "Productos de Arena Actuales",
-            placeholder: "Que productos de arena/desodorizantes vendes actualmente?"
-          },
-          monthlyVolume: {
-            label: "Volumen Mensual Estimado",
-            placeholder: "ej. 50-100 unidades"
+            label: "Marca de Arena para Gatos Mas Vendida",
+            placeholder: "Cual es la marca #1 de arena para gatos que mas vendes?"
           },
           message: {
             label: "Informacion Adicional",
-            placeholder: "Cuentanos sobre tu negocio y por que te gustaria asociarte con Purrify..."
+            placeholder: "Cuentanos sobre tu negocio y necesidades mayoristas..."
           }
         },
-        submit: "Enviar Solicitud de Asociacion",
-        submitting: "Enviando...",
-        required: "*"
+        submitButton: "Enviar Solicitud de Asociacion",
+        submitting: "Enviando..."
       },
+      // Success state
       success: {
-        title: "Solicitud de Asociacion Recibida!",
-        description: "Gracias por tu interes en convertirte en socio minorista de Purrify. Nuestro equipo de asociaciones revisara tu solicitud y te contactara dentro de 24 horas habiles.",
-        whatNext: "Que Sigue?",
-        steps: [
-          "Nuestro equipo revisara tu solicitud",
-          "Recibiras un correo de confirmacion en breve",
-          "Un gerente de asociaciones te contactara dentro de 24 horas",
-          "Discutiremos opciones de precios y configuracion"
-        ],
-        submitAnother: "Enviar Otra Solicitud",
-        backToRetailers: "Volver a Pagina de Minoristas"
+        title: "Solicitud Recibida!",
+        welcome: "Bienvenido a la Red de Socios Purrify!",
+        responseTime: "Te contactaremos dentro de 72 horas.",
+        nextSteps: {
+          title: "Tus Proximos Pasos",
+          step1: {
+            title: "Revision de Solicitud",
+            description: "Nuestro equipo revisa los detalles de tu tienda"
+          },
+          step2: {
+            title: "Llamada de Asociacion",
+            description: "Discutir precios, soporte y logistica"
+          },
+          step3: {
+            title: "Comenzar a Vender",
+            description: "Recibir inventario y lanzar"
+          }
+        },
+        timeline: {
+          title: "Cronograma Esperado hasta Ingresos",
+          approval: {
+            value: "72h",
+            label: "Aprobacion"
+          },
+          firstShipment: {
+            value: "3-5 dias",
+            label: "Primer Envio"
+          },
+          firstSales: {
+            value: "Semana 1",
+            label: "Primeras Ventas"
+          }
+        },
+        needHelp: "Necesitas asistencia inmediata?"
       },
+      // Success stories
       successStories: {
         title: "Historias de Exito de Socios",
-        subtitle: "Escucha de minoristas que se han asociado con Purrify",
         stories: {
           petPalace: {
-            businessName: "Animaux Montreal",
+            businessName: "Pet Palace Toronto",
             businessType: "Tienda de Mascotas Independiente",
-            quote: "Agregar Purrify fue una de las mejores decisiones que hemos tomado. Nuestros clientes lo adoran y la tasa de recompra es increible.",
-            metric: "+45% ventas de aditivos de arena"
+            quote: "Agregamos $800/mes en ingresos en nuestro primer trimestre. Los clientes lo aman y siguen volviendo!",
+            metric: "+145% crecimiento en ventas"
           },
           healthyPaws: {
-            businessName: "Pet Paradise",
-            businessType: "Cadena de Tiendas de Mascotas",
-            quote: "Los margenes de ganancia son excelentes y el soporte de marketing nos ha ayudado a aumentar las ventas mensualmente.",
-            metric: "89% tasa de recompra"
+            businessName: "Healthy Paws Vet",
+            businessType: "Clinica Veterinaria",
+            quote: "Nuestros clientes confian en nuestra recomendacion. Mejores margenes en nuestra seccion minorista.",
+            metric: "55% margen de ganancia"
           }
         }
       },
+      // Contact info section
       contactInfo: {
-        title: "Prefieres Contacto Directo?",
-        subtitle: "Nuestro equipo de asociaciones esta disponible para responder tus preguntas",
-        email: {
-          label: "Correo Electronico",
-          value: "partners@purrify.ca"
-        },
-        phone: {
-          label: "Telefono",
-          value: "(514) 577-9665"
-        },
-        hours: {
-          label: "Horario de Atencion",
-          value: "Lun-Vie: 9am-5pm EST"
+        title: "Necesitas Ayuda Inmediata?",
+        subtitle: "Habla con un especialista en asociaciones ahora",
+        wholesaleEmail: "wholesale@purrify.ca",
+        emailLabel: "Correo de Asociaciones",
+        emailHint: "Haz clic para redactar un correo o copiar la direccion.",
+        copied: "Copiado!",
+        copyFailed: "Fallo al copiar",
+        businessHours: {
+          title: "Horario Comercial",
+          hours: "Lunes - Viernes: 9 AM - 6 PM EST"
         }
       },
-      urgencyStats: {
-        title: "Por que Asociarse Ahora?",
-        retailers: {
-          value: "21+",
-          label: "Socios Minoristas"
-        },
-        margin: {
-          value: "50%+",
-          label: "Margenes de Ganancia"
-        },
-        support: {
-          value: "24h",
-          label: "Tiempo de Respuesta"
-        }
-      },
+      // Error messages
       errors: {
-        general: "Hubo un error al enviar tu solicitud. Por favor intenta de nuevo.",
-        requiredFields: "Por favor completa todos los campos requeridos.",
-        invalidEmail: "Por favor ingresa un correo electronico valido.",
-        invalidPhone: "Por favor ingresa un numero de telefono valido."
+        submitFailed: "Hubo un error al enviar tu consulta. Por favor intenta de nuevo o contactanos directamente a wholesale@purrify.ca",
+        defaultSuccess: "Solicitud de asociacion enviada exitosamente! Te contactaremos dentro de 72 horas."
       }
     }
   },
