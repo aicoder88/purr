@@ -21,6 +21,7 @@ All four must pass. No exceptions.
 | Blog content | `/content/blog/{en,fr,zh}/*.json` |
 | Tests (unit) | `__tests__/**/*.test.ts` |
 | Tests (e2e) | `e2e/**/*.spec.ts` |
+| Auth middleware | `proxy.ts` (NOT middleware.ts - Next.js 16) |
 
 ---
 
@@ -298,6 +299,7 @@ Critical rules:
 | E2E tests failing locally | Check `pnpm dev` is running |
 | Stripe webhooks not working locally | Run `stripe listen --forward-to localhost:3000/api/webhooks/stripe` |
 | Module not found after install | `pnpm install --force` |
+| "Both middleware.ts and proxy.ts detected" | Delete middleware.ts, use only proxy.ts (Next.js 16 change) |
 
 ---
 

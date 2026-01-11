@@ -117,14 +117,14 @@ test.describe('Blog Routing Functionality', () => {
       await expect(firstBlogLink).toBeVisible();
       await firstBlogLink.click();
 
-      // Should navigate to the blog post
-      await expect(page.locator('h1')).toBeVisible();
+      // Should navigate to the blog post - use first() since page may have multiple h1 elements
+      await expect(page.locator('h1').first()).toBeVisible();
 
       // Should be able to navigate back to blog
       const backToBlog = page.locator('a[href="/blog"]').first();
       if (await backToBlog.isVisible()) {
         await backToBlog.click();
-        await expect(page.locator('h1')).toBeVisible();
+        await expect(page.locator('h1').first()).toBeVisible();
       }
     } else {
       // In test environment without blog posts, verify the page structure is intact

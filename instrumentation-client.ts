@@ -11,6 +11,34 @@ if (process.env.NODE_ENV === 'production') {
       tracesSampleRate: 0.1,
       replaysSessionSampleRate: 0,
       replaysOnErrorSampleRate: 0,
+
+      // Filter out third-party script errors that we can't control
+      beforeSend(event, hint) {
+        const error = hint?.originalException;
+        const errorMessage = error instanceof Error ? error.message : String(error);
+
+        // Ignore errors from third-party chat plugins and injected scripts
+        const ignoredPatterns = [
+          'Illegal invocation',       // Facebook chat plugin
+          'chat_plugin.js',           // Chat plugins
+          'inject_content.js',        // Browser extension injections
+          'invalid origin',           // Privacy browser blocking analytics
+          'ResizeObserver loop',      // Browser timing issue
+          'Network request failed',   // Blocked tracking requests
+          'Script error',             // Cross-origin script errors
+          'fbclid',                   // Facebook click ID tracking issues
+        ];
+
+        if (ignoredPatterns.some(pattern =>
+          errorMessage?.includes(pattern) ||
+          event.exception?.values?.some(v => v.value?.includes(pattern)) ||
+          event.request?.url?.includes(pattern)
+        )) {
+          return null; // Drop the event
+        }
+
+        return event;
+      },
     });
   });
 }
