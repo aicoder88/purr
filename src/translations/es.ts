@@ -138,7 +138,7 @@ export const es: TranslationType = {
     ferretCage: "Eliminador de Olores de Jaula de Huron",
     eliminateCatOdors: "7 Dias Sin Olor de Caja de Arena",
     instantly: "Elimina el Olor de la Caja de Arena Casi Al Instante",
-    description: "Usando tecnologia de atrapamiento molecular de coco \"activado\" (sin quimicos) que la NASA desarrollo para limpiar el aire respirable en el espacio, una sola aplicacion reduce drasticamente el olor de la caja de arena casi inmediatamente y continua funcionando hasta por 7 dias completos.",
+    description: "Usando tecnologia de atrapamiento molecular de coco \"activado\" (sin quimicos) — la misma ciencia de filtracion que se encuentra en los sistemas de agua potable — una sola aplicacion reduce drasticamente el olor de la caja de arena casi inmediatamente y continua funcionando hasta por 7 dias completos.",
     socialProof: {
       trustNumber: "1,000+",
       trustText: "padres de gatos se despidieron del olor de caja de arena",

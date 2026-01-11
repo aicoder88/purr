@@ -429,7 +429,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
                   <span className="text-electric-indigo">Start Eliminating.</span>
                 </h2>
                 <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                  Most deodorizers use heavy perfumes to hide smells. Purrify works like a magnet—trapping ammonia gas molecules inside millions of microscopic pores. It is the same principle NASA uses to keep air fresh in space stations.
+                  Most deodorizers use heavy perfumes to hide smells. Purrify works like a magnet—trapping ammonia gas molecules inside millions of microscopic pores. It's the same filtration-grade technology used in drinking water systems and hospital air purifiers.
                 </p>
                 <div className="space-y-4">
                   {benefits.map((benefit, i) => (
