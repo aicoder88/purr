@@ -7,8 +7,6 @@ import { WhyPurrify } from '../src/components/sections/why-purrify';
 import dynamic from 'next/dynamic';
 import { BlogPreview } from '../src/components/sections/blog-preview';
 
-// Above-the-fold banner should be SSR to avoid CLS
-import { ScrollingAnnouncementBar } from '../src/components/sections/scrolling-announcement-bar';
 import { LazyLoad } from '../src/components/performance/LazyLoad';
 
 // A/B Testing
@@ -29,6 +27,11 @@ const EnhancedProductComparison = dynamic(() => import('../src/components/sectio
 const CTA = dynamic(() => import('../src/components/sections/cta').then(mod => ({ default: mod.CTA })), {
   ssr: false,
   loading: () => sectionSkeleton('h-64')
+});
+
+const ScrollingAnnouncementBar = dynamic(() => import('../src/components/sections/scrolling-announcement-bar').then(mod => ({ default: mod.ScrollingAnnouncementBar })), {
+  ssr: false,
+  loading: () => sectionSkeleton('h-20', 'rounded-none')
 });
 import { SITE_NAME, SITE_DESCRIPTION, CONTACT_INFO, SOCIAL_LINKS } from '../src/lib/constants';
 import { getProductPrice, getPriceRange } from '../src/lib/pricing';
