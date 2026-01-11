@@ -541,6 +541,68 @@ export interface ZendeskArticle {
   comments_disabled: boolean;
 }
 
+export interface ZendeskSection {
+  id: number;
+  url: string;
+  html_url: string;
+  category_id: number;
+  position: number;
+  sorting: string;
+  created_at: string;
+  updated_at: string;
+  name: string;
+  description: string;
+  locale: string;
+  source_locale: string;
+  outdated: boolean;
+}
+
+export interface ZendeskCategory {
+  id: number;
+  url: string;
+  html_url: string;
+  position: number;
+  created_at: string;
+  updated_at: string;
+  name: string;
+  description: string;
+  locale: string;
+  source_locale: string;
+  outdated: boolean;
+}
+
+export interface ZendeskArticleCreate {
+  title: string;
+  body: string;
+  locale?: string;
+  draft?: boolean;
+  promoted?: boolean;
+  position?: number;
+  comments_disabled?: boolean;
+  label_names?: string[];
+}
+
+export interface ZendeskSectionCreate {
+  name: string;
+  description?: string;
+  locale?: string;
+  position?: number;
+}
+
+export interface ZendeskCategoryCreate {
+  name: string;
+  description?: string;
+  locale?: string;
+  position?: number;
+}
+
+/**
+ * Get Help Center base URL
+ */
+function getHelpCenterBaseUrl(): string {
+  return `https://${ZENDESK_CONFIG.subdomain}.zendesk.com/api/v2/help_center`;
+}
+
 /**
  * Search Help Center articles
  */
@@ -549,9 +611,199 @@ export async function searchArticles(
   locale: string = 'en-us'
 ): Promise<{ results: ZendeskArticle[] }> {
   const encodedQuery = encodeURIComponent(query);
-  return zendeskFetch<{ results: ZendeskArticle[] }>(
-    `/help_center/articles/search.json?query=${encodedQuery}&locale=${locale}`
-  );
+  const url = `${getHelpCenterBaseUrl()}/articles/search.json?query=${encodedQuery}&locale=${locale}`;
+
+  const response = await fetch(url, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: getAuthHeader(),
+    },
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Zendesk Help Center API Error: ${response.status} - ${errorText}`);
+  }
+
+  return response.json();
+}
+
+/**
+ * List all categories in Help Center
+ */
+export async function listCategories(
+  locale: string = 'en-us'
+): Promise<{ categories: ZendeskCategory[] }> {
+  const url = `${getHelpCenterBaseUrl()}/${locale}/categories.json`;
+
+  const response = await fetch(url, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: getAuthHeader(),
+    },
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Zendesk Help Center API Error: ${response.status} - ${errorText}`);
+  }
+
+  return response.json();
+}
+
+/**
+ * Create a category in Help Center
+ */
+export async function createCategory(
+  category: ZendeskCategoryCreate,
+  locale: string = 'en-us'
+): Promise<{ category: ZendeskCategory }> {
+  const url = `${getHelpCenterBaseUrl()}/${locale}/categories.json`;
+
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: getAuthHeader(),
+    },
+    body: JSON.stringify({ category }),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Zendesk Help Center API Error: ${response.status} - ${errorText}`);
+  }
+
+  return response.json();
+}
+
+/**
+ * List all sections in a category
+ */
+export async function listSections(
+  categoryId: number,
+  locale: string = 'en-us'
+): Promise<{ sections: ZendeskSection[] }> {
+  const url = `${getHelpCenterBaseUrl()}/${locale}/categories/${categoryId}/sections.json`;
+
+  const response = await fetch(url, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: getAuthHeader(),
+    },
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Zendesk Help Center API Error: ${response.status} - ${errorText}`);
+  }
+
+  return response.json();
+}
+
+/**
+ * Create a section in a category
+ */
+export async function createSection(
+  categoryId: number,
+  section: ZendeskSectionCreate,
+  locale: string = 'en-us'
+): Promise<{ section: ZendeskSection }> {
+  const url = `${getHelpCenterBaseUrl()}/${locale}/categories/${categoryId}/sections.json`;
+
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: getAuthHeader(),
+    },
+    body: JSON.stringify({ section }),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Zendesk Help Center API Error: ${response.status} - ${errorText}`);
+  }
+
+  return response.json();
+}
+
+/**
+ * List all articles in a section
+ */
+export async function listArticles(
+  sectionId: number,
+  locale: string = 'en-us'
+): Promise<{ articles: ZendeskArticle[] }> {
+  const url = `${getHelpCenterBaseUrl()}/${locale}/sections/${sectionId}/articles.json`;
+
+  const response = await fetch(url, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: getAuthHeader(),
+    },
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Zendesk Help Center API Error: ${response.status} - ${errorText}`);
+  }
+
+  return response.json();
+}
+
+/**
+ * Create an article in a section
+ */
+export async function createArticle(
+  sectionId: number,
+  article: ZendeskArticleCreate,
+  locale: string = 'en-us'
+): Promise<{ article: ZendeskArticle }> {
+  const url = `${getHelpCenterBaseUrl()}/${locale}/sections/${sectionId}/articles.json`;
+
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: getAuthHeader(),
+    },
+    body: JSON.stringify({ article }),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Zendesk Help Center API Error: ${response.status} - ${errorText}`);
+  }
+
+  return response.json();
+}
+
+/**
+ * Update an existing article
+ */
+export async function updateArticle(
+  articleId: number,
+  article: Partial<ZendeskArticleCreate>,
+  locale: string = 'en-us'
+): Promise<{ article: ZendeskArticle }> {
+  const url = `${getHelpCenterBaseUrl()}/${locale}/articles/${articleId}.json`;
+
+  const response = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: getAuthHeader(),
+    },
+    body: JSON.stringify({ article }),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Zendesk Help Center API Error: ${response.status} - ${errorText}`);
+  }
+
+  return response.json();
 }
 
 // ============================================================================
@@ -560,16 +812,27 @@ export async function searchArticles(
 
 const zendeskClient = {
   isConfigured: isZendeskConfigured,
+  // Ticket operations
   createTicket,
   getTicket,
   updateTicket,
   addTicketComment,
+  // User operations
   createOrUpdateUser,
   searchUserByEmail,
+  // Convenience ticket functions
   createContactTicket,
   createB2BTicket,
   createRefundTicket,
+  // Help Center operations
   searchArticles,
+  listCategories,
+  createCategory,
+  listSections,
+  createSection,
+  listArticles,
+  createArticle,
+  updateArticle,
 };
 
 export default zendeskClient;
