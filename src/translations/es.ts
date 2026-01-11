@@ -370,7 +370,6 @@ export const es: TranslationType = {
     address: "109-17680 Rue Charles, Mirabel, QC J7J 0T6",
     phone: CONTACT_INFO.phone,
     email: "hello@purrify.ca",
-    courriel: "hello@purrify.ca",
     hours: {
       title: "Horario de Atencion",
       monday: "08:00 am - 8:00 pm",

@@ -1412,6 +1412,7 @@ export interface TranslationType {
         description: string;
         setupNote: string;
         primaryButton: string;
+        secondaryButton?: string;
       };
     };
     contact: {
@@ -1431,26 +1432,32 @@ export interface TranslationType {
           businessName?: {
             label: string;
             placeholder: string;
+            required?: boolean;
           };
           contactName?: {
             label: string;
             placeholder: string;
+            required?: boolean;
           };
           email?: {
             label: string;
             placeholder: string;
+            required?: boolean;
           };
           phone?: {
             label: string;
             placeholder: string;
+            required?: boolean;
           };
           position?: {
             label: string;
             placeholder: string;
+            required?: boolean;
           };
           businessType?: {
             label: string;
             placeholder: string;
+            required?: boolean;
             options?: {
               independentPetStore?: string;
               petStoreChain?: string;
@@ -1467,18 +1474,22 @@ export interface TranslationType {
           locations?: {
             label: string;
             placeholder: string;
+            required?: boolean;
           };
           currentProducts?: {
             label: string;
             placeholder: string;
+            required?: boolean;
           };
           monthlyVolume?: {
             label: string;
             placeholder: string;
+            required?: boolean;
           };
           message?: {
             label: string;
             placeholder: string;
+            required?: boolean;
           };
         };
         submit?: string;
