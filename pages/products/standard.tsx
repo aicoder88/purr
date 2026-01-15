@@ -258,7 +258,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
               </li>
               <li>/</li>
               <li>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`} className="hover:text-deep-coral transition-colors">
+                <Link href={`${locale !== 'en' ? `/${locale}` : ''}/#products`} className="hover:text-deep-coral transition-colors">
                   Products
                 </Link>
               </li>
@@ -541,7 +541,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
         {/* Back navigation */}
         <section className="py-12 border-t border-gray-100 dark:border-gray-900">
           <Container className="text-center">
-            <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`} className="inline-flex items-center text-gray-500 dark:text-gray-400 hover:text-deep-coral font-bold gap-2 transition-colors">
+            <Link href={`${locale !== 'en' ? `/${locale}` : ''}/#products`} className="inline-flex items-center text-gray-500 dark:text-gray-400 hover:text-deep-coral font-bold gap-2 transition-colors">
               <ArrowLeft className="w-5 h-5" /> Back to all sizes
             </Link>
           </Container>

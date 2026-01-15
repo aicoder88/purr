@@ -27,8 +27,10 @@ const DEFAULT_META_DESCRIPTION_PADDING =
   'Explore Purrify activated carbon technology that neutralizes tough litter box odors and keeps homes fresh.';
 const DEFAULT_META_TITLE_SUFFIX = ' | Purrify';
 const META_TITLE_MAX_LENGTH = 60;
-const META_DESCRIPTION_MIN_LENGTH = 110;
-const META_DESCRIPTION_MAX_LENGTH = 160;
+// Google typically displays 120-155 characters for meta descriptions
+// Using 120-155 range for optimal SERP display
+const META_DESCRIPTION_MIN_LENGTH = 120;
+const META_DESCRIPTION_MAX_LENGTH = 155;
 
 export const getPriceValidityDate = (validForDays: number = DEFAULT_PRICE_VALIDITY_DAYS) => {
   const validityDate = new Date();

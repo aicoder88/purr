@@ -219,13 +219,13 @@ const ProductsPage: NextPage = () => {
         <title>{pageTitle} | Purrify</title>
         <meta name="description" content={pageDescription} />
         <meta name="keywords" content="Purrify products, cat litter additive, activated carbon, odor control, trial size, family pack" />
-        <link rel="canonical" href={`https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products`} />
+        <link rel="canonical" href={`https://www.purrify.ca${locale !== 'en' ? `/${locale}` : ''}/products`} />
 
         {/* Open Graph */}
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products`} />
+        <meta property="og:url" content={`https://www.purrify.ca${locale !== 'en' ? `/${locale}` : ''}/products`} />
         <meta property="og:image" content="https://www.purrify.ca/optimized/og-products.webp" />
 
         {/* Structured Data */}

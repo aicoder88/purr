@@ -254,9 +254,9 @@ export default function CustomerReferralsPage({
             </div>
 
             <div className="text-right">
-              <h1 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100">
+              <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100">
                 Referral Center
-              </h1>
+              </h2>
               <p className="text-gray-600 dark:text-gray-400">
                 Welcome back, {userName}!
               </p>

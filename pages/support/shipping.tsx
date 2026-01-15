@@ -143,7 +143,7 @@ const ShippingPage: NextPage = () => {
               "@type": "WebPage",
               "name": "Shipping Information",
               "description": "Purrify shipping options, delivery times, and costs for Canada and international delivery.",
-              "url": `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/support/shipping`
+              "url": `https://www.purrify.ca${locale !== 'en' ? `/${locale}` : ''}/support/shipping`
             })
           }}
         />
@@ -176,7 +176,7 @@ const ShippingPage: NextPage = () => {
                 <Home className="w-4 h-4" />
               </Link>
               <span>/</span>
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/contact`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+              <Link href={`${locale !== 'en' ? `/${locale}` : ''}/contact`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
                 Support
               </Link>
               <span>/</span>
@@ -470,13 +470,13 @@ const ShippingPage: NextPage = () => {
                 Get fast, reliable delivery right to your door. Trial size shipping is included, and orders $25+ receive expedited handling across Canada.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
+                <Link href={`${locale !== 'en' ? `/${locale}` : ''}/products/trial-size`}>
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
                     {`Order Trial Size - ${trialPrice} (shipping included)`}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`}>
+                <Link href={`${locale !== 'en' ? `/${locale}` : ''}/#products`}>
                   <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-white bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
                     View All Products
                   </Button>
@@ -496,7 +496,7 @@ const ShippingPage: NextPage = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/contact`} className="group">
+              <Link href={`${locale !== 'en' ? `/${locale}` : ''}/contact`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
                   <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
                     Contact Support
@@ -507,7 +507,7 @@ const ShippingPage: NextPage = () => {
                 </div>
               </Link>
               
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/products`} className="group">
+              <Link href={`${locale !== 'en' ? `/${locale}` : ''}/products`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
                   <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
                     Compare Products
@@ -518,7 +518,7 @@ const ShippingPage: NextPage = () => {
                 </div>
               </Link>
               
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/reviews`} className="group">
+              <Link href={`${locale !== 'en' ? `/${locale}` : ''}/reviews`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700 hover:shadow-xl transition-shadow">
                   <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] transition-colors">
                     Customer Reviews

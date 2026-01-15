@@ -499,7 +499,7 @@ const FAQPage: NextPage = () => {
                 <Home className="w-4 h-4" />
               </Link>
               <span>/</span>
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+              <Link href={`${locale !== 'en' ? `/${locale}` : ''}/learn/how-it-works`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
                 Learn
               </Link>
               <span>/</span>
@@ -693,7 +693,7 @@ const FAQPage: NextPage = () => {
                             {item.answer}
                           </p>
                           {(item as { link?: string }).link && (
-                            <Link href={`${locale === 'fr' ? '/fr' : ''}${(item as { link?: string }).link}`}>
+                            <Link href={`${locale !== 'en' ? `/${locale}` : ''}${(item as { link?: string }).link}`}>
                               <Button
                                 size="sm"
                                 className="mt-4 bg-gradient-to-r from-deep-coral to-electric-indigo hover:from-deep-coral-600 hover:to-electric-indigo-600 text-white dark:text-gray-100 font-semibold hover:scale-105 transition-all duration-300"
@@ -763,7 +763,7 @@ const FAQPage: NextPage = () => {
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                     Get detailed answers via email
                   </p>
-                  <Link href={`${locale === 'fr' ? '/fr' : ''}/contact`}>
+                  <Link href={`${locale !== 'en' ? `/${locale}` : ''}/contact`}>
                     <Button size="sm" className="bg-electric-indigo hover:bg-electric-indigo-600 hover:scale-105 text-white dark:text-gray-100 transition-all duration-300">
                       Contact Us
                     </Button>
@@ -819,13 +819,13 @@ const FAQPage: NextPage = () => {
                 Start with our risk-free trial size and experience the difference for yourself.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
+                <Link href={`${locale !== 'en' ? `/${locale}` : ''}/products/trial-size`}>
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-electric-indigo hover:bg-gray-100 hover:scale-105 dark:hover:bg-gray-700 font-bold transition-all duration-300">
                     {trialCtaLabel}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/products`}>
+                <Link href={`${locale !== 'en' ? `/${locale}` : ''}/products`}>
                   <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 hover:bg-white hover:scale-105 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-50 transition-all duration-300">
                     Compare All Sizes
                   </Button>
@@ -845,7 +845,7 @@ const FAQPage: NextPage = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`} className="group">
+              <Link href={`${locale !== 'en' ? `/${locale}` : ''}/learn/how-it-works`} className="group">
                 <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
                     How It Works
@@ -856,7 +856,7 @@ const FAQPage: NextPage = () => {
                 </div>
               </Link>
 
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/cat-litter-guide`} className="group">
+              <Link href={`${locale !== 'en' ? `/${locale}` : ''}/learn/cat-litter-guide`} className="group">
                 <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
                     Cat Litter Guide
@@ -867,7 +867,7 @@ const FAQPage: NextPage = () => {
                 </div>
               </Link>
 
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/reviews`} className="group">
+              <Link href={`${locale !== 'en' ? `/${locale}` : ''}/reviews`} className="group">
                 <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
                     Customer Stories

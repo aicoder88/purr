@@ -111,6 +111,17 @@ module.exports = {
     '/zh/locations/*',
     '/es/locations',
     '/es/locations/*',
+    // Exclude Spanish protected/portal pages (not public-facing)
+    '/es/affiliate/*',
+    '/es/retailer/*',
+    '/es/customer/*',
+    '/es/admin/*',
+    // Exclude Spanish versions of pages that redirect or are post-purchase
+    '/es/results',
+    '/es/free',
+    // B2B Spanish pages - keep some, exclude portal-specific
+    '/es/invest',
+    '/es/dialergptpitchdeck',
   ],
   alternateRefs: [
     { href: 'https://www.purrify.ca', hreflang: 'en-CA' },
@@ -189,8 +200,14 @@ module.exports = {
     { loc: '/products/family-pack', changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString() },
     // USA landing page - important for US market expansion
     { loc: '/us', changefreq: 'weekly', priority: 0.85, lastmod: new Date().toISOString() },
-    // Spanish pages
+    // Spanish pages - key landing pages for Spanish market
     { loc: '/es/opiniones', changefreq: 'weekly', priority: 0.7, lastmod: new Date().toISOString() },
+    { loc: '/es/products/trial-size', changefreq: 'weekly', priority: 0.85, lastmod: new Date().toISOString() },
+    { loc: '/es/products/standard', changefreq: 'weekly', priority: 0.85, lastmod: new Date().toISOString() },
+    { loc: '/es/products/family-pack', changefreq: 'weekly', priority: 0.85, lastmod: new Date().toISOString() },
+    { loc: '/es/contact', changefreq: 'monthly', priority: 0.5, lastmod: new Date().toISOString() },
+    { loc: '/es/learn/how-it-works', changefreq: 'monthly', priority: 0.6, lastmod: new Date().toISOString() },
+    { loc: '/es/learn/faq', changefreq: 'monthly', priority: 0.6, lastmod: new Date().toISOString() },
   ],
   transform: async (config, path) => {
     // Blog pages - English only hreflang (fr/zh blog not available)
@@ -218,55 +235,38 @@ module.exports = {
       };
     }
 
-    // Spanish pages - specific hreflang setup
-    // Extract the path without locale prefix for proper hreflang generation
+    // Spanish pages - NO alternateRefs to avoid doubled paths bug
+    // next-sitemap auto-appends path to alternateRefs.href even in transform returns
+    // Hreflang for locale pages will be handled by the page's own meta tags
     if (path.startsWith('/es/') || path === '/es') {
-      const pathWithoutLocale = path.replace(/^\/es/, '') || '/';
-      const enPath = pathWithoutLocale === '/' ? '' : pathWithoutLocale;
       return {
         loc: path,
         changefreq: 'weekly',
         priority: 0.7,
         lastmod: new Date().toISOString(),
-        alternateRefs: [
-          { href: `https://www.purrify.ca${enPath}`, hreflang: 'en-CA' },
-          { href: `https://www.purrify.ca${path}`, hreflang: 'es' },
-          { href: `https://www.purrify.ca${enPath}`, hreflang: 'x-default' },
-        ],
+        // No alternateRefs - let page-level meta handle hreflang to avoid sitemap path doubling
       };
     }
 
-    // French pages - specific hreflang setup
+    // French pages - NO alternateRefs to avoid doubled paths bug
     if (path.startsWith('/fr/') || path === '/fr') {
-      const pathWithoutLocale = path.replace(/^\/fr/, '') || '/';
-      const enPath = pathWithoutLocale === '/' ? '' : pathWithoutLocale;
       return {
         loc: path,
         changefreq: 'weekly',
         priority: 0.7,
         lastmod: new Date().toISOString(),
-        alternateRefs: [
-          { href: `https://www.purrify.ca${enPath}`, hreflang: 'en-CA' },
-          { href: `https://www.purrify.ca${path}`, hreflang: 'fr-CA' },
-          { href: `https://www.purrify.ca${enPath}`, hreflang: 'x-default' },
-        ],
+        // No alternateRefs - let page-level meta handle hreflang
       };
     }
 
-    // Chinese pages - specific hreflang setup
+    // Chinese pages - NO alternateRefs to avoid doubled paths bug
     if (path.startsWith('/zh/') || path === '/zh') {
-      const pathWithoutLocale = path.replace(/^\/zh/, '') || '/';
-      const enPath = pathWithoutLocale === '/' ? '' : pathWithoutLocale;
       return {
         loc: path,
         changefreq: 'weekly',
         priority: 0.7,
         lastmod: new Date().toISOString(),
-        alternateRefs: [
-          { href: `https://www.purrify.ca${enPath}`, hreflang: 'en-CA' },
-          { href: `https://www.purrify.ca${path}`, hreflang: 'zh-CN' },
-          { href: `https://www.purrify.ca${enPath}`, hreflang: 'x-default' },
-        ],
+        // No alternateRefs - let page-level meta handle hreflang
       };
     }
 

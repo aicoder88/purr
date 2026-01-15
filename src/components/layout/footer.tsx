@@ -297,6 +297,22 @@ export function Footer() {
                     Cat Litter Guide
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href="/learn/solutions/ammonia-smell-cat-litter"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    Ammonia Solutions
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/tools/cat-litter-calculator"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    Litter Calculator
+                  </Link>
+                </li>
               </ul>
             </div>
 

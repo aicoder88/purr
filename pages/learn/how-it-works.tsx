@@ -328,7 +328,7 @@ export default function HowItWorksPage() {
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 Have more questions about how Purrify works?
               </p>
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/contact`}>
+              <Link href={`${locale !== 'en' ? `/${locale}` : ''}/contact`}>
                 <Button size="lg" variant="outline">
                   Contact Our Experts
                 </Button>
@@ -348,13 +348,13 @@ export default function HowItWorksPage() {
                 Try Purrify's activated carbon technology risk-free with our trial size
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
+                <Link href={`${locale !== 'en' ? `/${locale}` : ''}/products/trial-size`}>
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
                     {trialSizeCtaLabel}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`}>
+                <Link href={`${locale !== 'en' ? `/${locale}` : ''}/#products`}>
                   <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
                     View All Products
                   </Button>
@@ -368,7 +368,7 @@ export default function HowItWorksPage() {
         <section className="py-8">
           <Container>
             <div className="text-center">
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/#how-it-works`}>
+              <Link href={`${locale !== 'en' ? `/${locale}` : ''}/#how-it-works`}>
                 <Button variant="outline" size="lg">
                   <ArrowLeft className="w-5 h-5 mr-2" />
                   Back to Homepage

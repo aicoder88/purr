@@ -300,7 +300,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
               </li>
               <li>/</li>
               <li>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
+                <Link href={`${locale !== 'en' ? `/${locale}` : ''}/#products`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
                   Products
                 </Link>
               </li>
@@ -503,7 +503,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                       <Heart className="w-5 h-5 mr-2" />
                       Add to Wishlist
                     </Button>
-                    <Link href={`${locale === 'fr' ? '/fr' : ''}/reviews`}>
+                    <Link href={`${locale !== 'en' ? `/${locale}` : ''}/reviews`}>
                       <Button variant="outline" size="lg" className="flex-1">
                         <Users className="w-5 h-5 mr-2" />
                         Read Reviews
@@ -649,7 +649,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
             </div>
 
             <div className="text-center mt-12">
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/reviews`}>
+              <Link href={`${locale !== 'en' ? `/${locale}` : ''}/reviews`}>
                 <Button variant="outline" size="lg">
                   Read All Multi-Cat Stories
                 </Button>
@@ -676,7 +676,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                 <p className="text-gray-600 dark:text-gray-300 mb-4">12g - Single use test</p>
                 <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">{trialPrice}</div>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">+ Shipping</p>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
+                <Link href={`${locale !== 'en' ? `/${locale}` : ''}/products/trial-size`}>
                   <Button variant="outline" className="w-full">View Trial Size</Button>
                 </Link>
               </div>
@@ -686,7 +686,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                 <p className="text-gray-600 dark:text-gray-300 mb-4">50g - One month supply</p>
                 <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">{standardPrice}</div>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">+ Shipping</p>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/products/standard`}>
+                <Link href={`${locale !== 'en' ? `/${locale}` : ''}/products/standard`}>
                   <Button variant="outline" className="w-full">View Standard Size</Button>
                 </Link>
               </div>
@@ -709,7 +709,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
         <section className="py-8 cv-auto cis-480">
           <Container>
             <div className="text-center">
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`}>
+              <Link href={`${locale !== 'en' ? `/${locale}` : ''}/#products`}>
                 <Button variant="outline" size="lg">
                   <ArrowLeft className="w-5 h-5 mr-2" />
                   Back to All Products

@@ -551,6 +551,36 @@ const REDIRECTS = [
     destination: "/blog/most-powerful-odor-absorber",
     permanent: true,
   },
+
+  // Catch doubled locale paths from malformed hreflang (SEO fix Jan 2026)
+  // These were caused by sitemap auto-appending paths to alternateRefs
+  {
+    source: "/:path*/es/:path2*",
+    destination: "/es/:path2*",
+    permanent: true,
+  },
+  {
+    source: "/:path*/fr/:path2*",
+    destination: "/fr/:path2*",
+    permanent: true,
+  },
+  {
+    source: "/:path*/zh/:path2*",
+    destination: "/zh/:path2*",
+    permanent: true,
+  },
+
+  // Common typo/variation redirects
+  {
+    source: "/producto/:path*",
+    destination: "/products/:path*",
+    permanent: true,
+  },
+  {
+    source: "/produit/:path*",
+    destination: "/products/:path*",
+    permanent: true,
+  },
 ];
 
 const OPTIMIZE_PACKAGE_IMPORTS = [

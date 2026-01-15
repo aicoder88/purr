@@ -152,7 +152,7 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
               </li>
               <li>/</li>
               <li>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
+                <Link href={`${locale !== 'en' ? `/${locale}` : ''}/#products`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
                   Products
                 </Link>
               </li>
@@ -598,7 +598,7 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
         <section className="py-8 bg-white dark:bg-gray-900">
           <Container>
             <div className="text-center">
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/#products`}>
+              <Link href={`${locale !== 'en' ? `/${locale}` : ''}/#products`}>
                 <Button variant="outline" size="lg">
                   <ArrowLeft className="w-5 h-5 mr-2" />
                   Back to All Products
