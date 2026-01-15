@@ -282,7 +282,7 @@ export default function BlogPost({ post }: { post: BlogPost }) {
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={post.link} />
+        <meta property="og:url" content={`${SITE_URL}${post.link}`} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt} />
         <meta property="og:image" content={post.image} />
