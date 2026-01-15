@@ -680,10 +680,7 @@ export default function SheltersPage() {
                     {form.successTitle || (locale === 'fr' ? 'Demande Recue!' : 'Application Received!')}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-6">
-                    {form.successMessage || (locale === 'fr'
-                      ? 'Merci pour votre interet! Notre equipe vous contactera dans les 24-48 heures pour discuter de comment nous pouvons soutenir votre refuge.'
-                      : 'Thank you for your interest! Our team will contact you within 24-48 hours to discuss how we can support your shelter.'
-                    )}
+                    {t.forms?.success?.shelterContact || 'Thank you for your interest! Our team will contact you within 24-48 hours to discuss how we can support your shelter.'}
                   </p>
                   <div className="space-y-4">
                     <div className="space-x-4">

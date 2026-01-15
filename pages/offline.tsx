@@ -5,8 +5,11 @@ import { Button } from '../src/components/ui/button';
 import { WifiOff, RefreshCw, Home, Phone } from 'lucide-react';
 import Link from 'next/link';
 import { CONTACT_INFO, PHONE_MESSAGING } from '../src/lib/constants';
+import { useTranslation } from '../src/lib/translation-context';
 
 const OfflinePage: NextPage = () => {
+  const { t } = useTranslation();
+
   const handleRetry = () => {
     if (typeof globalThis.window !== 'undefined') {
       window.location.reload();
@@ -16,11 +19,11 @@ const OfflinePage: NextPage = () => {
   return (
     <>
       <NextSeo
-        title="Offline - Purrify"
-        description="You're currently offline. Please check your internet connection."
+        title={`${t.offlinePage?.title || 'Offline'} - Purrify`}
+        description={t.offlinePage?.description || "You're currently offline. Please check your internet connection."}
         noindex={true}
       />
-      
+
       <Container>
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center max-w-md mx-auto px-4">
@@ -30,17 +33,16 @@ const OfflinePage: NextPage = () => {
                 <WifiOff className="w-12 h-12 text-gray-400 dark:text-gray-500" />
               </div>
             </div>
-            
+
             {/* Title and Message */}
             <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-              You're Offline
+              {t.offlinePage?.title || "You're Offline"}
             </h1>
-            
+
             <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-              It looks like you've lost your internet connection. Don't worry - you can still browse 
-              some cached pages while offline. Once you're back online, everything will work normally.
+              {t.offlinePage?.description || "It looks like you've lost your internet connection. Don't worry - you can still browse some cached pages while offline. Once you're back online, everything will work normally."}
             </p>
-            
+
             {/* Action Buttons */}
             <div className="space-y-4">
               <Button
@@ -48,41 +50,44 @@ const OfflinePage: NextPage = () => {
                 className="w-full bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-white"
               >
                 <RefreshCw className="w-4 h-4 mr-2" />
-                Try Again
+                {t.offlinePage?.tryAgain || 'Try Again'}
               </Button>
-              
+
               <Link href="/" passHref>
                 <Button variant="outline" className="w-full">
                   <Home className="w-4 h-4 mr-2" />
-                  Go to Homepage
+                  {t.offlinePage?.goHome || 'Go to Homepage'}
                 </Button>
               </Link>
             </div>
-            
+
             {/* Cached Pages Available */}
             <div className="mt-12 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
               <h3 className="font-heading font-semibold text-blue-900 dark:text-blue-100 mb-3">
-                Available Offline
+                {t.offlinePage?.availableOffline || 'Available Offline'}
               </h3>
               <div className="space-y-2 text-sm">
                 <Link href="/" className="block text-blue-700 dark:text-blue-300 hover:underline">
-                  • Homepage
+                  • {t.offlinePage?.cachedPages?.homepage || 'Homepage'}
                 </Link>
                 <Link href="/products/trial-size" className="block text-blue-700 dark:text-blue-300 hover:underline">
-                  • Trial Size Product
+                  • {t.offlinePage?.cachedPages?.trialSize || 'Trial Size Product'}
                 </Link>
                 <Link href="/learn/how-it-works" className="block text-blue-700 dark:text-blue-300 hover:underline">
-                  • How It Works
+                  • {t.offlinePage?.cachedPages?.howItWorks || 'How It Works'}
                 </Link>
                 <Link href="/contact" className="block text-blue-700 dark:text-blue-300 hover:underline">
-                  • Contact Support
+                  • {t.offlinePage?.cachedPages?.contactSupport || 'Contact Support'}
                 </Link>
               </div>
             </div>
-            
+
             {/* Emergency Contact */}
             <div className="mt-8 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
               <div className="flex flex-col items-center justify-center space-y-2">
+                <p className="text-sm text-gray-600 dark:text-gray-400 text-center mb-2">
+                  {t.offlinePage?.emergencyContact || 'For immediate assistance, you can also call us'}
+                </p>
                 <div className="flex items-center justify-center space-x-2 text-gray-600 dark:text-gray-400">
                   <Phone className="w-4 h-4" />
                   <a href={CONTACT_INFO.phoneHref} className="text-[#5B2EFF] hover:underline font-bold text-sm">
@@ -94,7 +99,7 @@ const OfflinePage: NextPage = () => {
                 </p>
               </div>
             </div>
-            
+
           </div>
         </div>
       </Container>

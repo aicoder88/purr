@@ -274,9 +274,17 @@ function RecentConversions({ conversions }: { conversions: DashboardStats['recen
       PAID: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300',
       VOIDED: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300',
     };
+
+    const statusLabels: Record<string, string> = {
+      PENDING: t.affiliateDashboard?.conversions?.statusPending || 'Pending',
+      CLEARED: t.affiliateDashboard?.conversions?.statusCleared || 'Cleared',
+      PAID: t.affiliateDashboard?.conversions?.statusPaid || 'Paid',
+      VOIDED: t.affiliateDashboard?.conversions?.statusVoided || 'Voided',
+    };
+
     return (
       <span className={`px-2 py-1 rounded text-xs font-medium ${styles[status as keyof typeof styles] || styles.PENDING}`}>
-        {status}
+        {statusLabels[status] || status}
       </span>
     );
   };

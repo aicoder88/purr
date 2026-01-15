@@ -717,7 +717,7 @@ export default function GroomersPage() {
                     {groomers.form.success.title}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-6">
-                    {groomers.form.success.message}
+                    {t.forms?.success?.groomerContact || groomers.form.success.message}
                   </p>
                   <div className="space-y-4">
                     <div className="flex flex-wrap justify-center gap-4">

@@ -157,13 +157,22 @@ export default function AffiliatePayouts() {
         icon: <AlertCircle className="w-3 h-3" />,
       },
     };
+
+    const statusLabels: Record<string, string> = {
+      PENDING: t.affiliateDashboard?.payoutsSection?.statusPending || 'Pending',
+      PROCESSING: t.affiliateDashboard?.payoutsSection?.statusProcessing || 'Processing',
+      COMPLETED: t.affiliateDashboard?.payoutsSection?.statusCompleted || 'Completed',
+      FAILED: t.affiliateDashboard?.payoutsSection?.statusRejected || 'Failed',
+      REJECTED: t.affiliateDashboard?.payoutsSection?.statusRejected || 'Rejected',
+    };
+
     const style = styles[status as keyof typeof styles] || styles.PENDING;
     return (
       <span
         className={`inline-flex items-center space-x-1 px-2 py-1 rounded text-xs font-medium ${style.bg} ${style.text}`}
       >
         {style.icon}
-        <span>{status}</span>
+        <span>{statusLabels[status] || status}</span>
       </span>
     );
   };

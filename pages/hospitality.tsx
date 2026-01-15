@@ -22,7 +22,7 @@ import { buildAvailabilityUrl, getPriceValidityDate } from '../src/lib/seo-utils
 import { CONTACT_INFO, PHONE_MESSAGING } from '../src/lib/constants';
 
 export default function Hospitality() {
-  const { locale } = useTranslation();
+  const { t: tGlobal, locale } = useTranslation();
   const [formSubmitted, setFormSubmitted] = useState(false);
   const handleFormSubmit = useCallback(() => setFormSubmitted(true), []);
 
@@ -956,7 +956,7 @@ export default function Hospitality() {
                     {t.formSuccess}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-6">
-                    {t.formSuccessMessage}
+                    {tGlobal.forms?.success?.hospitalityContact || t.formSuccessMessage}
                   </p>
                   <div className="space-y-4">
                     <div className="space-x-4">

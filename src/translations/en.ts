@@ -1175,39 +1175,104 @@ export const en = {
   // Privacy Policy
   privacyPolicy: {
     title: "Privacy Policy",
-    lastUpdated: "Last updated: January 2025",
+    lastUpdated: "Last updated: December 2024",
     sections: [
       {
         title: "Information We Collect",
-        content: "We collect information you provide directly to us, such as when you create an account, make a purchase, or contact us for support.",
+        content: "At Purrify, your privacy is important to us. This Privacy Policy explains how we collect, use, protect, and share your information when you use our website, purchase our products, or interact with our services.",
         items: [
           "Personal information (name, email address, phone number)",
+          "Order details, shipping information, and payment data",
           "Payment information (processed securely through Stripe)",
-          "Shipping and billing addresses",
-          "Communication preferences and customer service interactions"
+          "IP address, browser type, and device information",
+          "Pages visited, time spent, and click patterns",
+          "Referring websites and search terms"
         ]
       },
       {
+        title: "Personal Information",
+        content: "We collect personal information that you voluntarily provide to us when you:",
+        items: [
+          "Create an account or make a purchase",
+          "Subscribe to our newsletter or marketing communications",
+          "Contact us for customer support or inquiries",
+          "Participate in surveys, contests, or promotions",
+          "Leave reviews or feedback about our products"
+        ]
+      },
+      {
+        title: "Order and Payment Information",
+        content: "When you make a purchase, we collect order details, shipping information, and payment data necessary to process your transaction. Payment information is securely processed by our trusted payment processors and is not stored on our servers."
+      },
+      {
+        title: "Usage and Technical Data",
+        content: "We automatically collect certain information about your device and usage patterns, including IP address, browser type, device information, pages visited, time spent on pages, click patterns, referring websites, search terms, and general geographic location based on IP address."
+      },
+      {
         title: "How We Use Your Information",
-        content: "We use the information we collect to provide, maintain, and improve our services, process transactions, and communicate with you."
+        content: "We use the information we collect for legitimate business purposes, including:",
+        items: [
+          "Order Processing: To process, fulfill, and ship your orders",
+          "Customer Service: To respond to your inquiries and provide support",
+          "Marketing: To send promotional emails and product updates (with your consent)",
+          "Website Improvement: To analyze usage patterns and enhance user experience",
+          "Legal Compliance: To comply with applicable laws and regulations",
+          "Fraud Prevention: To detect and prevent fraudulent transactions"
+        ]
       },
       {
-        title: "Information Sharing",
-        content: "We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy."
+        title: "How We Protect Your Information",
+        content: "We implement industry-standard security measures to protect your personal information:",
+        items: [
+          "SSL encryption for all data transmission",
+          "Secure payment processing through certified providers",
+          "Regular security audits and updates",
+          "Limited access to personal data on a need-to-know basis",
+          "Secure data storage with backup and recovery procedures"
+        ]
       },
       {
-        title: "Data Security",
-        content: "We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction."
+        title: "Information Sharing and Disclosure",
+        content: "We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:",
+        items: [
+          "Service Providers: With trusted partners who help us operate our business (shipping, payment processing, email services)",
+          "Legal Requirements: When required by law or to protect our rights and safety",
+          "Business Transfers: In connection with a merger, acquisition, or sale of business assets",
+          "Consent: When you have given explicit consent for sharing"
+        ]
+      },
+      {
+        title: "Your Rights and Choices",
+        content: "You have the following rights regarding your personal information:",
+        items: [
+          "Access: Request a copy of the personal information we hold about you",
+          "Correction: Request correction of inaccurate or incomplete information",
+          "Deletion: Request deletion of your personal information (subject to legal requirements)",
+          "Portability: Request transfer of your data to another service provider",
+          "Opt-out: Unsubscribe from marketing communications at any time"
+        ]
+      },
+      {
+        title: "Cookies and Tracking",
+        content: "We use cookies and similar technologies to enhance your browsing experience, analyze website traffic, and personalize content. You can control cookie settings through your browser preferences."
+      },
+      {
+        title: "Children's Privacy",
+        content: "Our website and services are not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13."
+      },
+      {
+        title: "Changes to This Policy",
+        content: "We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new policy on this page and updating the 'Last Updated' date."
       },
       {
         title: "Contact Us",
-        content: "If you have any questions about this Privacy Policy, please contact us using the information below."
+        content: "If you have any questions, concerns, or requests regarding this Privacy Policy or your personal information, please contact us:"
       }
     ],
     contactInfo: {
-      email: "Email",
+      email: "privacy@purrify.ca",
       phone: "Phone",
-      address: "Purrify Canada, Montreal, Quebec, Canada"
+      address: "Purrify Privacy Officer, 123 Main Street, Montreal, QC H1A 1A1, Canada"
     }
   },
 
@@ -2922,6 +2987,56 @@ export const en = {
       payoutFailed: "Failed to request payout",
       sessionExpired: "Your session has expired. Please log in again."
     }
+  },
+
+  // Offline Page
+  offlinePage: {
+    title: "You're Offline",
+    description: "It looks like you've lost your internet connection. Don't worry - you can still browse some cached pages while offline. Once you're back online, everything will work normally.",
+    tryAgain: "Try Again",
+    goHome: "Go to Homepage",
+    availableOffline: "Available Offline",
+    cachedPages: {
+      homepage: "Homepage",
+      trialSize: "Trial Size Product",
+      howItWorks: "How It Works",
+      contactSupport: "Contact Support"
+    },
+    emergencyContact: "For immediate assistance, you can also call us"
+  },
+
+  // Forms (standardized messages)
+  forms: {
+    success: {
+      general: "Thank you for contacting us! We'll get back to you within 24 hours.",
+      b2bContact: "Thank you for your interest! Our team will contact you within 24-48 hours to discuss next steps.",
+      retailerContact: "Thank you for your interest! Our partner team will contact you within 24-48 hours to discuss pricing and next steps.",
+      hospitalityContact: "Thank you! Our hospitality team will contact you within 24 hours with custom pricing for your properties.",
+      shelterContact: "Thank you for your interest! Our team will contact you within 24-48 hours to discuss how we can support your shelter.",
+      groomerContact: "Thank you for your interest! Our partner team will contact you within 24-48 hours to discuss next steps.",
+      vetContact: "Thank you for your interest! Our veterinary team will contact you within 24-48 hours to discuss partnership opportunities.",
+      catCafeContact: "Thank you for your interest! Our team will contact you within 24-48 hours to discuss how Purrify can benefit your cat cafe."
+    },
+    errors: {
+      pleaseEnterTitle: "Please enter a title",
+      invalidEmail: "Invalid email or password",
+      requiredField: "This field is required",
+      submitFailed: "Failed to submit form. Please try again."
+    }
+  },
+
+  // Product Pages
+  productPages: {
+    cancelAnytime: "Cancel anytime. Ships free.",
+    shipsFree: "Ships free",
+    subscribeAndSave: "Subscribe & Save",
+    save: "Save",
+    savePercent: "Save {percent}%",
+    perMonth: "per month",
+    billedQuarterly: "Billed quarterly",
+    shippingSavings: "Save $15-$20+ per order vs single purchases",
+    save25vsStandard: "Save 25% compared to buying two standard sizes",
+    save25FamilyPack: "Save 25% with our Family Pack"
   }
 
 };

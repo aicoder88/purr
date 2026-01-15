@@ -406,7 +406,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                         <div className="text-2xl font-bold text-green-700 dark:text-green-300">FREE SHIPPING</div>
                       </div>
                       <p className="text-sm font-semibold text-green-800 dark:text-green-200 mt-2">
-                        Save $15-$20+ per order vs single purchases
+                        {t.productPages?.shippingSavings || 'Save $15-$20+ per order vs single purchases'}
                       </p>
                     </div>
 
@@ -569,7 +569,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                 </div>
                 <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Cost Savings</h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Save 25% compared to buying two standard sizes
+                  {t.productPages?.save25vsStandard || 'Save 25% compared to buying two standard sizes'}
                 </p>
               </div>
 
@@ -775,7 +775,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8 text-white dark:text-gray-100">
                   <h3 className="font-heading text-2xl font-bold mb-2">Best Value, Happiest Cats</h3>
-                  <p className="text-lg opacity-90">Save 25% with our Family Pack</p>
+                  <p className="text-lg opacity-90">{t.productPages?.save25FamilyPack || 'Save 25% with our Family Pack'}</p>
                 </div>
               </div>
             </div>

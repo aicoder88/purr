@@ -322,9 +322,9 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
                   {/* Autoship Option */}
                   <div className="relative group overflow-hidden bg-white dark:bg-gray-900 border-2 border-deep-coral rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300">
                     <div className="absolute top-0 right-0 p-2 bg-deep-coral text-white dark:text-white text-[10px] font-black uppercase tracking-tighter rounded-bl-xl">
-                      Save 30%
+                      {t.productPages?.save || 'Save'} 30%
                     </div>
-                    <h3 className="font-bold text-gray-900 dark:text-white mb-1">Subscribe & Save</h3>
+                    <h3 className="font-bold text-gray-900 dark:text-white mb-1">{t.productPages?.subscribeAndSave || 'Subscribe & Save'}</h3>
                     <div className="flex items-baseline gap-1 mb-4">
                       <span className="text-3xl font-black text-gray-900 dark:text-white">{formatProductPrice('familyAutoship', locale)}</span>
                       <span className="text-xs text-gray-500 dark:text-gray-400">/ 3 months</span>
@@ -339,7 +339,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
                         * {t.pricing?.stripeShippingNote}
                       </p>
                     )}
-                    <p className="text-[10px] text-center mt-3 text-gray-400 dark:text-gray-500 font-medium">Cancel anytime. Ships free.</p>
+                    <p className="text-[10px] text-center mt-3 text-gray-400 dark:text-gray-500 font-medium">{t.productPages?.cancelAnytime || 'Cancel anytime. Ships free.'}</p>
                   </div>
 
                   {/* One-time Option */}

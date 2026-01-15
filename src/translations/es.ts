@@ -2913,5 +2913,55 @@ export const es: TranslationType = {
       payoutFailed: "Error al solicitar el pago",
       sessionExpired: "Tu sesión ha expirado. Por favor, inicia sesión de nuevo."
     }
+  },
+
+  // Página fuera de línea
+  offlinePage: {
+    title: "Estás fuera de línea",
+    description: "Parece que has perdido tu conexión a Internet. No te preocupes: aún puedes explorar algunas páginas almacenadas en caché sin conexión. Una vez que vuelvas a estar en línea, todo funcionará con normalidad.",
+    tryAgain: "Intentar de nuevo",
+    goHome: "Ir a la página de inicio",
+    availableOffline: "Disponible sin conexión",
+    cachedPages: {
+      homepage: "Página de inicio",
+      trialSize: "Producto de tamaño de prueba",
+      howItWorks: "Cómo funciona",
+      contactSupport: "Contactar soporte"
+    },
+    emergencyContact: "Para asistencia inmediata, también puedes llamarnos"
+  },
+
+  // Formularios (mensajes estandarizados)
+  forms: {
+    success: {
+      general: "¡Gracias por contactarnos! Te responderemos en 24 horas.",
+      b2bContact: "¡Gracias por tu interés! Nuestro equipo se pondrá en contacto contigo en 24-48 horas para discutir los próximos pasos.",
+      retailerContact: "¡Gracias por tu interés! Nuestro equipo de socios se pondrá en contacto contigo en 24-48 horas para discutir precios y próximos pasos.",
+      hospitalityContact: "¡Gracias! Nuestro equipo de hostelería se pondrá en contacto contigo en 24 horas con precios personalizados para tus propiedades.",
+      shelterContact: "¡Gracias por tu interés! Nuestro equipo se pondrá en contacto contigo en 24-48 horas para discutir cómo podemos apoyar tu refugio.",
+      groomerContact: "¡Gracias por tu interés! Nuestro equipo de socios se pondrá en contacto contigo en 24-48 horas para discutir los próximos pasos.",
+      vetContact: "¡Gracias por tu interés! Nuestro equipo veterinario se pondrá en contacto contigo en 24-48 horas para discutir oportunidades de asociación.",
+      catCafeContact: "¡Gracias por tu interés! Nuestro equipo se pondrá en contacto contigo en 24-48 horas para discutir cómo Purrify puede beneficiar a tu café de gatos."
+    },
+    errors: {
+      pleaseEnterTitle: "Por favor ingresa un título",
+      invalidEmail: "Correo electrónico o contraseña inválidos",
+      requiredField: "Este campo es obligatorio",
+      submitFailed: "Error al enviar el formulario. Por favor intenta de nuevo."
+    }
+  },
+
+  // Páginas de productos
+  productPages: {
+    cancelAnytime: "Cancela en cualquier momento. Envío gratis.",
+    shipsFree: "Envío gratis",
+    subscribeAndSave: "Suscríbete y ahorra",
+    save: "Ahorra",
+    savePercent: "Ahorra {percent}%",
+    perMonth: "por mes",
+    billedQuarterly: "Facturado trimestralmente",
+    shippingSavings: "Ahorra $15-20+ por pedido vs compras individuales",
+    save25vsStandard: "Ahorra 25% en comparación con comprar dos tamaños estándar",
+    save25FamilyPack: "Ahorra 25% con nuestro Pack Familiar"
   }
 };

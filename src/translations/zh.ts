@@ -2927,6 +2927,56 @@ export const zh = {
       fragrance: "无香料",
       secure: "安全结账"
     }
+  },
+
+  // 离线页面
+  offlinePage: {
+    title: "您处于离线状态",
+    description: "看起来您失去了互联网连接。别担心 - 您仍可以浏览一些缓存页面。重新联机后，一切将恢复正常。",
+    tryAgain: "重试",
+    goHome: "返回首页",
+    availableOffline: "离线可用",
+    cachedPages: {
+      homepage: "首页",
+      trialSize: "试用装产品",
+      howItWorks: "工作原理",
+      contactSupport: "联系支持"
+    },
+    emergencyContact: "如需立即帮助，您也可以致电我们"
+  },
+
+  // 表单（标准化消息）
+  forms: {
+    success: {
+      general: "感谢您联系我们！我们将在24小时内回复您。",
+      b2bContact: "感谢您的关注！我们的团队将在24-48小时内与您联系，讨论后续步骤。",
+      retailerContact: "感谢您的关注！我们的合作伙伴团队将在24-48小时内与您联系，讨论价格和后续步骤。",
+      hospitalityContact: "谢谢！我们的酒店团队将在24小时内与您联系，为您的物业提供定制价格。",
+      shelterContact: "感谢您的关注！我们的团队将在24-48小时内与您联系，讨论我们如何支持您的收容所。",
+      groomerContact: "感谢您的关注！我们的合作伙伴团队将在24-48小时内与您联系，讨论后续步骤。",
+      vetContact: "感谢您的关注！我们的兽医团队将在24-48小时内与您联系，讨论合作机会。",
+      catCafeContact: "感谢您的关注！我们的团队将在24-48小时内与您联系，讨论Purrify如何使您的猫咖受益。"
+    },
+    errors: {
+      pleaseEnterTitle: "请输入标题",
+      invalidEmail: "电子邮件或密码无效",
+      requiredField: "此字段为必填项",
+      submitFailed: "提交表单失败。请重试。"
+    }
+  },
+
+  // 产品页面
+  productPages: {
+    cancelAnytime: "随时取消。免费配送。",
+    shipsFree: "免费配送",
+    subscribeAndSave: "订阅并节省",
+    save: "节省",
+    savePercent: "节省{percent}%",
+    perMonth: "每月",
+    billedQuarterly: "按季度计费",
+    shippingSavings: "每单节省$15-20+，相比单独购买",
+    save25vsStandard: "相比购买两个标准装节省25%",
+    save25FamilyPack: "家庭装节省25%"
   }
 
 };

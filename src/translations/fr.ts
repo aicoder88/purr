@@ -2924,6 +2924,56 @@ export const fr = {
       fragrance: "Sans Parfum",
       secure: "Paiement Sécurisé"
     }
+  },
+
+  // Page hors ligne
+  offlinePage: {
+    title: "Vous êtes hors ligne",
+    description: "Il semble que vous ayez perdu votre connexion Internet. Ne vous inquiétez pas - vous pouvez toujours consulter certaines pages en cache hors ligne. Une fois que vous serez de nouveau en ligne, tout fonctionnera normalement.",
+    tryAgain: "Réessayer",
+    goHome: "Aller à l'accueil",
+    availableOffline: "Disponible hors ligne",
+    cachedPages: {
+      homepage: "Page d'accueil",
+      trialSize: "Produit format essai",
+      howItWorks: "Comment ça marche",
+      contactSupport: "Contactez le support"
+    },
+    emergencyContact: "Pour une assistance immédiate, vous pouvez également nous appeler"
+  },
+
+  // Formulaires (messages standardisés)
+  forms: {
+    success: {
+      general: "Merci de nous avoir contactés ! Nous vous répondrons dans les 24 heures.",
+      b2bContact: "Merci de votre intérêt ! Notre équipe vous contactera dans les 24 à 48 heures pour discuter des prochaines étapes.",
+      retailerContact: "Merci de votre intérêt ! Notre équipe partenaires vous contactera dans les 24 à 48 heures pour discuter des tarifs et des prochaines étapes.",
+      hospitalityContact: "Merci ! Notre équipe hôtellerie vous contactera dans les 24 heures avec des tarifs personnalisés pour vos propriétés.",
+      shelterContact: "Merci de votre intérêt ! Notre équipe vous contactera dans les 24 à 48 heures pour discuter de comment nous pouvons soutenir votre refuge.",
+      groomerContact: "Merci de votre intérêt ! Notre équipe partenaires vous contactera dans les 24 à 48 heures pour discuter des prochaines étapes.",
+      vetContact: "Merci de votre intérêt ! Notre équipe vétérinaire vous contactera dans les 24 à 48 heures pour discuter des opportunités de partenariat.",
+      catCafeContact: "Merci de votre intérêt ! Notre équipe vous contactera dans les 24 à 48 heures pour discuter de comment Purrify peut bénéficier à votre café à chats."
+    },
+    errors: {
+      pleaseEnterTitle: "Veuillez entrer un titre",
+      invalidEmail: "Courriel ou mot de passe invalide",
+      requiredField: "Ce champ est requis",
+      submitFailed: "Échec de l'envoi du formulaire. Veuillez réessayer."
+    }
+  },
+
+  // Pages produits
+  productPages: {
+    cancelAnytime: "Annulez à tout moment. Livraison gratuite.",
+    shipsFree: "Livraison gratuite",
+    subscribeAndSave: "Abonnez-vous et économisez",
+    save: "Économisez",
+    savePercent: "Économisez {percent}%",
+    perMonth: "par mois",
+    billedQuarterly: "Facturé trimestriellement",
+    shippingSavings: "Économisez 15-20$+ par commande par rapport aux achats individuels",
+    save25vsStandard: "Économisez 25% par rapport à l'achat de deux formats standards",
+    save25FamilyPack: "Économisez 25% avec notre Pack Familial"
   }
 
 };

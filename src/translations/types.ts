@@ -2357,6 +2357,56 @@ export interface TranslationType {
     followOn: string;
   };
 
+  // Offline Page
+  offlinePage?: {
+    title: string;
+    description: string;
+    tryAgain: string;
+    goHome: string;
+    availableOffline: string;
+    cachedPages: {
+      homepage: string;
+      trialSize: string;
+      howItWorks: string;
+      contactSupport: string;
+    };
+    emergencyContact: string;
+  };
+
+  // Forms (standardized messages)
+  forms?: {
+    success: {
+      general: string;
+      b2bContact: string;
+      retailerContact: string;
+      hospitalityContact: string;
+      shelterContact: string;
+      groomerContact: string;
+      vetContact: string;
+      catCafeContact: string;
+    };
+    errors: {
+      pleaseEnterTitle: string;
+      invalidEmail: string;
+      requiredField: string;
+      submitFailed: string;
+    };
+  };
+
+  // Product Pages
+  productPages?: {
+    cancelAnytime: string;
+    shipsFree: string;
+    subscribeAndSave: string;
+    save: string;
+    savePercent: string;
+    perMonth: string;
+    billedQuarterly: string;
+    shippingSavings: string;
+    save25vsStandard: string;
+    save25FamilyPack: string;
+  };
+
   // Affiliate Dashboard
   affiliateDashboard?: {
     // Page titles
