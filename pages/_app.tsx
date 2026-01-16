@@ -108,7 +108,9 @@ const AnalyticsComponent = dynamic(() => import('@vercel/analytics/next').then(m
   ssr: false,
 });
 
-
+const CoreWebVitals = dynamic(() => import('../src/components/performance/CoreWebVitals').then(mod => ({ default: mod.CoreWebVitals })), {
+  ssr: false,
+});
 
 interface PageProps {
   session?: Session | null;
@@ -160,8 +162,14 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
             <link rel="icon" type="image/png" sizes="128x128" href="/images/icon-128.png" />
             <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
 
-            {/* DNS Prefetch only for non-critical third-parties */}
+            {/* Preconnect for critical third-party resources */}
+            <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+            <link rel="preconnect" href="https://js.stripe.com" crossOrigin="anonymous" />
+            <link rel="preconnect" href="https://api.vercel-insights.com" crossOrigin="anonymous" />
+
+            {/* DNS Prefetch for non-critical third-parties */}
             <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+            <link rel="dns-prefetch" href="https://static.zdassets.com" />
           </Head>
 
           <DefaultSeo {...defaultSeoConfig} />
@@ -200,6 +208,7 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
           <Toaster />
           <ToastProvider />
           <AnalyticsComponent />
+          <CoreWebVitals debug={process.env.NODE_ENV === 'development'} />
         </TranslationProvider>
       </ThemeProvider>
     </SessionProvider>
