@@ -230,53 +230,53 @@ export function Header() {
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/science`,
         },
         {
-          label: "Safety Info",
+          label: t.nav?.safetyInfo || "Safety Info",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/safety`,
         },
         {
-          label: "Activated Carbon Benefits",
+          label: t.nav?.activatedCarbonBenefits || "Activated Carbon Benefits",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/activated-carbon-benefits`,
         },
         {
-          label: "Cat Litter Guide",
+          label: t.nav?.catLitterGuide || "Cat Litter Guide",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/cat-litter-guide`,
         },
         {
-          label: "How to Use",
+          label: t.nav?.howToUse || "How to Use",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/how-to-use-deodorizer`,
         },
         {
-          label: "Technology Comparison",
+          label: t.nav?.technologyComparison || "Technology Comparison",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/activated-carbon-vs-baking-soda-deodorizers`,
         },
-        { label: "Solutions", isGroupHeader: true },
+        { label: t.nav?.solutions || "Solutions", isGroupHeader: true },
         {
-          label: "Ammonia Smell Control",
+          label: t.nav?.ammoniaSmellControl || "Ammonia Smell Control",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/solutions/ammonia-smell-cat-litter`,
           indent: true,
         },
         {
-          label: "Apartment Living",
+          label: t.nav?.apartmentLiving || "Apartment Living",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/solutions/apartment-cat-smell-solution`,
           indent: true,
         },
         {
-          label: "Litter Box Odor",
+          label: t.nav?.litterBoxOdor || "Litter Box Odor",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/solutions/litter-box-smell-elimination`,
           indent: true,
         },
         {
-          label: "Multiple Cats",
+          label: t.nav?.multipleCats || "Multiple Cats",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/solutions/multiple-cats-odor-control`,
           indent: true,
         },
         {
-          label: "Natural Additive",
+          label: t.nav?.naturalAdditive || "Natural Additive",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/solutions/natural-cat-litter-additive`,
           indent: true,
         },
         {
-          label: "Senior Cats",
+          label: t.nav?.seniorCats || "Senior Cats",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/solutions/senior-cat-litter-solutions`,
           indent: true,
         },
@@ -408,7 +408,7 @@ export function Header() {
                 className="flex items-center gap-2 text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100"
               >
                 <LogOut className="w-4 h-4" />
-                <span>Sign Out</span>
+                <span>{t.nav?.signOut || "Sign Out"}</span>
               </Button>
             )}
             <Button
@@ -440,7 +440,7 @@ export function Header() {
               size="icon"
               className="ml-1 h-11 w-11 p-0"
               onClick={toggleMenu}
-              aria-label="Toggle menu"
+              aria-label={t.nav?.toggleMenu || "Toggle menu"}
             >
               {isMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -507,7 +507,7 @@ export function Header() {
                           <span className="text-sm font-semibold text-brand-green-dark dark:text-purple-300 block">
                             {session.user.email?.split('@')[0] || 'User'}
                           </span>
-                          <span className="text-xs text-gray-500 dark:text-gray-400">Signed in</span>
+                          <span className="text-xs text-gray-500 dark:text-gray-400">{t.nav?.signedIn || "Signed in"}</span>
                         </div>
                       </div>
                     </div>
@@ -517,7 +517,7 @@ export function Header() {
                       className="w-full flex items-center justify-center gap-2 border-brand-green/30 dark:border-purple-500/40 text-brand-green-dark dark:text-purple-300 hover:bg-brand-green/10 dark:hover:bg-purple-500/20"
                     >
                       <LogOut className="w-4 h-4" />
-                      <span>Sign Out</span>
+                      <span>{t.nav?.signOut || "Sign Out"}</span>
                     </Button>
                   </div>
                 )}

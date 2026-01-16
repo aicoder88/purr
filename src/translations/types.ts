@@ -31,6 +31,25 @@ export interface TranslationType {
     becomePartner: string;
     marketingSupport: string;
     shipsToUSA?: string;
+    // Learn dropdown items
+    safetyInfo?: string;
+    activatedCarbonBenefits?: string;
+    catLitterGuide?: string;
+    howToUse?: string;
+    technologyComparison?: string;
+    solutions?: string;
+    // Solutions dropdown items
+    ammoniaSmellControl?: string;
+    apartmentLiving?: string;
+    litterBoxOdor?: string;
+    multipleCats?: string;
+    naturalAdditive?: string;
+    seniorCats?: string;
+    // UI elements
+    toggleMenu?: string;
+    toggleTheme?: string;
+    signOut?: string;
+    signedIn?: string;
   };
 
   // Locations Menu
@@ -597,6 +616,48 @@ export interface TranslationType {
     openingHours: string;
     contactUs: string;
     allRightsReserved: string;
+  };
+
+  // Footer Navigation
+  footerNav?: {
+    // Section headers
+    trustedReviews: string;
+    products: string;
+    learn: string;
+    popularArticles: string;
+    company: string;
+    // Product links
+    trialSize: string;
+    standardSize: string;
+    familyPack: string;
+    compareSizes: string;
+    // Learn links
+    howItWorks: string;
+    faq: string;
+    science: string;
+    safetyInfo: string;
+    catLitterGuide: string;
+    ammoniaSolutions: string;
+    litterCalculator: string;
+    // Article links
+    houseSmells: string;
+    multiCatGuide: string;
+    triedEverything: string;
+    powerfulAbsorber: string;
+    smallApartments: string;
+    // Company links
+    about: string;
+    blog: string;
+    locations: string;
+    testimonials: string;
+    retailers: string;
+    affiliateProgram: string;
+    contact: string;
+    privacyPolicy: string;
+    termsOfService: string;
+    // Review platforms
+    trustpilot: string;
+    googleReviews: string;
   };
 
   // Free Trial

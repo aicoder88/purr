@@ -33,7 +33,26 @@ export const es: TranslationType = {
     wholesalePricing: "Precios Mayoristas",
     becomePartner: "Ser Socio",
     marketingSupport: "Soporte de Marketing",
-    shipsToUSA: "Envios a EE.UU."
+    shipsToUSA: "Envios a EE.UU.",
+    // Learn dropdown items
+    safetyInfo: "Informacion de Seguridad",
+    activatedCarbonBenefits: "Beneficios del Carbon Activado",
+    catLitterGuide: "Guia de Arena para Gatos",
+    howToUse: "Como Usar",
+    technologyComparison: "Comparacion de Tecnologias",
+    solutions: "Soluciones",
+    // Solutions dropdown items
+    ammoniaSmellControl: "Control de Olor a Amoniaco",
+    apartmentLiving: "Vida en Apartamento",
+    litterBoxOdor: "Olor de Caja de Arena",
+    multipleCats: "Multiples Gatos",
+    naturalAdditive: "Aditivo Natural",
+    seniorCats: "Gatos Mayores",
+    // UI elements
+    toggleMenu: "Alternar menu",
+    toggleTheme: "Alternar tema",
+    signOut: "Cerrar Sesion",
+    signedIn: "Sesion Iniciada"
   },
 
   locationsMenu: {
@@ -618,6 +637,48 @@ export const es: TranslationType = {
     openingHours: "Horario de Atencion",
     contactUs: "Contactanos",
     allRightsReserved: "Todos los Derechos Reservados"
+  },
+
+  // Footer Navigation
+  footerNav: {
+    // Section headers
+    trustedReviews: "Opiniones Confiables",
+    products: "Productos",
+    learn: "Aprender",
+    popularArticles: "Articulos Populares",
+    company: "Empresa",
+    // Product links
+    trialSize: "Tamano de Prueba",
+    standardSize: "Tamano Estandar",
+    familyPack: "Paquete Familiar",
+    compareSizes: "Comparar Tamanos",
+    // Learn links
+    howItWorks: "Como Funciona",
+    faq: "Preguntas Frecuentes",
+    science: "Ciencia",
+    safetyInfo: "Informacion de Seguridad",
+    catLitterGuide: "Guia de Arena para Gatos",
+    ammoniaSolutions: "Soluciones para Amoniaco",
+    litterCalculator: "Calculadora de Arena",
+    // Article links
+    houseSmells: "¿Casa Huele a Arena para Gatos?",
+    multiCatGuide: "Guia Desodorizante Multi-Gato",
+    triedEverything: "¿Probaste Todo para el Olor a Gato?",
+    powerfulAbsorber: "Absorbente de Olor Mas Potente",
+    smallApartments: "Mejor para Apartamentos Pequenos",
+    // Company links
+    about: "Nosotros",
+    blog: "Blog",
+    locations: "Ubicaciones",
+    testimonials: "Testimonios",
+    retailers: "Para Minoristas",
+    affiliateProgram: "Programa de Afiliados",
+    contact: "Contacto",
+    privacyPolicy: "Politica de Privacidad",
+    termsOfService: "Terminos de Servicio",
+    // Review platforms
+    trustpilot: "Trustpilot",
+    googleReviews: "Opiniones de Google"
   },
 
   // Benefits Section (homepage component)
