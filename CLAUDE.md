@@ -10,6 +10,45 @@ All five must pass. No exceptions.
 
 ---
 
+## CRITICAL: No Fabrication Rule
+
+**NEVER fabricate or assume the existence of:**
+
+- ❌ Contact info (phone numbers, emails, addresses)
+- ❌ Social media (handles like @username, hashtags like #BrandName)
+- ❌ File paths (images, PDFs, logos, assets)
+- ❌ URLs (subdomains, pages, external links)
+- ❌ Branding elements (slogans, campaign names)
+- ❌ Identifiers (SKUs, tracking codes, API keys)
+
+**Instead:**
+
+1. **VERIFY FIRST**: Check if it exists in the codebase
+   ```bash
+   ls public/images/          # Check images
+   grep -r "@" pages/         # Find social handles
+   grep -r "mailto:" pages/   # Find emails
+   ```
+
+2. **ASK THE USER**: If you can't verify it exists, ASK before using it
+   - "What email should I use here?"
+   - "What's the official social media handle?"
+   - "Which image should I use for this?"
+
+3. **USE EXISTING ONLY**: Only use verified, existing resources
+
+**Real examples of fabrications to avoid:**
+- `@PurrifyPets` (wrong, actual: `@purrifyhq`)
+- `#PurrifyFresh` (doesn't exist, no official hashtags)
+- `/images/logo.png` (doesn't exist, use `/images/icon-512.png`)
+- `hello@purrify.ca` (verify first, don't assume)
+
+**Why this matters:** Fabricated contact info breaks user trust, creates 404s, sends customers to wrong places, and damages SEO. When in doubt, ASK.
+
+See [docs/NO_FABRICATION_RULE.md](../docs/NO_FABRICATION_RULE.md) for complete guidelines.
+
+---
+
 ## Quick Reference
 
 | What | Where |
