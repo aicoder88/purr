@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-T8WZ5D7R');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purrify Partner Resource Center</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4A90E2 0%, #2C5F8D 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .welcome-banner {
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+            color: white;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .welcome-banner h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .search-filter-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #4A90E2;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover {
+            border-color: #4A90E2;
+            background: #E8F0FE;
+        }
+
+        .filter-btn.active {
+            background: #4A90E2;
+            color: white;
+            border-color: #4A90E2;
+        }
+
+        .stats-bar {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .category-section {
+            margin-bottom: 3rem;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-icon {
+            font-size: 2rem;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: #2C5F8D;
+        }
+
+        .category-description {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .resource-card:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-color: #4A90E2;
+            transform: translateY(-2px);
+        }
+
+        .resource-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .resource-type {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .type-training {
+            background: #E8F0FE;
+            color: #4A90E2;
+        }
+
+        .type-marketing {
+            background: #FFF9E6;
+            color: #F9A825;
+        }
+
+        .type-seasonal {
+            background: #FFEBEE;
+            color: #E53935;
+        }
+
+        .type-product {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .language-badges {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .language-badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        .resource-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .resource-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .resource-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #4A90E2;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2C5F8D;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #4A90E2;
+            border: 2px solid #4A90E2;
+        }
+
+        .btn-secondary:hover {
+            background: #E8F0FE;
+        }
+
+        .footer {
+            background: #2C3E50;
+            color: white;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #999;
+        }
+
+        .quick-actions {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .quick-actions h3 {
+            margin-bottom: 1rem;
+            color: #2C5F8D;
+        }
+
+        .quick-actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .quick-action-card {
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quick-action-card:hover {
+            border-color: #4A90E2;
+            background: #E8F0FE;
+        }
+
+        .quick-action-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-content, .container, .footer-content {
+                padding: 0 1rem;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            .stats-bar {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T8WZ5D7R"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">🐱 Purrify Partner Resources</div>
+            <div class="tagline">Everything you need to succeed with Purrify</div>
+        </div>
+    </div>
+
+    <div class="welcome-banner">
+        <div class="container">
+            <h2>👋 Welcome to Your Resource Center</h2>
+            <p>Access training materials, marketing assets, and product information in English, French, and Spanish. All resources are designed to help you maximize sales and provide excellent customer service.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="quick-actions">
+            <h3>Quick Actions</h3>
+            <div class="quick-actions-grid">
+                <div class="quick-action-card" onclick="filterByType('training')">
+                    <div class="quick-action-icon">📚</div>
+                    <strong>Training Materials</strong>
+                </div>
+                <div class="quick-action-card" onclick="filterByLanguage('spanish')">
+                    <div class="quick-action-icon">🇪🇸</div>
+                    <strong>Spanish Resources</strong>
+                </div>
+                <div class="quick-action-card" onclick="filterByType('seasonal')">
+                    <div class="quick-action-icon">🎄</div>
+                    <strong>Seasonal Promotions</strong>
+                </div>
+                <div class="quick-action-card" onclick="downloadAll()">
+                    <div class="quick-action-icon">📥</div>
+                    <strong>Download All</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-filter-section">
+            <div class="search-box">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search resources..." onkeyup="filterResources()">
+            </div>
+
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterByType('all')">All Resources</button>
+                <button class="filter-btn" onclick="filterByType('training')">Training Materials</button>
+                <button class="filter-btn" onclick="filterByType('marketing')">Marketing</button>
+                <button class="filter-btn" onclick="filterByType('seasonal')">Seasonal</button>
+                <button class="filter-btn" onclick="filterByType('product')">Product Info</button>
+            </div>
+
+            <div class="filter-buttons" style="margin-top: 0.5rem;">
+                <button class="filter-btn" onclick="filterByLanguage('all')">All Languages</button>
+                <button class="filter-btn" onclick="filterByLanguage('english')">🇬🇧 English</button>
+                <button class="filter-btn" onclick="filterByLanguage('french')">🇫🇷 French</button>
+                <button class="filter-btn" onclick="filterByLanguage('spanish')">🇪🇸 Spanish</button>
+                <button class="filter-btn" onclick="filterByLanguage('chinese')">🇨🇳 Chinese</button>
+            </div>
+
+            <div class="stats-bar">
+                <span id="resourceCount">Loading resources...</span>
+                <span>Last updated: January 2026</span>
+            </div>
+        </div>
+
+        <!-- Training Materials -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon">📚</div>
+                <div>
+                    <h2 class="category-title">Training Materials</h2>
+                    <p class="category-description">Comprehensive training guides for your staff</p>
+                </div>
+            </div>
+
+            <div class="resources-grid">
+                <!-- Employee Training Guide -->
+                <div class="resource-card" data-type="training" data-languages="english french spanish">
+                    <div class="resource-header">
+                        <span class="resource-type type-training">Training</span>
+                        <div class="language-badges">
+                            <span class="language-badge">EN</span>
+                            <span class="language-badge">FR</span>
+                            <span class="language-badge">ES</span>
+                        </div>
+                    </div>
+                    <h3 class="resource-title">Employee Training Guide</h3>
+                    <p class="resource-description">Complete training manual covering product knowledge, sales techniques, objection handling, and customer demos.</p>
+                    <div class="resource-meta">
+                        <span>📄 PDF</span>
+                        <span>12 pages</span>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="../english/01-employee-training-guide.html" class="btn btn-primary" target="_blank">View EN</a>
+                        <a href="../french/01-guide-formation-employes.html" class="btn btn-secondary" target="_blank">FR</a>
+                        <a href="../spanish/01-guia-capacitacion-empleados.html" class="btn btn-secondary" target="_blank">ES</a>
+                    </div>
+                </div>
+
+                <!-- Profit Calculator -->
+                <div class="resource-card" data-type="training" data-languages="english french spanish">
+                    <div class="resource-header">
+                        <span class="resource-type type-training">Training</span>
+                        <div class="language-badges">
+                            <span class="language-badge">EN</span>
+                            <span class="language-badge">FR</span>
+                            <span class="language-badge">ES</span>
+                        </div>
+                    </div>
+                    <h3 class="resource-title">Store Owner Profit Calculator</h3>
+                    <p class="resource-description">Financial planning tool with margin analysis, volume discounts, and profit scenarios for different store sizes.</p>
+                    <div class="resource-meta">
+                        <span>📄 PDF</span>
+                        <span>8 pages</span>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="../english/02-profit-calculator.html" class="btn btn-primary" target="_blank">View EN</a>
+                        <a href="../french/02-calculateur-profits.html" class="btn btn-secondary" target="_blank">FR</a>
+                        <a href="../spanish/02-calculadora-ganancias.html" class="btn btn-secondary" target="_blank">ES</a>
+                    </div>
+                </div>
+
+                <!-- Quick Reference Card -->
+                <div class="resource-card" data-type="training" data-languages="english french spanish">
+                    <div class="resource-header">
+                        <span class="resource-type type-training">Training</span>
+                        <div class="language-badges">
+                            <span class="language-badge">EN</span>
+                            <span class="language-badge">FR</span>
+                            <span class="language-badge">ES</span>
+                        </div>
+                    </div>
+                    <h3 class="resource-title">Quick Reference Card</h3>
+                    <p class="resource-description">Pocket-sized (4"x6") quick reference with key benefits, pricing, objection handling, and reorder info.</p>
+                    <div class="resource-meta">
+                        <span>📄 PDF</span>
+                        <span>1 page</span>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="../english/04-quick-reference-card.html" class="btn btn-primary" target="_blank">View EN</a>
+                        <a href="../french/04-carte-reference-rapide.html" class="btn btn-secondary" target="_blank">FR</a>
+                        <a href="../spanish/04-tarjeta-referencia-rapida.html" class="btn btn-secondary" target="_blank">ES</a>
+                    </div>
+                </div>
+
+                <!-- Staff Guide -->
+                <div class="resource-card" data-type="training" data-languages="english french">
+                    <div class="resource-header">
+                        <span class="resource-type type-training">Training</span>
+                        <div class="language-badges">
+                            <span class="language-badge">EN</span>
+                            <span class="language-badge">FR</span>
+                        </div>
+                    </div>
+                    <h3 class="resource-title">Staff Quick Guide</h3>
+                    <p class="resource-description">NASA technology meets cat litter! Quick reference guide with sales scripts, objection handling, and the science behind Purrify.</p>
+                    <div class="resource-meta">
+                        <span>📄 PDF</span>
+                        <span>4 pages</span>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="pdfs/Staff-Guide-En-Fr.pdf" class="btn btn-primary" download>Download PDF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Marketing & Display Materials -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon">🛍️</div>
+                <div>
+                    <h2 class="category-title">Marketing & Display Materials</h2>
+                    <p class="category-description">Visual merchandising guides and promotional materials</p>
+                </div>
+            </div>
+
+            <div class="resources-grid">
+                <!-- POS Display Guide -->
+                <div class="resource-card" data-type="marketing" data-languages="english french spanish">
+                    <div class="resource-header">
+                        <span class="resource-type type-marketing">Marketing</span>
+                        <div class="language-badges">
+                            <span class="language-badge">EN</span>
+                            <span class="language-badge">FR</span>
+                            <span class="language-badge">ES</span>
+                        </div>
+                    </div>
+                    <h3 class="resource-title">Point-of-Sale Display Guide</h3>
+                    <p class="resource-description">Complete merchandising guide with placement strategies, signage options, and seasonal display ideas.</p>
+                    <div class="resource-meta">
+                        <span>📄 PDF</span>
+                        <span>10 pages</span>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="../english/03-pos-display-guide.html" class="btn btn-primary" target="_blank">View EN</a>
+                        <a href="../french/03-guide-affichage-pdv.html" class="btn btn-secondary" target="_blank">FR</a>
+                        <a href="../spanish/03-guia-exhibicion-pdv.html" class="btn btn-secondary" target="_blank">ES</a>
+                    </div>
+                </div>
+
+                <!-- Product Brochure -->
+                <div class="resource-card" data-type="product" data-languages="english french chinese">
+                    <div class="resource-header">
+                        <span class="resource-type type-product">Product Info</span>
+                        <div class="language-badges">
+                            <span class="language-badge">EN</span>
+                            <span class="language-badge">FR</span>
+                            <span class="language-badge">ZH</span>
+                        </div>
+                    </div>
+                    <h3 class="resource-title">Product Brochure</h3>
+                    <p class="resource-description">Beautiful tri-fold brochure explaining Purrify's benefits, science, and usage. Perfect for in-store displays.</p>
+                    <div class="resource-meta">
+                        <span>📄 PDF</span>
+                        <span>3 pages</span>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="pdfs/BrochureEN-FR-ZH.pdf" class="btn btn-primary" download>Download PDF</a>
+                    </div>
+                </div>
+
+                <!-- Customer FAQ -->
+                <div class="resource-card" data-type="marketing" data-languages="english french spanish">
+                    <div class="resource-header">
+                        <span class="resource-type type-marketing">Marketing</span>
+                        <div class="language-badges">
+                            <span class="language-badge">EN</span>
+                            <span class="language-badge">FR</span>
+                            <span class="language-badge">ES</span>
+                        </div>
+                    </div>
+                    <h3 class="resource-title">Customer FAQ Handout</h3>
+                    <p class="resource-description">Top 10 customer questions answered. Beautiful leave-behind handout for customers at the register.</p>
+                    <div class="resource-meta">
+                        <span>📄 PDF</span>
+                        <span>2 pages</span>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="../english/05-customer-faq-handout.html" class="btn btn-primary" target="_blank">View EN</a>
+                        <a href="../french/05-faq-clients.html" class="btn btn-secondary" target="_blank">FR</a>
+                        <a href="../spanish/05-faq-clientes.html" class="btn btn-secondary" target="_blank">ES</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seasonal Promotions -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon">🎄</div>
+                <div>
+                    <h2 class="category-title">Seasonal Promotions</h2>
+                    <p class="category-description">Holiday-themed marketing materials</p>
+                </div>
+            </div>
+
+            <div class="resources-grid">
+                <!-- Christmas POS -->
+                <div class="resource-card" data-type="seasonal" data-languages="english french">
+                    <div class="resource-header">
+                        <span class="resource-type type-seasonal">Seasonal</span>
+                        <div class="language-badges">
+                            <span class="language-badge">EN</span>
+                            <span class="language-badge">FR</span>
+                        </div>
+                    </div>
+                    <h3 class="resource-title">Christmas POS Display</h3>
+                    <p class="resource-description">"The Gift That Saves Noses" - Holiday promotional materials positioning Purrify as the perfect gift for cat lovers.</p>
+                    <div class="resource-meta">
+                        <span>📄 PDF</span>
+                        <span>1 page</span>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="pdfs/Christmas-POS-EN.pdf" class="btn btn-primary" download>Download PDF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-content">
+            <div class="logo" style="margin-bottom: 1rem;">🐱 Purrify</div>
+            <p>Partner Resource Center</p>
+            <div class="footer-links">
+                <a href="mailto:hello@purrify.ca">📧 hello@purrify.ca</a>
+                <a href="tel:1-800-787-7439">📞 1-450-6-ODORS-3</a>
+                <a href="https://www.purrify.ca" target="_blank">🌐 www.purrify.ca</a>
+            </div>
+            <p style="margin-top: 1.5rem; opacity: 0.7; font-size: 0.9rem;">© 2026 Purrify. All rights reserved. Confidential - For Authorized Retail Partners Only</p>
+        </div>
+    </div>
+
+    <script>
+        let currentTypeFilter = 'all';
+        let currentLanguageFilter = 'all';
+
+        function filterByType(type) {
+            currentTypeFilter = type;
+            applyFilters();
+
+            // Update button states
+            document.querySelectorAll('.filter-buttons .filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        function filterByLanguage(language) {
+            currentLanguageFilter = language;
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.resource-card');
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const cardType = card.getAttribute('data-type');
+                const cardLanguages = card.getAttribute('data-languages');
+                const cardText = card.textContent.toLowerCase();
+
+                const typeMatch = currentTypeFilter === 'all' || cardType === currentTypeFilter;
+                const languageMatch = currentLanguageFilter === 'all' || cardLanguages.includes(currentLanguageFilter);
+                const searchMatch = searchTerm === '' || cardText.includes(searchTerm);
+
+                if (typeMatch && languageMatch && searchMatch) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            updateResourceCount(visibleCount);
+        }
+
+        function filterResources() {
+            applyFilters();
+        }
+
+        function updateResourceCount(count) {
+            const total = document.querySelectorAll('.resource-card').length;
+            document.getElementById('resourceCount').textContent =
+                count === total ? `${total} resources available` : `Showing ${count} of ${total} resources`;
+        }
+
+        function downloadAll() {
+            alert('Bulk download feature: This would create a ZIP file with all resources.\n\nFor now, please download individual files as needed.');
+        }
+
+        // Initialize
+        window.onload = function() {
+            updateResourceCount(document.querySelectorAll('.resource-card').length);
+        };
+    </script>
+</body>
+</html>
