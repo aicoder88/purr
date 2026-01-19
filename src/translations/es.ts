@@ -1537,7 +1537,167 @@ export const es: TranslationType = {
       home: "Inicio",
       learn: "Aprender",
       faq: "FAQ"
-    }
+    },
+    categoryList: [
+      { name: "Todas las Preguntas" },
+      { name: "Informacion del Producto" },
+      { name: "Uso y Aplicacion" },
+      { name: "Comparaciones" },
+      { name: "Solucion de Problemas" },
+      { name: "Envio y Entrega" },
+      { name: "Pago y Facturacion" },
+      { name: "Soporte al Cliente" }
+    ],
+    faqItems: [
+      {
+        question: "¿Que es Purrify y como funciona?",
+        answer: "Purrify es un aditivo de carbon activado para arena de gatos que elimina olores a nivel molecular mediante un proceso llamado adsorcion. A diferencia de desodorantes que solo enmascaran olores, Purrify atrapa moleculas de olor (amoniaco, mercaptanos y otros compuestos) dentro de sus millones de poros microscopicos. Cada particula de nuestro carbon activado de cascara de coco tiene una enorme superficie interna - ¡1 gramo tiene la misma superficie que una cancha de tenis! Esto permite que Purrify elimine hasta el 99.5% de las moleculas de olor antes de que alcancen tu nariz, manteniendo tu hogar fresco por 7+ dias."
+      },
+      {
+        question: "¿Es Purrify seguro para gatos y gatitos?",
+        answer: "¡Si! Purrify esta hecho de 100% carbon activado natural de cascara de coco - el mismo material de grado alimenticio y no toxico usado en sistemas de filtracion de agua hospitalaria y purificadores de aire. Es completamente seguro si se ingiere (aunque tu gato no lo comera intencionalmente), no causa problemas respiratorios, y no contiene quimicos, fragancias o aditivos. Lo usan con confianza duenos de gatos con gatitos, gatos mayores y gatos con sensibilidades. De hecho, el carbon activado se usa en tratamientos veterinarios para intoxicacion porque es tan seguro y efectivo para unirse a toxinas."
+      },
+      {
+        question: "¿Cuanto dura una botella de Purrify?",
+        answer: "Depende del tamano que elijas y cuantos gatos tengas. Nuestra botella de Prueba de 30g dura 2 semanas para un gato (aplicacion cada 7 dias). El tamano Regular de 60g dura 4 semanas, el Grande de 120g dura 8 semanas, y el Ahorro de 240g dura 16 semanas para un hogar de un solo gato. Para multiples gatos, el tamano Grande (120g) o Ahorro (240g) proporciona el mejor valor ya que podrias necesitar aplicar con mas frecuencia en cajas de arena muy usadas."
+      },
+      {
+        question: "¿Como aplico Purrify a mi arena para gatos?",
+        answer: "¡Es increiblemente simple! Agita la botella, quita la tapa a presion, espolvorea 15g (aproximadamente 2 cucharadas) uniformemente sobre arena limpia, mezclalo ligeramente con tu recogedor, y listo. Para mejores resultados, aplica a arena fresca despues de un cambio completo de caja, o cuando notes que los olores empiezan a regresar (tipicamente cada 7 dias). No necesitas hacer calculos complicados - nuestra botella tiene marcas de medicion claras, y cada aplicacion toma menos de 30 segundos."
+      },
+      {
+        question: "¿Funciona Purrify con todos los tipos de arena para gatos?",
+        answer: "¡Absolutamente! Purrify es compatible con todos los tipos de arena: aglomerante, no aglomerante, arcilla, silice, madera, papel, trigo, maiz, y arenas naturales/ecologicas. Funciona mezclando a nivel molecular con el material de la arena sin interferir con sus propiedades de aglomeracion o absorcion. Ya sea que uses arena de $5 o premium de $50, Purrify mejora su rendimiento de control de olores sin cambiar como funciona."
+      },
+      {
+        question: "¿Cual es la diferencia entre Purrify y desodorantes de caja de arena regulares?",
+        answer: "Los desodorantes regulares enmascaran olores con fragancias fuertes (como poner perfume sobre basura), mientras Purrify elimina olores por completo mediante adsorcion molecular. La mayoria de desodorantes contienen bicarbonato de sodio, fragancias artificiales o aceites esenciales que solo ocultan olores temporalmente y pueden irritar las vias respiratorias de tu gato. El carbon activado de Purrify fisicamente atrapa y sostiene moleculas de olor dentro de su estructura porosa, eliminando la fuente del olor en lugar de solo cubrirla. Es por eso que Purrify dura 7+ dias mientras los desodorantes de fragancia tipicamente fallan en 24-48 horas."
+      },
+      {
+        question: "¿Afectara Purrify la capacidad de aglomeracion de mi arena?",
+        answer: "¡No en absoluto! Purrify esta disenado para trabajar con arena, no contra ella. El carbon activado no interfiere con formacion de grumos, absorcion de humedad o capacidad de recogida. Simplemente agrega una capa de control de olores que tu arena existente no puede proporcionar. De hecho, muchos clientes reportan que su arena parece funcionar mejor con Purrify porque se mantiene fresca por mas tiempo, permitiendoles sacar mas provecho de cada caja antes de cambios completos."
+      },
+      {
+        question: "¿Puedo usar Purrify en cajas de arena automaticas?",
+        answer: "¡Si! Purrify funciona excelentemente con cajas de arena automaticas como Litter-Robot, PetSafe ScoopFree y otras. Solo espolvorea y mezcla como de costumbre antes de que tu gato use la caja. El polvo fino no interferira con sensores o mecanismos de rastrillo. De hecho, el control de olores mejorado es particularmente valioso con cajas automaticas ya que la arena permanece en la unidad por mas tiempo entre cambios completos."
+      },
+      {
+        question: "¿Necesito mas para multiples gatos?",
+        answer: "Para multiples gatos, podrias necesitar aplicar Purrify con mas frecuencia (cada 5-6 dias en lugar de cada 7) o usar una cantidad ligeramente mayor por aplicacion. Nuestra recomendacion: hogares de 1-2 gatos → tamano Regular de 60g o Grande de 120g; hogares de 3+ gatos → tamano Grande de 120g o Ahorro de 240g para mejor valor. El tamano Ahorro es especialmente economico para hogares multi-gatos ya que reduces el costo por aplicacion."
+      },
+      {
+        question: "¿Que hace que el carbon activado de Purrify sea diferente al carbon regular?",
+        answer: "El carbon activado pasa por un proceso de activacion especializado a alta temperatura que crea millones de poros microscopicos, dandole 100-300 veces mas superficie que carbon regular. Nuestro carbon de cascara de coco especificamente se elige porque tiene la estructura de poros ideal para atrapar moleculas de olor de tamano pequeno como amoniaco (0.26nm) y mercaptanos (0.4nm). Carbon regular de brickets de parrilla o ceniza de madera carece de esta microestructura porosa y no proporcionaria esencialmente ningun control de olores."
+      },
+      {
+        question: "¿Cuanto cuesta Purrify por mes?",
+        answer: "Depende del tamano que elijas. Para un gato: Prueba $4.76 por 2 semanas ($9.52/mes), Regular $8.52 por mes, Grande $7.97/mes (mejor valor), Ahorro $7.44/mes (precio mas bajo). Para multiples gatos, recomendamos el tamano Grande o Ahorro ya que podrias necesitar aplicar con mas frecuencia. El Grande de 120g ofrece el mejor equilibrio de valor y conveniencia para la mayoria de hogares - menos de $2/semana para aire completamente fresco."
+      },
+      {
+        question: "¿Ofrece Purrify envio gratis?",
+        answer: "¡Si! Ofrecemos envio gratis en ordenes sobre $35 en Canada. La mayoria de clientes alcanzan esto facilmente comprando un tamano Grande de 120g ($15.95) o Ahorro de 240g ($29.76), o agrupando multiples articulos. Las ordenes tipicamente llegan en 5-7 dias habiles via Canada Post. Para ordenes menores a $35, las tarifas de envio estandar aplican basadas en tu ubicacion."
+      },
+      {
+        question: "¿Que tan rapido funciona Purrify?",
+        answer: "¡Veras (o mas bien, oleras) resultados inmediatamente! En cuanto espolvoreas Purrify, el carbon activado comienza a atrapar moleculas de olor. La mayoria de clientes notan mejora dramatica en control de olores dentro de las primeras horas. A diferencia de soluciones de fragancia que solo enmascaran olores temporalmente, la adsorcion de Purrify trabaja 24/7 por 7+ dias, mejorando continuamente mientras mas moleculas de olor son atrapadas."
+      },
+      {
+        question: "¿Puedo usar Purrify con otras soluciones de control de olores?",
+        answer: "¡Si! Purrify funciona bien con otras soluciones de control de olores, aunque la mayoria de clientes encuentran que ya no las necesitan. Puedes usarlo junto con revestimientos de caja de arena, tapetes o cajas de arena cerradas. Sin embargo, evita bicarbonato de sodio o fragancias en polvo fuertes ya que estos pueden interferir con la capacidad del carbon de atrapar olores. Para mejores resultados, deja que Purrify sea tu solucion principal de control de olores - es mas efectivo que cualquier cosa que puedas combinar con el."
+      },
+      {
+        question: "¿Cual es tu politica de devolucion?",
+        answer: "Ofrecemos una garantia sin preguntas de 30 dias. Si no estas completamente satisfecho con Purrify por cualquier razon, contactanos dentro de 30 dias de tu compra para un reembolso completo. Solo pagamos envio de retorno (si aplica) - de lo contrario queda el producto. Estamos tan confiados en que amaras Purrify que hacemos el retorno completamente sin riesgo. Para iniciar un retorno, simplemente envia un correo a hello@purrify.com."
+      },
+      {
+        question: "¿Es Purrify ecologico y sustentable?",
+        answer: "¡Absolutamente! Purrify esta hecho de 100% cascaras de coco renovables - un subproducto de la industria del coco que de otro modo seria desperdicio. No contiene quimicos sinteticos, fragancias artificiales o aditivos. El empaque es reciclable, y debido a que Purrify extiende la vida de tu arena, en realidad reduces desperdicio de arena en general. Al usar una fuente natural y renovable mientras ayudas a tu arena a durar mas, Purrify es una de las soluciones de control de olores mas ecologicas disponibles."
+      },
+      {
+        question: "¿Funcionara Purrify en hogares con multiples cajas de arena?",
+        answer: "¡Si! Solo aplica Purrify a cada caja de arena de manera independiente. Si tienes 2-3 cajas, el tamano Grande de 120g o Ahorro de 240g proporcionan el mejor valor ya que puedes tratar multiples cajas con una compra. Muchos hogares multi-caja usan la regla 'una caja por gato mas una', y Purrify funciona perfectamente en esta configuracion - solo espolvorea 15g por caja cada 7 dias."
+      },
+      {
+        question: "¿Puedo usar menos Purrify que lo recomendado?",
+        answer: "Aunque tecnicamente puedes usar menos, recomendamos los completos 15g (aproximadamente 2 cucharadas) por aplicacion para control de olores optimo. Usar menos puede no proporcionar suficiente carbon activado para atrapar efectivamente todas las moleculas de olor en tu caja, especialmente hacia el final del ciclo de 7 dias. Piensalo como seguro de control de olores - los 15g completos aseguran maxima efectividad. Si buscas ahorrar, nuestro tamano Ahorro de 240g ofrece el mejor costo por aplicacion a $1.86."
+      },
+      {
+        question: "¿Que pasa si mi gato es asmático o tiene alergias?",
+        answer: "Purrify es excelente para gatos con asma o alergias porque no contiene fragancias, quimicos o particulas irritantes. A diferencia de desodorantes perfumados que pueden desencadenar problemas respiratorios, el carbon activado es inerte e inodoro. De hecho, purificadores de aire con filtros de carbon activado se recomiendan comunmente para duenos de gatos con asma. Como siempre, si tu gato tiene condiciones de salud graves, consulta a tu veterinario, pero Purrify es una de las opciones de control de olores mas seguras y suaves disponibles."
+      },
+      {
+        question: "¿Como se compara Purrify con cajas de arena cerradas para control de olores?",
+        answer: "Purrify y cajas de arena cerradas resuelven diferentes problemas. Las cajas cerradas contienen olores (evitan que se dispersen) pero no eliminan olores - el aire dentro de la caja aun huele terrible, y cuando tu gato entra o sales para recoger, esos olores concentrados escapan. Purrify en realidad elimina olores a nivel molecular, asi que no hay nada que contener. Muchos clientes usan ambos - Purrify dentro de una caja cerrada para proteccion doble - ¡pero la mayoria encuentran que Purrify solo elimina la necesidad de una caja cerrada completamente!"
+      },
+      {
+        question: "¿Necesito carbon activado especial para cajas de arena?",
+        answer: "¡Si! No todos los carbon activado son iguales. Carbon de acuarios, purificadores de aire o productos de jardineria esta optimizado para diferentes tamanos de moleculas y tipos de contaminantes. El carbon activado de cascara de coco de Purrify esta especificamente seleccionado y de tamano de particula ideal para atrapar las moleculas especificas de olor de caja de arena (amoniaco, mercaptanos, compuestos volatiles de azufre) que existen en rango de 0.2-0.5nm. Usar carbon de proposito general seria como usar un filtro de cafe para filtrar agua - material equivocado para el trabajo."
+      },
+      {
+        question: "¿Puedo comprar Purrify en tiendas?",
+        answer: "Actualmente, Purrify esta disponible principalmente a traves de nuestro sitio web para asegurar frescura, calidad y precio directo al consumidor. Estamos trabajando en asociaciones minoristas y podriamos estar en tiendas selectas pronto. Ordenar en linea significa que obtienes el producto mas fresco directamente de nosotros, sin sobrecargos minoristas. Ademas, nuestra tienda web ofrece descuentos por cantidad, envio gratis sobre $35, y suscripcion con ahorro que no encontraras en tiendas."
+      },
+      {
+        question: "¿Que pasa si olvido aplicar Purrify despues de 7 dias?",
+        answer: "No hay problema! Purrify no deja de funcionar magicamente en el dia 8. Los poros de carbon gradualmente se saturan con el tiempo, asi que podrias notar olores ligeramente mas fuertes hacia el dia 8-10. Simplemente aplica tu siguiente dosis de 15g cuando lo recuerdes. Para memoria consistente, muchos clientes eligen un 'dia Purrify' semanal (como domingos) y lo agregan a su rutina de limpieza de caja de arena. Algunos establecen recordatorios de calendario movil."
+      },
+      {
+        question: "¿Purrify crea polvo cuando lo espolvoreo?",
+        answer: "Purrify es un polvo fino, asi que hay algo de polvo minimo durante la aplicacion - similar a espolvorear bicarbonato de sodio. Para minimizar polvo: (1) espolvorea cerca de la superficie de arena en lugar de desde alto, (2) espolvorea lentamente en lugar de verter rapidamente, (3) mezcla suavemente despues de aplicar. El polvo se asienta rapidamente en la arena y se vuelve indetectable una vez mezclado. A diferencia de desodorantes perfumados, el carbon activado no crea nubes de fragancia cuando los gatos cavan."
+      },
+      {
+        question: "¿Puedo usar Purrify en arena para gatos casera?",
+        answer: "¡Si! Purrify funciona con soluciones caseras de arena como pellets de madera, periodico triturado, arena o serrín. De hecho, materiales caseros tipicamente carecen del control de olores incorporado de arenas comerciales, asi que Purrify es especialmente valioso. Solo espolvorea 15g sobre tu material de caja casero y mezcla. El carbon activado trabajara exactamente de la misma manera - atrapando moleculas de olor independientemente de que material de caja estes usando."
+      },
+      {
+        question: "¿Como se el tamaño correcto de Purrify para comprar?",
+        answer: "Para un gato: Prueba de 30g (2 semanas) para probarlo, Regular de 60g (1 mes) para uso ocasional, Grande de 120g (2 meses, ¡mejor valor!), Ahorro de 240g (4 meses) para usuarios comprometidos. Para 2-3 gatos: Grande de 120g o Ahorro de 240g ya que podrias aplicar con mas frecuencia. Para 4+ gatos o hogares multi-caja: Ahorro de 240g o multiples botellas. ¿Aun no estas seguro? La mayoria de clientes primerizos comienzan con Regular de 60g o Grande de 120g."
+      },
+      {
+        question: "¿Necesito mezclar Purrify en la arena o solo espolvorearlo encima?",
+        answer: "Para mejores resultados, mezcla ligeramente Purrify en los 2-3 pulgadas superiores de arena usando tu recogedor. Esto distribuye el carbon activado a traves de la capa donde tu gato cava y donde se forma la orina. No necesitas mezclar profundamente o lograr distribucion perfecta - solo algunos golpes suaves con el recogedor es suficiente. Algunas personas simplemente lo espolvoran encima y dejan que el cavado de su gato lo mezcle naturalmente, lo que tambien funciona, pero mezclar manualmente asegura cobertura mas uniforme desde el dia 1."
+      },
+      {
+        question: "¿Funcionara Purrify para gatos mayores con orina muy fuerte?",
+        answer: "¡Absolutamente! Gatos mayores tipicamente tienen orina mas concentrada, haciendo el control de olores mas desafiante. El carbon activado de Purrify es especialmente efectivo para amoniaco fuerte y mercaptanos en orina de gato mayor. Muchos clientes especificamente compran Purrify porque sus gatos mayores producen olores que arena regular no puede manejar. Para casos particularmente fuertes, podrias aplicar cada 5-6 dias en lugar de cada 7, pero la mayoria encuentra el cronograma de 7 dias funciona incluso para gatos mayores."
+      },
+      {
+        question: "¿Puedo usar Purrify en bandejas de entrenamiento para gatitos?",
+        answer: "¡Si! Purrify es completamente seguro para gatitos y funciona igual de bien en sus bandejas de entrenamiento mas pequenas. Solo ajusta la cantidad basado en el tamano de la bandeja - usa aproximadamente 1 cucharada (7-8g) para bandejas de gatitos mas pequenas en lugar de los completos 15g. Esto ayuda a gatitos jovenes a asociar positivamente su caja de arena con limpieza y frescura, estableciendo buenos habitos de caja de arena desde el inicio."
+      },
+      {
+        question: "¿Que pasa si derramo Purrify en mi piso?",
+        answer: "No te preocupes! El carbon activado es completamente seguro e inerte. Solo barre o aspira el polvo derramado como cualquier otro polvo doméstico. No manchara pisos, alfombras o telas. Si cae en alfombra, aspira completamente - el polvo negro fino puede ser visible en alfombras de color claro hasta que se aspire. Evita fregarlo húmedo ya que eso puede extender el polvo; siempre limpia en seco primero."
+      },
+      {
+        question: "¿Puedo suscribirme para entregas automaticas?",
+        answer: "¡Si! Ofrecemos suscripciones de envio automatico con 10% de descuento. Elige tu tamano preferido y frecuencia de entrega (cada 4, 8 o 12 semanas) y automaticamente enviaremos Purrify a tu puerta antes de que te quedes sin el. Puedes pausar, saltar o cancelar en cualquier momento - sin contratos ni compromisos. La mayoria de clientes de 1 gato eligen entrega del tamano Grande de 120g cada 8 semanas para nunca quedarse sin Purrify manteniendo bajo el costo por aplicacion."
+      },
+      {
+        question: "¿Como se compara Purrify con productos de baking soda para control de olores?",
+        answer: "El bicarbonato de sodio neutraliza olores a través de reacciones químicas, pero tiene capacidad limitada y deja de funcionar una vez que la reacción se completa (tipicamente 24-48 horas en cajas de arena). El carbon activado de Purrify fisicamente atrapa moleculas de olor en sus poros mediante adsorcion, que dura mucho mas tiempo (7+ dias) y funciona en un rango mas amplio de moleculas de olor. El bicarbonato de sodio también puede ser polvoriento y menos efectivo contra olores fuertes de amoniaco, mientras el carbon de Purrify fue especificamente diseñado para moleculas de olor de caja de arena."
+      },
+      {
+        question: "¿Ofrecen descuentos por cantidad?",
+        answer: "¡Si! Cuanto mas compras, mas ahorras: compra 2-3 botellas → ahorra 10%, compra 4-5 botellas → ahorra 15%, compra 6+ botellas → ahorra 20%. Estos descuentos se apilan con nuestro ya economico tamano Ahorro de 240g. Los hogares multi-gatos o clientes que compran para amigos a menudo aprovechan descuentos por cantidad. Ademas, envio gratis en ordenes sobre $35 hace que compras al por mayor sean aun mas valiosas."
+      },
+      {
+        question: "¿Que debo hacer si Purrify no esta funcionando para mi?",
+        answer: "Primero, asegurate de estar usando los completos 15g (aproximadamente 2 cucharadas) por aplicacion y aplicar a arena limpia. Segundo, verifica que tu arena no este vencida u sobre-saturada (si tiene mas de 2-3 semanas, podria ser tiempo para un cambio completo). Tercero, para olores particularmente fuertes (multiples gatos, gatos mayores), intenta aplicar cada 5-6 dias en lugar de cada 7. Si has intentado estos pasos y aun no estas satisfecho, contactanos - estamos respaldados por nuestra garantia de 30 dias y trabajaremos contigo para solucionar el problema o proporcionar un reembolso completo."
+      },
+      {
+        question: "¿Puedo usar Purrify en cajas de arena para conejos u otras mascotas pequenas?",
+        answer: "¡Absolutamente! Mientras Purrify esta diseñado para cajas de arena para gatos, funciona igualmente bien para cajas de arena de conejos, hurones, cobayas, chinchillas y otras mascotas pequenas. Solo ajusta la cantidad basado en el tamano de la caja - usa aproximadamente 10-15g dependiendo del tamano. El carbon activado es seguro para todas las mascotas pequenas, no toxico si se ingiere, y efectivamente controla los olores de orina de cualquier mamifero pequeno."
+      },
+      {
+        question: "¿Como debo almacenar Purrify?",
+        answer: "Almacena Purrify en un lugar fresco y seco con la tapa a presion bien cerrada. Evita exposicion a humedad alta, que puede causar que el carbon activado comience a adsorber humedad del aire en lugar de guardar su capacidad para olores de caja de arena. No refrigeres o congeles - temperatura ambiente en un gabinete o despensa es perfecto. Propiamente almacenado, Purrify mantiene efectividad total por 2-3 años. La botella es compacta y se guarda facilmente debajo del lavabo, en gabinetes de limpieza o donde sea que guardes suministros de caja de arena."
+      },
+      {
+        question: "¿Puedo viajar con Purrify?",
+        answer: "¡Si! Purrify es seguro para viaje. La botella de tapa a presion es a prueba de derrames y el carbon activado no es liquido ni aerosol, asi que esta bien para equipaje de mano o documentado. Si viajas con tu gato y llevas una caja de arena portatil, simplemente lleva una pequena cantidad en la botella de Prueba de 30g. Es especialmente util para habitaciones de hotel, casas de alquiler vacacional o al visitar familia - espolvorea Purrify en la caja de arena temporal de tu gato para mantener el espacio de alquiler libre de olores."
+      }
+    ]
   },
 
   // Common UI Elements
@@ -3024,5 +3184,199 @@ export const es: TranslationType = {
     shippingSavings: "Ahorra $15-20+ por pedido vs compras individuales",
     save25vsStandard: "Ahorra 25% en comparación con comprar dos tamaños estándar",
     save25FamilyPack: "Ahorra 25% con nuestro Pack Familiar"
+  },
+
+  // Página de Ciencia
+  sciencePage: {
+    seo: {
+      title: "Cómo el Carbón Activado Elimina el Olor de la Arena para Gatos: La Ciencia",
+      description: "Las moléculas de amoníaco miden 0.26nm. Nuestros microporos están dimensionados para atraparlas. Así es como la arquitectura de poros diseñada captura olores tanto de orina (amoníaco) como de heces (mercaptanos)."
+    },
+    breadcrumb: {
+      home: "Inicio",
+      learn: "Aprender",
+      science: "Ciencia"
+    },
+    hero: {
+      heading: "Diseñado para Eliminar el Olor de la Arena para Gatos",
+      description: "Trabajando con científicos investigadores, diseñamos la estructura de poros perfecta para capturar el amoníaco de la orina y los mercaptanos de las heces: las dos moléculas responsables de ese olor inconfundible de la caja de arena.",
+      ctaButton: "Prueba la Ciencia"
+    },
+    understanding: {
+      sectionTitle: "Entendiendo el Olor de la Caja de Arena: Los Dos Culpables",
+      description: "Ese olor inconfundible de la caja de arena proviene de dos moléculas específicas. Para eliminarlas, necesitas entenderlas.",
+      ammonia: {
+        title: "Amoníaco (NH₃)",
+        subtitle: "De la Orina de Gato",
+        smell: "Agudo, penetrante, que irrita los ojos, como productos de limpieza",
+        moleculeSize: "Pequeño, solo 0.26 nanómetros",
+        problem: "Se forma cuando las bacterias descomponen la urea en la orina",
+        whyHard: "La mayoría del carbón tiene poros demasiado grandes para atrapar moléculas tan pequeñas"
+      },
+      mercaptans: {
+        title: "Mercaptanos",
+        subtitle: "De las Heces de Gato",
+        smell: "Huevos podridos, alcantarilla, azufre: esa sensación nauseabunda",
+        moleculeSize: "Compuestos de azufre más grandes y complejos",
+        problem: "Se liberan cuando las proteínas en las heces se descomponen",
+        whyHard: "Moléculas pegajosas que requieren tamaños de poro específicos para capturar"
+      },
+      breakthrough: "Aquí está el avance: La mayoría del carbón activado está diseñado para filtración de agua o purificación general del aire. Trabajamos con científicos investigadores para diseñar carbón específicamente para estas dos moléculas, creando la trampa perfecta para el olor de la arena para gatos."
+    },
+    imageCaptions: {
+      freshHome: {
+        title: "Tu Gato Merece un Hogar Fresco",
+        description: "Eliminación de olores a nivel molecular, no enmascaramiento"
+      },
+      noOdors: {
+        title: "No Más Olores Embarazosos",
+        description: "Control de olores respaldado por la ciencia para dueños de gatos modernos"
+      }
+    },
+    poreSize: {
+      sectionTitle: "La Distribución Perfecta del Tamaño de Poro",
+      description: "Las pruebas de laboratorio confirman nuestra relación optimizada de microporos-mesoporos-macroporos",
+      micropores: {
+        size: "<2nm",
+        title: "Microporos",
+        specialist: "Especialistas en Amoníaco",
+        target: "NH₃ (0.26nm)",
+        density: "Concentración más alta",
+        function: "Encierran las moléculas de olor más pequeñas"
+      },
+      mesopores: {
+        size: "2-50nm",
+        title: "Mesoporos",
+        specialist: "Trampas de Mercaptanos",
+        target: "Compuestos de azufre",
+        density: "Relación optimizada",
+        function: "Capturan olores fecales complejos"
+      },
+      macropores: {
+        size: ">50nm",
+        title: "Macroporos",
+        specialist: "Sistema de Transporte",
+        target: "Todas las moléculas",
+        density: "Colocación estratégica",
+        function: "Entrega rápida a los sitios de captura"
+      },
+      surfaceArea: {
+        title: "Área Superficial: 1050 m²/g",
+        description: "Eso es más de 12 canchas de tenis de área de captura de olores en solo un gramo de Purrify™",
+        iodineNumber: "Número de Yodo mg/g",
+        ctcAdsorption: "Adsorción CTC",
+        hardness: "Dureza",
+        moisture: "Humedad"
+      }
+    },
+    scienceFacts: {
+      sectionTitle: "Estructura de Poros de Precisión Diseñada",
+      description: "No todo el carbón activado se crea igual. Trabajamos con científicos para optimizar cada detalle para el olor de la arena para gatos.",
+      facts: [
+        {
+          title: "Arquitectura de Poros Diseñada",
+          description: "Trabajando con científicos investigadores, optimizamos la relación exacta de microporos (< 2nm), mesoporos (2-50nm) y macroporos (> 50nm) para crear la trampa perfecta para las moléculas de olor de la arena para gatos."
+        },
+        {
+          title: "Maestría en Captura de Amoníaco",
+          description: "Las moléculas de amoníaco (NH₃) de la orina de gato son diminutas: solo 0.26 nanómetros. Nuestra estructura rica en microporos crea millones de sitios de captura perfectamente dimensionados que encierran el amoníaco antes de que puedas olerlo."
+        },
+        {
+          title: "Eliminación de Mercaptanos",
+          description: "Los mercaptanos (compuestos de azufre) le dan a las heces ese olor distintivo a huevo podrido. Nuestros canales de mesoporos están específicamente dimensionados para atrapar estas moléculas más grandes y complejas de forma permanente."
+        },
+        {
+          title: "Sinergia de Triple Poro",
+          description: "Los macroporos actúan como autopistas que entregan moléculas de olor profundamente en el carbón. Los mesoporos atrapan compuestos de azufre de tamaño medio. Los microporos atrapan las moléculas de amoníaco más pequeñas. Nada escapa."
+        }
+      ]
+    },
+    microscopicView: {
+      imageCaptions: {
+        microscope: "La microscopía de grado investigación revela la estructura de poros",
+        labTesting: "Las pruebas de laboratorio confirman el rendimiento optimizado",
+        molecular: "Captura a nivel molecular de compuestos de olor"
+      },
+      whatYoureLookingAt: {
+        title: "Lo Que Estás Viendo",
+        description: "Estas imágenes muestran la investigación de laboratorio detrás de nuestra estructura de poros optimizada. Cada pequeño canal y cavidad es una trampa esperando capturar moléculas de olor a nivel molecular.",
+        bullets: [
+          "Millones de poros crean un área superficial masiva (1050 m²/g)",
+          "Diferentes tamaños de poro = diferentes moléculas de olor capturadas",
+          "Una vez atrapadas, las moléculas no pueden escapar de vuelta al aire"
+        ]
+      },
+      quote: {
+        text: "La clave no es solo tener poros, sino tener los poros del tamaño correcto en las proporciones correctas para las moléculas específicas que quieres capturar.",
+        attribution: "Colaboración de investigación con científicos del carbón activado"
+      }
+    },
+    technicalPerformance: {
+      sectionTitle: "Rendimiento Verificado en Laboratorio",
+      description: "Datos reales de pruebas de carbón activado confirman que nuestra estructura de poros optimizada ofrece adsorción superior",
+      particleSize: {
+        title: "Distribución de Partículas de Malla 8×30",
+        effectiveSize: "Tamaño Efectivo:",
+        meanDiameter: "Diámetro Medio:",
+        uniformityCoefficient: "Coeficiente de Uniformidad:",
+        whyMatters: "Por qué esto importa: El dimensionamiento consistente de partículas asegura un flujo uniforme a través de la arena y contacto máximo con las moléculas de olor. Nuestra malla 8×30 está específicamente dimensionada para un rendimiento óptimo en arena para gatos."
+      },
+      adsorption: {
+        title: "Rendimiento de Decloración Rápida",
+        halfLength: "Valor de Longitud Media:",
+        apparentDensity: "Densidad Aparente:",
+        betSurface: "Área Superficial BET:",
+        whyMatters: "Por qué esto importa: La eliminación rápida de cloro demuestra que la estructura microporosa del carbón es altamente activa. Si puede capturar moléculas de cloro tan rápidamente, el amoníaco no tiene ninguna oportunidad."
+      }
+    },
+    engineeredPerformance: {
+      title: "Diseñado para Rendimiento del Mundo Real",
+      description: "Las pruebas de laboratorio muestran que nuestro carbón activado de malla 8×30 mantiene características de flujo óptimas y pérdida de presión mínima en temperaturas variables (5-25°C). Esto significa captura de olores consistente ya sea que tu caja de arena esté en un sótano fresco o un baño cálido.",
+      stats: {
+        temperatureRange: "5-25°C",
+        temperatureLabel: "Rango de Temperatura",
+        performanceLabel: "Rendimiento",
+        pressureLossLabel: "Pérdida de Presión"
+      }
+    },
+    processTimeline: {
+      sectionTitle: "Cómo Funcionan Juntos los Tres Tipos de Poros",
+      description: "Nuestra arquitectura de poros respaldada por investigación crea un sistema de captura específicamente diseñado para olores de arena para gatos.",
+      steps: [
+        {
+          title: "Los Culpables: Amoníaco y Mercaptanos",
+          description: "La orina de gato se descompone en amoníaco (NH₃): ese olor agudo que irrita los ojos. Las heces liberan mercaptanos: compuestos de azufre que huelen a huevos podridos o alcantarilla. Estas son las moléculas que diseñamos Purrify para capturar."
+        },
+        {
+          title: "Macroporos: Los Carriles Expresos",
+          description: "Los macroporos grandes (> 50nm) actúan como autopistas, transportando rápidamente las moléculas de olor profundamente en la estructura del carbón. Piensa en ellos como los puntos de entrada que previenen cuellos de botella."
+        },
+        {
+          title: "Mesoporos: Las Trampas de Mercaptanos",
+          description: "Los mesoporos de tamaño medio (2-50nm) están perfectamente dimensionados para capturar mercaptanos y otros compuestos de azufre de las heces. Estos poros crean un agarre firme que no soltará."
+        },
+        {
+          title: "Microporos: Los Eliminadores de Amoníaco",
+          description: "Los microporos diminutos (< 2nm) están optimizados para el tamaño de 0.26nm del amoníaco. Con millones de estos sitios de captura por gramo, las moléculas de amoníaco quedan encerradas permanentemente antes de que puedas olerlas."
+        }
+      ]
+    },
+    researchSection: {
+      title: "La Solución Más Efectiva para el Olor de Arena para Gatos del Mundo",
+      description: "Al diseñar la relación perfecta de microporos-mesoporos-macroporos, creamos carbón activado específicamente optimizado para capturar amoníaco y mercaptanos: las moléculas exactas que hacen que las cajas de arena huelan.",
+      stats: {
+        ammoniaSize: "0.26nm",
+        ammoniaSizeLabel: "Tamaño de Molécula de Amoníaco - Microporos Perfectamente Emparejados",
+        poreTypes: "3 Tipos de Poros",
+        poreTypesLabel: "Micro + Meso + Macro = Captura Completa",
+        surfaceArea: "1050 m²/g",
+        surfaceAreaLabel: "Área Superficial - Millones de Sitios de Captura"
+      },
+      buttons: {
+        experience: "Experimenta la Ciencia",
+        learnMore: "Aprende Más"
+      }
+    },
+    backToLearn: "Volver a Aprender"
   }
 };

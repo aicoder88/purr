@@ -16,7 +16,7 @@ export function SolutionSection({
   headline,
   description,
   diagramSrc,
-  diagramAlt = 'How it works diagram',
+  diagramAlt = '',
 }: SolutionSectionProps) {
   return (
     <section

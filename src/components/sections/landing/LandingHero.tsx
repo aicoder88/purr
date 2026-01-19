@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { ChevronRight, Home } from 'lucide-react';
+import { useTranslation } from '@/lib/translation-context';
 
 interface LandingHeroProps {
   breadcrumb: string;
@@ -25,6 +26,8 @@ export function LandingHero({
   image,
   imageAlt = '',
 }: LandingHeroProps) {
+  const { t } = useTranslation();
+
   return (
     <section className="bg-white dark:bg-gray-900 py-12 lg:py-20">
       <Container>
@@ -37,7 +40,7 @@ export function LandingHero({
                 className="flex items-center gap-1 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
               >
                 <Home className="w-4 h-4" />
-                <span>Home</span>
+                <span>{t.nav?.home || ""}</span>
               </Link>
             </li>
             <li>

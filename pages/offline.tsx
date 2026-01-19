@@ -19,8 +19,8 @@ const OfflinePage: NextPage = () => {
   return (
     <>
       <NextSeo
-        title={`${t.offlinePage?.title || 'Offline'} - Purrify`}
-        description={t.offlinePage?.description || "You're currently offline. Please check your internet connection."}
+        title={`${t.offlinePage?.title || ''} - Purrify`}
+        description={t.offlinePage?.description || ""}
         noindex={true}
       />
 
@@ -36,11 +36,11 @@ const OfflinePage: NextPage = () => {
 
             {/* Title and Message */}
             <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-              {t.offlinePage?.title || "You're Offline"}
+              {t.offlinePage?.title || ""}
             </h1>
 
             <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-              {t.offlinePage?.description || "It looks like you've lost your internet connection. Don't worry - you can still browse some cached pages while offline. Once you're back online, everything will work normally."}
+              {t.offlinePage?.description || ""}
             </p>
 
             {/* Action Buttons */}

@@ -66,11 +66,11 @@ export function CTA() {
           {/* Content section */}
           <div className="text-gray-900 dark:text-gray-100 max-w-2xl bg-gray-50 dark:bg-gray-900/80 backdrop-blur-sm p-6 rounded-xl">
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight text-gray-900 dark:text-gray-100">
-              {t.cta?.title || "Ready to Say Goodbye to Litter Box Odors Forever?"}
+              {t.cta?.title || ""}
             </h2>
 
             <p className="text-gray-700 dark:text-gray-100/90 text-lg">
-              {t.cta?.subtitle || "Join 1,000+ happy customers who have transformed their homes with Purrify. Try it risk-free with our 30-day satisfaction guarantee."}
+              {t.cta?.subtitle || ""}
             </p>
 
             {/* Social proof */}
@@ -85,7 +85,7 @@ export function CTA() {
                 ))}
               </div>
               <p className="text-gray-700 dark:text-gray-100/90 text-sm font-medium">
-                {t.cta?.joinText || "Join 1,000+ Happy cat Families - Visit your local store"}
+                {t.cta?.joinText || ""}
               </p>
             </div>
           </div>
@@ -98,7 +98,7 @@ export function CTA() {
               className={`${COLORS.surface.light} text-[#5B2EFF] hover:bg-gray-100 dark:bg-[#3694FF] dark:text-white dark:text-gray-100 font-bold py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-lg`}
             >
               <Link href="/products">
-                {t.cta?.buttonText || "ORDER NOW"}
+                {t.cta?.buttonText || ""}
               </Link>
             </Button>
 

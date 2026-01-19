@@ -84,12 +84,12 @@ const NotFoundPage: NextPage = () => {
           </h1>
 
           <p className="text-xl mb-8 text-gray-600 dark:text-gray-300">
-            {t.notFoundPage?.description || "Oops! The page you are looking for might have been moved, deleted, or perhaps never existed."}
+            {t.notFoundPage?.description || ""}
           </p>
 
           <div className="mb-12 p-4 bg-[#FFFFF5] dark:bg-gray-800 rounded-lg border border-[#E0EFC7] dark:border-gray-600 shadow-sm">
             <h2 className="font-heading text-xl font-semibold mb-4 text-[#03E46A] dark:text-[#03E46A]">
-              {t.notFoundPage?.lookingFor || "You might be looking for:"}
+              {t.notFoundPage?.lookingFor || ""}
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -110,7 +110,7 @@ const NotFoundPage: NextPage = () => {
             href="/"
             className="inline-block bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131]/70 text-white dark:text-white dark:text-gray-100 font-medium py-3 px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
           >
-            {t.notFoundPage?.returnHome || "Return to Home Page"}
+            {t.notFoundPage?.returnHome || ""}
           </Link>
         </div>
       </Container>

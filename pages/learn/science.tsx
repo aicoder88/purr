@@ -11,14 +11,18 @@ import Image from 'next/image';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 
 export default function SciencePage() {
-  const { locale } = useTranslation();
+  const { t, locale } = useTranslation();
 
-  const pageTitle = `How Activated Carbon Eliminates Cat Litter Odor: The Science`;
-  const pageDescription = "Ammonia molecules are 0.26nm. Our micropores are sized to trap them. Here's how engineered pore architecture captures both urine (ammonia) and feces (mercaptan) odors.";
+  const pageTitle = t.sciencePage?.seo.title || "How Activated Carbon Eliminates Cat Litter Odor: The Science";
+  const pageDescription = t.sciencePage?.seo.description || "Ammonia molecules are 0.26nm. Our micropores are sized to trap them. Here's how engineered pore architecture captures both urine (ammonia) and feces (mercaptan) odors.";
   const canonicalUrl = getLocalizedUrl('/learn/science', locale);
   const languageAlternates = buildLanguageAlternates('/learn/science');
 
-  const scienceFacts = [
+  const scienceFacts = t.sciencePage?.scienceFacts.facts.map((fact, index) => ({
+    icon: [Atom, Microscope, Zap, Shield][index],
+    title: fact.title,
+    description: fact.description
+  })) || [
     {
       icon: Atom,
       title: "Engineered Pore Architecture",
@@ -41,7 +45,11 @@ export default function SciencePage() {
     }
   ];
 
-  const processSteps = [
+  const processSteps = t.sciencePage?.processTimeline.steps.map((step, index) => ({
+    step: String(index + 1),
+    title: step.title,
+    description: step.description
+  })) || [
     {
       step: "1",
       title: "The Culprits: Ammonia & Mercaptans",
@@ -94,17 +102,17 @@ export default function SciencePage() {
             <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
               <li>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
-                  Home
+                  {t.sciencePage?.breadcrumb.home || "Home"}
                 </Link>
               </li>
               <li>/</li>
               <li>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
-                  Learn
+                  {t.sciencePage?.breadcrumb.learn || "Learn"}
                 </Link>
               </li>
               <li>/</li>
-              <li className="text-[#FF3131] dark:text-[#FF5050] font-medium">Science</li>
+              <li className="text-[#FF3131] dark:text-[#FF5050] font-medium">{t.sciencePage?.breadcrumb.science || "Science"}</li>
             </ol>
           </nav>
         </Container>
@@ -117,15 +125,14 @@ export default function SciencePage() {
                 <FlaskConical className="w-8 h-8 text-white dark:text-gray-100" />
               </div>
               <h1 className="font-heading text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
-                Engineered to Eliminate Cat Litter Odor
+                {t.sciencePage?.hero.heading || "Engineered to Eliminate Cat Litter Odor"}
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                Working with research scientists, we engineered the perfect pore structure to capture ammonia from urine
-                and mercaptans from feces—the two molecules responsible for that unmistakable litter box smell.
+                {t.sciencePage?.hero.description || "Working with research scientists, we engineered the perfect pore structure to capture ammonia from urine and mercaptans from feces—the two molecules responsible for that unmistakable litter box smell."}
               </p>
               <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                 <Button size="lg" className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 font-bold shadow-lg hover:shadow-xl transition-all duration-300">
-                  {`Try the Science - ${formatProductPrice('trial', locale)}`}
+                  {`${t.sciencePage?.hero.ctaButton || "Try the Science"} - ${formatProductPrice('trial', locale)}`}
                 </Button>
               </Link>
             </div>
@@ -137,10 +144,10 @@ export default function SciencePage() {
           <Container>
             <div className="text-center mb-12">
               <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-                Understanding Litter Box Odor: The Two Culprits
+                {t.sciencePage?.understanding.sectionTitle || "Understanding Litter Box Odor: The Two Culprits"}
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                That unmistakable litter box smell comes from two specific molecules. To eliminate them, you need to understand them.
+                {t.sciencePage?.understanding.description || "That unmistakable litter box smell comes from two specific molecules. To eliminate them, you need to understand them."}
               </p>
             </div>
 
@@ -150,25 +157,25 @@ export default function SciencePage() {
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-full mb-4">
                     <span className="text-3xl">💧</span>
                   </div>
-                  <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-2">Ammonia (NH₃)</h3>
-                  <p className="text-sm text-red-600 dark:text-red-400 font-semibold">From Cat Urine</p>
+                  <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-2">{t.sciencePage?.understanding.ammonia.title || "Ammonia (NH₃)"}</h3>
+                  <p className="text-sm text-red-600 dark:text-red-400 font-semibold">{t.sciencePage?.understanding.ammonia.subtitle || "From Cat Urine"}</p>
                 </div>
                 <ul className="space-y-3 text-gray-700 dark:text-gray-200">
                   <li className="flex items-start space-x-2">
                     <span className="text-red-500 dark:text-red-400 mt-1">•</span>
-                    <span><strong>The Smell:</strong> Sharp, pungent, eye-watering—like cleaning chemicals</span>
+                    <span><strong>The Smell:</strong> {t.sciencePage?.understanding.ammonia.smell || "Sharp, pungent, eye-watering—like cleaning chemicals"}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <span className="text-red-500 dark:text-red-400 mt-1">•</span>
-                    <span><strong>Molecule Size:</strong> Tiny at 0.26 nanometers</span>
+                    <span><strong>Molecule Size:</strong> {t.sciencePage?.understanding.ammonia.moleculeSize || "Tiny at 0.26 nanometers"}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <span className="text-red-500 dark:text-red-400 mt-1">•</span>
-                    <span><strong>The Problem:</strong> Forms when bacteria break down urea in urine</span>
+                    <span><strong>The Problem:</strong> {t.sciencePage?.understanding.ammonia.problem || "Forms when bacteria break down urea in urine"}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <span className="text-red-500 dark:text-red-400 mt-1">•</span>
-                    <span><strong>Why It's Hard:</strong> Most carbon has pores too large to trap such small molecules</span>
+                    <span><strong>Why It's Hard:</strong> {t.sciencePage?.understanding.ammonia.whyHard || "Most carbon has pores too large to trap such small molecules"}</span>
                   </li>
                 </ul>
               </div>
@@ -178,25 +185,25 @@ export default function SciencePage() {
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-yellow-100 dark:bg-yellow-900/30 rounded-full mb-4">
                     <span className="text-3xl">💩</span>
                   </div>
-                  <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-2">Mercaptans</h3>
-                  <p className="text-sm text-yellow-600 dark:text-yellow-400 font-semibold">From Cat Feces</p>
+                  <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-2">{t.sciencePage?.understanding.mercaptans.title || "Mercaptans"}</h3>
+                  <p className="text-sm text-yellow-600 dark:text-yellow-400 font-semibold">{t.sciencePage?.understanding.mercaptans.subtitle || "From Cat Feces"}</p>
                 </div>
                 <ul className="space-y-3 text-gray-700 dark:text-gray-200">
                   <li className="flex items-start space-x-2">
                     <span className="text-yellow-500 dark:text-yellow-400 mt-1">•</span>
-                    <span><strong>The Smell:</strong> Rotten eggs, sewage, sulfur—that gagging sensation</span>
+                    <span><strong>The Smell:</strong> {t.sciencePage?.understanding.mercaptans.smell || "Rotten eggs, sewage, sulfur—that gagging sensation"}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <span className="text-yellow-500 dark:text-yellow-400 mt-1">•</span>
-                    <span><strong>Molecule Size:</strong> Larger, more complex sulfur compounds</span>
+                    <span><strong>Molecule Size:</strong> {t.sciencePage?.understanding.mercaptans.moleculeSize || "Larger, more complex sulfur compounds"}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <span className="text-yellow-500 dark:text-yellow-400 mt-1">•</span>
-                    <span><strong>The Problem:</strong> Released when proteins in feces decompose</span>
+                    <span><strong>The Problem:</strong> {t.sciencePage?.understanding.mercaptans.problem || "Released when proteins in feces decompose"}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <span className="text-yellow-500 dark:text-yellow-400 mt-1">•</span>
-                    <span><strong>Why It's Hard:</strong> Sticky molecules that require specific pore sizes to capture</span>
+                    <span><strong>Why It's Hard:</strong> {t.sciencePage?.understanding.mercaptans.whyHard || "Sticky molecules that require specific pore sizes to capture"}</span>
                   </li>
                 </ul>
               </div>
@@ -204,8 +211,7 @@ export default function SciencePage() {
 
             <div className="mt-10 text-center bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-3xl mx-auto shadow-lg border border-gray-200 dark:border-gray-700">
               <p className="text-lg text-gray-700 dark:text-gray-200 leading-relaxed">
-                <strong className="text-gray-900 dark:text-white">Here's the breakthrough:</strong> Most activated carbon is designed for water filtration or general air purification.
-                We worked with research scientists to engineer carbon specifically for these two molecules—creating the perfect trap for cat litter odor.
+                {t.sciencePage?.understanding.breakthrough || "Here's the breakthrough: Most activated carbon is designed for water filtration or general air purification. We worked with research scientists to engineer carbon specifically for these two molecules—creating the perfect trap for cat litter odor."}
               </p>
             </div>
 
@@ -221,8 +227,8 @@ export default function SciencePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                   <div className="p-8 text-white dark:text-gray-100">
-                    <h3 className="font-heading text-2xl font-bold mb-2">Your Cat Deserves a Fresh Home</h3>
-                    <p className="text-lg opacity-90">Molecular-level odor elimination, not masking</p>
+                    <h3 className="font-heading text-2xl font-bold mb-2">{t.sciencePage?.imageCaptions.freshHome.title || "Your Cat Deserves a Fresh Home"}</h3>
+                    <p className="text-lg opacity-90">{t.sciencePage?.imageCaptions.freshHome.description || "Molecular-level odor elimination, not masking"}</p>
                   </div>
                 </div>
               </div>
@@ -236,8 +242,8 @@ export default function SciencePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                   <div className="p-8 text-white dark:text-gray-100">
-                    <h3 className="font-heading text-2xl font-bold mb-2">No More Embarrassing Odors</h3>
-                    <p className="text-lg opacity-90">Science-backed odor control for modern cat owners</p>
+                    <h3 className="font-heading text-2xl font-bold mb-2">{t.sciencePage?.imageCaptions.noOdors.title || "No More Embarrassing Odors"}</h3>
+                    <p className="text-lg opacity-90">{t.sciencePage?.imageCaptions.noOdors.description || "Science-backed odor control for modern cat owners"}</p>
                   </div>
                 </div>
               </div>
@@ -253,60 +259,60 @@ export default function SciencePage() {
                 <BarChart3 className="w-8 h-8 text-white dark:text-gray-100" />
               </div>
               <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-                The Perfect Pore Size Distribution
+                {t.sciencePage?.poreSize.sectionTitle || "The Perfect Pore Size Distribution"}
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Laboratory testing confirms our optimized micropore-mesopore-macropore ratio
+                {t.sciencePage?.poreSize.description || "Laboratory testing confirms our optimized micropore-mesopore-macropore ratio"}
               </p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border-2 border-blue-200 dark:border-blue-800">
                 <div className="text-center mb-4">
-                  <div className="text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2">&lt;2nm</div>
-                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">Micropores</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">Ammonia Specialists</p>
+                  <div className="text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2">{t.sciencePage?.poreSize.micropores.size || "<2nm"}</div>
+                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">{t.sciencePage?.poreSize.micropores.title || "Micropores"}</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">{t.sciencePage?.poreSize.micropores.specialist || "Ammonia Specialists"}</p>
                 </div>
                 <div className="space-y-3 text-gray-700 dark:text-gray-200">
-                  <p><strong>Target:</strong> NH₃ (0.26nm)</p>
-                  <p><strong>Density:</strong> Highest concentration</p>
-                  <p><strong>Function:</strong> Lock away smallest odor molecules</p>
+                  <p><strong>Target:</strong> {t.sciencePage?.poreSize.micropores.target || "NH₃ (0.26nm)"}</p>
+                  <p><strong>Density:</strong> {t.sciencePage?.poreSize.micropores.density || "Highest concentration"}</p>
+                  <p><strong>Function:</strong> {t.sciencePage?.poreSize.micropores.function || "Lock away smallest odor molecules"}</p>
                 </div>
               </div>
 
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border-2 border-purple-200 dark:border-purple-800">
                 <div className="text-center mb-4">
-                  <div className="text-5xl font-bold text-purple-600 dark:text-purple-400 mb-2">2-50nm</div>
-                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">Mesopores</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">Mercaptan Traps</p>
+                  <div className="text-5xl font-bold text-purple-600 dark:text-purple-400 mb-2">{t.sciencePage?.poreSize.mesopores.size || "2-50nm"}</div>
+                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">{t.sciencePage?.poreSize.mesopores.title || "Mesopores"}</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">{t.sciencePage?.poreSize.mesopores.specialist || "Mercaptan Traps"}</p>
                 </div>
                 <div className="space-y-3 text-gray-700 dark:text-gray-200">
-                  <p><strong>Target:</strong> Sulfur compounds</p>
-                  <p><strong>Density:</strong> Optimized ratio</p>
-                  <p><strong>Function:</strong> Capture complex fecal odors</p>
+                  <p><strong>Target:</strong> {t.sciencePage?.poreSize.mesopores.target || "Sulfur compounds"}</p>
+                  <p><strong>Density:</strong> {t.sciencePage?.poreSize.mesopores.density || "Optimized ratio"}</p>
+                  <p><strong>Function:</strong> {t.sciencePage?.poreSize.mesopores.function || "Capture complex fecal odors"}</p>
                 </div>
               </div>
 
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border-2 border-indigo-200 dark:border-indigo-800">
                 <div className="text-center mb-4">
-                  <div className="text-5xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">&gt;50nm</div>
-                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">Macropores</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">Transport System</p>
+                  <div className="text-5xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">{t.sciencePage?.poreSize.macropores.size || ">50nm"}</div>
+                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">{t.sciencePage?.poreSize.macropores.title || "Macropores"}</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">{t.sciencePage?.poreSize.macropores.specialist || "Transport System"}</p>
                 </div>
                 <div className="space-y-3 text-gray-700 dark:text-gray-200">
-                  <p><strong>Target:</strong> All molecules</p>
-                  <p><strong>Density:</strong> Strategic placement</p>
-                  <p><strong>Function:</strong> Rapid delivery to capture sites</p>
+                  <p><strong>Target:</strong> {t.sciencePage?.poreSize.macropores.target || "All molecules"}</p>
+                  <p><strong>Density:</strong> {t.sciencePage?.poreSize.macropores.density || "Strategic placement"}</p>
+                  <p><strong>Function:</strong> {t.sciencePage?.poreSize.macropores.function || "Rapid delivery to capture sites"}</p>
                 </div>
               </div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700 max-w-4xl mx-auto">
               <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center">
-                Surface Area: 1050 m²/g
+                {t.sciencePage?.poreSize.surfaceArea.title || "Surface Area: 1050 m²/g"}
               </h3>
               <p className="text-center text-gray-600 dark:text-gray-300 mb-6 text-lg">
-                That's over <strong className="text-gray-900 dark:text-white">12 tennis courts</strong> of odor-capturing surface area in just one gram of Purrify™
+                {t.sciencePage?.poreSize.surfaceArea.description || "That's over 12 tennis courts of odor-capturing surface area in just one gram of Purrify™"}
               </p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                 <div className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-xl">
@@ -335,10 +341,10 @@ export default function SciencePage() {
           <Container>
             <div className="text-center mb-12">
               <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-                Precision-Engineered Pore Structure
+                {t.sciencePage?.scienceFacts.sectionTitle || "Precision-Engineered Pore Structure"}
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Not all activated carbon is created equal. We worked with scientists to optimize every detail for cat litter odor.
+                {t.sciencePage?.scienceFacts.description || "Not all activated carbon is created equal. We worked with scientists to optimize every detail for cat litter odor."}
               </p>
             </div>
 
@@ -380,7 +386,7 @@ export default function SciencePage() {
                       className="w-full h-auto"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                      <p className="text-white dark:text-gray-100 text-sm font-medium">Research-grade microscopy reveals pore structure</p>
+                      <p className="text-white dark:text-gray-100 text-sm font-medium">{t.sciencePage?.microscopicView.imageCaptions.microscope || "Research-grade microscopy reveals pore structure"}</p>
                     </div>
                   </div>
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl">
@@ -392,7 +398,7 @@ export default function SciencePage() {
                       className="w-full h-auto"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                      <p className="text-white dark:text-gray-100 text-sm font-medium">Laboratory testing confirms optimized performance</p>
+                      <p className="text-white dark:text-gray-100 text-sm font-medium">{t.sciencePage?.microscopicView.imageCaptions.labTesting || "Laboratory testing confirms optimized performance"}</p>
                     </div>
                   </div>
                 </div>
@@ -407,40 +413,38 @@ export default function SciencePage() {
                       className="w-full h-auto"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                      <p className="text-white dark:text-gray-100 text-sm font-medium">Molecular-level capture of odor compounds</p>
+                      <p className="text-white dark:text-gray-100 text-sm font-medium">{t.sciencePage?.microscopicView.imageCaptions.molecular || "Molecular-level capture of odor compounds"}</p>
                     </div>
                   </div>
 
                   <div className="bg-gradient-to-br from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-[#FF3131]/20 dark:to-[#5B2EFF]/20 rounded-2xl p-6 border border-[#FF3131]/20 dark:border-[#5B2EFF]/30">
                     <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-3">
-                      What You're Looking At
+                      {t.sciencePage?.microscopicView.whatYoureLookingAt.title || "What You're Looking At"}
                     </h3>
                     <p className="text-gray-700 dark:text-gray-200 leading-relaxed mb-4">
-                      These images show the laboratory research behind our optimized pore structure. Each tiny channel and cavity
-                      is a trap waiting to capture odor molecules at the molecular level.
+                      {t.sciencePage?.microscopicView.whatYoureLookingAt.description || "These images show the laboratory research behind our optimized pore structure. Each tiny channel and cavity is a trap waiting to capture odor molecules at the molecular level."}
                     </p>
                     <ul className="space-y-3 text-gray-700 dark:text-gray-200">
                       <li className="flex items-start space-x-2">
                         <span className="text-[#FF3131] mt-1">→</span>
-                        <span>Millions of pores create massive surface area (1050 m²/g)</span>
+                        <span>{t.sciencePage?.microscopicView.whatYoureLookingAt.bullets?.[0] || "Millions of pores create massive surface area (1050 m²/g)"}</span>
                       </li>
                       <li className="flex items-start space-x-2">
                         <span className="text-[#5B2EFF] mt-1">→</span>
-                        <span>Different pore sizes = different odor molecules captured</span>
+                        <span>{t.sciencePage?.microscopicView.whatYoureLookingAt.bullets?.[1] || "Different pore sizes = different odor molecules captured"}</span>
                       </li>
                       <li className="flex items-start space-x-2">
                         <span className="text-[#FF3131] mt-1">→</span>
-                        <span>Once trapped, molecules can't escape back into the air</span>
+                        <span>{t.sciencePage?.microscopicView.whatYoureLookingAt.bullets?.[2] || "Once trapped, molecules can't escape back into the air"}</span>
                       </li>
                     </ul>
                   </div>
 
                   <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
                     <p className="text-gray-700 dark:text-gray-200 italic">
-                      "The key is not just having pores, but having the <strong className="text-gray-900 dark:text-white">right sized pores</strong>
-                      in the <strong className="text-gray-900 dark:text-white">right ratios</strong> for the specific molecules you want to capture."
+                      {t.sciencePage?.microscopicView.quote.text || "\"The key is not just having pores, but having the right sized pores in the right ratios for the specific molecules you want to capture.\""}
                     </p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-3">— Research collaboration with activated carbon scientists</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-3">{t.sciencePage?.microscopicView.quote.attribution || "— Research collaboration with activated carbon scientists"}</p>
                   </div>
                 </div>
               </div>
@@ -453,10 +457,10 @@ export default function SciencePage() {
           <Container>
             <div className="text-center mb-12">
               <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-                Laboratory-Verified Performance
+                {t.sciencePage?.technicalPerformance.sectionTitle || "Laboratory-Verified Performance"}
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Real data from activated carbon testing confirms our optimized pore structure delivers superior adsorption
+                {t.sciencePage?.technicalPerformance.description || "Real data from activated carbon testing confirms our optimized pore structure delivers superior adsorption"}
               </p>
             </div>
 
@@ -467,25 +471,24 @@ export default function SciencePage() {
                   <span className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-3">
                     <BarChart3 className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                   </span>
-                  8×30 Mesh Particle Distribution
+                  {t.sciencePage?.technicalPerformance.particleSize.title || "8×30 Mesh Particle Distribution"}
                 </h3>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
                     <span className="text-gray-700 dark:text-gray-200 font-medium">Effective Size:</span>
-                    <span className="text-lg font-bold text-blue-600 dark:text-blue-400">1.0 mm</span>
+                    <span className="text-lg font-bold text-blue-600 dark:text-blue-400">{t.sciencePage?.technicalPerformance.particleSize.effectiveSize || "1.0 mm"}</span>
                   </div>
                   <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
                     <span className="text-gray-700 dark:text-gray-200 font-medium">Mean Diameter:</span>
-                    <span className="text-lg font-bold text-blue-600 dark:text-blue-400">1.4 mm</span>
+                    <span className="text-lg font-bold text-blue-600 dark:text-blue-400">{t.sciencePage?.technicalPerformance.particleSize.meanDiameter || "1.4 mm"}</span>
                   </div>
                   <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
                     <span className="text-gray-700 dark:text-gray-200 font-medium">Uniformity Coefficient:</span>
-                    <span className="text-lg font-bold text-blue-600 dark:text-blue-400">&lt;1.6</span>
+                    <span className="text-lg font-bold text-blue-600 dark:text-blue-400">{t.sciencePage?.technicalPerformance.particleSize.uniformityCoefficient || "<1.6"}</span>
                   </div>
                   <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
                     <p className="text-sm text-gray-700 dark:text-gray-200">
-                      <strong>Why this matters:</strong> Consistent particle sizing ensures uniform flow through litter
-                      and maximum contact with odor molecules. Our 8×30 mesh is specifically sized for optimal cat litter performance.
+                      <strong>Why this matters:</strong> {t.sciencePage?.technicalPerformance.particleSize.whyMatters || "Consistent particle sizing ensures uniform flow through litter and maximum contact with odor molecules. Our 8×30 mesh is specifically sized for optimal cat litter performance."}
                     </p>
                   </div>
                 </div>
@@ -497,25 +500,24 @@ export default function SciencePage() {
                   <span className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mr-3">
                     <Zap className="w-5 h-5 text-purple-600 dark:text-purple-400" />
                   </span>
-                  Rapid Dechlorination Performance
+                  {t.sciencePage?.technicalPerformance.adsorption.title || "Rapid Dechlorination Performance"}
                 </h3>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
                     <span className="text-gray-700 dark:text-gray-200 font-medium">Half-Length Value:</span>
-                    <span className="text-lg font-bold text-purple-600 dark:text-purple-400">2.2 cm</span>
+                    <span className="text-lg font-bold text-purple-600 dark:text-purple-400">{t.sciencePage?.technicalPerformance.adsorption.halfLength || "2.2 cm"}</span>
                   </div>
                   <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
                     <span className="text-gray-700 dark:text-gray-200 font-medium">Apparent Density:</span>
-                    <span className="text-lg font-bold text-purple-600 dark:text-purple-400">540 kg/m³</span>
+                    <span className="text-lg font-bold text-purple-600 dark:text-purple-400">{t.sciencePage?.technicalPerformance.adsorption.apparentDensity || "540 kg/m³"}</span>
                   </div>
                   <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
                     <span className="text-gray-700 dark:text-gray-200 font-medium">BET Surface Area:</span>
-                    <span className="text-lg font-bold text-purple-600 dark:text-purple-400">1050 m²/g</span>
+                    <span className="text-lg font-bold text-purple-600 dark:text-purple-400">{t.sciencePage?.technicalPerformance.adsorption.betSurface || "1050 m²/g"}</span>
                   </div>
                   <div className="mt-6 p-4 bg-purple-50 dark:bg-purple-900/20 rounded-xl">
                     <p className="text-sm text-gray-700 dark:text-gray-200">
-                      <strong>Why this matters:</strong> Rapid chlorine removal proves the carbon's micro porous structure
-                      is highly active. If it can capture chlorine molecules this quickly, ammonia doesn't stand a chance.
+                      <strong>Why this matters:</strong> {t.sciencePage?.technicalPerformance.adsorption.whyMatters || "Rapid chlorine removal proves the carbon's micro porous structure is highly active. If it can capture chlorine molecules this quickly, ammonia doesn't stand a chance."}
                     </p>
                   </div>
                 </div>
@@ -532,25 +534,23 @@ export default function SciencePage() {
                 </div>
                 <div>
                   <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-3">
-                    Engineered for Real-World Performance
+                    {t.sciencePage?.engineeredPerformance.title || "Engineered for Real-World Performance"}
                   </h3>
                   <p className="text-gray-700 dark:text-gray-200 leading-relaxed mb-4">
-                    Laboratory testing shows our 8×30 mesh activated carbon maintains optimal flow characteristics and minimal pressure loss
-                    across varying temperatures (5-25°C). This means consistent odor capture whether your litter box is in a cool basement
-                    or warm bathroom.
+                    {t.sciencePage?.engineeredPerformance.description || "Laboratory testing shows our 8×30 mesh activated carbon maintains optimal flow characteristics and minimal pressure loss across varying temperatures (5-25°C). This means consistent odor capture whether your litter box is in a cool basement or warm bathroom."}
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
                     <div className="text-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
-                      <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">5-25°C</div>
-                      <div className="text-sm text-gray-600 dark:text-gray-300">Temperature Range</div>
+                      <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">{t.sciencePage?.engineeredPerformance.stats.temperatureRange || "5-25°C"}</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-300">{t.sciencePage?.engineeredPerformance.stats.temperatureLabel || "Temperature Range"}</div>
                     </div>
                     <div className="text-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
                       <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">Stable</div>
-                      <div className="text-sm text-gray-600 dark:text-gray-300">Performance</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-300">{t.sciencePage?.engineeredPerformance.stats.performanceLabel || "Performance"}</div>
                     </div>
                     <div className="text-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
                       <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">Minimal</div>
-                      <div className="text-sm text-gray-600 dark:text-gray-300">Pressure Loss</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-300">{t.sciencePage?.engineeredPerformance.stats.pressureLossLabel || "Pressure Loss"}</div>
                     </div>
                   </div>
                 </div>
@@ -564,10 +564,10 @@ export default function SciencePage() {
           <Container>
             <div className="text-center mb-12">
               <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-                How the Three Pore Types Work Together
+                {t.sciencePage?.processTimeline.sectionTitle || "How the Three Pore Types Work Together"}
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Our research-backed pore architecture creates a capture system specifically engineered for cat litter odors.
+                {t.sciencePage?.processTimeline.description || "Our research-backed pore architecture creates a capture system specifically engineered for cat litter odors."}
               </p>
             </div>
 
@@ -610,37 +610,36 @@ export default function SciencePage() {
           <Container>
             <div className="text-center text-white dark:text-gray-100">
               <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-                The Most Effective Cat Litter Odor Solution in the World
+                {t.sciencePage?.researchSection.title || "The Most Effective Cat Litter Odor Solution in the World"}
               </h2>
               <p className="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
-                By engineering the perfect micropore-mesopore-macropore ratio, we created activated carbon
-                specifically optimized to capture ammonia and mercaptans—the exact molecules that make litter boxes smell.
+                {t.sciencePage?.researchSection.description || "By engineering the perfect micropore-mesopore-macropore ratio, we created activated carbon specifically optimized to capture ammonia and mercaptans—the exact molecules that make litter boxes smell."}
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                 <div className="text-center">
-                  <div className="text-4xl font-bold mb-2">0.26nm</div>
-                  <div className="text-lg opacity-90">Ammonia Molecule Size - Perfectly Matched Micropores</div>
+                  <div className="text-4xl font-bold mb-2">{t.sciencePage?.researchSection.stats.ammoniaSize || "0.26nm"}</div>
+                  <div className="text-lg opacity-90">{t.sciencePage?.researchSection.stats.ammoniaSizeLabel || "Ammonia Molecule Size - Perfectly Matched Micropores"}</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl font-bold mb-2">3 Pore Types</div>
-                  <div className="text-lg opacity-90">Micro + Meso + Macro = Complete Capture</div>
+                  <div className="text-4xl font-bold mb-2">{t.sciencePage?.researchSection.stats.poreTypes || "3 Pore Types"}</div>
+                  <div className="text-lg opacity-90">{t.sciencePage?.researchSection.stats.poreTypesLabel || "Micro + Meso + Macro = Complete Capture"}</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl font-bold mb-2">1050 m²/g</div>
-                  <div className="text-lg opacity-90">Surface Area - Millions of Capture Sites</div>
+                  <div className="text-4xl font-bold mb-2">{t.sciencePage?.researchSection.stats.surfaceArea || "1050 m²/g"}</div>
+                  <div className="text-lg opacity-90">{t.sciencePage?.researchSection.stats.surfaceAreaLabel || "Surface Area - Millions of Capture Sites"}</div>
                 </div>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
-                    Experience the Science
+                    {t.sciencePage?.researchSection.buttons.experience || "Experience the Science"}
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`}>
                   <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-white dark:text-gray-100 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-[#5B2EFF] transition-colors">
-                    Learn More
+                    {t.sciencePage?.researchSection.buttons.learnMore || "Learn More"}
                   </Button>
                 </Link>
               </div>
@@ -663,7 +662,7 @@ export default function SciencePage() {
               className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Learn
+              {t.sciencePage?.backToLearn || "Back to Learn"}
             </Link>
           </Container>
         </section>

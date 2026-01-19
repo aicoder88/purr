@@ -6,53 +6,13 @@ import Link from "next/link";
 export function HowItWorks() {
   const { t, locale } = useTranslation();
   
-  const steps = t.howItWorks?.steps ? [
-    {
-      number: t.howItWorks.steps[0].number,
-      title: t.howItWorks.steps[0].title,
-      description: t.howItWorks.steps[0].description,
-      icon: "✨",
-      image: "/optimized/panel_1.webp",
-    },
-    {
-      number: t.howItWorks.steps[1].number,
-      title: t.howItWorks.steps[1].title,
-      description: t.howItWorks.steps[1].description,
-      icon: "🔄",
-      image: "/optimized/panel_2.webp",
-    },
-    {
-      number: t.howItWorks.steps[2].number,
-      title: t.howItWorks.steps[2].title,
-      description: t.howItWorks.steps[2].description,
-      icon: "😌",
-      image: "/optimized/panel_3.webp",
-    },
-  ] : [
-    {
-      number: "01",
-      title: "Open the Bag",
-      description: "Pull off the label and unzip the bag",
-      icon: "✨",
-      image: "/optimized/panel_1.webp",
-    },
-    {
-      number: "02",
-      title: "Sprinkle on top of your cat litter",
-      description:
-        "Simply sprinkle a thin layer of Purrify on top of your cat's clean litter.",
-      icon: "🔄",
-      image: "/optimized/panel_2.webp",
-    },
-    {
-      number: "03",
-      title: "Mix & enjoy freshness!",
-      description:
-        "Gently mix it into the top layer of the litter for maximum effectiveness.",
-      icon: "😌",
-      image: "/optimized/panel_3.webp",
-    },
-  ];
+  const steps = (t.howItWorks?.steps || []).map((step, index) => ({
+    number: step.number,
+    title: step.title,
+    description: step.description,
+    icon: ["✨", "🔄", "😌"][index],
+    image: ["/optimized/panel_1.webp", "/optimized/panel_2.webp", "/optimized/panel_3.webp"][index],
+  }));
 
   return (
     <section

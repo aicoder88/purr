@@ -47,7 +47,7 @@ export function TrustBar({
               {rating}
             </span>
             <span className="text-gray-600 dark:text-gray-400">
-              ({reviewCount.toLocaleString()} {t.trustBar?.reviews || "reviews"})
+              ({reviewCount.toLocaleString()} {t.trustBar?.reviews || ""})
             </span>
           </div>
 
@@ -59,7 +59,7 @@ export function TrustBar({
             <span className="font-semibold text-gray-900 dark:text-gray-100">
               {customerCount}
             </span>
-            <span>{t.trustBar?.happyCats || "happy cats"}</span>
+            <span>{t.trustBar?.happyCats || ""}</span>
           </div>
 
           {/* Badges */}

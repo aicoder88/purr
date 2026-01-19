@@ -71,12 +71,12 @@ export function Testimonials() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <SectionHeader text={t.testimonialsSection?.customerLove || "Customer Love"} />
+          <SectionHeader text={t.testimonialsSection?.customerLove || ""} />
           <h2 id="testimonials-heading" className={`text-5xl font-bold tracking-tight mb-4 ${GRADIENTS.text.primary} ${GRADIENTS.text.primaryDark}`}>
-            {t.testimonialsSection?.littersOfLove || "Litters of Love From The Pet Parent Community"}
+            {t.testimonialsSection?.littersOfLove || ""}
           </h2>
           <p className={`${COLORS.text.tertiary} text-xl max-w-2xl mx-auto`}>
-            {t.testimonialsSection?.dontJustTakeOurWord || "Don't just take our word for it. Here's what our customers have to say about Purrify."}
+            {t.testimonialsSection?.dontJustTakeOurWord || ""}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
@@ -134,7 +134,7 @@ export function Testimonials() {
             rel="noopener noreferrer"
             className={`inline-flex items-center px-6 py-3 ${COLORS.surface.light} rounded-full shadow-md hover:shadow-lg text-[#5B2EFF] hover:text-[#5B2EFF]/80 font-medium transition-all duration-300 group`}
           >
-            {t.testimonialsSection?.readMoreReviews || "Read More Reviews"}
+            {t.testimonialsSection?.readMoreReviews || ""}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
