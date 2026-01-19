@@ -1,14 +1,17 @@
 import nextCoreWebVitals from 'eslint-config-next/core-web-vitals';
 import nextTypeScript from 'eslint-config-next/typescript';
 import reactCompiler from 'eslint-plugin-react-compiler';
+import hydrationSafe from './eslint-plugin-hydration-safe.mjs';
 
 const eslintConfig = [
   {
     plugins: {
       'react-compiler': reactCompiler,
+      'hydration-safe': hydrationSafe,
     },
     rules: {
       'react-compiler/react-compiler': 'off',
+      'hydration-safe/no-conditional-return-null': 'error',
     },
   },
   {

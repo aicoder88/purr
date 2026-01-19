@@ -3,10 +3,10 @@
 ## Pre-Commit Checklist
 
 ```bash
-pnpm lint && pnpm check-types && pnpm validate-dark-mode && pnpm validate-images
+pnpm lint && pnpm check-types && pnpm validate-dark-mode && pnpm validate-images && pnpm validate-hydration
 ```
 
-All four must pass. No exceptions.
+All five must pass. No exceptions.
 
 ---
 
@@ -33,10 +33,11 @@ pnpm dev                          # Start dev server
 pnpm predev                       # Clear cache (use if hot reload breaks)
 
 # Validation
-pnpm lint                         # ESLint
+pnpm lint                         # ESLint (includes hydration checks)
 pnpm check-types                  # TypeScript strict
 pnpm validate-dark-mode           # Check dark: variants
 pnpm validate-images              # Check image size limits
+pnpm validate-hydration           # Check for hydration anti-patterns
 
 # Testing
 pnpm test                         # Jest unit tests
@@ -138,6 +139,145 @@ try {
   return res.status(500).json({ error: 'Something went wrong' });
 }
 ```
+
+---
+
+## Hydration Safety & Authentication Patterns
+
+**CRITICAL**: Never conditionally return `null` in page components based on client state. This causes hydration mismatches between server and client.
+
+### ❌ FORBIDDEN Pattern (Hydration Mismatch)
+
+```typescript
+// ❌ NEVER DO THIS - Causes hydration errors
+export default function MyPage() {
+  const { data: session } = useSession();
+
+  // PROBLEM: Server renders <Content />, client may render nothing
+  if (session?.user?.status !== 'approved') {
+    return null; // ❌ HYDRATION MISMATCH
+  }
+
+  return <Content />;
+}
+```
+
+**Why this fails**: Server always renders `<Content />` during SSR. Client-side code may conditionally render `null`. React expects identical markup but finds different trees, causing hydration errors.
+
+### ✅ SAFE Pattern #1: Server-Side Redirect (Preferred)
+
+```typescript
+// ✅ BEST: Redirect happens before component renders
+import { GetServerSideProps } from 'next';
+import { getSession } from 'next-auth/react';
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getSession(ctx);
+
+  if (!session?.user || session.user.status !== 'approved') {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { user: session.user },
+  };
+};
+
+export default function MyPage({ user }) {
+  // Component always renders for authorized users only
+  return <Content user={user} />;
+}
+```
+
+**Benefits**: Zero hydration risk, SEO-friendly, immediate redirect, no client-side flash.
+
+### ✅ SAFE Pattern #2: Loading States (For Client-Side Auth)
+
+```typescript
+// ✅ GOOD: Always return a component, never null
+export default function MyPage() {
+  const { data: session, status } = useSession();
+
+  // Show loading state while checking auth
+  if (status === 'loading') {
+    return <LoadingSpinner />; // Component, not null
+  }
+
+  // Show access denied for unauthorized users
+  if (!session?.user || session.user.status !== 'approved') {
+    return <AccessDeniedPage />; // Component, not null
+  }
+
+  // Show content for authorized users
+  return <Content user={session.user} />;
+}
+```
+
+**Benefits**: Consistent render tree, no hydration errors, good UX with loading feedback.
+
+### ✅ SAFE Pattern #3: Error Pages for Missing Data
+
+```typescript
+// ✅ GOOD: Return error component instead of null
+export default function MyPage() {
+  const { t } = useTranslation();
+
+  // Handle missing translations gracefully
+  if (!t.mySection) {
+    return (
+      <ErrorPage
+        title="Page Temporarily Unavailable"
+        message="Please try refreshing or come back later."
+      />
+    ); // Full component, not null
+  }
+
+  return <Content />;
+}
+```
+
+### ✅ SAFE Pattern #4: Redirect Pages (getServerSideProps)
+
+```typescript
+// ✅ BULLETPROOF: Component never renders
+export const getServerSideProps: GetServerSideProps = async () => {
+  return {
+    redirect: {
+      destination: '/new-url',
+      permanent: false,
+    },
+  };
+};
+
+// This never renders, but return null is safe here
+export default function RedirectPage() {
+  return null; // Safe because redirect happens server-side
+}
+```
+
+### Authentication Architecture Summary
+
+| Pattern | When to Use | Hydration Safe |
+|---------|-------------|----------------|
+| **getServerSideProps redirect** | Auth required, no flash, SEO matters | ✅ Yes |
+| **Loading states** | Client-side auth, progressive enhancement | ✅ Yes |
+| **Error pages** | Missing data/translations | ✅ Yes |
+| **Redirect-only pages** | Simple URL redirects | ✅ Yes |
+| **Conditional `return null`** | NEVER in page components | ❌ No |
+
+### Code Review Checklist
+
+Before merging any page component:
+
+- [ ] Does the component ever `return null` conditionally?
+- [ ] If using client-side auth, does it show loading/error states?
+- [ ] Are auth checks in getServerSideProps when possible?
+- [ ] Does every render path return a valid React element?
 
 ---
 
@@ -358,6 +498,7 @@ Critical rules:
 |-------|-----|
 | Hot reload broken | `pnpm predev && pnpm dev` |
 | Dark mode validation failing | Add missing `dark:*` variants |
+| Hydration validation failing | Replace `return null` with components (see Hydration Safety section) |
 | Translation missing | Add key to all files in `src/translations/` |
 | Type errors after schema change | `pnpm prisma generate` |
 | E2E tests failing locally | Check `pnpm dev` is running |

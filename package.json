@@ -48,6 +48,7 @@
     "validate-dark-mode": "node scripts/dark-mode-validator.js",
     "validate-blog-images": "node scripts/validate-blog-images.js",
     "validate-images": "tsx scripts/images/validate-image-sizes.ts",
+    "validate-hydration": "node scripts/validate-hydration.js",
     "validate-no-middleware": "node scripts/validate-no-middleware.js",
     "validate-links": "tsx scripts/validate-links.ts",
     "repair-blog": "tsx scripts/repair-blog-posts.ts",
