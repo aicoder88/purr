@@ -81,7 +81,7 @@ const ProductsPage: NextPage = () => {
   const productImages: Record<string, { src: string; size: 'sm' | 'md' | 'lg' }> = {
     trial: { src: '/optimized/17gpink.webp', size: 'sm' },
     regular: { src: '/optimized/60g.webp', size: 'md' },
-    large: { src: '/optimized/140g_transparent.webp', size: 'lg' },
+    large: { src: '/optimized/140g.avif', size: 'lg' },
   };
 
   // Display names that de-emphasize grams

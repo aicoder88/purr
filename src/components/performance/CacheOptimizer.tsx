@@ -303,7 +303,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
       const criticalImages = [
         '/optimized/17gpink.webp',
         '/optimized/60g.webp',
-        '/optimized/140g_transparent.webp',
+        '/optimized/140g.avif',
         '/hero-cat.webp'
       ];
 
