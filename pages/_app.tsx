@@ -146,7 +146,7 @@ function MyApp({ Component, pageProps, detectedCurrency = 'CAD' }: MyAppProps) {
   );
 
   return (
-    <SessionProvider session={pageProps.session}>
+    <SessionProvider session={pageProps?.session ?? null}>
       <ThemeProvider defaultTheme="system" storageKey="purrify-theme">
         <CurrencyProvider detectedCurrency={detectedCurrency}>
           <TranslationProvider language={locale ?? 'en'}>
@@ -225,7 +225,7 @@ function MyApp({ Component, pageProps, detectedCurrency = 'CAD' }: MyAppProps) {
 
 // Server-side currency detection via Vercel Edge headers
 MyApp.getInitialProps = async (context: AppContext) => {
-  const currency = detectCurrencyFromRequest(context.ctx.req);
+  const currency = detectCurrencyFromRequest(context.ctx?.req);
   return { detectedCurrency: currency };
 };
 
