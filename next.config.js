@@ -262,6 +262,118 @@ const REDIRECTS = [
     permanent: true,
   },
 
+  // Common 404 patterns (SEO fix Jan 2026)
+  {
+    source: "/cart",
+    destination: "/products",
+    permanent: true,
+  },
+  {
+    source: "/order",
+    destination: "/customer/portal",
+    permanent: true,
+  },
+  {
+    source: "/orders",
+    destination: "/customer/portal",
+    permanent: true,
+  },
+  {
+    source: "/account",
+    destination: "/customer/portal",
+    permanent: true,
+  },
+  {
+    source: "/login",
+    destination: "/admin/login",
+    permanent: false,
+  },
+  {
+    source: "/signup",
+    destination: "/products",
+    permanent: true,
+  },
+  {
+    source: "/register",
+    destination: "/products",
+    permanent: true,
+  },
+  {
+    source: "/faq",
+    destination: "/support",
+    permanent: true,
+  },
+  {
+    source: "/help",
+    destination: "/support",
+    permanent: true,
+  },
+  {
+    source: "/shipping",
+    destination: "/support/shipping",
+    permanent: true,
+  },
+  {
+    source: "/returns",
+    destination: "/support",
+    permanent: true,
+  },
+  {
+    source: "/guarantee",
+    destination: "/support",
+    permanent: true,
+  },
+  {
+    source: "/about",
+    destination: "/about/our-story",
+    permanent: true,
+  },
+  {
+    source: "/pricing",
+    destination: "/products",
+    permanent: true,
+  },
+  {
+    source: "/plans",
+    destination: "/products",
+    permanent: true,
+  },
+  {
+    source: "/subscribe",
+    destination: "/products",
+    permanent: true,
+  },
+  {
+    source: "/unsubscribe",
+    destination: "/support",
+    permanent: true,
+  },
+  {
+    source: "/info",
+    destination: "/learn",
+    permanent: true,
+  },
+  {
+    source: "/catalog",
+    destination: "/products",
+    permanent: true,
+  },
+  {
+    source: "/store",
+    destination: "/products",
+    permanent: true,
+  },
+  {
+    source: "/boutique",
+    destination: "/products",
+    permanent: true,
+  },
+  {
+    source: "/tienda",
+    destination: "/products",
+    permanent: true,
+  },
+
   // Legacy blog post redirects (old slugs that no longer exist)
   {
     source: "/blog/activated-carbon-science",
