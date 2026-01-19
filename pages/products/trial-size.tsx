@@ -69,7 +69,7 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
   const languageAlternates = buildLanguageAlternates('/products/trial-size');
   const trialPriceValue = getProductPrice('trial', currency);
   const trialPriceString = trialPriceValue.toFixed(2);
-  const trialPrice = formatProductPrice('trial', locale);
+  const trialPrice = formatProductPrice('trial', currency, locale);
 
   // Schema.org structured data variables
   const availabilityUrl = 'https://schema.org/InStock';

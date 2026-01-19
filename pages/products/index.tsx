@@ -32,11 +32,11 @@ const ProductsPage: NextPage = () => {
   const { locale, t } = useTranslation();
   const { currency } = useCurrency();
 
-  const trialPrice = formatProductPrice('trial', locale);
-  const familyPrice = formatProductPrice('family', locale);
-  const familyAutoshipPrice = formatProductPrice('familyAutoship', locale);
-  const jumboPrice = formatProductPrice('jumbo', locale);
-  const jumboAutoshipPrice = formatProductPrice('jumboAutoship', locale);
+  const trialPrice = formatProductPrice('trial', currency, locale);
+  const familyPrice = formatProductPrice('family', currency, locale);
+  const familyAutoshipPrice = formatProductPrice('familyAutoship', currency, locale);
+  const jumboPrice = formatProductPrice('jumbo', currency, locale);
+  const jumboAutoshipPrice = formatProductPrice('jumboAutoship', currency, locale);
 
   const familyAutoshipAmount = getProductPrice('familyAutoship', currency);
   const jumboAutoshipAmount = getProductPrice('jumboAutoship', currency);

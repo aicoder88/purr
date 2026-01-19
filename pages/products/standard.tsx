@@ -32,7 +32,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
 
   const productKey = 'standard'; // 50g Standard Size
   const productName = t.products?.["purrify-50g"]?.name || "";
-  const productPrice = formatProductPrice(productKey, locale);
+  const productPrice = formatProductPrice(productKey, currency, locale);
   const numericPrice = getProductPrice(productKey, currency);
 
   // Track ViewContent on page load
@@ -328,7 +328,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
                     </div>
                     <h3 className="font-bold text-gray-900 dark:text-white mb-1">{t.productPages?.subscribeAndSave || 'Subscribe & Save'}</h3>
                     <div className="flex items-baseline gap-1 mb-4">
-                      <span className="text-3xl font-black text-gray-900 dark:text-white">{formatProductPrice('familyAutoship', locale)}</span>
+                      <span className="text-3xl font-black text-gray-900 dark:text-white">{formatProductPrice('familyAutoship', currency, locale)}</span>
                       <span className="text-xs text-gray-500 dark:text-gray-400">/ 3 months</span>
                     </div>
                     <Button asChild className="w-full bg-deep-coral hover:bg-deep-coral/90 text-white dark:text-white font-bold py-6 rounded-2xl shadow-lg shadow-deep-coral/20">

@@ -5,6 +5,7 @@ import { Container } from '../src/components/ui/container';
 import { SITE_NAME, TESTIMONIALS } from '../src/lib/constants';
 import { useTranslation } from '../src/lib/translation-context';
 import { useCurrency } from '../src/lib/currency-context';
+
 import { Star, Quote, CheckCircle, Users, Clock, Sparkles, ArrowRight, Shield, Zap } from 'lucide-react';
 import { COLORS, GRADIENTS, createCardClasses, createSectionClasses } from '../src/lib/theme-utils';
 import { generateStarRating, generateAvatarUrl } from '../src/lib/component-utils';

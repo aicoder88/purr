@@ -34,6 +34,7 @@ import { SITE_NAME, SITE_DESCRIPTION, CONTACT_INFO, SOCIAL_LINKS } from '../src/
 import { getProductPrice, getPriceRange } from '../src/lib/pricing';
 import { useTranslation } from '../src/lib/translation-context';
 import { useCurrency } from '../src/lib/currency-context';
+
 import { SkipNav } from '../src/components/ui/skip-nav';
 import { ErrorBoundary } from '../src/components/ui/error-boundary';
 import { TrustBadges } from '../src/components/social-proof/TrustBadges';

@@ -84,11 +84,11 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
   const canonicalPath = '/products/family-pack';
   const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
   const languageAlternates = buildLanguageAlternates(canonicalPath);
-  const trialPrice = formatProductPrice('trial', locale);
-  const standardPrice = formatProductPrice('standard', locale);
+  const trialPrice = formatProductPrice('trial', currency, locale);
+  const standardPrice = formatProductPrice('standard', currency, locale);
   const standardPriceAmount = getProductPrice('standard', currency);
-  const familyPrice = formatProductPrice('family', locale);
-  const familyAutoshipPrice = formatProductPrice('familyAutoship', locale);
+  const familyPrice = formatProductPrice('family', currency, locale);
+  const familyAutoshipPrice = formatProductPrice('familyAutoship', currency, locale);
   const familyPriceAmount = getProductPrice('family', currency);
   const familyAutoshipAmount = getProductPrice('familyAutoship', currency);
   const familyAutoshipSavings = Math.max(

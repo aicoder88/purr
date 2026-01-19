@@ -2,6 +2,7 @@ import { NextSeo } from 'next-seo';
 import Script from 'next/script';
 import { useTranslation } from '../src/lib/translation-context';
 import { useCurrency } from '../src/lib/currency-context';
+
 import {
   LandingHero,
   ProblemSection,

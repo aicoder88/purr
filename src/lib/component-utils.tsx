@@ -252,13 +252,6 @@ export const CheckIcon = ({ size = 'w-4 h-4' }: { size?: string }) => (
  * ```
  */
 export const formatPrice = (price: number, currency = 'CAD', locale = 'en-CA'): string => {
-  if (currency === 'CAD') {
-    return formatCurrencyValue(price, locale);
-  }
-
-  return new Intl.NumberFormat(locale, {
-    style: 'currency',
-    currency,
-    currencyDisplay: 'narrowSymbol'
-  }).format(price);
+  // Always pass both currency and locale to formatCurrencyValue
+  return formatCurrencyValue(price, currency, locale);
 };
