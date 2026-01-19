@@ -1,6 +1,5 @@
-import { PRODUCTS } from './constants';
-
-const CURRENCY = 'CAD';
+import { PRODUCTS, USD_PRICES } from './constants';
+import type { Currency } from './geo/currency-detector';
 
 export type ProductCatalogId = typeof PRODUCTS[number]['id'];
 
@@ -27,11 +26,11 @@ const resolveLocale = (locale?: string) => {
   return locale ?? 'en-CA';
 };
 
-const formatCurrency = (value: number, locale: string = 'en-CA') => {
+const formatCurrency = (value: number, currency: Currency = 'CAD', locale: string = 'en-CA') => {
   const resolvedLocale = resolveLocale(locale);
   const formatter = new Intl.NumberFormat(resolvedLocale, {
     style: 'currency',
-    currency: CURRENCY,
+    currency: currency,
     currencyDisplay: 'narrowSymbol'
   });
 
@@ -50,41 +49,97 @@ const formatCurrency = (value: number, locale: string = 'en-CA') => {
   return formatted.replaceAll(/\s+/g, match => (match.includes('\u00A0') ? match : ' ')).trim();
 };
 
-export const getProductPrice = (idOrKey: ProductCatalogId | ProductPriceKey): number => {
+export const getProductPrice = (idOrKey: ProductCatalogId | ProductPriceKey, currency: Currency = 'CAD'): number => {
   const catalogId = (PRODUCT_ID_ALIAS[idOrKey as ProductPriceKey] ?? idOrKey) as ProductCatalogId;
+
+  // Use USD prices when currency is USD
+  if (currency === 'USD' && USD_PRICES[catalogId]) {
+    return USD_PRICES[catalogId];
+  }
+
   return priceById[catalogId];
 };
 
 export const formatProductPrice = (
   idOrKey: ProductCatalogId | ProductPriceKey,
-  locale: string = 'en-CA'
-) => formatCurrency(getProductPrice(idOrKey), locale);
+  currencyOrLocale: Currency | string = 'CAD',
+  locale?: string
+): string => {
+  // Backward compatibility: if currencyOrLocale looks like a locale, treat it as such
+  const isLocale = currencyOrLocale !== 'CAD' && currencyOrLocale !== 'USD' &&
+                   (currencyOrLocale.includes('-') || currencyOrLocale === 'en' || currencyOrLocale === 'fr' || currencyOrLocale === 'zh');
 
-const allProductValues = (Object.values(PRODUCT_ID_ALIAS) as ProductCatalogId[]).map(id => getProductPrice(id));
+  if (isLocale) {
+    // Old signature: formatProductPrice(idOrKey, locale)
+    return formatCurrency(getProductPrice(idOrKey, 'CAD'), 'CAD', currencyOrLocale);
+  }
+
+  // New signature: formatProductPrice(idOrKey, currency, locale)
+  const currency = currencyOrLocale as Currency;
+  const resolvedLocale = locale ?? 'en-CA';
+  return formatCurrency(getProductPrice(idOrKey, currency), currency, resolvedLocale);
+};
+
+const allProductValues = (Object.values(PRODUCT_ID_ALIAS) as ProductCatalogId[]).map(id => getProductPrice(id, 'CAD'));
 
 const MIN_PRICE = Math.min(...allProductValues);
 const MAX_PRICE = Math.max(...allProductValues);
 
-export const getPriceRange = (locale: string = 'en-CA') => ({
-  min: MIN_PRICE,
-  max: MAX_PRICE,
-  formatted: `${formatCurrency(MIN_PRICE, locale)} - ${formatCurrency(MAX_PRICE, locale)}`,
-});
+export const getPriceRange = (currencyOrLocale: Currency | string = 'CAD', locale?: string) => {
+  // Backward compatibility: if first param looks like a locale, treat it as such
+  const isLocale = currencyOrLocale !== 'CAD' && currencyOrLocale !== 'USD' &&
+                   (currencyOrLocale.includes('-') || currencyOrLocale === 'en' || currencyOrLocale === 'fr' || currencyOrLocale === 'zh');
+
+  let currency: Currency;
+  let resolvedLocale: string;
+
+  if (isLocale) {
+    // Old signature: getPriceRange(locale)
+    currency = 'CAD';
+    resolvedLocale = currencyOrLocale;
+  } else {
+    // New signature: getPriceRange(currency, locale)
+    currency = currencyOrLocale as Currency;
+    resolvedLocale = locale ?? 'en-CA';
+  }
+
+  const allValues = (Object.values(PRODUCT_ID_ALIAS) as ProductCatalogId[]).map(id => getProductPrice(id, currency));
+  const min = Math.min(...allValues);
+  const max = Math.max(...allValues);
+
+  return {
+    min,
+    max,
+    formatted: `${formatCurrency(min, currency, resolvedLocale)} - ${formatCurrency(max, currency, resolvedLocale)}`,
+  };
+};
 
 export const PRODUCT_PRICES = (Object.keys(PRODUCT_ID_ALIAS) as ProductPriceKey[]).reduce(
   (acc, key) => {
     acc[key] = {
       id: PRODUCT_ID_ALIAS[key],
-      amount: getProductPrice(key),
-      formatted: formatProductPrice(key),
+      amount: getProductPrice(key, 'CAD'),
+      formatted: formatProductPrice(key, 'CAD'),
     };
     return acc;
   },
   {} as Record<ProductPriceKey, { id: ProductCatalogId; amount: number; formatted: string }>
 );
 
-export const CURRENCY_CODE = CURRENCY;
+export const formatCurrencyValue = (value: number, currencyOrLocale: Currency | string = 'CAD', locale?: string): string => {
+  // Backward compatibility: if second param looks like a locale, treat it as such
+  const isLocale = currencyOrLocale !== 'CAD' && currencyOrLocale !== 'USD' &&
+                   (currencyOrLocale.includes('-') || currencyOrLocale === 'en' || currencyOrLocale === 'fr' || currencyOrLocale === 'zh');
 
-export const formatCurrencyValue = formatCurrency;
+  if (isLocale) {
+    // Old signature: formatCurrencyValue(value, locale)
+    return formatCurrency(value, 'CAD', currencyOrLocale);
+  }
+
+  // New signature: formatCurrencyValue(value, currency, locale)
+  const currency = currencyOrLocale as Currency;
+  const resolvedLocale = locale ?? 'en-CA';
+  return formatCurrency(value, currency, resolvedLocale);
+};
 
 export const resolveLocaleForCurrency = resolveLocale;

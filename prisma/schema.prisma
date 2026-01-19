@@ -213,6 +213,7 @@ model Product {
 model Order {
   id                String      @id @default(cuid())
   totalAmount       Float       @map("total") // Renamed for clarity
+  currency          String      @default("CAD") // Currency: 'CAD' or 'USD'
   status            OrderStatus @default(PENDING) // Use enum for better type safety
   createdAt         DateTime    @default(now())
   updatedAt         DateTime    @updatedAt
@@ -249,6 +250,7 @@ model Order {
   @@index([subscriptionId])
   @@index([referralCodeUsed])
   @@index([affiliateCode])
+  @@index([currency])
 }
 
 enum OrderStatus {

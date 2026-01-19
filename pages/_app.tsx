@@ -1,4 +1,4 @@
-import { AppProps } from 'next/app';
+import type { AppProps, AppContext } from 'next/app';
 import { Inter } from 'next/font/google';
 import Head from 'next/head';
 import { useEffect, useMemo } from 'react';
@@ -17,6 +17,8 @@ import { SessionProvider } from 'next-auth/react';
 import type { Session } from 'next-auth';
 import { ToastProvider } from '../src/components/admin/Toast';
 import { captureUTM } from '../src/lib/tracking/utm';
+import { CurrencyProvider } from '../src/lib/currency-context';
+import { detectCurrencyFromRequest, type Currency } from '../src/lib/geo/currency-detector';
 
 /**
  * Suppress known benign errors from third-party scripts.
@@ -117,9 +119,13 @@ interface PageProps {
   [key: string]: unknown;
 }
 
+interface MyAppProps extends AppProps<PageProps> {
+  detectedCurrency?: Currency;
+}
+
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter', weight: ['400', '500', '600', '700'] });
 
-function MyApp({ Component, pageProps }: AppProps<PageProps>) {
+function MyApp({ Component, pageProps, detectedCurrency = 'CAD' }: MyAppProps) {
   const router = useRouter();
   const { locale } = router;
 
@@ -142,8 +148,9 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
   return (
     <SessionProvider session={pageProps.session}>
       <ThemeProvider defaultTheme="system" storageKey="purrify-theme">
-        <TranslationProvider language={locale ?? 'en'}>
-          <Head>
+        <CurrencyProvider detectedCurrency={detectedCurrency}>
+          <TranslationProvider language={locale ?? 'en'}>
+            <Head>
             <meta charSet="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
             <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -209,10 +216,17 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
           <ToastProvider />
           <AnalyticsComponent />
           <CoreWebVitals debug={process.env.NODE_ENV === 'development'} />
-        </TranslationProvider>
+          </TranslationProvider>
+        </CurrencyProvider>
       </ThemeProvider>
     </SessionProvider>
   );
 }
+
+// Server-side currency detection via Vercel Edge headers
+MyApp.getInitialProps = async (context: AppContext) => {
+  const currency = detectCurrencyFromRequest(context.ctx.req);
+  return { detectedCurrency: currency };
+};
 
 export default MyApp;

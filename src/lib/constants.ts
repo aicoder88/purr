@@ -103,6 +103,18 @@ export const PRODUCTS = [
   },
 ];
 
+// USD prices (1:1 conversion from CAD - same numbers, different currency)
+export const USD_PRICES: Record<string, number> = {
+  'purrify-12g': 4.76,
+  'purrify-50g': 14.99,
+  'purrify-50g-autoship': 31.99,
+  'purrify-120g': 29.99,
+  'purrify-120g-autoship': 49.99,
+  'purrify-240g': 54.99,
+  'purrify-240g-autoship': 79.99,
+  'purrify-12g-bump': 4.76,
+};
+
 export const FEATURES = [
   {
     title: "Odor Elimination",

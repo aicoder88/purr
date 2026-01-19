@@ -34,7 +34,7 @@ export default async function handler(
 
   try {
     const session = await getSession({ req });
-    const { items, customer, total } = req.body;
+    const { items, customer, total, currency = 'CAD' } = req.body;
 
     // Create order in database
     if (!prisma) {
@@ -43,6 +43,7 @@ export default async function handler(
     const order = await prisma.order.create({
       data: {
         totalAmount: total,
+        currency: currency,
         status: 'PENDING',
         customer: {
           create: {

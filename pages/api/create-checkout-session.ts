@@ -14,6 +14,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 // Input validation schema
 const createCheckoutSchema = z.object({
   orderId: z.string().uuid('Invalid order ID format'),
+  currency: z.enum(['CAD', 'USD'], { message: 'Currency must be CAD or USD' }),
   customer: z.object({
     email: z.string().email('Invalid email format').max(254, 'Email too long'),
     name: z.string().min(1, 'Name is required').max(100, 'Name too long').optional(),
@@ -150,9 +151,10 @@ async function handler(
       });
     }
 
-    const { orderId, customer } = validationResult.data;
+    const { orderId, currency, customer } = validationResult.data;
 
     span.setAttribute('orderId', orderId);
+    span.setAttribute('currency', currency);
     span.setAttribute('customerEmail', customer.email);
 
     // Sanitize customer data
@@ -201,6 +203,20 @@ async function handler(
       });
     }
 
+    // Verify currency matches order currency
+    if (order.currency !== currency) {
+      logger.error('Currency mismatch detected', {
+        orderId,
+        requestCurrency: currency,
+        orderCurrency: order.currency
+      });
+
+      return res.status(400).json({
+        error: 'Currency mismatch',
+        message: `Order currency (${order.currency}) does not match request currency (${currency})`
+      });
+    }
+
     // Verify all item prices against catalog
     logger.debug('Verifying item prices against catalog');
     for (const item of order.items) {
@@ -239,7 +255,7 @@ async function handler(
     // Create line items with validated prices
     const lineItems = order.items.map((item: OrderItemWithProduct) => ({
       price_data: {
-        currency: 'usd',
+        currency: currency.toLowerCase(), // Use currency from request (validated above)
         product_data: {
           name: sanitizeString(item.product.name),
           description: sanitizeString(item.product.description),
