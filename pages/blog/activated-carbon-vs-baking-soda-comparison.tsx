@@ -36,7 +36,7 @@ export default function ActivatedCarbonVsBakingSoda() {
             "datePublished": "2024-01-15",
             "dateModified": new Date().toISOString().split('T')[0],
             "author": { "@type": "Organization", "name": "Purrify" },
-            "publisher": { "@type": "Organization", "name": "Purrify", "logo": { "@type": "ImageObject", "url": "https://www.purrify.ca/optimized/purrify-logo-icon.webp" } }
+            "publisher": { "@type": "Organization", "name": "Purrify", "logo": { "@type": "ImageObject", "url": "https://www.purrify.ca/optimized/logo-icon-512.webp" } }
           })}
         </script>
       </Head>

@@ -145,7 +145,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
             "brand": {
               "@type": "Brand",
               "name": "Purrify",
-              "logo": "https://www.purrify.ca/optimized/purrify-logo-icon.webp"
+              "logo": "https://www.purrify.ca/optimized/logo-icon-512.webp"
             },
             "manufacturer": {
               "@type": "Organization",
