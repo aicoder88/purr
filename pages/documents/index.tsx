@@ -263,12 +263,12 @@ export default function Documents() {
 
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-700 dark:to-blue-600 text-white py-16">
+        <div className="bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-700 dark:to-blue-600 text-white dark:text-gray-100 py-16">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               {locale === 'fr' ? '📚 Centre de Ressources Purrify' : '📚 Purrify Resource Center'}
             </h1>
-            <p className="text-xl text-blue-100 dark:text-blue-200">
+            <p className="text-xl text-blue-100 dark:text-blue-100">
               {locale === 'fr'
                 ? 'Matériel de Formation et Ressources pour Partenaires Détaillants'
                 : 'Training Materials & Resources for Retail Partners'}
@@ -351,7 +351,7 @@ export default function Documents() {
                     href={resource.path}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white rounded-lg transition-colors font-semibold"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white dark:text-gray-100 rounded-lg transition-colors font-semibold"
                   >
                     <Download className="h-4 w-4" />
                     {locale === 'fr' ? 'Télécharger' : 'Download'}
@@ -371,16 +371,16 @@ export default function Documents() {
         </div>
 
         {/* Footer */}
-        <div className="bg-gray-800 dark:bg-gray-950 text-white py-8 mt-12">
+        <div className="bg-gray-800 dark:bg-gray-950 text-white dark:text-gray-100 py-8 mt-12">
           <div className="container mx-auto px-4 text-center">
             <p className="font-bold mb-2">
               {locale === 'fr' ? 'Besoin d\'aide?' : 'Need help?'}
             </p>
             <p className="text-gray-300 dark:text-gray-400">
               {locale === 'fr' ? 'Contactez-nous: ' : 'Contact us: '}
-              <a href="mailto:hello@purrify.ca" className="text-blue-400 hover:text-blue-300">hello@purrify.ca</a>
+              <a href="mailto:hello@purrify.ca" className="text-blue-400 hover:text-blue-300 dark:text-blue-400 dark:hover:text-blue-300">hello@purrify.ca</a>
               {' | '}
-              <a href="tel:1-450-663-6773" className="text-blue-400 hover:text-blue-300">1-450-663-6773</a>
+              <a href="tel:1-450-663-6773" className="text-blue-400 hover:text-blue-300 dark:text-blue-400 dark:hover:text-blue-300">1-450-663-6773</a>
             </p>
           </div>
         </div>
