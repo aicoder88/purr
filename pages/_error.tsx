@@ -172,11 +172,18 @@ const ErrorPage: NextPage<ErrorProps> = ({ statusCode = 404 }) => {
         <div className="py-16 px-4 text-center max-w-3xl mx-auto">
           <div className="mb-8 flex justify-center">
             <Image
-              src="/optimized/purrify-logo-icon.webp"
+              src="/optimized/logo-text-120.webp"
               alt="Purrify Logo"
-              width={80}
-              height={80}
-              className={isServerError ? "animate-pulse" : "animate-bounce"}
+              width={120}
+              height={120}
+              className={`h-20 w-auto dark:hidden ${isServerError ? "animate-pulse" : "animate-bounce"}`}
+            />
+            <Image
+              src="/optimized/purrify-dark-mode-logo.webp"
+              alt="Purrify Logo"
+              width={120}
+              height={120}
+              className={`h-20 w-auto hidden dark:block ${isServerError ? "animate-pulse" : "animate-bounce"}`}
             />
           </div>
 

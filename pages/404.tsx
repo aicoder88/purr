@@ -71,11 +71,18 @@ const NotFoundPage: NextPage = () => {
         <div className="py-16 px-4 text-center max-w-3xl mx-auto">
           <div className="mb-8 flex justify-center">
             <Image
-              src="/optimized/purrify-logo-icon.webp"
+              src="/optimized/logo-text-120.webp"
               alt="Purrify Logo"
-              width={80}
-              height={80}
-              className="animate-bounce"
+              width={120}
+              height={120}
+              className="h-20 w-auto animate-bounce dark:hidden"
+            />
+            <Image
+              src="/optimized/purrify-dark-mode-logo.webp"
+              alt="Purrify Logo"
+              width={120}
+              height={120}
+              className="h-20 w-auto animate-bounce hidden dark:block"
             />
           </div>
 

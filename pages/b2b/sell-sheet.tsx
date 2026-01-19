@@ -66,13 +66,12 @@ export default function SellSheetPage() {
           <header className="flex justify-between items-start mb-8 pb-6 border-b-4 border-[#10B981]">
             <div>
               <Image
-                src="/optimized/purrify-logo-icon.webp"
+                src="/optimized/logo-text-180.webp"
                 alt="Purrify Logo"
-                width={60}
-                height={60}
-                className="mb-2"
+                width={180}
+                height={180}
+                className="h-16 w-auto mb-2"
               />
-              <h1 className="text-3xl font-black text-gray-900 dark:text-gray-900">Purrify</h1>
               <p className="text-sm text-gray-600 dark:text-gray-600">Activated Carbon Cat Litter Additive</p>
             </div>
             <div className="text-right">
