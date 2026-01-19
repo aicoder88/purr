@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Container } from '../src/components/ui/container';
 import { SITE_NAME, TESTIMONIALS } from '../src/lib/constants';
 import { useTranslation } from '../src/lib/translation-context';
+import { useCurrency } from '../src/lib/currency-context';
 import { Star, Quote, CheckCircle, Users, Clock, Sparkles, ArrowRight, Shield, Zap } from 'lucide-react';
 import { COLORS, GRADIENTS, createCardClasses, createSectionClasses } from '../src/lib/theme-utils';
 import { generateStarRating, generateAvatarUrl } from '../src/lib/component-utils';
@@ -11,6 +12,7 @@ import { getLocalizedUrl, buildLanguageAlternates } from '../src/lib/seo-utils';
 
 export default function Results() {
   const { t, locale } = useTranslation();
+  const { currency } = useCurrency();
   const r = t.results || {};
 
   const canonicalUrl = getLocalizedUrl('/results', locale);
@@ -121,7 +123,7 @@ export default function Results() {
               },
               offers: {
                 '@type': 'AggregateOffer',
-                priceCurrency: 'CAD',
+                priceCurrency: currency,
                 lowPrice: '4.76',
                 highPrice: '34.99',
                 offerCount: '3',

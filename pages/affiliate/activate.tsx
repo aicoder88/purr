@@ -156,7 +156,6 @@ export default function AffiliateActivatePage({ affiliate }: Props) {
                     <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">One-time investment</div>
                     <div className="flex items-baseline gap-2">
                       <span className="text-5xl font-bold text-gray-900 dark:text-gray-100">$49</span>
-                      <span className="text-gray-500 dark:text-gray-400">CAD</span>
                     </div>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
                       Includes free shipping across Canada

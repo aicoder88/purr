@@ -3,6 +3,7 @@ import { GetStaticProps } from 'next';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
+import { useCurrency } from '../../src/lib/currency-context';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, Heart, Zap, Truck } from 'lucide-react';
@@ -24,6 +25,7 @@ interface StandardSizePageProps {
 
 export default function StandardSizePage({ priceValidUntil }: StandardSizePageProps) {
   const { t, locale } = useTranslation();
+  const { currency } = useCurrency();
   const viewTracked = useRef(false);
   const purchaseCardsRef = useRef<HTMLDivElement>(null);
   const [quantity, setQuantity] = useState(1);
@@ -31,7 +33,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
   const productKey = 'standard'; // 50g Standard Size
   const productName = t.products?.["purrify-50g"]?.name || "";
   const productPrice = formatProductPrice(productKey, locale);
-  const numericPrice = getProductPrice(productKey);
+  const numericPrice = getProductPrice(productKey, currency);
 
   // Track ViewContent on page load
   useEffect(() => {
@@ -49,7 +51,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
 
   // Track AddToCart + InitiateCheckout when user clicks buy
   const handleBuyClick = useCallback((isAutoship: boolean, quantity: number = 1) => {
-    const price = isAutoship ? getProductPrice('standardAutoship') : numericPrice;
+    const price = isAutoship ? getProductPrice('standardAutoship', currency) : numericPrice;
     const name = isAutoship ? `${productName} - Autoship` : productName;
 
     trackTikTokClientEvent('AddToCart', {
@@ -164,7 +166,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
             "offers": {
               "@type": "Offer",
               "url": canonicalUrl,
-              "priceCurrency": "CAD",
+              "priceCurrency": currency,
               "price": numericPrice.toFixed(2),
               "priceValidUntil": priceValidUntil,
               "availability": buildAvailabilityUrl('InStock'),
@@ -381,7 +383,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
                 </div>
 
                 <div className="pt-2">
-                  <BNPLBadge price={getProductPrice(productKey)} locale={locale} />
+                  <BNPLBadge price={getProductPrice(productKey, currency)} locale={locale} />
                 </div>
 
                 {/* Quick Trust */}

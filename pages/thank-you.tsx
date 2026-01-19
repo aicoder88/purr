@@ -291,7 +291,7 @@ const ThankYouPage = ({ orderDetails, error }: ThankYouPageProps) => {
                     {formattedAmount && (
                       <div className="flex justify-between py-3 border-t-2 border-gray-200 dark:border-gray-600 mt-2">
                         <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">{thankYou.total}</span>
-                        <span className="text-lg font-bold text-[#03E46A]">${formattedAmount} CAD</span>
+                        <span className="text-lg font-bold text-[#03E46A]">${formattedAmount}</span>
                       </div>
                     )}
                   </div>

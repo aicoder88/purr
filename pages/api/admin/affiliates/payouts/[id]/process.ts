@@ -127,7 +127,7 @@ export default async function handler(
 
           <div style="background-color: #f3f4f6; padding: 16px; border-radius: 8px; margin: 16px 0;">
             <h3 style="color: #1a1a1a; margin-top: 0;">Payout Details:</h3>
-            <p style="margin: 8px 0;"><strong>Amount:</strong> $${payout.amount.toFixed(2)} CAD</p>
+            <p style="margin: 8px 0;"><strong>Amount:</strong> $${payout.amount.toFixed(2)}</p>
             <p style="margin: 8px 0;"><strong>Method:</strong> ${methodLabel}</p>
             <p style="margin: 8px 0;"><strong>Sent to:</strong> ${payout.payoutEmail}</p>
             <p style="margin: 8px 0;"><strong>Transaction Reference:</strong> ${transactionRef}</p>

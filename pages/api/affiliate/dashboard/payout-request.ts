@@ -113,7 +113,7 @@ async function handler(req: AffiliateApiRequest, res: NextApiResponse) {
             <ul>
               <li><strong>Affiliate:</strong> ${affiliate.name}</li>
               <li><strong>Email:</strong> ${affiliate.email}</li>
-              <li><strong>Amount:</strong> $${payoutAmount.toFixed(2)} CAD</li>
+              <li><strong>Amount:</strong> $${payoutAmount.toFixed(2)}</li>
               <li><strong>Method:</strong> ${affiliate.payoutMethod}</li>
               <li><strong>Payout Email:</strong> ${affiliate.payoutEmail}</li>
               <li><strong>Request ID:</strong> ${payout.id}</li>
@@ -141,11 +141,11 @@ async function handler(req: AffiliateApiRequest, res: NextApiResponse) {
             <h2>Payout Request Received</h2>
             <p>Hi ${affiliate.name},</p>
 
-            <p>We've received your payout request for <strong>$${payoutAmount.toFixed(2)} CAD</strong>.</p>
+            <p>We've received your payout request for <strong>$${payoutAmount.toFixed(2)}</strong>.</p>
 
             <h3>Payout Details:</h3>
             <ul>
-              <li><strong>Amount:</strong> $${payoutAmount.toFixed(2)} CAD</li>
+              <li><strong>Amount:</strong> $${payoutAmount.toFixed(2)}</li>
               <li><strong>Method:</strong> ${affiliate.payoutMethod}</li>
               <li><strong>Payout Email:</strong> ${affiliate.payoutEmail}</li>
             </ul>

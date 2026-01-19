@@ -3,6 +3,7 @@ import { GetStaticProps } from 'next';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
+import { useCurrency } from '../../src/lib/currency-context';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, AlertCircle, TrendingUp } from 'lucide-react';
@@ -19,6 +20,7 @@ interface TrialSizePageProps {
 
 export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
   const { t, locale } = useTranslation();
+  const { currency } = useCurrency();
   const viewTracked = useRef(false);
 
   const productKey = 'trial';
@@ -29,7 +31,7 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
     if (viewTracked.current) return;
     viewTracked.current = true;
 
-    const numericPrice = getProductPrice(productKey);
+    const numericPrice = getProductPrice(productKey, currency);
     trackTikTokClientEvent('ViewContent', {
       content_id: productKey,
       content_name: productName,
@@ -41,7 +43,7 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
 
   // Track AddToCart + InitiateCheckout when user clicks buy
   const handleBuyClick = () => {
-    const price = getProductPrice(productKey);
+    const price = getProductPrice(productKey, currency);
     trackTikTokClientEvent('AddToCart', {
       content_id: productKey,
       content_name: productName,
@@ -65,7 +67,7 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
   const pageDescription = "FREE Cat Litter Deodorizer Trial | Just Pay $4.76 Shipping | 87% of customers upgrade within 7 days. ★ 4.8 rating. Ships to USA & Canada. Risk-free guarantee.";
   const canonicalUrl = getLocalizedUrl('/products/trial-size', locale);
   const languageAlternates = buildLanguageAlternates('/products/trial-size');
-  const trialPriceValue = getProductPrice('trial');
+  const trialPriceValue = getProductPrice('trial', currency);
   const trialPriceString = trialPriceValue.toFixed(2);
   const trialPrice = formatProductPrice('trial', locale);
 
@@ -121,7 +123,7 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
                 "offers": {
                   "@type": "Offer",
                   "price": trialPriceString,
-                  "priceCurrency": "CAD",
+                  "priceCurrency": currency,
                   "priceValidUntil": priceValidUntil,
                   "availability": availabilityUrl,
                   "url": canonicalUrl

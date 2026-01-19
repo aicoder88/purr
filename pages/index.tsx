@@ -33,6 +33,7 @@ const CTA = dynamic(() => import('../src/components/sections/cta').then(mod => (
 import { SITE_NAME, SITE_DESCRIPTION, CONTACT_INFO, SOCIAL_LINKS } from '../src/lib/constants';
 import { getProductPrice, getPriceRange } from '../src/lib/pricing';
 import { useTranslation } from '../src/lib/translation-context';
+import { useCurrency } from '../src/lib/currency-context';
 import { SkipNav } from '../src/components/ui/skip-nav';
 import { ErrorBoundary } from '../src/components/ui/error-boundary';
 import { TrustBadges } from '../src/components/social-proof/TrustBadges';
@@ -48,16 +49,17 @@ interface HomePageProps {
 
 export default function Home({ priceValidUntil }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t, locale } = useTranslation();
+  const { currency } = useCurrency();
   const pageTitle = `${SITE_NAME} - ${t.homepage.seo.pageTitle}`;
   const pageDescription = t.siteDescription || SITE_DESCRIPTION;
   const canonicalUrl = getLocalizedUrl('/', locale);
   const shareImage = 'https://www.purrify.ca/purrify-logo.png';
   const languageAlternates = buildLanguageAlternates('/');
   const availabilityUrl = buildAvailabilityUrl();
-  const trialPriceValue = getProductPrice('trial').toFixed(2);
-  const standardPriceValue = getProductPrice('standard').toFixed(2);
-  const familyPriceValue = getProductPrice('family').toFixed(2);
-  const priceRange = getPriceRange(locale);
+  const trialPriceValue = getProductPrice('trial', currency).toFixed(2);
+  const standardPriceValue = getProductPrice('standard', currency).toFixed(2);
+  const familyPriceValue = getProductPrice('family', currency).toFixed(2);
+  const priceRange = getPriceRange(currency, locale);
 
   // A/B Test: Social Proof Position (badges moved to bottom of page)
   const {
@@ -208,7 +210,7 @@ export default function Home({ priceValidUntil }: InferGetStaticPropsType<typeof
                       "offers": {
                         "@type": "Offer",
                         "price": trialPriceValue,
-                        "priceCurrency": "CAD",
+                        "priceCurrency": currency,
                         "priceValidUntil": priceValidUntil,
                         "availability": availabilityUrl,
                         "url": "https://www.purrify.ca/products/trial-size"
@@ -223,7 +225,7 @@ export default function Home({ priceValidUntil }: InferGetStaticPropsType<typeof
                       "offers": {
                         "@type": "Offer",
                         "price": standardPriceValue,
-                        "priceCurrency": "CAD",
+                        "priceCurrency": currency,
                         "priceValidUntil": priceValidUntil,
                         "availability": availabilityUrl,
                         "url": "https://www.purrify.ca/products/standard"
@@ -238,7 +240,7 @@ export default function Home({ priceValidUntil }: InferGetStaticPropsType<typeof
                       "offers": {
                         "@type": "Offer",
                         "price": familyPriceValue,
-                        "priceCurrency": "CAD",
+                        "priceCurrency": currency,
                         "priceValidUntil": priceValidUntil,
                         "availability": availabilityUrl,
                         "url": "https://www.purrify.ca/products/family-pack"

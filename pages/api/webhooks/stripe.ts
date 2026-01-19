@@ -79,7 +79,7 @@ async function sendAdminNotification({
               <p style="margin: 8px 0;"><strong>Email:</strong> ${customerEmail}</p>
               <p style="margin: 8px 0;"><strong>Product:</strong> ${productName}</p>
               <p style="margin: 8px 0;"><strong>Quantity:</strong> ${quantity}</p>
-              <p style="margin: 8px 0; font-size: 18px;"><strong>Amount:</strong> $${formattedAmount} CAD</p>
+              <p style="margin: 8px 0; font-size: 18px;"><strong>Amount:</strong> $${formattedAmount}</p>
             </div>
 
             <p style="color: #666; font-size: 14px;">

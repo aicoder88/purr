@@ -141,6 +141,70 @@ try {
 
 ---
 
+## Currency System
+
+**Geo-based currency detection** using Vercel Edge headers (`x-vercel-ip-country`):
+- US visitors → USD
+- All others → CAD (fallback)
+- 1:1 price conversion (same numbers, different currency)
+- No currency codes displayed (always show `$`)
+
+**Usage in components:**
+```typescript
+import { useCurrency } from '../src/lib/currency-context';
+
+function ProductPage() {
+  const { currency, formatPrice } = useCurrency();
+
+  // Get price with currency
+  const price = getProductPrice('standard', currency);
+
+  // Format price with currency
+  const formatted = formatPrice(price, locale);
+
+  return <div>{formatted}</div>;
+}
+```
+
+**Usage in API routes:**
+```typescript
+import { detectCurrencyFromRequest } from '@/lib/geo/currency-detector';
+
+export default async function handler(req, res) {
+  const currency = detectCurrencyFromRequest(req);
+  // Use currency in logic
+}
+```
+
+**Database:**
+- Order model has `currency` field (CAD or USD)
+- Always store currency with order for accurate reporting
+- Indexed for query performance
+
+**Key files:**
+- `src/lib/geo/currency-detector.ts` - Server-side detection
+- `src/lib/currency-context.tsx` - React context
+- `src/lib/pricing.ts` - Pricing functions with currency support
+- `src/lib/constants.ts` - USD_PRICES map
+- `pages/_app.tsx` - CurrencyProvider integration
+
+**Structured data (JSON-LD):**
+Always use dynamic currency in schema markup:
+```typescript
+const { currency } = useCurrency();
+
+const schema = {
+  "@type": "Product",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": currency, // Not "CAD"
+    "price": price
+  }
+};
+```
+
+---
+
 ## Testing Patterns
 
 **Unit test structure**:

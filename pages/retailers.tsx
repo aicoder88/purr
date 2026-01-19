@@ -34,7 +34,7 @@ export default function RetailersPage() {
     },
     {
       question: "How quickly do wholesale orders ship?",
-      answer: "Wholesale orders ship within 2-3 business days from our Montreal warehouse. We offer free shipping on orders over $200 CAD within Canada."
+      answer: "Wholesale orders ship within 2-3 business days from our Montreal warehouse. We offer free shipping on orders over $200 within Canada."
     },
     {
       question: "Do you provide product training?",

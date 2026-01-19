@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
+import { useCurrency } from '../../src/lib/currency-context';
 import {
   CheckCircle,
   Package,
@@ -29,6 +30,7 @@ import { getPaymentLink } from '../../src/lib/payment-links';
 
 const ProductsPage: NextPage = () => {
   const { locale, t } = useTranslation();
+  const { currency } = useCurrency();
 
   const trialPrice = formatProductPrice('trial', locale);
   const familyPrice = formatProductPrice('family', locale);
@@ -36,8 +38,8 @@ const ProductsPage: NextPage = () => {
   const jumboPrice = formatProductPrice('jumbo', locale);
   const jumboAutoshipPrice = formatProductPrice('jumboAutoship', locale);
 
-  const familyAutoshipAmount = getProductPrice('familyAutoship');
-  const jumboAutoshipAmount = getProductPrice('jumboAutoship');
+  const familyAutoshipAmount = getProductPrice('familyAutoship', currency);
+  const jumboAutoshipAmount = getProductPrice('jumboAutoship', currency);
 
   const priceDetails = {
     trial: {
@@ -252,7 +254,7 @@ const ProductsPage: NextPage = () => {
                   "offers": {
                     "@type": "Offer",
                     "price": product.price.replace('$', '').replace(',', ''),
-                    "priceCurrency": "CAD",
+                    "priceCurrency": currency,
                     "priceValidUntil": priceValidUntil,
                     "availability": availabilityUrl
                   }

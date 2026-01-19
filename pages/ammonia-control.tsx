@@ -1,6 +1,7 @@
 import { NextSeo } from 'next-seo';
 import Script from 'next/script';
 import { useTranslation } from '../src/lib/translation-context';
+import { useCurrency } from '../src/lib/currency-context';
 import {
   LandingHero,
   ProblemSection,
@@ -38,6 +39,7 @@ import Image from 'next/image';
 
 export default function AmmoniaControl() {
   const { t, locale } = useTranslation();
+  const { currency } = useCurrency();
   const ammonia = t.ammonia;
 
   const canonicalUrl = `https://www.purrify.ca/${locale === 'en' ? '' : locale + '/'}ammonia-control`;
@@ -109,7 +111,7 @@ export default function AmmoniaControl() {
     },
     offers: {
       '@type': 'AggregateOffer',
-      priceCurrency: 'CAD',
+      priceCurrency: currency,
       lowPrice: '4.76',
       highPrice: '34.99',
       offerCount: '3',

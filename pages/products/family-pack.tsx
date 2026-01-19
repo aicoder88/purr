@@ -7,6 +7,7 @@ import { useEffect, useRef, useCallback, useState } from 'react';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
+import { useCurrency } from '../../src/lib/currency-context';
 import { SITE_NAME } from '../../src/lib/constants';
 import { buildLanguageAlternates, getLocalizedUrl, generateFAQSchema, getPriceValidityDate, buildAvailabilityUrl } from '../../src/lib/seo-utils';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../src/lib/pricing';
@@ -26,6 +27,7 @@ interface FamilyPackPageProps {
 
 export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps) {
   const { t, locale } = useTranslation();
+  const { currency } = useCurrency();
   const viewTracked = useRef(false);
   const purchaseCardsRef = useRef<HTMLDivElement>(null);
   const [quantity, setQuantity] = useState(1);
@@ -38,7 +40,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
     if (viewTracked.current) return;
     viewTracked.current = true;
 
-    const numericPrice = getProductPrice(productKey);
+    const numericPrice = getProductPrice(productKey, currency);
     trackTikTokClientEvent('ViewContent', {
       content_id: productKey,
       content_name: productName,
@@ -50,7 +52,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
 
   // Track AddToCart + InitiateCheckout when user clicks buy
   const handleBuyClick = useCallback((isAutoship: boolean, quantity: number = 1) => {
-    const price = isAutoship ? getProductPrice('familyAutoship') : getProductPrice(productKey);
+    const price = isAutoship ? getProductPrice('familyAutoship', currency) : getProductPrice(productKey, currency);
     const name = isAutoship ? `${productName} - Autoship` : productName;
 
     trackTikTokClientEvent('AddToCart', {
@@ -84,11 +86,11 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
   const languageAlternates = buildLanguageAlternates(canonicalPath);
   const trialPrice = formatProductPrice('trial', locale);
   const standardPrice = formatProductPrice('standard', locale);
-  const standardPriceAmount = getProductPrice('standard');
+  const standardPriceAmount = getProductPrice('standard', currency);
   const familyPrice = formatProductPrice('family', locale);
   const familyAutoshipPrice = formatProductPrice('familyAutoship', locale);
-  const familyPriceAmount = getProductPrice('family');
-  const familyAutoshipAmount = getProductPrice('familyAutoship');
+  const familyPriceAmount = getProductPrice('family', currency);
+  const familyAutoshipAmount = getProductPrice('familyAutoship', currency);
   const familyAutoshipSavings = Math.max(
     0,
     Math.round((1 - familyAutoshipAmount / (familyPriceAmount * 3)) * 100)
@@ -201,7 +203,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
             "offers": {
               "@type": "Offer",
               "url": canonicalUrl,
-              "priceCurrency": "CAD",
+              "priceCurrency": currency,
               "price": familyPriceAmount.toFixed(2),
               "priceValidUntil": priceValidUntil,
               "availability": buildAvailabilityUrl('InStock'),
