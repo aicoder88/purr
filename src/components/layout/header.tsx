@@ -165,118 +165,118 @@ export function Header() {
   const navigationItems: NavigationItem[] = [
     {
       id: "products",
-      label: t.nav?.products || "Products",
+      label: t.nav?.products || "",
       href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/#products`,
       hasDropdown: true,
       dropdownItems: [
         {
-          label: t.nav?.trialSize || "12g Trial Size",
+          label: t.nav?.trialSize || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/products/trial-size`,
         },
         {
-          label: t.nav?.compareSizes || "Compare Sizes",
+          label: t.nav?.compareSizes || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/products`,
         },
         {
-          label: t.nav?.viewAllProducts || "View All Products",
+          label: t.nav?.viewAllProducts || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/#products`,
         },
         {
-          label: t.nav?.shipsToUSA || "Ships to USA",
+          label: t.nav?.shipsToUSA || "",
           href: "/us",
         },
       ],
     },
     {
       id: "retailers",
-      label: t.nav?.retailers || "For Retailers",
+      label: t.nav?.retailers || "",
       href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/retailers`,
       hasDropdown: true,
       dropdownItems: [
         {
-          label: t.nav?.retailers || "For Retailers",
+          label: t.nav?.retailers || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/retailers`,
         },
         {
-          label: t.nav?.wholesalePricing || "Wholesale Pricing",
+          label: t.nav?.wholesalePricing || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/retailers#wholesale-pricing`,
         },
         {
-          label: t.nav?.becomePartner || "Become a Partner",
+          label: t.nav?.becomePartner || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/retailers#retailer-contact`,
         },
         {
-          label: t.nav?.marketingSupport || "Marketing Support",
+          label: t.nav?.marketingSupport || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/retailers#marketing-support`,
         },
       ],
     },
     {
       id: "learn",
-      label: t.nav?.learn || "Learn",
+      label: t.nav?.learn || "",
       href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn`,
       hasDropdown: true,
       dropdownItems: [
         {
-          label: t.nav?.howItWorksPage || "How It Works",
+          label: t.nav?.howItWorksPage || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/how-it-works`,
         },
         {
-          label: t.nav?.faq || "FAQ",
+          label: t.nav?.faq || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/faq`,
         },
         {
-          label: t.nav?.science || "Science",
+          label: t.nav?.science || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/science`,
         },
         {
-          label: t.nav?.safetyInfo || "Safety Info",
+          label: t.nav?.safetyInfo || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/safety`,
         },
         {
-          label: t.nav?.activatedCarbonBenefits || "Activated Carbon Benefits",
+          label: t.nav?.activatedCarbonBenefits || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/activated-carbon-benefits`,
         },
         {
-          label: t.nav?.catLitterGuide || "Cat Litter Guide",
+          label: t.nav?.catLitterGuide || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/cat-litter-guide`,
         },
         {
-          label: t.nav?.howToUse || "How to Use",
+          label: t.nav?.howToUse || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/how-to-use-deodorizer`,
         },
         {
-          label: t.nav?.technologyComparison || "Technology Comparison",
+          label: t.nav?.technologyComparison || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/activated-carbon-vs-baking-soda-deodorizers`,
         },
-        { label: t.nav?.solutions || "Solutions", isGroupHeader: true },
+        { label: t.nav?.solutions || "", isGroupHeader: true },
         {
-          label: t.nav?.ammoniaSmellControl || "Ammonia Smell Control",
+          label: t.nav?.ammoniaSmellControl || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/solutions/ammonia-smell-cat-litter`,
           indent: true,
         },
         {
-          label: t.nav?.apartmentLiving || "Apartment Living",
+          label: t.nav?.apartmentLiving || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/solutions/apartment-cat-smell-solution`,
           indent: true,
         },
         {
-          label: t.nav?.litterBoxOdor || "Litter Box Odor",
+          label: t.nav?.litterBoxOdor || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/solutions/litter-box-smell-elimination`,
           indent: true,
         },
         {
-          label: t.nav?.multipleCats || "Multiple Cats",
+          label: t.nav?.multipleCats || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/solutions/multiple-cats-odor-control`,
           indent: true,
         },
         {
-          label: t.nav?.naturalAdditive || "Natural Additive",
+          label: t.nav?.naturalAdditive || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/solutions/natural-cat-litter-additive`,
           indent: true,
         },
         {
-          label: t.nav?.seniorCats || "Senior Cats",
+          label: t.nav?.seniorCats || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/solutions/senior-cat-litter-solutions`,
           indent: true,
         },
@@ -284,7 +284,7 @@ export function Header() {
     },
     {
       id: "about",
-      label: t.nav?.about || "About",
+      label: t.nav?.about || "",
       href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/about/our-story`,
     },
   ];
@@ -408,7 +408,7 @@ export function Header() {
                 className="flex items-center gap-2 text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100"
               >
                 <LogOut className="w-4 h-4" />
-                <span>{t.nav?.signOut || "Sign Out"}</span>
+                <span>{t.nav?.signOut || ""}</span>
               </Button>
             )}
             <Button
@@ -416,7 +416,7 @@ export function Header() {
               className="flex items-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
             >
               <ShoppingBag className="w-4 h-4" />
-              {t.nav?.buyNow || "Buy Now!"}
+              {t.nav?.buyNow || ""}
             </Button>
             <LanguageSwitcher />
           </div>
@@ -440,7 +440,7 @@ export function Header() {
               size="icon"
               className="ml-1 h-11 w-11 p-0"
               onClick={toggleMenu}
-              aria-label={t.nav?.toggleMenu || "Toggle menu"}
+              aria-label={t.nav?.toggleMenu || ""}
             >
               {isMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -507,7 +507,7 @@ export function Header() {
                           <span className="text-sm font-semibold text-brand-green-dark dark:text-purple-300 block">
                             {session.user.email?.split('@')[0] || 'User'}
                           </span>
-                          <span className="text-xs text-gray-500 dark:text-gray-400">{t.nav?.signedIn || "Signed in"}</span>
+                          <span className="text-xs text-gray-500 dark:text-gray-400">{t.nav?.signedIn || ""}</span>
                         </div>
                       </div>
                     </div>
@@ -517,7 +517,7 @@ export function Header() {
                       className="w-full flex items-center justify-center gap-2 border-brand-green/30 dark:border-purple-500/40 text-brand-green-dark dark:text-purple-300 hover:bg-brand-green/10 dark:hover:bg-purple-500/20"
                     >
                       <LogOut className="w-4 h-4" />
-                      <span>{t.nav?.signOut || "Sign Out"}</span>
+                      <span>{t.nav?.signOut || ""}</span>
                     </Button>
                   </div>
                 )}
@@ -526,7 +526,7 @@ export function Header() {
                   className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                 >
                   <ShoppingBag className="w-4 h-4" />
-                  {t.nav?.buyNow || "Buy Now!"}
+                  {t.nav?.buyNow || ""}
                 </Button>
               </div>
             </div>

@@ -295,7 +295,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
         <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100">
-            {t.reviewSystem?.customerReviews || "Customer Reviews"}
+            {t.reviewSystem?.customerReviews || ""}
           </h3>
           <div className="flex items-center space-x-2">
             {renderStars(averageRating)}
@@ -303,7 +303,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
               {averageRating.toFixed(1)}
             </span>
             <span className="text-gray-600 dark:text-gray-400">
-              ({DISPLAY_REVIEW_COUNT} {t.reviewSystem?.reviews || "reviews"})
+              ({DISPLAY_REVIEW_COUNT} {t.reviewSystem?.reviews || ""})
             </span>
           </div>
         </div>
@@ -340,7 +340,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
             variant="outline"
             className="w-full border-[#5B2EFF] text-[#5B2EFF] dark:text-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white dark:hover:text-gray-100"
           >
-            {t.reviewSystem?.viewAllReviews || "View All Reviews"}
+            {t.reviewSystem?.viewAllReviews || ""}
           </Button>
         </div>
       </div>
@@ -370,14 +370,14 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
               <div>
                 {renderStars(averageRating, 'lg')}
                 <p className="text-gray-600 dark:text-gray-300 mt-1">
-                  {t.reviewSystem?.basedOn || "Based on"} {DISPLAY_REVIEW_COUNT} {t.reviewSystem?.reviews || "reviews"}
+                  {t.reviewSystem?.basedOn || ""} {DISPLAY_REVIEW_COUNT} {t.reviewSystem?.reviews || ""}
                 </p>
               </div>
             </div>
             <div className="flex items-center justify-center lg:justify-start space-x-4 text-sm text-gray-600 dark:text-gray-400">
-              <span>{Math.round((reviews.filter(r => r.wouldRecommend).length / totalReviews) * 100)}% {t.reviewSystem?.wouldRecommend || "would recommend"}</span>
+              <span>{Math.round((reviews.filter(r => r.wouldRecommend).length / totalReviews) * 100)}% {t.reviewSystem?.wouldRecommend || ""}</span>
               <span>•</span>
-              <span>{reviews.filter(r => r.verified).length} {t.reviewSystem?.verifiedPurchases || "verified purchases"}</span>
+              <span>{reviews.filter(r => r.verified).length} {t.reviewSystem?.verifiedPurchases || ""}</span>
             </div>
           </div>
 
@@ -418,12 +418,12 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                   onChange={(e) => setFilterRating(e.target.value ? parseInt(e.target.value) : null)}
                   className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                 >
-                  <option value="">{t.reviewSystem?.filters?.allRatings || "All Ratings"}</option>
-                  <option value="5">5 {t.reviewSystem?.filters?.stars || "Stars"}</option>
-                  <option value="4">4 {t.reviewSystem?.filters?.stars || "Stars"}</option>
-                  <option value="3">3 {t.reviewSystem?.filters?.stars || "Stars"}</option>
-                  <option value="2">2 {t.reviewSystem?.filters?.stars || "Stars"}</option>
-                  <option value="1">1 {t.reviewSystem?.filters?.star || "Star"}</option>
+                  <option value="">{t.reviewSystem?.filters?.allRatings || ""}</option>
+                  <option value="5">5 {t.reviewSystem?.filters?.stars || ""}</option>
+                  <option value="4">4 {t.reviewSystem?.filters?.stars || ""}</option>
+                  <option value="3">3 {t.reviewSystem?.filters?.stars || ""}</option>
+                  <option value="2">2 {t.reviewSystem?.filters?.stars || ""}</option>
+                  <option value="1">1 {t.reviewSystem?.filters?.star || ""}</option>
                 </select>
               </div>
 
@@ -433,10 +433,10 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                 onChange={(e) => setFilterSize(e.target.value || null)}
                 className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               >
-                <option value="">{t.reviewSystem?.filters?.allSizes || "All Sizes"}</option>
-                <option value="12g">{t.reviewSystem?.filters?.trial || "12g Trial"}</option>
-                <option value="50g">{t.reviewSystem?.filters?.regular || "50g Regular"}</option>
-                <option value="120g">{t.reviewSystem?.filters?.large || "120g Large"}</option>
+                <option value="">{t.reviewSystem?.filters?.allSizes || ""}</option>
+                <option value="12g">{t.reviewSystem?.filters?.trial || ""}</option>
+                <option value="50g">{t.reviewSystem?.filters?.regular || ""}</option>
+                <option value="120g">{t.reviewSystem?.filters?.large || ""}</option>
               </select>
             </div>
 
@@ -448,11 +448,11 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                 onChange={(e) => setSortBy(e.target.value as SortOption)}
                 className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               >
-                <option value="newest">{t.reviewSystem?.sort?.newestFirst || "Newest First"}</option>
-                <option value="oldest">{t.reviewSystem?.sort?.oldestFirst || "Oldest First"}</option>
-                <option value="highest">{t.reviewSystem?.sort?.highestRated || "Highest Rated"}</option>
-                <option value="lowest">{t.reviewSystem?.sort?.lowestRated || "Lowest Rated"}</option>
-                <option value="helpful">{t.reviewSystem?.sort?.mostHelpful || "Most Helpful"}</option>
+                <option value="newest">{t.reviewSystem?.sort?.newestFirst || ""}</option>
+                <option value="oldest">{t.reviewSystem?.sort?.oldestFirst || ""}</option>
+                <option value="highest">{t.reviewSystem?.sort?.highestRated || ""}</option>
+                <option value="lowest">{t.reviewSystem?.sort?.lowestRated || ""}</option>
+                <option value="helpful">{t.reviewSystem?.sort?.mostHelpful || ""}</option>
               </select>
             </div>
           </div>
@@ -477,7 +477,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                     {review.verified && (
                       <div className="flex items-center space-x-1 text-green-600 dark:text-green-400">
                         <CheckCircle className="w-4 h-4" />
-                        <span className="text-xs">{t.reviewSystem?.review?.verifiedPurchase || "Verified Purchase"}</span>
+                        <span className="text-xs">{t.reviewSystem?.review?.verifiedPurchase || ""}</span>
                       </div>
                     )}
                   </div>
@@ -491,9 +491,9 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
               </div>
               
               <div className="text-right text-sm text-gray-500 dark:text-gray-400">
-                <div>{t.reviewSystem?.review?.size || "Size"}: {review.productSize}</div>
-                <div>{review.catCount} {review.catCount > 1 ? (t.reviewSystem?.review?.cats || "cats") : (t.reviewSystem?.review?.cat || "cat")}</div>
-                <div>{t.reviewSystem?.review?.usingFor || "Using for"} {review.usageDuration}</div>
+                <div>{t.reviewSystem?.review?.size || ""}: {review.productSize}</div>
+                <div>{review.catCount} {review.catCount > 1 ? (t.reviewSystem?.review?.cats || "") : (t.reviewSystem?.review?.cat || "")}</div>
+                <div>{t.reviewSystem?.review?.usingFor || ""} {review.usageDuration}</div>
               </div>
             </div>
 
@@ -515,7 +515,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                   aria-label={`Mark review as helpful (${review.helpful} votes)`}
                 >
                   <ThumbsUp className="w-4 h-4" />
-                  <span className="text-sm">{t.reviewSystem?.review?.helpful || "Helpful"} ({review.helpful})</span>
+                  <span className="text-sm">{t.reviewSystem?.review?.helpful || ""} ({review.helpful})</span>
                 </button>
                 <button
                   className="flex items-center space-x-1 text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors"
@@ -529,7 +529,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
               {review.wouldRecommend && (
                 <div className="flex items-center space-x-1 text-green-600 dark:text-green-400">
                   <CheckCircle className="w-4 h-4" />
-                  <span className="text-sm font-medium">{t.reviewSystem?.review?.recommendsProduct || "Recommends this product"}</span>
+                  <span className="text-sm font-medium">{t.reviewSystem?.review?.recommendsProduct || ""}</span>
                 </div>
               )}
             </div>
@@ -544,7 +544,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
             variant="outline"
             className="border-[#5B2EFF] text-[#5B2EFF] dark:text-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white dark:hover:text-gray-100"
           >
-            {t.reviewSystem?.loadMoreReviews || "Load More Reviews"}
+            {t.reviewSystem?.loadMoreReviews || ""}
           </Button>
         </div>
       )}

@@ -230,10 +230,10 @@ export function EnhancedProductComparison() {
       <Container className="relative z-10">
         <div className="text-center mb-12">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            {t.enhancedProductComparison?.chooseYourPerfectSize || "Choose Your Perfect Size"}
+            {t.enhancedProductComparison?.chooseYourPerfectSize || ""}
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            {t.enhancedProductComparison?.subtitle || "Simple pricing. No hidden fees. Cancel anytime."}
+            {t.enhancedProductComparison?.subtitle || ""}
           </p>
         </div>
 
@@ -257,7 +257,7 @@ export function EnhancedProductComparison() {
                 {product.recommended && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-deep-coral text-white dark:text-gray-100 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg flex items-center gap-1">
                     <Star className="w-3 h-3 fill-current" />
-                    {t.enhancedProductComparison?.mostPopular || "Most Popular"}
+                    {t.enhancedProductComparison?.mostPopular || ""}
                   </div>
                 )}
 

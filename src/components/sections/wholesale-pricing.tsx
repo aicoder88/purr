@@ -236,7 +236,7 @@ export function WholesalePricing() {
             </span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            {pricing?.subtitle || "Partner with Canada's fastest-selling cat odor solution. No hidden fees, no surprises."}
+            {pricing?.subtitle || ""}
           </p>
         </div>
 

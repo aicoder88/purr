@@ -98,7 +98,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
               {(t.newsletter?.popup?.title || `Get {discount}% Off Your First Order!`).replace('{discount}', discount.toString())}
             </h3>
             <p className={COLORS.text.tertiary}>
-              {t.newsletter?.popup?.description || "Join 1,000+ happy customers and get exclusive tips, discounts, and early access to new products."}
+              {t.newsletter?.popup?.description || ""}
             </p>
           </div>
 
@@ -109,7 +109,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder={t.newsletter?.joinFamily?.emailPlaceholder || "Enter your email address"}
+                placeholder={t.newsletter?.joinFamily?.emailPlaceholder || ""}
                 className={`w-full pl-10 pr-4 py-3 ${COLORS.border.input} rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${COLORS.surface.light} ${COLORS.text.primary}`}
                 disabled={status === 'loading'}
               />
@@ -133,7 +133,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
           </form>
 
           <p className={`text-xs ${COLORS.text.muted} text-center mt-4`}>
-            {t.newsletter?.privacyText || "No spam, unsubscribe anytime. We respect your privacy."}
+            {t.newsletter?.privacyText || ""}
           </p>
         </div>
       </div>
@@ -149,10 +149,10 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-center md:text-left dark:text-center dark:md:text-left">
             <h3 className={`text-lg font-semibold ${COLORS.text.primary} mb-1`}>
-              {t.newsletter?.footer?.title || "Stay Updated with Purrify"}
+              {t.newsletter?.footer?.title || ""}
             </h3>
             <p className={`${COLORS.text.tertiary} text-sm dark:text-sm`}>
-              {t.newsletter?.footer?.description || "Get cat care tips and exclusive offers delivered to your inbox."}
+              {t.newsletter?.footer?.description || ""}
             </p>
           </div>
 
@@ -161,7 +161,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder={t.newsletter?.footer?.placeholder || "Your email"}
+              placeholder={t.newsletter?.footer?.placeholder || ""}
               className={`flex-1 md:w-64 px-4 py-2 ${COLORS.border.input} rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${COLORS.surface.light} ${COLORS.text.primary}`}
               disabled={status === 'loading'}
             />
@@ -192,10 +192,10 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
         <div className="text-center mb-6">
           <Mail className={`w-12 h-12 ${COLORS.text.purple} mx-auto mb-4`} />
           <h3 className={`text-xl font-bold ${COLORS.text.primary} mb-2`}>
-            {t.newsletter?.inline?.title || "Join the Purrify Community"}
+            {t.newsletter?.inline?.title || ""}
           </h3>
           <p className={COLORS.text.tertiary}>
-            {t.newsletter?.inline?.description || "Get expert cat care tips and exclusive offers straight to your inbox."}
+            {t.newsletter?.inline?.description || ""}
           </p>
         </div>
 
@@ -205,7 +205,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder={t.newsletter?.joinFamily?.emailPlaceholder || "Enter your email address"}
+              placeholder={t.newsletter?.joinFamily?.emailPlaceholder || ""}
               className={`w-full px-4 py-3 ${COLORS.border.input} rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${COLORS.surface.light} ${COLORS.text.primary}`}
               disabled={status === 'loading'}
             />
@@ -280,7 +280,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder={t.newsletter?.joinFamily?.emailPlaceholder || "Enter your email address"}
+              placeholder={t.newsletter?.joinFamily?.emailPlaceholder || ""}
               className={`w-full pl-10 pr-4 py-3 ${COLORS.border.input} rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${COLORS.surface.light} ${COLORS.text.primary}`}
               disabled={status === 'loading'}
             />

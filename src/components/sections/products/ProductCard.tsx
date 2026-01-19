@@ -49,7 +49,7 @@ export const ProductCard = ({
       {/* Popular badge */}
       {index === 1 && (
         <div className="absolute -top-4 left-0 right-0 mx-auto w-max px-4 py-1 bg-[#FF3131] text-white dark:text-gray-100 font-bold text-sm rounded-full shadow-lg z-30">
-          {t.productsSection?.mostPopular || "MOST POPULAR"}
+          {t.productsSection?.mostPopular || ""}
         </div>
       )}
 
@@ -129,8 +129,8 @@ export const ProductCard = ({
             className={`w-full inline-flex items-center justify-center ${createButtonClasses('primary')} text-lg`}
           >
             {product.id === "purrify-12g"
-              ? (t.productsSection?.buyNow || "Buy Now")
-              : (t.productsSection?.subscribeNow || "Subscribe & Save")}
+              ? (t.productsSection?.buyNow || "")
+              : (t.productsSection?.subscribeNow || "")}
           </a>
         </div>
       </div>

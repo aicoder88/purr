@@ -28,13 +28,13 @@ export function HowItWorks() {
       <Container className="relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/40 dark:to-pink-900/40 rounded-full mb-8 border border-purple-200 dark:border-purple-800 shadow-lg">
-            <span className="text-purple-700 dark:text-purple-300 font-semibold">{t.howItWorks?.simpleAs123 || "Simple as 1-2-3"}</span>
+            <span className="text-purple-700 dark:text-purple-300 font-semibold">{t.howItWorks?.simpleAs123 || ""}</span>
           </div>
           <h2 className="font-heading text-5xl md:text-7xl font-black tracking-tight mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent">
             {t.nav.howItWorks}
           </h2>
           <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-            {t.features.worksWithAnyLitter.description} <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`} className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 underline font-semibold">{t.howItWorks?.learnTheScience || "Learn the science"}</Link> or <Link href={`${locale === 'fr' ? '/fr' : ''}/products`} className="text-pink-600 dark:text-pink-400 hover:text-pink-700 dark:hover:text-pink-300 underline font-semibold">{t.howItWorks?.compareSizes || "compare our sizes"}</Link> to find what works best for you.
+            {t.features.worksWithAnyLitter.description} <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`} className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 underline font-semibold">{t.howItWorks?.learnTheScience || ""}</Link> or <Link href={`${locale === 'fr' ? '/fr' : ''}/products`} className="text-pink-600 dark:text-pink-400 hover:text-pink-700 dark:hover:text-pink-300 underline font-semibold">{t.howItWorks?.compareSizes || ""}</Link> to find what works best for you.
           </p>
         </div>
 
@@ -53,7 +53,7 @@ export function HowItWorks() {
             />
           </div>
           <p className="text-gray-800 dark:text-gray-200 text-lg sm:text-xl leading-relaxed font-medium">
-            {t.howItWorks?.coconutDescription || "Pure, sustainable coconut shells are activated with filtered, pure, high pressure steam to open millions of holes, tunnels, and passage-ways to lock away odor molecules."}
+            {t.howItWorks?.coconutDescription || ""}
           </p>
         </div>
 

@@ -187,7 +187,7 @@ export function ExitIntentPopup({
   if (!isVisible) return null;
 
   const content = {
-    title: t.exitPopup?.title || "Wait! Don't leave empty-handed",
+    title: t.exitPopup?.title || "",
     subtitle:
       t.exitPopup?.subtitle ||
       `Get ${discountPercent}% off your first order`,
@@ -197,7 +197,7 @@ export function ExitIntentPopup({
     placeholder: t.exitPopup?.placeholder || 'Enter your email',
     button: t.exitPopup?.button || 'Get My Discount',
     noThanks: t.exitPopup?.noThanks || 'No thanks, I prefer full price',
-    successTitle: t.exitPopup?.successTitle || "You're in!",
+    successTitle: t.exitPopup?.successTitle || "",
     successMessage:
       t.exitPopup?.successMessage ||
       `Use code ${discountCode} at checkout for ${discountPercent}% off!`,

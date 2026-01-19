@@ -29,7 +29,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
   const [quantity, setQuantity] = useState(1);
 
   const productKey = 'standard'; // 50g Standard Size
-  const productName = t.products?.["purrify-50g"]?.name || "Purrify Standard Size (50g)";
+  const productName = t.products?.["purrify-50g"]?.name || "";
   const productPrice = formatProductPrice(productKey, locale);
   const numericPrice = getProductPrice(productKey);
 

@@ -133,16 +133,16 @@ export const ProductStructuredData: React.FC<ProductStructuredDataProps> = ({ pr
     "image": product.image,
     "brand": {
       "@type": "Brand",
-      "name": product.brand || "Purrify"
+      "name": product.brand || ""
     },
-    "category": product.category || "Pet Supplies",
+    "category": product.category || "",
     "sku": product.sku || product.id,
     "mpn": product.mpn || product.id,
     "gtin": product.gtin,
     "offers": {
       "@type": "Offer",
       "price": product.price.toString(),
-      "priceCurrency": product.currency || "CAD",
+      "priceCurrency": product.currency || "",
       "availability": availabilityUrl,
       "priceValidUntil": priceValidUntil,
       "itemCondition": `https://schema.org/${product.condition || 'NewCondition'}`,

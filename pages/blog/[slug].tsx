@@ -195,9 +195,9 @@ export async function getStaticProps({ params, locale }: { params: { slug: strin
     const post: BlogPost = {
       title: wpPost.title.rendered,
       excerpt: wpPost.excerpt.rendered.replaceAll(/<\/?[^>]+(>|$)/g, "").substring(0, 150) + "...",
-      author: wpPost._embedded?.author?.[0]?.name || "Purrify Team",
+      author: wpPost._embedded?.author?.[0]?.name || "",
       date: new Date(wpPost.date).toISOString().split('T')[0],
-      image: wpPost._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/optimized/purrify-logo.avif",
+      image: wpPost._embedded?.['wp:featuredmedia']?.[0]?.source_url || "",
       link: `/blog/${wpPost.slug}`,
       content: wpPost.content.rendered,
       locale: 'en',

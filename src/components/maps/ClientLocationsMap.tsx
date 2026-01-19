@@ -124,7 +124,7 @@ export const ClientLocationsMap: React.FC<ClientLocationsMapProps> = ({
           )}
 
           <iframe
-            key={activeCity || "default"}
+            key={activeCity || ""}
             src={getMapSrc()}
             width="100%"
             height={height}
@@ -136,13 +136,13 @@ export const ClientLocationsMap: React.FC<ClientLocationsMapProps> = ({
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title={t.maps?.iframeTitle || "Purrify Retail Store Locations Map"}
+            title={t.maps?.iframeTitle || ""}
             className="rounded-lg"
             onLoad={() => setIsLoading(false)}
           />
           <div className="mt-4 text-center">
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              {t.maps?.retailStores || "🗺️ Purrify retail stores across Canada"}
+              {t.maps?.retailStores || ""}
             </p>
             <div className="flex flex-wrap justify-center gap-2 mt-2 text-xs text-gray-500 dark:text-gray-400">
               {(

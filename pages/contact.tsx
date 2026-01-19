@@ -30,7 +30,7 @@ export default function ContactPage() {
   const pageTitle = t.contactPage?.title
     ? `${t.contactPage.title} - ${SITE_NAME}`
     : `Contact Us - ${SITE_NAME} Customer Support & Help`;
-  const pageDescription = t.contactPage?.subtitle || "Questions? Fast support for Purrify orders, shipping to USA & Canada, or cat litter odor advice. Email, phone, or WhatsApp. Response within 24 hours.";
+  const pageDescription = t.contactPage?.subtitle || "";
   const canonicalPath = '/contact';
   const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
   const languageAlternates = buildLanguageAlternates(canonicalPath);
@@ -235,11 +235,11 @@ export default function ContactPage() {
               </div>
 
               <h1 className="font-heading text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent leading-tight">
-                {t.contactPage?.title || "We're Here to Help!"} 🐱
+                {t.contactPage?.title || ""} 🐱
               </h1>
 
               <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed font-medium">
-                {t.contactPage?.subtitle || "Have questions about Purrify? Need help with your order? Our friendly customer support team is ready to assist you with expert advice and solutions."}
+                {t.contactPage?.subtitle || ""}
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 text-sm">
@@ -265,7 +265,7 @@ export default function ContactPage() {
           <Container>
             <div className="text-center mb-16">
               <h2 className="font-heading text-4xl md:text-5xl font-black mb-6 text-gray-900 dark:text-white">
-                {t.contactPage?.chooseContactMethod || "Choose Your"} <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">{locale === 'en' ? 'Preferred Way' : ''}</span> {locale === 'en' ? 'to Connect' : ''}
+                {t.contactPage?.chooseContactMethod || ""} <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">{locale === 'en' ? 'Preferred Way' : ''}</span> {locale === 'en' ? 'to Connect' : ''}
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
                 {locale === 'es' ? '¡Estamos disponibles a través de múltiples canales para facilitarte las cosas!' :
@@ -329,7 +329,7 @@ export default function ContactPage() {
                         window.location.href = method.action;
                       }}
                     >
-                      {t.contactPage?.form?.contactNow || "Contact Now"} →
+                      {t.contactPage?.form?.contactNow || ""} →
                     </Button>
                   </div>
                 </div>
@@ -370,7 +370,7 @@ export default function ContactPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
-                        {t.contactPage?.form?.fullName || "Full Name"} *
+                        {t.contactPage?.form?.fullName || ""} *
                       </label>
                       <Input
                         id="name"
@@ -390,7 +390,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
-                        {t.contactPage?.form?.emailAddress || "Email Address"} *
+                        {t.contactPage?.form?.emailAddress || ""} *
                       </label>
                       <Input
                         id="email"
@@ -407,7 +407,7 @@ export default function ContactPage() {
 
                   <div>
                     <label htmlFor="subject" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
-                      {t.contactPage?.form?.subject || "Subject"} *
+                      {t.contactPage?.form?.subject || ""} *
                     </label>
                     <Input
                       id="subject"
@@ -417,7 +417,7 @@ export default function ContactPage() {
                       minLength={3}
                       value={formData.subject}
                       onChange={handleInputChange}
-                      placeholder={t.contactPage?.form?.subjectPlaceholder || "Brief description of your inquiry"}
+                      placeholder={t.contactPage?.form?.subjectPlaceholder || ""}
                       className="w-full bg-gray-50 dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 focus:border-purple-500 dark:focus:border-purple-500 text-gray-900 dark:text-gray-100 rounded-xl py-3 px-4 text-lg transition-all"
                     />
                     <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
@@ -427,7 +427,7 @@ export default function ContactPage() {
 
                   <div>
                     <label htmlFor="message" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
-                      {t.contactPage?.form?.message || "Message"} *
+                      {t.contactPage?.form?.message || ""} *
                     </label>
                     <Textarea
                       id="message"
@@ -437,7 +437,7 @@ export default function ContactPage() {
                       maxLength={900}
                       value={formData.message}
                       onChange={handleInputChange}
-                      placeholder={t.contactPage?.form?.messagePlaceholder || "Please provide details about your question or concern..."}
+                      placeholder={t.contactPage?.form?.messagePlaceholder || ""}
                       rows={6}
                       className="w-full bg-gray-50 dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 focus:border-purple-500 dark:focus:border-purple-500 text-gray-900 dark:text-gray-100 rounded-xl py-3 px-4 text-lg transition-all resize-none"
                     />
@@ -455,12 +455,12 @@ export default function ContactPage() {
                     {isSubmitting ? (
                       <>
                         <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white dark:border-gray-100 mr-3"></div>
-                        {t.contactPage?.form?.sendingMessage || "Sending Message..."}
+                        {t.contactPage?.form?.sendingMessage || ""}
                       </>
                     ) : (
                       <>
                         <Send className="w-6 h-6 mr-3" />
-                        {t.contactPage?.form?.sendMessage || "Send Message"}
+                        {t.contactPage?.form?.sendMessage || ""}
                       </>
                     )}
                   </Button>
@@ -475,10 +475,10 @@ export default function ContactPage() {
           <Container>
             <div className="text-center mb-16">
               <h2 className="font-heading text-4xl md:text-5xl font-black mb-4 text-gray-900 dark:text-white">
-                {t.contactPage?.frequentlyAskedQuestions || "Frequently Asked"} <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">{locale === 'en' ? 'Questions' : ''}</span>
+                {t.contactPage?.frequentlyAskedQuestions || ""} <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">{locale === 'en' ? 'Questions' : ''}</span>
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-400">
-                {t.contactPage?.quickAnswersCommon || "Quick answers to common questions"} 💡
+                {t.contactPage?.quickAnswersCommon || ""} 💡
               </p>
             </div>
 
@@ -498,11 +498,11 @@ export default function ContactPage() {
 
             <div className="text-center mt-16">
               <p className="text-gray-600 dark:text-gray-400 mb-6 text-lg font-semibold">
-                {t.contactPage?.dontSeeQuestion || "Don't see your question answered here?"}
+                {t.contactPage?.dontSeeQuestion || ""}
               </p>
               <Link href={`${locale === 'fr' ? '/fr' : (locale === 'es' ? '/es' : '')}/#faq`}>
                 <Button variant="outline" size="lg" className="border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white dark:border-purple-400 dark:text-purple-400 dark:hover:bg-purple-600 font-bold text-lg px-8 py-6 rounded-xl transition-all duration-300">
-                  {t.contactPage?.viewCompleteFAQ || "View Full FAQ"} →
+                  {t.contactPage?.viewCompleteFAQ || ""} →
                 </Button>
               </Link>
             </div>
@@ -541,14 +541,14 @@ export default function ContactPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div className="text-center md:text-left">
                 <h2 className="font-heading text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50 dark:text-gray-100">
-                  {t.contactPage?.businessHours?.title || "Business Hours"}
+                  {t.contactPage?.businessHours?.title || ""}
                 </h2>
                 <div className="space-y-4">
                   <div className="flex items-center justify-center md:justify-start">
                     <Clock className="w-5 h-5 text-[#FF3131] mr-3" />
                     <div>
                       <p className="font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100">
-                        {t.contactPage?.businessHours?.weekdays || "Monday - Friday: 9:00 AM - 5:00 PM EST"}
+                        {t.contactPage?.businessHours?.weekdays || ""}
                       </p>
                     </div>
                   </div>
@@ -556,7 +556,7 @@ export default function ContactPage() {
                     <Clock className="w-5 h-5 text-[#FF3131] mr-3" />
                     <div>
                       <p className="font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100">
-                        {t.contactPage?.businessHours?.saturday || "Saturday: 10:00 AM - 2:00 PM EST"}
+                        {t.contactPage?.businessHours?.saturday || ""}
                       </p>
                     </div>
                   </div>
@@ -564,7 +564,7 @@ export default function ContactPage() {
                     <Clock className="w-5 h-5 text-[#FF3131] mr-3" />
                     <div>
                       <p className="font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100">
-                        {t.contactPage?.businessHours?.sunday || "Sunday: Closed"}
+                        {t.contactPage?.businessHours?.sunday || ""}
                       </p>
                     </div>
                   </div>
@@ -573,7 +573,7 @@ export default function ContactPage() {
 
               <div className="text-center md:text-left">
                 <h2 className="font-heading text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50 dark:text-gray-100">
-                  {t.contactPage?.location?.title || "Our Location"}
+                  {t.contactPage?.location?.title || ""}
                 </h2>
                 <div className="space-y-4">
                   <div className="flex items-center justify-center md:justify-start">
@@ -587,7 +587,7 @@ export default function ContactPage() {
                   </div>
                   <div className="mt-6">
                     <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-400">
-                      {t.contactPage?.location?.shippingNote || "We ship across Canada and offer local pickup in the Mirabel area."}
+                      {t.contactPage?.location?.shippingNote || ""}
                     </p>
                   </div>
                 </div>
@@ -828,7 +828,7 @@ export default function ContactPage() {
               <Link href={`${locale === 'fr' ? '/fr' : (locale === 'es' ? '/es' : '')}/#contact`}>
                 <Button variant="outline" size="lg">
                   <ArrowLeft className="w-5 h-5 mr-2" />
-                  {t.contactPage?.backToHome || "Back to Homepage"}
+                  {t.contactPage?.backToHome || ""}
                 </Button>
               </Link>
             </div>

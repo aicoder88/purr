@@ -548,7 +548,7 @@ export function RetailerContact() {
                     value={formData.currentProducts}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200"
-                    placeholder={form?.fields?.currentProducts?.placeholder || "What's the #1 brand of cat litter that you sell most of?"}
+                    placeholder={form?.fields?.currentProducts?.placeholder || ""}
                   />
                 </div>
 

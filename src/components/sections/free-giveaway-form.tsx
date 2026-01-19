@@ -124,7 +124,7 @@ export function FreeGiveawayForm() {
 
   return (
     <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-8 border border-[#E0EFC7] dark:border-gray-800 transition-colors duration-300">
-      <h2 className="font-heading text-2xl font-bold text-[#1E1B4B] dark:text-white dark:text-gray-100 dark:text-gray-100 mb-6">{t.freeGiveaway?.formTitle || "Enter Your Details"}</h2>
+      <h2 className="font-heading text-2xl font-bold text-[#1E1B4B] dark:text-white dark:text-gray-100 dark:text-gray-100 mb-6">{t.freeGiveaway?.formTitle || ""}</h2>
       
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" aria-label="Free giveaway form">
         <div>
@@ -132,7 +132,7 @@ export function FreeGiveawayForm() {
             htmlFor="name"
             className="block text-sm font-medium text-[#333333] dark:text-gray-200"
           >
-            {t.freeGiveaway?.fullName || "Full Name"} <span className="text-[#FF3131]">*</span>
+            {t.freeGiveaway?.fullName || ""} <span className="text-[#FF3131]">*</span>
           </label>
           <Input
             type="text"
@@ -154,7 +154,7 @@ export function FreeGiveawayForm() {
             htmlFor="email"
             className="block text-sm font-medium text-[#333333] dark:text-gray-200"
           >
-            {t.freeGiveaway?.emailAddress || "Email Address"} <span className="text-[#FF3131]">*</span>
+            {t.freeGiveaway?.emailAddress || ""} <span className="text-[#FF3131]">*</span>
           </label>
           <Input
             type="email"
@@ -174,7 +174,7 @@ export function FreeGiveawayForm() {
 
         <div>
           <label className="block text-sm font-medium text-[#333333] dark:text-gray-200 mb-2">
-            {t.freeGiveaway?.catNames || "Names of Your Cats"}
+            {t.freeGiveaway?.catNames || ""}
           </label>
           
           <div className="space-y-3">
@@ -197,7 +197,7 @@ export function FreeGiveawayForm() {
             className="mt-3 text-[#0072CE] border-[#E0EFC7] hover:bg-[#E0EFC7]/20"
           >
             <PlusCircle className="mr-1 h-4 w-4" />
-            {t.freeGiveaway?.addAnotherCat || "Add Another Cat"}
+            {t.freeGiveaway?.addAnotherCat || ""}
           </Button>
         </div>
 
@@ -225,7 +225,7 @@ export function FreeGiveawayForm() {
         </Button>
         
         <p className="text-xs text-center text-gray-500 dark:text-gray-400 dark:text-gray-400 mt-4">
-          {t.freeGiveaway?.privacyNotice || "By submitting this form, you're allowing us to contact you about your free Purrify sample. We respect your privacy and will never share your information with third parties."}
+          {t.freeGiveaway?.privacyNotice || ""}
         </p>
       </form>
     </div>

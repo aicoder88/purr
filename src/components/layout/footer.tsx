@@ -143,7 +143,7 @@ export function Footer() {
               {/* Trust Badges */}
               <div className="mt-4 pt-4 border-t border-[#E0EFC7]/50 dark:border-gray-700/50">
                 <p className="text-xs font-medium text-[#333333]/60 dark:text-gray-500 mb-3">
-                  {t.footerNav?.trustedReviews || "Trusted Reviews"}
+                  {t.footerNav?.trustedReviews || ""}
                 </p>
                 <div className="flex flex-col gap-2">
                   <a
@@ -160,7 +160,7 @@ export function Footer() {
                       <Star className="h-3 w-3 fill-current" />
                       <Star className="h-3 w-3 fill-current" />
                     </div>
-                    <span>{t.footerNav?.trustpilot || "Trustpilot"}</span>
+                    <span>{t.footerNav?.trustpilot || ""}</span>
                     <ExternalLink className="h-3 w-3" />
                   </a>
                   <a
@@ -177,7 +177,7 @@ export function Footer() {
                       <Star className="h-3 w-3 fill-current" />
                       <Star className="h-3 w-3 fill-current" />
                     </div>
-                    <span>{t.footerNav?.googleReviews || "Google Reviews"}</span>
+                    <span>{t.footerNav?.googleReviews || ""}</span>
                     <ExternalLink className="h-3 w-3" />
                   </a>
                 </div>
@@ -186,7 +186,7 @@ export function Footer() {
 
             <div className="space-y-4">
               <h3 className="font-heading text-sm font-semibold text-[#333333] dark:text-gray-100">
-                {t.footerNav?.products || "Products"}
+                {t.footerNav?.products || ""}
               </h3>
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
@@ -198,7 +198,7 @@ export function Footer() {
                     }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.trialSize || "Trial Size"}
+                    {t.footerNav?.trialSize || ""}
                   </Link>
                 </li>
                 <li>
@@ -210,7 +210,7 @@ export function Footer() {
                     }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.standardSize || "Standard Size"}
+                    {t.footerNav?.standardSize || ""}
                   </Link>
                 </li>
                 <li>
@@ -222,7 +222,7 @@ export function Footer() {
                     }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.familyPack || "Family Pack"}
+                    {t.footerNav?.familyPack || ""}
                   </Link>
                 </li>
                 <li>
@@ -234,7 +234,7 @@ export function Footer() {
                     }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.compareSizes || "Compare Sizes"}
+                    {t.footerNav?.compareSizes || ""}
                   </Link>
                 </li>
               </ul>
@@ -242,7 +242,7 @@ export function Footer() {
 
             <div className="space-y-4">
               <h3 className="font-heading text-sm font-semibold text-[#333333] dark:text-gray-100">
-                {t.footerNav?.learn || "Learn"}
+                {t.footerNav?.learn || ""}
               </h3>
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
@@ -254,7 +254,7 @@ export function Footer() {
                     }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.howItWorks || "How It Works"}
+                    {t.footerNav?.howItWorks || ""}
                   </Link>
                 </li>
                 <li>
@@ -262,7 +262,7 @@ export function Footer() {
                     href={locale === "fr" ? "/fr/learn/faq" : "/learn/faq"}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.faq || "FAQ"}
+                    {t.footerNav?.faq || ""}
                   </Link>
                 </li>
                 <li>
@@ -272,7 +272,7 @@ export function Footer() {
                     }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.science || "Science"}
+                    {t.footerNav?.science || ""}
                   </Link>
                 </li>
                 <li>
@@ -282,7 +282,7 @@ export function Footer() {
                     }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.safetyInfo || "Safety Info"}
+                    {t.footerNav?.safetyInfo || ""}
                   </Link>
                 </li>
                 <li>
@@ -294,7 +294,7 @@ export function Footer() {
                     }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.catLitterGuide || "Cat Litter Guide"}
+                    {t.footerNav?.catLitterGuide || ""}
                   </Link>
                 </li>
                 <li>
@@ -302,7 +302,7 @@ export function Footer() {
                     href="/learn/solutions/ammonia-smell-cat-litter"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.ammoniaSolutions || "Ammonia Solutions"}
+                    {t.footerNav?.ammoniaSolutions || ""}
                   </Link>
                 </li>
                 <li>
@@ -310,7 +310,7 @@ export function Footer() {
                     href="/tools/cat-litter-calculator"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.litterCalculator || "Litter Calculator"}
+                    {t.footerNav?.litterCalculator || ""}
                   </Link>
                 </li>
               </ul>
@@ -318,7 +318,7 @@ export function Footer() {
 
             <div className="space-y-4">
               <h3 className="font-heading text-sm font-semibold text-[#333333] dark:text-gray-100">
-                {t.footerNav?.popularArticles || "Popular Articles"}
+                {t.footerNav?.popularArticles || ""}
               </h3>
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
@@ -326,7 +326,7 @@ export function Footer() {
                     href="/blog/house-smells-like-cat-litter-solutions"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.houseSmells || "House Smells Like Cat Litter?"}
+                    {t.footerNav?.houseSmells || ""}
                   </Link>
                 </li>
                 <li>
@@ -334,7 +334,7 @@ export function Footer() {
                     href="/blog/multi-cat-litter-deodorizer-guide"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.multiCatGuide || "Multi-Cat Deodorizer Guide"}
+                    {t.footerNav?.multiCatGuide || ""}
                   </Link>
                 </li>
                 <li>
@@ -342,7 +342,7 @@ export function Footer() {
                     href="/blog/tried-everything-cat-litter-smell-solutions"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.triedEverything || "Tried Everything for Cat Smell?"}
+                    {t.footerNav?.triedEverything || ""}
                   </Link>
                 </li>
                 <li>
@@ -350,7 +350,7 @@ export function Footer() {
                     href="/blog/most-powerful-odor-absorber"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.powerfulAbsorber || "Most Powerful Odor Absorber"}
+                    {t.footerNav?.powerfulAbsorber || ""}
                   </Link>
                 </li>
                 <li>
@@ -358,7 +358,7 @@ export function Footer() {
                     href="/blog/best-litter-odor-remover-small-apartments"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.smallApartments || "Best for Small Apartments"}
+                    {t.footerNav?.smallApartments || ""}
                   </Link>
                 </li>
               </ul>
@@ -366,7 +366,7 @@ export function Footer() {
 
             <div className="space-y-4">
               <h3 className="font-heading text-sm font-semibold text-[#333333] dark:text-gray-100">
-                {t.footerNav?.company || "Company"}
+                {t.footerNav?.company || ""}
               </h3>
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
@@ -378,7 +378,7 @@ export function Footer() {
                     }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.about || "About Us"}
+                    {t.footerNav?.about || ""}
                   </Link>
                 </li>
                 <li>
@@ -386,7 +386,7 @@ export function Footer() {
                     href={locale === "fr" ? "/fr/blog" : "/blog"}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.blog || "Blog"}
+                    {t.footerNav?.blog || ""}
                   </Link>
                 </li>
                 <li>
@@ -394,7 +394,7 @@ export function Footer() {
                     href={locale === "fr" ? "/fr/locations" : "/locations"}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.locations || "Locations"}
+                    {t.footerNav?.locations || ""}
                   </Link>
                 </li>
                 <li>
@@ -402,7 +402,7 @@ export function Footer() {
                     href={locale === "fr" ? "/fr/reviews" : "/reviews"}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.testimonials || "Testimonials"}
+                    {t.footerNav?.testimonials || ""}
                   </Link>
                 </li>
                 <li>
@@ -410,7 +410,7 @@ export function Footer() {
                     href={locale === "fr" ? "/fr/retailers" : "/retailers"}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.retailers || "For Retailers"}
+                    {t.footerNav?.retailers || ""}
                   </Link>
                 </li>
                 <li>
@@ -418,7 +418,7 @@ export function Footer() {
                     href="/affiliate"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.affiliateProgram || "Affiliate Program"}
+                    {t.footerNav?.affiliateProgram || ""}
                   </Link>
                 </li>
                 <li>
@@ -426,7 +426,7 @@ export function Footer() {
                     href={locale === "fr" ? "/fr/contact" : "/contact"}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.contact || "Contact Us"}
+                    {t.footerNav?.contact || ""}
                   </Link>
                 </li>
               </ul>

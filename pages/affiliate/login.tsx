@@ -136,7 +136,7 @@ export default function AffiliateLogin() {
 
           <div className="text-center space-y-2">
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              {t.affiliateDashboard?.login?.noAccount || "Don't have an account?"}{' '}
+              {t.affiliateDashboard?.login?.noAccount || ""}{' '}
               <Link
                 href="/affiliate"
                 className="font-medium text-purple-600 hover:text-purple-500 dark:text-purple-400 dark:hover:text-purple-300"
