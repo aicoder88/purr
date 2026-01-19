@@ -56,7 +56,7 @@ export function Footer() {
                       src="/optimized/logo-text-240.webp"
                       alt="Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page"
                       width={70}
-                      height={24}
+                      height={70}
                       loading="lazy"
                       className="h-full w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
                     />
@@ -64,7 +64,7 @@ export function Footer() {
                       src="/optimized/purrify-dark-mode-logo.webp"
                       alt="Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page"
                       width={70}
-                      height={24}
+                      height={70}
                       loading="lazy"
                       className="h-full w-auto filter drop-shadow-sm transition-all duration-300 hidden dark:block"
                     />

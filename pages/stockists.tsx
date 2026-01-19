@@ -316,7 +316,7 @@ export default function Stockists() {
               src="/optimized/purrify-logo-text.webp"
               alt="Purrify Logo"
               width={180}
-              height={60}
+              height={180}
               className="h-12 w-auto filter drop-shadow-sm transition-all duration-300 dark:invert dark:brightness-110 dark:contrast-125"
             />
           </div>

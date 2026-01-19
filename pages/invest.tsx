@@ -155,7 +155,7 @@ export default function InvestorRelations() {
                       src="/optimized/purrify-logo-text.webp"
                       alt="Purrify Logo"
                       width={200}
-                      height={80}
+                      height={200}
                       className="mx-auto mb-6"
                     />
                   </div>
