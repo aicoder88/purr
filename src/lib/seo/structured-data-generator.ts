@@ -220,7 +220,7 @@ export class StructuredDataGenerator {
     organizationName?: string;
     organizationLogo?: string;
   }) {
-    this.baseUrl = config?.baseUrl || 'https://purrify.ca';
+    this.baseUrl = config?.baseUrl || 'https://www.purrify.ca';
     this.organizationName = config?.organizationName || 'Purrify';
     this.organizationLogo = config?.organizationLogo || `${this.baseUrl}/purrify-logo.png`;
   }

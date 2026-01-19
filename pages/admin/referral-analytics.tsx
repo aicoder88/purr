@@ -57,9 +57,9 @@ export default function AdminReferralAnalyticsPage({ isAuthorized, userRole }: A
             <div className="w-16 h-16 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-6">
               <Shield className="w-8 h-8 text-red-600 dark:text-red-400" />
             </div>
-            <h1 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               Access Denied
-            </h1>
+            </h2>
             <p className="text-gray-600 dark:text-gray-400 mb-8">
               Administrative privileges are required to view referral analytics.
             </p>

@@ -7,7 +7,6 @@ import Document, {
   DocumentInitialProps,
 } from 'next/document';
 import Script from 'next/script';
-import { PurrifyStructuredData } from '../src/components/seo/AdvancedStructuredData';
 
 const LOCALE_TO_LANG: Record<string, string> = {
   en: 'en-CA',
@@ -80,8 +79,7 @@ class PurrifyDocument extends Document<PurrifyDocumentProps> {
             </noscript>
           )}
 
-          {/* Global Structured Data */}
-          <PurrifyStructuredData />
+          {/* Global Structured Data is in _app.tsx - do not duplicate here */}
 
           {/* Skip to content link for accessibility */}
           <a

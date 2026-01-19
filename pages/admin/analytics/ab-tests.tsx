@@ -131,9 +131,9 @@ export default function ABTestsPage({ isAuthorized }: PageProps) {
       <>
         <NextSeo title={`Access Denied - ${SITE_NAME}`} noindex />
         <Container className="py-16 text-center">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
             Access Denied
-          </h1>
+          </h2>
         </Container>
       </>
     );

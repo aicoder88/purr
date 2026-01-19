@@ -226,7 +226,7 @@ const ProductsPage: NextPage = () => {
         <meta property="og:description" content={pageDescription} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`https://www.purrify.ca${locale !== 'en' ? `/${locale}` : ''}/products`} />
-        <meta property="og:image" content="https://www.purrify.ca/optimized/og-products.webp" />
+        <meta property="og:image" content="https://www.purrify.ca/purrify-logo.png" />
 
         {/* Structured Data */}
         <script

@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "buildCacheBuster": "2024-12-06-01",
   "engines": {
-    "node": "22.x"
+    "node": ">=22.x"
   },
   "scripts": {
     "dev": "next dev",
@@ -16,7 +16,7 @@
     "lint": "eslint .",
     "check-types": "tsc --noEmit",
     "check-types:unused": "node scripts/check-unused-identifiers.js",
-    "postbuild": "next-sitemap && pnpm generate-enhanced-sitemap",
+    "postbuild": "next-sitemap && npm run generate-enhanced-sitemap",
     "generate-image": "node scripts/images/generate-fal-image.js",
     "optimize-images": "node scripts/optimize-images.js",
     "optimize-images:enhanced": "node scripts/optimize-images-enhanced.js",
@@ -161,6 +161,7 @@
     "typescript": "^5.9.3"
   },
   "overrides": {
+    "zod-validation-error": "^4.0.0",
     "esbuild": "^0.25.0",
     "path-to-regexp": "^8.3.0",
     "undici": "^7.16.0",

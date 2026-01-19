@@ -10,7 +10,7 @@ const isCI = !!(process.env.CI || process.env.VERCEL);
 if (!isCI) {
   console.log('Running dark mode validation...');
   try {
-    execSync('pnpm validate-dark-mode', { stdio: 'inherit' });
+    execSync('npm run validate-dark-mode', { stdio: 'inherit' });
     console.log('Dark mode validation passed');
   } catch (e) {
     console.error('Dark mode validation failed');

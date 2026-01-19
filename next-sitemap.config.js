@@ -31,12 +31,7 @@ module.exports = {
     '/fr/free',
     '/test',
     '/demo/*',
-    '/fr/blog',
-    '/fr/blog/*',
-    '/zh/blog',
-    '/zh/blog/*',
-    '/es/blog',
-    '/es/blog/*',
+    // Note: FR/ZH/ES blog exclusions removed - translated blog content now exists (Jan 2026)
     // Pages that redirect - exclude to avoid canonical pointing to redirect issues
     '/checkout',
     '/cart-2',
@@ -210,18 +205,24 @@ module.exports = {
     { loc: '/es/learn/faq', changefreq: 'monthly', priority: 0.6, lastmod: new Date().toISOString() },
   ],
   transform: async (config, path) => {
-    // Blog pages - English only hreflang (fr/zh blog not available)
-    // Note: next-sitemap auto-appends the path to alternateRefs.href, so just provide base URL
+    // Blog pages - now available in EN, FR, ZH, ES (Jan 2026)
+    // Each locale blog will have its own canonical, no alternateRefs needed (handled at page level)
     if (path === '/blog' || path.startsWith('/blog/')) {
       return {
         loc: path,
         changefreq: 'weekly',
         priority: 0.8,
         lastmod: new Date().toISOString(),
-        alternateRefs: [
-          { href: 'https://www.purrify.ca', hreflang: 'en-CA' },
-          { href: 'https://www.purrify.ca', hreflang: 'x-default' },
-        ],
+      };
+    }
+
+    // Localized blog pages
+    if (path.includes('/blog/') || path.endsWith('/blog')) {
+      return {
+        loc: path,
+        changefreq: 'weekly',
+        priority: 0.7,
+        lastmod: new Date().toISOString(),
       };
     }
 
