@@ -91,8 +91,8 @@ export const createStaggeredAnimation = (index: number, baseDelay = 100) => ({
 const localAvatarPool = [
   '/optimized/cat_rose_thumbnail.webp',
   '/optimized/multi-cat-household.webp',
-  '/optimized/purrify-logo-icon.webp',
   '/optimized/deodorizers-with-kittens.webp',
+  '/optimized/cat_rose_thumbnail.webp', // Cycle back to real cat photos
 ];
 
 export const generateAvatarUrl = (_name: string, index: number) => {

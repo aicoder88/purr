@@ -29,7 +29,7 @@ const CustomerAvatar = ({ src, alt }: { src: string; alt: string }) => (
 const customerAvatars = [
   '/optimized/cat_rose_thumbnail.webp',
   '/optimized/multi-cat-household.webp',
-  '/optimized/purrify-logo-icon.webp'
+  '/optimized/deodorizers-with-kittens.webp'
 ];
 
 export function CTA() {
