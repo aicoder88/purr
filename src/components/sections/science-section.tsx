@@ -41,18 +41,18 @@ export function ScienceSection() {
                     <div className="relative z-10">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-electric-indigo/10 text-electric-indigo text-sm font-bold mb-6">
                             <Microscope className="w-4 h-4" />
-                            {t.scienceSection?.badge || "The Science Behind Purrify"}
+                            {t.scienceSection?.badge || ""}
                         </div>
 
                         <h2 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-                            {t.scienceSection?.headline || "How Activated Carbon"} <br />
+                            {t.scienceSection?.headline || ""} <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric-indigo to-purple-600">
-                                {t.scienceSection?.headlineHighlight || "Eliminates Odors"}
+                                {t.scienceSection?.headlineHighlight || ""}
                             </span>
                         </h2>
 
                         <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                            {t.scienceSection?.description || "Unlike sprays that mask odors with heavy perfumes, Purrify uses activated carbon to physically trap and neutralize odor-causing molecules at the microscopic level."}
+                            {t.scienceSection?.description || ""}
                         </p>
 
                         <div className="space-y-8 mb-10">
@@ -75,7 +75,7 @@ export function ScienceSection() {
 
                         <Button asChild className="bg-gray-900 hover:bg-gray-800 text-white dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 rounded-full px-8 py-6 text-lg font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
                             <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`}>
-                                {t.scienceSection?.learnMore || "Learn More About The Science"} <ArrowRight className="w-5 h-5 ml-2" />
+                                {t.scienceSection?.learnMore || ""} <ArrowRight className="w-5 h-5 ml-2" />
                             </Link>
                         </Button>
                     </div>
@@ -102,10 +102,10 @@ export function ScienceSection() {
                                 <div className="absolute bottom-8 left-8 right-8">
                                     <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-md p-4 rounded-xl border border-white/20 shadow-lg">
                                         <p className="font-bold text-gray-900 dark:text-white text-sm mb-1">
-                                            {t.scienceSection?.floatingLabel?.title || "Microscopic View"}
+                                            {t.scienceSection?.floatingLabel?.title || ""}
                                         </p>
                                         <p className="text-xs text-gray-600 dark:text-gray-400">
-                                            {t.scienceSection?.floatingLabel?.description || "Porous structure traps ammonia molecules instantly."}
+                                            {t.scienceSection?.floatingLabel?.description || ""}
                                         </p>
                                     </div>
                                 </div>
@@ -119,8 +119,8 @@ export function ScienceSection() {
                                     <Leaf className="w-5 h-5 text-green-600 dark:text-green-400" />
                                 </div>
                                 <div>
-                                    <p className="font-bold text-sm text-gray-900 dark:text-white">{t.scienceSection?.naturalBadge?.title || "100% Natural"}</p>
-                                    <p className="text-xs text-gray-500 dark:text-gray-400">{t.scienceSection?.naturalBadge?.subtitle || "No chemicals"}</p>
+                                    <p className="font-bold text-sm text-gray-900 dark:text-white">{t.scienceSection?.naturalBadge?.title || ""}</p>
+                                    <p className="text-xs text-gray-500 dark:text-gray-400">{t.scienceSection?.naturalBadge?.subtitle || ""}</p>
                                 </div>
                             </div>
                         </div>

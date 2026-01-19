@@ -204,38 +204,38 @@ export const HeroContent = ({ t }: HeroContentProps) => {
       <div className="space-y-4 md:space-y-6 relative z-10">
         {/* Prominent Price Badge - text-white is OK here because bg is always green gradient */}
         <div className="inline-flex items-center gap-3 px-4 py-2 rounded-xl bg-gradient-to-r from-green-500 to-emerald-500 text-white dark:text-gray-100 shadow-lg">
-          <span className="text-2xl font-black">{t.hero.simplified?.free || "FREE"}</span>
-          <span className="text-sm opacity-90">{t.hero.simplified?.justPayShipping || "Just pay $4.76 shipping"}</span>
+          <span className="text-2xl font-black">{t.hero.simplified?.free || ""}</span>
+          <span className="text-sm opacity-90">{t.hero.simplified?.justPayShipping || ""}</span>
         </div>
 
         {/* Simplified Headline */}
         <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.1] text-gray-900 dark:text-white">
-          <span className="block">{t.hero.simplified?.noMore || "No More"}</span>
+          <span className="block">{t.hero.simplified?.noMore || ""}</span>
           <span className="block bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-500">
-            {t.hero.simplified?.litterBoxSmell || "Litter Box Smell"}
+            {t.hero.simplified?.litterBoxSmell || ""}
           </span>
         </h1>
 
         {/* Short value prop */}
         <p className="text-xl text-gray-600 dark:text-gray-300 max-w-md">
-          {t.hero.simplified?.valueProposition || "Activated carbon eliminates odors at the source. Works with any litter."}
+          {t.hero.simplified?.valueProposition || ""}
         </p>
 
         {/* Large Pricing Display */}
         <div className="flex flex-wrap items-end gap-4">
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-lg border border-gray-200 dark:border-gray-700">
-            <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t.hero.simplified?.trialSize || "Trial Size"}</div>
+            <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t.hero.simplified?.trialSize || ""}</div>
             <div className="flex items-baseline gap-1">
-              <span className="text-3xl font-black text-green-600 dark:text-green-400">{t.hero.simplified?.free || "FREE"}</span>
-              <span className="text-sm text-gray-500 dark:text-gray-400">{t.hero.simplified?.plusSH || "+ S&H"}</span>
+              <span className="text-3xl font-black text-green-600 dark:text-green-400">{t.hero.simplified?.free || ""}</span>
+              <span className="text-sm text-gray-500 dark:text-gray-400">{t.hero.simplified?.plusSH || ""}</span>
             </div>
           </div>
           <div className="bg-white/50 dark:bg-gray-800/50 rounded-xl p-3 border border-gray-200 dark:border-gray-700">
-            <div className="text-xs text-gray-500 dark:text-gray-400">{t.hero.simplified?.standard || "Standard"}</div>
+            <div className="text-xs text-gray-500 dark:text-gray-400">{t.hero.simplified?.standard || ""}</div>
             <div className="text-xl font-bold text-gray-900 dark:text-white">$14.99</div>
           </div>
           <div className="bg-white/50 dark:bg-gray-800/50 rounded-xl p-3 border border-gray-200 dark:border-gray-700">
-            <div className="text-xs text-gray-500 dark:text-gray-400">{t.hero.simplified?.familyPack || "Family Pack"}</div>
+            <div className="text-xs text-gray-500 dark:text-gray-400">{t.hero.simplified?.familyPack || ""}</div>
             <div className="text-xl font-bold text-gray-900 dark:text-white">$24.99</div>
           </div>
         </div>
@@ -247,7 +247,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
             <span className="text-sm font-medium text-gray-600 dark:text-gray-400">4.9/5</span>
           </div>
           <span className="text-gray-300 dark:text-gray-600">|</span>
-          <span className="text-sm text-gray-600 dark:text-gray-400">{t.hero.simplified?.thirtyDayGuarantee || "30-Day Guarantee"}</span>
+          <span className="text-sm text-gray-600 dark:text-gray-400">{t.hero.simplified?.thirtyDayGuarantee || ""}</span>
         </div>
 
         {/* CTA Button */}
@@ -255,10 +255,10 @@ export const HeroContent = ({ t }: HeroContentProps) => {
           <Button
             onClick={handleScrollToProducts}
             className={ctaButtonClasses}
-            aria-label={t.hero.buttons.tryFree || "Try Purrify free"}
+            aria-label={t.hero.buttons.tryFree || ""}
           >
             <LightningIcon className="transition-transform duration-300 group-hover:scale-110" />
-            {t.hero.simplified?.getFreeSample || "Get FREE Sample"}
+            {t.hero.simplified?.getFreeSample || ""}
             <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
           </Button>
         </div>
@@ -299,7 +299,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
       <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-sm sm:text-base">
         <div className="flex items-center gap-2 px-3 py-1.5 bg-green-100 dark:bg-green-900/30 rounded-full border border-green-300 dark:border-green-700">
           <span className="font-bold text-green-700 dark:text-green-300">
-            {t.hero.pricing?.trial || "Trial: $4.76 S&H"}
+            {t.hero.pricing?.trial || ""}
           </span>
         </div>
       </div>
@@ -318,13 +318,13 @@ export const HeroContent = ({ t }: HeroContentProps) => {
       <div className="flex items-center sm:justify-start justify-center gap-6">
         <div className="flex items-center gap-2 text-sm">
           <div className="w-2 h-2 bg-green-500 dark:bg-green-400 rounded-full animate-pulse"></div>
-          <span className="text-gray-600 dark:text-gray-400">{t.hero.simplified?.soldThisWeek || "87 sold this week"}</span>
+          <span className="text-gray-600 dark:text-gray-400">{t.hero.simplified?.soldThisWeek || ""}</span>
         </div>
         <div className="flex items-center gap-1 text-sm">
           <svg className="w-4 h-4 text-red-500 dark:text-red-400" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
           </svg>
-          <span className="text-gray-600 dark:text-gray-400">{t.hero.simplified?.limitedStock || "Limited winter stock"}</span>
+          <span className="text-gray-600 dark:text-gray-400">{t.hero.simplified?.limitedStock || ""}</span>
         </div>
       </div>
 
@@ -333,10 +333,10 @@ export const HeroContent = ({ t }: HeroContentProps) => {
         <Button
           onClick={handleScrollToProducts}
           className={ctaButtonClasses}
-          aria-label={t.hero.buttons.tryFree || "Try Purrify free"}
+          aria-label={t.hero.buttons.tryFree || ""}
         >
           <LightningIcon className="transition-transform duration-300 group-hover:scale-110" />
-          {t.hero.buttons.tryFree || "Try FREE Sample"}
+          {t.hero.buttons.tryFree || ""}
           <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
         </Button>
       </div>
@@ -347,14 +347,14 @@ export const HeroContent = ({ t }: HeroContentProps) => {
           <svg className="w-5 h-5 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
           </svg>
-          <span className="text-sm font-bold text-green-700 dark:text-green-300">{t.hero.simplified?.moneyBackGuarantee || "30-Day Money-Back Guarantee"}</span>
+          <span className="text-sm font-bold text-green-700 dark:text-green-300">{t.hero.simplified?.moneyBackGuarantee || ""}</span>
         </div>
 
         <div className="flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-200 dark:border-blue-700">
           <svg className="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
           </svg>
-          <span className="text-sm font-bold text-blue-700 dark:text-blue-300">{t.hero.simplified?.freeShippingOver || "Free Shipping Over $35"}</span>
+          <span className="text-sm font-bold text-blue-700 dark:text-blue-300">{t.hero.simplified?.freeShippingOver || ""}</span>
         </div>
       </div>
     </div>

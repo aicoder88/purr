@@ -925,6 +925,13 @@ export interface TranslationType {
       learn: string;
       faq: string;
     };
+    categoryList?: Array<{
+      name: string;
+    }>;
+    faqItems?: Array<{
+      question: string;
+      answer: string;
+    }>;
   };
 
   // Enhanced Product Comparison
@@ -2587,6 +2594,168 @@ export interface TranslationType {
       payoutFailed: string;
       sessionExpired: string;
     };
+  };
+
+  // Science Page
+  sciencePage?: {
+    seo: {
+      title: string;
+      description: string;
+    };
+    breadcrumb: {
+      home: string;
+      learn: string;
+      science: string;
+    };
+    hero: {
+      heading: string;
+      description: string;
+      ctaButton: string;
+    };
+    understanding: {
+      sectionTitle: string;
+      description: string;
+      ammonia: {
+        title: string;
+        subtitle: string;
+        smell: string;
+        moleculeSize: string;
+        problem: string;
+        whyHard: string;
+      };
+      mercaptans: {
+        title: string;
+        subtitle: string;
+        smell: string;
+        moleculeSize: string;
+        problem: string;
+        whyHard: string;
+      };
+      breakthrough: string;
+    };
+    imageCaptions: {
+      freshHome: {
+        title: string;
+        description: string;
+      };
+      noOdors: {
+        title: string;
+        description: string;
+      };
+    };
+    poreSize: {
+      sectionTitle: string;
+      description: string;
+      micropores: {
+        size: string;
+        title: string;
+        specialist: string;
+        target: string;
+        density: string;
+        function: string;
+      };
+      mesopores: {
+        size: string;
+        title: string;
+        specialist: string;
+        target: string;
+        density: string;
+        function: string;
+      };
+      macropores: {
+        size: string;
+        title: string;
+        specialist: string;
+        target: string;
+        density: string;
+        function: string;
+      };
+      surfaceArea: {
+        title: string;
+        description: string;
+        iodineNumber: string;
+        ctcAdsorption: string;
+        hardness: string;
+        moisture: string;
+      };
+    };
+    scienceFacts: {
+      sectionTitle: string;
+      description: string;
+      facts: Array<{
+        title: string;
+        description: string;
+      }>;
+    };
+    microscopicView: {
+      imageCaptions: {
+        microscope: string;
+        labTesting: string;
+        molecular: string;
+      };
+      whatYoureLookingAt: {
+        title: string;
+        description: string;
+        bullets: Array<string>;
+      };
+      quote: {
+        text: string;
+        attribution: string;
+      };
+    };
+    technicalPerformance: {
+      sectionTitle: string;
+      description: string;
+      particleSize: {
+        title: string;
+        effectiveSize: string;
+        meanDiameter: string;
+        uniformityCoefficient: string;
+        whyMatters: string;
+      };
+      adsorption: {
+        title: string;
+        halfLength: string;
+        apparentDensity: string;
+        betSurface: string;
+        whyMatters: string;
+      };
+    };
+    engineeredPerformance: {
+      title: string;
+      description: string;
+      stats: {
+        temperatureRange: string;
+        temperatureLabel: string;
+        performanceLabel: string;
+        pressureLossLabel: string;
+      };
+    };
+    processTimeline: {
+      sectionTitle: string;
+      description: string;
+      steps: Array<{
+        title: string;
+        description: string;
+      }>;
+    };
+    researchSection: {
+      title: string;
+      description: string;
+      stats: {
+        ammoniaSize: string;
+        ammoniaSizeLabel: string;
+        poreTypes: string;
+        poreTypesLabel: string;
+        surfaceArea: string;
+        surfaceAreaLabel: string;
+      };
+      buttons: {
+        experience: string;
+        learnMore: string;
+      };
+    };
+    backToLearn: string;
   };
 
 }

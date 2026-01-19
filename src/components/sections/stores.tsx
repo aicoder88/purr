@@ -92,7 +92,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "190 Boulevard du Curé-Labelle, Sainte-Thérèse, QC J7E 2X5",
     phone: "1-450-818-1310",
     url: "https://www.pattesgriffes.com/pages/trouvez-une-boutique",
-    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
+    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || ""
   },
   {
     name: "Chico (Sainte‑Thérèse)",
@@ -100,7 +100,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "95 Boulevard du Curé-Labelle, Sainte-Thérèse, QC J7E 2Z7",
     phone: "1-450-965-3906",
     url: "https://www.chico.ca/boutique/chico-sainte-therese/",
-    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || ""
   },
   {
     name: "Chico (Sainte‑Marthe‑sur‑le‑Lac)",
@@ -108,7 +108,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "2860 B Boulevard des Promenades, Sainte-Marthe-sur-le-Lac, QC J0N 1P0",
     phone: "1-450-598-2860",
     url: "https://www.chico.ca/boutique/chico-ste-marthe/",
-    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || ""
   },
   {
     name: "Animal Shop GIGI",
@@ -116,7 +116,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "356 Boulevard Arthur-Sauvé, Saint-Eustache, QC J7R 2J3",
     phone: "1-450-598-3444",
     url: "https://www.animaleriegigi.com/",
-    description: t.storesSection?.storeDescriptions?.familyOwnedPetStore || "Family-owned pet store"
+    description: t.storesSection?.storeDescriptions?.familyOwnedPetStore || ""
   },
   {
     name: "Chico (Laval-Est)",
@@ -124,7 +124,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "5405 Boulevard Robert-Bourassa, Laval, QC H7E 0A4",
     phone: "1-450-239-0354",
     url: "https://www.chico.ca/en/boutique/chico-laval-east/",
-    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || ""
   },
   {
     name: "Chico (Laval Ouest)",
@@ -132,7 +132,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "4511 Bd Arthur-Sauvé, Laval, QC H7R 5P8",
     phone: "1-450-314-2442",
     url: "https://www.chico.ca/boutique/chico-laval-ouest/",
-    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || ""
   },
   {
     name: "Pattes et Griffes (Laval)",
@@ -140,7 +140,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "1682 Boulevard Saint-Martin Ouest, Laval, QC H7S 1M9",
     phone: "1-579-640-1857",
     url: "https://www.pattesgriffes.com/pages/trouvez-une-boutique",
-    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
+    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || ""
   },
   {
     name: "Pitou Minou & Compagnons (Kirkland)",
@@ -148,7 +148,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "16936 Autoroute Transcanadienne, Kirkland, QC H9H 0C5",
     phone: "1-514-695-5005",
     url: "https://pitou-minou.ca/global-pet-foods-succursales-quebec/",
-    description: t.storesSection?.storeDescriptions?.globalPetFoodsLocation || "Global Pet Foods location"
+    description: t.storesSection?.storeDescriptions?.globalPetFoodsLocation || ""
   },
   {
     name: "Chico (Saint‑Laurent)",
@@ -156,7 +156,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "7001 Boulevard Saint-Laurent, Montréal, QC H2S 3E3",
     phone: "1-514-657-5813",
     url: "https://www.chico.ca/boutique/chico-boul-st-laurent-montreal/",
-    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || ""
   },
   {
     name: "Doghaus",
@@ -164,7 +164,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "5671 Rue Sherbrooke Ouest, Montréal, QC H4A 1W6",
     phone: "514-483-3555",
     url: "https://www.doghausmtl.com/",
-    description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || "Premium pet products & supplies"
+    description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || ""
   },
   {
     name: "Kong Animalerie",
@@ -172,7 +172,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "5555 Bd Décarie, Montréal, QC H3W 3H8",
     phone: "514-662-8373",
     url: "https://www.facebook.com/konganimalerie/",
-    description: t.storesSection?.storeDescriptions?.fullServicePetStore || "Full-service pet store"
+    description: t.storesSection?.storeDescriptions?.fullServicePetStore || ""
   },
   {
     name: "Coquette et Finegueule",
@@ -180,7 +180,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "5203 Rue Bannantyne, Verdun, QC H4H 1E6",
     phone: "514-761-4221",
     url: "https://coquetteetfinegueule.com/",
-    description: t.storesSection?.storeDescriptions?.petStoreWithGroomingServices || "Pet store with grooming services"
+    description: t.storesSection?.storeDescriptions?.petStoreWithGroomingServices || ""
   },
   {
     name: "Pitou Minou & Compagnons (Verdun)",
@@ -188,7 +188,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "4100 Rue Wellington, Verdun, QC H4G 1V7",
     phone: "514-732-0555",
     url: "https://pitou-minou.ca/global-pet-foods-succursales-quebec/",
-    description: t.storesSection?.storeDescriptions?.globalPetFoodsLocation || "Global Pet Foods location"
+    description: t.storesSection?.storeDescriptions?.globalPetFoodsLocation || ""
   },
   {
     name: "Chico (Plateau Mont‑Royal)",
@@ -196,7 +196,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "2016 Avenue du Mont-Royal E., Montréal, QC H2H 1J6",
     phone: "514-521-0201",
     url: "https://www.chico.ca/boutique/chico-plateau-mont-royal-montreal/",
-    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || ""
   },
   {
     name: "Chico (Hochelaga‑Maisonneuve)",
@@ -204,7 +204,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "8646 Rue Hochelaga, Montréal, QC H1L 2M4",
     phone: "514-419-9850",
     url: "https://www.chico.ca/boutique/chico-rue-ontario-montreal/",
-    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || ""
   },
   {
     name: "Chico (Plateau Mont-Royal — alternate)",
@@ -212,7 +212,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "3911 Rue Ontario E., Montréal, QC H1W 1S7",
     phone: "514-527-1371",
     url: "https://www.chico.ca/boutique/chico-rue-ontario-montreal/",
-    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || "Premium pet boutique"
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || ""
   },
   {
     name: "Animalerie Mamiwouff Inc",
@@ -220,7 +220,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "2048 Route 112, Saint-Césaire, QC J0L 1T0",
     phone: "450-469-4560",
     url: "https://www.animaleriemamiwouff.com/",
-    description: t.storesSection?.storeDescriptions?.familyOwnedPetStore || "Family-owned pet store"
+    description: t.storesSection?.storeDescriptions?.familyOwnedPetStore || ""
   },
   {
     name: "Animalerie Lamifidel",
@@ -228,7 +228,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "1295 Avenue du Pont S, Alma, QC G8B 2V6",
     phone: "418-668-0117",
     url: "https://www.lamifidel.net/",
-    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
+    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || ""
   },
   {
     name: "Animalerie Petmobile Nathamo",
@@ -236,7 +236,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "161 Rue de l'Hydravion, Shawinigan, QC G0X 1L0",
     phone: "819-695-2329",
     url: "",
-    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
+    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || ""
   },
   {
     name: "Animalerie Club Wouf Miaou",
@@ -244,7 +244,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "3175 boulevard des Récollets, Trois-Rivières, QC G9A 6M1",
     phone: "+1 819-376-0973",
     url: "https://woufmiaou.ca/",
-    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
+    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || ""
   },
   {
     name: "Little Bit Western Feed and Supplies Inc.",
@@ -252,7 +252,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "372 Algonquin Blvd.West, TIMMINS, ON P4N 2S2",
     phone: "",
     url: "https://www.littlebitwestern.ca/",
-    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || "Complete pet care and supplies"
+    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || ""
   },
   {
     name: "K&K Pet Foods Dunbar",
@@ -260,7 +260,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "4595 Dunbar St, Vancouver, BC V6S 2G2",
     phone: "+1 604-224-2513",
     url: "https://www.kandkpetfoods.ca/",
-    description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || "Premium pet products & supplies"
+    description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || ""
   },
   {
     name: "Viva Pets",
@@ -268,7 +268,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "Montreal, QC",
     phone: "780-489-7387",
     url: "https://www.vivapets.ca/",
-    description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || "Premium pet products & supplies"
+    description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || ""
   },
 ];
 

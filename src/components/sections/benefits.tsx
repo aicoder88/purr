@@ -115,12 +115,12 @@ export function Benefits() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <SectionHeader text={t.benefitsSection?.sectionHeader || "Turn Cat Odor Problems Into a Thing of the Past"} />
+          <SectionHeader text={t.benefitsSection?.sectionHeader || ""} />
           <h2 className={`text-5xl font-bold tracking-tight mb-4 ${GRADIENTS.text.primary} ${GRADIENTS.text.primaryDark}`}>
-            {t.benefitsSection?.title || "Benefits of Purrify"}
+            {t.benefitsSection?.title || ""}
           </h2>
           <p className={`${COLORS.text.tertiary} text-xl`}>
-            {t.benefitsSection?.subtitle || "Discover why Purrify is the perfect solution for cat owners who want a fresh-smelling home."}
+            {t.benefitsSection?.subtitle || ""}
           </p>
         </div>
 

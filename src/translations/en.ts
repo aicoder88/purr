@@ -1459,7 +1459,171 @@ export const en = {
       home: "Home",
       learn: "Learn",
       faq: "FAQ"
-    }
+    },
+    categoryList: [
+      { name: "All Questions" },
+      { name: "Product Information" },
+      { name: "Usage & Application" },
+      { name: "Comparisons" },
+      { name: "Troubleshooting" },
+      { name: "Shipping & Delivery" },
+      { name: "Payment & Billing" },
+      { name: "Customer Support" }
+    ],
+    faqItems: [
+      {
+        question: "What is Purrify and how does it work?",
+        answer: "Purrify is an activated carbon additive for cat litter that eliminates odors at the molecular level through a process called adsorption. One gram of activated carbon has a surface area equivalent to a football field, filled with microscopic pores that physically trap odor molecules like ammonia and hydrogen sulfide on contact. Unlike fragrances that mask odors, Purrify removes them at the source."
+      },
+      {
+        question: "Is Purrify safe for cats and kittens?",
+        answer: "Purrify is made from 100% natural coconut shell activated carbon - the same food-grade, non-toxic material used in hospital water systems, municipal drinking water treatment, and household water filters. It contains no added chemicals, fragrances, or additives, and meets NSF/ANSI 61 and Food Chemicals Codex (FCC) standards for potable water applications. The product is fragrance-free and pet-friendly."
+      },
+      {
+        question: "What is activated carbon made from?",
+        answer: "Purrify uses premium coconut shell activated carbon, which is considered the highest quality source for activated carbon. Coconut shells produce carbon with an exceptionally high surface area and optimal pore size for trapping odor molecules. This is the same material used in drinking water filtration, aquarium filters, and air purification systems worldwide."
+      },
+      {
+        question: "What certifications does Purrify have?",
+        answer: "Purrify's activated carbon meets multiple international standards: NSF/ANSI 61 (drinking water system components), AWWA B604 (granular activated carbon), and Food Chemicals Codex (FCC) for food-grade applications. It is also Halal and Kosher certified. These are the same certifications required for municipal water treatment systems."
+      },
+      {
+        question: "Does Purrify work with all types of litter?",
+        answer: "Yes, Purrify is compatible with all cat litter types including clumping clay, non-clumping clay, crystal/silica gel, wood pellets, paper-based, corn, wheat, walnut shell, and other natural alternatives. It works as an enhancement to your existing litter rather than a replacement, so your cat can continue using the litter they prefer."
+      },
+      {
+        question: "How quickly does Purrify start working?",
+        answer: "Purrify begins working immediately upon contact with odor molecules. You'll notice a significant reduction in odors within 60 seconds for ammonia-based odors, with maximum effectiveness achieved within 24 hours as the activated carbon distributes throughout the litter."
+      },
+      {
+        question: "What sizes are available and how long do they last?",
+        answer: "Purrify comes in three sizes: Trial Size 12g provides 1-2 applications for testing, Standard 50g provides approximately 6-8 applications lasting 1-2 months for a single cat household, and Family Pack 120g provides approximately 15-20 applications lasting 3-4 months or suitable for multi-cat households."
+      },
+      {
+        question: "Is Purrify fragrance-free?",
+        answer: "Yes, Purrify is 100% fragrance-free. Unlike scented litters or air fresheners that mask odors with perfumes (which can stress cats with their sensitive respiratory systems), Purrify physically removes odor molecules without adding any scents. This makes it ideal for cats with sensitivities and homes where you prefer no artificial fragrances."
+      },
+      {
+        question: "Can I use Purrify for rodents like hamsters, mice, or rats?",
+        answer: "Purrify uses the same type of activated carbon found in veterinary applications. When used properly in sealed pouches or containers with adequate ventilation, it can help control odors in small animal enclosures. For rodents, we recommend placing Purrify in a breathable pouch near the cage rather than mixed directly with bedding. Always ensure proper ventilation and rinse the carbon before use to minimize dust."
+      },
+      {
+        question: "What odors does activated carbon eliminate?",
+        answer: "Activated carbon is highly effective at trapping ammonia (the sharp smell from cat urine), hydrogen sulfide (rotten egg smell), mercaptans (sulfur compounds), and volatile organic compounds (VOCs) from organic waste. These are the primary odor-causing molecules in cat litter. Activated carbon works through physical adsorption, meaning molecules stick to its surface rather than being chemically altered."
+      },
+      {
+        question: "Is activated carbon the same as charcoal?",
+        answer: "While both come from carbon sources, activated carbon is processed at very high temperatures (800-1000°C) with steam or chemicals to create millions of microscopic pores. This \"activation\" process gives it a surface area of 1,000-2,000 square meters per gram - about 3,000 times more absorbent than regular charcoal. Regular charcoal lacks these pores and cannot effectively trap odor molecules."
+      },
+      {
+        question: "Where can I find detailed product specifications?",
+        answer: "Complete technical specifications, certifications, Safety Data Sheets (SDS), and detailed product information are available on our Safety Information page. This includes mesh size, iodine number, moisture content, ash content, and all relevant certifications."
+      },
+      {
+        question: "Does Purrify contain any chemicals or additives?",
+        answer: "No. Purrify is 100% pure activated carbon made from coconut shells. There are no added chemicals, fragrances, preservatives, binding agents, or fillers. The only processing involved is the physical activation of the carbon through high-temperature steam treatment - a process also used to produce food-grade and pharmaceutical-grade activated carbon."
+      },
+      {
+        question: "Is coconut shell carbon better than other types?",
+        answer: "Coconut shell activated carbon is considered premium quality for several reasons: it has the highest surface area per gram, the most consistent micropore structure for trapping small odor molecules, it's a renewable and sustainable resource, and it produces the least dust. This is why it's preferred for drinking water filtration, medical applications, and air purification over wood or coal-based alternatives."
+      },
+      {
+        question: "How much Purrify should I use?",
+        answer: "Use 1-2 tablespoons (approximately 6-12 grams) per standard litter box. For larger litter boxes or multiple cats, use 2-3 tablespoons. Simply sprinkle evenly over the surface of your clean litter and mix gently. There's no need to reach the bottom - the carbon will naturally distribute as your cat uses the box."
+      },
+      {
+        question: "How long does Purrify last between applications?",
+        answer: "Each application of Purrify remains effective for 7-14 days depending on the number of cats, litter box size, and scooping frequency. You'll know it's time to reapply when you start noticing odors returning. For households with multiple cats or when dealing with strong odors, you may need to reapply weekly."
+      },
+      {
+        question: "Will my cat notice the difference?",
+        answer: "Most cats don't notice Purrify at all since it's odorless and has minimal impact on litter texture. The granules are similar in size to most litters. Many cats actually prefer their litter box more when it's odor-free, as cats have sensitive noses and can be deterred by strong odors - whether from waste or artificial fragrances."
+      },
+      {
+        question: "Can I use Purrify with automatic litter boxes?",
+        answer: "Yes, Purrify works well with automatic and self-cleaning litter boxes including brands like Litter-Robot, PetSafe, CatGenie, and others. Simply add it to the fresh litter as you normally would. The activated carbon granules are similar in size and weight to clumping litter, so they won't interfere with sensors or mechanical components."
+      },
+      {
+        question: "Do I need to completely change the litter before adding Purrify?",
+        answer: "For best results, add Purrify to fresh, clean litter. However, you can also add it to existing litter that's been recently scooped if a full change isn't due. The activated carbon will begin working immediately on any odors present. For maximum effectiveness, we recommend adding Purrify each time you completely refresh your litter."
+      },
+      {
+        question: "How should I store Purrify?",
+        answer: "Store Purrify in a cool, dry place in its original resealable pouch or an airtight container. Keep away from moisture and strong odors, as activated carbon will begin adsorbing molecules from the air if left exposed. Properly stored, Purrify has an indefinite shelf life since activated carbon doesn't expire or lose effectiveness until its pores are saturated."
+      },
+      {
+        question: "Can I use too much Purrify?",
+        answer: "While using more Purrify won't harm your cat, using excessive amounts is unnecessary and wasteful. The recommended 1-2 tablespoons provides optimal coverage for odor control. Using significantly more won't improve performance since there's a limit to how many odor molecules are present in a typical litter box."
+      },
+      {
+        question: "Should I mix Purrify into the litter or leave it on top?",
+        answer: "Both methods work. For best results, sprinkle Purrify evenly over the litter surface and give it a gentle mix with a litter scoop. As your cat uses the litter box and you scoop daily, the carbon will naturally distribute throughout. Some users prefer leaving it on top initially, which works well for targeting surface-level odors."
+      },
+      {
+        question: "Can I use Purrify for other pet odors around the house?",
+        answer: "Yes! While designed for cat litter, Purrify's activated carbon can help with various pet odors. Place it in breathable pouches near dog beds, in diaper pails, near small animal cages, or in areas where pet odors accumulate. For direct application, it's formulated specifically for cat litter use."
+      },
+      {
+        question: "What is the difference between activated carbon and baking soda for cat litter?",
+        answer: "Activated carbon and baking soda work through completely different mechanisms. Baking soda (sodium bicarbonate) works through chemical neutralization - it reacts with acids to reduce odors but has limited effectiveness and needs frequent replacement. Activated carbon works through physical adsorption - its millions of microscopic pores trap odor molecules permanently. Activated carbon has approximately 3,000 times more surface area than baking soda, making it significantly more effective at capturing a wider range of odor compounds including ammonia, hydrogen sulfide, and VOCs."
+      },
+      {
+        question: "Is activated carbon better than scented litter for odor control?",
+        answer: "Activated carbon eliminates odors at their source, while scented litters only mask them with fragrances. Scented litters add perfumes that can irritate cats' sensitive respiratory systems and may deter some cats from using their litter box. Additionally, fragrances can combine with ammonia to create new unpleasant smells. Activated carbon is fragrance-free, removes odor molecules completely, and is better tolerated by cats with sensitivities."
+      },
+      {
+        question: "How does Purrify compare to crystal/silica gel litter?",
+        answer: "Crystal litters absorb moisture and have some odor control through silica gel, but they work differently than activated carbon. Silica gel primarily absorbs liquid while activated carbon specifically targets gas-phase odor molecules. Many users find the best results by combining crystal litter with Purrify - the crystals handle moisture while the activated carbon captures remaining odors, especially ammonia that silica gel doesn't trap effectively."
+      },
+      {
+        question: "What is the difference between activated carbon and charcoal air fresheners?",
+        answer: "While some air fresheners contain activated carbon, Purrify uses filtration-grade coconut shell activated carbon with a much higher surface area and purity. Cheap charcoal products often use wood or coal-based carbon with larger pores less suited for trapping small odor molecules. Additionally, many \"charcoal\" air fresheners are actually regular charcoal, not activated carbon, and have minimal odor-trapping capability."
+      },
+      {
+        question: "Is activated carbon more effective than enzymatic cleaners?",
+        answer: "Activated carbon and enzymatic cleaners serve different purposes. Enzymatic cleaners break down organic matter through biological processes - ideal for cleaning accidents and stains. Activated carbon physically traps airborne odor molecules to prevent smells from spreading. For best results, use enzymatic cleaners for deep cleaning and Purrify for ongoing odor prevention in the litter box. They complement rather than replace each other."
+      },
+      {
+        question: "How does activated carbon compare to zeolite for odor control?",
+        answer: "Both activated carbon and zeolite are used for odor control, but they have different strengths. Zeolite excels at ammonia absorption through ion exchange, while activated carbon has a broader spectrum, capturing organic compounds, sulfur molecules, and VOCs that zeolite misses. Coconut shell activated carbon typically has 2-3 times the surface area of zeolite. For cat litter odors specifically, activated carbon provides more comprehensive odor control."
+      },
+      {
+        question: "Why is my litter box still smelly after adding Purrify?",
+        answer: "If odors persist, check these common issues: (1) Not enough product - try increasing to 2-3 tablespoons, (2) Litter needs full replacement - old saturated litter will continue to smell regardless of additives, (3) Box needs deep cleaning - wash with enzymatic cleaner before fresh litter, (4) Too many cats for one box - the general rule is one box per cat plus one extra, (5) Medical issue - persistent strong urine odor can indicate a urinary tract infection requiring veterinary attention."
+      },
+      {
+        question: "My cat is avoiding the litter box after I added Purrify. What should I do?",
+        answer: "This is rare since Purrify is odorless, but some cats are sensitive to any change. Try these steps: (1) Reduce the amount to 1 tablespoon and gradually increase, (2) Mix it in well so it's less visible, (3) Ensure you're not using too much, which might change the litter texture significantly, (4) Confirm no other changes were made simultaneously (new litter brand, box location, etc.). If issues persist, your cat may have an unrelated health issue - consult your veterinarian."
+      },
+      {
+        question: "Is activated carbon dusty? Will it affect my cat's breathing?",
+        answer: "Purrify uses granular activated carbon specifically selected for low dust. Unlike powdered activated carbon, the granular form minimizes airborne particles. If you notice dust, gently mist the carbon with water before adding to litter, or let the bag settle before opening. For cats with respiratory sensitivities, Purrify is actually preferable to dusty clay litters or scented products that can trigger reactions."
+      },
+      {
+        question: "The activated carbon is clumping together. Is this normal?",
+        answer: "If activated carbon becomes clumpy, it has absorbed moisture from the air. This is normal behavior and indicates the carbon is working. To prevent clumping in storage, keep Purrify in its sealed bag or an airtight container. Clumped carbon can still be used - simply break it apart before adding to litter. For optimal performance, store in a dry location away from humidity."
+      },
+      {
+        question: "Do you offer free shipping?",
+        answer: "Yes! We offer free shipping on all orders over $25 within Canada. Standard shipping takes 3-5 business days via Canada Post. Orders are typically processed within 1-2 business days. Tracking information is provided for all shipments."
+      },
+      {
+        question: "Do you ship to the United States or internationally?",
+        answer: "Currently, we ship within Canada only. We're working on expanding to the United States and other international markets. Sign up for our newsletter to be notified when shipping becomes available in your area."
+      },
+      {
+        question: "What payment methods do you accept?",
+        answer: "We accept all major credit cards (Visa, Mastercard, American Express), debit cards, Apple Pay, Google Pay, and Shop Pay. All transactions are securely processed through Stripe with industry-standard encryption. We do not store your full credit card information."
+      },
+      {
+        question: "Do you offer subscriptions or auto-refill?",
+        answer: "We're currently developing a subscription option for customers who want regular deliveries. In the meantime, our Family Pack (120g) provides 3-4 months of supply for most single-cat households, reducing the need for frequent reorders. Sign up for our newsletter to be notified when subscriptions launch."
+      },
+      {
+        question: "Can I return Purrify if I'm not satisfied?",
+        answer: "Absolutely! We offer a 30-day satisfaction guarantee on all purchases. If Purrify doesn't meet your expectations for any reason, contact our customer support team for a full refund - no questions asked. We stand behind our product and want you to be completely happy with your purchase."
+      }
+    ]
   },
 
   // Common UI Elements
@@ -3037,6 +3201,200 @@ export const en = {
     shippingSavings: "Save $15-$20+ per order vs single purchases",
     save25vsStandard: "Save 25% compared to buying two standard sizes",
     save25FamilyPack: "Save 25% with our Family Pack"
+  },
+
+  // Science Page
+  sciencePage: {
+    seo: {
+      title: "How Activated Carbon Eliminates Cat Litter Odor: The Science",
+      description: "Ammonia molecules are 0.26nm. Our micropores are sized to trap them. Here's how engineered pore architecture captures both urine (ammonia) and feces (mercaptan) odors."
+    },
+    breadcrumb: {
+      home: "Home",
+      learn: "Learn",
+      science: "Science"
+    },
+    hero: {
+      heading: "Engineered to Eliminate Cat Litter Odor",
+      description: "Working with research scientists, we engineered the perfect pore structure to capture ammonia from urine and mercaptans from feces—the two molecules responsible for that unmistakable litter box smell.",
+      ctaButton: "Try the Science"
+    },
+    understanding: {
+      sectionTitle: "Understanding Litter Box Odor: The Two Culprits",
+      description: "That unmistakable litter box smell comes from two specific molecules. To eliminate them, you need to understand them.",
+      ammonia: {
+        title: "Ammonia (NH₃)",
+        subtitle: "From Cat Urine",
+        smell: "Sharp, pungent, eye-watering—like cleaning chemicals",
+        moleculeSize: "Tiny at 0.26 nanometers",
+        problem: "Forms when bacteria break down urea in urine",
+        whyHard: "Most carbon has pores too large to trap such small molecules"
+      },
+      mercaptans: {
+        title: "Mercaptans",
+        subtitle: "From Cat Feces",
+        smell: "Rotten eggs, sewage, sulfur—that gagging sensation",
+        moleculeSize: "Larger, more complex sulfur compounds",
+        problem: "Released when proteins in feces decompose",
+        whyHard: "Sticky molecules that require specific pore sizes to capture"
+      },
+      breakthrough: "Here's the breakthrough: Most activated carbon is designed for water filtration or general air purification. We worked with research scientists to engineer carbon specifically for these two molecules—creating the perfect trap for cat litter odor."
+    },
+    imageCaptions: {
+      freshHome: {
+        title: "Your Cat Deserves a Fresh Home",
+        description: "Molecular-level odor elimination, not masking"
+      },
+      noOdors: {
+        title: "No More Embarrassing Odors",
+        description: "Science-backed odor control for modern cat owners"
+      }
+    },
+    poreSize: {
+      sectionTitle: "The Perfect Pore Size Distribution",
+      description: "Laboratory testing confirms our optimized micropore-mesopore-macropore ratio",
+      micropores: {
+        size: "<2nm",
+        title: "Micropores",
+        specialist: "Ammonia Specialists",
+        target: "NH₃ (0.26nm)",
+        density: "Highest concentration",
+        function: "Lock away smallest odor molecules"
+      },
+      mesopores: {
+        size: "2-50nm",
+        title: "Mesopores",
+        specialist: "Mercaptan Traps",
+        target: "Sulfur compounds",
+        density: "Optimized ratio",
+        function: "Capture complex fecal odors"
+      },
+      macropores: {
+        size: ">50nm",
+        title: "Macropores",
+        specialist: "Transport System",
+        target: "All molecules",
+        density: "Strategic placement",
+        function: "Rapid delivery to capture sites"
+      },
+      surfaceArea: {
+        title: "Surface Area: 1050 m²/g",
+        description: "That's over 12 tennis courts of odor-capturing surface area in just one gram of Purrify™",
+        iodineNumber: "Iodine Number mg/g",
+        ctcAdsorption: "CTC Adsorption",
+        hardness: "Hardness",
+        moisture: "Moisture"
+      }
+    },
+    scienceFacts: {
+      sectionTitle: "Precision-Engineered Pore Structure",
+      description: "Not all activated carbon is created equal. We worked with scientists to optimize every detail for cat litter odor.",
+      facts: [
+        {
+          title: "Engineered Pore Architecture",
+          description: "Working with research scientists, we optimized the exact ratio of micropores (< 2nm), mesopores (2-50nm), and macropores (> 50nm) to create the perfect trap for cat litter odor molecules."
+        },
+        {
+          title: "Ammonia Capture Mastery",
+          description: "Ammonia molecules (NH₃) from cat urine are tiny—only 0.26 nanometers. Our micropore-rich structure creates millions of perfectly sized capture sites that lock away ammonia before you can smell it."
+        },
+        {
+          title: "Mercaptan Elimination",
+          description: "Mercaptans (sulfur compounds) give feces that distinctive rotten-egg smell. Our mesopore channels are specifically sized to trap these larger, more complex molecules permanently."
+        },
+        {
+          title: "Triple-Pore Synergy",
+          description: "Macropores act as highways delivering odor molecules deep into the carbon. Mesopores catch medium-sized sulfur compounds. Micropores trap the smallest ammonia molecules. Nothing escapes."
+        }
+      ]
+    },
+    microscopicView: {
+      imageCaptions: {
+        microscope: "Research-grade microscopy reveals pore structure",
+        labTesting: "Laboratory testing confirms optimized performance",
+        molecular: "Molecular-level capture of odor compounds"
+      },
+      whatYoureLookingAt: {
+        title: "What You're Looking At",
+        description: "These images show the laboratory research behind our optimized pore structure. Each tiny channel and cavity is a trap waiting to capture odor molecules at the molecular level.",
+        bullets: [
+          "Millions of pores create massive surface area (1050 m²/g)",
+          "Different pore sizes = different odor molecules captured",
+          "Once trapped, molecules can't escape back into the air"
+        ]
+      },
+      quote: {
+        text: "The key is not just having pores, but having the right sized pores in the right ratios for the specific molecules you want to capture.",
+        attribution: "Research collaboration with activated carbon scientists"
+      }
+    },
+    technicalPerformance: {
+      sectionTitle: "Laboratory-Verified Performance",
+      description: "Real data from activated carbon testing confirms our optimized pore structure delivers superior adsorption",
+      particleSize: {
+        title: "8×30 Mesh Particle Distribution",
+        effectiveSize: "Effective Size:",
+        meanDiameter: "Mean Diameter:",
+        uniformityCoefficient: "Uniformity Coefficient:",
+        whyMatters: "Why this matters: Consistent particle sizing ensures uniform flow through litter and maximum contact with odor molecules. Our 8×30 mesh is specifically sized for optimal cat litter performance."
+      },
+      adsorption: {
+        title: "Rapid Dechlorination Performance",
+        halfLength: "Half-Length Value:",
+        apparentDensity: "Apparent Density:",
+        betSurface: "BET Surface Area:",
+        whyMatters: "Why this matters: Rapid chlorine removal proves the carbon's micro porous structure is highly active. If it can capture chlorine molecules this quickly, ammonia doesn't stand a chance."
+      }
+    },
+    engineeredPerformance: {
+      title: "Engineered for Real-World Performance",
+      description: "Laboratory testing shows our 8×30 mesh activated carbon maintains optimal flow characteristics and minimal pressure loss across varying temperatures (5-25°C). This means consistent odor capture whether your litter box is in a cool basement or warm bathroom.",
+      stats: {
+        temperatureRange: "5-25°C",
+        temperatureLabel: "Temperature Range",
+        performanceLabel: "Performance",
+        pressureLossLabel: "Pressure Loss"
+      }
+    },
+    processTimeline: {
+      sectionTitle: "How the Three Pore Types Work Together",
+      description: "Our research-backed pore architecture creates a capture system specifically engineered for cat litter odors.",
+      steps: [
+        {
+          title: "The Culprits: Ammonia & Mercaptans",
+          description: "Cat urine breaks down into ammonia (NH₃)—that sharp, eye-watering smell. Feces releases mercaptans—sulfur compounds that smell like rotten eggs or sewage. These are the molecules we engineered Purrify to capture."
+        },
+        {
+          title: "Macropores: The Express Lanes",
+          description: "Large macropores (> 50nm) act as highways, rapidly transporting odor molecules deep into the carbon structure. Think of them as the entry points that prevent bottlenecks."
+        },
+        {
+          title: "Mesopores: The Mercaptan Traps",
+          description: "Medium-sized mesopores (2-50nm) are perfectly sized to capture mercaptans and other sulfur compounds from feces. These pores create a tight grip that won't let go."
+        },
+        {
+          title: "Micropores: The Ammonia Eliminators",
+          description: "Tiny micropores (< 2nm) are optimized for ammonia's 0.26nm size. With millions of these capture sites per gram, ammonia molecules get locked away permanently before you can smell them."
+        }
+      ]
+    },
+    researchSection: {
+      title: "The Most Effective Cat Litter Odor Solution in the World",
+      description: "By engineering the perfect micropore-mesopore-macropore ratio, we created activated carbon specifically optimized to capture ammonia and mercaptans—the exact molecules that make litter boxes smell.",
+      stats: {
+        ammoniaSize: "0.26nm",
+        ammoniaSizeLabel: "Ammonia Molecule Size - Perfectly Matched Micropores",
+        poreTypes: "3 Pore Types",
+        poreTypesLabel: "Micro + Meso + Macro = Complete Capture",
+        surfaceArea: "1050 m²/g",
+        surfaceAreaLabel: "Surface Area - Millions of Capture Sites"
+      },
+      buttons: {
+        experience: "Experience the Science",
+        learnMore: "Learn More"
+      }
+    },
+    backToLearn: "Back to Learn"
   }
 
 };

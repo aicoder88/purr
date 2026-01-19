@@ -31,7 +31,26 @@ export const fr = {
     retailers: "Pour Détaillants",
     wholesalePricing: "Prix de Gros",
     becomePartner: "Devenir Partenaire",
-    marketingSupport: "Support Marketing"
+    marketingSupport: "Support Marketing",
+    // Learn dropdown items
+    safetyInfo: "Informations de Sécurité",
+    activatedCarbonBenefits: "Avantages du Charbon Actif",
+    catLitterGuide: "Guide de la Litière pour Chats",
+    howToUse: "Comment Utiliser",
+    technologyComparison: "Comparaison des Technologies",
+    solutions: "Solutions",
+    // Solutions dropdown items
+    ammoniaSmellControl: "Contrôle des Odeurs d'Ammoniaque",
+    apartmentLiving: "Vie en Appartement",
+    litterBoxOdor: "Odeur de Bac à Litière",
+    multipleCats: "Plusieurs Chats",
+    naturalAdditive: "Additif Naturel",
+    seniorCats: "Chats Âgés",
+    // UI elements
+    toggleMenu: "Basculer le menu",
+    toggleTheme: "Basculer le thème",
+    signOut: "Se Déconnecter",
+    signedIn: "Connecté"
   },
 
   locationsMenu: {
@@ -604,6 +623,48 @@ export const fr = {
     openingHours: "Heures d'Ouverture",
     contactUs: "Contactez-Nous",
     allRightsReserved: "Tous Droits Réservés"
+  },
+
+  // Footer Navigation
+  footerNav: {
+    // Section headers
+    trustedReviews: "Avis Vérifiés",
+    products: "Produits",
+    learn: "Apprendre",
+    popularArticles: "Articles Populaires",
+    company: "Entreprise",
+    // Product links
+    trialSize: "Taille d'Essai",
+    standardSize: "Taille Standard",
+    familyPack: "Pack Familial",
+    compareSizes: "Comparer les Tailles",
+    // Learn links
+    howItWorks: "Comment Ça Marche",
+    faq: "FAQ",
+    science: "Science",
+    safetyInfo: "Informations de Sécurité",
+    catLitterGuide: "Guide de la Litière pour Chats",
+    ammoniaSolutions: "Solutions pour l'Ammoniaque",
+    litterCalculator: "Calculateur de Litière",
+    // Article links
+    houseSmells: "Maison Sent la Litière pour Chat ?",
+    multiCatGuide: "Guide Désodorisant Multi-Chats",
+    triedEverything: "Tout Essayé pour l'Odeur de Chat ?",
+    powerfulAbsorber: "Absorbeur d'Odeurs le Plus Puissant",
+    smallApartments: "Meilleur pour Petits Appartements",
+    // Company links
+    about: "À Propos de Nous",
+    blog: "Blog",
+    locations: "Emplacements",
+    testimonials: "Témoignages",
+    retailers: "Pour Détaillants",
+    affiliateProgram: "Programme d'Affiliation",
+    contact: "Contact",
+    privacyPolicy: "Politique de Confidentialité",
+    termsOfService: "Conditions d'Utilisation",
+    // Review platforms
+    trustpilot: "Trustpilot",
+    googleReviews: "Avis Google"
   },
 
   // Free Trial
@@ -1592,7 +1653,167 @@ export const fr = {
       home: "Accueil",
       learn: "Apprendre",
       faq: "FAQ"
-    }
+    },
+    categoryList: [
+      { name: "Toutes les Questions" },
+      { name: "Informations sur le Produit" },
+      { name: "Utilisation et Application" },
+      { name: "Comparaisons" },
+      { name: "Dépannage" },
+      { name: "Livraison et Expédition" },
+      { name: "Paiement et Facturation" },
+      { name: "Support Client" }
+    ],
+    faqItems: [
+      {
+        question: "Qu'est-ce que Purrify et comment ça fonctionne ?",
+        answer: "Purrify est un additif au charbon actif pour litière qui élimine les odeurs au niveau moléculaire grâce à un processus appelé adsorption. Contrairement aux désodorisants qui ne font que masquer les odeurs, Purrify piège les molécules d'odeur (ammoniac, mercaptans et autres composés) dans ses millions de pores microscopiques. Chaque particule de notre charbon actif de coque de noix de coco possède une énorme surface interne - 1 gramme a la même surface qu'un court de tennis ! Cela permet à Purrify d'éliminer jusqu'à 99,5 % des molécules d'odeur avant qu'elles n'atteignent votre nez, gardant votre maison fraîche pendant plus de 7 jours."
+      },
+      {
+        question: "Purrify est-il sûr pour les chats et les chatons ?",
+        answer: "Oui ! Purrify est fabriqué à partir de 100 % de charbon actif naturel de coque de noix de coco - le même matériau de qualité alimentaire et non toxique utilisé dans les systèmes de filtration d'eau hospitaliers et les purificateurs d'air. Il est totalement sûr en cas d'ingestion (bien que votre chat ne le mangera pas intentionnellement), ne cause pas de problèmes respiratoires et ne contient aucun produit chimique, parfum ou additif. Il est utilisé en toute confiance par les propriétaires de chats avec des chatons, des chats âgés et des chats ayant des sensibilités. En fait, le charbon actif est utilisé dans les traitements vétérinaires contre l'empoisonnement car il est si sûr et efficace pour lier les toxines."
+      },
+      {
+        question: "Combien de temps dure une bouteille de Purrify ?",
+        answer: "Cela dépend de la taille que vous choisissez et du nombre de chats que vous avez. Notre bouteille d'essai de 30 g dure 2 semaines pour un chat (application tous les 7 jours). La taille Régulière de 60 g dure 4 semaines, la Grande de 120 g dure 8 semaines et l'Économie de 240 g dure 16 semaines pour un foyer d'un seul chat. Pour plusieurs chats, la taille Grande (120 g) ou Économie (240 g) offre le meilleur rapport qualité-prix car vous pourriez avoir besoin d'appliquer plus fréquemment dans les litières très utilisées."
+      },
+      {
+        question: "Comment appliquer Purrify à ma litière pour chat ?",
+        answer: "C'est incroyablement simple ! Secouez la bouteille, retirez le bouchon à pression, saupoudrez 15 g (environ 2 cuillères à soupe) uniformément sur une litière propre, mélangez légèrement avec votre pelle et c'est fait. Pour de meilleurs résultats, appliquez sur une litière fraîche après un changement complet de bac, ou lorsque vous remarquez que les odeurs reviennent (généralement tous les 7 jours). Pas besoin de calculs compliqués - notre bouteille a des marquages de mesure clairs, et chaque application prend moins de 30 secondes."
+      },
+      {
+        question: "Purrify fonctionne-t-il avec tous les types de litière pour chat ?",
+        answer: "Absolument ! Purrify est compatible avec tous les types de litière : agglomérante, non agglomérante, argile, silice, bois, papier, blé, maïs et litières naturelles/écologiques. Il fonctionne en se mélangeant au niveau moléculaire avec le matériau de litière sans interférer avec ses propriétés d'agglomération ou d'absorption. Que vous utilisiez une litière à 5 $ ou premium à 50 $, Purrify améliore ses performances de contrôle des odeurs sans changer son fonctionnement."
+      },
+      {
+        question: "Quelle est la différence entre Purrify et les désodorisants de litière ordinaires ?",
+        answer: "Les désodorisants ordinaires masquent les odeurs avec des parfums forts (comme mettre du parfum sur des ordures), tandis que Purrify élimine complètement les odeurs par adsorption moléculaire. La plupart des désodorisants contiennent du bicarbonate de soude, des parfums artificiels ou des huiles essentielles qui ne font que cacher les odeurs temporairement et peuvent irriter les voies respiratoires de votre chat. Le charbon actif de Purrify piège physiquement et retient les molécules d'odeur dans sa structure poreuse, éliminant la source de l'odeur au lieu de simplement la couvrir. C'est pourquoi Purrify dure plus de 7 jours alors que les désodorisants parfumés échouent généralement en 24-48 heures."
+      },
+      {
+        question: "Purrify affectera-t-il la capacité d'agglomération de ma litière ?",
+        answer: "Pas du tout ! Purrify est conçu pour travailler avec la litière, pas contre elle. Le charbon actif n'interfère pas avec la formation de grumeaux, l'absorption d'humidité ou la capacité de ramassage. Il ajoute simplement une couche de contrôle des odeurs que votre litière existante ne peut pas fournir. En fait, de nombreux clients signalent que leur litière semble fonctionner mieux avec Purrify car elle reste fraîche plus longtemps, leur permettant d'en tirer davantage de chaque bac avant les changements complets."
+      },
+      {
+        question: "Puis-je utiliser Purrify dans des litières automatiques ?",
+        answer: "Oui ! Purrify fonctionne parfaitement avec les litières automatiques comme Litter-Robot, PetSafe ScoopFree et autres. Il suffit de saupoudrer et de mélanger comme d'habitude avant que votre chat n'utilise le bac. La poudre fine n'interférera pas avec les capteurs ou les mécanismes de râteau. En fait, le contrôle amélioré des odeurs est particulièrement précieux avec les litières automatiques car la litière reste dans l'unité plus longtemps entre les changements complets."
+      },
+      {
+        question: "Ai-je besoin de plus pour plusieurs chats ?",
+        answer: "Pour plusieurs chats, vous pourriez avoir besoin d'appliquer Purrify plus fréquemment (tous les 5-6 jours au lieu de tous les 7) ou d'utiliser une quantité légèrement plus grande par application. Notre recommandation : foyers de 1-2 chats → taille Régulière de 60 g ou Grande de 120 g ; foyers de 3+ chats → taille Grande de 120 g ou Économie de 240 g pour un meilleur rapport qualité-prix. La taille Économie est particulièrement économique pour les foyers multi-chats car vous réduisez le coût par application."
+      },
+      {
+        question: "Qu'est-ce qui rend le charbon actif de Purrify différent du charbon ordinaire ?",
+        answer: "Le charbon actif subit un processus d'activation spécialisé à haute température qui crée des millions de pores microscopiques, lui donnant 100-300 fois plus de surface que le charbon ordinaire. Notre charbon de coque de noix de coco spécifiquement est choisi car il possède la structure de pores idéale pour piéger les petites molécules d'odeur comme l'ammoniac (0,26 nm) et les mercaptans (0,4 nm). Le charbon ordinaire de briquettes de barbecue ou de cendres de bois manque de cette microstructure poreuse et ne fournirait essentiellement aucun contrôle des odeurs."
+      },
+      {
+        question: "Combien coûte Purrify par mois ?",
+        answer: "Cela dépend de la taille que vous choisissez. Pour un chat : Essai 4,99 $ pour 2 semaines (9,98 $/mois), Régulier 8,99 $/mois, Grand 8,39 $/mois (meilleur rapport qualité-prix), Économie 7,84 $/mois (prix le plus bas). Pour plusieurs chats, nous recommandons la taille Grande ou Économie car vous pourriez avoir besoin d'appliquer plus fréquemment. Le Grand de 120 g offre le meilleur équilibre entre valeur et commodité pour la plupart des foyers - moins de 2 $/semaine pour un air complètement frais."
+      },
+      {
+        question: "Purrify offre-t-il la livraison gratuite ?",
+        answer: "Oui ! Nous offrons la livraison gratuite sur les commandes de plus de 35 $ au Canada. La plupart des clients atteignent facilement ce montant en achetant une taille Grande de 120 g (15,95 $) ou Économie de 240 g (29,76 $), ou en regroupant plusieurs articles. Les commandes arrivent généralement en 5-7 jours ouvrables via Postes Canada. Pour les commandes de moins de 35 $, les frais d'expédition standard s'appliquent en fonction de votre emplacement."
+      },
+      {
+        question: "Quelle est la rapidité d'action de Purrify ?",
+        answer: "Vous verrez (ou plutôt sentirez) les résultats immédiatement ! Dès que vous saupoudrez Purrify, le charbon actif commence à piéger les molécules d'odeur. La plupart des clients remarquent une amélioration spectaculaire du contrôle des odeurs dans les premières heures. Contrairement aux solutions parfumées qui ne masquent les odeurs que temporairement, l'adsorption de Purrify fonctionne 24h/24 et 7j/7 pendant plus de 7 jours, s'améliorant continuellement à mesure que plus de molécules d'odeur sont piégées."
+      },
+      {
+        question: "Puis-je utiliser Purrify avec d'autres solutions de contrôle des odeurs ?",
+        answer: "Oui ! Purrify fonctionne bien avec d'autres solutions de contrôle des odeurs, bien que la plupart des clients constatent qu'ils n'en ont plus besoin. Vous pouvez l'utiliser avec des doublures de litière, des tapis ou des litières fermées. Cependant, évitez le bicarbonate de soude ou les parfums en poudre forts car ils peuvent interférer avec la capacité du charbon à piéger les odeurs. Pour de meilleurs résultats, laissez Purrify être votre solution principale de contrôle des odeurs - il est plus efficace que tout ce que vous pourriez combiner avec."
+      },
+      {
+        question: "Quelle est votre politique de retour ?",
+        answer: "Nous offrons une garantie sans questions de 30 jours. Si vous n'êtes pas complètement satisfait de Purrify pour quelque raison que ce soit, contactez-nous dans les 30 jours suivant votre achat pour un remboursement complet. Nous payons seulement les frais de retour (le cas échéant) - sinon gardez le produit. Nous sommes si confiants que vous aimerez Purrify que nous rendons le retour complètement sans risque. Pour initier un retour, envoyez simplement un e-mail à hello@purrify.com."
+      },
+      {
+        question: "Purrify est-il écologique et durable ?",
+        answer: "Absolument ! Purrify est fabriqué à partir de 100 % de coques de noix de coco renouvelables - un sous-produit de l'industrie de la noix de coco qui serait autrement un déchet. Il ne contient aucun produit chimique synthétique, parfum artificiel ou additif. L'emballage est recyclable, et parce que Purrify prolonge la vie de votre litière, vous réduisez en fait les déchets de litière dans l'ensemble. En utilisant une source naturelle et renouvelable tout en aidant votre litière à durer plus longtemps, Purrify est l'une des solutions de contrôle des odeurs les plus respectueuses de l'environnement disponibles."
+      },
+      {
+        question: "Purrify fonctionnera-t-il dans les foyers avec plusieurs litières ?",
+        answer: "Oui ! Il suffit d'appliquer Purrify à chaque litière indépendamment. Si vous avez 2-3 bacs, la taille Grande de 120 g ou Économie de 240 g offre le meilleur rapport qualité-prix car vous pouvez traiter plusieurs bacs avec un seul achat. De nombreux foyers multi-bacs utilisent la règle 'un bac par chat plus un', et Purrify fonctionne parfaitement dans cette configuration - il suffit de saupoudrer 15 g par bac tous les 7 jours."
+      },
+      {
+        question: "Puis-je utiliser moins de Purrify que recommandé ?",
+        answer: "Bien que vous puissiez techniquement utiliser moins, nous recommandons les 15 g complets (environ 2 cuillères à soupe) par application pour un contrôle optimal des odeurs. Utiliser moins peut ne pas fournir suffisamment de charbon actif pour piéger efficacement toutes les molécules d'odeur dans votre bac, surtout vers la fin du cycle de 7 jours. Pensez-y comme une assurance contre les odeurs - les 15 g complets garantissent une efficacité maximale. Si vous cherchez à économiser, notre taille Économie de 240 g offre le meilleur coût par application à 1,86 $."
+      },
+      {
+        question: "Que se passe-t-il si mon chat est asthmatique ou allergique ?",
+        answer: "Purrify est excellent pour les chats asthmatiques ou allergiques car il ne contient ni parfums, ni produits chimiques, ni particules irritantes. Contrairement aux désodorisants parfumés qui peuvent déclencher des problèmes respiratoires, le charbon actif est inerte et inodore. En fait, les purificateurs d'air avec filtres au charbon actif sont couramment recommandés pour les propriétaires de chats asthmatiques. Comme toujours, si votre chat a de graves problèmes de santé, consultez votre vétérinaire, mais Purrify est l'une des options de contrôle des odeurs les plus sûres et douces disponibles."
+      },
+      {
+        question: "Comment Purrify se compare-t-il aux litières fermées pour le contrôle des odeurs ?",
+        answer: "Purrify et les litières fermées résolvent des problèmes différents. Les litières fermées contiennent les odeurs (empêchent leur dispersion) mais n'éliminent pas les odeurs - l'air à l'intérieur du bac sent toujours mauvais, et lorsque votre chat entre ou que vous sortez pour ramasser, ces odeurs concentrées s'échappent. Purrify élimine en fait les odeurs au niveau moléculaire, donc il n'y a rien à contenir. De nombreux clients utilisent les deux - Purrify à l'intérieur d'une litière fermée pour une double protection - mais la plupart trouvent que Purrify seul élimine complètement le besoin d'une litière fermée !"
+      },
+      {
+        question: "Ai-je besoin de charbon actif spécial pour litière ?",
+        answer: "Oui ! Tous les charbons actifs ne sont pas égaux. Le charbon d'aquarium, de purificateurs d'air ou de produits de jardinage est optimisé pour différentes tailles de molécules et types de contaminants. Le charbon actif de coque de noix de coco de Purrify est spécifiquement sélectionné et de taille de particule idéale pour piéger les molécules d'odeur spécifiques de litière (ammoniac, mercaptans, composés soufrés volatils) qui existent dans la plage de 0,2-0,5 nm. Utiliser du charbon à usage général serait comme utiliser un filtre à café pour filtrer l'eau - mauvais matériau pour le travail."
+      },
+      {
+        question: "Puis-je acheter Purrify en magasin ?",
+        answer: "Actuellement, Purrify est disponible principalement via notre site Web pour garantir fraîcheur, qualité et prix direct au consommateur. Nous travaillons sur des partenariats de vente au détail et pourrions être dans certains magasins sélectionnés bientôt. Commander en ligne signifie que vous obtenez le produit le plus frais directement de nous, sans majoration de détail. De plus, notre boutique en ligne offre des remises sur quantité, la livraison gratuite au-delà de 35 $ et un abonnement avec économies que vous ne trouverez pas en magasin."
+      },
+      {
+        question: "Que se passe-t-il si j'oublie d'appliquer Purrify après 7 jours ?",
+        answer: "Pas de problème ! Purrify ne cesse pas de fonctionner comme par magie le jour 8. Les pores de charbon se saturent progressivement avec le temps, donc vous pourriez remarquer des odeurs légèrement plus fortes vers les jours 8-10. Il suffit d'appliquer votre prochaine dose de 15 g quand vous vous en souvenez. Pour une mémoire cohérente, de nombreux clients choisissent un 'jour Purrify' hebdomadaire (comme les dimanches) et l'ajoutent à leur routine de nettoyage de litière. Certains définissent des rappels de calendrier mobile."
+      },
+      {
+        question: "Purrify crée-t-il de la poussière lorsque je le saupoudre ?",
+        answer: "Purrify est une poudre fine, donc il y a un minimum de poussière lors de l'application - similaire à saupoudrer du bicarbonate de soude. Pour minimiser la poussière : (1) saupoudrez près de la surface de litière plutôt que de haut, (2) saupoudrez lentement plutôt que de verser rapidement, (3) mélangez doucement après application. La poussière se dépose rapidement dans la litière et devient indétectable une fois mélangée. Contrairement aux désodorisants parfumés, le charbon actif ne crée pas de nuages de parfum lorsque les chats creusent."
+      },
+      {
+        question: "Puis-je utiliser Purrify dans une litière pour chat maison ?",
+        answer: "Oui ! Purrify fonctionne avec des solutions de litière maison comme les granulés de bois, le papier journal déchiqueté, le sable ou la sciure. En fait, les matériaux maison manquent généralement du contrôle des odeurs intégré des litières commerciales, donc Purrify est particulièrement précieux. Il suffit de saupoudrer 15 g sur votre matériau de bac maison et de mélanger. Le charbon actif fonctionnera exactement de la même manière - piégeant les molécules d'odeur quel que soit le matériau de bac que vous utilisez."
+      },
+      {
+        question: "Comment savoir quelle taille de Purrify acheter ?",
+        answer: "Pour un chat : Essai de 30 g (2 semaines) pour l'essayer, Régulier de 60 g (1 mois) pour une utilisation occasionnelle, Grand de 120 g (2 mois, meilleur rapport qualité-prix !), Économie de 240 g (4 mois) pour les utilisateurs engagés. Pour 2-3 chats : Grand de 120 g ou Économie de 240 g car vous pourriez appliquer plus fréquemment. Pour 4+ chats ou foyers multi-bacs : Économie de 240 g ou plusieurs bouteilles. Toujours pas sûr ? La plupart des clients débutants commencent avec le Régulier de 60 g ou le Grand de 120 g."
+      },
+      {
+        question: "Dois-je mélanger Purrify dans la litière ou simplement le saupoudrer dessus ?",
+        answer: "Pour de meilleurs résultats, mélangez légèrement Purrify dans les 2-3 pouces supérieurs de litière en utilisant votre pelle. Cela distribue le charbon actif à travers la couche où votre chat creuse et où l'urine se forme. Vous n'avez pas besoin de mélanger profondément ou d'obtenir une distribution parfaite - juste quelques coups doux avec la pelle suffisent. Certaines personnes le saupoudrent simplement dessus et laissent le creusement de leur chat le mélanger naturellement, ce qui fonctionne également, mais le mélange manuel assure une couverture plus uniforme dès le premier jour."
+      },
+      {
+        question: "Purrify fonctionnera-t-il pour les chats âgés avec une urine très forte ?",
+        answer: "Absolument ! Les chats âgés ont généralement une urine plus concentrée, rendant le contrôle des odeurs plus difficile. Le charbon actif de Purrify est particulièrement efficace contre l'ammoniac fort et les mercaptans dans l'urine de chat âgé. De nombreux clients achètent spécifiquement Purrify parce que leurs chats âgés produisent des odeurs que la litière ordinaire ne peut pas gérer. Pour les cas particulièrement forts, vous pourriez appliquer tous les 5-6 jours au lieu de tous les 7, mais la plupart trouvent que le calendrier de 7 jours fonctionne même pour les chats âgés."
+      },
+      {
+        question: "Puis-je utiliser Purrify dans des plateaux d'entraînement pour chatons ?",
+        answer: "Oui ! Purrify est totalement sûr pour les chatons et fonctionne tout aussi bien dans leurs plus petits plateaux d'entraînement. Il suffit d'ajuster la quantité en fonction de la taille du plateau - utilisez environ 1 cuillère à soupe (7-8 g) pour les plus petits plateaux de chatons au lieu des 15 g complets. Cela aide les jeunes chatons à associer positivement leur litière à la propreté et à la fraîcheur, établissant de bonnes habitudes de litière dès le départ."
+      },
+      {
+        question: "Que se passe-t-il si je renverse Purrify sur mon sol ?",
+        answer: "Ne vous inquiétez pas ! Le charbon actif est totalement sûr et inerte. Il suffit de balayer ou d'aspirer la poudre renversée comme n'importe quelle autre poussière domestique. Il ne tachera pas les sols, tapis ou tissus. S'il tombe sur un tapis, aspirez complètement - la poudre noire fine peut être visible sur les tapis de couleur claire jusqu'à ce qu'elle soit aspirée. Évitez de le frotter humide car cela peut étaler la poudre ; nettoyez toujours à sec d'abord."
+      },
+      {
+        question: "Puis-je m'abonner pour des livraisons automatiques ?",
+        answer: "Oui ! Nous proposons des abonnements d'expédition automatique avec 10 % de réduction. Choisissez votre taille préférée et la fréquence de livraison (toutes les 4, 8 ou 12 semaines) et nous expédierons automatiquement Purrify à votre porte avant que vous ne soyez à court. Vous pouvez mettre en pause, sauter ou annuler à tout moment - pas de contrats ni d'engagements. La plupart des clients d'un chat choisissent la livraison de la taille Grande de 120 g toutes les 8 semaines pour ne jamais manquer de Purrify tout en maintenant un faible coût par application."
+      },
+      {
+        question: "Comment Purrify se compare-t-il aux produits au bicarbonate de soude pour le contrôle des odeurs ?",
+        answer: "Le bicarbonate de soude neutralise les odeurs par des réactions chimiques, mais a une capacité limitée et cesse de fonctionner une fois la réaction terminée (généralement 24-48 heures dans les litières). Le charbon actif de Purrify piège physiquement les molécules d'odeur dans ses pores par adsorption, ce qui dure beaucoup plus longtemps (plus de 7 jours) et fonctionne sur une gamme plus large de molécules d'odeur. Le bicarbonate de soude peut également être poussiéreux et moins efficace contre les odeurs fortes d'ammoniac, tandis que le charbon de Purrify a été spécialement conçu pour les molécules d'odeur de litière."
+      },
+      {
+        question: "Offrez-vous des remises sur quantité ?",
+        answer: "Oui ! Plus vous achetez, plus vous économisez : achetez 2-3 bouteilles → économisez 10 %, achetez 4-5 bouteilles → économisez 15 %, achetez 6+ bouteilles → économisez 20 %. Ces remises se cumulent avec notre taille Économie déjà économique de 240 g. Les foyers multi-chats ou les clients qui achètent pour des amis profitent souvent des remises sur quantité. De plus, la livraison gratuite sur les commandes de plus de 35 $ rend les achats en gros encore plus avantageux."
+      },
+      {
+        question: "Que dois-je faire si Purrify ne fonctionne pas pour moi ?",
+        answer: "Premièrement, assurez-vous d'utiliser les 15 g complets (environ 2 cuillères à soupe) par application et d'appliquer sur une litière propre. Deuxièmement, vérifiez que votre litière n'est pas expirée ou sursaturée (si elle a plus de 2-3 semaines, il est peut-être temps pour un changement complet). Troisièmement, pour les odeurs particulièrement fortes (plusieurs chats, chats âgés), essayez d'appliquer tous les 5-6 jours au lieu de tous les 7. Si vous avez essayé ces étapes et n'êtes toujours pas satisfait, contactez-nous - nous sommes soutenus par notre garantie de 30 jours et travaillerons avec vous pour résoudre le problème ou fournir un remboursement complet."
+      },
+      {
+        question: "Puis-je utiliser Purrify dans les litières pour lapins ou autres petits animaux ?",
+        answer: "Absolument ! Bien que Purrify soit conçu pour les litières pour chats, il fonctionne tout aussi bien pour les litières de lapins, furets, cochons d'Inde, chinchillas et autres petits animaux. Il suffit d'ajuster la quantité en fonction de la taille du bac - utilisez environ 10-15 g selon la taille. Le charbon actif est sûr pour tous les petits animaux, non toxique en cas d'ingestion et contrôle efficacement les odeurs d'urine de tout petit mammifère."
+      },
+      {
+        question: "Comment dois-je conserver Purrify ?",
+        answer: "Conservez Purrify dans un endroit frais et sec avec le bouchon à pression bien fermé. Évitez l'exposition à une humidité élevée, ce qui peut amener le charbon actif à commencer à adsorber l'humidité de l'air au lieu de conserver sa capacité pour les odeurs de litière. Ne réfrigérez pas ou ne congelez pas - la température ambiante dans une armoire ou un garde-manger est parfaite. Correctement conservé, Purrify maintient une efficacité totale pendant 2-3 ans. La bouteille est compacte et se range facilement sous l'évier, dans les armoires de nettoyage ou partout où vous gardez les fournitures de litière."
+      },
+      {
+        question: "Puis-je voyager avec Purrify ?",
+        answer: "Oui ! Purrify est sûr pour les voyages. La bouteille à bouchon à pression est étanche aux déversements et le charbon actif n'est ni liquide ni aérosol, il convient donc pour les bagages à main ou enregistrés. Si vous voyagez avec votre chat et emportez une litière portable, emportez simplement une petite quantité dans la bouteille d'Essai de 30 g. C'est particulièrement utile pour les chambres d'hôtel, les locations de vacances ou lors de visites familiales - saupoudrez Purrify dans la litière temporaire de votre chat pour garder l'espace de location sans odeur."
+      }
+    ]
   },
 
 
@@ -2974,6 +3195,200 @@ export const fr = {
     shippingSavings: "Économisez 15-20$+ par commande par rapport aux achats individuels",
     save25vsStandard: "Économisez 25% par rapport à l'achat de deux formats standards",
     save25FamilyPack: "Économisez 25% avec notre Pack Familial"
+  },
+
+  // Page Science
+  sciencePage: {
+    seo: {
+      title: "Comment le Charbon Actif Élimine l'Odeur de Litière pour Chats : La Science",
+      description: "Les molécules d'ammoniac mesurent 0,26 nm. Nos micropores sont dimensionnés pour les piéger. Voici comment l'architecture des pores conçue capture les odeurs d'urine (ammoniac) et de selles (mercaptans)."
+    },
+    breadcrumb: {
+      home: "Accueil",
+      learn: "Apprendre",
+      science: "Science"
+    },
+    hero: {
+      heading: "Conçu pour Éliminer l'Odeur de Litière pour Chats",
+      description: "En collaboration avec des scientifiques chercheurs, nous avons conçu la structure de pores parfaite pour capturer l'ammoniac de l'urine et les mercaptans des selles, les deux molécules responsables de cette odeur distinctive de litière.",
+      ctaButton: "Essayez la Science"
+    },
+    understanding: {
+      sectionTitle: "Comprendre l'Odeur de la Litière : Les Deux Coupables",
+      description: "Cette odeur distinctive de litière provient de deux molécules spécifiques. Pour les éliminer, vous devez les comprendre.",
+      ammonia: {
+        title: "Ammoniac (NH₃)",
+        subtitle: "De l'Urine de Chat",
+        smell: "Piquant, âcre, qui irrite les yeux, comme des produits nettoyants",
+        moleculeSize: "Minuscule à 0,26 nanomètres",
+        problem: "Se forme lorsque les bactéries décomposent l'urée dans l'urine",
+        whyHard: "La plupart du charbon a des pores trop grands pour piéger des molécules si petites"
+      },
+      mercaptans: {
+        title: "Mercaptans",
+        subtitle: "Des Selles de Chat",
+        smell: "Œufs pourris, égouts, soufre—cette sensation nauséabonde",
+        moleculeSize: "Composés soufrés plus grands et complexes",
+        problem: "Libérés lorsque les protéines dans les selles se décomposent",
+        whyHard: "Molécules collantes nécessitant des tailles de pores spécifiques pour être capturées"
+      },
+      breakthrough: "Voici la percée : La plupart du charbon actif est conçu pour la filtration de l'eau ou la purification générale de l'air. Nous avons travaillé avec des scientifiques chercheurs pour concevoir du charbon spécifiquement pour ces deux molécules, créant le piège parfait pour l'odeur de litière pour chats."
+    },
+    imageCaptions: {
+      freshHome: {
+        title: "Votre Chat Mérite un Foyer Frais",
+        description: "Élimination des odeurs au niveau moléculaire, pas de masquage"
+      },
+      noOdors: {
+        title: "Fini les Odeurs Embarrassantes",
+        description: "Contrôle des odeurs scientifiquement prouvé pour propriétaires de chats modernes"
+      }
+    },
+    poreSize: {
+      sectionTitle: "La Distribution Parfaite de la Taille des Pores",
+      description: "Les tests en laboratoire confirment notre rapport optimisé micropores-mésopores-macropores",
+      micropores: {
+        size: "<2nm",
+        title: "Micropores",
+        specialist: "Spécialistes de l'Ammoniac",
+        target: "NH₃ (0,26nm)",
+        density: "Concentration maximale",
+        function: "Enferment les plus petites molécules odorantes"
+      },
+      mesopores: {
+        size: "2-50nm",
+        title: "Mésopores",
+        specialist: "Pièges à Mercaptans",
+        target: "Composés soufrés",
+        density: "Rapport optimisé",
+        function: "Capturent les odeurs fécales complexes"
+      },
+      macropores: {
+        size: ">50nm",
+        title: "Macropores",
+        specialist: "Système de Transport",
+        target: "Toutes les molécules",
+        density: "Placement stratégique",
+        function: "Livraison rapide aux sites de capture"
+      },
+      surfaceArea: {
+        title: "Surface Spécifique : 1050 m²/g",
+        description: "C'est plus de 12 terrains de tennis de surface de capture d'odeurs dans seulement un gramme de Purrify™",
+        iodineNumber: "Indice d'Iode mg/g",
+        ctcAdsorption: "Adsorption CTC",
+        hardness: "Dureté",
+        moisture: "Humidité"
+      }
+    },
+    scienceFacts: {
+      sectionTitle: "Structure de Pores de Précision Conçue",
+      description: "Tous les charbons actifs ne se valent pas. Nous avons travaillé avec des scientifiques pour optimiser chaque détail pour l'odeur de litière pour chats.",
+      facts: [
+        {
+          title: "Architecture de Pores Conçue",
+          description: "En collaboration avec des scientifiques chercheurs, nous avons optimisé le rapport exact de micropores (< 2nm), mésopores (2-50nm) et macropores (> 50nm) pour créer le piège parfait pour les molécules d'odeur de litière pour chats."
+        },
+        {
+          title: "Maîtrise de la Capture d'Ammoniac",
+          description: "Les molécules d'ammoniac (NH₃) de l'urine de chat sont minuscules—seulement 0,26 nanomètres. Notre structure riche en micropores crée des millions de sites de capture parfaitement dimensionnés qui enferment l'ammoniac avant que vous ne puissiez le sentir."
+        },
+        {
+          title: "Élimination des Mercaptans",
+          description: "Les mercaptans (composés soufrés) donnent aux selles cette odeur distinctive d'œuf pourri. Nos canaux de mésopores sont spécifiquement dimensionnés pour piéger ces molécules plus grandes et complexes de manière permanente."
+        },
+        {
+          title: "Synergie Triple Pore",
+          description: "Les macropores agissent comme des autoroutes livrant les molécules odorantes profondément dans le charbon. Les mésopores capturent les composés soufrés de taille moyenne. Les micropores piègent les plus petites molécules d'ammoniac. Rien n'échappe."
+        }
+      ]
+    },
+    microscopicView: {
+      imageCaptions: {
+        microscope: "La microscopie de qualité recherche révèle la structure des pores",
+        labTesting: "Les tests en laboratoire confirment la performance optimisée",
+        molecular: "Capture au niveau moléculaire des composés odorants"
+      },
+      whatYoureLookingAt: {
+        title: "Ce Que Vous Regardez",
+        description: "Ces images montrent la recherche en laboratoire derrière notre structure de pores optimisée. Chaque petit canal et cavité est un piège attendant de capturer des molécules odorantes au niveau moléculaire.",
+        bullets: [
+          "Des millions de pores créent une surface spécifique massive (1050 m²/g)",
+          "Différentes tailles de pores = différentes molécules odorantes capturées",
+          "Une fois piégées, les molécules ne peuvent pas s'échapper dans l'air"
+        ]
+      },
+      quote: {
+        text: "La clé n'est pas seulement d'avoir des pores, mais d'avoir des pores de la bonne taille dans les bonnes proportions pour les molécules spécifiques que vous voulez capturer.",
+        attribution: "Collaboration de recherche avec des scientifiques du charbon actif"
+      }
+    },
+    technicalPerformance: {
+      sectionTitle: "Performance Vérifiée en Laboratoire",
+      description: "Des données réelles de tests de charbon actif confirment que notre structure de pores optimisée offre une adsorption supérieure",
+      particleSize: {
+        title: "Distribution de Particules Maille 8×30",
+        effectiveSize: "Taille Effective :",
+        meanDiameter: "Diamètre Moyen :",
+        uniformityCoefficient: "Coefficient d'Uniformité :",
+        whyMatters: "Pourquoi c'est important : Le dimensionnement cohérent des particules assure un flux uniforme à travers la litière et un contact maximal avec les molécules odorantes. Notre maille 8×30 est spécifiquement dimensionnée pour une performance optimale dans la litière pour chats."
+      },
+      adsorption: {
+        title: "Performance de Déchloration Rapide",
+        halfLength: "Valeur de Demi-Longueur :",
+        apparentDensity: "Densité Apparente :",
+        betSurface: "Surface Spécifique BET :",
+        whyMatters: "Pourquoi c'est important : L'élimination rapide du chlore prouve que la structure microporeuse du charbon est hautement active. S'il peut capturer les molécules de chlore si rapidement, l'ammoniac n'a aucune chance."
+      }
+    },
+    engineeredPerformance: {
+      title: "Conçu pour la Performance du Monde Réel",
+      description: "Les tests en laboratoire montrent que notre charbon actif de maille 8×30 maintient des caractéristiques de flux optimales et une perte de pression minimale à des températures variables (5-25°C). Cela signifie une capture d'odeurs constante que votre litière soit dans un sous-sol frais ou une salle de bain chaude.",
+      stats: {
+        temperatureRange: "5-25°C",
+        temperatureLabel: "Plage de Température",
+        performanceLabel: "Performance",
+        pressureLossLabel: "Perte de Pression"
+      }
+    },
+    processTimeline: {
+      sectionTitle: "Comment les Trois Types de Pores Travaillent Ensemble",
+      description: "Notre architecture de pores soutenue par la recherche crée un système de capture spécifiquement conçu pour les odeurs de litière pour chats.",
+      steps: [
+        {
+          title: "Les Coupables : Ammoniac et Mercaptans",
+          description: "L'urine de chat se décompose en ammoniac (NH₃)—cette odeur piquante qui irrite les yeux. Les selles libèrent des mercaptans—composés soufrés qui sentent les œufs pourris ou les égouts. Ce sont les molécules que nous avons conçu Purrify pour capturer."
+        },
+        {
+          title: "Macropores : Les Voies Express",
+          description: "Les grands macropores (> 50nm) agissent comme des autoroutes, transportant rapidement les molécules odorantes profondément dans la structure du charbon. Pensez à eux comme les points d'entrée qui préviennent les goulots d'étranglement."
+        },
+        {
+          title: "Mésopores : Les Pièges à Mercaptans",
+          description: "Les mésopores de taille moyenne (2-50nm) sont parfaitement dimensionnés pour capturer les mercaptans et autres composés soufrés des selles. Ces pores créent une prise ferme qui ne lâchera pas."
+        },
+        {
+          title: "Micropores : Les Éliminateurs d'Ammoniac",
+          description: "Les minuscules micropores (< 2nm) sont optimisés pour la taille de 0,26nm de l'ammoniac. Avec des millions de ces sites de capture par gramme, les molécules d'ammoniac sont enfermées de manière permanente avant que vous ne puissiez les sentir."
+        }
+      ]
+    },
+    researchSection: {
+      title: "La Solution la Plus Efficace au Monde pour l'Odeur de Litière pour Chats",
+      description: "En concevant le rapport parfait micropores-mésopores-macropores, nous avons créé du charbon actif spécifiquement optimisé pour capturer l'ammoniac et les mercaptans—les molécules exactes qui font sentir les litières.",
+      stats: {
+        ammoniaSize: "0,26nm",
+        ammoniaSizeLabel: "Taille de la Molécule d'Ammoniac - Micropores Parfaitement Adaptés",
+        poreTypes: "3 Types de Pores",
+        poreTypesLabel: "Micro + Méso + Macro = Capture Complète",
+        surfaceArea: "1050 m²/g",
+        surfaceAreaLabel: "Surface Spécifique - Des Millions de Sites de Capture"
+      },
+      buttons: {
+        experience: "Découvrez la Science",
+        learnMore: "En Savoir Plus"
+      }
+    },
+    backToLearn: "Retour à Apprendre"
   }
 
 };

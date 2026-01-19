@@ -42,55 +42,38 @@ export default function ContactPage() {
     message: ''
   });
 
-  // Contact methods with translated text but preserved icons and actions
+  // Contact methods with translated text and preserved icons and actions
   const translatedContactMethods = t.contactPage?.contactMethods || [];
   const contactMethods = [
     {
       icon: Mail,
-      title: translatedContactMethods[0]?.title || "Email Support",
+      title: translatedContactMethods[0]?.title || "",
       value: "support@purrify.ca",
-      description: translatedContactMethods[0]?.description || "Get detailed help via email",
-      responseTime: translatedContactMethods[0]?.responseTime || "Usually within 24 hours",
+      description: translatedContactMethods[0]?.description || "",
+      responseTime: translatedContactMethods[0]?.responseTime || "",
       action: "mailto:support@purrify.ca"
     },
     {
       icon: Phone,
-      title: translatedContactMethods[1]?.title || "Phone Support",
+      title: translatedContactMethods[1]?.title || "",
       value: CONTACT_INFO.phone,
       description: PHONE_NUMBER.tagline,
-      responseTime: translatedContactMethods[1]?.responseTime || "Mon-Fri, 9AM-5PM EST",
+      responseTime: translatedContactMethods[1]?.responseTime || "",
       action: CONTACT_INFO.phoneHref,
       taglineNote: PHONE_NUMBER.description
     },
     {
       icon: MessageCircle,
-      title: translatedContactMethods[2]?.title || "WhatsApp Chat",
+      title: translatedContactMethods[2]?.title || "",
       value: locale === 'es' ? "Chatea con nosotros" : (locale === 'fr' ? "Chattez avec nous" : "Chat with us"),
-      description: translatedContactMethods[2]?.description || "Instant messaging via WhatsApp",
-      responseTime: translatedContactMethods[2]?.responseTime || "Available 7 days a week",
+      description: translatedContactMethods[2]?.description || "",
+      responseTime: translatedContactMethods[2]?.responseTime || "",
       action: "https://wa.me/385993433344?text=Hi%20I%27m%20interested%20in%20Purrify"
     }
   ];
 
   // Use translated FAQs
-  const faqs = t.contactPage?.faqs || [
-    {
-      question: "How quickly will I see results with Purrify?",
-      answer: "Most customers notice a significant reduction in odors within the first few hours of application. The activated carbon begins trapping odor molecules immediately upon contact."
-    },
-    {
-      question: "What's your return policy?",
-      answer: "We offer a 30-day money-back guarantee. If you're not completely satisfied with Purrify, contact us for a full refund."
-    },
-    {
-      question: "Do you offer bulk pricing for multiple cats?",
-      answer: "Yes! Our 500g bulk size offers the best value for multi-cat households. We also have wholesale pricing available for pet stores and veterinarians."
-    },
-    {
-      question: "What if my cat accidentally ingests some?",
-      answer: "Activated carbon used in household filtration is biologically inert. Purrify is designed to stay mixed with the litter; monitor as usual and contact your veterinarian with any concerns."
-    }
-  ];
+  const faqs = t.contactPage?.faqs || [];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -145,7 +128,7 @@ export default function ContactPage() {
 
       setSubmitStatus({
         success: true,
-        message: t.contactPage?.form?.successMessage || "Thank you for contacting us! We'll get back to you within 24 hours."
+        message: t.contactPage?.form?.successMessage || ""
       });
 
       // Reset form
