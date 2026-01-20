@@ -1,20 +1,21 @@
 import { NextSeo } from 'next-seo';
-import Head from 'next/head';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
+import { useCurrency } from '../../src/lib/currency-context';
 import { SITE_NAME } from '../../src/lib/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Microscope, Zap, Shield, Leaf, ChevronRight } from 'lucide-react';
-import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { formatProductPrice } from '../../src/lib/pricing';
-import { generateWebsiteSchema, buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { generateJSONLD } from '../../src/lib/seo-utils';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
 export default function HowItWorksPage() {
   const { t, locale } = useTranslation();
-  const trialPrice = formatProductPrice('trial', locale);
+  const { currency } = useCurrency();
+  const trialPrice = formatProductPrice('trial', currency, locale);
   const trialSizeCtaLabel =
     locale === 'fr'
       ? `Essayer le format d'essai - ${trialPrice} (livraison incluse)`
@@ -24,8 +25,24 @@ export default function HowItWorksPage() {
 
   const pageTitle = `How Purrify Works - ${SITE_NAME} Activated Carbon Science`;
   const pageDescription = "Discover the science behind Purrify's activated carbon technology. Learn how micropores trap odor molecules at the source for superior cat litter odor control.";
-  const canonicalUrl = getLocalizedUrl('/learn/how-it-works', locale);
-  const languageAlternates = buildLanguageAlternates('/learn/how-it-works');
+
+  // Use enhanced SEO hook for automated optimization
+  const { nextSeoProps, schema } = useEnhancedSEO({
+    path: '/learn/how-it-works',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'how activated carbon works',
+    schemaType: 'article',
+    schemaData: {
+      headline: pageTitle,
+      description: pageDescription,
+      datePublished: '2024-01-20T10:00:00Z',
+      dateModified: new Date().toISOString(),
+      image: 'https://www.purrify.ca/optimized/micropores_magnified_view.webp',
+    },
+    image: 'https://www.purrify.ca/optimized/micropores_magnified_view.webp',
+    keywords: ['how activated carbon works', 'cat litter odor control', 'activated carbon science', 'molecular adsorption', 'pet odor elimination'],
+  });
 
   const sciencePoints = [
     {
@@ -99,60 +116,15 @@ export default function HowItWorksPage() {
 
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          title: pageTitle,
-          description: pageDescription,
-          url: canonicalUrl,
-          type: 'article',
-          images: [
-            {
-              url: 'https://www.purrify.ca/optimized/micropores_magnified_view.webp',
-              width: 1200,
-              height: 630,
-              alt: 'Activated Carbon Micropores Under Magnification (WebP)',
-              type: 'image/webp'
-            },
-            {
-              url: 'https://www.purrify.ca/micropores_magnified_view.jpeg',
-              width: 1200,
-              height: 630,
-              alt: 'Activated Carbon Micropores Under Magnification',
-              type: 'image/jpeg'
-            }
-          ]
-        }}
-      />
+      <NextSeo {...nextSeoProps} />
 
-      {/* Advanced JSON-LD Schema for Article */}
-      <ArticleSchema
-        title={pageTitle}
-        description={pageDescription}
-        path='/learn/how-it-works'
-        locale={locale as 'en' | 'fr' | 'zh'}
-        options={{
-          category: 'Pet Care Science',
-          keywords: ['how activated carbon works', 'cat litter odor control', 'activated carbon science', 'molecular adsorption', 'pet odor elimination'],
-          datePublished: '2024-01-20T10:00:00Z',
-          dateModified: new Date().toISOString(),
-          wordCount: 2200,
-          readingTime: 10,
-          image: 'https://www.purrify.ca/images/how-purrify-works-science.jpg'
-        }}
-      />
-
-      <Head>
+      {/* Auto-generated Article Schema */}
+      {schema && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(generateWebsiteSchema(locale))
-          }}
+          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
         />
-      </Head>
+      )}
 
       <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
         {/* Breadcrumb Navigation */}
