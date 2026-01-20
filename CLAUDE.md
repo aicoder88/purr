@@ -97,6 +97,48 @@ vercel logs <deployment-url>      # View production logs
 
 ---
 
+## SEO Validation
+
+**CRITICAL: Use the correct validation script in prebuild**
+
+There are TWO SEO validation scripts with different purposes:
+
+| Script | Purpose | When to Use | Failure Behavior |
+|--------|---------|-------------|------------------|
+| `scripts/seo/prebuild-validation.ts` | **Automated builds** | In `prebuild` script, CI/CD | Only fails on **critical** issues |
+| `scripts/seo/validate-seo-compliance.ts` | **Manual validation** | Local development, debugging | Fails on errors when `--fail-on-error` used |
+
+### Prebuild Configuration (CORRECT)
+
+```json
+"prebuild": "node scripts/validate-no-middleware.js && tsx scripts/seo/prebuild-validation.ts && node scripts/vercel-prebuild.js"
+```
+
+**Why**: `prebuild-validation.ts` is lenient by design. It allows builds to proceed with non-critical issues (orphan pages, image warnings) but fails only on critical SEO problems.
+
+### Manual Validation Commands
+
+```bash
+# Lenient validation (same as prebuild)
+pnpm seo:validate
+
+# Strict validation (fails on any error)
+pnpm seo:validate:strict
+
+# Generate detailed report
+pnpm seo:validate:report
+```
+
+### Common Issue: Build Failing on Orphan Pages
+
+If you accidentally use `validate-seo-compliance.ts --fail-on-error` in the prebuild script, builds will fail on orphan pages (85+ pages with 0 incoming links detected by simplified link analysis).
+
+**Solution**: Use `prebuild-validation.ts` instead (see correct configuration above).
+
+**Bypass (emergency only)**: Set `SKIP_SEO_VALIDATION=true` environment variable.
+
+---
+
 ## Dark Mode (Required)
 
 Every element needs both light and dark variants:
@@ -544,6 +586,7 @@ Critical rules:
 | Stripe webhooks not working locally | Run `stripe listen --forward-to localhost:3000/api/webhooks/stripe` |
 | Module not found after install | `pnpm install --force` |
 | "Both middleware.ts and proxy.ts detected" | Delete middleware.ts, use only proxy.ts (Next.js 16 change) |
+| Build failing with "SEO validation FAILED" | Use `prebuild-validation.ts` not `validate-seo-compliance.ts` in prebuild script (see SEO Validation section) |
 
 ---
 
