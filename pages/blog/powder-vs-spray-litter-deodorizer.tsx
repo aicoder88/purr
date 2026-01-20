@@ -24,6 +24,7 @@ export default function PowderVsSprayLitterDeodorizer() {
                 <meta property="og:title" content="Powder vs Spray Litter Deodorizer: 60-Day Test Results" />
                 <meta property="og:description" content="I tested powder and spray litter deodorizers for 60 days. Powder lasted 10x longer and cost 75% less." />
                 <meta property="og:type" content="article" />
+                <meta property="og:url" content="https://www.purrify.ca/blog/powder-vs-spray-litter-deodorizer" />
                 <meta property="og:image" content={`https://www.purrify.ca${heroImage}`} />
 
                 {/* Canonical */}

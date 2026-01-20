@@ -1,5 +1,6 @@
 /**
  * Tests for Image Validator
+ * @jest-environment node
  */
 
 import { validateAltText } from '../../scripts/seo/lib/image-validator';

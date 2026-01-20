@@ -22,6 +22,7 @@ export default function ActivatedCarbonVsBakingSoda() {
         <meta property="og:title" content="Baking Soda vs Activated Carbon: The Scientific Truth" />
         <meta property="og:description" content="Stop wasting money on baking soda. Our lab analysis reveals why activated carbon is 10x more effective for cat litter odor control." />
         <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://www.purrify.ca/blog/activated-carbon-vs-baking-soda-comparison" />
         <meta property="og:image" content={`https://www.purrify.ca${heroImage}`} />
 
         {/* Canonical */}

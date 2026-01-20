@@ -1,5 +1,6 @@
 /**
  * Tests for Page Scanner
+ * @jest-environment node
  */
 
 import {
