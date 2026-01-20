@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 import Image from 'next/image';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
@@ -6,6 +6,8 @@ import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
 import { useTranslation } from '../../src/lib/translation-context';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { generateJSONLD } from '../../src/lib/seo-utils';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
 const heroImage = 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1600&q=80&ixlib=rb-4.0.3';
 const labImage = 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1600&q=80&ixlib=rb-4.0.3';
@@ -50,102 +52,69 @@ export default function MostPowerfulOdorAbsorber() {
     },
   ];
 
-  const faqSchema = faqs.map((item) => ({
-    '@type': 'Question',
-    name: item.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: item.answer,
-    },
-  }));
-
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    '@id': 'https://www.purrify.ca/blog/most-powerful-odor-absorber',
-    headline: meta.title,
+  // Use enhanced SEO hook for automated optimization
+  const { nextSeoProps, schema } = useEnhancedSEO({
+    path: '/blog/most-powerful-odor-absorber',
+    title: meta.title,
     description: meta.description,
+    targetKeyword: 'most powerful odor absorber',
+    schemaType: 'article',
+    schemaData: {
+      headline: meta.title,
+      description: meta.description,
+      datePublished: '2025-10-19',
+      dateModified: new Date().toISOString().split('T')[0],
+      image: heroImage,
+      category: meta.category,
+      keywords: [
+        'most powerful odor absorber',
+        'strongest cat litter odor eliminator',
+        'activated carbon cat litter additive',
+        'cat litter ammonia control',
+        'fragrance free litter deodorizer',
+      ],
+      wordCount: 2150,
+    },
     image: heroImage,
-    author: {
-      '@type': 'Organization',
-      name: SITE_NAME,
-      url: 'https://www.purrify.ca',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: SITE_NAME,
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://www.purrify.ca/purrify-logo.png',
-        width: 400,
-        height: 400,
-      },
-    },
-    datePublished: '2025-10-19',
-    dateModified: new Date().toISOString().split('T')[0],
-    wordCount: 2150,
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': 'https://www.purrify.ca/blog/most-powerful-odor-absorber',
-    },
-    articleSection: meta.category,
     keywords: [
       'most powerful odor absorber',
       'strongest cat litter odor eliminator',
-      'activated carbon cat litter additive',
+      'activated carbon litter additive',
       'cat litter ammonia control',
-      'fragrance free litter deodorizer',
+      'unscented litter deodorizer',
     ],
-    inLanguage: 'en-CA',
-    citation: [
-      {
-        '@type': 'CreativeWork',
-        name: 'Activated carbon adsorption performance for ammonia control',
-      },
-      {
-        '@type': 'CreativeWork',
-        name: 'Zeolite moisture absorption characteristics in litter applications',
-      },
-    ],
-  } as const;
+  });
 
   return (
     <>
-      <Head>
-        <title>{`${meta.title} | ${SITE_NAME}`}</title>
-        <meta name="description" content={meta.description} />
-        <meta name="keywords" content="most powerful odor absorber, strongest cat litter odor eliminator, activated carbon litter additive, cat litter ammonia control, unscented litter deodorizer" />
+      <NextSeo {...nextSeoProps} />
 
-        {/* Open Graph */}
-        <meta property="og:title" content={meta.title} />
-        <meta property="og:description" content={meta.description} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://www.purrify.ca/blog/most-powerful-odor-absorber" />
-        <meta property="og:image" content={heroImage} />
-        <meta property="og:image:width" content="1600" />
-        <meta property="og:image:height" content="1067" />
+      {/* Auto-generated Article Schema */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+        />
+      )}
 
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={meta.title} />
-        <meta name="twitter:description" content={meta.description} />
-        <meta name="twitter:image" content={heroImage} />
-
-        {/* Canonical */}
-        <link rel="canonical" href="https://www.purrify.ca/blog/most-powerful-odor-absorber" />
-
-        {/* Article Schema */}
-        <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
-
-        {/* FAQ Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
+      {/* FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: generateJSONLD({
             '@context': 'https://schema.org',
             '@type': 'FAQPage',
-            mainEntity: faqSchema,
-          })}
-        </script>
-      </Head>
+            mainEntity: faqs.map((item) => ({
+              '@type': 'Question',
+              name: item.question,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: item.answer,
+              },
+            })),
+          }),
+        }}
+      />
 
       <article className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
         <Container>
