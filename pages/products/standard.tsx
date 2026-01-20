@@ -14,10 +14,11 @@ import { BNPLBadge } from '../../src/components/product/BNPLBadge';
 import { StickyAddToCart } from '../../src/components/product/StickyAddToCart';
 import { QuantitySelector } from '../../src/components/product/QuantitySelector';
 import { GuaranteeBadge } from '../../src/components/ui/GuaranteeBadge';
-import { buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate, buildAvailabilityUrl } from '../../src/lib/seo-utils';
+import { getPriceValidityDate, buildAvailabilityUrl } from '../../src/lib/seo-utils';
 import { formatProductPrice, getProductPrice } from '../../src/lib/pricing';
 import { getPaymentLink } from '../../src/lib/payment-links';
 import { useEffect, useRef, useCallback, useState } from 'react';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 import { trackTikTokClientEvent } from '../../src/lib/tiktok-tracking';
 
 interface StandardSizePageProps {
@@ -84,8 +85,28 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
   const pageTitle = seoMeta?.title || `${productName} - Cat Litter Freshener & Charcoal Additive | Purrify`;
   const pageDescription = seoMeta?.description || "Best cat litter freshener for single-cat homes. 50g activated charcoal cat litter additive eliminates ammonia odors for 4-6 weeks. Natural, fragrance-free, works with any litter. Ships to USA & Canada.";
 
-  const canonicalUrl = getLocalizedUrl('/products/standard', locale);
-  const languageAlternates = buildLanguageAlternates('/products/standard');
+  // Use enhanced SEO hook
+  const { nextSeoProps, schema } = useEnhancedSEO({
+    path: '/products/standard',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'cat litter freshener',
+    schemaType: 'product',
+    schemaData: {
+      name: productName,
+      description: pageDescription,
+      image: 'https://www.purrify.ca/optimized/60g.webp',
+      price: numericPrice.toFixed(2),
+      priceValidUntil,
+      availability: 'https://schema.org/InStock',
+      rating: {
+        value: 4.8,
+        count: 284,
+      },
+    },
+    image: 'https://www.purrify.ca/optimized/60g.webp',
+    keywords: ['cat litter freshener', 'charcoal litter additive', 'cat litter deodorizer', 'odor eliminator'],
+  });
 
   const singleCheckoutUrl = getPaymentLink('standardSingle') || '#';
   const autoshipCheckoutUrl = getPaymentLink('standardAutoship') || '#';
@@ -109,28 +130,15 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
 
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          title: pageTitle,
-          description: pageDescription,
-          url: canonicalUrl,
-          type: 'product',
-          locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : 'en_CA',
-          images: [
-            {
-              url: 'https://www.purrify.ca' + productImage,
-              width: 1200,
-              height: 630,
-              alt: productName,
-              type: 'image/webp'
-            }
-          ]
-        }}
-      />
+      <NextSeo {...nextSeoProps} />
+
+      {/* Enhanced Product JSON-LD from useEnhancedSEO hook */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      )}
 
       {/* Product Schema for Rich Snippets */}
       <script

@@ -10,10 +10,11 @@ import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, AlertCircle, TrendingUp } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { ProductFAQ } from '../../src/components/product/ProductFAQ';
-import { buildLanguageAlternates, getLocalizedUrl, generateFAQSchema } from '../../src/lib/seo-utils';
+import { generateFAQSchema } from '../../src/lib/seo-utils';
 import { getProductPrice, formatProductPrice } from '../../src/lib/pricing';
 import { useEffect, useRef } from 'react';
 import { trackTikTokClientEvent } from '../../src/lib/tiktok-tracking';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
 interface TrialSizePageProps {
   priceValidUntil: string;
@@ -69,82 +70,56 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
   const pageTitle = seoMeta?.title || "FREE Cat Litter Freshener Trial - Activated Charcoal Additive | Purrify";
   const pageDescription = seoMeta?.description || "FREE Cat Litter Deodorizer Trial | Just Pay $4.76 Shipping | 87% of customers upgrade within 7 days. ★ 4.8 rating. Ships to USA & Canada. Risk-free guarantee.";
 
-  const canonicalUrl = getLocalizedUrl('/products/trial-size', locale);
-  const languageAlternates = buildLanguageAlternates('/products/trial-size');
   const trialPriceValue = getProductPrice('trial', currency);
   const trialPriceString = trialPriceValue.toFixed(2);
   const trialPrice = formatProductPrice('trial', currency, locale);
+
+  // Use enhanced SEO hook
+  const { nextSeoProps, schema } = useEnhancedSEO({
+    path: '/products/trial-size',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'cat litter freshener',
+    schemaType: 'product',
+    schemaData: {
+      name: "Purrify 12g Trial - Natural Cat Litter Freshener & Charcoal Additive",
+      description: "FREE trial of our activated charcoal cat litter additive. Natural coconut shell carbon litter freshener eliminates ammonia odors instantly. Pet-friendly, fragrance-free formula.",
+      image: "https://www.purrify.ca/optimized/17gpink.webp",
+      price: trialPriceString,
+      priceValidUntil,
+      availability: 'https://schema.org/InStock',
+      rating: {
+        value: 4.8,
+        count: 127,
+      },
+    },
+    image: 'https://www.purrify.ca/optimized/17gpink.webp',
+    keywords: ['cat litter freshener', 'charcoal litter additive', 'cat litter deodorizer', 'free trial'],
+  });
 
   // Schema.org structured data variables
   const availabilityUrl = 'https://schema.org/InStock';
 
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          title: pageTitle,
-          description: pageDescription,
-          url: canonicalUrl,
-          type: 'product',
-          locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : 'en_CA',
-          images: [
-            {
-              url: 'https://www.purrify.ca/optimized/17gpink.webp',
-              width: 1200,
-              height: 1870,
-              alt: 'Purrify 12g Trial Size Package',
-              type: 'image/webp'
-            }
-          ]
-        }}
-      />
+      <NextSeo {...nextSeoProps} />
 
-      {/* Comprehensive Trial Product JSON-LD */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@graph": [
-              {
-                "@type": "Product",
-                "@id": canonicalUrl,
-                "name": "Purrify 12g Trial - Natural Cat Litter Freshener & Charcoal Additive",
-                "description": "FREE trial of our activated charcoal cat litter additive. Natural coconut shell carbon litter freshener eliminates ammonia odors instantly. Pet-friendly, fragrance-free formula.",
-                "image": [
-                  "https://www.purrify.ca/optimized/17gpink.webp",
-                  "https://www.purrify.ca/purrify-trial-17g.jpg"
-                ],
-                "brand": {
-                  "@type": "Brand",
-                  "name": "Purrify",
-                  "logo": "https://www.purrify.ca/purrify-logo.png"
-                },
-                "offers": {
-                  "@type": "Offer",
-                  "price": trialPriceString,
-                  "priceCurrency": currency,
-                  "priceValidUntil": priceValidUntil,
-                  "availability": availabilityUrl,
-                  "url": canonicalUrl
-                },
-                "aggregateRating": {
-                  "@type": "AggregateRating",
-                  "ratingValue": "4.8",
-                  "reviewCount": "127",
-                  "bestRating": "5"
-                }
-              },
-              // FAQ Schema for product page
-              generateFAQSchema(locale)
-            ]
-          })
-        }}
-      />
+      {/* Enhanced Product JSON-LD from useEnhancedSEO hook */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                schema,
+                // FAQ Schema for product page
+                generateFAQSchema(locale),
+              ],
+            }),
+          }}
+        />
+      )}
 
       <main className="min-h-screen bg-white dark:bg-gray-900">
         {/* Breadcrumb Navigation */}
