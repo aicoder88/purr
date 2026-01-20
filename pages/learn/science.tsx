@@ -2,21 +2,41 @@ import { NextSeo } from 'next-seo';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
-// Unused: import { SITE_NAME } from '../../src/lib/constants';
+import { useCurrency } from '../../src/lib/currency-context';
 import { formatProductPrice } from '../../src/lib/pricing';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { generateJSONLD } from '../../src/lib/seo-utils';
 import Link from 'next/link';
 import { ArrowLeft, Atom, Zap, Shield, Microscope, FlaskConical, BarChart3 } from 'lucide-react';
 import Image from 'next/image';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
 export default function SciencePage() {
   const { t, locale } = useTranslation();
+  const { currency } = useCurrency();
 
   const pageTitle = t.sciencePage?.seo.title || "";
   const pageDescription = t.sciencePage?.seo.description || "";
-  const canonicalUrl = getLocalizedUrl('/learn/science', locale);
-  const languageAlternates = buildLanguageAlternates('/learn/science');
+
+  // Use enhanced SEO hook for automated optimization
+  const { nextSeoProps, schema } = useEnhancedSEO({
+    path: '/learn/science',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'activated carbon science',
+    schemaType: 'article',
+    schemaData: {
+      headline: pageTitle,
+      description: pageDescription,
+      datePublished: '2024-01-15T10:00:00Z',
+      dateModified: new Date().toISOString(),
+      image: 'https://www.purrify.ca/optimized/benefits-hero-science.webp',
+      category: 'Pet Care Science',
+      wordCount: 3200,
+    },
+    image: 'https://www.purrify.ca/optimized/benefits-hero-science.webp',
+    keywords: ['activated carbon science', 'cat litter odor control', 'micropores', 'ammonia elimination', 'mercaptan removal'],
+  });
 
   const scienceFacts = t.sciencePage?.scienceFacts.facts.map((fact, index) => ({
     icon: [Atom, Microscope, Zap, Shield][index],
@@ -74,26 +94,15 @@ export default function SciencePage() {
 
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          title: pageTitle,
-          description: pageDescription,
-          url: canonicalUrl,
-          type: 'article',
-          images: [
-            {
-              url: 'https://www.purrify.ca/optimized/benefits-hero-science.webp',
-              width: 1200,
-              height: 630,
-              alt: 'Purrify Activated Carbon Science',
-            },
-          ],
-        }}
-      />
+      <NextSeo {...nextSeoProps} />
+
+      {/* Auto-generated Article Schema */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+        />
+      )}
 
       <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
         {/* Breadcrumb Navigation */}
