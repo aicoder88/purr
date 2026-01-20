@@ -43,6 +43,8 @@
     "seo:keywords": "tsx scripts/seo-keyword-analysis.js",
     "seo:health-check": "tsx scripts/seo-health-check.ts",
     "seo:fix": "tsx scripts/seo-fix.ts",
+    "seo:analyze-links": "tsx scripts/analyze-internal-links.ts",
+    "seo:optimize-links": "tsx scripts/optimize-link-equity.ts",
     "bundle:analyze": "node scripts/bundle-analysis.js",
     "cache:optimize": "node scripts/cache-optimization.js",
     "performance:audit": "pnpm seo:optimize && pnpm bundle:analyze && pnpm cache:optimize",
