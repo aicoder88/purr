@@ -3,19 +3,38 @@ import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { generateJSONLD } from '../../src/lib/seo-utils';
 import Link from 'next/link';
 import { ArrowLeft, ShieldCheck, Award, Leaf, CheckCircle2, FileCheck } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import Image from 'next/image';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
 export default function SafetyInformationPage() {
   const { locale } = useTranslation();
 
   const pageTitle = `${SITE_NAME} - Safety Information & Technical Specifications`;
   const pageDescription = "Comprehensive technical datasheet and safety information for Purrify™ Activated Carbon. Learn about certifications, specifications, and safe usage guidelines.";
-  const canonicalUrl = getLocalizedUrl('/learn/safety', locale);
-  const languageAlternates = buildLanguageAlternates('/learn/safety');
+
+  // Use enhanced SEO hook for automated optimization
+  const { nextSeoProps, schema } = useEnhancedSEO({
+    path: '/learn/safety',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'activated carbon safety',
+    schemaType: 'article',
+    schemaData: {
+      headline: pageTitle,
+      description: pageDescription,
+      datePublished: '2024-01-10T10:00:00Z',
+      dateModified: new Date().toISOString(),
+      image: 'https://www.purrify.ca/optimized/140g.webp',
+      category: 'Product Safety & Specifications',
+      wordCount: 2400,
+    },
+    image: 'https://www.purrify.ca/optimized/140g.webp',
+    keywords: ['activated carbon safety', 'pet-safe deodorizer', 'food grade carbon', 'NSF certified', 'technical specifications'],
+  });
 
   const specifications = [
     { property: "Iodine Number", value: "≥ 1000 mg/g" },
@@ -83,26 +102,15 @@ export default function SafetyInformationPage() {
 
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          title: pageTitle,
-          description: pageDescription,
-          url: canonicalUrl,
-          type: 'article',
-          images: [
-            {
-              url: 'https://www.purrify.ca/optimized/140g.webp',
-              width: 1200,
-              height: 630,
-              alt: 'Purrify Activated Carbon Technical Specifications',
-            },
-          ],
-        }}
-      />
+      <NextSeo {...nextSeoProps} />
+
+      {/* Auto-generated Article Schema */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+        />
+      )}
 
       <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
         {/* Breadcrumb Navigation */}
