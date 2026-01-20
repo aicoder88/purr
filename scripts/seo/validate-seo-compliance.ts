@@ -6,6 +6,7 @@
 import { scanAllPages, ScannedPage } from './lib/page-scanner';
 import { optimizeMetaTitle, optimizeMetaDescription } from '@/lib/seo/meta-optimizer';
 import { buildGraphFromHTML, LinkGraphAnalyzer } from '@/lib/seo/link-graph-analyzer';
+import { validateAllImages } from './lib/image-validator';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -26,6 +27,9 @@ export interface ValidationStats {
   weakPages: number;
   deadEndPages: number;
   brokenLinks: number;
+  totalImages: number;
+  imagesWithIssues: number;
+  imagesMissingAlt: number;
 }
 
 export interface ValidationResult {
@@ -69,7 +73,28 @@ export async function validateAllPages(options: {
   warnings.push(...linkAnalysisResults.warnings);
   console.log(`  Link analysis complete\n`);
 
-  // 4. Generate report
+  // 4. Validate images
+  console.log('🖼️  Validating images...');
+  const imageValidationResults = await validateAllImages();
+  // Convert image issues to validation errors
+  imageValidationResults.issues.forEach((issue) => {
+    const validationError: ValidationError = {
+      page: issue.filePath,
+      severity: issue.severity,
+      type: 'images',
+      field: issue.type,
+      message: issue.message,
+      fix: issue.fix,
+    };
+    if (issue.severity === 'error' || issue.severity === 'critical') {
+      errors.push(validationError);
+    } else {
+      warnings.push(validationError);
+    }
+  });
+  console.log(`  Image validation: ${imageValidationResults.issues.length} issues found\n`);
+
+  // 5. Generate report
   const stats: ValidationStats = {
     totalPages: indexablePages.length,
     pagesWithErrors: new Set(errors.map((e) => e.page)).size,
@@ -78,6 +103,9 @@ export async function validateAllPages(options: {
     weakPages: linkAnalysisResults.weakCount,
     deadEndPages: linkAnalysisResults.deadEndCount,
     brokenLinks: 0, // TODO: implement broken link check
+    totalImages: imageValidationResults.totalImages,
+    imagesWithIssues: imageValidationResults.totalImages - imageValidationResults.validImages,
+    imagesMissingAlt: imageValidationResults.stats.missingAlt,
   };
 
   console.log('\n📊 Validation Summary:');
@@ -87,10 +115,13 @@ export async function validateAllPages(options: {
   console.log(`  Orphan Pages: ${stats.orphanPages}`);
   console.log(`  Weak Pages: ${stats.weakPages}`);
   console.log(`  Dead End Pages: ${stats.deadEndPages}`);
+  console.log(`  Total Images: ${stats.totalImages}`);
+  console.log(`  Images with Issues: ${stats.imagesWithIssues}`);
+  console.log(`  Images Missing Alt: ${stats.imagesMissingAlt}`);
   console.log(`  Total Errors: ${errors.length}`);
   console.log(`  Total Warnings: ${warnings.length}\n`);
 
-  // 5. Determine pass/fail
+  // 6. Determine pass/fail
   const hasErrors = errors.length > 0;
   const hasWarnings = warnings.length > 0;
   const passed = options.failOnError
@@ -324,6 +355,11 @@ export async function generateReport(result: ValidationResult): Promise<string> 
   lines.push(`- **Orphan Pages**: ${result.stats.orphanPages}\n`);
   lines.push(`- **Weak Pages**: ${result.stats.weakPages}\n`);
   lines.push(`- **Dead End Pages**: ${result.stats.deadEndPages}\n\n`);
+
+  lines.push('## Image SEO\n\n');
+  lines.push(`- **Total Images**: ${result.stats.totalImages}\n`);
+  lines.push(`- **Images with Issues**: ${result.stats.imagesWithIssues}\n`);
+  lines.push(`- **Images Missing Alt**: ${result.stats.imagesMissingAlt}\n\n`);
 
   return lines.join('');
 }
