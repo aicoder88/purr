@@ -10,7 +10,7 @@ import { useTranslation } from '../../src/lib/translation-context';
 import { useCurrency } from '../../src/lib/currency-context';
 import { getSEOMeta } from '../../src/translations/seo-meta';
 import { SITE_NAME } from '../../src/lib/constants';
-import { buildLanguageAlternates, getLocalizedUrl, generateFAQSchema, getPriceValidityDate, buildAvailabilityUrl } from '../../src/lib/seo-utils';
+import { getPriceValidityDate, generateJSONLD } from '../../src/lib/seo-utils';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../src/lib/pricing';
 import { getPaymentLink } from '../../src/lib/payment-links';
 import Image from 'next/image';
@@ -21,6 +21,7 @@ import { StickyAddToCart } from '../../src/components/product/StickyAddToCart';
 import { QuantitySelector } from '../../src/components/product/QuantitySelector';
 import { GuaranteeBadge } from '../../src/components/ui/GuaranteeBadge';
 import { trackTikTokClientEvent } from '../../src/lib/tiktok-tracking';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
 interface FamilyPackPageProps {
   priceValidUntil: string;
@@ -85,9 +86,6 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
   const pageTitle = seoMeta?.title || `${SITE_NAME} Family Pack - Best Cat Litter Freshener for Multi-Cat Homes`;
   const pageDescription = seoMeta?.description || "Best value cat litter freshener for multi-cat households. 120g activated charcoal additive provides 2 months of odor control. Natural coconut shell formula works with any litter. Ships to USA & Canada.";
 
-  const canonicalPath = '/products/family-pack';
-  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
-  const languageAlternates = buildLanguageAlternates(canonicalPath);
   const trialPrice = formatProductPrice('trial', currency, locale);
   const standardPrice = formatProductPrice('standard', currency, locale);
   const standardPriceAmount = getProductPrice('standard', currency);
@@ -101,7 +99,28 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
   );
   const familyAutoshipPerMonth = formatCurrencyValue(familyAutoshipAmount / 3, locale);
   const familyAutoshipLink = getPaymentLink('familyAutoship');
-  const checkoutUrl = getLocalizedUrl('/checkout', locale);
+  const checkoutUrl = locale === 'en' ? '/checkout' : `/${locale}/checkout`;
+
+  // Use enhanced SEO hook for automated optimization
+  const { nextSeoProps, schema } = useEnhancedSEO({
+    path: '/products/family-pack',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'cat litter freshener family pack',
+    schemaType: 'product',
+    schemaData: {
+      name: 'Purrify 120g Family Pack - Cat Litter Freshener & Charcoal Additive',
+      description: 'Best value cat litter freshener for multi-cat homes. 120g activated charcoal cat litter additive from coconut shells. 2 months of odor control. 100% natural, fragrance-free, pet-friendly deodorizer.',
+      image: ['https://www.purrify.ca/optimized/60g.webp'],
+      price: familyPriceAmount.toFixed(2),
+      priceValidUntil,
+      rating: {
+        value: '4.9',
+        count: '127',
+      },
+    },
+    image: 'https://www.purrify.ca/optimized/60g.webp',
+  });
 
   // Family pack lifestyle images
   const heroImage = 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1600&q=80'; // Multiple cats happy home
@@ -133,166 +152,15 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
 
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          title: pageTitle,
-          description: pageDescription,
-          url: canonicalUrl,
-          type: 'product',
-          images: [
-            {
-              url: 'https://www.purrify.ca/optimized/60g.webp',
-              width: 1200,
-              height: 630,
-              alt: 'Purrify 120g Family Pack Package (Optimized)',
-              type: 'image/webp'
-            },
-            {
-              url: 'https://www.purrify.ca/optimized/60g.webp',
-              width: 1200,
-              height: 630,
-              alt: 'Purrify 120g Family Pack Package',
-              type: 'image/webp'
-            }
-          ]
-        }}
-      />
+      <NextSeo {...nextSeoProps} />
 
-      {/* FAQ Schema for SEO */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateFAQSchema(locale))
-        }}
-      />
-
-      {/* Product Schema for Rich Snippets */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Product",
-            "@id": canonicalUrl,
-            "name": "Purrify 120g Family Pack - Cat Litter Freshener & Charcoal Additive",
-            "description": "Best value cat litter freshener for multi-cat homes. 120g activated charcoal cat litter additive from coconut shells. 2 months of odor control. 100% natural, fragrance-free, pet-friendly deodorizer.",
-            "image": [
-              "https://www.purrify.ca/optimized/60g.webp"
-            ],
-            "brand": {
-              "@type": "Brand",
-              "name": "Purrify",
-              "logo": "https://www.purrify.ca/optimized/logo-icon-512.webp"
-            },
-            "manufacturer": {
-              "@type": "Organization",
-              "name": "Purrify",
-              "url": "https://www.purrify.ca"
-            },
-            "category": "Pet Supplies > Cat Supplies > Cat Litter Additives",
-            "sku": "purrify-120g",
-            "mpn": "PURRIFY-120G",
-            "weight": {
-              "@type": "QuantitativeValue",
-              "value": "120",
-              "unitCode": "GRM"
-            },
-            "size": "120g",
-            "color": "Black",
-            "material": "Activated Carbon (Coconut Shell)",
-            "offers": {
-              "@type": "Offer",
-              "url": canonicalUrl,
-              "priceCurrency": currency,
-              "price": familyPriceAmount.toFixed(2),
-              "priceValidUntil": priceValidUntil,
-              "availability": buildAvailabilityUrl('InStock'),
-              "itemCondition": "https://schema.org/NewCondition",
-              "seller": {
-                "@type": "Organization",
-                "name": "Purrify"
-              },
-              "shippingDetails": {
-                "@type": "OfferShippingDetails",
-                "shippingRate": {
-                  "@type": "MonetaryAmount",
-                  "value": "0",
-                  "currency": "CAD"
-                },
-                "deliveryTime": {
-                  "@type": "ShippingDeliveryTime",
-                  "handlingTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 1,
-                    "maxValue": 2,
-                    "unitCode": "d"
-                  },
-                  "transitTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 2,
-                    "maxValue": 5,
-                    "unitCode": "d"
-                  }
-                },
-                "shippingDestination": {
-                  "@type": "DefinedRegion",
-                  "addressCountry": "CA"
-                }
-              },
-              "hasMerchantReturnPolicy": {
-                "@type": "MerchantReturnPolicy",
-                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-                "merchantReturnDays": 30,
-                "returnMethod": "https://schema.org/ReturnByMail",
-                "returnFees": "https://schema.org/FreeReturn"
-              }
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "reviewCount": "127",
-              "bestRating": "5",
-              "worstRating": "1"
-            },
-            "additionalProperty": [
-              {
-                "@type": "PropertyValue",
-                "name": "Pet Type",
-                "value": "Cat"
-              },
-              {
-                "@type": "PropertyValue",
-                "name": "Main Ingredient",
-                "value": "Activated Carbon from Coconut Shells"
-              },
-              {
-                "@type": "PropertyValue",
-                "name": "Usage Duration",
-                "value": "8-12 weeks per application"
-              },
-              {
-                "@type": "PropertyValue",
-                "name": "Compatibility",
-                "value": "Works with all litter types"
-              },
-              {
-                "@type": "PropertyValue",
-                "name": "Recommended For",
-                "value": "Multi-cat households (2-3 cats)"
-              }
-            ],
-            "audience": {
-              "@type": "Audience",
-              "name": "Multi-cat households"
-            },
-            "inLanguage": locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : 'en-CA'
-          })
-        }}
-      />
+      {/* Auto-generated Product Schema */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+        />
+      )}
 
       <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
         {/* Breadcrumb Navigation */}
