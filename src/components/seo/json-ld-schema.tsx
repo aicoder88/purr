@@ -1,8 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
-import { 
+import {
   generateHomepageSchema,
-  generateProductPageSchema, 
+  generateProductPageSchema,
   generateArticlePageSchema,
   generateLocationPageSchema,
   generateJSONLD
@@ -11,11 +11,12 @@ import {
 interface JSONLDSchemaProps {
   type: 'homepage' | 'product' | 'article' | 'location';
   locale?: 'en' | 'fr' | 'zh';
+  currency?: 'CAD' | 'USD';
   data?: {
     // Product page data
     productId?: string;
-    
-    // Article page data  
+
+    // Article page data
     title?: string;
     description?: string;
     path?: string;
@@ -27,28 +28,29 @@ interface JSONLDSchemaProps {
     image?: string;
     wordCount?: number;
     readingTime?: number;
-    
+
     // Location page data
     cityName?: string;
     province?: string;
   };
 }
 
-export const JSONLDSchema: React.FC<JSONLDSchemaProps> = ({ 
-  type, 
-  locale = 'en', 
-  data = {} 
+export const JSONLDSchema: React.FC<JSONLDSchemaProps> = ({
+  type,
+  locale = 'en',
+  currency = 'CAD',
+  data = {}
 }) => {
   let schema: object | null = null;
 
   switch (type) {
     case 'homepage':
-      schema = generateHomepageSchema(locale);
+      schema = generateHomepageSchema(locale, currency);
       break;
-      
+
     case 'product':
       if (data.productId) {
-        schema = generateProductPageSchema(data.productId, locale);
+        schema = generateProductPageSchema(data.productId, locale, currency);
       }
       break;
       
@@ -99,15 +101,19 @@ export const JSONLDSchema: React.FC<JSONLDSchemaProps> = ({
 };
 
 // Convenience components for specific page types
-export const HomepageSchema: React.FC<{ locale?: 'en' | 'fr' | 'zh' }> = ({ locale = 'en' }) => (
-  <JSONLDSchema type="homepage" locale={locale} />
+export const HomepageSchema: React.FC<{
+  locale?: 'en' | 'fr' | 'zh';
+  currency?: 'CAD' | 'USD';
+}> = ({ locale = 'en', currency = 'CAD' }) => (
+  <JSONLDSchema type="homepage" locale={locale} currency={currency} />
 );
 
-export const ProductSchema: React.FC<{ 
-  productId: string; 
+export const ProductSchema: React.FC<{
+  productId: string;
   locale?: 'en' | 'fr' | 'zh';
-}> = ({ productId, locale = 'en' }) => (
-  <JSONLDSchema type="product" locale={locale} data={{ productId }} />
+  currency?: 'CAD' | 'USD';
+}> = ({ productId, locale = 'en', currency = 'CAD' }) => (
+  <JSONLDSchema type="product" locale={locale} currency={currency} data={{ productId }} />
 );
 
 export const ArticleSchema: React.FC<{
