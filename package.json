@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "next dev",
     "postinstall": "prisma generate",
-    "prebuild": "node scripts/validate-no-middleware.js && node scripts/vercel-prebuild.js",
+    "prebuild": "node scripts/validate-no-middleware.js && tsx scripts/seo/validate-seo-compliance.ts --fail-on-error && node scripts/vercel-prebuild.js",
+    "prebuild:seo": "tsx scripts/seo/prebuild-validation.ts",
     "build": "NODE_OPTIONS=\"--max-old-space-size=4096\" next build",
     "postbuild:seo": "tsx scripts/seo-health-check.ts",
     "start": "next start",

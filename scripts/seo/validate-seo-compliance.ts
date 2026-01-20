@@ -7,6 +7,7 @@ import { scanAllPages, ScannedPage } from './lib/page-scanner';
 import { optimizeMetaTitle, optimizeMetaDescription } from '@/lib/seo/meta-optimizer';
 import { buildGraphFromHTML, LinkGraphAnalyzer } from '@/lib/seo/link-graph-analyzer';
 import { validateAllImages } from './lib/image-validator';
+import { validateOGCanonicalUrls } from '@/lib/seo/og-canonical-validator';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -30,6 +31,7 @@ export interface ValidationStats {
   totalImages: number;
   imagesWithIssues: number;
   imagesMissingAlt: number;
+  ogCanonicalMismatches: number;
 }
 
 export interface ValidationResult {
@@ -94,7 +96,28 @@ export async function validateAllPages(options: {
   });
   console.log(`  Image validation: ${imageValidationResults.issues.length} issues found\n`);
 
-  // 5. Generate report
+  // 5. Validate OG/Canonical URL match
+  console.log('🔗 Validating OG/Canonical URLs...');
+  const ogCanonicalResults = await validateOGCanonicalUrls(indexablePages);
+  // Convert OG/Canonical issues to validation errors
+  ogCanonicalResults.issues.forEach((issue) => {
+    const validationError: ValidationError = {
+      page: issue.page,
+      severity: issue.severity,
+      type: 'meta',
+      field: 'og-canonical',
+      message: issue.message,
+      fix: issue.fix,
+    };
+    if (issue.severity === 'error' || issue.severity === 'critical') {
+      errors.push(validationError);
+    } else {
+      warnings.push(validationError);
+    }
+  });
+  console.log(`  OG/Canonical validation: ${ogCanonicalResults.issues.length} issues found\n`);
+
+  // 6. Generate report
   const stats: ValidationStats = {
     totalPages: indexablePages.length,
     pagesWithErrors: new Set(errors.map((e) => e.page)).size,
@@ -106,6 +129,7 @@ export async function validateAllPages(options: {
     totalImages: imageValidationResults.totalImages,
     imagesWithIssues: imageValidationResults.totalImages - imageValidationResults.validImages,
     imagesMissingAlt: imageValidationResults.stats.missingAlt,
+    ogCanonicalMismatches: ogCanonicalResults.issues.length,
   };
 
   console.log('\n📊 Validation Summary:');
@@ -118,10 +142,11 @@ export async function validateAllPages(options: {
   console.log(`  Total Images: ${stats.totalImages}`);
   console.log(`  Images with Issues: ${stats.imagesWithIssues}`);
   console.log(`  Images Missing Alt: ${stats.imagesMissingAlt}`);
+  console.log(`  OG/Canonical Mismatches: ${stats.ogCanonicalMismatches}`);
   console.log(`  Total Errors: ${errors.length}`);
   console.log(`  Total Warnings: ${warnings.length}\n`);
 
-  // 6. Determine pass/fail
+  // 7. Determine pass/fail
   const hasErrors = errors.length > 0;
   const hasWarnings = warnings.length > 0;
   const passed = options.failOnError
@@ -360,6 +385,9 @@ export async function generateReport(result: ValidationResult): Promise<string> 
   lines.push(`- **Total Images**: ${result.stats.totalImages}\n`);
   lines.push(`- **Images with Issues**: ${result.stats.imagesWithIssues}\n`);
   lines.push(`- **Images Missing Alt**: ${result.stats.imagesMissingAlt}\n\n`);
+
+  lines.push('## OG/Canonical URLs\n\n');
+  lines.push(`- **OG/Canonical Mismatches**: ${result.stats.ogCanonicalMismatches}\n\n`);
 
   return lines.join('');
 }
