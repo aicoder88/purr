@@ -31,17 +31,17 @@ const CTA = dynamic(() => import('../src/components/sections/cta').then(mod => (
   loading: () => sectionSkeleton('h-64')
 });
 import { SITE_NAME, SITE_DESCRIPTION, CONTACT_INFO, SOCIAL_LINKS } from '../src/lib/constants';
-import { getProductPrice, getPriceRange } from '../src/lib/pricing';
 import { useTranslation } from '../src/lib/translation-context';
 import { useCurrency } from '../src/lib/currency-context';
 import { getSEOMeta } from '../src/translations/seo-meta';
+import { useEnhancedSEO } from '../src/hooks/useEnhancedSEO';
 
 import { SkipNav } from '../src/components/ui/skip-nav';
 import { ErrorBoundary } from '../src/components/ui/error-boundary';
 import { TrustBadges } from '../src/components/social-proof/TrustBadges';
 import { ClientLocationsMap } from '../src/components/maps/ClientLocationsMap';
 import { SocialProofBadges } from '../src/components/sections/SocialProofBadges';
-import { buildAvailabilityUrl, buildLanguageAlternates, getLocalizedUrl, getPriceValidityDate } from '../src/lib/seo-utils';
+import { generateHomepageSchema, generateJSONLD, getPriceValidityDate } from '../src/lib/seo-utils';
 import { ScrollAnchor } from '../src/components/ui/scroll-anchor';
 import { Stores } from '../src/components/sections/stores';
 
@@ -58,14 +58,16 @@ export default function Home({ priceValidUntil }: InferGetStaticPropsType<typeof
   const pageTitle = seoMeta?.title || `${SITE_NAME} - ${t.homepage.seo.pageTitle}`;
   const pageDescription = seoMeta?.description || t.siteDescription || SITE_DESCRIPTION;
 
-  const canonicalUrl = getLocalizedUrl('/', locale);
-  const shareImage = 'https://www.purrify.ca/purrify-logo.png';
-  const languageAlternates = buildLanguageAlternates('/');
-  const availabilityUrl = buildAvailabilityUrl();
-  const trialPriceValue = getProductPrice('trial', currency).toFixed(2);
-  const standardPriceValue = getProductPrice('standard', currency).toFixed(2);
-  const familyPriceValue = getProductPrice('family', currency).toFixed(2);
-  const priceRange = getPriceRange(currency, locale);
+  // Use enhanced SEO hook for automated optimization
+  const { nextSeoProps, schema } = useEnhancedSEO({
+    path: '/',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'cat litter deodorizer',
+    schemaType: 'organization',
+    keywords: t.homepage.seo.keywords?.split(', '),
+  });
+
 
   // A/B Test: Social Proof Position (badges moved to bottom of page)
   const {
@@ -76,73 +78,24 @@ export default function Home({ priceValidUntil }: InferGetStaticPropsType<typeof
     <>
       <SkipNav />
       <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          type: 'website',
-          url: canonicalUrl,
-          title: pageTitle,
-          description: pageDescription,
-          locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : 'en_CA',
-          images: [
-            {
-              url: shareImage,
-              width: 1200,
-              height: 800,
-              alt: `${SITE_NAME} - ${t.homepage.seo.openGraphImageAlt}`,
-              type: 'image/png',
-            },
-            {
-              url: 'https://www.purrify.ca/optimized/cat_rose_thumbnail.webp',
-              width: 500,
-              height: 340,
-              alt: t.homepage.seo.videoDescription,
-              type: 'image/webp',
-            },
-          ],
-        }}
-        twitter={{
-          handle: '@purrify',
-          site: '@purrify',
-          cardType: 'summary_large_image',
-        }}
+        {...nextSeoProps}
         additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: t.homepage.seo.keywords,
-          },
+          ...nextSeoProps.additionalMetaTags,
           {
             name: 'robots',
             content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
           },
           {
-            // Removed duplicate description to avoid multiple meta description tags
             name: 'application-name',
-            content: SITE_NAME,
-          },
-          // Additional SEO meta tags for better performance
-          {
-            content: SITE_NAME,
-            name: 'author',
-          },
-          {
-            property: 'og:site_name',
             content: SITE_NAME,
           },
           {
             name: 'apple-mobile-web-app-title',
             content: SITE_NAME,
           },
-          // Performance hints
           {
             name: 'viewport',
             content: 'width=device-width, initial-scale=1.0, maximum-scale=5.0',
-          },
-          {
-            httpEquiv: 'x-ua-compatible',
-            content: 'IE=edge',
           },
         ]}
         additionalLinkTags={[
@@ -156,128 +109,10 @@ export default function Home({ priceValidUntil }: InferGetStaticPropsType<typeof
         ]}
       />
 
-      {/* Enhanced JSON-LD Schemas with Product Catalog */}
+      {/* Enhanced JSON-LD Schemas - Auto-generated Homepage Schema */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@graph": [
-              {
-                "@type": "Organization",
-                "@id": "https://www.purrify.ca/#organization",
-                "name": t.structuredData.organization.name,
-                "url": "https://www.purrify.ca",
-                "logo": {
-                  "@type": "ImageObject",
-                  "url": "https://www.purrify.ca/purrify-logo.png",
-                  "width": 400,
-                  "height": 400
-                },
-                "image": "https://www.purrify.ca/purrify-logo.png",
-                "description": t.structuredData.organization.description,
-                "foundingDate": t.structuredData.organization.foundingDate,
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "109-17680 Rue Charles",
-                  "addressLocality": "Mirabel",
-                  "addressRegion": "QC",
-                  "postalCode": "J7J 0T6",
-                  "addressCountry": "CA"
-                },
-                "geo": {
-                  "@type": "GeoCoordinates",
-                  "latitude": "45.6501",
-                  "longitude": "-73.8359"
-                },
-                "contactPoint": {
-                  "@type": "ContactPoint",
-                  "telephone": CONTACT_INFO.phoneInternational,
-                  "email": t.structuredData.organization.contactPoint.email,
-                  "contactType": t.structuredData.organization.contactPoint.contactType,
-                  "areaServed": t.structuredData.organization.contactPoint.areaServed,
-                  "availableLanguage": t.structuredData.organization.contactPoint.availableLanguage
-                },
-                "sameAs": Object.values(SOCIAL_LINKS),
-                "areaServed": {
-                  "@type": "Country",
-                  "name": t.structuredData.organization.areaServed
-                },
-                "hasOfferCatalog": {
-                  "@type": "OfferCatalog",
-                  "name": t.structuredData.offerCatalog.name,
-                  "itemListElement": [
-                    {
-                      "@type": "Product",
-                      "name": t.structuredData.offerCatalog.products.trial.name,
-                      "description": t.structuredData.offerCatalog.products.trial.description,
-                      "sku": t.structuredData.offerCatalog.products.trial.sku,
-                      "image": "https://www.purrify.ca/optimized/17gpink.webp",
-                      "offers": {
-                        "@type": "Offer",
-                        "price": trialPriceValue,
-                        "priceCurrency": currency,
-                        "priceValidUntil": priceValidUntil,
-                        "availability": availabilityUrl,
-                        "url": "https://www.purrify.ca/products/trial-size"
-                      }
-                    },
-                    {
-                      "@type": "Product",
-                      "name": t.structuredData.offerCatalog.products.standard.name,
-                      "description": t.structuredData.offerCatalog.products.standard.description,
-                      "sku": t.structuredData.offerCatalog.products.standard.sku,
-                      "image": "https://www.purrify.ca/optimized/60g.webp",
-                      "offers": {
-                        "@type": "Offer",
-                        "price": standardPriceValue,
-                        "priceCurrency": currency,
-                        "priceValidUntil": priceValidUntil,
-                        "availability": availabilityUrl,
-                        "url": "https://www.purrify.ca/products/standard"
-                      }
-                    },
-                    {
-                      "@type": "Product",
-                      "name": t.structuredData.offerCatalog.products.family.name,
-                      "description": t.structuredData.offerCatalog.products.family.description,
-                      "sku": t.structuredData.offerCatalog.products.family.sku,
-                      "image": "https://www.purrify.ca/optimized/60g.webp",
-                      "offers": {
-                        "@type": "Offer",
-                        "price": familyPriceValue,
-                        "priceCurrency": currency,
-                        "priceValidUntil": priceValidUntil,
-                        "availability": availabilityUrl,
-                        "url": "https://www.purrify.ca/products/family-pack"
-                      }
-                    }
-                  ]
-                },
-                "priceRange": priceRange.formatted
-              },
-              {
-                "@type": "WebSite",
-                "@id": "https://www.purrify.ca/#website",
-                "url": "https://www.purrify.ca",
-                "name": t.structuredData.website.name,
-                "description": t.structuredData.website.description,
-                "publisher": {
-                  "@id": "https://www.purrify.ca/#organization"
-                },
-                "potentialAction": {
-                  "@type": "SearchAction",
-                  "target": {
-                    "@type": "EntryPoint",
-                    "urlTemplate": "https://www.purrify.ca/search?q={search_term_string}"
-                  },
-                  "query-input": "required name=search_term_string"
-                },
-                "inLanguage": t.structuredData.website.inLanguage
-              }
-            ]
-          })
-        }}
+        dangerouslySetInnerHTML={generateJSONLD(generateHomepageSchema(locale, currency))}
       />
 
       <main id="main-content" role="main" className="bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900">
