@@ -194,7 +194,7 @@ export function EnhancedProductComparison() {
         prioritySupport: false,
         freeShipping: true,
       },
-      image: '/optimized/140g.avif',
+      image: '/optimized/140g_transparent.webp',
       imageSize: 'lg',
       purchaseOptions: [
         {
