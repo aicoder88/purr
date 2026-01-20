@@ -4,6 +4,9 @@ import { zh } from './zh';
 import { es } from './es';
 import { TranslationType } from './types';
 
+// Export SEO meta content (optimized titles & descriptions)
+export * from './seo-meta';
+
 export const translations: Record<string, TranslationType> = {
   en,
   fr,

@@ -4,6 +4,7 @@ import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import { useCurrency } from '../../src/lib/currency-context';
+import { getSEOMeta } from '../../src/translations/seo-meta';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, AlertCircle, TrendingUp } from 'lucide-react';
@@ -63,8 +64,11 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
     });
   };
 
-  const pageTitle = "FREE Cat Litter Freshener Trial - Activated Charcoal Additive | Purrify";
-  const pageDescription = "FREE Cat Litter Deodorizer Trial | Just Pay $4.76 Shipping | 87% of customers upgrade within 7 days. ★ 4.8 rating. Ships to USA & Canada. Risk-free guarantee.";
+  // Use optimized SEO meta content
+  const seoMeta = getSEOMeta(locale as 'en' | 'fr' | 'zh' | 'es', 'products', 'trial');
+  const pageTitle = seoMeta?.title || "FREE Cat Litter Freshener Trial - Activated Charcoal Additive | Purrify";
+  const pageDescription = seoMeta?.description || "FREE Cat Litter Deodorizer Trial | Just Pay $4.76 Shipping | 87% of customers upgrade within 7 days. ★ 4.8 rating. Ships to USA & Canada. Risk-free guarantee.";
+
   const canonicalUrl = getLocalizedUrl('/products/trial-size', locale);
   const languageAlternates = buildLanguageAlternates('/products/trial-size');
   const trialPriceValue = getProductPrice('trial', currency);

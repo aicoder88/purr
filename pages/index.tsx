@@ -34,6 +34,7 @@ import { SITE_NAME, SITE_DESCRIPTION, CONTACT_INFO, SOCIAL_LINKS } from '../src/
 import { getProductPrice, getPriceRange } from '../src/lib/pricing';
 import { useTranslation } from '../src/lib/translation-context';
 import { useCurrency } from '../src/lib/currency-context';
+import { getSEOMeta } from '../src/translations/seo-meta';
 
 import { SkipNav } from '../src/components/ui/skip-nav';
 import { ErrorBoundary } from '../src/components/ui/error-boundary';
@@ -51,8 +52,12 @@ interface HomePageProps {
 export default function Home({ priceValidUntil }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t, locale } = useTranslation();
   const { currency } = useCurrency();
-  const pageTitle = `${SITE_NAME} - ${t.homepage.seo.pageTitle}`;
-  const pageDescription = t.siteDescription || SITE_DESCRIPTION;
+
+  // Use optimized SEO meta content
+  const seoMeta = getSEOMeta(locale as 'en' | 'fr' | 'zh' | 'es', 'homepage');
+  const pageTitle = seoMeta?.title || `${SITE_NAME} - ${t.homepage.seo.pageTitle}`;
+  const pageDescription = seoMeta?.description || t.siteDescription || SITE_DESCRIPTION;
+
   const canonicalUrl = getLocalizedUrl('/', locale);
   const shareImage = 'https://www.purrify.ca/purrify-logo.png';
   const languageAlternates = buildLanguageAlternates('/');
