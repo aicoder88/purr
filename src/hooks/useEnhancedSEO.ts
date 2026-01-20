@@ -46,9 +46,8 @@ export interface EnhancedSEOResult {
       handle?: string;
       site?: string;
     };
-    additionalMetaTags: Array<{
-      name?: string;
-      property?: string;
+    additionalMetaTags: ReadonlyArray<{
+      name: string;
       content: string;
     }>;
     noindex?: boolean;

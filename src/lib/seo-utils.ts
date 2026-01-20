@@ -1,5 +1,6 @@
 import { SITE_NAME, SITE_DESCRIPTION, PRODUCTS, CONTACT_INFO, SOCIAL_LINKS } from './constants';
 import { getProductPrice, getPriceRange} from './pricing';
+import type { Currency } from './geo/currency-detector';
 
 // SEO utilities for comprehensive structured data and multilingual support
 
@@ -556,14 +557,14 @@ interface Product {
 }
 
 // Generate enhanced product offer schema
-export const generateOfferSchema = (product: Product, localeInput: string) => {
+export const generateOfferSchema = (product: Product, localeInput: string, currency: string = 'CAD') => {
   const locale = normalizeLocale(localeInput);
   const localizedUrl = getLocalizedUrl(`/products/${product.id}`, locale);
 
   return {
     '@type': 'Offer',
     price: product.price.toString(),
-    priceCurrency: 'CAD',
+    priceCurrency: currency,
     availability: buildAvailabilityUrl(),
     url: localizedUrl,
     seller: {
@@ -577,7 +578,7 @@ export const generateOfferSchema = (product: Product, localeInput: string) => {
       shippingRate: {
         '@type': 'MonetaryAmount',
         value: '0',
-        currency: 'CAD'
+        currency: currency
       },
       deliveryTime: {
         '@type': 'ShippingDeliveryTime',
@@ -606,7 +607,7 @@ export const generateOfferSchema = (product: Product, localeInput: string) => {
 };
 
 // Generate local business schema for city pages
-export const generateLocalBusinessSchema = (cityName: string, province: string, localeInput: string) => {
+export const generateLocalBusinessSchema = (cityName: string, province: string, localeInput: string, currency: string = 'CAD') => {
   const locale = normalizeLocale(localeInput);
   const cityCoordinates = {
     'Montreal': { lat: '45.5017', lon: '-73.5673' },
@@ -674,11 +675,11 @@ export const generateLocalBusinessSchema = (cityName: string, province: string, 
           name: product.name,
           description: product.description.split('\n')[0]
         },
-        price: getProductPrice(product.id as typeof PRODUCTS[number]['id']).toFixed(2),
-        priceCurrency: 'CAD'
+        price: getProductPrice(product.id as typeof PRODUCTS[number]['id'], currency as Currency).toFixed(2),
+        priceCurrency: currency
       }))
     },
-    priceRange: getPriceRange(locale).formatted
+    priceRange: getPriceRange(currency as Currency, locale).formatted
   };
 };
 
@@ -686,7 +687,7 @@ export const generateLocalBusinessSchema = (cityName: string, province: string, 
 // This functionality can be implemented when testimonials constants are properly typed
 
 // Generate comprehensive homepage schema
-export const generateHomepageSchema = (localeInput: string) => {
+export const generateHomepageSchema = (localeInput: string, currency: string = 'CAD') => {
   const locale = normalizeLocale(localeInput);
   const baseUrl = 'https://www.purrify.ca';
 
@@ -715,7 +716,7 @@ export const generateHomepageSchema = (localeInput: string) => {
             name: product.name,
             description: product.description.split('\n')[0],
             image: `${baseUrl}${product.image}`,
-            offers: generateOfferSchema(product, locale)
+            offers: generateOfferSchema(product, locale, currency)
           }
         }))
       },
@@ -727,7 +728,7 @@ export const generateHomepageSchema = (localeInput: string) => {
 };
 
 // Generate complete product page schema
-export const generateProductPageSchema = (productId: string, localeInput: string) => {
+export const generateProductPageSchema = (productId: string, localeInput: string, currency: string = 'CAD') => {
   const locale = normalizeLocale(localeInput);
   const product = PRODUCTS.find(p => p.id === productId);
   if (!product) return null;
@@ -767,7 +768,7 @@ export const generateProductPageSchema = (productId: string, localeInput: string
         size: product.size,
         color: 'Black',
         material: 'Activated Carbon',
-        offers: generateOfferSchema(product, locale),
+        offers: generateOfferSchema(product, locale, currency),
         aggregateRating: {
           '@type': 'AggregateRating',
           ratingValue: '4.9',
@@ -890,7 +891,7 @@ export const generateArticlePageSchema = (title: string, description: string, pa
 };
 
 // Generate location page schema
-export const generateLocationPageSchema = (cityName: string, province: string, localeInput: string) => {
+export const generateLocationPageSchema = (cityName: string, province: string, localeInput: string, currency: string = 'CAD') => {
   const locale = normalizeLocale(localeInput);
   const url = getLocalizedUrl(`/locations/${cityName.toLowerCase()}`, locale);
 
@@ -898,7 +899,7 @@ export const generateLocationPageSchema = (cityName: string, province: string, l
     '@context': 'https://schema.org',
     '@graph': [
       // Local Business Schema
-      generateLocalBusinessSchema(cityName, province, locale),
+      generateLocalBusinessSchema(cityName, province, locale, currency),
 
       // Service Area Schema
       {
@@ -914,7 +915,7 @@ export const generateLocationPageSchema = (cityName: string, province: string, l
           name: `${cityName}, ${province}`
         },
         serviceType: 'Pet Product Delivery',
-        offers: PRODUCTS.map(product => generateOfferSchema(product, locale))
+        offers: PRODUCTS.map(product => generateOfferSchema(product, locale, currency))
       },
 
       // Breadcrumb Schema

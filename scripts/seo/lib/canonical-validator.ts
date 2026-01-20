@@ -6,7 +6,7 @@
 import fg from 'fast-glob';
 import path from 'path';
 import fs from 'fs';
-import cheerio from 'cheerio';
+import * as cheerio from 'cheerio';
 
 export interface CanonicalIssue {
   page: string;
@@ -42,7 +42,6 @@ export function extractMetaUrls(html: string): {
 } {
   const $ = cheerio.load(html, {
     xml: false,
-    decodeEntities: true,
   });
 
   // Extract canonical link

@@ -108,6 +108,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
     keywords: ['cat litter freshener', 'charcoal litter additive', 'cat litter deodorizer', 'odor eliminator'],
   });
 
+  const canonicalUrl = nextSeoProps.canonical;
   const singleCheckoutUrl = getPaymentLink('standardSingle') || '#';
   const autoshipCheckoutUrl = getPaymentLink('standardAutoship') || '#';
 
