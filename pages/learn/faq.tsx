@@ -4,10 +4,12 @@ import { useState, useCallback } from 'react';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
+import { useCurrency } from '../../src/lib/currency-context';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { NextSeo } from 'next-seo';
 import { formatProductPrice } from '../../src/lib/pricing';
-import { generateWebsiteSchema, buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { generateJSONLD } from '../../src/lib/seo-utils';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 import {
   Search,
   ChevronDown,
@@ -29,9 +31,10 @@ import Image from 'next/image';
 
 const FAQPage: NextPage = () => {
   const { t, locale } = useTranslation();
-  const trialPrice = formatProductPrice('trial', locale);
-  const standardPrice = formatProductPrice('standard', locale);
-  const familyPrice = formatProductPrice('family', locale);
+  const { currency } = useCurrency();
+  const trialPrice = formatProductPrice('trial', currency, locale);
+  const standardPrice = formatProductPrice('standard', currency, locale);
+  const familyPrice = formatProductPrice('family', currency, locale);
   const trialCtaLabel =
     locale === 'fr'
       ? `Essayer sans risque - ${trialPrice} (livraison incluse)`
@@ -44,8 +47,6 @@ const FAQPage: NextPage = () => {
 
   const pageTitle = 'Frequently Asked Questions About Activated Carbon Cat Litter - Purrify';
   const pageDescription = 'Get expert answers about activated carbon cat litter additives: how they work, activated carbon vs baking soda comparison, usage tips, safety information, and troubleshooting. Learn why coconut shell activated carbon eliminates cat litter odors better than fragrances or baking soda.';
-  const canonicalUrl = getLocalizedUrl('/learn/faq', locale);
-  const languageAlternates = buildLanguageAlternates('/learn/faq');
 
   // FAQ page images - contextually relevant
   const heroImage = 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1600&q=80'; // Cat owner with questions
@@ -88,62 +89,32 @@ const FAQPage: NextPage = () => {
   const today = new Date().toISOString();
   const lastUpdated = '2025-01-09'; // Updated regularly for SEO freshness
 
-  // Generate FAQ schema for SEO
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'datePublished': '2024-01-15',
-    'dateModified': today,
-    'mainEntity': faqItems.map(item => ({
-      '@type': 'Question',
-      'name': item.question,
-      'acceptedAnswer': {
-        '@type': 'Answer',
-        'text': item.answer,
-        'dateCreated': '2024-01-15',
-        'dateModified': today
-      }
-    }))
-  };
-
-  // Additional Article schema for better AI/SEO signals
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    'headline': pageTitle,
-    'description': pageDescription,
-    'datePublished': '2024-01-15',
-    'dateModified': today,
-    'author': {
-      '@type': 'Organization',
-      'name': 'Purrify',
-      'url': 'https://www.purrify.ca'
+  // Use enhanced SEO hook for automated optimization
+  const { nextSeoProps, schema } = useEnhancedSEO({
+    path: '/learn/faq',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'activated carbon cat litter FAQ',
+    schemaType: 'faq',
+    schemaData: {
+      questions: faqItems.map(item => ({
+        question: item.question,
+        answer: item.answer,
+      })),
     },
-    'publisher': {
-      '@type': 'Organization',
-      'name': 'Purrify',
-      'logo': {
-        '@type': 'ImageObject',
-        'url': 'https://www.purrify.ca/logo.png'
-      }
-    },
-    'mainEntityOfPage': {
-      '@type': 'WebPage',
-      '@id': canonicalUrl
-    }
-  };
-
-  // Speakable schema for voice search optimization (Google Assistant, Alexa, etc.)
-  const speakableSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    'name': pageTitle,
-    'speakable': {
-      '@type': 'SpeakableSpecification',
-      'cssSelector': ['.faq-answer', '.faq-question', '.speakable-content']
-    },
-    'url': canonicalUrl
-  };
+    keywords: [
+      'activated carbon cat litter FAQ',
+      'activated carbon vs baking soda',
+      'coconut shell activated carbon',
+      'cat litter odor control',
+      'how does activated carbon work',
+      'is activated carbon safe for cats',
+      'cat litter deodorizer comparison',
+      'natural cat litter additive',
+      'ammonia odor elimination',
+      'best cat litter odor control',
+    ],
+  });
 
   const toggleItem = useCallback((id: number) => {
     setOpenItems(prev =>
@@ -180,50 +151,15 @@ const FAQPage: NextPage = () => {
 
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          type: 'website',
-          url: canonicalUrl,
-          title: pageTitle,
-          description: pageDescription,
-        }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: 'activated carbon cat litter FAQ, activated carbon vs baking soda, coconut shell activated carbon, cat litter odor control, how does activated carbon work, is activated carbon safe for cats, cat litter deodorizer comparison, natural cat litter additive, ammonia odor elimination, best cat litter odor control',
-          },
-        ]}
-      />
+      <NextSeo {...nextSeoProps} />
 
-      {/* FAQ Schema for SEO */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-
-      {/* Article Schema for AI/SEO */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-
-      {/* Website Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateWebsiteSchema(locale))
-        }}
-      />
-
-      {/* Speakable Schema for Voice Search */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }}
-      />
+      {/* Auto-generated FAQ Schema */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+        />
+      )}
 
       <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
         {/* Breadcrumb Navigation */}
