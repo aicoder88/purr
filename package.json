@@ -51,6 +51,7 @@
     "validate-hydration": "node scripts/validate-hydration.js",
     "validate-no-middleware": "node scripts/validate-no-middleware.js",
     "validate-links": "tsx scripts/validate-links.ts",
+    "validate-schemas": "tsx scripts/validate-schemas.ts",
     "repair-blog": "tsx scripts/repair-blog-posts.ts",
     "test:e2e": "bash scripts/run-e2e-tests.sh",
     "test:e2e:security": "bash scripts/run-security-tests.sh",
