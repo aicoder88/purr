@@ -106,6 +106,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
     },
     image: 'https://www.purrify.ca/optimized/60g.webp',
     keywords: ['cat litter freshener', 'charcoal litter additive', 'cat litter deodorizer', 'odor eliminator'],
+    includeBreadcrumb: true,
   });
 
   const canonicalUrl = nextSeoProps.canonical;

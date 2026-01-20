@@ -83,6 +83,7 @@ export default function MostPowerfulOdorAbsorber() {
       'cat litter ammonia control',
       'unscented litter deodorizer',
     ],
+    includeBreadcrumb: true,
   });
 
   return (

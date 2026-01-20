@@ -66,6 +66,7 @@ export default function Home({ priceValidUntil }: InferGetStaticPropsType<typeof
     targetKeyword: 'cat litter deodorizer',
     schemaType: 'organization',
     keywords: t.homepage.seo.keywords?.split(', '),
+    includeBreadcrumb: true,
   });
 
 

@@ -34,6 +34,7 @@ export default function SafetyInformationPage() {
     },
     image: 'https://www.purrify.ca/optimized/140g.webp',
     keywords: ['activated carbon safety', 'pet-safe deodorizer', 'food grade carbon', 'NSF certified', 'technical specifications'],
+    includeBreadcrumb: true,
   });
 
   const specifications = [

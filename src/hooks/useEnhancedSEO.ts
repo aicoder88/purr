@@ -8,6 +8,7 @@ import { useCurrency } from '../lib/currency-context';
 import { optimizeMetaTitle, optimizeMetaDescription } from '../lib/seo/meta-optimizer';
 import { getLocalizedUrl, buildLanguageAlternates } from '../lib/seo-utils';
 import { SITE_NAME } from '../lib/constants';
+import { useBreadcrumb, type BreadcrumbItem } from './useBreadcrumb';
 
 export interface SEOConfig {
   path: string;
@@ -20,6 +21,7 @@ export interface SEOConfig {
   keywords?: string[];
   noindex?: boolean;
   nofollow?: boolean;
+  includeBreadcrumb?: boolean;
 }
 
 export interface EnhancedSEOResult {
@@ -54,6 +56,10 @@ export interface EnhancedSEOResult {
     nofollow?: boolean;
   };
   schema: object | null;
+  breadcrumb?: {
+    items: BreadcrumbItem[];
+    schema: object;
+  };
   meta: {
     titleLength: number;
     descriptionLength: number;
@@ -102,7 +108,7 @@ function getOGLocale(locale: string): string {
 
 /**
  * Enhanced SEO Hook
- * Provides optimized SEO props with automatic i18n, currency, and schema support
+ * Provides optimized SEO props with automatic i18n, currency, breadcrumb, and schema support
  */
 export function useEnhancedSEO(config: SEOConfig): EnhancedSEOResult {
   const { t, locale } = useTranslation();
@@ -118,6 +124,9 @@ export function useEnhancedSEO(config: SEOConfig): EnhancedSEOResult {
   // Build canonical and alternates
   const canonicalUrl = getLocalizedUrl(config.path, locale);
   const languageAlternates = buildLanguageAlternates(config.path);
+
+  // Generate breadcrumb (if requested)
+  const breadcrumbData = config.includeBreadcrumb ? useBreadcrumb(config.path) : undefined;
 
   // Build NextSeo props
   const nextSeoProps = {
@@ -156,21 +165,35 @@ export function useEnhancedSEO(config: SEOConfig): EnhancedSEOResult {
     nofollow: config.nofollow,
   };
 
-  // Generate schema (if specified)
+  // Generate main schema (if specified)
   let schema: object | null = null;
   if (config.schemaType && config.schemaData) {
-    schema = generateSchema(
+    const mainSchema = generateSchema(
       config.schemaType,
       config.schemaData,
       canonicalUrl,
       locale,
       currency
     );
+
+    // If breadcrumb is requested, combine schemas using @graph
+    if (breadcrumbData) {
+      schema = {
+        '@context': 'https://schema.org',
+        '@graph': [mainSchema, breadcrumbData.schema],
+      };
+    } else {
+      schema = mainSchema;
+    }
+  } else if (breadcrumbData) {
+    // Only breadcrumb schema, no main schema
+    schema = breadcrumbData.schema;
   }
 
   return {
     nextSeoProps,
     schema,
+    breadcrumb: breadcrumbData,
     meta: {
       titleLength: optimizedTitle.length,
       descriptionLength: optimizedDescription.length,

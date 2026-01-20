@@ -44,6 +44,7 @@ export default function BestForSmallApartments() {
       'urban cat litter solutions',
       'small space pet odor',
     ],
+    includeBreadcrumb: true,
   });
 
   return (

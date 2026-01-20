@@ -120,6 +120,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
       },
     },
     image: 'https://www.purrify.ca/optimized/60g.webp',
+    includeBreadcrumb: true,
   });
 
   // Family pack lifestyle images

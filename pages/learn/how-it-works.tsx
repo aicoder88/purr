@@ -42,6 +42,7 @@ export default function HowItWorksPage() {
     },
     image: 'https://www.purrify.ca/optimized/micropores_magnified_view.webp',
     keywords: ['how activated carbon works', 'cat litter odor control', 'activated carbon science', 'molecular adsorption', 'pet odor elimination'],
+    includeBreadcrumb: true,
   });
 
   const sciencePoints = [

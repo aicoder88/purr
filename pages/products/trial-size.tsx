@@ -95,6 +95,7 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
     },
     image: 'https://www.purrify.ca/optimized/17gpink.webp',
     keywords: ['cat litter freshener', 'charcoal litter additive', 'cat litter deodorizer', 'free trial'],
+    includeBreadcrumb: true,
   });
 
   // Schema.org structured data variables

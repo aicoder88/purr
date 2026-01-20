@@ -114,6 +114,7 @@ const FAQPage: NextPage = () => {
       'ammonia odor elimination',
       'best cat litter odor control',
     ],
+    includeBreadcrumb: true,
   });
 
   const toggleItem = useCallback((id: number) => {
