@@ -27,12 +27,29 @@ export const en = {
     howItWorksPage: "How It Works",
     faq: "FAQ",
     science: "Science",
+    safetyInfo: "Safety Info",
+    activatedCarbonBenefits: "Activated Carbon Benefits",
+    catLitterGuide: "Cat Litter Guide",
+    howToUse: "How to Use",
+    technologyComparison: "Technology Comparison",
+    solutions: "Solutions",
+    // Solution submenu items
+    ammoniaSmellControl: "Ammonia Smell Control",
+    apartmentLiving: "Apartment Living",
+    litterBoxOdor: "Litter Box Odor",
+    multipleCats: "Multiple Cats",
+    naturalAdditive: "Natural Additive",
+    seniorCats: "Senior Cats",
     buyNow: "Buy Now!",
     retailers: "For Retailers",
     wholesalePricing: "Wholesale Pricing",
     becomePartner: "Become a Partner",
     marketingSupport: "Marketing Support",
-    shipsToUSA: "Ships to USA"
+    shipsToUSA: "Ships to USA",
+    // Menu controls
+    toggleMenu: "Toggle menu",
+    signOut: "Sign Out",
+    signedIn: "Signed in"
   },
 
   locationsMenu: {

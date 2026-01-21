@@ -32,6 +32,7 @@ export const fr = {
     wholesalePricing: "Prix de Gros",
     becomePartner: "Devenir Partenaire",
     marketingSupport: "Support Marketing",
+    shipsToUSA: "Expédition aux États-Unis",
     // Learn dropdown items
     safetyInfo: "Informations de Sécurité",
     activatedCarbonBenefits: "Avantages du Charbon Actif",

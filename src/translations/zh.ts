@@ -32,6 +32,7 @@ export const zh = {
     wholesalePricing: "批发价格",
     becomePartner: "成为合作伙伴",
     marketingSupport: "营销支持",
+    shipsToUSA: "配送至美国",
     // Learn dropdown items
     safetyInfo: "安全信息",
     activatedCarbonBenefits: "活性炭的好处",
