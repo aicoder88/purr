@@ -603,20 +603,20 @@ export function RetailerContact() {
                   <SuccessStoryCard
                     icon="🏪"
                     gradient={GRADIENTS.green}
-                    businessName={stories?.stories?.petPalace?.businessName || 'Pet Palace Toronto'}
-                    businessType={stories?.stories?.petPalace?.businessType || 'Independent Pet Store'}
-                    quote={stories?.stories?.petPalace?.quote || 'Added $800/month revenue in our first quarter. Customers love it and keep coming back!'}
-                    metric={stories?.stories?.petPalace?.metric || '+145% sales growth'}
+                    businessName={stories?.stories?.pattesEtGriffes?.businessName || 'Pattes et Griffes – Sainte‑Thérèse'}
+                    businessType={stories?.stories?.pattesEtGriffes?.businessType || 'Store Owner / Manager'}
+                    quote={stories?.stories?.pattesEtGriffes?.quote || 'Our customers ask for Purrify by name now. It\'s an easy recommendation at the counter and reorders have been consistent month after month.'}
+                    metric={stories?.stories?.pattesEtGriffes?.metric || '30 day reorder cycle'}
                     metricColor="text-[#10B981] dark:text-[#34D399]"
                   />
 
                   <SuccessStoryCard
-                    icon="🏥"
+                    icon="🏪"
                     gradient={GRADIENTS.redOrange}
-                    businessName={stories?.stories?.healthyPaws?.businessName || 'Healthy Paws Vet'}
-                    businessType={stories?.stories?.healthyPaws?.businessType || 'Veterinary Clinic'}
-                    quote={stories?.stories?.healthyPaws?.quote || 'Our clients trust our recommendation. Best margins in our retail section.'}
-                    metric={stories?.stories?.healthyPaws?.metric || '55% profit margin'}
+                    businessName={stories?.stories?.chico?.businessName || 'Chico – Boul. St‑Laurent (Montreal)'}
+                    businessType={stories?.stories?.chico?.businessType || 'Store Manager'}
+                    quote={stories?.stories?.chico?.quote || 'Simple to stock, strong margins, and it moves. The POS materials helped our team explain the benefits quickly to shoppers.'}
+                    metric={stories?.stories?.chico?.metric || 'High shelf sell‑through'}
                     metricColor="text-[#FF6B6B] dark:text-[#FF8E8E]"
                   />
                 </div>

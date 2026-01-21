@@ -1467,17 +1467,17 @@ export const zh = {
       successStories: {
         title: "合作伙伴成功案例",
         stories: {
-          petPalace: {
-            businessName: "Pet Palace Toronto",
-            businessType: "独立宠物店",
-            quote: "第一季度增加了800美元/月的收入。客户喜欢并持续回购！",
-            metric: "+145% 销售增长"
+          pattesEtGriffes: {
+            businessName: "Pattes et Griffes – Sainte‑Thérèse",
+            businessType: "店主 / 经理",
+            quote: "我们的客户现在点名要Purrify。在柜台推荐很容易，订货月月稳定。",
+            metric: "30天订货周期"
           },
-          healthyPaws: {
-            businessName: "Healthy Paws Vet",
-            businessType: "兽医诊所",
-            quote: "我们的客户信任我们的推荐。我们零售区利润最高的产品。",
-            metric: "55% 利润率"
+          chico: {
+            businessName: "Chico – Boul. St‑Laurent (蒙特利尔)",
+            businessType: "店铺经理",
+            quote: "易于存储，利润高，走货快。销售物料帮助我们的团队快速向购物者解释优势。",
+            metric: "高周转率"
           }
         }
       },

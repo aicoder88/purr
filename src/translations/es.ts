@@ -2196,17 +2196,17 @@ export const es: TranslationType = {
       successStories: {
         title: "Historias de Exito de Socios",
         stories: {
-          petPalace: {
-            businessName: "Pet Palace Toronto",
-            businessType: "Tienda de Mascotas Independiente",
-            quote: "Agregamos $800/mes en ingresos en nuestro primer trimestre. Los clientes lo aman y siguen volviendo!",
-            metric: "+145% crecimiento en ventas"
+          pattesEtGriffes: {
+            businessName: "Pattes et Griffes – Sainte‑Thérèse",
+            businessType: "Propietario / Gerente",
+            quote: "Nuestros clientes ahora piden Purrify por nombre. Es una recomendacion facil en el mostrador y los pedidos son consistentes mes tras mes.",
+            metric: "Ciclo de 30 dias"
           },
-          healthyPaws: {
-            businessName: "Healthy Paws Vet",
-            businessType: "Clinica Veterinaria",
-            quote: "Nuestros clientes confian en nuestra recomendacion. Mejores margenes en nuestra seccion minorista.",
-            metric: "55% margen de ganancia"
+          chico: {
+            businessName: "Chico – Boul. St‑Laurent (Montreal)",
+            businessType: "Gerente de Tienda",
+            quote: "Simple de almacenar, margenes solidos, y se mueve. Los materiales POS ayudaron a nuestro equipo a explicar los beneficios rapidamente a los clientes.",
+            metric: "Alta rotacion"
           }
         }
       },

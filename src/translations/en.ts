@@ -2186,17 +2186,17 @@ export const en = {
       successStories: {
         title: "Partner Success Stories",
         stories: {
-          petPalace: {
-            businessName: "Pet Palace Toronto",
-            businessType: "Independent Pet Store",
-            quote: "Added $800/month revenue in our first quarter. Customers love it and keep coming back!",
-            metric: "+145% sales growth"
+          pattesEtGriffes: {
+            businessName: "Pattes et Griffes – Sainte‑Thérèse",
+            businessType: "Store Owner / Manager",
+            quote: "Our customers ask for Purrify by name now. It's an easy recommendation at the counter and reorders have been consistent month after month.",
+            metric: "30 day reorder cycle"
           },
-          healthyPaws: {
-            businessName: "Healthy Paws Vet",
-            businessType: "Veterinary Clinic",
-            quote: "Our clients trust our recommendation. Best margins in our retail section.",
-            metric: "55% profit margin"
+          chico: {
+            businessName: "Chico – Boul. St‑Laurent (Montreal)",
+            businessType: "Store Manager",
+            quote: "Simple to stock, strong margins, and it moves. The POS materials helped our team explain the benefits quickly to shoppers.",
+            metric: "High shelf sell‑through"
           }
         }
       },

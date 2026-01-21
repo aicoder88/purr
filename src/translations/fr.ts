@@ -1489,17 +1489,17 @@ export const fr = {
       successStories: {
         title: "Histoires de Succès de Partenaires",
         stories: {
-          petPalace: {
-            businessName: "Pet Palace Toronto",
-            businessType: "Animalerie Indépendante",
-            quote: "Ajouté 800$/mois de revenus lors de notre premier trimestre. Les clients adorent et reviennent!",
-            metric: "+145% croissance des ventes"
+          pattesEtGriffes: {
+            businessName: "Pattes et Griffes – Sainte‑Thérèse",
+            businessType: "Propriétaire / Gérant",
+            quote: "Nos clients demandent Purrify par son nom maintenant. C'est une recommandation facile au comptoir et les commandes sont constantes mois après mois.",
+            metric: "Cycle de 30 jours"
           },
-          healthyPaws: {
-            businessName: "Healthy Paws Vet",
-            businessType: "Clinique Vétérinaire",
-            quote: "Nos clients font confiance à notre recommandation. Meilleures marges de notre section détail.",
-            metric: "55% marge de profit"
+          chico: {
+            businessName: "Chico – Boul. St‑Laurent (Montréal)",
+            businessType: "Gérant de Magasin",
+            quote: "Simple à stocker, bonnes marges, et ça se vend bien. Les matériels POS ont aidé notre équipe à expliquer les avantages rapidement aux clients.",
+            metric: "Rotation élevée"
           }
         }
       },
