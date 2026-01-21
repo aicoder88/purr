@@ -700,6 +700,53 @@ export const en = {
     allRightsReserved: "All Rights Reserved"
   },
 
+  // Footer Navigation
+  footerNav: {
+    // Section headers
+    trustedReviews: "Trusted Reviews",
+    products: "Products",
+    learn: "Learn",
+    popularArticles: "Popular Articles",
+    company: "Company",
+    // Product links
+    trialSize: "Trial Size",
+    standardSize: "Standard Size",
+    familyPack: "Family Pack",
+    compareSizes: "Compare Sizes",
+    // Learn links
+    howItWorks: "How It Works",
+    faq: "FAQ",
+    science: "Science",
+    safetyInfo: "Safety Info",
+    catLitterGuide: "Cat Litter Guide",
+    ammoniaSolutions: "Ammonia Solutions",
+    litterCalculator: "Litter Calculator",
+    // Article links
+    houseSmells: "House Smells Like Cat Litter?",
+    multiCatGuide: "Multi-Cat Deodorizer Guide",
+    triedEverything: "Tried Everything for Cat Smell?",
+    powerfulAbsorber: "Most Powerful Odor Absorber",
+    smallApartments: "Best for Small Apartments",
+    // Company links
+    about: "About Us",
+    blog: "Blog",
+    locations: "Locations",
+    stockists: "Stockists",
+    testimonials: "Testimonials",
+    retailers: "For Retailers",
+    retailerPortal: "Retailer Portal",
+    hospitality: "Hospitality",
+    shelters: "Shelters",
+    invest: "Investors",
+    affiliateProgram: "Affiliate Program",
+    contact: "Contact",
+    privacyPolicy: "Privacy Policy",
+    termsOfService: "Terms of Service",
+    // Review platforms
+    trustpilot: "Trustpilot",
+    googleReviews: "Google Reviews"
+  },
+
   // Free Trial
   freeTrial: {
     urgentBanner: "Limited Time Offer",

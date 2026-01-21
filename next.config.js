@@ -130,6 +130,11 @@ const REDIRECTS = [
     permanent: true,
   },
   {
+    source: "/documents",
+    destination: "/invest",
+    permanent: true,
+  },
+  {
     source: "/products/purrify-20g",
     destination: "/products/trial-size",
     permanent: true,
@@ -149,6 +154,16 @@ const REDIRECTS = [
     destination: "/products/standard",
     permanent: true,
     locale: false,
+  },
+  {
+    source: "/products/trial",
+    destination: "/products/trial-size",
+    permanent: true,
+  },
+  {
+    source: "/learn/activated-carbon-vs-baking-soda",
+    destination: "/learn/activated-carbon-vs-baking-soda-deodorizers",
+    permanent: true,
   },
   {
     source: "/products/large-size",
@@ -586,6 +601,65 @@ const REDIRECTS = [
     source: "/:locale(fr|zh|es)/locations/province/newfoundland-and-labrador",
     destination: "/:locale/locations",
     permanent: true,
+  },
+
+  // Spanish location redirects (Jan 2026 SEO fix)
+  {
+    source: "/es/locations/montreal",
+    destination: "/es/stockists",
+    permanent: true,
+  },
+  {
+    source: "/es/locations/province/alberta",
+    destination: "/es/stockists",
+    permanent: true,
+  },
+  {
+    source: "/es/locations/province/british-columbia",
+    destination: "/es/stockists",
+    permanent: true,
+  },
+  {
+    source: "/es/locations/province/manitoba",
+    destination: "/es/stockists",
+    permanent: true,
+  },
+  {
+    source: "/es/locations/province/nova-scotia",
+    destination: "/es/stockists",
+    permanent: true,
+  },
+  {
+    source: "/es/locations/province/ontario",
+    destination: "/es/stockists",
+    permanent: true,
+  },
+  {
+    source: "/es/locations/province/quebec",
+    destination: "/es/stockists",
+    permanent: true,
+  },
+  {
+    source: "/es/locations/province/saskatchewan",
+    destination: "/es/stockists",
+    permanent: true,
+  },
+  {
+    source: "/es/opiniones",
+    destination: "/es/reviews",
+    permanent: true,
+  },
+
+  // System page redirects (Jan 2026 SEO fix)
+  {
+    source: "/auth/signin",
+    destination: "/admin/login",
+    permanent: false,
+  },
+  {
+    source: "/affiliate/forgot-password",
+    destination: "/affiliate",
+    permanent: false,
   },
 
   // Legacy URL redirects (Ahrefs 404 report - Jan 2026)

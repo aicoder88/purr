@@ -649,8 +649,13 @@ export interface TranslationType {
     about: string;
     blog: string;
     locations: string;
+    stockists: string;
     testimonials: string;
     retailers: string;
+    retailerPortal: string;
+    hospitality: string;
+    shelters: string;
+    invest: string;
     affiliateProgram: string;
     contact: string;
     privacyPolicy: string;
