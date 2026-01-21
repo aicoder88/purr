@@ -30,6 +30,13 @@ export interface TranslationType {
     wholesalePricing: string;
     becomePartner: string;
     marketingSupport: string;
+    // Partner Programs
+    partnerPrograms?: string;
+    forGroomers?: string;
+    forShelters?: string;
+    affiliateProgram?: string;
+    b2bInquiry?: string;
+    customerReviews?: string;
     shipsToUSA?: string;
     // Learn dropdown items
     safetyInfo?: string;
@@ -654,9 +661,12 @@ export interface TranslationType {
     retailers: string;
     retailerPortal: string;
     hospitality: string;
+    groomers?: string;
     shelters: string;
+    b2bInquiry?: string;
     invest: string;
     affiliateProgram: string;
+    results?: string;
     contact: string;
     privacyPolicy: string;
     termsOfService: string;

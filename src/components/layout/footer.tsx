@@ -391,10 +391,15 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === "fr" ? "/fr/locations" : "/locations"}
+                    href={
+                      locale === "fr" ? "/fr/stockists" :
+                      locale === "zh" ? "/zh/stockists" :
+                      locale === "es" ? "/es/stockists" :
+                      "/stockists"
+                    }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.locations || ""}
+                    {t.footerNav?.stockists || t.footerNav?.locations || "Stockists"}
                   </Link>
                 </li>
                 <li>
@@ -407,10 +412,73 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === "fr" ? "/fr/retailers" : "/retailers"}
+                    href={locale === "fr" ? "/fr/retailers" : locale === "zh" ? "/zh/retailers" : "/retailers"}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.retailers || ""}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/retailer/portal/login"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.retailerPortal || "Retailer Portal"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={
+                      locale === "fr" ? "/fr/hospitality" :
+                      locale === "zh" ? "/zh/hospitality" :
+                      locale === "es" ? "/es/hospitality" :
+                      "/hospitality"
+                    }
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.hospitality || "Hospitality"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={
+                      locale === "fr" ? "/fr/groomers" :
+                      locale === "zh" ? "/zh/groomers" :
+                      locale === "es" ? "/es/groomers" :
+                      "/groomers"
+                    }
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.groomers || "For Groomers"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={
+                      locale === "fr" ? "/fr/shelters" :
+                      locale === "zh" ? "/zh/shelters" :
+                      locale === "es" ? "/es/shelters" :
+                      "/shelters"
+                    }
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.shelters || "Shelters"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/b2b"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.b2bInquiry || "B2B Inquiry"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/invest"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.invest || "Investors"}
                   </Link>
                 </li>
                 <li>
@@ -419,6 +487,14 @@ export function Footer() {
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.affiliateProgram || ""}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/results"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.results || "Success Stories"}
                   </Link>
                 </li>
                 <li>

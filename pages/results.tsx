@@ -394,6 +394,17 @@ export default function Results() {
                   <span className={COLORS.text.tertiary}>{r?.cta?.trust3 || '4.9/5 Rating'}</span>
                 </div>
               </div>
+
+              {/* Link to Reviews */}
+              <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                <Link
+                  href="/reviews"
+                  className="inline-flex items-center gap-2 text-sm text-[#FF3131] dark:text-[#FF5050] hover:underline font-medium"
+                >
+                  <Quote className="w-4 h-4" />
+                  {locale === 'fr' ? 'Voir tous les avis clients →' : locale === 'zh' ? '查看所有客户评价 →' : 'Read all customer reviews →'}
+                </Link>
+              </div>
             </div>
           </Container>
         </section>

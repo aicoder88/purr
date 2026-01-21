@@ -746,6 +746,70 @@ export default function GroomersPage() {
           </div>
         </section>
 
+        {/* Related Programs */}
+        <section className="py-12 md:py-16 bg-gray-100 dark:bg-gray-800/50">
+          <div className="max-w-4xl mx-auto px-4">
+            <div className="text-center mb-8">
+              <h2 className="font-heading text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                {locale === 'fr' ? 'Découvrez Nos Autres Programmes' : locale === 'zh' ? '探索我们的其他计划' : 'Explore Our Other Programs'}
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300 text-sm">
+                {locale === 'fr' ? 'Programmes de partenariat pour différents types d\'entreprises' : locale === 'zh' ? '为不同类型的企业提供合作伙伴计划' : 'Partnership programs for different business types'}
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-4">
+              <Link
+                href="/shelters"
+                className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-purple-300 dark:hover:border-purple-600 hover:shadow-md transition-all group"
+              >
+                <div className="w-10 h-10 bg-pink-100 dark:bg-pink-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Users className="h-5 w-5 text-pink-600 dark:text-pink-400" />
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                    {locale === 'fr' ? 'Pour Refuges' : locale === 'zh' ? '动物收容所计划' : 'For Shelters'}
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">
+                    {locale === 'fr' ? 'Programme de dons' : locale === 'zh' ? '捐赠计划' : 'Donation program'}
+                  </div>
+                </div>
+              </Link>
+              <Link
+                href="/retailers"
+                className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-purple-300 dark:hover:border-purple-600 hover:shadow-md transition-all group"
+              >
+                <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                  <ShoppingBag className="h-5 w-5 text-green-600 dark:text-green-400" />
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                    {locale === 'fr' ? 'Pour Détaillants' : locale === 'zh' ? '零售商计划' : 'For Retailers'}
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">
+                    {locale === 'fr' ? 'Prix de gros' : locale === 'zh' ? '批发定价' : 'Wholesale pricing'}
+                  </div>
+                </div>
+              </Link>
+              <Link
+                href="/affiliate"
+                className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-purple-300 dark:hover:border-purple-600 hover:shadow-md transition-all group"
+              >
+                <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                  <TrendingUp className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                    {locale === 'fr' ? 'Programme Affiliation' : locale === 'zh' ? '联盟计划' : 'Affiliate Program'}
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">
+                    {locale === 'fr' ? '30% commission' : locale === 'zh' ? '30% 佣金' : '30% commission'}
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Contact Section */}
         <section className="py-16 md:py-20 bg-white dark:bg-gray-900">
           <div className="max-w-4xl mx-auto px-4">

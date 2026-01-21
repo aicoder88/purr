@@ -209,6 +209,27 @@ export function Header() {
           label: t.nav?.marketingSupport || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/retailers#marketing-support`,
         },
+        { label: t.nav?.partnerPrograms || "Partner Programs", isGroupHeader: true },
+        {
+          label: t.nav?.forGroomers || "For Groomers",
+          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/groomers`,
+          indent: true,
+        },
+        {
+          label: t.nav?.forShelters || "For Shelters",
+          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/shelters`,
+          indent: true,
+        },
+        {
+          label: t.nav?.affiliateProgram || "Affiliate Program",
+          href: "/affiliate",
+          indent: true,
+        },
+        {
+          label: t.nav?.b2bInquiry || "B2B Inquiry",
+          href: "/b2b",
+          indent: true,
+        },
       ],
     },
     {
