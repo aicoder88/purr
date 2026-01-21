@@ -19,6 +19,7 @@ import { formatProductPrice, getProductPrice } from '../../src/lib/pricing';
 import { getPaymentLink } from '../../src/lib/payment-links';
 import { useEffect, useRef, useCallback, useState } from 'react';
 import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
+import { useAggregateReview } from '../../src/hooks/useAggregateReview';
 import { trackTikTokClientEvent } from '../../src/lib/tiktok-tracking';
 
 interface StandardSizePageProps {
@@ -85,6 +86,9 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
   const pageTitle = seoMeta?.title || `${productName} - Cat Litter Freshener & Charcoal Additive | Purrify`;
   const pageDescription = seoMeta?.description || "Best cat litter freshener for single-cat homes. 50g activated charcoal cat litter additive eliminates ammonia odors for 4-6 weeks. Natural, fragrance-free, works with any litter. Ships to USA & Canada.";
 
+  // Get aggregate review data
+  const { data: reviewData, displayText: reviewDisplay } = useAggregateReview(productKey, locale);
+
   // Use enhanced SEO hook
   const { nextSeoProps, schema } = useEnhancedSEO({
     path: '/products/standard',
@@ -100,8 +104,8 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
       priceValidUntil,
       availability: 'https://schema.org/InStock',
       rating: {
-        value: 4.8,
-        count: 284,
+        value: reviewData.ratingValue,
+        count: reviewData.reviewCount,
       },
     },
     image: 'https://www.purrify.ca/optimized/60g.webp',

@@ -10,7 +10,7 @@ import { useTranslation } from '../../src/lib/translation-context';
 import { useCurrency } from '../../src/lib/currency-context';
 import { getSEOMeta } from '../../src/translations/seo-meta';
 import { SITE_NAME } from '../../src/lib/constants';
-import { getPriceValidityDate, generateJSONLD } from '../../src/lib/seo-utils';
+import { getPriceValidityDate, generateFAQSchema } from '../../src/lib/seo-utils';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../src/lib/pricing';
 import { getPaymentLink } from '../../src/lib/payment-links';
 import Image from 'next/image';
@@ -22,6 +22,7 @@ import { QuantitySelector } from '../../src/components/product/QuantitySelector'
 import { GuaranteeBadge } from '../../src/components/ui/GuaranteeBadge';
 import { trackTikTokClientEvent } from '../../src/lib/tiktok-tracking';
 import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
+import { useAggregateReview } from '../../src/hooks/useAggregateReview';
 
 interface FamilyPackPageProps {
   priceValidUntil: string;
@@ -101,6 +102,9 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
   const familyAutoshipLink = getPaymentLink('familyAutoship');
   const checkoutUrl = locale === 'en' ? '/checkout' : `/${locale}/checkout`;
 
+  // Get aggregate review data
+  const { data: reviewData, displayText: reviewDisplay } = useAggregateReview(productKey, locale);
+
   // Use enhanced SEO hook for automated optimization
   const { nextSeoProps, schema } = useEnhancedSEO({
     path: '/products/family-pack',
@@ -115,8 +119,8 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
       price: familyPriceAmount.toFixed(2),
       priceValidUntil,
       rating: {
-        value: '4.9',
-        count: '127',
+        value: reviewData.ratingValue,
+        count: reviewData.reviewCount,
       },
     },
     image: 'https://www.purrify.ca/optimized/60g.webp',
@@ -155,11 +159,20 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
     <>
       <NextSeo {...nextSeoProps} />
 
-      {/* Auto-generated Product Schema */}
+      {/* Enhanced Product JSON-LD from useEnhancedSEO hook */}
       {schema && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                schema,
+                // FAQ Schema for product page
+                generateFAQSchema(locale),
+              ],
+            }),
+          }}
         />
       )}
 

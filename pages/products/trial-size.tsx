@@ -15,6 +15,7 @@ import { getProductPrice, formatProductPrice } from '../../src/lib/pricing';
 import { useEffect, useRef } from 'react';
 import { trackTikTokClientEvent } from '../../src/lib/tiktok-tracking';
 import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
+import { useAggregateReview } from '../../src/hooks/useAggregateReview';
 
 interface TrialSizePageProps {
   priceValidUntil: string;
@@ -74,6 +75,9 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
   const trialPriceString = trialPriceValue.toFixed(2);
   const trialPrice = formatProductPrice('trial', currency, locale);
 
+  // Get aggregate review data
+  const { data: reviewData, displayText: reviewDisplay } = useAggregateReview(productKey, locale);
+
   // Use enhanced SEO hook
   const { nextSeoProps, schema } = useEnhancedSEO({
     path: '/products/trial-size',
@@ -89,8 +93,8 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
       priceValidUntil,
       availability: 'https://schema.org/InStock',
       rating: {
-        value: 4.8,
-        count: 127,
+        value: reviewData.ratingValue,
+        count: reviewData.reviewCount,
       },
     },
     image: 'https://www.purrify.ca/optimized/17gpink.webp',
