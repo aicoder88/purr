@@ -7,4 +7,12 @@ set +a
 
 # Build and start Next.js on port 3010
 # Use standalone server since next.config.js has output: 'standalone'
-next build && PORT=3010 node .next/standalone/server.js
+next build
+
+# Copy public and static assets to standalone build
+# Next.js standalone builds require manual copying of public directory
+cp -r public .next/standalone/
+cp -r .next/static .next/standalone/.next/
+
+# Start the standalone server
+PORT=3010 node .next/standalone/server.js
