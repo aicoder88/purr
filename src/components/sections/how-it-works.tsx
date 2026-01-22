@@ -16,7 +16,7 @@ export function HowItWorks() {
 
   return (
     <section
-      className="pb-20 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900 transition-colors duration-300 relative overflow-hidden"
+      className="py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900 transition-colors duration-300 relative overflow-hidden"
       id="how-it-works"
     >
       {/* Animated background elements - hidden on mobile for performance */}
@@ -26,7 +26,14 @@ export function HowItWorks() {
       </div>
 
       <Container className="relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+        {/* Section Heading */}
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <h2 className="font-heading text-5xl md:text-7xl font-black tracking-tight mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent">
+            Ridiculously Easy to Use
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative mt-16">
           {/* Enhanced connecting line with gradient */}
           <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-purple-300 via-pink-300 to-orange-300 dark:from-purple-700 dark:via-pink-700 dark:to-orange-700 hidden md:block rounded-full shadow-lg"></div>
 
