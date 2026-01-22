@@ -6,9 +6,27 @@
 import {
   SEO_META,
   getSEOMeta,
+  getSolutionSEOMeta,
   SEOMetaContent,
+  PageMeta,
 } from '../../src/translations/seo-meta';
 import { LocaleCode } from '../../src/lib/seo/types';
+
+// Helper to check if a value is a PageMeta (has title and description)
+function isPageMeta(value: unknown): value is PageMeta {
+  return typeof value === 'object' && value !== null && 'title' in value && 'description' in value;
+}
+
+// Helper to get flat list of learn PageMeta entries (excluding nested objects)
+function getFlatLearnPages(locale: LocaleCode): PageMeta[] {
+  const learn = SEO_META[locale].learn;
+  return Object.values(learn).filter(isPageMeta);
+}
+
+// Helper to get solution pages
+function getSolutionPages(locale: LocaleCode): PageMeta[] {
+  return Object.values(SEO_META[locale].learn.solutions);
+}
 
 describe('SEO Meta Translations Structure', () => {
   const locales: LocaleCode[] = ['en', 'fr', 'zh', 'es'];
@@ -41,13 +59,25 @@ describe('SEO Meta Translations Structure', () => {
     });
 
     it('should have all learn pages for all locales', () => {
-      const learnPages = ['howItWorks', 'activatedCarbonBenefits', 'faq', 'safety'] as const;
+      const learnPages = ['howItWorks', 'activatedCarbonBenefits', 'activatedCarbonVsBakingSoda', 'usingDeodorizersWithKittens', 'faq', 'safety'] as const;
 
       locales.forEach(locale => {
         learnPages.forEach(page => {
           expect(SEO_META[locale].learn[page]).toBeDefined();
           expect(SEO_META[locale].learn[page].title).toBeTruthy();
           expect(SEO_META[locale].learn[page].description).toBeTruthy();
+        });
+      });
+    });
+
+    it('should have all solution pages for all locales', () => {
+      const solutionPages = ['ammoniaSmellCatLitter', 'howToNeutralizeAmmonia', 'litterBoxSmellElimination', 'multipleCatsOdorControl'] as const;
+
+      locales.forEach(locale => {
+        solutionPages.forEach(page => {
+          expect(SEO_META[locale].learn.solutions[page]).toBeDefined();
+          expect(SEO_META[locale].learn.solutions[page].title).toBeTruthy();
+          expect(SEO_META[locale].learn.solutions[page].description).toBeTruthy();
         });
       });
     });
@@ -102,11 +132,23 @@ describe('SEO Meta Title Optimization', () => {
     });
 
     it('should have reasonable titles for all learn pages', () => {
-      const learnPages = ['howItWorks', 'activatedCarbonBenefits', 'faq', 'safety'] as const;
+      const learnPages = ['howItWorks', 'activatedCarbonBenefits', 'activatedCarbonVsBakingSoda', 'usingDeodorizersWithKittens', 'faq', 'safety'] as const;
 
       locales.forEach(locale => {
         learnPages.forEach(page => {
           const title = SEO_META[locale].learn[page].title;
+          expect(title.length).toBeGreaterThan(10);
+          expect(title.length).toBeLessThanOrEqual(70);
+        });
+      });
+    });
+
+    it('should have reasonable titles for all solution pages', () => {
+      const solutionPages = ['ammoniaSmellCatLitter', 'howToNeutralizeAmmonia', 'litterBoxSmellElimination', 'multipleCatsOdorControl'] as const;
+
+      locales.forEach(locale => {
+        solutionPages.forEach(page => {
+          const title = SEO_META[locale].learn.solutions[page].title;
           expect(title.length).toBeGreaterThan(10);
           expect(title.length).toBeLessThanOrEqual(70);
         });
@@ -144,7 +186,8 @@ describe('SEO Meta Title Optimization', () => {
         const allTitles = [
           SEO_META[locale].homepage.title,
           ...Object.values(SEO_META[locale].products).map(p => p.title),
-          ...Object.values(SEO_META[locale].learn).map(p => p.title),
+          ...getFlatLearnPages(locale).map(p => p.title),
+          ...getSolutionPages(locale).map(p => p.title),
           ...Object.values(SEO_META[locale].blog).map(p => p.title),
         ];
 
@@ -181,11 +224,23 @@ describe('SEO Meta Description Optimization', () => {
     });
 
     it('should have meaningful descriptions for all learn pages', () => {
-      const learnPages = ['howItWorks', 'activatedCarbonBenefits', 'faq', 'safety'] as const;
+      const learnPages = ['howItWorks', 'activatedCarbonBenefits', 'activatedCarbonVsBakingSoda', 'usingDeodorizersWithKittens', 'faq', 'safety'] as const;
 
       locales.forEach(locale => {
         learnPages.forEach(page => {
           const desc = SEO_META[locale].learn[page].description;
+          expect(desc.length).toBeGreaterThan(20);
+          expect(desc.length).toBeLessThanOrEqual(170);
+        });
+      });
+    });
+
+    it('should have meaningful descriptions for all solution pages', () => {
+      const solutionPages = ['ammoniaSmellCatLitter', 'howToNeutralizeAmmonia', 'litterBoxSmellElimination', 'multipleCatsOdorControl'] as const;
+
+      locales.forEach(locale => {
+        solutionPages.forEach(page => {
+          const desc = SEO_META[locale].learn.solutions[page].description;
           expect(desc.length).toBeGreaterThan(20);
           expect(desc.length).toBeLessThanOrEqual(170);
         });
@@ -246,7 +301,8 @@ describe('SEO Meta Description Optimization', () => {
       const allDescriptions = [
         SEO_META[locale].homepage.description,
         ...Object.values(SEO_META[locale].products).map(p => p.description),
-        ...Object.values(SEO_META[locale].learn).map(p => p.description),
+        ...getFlatLearnPages(locale).map(p => p.description),
+        ...getSolutionPages(locale).map(p => p.description),
         ...Object.values(SEO_META[locale].blog).map(p => p.description),
       ];
 
@@ -269,8 +325,13 @@ describe('Target Keywords', () => {
       expect(product.targetKeyword).toBeTruthy();
     });
 
-    // All learn pages should have target keywords
-    Object.values(SEO_META[locale].learn).forEach(page => {
+    // All learn pages should have target keywords (using helper to exclude solutions)
+    getFlatLearnPages(locale).forEach(page => {
+      expect(page.targetKeyword).toBeTruthy();
+    });
+
+    // All solution pages should have target keywords
+    getSolutionPages(locale).forEach(page => {
       expect(page.targetKeyword).toBeTruthy();
     });
 
@@ -329,6 +390,33 @@ describe('getSEOMeta Helper Function', () => {
       expect(meta?.title).toBeTruthy();
     });
   });
+
+  it('should return undefined for solutions key (use getSolutionSEOMeta instead)', () => {
+    const meta = getSEOMeta('en', 'learn', 'solutions');
+    expect(meta).toBeUndefined();
+  });
+});
+
+describe('getSolutionSEOMeta Helper Function', () => {
+  it('should return solution page meta', () => {
+    const meta = getSolutionSEOMeta('en', 'ammoniaSmellCatLitter');
+    expect(meta).toBeDefined();
+    expect(meta?.title).toBeTruthy();
+    expect(meta?.description).toBeTruthy();
+  });
+
+  it('should work for all solution pages', () => {
+    const solutionPages = ['ammoniaSmellCatLitter', 'howToNeutralizeAmmonia', 'litterBoxSmellElimination', 'multipleCatsOdorControl'];
+    const locales: LocaleCode[] = ['en', 'fr', 'zh', 'es'];
+
+    locales.forEach(locale => {
+      solutionPages.forEach(page => {
+        const meta = getSolutionSEOMeta(locale, page);
+        expect(meta).toBeDefined();
+        expect(meta?.title).toBeTruthy();
+      });
+    });
+  });
 });
 
 describe('Translation Consistency', () => {
@@ -363,5 +451,16 @@ describe('Translation Consistency', () => {
     expect(enBlog.length).toBe(frBlog.length);
     expect(enBlog.length).toBe(zhBlog.length);
     expect(enBlog.length).toBe(esBlog.length);
+  });
+
+  it('should have same number of solution pages across all locales', () => {
+    const enSolutions = Object.keys(SEO_META.en.learn.solutions);
+    const frSolutions = Object.keys(SEO_META.fr.learn.solutions);
+    const zhSolutions = Object.keys(SEO_META.zh.learn.solutions);
+    const esSolutions = Object.keys(SEO_META.es.learn.solutions);
+
+    expect(enSolutions.length).toBe(frSolutions.length);
+    expect(enSolutions.length).toBe(zhSolutions.length);
+    expect(enSolutions.length).toBe(esSolutions.length);
   });
 });

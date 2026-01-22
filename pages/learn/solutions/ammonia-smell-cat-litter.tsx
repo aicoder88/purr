@@ -6,6 +6,7 @@ import { useTranslation } from '../../../src/lib/translation-context';
 import { generateJSONLD } from '../../../src/lib/seo-utils';
 import { useEnhancedSEO } from '../../../src/hooks/useEnhancedSEO';
 import { Container } from '../../../src/components/ui/container';
+import { StructuredDataGenerator } from '../../../src/lib/seo/structured-data-generator';
 
 export default function AmmoniaSmellCatLitterPage() {
   const { locale } = useTranslation();
@@ -37,17 +38,46 @@ export default function AmmoniaSmellCatLitterPage() {
     includeBreadcrumb: true,
   });
 
+  // Generate HowTo schema for step-by-step ammonia elimination
+  const structuredDataGenerator = new StructuredDataGenerator();
+  const howToSchema = structuredDataGenerator.generateHowTo({
+    name: 'How to Stop Ammonia Smell in Cat Litter',
+    description: 'Eliminate ammonia smell from your cat litter box using activated carbon technology. This 3-step process permanently removes ammonia odor at the molecular level.',
+    image: `https://www.purrify.ca${heroImage}`,
+    totalTime: 'PT5M',
+    steps: [
+      {
+        name: 'Add Purrify to Your Litter',
+        text: 'Sprinkle 1-2 tablespoons of Purrify activated carbon on top of your existing cat litter. Works with any litter brand - clay, clumping, crystal, or natural.',
+      },
+      {
+        name: 'Mix and Distribute',
+        text: 'Gently mix the activated carbon into the top layer of litter to ensure even distribution. The carbon will begin trapping ammonia molecules immediately upon contact.',
+      },
+      {
+        name: 'Enjoy Odor-Free Results',
+        text: 'The activated carbon permanently traps ammonia at the molecular level through adsorption. Reapply after each full litter change or when you notice odors returning (typically every 7-10 days).',
+      },
+    ],
+  });
+
   return (
     <>
       <NextSeo {...nextSeoProps} />
 
-      {/* Schema.org JSON-LD */}
+      {/* Schema.org JSON-LD - Article */}
       {schema && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={generateJSONLD(schema)}
         />
       )}
+
+      {/* Schema.org JSON-LD - HowTo */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: howToSchema }}
+      />
 
       <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
         {/* Breadcrumb Navigation */}

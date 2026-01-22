@@ -352,7 +352,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
         title={seoTitle}
         description={seoDescription}
         canonical={`https://www.purrify.ca/locations/${profile.slug}`}
-        noindex={locale !== 'en'}
+        noindex={locale !== 'en' || !profile.indexed}
         nofollow={false}
         additionalMetaTags={[
           {
@@ -409,6 +409,30 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
                     },
                   },
                 },
+              },
+              // LocalBusiness schema for local SEO
+              {
+                '@type': 'LocalBusiness',
+                name: `Purrify - ${profile.name}`,
+                description: `Cat litter deodorizer for ${profile.name}, ${provinceName} pet owners. Activated carbon eliminates ammonia odors naturally.`,
+                url: `https://www.purrify.ca/locations/${profile.slug}`,
+                areaServed: {
+                  '@type': 'City',
+                  name: profile.name,
+                  containedInPlace: {
+                    '@type': 'AdministrativeArea',
+                    name: provinceName,
+                  },
+                },
+                makesOffer: {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Product',
+                    name: 'Purrify Cat Litter Deodorizer',
+                    description: 'Activated carbon cat litter deodorizer that eliminates ammonia smell naturally.',
+                  },
+                },
+                priceRange: '$$',
               },
               // Breadcrumb schema from hook
               ...(breadcrumb ? [breadcrumb.schema] : []),

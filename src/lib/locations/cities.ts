@@ -65,6 +65,8 @@ export interface CityOdorProfile {
   englishQueries: string[];
   frenchQueries: string[];
   coreHeadTerms: string[];
+  /** Whether this city should be indexed by search engines. Defaults to true. */
+  indexed: boolean;
 }
 
 export interface CityProfileSeed {
@@ -81,6 +83,8 @@ export interface CityProfileSeed {
   retailerAllies: string[];
   englishQueryVariant?: EnglishQueryVariant;
   frenchQueryVariant?: FrenchQueryVariant;
+  /** Whether this city should be indexed by search engines. Defaults to true if not specified. */
+  indexed?: boolean;
 }
 
 const cityProfileSeeds = cityProfileSeedsData as CityProfileSeed[];
@@ -116,6 +120,7 @@ export const cityOdorProfiles: CityOdorProfile[] = cityProfileSeeds.map((seed) =
     housingHighlights,
     climateConsiderations,
     retailerAllies,
+    indexed,
     ...base
   } = seed;
 
@@ -131,6 +136,7 @@ export const cityOdorProfiles: CityOdorProfile[] = cityProfileSeeds.map((seed) =
     englishQueries: buildEnglishQueries(base.name, base.provinceCode, englishVariant),
     frenchQueries: buildFrenchQueries(base.name, base.province, frenchVariant),
     coreHeadTerms: [...DEFAULT_CORE_HEAD_TERMS],
+    indexed: indexed ?? true, // Default to indexed if not specified
   };
 });
 

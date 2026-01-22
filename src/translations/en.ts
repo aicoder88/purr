@@ -2818,13 +2818,13 @@ export const en = {
   // City Page Translations (for location-based SEO pages)
   cityPage: {
     seo: {
-      title: "Cat Litter Deodorizer in {{city}} | Purrify Activated Carbon",
-      descriptionWithPopulation: "Cat litter smell in {{city}}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across {{province}}. Loved by {{population}}+ cat owners.",
-      descriptionDefault: "Cat litter smell in {{city}}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across {{province}}. Safe for cats & kittens."
+      title: "Best Cat Litter Deodorizer in {{city}} | Free Delivery",
+      descriptionWithPopulation: "Stop cat litter smell in your {{city}} home. Activated carbon deodorizer works 7+ days. Loved by {{population}}+ cat owners. Shop online or find local retailers.",
+      descriptionDefault: "Stop cat litter smell in your {{city}} home. Activated carbon deodorizer works 7+ days. Shop online or find {{city}} retailers. Free shipping across {{province}}."
     },
     loading: "Redirecting...",
     hero: {
-      heading: "Best Cat Litter Odor Eliminator in {{city}}",
+      heading: "Cat Litter Odor Solutions for {{city}} Pet Owners",
       subheading: "Trusted by {{audience}}+ cat owners in {{city}} and across {{province}}"
     },
     whyChoose: {

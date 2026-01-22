@@ -145,6 +145,36 @@ interface HowToSchema extends SchemaBase {
   }>;
 }
 
+interface ClaimReviewSchema extends SchemaBase {
+  claimReviewed: string;
+  reviewRating: {
+    '@type': string;
+    ratingValue: string;
+    bestRating: string;
+    worstRating?: string;
+    alternateName?: string;
+  };
+  itemReviewed: {
+    '@type': string;
+    author?: {
+      '@type': string;
+      name: string;
+    };
+    datePublished?: string;
+    appearance?: {
+      '@type': string;
+      url: string;
+    };
+  };
+  author: {
+    '@type': string;
+    name: string;
+    url?: string;
+  };
+  datePublished?: string;
+  url?: string;
+}
+
 export interface ProductData {
   name: string;
   description: string;
@@ -614,6 +644,85 @@ export class StructuredDataGenerator {
 
     if (howTo.totalTime) {
       schema.totalTime = howTo.totalTime;
+    }
+
+    return JSON.stringify(schema, null, 2);
+  }
+
+  /**
+   * Generate ClaimReview schema for fact-checking and comparison content
+   * Useful for AI citation optimization and rich results
+   */
+  generateClaimReview(claimReview: {
+    claimReviewed: string;
+    ratingValue: '1' | '2' | '3' | '4' | '5';
+    ratingAlternateName?: 'False' | 'Mostly False' | 'Half True' | 'Mostly True' | 'True';
+    claimAuthor?: string;
+    claimDatePublished?: string;
+    claimSourceUrl?: string;
+    reviewAuthor?: string;
+    reviewAuthorUrl?: string;
+    datePublished?: string;
+    url?: string;
+  }): string {
+    const schema: ClaimReviewSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'ClaimReview',
+      claimReviewed: claimReview.claimReviewed,
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: claimReview.ratingValue,
+        bestRating: '5',
+        worstRating: '1',
+      },
+      itemReviewed: {
+        '@type': 'Claim',
+      },
+      author: {
+        '@type': 'Organization',
+        name: claimReview.reviewAuthor || this.organizationName,
+      },
+    };
+
+    // Add alternate name for rating (e.g., "Mostly True")
+    if (claimReview.ratingAlternateName) {
+      schema.reviewRating.alternateName = claimReview.ratingAlternateName;
+    }
+
+    // Add claim author if provided
+    if (claimReview.claimAuthor) {
+      schema.itemReviewed.author = {
+        '@type': 'Organization',
+        name: claimReview.claimAuthor,
+      };
+    }
+
+    // Add claim publication date
+    if (claimReview.claimDatePublished) {
+      schema.itemReviewed.datePublished = claimReview.claimDatePublished;
+    }
+
+    // Add claim source URL
+    if (claimReview.claimSourceUrl) {
+      schema.itemReviewed.appearance = {
+        '@type': 'CreativeWork',
+        url: claimReview.claimSourceUrl,
+      };
+    }
+
+    // Add review author URL
+    if (claimReview.reviewAuthorUrl) {
+      schema.author.url = claimReview.reviewAuthorUrl;
+    }
+
+    // Add review publication date
+    if (claimReview.datePublished) {
+      schema.datePublished = claimReview.datePublished;
+    }
+
+    // Add review URL
+    if (claimReview.url) {
+      schema.url = claimReview.url;
     }
 
     return JSON.stringify(schema, null, 2);
