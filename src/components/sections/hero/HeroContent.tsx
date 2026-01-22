@@ -257,19 +257,18 @@ export const HeroContent = ({ t }: HeroContentProps) => {
           <span className="text-sm text-gray-600 dark:text-gray-400">{t.hero.simplified?.thirtyDayGuarantee || ""}</span>
         </div>
 
-        {/* CTA Button - B2B: Find a Store */}
+        {/* CTA Button - B2C: Free Trial */}
         <div className="flex flex-col sm:flex-row gap-3 pt-2">
-          {/* B2C: ORIGINAL CTA
           <Button
             onClick={handleScrollToProducts}
             className={ctaButtonClasses}
-            aria-label={t.hero.buttons.tryFree || ""}
+            aria-label={t.hero.buttons.tryFree || "Get My Free Trial"}
           >
             <LightningIcon className="transition-transform duration-300 group-hover:scale-110" />
-            {t.hero.simplified?.getFreeSample || ""}
+            {t.hero.simplified?.getFreeSample || "Send Me a Free Bag →"}
             <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
           </Button>
-          */}
+          {/* B2B: Find a Store CTA (hidden for B2C focus)
           <Button
             asChild
             className={ctaButtonClasses}
@@ -281,6 +280,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
               <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </Button>
+          */}
         </div>
       </div>
     );
@@ -350,19 +350,18 @@ export const HeroContent = ({ t }: HeroContentProps) => {
       </div>
       */}
 
-      {/* Main CTA Button - B2B: Find a Store */}
+      {/* Main CTA Button - B2C: Free Trial */}
       <div className="flex flex-col sm:flex-row gap-3">
-        {/* B2C: ORIGINAL CTA
         <Button
           onClick={handleScrollToProducts}
           className={ctaButtonClasses}
-          aria-label={t.hero.buttons.tryFree || ""}
+          aria-label={t.hero.buttons.tryFree || "Get My Free Trial"}
         >
           <LightningIcon className="transition-transform duration-300 group-hover:scale-110" />
-          {t.hero.buttons.tryFree || ""}
+          {t.hero.buttons.tryFree || "Get My Free Trial"}
           <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
         </Button>
-        */}
+        {/* B2B: Find a Store CTA (hidden for B2C focus)
         <Button
           asChild
           className={ctaButtonClasses}
@@ -374,6 +373,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
             <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </Button>
+        */}
       </div>
 
       {/* Risk Reversal & Guarantee */}
