@@ -38,7 +38,7 @@ const INITIAL_FORM_DATA: FormData = {
   email: '',
   phone: '',
   position: '',
-  businessType: '',
+  businessType: 'independent-pet-store',
   locations: '',
   currentProducts: '',
   message: ''
@@ -159,7 +159,6 @@ export function RetailerContact() {
 
   // Build business types from translations
   const businessTypes = useMemo(() => [
-    { value: '', label: form?.fields?.businessType?.placeholder || 'Select Business Type' },
     { value: 'independent-pet-store', label: form?.fields?.businessType?.options?.independentPetStore || 'Independent Pet Store' },
     { value: 'pet-store-chain', label: form?.fields?.businessType?.options?.petStoreChain || 'Pet Store Chain' },
     { value: 'veterinary-clinic', label: form?.fields?.businessType?.options?.veterinaryClinic || 'Veterinary Clinic' },
@@ -554,7 +553,7 @@ export function RetailerContact() {
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
-                    {form?.fields?.message?.label || 'Additional Information'}
+                    {form?.fields?.message?.label || 'Additional Information'} *
                   </label>
                   <textarea
                     id="message"
@@ -562,6 +561,8 @@ export function RetailerContact() {
                     value={formData.message}
                     onChange={handleInputChange}
                     rows={4}
+                    required
+                    minLength={10}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200"
                     placeholder={form?.fields?.message?.placeholder || 'Tell us about your business and wholesale needs...'}
                   />
