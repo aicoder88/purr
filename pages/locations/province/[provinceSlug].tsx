@@ -1,6 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
 import { NextSeo } from 'next-seo';
+import { ChevronRight, Home } from 'lucide-react';
 
 import {
   Province,
@@ -8,6 +9,7 @@ import {
   locationsByProvince,
 } from '../../../src/data/locations';
 import { useTranslation } from '../../../src/lib/translation-context';
+import { useEnhancedSEO } from '../../../src/hooks/useEnhancedSEO';
 
 interface ProvincePageProps {
   province: Province;
@@ -37,6 +39,16 @@ const ProvincePage = ({ province }: ProvincePageProps) => {
   // Canonical always points to English version for SEO consolidation
   const canonicalUrl = `https://www.purrify.ca/locations/province/${province.slug}`;
 
+  // Enhanced SEO with breadcrumbs (Home > Locations > Province)
+  const { breadcrumb } = useEnhancedSEO({
+    path: `/locations/province/${province.slug}`,
+    title: seoTitle,
+    description: seoDescription,
+    targetKeyword: `cat litter ${province.name}`,
+    keywords: [`cat litter ${province.name}`, `pet supplies ${province.code}`, `Purrify ${displayName}`],
+    includeBreadcrumb: true
+  });
+
   return (
     <>
       <NextSeo
@@ -52,7 +64,61 @@ const ProvincePage = ({ province }: ProvincePageProps) => {
         }}
       />
 
+      {/* Breadcrumb Schema */}
+      {breadcrumb && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb.schema) }}
+        />
+      )}
+
       <div className="min-h-screen bg-gradient-to-br from-orange-50 to-pink-50 dark:from-gray-900 dark:to-gray-800">
+        {/* Visual Breadcrumb Navigation */}
+        {breadcrumb && breadcrumb.items.length > 1 && (
+          <nav
+            aria-label="Breadcrumb"
+            className="bg-white/50 dark:bg-gray-800/50 border-b border-orange-100 dark:border-gray-700"
+          >
+            <div className="max-w-5xl mx-auto px-4">
+              <ol className="flex items-center space-x-2 text-sm py-3">
+                {breadcrumb.items.map((item, index) => {
+                  const isLast = index === breadcrumb.items.length - 1;
+                  return (
+                    <li key={item.path} className="flex items-center">
+                      {index > 0 && (
+                        <ChevronRight className="h-4 w-4 mx-2 text-gray-400 dark:text-gray-500" />
+                      )}
+                      {index === 0 ? (
+                        <Link
+                          href={item.path}
+                          className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
+                        >
+                          <Home className="h-4 w-4" />
+                          <span className="sr-only">{item.name}</span>
+                        </Link>
+                      ) : isLast ? (
+                        <span
+                          className="font-medium text-gray-900 dark:text-gray-100"
+                          aria-current="page"
+                        >
+                          {item.name}
+                        </span>
+                      ) : (
+                        <Link
+                          href={item.path}
+                          className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
+                        >
+                          {item.name}
+                        </Link>
+                      )}
+                    </li>
+                  );
+                })}
+              </ol>
+            </div>
+          </nav>
+        )}
+
         <section className="py-20 px-4">
           <div className="max-w-5xl mx-auto text-center space-y-6">
             <span className="inline-flex items-center px-4 py-1 rounded-full bg-white/80 dark:bg-gray-800/70 border border-orange-200 dark:border-orange-500/60 text-xs sm:text-sm font-semibold uppercase tracking-widest text-orange-600 dark:text-orange-300">

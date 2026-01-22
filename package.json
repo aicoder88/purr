@@ -51,6 +51,7 @@
     "seo:validate:report": "tsx scripts/seo/validate-seo-compliance.ts --report",
     "seo:validate:images": "tsx scripts/seo/validate-images.ts",
     "seo:validate:canonicals": "tsx scripts/seo/validate-canonicals.ts",
+    "seo:validate:reviews": "tsx scripts/seo/validate-review-schema.ts",
     "bundle:analyze": "node scripts/bundle-analysis.js",
     "cache:optimize": "node scripts/cache-optimization.js",
     "performance:audit": "pnpm seo:optimize && pnpm bundle:analyze && pnpm cache:optimize",

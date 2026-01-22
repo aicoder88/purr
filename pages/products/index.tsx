@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '../../src/components/ui/container';
@@ -26,6 +26,7 @@ import {
 } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { buildAvailabilityUrl, getPriceValidityDate, generateWebsiteSchema } from '../../src/lib/seo-utils';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../src/lib/pricing';
 import { getPaymentLink } from '../../src/lib/payment-links';
 
@@ -216,75 +217,108 @@ const ProductsPage: NextPage = () => {
     ? "Découvrez tous les formats Purrify. Du format d'essai gratuit au format familial, trouvez la taille parfaite pour votre foyer."
     : "★ 4.8 Rating | FREE Trial Available | Shop Purrify activated carbon litter additives. Eliminates odors instantly. Ships to USA & Canada. 30-day guarantee.";
 
+  // Enhanced SEO with breadcrumbs
+  const { nextSeoProps, breadcrumb } = useEnhancedSEO({
+    path: '/products',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'cat litter additive',
+    keywords: ['Purrify products', 'cat litter additive', 'activated carbon', 'odor control', 'trial size', 'family pack'],
+    image: 'https://www.purrify.ca/purrify-logo.png',
+    includeBreadcrumb: true
+  });
+
+  // Generate CollectionPage schema with ItemList (combining with breadcrumb)
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "name": pageTitle,
+        "description": pageDescription,
+        "url": `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products`,
+        "mainEntity": {
+          "@type": "ItemList",
+          "itemListElement": products.map((product, index) => ({
+            "@type": "Product",
+            "position": index + 1,
+            "name": product.name,
+            "description": product.subtitle,
+            "brand": {
+              "@type": "Brand",
+              "name": "Purrify"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": product.price.replace('$', '').replace(',', ''),
+              "priceCurrency": currency,
+              "priceValidUntil": priceValidUntil,
+              "availability": availabilityUrl
+            }
+          }))
+        }
+      },
+      ...(breadcrumb ? [breadcrumb.schema] : []),
+      generateWebsiteSchema(locale)
+    ]
+  };
+
   return (
     <>
-      <Head>
-        <title>{pageTitle} | Purrify</title>
-        <meta name="description" content={pageDescription} />
-        <meta name="keywords" content="Purrify products, cat litter additive, activated carbon, odor control, trial size, family pack" />
-        <link rel="canonical" href={`https://www.purrify.ca${locale !== 'en' ? `/${locale}` : ''}/products`} />
+      <NextSeo {...nextSeoProps} />
 
-        {/* Open Graph */}
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://www.purrify.ca${locale !== 'en' ? `/${locale}` : ''}/products`} />
-        <meta property="og:image" content="https://www.purrify.ca/purrify-logo.png" />
-
-        {/* Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "CollectionPage",
-              "name": pageTitle,
-              "description": pageDescription,
-              "url": `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products`,
-              "mainEntity": {
-                "@type": "ItemList",
-                "itemListElement": products.map((product, index) => ({
-                  "@type": "Product",
-                  "position": index + 1,
-                  "name": product.name,
-                  "description": product.subtitle,
-                  "brand": {
-                    "@type": "Brand",
-                    "name": "Purrify"
-                  },
-                  "offers": {
-                    "@type": "Offer",
-                    "price": product.price.replace('$', '').replace(',', ''),
-                    "priceCurrency": currency,
-                    "priceValidUntil": priceValidUntil,
-                    "availability": availabilityUrl
-                  }
-                }))
-              }
-            })
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(generateWebsiteSchema(locale))
-          }}
-        />
-      </Head>
+      {/* Combined CollectionPage + Breadcrumb + Website Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
 
       <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
         {/* Breadcrumb Navigation */}
-        <section className="py-4 border-b border-brand-light dark:border-gray-800">
-          <Container>
-            <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-              <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-brand-red dark:hover:text-red-400 transition-colors">
-                <Home className="w-4 h-4" />
-              </Link>
-              <span>/</span>
-              <span className="text-gray-900 dark:text-gray-100">{t.nav.products}</span>
-            </nav>
-          </Container>
-        </section>
+        {breadcrumb && breadcrumb.items.length > 1 && (
+          <nav
+            aria-label="Breadcrumb"
+            className="py-4 border-b border-brand-light dark:border-gray-800"
+          >
+            <Container>
+              <ol className="flex items-center space-x-2 text-sm">
+                {breadcrumb.items.map((item, index) => {
+                  const isLast = index === breadcrumb.items.length - 1;
+                  return (
+                    <li key={item.path} className="flex items-center">
+                      {index > 0 && (
+                        <ChevronRight className="h-4 w-4 mx-2 text-gray-400 dark:text-gray-500" />
+                      )}
+                      {index === 0 ? (
+                        <Link
+                          href={item.path}
+                          className="text-gray-600 dark:text-gray-400 hover:text-brand-red dark:hover:text-red-400 transition-colors"
+                        >
+                          <Home className="h-4 w-4" />
+                          <span className="sr-only">{item.name}</span>
+                        </Link>
+                      ) : isLast ? (
+                        <span
+                          className="font-medium text-gray-900 dark:text-gray-100"
+                          aria-current="page"
+                        >
+                          {item.name}
+                        </span>
+                      ) : (
+                        <Link
+                          href={item.path}
+                          className="text-gray-600 dark:text-gray-400 hover:text-brand-red dark:hover:text-red-400 transition-colors"
+                        >
+                          {item.name}
+                        </Link>
+                      )}
+                    </li>
+                  );
+                })}
+              </ol>
+            </Container>
+          </nav>
+        )}
 
         {/* Hero Section */}
         <section className="py-16 bg-gradient-to-br from-brand-purple to-brand-red">

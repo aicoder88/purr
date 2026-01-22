@@ -1,56 +1,92 @@
 import { NextSeo } from 'next-seo';
 import { useTranslation } from '../src/lib/translation-context';
-import { SITE_NAME } from '../src/lib/constants';
+import { SITE_NAME, CONTACT_INFO } from '../src/lib/constants';
 import { Container } from '../src/components/ui/container';
 import { Button } from '../src/components/ui/button';
-import { buildLanguageAlternates, getLocalizedUrl } from '../src/lib/seo-utils';
 import { scrollToSection } from '../src/lib/utils';
 import Link from 'next/link';
 import { B2BCaseStudies } from '../src/components/sections/b2b-case-studies';
+import { useEnhancedSEO } from '../src/hooks/useEnhancedSEO';
+import { ChevronRight, Home } from 'lucide-react';
 
 export default function CatCafesPage() {
   const { t, locale } = useTranslation();
-  const pageTitle = `${SITE_NAME} - ${t.catCafes?.seo?.pageTitle || 'Cat Cafe Odor Solutions'}`;
-  const pageDescription = t.catCafes?.seo?.description || 'Keep your cat cafe fresh all day. Purrify activated carbon eliminates litter box odors without fragrances.';
-  const canonicalUrl = getLocalizedUrl('/cat-cafes', locale);
-  const languageAlternates = buildLanguageAlternates('/cat-cafes');
+
+  // Enhanced SEO with organization schema and breadcrumbs
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/cat-cafes',
+    title: `${SITE_NAME} - ${t.catCafes?.seo?.pageTitle || 'Cat Cafe Odor Solutions'}`,
+    description: t.catCafes?.seo?.description || 'Keep your cat cafe fresh all day. Purrify activated carbon eliminates litter box odors without fragrances.',
+    targetKeyword: 'cat cafe odor control',
+    keywords: (t.catCafes?.seo?.keywords || 'cat cafe odor control, cat cafe supplies, commercial cat litter, cat cafe freshness').split(', '),
+    schemaType: 'organization',
+    schemaData: {
+      description: 'Premium activated carbon cat litter additive manufacturer offering wholesale programs for cat cafes and commercial establishments',
+      contactPoint: {
+        telephone: CONTACT_INFO.phone,
+        type: 'sales',
+        email: 'partners@purrify.ca'
+      }
+    },
+    includeBreadcrumb: true
+  });
 
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          type: 'website',
-          url: canonicalUrl,
-          title: pageTitle,
-          description: pageDescription,
-          locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : 'en_CA',
-          images: [
-            {
-              url: 'https://www.purrify.ca/purrify-logo.png',
-              width: 1200,
-              height: 630,
-              alt: `${SITE_NAME} - ${t.catCafes?.seo?.openGraphAlt || 'Cat Cafe Partners'}`,
-              type: 'image/png',
-            }
-          ],
-        }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: t.catCafes?.seo?.keywords || 'cat cafe odor control, cat cafe supplies, commercial cat litter, cat cafe freshness',
-          },
-          {
-            name: 'robots',
-            content: 'index, follow',
-          },
-        ]}
-      />
+      <NextSeo {...nextSeoProps} />
+
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      )}
 
       <main className="min-h-screen bg-white dark:bg-gray-900">
+        {/* Breadcrumb Navigation */}
+        {breadcrumb && breadcrumb.items.length > 1 && (
+          <div className="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-700">
+            <Container>
+              <nav aria-label="Breadcrumb" className="py-3">
+                <ol className="flex items-center space-x-2 text-sm">
+                  {breadcrumb.items.map((item, index) => {
+                    const isLast = index === breadcrumb.items.length - 1;
+                    return (
+                      <li key={item.path} className="flex items-center">
+                        {index > 0 && (
+                          <ChevronRight className="h-4 w-4 mx-2 text-gray-400 dark:text-gray-500" />
+                        )}
+                        {index === 0 ? (
+                          <Link
+                            href={item.path}
+                            className="text-gray-600 dark:text-gray-400 hover:text-[#5B2EFF] dark:hover:text-[#3694FF] transition-colors"
+                          >
+                            <Home className="h-4 w-4" />
+                            <span className="sr-only">{item.name}</span>
+                          </Link>
+                        ) : isLast ? (
+                          <span
+                            className="font-medium text-gray-900 dark:text-gray-100"
+                            aria-current="page"
+                          >
+                            {item.name}
+                          </span>
+                        ) : (
+                          <Link
+                            href={item.path}
+                            className="text-gray-600 dark:text-gray-400 hover:text-[#5B2EFF] dark:hover:text-[#3694FF] transition-colors"
+                          >
+                            {item.name}
+                          </Link>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ol>
+              </nav>
+            </Container>
+          </div>
+        )}
         {/* Hero Section */}
         <section className="relative w-full pt-24 pb-16 overflow-hidden bg-gradient-to-br from-[#5B2EFF]/8 via-white to-[#3694FF]/8 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900">
           {/* Background decorations */}

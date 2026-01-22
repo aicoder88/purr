@@ -153,18 +153,23 @@ cta: {
 - [x] `pnpm validate-images` passes
 - [x] `pnpm validate-hydration` passes
 - [x] `pnpm build` succeeds
-- [ ] Manual: Pricing hidden (but code preserved)
-- [ ] Manual: Buy buttons hidden (but code preserved)
-- [ ] Manual: CTAs point to `/stockists`
-- [ ] Manual: Product info still visible
-- [ ] Manual: Free sample option works
-- [ ] Manual: Dark mode works
-- [ ] Manual: All 4 languages work
+- [x] Manual: Pricing hidden (but code preserved)
+- [x] Manual: Buy buttons hidden (but code preserved)
+- [x] Manual: CTAs point to `/stockists`
+- [x] Manual: Product info still visible
+- [x] Manual: Free sample option works
+- [x] Manual: Dark mode works
+- [x] Manual: All 4 languages work
 
 ---
 
 ## Verification Completed
 
-**Date:** 2025-01-21
+**Date:** 2025-01-22
 
-All automated checks pass. Manual testing required for visual/functional verification.
+All automated and manual checks pass. B2B conversion verified via browser automation:
+- Homepage, product pages, header/footer all show "Find a Store" CTAs
+- No pricing or "Add to Cart" buttons visible
+- Free trial option preserved for retailers ($4.76 shipping)
+- Dark/light mode toggle working
+- All 4 languages (EN, FR, ZH, ES) display B2B messaging correctly

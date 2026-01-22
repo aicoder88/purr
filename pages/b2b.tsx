@@ -12,12 +12,14 @@ import {
   Phone,
   Mail,
   FileText,
-  CheckCircle
+  CheckCircle,
+  ChevronRight,
+  Home
 } from 'lucide-react';
 import { useCallback, useState } from 'react';
-import { buildAvailabilityUrl, getPriceValidityDate } from '../src/lib/seo-utils';
-import { CONTACT_INFO, PHONE_MESSAGING } from '../src/lib/constants';
+import { CONTACT_INFO, PHONE_MESSAGING, SITE_NAME } from '../src/lib/constants';
 import { formatProductPrice } from '../src/lib/pricing';
+import { useEnhancedSEO } from '../src/hooks/useEnhancedSEO';
 
 export default function B2B() {
   const { locale } = useTranslation();
@@ -32,12 +34,36 @@ export default function B2B() {
     ? 'Devenez partenaire détaillant Purrify. Programme de vente en gros exclusif pour animaleries, boutiques d\'animaux et distributeurs au Canada. Marges attractives et support marketing complet.'
     : 'Become a Purrify retail partner. Exclusive wholesale program for pet stores, animal boutiques, and distributors across Canada. Attractive margins and comprehensive marketing support.';
 
-  const canonicalUrl = `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}b2b`;
   const trialPrice = formatProductPrice('trial', locale);
   const standardPrice = formatProductPrice('standard', locale);
   const familyPrice = formatProductPrice('family', locale);
-  const priceValidUntil = getPriceValidityDate();
-  const availabilityUrl = buildAvailabilityUrl();
+
+  // Enhanced SEO with organization schema and breadcrumbs
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/b2b',
+    title: `${SITE_NAME} - ${pageTitle}`,
+    description: pageDescription,
+    targetKeyword: 'wholesale pet products',
+    keywords: [
+      'Purrify wholesale',
+      'pet store wholesale Canada',
+      'cat litter wholesale',
+      'retail partnership program',
+      'pet product distributor',
+      'wholesale pet supplies',
+      'B2B pet products'
+    ],
+    schemaType: 'organization',
+    schemaData: {
+      description: 'Premium activated carbon cat litter additive manufacturer seeking retail partners across Canada',
+      contactPoint: {
+        telephone: CONTACT_INFO.phone,
+        type: 'sales',
+        email: 'partners@purrify.ca'
+      }
+    },
+    includeBreadcrumb: true
+  });
 
   // Partnership benefits
   const benefits = [
@@ -158,67 +184,61 @@ export default function B2B() {
     }
   ];
 
-  // Structured data for B2B page
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": pageTitle,
-    "description": pageDescription,
-    "url": canonicalUrl,
-    "mainEntity": {
-      "@type": "Organization",
-      "name": "Purrify",
-      "description": "Premium activated carbon cat litter additive manufacturer seeking retail partners",
-      "offers": {
-        "@type": "Offer",
-        "name": "Wholesale Partnership Program",
-        "description": "Retail partnership program with attractive margins and marketing support",
-        "category": "Wholesale/B2B Program",
-        "eligibility": "Pet stores, animal boutiques, and distributors",
-        "availability": availabilityUrl,
-        "priceValidUntil": priceValidUntil
-      }
-    }
-  };
-
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        openGraph={{
-          type: 'website',
-          url: canonicalUrl,
-          title: pageTitle,
-          description: pageDescription,
-          images: [
-            {
-              url: 'https://www.purrify.ca/images/b2b-partnership.jpg',
-              width: 1200,
-              height: 630,
-              alt: 'Purrify B2B retail partnership program for pet stores',
-            },
-          ],
-        }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: 'Purrify wholesale, pet store wholesale Canada, cat litter wholesale, retail partnership program, pet product distributor, wholesale pet supplies, B2B pet products',
-          },
-          {
-            name: 'robots',
-            content: 'index, follow'
-          }
-        ]}
-      />
+      <NextSeo {...nextSeoProps} />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      )}
 
       <div className="max-w-7xl mx-auto px-4 py-12 bg-white dark:bg-gray-900 min-h-screen">
+        {/* Breadcrumb Navigation */}
+        {breadcrumb && breadcrumb.items.length > 1 && (
+          <nav
+            aria-label="Breadcrumb"
+            className="mb-6"
+          >
+            <ol className="flex items-center space-x-2 text-sm">
+              {breadcrumb.items.map((item, index) => {
+                const isLast = index === breadcrumb.items.length - 1;
+                return (
+                  <li key={item.path} className="flex items-center">
+                    {index > 0 && (
+                      <ChevronRight className="h-4 w-4 mx-2 text-gray-400 dark:text-gray-500" />
+                    )}
+                    {index === 0 ? (
+                      <Link
+                        href={item.path}
+                        className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                      >
+                        <Home className="h-4 w-4" />
+                        <span className="sr-only">{item.name}</span>
+                      </Link>
+                    ) : isLast ? (
+                      <span
+                        className="font-medium text-gray-900 dark:text-gray-100"
+                        aria-current="page"
+                      >
+                        {item.name}
+                      </span>
+                    ) : (
+                      <Link
+                        href={item.path}
+                        className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                      >
+                        {item.name}
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
+            </ol>
+          </nav>
+        )}
         {/* Hero Section */}
         <section className="text-center mb-16">
           <div className="max-w-4xl mx-auto">

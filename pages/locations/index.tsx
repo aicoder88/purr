@@ -5,6 +5,8 @@ import { Container } from '@/components/ui/container';
 import { locationsByProvince, Province } from '@/data/locations';
 import { useTranslation } from '@/lib/translation-context';
 import { getLocalizedUrl, buildLanguageAlternates } from '@/lib/seo-utils';
+import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
+import { ChevronRight, Home } from 'lucide-react';
 
 interface LocationsIndexProps {
   provinces: Province[];
@@ -18,21 +20,80 @@ const LocationsIndex = ({ provinces }: LocationsIndexProps) => {
   const seoTitle = `${locations.hub.heading} | Purrify`;
   const seoDescription = locations.hub.description;
 
+  // Enhanced SEO with breadcrumbs
+  const { nextSeoProps, breadcrumb } = useEnhancedSEO({
+    path: '/locations',
+    title: seoTitle,
+    description: seoDescription,
+    targetKeyword: 'cat litter delivery Canada',
+    keywords: ['cat litter delivery', 'pet supplies Canada', 'Purrify locations', 'cat odor control'],
+    includeBreadcrumb: true
+  });
+
+  // Merge hook props with language alternates
+  const mergedSeoProps = {
+    ...nextSeoProps,
+    languageAlternates
+  };
+
   return (
     <>
-      <NextSeo
-        title={seoTitle}
-        description={seoDescription}
-        canonical={canonicalUrl}
-        openGraph={{
-          title: seoTitle,
-          description: seoDescription,
-          url: canonicalUrl,
-        }}
-        languageAlternates={languageAlternates}
-      />
+      <NextSeo {...mergedSeoProps} />
+
+      {/* Breadcrumb Schema */}
+      {breadcrumb && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb.schema) }}
+        />
+      )}
 
       <div className="min-h-screen bg-gradient-to-br from-orange-50 to-pink-50 dark:from-gray-900 dark:to-gray-800">
+        {/* Visual Breadcrumb Navigation */}
+        {breadcrumb && breadcrumb.items.length > 1 && (
+          <nav
+            aria-label="Breadcrumb"
+            className="bg-white/50 dark:bg-gray-800/50 border-b border-orange-100 dark:border-gray-700"
+          >
+            <Container>
+              <ol className="flex items-center space-x-2 text-sm py-3">
+                {breadcrumb.items.map((item, index) => {
+                  const isLast = index === breadcrumb.items.length - 1;
+                  return (
+                    <li key={item.path} className="flex items-center">
+                      {index > 0 && (
+                        <ChevronRight className="h-4 w-4 mx-2 text-gray-400 dark:text-gray-500" />
+                      )}
+                      {index === 0 ? (
+                        <Link
+                          href={item.path}
+                          className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
+                        >
+                          <Home className="h-4 w-4" />
+                          <span className="sr-only">{item.name}</span>
+                        </Link>
+                      ) : isLast ? (
+                        <span
+                          className="font-medium text-gray-900 dark:text-gray-100"
+                          aria-current="page"
+                        >
+                          {item.name}
+                        </span>
+                      ) : (
+                        <Link
+                          href={item.path}
+                          className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
+                        >
+                          {item.name}
+                        </Link>
+                      )}
+                    </li>
+                  );
+                })}
+              </ol>
+            </Container>
+          </nav>
+        )}
         {/* Hero Section */}
         <section className="py-20 px-4">
           <Container>

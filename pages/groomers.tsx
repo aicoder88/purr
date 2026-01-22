@@ -16,12 +16,14 @@ import {
   Star,
   Sparkles,
   MessageCircle,
-  ShoppingBag
+  ShoppingBag,
+  ChevronRight,
+  Home
 } from 'lucide-react';
 import { useCallback, useState } from 'react';
-import { buildAvailabilityUrl, getPriceValidityDate, buildLanguageAlternates, getLocalizedUrl } from '../src/lib/seo-utils';
 import { CONTACT_INFO, PHONE_MESSAGING, SITE_NAME } from '../src/lib/constants';
 import { formatProductPrice } from '../src/lib/pricing';
+import { useEnhancedSEO } from '../src/hooks/useEnhancedSEO';
 
 export default function GroomersPage() {
   const { t, locale } = useTranslation();
@@ -152,82 +154,93 @@ export default function GroomersPage() {
     }
   };
 
-  const pageTitle = `${SITE_NAME} - ${groomers.seo.pageTitle}`;
-  const pageDescription = groomers.seo.description;
-  const canonicalUrl = getLocalizedUrl('/groomers', locale);
-  const languageAlternates = buildLanguageAlternates('/groomers');
-  const priceValidUntil = getPriceValidityDate();
-  const availabilityUrl = buildAvailabilityUrl();
-
   // Product pricing
   const trialPrice = formatProductPrice('trial', locale);
   const standardPrice = formatProductPrice('standard', locale);
   const familyPrice = formatProductPrice('family', locale);
 
-  // Structured data for Groomers B2B page
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": pageTitle,
-    "description": pageDescription,
-    "url": canonicalUrl,
-    "mainEntity": {
-      "@type": "Organization",
-      "name": "Purrify",
-      "description": "Premium activated carbon cat litter additive manufacturer seeking groomer partners",
-      "offers": {
-        "@type": "Offer",
-        "name": "Groomer Partnership Program",
-        "description": "Retail partnership program for pet groomers with wholesale pricing and marketing support",
-        "category": "Wholesale/B2B Program",
-        "eligibility": "Pet groomers and grooming salons",
-        "availability": availabilityUrl,
-        "priceValidUntil": priceValidUntil
+  // Enhanced SEO with organization schema and breadcrumbs
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/groomers',
+    title: `${SITE_NAME} - ${groomers.seo.pageTitle}`,
+    description: groomers.seo.description,
+    targetKeyword: 'pet groomer partnership',
+    keywords: groomers.seo.keywords?.split(', ') || [
+      'pet groomer wholesale',
+      'grooming salon products',
+      'cat litter additive wholesale',
+      'groomer retail partnership'
+    ],
+    schemaType: 'organization',
+    schemaData: {
+      description: 'Premium activated carbon cat litter additive manufacturer offering wholesale partnership programs for pet groomers',
+      contactPoint: {
+        telephone: CONTACT_INFO.phone,
+        type: 'sales',
+        email: 'partners@purrify.ca'
       }
-    }
-  };
+    },
+    includeBreadcrumb: true
+  });
 
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          type: 'website',
-          url: canonicalUrl,
-          title: pageTitle,
-          description: pageDescription,
-          locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : 'en_CA',
-          images: [
-            {
-              url: 'https://www.purrify.ca/purrify-logo.png',
-              width: 1200,
-              height: 630,
-              alt: `${SITE_NAME} - ${groomers.seo.openGraphAlt}`,
-              type: 'image/png',
-            }
-          ],
-        }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: groomers.seo.keywords,
-          },
-          {
-            name: 'robots',
-            content: 'index, follow',
-          },
-        ]}
-      />
+      <NextSeo {...nextSeoProps} />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      )}
 
       <main className="min-h-screen bg-white dark:bg-gray-900">
+        {/* Breadcrumb Navigation */}
+        {breadcrumb && breadcrumb.items.length > 1 && (
+          <nav
+            aria-label="Breadcrumb"
+            className="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-700"
+          >
+            <div className="max-w-7xl mx-auto px-4 py-3">
+              <ol className="flex items-center space-x-2 text-sm">
+                {breadcrumb.items.map((item, index) => {
+                  const isLast = index === breadcrumb.items.length - 1;
+                  return (
+                    <li key={item.path} className="flex items-center">
+                      {index > 0 && (
+                        <ChevronRight className="h-4 w-4 mx-2 text-gray-400 dark:text-gray-500" />
+                      )}
+                      {index === 0 ? (
+                        <Link
+                          href={item.path}
+                          className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                        >
+                          <Home className="h-4 w-4" />
+                          <span className="sr-only">{item.name}</span>
+                        </Link>
+                      ) : isLast ? (
+                        <span
+                          className="font-medium text-gray-900 dark:text-gray-100"
+                          aria-current="page"
+                        >
+                          {item.name}
+                        </span>
+                      ) : (
+                        <Link
+                          href={item.path}
+                          className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                        >
+                          {item.name}
+                        </Link>
+                      )}
+                    </li>
+                  );
+                })}
+              </ol>
+            </div>
+          </nav>
+        )}
+
         {/* Hero Section */}
         <section className="relative py-16 md:py-24 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
           <div className="max-w-7xl mx-auto px-4">

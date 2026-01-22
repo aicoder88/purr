@@ -125,8 +125,9 @@ export function useEnhancedSEO(config: SEOConfig): EnhancedSEOResult {
   const canonicalUrl = getLocalizedUrl(config.path, locale);
   const languageAlternates = buildLanguageAlternates(config.path);
 
-  // Generate breadcrumb (if requested)
-  const breadcrumbData = config.includeBreadcrumb ? useBreadcrumb(config.path) : undefined;
+  // Always call hook to follow React rules, then conditionally use result
+  const breadcrumbResult = useBreadcrumb(config.path);
+  const breadcrumbData = config.includeBreadcrumb ? breadcrumbResult : undefined;
 
   // Build NextSeo props
   const nextSeoProps = {

@@ -17,12 +17,13 @@ import {
   HeartHandshake,
   Scissors,
   TrendingUp,
-  ShoppingBag
+  ShoppingBag,
+  ChevronRight
 } from 'lucide-react';
 import { useCallback, useState, FormEvent } from 'react';
-import { buildAvailabilityUrl, getPriceValidityDate } from '../src/lib/seo-utils';
-import { CONTACT_INFO, PHONE_MESSAGING } from '../src/lib/constants';
+import { CONTACT_INFO, PHONE_MESSAGING, SITE_NAME } from '../src/lib/constants';
 import { B2BCaseStudies } from '../src/components/sections/b2b-case-studies';
+import { useEnhancedSEO } from '../src/hooks/useEnhancedSEO';
 
 export default function SheltersPage() {
   const { t, locale } = useTranslation();
@@ -103,9 +104,26 @@ export default function SheltersPage() {
     ? 'Programme exclusif pour refuges et organisations de sauvetage. Tarifs de volume, options de dons et support pour les refuges animaliers au Canada.'
     : 'Exclusive program for animal shelters and rescue organizations. Volume discounts, donation matching, and support for shelters across Canada.');
 
-  const canonicalUrl = `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}shelters`;
-  const priceValidUntil = getPriceValidityDate();
-  const availabilityUrl = buildAvailabilityUrl();
+  // Enhanced SEO with organization schema and breadcrumbs
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/shelters',
+    title: `${SITE_NAME} - ${pageTitle}`,
+    description: pageDescription,
+    targetKeyword: 'animal shelter partnership',
+    keywords: locale === 'fr'
+      ? ['Purrify refuges', 'charbon actif refuge', 'litière refuge', 'programme refuges', 'don refuge chat', 'partenariat refuge']
+      : ['Purrify shelters', 'activated carbon shelter', 'shelter litter additive', 'shelter program', 'cat rescue donation', 'shelter partnership'],
+    schemaType: 'organization',
+    schemaData: {
+      description: 'Premium activated carbon cat litter additive manufacturer offering special programs for animal shelters and rescue organizations',
+      contactPoint: {
+        telephone: CONTACT_INFO.phone,
+        type: 'sales',
+        email: 'partners@purrify.ca'
+      }
+    },
+    includeBreadcrumb: true
+  });
 
   // Shelter-specific challenges
   const shelterChallenges = [
@@ -228,71 +246,61 @@ export default function SheltersPage() {
     }
   ];
 
-  // Structured data for Shelter Program page
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": pageTitle,
-    "description": pageDescription,
-    "url": canonicalUrl,
-    "mainEntity": {
-      "@type": "Organization",
-      "name": "Purrify",
-      "description": "Premium activated carbon cat litter additive manufacturer offering special programs for animal shelters",
-      "offers": {
-        "@type": "Offer",
-        "name": "Shelter Partnership Program",
-        "description": "Volume discounts and donation matching for registered animal shelters and rescues",
-        "category": "Nonprofit/Shelter Program",
-        "eligibility": "Registered animal shelters, rescues, and humane societies",
-        "availability": availabilityUrl,
-        "priceValidUntil": priceValidUntil
-      }
-    }
-  };
-
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        openGraph={{
-          type: 'website',
-          url: canonicalUrl,
-          title: pageTitle,
-          description: pageDescription,
-          images: [
-            {
-              url: 'https://www.purrify.ca/images/shelters-partnership.jpg',
-              width: 1200,
-              height: 630,
-              alt: locale === 'fr'
-                ? 'Programme partenaire Purrify pour refuges animaliers'
-                : 'Purrify shelter partnership program for animal rescues',
-            },
-          ],
-        }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: locale === 'fr'
-              ? 'Purrify refuges, charbon actif refuge, litière refuge, programme refuges, don refuge chat, partenariat refuge'
-              : 'Purrify shelters, activated carbon shelter, shelter litter additive, shelter program, cat rescue donation, shelter partnership',
-          },
-          {
-            name: 'robots',
-            content: 'index, follow'
-          }
-        ]}
-      />
+      <NextSeo {...nextSeoProps} />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      )}
 
       <div className="max-w-7xl mx-auto px-4 py-12 bg-white dark:bg-gray-900 min-h-screen">
+        {/* Breadcrumb Navigation */}
+        {breadcrumb && breadcrumb.items.length > 1 && (
+          <nav
+            aria-label="Breadcrumb"
+            className="mb-6"
+          >
+            <ol className="flex items-center space-x-2 text-sm">
+              {breadcrumb.items.map((item, index) => {
+                const isLast = index === breadcrumb.items.length - 1;
+                return (
+                  <li key={item.path} className="flex items-center">
+                    {index > 0 && (
+                      <ChevronRight className="h-4 w-4 mx-2 text-gray-400 dark:text-gray-500" />
+                    )}
+                    {index === 0 ? (
+                      <Link
+                        href={item.path}
+                        className="text-gray-600 dark:text-gray-400 hover:text-pink-600 dark:hover:text-pink-400 transition-colors"
+                      >
+                        <Home className="h-4 w-4" />
+                        <span className="sr-only">{item.name}</span>
+                      </Link>
+                    ) : isLast ? (
+                      <span
+                        className="font-medium text-gray-900 dark:text-gray-100"
+                        aria-current="page"
+                      >
+                        {item.name}
+                      </span>
+                    ) : (
+                      <Link
+                        href={item.path}
+                        className="text-gray-600 dark:text-gray-400 hover:text-pink-600 dark:hover:text-pink-400 transition-colors"
+                      >
+                        {item.name}
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
+            </ol>
+          </nav>
+        )}
         {/* Hero Section */}
         <section className="text-center mb-16">
           <div className="max-w-4xl mx-auto">
