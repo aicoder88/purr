@@ -113,14 +113,14 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
     targetKeyword: 'cat litter freshener family pack',
     schemaType: 'product',
     schemaData: {
-      name: 'Purrify 120g Family Pack - Cat Litter Freshener & Charcoal Additive',
-      description: 'Best value cat litter freshener for multi-cat homes. 120g activated charcoal cat litter additive from coconut shells. 2 months of odor control. 100% natural, fragrance-free, pet-friendly deodorizer.',
-      image: ['https://www.purrify.ca/optimized/60g.webp'],
+      name: 'Purrify 240g Family Size - Cat Litter Freshener & Charcoal Additive',
+      description: 'Best value cat litter freshener for multi-cat homes. 240g activated charcoal cat litter additive from coconut shells. Best value per gram. 100% natural, fragrance-free, pet-friendly deodorizer.',
+      image: ['https://www.purrify.ca/optimized/140g-640w.avif'],
       price: familyPriceAmount.toFixed(2),
       priceValidUntil,
       availability: 'https://schema.org/InStock',
-      sku: 'purrify-120g',
-      mpn: 'PURRIFY-120G',
+      sku: 'purrify-240g',
+      mpn: 'PURRIFY-240G',
       shippingRate: '0',
       rating: {
         value: reviewData.ratingValue,
@@ -137,11 +137,11 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
   const solutionImage = 'https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?auto=format&fit=crop&w=1600&q=80'; // Happy multi-cat family
 
   const benefits = [
-    "Perfect for multi-cat households",
-    "Two months of continuous odor control",
-    "Best value per gram of activated carbon",
-    "Handles heavy litter box usage",
-    "Reduces ordering frequency"
+    "Double the supply at less than double the price—the math just makes sense",
+    "Lasts 7+ days per application across multiple litter boxes",
+    "The go-to size for multi-cat homes that refuse to compromise on freshness",
+    "Best value per gram for serious odor control without the premium price tag",
+    "Stock up once, stay fresh longer—less reordering, more peace of mind"
   ];
 
   const testimonials = [
@@ -211,8 +211,8 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
                 <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl">
                   <Image
-                    src="/optimized/60g.webp"
-                    alt="Purrify 120g Family Pack"
+                    src="/optimized/140g-640w.avif"
+                    alt="Purrify 240g Family Size"
                     width={400}
                     height={400}
                     sizes="(max-width: 1024px) 100vw, 400px"
@@ -231,7 +231,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                     Purrify Family Pack
                   </h1>
                   <p className="text-xl text-gray-600 dark:text-gray-300 mb-2">
-                    120g Cat Litter Odor Control
+                    240g Cat Litter Odor Control
                   </p>
                   <div className="flex items-center space-x-2 mb-4">
                     <div className="flex items-center">
@@ -333,7 +333,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                 Maximum Value for Multi-Cat Homes
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Our 120g family pack provides unbeatable value and convenience for households with multiple cats
+                Our 240g family pack provides unbeatable value and convenience for households with multiple cats
               </p>
             </div>
 
@@ -387,13 +387,13 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                 </div>
                 <div className="text-center">
                   <div className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                    Family Pack (120g)
+                    Family Pack (240g)
                   </div>
                   <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-2">
                     {familyPrice}
                   </div>
                   <div className="text-sm text-green-600 dark:text-green-400 font-semibold">
-                    Cost per 10g: {(familyPriceAmount / 12).toFixed(2)}
+                    Cost per 10g: {(familyPriceAmount / 24).toFixed(2)}
                   </div>
                 </div>
               </div>
@@ -482,7 +482,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                   BEST VALUE
                 </div>
                 <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Family Pack</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">120g - Two month supply</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">240g - Best value per gram</p>
                 <Button className="w-full">Currently Viewing</Button>
               </div>
             </div>

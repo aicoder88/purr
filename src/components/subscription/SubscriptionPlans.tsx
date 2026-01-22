@@ -102,7 +102,7 @@ const SUBSCRIPTION_PLANS: SubscriptionPlan[] = [
     intervalLabel: 'Every 3 Months',
     savings: 'Save $180/year',
     features: [
-      '3x Purrify 120g family size',
+      '3x Purrify 120g regular size',
       'FREE odor-eliminating spray',
       'FREE premium litter mat',
       'VIP customer support',

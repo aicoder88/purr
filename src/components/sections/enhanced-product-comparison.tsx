@@ -107,7 +107,7 @@ export function EnhancedProductComparison() {
       subtitle: '12g · One Week of Proof',
       badge: 'FREE TRIAL',
       badgeColor: 'bg-green-600 dark:bg-green-700',
-      description: 'You\'ve heard the promises. The "miracle" sprays. The "revolutionary" crystals. All lies. Here\'s the truth: This works. Or you\'re out $4.76 in shipping.',
+      description: 'One sprinkle delivers 7 full days of zero litter box smell. Your nose gets the proof, your wallet risks just $4.76 shipping. Over 1,000 cat parents tried the sample and became customers—now it\'s your turn.',
       duration: '7+ days',
       coverage: '1 Cat',
       features: {
@@ -143,7 +143,7 @@ export function EnhancedProductComparison() {
       subtitle: '120g · The Goldilocks Bag',
       badge: 'MOST POPULAR',
       badgeColor: 'bg-deep-coral',
-      description: 'This is the size most customers reorder. Know why? Because it works. Lasts 7+ days per application. Use more, it lasts longer. Starting to smell? Sprinkle more. It\'s that simple.',
+      description: 'Not too little, not too much—this is the size most customers reorder. Lasts 7+ days per application for 1-2 cats. Want it to last longer? Use more. It\'s your litter box, your rules. The perfect amount without waste.',
       duration: '7+ days per application',
       coverage: '1-2 Cats',
       features: {
@@ -181,7 +181,7 @@ export function EnhancedProductComparison() {
       subtitle: '240g · Best Value Per Gram',
       badge: 'BEST VALUE',
       badgeColor: 'bg-electric-indigo',
-      description: 'Double the supply. Same powerful formula. For multi-cat households who need serious odor control. Or foster parents who\'ve lost count. Lasts 7+ days per application. The more you use, the longer it works. Your litter box, your rules.',
+      description: 'Double the supply at less than double the price—the math just makes sense. Lasts 7+ days per application across multiple litter boxes. Perfect for multi-cat homes that refuse to compromise on freshness. The go-to size for serious odor control.',
       duration: '7+ days per application',
       coverage: '3+ Cats',
       features: {

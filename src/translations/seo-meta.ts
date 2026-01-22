@@ -82,8 +82,8 @@ export const seoMetaEn: SEOMetaContent = {
       targetKeyword: 'cat litter odor eliminator'
     },
     family: {
-      title: 'Multi-Cat Litter Deodorizer - 120g Family Pack 2026',
-      description: 'Eliminate odor from 2-3 cats for 60+ days. Activated carbon removes ammonia smell instantly. Free shipping, guaranteed results or money back.',
+      title: 'Multi-Cat Litter Deodorizer - 240g Family Size 2026',
+      description: 'Eliminate odor from 3+ cats with our best value 240g size. Activated carbon removes ammonia smell instantly. Double the supply at less than double the price.',
       targetKeyword: 'multi-cat litter deodorizer'
     }
   },

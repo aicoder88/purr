@@ -572,9 +572,9 @@ export const en = {
           sku: "purrify-50g"
         },
         family: {
-          name: "Purrify 120g Family Pack",
+          name: "Purrify 240g Family Size",
           description: "Large size perfect for multi-cat households - maximum odor control",
-          sku: "purrify-120g"
+          sku: "purrify-240g"
         }
       },
       priceRange: "$6.99 - $29.99"
@@ -1948,7 +1948,7 @@ export const en = {
     },
     altText: {
       scientificDiagram: "Scientific diagram showing activated carbon molecular structure with micropores that trap odor molecules",
-      productPackages: "Three Purrify product packages showing different sizes: 12g trial, 50g standard, and 120g family pack",
+      productPackages: "Three Purrify product packages showing different sizes: 12g trial, 120g regular size, and 240g family size",
       microscopicView: "Microscopic view of activated carbon showing porous structure that captures odor molecules",
       happyCat: "Happy cat resting peacefully in a fresh, odor-free home environment",
       happyCatAlt: "Happy cat",
@@ -2470,7 +2470,7 @@ export const en = {
       title: "Calculate Your Potential Earnings",
       subtitle: "Adjust the sliders to see how much you could earn with Purrify's 30% commission",
       standardProduct: "50g Standard ($24.99) - Referrals/Month",
-      familyPack: "120g Family Pack ($44.99) - Referrals/Month",
+      familyPack: "240g Family Size ($54.99) - Referrals/Month",
       perSale: "per sale",
       monthlyIncome: "Estimated Monthly Income",
       yearlyIncome: "Estimated Yearly Income",
