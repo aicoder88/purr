@@ -703,17 +703,37 @@ const ProductsPage: NextPage = () => {
                       </Link>
                     )}
                     */}
-                    {/* CTA Button - B2B: Find a Store */}
-                    <Link href={`${locale === 'fr' ? '/fr' : ''}/stores`}>
-                      <Button
-                        size="lg"
-                        className="w-full bg-brand-purple hover:bg-brand-purple/90 text-white dark:text-gray-100"
-                      >
-                        <MapPin className="w-5 h-5 mr-2" />
-                        {t.nav?.findStore || "Find a Store"}
-                        <ChevronRight className="w-5 h-5 ml-2" />
-                      </Button>
-                    </Link>
+                    {/* CTA Buttons */}
+                    {product.id === 'trial' && product.ctaLink?.startsWith('http') ? (
+                      // Trial product: Direct Stripe checkout with compelling CTA
+                      <div className="space-y-3">
+                        <a href={product.ctaLink} target="_blank" rel="noopener noreferrer" className="block w-full">
+                          <Button
+                            size="lg"
+                            className="w-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white dark:text-white font-bold shadow-lg hover:shadow-xl transition-all"
+                          >
+                            <Sparkles className="w-5 h-5 mr-2" />
+                            {locale === 'fr' ? "Envoyer Mon Essai GRATUIT" : "Send My FREE Trial"}
+                            <ChevronRight className="w-5 h-5 ml-2" />
+                          </Button>
+                        </a>
+                        <p className="text-xs text-center text-gray-500 dark:text-gray-400 italic">
+                          {locale === 'fr' ? `Juste ${product.price} pour l'expédition partout au Canada` : `Just ${product.price} shipping anywhere in Canada`}
+                        </p>
+                      </div>
+                    ) : (
+                      // Other products: Find a Store (B2B)
+                      <Link href={`${locale === 'fr' ? '/fr' : ''}/stores`}>
+                        <Button
+                          size="lg"
+                          className="w-full bg-brand-purple hover:bg-brand-purple/90 text-white dark:text-gray-100"
+                        >
+                          <MapPin className="w-5 h-5 mr-2" />
+                          {t.nav?.findStore || "Find a Store"}
+                          <ChevronRight className="w-5 h-5 ml-2" />
+                        </Button>
+                      </Link>
+                    )}
                   </div>
                 </div>
               ))}
