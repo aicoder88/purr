@@ -4,7 +4,6 @@ import type { SVGProps } from "react";
 import { Container } from "../../components/ui/container";
 import Image from "next/image";
 import { useTranslation } from "../../lib/translation-context";
-import { NewsletterSignup } from "../newsletter/NewsletterSignup";
 import {
   Instagram,
   Twitter,
@@ -35,16 +34,6 @@ export function Footer() {
   return (
     <footer className="bg-[#FFFFF5] dark:bg-gray-900 border-t border-[#E0EFC7] dark:border-gray-800 transition-colors duration-300">
       <Container>
-        {/* Newsletter Signup */}
-        <div className="py-12 border-b border-[#E0EFC7] dark:border-gray-800">
-          <NewsletterSignup
-            variant="footer"
-            showBenefits={false}
-            discount={10}
-            className=""
-          />
-        </div>
-
         {/* Main Footer Content */}
         <div className="py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">

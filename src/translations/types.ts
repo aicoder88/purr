@@ -136,7 +136,6 @@ export interface TranslationType {
       soldThisWeek: string;
       limitedStock: string;
       moneyBackGuarantee: string;
-      freeShippingOver: string;
     };
   };
 
@@ -2121,7 +2120,6 @@ export interface TranslationType {
       subheadline: string;
       button: string;
       secondaryButton: string;
-      benefit1: string;
       benefit2: string;
     };
   };

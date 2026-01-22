@@ -86,7 +86,6 @@ interface HeroContentProps {
         soldThisWeek: string;
         limitedStock: string;
         moneyBackGuarantee: string;
-        freeShippingOver: string;
       };
     };
   };
@@ -406,13 +405,6 @@ export const HeroContent = ({ t }: HeroContentProps) => {
             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
           </svg>
           <span className="text-sm font-bold text-green-700 dark:text-green-300">{t.hero.simplified?.moneyBackGuarantee || ""}</span>
-        </div>
-
-        <div className="flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-200 dark:border-blue-700">
-          <svg className="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-          </svg>
-          <span className="text-sm font-bold text-blue-700 dark:text-blue-300">{t.hero.simplified?.freeShippingOver || ""}</span>
         </div>
       </div>
     </div>

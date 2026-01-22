@@ -602,7 +602,7 @@ export default function AmmoniaControl() {
         subheadline={ammonia.cta.subheadline}
         primaryCTA={{ label: ammonia.cta.button, href: '/products' }}
         secondaryCTA={{ label: ammonia.cta.secondaryButton, href: '/products/trial' }}
-        benefits={[ammonia.cta.benefit1, ammonia.cta.benefit2]}
+        benefits={[ammonia.cta.benefit2]}
       />
     </>
   );

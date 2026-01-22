@@ -216,8 +216,7 @@ export const fr = {
       getFreeSample: "Obtenir l'\u00c9chantillon GRATUIT",
       soldThisWeek: "87 vendus cette semaine",
       limitedStock: "Stock limit\u00e9 hiver",
-      moneyBackGuarantee: "Garantie Satisfait ou Rembours\u00e9 30 Jours",
-      freeShippingOver: "Livraison Gratuite D\u00e8s 35 $"
+      moneyBackGuarantee: "Garantie Satisfait ou Rembours\u00e9 30 Jours"
     }
   },
 
@@ -1887,7 +1886,7 @@ export const fr = {
       },
       {
         question: "Purrify offre-t-il la livraison gratuite ?",
-        answer: "Oui ! Nous offrons la livraison gratuite sur les commandes de plus de 35 $ au Canada. La plupart des clients atteignent facilement ce montant en achetant une taille Grande de 120 g (15,95 $) ou Économie de 240 g (29,76 $), ou en regroupant plusieurs articles. Les commandes arrivent généralement en 5-7 jours ouvrables via Postes Canada. Pour les commandes de moins de 35 $, les frais d'expédition standard s'appliquent en fonction de votre emplacement."
+        answer: "Nous expédions au Canada et aux États-Unis. Les commandes arrivent généralement en 5-7 jours ouvrables via Postes Canada. Les frais d'expédition sont affichés lors du paiement."
       },
       {
         question: "Quelle est la rapidité d'action de Purrify ?",
@@ -2467,7 +2466,6 @@ export const fr = {
       subheadline: "Rejoignez des milliers de parents de chats qui ont éliminé l'ammoniac de litière pour de bon—pas masqué, éliminé.",
       button: "Acheter Purrify",
       secondaryButton: "Essayer le Format Découverte",
-      benefit1: "Livraison gratuite dès 35$",
       benefit2: "Garantie satisfaction 30 jours"
     }
   },

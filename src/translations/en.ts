@@ -216,8 +216,7 @@ export const en = {
       getFreeSample: "Send Me a Free Bag →",
       soldThisWeek: "87 sold this week",
       limitedStock: "Limited winter stock",
-      moneyBackGuarantee: "30-Day Money-Back Guarantee",
-      freeShippingOver: "Free Shipping Over $35"
+      moneyBackGuarantee: "30-Day Money-Back Guarantee"
     }
   },
 
@@ -342,8 +341,8 @@ export const en = {
     title: "Ready to Breathe Easy?",
     subtitle: "Try Purrify free — just cover the $4.76 shipping. If you're not impressed within 30 days, we'll refund even that.",
     buttonText: "Get My Free Trial →",
-    joinText: "30-Day Money-Back Guarantee • Free Shipping Over $35 • Made in Canada 🇨🇦",
-    guarantee: "30-Day Money-Back Guarantee • Free Shipping Over $35 • Made in Canada 🇨🇦",
+    joinText: "30-Day Money-Back Guarantee • Made in Canada 🇨🇦",
+    guarantee: "30-Day Money-Back Guarantee • Made in Canada 🇨🇦",
     // B2B pivot keys
     b2bTitle: "Find Purrify Near You",
     b2bSubtitle: "Available at pet stores across Canada. Ask for Purrify at your local pet retailer.",
@@ -1841,7 +1840,7 @@ export const en = {
       },
       {
         question: "Do you offer free shipping?",
-        answer: "Yes! We offer free shipping on all orders over $25 within Canada. Standard shipping takes 3-5 business days via Canada Post. Orders are typically processed within 1-2 business days. Tracking information is provided for all shipments."
+        answer: "We ship to Canada and the United States. Standard shipping takes 3-5 business days via Canada Post. Orders are typically processed within 1-2 business days. Tracking information is provided for all shipments. Shipping costs are displayed at checkout."
       },
       {
         question: "Do you ship to the United States or internationally?",
@@ -2765,7 +2764,6 @@ export const en = {
       subheadline: "Join thousands of cat parents who've eliminated litter box ammonia for good—not masked it, eliminated it.",
       button: "Shop Purrify",
       secondaryButton: "Try Trial Size",
-      benefit1: "Free shipping over $35",
       benefit2: "30-day satisfaction guarantee"
     }
   },

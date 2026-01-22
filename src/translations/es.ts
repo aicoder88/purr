@@ -217,8 +217,7 @@ export const es: TranslationType = {
       getFreeSample: "Obtener Muestra GRATIS",
       soldThisWeek: "87 vendidos esta semana",
       limitedStock: "Stock limitado invierno",
-      moneyBackGuarantee: "Garantia de Devolucion de Dinero 30 Dias",
-      freeShippingOver: "Envio Gratis Sobre $35"
+      moneyBackGuarantee: "Garantia de Devolucion de Dinero 30 Dias"
     }
   },
 
@@ -1624,7 +1623,7 @@ export const es: TranslationType = {
       },
       {
         question: "¿Ofrece Purrify envio gratis?",
-        answer: "¡Si! Ofrecemos envio gratis en ordenes sobre $35 en Canada. La mayoria de clientes alcanzan esto facilmente comprando un tamano Grande de 120g ($15.95) o Ahorro de 240g ($29.76), o agrupando multiples articulos. Las ordenes tipicamente llegan en 5-7 dias habiles via Canada Post. Para ordenes menores a $35, las tarifas de envio estandar aplican basadas en tu ubicacion."
+        answer: "Ofrecemos envio a Canada y Estados Unidos. Las ordenes tipicamente llegan en 5-7 dias habiles via Canada Post. Los costos de envio se muestran durante el proceso de pago."
       },
       {
         question: "¿Que tan rapido funciona Purrify?",
@@ -1664,7 +1663,7 @@ export const es: TranslationType = {
       },
       {
         question: "¿Puedo comprar Purrify en tiendas?",
-        answer: "Actualmente, Purrify esta disponible principalmente a traves de nuestro sitio web para asegurar frescura, calidad y precio directo al consumidor. Estamos trabajando en asociaciones minoristas y podriamos estar en tiendas selectas pronto. Ordenar en linea significa que obtienes el producto mas fresco directamente de nosotros, sin sobrecargos minoristas. Ademas, nuestra tienda web ofrece descuentos por cantidad, envio gratis sobre $35, y suscripcion con ahorro que no encontraras en tiendas."
+        answer: "Actualmente, Purrify esta disponible principalmente a traves de nuestro sitio web para asegurar frescura, calidad y precio directo al consumidor. Estamos trabajando en asociaciones minoristas y podriamos estar en tiendas selectas pronto. Ordenar en linea significa que obtienes el producto mas fresco directamente de nosotros, sin sobrecargos minoristas. Ademas, nuestra tienda web ofrece descuentos por cantidad y suscripcion con ahorro que no encontraras en tiendas."
       },
       {
         question: "¿Que pasa si olvido aplicar Purrify despues de 7 dias?",
@@ -1708,7 +1707,7 @@ export const es: TranslationType = {
       },
       {
         question: "¿Ofrecen descuentos por cantidad?",
-        answer: "¡Si! Cuanto mas compras, mas ahorras: compra 2-3 botellas → ahorra 10%, compra 4-5 botellas → ahorra 15%, compra 6+ botellas → ahorra 20%. Estos descuentos se apilan con nuestro ya economico tamano Ahorro de 240g. Los hogares multi-gatos o clientes que compran para amigos a menudo aprovechan descuentos por cantidad. Ademas, envio gratis en ordenes sobre $35 hace que compras al por mayor sean aun mas valiosas."
+        answer: "¡Si! Cuanto mas compras, mas ahorras: compra 2-3 botellas → ahorra 10%, compra 4-5 botellas → ahorra 15%, compra 6+ botellas → ahorra 20%. Estos descuentos se apilan con nuestro ya economico tamano Ahorro de 240g. Los hogares multi-gatos o clientes que compran para amigos a menudo aprovechan descuentos por cantidad."
       },
       {
         question: "¿Que debo hacer si Purrify no esta funcionando para mi?",
@@ -2626,7 +2625,6 @@ export const es: TranslationType = {
       subheadline: "Unete a miles de padres de gatos que han eliminado el amoniaco de caja de arena para siempre - no lo enmascararon, lo eliminaron.",
       button: "Comprar Purrify",
       secondaryButton: "Probar Tamano de Prueba",
-      benefit1: "Envio gratis sobre $35",
       benefit2: "Garantia de satisfaccion de 30 dias"
     }
   },

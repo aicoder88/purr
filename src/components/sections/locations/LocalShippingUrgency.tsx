@@ -86,16 +86,6 @@ export function LocalShippingUrgency({
               )}
             </div>
 
-            {/* Free Shipping */}
-            <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4 border-2 border-green-200 dark:border-green-700">
-              <div className="flex items-center mb-3">
-                <Truck className="w-6 h-6 text-green-600 dark:text-green-400 mr-2" />
-                <h3 className="font-heading font-bold text-gray-900 dark:text-gray-50">Free Shipping</h3>
-              </div>
-              <p className="text-gray-700 dark:text-gray-200">
-                On all orders over <span className="font-bold text-green-600 dark:text-green-400">$35</span> to {provinceName}
-              </p>
-            </div>
           </div>
 
           {/* Local Distribution Center */}
