@@ -1,76 +1,92 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-
 import Image from 'next/image';
-import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
+import { Home, ChevronRight } from 'lucide-react';
+import { Container } from '../../src/components/ui/container';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { useTranslation } from '../../src/lib/translation-context';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { generateJSONLD } from '../../src/lib/seo-utils';
 import { formatProductPrice } from '../../src/lib/pricing';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
 export default function ActivatedCarbonBenefits() {
   const { locale } = useTranslation();
   const pageTitle = 'Activated Carbon Litter Additive Benefits - Complete Science Guide';
   const pageDescription = 'Discover how activated carbon litter additive benefits your cat and home. Learn the science behind odor elimination, safety, and why activated carbon is the best cat litter deodorizer.';
-  const canonicalPath = '/learn/activated-carbon-benefits';
-  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
-  const languageAlternates = buildLanguageAlternates(canonicalPath);
 
   // Unique images for science guide - different from other posts
-  const heroImage = '/optimized/benefits-hero-science.webp'; // Microscopic/scientific view
-  const sectionImage1 = '/optimized/benefits-lab-modern.webp'; // Modern laboratory/science
-  const sectionImage2 = '/optimized/benefits-happy-cats.webp'; // Happy cats in clean home
-  const solutionImage = '/optimized/benefits-solution-bright.webp'; // Content cat in bright home
+  const heroImage = '/optimized/benefits-hero-science.webp';
+  const sectionImage1 = '/optimized/benefits-lab-modern.webp';
+  const sectionImage2 = '/optimized/benefits-happy-cats.webp';
+  const solutionImage = '/optimized/benefits-solution-bright.webp';
+
+  // Use enhanced SEO hook for automated optimization
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/learn/activated-carbon-benefits',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'activated carbon litter additive benefits',
+    schemaType: 'article',
+    schemaData: {
+      headline: pageTitle,
+      description: pageDescription,
+      datePublished: '2024-01-15T10:00:00Z',
+      dateModified: new Date().toISOString(),
+      image: `https://www.purrify.ca${heroImage}`,
+      category: 'Pet Care Education',
+      wordCount: 2800,
+    },
+    image: `https://www.purrify.ca${heroImage}`,
+    keywords: ['activated carbon litter additive benefits', 'cat litter deodorizer', 'activated carbon odor control', 'natural cat litter odor eliminator'],
+    includeBreadcrumb: true,
+  });
 
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          type: 'article',
-          url: canonicalUrl,
-          title: pageTitle,
-          description: pageDescription,
-          images: [
-            {
-              url: heroImage,
-              width: 1200,
-              height: 630,
-              alt: 'Activated Carbon Molecular Structure for Cat Litter Odor Control',
-            },
-          ],
-        }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: 'activated carbon litter additive benefits, cat litter deodorizer, activated carbon odor control, natural cat litter odor eliminator, how activated carbon works',
-          },
-        ]}
-      />
+      <NextSeo {...nextSeoProps} />
 
-      {/* Advanced JSON-LD Schema for Article */}
-      <ArticleSchema
-        title={pageTitle}
-        description={pageDescription}
-        path={canonicalPath}
-        locale={locale as 'en' | 'fr' | 'zh'}
-        options={{
-          category: 'Pet Care Education',
-          keywords: ['activated carbon', 'cat litter additive', 'odor control', 'pet care', 'natural solutions'],
-          datePublished: '2024-01-15T10:00:00Z',
-          dateModified: new Date().toISOString(),
-          wordCount: 2800,
-          readingTime: 12,
-          image: heroImage
-        }}
-      />
+      {/* Auto-generated Article Schema with Breadcrumb */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+        />
+      )}
 
+      <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
+        {/* Breadcrumb Navigation */}
+        <section className="py-4 border-b border-gray-200 dark:border-gray-800">
+          <Container>
+            <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
+              <Link
+                href={locale === 'fr' ? '/fr' : '/'}
+                className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+              >
+                <Home className="w-4 h-4" />
+              </Link>
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span className="font-medium text-gray-900 dark:text-gray-100">
+                      {item.name}
+                    </span>
+                  ) : (
+                    <Link
+                      href={item.path}
+                      className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </span>
+              ))}
+            </nav>
+          </Container>
+        </section>
 
-      <article className="max-w-4xl mx-auto px-4 py-12 text-gray-900 dark:text-gray-100">
-        <header className="mb-12">
+        <article className="max-w-4xl mx-auto px-4 py-12 text-gray-900 dark:text-gray-100">
+          <header className="mb-12">
           <h1 className="font-heading text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Activated Carbon Litter Additive Benefits: The Complete Science Guide
           </h1>
@@ -86,8 +102,8 @@ export default function ActivatedCarbonBenefits() {
               src={heroImage}
               alt="Scientific view of activated carbon molecular structure for odor control"
               width={800}
-              height={400}
-              className="w-full h-64 object-cover rounded-lg shadow-lg"
+              height={600}
+              className="w-full aspect-[4/3] object-cover rounded-lg shadow-lg"
             />
           </div>
 
@@ -145,8 +161,8 @@ export default function ActivatedCarbonBenefits() {
               src={sectionImage1}
               alt="Modern laboratory showing scientific research into odor elimination"
               width={600}
-              height={300}
-              className="w-full h-48 object-cover rounded-lg shadow-md"
+              height={400}
+              className="w-full aspect-[3/2] object-cover rounded-lg shadow-md"
             />
           </div>
 
@@ -241,8 +257,8 @@ export default function ActivatedCarbonBenefits() {
               src={sectionImage2}
               alt="Multiple cats living happily in clean, odor-free home environment"
               width={600}
-              height={300}
-              className="w-full h-48 object-cover rounded-lg shadow-md"
+              height={400}
+              className="w-full aspect-[3/2] object-cover rounded-lg shadow-md"
             />
           </div>
 
@@ -315,8 +331,8 @@ export default function ActivatedCarbonBenefits() {
               src={solutionImage}
               alt="Content cat in bright, fresh home showcasing successful odor control"
               width={600}
-              height={300}
-              className="w-full h-48 object-cover rounded-lg shadow-md"
+              height={400}
+              className="w-full aspect-[3/2] object-cover rounded-lg shadow-md"
             />
           </div>
 
@@ -346,7 +362,8 @@ export default function ActivatedCarbonBenefits() {
             <RelatedArticles currentPath="/learn/activated-carbon-benefits" />
           </div>
         </div>
-      </article>
+        </article>
+      </main>
     </>
   );
 }
