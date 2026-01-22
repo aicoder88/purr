@@ -90,7 +90,7 @@ const FAQPage: NextPage = () => {
   const lastUpdated = '2025-01-09'; // Updated regularly for SEO freshness
 
   // Use enhanced SEO hook for automated optimization
-  const { nextSeoProps, schema } = useEnhancedSEO({
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
     path: '/learn/faq',
     title: pageTitle,
     description: pageDescription,
@@ -166,16 +166,30 @@ const FAQPage: NextPage = () => {
         {/* Breadcrumb Navigation */}
         <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
           <Container>
-            <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-              <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+            <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
+              <Link
+                href={locale === 'fr' ? '/fr' : '/'}
+                className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+              >
                 <Home className="w-4 h-4" />
               </Link>
-              <span>/</span>
-              <Link href={`${locale !== 'en' ? `/${locale}` : ''}/learn/how-it-works`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
-                Learn
-              </Link>
-              <span>/</span>
-              <span className="text-gray-900 dark:text-gray-100">FAQ</span>
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span className="font-medium text-gray-900 dark:text-gray-100">
+                      {item.name}
+                    </span>
+                  ) : (
+                    <Link
+                      href={item.path}
+                      className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </span>
+              ))}
             </nav>
           </Container>
         </section>

@@ -6,7 +6,7 @@ import { useCurrency } from '../../src/lib/currency-context';
 import { SITE_NAME } from '../../src/lib/constants';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, Microscope, Zap, Shield, Leaf, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Microscope, Zap, Shield, Leaf, ChevronRight, Home } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { formatProductPrice } from '../../src/lib/pricing';
 import { generateJSONLD } from '../../src/lib/seo-utils';
@@ -27,7 +27,7 @@ export default function HowItWorksPage() {
   const pageDescription = "Discover the science behind Purrify's activated carbon technology. Learn how micropores trap odor molecules at the source for superior cat litter odor control.";
 
   // Use enhanced SEO hook for automated optimization
-  const { nextSeoProps, schema } = useEnhancedSEO({
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
     path: '/learn/how-it-works',
     title: pageTitle,
     description: pageDescription,
@@ -129,25 +129,35 @@ export default function HowItWorksPage() {
 
       <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
         {/* Breadcrumb Navigation */}
-        <Container>
-          <nav className="py-4 text-sm">
-            <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
-              <li>
-                <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
-                  {t.nav?.home || 'Home'}
-                </Link>
-              </li>
-              <li>/</li>
-              <li>
-                <span className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
-                  Learn
+        <section className="py-4 border-b border-gray-200 dark:border-gray-800">
+          <Container>
+            <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
+              <Link
+                href={locale === 'fr' ? '/fr' : '/'}
+                className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+              >
+                <Home className="w-4 h-4" />
+              </Link>
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span className="font-medium text-gray-900 dark:text-gray-100">
+                      {item.name}
+                    </span>
+                  ) : (
+                    <Link
+                      href={item.path}
+                      className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  )}
                 </span>
-              </li>
-              <li>/</li>
-              <li className="text-[#FF3131] dark:text-[#FF5050] font-medium">How It Works</li>
-            </ol>
-          </nav>
-        </Container>
+              ))}
+            </nav>
+          </Container>
+        </section>
 
         {/* Hero Section */}
         <section className="py-16">

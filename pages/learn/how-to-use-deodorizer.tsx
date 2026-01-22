@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { useTranslation } from '../../src/lib/translation-context';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { generateJSONLD } from '../../src/lib/seo-utils';
 import { formatProductPrice } from '../../src/lib/pricing';
 import { Container } from '../../src/components/ui/container';
 import { Card, CardContent } from '../../src/components/ui/card';
@@ -13,43 +13,75 @@ import {
   Lightbulb,
   Sparkles,
   Cat,
-  Zap
+  Zap,
+  Home,
+  ChevronRight
 } from 'lucide-react';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
 export default function HowToUseDeodorizer() {
   const { locale } = useTranslation();
   const pageTitle = 'How to Use Cat Litter Deodorizer Additive - Complete Step-by-Step Guide';
   const pageDescription = 'Learn how to use activated carbon cat litter additive properly. Step-by-step instructions for your litter box, common mistakes to avoid, and pro tips for maximum odor control.';
-  const canonicalPath = '/learn/how-to-use-deodorizer';
-  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
-  const languageAlternates = buildLanguageAlternates(canonicalPath);
-
   const heroImage = 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=2000&q=90';
+
+  // Use enhanced SEO hook
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/learn/how-to-use-deodorizer',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'how to use cat litter deodorizer',
+    schemaType: 'article',
+    schemaData: {
+      type: 'HowTo',
+      title: pageTitle,
+      description: pageDescription,
+      author: 'Purrify',
+      datePublished: '2024-01-15',
+      dateModified: new Date().toISOString().split('T')[0],
+      image: heroImage,
+    },
+    includeBreadcrumb: true,
+  });
 
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          type: 'article',
-          url: canonicalUrl,
-          title: pageTitle,
-          description: pageDescription,
-          images: [
-            {
-              url: heroImage,
-              width: 1200,
-              height: 630,
-              alt: 'Step-by-step guide showing how to use cat litter deodorizer additive',
-            },
-          ],
-        }}
-      />
+      <NextSeo {...nextSeoProps} />
 
-      <section className="relative pt-20 pb-16 overflow-hidden">
+      {/* Schema.org JSON-LD */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+        />
+      )}
+
+      <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
+        {/* Breadcrumb Navigation */}
+        <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
+          <Container>
+            <nav aria-label="Breadcrumb" className="flex items-center text-sm">
+              <Link href="/" className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+                <Home className="w-4 h-4" />
+                <span className="sr-only">Home</span>
+              </Link>
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span aria-current="page" className="font-medium text-gray-900 dark:text-gray-100">{item.name}</span>
+                  ) : (
+                    <Link href={item.path} className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+                      {item.name}
+                    </Link>
+                  )}
+                </span>
+              ))}
+            </nav>
+          </Container>
+        </section>
+
+        <section className="relative pt-20 pb-16 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full -z-10 bg-gradient-to-b from-brand-green-light/20 to-transparent dark:from-brand-purple/10 dark:to-transparent" />
         <Container>
           <div className="max-w-4xl mx-auto text-center mb-12">
@@ -232,9 +264,10 @@ export default function HowToUseDeodorizer() {
         </Container>
       </section>
 
-      <div className="bg-white dark:bg-gray-950">
-        <RelatedArticles currentPath="/learn/how-to-use-deodorizer" />
-      </div>
+        <div className="bg-white dark:bg-gray-950">
+          <RelatedArticles currentPath="/learn/how-to-use-deodorizer" />
+        </div>
+      </main>
     </>
   );
 }

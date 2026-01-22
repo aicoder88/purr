@@ -5,7 +5,7 @@ import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
 import { generateJSONLD } from '../../src/lib/seo-utils';
 import Link from 'next/link';
-import { ArrowLeft, ShieldCheck, Award, Leaf, CheckCircle2, FileCheck } from 'lucide-react';
+import { ArrowLeft, ShieldCheck, Award, Leaf, CheckCircle2, FileCheck, Home, ChevronRight } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import Image from 'next/image';
 import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
@@ -17,7 +17,7 @@ export default function SafetyInformationPage() {
   const pageDescription = "Comprehensive technical datasheet and safety information for Purrify™ Activated Carbon. Learn about certifications, specifications, and safe usage guidelines.";
 
   // Use enhanced SEO hook for automated optimization
-  const { nextSeoProps, schema } = useEnhancedSEO({
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
     path: '/learn/safety',
     title: pageTitle,
     description: pageDescription,
@@ -115,25 +115,35 @@ export default function SafetyInformationPage() {
 
       <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
         {/* Breadcrumb Navigation */}
-        <Container className="pt-8">
-          <nav aria-label="Breadcrumb">
-            <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-              <li>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
-                  Home
-                </Link>
-              </li>
-              <li>/</li>
-              <li>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
-                  Learn
-                </Link>
-              </li>
-              <li>/</li>
-              <li className="text-[#FF3131] dark:text-[#FF5050] font-medium">Safety Information</li>
-            </ol>
-          </nav>
-        </Container>
+        <section className="py-4 border-b border-gray-200 dark:border-gray-800">
+          <Container>
+            <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
+              <Link
+                href={locale === 'fr' ? '/fr' : '/'}
+                className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+              >
+                <Home className="w-4 h-4" />
+              </Link>
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span className="font-medium text-gray-900 dark:text-gray-100">
+                      {item.name}
+                    </span>
+                  ) : (
+                    <Link
+                      href={item.path}
+                      className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </span>
+              ))}
+            </nav>
+          </Container>
+        </section>
 
         {/* Hero Section */}
         <section className="py-12">

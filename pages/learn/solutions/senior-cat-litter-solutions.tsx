@@ -1,69 +1,79 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-import { ArticleSchema } from '../../../src/components/seo/json-ld-schema';
+import { Home, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { formatProductPrice } from '../../../src/lib/pricing';
 import { useTranslation } from '../../../src/lib/translation-context';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../../src/lib/seo-utils';
+import { generateJSONLD } from '../../../src/lib/seo-utils';
+import { useEnhancedSEO } from '../../../src/hooks/useEnhancedSEO';
+import { Container } from '../../../src/components/ui/container';
 
 export default function SeniorCatLitterSolutionsPage() {
   const { locale } = useTranslation();
   const seoTitle = 'Senior Cat Litter Odor Solutions | Purrify';
   const seoDescription = 'Specialized litter solutions for senior cats. Gentle, fragrance-free odor control that works with age-related health issues and sensitive systems.';
-  const canonicalUrl = getLocalizedUrl('/learn/solutions/senior-cat-litter-solutions', locale);
-  const languageAlternates = buildLanguageAlternates('/learn/solutions/senior-cat-litter-solutions');
 
   // SEO optimized images for senior cat care
   const heroImage = '/images/solutions/ammonia-happy-cat.png';
   const solutionImage = '/images/solutions/apartment-hero.png';
   const careImage = '/images/solutions/litter-box-hero.png';
 
+  // Use enhanced SEO hook
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/learn/solutions/senior-cat-litter-solutions',
+    title: seoTitle,
+    description: seoDescription,
+    targetKeyword: 'senior cat litter solutions',
+    schemaType: 'article',
+    schemaData: {
+      type: 'Article',
+      title: seoTitle,
+      description: seoDescription,
+      author: 'Purrify',
+      datePublished: '2024-01-15',
+      dateModified: new Date().toISOString().split('T')[0],
+      image: heroImage,
+    },
+    includeBreadcrumb: true,
+  });
+
   return (
     <>
-      <NextSeo
-        title={seoTitle}
-        description={seoDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          type: 'article',
-          url: canonicalUrl,
-          title: seoTitle,
-          description: seoDescription,
-          images: [
-            {
-              url: `https://www.purrify.ca${heroImage}`,
-              width: 1200,
-              height: 675,
-              alt: 'Senior cat comfortable with gentle litter solution',
-            },
-          ],
-        }}
-        additionalMetaTags={
-          [
-            {
-              name: 'keywords',
-              content: 'senior cat litter, elderly cat odor control, gentle cat litter additive, aging cat care, fragrance-free senior pets',
-            },
-          ]}
-      />
+      <NextSeo {...nextSeoProps} />
 
-      <ArticleSchema
-        title={seoTitle}
-        description={seoDescription}
-        path="/learn/solutions/senior-cat-litter-solutions"
-        options={{
-          category: 'Senior Pet Care',
-          keywords: ['senior cats', 'elderly pet care', 'gentle odor control', 'aging cats'],
-          datePublished: '2024-01-15T13:00:00Z',
-          dateModified: new Date().toISOString(),
-          image: heroImage,
-          wordCount: 850,
-          readingTime: 4
-        }}
-      />
+      {/* Schema.org JSON-LD */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+        />
+      )}
 
-      <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
+      <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
+        {/* Breadcrumb Navigation */}
+        <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
+          <Container>
+            <nav aria-label="Breadcrumb" className="flex items-center text-sm">
+              <Link href="/" className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+                <Home className="w-4 h-4" />
+                <span className="sr-only">Home</span>
+              </Link>
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span aria-current="page" className="font-medium text-gray-900 dark:text-gray-100">{item.name}</span>
+                  ) : (
+                    <Link href={item.path} className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+                      {item.name}
+                    </Link>
+                  )}
+                </span>
+              ))}
+            </nav>
+          </Container>
+        </section>
+
         {/* Hero Section */}
         <section className="py-20 px-4">
           <div className="max-w-6xl mx-auto">
@@ -211,7 +221,7 @@ export default function SeniorCatLitterSolutionsPage() {
             </div>
           </div>
         </section>
-      </div>
+      </main>
     </>
   );
 }

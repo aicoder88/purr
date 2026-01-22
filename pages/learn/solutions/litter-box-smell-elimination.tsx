@@ -1,68 +1,79 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-import { ArticleSchema } from '../../../src/components/seo/json-ld-schema';
+import { Home, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { formatProductPrice } from '../../../src/lib/pricing';
 import { useTranslation } from '../../../src/lib/translation-context';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../../src/lib/seo-utils';
+import { generateJSONLD } from '../../../src/lib/seo-utils';
+import { useEnhancedSEO } from '../../../src/hooks/useEnhancedSEO';
+import { Container } from '../../../src/components/ui/container';
 
 export default function LitterBoxSmellEliminationPage() {
   const { locale } = useTranslation();
   const seoTitle = 'Litter Box Odor Control Guide | Purrify';
   const seoDescription = 'Eliminate litter box smells permanently with proven activated carbon technology. Complete guide to odor-free cat care with natural, fragrance-free solutions.';
-  const canonicalUrl = getLocalizedUrl('/learn/solutions/litter-box-smell-elimination', locale);
-  const languageAlternates = buildLanguageAlternates('/learn/solutions/litter-box-smell-elimination');
 
   // SEO optimized images for odor elimination
   const heroImage = '/images/solutions/litter-box-hero.png';
   const solutionImage = '/images/solutions/ammonia-happy-cat.png';
   const scienceImage = '/images/solutions/ammonia-science.png';
 
+  // Use enhanced SEO hook
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/learn/solutions/litter-box-smell-elimination',
+    title: seoTitle,
+    description: seoDescription,
+    targetKeyword: 'litter box smell elimination',
+    schemaType: 'article',
+    schemaData: {
+      type: 'Article',
+      title: seoTitle,
+      description: seoDescription,
+      author: 'Purrify',
+      datePublished: '2024-01-15',
+      dateModified: new Date().toISOString().split('T')[0],
+      image: heroImage,
+    },
+    includeBreadcrumb: true,
+  });
+
   return (
     <>
-      <NextSeo
-        title={seoTitle}
-        description={seoDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          type: 'article',
-          url: canonicalUrl,
-          title: seoTitle,
-          description: seoDescription,
-          images: [
-            {
-              url: `https://www.purrify.ca${heroImage}`,
-              width: 1200,
-              height: 675,
-              alt: 'Complete litter box odor elimination solution',
-            },
-          ],
-        }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: 'litter box smell elimination, cat litter odor control, activated carbon odor eliminator, natural pet odor removal, fragrance-free cat care',
-          },
-        ]}
-      />
+      <NextSeo {...nextSeoProps} />
 
-      <ArticleSchema
-        title={seoTitle}
-        description={seoDescription}
-        path="/learn/solutions/litter-box-smell-elimination"
-        options={{
-          category: 'Pet Odor Solutions',
-          keywords: ['litter box odor', 'smell elimination', 'activated carbon', 'natural solutions'],
-          datePublished: '2024-01-15T12:00:00Z',
-          dateModified: new Date().toISOString(),
-          image: heroImage,
-          wordCount: 900,
-          readingTime: 4
-        }}
-      />
+      {/* Schema.org JSON-LD */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+        />
+      )}
 
-      <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
+      <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
+        {/* Breadcrumb Navigation */}
+        <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
+          <Container>
+            <nav aria-label="Breadcrumb" className="flex items-center text-sm">
+              <Link href="/" className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+                <Home className="w-4 h-4" />
+                <span className="sr-only">Home</span>
+              </Link>
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span aria-current="page" className="font-medium text-gray-900 dark:text-gray-100">{item.name}</span>
+                  ) : (
+                    <Link href={item.path} className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+                      {item.name}
+                    </Link>
+                  )}
+                </span>
+              ))}
+            </nav>
+          </Container>
+        </section>
+
         {/* Hero Section */}
         <section className="py-20 px-4">
           <div className="max-w-6xl mx-auto">
@@ -183,7 +194,7 @@ export default function LitterBoxSmellEliminationPage() {
             </div>
           </div>
         </section>
-      </div>
+      </main>
     </>
   );
 }

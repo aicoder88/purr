@@ -1,15 +1,16 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
+import { Home, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { useTranslation } from '../../../src/lib/translation-context';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../../src/lib/seo-utils';
+import { generateJSONLD } from '../../../src/lib/seo-utils';
+import { useEnhancedSEO } from '../../../src/hooks/useEnhancedSEO';
+import { Container } from '../../../src/components/ui/container';
 
 export default function NaturalCatLitterAdditivePage() {
   const { locale } = useTranslation();
   const seoTitle = 'Natural Cat Litter Additive Solution | Purrify';
   const seoDescription = 'Effective solution for natural cat litter additive. 100% natural activated carbon with no added fragrances or dyes. Works with any litter brand.';
-  const canonicalUrl = getLocalizedUrl('/learn/solutions/natural-cat-litter-additive', locale);
-  const languageAlternates = buildLanguageAlternates('/learn/solutions/natural-cat-litter-additive');
 
   // Natural cat litter additive images
   const heroImage = '/images/solutions/litter-box-hero.png';
@@ -17,35 +18,62 @@ export default function NaturalCatLitterAdditivePage() {
   const sectionImage2 = '/images/solutions/ammonia-happy-cat.png';
   const solutionImage = '/images/solutions/ammonia-fresh-home.png';
 
+  // Use enhanced SEO hook
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/learn/solutions/natural-cat-litter-additive',
+    title: seoTitle,
+    description: seoDescription,
+    targetKeyword: 'natural cat litter additive',
+    schemaType: 'article',
+    schemaData: {
+      type: 'Article',
+      title: seoTitle,
+      description: seoDescription,
+      author: 'Purrify',
+      datePublished: '2024-01-15',
+      dateModified: new Date().toISOString().split('T')[0],
+      image: heroImage,
+    },
+    includeBreadcrumb: true,
+  });
+
   return (
     <>
-      <NextSeo
-        title={seoTitle}
-        description={seoDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          title: seoTitle,
-          description: seoDescription,
-          url: canonicalUrl,
-          images: [
-            {
-              url: `https://www.purrify.ca${heroImage}`,
-              width: 1200,
-              height: 675,
-              alt: 'Natural cat litter additive made from coconut shells',
-            },
-          ],
-        }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: 'natural cat litter additive, cat odor control, fragrance free litter additive, natural solution',
-          },
-        ]}
-      />
+      <NextSeo {...nextSeoProps} />
 
-      <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
+      {/* Schema.org JSON-LD */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+        />
+      )}
+
+      <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
+        {/* Breadcrumb Navigation */}
+        <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
+          <Container>
+            <nav aria-label="Breadcrumb" className="flex items-center text-sm">
+              <Link href="/" className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+                <Home className="w-4 h-4" />
+                <span className="sr-only">Home</span>
+              </Link>
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span aria-current="page" className="font-medium text-gray-900 dark:text-gray-100">{item.name}</span>
+                  ) : (
+                    <Link href={item.path} className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+                      {item.name}
+                    </Link>
+                  )}
+                </span>
+              ))}
+            </nav>
+          </Container>
+        </section>
+
         <section className="py-20 px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
@@ -204,7 +232,7 @@ export default function NaturalCatLitterAdditivePage() {
             </Link>
           </div>
         </section>
-      </div>
+      </main>
     </>
   );
 }

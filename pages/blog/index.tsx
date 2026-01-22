@@ -1,5 +1,5 @@
-import Head from 'next/head';
 import { GetStaticProps } from 'next';
+import { NextSeo } from 'next-seo';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME, SITE_DESCRIPTION } from '../../src/lib/constants';
 import Image from 'next/image';
@@ -8,6 +8,7 @@ import { useTranslation } from '../../src/lib/translation-context';
 import { ContentStore } from '../../src/lib/blog/content-store';
 import type { BlogPost as BlogPostType } from '../../src/types/blog';
 import { sampleBlogPosts } from '../../src/data/blog-posts';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
 interface BlogPost {
   title: string;
@@ -102,40 +103,90 @@ export default function Blog({ blogPosts, locale }: { blogPosts: BlogPost[], loc
   // Add noindex to French/Chinese blog pages until we have translated content
   const shouldNoindex = blogPosts.length === 0 && (locale === 'fr' || locale === 'zh');
 
+  // Use enhanced SEO hook for optimized meta tags, breadcrumbs, and structured data
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/blog',
+    title: `Blog | ${SITE_NAME} - Cat Care Tips & Insights`,
+    description: 'Expert cat care guides: litter box odor solutions, multi-cat tips, apartment hacks. Learn why activated carbon beats baking soda. New articles weekly.',
+    targetKeyword: 'cat litter odor tips',
+    schemaType: 'organization',
+    schemaData: {
+      description: `Tips, tricks, and insights for cat owners who want a fresh-smelling home and happy, healthy cats. ${SITE_DESCRIPTION}`,
+    },
+    image: 'https://www.purrify.ca/purrify-logo.png',
+    keywords: ['cat care tips', 'litter box odor', 'activated carbon', 'cat litter deodorizer', 'multi-cat tips'],
+    noindex: shouldNoindex,
+    includeBreadcrumb: true,
+  });
+
+  // Build CollectionPage schema with blog posts
+  const blogCollectionSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        '@id': 'https://www.purrify.ca/blog',
+        url: 'https://www.purrify.ca/blog',
+        name: `${SITE_NAME} Blog - Cat Care Tips & Insights`,
+        description: 'Expert cat care guides: litter box odor solutions, multi-cat tips, apartment hacks.',
+        isPartOf: {
+          '@type': 'WebSite',
+          '@id': 'https://www.purrify.ca/#website',
+          name: SITE_NAME,
+          url: 'https://www.purrify.ca',
+        },
+        mainEntity: {
+          '@type': 'ItemList',
+          itemListElement: blogPosts.slice(0, 10).map((post, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            url: `https://www.purrify.ca${post.link}`,
+            name: post.title,
+          })),
+        },
+      },
+      ...(breadcrumb ? [breadcrumb.schema] : []),
+    ],
+  };
+
   return (
     <>
-      <Head>
-        <title>{`Blog | ${SITE_NAME} - Cat Care Tips & Insights`}</title>
-        <meta name="description" content="Expert cat care guides: litter box odor solutions, multi-cat tips, apartment hacks. Learn why activated carbon beats baking soda. New articles weekly." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <NextSeo {...nextSeoProps} />
 
-        {/* Noindex for empty French/Chinese blog pages - SEO fix 2025-12-26 */}
-        {shouldNoindex && <meta name="robots" content="noindex, follow" />}
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.purrify.ca/blog" />
-        <meta property="og:title" content={`Blog | ${SITE_NAME} - Cat Care Tips & Insights`} />
-        <meta property="og:description" content={`Tips, tricks, and insights for cat owners who want a fresh-smelling home and happy, healthy cats. ${SITE_DESCRIPTION}`} />
-        <meta property="og:image" content="https://www.purrify.ca/purrify-logo.png" />
-
-        {/* Twitter */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://www.purrify.ca/blog" />
-        <meta property="twitter:title" content={`Blog | ${SITE_NAME} - Cat Care Tips & Insights`} />
-        <meta property="twitter:description" content={`Tips, tricks, and insights for cat owners who want a fresh-smelling home and happy, healthy cats. ${SITE_DESCRIPTION}`} />
-        <meta property="twitter:image" content="https://www.purrify.ca/purrify-logo.png" />
-
-        {/* Canonical Link */}
-        <link rel="canonical" href="https://www.purrify.ca/blog" />
-
-        {/* Hreflang - English only since fr/zh blog pages are not available */}
-        <link rel="alternate" hrefLang="en-CA" href="https://www.purrify.ca/blog" />
-        <link rel="alternate" hrefLang="x-default" href="https://www.purrify.ca/blog" />
-      </Head>
+      {/* Structured Data - CollectionPage with Breadcrumbs */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogCollectionSchema) }}
+      />
 
       <section className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
         <Container>
+          {/* Visual Breadcrumb Navigation */}
+          {breadcrumb && (
+            <nav aria-label="Breadcrumb" className="mb-8">
+              <ol className="flex flex-wrap items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                {breadcrumb.items.map((item, index) => (
+                  <li key={item.path} className="flex items-center">
+                    {index > 0 && (
+                      <svg className="w-4 h-4 mx-2 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    )}
+                    {index === breadcrumb.items.length - 1 ? (
+                      <span aria-current="page" className="text-gray-900 dark:text-gray-100 font-medium">
+                        {item.name}
+                      </span>
+                    ) : (
+                      <Link href={item.path} className="hover:text-[#03E46A] dark:hover:text-[#03E46A] transition-colors">
+                        {item.name}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          )}
+
           <div className="max-w-3xl mx-auto text-center mb-16">
             <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
               {t.blogSection.catCareTips}

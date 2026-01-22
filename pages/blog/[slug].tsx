@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME, SITE_URL } from '../../src/lib/constants';
 import Image from 'next/image';
@@ -11,6 +11,7 @@ import { sampleBlogPosts, getBlogPostContent } from '../../src/data/blog-posts';
 import prisma from '../../src/lib/prisma';
 import fs from 'node:fs';
 import path from 'node:path';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
 type TocEntry = { title: string; id: string };
 type FaqEntry = { question: string; answerHtml: string };
@@ -261,6 +262,107 @@ export default function BlogPost({ post }: { post: BlogPost }) {
     shareHeading: locale === 'fr' ? "Partager l'article" : locale === 'zh' ? '分享本文' : 'Share this article',
   };
 
+  // Noindex for fallback content when locale doesn't match
+  const shouldNoindex = post.locale !== (router.locale || 'en');
+
+  // Use enhanced SEO hook for optimized meta tags, breadcrumbs, and structured data
+  const { nextSeoProps, breadcrumb } = useEnhancedSEO({
+    path: post.link,
+    title: `${post.title} | ${SITE_NAME} Blog`,
+    description: post.excerpt,
+    schemaType: 'article',
+    schemaData: {
+      headline: post.title,
+      description: post.excerpt,
+      image: post.image,
+      datePublished: post.date,
+      dateModified: post.date,
+      category: 'Cat Care',
+    },
+    image: post.image,
+    noindex: shouldNoindex,
+    includeBreadcrumb: true,
+  });
+
+  // Build comprehensive schema with BlogPosting, Breadcrumbs, and optional HowTo
+  const buildSchemaGraph = () => {
+    const schemas: object[] = [];
+
+    // BlogPosting schema
+    schemas.push({
+      '@type': 'BlogPosting',
+      '@id': `${SITE_URL}${post.link}#article`,
+      url: `${SITE_URL}${post.link}`,
+      headline: post.title,
+      image: [post.image],
+      datePublished: post.date,
+      dateModified: post.date,
+      author: {
+        '@type': 'Person',
+        name: post.author,
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: SITE_NAME,
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://www.purrify.ca/purrify-logo.png',
+        },
+      },
+      description: post.excerpt,
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': `${SITE_URL}${post.link}`,
+      },
+    });
+
+    // HowTo schema for tutorial posts
+    if (post.howTo) {
+      schemas.push({
+        '@type': 'HowTo',
+        name: post.howTo.name,
+        description: post.howTo.description,
+        ...(post.howTo.totalTime && { totalTime: post.howTo.totalTime }),
+        ...(post.howTo.estimatedCost && {
+          estimatedCost: {
+            '@type': 'MonetaryAmount',
+            currency: post.howTo.estimatedCost.currency,
+            value: post.howTo.estimatedCost.value,
+          },
+        }),
+        ...(post.howTo.supply && {
+          supply: post.howTo.supply.map((item) => ({
+            '@type': 'HowToSupply',
+            name: item,
+          })),
+        }),
+        ...(post.howTo.tool && {
+          tool: post.howTo.tool.map((item) => ({
+            '@type': 'HowToTool',
+            name: item,
+          })),
+        }),
+        step: post.howTo.steps.map((step) => ({
+          '@type': 'HowToStep',
+          name: step.name,
+          text: step.text,
+          position: step.position,
+          ...(step.image && { image: step.image }),
+        })),
+      });
+    }
+
+    // Breadcrumb schema
+    if (breadcrumb) {
+      schemas.push(breadcrumb.schema);
+    }
+
+    return {
+      '@context': 'https://schema.org',
+      '@graph': schemas,
+    };
+  };
+
   // If the page is still generating via fallback, show loading
   if (router.isFallback) {
     return (
@@ -272,115 +374,43 @@ export default function BlogPost({ post }: { post: BlogPost }) {
 
   return (
     <>
-      <Head>
-        <title>{`${post.title} | ${SITE_NAME} Blog`}</title>
-        <meta name="description" content={post.excerpt} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <NextSeo {...nextSeoProps} />
 
-        {/* Noindex for fallback content - SEO fix 2025-12-26 */}
-        {post.locale !== (router.locale || 'en') && <meta name="robots" content="noindex, follow" />}
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={`${SITE_URL}${post.link}`} />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.excerpt} />
-        <meta property="og:image" content={post.image} />
-        <meta property="article:published_time" content={new Date(post.date).toISOString()} />
-        <meta property="article:author" content={post.author} />
-
-        {/* Twitter */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={`${SITE_URL}${post.link}`} />
-        <meta property="twitter:title" content={post.title} />
-        <meta property="twitter:description" content={post.excerpt} />
-        <meta property="twitter:image" content={post.image} />
-
-        {/* Canonical Link */}
-        <link rel="canonical" href={`${SITE_URL}${post.link}`} />
-
-        {/* Hreflang - English only since fr/zh blog posts are not available */}
-        <link rel="alternate" hrefLang="en-CA" href={`${SITE_URL}${post.link}`} />
-        <link rel="alternate" hrefLang="x-default" href={`${SITE_URL}${post.link}`} />
-
-        {/* Structured Data / JSON-LD */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'BlogPosting',
-              'headline': post.title,
-              'image': [post.image],
-              'datePublished': post.date,
-              'dateModified': post.date,
-              'author': {
-                '@type': 'Person',
-                'name': post.author
-              },
-              'publisher': {
-                '@type': 'Organization',
-                'name': SITE_NAME,
-                'logo': {
-                  '@type': 'ImageObject',
-                  'url': '/optimized/purrify-logo.avif'
-                }
-              },
-              'description': post.excerpt,
-              'mainEntityOfPage': {
-                '@type': 'WebPage',
-                '@id': `${SITE_URL}${post.link}`
-              }
-            })
-          }}
-        />
-
-        {/* HowTo Schema for tutorial posts */}
-        {post.howTo && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                '@context': 'https://schema.org',
-                '@type': 'HowTo',
-                'name': post.howTo.name,
-                'description': post.howTo.description,
-                ...(post.howTo.totalTime && { 'totalTime': post.howTo.totalTime }),
-                ...(post.howTo.estimatedCost && {
-                  'estimatedCost': {
-                    '@type': 'MonetaryAmount',
-                    'currency': post.howTo.estimatedCost.currency,
-                    'value': post.howTo.estimatedCost.value
-                  }
-                }),
-                ...(post.howTo.supply && {
-                  'supply': post.howTo.supply.map(item => ({
-                    '@type': 'HowToSupply',
-                    'name': item
-                  }))
-                }),
-                ...(post.howTo.tool && {
-                  'tool': post.howTo.tool.map(item => ({
-                    '@type': 'HowToTool',
-                    'name': item
-                  }))
-                }),
-                'step': post.howTo.steps.map(step => ({
-                  '@type': 'HowToStep',
-                  'name': step.name,
-                  'text': step.text,
-                  'position': step.position,
-                  ...(step.image && { 'image': step.image })
-                }))
-              })
-            }}
-          />
-        )}
-      </Head>
+      {/* Structured Data - BlogPosting with Breadcrumbs and optional HowTo */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildSchemaGraph()) }}
+      />
 
       <article className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
         <Container>
           <div className="max-w-4xl mx-auto">
+            {/* Visual Breadcrumb Navigation */}
+            {breadcrumb && (
+              <nav aria-label="Breadcrumb" className="mb-6">
+                <ol className="flex flex-wrap items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                  {breadcrumb.items.map((item, index) => (
+                    <li key={item.path} className="flex items-center">
+                      {index > 0 && (
+                        <svg className="w-4 h-4 mx-2 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      )}
+                      {index === breadcrumb.items.length - 1 ? (
+                        <span aria-current="page" className="text-gray-900 dark:text-gray-100 font-medium truncate max-w-[200px]">
+                          {item.name}
+                        </span>
+                      ) : (
+                        <Link href={item.path} className="hover:text-[#03E46A] dark:hover:text-[#03E46A] transition-colors">
+                          {item.name}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            )}
+
             <Link
               href="/blog"
               className="inline-flex items-center text-[#5B2EFF] dark:text-[#3694FF] hover:text-[#5B2EFF]/80 dark:hover:text-[#3694FF]/80 mb-8"

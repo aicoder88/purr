@@ -1,15 +1,16 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
+import { Home, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { useTranslation } from '../../../src/lib/translation-context';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../../src/lib/seo-utils';
+import { generateJSONLD } from '../../../src/lib/seo-utils';
+import { useEnhancedSEO } from '../../../src/hooks/useEnhancedSEO';
+import { Container } from '../../../src/components/ui/container';
 
 export default function AmmoniaSmellCatLitterPage() {
   const { locale } = useTranslation();
   const seoTitle = 'Why Your Cat Litter Smells Like Ammonia (And How to Fix It)';
   const seoDescription = 'That sharp ammonia smell? Bacteria converting urine to gas. Baking soda can\'t neutralize it (both are alkaline). Here\'s what traps ammonia at the molecular level.';
-  const canonicalUrl = getLocalizedUrl('/learn/solutions/ammonia-smell-cat-litter', locale);
-  const languageAlternates = buildLanguageAlternates('/learn/solutions/ammonia-smell-cat-litter');
 
   // Ammonia smell solution images
   const heroImage = '/images/solutions/ammonia-hero.png';
@@ -17,36 +18,62 @@ export default function AmmoniaSmellCatLitterPage() {
   const sectionImage2 = '/images/solutions/ammonia-fresh-home.png';
   const solutionImage = '/images/solutions/ammonia-happy-cat.png';
 
+  // Use enhanced SEO hook
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/learn/solutions/ammonia-smell-cat-litter',
+    title: seoTitle,
+    description: seoDescription,
+    targetKeyword: 'cat litter smells like ammonia',
+    schemaType: 'article',
+    schemaData: {
+      type: 'Article',
+      title: seoTitle,
+      description: seoDescription,
+      author: 'Purrify',
+      datePublished: '2024-01-15',
+      dateModified: new Date().toISOString().split('T')[0],
+      image: heroImage,
+    },
+    includeBreadcrumb: true,
+  });
+
   return (
     <>
-      <NextSeo
-        title={seoTitle}
-        description={seoDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          type: 'article',
-          url: canonicalUrl,
-          title: seoTitle,
-          description: seoDescription,
-          images: [
-            {
-              url: `https://www.purrify.ca${heroImage}`,
-              width: 1200,
-              height: 675,
-              alt: 'Stop embarrassing ammonia smell from cat litter box',
-            },
-          ],
-        }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: 'cat litter smells like ammonia, ammonia smell cat litter, cat litter ammonia smell, ammonia from cat litter, how to neutralize ammonia in cat litter, best cat litter for ammonia smell',
-          },
-        ]}
-      />
+      <NextSeo {...nextSeoProps} />
 
-      <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
+      {/* Schema.org JSON-LD */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+        />
+      )}
+
+      <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
+        {/* Breadcrumb Navigation */}
+        <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
+          <Container>
+            <nav aria-label="Breadcrumb" className="flex items-center text-sm">
+              <Link href="/" className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+                <Home className="w-4 h-4" />
+                <span className="sr-only">Home</span>
+              </Link>
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span aria-current="page" className="font-medium text-gray-900 dark:text-gray-100">{item.name}</span>
+                  ) : (
+                    <Link href={item.path} className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+                      {item.name}
+                    </Link>
+                  )}
+                </span>
+              ))}
+            </nav>
+          </Container>
+        </section>
+
         <section className="py-20 px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
@@ -274,7 +301,7 @@ export default function AmmoniaSmellCatLitterPage() {
             </div>
           </div>
         </section>
-      </div>
+      </main>
     </>
   );
 }

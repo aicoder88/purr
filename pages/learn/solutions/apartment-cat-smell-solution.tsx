@@ -1,10 +1,12 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-import { ArticleSchema } from '../../../src/components/seo/json-ld-schema';
+import { Home, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { useTranslation } from '../../../src/lib/translation-context';
 import { formatProductPrice } from '../../../src/lib/pricing';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../../src/lib/seo-utils';
+import { generateJSONLD } from '../../../src/lib/seo-utils';
+import { useEnhancedSEO } from '../../../src/hooks/useEnhancedSEO';
+import { Container } from '../../../src/components/ui/container';
 
 export default function ApartmentCatSmellSolutionPage() {
   const { locale } = useTranslation();
@@ -13,58 +15,67 @@ export default function ApartmentCatSmellSolutionPage() {
   const startTrialLabel = `Start Your Trial - ${trialPrice} (shipping included)`;
   const seoTitle = 'Best Litter for Apartments with No Ventilation (5 Proven Solutions)';
   const seoDescription = 'How to get rid of cat litter smell in apartment with no ventilation? Activated carbon eliminates odors in studios and small spaces. Works even without windows.';
-  const canonicalUrl = getLocalizedUrl('/learn/solutions/apartment-cat-smell-solution', locale);
-  const languageAlternates = buildLanguageAlternates('/learn/solutions/apartment-cat-smell-solution');
 
   // SEO optimized images
   const heroImage = '/images/solutions/apartment-hero.png';
   const solutionImage = '/images/solutions/apartment-living-room.png';
 
+  // Use enhanced SEO hook
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/learn/solutions/apartment-cat-smell-solution',
+    title: seoTitle,
+    description: seoDescription,
+    targetKeyword: 'apartment cat smell solution',
+    schemaType: 'article',
+    schemaData: {
+      type: 'Article',
+      title: seoTitle,
+      description: seoDescription,
+      author: 'Purrify',
+      datePublished: '2024-01-15',
+      dateModified: new Date().toISOString().split('T')[0],
+      image: heroImage,
+    },
+    includeBreadcrumb: true,
+  });
+
   return (
     <>
-      <NextSeo
-        title={seoTitle}
-        description={seoDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          type: 'article',
-          url: canonicalUrl,
-          title: seoTitle,
-          description: seoDescription,
-          images: [
-            {
-              url: `https://www.purrify.ca${heroImage}`,
-              width: 1200,
-              height: 675,
-              alt: 'Modern apartment living with cats - odor-free solution',
-            },
-          ],
-        }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: 'best litter for apartments with no ventilation, how to get rid of cat litter smell in apartment, odor control cat litter small apartment, apartment cat smell solution, cat litter for small spaces',
-          },
-        ]}
-      />
+      <NextSeo {...nextSeoProps} />
 
-      <ArticleSchema
-        title={seoTitle}
-        description={seoDescription}
-        path="/solutions/apartment-cat-smell-solution"
-        options={{
-          category: 'Pet Care Solutions',
-          keywords: ['apartment living', 'cat odor control', 'small space solutions', 'activated carbon'],
-          datePublished: '2024-01-15T10:00:00Z',
-          dateModified: new Date().toISOString(),
-          image: heroImage,
-          wordCount: 800,
-          readingTime: 4
-        }}
-      />
+      {/* Schema.org JSON-LD */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+        />
+      )}
 
-      <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
+      <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
+        {/* Breadcrumb Navigation */}
+        <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
+          <Container>
+            <nav aria-label="Breadcrumb" className="flex items-center text-sm">
+              <Link href="/" className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+                <Home className="w-4 h-4" />
+                <span className="sr-only">Home</span>
+              </Link>
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span aria-current="page" className="font-medium text-gray-900 dark:text-gray-100">{item.name}</span>
+                  ) : (
+                    <Link href={item.path} className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+                      {item.name}
+                    </Link>
+                  )}
+                </span>
+              ))}
+            </nav>
+          </Container>
+        </section>
+
         {/* Hero Section */}
         <section className="py-20 px-4">
           <div className="max-w-6xl mx-auto">
@@ -329,7 +340,7 @@ export default function ApartmentCatSmellSolutionPage() {
             </Link>
           </div>
         </section>
-      </div>
+      </main>
     </>
   );
 }

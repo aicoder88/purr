@@ -1,10 +1,11 @@
-import Head from 'next/head';
 import { GetStaticProps, GetStaticPaths } from 'next';
+import { NextSeo } from 'next-seo';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Container } from '../../../src/components/ui/container';
 import { SITE_NAME } from '../../../src/lib/constants';
 import { ContentStore } from '../../../src/lib/blog/content-store';
+import { useEnhancedSEO } from '../../../src/hooks/useEnhancedSEO';
 
 import type { BlogPost, Category } from '../../../src/types/blog';
 
@@ -26,19 +27,86 @@ interface CategoryArchiveProps {
 }
 
 export default function CategoryArchive({ category, posts, seo }: CategoryArchiveProps) {
+  // Use enhanced SEO hook for optimized meta tags, breadcrumbs, and structured data
+  const { nextSeoProps, breadcrumb } = useEnhancedSEO({
+    path: `/blog/category/${category.slug}`,
+    title: seo.title,
+    description: seo.description,
+    schemaType: 'organization',
+    schemaData: {
+      description: seo.description,
+    },
+    includeBreadcrumb: true,
+  });
+
+  // Build CollectionPage schema with category posts
+  const categoryCollectionSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        '@id': seo.canonical,
+        url: seo.canonical,
+        name: `${category.name} - ${SITE_NAME} Blog`,
+        description: seo.description,
+        isPartOf: {
+          '@type': 'WebSite',
+          '@id': 'https://www.purrify.ca/#website',
+          name: SITE_NAME,
+          url: 'https://www.purrify.ca',
+        },
+        mainEntity: {
+          '@type': 'ItemList',
+          itemListElement: posts.slice(0, 10).map((post, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            url: `https://www.purrify.ca${post.link}`,
+            name: post.title,
+          })),
+        },
+      },
+      ...(breadcrumb ? [breadcrumb.schema] : []),
+    ],
+  };
+
   return (
     <>
-      <Head>
-        <title>{seo.title}</title>
-        <meta name="description" content={seo.description} />
-        <meta property="og:title" content={seo.title} />
-        <meta property="og:description" content={seo.description} />
-        <meta property="og:type" content="website" />
-        <link rel="canonical" href={seo.canonical} />
-      </Head>
+      <NextSeo {...nextSeoProps} />
+
+      {/* Structured Data - CollectionPage with Breadcrumbs */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(categoryCollectionSchema) }}
+      />
 
       <section className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
         <Container>
+          {/* Visual Breadcrumb Navigation */}
+          {breadcrumb && (
+            <nav aria-label="Breadcrumb" className="mb-8">
+              <ol className="flex flex-wrap items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                {breadcrumb.items.map((item, index) => (
+                  <li key={item.path} className="flex items-center">
+                    {index > 0 && (
+                      <svg className="w-4 h-4 mx-2 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    )}
+                    {index === breadcrumb.items.length - 1 ? (
+                      <span aria-current="page" className="text-gray-900 dark:text-gray-100 font-medium">
+                        {item.name}
+                      </span>
+                    ) : (
+                      <Link href={item.path} className="hover:text-[#03E46A] dark:hover:text-[#03E46A] transition-colors">
+                        {item.name}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          )}
+
           <div className="max-w-3xl mx-auto text-center mb-16">
             <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
               Category

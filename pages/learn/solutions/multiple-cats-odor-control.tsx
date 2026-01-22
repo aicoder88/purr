@@ -1,10 +1,12 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-import { ArticleSchema } from '../../../src/components/seo/json-ld-schema';
+import { Home, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { useTranslation } from '../../../src/lib/translation-context';
 import { formatProductPrice } from '../../../src/lib/pricing';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../../src/lib/seo-utils';
+import { generateJSONLD } from '../../../src/lib/seo-utils';
+import { useEnhancedSEO } from '../../../src/hooks/useEnhancedSEO';
+import { Container } from '../../../src/components/ui/container';
 
 export default function MultipleCatsOdorControlPage() {
   const { locale } = useTranslation();
@@ -13,58 +15,67 @@ export default function MultipleCatsOdorControlPage() {
   const startTrialLabel = `Start Your Trial - ${trialPrice} (shipping included)`;
   const seoTitle = 'Multiple Cats Odor Control Solution | Purrify';
   const seoDescription = 'Effective solution for multiple cats odor control. Purrify handles multi-cat households with industrial-strength odor elimination. Works with any litter brand.';
-  const canonicalUrl = getLocalizedUrl('/learn/solutions/multiple-cats-odor-control', locale);
-  const languageAlternates = buildLanguageAlternates('/learn/solutions/multiple-cats-odor-control');
 
   // SEO optimized images for multi-cat households
   const heroImage = '/optimized/multiple-cats-together.webp';
   const solutionImage = '/images/solutions/ammonia-fresh-home.png';
 
+  // Use enhanced SEO hook
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/learn/solutions/multiple-cats-odor-control',
+    title: seoTitle,
+    description: seoDescription,
+    targetKeyword: 'multiple cats odor control',
+    schemaType: 'article',
+    schemaData: {
+      type: 'Article',
+      title: seoTitle,
+      description: seoDescription,
+      author: 'Purrify',
+      datePublished: '2024-01-15',
+      dateModified: new Date().toISOString().split('T')[0],
+      image: heroImage,
+    },
+    includeBreadcrumb: true,
+  });
+
   return (
     <>
-      <NextSeo
-        title={seoTitle}
-        description={seoDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          type: 'article',
-          url: canonicalUrl,
-          title: seoTitle,
-          description: seoDescription,
-          images: [
-            {
-              url: `https://www.purrify.ca${heroImage}`,
-              width: 1200,
-              height: 675,
-              alt: 'Multiple cats living harmoniously in odor-free home',
-            },
-          ],
-        }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: 'multiple cats odor control, multi-cat household, cat litter many cats, litter deodorizer for multiple cats, large cat family, cat colony odor management',
-          },
-        ]}
-      />
+      <NextSeo {...nextSeoProps} />
 
-      <ArticleSchema
-        title={seoTitle}
-        description={seoDescription}
-        path="/learn/solutions/multiple-cats-odor-control"
-        options={{
-          category: 'Multi-Cat Solutions',
-          keywords: ['multiple cats', 'multi-cat household', 'odor control', 'cat colony', 'large cat family', 'several cats', 'many cats'],
-          datePublished: '2024-01-15T11:00:00Z',
-          dateModified: new Date().toISOString(),
-          image: heroImage,
-          wordCount: 1800,
-          readingTime: 8
-        }}
-      />
+      {/* Schema.org JSON-LD */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+        />
+      )}
 
-      <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
+      <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
+        {/* Breadcrumb Navigation */}
+        <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
+          <Container>
+            <nav aria-label="Breadcrumb" className="flex items-center text-sm">
+              <Link href="/" className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+                <Home className="w-4 h-4" />
+                <span className="sr-only">Home</span>
+              </Link>
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span aria-current="page" className="font-medium text-gray-900 dark:text-gray-100">{item.name}</span>
+                  ) : (
+                    <Link href={item.path} className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+                      {item.name}
+                    </Link>
+                  )}
+                </span>
+              ))}
+            </nav>
+          </Container>
+        </section>
+
         {/* Hero Section */}
         <section className="py-20 px-4">
           <div className="max-w-6xl mx-auto">
@@ -436,7 +447,7 @@ export default function MultipleCatsOdorControlPage() {
             </div>
           </div>
         </section>
-      </div>
+      </main>
     </>
   );
 }

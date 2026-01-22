@@ -6,7 +6,7 @@ import { useCurrency } from '../../src/lib/currency-context';
 import { formatProductPrice } from '../../src/lib/pricing';
 import { generateJSONLD } from '../../src/lib/seo-utils';
 import Link from 'next/link';
-import { ArrowLeft, Atom, Zap, Shield, Microscope, FlaskConical, BarChart3 } from 'lucide-react';
+import { ArrowLeft, Atom, Zap, Shield, Microscope, FlaskConical, BarChart3, Home, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
@@ -19,7 +19,7 @@ export default function SciencePage() {
   const pageDescription = t.sciencePage?.seo.description || "";
 
   // Use enhanced SEO hook for automated optimization
-  const { nextSeoProps, schema } = useEnhancedSEO({
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
     path: '/learn/science',
     title: pageTitle,
     description: pageDescription,
@@ -107,25 +107,35 @@ export default function SciencePage() {
 
       <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
         {/* Breadcrumb Navigation */}
-        <Container className="pt-8">
-          <nav aria-label="Breadcrumb">
-            <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-              <li>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
-                  {t.sciencePage?.breadcrumb.home || ""}
-                </Link>
-              </li>
-              <li>/</li>
-              <li>
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
-                  {t.sciencePage?.breadcrumb.learn || ""}
-                </Link>
-              </li>
-              <li>/</li>
-              <li className="text-[#FF3131] dark:text-[#FF5050] font-medium">{t.sciencePage?.breadcrumb.science || ""}</li>
-            </ol>
-          </nav>
-        </Container>
+        <section className="py-4 border-b border-gray-200 dark:border-gray-800">
+          <Container>
+            <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
+              <Link
+                href={locale === 'fr' ? '/fr' : '/'}
+                className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+              >
+                <Home className="w-4 h-4" />
+              </Link>
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span className="font-medium text-gray-900 dark:text-gray-100">
+                      {item.name}
+                    </span>
+                  ) : (
+                    <Link
+                      href={item.path}
+                      className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </span>
+              ))}
+            </nav>
+          </Container>
+        </section>
 
         {/* Hero Section */}
         <section className="py-12">

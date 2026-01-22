@@ -1,16 +1,15 @@
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 import { Container } from '../src/components/ui/container';
 import { SITE_NAME } from '../src/lib/constants';
 import Link from 'next/link';
-import { Star, Quote, CheckCircle, Users, Calendar, MapPin } from 'lucide-react';
+import { Star, Quote, CheckCircle, Users, Calendar, MapPin, Home, ChevronRight } from 'lucide-react';
 import { useTranslation } from '../src/lib/translation-context';
-import { getLocalizedUrl, buildLanguageAlternates } from '../src/lib/seo-utils';
+import { generateJSONLD } from '../src/lib/seo-utils';
+import { useEnhancedSEO } from '../src/hooks/useEnhancedSEO';
 
 export default function Reviews() {
   const { t, locale } = useTranslation();
   const reviewsPage = t.reviewsPage!; // Non-null assertion - all translations have this
-  const canonicalUrl = getLocalizedUrl('/reviews', locale);
-  const languageAlternates = buildLanguageAlternates('/reviews');
   const reviews = [
     {
       id: 1,
@@ -99,74 +98,93 @@ export default function Reviews() {
     { label: reviewsPage.stats.monthsInMarket, value: "18", icon: Calendar }
   ];
 
+  const pageTitle = `${reviewsPage.pageTitle} | ${SITE_NAME}`;
+  const pageDescription = reviewsPage.metaDescription;
+
+  // Use enhanced SEO hook for automated optimization
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/reviews',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'purrify reviews',
+    schemaType: 'product',
+    schemaData: {
+      name: 'Purrify Cat Litter Deodorizer',
+      description: 'Activated carbon cat litter additive that eliminates odors naturally',
+      brand: 'Purrify',
+      price: '4.76',
+      priceCurrency: 'CAD',
+      availability: 'InStock',
+      aggregateRating: {
+        ratingValue: 4.9,
+        reviewCount: 138,
+        bestRating: 5,
+        worstRating: 1,
+      },
+      reviews: reviews.slice(0, 3).map(review => ({
+        author: review.name,
+        reviewBody: review.review,
+        reviewRating: review.rating,
+        datePublished: review.date,
+      })),
+    },
+    keywords: [
+      'purrify reviews',
+      'cat litter deodorizer reviews',
+      'customer testimonials',
+      'verified reviews',
+      'cat odor eliminator reviews',
+    ],
+    includeBreadcrumb: true,
+  });
+
   return (
     <>
-      <Head>
-        <title>{`${reviewsPage.pageTitle} | ${SITE_NAME}`}</title>
-        <meta name="description" content={reviewsPage.metaDescription} />
-        <meta name="keywords" content="Purrify reviews, cat litter deodorizer reviews, customer testimonials, verified reviews, cat odor eliminator reviews" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="Customer Reviews - Verified Testimonials" />
-        <meta property="og:description" content="Read verified customer reviews from Canadian cat owners who eliminated litter box odors with Purrify's natural activated carbon formula." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://www.purrify.ca/optimized/three_bags_no_bg.webp" />
+      <NextSeo {...nextSeoProps} />
 
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Customer Reviews - Verified Testimonials" />
-        <meta name="twitter:description" content="See why 1,000+ Canadian cat owners choose Purrify for natural odor elimination." />
-        <meta name="twitter:image" content="https://www.purrify.ca/optimized/three_bags_no_bg.webp" />
+      {/* Auto-generated Product Schema with Breadcrumb */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+        />
+      )}
 
-        {/* Canonical and Language Alternates */}
-        <link rel="canonical" href={canonicalUrl} />
-        {languageAlternates.map((alt) => (
-          <link key={alt.hrefLang} rel="alternate" hrefLang={alt.hrefLang} href={alt.href} />
-        ))}
-        
-        {/* Schema.org structured data */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Product",
-            "name": "Purrify Cat Litter Deodorizer",
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": 4.9,
-              "reviewCount": 138,
-              "bestRating": 5,
-              "worstRating": 1
-            },
-            "review": reviews.slice(0, 3).map(review => ({
-              "@type": "Review",
-              "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": review.rating,
-                "bestRating": 5
-              },
-              "author": {
-                "@type": "Person",
-                "name": review.name
-              },
-              "reviewBody": review.review,
-              "datePublished": review.date
-            }))
-          })}
-        </script>
-      </Head>
-
-      <div className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
-        <Container>
-          <div className="max-w-6xl mx-auto">
-            {/* Breadcrumb */}
-            <nav className="mb-8">
-              <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
-                <li><Link href="/" className="hover:text-[#FF3131]">{reviewsPage.breadcrumb.home}</Link></li>
-                <li>/</li>
-                <li className="text-[#FF3131]">{reviewsPage.breadcrumb.reviews}</li>
-              </ol>
+      <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+        {/* Breadcrumb Navigation */}
+        <section className="py-4 border-b border-gray-200 dark:border-gray-800">
+          <Container>
+            <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
+              <Link
+                href={locale === 'fr' ? '/fr' : '/'}
+                className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+              >
+                <Home className="w-4 h-4" />
+              </Link>
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span className="font-medium text-gray-900 dark:text-gray-100">
+                      {item.name}
+                    </span>
+                  ) : (
+                    <Link
+                      href={item.path}
+                      className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </span>
+              ))}
             </nav>
+          </Container>
+        </section>
+
+        <section className="py-16">
+          <Container>
+            <div className="max-w-6xl mx-auto">
 
             {/* Header */}
             <div className="text-center mb-16">
@@ -333,7 +351,8 @@ export default function Reviews() {
             </div>
           </div>
         </Container>
-      </div>
+        </section>
+      </main>
     </>
   );
 }

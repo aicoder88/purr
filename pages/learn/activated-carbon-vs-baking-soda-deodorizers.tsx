@@ -1,49 +1,85 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-
+import { Home, ChevronRight } from 'lucide-react';
+import { Container } from '../../src/components/ui/container';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { useTranslation } from '../../src/lib/translation-context';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { generateJSONLD } from '../../src/lib/seo-utils';
 import { formatProductPrice } from '../../src/lib/pricing';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
 export default function ActivatedCarbonVsBakingSodaDeodorizers() {
   const { locale } = useTranslation();
   const pageTitle = 'Does Baking Soda Help Cat Litter Smell? (Honest Answer + Better Alternative)';
   const pageDescription = 'Does baking soda help with cat litter smell? Yes, but only for 1-2 days. Activated carbon works 3x longer. See our side-by-side test results and find what actually works.';
-  const canonicalPath = '/learn/activated-carbon-vs-baking-soda-deodorizers';
-  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
-  const languageAlternates = buildLanguageAlternates(canonicalPath);
+  const heroImage = 'https://www.purrify.ca/images/activated-carbon-vs-baking-soda.jpg';
+
+  // Use enhanced SEO hook for automated optimization
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/learn/activated-carbon-vs-baking-soda-deodorizers',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'baking soda cat litter smell',
+    schemaType: 'article',
+    schemaData: {
+      headline: pageTitle,
+      description: pageDescription,
+      datePublished: '2024-01-10T10:00:00Z',
+      dateModified: new Date().toISOString(),
+      image: heroImage,
+      category: 'Pet Care Comparison',
+      wordCount: 2500,
+    },
+    image: heroImage,
+    keywords: ['does baking soda help cat litter smell', 'baking soda vs charcoal for odor', 'activated carbon cat litter deodorizer'],
+    includeBreadcrumb: true,
+  });
 
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          type: 'article',
-          url: canonicalUrl,
-          title: pageTitle,
-          description: pageDescription,
-          images: [
-            {
-              url: 'https://www.purrify.ca/images/activated-carbon-vs-baking-soda.jpg',
-              width: 1200,
-              height: 630,
-              alt: 'Side-by-side comparison of activated carbon vs baking soda cat deodorizer technology',
-            },
-          ],
-        }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: 'does baking soda help cat litter smell, is baking soda safe for cat litter, litter deodorizer vs baking soda, baking soda vs charcoal for odor, activated carbon cat litter deodorizer',
-          },
-        ]}
-      />
+      <NextSeo {...nextSeoProps} />
 
-      <article className="max-w-4xl mx-auto px-4 py-12">
+      {/* Auto-generated Article Schema with Breadcrumb */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+        />
+      )}
+
+      <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
+        {/* Breadcrumb Navigation */}
+        <section className="py-4 border-b border-gray-200 dark:border-gray-800">
+          <Container>
+            <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
+              <Link
+                href={locale === 'fr' ? '/fr' : '/'}
+                className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+              >
+                <Home className="w-4 h-4" />
+              </Link>
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span className="font-medium text-gray-900 dark:text-gray-100">
+                      {item.name}
+                    </span>
+                  ) : (
+                    <Link
+                      href={item.path}
+                      className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </span>
+              ))}
+            </nav>
+          </Container>
+        </section>
+
+        <article className="max-w-4xl mx-auto px-4 py-12">
         <header className="mb-12">
           <h1 className="font-heading text-4xl font-bold text-gray-900 dark:text-gray-50 mb-6">
             Activated Carbon vs Baking Soda Cat Litter Deodorizers: Science-Based Comparison
@@ -475,12 +511,13 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
         </div>
       </article>
 
-      {/* Related Articles */}
-      <div className="max-w-4xl mx-auto px-4">
-        <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
-          <RelatedArticles currentPath="/learn/activated-carbon-vs-baking-soda-deodorizers" />
+        {/* Related Articles */}
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <RelatedArticles currentPath="/learn/activated-carbon-vs-baking-soda-deodorizers" />
+          </div>
         </div>
-      </div>
+      </main>
     </>
   );
 }

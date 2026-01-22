@@ -1,8 +1,7 @@
 import { NextSeo } from 'next-seo';
-import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
-import { ArrowLeft, Mail, Phone, Clock, MapPin, Send, CheckCircle, MessageCircle, Instagram, Twitter, Facebook, Youtube, Linkedin, ExternalLink, Star } from 'lucide-react';
+import { ArrowLeft, Mail, Phone, Clock, MapPin, Send, CheckCircle, MessageCircle, Instagram, Twitter, Facebook, Youtube, Linkedin, ExternalLink, Star, Home, ChevronRight } from 'lucide-react';
 
 import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
@@ -10,8 +9,9 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { SITE_NAME, CONTACT_INFO, PHONE_MESSAGING, PHONE_NUMBER, SOCIAL_LINKS } from '@/lib/constants';
 import { useTranslation } from '@/lib/translation-context';
-import { buildLanguageAlternates, getLocalizedUrl, generateWebsiteSchema } from '@/lib/seo-utils';
+import { generateJSONLD } from '@/lib/seo-utils';
 import { RelatedArticles } from '@/components/blog/RelatedArticles';
+import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
 
 type ResponseData = {
   success: boolean;
@@ -30,10 +30,33 @@ export default function ContactPage() {
   const pageTitle = t.contactPage?.title
     ? `${t.contactPage.title} - ${SITE_NAME}`
     : `Contact Us - ${SITE_NAME} Customer Support & Help`;
-  const pageDescription = t.contactPage?.subtitle || "";
-  const canonicalPath = '/contact';
-  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
-  const languageAlternates = buildLanguageAlternates(canonicalPath);
+  const pageDescription = t.contactPage?.subtitle || "Get in touch with the Purrify team for product questions, business inquiries, and customer support. Fast response times and expert assistance.";
+
+  // Use translated FAQs
+  const faqs = t.contactPage?.faqs || [];
+
+  // Use enhanced SEO hook for automated optimization
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/contact',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'contact purrify',
+    schemaType: 'faq',
+    schemaData: {
+      questions: faqs.map(faq => ({
+        question: faq.question,
+        answer: faq.answer,
+      })),
+    },
+    keywords: [
+      'contact purrify',
+      'cat litter customer support',
+      'purrify help',
+      'activated carbon questions',
+      'pet product support',
+    ],
+    includeBreadcrumb: true,
+  });
 
   const [formData, setFormData] = useState({
     name: '',
@@ -71,9 +94,6 @@ export default function ContactPage() {
       action: "https://wa.me/385993433344?text=Hi%20I%27m%20interested%20in%20Purrify"
     }
   ];
-
-  // Use translated FAQs
-  const faqs = t.contactPage?.faqs || [];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -150,74 +170,47 @@ export default function ContactPage() {
 
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          title: pageTitle,
-          description: pageDescription,
-          url: canonicalUrl,
-          type: 'website',
-          images: [
-            {
-              url: 'https://www.purrify.ca/customer-support-hero.jpg',
-              width: 1200,
-              height: 630,
-              alt: 'Purrify Customer Support Team'
-            }
-          ]
-        }}
-      />
+      <NextSeo {...nextSeoProps} />
 
-      <Head>
+      {/* Auto-generated FAQ Schema with Breadcrumb */}
+      {schema && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(generateWebsiteSchema(locale))
-          }}
+          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'FAQPage',
-              mainEntity: faqs.map(faq => ({
-                '@type': 'Question',
-                name: faq.question,
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: faq.answer
-                }
-              }))
-            })
-          }}
-        />
-      </Head>
+      )}
 
       <main className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900">
         {/* Breadcrumb Navigation */}
-        <Container>
-          <nav className="py-6 text-sm">
-            <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
-              <li>
-                <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
-                  {t.nav?.home || 'Home'}
-                </Link>
-              </li>
-              <li className="text-gray-400 dark:text-gray-500">/</li>
-              <li>
-                <span className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
-                  Support
+        <section className="py-4 border-b border-purple-100 dark:border-gray-800">
+          <Container>
+            <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
+              <Link
+                href={locale === 'fr' ? '/fr' : '/'}
+                className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+              >
+                <Home className="w-4 h-4" />
+              </Link>
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span className="font-medium text-gray-900 dark:text-gray-100">
+                      {item.name}
+                    </span>
+                  ) : (
+                    <Link
+                      href={item.path}
+                      className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  )}
                 </span>
-              </li>
-              <li className="text-gray-400 dark:text-gray-500">/</li>
-              <li className="text-[#FF3131] dark:text-[#FF5050] font-semibold">Contact</li>
-            </ol>
-          </nav>
-        </Container>
+              ))}
+            </nav>
+          </Container>
+        </section>
 
         {/* Hero Section - Enhanced */}
         <section className="py-20 relative overflow-hidden">
