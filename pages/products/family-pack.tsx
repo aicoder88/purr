@@ -118,6 +118,10 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
       image: ['https://www.purrify.ca/optimized/60g.webp'],
       price: familyPriceAmount.toFixed(2),
       priceValidUntil,
+      availability: 'https://schema.org/InStock',
+      sku: 'purrify-120g',
+      mpn: 'PURRIFY-120G',
+      shippingRate: '0',
       rating: {
         value: reviewData.ratingValue,
         count: reviewData.reviewCount,

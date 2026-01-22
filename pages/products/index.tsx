@@ -228,6 +228,40 @@ const ProductsPage: NextPage = () => {
     includeBreadcrumb: true
   });
 
+  // Product data for complete structured data
+  const productStructuredData = [
+    {
+      id: 'trial',
+      name: 'Purrify 12g Trial - Natural Cat Litter Freshener',
+      description: 'FREE trial of activated charcoal cat litter additive. Eliminates ammonia odors instantly.',
+      sku: 'purrify-12g',
+      mpn: 'PURRIFY-12G',
+      image: 'https://www.purrify.ca/optimized/17gpink.webp',
+      url: `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/trial-size`,
+      shippingRate: '4.76',
+    },
+    {
+      id: 'regular',
+      name: 'Purrify 50g - Best Cat Litter Freshener for Single-Cat Homes',
+      description: '50g activated charcoal cat litter additive. 4-6 weeks of odor control. 100% natural.',
+      sku: 'purrify-50g',
+      mpn: 'PURRIFY-50G',
+      image: 'https://www.purrify.ca/optimized/60g.webp',
+      url: `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/standard`,
+      shippingRate: '6.99',
+    },
+    {
+      id: 'large',
+      name: 'Purrify 120g Family Pack - Cat Litter Freshener for Multi-Cat Homes',
+      description: 'Best value 120g activated charcoal cat litter additive. 2 months of odor control.',
+      sku: 'purrify-120g',
+      mpn: 'PURRIFY-120G',
+      image: 'https://www.purrify.ca/optimized/60g.webp',
+      url: `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/family-pack`,
+      shippingRate: '0',
+    },
+  ];
+
   // Generate CollectionPage schema with ItemList (combining with breadcrumb)
   const collectionSchema = {
     "@context": "https://schema.org",
@@ -239,23 +273,88 @@ const ProductsPage: NextPage = () => {
         "url": `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products`,
         "mainEntity": {
           "@type": "ItemList",
-          "itemListElement": products.map((product, index) => ({
-            "@type": "Product",
-            "position": index + 1,
-            "name": product.name,
-            "description": product.subtitle,
-            "brand": {
-              "@type": "Brand",
-              "name": "Purrify"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": product.price.replace('$', '').replace(',', ''),
-              "priceCurrency": currency,
-              "priceValidUntil": priceValidUntil,
-              "availability": availabilityUrl
-            }
-          }))
+          "itemListElement": productStructuredData.map((product, index) => {
+            const priceKey = productIdAlias[product.id] ?? 'regular';
+            const priceValue = priceDetails[priceKey].price.replace('$', '').replace(',', '');
+            return {
+              "@type": "ListItem",
+              "position": index + 1,
+              "item": {
+                "@type": "Product",
+                "@id": product.url,
+                "name": product.name,
+                "description": product.description,
+                "image": [product.image],
+                "sku": product.sku,
+                "mpn": product.mpn,
+                "brand": {
+                  "@type": "Brand",
+                  "name": "Purrify",
+                  "logo": "https://www.purrify.ca/optimized/logo-icon-512.webp"
+                },
+                "manufacturer": {
+                  "@type": "Organization",
+                  "name": "Purrify",
+                  "url": "https://www.purrify.ca"
+                },
+                "category": "Pet Supplies > Cat Supplies > Cat Litter Additives",
+                "offers": {
+                  "@type": "Offer",
+                  "url": product.url,
+                  "price": priceValue,
+                  "priceCurrency": currency,
+                  "priceValidUntil": priceValidUntil,
+                  "availability": availabilityUrl,
+                  "itemCondition": "https://schema.org/NewCondition",
+                  "seller": {
+                    "@type": "Organization",
+                    "name": "Purrify"
+                  },
+                  "shippingDetails": {
+                    "@type": "OfferShippingDetails",
+                    "shippingRate": {
+                      "@type": "MonetaryAmount",
+                      "value": product.shippingRate,
+                      "currency": currency
+                    },
+                    "shippingDestination": {
+                      "@type": "DefinedRegion",
+                      "addressCountry": currency === 'USD' ? 'US' : 'CA'
+                    },
+                    "deliveryTime": {
+                      "@type": "ShippingDeliveryTime",
+                      "handlingTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 1,
+                        "maxValue": 2,
+                        "unitCode": "d"
+                      },
+                      "transitTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 2,
+                        "maxValue": 5,
+                        "unitCode": "d"
+                      }
+                    }
+                  },
+                  "hasMerchantReturnPolicy": {
+                    "@type": "MerchantReturnPolicy",
+                    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                    "merchantReturnDays": 30,
+                    "returnMethod": "https://schema.org/ReturnByMail",
+                    "returnFees": "https://schema.org/FreeReturn"
+                  }
+                },
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": "4.9",
+                  "reviewCount": "138",
+                  "bestRating": "5",
+                  "worstRating": "1"
+                }
+              }
+            };
+          })
         }
       },
       ...(breadcrumb ? [breadcrumb.schema] : []),

@@ -230,11 +230,20 @@ function generateSchema(
         '@type': 'Product',
         name: data.name,
         description: data.description,
-        image: data.image,
+        image: Array.isArray(data.image) ? data.image : [data.image],
         brand: {
           '@type': 'Brand',
           name: SITE_NAME,
+          logo: 'https://www.purrify.ca/optimized/logo-icon-512.webp',
         },
+        manufacturer: {
+          '@type': 'Organization',
+          name: SITE_NAME,
+          url: 'https://www.purrify.ca',
+        },
+        category: 'Pet Supplies > Cat Supplies > Cat Litter Additives',
+        sku: data.sku || 'purrify-product',
+        mpn: data.mpn || `PURRIFY-${(data.sku || 'PRODUCT').toUpperCase()}`,
         offers: {
           '@type': 'Offer',
           url,
@@ -243,6 +252,44 @@ function generateSchema(
           priceValidUntil: data.priceValidUntil,
           availability: data.availability || 'https://schema.org/InStock',
           itemCondition: 'https://schema.org/NewCondition',
+          seller: {
+            '@type': 'Organization',
+            name: SITE_NAME,
+          },
+          shippingDetails: {
+            '@type': 'OfferShippingDetails',
+            shippingRate: {
+              '@type': 'MonetaryAmount',
+              value: data.shippingRate || '6.99',
+              currency: currency,
+            },
+            shippingDestination: {
+              '@type': 'DefinedRegion',
+              addressCountry: currency === 'USD' ? 'US' : 'CA',
+            },
+            deliveryTime: {
+              '@type': 'ShippingDeliveryTime',
+              handlingTime: {
+                '@type': 'QuantitativeValue',
+                minValue: 1,
+                maxValue: 2,
+                unitCode: 'd',
+              },
+              transitTime: {
+                '@type': 'QuantitativeValue',
+                minValue: 2,
+                maxValue: 5,
+                unitCode: 'd',
+              },
+            },
+          },
+          hasMerchantReturnPolicy: {
+            '@type': 'MerchantReturnPolicy',
+            returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+            merchantReturnDays: 30,
+            returnMethod: 'https://schema.org/ReturnByMail',
+            returnFees: 'https://schema.org/FreeReturn',
+          },
         },
         aggregateRating: data.rating
           ? {

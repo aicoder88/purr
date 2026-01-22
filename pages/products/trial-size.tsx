@@ -88,10 +88,13 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
     schemaData: {
       name: "Purrify 12g Trial - Natural Cat Litter Freshener & Charcoal Additive",
       description: "FREE trial of our activated charcoal cat litter additive. Natural coconut shell carbon litter freshener eliminates ammonia odors instantly. Pet-friendly, fragrance-free formula.",
-      image: "https://www.purrify.ca/optimized/17gpink.webp",
+      image: ["https://www.purrify.ca/optimized/17gpink.webp"],
       price: trialPriceString,
       priceValidUntil,
       availability: 'https://schema.org/InStock',
+      sku: 'purrify-12g',
+      mpn: 'PURRIFY-12G',
+      shippingRate: '4.76',
       rating: {
         value: reviewData.ratingValue,
         count: reviewData.reviewCount,
