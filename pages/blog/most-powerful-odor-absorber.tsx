@@ -94,27 +94,25 @@ export default function MostPowerfulOdorAbsorber() {
       {schema && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+          dangerouslySetInnerHTML={generateJSONLD(schema)}
         />
       )}
 
       {/* FAQ Schema */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: generateJSONLD({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: faqs.map((item) => ({
-              '@type': 'Question',
-              name: item.question,
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: item.answer,
-              },
-            })),
-          }),
-        }}
+        dangerouslySetInnerHTML={generateJSONLD({
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faqs.map((item) => ({
+            '@type': 'Question',
+            name: item.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: item.answer,
+            },
+          })),
+        })}
       />
 
       <article className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">

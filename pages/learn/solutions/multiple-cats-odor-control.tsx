@@ -47,7 +47,7 @@ export default function MultipleCatsOdorControlPage() {
       {schema && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+          dangerouslySetInnerHTML={generateJSONLD(schema)}
         />
       )}
 

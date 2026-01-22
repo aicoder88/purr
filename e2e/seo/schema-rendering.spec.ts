@@ -5,6 +5,33 @@
 
 import { test, expect } from '@playwright/test';
 
+/**
+ * Helper to extract all schemas from JSON-LD scripts, handling nested @graph arrays
+ */
+async function extractSchemas(page: import('@playwright/test').Page) {
+  const rawSchemas = await page.evaluate(() => {
+    const scripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
+    return scripts.map(script => JSON.parse(script.textContent || '{}'));
+  });
+
+  // Recursively flatten schemas: handle nested @graph arrays
+  function flattenSchemas(items: any[]): any[] {
+    const result: any[] = [];
+    for (const item of items) {
+      if (item['@graph'] && Array.isArray(item['@graph'])) {
+        // Recursively flatten nested @graph arrays
+        result.push(...flattenSchemas(item['@graph']));
+      } else if (item['@type']) {
+        // Only add items that have a @type (actual schemas)
+        result.push(item);
+      }
+    }
+    return result;
+  }
+
+  return flattenSchemas(rawSchemas);
+}
+
 test.describe('SEO Schema Rendering', () => {
   test.describe('Product Pages', () => {
     test('should render product schema on trial size page', async ({ page }) => {
@@ -13,11 +40,8 @@ test.describe('SEO Schema Rendering', () => {
       // Wait for page to load
       await page.waitForLoadState('domcontentloaded');
 
-      // Extract JSON-LD schemas
-      const schemas = await page.evaluate(() => {
-        const scripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
-        return scripts.map(script => JSON.parse(script.textContent || '{}'));
-      });
+      // Extract JSON-LD schemas (handles @graph arrays)
+      const schemas = await extractSchemas(page);
 
       // Find product schema
       const productSchema = schemas.find(schema => schema['@type'] === 'Product');
@@ -52,10 +76,7 @@ test.describe('SEO Schema Rendering', () => {
       await page.goto('/products/standard');
       await page.waitForLoadState('domcontentloaded');
 
-      const schemas = await page.evaluate(() => {
-        const scripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
-        return scripts.map(script => JSON.parse(script.textContent || '{}'));
-      });
+      const schemas = await extractSchemas(page);
 
       const productSchema = schemas.find(schema => schema['@type'] === 'Product');
       expect(productSchema).toBeDefined();
@@ -66,10 +87,7 @@ test.describe('SEO Schema Rendering', () => {
       await page.goto('/products/family-pack');
       await page.waitForLoadState('domcontentloaded');
 
-      const schemas = await page.evaluate(() => {
-        const scripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
-        return scripts.map(script => JSON.parse(script.textContent || '{}'));
-      });
+      const schemas = await extractSchemas(page);
 
       const productSchema = schemas.find(schema => schema['@type'] === 'Product');
       expect(productSchema).toBeDefined();
@@ -81,10 +99,7 @@ test.describe('SEO Schema Rendering', () => {
       await page.goto('/products/trial-size');
       await page.waitForLoadState('domcontentloaded');
 
-      const schemas = await page.evaluate(() => {
-        const scripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
-        return scripts.map(script => JSON.parse(script.textContent || '{}'));
-      });
+      const schemas = await extractSchemas(page);
 
       const productSchema = schemas.find(schema => schema['@type'] === 'Product');
       // Currency should be either CAD or USD
@@ -97,10 +112,7 @@ test.describe('SEO Schema Rendering', () => {
       await page.goto('/blog/most-powerful-odor-absorber');
       await page.waitForLoadState('domcontentloaded');
 
-      const schemas = await page.evaluate(() => {
-        const scripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
-        return scripts.map(script => JSON.parse(script.textContent || '{}'));
-      });
+      const schemas = await extractSchemas(page);
 
       const articleSchema = schemas.find(schema => schema['@type'] === 'Article');
       expect(articleSchema).toBeDefined();
@@ -126,10 +138,7 @@ test.describe('SEO Schema Rendering', () => {
       await page.goto('/blog/most-powerful-odor-absorber');
       await page.waitForLoadState('domcontentloaded');
 
-      const schemas = await page.evaluate(() => {
-        const scripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
-        return scripts.map(script => JSON.parse(script.textContent || '{}'));
-      });
+      const schemas = await extractSchemas(page);
 
       // Should have both article and FAQ schemas
       const articleSchema = schemas.find(schema => schema['@type'] === 'Article');
@@ -158,10 +167,7 @@ test.describe('SEO Schema Rendering', () => {
       await page.goto('/learn/faq');
       await page.waitForLoadState('domcontentloaded');
 
-      const schemas = await page.evaluate(() => {
-        const scripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
-        return scripts.map(script => JSON.parse(script.textContent || '{}'));
-      });
+      const schemas = await extractSchemas(page);
 
       const faqSchema = schemas.find(schema => schema['@type'] === 'FAQPage');
       expect(faqSchema).toBeDefined();
@@ -178,10 +184,7 @@ test.describe('SEO Schema Rendering', () => {
       await page.goto('/learn/how-it-works');
       await page.waitForLoadState('domcontentloaded');
 
-      const schemas = await page.evaluate(() => {
-        const scripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
-        return scripts.map(script => JSON.parse(script.textContent || '{}'));
-      });
+      const schemas = await extractSchemas(page);
 
       const articleSchema = schemas.find(schema => schema['@type'] === 'Article');
       expect(articleSchema).toBeDefined();
@@ -192,10 +195,7 @@ test.describe('SEO Schema Rendering', () => {
       await page.goto('/learn/science');
       await page.waitForLoadState('domcontentloaded');
 
-      const schemas = await page.evaluate(() => {
-        const scripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
-        return scripts.map(script => JSON.parse(script.textContent || '{}'));
-      });
+      const schemas = await extractSchemas(page);
 
       const articleSchema = schemas.find(schema => schema['@type'] === 'Article');
       expect(articleSchema).toBeDefined();
@@ -205,10 +205,7 @@ test.describe('SEO Schema Rendering', () => {
       await page.goto('/learn/safety');
       await page.waitForLoadState('domcontentloaded');
 
-      const schemas = await page.evaluate(() => {
-        const scripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
-        return scripts.map(script => JSON.parse(script.textContent || '{}'));
-      });
+      const schemas = await extractSchemas(page);
 
       const articleSchema = schemas.find(schema => schema['@type'] === 'Article');
       expect(articleSchema).toBeDefined();
@@ -220,10 +217,7 @@ test.describe('SEO Schema Rendering', () => {
       await page.goto('/');
       await page.waitForLoadState('domcontentloaded');
 
-      const schemas = await page.evaluate(() => {
-        const scripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
-        return scripts.map(script => JSON.parse(script.textContent || '{}'));
-      });
+      const schemas = await extractSchemas(page);
 
       const orgSchema = schemas.find(schema => schema['@type'] === 'Organization');
       expect(orgSchema).toBeDefined();
@@ -284,10 +278,7 @@ test.describe('SEO Schema Rendering', () => {
       await page.goto('/products/trial-size');
       await page.waitForLoadState('domcontentloaded');
 
-      const schemas = await page.evaluate(() => {
-        const scripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
-        return scripts.map(script => JSON.parse(script.textContent || '{}'));
-      });
+      const schemas = await extractSchemas(page);
 
       schemas.forEach(schema => {
         expect(schema['@context']).toBe('https://schema.org');
@@ -298,10 +289,7 @@ test.describe('SEO Schema Rendering', () => {
       await page.goto('/products/trial-size');
       await page.waitForLoadState('domcontentloaded');
 
-      const schemas = await page.evaluate(() => {
-        const scripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
-        return scripts.map(script => JSON.parse(script.textContent || '{}'));
-      });
+      const schemas = await extractSchemas(page);
 
       const ids = schemas.map(s => s['@id']).filter(Boolean);
       const uniqueIds = new Set(ids);

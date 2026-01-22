@@ -45,7 +45,7 @@ export default function HowToNeutralizeAmmoniaCatLitterPage() {
       {schema && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+          dangerouslySetInnerHTML={generateJSONLD(schema)}
         />
       )}
 

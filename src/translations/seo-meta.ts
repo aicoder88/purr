@@ -60,7 +60,7 @@ export const seoMetaEn: SEOMetaContent = {
 
   products: {
     trial: {
-      title: 'FREE Cat Litter Deodorizer Trial - Just Pay Shipping',
+      title: 'FREE Cat Litter Deodorizer Trial - Pay Shipping',
       description: 'Try our activated carbon cat litter additive FREE! Eliminates ammonia smell instantly. Just $4.76 shipping to USA & Canada. 10,000+ happy customers.',
       targetKeyword: 'cat litter deodorizer'
     },

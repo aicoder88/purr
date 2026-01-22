@@ -176,7 +176,7 @@ export default function ContactPage() {
       {schema && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+          dangerouslySetInnerHTML={generateJSONLD(schema)}
         />
       )}
 
