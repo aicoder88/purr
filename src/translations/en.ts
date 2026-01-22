@@ -273,7 +273,7 @@ export const en = {
       },
       {
         number: "03",
-        title: "Mix & Enjoy the Quiet",
+        title: "Mix & Enjoy the Clean",
         description: "Give it a gentle stir. Now enjoy 7 days of not thinking about the litter box. Your nose (and your guests) will thank you."
       }
     ],

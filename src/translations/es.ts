@@ -274,7 +274,7 @@ export const es: TranslationType = {
       },
       {
         number: "03",
-        title: "Mezclar y Respirar Tranquilo!",
+        title: "Mezclar y Disfrutar lo Limpio!",
         description: "Mezcla suavemente y observa (huele?) la magia suceder. 7 dias de aire fresco empiezan AHORA. Tus invitados quedaran asombrados."
       }
     ],

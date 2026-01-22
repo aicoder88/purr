@@ -297,7 +297,7 @@ export const fr = {
       },
       {
         number: "03",
-        title: "Mélangez et profitez de la fraîcheur !",
+        title: "Mélangez et profitez de la propreté !",
         description: "Mélangez doucement dans la couche supérieure de la litière pour une efficacité maximale."
       }
     ],
