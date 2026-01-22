@@ -176,7 +176,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
     scrollToSection("products");
   }, [trackHeroConversion, trackCtaConversion]);
 
-  // Rotating testimonials - slowed down to 5 seconds for readability
+  // Rotating testimonials - rotating every 1.5 seconds
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -187,7 +187,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
         setCurrentTestimonialIndex((prev) => (prev + 1) % heroTestimonials.length);
         setIsTransitioning(false);
       }, 300); // Fade out duration
-    }, 2000); // Rotate every 2 seconds
+    }, 1500); // Rotate every 1.5 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -257,8 +257,19 @@ export const HeroContent = ({ t }: HeroContentProps) => {
           <span className="text-sm text-gray-600 dark:text-gray-400">{t.hero.simplified?.thirtyDayGuarantee || ""}</span>
         </div>
 
+        {/* Social Proof - 1,000+ happy cat parents */}
+        <div className="flex items-center gap-3">
+          <SocialProofAvatars />
+          <div className="text-sm text-gray-600 dark:text-gray-400">
+            <span className="font-bold text-gray-900 dark:text-white block">
+              {t.hero.socialProof.trustNumber}
+            </span>
+            <span className="text-xs">{t.hero.socialProof.trustText}</span>
+          </div>
+        </div>
+
         {/* CTA Button - B2C: Free Trial */}
-        <div className="flex flex-col sm:flex-row gap-3 pt-2">
+        <div className="flex flex-col gap-3 pt-2">
           <Button
             onClick={handleScrollToProducts}
             className={ctaButtonClasses}
@@ -268,6 +279,9 @@ export const HeroContent = ({ t }: HeroContentProps) => {
             {t.hero.simplified?.getFreeSample || "Send Me a Free Bag →"}
             <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
           </Button>
+          <p className="text-xs text-gray-500 dark:text-gray-400 text-center sm:text-left -mt-2">
+            {t.hero.simplified?.justPayShipping || "Just pay $4.76 shipping"}
+          </p>
           {/* B2B: Find a Store CTA (hidden for B2C focus)
           <Button
             asChild
