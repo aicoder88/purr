@@ -60,7 +60,7 @@ export const fr = {
     signOut: "Se Déconnecter",
     signedIn: "Connecté",
     // B2B pivot keys
-    findStore: "Trouver un Magasin",
+    findStore: "Trouvez Purrify Près de Vous",
     findNearYou: "Trouver Près de Vous",
     whereToBuy: "Où Acheter",
     askForPurrify: "Demandez Purrify dans Votre Magasin"
@@ -1116,33 +1116,33 @@ export const fr = {
     products: [
       {
         id: "trial",
-        name: "Essai GRATUIT",
-        subtitle: "Paquet 12g",
-        duration: "1 semaine",
+        name: "L'Échantillon du Sceptique",
+        subtitle: "12g · Une Semaine de Preuve",
+        duration: "7+ jours",
         cats: "1 chat",
-        features: ["12g de charbon actif", "Frais d'expédition seulement", "Introduction parfaite"],
-        bestFor: "Nouveaux clients qui veulent essayer Purrify sans risque",
-        cta: "Obtenir l'Essai GRATUIT"
+        features: ["Une semaine de confiance à l'air frais", "Seulement 4,76$ d'expédition", "Zéro risque, zéro engagement"],
+        bestFor: "Parents de chats qui ont été déçus auparavant. Testez par vous-même. Votre nez ne ment pas.",
+        cta: "Trouvez Purrify Près de Vous"
       },
       {
         id: "regular",
-        name: "Régulier",
-        subtitle: "Paquet 120g - Le Plus Populaire",
-        duration: "3 mois",
+        name: "Format Régulier",
+        subtitle: "120g · Le Format Idéal",
+        duration: "7+ jours par application",
         cats: "1-2 chats",
-        features: ["120g de charbon actif", "Abonnez & économisez", "Livraison gratuite"],
-        bestFor: "Foyers avec un ou deux chats souhaitant une fraîcheur continue",
-        cta: "Abonnez & Économisez"
+        features: ["Utilisez plus pour une fraîcheur prolongée", "Rechargez à tout moment", "Fonctionne avec toute litière"],
+        bestFor: "Foyers avec un ou deux chats. Le format que les clients rachètent.",
+        cta: "Trouvez Purrify Près de Vous"
       },
       {
         id: "large",
-        name: "Grand",
-        subtitle: "Paquet 240g - Meilleure Valeur",
-        duration: "3 mois",
+        name: "Format Famille",
+        subtitle: "240g · Meilleur Rapport Qualité-Prix",
+        duration: "7+ jours par application",
         cats: "3+ chats",
-        features: ["240g de charbon actif", "Économies maximales", "Livraison gratuite"],
-        bestFor: "Foyers multi-chats et utilisateurs intensifs",
-        cta: "Abonnez & Économisez"
+        features: ["Meilleur rapport qualité-prix au gramme", "Dosage flexible", "Parfait pour plusieurs bacs"],
+        bestFor: "Foyers multi-chats, parents d'accueil, ou quiconque a perdu le compte.",
+        cta: "Trouvez Purrify Près de Vous"
       }
     ],
     comparisonFeatures: [
@@ -1239,29 +1239,29 @@ export const fr = {
   productsPage: {
     // Hero Section
     hero: {
-      headline: "Enfin... Une façon d'aimer votre chat sans vous excuser pour l'odeur",
-      subheadline: "Le même charbon actif qui rend l'eau potable piège maintenant les odeurs de litière à la source. Pas de parfums. Pas de masquage. Juste... rien. (De la meilleure façon.)",
-      supporting: "Choisissez votre format ci-dessous. Même formule qualité filtration dans chaque sac."
+      headline: "Vos Chats Sont Parfaits. L'Odeur? Pas Tellement.",
+      subheadline: "Le même charbon actif qui nettoie votre eau potable. Piège l'ammoniaque de la litière au niveau moléculaire. Pas de parfums. Pas de masquage. Juste... de l'air.",
+      supporting: "Choisissez votre format. Prouvez-le à votre nez."
     },
 
     // Quick Decision Helper
     quickDecision: {
-      title: "Pas sûr du format? Laissez votre nez décider.",
-      subtitle: "(Spoiler : Il vous remerciera de toute façon)",
+      title: "Pas Sûr du Format? Laissez Votre Nez Juger.",
+      subtitle: "",
       trial: {
-        question: "Sceptique? Tant mieux. Prouvez-le vous-même.",
-        answer: "Le sac d'essai GRATUIT",
-        detail: "Payez seulement les frais de port. Si votre nez n'est pas convaincu en 7 jours, on aura tous les deux appris quelque chose."
+        question: "Déçu par de fausses promesses auparavant?",
+        answer: "L'Échantillon du Sceptique (12g)",
+        detail: "Payez seulement les frais de port. 7 jours pour convaincre votre nez. Ça marche ou vous perdez 4,76$."
       },
       regular: {
-        question: "Un ou deux petits maîtres poilus à la maison?",
-        answer: "Le sac Régulier",
-        detail: "3 mois de 'attends, où est la litière?' Notre format le plus populaire pour une bonne raison."
+        question: "Un ou deux chats à la maison?",
+        answer: "Format Régulier (120g)",
+        detail: "Le format le plus populaire. Dure 7+ jours par application. Utilisez plus, reste frais plus longtemps."
       },
       large: {
-        question: "Vous tenez un hôtel pour chats? (Pas de jugement.)",
-        answer: "Le grand sac",
-        detail: "Pour les foyers multi-chats où le contrôle des odeurs n'est pas optionnel. Livraison gratuite. Fraîcheur maximale."
+        question: "Vous gérez un foyer multi-chats?",
+        answer: "Format Famille (240g)",
+        detail: "Meilleur rapport qualité-prix au gramme. Même formule puissante, double la quantité."
       }
     },
 

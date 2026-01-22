@@ -58,7 +58,7 @@ export const en = {
     signOut: "Sign Out",
     signedIn: "Signed in",
     // B2B pivot keys
-    findStore: "Find a Store",
+    findStore: "Get Purrify Near You",
     findNearYou: "Find It Near You",
     whereToBuy: "Where to Buy",
     askForPurrify: "Ask for Purrify at Your Store"
@@ -1145,33 +1145,33 @@ export const en = {
     products: [
       {
         id: "trial",
-        name: "FREE Trial",
-        subtitle: "12g Pack",
-        duration: "1 week",
+        name: "The Skeptic's Sample",
+        subtitle: "12g · One Week of Proof",
+        duration: "7+ days",
         cats: "1 cat",
-        features: ["12g activated carbon", "Just pay shipping", "Perfect introduction"],
-        bestFor: "New customers wanting to try Purrify risk-free",
-        cta: "Get FREE Trial"
+        features: ["One week of fresh-air confidence", "Just $4.76 shipping", "Zero risk, zero commitment"],
+        bestFor: "Cat parents who've been burned before. Test it yourself. Your nose doesn't lie.",
+        cta: "Get Purrify Near You"
       },
       {
         id: "regular",
-        name: "Regular",
-        subtitle: "120g Pack - Most Popular",
-        duration: "3 months",
+        name: "Regular Size",
+        subtitle: "120g · The Goldilocks Bag",
+        duration: "7+ days per application",
         cats: "1-2 cats",
-        features: ["120g activated carbon", "Subscribe & save", "Free shipping"],
-        bestFor: "Single or dual cat homes wanting continuous freshness",
-        cta: "Subscribe & Save"
+        features: ["Use more for extended freshness", "Top-up anytime", "Works with any litter"],
+        bestFor: "Single or dual cat homes. The size that keeps customers coming back.",
+        cta: "Get Purrify Near You"
       },
       {
         id: "large",
-        name: "Large",
-        subtitle: "240g Pack - Best Value",
-        duration: "3 months",
+        name: "Family Size",
+        subtitle: "240g · Best Value Per Gram",
+        duration: "7+ days per application",
         cats: "3+ cats",
-        features: ["240g activated carbon", "Maximum savings", "Free shipping"],
-        bestFor: "Multi-cat households and heavy users",
-        cta: "Subscribe & Save"
+        features: ["Best value per gram", "Flexible dosing", "Perfect for multiple boxes"],
+        bestFor: "Multi-cat households, foster parents, or anyone who's lost count.",
+        cta: "Get Purrify Near You"
       }
     ],
     comparisonFeatures: [
@@ -1226,8 +1226,8 @@ export const en = {
     tableHeaders: {
       feature: "Feature",
       trial: "12g Trial",
-      regular: "120g Regular",
-      large: "240g Large"
+      regular: "120g Regular Size",
+      large: "240g Family Size"
     },
 
     // Calculation Units
@@ -1266,29 +1266,29 @@ export const en = {
   productsPage: {
     // Hero Section
     hero: {
-      headline: "Finally... A Way to Love Your Cat Without Apologizing for the Smell",
-      subheadline: "The same activated carbon that makes drinking water clean now traps litter box odors at the source. No perfumes. No cover-ups. Just... nothing. (In the best way.)",
-      supporting: "Pick your size below. Same water-filter grade formula in every bag."
+      headline: "Your Cats Are Perfect. The Smell? Not So Much.",
+      subheadline: "Same activated carbon that cleans your drinking water. Traps litter box ammonia at the molecular level. No perfumes. No cover-ups. Just... air.",
+      supporting: "Pick your size. Prove it to your nose."
     },
 
     // Quick Decision Helper
     quickDecision: {
-      title: "Not Sure Which Size? Let Your Nose Decide.",
-      subtitle: "(Spoiler: It'll thank you either way)",
+      title: "Not Sure Which Size? Let Your Nose Be the Judge.",
+      subtitle: "",
       trial: {
-        question: "Skeptical? Good. Prove it to yourself.",
-        answer: "The FREE Trial Bag",
-        detail: "Just pay shipping. If your nose isn't convinced in 7 days, we've both learned something."
+        question: "Burned by false promises before?",
+        answer: "The Skeptic's Sample (12g)",
+        detail: "Just pay shipping. 7 days to convince your nose. It works or you're out $4.76."
       },
       regular: {
-        question: "One or two furry overlords at home?",
-        answer: "The Regular Bag",
-        detail: "3 months of 'wait, where's the litter box?' moments. Our most popular size for a reason."
+        question: "One or two cats at home?",
+        answer: "Regular Size (120g)",
+        detail: "Most popular size. Lasts 7+ days per application. Use more, stays fresh longer."
       },
       large: {
-        question: "Running a cat hotel? (No judgment.)",
-        answer: "The Large Bag",
-        detail: "For multi-cat homes where odor control isn't optional. Free shipping. Maximum freshness."
+        question: "Running a multi-cat household?",
+        answer: "Family Size (240g)",
+        detail: "Best value per gram. Same powerful formula, double the supply."
       }
     },
 
@@ -1321,22 +1321,22 @@ export const en = {
         bestFor: "Cat parents who've been burned by 'miracle' products before. We get it. Prove it to yourself first."
       },
       regular: {
-        name: "The Sweet Spot",
-        subtitle: "120g · 3 Months of Peace",
+        name: "Regular Size",
+        subtitle: "120g · The Goldilocks Bag",
         features: [
-          "10-12 weeks of odor control for 1-2 cats",
-          "The size most customers reorder",
+          "7+ days freshness per application",
+          "Use more for extended freshness",
           "Works with whatever litter your cat already approves of"
         ],
         bestFor: "Single or dual cat homes where 'company's coming over' doesn't trigger panic anymore."
       },
       large: {
-        name: "The 'We Have How Many Cats?' Bag",
-        subtitle: "240g · Best Value for Multi-Cat Homes",
+        name: "Family Size",
+        subtitle: "240g · Best Value Per Gram",
         features: [
-          "20-24 weeks for 1 cat, 10-12 weeks for 2+",
-          "Free shipping (because you're already spending enough on cat food)",
-          "Best per-gram value we offer"
+          "7+ days freshness per application",
+          "Best value per gram",
+          "Flexible dosing (use more, lasts longer)"
         ],
         bestFor: "Multi-cat households, foster parents, or anyone who's given up counting litter boxes."
       }

@@ -90,21 +90,21 @@ const ProductsPage: NextPage = () => {
   // Display names that de-emphasize grams
   const productDisplayNames: Record<string, { name: string; nameFr: string; subtitle: string; subtitleFr: string }> = {
     trial: {
-      name: 'Trial Bag',
+      name: 'The Skeptic\'s Sample',
       nameFr: 'Format Essai',
-      subtitle: '12g · Perfect for trying',
-      subtitleFr: '12g · Parfait pour essayer'
+      subtitle: '12g · One Week of Proof',
+      subtitleFr: '12g · Une semaine de preuve'
     },
     regular: {
-      name: 'Regular Bag',
+      name: 'Regular Size',
       nameFr: 'Format Régulier',
-      subtitle: '120g · Most Popular',
-      subtitleFr: '120g · Le plus populaire'
+      subtitle: '120g · The Goldilocks Bag',
+      subtitleFr: '120g · Le format idéal'
     },
     large: {
-      name: 'Large Bag',
-      nameFr: 'Grand Format',
-      subtitle: '240g · Best Value',
+      name: 'Family Size',
+      nameFr: 'Format Famille',
+      subtitle: '240g · Best Value Per Gram',
       subtitleFr: '240g · Meilleur rapport qualité-prix'
     },
   };
@@ -729,7 +729,7 @@ const ProductsPage: NextPage = () => {
                           className="w-full bg-brand-purple hover:bg-brand-purple/90 text-white dark:text-gray-100"
                         >
                           <MapPin className="w-5 h-5 mr-2" />
-                          {t.nav?.findStore || "Find a Store"}
+                          {t.nav?.findStore || "Get Purrify Near You"}
                           <ChevronRight className="w-5 h-5 ml-2" />
                         </Button>
                       </Link>

@@ -36,7 +36,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
   const [quantity, setQuantity] = useState(1);
 
   const productKey = 'family';
-  const productName = 'Purrify Family Pack (120g)';
+  const productName = 'Purrify Family Size (240g)';
 
   // Track ViewContent on page load
   useEffect(() => {
@@ -517,7 +517,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8 text-white dark:text-gray-100">
                   <h2 className="font-heading text-3xl font-bold mb-2">Perfect for Multi-Cat Families</h2>
-                  <p className="text-xl opacity-90">Best value for 2-3 months of freshness</p>
+                  <p className="text-xl opacity-90">Best value per gram. Lasts 7+ days per application—use more, stays fresh longer.</p>
                 </div>
               </div>
             </div>

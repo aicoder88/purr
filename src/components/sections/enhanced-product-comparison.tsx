@@ -22,11 +22,10 @@ const FEATURE_LABELS = {
     prioritySupport: 'Priority Support',
   },
   standard: {
-    odorControl: '3 months of Odor Control',
+    odorControl: '7+ days per application',
     naturalIngredients: '100% Natural',
     easyApplication: 'Easy Application',
     moneyBackGuarantee: '30-Day Guarantee',
-    freeShipping: 'Free Shipping',
     bulkDiscount: 'Bulk Discount',
     prioritySupport: 'Priority Support',
   },
@@ -104,12 +103,12 @@ export function EnhancedProductComparison() {
   const products: ProductCard[] = [
     {
       id: 'purrify-12g',
-      name: t.products?.['purrify-12g']?.name || 'FREE Trial',
-      subtitle: '12g Pack',
+      name: t.products?.['purrify-12g']?.name || 'The Skeptic\'s Sample',
+      subtitle: '12g · One Week of Proof',
       badge: 'FREE TRIAL',
       badgeColor: 'bg-green-600 dark:bg-green-700',
-      description: 'Try Purrify FREE - just pay shipping & handling.',
-      duration: '1 Week',
+      description: 'You\'ve heard the promises. The "miracle" sprays. The "revolutionary" crystals. All lies. Here\'s the truth: This works. Or you\'re out $4.76 in shipping.',
+      duration: '7+ days',
       coverage: '1 Cat',
       features: {
         odorControl: true,
@@ -140,12 +139,12 @@ export function EnhancedProductComparison() {
     },
     {
       id: 'purrify-120g',
-      name: t.products?.['purrify-120g']?.name || 'Regular',
-      subtitle: '120g Pack',
+      name: t.products?.['purrify-120g']?.name || 'Regular Size',
+      subtitle: '120g · The Goldilocks Bag',
       badge: 'MOST POPULAR',
       badgeColor: 'bg-deep-coral',
-      description: 'The #1 choice for single or dual cat homes.',
-      duration: '3 Months',
+      description: 'This is the size most customers reorder. Know why? Because it works. Lasts 7+ days per application. Use more, it lasts longer. Starting to smell? Sprinkle more. It\'s that simple.',
+      duration: '7+ days per application',
       coverage: '1-2 Cats',
       features: {
         odorControl: true,
@@ -154,7 +153,6 @@ export function EnhancedProductComparison() {
         moneyBackGuarantee: false,
         bulkDiscount: false,
         prioritySupport: false,
-        freeShipping: true,
       },
       image: '/optimized/60g.webp',
       imageSize: 'md',
@@ -179,12 +177,12 @@ export function EnhancedProductComparison() {
     },
     {
       id: 'purrify-240g',
-      name: t.products?.['purrify-240g']?.name || 'Large',
-      subtitle: '240g Pack',
+      name: t.products?.['purrify-240g']?.name || 'Family Size',
+      subtitle: '240g · Best Value Per Gram',
       badge: 'BEST VALUE',
       badgeColor: 'bg-electric-indigo',
-      description: 'Maximum savings for multi-cat households.',
-      duration: '3 Months',
+      description: 'Double the supply. Same powerful formula. For multi-cat households who need serious odor control. Or foster parents who\'ve lost count. Lasts 7+ days per application. The more you use, the longer it works. Your litter box, your rules.',
+      duration: '7+ days per application',
       coverage: '3+ Cats',
       features: {
         odorControl: true,
@@ -193,7 +191,6 @@ export function EnhancedProductComparison() {
         moneyBackGuarantee: true,
         bulkDiscount: true,
         prioritySupport: false,
-        freeShipping: true,
       },
       image: '/optimized/140g-640w.avif',
       imageSize: 'lg',
@@ -362,7 +359,7 @@ export function EnhancedProductComparison() {
                     >
                       <Link href="/stores">
                         <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                        {t.nav?.findStore || "Find a Retailer"} <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
+                        {t.nav?.findStore || "Get Purrify Near You"} <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                       </Link>
                     </Button>
                   </div>

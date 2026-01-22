@@ -60,7 +60,7 @@ export const zh = {
     signOut: "退出登录",
     signedIn: "已登录",
     // B2B pivot keys
-    findStore: "查找商店",
+    findStore: "在您附近找到Purrify",
     findNearYou: "附近查找",
     whereToBuy: "哪里购买",
     askForPurrify: "在您的商店询问Purrify"
