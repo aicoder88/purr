@@ -165,47 +165,47 @@ const ProductsPage: NextPage = () => {
     }
   ];
 
-  // Quick decision helper data
+  // Quick decision helper data - using new copywriting translations
   const quickPicks = [
     {
-      question: locale === 'fr' ? "Vous voulez essayer ?" : "Just want to try it?",
-      answer: locale === 'fr' ? "Format Essai GRATUIT" : "FREE Trial Bag",
-      detail: locale === 'fr' ? "Payez seulement les frais de port. Résultats visibles en quelques jours." : "Pay only shipping. See results in days.",
+      question: t.productsPage?.quickDecision?.trial?.question || "Skeptical? Good. Prove it to yourself.",
+      answer: t.productsPage?.quickDecision?.trial?.answer || "The FREE Trial Bag",
+      detail: t.productsPage?.quickDecision?.trial?.detail || "Just pay shipping. If your nose isn't convinced in 7 days, we've both learned something.",
       productId: "trial",
       icon: <Sparkles className="w-6 h-6" />,
     },
     {
-      question: locale === 'fr' ? "1-2 chats à la maison ?" : "1-2 cats at home?",
-      answer: locale === 'fr' ? "Format Régulier" : "Regular Bag",
-      detail: locale === 'fr' ? "3 mois de fraîcheur. Le choix le plus populaire." : "3 months of freshness. Most popular choice.",
+      question: t.productsPage?.quickDecision?.regular?.question || "One or two furry overlords at home?",
+      answer: t.productsPage?.quickDecision?.regular?.answer || "The Regular Bag",
+      detail: t.productsPage?.quickDecision?.regular?.detail || "3 months of 'wait, where's the litter box?' moments. Our most popular size for a reason.",
       productId: "regular",
       icon: <Cat className="w-6 h-6" />,
     },
     {
-      question: locale === 'fr' ? "Plusieurs chats ?" : "Multi-cat household?",
-      answer: locale === 'fr' ? "Grand Format" : "Large Bag",
-      detail: locale === 'fr' ? "Meilleur rapport qualité-prix. Livraison gratuite." : "Best value. Free shipping.",
+      question: t.productsPage?.quickDecision?.large?.question || "Running a cat hotel? (No judgment.)",
+      answer: t.productsPage?.quickDecision?.large?.answer || "The Large Bag",
+      detail: t.productsPage?.quickDecision?.large?.detail || "For multi-cat homes where odor control isn't optional. Free shipping. Maximum freshness.",
       productId: "large",
       icon: <Users className="w-6 h-6" />,
     },
   ];
 
-  // Trust signals
+  // Trust signals - using new copywriting translations
   const trustSignals = [
     {
       icon: <Shield className="w-8 h-8" />,
-      title: "Water-Filter Grade",
-      description: "Same activated carbon used in drinking water filtration",
+      title: t.productsPage?.trustSignals?.waterFilter?.title || "The Same Stuff in Your Brita",
+      description: t.productsPage?.trustSignals?.waterFilter?.description || "Meets NSF/ANSI 61 standards. If it's good enough to make tap water drinkable, imagine what it does to ammonia.",
     },
     {
       icon: <Leaf className="w-8 h-8" />,
-      title: "100% Natural",
-      description: "Made from coconut shells. No chemicals or fragrances.",
+      title: t.productsPage?.trustSignals?.ingredients?.title || "Ingredients: Coconut Shells. That's It.",
+      description: t.productsPage?.trustSignals?.ingredients?.description || "No fragrance to stress your cat. No chemicals to worry about. Just pure, activated carbon from coconut shells.",
     },
     {
       icon: <Droplets className="w-8 h-8" />,
-      title: "Traps, Not Masks",
-      description: "Eliminates odor molecules instead of covering them up",
+      title: t.productsPage?.trustSignals?.science?.title || "Science, Not Perfume",
+      description: t.productsPage?.trustSignals?.science?.description || "One gram has the surface area of a football field. Those microscopic tunnels trap odor molecules permanently. Gone. Not hiding.",
     },
   ];
 
@@ -425,17 +425,13 @@ const ProductsPage: NextPage = () => {
             <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
               <Package className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">
-                {locale === 'fr' ? "Un produit. Trois formats." : "One Product. Three Sizes."}
+                {t.productsPage?.hero?.headline || "Finally... A Way to Love Your Cat Without Apologizing for the Smell"}
               </h1>
               <p className="text-xl md:text-2xl mb-4 opacity-90">
-                {locale === 'fr'
-                  ? "Du charbon actif de qualité filtration, fabriqué à partir de coques de noix de coco."
-                  : "Filtration-grade activated carbon, made from coconut shells."}
+                {t.productsPage?.hero?.subheadline || "The same activated carbon that makes drinking water clean now traps litter box odors at the source. No perfumes. No cover-ups. Just... nothing. (In the best way.)"}
               </p>
               <p className="text-lg opacity-80">
-                {locale === 'fr'
-                  ? "La seule différence ? La quantité que vous recevez."
-                  : "The only difference? How much you get."}
+                {t.productsPage?.hero?.supporting || "Pick your size below. Same water-filter grade formula in every bag."}
               </p>
             </div>
           </Container>
@@ -446,10 +442,10 @@ const ProductsPage: NextPage = () => {
           <Container>
             <div className="text-center mb-8">
               <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-                {locale === 'fr' ? "Choisissez en 5 secondes" : "Pick in 5 Seconds"}
+                {t.productsPage?.quickDecision?.title || "Not Sure Which Size? Let Your Nose Decide."}
               </h2>
               <p className="text-gray-600 dark:text-gray-300">
-                {locale === 'fr' ? "Répondez à une question, obtenez votre réponse." : "Answer one question, get your answer."}
+                {t.productsPage?.quickDecision?.subtitle || "(Spoiler: It'll thank you either way)"}
               </p>
             </div>
 
@@ -686,79 +682,34 @@ const ProductsPage: NextPage = () => {
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
                 <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-                  {locale === 'fr' ? "Ce que vous obtenez" : "What You Get"}
+                  {t.productsPage?.whatYouGet?.title || "What's Actually in the Bag"}
                 </h2>
                 <p className="text-xl text-gray-600 dark:text-gray-300">
-                  {locale === 'fr'
-                    ? "Chaque format inclut la même qualité premium"
-                    : "Every size includes the same premium quality"}
+                  {t.productsPage?.whatYouGet?.subtitle || "(And Why Your Cat Will Never Notice It)"}
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
+                {(t.productsPage?.whatYouGet?.benefits || [
+                  { title: "Water-Filter Grade Activated Carbon", description: "The exact same material used in Brita filters and hospital air purification. Not 'similar to.' The same." },
+                  { title: "Zero Fragrances. Zero Chemicals. Zero Worries.", description: "Cats have 200 million scent receptors. Artificial fragrances stress them. Purrify works invisibly." },
+                  { title: "Clay, Crystal, Clumping, Natural... We Don't Judge", description: "Works with whatever litter your cat has trained you to buy. No switching drama." },
+                  { title: "Open. Sprinkle. Done.", description: "A thin layer on top. 30 seconds of effort for 7 days of results." }
+                ]).map((benefit, index) => (
+                  <div key={index} className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
+                      <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-1">
+                        {benefit.title}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">
+                        {benefit.description}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-1">
-                      {locale === 'fr' ? "Charbon actif de coque de noix de coco" : "Coconut Shell Activated Carbon"}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      {locale === 'fr'
-                        ? "Le même matériau utilisé dans les filtres à eau résidentiels"
-                        : "The same material used in residential drinking water filters"}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-1">
-                      {locale === 'fr' ? "Aucun parfum ni produit chimique" : "Zero Fragrances or Chemicals"}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      {locale === 'fr'
-                        ? "Rien qui puisse irriter le système respiratoire sensible de votre chat"
-                        : "Nothing that could irritate your cat's sensitive respiratory system"}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-1">
-                      {locale === 'fr' ? "Compatible avec toutes les litières" : "Works With Any Litter"}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      {locale === 'fr'
-                        ? "Argile, cristal, naturelle - tout ce que votre chat utilise déjà"
-                        : "Clay, crystal, natural - whatever your cat already uses"}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-1">
-                      {locale === 'fr' ? "Application simple" : "Simple Application"}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      {locale === 'fr'
-                        ? "Saupoudrez une fine couche sur la litière. C'est tout."
-                        : "Sprinkle a thin layer on top of litter. That's it."}
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
 
               {/* The Football Field Fact */}
@@ -767,12 +718,10 @@ const ProductsPage: NextPage = () => {
                   <Zap className="w-8 h-8 text-brand-purple flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">
-                      {locale === 'fr' ? "Le saviez-vous ?" : "Did You Know?"}
+                      {t.productsPage?.didYouKnow?.title || "The Science Your Cat Doesn't Care About (But Your Nose Will)"}
                     </h3>
-                    <p className="text-gray-700 dark:text-gray-200">
-                      {locale === 'fr'
-                        ? "Un seul gramme de charbon actif a la surface d'un terrain de football. Ces tunnels microscopiques piègent les molécules d'odeur au contact - pas de masquage, juste de l'élimination pure."
-                        : "One gram of activated carbon has the surface area of a football field. Those microscopic tunnels trap odor molecules on contact - no masking, just pure elimination."}
+                    <p className="text-gray-700 dark:text-gray-200 whitespace-pre-line">
+                      {t.productsPage?.didYouKnow?.body || "A single gram of activated carbon contains roughly 3,000 square meters of surface area. That's bigger than half a football field — in something smaller than a pea.\n\nInside are millions of microscopic pores and tunnels. When ammonia molecules float past, they get trapped permanently.\n\nThis isn't masking. It's molecular capture. The same technology used in gas masks, water treatment plants, and hospital air filtration. Now sitting on top of your cat's litter."}
                     </p>
                   </div>
                 </div>
@@ -866,10 +815,13 @@ const ProductsPage: NextPage = () => {
             <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
               <MapPin className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-                {t.productsSection?.askYourStore || "Ask for Purrify at Your Local Store"}
+                {t.productsPage?.cta?.title || "Your Nose Deserves Better. So Does Your Cat."}
               </h2>
-              <p className="text-xl mb-8 opacity-90">
-                {t.productsSection?.availableAtStores || "Available at pet stores across Canada"}
+              <p className="text-xl mb-4 opacity-90">
+                {t.productsPage?.cta?.subtitle || "Ask for Purrify at your favorite pet store. If they don't carry it yet, they should."}
+              </p>
+              <p className="text-base mb-8 opacity-80">
+                {t.productsPage?.cta?.secondary || "Not seeing your store? Let us know. We'll reach out and make it happen."}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/stores`}>
@@ -899,7 +851,7 @@ const ProductsPage: NextPage = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {t.productComparison.relatedPages.map((page, index) => (
+              {(t.productsPage?.relatedPages || t.productComparison.relatedPages).map((page, index) => (
                 <Link href={`${locale === 'fr' ? '/fr' : ''}${page.link}`} key={index} className="group">
                   <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-brand-light dark:border-gray-700 hover:shadow-xl transition-shadow">
                     <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-brand-purple transition-colors">

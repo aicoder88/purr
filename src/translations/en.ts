@@ -1262,6 +1262,152 @@ export const en = {
     ]
   },
 
+  // Products Page - Direct Response Copywriting Style
+  productsPage: {
+    // Hero Section
+    hero: {
+      headline: "Finally... A Way to Love Your Cat Without Apologizing for the Smell",
+      subheadline: "The same activated carbon that makes drinking water clean now traps litter box odors at the source. No perfumes. No cover-ups. Just... nothing. (In the best way.)",
+      supporting: "Pick your size below. Same water-filter grade formula in every bag."
+    },
+
+    // Quick Decision Helper
+    quickDecision: {
+      title: "Not Sure Which Size? Let Your Nose Decide.",
+      subtitle: "(Spoiler: It'll thank you either way)",
+      trial: {
+        question: "Skeptical? Good. Prove it to yourself.",
+        answer: "The FREE Trial Bag",
+        detail: "Just pay shipping. If your nose isn't convinced in 7 days, we've both learned something."
+      },
+      regular: {
+        question: "One or two furry overlords at home?",
+        answer: "The Regular Bag",
+        detail: "3 months of 'wait, where's the litter box?' moments. Our most popular size for a reason."
+      },
+      large: {
+        question: "Running a cat hotel? (No judgment.)",
+        answer: "The Large Bag",
+        detail: "For multi-cat homes where odor control isn't optional. Free shipping. Maximum freshness."
+      }
+    },
+
+    // Trust Signals
+    trustSignals: {
+      waterFilter: {
+        title: "The Same Stuff in Your Brita",
+        description: "Meets NSF/ANSI 61 standards. If it's good enough to make tap water drinkable, imagine what it does to ammonia."
+      },
+      ingredients: {
+        title: "Ingredients: Coconut Shells. That's It.",
+        description: "No fragrance to stress your cat. No chemicals to worry about. Just pure, activated carbon from coconut shells."
+      },
+      science: {
+        title: "Science, Not Perfume",
+        description: "One gram has the surface area of a football field. Those microscopic tunnels trap odor molecules permanently. Gone. Not hiding."
+      }
+    },
+
+    // Product Cards
+    products: {
+      trial: {
+        name: "The Skeptic's Bag",
+        subtitle: "12g · One Week of Proof",
+        features: [
+          "Enough for 7 days of fresh air",
+          "Just cover the $4.76 shipping",
+          "One per household (sorry, no stockpiling free stuff)"
+        ],
+        bestFor: "Cat parents who've been burned by 'miracle' products before. We get it. Prove it to yourself first."
+      },
+      regular: {
+        name: "The Sweet Spot",
+        subtitle: "120g · 3 Months of Peace",
+        features: [
+          "10-12 weeks of odor control for 1-2 cats",
+          "The size most customers reorder",
+          "Works with whatever litter your cat already approves of"
+        ],
+        bestFor: "Single or dual cat homes where 'company's coming over' doesn't trigger panic anymore."
+      },
+      large: {
+        name: "The 'We Have How Many Cats?' Bag",
+        subtitle: "240g · Best Value for Multi-Cat Homes",
+        features: [
+          "20-24 weeks for 1 cat, 10-12 weeks for 2+",
+          "Free shipping (because you're already spending enough on cat food)",
+          "Best per-gram value we offer"
+        ],
+        bestFor: "Multi-cat households, foster parents, or anyone who's given up counting litter boxes."
+      }
+    },
+
+    // What You Get Section
+    whatYouGet: {
+      title: "What's Actually in the Bag",
+      subtitle: "(And Why Your Cat Will Never Notice It)",
+      benefits: [
+        {
+          title: "Water-Filter Grade Activated Carbon",
+          description: "The exact same material used in Brita filters and hospital air purification. Not 'similar to.' The same."
+        },
+        {
+          title: "Zero Fragrances. Zero Chemicals. Zero Worries.",
+          description: "Cats have 200 million scent receptors. Artificial fragrances stress them. Purrify works invisibly."
+        },
+        {
+          title: "Clay, Crystal, Clumping, Natural... We Don't Judge",
+          description: "Works with whatever litter your cat has trained you to buy. No switching drama."
+        },
+        {
+          title: "Open. Sprinkle. Done.",
+          description: "A thin layer on top. 30 seconds of effort for 7 days of results."
+        }
+      ]
+    },
+
+    // Did You Know Fact Box
+    didYouKnow: {
+      title: "The Science Your Cat Doesn't Care About (But Your Nose Will)",
+      body: "A single gram of activated carbon contains roughly 3,000 square meters of surface area. That's bigger than half a football field — in something smaller than a pea.\n\nInside are millions of microscopic pores and tunnels. When ammonia molecules float past, they get trapped permanently.\n\nThis isn't masking. It's molecular capture. The same technology used in gas masks, water treatment plants, and hospital air filtration. Now sitting on top of your cat's litter."
+    },
+
+    // CTA Section
+    cta: {
+      title: "Your Nose Deserves Better. So Does Your Cat.",
+      subtitle: "Ask for Purrify at your favorite pet store. If they don't carry it yet, they should.",
+      secondary: "Not seeing your store? Let us know. We'll reach out and make it happen."
+    },
+
+    // Related Pages
+    relatedPages: [
+      {
+        title: "The Science (Without the Boring Parts)",
+        description: "Discover the science behind our activated carbon technology and why it's so effective.",
+        link: "/learn/how-it-works"
+      },
+      {
+        title: "What 1,000+ Cat Parents Said",
+        description: "See what satisfied customers are saying about their Purrify experience.",
+        link: "/reviews"
+      },
+      {
+        title: "The Complete Cat Litter Guide",
+        description: "Learn about different litter types and how to choose the best option for your cat.",
+        link: "/learn/cat-litter-guide"
+      }
+    ],
+
+    // Testimonial Section
+    testimonial: {
+      quote: "I live in a small studio apartment with two cats, and the litter box smell was becoming unbearable. Purrify completely eliminated the odor within 24 hours. I was skeptical about the price at first, but it lasts so much longer than other products I've tried. Worth every penny!",
+      author: "Sarah M.",
+      location: "Montreal, QC",
+      details: "2 cats, small apartment",
+      headline: "Game changer for my apartment!"
+    }
+  },
+
   // Privacy Policy
   privacyPolicy: {
     title: "Privacy Policy",

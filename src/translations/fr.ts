@@ -1235,6 +1235,152 @@ export const fr = {
     ]
   },
 
+  // Products Page - Direct Response Copywriting Style
+  productsPage: {
+    // Hero Section
+    hero: {
+      headline: "Enfin... Une façon d'aimer votre chat sans vous excuser pour l'odeur",
+      subheadline: "Le même charbon actif qui rend l'eau potable piège maintenant les odeurs de litière à la source. Pas de parfums. Pas de masquage. Juste... rien. (De la meilleure façon.)",
+      supporting: "Choisissez votre format ci-dessous. Même formule qualité filtration dans chaque sac."
+    },
+
+    // Quick Decision Helper
+    quickDecision: {
+      title: "Pas sûr du format? Laissez votre nez décider.",
+      subtitle: "(Spoiler : Il vous remerciera de toute façon)",
+      trial: {
+        question: "Sceptique? Tant mieux. Prouvez-le vous-même.",
+        answer: "Le sac d'essai GRATUIT",
+        detail: "Payez seulement les frais de port. Si votre nez n'est pas convaincu en 7 jours, on aura tous les deux appris quelque chose."
+      },
+      regular: {
+        question: "Un ou deux petits maîtres poilus à la maison?",
+        answer: "Le sac Régulier",
+        detail: "3 mois de 'attends, où est la litière?' Notre format le plus populaire pour une bonne raison."
+      },
+      large: {
+        question: "Vous tenez un hôtel pour chats? (Pas de jugement.)",
+        answer: "Le grand sac",
+        detail: "Pour les foyers multi-chats où le contrôle des odeurs n'est pas optionnel. Livraison gratuite. Fraîcheur maximale."
+      }
+    },
+
+    // Trust Signals
+    trustSignals: {
+      waterFilter: {
+        title: "Le même produit que dans votre Brita",
+        description: "Répond aux normes NSF/ANSI 61. Si c'est assez bon pour rendre l'eau du robinet potable, imaginez ce que ça fait à l'ammoniaque."
+      },
+      ingredients: {
+        title: "Ingrédients : Coques de noix de coco. C'est tout.",
+        description: "Pas de parfum pour stresser votre chat. Pas de produits chimiques. Juste du charbon actif pur de coques de noix de coco."
+      },
+      science: {
+        title: "La science, pas le parfum",
+        description: "Un gramme a la surface d'un terrain de football. Ces tunnels microscopiques piègent les molécules d'odeur en permanence. Disparues. Pas cachées."
+      }
+    },
+
+    // Product Cards
+    products: {
+      trial: {
+        name: "Le sac du sceptique",
+        subtitle: "12g · Une semaine de preuve",
+        features: [
+          "Assez pour 7 jours d'air frais",
+          "Juste les frais de port de 4,76$",
+          "Un par foyer (désolé, pas de stockage gratuit)"
+        ],
+        bestFor: "Parents de chats qui ont été déçus par des produits 'miracles' avant. On comprend. Prouvez-le vous-même d'abord."
+      },
+      regular: {
+        name: "Le juste milieu",
+        subtitle: "120g · 3 mois de tranquillité",
+        features: [
+          "10-12 semaines de contrôle des odeurs pour 1-2 chats",
+          "Le format que la plupart des clients recommandent",
+          "Fonctionne avec la litière que votre chat a déjà approuvée"
+        ],
+        bestFor: "Foyers d'un ou deux chats où 'des invités arrivent' ne déclenche plus la panique."
+      },
+      large: {
+        name: "Le sac 'On a combien de chats?'",
+        subtitle: "240g · Meilleur rapport qualité-prix pour foyers multi-chats",
+        features: [
+          "20-24 semaines pour 1 chat, 10-12 semaines pour 2+",
+          "Livraison gratuite (parce que vous dépensez déjà assez en nourriture pour chat)",
+          "Meilleur rapport qualité-prix que nous offrons"
+        ],
+        bestFor: "Foyers multi-chats, familles d'accueil, ou quiconque a abandonné de compter les litières."
+      }
+    },
+
+    // What You Get Section
+    whatYouGet: {
+      title: "Ce qu'il y a vraiment dans le sac",
+      subtitle: "(Et pourquoi votre chat ne le remarquera jamais)",
+      benefits: [
+        {
+          title: "Charbon actif de qualité filtration d'eau",
+          description: "Exactement le même matériau utilisé dans les filtres Brita et la purification d'air hospitalière. Pas 'similaire à.' Le même."
+        },
+        {
+          title: "Zéro parfum. Zéro produit chimique. Zéro souci.",
+          description: "Les chats ont 200 millions de récepteurs olfactifs. Les parfums artificiels les stressent. Purrify agit invisiblement."
+        },
+        {
+          title: "Argile, cristal, agglomérante, naturelle... On ne juge pas",
+          description: "Fonctionne avec la litière que votre chat vous a entraîné à acheter. Pas de drame de changement."
+        },
+        {
+          title: "Ouvrir. Saupoudrer. C'est fait.",
+          description: "Une fine couche sur le dessus. 30 secondes d'effort pour 7 jours de résultats."
+        }
+      ]
+    },
+
+    // Did You Know Fact Box
+    didYouKnow: {
+      title: "La science dont votre chat se fiche (Mais votre nez sera ravi)",
+      body: "Un seul gramme de charbon actif contient environ 3 000 mètres carrés de surface. C'est plus grand que la moitié d'un terrain de football — dans quelque chose plus petit qu'un petit pois.\n\nÀ l'intérieur se trouvent des millions de pores et tunnels microscopiques. Quand les molécules d'ammoniaque passent, elles sont piégées en permanence.\n\nCe n'est pas du masquage. C'est de la capture moléculaire. La même technologie utilisée dans les masques à gaz, les usines de traitement d'eau et la filtration d'air hospitalière. Maintenant sur la litière de votre chat."
+    },
+
+    // CTA Section
+    cta: {
+      title: "Votre nez mérite mieux. Votre chat aussi.",
+      subtitle: "Demandez Purrify dans votre animalerie préférée. S'ils ne l'ont pas encore, ils devraient.",
+      secondary: "Vous ne voyez pas votre magasin? Dites-le nous. On fera le nécessaire."
+    },
+
+    // Related Pages
+    relatedPages: [
+      {
+        title: "La science (sans les parties ennuyeuses)",
+        description: "Découvrez la science derrière notre technologie au charbon actif et pourquoi elle est si efficace.",
+        link: "/learn/how-it-works"
+      },
+      {
+        title: "Ce que 1 000+ parents de chats ont dit",
+        description: "Voyez ce que les clients satisfaits disent de leur expérience avec Purrify.",
+        link: "/reviews"
+      },
+      {
+        title: "Le guide complet de la litière pour chat",
+        description: "Apprenez sur les différents types de litière et comment choisir la meilleure option pour votre chat.",
+        link: "/learn/cat-litter-guide"
+      }
+    ],
+
+    // Testimonial Section
+    testimonial: {
+      quote: "Je vis dans un petit studio avec deux chats, et l'odeur de la litière devenait insupportable. Purrify a complètement éliminé l'odeur en 24 heures. J'étais sceptique sur le prix au début, mais ça dure tellement plus longtemps que les autres produits que j'ai essayés. Chaque sou en vaut la peine!",
+      author: "Sarah M.",
+      location: "Montréal, QC",
+      details: "2 chats, petit appartement",
+      headline: "Un changement total pour mon appartement!"
+    }
+  },
+
   // Détaillants & B2B
   retailers: {
     seo: {
