@@ -11,7 +11,7 @@ export function WhyPurrify() {
       icon: Wind,
       title: t.features.odorElimination.title.toUpperCase(),
       description: t.features.odorElimination.description,
-      image: "/optimized/micropores_magnified_view.webp"
+      image: "/optimized/catcoco.webp"
     },
     {
       icon: Cat,
