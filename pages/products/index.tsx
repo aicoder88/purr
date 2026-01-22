@@ -23,6 +23,7 @@ import {
   Cat,
   Sparkles,
   MapPin,
+  Quote,
 } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { buildAvailabilityUrl, getPriceValidityDate, generateWebsiteSchema } from '../../src/lib/seo-utils';
@@ -512,6 +513,50 @@ const ProductsPage: NextPage = () => {
                   </p>
                 </div>
               ))}
+            </div>
+          </Container>
+        </section>
+
+        {/* Social Proof Testimonial Section */}
+        <section className="py-16 bg-white dark:bg-gray-800">
+          <Container>
+            <div className="max-w-4xl mx-auto">
+              <div className="relative bg-gradient-to-br from-brand-light to-white dark:from-gray-700 dark:to-gray-800 rounded-2xl p-8 md:p-12 shadow-lg border border-brand-light dark:border-gray-700">
+                <Quote className="absolute top-6 left-6 w-12 h-12 text-brand-purple/20 dark:text-purple-400/20" />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                  {/* Testimonial Content */}
+                  <div className="md:col-span-2">
+                    <h3 className="font-heading text-2xl font-bold text-brand-purple dark:text-purple-400 mb-4">
+                      &ldquo;{t.productsPage?.testimonial?.headline || "Game changer for my apartment!"}&rdquo;
+                    </h3>
+                    <blockquote className="text-lg text-gray-700 dark:text-gray-200 mb-6 leading-relaxed">
+                      &ldquo;{t.productsPage?.testimonial?.quote || "I live in a small studio apartment with two cats, and the litter box smell was becoming unbearable. Purrify completely eliminated the odor within 24 hours. I was skeptical about the price at first, but it lasts so much longer than other products I've tried. Worth every penny!"}&rdquo;
+                    </blockquote>
+                    <div className="flex items-center gap-3">
+                      <div className="flex gap-1">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:fill-yellow-300 dark:text-yellow-300" />
+                        ))}
+                      </div>
+                      <span className="text-gray-600 dark:text-gray-300">
+                        — <span className="font-semibold">{t.productsPage?.testimonial?.author || "Sarah M."}</span>, {t.productsPage?.testimonial?.location || "Montreal, QC"} ({t.productsPage?.testimonial?.details || "2 cats, small apartment"})
+                      </span>
+                    </div>
+                  </div>
+                  {/* Image */}
+                  <div className="relative hidden md:block">
+                    <div className="relative h-64 w-full rounded-xl overflow-hidden shadow-lg">
+                      <Image
+                        src="/optimized/small-apartment-odor-control.webp"
+                        alt={locale === 'fr' ? "Chat heureux dans un appartement frais" : "Happy cat in a fresh apartment"}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </Container>
         </section>

@@ -879,6 +879,97 @@ export interface TranslationType {
     }>;
   };
 
+  // Products Page - Direct Response Copywriting Style
+  productsPage?: {
+    hero?: {
+      headline: string;
+      subheadline: string;
+      supporting: string;
+    };
+    quickDecision?: {
+      title: string;
+      subtitle: string;
+      trial?: {
+        question: string;
+        answer: string;
+        detail: string;
+      };
+      regular?: {
+        question: string;
+        answer: string;
+        detail: string;
+      };
+      large?: {
+        question: string;
+        answer: string;
+        detail: string;
+      };
+    };
+    trustSignals?: {
+      waterFilter?: {
+        title: string;
+        description: string;
+      };
+      ingredients?: {
+        title: string;
+        description: string;
+      };
+      science?: {
+        title: string;
+        description: string;
+      };
+    };
+    products?: {
+      trial?: {
+        name: string;
+        subtitle: string;
+        features: string[];
+        bestFor: string;
+      };
+      regular?: {
+        name: string;
+        subtitle: string;
+        features: string[];
+        bestFor: string;
+      };
+      large?: {
+        name: string;
+        subtitle: string;
+        features: string[];
+        bestFor: string;
+      };
+    };
+    whatYouGet?: {
+      title: string;
+      subtitle: string;
+      benefits: Array<{
+        title: string;
+        description: string;
+      }>;
+    };
+    didYouKnow?: {
+      title: string;
+      body: string;
+    };
+    cta?: {
+      title: string;
+      subtitle: string;
+      secondary: string;
+    };
+    relatedPages?: Array<{
+      title: string;
+      description: string;
+      link: string;
+    }>;
+    testimonial?: {
+      quote: string;
+      author: string;
+      location: string;
+      details: string;
+      headline: string;
+    };
+  };
+
   // Privacy Policy
   privacyPolicy: {
     title: string;
