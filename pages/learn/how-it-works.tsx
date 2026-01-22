@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { ArrowLeft, Microscope, Zap, Shield, Leaf, ChevronRight, Home } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { formatProductPrice } from '../../src/lib/pricing';
+import { getPaymentLink } from '../../src/lib/payment-links';
 import { generateJSONLD } from '../../src/lib/seo-utils';
 import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
@@ -16,12 +17,13 @@ export default function HowItWorksPage() {
   const { t, locale } = useTranslation();
   const { currency } = useCurrency();
   const trialPrice = formatProductPrice('trial', currency, locale);
+  const trialCheckoutUrl = getPaymentLink('trialSingle') || '/products/trial-size';
   const trialSizeCtaLabel =
     locale === 'fr'
-      ? `Essayer le format d'essai - ${trialPrice} (livraison incluse)`
+      ? `Envoyer Mon Essai GRATUIT - ${trialPrice}`
       : locale === 'zh'
-        ? `体验试用装 - ${trialPrice}（含运费）`
-        : `Try Trial Size - ${trialPrice} (shipping included)`;
+        ? `发送我的免费试用 - ${trialPrice}`
+        : `Send My FREE Trial - ${trialPrice}`;
 
   const pageTitle = `How Purrify Works - ${SITE_NAME} Activated Carbon Science`;
   const pageDescription = "Discover the science behind Purrify's activated carbon technology. Learn how micropores trap odor molecules at the source for superior cat litter odor control.";
@@ -331,12 +333,12 @@ export default function HowItWorksPage() {
                 Try Purrify's activated carbon technology risk-free with our trial size
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={`${locale !== 'en' ? `/${locale}` : ''}/products/trial-size`}>
+                <a href={trialCheckoutUrl} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
                     {trialSizeCtaLabel}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
-                </Link>
+                </a>
                 <Link href={`${locale !== 'en' ? `/${locale}` : ''}/#products`}>
                   <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
                     View All Products

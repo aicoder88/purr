@@ -20,11 +20,16 @@ import {
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { generateJSONLD } from '../../src/lib/seo-utils';
 import { formatProductPrice } from '../../src/lib/pricing';
+import { getPaymentLink } from '../../src/lib/payment-links';
 import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
 const CatLitterGuidePage: NextPage = () => {
   const { locale } = useTranslation();
   const trialPrice = formatProductPrice('trial', locale);
+  const trialCheckoutUrl = getPaymentLink('trialSingle') || '/products/trial-size';
+  const trialCtaLabel = locale === 'fr'
+    ? `Envoyer Mon Essai GRATUIT - ${trialPrice}`
+    : `Send My FREE Trial - ${trialPrice}`;
   const pageTitle = 'Complete Cat Litter Guide - Types, Tips & Best Practices | Purrify';
   const pageDescription = 'Comprehensive guide to cat litter types, maintenance tips, and solving common problems. Learn how to choose the best litter for your cat and keep it fresh longer.';
 
@@ -181,12 +186,12 @@ const CatLitterGuidePage: NextPage = () => {
                 Everything you need to know about choosing, using, and maintaining cat litter for a happy, healthy home
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
+                <a href={trialCheckoutUrl} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
-                    {`Try Purrify - ${trialPrice}`}
+                    {trialCtaLabel}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
-                </Link>
+                </a>
               </div>
             </div>
           </Container>
@@ -388,12 +393,12 @@ const CatLitterGuidePage: NextPage = () => {
                 Try Purrify's activated carbon additive and transform any litter into an odor-eliminating powerhouse.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
+                <a href={trialCheckoutUrl} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
-                    {`Start with Trial Size - ${trialPrice}`}
+                    {trialCtaLabel}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
-                </Link>
+                </a>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/reviews`}>
                   <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
                     Read Success Stories
