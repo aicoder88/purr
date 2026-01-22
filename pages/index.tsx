@@ -155,10 +155,10 @@ export default function Home({ priceValidUntil }: InferGetStaticPropsType<typeof
           </ErrorBoundary>
         </div>
 
-        {/* Trust Badges - Improved spacing */}
-        <section className="py-16 bg-white dark:bg-gray-800 cv-auto cis-480">
+        {/* Trust Badges - Improved spacing and elegant design */}
+        <section className="py-10 cv-auto cis-480">
           <div className="container mx-auto px-4">
-            <TrustBadges variant="grid" showIcons={true} />
+            <TrustBadges variant="elegant" showIcons={true} />
           </div>
         </section>
 

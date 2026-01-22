@@ -12,7 +12,7 @@ interface TrustBadge {
 }
 
 interface TrustBadgesProps {
-  variant?: 'horizontal' | 'grid' | 'compact';
+  variant?: 'horizontal' | 'grid' | 'compact' | 'elegant';
   showIcons?: boolean;
   maxBadges?: number;
   className?: string;
@@ -25,7 +25,7 @@ const TRUST_BADGES: TrustBadge[] = [
     titleKey: 'moneyBack',
     descriptionKey: 'moneyBack',
     highlightKey: 'moneyBack',
-    color: 'text-green-600 dark:text-green-400'
+    color: 'text-emerald-500 dark:text-emerald-400'
   },
   {
     id: 'secure-payment',
@@ -33,7 +33,7 @@ const TRUST_BADGES: TrustBadge[] = [
     titleKey: 'securePayment',
     descriptionKey: 'securePayment',
     highlightKey: 'securePayment',
-    color: 'text-blue-600 dark:text-blue-400 dark:text-blue-300'
+    color: 'text-blue-500 dark:text-blue-400'
   },
   {
     id: 'fast-shipping',
@@ -41,7 +41,7 @@ const TRUST_BADGES: TrustBadge[] = [
     titleKey: 'fastShipping',
     descriptionKey: 'fastShipping',
     highlightKey: 'fastShipping',
-    color: 'text-purple-600 dark:text-purple-400'
+    color: 'text-indigo-500 dark:text-indigo-400'
   },
   {
     id: 'customer-satisfaction',
@@ -49,7 +49,7 @@ const TRUST_BADGES: TrustBadge[] = [
     titleKey: 'customerRating',
     descriptionKey: 'customerRating',
     highlightKey: 'customerRating',
-    color: 'text-yellow-600 dark:text-yellow-400'
+    color: 'text-amber-500 dark:text-amber-400'
   },
   {
     id: 'trusted-customers',
@@ -57,7 +57,7 @@ const TRUST_BADGES: TrustBadge[] = [
     titleKey: 'happyCustomers',
     descriptionKey: 'happyCustomers',
     highlightKey: 'happyCustomers',
-    color: 'text-indigo-600 dark:text-indigo-400'
+    color: 'text-violet-500 dark:text-violet-400'
   },
   {
     id: 'quality-guarantee',
@@ -65,7 +65,7 @@ const TRUST_BADGES: TrustBadge[] = [
     titleKey: 'premiumQuality',
     descriptionKey: 'premiumQuality',
     highlightKey: 'premiumQuality',
-    color: 'text-red-600 dark:text-red-400'
+    color: 'text-rose-500 dark:text-rose-400'
   }
 ];
 
@@ -92,6 +92,8 @@ export const TrustBadges: React.FC<TrustBadgesProps> = ({
         return 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
       case 'compact':
         return 'flex flex-wrap justify-center gap-4';
+      case 'elegant':
+        return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6';
       default:
         return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4';
     }
@@ -103,10 +105,39 @@ export const TrustBadges: React.FC<TrustBadgesProps> = ({
         return 'bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow';
       case 'compact':
         return 'bg-white dark:bg-gray-800 rounded-lg p-3 shadow-md border border-gray-200 dark:border-gray-700 flex items-center space-x-3 hover:shadow-lg transition-shadow';
+      case 'elegant':
+        return 'group relative flex flex-col items-center text-center p-4 rounded-2xl transition-all duration-300 hover:bg-white/50 dark:hover:bg-gray-800/50';
       default:
         return 'bg-white dark:bg-gray-800 rounded-lg p-4 shadow-md border border-gray-200 dark:border-gray-700 text-center hover:shadow-lg transition-shadow';
     }
   };
+
+  if (variant === 'elegant') {
+    return (
+      <div className={`bg-white/40 dark:bg-gray-900/40 backdrop-blur-md rounded-[2rem] p-6 md:p-10 border border-gray-200/50 dark:border-gray-800/50 shadow-xl shadow-purple-500/5 ${className}`}>
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-y-10 gap-x-4 md:gap-x-8">
+          {badges.map((badge) => (
+            <div key={badge.id} className="group relative flex flex-col items-center text-center transition-all duration-300">
+              {showIcons && (
+                <div className={`mb-4 p-3 rounded-2xl bg-white dark:bg-gray-800 shadow-lg shadow-gray-200/50 dark:shadow-black/20 border border-gray-100 dark:border-gray-700 transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 ${badge.color}`}>
+                  <badge.icon className="w-6 h-6 md:w-7 md:h-7" />
+                </div>
+              )}
+              <h3 className="text-xs md:text-sm font-black text-gray-900 dark:text-white mb-1.5 tracking-tight leading-tight">
+                {getTrustBadgeText(badge, 'title')}
+              </h3>
+              <div className={`text-[9px] md:text-[10px] font-black uppercase tracking-[0.15em] ${badge.color} mb-2.5 px-2 py-0.5 rounded-full bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/50`}>
+                {getTrustBadgeText(badge, 'highlight')}
+              </div>
+              <p className="text-[10px] md:text-[11px] text-gray-500 dark:text-gray-400 font-bold leading-[1.4] max-w-[140px] mx-auto transition-colors group-hover:text-gray-900 dark:group-hover:text-gray-200">
+                {getTrustBadgeText(badge, 'description')}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   if (variant === 'compact') {
     return (
@@ -199,7 +230,7 @@ export const SecurityBadges: React.FC<{ className?: string }> = ({ className = '
 
 export const CheckoutTrustBadges: React.FC<{ className?: string }> = ({ className = '' }) => {
   const { t } = useTranslation();
-  const checkoutBadges = TRUST_BADGES.filter(badge => 
+  const checkoutBadges = TRUST_BADGES.filter(badge =>
     ['money-back', 'secure-payment', 'fast-shipping'].includes(badge.id)
   );
 
@@ -234,7 +265,7 @@ export const CheckoutTrustBadges: React.FC<{ className?: string }> = ({ classNam
 
 export const SocialProofBadges: React.FC<{ className?: string }> = ({ className = '' }) => {
   const { t } = useTranslation();
-  const socialBadges = TRUST_BADGES.filter(badge => 
+  const socialBadges = TRUST_BADGES.filter(badge =>
     ['customer-satisfaction', 'trusted-customers', 'quality-guarantee'].includes(badge.id)
   );
 
