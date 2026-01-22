@@ -113,7 +113,7 @@ export const BUSINESS_PROFILE: BusinessProfile = {
   ],
 
   socialMedia: {
-    facebook: 'https://facebook.com/purrifycanada',
+    facebook: 'https://web.facebook.com/profile.php?id=61586480918382',
     instagram: 'https://www.instagram.com/purrifyhq/',
     twitter: 'https://x.com/PurrifyHQ',
     linkedin: 'https://www.linkedin.com/company/purrify',
