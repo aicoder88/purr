@@ -6,6 +6,7 @@ import { Star, Quote, CheckCircle, Users, Calendar, MapPin, Home, ChevronRight }
 import { useTranslation } from '../src/lib/translation-context';
 import { generateJSONLD } from '../src/lib/seo-utils';
 import { useEnhancedSEO } from '../src/hooks/useEnhancedSEO';
+import { getPaymentLink } from '../src/lib/payment-links';
 
 export default function Reviews() {
   const { t, locale } = useTranslation();
@@ -317,12 +318,14 @@ export default function Reviews() {
                   >
                     {reviewsPage.ctaSection.shopNow}
                   </Link>
-                  <Link
-                    href="/free"
+                  <a
+                    href={getPaymentLink('trialSingle') || '#'}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-block border border-[#FF3131] text-[#FF3131] px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/5 transition-colors"
                   >
                     {reviewsPage.ctaSection.tryFreeSample}
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

@@ -336,7 +336,6 @@ export function EnhancedProductComparison() {
                       {product.description}
                     </p>
 
-                    {/* B2C: ORIGINAL PURCHASE BUTTON
                     <Button
                       asChild
                       className={cn(
@@ -351,16 +350,6 @@ export function EnhancedProductComparison() {
                       <a href={getPaymentLink(preferredOption.linkKey!) || '#'} target="_blank" rel="noopener noreferrer">
                         {preferredOption.ctaLabel} <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                       </a>
-                    </Button>
-                    */}
-                    <Button
-                      asChild
-                      className="w-full py-5 sm:py-6 text-base sm:text-lg font-bold rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-1 min-h-[44px] bg-deep-coral hover:bg-deep-coral/90 text-white dark:text-gray-100 shadow-deep-coral/25"
-                    >
-                      <Link href="/stores">
-                        <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                        {t.nav?.findStore || "Get Purrify Near You"} <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
-                      </Link>
                     </Button>
                   </div>
 

@@ -4,6 +4,7 @@ import { scrollToSection } from "@/lib/utils";
 import Link from "next/link";
 import { heroTestimonials } from "@/data/hero-testimonials";
 import { useABTestWithTracking, AB_TEST_SLUGS } from "@/lib/ab-testing";
+import { getPaymentLink } from "@/lib/payment-links";
 
 // Icon components - extracted to avoid repetition
 function LightningIcon({ className = '' }: { className?: string }) {
@@ -275,13 +276,15 @@ export const HeroContent = ({ t }: HeroContentProps) => {
         {/* CTA Button - B2C: Free Trial */}
         <div className="flex flex-col gap-3 pt-2">
           <Button
-            onClick={handleScrollToProducts}
+            asChild
             className={ctaButtonClasses}
             aria-label={t.hero.buttons.tryFree || "Get My Free Trial"}
           >
-            <LightningIcon className="transition-transform duration-300 group-hover:scale-110" />
-            {t.hero.simplified?.getFreeSample || "Send Me a Free Bag →"}
-            <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
+            <a href={getPaymentLink('trialSingle') || '#'} target="_blank" rel="noopener noreferrer">
+              <LightningIcon className="transition-transform duration-300 group-hover:scale-110" />
+              {t.hero.simplified?.getFreeSample || "Send Me a Free Bag →"}
+              <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
           </Button>
           <p className="text-xs text-gray-500 dark:text-gray-400 text-center sm:text-left -mt-2">
             {t.hero.simplified?.justPayShipping || "Just pay $4.76 shipping"}
@@ -371,13 +374,15 @@ export const HeroContent = ({ t }: HeroContentProps) => {
       {/* Main CTA Button - B2C: Free Trial */}
       <div className="flex flex-col sm:flex-row gap-3">
         <Button
-          onClick={handleScrollToProducts}
+          asChild
           className={ctaButtonClasses}
           aria-label={t.hero.buttons.tryFree || "Get My Free Trial"}
         >
-          <LightningIcon className="transition-transform duration-300 group-hover:scale-110" />
-          {t.hero.buttons.tryFree || "Get My Free Trial"}
-          <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
+          <a href={getPaymentLink('trialSingle') || '#'} target="_blank" rel="noopener noreferrer">
+            <LightningIcon className="transition-transform duration-300 group-hover:scale-110" />
+            {t.hero.buttons.tryFree || "Get My Free Trial"}
+            <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
         </Button>
         {/* B2B: Find a Store CTA (hidden for B2C focus)
         <Button
