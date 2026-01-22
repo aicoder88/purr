@@ -7,6 +7,7 @@ import {
   ChevronDown,
   LogOut,
   User as UserIcon,
+  MapPin,
 } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Container } from "../../components/ui/container";
@@ -432,12 +433,23 @@ export function Header() {
                 <span>{t.nav?.signOut || ""}</span>
               </Button>
             )}
+            {/* B2C: ORIGINAL BUY NOW BUTTON
             <Button
               onClick={scrollToProducts}
               className="flex items-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
             >
               <ShoppingBag className="w-4 h-4" />
               {t.nav?.buyNow || ""}
+            </Button>
+            */}
+            <Button
+              asChild
+              className="flex items-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+            >
+              <Link href="/stockists">
+                <MapPin className="w-4 h-4" />
+                {t.nav?.findStore || "Find a Store"}
+              </Link>
             </Button>
             <LanguageSwitcher />
           </div>
@@ -542,12 +554,23 @@ export function Header() {
                     </Button>
                   </div>
                 )}
+                {/* B2C: ORIGINAL BUY NOW BUTTON
                 <Button
                   onClick={handleBuyNowMobile}
                   className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                 >
                   <ShoppingBag className="w-4 h-4" />
                   {t.nav?.buyNow || ""}
+                </Button>
+                */}
+                <Button
+                  asChild
+                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                >
+                  <Link href="/stockists" onClick={closeMenu}>
+                    <MapPin className="w-4 h-4" />
+                    {t.nav?.findStore || "Find a Store"}
+                  </Link>
                 </Button>
               </div>
             </div>

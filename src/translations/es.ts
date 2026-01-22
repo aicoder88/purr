@@ -59,7 +59,12 @@ export const es: TranslationType = {
     toggleMenu: "Alternar menu",
     toggleTheme: "Alternar tema",
     signOut: "Cerrar Sesion",
-    signedIn: "Sesion Iniciada"
+    signedIn: "Sesion Iniciada",
+    // B2B pivot keys
+    findStore: "Encontrar Tienda",
+    findNearYou: "Encontrar Cerca de Ti",
+    whereToBuy: "Dónde Comprar",
+    askForPurrify: "Pregunta por Purrify en Tu Tienda"
   },
 
   locationsMenu: {
@@ -303,7 +308,11 @@ export const es: TranslationType = {
     viewAllProducts: "VER TODOS LOS PRODUCTOS",
     quantity: "Cantidad",
     decreaseQuantity: "Disminuir cantidad",
-    increaseQuantity: "Aumentar cantidad"
+    increaseQuantity: "Aumentar cantidad",
+    // B2B pivot keys
+    findNearYou: "Encontrar Cerca de Ti",
+    askYourStore: "Pregunta por Purrify en Tu Tienda Local de Mascotas",
+    availableAtStores: "Disponible en tiendas de mascotas en todo Canada"
   },
 
   // Stores Section
@@ -335,7 +344,12 @@ export const es: TranslationType = {
     subtitle: "Unete a mas de 1,000 padres de gatos que finalmente tienen hogares con olor fresco. Sin mas contener la respiracion, sin mas disculparse con los invitados. Recupera tu confianza - empieza a respirar tranquilo otra vez.",
     buttonText: "ELIMINAR EL MAL OLOR AHORA",
     joinText: "Unete a mas de 1,000 familias con hogares sin olores - Visita tu tienda local",
-    guarantee: "Resultados comprobados que puedes oler (o no puedes oler!)"
+    guarantee: "Resultados comprobados que puedes oler (o no puedes oler!)",
+    // B2B pivot keys
+    b2bTitle: "Encuentra Purrify Cerca de Ti",
+    b2bSubtitle: "Disponible en tiendas de mascotas en todo Canada. Pregunta por Purrify en tu tienda local de mascotas.",
+    b2bButtonText: "Encontrar una Tienda Cerca de Ti",
+    b2bGuarantee: "Disponible en minoristas de mascotas en todo el pais"
   },
 
   // FAQ

@@ -58,7 +58,12 @@ export const fr = {
     toggleMenu: "Basculer le menu",
     toggleTheme: "Basculer le thème",
     signOut: "Se Déconnecter",
-    signedIn: "Connecté"
+    signedIn: "Connecté",
+    // B2B pivot keys
+    findStore: "Trouver un Magasin",
+    findNearYou: "Trouver Près de Vous",
+    whereToBuy: "Où Acheter",
+    askForPurrify: "Demandez Purrify dans Votre Magasin"
   },
 
   locationsMenu: {
@@ -326,7 +331,11 @@ export const fr = {
     viewAllProducts: "VOIR TOUS LES PRODUITS",
     quantity: "Quantité",
     decreaseQuantity: "Diminuer la quantité",
-    increaseQuantity: "Augmenter la quantité"
+    increaseQuantity: "Augmenter la quantité",
+    // B2B pivot keys
+    findNearYou: "Trouver Près de Vous",
+    askYourStore: "Demandez Purrify dans Votre Animalerie Locale",
+    availableAtStores: "Disponible dans les animaleries à travers le Canada"
   },
 
   // Stores Section
@@ -358,7 +367,12 @@ export const fr = {
     subtitle: "Rejoignez 1 000+ propriétaires de chats heureux qui ont transformé leur maison avec Purrify. Essayez-le avec l'accompagnement personnalisé de notre équipe.",
     buttonText: "COMMANDER MAINTENANT",
     joinText: "Rejoignez 1 000+ Familles de Chats Heureuses - Visitez votre magasin local",
-    guarantee: "Support personnalisé inclus"
+    guarantee: "Support personnalisé inclus",
+    // B2B pivot keys
+    b2bTitle: "Trouvez Purrify Près de Vous",
+    b2bSubtitle: "Disponible dans les animaleries à travers le Canada. Demandez Purrify dans votre animalerie locale.",
+    b2bButtonText: "Trouver un Magasin Près de Vous",
+    b2bGuarantee: "Disponible chez les détaillants d'animaux partout au pays"
   },
 
   // FAQ

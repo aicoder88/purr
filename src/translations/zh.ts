@@ -58,7 +58,12 @@ export const zh = {
     toggleMenu: "切换菜单",
     toggleTheme: "切换主题",
     signOut: "退出登录",
-    signedIn: "已登录"
+    signedIn: "已登录",
+    // B2B pivot keys
+    findStore: "查找商店",
+    findNearYou: "附近查找",
+    whereToBuy: "哪里购买",
+    askForPurrify: "在您的商店询问Purrify"
   },
 
   locationsMenu: {
@@ -331,7 +336,11 @@ export const zh = {
     viewAllProducts: "查看所有产品",
     quantity: "数量",
     decreaseQuantity: "减少数量",
-    increaseQuantity: "增加数量"
+    increaseQuantity: "增加数量",
+    // B2B pivot keys
+    findNearYou: "附近查找",
+    askYourStore: "在您当地的宠物店询问Purrify",
+    availableAtStores: "加拿大各地宠物店有售"
   },
 
   // Stores Section
@@ -363,7 +372,12 @@ export const zh = {
     subtitle: "加入 1,000+ 满意的猫主人，今天就试试 Purrify",
     buttonText: "立即订购",
     joinText: "加入Purrify家族",
-    guarantee: "专属客服支持"
+    guarantee: "专属客服支持",
+    // B2B pivot keys
+    b2bTitle: "在您附近找到Purrify",
+    b2bSubtitle: "加拿大各地宠物店有售。在您当地的宠物零售商询问Purrify。",
+    b2bButtonText: "查找附近商店",
+    b2bGuarantee: "全国宠物零售商有售"
   },
 
   // FAQ

@@ -189,6 +189,7 @@ export function Footer() {
                 {t.footerNav?.products || ""}
               </h3>
               <ul className="space-y-2 text-sm dark:text-sm">
+                {/* B2C: HIDDEN PRODUCT PURCHASE LINKS
                 <li>
                   <Link
                     href={
@@ -223,6 +224,20 @@ export function Footer() {
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.familyPack || ""}
+                  </Link>
+                </li>
+                */}
+                <li>
+                  <Link
+                    href={
+                      locale === "fr" ? "/fr/stockists" :
+                      locale === "zh" ? "/zh/stockists" :
+                      locale === "es" ? "/es/stockists" :
+                      "/stockists"
+                    }
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300 font-medium"
+                  >
+                    {t.nav?.findStore || "Find a Store"}
                   </Link>
                 </li>
                 <li>

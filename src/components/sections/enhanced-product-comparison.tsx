@@ -1,9 +1,10 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { useState } from 'react';
+import Link from 'next/link';
 
 import { useTranslation } from "../../lib/translation-context";
-import { Check, Star, ArrowRight } from 'lucide-react';
+import { Check, Star, ArrowRight, MapPin } from 'lucide-react';
 import Image from 'next/image';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../lib/pricing';
 import { getPaymentLink, PaymentLinkKey } from '../../lib/payment-links';
@@ -290,7 +291,7 @@ export function EnhancedProductComparison() {
                       </div>
                     </div>
 
-                    {/* Pricing section with consistent height */}
+                    {/* B2C: HIDDEN PRICING SECTION
                     <div className="min-h-[80px] flex flex-col justify-center">
                       {isSubscription && preferredOption.totalPrice ? (
                         <p className="text-sm text-gray-700 dark:text-gray-300 mb-2 font-medium">
@@ -330,13 +331,15 @@ export function EnhancedProductComparison() {
                         🎁 Limited Time Offer
                       </div>
                     ) : (
-                      <div className="h-8 mb-4" /> // Spacer
+                      <div className="h-8 mb-4" />
                     )}
+                    */}
 
                     <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 min-h-[40px]">
                       {product.description}
                     </p>
 
+                    {/* B2C: ORIGINAL PURCHASE BUTTON
                     <Button
                       asChild
                       className={cn(
@@ -351,6 +354,16 @@ export function EnhancedProductComparison() {
                       <a href={getPaymentLink(preferredOption.linkKey!) || '#'} target="_blank" rel="noopener noreferrer">
                         {preferredOption.ctaLabel} <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                       </a>
+                    </Button>
+                    */}
+                    <Button
+                      asChild
+                      className="w-full py-5 sm:py-6 text-base sm:text-lg font-bold rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-1 min-h-[44px] bg-deep-coral hover:bg-deep-coral/90 text-white dark:text-gray-100 shadow-deep-coral/25"
+                    >
+                      <Link href="/stockists">
+                        <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                        {t.nav?.findStore || "Find a Retailer"} <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
+                      </Link>
                     </Button>
                   </div>
 

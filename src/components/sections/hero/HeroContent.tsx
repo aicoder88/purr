@@ -1,6 +1,7 @@
 import { useCallback, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { scrollToSection } from "@/lib/utils";
+import Link from "next/link";
 import { heroTestimonials } from "@/data/hero-testimonials";
 import { useABTestWithTracking, AB_TEST_SLUGS } from "@/lib/ab-testing";
 
@@ -29,6 +30,10 @@ const CTA_BUTTON_VARIANTS = {
 
 interface HeroContentProps {
   t: {
+    nav?: {
+      findNearYou?: string;
+      findStore?: string;
+    };
     hero: {
       headline?: string;
       subheadline?: string;
@@ -202,11 +207,12 @@ export const HeroContent = ({ t }: HeroContentProps) => {
   if (isSimplifiedHero) {
     return (
       <div className="space-y-4 md:space-y-6 relative z-10">
-        {/* Prominent Price Badge - text-white is OK here because bg is always green gradient */}
+        {/* B2C: HIDDEN PRICING BADGE
         <div className="inline-flex items-center gap-3 px-4 py-2 rounded-xl bg-gradient-to-r from-green-500 to-emerald-500 text-white dark:text-gray-100 shadow-lg">
           <span className="text-2xl font-black">{t.hero.simplified?.free || ""}</span>
           <span className="text-sm opacity-90">{t.hero.simplified?.justPayShipping || ""}</span>
         </div>
+        */}
 
         {/* Simplified Headline */}
         <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.1] text-gray-900 dark:text-white">
@@ -221,7 +227,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
           {t.hero.simplified?.valueProposition || ""}
         </p>
 
-        {/* Large Pricing Display */}
+        {/* B2C: HIDDEN PRICING DISPLAY
         <div className="flex flex-wrap items-end gap-4">
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-lg border border-gray-200 dark:border-gray-700">
             <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t.hero.simplified?.trialSize || ""}</div>
@@ -239,6 +245,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
             <div className="text-xl font-bold text-gray-900 dark:text-white">$24.99</div>
           </div>
         </div>
+        */}
 
         {/* Trust indicators */}
         <div className="flex items-center gap-4">
@@ -250,8 +257,9 @@ export const HeroContent = ({ t }: HeroContentProps) => {
           <span className="text-sm text-gray-600 dark:text-gray-400">{t.hero.simplified?.thirtyDayGuarantee || ""}</span>
         </div>
 
-        {/* CTA Button */}
+        {/* CTA Button - B2B: Find a Store */}
         <div className="flex flex-col sm:flex-row gap-3 pt-2">
+          {/* B2C: ORIGINAL CTA
           <Button
             onClick={handleScrollToProducts}
             className={ctaButtonClasses}
@@ -260,6 +268,18 @@ export const HeroContent = ({ t }: HeroContentProps) => {
             <LightningIcon className="transition-transform duration-300 group-hover:scale-110" />
             {t.hero.simplified?.getFreeSample || ""}
             <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
+          </Button>
+          */}
+          <Button
+            asChild
+            className={ctaButtonClasses}
+            aria-label={t.nav?.findNearYou || "Find It Near You"}
+          >
+            <Link href="/stockists">
+              <LightningIcon className="transition-transform duration-300 group-hover:scale-110" />
+              {t.nav?.findNearYou || "Find It Near You"}
+              <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
           </Button>
         </div>
       </div>
@@ -295,7 +315,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
         {t.hero.description}
       </p>
 
-      {/* Pricing Above Fold - Trial only */}
+      {/* B2C: HIDDEN PRICING
       <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-sm sm:text-base">
         <div className="flex items-center gap-2 px-3 py-1.5 bg-green-100 dark:bg-green-900/30 rounded-full border border-green-300 dark:border-green-700">
           <span className="font-bold text-green-700 dark:text-green-300">
@@ -303,6 +323,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
           </span>
         </div>
       </div>
+      */}
 
       <div className="flex items-center gap-3 sm:gap-4">
         <SocialProofAvatars />
@@ -314,7 +335,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
         </div>
       </div>
 
-      {/* Urgency & Social Proof */}
+      {/* B2C: HIDDEN URGENCY INDICATORS
       <div className="flex items-center sm:justify-start justify-center gap-6">
         <div className="flex items-center gap-2 text-sm">
           <div className="w-2 h-2 bg-green-500 dark:bg-green-400 rounded-full animate-pulse"></div>
@@ -327,9 +348,11 @@ export const HeroContent = ({ t }: HeroContentProps) => {
           <span className="text-gray-600 dark:text-gray-400">{t.hero.simplified?.limitedStock || ""}</span>
         </div>
       </div>
+      */}
 
-      {/* Main CTA Button - with A/B tested color */}
+      {/* Main CTA Button - B2B: Find a Store */}
       <div className="flex flex-col sm:flex-row gap-3">
+        {/* B2C: ORIGINAL CTA
         <Button
           onClick={handleScrollToProducts}
           className={ctaButtonClasses}
@@ -338,6 +361,18 @@ export const HeroContent = ({ t }: HeroContentProps) => {
           <LightningIcon className="transition-transform duration-300 group-hover:scale-110" />
           {t.hero.buttons.tryFree || ""}
           <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
+        </Button>
+        */}
+        <Button
+          asChild
+          className={ctaButtonClasses}
+          aria-label={t.nav?.findNearYou || "Find It Near You"}
+        >
+          <Link href="/stockists">
+            <LightningIcon className="transition-transform duration-300 group-hover:scale-110" />
+            {t.nav?.findNearYou || "Find It Near You"}
+            <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
         </Button>
       </div>
 

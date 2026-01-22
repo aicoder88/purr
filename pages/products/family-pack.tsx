@@ -1,7 +1,7 @@
 import { NextSeo } from 'next-seo';
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users, Zap, Truck } from 'lucide-react';
+import { ArrowLeft, Check, Star, ShoppingCart, Heart, Users, Zap, Truck, MapPin, ChevronRight } from 'lucide-react';
 import { useEffect, useRef, useCallback, useState } from 'react';
 
 import { Container } from '../../src/components/ui/container';
@@ -237,6 +237,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                     </div>
                     <span className="text-gray-600 dark:text-gray-400">(127 reviews)</span>
                   </div>
+                  {/* B2C: HIDDEN PRICING
                   <div className="space-y-3 mb-6">
                     <div className="text-3xl font-bold text-[#5B2EFF] dark:text-[#3694FF]">
                       {familyPrice}
@@ -246,6 +247,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                     </p>
                     <BNPLBadge price={familyPriceAmount} locale={locale} />
                   </div>
+                  */}
                 </div>
 
                 {/* Benefits List */}
@@ -258,141 +260,32 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                   ))}
                 </div>
 
-                {/* Purchase Options - This is the target element for sticky cart */}
+                {/* B2C: HIDDEN PURCHASE OPTIONS
                 <div ref={purchaseCardsRef} className="space-y-5">
-                  <div className="rounded-2xl border border-[#03E46A]/30 bg-white dark:bg-gray-900/40 p-6 shadow-lg relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#03E46A]/15 via-transparent to-transparent pointer-events-none" aria-hidden="true" />
-                    <div className="flex items-center justify-between mb-3 relative">
-                      <div>
-                        <p className="text-xs uppercase tracking-widest text-[#03E46A] font-semibold">
-                          {t.subscriptionOfferExtended?.bestValueBadge || 'Best Value'}
-                        </p>
-                        <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100">
-                          {t.subscriptionOfferExtended?.familyPlanTitle || 'Best Value Autoship – 3 x 120g'}
-                        </h3>
-                      </div>
-                      <span className="inline-flex items-center bg-[#03E46A]/10 text-[#03E46A] px-3 py-1 rounded-full text-xs font-semibold">
-                        {t.subscriptionOfferExtended?.saveVsOneTime
-                          ? t.subscriptionOfferExtended.saveVsOneTime.replace('{percent}', familyAutoshipSavings.toString())
-                          : `Save ${familyAutoshipSavings}% vs one-time`}
-                      </span>
-                    </div>
-                    <div className="flex items-baseline gap-3 mb-4 relative">
-                      <div className="text-3xl font-extrabold text-gray-900 dark:text-gray-50">
-                        {familyAutoshipPrice}
-                      </div>
-                      <div className="text-sm font-medium text-[#03E46A]">
-                        {t.subscriptionOfferExtended?.perMonthLabel
-                          ? t.subscriptionOfferExtended.perMonthLabel.replace('{price}', familyAutoshipPerMonth)
-                          : `= ${familyAutoshipPerMonth}/month effective`}
-                      </div>
-                    </div>
-
-                    {/* Prominent Shipping Savings Callout */}
-                    <div className="bg-green-100 dark:bg-green-900/50 border-2 border-green-500 dark:border-green-400 rounded-lg p-4 mb-4 relative">
-                      <div className="flex items-center gap-3">
-                        <div className="text-2xl font-bold text-green-700 dark:text-green-300">FREE SHIPPING</div>
-                      </div>
-                      <p className="text-sm font-semibold text-green-800 dark:text-green-200 mt-2">
-                        {t.productPages?.shippingSavings || 'Save $15-$20+ per order vs single purchases'}
-                      </p>
-                    </div>
-
-                    <p className="text-sm text-gray-700 dark:text-gray-200 mb-4 relative">
-                      {t.subscriptionOfferExtended?.quarterlyBilling || 'Billed every 3 months'}
+                  ... original purchase options hidden for B2B ...
+                </div>
+                */}
+                {/* B2B: Find a Store CTA */}
+                <div ref={purchaseCardsRef} className="space-y-5">
+                  <div className="rounded-2xl border-2 border-[#FF3131] bg-white dark:bg-gray-900 p-8 shadow-xl">
+                    <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-4">
+                      {t.productsSection?.askYourStore || "Ask for Purrify at Your Local Store"}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-6">
+                      {t.productsSection?.availableAtStores || "Available at pet stores across Canada"}
                     </p>
-                    <ul className="text-sm text-gray-700 dark:text-gray-200 space-y-2 mb-5 relative">
-                      <li className="flex gap-2">
-                        <Check className="w-4 h-4 text-[#03E46A] mt-0.5" />
-                        {t.subscriptionOfferExtended?.includesThreeFamily || 'Includes 3 x Regular size 120g packs (delivered together)'}
-                      </li>
-                      <li className="flex gap-2">
-                        <Check className="w-4 h-4 text-[#03E46A] mt-0.5" />
-                        {t.subscriptionOfferExtended?.priorityCustomerSupport || 'Priority customer support'}
-                      </li>
-                    </ul>
-                    <Button
-                      asChild={Boolean(familyAutoshipLink)}
-                      size="lg"
-                      className="w-full bg-gradient-to-r from-[#03E46A] to-[#03E46A]/80 hover:from-[#03E46A]/90 hover:to-[#03E46A] text-white dark:text-gray-100 font-bold py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300 relative"
-                      disabled={!familyAutoshipLink}
-                    >
-                      {familyAutoshipLink ? (
-                        <a href={familyAutoshipLink} target="_blank" rel="noopener noreferrer" onClick={() => handleBuyClick(true)} className="flex items-center justify-center gap-2">
-                          <Zap className="w-5 h-5" />
-                          {t.subscriptionOfferExtended?.startAutoship || 'Start Autoship'}
-                        </a>
-                      ) : (
-                        <div className="flex items-center justify-center gap-2">
-                          <Zap className="w-5 h-5" />
-                          {t.subscriptionOfferExtended?.linkComingSoon || 'Payment link coming soon'}
-                        </div>
-                      )}
-                    </Button>
-                    {familyAutoshipLink && (
-                      <p className="mt-3 text-[10px] text-center text-gray-400 dark:text-gray-500 font-bold italic uppercase tracking-tighter">
-                        * {t.pricing?.stripeShippingNote}
-                      </p>
-                    )}
-                  </div>
-
-                  <div className="rounded-2xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-900/30 p-6">
-                    <p className="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400 font-semibold mb-2">
-                      {t.pricing?.oneTimeLabel || 'One-time purchase'}
-                    </p>
-                    <div className="flex items-baseline gap-3 mb-3">
-                      <div className="text-3xl font-bold text-gray-900 dark:text-gray-50">
-                        {familyPrice}
-                      </div>
-                      {quantity > 1 && (
-                        <span className="text-sm text-gray-500 dark:text-gray-400">
-                          × {quantity} = ${(familyPriceAmount * quantity).toFixed(2)}
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Quantity Selector */}
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                        {t.productsSection?.quantity || 'Quantity'}
-                      </span>
-                      <QuantitySelector
-                        quantity={quantity}
-                        onChange={setQuantity}
-                        min={1}
-                        max={10}
-                        size="md"
-                      />
-                    </div>
-
-                    {/* Shipping Cost Warning */}
-                    <div className="bg-amber-100 dark:bg-amber-900/40 border-2 border-amber-500 dark:border-amber-400 rounded-lg p-3 mb-4 relative">
-                      <p className="text-sm font-bold text-amber-900 dark:text-amber-200">
-                        + Shipping: $15-$20+
-                      </p>
-                      <p className="text-xs text-amber-800 dark:text-amber-300 mt-1">
-                        Actual cost at checkout
-                      </p>
-                    </div>
-
-                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                      {t.pricing?.plusShipping || '+ shipping'} - One-time order
-                    </p>
-                    <Button asChild size="lg" className="w-full bg-gray-100 dark:bg-gray-700 hover:bg-[#FF3131] hover:text-white dark:text-gray-100 text-gray-800 dark:text-gray-100 border-2 border-gray-200 dark:border-gray-600 hover:border-[#FF3131] dark:hover:border-[#FF3131]">
-                      <Link href={checkoutUrl} onClick={() => handleBuyClick(false, quantity)} className="flex items-center justify-center gap-2">
-                        <ShoppingCart className="w-5 h-5" />
-                        {t.homepage.enhancedComparison.chooseThisSize}
+                    <Button asChild className="w-full bg-[#FF3131] hover:bg-[#FF3131]/90 text-white dark:text-white font-bold py-6 rounded-2xl shadow-lg">
+                      <Link href={`${locale !== 'en' ? `/${locale}` : ''}/stockists`} className="flex items-center justify-center gap-2">
+                        <MapPin className="w-5 h-5" />
+                        {t.nav?.findStore || "Find a Store"}
+                        <ChevronRight className="w-5 h-5" />
                       </Link>
                     </Button>
                   </div>
 
                   <div className="flex space-x-3">
-                    <Button variant="outline" size="lg" className="flex-1">
-                      <Heart className="w-5 h-5 mr-2" />
-                      Add to Wishlist
-                    </Button>
-                    <Link href={`${locale !== 'en' ? `/${locale}` : ''}/reviews`}>
-                      <Button variant="outline" size="lg" className="flex-1">
+                    <Link href={`${locale !== 'en' ? `/${locale}` : ''}/reviews`} className="flex-1">
+                      <Button variant="outline" size="lg" className="w-full">
                         <Users className="w-5 h-5 mr-2" />
                         Read Reviews
                       </Button>
@@ -558,12 +451,15 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
               </p>
             </div>
 
+            {/* B2C: HIDDEN SIZE COMPARISON WITH PRICING
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              ... pricing comparison hidden ...
+            </div>
+            */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center">
                 <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Trial Size</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">12g - Single use test</p>
-                <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">{trialPrice}</div>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">+ Shipping</p>
                 <Link href={`${locale !== 'en' ? `/${locale}` : ''}/products/trial-size`}>
                   <Button variant="outline" className="w-full">View Trial Size</Button>
                 </Link>
@@ -572,8 +468,6 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center">
                 <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Standard Size</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">50g - One month supply</p>
-                <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">{standardPrice}</div>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">+ Shipping</p>
                 <Link href={`${locale !== 'en' ? `/${locale}` : ''}/products/standard`}>
                   <Button variant="outline" className="w-full">View Standard Size</Button>
                 </Link>
@@ -585,8 +479,6 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                 </div>
                 <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Family Pack</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">120g - Two month supply</p>
-                <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-4">{familyPrice}</div>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">+ Shipping - Free with autoship</p>
                 <Button className="w-full">Currently Viewing</Button>
               </div>
             </div>
@@ -678,7 +570,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
         </section>
       </main>
 
-      {/* Sticky Add to Cart */}
+      {/* B2C: HIDDEN STICKY ADD TO CART
       <StickyAddToCart
         productName={productName}
         productSize="120g"
@@ -687,6 +579,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
         onAddToCart={handleStickyAddToCart}
         targetRef={purchaseCardsRef}
       />
+      */}
     </>
   );
 }

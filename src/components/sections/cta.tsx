@@ -92,6 +92,7 @@ export function CTA() {
 
           {/* CTA Button section */}
           <div className="flex flex-col gap-4 min-w-[200px]">
+            {/* B2C: ORIGINAL PRODUCT LINK
             <Button
               asChild
               size="lg"
@@ -104,6 +105,20 @@ export function CTA() {
 
             <p className="text-gray-600 dark:text-gray-100/80 text-xs text-center mt-2">
               {t.cta?.guarantee || "30-day money-back guarantee"}
+            </p>
+            */}
+            <Button
+              asChild
+              size="lg"
+              className={`${COLORS.surface.light} text-[#5B2EFF] hover:bg-gray-100 dark:bg-[#3694FF] dark:text-white dark:text-gray-100 font-bold py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-lg`}
+            >
+              <Link href="/stockists">
+                {t.cta?.b2bButtonText || "Find a Store Near You"}
+              </Link>
+            </Button>
+
+            <p className="text-gray-600 dark:text-gray-100/80 text-xs text-center mt-2">
+              {t.cta?.b2bGuarantee || "Available at pet retailers nationwide"}
             </p>
           </div>
         </div>

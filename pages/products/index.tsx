@@ -22,6 +22,7 @@ import {
   ArrowRight,
   Cat,
   Sparkles,
+  MapPin,
 } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { buildAvailabilityUrl, getPriceValidityDate, generateWebsiteSchema } from '../../src/lib/seo-utils';
@@ -319,6 +320,7 @@ const ProductsPage: NextPage = () => {
               </p>
             </div>
 
+            {/* B2C: ORIGINAL QUICK PICKS WITH PAYMENT LINKS
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               {quickPicks.map((pick, index) => {
                 const product = products.find(p => p.id === pick.productId);
@@ -341,6 +343,25 @@ const ProductsPage: NextPage = () => {
                   </a>
                 );
               })}
+            </div>
+            */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              {quickPicks.map((pick, index) => (
+                <Link
+                  key={index}
+                  href={`${locale === 'fr' ? '/fr' : ''}/stockists`}
+                  className="group bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:bg-brand-light dark:hover:bg-gray-600 transition-all hover:shadow-lg border-2 border-transparent hover:border-brand-purple"
+                >
+                  <div className="text-brand-purple dark:text-purple-400 mb-3">
+                    {pick.icon}
+                  </div>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">{pick.question}</p>
+                  <p className="font-heading font-bold text-xl text-gray-900 dark:text-gray-100 mb-2 group-hover:text-brand-purple transition-colors">
+                    {pick.answer} <MapPin className="inline w-4 h-4 ml-1" />
+                  </p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">{pick.detail}</p>
+                </Link>
+              ))}
             </div>
           </Container>
         </section>
@@ -425,6 +446,7 @@ const ProductsPage: NextPage = () => {
                       <div className="flex-1">
                         <h3 className="font-heading text-2xl font-bold mb-1">{product.displayName}</h3>
                         <p className="text-sm opacity-80 mb-3">{product.displaySubtitle}</p>
+                        {/* B2C: HIDDEN PRICING DISPLAY
                         <div className="flex items-baseline">
                           <span className="text-3xl font-bold">{product.price}</span>
                           {product.originalPrice && (
@@ -434,6 +456,7 @@ const ProductsPage: NextPage = () => {
                         {product.savings && (
                           <p className="text-sm mt-1 opacity-90">Save {product.savings}</p>
                         )}
+                        */}
                       </div>
                     </div>
                   </div>
@@ -474,7 +497,7 @@ const ProductsPage: NextPage = () => {
                       </p>
                     </div>
 
-                    {/* CTA Button */}
+                    {/* B2C: ORIGINAL CTA BUTTONS
                     {product.ctaLink.startsWith('http') ? (
                       <a href={product.ctaLink} target="_blank" rel="noopener noreferrer" className="block w-full">
                         <Button
@@ -505,6 +528,18 @@ const ProductsPage: NextPage = () => {
                         </Button>
                       </Link>
                     )}
+                    */}
+                    {/* CTA Button - B2B: Find a Store */}
+                    <Link href={`${locale === 'fr' ? '/fr' : ''}/stockists`}>
+                      <Button
+                        size="lg"
+                        className="w-full bg-brand-purple hover:bg-brand-purple/90 text-white dark:text-gray-100"
+                      >
+                        <MapPin className="w-5 h-5 mr-2" />
+                        {t.nav?.findStore || "Find a Store"}
+                        <ChevronRight className="w-5 h-5 ml-2" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               ))}
@@ -664,7 +699,7 @@ const ProductsPage: NextPage = () => {
           </Container>
         </section>
 
-        {/* CTA Section */}
+        {/* B2C: ORIGINAL CTA SECTION
         <section className="py-16 bg-gradient-to-br from-brand-purple to-brand-red cv-auto cis-720">
           <Container>
             <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
@@ -679,6 +714,35 @@ const ProductsPage: NextPage = () => {
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-brand-purple hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
                     {t.productComparison.tryRiskFree}
+                    <ChevronRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
+                <Link href={`${locale === 'fr' ? '/fr' : ''}/contact`}>
+                  <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-white bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
+                    {t.productComparison.getPersonalizedAdvice}
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </Container>
+        </section>
+        */}
+        {/* CTA Section - B2B: Find a Store */}
+        <section className="py-16 bg-gradient-to-br from-brand-purple to-brand-red cv-auto cis-720">
+          <Container>
+            <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
+              <MapPin className="w-16 h-16 mx-auto mb-6 opacity-90" />
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
+                {t.productsSection?.askYourStore || "Ask for Purrify at Your Local Store"}
+              </h2>
+              <p className="text-xl mb-8 opacity-90">
+                {t.productsSection?.availableAtStores || "Available at pet stores across Canada"}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href={`${locale === 'fr' ? '/fr' : ''}/stockists`}>
+                  <Button size="lg" className="bg-white dark:bg-gray-900 text-brand-purple hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
+                    <MapPin className="w-5 h-5 mr-2" />
+                    {t.nav?.findStore || "Find a Store"}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>

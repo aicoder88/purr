@@ -7,7 +7,7 @@ import { useCurrency } from '../../src/lib/currency-context';
 import { getSEOMeta } from '../../src/translations/seo-meta';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, Check, Star, ShoppingCart, Heart, Zap, Truck } from 'lucide-react';
+import { ArrowLeft, Check, Star, ShoppingCart, Heart, Zap, Truck, MapPin, ChevronRight } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { ProductFAQ } from '../../src/components/product/ProductFAQ';
 import { BNPLBadge } from '../../src/components/product/BNPLBadge';
@@ -336,9 +336,8 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
                   </p>
                 </div>
 
-                {/* Purchase Cards - This is the target element for sticky cart */}
+                {/* B2C: HIDDEN PURCHASE CARDS
                 <div ref={purchaseCardsRef} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {/* Autoship Option */}
                   <div className="relative group overflow-hidden bg-white dark:bg-gray-900 border-2 border-deep-coral rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300">
                     <div className="absolute top-0 right-0 p-2 bg-deep-coral text-white dark:text-white text-[10px] font-black uppercase tracking-tighter rounded-bl-xl">
                       {t.productPages?.save || 'Save'} 30%
@@ -361,7 +360,6 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
                     <p className="text-[10px] text-center mt-3 text-gray-400 dark:text-gray-500 font-medium">{t.productPages?.cancelAnytime || 'Cancel anytime. Ships free.'}</p>
                   </div>
 
-                  {/* One-time Option */}
                   <div className="bg-white/60 dark:bg-gray-900/40 backdrop-blur-sm border border-gray-200 dark:border-gray-800 rounded-3xl p-6 shadow-lg hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300">
                     <h3 className="font-bold text-gray-900 dark:text-white mb-1">One-Time</h3>
                     <div className="mb-4">
@@ -372,7 +370,6 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
                         </span>
                       )}
                     </div>
-                    {/* Quantity Selector */}
                     <div className="flex items-center justify-between mb-4">
                       <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
                         {t.productsSection?.quantity || 'Quantity'}
@@ -401,6 +398,23 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
 
                 <div className="pt-2">
                   <BNPLBadge price={getProductPrice(productKey, currency)} locale={locale} />
+                </div>
+                */}
+                {/* B2B: Find a Store CTA */}
+                <div ref={purchaseCardsRef} className="bg-white dark:bg-gray-900 border-2 border-deep-coral rounded-3xl p-8 shadow-xl">
+                  <h3 className="font-bold text-xl text-gray-900 dark:text-white mb-4">
+                    {t.productsSection?.askYourStore || "Ask for Purrify at Your Local Store"}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-6">
+                    {t.productsSection?.availableAtStores || "Available at pet stores across Canada"}
+                  </p>
+                  <Button asChild className="w-full bg-deep-coral hover:bg-deep-coral/90 text-white dark:text-white font-bold py-6 rounded-2xl shadow-lg shadow-deep-coral/20">
+                    <Link href={`${locale !== 'en' ? `/${locale}` : ''}/stockists`} className="flex items-center justify-center gap-2">
+                      <MapPin className="w-5 h-5" />
+                      {t.nav?.findStore || "Find a Store"}
+                      <ChevronRight className="w-5 h-5" />
+                    </Link>
+                  </Button>
                 </div>
 
                 {/* Quick Trust */}
@@ -526,7 +540,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
           </Container>
         </section>
 
-        {/* Bottom CTA */}
+        {/* B2C: ORIGINAL BOTTOM CTA
         <section className="py-32 bg-white dark:bg-gray-950">
           <Container>
             <div className="bg-gradient-to-r from-deep-coral/5 to-electric-indigo/5 border border-gray-100 dark:border-gray-800 rounded-[48px] p-12 md:p-24 text-center space-y-10">
@@ -556,6 +570,31 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
             </div>
           </Container>
         </section>
+        */}
+        {/* Bottom CTA - B2B: Find a Store */}
+        <section className="py-32 bg-white dark:bg-gray-950">
+          <Container>
+            <div className="bg-gradient-to-r from-deep-coral/5 to-electric-indigo/5 border border-gray-100 dark:border-gray-800 rounded-[48px] p-12 md:p-24 text-center space-y-10">
+              <div className="max-w-3xl mx-auto space-y-6">
+                <h2 className="font-heading text-4xl md:text-6xl font-black text-gray-900 dark:text-white">
+                  {t.productsSection?.askYourStore || "Ask for Purrify at Your Local Store"}
+                </h2>
+                <p className="text-xl text-gray-600 dark:text-gray-400">
+                  {t.productsSection?.availableAtStores || "Available at pet stores across Canada"}
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button asChild size="lg" className="h-20 px-12 text-xl font-black bg-deep-coral hover:bg-deep-coral/90 text-white dark:text-white rounded-[24px] shadow-2xl shadow-deep-coral/20 min-w-[280px]">
+                  <Link href={`${locale !== 'en' ? `/${locale}` : ''}/stockists`} className="flex items-center gap-3">
+                    <MapPin className="w-5 h-5" />
+                    {t.nav?.findStore || "Find a Store"}
+                    <ChevronRight className="w-5 h-5" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </Container>
+        </section>
 
         {/* Back navigation */}
         <section className="py-12 border-t border-gray-100 dark:border-gray-900">
@@ -574,7 +613,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
         </section>
       </main>
 
-      {/* Sticky Add to Cart */}
+      {/* B2C: HIDDEN STICKY ADD TO CART
       <StickyAddToCart
         productName={productName}
         productSize="50g"
@@ -583,6 +622,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
         onAddToCart={handleStickyAddToCart}
         targetRef={purchaseCardsRef}
       />
+      */}
     </>
   );
 }

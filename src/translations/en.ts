@@ -56,7 +56,12 @@ export const en = {
     // Menu controls
     toggleMenu: "Toggle menu",
     signOut: "Sign Out",
-    signedIn: "Signed in"
+    signedIn: "Signed in",
+    // B2B pivot keys
+    findStore: "Find a Store",
+    findNearYou: "Find It Near You",
+    whereToBuy: "Where to Buy",
+    askForPurrify: "Ask for Purrify at Your Store"
   },
 
   locationsMenu: {
@@ -300,7 +305,11 @@ export const en = {
     viewAllProducts: "VIEW ALL PRODUCTS",
     quantity: "Quantity",
     decreaseQuantity: "Decrease quantity",
-    increaseQuantity: "Increase quantity"
+    increaseQuantity: "Increase quantity",
+    // B2B pivot keys
+    findNearYou: "Find It Near You",
+    askYourStore: "Ask for Purrify at Your Local Store",
+    availableAtStores: "Available at pet stores across Canada"
   },
 
   // Stores Section
@@ -332,7 +341,12 @@ export const en = {
     subtitle: "Join 1,000+ cat parents who finally have fresh-smelling homes. No more holding your breath, no more apologizing to guests. Get your confidence back - start breathing easy again.",
     buttonText: "ELIMINATE THE STINK NOW",
     joinText: "Join 1,000+ families with odor-free homes - Visit your local store",
-    guarantee: "Proven results you can smell (or can't smell!)"
+    guarantee: "Proven results you can smell (or can't smell!)",
+    // B2B pivot keys
+    b2bTitle: "Find Purrify Near You",
+    b2bSubtitle: "Available at pet stores across Canada. Ask for Purrify at your local pet retailer.",
+    b2bButtonText: "Find a Store Near You",
+    b2bGuarantee: "Available at pet retailers nationwide"
   },
 
   // FAQ

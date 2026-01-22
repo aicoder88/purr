@@ -57,6 +57,11 @@ export interface TranslationType {
     toggleTheme?: string;
     signOut?: string;
     signedIn?: string;
+    // B2B pivot keys
+    findStore?: string;
+    findNearYou?: string;
+    whereToBuy?: string;
+    askForPurrify?: string;
   };
 
   // Locations Menu
@@ -315,6 +320,10 @@ export interface TranslationType {
     quantity?: string;
     decreaseQuantity?: string;
     increaseQuantity?: string;
+    // B2B pivot keys
+    findNearYou?: string;
+    askYourStore?: string;
+    availableAtStores?: string;
   };
 
   pricing?: {
@@ -391,6 +400,11 @@ export interface TranslationType {
     buttonText: string;
     joinText: string;
     guarantee: string;
+    // B2B pivot keys
+    b2bTitle?: string;
+    b2bSubtitle?: string;
+    b2bButtonText?: string;
+    b2bGuarantee?: string;
   };
 
   // FAQ
