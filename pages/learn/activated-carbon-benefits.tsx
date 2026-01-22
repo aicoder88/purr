@@ -8,6 +8,7 @@ import { useTranslation } from '../../src/lib/translation-context';
 import { generateJSONLD } from '../../src/lib/seo-utils';
 import { formatProductPrice } from '../../src/lib/pricing';
 import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
+import { StructuredDataGenerator } from '../../src/lib/seo/structured-data-generator';
 
 export default function ActivatedCarbonBenefits() {
   const { locale } = useTranslation();
@@ -25,7 +26,7 @@ export default function ActivatedCarbonBenefits() {
     path: '/learn/activated-carbon-benefits',
     title: pageTitle,
     description: pageDescription,
-    targetKeyword: 'activated carbon litter additive benefits',
+    targetKeyword: 'activated carbon cat litter',
     schemaType: 'article',
     schemaData: {
       headline: pageTitle,
@@ -37,8 +38,56 @@ export default function ActivatedCarbonBenefits() {
       wordCount: 2800,
     },
     image: `https://www.purrify.ca${heroImage}`,
-    keywords: ['activated carbon litter additive benefits', 'cat litter deodorizer', 'activated carbon odor control', 'natural cat litter odor eliminator'],
+    keywords: ['activated carbon cat litter', 'activated carbon litter additive benefits', 'cat litter deodorizer', 'activated carbon odor control', 'natural cat litter odor eliminator'],
     includeBreadcrumb: true,
+  });
+
+  // FAQ items for structured data and display
+  const faqItems = [
+    {
+      question: 'What is activated carbon cat litter?',
+      answer: 'Activated carbon cat litter refers to litter products that contain or are enhanced with activated carbon (also called activated charcoal). This carbon has been treated to create millions of tiny pores that trap odor molecules like ammonia and hydrogen sulfide, providing superior odor elimination compared to traditional litter.',
+    },
+    {
+      question: 'Can activated carbon be used around kittens?',
+      answer: 'Activated carbon is widely used in household filtration and is fragrance-free. Many households introduce it gradually once kittens reliably use the litter box. Consult your veterinarian for specific advice about your kitten.',
+    },
+    {
+      question: 'How long does activated carbon last in cat litter?',
+      answer: 'Activated carbon continues working until its pores are saturated with odor molecules. In a typical litter box, this ranges from 2-4 weeks depending on usage and the number of cats.',
+    },
+    {
+      question: 'Can I use activated carbon with clumping litter?',
+      answer: 'Yes! Activated carbon works with all litter types including clumping clay, crystal, wood, paper, and natural alternatives. It enhances rather than interferes with clumping action.',
+    },
+    {
+      question: 'Will my cat notice activated carbon in the litter?',
+      answer: "Most cats don't notice activated carbon since it's odorless and doesn't change litter texture significantly. Some cats actually prefer the improved odor control that activated carbon provides.",
+    },
+  ];
+
+  // Generate structured data
+  const structuredDataGenerator = new StructuredDataGenerator();
+  const faqSchema = structuredDataGenerator.generateFAQ(faqItems);
+  const howToSchema = structuredDataGenerator.generateHowTo({
+    name: 'How to Use Activated Carbon Cat Litter Additive',
+    description: 'Learn how to use activated carbon litter additive for maximum odor control in your cat litter box.',
+    image: `https://www.purrify.ca${heroImage}`,
+    totalTime: 'PT5M',
+    steps: [
+      {
+        name: 'Sprinkle the Activated Carbon',
+        text: 'Add 1-2 tablespoons of activated carbon litter additive per litter box. Sprinkle evenly across the surface of the litter.',
+      },
+      {
+        name: 'Mix Into the Litter',
+        text: 'Gently stir the activated carbon into your existing litter. This ensures even distribution throughout the litter box for maximum odor control.',
+      },
+      {
+        name: 'Enjoy Immediate Odor Control',
+        text: 'Experience immediate and long-lasting odor elimination. The activated carbon begins trapping odor molecules right away and continues working for 2-4 weeks.',
+      },
+    ],
   });
 
   return (
@@ -50,6 +99,22 @@ export default function ActivatedCarbonBenefits() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={generateJSONLD(schema)}
+        />
+      )}
+
+      {/* FAQ Schema for rich results */}
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: faqSchema }}
+        />
+      )}
+
+      {/* HowTo Schema for rich results */}
+      {howToSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: howToSchema }}
         />
       )}
 
@@ -88,7 +153,7 @@ export default function ActivatedCarbonBenefits() {
         <article className="max-w-4xl mx-auto px-4 py-12 text-gray-900 dark:text-gray-100">
           <header className="mb-12">
           <h1 className="font-heading text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
-            Activated Carbon Litter Additive Benefits: The Complete Science Guide
+            Activated Carbon Cat Litter Benefits: The Complete Science Guide
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
             Discover how activated carbon transforms your cat's litter box into an odor-free zone through proven scientific principles. Learn why this natural solution outperforms traditional deodorizers.
@@ -301,28 +366,15 @@ export default function ActivatedCarbonBenefits() {
             </div>
           </div>
 
-          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Frequently Asked Questions</h2>
+          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mt-12 mb-6">Frequently Asked Questions About Activated Carbon Cat Litter</h2>
 
           <div className="space-y-6 mb-8">
-            <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
-              <h3 className="font-heading text-lg font-semibold mb-2">Can activated carbon be used around kittens?</h3>
-              <p>Activated carbon is widely used in household filtration and is fragrance-free. Many households introduce it gradually once kittens reliably use the litter box. Consult your veterinarian for specific advice.</p>
-            </div>
-
-            <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
-              <h3 className="font-heading text-lg font-semibold mb-2">How long does activated carbon last?</h3>
-              <p>Activated carbon continues working until its pores are saturated with odor molecules. In a typical litter box, this ranges from 2-4 weeks depending on usage and the number of cats.</p>
-            </div>
-
-            <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
-              <h3 className="font-heading text-lg font-semibold mb-2">Can I use it with clumping litter?</h3>
-              <p>Absolutely! Activated carbon works with all litter types including clumping clay, crystal, wood, paper, and natural alternatives. It enhances rather than interferes with clumping action.</p>
-            </div>
-
-            <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
-              <h3 className="font-heading text-lg font-semibold mb-2">Will my cat notice the difference?</h3>
-              <p>Most cats don't notice activated carbon since it's odorless and doesn't change litter texture significantly. Some cats actually prefer the improved odor control.</p>
-            </div>
+            {faqItems.map((faq, index) => (
+              <div key={index} className="border-b border-gray-200 dark:border-gray-700 pb-4">
+                <h3 className="font-heading text-lg font-semibold mb-2">{faq.question}</h3>
+                <p>{faq.answer}</p>
+              </div>
+            ))}
           </div>
 
           {/* Solution Image */}
@@ -355,6 +407,41 @@ export default function ActivatedCarbonBenefits() {
                 View All Sizes
               </Link>
             </div>
+          </div>
+
+          {/* Related Guides */}
+          <div className="mt-12 bg-gray-50 dark:bg-gray-800/50 rounded-lg p-6">
+            <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Related Guides</h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              Learn more about cat litter odor control with these helpful resources:
+            </p>
+            <ul className="space-y-3">
+              <li>
+                <Link href="/learn/activated-carbon-vs-baking-soda-deodorizers" className="text-blue-600 dark:text-blue-400 hover:underline">
+                  Activated Carbon vs Baking Soda: Which Is Better for Cat Litter? →
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog/activated-carbon-vs-zeolite-cat-litter" className="text-blue-600 dark:text-blue-400 hover:underline">
+                  Activated Carbon vs Zeolite: Complete Comparison Guide →
+                </Link>
+              </li>
+              <li>
+                <Link href="/learn/cat-litter-ammonia-health-risks" className="text-blue-600 dark:text-blue-400 hover:underline">
+                  Cat Litter Ammonia Health Risks: What You Need to Know →
+                </Link>
+              </li>
+              <li>
+                <Link href="/learn/solutions/ammonia-smell-cat-litter" className="text-blue-600 dark:text-blue-400 hover:underline">
+                  Why Your Cat Litter Smells Like Ammonia (And How to Fix It) →
+                </Link>
+              </li>
+              <li>
+                <Link href="/learn/using-deodorizers-with-kittens" className="text-blue-600 dark:text-blue-400 hover:underline">
+                  Is Cat Litter Deodorizer Safe for Kittens? →
+                </Link>
+              </li>
+            </ul>
           </div>
 
           {/* Related Articles */}

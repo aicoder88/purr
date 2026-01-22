@@ -7,6 +7,7 @@ import { useTranslation } from '../../../src/lib/translation-context';
 import { generateJSONLD } from '../../../src/lib/seo-utils';
 import { useEnhancedSEO } from '../../../src/hooks/useEnhancedSEO';
 import { Container } from '../../../src/components/ui/container';
+import { StructuredDataGenerator } from '../../../src/lib/seo/structured-data-generator';
 
 export default function HowToNeutralizeAmmoniaCatLitterPage() {
   const { locale } = useTranslation();
@@ -37,17 +38,79 @@ export default function HowToNeutralizeAmmoniaCatLitterPage() {
     includeBreadcrumb: true,
   });
 
+  // Generate schemas
+  const structuredDataGenerator = new StructuredDataGenerator();
+
+  // FAQ items for schema
+  const faqItems = [
+    {
+      question: 'Why does my litter box smell like ammonia even after cleaning?',
+      answer: 'Ammonia forms within 2-4 hours of urination as bacteria break down urea. If you clean once daily, ammonia has already formed. Activated carbon neutralizes it continuously between cleanings.',
+    },
+    {
+      question: 'Is the ammonia smell harmful to my cat?',
+      answer: 'Yes. High ammonia levels can irritate your cat\'s respiratory system, cause eye problems, and lead to litter box avoidance. Cats have sensitive noses—if you can smell it, it\'s overwhelming for them.',
+    },
+    {
+      question: 'How much activated carbon should I use?',
+      answer: 'For a standard litter box, 2-3 tablespoons of activated carbon additive mixed into the litter is sufficient. Add more with each litter change or weekly top-up for best results.',
+    },
+    {
+      question: 'Does activated carbon work with all litter types?',
+      answer: 'Yes. Activated carbon additives work with clay, clumping, crystal, wood, paper, and natural litters. Simply mix it into your existing litter—no need to switch brands.',
+    },
+  ];
+  const faqSchema = structuredDataGenerator.generateFAQ(faqItems);
+
+  // HowTo schema for the ammonia neutralization process
+  const howToSchema = structuredDataGenerator.generateHowTo({
+    name: 'How to Stop Ammonia Smell in Cat Litter',
+    description: 'Learn how to neutralize and eliminate ammonia odor from your cat litter box using proven methods. This guide covers the most effective solutions ranked by effectiveness.',
+    image: `https://www.purrify.ca${heroImage}`,
+    totalTime: 'PT10M',
+    steps: [
+      {
+        name: 'Add Activated Carbon to Your Litter',
+        text: 'Sprinkle 2-3 tablespoons of activated carbon additive on top of your existing cat litter. This is the most effective method with 92% ammonia reduction.',
+      },
+      {
+        name: 'Mix Thoroughly Into the Litter',
+        text: 'Use the scoop to mix the activated carbon evenly throughout the top layer of litter. This ensures maximum contact with ammonia molecules.',
+      },
+      {
+        name: 'Maintain Daily Scooping Routine',
+        text: 'Scoop waste at least once daily, ideally twice. This removes the source of ammonia before bacteria can break it down.',
+      },
+      {
+        name: 'Reapply Weekly for Continuous Protection',
+        text: 'Add fresh activated carbon every 5-7 days or when you notice odors returning. The carbon will continue trapping ammonia molecules continuously.',
+      },
+    ],
+  });
+
   return (
     <>
       <NextSeo {...nextSeoProps} />
 
-      {/* Schema.org JSON-LD */}
+      {/* Schema.org JSON-LD - Article */}
       {schema && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={generateJSONLD(schema)}
         />
       )}
+
+      {/* Schema.org JSON-LD - HowTo */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: howToSchema }}
+      />
+
+      {/* Schema.org JSON-LD - FAQ */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: faqSchema }}
+      />
 
       <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
         {/* Breadcrumb Navigation */}
@@ -81,7 +144,7 @@ export default function HowToNeutralizeAmmoniaCatLitterPage() {
               Complete Ammonia Control Guide
             </span>
             <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-              How to Neutralize Ammonia in Cat Litter
+              How to Stop Ammonia Smell in Cat Litter
             </h1>
             <p className="text-xl text-gray-700 dark:text-gray-200 mb-8 max-w-3xl mx-auto">
               That sharp, eye-watering ammonia smell isn&apos;t just unpleasant—it can harm your cat&apos;s respiratory system.
@@ -543,18 +606,22 @@ export default function HowToNeutralizeAmmoniaCatLitterPage() {
             <h2 className="text-2xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
               Related Guides
             </h2>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               <Link href="/learn/solutions/ammonia-smell-cat-litter" className="bg-white dark:bg-gray-700 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
                 <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Cat Litter Smells Like Ammonia?</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-300">Quick fixes for immediate relief</p>
               </Link>
-              <Link href="/learn/activated-carbon-vs-baking-soda-deodorizers" className="bg-white dark:bg-gray-700 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Activated Carbon vs Baking Soda</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Side-by-side comparison results</p>
+              <Link href="/learn/cat-litter-ammonia-health-risks" className="bg-white dark:bg-gray-700 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Ammonia Health Risks</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">Safety levels for cats and humans</p>
               </Link>
-              <Link href="/learn/solutions/apartment-cat-smell-solution" className="bg-white dark:bg-gray-700 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Apartment Odor Solutions</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">For small spaces with poor ventilation</p>
+              <Link href="/blog/activated-carbon-vs-zeolite-cat-litter" className="bg-white dark:bg-gray-700 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Activated Carbon vs Zeolite</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">Which odor absorber works better?</p>
+              </Link>
+              <Link href="/blog/best-litter-odor-remover-small-apartments" className="bg-white dark:bg-gray-700 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Small Apartment Solutions</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">Tips for spaces with no ventilation</p>
               </Link>
             </div>
           </div>
