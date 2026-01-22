@@ -109,7 +109,7 @@ const SocialProofAvatars = () => (
         aria-hidden="true"
       >
         <svg className="w-6 h-6 text-white/80 dark:text-gray-100/80" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
         </svg>
       </div>
     ))}
@@ -207,12 +207,16 @@ export const HeroContent = ({ t }: HeroContentProps) => {
   if (isSimplifiedHero) {
     return (
       <div className="space-y-4 md:space-y-6 relative z-10">
-        {/* B2C: HIDDEN PRICING BADGE
-        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-xl bg-gradient-to-r from-green-500 to-emerald-500 text-white dark:text-gray-100 shadow-lg">
-          <span className="text-2xl font-black">{t.hero.simplified?.free || ""}</span>
-          <span className="text-sm opacity-90">{t.hero.simplified?.justPayShipping || ""}</span>
+        {/* Social Proof Badge - Rotating Testimonials */}
+        <div
+          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-sm mb-2 animate-fade-in-up transition-opacity duration-500"
+          style={{ opacity: isTransitioning ? 0.3 : 1 }}
+        >
+          <StarRating rating={currentTestimonial.stars} />
+          <span className="text-xs font-bold text-gray-700 dark:text-gray-300 ml-1">
+            &apos;{currentTestimonial.quote}&apos;
+          </span>
         </div>
-        */}
 
         {/* Simplified Headline */}
         <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.1] text-gray-900 dark:text-white">

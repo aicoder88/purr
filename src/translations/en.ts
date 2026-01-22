@@ -3,7 +3,7 @@ import { CONTACT_INFO } from '../lib/constants';
 export const en = {
   // Common
   siteName: "Purrify",
-  siteDescription: "Love your cat, not the litter box smell. Water-filter grade activated carbon eliminates ammonia odors — no perfumes, just science. Try FREE (just pay shipping). Made in Canada, ships across North America.",
+  siteDescription: "Love your cat, lose the smell. Water-filter grade activated carbon eliminates ammonia odors — no perfumes, just science. Try FREE (just pay shipping). Made in Canada, ships across North America.",
 
   // Navigation
   nav: {
@@ -164,8 +164,8 @@ export const en = {
     rabbitLitter: "Rabbit Litter Deodorizer",
     fridgeSmells: "Fridge Odor Control",
     ferretCage: "Ferret Cage Smell Killer",
-    headline: "Love Your Cat. Not The Smell.",
-    eliminateCatOdors: "Love Your Cat. Not The Smell.",
+    headline: "Love Your Cat. Lose The Smell.",
+    eliminateCatOdors: "Love Your Cat. Lose The Smell.",
     subheadline: "One sprinkle keeps litter fresh for 7 full days.",
     instantly: "One sprinkle keeps litter fresh for 7 full days.",
     description: "You adore your cat. The litter box smell? Not so much. Purrify uses the same activated carbon found in water filters to trap ammonia at the source — no perfumes, no cover-ups, just fresh air. Sprinkle once, breathe easy for a week.",
