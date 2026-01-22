@@ -72,8 +72,8 @@ export const seoMetaEn: SEOMetaContent = {
 
   products: {
     trial: {
-      title: 'FREE Cat Litter Deodorizer Trial - Pay Shipping',
-      description: 'Try our activated carbon cat litter additive FREE! Eliminates ammonia smell instantly. Just $4.76 shipping to USA & Canada. 10,000+ happy customers.',
+      title: 'Free Cat Litter Odor Trial | 87% of Owners Upgrade',
+      description: "Your litter box shouldn't smell. Ever. Water-filter grade carbon eliminates ammonia in 60 seconds. FREE trial - $4.76 shipping. See why 87% upgrade.",
       targetKeyword: 'cat litter deodorizer'
     },
     standard: {
@@ -222,8 +222,8 @@ export const seoMetaFr: SEOMetaContent = {
 
   products: {
     trial: {
-      title: 'Désodorisant Litière Chat GRATUIT - Payez Livraison',
-      description: 'Essayez notre additif charbon actif GRATUIT! Élimine l\'ammoniaque instantanément. Seulement 4,76$ livraison Canada. 10 000+ clients satisfaits.',
+      title: 'Essai Gratuit Litière Chat | 87% des Propriétaires Rachètent',
+      description: "Votre litière ne devrait jamais sentir. Charbon actif élimine l'ammoniaque en 60 secondes. Essai GRATUIT - 4,76$ livraison. 87% rachètent.",
       targetKeyword: 'désodorisant litière chat'
     },
     standard: {
@@ -372,8 +372,8 @@ export const seoMetaZh: SEOMetaContent = {
 
   products: {
     trial: {
-      title: '免费猫砂除臭剂试用 - 仅付运费',
-      description: '免费试用我们的活性炭猫砂添加剂！立即消除氨气味。仅需$4.76运费至美国和加拿大。10,000+满意客户。',
+      title: '免费猫砂除臭试用 | 87%用户升级购买',
+      description: '您的猫砂盆不应该有异味。水过滤级活性炭60秒消除氨气。免费试用 - $4.76运费。87%用户升级购买。',
       targetKeyword: '猫砂除臭剂'
     },
     standard: {
@@ -522,8 +522,8 @@ export const seoMetaEs: SEOMetaContent = {
 
   products: {
     trial: {
-      title: 'Desodorante Arena Gatos GRATIS - Solo Paga Envío',
-      description: '¡Prueba nuestro aditivo de carbón activado GRATIS! Elimina olor amoníaco instantáneamente. Solo $4.76 envío a USA y Canadá. 10,000+ clientes felices.',
+      title: 'Prueba Gratis Arena Gatos | 87% de Dueños Compran Más',
+      description: 'Tu caja de arena no debería oler. Nunca. Carbón activado elimina amoníaco en 60 segundos. Prueba GRATIS - $4.76 envío. 87% compran más.',
       targetKeyword: 'desodorante arena gatos'
     },
     standard: {

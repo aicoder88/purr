@@ -181,6 +181,17 @@ const REDIRECTS = [
     destination: "/products/trial-size",
     permanent: true,
   },
+  // Short URL for easy social sharing (e.g., purrify.ca/trial)
+  {
+    source: "/trial",
+    destination: "/products/trial-size",
+    permanent: true,
+  },
+  {
+    source: "/:locale(fr|zh|es)/trial",
+    destination: "/:locale/products/trial-size",
+    permanent: true,
+  },
   {
     source: "/learn/activated-carbon-vs-baking-soda",
     destination: "/learn/activated-carbon-vs-baking-soda-deodorizers",
