@@ -383,7 +383,7 @@ const ProductsPage: NextPage = () => {
               {quickPicks.map((pick, index) => (
                 <Link
                   key={index}
-                  href={`${locale === 'fr' ? '/fr' : ''}/stockists`}
+                  href={`${locale === 'fr' ? '/fr' : ''}/stores`}
                   className="group bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:bg-brand-light dark:hover:bg-gray-600 transition-all hover:shadow-lg border-2 border-transparent hover:border-brand-purple"
                 >
                   <div className="text-brand-purple dark:text-purple-400 mb-3">
@@ -564,7 +564,7 @@ const ProductsPage: NextPage = () => {
                     )}
                     */}
                     {/* CTA Button - B2B: Find a Store */}
-                    <Link href={`${locale === 'fr' ? '/fr' : ''}/stockists`}>
+                    <Link href={`${locale === 'fr' ? '/fr' : ''}/stores`}>
                       <Button
                         size="lg"
                         className="w-full bg-brand-purple hover:bg-brand-purple/90 text-white dark:text-gray-100"
@@ -773,7 +773,7 @@ const ProductsPage: NextPage = () => {
                 {t.productsSection?.availableAtStores || "Available at pet stores across Canada"}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/stockists`}>
+                <Link href={`${locale === 'fr' ? '/fr' : ''}/stores`}>
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-brand-purple hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
                     <MapPin className="w-5 h-5 mr-2" />
                     {t.nav?.findStore || "Find a Store"}

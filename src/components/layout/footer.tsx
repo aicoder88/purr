@@ -55,16 +55,16 @@ export function Footer() {
                     <Image
                       src="/optimized/logo-text-240.webp"
                       alt="Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page"
-                      width={70}
-                      height={70}
+                      width={480}
+                      height={220}
                       loading="lazy"
                       className="h-full w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
                     />
                     <Image
                       src="/optimized/purrify-dark-mode-logo.webp"
                       alt="Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page"
-                      width={70}
-                      height={70}
+                      width={480}
+                      height={220}
                       loading="lazy"
                       className="h-full w-auto filter drop-shadow-sm transition-all duration-300 hidden dark:block"
                     />
@@ -230,10 +230,10 @@ export function Footer() {
                 <li>
                   <Link
                     href={
-                      locale === "fr" ? "/fr/stockists" :
-                      locale === "zh" ? "/zh/stockists" :
-                      locale === "es" ? "/es/stockists" :
-                      "/stockists"
+                      locale === "fr" ? "/fr/stores" :
+                      locale === "zh" ? "/zh/stores" :
+                      locale === "es" ? "/es/stores" :
+                      "/stores"
                     }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300 font-medium"
                   >
@@ -407,10 +407,10 @@ export function Footer() {
                 <li>
                   <Link
                     href={
-                      locale === "fr" ? "/fr/stockists" :
-                      locale === "zh" ? "/zh/stockists" :
-                      locale === "es" ? "/es/stockists" :
-                      "/stockists"
+                      locale === "fr" ? "/fr/stores" :
+                      locale === "zh" ? "/zh/stores" :
+                      locale === "es" ? "/es/stores" :
+                      "/stores"
                     }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >

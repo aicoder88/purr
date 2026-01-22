@@ -409,7 +409,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
                     {t.productsSection?.availableAtStores || "Available at pet stores across Canada"}
                   </p>
                   <Button asChild className="w-full bg-deep-coral hover:bg-deep-coral/90 text-white dark:text-white font-bold py-6 rounded-2xl shadow-lg shadow-deep-coral/20">
-                    <Link href={`${locale !== 'en' ? `/${locale}` : ''}/stockists`} className="flex items-center justify-center gap-2">
+                    <Link href={`${locale !== 'en' ? `/${locale}` : ''}/stores`} className="flex items-center justify-center gap-2">
                       <MapPin className="w-5 h-5" />
                       {t.nav?.findStore || "Find a Store"}
                       <ChevronRight className="w-5 h-5" />
@@ -585,7 +585,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Button asChild size="lg" className="h-20 px-12 text-xl font-black bg-deep-coral hover:bg-deep-coral/90 text-white dark:text-white rounded-[24px] shadow-2xl shadow-deep-coral/20 min-w-[280px]">
-                  <Link href={`${locale !== 'en' ? `/${locale}` : ''}/stockists`} className="flex items-center gap-3">
+                  <Link href={`${locale !== 'en' ? `/${locale}` : ''}/stores`} className="flex items-center gap-3">
                     <MapPin className="w-5 h-5" />
                     {t.nav?.findStore || "Find a Store"}
                     <ChevronRight className="w-5 h-5" />

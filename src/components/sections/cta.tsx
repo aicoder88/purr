@@ -112,7 +112,7 @@ export function CTA() {
               size="lg"
               className={`${COLORS.surface.light} text-[#5B2EFF] hover:bg-gray-100 dark:bg-[#3694FF] dark:text-white dark:text-gray-100 font-bold py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-lg`}
             >
-              <Link href="/stockists">
+              <Link href="/stores">
                 {t.cta?.b2bButtonText || "Find a Store Near You"}
               </Link>
             </Button>

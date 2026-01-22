@@ -678,7 +678,7 @@ export const fr = {
     about: "À Propos de Nous",
     blog: "Blog",
     locations: "Emplacements",
-    stockists: "Distributeurs",
+    stockists: "Magasins",
     testimonials: "Témoignages",
     retailers: "Pour Détaillants",
     retailerPortal: "Portail Détaillant",

@@ -360,7 +360,7 @@ export function EnhancedProductComparison() {
                       asChild
                       className="w-full py-5 sm:py-6 text-base sm:text-lg font-bold rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-1 min-h-[44px] bg-deep-coral hover:bg-deep-coral/90 text-white dark:text-gray-100 shadow-deep-coral/25"
                     >
-                      <Link href="/stockists">
+                      <Link href="/stores">
                         <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                         {t.nav?.findStore || "Find a Retailer"} <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                       </Link>

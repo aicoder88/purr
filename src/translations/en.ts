@@ -769,7 +769,7 @@ export const en = {
     about: "About Us",
     blog: "Blog",
     locations: "Locations",
-    stockists: "Stockists",
+    stockists: "Stores",
     testimonials: "Testimonials",
     retailers: "For Retailers",
     retailerPortal: "Retailer Portal",

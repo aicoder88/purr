@@ -275,7 +275,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
                       {t.productsSection?.availableAtStores || "Available at pet stores across Canada"}
                     </p>
                     <Button asChild className="w-full bg-[#FF3131] hover:bg-[#FF3131]/90 text-white dark:text-white font-bold py-6 rounded-2xl shadow-lg">
-                      <Link href={`${locale !== 'en' ? `/${locale}` : ''}/stockists`} className="flex items-center justify-center gap-2">
+                      <Link href={`${locale !== 'en' ? `/${locale}` : ''}/stores`} className="flex items-center justify-center gap-2">
                         <MapPin className="w-5 h-5" />
                         {t.nav?.findStore || "Find a Store"}
                         <ChevronRight className="w-5 h-5" />

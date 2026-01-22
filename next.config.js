@@ -134,6 +134,27 @@ const REDIRECTS = [
     destination: "/invest",
     permanent: true,
   },
+  // Stockists renamed to stores (Jan 2026)
+  {
+    source: "/stockists",
+    destination: "/stores",
+    permanent: true,
+  },
+  {
+    source: "/fr/stockists",
+    destination: "/fr/stores",
+    permanent: true,
+  },
+  {
+    source: "/zh/stockists",
+    destination: "/zh/stores",
+    permanent: true,
+  },
+  {
+    source: "/es/stockists",
+    destination: "/es/stores",
+    permanent: true,
+  },
   {
     source: "/products/purrify-20g",
     destination: "/products/trial-size",

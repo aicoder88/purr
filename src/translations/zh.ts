@@ -724,7 +724,7 @@ export const zh = {
     about: "关于我们",
     blog: "博客",
     locations: "门店位置",
-    stockists: "销售点",
+    stockists: "门店",
     testimonials: "用户评价",
     retailers: "零售商",
     retailerPortal: "零售商门户",

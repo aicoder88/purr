@@ -691,7 +691,7 @@ export const es: TranslationType = {
     about: "Nosotros",
     blog: "Blog",
     locations: "Ubicaciones",
-    stockists: "Distribuidores",
+    stockists: "Tiendas",
     testimonials: "Testimonios",
     retailers: "Para Minoristas",
     retailerPortal: "Portal de Minoristas",

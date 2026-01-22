@@ -326,16 +326,16 @@ export function Header() {
               <Image
                 src="/optimized/logo-text-240.webp"
                 alt="Purrify - Premium Activated Carbon Cat Litter Additive - Home"
-                width={240}
-                height={240}
+                width={480}
+                height={220}
                 priority
                 className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
               />
               <Image
                 src="/optimized/purrify-dark-mode-logo.webp"
                 alt="Purrify - Premium Activated Carbon Cat Litter Additive - Home"
-                width={240}
-                height={240}
+                width={480}
+                height={220}
                 priority
                 className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 hidden dark:block"
               />
@@ -446,7 +446,7 @@ export function Header() {
               asChild
               className="flex items-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
             >
-              <Link href="/stockists">
+              <Link href="/stores">
                 <MapPin className="w-4 h-4" />
                 {t.nav?.findStore || "Find a Store"}
               </Link>
@@ -567,7 +567,7 @@ export function Header() {
                   asChild
                   className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                 >
-                  <Link href="/stockists" onClick={closeMenu}>
+                  <Link href="/stores" onClick={closeMenu}>
                     <MapPin className="w-4 h-4" />
                     {t.nav?.findStore || "Find a Store"}
                   </Link>

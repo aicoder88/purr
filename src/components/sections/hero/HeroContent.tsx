@@ -275,7 +275,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
             className={ctaButtonClasses}
             aria-label={t.nav?.findNearYou || "Find It Near You"}
           >
-            <Link href="/stockists">
+            <Link href="/stores">
               <LightningIcon className="transition-transform duration-300 group-hover:scale-110" />
               {t.nav?.findNearYou || "Find It Near You"}
               <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
@@ -368,7 +368,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
           className={ctaButtonClasses}
           aria-label={t.nav?.findNearYou || "Find It Near You"}
         >
-          <Link href="/stockists">
+          <Link href="/stores">
             <LightningIcon className="transition-transform duration-300 group-hover:scale-110" />
             {t.nav?.findNearYou || "Find It Near You"}
             <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
