@@ -2,6 +2,7 @@ import { NextSeo } from 'next-seo';
 import Script from 'next/script';
 import { useTranslation } from '../src/lib/translation-context';
 import { useCurrency } from '../src/lib/currency-context';
+import { useEnhancedSEO } from '../src/hooks/useEnhancedSEO';
 
 import {
   LandingHero,
@@ -44,6 +45,16 @@ export default function AmmoniaControl() {
   const ammonia = t.ammonia;
 
   const canonicalUrl = `https://www.purrify.ca/${locale === 'en' ? '' : locale + '/'}ammonia-control`;
+
+  // Use enhanced SEO hook
+  const { nextSeoProps } = useEnhancedSEO({
+    path: '/ammonia-control',
+    title: ammonia.meta.title,
+    description: ammonia.meta.description,
+    targetKeyword: 'cat litter ammonia control',
+    image: 'https://www.purrify.ca/images/og/ammonia-control.jpg',
+    keywords: ['ammonia cat litter', 'cat urine smell', 'litter box odor', 'ammonia neutralizer'],
+  });
 
   // Problem cards data
   const problemCards = [
@@ -156,31 +167,7 @@ export default function AmmoniaControl() {
 
   return (
     <>
-      <NextSeo
-        title={ammonia.meta.title}
-        description={ammonia.meta.description}
-        canonical={canonicalUrl}
-        openGraph={{
-          title: ammonia.meta.title,
-          description: ammonia.meta.description,
-          url: canonicalUrl,
-          type: 'website',
-          images: [
-            {
-              url: 'https://www.purrify.ca/images/og/ammonia-control.jpg',
-              width: 1200,
-              height: 630,
-              alt: ammonia.hero.headline,
-            },
-          ],
-        }}
-        languageAlternates={[
-          { hrefLang: 'en', href: 'https://www.purrify.ca/ammonia-control' },
-          { hrefLang: 'fr', href: 'https://www.purrify.ca/fr/ammonia-control' },
-          { hrefLang: 'zh', href: 'https://www.purrify.ca/zh/ammonia-control' },
-          { hrefLang: 'x-default', href: 'https://www.purrify.ca/ammonia-control' },
-        ]}
-      />
+      <NextSeo {...nextSeoProps} />
 
       {/* Structured Data */}
       <Script

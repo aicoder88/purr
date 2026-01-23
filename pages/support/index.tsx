@@ -7,15 +7,23 @@ import { Button } from '../../src/components/ui/button';
 import { SITE_NAME, CONTACT_INFO } from '../../src/lib/constants';
 import { useTranslation } from '../../src/lib/translation-context';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
 export default function SupportPage() {
   const { t, locale } = useTranslation();
   
   const pageTitle = `Customer Support - ${SITE_NAME} Help Center`;
   const pageDescription = "Need help? Fast support for orders, shipping, returns. Email, phone, or WhatsApp available 7 days/week. Response within 24 hours. Ships to USA & Canada.";
-  const canonicalPath = '/support';
-  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
-  const languageAlternates = buildLanguageAlternates(canonicalPath);
+
+  // Use enhanced SEO hook
+  const { nextSeoProps } = useEnhancedSEO({
+    path: '/support',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'purrify customer support',
+    image: 'https://www.purrify.ca/customer-support-hero.jpg',
+    keywords: ['customer support', 'help center', 'contact purrify', 'order help'],
+  });
 
   const supportOptions = [
     {
@@ -59,26 +67,7 @@ export default function SupportPage() {
 
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          title: pageTitle,
-          description: pageDescription,
-          url: canonicalUrl,
-          type: 'website',
-          images: [
-            {
-              url: 'https://www.purrify.ca/customer-support-hero.jpg',
-              width: 1200,
-              height: 630,
-              alt: 'Purrify Customer Support'
-            }
-          ]
-        }}
-      />
+      <NextSeo {...nextSeoProps} />
 
       <main className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900">
         {/* Breadcrumb Navigation */}

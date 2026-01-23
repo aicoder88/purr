@@ -6,6 +6,7 @@ import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import { NextSeo } from 'next-seo';
 import { generateWebsiteSchema } from '../../src/lib/seo-utils';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 import {
   Calculator,
   ChevronRight,
@@ -135,6 +136,16 @@ const CatLitterCalculatorPage: NextPage = () => {
   const pageDescription = 'Free cat litter cost calculator. Compare annual costs of clay, crystal, wood, tofu, and natural litters. Find out how much you spend on cat litter per year and discover ways to save.';
   const canonicalUrl = `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/tools/cat-litter-calculator`;
 
+  // Use enhanced SEO hook
+  const { nextSeoProps } = useEnhancedSEO({
+    path: '/tools/cat-litter-calculator',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'cat litter cost calculator',
+    image: 'https://www.purrify.ca/images/og-calculator.jpg',
+    keywords: ['cat litter calculator', 'litter cost comparison', 'cat litter budget', 'annual cat litter cost'],
+  });
+
   const selectedLitterType = litterTypes.find(l => l.id === selectedLitter) || litterTypes[0];
   const effectivePrice = customPricePerKg ?? selectedLitterType.pricePerKg;
 
@@ -217,25 +228,7 @@ const CatLitterCalculatorPage: NextPage = () => {
 
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        openGraph={{
-          title: pageTitle,
-          description: pageDescription,
-          url: canonicalUrl,
-          type: 'website',
-          images: [
-            {
-              url: 'https://www.purrify.ca/images/og-calculator.jpg',
-              width: 1200,
-              height: 630,
-              alt: 'Cat Litter Cost Calculator'
-            }
-          ]
-        }}
-      />
+      <NextSeo {...nextSeoProps} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}

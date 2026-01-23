@@ -2,6 +2,7 @@ import { NextSeo } from 'next-seo';
 import { useTranslation } from '../../src/lib/translation-context';
 import { FileText, Download, Search, BookOpen, TrendingUp, Calendar } from 'lucide-react';
 import { useState } from 'react';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
 export default function Documents() {
   const { locale } = useTranslation();
@@ -18,6 +19,15 @@ export default function Documents() {
     : 'Access training guides, POS materials, profit calculators, and other resources for Purrify retail partners.';
 
   const canonicalUrl = `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}documents`;
+
+  // Use enhanced SEO hook
+  const { nextSeoProps } = useEnhancedSEO({
+    path: '/documents',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'purrify retail training',
+    keywords: ['training materials', 'retail resources', 'staff guide', 'pos materials'],
+  });
 
   // PDF documents only
   const resources = [
@@ -83,17 +93,7 @@ export default function Documents() {
 
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        openGraph={{
-          url: canonicalUrl,
-          title: pageTitle,
-          description: pageDescription,
-          type: 'website'
-        }}
-      />
+      <NextSeo {...nextSeoProps} />
 
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
         {/* Header */}

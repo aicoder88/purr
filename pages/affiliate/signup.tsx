@@ -4,6 +4,7 @@ import { Container } from '../../src/components/ui/container';
 import { ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslation } from '../../src/lib/translation-context';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
 export default function AffiliateSignupPage() {
   const { t } = useTranslation();
@@ -79,7 +80,14 @@ export default function AffiliateSignupPage() {
     }
   };
 
-  const canonicalUrl = 'https://www.purrify.ca/affiliate/signup';
+  // Use enhanced SEO hook
+  const { nextSeoProps } = useEnhancedSEO({
+    path: '/affiliate/signup',
+    title: 'Join Purrify Affiliate Program - Apply Now',
+    description: 'Apply to become a Purrify affiliate partner. Start at 20% commission and grow up to 30% as a Partner. Plus get free products every month!',
+    targetKeyword: 'affiliate program application',
+    keywords: ['affiliate signup', 'earn commission', 'partner program'],
+  });
 
   // Handle missing translations gracefully - show error page instead of crashing
   if (!t.affiliate) {
@@ -104,16 +112,7 @@ export default function AffiliateSignupPage() {
 
   return (
     <>
-      <NextSeo
-        title="Join Purrify Affiliate Program - Apply Now"
-        description="Apply to become a Purrify affiliate partner. Start at 20% commission and grow up to 30% as a Partner. Plus get free products every month!"
-        canonical={canonicalUrl}
-        openGraph={{
-          title: "Join Purrify Affiliate Program - Apply Now",
-          description: "Apply to become a Purrify affiliate partner. Start at 20% commission and grow up to 30% as a Partner.",
-          url: canonicalUrl,
-        }}
-      />
+      <NextSeo {...nextSeoProps} />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#2e90fa] to-[#1e5dd6] dark:from-[#2e90fa] dark:to-[#1e5dd6] py-16 md:py-24">
