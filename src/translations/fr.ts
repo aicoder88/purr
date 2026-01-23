@@ -638,6 +638,86 @@ export const fr = {
     replyTime: "Nous vous répondrons dans les 24 heures"
   },
 
+  // Benefits Section (homepage component)
+  benefitsSection: {
+    sectionHeader: "Transformez les Problèmes d'Odeurs de Chat en Souvenir du Passé",
+    title: "Les Avantages de Purrify",
+    subtitle: "Découvrez pourquoi Purrify est la solution parfaite pour les propriétaires de chats qui veulent une maison qui sent frais.",
+    items: [
+      {
+        title: "Élimination des Odeurs",
+        description: "La formule avancée de Purrify élimine efficacement les odeurs désagréables de litière à la source. Dites adieu aux odeurs persistantes qui peuvent imprégner votre maison et accueillez un environnement plus frais et accueillant pour vous et votre ami à fourrure."
+      },
+      {
+        title: "Simple",
+        description: "Purrify est formulé avec de simples coques de noix de coco, activées pour absorber les odeurs. Vous pouvez être sûr que vous offrez à votre chat un environnement de litière propre sans l'exposer à des produits chimiques ou des toxines."
+      },
+      {
+        title: "Économique",
+        description: "Purrify aide à prolonger la durée de vie de la litière de votre chat en prévenant l'accumulation d'odeurs, ce qui signifie que vous devrez changer la litière moins souvent. Cela vous fait économiser de l'argent et réduit les déchets, un avantage pour votre portefeuille et l'environnement."
+      }
+    ]
+  },
+
+  // Science Section (homepage component)
+  scienceSection: {
+    badge: "Le Côté Scientifique (C'est Rapide)",
+    headline: "Comment le Charbon Actif",
+    headlineHighlight: "Fonctionne Vraiment",
+    description: "Les désodorisants ne font que vaporiser du parfum sur le problème. Le charbon actif est différent — il possède des millions de minuscules tunnels qui piègent physiquement les molécules d'odeur. Une fois que l'ammoniac entre, il ne ressort pas. C'est pourquoi l'odeur disparaît vraiment au lieu de jouer à cache-cache.",
+    learnMore: "Plongez Plus Profondément Dans la Science",
+    features: [
+      {
+        title: "Piège, Ne Masque Pas",
+        description: "Chaque grain de charbon possède une énorme surface couverte de tunnels microscopiques. Les molécules d'odeur sont piégées à l'intérieur — définitivement."
+      },
+      {
+        title: "Même Technologie que les Filtres à Eau",
+        description: "Si le charbon actif est utilisé pour rendre l'eau potable, votre litière est définitivement dans ses compétences."
+      },
+      {
+        title: "Fabriqué à Partir de Coques de Noix de Coco",
+        description: "Naturel, durable et complètement non toxique. Sûr pour les chats curieux, les tout-petits fouineurs, et tout le monde entre les deux."
+      }
+    ],
+    floatingLabel: {
+      title: "Vue Microscopique",
+      description: "La structure poreuse piège les molécules d'ammoniac de façon permanente."
+    },
+    naturalBadge: {
+      title: "100% Naturel",
+      subtitle: "Sans produits chimiques"
+    }
+  },
+
+  // Features Section (homepage component)
+  featuresSection: {
+    badge: "La Différence Purrify",
+    title: "Pourquoi les Chats et leurs Parents Adorent Purrify ?",
+    paragraph1: "Vous aimez votre chat, mais soyons honnêtes — l'odeur de la litière est un problème. Vous avez essayé la litière parfumée, les désodorisants et le bicarbonate de soude — mais ils ne font que masquer le problème, pas le résoudre.",
+    paragraph2: "Imaginez rentrer chez vous et ne sentir... rien. Juste de l'air frais, pas d'odeurs persistantes, et pas d'odeurs embarrassantes quand vous avez des invités.",
+    tagline: "C'est exactement ce que fait Purrify...",
+    learnMore: "En savoir plus"
+  },
+
+  // Calculator Section (homepage component)
+  calculatorSection: {
+    title: "Économisez de l'Argent Tout en Gardant Votre Maison Fraîche",
+    description: "Purrify prolonge la durée de vie de la litière de votre chat jusqu'à 50%, vous faisant économiser de l'argent tout en éliminant les odeurs. Voyez combien vous pourriez économiser avec notre calculatrice ci-dessous."
+  },
+
+  // Section Header highlights
+  sectionHeaderHighlights: [
+    "7 Jours d'Air Frais Garanti",
+    "Air Frais en 60 Secondes - Simple comme 1-2-3"
+  ],
+
+  // Trust Bar
+  trustBar: {
+    happyCats: "chats heureux",
+    reviews: "avis"
+  },
+
   // Footer
   footer: {
     quickLinks: "Liens Rapides",
