@@ -146,7 +146,7 @@ export default function SEODashboard({ isAuthorized }: PageProps) {
         <NextSeo title={`SEO Dashboard - ${SITE_NAME}`} noindex nofollow />
         <Container className="py-16">
           <div className="flex items-center justify-center">
-            <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
+            <Loader2 className="w-8 h-8 animate-spin text-blue-500 dark:text-blue-400" />
             <span className="ml-3 text-gray-600 dark:text-gray-400">Loading SEO data...</span>
           </div>
         </Container>
@@ -273,25 +273,25 @@ export default function SEODashboard({ isAuthorized }: PageProps) {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               <div className="flex items-center gap-3">
                 {stats.schema.aggregateRatingEnabled ? (
-                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <CheckCircle className="w-5 h-5 text-green-500 dark:text-green-400" />
                 ) : (
-                  <AlertTriangle className="w-5 h-5 text-yellow-500" />
+                  <AlertTriangle className="w-5 h-5 text-yellow-500 dark:text-yellow-400" />
                 )}
                 <span className="text-gray-700 dark:text-gray-300">Aggregate Ratings</span>
               </div>
               <div className="flex items-center gap-3">
                 {stats.schema.breadcrumbsEnabled ? (
-                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <CheckCircle className="w-5 h-5 text-green-500 dark:text-green-400" />
                 ) : (
-                  <AlertTriangle className="w-5 h-5 text-yellow-500" />
+                  <AlertTriangle className="w-5 h-5 text-yellow-500 dark:text-yellow-400" />
                 )}
                 <span className="text-gray-700 dark:text-gray-300">Breadcrumbs</span>
               </div>
               <div className="flex items-center gap-3">
                 {stats.schema.faqEnabled ? (
-                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <CheckCircle className="w-5 h-5 text-green-500 dark:text-green-400" />
                 ) : (
-                  <AlertTriangle className="w-5 h-5 text-yellow-500" />
+                  <AlertTriangle className="w-5 h-5 text-yellow-500 dark:text-yellow-400" />
                 )}
                 <span className="text-gray-700 dark:text-gray-300">FAQ Schema</span>
               </div>
@@ -347,7 +347,7 @@ export default function SEODashboard({ isAuthorized }: PageProps) {
                       <code className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs truncate max-w-[200px]">
                         {suggestion.fromPage}
                       </code>
-                      <ChevronRight className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                      <ChevronRight className="w-4 h-4 text-gray-400 dark:text-gray-500 flex-shrink-0" />
                       <code className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs truncate max-w-[200px]">
                         {suggestion.toPage}
                       </code>
@@ -375,9 +375,9 @@ export default function SEODashboard({ isAuthorized }: PageProps) {
             rel="noopener noreferrer"
             className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 transition-colors"
           >
-            <Search className="w-5 h-5 text-blue-500" />
+            <Search className="w-5 h-5 text-blue-500 dark:text-blue-400" />
             <span className="text-gray-700 dark:text-gray-300">Google Search Console</span>
-            <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
+            <ExternalLink className="w-4 h-4 text-gray-400 dark:text-gray-500 ml-auto" />
           </a>
           <a
             href="https://search.google.com/test/rich-results"
@@ -385,17 +385,17 @@ export default function SEODashboard({ isAuthorized }: PageProps) {
             rel="noopener noreferrer"
             className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 transition-colors"
           >
-            <FileText className="w-5 h-5 text-green-500" />
+            <FileText className="w-5 h-5 text-green-500 dark:text-green-400" />
             <span className="text-gray-700 dark:text-gray-300">Rich Results Test</span>
-            <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
+            <ExternalLink className="w-4 h-4 text-gray-400 dark:text-gray-500 ml-auto" />
           </a>
           <Link
             href="/admin/blog"
             className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 transition-colors"
           >
-            <FileText className="w-5 h-5 text-purple-500" />
+            <FileText className="w-5 h-5 text-purple-500 dark:text-purple-400" />
             <span className="text-gray-700 dark:text-gray-300">Blog Management</span>
-            <ChevronRight className="w-4 h-4 text-gray-400 ml-auto" />
+            <ChevronRight className="w-4 h-4 text-gray-400 dark:text-gray-500 ml-auto" />
           </Link>
         </div>
       </Container>
