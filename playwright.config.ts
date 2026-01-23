@@ -5,6 +5,9 @@ const config: PlaywrightTestConfig = {
   testMatch: /.*\.spec\.(ts|js)/,
   timeout: 60_000,
   retries: 0,
+  // Limit parallelism to prevent overwhelming the standalone server
+  workers: 2,
+  fullyParallel: false,
   use: {
     baseURL: 'http://localhost:3010',
     ignoreHTTPSErrors: true,

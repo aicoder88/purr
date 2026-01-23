@@ -33,6 +33,13 @@ export const es: TranslationType = {
     wholesalePricing: "Precios Mayoristas",
     becomePartner: "Ser Socio",
     marketingSupport: "Soporte de Marketing",
+    // Partner Programs
+    partnerPrograms: "Programas de Socios",
+    forGroomers: "Para Peluqueros",
+    forShelters: "Para Refugios",
+    affiliateProgram: "Programa de Afiliados",
+    b2bInquiry: "Consulta B2B",
+    customerReviews: "Opiniones de Clientes",
     shipsToUSA: "Envios a EE.UU.",
     // Learn dropdown items
     safetyInfo: "Informacion de Seguridad",
@@ -52,7 +59,12 @@ export const es: TranslationType = {
     toggleMenu: "Alternar menu",
     toggleTheme: "Alternar tema",
     signOut: "Cerrar Sesion",
-    signedIn: "Sesion Iniciada"
+    signedIn: "Sesion Iniciada",
+    // B2B pivot keys
+    findStore: "Encontrar Tienda",
+    findNearYou: "Encontrar Cerca de Ti",
+    whereToBuy: "Dónde Comprar",
+    askForPurrify: "Pregunta por Purrify en Tu Tienda"
   },
 
   locationsMenu: {
@@ -205,8 +217,7 @@ export const es: TranslationType = {
       getFreeSample: "Obtener Muestra GRATIS",
       soldThisWeek: "87 vendidos esta semana",
       limitedStock: "Stock limitado invierno",
-      moneyBackGuarantee: "Garantia de Devolucion de Dinero 30 Dias",
-      freeShippingOver: "Envio Gratis Sobre $35"
+      moneyBackGuarantee: "Garantia de Devolucion de Dinero 30 Dias"
     }
   },
 
@@ -262,7 +273,7 @@ export const es: TranslationType = {
       },
       {
         number: "03",
-        title: "Mezclar y Respirar Tranquilo!",
+        title: "Mezclar y Disfrutar lo Limpio!",
         description: "Mezcla suavemente y observa (huele?) la magia suceder. 7 dias de aire fresco empiezan AHORA. Tus invitados quedaran asombrados."
       }
     ],
@@ -296,7 +307,11 @@ export const es: TranslationType = {
     viewAllProducts: "VER TODOS LOS PRODUCTOS",
     quantity: "Cantidad",
     decreaseQuantity: "Disminuir cantidad",
-    increaseQuantity: "Aumentar cantidad"
+    increaseQuantity: "Aumentar cantidad",
+    // B2B pivot keys
+    findNearYou: "Encontrar Cerca de Ti",
+    askYourStore: "Pregunta por Purrify en Tu Tienda Local de Mascotas",
+    availableAtStores: "Disponible en tiendas de mascotas en todo Canada"
   },
 
   // Stores Section
@@ -328,7 +343,12 @@ export const es: TranslationType = {
     subtitle: "Unete a mas de 1,000 padres de gatos que finalmente tienen hogares con olor fresco. Sin mas contener la respiracion, sin mas disculparse con los invitados. Recupera tu confianza - empieza a respirar tranquilo otra vez.",
     buttonText: "ELIMINAR EL MAL OLOR AHORA",
     joinText: "Unete a mas de 1,000 familias con hogares sin olores - Visita tu tienda local",
-    guarantee: "Resultados comprobados que puedes oler (o no puedes oler!)"
+    guarantee: "Resultados comprobados que puedes oler (o no puedes oler!)",
+    // B2B pivot keys
+    b2bTitle: "Encuentra Purrify Cerca de Ti",
+    b2bSubtitle: "Disponible en tiendas de mascotas en todo Canada. Pregunta por Purrify en tu tienda local de mascotas.",
+    b2bButtonText: "Encontrar una Tienda Cerca de Ti",
+    b2bGuarantee: "Disponible en minoristas de mascotas en todo el pais"
   },
 
   // FAQ
@@ -670,9 +690,17 @@ export const es: TranslationType = {
     about: "Nosotros",
     blog: "Blog",
     locations: "Ubicaciones",
+    stockists: "Tiendas",
     testimonials: "Testimonios",
     retailers: "Para Minoristas",
+    retailerPortal: "Portal de Minoristas",
+    hospitality: "Hostelería",
+    groomers: "Para Peluqueros",
+    shelters: "Refugios",
+    b2bInquiry: "Consulta B2B",
+    invest: "Inversores",
     affiliateProgram: "Programa de Afiliados",
+    results: "Casos de Éxito",
     contact: "Contacto",
     privacyPolicy: "Politica de Privacidad",
     termsOfService: "Terminos de Servicio",
@@ -1595,7 +1623,7 @@ export const es: TranslationType = {
       },
       {
         question: "¿Ofrece Purrify envio gratis?",
-        answer: "¡Si! Ofrecemos envio gratis en ordenes sobre $35 en Canada. La mayoria de clientes alcanzan esto facilmente comprando un tamano Grande de 120g ($15.95) o Ahorro de 240g ($29.76), o agrupando multiples articulos. Las ordenes tipicamente llegan en 5-7 dias habiles via Canada Post. Para ordenes menores a $35, las tarifas de envio estandar aplican basadas en tu ubicacion."
+        answer: "Ofrecemos envio a Canada y Estados Unidos. Las ordenes tipicamente llegan en 5-7 dias habiles via Canada Post. Los costos de envio se muestran durante el proceso de pago."
       },
       {
         question: "¿Que tan rapido funciona Purrify?",
@@ -1635,7 +1663,7 @@ export const es: TranslationType = {
       },
       {
         question: "¿Puedo comprar Purrify en tiendas?",
-        answer: "Actualmente, Purrify esta disponible principalmente a traves de nuestro sitio web para asegurar frescura, calidad y precio directo al consumidor. Estamos trabajando en asociaciones minoristas y podriamos estar en tiendas selectas pronto. Ordenar en linea significa que obtienes el producto mas fresco directamente de nosotros, sin sobrecargos minoristas. Ademas, nuestra tienda web ofrece descuentos por cantidad, envio gratis sobre $35, y suscripcion con ahorro que no encontraras en tiendas."
+        answer: "Actualmente, Purrify esta disponible principalmente a traves de nuestro sitio web para asegurar frescura, calidad y precio directo al consumidor. Estamos trabajando en asociaciones minoristas y podriamos estar en tiendas selectas pronto. Ordenar en linea significa que obtienes el producto mas fresco directamente de nosotros, sin sobrecargos minoristas. Ademas, nuestra tienda web ofrece descuentos por cantidad y suscripcion con ahorro que no encontraras en tiendas."
       },
       {
         question: "¿Que pasa si olvido aplicar Purrify despues de 7 dias?",
@@ -1679,7 +1707,7 @@ export const es: TranslationType = {
       },
       {
         question: "¿Ofrecen descuentos por cantidad?",
-        answer: "¡Si! Cuanto mas compras, mas ahorras: compra 2-3 botellas → ahorra 10%, compra 4-5 botellas → ahorra 15%, compra 6+ botellas → ahorra 20%. Estos descuentos se apilan con nuestro ya economico tamano Ahorro de 240g. Los hogares multi-gatos o clientes que compran para amigos a menudo aprovechan descuentos por cantidad. Ademas, envio gratis en ordenes sobre $35 hace que compras al por mayor sean aun mas valiosas."
+        answer: "¡Si! Cuanto mas compras, mas ahorras: compra 2-3 botellas → ahorra 10%, compra 4-5 botellas → ahorra 15%, compra 6+ botellas → ahorra 20%. Estos descuentos se apilan con nuestro ya economico tamano Ahorro de 240g. Los hogares multi-gatos o clientes que compran para amigos a menudo aprovechan descuentos por cantidad."
       },
       {
         question: "¿Que debo hacer si Purrify no esta funcionando para mi?",
@@ -2191,17 +2219,17 @@ export const es: TranslationType = {
       successStories: {
         title: "Historias de Exito de Socios",
         stories: {
-          petPalace: {
-            businessName: "Pet Palace Toronto",
-            businessType: "Tienda de Mascotas Independiente",
-            quote: "Agregamos $800/mes en ingresos en nuestro primer trimestre. Los clientes lo aman y siguen volviendo!",
-            metric: "+145% crecimiento en ventas"
+          pattesEtGriffes: {
+            businessName: "Pattes et Griffes – Sainte‑Thérèse",
+            businessType: "Propietario / Gerente",
+            quote: "Nuestros clientes ahora piden Purrify por nombre. Es una recomendacion facil en el mostrador y los pedidos son consistentes mes tras mes.",
+            metric: "Ciclo de 30 dias"
           },
-          healthyPaws: {
-            businessName: "Healthy Paws Vet",
-            businessType: "Clinica Veterinaria",
-            quote: "Nuestros clientes confian en nuestra recomendacion. Mejores margenes en nuestra seccion minorista.",
-            metric: "55% margen de ganancia"
+          chico: {
+            businessName: "Chico – Boul. St‑Laurent (Montreal)",
+            businessType: "Gerente de Tienda",
+            quote: "Simple de almacenar, margenes solidos, y se mueve. Los materiales POS ayudaron a nuestro equipo a explicar los beneficios rapidamente a los clientes.",
+            metric: "Alta rotacion"
           }
         }
       },
@@ -2597,7 +2625,6 @@ export const es: TranslationType = {
       subheadline: "Unete a miles de padres de gatos que han eliminado el amoniaco de caja de arena para siempre - no lo enmascararon, lo eliminaron.",
       button: "Comprar Purrify",
       secondaryButton: "Probar Tamano de Prueba",
-      benefit1: "Envio gratis sobre $35",
       benefit2: "Garantia de satisfaccion de 30 dias"
     }
   },

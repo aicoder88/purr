@@ -1,5 +1,5 @@
 # SEO Validation Report
-Generated: 2026-01-20T17:42:30.980Z
+Generated: 2026-01-21T13:56:47.351Z
 ---
 
 ## Summary
@@ -7,7 +7,7 @@ Generated: 2026-01-20T17:42:30.980Z
 - **Total Pages**: 87
 - **Pages with Errors**: 85
 - **Pages with Warnings**: 264
-- **Total Errors**: 88
+- **Total Errors**: 86
 - **Total Warnings**: 269
 
 ## Errors
@@ -216,115 +216,115 @@ Generated: 2026-01-20T17:42:30.980Z
    - Message: Page has 0 incoming links (orphan page) - not discoverable
    - Fix: Add internal links pointing to this page from related content
 
-35. **/customer/referrals**
+35. **/blog/activated-carbon-litter-additive-benefits**
    - Type: links
    - Field: incomingLinks
    - Message: Page has 0 incoming links (orphan page) - not discoverable
    - Fix: Add internal links pointing to this page from related content
 
-36. **/blog/activated-carbon-litter-additive-benefits**
+36. **/blog/activated-carbon-vs-baking-soda-comparison**
    - Type: links
    - Field: incomingLinks
    - Message: Page has 0 incoming links (orphan page) - not discoverable
    - Fix: Add internal links pointing to this page from related content
 
-37. **/blog/activated-carbon-vs-baking-soda-comparison**
+37. **/blog/best-litter-odor-remover-small-apartments**
    - Type: links
    - Field: incomingLinks
    - Message: Page has 0 incoming links (orphan page) - not discoverable
    - Fix: Add internal links pointing to this page from related content
 
-38. **/blog/best-litter-odor-remover-small-apartments**
+38. **/blog/cat-litter-smell-worse-summer**
    - Type: links
    - Field: incomingLinks
    - Message: Page has 0 incoming links (orphan page) - not discoverable
    - Fix: Add internal links pointing to this page from related content
 
-39. **/blog/cat-litter-smell-worse-summer**
+39. **/blog/cat-litter-smell-worse-winter**
    - Type: links
    - Field: incomingLinks
    - Message: Page has 0 incoming links (orphan page) - not discoverable
    - Fix: Add internal links pointing to this page from related content
 
-40. **/blog/cat-litter-smell-worse-winter**
+40. **/blog/embarrassed-guests-visit-cat-litter-smell**
    - Type: links
    - Field: incomingLinks
    - Message: Page has 0 incoming links (orphan page) - not discoverable
    - Fix: Add internal links pointing to this page from related content
 
-41. **/blog/embarrassed-guests-visit-cat-litter-smell**
+41. **/blog/house-smells-like-cat-litter-solutions**
    - Type: links
    - Field: incomingLinks
    - Message: Page has 0 incoming links (orphan page) - not discoverable
    - Fix: Add internal links pointing to this page from related content
 
-42. **/blog/house-smells-like-cat-litter-solutions**
+42. **/blog/how-to-use-cat-litter-deodorizer**
    - Type: links
    - Field: incomingLinks
    - Message: Page has 0 incoming links (orphan page) - not discoverable
    - Fix: Add internal links pointing to this page from related content
 
-43. **/blog/how-to-use-cat-litter-deodorizer**
+43. **/blog/most-powerful-odor-absorber**
    - Type: links
    - Field: incomingLinks
    - Message: Page has 0 incoming links (orphan page) - not discoverable
    - Fix: Add internal links pointing to this page from related content
 
-44. **/blog/most-powerful-odor-absorber**
+44. **/blog/multi-cat-litter-deodorizer-guide**
    - Type: links
    - Field: incomingLinks
    - Message: Page has 0 incoming links (orphan page) - not discoverable
    - Fix: Add internal links pointing to this page from related content
 
-45. **/blog/multi-cat-litter-deodorizer-guide**
+45. **/blog/powder-vs-spray-litter-deodorizer**
    - Type: links
    - Field: incomingLinks
    - Message: Page has 0 incoming links (orphan page) - not discoverable
    - Fix: Add internal links pointing to this page from related content
 
-46. **/blog/powder-vs-spray-litter-deodorizer**
+46. **/blog/strong-cat-urine-smell-litter-box**
    - Type: links
    - Field: incomingLinks
    - Message: Page has 0 incoming links (orphan page) - not discoverable
    - Fix: Add internal links pointing to this page from related content
 
-47. **/blog/strong-cat-urine-smell-litter-box**
+47. **/blog/tried-every-litter-deodorizer-90-days-results**
    - Type: links
    - Field: incomingLinks
    - Message: Page has 0 incoming links (orphan page) - not discoverable
    - Fix: Add internal links pointing to this page from related content
 
-48. **/blog/tried-every-litter-deodorizer-90-days-results**
+48. **/blog/tried-everything-cat-litter-smell-solutions**
    - Type: links
    - Field: incomingLinks
    - Message: Page has 0 incoming links (orphan page) - not discoverable
    - Fix: Add internal links pointing to this page from related content
 
-49. **/blog/tried-everything-cat-litter-smell-solutions**
+49. **/blog/using-deodorizers-with-kittens**
    - Type: links
    - Field: incomingLinks
    - Message: Page has 0 incoming links (orphan page) - not discoverable
    - Fix: Add internal links pointing to this page from related content
 
-50. **/blog/using-deodorizers-with-kittens**
+50. **/customer/referrals**
    - Type: links
    - Field: incomingLinks
    - Message: Page has 0 incoming links (orphan page) - not discoverable
    - Fix: Add internal links pointing to this page from related content
 
-51. **/documents**
+51. **/customers/case-studies**
    - Type: links
    - Field: incomingLinks
    - Message: Page has 0 incoming links (orphan page) - not discoverable
    - Fix: Add internal links pointing to this page from related content
 
-52. **/es/opiniones**
+52. **/documents**
    - Type: links
    - Field: incomingLinks
    - Message: Page has 0 incoming links (orphan page) - not discoverable
    - Fix: Add internal links pointing to this page from related content
 
-53. **/customers/case-studies**
+53. **/es/opiniones**
    - Type: links
    - Field: incomingLinks
    - Message: Page has 0 incoming links (orphan page) - not discoverable
@@ -522,19 +522,7 @@ Generated: 2026-01-20T17:42:30.980Z
    - Message: Page has 0 incoming links (orphan page) - not discoverable
    - Fix: Add internal links pointing to this page from related content
 
-86. **/blog/activated-carbon-vs-baking-soda-comparison**
-   - Type: meta
-   - Field: og-canonical
-   - Message: Page has canonical URL but missing Open Graph URL
-   - Fix: Add url property to openGraph object in NextSeo
-
-87. **/blog/powder-vs-spray-litter-deodorizer**
-   - Type: meta
-   - Field: og-canonical
-   - Message: Page has canonical URL but missing Open Graph URL
-   - Fix: Add url property to openGraph object in NextSeo
-
-88. **/es/opiniones**
+86. **/es/opiniones**
    - Type: meta
    - Field: og-canonical
    - Message: Canonical URL does not match Open Graph URL
@@ -752,121 +740,121 @@ Generated: 2026-01-20T17:42:30.980Z
    - Message: Page has 0 outgoing links (dead end) - poor UX
    - Fix: Add relevant internal links to keep users engaged
 
-36. **/customer/referrals**
+36. **/blog/activated-carbon-litter-additive-benefits**
    - Type: links
    - Field: outgoingLinks
    - Message: Page has 0 outgoing links (dead end) - poor UX
    - Fix: Add relevant internal links to keep users engaged
 
-37. **/blog/activated-carbon-litter-additive-benefits**
+37. **/blog/activated-carbon-vs-baking-soda-comparison**
    - Type: links
    - Field: outgoingLinks
    - Message: Page has 0 outgoing links (dead end) - poor UX
    - Fix: Add relevant internal links to keep users engaged
 
-38. **/blog/activated-carbon-vs-baking-soda-comparison**
+38. **/blog/best-litter-odor-remover-small-apartments**
    - Type: links
    - Field: outgoingLinks
    - Message: Page has 0 outgoing links (dead end) - poor UX
    - Fix: Add relevant internal links to keep users engaged
 
-39. **/blog/best-litter-odor-remover-small-apartments**
+39. **/blog/cat-litter-smell-worse-summer**
    - Type: links
    - Field: outgoingLinks
    - Message: Page has 0 outgoing links (dead end) - poor UX
    - Fix: Add relevant internal links to keep users engaged
 
-40. **/blog/cat-litter-smell-worse-summer**
+40. **/blog/cat-litter-smell-worse-winter**
    - Type: links
    - Field: outgoingLinks
    - Message: Page has 0 outgoing links (dead end) - poor UX
    - Fix: Add relevant internal links to keep users engaged
 
-41. **/blog/cat-litter-smell-worse-winter**
+41. **/blog/embarrassed-guests-visit-cat-litter-smell**
    - Type: links
    - Field: outgoingLinks
    - Message: Page has 0 outgoing links (dead end) - poor UX
    - Fix: Add relevant internal links to keep users engaged
 
-42. **/blog/embarrassed-guests-visit-cat-litter-smell**
+42. **/blog/house-smells-like-cat-litter-solutions**
    - Type: links
    - Field: outgoingLinks
    - Message: Page has 0 outgoing links (dead end) - poor UX
    - Fix: Add relevant internal links to keep users engaged
 
-43. **/blog/house-smells-like-cat-litter-solutions**
+43. **/blog/how-to-use-cat-litter-deodorizer**
    - Type: links
    - Field: outgoingLinks
    - Message: Page has 0 outgoing links (dead end) - poor UX
    - Fix: Add relevant internal links to keep users engaged
 
-44. **/blog/how-to-use-cat-litter-deodorizer**
+44. **/blog**
    - Type: links
    - Field: outgoingLinks
    - Message: Page has 0 outgoing links (dead end) - poor UX
    - Fix: Add relevant internal links to keep users engaged
 
-45. **/blog**
+45. **/blog/most-powerful-odor-absorber**
    - Type: links
    - Field: outgoingLinks
    - Message: Page has 0 outgoing links (dead end) - poor UX
    - Fix: Add relevant internal links to keep users engaged
 
-46. **/blog/most-powerful-odor-absorber**
+46. **/blog/multi-cat-litter-deodorizer-guide**
    - Type: links
    - Field: outgoingLinks
    - Message: Page has 0 outgoing links (dead end) - poor UX
    - Fix: Add relevant internal links to keep users engaged
 
-47. **/blog/multi-cat-litter-deodorizer-guide**
+47. **/blog/powder-vs-spray-litter-deodorizer**
    - Type: links
    - Field: outgoingLinks
    - Message: Page has 0 outgoing links (dead end) - poor UX
    - Fix: Add relevant internal links to keep users engaged
 
-48. **/blog/powder-vs-spray-litter-deodorizer**
+48. **/blog/strong-cat-urine-smell-litter-box**
    - Type: links
    - Field: outgoingLinks
    - Message: Page has 0 outgoing links (dead end) - poor UX
    - Fix: Add relevant internal links to keep users engaged
 
-49. **/blog/strong-cat-urine-smell-litter-box**
+49. **/blog/tried-every-litter-deodorizer-90-days-results**
    - Type: links
    - Field: outgoingLinks
    - Message: Page has 0 outgoing links (dead end) - poor UX
    - Fix: Add relevant internal links to keep users engaged
 
-50. **/blog/tried-every-litter-deodorizer-90-days-results**
+50. **/blog/tried-everything-cat-litter-smell-solutions**
    - Type: links
    - Field: outgoingLinks
    - Message: Page has 0 outgoing links (dead end) - poor UX
    - Fix: Add relevant internal links to keep users engaged
 
-51. **/blog/tried-everything-cat-litter-smell-solutions**
+51. **/blog/using-deodorizers-with-kittens**
    - Type: links
    - Field: outgoingLinks
    - Message: Page has 0 outgoing links (dead end) - poor UX
    - Fix: Add relevant internal links to keep users engaged
 
-52. **/blog/using-deodorizers-with-kittens**
+52. **/customer/referrals**
    - Type: links
    - Field: outgoingLinks
    - Message: Page has 0 outgoing links (dead end) - poor UX
    - Fix: Add relevant internal links to keep users engaged
 
-53. **/documents**
+53. **/customers/case-studies**
    - Type: links
    - Field: outgoingLinks
    - Message: Page has 0 outgoing links (dead end) - poor UX
    - Fix: Add relevant internal links to keep users engaged
 
-54. **/es/opiniones**
+54. **/documents**
    - Type: links
    - Field: outgoingLinks
    - Message: Page has 0 outgoing links (dead end) - poor UX
    - Fix: Add relevant internal links to keep users engaged
 
-55. **/customers/case-studies**
+55. **/es/opiniones**
    - Type: links
    - Field: outgoingLinks
    - Message: Page has 0 outgoing links (dead end) - poor UX
@@ -2170,5 +2158,5 @@ Generated: 2026-01-20T17:42:30.980Z
 
 ## OG/Canonical URLs
 
-- **OG/Canonical Mismatches**: 3
+- **OG/Canonical Mismatches**: 1
 

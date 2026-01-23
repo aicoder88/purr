@@ -4,6 +4,7 @@ import { useTranslation } from "../../lib/translation-context";
 import Image from "next/image";
 import Link from "next/link";
 import { GRADIENTS, COLORS } from "@/lib/theme-utils";
+import { getPaymentLink } from "@/lib/payment-links";
 
 interface DecorativeElementProps {
   className: string;
@@ -97,13 +98,13 @@ export function CTA() {
               size="lg"
               className={`${COLORS.surface.light} text-[#5B2EFF] hover:bg-gray-100 dark:bg-[#3694FF] dark:text-white dark:text-gray-100 font-bold py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-lg`}
             >
-              <Link href="/products">
-                {t.cta?.buttonText || ""}
-              </Link>
+              <a href={getPaymentLink('trialSingle') || '#'} target="_blank" rel="noopener noreferrer">
+                {t.cta?.buttonText || "Get My Free Trial"}
+              </a>
             </Button>
 
             <p className="text-gray-600 dark:text-gray-100/80 text-xs text-center mt-2">
-              {t.cta?.guarantee || "30-day money-back guarantee"}
+              {t.cta?.guarantee || "30-Day Money-Back Guarantee • Made in Canada 🇨🇦"}
             </p>
           </div>
         </div>

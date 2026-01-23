@@ -293,7 +293,8 @@
       "PetSmart",
       "Pet Valu",
       "Global Pet Foods"
-    ]
+    ],
+    "indexed": false
   },
   {
     "slug": "hamilton",
@@ -444,7 +445,8 @@
       "PetSmart",
       "Pitou Minou & Compagnons"
     ],
-    "frenchQueryVariant": "city-first"
+    "frenchQueryVariant": "city-first",
+    "indexed": false
   },
   {
     "slug": "london",
@@ -504,7 +506,8 @@
       "Pet Valu",
       "Ren's Pets"
     ],
-    "frenchQueryVariant": "city-first"
+    "frenchQueryVariant": "city-first",
+    "indexed": false
   },
   {
     "slug": "vaughan",
@@ -533,7 +536,8 @@
       "PetSmart",
       "Pet Valu",
       "Ren's Pets"
-    ]
+    ],
+    "indexed": false
   },
   {
     "slug": "gatineau",
@@ -564,7 +568,8 @@
       "Animaleries Taschereau"
     ],
     "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
+    "frenchQueryVariant": "city-first",
+    "indexed": false
   },
   {
     "slug": "saskatoon",
@@ -593,7 +598,8 @@
       "PetSmart",
       "Pet Valu",
       "Co-op"
-    ]
+    ],
+    "indexed": false
   },
   {
     "slug": "kitchener",
@@ -623,7 +629,8 @@
       "Pet Valu",
       "Ren's Pets"
     ],
-    "frenchQueryVariant": "city-first"
+    "frenchQueryVariant": "city-first",
+    "indexed": false
   },
   {
     "slug": "longueuil",
@@ -653,7 +660,8 @@
       "PetSmart",
       "Chico"
     ],
-    "frenchQueryVariant": "city-first"
+    "frenchQueryVariant": "city-first",
+    "indexed": false
   },
   {
     "slug": "burnaby",
@@ -683,7 +691,8 @@
       "Pet Valu",
       "Bosley's"
     ],
-    "englishQueryVariant": "city-first"
+    "englishQueryVariant": "city-first",
+    "indexed": false
   },
   {
     "slug": "windsor",
@@ -742,7 +751,8 @@
       "Pet Valu",
       "Co-op"
     ],
-    "frenchQueryVariant": "city-first"
+    "frenchQueryVariant": "city-first",
+    "indexed": false
   },
   {
     "slug": "oakville",
@@ -772,7 +782,8 @@
       "Pet Valu",
       "Ren's Pets"
     ],
-    "frenchQueryVariant": "city-first"
+    "frenchQueryVariant": "city-first",
+    "indexed": false
   },
   {
     "slug": "richmond",
@@ -802,7 +813,8 @@
       "Pet Valu",
       "Bosley's"
     ],
-    "englishQueryVariant": "city-first"
+    "englishQueryVariant": "city-first",
+    "indexed": false
   },
   {
     "slug": "richmond-hill",
@@ -831,7 +843,8 @@
       "PetSmart",
       "Pet Valu",
       "Ren's Pets"
-    ]
+    ],
+    "indexed": false
   },
   {
     "slug": "burlington",
@@ -862,7 +875,8 @@
       "Ren's Pets"
     ],
     "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
+    "frenchQueryVariant": "city-first",
+    "indexed": false
   },
   {
     "slug": "oshawa",
@@ -891,7 +905,8 @@
       "PetSmart",
       "Pet Valu",
       "Ren's Pets"
-    ]
+    ],
+    "indexed": false
   },
   {
     "slug": "barrie",
@@ -922,7 +937,8 @@
       "Ren's Pets"
     ],
     "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
+    "frenchQueryVariant": "city-first",
+    "indexed": false
   },
   {
     "slug": "kelowna",
@@ -951,7 +967,8 @@
       "PetSmart",
       "Pet Valu",
       "Bosley's"
-    ]
+    ],
+    "indexed": false
   },
   {
     "slug": "guelph",
@@ -982,6 +999,7 @@
       "Ren's Pets"
     ],
     "englishQueryVariant": "city-first",
-    "frenchQueryVariant": "city-first"
+    "frenchQueryVariant": "city-first",
+    "indexed": false
   }
 ]

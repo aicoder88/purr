@@ -3,7 +3,7 @@ import { CONTACT_INFO } from '../lib/constants';
 export const en = {
   // Common
   siteName: "Purrify",
-  siteDescription: "Stop being embarrassed by cat litter smell! Water-filter grade activated carbon eliminates ammonia odor instantly. No more stinky litter box - guests will think you don't have cats. Ships to USA & Canada.",
+  siteDescription: "Love your cat, lose the smell. Water-filter grade activated carbon eliminates ammonia odors — no perfumes, just science. Try FREE (just pay shipping). Made in Canada, ships across North America.",
 
   // Navigation
   nav: {
@@ -27,12 +27,41 @@ export const en = {
     howItWorksPage: "How It Works",
     faq: "FAQ",
     science: "Science",
+    safetyInfo: "Safety Info",
+    activatedCarbonBenefits: "Activated Carbon Benefits",
+    catLitterGuide: "Cat Litter Guide",
+    howToUse: "How to Use",
+    technologyComparison: "Technology Comparison",
+    solutions: "Solutions",
+    // Solution submenu items
+    ammoniaSmellControl: "Ammonia Smell Control",
+    apartmentLiving: "Apartment Living",
+    litterBoxOdor: "Litter Box Odor",
+    multipleCats: "Multiple Cats",
+    naturalAdditive: "Natural Additive",
+    seniorCats: "Senior Cats",
     buyNow: "Buy Now!",
     retailers: "For Retailers",
     wholesalePricing: "Wholesale Pricing",
     becomePartner: "Become a Partner",
     marketingSupport: "Marketing Support",
-    shipsToUSA: "Ships to USA"
+    // Partner Programs
+    partnerPrograms: "Partner Programs",
+    forGroomers: "For Groomers",
+    forShelters: "For Shelters",
+    affiliateProgram: "Affiliate Program",
+    b2bInquiry: "B2B Inquiry",
+    customerReviews: "Customer Reviews",
+    shipsToUSA: "Ships to USA",
+    // Menu controls
+    toggleMenu: "Toggle menu",
+    signOut: "Sign Out",
+    signedIn: "Signed in",
+    // B2B pivot keys
+    findStore: "Get Purrify Near You",
+    findNearYou: "Find It Near You",
+    whereToBuy: "Where to Buy",
+    askForPurrify: "Ask for Purrify at Your Store"
   },
 
   locationsMenu: {
@@ -72,16 +101,16 @@ export const en = {
   // Products
   products: {
     "purrify-12g": {
-      name: "FREE Trial",
-      description: "Try our cat litter freshener FREE!\nJust $4.76 shipping & handling anywhere in Canada\n\nNatural charcoal additive - Limit one per customer"
+      name: "Free Trial",
+      description: "Perfect for skeptics (we get it).\nJust pay $4.76 shipping to try it yourself.\nOne per household — share the love, not the bags."
     },
     "purrify-50g": {
-      name: "Purrify 50g Standard",
-      description: "Best Cat Litter Freshener for Single Cats\n🏆 Most Popular! Our activated charcoal cat litter additive gives one month of odor-free bliss. Stop dreading litter box duty."
+      name: "The Standard",
+      description: "Ideal for single-cat homes.\nLasts about a month of fresh litter.\nOur most popular size — and most reordered."
     },
     "purrify-120g": {
-      name: "Regular",
-      description: "Cat Litter Freshener for Multi-Cat Homes\nFor homes with 2+ cats. Our charcoal additive eliminates even the strongest multi-cat ammonia smell. Your guests will be amazed."
+      name: "The Family Size",
+      description: "For multi-cat households.\nBuilt for the extra ammonia output.\nBecause two cats don't smell twice as bad — they smell five times as bad."
     }
   },
 
@@ -108,24 +137,24 @@ export const en = {
 
   announcementBar: {
     freeShipping: {
-      line1: 'Free Shipping',
-      line2: 'on All Subscription Orders',
+      line1: 'Try It Free',
+      line2: 'Just Pay $4.76 Shipping',
     },
     madeInCanada: {
-      line1: 'Manufactured in Canada',
-      line2: 'from Domestic and Globally Sourced Ingredients',
+      line1: 'Made in Canada 🇨🇦',
+      line2: 'With Real Ingredients You Can Pronounce',
     },
     naturalCarbon: {
-      line1: 'Non-toxic ingredients',
-      line2: 'Made from 100% natural activated coconut carbon',
+      line1: 'Water-Filter Grade Carbon',
+      line2: 'The Same Stuff That Makes Tap Water Safe',
     },
     socialProof: {
-      line1: 'No chemicals, fragrances, or additives',
-      line2: 'Used by thousands of cat owners across Canada',
+      line1: 'No Perfumes. No Chemicals.',
+      line2: 'Loved by 1,000+ Cat Parents',
     },
     moneyBack: {
-      line1: '30-Day Money-Back Guarantee',
-      line2: 'Not satisfied? Full refund, no questions asked',
+      line1: '30-Day Guarantee',
+      line2: 'Love It or Get Your Money Back',
     },
   },
 
@@ -135,13 +164,15 @@ export const en = {
     rabbitLitter: "Rabbit Litter Deodorizer",
     fridgeSmells: "Fridge Odor Control",
     ferretCage: "Ferret Cage Smell Killer",
-    eliminateCatOdors: "7 Days Without Litter Box Smell",
-    instantly: "Eliminates Litter Box Smell Almost Instantly",
-    description: "Using \"activated\" (chemical-free) coconut-based molecular trapping technology — the same filtration science found in drinking water systems — one sprinkle drastically reduces litter box odour almost immediately and continues to last for up to 7 full days.",
+    headline: "Love Your Cat. Lose The Smell.",
+    eliminateCatOdors: "Love Your Cat. Lose The Smell.",
+    subheadline: "One sprinkle keeps litter fresh for 7 full days.",
+    instantly: "One sprinkle keeps litter fresh for 7 full days.",
+    description: "You adore your cat. The litter box smell? Not so much. Purrify uses the same activated carbon found in water filters to trap ammonia at the source — no perfumes, no cover-ups, just fresh air. Sprinkle once, breathe easy for a week.",
     socialProof: {
       trustNumber: "1,000+",
-      trustText: "cat parents said goodbye to litter box smell",
-      ratingText: "4.8/5 stars - 'My apartment doesn't stink anymore!'"
+      trustText: "happy cat parents across Canada",
+      ratingText: "4.8/5 — 'I can finally have guests over without apologizing!'"
     },
     pricing: {
       trial: "FREE Trial (just pay $4.76 S&H)",
@@ -149,14 +180,14 @@ export const en = {
       family: "120g: $24.99"
     },
     buttons: {
-      shopNow: "Stop The Stink - Try Risk-Free $24.95",
-      reviews: "⚗️ Proof It Works",
-      learnMore: "How It Kills Odor",
-      tryFree: "Try FREE Sample"
+      shopNow: "Try FREE — Just $4.76 Shipping",
+      reviews: "See What Cat Parents Say",
+      learnMore: "How It Works",
+      tryFree: "Get My Free Trial"
     },
     ariaLabels: {
-      shopNow: "Shop Purrify products now",
-      reviews: "Read 138+ customer reviews",
+      shopNow: "Try Purrify free with just shipping cost",
+      reviews: "Read customer reviews from cat parents",
       playVideo: "Play demonstration video showing Purrify eliminating cat litter odors"
     },
     dualPath: {
@@ -174,76 +205,75 @@ export const en = {
     simplified: {
       free: "FREE",
       justPayShipping: "Just pay $4.76 shipping",
-      noMore: "No More",
-      litterBoxSmell: "Litter Box Smell",
-      valueProposition: "Activated carbon eliminates odors at the source. Works with any litter.",
+      noMore: "Love Your Cat.",
+      litterBoxSmell: "Lose The Smell.",
+      valueProposition: "Water-filter grade carbon traps odors at the source. Works with any litter your cat already loves.",
       trialSize: "Trial Size",
       standard: "Standard",
       familyPack: "Family Pack",
       plusSH: "+ S&H",
       thirtyDayGuarantee: "30-Day Guarantee",
-      getFreeSample: "Get FREE Sample",
+      getFreeSample: "Send Me a Free Bag →",
       soldThisWeek: "87 sold this week",
       limitedStock: "Limited winter stock",
-      moneyBackGuarantee: "30-Day Money-Back Guarantee",
-      freeShippingOver: "Free Shipping Over $35"
+      moneyBackGuarantee: "30-Day Money-Back Guarantee"
     }
   },
 
   // Features
   features: {
     odorElimination: {
-      title: "Locks Away Ammonia Smell",
-      description: "***Air-and-water-filter grade activated carbon*** doesn't just mask odors - it locks away ammonia molecules at the source. Your nose will thank you!"
+      title: "Traps The Smell (Doesn't Mask It)",
+      description: "Air fresheners layer perfume on top of the problem. Purrify's activated carbon actually captures ammonia molecules and locks them away. The smell is gone — not hiding."
     },
     catFriendly: {
-      title: "Used in Water & Air Filters Worldwide",
-      description: "Natural coconut carbon with zero chemicals, fragrances, or dyes.\n\nThe same type used in water and air filters around the world, powerful enough for multiple cats."
+      title: "Water-Filter Grade Carbon",
+      description: "Made from coconut shells using the same process that makes drinking water safe. Zero chemicals. Zero fragrances. Zero mystery ingredients. Just pure, natural odor control."
     },
     longLastingFreshness: {
-      title: "7 Days of Fresh Air Per Application",
-      description: "One sprinkle = a full week without that embarrassing litter box smell. Stop constantly cleaning - start breathing easy."
+      title: "One Sprinkle Lasts A Whole Week",
+      description: "Most fresheners fade after a day. Purrify keeps working for 7 full days — that's one quick sprinkle per litter change, not a daily chore."
     },
     natural: {
       title: "100% Natural Ingredients",
       description: "Made from coconut shell activated carbon with no synthetic fragrances or fillers. Non-toxic and chemicals-free."
     },
     worksWithAnyLitter: {
-      title: "Works with Your Cat's Favorite Litter",
-      description: "Clay, crystal, clumping, non-clumping - doesn't matter! No need to stress your cat with a litter change. Purrify works with what you already use."
+      title: "Works With Any Litter",
+      description: "Clay, crystal, clumping, natural — whatever your cat already uses. No need to switch brands or confuse your furry friend. Just add Purrify on top."
     },
     costEffective: {
-      title: "Saves Money on Litter",
-      description: "Extends litter life by preventing odor buildup. Use less, change less often, breathe easier. Your wallet will love it too."
+      title: "Makes Your Litter Last Longer",
+      description: "When odors stay under control, you're not tempted to dump the whole box early. Fresh-smelling litter means changing on schedule — not out of desperation."
     },
     freePurrify: {
       title: "Free Purrify",
       description: "Get a free Purrify sample with your first order."
     },
     beforeAfter: {
-      title: "Before & After",
-      description: "See the difference Purrify makes in your cat's litter box."
+      title: "The Fresh Air Test",
+      description: "Walk into your home after being out for a while. Notice the difference? After Purrify, the only thing you'll smell is... nothing. (In the best way.)"
     }
   },
 
   // How It Works
   howItWorks: {
-    simpleAs123: "Fresh Air in 60 Seconds - Simple as 1-2-3",
+    simpleAs123: "Ridiculously Easy to Use",
     steps: [
       {
         number: "01",
-        title: "Open & Pour",
-        description: "Tear open the bag - your nose will immediately notice the difference! No assembly, no complicated instructions."
+        title: "Open the Bag",
+        description: "That's the hardest part. Seriously. No measuring, no mixing bowls, no instruction manual required."
       },
       {
         number: "02",
-        title: "Sprinkle the Magic",
-        description: "Just sprinkle a thin layer on top of clean litter. Works with ANY brand - clay, crystal, clumping, you name it."
+        title: "Sprinkle on Fresh Litter",
+        description: "A light layer on top of your cat's favorite litter. Works with clay, crystal, clumping, natural — whatever they're already happy with."
       },
       {
         number: "03",
-        title: "Mix It In & Breathe Easy!",
-        description: "Gently mix and watch (smell?) the magic happen. 7 days of fresh air starts NOW. Your guests will be amazed."
+        title: "Mix & Enjoy the Clean",
+        description: "Give it a gentle stir. Now enjoy 7 days of not thinking about the litter box. Your nose (and your guests) will thank you."
       }
     ],
     litterTypes: {
@@ -260,13 +290,13 @@ export const en = {
 
   // Products Section
   productsSection: {
-    forEveryCatHousehold: "FOR EVERY CAT HOUSEHOLD",
-    pickYourPowerLevel: "PICK YOUR PURRIFY POWER LEVEL",
-    subtitle: "Whether you have one kitten or multiple cats, we have the ideal Purrify size for your home.",
+    forEveryCatHousehold: "FIND YOUR FIT",
+    pickYourPowerLevel: "START FREE, STOCK UP LATER",
+    subtitle: "Not sure? Try the free sample first. When you're convinced (you will be), come back for the full-size.",
     powerLevels: {
-      kittenPower: "Kitten Power",
-      standardPower: "Standard Power",
-      maximumPower: "Maximum Power"
+      kittenPower: "Free Trial",
+      standardPower: "The Standard",
+      maximumPower: "Family Size"
     },
     mostPopular: "MOST POPULAR",
     addToCart: "Add to Cart",
@@ -276,7 +306,11 @@ export const en = {
     viewAllProducts: "VIEW ALL PRODUCTS",
     quantity: "Quantity",
     decreaseQuantity: "Decrease quantity",
-    increaseQuantity: "Increase quantity"
+    increaseQuantity: "Increase quantity",
+    // B2B pivot keys
+    findNearYou: "Find It Near You",
+    askYourStore: "Ask for Purrify at Your Local Store",
+    availableAtStores: "Available at pet stores across Canada"
   },
 
   // Stores Section
@@ -304,11 +338,16 @@ export const en = {
 
   // Call to Action
   cta: {
-    title: "Stop Being Embarrassed by Cat Litter Smell!",
-    subtitle: "Join 1,000+ cat parents who finally have fresh-smelling homes. No more holding your breath, no more apologizing to guests. Get your confidence back - start breathing easy again.",
-    buttonText: "ELIMINATE THE STINK NOW",
-    joinText: "Join 1,000+ families with odor-free homes - Visit your local store",
-    guarantee: "Proven results you can smell (or can't smell!)"
+    title: "Ready to Breathe Easy?",
+    subtitle: "Try Purrify free — just cover the $4.76 shipping. If you're not impressed within 30 days, we'll refund even that.",
+    buttonText: "Get My Free Trial →",
+    joinText: "30-Day Money-Back Guarantee • Made in Canada 🇨🇦",
+    guarantee: "30-Day Money-Back Guarantee • Made in Canada 🇨🇦",
+    // B2B pivot keys
+    b2bTitle: "Find Purrify Near You",
+    b2bSubtitle: "Available at pet stores across Canada. Ask for Purrify at your local pet retailer.",
+    b2bButtonText: "Find a Store Near You",
+    b2bGuarantee: "Available at pet retailers nationwide"
   },
 
   // FAQ
@@ -532,9 +571,9 @@ export const en = {
           sku: "purrify-50g"
         },
         family: {
-          name: "Purrify 120g Family Pack",
+          name: "Purrify 240g Family Size",
           description: "Large size perfect for multi-cat households - maximum odor control",
-          sku: "purrify-120g"
+          sku: "purrify-240g"
         }
       },
       priceRange: "$6.99 - $29.99"
@@ -632,28 +671,28 @@ export const en = {
 
   // Science Section (homepage component)
   scienceSection: {
-    badge: "The Science Behind Purrify",
+    badge: "The Nerdy Bit (It's Quick)",
     headline: "How Activated Carbon",
-    headlineHighlight: "Eliminates Odors",
-    description: "Unlike sprays that mask odors with heavy perfumes, Purrify uses activated carbon to physically trap and neutralize odor-causing molecules at the microscopic level.",
-    learnMore: "Learn More About The Science",
+    headlineHighlight: "Actually Works",
+    description: "Air fresheners just spray perfume over the problem. Activated carbon is different — it has millions of tiny tunnels that physically trap odor molecules. Once ammonia goes in, it doesn't come back out. That's why the smell actually disappears instead of playing hide-and-seek.",
+    learnMore: "Dive Deeper Into The Science",
     features: [
       {
-        title: "Micro-Pore Technology",
-        description: "Millions of microscopic pores trap odor molecules instantly upon contact."
+        title: "Traps, Doesn't Mask",
+        description: "Each grain of carbon has an enormous surface area covered in microscopic tunnels. Odor molecules get trapped inside — permanently."
       },
       {
-        title: "Safe & Non-Toxic",
-        description: "100% natural activated carbon. Safe for pets and humans."
+        title: "Same Tech as Water Filters",
+        description: "If activated carbon is trusted to make drinking water safe, your litter box is definitely within its skill set."
       },
       {
-        title: "Eco-Friendly",
-        description: "Sustainable materials that are biodegradable and earth-safe."
+        title: "Made from Coconut Shells",
+        description: "Natural, sustainable, and completely non-toxic. Safe for curious cats, nosy toddlers, and everyone in between."
       }
     ],
     floatingLabel: {
       title: "Microscopic View",
-      description: "Porous structure traps ammonia molecules instantly."
+      description: "Porous structure traps ammonia molecules permanently."
     },
     naturalBadge: {
       title: "100% Natural",
@@ -698,6 +737,56 @@ export const en = {
     openingHours: "Opening Hours",
     contactUs: "Contact Us",
     allRightsReserved: "All Rights Reserved"
+  },
+
+  // Footer Navigation
+  footerNav: {
+    // Section headers
+    trustedReviews: "Trusted Reviews",
+    products: "Products",
+    learn: "Learn",
+    popularArticles: "Popular Articles",
+    company: "Company",
+    // Product links
+    trialSize: "Trial Size",
+    standardSize: "Standard Size",
+    familyPack: "Family Pack",
+    compareSizes: "Compare Sizes",
+    // Learn links
+    howItWorks: "How It Works",
+    faq: "FAQ",
+    science: "Science",
+    safetyInfo: "Safety Info",
+    catLitterGuide: "Cat Litter Guide",
+    ammoniaSolutions: "Ammonia Solutions",
+    litterCalculator: "Litter Calculator",
+    // Article links
+    houseSmells: "House Smells Like Cat Litter?",
+    multiCatGuide: "Multi-Cat Deodorizer Guide",
+    triedEverything: "Tried Everything for Cat Smell?",
+    powerfulAbsorber: "Most Powerful Odor Absorber",
+    smallApartments: "Best for Small Apartments",
+    // Company links
+    about: "About Us",
+    blog: "Blog",
+    locations: "Locations",
+    stockists: "Stores",
+    testimonials: "Testimonials",
+    retailers: "For Retailers",
+    retailerPortal: "Retailer Portal",
+    hospitality: "Hospitality",
+    groomers: "For Groomers",
+    shelters: "Shelters",
+    b2bInquiry: "B2B Inquiry",
+    invest: "Investors",
+    affiliateProgram: "Affiliate Program",
+    results: "Success Stories",
+    contact: "Contact",
+    privacyPolicy: "Privacy Policy",
+    termsOfService: "Terms of Service",
+    // Review platforms
+    trustpilot: "Trustpilot",
+    googleReviews: "Google Reviews"
   },
 
   // Free Trial
@@ -1055,33 +1144,33 @@ export const en = {
     products: [
       {
         id: "trial",
-        name: "FREE Trial",
-        subtitle: "12g Pack",
-        duration: "1 week",
+        name: "The Skeptic's Sample",
+        subtitle: "12g · One Week of Proof",
+        duration: "7+ days",
         cats: "1 cat",
-        features: ["12g activated carbon", "Just pay shipping", "Perfect introduction"],
-        bestFor: "New customers wanting to try Purrify risk-free",
-        cta: "Get FREE Trial"
+        features: ["One week of fresh-air confidence", "Just $4.76 shipping", "Zero risk, zero commitment"],
+        bestFor: "Cat parents who've been burned before. Test it yourself. Your nose doesn't lie.",
+        cta: "Get Purrify Near You"
       },
       {
         id: "regular",
-        name: "Regular",
-        subtitle: "120g Pack - Most Popular",
-        duration: "3 months",
+        name: "Regular Size",
+        subtitle: "120g · The Goldilocks Bag",
+        duration: "7+ days per application",
         cats: "1-2 cats",
-        features: ["120g activated carbon", "Subscribe & save", "Free shipping"],
-        bestFor: "Single or dual cat homes wanting continuous freshness",
-        cta: "Subscribe & Save"
+        features: ["Use more for extended freshness", "Top-up anytime", "Works with any litter"],
+        bestFor: "Single or dual cat homes. The size that keeps customers coming back.",
+        cta: "Get Purrify Near You"
       },
       {
         id: "large",
-        name: "Large",
-        subtitle: "240g Pack - Best Value",
-        duration: "3 months",
+        name: "Family Size",
+        subtitle: "240g · Best Value Per Gram",
+        duration: "7+ days per application",
         cats: "3+ cats",
-        features: ["240g activated carbon", "Maximum savings", "Free shipping"],
-        bestFor: "Multi-cat households and heavy users",
-        cta: "Subscribe & Save"
+        features: ["Best value per gram", "Flexible dosing", "Perfect for multiple boxes"],
+        bestFor: "Multi-cat households, foster parents, or anyone who's lost count.",
+        cta: "Get Purrify Near You"
       }
     ],
     comparisonFeatures: [
@@ -1136,8 +1225,8 @@ export const en = {
     tableHeaders: {
       feature: "Feature",
       trial: "12g Trial",
-      regular: "120g Regular",
-      large: "240g Large"
+      regular: "120g Regular Size",
+      large: "240g Family Size"
     },
 
     // Calculation Units
@@ -1170,6 +1259,152 @@ export const en = {
         link: "/learn/cat-litter-guide"
       }
     ]
+  },
+
+  // Products Page - Direct Response Copywriting Style
+  productsPage: {
+    // Hero Section
+    hero: {
+      headline: "Your Cats Are Perfect. The Smell? Not So Much.",
+      subheadline: "Same activated carbon that cleans your drinking water. Traps litter box ammonia at the molecular level. No perfumes. No cover-ups. Just... air.",
+      supporting: "Pick your size. Prove it to your nose."
+    },
+
+    // Quick Decision Helper
+    quickDecision: {
+      title: "Not Sure Which Size? Let Your Nose Be the Judge.",
+      subtitle: "",
+      trial: {
+        question: "Burned by false promises before?",
+        answer: "The Skeptic's Sample (12g)",
+        detail: "Just pay shipping. 7 days to convince your nose. It works or you're out $4.76."
+      },
+      regular: {
+        question: "One or two cats at home?",
+        answer: "Regular Size (120g)",
+        detail: "Most popular size. Lasts 7+ days per application. Use more, stays fresh longer."
+      },
+      large: {
+        question: "Running a multi-cat household?",
+        answer: "Family Size (240g)",
+        detail: "Best value per gram. Same powerful formula, double the supply."
+      }
+    },
+
+    // Trust Signals
+    trustSignals: {
+      waterFilter: {
+        title: "The Same Stuff in Your Brita",
+        description: "Meets NSF/ANSI 61 standards. If it's good enough to make tap water drinkable, imagine what it does to ammonia."
+      },
+      ingredients: {
+        title: "Ingredients: Coconut Shells. That's It.",
+        description: "No fragrance to stress your cat. No chemicals to worry about. Just pure, activated carbon from coconut shells."
+      },
+      science: {
+        title: "Science, Not Perfume",
+        description: "One gram has the surface area of a football field. Those microscopic tunnels trap odor molecules permanently. Gone. Not hiding."
+      }
+    },
+
+    // Product Cards
+    products: {
+      trial: {
+        name: "The Skeptic's Bag",
+        subtitle: "12g · One Week of Proof",
+        features: [
+          "Enough for 7 days of fresh air",
+          "Just cover the $4.76 shipping",
+          "One per household (sorry, no stockpiling free stuff)"
+        ],
+        bestFor: "Cat parents who've been burned by 'miracle' products before. We get it. Prove it to yourself first."
+      },
+      regular: {
+        name: "Regular Size",
+        subtitle: "120g · The Goldilocks Bag",
+        features: [
+          "7+ days freshness per application",
+          "Use more for extended freshness",
+          "Works with whatever litter your cat already approves of"
+        ],
+        bestFor: "Single or dual cat homes where 'company's coming over' doesn't trigger panic anymore."
+      },
+      large: {
+        name: "Family Size",
+        subtitle: "240g · Best Value Per Gram",
+        features: [
+          "7+ days freshness per application",
+          "Best value per gram",
+          "Flexible dosing (use more, lasts longer)"
+        ],
+        bestFor: "Multi-cat households, foster parents, or anyone who's given up counting litter boxes."
+      }
+    },
+
+    // What You Get Section
+    whatYouGet: {
+      title: "What's Actually in the Bag",
+      subtitle: "(And Why Your Cat Will Never Notice It)",
+      benefits: [
+        {
+          title: "Water-Filter Grade Activated Carbon",
+          description: "The exact same material used in Brita filters and hospital air purification. Not 'similar to.' The same."
+        },
+        {
+          title: "Zero Fragrances. Zero Chemicals. Zero Worries.",
+          description: "Cats have 200 million scent receptors. Artificial fragrances stress them. Purrify works invisibly."
+        },
+        {
+          title: "Clay, Crystal, Clumping, Natural... We Don't Judge",
+          description: "Works with whatever litter your cat has trained you to buy. No switching drama."
+        },
+        {
+          title: "Open. Sprinkle. Done.",
+          description: "A thin layer on top. 30 seconds of effort for 7 days of results."
+        }
+      ]
+    },
+
+    // Did You Know Fact Box
+    didYouKnow: {
+      title: "The Science Your Cat Doesn't Care About (But Your Nose Will)",
+      body: "A single gram of activated carbon contains roughly 3,000 square meters of surface area. That's bigger than half a football field — in something smaller than a pea.\n\nInside are millions of microscopic pores and tunnels. When ammonia molecules float past, they get trapped permanently.\n\nThis isn't masking. It's molecular capture. The same technology used in gas masks, water treatment plants, and hospital air filtration. Now sitting on top of your cat's litter."
+    },
+
+    // CTA Section
+    cta: {
+      title: "Your Nose Deserves Better. So Does Your Cat.",
+      subtitle: "Ask for Purrify at your favorite pet store. If they don't carry it yet, they should.",
+      secondary: "Not seeing your store? Let us know. We'll reach out and make it happen."
+    },
+
+    // Related Pages
+    relatedPages: [
+      {
+        title: "The Science (Without the Boring Parts)",
+        description: "Discover the science behind our activated carbon technology and why it's so effective.",
+        link: "/learn/how-it-works"
+      },
+      {
+        title: "What 1,000+ Cat Parents Said",
+        description: "See what satisfied customers are saying about their Purrify experience.",
+        link: "/reviews"
+      },
+      {
+        title: "The Complete Cat Litter Guide",
+        description: "Learn about different litter types and how to choose the best option for your cat.",
+        link: "/learn/cat-litter-guide"
+      }
+    ],
+
+    // Testimonial Section
+    testimonial: {
+      quote: "I live in a small studio apartment with two cats, and the litter box smell was becoming unbearable. Purrify completely eliminated the odor within 24 hours. I was skeptical about the price at first, but it lasts so much longer than other products I've tried. Worth every penny!",
+      author: "Sarah M.",
+      location: "Montreal, QC",
+      details: "2 cats, small apartment",
+      headline: "Game changer for my apartment!"
+    }
   },
 
   // Privacy Policy
@@ -1605,7 +1840,7 @@ export const en = {
       },
       {
         question: "Do you offer free shipping?",
-        answer: "Yes! We offer free shipping on all orders over $25 within Canada. Standard shipping takes 3-5 business days via Canada Post. Orders are typically processed within 1-2 business days. Tracking information is provided for all shipments."
+        answer: "We ship to Canada and the United States. Standard shipping takes 3-5 business days via Canada Post. Orders are typically processed within 1-2 business days. Tracking information is provided for all shipments. Shipping costs are displayed at checkout."
       },
       {
         question: "Do you ship to the United States or internationally?",
@@ -1712,7 +1947,7 @@ export const en = {
     },
     altText: {
       scientificDiagram: "Scientific diagram showing activated carbon molecular structure with micropores that trap odor molecules",
-      productPackages: "Three Purrify product packages showing different sizes: 12g trial, 50g standard, and 120g family pack",
+      productPackages: "Three Purrify product packages showing different sizes: 12g trial, 120g regular size, and 240g family size",
       microscopicView: "Microscopic view of activated carbon showing porous structure that captures odor molecules",
       happyCat: "Happy cat resting peacefully in a fresh, odor-free home environment",
       happyCatAlt: "Happy cat",
@@ -2122,17 +2357,17 @@ export const en = {
       successStories: {
         title: "Partner Success Stories",
         stories: {
-          petPalace: {
-            businessName: "Pet Palace Toronto",
-            businessType: "Independent Pet Store",
-            quote: "Added $800/month revenue in our first quarter. Customers love it and keep coming back!",
-            metric: "+145% sales growth"
+          pattesEtGriffes: {
+            businessName: "Pattes et Griffes – Sainte‑Thérèse",
+            businessType: "Store Owner / Manager",
+            quote: "Our customers ask for Purrify by name now. It's an easy recommendation at the counter and reorders have been consistent month after month.",
+            metric: "30 day reorder cycle"
           },
-          healthyPaws: {
-            businessName: "Healthy Paws Vet",
-            businessType: "Veterinary Clinic",
-            quote: "Our clients trust our recommendation. Best margins in our retail section.",
-            metric: "55% profit margin"
+          chico: {
+            businessName: "Chico – Boul. St‑Laurent (Montreal)",
+            businessType: "Store Manager",
+            quote: "Simple to stock, strong margins, and it moves. The POS materials helped our team explain the benefits quickly to shoppers.",
+            metric: "High shelf sell‑through"
           }
         }
       },
@@ -2234,7 +2469,7 @@ export const en = {
       title: "Calculate Your Potential Earnings",
       subtitle: "Adjust the sliders to see how much you could earn with Purrify's 30% commission",
       standardProduct: "50g Standard ($24.99) - Referrals/Month",
-      familyPack: "120g Family Pack ($44.99) - Referrals/Month",
+      familyPack: "240g Family Size ($54.99) - Referrals/Month",
       perSale: "per sale",
       monthlyIncome: "Estimated Monthly Income",
       yearlyIncome: "Estimated Yearly Income",
@@ -2529,7 +2764,6 @@ export const en = {
       subheadline: "Join thousands of cat parents who've eliminated litter box ammonia for good—not masked it, eliminated it.",
       button: "Shop Purrify",
       secondaryButton: "Try Trial Size",
-      benefit1: "Free shipping over $35",
       benefit2: "30-day satisfaction guarantee"
     }
   },
@@ -2730,13 +2964,13 @@ export const en = {
   // City Page Translations (for location-based SEO pages)
   cityPage: {
     seo: {
-      title: "Cat Litter Deodorizer in {{city}} | Purrify Activated Carbon",
-      descriptionWithPopulation: "Cat litter smell in {{city}}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across {{province}}. Loved by {{population}}+ cat owners.",
-      descriptionDefault: "Cat litter smell in {{city}}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across {{province}}. Safe for cats & kittens."
+      title: "Best Cat Litter Deodorizer in {{city}} | Free Delivery",
+      descriptionWithPopulation: "Stop cat litter smell in your {{city}} home. Activated carbon deodorizer works 7+ days. Loved by {{population}}+ cat owners. Shop online or find local retailers.",
+      descriptionDefault: "Stop cat litter smell in your {{city}} home. Activated carbon deodorizer works 7+ days. Shop online or find {{city}} retailers. Free shipping across {{province}}."
     },
     loading: "Redirecting...",
     hero: {
-      heading: "Best Cat Litter Odor Eliminator in {{city}}",
+      heading: "Cat Litter Odor Solutions for {{city}} Pet Owners",
       subheading: "Trusted by {{audience}}+ cat owners in {{city}} and across {{province}}"
     },
     whyChoose: {

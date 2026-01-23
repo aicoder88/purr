@@ -4,7 +4,7 @@ import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { useTranslation } from '../../src/lib/translation-context';
 import { NextSeo } from 'next-seo';
-import { generateWebsiteSchema, buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { generateJSONLD, getLocalizedUrl } from '../../src/lib/seo-utils';
 import {
   BookOpen,
   ChevronRight,
@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { useState, useCallback } from 'react';
 import { formatProductPrice } from '../../src/lib/pricing';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
 interface GlossaryTerm {
   id: string;
@@ -37,11 +38,25 @@ const GlossaryPage: NextPage = () => {
 
   const pageTitle = 'Cat Litter & Activated Carbon Glossary - Purrify';
   const pageDescription = 'Learn key terms about activated carbon, cat litter odor control, and pet care science. Definitions of adsorption, ammonia, activated carbon, coconut shell carbon, VOCs, and more.';
-  const canonicalUrl = getLocalizedUrl('/learn/glossary', locale);
-  const languageAlternates = buildLanguageAlternates('/learn/glossary');
+  const canonicalUrl = `https://www.purrify.ca/learn/glossary`;
 
-  // Current date for fresh content signals
-  const today = new Date().toISOString();
+  // Use enhanced SEO hook
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/learn/glossary',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'activated carbon glossary',
+    schemaType: 'article',
+    schemaData: {
+      type: 'Article',
+      title: pageTitle,
+      description: pageDescription,
+      author: 'Purrify',
+      datePublished: '2024-01-15',
+      dateModified: new Date().toISOString().split('T')[0],
+    },
+    includeBreadcrumb: true,
+  });
 
   const glossaryTerms: GlossaryTerm[] = [
     {
@@ -212,34 +227,7 @@ const GlossaryPage: NextPage = () => {
     }))
   };
 
-  // Article schema for the page
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    'headline': pageTitle,
-    'description': pageDescription,
-    'datePublished': '2024-01-15',
-    'dateModified': today,
-    'author': {
-      '@type': 'Organization',
-      'name': 'Purrify',
-      'url': 'https://www.purrify.ca'
-    },
-    'publisher': {
-      '@type': 'Organization',
-      'name': 'Purrify',
-      'logo': {
-        '@type': 'ImageObject',
-        'url': 'https://www.purrify.ca/logo.png'
-      }
-    },
-    'mainEntityOfPage': {
-      '@type': 'WebPage',
-      '@id': canonicalUrl
-    }
-  };
-
-  // Speakable schema for voice search
+  // Speakable schema for voice search (combined with main schema in @graph)
   const speakableSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
@@ -253,35 +241,20 @@ const GlossaryPage: NextPage = () => {
 
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          type: 'website',
-          url: canonicalUrl,
-          title: pageTitle,
-          description: pageDescription,
-        }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: 'activated carbon definition, what is adsorption, ammonia cat urine, coconut shell carbon, cat litter glossary, VOCs volatile organic compounds, activated carbon vs charcoal, zeolite vs activated carbon, NSF certified carbon',
-          },
-        ]}
-      />
+      <NextSeo {...nextSeoProps} />
+
+      {/* Main Schema from useEnhancedSEO */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={generateJSONLD(schema)}
+        />
+      )}
 
       {/* DefinedTermSet Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(definedTermSetSchema) }}
-      />
-
-      {/* Article Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
 
       {/* Speakable Schema */}
@@ -290,28 +263,27 @@ const GlossaryPage: NextPage = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }}
       />
 
-      {/* Website Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateWebsiteSchema(locale))
-        }}
-      />
-
       <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
         {/* Breadcrumb Navigation */}
         <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
           <Container>
-            <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-              <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+            <nav aria-label="Breadcrumb" className="flex items-center text-sm">
+              <Link href="/" className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
                 <Home className="w-4 h-4" />
+                <span className="sr-only">Home</span>
               </Link>
-              <span>/</span>
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
-                Learn
-              </Link>
-              <span>/</span>
-              <span className="text-gray-900 dark:text-gray-100">Glossary</span>
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span aria-current="page" className="font-medium text-gray-900 dark:text-gray-100">{item.name}</span>
+                  ) : (
+                    <Link href={item.path} className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+                      {item.name}
+                    </Link>
+                  )}
+                </span>
+              ))}
             </nav>
           </Container>
         </section>

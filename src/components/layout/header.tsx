@@ -7,6 +7,7 @@ import {
   ChevronDown,
   LogOut,
   User as UserIcon,
+  MapPin,
 } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Container } from "../../components/ui/container";
@@ -209,6 +210,27 @@ export function Header() {
           label: t.nav?.marketingSupport || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/retailers#marketing-support`,
         },
+        { label: t.nav?.partnerPrograms || "Partner Programs", isGroupHeader: true },
+        {
+          label: t.nav?.forGroomers || "For Groomers",
+          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/groomers`,
+          indent: true,
+        },
+        {
+          label: t.nav?.forShelters || "For Shelters",
+          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/shelters`,
+          indent: true,
+        },
+        {
+          label: t.nav?.affiliateProgram || "Affiliate Program",
+          href: "/affiliate",
+          indent: true,
+        },
+        {
+          label: t.nav?.b2bInquiry || "B2B Inquiry",
+          href: "/b2b",
+          indent: true,
+        },
       ],
     },
     {
@@ -304,16 +326,16 @@ export function Header() {
               <Image
                 src="/optimized/logo-text-240.webp"
                 alt="Purrify - Premium Activated Carbon Cat Litter Additive - Home"
-                width={240}
-                height={240}
+                width={480}
+                height={220}
                 priority
                 className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
               />
               <Image
                 src="/optimized/purrify-dark-mode-logo.webp"
                 alt="Purrify - Premium Activated Carbon Cat Litter Additive - Home"
-                width={240}
-                height={240}
+                width={480}
+                height={220}
                 priority
                 className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 hidden dark:block"
               />
@@ -411,12 +433,23 @@ export function Header() {
                 <span>{t.nav?.signOut || ""}</span>
               </Button>
             )}
+            {/* B2C: ORIGINAL BUY NOW BUTTON
             <Button
               onClick={scrollToProducts}
               className="flex items-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
             >
               <ShoppingBag className="w-4 h-4" />
               {t.nav?.buyNow || ""}
+            </Button>
+            */}
+            <Button
+              asChild
+              className="flex items-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+            >
+              <Link href="/stores">
+                <MapPin className="w-4 h-4" />
+                {t.nav?.findStore || "Find a Store"}
+              </Link>
             </Button>
             <LanguageSwitcher />
           </div>
@@ -521,12 +554,23 @@ export function Header() {
                     </Button>
                   </div>
                 )}
+                {/* B2C: ORIGINAL BUY NOW BUTTON
                 <Button
                   onClick={handleBuyNowMobile}
                   className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                 >
                   <ShoppingBag className="w-4 h-4" />
                   {t.nav?.buyNow || ""}
+                </Button>
+                */}
+                <Button
+                  asChild
+                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                >
+                  <Link href="/stores" onClick={closeMenu}>
+                    <MapPin className="w-4 h-4" />
+                    {t.nav?.findStore || "Find a Store"}
+                  </Link>
                 </Button>
               </div>
             </div>

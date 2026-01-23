@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
 import { formatProductPrice } from '../../src/lib/pricing';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
 interface ReferralPageProps {
   code: string;
@@ -94,19 +95,21 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
 
   const canonicalUrl = `https://www.purrify.ca/refer/${code}`;
 
+  // Use enhanced SEO hook
+  const { nextSeoProps } = useEnhancedSEO({
+    path: `/refer/${code}`,
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'purrify referral',
+    image: 'https://www.purrify.ca/optimized/17gpink.webp',
+    keywords: ['referral', 'free trial', 'cat litter deodorizer'],
+    noindex: !referralData.isValid, // Don't index invalid referral pages
+  });
+
   if (!referralData.isValid) {
     return (
       <>
-        <NextSeo
-          title={pageTitle}
-          description={pageDescription}
-          canonical={canonicalUrl}
-          openGraph={{
-            title: pageTitle,
-            description: pageDescription,
-            url: canonicalUrl,
-          }}
-        />
+        <NextSeo {...nextSeoProps} />
         <Container className="py-16">
           <div className="text-center max-w-2xl mx-auto">
             <div className="w-16 h-16 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -134,24 +137,7 @@ export default function ReferralLandingPage({ code, referralData }: ReferralPage
 
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        openGraph={{
-          title: pageTitle,
-          description: pageDescription,
-          url: canonicalUrl,
-          images: [
-            {
-              url: 'https://www.purrify.ca/optimized/17gpink.webp',
-              width: 500,
-              height: 500,
-              alt: 'Purrify 12g Trial Size - Free with Referral'
-            }
-          ]
-        }}
-      />
+      <NextSeo {...nextSeoProps} />
 
       <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-blue-900/20 dark:to-gray-900">
         {/* Hero Section */}

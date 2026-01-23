@@ -56,8 +56,8 @@ See [docs/NO_FABRICATION_RULE.md](../docs/NO_FABRICATION_RULE.md) for complete g
 | Components | `src/components/` (PascalCase: `MyComponent.tsx`) |
 | Pages | `pages/` (kebab-case: `my-page.tsx`) |
 | API routes | `pages/api/` (kebab-case: `my-endpoint.ts`) |
-| Translations | `src/translations/{en,fr,zh}.ts` |
-| Blog content | `/content/blog/{en,fr,zh}/*.json` |
+| Translations | `src/translations/{en,fr,zh,es}.ts` |
+| Blog content | `/content/blog/{en,fr,zh,es}/*.json` |
 | Tests (unit) | `__tests__/**/*.test.ts` |
 | Tests (e2e) | `e2e/**/*.spec.ts` |
 | Auth middleware | `proxy.ts` (NOT middleware.ts - Next.js 16) |

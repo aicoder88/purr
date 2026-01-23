@@ -5,6 +5,7 @@ import { CheckCircle2, ArrowRight, Star, DollarSign, Users, TrendingUp, Award, Z
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslation } from '../src/lib/translation-context';
+import { useEnhancedSEO } from '../src/hooks/useEnhancedSEO';
 
 // Tier configuration
 const TIERS = {
@@ -35,7 +36,15 @@ export default function AffiliatePage() {
   const monthlyIncome = (standardReferrals * standardCommission) + (familyPackReferrals * familyPackCommission);
   const yearlyIncome = monthlyIncome * 12;
 
-  const canonicalUrl = 'https://www.purrify.ca/affiliate';
+  // Use enhanced SEO hook
+  const { nextSeoProps } = useEnhancedSEO({
+    path: '/affiliate',
+    title: t.affiliate?.metaTitle || 'Purrify Affiliate Program',
+    description: t.affiliate?.metaDescription || 'Earn up to 30% commission promoting Purrify cat litter freshener.',
+    targetKeyword: 'affiliate program pet products',
+    image: 'https://www.purrify.ca/optimized/purrify-affiliate-program.webp',
+    keywords: ['affiliate program', 'pet products affiliate', 'cat litter affiliate', 'earn commission'],
+  });
 
   // Handle missing translations gracefully - show error page instead of crashing
   if (!t.affiliate) {
@@ -60,24 +69,7 @@ export default function AffiliatePage() {
 
   return (
     <div className="bg-gray-950 min-h-screen text-gray-50 dark:text-gray-50 selection:bg-blue-500/30">
-      <NextSeo
-        title={t.affiliate.metaTitle}
-        description={t.affiliate.metaDescription}
-        canonical={canonicalUrl}
-        openGraph={{
-          title: t.affiliate.metaTitle,
-          description: t.affiliate.metaDescription,
-          url: canonicalUrl,
-          images: [
-            {
-              url: 'https://www.purrify.ca/optimized/purrify-affiliate-program.webp',
-              width: 1200,
-              height: 630,
-              alt: 'Purrify Affiliate Program',
-            },
-          ],
-        }}
-      />
+      <NextSeo {...nextSeoProps} />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-32 pb-20 lg:pt-48 lg:pb-32">

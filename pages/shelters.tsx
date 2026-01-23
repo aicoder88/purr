@@ -14,12 +14,16 @@ import {
   Cat,
   Home,
   Sparkles,
-  HeartHandshake
+  HeartHandshake,
+  Scissors,
+  TrendingUp,
+  ShoppingBag,
+  ChevronRight
 } from 'lucide-react';
 import { useCallback, useState, FormEvent } from 'react';
-import { buildAvailabilityUrl, getPriceValidityDate } from '../src/lib/seo-utils';
-import { CONTACT_INFO, PHONE_MESSAGING } from '../src/lib/constants';
+import { CONTACT_INFO, PHONE_MESSAGING, SITE_NAME } from '../src/lib/constants';
 import { B2BCaseStudies } from '../src/components/sections/b2b-case-studies';
+import { useEnhancedSEO } from '../src/hooks/useEnhancedSEO';
 
 export default function SheltersPage() {
   const { t, locale } = useTranslation();
@@ -100,9 +104,26 @@ export default function SheltersPage() {
     ? 'Programme exclusif pour refuges et organisations de sauvetage. Tarifs de volume, options de dons et support pour les refuges animaliers au Canada.'
     : 'Exclusive program for animal shelters and rescue organizations. Volume discounts, donation matching, and support for shelters across Canada.');
 
-  const canonicalUrl = `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}shelters`;
-  const priceValidUntil = getPriceValidityDate();
-  const availabilityUrl = buildAvailabilityUrl();
+  // Enhanced SEO with organization schema and breadcrumbs
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/shelters',
+    title: `${SITE_NAME} - ${pageTitle}`,
+    description: pageDescription,
+    targetKeyword: 'animal shelter partnership',
+    keywords: locale === 'fr'
+      ? ['Purrify refuges', 'charbon actif refuge', 'litière refuge', 'programme refuges', 'don refuge chat', 'partenariat refuge']
+      : ['Purrify shelters', 'activated carbon shelter', 'shelter litter additive', 'shelter program', 'cat rescue donation', 'shelter partnership'],
+    schemaType: 'organization',
+    schemaData: {
+      description: 'Premium activated carbon cat litter additive manufacturer offering special programs for animal shelters and rescue organizations',
+      contactPoint: {
+        telephone: CONTACT_INFO.phone,
+        type: 'sales',
+        email: 'partners@purrify.ca'
+      }
+    },
+    includeBreadcrumb: true
+  });
 
   // Shelter-specific challenges
   const shelterChallenges = [
@@ -225,71 +246,61 @@ export default function SheltersPage() {
     }
   ];
 
-  // Structured data for Shelter Program page
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": pageTitle,
-    "description": pageDescription,
-    "url": canonicalUrl,
-    "mainEntity": {
-      "@type": "Organization",
-      "name": "Purrify",
-      "description": "Premium activated carbon cat litter additive manufacturer offering special programs for animal shelters",
-      "offers": {
-        "@type": "Offer",
-        "name": "Shelter Partnership Program",
-        "description": "Volume discounts and donation matching for registered animal shelters and rescues",
-        "category": "Nonprofit/Shelter Program",
-        "eligibility": "Registered animal shelters, rescues, and humane societies",
-        "availability": availabilityUrl,
-        "priceValidUntil": priceValidUntil
-      }
-    }
-  };
-
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        openGraph={{
-          type: 'website',
-          url: canonicalUrl,
-          title: pageTitle,
-          description: pageDescription,
-          images: [
-            {
-              url: 'https://www.purrify.ca/images/shelters-partnership.jpg',
-              width: 1200,
-              height: 630,
-              alt: locale === 'fr'
-                ? 'Programme partenaire Purrify pour refuges animaliers'
-                : 'Purrify shelter partnership program for animal rescues',
-            },
-          ],
-        }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: locale === 'fr'
-              ? 'Purrify refuges, charbon actif refuge, litière refuge, programme refuges, don refuge chat, partenariat refuge'
-              : 'Purrify shelters, activated carbon shelter, shelter litter additive, shelter program, cat rescue donation, shelter partnership',
-          },
-          {
-            name: 'robots',
-            content: 'index, follow'
-          }
-        ]}
-      />
+      <NextSeo {...nextSeoProps} />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      )}
 
       <div className="max-w-7xl mx-auto px-4 py-12 bg-white dark:bg-gray-900 min-h-screen">
+        {/* Breadcrumb Navigation */}
+        {breadcrumb && breadcrumb.items.length > 1 && (
+          <nav
+            aria-label="Breadcrumb"
+            className="mb-6"
+          >
+            <ol className="flex items-center space-x-2 text-sm">
+              {breadcrumb.items.map((item, index) => {
+                const isLast = index === breadcrumb.items.length - 1;
+                return (
+                  <li key={item.path} className="flex items-center">
+                    {index > 0 && (
+                      <ChevronRight className="h-4 w-4 mx-2 text-gray-400 dark:text-gray-500" />
+                    )}
+                    {index === 0 ? (
+                      <Link
+                        href={item.path}
+                        className="text-gray-600 dark:text-gray-400 hover:text-pink-600 dark:hover:text-pink-400 transition-colors"
+                      >
+                        <Home className="h-4 w-4" />
+                        <span className="sr-only">{item.name}</span>
+                      </Link>
+                    ) : isLast ? (
+                      <span
+                        className="font-medium text-gray-900 dark:text-gray-100"
+                        aria-current="page"
+                      >
+                        {item.name}
+                      </span>
+                    ) : (
+                      <Link
+                        href={item.path}
+                        className="text-gray-600 dark:text-gray-400 hover:text-pink-600 dark:hover:text-pink-400 transition-colors"
+                      >
+                        {item.name}
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
+            </ol>
+          </nav>
+        )}
         {/* Hero Section */}
         <section className="text-center mb-16">
           <div className="max-w-4xl mx-auto">
@@ -705,6 +716,70 @@ export default function SheltersPage() {
                   </div>
                 </div>
               )}
+            </div>
+          </div>
+        </section>
+
+        {/* Related Programs */}
+        <section className="py-12 md:py-16 bg-gray-100 dark:bg-gray-800/50 rounded-2xl mb-8">
+          <div className="max-w-4xl mx-auto px-4">
+            <div className="text-center mb-8">
+              <h2 className="font-heading text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                {locale === 'fr' ? 'Découvrez Nos Autres Programmes' : locale === 'zh' ? '探索我们的其他计划' : 'Explore Our Other Programs'}
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300 text-sm">
+                {locale === 'fr' ? 'Programmes de partenariat pour différents types d\'entreprises' : locale === 'zh' ? '为不同类型的企业提供合作伙伴计划' : 'Partnership programs for different business types'}
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-4">
+              <Link
+                href="/groomers"
+                className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-pink-300 dark:hover:border-pink-600 hover:shadow-md transition-all group"
+              >
+                <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Scissors className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-900 dark:text-white group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">
+                    {locale === 'fr' ? 'Pour Toiletteurs' : locale === 'zh' ? '宠物美容师计划' : 'For Groomers'}
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">
+                    {locale === 'fr' ? 'Vente additionnelle' : locale === 'zh' ? '附加销售' : 'Add-on sales'}
+                  </div>
+                </div>
+              </Link>
+              <Link
+                href="/retailers"
+                className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-pink-300 dark:hover:border-pink-600 hover:shadow-md transition-all group"
+              >
+                <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                  <ShoppingBag className="h-5 w-5 text-green-600 dark:text-green-400" />
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-900 dark:text-white group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">
+                    {locale === 'fr' ? 'Pour Détaillants' : locale === 'zh' ? '零售商计划' : 'For Retailers'}
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">
+                    {locale === 'fr' ? 'Prix de gros' : locale === 'zh' ? '批发定价' : 'Wholesale pricing'}
+                  </div>
+                </div>
+              </Link>
+              <Link
+                href="/affiliate"
+                className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-pink-300 dark:hover:border-pink-600 hover:shadow-md transition-all group"
+              >
+                <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                  <TrendingUp className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-900 dark:text-white group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">
+                    {locale === 'fr' ? 'Programme Affiliation' : locale === 'zh' ? '联盟计划' : 'Affiliate Program'}
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">
+                    {locale === 'fr' ? '30% commission' : locale === 'zh' ? '30% 佣金' : '30% commission'}
+                  </div>
+                </div>
+              </Link>
             </div>
           </div>
         </section>

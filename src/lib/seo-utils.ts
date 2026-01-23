@@ -580,6 +580,10 @@ export const generateOfferSchema = (product: Product, localeInput: string, curre
         value: '0',
         currency: currency
       },
+      shippingDestination: {
+        '@type': 'DefinedRegion',
+        addressCountry: currency === 'USD' ? 'US' : 'CA'
+      },
       deliveryTime: {
         '@type': 'ShippingDeliveryTime',
         handlingTime: {

@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '../src/components/ui/container';
@@ -6,18 +6,51 @@ import { SITE_NAME, TESTIMONIALS } from '../src/lib/constants';
 import { useTranslation } from '../src/lib/translation-context';
 import { useCurrency } from '../src/lib/currency-context';
 
-import { Star, Quote, CheckCircle, Users, Clock, Sparkles, ArrowRight, Shield, Zap } from 'lucide-react';
+import { Star, Quote, CheckCircle, Users, Clock, Sparkles, ArrowRight, Shield, Zap, Home, ChevronRight } from 'lucide-react';
 import { COLORS, GRADIENTS, createCardClasses, createSectionClasses } from '../src/lib/theme-utils';
 import { generateStarRating, generateAvatarUrl } from '../src/lib/component-utils';
-import { getLocalizedUrl, buildLanguageAlternates } from '../src/lib/seo-utils';
+import { generateJSONLD } from '../src/lib/seo-utils';
+import { useEnhancedSEO } from '../src/hooks/useEnhancedSEO';
 
 export default function Results() {
   const { t, locale } = useTranslation();
   const { currency } = useCurrency();
   const r = t.results || {};
 
-  const canonicalUrl = getLocalizedUrl('/results', locale);
-  const languageAlternates = buildLanguageAlternates('/results');
+  const pageTitle = `${r?.meta?.title || 'Real Results From Real Cat Parents'} | ${SITE_NAME}`;
+  const pageDescription = r?.meta?.description || 'See how 1,000+ cat owners eliminated litter box odor with Purrify. Real testimonials, verified reviews, and proven results from happy cat parents across Canada.';
+
+  // Use enhanced SEO hook for automated optimization
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/results',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'purrify results',
+    schemaType: 'product',
+    schemaData: {
+      name: 'Purrify Cat Litter Deodorizer',
+      description: 'Activated carbon cat litter additive that eliminates odors naturally',
+      brand: 'Purrify',
+      price: '4.76',
+      priceCurrency: currency,
+      availability: 'InStock',
+      aggregateRating: {
+        ratingValue: 4.9,
+        reviewCount: 138,
+        bestRating: 5,
+        worstRating: 1,
+      },
+    },
+    keywords: [
+      'purrify results',
+      'cat litter reviews',
+      'testimonials',
+      'before after',
+      'customer reviews',
+      'verified reviews',
+    ],
+    includeBreadcrumb: true,
+  });
 
   // Stats data
   const stats = [
@@ -75,67 +108,48 @@ export default function Results() {
 
   return (
     <>
-      <Head>
-        <title>{`${r?.meta?.title || 'Real Results From Real Cat Parents'} | ${SITE_NAME}`}</title>
-        <meta
-          name="description"
-          content={r?.meta?.description || 'See how 1,000+ cat owners eliminated litter box odor with Purrify. Real testimonials, verified reviews, and proven results from happy cat parents across Canada.'}
-        />
-        <meta name="keywords" content="Purrify results, cat litter reviews, testimonials, before after, customer reviews, verified reviews, social proof" />
+      <NextSeo {...nextSeoProps} />
 
-        {/* Open Graph */}
-        <meta property="og:title" content={r?.meta?.title || 'Real Results From Real Cat Parents'} />
-        <meta property="og:description" content={r?.meta?.description || 'See how 1,000+ cat owners eliminated litter box odor with Purrify.'} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://www.purrify.ca/optimized/three_bags_no_bg.webp" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={r?.meta?.title || 'Real Results From Real Cat Parents'} />
-        <meta name="twitter:description" content={r?.meta?.description || 'See how 1,000+ cat owners eliminated litter box odor with Purrify.'} />
-        <meta name="twitter:image" content="https://www.purrify.ca/optimized/three_bags_no_bg.webp" />
-
-        {/* Canonical and Language Alternates */}
-        <link rel="canonical" href={canonicalUrl} />
-        {languageAlternates.map((alt) => (
-          <link key={alt.hrefLang} rel="alternate" hrefLang={alt.hrefLang} href={alt.href} />
-        ))}
-
-        {/* Structured Data - AggregateRating */}
+      {/* Auto-generated Product Schema with Breadcrumb */}
+      {schema && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Product',
-              name: 'Purrify Cat Litter Deodorizer',
-              description: 'Activated carbon cat litter additive that eliminates odors naturally',
-              brand: {
-                '@type': 'Brand',
-                name: 'Purrify',
-              },
-              aggregateRating: {
-                '@type': 'AggregateRating',
-                ratingValue: '4.9',
-                reviewCount: '138',
-                bestRating: '5',
-                worstRating: '1',
-              },
-              offers: {
-                '@type': 'AggregateOffer',
-                priceCurrency: currency,
-                lowPrice: '4.76',
-                highPrice: '34.99',
-                offerCount: '3',
-                availability: 'https://schema.org/InStock',
-              },
-            }),
-          }}
+          dangerouslySetInnerHTML={generateJSONLD(schema)}
         />
-      </Head>
+      )}
 
       <main className={createSectionClasses('light')}>
+        {/* Breadcrumb Navigation */}
+        <section className="py-4 border-b border-gray-200 dark:border-gray-800">
+          <Container>
+            <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
+              <Link
+                href={locale === 'fr' ? '/fr' : '/'}
+                className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+              >
+                <Home className="w-4 h-4" />
+              </Link>
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span className="font-medium text-gray-900 dark:text-gray-100">
+                      {item.name}
+                    </span>
+                  ) : (
+                    <Link
+                      href={item.path}
+                      className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </span>
+              ))}
+            </nav>
+          </Container>
+        </section>
+
         {/* Hero Section */}
         <section className="pt-12 pb-16 md:pt-16 md:pb-24">
           <Container>
@@ -393,6 +407,17 @@ export default function Results() {
                   <Star className="w-4 h-4 text-yellow-400 dark:text-yellow-300 fill-current" />
                   <span className={COLORS.text.tertiary}>{r?.cta?.trust3 || '4.9/5 Rating'}</span>
                 </div>
+              </div>
+
+              {/* Link to Reviews */}
+              <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                <Link
+                  href="/reviews"
+                  className="inline-flex items-center gap-2 text-sm text-[#FF3131] dark:text-[#FF5050] hover:underline font-medium"
+                >
+                  <Quote className="w-4 h-4" />
+                  {locale === 'fr' ? 'Voir tous les avis clients →' : locale === 'zh' ? '查看所有客户评价 →' : 'Read all customer reviews →'}
+                </Link>
               </div>
             </div>
           </Container>

@@ -6,9 +6,10 @@ import { useCurrency } from '../../src/lib/currency-context';
 import { SITE_NAME } from '../../src/lib/constants';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, Microscope, Zap, Shield, Leaf, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Microscope, Zap, Shield, Leaf, ChevronRight, Home } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { formatProductPrice } from '../../src/lib/pricing';
+import { getPaymentLink } from '../../src/lib/payment-links';
 import { generateJSONLD } from '../../src/lib/seo-utils';
 import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
@@ -16,18 +17,19 @@ export default function HowItWorksPage() {
   const { t, locale } = useTranslation();
   const { currency } = useCurrency();
   const trialPrice = formatProductPrice('trial', currency, locale);
+  const trialCheckoutUrl = getPaymentLink('trialSingle') || '/products/trial-size';
   const trialSizeCtaLabel =
     locale === 'fr'
-      ? `Essayer le format d'essai - ${trialPrice} (livraison incluse)`
+      ? `Envoyer Mon Essai GRATUIT - ${trialPrice}`
       : locale === 'zh'
-        ? `体验试用装 - ${trialPrice}（含运费）`
-        : `Try Trial Size - ${trialPrice} (shipping included)`;
+        ? `发送我的免费试用 - ${trialPrice}`
+        : `Send My FREE Trial - ${trialPrice}`;
 
   const pageTitle = `How Purrify Works - ${SITE_NAME} Activated Carbon Science`;
   const pageDescription = "Discover the science behind Purrify's activated carbon technology. Learn how micropores trap odor molecules at the source for superior cat litter odor control.";
 
   // Use enhanced SEO hook for automated optimization
-  const { nextSeoProps, schema } = useEnhancedSEO({
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
     path: '/learn/how-it-works',
     title: pageTitle,
     description: pageDescription,
@@ -42,6 +44,7 @@ export default function HowItWorksPage() {
     },
     image: 'https://www.purrify.ca/optimized/micropores_magnified_view.webp',
     keywords: ['how activated carbon works', 'cat litter odor control', 'activated carbon science', 'molecular adsorption', 'pet odor elimination'],
+    includeBreadcrumb: true,
   });
 
   const sciencePoints = [
@@ -122,31 +125,41 @@ export default function HowItWorksPage() {
       {schema && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+          dangerouslySetInnerHTML={generateJSONLD(schema)}
         />
       )}
 
       <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
         {/* Breadcrumb Navigation */}
-        <Container>
-          <nav className="py-4 text-sm">
-            <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
-              <li>
-                <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
-                  {t.nav?.home || 'Home'}
-                </Link>
-              </li>
-              <li>/</li>
-              <li>
-                <span className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
-                  Learn
+        <section className="py-4 border-b border-gray-200 dark:border-gray-800">
+          <Container>
+            <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
+              <Link
+                href={locale === 'fr' ? '/fr' : '/'}
+                className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+              >
+                <Home className="w-4 h-4" />
+              </Link>
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span className="font-medium text-gray-900 dark:text-gray-100">
+                      {item.name}
+                    </span>
+                  ) : (
+                    <Link
+                      href={item.path}
+                      className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  )}
                 </span>
-              </li>
-              <li>/</li>
-              <li className="text-[#FF3131] dark:text-[#FF5050] font-medium">How It Works</li>
-            </ol>
-          </nav>
-        </Container>
+              ))}
+            </nav>
+          </Container>
+        </section>
 
         {/* Hero Section */}
         <section className="py-16">
@@ -320,12 +333,12 @@ export default function HowItWorksPage() {
                 Try Purrify's activated carbon technology risk-free with our trial size
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={`${locale !== 'en' ? `/${locale}` : ''}/products/trial-size`}>
+                <a href={trialCheckoutUrl} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
                     {trialSizeCtaLabel}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
-                </Link>
+                </a>
                 <Link href={`${locale !== 'en' ? `/${locale}` : ''}/#products`}>
                   <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
                     View All Products

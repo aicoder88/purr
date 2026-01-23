@@ -16,12 +16,14 @@ import {
   Star,
   Sparkles,
   MessageCircle,
-  ShoppingBag
+  ShoppingBag,
+  ChevronRight,
+  Home
 } from 'lucide-react';
 import { useCallback, useState } from 'react';
-import { buildAvailabilityUrl, getPriceValidityDate, buildLanguageAlternates, getLocalizedUrl } from '../src/lib/seo-utils';
 import { CONTACT_INFO, PHONE_MESSAGING, SITE_NAME } from '../src/lib/constants';
 import { formatProductPrice } from '../src/lib/pricing';
+import { useEnhancedSEO } from '../src/hooks/useEnhancedSEO';
 
 export default function GroomersPage() {
   const { t, locale } = useTranslation();
@@ -152,82 +154,93 @@ export default function GroomersPage() {
     }
   };
 
-  const pageTitle = `${SITE_NAME} - ${groomers.seo.pageTitle}`;
-  const pageDescription = groomers.seo.description;
-  const canonicalUrl = getLocalizedUrl('/groomers', locale);
-  const languageAlternates = buildLanguageAlternates('/groomers');
-  const priceValidUntil = getPriceValidityDate();
-  const availabilityUrl = buildAvailabilityUrl();
-
   // Product pricing
   const trialPrice = formatProductPrice('trial', locale);
   const standardPrice = formatProductPrice('standard', locale);
   const familyPrice = formatProductPrice('family', locale);
 
-  // Structured data for Groomers B2B page
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": pageTitle,
-    "description": pageDescription,
-    "url": canonicalUrl,
-    "mainEntity": {
-      "@type": "Organization",
-      "name": "Purrify",
-      "description": "Premium activated carbon cat litter additive manufacturer seeking groomer partners",
-      "offers": {
-        "@type": "Offer",
-        "name": "Groomer Partnership Program",
-        "description": "Retail partnership program for pet groomers with wholesale pricing and marketing support",
-        "category": "Wholesale/B2B Program",
-        "eligibility": "Pet groomers and grooming salons",
-        "availability": availabilityUrl,
-        "priceValidUntil": priceValidUntil
+  // Enhanced SEO with organization schema and breadcrumbs
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/groomers',
+    title: `${SITE_NAME} - ${groomers.seo.pageTitle}`,
+    description: groomers.seo.description,
+    targetKeyword: 'pet groomer partnership',
+    keywords: groomers.seo.keywords?.split(', ') || [
+      'pet groomer wholesale',
+      'grooming salon products',
+      'cat litter additive wholesale',
+      'groomer retail partnership'
+    ],
+    schemaType: 'organization',
+    schemaData: {
+      description: 'Premium activated carbon cat litter additive manufacturer offering wholesale partnership programs for pet groomers',
+      contactPoint: {
+        telephone: CONTACT_INFO.phone,
+        type: 'sales',
+        email: 'partners@purrify.ca'
       }
-    }
-  };
+    },
+    includeBreadcrumb: true
+  });
 
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          type: 'website',
-          url: canonicalUrl,
-          title: pageTitle,
-          description: pageDescription,
-          locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : 'en_CA',
-          images: [
-            {
-              url: 'https://www.purrify.ca/purrify-logo.png',
-              width: 1200,
-              height: 630,
-              alt: `${SITE_NAME} - ${groomers.seo.openGraphAlt}`,
-              type: 'image/png',
-            }
-          ],
-        }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: groomers.seo.keywords,
-          },
-          {
-            name: 'robots',
-            content: 'index, follow',
-          },
-        ]}
-      />
+      <NextSeo {...nextSeoProps} />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      )}
 
       <main className="min-h-screen bg-white dark:bg-gray-900">
+        {/* Breadcrumb Navigation */}
+        {breadcrumb && breadcrumb.items.length > 1 && (
+          <nav
+            aria-label="Breadcrumb"
+            className="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-700"
+          >
+            <div className="max-w-7xl mx-auto px-4 py-3">
+              <ol className="flex items-center space-x-2 text-sm">
+                {breadcrumb.items.map((item, index) => {
+                  const isLast = index === breadcrumb.items.length - 1;
+                  return (
+                    <li key={item.path} className="flex items-center">
+                      {index > 0 && (
+                        <ChevronRight className="h-4 w-4 mx-2 text-gray-400 dark:text-gray-500" />
+                      )}
+                      {index === 0 ? (
+                        <Link
+                          href={item.path}
+                          className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                        >
+                          <Home className="h-4 w-4" />
+                          <span className="sr-only">{item.name}</span>
+                        </Link>
+                      ) : isLast ? (
+                        <span
+                          className="font-medium text-gray-900 dark:text-gray-100"
+                          aria-current="page"
+                        >
+                          {item.name}
+                        </span>
+                      ) : (
+                        <Link
+                          href={item.path}
+                          className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                        >
+                          {item.name}
+                        </Link>
+                      )}
+                    </li>
+                  );
+                })}
+              </ol>
+            </div>
+          </nav>
+        )}
+
         {/* Hero Section */}
         <section className="relative py-16 md:py-24 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
           <div className="max-w-7xl mx-auto px-4">
@@ -742,6 +755,70 @@ export default function GroomersPage() {
                   </div>
                 </div>
               )}
+            </div>
+          </div>
+        </section>
+
+        {/* Related Programs */}
+        <section className="py-12 md:py-16 bg-gray-100 dark:bg-gray-800/50">
+          <div className="max-w-4xl mx-auto px-4">
+            <div className="text-center mb-8">
+              <h2 className="font-heading text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                {locale === 'fr' ? 'Découvrez Nos Autres Programmes' : locale === 'zh' ? '探索我们的其他计划' : 'Explore Our Other Programs'}
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300 text-sm">
+                {locale === 'fr' ? 'Programmes de partenariat pour différents types d\'entreprises' : locale === 'zh' ? '为不同类型的企业提供合作伙伴计划' : 'Partnership programs for different business types'}
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-4">
+              <Link
+                href="/shelters"
+                className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-purple-300 dark:hover:border-purple-600 hover:shadow-md transition-all group"
+              >
+                <div className="w-10 h-10 bg-pink-100 dark:bg-pink-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Users className="h-5 w-5 text-pink-600 dark:text-pink-400" />
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                    {locale === 'fr' ? 'Pour Refuges' : locale === 'zh' ? '动物收容所计划' : 'For Shelters'}
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">
+                    {locale === 'fr' ? 'Programme de dons' : locale === 'zh' ? '捐赠计划' : 'Donation program'}
+                  </div>
+                </div>
+              </Link>
+              <Link
+                href="/retailers"
+                className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-purple-300 dark:hover:border-purple-600 hover:shadow-md transition-all group"
+              >
+                <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                  <ShoppingBag className="h-5 w-5 text-green-600 dark:text-green-400" />
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                    {locale === 'fr' ? 'Pour Détaillants' : locale === 'zh' ? '零售商计划' : 'For Retailers'}
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">
+                    {locale === 'fr' ? 'Prix de gros' : locale === 'zh' ? '批发定价' : 'Wholesale pricing'}
+                  </div>
+                </div>
+              </Link>
+              <Link
+                href="/affiliate"
+                className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-purple-300 dark:hover:border-purple-600 hover:shadow-md transition-all group"
+              >
+                <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                  <TrendingUp className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                    {locale === 'fr' ? 'Programme Affiliation' : locale === 'zh' ? '联盟计划' : 'Affiliate Program'}
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">
+                    {locale === 'fr' ? '30% commission' : locale === 'zh' ? '30% 佣金' : '30% commission'}
+                  </div>
+                </div>
+              </Link>
             </div>
           </div>
         </section>

@@ -1,22 +1,22 @@
 import { NextSeo } from 'next-seo';
 import Head from 'next/head';
+import Link from 'next/link';
 import { useTranslation } from '../src/lib/translation-context';
-import { SITE_NAME } from '../src/lib/constants';
+import { SITE_NAME, CONTACT_INFO } from '../src/lib/constants';
+import { ChevronRight, Home } from 'lucide-react';
 
 // Retailer-specific components
 import { RetailerHero } from '../src/components/sections/retailer-hero';
 import { WholesalePricing } from '../src/components/sections/wholesale-pricing';
 import { RetailerContact } from '../src/components/sections/retailer-contact';
 import { ClientLocationsMap } from '../src/components/maps/ClientLocationsMap';
-import { buildLanguageAlternates, getLocalizedUrl } from '../src/lib/seo-utils';
+import { getLocalizedUrl } from '../src/lib/seo-utils';
 import { Stores } from '../src/components/sections/stores';
+import { useEnhancedSEO } from '../src/hooks/useEnhancedSEO';
 
 export default function RetailersPage() {
   const { t, locale } = useTranslation();
-  const pageTitle = `${SITE_NAME} - ${t.retailers.seo.pageTitle}`;
-  const pageDescription = t.retailers.seo.description;
   const canonicalUrl = getLocalizedUrl('/retailers', locale);
-  const languageAlternates = buildLanguageAlternates('/retailers');
 
   // Retailer-focused FAQs for schema
   const retailerFaqs = [
@@ -42,61 +42,39 @@ export default function RetailersPage() {
     }
   ];
 
+  // Enhanced SEO with FAQ schema and breadcrumbs
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/retailers',
+    title: `${SITE_NAME} - ${t.retailers.seo.pageTitle}`,
+    description: t.retailers.seo.description,
+    targetKeyword: 'wholesale cat litter',
+    keywords: t.retailers.seo.keywords?.split(', ') || [
+      'wholesale pet products',
+      'cat litter wholesale Canada',
+      'pet store supplier',
+      'wholesale pet supplies'
+    ],
+    schemaType: 'faq',
+    schemaData: {
+      questions: retailerFaqs
+    },
+    includeBreadcrumb: true
+  });
+
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          type: 'website',
-          url: canonicalUrl,
-          title: pageTitle,
-          description: pageDescription,
-          locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : 'en_CA',
-          images: [
-            {
-              url: 'https://www.purrify.ca/purrify-logo.png',
-              width: 1200,
-              height: 630,
-              alt: `${SITE_NAME} - ${t.retailers.seo.openGraphAlt}`,
-              type: 'image/png',
-            }
-          ],
-        }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: t.retailers.seo.keywords,
-          },
-          {
-            name: 'robots',
-            content: 'index, follow',
-          },
-        ]}
-      />
+      <NextSeo {...nextSeoProps} />
 
-      <Head>
-        {/* FAQ Schema for Retailer Questions */}
+      {/* FAQ Schema + Breadcrumbs from useEnhancedSEO */}
+      {schema && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'FAQPage',
-              mainEntity: retailerFaqs.map(faq => ({
-                '@type': 'Question',
-                name: faq.question,
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: faq.answer
-                }
-              }))
-            })
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
-        {/* Organization Schema for B2B */}
+      )}
+
+      <Head>
+        {/* Organization Schema for B2B Wholesale */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -140,6 +118,50 @@ export default function RetailersPage() {
       </Head>
 
       <main className="min-h-screen bg-white dark:bg-gray-900">
+        {/* Breadcrumb Navigation */}
+        {breadcrumb && breadcrumb.items.length > 1 && (
+          <div className="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-700">
+            <div className="max-w-7xl mx-auto px-4">
+              <nav aria-label="Breadcrumb" className="py-3">
+                <ol className="flex items-center space-x-2 text-sm">
+                  {breadcrumb.items.map((item, index) => {
+                    const isLast = index === breadcrumb.items.length - 1;
+                    return (
+                      <li key={item.path} className="flex items-center">
+                        {index > 0 && (
+                          <ChevronRight className="h-4 w-4 mx-2 text-gray-400 dark:text-gray-500" />
+                        )}
+                        {index === 0 ? (
+                          <Link
+                            href={item.path}
+                            className="text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+                          >
+                            <Home className="h-4 w-4" />
+                            <span className="sr-only">{item.name}</span>
+                          </Link>
+                        ) : isLast ? (
+                          <span
+                            className="font-medium text-gray-900 dark:text-gray-100"
+                            aria-current="page"
+                          >
+                            {item.name}
+                          </span>
+                        ) : (
+                          <Link
+                            href={item.path}
+                            className="text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+                          >
+                            {item.name}
+                          </Link>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ol>
+              </nav>
+            </div>
+          </div>
+        )}
         <RetailerHero />
 
         <WholesalePricing />

@@ -30,6 +30,13 @@ export interface TranslationType {
     wholesalePricing: string;
     becomePartner: string;
     marketingSupport: string;
+    // Partner Programs
+    partnerPrograms?: string;
+    forGroomers?: string;
+    forShelters?: string;
+    affiliateProgram?: string;
+    b2bInquiry?: string;
+    customerReviews?: string;
     shipsToUSA?: string;
     // Learn dropdown items
     safetyInfo?: string;
@@ -50,6 +57,11 @@ export interface TranslationType {
     toggleTheme?: string;
     signOut?: string;
     signedIn?: string;
+    // B2B pivot keys
+    findStore?: string;
+    findNearYou?: string;
+    whereToBuy?: string;
+    askForPurrify?: string;
   };
 
   // Locations Menu
@@ -124,7 +136,6 @@ export interface TranslationType {
       soldThisWeek: string;
       limitedStock: string;
       moneyBackGuarantee: string;
-      freeShippingOver: string;
     };
   };
 
@@ -308,6 +319,10 @@ export interface TranslationType {
     quantity?: string;
     decreaseQuantity?: string;
     increaseQuantity?: string;
+    // B2B pivot keys
+    findNearYou?: string;
+    askYourStore?: string;
+    availableAtStores?: string;
   };
 
   pricing?: {
@@ -384,6 +399,11 @@ export interface TranslationType {
     buttonText: string;
     joinText: string;
     guarantee: string;
+    // B2B pivot keys
+    b2bTitle?: string;
+    b2bSubtitle?: string;
+    b2bButtonText?: string;
+    b2bGuarantee?: string;
   };
 
   // FAQ
@@ -649,9 +669,17 @@ export interface TranslationType {
     about: string;
     blog: string;
     locations: string;
+    stockists: string;
     testimonials: string;
     retailers: string;
+    retailerPortal: string;
+    hospitality: string;
+    groomers?: string;
+    shelters: string;
+    b2bInquiry?: string;
+    invest: string;
     affiliateProgram: string;
+    results?: string;
     contact: string;
     privacyPolicy: string;
     termsOfService: string;
@@ -848,6 +876,97 @@ export interface TranslationType {
       description: string;
       link: string;
     }>;
+  };
+
+  // Products Page - Direct Response Copywriting Style
+  productsPage?: {
+    hero?: {
+      headline: string;
+      subheadline: string;
+      supporting: string;
+    };
+    quickDecision?: {
+      title: string;
+      subtitle: string;
+      trial?: {
+        question: string;
+        answer: string;
+        detail: string;
+      };
+      regular?: {
+        question: string;
+        answer: string;
+        detail: string;
+      };
+      large?: {
+        question: string;
+        answer: string;
+        detail: string;
+      };
+    };
+    trustSignals?: {
+      waterFilter?: {
+        title: string;
+        description: string;
+      };
+      ingredients?: {
+        title: string;
+        description: string;
+      };
+      science?: {
+        title: string;
+        description: string;
+      };
+    };
+    products?: {
+      trial?: {
+        name: string;
+        subtitle: string;
+        features: string[];
+        bestFor: string;
+      };
+      regular?: {
+        name: string;
+        subtitle: string;
+        features: string[];
+        bestFor: string;
+      };
+      large?: {
+        name: string;
+        subtitle: string;
+        features: string[];
+        bestFor: string;
+      };
+    };
+    whatYouGet?: {
+      title: string;
+      subtitle: string;
+      benefits: Array<{
+        title: string;
+        description: string;
+      }>;
+    };
+    didYouKnow?: {
+      title: string;
+      body: string;
+    };
+    cta?: {
+      title: string;
+      subtitle: string;
+      secondary: string;
+    };
+    relatedPages?: Array<{
+      title: string;
+      description: string;
+      link: string;
+    }>;
+    testimonial?: {
+      quote: string;
+      author: string;
+      location: string;
+      details: string;
+      headline: string;
+    };
   };
 
   // Privacy Policy
@@ -2001,7 +2120,6 @@ export interface TranslationType {
       subheadline: string;
       button: string;
       secondaryButton: string;
-      benefit1: string;
       benefit2: string;
     };
   };

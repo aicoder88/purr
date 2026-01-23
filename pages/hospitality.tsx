@@ -2,6 +2,7 @@ import { NextSeo } from 'next-seo';
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import { useTranslation } from '../src/lib/translation-context';
+import { useEnhancedSEO } from '../src/hooks/useEnhancedSEO';
 import {
   Building2,
   Star,
@@ -527,6 +528,16 @@ export default function Hospitality() {
   const priceValidUntil = getPriceValidityDate();
   const availabilityUrl = buildAvailabilityUrl();
 
+  // Use enhanced SEO hook
+  const { nextSeoProps } = useEnhancedSEO({
+    path: '/hospitality',
+    title: t.pageTitle,
+    description: t.pageDescription,
+    targetKeyword: 'pet friendly vacation rental',
+    image: 'https://www.purrify.ca/images/b2b-partnership.jpg',
+    keywords: ['pet friendly airbnb', 'vacation rental pet odor', 'airbnb pet policy', 'rental property odor control'],
+  });
+
   // Structured data for hospitality page
   const structuredData = {
     "@context": "https://schema.org",
@@ -552,35 +563,7 @@ export default function Hospitality() {
 
   return (
     <>
-      <NextSeo
-        title={t.pageTitle}
-        description={t.pageDescription}
-        canonical={canonicalUrl}
-        openGraph={{
-          type: 'website',
-          url: canonicalUrl,
-          title: t.pageTitle,
-          description: t.pageDescription,
-          images: [
-            {
-              url: 'https://www.purrify.ca/images/b2b-partnership.jpg',
-              width: 1200,
-              height: 630,
-              alt: 'Purrify for pet-friendly vacation rentals and Airbnb hosts',
-            },
-          ],
-        }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: 'pet friendly airbnb, vacation rental pet odor, airbnb pet policy, rental property odor control, pet fee vacation rental, short term rental cleaning, hospitality odor solution',
-          },
-          {
-            name: 'robots',
-            content: 'index, follow'
-          }
-        ]}
-      />
+      <NextSeo {...nextSeoProps} />
 
       <script
         type="application/ld+json"

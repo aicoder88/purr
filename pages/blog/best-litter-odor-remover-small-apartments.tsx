@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { generateJSONLD } from '../../src/lib/seo-utils';
 import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
+import { StructuredDataGenerator } from '../../src/lib/seo/structured-data-generator';
 
 // Relevant images for small apartment cat odor control
 const heroImage = '/blog/small-apartment/hero.png';
@@ -44,7 +45,34 @@ export default function BestForSmallApartments() {
       'urban cat litter solutions',
       'small space pet odor',
     ],
+    includeBreadcrumb: true,
   });
+
+  // FAQ data for both schema and display
+  const structuredDataGenerator = new StructuredDataGenerator();
+  const faqItems = [
+    {
+      question: 'What is the best litter for apartments with no ventilation?',
+      answer: 'Activated carbon litter additives are ideal for apartments with poor ventilation. They trap odor molecules through adsorption rather than masking them, which is crucial when air doesn\'t circulate well. Combined with clumping litter and daily scooping, this provides the most effective odor control in enclosed spaces.',
+    },
+    {
+      question: 'How do I control cat litter smell in a studio apartment?',
+      answer: 'In studio apartments, place the litter box in the bathroom near the exhaust fan, use activated carbon deodorizer daily, scoop twice daily, and keep a small air purifier nearby. The key is preventing odor buildup rather than trying to eliminate strong smells after they develop.',
+    },
+    {
+      question: 'Can I keep a litter box in an apartment with no windows?',
+      answer: 'Yes, but you need to be extra diligent. Use high-quality clumping litter with activated carbon additives, create airflow with fans pointing toward exhaust vents, and maintain a twice-daily scooping routine. An air purifier with carbon filter is also highly recommended.',
+    },
+    {
+      question: 'How often should I change cat litter in a small apartment?',
+      answer: 'In small apartments, fully replace litter every 5-7 days instead of the typical 2 weeks. Scoop at least twice daily. The limited space means odors concentrate faster, so more frequent maintenance is essential for a fresh-smelling home.',
+    },
+    {
+      question: 'Will my neighbors smell my cat litter through the walls?',
+      answer: 'Strong ammonia odors can travel through shared ventilation systems and door gaps. To prevent this, use activated carbon deodorizers that eliminate odors at the source, maintain daily cleaning, and avoid placing the litter box against shared walls. Proper odor control means neighbors won\'t even know you have a cat.',
+    },
+  ];
+  const faqSchema = structuredDataGenerator.generateFAQ(faqItems);
 
   return (
     <>
@@ -54,9 +82,15 @@ export default function BestForSmallApartments() {
       {schema && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+          dangerouslySetInnerHTML={generateJSONLD(schema)}
         />
       )}
+
+      {/* FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: faqSchema }}
+      />
 
       <article className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
         <Container>
@@ -78,7 +112,7 @@ export default function BestForSmallApartments() {
                 Urban Living Solutions
               </div>
               <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
-                Best Cat Litter Odor Remover for Small Apartments: Urban Solutions
+                Best Litter for Apartments With No Ventilation: Small Space Solutions
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 Living in a small apartment doesn't mean compromising on air quality. Discover proven
@@ -537,6 +571,59 @@ export default function BestForSmallApartments() {
                   Start with Purrify's compact 12g size</Link> and experience how professional-grade
                 odor control can transform your small space living experience.
               </p>
+            </div>
+
+            {/* FAQ Section */}
+            <div className="mt-16">
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-8">Frequently Asked Questions</h2>
+              <div className="space-y-6">
+                {faqItems.map((item, index) => (
+                  <div
+                    key={index}
+                    className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700"
+                  >
+                    <h3 className="font-heading text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">
+                      {item.question}
+                    </h3>
+                    <p className="text-gray-700 dark:text-gray-300">{item.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Additional Resources */}
+            <div className="mt-12 bg-gray-50 dark:bg-gray-800/50 rounded-xl p-8">
+              <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6">More Helpful Resources</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/learn/solutions/ammonia-smell-cat-litter" className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-700">
+                  <span className="text-2xl">💨</span>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 dark:text-gray-100">Why Cat Litter Smells Like Ammonia</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Understand the science behind litter box odor</p>
+                  </div>
+                </Link>
+                <Link href="/learn/solutions/multiple-cats-odor-control" className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-700">
+                  <span className="text-2xl">🐱🐱</span>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 dark:text-gray-100">Multi-Cat Odor Control</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Special tips for households with multiple cats</p>
+                  </div>
+                </Link>
+                <Link href="/learn/activated-carbon-benefits" className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-700">
+                  <span className="text-2xl">⚗️</span>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 dark:text-gray-100">How Activated Carbon Works</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">The science of odor elimination</p>
+                  </div>
+                </Link>
+                <Link href="/learn/cat-litter-ammonia-health-risks" className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-700">
+                  <span className="text-2xl">⚠️</span>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 dark:text-gray-100">Ammonia Health Risks</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Why odor control matters for your health</p>
+                  </div>
+                </Link>
+              </div>
             </div>
 
             {/* Related Articles */}

@@ -1,9 +1,10 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { useState } from 'react';
+import Link from 'next/link';
 
 import { useTranslation } from "../../lib/translation-context";
-import { Check, Star, ArrowRight } from 'lucide-react';
+import { Check, Star, ArrowRight, MapPin } from 'lucide-react';
 import Image from 'next/image';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../lib/pricing';
 import { getPaymentLink, PaymentLinkKey } from '../../lib/payment-links';
@@ -21,11 +22,10 @@ const FEATURE_LABELS = {
     prioritySupport: 'Priority Support',
   },
   standard: {
-    odorControl: '3 months of Odor Control',
+    odorControl: '7+ days per application',
     naturalIngredients: '100% Natural',
     easyApplication: 'Easy Application',
     moneyBackGuarantee: '30-Day Guarantee',
-    freeShipping: 'Free Shipping',
     bulkDiscount: 'Bulk Discount',
     prioritySupport: 'Priority Support',
   },
@@ -103,12 +103,12 @@ export function EnhancedProductComparison() {
   const products: ProductCard[] = [
     {
       id: 'purrify-12g',
-      name: t.products?.['purrify-12g']?.name || 'FREE Trial',
-      subtitle: '12g Pack',
+      name: t.products?.['purrify-12g']?.name || 'The Skeptic\'s Sample',
+      subtitle: '12g · One Week of Proof',
       badge: 'FREE TRIAL',
       badgeColor: 'bg-green-600 dark:bg-green-700',
-      description: 'Try Purrify FREE - just pay shipping & handling.',
-      duration: '1 Week',
+      description: 'One sprinkle delivers 7 full days of zero litter box smell. Your nose gets the proof, your wallet risks just $4.76 shipping. Over 1,000 cat parents tried the sample and became customers—now it\'s your turn.',
+      duration: '7+ days',
       coverage: '1 Cat',
       features: {
         odorControl: true,
@@ -139,12 +139,12 @@ export function EnhancedProductComparison() {
     },
     {
       id: 'purrify-120g',
-      name: t.products?.['purrify-120g']?.name || 'Regular',
-      subtitle: '120g Pack',
+      name: t.products?.['purrify-120g']?.name || 'Regular Size',
+      subtitle: '120g · The Goldilocks Bag',
       badge: 'MOST POPULAR',
       badgeColor: 'bg-deep-coral',
-      description: 'The #1 choice for single or dual cat homes.',
-      duration: '3 Months',
+      description: 'Not too little, not too much—this is the size most customers reorder. Lasts 7+ days per application for 1-2 cats. Want it to last longer? Use more. It\'s your litter box, your rules. The perfect amount without waste.',
+      duration: '7+ days per application',
       coverage: '1-2 Cats',
       features: {
         odorControl: true,
@@ -153,7 +153,6 @@ export function EnhancedProductComparison() {
         moneyBackGuarantee: false,
         bulkDiscount: false,
         prioritySupport: false,
-        freeShipping: true,
       },
       image: '/optimized/60g.webp',
       imageSize: 'md',
@@ -178,12 +177,12 @@ export function EnhancedProductComparison() {
     },
     {
       id: 'purrify-240g',
-      name: t.products?.['purrify-240g']?.name || 'Large',
-      subtitle: '240g Pack',
+      name: t.products?.['purrify-240g']?.name || 'Family Size',
+      subtitle: '240g · Best Value Per Gram',
       badge: 'BEST VALUE',
       badgeColor: 'bg-electric-indigo',
-      description: 'Maximum savings for multi-cat households.',
-      duration: '3 Months',
+      description: 'Double the supply at less than double the price—the math just makes sense. Lasts 7+ days per application across multiple litter boxes. Perfect for multi-cat homes that refuse to compromise on freshness. The go-to size for serious odor control.',
+      duration: '7+ days per application',
       coverage: '3+ Cats',
       features: {
         odorControl: true,
@@ -192,7 +191,6 @@ export function EnhancedProductComparison() {
         moneyBackGuarantee: true,
         bulkDiscount: true,
         prioritySupport: false,
-        freeShipping: true,
       },
       image: '/optimized/140g-640w.avif',
       imageSize: 'lg',
@@ -290,7 +288,7 @@ export function EnhancedProductComparison() {
                       </div>
                     </div>
 
-                    {/* Pricing section with consistent height */}
+                    {/* B2C: HIDDEN PRICING SECTION
                     <div className="min-h-[80px] flex flex-col justify-center">
                       {isSubscription && preferredOption.totalPrice ? (
                         <p className="text-sm text-gray-700 dark:text-gray-300 mb-2 font-medium">
@@ -330,8 +328,9 @@ export function EnhancedProductComparison() {
                         🎁 Limited Time Offer
                       </div>
                     ) : (
-                      <div className="h-8 mb-4" /> // Spacer
+                      <div className="h-8 mb-4" />
                     )}
+                    */}
 
                     <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 min-h-[40px]">
                       {product.description}

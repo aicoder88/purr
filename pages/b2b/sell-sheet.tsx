@@ -6,13 +6,21 @@ import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-util
 import { Button } from '../../src/components/ui/button';
 import Image from 'next/image';
 import { Printer, Check } from 'lucide-react';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
 export default function SellSheetPage() {
   const { locale } = useTranslation();
   const pageTitle = `${SITE_NAME} B2B Sell Sheet - Wholesale Partner Information`;
   const pageDescription = 'Download our B2B sell sheet with wholesale pricing, product specifications, and partnership opportunities. Perfect for retailers, veterinarians, and pet professionals.';
-  const canonicalUrl = getLocalizedUrl('/b2b/sell-sheet', locale);
-  const languageAlternates = buildLanguageAlternates('/b2b/sell-sheet');
+
+  // Use enhanced SEO hook
+  const { nextSeoProps } = useEnhancedSEO({
+    path: '/b2b/sell-sheet',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'b2b wholesale pet products',
+    keywords: ['wholesale', 'b2b', 'sell sheet', 'partner program'],
+  });
 
   const handlePrint = () => {
     window.print();
@@ -20,25 +28,7 @@ export default function SellSheetPage() {
 
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          type: 'website',
-          url: canonicalUrl,
-          title: pageTitle,
-          description: pageDescription,
-          locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : 'en_CA',
-        }}
-        additionalMetaTags={[
-          {
-            name: 'robots',
-            content: 'index, follow',
-          },
-        ]}
-      />
+      <NextSeo {...nextSeoProps} />
 
       {/* Print Button - Hidden in print */}
       <div className="print:hidden fixed top-4 right-4 z-50 flex gap-2">

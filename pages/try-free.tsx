@@ -13,6 +13,7 @@ import { getProductPrice, formatProductPrice } from '../src/lib/pricing';
 import { getPaymentLink } from '../src/lib/payment-links';
 import { useEffect, useRef, useCallback } from 'react';
 import { trackTikTokClientEvent } from '../src/lib/tiktok-tracking';
+import { useEnhancedSEO } from '../src/hooks/useEnhancedSEO';
 
 export default function TryFreePage() {
   const { locale } = useTranslation();
@@ -61,8 +62,16 @@ export default function TryFreePage() {
 
   const pageTitle = 'FREE Purrify Trial - Just Pay Shipping | Eliminate Cat Litter Odor';
   const pageDescription = 'FREE Purrify Trial | Just Pay $4.76 Shipping | Eliminates cat litter smell instantly with water-filter grade carbon. ★ 4.8 rating. Ships USA & Canada.';
-  const canonicalUrl = getLocalizedUrl('/try-free', locale);
-  const languageAlternates = buildLanguageAlternates('/try-free');
+
+  // Use enhanced SEO hook
+  const { nextSeoProps } = useEnhancedSEO({
+    path: '/try-free',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'free cat litter freshener trial',
+    image: 'https://www.purrify.ca/optimized/17gpink.webp',
+    keywords: ['free trial', 'cat litter freshener', 'odor eliminator sample', 'free shipping'],
+  });
 
   const benefits = [
     { icon: Sparkles, text: 'Eliminates odor instantly' },
@@ -79,34 +88,7 @@ export default function TryFreePage() {
 
   return (
     <>
-      <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          title: pageTitle,
-          description: pageDescription,
-          url: canonicalUrl,
-          type: 'product',
-          locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : 'en_CA',
-          images: [
-            {
-              url: 'https://www.purrify.ca/optimized/17gpink.webp',
-              width: 1200,
-              height: 1870,
-              alt: 'Purrify Free Trial - 12g Sample Pack',
-              type: 'image/webp',
-            },
-          ],
-        }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: 'free cat litter deodorizer, trial cat litter additive, free purrify sample, cat litter odor eliminator trial',
-          },
-        ]}
-      />
+      <NextSeo {...nextSeoProps} />
 
       <main className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
         {/* Hero Section - Above the Fold */}

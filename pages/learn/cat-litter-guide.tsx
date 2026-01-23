@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
@@ -18,21 +18,45 @@ import {
   Star
 } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
+import { generateJSONLD } from '../../src/lib/seo-utils';
 import { formatProductPrice } from '../../src/lib/pricing';
+import { getPaymentLink } from '../../src/lib/payment-links';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
 const CatLitterGuidePage: NextPage = () => {
   const { locale } = useTranslation();
-  const canonicalPath = '/learn/cat-litter-guide';
-  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
-  const languageAlternates = buildLanguageAlternates(canonicalPath);
   const trialPrice = formatProductPrice('trial', locale);
+  const trialCheckoutUrl = getPaymentLink('trialSingle') || '/products/trial-size';
+  const trialCtaLabel = locale === 'fr'
+    ? `Envoyer Mon Essai GRATUIT - ${trialPrice}`
+    : `Send My FREE Trial - ${trialPrice}`;
+  const pageTitle = 'Complete Cat Litter Guide - Types, Tips & Best Practices | Purrify';
+  const pageDescription = 'Comprehensive guide to cat litter types, maintenance tips, and solving common problems. Learn how to choose the best litter for your cat and keep it fresh longer.';
 
   // Unique images for cat litter guide - different from all other posts
   const heroImage = '/optimized/litter-guide-hero-setup.webp'; // Modern litter box setup
   const sectionImage1 = '/optimized/safe-cat-litter.webp'; // Different litter types (reused safe litter image)
   const sectionImage2 = '/optimized/step-2-mix.webp'; // Cat owner maintenance (reused mixing image)
   const solutionImage = '/optimized/benefits-happy-cats.webp'; // Happy multi-cat household
+
+  // Use enhanced SEO hook
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/learn/cat-litter-guide',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'cat litter guide',
+    schemaType: 'article',
+    schemaData: {
+      type: 'Article',
+      title: pageTitle,
+      description: pageDescription,
+      author: 'Purrify',
+      datePublished: '2024-01-01',
+      dateModified: new Date().toISOString().split('T')[0],
+      image: heroImage,
+    },
+    includeBreadcrumb: true,
+  });
 
   const litterTypes = [
     {
@@ -115,81 +139,37 @@ const CatLitterGuidePage: NextPage = () => {
 
   return (
     <>
-      <Head>
-        <title>Complete Cat Litter Guide - Types, Tips & Best Practices | Purrify</title>
-        <meta
-          name="description"
-          content="Comprehensive guide to cat litter types, maintenance tips, and solving common problems. Learn how to choose the best litter for your cat and keep it fresh longer."
-        />
-        <meta name="keywords" content="cat litter guide, litter types, cat care, odor control, litter maintenance, Purrify" />
-        <link rel="canonical" href={canonicalUrl} />
+      <NextSeo {...nextSeoProps} />
 
-        {/* Open Graph */}
-        <meta property="og:title" content="Complete Cat Litter Guide - Types, Tips & Best Practices" />
-        <meta property="og:description" content="Everything you need to know about cat litter - from choosing the right type to maintenance tips and problem-solving." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content={heroImage} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Complete guide to cat litter types and maintenance tips" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content={heroImage} />
-        <meta name="twitter:url" content={canonicalUrl} />
-
-        {/* Structured Data */}
+      {/* Schema.org JSON-LD */}
+      {schema && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
-              "headline": "Complete Cat Litter Guide - Types, Tips & Best Practices",
-              "description": "Comprehensive guide to cat litter types, maintenance tips, and solving common problems.",
-              "url": canonicalUrl,
-              "author": {
-                "@type": "Organization",
-                "name": "Purrify"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Purrify",
-                "logo": {
-                  "@type": "ImageObject",
-                  "url": "https://www.purrify.ca/optimized/purrify-logo-text.webp"
-                }
-              },
-              "image": {
-                "@type": "ImageObject",
-                "url": heroImage,
-                "width": 1200,
-                "height": 630
-              },
-              "datePublished": "2024-01-01",
-              "dateModified": "2024-01-01"
-            })
-          }}
+          dangerouslySetInnerHTML={generateJSONLD(schema)}
         />
-
-        {languageAlternates.map(({ hrefLang, href }) => (
-          <link key={hrefLang} rel="alternate" hrefLang={hrefLang} href={href} />
-        ))}
-      </Head>
+      )}
 
       <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
         {/* Breadcrumb Navigation */}
         <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
           <Container>
-            <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-              <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+            <nav aria-label="Breadcrumb" className="flex items-center text-sm">
+              <Link href="/" className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
                 <Home className="w-4 h-4" />
+                <span className="sr-only">Home</span>
               </Link>
-              <span>/</span>
-              <Link href={locale === 'fr' ? '/fr/learn/how-it-works' : '/learn/how-it-works'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
-                Learn
-              </Link>
-              <span>/</span>
-              <span className="text-gray-900 dark:text-gray-100">Cat Litter Guide</span>
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span aria-current="page" className="font-medium text-gray-900 dark:text-gray-100">{item.name}</span>
+                  ) : (
+                    <Link href={item.path} className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+                      {item.name}
+                    </Link>
+                  )}
+                </span>
+              ))}
             </nav>
           </Container>
         </section>
@@ -206,12 +186,12 @@ const CatLitterGuidePage: NextPage = () => {
                 Everything you need to know about choosing, using, and maintaining cat litter for a happy, healthy home
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
+                <a href={trialCheckoutUrl} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
-                    {`Try Purrify - ${trialPrice}`}
+                    {trialCtaLabel}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
-                </Link>
+                </a>
               </div>
             </div>
           </Container>
@@ -413,12 +393,12 @@ const CatLitterGuidePage: NextPage = () => {
                 Try Purrify's activated carbon additive and transform any litter into an odor-eliminating powerhouse.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
+                <a href={trialCheckoutUrl} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
-                    {`Start with Trial Size - ${trialPrice}`}
+                    {trialCtaLabel}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
-                </Link>
+                </a>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/reviews`}>
                   <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
                     Read Success Stories

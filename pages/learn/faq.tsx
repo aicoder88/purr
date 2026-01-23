@@ -8,6 +8,7 @@ import { useCurrency } from '../../src/lib/currency-context';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { NextSeo } from 'next-seo';
 import { formatProductPrice } from '../../src/lib/pricing';
+import { getPaymentLink } from '../../src/lib/payment-links';
 import { generateJSONLD } from '../../src/lib/seo-utils';
 import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 import {
@@ -35,12 +36,13 @@ const FAQPage: NextPage = () => {
   const trialPrice = formatProductPrice('trial', currency, locale);
   const standardPrice = formatProductPrice('standard', currency, locale);
   const familyPrice = formatProductPrice('family', currency, locale);
+  const trialCheckoutUrl = getPaymentLink('trialSingle') || '/products/trial-size';
   const trialCtaLabel =
     locale === 'fr'
-      ? `Essayer sans risque - ${trialPrice} (livraison incluse)`
+      ? `Envoyer Mon Essai GRATUIT - ${trialPrice}`
       : locale === 'zh'
-        ? `无风险试用 - ${trialPrice}（含运费）`
-        : `Try Risk-Free - ${trialPrice} (shipping included)`;
+        ? `发送我的免费试用 - ${trialPrice}`
+        : `Send My FREE Trial - ${trialPrice}`;
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [openItems, setOpenItems] = useState<number[]>([]);
@@ -90,7 +92,7 @@ const FAQPage: NextPage = () => {
   const lastUpdated = '2025-01-09'; // Updated regularly for SEO freshness
 
   // Use enhanced SEO hook for automated optimization
-  const { nextSeoProps, schema } = useEnhancedSEO({
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
     path: '/learn/faq',
     title: pageTitle,
     description: pageDescription,
@@ -114,6 +116,7 @@ const FAQPage: NextPage = () => {
       'ammonia odor elimination',
       'best cat litter odor control',
     ],
+    includeBreadcrumb: true,
   });
 
   const toggleItem = useCallback((id: number) => {
@@ -157,7 +160,7 @@ const FAQPage: NextPage = () => {
       {schema && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: generateJSONLD(schema) }}
+          dangerouslySetInnerHTML={generateJSONLD(schema)}
         />
       )}
 
@@ -165,16 +168,30 @@ const FAQPage: NextPage = () => {
         {/* Breadcrumb Navigation */}
         <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
           <Container>
-            <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-              <Link href={locale === 'fr' ? '/fr' : '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+            <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
+              <Link
+                href={locale === 'fr' ? '/fr' : '/'}
+                className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+              >
                 <Home className="w-4 h-4" />
               </Link>
-              <span>/</span>
-              <Link href={`${locale !== 'en' ? `/${locale}` : ''}/learn/how-it-works`} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
-                Learn
-              </Link>
-              <span>/</span>
-              <span className="text-gray-900 dark:text-gray-100">FAQ</span>
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span className="font-medium text-gray-900 dark:text-gray-100">
+                      {item.name}
+                    </span>
+                  ) : (
+                    <Link
+                      href={item.path}
+                      className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </span>
+              ))}
             </nav>
           </Container>
         </section>
@@ -490,12 +507,12 @@ const FAQPage: NextPage = () => {
                 Start with our risk-free trial size and experience the difference for yourself.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={`${locale !== 'en' ? `/${locale}` : ''}/products/trial-size`}>
+                <a href={trialCheckoutUrl} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-electric-indigo hover:bg-gray-100 hover:scale-105 dark:hover:bg-gray-700 font-bold transition-all duration-300">
                     {trialCtaLabel}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
-                </Link>
+                </a>
                 <Link href={`${locale !== 'en' ? `/${locale}` : ''}/products`}>
                   <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 hover:bg-white hover:scale-105 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-50 transition-all duration-300">
                     Compare All Sizes

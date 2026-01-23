@@ -1,56 +1,92 @@
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
+import Link from 'next/link';
+import { Home, ChevronRight } from 'lucide-react';
 
 import { Container } from '../src/components/ui/container';
 import { SITE_NAME, SITE_DESCRIPTION, CONTACT_INFO } from '../src/lib/constants';
 import { useTranslation } from '../src/lib/translation-context';
-import { buildLanguageAlternates, getLocalizedUrl } from '../src/lib/seo-utils';
+import { generateJSONLD } from '../src/lib/seo-utils';
+import { useEnhancedSEO } from '../src/hooks/useEnhancedSEO';
 
 export default function Terms() {
   const { locale } = useTranslation();
   const pageTitle = `Terms of Service | ${SITE_NAME}`;
-  const canonicalPath = '/terms';
-  const canonicalUrl = getLocalizedUrl(canonicalPath, locale);
-  const languageAlternates = buildLanguageAlternates(canonicalPath);
-  
+  const pageDescription = `Terms of Service for ${SITE_NAME}. ${SITE_DESCRIPTION}`;
+
+  // Use enhanced SEO hook for automated optimization
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/terms',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'terms of service',
+    schemaType: 'article',
+    schemaData: {
+      headline: pageTitle,
+      description: pageDescription,
+      datePublished: '2024-01-01T10:00:00Z',
+      dateModified: '2025-05-22T10:00:00Z',
+      category: 'Legal',
+      wordCount: 2000,
+    },
+    keywords: ['terms of service', 'purrify terms', 'legal terms', 'user agreement'],
+    includeBreadcrumb: true,
+  });
+
   return (
     <>
-      <Head>
-        <title>{pageTitle}</title>
-        <meta name="description" content={`Terms of Service for ${SITE_NAME}. ${SITE_DESCRIPTION}`} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={`Terms of Service for ${SITE_NAME}. ${SITE_DESCRIPTION}`} />
-        <meta property="og:image" content="https://www.purrify.ca/purrify-logo.png" />
-        
-        {/* Twitter */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={canonicalUrl} />
-        <meta property="twitter:title" content={pageTitle} />
-        <meta property="twitter:description" content={`Terms of Service for ${SITE_NAME}. ${SITE_DESCRIPTION}`} />
-        <meta property="twitter:image" content="https://www.purrify.ca/purrify-logo.png" />
-        
-        {/* Canonical & hreflang */}
-        <link rel="canonical" href={canonicalUrl} />
-        {languageAlternates.map(({ hrefLang, href }) => (
-          <link key={hrefLang} rel="alternate" hrefLang={hrefLang} href={href} />
-        ))}
-      </Head>
+      <NextSeo {...nextSeoProps} />
 
-      <section className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
-        <Container>
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h1 className="font-heading text-4xl font-bold tracking-tight mb-4 text-[#03E46A]">
-                Terms of Service
-              </h1>
-              <p className="text-gray-600 dark:text-gray-300 dark:text-gray-300">
-                Last Updated: May 22, 2025
-              </p>
-            </div>
+      {/* Auto-generated Article Schema with Breadcrumb */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={generateJSONLD(schema)}
+        />
+      )}
+
+      <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+        {/* Breadcrumb Navigation */}
+        <section className="py-4 border-b border-gray-200 dark:border-gray-800">
+          <Container>
+            <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
+              <Link
+                href={locale === 'fr' ? '/fr' : '/'}
+                className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+              >
+                <Home className="w-4 h-4" />
+              </Link>
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span className="font-medium text-gray-900 dark:text-gray-100">
+                      {item.name}
+                    </span>
+                  ) : (
+                    <Link
+                      href={item.path}
+                      className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </span>
+              ))}
+            </nav>
+          </Container>
+        </section>
+
+        <section className="py-16">
+          <Container>
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <h1 className="font-heading text-4xl font-bold tracking-tight mb-4 text-[#03E46A]">
+                  Terms of Service
+                </h1>
+                <p className="text-gray-600 dark:text-gray-300">
+                  Last Updated: May 22, 2025
+                </p>
+              </div>
             
             <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-200 dark:text-gray-200">
               <p>
@@ -176,7 +212,8 @@ export default function Terms() {
             </div>
           </div>
         </Container>
-      </section>
+        </section>
+      </main>
     </>
   );
 }

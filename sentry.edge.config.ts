@@ -5,8 +5,13 @@
 
 import * as Sentry from "@sentry/nextjs";
 
+// Disable Sentry in test environment (port 3010) to prevent network timeouts
+const isTestEnvironment = process.env.PORT === "3010" || process.env.NODE_ENV === "test";
+
 Sentry.init({
-  dsn: "https://417e8c4f09f6ee842bef52a337877258@o4510602036772864.ingest.de.sentry.io/4510602102112336",
+  dsn: isTestEnvironment
+    ? undefined
+    : "https://417e8c4f09f6ee842bef52a337877258@o4510602036772864.ingest.de.sentry.io/4510602102112336",
 
   // Integrations for additional features
   integrations: [

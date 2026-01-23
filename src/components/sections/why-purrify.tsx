@@ -11,7 +11,7 @@ export function WhyPurrify() {
       icon: Wind,
       title: t.features.odorElimination.title.toUpperCase(),
       description: t.features.odorElimination.description,
-      image: "/optimized/micropores_magnified_view.webp"
+      image: "/optimized/catcoco.webp"
     },
     {
       icon: Cat,
@@ -72,14 +72,14 @@ export function WhyPurrify() {
       <Container className="relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/40 dark:to-pink-900/40 rounded-full mb-8 border border-purple-200 dark:border-purple-800 shadow-lg">
-            <span className="text-purple-700 dark:text-purple-300 font-semibold">The Science Behind Purrify</span>
+            <span className="text-purple-700 dark:text-purple-300 font-semibold">What Makes Purrify Different</span>
           </div>
 
           <h2 className="font-heading text-5xl md:text-7xl font-black tracking-tight mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent">
-            {t.nav.whyPurrify}
+            Why Cat Parents Love It
           </h2>
           <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-medium">
-            Discover why 1,000+ cat owners choose Purrify for a truly fresh-smelling home, without masking odors or using harsh chemicals. 🐱✨
+            No perfumes. No cover-ups. Just the good stuff that actually works.
           </p>
         </div>
 

@@ -32,6 +32,14 @@ export const fr = {
     wholesalePricing: "Prix de Gros",
     becomePartner: "Devenir Partenaire",
     marketingSupport: "Support Marketing",
+    // Partner Programs
+    partnerPrograms: "Programmes Partenaires",
+    forGroomers: "Pour Toiletteurs",
+    forShelters: "Pour Refuges",
+    affiliateProgram: "Programme d'Affiliation",
+    b2bInquiry: "Demande B2B",
+    customerReviews: "Avis Clients",
+    shipsToUSA: "Expédition aux États-Unis",
     // Learn dropdown items
     safetyInfo: "Informations de Sécurité",
     activatedCarbonBenefits: "Avantages du Charbon Actif",
@@ -50,7 +58,12 @@ export const fr = {
     toggleMenu: "Basculer le menu",
     toggleTheme: "Basculer le thème",
     signOut: "Se Déconnecter",
-    signedIn: "Connecté"
+    signedIn: "Connecté",
+    // B2B pivot keys
+    findStore: "Trouvez Purrify Près de Vous",
+    findNearYou: "Trouver Près de Vous",
+    whereToBuy: "Où Acheter",
+    askForPurrify: "Demandez Purrify dans Votre Magasin"
   },
 
   locationsMenu: {
@@ -203,8 +216,7 @@ export const fr = {
       getFreeSample: "Obtenir l'\u00c9chantillon GRATUIT",
       soldThisWeek: "87 vendus cette semaine",
       limitedStock: "Stock limit\u00e9 hiver",
-      moneyBackGuarantee: "Garantie Satisfait ou Rembours\u00e9 30 Jours",
-      freeShippingOver: "Livraison Gratuite D\u00e8s 35 $"
+      moneyBackGuarantee: "Garantie Satisfait ou Rembours\u00e9 30 Jours"
     }
   },
 
@@ -284,7 +296,7 @@ export const fr = {
       },
       {
         number: "03",
-        title: "Mélangez et profitez de la fraîcheur !",
+        title: "Mélangez et profitez de la propreté !",
         description: "Mélangez doucement dans la couche supérieure de la litière pour une efficacité maximale."
       }
     ],
@@ -318,7 +330,11 @@ export const fr = {
     viewAllProducts: "VOIR TOUS LES PRODUITS",
     quantity: "Quantité",
     decreaseQuantity: "Diminuer la quantité",
-    increaseQuantity: "Augmenter la quantité"
+    increaseQuantity: "Augmenter la quantité",
+    // B2B pivot keys
+    findNearYou: "Trouver Près de Vous",
+    askYourStore: "Demandez Purrify dans Votre Animalerie Locale",
+    availableAtStores: "Disponible dans les animaleries à travers le Canada"
   },
 
   // Stores Section
@@ -350,7 +366,12 @@ export const fr = {
     subtitle: "Rejoignez 1 000+ propriétaires de chats heureux qui ont transformé leur maison avec Purrify. Essayez-le avec l'accompagnement personnalisé de notre équipe.",
     buttonText: "COMMANDER MAINTENANT",
     joinText: "Rejoignez 1 000+ Familles de Chats Heureuses - Visitez votre magasin local",
-    guarantee: "Support personnalisé inclus"
+    guarantee: "Support personnalisé inclus",
+    // B2B pivot keys
+    b2bTitle: "Trouvez Purrify Près de Vous",
+    b2bSubtitle: "Disponible dans les animaleries à travers le Canada. Demandez Purrify dans votre animalerie locale.",
+    b2bButtonText: "Trouver un Magasin Près de Vous",
+    b2bGuarantee: "Disponible chez les détaillants d'animaux partout au pays"
   },
 
   // FAQ
@@ -656,9 +677,17 @@ export const fr = {
     about: "À Propos de Nous",
     blog: "Blog",
     locations: "Emplacements",
+    stockists: "Magasins",
     testimonials: "Témoignages",
     retailers: "Pour Détaillants",
+    retailerPortal: "Portail Détaillant",
+    hospitality: "Hôtellerie",
+    groomers: "Pour Toiletteurs",
+    shelters: "Refuges",
+    b2bInquiry: "Demande B2B",
+    invest: "Investisseurs",
     affiliateProgram: "Programme d'Affiliation",
+    results: "Histoires de Succès",
     contact: "Contact",
     privacyPolicy: "Politique de Confidentialité",
     termsOfService: "Conditions d'Utilisation",
@@ -1086,33 +1115,33 @@ export const fr = {
     products: [
       {
         id: "trial",
-        name: "Essai GRATUIT",
-        subtitle: "Paquet 12g",
-        duration: "1 semaine",
+        name: "L'Échantillon du Sceptique",
+        subtitle: "12g · Une Semaine de Preuve",
+        duration: "7+ jours",
         cats: "1 chat",
-        features: ["12g de charbon actif", "Frais d'expédition seulement", "Introduction parfaite"],
-        bestFor: "Nouveaux clients qui veulent essayer Purrify sans risque",
-        cta: "Obtenir l'Essai GRATUIT"
+        features: ["Une semaine de confiance à l'air frais", "Seulement 4,76$ d'expédition", "Zéro risque, zéro engagement"],
+        bestFor: "Parents de chats qui ont été déçus auparavant. Testez par vous-même. Votre nez ne ment pas.",
+        cta: "Trouvez Purrify Près de Vous"
       },
       {
         id: "regular",
-        name: "Régulier",
-        subtitle: "Paquet 120g - Le Plus Populaire",
-        duration: "3 mois",
+        name: "Format Régulier",
+        subtitle: "120g · Le Format Idéal",
+        duration: "7+ jours par application",
         cats: "1-2 chats",
-        features: ["120g de charbon actif", "Abonnez & économisez", "Livraison gratuite"],
-        bestFor: "Foyers avec un ou deux chats souhaitant une fraîcheur continue",
-        cta: "Abonnez & Économisez"
+        features: ["Utilisez plus pour une fraîcheur prolongée", "Rechargez à tout moment", "Fonctionne avec toute litière"],
+        bestFor: "Foyers avec un ou deux chats. Le format que les clients rachètent.",
+        cta: "Trouvez Purrify Près de Vous"
       },
       {
         id: "large",
-        name: "Grand",
-        subtitle: "Paquet 240g - Meilleure Valeur",
-        duration: "3 mois",
+        name: "Format Famille",
+        subtitle: "240g · Meilleur Rapport Qualité-Prix",
+        duration: "7+ jours par application",
         cats: "3+ chats",
-        features: ["240g de charbon actif", "Économies maximales", "Livraison gratuite"],
-        bestFor: "Foyers multi-chats et utilisateurs intensifs",
-        cta: "Abonnez & Économisez"
+        features: ["Meilleur rapport qualité-prix au gramme", "Dosage flexible", "Parfait pour plusieurs bacs"],
+        bestFor: "Foyers multi-chats, parents d'accueil, ou quiconque a perdu le compte.",
+        cta: "Trouvez Purrify Près de Vous"
       }
     ],
     comparisonFeatures: [
@@ -1203,6 +1232,152 @@ export const fr = {
         link: "/learn/cat-litter-guide"
       }
     ]
+  },
+
+  // Products Page - Direct Response Copywriting Style
+  productsPage: {
+    // Hero Section
+    hero: {
+      headline: "Vos Chats Sont Parfaits. L'Odeur? Pas Tellement.",
+      subheadline: "Le même charbon actif qui nettoie votre eau potable. Piège l'ammoniaque de la litière au niveau moléculaire. Pas de parfums. Pas de masquage. Juste... de l'air.",
+      supporting: "Choisissez votre format. Prouvez-le à votre nez."
+    },
+
+    // Quick Decision Helper
+    quickDecision: {
+      title: "Pas Sûr du Format? Laissez Votre Nez Juger.",
+      subtitle: "",
+      trial: {
+        question: "Déçu par de fausses promesses auparavant?",
+        answer: "L'Échantillon du Sceptique (12g)",
+        detail: "Payez seulement les frais de port. 7 jours pour convaincre votre nez. Ça marche ou vous perdez 4,76$."
+      },
+      regular: {
+        question: "Un ou deux chats à la maison?",
+        answer: "Format Régulier (120g)",
+        detail: "Le format le plus populaire. Dure 7+ jours par application. Utilisez plus, reste frais plus longtemps."
+      },
+      large: {
+        question: "Vous gérez un foyer multi-chats?",
+        answer: "Format Famille (240g)",
+        detail: "Meilleur rapport qualité-prix au gramme. Même formule puissante, double la quantité."
+      }
+    },
+
+    // Trust Signals
+    trustSignals: {
+      waterFilter: {
+        title: "Le même produit que dans votre Brita",
+        description: "Répond aux normes NSF/ANSI 61. Si c'est assez bon pour rendre l'eau du robinet potable, imaginez ce que ça fait à l'ammoniaque."
+      },
+      ingredients: {
+        title: "Ingrédients : Coques de noix de coco. C'est tout.",
+        description: "Pas de parfum pour stresser votre chat. Pas de produits chimiques. Juste du charbon actif pur de coques de noix de coco."
+      },
+      science: {
+        title: "La science, pas le parfum",
+        description: "Un gramme a la surface d'un terrain de football. Ces tunnels microscopiques piègent les molécules d'odeur en permanence. Disparues. Pas cachées."
+      }
+    },
+
+    // Product Cards
+    products: {
+      trial: {
+        name: "Le sac du sceptique",
+        subtitle: "12g · Une semaine de preuve",
+        features: [
+          "Assez pour 7 jours d'air frais",
+          "Juste les frais de port de 4,76$",
+          "Un par foyer (désolé, pas de stockage gratuit)"
+        ],
+        bestFor: "Parents de chats qui ont été déçus par des produits 'miracles' avant. On comprend. Prouvez-le vous-même d'abord."
+      },
+      regular: {
+        name: "Le juste milieu",
+        subtitle: "120g · 3 mois de tranquillité",
+        features: [
+          "10-12 semaines de contrôle des odeurs pour 1-2 chats",
+          "Le format que la plupart des clients recommandent",
+          "Fonctionne avec la litière que votre chat a déjà approuvée"
+        ],
+        bestFor: "Foyers d'un ou deux chats où 'des invités arrivent' ne déclenche plus la panique."
+      },
+      large: {
+        name: "Le sac 'On a combien de chats?'",
+        subtitle: "240g · Meilleur rapport qualité-prix pour foyers multi-chats",
+        features: [
+          "20-24 semaines pour 1 chat, 10-12 semaines pour 2+",
+          "Livraison gratuite (parce que vous dépensez déjà assez en nourriture pour chat)",
+          "Meilleur rapport qualité-prix que nous offrons"
+        ],
+        bestFor: "Foyers multi-chats, familles d'accueil, ou quiconque a abandonné de compter les litières."
+      }
+    },
+
+    // What You Get Section
+    whatYouGet: {
+      title: "Ce qu'il y a vraiment dans le sac",
+      subtitle: "(Et pourquoi votre chat ne le remarquera jamais)",
+      benefits: [
+        {
+          title: "Charbon actif de qualité filtration d'eau",
+          description: "Exactement le même matériau utilisé dans les filtres Brita et la purification d'air hospitalière. Pas 'similaire à.' Le même."
+        },
+        {
+          title: "Zéro parfum. Zéro produit chimique. Zéro souci.",
+          description: "Les chats ont 200 millions de récepteurs olfactifs. Les parfums artificiels les stressent. Purrify agit invisiblement."
+        },
+        {
+          title: "Argile, cristal, agglomérante, naturelle... On ne juge pas",
+          description: "Fonctionne avec la litière que votre chat vous a entraîné à acheter. Pas de drame de changement."
+        },
+        {
+          title: "Ouvrir. Saupoudrer. C'est fait.",
+          description: "Une fine couche sur le dessus. 30 secondes d'effort pour 7 jours de résultats."
+        }
+      ]
+    },
+
+    // Did You Know Fact Box
+    didYouKnow: {
+      title: "La science dont votre chat se fiche (Mais votre nez sera ravi)",
+      body: "Un seul gramme de charbon actif contient environ 3 000 mètres carrés de surface. C'est plus grand que la moitié d'un terrain de football — dans quelque chose plus petit qu'un petit pois.\n\nÀ l'intérieur se trouvent des millions de pores et tunnels microscopiques. Quand les molécules d'ammoniaque passent, elles sont piégées en permanence.\n\nCe n'est pas du masquage. C'est de la capture moléculaire. La même technologie utilisée dans les masques à gaz, les usines de traitement d'eau et la filtration d'air hospitalière. Maintenant sur la litière de votre chat."
+    },
+
+    // CTA Section
+    cta: {
+      title: "Votre nez mérite mieux. Votre chat aussi.",
+      subtitle: "Demandez Purrify dans votre animalerie préférée. S'ils ne l'ont pas encore, ils devraient.",
+      secondary: "Vous ne voyez pas votre magasin? Dites-le nous. On fera le nécessaire."
+    },
+
+    // Related Pages
+    relatedPages: [
+      {
+        title: "La science (sans les parties ennuyeuses)",
+        description: "Découvrez la science derrière notre technologie au charbon actif et pourquoi elle est si efficace.",
+        link: "/learn/how-it-works"
+      },
+      {
+        title: "Ce que 1 000+ parents de chats ont dit",
+        description: "Voyez ce que les clients satisfaits disent de leur expérience avec Purrify.",
+        link: "/reviews"
+      },
+      {
+        title: "Le guide complet de la litière pour chat",
+        description: "Apprenez sur les différents types de litière et comment choisir la meilleure option pour votre chat.",
+        link: "/learn/cat-litter-guide"
+      }
+    ],
+
+    // Testimonial Section
+    testimonial: {
+      quote: "Je vis dans un petit studio avec deux chats, et l'odeur de la litière devenait insupportable. Purrify a complètement éliminé l'odeur en 24 heures. J'étais sceptique sur le prix au début, mais ça dure tellement plus longtemps que les autres produits que j'ai essayés. Chaque sou en vaut la peine!",
+      author: "Sarah M.",
+      location: "Montréal, QC",
+      details: "2 chats, petit appartement",
+      headline: "Un changement total pour mon appartement!"
+    }
   },
 
   // Détaillants & B2B
@@ -1483,17 +1658,17 @@ export const fr = {
       successStories: {
         title: "Histoires de Succès de Partenaires",
         stories: {
-          petPalace: {
-            businessName: "Pet Palace Toronto",
-            businessType: "Animalerie Indépendante",
-            quote: "Ajouté 800$/mois de revenus lors de notre premier trimestre. Les clients adorent et reviennent!",
-            metric: "+145% croissance des ventes"
+          pattesEtGriffes: {
+            businessName: "Pattes et Griffes – Sainte‑Thérèse",
+            businessType: "Propriétaire / Gérant",
+            quote: "Nos clients demandent Purrify par son nom maintenant. C'est une recommandation facile au comptoir et les commandes sont constantes mois après mois.",
+            metric: "Cycle de 30 jours"
           },
-          healthyPaws: {
-            businessName: "Healthy Paws Vet",
-            businessType: "Clinique Vétérinaire",
-            quote: "Nos clients font confiance à notre recommandation. Meilleures marges de notre section détail.",
-            metric: "55% marge de profit"
+          chico: {
+            businessName: "Chico – Boul. St‑Laurent (Montréal)",
+            businessType: "Gérant de Magasin",
+            quote: "Simple à stocker, bonnes marges, et ça se vend bien. Les matériels POS ont aidé notre équipe à expliquer les avantages rapidement aux clients.",
+            metric: "Rotation élevée"
           }
         }
       },
@@ -1711,7 +1886,7 @@ export const fr = {
       },
       {
         question: "Purrify offre-t-il la livraison gratuite ?",
-        answer: "Oui ! Nous offrons la livraison gratuite sur les commandes de plus de 35 $ au Canada. La plupart des clients atteignent facilement ce montant en achetant une taille Grande de 120 g (15,95 $) ou Économie de 240 g (29,76 $), ou en regroupant plusieurs articles. Les commandes arrivent généralement en 5-7 jours ouvrables via Postes Canada. Pour les commandes de moins de 35 $, les frais d'expédition standard s'appliquent en fonction de votre emplacement."
+        answer: "Nous expédions au Canada et aux États-Unis. Les commandes arrivent généralement en 5-7 jours ouvrables via Postes Canada. Les frais d'expédition sont affichés lors du paiement."
       },
       {
         question: "Quelle est la rapidité d'action de Purrify ?",
@@ -2291,7 +2466,6 @@ export const fr = {
       subheadline: "Rejoignez des milliers de parents de chats qui ont éliminé l'ammoniac de litière pour de bon—pas masqué, éliminé.",
       button: "Acheter Purrify",
       secondaryButton: "Essayer le Format Découverte",
-      benefit1: "Livraison gratuite dès 35$",
       benefit2: "Garantie satisfaction 30 jours"
     }
   },

@@ -4,7 +4,6 @@ import type { SVGProps } from "react";
 import { Container } from "../../components/ui/container";
 import Image from "next/image";
 import { useTranslation } from "../../lib/translation-context";
-import { NewsletterSignup } from "../newsletter/NewsletterSignup";
 import {
   Instagram,
   Twitter,
@@ -35,16 +34,6 @@ export function Footer() {
   return (
     <footer className="bg-[#FFFFF5] dark:bg-gray-900 border-t border-[#E0EFC7] dark:border-gray-800 transition-colors duration-300">
       <Container>
-        {/* Newsletter Signup */}
-        <div className="py-12 border-b border-[#E0EFC7] dark:border-gray-800">
-          <NewsletterSignup
-            variant="footer"
-            showBenefits={false}
-            discount={10}
-            className=""
-          />
-        </div>
-
         {/* Main Footer Content */}
         <div className="py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
@@ -55,16 +44,16 @@ export function Footer() {
                     <Image
                       src="/optimized/logo-text-240.webp"
                       alt="Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page"
-                      width={70}
-                      height={70}
+                      width={480}
+                      height={220}
                       loading="lazy"
                       className="h-full w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
                     />
                     <Image
                       src="/optimized/purrify-dark-mode-logo.webp"
                       alt="Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page"
-                      width={70}
-                      height={70}
+                      width={480}
+                      height={220}
                       loading="lazy"
                       className="h-full w-auto filter drop-shadow-sm transition-all duration-300 hidden dark:block"
                     />
@@ -189,6 +178,7 @@ export function Footer() {
                 {t.footerNav?.products || ""}
               </h3>
               <ul className="space-y-2 text-sm dark:text-sm">
+                {/* B2C: HIDDEN PRODUCT PURCHASE LINKS
                 <li>
                   <Link
                     href={
@@ -223,6 +213,20 @@ export function Footer() {
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.familyPack || ""}
+                  </Link>
+                </li>
+                */}
+                <li>
+                  <Link
+                    href={
+                      locale === "fr" ? "/fr/stores" :
+                      locale === "zh" ? "/zh/stores" :
+                      locale === "es" ? "/es/stores" :
+                      "/stores"
+                    }
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300 font-medium"
+                  >
+                    {t.nav?.findStore || "Find a Store"}
                   </Link>
                 </li>
                 <li>
@@ -391,10 +395,15 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === "fr" ? "/fr/locations" : "/locations"}
+                    href={
+                      locale === "fr" ? "/fr/stores" :
+                      locale === "zh" ? "/zh/stores" :
+                      locale === "es" ? "/es/stores" :
+                      "/stores"
+                    }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.locations || ""}
+                    {t.footerNav?.stockists || t.footerNav?.locations || "Stockists"}
                   </Link>
                 </li>
                 <li>
@@ -407,10 +416,73 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === "fr" ? "/fr/retailers" : "/retailers"}
+                    href={locale === "fr" ? "/fr/retailers" : locale === "zh" ? "/zh/retailers" : "/retailers"}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.retailers || ""}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/retailer/portal/login"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.retailerPortal || "Retailer Portal"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={
+                      locale === "fr" ? "/fr/hospitality" :
+                      locale === "zh" ? "/zh/hospitality" :
+                      locale === "es" ? "/es/hospitality" :
+                      "/hospitality"
+                    }
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.hospitality || "Hospitality"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={
+                      locale === "fr" ? "/fr/groomers" :
+                      locale === "zh" ? "/zh/groomers" :
+                      locale === "es" ? "/es/groomers" :
+                      "/groomers"
+                    }
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.groomers || "For Groomers"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={
+                      locale === "fr" ? "/fr/shelters" :
+                      locale === "zh" ? "/zh/shelters" :
+                      locale === "es" ? "/es/shelters" :
+                      "/shelters"
+                    }
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.shelters || "Shelters"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/b2b"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.b2bInquiry || "B2B Inquiry"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/invest"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.invest || "Investors"}
                   </Link>
                 </li>
                 <li>
@@ -419,6 +491,14 @@ export function Footer() {
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.affiliateProgram || ""}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/results"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.results || "Success Stories"}
                   </Link>
                 </li>
                 <li>

@@ -2,12 +2,14 @@ import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useEffect, useMemo, useState } from 'react';
+import { ChevronRight, Home } from 'lucide-react';
 
 import { LocationSchema } from '../../seo/json-ld-schema';
 import { getCityBySlug } from '../../../data/locations';
 import { useTranslation } from '../../../lib/translation-context';
 import { safeTrackEvent } from '../../../lib/analytics';
 import { CityLeadCaptureCTA } from './CityLeadCaptureCTA';
+import { useEnhancedSEO } from '../../../hooks/useEnhancedSEO';
 
 // ============================================================================
 // Types & Interfaces
@@ -298,6 +300,20 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
         : interpolate(t.cityPage?.seo?.descriptionDefault ?? 'Cat litter smell in {{city}}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across {{province}}. Safe for cats & kittens.', { city: profile.name, province: provinceName }))
     : '';
 
+  // Enhanced SEO with breadcrumbs (Home > Locations > City)
+  const { breadcrumb } = useEnhancedSEO({
+    path: profile ? `/locations/${profile.slug}` : '/locations',
+    title: seoTitle,
+    description: seoDescription,
+    targetKeyword: profile ? `cat litter ${profile.name}` : 'cat litter',
+    schemaType: 'location',
+    schemaData: profile ? {
+      name: profile.name,
+      province: provinceName,
+    } : undefined,
+    includeBreadcrumb: true
+  });
+
   const seasonalTip = climateInsights[0] ?? 'changing seasons';
   const painPoint = scentPainPoints[0] ?? 'constant litter box odors';
   const schemaLocale = locale === 'fr' || locale === 'zh' ? locale : 'en';
@@ -336,7 +352,7 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
         title={seoTitle}
         description={seoDescription}
         canonical={`https://www.purrify.ca/locations/${profile.slug}`}
-        noindex={locale !== 'en'}
+        noindex={locale !== 'en' || !profile.indexed}
         nofollow={false}
         additionalMetaTags={[
           {
@@ -369,33 +385,109 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'Product',
-            name: `Purrify Cat Litter Odor Eliminator - ${profile.name}`,
-            aggregateRating: {
-              '@type': 'AggregateRating',
-              ratingValue: averageRating,
-              reviewCount,
-              bestRating: '5',
-              worstRating: '1',
-            },
-            offers: {
-              '@type': 'Offer',
-              availability: 'https://schema.org/InStock',
-              priceCurrency: 'CAD',
-              areaServed: {
-                '@type': 'City',
-                name: profile.name,
-                containedInPlace: {
-                  '@type': 'AdministrativeArea',
-                  name: provinceName,
+            '@graph': [
+              {
+                '@type': 'Product',
+                name: `Purrify Cat Litter Odor Eliminator - ${profile.name}`,
+                aggregateRating: {
+                  '@type': 'AggregateRating',
+                  ratingValue: averageRating,
+                  reviewCount,
+                  bestRating: '5',
+                  worstRating: '1',
+                },
+                offers: {
+                  '@type': 'Offer',
+                  availability: 'https://schema.org/InStock',
+                  priceCurrency: 'CAD',
+                  areaServed: {
+                    '@type': 'City',
+                    name: profile.name,
+                    containedInPlace: {
+                      '@type': 'AdministrativeArea',
+                      name: provinceName,
+                    },
+                  },
                 },
               },
-            },
+              // LocalBusiness schema for local SEO
+              {
+                '@type': 'LocalBusiness',
+                name: `Purrify - ${profile.name}`,
+                description: `Cat litter deodorizer for ${profile.name}, ${provinceName} pet owners. Activated carbon eliminates ammonia odors naturally.`,
+                url: `https://www.purrify.ca/locations/${profile.slug}`,
+                areaServed: {
+                  '@type': 'City',
+                  name: profile.name,
+                  containedInPlace: {
+                    '@type': 'AdministrativeArea',
+                    name: provinceName,
+                  },
+                },
+                makesOffer: {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Product',
+                    name: 'Purrify Cat Litter Deodorizer',
+                    description: 'Activated carbon cat litter deodorizer that eliminates ammonia smell naturally.',
+                  },
+                },
+                priceRange: '$$',
+              },
+              // Breadcrumb schema from hook
+              ...(breadcrumb ? [breadcrumb.schema] : []),
+            ],
           }),
         }}
       />
 
       <div className={`min-h-screen ${GRADIENTS.pageBackground}`}>
+        {/* Visual Breadcrumb Navigation */}
+        {breadcrumb && breadcrumb.items.length > 1 && (
+          <nav
+            aria-label="Breadcrumb"
+            className="bg-white/50 dark:bg-gray-800/50 border-b border-orange-100 dark:border-gray-700"
+          >
+            <div className="max-w-6xl mx-auto px-4">
+              <ol className="flex items-center space-x-2 text-sm py-3">
+                {breadcrumb.items.map((item, index) => {
+                  const isLast = index === breadcrumb.items.length - 1;
+                  return (
+                    <li key={item.path} className="flex items-center">
+                      {index > 0 && (
+                        <ChevronRight className="h-4 w-4 mx-2 text-gray-400 dark:text-gray-500" />
+                      )}
+                      {index === 0 ? (
+                        <Link
+                          href={item.path}
+                          className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
+                        >
+                          <Home className="h-4 w-4" />
+                          <span className="sr-only">{item.name}</span>
+                        </Link>
+                      ) : isLast ? (
+                        <span
+                          className="font-medium text-gray-900 dark:text-gray-100"
+                          aria-current="page"
+                        >
+                          {item.name}
+                        </span>
+                      ) : (
+                        <Link
+                          href={item.path}
+                          className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
+                        >
+                          {item.name}
+                        </Link>
+                      )}
+                    </li>
+                  );
+                })}
+              </ol>
+            </div>
+          </nav>
+        )}
+
         <section className="py-20 px-4">
           <div className="max-w-6xl mx-auto text-center">
             <h1 className={`font-heading text-4xl md:text-6xl font-bold mb-6 ${GRADIENTS.headingText}`}>

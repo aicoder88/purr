@@ -16,7 +16,7 @@ export function HowItWorks() {
 
   return (
     <section
-      className="pb-20 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900 transition-colors duration-300 relative overflow-hidden"
+      className="py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900 transition-colors duration-300 relative overflow-hidden"
       id="how-it-works"
     >
       {/* Animated background elements - hidden on mobile for performance */}
@@ -26,38 +26,14 @@ export function HowItWorks() {
       </div>
 
       <Container className="relative z-10">
+        {/* Section Heading */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/40 dark:to-pink-900/40 rounded-full mb-8 border border-purple-200 dark:border-purple-800 shadow-lg">
-            <span className="text-purple-700 dark:text-purple-300 font-semibold">{t.howItWorks?.simpleAs123 || ""}</span>
-          </div>
           <h2 className="font-heading text-5xl md:text-7xl font-black tracking-tight mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent">
-            {t.nav.howItWorks}
+            Ridiculously Easy to Use
           </h2>
-          <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-            {t.features.worksWithAnyLitter.description} <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`} className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 underline font-semibold">{t.howItWorks?.learnTheScience || ""}</Link> or <Link href={`${locale === 'fr' ? '/fr' : ''}/products`} className="text-pink-600 dark:text-pink-400 hover:text-pink-700 dark:hover:text-pink-300 underline font-semibold">{t.howItWorks?.compareSizes || ""}</Link> to find what works best for you.
-          </p>
         </div>
 
-        {/* Enhanced Coconut Shells Visualization */}
-        <div className="max-w-2xl mx-auto text-center mb-16 bg-gradient-to-br from-orange-100 to-yellow-100 dark:from-orange-900/30 dark:to-yellow-900/30 rounded-3xl p-10 border-2 border-orange-300 dark:border-orange-700 shadow-2xl transform hover:-translate-y-2 transition-all duration-500">
-          <div className="overflow-hidden rounded-2xl mb-6 h-[300px] sm:h-[400px] flex items-center justify-center shadow-xl">
-            <Image
-              src="/optimized/catcoco.webp"
-              alt="Pure sustainable coconut shells for Purrify activated carbon cat litter"
-              width={400}
-              height={400}
-              loading="lazy"
-              quality={90}
-              className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 600px"
-            />
-          </div>
-          <p className="text-gray-800 dark:text-gray-200 text-lg sm:text-xl leading-relaxed font-medium">
-            {t.howItWorks?.coconutDescription || ""}
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative mt-16">
           {/* Enhanced connecting line with gradient */}
           <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-purple-300 via-pink-300 to-orange-300 dark:from-purple-700 dark:via-pink-700 dark:to-orange-700 hidden md:block rounded-full shadow-lg"></div>
 

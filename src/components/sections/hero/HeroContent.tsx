@@ -1,8 +1,10 @@
 import { useCallback, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { scrollToSection } from "@/lib/utils";
+import Link from "next/link";
 import { heroTestimonials } from "@/data/hero-testimonials";
 import { useABTestWithTracking, AB_TEST_SLUGS } from "@/lib/ab-testing";
+import { getPaymentLink } from "@/lib/payment-links";
 
 // Icon components - extracted to avoid repetition
 function LightningIcon({ className = '' }: { className?: string }) {
@@ -29,6 +31,10 @@ const CTA_BUTTON_VARIANTS = {
 
 interface HeroContentProps {
   t: {
+    nav?: {
+      findNearYou?: string;
+      findStore?: string;
+    };
     hero: {
       headline?: string;
       subheadline?: string;
@@ -80,7 +86,6 @@ interface HeroContentProps {
         soldThisWeek: string;
         limitedStock: string;
         moneyBackGuarantee: string;
-        freeShippingOver: string;
       };
     };
   };
@@ -104,7 +109,7 @@ const SocialProofAvatars = () => (
         aria-hidden="true"
       >
         <svg className="w-6 h-6 text-white/80 dark:text-gray-100/80" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
         </svg>
       </div>
     ))}
@@ -171,7 +176,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
     scrollToSection("products");
   }, [trackHeroConversion, trackCtaConversion]);
 
-  // Rotating testimonials - slowed down to 5 seconds for readability
+  // Rotating testimonials - rotating every 1.5 seconds
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -182,7 +187,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
         setCurrentTestimonialIndex((prev) => (prev + 1) % heroTestimonials.length);
         setIsTransitioning(false);
       }, 300); // Fade out duration
-    }, 2000); // Rotate every 2 seconds
+    }, 1500); // Rotate every 1.5 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -202,10 +207,15 @@ export const HeroContent = ({ t }: HeroContentProps) => {
   if (isSimplifiedHero) {
     return (
       <div className="space-y-4 md:space-y-6 relative z-10">
-        {/* Prominent Price Badge - text-white is OK here because bg is always green gradient */}
-        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-xl bg-gradient-to-r from-green-500 to-emerald-500 text-white dark:text-gray-100 shadow-lg">
-          <span className="text-2xl font-black">{t.hero.simplified?.free || ""}</span>
-          <span className="text-sm opacity-90">{t.hero.simplified?.justPayShipping || ""}</span>
+        {/* Social Proof Badge - Rotating Testimonials */}
+        <div
+          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-sm mb-2 animate-fade-in-up transition-opacity duration-500"
+          style={{ opacity: isTransitioning ? 0.3 : 1 }}
+        >
+          <StarRating rating={currentTestimonial.stars} />
+          <span className="text-xs font-bold text-gray-700 dark:text-gray-300 ml-1">
+            &apos;{currentTestimonial.quote}&apos;
+          </span>
         </div>
 
         {/* Simplified Headline */}
@@ -221,7 +231,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
           {t.hero.simplified?.valueProposition || ""}
         </p>
 
-        {/* Large Pricing Display */}
+        {/* B2C: HIDDEN PRICING DISPLAY
         <div className="flex flex-wrap items-end gap-4">
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-lg border border-gray-200 dark:border-gray-700">
             <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t.hero.simplified?.trialSize || ""}</div>
@@ -239,6 +249,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
             <div className="text-xl font-bold text-gray-900 dark:text-white">$24.99</div>
           </div>
         </div>
+        */}
 
         {/* Trust indicators */}
         <div className="flex items-center gap-4">
@@ -250,17 +261,46 @@ export const HeroContent = ({ t }: HeroContentProps) => {
           <span className="text-sm text-gray-600 dark:text-gray-400">{t.hero.simplified?.thirtyDayGuarantee || ""}</span>
         </div>
 
-        {/* CTA Button */}
-        <div className="flex flex-col sm:flex-row gap-3 pt-2">
+        {/* Social Proof - 1,000+ happy cat parents */}
+        <div className="flex items-center gap-3">
+          <SocialProofAvatars />
+          <div className="text-sm text-gray-600 dark:text-gray-400">
+            <span className="font-bold text-gray-900 dark:text-white block">
+              {t.hero.socialProof.trustNumber}
+            </span>
+            <span className="text-xs">{t.hero.socialProof.trustText}</span>
+          </div>
+        </div>
+
+        {/* CTA Button - B2C: Free Trial */}
+        <div className="flex flex-col gap-3 pt-2">
           <Button
-            onClick={handleScrollToProducts}
+            asChild
             className={ctaButtonClasses}
-            aria-label={t.hero.buttons.tryFree || ""}
+            aria-label={t.hero.buttons.tryFree || "Get My Free Trial"}
           >
-            <LightningIcon className="transition-transform duration-300 group-hover:scale-110" />
-            {t.hero.simplified?.getFreeSample || ""}
-            <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
+            <a href={getPaymentLink('trialSingle') || '#'} target="_blank" rel="noopener noreferrer">
+              <LightningIcon className="transition-transform duration-300 group-hover:scale-110" />
+              {t.hero.simplified?.getFreeSample || "Send Me a Free Bag →"}
+              <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
           </Button>
+          <p className="text-xs text-gray-500 dark:text-gray-400 text-center sm:text-left -mt-2">
+            {t.hero.simplified?.justPayShipping || "Just pay $4.76 shipping"}
+          </p>
+          {/* B2B: Find a Store CTA (hidden for B2C focus)
+          <Button
+            asChild
+            className={ctaButtonClasses}
+            aria-label={t.nav?.findNearYou || "Find It Near You"}
+          >
+            <Link href="/stores">
+              <LightningIcon className="transition-transform duration-300 group-hover:scale-110" />
+              {t.nav?.findNearYou || "Find It Near You"}
+              <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </Button>
+          */}
         </div>
       </div>
     );
@@ -295,7 +335,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
         {t.hero.description}
       </p>
 
-      {/* Pricing Above Fold - Trial only */}
+      {/* B2C: HIDDEN PRICING
       <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-sm sm:text-base">
         <div className="flex items-center gap-2 px-3 py-1.5 bg-green-100 dark:bg-green-900/30 rounded-full border border-green-300 dark:border-green-700">
           <span className="font-bold text-green-700 dark:text-green-300">
@@ -303,6 +343,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
           </span>
         </div>
       </div>
+      */}
 
       <div className="flex items-center gap-3 sm:gap-4">
         <SocialProofAvatars />
@@ -314,7 +355,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
         </div>
       </div>
 
-      {/* Urgency & Social Proof */}
+      {/* B2C: HIDDEN URGENCY INDICATORS
       <div className="flex items-center sm:justify-start justify-center gap-6">
         <div className="flex items-center gap-2 text-sm">
           <div className="w-2 h-2 bg-green-500 dark:bg-green-400 rounded-full animate-pulse"></div>
@@ -327,18 +368,34 @@ export const HeroContent = ({ t }: HeroContentProps) => {
           <span className="text-gray-600 dark:text-gray-400">{t.hero.simplified?.limitedStock || ""}</span>
         </div>
       </div>
+      */}
 
-      {/* Main CTA Button - with A/B tested color */}
+      {/* Main CTA Button - B2C: Free Trial */}
       <div className="flex flex-col sm:flex-row gap-3">
         <Button
-          onClick={handleScrollToProducts}
+          asChild
           className={ctaButtonClasses}
-          aria-label={t.hero.buttons.tryFree || ""}
+          aria-label={t.hero.buttons.tryFree || "Get My Free Trial"}
         >
-          <LightningIcon className="transition-transform duration-300 group-hover:scale-110" />
-          {t.hero.buttons.tryFree || ""}
-          <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
+          <a href={getPaymentLink('trialSingle') || '#'} target="_blank" rel="noopener noreferrer">
+            <LightningIcon className="transition-transform duration-300 group-hover:scale-110" />
+            {t.hero.buttons.tryFree || "Get My Free Trial"}
+            <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
         </Button>
+        {/* B2B: Find a Store CTA (hidden for B2C focus)
+        <Button
+          asChild
+          className={ctaButtonClasses}
+          aria-label={t.nav?.findNearYou || "Find It Near You"}
+        >
+          <Link href="/stores">
+            <LightningIcon className="transition-transform duration-300 group-hover:scale-110" />
+            {t.nav?.findNearYou || "Find It Near You"}
+            <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </Button>
+        */}
       </div>
 
       {/* Risk Reversal & Guarantee */}
@@ -348,13 +405,6 @@ export const HeroContent = ({ t }: HeroContentProps) => {
             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
           </svg>
           <span className="text-sm font-bold text-green-700 dark:text-green-300">{t.hero.simplified?.moneyBackGuarantee || ""}</span>
-        </div>
-
-        <div className="flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-200 dark:border-blue-700">
-          <svg className="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-          </svg>
-          <span className="text-sm font-bold text-blue-700 dark:text-blue-300">{t.hero.simplified?.freeShippingOver || ""}</span>
         </div>
       </div>
     </div>

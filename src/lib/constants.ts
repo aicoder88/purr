@@ -8,8 +8,8 @@ export const GOOGLE_MAPS_EMBED_ID = "1tp1A30e-7ixcKLz4hrvMI1cY0FPhs2A";
 export const PRODUCTS = [
   {
     id: "purrify-12g",
-    name: "Purrify 12g",
-    description: "Trial size - Single Use Sample\nTrial size: Only enough for one litter box change. Ideal for trying Purrify before committing to a larger size.",
+    name: "The Skeptic's Sample 12g",
+    description: "12g · One Week of Proof\nOne sprinkle delivers 7 full days of zero litter box smell\nYour nose gets the proof—your wallet risks just $4.76 shipping\nJoin 1,000+ cat parents who tried the sample and never looked back",
     price: 4.76,
     image: "/optimized/17gpink.webp",
     size: "12g",
@@ -43,8 +43,8 @@ export const PRODUCTS = [
   },
   {
     id: "purrify-120g",
-    name: "Purrify Regular size 120g",
-    description: "Perfect for two cats\nDouble the power for multi-cat households.\nMaximum odor control.",
+    name: "Purrify Regular Size 120g",
+    description: "120g · The Goldilocks Bag\nNot too little, not too much—the size most customers reorder\nLasts 7+ days per application, or double up for two full weeks of freshness\nThe perfect amount for 1-2 cats without buying more than you need",
     price: 29.99,
     image: "/optimized/60g.webp",
     size: "120g",
@@ -53,8 +53,8 @@ export const PRODUCTS = [
   },
   {
     id: "purrify-120g-autoship",
-    name: "Purrify 120g Autoship",
-    description: "Best value bundle\n3×120g regular size packs delivered every quarter with shipping included and deepest savings.",
+    name: "Purrify Regular Size 120g Autoship",
+    description: "Best value bundle\n3×120g packs delivered quarterly with free shipping included\nSet it once, forget the reordering—you're always stocked for fresh litter boxes",
     price: 49.99,
     image: "/optimized/60g.webp",
     size: "3 × 120g (quarterly)",
@@ -68,8 +68,8 @@ export const PRODUCTS = [
   },
   {
     id: "purrify-240g",
-    name: "Purrify Large size 240g",
-    description: "Large size\nFor large multi-cat households or extended supply.",
+    name: "Purrify Family Size 240g",
+    description: "240g · Best Value Per Gram\nDouble the supply at less than double the price—the math just makes sense\nLasts 7+ days per application across multiple litter boxes\nThe go-to size for multi-cat homes that refuse to compromise on freshness",
     price: 54.99,
     image: "/optimized/140g-640w.avif",
     size: "240g",
@@ -78,8 +78,8 @@ export const PRODUCTS = [
   },
   {
     id: "purrify-240g-autoship",
-    name: "Purrify 240g Autoship",
-    description: "Large size autoship\n3×240g packs delivered every quarter with shipping included.",
+    name: "Purrify Family Size 240g Autoship",
+    description: "Family Size autoship\n3×240g packs delivered quarterly with free shipping included\nThe bulk supply that keeps multi-cat homes fresh without ever running out",
     price: 79.99,
     image: "/optimized/140g-640w.avif",
     size: "3 × 240g (quarterly)",

@@ -130,6 +130,32 @@ const REDIRECTS = [
     permanent: true,
   },
   {
+    source: "/documents",
+    destination: "/invest",
+    permanent: true,
+  },
+  // Stockists renamed to stores (Jan 2026)
+  {
+    source: "/stockists",
+    destination: "/stores",
+    permanent: true,
+  },
+  {
+    source: "/fr/stockists",
+    destination: "/fr/stores",
+    permanent: true,
+  },
+  {
+    source: "/zh/stockists",
+    destination: "/zh/stores",
+    permanent: true,
+  },
+  {
+    source: "/es/stockists",
+    destination: "/es/stores",
+    permanent: true,
+  },
+  {
     source: "/products/purrify-20g",
     destination: "/products/trial-size",
     permanent: true,
@@ -149,6 +175,27 @@ const REDIRECTS = [
     destination: "/products/standard",
     permanent: true,
     locale: false,
+  },
+  {
+    source: "/products/trial",
+    destination: "/products/trial-size",
+    permanent: true,
+  },
+  // Short URL for easy social sharing (e.g., purrify.ca/trial)
+  {
+    source: "/trial",
+    destination: "/products/trial-size",
+    permanent: true,
+  },
+  {
+    source: "/:locale(fr|zh|es)/trial",
+    destination: "/:locale/products/trial-size",
+    permanent: true,
+  },
+  {
+    source: "/learn/activated-carbon-vs-baking-soda",
+    destination: "/learn/activated-carbon-vs-baking-soda-deodorizers",
+    permanent: true,
   },
   {
     source: "/products/large-size",
@@ -588,6 +635,65 @@ const REDIRECTS = [
     permanent: true,
   },
 
+  // Spanish location redirects (Jan 2026 SEO fix)
+  {
+    source: "/es/locations/montreal",
+    destination: "/es/stockists",
+    permanent: true,
+  },
+  {
+    source: "/es/locations/province/alberta",
+    destination: "/es/stockists",
+    permanent: true,
+  },
+  {
+    source: "/es/locations/province/british-columbia",
+    destination: "/es/stockists",
+    permanent: true,
+  },
+  {
+    source: "/es/locations/province/manitoba",
+    destination: "/es/stockists",
+    permanent: true,
+  },
+  {
+    source: "/es/locations/province/nova-scotia",
+    destination: "/es/stockists",
+    permanent: true,
+  },
+  {
+    source: "/es/locations/province/ontario",
+    destination: "/es/stockists",
+    permanent: true,
+  },
+  {
+    source: "/es/locations/province/quebec",
+    destination: "/es/stockists",
+    permanent: true,
+  },
+  {
+    source: "/es/locations/province/saskatchewan",
+    destination: "/es/stockists",
+    permanent: true,
+  },
+  {
+    source: "/es/opiniones",
+    destination: "/es/reviews",
+    permanent: true,
+  },
+
+  // System page redirects (Jan 2026 SEO fix)
+  {
+    source: "/auth/signin",
+    destination: "/admin/login",
+    permanent: false,
+  },
+  {
+    source: "/affiliate/forgot-password",
+    destination: "/affiliate",
+    permanent: false,
+  },
+
   // Legacy URL redirects (Ahrefs 404 report - Jan 2026)
   {
     source: "/shop",
@@ -886,42 +992,45 @@ const nextConfig = {
 module.exports = withBundleAnalyzer(nextConfig);
 
 // Injected content via Sentry wizard below
+// Skip Sentry instrumentation in test environment to prevent network timeouts
 
-const { withSentryConfig } = require("@sentry/nextjs");
+if (process.env.DISABLE_SENTRY !== "true") {
+  const { withSentryConfig } = require("@sentry/nextjs");
 
-module.exports = withSentryConfig(module.exports, {
-  // For all available options, see:
-  // https://www.npmjs.com/package/@sentry/webpack-plugin#options
+  module.exports = withSentryConfig(module.exports, {
+    // For all available options, see:
+    // https://www.npmjs.com/package/@sentry/webpack-plugin#options
 
-  org: "purrify",
-  project: "javascript-nextjs",
+    org: "purrify",
+    project: "javascript-nextjs",
 
-  // Only print logs for uploading source maps in CI
-  silent: !process.env.CI,
+    // Only print logs for uploading source maps in CI
+    silent: !process.env.CI,
 
-  // For all available options, see:
-  // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
+    // For all available options, see:
+    // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
 
-  // Upload a larger set of source maps for prettier stack traces (increases build time)
-  widenClientFileUpload: true,
+    // Upload a larger set of source maps for prettier stack traces (increases build time)
+    widenClientFileUpload: true,
 
-  // Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers.
-  // This can increase your server load as well as your hosting bill.
-  // Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
-  // side errors will fail.
-  tunnelRoute: "/monitoring",
+    // Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers.
+    // This can increase your server load as well as your hosting bill.
+    // Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
+    // side errors will fail.
+    tunnelRoute: "/monitoring",
 
-  webpack: {
-    // Enables automatic instrumentation of Vercel Cron Monitors. (Does not yet work with App Router route handlers.)
-    // See the following for more information:
-    // https://docs.sentry.io/product/crons/
-    // https://vercel.com/docs/cron-jobs
-    automaticVercelMonitors: true,
+    webpack: {
+      // Enables automatic instrumentation of Vercel Cron Monitors. (Does not yet work with App Router route handlers.)
+      // See the following for more information:
+      // https://docs.sentry.io/product/crons/
+      // https://vercel.com/docs/cron-jobs
+      automaticVercelMonitors: true,
 
-    // Tree-shaking options for reducing bundle size
-    treeshake: {
-      // Automatically tree-shake Sentry logger statements to reduce bundle size
-      removeDebugLogging: true,
+      // Tree-shaking options for reducing bundle size
+      treeshake: {
+        // Automatically tree-shake Sentry logger statements to reduce bundle size
+        removeDebugLogging: true,
+      },
     },
-  },
-});
+  });
+}

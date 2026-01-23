@@ -13,6 +13,7 @@ jest.mock('../../src/lib/translation-context');
 jest.mock('../../src/lib/currency-context');
 jest.mock('../../src/lib/seo/meta-optimizer');
 jest.mock('../../src/lib/seo-utils');
+jest.mock('../../src/hooks/useBreadcrumb');
 
 const mockUseTranslation = useTranslation as jest.MockedFunction<typeof useTranslation>;
 const mockUseCurrency = useCurrency as jest.MockedFunction<typeof useCurrency>;
@@ -57,6 +58,63 @@ describe('useEnhancedSEO', () => {
       { hrefLang: 'en', href: 'https://www.purrify.ca/test' },
       { hrefLang: 'fr', href: 'https://www.purrify.ca/fr/test' },
     ]);
+
+    // Mock useBreadcrumb
+    const { useBreadcrumb } = require('../../src/hooks/useBreadcrumb');
+    useBreadcrumb.mockImplementation((path: string) => {
+      const locale = mockUseTranslation().locale;
+      const segments = path.split('/').filter(Boolean);
+
+      const homeLabels: Record<string, string> = {
+        en: 'Home',
+        fr: 'Accueil',
+        zh: '首页',
+      };
+
+      const segmentLabels: Record<string, Record<string, string>> = {
+        en: {
+          products: 'Products',
+          'trial-size': 'FREE Trial',
+          standard: 'Standard',
+          'family-pack': 'Family Pack',
+          learn: 'Learn',
+          'how-it-works': 'How It Works',
+        },
+        fr: {
+          products: 'Produits',
+          standard: 'Standard',
+        },
+        zh: {
+          products: '产品',
+          'family-pack': '家庭装',
+        },
+      };
+
+      const items = [{ name: homeLabels[locale] || 'Home', path: '/', position: 1 }];
+      let currentPath = '';
+      segments.forEach((segment, index) => {
+        currentPath += `/${segment}`;
+        const label = segmentLabels[locale]?.[segment] || segment;
+        items.push({
+          name: label,
+          path: currentPath,
+          position: index + 2,
+        });
+      });
+
+      return {
+        items,
+        schema: {
+          '@type': 'BreadcrumbList',
+          itemListElement: items.map(item => ({
+            '@type': 'ListItem',
+            position: item.position,
+            name: item.name,
+            item: `https://www.purrify.ca${locale === 'en' ? '' : `/${locale}`}${item.path}`,
+          })),
+        },
+      };
+    });
   });
 
   describe('Basic Functionality', () => {
@@ -475,6 +533,139 @@ describe('useEnhancedSEO', () => {
       );
 
       expect(result.current.nextSeoProps.openGraph.type).toBe('website');
+    });
+  });
+
+  describe('Breadcrumb Integration', () => {
+    it('should not include breadcrumb by default', () => {
+      const { result } = renderHook(() =>
+        useEnhancedSEO({
+          path: '/products/trial-size',
+          title: 'Test',
+          description: 'Test',
+        })
+      );
+
+      expect(result.current.breadcrumb).toBeUndefined();
+    });
+
+    it('should generate breadcrumb when includeBreadcrumb is true', () => {
+      const { result } = renderHook(() =>
+        useEnhancedSEO({
+          path: '/products/trial-size',
+          title: 'Test',
+          description: 'Test',
+          includeBreadcrumb: true,
+        })
+      );
+
+      expect(result.current.breadcrumb).toBeDefined();
+      expect(result.current.breadcrumb?.items).toHaveLength(3);
+      expect(result.current.breadcrumb?.items[0].name).toBe('Home');
+      expect(result.current.breadcrumb?.items[1].name).toBe('Products');
+      expect(result.current.breadcrumb?.items[2].name).toBe('FREE Trial');
+    });
+
+    it('should include breadcrumb schema when only breadcrumb is requested', () => {
+      const { result } = renderHook(() =>
+        useEnhancedSEO({
+          path: '/products',
+          title: 'Test',
+          description: 'Test',
+          includeBreadcrumb: true,
+        })
+      );
+
+      expect(result.current.schema).toBeDefined();
+      expect(result.current.schema).toHaveProperty('@type', 'BreadcrumbList');
+    });
+
+    it('should combine breadcrumb and main schema using @graph', () => {
+      const { result } = renderHook(() =>
+        useEnhancedSEO({
+          path: '/products/trial-size',
+          title: 'Test',
+          description: 'Test',
+          schemaType: 'product',
+          schemaData: {
+            name: 'Test Product',
+            description: 'Test',
+            image: 'test.jpg',
+            price: '29.99',
+            priceValidUntil: '2024-12-31',
+          },
+          includeBreadcrumb: true,
+        })
+      );
+
+      expect(result.current.schema).toHaveProperty('@context', 'https://schema.org');
+      expect(result.current.schema).toHaveProperty('@graph');
+      const graph = (result.current.schema as any)['@graph'];
+      expect(graph).toHaveLength(2);
+      expect(graph[0]).toHaveProperty('@type', 'Product');
+      expect(graph[1]).toHaveProperty('@type', 'BreadcrumbList');
+    });
+
+    it('should generate breadcrumb schema with correct URLs', () => {
+      const { result } = renderHook(() =>
+        useEnhancedSEO({
+          path: '/learn/how-it-works',
+          title: 'Test',
+          description: 'Test',
+          includeBreadcrumb: true,
+        })
+      );
+
+      const breadcrumbSchema = result.current.breadcrumb?.schema as any;
+      expect(breadcrumbSchema.itemListElement[0].item).toBe(
+        'https://www.purrify.ca/'
+      );
+      expect(breadcrumbSchema.itemListElement[1].item).toBe(
+        'https://www.purrify.ca/learn'
+      );
+      expect(breadcrumbSchema.itemListElement[2].item).toBe(
+        'https://www.purrify.ca/learn/how-it-works'
+      );
+    });
+
+    it('should support breadcrumbs in French', () => {
+      mockUseTranslation.mockReturnValue({
+        t: {} as any,
+        locale: 'fr',
+      } as any);
+
+      const { result } = renderHook(() =>
+        useEnhancedSEO({
+          path: '/products/standard',
+          title: 'Test',
+          description: 'Test',
+          includeBreadcrumb: true,
+        })
+      );
+
+      expect(result.current.breadcrumb?.items[0].name).toBe('Accueil');
+      expect(result.current.breadcrumb?.items[1].name).toBe('Produits');
+      expect(result.current.breadcrumb?.items[2].name).toBe('Standard');
+    });
+
+    it('should support breadcrumbs in Chinese', () => {
+      mockUseTranslation.mockReturnValue({
+        t: {} as any,
+        locale: 'zh',
+      } as any);
+
+      const { result } = renderHook(() =>
+        useEnhancedSEO({
+          path: '/products/family-pack',
+          title: 'Test',
+          description: 'Test',
+          includeBreadcrumb: true,
+        })
+      );
+
+      expect(result.current.breadcrumb?.items[0].name).toBe('首页');
+      expect(result.current.breadcrumb?.items[1].name).toBe('产品');
+      expect(result.current.breadcrumb?.items[2].name).toBe('家庭装');
     });
   });
 });

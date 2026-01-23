@@ -41,7 +41,7 @@ const PRODUCT_FAQS: Record<ProductType, FAQ[]> = {
     },
     {
       question: "Can I upgrade to a larger size later?",
-      answer: "Of course! Once you experience the difference, you can upgrade to our Regular (120g) or Family Pack (240g) sizes. Many customers save 30% by subscribing to our Autoship program."
+      answer: "Of course! Once you experience the difference, you can upgrade to our 120g Regular or 240g Family Size. Many customers save 30% by subscribing to our Autoship program."
     }
   ],
   standard: [
@@ -51,7 +51,7 @@ const PRODUCT_FAQS: Record<ProductType, FAQ[]> = {
     },
     {
       question: "Is this the right size for me?",
-      answer: "The 50g is ideal for single-cat households or those wanting to try a mid-range option. If you have multiple cats, consider our 120g Regular or 240g Family Pack for better value."
+      answer: "The 50g is ideal for single-cat households or those wanting to try a mid-range option. If you have multiple cats, consider our 120g Regular Size or 240g Family Size for better value."
     },
     {
       question: "How do I use Purrify?",

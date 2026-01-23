@@ -32,6 +32,14 @@ export const zh = {
     wholesalePricing: "批发价格",
     becomePartner: "成为合作伙伴",
     marketingSupport: "营销支持",
+    // Partner Programs
+    partnerPrograms: "合作伙伴计划",
+    forGroomers: "宠物美容师",
+    forShelters: "动物收容所",
+    affiliateProgram: "联盟计划",
+    b2bInquiry: "企业合作咨询",
+    customerReviews: "客户评价",
+    shipsToUSA: "配送至美国",
     // Learn dropdown items
     safetyInfo: "安全信息",
     activatedCarbonBenefits: "活性炭的好处",
@@ -50,7 +58,12 @@ export const zh = {
     toggleMenu: "切换菜单",
     toggleTheme: "切换主题",
     signOut: "退出登录",
-    signedIn: "已登录"
+    signedIn: "已登录",
+    // B2B pivot keys
+    findStore: "在您附近找到Purrify",
+    findNearYou: "附近查找",
+    whereToBuy: "哪里购买",
+    askForPurrify: "在您的商店询问Purrify"
   },
 
   locationsMenu: {
@@ -323,7 +336,11 @@ export const zh = {
     viewAllProducts: "查看所有产品",
     quantity: "数量",
     decreaseQuantity: "减少数量",
-    increaseQuantity: "增加数量"
+    increaseQuantity: "增加数量",
+    // B2B pivot keys
+    findNearYou: "附近查找",
+    askYourStore: "在您当地的宠物店询问Purrify",
+    availableAtStores: "加拿大各地宠物店有售"
   },
 
   // Stores Section
@@ -355,7 +372,12 @@ export const zh = {
     subtitle: "加入 1,000+ 满意的猫主人，今天就试试 Purrify",
     buttonText: "立即订购",
     joinText: "加入Purrify家族",
-    guarantee: "专属客服支持"
+    guarantee: "专属客服支持",
+    // B2B pivot keys
+    b2bTitle: "在您附近找到Purrify",
+    b2bSubtitle: "加拿大各地宠物店有售。在您当地的宠物零售商询问Purrify。",
+    b2bButtonText: "查找附近商店",
+    b2bGuarantee: "全国宠物零售商有售"
   },
 
   // FAQ
@@ -702,9 +724,17 @@ export const zh = {
     about: "关于我们",
     blog: "博客",
     locations: "门店位置",
+    stockists: "门店",
     testimonials: "用户评价",
     retailers: "零售商",
+    retailerPortal: "零售商门户",
+    hospitality: "酒店业",
+    groomers: "宠物美容师",
+    shelters: "收容所",
+    b2bInquiry: "企业合作咨询",
+    invest: "投资者",
     affiliateProgram: "联盟计划",
+    results: "成功案例",
     contact: "联系我们",
     privacyPolicy: "隐私政策",
     termsOfService: "服务条款",
@@ -1461,17 +1491,17 @@ export const zh = {
       successStories: {
         title: "合作伙伴成功案例",
         stories: {
-          petPalace: {
-            businessName: "Pet Palace Toronto",
-            businessType: "独立宠物店",
-            quote: "第一季度增加了800美元/月的收入。客户喜欢并持续回购！",
-            metric: "+145% 销售增长"
+          pattesEtGriffes: {
+            businessName: "Pattes et Griffes – Sainte‑Thérèse",
+            businessType: "店主 / 经理",
+            quote: "我们的客户现在点名要Purrify。在柜台推荐很容易，订货月月稳定。",
+            metric: "30天订货周期"
           },
-          healthyPaws: {
-            businessName: "Healthy Paws Vet",
-            businessType: "兽医诊所",
-            quote: "我们的客户信任我们的推荐。我们零售区利润最高的产品。",
-            metric: "55% 利润率"
+          chico: {
+            businessName: "Chico – Boul. St‑Laurent (蒙特利尔)",
+            businessType: "店铺经理",
+            quote: "易于存储，利润高，走货快。销售物料帮助我们的团队快速向购物者解释优势。",
+            metric: "高周转率"
           }
         }
       },
@@ -1690,7 +1720,7 @@ export const zh = {
       },
       {
         question: "Purrify提供免费送货吗？",
-        answer: "是的！我们在加拿大为超过$35的订单提供免费送货。大多数客户通过购买120g大装（$15.95）或240g经济装（$29.76），或捆绑多个商品来轻松达到这个金额。订单通常在5-7个工作日内通过加拿大邮政送达。对于低于$35的订单，根据您的位置应用标准运费。"
+        answer: "我们在加拿大和美国提供运送服务。订单通常在5-7个工作日内通过加拿大邮政送达。具体运费将在结账时显示。"
       },
       {
         question: "Purrify工作得有多快？",
@@ -1730,7 +1760,7 @@ export const zh = {
       },
       {
         question: "我可以在商店购买Purrify吗？",
-        answer: "目前，Purrify主要通过我们的网站提供，以确保新鲜度、质量和直接面向消费者的定价。我们正在开展零售合作伙伴关系，可能很快会在精选商店中销售。在线订购意味着您可以直接从我们这里获得最新鲜的产品，没有零售加价。此外，我们的网店提供数量折扣、超过$35的免费送货以及您在商店找不到的订阅节省。"
+        answer: "目前，Purrify主要通过我们的网站提供，以确保新鲜度、质量和直接面向消费者的定价。我们正在开展零售合作伙伴关系，可能很快会在精选商店中销售。在线订购意味着您可以直接从我们这里获得最新鲜的产品，没有零售加价。此外，我们的网店提供数量折扣以及您在商店找不到的订阅节省。"
       },
       {
         question: "如果我在7天后忘记使用Purrify怎么办？",
@@ -1774,7 +1804,7 @@ export const zh = {
       },
       {
         question: "你们提供批量折扣吗？",
-        answer: "是的！您购买的越多，节省的越多：购买2-3瓶 → 节省10%，购买4-5瓶 → 节省15%，购买6瓶以上 → 节省20%。这些折扣与我们已经经济实惠的240g经济装叠加。多猫家庭或为朋友购买的客户经常利用批量折扣。此外，超过$35的订单免费送货使批量购买更有价值。"
+        answer: "是的！您购买的越多，节省的越多：购买2-3瓶 → 节省10%，购买4-5瓶 → 节省15%，购买6瓶以上 → 节省20%。这些折扣与我们已经经济实惠的240g经济装叠加。多猫家庭或为朋友购买的客户经常利用批量折扣。"
       },
       {
         question: "如果Purrify对我不起作用，我该怎么办？",

@@ -7,7 +7,7 @@ import { useCurrency } from '../../src/lib/currency-context';
 import { getSEOMeta } from '../../src/translations/seo-meta';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, Check, Star, ShoppingCart, AlertCircle, TrendingUp } from 'lucide-react';
+import { ArrowLeft, Check, Star, ShoppingCart, AlertCircle, TrendingUp, MapPin, Store } from 'lucide-react';
 import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
 import { ProductFAQ } from '../../src/components/product/ProductFAQ';
 import { generateFAQSchema } from '../../src/lib/seo-utils';
@@ -15,6 +15,7 @@ import { getProductPrice, formatProductPrice } from '../../src/lib/pricing';
 import { useEffect, useRef } from 'react';
 import { trackTikTokClientEvent } from '../../src/lib/tiktok-tracking';
 import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
+import { useAggregateReview } from '../../src/hooks/useAggregateReview';
 
 interface TrialSizePageProps {
   priceValidUntil: string;
@@ -74,6 +75,9 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
   const trialPriceString = trialPriceValue.toFixed(2);
   const trialPrice = formatProductPrice('trial', currency, locale);
 
+  // Get aggregate review data
+  const { data: reviewData, displayText: reviewDisplay } = useAggregateReview(productKey, locale);
+
   // Use enhanced SEO hook
   const { nextSeoProps, schema } = useEnhancedSEO({
     path: '/products/trial-size',
@@ -84,17 +88,21 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
     schemaData: {
       name: "Purrify 12g Trial - Natural Cat Litter Freshener & Charcoal Additive",
       description: "FREE trial of our activated charcoal cat litter additive. Natural coconut shell carbon litter freshener eliminates ammonia odors instantly. Pet-friendly, fragrance-free formula.",
-      image: "https://www.purrify.ca/optimized/17gpink.webp",
+      image: ["https://www.purrify.ca/optimized/17gpink.webp"],
       price: trialPriceString,
       priceValidUntil,
       availability: 'https://schema.org/InStock',
+      sku: 'purrify-12g',
+      mpn: 'PURRIFY-12G',
+      shippingRate: '4.76',
       rating: {
-        value: 4.8,
-        count: 127,
+        value: reviewData.ratingValue,
+        count: reviewData.reviewCount,
       },
     },
     image: 'https://www.purrify.ca/optimized/17gpink.webp',
     keywords: ['cat litter freshener', 'charcoal litter additive', 'cat litter deodorizer', 'free trial'],
+    includeBreadcrumb: true,
   });
 
   // Schema.org structured data variables
@@ -151,12 +159,12 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
                 🎁 LIMITED TIME OFFER - FREE TRIAL
               </div>
               <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-6 leading-tight">
-                Get Your <span className="text-green-600 dark:text-green-400">FREE</span> Purrify Trial<br />
-                <span className="text-gray-600 dark:text-gray-400 text-2xl md:text-3xl lg:text-4xl font-bold">Just $4.76 shipping & handling anywhere in Canada</span>
+                <span className="text-gray-600 dark:text-gray-400 text-xl md:text-2xl lg:text-3xl font-medium italic">"I Thought My Litter Box Would Always Smell..."</span><br />
+                Until I tried this. Now it's <span className="text-green-600 dark:text-green-400">FREE</span> for you to test.
               </h1>
               <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-semibold mb-4">
-                Experience the odor-eliminating power of activated carbon<br className="hidden md:block" />
-                <span className="text-green-600 dark:text-green-400">absolutely FREE</span> - we just ask you cover shipping.
+                In 60 seconds, your litter box smell disappears.<br className="hidden md:block" />
+                Not masked. Not covered up. <span className="text-green-600 dark:text-green-400">Actually gone.</span>
               </p>
               <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
                 *Just $4.76 shipping & handling anywhere in Canada. Limit one per customer.
@@ -253,7 +261,7 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
                       className="w-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 dark:from-green-600 dark:to-green-500 dark:hover:from-green-500 dark:hover:to-green-400 text-white dark:text-white font-bold py-6 text-lg shadow-xl hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-300 transform hover:scale-[1.02]"
                     >
                       <ShoppingCart className="w-6 h-6 mr-2" />
-                      GET MY FREE TRIAL NOW
+                      SEND MY FREE TRIAL
                     </Button>
                   </a>
                   <p className="mt-4 text-xs font-medium text-gray-500 dark:text-gray-400 text-center italic">
@@ -307,7 +315,7 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
           <Container>
             <div className="max-w-4xl mx-auto">
               <h2 className="font-heading text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-8 text-center">
-                Here's The Ugly Truth About<br />Cat Litter Odor...
+                That Moment When Guests Walk In<br />And You Pray They Don't Smell It...
               </h2>
 
               <div className="grid md:grid-cols-2 gap-6 mb-12">
@@ -399,7 +407,7 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
                 </div>
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-indigo-100 dark:border-indigo-900/50">
                   <div className="text-4xl font-black text-electric-indigo-600 dark:text-electric-indigo-400 mb-2">1,127</div>
-                  <p className="text-sm text-gray-700 dark:text-gray-300 font-semibold">Happy trial users this month</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300 font-semibold">Free trials shipped this month</p>
                 </div>
               </div>
             </div>
@@ -456,9 +464,12 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
                 <p className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
                   "But what if it doesn't work for MY cat?"
                 </p>
-                <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
-                  Then you get every penny back. No questions. No hassle. No "return shipping fees" nonsense. We eat the cost. You risk <strong>nothing</strong>.
-                </p>
+                <div className="text-lg text-gray-700 dark:text-gray-300 mb-6 space-y-2">
+                  <p className="flex items-center gap-2"><Check className="w-5 h-5 text-green-500 dark:text-green-400 flex-shrink-0" /> Try it for 30 days</p>
+                  <p className="flex items-center gap-2"><Check className="w-5 h-5 text-green-500 dark:text-green-400 flex-shrink-0" /> If it doesn't work: full refund, no questions</p>
+                  <p className="flex items-center gap-2"><Check className="w-5 h-5 text-green-500 dark:text-green-400 flex-shrink-0" /> Keep the product anyway (we can't resell it)</p>
+                  <p className="font-bold text-gray-900 dark:text-white mt-4">You literally risk nothing.</p>
+                </div>
                 <a href="https://buy.stripe.com/8x2bJ1dSg6kqafO3oe6Na0a" target="_blank" rel="noopener noreferrer" onClick={handleBuyClick} className="inline-block">
                   <Button
                     size="lg"
@@ -507,9 +518,9 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
                     <div>
                       <p className="font-bold text-xl mb-2">PATH 1: Do Nothing</p>
                       <p className="opacity-90">
-                        Close this page. Keep living with the smell. Keep apologizing to guests.
-                        Keep wondering if people can smell it on your clothes. Keep wasting money on
-                        products that don't work. Same problems. Same embarrassment.
+                        Close this page. Tomorrow, a guest comes over. You apologize for the smell before they even mention it.
+                        You light another candle. Spray another air freshener. Wonder why nothing works.
+                        Same cycle. Same embarrassment. Same smell.
                       </p>
                     </div>
                   </div>
@@ -571,6 +582,31 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
               <p className="text-sm opacity-90">
                 Product is FREE • Just {trialPrice} shipping & handling anywhere in Canada • Limit one per customer
               </p>
+            </div>
+          </Container>
+        </section>
+
+        {/* Retailer Note */}
+        <section className="py-8 bg-blue-50 dark:bg-blue-900/20 border-y border-blue-100 dark:border-blue-900/50">
+          <Container>
+            <div className="max-w-2xl mx-auto text-center">
+              <div className="flex items-center justify-center gap-2 mb-3">
+                <Store className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-white">
+                  {locale === 'fr' ? 'Pour les détaillants' : 'For Retailers'}
+                </h3>
+              </div>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
+                {locale === 'fr'
+                  ? 'Commandez un échantillon gratuit pour essayer avant de stocker. Seulement 4,76 $ de frais de port.'
+                  : 'Order a free sample to try before stocking. Just $4.76 shipping & handling.'}
+              </p>
+              <Link href={`${locale !== 'en' ? `/${locale}` : ''}/retailers`}>
+                <Button variant="outline" size="sm" className="border-blue-600 text-blue-700 hover:bg-blue-50 dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-900/30">
+                  <MapPin className="w-4 h-4 mr-2" />
+                  {locale === 'fr' ? 'En savoir plus sur notre programme détaillant' : 'Learn About Our Retailer Program'}
+                </Button>
+              </Link>
             </div>
           </Container>
         </section>

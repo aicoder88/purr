@@ -5,9 +5,21 @@ import Image from 'next/image';
 import { useState, useCallback } from 'react';
 import { BarChart, LineChart, PieChart, ProgressRing } from '../src/components/ui/charts';
 import { CONTACT_INFO } from '../src/lib/constants';
+import { useEnhancedSEO } from '../src/hooks/useEnhancedSEO';
 
 export default function InvestorRelations() {
   const [activeTab, setActiveTab] = useState('overview');
+
+  // Use enhanced SEO hook
+  const { nextSeoProps } = useEnhancedSEO({
+    path: '/invest',
+    title: 'Investor Relations - Purrify Cat Litter Investment Opportunity',
+    description: 'Investment opportunity in Purrify, an innovative activated carbon cat litter additive company. Raising $50K @ $1M pre-money valuation.',
+    targetKeyword: 'pet industry investment',
+    image: 'https://www.purrify.ca/purrify-logo-text.png',
+    keywords: ['pet industry investment', 'startup investment', 'cat products startup'],
+    noindex: true, // Investor pages typically shouldn't be indexed
+  });
 
   const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -47,25 +59,7 @@ export default function InvestorRelations() {
 
   return (
     <>
-      <NextSeo
-        title="Investor Relations - Purrify Cat Litter Investment Opportunity"
-        description="Investment opportunity in Purrify, an innovative activated carbon cat litter additive company. Raising $50K @ $1M pre-money valuation."
-        canonical="https://www.purrify.ca/invest"
-        openGraph={{
-          title: 'Investor Relations - Purrify Cat Litter Investment Opportunity',
-          description: 'Investment opportunity in Purrify, an innovative activated carbon cat litter additive company.',
-          url: 'https://www.purrify.ca/invest',
-          siteName: 'Purrify',
-          images: [
-            {
-              url: 'https://www.purrify.ca/purrify-logo-text.png',
-              width: 1200,
-              height: 630,
-              alt: 'Purrify Logo',
-            }
-          ],
-        }}
-      />
+      <NextSeo {...nextSeoProps} />
 
       <div className="min-h-screen bg-gradient-to-br from-[#FFFFF5] via-[#FFFFFF] to-[#E0EFC7]/30 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900/20 relative overflow-hidden">
         {/* Animated background elements */}
