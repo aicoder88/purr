@@ -4,7 +4,7 @@ import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
 import { useTranslation } from '../../src/lib/translation-context';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 
 // Relevant images for multi-cat household content
 const heroImage = '/optimized/multi-cat-deodorizer.webp';
@@ -712,7 +712,7 @@ export default function MultiCatLitterDeodorizerGuide() {
           </div>
           {/* Related Articles */}
           <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600">
-            <RelatedArticles currentPath="/blog/multi-cat-litter-deodorizer-guide" />
+            <RelatedContent currentUrl="/blog/multi-cat-litter-deodorizer-guide" />
           </div>
         </Container>
       </article>

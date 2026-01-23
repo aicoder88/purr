@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 
 // High-quality images for frustration, failed solutions, and breakthrough
 const heroImage = '/optimized/blog/tried-hero.jpg';
@@ -521,7 +521,7 @@ export default function TriedEverythingCatLitterSmell() {
 
             {/* Related Articles */}
             <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600">
-              <RelatedArticles currentPath="/blog/tried-everything-cat-litter-smell-solutions" />
+              <RelatedContent currentUrl="/blog/tried-everything-cat-litter-smell-solutions" />
             </div>
           </div>
         </Container>

@@ -7,6 +7,7 @@ import { formatProductPrice } from '../../../src/lib/pricing';
 import { generateJSONLD } from '../../../src/lib/seo-utils';
 import { useEnhancedSEO } from '../../../src/hooks/useEnhancedSEO';
 import { Container } from '../../../src/components/ui/container';
+import { HubSpokeNav } from '@/components/seo/HubSpokeNav';
 
 export default function MultipleCatsOdorControlPage() {
   const { locale } = useTranslation();
@@ -75,6 +76,11 @@ export default function MultipleCatsOdorControlPage() {
             </nav>
           </Container>
         </section>
+
+        {/* Hub-Spoke Navigation */}
+        <Container className="py-6">
+          <HubSpokeNav clusterId="multi-cat" currentUrl="/learn/solutions/multiple-cats-odor-control" />
+        </Container>
 
         {/* Hero Section */}
         <section className="py-20 px-4">

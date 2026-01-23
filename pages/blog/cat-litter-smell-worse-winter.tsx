@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 
 // High-quality images for winter, closed windows, and fresh solutions
 const heroImage = '/optimized/winter-cat-window.png';
@@ -620,7 +620,7 @@ export default function CatLitterSmellWorseWinter() {
         {/* Related Articles */}
         <section className="py-12 border-t border-gray-200 dark:border-gray-800">
           <Container>
-            <RelatedArticles currentPath="/blog/cat-litter-smell-worse-winter" />
+            <RelatedContent currentUrl="/blog/cat-litter-smell-worse-winter" />
           </Container>
         </section>
       </article>

@@ -7,6 +7,7 @@ import { formatProductPrice } from '../../../src/lib/pricing';
 import { generateJSONLD } from '../../../src/lib/seo-utils';
 import { useEnhancedSEO } from '../../../src/hooks/useEnhancedSEO';
 import { Container } from '../../../src/components/ui/container';
+import { HubSpokeNav } from '@/components/seo/HubSpokeNav';
 
 export default function ApartmentCatSmellSolutionPage() {
   const { locale } = useTranslation();
@@ -75,6 +76,11 @@ export default function ApartmentCatSmellSolutionPage() {
             </nav>
           </Container>
         </section>
+
+        {/* Hub-Spoke Navigation */}
+        <Container className="py-6">
+          <HubSpokeNav clusterId="small-apartments" currentUrl="/learn/solutions/apartment-cat-smell-solution" />
+        </Container>
 
         {/* Hero Section */}
         <section className="py-20 px-4">

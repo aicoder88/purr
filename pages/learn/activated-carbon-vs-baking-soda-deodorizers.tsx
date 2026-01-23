@@ -2,7 +2,7 @@ import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { Home, ChevronRight } from 'lucide-react';
 import { Container } from '../../src/components/ui/container';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 import { useTranslation } from '../../src/lib/translation-context';
 import { generateJSONLD } from '../../src/lib/seo-utils';
 import { formatProductPrice } from '../../src/lib/pricing';
@@ -514,7 +514,7 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
         {/* Related Articles */}
         <div className="max-w-4xl mx-auto px-4">
           <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
-            <RelatedArticles currentPath="/learn/activated-carbon-vs-baking-soda-deodorizers" />
+            <RelatedContent currentUrl="/learn/activated-carbon-vs-baking-soda-deodorizers" />
           </div>
         </div>
       </main>

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 
 // High-quality images for cat litter odor and guest entertaining
 const heroImage = '/optimized/blog/embarrassed-hero.jpg';
@@ -469,7 +469,7 @@ export default function EmbarrassedGuestsVisit() {
 
             {/* Related Articles */}
             <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600">
-              <RelatedArticles currentPath="/blog/embarrassed-guests-visit-cat-litter-smell" />
+              <RelatedContent currentUrl="/blog/embarrassed-guests-visit-cat-litter-smell" />
             </div>
           </div>
         </Container>

@@ -1,7 +1,8 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import Image from 'next/image';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
+import { HubSpokeNav } from '@/components/seo/HubSpokeNav';
 import { useTranslation } from '../../src/lib/translation-context';
 import { generateJSONLD } from '../../src/lib/seo-utils';
 import { formatProductPrice } from '../../src/lib/pricing';
@@ -134,6 +135,11 @@ export default function HowToUseDeodorizer() {
               </div>
             </div>
           </div>
+
+          {/* Hub-Spoke Navigation */}
+          <div className="max-w-5xl mx-auto mt-12">
+            <HubSpokeNav clusterId="product-comparison" currentUrl="/learn/how-to-use-deodorizer" />
+          </div>
         </Container>
       </section>
 
@@ -265,7 +271,7 @@ export default function HowToUseDeodorizer() {
       </section>
 
         <div className="bg-white dark:bg-gray-950">
-          <RelatedArticles currentPath="/learn/how-to-use-deodorizer" />
+          <RelatedContent currentUrl="/learn/how-to-use-deodorizer" />
         </div>
       </main>
     </>

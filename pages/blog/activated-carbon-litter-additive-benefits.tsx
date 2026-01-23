@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Container } from "../../src/components/ui/container";
 import { SITE_NAME } from "../../src/lib/constants";
 import Link from "next/link";
-import { RelatedArticles } from "../../src/components/blog/RelatedArticles";
+import { RelatedContent } from '@/components/seo/RelatedContent';
 
 // Relevant images for activated carbon science content
 const heroImage = "/optimized/activated-carbon-benefits.webp";
@@ -568,7 +568,7 @@ export default function ActivatedCarbonBenefits() {
 
             {/* Related Articles */}
             <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600">
-              <RelatedArticles currentPath="/blog/activated-carbon-litter-additive-benefits" />
+              <RelatedContent currentUrl="/blog/activated-carbon-litter-additive-benefits" />
             </div>
           </div>
         </Container>

@@ -8,7 +8,7 @@ import { getSEOMeta } from '../../src/translations/seo-meta';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, Heart, Zap, Truck, MapPin, ChevronRight } from 'lucide-react';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 import { ProductFAQ } from '../../src/components/product/ProductFAQ';
 import { BNPLBadge } from '../../src/components/product/BNPLBadge';
 import { StickyAddToCart } from '../../src/components/product/StickyAddToCart';
@@ -608,7 +608,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
         {/* Related Articles */}
         <section className="py-24 border-t border-gray-200 dark:border-gray-800">
           <Container>
-            <RelatedArticles currentPath="/products/standard" />
+            <RelatedContent currentUrl="/products/standard" />
           </Container>
         </section>
       </main>

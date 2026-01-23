@@ -25,7 +25,7 @@ import {
   MapPin,
   Quote,
 } from 'lucide-react';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 import { buildAvailabilityUrl, getPriceValidityDate, generateWebsiteSchema } from '../../src/lib/seo-utils';
 import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../src/lib/pricing';
@@ -935,7 +935,7 @@ const ProductsPage: NextPage = () => {
         {/* Related Articles */}
         <section className="py-16 border-t border-gray-200 dark:border-gray-800">
           <Container>
-            <RelatedArticles currentPath="/products" />
+            <RelatedContent currentUrl="/products" />
           </Container>
         </section>
       </main>

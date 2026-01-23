@@ -6,7 +6,7 @@ import { SITE_NAME } from '../../src/lib/constants';
 import { generateJSONLD } from '../../src/lib/seo-utils';
 import Link from 'next/link';
 import { ArrowLeft, ShieldCheck, Award, Leaf, CheckCircle2, FileCheck, Home, ChevronRight } from 'lucide-react';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 import Image from 'next/image';
 import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
@@ -616,7 +616,7 @@ export default function SafetyInformationPage() {
         {/* Related Articles */}
         <section className="py-16 border-t border-gray-200 dark:border-gray-800">
           <Container>
-            <RelatedArticles currentPath="/learn/safety" />
+            <RelatedContent currentUrl="/learn/safety" />
           </Container>
         </section>
 

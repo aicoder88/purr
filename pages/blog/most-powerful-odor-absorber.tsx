@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
 import { useTranslation } from '../../src/lib/translation-context';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 import { generateJSONLD } from '../../src/lib/seo-utils';
 import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
@@ -415,7 +415,7 @@ export default function MostPowerfulOdorAbsorber() {
               </section>
             </div>
 
-            <RelatedArticles currentPath="/blog/most-powerful-odor-absorber" />
+            <RelatedContent currentUrl="/blog/most-powerful-odor-absorber" />
           </div>
         </Container>
       </article>

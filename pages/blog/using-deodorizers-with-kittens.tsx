@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 
 // Relevant images for kitten care content
 const heroImage = '/optimized/deodorizers-with-kittens.webp';
@@ -172,7 +172,7 @@ export default function UsingDeodorizersWithKittens() {
           </div>
           {/* Related Articles */}
           <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-600">
-            <RelatedArticles currentPath="/blog/using-deodorizers-with-kittens" />
+            <RelatedContent currentUrl="/blog/using-deodorizers-with-kittens" />
           </div>
         </Container>
       </article>

@@ -17,7 +17,8 @@ import {
   BookOpen,
   Star
 } from 'lucide-react';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
+import { HubSpokeNav } from '@/components/seo/HubSpokeNav';
 import { generateJSONLD } from '../../src/lib/seo-utils';
 import { formatProductPrice } from '../../src/lib/pricing';
 import { getPaymentLink } from '../../src/lib/payment-links';
@@ -208,6 +209,15 @@ const CatLitterGuidePage: NextPage = () => {
                 height={1067}
                 className="w-full h-auto rounded-lg shadow-lg"
               />
+            </div>
+          </Container>
+        </section>
+
+        {/* Hub-Spoke Navigation */}
+        <section className="py-8">
+          <Container>
+            <div className="max-w-4xl mx-auto">
+              <HubSpokeNav clusterId="odor-control" currentUrl="/learn/cat-litter-guide" />
             </div>
           </Container>
         </section>
@@ -412,7 +422,7 @@ const CatLitterGuidePage: NextPage = () => {
         {/* Related Articles */}
         <section className="py-16">
           <Container>
-            <RelatedArticles currentPath="/learn/cat-litter-guide" />
+            <RelatedContent currentUrl="/learn/cat-litter-guide" />
           </Container>
         </section>
       </main>

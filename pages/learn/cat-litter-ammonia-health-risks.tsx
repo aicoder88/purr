@@ -4,7 +4,7 @@ import { useTranslation } from '../../src/lib/translation-context';
 import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
 import { AlertTriangle, ShieldCheck, Wind, Heart, Home, ChevronRight, Check, X, Thermometer, Clock } from 'lucide-react';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 import Image from 'next/image';
 import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
@@ -356,7 +356,7 @@ export default function AmmoniaHealthRisksPage() {
 
           {/* Related Articles */}
           <div className="py-12 border-t border-gray-100 dark:border-gray-800">
-            <RelatedArticles currentPath="/learn/cat-litter-ammonia-health-risks" />
+            <RelatedContent currentUrl="/learn/cat-litter-ammonia-health-risks" />
           </div>
         </Container>
       </div>
