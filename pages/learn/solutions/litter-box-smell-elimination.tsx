@@ -5,11 +5,15 @@ import Image from 'next/image';
 import { formatProductPrice } from '../../../src/lib/pricing';
 import { useTranslation } from '../../../src/lib/translation-context';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../../src/lib/seo-utils';
+import { RelatedSolutions } from '../../../src/components/learn/RelatedSolutions';
+import { HowToSection } from '../../../src/components/seo/HowToSection';
+import { AIQuotableBlock } from '../../../src/components/seo/AIQuotableBlock';
+import { RelatedQuestions } from '../../../src/components/seo/RelatedQuestions';
 
 export default function LitterBoxSmellEliminationPage() {
   const { locale } = useTranslation();
-  const seoTitle = 'Litter Box Odor Control Guide | Purrify';
-  const seoDescription = 'Eliminate litter box smells permanently with proven activated carbon technology. Complete guide to odor-free cat care with natural, fragrance-free solutions.';
+  const seoTitle = 'Litter Box Stinks After Cleaning? Here\'s Why (And How to Fix It)';
+  const seoDescription = 'Why does your litter box smell bad even after cleaning? Bacteria create ammonia within hours. Activated carbon traps odor molecules at the source—works 10x longer than baking soda.';
   const canonicalUrl = getLocalizedUrl('/learn/solutions/litter-box-smell-elimination', locale);
   const languageAlternates = buildLanguageAlternates('/learn/solutions/litter-box-smell-elimination');
 
@@ -17,6 +21,56 @@ export default function LitterBoxSmellEliminationPage() {
   const heroImage = '/images/solutions/litter-box-hero.png';
   const solutionImage = '/images/solutions/ammonia-happy-cat.png';
   const scienceImage = '/images/solutions/ammonia-science.png';
+
+  // HowTo steps for schema
+  const howToSteps = [
+    {
+      name: 'Empty and clean the litter box completely',
+      text: 'Remove all old litter and wash the box with mild soap and water. Avoid harsh chemicals that can leave residue or odors cats dislike.',
+      tip: 'Do a deep clean every 1-2 weeks, even if you scoop daily.',
+    },
+    {
+      name: 'Let the box dry completely',
+      text: 'Moisture trapped under litter accelerates bacterial growth and ammonia production. Ensure the box is fully dry before adding fresh litter.',
+    },
+    {
+      name: 'Add 2-3 inches of fresh litter',
+      text: 'Pour clean litter to the recommended depth. Too little litter means odors aren\'t absorbed; too much is wasteful.',
+    },
+    {
+      name: 'Sprinkle activated carbon additive on top',
+      text: 'Add 2-3 tablespoons of Purrify activated carbon and mix it into the top layer. The carbon begins trapping odor molecules immediately.',
+      tip: 'For multi-cat households, use 3-4 tablespoons per box.',
+    },
+    {
+      name: 'Scoop daily and refresh carbon weekly',
+      text: 'Daily scooping removes waste before ammonia forms. Add a tablespoon of Purrify every few days to maintain odor control between full changes.',
+    },
+  ];
+
+  // FAQ questions
+  const faqQuestions = [
+    {
+      question: 'Why does my litter box smell even after I just cleaned it?',
+      answer: 'Bacteria convert urea in cat urine to ammonia gas within 2-4 hours. Even with daily scooping, ammonia has already formed. The smell you notice isn\'t from visible waste—it\'s ammonia that\'s been released into the air. Activated carbon traps these molecules continuously between cleanings.',
+    },
+    {
+      question: 'How often should I completely change the litter?',
+      answer: 'With regular scooping and activated carbon additive, you can extend full litter changes to every 2-3 weeks instead of weekly. The carbon continues neutralizing odors, keeping litter fresher longer and reducing waste.',
+    },
+    {
+      question: 'Will activated carbon change my cat\'s litter box behavior?',
+      answer: 'No. Activated carbon is odorless and has a similar texture to litter. Unlike scented additives that can cause litter box avoidance, cats don\'t notice the carbon. Many cats actually prefer the cleaner environment.',
+    },
+    {
+      question: 'Is activated carbon safe if my cat ingests some?',
+      answer: 'Yes. Food-grade activated carbon is non-toxic and has been safely used in water filtration and even human supplements. Small amounts accidentally ingested during grooming pose no health risk to cats.',
+    },
+    {
+      question: 'Can I use activated carbon with any type of litter?',
+      answer: 'Absolutely. Activated carbon works with clay, clumping, crystal, wood, paper, corn, and wheat litters. Simply mix it into your existing litter—no need to switch brands or types.',
+    },
+  ];
 
   return (
     <>
@@ -42,7 +96,7 @@ export default function LitterBoxSmellEliminationPage() {
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: 'litter box smell elimination, cat litter odor control, activated carbon odor eliminator, natural pet odor removal, fragrance-free cat care',
+            content: 'litter box stinks after cleaning, why does my litter box smell, litter box smell won\'t go away, cat litter smells bad after cleaning, how to stop litter box smell, activated carbon cat litter',
           },
         ]}
       />
@@ -75,11 +129,11 @@ export default function LitterBoxSmellEliminationPage() {
                 className="w-full h-auto rounded-lg shadow-lg mb-8"
               />
               <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-                Litter Box Smell Elimination
+                Litter Box Stinks After Cleaning?
               </h1>
               <p className="text-xl text-gray-700 dark:text-gray-200 mb-8 max-w-3xl mx-auto">
-                End embarrassing litter box odors forever with our scientifically proven activated carbon technology.
-                Natural, safe, and incredibly effective.
+                You just cleaned the litter box—why does it still smell? Bacteria create ammonia gas within hours of urination.
+                Learn why traditional cleaning fails and how activated carbon eliminates odors at the molecular level.
               </p>
             </div>
 
@@ -174,15 +228,48 @@ export default function LitterBoxSmellEliminationPage() {
             </div>
 
             {/* Testimonial */}
-            <div className="bg-gradient-to-r from-electric-indigo to-deep-coral rounded-2xl p-8 text-white dark:text-gray-100 text-center">
+            <div className="bg-gradient-to-r from-electric-indigo to-deep-coral rounded-2xl p-8 text-white dark:text-gray-100 text-center mb-16">
               <blockquote className="text-2xl font-medium mb-4">
                 "I was so embarrassed when guests came over. Now I actually invite people in!
                 Purrify completely eliminated the smell in just one day."
               </blockquote>
               <cite className="text-blue-100 dark:text-gray-300">— Sarah M., Toronto</cite>
             </div>
+
+            {/* AI Quotable Fact */}
+            <div className="max-w-4xl mx-auto mb-16">
+              <AIQuotableBlock
+                fact="Ammonia forms in cat litter boxes within 2-4 hours of urination as bacteria break down urea. This is why litter boxes smell even after cleaning—the gas has already been released."
+                explanation="Activated carbon traps ammonia molecules through adsorption, with one gram providing the surface area of a football field for odor capture."
+                icon="science"
+                variant="highlight"
+              />
+            </div>
+
+            {/* HowTo Section */}
+            <div className="max-w-4xl mx-auto mb-16">
+              <HowToSection
+                title="How to Stop Your Litter Box From Smelling After Cleaning"
+                description="Follow these 5 steps to eliminate persistent litter box odor and keep your home fresh between cleanings."
+                steps={howToSteps}
+                totalTime="PT15M"
+                timeDisplay="15 minutes"
+                url={canonicalUrl}
+              />
+            </div>
+
+            {/* FAQ Section */}
+            <div className="max-w-4xl mx-auto mb-16">
+              <RelatedQuestions
+                title="Common Questions About Litter Box Odor"
+                questions={faqQuestions}
+                defaultOpen={[0]}
+              />
+            </div>
           </div>
         </section>
+
+        <RelatedSolutions currentPath="/learn/solutions/litter-box-smell-elimination" />
       </div>
     </>
   );

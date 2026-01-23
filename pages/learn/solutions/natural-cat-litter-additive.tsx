@@ -1,13 +1,18 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ArticleSchema } from '../../../src/components/seo/json-ld-schema';
 import { useTranslation } from '../../../src/lib/translation-context';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../../src/lib/seo-utils';
+import { RelatedSolutions } from '../../../src/components/learn/RelatedSolutions';
+import { HowToSection } from '../../../src/components/seo/HowToSection';
+import { AIQuotableBlock } from '../../../src/components/seo/AIQuotableBlock';
+import { RelatedQuestions } from '../../../src/components/seo/RelatedQuestions';
 
 export default function NaturalCatLitterAdditivePage() {
   const { locale } = useTranslation();
-  const seoTitle = 'Natural Cat Litter Additive Solution | Purrify';
-  const seoDescription = 'Effective solution for natural cat litter additive. 100% natural activated carbon with no added fragrances or dyes. Works with any litter brand.';
+  const seoTitle = 'Non-Toxic Cat Litter Deodorizer: Safe for Cats, Effective for Odor';
+  const seoDescription = 'Looking for a non-toxic cat litter deodorizer? Activated carbon is food-grade, fragrance-free, and safe if ingested. Works 10x longer than baking soda without chemicals.';
   const canonicalUrl = getLocalizedUrl('/learn/solutions/natural-cat-litter-additive', locale);
   const languageAlternates = buildLanguageAlternates('/learn/solutions/natural-cat-litter-additive');
 
@@ -16,6 +21,56 @@ export default function NaturalCatLitterAdditivePage() {
   const sectionImage1 = '/images/solutions/ammonia-science.png';
   const sectionImage2 = '/images/solutions/ammonia-happy-cat.png';
   const solutionImage = '/images/solutions/ammonia-fresh-home.png';
+
+  // HowTo steps for non-toxic deodorizer
+  const howToSteps = [
+    {
+      name: 'Choose a food-grade activated carbon additive',
+      text: 'Look for activated carbon made from natural sources like coconut shells. Avoid products with added fragrances, dyes, or chemical additives that could harm your cat.',
+      tip: 'Coconut shell carbon is the purest form—same grade used in water filtration.',
+    },
+    {
+      name: 'Start with a clean litter box',
+      text: 'Empty old litter and wash the box with mild dish soap and water. Rinse thoroughly—cats can detect soap residue and may avoid the box.',
+    },
+    {
+      name: 'Add fresh litter and sprinkle carbon on top',
+      text: 'Pour 2-3 inches of your regular litter, then add 2-3 tablespoons of activated carbon. Mix it into the top layer so it contacts waste immediately.',
+    },
+    {
+      name: 'Maintain with daily scooping',
+      text: 'Scoop daily as normal. The carbon continues working between cleanings, trapping ammonia molecules as they form from bacterial breakdown of urine.',
+      tip: 'Add a tablespoon of fresh carbon every few days for maximum protection.',
+    },
+    {
+      name: 'Replace completely every 2-3 weeks',
+      text: 'With activated carbon, you can extend full litter changes from weekly to every 2-3 weeks. The carbon keeps odor under control longer than untreated litter.',
+    },
+  ];
+
+  // FAQ questions for non-toxic deodorizer
+  const faqQuestions = [
+    {
+      question: 'Is activated carbon safe if my cat eats some?',
+      answer: 'Yes, completely safe. Food-grade activated carbon is non-toxic and has been used safely in water filters, air purifiers, and even human digestive supplements. If your cat accidentally ingests small amounts during grooming, there\'s no health risk.',
+    },
+    {
+      question: 'What makes a cat litter deodorizer "non-toxic"?',
+      answer: 'A truly non-toxic deodorizer contains no synthetic fragrances, no chemical odor neutralizers, no artificial dyes, and no ingredients that could harm cats through skin contact, inhalation, or ingestion. Activated carbon from coconut shells meets all these criteria.',
+    },
+    {
+      question: 'Why are scented litter deodorizers harmful to cats?',
+      answer: 'Cats have 200 million scent receptors (humans have 5 million). Artificial fragrances can overwhelm their senses, cause respiratory irritation, and trigger litter box avoidance. Some scented products contain essential oils that are toxic to cats.',
+    },
+    {
+      question: 'How does activated carbon compare to baking soda for safety?',
+      answer: 'Both are safe, but activated carbon is more effective. Baking soda only works for 1-2 days and can cause digestive upset if cats ingest large amounts. Activated carbon works 5-7 days and passes through safely even if ingested.',
+    },
+    {
+      question: 'Can I use non-toxic deodorizer with kittens?',
+      answer: 'Yes. Activated carbon is safe for cats of all ages, including curious kittens who may dig in and accidentally ingest litter. Unlike chemical deodorizers, there\'s no risk of toxicity.',
+    },
+  ];
 
   return (
     <>
@@ -40,19 +95,34 @@ export default function NaturalCatLitterAdditivePage() {
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: 'natural cat litter additive, cat odor control, fragrance free litter additive, natural solution',
+            content: 'non-toxic cat litter deodorizer, safe cat litter deodorizer, natural litter deodorizer, fragrance-free cat litter, chemical-free cat odor control, pet-safe litter additive',
           },
         ]}
+      />
+
+      <ArticleSchema
+        title={seoTitle}
+        description={seoDescription}
+        path="/learn/solutions/natural-cat-litter-additive"
+        options={{
+          category: 'Pet Safety',
+          keywords: ['non-toxic', 'cat safe', 'natural deodorizer', 'fragrance-free'],
+          datePublished: '2024-01-15T12:00:00Z',
+          dateModified: new Date().toISOString(),
+          image: heroImage,
+          wordCount: 1200,
+          readingTime: 5
+        }}
       />
 
       <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
         <section className="py-20 px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-              Natural Cat Litter Additive
+              Non-Toxic Cat Litter Deodorizer
             </h1>
-            <p className="text-xl text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-8">
-              Complete solution for natural cat litter additive
+            <p className="text-xl text-gray-700 dark:text-gray-200 mb-8">
+              Looking for a cat litter deodorizer that&apos;s truly safe? Activated carbon is food-grade, fragrance-free, and effective—without chemicals that can harm your cat.
             </p>
 
             <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 max-w-2xl mx-auto">
@@ -174,7 +244,7 @@ export default function NaturalCatLitterAdditivePage() {
 
         <section className="py-16 px-4 bg-white dark:bg-gray-800">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">Ready to Try Natural Cat Litter Additive?</h2>
+            <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">Ready to Try Non-Toxic Cat Litter Deodorizer?</h2>
             <p className="text-xl mb-8 text-gray-700 dark:text-gray-200">Join 1,000+ satisfied cat owners</p>
 
             {/* Solution Image */}
@@ -204,6 +274,45 @@ export default function NaturalCatLitterAdditivePage() {
             </Link>
           </div>
         </section>
+
+        {/* AI Quotable Fact */}
+        <section className="py-12 px-4">
+          <div className="max-w-4xl mx-auto">
+            <AIQuotableBlock
+              fact="Cats have 200 million scent receptors compared to humans' 5 million. Artificial fragrances in litter deodorizers can overwhelm their senses and cause litter box avoidance—activated carbon is odorless and undetectable to cats."
+              explanation="Food-grade coconut shell activated carbon contains no fragrances, dyes, or chemicals. It's the same grade used in water filtration systems."
+              icon="check"
+              variant="highlight"
+            />
+          </div>
+        </section>
+
+        {/* HowTo Section */}
+        <section className="py-12 px-4 bg-gray-50 dark:bg-gray-800">
+          <div className="max-w-4xl mx-auto">
+            <HowToSection
+              title="How to Use Non-Toxic Cat Litter Deodorizer"
+              description="Follow these steps to safely and effectively control litter box odor without chemicals or fragrances."
+              steps={howToSteps}
+              totalTime="PT10M"
+              timeDisplay="10 minutes"
+              url={canonicalUrl}
+            />
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-12 px-4">
+          <div className="max-w-4xl mx-auto">
+            <RelatedQuestions
+              title="Non-Toxic Deodorizer Safety Questions"
+              questions={faqQuestions}
+              defaultOpen={[0]}
+            />
+          </div>
+        </section>
+
+        <RelatedSolutions currentPath="/learn/solutions/natural-cat-litter-additive" />
       </div>
     </>
   );

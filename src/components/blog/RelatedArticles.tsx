@@ -143,6 +143,24 @@ const ALL_ARTICLES: Article[] = [
     image: '/optimized/cat-litter-deodorizer-guide.webp',
     alt: 'Complete cat care setup guide'
   },
+  {
+    title: 'How to Neutralize Ammonia in Cat Litter',
+    href: '/learn/solutions/how-to-neutralize-ammonia-cat-litter',
+    image: '/images/solutions/ammonia-science.png',
+    alt: 'Scientific approach to neutralizing ammonia odors'
+  },
+  {
+    title: 'Litter Box Smell Elimination Guide',
+    href: '/learn/solutions/litter-box-smell-elimination',
+    image: '/images/solutions/litter-box-hero.png',
+    alt: 'Clean litter box in a fresh home'
+  },
+  {
+    title: 'Senior Cat Litter Solutions',
+    href: '/learn/solutions/senior-cat-litter-solutions',
+    image: '/optimized/cat_long_lasting_freshness_800x500.webp',
+    alt: 'Comfortable litter solutions for senior cats'
+  },
 ];
 
 export function RelatedArticles({ currentPath, limit = 3 }: { currentPath?: string; limit?: number }) {

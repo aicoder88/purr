@@ -5,6 +5,10 @@ import Image from 'next/image';
 import { formatProductPrice } from '../../../src/lib/pricing';
 import { useTranslation } from '../../../src/lib/translation-context';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../../src/lib/seo-utils';
+import { RelatedSolutions } from '../../../src/components/learn/RelatedSolutions';
+import { HowToSection } from '../../../src/components/seo/HowToSection';
+import { AIQuotableBlock } from '../../../src/components/seo/AIQuotableBlock';
+import { RelatedQuestions } from '../../../src/components/seo/RelatedQuestions';
 
 export default function HowToNeutralizeAmmoniaCatLitterPage() {
   const { locale } = useTranslation();
@@ -17,6 +21,56 @@ export default function HowToNeutralizeAmmoniaCatLitterPage() {
   const scienceImage = '/images/solutions/ammonia-science.png';
   const freshHomeImage = '/images/solutions/ammonia-fresh-home.png';
   const happyCatImage = '/images/solutions/ammonia-happy-cat.png';
+
+  // HowTo steps for neutralizing ammonia
+  const howToSteps = [
+    {
+      name: 'Choose activated carbon as your primary solution',
+      text: 'Activated carbon is the most effective ammonia neutralizer available. It traps ammonia molecules permanently through adsorption, with 92% reduction in lab tests.',
+      tip: 'Look for coconut shell activated carbon—it has the highest surface area and purity.',
+    },
+    {
+      name: 'Remove existing ammonia-soaked litter',
+      text: 'Empty the litter box completely and dispose of old litter. Ammonia has already been released from this waste and cannot be recaptured.',
+    },
+    {
+      name: 'Clean the box with enzyme cleaner',
+      text: 'Use an enzyme-based cleaner (not bleach) to break down any urine residue in the box. Let it dry completely before adding fresh litter.',
+      tip: 'Bleach + ammonia creates toxic chloramine gas. Never use bleach on litter boxes.',
+    },
+    {
+      name: 'Add fresh litter with activated carbon mixed in',
+      text: 'Pour 2-3 inches of clean litter, then add 2-3 tablespoons of activated carbon additive. Mix thoroughly so the carbon contacts urine as soon as it\'s deposited.',
+    },
+    {
+      name: 'Maintain with daily scooping and weekly carbon refresh',
+      text: 'Scoop waste daily to remove the source of new ammonia. Add 1 tablespoon of fresh carbon every 2-3 days to maintain continuous protection.',
+    },
+  ];
+
+  // Enhanced FAQ questions for RelatedQuestions component (adds FAQPage schema)
+  const faqQuestions = [
+    {
+      question: 'Why does my litter box smell like ammonia even after cleaning?',
+      answer: 'Ammonia forms within 2-4 hours of urination as bacteria break down urea. If you clean once daily, ammonia has already formed. Activated carbon neutralizes it continuously between cleanings, which is why it\'s more effective than just frequent scooping.',
+    },
+    {
+      question: 'Is the ammonia smell harmful to my cat?',
+      answer: 'Yes. High ammonia levels can irritate your cat\'s respiratory system, cause eye problems, and lead to litter box avoidance. Cats have sensitive noses—if you can smell it, it\'s overwhelming for them. Prolonged exposure can cause chronic respiratory issues.',
+    },
+    {
+      question: 'How much activated carbon should I use?',
+      answer: 'For a standard litter box, 2-3 tablespoons of activated carbon additive mixed into the litter is sufficient. For multi-cat households or larger boxes, use 3-4 tablespoons. Add more with each litter change or weekly top-up for best results.',
+    },
+    {
+      question: 'Does activated carbon work with all litter types?',
+      answer: 'Yes. Activated carbon additives work with clay, clumping, crystal, wood, paper, and natural litters. Simply mix it into your existing litter—no need to switch brands. The carbon works by trapping ammonia molecules regardless of litter type.',
+    },
+    {
+      question: 'Why is activated carbon better than baking soda?',
+      answer: 'Baking soda only provides 38% ammonia reduction and lasts 1-2 days. Activated carbon achieves 92% reduction and lasts 5-7 days. This is because carbon physically traps molecules through adsorption, while baking soda relies on a weak chemical reaction.',
+    },
+  ];
 
   return (
     <>
@@ -446,54 +500,40 @@ export default function HowToNeutralizeAmmoniaCatLitterPage() {
           </div>
         </section>
 
-        {/* FAQ Section */}
+        {/* AI Quotable Fact */}
         <section className="py-12 px-4 bg-white dark:bg-gray-800">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-heading font-bold mb-8 text-center text-gray-900 dark:text-gray-100">
-              Frequently Asked Questions
-            </h2>
+            <AIQuotableBlock
+              fact="Activated carbon achieves 92% ammonia reduction in lab tests, compared to just 38% for baking soda. This is because carbon traps molecules through adsorption—a physical process—while baking soda relies on a weak chemical reaction between two alkaline substances."
+              explanation="The massive surface area of activated carbon (1,000-2,000 m²/gram) provides billions of microscopic pores where ammonia molecules become permanently trapped."
+              icon="stat"
+              variant="highlight"
+            />
+          </div>
+        </section>
 
-            <div className="space-y-6">
-              <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
-                <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-3">
-                  Why does my litter box smell like ammonia even after cleaning?
-                </h3>
-                <p className="text-gray-700 dark:text-gray-200">
-                  Ammonia forms within 2-4 hours of urination as bacteria break down urea. If you clean once daily,
-                  ammonia has already formed. Activated carbon neutralizes it continuously between cleanings.
-                </p>
-              </div>
+        {/* HowTo Section with Schema */}
+        <section className="py-12 px-4">
+          <div className="max-w-4xl mx-auto">
+            <HowToSection
+              title="Step-by-Step: How to Neutralize Ammonia in Cat Litter"
+              description="Follow this proven 5-step process to eliminate ammonia smell from your litter box using activated carbon."
+              steps={howToSteps}
+              totalTime="PT20M"
+              timeDisplay="20 minutes initial setup, then 5 minutes daily"
+              url={canonicalUrl}
+            />
+          </div>
+        </section>
 
-              <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
-                <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-3">
-                  Is the ammonia smell harmful to my cat?
-                </h3>
-                <p className="text-gray-700 dark:text-gray-200">
-                  Yes. High ammonia levels can irritate your cat&apos;s respiratory system, cause eye problems, and lead
-                  to litter box avoidance. Cats have sensitive noses—if you can smell it, it&apos;s overwhelming for them.
-                </p>
-              </div>
-
-              <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
-                <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-3">
-                  How much activated carbon should I use?
-                </h3>
-                <p className="text-gray-700 dark:text-gray-200">
-                  For a standard litter box, 2-3 tablespoons of activated carbon additive mixed into the litter is
-                  sufficient. Add more with each litter change or weekly top-up for best results.
-                </p>
-              </div>
-
-              <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
-                <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-3">
-                  Does activated carbon work with all litter types?
-                </h3>
-                <p className="text-gray-700 dark:text-gray-200">
-                  Yes. Activated carbon additives work with clay, clumping, crystal, wood, paper, and natural litters.
-                  Simply mix it into your existing litter—no need to switch brands.
-                </p>
-              </div>
-            </div>
+        {/* FAQ Section with Schema */}
+        <section className="py-12 px-4 bg-gray-50 dark:bg-gray-800">
+          <div className="max-w-4xl mx-auto">
+            <RelatedQuestions
+              title="Ammonia Neutralization FAQ"
+              questions={faqQuestions}
+              defaultOpen={[0]}
+            />
           </div>
         </section>
 
@@ -548,6 +588,8 @@ export default function HowToNeutralizeAmmoniaCatLitterPage() {
             </div>
           </div>
         </section>
+
+        <RelatedSolutions currentPath="/learn/solutions/how-to-neutralize-ammonia-cat-litter" />
       </div>
     </>
   );

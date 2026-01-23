@@ -14,12 +14,14 @@ export interface SEOConfig {
   title: string;
   description: string;
   targetKeyword?: string;
-  schemaType?: 'product' | 'article' | 'faq' | 'location' | 'organization';
+  schemaType?: 'product' | 'article' | 'faq' | 'location' | 'organization' | 'howto' | 'claimReview' | 'comparison';
   schemaData?: Record<string, any>;
   image?: string;
   keywords?: string[];
   noindex?: boolean;
   nofollow?: boolean;
+  /** Include expert author schema for AI citation optimization */
+  includeExpertAuthor?: boolean;
 }
 
 export interface EnhancedSEOResult {
@@ -54,6 +56,8 @@ export interface EnhancedSEOResult {
     nofollow?: boolean;
   };
   schema: object | null;
+  /** Additional schemas (e.g., expert author) - render all in page head */
+  additionalSchemas: object[];
   meta: {
     titleLength: number;
     descriptionLength: number;
@@ -168,9 +172,18 @@ export function useEnhancedSEO(config: SEOConfig): EnhancedSEOResult {
     );
   }
 
+  // Generate additional schemas
+  const additionalSchemas: object[] = [];
+
+  // Add expert author schema if requested
+  if (config.includeExpertAuthor) {
+    additionalSchemas.push(generateExpertAuthorSchema());
+  }
+
   return {
     nextSeoProps,
     schema,
+    additionalSchemas,
     meta: {
       titleLength: optimizedTitle.length,
       descriptionLength: optimizedDescription.length,
@@ -327,7 +340,120 @@ function generateSchema(
           : undefined,
       };
 
+    case 'howto':
+      return {
+        ...baseSchema,
+        '@type': 'HowTo',
+        name: data.name,
+        description: data.description,
+        image: data.image,
+        totalTime: data.totalTime,
+        step: data.steps?.map((step: { name: string; text: string; image?: string }, index: number) => ({
+          '@type': 'HowToStep',
+          position: index + 1,
+          name: step.name,
+          text: step.text,
+          image: step.image,
+        })),
+      };
+
+    case 'claimReview':
+      return {
+        ...baseSchema,
+        '@type': 'ClaimReview',
+        claimReviewed: data.claim,
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: data.rating,
+          bestRating: 5,
+          worstRating: 1,
+          alternateName: data.ratingLabel || getRatingLabel(data.rating),
+        },
+        author: {
+          '@type': 'Organization',
+          name: SITE_NAME,
+          url: 'https://www.purrify.ca',
+        },
+        datePublished: data.datePublished || new Date().toISOString(),
+        itemReviewed: data.claimAuthor
+          ? {
+              '@type': 'Claim',
+              author: {
+                '@type': 'Organization',
+                name: data.claimAuthor,
+              },
+            }
+          : undefined,
+      };
+
+    case 'comparison':
+      // Comparison pages use multiple ClaimReview schemas - return array
+      if (data.claims && Array.isArray(data.claims)) {
+        return data.claims.map((claim: { claim: string; rating: number; ratingLabel?: string }) => ({
+          '@context': 'https://schema.org',
+          '@type': 'ClaimReview',
+          claimReviewed: claim.claim,
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: claim.rating,
+            bestRating: 5,
+            worstRating: 1,
+            alternateName: claim.ratingLabel || getRatingLabel(claim.rating),
+          },
+          url,
+          author: {
+            '@type': 'Organization',
+            name: SITE_NAME,
+            url: 'https://www.purrify.ca',
+          },
+          datePublished: data.datePublished || new Date().toISOString(),
+        }));
+      }
+      return baseSchema;
+
     default:
       return baseSchema;
   }
+}
+
+/**
+ * Get human-readable rating label
+ */
+function getRatingLabel(rating: number): string {
+  const labels: Record<number, string> = {
+    1: 'False',
+    2: 'Mostly False',
+    3: 'Mixed',
+    4: 'Mostly True',
+    5: 'True',
+  };
+  return labels[rating] || 'Unknown';
+}
+
+/**
+ * Generate Purrify Research Team expert author schema
+ * Use for AI citation optimization
+ */
+function generateExpertAuthorSchema(): object {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Purrify Research Team',
+    url: 'https://www.purrify.ca/about/our-story',
+    description:
+      'Expert team specializing in activated carbon science and pet odor chemistry. We research and develop natural solutions for cat litter odor control.',
+    knowsAbout: [
+      'Activated Carbon Science',
+      'Cat Litter Odor Chemistry',
+      'Pet Care Science',
+      'Ammonia Adsorption',
+      'Natural Pet Products',
+    ],
+    memberOf: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: 'https://www.purrify.ca',
+    },
+    sameAs: ['https://www.instagram.com/purrifyhq'],
+  };
 }

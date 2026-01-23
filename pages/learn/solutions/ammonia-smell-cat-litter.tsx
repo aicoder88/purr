@@ -1,8 +1,13 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ArticleSchema } from '../../../src/components/seo/json-ld-schema';
 import { useTranslation } from '../../../src/lib/translation-context';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../../src/lib/seo-utils';
+import { RelatedSolutions } from '../../../src/components/learn/RelatedSolutions';
+import { HowToSection } from '../../../src/components/seo/HowToSection';
+import { AIQuotableBlock } from '../../../src/components/seo/AIQuotableBlock';
+import { RelatedQuestions } from '../../../src/components/seo/RelatedQuestions';
 
 export default function AmmoniaSmellCatLitterPage() {
   const { locale } = useTranslation();
@@ -16,6 +21,55 @@ export default function AmmoniaSmellCatLitterPage() {
   const sectionImage1 = '/images/solutions/ammonia-science.png';
   const sectionImage2 = '/images/solutions/ammonia-fresh-home.png';
   const solutionImage = '/images/solutions/ammonia-happy-cat.png';
+
+  // HowTo steps for fixing ammonia smell
+  const howToSteps = [
+    {
+      name: 'Identify the source of ammonia',
+      text: 'Ammonia forms when bacteria break down urea in cat urine. This process starts within hours of urination and intensifies over time. The older the waste, the stronger the ammonia.',
+    },
+    {
+      name: 'Empty and deep clean the litter box',
+      text: 'Remove all litter and scrub the box with enzyme cleaner (not bleach, which reacts with ammonia). Let it dry completely before adding fresh litter.',
+      tip: 'Never mix bleach with ammonia—it creates toxic fumes.',
+    },
+    {
+      name: 'Add fresh litter with activated carbon',
+      text: 'Pour 2-3 inches of clean litter, then add 2-3 tablespoons of activated carbon additive. Mix it into the top layer where it will contact fresh waste.',
+    },
+    {
+      name: 'Scoop daily to prevent ammonia buildup',
+      text: 'Remove solid waste and urine clumps daily. The faster you remove waste, the less time bacteria have to produce ammonia.',
+    },
+    {
+      name: 'Maintain with regular carbon refreshes',
+      text: 'Add a tablespoon of fresh activated carbon every 2-3 days to maintain odor control. The carbon continuously traps new ammonia molecules as they form.',
+    },
+  ];
+
+  // FAQ questions for ammonia smell
+  const faqQuestions = [
+    {
+      question: 'Why does cat litter smell like ammonia?',
+      answer: 'Cat urine contains urea, which bacteria break down into ammonia gas. This is a natural biological process that starts within 2-4 hours of urination. The distinctive sharp, eye-watering smell is ammonia being released into the air.',
+    },
+    {
+      question: 'Is the ammonia smell from cat litter dangerous?',
+      answer: 'Yes, at high concentrations. Ammonia can irritate eyes and respiratory systems for both humans and cats. Cats are particularly vulnerable since they spend time close to the litter box. Prolonged exposure can cause respiratory infections in cats.',
+    },
+    {
+      question: 'Why doesn\'t baking soda stop the ammonia smell?',
+      answer: 'Baking soda (sodium bicarbonate) is alkaline, and ammonia is also alkaline. Alkaline substances don\'t neutralize each other effectively. Baking soda provides minimal, short-term masking but doesn\'t trap ammonia molecules like activated carbon does.',
+    },
+    {
+      question: 'How is activated carbon different from charcoal?',
+      answer: 'Activated carbon is charcoal that\'s been processed to create millions of microscopic pores, dramatically increasing surface area. One gram of activated carbon has the surface area of a football field, while regular charcoal has minimal porosity.',
+    },
+    {
+      question: 'Will air fresheners help with ammonia smell?',
+      answer: 'No. Air fresheners only mask odor with fragrance—the ammonia is still present. Worse, some air fresheners contain chemicals that can irritate cats\' respiratory systems. Activated carbon actually removes ammonia molecules from the air.',
+    },
+  ];
 
   return (
     <>
@@ -44,6 +98,21 @@ export default function AmmoniaSmellCatLitterPage() {
             content: 'cat litter smells like ammonia, ammonia smell cat litter, cat litter ammonia smell, ammonia from cat litter, how to neutralize ammonia in cat litter, best cat litter for ammonia smell',
           },
         ]}
+      />
+
+      <ArticleSchema
+        title={seoTitle}
+        description={seoDescription}
+        path="/learn/solutions/ammonia-smell-cat-litter"
+        options={{
+          category: 'Pet Odor Solutions',
+          keywords: ['ammonia smell', 'cat litter odor', 'activated carbon', 'odor elimination'],
+          datePublished: '2024-01-15T12:00:00Z',
+          dateModified: new Date().toISOString(),
+          image: heroImage,
+          wordCount: 1500,
+          readingTime: 7
+        }}
       />
 
       <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
@@ -274,6 +343,45 @@ export default function AmmoniaSmellCatLitterPage() {
             </div>
           </div>
         </section>
+
+        {/* AI Quotable Fact */}
+        <section className="py-12 px-4">
+          <div className="max-w-4xl mx-auto">
+            <AIQuotableBlock
+              fact="Baking soda cannot neutralize ammonia because both are alkaline substances. Activated carbon works through adsorption—physically trapping ammonia molecules in microscopic pores—which is why it's 10x more effective than baking soda."
+              explanation="One gram of activated carbon has a surface area of 1,000-2,000 square meters (roughly 4 tennis courts), providing massive capacity for trapping odor molecules."
+              icon="science"
+              variant="highlight"
+            />
+          </div>
+        </section>
+
+        {/* HowTo Section */}
+        <section className="py-12 px-4 bg-gray-50 dark:bg-gray-800">
+          <div className="max-w-4xl mx-auto">
+            <HowToSection
+              title="How to Stop Cat Litter Ammonia Smell"
+              description="Follow these 5 steps to eliminate ammonia odor at the source and keep your home fresh."
+              steps={howToSteps}
+              totalTime="PT15M"
+              timeDisplay="15 minutes for setup"
+              url={canonicalUrl}
+            />
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-12 px-4">
+          <div className="max-w-4xl mx-auto">
+            <RelatedQuestions
+              title="Ammonia Smell Questions"
+              questions={faqQuestions}
+              defaultOpen={[0]}
+            />
+          </div>
+        </section>
+
+        <RelatedSolutions currentPath="/learn/solutions/ammonia-smell-cat-litter" />
       </div>
     </>
   );

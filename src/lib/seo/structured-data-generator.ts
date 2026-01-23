@@ -145,6 +145,46 @@ interface HowToSchema extends SchemaBase {
   }>;
 }
 
+interface ClaimReviewSchema extends SchemaBase {
+  claimReviewed: string;
+  reviewRating: {
+    '@type': string;
+    ratingValue: number;
+    bestRating: number;
+    worstRating: number;
+    alternateName?: string;
+  };
+  url: string;
+  author: {
+    '@type': string;
+    name: string;
+    url?: string;
+  };
+  datePublished: string;
+  itemReviewed?: {
+    '@type': string;
+    author?: {
+      '@type': string;
+      name?: string;
+    };
+    datePublished?: string;
+  };
+}
+
+interface ExpertAuthorSchema extends SchemaBase {
+  name: string;
+  url?: string;
+  image?: string;
+  description?: string;
+  knowsAbout?: string[];
+  memberOf?: {
+    '@type': string;
+    name: string;
+    url?: string;
+  };
+  sameAs?: string[];
+}
+
 export interface ProductData {
   name: string;
   description: string;
@@ -208,6 +248,42 @@ export interface BreadcrumbItem {
 export interface FAQItem {
   question: string;
   answer: string;
+}
+
+export interface ClaimReviewData {
+  claim: string;
+  rating: 1 | 2 | 3 | 4 | 5; // 1=False, 2=Mostly False, 3=Mixed, 4=Mostly True, 5=True
+  ratingLabel?: string;
+  url: string;
+  datePublished: string;
+  claimAuthor?: string;
+  claimDate?: string;
+}
+
+export interface ExpertAuthorData {
+  name: string;
+  url?: string;
+  image?: string;
+  description?: string;
+  expertise?: string[];
+  organization?: {
+    name: string;
+    url?: string;
+  };
+  socialProfiles?: string[];
+}
+
+export interface HowToData {
+  name: string;
+  description: string;
+  image?: string;
+  totalTime?: string;
+  steps: Array<{
+    name: string;
+    text: string;
+    image?: string;
+    url?: string;
+  }>;
 }
 
 export class StructuredDataGenerator {
@@ -617,6 +693,126 @@ export class StructuredDataGenerator {
     }
 
     return JSON.stringify(schema, null, 2);
+  }
+
+  /**
+   * Generate ClaimReview schema for fact-checking and comparison content
+   * Useful for comparison articles that make claims about competitors or alternatives
+   */
+  generateClaimReview(review: ClaimReviewData): string {
+    // Map rating number to human-readable label
+    const ratingLabels: Record<number, string> = {
+      1: 'False',
+      2: 'Mostly False',
+      3: 'Mixed',
+      4: 'Mostly True',
+      5: 'True',
+    };
+
+    const schema: ClaimReviewSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'ClaimReview',
+      claimReviewed: review.claim,
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: review.rating,
+        bestRating: 5,
+        worstRating: 1,
+        alternateName: review.ratingLabel || ratingLabels[review.rating],
+      },
+      url: review.url,
+      author: {
+        '@type': 'Organization',
+        name: this.organizationName,
+        url: this.baseUrl,
+      },
+      datePublished: review.datePublished,
+    };
+
+    // Add claim source if provided
+    if (review.claimAuthor || review.claimDate) {
+      schema.itemReviewed = {
+        '@type': 'Claim',
+      };
+      if (review.claimAuthor) {
+        schema.itemReviewed.author = {
+          '@type': 'Organization',
+          name: review.claimAuthor,
+        };
+      }
+      if (review.claimDate) {
+        schema.itemReviewed.datePublished = review.claimDate;
+      }
+    }
+
+    return JSON.stringify(schema, null, 2);
+  }
+
+  /**
+   * Generate Expert Author schema for AI citation optimization
+   * Links content to expertise areas for better AI attribution
+   */
+  generateExpertAuthor(author: ExpertAuthorData): string {
+    const schema: ExpertAuthorSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: author.name,
+    };
+
+    if (author.url) {
+      schema.url = author.url;
+    }
+
+    if (author.image) {
+      schema.image = author.image;
+    }
+
+    if (author.description) {
+      schema.description = author.description;
+    }
+
+    if (author.expertise && author.expertise.length > 0) {
+      schema.knowsAbout = author.expertise;
+    }
+
+    if (author.organization) {
+      schema.memberOf = {
+        '@type': 'Organization',
+        name: author.organization.name,
+        url: author.organization.url,
+      };
+    }
+
+    if (author.socialProfiles && author.socialProfiles.length > 0) {
+      schema.sameAs = author.socialProfiles;
+    }
+
+    return JSON.stringify(schema, null, 2);
+  }
+
+  /**
+   * Generate default Purrify Research Team expert author
+   * Use this for consistent expert attribution across content
+   */
+  generatePurrifyExpertAuthor(): string {
+    return this.generateExpertAuthor({
+      name: 'Purrify Research Team',
+      url: `${this.baseUrl}/about/our-story`,
+      description:
+        'Expert team specializing in activated carbon science and pet odor chemistry. We research and develop natural solutions for cat litter odor control.',
+      expertise: [
+        'Activated Carbon Science',
+        'Cat Litter Odor Chemistry',
+        'Pet Care Science',
+        'Ammonia Adsorption',
+        'Natural Pet Products',
+      ],
+      organization: {
+        name: this.organizationName,
+        url: this.baseUrl,
+      },
+      socialProfiles: ['https://www.instagram.com/purrifyhq'],
+    });
   }
 
   /**

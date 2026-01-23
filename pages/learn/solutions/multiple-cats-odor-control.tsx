@@ -5,20 +5,74 @@ import Image from 'next/image';
 import { useTranslation } from '../../../src/lib/translation-context';
 import { formatProductPrice } from '../../../src/lib/pricing';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../../src/lib/seo-utils';
+import { RelatedSolutions } from '../../../src/components/learn/RelatedSolutions';
+import { HowToSection } from '../../../src/components/seo/HowToSection';
+import { AIQuotableBlock } from '../../../src/components/seo/AIQuotableBlock';
+import { RelatedQuestions } from '../../../src/components/seo/RelatedQuestions';
 
 export default function MultipleCatsOdorControlPage() {
   const { locale } = useTranslation();
   const trialPrice = formatProductPrice('trial', locale);
   const riskFreeLabel = `Try Purrify Risk-Free - ${trialPrice} (shipping included)`;
   const startTrialLabel = `Start Your Trial - ${trialPrice} (shipping included)`;
-  const seoTitle = 'Multiple Cats Odor Control Solution | Purrify';
-  const seoDescription = 'Effective solution for multiple cats odor control. Purrify handles multi-cat households with industrial-strength odor elimination. Works with any litter brand.';
+  const seoTitle = 'Multi-Cat Household Odor Solution: Complete Guide for 2+ Cats';
+  const seoDescription = 'Struggling with cat smell from multiple cats? Odors multiply exponentially with each cat. Activated carbon handles 3, 4, 5+ cats where other solutions fail. See dosage guide.';
   const canonicalUrl = getLocalizedUrl('/learn/solutions/multiple-cats-odor-control', locale);
   const languageAlternates = buildLanguageAlternates('/learn/solutions/multiple-cats-odor-control');
 
   // SEO optimized images for multi-cat households
   const heroImage = '/optimized/multiple-cats-together.webp';
   const solutionImage = '/images/solutions/ammonia-fresh-home.png';
+
+  // HowTo steps for multi-cat odor control
+  const howToSteps = [
+    {
+      name: 'Set up enough litter boxes',
+      text: 'Follow the golden rule: one litter box per cat, plus one extra. For 3 cats, you need 4 boxes. Spread them across different rooms to prevent odor concentration.',
+      tip: 'Place boxes in low-traffic areas where cats feel secure but with good ventilation.',
+    },
+    {
+      name: 'Choose the right litter depth',
+      text: 'Add 3-4 inches of litter per box. Multi-cat households need slightly more depth since boxes get used more frequently throughout the day.',
+    },
+    {
+      name: 'Add activated carbon additive to each box',
+      text: 'Sprinkle 3-4 tablespoons of Purrify per box for households with 2-3 cats. For 4+ cats, use 4-5 tablespoons. Mix the carbon into the top layer of litter.',
+      tip: 'For 5+ cats, consider the bulk size for better value.',
+    },
+    {
+      name: 'Scoop all boxes twice daily',
+      text: 'Multi-cat households generate more waste faster. Twice-daily scooping prevents ammonia buildup and keeps all cats happy to use their boxes.',
+    },
+    {
+      name: 'Refresh carbon and litter weekly',
+      text: 'Top up each box with 1-2 tablespoons of activated carbon mid-week. Complete litter changes every 1-2 weeks depending on usage.',
+    },
+  ];
+
+  // FAQ questions for multi-cat households
+  const faqQuestions = [
+    {
+      question: 'How much Purrify do I need for multiple cats?',
+      answer: 'For 2-3 cats, use 3-4 tablespoons per litter box. For 4+ cats, use 4-5 tablespoons. Our 500g jar lasts 6-8 weeks for 2-3 cats with 4 boxes. For larger multi-cat households, the 1kg size offers better value.',
+    },
+    {
+      question: 'Why does having multiple cats make odor so much worse?',
+      answer: 'Odors don\'t just add up—they multiply. Each cat produces 3-4 ounces of urine daily, and the bacteria converting it to ammonia work faster in concentrated waste. Two cats don\'t create double the odor; they can create 3-4x the smell.',
+    },
+    {
+      question: 'Can Purrify help reduce territorial marking in multi-cat homes?',
+      answer: 'Yes. Cats often mark territory in response to detecting other cats\' scent markers. By neutralizing these odor signals, activated carbon can reduce the triggers that lead to territorial marking and spraying behavior.',
+    },
+    {
+      question: 'Do I need to use Purrify in every litter box?',
+      answer: 'For best results, yes. Odor can build up in any box, and cats may avoid smelly boxes and use other areas of your home. Treating all boxes ensures consistent odor control and encourages proper litter box use.',
+    },
+    {
+      question: 'Is it safe if my cats share litter boxes?',
+      answer: 'Purrify is 100% safe regardless of how your cats use their boxes. Made from food-grade coconut shell carbon, it\'s non-toxic even if ingested during grooming. However, we recommend maintaining enough boxes to reduce stress and territorial issues.',
+    },
+  ];
 
   return (
     <>
@@ -44,7 +98,7 @@ export default function MultipleCatsOdorControlPage() {
         additionalMetaTags={[
           {
             name: 'keywords',
-            content: 'multiple cats odor control, multi-cat household, cat litter many cats, litter deodorizer for multiple cats, large cat family, cat colony odor management',
+            content: 'multi cat household odor solution, multiple cats smell, how to control cat smell with multiple cats, best litter for multiple cats, cat odor 3 cats 4 cats 5 cats, multi-cat litter box odor',
           },
         ]}
       />
@@ -77,11 +131,11 @@ export default function MultipleCatsOdorControlPage() {
                 className="w-full h-auto rounded-lg shadow-lg mb-8"
               />
               <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-                Multiple Cats Odor Control
+                Multi-Cat Household Odor Solution
               </h1>
               <p className="text-xl text-gray-700 dark:text-gray-200 mb-8 max-w-3xl mx-auto">
-                Love having multiple cats but struggling with the combined odor? Purrify's activated carbon technology
-                tackles the unique challenges of multi-cat households, keeping your home fresh no matter how many furry friends you have.
+                With 2, 3, or 4+ cats, odors don&apos;t just add up—they multiply exponentially. Standard litters can&apos;t keep up.
+                Activated carbon tackles multi-cat odor at the molecular level, handling what other solutions can&apos;t.
               </p>
             </div>
 
@@ -414,7 +468,7 @@ export default function MultipleCatsOdorControlPage() {
             </div>
 
             {/* Call to Action */}
-            <div className="text-center bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20">
+            <div className="text-center bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 mb-16">
               <h3 className="text-3xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">Ready for a Fresh Multi-Cat Home?</h3>
               <p className="text-lg text-gray-700 dark:text-gray-200 mb-6">
                 Join hundreds of multi-cat households who've discovered the power of activated carbon odor control.
@@ -434,8 +488,41 @@ export default function MultipleCatsOdorControlPage() {
                 </Link>
               </div>
             </div>
+
+            {/* AI Quotable Fact */}
+            <div className="max-w-4xl mx-auto mb-16">
+              <AIQuotableBlock
+                fact="In multi-cat households, odors don't add linearly—they multiply exponentially. Two cats can produce 3-4x the odor of one cat because bacteria in concentrated waste work faster and trigger territorial marking behavior."
+                explanation="Activated carbon's massive surface area (1,000+ m²/gram) handles this exponential increase where baking soda and standard litters fail."
+                icon="stat"
+                variant="highlight"
+              />
+            </div>
+
+            {/* HowTo Section */}
+            <div className="max-w-4xl mx-auto mb-16">
+              <HowToSection
+                title="How to Control Odor in a Multi-Cat Household"
+                description="Follow this 5-step system to eliminate odor from 2, 3, 4, or more cats and keep your home fresh."
+                steps={howToSteps}
+                totalTime="PT20M"
+                timeDisplay="20 minutes setup, then daily maintenance"
+                url={canonicalUrl}
+              />
+            </div>
+
+            {/* FAQ Section - Replace existing FAQ with RelatedQuestions component */}
+            <div className="max-w-4xl mx-auto mb-16">
+              <RelatedQuestions
+                title="Multi-Cat Odor Control FAQ"
+                questions={faqQuestions}
+                defaultOpen={[0]}
+              />
+            </div>
           </div>
         </section>
+
+        <RelatedSolutions currentPath="/learn/solutions/multiple-cats-odor-control" />
       </div>
     </>
   );

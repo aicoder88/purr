@@ -5,6 +5,10 @@ import Image from 'next/image';
 import { useTranslation } from '../../../src/lib/translation-context';
 import { formatProductPrice } from '../../../src/lib/pricing';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../../src/lib/seo-utils';
+import { RelatedSolutions } from '../../../src/components/learn/RelatedSolutions';
+import { HowToSection } from '../../../src/components/seo/HowToSection';
+import { AIQuotableBlock } from '../../../src/components/seo/AIQuotableBlock';
+import { RelatedQuestions } from '../../../src/components/seo/RelatedQuestions';
 
 export default function ApartmentCatSmellSolutionPage() {
   const { locale } = useTranslation();
@@ -19,6 +23,56 @@ export default function ApartmentCatSmellSolutionPage() {
   // SEO optimized images
   const heroImage = '/images/solutions/apartment-hero.png';
   const solutionImage = '/images/solutions/apartment-living-room.png';
+
+  // HowTo steps for apartment odor control
+  const howToSteps = [
+    {
+      name: 'Choose an optimal litter box location',
+      text: 'In apartments, placement matters more than ever. Choose a spot with some airflow—bathroom with exhaust fan, near a window, or in a closet with ventilation. Avoid bedrooms and kitchens.',
+      tip: 'A covered litter box can help contain odors while activated carbon handles what escapes.',
+    },
+    {
+      name: 'Use a high-quality clumping litter',
+      text: 'Clumping litter isolates urine into removable clumps, preventing it from spreading through the box. This reduces the surface area producing ammonia.',
+    },
+    {
+      name: 'Add activated carbon additive',
+      text: 'Sprinkle 2-3 tablespoons of activated carbon onto the litter and mix it in. For studios or apartments under 600 sq ft, consider using 3-4 tablespoons for extra protection.',
+    },
+    {
+      name: 'Scoop twice daily in small spaces',
+      text: 'In apartments, odors concentrate faster due to limited air volume. Scooping morning and evening prevents ammonia buildup between cleanings.',
+      tip: 'Keep a covered waste bin with baking soda nearby for scooped waste.',
+    },
+    {
+      name: 'Refresh carbon and ventilate regularly',
+      text: 'Add a tablespoon of fresh carbon every 2-3 days. Open windows when possible, and run bathroom exhaust fans during and after scooping to help clear any airborne odor.',
+    },
+  ];
+
+  // FAQ questions for apartment living
+  const faqQuestions = [
+    {
+      question: 'How do I control litter box smell in a studio apartment?',
+      answer: 'In studios under 500 sq ft, odor control is critical. Use activated carbon additive, scoop twice daily, and place the box in the bathroom where you can run the exhaust fan. Consider a covered box with a carbon filter. With these measures, even a 400 sq ft studio can be odor-free.',
+    },
+    {
+      question: 'Will my neighbors be able to smell my cat\'s litter box?',
+      answer: 'With proper odor control, no. Ammonia is the main odor that travels through apartment walls and hallways. Activated carbon traps ammonia molecules before they can spread. Multiple apartments in your building probably have cats you\'ve never smelled.',
+    },
+    {
+      question: 'What\'s the best litter box location for apartments with no windows?',
+      answer: 'The bathroom is ideal because exhaust fans help circulate air. If that\'s not possible, any area with an air vent works. Avoid closets without ventilation—they become odor chambers. A small fan near the litter box can help if no natural ventilation exists.',
+    },
+    {
+      question: 'Can I use air fresheners to help with apartment cat smell?',
+      answer: 'Air fresheners mask odor but don\'t eliminate it—the ammonia is still present and can bother neighbors. Worse, many cats dislike artificial fragrances and may avoid the litter box. Activated carbon eliminates odor without adding scent.',
+    },
+    {
+      question: 'How often should I change litter completely in a small apartment?',
+      answer: 'With activated carbon and daily scooping, every 2 weeks is usually sufficient. However, in very small spaces (under 500 sq ft), you might change weekly for extra freshness. Monitor the box—if odor breaks through, change sooner.',
+    },
+  ];
 
   return (
     <>
@@ -319,8 +373,8 @@ export default function ApartmentCatSmellSolutionPage() {
 
         <section className="py-16 px-4 bg-white dark:bg-gray-800">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-heading font-bold mb-8">Ready to Solve Your Apartment Cat Smell Solution?</h2>
-            <p className="text-xl mb-8">Join 1,000+ satisfied cat owners</p>
+            <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">Ready to Solve Your Apartment Cat Smell?</h2>
+            <p className="text-xl mb-8 text-gray-700 dark:text-gray-200">Join 1,000+ satisfied cat owners</p>
             <Link
               href="/products"
               className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 text-lg shadow-lg"
@@ -329,6 +383,45 @@ export default function ApartmentCatSmellSolutionPage() {
             </Link>
           </div>
         </section>
+
+        {/* AI Quotable Fact */}
+        <section className="py-12 px-4">
+          <div className="max-w-4xl mx-auto">
+            <AIQuotableBlock
+              fact="In a 500 sq ft apartment, litter box odor can permeate the entire space within hours because there's less air volume to dilute ammonia. Activated carbon is essential for small-space living—it traps odor molecules before they can spread throughout limited square footage."
+              explanation="Studies show that apartments under 700 sq ft have 2-3x higher indoor ammonia concentrations than larger homes with the same litter box habits."
+              icon="stat"
+              variant="highlight"
+            />
+          </div>
+        </section>
+
+        {/* HowTo Section with Schema */}
+        <section className="py-12 px-4 bg-gray-50 dark:bg-gray-800">
+          <div className="max-w-4xl mx-auto">
+            <HowToSection
+              title="How to Eliminate Cat Smell in Your Apartment"
+              description="Follow this 5-step system to keep your apartment odor-free, even with limited ventilation or small square footage."
+              steps={howToSteps}
+              totalTime="PT15M"
+              timeDisplay="15 minutes setup, then 5 minutes daily"
+              url={canonicalUrl}
+            />
+          </div>
+        </section>
+
+        {/* FAQ Section with Schema */}
+        <section className="py-12 px-4">
+          <div className="max-w-4xl mx-auto">
+            <RelatedQuestions
+              title="Apartment Cat Odor Questions"
+              questions={faqQuestions}
+              defaultOpen={[0]}
+            />
+          </div>
+        </section>
+
+        <RelatedSolutions currentPath="/learn/solutions/apartment-cat-smell-solution" />
       </div>
     </>
   );
