@@ -270,7 +270,7 @@ export const seoMetaFr: SEOMetaContent = {
       targetKeyword: 'charbon actif sans danger chats'
     },
     ammoniaHealthRisks: {
-      title: 'Risques Santé Ammoniaque Litière Chat: Ce Que Chaque Propriétaire Doit Savoir',
+      title: 'Risques Santé Ammoniaque Litière Chat [Guide 2026]',
       description: 'L\'ammoniaque de la litière est-il dangereux? Apprenez les niveaux d\'exposition sécuritaires, risques santé pour vous et votre chat, plus solutions prouvées.',
       targetKeyword: 'risques santé ammoniaque litière chat'
     },
@@ -570,7 +570,7 @@ export const seoMetaEs: SEOMetaContent = {
       targetKeyword: 'carbón activado seguro gatos'
     },
     ammoniaHealthRisks: {
-      title: 'Riesgos de Salud del Amoníaco en Arena de Gatos: Lo Que Todo Dueño Debe Saber',
+      title: 'Riesgos del Amoníaco en Arena de Gatos [Guía 2026]',
       description: '¿Es peligroso el amoníaco de la arena de gatos? Aprende niveles seguros de exposición, riesgos de salud para ti y tu gato, más soluciones comprobadas.',
       targetKeyword: 'riesgos salud amoníaco arena gatos'
     },
