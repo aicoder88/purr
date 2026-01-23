@@ -6,6 +6,7 @@ import { useTranslation } from '../src/lib/translation-context';
 import { MapPin, Phone, Globe, Search, Navigation, Store as StoreIcon } from 'lucide-react';
 import { useState, useMemo } from 'react';
 import { buildAvailabilityUrl, getPriceValidityDate } from '../src/lib/seo-utils';
+import { useEnhancedSEO } from '../src/hooks/useEnhancedSEO';
 
 // ============================================================================
 // Types
@@ -359,9 +360,29 @@ export default function StoresPage() {
     ? 'Trouvez les animaleries qui vendent Purrify près de chez vous. Découvrez nos détaillants partenaires au Québec, Ontario et Colombie-Britannique.'
     : 'Find pet stores selling Purrify near you. Discover our partner retailers across Quebec, Ontario, and British Columbia.';
 
-  const canonicalUrl = `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}stores`;
   const priceValidUntil = getPriceValidityDate();
   const availabilityUrl = buildAvailabilityUrl();
+
+  // Use enhanced SEO hook for automated optimization
+  const { nextSeoProps } = useEnhancedSEO({
+    path: '/stores',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'Purrify stores Canada',
+    image: 'https://www.purrify.ca/optimized/purrify-logo-text.webp',
+    keywords: [
+      'Purrify stores',
+      'pet store locator Canada',
+      'where to buy Purrify',
+      'cat litter deodorizer retailers',
+      'pet supply stores near me',
+      'Purrify dealers',
+      'animal boutique Quebec',
+    ],
+    includeBreadcrumb: true,
+  });
+
+  const canonicalUrl = nextSeoProps.canonical;
 
   // Filter stores based on search and filters
   const filteredStores = useMemo(() => {
@@ -464,28 +485,9 @@ export default function StoresPage() {
   return (
     <>
       <NextSeo
-        title={pageTitle}
-        description={pageDescription}
-        canonical={canonicalUrl}
-        openGraph={{
-          type: 'website',
-          url: canonicalUrl,
-          title: pageTitle,
-          description: pageDescription,
-          images: [
-            {
-              url: 'https://www.purrify.ca/optimized/purrify-logo-text.webp',
-              width: 480,
-              height: 220,
-              alt: 'Find Purrify retailers near you across Canada',
-            },
-          ],
-        }}
+        {...nextSeoProps}
         additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: 'Purrify stores, pet store locator Canada, where to buy Purrify, cat litter deodorizer retailers, pet supply stores near me, Purrify dealers, animal boutique Quebec',
-          },
+          ...nextSeoProps.additionalMetaTags,
           {
             name: 'geo.region',
             content: 'CA'
