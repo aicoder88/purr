@@ -69,3 +69,4 @@ playwright-report/
 *.tsbuildinfo
 sitemap.xml
 .env.vercel
+.seo-reports/
