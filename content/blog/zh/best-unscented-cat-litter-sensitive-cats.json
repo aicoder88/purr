@@ -12,10 +12,10 @@
   "modifiedDate": "2026-01-23T12:00:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/blog/90day-solution.jpg",
+    "url": "/optimized/blog/coconut-carbon-ghibli.png",
     "alt": "敏感猫咪最佳无香猫砂",
-    "width": 1600,
-    "height": 1067
+    "width": 1024,
+    "height": 1024
   },
   "categories": [
     "猫咪健康",
@@ -42,7 +42,7 @@
       "低敏猫砂"
     ],
     "canonical": "https://www.purrify.ca/zh/blog/best-unscented-cat-litter-sensitive-cats",
-    "ogImage": "/optimized/blog/90day-solution.jpg"
+    "ogImage": "/optimized/blog/coconut-carbon-ghibli.png"
   },
   "readingTime": 8
 }

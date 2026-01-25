@@ -12,10 +12,10 @@
   "modifiedDate": "2026-01-23T12:00:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/blog/90day-solution.jpg",
+    "url": "/optimized/blog/microscopic-pores-ghibli.png",
     "alt": "Mejor Arena para Múltiples Gatos - Guía Completa",
-    "width": 1600,
-    "height": 1067
+    "width": 1024,
+    "height": 1024
   },
   "categories": [
     "Control de Olores",
@@ -43,7 +43,7 @@
       "carbón activado multi-gatos"
     ],
     "canonical": "https://www.purrify.ca/es/blog/best-cat-litter-multiple-cats",
-    "ogImage": "/optimized/blog/90day-solution.jpg"
+    "ogImage": "/optimized/blog/microscopic-pores-ghibli.png"
   },
   "readingTime": 12
 }

@@ -12,10 +12,10 @@
   "modifiedDate": "2026-01-23T12:00:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/blog/90day-solution.jpg",
+    "url": "/optimized/blog/summer-ventilation.jpg",
     "alt": "Cómo Eliminar el Olor a Arena de Gato en Apartamentos",
-    "width": 1600,
-    "height": 1067
+    "width": 1024,
+    "height": 1024
   },
   "categories": [
     "Control de Olores",
@@ -42,7 +42,7 @@
       "olor gato espacio pequeño"
     ],
     "canonical": "https://www.purrify.ca/es/blog/how-to-get-rid-of-cat-litter-smell-apartment",
-    "ogImage": "/optimized/blog/90day-solution.jpg"
+    "ogImage": "/optimized/blog/summer-ventilation.jpg"
   },
   "readingTime": 9
 }

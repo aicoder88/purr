@@ -12,10 +12,10 @@
   "modifiedDate": "2026-01-02T08:00:00-05:00",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/blog/cat-fresh-home-ammonia.jpg",
+    "url": "/optimized/blog/happy-owner-cat-ghibli.png",
     "alt": "关注猫砂盆气味的猫主人",
-    "width": 1200,
-    "height": 630
+    "width": 1024,
+    "height": 1024
   },
   "categories": [
     "猫护理",
@@ -43,7 +43,7 @@
       "活性炭猫砂",
       "消除猫砂盆气味"
     ],
-    "ogImage": "/optimized/blog/cat-fresh-home-ammonia.jpg",
+    "ogImage": "/optimized/blog/happy-owner-cat-ghibli.png",
     "canonical": "https://www.purrify.ca/zh/blog/why-does-my-cats-litter-box-smell-so-bad"
   },
   "readingTime": 9

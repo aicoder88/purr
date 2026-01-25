@@ -12,10 +12,10 @@
   "modifiedDate": "2026-01-02T08:00:00-05:00",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/blog/cat-fresh-home-ammonia.jpg",
+    "url": "/optimized/blog/happy-owner-cat-ghibli.png",
     "alt": "Dueño de gato preocupado por olor de caja de arena en casa",
-    "width": 1200,
-    "height": 630
+    "width": 1024,
+    "height": 1024
   },
   "categories": [
     "Cuidado de Gatos",
@@ -43,7 +43,7 @@
       "carbón activado arena gato",
       "eliminar olor caja arena"
     ],
-    "ogImage": "/optimized/blog/cat-fresh-home-ammonia.jpg",
+    "ogImage": "/optimized/blog/happy-owner-cat-ghibli.png",
     "canonical": "https://www.purrify.ca/es/blog/why-does-my-cats-litter-box-smell-so-bad"
   },
   "readingTime": 9
