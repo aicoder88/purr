@@ -1206,7 +1206,7 @@ export const fr = {
       {
         id: "regular",
         name: "Format Régulier",
-        subtitle: "120g · Format Standard",
+        subtitle: "120g · Le Format Idéal",
         duration: "7+ jours par application",
         cats: "1-2 chats",
         features: ["Utilisez plus pour une fraîcheur prolongée", "Rechargez à tout moment", "Fonctionne avec toute litière"],
@@ -1374,7 +1374,7 @@ export const fr = {
       },
       regular: {
         name: "Le juste milieu",
-        subtitle: "120g · Format Standard",
+        subtitle: "120g · 3 mois de tranquillité",
         features: [
           "10-12 semaines de contrôle des odeurs pour 1-2 chats",
           "Le format que la plupart des clients recommandent",

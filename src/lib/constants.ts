@@ -44,7 +44,7 @@ export const PRODUCTS = [
   {
     id: "purrify-120g",
     name: "Purrify Regular Size 120g",
-    description: "120g · Regular Size\nNot too little, not too much—the size most customers reorder\nLasts 7+ days per application, or double up for two full weeks of freshness\nThe perfect amount for 1-2 cats without buying more than you need",
+    description: "120g · The Goldilocks Bag\nNot too little, not too much—the size most customers reorder\nLasts 7+ days per application, or double up for two full weeks of freshness\nThe perfect amount for 1-2 cats without buying more than you need",
     price: 29.99,
     image: "/optimized/60g.webp",
     size: "120g",

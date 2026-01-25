@@ -98,8 +98,8 @@ const ProductsPage: NextPage = () => {
     regular: {
       name: 'Regular Size',
       nameFr: 'Format Régulier',
-      subtitle: '120g · Regular Size',
-      subtitleFr: '120g · Format Standard'
+      subtitle: '120g · The Goldilocks Bag',
+      subtitleFr: '120g · Le format idéal'
     },
     large: {
       name: 'Family Size',

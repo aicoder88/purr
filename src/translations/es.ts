@@ -1238,7 +1238,7 @@ export const es: TranslationType = {
       {
         id: "regular",
         name: "Regular",
-        subtitle: "120g · Tamaño Regular",
+        subtitle: "Paquete 120g - Mas Popular",
         duration: "3 meses",
         cats: "1-2 gatos",
         features: ["120g carbon activado", "Suscribete y ahorra", "Envio gratis"],
@@ -1403,7 +1403,7 @@ export const es: TranslationType = {
       },
       regular: {
         name: "Tamano Regular",
-        subtitle: "120g · Tamaño Regular",
+        subtitle: "120g · La Bolsa Perfecta",
         features: [
           "7+ dias de frescura por aplicacion",
           "Usa mas para frescura extendida",

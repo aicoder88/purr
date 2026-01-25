@@ -1155,7 +1155,7 @@ export const en = {
       {
         id: "regular",
         name: "Regular Size",
-        subtitle: "120g · Regular Size",
+        subtitle: "120g · The Goldilocks Bag",
         duration: "7+ days per application",
         cats: "1-2 cats",
         features: ["Use more for extended freshness", "Top-up anytime", "Works with any litter"],
@@ -1321,7 +1321,7 @@ export const en = {
       },
       regular: {
         name: "Regular Size",
-        subtitle: "120g · Regular Size",
+        subtitle: "120g · The Goldilocks Bag",
         features: [
           "7+ days freshness per application",
           "Use more for extended freshness",
