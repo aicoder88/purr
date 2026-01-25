@@ -90,7 +90,7 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
   const { data: reviewData, displayText: reviewDisplay } = useAggregateReview(productKey, locale);
 
   // Use enhanced SEO hook
-  const { nextSeoProps, schema } = useEnhancedSEO({
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
     path: '/products/standard',
     title: pageTitle,
     description: pageDescription,
@@ -110,7 +110,6 @@ export default function StandardSizePage({ priceValidUntil }: StandardSizePagePr
     },
     image: 'https://www.purrify.ca/optimized/60g.webp',
     keywords: ['cat litter freshener', 'charcoal litter additive', 'cat litter deodorizer', 'odor eliminator'],
-    includeBreadcrumb: true,
   });
 
   const canonicalUrl = nextSeoProps.canonical;

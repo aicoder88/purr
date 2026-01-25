@@ -32,7 +32,6 @@ export default function AmmoniaHealthRisksPage() {
     },
     image: 'https://www.purrify.ca/images/solutions/ammonia-hero.png',
     keywords: ['ammonia cat litter dangerous', 'cat litter ammonia health risks', 'is ammonia from cat litter harmful', 'cat litter fumes dangerous'],
-    includeBreadcrumb: true,
   });
 
   const exposureLevels = [

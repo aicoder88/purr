@@ -379,7 +379,6 @@ export default function StoresPage() {
       'Purrify dealers',
       'animal boutique Quebec',
     ],
-    includeBreadcrumb: true,
   });
 
   const canonicalUrl = nextSeoProps.canonical;

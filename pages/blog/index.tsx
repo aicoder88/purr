@@ -116,7 +116,6 @@ export default function Blog({ blogPosts, locale }: { blogPosts: BlogPost[], loc
     image: 'https://www.purrify.ca/purrify-logo.png',
     keywords: ['cat care tips', 'litter box odor', 'activated carbon', 'cat litter deodorizer', 'multi-cat tips'],
     noindex: shouldNoindex,
-    includeBreadcrumb: true,
   });
 
   // Build CollectionPage schema with blog posts

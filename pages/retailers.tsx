@@ -58,7 +58,6 @@ export default function RetailersPage() {
     schemaData: {
       questions: retailerFaqs
     },
-    includeBreadcrumb: true
   });
 
   return (

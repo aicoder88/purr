@@ -46,7 +46,6 @@ const ProvincePage = ({ province }: ProvincePageProps) => {
     description: seoDescription,
     targetKeyword: `cat litter ${province.name}`,
     keywords: [`cat litter ${province.name}`, `pet supplies ${province.code}`, `Purrify ${displayName}`],
-    includeBreadcrumb: true
   });
 
   return (

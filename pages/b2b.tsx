@@ -38,7 +38,7 @@ export default function B2B() {
   const standardPrice = formatProductPrice('standard', locale);
   const familyPrice = formatProductPrice('family', locale);
 
-  // Enhanced SEO with organization schema and breadcrumbs
+  // Enhanced SEO with organization schema
   const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
     path: '/b2b',
     title: `${SITE_NAME} - ${pageTitle}`,
@@ -61,8 +61,7 @@ export default function B2B() {
         type: 'sales',
         email: 'partners@purrify.ca'
       }
-    },
-    includeBreadcrumb: true
+    }
   });
 
   // Partnership benefits
@@ -197,48 +196,26 @@ export default function B2B() {
 
       <div className="max-w-7xl mx-auto px-4 py-12 bg-white dark:bg-gray-900 min-h-screen">
         {/* Breadcrumb Navigation */}
-        {breadcrumb && breadcrumb.items.length > 1 && (
-          <nav
-            aria-label="Breadcrumb"
-            className="mb-6"
-          >
-            <ol className="flex items-center space-x-2 text-sm">
-              {breadcrumb.items.map((item, index) => {
-                const isLast = index === breadcrumb.items.length - 1;
-                return (
-                  <li key={item.path} className="flex items-center">
-                    {index > 0 && (
-                      <ChevronRight className="h-4 w-4 mx-2 text-gray-400 dark:text-gray-500" />
-                    )}
-                    {index === 0 ? (
-                      <Link
-                        href={item.path}
-                        className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                      >
-                        <Home className="h-4 w-4" />
-                        <span className="sr-only">{item.name}</span>
-                      </Link>
-                    ) : isLast ? (
-                      <span
-                        className="font-medium text-gray-900 dark:text-gray-100"
-                        aria-current="page"
-                      >
-                        {item.name}
-                      </span>
-                    ) : (
-                      <Link
-                        href={item.path}
-                        className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                      >
-                        {item.name}
-                      </Link>
-                    )}
-                  </li>
-                );
-              })}
-            </ol>
-          </nav>
-        )}
+        <nav aria-label="Breadcrumb" className="mb-6">
+          <ol className="flex items-center space-x-2 text-sm">
+            <li className="flex items-center">
+              <Link
+                href="/"
+                className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              >
+                <Home className="h-4 w-4" />
+                <span className="sr-only">Home</span>
+              </Link>
+            </li>
+            <li className="flex items-center">
+              <ChevronRight className="h-4 w-4 mx-2 text-gray-400 dark:text-gray-500" />
+              <span className="font-medium text-gray-900 dark:text-gray-100" aria-current="page">
+                {locale === 'fr' ? 'Partenariat B2B' : 'B2B Partnership'}
+              </span>
+            </li>
+          </ol>
+        </nav>
+
         {/* Hero Section */}
         <section className="text-center mb-16">
           <div className="max-w-4xl mx-auto">

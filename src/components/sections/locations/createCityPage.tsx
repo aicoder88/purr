@@ -311,7 +311,6 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
       name: profile.name,
       province: provinceName,
     } : undefined,
-    includeBreadcrumb: true
   });
 
   const seasonalTip = climateInsights[0] ?? 'changing seasons';

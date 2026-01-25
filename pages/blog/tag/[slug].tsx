@@ -35,7 +35,6 @@ export default function TagArchive({ tag, posts, seo }: TagArchiveProps) {
     schemaData: {
       description: seo.description,
     },
-    includeBreadcrumb: true,
   });
 
   // Build CollectionPage schema with tag posts

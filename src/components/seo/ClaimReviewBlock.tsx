@@ -215,7 +215,7 @@ export function ClaimReviewBlock({
                     className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300"
                   >
                     <svg
-                      className="w-4 h-4 mt-0.5 text-green-500 flex-shrink-0"
+                      className="w-4 h-4 mt-0.5 text-green-500 dark:text-green-400 flex-shrink-0"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"

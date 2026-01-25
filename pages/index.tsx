@@ -59,14 +59,13 @@ export default function Home({ priceValidUntil }: InferGetStaticPropsType<typeof
   const pageDescription = seoMeta?.description || t.siteDescription || SITE_DESCRIPTION;
 
   // Use enhanced SEO hook for automated optimization
-  const { nextSeoProps, schema } = useEnhancedSEO({
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
     path: '/',
     title: pageTitle,
     description: pageDescription,
     targetKeyword: 'cat litter deodorizer',
     schemaType: 'organization',
     keywords: t.homepage.seo.keywords?.split(', '),
-    includeBreadcrumb: true,
   });
 
 

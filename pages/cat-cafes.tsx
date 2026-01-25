@@ -28,7 +28,6 @@ export default function CatCafesPage() {
         email: 'partners@purrify.ca'
       }
     },
-    includeBreadcrumb: true
   });
 
   return (

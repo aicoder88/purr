@@ -36,7 +36,6 @@ export default function SciencePage() {
     },
     image: 'https://www.purrify.ca/optimized/benefits-hero-science.webp',
     keywords: ['activated carbon science', 'cat litter odor control', 'micropores', 'ammonia elimination', 'mercaptan removal'],
-    includeBreadcrumb: true,
   });
 
   const scienceFacts = t.sciencePage?.scienceFacts.facts.map((fact, index) => ({

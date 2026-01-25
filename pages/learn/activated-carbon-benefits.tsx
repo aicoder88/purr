@@ -40,7 +40,6 @@ export default function ActivatedCarbonBenefits() {
     },
     image: `https://www.purrify.ca${heroImage}`,
     keywords: ['activated carbon cat litter', 'activated carbon litter additive benefits', 'cat litter deodorizer', 'activated carbon odor control', 'natural cat litter odor eliminator'],
-    includeBreadcrumb: true,
   });
 
   // FAQ items for structured data and display

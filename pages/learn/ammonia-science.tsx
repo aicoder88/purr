@@ -225,7 +225,7 @@ export default function AmmoniaSciencePage() {
             />
 
             <div className="mt-8 space-y-6">
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-l-4 border-green-500 dark:border-green-400">
                 <div className="flex items-center gap-4 mb-3">
                   <span className="bg-green-500 text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold">0-2 Hours</span>
                   <h3 className="font-bold text-gray-900 dark:text-gray-100">Fresh Urine</h3>
@@ -236,7 +236,7 @@ export default function AmmoniaSciencePage() {
                 </p>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-l-4 border-yellow-500">
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-l-4 border-yellow-500 dark:border-yellow-400">
                 <div className="flex items-center gap-4 mb-3">
                   <span className="bg-yellow-500 text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold">2-6 Hours</span>
                   <h3 className="font-bold text-gray-900 dark:text-gray-100">Bacterial Colonization</h3>
@@ -247,7 +247,7 @@ export default function AmmoniaSciencePage() {
                 </p>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-l-4 border-orange-500">
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-l-4 border-orange-500 dark:border-orange-400">
                 <div className="flex items-center gap-4 mb-3">
                   <span className="bg-orange-500 text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold">6-24 Hours</span>
                   <h3 className="font-bold text-gray-900 dark:text-gray-100">Ammonia Buildup</h3>
@@ -258,7 +258,7 @@ export default function AmmoniaSciencePage() {
                 </p>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-l-4 border-red-500">
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-l-4 border-red-500 dark:border-red-400">
                 <div className="flex items-center gap-4 mb-3">
                   <span className="bg-red-500 text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold">24-48 Hours</span>
                   <h3 className="font-bold text-gray-900 dark:text-gray-100">Peak Ammonia</h3>
@@ -320,7 +320,7 @@ export default function AmmoniaSciencePage() {
               </div>
             </div>
 
-            <div className="mt-8 bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-6 rounded-r-xl">
+            <div className="mt-8 bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 dark:border-yellow-400 p-6 rounded-r-xl">
               <h3 className="font-bold text-yellow-800 dark:text-yellow-200 mb-2">Special Cases: Even Stronger Smell</h3>
               <ul className="text-gray-700 dark:text-gray-200 space-y-2">
                 <li>• <strong>Unneutered male cats:</strong> Produce hormones that make urine smell especially pungent for territorial marking</li>
@@ -372,19 +372,19 @@ export default function AmmoniaSciencePage() {
                 <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-4">Risks for Cats</h3>
                 <ul className="space-y-2 text-gray-700 dark:text-gray-200">
                   <li className="flex items-start gap-2">
-                    <span className="text-red-500">•</span>
+                    <span className="text-red-500 dark:text-red-400">•</span>
                     <span>Upper respiratory infections</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-red-500">•</span>
+                    <span className="text-red-500 dark:text-red-400">•</span>
                     <span>Eye irritation and discharge</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-red-500">•</span>
+                    <span className="text-red-500 dark:text-red-400">•</span>
                     <span>Litter box avoidance (accidents)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-red-500">•</span>
+                    <span className="text-red-500 dark:text-red-400">•</span>
                     <span>Chronic respiratory inflammation</span>
                   </li>
                 </ul>
@@ -394,19 +394,19 @@ export default function AmmoniaSciencePage() {
                 <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-4">Risks for Humans</h3>
                 <ul className="space-y-2 text-gray-700 dark:text-gray-200">
                   <li className="flex items-start gap-2">
-                    <span className="text-red-500">•</span>
+                    <span className="text-red-500 dark:text-red-400">•</span>
                     <span>Headaches and fatigue</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-red-500">•</span>
+                    <span className="text-red-500 dark:text-red-400">•</span>
                     <span>Respiratory irritation</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-red-500">•</span>
+                    <span className="text-red-500 dark:text-red-400">•</span>
                     <span>Worsening of asthma symptoms</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-red-500">•</span>
+                    <span className="text-red-500 dark:text-red-400">•</span>
                     <span>Eye and throat irritation</span>
                   </li>
                 </ul>

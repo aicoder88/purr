@@ -42,7 +42,6 @@ export default function HowToUseDeodorizer() {
       dateModified: new Date().toISOString().split('T')[0],
       image: heroImage,
     },
-    includeBreadcrumb: true,
   });
 
   return (

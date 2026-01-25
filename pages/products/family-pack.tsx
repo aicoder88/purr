@@ -106,7 +106,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
   const { data: reviewData, displayText: reviewDisplay } = useAggregateReview(productKey, locale);
 
   // Use enhanced SEO hook for automated optimization
-  const { nextSeoProps, schema } = useEnhancedSEO({
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
     path: '/products/family-pack',
     title: pageTitle,
     description: pageDescription,
@@ -128,7 +128,6 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
       },
     },
     image: 'https://www.purrify.ca/optimized/60g.webp',
-    includeBreadcrumb: true,
   });
 
   // Family pack lifestyle images

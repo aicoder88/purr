@@ -49,7 +49,6 @@ export default function Results() {
       'customer reviews',
       'verified reviews',
     ],
-    includeBreadcrumb: true,
   });
 
   // Stats data

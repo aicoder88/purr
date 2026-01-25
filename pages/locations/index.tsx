@@ -27,7 +27,6 @@ const LocationsIndex = ({ provinces }: LocationsIndexProps) => {
     description: seoDescription,
     targetKeyword: 'cat litter delivery Canada',
     keywords: ['cat litter delivery', 'pet supplies Canada', 'Purrify locations', 'cat odor control'],
-    includeBreadcrumb: true
   });
 
   // Merge hook props with language alternates

@@ -55,7 +55,6 @@ export default function ContactPage() {
       'activated carbon questions',
       'pet product support',
     ],
-    includeBreadcrumb: true,
   });
 
   const [formData, setFormData] = useState({

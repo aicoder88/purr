@@ -79,7 +79,7 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
   const { data: reviewData, displayText: reviewDisplay } = useAggregateReview(productKey, locale);
 
   // Use enhanced SEO hook
-  const { nextSeoProps, schema } = useEnhancedSEO({
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
     path: '/products/trial-size',
     title: pageTitle,
     description: pageDescription,
@@ -102,7 +102,6 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
     },
     image: 'https://www.purrify.ca/optimized/17gpink.webp',
     keywords: ['cat litter freshener', 'charcoal litter additive', 'cat litter deodorizer', 'free trial'],
-    includeBreadcrumb: true,
   });
 
   // Schema.org structured data variables

@@ -180,7 +180,6 @@ export default function GroomersPage() {
         email: 'partners@purrify.ca'
       }
     },
-    includeBreadcrumb: true
   });
 
   return (

@@ -53,7 +53,7 @@ export default function MostPowerfulOdorAbsorber() {
   ];
 
   // Use enhanced SEO hook for automated optimization
-  const { nextSeoProps, schema } = useEnhancedSEO({
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
     path: '/blog/most-powerful-odor-absorber',
     title: meta.title,
     description: meta.description,
@@ -83,7 +83,6 @@ export default function MostPowerfulOdorAbsorber() {
       'cat litter ammonia control',
       'unscented litter deodorizer',
     ],
-    includeBreadcrumb: true,
   });
 
   return (

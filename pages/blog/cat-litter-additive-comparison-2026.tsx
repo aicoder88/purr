@@ -272,7 +272,7 @@ export default function CatLitterAdditiveComparison2026Page() {
                       }`}>{additive.ammoniaReduction}</td>
                       <td className="px-3 py-3 text-center text-gray-700 dark:text-gray-200">{additive.duration}</td>
                       <td className="px-3 py-3 text-center">
-                        <span className="text-yellow-500">{'★'.repeat(additive.rating)}{'☆'.repeat(5 - additive.rating)}</span>
+                        <span className="text-yellow-500 dark:text-yellow-400">{'★'.repeat(additive.rating)}{'☆'.repeat(5 - additive.rating)}</span>
                       </td>
                     </tr>
                   ))}
@@ -305,7 +305,7 @@ export default function CatLitterAdditiveComparison2026Page() {
                     </div>
                     <div className="text-right">
                       <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">{additive.ammoniaReduction}</div>
-                      <div className="text-yellow-500 text-sm">{'★'.repeat(additive.rating)}{'☆'.repeat(5 - additive.rating)}</div>
+                      <div className="text-yellow-500 dark:text-yellow-400 text-sm">{'★'.repeat(additive.rating)}{'☆'.repeat(5 - additive.rating)}</div>
                     </div>
                   </div>
 
@@ -315,7 +315,7 @@ export default function CatLitterAdditiveComparison2026Page() {
                       <ul className="space-y-1 text-gray-700 dark:text-gray-200 text-sm">
                         {additive.pros.map((pro, i) => (
                           <li key={i} className="flex items-start gap-2">
-                            <span className="text-green-500">+</span>
+                            <span className="text-green-500 dark:text-green-400">+</span>
                             <span>{pro}</span>
                           </li>
                         ))}
@@ -326,7 +326,7 @@ export default function CatLitterAdditiveComparison2026Page() {
                       <ul className="space-y-1 text-gray-700 dark:text-gray-200 text-sm">
                         {additive.cons.map((con, i) => (
                           <li key={i} className="flex items-start gap-2">
-                            <span className="text-red-500">-</span>
+                            <span className="text-red-500 dark:text-red-400">-</span>
                             <span>{con}</span>
                           </li>
                         ))}
@@ -501,22 +501,22 @@ export default function CatLitterAdditiveComparison2026Page() {
               </h3>
               <ul className="space-y-3 text-gray-700 dark:text-gray-200">
                 <li className="flex items-start gap-2">
-                  <span className="text-red-500">✗</span>
+                  <span className="text-red-500 dark:text-red-400">✗</span>
                   <span><strong>Fragrance-only products:</strong> They mask but don&apos;t eliminate. The ammonia
                   is still there, and the combination often smells worse than either alone.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-red-500">✗</span>
+                  <span className="text-red-500 dark:text-red-400">✗</span>
                   <span><strong>Heavily scented additives:</strong> Strong fragrances can deter cats from using
                   the litter box. Unscented or lightly scented products are safer.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-red-500">✗</span>
+                  <span className="text-red-500 dark:text-red-400">✗</span>
                   <span><strong>Clay-based &quot;deodorizers&quot;:</strong> Unless they contain activated carbon,
                   clay additives don&apos;t provide meaningful odor control—they&apos;re essentially just more litter.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-red-500">✗</span>
+                  <span className="text-red-500 dark:text-red-400">✗</span>
                   <span><strong>Products with vague claims:</strong> &quot;Eliminates odor&quot; without explaining
                   how is a red flag. Look for specific mechanisms (adsorption, enzyme action, etc.).</span>
                 </li>

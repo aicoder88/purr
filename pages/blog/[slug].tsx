@@ -266,8 +266,8 @@ export default function BlogPost({ post }: { post: BlogPost }) {
   // Noindex for fallback content when locale doesn't match
   const shouldNoindex = post.locale !== (router.locale || 'en');
 
-  // Use enhanced SEO hook for optimized meta tags, breadcrumbs, and structured data
-  const { nextSeoProps, breadcrumb } = useEnhancedSEO({
+  // Use enhanced SEO hook for optimized meta tags and structured data
+  const { nextSeoProps } = useEnhancedSEO({
     path: post.link,
     title: `${post.title} | ${SITE_NAME} Blog`,
     description: post.excerpt,
@@ -282,8 +282,14 @@ export default function BlogPost({ post }: { post: BlogPost }) {
     },
     image: post.image,
     noindex: shouldNoindex,
-    includeBreadcrumb: true,
   });
+
+  // Breadcrumb items for navigation and schema
+  const breadcrumbItems = [
+    { name: 'Home', path: '/' },
+    { name: 'Blog', path: '/blog' },
+    { name: post.title, path: post.link },
+  ];
 
   // Build comprehensive schema with BlogPosting, Breadcrumbs, and optional HowTo
   const buildSchemaGraph = () => {
@@ -354,9 +360,15 @@ export default function BlogPost({ post }: { post: BlogPost }) {
     }
 
     // Breadcrumb schema
-    if (breadcrumb) {
-      schemas.push(breadcrumb.schema);
-    }
+    schemas.push({
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbItems.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.name,
+        item: `${SITE_URL}${item.path}`,
+      })),
+    });
 
     return {
       '@context': 'https://schema.org',
@@ -387,30 +399,28 @@ export default function BlogPost({ post }: { post: BlogPost }) {
         <Container>
           <div className="max-w-4xl mx-auto">
             {/* Visual Breadcrumb Navigation */}
-            {breadcrumb && (
-              <nav aria-label="Breadcrumb" className="mb-6">
-                <ol className="flex flex-wrap items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                  {breadcrumb.items.map((item, index) => (
-                    <li key={item.path} className="flex items-center">
-                      {index > 0 && (
-                        <svg className="w-4 h-4 mx-2 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      )}
-                      {index === breadcrumb.items.length - 1 ? (
-                        <span aria-current="page" className="text-gray-900 dark:text-gray-100 font-medium truncate max-w-[200px]">
-                          {item.name}
-                        </span>
-                      ) : (
-                        <Link href={item.path} className="hover:text-[#03E46A] dark:hover:text-[#03E46A] transition-colors">
-                          {item.name}
-                        </Link>
-                      )}
-                    </li>
-                  ))}
-                </ol>
-              </nav>
-            )}
+            <nav aria-label="Breadcrumb" className="mb-6">
+              <ol className="flex flex-wrap items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                {breadcrumbItems.map((item, index) => (
+                  <li key={item.path} className="flex items-center">
+                    {index > 0 && (
+                      <svg className="w-4 h-4 mx-2 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    )}
+                    {index === breadcrumbItems.length - 1 ? (
+                      <span aria-current="page" className="text-gray-900 dark:text-gray-100 font-medium truncate max-w-[200px]">
+                        {item.name}
+                      </span>
+                    ) : (
+                      <Link href={item.path} className="hover:text-[#03E46A] dark:hover:text-[#03E46A] transition-colors">
+                        {item.name}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </nav>
 
             <Link
               href="/blog"

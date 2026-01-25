@@ -240,15 +240,15 @@ export default function LitterBoxSmellMakingSickPage() {
                 </p>
                 <ul className="space-y-2 text-gray-700 dark:text-gray-200 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="text-yellow-500">•</span>
+                    <span className="text-yellow-500 dark:text-yellow-400">•</span>
                     <span>Noticeable but tolerable odor</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-yellow-500">•</span>
+                    <span className="text-yellow-500 dark:text-yellow-400">•</span>
                     <span>Mild eye irritation in sensitive individuals</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-yellow-500">•</span>
+                    <span className="text-yellow-500 dark:text-yellow-400">•</span>
                     <span>Possible mild headache with prolonged exposure</span>
                   </li>
                 </ul>
@@ -263,19 +263,19 @@ export default function LitterBoxSmellMakingSickPage() {
                 </p>
                 <ul className="space-y-2 text-gray-700 dark:text-gray-200 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="text-orange-500">•</span>
+                    <span className="text-orange-500 dark:text-orange-400">•</span>
                     <span>Strong, unpleasant odor</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-orange-500">•</span>
+                    <span className="text-orange-500 dark:text-orange-400">•</span>
                     <span>Eye and nose irritation</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-orange-500">•</span>
+                    <span className="text-orange-500 dark:text-orange-400">•</span>
                     <span>Headaches, especially with regular exposure</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-orange-500">•</span>
+                    <span className="text-orange-500 dark:text-orange-400">•</span>
                     <span>Potential asthma trigger</span>
                   </li>
                 </ul>
@@ -290,19 +290,19 @@ export default function LitterBoxSmellMakingSickPage() {
                 </p>
                 <ul className="space-y-2 text-gray-700 dark:text-gray-200 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="text-red-500">•</span>
+                    <span className="text-red-500 dark:text-red-400">•</span>
                     <span>Immediate eye burning and watering</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-red-500">•</span>
+                    <span className="text-red-500 dark:text-red-400">•</span>
                     <span>Throat irritation and coughing</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-red-500">•</span>
+                    <span className="text-red-500 dark:text-red-400">•</span>
                     <span>Chest tightness in sensitive individuals</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-red-500">•</span>
+                    <span className="text-red-500 dark:text-red-400">•</span>
                     <span>Nausea and significant discomfort</span>
                   </li>
                 </ul>
@@ -497,19 +497,19 @@ export default function LitterBoxSmellMakingSickPage() {
               </p>
               <ul className="grid md:grid-cols-2 gap-2 text-gray-700 dark:text-gray-200">
                 <li className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
+                  <span className="text-green-500 dark:text-green-400">✓</span>
                   <span>Gas masks and respirators</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
+                  <span className="text-green-500 dark:text-green-400">✓</span>
                   <span>Hospital air filtration</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
+                  <span className="text-green-500 dark:text-green-400">✓</span>
                   <span>Water purification plants</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
+                  <span className="text-green-500 dark:text-green-400">✓</span>
                   <span>Industrial chemical processing</span>
                 </li>
               </ul>
@@ -540,23 +540,23 @@ export default function LitterBoxSmellMakingSickPage() {
               </p>
               <ul className="space-y-2 text-gray-700 dark:text-gray-200 mb-4">
                 <li className="flex items-start gap-2">
-                  <span className="text-red-500">•</span>
+                  <span className="text-red-500 dark:text-red-400">•</span>
                   <span>Persistent cough that doesn&apos;t improve when away from home</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-red-500">•</span>
+                  <span className="text-red-500 dark:text-red-400">•</span>
                   <span>Wheezing or difficulty breathing near the litter box</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-red-500">•</span>
+                  <span className="text-red-500 dark:text-red-400">•</span>
                   <span>Chronic headaches that correlate with litter box exposure</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-red-500">•</span>
+                  <span className="text-red-500 dark:text-red-400">•</span>
                   <span>New or worsening asthma symptoms</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-red-500">•</span>
+                  <span className="text-red-500 dark:text-red-400">•</span>
                   <span>Eye irritation that persists beyond exposure</span>
                 </li>
               </ul>

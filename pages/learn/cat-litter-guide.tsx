@@ -56,7 +56,6 @@ const CatLitterGuidePage: NextPage = () => {
       dateModified: new Date().toISOString().split('T')[0],
       image: heroImage,
     },
-    includeBreadcrumb: true,
   });
 
   const litterTypes = [

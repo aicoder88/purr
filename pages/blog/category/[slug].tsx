@@ -36,7 +36,6 @@ export default function CategoryArchive({ category, posts, seo }: CategoryArchiv
     schemaData: {
       description: seo.description,
     },
-    includeBreadcrumb: true,
   });
 
   // Build CollectionPage schema with category posts

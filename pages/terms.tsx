@@ -29,7 +29,6 @@ export default function Terms() {
       wordCount: 2000,
     },
     keywords: ['terms of service', 'purrify terms', 'legal terms', 'user agreement'],
-    includeBreadcrumb: true,
   });
 
   return (

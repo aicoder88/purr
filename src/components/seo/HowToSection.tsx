@@ -109,7 +109,7 @@ export function HowToSection({
               className="relative pl-12 pb-6 border-l-2 border-green-200 dark:border-green-800 last:border-l-0 last:pb-0"
             >
               {/* Step number circle */}
-              <div className="absolute left-0 top-0 -translate-x-1/2 w-8 h-8 rounded-full bg-green-500 dark:bg-green-600 text-white flex items-center justify-center font-bold text-sm">
+              <div className="absolute left-0 top-0 -translate-x-1/2 w-8 h-8 rounded-full bg-green-500 dark:bg-green-600 text-white dark:text-gray-100 flex items-center justify-center font-bold text-sm">
                 {index + 1}
               </div>
 

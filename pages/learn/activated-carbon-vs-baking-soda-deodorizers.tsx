@@ -32,7 +32,6 @@ export default function ActivatedCarbonVsBakingSodaDeodorizers() {
     },
     image: heroImage,
     keywords: ['does baking soda help cat litter smell', 'baking soda vs charcoal for odor', 'activated carbon cat litter deodorizer'],
-    includeBreadcrumb: true,
   });
 
   return (

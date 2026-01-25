@@ -23,7 +23,7 @@ export default function BestForSmallApartments() {
   const pageDescription = 'Stop cat litter smell in tiny apartments. 5 proven methods to eliminate odors and keep neighbors happy. Works in studios and small spaces!';
 
   // Use enhanced SEO hook for automated optimization
-  const { nextSeoProps, schema } = useEnhancedSEO({
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
     path: '/blog/best-litter-odor-remover-small-apartments',
     title: pageTitle,
     description: pageDescription,
@@ -45,7 +45,6 @@ export default function BestForSmallApartments() {
       'urban cat litter solutions',
       'small space pet odor',
     ],
-    includeBreadcrumb: true,
   });
 
   // FAQ data for both schema and display

@@ -55,7 +55,6 @@ const GlossaryPage: NextPage = () => {
       datePublished: '2024-01-15',
       dateModified: new Date().toISOString().split('T')[0],
     },
-    includeBreadcrumb: true,
   });
 
   const glossaryTerms: GlossaryTerm[] = [

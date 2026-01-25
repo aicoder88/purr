@@ -24,6 +24,16 @@ export interface SEOConfig {
   includeExpertAuthor?: boolean;
 }
 
+export interface BreadcrumbItem {
+  name: string;
+  path: string;
+}
+
+export interface BreadcrumbData {
+  items: BreadcrumbItem[];
+  schema: object;
+}
+
 export interface EnhancedSEOResult {
   nextSeoProps: {
     title: string;
@@ -58,6 +68,8 @@ export interface EnhancedSEOResult {
   schema: object | null;
   /** Additional schemas (e.g., expert author) - render all in page head */
   additionalSchemas: object[];
+  /** Breadcrumb data - currently not implemented, returns undefined */
+  breadcrumb: BreadcrumbData | undefined;
   meta: {
     titleLength: number;
     descriptionLength: number;
@@ -184,6 +196,7 @@ export function useEnhancedSEO(config: SEOConfig): EnhancedSEOResult {
     nextSeoProps,
     schema,
     additionalSchemas,
+    breadcrumb: undefined, // Not implemented - breadcrumbs should be handled per-page
     meta: {
       titleLength: optimizedTitle.length,
       descriptionLength: optimizedDescription.length,

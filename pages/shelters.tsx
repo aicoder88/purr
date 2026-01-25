@@ -122,7 +122,6 @@ export default function SheltersPage() {
         email: 'partners@purrify.ca'
       }
     },
-    includeBreadcrumb: true
   });
 
   // Shelter-specific challenges

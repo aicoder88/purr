@@ -136,7 +136,6 @@ export default function Reviews() {
       'verified reviews',
       'cat odor eliminator reviews',
     ],
-    includeBreadcrumb: true,
   });
 
   return (
