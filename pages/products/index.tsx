@@ -417,105 +417,32 @@ const ProductsPage: NextPage = () => {
           </nav>
         )}
 
-        {/* Hero Section */}
+        {/* Hero Section - Hook with Problem + Promise */}
         <section className="py-16 bg-gradient-to-br from-brand-purple to-brand-red">
           <Container>
             <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
               <Package className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">
-                {t.productsPage?.hero?.headline || "Finally... A Way to Love Your Cat Without Apologizing for the Smell"}
+                {locale === 'fr'
+                  ? "Vos chats sont parfaits. L'odeur? Pas tellement."
+                  : "Your Cats Are Perfect. The Smell? Not So Much."}
               </h1>
               <p className="text-xl md:text-2xl mb-4 opacity-90">
-                {t.productsPage?.hero?.subheadline || "The same activated carbon that makes drinking water clean now traps litter box odors at the source. No perfumes. No cover-ups. Just... nothing. (In the best way.)"}
+                {locale === 'fr'
+                  ? "Le même charbon actif qui rend l'eau potable capture maintenant l'ammoniac de la litière. Pas de parfums. Pas de camouflage. Juste... de l'air frais."
+                  : "The same activated carbon that makes drinking water clean now traps litter box ammonia at the molecular level. No perfumes. No cover-ups. Just... air."}
               </p>
-              <p className="text-lg opacity-80">
-                {t.productsPage?.hero?.supporting || "Pick your size below. Same water-filter grade formula in every bag."}
+              <p className="text-lg opacity-80 italic">
+                {locale === 'fr'
+                  ? "Mais ne nous croyez pas sur parole..."
+                  : "But don't take our word for it..."}
               </p>
             </div>
           </Container>
         </section>
 
-        {/* Quick Decision Helper */}
-        <section className="py-12 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
-          <Container>
-            <div className="text-center mb-8">
-              <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-                {t.productsPage?.quickDecision?.title || "Not Sure Which Size? Let Your Nose Decide."}
-              </h2>
-              <p className="text-gray-600 dark:text-gray-300">
-                {t.productsPage?.quickDecision?.subtitle || "(Spoiler: It'll thank you either way)"}
-              </p>
-            </div>
-
-            {/* B2C: ORIGINAL QUICK PICKS WITH PAYMENT LINKS
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              {quickPicks.map((pick, index) => {
-                const product = products.find(p => p.id === pick.productId);
-                return (
-                  <a
-                    key={index}
-                    href={product?.ctaLink || '#'}
-                    target={product?.ctaLink?.startsWith('http') ? '_blank' : undefined}
-                    rel={product?.ctaLink?.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="group bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:bg-brand-light dark:hover:bg-gray-600 transition-all hover:shadow-lg border-2 border-transparent hover:border-brand-purple"
-                  >
-                    <div className="text-brand-purple dark:text-purple-400 mb-3">
-                      {pick.icon}
-                    </div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">{pick.question}</p>
-                    <p className="font-heading font-bold text-xl text-gray-900 dark:text-gray-100 mb-2 group-hover:text-brand-purple transition-colors">
-                      {pick.answer} <ArrowRight className="inline w-4 h-4 ml-1" />
-                    </p>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">{pick.detail}</p>
-                  </a>
-                );
-              })}
-            </div>
-            */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              {quickPicks.map((pick, index) => (
-                <Link
-                  key={index}
-                  href={`${locale === 'fr' ? '/fr' : ''}/stores`}
-                  className="group bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:bg-brand-light dark:hover:bg-gray-600 transition-all hover:shadow-lg border-2 border-transparent hover:border-brand-purple"
-                >
-                  <div className="text-brand-purple dark:text-purple-400 mb-3">
-                    {pick.icon}
-                  </div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">{pick.question}</p>
-                  <p className="font-heading font-bold text-xl text-gray-900 dark:text-gray-100 mb-2 group-hover:text-brand-purple transition-colors">
-                    {pick.answer} <MapPin className="inline w-4 h-4 ml-1" />
-                  </p>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">{pick.detail}</p>
-                </Link>
-              ))}
-            </div>
-          </Container>
-        </section>
-
-        {/* Trust Signals */}
-        <section className="py-12 bg-brand-light/30 dark:bg-gray-800/50">
-          <Container>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              {trustSignals.map((signal, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-brand-purple dark:text-purple-400 mb-3 flex justify-center">
-                    {signal.icon}
-                  </div>
-                  <h3 className="font-heading font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
-                    {signal.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
-                    {signal.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </Container>
-        </section>
-
-        {/* Social Proof Testimonial Section */}
-        <section className="py-16 bg-white dark:bg-gray-800">
+        {/* Social Proof FIRST - The "Don't take our word for it" payoff */}
+        <section className="py-12 bg-white dark:bg-gray-800">
           <Container>
             <div className="max-w-4xl mx-auto">
               <div className="relative bg-gradient-to-br from-brand-light to-white dark:from-gray-700 dark:to-gray-800 rounded-2xl p-8 md:p-12 shadow-lg border border-brand-light dark:border-gray-700">
@@ -523,9 +450,9 @@ const ProductsPage: NextPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
                   {/* Testimonial Content */}
                   <div className="md:col-span-2">
-                    <h3 className="font-heading text-2xl font-bold text-brand-purple dark:text-purple-400 mb-4">
+                    <h2 className="font-heading text-2xl font-bold text-brand-purple dark:text-purple-400 mb-4">
                       &ldquo;{t.productsPage?.testimonial?.headline || "Game changer for my apartment!"}&rdquo;
-                    </h3>
+                    </h2>
                     <blockquote className="text-lg text-gray-700 dark:text-gray-200 mb-6 leading-relaxed">
                       &ldquo;{t.productsPage?.testimonial?.quote || "I live in a small studio apartment with two cats, and the litter box smell was becoming unbearable. Purrify completely eliminated the odor within 24 hours. I was skeptical about the price at first, but it lasts so much longer than other products I've tried. Worth every penny!"}&rdquo;
                     </blockquote>
@@ -554,23 +481,136 @@ const ProductsPage: NextPage = () => {
                   </div>
                 </div>
               </div>
+
+              {/* Transition: Curiosity hook to science */}
+              <p className="text-center mt-8 text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+                {locale === 'fr'
+                  ? "Comment un simple sachet peut-il éliminer une odeur aussi tenace? La réponse tient dans un seul grain..."
+                  : "How does a simple pouch eliminate such a stubborn smell? The answer fits in a single grain..."}
+              </p>
             </div>
+          </Container>
+        </section>
+
+        {/* Science Hook - The "Football Field" Revelation */}
+        <section className="py-12 bg-brand-purple/5 dark:bg-brand-purple/10">
+          <Container>
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-start space-x-4 p-6 bg-white dark:bg-gray-800 rounded-xl border border-brand-purple/20 shadow-md">
+                <Zap className="w-10 h-10 text-brand-purple flex-shrink-0 mt-1" />
+                <div>
+                  <h2 className="font-heading font-bold text-xl text-gray-900 dark:text-gray-100 mb-3">
+                    {locale === 'fr'
+                      ? "Un grain. La superficie d'un demi-terrain de football."
+                      : "One Gram. Half a Football Field of Surface Area."}
+                  </h2>
+                  <p className="text-gray-700 dark:text-gray-200 mb-4">
+                    {locale === 'fr'
+                      ? "À l'intérieur de chaque grain de charbon actif se trouvent des millions de tunnels microscopiques. Quand les molécules d'ammoniac passent à côté, elles sont piégées de façon permanente."
+                      : "Inside every grain of activated carbon are millions of microscopic tunnels. When ammonia molecules float past, they get trapped permanently."}
+                  </p>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    {locale === 'fr'
+                      ? "Ce n'est pas du camouflage. C'est de la capture moléculaire — la même technologie utilisée dans les masques à gaz, les usines de traitement d'eau et la filtration d'air des hôpitaux."
+                      : "This isn't masking. It's molecular capture — the same technology used in gas masks, water treatment plants, and hospital air filtration."}
+                  </p>
+                </div>
+              </div>
+
+              {/* Transition to trust signals */}
+              <p className="text-center mt-8 text-gray-600 dark:text-gray-400">
+                {locale === 'fr'
+                  ? "La science est impressionnante. Mais voici ce qui compte vraiment pour vous et votre chat:"
+                  : "The science is impressive. But here's what actually matters for you and your cat:"}
+              </p>
+            </div>
+          </Container>
+        </section>
+
+        {/* Trust Signals - Now positioned as "what matters" */}
+        <section className="py-12 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+          <Container>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {trustSignals.map((signal, index) => (
+                <div key={index} className="text-center">
+                  <div className="text-brand-purple dark:text-purple-400 mb-3 flex justify-center">
+                    {signal.icon}
+                  </div>
+                  <h3 className="font-heading font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
+                    {signal.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    {signal.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Transition to size selection */}
+            <p className="text-center mt-12 text-xl font-medium text-gray-800 dark:text-gray-200">
+              {locale === 'fr'
+                ? "Maintenant, quelle taille vous convient le mieux?"
+                : "Now, which size is right for you?"}
+            </p>
+          </Container>
+        </section>
+
+        {/* Quick Decision Helper - Now flows naturally after "which size?" */}
+        <section className="py-12 bg-brand-light/30 dark:bg-gray-800/50">
+          <Container>
+            <div className="text-center mb-8">
+              <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+                {locale === 'fr'
+                  ? "Répondez à une question. Trouvez votre format."
+                  : "Answer One Question. Find Your Size."}
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              {quickPicks.map((pick, index) => (
+                <Link
+                  key={index}
+                  href={`${locale === 'fr' ? '/fr' : ''}/stores`}
+                  className="group bg-white dark:bg-gray-700 rounded-xl p-6 hover:bg-brand-light dark:hover:bg-gray-600 transition-all hover:shadow-lg border-2 border-transparent hover:border-brand-purple"
+                >
+                  <div className="text-brand-purple dark:text-purple-400 mb-3">
+                    {pick.icon}
+                  </div>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">{pick.question}</p>
+                  <p className="font-heading font-bold text-xl text-gray-900 dark:text-gray-100 mb-2 group-hover:text-brand-purple transition-colors">
+                    {pick.answer} <MapPin className="inline w-4 h-4 ml-1" />
+                  </p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">{pick.detail}</p>
+                </Link>
+              ))}
+            </div>
+
+            {/* Transition to detailed comparison */}
+            <p className="text-center mt-10 text-gray-600 dark:text-gray-400">
+              {locale === 'fr'
+                ? "Vous voulez tous les détails? Comparez côte à côte:"
+                : "Want all the details? Compare side by side:"}
+            </p>
           </Container>
         </section>
 
         {/* Product Comparison Cards - Using Shared Component */}
         <EnhancedProductComparison />
 
-        {/* What You Get Section */}
+        {/* What You Get Section - Streamlined (science already covered above) */}
         <section className="py-16 bg-white dark:bg-gray-800">
           <Container>
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
                 <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-                  {t.productsPage?.whatYouGet?.title || "What's Actually in the Bag"}
+                  {locale === 'fr'
+                    ? "En résumé: Ce que vous obtenez"
+                    : "The Bottom Line: What You Get"}
                 </h2>
                 <p className="text-xl text-gray-600 dark:text-gray-300">
-                  {t.productsPage?.whatYouGet?.subtitle || "(And Why Your Cat Will Never Notice It)"}
+                  {locale === 'fr'
+                    ? "(Votre chat ne remarquera rien. C'est le but.)"
+                    : "(Your cat won't notice a thing. That's the point.)"}
                 </p>
               </div>
 
@@ -597,20 +637,12 @@ const ProductsPage: NextPage = () => {
                 ))}
               </div>
 
-              {/* The Football Field Fact */}
-              <div className="mt-12 p-6 bg-brand-purple/5 dark:bg-brand-purple/10 rounded-xl border border-brand-purple/20">
-                <div className="flex items-start space-x-4">
-                  <Zap className="w-8 h-8 text-brand-purple flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">
-                      {t.productsPage?.didYouKnow?.title || "The Science Your Cat Doesn't Care About (But Your Nose Will)"}
-                    </h3>
-                    <p className="text-gray-700 dark:text-gray-200 whitespace-pre-line">
-                      {t.productsPage?.didYouKnow?.body || "A single gram of activated carbon contains roughly 3,000 square meters of surface area. That's bigger than half a football field — in something smaller than a pea.\n\nInside are millions of microscopic pores and tunnels. When ammonia molecules float past, they get trapped permanently.\n\nThis isn't masking. It's molecular capture. The same technology used in gas masks, water treatment plants, and hospital air filtration. Now sitting on top of your cat's litter."}
-                    </p>
-                  </div>
-                </div>
-              </div>
+              {/* Transition to calculator */}
+              <p className="text-center mt-12 text-lg text-gray-700 dark:text-gray-300">
+                {locale === 'fr'
+                  ? "Combien de temps chaque format dure-t-il? Ça dépend de vos chats..."
+                  : "How long will each size last? That depends on your cats..."}
+              </p>
             </div>
           </Container>
         </section>
@@ -663,6 +695,13 @@ const ProductsPage: NextPage = () => {
                 </table>
               </div>
             </div>
+
+            {/* Transition to CTA - Natural conclusion */}
+            <p className="text-center mt-10 text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+              {locale === 'fr'
+                ? "Vous avez vu la science. Vous avez entendu les témoignages. Vous savez quel format vous convient. Il ne reste plus qu'une chose à faire..."
+                : "You've seen the science. You've heard the testimonials. You know which size fits. There's only one thing left to do..."}
+            </p>
           </Container>
         </section>
 
@@ -700,25 +739,31 @@ const ProductsPage: NextPage = () => {
             <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
               <MapPin className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-                {t.productsPage?.cta?.title || "Your Nose Deserves Better. So Does Your Cat."}
+                {locale === 'fr'
+                  ? "Trouvez Purrify près de chez vous"
+                  : "Get Purrify Near You"}
               </h2>
               <p className="text-xl mb-4 opacity-90">
-                {t.productsPage?.cta?.subtitle || "Ask for Purrify at your favorite pet store. If they don't carry it yet, they should."}
+                {locale === 'fr'
+                  ? "Disponible dans les animaleries à travers le Canada. Demandez Purrify à votre magasin préféré."
+                  : "Available at pet stores across Canada. Ask for Purrify at your favorite store."}
               </p>
               <p className="text-base mb-8 opacity-80">
-                {t.productsPage?.cta?.secondary || "Not seeing your store? Let us know. We'll reach out and make it happen."}
+                {locale === 'fr'
+                  ? "Votre magasin ne l'a pas encore? Dites-le nous et nous les contacterons."
+                  : "Your store doesn't carry it yet? Tell us and we'll reach out."}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/stores`}>
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-brand-purple hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
                     <MapPin className="w-5 h-5 mr-2" />
-                    {t.nav?.findStore || "Find a Store"}
+                    {locale === 'fr' ? "Trouver un magasin" : "Find a Store"}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/contact`}>
                   <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-white bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
-                    {t.productComparison.getPersonalizedAdvice}
+                    {locale === 'fr' ? "Des questions? Contactez-nous" : "Questions? Contact Us"}
                   </Button>
                 </Link>
               </div>
@@ -730,8 +775,13 @@ const ProductsPage: NextPage = () => {
         <section className="py-16 cv-auto cis-720">
           <Container>
             <div className="text-center mb-12">
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                {locale === 'fr'
+                  ? "Envie d'en savoir plus avant de vous décider?"
+                  : "Want to dig deeper before deciding?"}
+              </p>
               <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-                {t.productComparison.learnMoreAboutPurrify}
+                {locale === 'fr' ? "En savoir plus" : "Learn More"}
               </h2>
             </div>
 
