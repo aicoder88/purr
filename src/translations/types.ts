@@ -62,6 +62,8 @@ export interface TranslationType {
     findNearYou?: string;
     whereToBuy?: string;
     askForPurrify?: string;
+    // About dropdown items
+    ourStory?: string;
   };
 
   // Locations Menu
@@ -686,6 +688,8 @@ export interface TranslationType {
     // Review platforms
     trustpilot: string;
     googleReviews: string;
+    // SEO
+    sitemap?: string;
   };
 
   // Free Trial

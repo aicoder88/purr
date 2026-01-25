@@ -306,7 +306,47 @@ export function Footer() {
                     href="/learn/solutions/ammonia-smell-cat-litter"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.ammoniaSolutions || ""}
+                    {t.footerNav?.ammoniaSolutions || "Ammonia Smell Control"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/learn/solutions/apartment-cat-smell-solution"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.nav?.apartmentLiving || "Apartment Living"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/learn/solutions/litter-box-smell-elimination"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.nav?.litterBoxOdor || "Litter Box Odor"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/learn/solutions/multiple-cats-odor-control"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.nav?.multipleCats || "Multiple Cats"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/learn/solutions/natural-cat-litter-additive"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.nav?.naturalAdditive || "Natural Additive"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/learn/solutions/senior-cat-litter-solutions"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.nav?.seniorCats || "Senior Cats"}
                   </Link>
                 </li>
                 <li>
@@ -314,7 +354,7 @@ export function Footer() {
                     href="/tools/cat-litter-calculator"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    {t.footerNav?.litterCalculator || ""}
+                    {t.footerNav?.litterCalculator || "Litter Calculator"}
                   </Link>
                 </li>
               </ul>
@@ -391,19 +431,6 @@ export function Footer() {
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.blog || ""}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href={
-                      locale === "fr" ? "/fr/stores" :
-                      locale === "zh" ? "/zh/stores" :
-                      locale === "es" ? "/es/stores" :
-                      "/stores"
-                    }
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
-                  >
-                    {t.footerNav?.stockists || t.footerNav?.locations || "Stockists"}
                   </Link>
                 </li>
                 <li>
@@ -530,10 +557,10 @@ export function Footer() {
                 {t.nav.termsOfService}
               </Link>
               <Link
-                href={locale === "fr" ? "/fr/blog" : "/blog"}
+                href="/sitemap.xml"
                 className="text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
               >
-                {t.nav.blog}
+                {t.footerNav?.sitemap || "Sitemap"}
               </Link>
             </div>
             <p className="text-center text-xs text-[#333333]/80 dark:text-gray-300">

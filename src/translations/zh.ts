@@ -63,7 +63,9 @@ export const zh = {
     findStore: "在您附近找到Purrify",
     findNearYou: "附近查找",
     whereToBuy: "哪里购买",
-    askForPurrify: "在您的商店询问Purrify"
+    askForPurrify: "在您的商店询问Purrify",
+    // About dropdown items
+    ourStory: "我们的故事"
   },
 
   locationsMenu: {
@@ -820,7 +822,9 @@ export const zh = {
     termsOfService: "服务条款",
     // Review platforms
     trustpilot: "Trustpilot",
-    googleReviews: "谷歌评论"
+    googleReviews: "谷歌评论",
+    // SEO
+    sitemap: "网站地图"
   },
 
   // Free Trial

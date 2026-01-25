@@ -61,7 +61,9 @@ export const en = {
     findStore: "Get Purrify Near You",
     findNearYou: "Find It Near You",
     whereToBuy: "Where to Buy",
-    askForPurrify: "Ask for Purrify at Your Store"
+    askForPurrify: "Ask for Purrify at Your Store",
+    // About dropdown items
+    ourStory: "Our Story"
   },
 
   locationsMenu: {
@@ -786,7 +788,9 @@ export const en = {
     termsOfService: "Terms of Service",
     // Review platforms
     trustpilot: "Trustpilot",
-    googleReviews: "Google Reviews"
+    googleReviews: "Google Reviews",
+    // SEO
+    sitemap: "Sitemap"
   },
 
   // Free Trial

@@ -64,7 +64,9 @@ export const es: TranslationType = {
     findStore: "Encontrar Tienda",
     findNearYou: "Encontrar Cerca de Ti",
     whereToBuy: "Dónde Comprar",
-    askForPurrify: "Pregunta por Purrify en Tu Tienda"
+    askForPurrify: "Pregunta por Purrify en Tu Tienda",
+    // About dropdown items
+    ourStory: "Nuestra Historia"
   },
 
   locationsMenu: {
@@ -706,7 +708,9 @@ export const es: TranslationType = {
     termsOfService: "Terminos de Servicio",
     // Review platforms
     trustpilot: "Trustpilot",
-    googleReviews: "Opiniones de Google"
+    googleReviews: "Opiniones de Google",
+    // SEO
+    sitemap: "Mapa del Sitio"
   },
 
   // Benefits Section (homepage component)

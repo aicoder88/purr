@@ -38,6 +38,8 @@ export function Header() {
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const [isRetailersDropdownOpen, setIsRetailersDropdownOpen] = useState(false);
   const [isLearnDropdownOpen, setIsLearnDropdownOpen] = useState(false);
+  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
+  const [expandedMobileSection, setExpandedMobileSection] = useState<string | null>(null);
   const { t, locale } = useTranslation();
   const router = useRouter();
   const headerRef = useRef<HTMLElement | null>(null);
@@ -51,14 +53,22 @@ export function Header() {
         setIsProductsDropdownOpen(true);
         setIsRetailersDropdownOpen(false);
         setIsLearnDropdownOpen(false);
+        setIsAboutDropdownOpen(false);
       } else if (id === "retailers") {
         setIsProductsDropdownOpen(false);
         setIsRetailersDropdownOpen(true);
         setIsLearnDropdownOpen(false);
+        setIsAboutDropdownOpen(false);
       } else if (id === "learn") {
         setIsProductsDropdownOpen(false);
         setIsRetailersDropdownOpen(false);
         setIsLearnDropdownOpen(true);
+        setIsAboutDropdownOpen(false);
+      } else if (id === "about") {
+        setIsProductsDropdownOpen(false);
+        setIsRetailersDropdownOpen(false);
+        setIsLearnDropdownOpen(false);
+        setIsAboutDropdownOpen(true);
       }
     },
     [],
@@ -73,6 +83,7 @@ export function Header() {
         if (next) {
           setIsRetailersDropdownOpen(false);
           setIsLearnDropdownOpen(false);
+          setIsAboutDropdownOpen(false);
         }
       } else if (id === "retailers") {
         const next = !isRetailersDropdownOpen;
@@ -80,6 +91,7 @@ export function Header() {
         if (next) {
           setIsProductsDropdownOpen(false);
           setIsLearnDropdownOpen(false);
+          setIsAboutDropdownOpen(false);
         }
       } else if (id === "learn") {
         const next = !isLearnDropdownOpen;
@@ -87,10 +99,19 @@ export function Header() {
         if (next) {
           setIsProductsDropdownOpen(false);
           setIsRetailersDropdownOpen(false);
+          setIsAboutDropdownOpen(false);
+        }
+      } else if (id === "about") {
+        const next = !isAboutDropdownOpen;
+        setIsAboutDropdownOpen(next);
+        if (next) {
+          setIsProductsDropdownOpen(false);
+          setIsRetailersDropdownOpen(false);
+          setIsLearnDropdownOpen(false);
         }
       }
     },
-    [isProductsDropdownOpen, isRetailersDropdownOpen, isLearnDropdownOpen],
+    [isProductsDropdownOpen, isRetailersDropdownOpen, isLearnDropdownOpen, isAboutDropdownOpen],
   );
 
   const handleNavKeyDown = useCallback(
@@ -106,6 +127,7 @@ export function Header() {
         if (id === "products") setIsProductsDropdownOpen(false);
         if (id === "retailers") setIsRetailersDropdownOpen(false);
         if (id === "learn") setIsLearnDropdownOpen(false);
+        if (id === "about") setIsAboutDropdownOpen(false);
       }
     },
     [handleNavClick],
@@ -139,6 +161,8 @@ export function Header() {
       setIsProductsDropdownOpen(false);
       setIsRetailersDropdownOpen(false);
       setIsLearnDropdownOpen(false);
+      setIsAboutDropdownOpen(false);
+      setExpandedMobileSection(null);
     };
 
     router.events.on("routeChangeStart", handleRouteChange);
@@ -156,6 +180,7 @@ export function Header() {
         setIsProductsDropdownOpen(false);
         setIsRetailersDropdownOpen(false);
         setIsLearnDropdownOpen(false);
+        setIsAboutDropdownOpen(false);
       }
     };
     document.addEventListener("click", handleClickOutside);
@@ -301,9 +326,29 @@ export function Header() {
       ],
     },
     {
+      id: "blog",
+      label: t.nav?.blog || "Blog",
+      href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : locale === "es" ? "/es" : ""}/blog`,
+    },
+    {
       id: "about",
       label: t.nav?.about || "",
-      href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/about/our-story`,
+      href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : locale === "es" ? "/es" : ""}/about/our-story`,
+      hasDropdown: true,
+      dropdownItems: [
+        {
+          label: t.nav?.ourStory || "Our Story",
+          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : locale === "es" ? "/es" : ""}/about/our-story`,
+        },
+        {
+          label: t.nav?.customerReviews || "Reviews",
+          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : locale === "es" ? "/es" : ""}/reviews`,
+        },
+        {
+          label: t.nav?.contact || "Contact",
+          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : locale === "es" ? "/es" : ""}/contact`,
+        },
+      ],
     },
   ];
 
@@ -351,7 +396,8 @@ export function Header() {
                       aria-expanded={
                         (item.id === "products" && isProductsDropdownOpen) ||
                         (item.id === "retailers" && isRetailersDropdownOpen) ||
-                        (item.id === "learn" && isLearnDropdownOpen)
+                        (item.id === "learn" && isLearnDropdownOpen) ||
+                        (item.id === "about" && isAboutDropdownOpen)
                           ? "true"
                           : "false"
                       }
@@ -366,7 +412,8 @@ export function Header() {
                     </button>
                     {((item.id === "products" && isProductsDropdownOpen) ||
                       (item.id === "retailers" && isRetailersDropdownOpen) ||
-                      (item.id === "learn" && isLearnDropdownOpen)) && (
+                      (item.id === "learn" && isLearnDropdownOpen) ||
+                      (item.id === "about" && isAboutDropdownOpen)) && (
                       <div
                         className="absolute top-full left-0 mt-1 bg-white dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 z-50 w-64 max-h-96 overflow-y-auto p-2"
                         role="menu"
@@ -480,35 +527,49 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile menu - Accordion style */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-brand-green-light/30 dark:border-purple-500/30 bg-white dark:bg-gray-900/95 backdrop-blur-md shadow-lg">
+          <div className="md:hidden border-t border-brand-green-light/30 dark:border-purple-500/30 bg-white dark:bg-gray-900/95 backdrop-blur-md shadow-lg max-h-[80vh] overflow-y-auto">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navigationItems.map((item) => (
                 <div key={item.id}>
                   {item.hasDropdown ? (
                     <>
-                      <div className="px-3 py-2 text-sm font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
-                        {item.label}
-                      </div>
-                      {item.dropdownItems?.map((dropdownItem) =>
-                        dropdownItem.isGroupHeader ? (
-                          <div
-                            key={dropdownItem.label}
-                            className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2"
-                          >
-                            {dropdownItem.label}
-                          </div>
-                        ) : (
-                          <Link
-                            key={dropdownItem.label}
-                            href={dropdownItem.href || ""}
-                            className={`block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1 ${dropdownItem.indent ? "pl-8" : "px-6"}`}
-                            onClick={closeMenu}
-                          >
-                            {dropdownItem.label}
-                          </Link>
-                        ),
+                      {/* Accordion header - clickable toggle */}
+                      <button
+                        type="button"
+                        onClick={() => setExpandedMobileSection(expandedMobileSection === item.id ? null : item.id)}
+                        className="w-full flex items-center justify-between px-3 py-3 min-h-[44px] text-sm font-semibold text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:hover:bg-gray-700/80 transition-colors rounded-md mx-1"
+                        aria-expanded={expandedMobileSection === item.id}
+                      >
+                        <span className="uppercase tracking-wider">{item.label}</span>
+                        <ChevronDown
+                          className={`h-5 w-5 transition-transform duration-200 ${expandedMobileSection === item.id ? "rotate-180" : ""}`}
+                        />
+                      </button>
+                      {/* Accordion content - collapsible */}
+                      {expandedMobileSection === item.id && (
+                        <div className="pl-2 pb-2 space-y-0.5">
+                          {item.dropdownItems?.map((dropdownItem) =>
+                            dropdownItem.isGroupHeader ? (
+                              <div
+                                key={dropdownItem.label}
+                                className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2"
+                              >
+                                {dropdownItem.label}
+                              </div>
+                            ) : (
+                              <Link
+                                key={dropdownItem.label}
+                                href={dropdownItem.href || ""}
+                                className={`block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-0.5 ${dropdownItem.indent ? "pl-8" : "px-6"}`}
+                                onClick={closeMenu}
+                              >
+                                {dropdownItem.label}
+                              </Link>
+                            ),
+                          )}
+                        </div>
                       )}
                     </>
                   ) : (
