@@ -544,15 +544,109 @@ pnpm generate-image --prompt "Your detailed prompt" --output "filename.jpg"
 
 ---
 
-## Content Writing
+## Content Writing & Copywriting
 
 **Before writing ANY product content**, read: `/docs/BLOG_STYLE_GUIDE.md`
 
-Critical rules:
+### Product Rules
 - Never use "safe" → use "non-toxic", "food-grade", "pet-friendly"
 - Never fabricate statistics, reviews, or image paths
 - Product is **activated carbon** (coconut shell), lasts **7+ days**
 - No competitor comparisons → use partnership positioning
+
+---
+
+### ⚡ Copy Task Trigger
+
+**When writing ANY customer-facing copy** (product pages, landing pages, blog posts, CTAs, emails, headlines, descriptions):
+
+→ Apply the **Greased Slide Checklist** before considering it done
+→ Run the **3-Second Test** on the final result
+→ Read it aloud—if you stumble, rewrite
+
+---
+
+### The Greased Slide Principle
+
+Every piece of copy must flow like a **greased slide**. Once readers start, they can't stop.
+
+The headline pulls them in. The first sentence makes the second irresistible. Each bullet begs them to read the next. Before they know it, they've read everything, pulled out their credit card, and ordered—missing their meeting because they simply couldn't stop.
+
+**The goal:** "I only meant to skim the headline... but I read every word."
+
+---
+
+### Voice & Feel
+
+Write like a **warm nuzzle from a cat**—comforting, genuine, impossible to ignore.
+
+Blend these masters:
+
+| Copywriter | What to Channel |
+|------------|-----------------|
+| **John Carlton** | Brutal directness. No throat-clearing. Get to the point like a punch. |
+| **Gary Halbert** | Swagger and showmanship. Make every sentence sizzle. Inject personality. |
+| **Gary Bencivenga** | Elegant proof. Stack credibility so high doubt crumbles. |
+| **David Ogilvy** | Sophisticated clarity. Respect the reader's intelligence. |
+| **Lorrie Morgan-Ferrero** | Feminine warmth. Conversational flow. Write like you're talking to a friend. |
+
+---
+
+### The Greased Slide Checklist
+
+Before publishing any copy:
+
+- [ ] **Headline hooks instantly** — Would you stop scrolling?
+- [ ] **First line earns the second** — Does it create a question that demands an answer?
+- [ ] **Every sentence pulls forward** — Read it aloud. Any friction? Any place to stop?
+- [ ] **Bullets are mini-headlines** — Each one should make them hungry for more
+- [ ] **Subheads re-hook scanners** — Someone skimming should get pulled back in
+- [ ] **One clear action** — They know exactly what to do next
+- [ ] **Zero wasted words** — If it doesn't earn its place, cut it
+
+---
+
+### Techniques That Create Slide
+
+**Open loops** — Start a thought, don't finish it yet. The brain craves closure.
+
+**Curiosity gaps** — Hint at something valuable. Make them need to know.
+
+**Pattern interrupts** — When they expect one thing, give them another. Wake them up.
+
+**Emotional truth** — Speak to what they feel but haven't said. "Finally, someone gets it."
+
+**Specificity** — "7 days" beats "about a week." Concrete details build belief.
+
+**You, you, you** — Write about them, not about the product. Their life. Their problem. Their transformation.
+
+---
+
+### What Kills the Slide
+
+❌ **Throat-clearing intros** — "In today's world..." DELETE.
+
+❌ **Corporate speak** — "Leverage synergies" makes people leave.
+
+❌ **Weak verbs** — "Is," "was," "seems." Find the verb with muscle.
+
+❌ **Buried leads** — The best sentence is hiding in paragraph three. Move it up.
+
+❌ **Features without benefits** — They don't care what it does. They care what it does *for them*.
+
+❌ **Long blocks of text** — Walls of words are walls to escape. Break it up.
+
+---
+
+### The 3-Second Test
+
+If someone sees only the headline, subheads, and first line of each section:
+
+1. Do they know what this is?
+2. Do they know why they should care?
+3. Do they feel compelled to read more?
+
+If any answer is "no," rewrite.
 
 ---
 
