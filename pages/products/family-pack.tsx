@@ -14,7 +14,7 @@ import { getPriceValidityDate, generateFAQSchema } from '../../src/lib/seo-utils
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../src/lib/pricing';
 import { getPaymentLink } from '../../src/lib/payment-links';
 import Image from 'next/image';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 import { ProductFAQ } from '../../src/components/product/ProductFAQ';
 import { BNPLBadge } from '../../src/components/product/BNPLBadge';
 import { StickyAddToCart } from '../../src/components/product/StickyAddToCart';
@@ -569,7 +569,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
         {/* Related Articles */}
         <section className="py-16 border-t border-gray-200 dark:border-gray-800">
           <Container>
-            <RelatedArticles currentPath="/products/family-pack" />
+            <RelatedContent currentUrl="/products/family-pack" />
           </Container>
         </section>
       </main>

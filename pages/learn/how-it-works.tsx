@@ -7,7 +7,7 @@ import { SITE_NAME } from '../../src/lib/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Microscope, Zap, Shield, Leaf, ChevronRight, Home } from 'lucide-react';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 import { formatProductPrice } from '../../src/lib/pricing';
 import { getPaymentLink } from '../../src/lib/payment-links';
 import { generateJSONLD } from '../../src/lib/seo-utils';
@@ -366,7 +366,7 @@ export default function HowItWorksPage() {
         {/* Related Articles */}
         <section className="py-16 border-t border-gray-200 dark:border-gray-800">
           <Container>
-            <RelatedArticles currentPath="/learn/how-it-works" />
+            <RelatedContent currentUrl="/learn/how-it-works" />
           </Container>
         </section>
       </main>

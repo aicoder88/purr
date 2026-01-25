@@ -685,6 +685,86 @@ export const zh = {
     replyTime: "我们通常在24小时内回复"
   },
 
+  // Benefits Section (homepage component)
+  benefitsSection: {
+    sectionHeader: "让猫咪异味问题成为过去式",
+    title: "Purrify的优势",
+    subtitle: "了解为什么Purrify是追求清新家居的猫主人的完美解决方案。",
+    items: [
+      {
+        title: "消除异味",
+        description: "Purrify的先进配方从源头有效消除猫砂盆的难闻气味。告别那些可能弥漫在家中的残留异味，为您和您的毛茸茸朋友营造一个更清新、更温馨的环境。"
+      },
+      {
+        title: "简单天然",
+        description: "Purrify由简单的椰壳制成，经活化处理可吸收异味。您可以放心，您为猫咪提供了一个干净清新的猫砂盆环境，而不会让它们接触化学物质或毒素。"
+      },
+      {
+        title: "经济实惠",
+        description: "Purrify通过防止异味积聚来延长猫砂的使用寿命，这意味着您需要更换猫砂的频率更低。这不仅为您省钱，还能减少浪费，对您的钱包和环境都是双赢。"
+      }
+    ]
+  },
+
+  // Science Section (homepage component)
+  scienceSection: {
+    badge: "科学小知识（很快）",
+    headline: "活性炭",
+    headlineHighlight: "的工作原理",
+    description: "空气清新剂只是在问题上喷香水。活性炭不同——它有数百万个微小隧道，可以物理捕获异味分子。氨气一旦进入，就再也出不来了。这就是为什么异味真正消失，而不是玩捉迷藏。",
+    learnMore: "深入了解科学原理",
+    features: [
+      {
+        title: "捕获，而非掩盖",
+        description: "每粒炭都有巨大的表面积，布满微观隧道。异味分子被困在里面——永久性的。"
+      },
+      {
+        title: "与净水器相同的技术",
+        description: "如果活性炭被信任用于净化饮用水，您的猫砂盆绝对在它的能力范围内。"
+      },
+      {
+        title: "由椰壳制成",
+        description: "天然、可持续、完全无毒。对好奇的猫咪、爱探索的幼儿，以及家里的每个人都安全。"
+      }
+    ],
+    floatingLabel: {
+      title: "微观视图",
+      description: "多孔结构永久捕获氨分子。"
+    },
+    naturalBadge: {
+      title: "100%天然",
+      subtitle: "无化学添加"
+    }
+  },
+
+  // Features Section (homepage component)
+  featuresSection: {
+    badge: "Purrify的不同之处",
+    title: "为什么猫咪和铲屎官都爱Purrify？",
+    paragraph1: "你爱你的猫，但说实话——猫砂盆的气味是个问题。你试过香味猫砂、空气清新剂和小苏打——但它们只是掩盖问题，而不是解决它。",
+    paragraph2: "想象一下回到家，闻到的是...什么都没有。只有清新的空气，没有残留的异味，客人来访时也不会尴尬。",
+    tagline: "这正是Purrify所做的...",
+    learnMore: "了解更多"
+  },
+
+  // Calculator Section (homepage component)
+  calculatorSection: {
+    title: "省钱的同时保持家居清新",
+    description: "Purrify可将猫砂寿命延长高达50%，在消除异味的同时为您省钱。使用下方的计算器看看您能节省多少。"
+  },
+
+  // Section Header highlights
+  sectionHeaderHighlights: [
+    "7天清新空气保证",
+    "60秒清新空气 - 简单如1-2-3"
+  ],
+
+  // Trust Bar
+  trustBar: {
+    happyCats: "只快乐猫咪",
+    reviews: "条评价"
+  },
+
   // Footer
   footer: {
     quickLinks: "快速链接",
@@ -1519,6 +1599,152 @@ export const zh = {
         submitFailed: "提交时出错。请重试或直接联系我们：wholesale@purrify.ca",
         defaultSuccess: "合作伙伴申请发送成功！我们将在72小时内联系您。"
       }
+    }
+  },
+
+  // Products Page - Direct Response Copywriting Style
+  productsPage: {
+    // Hero Section
+    hero: {
+      headline: "您的猫咪完美无瑕。气味？另当别论。",
+      subheadline: "与净化饮用水相同的活性炭。在分子层面捕获猫砂盆氨气。无香精。无掩盖。只有...清新空气。",
+      supporting: "选择您的尺寸。让您的鼻子来验证。"
+    },
+
+    // Quick Decision Helper
+    quickDecision: {
+      title: "不确定选哪个尺寸？让您的鼻子来判断。",
+      subtitle: "",
+      trial: {
+        question: "之前被虚假承诺坑过？",
+        answer: "怀疑者试用装 (12g)",
+        detail: "只需支付运费。7天让您的鼻子验证。有效或您只损失$4.76。"
+      },
+      regular: {
+        question: "家里有一两只猫？",
+        answer: "标准装 (120g)",
+        detail: "最受欢迎的尺寸。每次使用可保持7天以上清新。用量越多，清新越久。"
+      },
+      large: {
+        question: "多猫家庭？",
+        answer: "家庭装 (240g)",
+        detail: "每克最佳性价比。同样强效的配方，双倍的供应量。"
+      }
+    },
+
+    // Trust Signals
+    trustSignals: {
+      waterFilter: {
+        title: "与Brita滤芯相同的材料",
+        description: "符合NSF/ANSI 61标准。如果它能让自来水变得可饮用，想象一下它对氨气的效果。"
+      },
+      ingredients: {
+        title: "成分：椰壳。就这些。",
+        description: "没有让猫咪紧张的香精。没有需要担心的化学品。只有来自椰壳的纯净活性炭。"
+      },
+      science: {
+        title: "科学，不是香水",
+        description: "一克炭的表面积相当于一个足球场。那些微观隧道永久捕获异味分子。消失了。不是躲起来了。"
+      }
+    },
+
+    // Product Cards
+    products: {
+      trial: {
+        name: "怀疑者试用装",
+        subtitle: "12g · 一周的证明",
+        features: [
+          "足够7天清新空气",
+          "只需支付$4.76运费",
+          "每户限一份（抱歉，不能囤积免费产品）"
+        ],
+        bestFor: "曾被'神奇'产品坑过的猫主人。我们理解。先自己验证。"
+      },
+      regular: {
+        name: "标准装",
+        subtitle: "120g · 刚刚好的尺寸",
+        features: [
+          "每次使用7天以上清新",
+          "用量越多清新越久",
+          "适用于您猫咪已经认可的任何猫砂"
+        ],
+        bestFor: "一两只猫的家庭，'有客人要来'不再让您惊慌。"
+      },
+      large: {
+        name: "家庭装",
+        subtitle: "240g · 每克最佳性价比",
+        features: [
+          "每次使用7天以上清新",
+          "每克最佳性价比",
+          "灵活用量（用得越多，持续越久）"
+        ],
+        bestFor: "多猫家庭、寄养家庭，或已经数不清有几个猫砂盆的人。"
+      }
+    },
+
+    // What You Get Section
+    whatYouGet: {
+      title: "袋子里到底有什么",
+      subtitle: "（以及为什么您的猫永远不会注意到它）",
+      benefits: [
+        {
+          title: "净水器级活性炭",
+          description: "与Brita滤芯和医院空气净化系统使用的完全相同的材料。不是'类似'。是相同的。"
+        },
+        {
+          title: "零香精。零化学品。零担忧。",
+          description: "猫有2亿个嗅觉感受器。人工香精会让它们紧张。Purrify无形中工作。"
+        },
+        {
+          title: "粘土、水晶、结团、天然...我们不挑剔",
+          description: "适用于您猫咪训练您购买的任何猫砂。无需更换的烦恼。"
+        },
+        {
+          title: "打开。撒上。完成。",
+          description: "在表面撒薄薄一层。30秒的努力换来7天的效果。"
+        }
+      ]
+    },
+
+    // Did You Know Fact Box
+    didYouKnow: {
+      title: "您的猫不在乎的科学（但您的鼻子会感谢）",
+      body: "一克活性炭包含约3,000平方米的表面积。这比半个足球场还大——而它比一粒豌豆还小。\n\n里面有数百万个微观孔隙和隧道。当氨分子飘过时，它们会被永久捕获。\n\n这不是掩盖。这是分子捕获。与防毒面具、水处理厂和医院空气过滤系统使用的相同技术。现在就在您猫咪的猫砂上。"
+    },
+
+    // CTA Section
+    cta: {
+      title: "您的鼻子值得更好的。您的猫也是。",
+      subtitle: "在您喜爱的宠物店询问Purrify。如果他们还没有，他们应该有。",
+      secondary: "没找到您的店？告诉我们。我们会联系他们。"
+    },
+
+    // Related Pages
+    relatedPages: [
+      {
+        title: "科学原理（没有枯燥的部分）",
+        description: "了解我们活性炭技术背后的科学原理以及它为何如此有效。",
+        link: "/learn/how-it-works"
+      },
+      {
+        title: "1,000+位猫主人的评价",
+        description: "看看满意的客户对他们的Purrify体验怎么说。",
+        link: "/reviews"
+      },
+      {
+        title: "完整猫砂指南",
+        description: "了解不同的猫砂类型以及如何为您的猫选择最佳选项。",
+        link: "/learn/cat-litter-guide"
+      }
+    ],
+
+    // Testimonial Section
+    testimonial: {
+      quote: "我和两只猫住在一间小单身公寓里，猫砂盆的气味已经让人无法忍受。Purrify在24小时内完全消除了异味。起初我对价格持怀疑态度，但它比我试过的其他产品持续时间长得多。物超所值！",
+      author: "Sarah M.",
+      location: "蒙特利尔, QC",
+      details: "2只猫，小公寓",
+      headline: "我公寓的救星！"
     }
   },
 

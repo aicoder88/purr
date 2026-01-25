@@ -20,7 +20,7 @@ import {
   // Calendar,
   // DollarSign
 } from 'lucide-react';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 import { formatProductPrice } from '../../src/lib/pricing';
 
@@ -535,7 +535,7 @@ const ShippingPage: NextPage = () => {
         {/* Related Articles */}
         <section className="py-16 border-t border-gray-200 dark:border-gray-800">
           <Container>
-            <RelatedArticles currentPath="/support/shipping" />
+            <RelatedContent currentUrl="/support/shipping" />
           </Container>
         </section>
       </main>

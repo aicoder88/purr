@@ -10,7 +10,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { SITE_NAME, CONTACT_INFO, PHONE_MESSAGING, PHONE_NUMBER, SOCIAL_LINKS } from '@/lib/constants';
 import { useTranslation } from '@/lib/translation-context';
 import { generateJSONLD } from '@/lib/seo-utils';
-import { RelatedArticles } from '@/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
 
 type ResponseData = {
@@ -831,7 +831,7 @@ export default function ContactPage() {
         {/* Related Articles */}
         <section className="py-16 border-t border-gray-200 dark:border-gray-800">
           <Container>
-            <RelatedArticles currentPath="/contact" />
+            <RelatedContent currentUrl="/contact" />
           </Container>
         </section>
       </main>

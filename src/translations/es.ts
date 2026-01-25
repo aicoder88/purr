@@ -1343,6 +1343,152 @@ export const es: TranslationType = {
     ]
   },
 
+  // Products Page - Direct Response Copywriting Style
+  productsPage: {
+    // Hero Section
+    hero: {
+      headline: "Tus Gatos Son Perfectos. ¿El Olor? No Tanto.",
+      subheadline: "El mismo carbon activado que limpia tu agua potable. Atrapa el amoniaco de la caja de arena a nivel molecular. Sin perfumes. Sin disfraces. Solo... aire.",
+      supporting: "Elige tu tamano. Deja que tu nariz sea el juez."
+    },
+
+    // Quick Decision Helper
+    quickDecision: {
+      title: "¿No Estas Seguro de Que Tamano? Deja Que Tu Nariz Decida.",
+      subtitle: "",
+      trial: {
+        question: "¿Te han decepcionado falsas promesas antes?",
+        answer: "La Muestra del Esceptico (12g)",
+        detail: "Solo paga el envio. 7 dias para convencer a tu nariz. Funciona o solo pierdes $4.76."
+      },
+      regular: {
+        question: "¿Uno o dos gatos en casa?",
+        answer: "Tamano Regular (120g)",
+        detail: "El tamano mas popular. Dura 7+ dias por aplicacion. Usa mas, permanece fresco mas tiempo."
+      },
+      large: {
+        question: "¿Hogar con varios gatos?",
+        answer: "Tamano Familiar (240g)",
+        detail: "Mejor valor por gramo. Misma formula poderosa, doble de suministro."
+      }
+    },
+
+    // Trust Signals
+    trustSignals: {
+      waterFilter: {
+        title: "Lo Mismo que Tu Brita",
+        description: "Cumple con los estandares NSF/ANSI 61. Si es lo suficientemente bueno para hacer el agua potable, imagina lo que hace con el amoniaco."
+      },
+      ingredients: {
+        title: "Ingredientes: Cascaras de Coco. Eso Es Todo.",
+        description: "Sin fragancias que estresen a tu gato. Sin quimicos de que preocuparse. Solo carbon activado puro de cascaras de coco."
+      },
+      science: {
+        title: "Ciencia, No Perfume",
+        description: "Un gramo tiene el area de superficie de un campo de futbol. Esos tuneles microscopicos atrapan moleculas de olor permanentemente. Desaparecidas. No escondidas."
+      }
+    },
+
+    // Product Cards
+    products: {
+      trial: {
+        name: "La Bolsa del Esceptico",
+        subtitle: "12g · Una Semana de Prueba",
+        features: [
+          "Suficiente para 7 dias de aire fresco",
+          "Solo cubre el envio de $4.76",
+          "Uno por hogar (lo siento, no se puede acumular producto gratis)"
+        ],
+        bestFor: "Padres de gatos que han sido decepcionados por productos 'milagrosos' antes. Lo entendemos. Pruebalo tu mismo primero."
+      },
+      regular: {
+        name: "Tamano Regular",
+        subtitle: "120g · La Bolsa Perfecta",
+        features: [
+          "7+ dias de frescura por aplicacion",
+          "Usa mas para frescura extendida",
+          "Funciona con cualquier arena que tu gato ya aprueba"
+        ],
+        bestFor: "Hogares con uno o dos gatos donde 'vienen visitas' ya no causa panico."
+      },
+      large: {
+        name: "Tamano Familiar",
+        subtitle: "240g · Mejor Valor Por Gramo",
+        features: [
+          "7+ dias de frescura por aplicacion",
+          "Mejor valor por gramo",
+          "Dosificacion flexible (usa mas, dura mas)"
+        ],
+        bestFor: "Hogares multi-gatos, padres de acogida, o cualquiera que haya dejado de contar cajas de arena."
+      }
+    },
+
+    // What You Get Section
+    whatYouGet: {
+      title: "Que Hay Realmente en la Bolsa",
+      subtitle: "(Y Por Que Tu Gato Nunca lo Notara)",
+      benefits: [
+        {
+          title: "Carbon Activado Grado Filtro de Agua",
+          description: "Exactamente el mismo material usado en filtros Brita y purificacion de aire hospitalario. No 'similar a.' El mismo."
+        },
+        {
+          title: "Cero Fragancias. Cero Quimicos. Cero Preocupaciones.",
+          description: "Los gatos tienen 200 millones de receptores olfativos. Las fragancias artificiales los estresan. Purrify trabaja invisiblemente."
+        },
+        {
+          title: "Arcilla, Cristal, Aglomerante, Natural... No Juzgamos",
+          description: "Funciona con cualquier arena que tu gato te haya entrenado a comprar. Sin drama de cambios."
+        },
+        {
+          title: "Abre. Espolvorea. Listo.",
+          description: "Una capa fina encima. 30 segundos de esfuerzo para 7 dias de resultados."
+        }
+      ]
+    },
+
+    // Did You Know Fact Box
+    didYouKnow: {
+      title: "La Ciencia Que A Tu Gato No Le Importa (Pero Tu Nariz Agradecera)",
+      body: "Un solo gramo de carbon activado contiene aproximadamente 3,000 metros cuadrados de area de superficie. Eso es mas grande que medio campo de futbol — en algo mas pequeno que un guisante.\n\nAdentro hay millones de poros y tuneles microscopicos. Cuando las moleculas de amoniaco pasan flotando, quedan atrapadas permanentemente.\n\nEsto no es enmascarar. Es captura molecular. La misma tecnologia usada en mascaras de gas, plantas de tratamiento de agua y filtracion de aire hospitalario. Ahora sobre la arena de tu gato."
+    },
+
+    // CTA Section
+    cta: {
+      title: "Tu Nariz Merece Mejor. Tu Gato Tambien.",
+      subtitle: "Pregunta por Purrify en tu tienda de mascotas favorita. Si aun no lo tienen, deberian.",
+      secondary: "¿No ves tu tienda? Cuentanos. Nos comunicaremos y lo haremos realidad."
+    },
+
+    // Related Pages
+    relatedPages: [
+      {
+        title: "La Ciencia (Sin las Partes Aburridas)",
+        description: "Descubre la ciencia detras de nuestra tecnologia de carbon activado y por que es tan efectiva.",
+        link: "/learn/how-it-works"
+      },
+      {
+        title: "Lo Que Dijeron 1,000+ Padres de Gatos",
+        description: "Ve lo que los clientes satisfechos dicen sobre su experiencia con Purrify.",
+        link: "/reviews"
+      },
+      {
+        title: "La Guia Completa de Arena para Gatos",
+        description: "Aprende sobre diferentes tipos de arena y como elegir la mejor opcion para tu gato.",
+        link: "/learn/cat-litter-guide"
+      }
+    ],
+
+    // Testimonial Section
+    testimonial: {
+      quote: "Vivo en un pequeno estudio con dos gatos, y el olor de la caja de arena se estaba volviendo insoportable. Purrify elimino completamente el olor en 24 horas. Al principio era esceptica sobre el precio, pero dura mucho mas que otros productos que he probado. ¡Vale cada centavo!",
+      author: "Sarah M.",
+      location: "Montreal, QC",
+      details: "2 gatos, apartamento pequeno",
+      headline: "¡Revolucionario para mi apartamento!"
+    }
+  },
+
   // Privacy Policy
   privacyPolicy: {
     title: "Politica de Privacidad",

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 
 // Relevant images for cat litter odor control
 const heroImage = '/optimized/house-smells-cat-litter.webp';
@@ -394,7 +394,7 @@ export default function HouseSmellsLikeCatLitter() {
 
             {/* Related Articles */}
             <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600">
-              <RelatedArticles currentPath="/blog/house-smells-like-cat-litter-solutions" />
+              <RelatedContent currentUrl="/blog/house-smells-like-cat-litter-solutions" />
             </div>
           </div>
         </Container>

@@ -71,33 +71,10 @@ function formatReviewCount(count: number, locale: string = 'en'): string {
 }
 
 /**
- * useAggregateReview Hook
- * Generates aggregate review data and schema for a product
- *
- * @param productKey - Product identifier (trial, standard, family, familyAutoship)
- * @param locale - Current locale for display text (default: 'en')
- * @returns Aggregate review data, schema, and display text
- *
- * @example
- * ```tsx
- * const { data, schema, displayText } = useAggregateReview('standard');
- *
- * // Use in UI
- * <div>{displayText.full}</div>
- *
- * // Pass to useEnhancedSEO
- * const seo = useEnhancedSEO({
- *   schemaType: 'product',
- *   schemaData: {
- *     rating: {
- *       value: data.ratingValue,
- *       count: data.reviewCount,
- *     },
- *   },
- * });
- * ```
+ * Core function to generate aggregate review data
+ * (Non-hook helper function for internal use)
  */
-export function useAggregateReview(
+function getAggregateReviewData(
   productKey: string,
   locale: string = 'en'
 ): AggregateReviewResult {
@@ -139,8 +116,43 @@ export function useAggregateReview(
 }
 
 /**
+ * useAggregateReview Hook
+ * Generates aggregate review data and schema for a product
+ *
+ * @param productKey - Product identifier (trial, standard, family, familyAutoship)
+ * @param locale - Current locale for display text (default: 'en')
+ * @returns Aggregate review data, schema, and display text
+ *
+ * @example
+ * ```tsx
+ * const { data, schema, displayText } = useAggregateReview('standard');
+ *
+ * // Use in UI
+ * <div>{displayText.full}</div>
+ *
+ * // Pass to useEnhancedSEO
+ * const seo = useEnhancedSEO({
+ *   schemaType: 'product',
+ *   schemaData: {
+ *     rating: {
+ *       value: data.ratingValue,
+ *       count: data.reviewCount,
+ *     },
+ *   },
+ * });
+ * ```
+ */
+export function useAggregateReview(
+  productKey: string,
+  locale: string = 'en'
+): AggregateReviewResult {
+  return getAggregateReviewData(productKey, locale);
+}
+
+/**
  * Get review data for multiple products
  * Useful for comparison pages or product listings
+ * Note: Uses internal helper to avoid React hooks rules-of-hooks violation
  */
 export function useMultipleReviews(
   productKeys: string[],
@@ -149,7 +161,7 @@ export function useMultipleReviews(
   const results: Record<string, AggregateReviewResult> = {};
 
   for (const key of productKeys) {
-    results[key] = useAggregateReview(key, locale);
+    results[key] = getAggregateReviewData(key, locale);
   }
 
   return results;

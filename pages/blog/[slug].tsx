@@ -5,8 +5,9 @@ import { SITE_NAME, SITE_URL } from '../../src/lib/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { BlogPost } from '../../src/data/blog-posts';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 import { SocialFollowCTA } from '../../src/components/blog/SocialFollowCTA';
+import { TrialCTA } from '../../src/components/blog/TrialCTA';
 import { sampleBlogPosts, getBlogPostContent } from '../../src/data/blog-posts';
 import prisma from '../../src/lib/prisma';
 import fs from 'node:fs';
@@ -582,9 +583,12 @@ export default function BlogPost({ post }: { post: BlogPost }) {
               <SocialFollowCTA variant="card" />
             </div>
 
+            {/* Trial CTA */}
+            <TrialCTA variant="compact" />
+
             {/* Related Articles */}
             <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-600">
-              <RelatedArticles currentPath={post.link} />
+              <RelatedContent currentUrl={post.link} />
             </div>
           </div>
         </Container>

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 import { Check, X, FlaskConical, Timer, Shield, Leaf } from 'lucide-react';
 
 // Optimized images
@@ -218,7 +218,7 @@ export default function ActivatedCarbonVsBakingSoda() {
 
           {/* Related Articles */}
           <div className="py-12 border-t border-gray-100 dark:border-gray-800">
-            <RelatedArticles currentPath="/blog/activated-carbon-vs-baking-soda-comparison" />
+            <RelatedContent currentUrl="/blog/activated-carbon-vs-baking-soda-comparison" />
           </div>
         </Container>
       </div>

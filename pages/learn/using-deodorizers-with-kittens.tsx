@@ -1,7 +1,8 @@
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { Home, ChevronRight } from 'lucide-react';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
+import { HubSpokeNav } from '@/components/seo/HubSpokeNav';
 import Image from 'next/image';
 import { useTranslation } from '../../src/lib/translation-context';
 import { generateJSONLD } from '../../src/lib/seo-utils';
@@ -74,6 +75,11 @@ export default function UsingDeodorizersWithKittensLearn() {
             </nav>
           </Container>
         </section>
+
+        {/* Hub-Spoke Navigation */}
+        <Container className="py-6">
+          <HubSpokeNav clusterId="kittens-seniors" currentUrl="/learn/using-deodorizers-with-kittens" />
+        </Container>
 
         <article className="max-w-4xl mx-auto px-4 py-12">
         <header className="mb-12">
@@ -155,7 +161,7 @@ export default function UsingDeodorizersWithKittensLearn() {
         
           {/* Related Articles */}
           <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
-            <RelatedArticles currentPath="/learn/using-deodorizers-with-kittens" />
+            <RelatedContent currentUrl="/learn/using-deodorizers-with-kittens" />
           </div>
         </article>
       </main>

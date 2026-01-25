@@ -3,7 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Home, ChevronRight } from 'lucide-react';
 import { Container } from '../../src/components/ui/container';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
+import { HubSpokeNav } from '@/components/seo/HubSpokeNav';
 import { useTranslation } from '../../src/lib/translation-context';
 import { generateJSONLD } from '../../src/lib/seo-utils';
 import { formatProductPrice } from '../../src/lib/pricing';
@@ -159,6 +160,11 @@ export default function ActivatedCarbonBenefits() {
             Discover how activated carbon transforms your cat's litter box into an odor-free zone through proven scientific principles. Learn why this natural solution outperforms traditional deodorizers.
           </p>
         </header>
+
+        {/* Hub-Spoke Navigation */}
+        <div className="mb-12">
+          <HubSpokeNav clusterId="activated-carbon" currentUrl="/learn/activated-carbon-benefits" />
+        </div>
 
         <div className="prose prose-lg max-w-none">
           {/* Hero Image */}
@@ -446,7 +452,7 @@ export default function ActivatedCarbonBenefits() {
 
           {/* Related Articles */}
           <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
-            <RelatedArticles currentPath="/learn/activated-carbon-benefits" />
+            <RelatedContent currentUrl="/learn/activated-carbon-benefits" />
           </div>
         </div>
         </article>

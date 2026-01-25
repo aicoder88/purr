@@ -1,10 +1,15 @@
 /**
  * Related Content Component
  * Displays related articles/pages based on topic clusters for internal linking
+ * Enhanced with image support for visual engagement
  */
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { getRelatedPages, getClustersForPage } from '@/lib/seo/topic-clusters';
+import { getPageImage } from '@/lib/seo/page-images';
+import { Container } from '@/components/ui/container';
+import { useTranslation } from '@/lib/translation-context';
 
 interface RelatedContentProps {
   currentUrl: string;
@@ -12,11 +17,16 @@ interface RelatedContentProps {
   className?: string;
 }
 
+/**
+ * Main RelatedContent component with image cards
+ * Replaces static RelatedArticles with dynamic topic-cluster-based recommendations
+ */
 export function RelatedContent({
   currentUrl,
-  maxItems = 5,
+  maxItems = 3,
   className = '',
 }: RelatedContentProps) {
+  const { t } = useTranslation();
   const relatedPages = getRelatedPages(currentUrl, maxItems);
 
   if (relatedPages.length === 0) {
@@ -27,62 +37,70 @@ export function RelatedContent({
   const clusterName = clusters[0]?.name || 'Related Topics';
 
   return (
-    <section className={`related-content ${className}`}>
-      <div className="border-t border-gray-200 dark:border-gray-700 pt-8 mt-12">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6">
-          Related Articles
+    <section aria-label="Related articles" className={`py-12 ${className}`}>
+      <Container>
+        <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+          {t.relatedArticles?.title || 'Related Articles'}
         </h2>
-
-        <div className="space-y-4">
-          {relatedPages.map((page) => (
-            <Link
-              key={page.url}
-              href={page.url}
-              className="block p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 transition-colors group"
-            >
-              <div className="flex items-start justify-between">
-                <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                    {page.title}
-                  </h3>
-                  {page.type === 'hub' && (
-                    <span className="inline-block mt-2 text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded">
-                      {clusterName} Hub
-                    </span>
-                  )}
-                </div>
-                <svg
-                  className="w-5 h-5 text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex-shrink-0 ml-3"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {relatedPages.map((page) => {
+            const pageImage = getPageImage(page.url);
+            return (
+              <article
+                key={page.url}
+                className="group rounded-xl overflow-hidden border border-[#E0EFC7] dark:border-gray-700 bg-white dark:bg-gray-800/80 shadow-sm hover:shadow-md transition-all"
+              >
+                <Link
+                  href={page.url}
+                  className="block focus:outline-none focus:ring-2 focus:ring-[#03E46A]"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </div>
-            </Link>
-          ))}
+                  <div className="relative aspect-video overflow-hidden">
+                    <Image
+                      src={pageImage.image}
+                      alt={pageImage.alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {page.type === 'hub' && (
+                      <div className="absolute top-2 right-2">
+                        <span className="inline-block text-xs font-medium text-white dark:text-gray-100 bg-blue-600 dark:bg-blue-500 px-2 py-1 rounded shadow-sm">
+                          {clusterName} Hub
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-heading text-lg font-semibold text-[#5B2EFF] dark:text-[#3694FF] group-hover:text-[#5B2EFF]/80 dark:group-hover:text-[#3694FF]/80">
+                      {page.title}
+                    </h3>
+                    <p className="text-sm text-[#03E46A] dark:text-[#3694FF] mt-2">
+                      {t.relatedArticles?.readMore || 'Read more'} →
+                    </p>
+                  </div>
+                </Link>
+              </article>
+            );
+          })}
         </div>
-
         {clusters.length > 0 && (
-          <div className="mt-6 text-sm text-gray-600 dark:text-gray-400">
+          <div className="mt-6 text-sm text-gray-600 dark:text-gray-400 text-center">
             <p>
-              Part of our <strong className="text-gray-900 dark:text-gray-100">{clusterName}</strong> guide series
+              Part of our{' '}
+              <strong className="text-gray-900 dark:text-gray-100">
+                {clusterName}
+              </strong>{' '}
+              guide series
             </p>
           </div>
         )}
-      </div>
+      </Container>
     </section>
   );
 }
 
 /**
- * Compact version for sidebars
+ * Compact list version without images for sidebars
  */
 export function RelatedContentSidebar({
   currentUrl,
@@ -155,3 +173,81 @@ export function RelatedContentInline({
     </aside>
   );
 }
+
+/**
+ * Simple list version (matches original RelatedContent behavior)
+ */
+export function RelatedContentList({
+  currentUrl,
+  maxItems = 5,
+  className = '',
+}: RelatedContentProps) {
+  const relatedPages = getRelatedPages(currentUrl, maxItems);
+
+  if (relatedPages.length === 0) {
+    return null;
+  }
+
+  const clusters = getClustersForPage(currentUrl);
+  const clusterName = clusters[0]?.name || 'Related Topics';
+
+  return (
+    <section className={`related-content ${className}`}>
+      <div className="border-t border-gray-200 dark:border-gray-700 pt-8 mt-12">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6">
+          Related Articles
+        </h2>
+
+        <div className="space-y-4">
+          {relatedPages.map((page) => (
+            <Link
+              key={page.url}
+              href={page.url}
+              className="block p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 transition-colors group"
+            >
+              <div className="flex items-start justify-between">
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    {page.title}
+                  </h3>
+                  {page.type === 'hub' && (
+                    <span className="inline-block mt-2 text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded">
+                      {clusterName} Hub
+                    </span>
+                  )}
+                </div>
+                <svg
+                  className="w-5 h-5 text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex-shrink-0 ml-3"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {clusters.length > 0 && (
+          <div className="mt-6 text-sm text-gray-600 dark:text-gray-400">
+            <p>
+              Part of our{' '}
+              <strong className="text-gray-900 dark:text-gray-100">
+                {clusterName}
+              </strong>{' '}
+              guide series
+            </p>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+export default RelatedContent;

@@ -8,7 +8,7 @@ import { getSEOMeta } from '../../src/translations/seo-meta';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, AlertCircle, TrendingUp, MapPin, Store } from 'lucide-react';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 import { ProductFAQ } from '../../src/components/product/ProductFAQ';
 import { generateFAQSchema } from '../../src/lib/seo-utils';
 import { getProductPrice, formatProductPrice } from '../../src/lib/pricing';
@@ -628,7 +628,7 @@ export default function TrialSizePage({ priceValidUntil }: TrialSizePageProps) {
         {/* Related Articles */}
         <section className="py-16 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50">
           <Container>
-            <RelatedArticles currentPath="/products/trial-size" />
+            <RelatedContent currentUrl="/products/trial-size" />
           </Container>
         </section>
       </main>

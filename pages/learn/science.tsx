@@ -8,7 +8,7 @@ import { generateJSONLD } from '../../src/lib/seo-utils';
 import Link from 'next/link';
 import { ArrowLeft, Atom, Zap, Shield, Microscope, FlaskConical, BarChart3, Home, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
-import { RelatedArticles } from '../../src/components/blog/RelatedArticles';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
 export default function SciencePage() {
@@ -670,7 +670,7 @@ export default function SciencePage() {
         {/* Related Articles */}
         <section className="py-16 border-t border-gray-200 dark:border-gray-800">
           <Container>
-            <RelatedArticles currentPath="/learn/science" />
+            <RelatedContent currentUrl="/learn/science" />
           </Container>
         </section>
 
