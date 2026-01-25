@@ -109,7 +109,7 @@ export const en = {
       description: "Ideal for single-cat homes.\nLasts about a month of fresh litter.\nOur most popular size — and most reordered."
     },
     "purrify-120g": {
-      name: "The Family Size",
+      name: "The Goldilocks Bag",
       description: "For multi-cat households.\nBuilt for the extra ammonia output.\nBecause two cats don't smell twice as bad — they smell five times as bad."
     }
   },
@@ -1155,7 +1155,7 @@ export const en = {
       {
         id: "regular",
         name: "Regular Size",
-        subtitle: "120g · The Goldilocks Bag",
+        subtitle: "120g · Regular Size",
         duration: "7+ days per application",
         cats: "1-2 cats",
         features: ["Use more for extended freshness", "Top-up anytime", "Works with any litter"],
@@ -1321,7 +1321,7 @@ export const en = {
       },
       regular: {
         name: "Regular Size",
-        subtitle: "120g · The Goldilocks Bag",
+        subtitle: "120g · Regular Size",
         features: [
           "7+ days freshness per application",
           "Use more for extended freshness",

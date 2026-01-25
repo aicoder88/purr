@@ -111,7 +111,7 @@ async function getProductData(productId: string) {
     },
     '120g': {
       id: '120g',
-      name: 'Purrify 120g Family Size', 
+      name: 'Purrify 120g The Goldilocks Bag',
       price: getProductPrice('family'),
       weight: 0.12,
       sku: 'PURR-120G',

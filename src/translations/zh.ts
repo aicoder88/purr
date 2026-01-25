@@ -111,7 +111,7 @@ export const zh = {
       description: "单猫家庭理想选择\n我们最受欢迎的单猫家庭规格。\n一个月的清新！"
     },
     "purrify-120g": {
-      name: "常规装",
+      name: "黄金尺寸",
       description: "双猫家庭完美选择\n多猫家庭的双倍功效。\n最大程度的异味控制。"
     }
   },
@@ -1194,7 +1194,7 @@ export const zh = {
       {
         id: "regular",
         name: "常规装",
-        subtitle: "120g 套装 - 最受欢迎",
+        subtitle: "120g · 标准装",
         duration: "3个月",
         cats: "1-2只猫",
         features: ["120g活性炭", "订阅省更多", "免费配送"],
@@ -1662,7 +1662,7 @@ export const zh = {
       },
       regular: {
         name: "标准装",
-        subtitle: "120g · 刚刚好的尺寸",
+        subtitle: "120g · 标准装",
         features: [
           "每次使用7天以上清新",
           "用量越多清新越久",

@@ -9,23 +9,21 @@ import { useCurrency } from '../../src/lib/currency-context';
 import {
   CheckCircle,
   Package,
-  Clock,
-  Users,
   ChevronRight,
   Home,
-  Star,
-  Award,
   Zap,
   Shield,
   Droplets,
   Leaf,
-  ArrowRight,
   Cat,
   Sparkles,
   MapPin,
   Quote,
+  Star,
+  Users,
 } from 'lucide-react';
 import { RelatedContent } from '@/components/seo/RelatedContent';
+import { EnhancedProductComparison } from '@/components/sections/enhanced-product-comparison';
 import { buildAvailabilityUrl, getPriceValidityDate, generateWebsiteSchema } from '../../src/lib/seo-utils';
 import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../src/lib/pricing';
@@ -96,10 +94,10 @@ const ProductsPage: NextPage = () => {
       subtitleFr: '12g · Une semaine de preuve'
     },
     regular: {
-      name: 'Regular Size',
-      nameFr: 'Format Régulier',
-      subtitle: '120g · The Goldilocks Bag',
-      subtitleFr: '120g · Le format idéal'
+      name: 'The Goldilocks Bag',
+      nameFr: 'Le Format Parfait',
+      subtitle: '120g · Regular Size',
+      subtitleFr: '120g · Format Standard'
     },
     large: {
       name: 'Family Size',
@@ -561,185 +559,8 @@ const ProductsPage: NextPage = () => {
           </Container>
         </section>
 
-        {/* Product Comparison Cards */}
-        <section className="py-16 cv-auto cis-720">
-          <Container>
-            <div className="text-center mb-12">
-              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-                {t.productComparison.title}
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                {locale === 'fr'
-                  ? "Tous les formats contiennent exactement la même formule. Choisissez simplement la quantité dont vous avez besoin."
-                  : "All sizes contain the exact same formula. Just pick how much you need."}
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {products.map((product) => (
-                <div
-                  key={product.id}
-                  className={`relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl border-2 ${product.recommended
-                    ? 'border-brand-red dark:border-red-500'
-                    : 'border-brand-light dark:border-gray-700'
-                    } overflow-hidden transform hover:scale-105 transition-transform duration-300`}
-                >
-                  {/* Popular Badge */}
-                  {product.popular && (
-                    <div className="absolute top-4 right-4 bg-green-500 dark:bg-green-600 text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold flex items-center">
-                      <Star className="w-4 h-4 mr-1" />
-                      {t.productComparison.popular}
-                    </div>
-                  )}
-
-                  {/* Recommended Badge */}
-                  {product.recommended && (
-                    <div className="absolute top-4 right-4 bg-brand-red text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold flex items-center">
-                      <Award className="w-4 h-4 mr-1" />
-                      {t.productComparison.bestValue}
-                    </div>
-                  )}
-
-                  {/* Header with Image */}
-                  <div className={`bg-gradient-to-r ${product.color} p-6 text-white dark:text-gray-100`}>
-                    <div className="flex items-center gap-4">
-                      {/* Product Image */}
-                      <div className={`relative flex-shrink-0 ${product.imageSize === 'sm' ? 'w-20 h-24' :
-                        product.imageSize === 'md' ? 'w-24 h-28' :
-                          'w-28 h-32'
-                        }`}>
-                        <Image
-                          src={product.image}
-                          alt={product.displayName}
-                          fill
-                          className="object-contain drop-shadow-lg"
-                          sizes="(max-width: 768px) 80px, 112px"
-                        />
-                      </div>
-                      {/* Product Info */}
-                      <div className="flex-1">
-                        <h3 className="font-heading text-2xl font-bold mb-1">{product.displayName}</h3>
-                        <p className="text-sm opacity-80 mb-3">{product.displaySubtitle}</p>
-                        {/* B2C: HIDDEN PRICING DISPLAY
-                        <div className="flex items-baseline">
-                          <span className="text-3xl font-bold">{product.price}</span>
-                          {product.originalPrice && (
-                            <span className="ml-2 text-sm line-through opacity-70">{product.originalPrice}</span>
-                          )}
-                        </div>
-                        {product.savings && (
-                          <p className="text-sm mt-1 opacity-90">Save {product.savings}</p>
-                        )}
-                        */}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6">
-                    {/* Quick Stats */}
-                    <div className="grid grid-cols-2 gap-4 mb-6">
-                      <div className="text-center">
-                        <Clock className="w-6 h-6 mx-auto mb-2 text-brand-purple" />
-                        <p className="text-sm text-gray-600 dark:text-gray-300">{t.productComparison.duration}</p>
-                        <p className="font-semibold text-gray-900 dark:text-gray-100">{product.duration}</p>
-                      </div>
-                      <div className="text-center">
-                        <Users className="w-6 h-6 mx-auto mb-2 text-brand-purple" />
-                        <p className="text-sm text-gray-600 dark:text-gray-300">{t.productComparison.idealFor}</p>
-                        <p className="font-semibold text-gray-900 dark:text-gray-100">{product.cats}</p>
-                      </div>
-                    </div>
-
-                    {/* Features */}
-                    <div className="mb-6">
-                      <h4 className="font-heading font-bold mb-3 text-gray-900 dark:text-gray-100">{t.productComparison.features}:</h4>
-                      <ul className="space-y-2">
-                        {product.features.map((feature, index) => (
-                          <li key={index} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
-                            <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400 mr-2 flex-shrink-0" />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Best For */}
-                    <div className="mb-6 p-4 bg-brand-light/30 dark:bg-gray-700/30 rounded-lg">
-                      <p className="text-sm text-gray-600 dark:text-gray-300">
-                        <span className="font-semibold">{t.productComparison.idealFor}:</span> {product.bestFor}
-                      </p>
-                    </div>
-
-                    {/* B2C: ORIGINAL CTA BUTTONS
-                    {product.ctaLink.startsWith('http') ? (
-                      <a href={product.ctaLink} target="_blank" rel="noopener noreferrer" className="block w-full">
-                        <Button
-                          size="lg"
-                          className={`w-full ${product.recommended
-                            ? 'bg-brand-red hover:bg-brand-red/90 text-white'
-                            : 'bg-brand-purple hover:bg-brand-purple/90 text-white'
-                            }`}
-                        >
-                          {product.cta}
-                          <ChevronRight className="w-5 h-5 ml-2" />
-                        </Button>
-                        <p className="mt-3 text-[10px] text-center text-gray-500 dark:text-gray-400 font-bold italic uppercase tracking-tighter">
-                          * {t.pricing?.stripeShippingNote}
-                        </p>
-                      </a>
-                    ) : (
-                      <Link href={`${locale === 'fr' ? '/fr' : ''}${product.ctaLink}`}>
-                        <Button
-                          size="lg"
-                          className={`w-full ${product.recommended
-                            ? 'bg-brand-red hover:bg-brand-red/90 text-white'
-                            : 'bg-brand-purple hover:bg-brand-purple/90 text-white'
-                            }`}
-                        >
-                          {product.cta}
-                          <ChevronRight className="w-5 h-5 ml-2" />
-                        </Button>
-                      </Link>
-                    )}
-                    */}
-                    {/* CTA Buttons */}
-                    {product.id === 'trial' && product.ctaLink?.startsWith('http') ? (
-                      // Trial product: Direct Stripe checkout with compelling CTA
-                      <div className="space-y-3">
-                        <a href={product.ctaLink} target="_blank" rel="noopener noreferrer" className="block w-full">
-                          <Button
-                            size="lg"
-                            className="w-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white dark:text-white font-bold shadow-lg hover:shadow-xl transition-all"
-                          >
-                            <Sparkles className="w-5 h-5 mr-2" />
-                            {locale === 'fr' ? "Envoyer Mon Essai GRATUIT" : "Send My FREE Trial"}
-                            <ChevronRight className="w-5 h-5 ml-2" />
-                          </Button>
-                        </a>
-                        <p className="text-xs text-center text-gray-500 dark:text-gray-400 italic">
-                          {locale === 'fr' ? `Juste ${product.price} pour l'expédition partout au Canada` : `Just ${product.price} shipping anywhere in Canada`}
-                        </p>
-                      </div>
-                    ) : (
-                      // Other products: Find a Store (B2B)
-                      <Link href={`${locale === 'fr' ? '/fr' : ''}/stores`}>
-                        <Button
-                          size="lg"
-                          className="w-full bg-brand-purple hover:bg-brand-purple/90 text-white dark:text-gray-100"
-                        >
-                          <MapPin className="w-5 h-5 mr-2" />
-                          {t.nav?.findStore || "Get Purrify Near You"}
-                          <ChevronRight className="w-5 h-5 ml-2" />
-                        </Button>
-                      </Link>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Container>
-        </section>
+        {/* Product Comparison Cards - Using Shared Component */}
+        <EnhancedProductComparison />
 
         {/* What You Get Section */}
         <section className="py-16 bg-white dark:bg-gray-800">
