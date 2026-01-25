@@ -179,10 +179,6 @@ export function Header() {
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/products`,
         },
         {
-          label: t.nav?.viewAllProducts || "",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/#products`,
-        },
-        {
           label: t.nav?.shipsToUSA || "",
           href: "/us",
         },
