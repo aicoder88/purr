@@ -156,7 +156,7 @@ export function EnhancedProductComparison() {
               <div
                 key={product.id}
                 className={cn(
-                  "relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl border-2 overflow-hidden transform hover:scale-105 transition-transform duration-300",
+                  "relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl border-2 overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col h-full",
                   isRecommended
                     ? "border-brand-red dark:border-red-500"
                     : "border-brand-light dark:border-gray-700"
@@ -179,7 +179,7 @@ export function EnhancedProductComparison() {
                 )}
 
                 {/* Header with Image */}
-                <div className={cn("bg-gradient-to-r p-6 text-white dark:text-gray-100", product.color)}>
+                <div className={cn("bg-gradient-to-r p-6 text-white dark:text-gray-100 min-h-[160px]", product.color)}>
                   <div className="flex items-center gap-4">
                     {/* Product Image */}
                     <div className={cn(
@@ -205,7 +205,7 @@ export function EnhancedProductComparison() {
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
+                <div className="p-6 flex-1 flex flex-col">
                   {/* Quick Stats */}
                   <div className="grid grid-cols-2 gap-4 mb-6">
                     <div className="text-center">
@@ -234,43 +234,51 @@ export function EnhancedProductComparison() {
                   </div>
 
                   {/* Best For */}
-                  <div className="mb-6 p-4 bg-brand-light/30 dark:bg-gray-700/30 rounded-lg">
+                  <div className="mb-6 p-4 bg-brand-light/30 dark:bg-gray-700/30 rounded-lg min-h-[88px]">
                     <p className="text-sm text-gray-600 dark:text-gray-300">
                       <span className="font-semibold">{t.productComparison?.idealFor || "Ideal For"}:</span> {product.bestFor}
                     </p>
                   </div>
 
                   {/* CTA Button */}
-                  {product.ctaType === 'stripe' && product.stripeLink ? (
-                    // Trial product: Direct Stripe checkout with compelling CTA
-                    <div className="space-y-3">
-                      <a href={product.stripeLink} target="_blank" rel="noopener noreferrer" className="block w-full">
-                        <Button
-                          size="lg"
-                          className="w-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white dark:text-white font-bold shadow-lg hover:shadow-xl transition-all"
-                        >
-                          <Sparkles className="w-5 h-5 mr-2" />
-                          {locale === 'fr' ? "Envoyer Mon Essai GRATUIT" : "Send My FREE Trial"}
-                          <ChevronRight className="w-5 h-5 ml-2" />
-                        </Button>
-                      </a>
-                      <p className="text-xs text-center text-gray-500 dark:text-gray-400 italic">
-                        {locale === 'fr' ? `Juste ${trialPrice} pour l'expédition partout au Canada` : `Just ${trialPrice} shipping anywhere in Canada`}
-                      </p>
-                    </div>
-                  ) : (
-                    // Other products: Find a Store (B2B)
-                    <Link href={`${locale === 'fr' ? '/fr' : ''}/stores`}>
-                      <Button
-                        size="lg"
-                        className="w-full bg-brand-purple hover:bg-brand-purple/90 text-white dark:text-gray-100"
-                      >
-                        <MapPin className="w-5 h-5 mr-2" />
-                        {t.nav?.findStore || "Get Purrify Near You"}
-                        <ChevronRight className="w-5 h-5 ml-2" />
-                      </Button>
-                    </Link>
-                  )}
+                  <div className="mt-auto">
+                    {product.ctaType === 'stripe' && product.stripeLink ? (
+                      // Trial product: Direct Stripe checkout with compelling CTA
+                      <div className="space-y-3">
+                        <a href={product.stripeLink} target="_blank" rel="noopener noreferrer" className="block w-full">
+                          <Button
+                            size="lg"
+                            className="w-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white dark:text-white font-bold shadow-lg hover:shadow-xl transition-all"
+                          >
+                            <Sparkles className="w-5 h-5 mr-2" />
+                            {locale === 'fr' ? "Envoyer Mon Essai GRATUIT" : "Send My FREE Trial"}
+                            <ChevronRight className="w-5 h-5 ml-2" />
+                          </Button>
+                        </a>
+                        <p className="text-xs text-center text-gray-500 dark:text-gray-400 italic">
+                          {locale === 'fr' ? `Juste ${trialPrice} pour l'expédition partout au Canada` : `Just ${trialPrice} shipping anywhere in Canada`}
+                        </p>
+                      </div>
+                    ) : (
+                      // Other products: Find a Store (B2B)
+                      <div className="space-y-3">
+                        <Link href={`${locale === 'fr' ? '/fr' : ''}/stores`}>
+                          <Button
+                            size="lg"
+                            className="w-full bg-brand-purple hover:bg-brand-purple/90 text-white dark:text-gray-100"
+                          >
+                            <MapPin className="w-5 h-5 mr-2" />
+                            {t.nav?.findStore || "Get Purrify Near You"}
+                            <ChevronRight className="w-5 h-5 ml-2" />
+                          </Button>
+                        </Link>
+                        {/* Invisible placeholder to match trial card's shipping text height */}
+                        <p className="text-xs text-center text-gray-500 dark:text-gray-400 invisible" aria-hidden="true">
+                          &nbsp;
+                        </p>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             );
