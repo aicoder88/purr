@@ -140,7 +140,7 @@ export function EnhancedProductComparison() {
     {
       id: 'purrify-120g',
       name: t.products?.['purrify-120g']?.name || 'Regular Size',
-      subtitle: '120g · The Goldilocks Bag',
+      subtitle: '120g · Regular Size',
       badge: 'MOST POPULAR',
       badgeColor: 'bg-deep-coral',
       description: 'Not too little, not too much—this is the size most customers reorder. Lasts 7+ days per application for 1-2 cats. Want it to last longer? Use more. It\'s your litter box, your rules. The perfect amount without waste.',
