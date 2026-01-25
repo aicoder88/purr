@@ -511,7 +511,7 @@ export default function ${city.slug.replaceAll(/-/g, '')}Page({ city }: CityPage
                   '@type': 'Offer',
                   itemOffered: {
                     '@type': 'Product',
-                    name: 'Purrify 120g Family Size',
+                    name: 'Purrify 120g The Goldilocks Bag',
                     description: 'Ideal for ${city.name} households with multiple cats',
                   },
                   price: '39.99',

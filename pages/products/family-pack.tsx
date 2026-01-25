@@ -85,7 +85,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
   // Use optimized SEO meta content
   const seoMeta = getSEOMeta(locale as 'en' | 'fr' | 'zh' | 'es', 'products', 'family');
   const pageTitle = seoMeta?.title || `${SITE_NAME} Family Pack - Best Cat Litter Freshener for Multi-Cat Homes`;
-  const pageDescription = seoMeta?.description || "Best value cat litter freshener for multi-cat households. 120g activated charcoal additive provides 2 months of odor control. Natural coconut shell formula works with any litter. Ships to USA & Canada.";
+  const pageDescription = seoMeta?.description || "Best value cat litter freshener for multi-cat households. 240g activated charcoal additive provides 2 months of odor control. Natural coconut shell formula works with any litter. Ships to USA & Canada.";
 
   const trialPrice = formatProductPrice('trial', currency, locale);
   const standardPrice = formatProductPrice('standard', currency, locale);
@@ -320,7 +320,7 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
         <section className="py-12 bg-gray-50 dark:bg-gray-900/30">
           <Container>
             <div className="max-w-3xl mx-auto">
-              <ProductFAQ productType="family" productName="Regular Size (120g)" />
+              <ProductFAQ productType="family" productName="Family Size (240g)" />
             </div>
           </Container>
         </section>

@@ -109,7 +109,7 @@ export const en = {
       description: "Ideal for single-cat homes.\nLasts about a month of fresh litter.\nOur most popular size — and most reordered."
     },
     "purrify-120g": {
-      name: "The Family Size",
+      name: "The Goldilocks Bag",
       description: "For multi-cat households.\nBuilt for the extra ammonia output.\nBecause two cats don't smell twice as bad — they smell five times as bad."
     }
   },

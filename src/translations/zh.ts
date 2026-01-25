@@ -111,7 +111,7 @@ export const zh = {
       description: "单猫家庭理想选择\n我们最受欢迎的单猫家庭规格。\n一个月的清新！"
     },
     "purrify-120g": {
-      name: "常规装",
+      name: "黄金尺寸",
       description: "双猫家庭完美选择\n多猫家庭的双倍功效。\n最大程度的异味控制。"
     }
   },

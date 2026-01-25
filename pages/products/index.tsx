@@ -96,8 +96,8 @@ const ProductsPage: NextPage = () => {
       subtitleFr: '12g · Une semaine de preuve'
     },
     regular: {
-      name: 'Regular Size',
-      nameFr: 'Format Régulier',
+      name: 'The Goldilocks Bag',
+      nameFr: 'Le Format Parfait',
       subtitle: '120g · Regular Size',
       subtitleFr: '120g · Format Standard'
     },

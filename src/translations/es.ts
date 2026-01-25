@@ -112,7 +112,7 @@ export const es: TranslationType = {
       description: "El Mejor Desodorizante de Arena para Gatos Solos\nEl mas popular! Nuestro aditivo de carbon activado te da un mes sin olores. Deja de temer la limpieza de la caja."
     },
     "purrify-120g": {
-      name: "Regular",
+      name: "El Tamaño Perfecto",
       description: "Desodorizante de Arena para Hogares Multi-Gatos\nPara hogares con 2+ gatos. Nuestro aditivo de carbon elimina hasta el olor a amoniaco mas fuerte. Tus invitados quedaran asombrados."
     }
   },
