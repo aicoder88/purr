@@ -462,7 +462,7 @@ export function Header() {
                   <UserIcon className="w-3.5 h-3.5 text-white dark:text-gray-100" />
                 </div>
                 <span className="text-sm font-medium text-brand-green-dark dark:text-purple-300">
-                  {session.user.email?.split('@')[0] || 'User'}
+                  {session?.user?.email?.split('@')[0] || 'User'}
                 </span>
               </div>
             )}
@@ -595,7 +595,7 @@ export function Header() {
                         </div>
                         <div>
                           <span className="text-sm font-semibold text-brand-green-dark dark:text-purple-300 block">
-                            {session.user.email?.split('@')[0] || 'User'}
+                            {session?.user?.email?.split('@')[0] || 'User'}
                           </span>
                           <span className="text-xs text-gray-500 dark:text-gray-400">{t.nav?.signedIn || ""}</span>
                         </div>

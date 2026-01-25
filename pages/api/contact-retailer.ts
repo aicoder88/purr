@@ -6,7 +6,11 @@ const retailerContactSchema = z.object({
   businessName: z.string().min(2).max(100).trim(),
   contactName: z.string().min(2).max(100).trim(),
   email: z.string().email().trim().toLowerCase(),
-  phone: z.string().min(10).max(20).trim().optional(),
+  phone: z.string().max(20).trim().optional()
+    .transform(val => val === '' ? undefined : val)
+    .refine(val => val === undefined || val.length >= 10, {
+      message: 'Phone number must be at least 10 characters'
+    }),
   position: z.string().min(2).max(100).trim().optional(),
   businessType: z.string().min(2).max(100).trim().optional(),
   locations: z.string().max(50).trim().optional(),
