@@ -19,7 +19,7 @@ describe('Translation Completeness', () => {
   beforeAll(() => {
     // Discover translation files
     translationFiles = fs.readdirSync(TRANSLATION_DIR)
-      .filter(file => file.endsWith('.ts') && !['types.ts', 'index.ts', 'common.ts'].includes(file))
+      .filter(file => file.endsWith('.ts') && !['types.ts', 'index.ts', 'common.ts', 'seo-meta.ts'].includes(file))
       .map(file => ({
         locale: path.basename(file, '.ts'),
         path: path.join(TRANSLATION_DIR, file)
@@ -301,6 +301,11 @@ describe('Translation Completeness', () => {
  */
 
 const moduleCache = new Map();
+
+// Clear cache before each test run
+beforeAll(() => {
+  moduleCache.clear();
+});
 
 function extractTranslationStructure(filePath) {
   try {

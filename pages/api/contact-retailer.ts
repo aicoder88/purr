@@ -1,5 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { z } from 'zod';
+import { Resend } from 'resend';
+import { RESEND_CONFIG, isResendConfigured } from '../../src/lib/resend-config';
 
 // Define validation schema for retailer contact form
 const retailerContactSchema = z.object({
@@ -76,24 +78,91 @@ export default async function handler(
 
     const data = validationResult.data;
 
-    // TODO: Configure email service (SendGrid, AWS SES, or Mailgun)
-    // For now, log the retailer contact submission
-    console.log('Retailer contact form submission:', {
+    console.log('Processing retailer contact form submission:', {
       businessName: data.businessName,
       contactName: data.contactName,
       email: data.email,
-      phone: data.phone,
-      businessType: data.businessType,
-      locations: data.locations,
       timestamp: new Date().toISOString(),
     });
 
-    // In production, you would send an email here:
-    // await sendEmail({
-    //   to: process.env.RETAILER_CONTACT_EMAIL,
-    //   subject: `Retailer Partnership Application from ${data.businessName}`,
-    //   body: formatRetailerEmail(data)
-    // });
+    // Send email via Resend
+    if (isResendConfigured()) {
+      const resend = new Resend(RESEND_CONFIG.apiKey);
+
+      const emailHtml = `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;">
+          <h2 style="color: #5B2EFF; margin-bottom: 20px;">New Retailer Partnership Application</h2>
+
+          <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+            <h3 style="margin-top: 0; color: #333;">Business Information</h3>
+            <p style="margin: 5px 0;"><strong>Business Name:</strong> ${data.businessName}</p>
+            <p style="margin: 5px 0;"><strong>Contact Name:</strong> ${data.contactName}</p>
+            <p style="margin: 5px 0;"><strong>Email:</strong> <a href="mailto:${data.email}" style="color: #5B2EFF;">${data.email}</a></p>
+            ${data.phone ? `<p style="margin: 5px 0;"><strong>Phone:</strong> ${data.phone}</p>` : ''}
+            ${data.position ? `<p style="margin: 5px 0;"><strong>Position:</strong> ${data.position}</p>` : ''}
+            ${data.businessType ? `<p style="margin: 5px 0;"><strong>Business Type:</strong> ${data.businessType}</p>` : ''}
+            ${data.locations ? `<p style="margin: 5px 0;"><strong>Locations:</strong> ${data.locations}</p>` : ''}
+          </div>
+
+          ${data.currentProducts ? `
+          <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+            <h3 style="margin-top: 0; color: #333;">Current Products</h3>
+            <p style="white-space: pre-wrap;">${data.currentProducts}</p>
+          </div>
+          ` : ''}
+
+          <div style="background-color: #ffffff; padding: 20px; border: 1px solid #e0e0e0; border-radius: 5px;">
+            <h3 style="color: #333; margin-top: 0;">Message:</h3>
+            <p style="color: #555; line-height: 1.6; white-space: pre-wrap;">${data.message}</p>
+          </div>
+
+          <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e0e0e0; text-align: center; color: #999; font-size: 12px;">
+            <p>Received: ${new Date().toLocaleString()}</p>
+            <p>This email was sent from the Purrify Retailer Contact Form</p>
+          </div>
+        </div>
+      `;
+
+      const { error } = await resend.emails.send({
+        from: `${RESEND_CONFIG.fromName} <${RESEND_CONFIG.fromEmail}>`,
+        to: RESEND_CONFIG.toEmail,
+        replyTo: data.email,
+        subject: `Retailer Partnership Application: ${data.businessName}`,
+        html: emailHtml,
+        text: `
+New Retailer Partnership Application
+
+Business Information:
+- Business Name: ${data.businessName}
+- Contact Name: ${data.contactName}
+- Email: ${data.email}
+${data.phone ? `- Phone: ${data.phone}` : ''}
+${data.position ? `- Position: ${data.position}` : ''}
+${data.businessType ? `- Business Type: ${data.businessType}` : ''}
+${data.locations ? `- Locations: ${data.locations}` : ''}
+
+${data.currentProducts ? `Current Products:\n${data.currentProducts}\n` : ''}
+
+Message:
+${data.message}
+
+---
+Received: ${new Date().toLocaleString()}
+        `.trim(),
+      });
+
+      if (error) {
+        console.error('Failed to send retailer contact email:', error);
+        return res.status(500).json({
+          success: false,
+          message: 'Failed to send your message. Please try again or contact us directly.',
+        });
+      }
+
+      console.log('Retailer contact email sent successfully');
+    } else {
+      console.warn('Resend not configured, retailer contact form logged but not emailed');
+    }
 
     // Return success response
     return res.status(200).json({

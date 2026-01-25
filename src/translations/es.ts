@@ -1359,7 +1359,7 @@ export const es: TranslationType = {
     // Quick Decision Helper
     quickDecision: {
       title: "¿No Estas Seguro de Que Tamano? Deja Que Tu Nariz Decida.",
-      subtitle: "",
+      subtitle: "Elige el tamaño ideal para tu hogar:",
       trial: {
         question: "¿Te han decepcionado falsas promesas antes?",
         answer: "La Muestra del Esceptico (12g)",

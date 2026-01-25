@@ -12,7 +12,6 @@ import {
   TrendingUp,
   Clock,
   CheckCircle,
-  XCircle,
   Eye
 } from 'lucide-react';
 

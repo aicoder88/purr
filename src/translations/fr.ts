@@ -1330,7 +1330,7 @@ export const fr = {
     // Quick Decision Helper
     quickDecision: {
       title: "Pas Sûr du Format? Laissez Votre Nez Juger.",
-      subtitle: "",
+      subtitle: "Choisissez le format adapté à votre foyer:",
       trial: {
         question: "Déçu par de fausses promesses auparavant?",
         answer: "L'Échantillon du Sceptique (12g)",

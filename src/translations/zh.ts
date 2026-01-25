@@ -1618,7 +1618,7 @@ export const zh = {
     // Quick Decision Helper
     quickDecision: {
       title: "不确定选哪个尺寸？让您的鼻子来判断。",
-      subtitle: "",
+      subtitle: "选择适合您家的尺寸:",
       trial: {
         question: "之前被虚假承诺坑过？",
         answer: "怀疑者试用装 (12g)",

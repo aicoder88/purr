@@ -12,7 +12,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import {
@@ -112,7 +111,7 @@ export default function LeadsPage({
   // Refetch when filters change
   useEffect(() => {
     fetchLeads(1);
-  }, [searchQuery, statusFilter, sortField, sortOrder]);
+  }, [fetchLeads]);
 
   // Handle page change
   const handlePageChange = (page: number) => {

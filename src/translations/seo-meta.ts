@@ -83,7 +83,7 @@ export const seoMetaEn: SEOMetaContent = {
     },
     family: {
       title: 'Multi-Cat Litter Deodorizer - 240g Family Size 2026',
-      description: 'Eliminate odor from 3+ cats with our best value 240g size. Activated carbon removes ammonia smell instantly. Double the supply at less than double the price.',
+      description: 'Eliminate odor from 3+ cats with our best value 240g size. Activated carbon removes ammonia smell instantly. Get double the supply today!',
       targetKeyword: 'multi-cat litter deodorizer'
     }
   },

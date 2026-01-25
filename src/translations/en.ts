@@ -1277,7 +1277,7 @@ export const en = {
     // Quick Decision Helper
     quickDecision: {
       title: "Not Sure Which Size? Let Your Nose Be the Judge.",
-      subtitle: "",
+      subtitle: "Pick the size that fits your home:",
       trial: {
         question: "Burned by false promises before?",
         answer: "The Skeptic's Sample (12g)",

@@ -41,7 +41,7 @@ export default {
 
         return {
           // Detect export default function Component
-          ExportDefaultDeclaration(node) {
+          ExportDefaultDeclaration(_node) {
             inExport = true;
           },
 
@@ -70,13 +70,13 @@ export default {
           },
 
           // Track nested functions (we only care about top-level component)
-          'FunctionDeclaration, FunctionExpression, ArrowFunctionExpression'(node) {
+          'FunctionDeclaration, FunctionExpression, ArrowFunctionExpression'(_node) {
             if (isInComponentBody) {
               componentDepth++;
             }
           },
 
-          'FunctionDeclaration, FunctionExpression, ArrowFunctionExpression:exit'(node) {
+          'FunctionDeclaration, FunctionExpression, ArrowFunctionExpression:exit'(_node) {
             if (isInComponentBody) {
               componentDepth--;
               if (componentDepth === 0) {

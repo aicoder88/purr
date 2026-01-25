@@ -8,7 +8,6 @@ import {
   getIndexablePages,
   getNonIndexablePages,
   getPageStats,
-  ScannedPage,
 } from '../../scripts/seo/lib/page-scanner';
 
 describe('Page Scanner', () => {
@@ -24,8 +23,9 @@ describe('Page Scanner', () => {
       const pages = await scanAllPages();
 
       const staticPages = pages.filter((p) => p.pageType === 'static');
-      const dynamicPages = pages.filter((p) => p.pageType === 'dynamic');
-      const catchAllPages = pages.filter((p) => p.pageType === 'catch-all');
+      // These may or may not exist, just verify they can be computed
+      const _dynamicPages = pages.filter((p) => p.pageType === 'dynamic');
+      const _catchAllPages = pages.filter((p) => p.pageType === 'catch-all');
 
       expect(staticPages.length).toBeGreaterThan(0);
       // Dynamic and catch-all may or may not exist

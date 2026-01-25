@@ -183,17 +183,17 @@ describe('SEO Meta Content', () => {
   describe('English Meta Quality', () => {
     const pages = getAllPageMetas(seoMetaEn);
 
-    it.each(pages)('$key should have valid title length', ({ key, pageMeta }) => {
+    it.each(pages)('$key should have valid title length', ({ pageMeta }) => {
       const result = validatePageMeta(pageMeta);
       expect(result.titleInRange).toBe(true);
     });
 
-    it.each(pages)('$key should have valid description length', ({ key, pageMeta }) => {
+    it.each(pages)('$key should have valid description length', ({ pageMeta }) => {
       const result = validatePageMeta(pageMeta);
       expect(result.descInRange).toBe(true);
     });
 
-    it.each(pages)('$key should have target keyword', ({ key, pageMeta }) => {
+    it.each(pages)('$key should have target keyword', ({ pageMeta }) => {
       const result = validatePageMeta(pageMeta);
       expect(result.hasTargetKeyword).toBe(true);
     });
@@ -217,12 +217,12 @@ describe('SEO Meta Content', () => {
   describe('French Meta Quality', () => {
     const pages = getAllPageMetas(seoMetaFr);
 
-    it.each(pages)('$key should have valid title length', ({ key, pageMeta }) => {
+    it.each(pages)('$key should have valid title length', ({ pageMeta }) => {
       const result = validatePageMeta(pageMeta);
       expect(result.titleInRange).toBe(true);
     });
 
-    it.each(pages)('$key should have valid description length', ({ key, pageMeta }) => {
+    it.each(pages)('$key should have valid description length', ({ pageMeta }) => {
       const result = validatePageMeta(pageMeta);
       expect(result.descInRange).toBe(true);
     });
@@ -249,12 +249,12 @@ describe('SEO Meta Content', () => {
   describe('Spanish Meta Quality', () => {
     const pages = getAllPageMetas(seoMetaEs);
 
-    it.each(pages)('$key should have valid title length', ({ key, pageMeta }) => {
+    it.each(pages)('$key should have valid title length', ({ pageMeta }) => {
       const result = validatePageMeta(pageMeta);
       expect(result.titleInRange).toBe(true);
     });
 
-    it.each(pages)('$key should have valid description length', ({ key, pageMeta }) => {
+    it.each(pages)('$key should have valid description length', ({ pageMeta }) => {
       const result = validatePageMeta(pageMeta);
       expect(result.descInRange).toBe(true);
     });

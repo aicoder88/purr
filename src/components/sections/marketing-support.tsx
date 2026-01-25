@@ -10,18 +10,15 @@ export function MarketingSupport() {
       items: [
         {
           name: 'Premium Counter Displays',
-          description: 'Eye-catching counter displays that highlight product benefits',
-          image: '/placeholder-display.jpg'
+          description: 'Eye-catching counter displays that highlight product benefits'
         },
         {
           name: 'Shelf Talkers & Tags',
-          description: 'Professional shelf signage with key selling points',
-          image: '/placeholder-shelf.jpg'
+          description: 'Professional shelf signage with key selling points'
         },
         {
           name: 'Product Information Cards',
-          description: 'Detailed cards explaining how Purrify works',
-          image: '/placeholder-cards.jpg'
+          description: 'Detailed cards explaining how Purrify works'
         }
       ]
     },
@@ -30,18 +27,15 @@ export function MarketingSupport() {
       items: [
         {
           name: 'Staff Training Videos',
-          description: 'Complete product knowledge training for your team',
-          image: '/placeholder-training.jpg'
+          description: 'Complete product knowledge training for your team'
         },
         {
           name: 'Customer Demo Kit',
-          description: 'Tools to demonstrate product effectiveness in-store',
-          image: '/placeholder-demo.jpg'
+          description: 'Tools to demonstrate product effectiveness in-store'
         },
         {
           name: 'FAQ Training Guide',
-          description: 'Answers to common customer questions',
-          image: '/placeholder-guide.jpg'
+          description: 'Answers to common customer questions'
         }
       ]
     },
@@ -50,18 +44,15 @@ export function MarketingSupport() {
       items: [
         {
           name: 'Social Media Assets',
-          description: 'Ready-to-post content for your social channels',
-          image: '/placeholder-social.jpg'
+          description: 'Ready-to-post content for your social channels'
         },
         {
           name: 'Email Templates',
-          description: 'Professional email campaigns for your customers',
-          image: '/placeholder-email.jpg'
+          description: 'Professional email campaigns for your customers'
         },
         {
           name: 'Website Integration',
-          description: 'Product descriptions and images for your website',
-          image: '/placeholder-web.jpg'
+          description: 'Product descriptions and images for your website'
         }
       ]
     }

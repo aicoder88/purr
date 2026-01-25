@@ -66,33 +66,6 @@ export const load = (html: string): CheerioAPI => {
 
     if (selector === 'a') {
       // Return mock element that can iterate over links
-      const mockElements = links.map((link, linkIndex) => ({
-        attr(name: string): string | undefined {
-          if (name === 'href') {
-            return link.href;
-          }
-          return undefined;
-        },
-        text(): string {
-          return link.text;
-        },
-        parent(): CheerioElement {
-          return {
-            attr() {
-              return undefined;
-            },
-            text(): string {
-              return link.parent;
-            },
-            parent(): CheerioElement {
-              return this;
-            },
-            length: 1,
-          };
-        },
-        length: 1,
-      }));
-
       return {
         attr(name: string): string | undefined {
           if (name === 'href' && links[0]) {

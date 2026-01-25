@@ -32,8 +32,6 @@ jest.mock('../../src/lib/seo/link-graph-analyzer', () => ({
 import { validateAllPages, generateReport, ValidationResult } from '../../scripts/seo/validate-seo-compliance';
 import { validateAllImages } from '../../scripts/seo/lib/image-validator';
 import { validateOGCanonicalUrls, validatePageFile as validateOGPageFile } from '../../src/lib/seo/og-canonical-validator';
-import * as fs from 'fs';
-import * as path from 'path';
 
 // Mock remaining dependencies
 jest.mock('../../scripts/seo/lib/image-validator');

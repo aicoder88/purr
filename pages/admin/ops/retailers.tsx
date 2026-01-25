@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { requireAuth } from '@/lib/auth/session';
 import OpsLayout from '@/components/admin/ops/OpsLayout';
-import { Store, CheckCircle, XCircle } from 'lucide-react';
+import { Store, CheckCircle, XCircle, Loader2 } from 'lucide-react';
+import { useToast } from '@/components/ui/use-toast';
 import prisma from '@/lib/prisma';
 
 interface Retailer {
@@ -20,6 +23,10 @@ interface RetailersPageProps {
 }
 
 export default function RetailersPage({ retailers }: Readonly<RetailersPageProps>) {
+  const router = useRouter();
+  const { toast } = useToast();
+  const [processingId, setProcessingId] = useState<string | null>(null);
+
   const pendingRetailers = retailers.filter(r => r.status === 'PENDING');
   const activeRetailers = retailers.filter(r => r.status === 'ACTIVE');
 
@@ -47,13 +54,69 @@ export default function RetailersPage({ retailers }: Readonly<RetailersPageProps
   };
 
   const handleApprove = async (id: string) => {
-    // TODO: Implement approval API
-    alert(`Approve retailer ${id} - API coming in Phase 2`);
+    setProcessingId(id);
+    try {
+      const response = await fetch(`/api/admin/ops/retailers/${id}/approve`, {
+        method: 'POST',
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || 'Failed to approve retailer');
+      }
+
+      toast({
+        title: 'Retailer Approved',
+        description: 'The retailer has been approved and notified via email.',
+      });
+
+      // Refresh the page to show updated data
+      router.replace(router.asPath);
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: error instanceof Error ? error.message : 'Failed to approve retailer',
+        variant: 'destructive',
+      });
+    } finally {
+      setProcessingId(null);
+    }
   };
 
   const handleReject = async (id: string) => {
-    // TODO: Implement rejection API
-    alert(`Reject retailer ${id} - API coming in Phase 2`);
+    const reason = prompt('Please provide a reason for rejection (optional):');
+
+    setProcessingId(id);
+    try {
+      const response = await fetch(`/api/admin/ops/retailers/${id}/reject`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ reason }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || 'Failed to reject retailer');
+      }
+
+      toast({
+        title: 'Retailer Rejected',
+        description: 'The retailer has been rejected and notified via email.',
+      });
+
+      // Refresh the page to show updated data
+      router.replace(router.asPath);
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: error instanceof Error ? error.message : 'Failed to reject retailer',
+        variant: 'destructive',
+      });
+    } finally {
+      setProcessingId(null);
+    }
   };
 
   return (
@@ -102,16 +165,26 @@ export default function RetailersPage({ retailers }: Readonly<RetailersPageProps
                     <div className="flex space-x-2">
                       <button
                         onClick={() => handleApprove(retailer.id)}
-                        className="flex items-center space-x-1 px-3 py-2 bg-green-500 dark:bg-green-600 text-white dark:text-gray-100 rounded-lg hover:bg-green-600 dark:hover:bg-green-700 transition-colors"
+                        disabled={processingId === retailer.id}
+                        className="flex items-center space-x-1 px-3 py-2 bg-green-500 dark:bg-green-600 text-white dark:text-gray-100 rounded-lg hover:bg-green-600 dark:hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                       >
-                        <CheckCircle className="w-4 h-4" />
+                        {processingId === retailer.id ? (
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                        ) : (
+                          <CheckCircle className="w-4 h-4" />
+                        )}
                         <span>Approve</span>
                       </button>
                       <button
                         onClick={() => handleReject(retailer.id)}
-                        className="flex items-center space-x-1 px-3 py-2 border border-red-300 dark:border-red-700 text-red-600 dark:text-red-400 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+                        disabled={processingId === retailer.id}
+                        className="flex items-center space-x-1 px-3 py-2 border border-red-300 dark:border-red-700 text-red-600 dark:text-red-400 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                       >
-                        <XCircle className="w-4 h-4" />
+                        {processingId === retailer.id ? (
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                        ) : (
+                          <XCircle className="w-4 h-4" />
+                        )}
                         <span>Reject</span>
                       </button>
                     </div>
