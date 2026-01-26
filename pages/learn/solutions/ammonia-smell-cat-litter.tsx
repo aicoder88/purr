@@ -11,8 +11,8 @@ import { RelatedQuestions } from '../../../src/components/seo/RelatedQuestions';
 
 export default function AmmoniaSmellCatLitterPage() {
   const { locale } = useTranslation();
-  const seoTitle = 'Why Your Cat Litter Smells Like Ammonia (And How to Fix It)';
-  const seoDescription = 'That sharp ammonia smell? Bacteria converting urine to gas. Baking soda can\'t neutralize it (both are alkaline). Here\'s what traps ammonia at the molecular level.';
+  const seoTitle = 'Cat Litter Smells Like Ammonia? Baking Soda Can\'t Fix It (Here\'s Why)';
+  const seoDescription = 'That eye-watering ammonia isn\'t your cat\'s fault—it\'s chemistry. Baking soda and ammonia are BOTH alkaline, so they don\'t neutralize each other. Here\'s what actually works.';
   const canonicalUrl = getLocalizedUrl('/learn/solutions/ammonia-smell-cat-litter', locale);
   const languageAlternates = buildLanguageAlternates('/learn/solutions/ammonia-smell-cat-litter');
 
@@ -367,6 +367,53 @@ export default function AmmoniaSmellCatLitterPage() {
               timeDisplay="15 minutes for setup"
               url={canonicalUrl}
             />
+          </div>
+        </section>
+
+        {/* Related Ammonia Content - Internal Linking Cluster */}
+        <section className="py-12 px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100 mb-6 text-center">
+              Learn More About Ammonia & Cat Litter
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              <Link
+                href="/learn/ammonia-science"
+                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] dark:hover:border-[#FF5050] transition-all group"
+              >
+                <div className="text-3xl mb-3">🔬</div>
+                <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-[#FF3131] dark:group-hover:text-[#FF5050] transition-colors">
+                  The Science of Ammonia
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  Why cat urine produces ammonia and the chemistry behind the smell.
+                </p>
+              </Link>
+              <Link
+                href="/learn/cat-litter-ammonia-health-risks"
+                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] dark:hover:border-[#FF5050] transition-all group"
+              >
+                <div className="text-3xl mb-3">⚠️</div>
+                <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-[#FF3131] dark:group-hover:text-[#FF5050] transition-colors">
+                  Ammonia Health Risks
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  Is ammonia from cat litter dangerous? Safe exposure levels explained.
+                </p>
+              </Link>
+              <Link
+                href="/blog/how-to-neutralize-ammonia-cat-litter"
+                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] dark:hover:border-[#FF5050] transition-all group"
+              >
+                <div className="text-3xl mb-3">✅</div>
+                <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-[#FF3131] dark:group-hover:text-[#FF5050] transition-colors">
+                  5 Ways to Neutralize Ammonia
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  Proven methods to eliminate ammonia smell permanently.
+                </p>
+              </Link>
+            </div>
           </div>
         </section>
 

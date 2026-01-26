@@ -11,8 +11,8 @@ import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 export default function AmmoniaHealthRisksPage() {
   const { locale } = useTranslation();
 
-  const pageTitle = 'Cat Litter Ammonia: Health Risks & How to Protect Your Family';
-  const pageDescription = 'Is ammonia from cat litter dangerous? Learn about safe exposure levels, health risks for cats and humans, and how to reduce ammonia in your home.';
+  const pageTitle = 'Is Ammonia From Cat Litter Dangerous? Safe Levels Explained';
+  const pageDescription = 'That burning sensation when you scoop? That\'s ammonia. At high levels, it\'s harmful to you AND your cat. Here\'s when to worry—and how to fix it fast.';
 
   // Use enhanced SEO hook for automated optimization
   const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
@@ -341,6 +341,22 @@ export default function AmmoniaHealthRisksPage() {
               <p className="text-gray-700 dark:text-gray-300">
                 The solution is straightforward: maintain clean litter boxes, ensure good ventilation, and use effective odor eliminators like activated carbon that actually neutralize ammonia rather than just covering it up.
               </p>
+
+              {/* Related Ammonia Content Links */}
+              <div className="mt-12 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
+                <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-4">Related Ammonia Guides</h3>
+                <div className="space-y-3">
+                  <Link href="/learn/solutions/ammonia-smell-cat-litter" className="flex items-center gap-2 text-[#FF3131] dark:text-[#FF5050] hover:underline font-medium">
+                    → Stop That Ammonia Smell: Complete Solution Guide
+                  </Link>
+                  <Link href="/learn/ammonia-science" className="flex items-center gap-2 text-[#FF3131] dark:text-[#FF5050] hover:underline font-medium">
+                    → Why Cat Urine Smells Like Ammonia (The Science)
+                  </Link>
+                  <Link href="/blog/how-to-neutralize-ammonia-cat-litter" className="flex items-center gap-2 text-[#FF3131] dark:text-[#FF5050] hover:underline font-medium">
+                    → 5 Proven Methods to Neutralize Ammonia
+                  </Link>
+                </div>
+              </div>
 
             </div>
 

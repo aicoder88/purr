@@ -15,8 +15,8 @@ export default function ApartmentCatSmellSolutionPage() {
   const trialPrice = formatProductPrice('trial', locale);
   const riskFreeLabel = `Try Purrify Risk-Free - ${trialPrice} (shipping included)`;
   const startTrialLabel = `Start Your Trial - ${trialPrice} (shipping included)`;
-  const seoTitle = 'Best Litter for Apartments with No Ventilation (5 Proven Solutions)';
-  const seoDescription = 'How to get rid of cat litter smell in apartment with no ventilation? Activated carbon eliminates odors in studios and small spaces. Works even without windows.';
+  const seoTitle = 'Cat in a 400 Sq Ft Apartment? How to Eliminate Litter Smell Completely';
+  const seoDescription = 'No windows near your litter box. No ventilation. Roommates complaining. Here are 5 solutions that work in small apartments—guests will never know you have a cat.';
   const canonicalUrl = getLocalizedUrl('/learn/solutions/apartment-cat-smell-solution', locale);
   const languageAlternates = buildLanguageAlternates('/learn/solutions/apartment-cat-smell-solution');
 

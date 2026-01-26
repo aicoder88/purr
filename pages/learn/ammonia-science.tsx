@@ -10,8 +10,8 @@ import { RelatedQuestions } from '../../src/components/seo/RelatedQuestions';
 
 export default function AmmoniaSciencePage() {
   const { locale } = useTranslation();
-  const seoTitle = 'Why Cat Urine Smells Like Ammonia: The Science Explained';
-  const seoDescription = 'Cat urine smells like ammonia because bacteria break down urea into ammonia gas. This process starts within 2-4 hours. Learn the chemistry and how to stop it.';
+  const seoTitle = 'Why Cat Urine Smells Like Ammonia (The Chemistry + How to Stop It)';
+  const seoDescription = 'Bacteria convert urea to ammonia gas within 2-4 hours. By hour 24, it\'s unbearable. Here\'s the chemistry behind the stink—and how to break the cycle.';
   const canonicalUrl = getLocalizedUrl('/learn/ammonia-science', locale);
   const languageAlternates = buildLanguageAlternates('/learn/ammonia-science');
 
@@ -476,18 +476,22 @@ export default function AmmoniaSciencePage() {
             <h2 className="text-2xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
               Related Articles
             </h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              <Link href="/learn/how-activated-carbon-works" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">How Activated Carbon Works</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">The science of odor adsorption</p>
-              </Link>
-              <Link href="/learn/solutions/ammonia-smell-cat-litter" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <Link href="/learn/solutions/ammonia-smell-cat-litter" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 border-2 border-[#FF3131]/20 dark:border-[#FF5050]/20">
                 <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Fix Ammonia Smell Fast</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-300">Quick solutions for immediate relief</p>
               </Link>
-              <Link href="/learn/solutions/how-to-neutralize-ammonia-cat-litter" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">5 Ammonia Neutralization Methods</h3>
+              <Link href="/learn/cat-litter-ammonia-health-risks" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Ammonia Health Risks</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">Safe exposure levels explained</p>
+              </Link>
+              <Link href="/blog/how-to-neutralize-ammonia-cat-litter" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">5 Neutralization Methods</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-300">Ranked by effectiveness</p>
+              </Link>
+              <Link href="/learn/how-activated-carbon-works" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">How Activated Carbon Works</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">The science of odor adsorption</p>
               </Link>
             </div>
           </div>

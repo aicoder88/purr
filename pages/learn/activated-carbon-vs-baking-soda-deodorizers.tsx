@@ -10,8 +10,8 @@ import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
 export default function ActivatedCarbonVsBakingSodaDeodorizers() {
   const { locale } = useTranslation();
-  const pageTitle = 'Does Baking Soda Help Cat Litter Smell? (Honest Answer + Better Alternative)';
-  const pageDescription = 'Does baking soda help with cat litter smell? Yes, but only for 1-2 days. Activated carbon works 3x longer. See our side-by-side test results and find what actually works.';
+  const pageTitle = 'Baking Soda for Cat Litter? It Fails After 48 Hours (Try This Instead)';
+  const pageDescription = 'You sprinkled baking soda. Two days later, the smell\'s back. That\'s because baking soda can\'t trap ammonia—it just masks it. Activated carbon works 3x longer.';
   const heroImage = 'https://www.purrify.ca/images/activated-carbon-vs-baking-soda.jpg';
 
   // Use enhanced SEO hook for automated optimization
