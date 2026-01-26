@@ -12,10 +12,10 @@
   "modifiedDate": "2024-12-22T14:00:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/activated-carbon-granules.jpg",
-    "alt": "Powder vs spray litter deodorizer comparison showing activated carbon granules",
-    "width": 1200,
-    "height": 630
+    "url": "/optimized/blog/powder-spray-comparison-ghibli.png",
+    "alt": "Ghibli-style illustration comparing powder and spray deodorizers with a curious cat",
+    "width": 800,
+    "height": 800
   },
   "categories": [
     "product-comparison",
@@ -42,7 +42,7 @@
       "cat litter deodorizer comparison",
       "spray deodorizer effectiveness"
     ],
-    "ogImage": "/optimized/activated-carbon-granules.jpg"
+    "ogImage": "/optimized/blog/powder-spray-comparison-ghibli.png"
   },
   "readingTime": 8
 }

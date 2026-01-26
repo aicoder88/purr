@@ -123,7 +123,7 @@ interface MyAppProps extends AppProps<PageProps> {
   detectedCurrency?: Currency;
 }
 
-const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter', weight: ['400', '500', '600', '700'] });
+const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter', weight: ['400', '500', '600', '700', '800', '900'] });
 
 function MyApp({ Component, pageProps, detectedCurrency = 'CAD' }: MyAppProps) {
   const router = useRouter();
