@@ -2,7 +2,54 @@
 
 This document serves as a persistent memory and guide for future development and content generation tasks, specifically for the "Purrify" project.
 
-## Blog Post & Content Visuals
+## 🚀 Getting Started
+
+1.  **Install dependencies:** This project uses `pnpm` as the package manager.
+    ```bash
+    pnpm install
+    ```
+2.  **Set up environment variables:** Copy the example environment file and fill in the required variables.
+    ```bash
+    cp .env.local.example .env.local
+    ```
+3.  **Run the development server:**
+    ```bash
+    pnpm dev
+    ```
+
+## 📝 Commit Message Conventions
+
+This project follows the [Conventional Commits](https://www.conventionalcommits.org/) specification. Each commit message should be prefixed with a type, followed by a scope (optional), and a description.
+
+**Format:** `type(scope): description`
+
+**Common types:**
+*   `feat`: A new feature
+*   `fix`: A bug fix
+*   `chore`: Changes to the build process or auxiliary tools
+*   `docs`: Documentation only changes
+*   `style`: Changes that do not affect the meaning of the code (white-space, formatting, etc)
+*   `refactor`: A code change that neither fixes a bug nor adds a feature
+*   `test`: Adding missing tests or correcting existing tests
+
+**Example:**
+```
+feat(blog): add new post about cat litter
+fix(css): correct styling of the main button
+```
+
+## 🧪 Testing
+
+The project has two types of tests:
+
+*   **Unit/Integration Tests:** Written with [Jest](https://jestjs.io/) and located in the `__tests__` directory.
+*   **End-to-End (E2E) Tests:** Written with [Playwright](https://playwright.dev/) and located in the `e2e` directory.
+
+**Running tests:**
+*   `pnpm test`: Run all Jest tests.
+*   `pnpm test:e2e`: Run all Playwright tests.
+
+## 🎨 Blog Post & Content Visuals
 
 ### Aesthetic Direction
 *   **Primary Style**: **Studio Ghibli / Anime Aesthetic**.
@@ -32,7 +79,19 @@ This document serves as a persistent memory and guide for future development and
         ```
 4.  **Metadata**: Ensure the `featuredImage` and `seo.ogImage` fields in the JSON file are updated to point to the new, high-quality hero image if replaced.
 
-## General Coding Expectations
+
+## 💻 Coding Guidelines
+
 *   **Absolute Paths**: Always use absolute paths for file operations.
 *   **Dependencies**: Check `package.json` before installing new packages; prefer `npx` for one-off commands.
 *   **Linting**: Respect existing linting rules; fix errors immediately if introduced.
+*   **No Fabrication Rule**: NEVER fabricate or assume the existence of file paths, URLs, or other assets. Always verify they exist in the codebase first. If you can't find it, ask.
+*   **Hydration Safety**: Never conditionally return `null` in page components based on client state. This causes hydration mismatches. Use server-side redirects or loading states instead.
+
+## 🛠️ Technology Stack
+
+*   **Framework:** Next.js (Pages Router)
+*   **Styling:** Tailwind CSS
+*   **Database:** PostgreSQL (via Prisma)
+*   **Testing:** Jest, Playwright
+*   **Deployment:** Vercel
