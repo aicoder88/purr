@@ -148,7 +148,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Living in an apartment with cats? Limited ventilation makes litter odour worse. Compare the best cat litters for apartments and discover the small-space solution that actually works.',
       author: 'Purrify Team',
       date: '2026-01-03',
-      image: '/optimized/standard-happy-cat-1080w.jpg',
+      image: '/optimized/blog/apartment-odor-control-small-space-ghibli.png',
       link: '/blog/best-cat-litter-for-apartments'
     },
     {
@@ -156,7 +156,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Multi-cat households need litter that handles heavy use, controls intense odours, and stays fresh longer. Compare clumping, crystal, and natural litters with activated carbon for serious odour control.',
       author: 'Purrify Team',
       date: '2026-01-21',
-      image: '/optimized/blog/90day-solution.jpg',
+      image: '/optimized/blog/multi-cat-happy-home-ghibli.png',
       link: '/blog/best-cat-litter-multiple-cats'
     },
     {
@@ -196,7 +196,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Fragrances can trigger respiratory issues and litter box avoidance in sensitive cats. Find truly fragrance-free litters with natural odour control that cats actually use.',
       author: 'Purrify Team',
       date: '2026-01-21',
-      image: '/optimized/blog/90day-solution.jpg',
+      image: '/optimized/blog/sensitive-cat-no-scent-ghibli.png',
       link: '/blog/best-unscented-cat-litter-sensitive-cats'
     },
     {
@@ -228,7 +228,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "Apartment living means limited ventilation and close quarters. Here's how to completely eliminate cat litter odour in small spaces without masking it with fragrances.",
       author: 'Purrify Team',
       date: '2026-01-21',
-      image: '/optimized/blog/90day-solution.jpg',
+      image: '/optimized/blog/cozy-apartment-cat-ghibli.png',
       link: '/blog/how-to-get-rid-of-cat-litter-smell-apartment'
     },
     {
@@ -252,7 +252,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Cat litter smells like ammonia? Learn exactly what neutralizes ammonia and the 5 most effective methods to eliminate that harsh smell permanently.',
       author: 'Purrify Team',
       date: '2024-12-29',
-      image: '/optimized/blog/cat-fresh-home-ammonia.jpg',
+      image: '/optimized/blog/ammonia-neutralized-magic-litter-ghibli.png',
       link: '/blog/how-to-neutralize-ammonia-cat-litter'
     },
     {
@@ -316,7 +316,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Baking soda not working? Activated carbon destroys ammonia 10x better. See the science behind instant cat litter odor elimination!',
       author: 'Purrify Team',
       date: '2024-01-15',
-      image: '/optimized/activated-carbon-granules.webp',
+      image: '/optimized/blog/activated-carbon-science-benefits-ghibli.png',
       link: '/blog/activated-carbon-litter-additive-benefits'
     },
     {
