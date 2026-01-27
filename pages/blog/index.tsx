@@ -4,6 +4,7 @@ import { Container } from '../../src/components/ui/container';
 import { SITE_NAME, SITE_DESCRIPTION } from '../../src/lib/constants';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState, useRef } from 'react';
 import { useTranslation } from '../../src/lib/translation-context';
 import { ContentStore } from '../../src/lib/blog/content-store';
 import type { BlogPost as BlogPostType } from '../../src/types/blog';
@@ -64,7 +65,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       link: `/blog/${post.slug}`,
       locale: post.locale,
     }));
-    
+
     return {
       props: {
         blogPosts,
@@ -97,8 +98,32 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   }
 }
 
+const POSTS_PER_PAGE = 20;
+
 export default function Blog({ blogPosts, locale }: { blogPosts: BlogPost[], locale: string }) {
   const { t } = useTranslation();
+  const [currentPage, setCurrentPage] = useState(1);
+  const blogListRef = useRef<HTMLDivElement>(null);
+
+  const totalPages = Math.ceil(blogPosts.length / POSTS_PER_PAGE);
+  const displayedPosts = blogPosts.slice(
+    (currentPage - 1) * POSTS_PER_PAGE,
+    currentPage * POSTS_PER_PAGE
+  );
+
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
+    if (blogListRef.current) {
+      const offset = 80; // Offset for header
+      const elementPosition = blogListRef.current.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   // Add noindex to French/Chinese blog pages until we have translated content
   const shouldNoindex = blogPosts.length === 0 && (locale === 'fr' || locale === 'zh');
@@ -203,8 +228,8 @@ export default function Blog({ blogPosts, locale }: { blogPosts: BlogPost[], loc
               <p className="text-gray-600 dark:text-gray-300">No blog posts found. Check back soon!</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 cv-auto cis-960">
-              {blogPosts.map((post) => (
+            <div ref={blogListRef} className="grid grid-cols-1 md:grid-cols-3 gap-8 cv-auto cis-960">
+              {displayedPosts.map((post) => (
                 <article
                   key={post.link}
                   className="bg-white dark:bg-gray-800/80 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-[#E0EFC7] dark:border-gray-700 transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-gray-700/50 hover:-translate-y-2 group"
@@ -265,6 +290,48 @@ export default function Blog({ blogPosts, locale }: { blogPosts: BlogPost[], loc
                   </Link>
                 </article>
               ))}
+            </div>
+          )}
+
+          {/* Pagination Controls */}
+          {totalPages > 1 && (
+            <div className="mt-16 flex justify-center items-center gap-6">
+              <button
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+                className={`flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 shadow-lg ${currentPage === 1
+                    ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 cursor-not-allowed border border-gray-200 dark:border-gray-700'
+                    : 'bg-white dark:bg-gray-800 text-[#03E46A] hover:bg-[#03E46A] hover:text-white border border-[#E0EFC7] dark:border-gray-700 hover:border-transparent active:scale-95'
+                  }`}
+                aria-label="Previous Page"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                <span>Prev</span>
+              </button>
+
+              <div className="flex items-center gap-2 px-6 py-3 bg-white/50 dark:bg-gray-800/50 backdrop-blur-md rounded-full border border-[#E0EFC7] dark:border-gray-700 shadow-md">
+                <span className="text-gray-500 dark:text-gray-400">Page</span>
+                <span className="font-bold text-[#5B2EFF] dark:text-[#3694FF] min-w-[1.5rem] text-center">{currentPage}</span>
+                <span className="text-gray-400">/</span>
+                <span className="text-gray-600 dark:text-gray-300 font-medium">{totalPages}</span>
+              </div>
+
+              <button
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className={`flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 shadow-lg ${currentPage === totalPages
+                    ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 cursor-not-allowed border border-gray-200 dark:border-gray-700'
+                    : 'bg-white dark:bg-gray-800 text-[#03E46A] hover:bg-[#03E46A] hover:text-white border border-[#E0EFC7] dark:border-gray-700 hover:border-transparent active:scale-95'
+                  }`}
+                aria-label="Next Page"
+              >
+                <span>Next</span>
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
             </div>
           )}
         </Container>
