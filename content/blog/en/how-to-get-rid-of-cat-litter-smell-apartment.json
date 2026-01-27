@@ -12,7 +12,7 @@
   "modifiedDate": "2026-01-21T12:00:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/blog/cozy-apartment-cat-ghibli.png",
+    "url": "/images/solutions/apartment-hero.png",
     "alt": "Well-ventilated apartment living room - odor control tips",
     "width": 1200,
     "height": 800
@@ -42,7 +42,7 @@
       "small space cat smell"
     ],
     "canonical": "https://www.purrify.ca/blog/how-to-get-rid-of-cat-litter-smell-apartment",
-    "ogImage": "/optimized/blog/cozy-apartment-cat-ghibli.png"
+    "ogImage": "/images/solutions/apartment-hero.png"
   },
   "readingTime": 9
 }
