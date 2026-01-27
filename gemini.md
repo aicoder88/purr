@@ -2,96 +2,170 @@
 
 This document serves as a persistent memory and guide for future development and content generation tasks, specifically for the "Purrify" project.
 
+## 🚨 Core Mandates
+
+### 📦 Package Manager: pnpm ONLY
+**CRITICAL:** This project uses **pnpm exclusively**. Do NOT use npm or yarn.
+*   **Install:** `pnpm install`
+*   **Add:** `pnpm add package-name`
+*   **Dev:** `pnpm dev`
+*   **Run Scripts:** `pnpm script-name`
+
+### 🚫 No Fabrication Rule
+**NEVER fabricate or assume the existence of:**
+*   ❌ Contact info (phone numbers, emails, addresses)
+*   ❌ Social media (handles, hashtags)
+*   ❌ File paths (images, PDFs, assets)
+*   ❌ URLs (subdomains, pages, external links)
+*   **VERIFY FIRST**: Check `public/`, `pages/`, or ask the user.
+*   **See**: `docs/NO_FABRICATION_RULE.md`
+
+### 💧 Hydration Safety
+**CRITICAL:** Never conditionally return `null` in page components based on client state. This causes hydration mismatches.
+*   **Bad:** `if (!session) return null;`
+*   **Good:** Use server-side redirects (`getServerSideProps`) or return a loading/error component (`<LoadingSpinner />`).
+*   **See**: `docs/HYDRATION_SAFETY.md`
+
 ## 🚀 Getting Started
 
-1.  **Install dependencies:** This project uses `pnpm` as the package manager.
+1.  **Install dependencies:**
     ```bash
     pnpm install
     ```
-2.  **Set up environment variables:** Copy the example environment file and fill in the required variables.
+2.  **Set up environment variables:**
     ```bash
     cp .env.local.example .env.local
+    # Fill in required variables (DATABASE_URL, NEXTAUTH_SECRET, etc.)
     ```
-3.  **Run the development server:**
+3.  **Database Setup:**
+    ```bash
+    pnpm prisma generate
+    pnpm prisma migrate dev
+    ```
+4.  **Run Development Server:**
     ```bash
     pnpm dev
     ```
 
+## 🛠️ Technology Stack
+
+*   **Framework:** Next.js 16 (Pages Router)
+*   **Language:** TypeScript
+*   **Styling:** Tailwind CSS, Radix UI, Framer Motion
+*   **Database:** PostgreSQL (via Prisma ORM)
+*   **Auth:** NextAuth.js
+*   **Payments:** Stripe
+*   **Email:** Resend
+*   **Testing:** Jest (Unit), Playwright (E2E)
+*   **Deployment:** Vercel
+*   **AI:** Anthropic Claude (Content), FAL (Images)
+*   **Monitoring:** Sentry, Vercel Analytics
+
+## 📁 Project Structure
+
+*   `pages/`: Next.js pages (routing). Kebab-case (`my-page.tsx`).
+*   `pages/api/`: API endpoints.
+*   `src/components/`: React components. PascalCase (`MyComponent.tsx`).
+*   `src/lib/`: Shared utilities. Kebab-case.
+*   `src/hooks/`: Custom React hooks (`useHook.ts`).
+*   `src/translations/`: i18n translation files.
+*   `content/blog/`: Blog posts in JSON format.
+*   `public/`: Static assets.
+    *   `public/optimized/`: Auto-optimized images.
+    *   `public/original-images/`: Source images.
+*   `prisma/`: Database schema and migrations.
+*   `scripts/`: Maintenance and validation scripts.
+*   `e2e/`: Playwright E2E tests.
+*   `__tests__/`: Jest unit tests.
+
+## 💻 Development Workflow
+
+### Common Commands
+*   `pnpm dev`: Start dev server.
+*   `pnpm build`: Production build.
+*   `pnpm lint`: Run ESLint.
+*   `pnpm check-types`: Run TypeScript check.
+*   `pnpm validate-dark-mode`: Check for missing dark mode classes.
+*   `pnpm validate-images`: Check image size limits.
+
+### Database (Prisma)
+*   `pnpm prisma migrate dev`: Create/apply migrations (Dev).
+*   `pnpm prisma generate`: Regenerate client after schema changes.
+*   `pnpm prisma studio`: Open database GUI.
+
+### Testing
+*   `pnpm test`: Run Jest unit tests.
+*   `pnpm test:e2e`: Run Playwright E2E tests.
+*   `pnpm test:translations`: Verify translation completeness.
+
+### Pre-Commit Checklist
+Before committing, ensure these pass:
+```bash
+pnpm lint && pnpm check-types && pnpm validate-dark-mode && pnpm validate-images && pnpm validate-hydration
+```
+
 ## 📝 Commit Message Conventions
 
-This project follows the [Conventional Commits](https://www.conventionalcommits.org/) specification. Each commit message should be prefixed with a type, followed by a scope (optional), and a description.
+Follow [Conventional Commits](https://www.conventionalcommits.org/): `type(scope): description`
 
-**Format:** `type(scope): description`
+*   `feat`: New feature
+*   `fix`: Bug fix
+*   `chore`: Build/tooling changes
+*   `docs`: Documentation
+*   `style`: Formatting (no code change)
+*   `refactor`: Code restructuring
+*   `test`: Adding/updating tests
 
-**Common types:**
-*   `feat`: A new feature
-*   `fix`: A bug fix
-*   `chore`: Changes to the build process or auxiliary tools
-*   `docs`: Documentation only changes
-*   `style`: Changes that do not affect the meaning of the code (white-space, formatting, etc)
-*   `refactor`: A code change that neither fixes a bug nor adds a feature
-*   `test`: Adding missing tests or correcting existing tests
+**Example:** `feat(blog): add new post about cat litter`
 
-**Example:**
-```
-feat(blog): add new post about cat litter
-fix(css): correct styling of the main button
-```
+## 🎨 Content & Visuals
 
-## 🧪 Testing
-
-The project has two types of tests:
-
-*   **Unit/Integration Tests:** Written with [Jest](https://jestjs.io/) and located in the `__tests__` directory.
-*   **End-to-End (E2E) Tests:** Written with [Playwright](https://playwright.dev/) and located in the `e2e` directory.
-
-**Running tests:**
-*   `pnpm test`: Run all Jest tests.
-*   `pnpm test:e2e`: Run all Playwright tests.
-
-## 🎨 Blog Post & Content Visuals
+### Blog Workflow
+1.  **Format:** JSON files in `content/blog/{lang}/`.
+2.  **Images:**
+    *   Source: `public/original-images/`
+    *   Optimize: `pnpm optimize-images:enhanced`
+    *   Use: `public/optimized/`
+3.  **Generators:**
+    *   `pnpm blog:auto:generate`: AI blog post generation.
+    *   `pnpm generate-image`: AI image generation.
 
 ### Aesthetic Direction
-*   **Primary Style**: **Studio Ghibli / Anime Aesthetic**.
-*   **Keywords for Prompts**: "Studio Ghibli style", "sparkling clean", "magical atmosphere", "detailed background", "bright", "cute cat", "incredible".
-*   **Vibe**: Premium, charming, clean, magical, inviting. Avoid generic, sterile stock photography where possible.
+*   **Style**: Studio Ghibli / Anime Aesthetic.
+*   **Keywords**: "sparkling clean", "magical atmosphere", "cute cat", "warm lighting".
+*   **Vibe**: Premium, charming, inviting. Avoid sterile stock photos.
 
-### Image Technical Standards
-*   **Responsive Classes**: All inline images within blog post content (JSON `content` fields) WITHOUT EXCEPTION must use the following Tailwind CSS classes to ensure they look premium and don't overwhelm the reader on desktop:
+### Technical Image Standards
+*   **Classes**: Inline blog images MUST use:
     ```html
     class="w-full md:w-3/4 mx-auto rounded-xl shadow-lg"
     ```
-    *   *Rationale*: Prevents full-width "walls of image" on large screens while maintaining mobile responsiveness (`w-full`).
-*   **File Location**: Store optimized blog images in `/public/optimized/blog/`.
-*   **Naming Convention**: Descriptive, kebab-case, with `-ghibli` suffix if generated in that style (e.g., `sparkling-clean-home-ghibli.png`).
+*   **Dark Mode**: Ensure all UI elements have `dark:` variants.
+    *   Text: `text-gray-900 dark:text-gray-50`
+    *   Bg: `bg-white dark:bg-gray-900`
 
-### Content Workflow
-1.  **Identify Visual Gaps**: Scan content for "walls of text" or sections that need visual explanation (e.g., "Myth vs Fact", comparisons, complex concepts).
-2.  **Generate Custom Art**: Use the Ghibli-style prompt strategy to create specific, relevant illustrations for those sections.
-3.  **Insert & Optimize**:
-    *   Insert `<img>` tags directly into the HTML string in the JSON file.
-    *   Structure:
-        ```html
-        <figure class="my-8">
-          <img src="/optimized/blog/your-image-ghibli.png" alt="Descriptive Alt Text" class="w-full md:w-3/4 mx-auto rounded-xl shadow-lg" width="800" height="450" />
-          <figcaption class="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">Optional caption explaining the visual</figcaption>
-        </figure>
-        ```
-4.  **Metadata**: Ensure the `featuredImage` and `seo.ogImage` fields in the JSON file are updated to point to the new, high-quality hero image if replaced.
+## 📊 SEO & Validation
 
+### Validation Scripts
+*   `scripts/seo/prebuild-validation.ts`: Lenient, for CI/CD.
+*   `scripts/seo/validate-seo-compliance.ts`: Strict, for manual checks.
 
-## 💻 Coding Guidelines
+### Commands
+*   `pnpm seo:validate`: Run standard validation.
+*   `pnpm seo:validate:strict`: Fail on any error.
+*   `pnpm seo:report`: Generate SEO report.
+*   `pnpm validate-links`: Check for broken links.
+*   `pnpm validate-schemas`: Validate JSON-LD.
 
-*   **Absolute Paths**: Always use absolute paths for file operations.
-*   **Dependencies**: Check `package.json` before installing new packages; prefer `npx` for one-off commands.
-*   **Linting**: Respect existing linting rules; fix errors immediately if introduced.
-*   **No Fabrication Rule**: NEVER fabricate or assume the existence of file paths, URLs, or other assets. Always verify they exist in the codebase first. If you can't find it, ask.
-*   **Hydration Safety**: Never conditionally return `null` in page components based on client state. This causes hydration mismatches. Use server-side redirects or loading states instead.
+## 🌍 Environment Variables
 
-## 🛠️ Technology Stack
+**Required in `.env.local`:**
+*   `DATABASE_URL`
+*   `NEXTAUTH_SECRET`, `NEXTAUTH_URL`
+*   `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`
+*   `RESEND_API_KEY`
+*   `ANTHROPIC_API_KEY`
+*   `CRON_SECRET`
+*   `NEXT_PUBLIC_SITE_URL`
 
-*   **Framework:** Next.js (Pages Router)
-*   **Styling:** Tailwind CSS
-*   **Database:** PostgreSQL (via Prisma)
-*   **Testing:** Jest, Playwright
-*   **Deployment:** Vercel
+See `.env.local.example` for the full list.
