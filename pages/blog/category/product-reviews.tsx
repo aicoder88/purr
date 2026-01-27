@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Container } from '../../src/components/ui/container';
-import { SITE_NAME } from '../../src/lib/constants';
+import { Container } from '@/components/ui/container';
+import { SITE_NAME } from '@/lib/constants';
 import { RelatedContent } from '@/components/seo/RelatedContent';
-import { SocialFollowCTA } from '../../src/components/blog/SocialFollowCTA';
-import { TrialCTA } from '../../src/components/blog/TrialCTA';
+import { SocialFollowCTA } from '@/components/blog/SocialFollowCTA';
+import { TrialCTA } from '@/components/blog/TrialCTA';
 
 const heroImage = '/optimized/blog/cat-myths-ghibli.png';
 
@@ -145,7 +145,7 @@ export default function CatLitterOdorMyths() {
                                 <p className="mb-8">
                                     Purrify doesn't mask, scent, or hide. It uses military-grade activated carbon to trap odor molecules at the source.
                                 </p>
-                                <TrialCTA variant="card" />
+                                <TrialCTA variant="default" />
                             </div>
                         </div>
 

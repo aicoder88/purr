@@ -145,7 +145,7 @@ export default function CatLitterOdorMyths() {
                                 <p className="mb-8">
                                     Purrify doesn't mask, scent, or hide. It uses military-grade activated carbon to trap odor molecules at the source.
                                 </p>
-                                <TrialCTA variant="card" />
+                                <TrialCTA variant="default" />
                             </div>
                         </div>
 
