@@ -53,7 +53,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       author: 'Purrify Team',
       date: '2025-12-29',
       image: '/optimized/blog/scientific-odor-control.png',
-      link: '/blog/space-station-secret-fresh-home-cat-owners'
+      link: '/blog/how-to-eliminate-cat-litter-smell-nasa-inspired-solution-actually-works'
     },
     {
       title: 'Why Your Home Still Smells Like Cat: The Chemistry Behind Persistent Odor (And the Industrial Fix)',
@@ -223,14 +223,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       image: '/optimized/blog/tried-relief.jpg',
       link: '/blog/how-to-get-rid-of-cat-litter-smell-in-apartment'
     },
-    {
-      title: 'How to Get Rid of Cat Litter Smell in Apartment (2026)',
-      excerpt: "Apartment living means limited ventilation and close quarters. Here's how to completely eliminate cat litter odour in small spaces without masking it with fragrances.",
-      author: 'Purrify Team',
-      date: '2026-01-21',
-      image: '/optimized/blog/cozy-apartment-cat-ghibli.png',
-      link: '/blog/how-to-get-rid-of-cat-litter-smell-apartment'
-    },
+
     {
       title: 'Apartment Litter Box Smell: The Complete Solution Guide',
       excerpt: "Living in an apartment with cats? Learn how to eliminate litter box odor in small spaces without air fresheners, candles, or constant cleaning.",
