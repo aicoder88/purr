@@ -12,7 +12,7 @@
   "modifiedDate": "2026-01-03T12:00:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/standard-hero-828w.webp",
+    "url": "/images/solutions/litter-box-hero.png",
     "alt": "Best Cat Litter for Odor Control - 2026 Guide",
     "width": 828,
     "height": 552
@@ -47,7 +47,7 @@
       "activated carbon cat litter additive"
     ],
     "canonical": "https://www.purrify.ca/blog/best-cat-litter-odor-control-2026",
-    "ogImage": "/optimized/standard-hero-828w.webp"
+    "ogImage": "/images/solutions/litter-box-hero.png"
   },
   "readingTime": 12
 }
