@@ -70,3 +70,8 @@ playwright-report/
 sitemap.xml
 .env.vercel
 .seo-reports/
+
+# Claude Memory (ChromaDB)
+.claude-memory/
+chroma_data/
+*.chroma/
