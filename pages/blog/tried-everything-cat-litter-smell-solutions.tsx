@@ -492,7 +492,7 @@ export default function TriedEverythingCatLitterSmell() {
                   If you're tired of products that don't work, try something backed by <strong>actual science</strong>.
                 </p>
                 <Link href="/products/trial-size" className="inline-block bg-[#FF3131] text-white dark:text-gray-100 px-6 py-2 rounded-lg hover:bg-[#FF3131]/90 transition-colors">
-                  Try Purrify 3-Week Trial →
+                  Try Purrify 1-Week Trial →
                 </Link>
               </div>
 

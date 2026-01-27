@@ -12,12 +12,14 @@
   "modifiedDate": "2025-11-10T23:31:02.682Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/strong-cat-urine-smell.webp",
+    "url": "/images/solutions/urine-hero.png",
     "alt": "Strong Cat Urine Smell in the Litter Box? Try This Layered Fix",
     "width": 1600,
     "height": 2000
   },
-  "categories": ["Odor Control"],
+  "categories": [
+    "Odor Control"
+  ],
   "tags": [
     "strong cat urine smell litter box",
     "cat litter smell elimination",
@@ -37,7 +39,7 @@
       "strong cat urine smell litter box",
       "ammonia odor control"
     ],
-    "ogImage": "/optimized/strong-cat-urine-smell.webp",
+    "ogImage": "/images/solutions/urine-hero.png",
     "canonical": "https://www.purrify.ca/blog/strong-cat-urine-smell-litter-box"
   },
   "readingTime": 4

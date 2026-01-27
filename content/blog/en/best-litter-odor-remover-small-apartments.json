@@ -12,7 +12,7 @@
   "modifiedDate": "2025-11-10T23:31:02.670Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/blog/apartment-cat-lifestyle.png",
+    "url": "/images/solutions/apartment-hero.png",
     "alt": "Best Cat Litter Odor Remover for Small Apartments: Urban Solutions",
     "width": 1600,
     "height": 1067
@@ -41,7 +41,7 @@
       "odor control cat litter small apartment"
     ],
     "canonical": "https://www.purrify.ca/blog/best-litter-odor-remover-small-apartments",
-    "ogImage": "/optimized/blog/apartment-cat-lifestyle.png"
+    "ogImage": "/images/solutions/apartment-hero.png"
   },
   "readingTime": 5
 }
