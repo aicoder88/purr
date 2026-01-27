@@ -53,7 +53,31 @@ function generateLatestBlogPosts(): BlogPost[] {
       author: 'Purrify Team',
       date: '2025-12-29',
       image: '/optimized/blog/scientific-odor-control.png',
-      link: '/blog/how-to-eliminate-cat-litter-smell-nasa-inspired-solution-actually-works'
+      link: '/blog/space-station-secret-fresh-home-cat-owners'
+    },
+    {
+      title: 'How to Get Rid of Cat Pee Smell in Apartment (Complete Guide)',
+      excerpt: "Cat pee smell in your apartment? Here's exactly how to eliminate the odor from carpet, hardwood, concrete, and walls—before your landlord notices or your deposit disappears.",
+      author: 'Purrify Team',
+      date: '2026-01-28',
+      image: '/optimized/blog/cat-litter-hero.jpg',
+      link: '/blog/how-to-get-rid-of-cat-pee-smell-apartment'
+    },
+    {
+      title: 'Fragrance-Free Litter Deodorizer (Why Your Cat Needs One)',
+      excerpt: "Strong fragrances are the #1 reason cats avoid their litter box. Here's why fragrance-free deodorizers work better—and how to eliminate odors without overwhelming your cat's sensitive nose.",
+      author: 'Purrify Team',
+      date: '2026-01-27',
+      image: '/optimized/benefits-hero-science.webp',
+      link: '/blog/fragrance-free-litter-deodorizer'
+    },
+    {
+      title: 'Safe Ways to Deodorize a Litter Box (Vet-Approved Methods)',
+      excerpt: "Worried about your cat's sensitive nose? Here are 7 vet-approved, non-toxic ways to eliminate litter box odor without risking your cat's health. No harsh chemicals, no overpowering scents.",
+      author: 'Purrify Team',
+      date: '2026-01-26',
+      image: '/optimized/science-diagram.webp',
+      link: '/blog/safe-ways-to-deodorize-litter-box'
     },
     {
       title: 'Why Your Home Still Smells Like Cat: The Chemistry Behind Persistent Odor (And the Industrial Fix)',
