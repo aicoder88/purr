@@ -15,7 +15,7 @@ export default function SummerLitterBoxSurvivalGuidePage() {
   const canonicalUrl = getLocalizedUrl('/blog/summer-litter-box-survival-guide', locale);
   const languageAlternates = buildLanguageAlternates('/blog/summer-litter-box-survival-guide');
 
-  const heroImage = '/images/solutions/ammonia-science.png';
+  const heroImage = '/optimized/blog/summer-hero.jpg';
 
   // HowTo steps for summer litter management
   const howToSteps = [

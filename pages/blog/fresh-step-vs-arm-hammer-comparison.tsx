@@ -14,7 +14,7 @@ export default function FreshStepVsArmHammerPage() {
   const canonicalUrl = getLocalizedUrl('/blog/fresh-step-vs-arm-hammer-comparison', locale);
   const languageAlternates = buildLanguageAlternates('/blog/fresh-step-vs-arm-hammer-comparison');
 
-  const heroImage = '/images/solutions/ammonia-science.png';
+  const heroImage = '/optimized/blog/masking-products-ghibli.png';
 
   // FAQ questions
   const faqQuestions = [
@@ -286,18 +286,18 @@ export default function FreshStepVsArmHammerPage() {
                   <li className="flex items-start gap-2">
                     <span className="text-blue-500 dark:text-blue-400">1.</span>
                     <span><strong>Activated Carbon:</strong> Their &quot;Carbon Plus&quot; formula contains small
-                    amounts of activated carbon mixed into the clay. This provides genuine adsorption,
-                    though the concentration is limited.</span>
+                      amounts of activated carbon mixed into the clay. This provides genuine adsorption,
+                      though the concentration is limited.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-blue-500 dark:text-blue-400">2.</span>
                     <span><strong>Fragrance Masking:</strong> Strong scents (including Febreze variants)
-                    cover up remaining odor that the carbon doesn&apos;t catch.</span>
+                      cover up remaining odor that the carbon doesn&apos;t catch.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-blue-500 dark:text-blue-400">3.</span>
                     <span><strong>Tight Clumping:</strong> Fast, hard clumps contain urine and reduce
-                    odor spread through the litter.</span>
+                      odor spread through the litter.</span>
                   </li>
                 </ul>
               </div>
@@ -313,17 +313,17 @@ export default function FreshStepVsArmHammerPage() {
                   <li className="flex items-start gap-2">
                     <span className="text-orange-500 dark:text-orange-400">1.</span>
                     <span><strong>Baking Soda:</strong> Sodium bicarbonate can neutralize some acids,
-                    but its effectiveness against ammonia is limited (10-15% reduction at best).</span>
+                      but its effectiveness against ammonia is limited (10-15% reduction at best).</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-orange-500 dark:text-orange-400">2.</span>
                     <span><strong>Fragrance Masking:</strong> Like Fresh Step, strong scents cover
-                    what the baking soda can&apos;t neutralize.</span>
+                      what the baking soda can&apos;t neutralize.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-orange-500 dark:text-orange-400">3.</span>
                     <span><strong>&quot;Seal Technology&quot;:</strong> Proprietary clumping formulation that
-                    encapsulates urine quickly to contain odor.</span>
+                      encapsulates urine quickly to contain odor.</span>
                   </li>
                 </ul>
               </div>
@@ -429,22 +429,22 @@ export default function FreshStepVsArmHammerPage() {
                 <li className="flex items-start gap-2">
                   <span className="text-green-500 dark:text-green-400">✓</span>
                   <span><strong>Concentrated Formula:</strong> Dedicated carbon additives have 10-20x more
-                  active surface area per gram than carbon mixed into litter</span>
+                    active surface area per gram than carbon mixed into litter</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-green-500 dark:text-green-400">✓</span>
                   <span><strong>Top Layer Placement:</strong> Carbon on top intercepts ammonia as it rises,
-                  before it reaches your nose</span>
+                    before it reaches your nose</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-green-500 dark:text-green-400">✓</span>
                   <span><strong>No Cat Preference Issues:</strong> Your cat uses their familiar litter;
-                  the carbon sits on top without affecting texture</span>
+                    the carbon sits on top without affecting texture</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-green-500 dark:text-green-400">✓</span>
                   <span><strong>Cost-Effective:</strong> Adding carbon to budget litter often outperforms
-                  expensive premium brands</span>
+                    expensive premium brands</span>
                 </li>
               </ul>
             </div>

@@ -14,7 +14,7 @@ export default function BestOdorControlLitter2026Page() {
   const canonicalUrl = getLocalizedUrl('/blog/best-odor-control-litter-2026', locale);
   const languageAlternates = buildLanguageAlternates('/blog/best-odor-control-litter-2026');
 
-  const heroImage = '/images/solutions/litter-box-hero.png';
+  const heroImage = '/optimized/standard-hero-828w.webp';
 
   // FAQ questions
   const faqQuestions = [

@@ -9,7 +9,7 @@ import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 import { StructuredDataGenerator } from '../../src/lib/seo/structured-data-generator';
 
 // Relevant images for small apartment cat odor control
-const heroImage = '/blog/small-apartment/hero.png';
+const heroImage = '/optimized/blog/apartment-cat-lifestyle.png';
 const heroImageOg = 'https://www.purrify.ca/blog/small-apartment/hero.png';
 const ventilationImage = '/blog/small-apartment/ventilation.png';
 const spaceImage = '/blog/small-apartment/placement.png';

@@ -15,7 +15,7 @@ export default function EmbarrassedGuestsVisitCatLitterSmellPage() {
   const canonicalUrl = getLocalizedUrl('/blog/embarrassed-guests-visit-cat-litter-smell', locale);
   const languageAlternates = buildLanguageAlternates('/blog/embarrassed-guests-visit-cat-litter-smell');
 
-  const heroImage = '/optimized/blog/welcoming-guests-ghibli.png';
+  const heroImage = '/optimized/blog/embarrassed-hero.jpg';
   const livingRoomImage = '/optimized/blog/airy-living-room-ghibli.png';
   const cleanHomeImage = '/optimized/blog/sparkling-clean-home-ghibli.png';
 
@@ -240,10 +240,10 @@ export default function EmbarrassedGuestsVisitCatLitterSmellPage() {
 
             {/* Added Ghibli Image */}
             <div className="my-12 text-center">
-              <Image 
-                src={livingRoomImage} 
-                alt="Airy, fresh living room with open windows in Ghibli style" 
-                width={1200} 
+              <Image
+                src={livingRoomImage}
+                alt="Airy, fresh living room with open windows in Ghibli style"
+                width={1200}
                 height={675}
                 className="rounded-xl shadow-lg mx-auto"
               />
@@ -375,10 +375,10 @@ export default function EmbarrassedGuestsVisitCatLitterSmellPage() {
 
             {/* Added Ghibli Image */}
             <div className="mb-8">
-              <Image 
-                src={cleanHomeImage} 
-                alt="Sparkling clean home with happy cat in Ghibli style" 
-                width={1200} 
+              <Image
+                src={cleanHomeImage}
+                alt="Sparkling clean home with happy cat in Ghibli style"
+                width={1200}
                 height={675}
                 className="rounded-xl shadow-lg w-full"
               />

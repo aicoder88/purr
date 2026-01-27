@@ -14,7 +14,7 @@ export default function CatLitterAdditiveComparison2026Page() {
   const canonicalUrl = getLocalizedUrl('/blog/cat-litter-additive-comparison-2026', locale);
   const languageAlternates = buildLanguageAlternates('/blog/cat-litter-additive-comparison-2026');
 
-  const heroImage = '/images/solutions/ammonia-science.png';
+  const heroImage = '/optimized/blog/powder-spray-comparison-ghibli.png';
 
   // FAQ questions
   const faqQuestions = [
@@ -265,11 +265,10 @@ export default function CatLitterAdditiveComparison2026Page() {
                     <tr key={additive.name} className={index % 2 === 0 ? '' : 'bg-gray-50 dark:bg-gray-700/50'}>
                       <td className="px-3 py-3 font-medium text-gray-900 dark:text-gray-100">{additive.name}</td>
                       <td className="px-3 py-3 text-center text-gray-700 dark:text-gray-200">{additive.mechanism}</td>
-                      <td className={`px-3 py-3 text-center font-bold ${
-                        additive.ammoniaReduction === '92%' ? 'text-green-600 dark:text-green-400' :
-                        additive.ammoniaReduction === '0%' ? 'text-red-600 dark:text-red-400' :
-                        'text-yellow-600 dark:text-yellow-400'
-                      }`}>{additive.ammoniaReduction}</td>
+                      <td className={`px-3 py-3 text-center font-bold ${additive.ammoniaReduction === '92%' ? 'text-green-600 dark:text-green-400' :
+                          additive.ammoniaReduction === '0%' ? 'text-red-600 dark:text-red-400' :
+                            'text-yellow-600 dark:text-yellow-400'
+                        }`}>{additive.ammoniaReduction}</td>
                       <td className="px-3 py-3 text-center text-gray-700 dark:text-gray-200">{additive.duration}</td>
                       <td className="px-3 py-3 text-center">
                         <span className="text-yellow-500 dark:text-yellow-400">{'★'.repeat(additive.rating)}{'☆'.repeat(5 - additive.rating)}</span>
@@ -291,10 +290,9 @@ export default function CatLitterAdditiveComparison2026Page() {
 
             <div className="space-y-8">
               {additiveTypes.map((additive, index) => (
-                <div key={additive.name} className={`rounded-xl p-6 border ${
-                  index === 0 ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700' :
-                  'bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600'
-                }`}>
+                <div key={additive.name} className={`rounded-xl p-6 border ${index === 0 ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700' :
+                    'bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600'
+                  }`}>
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
@@ -503,22 +501,22 @@ export default function CatLitterAdditiveComparison2026Page() {
                 <li className="flex items-start gap-2">
                   <span className="text-red-500 dark:text-red-400">✗</span>
                   <span><strong>Fragrance-only products:</strong> They mask but don&apos;t eliminate. The ammonia
-                  is still there, and the combination often smells worse than either alone.</span>
+                    is still there, and the combination often smells worse than either alone.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-red-500 dark:text-red-400">✗</span>
                   <span><strong>Heavily scented additives:</strong> Strong fragrances can deter cats from using
-                  the litter box. Unscented or lightly scented products are safer.</span>
+                    the litter box. Unscented or lightly scented products are safer.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-red-500 dark:text-red-400">✗</span>
                   <span><strong>Clay-based &quot;deodorizers&quot;:</strong> Unless they contain activated carbon,
-                  clay additives don&apos;t provide meaningful odor control—they&apos;re essentially just more litter.</span>
+                    clay additives don&apos;t provide meaningful odor control—they&apos;re essentially just more litter.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-red-500 dark:text-red-400">✗</span>
                   <span><strong>Products with vague claims:</strong> &quot;Eliminates odor&quot; without explaining
-                  how is a red flag. Look for specific mechanisms (adsorption, enzyme action, etc.).</span>
+                    how is a red flag. Look for specific mechanisms (adsorption, enzyme action, etc.).</span>
                 </li>
               </ul>
             </div>

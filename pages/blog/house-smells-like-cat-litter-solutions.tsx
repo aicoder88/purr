@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 
 // Relevant images for cat litter odor control
-const heroImage = '/optimized/house-smells-cat-litter.webp';
+const heroImage = '/optimized/safe-cat-litter.webp';
 const heroImageOg = 'https://www.purrify.ca/optimized/house-smells-cat-litter.webp';
 const litterBoxImage = '/optimized/multi-cat-household.webp';
 const ventilationImage = '/optimized/catonbed.avif';

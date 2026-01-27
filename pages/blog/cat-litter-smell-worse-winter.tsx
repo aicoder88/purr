@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 
 // High-quality images for winter, closed windows, and fresh solutions
-const heroImage = '/optimized/winter-cat-window.png';
+const heroImage = '/optimized/blog/winter-fresh-cat.png';
 const closedWindowImage = '/optimized/frosted-winter-window.png';
 const solutionImage = '/optimized/happy-cat-fresh-home.webp';
 
