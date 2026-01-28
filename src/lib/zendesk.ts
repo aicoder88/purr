@@ -11,10 +11,10 @@ import * as Sentry from '@sentry/nextjs';
 
 // Zendesk Configuration
 const ZENDESK_CONFIG = {
-  subdomain: process.env.ZENDESK_SUBDOMAIN || 'purrifyca',
-  email: process.env.ZENDESK_EMAIL || 'hello@purrify.ca',
-  apiToken: process.env.ZENDESK_API_TOKEN || '',
-  baseUrl: `https://${process.env.ZENDESK_SUBDOMAIN || 'purrifyca'}.zendesk.com/api/v2`,
+  subdomain: (process.env.ZENDESK_SUBDOMAIN || 'purrifyca').trim(),
+  email: (process.env.ZENDESK_EMAIL || 'hello@purrify.ca').trim(),
+  apiToken: (process.env.ZENDESK_API_TOKEN || '').trim(),
+  baseUrl: `https://${(process.env.ZENDESK_SUBDOMAIN || 'purrifyca').trim()}.zendesk.com/api/v2`,
 };
 
 // Check if Zendesk is properly configured

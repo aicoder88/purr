@@ -228,7 +228,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Do covered litter boxes really contain odour better than open ones? We examine the pros and cons of enclosed boxes and reveal the science behind true odour elimination.',
       author: 'Purrify Team',
       date: '2026-01-03',
-      image: '/optimized/cat_rose_thumbnail.webp',
+      image: '/optimized/covered-litter-box-hero.png',
       link: '/blog/best-covered-litter-boxes-odor-control'
     },
     {
