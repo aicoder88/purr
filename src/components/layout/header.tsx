@@ -365,18 +365,18 @@ export function Header() {
               className="flex items-center space-x-2 flex-shrink-0"
             >
               <Image
-                src="/optimized/logo-text-240.webp"
+                src="/logo-light.png"
                 alt="Purrify - Premium Activated Carbon Cat Litter Additive - Home"
-                width={480}
-                height={220}
+                width={120}
+                height={40}
                 priority
                 className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
               />
               <Image
-                src="/optimized/purrify-dark-mode-logo.webp"
+                src="/logo-dark.png"
                 alt="Purrify - Premium Activated Carbon Cat Litter Additive - Home"
-                width={480}
-                height={220}
+                width={120}
+                height={40}
                 priority
                 className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 hidden dark:block"
               />
@@ -395,9 +395,9 @@ export function Header() {
                       data-menu-id={item.id}
                       aria-expanded={
                         (item.id === "products" && isProductsDropdownOpen) ||
-                        (item.id === "retailers" && isRetailersDropdownOpen) ||
-                        (item.id === "learn" && isLearnDropdownOpen) ||
-                        (item.id === "about" && isAboutDropdownOpen)
+                          (item.id === "retailers" && isRetailersDropdownOpen) ||
+                          (item.id === "learn" && isLearnDropdownOpen) ||
+                          (item.id === "about" && isAboutDropdownOpen)
                           ? "true"
                           : "false"
                       }
@@ -414,33 +414,33 @@ export function Header() {
                       (item.id === "retailers" && isRetailersDropdownOpen) ||
                       (item.id === "learn" && isLearnDropdownOpen) ||
                       (item.id === "about" && isAboutDropdownOpen)) && (
-                      <div
-                        className="absolute top-full left-0 mt-1 bg-white dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 z-50 w-64 max-h-96 overflow-y-auto p-2"
-                        role="menu"
-                        aria-labelledby={`dropdown-${item.id}`}
-                        data-dropdown
-                      >
-                        {item.dropdownItems?.map((dropdownItem) =>
-                          dropdownItem.isGroupHeader ? (
-                            <div
-                              key={dropdownItem.label}
-                              className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2 first:mt-0"
-                            >
-                              {dropdownItem.label}
-                            </div>
-                          ) : (
-                            <Link
-                              key={dropdownItem.label}
-                              href={dropdownItem.href || ""}
-                              className={`block py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 focus:text-brand-red dark:focus:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:ring-offset-1 ${dropdownItem.indent ? "pl-6" : "px-4"}`}
-                              role="menuitem"
-                            >
-                              {dropdownItem.label}
-                            </Link>
-                          ),
-                        )}
-                      </div>
-                    )}
+                        <div
+                          className="absolute top-full left-0 mt-1 bg-white dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 z-50 w-64 max-h-96 overflow-y-auto p-2"
+                          role="menu"
+                          aria-labelledby={`dropdown-${item.id}`}
+                          data-dropdown
+                        >
+                          {item.dropdownItems?.map((dropdownItem) =>
+                            dropdownItem.isGroupHeader ? (
+                              <div
+                                key={dropdownItem.label}
+                                className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2 first:mt-0"
+                              >
+                                {dropdownItem.label}
+                              </div>
+                            ) : (
+                              <Link
+                                key={dropdownItem.label}
+                                href={dropdownItem.href || ""}
+                                className={`block py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 focus:text-brand-red dark:focus:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:ring-offset-1 ${dropdownItem.indent ? "pl-6" : "px-4"}`}
+                                role="menuitem"
+                              >
+                                {dropdownItem.label}
+                              </Link>
+                            ),
+                          )}
+                        </div>
+                      )}
                   </>
                 ) : (
                   <Link
