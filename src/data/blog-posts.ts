@@ -60,7 +60,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "Cat pee smell in your apartment? Here's exactly how to eliminate the odor from carpet, hardwood, concrete, and walls—before your landlord notices or your deposit disappears.",
       author: 'Purrify Team',
       date: '2026-01-28',
-      image: '/optimized/blog/cat-litter-hero.jpg',
+      image: '/optimized/blog/cat-litter-hero.png',
       link: '/blog/how-to-get-rid-of-cat-pee-smell-apartment'
     },
     {
@@ -277,7 +277,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Discover proven methods to keep your home fresh and odor-free with natural cat litter deodorizing solutions. Learn how activated carbon technology can transform your cat care routine.',
       author: 'Purrify Team',
       date: '2024-11-09',
-      image: '/optimized/happy-cat-fresh-home.webp',
+      image: '/optimized/blog/fresh-home-hero-ghibli.png',
       link: '/blog/how-to-eliminate-cat-litter-odor'
     },
     {
@@ -317,7 +317,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'I tested every litter deodorizer frequency for 100 days to find the exact schedule that keeps ammonia under 5ppm. Here are the results for single and multi-cat homes.',
       author: 'Purrify Team',
       date: '2025-01-15',
-      image: '/optimized/blog/frequency-action.png',
+      image: '/optimized/blog/frequency-hero-ghibli.png',
       link: '/blog/litter-deodorizer-frequency-guide'
     },
     {
@@ -325,7 +325,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Discover why activated carbon is the most powerful odor absorber for cat litter. Learn the science behind ammonia control and how to layer Purrify for maximum effectiveness.',
       author: 'Purrify Team',
       date: '2024-11-09',
-      image: '/optimized/blog/science-molecule-lab.jpg',
+      image: '/optimized/blog/most-powerful-absorber-hero-ghibli.png',
       link: '/blog/most-powerful-odor-absorber'
     },
     {
@@ -381,7 +381,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Stop strong cat urine smell fast. Proven layered fix with airflow, hygiene tips, and activated carbon for instant freshness at home.',
       author: 'Purrify Team',
       date: '2025-11-09',
-      image: '/optimized/strong-cat-urine-smell.webp',
+      image: '/optimized/blog/strong-odor-hero-ghibli.png',
       link: '/blog/strong-cat-urine-smell-litter-box'
     },
     {
@@ -405,7 +405,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Step-by-step guide to using cat litter deodorizer correctly. Avoid common mistakes and maximize odor control with expert tips.',
       author: 'Purrify Team',
       date: '2024-01-15',
-      image: '/optimized/before-after.webp',
+      image: '/optimized/blog/applying-deodorizer-ghibli.png',
       link: '/blog/how-to-use-cat-litter-deodorizer'
     },
     {
@@ -413,7 +413,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Complete guide to using litter deodorizers with kittens. Learn when, how, and what products work best for tiny paws. Natural, chemical-free options!',
       author: 'Purrify Team',
       date: '2024-01-25',
-      image: '/optimized/deodorizers-with-kittens.webp',
+      image: '/optimized/blog/kitten-looking-curious-ghibli.png',
       link: '/blog/using-deodorizers-with-kittens'
     },
     {
