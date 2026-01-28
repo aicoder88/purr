@@ -460,33 +460,76 @@ export default function ActivatedCarbonBenefits() {
                 </p>
               </div>
 
-              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
-                Health Benefits Beyond Odor Control
-              </h3>
-
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">
+                Benefit #1: Respiratory Protection (The Vet's Perspective)
+              </h2>
               <p className="text-gray-700 dark:text-gray-200 mb-6">
-                Using an <strong>activated carbon litter additive</strong>{" "}
-                provides benefits beyond just odor elimination:
+                Consider the physics of the litter box. Your cat enters a small, often enclosed space. They dig around, releasing gas pockets, and then lower their nose to within inches of the waste. If your box smells "a little bad" to you standing 5 feet away, it is likely a <strong>toxic gas chamber</strong> for your cat.
               </p>
 
-              <ul className="list-disc pl-6 mb-6 text-gray-700 dark:text-gray-200">
-                <li>
-                  <strong>Improved Air Quality:</strong> Removes harmful
-                  volatile compounds from the air
-                </li>
-                <li>
-                  <strong>Reduced Allergens:</strong> Captures airborne
-                  particles that can trigger allergies
-                </li>
-                <li>
-                  <strong>No Added Fragrances:</strong> Fragrance- and dye-free
-                  odor control
-                </li>
-                <li>
-                  <strong>Respiratory Health:</strong> Cleaner air is better for
-                  both cats and humans
-                </li>
-              </ul>
+              <div className="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg mb-8 border-l-4 border-red-500">
+                <h3 className="font-bold text-red-900 dark:text-red-100 mb-2">The Ammonia Threat</h3>
+                <p className="text-red-800 dark:text-red-200">
+                  Ammonia gas is defined as a respiratory irritant by OSHA. Prolonged exposure can cause:
+                </p>
+                <ul className="list-disc pl-6 mt-2 text-red-800 dark:text-red-200">
+                  <li>Chronic coughing or wheezing (feline asthma triggers)</li>
+                  <li>Eye discharge and inflammation</li>
+                  <li>Lethargy and stress</li>
+                </ul>
+              </div>
+
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">
+                Benefit #2: The Financial "Hack"
+              </h2>
+              <p className="text-gray-700 dark:text-gray-200 mb-6">
+                Why do we throw litter out? Usually not because it has lost its clumping ability, but because the <em>entire box smells contaminated</em>. By using activated carbon to trap odors, you can extend the life of your litter significantly.
+              </p>
+
+              <div className="overflow-x-auto mb-8">
+                <table className="min-w-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
+                  <thead className="bg-gray-100 dark:bg-gray-700">
+                    <tr>
+                      <th className="p-4 text-left font-bold text-gray-900 dark:text-gray-100">Scenario</th>
+                      <th className="p-4 text-left font-bold text-gray-900 dark:text-gray-100">Full Change Freq</th>
+                      <th className="p-4 text-left font-bold text-gray-900 dark:text-gray-100">Annual Cost</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b dark:border-gray-700">
+                      <td className="p-4 text-gray-700 dark:text-gray-300"><strong>Standard Litter</strong></td>
+                      <td className="p-4 text-gray-700 dark:text-gray-300">Every 2 weeks</td>
+                      <td className="p-4 text-gray-700 dark:text-gray-300">$312</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 text-gray-700 dark:text-gray-300"><strong>With Purrify</strong></td>
+                      <td className="p-4 text-gray-700 dark:text-gray-300">Every 6 weeks</td>
+                      <td className="p-4 text-gray-700 dark:text-gray-300">$104 (+ $40 Carbon)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">
+                Benefit #3: Environmental Impact
+              </h2>
+              <p className="text-gray-700 dark:text-gray-200 mb-6">
+                Clay litter is strip-mined and not biodegradable. By extending the life of your litter by 3x, you are effectively <strong>reducing your landfill contribution by 66%</strong>. Furthermore, Purrify's carbon is made from <strong>Coconut Shells</strong>—a renewable food byproduct.
+              </p>
+
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">
+                Common Questions
+              </h2>
+              <div className="space-y-4 mb-12">
+                <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                  <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Is it safe if my cat eats it?</h4>
+                  <p className="text-gray-600 dark:text-gray-300">Yes. Activated carbon is biologically inert. While we don't recommend it as a snack, ingesting small amounts while grooming is harmless.</p>
+                </div>
+                <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                  <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Does it work with pine or crystal litter?</h4>
+                  <p className="text-gray-600 dark:text-gray-300">Yes. Carbon works on contact with air and is substrate-independent. It works with clay, pine, corn, wheat, and crystal litters.</p>
+                </div>
+              </div>
 
               <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
                 How to Maximize Effectiveness

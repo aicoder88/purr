@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 
 // Relevant images for how-to guide content
-const heroImage = '/optimized/before-after.webp';
+const heroImage = '/optimized/blog/applying-deodorizer-ghibli.png';
 
 export default function HowToUseLitterDeodorizer() {
   const pageTitle = 'Cat Litter Deodorizer Additive: Step-by-Step Guide';
@@ -172,6 +172,11 @@ export default function HowToUseLitterDeodorizer() {
 
             {/* Article Content */}
             <div className="prose prose-lg max-w-none">
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Why "Sprinkle and Pray" Fails</h2>
+              <p className="text-gray-700 dark:text-gray-200 mb-6">
+                The most common mistake cat owners make is treating deodorizer like parmesan cheese on spaghetti—just dusting the very top. The problem? <strong>Gravity.</strong> Cat urine sinks to the bottom. If your deodorizer is sitting on the surface, it is miles away from the smell source. You need to get the carbon <em>into</em> the litter matrix.
+              </p>
+
               <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Step-by-Step Application Guide</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
@@ -230,14 +235,33 @@ export default function HowToUseLitterDeodorizer() {
                       This is the most critical step. Sprinkle the <Link href="/learn/activated-carbon-benefits" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-semibold">activated carbon litter additive</Link>
                       evenly across the entire litter surface. Use the following amounts:
                     </p>
-                    <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700 rounded-lg p-4 mb-4">
-                      <h4 className="font-bold text-yellow-900 dark:text-yellow-100 mb-2">📏 Recommended Amounts:</h4>
-                      <ul className="text-yellow-800 dark:text-yellow-200 space-y-1">
-                        <li><strong>Small litter box:</strong> 1 tablespoon</li>
-                        <li><strong>Medium litter box:</strong> 1.5 tablespoons</li>
-                        <li><strong>Large litter box:</strong> 2 tablespoons</li>
-                        <li><strong>Multiple cats:</strong> Add 0.5 tablespoon per additional cat (<Link href="/blog/multi-cat-litter-deodorizer-guide" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline">see our multi-cat guide</Link>)</li>
-                      </ul>
+                    <div className="overflow-x-auto mb-4">
+                      <table className="min-w-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 text-sm">
+                        <thead className="bg-gray-100 dark:bg-gray-700">
+                          <tr>
+                            <th className="p-3 text-left font-bold text-gray-900 dark:text-gray-100">Litter Box Size</th>
+                            <th className="p-3 text-left font-bold text-gray-900 dark:text-gray-100">Daily Top-Up</th>
+                            <th className="p-3 text-left font-bold text-gray-900 dark:text-gray-100">Full Change</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className="border-b dark:border-gray-700">
+                            <td className="p-3 text-gray-700 dark:text-gray-300">Standard (18" x 14")</td>
+                            <td className="p-3 text-gray-700 dark:text-gray-300">1 Tablespoon</td>
+                            <td className="p-3 text-gray-700 dark:text-gray-300">3 Tablespoons</td>
+                          </tr>
+                          <tr className="border-b dark:border-gray-700">
+                            <td className="p-3 text-gray-700 dark:text-gray-300">Large / Jumbo</td>
+                            <td className="p-3 text-gray-700 dark:text-gray-300">1.5 Tablespoons</td>
+                            <td className="p-3 text-gray-700 dark:text-gray-300">5 Tablespoons</td>
+                          </tr>
+                          <tr>
+                            <td className="p-3 text-gray-700 dark:text-gray-300">Multi-Cat Box</td>
+                            <td className="p-3 text-gray-700 dark:text-gray-300">2-3 Tablespoons</td>
+                            <td className="p-3 text-gray-700 dark:text-gray-300">6 Tablespoons</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
@@ -279,6 +303,16 @@ export default function HowToUseLitterDeodorizer() {
                   </div>
                 </div>
               </div>
+
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">The "Vertical Scent Trap": Understanding Airflow</h2>
+              <p className="text-gray-700 dark:text-gray-200 mb-6">
+                Ammonia gas is lighter than air (rising), while fecal odors are heavier (sinking). The "Sandwich Method" works because it targets both. By mixing carbon into the middle layer (trapping urine gas) and keeping a light dusting near the surface, you create a 3D filter that air must pass through before expanding into your home.
+              </p>
+
+              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Why Granule Size Matters</h2>
+              <p className="text-gray-700 dark:text-gray-200 mb-6">
+                Most cheap additives use "powder." While powder looks like it mixes well, it falls to the bottom instantly, leaving the top unprotected. Purrify uses a specific <strong>Granular Mesh Size</strong> matched to the density of clay litter. This ensures the carbon stays suspended throughout the box rather than settling, providing a 360-degree shield.
+              </p>
 
               <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Common Mistakes to Avoid</h2>
 

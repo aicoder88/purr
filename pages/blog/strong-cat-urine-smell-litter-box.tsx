@@ -214,6 +214,14 @@ export default function StrongCatUrineSmell() {
               </div>
             </section>
 
+            {/* Safety Warning from JSON */}
+            <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-6 mb-12">
+              <h4 className="font-bold text-red-900 dark:text-red-100 mb-2">⚠️ Safety Alert: Bleach vs. Enzyme Cleaners</h4>
+              <p className="text-red-800 dark:text-red-200">
+                Cat urine contains ammonia. Bleach contains sodium hypochlorite. Mixing them creates <strong>Chloramine Gas</strong>, which can cause coughing, nausea, and lung damage. Never use bleach on cat urine. Instead, use an <strong>Enzymatic Cleaner</strong> to break down the urea.
+              </p>
+            </div>
+
             <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-200 prose-headings:text-gray-900 dark:prose-headings:text-gray-50 prose-strong:text-gray-900 dark:prose-strong:text-gray-50 prose-a:text-[#5B2EFF] dark:prose-a:text-[#C4B5FD]">
               <h2>The Science Behind “My House Smells Like Cat Urine”</h2>
               <p>
@@ -255,6 +263,19 @@ export default function StrongCatUrineSmell() {
                   </p>
                 </div>
               </div>
+
+              <h2>Medical Causes: When to Call the Vet</h2>
+              <p>
+                Sometimes, the smell isn't about the box; it's about the cat. If the urine smell has suddenly become sharper or sweeter, it could indicate health issues:
+              </p>
+              <ul className="list-disc pl-6 mb-8">
+                <li><strong>Dehydration:</strong> Highly concentrated urine smells stronger.</li>
+                <li><strong>UTI:</strong> Bacteria in the bladder produces foul-smelling urine.</li>
+                <li><strong>Diabetes:</strong> Often results in sweet-smelling or sticky urine.</li>
+              </ul>
+              <figure className="my-8">
+                <Image src="/optimized/blog/vet-check-reminder.jpg" alt="Vet examining a cat illustration" width={800} height={500} className="w-full rounded-lg shadow-lg" />
+              </figure>
 
               <h2>Layered Freshness Routine</h2>
               <p>
@@ -310,6 +331,16 @@ export default function StrongCatUrineSmell() {
               <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
                 Keep the litter box in a ventilated corner where air can escape,
                 not in a sealed laundry closet
+              </p>
+            </div>
+
+            <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-200 prose-headings:text-gray-900 dark:prose-headings:text-gray-50 prose-strong:text-gray-900 dark:prose-strong:text-gray-50 prose-a:text-[#5B2EFF] dark:prose-a:text-[#C4B5FD]">
+              <h2>The Hidden Culprit: Your Litter Box Material</h2>
+              <p>
+                Most people use plastic litter boxes. The problem? <strong>Plastic is porous.</strong> Every time your cat scratches the bottom, they create microscopic grooves where bacteria hide.
+              </p>
+              <p>
+                <strong>The Upgrade:</strong> Switch to a <strong>Stainless Steel Litter Box</strong>. Steel is non-porous, strictly resists scratching, and does not absorb odors. We often see a 50% reduction in permanent room odor just by switching materials.
               </p>
             </div>
 
@@ -396,6 +427,17 @@ export default function StrongCatUrineSmell() {
             </div>
 
             <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-200 prose-headings:text-gray-900 dark:prose-headings:text-gray-50 prose-strong:text-gray-900 dark:prose-strong:text-gray-50 prose-a:text-[#5B2EFF] dark:prose-a:text-[#C4B5FD]">
+
+              <h2>The "Scrape & Spray" Protocol for Caked-On Odor</h2>
+              <p>
+                If you find sticky clay-bricks at the bottom of the box, scooping isn't enough. That contact point is a bacteria breeding ground. <strong>The fix:</strong> Every time you scoop a bottom-clump, sprinkle Purrify specifically on that bare spot before covering it back up. This neutralizes the "leak" at the impact point.
+              </p>
+
+              <h2>Winter Ventilation Hacks</h2>
+              <p>
+                In winter, we seal homes tight, creating a "pressure cooker" for odors. Without fresh air exchange, ammonia cycles through the furnace. If you can't open a window, <strong>double your activated carbon application</strong>. This turns your litter box into an air filter, scrubbing the gas out of the atmosphere since your windows can't.
+              </p>
+
               <h2>Final Checklist Before Guests Arrive</h2>
               <ul>
                 <li>
@@ -428,7 +470,7 @@ export default function StrongCatUrineSmell() {
             </div>
           </div>
         </Container>
-      </article>
+      </article >
     </>
   );
 }

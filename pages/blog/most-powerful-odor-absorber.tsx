@@ -9,7 +9,7 @@ import { RelatedContent } from '@/components/seo/RelatedContent';
 import { generateJSONLD } from '../../src/lib/seo-utils';
 import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
 
-const heroImage = '/optimized/blog/science-molecule-lab.jpg';
+const heroImage = '/optimized/blog/most-powerful-absorber-hero-ghibli.png';
 const labImage = '/optimized/quality-control-lab.jpg';
 const layeringImage = '/optimized/blog/carbon-trapping-diagram-ghibli.png';
 const carbonMacroImage = '/optimized/micropores_magnified_view-828w.webp';

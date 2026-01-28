@@ -147,6 +147,17 @@ export default function ActivatedCarbonVsBakingSoda() {
                 </div>
               </div>
 
+              {/* NEW SECTION: The Chemistry Reality */}
+              <div className="my-16 bg-yellow-50 dark:bg-yellow-900/10 border-l-4 border-yellow-400 p-6 md:p-8 rounded-r-xl">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">The Ammonia Problem: Why Baking Soda Fails</h3>
+                <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                  Here's the critical issue that many cat owners don't realize: <strong>cat urine produces ammonia, which is alkaline</strong>.
+                </p>
+                <p className="text-lg text-gray-700 dark:text-gray-300">
+                  Baking soda (pH ~8.3) is also alkaline. Basic chemistry tells us that an alkaline substance cannot neutralize another alkaline substance—they simply don't react. It's like trying to cool hot water by adding more hot water.
+                </p>
+              </div>
+
               <h2 className="text-3xl font-bold mb-8 text-center">Head-to-Head Comparison</h2>
 
               <div className="overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg mb-16">
@@ -170,6 +181,56 @@ export default function ActivatedCarbonVsBakingSoda() {
                     <div className="text-center text-gray-500 dark:text-gray-400 text-sm md:text-base">{row.soda}</div>
                   </div>
                 ))}
+              </div>
+
+              {/* NEW SECTION: Real World Timeline */}
+              <div className="my-16">
+                <h2 className="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-gray-100">Real-World Testing Timeline</h2>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+                    <div className="text-forest-600 dark:text-forest-400 font-bold text-lg mb-2">Days 1-3</div>
+                    <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-3">Initial Performance</h4>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">Both perform reasonably well. Baking soda absorbs moisture and masks fresh scents. Carbon begins trapping molecules. Users are generally happy with either.</p>
+                  </div>
+                  <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-16 h-16 bg-orange-100 dark:bg-orange-900/20 rounded-bl-full -mr-4 -mt-4"></div>
+                    <div className="text-orange-600 dark:text-orange-400 font-bold text-lg mb-2">Days 4-7</div>
+                    <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-3">The Divergence</h4>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm"><strong>Baking soda fails.</strong> Ammonia levels rise, and the alkaline powder can't stop it. The "litter box smell" returns. Carbon continues working at 100% capacity.</p>
+                  </div>
+                  <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border-t-4 border-forest-500">
+                    <div className="text-forest-600 dark:text-forest-400 font-bold text-lg mb-2">Weeks 2-4</div>
+                    <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-3">Long-Term Reality</h4>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">Baking soda user must dump the whole box. Activated carbon user is still odor-free, as the massive surface area isn't even close to saturated yet.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* NEW SECTION: Cost Analysis */}
+              <div className="my-16 bg-gray-900 text-white rounded-2xl p-8 md:p-10 shadow-xl overflow-hidden relative">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-forest-500/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
+                <h2 className="text-3xl font-bold mb-6 relative z-10">Is Carbon Actually More Expensive?</h2>
+                <div className="grid md:grid-cols-2 gap-8 items-center relative z-10">
+                  <div className="space-y-4">
+                    <p className="text-gray-300 text-lg">
+                      While baking soda costs less upfront, you use 4x as much and have to change litter more often.
+                    </p>
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between p-3 bg-white/10 rounded-lg">
+                        <span>Baking Soda Strategy</span>
+                        <span className="text-red-300 font-mono">~$15/mo</span>
+                      </div>
+                      <div className="flex items-center justify-between p-3 bg-forest-500/20 border border-forest-500/50 rounded-lg">
+                        <span className="font-bold text-forest-300">Activated Carbon Strategy</span>
+                        <span className="text-green-300 font-mono font-bold">~$12/mo</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-6 bg-white/5 rounded-xl border border-white/10 text-sm text-gray-400 italic">
+                    "I used to buy the big bag of baking soda every month. Now I buy one jar of carbon additive basically once a quarter. It's actually cheaper."
+                    <div className="mt-2 not-italic font-bold text-gray-300">— Sarah J., Verified Buyer</div>
+                  </div>
+                </div>
               </div>
 
               <div className="my-16">

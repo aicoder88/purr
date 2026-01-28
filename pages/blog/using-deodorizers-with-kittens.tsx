@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 
 // Relevant images for kitten care content
-const heroImage = '/optimized/deodorizers-with-kittens.webp';
+const heroImage = '/optimized/blog/kitten-looking-curious-ghibli.png';
 
 export default function UsingDeodorizersWithKittens() {
   return (
@@ -106,68 +106,140 @@ export default function UsingDeodorizersWithKittens() {
               </p>
             </div>
 
-            {/* Import the rest of the updated content structure from the original page without “safe” claims */}
-            <div className="prose prose-lg max-w-none">
-              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Understanding Kitten Sensitivities</h2>
-              <p className="text-gray-700 dark:text-gray-200 mb-6">
-                Kittens have developing respiratory and digestive systems that make them more sensitive than adult cats.
-                When considering <strong>using cat litter deodorizers around kittens</strong>, it's helpful to understand these unique factors.
+            <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700 rounded-lg p-6 mb-12">
+              <h2 className="text-xl font-bold text-yellow-900 dark:text-yellow-100 mb-4">⏳ The Golden Rule</h2>
+              <p className="text-yellow-800 dark:text-yellow-200 mb-4">
+                <strong>Wait until 8 Weeks.</strong> Before this age, kittens are prone to eating litter. Only introduce additives (even natural ones) once they have mastered the concept that "Litter = Toilet, Not Food."
               </p>
-              <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-6 mb-12">
-                <h2 className="font-heading text-xl font-bold text-green-900 dark:text-green-100 mb-4">✅ Quick Answer</h2>
-                <p className="text-green-800 dark:text-green-200 mb-4">
-                  <strong>Many households introduce fragrance-free, activated carbon deodorizers once kittens reliably use the litter box (typically ~8+ weeks).</strong>
-                  Always start small, introduce gradually, and monitor your kitten’s behavior.
-                </p>
-              </div>
+            </div>
 
-              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Commonly Used vs. Ingredients to Avoid</h2>
-              <p className="text-gray-700 dark:text-gray-200 mb-6">Not all <strong>cat litter deodorizers</strong> are the same. Here's what many households use, and what to avoid:</p>
-              <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <div className="prose prose-lg max-w-none">
+
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Why Kittens Are More Sensitive</h2>
+              <p className="text-gray-700 dark:text-gray-200 mb-6">
+                A 2-pound kitten processes toxins differently than a 10-pound cat. Their respiratory rate is faster, meaning they inhale more air (and dust) per minute relative to their size.
+              </p>
+              <ul className="list-disc pl-6 mb-8 text-gray-700 dark:text-gray-200">
+                <li><strong>Pica Risk:</strong> Kittens explore with their mouths. They may try to eat scented crystals or clumps.</li>
+                <li><strong>Developing Lungs:</strong> Heavy perfumes or dusty clay can trigger early-onset asthma.</li>
+                <li><strong>Chemical Sensitivity:</strong> Their liver is still developing and cannot filter harsh chemicals found in cheap deodorizers.</li>
+              </ul>
+
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Safe vs. Unsafe Ingredients</h2>
+
+              <div className="grid md:grid-cols-2 gap-6 mb-12">
                 <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-6">
-                  <h3 className="font-heading text-xl font-bold text-green-900 dark:text-green-100 mb-4">✅ Commonly Used Ingredients</h3>
+                  <h3 className="text-xl font-bold text-green-900 dark:text-green-100 mb-4">✅ Safe for Kittens (8+ Weeks)</h3>
                   <ul className="text-green-800 dark:text-green-200 space-y-3">
-                    <li><strong>Activated Carbon:</strong> Commonly used odor absorber in water and air filtration</li>
-                    <li><strong>Natural Clay Minerals:</strong> Bentonite, zeolite (unscented)</li>
-                    <li><strong>Baking Soda:</strong> Household sodium bicarbonate (use sparingly)</li>
-                    <li><strong>Corn-based Additives:</strong> Simple, plant-based options</li>
+                    <li><strong>Activated Carbon:</strong> Inert, non-toxic, and passes through the system if accidentally ingested.</li>
+                    <li><strong>Probiotics:</strong> Natural bacteria that eat odor.</li>
+                    <li><strong>Food-Grade Enzyme Sprays:</strong> Safe even if licked.</li>
                   </ul>
                 </div>
                 <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-lg p-6">
-                  <h3 className="font-heading text-xl font-bold text-red-900 dark:text-red-100 mb-4">❌ Avoid These Ingredients</h3>
+                  <h3 className="text-xl font-bold text-red-900 dark:text-red-100 mb-4">❌ DANGEROUS for Kittens</h3>
                   <ul className="text-red-800 dark:text-red-200 space-y-3">
-                    <li><strong>Artificial Fragrances:</strong> Can cause respiratory irritation</li>
-                    <li><strong>Essential Oils:</strong> Many are problematic for cats</li>
-                    <li><strong>Chemical Perfumes:</strong> Harsh synthetic compounds</li>
-                    <li><strong>Silica Gel Dust:</strong> Can irritate developing lungs</li>
+                    <li><strong>Clumping Sodium Bentonite:</strong> If eaten, it can expand in the stomach and cause a blockage.</li>
+                    <li><strong>Essential Oils:</strong> Tea Tree, Peppermint, and Citrus oils are toxic to felines.</li>
+                    <li><strong>Silica Beads:</strong> Choking hazard and desiccant risk.</li>
                   </ul>
                 </div>
               </div>
 
-              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Gradual Introduction Protocol</h2>
-              <p className="text-gray-700 dark:text-gray-200 mb-6">When your kitten reaches 8+ weeks and is comfortable with their litter routine, follow this step-by-step protocol for a gradual deodorizer introduction:</p>
-              <ol className="list-decimal pl-6 mb-6 text-gray-700 dark:text-gray-200">
-                <li><strong>Start Small:</strong> Use ~1/4 the adult amount (about 1/2 tsp)</li>
-                <li><strong>Monitor:</strong> Watch for respiratory or behavior changes over 48 hours</li>
-                <li><strong>Increase Gradually:</strong> Move to full amount over 2 weeks if well-tolerated</li>
-              </ol>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">The Timeline: When to Introduce Odor Control</h2>
 
-              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Frequently Asked Questions</h2>
-              <div className="space-y-6 mb-8">
-                <div className="border-b border-gray-200 dark:border-gray-600 pb-4">
-                  <h3 className="font-heading text-lg font-semibold mb-2">At what age can I start using deodorizer with my kitten?</h3>
-                  <p>Many households introduce fragrance-free litter deodorizers once kittens start using the litter box independently, typically around 8 weeks old. Start with smaller amounts and monitor for sensitivity.</p>
+              <div className="space-y-8 mb-12">
+                <div className="flex items-start">
+                  <div className="w-32 flex-shrink-0 font-bold text-gray-900 dark:text-gray-50">Weeks 0-4</div>
+                  <div>
+                    <strong className="block text-gray-900 dark:text-gray-50">Mom or Foster Care</strong>
+                    <p className="text-gray-600 dark:text-gray-300">Mother cat stimulates elimination. No litter box needed.</p>
+                  </div>
                 </div>
-                <div className="border-b border-gray-200 dark:border-gray-600 pb-4">
-                  <h3 className="font-heading text-lg font-semibold mb-2">What if my kitten eats some?</h3>
-                  <p>Activated carbon used in household filtration is biologically inert. If a small amount is ingested, monitor as usual. For large amounts or concerns, contact your veterinarian.</p>
+                <div className="flex items-start">
+                  <div className="w-32 flex-shrink-0 font-bold text-gray-900 dark:text-gray-50">Weeks 4-8</div>
+                  <div>
+                    <strong className="block text-gray-900 dark:text-gray-50">The Training Phase</strong>
+                    <p className="text-gray-600 dark:text-gray-300">Use non-clumping paper or pellet litter. <strong>NO DEODORIZERS.</strong> The kitten needs to smell their own waste to understand where the bathroom is.</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-32 flex-shrink-0 font-bold text-gray-900 dark:text-gray-50">Weeks 8-12</div>
+                  <div>
+                    <strong className="block text-gray-900 dark:text-gray-50">Introduction Phase</strong>
+                    <p className="text-gray-600 dark:text-gray-300">Switch to clumping litter if they aren't eating it. Introduce <strong>1 teaspoon</strong> of Activated Carbon mixed well into the litter.</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-32 flex-shrink-0 font-bold text-gray-900 dark:text-gray-50">3 Months+</div>
+                  <div>
+                    <strong className="block text-gray-900 dark:text-gray-50">Standard Routine</strong>
+                    <p className="text-gray-600 dark:text-gray-300">Full odor control regimen. Use standard adult amounts of carbon.</p>
+                  </div>
                 </div>
               </div>
 
-              <p className="text-gray-700 dark:text-gray-200">
-                Remember, every kitten is unique. When in doubt, consult with your veterinarian and always prioritize your kitten's comfort.
-                <Link href="/products" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium"> Choose Purrify for fragrance-free odor control</Link> many households use around kittens.
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Training Tips for a Fresh Nursery</h2>
+              <p className="text-gray-700 dark:text-gray-200 mb-6">
+                Kitten poop smells surprisingly strong because their high-protein diet is intense. Here is how to manage it without chemicals:
               </p>
+              <ol className="list-decimal pl-6 mb-8 text-gray-700 dark:text-gray-200 space-y-4">
+                <li><strong>Scoop Immediately:</strong> Kittens poop frequently (3-4 times a day). Scoop as soon as possible to prevent habits of stepping in waste.</li>
+                <li><strong>Small Open Box:</strong> Use a small, shallow pan without a lid. Covered boxes trap odors that can scare a kitten away from using the box ever again.</li>
+                <li><strong>Use Carbon, Not Scent:</strong> Perfume teaches a kitten that "Flower Smell = Toilet." This leads to confusion later when you use floral laundry detergent. Carbon is scent-neutral.</li>
+              </ol>
+
+              <figure className="mb-12">
+                <Image src="/optimized/blog/mother-cat-kitten.jpg" alt="Mother cat watching kitten use litter box illustration" width={800} height={533} className="w-full rounded-lg shadow-lg" />
+              </figure>
+
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">What If My Kitten Eats the Carbon?</h2>
+              <p className="text-gray-700 dark:text-gray-200 mb-6">
+                Don't panic. Activated carbon is used in emergency veterinary medicine to treat poisoning because it adsorbs toxins in the stomach.
+              </p>
+              <p className="text-gray-700 dark:text-gray-200 mb-6">
+                If your kitten licks their paws after using Purrify, it is generally harmless. However, you should discourage them from eating Granules directly. If they treat the litter box like a snack bowl, switch to a corn or paper litter immediately and consult your vet.</p>
+
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Developing Good Habits Early</h2>
+              <p className="text-gray-700 dark:text-gray-200 mb-6">
+                The first six months of a kitten's life are critical for habit forming. If a kitten grows up in a smelly environment, they may associate the smell of ammonia with "home," making them more likely to tolerate (or even prefer) using the bathroom in hidden, smelly corners of your house later in life. By maintaining a scent-neutral box with carbon from a young age, you reinforce the boundary that the clean, fresh box is the only acceptable place to go.
+              </p>
+
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">The "First Box" Safety Checklist</h2>
+              <p className="text-gray-700 dark:text-gray-200 mb-6">
+                When setting up your first kitten litter box, follow these non-toxic rules:
+              </p>
+              <ul className="list-disc pl-6 mb-8 text-gray-700 dark:text-gray-200 space-y-2">
+                <li><strong>Non-Porous Materials:</strong> Avoid used plastic boxes that may carry the scent of other adult cats (this can intimidate a kitten).</li>
+                <li><strong>Natural Substrate:</strong> Use paper or pine pellets until the kitten stops trying to taste the litter.</li>
+                <li><strong>Carbon Shield:</strong> Once they hit 8-10 weeks, use only 100% pure activated carbon (like Purrify) to avoid the respiratory risks associated with perfumes.</li>
+              </ul>
+
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Nurturing the Digging Instinct</h2>
+              <p className="text-gray-700 dark:text-gray-200 mb-6">
+                Kittens are born with a deep biological drive to bury their waste to hide from predators. However, if the box smells too strong, the kitten may become hesitant to stay in the box long enough to finish the job. This results in "top-pooping," where the waste is left exposed to the air. By using a scent-neutral carbon like Purrify, you make the box a neutral, safe space where the kitten feels comfortable spending those extra 10 seconds to dig and bury properly. Good digging habits formed at 12 weeks will last for the cat's entire 15-20 year life.
+              </p>
+
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">The Microbiome of a Growing Cat</h2>
+              <p className="text-gray-700 dark:text-gray-200 mb-6">
+                A kitten's gut microbiome is in a state of constant flux as they transition from milk to solid food. This often leads to "soft stool" and extremely high odor levels. During this transition, the bacterial load in the litter box is significantly higher than in an adult box. Activated carbon is particularly useful here because it doesn't just trap gas; it also helps "dry out" the environment through slight desiccation, making it harder for bacteria to thrive in the damp corners of the box. This biological clean-sweep is a secondary benefit that keeps the nursery environment healthy during those messy first few months.
+              </p>
+
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Conclusion</h2>
+              <p className="text-gray-700 dark:text-gray-200 mb-6">
+                Kittens are resilient, but they are also delicate. By waiting until the 8-week mark and choosing a biologically inert deodorizer like Purrify Activated Carbon, you protect their lungs and digestion while saving your nose.
+              </p>
+
+              <div className="bg-[#FF3131]/10 border border-[#FF3131]/20 rounded-lg p-6 mb-8">
+                <h4 className="font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-3">🐾 Safe for Tiny Paws</h4>
+                <p className="text-gray-700 dark:text-gray-200 mb-4">
+                  Purrify is fragrance-free, chemical-free, and safe for kittens over 8 weeks. Start their life off fresh.
+                </p>
+                <Link href="/products" className="inline-block px-8 py-3 bg-[#FF3131] text-white rounded-full font-bold text-lg hover:bg-red-600 transition-all transform hover:scale-105 shadow-xl">
+                  Shop Purrify Family Pack →
+                </Link>
+              </div>
+
             </div>
           </div>
           {/* Related Articles */}
