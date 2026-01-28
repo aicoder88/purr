@@ -276,13 +276,13 @@ export default function ViralReport() {
                                             <span className="text-xs text-gray-500 italic">High Views</span>
                                         </td>
                                         <td className="p-6">
-                                            <a href="https://www.youtube.com/watch?v=f9N7_bFq70w" target="_blank" rel="noreferrer" className="stable-link text-xl">
-                                                "CLEAN Litter Box Secrets" ↗
+                                            <a href="https://www.youtube.com/watch?v=F_FtGyh536c" target="_blank" rel="noreferrer" className="stable-link text-xl">
+                                                "7 Cat Litter HACKS" ↗
                                             </a>
-                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: f9N7_bFq70w (Clean My Space)</span>
+                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: F_FtGyh536c (Rachel Fusaro)</span>
                                         </td>
-                                        <td className="p-6"><span className="bg-[#FF006E]/20 text-[#FF006E] px-3 py-1 rounded-full text-xs font-bold uppercase">Nose Blindness</span></td>
-                                        <td className="p-6 text-sm">Validates the owner's struggle. Uses a "Trusted Guide" persona to offer an immediate, tactical solution.</td>
+                                        <td className="p-6"><span className="bg-[#FF006E]/20 text-[#FF006E] px-3 py-1 rounded-full text-xs font-bold uppercase">Educational Hack</span></td>
+                                        <td className="p-6 text-sm">Actionable advice. "Hacks" formats always perform well because they promise high value for time invested.</td>
                                     </tr>
                                     {/* Video 2 */}
                                     <tr className="hover:bg-white/5 transition">
@@ -303,31 +303,31 @@ export default function ViralReport() {
                                     <tr className="hover:bg-white/5 transition">
                                         <td className="p-6">
                                             <span className="font-bold text-white block">YouTube</span>
-                                            <span className="text-xs text-gray-500 italic">3M+ Views</span>
+                                            <span className="text-xs text-gray-500 italic">High Engagement</span>
                                         </td>
                                         <td className="p-6">
-                                            <a href="https://www.youtube.com/watch?v=oo3qUwVJ-4g" target="_blank" rel="noreferrer" className="stable-link text-xl">
-                                                "A spicy cat named Mayonnaise" ↗
+                                            <a href="https://www.youtube.com/watch?v=dgtKz0eoU9k" target="_blank" rel="noreferrer" className="stable-link text-xl">
+                                                "Cleaning Cat Litter ASMR" ↗
                                             </a>
-                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: oo3qUwVJ-4g (Girl With The Dogs)</span>
+                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: dgtKz0eoU9k (ASMR Channel)</span>
                                         </td>
-                                        <td className="p-6"><span className="bg-[#3A86FF]/20 text-[#3A86FF] px-3 py-1 rounded-full text-xs font-bold uppercase">Viral Entertainment</span></td>
-                                        <td className="p-6 text-sm">Pure entertainment value. "Spicy" cats drive massive engagement through conflict and resolution.</td>
+                                        <td className="p-6"><span className="bg-[#3A86FF]/20 text-[#3A86FF] px-3 py-1 rounded-full text-xs font-bold uppercase">Sensory / Clean</span></td>
+                                        <td className="p-6 text-sm">Satisfies the "Cleanliness" desire. ASMR audio (scooping sounds) is a powerful, underutilized hook.</td>
                                     </tr>
                                     {/* Video 4 */}
                                     <tr className="hover:bg-white/5 transition">
                                         <td className="p-6">
                                             <span className="font-bold text-white block">YouTube</span>
-                                            <span className="text-xs text-gray-500 italic">1.4M Views</span>
+                                            <span className="text-xs text-gray-500 italic">Viral Ad</span>
                                         </td>
                                         <td className="p-6">
-                                            <a href="https://www.youtube.com/watch?v=N_GaQltINAs" target="_blank" rel="noreferrer" className="stable-link text-xl">
-                                                "Claude Can Talk" (Ad) ↗
+                                            <a href="https://www.youtube.com/watch?v=sO7u_66LqV4" target="_blank" rel="noreferrer" className="stable-link text-xl">
+                                                "Poop Fighter" ↗
                                             </a>
-                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: N_GaQltINAs (PrettyLitter)</span>
+                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: sO7u_66LqV4 (World's Best)</span>
                                         </td>
                                         <td className="p-6"><span className="bg-[#FFBE0B]/20 text-[#FFBE0B] px-3 py-1 rounded-full text-xs font-bold uppercase">Humor / Concept</span></td>
-                                        <td className="p-6 text-sm">High-concept "Talking Cat" ad. Immediately grabs attention with absurdity and humor.</td>
+                                        <td className="p-6 text-sm">Personifies the problem ("Poop"). High energy, fight-scene style editing makes it impossible to ignore.</td>
                                     </tr>
                                 </tbody>
                             </table>
