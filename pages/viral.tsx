@@ -329,6 +329,51 @@ export default function ViralReport() {
                                         <td className="p-6"><span className="bg-[#FFBE0B]/20 text-[#FFBE0B] px-3 py-1 rounded-full text-xs font-bold uppercase">Humor / Concept</span></td>
                                         <td className="p-6 text-sm">Personifies the problem ("Poop"). High energy, fight-scene style editing makes it impossible to ignore.</td>
                                     </tr>
+                                    {/* Video 5 */}
+                                    <tr className="hover:bg-white/5 transition">
+                                        <td className="p-6">
+                                            <span className="font-bold text-white block">YouTube</span>
+                                            <span className="text-xs text-gray-500 italic">1.4M Views</span>
+                                        </td>
+                                        <td className="p-6">
+                                            <a href="https://www.youtube.com/watch?v=N_GaQltINAs" target="_blank" rel="noreferrer" className="stable-link text-xl">
+                                                "Claude Can Talk" (Ad) ↗
+                                            </a>
+                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: N_GaQltINAs (PrettyLitter)</span>
+                                        </td>
+                                        <td className="p-6"><span className="bg-[#FFBE0B]/20 text-[#FFBE0B] px-3 py-1 rounded-full text-xs font-bold uppercase">Ad / Dialogue</span></td>
+                                        <td className="p-6 text-sm">The classic "Talking Cat". Script-heavy but works because the voice acting fits the cat's personality perfectly.</td>
+                                    </tr>
+                                    {/* Video 6 */}
+                                    <tr className="hover:bg-white/5 transition">
+                                        <td className="p-6">
+                                            <span className="font-bold text-white block">YouTube</span>
+                                            <span className="text-xs text-gray-500 italic">Viral Rage</span>
+                                        </td>
+                                        <td className="p-6">
+                                            <a href="https://www.youtube.com/watch?v=ymiLmSchqxM" target="_blank" rel="noreferrer" className="stable-link text-xl">
+                                                "Timo vs. Litter Robot" ↗
+                                            </a>
+                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: ymiLmSchqxM (Xiedubbel)</span>
+                                        </td>
+                                        <td className="p-6"><span className="bg-[#3A86FF]/20 text-[#3A86FF] px-3 py-1 rounded-full text-xs font-bold uppercase">Relatable Struggle</span></td>
+                                        <td className="p-6 text-sm">Shows the "Struggle" of technology. Viewers love seeing cats confused by human gadgets.</td>
+                                    </tr>
+                                    {/* Video 7 */}
+                                    <tr className="hover:bg-white/5 transition">
+                                        <td className="p-6">
+                                            <span className="font-bold text-white block">YouTube</span>
+                                            <span className="text-xs text-gray-500 italic">Review / React</span>
+                                        </td>
+                                        <td className="p-6">
+                                            <a href="https://www.youtube.com/watch?v=rZQqt6O6HaA" target="_blank" rel="noreferrer" className="stable-link text-xl">
+                                                "Cats React to Robot" ↗
+                                            </a>
+                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: rZQqt6O6HaA (ViralHog)</span>
+                                        </td>
+                                        <td className="p-6"><span className="bg-[#FF006E]/20 text-[#FF006E] px-3 py-1 rounded-full text-xs font-bold uppercase">Curiosity Gap</span></td>
+                                        <td className="p-6 text-sm">Pure reaction video. The hook is simply "What will the cat do?" which sustains attention.</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
