@@ -7,7 +7,7 @@ import { RelatedContent } from '@/components/seo/RelatedContent';
 import { Check, X, FlaskConical, Timer, Shield, Leaf } from 'lucide-react';
 
 // Optimized images
-const heroImage = '/optimized/activated-carbon-granules.jpg'; // Replaced chair image
+const heroImage = '/optimized/activated-carbon-vs-baking-soda-comparison.webp';
 const comparisonImage = '/optimized/carbon_magnified_image.webp';
 
 export default function ActivatedCarbonVsBakingSoda() {

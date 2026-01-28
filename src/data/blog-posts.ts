@@ -341,7 +341,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Baking soda failing? See why 89% switch to activated carbon. Shocking test reveals which works better for cat litter smell!',
       author: 'Purrify Team',
       date: '2024-01-15',
-      image: '/optimized/activated-carbon-vs-baking-soda.webp',
+      image: '/optimized/activated-carbon-vs-baking-soda-comparison.webp',
       link: '/blog/activated-carbon-vs-baking-soda-comparison'
     },
     {
