@@ -6,6 +6,7 @@ import { useTranslation } from '../../src/lib/translation-context';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 import { AIQuotableBlock } from '../../src/components/seo/AIQuotableBlock';
 import { RelatedQuestions } from '../../src/components/seo/RelatedQuestions';
+import { RelatedContent } from '../../src/components/seo/RelatedContent';
 
 export default function CatLitterAdditiveComparison2026Page() {
   const { locale } = useTranslation();
@@ -266,8 +267,8 @@ export default function CatLitterAdditiveComparison2026Page() {
                       <td className="px-3 py-3 font-medium text-gray-900 dark:text-gray-100">{additive.name}</td>
                       <td className="px-3 py-3 text-center text-gray-700 dark:text-gray-200">{additive.mechanism}</td>
                       <td className={`px-3 py-3 text-center font-bold ${additive.ammoniaReduction === '92%' ? 'text-green-600 dark:text-green-400' :
-                          additive.ammoniaReduction === '0%' ? 'text-red-600 dark:text-red-400' :
-                            'text-yellow-600 dark:text-yellow-400'
+                        additive.ammoniaReduction === '0%' ? 'text-red-600 dark:text-red-400' :
+                          'text-yellow-600 dark:text-yellow-400'
                         }`}>{additive.ammoniaReduction}</td>
                       <td className="px-3 py-3 text-center text-gray-700 dark:text-gray-200">{additive.duration}</td>
                       <td className="px-3 py-3 text-center">
@@ -291,7 +292,7 @@ export default function CatLitterAdditiveComparison2026Page() {
             <div className="space-y-8">
               {additiveTypes.map((additive, index) => (
                 <div key={additive.name} className={`rounded-xl p-6 border ${index === 0 ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700' :
-                    'bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600'
+                  'bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600'
                   }`}>
                   <div className="flex justify-between items-start mb-4">
                     <div>
@@ -611,28 +612,7 @@ export default function CatLitterAdditiveComparison2026Page() {
           </div>
         </section>
 
-        {/* Related Content */}
-        <section className="py-12 px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-              Related Articles
-            </h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              <Link href="/blog/best-odor-control-litter-2026" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Best Litter for Odor Control 2026</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Complete litter rankings</p>
-              </Link>
-              <Link href="/blog/activated-carbon-vs-zeolite" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Activated Carbon vs Zeolite</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Deep dive comparison</p>
-              </Link>
-              <Link href="/blog/fresh-step-vs-arm-hammer-comparison" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Fresh Step vs Arm &amp; Hammer</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Brand comparison</p>
-              </Link>
-            </div>
-          </div>
-        </section>
+        <RelatedContent currentUrl="/blog/cat-litter-additive-comparison-2026" />
       </div>
     </>
   );

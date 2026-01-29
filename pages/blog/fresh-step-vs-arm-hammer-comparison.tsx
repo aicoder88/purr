@@ -6,6 +6,7 @@ import { useTranslation } from '../../src/lib/translation-context';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 import { AIQuotableBlock } from '../../src/components/seo/AIQuotableBlock';
 import { RelatedQuestions } from '../../src/components/seo/RelatedQuestions';
+import { RelatedContent } from '../../src/components/seo/RelatedContent';
 
 export default function FreshStepVsArmHammerPage() {
   const { locale } = useTranslation();
@@ -547,28 +548,10 @@ export default function FreshStepVsArmHammerPage() {
           </div>
         </section>
 
-        {/* Related Content */}
-        <section className="py-12 px-4 bg-white dark:bg-gray-800">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-              Related Articles
-            </h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              <Link href="/blog/best-odor-control-litter-2026" className="bg-gray-50 dark:bg-gray-700 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Best Litter for Odor Control 2026</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Complete rankings guide</p>
-              </Link>
-              <Link href="/blog/activated-carbon-vs-zeolite" className="bg-gray-50 dark:bg-gray-700 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Activated Carbon vs Zeolite</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Odor control showdown</p>
-              </Link>
-              <Link href="/learn/how-activated-carbon-works" className="bg-gray-50 dark:bg-gray-700 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">How Activated Carbon Works</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">The science of adsorption</p>
-              </Link>
-            </div>
-          </div>
-        </section>
+        <RelatedContent
+          currentUrl="/blog/fresh-step-vs-arm-hammer-comparison"
+          className="bg-white dark:bg-gray-800"
+        />
       </div>
     </>
   );

@@ -3,6 +3,9 @@
  * Defines content hubs and their related spoke pages for internal linking
  */
 
+import { sampleBlogPosts } from '../../data/blog-posts';
+
+
 export interface TopicCluster {
   id: string;
   name: string;
@@ -139,12 +142,13 @@ export function getRelatedPages(
   maxResults: number = 5
 ): Array<{ url: string; title: string; type: 'hub' | 'spoke' }> {
   const cluster = getClusterForPage(pageUrl);
-  if (!cluster) return [];
+  // Removed early return to allow fallback logic
+  // if (!cluster) return [];
 
   const related: Array<{ url: string; title: string; type: 'hub' | 'spoke' }> = [];
 
   // If this is a spoke, always include the hub
-  if (cluster.spokes.includes(pageUrl)) {
+  if (cluster && cluster.spokes.includes(pageUrl)) {
     related.push({
       url: cluster.hubPage,
       title: cluster.name,
@@ -153,23 +157,60 @@ export function getRelatedPages(
   }
 
   // Add other spokes (excluding current page)
-  const otherSpokes = cluster.spokes.filter(url => url !== pageUrl);
+  if (cluster) {
+    const otherSpokes = cluster.spokes.filter(url => url !== pageUrl);
 
-  // Prioritize blog posts and learn pages over product pages
-  const sortedSpokes = otherSpokes.sort((a, b) => {
-    const aScore = a.includes('/blog/') ? 3 : a.includes('/learn/') ? 2 : 1;
-    const bScore = b.includes('/blog/') ? 3 : b.includes('/learn/') ? 2 : 1;
-    return bScore - aScore;
-  });
-
-  for (const spokeUrl of sortedSpokes) {
-    if (related.length >= maxResults) break;
-
-    related.push({
-      url: spokeUrl,
-      title: urlToTitle(spokeUrl),
-      type: 'spoke',
+    // Prioritize blog posts and learn pages over product pages
+    const sortedSpokes = otherSpokes.sort((a, b) => {
+      const aScore = a.includes('/blog/') ? 3 : a.includes('/learn/') ? 2 : 1;
+      const bScore = b.includes('/blog/') ? 3 : b.includes('/learn/') ? 2 : 1;
+      return bScore - aScore;
     });
+
+    for (const spokeUrl of sortedSpokes) {
+      if (related.length >= maxResults) break;
+
+      related.push({
+        url: spokeUrl,
+        title: urlToTitle(spokeUrl),
+        type: 'spoke',
+      });
+    }
+  }
+
+
+
+  // Check if we have enough related pages
+  if (related.length < maxResults) {
+    // Lazy load sampleBlogPosts to avoid potential circular dependencies or large initial bundle size if not needed
+    // However, since we need to return synchronously, we'll assume it's available or we need to import it at top level.
+    // For this implementation, we will import it at the top level.
+    // NOTE: See import addition at top of file. 
+
+    // Filter potential fallback posts
+    const fallbackPosts = sampleBlogPosts
+      .filter(post => {
+        // Exclude current page
+        if (post.link === pageUrl) return false;
+
+        // Exclude pages already in related list
+        if (related.some(r => r.url === post.link)) return false;
+
+        return true;
+      })
+      // Sort by date (newest first) - assuming they are already sorted or we sort them
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+    // Add fallback posts until we reach maxResults
+    for (const post of fallbackPosts) {
+      if (related.length >= maxResults) break;
+
+      related.push({
+        url: post.link,
+        title: post.title,
+        type: 'spoke' // Treat fallbacks as regular articles
+      });
+    }
   }
 
   return related.slice(0, maxResults);

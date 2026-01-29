@@ -6,6 +6,7 @@ import { useTranslation } from '../../src/lib/translation-context';
 import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
 import { AIQuotableBlock } from '../../src/components/seo/AIQuotableBlock';
 import { RelatedQuestions } from '../../src/components/seo/RelatedQuestions';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 
 export default function BestOdorControlLitter2026Page() {
   const { locale } = useTranslation();
@@ -607,27 +608,7 @@ export default function BestOdorControlLitter2026Page() {
         </section>
 
         {/* Related Content */}
-        <section className="py-12 px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-              Related Articles
-            </h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              <Link href="/learn/how-activated-carbon-works" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">How Activated Carbon Works</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">The science of odor elimination</p>
-              </Link>
-              <Link href="/learn/activated-carbon-vs-baking-soda-deodorizers" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Activated Carbon vs Baking Soda</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Which actually works better?</p>
-              </Link>
-              <Link href="/blog/activated-carbon-vs-zeolite" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Activated Carbon vs Zeolite</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Comparison of odor absorbers</p>
-              </Link>
-            </div>
-          </div>
-        </section>
+        <RelatedContent currentUrl="/blog/best-odor-control-litter-2026" />
       </div>
     </>
   );

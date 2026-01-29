@@ -7,6 +7,7 @@ import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-util
 import { HowToSection } from '../../src/components/seo/HowToSection';
 import { AIQuotableBlock } from '../../src/components/seo/AIQuotableBlock';
 import { RelatedQuestions } from '../../src/components/seo/RelatedQuestions';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 
 export default function EmbarrassedGuestsVisitCatLitterSmellPage() {
   const { locale } = useTranslation();
@@ -569,27 +570,7 @@ export default function EmbarrassedGuestsVisitCatLitterSmellPage() {
         </section>
 
         {/* Related Content */}
-        <section className="py-12 px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-              Related Articles
-            </h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              <Link href="/blog/why-house-smells-like-cat" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Why Does My House Smell Like Cat?</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Find hidden odor sources</p>
-              </Link>
-              <Link href="/blog/cat-litter-smell-wont-go-away" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Litter Smell Won&apos;t Go Away?</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Troubleshooting guide</p>
-              </Link>
-              <Link href="/learn/solutions/apartment-cat-smell-solution" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Apartment Odor Solutions</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Small space strategies</p>
-              </Link>
-            </div>
-          </div>
-        </section>
+        <RelatedContent currentUrl="/blog/embarrassed-guests-visit-cat-litter-smell" />
       </div>
     </>
   );

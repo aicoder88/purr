@@ -7,6 +7,7 @@ import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-util
 import { HowToSection } from '../../src/components/seo/HowToSection';
 import { AIQuotableBlock } from '../../src/components/seo/AIQuotableBlock';
 import { RelatedQuestions } from '../../src/components/seo/RelatedQuestions';
+import { RelatedContent } from '../../src/components/seo/RelatedContent';
 
 export default function LitterBoxSmellMakingSickPage() {
   const { locale } = useTranslation();
@@ -598,28 +599,10 @@ export default function LitterBoxSmellMakingSickPage() {
           </div>
         </section>
 
-        {/* Related Content */}
-        <section className="py-12 px-4 bg-white dark:bg-gray-800">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-              Related Articles
-            </h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              <Link href="/learn/ammonia-science" className="bg-gray-50 dark:bg-gray-700 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">The Science of Ammonia</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">How cat urine produces ammonia</p>
-              </Link>
-              <Link href="/learn/how-activated-carbon-works" className="bg-gray-50 dark:bg-gray-700 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">How Activated Carbon Works</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">The adsorption process explained</p>
-              </Link>
-              <Link href="/learn/solutions/senior-cat-litter-solutions" className="bg-gray-50 dark:bg-gray-700 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Senior Cat Solutions</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Older cats and stronger odors</p>
-              </Link>
-            </div>
-          </div>
-        </section>
+        <RelatedContent
+          currentUrl="/blog/litter-box-smell-making-sick"
+          className="bg-white dark:bg-gray-800"
+        />
       </div>
     </>
   );

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '../../src/components/ui/container';
 import { SITE_NAME } from '../../src/lib/constants';
+import { RelatedContent } from '../../src/components/seo/RelatedContent';
 
 /**
  * Blog Post: I Tried Every Litter Deodorizer Method for 90 Days—Here's What Actually Worked
@@ -498,53 +499,10 @@ export default function TriedEveryLitterDeodorizer90Days() {
                 </div>
               </section>
 
-              {/* Related Articles */}
-              <section className="mb-12">
-                <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">
-                  Related Articles
-                </h2>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <Link href="/learn/how-it-works" className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
-                    <h3 className="font-heading text-xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-2">
-                      How Activated Carbon Works
-                    </h3>
-                    <p className="text-gray-700 dark:text-gray-200">
-                      Deep dive into the science of odor molecule trapping
-                    </p>
-                  </Link>
-
-                  <Link href="/blog/activated-carbon-vs-baking-soda-comparison" className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
-                    <h3 className="font-heading text-xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-2">
-                      Activated Carbon vs Baking Soda
-                    </h3>
-                    <p className="text-gray-700 dark:text-gray-200">
-                      Complete technology comparison and effectiveness analysis
-                    </p>
-                  </Link>
-
-                  <Link href="/blog/multi-cat-litter-deodorizer-guide" className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
-                    <h3 className="font-heading text-xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-2">
-                      Multi-Cat Odor Control System
-                    </h3>
-                    <p className="text-gray-700 dark:text-gray-200">
-                      Complete strategy for households with 2+ cats
-                    </p>
-                  </Link>
-
-                  <Link href="/learn/solutions/ammonia-smell-cat-litter" className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
-                    <h3 className="font-heading text-xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-2">
-                      Ammonia Smell Solution Guide
-                    </h3>
-                    <p className="text-gray-700 dark:text-gray-200">
-                      Everything you need to know about eliminating ammonia odor
-                    </p>
-                  </Link>
-                </div>
-              </section>
             </div>
           </div>
         </Container>
+        <RelatedContent currentUrl="/blog/tried-every-litter-deodorizer-90-days-results" />
       </article>
     </>
   );
