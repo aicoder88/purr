@@ -223,7 +223,7 @@ const ProductsPage: NextPage = () => {
     description: pageDescription,
     targetKeyword: 'cat litter additive',
     keywords: ['Purrify products', 'cat litter additive', 'activated carbon', 'odor control', 'trial size', 'family pack'],
-    image: 'https://www.purrify.ca/purrify-logo.png',
+    image: 'https://www.purrify.ca/images/purrify-logo.png',
   });
 
   // Product data for complete structured data

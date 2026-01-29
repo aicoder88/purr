@@ -1076,97 +1076,97 @@ Generated: 2026-01-21T13:56:47.351Z
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-92. **/Users/macmini/dev/purr/public/blog/small-apartment/carbon.png**
+92. **/Users/macmini/dev/purr/public/images/carbon.png**
    - Type: images
    - Field: file-size
    - Message: Image file size (1354KB) exceeds recommended 500KB
    - Fix: Compress or optimize the image using image optimization tools
 
-93. **/Users/macmini/dev/purr/public/blog/small-apartment/happy-owner.png**
+93. **/Users/macmini/dev/purr/public/images/happy-owner.png**
    - Type: images
    - Field: file-size
    - Message: Image file size (1536KB) exceeds recommended 500KB
    - Fix: Compress or optimize the image using image optimization tools
 
-94. **/Users/macmini/dev/purr/public/blog/small-apartment/hero.png**
+94. **/Users/macmini/dev/purr/public/images/small-apartment-hero-original.png**
    - Type: images
    - Field: file-size
    - Message: Image file size (1649KB) exceeds recommended 500KB
    - Fix: Compress or optimize the image using image optimization tools
 
-95. **/Users/macmini/dev/purr/public/blog/small-apartment/placement.png**
+95. **/Users/macmini/dev/purr/public/images/placement.png**
    - Type: images
    - Field: file-size
    - Message: Image file size (2633KB) exceeds recommended 500KB
    - Fix: Compress or optimize the image using image optimization tools
 
-96. **/Users/macmini/dev/purr/public/blog/small-apartment/ventilation.png**
+96. **/Users/macmini/dev/purr/public/images/ventilation.png**
    - Type: images
    - Field: file-size
    - Message: Image file size (1446KB) exceeds recommended 500KB
    - Fix: Compress or optimize the image using image optimization tools
 
-97. **/Users/macmini/dev/purr/public/images/about/dr-michael-rodriguez.jpg**
+97. **/Users/macmini/dev/purr/public/images/dr-michael-rodriguez.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-98. **/Users/macmini/dev/purr/public/images/about/hero.png**
+98. **/Users/macmini/dev/purr/public/images/hero.png**
    - Type: images
    - Field: file-size
    - Message: Image file size (757KB) exceeds recommended 500KB
    - Fix: Compress or optimize the image using image optimization tools
 
-99. **/Users/macmini/dev/purr/public/images/about/mark-archer.jpg**
+99. **/Users/macmini/dev/purr/public/images/mark-archer.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-100. **/Users/macmini/dev/purr/public/images/about/mission.png**
+100. **/Users/macmini/dev/purr/public/images/mission.png**
    - Type: images
    - Field: file-size
    - Message: Image file size (687KB) exceeds recommended 500KB
    - Fix: Compress or optimize the image using image optimization tools
 
-101. **/Users/macmini/dev/purr/public/images/solutions/ammonia-fresh-home.png**
+101. **/Users/macmini/dev/purr/public/images/ammonia-fresh-home.png**
    - Type: images
    - Field: file-size
    - Message: Image file size (812KB) exceeds recommended 500KB
    - Fix: Compress or optimize the image using image optimization tools
 
-102. **/Users/macmini/dev/purr/public/images/solutions/ammonia-happy-cat.png**
+102. **/Users/macmini/dev/purr/public/images/ammonia-happy-cat.png**
    - Type: images
    - Field: file-size
    - Message: Image file size (796KB) exceeds recommended 500KB
    - Fix: Compress or optimize the image using image optimization tools
 
-103. **/Users/macmini/dev/purr/public/images/solutions/ammonia-hero.png**
+103. **/Users/macmini/dev/purr/public/images/ammonia-hero.png**
    - Type: images
    - Field: file-size
    - Message: Image file size (699KB) exceeds recommended 500KB
    - Fix: Compress or optimize the image using image optimization tools
 
-104. **/Users/macmini/dev/purr/public/images/solutions/ammonia-science.png**
+104. **/Users/macmini/dev/purr/public/images/ammonia-science.png**
    - Type: images
    - Field: file-size
    - Message: Image file size (750KB) exceeds recommended 500KB
    - Fix: Compress or optimize the image using image optimization tools
 
-105. **/Users/macmini/dev/purr/public/images/solutions/apartment-hero.png**
+105. **/Users/macmini/dev/purr/public/images/apartment-hero.png**
    - Type: images
    - Field: file-size
    - Message: Image file size (820KB) exceeds recommended 500KB
    - Fix: Compress or optimize the image using image optimization tools
 
-106. **/Users/macmini/dev/purr/public/images/solutions/apartment-living-room.png**
+106. **/Users/macmini/dev/purr/public/images/apartment-living-room.png**
    - Type: images
    - Field: file-size
    - Message: Image file size (633KB) exceeds recommended 500KB
    - Fix: Compress or optimize the image using image optimization tools
 
-107. **/Users/macmini/dev/purr/public/images/solutions/litter-box-hero.png**
+107. **/Users/macmini/dev/purr/public/images/litter-box-hero.png**
    - Type: images
    - Field: file-size
    - Message: Image file size (638KB) exceeds recommended 500KB
@@ -2012,133 +2012,133 @@ Generated: 2026-01-21T13:56:47.351Z
    - Message: Image file size (1097KB) exceeds recommended 500KB
    - Fix: Compress or optimize the image using image optimization tools
 
-248. **/Users/macmini/dev/purr/public/optimized/blog/90day-hero.jpg**
+248. **/Users/macmini/dev/purr/public/optimized/90day-hero.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-249. **/Users/macmini/dev/purr/public/optimized/blog/90day-problem.jpg**
+249. **/Users/macmini/dev/purr/public/optimized/90day-problem.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-250. **/Users/macmini/dev/purr/public/optimized/blog/90day-science.jpg**
+250. **/Users/macmini/dev/purr/public/optimized/90day-science.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-251. **/Users/macmini/dev/purr/public/optimized/blog/90day-solution.jpg**
+251. **/Users/macmini/dev/purr/public/optimized/90day-solution.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-252. **/Users/macmini/dev/purr/public/optimized/blog/cat-fresh-home-ammonia.jpg**
+252. **/Users/macmini/dev/purr/public/optimized/cat-fresh-home-ammonia.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-253. **/Users/macmini/dev/purr/public/optimized/blog/embarrassed-clean-home.jpg**
+253. **/Users/macmini/dev/purr/public/optimized/embarrassed-clean-home.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-254. **/Users/macmini/dev/purr/public/optimized/blog/embarrassed-guests.jpg**
+254. **/Users/macmini/dev/purr/public/optimized/embarrassed-guests.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-255. **/Users/macmini/dev/purr/public/optimized/blog/embarrassed-hero.jpg**
+255. **/Users/macmini/dev/purr/public/optimized/embarrassed-hero.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-256. **/Users/macmini/dev/purr/public/optimized/blog/embarrassed-relief.jpg**
+256. **/Users/macmini/dev/purr/public/optimized/embarrassed-relief.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-257. **/Users/macmini/dev/purr/public/optimized/blog/micropores-ammonia-trap.jpg**
+257. **/Users/macmini/dev/purr/public/optimized/micropores-ammonia-trap.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-258. **/Users/macmini/dev/purr/public/optimized/blog/molecular-structure-pore-800.png**
+258. **/Users/macmini/dev/purr/public/optimized/molecular-structure-pore-800.png**
    - Type: images
    - Field: file-size
    - Message: Image file size (825KB) exceeds recommended 500KB
    - Fix: Compress or optimize the image using image optimization tools
 
-259. **/Users/macmini/dev/purr/public/optimized/blog/science-molecule-lab.jpg**
+259. **/Users/macmini/dev/purr/public/optimized/science-molecule-lab.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-260. **/Users/macmini/dev/purr/public/optimized/blog/summer-heat.jpg**
+260. **/Users/macmini/dev/purr/public/optimized/summer-heat.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-261. **/Users/macmini/dev/purr/public/optimized/blog/summer-hero.jpg**
+261. **/Users/macmini/dev/purr/public/optimized/summer-hero.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-262. **/Users/macmini/dev/purr/public/optimized/blog/summer-relief.jpg**
+262. **/Users/macmini/dev/purr/public/optimized/summer-relief.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-263. **/Users/macmini/dev/purr/public/optimized/blog/summer-ventilation.jpg**
+263. **/Users/macmini/dev/purr/public/optimized/summer-ventilation.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-264. **/Users/macmini/dev/purr/public/optimized/blog/tried-failed.jpg**
+264. **/Users/macmini/dev/purr/public/optimized/tried-failed.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-265. **/Users/macmini/dev/purr/public/optimized/blog/tried-hero.jpg**
+265. **/Users/macmini/dev/purr/public/optimized/tried-hero.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-266. **/Users/macmini/dev/purr/public/optimized/blog/tried-relief.jpg**
+266. **/Users/macmini/dev/purr/public/optimized/tried-relief.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-267. **/Users/macmini/dev/purr/public/optimized/blog/tried-science.jpg**
+267. **/Users/macmini/dev/purr/public/optimized/tried-science.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-268. **/Users/macmini/dev/purr/public/optimized/images/140g.jpg**
+268. **/Users/macmini/dev/purr/public/optimized/140g.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression
    - Fix: Convert to WebP or AVIF using image optimization tools
 
-269. **/Users/macmini/dev/purr/public/optimized/images/fresh.jpg**
+269. **/Users/macmini/dev/purr/public/optimized/fresh.jpg**
    - Type: images
    - Field: format
    - Message: Consider using WebP or AVIF format for better compression

@@ -90,7 +90,7 @@ export default function StrongCatUrineSmell() {
               name: SITE_NAME,
               logo: {
                 "@type": "ImageObject",
-                url: "https://www.purrify.ca/purrify-logo.png",
+                url: "https://www.purrify.ca/images/purrify-logo.png",
               },
             },
             datePublished: "2024-02-01",
@@ -274,7 +274,7 @@ export default function StrongCatUrineSmell() {
                 <li><strong>Diabetes:</strong> Often results in sweet-smelling or sticky urine.</li>
               </ul>
               <figure className="my-8">
-                <Image src="/optimized/blog/vet-check-reminder.jpg" alt="Vet examining a cat illustration" width={800} height={500} className="w-full rounded-lg shadow-lg" />
+                <Image src="/optimized/vet-check-reminder.jpg" alt="Vet examining a cat illustration" width={800} height={500} className="w-full rounded-lg shadow-lg" />
               </figure>
 
               <h2>Layered Freshness Routine</h2>

@@ -541,7 +541,7 @@ async generateWithRetry(topic: string, maxAttempts: number = 3): Promise<Generat
   height={400}
   onError={(e) => {
     const target = e.target as HTMLImageElement;
-    target.src = '/purrify-logo.png';
+    target.src = '/images/purrify-logo.png';
   }}
 />
 ```

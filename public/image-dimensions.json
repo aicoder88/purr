@@ -1,41 +1,5 @@
 {
-  "icon-64.png": {
-    "width": 64,
-    "height": 64,
-    "webp": "optimized/icon-64.webp",
-    "webpSanitized": "optimized/icon-64.webp",
-    "avif": "optimized/icon-64.avif",
-    "avifSanitized": "optimized/icon-64.avif",
-    "optimized": "optimized/icon-64.png"
-  },
-  "icon-32.png": {
-    "width": 32,
-    "height": 32,
-    "webp": "optimized/icon-32.webp",
-    "webpSanitized": "optimized/icon-32.webp",
-    "avif": "optimized/icon-32.avif",
-    "avifSanitized": "optimized/icon-32.avif",
-    "optimized": "optimized/icon-32.png"
-  },
-  "icon-128.png": {
-    "width": 128,
-    "height": 128,
-    "webp": "optimized/icon-128.webp",
-    "webpSanitized": "optimized/icon-128.webp",
-    "avif": "optimized/icon-128.avif",
-    "avifSanitized": "optimized/icon-128.avif",
-    "optimized": "optimized/icon-128.png"
-  },
-  "apple-touch-icon.png": {
-    "width": 180,
-    "height": 180,
-    "webp": "optimized/apple-touch-icon.webp",
-    "webpSanitized": "optimized/apple-touch-icon.webp",
-    "avif": "optimized/apple-touch-icon.avif",
-    "avifSanitized": "optimized/apple-touch-icon.avif",
-    "optimized": "optimized/apple-touch-icon.png"
-  },
-  "blog/small-apartment/ventilation.png": {
+  "images/ventilation.png": {
     "width": 1024,
     "height": 1024,
     "webp": "optimized/ventilation.webp",
@@ -44,7 +8,43 @@
     "avifSanitized": "optimized/ventilation.avif",
     "optimized": "optimized/ventilation.png"
   },
-  "blog/small-apartment/placement.png": {
+  "images/team-avatar.png": {
+    "width": 64,
+    "height": 64,
+    "webp": "optimized/team-avatar.webp",
+    "webpSanitized": "optimized/team-avatar.webp",
+    "avif": "optimized/team-avatar.avif",
+    "avifSanitized": "optimized/team-avatar.avif",
+    "optimized": "optimized/team-avatar.png"
+  },
+  "images/social-share.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/social-share.webp",
+    "webpSanitized": "optimized/social-share.webp",
+    "avif": "optimized/social-share.avif",
+    "avifSanitized": "optimized/social-share.avif",
+    "optimized": "optimized/social-share.png"
+  },
+  "images/social-logo.png": {
+    "width": 400,
+    "height": 400,
+    "webp": "optimized/social-logo.webp",
+    "webpSanitized": "optimized/social-logo.webp",
+    "avif": "optimized/social-logo.avif",
+    "avifSanitized": "optimized/social-logo.avif",
+    "optimized": "optimized/social-logo.png"
+  },
+  "images/small-apartment-hero-original.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/small-apartment-hero-original.webp",
+    "webpSanitized": "optimized/small-apartment-hero-original.webp",
+    "avif": "optimized/small-apartment-hero-original.avif",
+    "avifSanitized": "optimized/small-apartment-hero-original.avif",
+    "optimized": "optimized/small-apartment-hero-original.png"
+  },
+  "images/placement.png": {
     "width": 1024,
     "height": 1024,
     "webp": "optimized/placement.webp",
@@ -53,7 +53,124 @@
     "avifSanitized": "optimized/placement.avif",
     "optimized": "optimized/placement.png"
   },
-  "blog/small-apartment/hero.png": {
+  "images/mission.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/mission.webp",
+    "webpSanitized": "optimized/mission.webp",
+    "avif": "optimized/mission.avif",
+    "avifSanitized": "optimized/mission.avif",
+    "optimized": "optimized/mission.png"
+  },
+  "images/mark-archer.jpg": {
+    "width": 682,
+    "height": 1024,
+    "webp": "optimized/mark-archer.webp",
+    "webpSanitized": "optimized/mark-archer.webp",
+    "avif": "optimized/mark-archer.avif",
+    "avifSanitized": "optimized/mark-archer.avif",
+    "optimized": "optimized/mark-archer.jpg"
+  },
+  "images/logo-light.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/logo-light.webp",
+    "webpSanitized": "optimized/logo-light.webp",
+    "avif": "optimized/logo-light.avif",
+    "avifSanitized": "optimized/logo-light.avif",
+    "optimized": "optimized/logo-light.png"
+  },
+  "images/logo-dark.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/logo-dark.webp",
+    "webpSanitized": "optimized/logo-dark.webp",
+    "avif": "optimized/logo-dark.avif",
+    "avifSanitized": "optimized/logo-dark.avif",
+    "optimized": "optimized/logo-dark.png"
+  },
+  "images/litter-box-hero.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/litter-box-hero.webp",
+    "webpSanitized": "optimized/litter-box-hero.webp",
+    "avif": "optimized/litter-box-hero.avif",
+    "avifSanitized": "optimized/litter-box-hero.avif",
+    "optimized": "optimized/litter-box-hero.png"
+  },
+  "images/icon-64.png": {
+    "width": 64,
+    "height": 64,
+    "webp": "optimized/icon-64.webp",
+    "webpSanitized": "optimized/icon-64.webp",
+    "avif": "optimized/icon-64.avif",
+    "avifSanitized": "optimized/icon-64.avif",
+    "optimized": "optimized/icon-64.png"
+  },
+  "images/icon-64-root.png": {
+    "width": 64,
+    "height": 64,
+    "webp": "optimized/icon-64-root.webp",
+    "webpSanitized": "optimized/icon-64-root.webp",
+    "avif": "optimized/icon-64-root.avif",
+    "avifSanitized": "optimized/icon-64-root.avif",
+    "optimized": "optimized/icon-64-root.png"
+  },
+  "images/icon-512.png": {
+    "width": 512,
+    "height": 512,
+    "webp": "optimized/icon-512.webp",
+    "webpSanitized": "optimized/icon-512.webp",
+    "avif": "optimized/icon-512.avif",
+    "avifSanitized": "optimized/icon-512.avif",
+    "optimized": "optimized/icon-512.png"
+  },
+  "images/icon-32.png": {
+    "width": 32,
+    "height": 32,
+    "webp": "optimized/icon-32.webp",
+    "webpSanitized": "optimized/icon-32.webp",
+    "avif": "optimized/icon-32.avif",
+    "avifSanitized": "optimized/icon-32.avif",
+    "optimized": "optimized/icon-32.png"
+  },
+  "images/icon-32-root.png": {
+    "width": 32,
+    "height": 32,
+    "webp": "optimized/icon-32-root.webp",
+    "webpSanitized": "optimized/icon-32-root.webp",
+    "avif": "optimized/icon-32-root.avif",
+    "avifSanitized": "optimized/icon-32-root.avif",
+    "optimized": "optimized/icon-32-root.png"
+  },
+  "images/icon-192.png": {
+    "width": 192,
+    "height": 192,
+    "webp": "optimized/icon-192.webp",
+    "webpSanitized": "optimized/icon-192.webp",
+    "avif": "optimized/icon-192.avif",
+    "avifSanitized": "optimized/icon-192.avif",
+    "optimized": "optimized/icon-192.png"
+  },
+  "images/icon-128.png": {
+    "width": 128,
+    "height": 128,
+    "webp": "optimized/icon-128.webp",
+    "webpSanitized": "optimized/icon-128.webp",
+    "avif": "optimized/icon-128.avif",
+    "avifSanitized": "optimized/icon-128.avif",
+    "optimized": "optimized/icon-128.png"
+  },
+  "images/icon-128-root.png": {
+    "width": 128,
+    "height": 128,
+    "webp": "optimized/icon-128-root.webp",
+    "webpSanitized": "optimized/icon-128-root.webp",
+    "avif": "optimized/icon-128-root.avif",
+    "avifSanitized": "optimized/icon-128-root.avif",
+    "optimized": "optimized/icon-128-root.png"
+  },
+  "images/hero.png": {
     "width": 1024,
     "height": 1024,
     "webp": "optimized/hero.webp",
@@ -62,7 +179,7 @@
     "avifSanitized": "optimized/hero.avif",
     "optimized": "optimized/hero.png"
   },
-  "blog/small-apartment/happy-owner.png": {
+  "images/happy-owner.png": {
     "width": 1024,
     "height": 1024,
     "webp": "optimized/happy-owner.webp",
@@ -71,7 +188,52 @@
     "avifSanitized": "optimized/happy-owner.avif",
     "optimized": "optimized/happy-owner.png"
   },
-  "blog/small-apartment/carbon.png": {
+  "images/favicon.png": {
+    "width": 16,
+    "height": 16,
+    "webp": "optimized/favicon.webp",
+    "webpSanitized": "optimized/favicon.webp",
+    "avif": "optimized/favicon.avif",
+    "avifSanitized": "optimized/favicon.avif",
+    "optimized": "optimized/favicon.png"
+  },
+  "images/dr-michael-rodriguez.jpg": {
+    "width": 512,
+    "height": 512,
+    "webp": "optimized/dr-michael-rodriguez.webp",
+    "webpSanitized": "optimized/dr-michael-rodriguez.webp",
+    "avif": "optimized/dr-michael-rodriguez.avif",
+    "avifSanitized": "optimized/dr-michael-rodriguez.avif",
+    "optimized": "optimized/dr-michael-rodriguez.jpg"
+  },
+  "images/covered-litter-box-types.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/covered-litter-box-types.webp",
+    "webpSanitized": "optimized/covered-litter-box-types.webp",
+    "avif": "optimized/covered-litter-box-types.avif",
+    "avifSanitized": "optimized/covered-litter-box-types.avif",
+    "optimized": "optimized/covered-litter-box-types.png"
+  },
+  "images/cat-using-covered-litter-box.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/cat-using-covered-litter-box.webp",
+    "webpSanitized": "optimized/cat-using-covered-litter-box.webp",
+    "avif": "optimized/cat-using-covered-litter-box.avif",
+    "avifSanitized": "optimized/cat-using-covered-litter-box.avif",
+    "optimized": "optimized/cat-using-covered-litter-box.png"
+  },
+  "images/cat-litter-box-activated-carbon.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/cat-litter-box-activated-carbon.webp",
+    "webpSanitized": "optimized/cat-litter-box-activated-carbon.webp",
+    "avif": "optimized/cat-litter-box-activated-carbon.avif",
+    "avifSanitized": "optimized/cat-litter-box-activated-carbon.avif",
+    "optimized": "optimized/cat-litter-box-activated-carbon.png"
+  },
+  "images/carbon.png": {
     "width": 1024,
     "height": 1024,
     "webp": "optimized/carbon.webp",
@@ -79,5 +241,104 @@
     "avif": "optimized/carbon.avif",
     "avifSanitized": "optimized/carbon.avif",
     "optimized": "optimized/carbon.png"
+  },
+  "images/apple-touch-icon.png": {
+    "width": 180,
+    "height": 180,
+    "webp": "optimized/apple-touch-icon.webp",
+    "webpSanitized": "optimized/apple-touch-icon.webp",
+    "avif": "optimized/apple-touch-icon.avif",
+    "avifSanitized": "optimized/apple-touch-icon.avif",
+    "optimized": "optimized/apple-touch-icon.png"
+  },
+  "images/apple-touch-icon-root.png": {
+    "width": 180,
+    "height": 180,
+    "webp": "optimized/apple-touch-icon-root.webp",
+    "webpSanitized": "optimized/apple-touch-icon-root.webp",
+    "avif": "optimized/apple-touch-icon-root.avif",
+    "avifSanitized": "optimized/apple-touch-icon-root.avif",
+    "optimized": "optimized/apple-touch-icon-root.png"
+  },
+  "images/apartment-living-room.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/apartment-living-room.webp",
+    "webpSanitized": "optimized/apartment-living-room.webp",
+    "avif": "optimized/apartment-living-room.avif",
+    "avifSanitized": "optimized/apartment-living-room.avif",
+    "optimized": "optimized/apartment-living-room.png"
+  },
+  "images/apartment-hero.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/apartment-hero.webp",
+    "webpSanitized": "optimized/apartment-hero.webp",
+    "avif": "optimized/apartment-hero.avif",
+    "avifSanitized": "optimized/apartment-hero.avif",
+    "optimized": "optimized/apartment-hero.png"
+  },
+  "images/ammonia-science.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/ammonia-science.webp",
+    "webpSanitized": "optimized/ammonia-science.webp",
+    "avif": "optimized/ammonia-science.avif",
+    "avifSanitized": "optimized/ammonia-science.avif",
+    "optimized": "optimized/ammonia-science.png"
+  },
+  "images/ammonia-hero.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/ammonia-hero.webp",
+    "webpSanitized": "optimized/ammonia-hero.webp",
+    "avif": "optimized/ammonia-hero.avif",
+    "avifSanitized": "optimized/ammonia-hero.avif",
+    "optimized": "optimized/ammonia-hero.png"
+  },
+  "images/ammonia-happy-cat.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/ammonia-happy-cat.webp",
+    "webpSanitized": "optimized/ammonia-happy-cat.webp",
+    "avif": "optimized/ammonia-happy-cat.avif",
+    "avifSanitized": "optimized/ammonia-happy-cat.avif",
+    "optimized": "optimized/ammonia-happy-cat.png"
+  },
+  "images/ammonia-fresh-home.png": {
+    "width": 1024,
+    "height": 1024,
+    "webp": "optimized/ammonia-fresh-home.webp",
+    "webpSanitized": "optimized/ammonia-fresh-home.webp",
+    "avif": "optimized/ammonia-fresh-home.avif",
+    "avifSanitized": "optimized/ammonia-fresh-home.avif",
+    "optimized": "optimized/ammonia-fresh-home.png"
+  },
+  "images/60g.jpg": {
+    "width": 954,
+    "height": 1536,
+    "webp": "optimized/60g.webp",
+    "webpSanitized": "optimized/60g.webp",
+    "avif": "optimized/60g.avif",
+    "avifSanitized": "optimized/60g.avif",
+    "optimized": "optimized/60g.jpg"
+  },
+  "images/140g.png": {
+    "width": 1024,
+    "height": 1536,
+    "webp": "optimized/140g.webp",
+    "webpSanitized": "optimized/140g.webp",
+    "avif": "optimized/140g.avif",
+    "avifSanitized": "optimized/140g.avif",
+    "optimized": "optimized/140g.png"
+  },
+  "images/140g.jpg": {
+    "width": 1024,
+    "height": 1536,
+    "webp": "optimized/140g.webp",
+    "webpSanitized": "optimized/140g.webp",
+    "avif": "optimized/140g.avif",
+    "avifSanitized": "optimized/140g.avif",
+    "optimized": "optimized/140g.jpg"
   }
 }

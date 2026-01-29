@@ -199,7 +199,7 @@ SAFETY LANGUAGE:
 
 1. **First**: AI generation (Fal.ai api, Google NanoBanana). Generate an appropriate prompt based on the page/post and the content before/after it so the image ADDS quality/understanding/emotion/etc to teh post. 
 2. **Second**: Use Unsplash, pexels, etc. with proper attribution
-3. **Third**: Check `/public/optimized/blog/` for existing assets
+3. **Third**: Check `/public/optimized/` for existing assets
 
 ---
 

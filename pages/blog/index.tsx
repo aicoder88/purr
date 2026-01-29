@@ -138,7 +138,7 @@ export default function Blog({ blogPosts, locale }: { blogPosts: BlogPost[], loc
     schemaData: {
       description: `Tips, tricks, and insights for cat owners who want a fresh-smelling home and happy, healthy cats. ${SITE_DESCRIPTION}`,
     },
-    image: 'https://www.purrify.ca/purrify-logo.png',
+    image: 'https://www.purrify.ca/images/purrify-logo.png',
     keywords: ['cat care tips', 'litter box odor', 'activated carbon', 'cat litter deodorizer', 'multi-cat tips'],
     noindex: shouldNoindex,
   });

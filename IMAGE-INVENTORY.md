@@ -26,15 +26,15 @@ A comprehensive catalog of all images in the Purrify website, organized by categ
 
 | File | Path | Description |
 |------|------|-------------|
-| purrify-logo.svg | `/public/purrify-logo.svg` | Main Purrify logo in SVG format (scalable) |
-| purrify-logo.png | `/public/purrify-logo.png` | Main Purrify logo in PNG format |
-| social-logo.png | `/public/social-logo.png` | Social media sharing logo (Open Graph) |
-| favicon.ico | `/public/favicon.ico` | Browser tab favicon |
-| favicon-adaptive.svg | `/public/favicon-adaptive.svg` | Adaptive favicon for modern browsers |
+| purrify-logo.svg | `/public/images/purrify-logo.svg` | Main Purrify logo in SVG format (scalable) |
+| purrify-logo.png | `/public/images/purrify-logo.png` | Main Purrify logo in PNG format |
+| social-logo.png | `/public/images/social-logo.png` | Social media sharing logo (Open Graph) |
+| favicon.ico | `/public/images/favicon.ico` | Browser tab favicon |
+| favicon-adaptive.svg | `/public/images/favicon-adaptive.svg` | Adaptive favicon for modern browsers |
 | apple-touch-icon.png | `/public/apple-touch-icon.png` | iOS home screen icon |
-| icon-32.png | `/public/icon-32.png` | 32x32 favicon |
-| icon-64.png | `/public/icon-64.png` | 64x64 favicon |
-| icon-128.png | `/public/icon-128.png` | 128x128 app icon |
+| icon-32.png | `/public/images/icon-32.png` | 32x32 favicon |
+| icon-64.png | `/public/images/icon-64.png` | 64x64 favicon |
+| icon-128.png | `/public/images/icon-128.png` | 128x128 app icon |
 | purrify-logo-text.webp | `/public/optimized/purrify-logo-text.webp` | Logo with text, optimized |
 | purrify-logo-icon.webp | `/public/optimized/purrify-logo-icon.webp` | Logo icon only, optimized |
 | purrify-dark-mode-logo.webp | `/public/optimized/purrify-dark-mode-logo.webp` | Dark mode variant of logo |
@@ -220,75 +220,75 @@ A comprehensive catalog of all images in the Purrify website, organized by categ
 
 | File | Path | Description |
 |------|------|-------------|
-| hero.png | `/public/blog/small-apartment/hero.png` | Small apartment blog hero |
-| carbon.png | `/public/blog/small-apartment/carbon.png` | Carbon solution for apartments |
-| placement.png | `/public/blog/small-apartment/placement.png` | Litter box placement tips |
-| ventilation.png | `/public/blog/small-apartment/ventilation.png` | Ventilation strategies |
-| happy-owner.png | `/public/blog/small-apartment/happy-owner.png` | Happy apartment owner |
+| hero.png | `/public/images/small-apartment-hero-original.png` | Small apartment blog hero |
+| carbon.png | `/public/images/carbon.png` | Carbon solution for apartments |
+| placement.png | `/public/images/placement.png` | Litter box placement tips |
+| ventilation.png | `/public/images/ventilation.png` | Ventilation strategies |
+| happy-owner.png | `/public/images/happy-owner.png` | Happy apartment owner |
 
 ### 90-Day Challenge Series (optimized/blog/)
 
 | File | Path | Description |
 |------|------|-------------|
-| 90day-hero.jpg | `/public/optimized/blog/90day-hero.jpg` | 90-day challenge hero image |
-| 90day-problem.jpg | `/public/optimized/blog/90day-problem.jpg` | The odor problem |
-| 90day-science.jpg | `/public/optimized/blog/90day-science.jpg` | Science behind the solution |
-| 90day-solution.jpg | `/public/optimized/blog/90day-solution.jpg` | The Purrify solution |
+| 90day-hero.jpg | `/public/optimized/90day-hero.jpg` | 90-day challenge hero image |
+| 90day-problem.jpg | `/public/optimized/90day-problem.jpg` | The odor problem |
+| 90day-science.jpg | `/public/optimized/90day-science.jpg` | Science behind the solution |
+| 90day-solution.jpg | `/public/optimized/90day-solution.jpg` | The Purrify solution |
 
 ### Summer Heat Series
 
 | File | Path | Description |
 |------|------|-------------|
-| summer-hero.jpg | `/public/optimized/blog/summer-hero.jpg` | Summer odor challenge hero |
-| summer-heat.jpg | `/public/optimized/blog/summer-heat.jpg` | Heat increases odor |
-| summer-ventilation.jpg | `/public/optimized/blog/summer-ventilation.jpg` | Summer ventilation tips |
-| summer-relief.jpg | `/public/optimized/blog/summer-relief.jpg` | Relief from summer odors |
+| summer-hero.jpg | `/public/optimized/summer-hero.jpg` | Summer odor challenge hero |
+| summer-heat.jpg | `/public/optimized/summer-heat.jpg` | Heat increases odor |
+| summer-ventilation.jpg | `/public/optimized/summer-ventilation.jpg` | Summer ventilation tips |
+| summer-relief.jpg | `/public/optimized/summer-relief.jpg` | Relief from summer odors |
 
 ### Embarrassing Odors Series
 
 | File | Path | Description |
 |------|------|-------------|
-| embarrassed-hero.jpg | `/public/optimized/blog/embarrassed-hero.jpg` | Embarrassing odor hero |
-| embarrassed-guests.jpg | `/public/optimized/blog/embarrassed-guests.jpg` | Embarrassed when guests visit |
-| embarrassed-clean-home.jpg | `/public/optimized/blog/embarrassed-clean-home.jpg` | Clean home without odor |
-| embarrassed-relief.jpg | `/public/optimized/blog/embarrassed-relief.jpg` | Relief from embarrassment |
+| embarrassed-hero.jpg | `/public/optimized/embarrassed-hero.jpg` | Embarrassing odor hero |
+| embarrassed-guests.jpg | `/public/optimized/embarrassed-guests.jpg` | Embarrassed when guests visit |
+| embarrassed-clean-home.jpg | `/public/optimized/embarrassed-clean-home.jpg` | Clean home without odor |
+| embarrassed-relief.jpg | `/public/optimized/embarrassed-relief.jpg` | Relief from embarrassment |
 
 ### "I've Tried Everything" Series
 
 | File | Path | Description |
 |------|------|-------------|
-| tried-hero.jpg | `/public/optimized/blog/tried-hero.jpg` | Tried everything hero |
-| tried-failed.jpg | `/public/optimized/blog/tried-failed.jpg` | Failed solutions |
-| tried-science.jpg | `/public/optimized/blog/tried-science.jpg` | Why others fail |
-| tried-relief.jpg | `/public/optimized/blog/tried-relief.jpg` | Finally found relief |
+| tried-hero.jpg | `/public/optimized/tried-hero.jpg` | Tried everything hero |
+| tried-failed.jpg | `/public/optimized/tried-failed.jpg` | Failed solutions |
+| tried-science.jpg | `/public/optimized/tried-science.jpg` | Why others fail |
+| tried-relief.jpg | `/public/optimized/tried-relief.jpg` | Finally found relief |
 
 ### Frequency Guide
 
 | File | Path | Description |
 |------|------|-------------|
-| frequency-hero.png | `/public/optimized/blog/frequency-hero.png` | How often to replace hero |
-| frequency-chart.png | `/public/optimized/blog/frequency-chart.png` | Replacement frequency chart |
-| frequency-action.png | `/public/optimized/blog/frequency-action.png` | Action steps |
+| frequency-hero.png | `/public/optimized/frequency-hero.png` | How often to replace hero |
+| frequency-chart.png | `/public/optimized/frequency-chart.png` | Replacement frequency chart |
+| frequency-action.png | `/public/optimized/frequency-action.png` | Action steps |
 
 ### Ghibli-Style Illustrations
 
 | File | Path | Description |
 |------|------|-------------|
-| coconut-carbon-ghibli.png | `/public/optimized/blog/coconut-carbon-ghibli.png` | Coconut carbon (Ghibli style) |
-| microscopic-pores-ghibli.png | `/public/optimized/blog/microscopic-pores-ghibli.png` | Microscopic pores (Ghibli style) |
-| carbon-trapping-diagram-ghibli.png | `/public/optimized/blog/carbon-trapping-diagram-ghibli.png` | Carbon trapping diagram |
-| lavender-cat-ghibli.png | `/public/optimized/blog/lavender-cat-ghibli.png` | Cat avoiding lavender scents |
-| masking-products-ghibli.png | `/public/optimized/blog/masking-products-ghibli.png` | Masking vs eliminating odors |
-| happy-owner-cat-ghibli.png | `/public/optimized/blog/happy-owner-cat-ghibli.png` | Happy owner and cat |
+| coconut-carbon-ghibli.png | `/public/optimized/coconut-carbon-ghibli.png` | Coconut carbon (Ghibli style) |
+| microscopic-pores-ghibli.png | `/public/optimized/microscopic-pores-ghibli.png` | Microscopic pores (Ghibli style) |
+| carbon-trapping-diagram-ghibli.png | `/public/optimized/carbon-trapping-diagram-ghibli.png` | Carbon trapping diagram |
+| lavender-cat-ghibli.png | `/public/optimized/lavender-cat-ghibli.png` | Cat avoiding lavender scents |
+| masking-products-ghibli.png | `/public/optimized/masking-products-ghibli.png` | Masking vs eliminating odors |
+| happy-owner-cat-ghibli.png | `/public/optimized/happy-owner-cat-ghibli.png` | Happy owner and cat |
 
 ### Science/Ammonia Blog Images
 
 | File | Path | Description |
 |------|------|-------------|
-| micropores-ammonia-trap.jpg | `/public/optimized/blog/micropores-ammonia-trap.jpg` | How micropores trap ammonia |
-| science-molecule-lab.jpg | `/public/optimized/blog/science-molecule-lab.jpg` | Lab molecule research |
-| cat-fresh-home-ammonia.jpg | `/public/optimized/blog/cat-fresh-home-ammonia.jpg` | Fresh home, no ammonia |
-| molecular-structure-pore-800.png | `/public/optimized/blog/molecular-structure-pore-800.png` | Molecular pore (800px) |
+| micropores-ammonia-trap.jpg | `/public/optimized/micropores-ammonia-trap.jpg` | How micropores trap ammonia |
+| science-molecule-lab.jpg | `/public/optimized/science-molecule-lab.jpg` | Lab molecule research |
+| cat-fresh-home-ammonia.jpg | `/public/optimized/cat-fresh-home-ammonia.jpg` | Fresh home, no ammonia |
+| molecular-structure-pore-800.png | `/public/optimized/molecular-structure-pore-800.png` | Molecular pore (800px) |
 | winter-cat-window.png | `/public/optimized/winter-cat-window.png` | Cat looking out snowy window (Ghibli style) - Winter Blog Hero |
 | frosted-winter-window.png | `/public/optimized/frosted-winter-window.png` | Frosted window visual (Ghibli style) - Winter Blog Science |
 
@@ -318,23 +318,23 @@ A comprehensive catalog of all images in the Purrify website, organized by categ
 
 | File | Path | Description |
 |------|------|-------------|
-| ammonia-hero.png | `/public/images/solutions/ammonia-hero.png` | Ammonia solution hero |
-| ammonia-science.png | `/public/images/solutions/ammonia-science.png` | Science of ammonia absorption |
-| ammonia-fresh-home.png | `/public/images/solutions/ammonia-fresh-home.png` | Fresh ammonia-free home |
-| ammonia-happy-cat.png | `/public/images/solutions/ammonia-happy-cat.png` | Cat happy without ammonia |
+| ammonia-hero.png | `/public/images/ammonia-hero.png` | Ammonia solution hero |
+| ammonia-science.png | `/public/images/ammonia-science.png` | Science of ammonia absorption |
+| ammonia-fresh-home.png | `/public/images/ammonia-fresh-home.png` | Fresh ammonia-free home |
+| ammonia-happy-cat.png | `/public/images/ammonia-happy-cat.png` | Cat happy without ammonia |
 
 ### Apartment Living
 
 | File | Path | Description |
 |------|------|-------------|
-| apartment-hero.png | `/public/images/solutions/apartment-hero.png` | Apartment solutions hero |
-| apartment-living-room.png | `/public/images/solutions/apartment-living-room.png` | Apartment living room scene |
+| apartment-hero.png | `/public/images/apartment-hero.png` | Apartment solutions hero |
+| apartment-living-room.png | `/public/images/apartment-living-room.png` | Apartment living room scene |
 
 ### Litter Box
 
 | File | Path | Description |
 |------|------|-------------|
-| litter-box-hero.png | `/public/images/solutions/litter-box-hero.png` | Litter box solutions hero |
+| litter-box-hero.png | `/public/images/litter-box-hero.png` | Litter box solutions hero |
 
 ---
 
@@ -342,10 +342,10 @@ A comprehensive catalog of all images in the Purrify website, organized by categ
 
 | File | Path | Description |
 |------|------|-------------|
-| hero.png | `/public/images/about/hero.png` | About page hero image |
-| mission.png | `/public/images/about/mission.png` | Company mission visual |
-| mark-archer.jpg | `/public/images/about/mark-archer.jpg` | Mark Archer, founder photo |
-| dr-michael-rodriguez.jpg | `/public/images/about/dr-michael-rodriguez.jpg` | Dr. Michael Rodriguez, advisor |
+| hero.png | `/public/images/hero.png` | About page hero image |
+| mission.png | `/public/images/mission.png` | Company mission visual |
+| mark-archer.jpg | `/public/images/mark-archer.jpg` | Mark Archer, founder photo |
+| dr-michael-rodriguez.jpg | `/public/images/dr-michael-rodriguez.jpg` | Dr. Michael Rodriguez, advisor |
 
 ---
 
@@ -455,8 +455,8 @@ Most images are available in both `.jpg` and `.webp` formats for browser compati
 
 ### For Hero Sections
 - Homepage: `hero.webp`, `standard-hero.webp`
-- Blog: Use article-specific hero from `/public/optimized/blog/`
-- Solutions: Use page-specific from `/public/images/solutions/`
+- Blog: Use article-specific hero from `/public/optimized/`
+- Solutions: Use page-specific from `/public/images/`
 
 ### For Product Displays
 - Single product: `60g.webp`, `140g.webp`, `17gpink.webp`
@@ -464,7 +464,7 @@ Most images are available in both `.jpg` and `.webp` formats for browser compati
 - Transparent background: `140g_transparent.webp`
 
 ### For Blog Articles
-- Check `/public/optimized/blog/` for optimized blog images
+- Check `/public/optimized/` for optimized blog images
 - Check `/public/blog/{slug}/` for article-specific images
 
 ### For Social Sharing

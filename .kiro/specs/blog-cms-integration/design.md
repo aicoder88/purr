@@ -201,7 +201,7 @@ class ContentTransformer {
       excerpt: this.sanitizeContent(wpPost.excerpt.rendered).substring(0, 150) + '...',
       author: wpPost._embedded?.author?.[0]?.name || 'Purrify Team',
       date: new Date(wpPost.date).toISOString().split('T')[0],
-      image: wpPost._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/purrify-logo.png',
+      image: wpPost._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/images/purrify-logo.png',
       link: `/${locale}/blog/${wpPost.slug}`,
       content: wpPost.content.rendered,
       categories: wpPost._embedded?.['wp:term']?.[0]?.map(cat => cat.name) || [],

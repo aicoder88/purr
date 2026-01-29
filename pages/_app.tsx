@@ -167,7 +167,7 @@ function MyApp({ Component, pageProps, detectedCurrency = 'CAD' }: MyAppProps) {
             <link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png" />
             <link rel="icon" type="image/png" sizes="64x64" href="/images/icon-64.png" />
             <link rel="icon" type="image/png" sizes="128x128" href="/images/icon-128.png" />
-            <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+            <link rel="apple-touch-icon" href="/images/apple-touch-icon-root.png" />
 
             {/* Preconnect for critical third-party resources */}
             <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />

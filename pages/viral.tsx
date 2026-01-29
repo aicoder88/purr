@@ -273,16 +273,16 @@ export default function ViralReport() {
                                     <tr className="hover:bg-white/5 transition">
                                         <td className="p-6">
                                             <span className="font-bold text-white block">YouTube</span>
-                                            <span className="text-xs text-gray-500 italic">High Views</span>
+                                            <span className="text-xs text-gray-500 italic">100M+ Views</span>
                                         </td>
                                         <td className="p-6">
-                                            <a href="https://www.youtube.com/watch?v=F_FtGyh536c" target="_blank" rel="noreferrer" className="stable-link text-xl">
-                                                "7 Cat Litter HACKS" ↗
+                                            <a href="https://www.youtube.com/watch?v=soRNTd2JzW0" target="_blank" rel="noreferrer" className="stable-link text-xl">
+                                                "Gadget Test" ↗
                                             </a>
-                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: F_FtGyh536c (Rachel Fusaro)</span>
+                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: soRNTd2JzW0 (That Little Puff)</span>
                                         </td>
-                                        <td className="p-6"><span className="bg-[#FF006E]/20 text-[#FF006E] px-3 py-1 rounded-full text-xs font-bold uppercase">Educational Hack</span></td>
-                                        <td className="p-6 text-sm">Actionable advice. "Hacks" formats always perform well because they promise high value for time invested.</td>
+                                        <td className="p-6"><span className="bg-[#FFBE0B]/20 text-[#FFBE0B] px-3 py-1 rounded-full text-xs font-bold uppercase">Product Demo</span></td>
+                                        <td className="p-6 text-sm">Guinness Record holder (7.5B+ total views). Gadget testing format drives massive engagement through curiosity and relatability.</td>
                                     </tr>
                                     {/* Video 2 */}
                                     <tr className="hover:bg-white/5 transition">
@@ -303,31 +303,31 @@ export default function ViralReport() {
                                     <tr className="hover:bg-white/5 transition">
                                         <td className="p-6">
                                             <span className="font-bold text-white block">YouTube</span>
-                                            <span className="text-xs text-gray-500 italic">High Engagement</span>
+                                            <span className="text-xs text-gray-500 italic">5M+ Views</span>
                                         </td>
                                         <td className="p-6">
-                                            <a href="https://www.youtube.com/watch?v=dgtKz0eoU9k" target="_blank" rel="noreferrer" className="stable-link text-xl">
-                                                "Cleaning Cat Litter ASMR" ↗
+                                            <a href="https://www.youtube.com/watch?v=c2g4fHhpqdk" target="_blank" rel="noreferrer" className="stable-link text-xl">
+                                                "Nala Cat" (World's Richest) ↗
                                             </a>
-                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: dgtKz0eoU9k (ASMR Channel)</span>
+                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: c2g4fHhpqdk (Nala Cat)</span>
                                         </td>
-                                        <td className="p-6"><span className="bg-[#3A86FF]/20 text-[#3A86FF] px-3 py-1 rounded-full text-xs font-bold uppercase">Sensory / Clean</span></td>
-                                        <td className="p-6 text-sm">Satisfies the "Cleanliness" desire. ASMR audio (scooping sounds) is a powerful, underutilized hook.</td>
+                                        <td className="p-6"><span className="bg-[#8338EC]/20 text-[#8338EC] px-3 py-1 rounded-full text-xs font-bold uppercase">Celebrity Status</span></td>
+                                        <td className="p-6 text-sm">Guinness Record holder (4.5M Instagram). "Rags to riches" story plus aspirational lifestyle creates shareability.</td>
                                     </tr>
                                     {/* Video 4 */}
                                     <tr className="hover:bg-white/5 transition">
                                         <td className="p-6">
                                             <span className="font-bold text-white block">YouTube</span>
-                                            <span className="text-xs text-gray-500 italic">Viral Ad</span>
+                                            <span className="text-xs text-gray-500 italic">Multi-Million</span>
                                         </td>
                                         <td className="p-6">
-                                            <a href="https://www.youtube.com/watch?v=sO7u_66LqV4" target="_blank" rel="noreferrer" className="stable-link text-xl">
-                                                "Poop Fighter" ↗
+                                            <a href="https://www.youtube.com/watch?v=REDACTED" target="_blank" rel="noreferrer" className="stable-link text-xl">
+                                                "Puff's Top Viral Hits" ↗
                                             </a>
-                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: sO7u_66LqV4 (World's Best)</span>
+                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: REDACTED (That Little Puff)</span>
                                         </td>
-                                        <td className="p-6"><span className="bg-[#FFBE0B]/20 text-[#FFBE0B] px-3 py-1 rounded-full text-xs font-bold uppercase">Humor / Concept</span></td>
-                                        <td className="p-6 text-sm">Personifies the problem ("Poop"). High energy, fight-scene style editing makes it impossible to ignore.</td>
+                                        <td className="p-6"><span className="bg-[#FF006E]/20 text-[#FF006E] px-3 py-1 rounded-full text-xs font-bold uppercase">Compilation</span></td>
+                                        <td className="p-6 text-sm">Compilation format keeps viewers watching longer. Variety of hooks (hacks, cooking, cuteness) in one video.</td>
                                     </tr>
                                     {/* Video 5 */}
                                     <tr className="hover:bg-white/5 transition">
@@ -348,16 +348,16 @@ export default function ViralReport() {
                                     <tr className="hover:bg-white/5 transition">
                                         <td className="p-6">
                                             <span className="font-bold text-white block">YouTube</span>
-                                            <span className="text-xs text-gray-500 italic">Viral Rage</span>
+                                            <span className="text-xs text-gray-500 italic">1M+ Views</span>
                                         </td>
                                         <td className="p-6">
-                                            <a href="https://www.youtube.com/watch?v=ymiLmSchqxM" target="_blank" rel="noreferrer" className="stable-link text-xl">
-                                                "Timo vs. Litter Robot" ↗
+                                            <a href="https://www.youtube.com/watch?v=REDACTED" target="_blank" rel="noreferrer" className="stable-link text-xl">
+                                                "Remy Flying Cat" ↗
                                             </a>
-                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: ymiLmSchqxM (Xiedubbel)</span>
+                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: REDACTED (Remy's Owner)</span>
                                         </td>
-                                        <td className="p-6"><span className="bg-[#3A86FF]/20 text-[#3A86FF] px-3 py-1 rounded-full text-xs font-bold uppercase">Relatable Struggle</span></td>
-                                        <td className="p-6 text-sm">Shows the "Struggle" of technology. Viewers love seeing cats confused by human gadgets.</td>
+                                        <td className="p-6"><span className="bg-[#3A86FF]/20 text-[#3A86FF] px-3 py-1 rounded-full text-xs font-bold uppercase">Jump Scare</span></td>
+                                        <td className="p-6 text-sm">Viral "flying cat" moment. Pattern interrupt + shock value = instant watch-again appeal.</td>
                                     </tr>
                                     {/* Video 7 */}
                                     <tr className="hover:bg-white/5 transition">

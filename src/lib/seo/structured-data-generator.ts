@@ -298,7 +298,7 @@ export class StructuredDataGenerator {
   }) {
     this.baseUrl = config?.baseUrl || 'https://www.purrify.ca';
     this.organizationName = config?.organizationName || 'Purrify';
-    this.organizationLogo = config?.organizationLogo || `${this.baseUrl}/purrify-logo.png`;
+    this.organizationLogo = config?.organizationLogo || `${this.baseUrl}/images/purrify-logo.png`;
   }
 
   /**

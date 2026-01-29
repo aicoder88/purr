@@ -15,7 +15,7 @@ export default function CatLitterSmellWontGoAwayPage() {
   const canonicalUrl = getLocalizedUrl('/blog/cat-litter-smell-wont-go-away', locale);
   const languageAlternates = buildLanguageAlternates('/blog/cat-litter-smell-wont-go-away');
 
-  const heroImage = '/optimized/blog/tried-hero.jpg';
+  const heroImage = '/optimized/tried-hero.jpg';
 
   // HowTo steps for eliminating persistent odor
   const howToSteps = [

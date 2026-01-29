@@ -313,7 +313,7 @@ export default function BlogPost({ post }: { post: BlogPost }) {
         name: SITE_NAME,
         logo: {
           '@type': 'ImageObject',
-          url: 'https://www.purrify.ca/purrify-logo.png',
+          url: 'https://www.purrify.ca/images/purrify-logo.png',
         },
       },
       description: post.excerpt,

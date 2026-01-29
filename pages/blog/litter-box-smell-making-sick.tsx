@@ -15,7 +15,7 @@ export default function LitterBoxSmellMakingSickPage() {
   const canonicalUrl = getLocalizedUrl('/blog/litter-box-smell-making-sick', locale);
   const languageAlternates = buildLanguageAlternates('/blog/litter-box-smell-making-sick');
 
-  const heroImage = '/optimized/blog/cat-fresh-home-ammonia.jpg';
+  const heroImage = '/optimized/cat-fresh-home-ammonia.jpg';
 
   // HowTo steps for reducing ammonia exposure
   const howToSteps = [

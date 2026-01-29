@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 
 // High-quality images for winter, closed windows, and fresh solutions
-const heroImage = '/optimized/blog/winter-fresh-cat.png';
+const heroImage = '/optimized/winter-fresh-cat.png';
 const closedWindowImage = '/optimized/frosted-winter-window.png';
 const solutionImage = '/optimized/happy-cat-fresh-home.webp';
 
@@ -65,7 +65,7 @@ export default function CatLitterSmellWorseWinter() {
                   "name": "Purrify",
                   "logo": {
                     "@type": "ImageObject",
-                    "url": "https://www.purrify.ca/purrify-logo.png",
+                    "url": "https://www.purrify.ca/images/purrify-logo.png",
                     "width": 400,
                     "height": 400
                   }

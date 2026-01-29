@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 
 // Relevant images for how-to guide content
-const heroImage = '/optimized/blog/applying-deodorizer-ghibli.png';
+const heroImage = '/optimized/applying-deodorizer-ghibli.png';
 
 export default function HowToUseLitterDeodorizer() {
   const pageTitle = 'Cat Litter Deodorizer Additive: Step-by-Step Guide';
@@ -94,7 +94,7 @@ export default function HowToUseLitterDeodorizer() {
               "name": "Purrify",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://www.purrify.ca/purrify-logo.png"
+                "url": "https://www.purrify.ca/images/purrify-logo.png"
               }
             },
             "datePublished": "2024-01-15",

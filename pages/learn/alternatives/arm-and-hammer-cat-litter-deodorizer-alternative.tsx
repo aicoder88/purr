@@ -18,7 +18,7 @@ export default function ArmAndHammerAlternativePage() {
   const canonicalUrl = getLocalizedUrl('/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative', locale);
   const languageAlternates = buildLanguageAlternates('/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative');
 
-  const heroImage = '/optimized/blog/baking-soda-alternative.jpg';
+  const heroImage = '/optimized/baking-soda-alternative.jpg';
 
   // Comparison data
   const comparisonPoints = [

@@ -26,11 +26,11 @@ export default function AmmoniaHealthRisksPage() {
       description: pageDescription,
       datePublished: '2025-01-22T10:00:00Z',
       dateModified: new Date().toISOString(),
-      image: 'https://www.purrify.ca/images/solutions/ammonia-hero.png',
+      image: 'https://www.purrify.ca/images/ammonia-hero.png',
       category: 'Pet Health & Safety',
       wordCount: 2000,
     },
-    image: 'https://www.purrify.ca/images/solutions/ammonia-hero.png',
+    image: 'https://www.purrify.ca/images/ammonia-hero.png',
     keywords: ['ammonia cat litter dangerous', 'cat litter ammonia health risks', 'is ammonia from cat litter harmful', 'cat litter fumes dangerous'],
   });
 

@@ -250,7 +250,7 @@ export function B2BLeadConfirmationEmailHTML({
           <!-- Header with Logo -->
           <tr>
             <td style="background: linear-gradient(135deg, #10B981 0%, #3694FF 100%); padding: 32px; text-align: center;">
-              <img src="https://www.purrify.ca/purrify-logo.png" alt="Purrify" style="height: 40px; margin-bottom: 16px;" />
+              <img src="https://www.purrify.ca/images/purrify-logo.png" alt="Purrify" style="height: 40px; margin-bottom: 16px;" />
               <h1 style="margin: 0; color: #ffffff; font-size: 22px; font-weight: bold;">
                 🤝 Partnership Inquiry Received
               </h1>

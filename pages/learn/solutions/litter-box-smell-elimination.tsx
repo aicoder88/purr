@@ -18,9 +18,9 @@ export default function LitterBoxSmellEliminationPage() {
   const languageAlternates = buildLanguageAlternates('/learn/solutions/litter-box-smell-elimination');
 
   // SEO optimized images for odor elimination
-  const heroImage = '/images/solutions/litter-box-hero.png';
-  const solutionImage = '/images/solutions/ammonia-happy-cat.png';
-  const scienceImage = '/images/solutions/ammonia-science.png';
+  const heroImage = '/images/litter-box-hero.png';
+  const solutionImage = '/images/ammonia-happy-cat.png';
+  const scienceImage = '/images/ammonia-science.png';
 
   // HowTo steps for schema
   const howToSteps = [

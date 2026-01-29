@@ -55,7 +55,7 @@ export default function MultiCatLitterDeodorizerGuide() {
               "name": "Purrify",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://www.purrify.ca/purrify-logo.png"
+                "url": "https://www.purrify.ca/images/purrify-logo.png"
               }
             },
             "datePublished": "2024-09-16",

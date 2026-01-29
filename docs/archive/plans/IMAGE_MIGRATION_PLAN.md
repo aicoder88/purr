@@ -22,7 +22,7 @@
 | `/60g yellow.png` | 1.6MB | Product comparison | `/optimized/60g-yellow.avif` | ~800KB |
 | `/purrify-dark-mode-logo.png` | 388KB | Header, Footer, Map | `/optimized/purrify-dark-mode-logo.avif` | ~200KB |
 | `/catonbed.jpeg` | 215KB | Blog posts, Why section | `/optimized/catonbed.avif` | ~100KB |
-| `/purrify-logo.png` | 46KB | SEO metadata, fallbacks | `/optimized/purrify-logo.avif` | ~20KB |
+| `/images/purrify-logo.png` | 46KB | SEO metadata, fallbacks | `/optimized/purrify-logo.avif` | ~20KB |
 | `/nathamo.jpg` | 87KB | Store logos | `/optimized/nathamo.avif` | ~40KB |
 
 **Total Savings**: ~1.16MB per page load reduction
@@ -34,8 +34,8 @@ These are already in optimal formats or are small enough to not warrant changes:
 - `/pattes.webp` (9.4KB) - Already WebP
 - `/lamifidel.avif` (9.4KB) - Already AVIF
 - `/kk.avif` (3.1KB) - Already AVIF
-- `/Viva.avif` (3.5KB) - Already AVIF
-- `/purrify-logo.svg` (891B) - Vector format, optimal
+- `/viva-pets-original.avif` (3.5KB) - Already AVIF
+- `/images/purrify-logo.svg` (891B) - Vector format, optimal
 
 ---
 
@@ -80,7 +80,7 @@ Replace hardcoded paths with optimized equivalents:
 - image: '/catonbed.jpeg'
 + image: '/optimized/catonbed.avif'
 
-- url: '/purrify-logo.png'
+- url: '/images/purrify-logo.png'
 + url: '/optimized/purrify-logo.avif'
 
 - src: "/nathamo.jpg"
@@ -116,7 +116,7 @@ After migration and testing, delete duplicate images from `/public/` root:
 rm /public/60g\ yellow.png
 rm /public/purrify-dark-mode-logo.png
 rm /public/catonbed.jpeg
-rm /public/purrify-logo.png
+rm /public/images/purrify-logo.png
 rm /public/nathamo.jpg
 # ... + 45 more duplicates
 ```
@@ -156,7 +156,7 @@ src/components/performance/CacheOptimizer.tsx:326
 ### 3. Case Sensitivity
 
 ```
-/Viva.avif vs /viva.avif
+/viva-pets-original.avif vs /viva.avif
 ```
 
 Code uses lowercase, but file is capitalized. **Action**: Rename file or update reference.

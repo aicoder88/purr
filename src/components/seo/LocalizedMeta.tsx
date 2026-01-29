@@ -26,7 +26,7 @@ export const LocalizedMeta: React.FC<LocalizedMetaProps> = ({
   canonicalPath,
   ogTitle,
   ogDescription,
-  ogImage = "https://www.purrify.ca/logo-light.png",
+  ogImage = "https://www.purrify.ca/images/social-share.png",
   structuredData,
   additionalMeta,
 }) => {

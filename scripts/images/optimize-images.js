@@ -12,16 +12,17 @@ const glob = require('glob');
 // Configuration
 const QUALITY = 80;
 const MAX_WIDTH = 1920; // Maximum width for large images
-const PUBLIC_DIR = path.join(__dirname, '../public');
+const PUBLIC_DIR = path.join(__dirname, '../../public');
 const OPTIMIZED_DIR = path.join(PUBLIC_DIR, 'optimized');
 const ORIGINAL_IMAGES_DIR = path.join(PUBLIC_DIR, 'original-images');
+const IMAGE_SOURCE_DIR = path.join(PUBLIC_DIR, 'images');
 
 // Reduce memory footprint
 try {
   sharp.cache(false);
   // Limit concurrency to reduce peak memory usage
   sharp.concurrency(2);
-} catch (_) {}
+} catch (_) { }
 
 // Create directories if they don't exist
 function ensureDirectoryExists(directory) {
@@ -49,13 +50,13 @@ function needsUpdate(src, outputs) {
 async function getImageDimensions(filePath) {
   try {
     console.log(`Processing image: ${filePath}`);
-    
+
     // Skip purrify-logo.png as it's causing issues
     if (filePath.includes('purrify-logo.png') && !filePath.includes('purrify-logo-icon.png') && !filePath.includes('purrify-logo-text.png')) {
       console.log(`Skipping problematic file: ${filePath}`);
       return { width: 800, height: 600 }; // Default fallback
     }
-    
+
     const metadata = await sharp(filePath).metadata();
     return { width: metadata.width, height: metadata.height };
   } catch (error) {
@@ -70,32 +71,32 @@ async function optimizeImage(filePath) {
     const filename = path.basename(filePath);
     const ext = path.extname(filename).toLowerCase();
     const baseName = path.basename(filename, ext);
-    
+
     // Skip already optimized images
-    if (filePath.includes('/optimized/') || filePath.includes('/images/')) {
+    if (filePath.includes('/optimized/')) {
       return;
     }
-    
+
     // Skip purrify-logo.png as it's causing issues
     if (filename === 'purrify-logo.png') {
       console.log(`Skipping problematic file: ${filePath}`);
       return null;
     }
-    
+
     // Get image dimensions
     const dimensions = await getImageDimensions(filePath);
     let { width, height } = dimensions;
-    
+
     // Calculate new dimensions if image is too large
     if (width > MAX_WIDTH) {
       const ratio = MAX_WIDTH / width;
       width = MAX_WIDTH;
       height = Math.round(height * ratio);
     }
-    
+
     // Handle spaces in filenames by creating sanitized versions
     const sanitizedBaseName = baseName.replaceAll(/\s+/g, '-');
-    
+
     const webpOutputPath = path.join(OPTIMIZED_DIR, `${baseName}.webp`);
     const sanitizedWebpOutputPath = path.join(OPTIMIZED_DIR, `${sanitizedBaseName}.webp`);
     const avifOutputPath = path.join(OPTIMIZED_DIR, `${baseName}.avif`);
@@ -130,9 +131,9 @@ async function optimizeImage(filePath) {
 
     // Optimized original
     await sharp(filePath).resize(width, height).toFile(optimizedOriginalPath);
-    
+
     console.log(`Optimized: ${filename} → WebP, AVIF, and optimized original`);
-    
+
     // Return the dimensions for the image dimensions JSON file
     return {
       original: filename,
@@ -215,21 +216,20 @@ async function optimizeAllImages() {
     // Ensure directories exist
     ensureDirectoryExists(OPTIMIZED_DIR);
     ensureDirectoryExists(ORIGINAL_IMAGES_DIR);
-    
+
     // Process icons first
     await processIcons();
-    
-    // Find all images in the public directory
-    const imageFiles = glob.sync(`${PUBLIC_DIR}/**/*.{png,jpg,jpeg,gif}`, {
+
+    // Find all images in the public/images directory
+    const imageFiles = glob.sync(`${IMAGE_SOURCE_DIR}/**/*.{png,jpg,jpeg,gif}`, {
       ignore: [
-        `${PUBLIC_DIR}/images/**`,
         `${PUBLIC_DIR}/optimized/**`,
         `${PUBLIC_DIR}/original-images/**`
       ]
     });
-    
+
     console.log(`Found ${imageFiles.length} images to optimize`);
-    
+
     // Process each image and collect dimension data
     const imageDimensions = {};
     for (const filePath of imageFiles) {
@@ -238,14 +238,14 @@ async function optimizeAllImages() {
         console.log(`Skipping problematic file: ${filePath}`);
         continue;
       }
-      
+
       const result = await optimizeImage(filePath);
       if (result) {
         const relativePath = path.relative(PUBLIC_DIR, filePath);
         // Handle spaces in filenames for image dimensions
         const sanitizedWebp = result.webp.replaceAll(/\s+/g, '-');
         const sanitizedAvif = result.avif.replaceAll(/\s+/g, '-');
-        
+
         imageDimensions[relativePath] = {
           width: result.width,
           height: result.height,
@@ -255,7 +255,7 @@ async function optimizeAllImages() {
           avifSanitized: `optimized/${sanitizedAvif}`,
           optimized: `optimized/${result.original}`
         };
-        
+
         // Move original to backup directory
         const backupPath = path.join(ORIGINAL_IMAGES_DIR, path.basename(filePath));
         if (!fs.existsSync(backupPath)) {
@@ -269,7 +269,7 @@ async function optimizeAllImages() {
       path.join(PUBLIC_DIR, 'image-dimensions.json'),
       JSON.stringify(imageDimensions, null, 2)
     );
-    
+
     console.log('All images optimized successfully!');
   } catch (error) {
     console.error('Error in image optimization process:', error);

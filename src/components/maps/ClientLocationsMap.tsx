@@ -63,7 +63,7 @@ export const ClientLocationsMap: React.FC<ClientLocationsMapProps> = ({
         <div className="container mx-auto px-4 mb-8">
           <div className="flex justify-center mb-6">
             <Image
-              src="/optimized/logo-text-240.webp"
+              src="/optimized/logo-light.webp"
               alt="Purrify Logo"
               width={160}
               height={160}
@@ -71,7 +71,7 @@ export const ClientLocationsMap: React.FC<ClientLocationsMapProps> = ({
               className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
             />
             <Image
-              src="/optimized/purrify-dark-mode-logo.webp"
+              src="/optimized/logo-dark.webp"
               alt="Purrify Logo"
               width={160}
               height={160}
@@ -153,11 +153,10 @@ export const ClientLocationsMap: React.FC<ClientLocationsMapProps> = ({
                 <button
                   key={cityKey}
                   onClick={() => handleCityClick(cityKey)}
-                  className={`px-3 py-1.5 rounded transition-all duration-200 ${
-                    activeCity === cityKey
+                  className={`px-3 py-1.5 rounded transition-all duration-200 ${activeCity === cityKey
                       ? "bg-brand-green text-white shadow-md transform scale-105 font-medium"
                       : "bg-brand-green-light/50 dark:bg-brand-green-light/10 hover:bg-brand-green-light hover:text-brand-dark dark:hover:bg-brand-green-light/20"
-                  }`}
+                    }`}
                 >
                   {t.maps?.cities[cityKey] ||
                     cityKey.charAt(0).toUpperCase() + cityKey.slice(1)}

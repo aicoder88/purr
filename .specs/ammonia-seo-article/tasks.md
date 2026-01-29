@@ -22,7 +22,7 @@
 
 ### T0: Source and Download Images
 **Status:** completed
-**File:** `public/optimized/blog/`
+**File:** `public/optimized/`
 
 **Done Criteria:**
 - [ ] Search Unsplash/Pexels/Web for best matching images
@@ -33,7 +33,7 @@
   - Methods: Cat near litter box or carbon granules close-up
   - Comparison: Before/after or side-by-side visual
 - [ ] Resize all images to max 800x800px (blog limit)
-- [ ] Save to `/public/optimized/blog/` with descriptive names
+- [ ] Save to `/public/optimized/` with descriptive names
 - [ ] Verify images are appropriate and on-brand
 
 **Search queries to try:**

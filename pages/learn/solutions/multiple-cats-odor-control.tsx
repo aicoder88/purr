@@ -22,7 +22,7 @@ export default function MultipleCatsOdorControlPage() {
 
   // SEO optimized images for multi-cat households
   const heroImage = '/optimized/multiple-cats-together.webp';
-  const solutionImage = '/images/solutions/ammonia-fresh-home.png';
+  const solutionImage = '/images/ammonia-fresh-home.png';
 
   // HowTo steps for multi-cat odor control
   const howToSteps = [

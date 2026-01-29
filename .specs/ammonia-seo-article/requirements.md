@@ -102,7 +102,7 @@ As a cat owner who has tried home remedies, I want to understand why common solu
 ### Image Acceptance Criteria
 - AC-IMG-1: THE SYSTEM SHALL include at least 3 images in the article
 - AC-IMG-2: THE SYSTEM SHALL include alt text containing target keywords for each image
-- AC-IMG-3: THE SYSTEM SHALL store images in `/public/optimized/blog/` directory
+- AC-IMG-3: THE SYSTEM SHALL store images in `/public/optimized/` directory
 - AC-IMG-4: THE SYSTEM SHALL ensure all images are under 800x800px per blog image limits
 - AC-IMG-5: THE SYSTEM SHALL source images from Unsplash
 - AC-IMG-6: THE SYSTEM SHALL reuse existing `/optimized/` assets where suitable

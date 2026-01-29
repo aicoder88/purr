@@ -117,7 +117,7 @@ export const OrderConfirmationEmailHTML = ({
           <!-- Header -->
           <tr>
             <td style="padding: 40px 40px 20px; text-align: center; background: linear-gradient(135deg, #03E46A 0%, #02C55A 100%); border-radius: 12px 12px 0 0;">
-              <img src="https://www.purrify.ca/purrify-logo.png" alt="Purrify" style="width: 120px; height: auto; margin-bottom: 20px;">
+              <img src="https://www.purrify.ca/images/purrify-logo.png" alt="Purrify" style="width: 120px; height: auto; margin-bottom: 20px;">
               <h1 style="margin: 0; font-size: 28px; font-weight: 700; color: #ffffff;">${t.thankYou}</h1>
             </td>
           </tr>

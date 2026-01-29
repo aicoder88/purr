@@ -89,7 +89,7 @@ function generateOGImage(image: string | undefined, title: string): Array<{
   height?: number;
   alt: string;
 }> {
-  const defaultImage = 'https://www.purrify.ca/purrify-logo.png';
+  const defaultImage = 'https://www.purrify.ca/images/purrify-logo.png';
   const imageUrl = image || defaultImage;
 
   return [
@@ -276,7 +276,7 @@ function generateSchema(
           name: SITE_NAME,
           logo: {
             '@type': 'ImageObject',
-            url: 'https://www.purrify.ca/purrify-logo.png',
+            url: 'https://www.purrify.ca/images/purrify-logo.png',
             width: 400,
             height: 400,
           },
@@ -338,7 +338,7 @@ function generateSchema(
         url: 'https://www.purrify.ca',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://www.purrify.ca/purrify-logo.png',
+          url: 'https://www.purrify.ca/images/purrify-logo.png',
           width: 400,
           height: 400,
         },

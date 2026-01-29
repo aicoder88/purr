@@ -238,7 +238,7 @@ content/blog/
   "slug": "url-friendly-slug",
   "excerpt": "Preview text (50-200 chars)",
   "content": "Full HTML content (2000+ words)",
-  "featuredImage": "/optimized/blog/image-name.jpg",
+  "featuredImage": "/optimized/image-name.jpg",
   "publishedAt": "2024-01-27T00:00:00.000Z",
   "category": "cat-health",
   "tags": ["litter-box", "odor-control"],
@@ -262,7 +262,7 @@ content/blog/
 ### Image Size Limits
 | Directory | Max Dimensions | Fix Command |
 |-----------|----------------|-------------|
-| `public/optimized/blog/` | 800×800px | `sips -Z 800 public/optimized/blog/*.jpg` |
+| `public/optimized/` | 800×800px | `sips -Z 800 public/optimized/*.jpg` |
 | `public/optimized/` | 3200×3200px | `sips -Z 3200 <file>` |
 | `public/images/products/` | 1200×1800px | `sips -Z 1200 <file>` |
 
@@ -927,7 +927,7 @@ pnpm performance:audit
 |-------|----------|
 | Dark mode validation failing | Add missing `dark:*` variants (especially for `text-white`, `bg-white`) |
 | Hydration validation failing | Replace conditional `return null` with components (see Hydration Safety) |
-| Image validation failing | Resize images: `sips -Z 800 public/optimized/blog/*.jpg` |
+| Image validation failing | Resize images: `sips -Z 800 public/optimized/*.jpg` |
 | Translation missing | Add key to ALL files in `src/translations/` |
 
 ### Database Issues

@@ -365,7 +365,7 @@ export function Header() {
               className="flex items-center space-x-2 flex-shrink-0"
             >
               <Image
-                src="/logo-light.png"
+                src="/optimized/logo-light.webp"
                 alt="Purrify - Premium Activated Carbon Cat Litter Additive - Home"
                 width={120}
                 height={40}
@@ -373,7 +373,7 @@ export function Header() {
                 className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
               />
               <Image
-                src="/logo-dark.png"
+                src="/optimized/logo-dark.webp"
                 alt="Purrify - Premium Activated Carbon Cat Litter Additive - Home"
                 width={120}
                 height={40}

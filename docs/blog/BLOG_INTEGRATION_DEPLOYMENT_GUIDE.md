@@ -193,7 +193,7 @@ In Vercel Dashboard:
 ### Issue: Media Library Empty
 
 **Solution:**
-1. Verify `public/optimized/blog/` has images
+1. Verify `public/optimized/` has images
 2. Check `content/media-library.json` exists
 3. Run image optimization: `npm run optimize-images:enhanced`
 4. Refresh media library page

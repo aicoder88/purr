@@ -8,18 +8,19 @@ const sharp = require('sharp');
 const fs = require('node:fs');
 const path = require('node:path');
 const glob = require('glob');
-const ConfigurationManager = require('./lib/ConfigurationManager');
-const MetadataGenerator = require('./lib/MetadataGenerator');
-const ErrorHandler = require('./lib/ErrorHandler');
+const ConfigurationManager = require('../lib/ConfigurationManager');
+const MetadataGenerator = require('../lib/MetadataGenerator');
+const ErrorHandler = require('../lib/ErrorHandler');
 
 // Initialize configuration
 const configManager = new ConfigurationManager();
 const config = configManager.loadConfig();
 
 // Directories
-const PUBLIC_DIR = path.join(__dirname, '../public');
+const PUBLIC_DIR = path.join(__dirname, '../../public');
 const OPTIMIZED_DIR = path.join(PUBLIC_DIR, 'optimized');
 const ORIGINAL_IMAGES_DIR = path.join(PUBLIC_DIR, 'original-images');
+const IMAGE_SOURCE_DIR = path.join(PUBLIC_DIR, 'images');
 
 // Initialize metadata generator
 const metadataGenerator = new MetadataGenerator(
@@ -33,7 +34,7 @@ const errorHandler = new ErrorHandler(config.errorThreshold);
 try {
   sharp.cache(false);
   sharp.concurrency(config.concurrency || 2);
-} catch (_) {}
+} catch (_) { }
 
 // Statistics tracking
 const stats = {
@@ -129,7 +130,7 @@ async function generateResponsiveImage(filePath, format, width, quality, compres
     }
 
     await pipeline.toFile(outputPath);
-    
+
     const outputStat = fs.statSync(outputPath);
     return {
       path: `optimized/${outputFilename}`,
@@ -152,7 +153,7 @@ async function generateBlurPlaceholder(filePath) {
       .blur(2)
       .jpeg({ quality: 50 })
       .toBuffer();
-    
+
     return `data:image/jpeg;base64,${buffer.toString('base64')}`;
   } catch (error) {
     console.error(`Error generating blur placeholder for ${filePath}:`, error.message);
@@ -165,27 +166,27 @@ async function generateBlurPlaceholder(filePath) {
  */
 async function optimizeImage(filePath) {
   const startTime = Date.now();
-  
+
   try {
     const filename = path.basename(filePath);
-    
+
     // Skip already optimized images
-    if (filePath.includes('/optimized/') || filePath.includes('/images/')) {
+    if (filePath.includes('/optimized/')) {
       stats.skipped++;
       return null;
     }
-    
+
     // Skip problematic files
     if (filename === 'purrify-logo.png') {
       console.log(`Skipping problematic file: ${filePath}`);
       stats.skipped++;
       return null;
     }
-    
+
     // Get profile for this image
     const profile = configManager.getProfile(filePath);
     console.log(`Processing ${filename} with profile: ${profile.name}`);
-    
+
     // Get image metadata
     const metadata = await getImageMetadata(filePath);
     if (!metadata) {
@@ -196,7 +197,7 @@ async function optimizeImage(filePath) {
 
     const originalSize = metadata.size;
     let { width, height } = metadata;
-    
+
     // Calculate new dimensions if image is too large
     if (width > profile.maxWidth) {
       const ratio = profile.maxWidth / width;
@@ -216,11 +217,11 @@ async function optimizeImage(filePath) {
     // Generate all responsive sizes for each format
     for (const format of profile.formats) {
       result.formats[format] = [];
-      
+
       for (const size of profile.responsiveSizes) {
         // Don't generate sizes larger than the image
         if (size > width) continue;
-        
+
         const output = await generateResponsiveImage(
           filePath,
           format,
@@ -228,7 +229,7 @@ async function optimizeImage(filePath) {
           profile.quality,
           profile.compressionLevel
         );
-        
+
         if (output) {
           result.formats[format].push(output.path);
           stats.formatBreakdown[format]++;
@@ -254,7 +255,7 @@ async function optimizeImage(filePath) {
     stats.successful++;
 
     console.log(`✓ Optimized ${filename} in ${processingTime}ms`);
-    
+
     return result;
   } catch (error) {
     stats.failed++;
@@ -269,13 +270,13 @@ async function optimizeImage(filePath) {
 async function processIcons() {
   const outputDir = path.join(PUBLIC_DIR, 'images');
   ensureDirectoryExists(outputDir);
-  
+
   const iconPath = path.join(PUBLIC_DIR, 'purrify-logo-icon.png');
   if (!fs.existsSync(iconPath)) {
     console.log('Icon file not found, skipping icon processing');
     return;
   }
-  
+
   const writeIcon = async (size, name) => {
     const dest = path.join(outputDir, name);
     try {
@@ -289,13 +290,13 @@ async function processIcons() {
       console.error(`Error generating icon ${name}:`, error.message);
     }
   };
-    
+
   await writeIcon(16, 'favicon.png');
   await writeIcon(32, 'icon-32.png');
   await writeIcon(64, 'icon-64.png');
   await writeIcon(128, 'icon-128.png');
   await writeIcon(180, 'apple-touch-icon.png');
-  
+
   // Process text logo if exists
   const textPath = path.join(PUBLIC_DIR, 'purrify-logo-text.png');
   if (fs.existsSync(textPath)) {
@@ -312,7 +313,7 @@ async function processIcons() {
         console.error(`Error generating text logo ${name}:`, error.message);
       }
     };
-      
+
     await writeTextLogo(120, 40, 'logo-text-120.png');
     await writeTextLogo(180, 60, 'logo-text-180.png');
     await writeTextLogo(240, 80, 'logo-text-240.png');
@@ -324,34 +325,33 @@ async function processIcons() {
  */
 async function optimizeAllImages() {
   console.log('Starting image optimization...\n');
-  
+
   try {
     // Ensure directories exist
     ensureDirectoryExists(OPTIMIZED_DIR);
     ensureDirectoryExists(ORIGINAL_IMAGES_DIR);
-    
+
     // Process icons first
     await processIcons();
-    
-    // Find all images in the public directory
-    const imageFiles = glob.sync(`${PUBLIC_DIR}/**/*.{png,jpg,jpeg,gif}`, {
+
+    // Find all images in the public/images directory
+    const imageFiles = glob.sync(`${IMAGE_SOURCE_DIR}/**/*.{png,jpg,jpeg,gif}`, {
       ignore: [
-        `${PUBLIC_DIR}/images/**`,
         `${PUBLIC_DIR}/optimized/**`,
         `${PUBLIC_DIR}/original-images/**`
       ]
     });
-    
+
     stats.totalImages = imageFiles.length;
     console.log(`\nFound ${imageFiles.length} images to process\n`);
-    
+
     // Load existing metadata for cleanup
     const existingMetadata = metadataGenerator.loadExistingMetadata();
-    
+
     // Process each image and collect results
     const results = [];
     const processedPaths = [];
-    
+
     for (const filePath of imageFiles) {
       const result = await optimizeImage(filePath);
       if (result) {
@@ -363,7 +363,7 @@ async function optimizeAllImages() {
         processedPaths.push(relativePath);
       }
     }
-    
+
     // Clean up metadata for removed images
     const cleanedMetadata = metadataGenerator.cleanupMetadata(existingMetadata, processedPaths);
 
@@ -399,12 +399,12 @@ async function optimizeAllImages() {
     console.log(`Size reduction: ${(stats.totalSizeReduction / 1024 / 1024).toFixed(2)} MB`);
     console.log(`Average time: ${(stats.totalProcessingTime / stats.successful || 0).toFixed(0)}ms per image`);
     console.log('='.repeat(60) + '\n');
-    
+
     // Print error summary if there were errors
     if (stats.failed > 0) {
       errorHandler.printErrorSummary();
     }
-    
+
   } catch (error) {
     console.error('Error in image optimization process:', error);
     process.exit(1);

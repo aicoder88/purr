@@ -98,7 +98,7 @@ export default function HomePage() {
   const orgData = createOrganizationData({
     name: 'Purrify',
     url: 'https://purrify.ca',
-    logo: 'https://purrify.ca/purrify-logo.png',
+    logo: 'https://purrify.ca/images/purrify-logo.png',
     description: 'Natural cat litter odor control using activated carbon technology',
     email: 'support@purrify.ca',
     socialProfiles: [

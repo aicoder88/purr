@@ -28,7 +28,7 @@ The Custom Blog System is a native, high-performance blog management solution bu
 ┌─────────────────────────────────────────────────────────────┐
 │              File System Storage                             │
 │         content/blog/{locale}/{slug}.json                    │
-│         public/optimized/blog/{images}                       │
+│         public/optimized/{images}                       │
 └────────────────────────┬────────────────────────────────────┘
                          │
                          ▼
@@ -255,7 +255,7 @@ class SEOGenerator {
         name: 'Purrify',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://purrify.ca/purrify-logo.png'
+          url: 'https://purrify.ca/images/purrify-logo.png'
         }
       },
       mainEntityOfPage: {
@@ -343,19 +343,19 @@ class ImageOptimizer {
       const avif = await sharp(resized).avif({ quality: 80 }).toBuffer();
       const avifPath = `${slug}-${size}w.avif`;
       await fs.writeFile(path.join(this.outputDir, avifPath), avif);
-      result.optimized.avif.push(`/optimized/blog/${avifPath}`);
+      result.optimized.avif.push(`/optimized/${avifPath}`);
       
       // Generate WebP
       const webp = await sharp(resized).webp({ quality: 85 }).toBuffer();
       const webpPath = `${slug}-${size}w.webp`;
       await fs.writeFile(path.join(this.outputDir, webpPath), webp);
-      result.optimized.webp.push(`/optimized/blog/${webpPath}`);
+      result.optimized.webp.push(`/optimized/${webpPath}`);
       
       // Generate JPG fallback
       const jpg = await sharp(resized).jpeg({ quality: 85 }).toBuffer();
       const jpgPath = `${slug}-${size}w.jpg`;
       await fs.writeFile(path.join(this.outputDir, jpgPath), jpg);
-      result.optimized.jpg.push(`/optimized/blog/${jpgPath}`);
+      result.optimized.jpg.push(`/optimized/${jpgPath}`);
     }
     
     return result;
@@ -741,7 +741,7 @@ class AutomatedContentGenerator {
       content: parsedContent.content,
       author: {
         name: 'Purrify Team',
-        avatar: '/team-avatar.png'
+        avatar: '/images/team-avatar.png'
       },
       publishDate: new Date().toISOString(),
       modifiedDate: new Date().toISOString(),
@@ -1188,7 +1188,7 @@ class AutomatedContentGenerator {
       content: data.content,
       author: {
         name: 'Purrify Team',
-        avatar: '/team-avatar.png'
+        avatar: '/images/team-avatar.png'
       },
       publishDate: new Date().toISOString(),
       modifiedDate: new Date().toISOString(),
@@ -1738,7 +1738,7 @@ class BlogMigration {
       parsed.content.substring(0, 160).replace(/<[^>]*>/g, '') + '...';
     
     // Get featured image (first image in post)
-    const featuredImage = parsed.images[0] || '/optimized/blog/default.webp';
+    const featuredImage = parsed.images[0] || '/optimized/default.webp';
     
     // Calculate reading time
     const wordCount = parsed.content.split(/\s+/).length;
@@ -1752,7 +1752,7 @@ class BlogMigration {
       content: parsed.content,
       author: {
         name: 'Purrify Team',
-        avatar: '/team-avatar.png'
+        avatar: '/images/team-avatar.png'
       },
       publishDate: parsed.publishDate,
       modifiedDate: new Date().toISOString(),

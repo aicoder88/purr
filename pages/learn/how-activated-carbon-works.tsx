@@ -15,7 +15,7 @@ export default function HowActivatedCarbonWorksPage() {
   const canonicalUrl = getLocalizedUrl('/learn/how-activated-carbon-works', locale);
   const languageAlternates = buildLanguageAlternates('/learn/how-activated-carbon-works');
 
-  const heroImage = '/images/solutions/ammonia-science.png';
+  const heroImage = '/images/ammonia-science.png';
 
   // HowTo steps for using activated carbon
   const howToSteps = [

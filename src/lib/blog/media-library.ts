@@ -56,8 +56,8 @@ export class MediaLibrary {
           item = {
             id: this.generateId(filename),
             filename,
-            url: `/optimized/blog/${filename}`,
-            thumbnailUrl: `/optimized/blog/${filename}`,
+            url: `/optimized/${filename}`,
+            thumbnailUrl: `/optimized/${filename}`,
             width: 0,
             height: 0,
             size: stats.size,
@@ -97,7 +97,7 @@ export class MediaLibrary {
         
         for (const post of posts) {
           // Check if image is used in content or as featured image
-          const imageUrl = `/optimized/blog/${filename}`;
+          const imageUrl = `/optimized/${filename}`;
           
           if (post.content.includes(imageUrl) || 
               post.featuredImage?.url === imageUrl) {

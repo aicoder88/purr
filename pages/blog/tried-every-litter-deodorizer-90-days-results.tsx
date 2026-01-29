@@ -18,11 +18,11 @@ import { SITE_NAME } from '../../src/lib/constants';
  */
 
 // Image constants with Unsplash optimization
-const heroImage = '/optimized/blog/90day-hero.jpg';
-const heroImageOg = 'https://www.purrify.ca/optimized/blog/90day-hero.jpg';
-const problemImage = '/optimized/blog/90day-problem.jpg';
-const scienceImage = '/optimized/blog/90day-science.jpg';
-const solutionImage = '/optimized/blog/90day-solution.jpg';
+const heroImage = '/optimized/90day-hero.jpg';
+const heroImageOg = 'https://www.purrify.ca/optimized/90day-hero.jpg';
+const problemImage = '/optimized/90day-problem.jpg';
+const scienceImage = '/optimized/90day-science.jpg';
+const solutionImage = '/optimized/90day-solution.jpg';
 
 export default function TriedEveryLitterDeodorizer90Days() {
   const pageTitle = '90-Day Litter Deodorizer Test Results';
@@ -70,7 +70,7 @@ export default function TriedEveryLitterDeodorizer90Days() {
               "name": "Purrify",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://www.purrify.ca/purrify-logo.png"
+                "url": "https://www.purrify.ca/images/purrify-logo.png"
               }
             },
             "datePublished": "2025-10-06",

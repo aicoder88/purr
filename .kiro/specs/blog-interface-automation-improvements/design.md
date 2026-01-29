@@ -112,7 +112,7 @@ class MediaLibrary {
 
 **Storage**:
 - Media metadata stored in `content/media-library.json`
-- Scan `public/optimized/blog/` directory on load
+- Scan `public/optimized/` directory on load
 - Track usage by parsing post content for image URLs
 
 ### 3. Enhanced Auto-save with Visual Feedback

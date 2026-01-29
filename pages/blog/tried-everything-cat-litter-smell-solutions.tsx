@@ -6,11 +6,11 @@ import Link from 'next/link';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 
 // High-quality images for frustration, failed solutions, and breakthrough
-const heroImage = '/optimized/blog/tried-hero.jpg';
-const heroImageOg = 'https://www.purrify.ca/optimized/blog/tried-hero.jpg';
-const failedSolutionsImage = '/optimized/blog/tried-failed.jpg';
-const scienceImage = '/optimized/blog/tried-science.jpg';
-const reliefImage = '/optimized/blog/tried-relief.jpg';
+const heroImage = '/optimized/tried-hero.jpg';
+const heroImageOg = 'https://www.purrify.ca/optimized/tried-hero.jpg';
+const failedSolutionsImage = '/optimized/tried-failed.jpg';
+const scienceImage = '/optimized/tried-science.jpg';
+const reliefImage = '/optimized/tried-relief.jpg';
 
 export default function TriedEverythingCatLitterSmell() {
   return (
@@ -67,7 +67,7 @@ export default function TriedEverythingCatLitterSmell() {
                   "name": "Purrify",
                   "logo": {
                     "@type": "ImageObject",
-                    "url": "https://www.purrify.ca/purrify-logo.png",
+                    "url": "https://www.purrify.ca/images/purrify-logo.png",
                     "width": 400,
                     "height": 400
                   }

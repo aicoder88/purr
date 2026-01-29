@@ -17,10 +17,10 @@ export default function NaturalCatLitterAdditivePage() {
   const languageAlternates = buildLanguageAlternates('/learn/solutions/natural-cat-litter-additive');
 
   // Natural cat litter additive images
-  const heroImage = '/images/solutions/litter-box-hero.png';
-  const sectionImage1 = '/images/solutions/ammonia-science.png';
-  const sectionImage2 = '/images/solutions/ammonia-happy-cat.png';
-  const solutionImage = '/images/solutions/ammonia-fresh-home.png';
+  const heroImage = '/images/litter-box-hero.png';
+  const sectionImage1 = '/images/ammonia-science.png';
+  const sectionImage2 = '/images/ammonia-happy-cat.png';
+  const solutionImage = '/images/ammonia-fresh-home.png';
 
   // HowTo steps for non-toxic deodorizer
   const howToSteps = [

@@ -181,7 +181,7 @@ class StructuredDataGenerator {
         'name': 'Purrify',
         'logo': {
           '@type': 'ImageObject',
-          'url': 'https://purrify.ca/purrify-logo.png'
+          'url': 'https://purrify.ca/images/purrify-logo.png'
         }
       },
       'description': post.excerpt,

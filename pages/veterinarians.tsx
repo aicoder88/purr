@@ -20,7 +20,7 @@ export default function VeterinariansPage() {
     title: pageTitle,
     description: pageDescription,
     targetKeyword: 'veterinary clinic pet products',
-    image: 'https://www.purrify.ca/purrify-logo.png',
+    image: 'https://www.purrify.ca/images/purrify-logo.png',
     keywords: ['veterinary clinic products', 'vet recommended cat products', 'pet health products wholesale'],
   });
 

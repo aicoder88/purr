@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 
 // Relevant images for kitten care content
-const heroImage = '/optimized/blog/kitten-looking-curious-ghibli.png';
+const heroImage = '/optimized/kitten-looking-curious-ghibli.png';
 
 export default function UsingDeodorizersWithKittens() {
   return (
@@ -50,7 +50,7 @@ export default function UsingDeodorizersWithKittens() {
               "name": "Purrify",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://www.purrify.ca/purrify-logo.png"
+                "url": "https://www.purrify.ca/images/purrify-logo.png"
               }
             },
             "datePublished": "2024-01-25",
@@ -190,7 +190,7 @@ export default function UsingDeodorizersWithKittens() {
               </ol>
 
               <figure className="mb-12">
-                <Image src="/optimized/blog/mother-cat-kitten.jpg" alt="Mother cat watching kitten use litter box illustration" width={800} height={533} className="w-full rounded-lg shadow-lg" />
+                <Image src="/optimized/mother-cat-kitten.jpg" alt="Mother cat watching kitten use litter box illustration" width={800} height={533} className="w-full rounded-lg shadow-lg" />
               </figure>
 
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">What If My Kitten Eats the Carbon?</h2>

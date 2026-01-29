@@ -116,7 +116,7 @@ describe('validateArticleSchema', () => {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: 'Best Cat Litter Odor Control Solutions',
-    image: 'https://purrify.ca/images/blog/odor-control.jpg',
+    image: 'https://purrify.ca/images/odor-control.jpg',
     datePublished: '2026-01-15T10:00:00Z',
     author: {
       '@type': 'Person',

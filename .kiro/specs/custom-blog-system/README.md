@@ -75,7 +75,7 @@ A native, high-performance blog management system built directly into the Purrif
 ┌─────────────────────────────────────────────────────────────┐
 │              File System Storage                             │
 │         content/blog/{locale}/{slug}.json                    │
-│         public/optimized/blog/{images}                       │
+│         public/optimized/{images}                       │
 └────────────────────────┬────────────────────────────────────┘
                          │
                          ▼

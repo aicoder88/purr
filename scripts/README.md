@@ -644,7 +644,7 @@ npm run validate-blog-images
 - Proper formats (WebP, JPEG, PNG)
 - No missing images
 
-**Enforces:** `public/optimized/blog/` size limit of 800x800px
+**Enforces:** `public/optimized/` size limit of 800x800px
 
 ---
 
@@ -659,7 +659,7 @@ npm run validate-images
 ```
 
 **Enforces limits:**
-- `public/optimized/blog/`: 800x800px (STRICT)
+- `public/optimized/`: 800x800px (STRICT)
 - `public/optimized/`: 3200x3200px
 - `public/images/products/`: 1200x1800px
 
@@ -667,7 +667,7 @@ npm run validate-images
 
 **Fix command:**
 ```bash
-sips -Z 800 public/optimized/blog/*.jpg
+sips -Z 800 public/optimized/*.jpg
 ```
 
 ---
@@ -1138,7 +1138,7 @@ npm run optimize-images:enhanced
 npm run validate-images
 
 # Fix blog images if needed
-sips -Z 800 public/optimized/blog/*.jpg
+sips -Z 800 public/optimized/*.jpg
 npm run validate-blog-images
 ```
 
@@ -1330,7 +1330,7 @@ npm run validate-dark-mode
 npm run validate-images
 
 # Resize blog images
-sips -Z 800 public/optimized/blog/*.jpg
+sips -Z 800 public/optimized/*.jpg
 
 # Re-optimize all images
 npm run optimize-images:enhanced

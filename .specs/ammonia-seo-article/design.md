@@ -97,7 +97,7 @@ interface BlogPost {
   title: "How to Neutralize Ammonia in Cat Litter: 5 Proven Methods";
   excerpt: string; // 150-160 chars with primary keyword
   content: string; // HTML with dark mode classes
-  author: { name: "Purrify Team"; avatar: "/team-avatar.png" };
+  author: { name: "Purrify Team"; avatar: "/images/team-avatar.png" };
   publishDate: string; // ISO date
   modifiedDate: string;
   status: "published";

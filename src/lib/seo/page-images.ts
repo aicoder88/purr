@@ -47,31 +47,31 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
     alt: 'Natural odor control comparison setup',
   },
   '/blog/tried-everything-cat-litter-smell-solutions': {
-    image: '/optimized/blog/tried-hero.jpg',
+    image: '/optimized/tried-hero.jpg',
     alt: 'Frustrated cat owner seeking solutions',
   },
   '/blog/most-powerful-odor-absorber': {
-    image: '/optimized/blog/scientific-odor-control.png',
+    image: '/optimized/scientific-odor-control.png',
     alt: 'Powerful activated carbon odor absorption',
   },
   '/blog/cat-litter-smell-worse-summer': {
-    image: '/optimized/blog/summer-fresh-cat.png',
+    image: '/optimized/summer-fresh-cat.png',
     alt: 'Summer heat affecting litter odor',
   },
   '/blog/cat-litter-smell-worse-winter': {
-    image: '/optimized/blog/winter-fresh-cat.png',
+    image: '/optimized/winter-fresh-cat.png',
     alt: 'Winter indoor air quality for cats',
   },
   '/blog/embarrassed-guests-visit-cat-litter-smell': {
-    image: '/optimized/blog/embarrassed-hero.jpg',
+    image: '/optimized/embarrassed-hero.jpg',
     alt: 'Welcoming guests to a fresh home',
   },
   '/blog/powder-vs-spray-litter-deodorizer': {
-    image: '/optimized/blog/frequency-hero.png',
+    image: '/optimized/frequency-hero.png',
     alt: 'Comparing deodorizer application methods',
   },
   '/blog/tried-every-litter-deodorizer-90-days-results': {
-    image: '/optimized/blog/90day-hero.jpg',
+    image: '/optimized/90day-hero.jpg',
     alt: '90-day deodorizer comparison test',
   },
   '/blog/activated-carbon-vs-zeolite-cat-litter': {

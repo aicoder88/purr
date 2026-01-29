@@ -38,7 +38,7 @@ export class ImageOptimizer {
         const avif = await sharp(resized).avif({ quality: 80 }).toBuffer();
         const avifPath = `${slug}-${size}w.avif`;
         await fs.writeFile(path.join(this.outputDir, avifPath), avif);
-        result.optimized.avif.push(`/optimized/blog/${avifPath}`);
+        result.optimized.avif.push(`/optimized/${avifPath}`);
       } catch (error) {
         console.warn('AVIF generation failed, skipping:', error);
       }
@@ -47,13 +47,13 @@ export class ImageOptimizer {
       const webp = await sharp(resized).webp({ quality: 85 }).toBuffer();
       const webpPath = `${slug}-${size}w.webp`;
       await fs.writeFile(path.join(this.outputDir, webpPath), webp);
-      result.optimized.webp.push(`/optimized/blog/${webpPath}`);
+      result.optimized.webp.push(`/optimized/${webpPath}`);
 
       // Generate JPG fallback (universal support)
       const jpg = await sharp(resized).jpeg({ quality: 85, progressive: true }).toBuffer();
       const jpgPath = `${slug}-${size}w.jpg`;
       await fs.writeFile(path.join(this.outputDir, jpgPath), jpg);
-      result.optimized.jpg.push(`/optimized/blog/${jpgPath}`);
+      result.optimized.jpg.push(`/optimized/${jpgPath}`);
     }
 
     return result;

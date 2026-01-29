@@ -164,7 +164,7 @@
         "format": "jpg"
       },
       {
-        "path": "images/natural_cat_litter.webp",
+        "path": "images/images/natural_cat_litter.webp",
         "size": 134596,
         "sizeKB": "131.4",
         "format": "webp"
@@ -422,7 +422,7 @@
         "format": "jpg"
       },
       {
-        "path": "optimized/clamping-cat-litter.webp",
+        "path": "optimized/images/clamping-cat-litter.webp",
         "size": 282782,
         "sizeKB": "276.2",
         "format": "webp"
@@ -440,7 +440,7 @@
         "format": "jpg"
       },
       {
-        "path": "optimized/clay-cat-litter.webp",
+        "path": "optimized/images/clay-cat-litter.webp",
         "size": 420698,
         "sizeKB": "410.8",
         "format": "webp"
@@ -650,13 +650,13 @@
         "format": "jpg"
       },
       {
-        "path": "optimized/natural-cat-litter.webp",
+        "path": "optimized/images/natural-cat-litter.webp",
         "size": 113256,
         "sizeKB": "110.6",
         "format": "webp"
       },
       {
-        "path": "optimized/natural_cat_litter.webp",
+        "path": "optimized/images/natural_cat_litter.webp",
         "size": 134596,
         "sizeKB": "131.4",
         "format": "webp"

@@ -188,7 +188,7 @@ FAL_API_KEY=your-fal-key-here
 **Checklist**:
 1. Check `FAL_API_KEY` is set correctly
 2. Check fal.ai account has credits
-3. Check `public/optimized/blog/` directory exists and is writable
+3. Check `public/optimized/` directory exists and is writable
 4. Check console logs for error messages
 5. Verify default Purrify logo is being used as fallback
 

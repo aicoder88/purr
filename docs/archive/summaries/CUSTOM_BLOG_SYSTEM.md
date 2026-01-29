@@ -127,7 +127,7 @@ Posts are stored as JSON files in `content/blog/{locale}/{slug}.json`:
   "modifiedDate": "2024-11-09T12:00:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/blog/eliminate-cat-litter-odor-1200w.webp",
+    "url": "/optimized/eliminate-cat-litter-odor-1200w.webp",
     "alt": "Clean cat litter box",
     "width": 1200,
     "height": 630
@@ -189,7 +189,7 @@ curl -X POST https://your-domain.com/api/cron/generate-blog-post \
 2. Automatically optimized with Sharp
 3. Generates AVIF, WebP, and JPG formats
 4. Creates responsive sizes: 640w, 828w, 1200w, 1920w
-5. Stores in `public/optimized/blog/`
+5. Stores in `public/optimized/`
 
 ### Manual Optimization
 
@@ -306,7 +306,7 @@ Automatically generated for translated posts to help search engines understand l
 
 ### Images Not Loading
 
-1. Verify images in `public/optimized/blog/`
+1. Verify images in `public/optimized/`
 2. Check file permissions
 3. Run image optimization: `npm run optimize-images:enhanced`
 

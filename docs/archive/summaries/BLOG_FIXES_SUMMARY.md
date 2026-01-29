@@ -15,7 +15,7 @@
 **Problem:** First post didn't have a working picture.
 
 **Solution:**
-- Improved image error handling with fallback to `/purrify-logo.png`
+- Improved image error handling with fallback to `/images/purrify-logo.png`
 - Added image URL validation in ContentValidator
 - Enhanced AutomatedContentGenerator to ensure valid featured images
 - Updated blog index to handle image load failures gracefully

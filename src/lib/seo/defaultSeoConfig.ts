@@ -23,7 +23,7 @@ export const buildDefaultSeoConfig = (locale: string | undefined, canonicalUrl: 
     description: SITE_DESCRIPTION,
     images: [
       {
-        url: 'https://www.purrify.ca/purrify-logo.png',
+        url: 'https://www.purrify.ca/images/purrify-logo.png',
         width: 1200,
         height: 800,
         alt: SITE_NAME,

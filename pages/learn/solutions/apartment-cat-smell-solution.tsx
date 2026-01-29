@@ -21,8 +21,8 @@ export default function ApartmentCatSmellSolutionPage() {
   const languageAlternates = buildLanguageAlternates('/learn/solutions/apartment-cat-smell-solution');
 
   // SEO optimized images
-  const heroImage = '/images/solutions/apartment-hero.png';
-  const solutionImage = '/images/solutions/apartment-living-room.png';
+  const heroImage = '/images/apartment-hero.png';
+  const solutionImage = '/images/apartment-living-room.png';
 
   // HowTo steps for apartment odor control
   const howToSteps = [

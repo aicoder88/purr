@@ -62,43 +62,43 @@ const ALL_ARTICLES: Article[] = [
   {
     title: 'Tried Everything for Cat Litter Smell?',
     href: '/blog/tried-everything-cat-litter-smell-solutions',
-    image: '/optimized/blog/tried-hero.jpg',
+    image: '/optimized/tried-hero.jpg',
     alt: 'Frustrated cat owner seeking solutions'
   },
   {
     title: 'Most Powerful Odor Absorber',
     href: '/blog/most-powerful-odor-absorber',
-    image: '/optimized/blog/scientific-odor-control.png',
+    image: '/optimized/scientific-odor-control.png',
     alt: 'Powerful activated carbon odor absorption'
   },
   {
     title: 'Cat Litter Smells Worse in Summer',
     href: '/blog/cat-litter-smell-worse-summer',
-    image: '/optimized/blog/summer-fresh-cat.png',
+    image: '/optimized/summer-fresh-cat.png',
     alt: 'Summer heat affecting litter odor'
   },
   {
     title: 'Cat Litter Smells Worse in Winter',
     href: '/blog/cat-litter-smell-worse-winter',
-    image: '/optimized/blog/winter-fresh-cat.png',
+    image: '/optimized/winter-fresh-cat.png',
     alt: 'Winter indoor air quality for cats'
   },
   {
     title: 'Embarrassed When Guests Visit?',
     href: '/blog/embarrassed-guests-visit-cat-litter-smell',
-    image: '/optimized/blog/embarrassed-hero.jpg',
+    image: '/optimized/embarrassed-hero.jpg',
     alt: 'Welcoming guests to a fresh home'
   },
   {
     title: 'Powder vs Spray Litter Deodorizer',
     href: '/blog/powder-vs-spray-litter-deodorizer',
-    image: '/optimized/blog/frequency-hero.png',
+    image: '/optimized/frequency-hero.png',
     alt: 'Comparing deodorizer application methods'
   },
   {
     title: '90 Days Testing Every Deodorizer',
     href: '/blog/tried-every-litter-deodorizer-90-days-results',
-    image: '/optimized/blog/90day-hero.jpg',
+    image: '/optimized/90day-hero.jpg',
     alt: '90-day deodorizer comparison test'
   },
   {
@@ -146,13 +146,13 @@ const ALL_ARTICLES: Article[] = [
   {
     title: 'How to Neutralize Ammonia in Cat Litter',
     href: '/learn/solutions/how-to-neutralize-ammonia-cat-litter',
-    image: '/images/solutions/ammonia-science.png',
+    image: '/images/ammonia-science.png',
     alt: 'Scientific approach to neutralizing ammonia odors'
   },
   {
     title: 'Litter Box Smell Elimination Guide',
     href: '/learn/solutions/litter-box-smell-elimination',
-    image: '/images/solutions/litter-box-hero.png',
+    image: '/images/litter-box-hero.png',
     alt: 'Clean litter box in a fresh home'
   },
   {

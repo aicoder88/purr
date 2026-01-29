@@ -17,10 +17,10 @@ export default function AmmoniaSmellCatLitterPage() {
   const languageAlternates = buildLanguageAlternates('/learn/solutions/ammonia-smell-cat-litter');
 
   // Ammonia smell solution images
-  const heroImage = '/images/solutions/ammonia-hero.png';
-  const sectionImage1 = '/images/solutions/ammonia-science.png';
-  const sectionImage2 = '/images/solutions/ammonia-fresh-home.png';
-  const solutionImage = '/images/solutions/ammonia-happy-cat.png';
+  const heroImage = '/images/ammonia-hero.png';
+  const sectionImage1 = '/images/ammonia-science.png';
+  const sectionImage2 = '/images/ammonia-fresh-home.png';
+  const solutionImage = '/images/ammonia-happy-cat.png';
 
   // HowTo steps for fixing ammonia smell
   const howToSteps = [

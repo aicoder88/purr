@@ -88,7 +88,7 @@ const OurStoryPage: NextPage = () => {
         <div className="relative w-full h-[600px] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 z-0">
             <Image
-              src="/images/about/hero.png"
+              src="/images/hero.png"
               alt="Happy cat in a sunlit living room"
               fill
               className="object-cover"
@@ -125,7 +125,7 @@ const OurStoryPage: NextPage = () => {
               <div className="lg:w-1/2 relative">
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
                   <Image
-                    src="/images/about/mission.png"
+                    src="/images/mission.png"
                     alt="Woman hugging a cat in a clean home"
                     width={800}
                     height={600}
@@ -158,7 +158,7 @@ const OurStoryPage: NextPage = () => {
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full overflow-hidden relative border-2 border-white shadow-md">
                       <Image
-                        src="/images/about/mark-archer.jpg"
+                        src="/images/mark-archer.jpg"
                         alt="Mark Archer"
                         fill
                         className="object-cover"
@@ -230,9 +230,9 @@ const OurStoryPage: NextPage = () => {
                 const isDrMike = member.name === "Dr. Michael Rodriguez";
                 const hasPhoto = isMark || isDrMike;
                 const photoSrc = isMark
-                  ? "/images/about/mark-archer.jpg"
+                  ? "/images/mark-archer.jpg"
                   : isDrMike
-                    ? "/images/about/dr-michael-rodriguez.jpg"
+                    ? "/images/dr-michael-rodriguez.jpg"
                     : null;
                 return (
                   <div key={member.name} className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 flex flex-col h-full">

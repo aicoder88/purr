@@ -17,10 +17,10 @@ export default function HowToNeutralizeAmmoniaCatLitterPage() {
   const canonicalUrl = getLocalizedUrl('/learn/solutions/how-to-neutralize-ammonia-cat-litter', locale);
   const languageAlternates = buildLanguageAlternates('/learn/solutions/how-to-neutralize-ammonia-cat-litter');
 
-  const heroImage = '/images/solutions/ammonia-hero.png';
-  const scienceImage = '/images/solutions/ammonia-science.png';
-  const freshHomeImage = '/images/solutions/ammonia-fresh-home.png';
-  const happyCatImage = '/images/solutions/ammonia-happy-cat.png';
+  const heroImage = '/images/ammonia-hero.png';
+  const scienceImage = '/images/ammonia-science.png';
+  const freshHomeImage = '/images/ammonia-fresh-home.png';
+  const happyCatImage = '/images/ammonia-happy-cat.png';
 
   // HowTo steps for neutralizing ammonia
   const howToSteps = [

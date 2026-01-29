@@ -15,7 +15,7 @@ export default function RentersCatOdorSolutionsPage() {
   const canonicalUrl = getLocalizedUrl('/blog/renters-cat-odor-solutions', locale);
   const languageAlternates = buildLanguageAlternates('/blog/renters-cat-odor-solutions');
 
-  const heroImage = '/optimized/blog/apartment-odor-control-small-space-ghibli.png';
+  const heroImage = '/optimized/apartment-odor-control-small-space-ghibli.png';
 
   // HowTo steps for renters managing cat odor
   const howToSteps = [

@@ -42,18 +42,18 @@ export function Footer() {
                 <Link href={locale === "fr" ? "/fr/" : "/"} className="group">
                   <div className="h-6 w-auto mr-2 flex items-center">
                     <Image
-                      src="/optimized/logo-text-240.webp"
+                      src="/optimized/logo-light.webp"
                       alt="Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page"
-                      width={480}
-                      height={220}
+                      width={120}
+                      height={40}
                       loading="lazy"
                       className="h-full w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
                     />
                     <Image
-                      src="/optimized/purrify-dark-mode-logo.webp"
+                      src="/optimized/logo-dark.webp"
                       alt="Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page"
-                      width={480}
-                      height={220}
+                      width={120}
+                      height={40}
                       loading="lazy"
                       className="h-full w-auto filter drop-shadow-sm transition-all duration-300 hidden dark:block"
                     />
@@ -220,9 +220,9 @@ export function Footer() {
                   <Link
                     href={
                       locale === "fr" ? "/fr/stores" :
-                      locale === "zh" ? "/zh/stores" :
-                      locale === "es" ? "/es/stores" :
-                      "/stores"
+                        locale === "zh" ? "/zh/stores" :
+                          locale === "es" ? "/es/stores" :
+                            "/stores"
                     }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300 font-medium"
                   >
@@ -461,9 +461,9 @@ export function Footer() {
                   <Link
                     href={
                       locale === "fr" ? "/fr/hospitality" :
-                      locale === "zh" ? "/zh/hospitality" :
-                      locale === "es" ? "/es/hospitality" :
-                      "/hospitality"
+                        locale === "zh" ? "/zh/hospitality" :
+                          locale === "es" ? "/es/hospitality" :
+                            "/hospitality"
                     }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
@@ -474,9 +474,9 @@ export function Footer() {
                   <Link
                     href={
                       locale === "fr" ? "/fr/groomers" :
-                      locale === "zh" ? "/zh/groomers" :
-                      locale === "es" ? "/es/groomers" :
-                      "/groomers"
+                        locale === "zh" ? "/zh/groomers" :
+                          locale === "es" ? "/es/groomers" :
+                            "/groomers"
                     }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
@@ -487,9 +487,9 @@ export function Footer() {
                   <Link
                     href={
                       locale === "fr" ? "/fr/shelters" :
-                      locale === "zh" ? "/zh/shelters" :
-                      locale === "es" ? "/es/shelters" :
-                      "/shelters"
+                        locale === "zh" ? "/zh/shelters" :
+                          locale === "es" ? "/es/shelters" :
+                            "/shelters"
                     }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >

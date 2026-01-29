@@ -346,12 +346,12 @@ class BlogMigration {
       this.generateExcerpt(parsed.content);
     
     // Get featured image (first image in post or from og:image)
-    let featuredImageUrl = parsed.ogImage || parsed.images[0] || '/optimized/blog/default.webp';
+    let featuredImageUrl = parsed.ogImage || parsed.images[0] || '/optimized/default.webp';
     
     // Clean up image URL if it has JSX syntax
     featuredImageUrl = featuredImageUrl.replaceAll(/\$\{.*?\}/g, '').trim();
     if (!featuredImageUrl || featuredImageUrl === '') {
-      featuredImageUrl = parsed.images[0] || '/optimized/blog/default.webp';
+      featuredImageUrl = parsed.images[0] || '/optimized/default.webp';
     }
     
     // Calculate reading time if not provided
@@ -365,7 +365,7 @@ class BlogMigration {
       content: parsed.content,
       author: {
         name: 'Purrify Team',
-        avatar: '/team-avatar.png'
+        avatar: '/images/team-avatar.png'
       },
       publishDate: parsed.publishDate,
       modifiedDate: new Date().toISOString(),
