@@ -1,7 +1,10 @@
 /**
  * Page Images Mapping
  * Maps page URLs to their featured images for use in RelatedContent and other SEO components
+ * enhanced to fallback to blog-posts.ts data
  */
+
+import { sampleBlogPosts } from '../../data/blog-posts';
 
 export interface PageImage {
   image: string;
@@ -183,12 +186,25 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
  * Returns a default fallback if no specific image is mapped
  */
 export function getPageImage(url: string): PageImage {
-  return (
-    PAGE_IMAGES[url] || {
-      image: '/optimized/cat-litter-deodorizer-guide.webp',
-      alt: 'Purrify cat litter deodorizer',
-    }
-  );
+  // 1. Check manual mapping first
+  if (PAGE_IMAGES[url]) {
+    return PAGE_IMAGES[url];
+  }
+
+  // 2. Check blog posts data
+  const blogPost = sampleBlogPosts.find((post) => post.link === url);
+  if (blogPost) {
+    return {
+      image: blogPost.image,
+      alt: blogPost.heroImageAlt || blogPost.title,
+    };
+  }
+
+  // 3. Fallback
+  return {
+    image: '/optimized/cat-litter-deodorizer-guide.webp',
+    alt: 'Purrify cat litter deodorizer',
+  };
 }
 
 /**
