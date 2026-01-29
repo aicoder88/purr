@@ -3,9 +3,11 @@
 This document serves as the "source of truth" for completing the visual and content audit of the Purrify website. As context length increases, refer to this guide to resume work consistently.
 
 ## Current Progress Snapshot
-- **Blog Posts Completed**: 4 / 31
+- **Blog Posts Completed**: 5 / 31
 - **Static Pages Completed**: 0 / 22
-- **Audit Progress File**: [audit_progress.json](file:///Users/macmini/dev/purr/audit_progress.json) (Updated after every file)
+- **Audit Progress File**: [audit_progress.json](./audit_progress.json) (Updated after every file)
+- **Original Implementation Plan**: [implementation_plan.md](./implementation_plan.md)
+- **Visual Evidence**: [walkthrough.md](./walkthrough.md)
 
 ### Completed Files (Batch 1-4)
 1. `how-to-get-rid-of-cat-pee-smell-apartment.json` (Ghibli)
@@ -71,4 +73,5 @@ When injecting images into the `content` field of JSON files, use the surroundin
 
 ## Artifact Locations
 - **Task List**: [task.md](file:///Users/macmini/.gemini/antigravity/brain/cc36f754-052f-497b-9603-9aebb99fc983/task.md)
-- **Visual Proof**: [walkthrough.md](file:///Users/macmini/.gemini/antigravity/brain/cc36f754-052f-497b-9603-9aebb99fc983/walkthrough.md)
+- **System Documentation**: [implementation_plan.md](./implementation_plan.md)
+- **Execution Proof**: [walkthrough.md](./walkthrough.md)
