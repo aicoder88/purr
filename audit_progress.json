@@ -1,0 +1,700 @@
+[
+  {
+    "file": "how-to-get-rid-of-cat-pee-smell-apartment.json",
+    "type": "blog",
+    "path": "content/blog/en/how-to-get-rid-of-cat-pee-smell-apartment.json",
+    "metrics": {
+      "word_count": 2403,
+      "image_count": 6,
+      "score": 5
+    },
+    "issues": [],
+    "status": "good"
+  },
+  {
+    "file": "how-to-get-rid-of-cat-litter-smell-in-apartment.json",
+    "type": "blog",
+    "path": "content/blog/en/how-to-get-rid-of-cat-litter-smell-in-apartment.json",
+    "metrics": {
+      "word_count": 1272,
+      "image_count": 6,
+      "score": 5
+    },
+    "issues": [],
+    "status": "good"
+  },
+  {
+    "file": "how-to-neutralize-ammonia-cat-litter.json",
+    "type": "blog",
+    "path": "content/blog/en/how-to-neutralize-ammonia-cat-litter.json",
+    "metrics": {
+      "word_count": 1318,
+      "image_count": 6,
+      "score": 5
+    },
+    "issues": [],
+    "status": "good"
+  },
+  {
+    "file": "why-does-my-house-smell-like-cat-litter.json",
+    "type": "blog",
+    "path": "content/blog/en/why-does-my-house-smell-like-cat-litter.json",
+    "metrics": {
+      "word_count": 1285,
+      "image_count": 6,
+      "score": 5
+    },
+    "issues": [],
+    "status": "good"
+  },
+  {
+    "file": "cat-litter-odor-control-usa.json",
+    "type": "blog",
+    "path": "content/blog/en/cat-litter-odor-control-usa.json",
+    "metrics": {
+      "word_count": 850,
+      "image_count": 3,
+      "score": 5
+    },
+    "issues": [],
+    "status": "good"
+  },
+  {
+    "file": "best-litter-box-location-odour-control.json",
+    "type": "blog",
+    "path": "content/blog/en/best-litter-box-location-odour-control.json",
+    "metrics": {
+      "word_count": 1723,
+      "image_count": 4,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "how-often-change-cat-litter.json",
+    "type": "blog",
+    "path": "content/blog/en/how-often-change-cat-litter.json",
+    "metrics": {
+      "word_count": 1428,
+      "image_count": 3,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "apartment-litter-box-smell-solution.json",
+    "type": "blog",
+    "path": "content/blog/en/apartment-litter-box-smell-solution.json",
+    "metrics": {
+      "word_count": 852,
+      "image_count": 1,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "activated-carbon-for-cat-litter-complete-guide.json",
+    "type": "blog",
+    "path": "content/blog/en/activated-carbon-for-cat-litter-complete-guide.json",
+    "metrics": {
+      "word_count": 1688,
+      "image_count": 3,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "best-unscented-cat-litter-sensitive-cats.json",
+    "type": "blog",
+    "path": "content/blog/en/best-unscented-cat-litter-sensitive-cats.json",
+    "metrics": {
+      "word_count": 792,
+      "image_count": 4,
+      "score": 4
+    },
+    "issues": [
+      "thin_content"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "best-cat-litter-multiple-cats-odor-control.json",
+    "type": "blog",
+    "path": "content/blog/en/best-cat-litter-multiple-cats-odor-control.json",
+    "metrics": {
+      "word_count": 1781,
+      "image_count": 3,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "best-clumping-cat-litter-odor-control.json",
+    "type": "blog",
+    "path": "content/blog/en/best-clumping-cat-litter-odor-control.json",
+    "metrics": {
+      "word_count": 1812,
+      "image_count": 3,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "how-to-reduce-litter-box-odor.json",
+    "type": "blog",
+    "path": "content/blog/en/how-to-reduce-litter-box-odor.json",
+    "metrics": {
+      "word_count": 965,
+      "image_count": 2,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "best-cat-litter-for-apartments.json",
+    "type": "blog",
+    "path": "content/blog/en/best-cat-litter-for-apartments.json",
+    "metrics": {
+      "word_count": 1770,
+      "image_count": 3,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "best-covered-litter-boxes-odor-control.json",
+    "type": "blog",
+    "path": "content/blog/en/best-covered-litter-boxes-odor-control.json",
+    "metrics": {
+      "word_count": 1204,
+      "image_count": 3,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "cat-litter-odour-control-tips.json",
+    "type": "blog",
+    "path": "content/blog/en/cat-litter-odour-control-tips.json",
+    "metrics": {
+      "word_count": 1604,
+      "image_count": 4,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "space-station-secret-fresh-home-cat-owners.json",
+    "type": "blog",
+    "path": "content/blog/en/space-station-secret-fresh-home-cat-owners.json",
+    "metrics": {
+      "word_count": 1262,
+      "image_count": 3,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "safe-ways-to-deodorize-litter-box.json",
+    "type": "blog",
+    "path": "content/blog/en/safe-ways-to-deodorize-litter-box.json",
+    "metrics": {
+      "word_count": 1355,
+      "image_count": 2,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "best-cat-litter-deodorizers-2026.json",
+    "type": "blog",
+    "path": "content/blog/en/best-cat-litter-deodorizers-2026.json",
+    "metrics": {
+      "word_count": 1677,
+      "image_count": 3,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "best-cat-litter-multiple-cats.json",
+    "type": "blog",
+    "path": "content/blog/en/best-cat-litter-multiple-cats.json",
+    "metrics": {
+      "word_count": 937,
+      "image_count": 0,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "fragrance-free-litter-deodorizer.json",
+    "type": "blog",
+    "path": "content/blog/en/fragrance-free-litter-deodorizer.json",
+    "metrics": {
+      "word_count": 1549,
+      "image_count": 2,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "best-natural-cat-litter-odor-control.json",
+    "type": "blog",
+    "path": "content/blog/en/best-natural-cat-litter-odor-control.json",
+    "metrics": {
+      "word_count": 1846,
+      "image_count": 3,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "best-cat-litter-odor-control-2026.json",
+    "type": "blog",
+    "path": "content/blog/en/best-cat-litter-odor-control-2026.json",
+    "metrics": {
+      "word_count": 2240,
+      "image_count": 3,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "cat-litter-ammonia-health-risks.tsx",
+    "type": "page",
+    "path": "pages/learn/cat-litter-ammonia-health-risks.tsx",
+    "metrics": {
+      "word_count": 990,
+      "image_count": 0,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "how-activated-carbon-works.tsx",
+    "type": "page",
+    "path": "pages/learn/how-activated-carbon-works.tsx",
+    "metrics": {
+      "word_count": 1654,
+      "image_count": 1,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "ammonia-science.tsx",
+    "type": "page",
+    "path": "pages/learn/ammonia-science.tsx",
+    "metrics": {
+      "word_count": 1345,
+      "image_count": 1,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "activated-carbon-vs-baking-soda-deodorizers.tsx",
+    "type": "page",
+    "path": "pages/learn/activated-carbon-vs-baking-soda-deodorizers.tsx",
+    "metrics": {
+      "word_count": 1338,
+      "image_count": 0,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "how-it-works.tsx",
+    "type": "page",
+    "path": "pages/learn/how-it-works.tsx",
+    "metrics": {
+      "word_count": 860,
+      "image_count": 2,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "using-deodorizers-with-kittens.tsx",
+    "type": "page",
+    "path": "pages/learn/using-deodorizers-with-kittens.tsx",
+    "metrics": {
+      "word_count": 379,
+      "image_count": 3,
+      "score": 4
+    },
+    "issues": [
+      "thin_content"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "glossary.tsx",
+    "type": "page",
+    "path": "pages/learn/glossary.tsx",
+    "metrics": {
+      "word_count": 2278,
+      "image_count": 0,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "how-to-use-deodorizer.tsx",
+    "type": "page",
+    "path": "pages/learn/how-to-use-deodorizer.tsx",
+    "metrics": {
+      "word_count": 505,
+      "image_count": 1,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "index.tsx",
+    "type": "page",
+    "path": "pages/learn/solutions/index.tsx",
+    "metrics": {
+      "word_count": 579,
+      "image_count": 1,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "apartment-cat-smell-solution.tsx",
+    "type": "page",
+    "path": "pages/learn/solutions/apartment-cat-smell-solution.tsx",
+    "metrics": {
+      "word_count": 1098,
+      "image_count": 2,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "how-to-neutralize-ammonia-cat-litter.tsx",
+    "type": "page",
+    "path": "pages/learn/solutions/how-to-neutralize-ammonia-cat-litter.tsx",
+    "metrics": {
+      "word_count": 1298,
+      "image_count": 3,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "multiple-cats-odor-control.tsx",
+    "type": "page",
+    "path": "pages/learn/solutions/multiple-cats-odor-control.tsx",
+    "metrics": {
+      "word_count": 1647,
+      "image_count": 2,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "arm-and-hammer-cat-litter-deodorizer-alternative.tsx",
+    "type": "page",
+    "path": "pages/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative.tsx",
+    "metrics": {
+      "word_count": 1207,
+      "image_count": 0,
+      "score": 4
+    },
+    "issues": [
+      "sparse_images"
+    ],
+    "status": "pending"
+  },
+  {
+    "file": "best-cat-litter-for-smell.json",
+    "type": "blog",
+    "path": "content/blog/en/best-cat-litter-for-smell.json",
+    "metrics": {
+      "word_count": 1209,
+      "image_count": 4,
+      "score": 5
+    },
+    "issues": [],
+    "status": "good"
+  },
+  {
+    "file": "chemistry-of-cat-smell-industrial-fix.json",
+    "type": "blog",
+    "path": "content/blog/en/chemistry-of-cat-smell-industrial-fix.json",
+    "metrics": {
+      "word_count": 1090,
+      "image_count": 7,
+      "score": 5
+    },
+    "issues": [],
+    "status": "good"
+  },
+  {
+    "file": "best-unscented-cat-litters.json",
+    "type": "blog",
+    "path": "content/blog/en/best-unscented-cat-litters.json",
+    "metrics": {
+      "word_count": 1131,
+      "image_count": 3,
+      "score": 5
+    },
+    "issues": [],
+    "status": "good"
+  },
+  {
+    "file": "best-way-to-keep-litter-box-fresh.json",
+    "type": "blog",
+    "path": "content/blog/en/best-way-to-keep-litter-box-fresh.json",
+    "metrics": {
+      "word_count": 1532,
+      "image_count": 4,
+      "score": 5
+    },
+    "issues": [],
+    "status": "good"
+  },
+  {
+    "file": "how-to-eliminate-cat-litter-odor.json",
+    "type": "blog",
+    "path": "content/blog/en/how-to-eliminate-cat-litter-odor.json",
+    "metrics": {
+      "word_count": 902,
+      "image_count": 4,
+      "score": 5
+    },
+    "issues": [],
+    "status": "good"
+  },
+  {
+    "file": "litter-deodorizer-frequency-guide.json",
+    "type": "blog",
+    "path": "content/blog/en/litter-deodorizer-frequency-guide.json",
+    "metrics": {
+      "word_count": 932,
+      "image_count": 4,
+      "score": 5
+    },
+    "issues": [],
+    "status": "good"
+  },
+  {
+    "file": "best-self-cleaning-litter-box-odor-control.json",
+    "type": "blog",
+    "path": "content/blog/en/best-self-cleaning-litter-box-odor-control.json",
+    "metrics": {
+      "word_count": 1209,
+      "image_count": 4,
+      "score": 5
+    },
+    "issues": [],
+    "status": "good"
+  },
+  {
+    "file": "why-does-my-cats-litter-box-smell-so-bad.json",
+    "type": "blog",
+    "path": "content/blog/en/why-does-my-cats-litter-box-smell-so-bad.json",
+    "metrics": {
+      "word_count": 1423,
+      "image_count": 4,
+      "score": 5
+    },
+    "issues": [],
+    "status": "good"
+  },
+  {
+    "file": "science.tsx",
+    "type": "page",
+    "path": "pages/learn/science.tsx",
+    "metrics": {
+      "word_count": 959,
+      "image_count": 5,
+      "score": 5
+    },
+    "issues": [],
+    "status": "good"
+  },
+  {
+    "file": "safety.tsx",
+    "type": "page",
+    "path": "pages/learn/safety.tsx",
+    "metrics": {
+      "word_count": 1188,
+      "image_count": 7,
+      "score": 5
+    },
+    "issues": [],
+    "status": "good"
+  },
+  {
+    "file": "activated-carbon-benefits.tsx",
+    "type": "page",
+    "path": "pages/learn/activated-carbon-benefits.tsx",
+    "metrics": {
+      "word_count": 1286,
+      "image_count": 4,
+      "score": 5
+    },
+    "issues": [],
+    "status": "good"
+  },
+  {
+    "file": "cat-litter-guide.tsx",
+    "type": "page",
+    "path": "pages/learn/cat-litter-guide.tsx",
+    "metrics": {
+      "word_count": 819,
+      "image_count": 4,
+      "score": 5
+    },
+    "issues": [],
+    "status": "good"
+  },
+  {
+    "file": "faq.tsx",
+    "type": "page",
+    "path": "pages/learn/faq.tsx",
+    "metrics": {
+      "word_count": 983,
+      "image_count": 4,
+      "score": 5
+    },
+    "issues": [],
+    "status": "good"
+  },
+  {
+    "file": "natural-cat-litter-additive.tsx",
+    "type": "page",
+    "path": "pages/learn/solutions/natural-cat-litter-additive.tsx",
+    "metrics": {
+      "word_count": 759,
+      "image_count": 4,
+      "score": 5
+    },
+    "issues": [],
+    "status": "good"
+  },
+  {
+    "file": "litter-box-smell-elimination.tsx",
+    "type": "page",
+    "path": "pages/learn/solutions/litter-box-smell-elimination.tsx",
+    "metrics": {
+      "word_count": 814,
+      "image_count": 3,
+      "score": 5
+    },
+    "issues": [],
+    "status": "good"
+  },
+  {
+    "file": "senior-cat-litter-solutions.tsx",
+    "type": "page",
+    "path": "pages/learn/solutions/senior-cat-litter-solutions.tsx",
+    "metrics": {
+      "word_count": 889,
+      "image_count": 3,
+      "score": 5
+    },
+    "issues": [],
+    "status": "good"
+  },
+  {
+    "file": "ammonia-smell-cat-litter.tsx",
+    "type": "page",
+    "path": "pages/learn/solutions/ammonia-smell-cat-litter.tsx",
+    "metrics": {
+      "word_count": 1100,
+      "image_count": 4,
+      "score": 5
+    },
+    "issues": [],
+    "status": "good"
+  }
+]
