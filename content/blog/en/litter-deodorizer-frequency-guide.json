@@ -17,7 +17,7 @@
     "how-to"
   ],
   "featuredImage": {
-    "url": "/optimized/frequency-hero-ghibli.png",
+    "url": "/optimized/frequency-hero-ghibli.webp",
     "alt": "Scientist cat tracking litter box data on a clipboard in Ghibli style",
     "width": 1200,
     "height": 630
@@ -32,7 +32,7 @@
       "ammonia tracking cat litter"
     ],
     "canonical": "/blog/litter-deodorizer-frequency-guide",
-    "ogImage": "/optimized/frequency-hero-ghibli.png"
+    "ogImage": "/optimized/frequency-hero-ghibli.webp"
   },
   "readingTime": 11,
   "status": "published",

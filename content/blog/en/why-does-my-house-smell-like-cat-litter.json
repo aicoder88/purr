@@ -12,7 +12,7 @@
   "modifiedDate": "2026-01-30T14:40:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/embarrassed-guest-ghibli.png",
+    "url": "/optimized/embarrassed-guest-ghibli.webp",
     "alt": "Why does my house smell like cat litter? Complete fix guide",
     "width": 1200,
     "height": 630
@@ -43,7 +43,7 @@
       "cat odor removal",
       "nose blindness cat litter"
     ],
-    "ogImage": "/optimized/embarrassed-guest-ghibli.png",
+    "ogImage": "/optimized/embarrassed-guest-ghibli.webp",
     "canonical": "https://www.purrify.ca/blog/why-does-my-house-smell-like-cat-litter"
   },
   "readingTime": 11

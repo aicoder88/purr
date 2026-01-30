@@ -12,7 +12,7 @@
   "modifiedDate": "2026-01-03T12:00:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/placement-828w.jpg",
+    "url": "/optimized/placement-828w.webp",
     "alt": "Meilleur Emplacement pour Bac à Litière pour le Contrôle des Odeurs - Guide de Placement",
     "width": 1200,
     "height": 630
@@ -42,7 +42,7 @@
       "cat litter box placement"
     ],
     "canonical": "https://www.purrify.ca/blog/best-litter-box-location-odour-control",
-    "ogImage": "/optimized/placement-828w.jpg"
+    "ogImage": "/optimized/placement-828w.webp"
   },
   "readingTime": 10
 }

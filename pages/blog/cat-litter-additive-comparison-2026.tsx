@@ -15,7 +15,7 @@ export default function CatLitterAdditiveComparison2026Page() {
   const canonicalUrl = getLocalizedUrl('/blog/cat-litter-additive-comparison-2026', locale);
   const languageAlternates = buildLanguageAlternates('/blog/cat-litter-additive-comparison-2026');
 
-  const heroImage = '/optimized/powder-spray-comparison-ghibli.png';
+  const heroImage = '/optimized/powder-spray-comparison-ghibli.webp';
 
   // FAQ questions
   const faqQuestions = [

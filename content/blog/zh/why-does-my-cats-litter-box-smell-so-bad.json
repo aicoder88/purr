@@ -12,7 +12,7 @@
   "modifiedDate": "2026-01-02T08:00:00-05:00",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/happy-owner-cat-ghibli.png",
+    "url": "/optimized/happy-owner-cat-ghibli.webp",
     "alt": "关注猫砂盆气味的猫主人",
     "width": 1024,
     "height": 1024
@@ -43,7 +43,7 @@
       "活性炭猫砂",
       "消除猫砂盆气味"
     ],
-    "ogImage": "/optimized/happy-owner-cat-ghibli.png",
+    "ogImage": "/optimized/happy-owner-cat-ghibli.webp",
     "canonical": "https://www.purrify.ca/zh/blog/why-does-my-cats-litter-box-smell-so-bad"
   },
   "readingTime": 9

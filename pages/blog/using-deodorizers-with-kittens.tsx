@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 
 // Relevant images for kitten care content
-const heroImage = '/optimized/kitten-looking-curious-ghibli.png';
+const heroImage = '/optimized/kitten-looking-curious-ghibli.webp';
 
 export default function UsingDeodorizersWithKittens() {
   return (

@@ -7,7 +7,7 @@ import { RelatedContent } from '@/components/seo/RelatedContent';
 import { SocialFollowCTA } from '@/components/blog/SocialFollowCTA';
 import { TrialCTA } from '@/components/blog/TrialCTA';
 
-const heroImage = '/optimized/cat-myths-ghibli.png';
+const heroImage = '/optimized/cat-myths-ghibli.webp';
 
 export default function CatLitterOdorMyths() {
     const pageTitle = '10 Cat Litter Odor Myths That Waste Your Money';

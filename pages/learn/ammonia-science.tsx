@@ -15,7 +15,7 @@ export default function AmmoniaSciencePage() {
   const canonicalUrl = getLocalizedUrl('/learn/ammonia-science', locale);
   const languageAlternates = buildLanguageAlternates('/learn/ammonia-science');
 
-  const heroImage = '/images/ammonia-science.png';
+  const heroImage = '/images/ammonia-science.webp';
 
   // HowTo steps for reducing ammonia
   const howToSteps = [

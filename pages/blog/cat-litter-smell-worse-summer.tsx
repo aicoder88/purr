@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 
 // High-quality images for summer heat, odor problems, and fresh solutions
-const heroImage = '/optimized/summer-fresh-cat.png';
+const heroImage = '/optimized/summer-fresh-cat.webp';
 const heroImageOg = 'https://www.purrify.ca/optimized/summer-hero.jpg';
 const heatImage = '/optimized/summer-heat.jpg';
 const ventilationImage = '/optimized/summer-ventilation.jpg';

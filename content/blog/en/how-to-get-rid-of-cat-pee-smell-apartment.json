@@ -12,7 +12,7 @@
   "modifiedDate": "2026-01-28T10:00:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/cat-litter-hero.png",
+    "url": "/optimized/cat-litter-hero.webp",
     "alt": "How to get rid of cat pee smell in apartment - complete cleaning guide",
     "width": 800,
     "height": 800
@@ -45,7 +45,7 @@
       "security deposit cat damage"
     ],
     "canonical": "https://www.purrify.ca/blog/how-to-get-rid-of-cat-pee-smell-apartment",
-    "ogImage": "/optimized/cat-litter-hero.png"
+    "ogImage": "/optimized/cat-litter-hero.webp"
   },
   "wordCount": 3800,
   "faq": [

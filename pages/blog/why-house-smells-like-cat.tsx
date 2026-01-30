@@ -16,7 +16,7 @@ export default function WhyHouseSmellsLikeCatPage() {
   const canonicalUrl = getLocalizedUrl('/blog/why-house-smells-like-cat', locale);
   const languageAlternates = buildLanguageAlternates('/blog/why-house-smells-like-cat');
 
-  const heroImage = '/optimized/scientific-odor-control.png';
+  const heroImage = '/optimized/scientific-odor-control.webp';
 
   // HowTo steps for eliminating whole-house cat odor
   const howToSteps = [

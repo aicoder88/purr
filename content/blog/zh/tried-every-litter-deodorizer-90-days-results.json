@@ -12,7 +12,7 @@
   "modifiedDate": "2025-11-10T23:31:02.683Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/90day-hero.jpg",
+    "url": "/optimized/90day-hero.webp",
     "alt": "我测试了所有猫砂除臭方法90天——这是真正有效的方法",
     "width": 1200,
     "height": 800
@@ -46,7 +46,7 @@
       "猫砂盆气味控制"
     ],
     "canonical": "https://www.purrify.ca/zh/blog/tried-every-litter-deodorizer-90-days-results",
-    "ogImage": "/optimized/90day-hero.jpg"
+    "ogImage": "/optimized/90day-hero.webp"
   },
   "readingTime": 5
 }

@@ -12,7 +12,7 @@
   "modifiedDate": "2025-12-29T14:00:00-05:00",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/lavender-cat-ghibli.png",
+    "url": "/optimized/lavender-cat-ghibli.webp",
     "alt": "Playful Studio Ghibli style illustration of a cat covered in lavender blossoms - demonstrating the problem of masking odors",
     "width": 1024,
     "height": 1024
@@ -53,7 +53,7 @@
       "coconut shell carbon cat litter",
       "cat smell removal"
     ],
-    "ogImage": "/optimized/lavender-cat-ghibli.png",
+    "ogImage": "/optimized/lavender-cat-ghibli.webp",
     "canonical": "https://www.purrify.ca/blog/chemistry-of-cat-smell-industrial-fix"
   },
   "readingTime": 8

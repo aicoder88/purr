@@ -15,7 +15,7 @@ export default function FreshStepVsArmHammerPage() {
   const canonicalUrl = getLocalizedUrl('/blog/fresh-step-vs-arm-hammer-comparison', locale);
   const languageAlternates = buildLanguageAlternates('/blog/fresh-step-vs-arm-hammer-comparison');
 
-  const heroImage = '/optimized/masking-products-ghibli.png';
+  const heroImage = '/optimized/masking-products-ghibli.webp';
 
   // FAQ questions
   const faqQuestions = [

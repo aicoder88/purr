@@ -15,7 +15,7 @@ export default function ActivatedCarbonVsZeolitePage() {
   const canonicalUrl = getLocalizedUrl('/blog/activated-carbon-vs-zeolite', locale);
   const languageAlternates = buildLanguageAlternates('/blog/activated-carbon-vs-zeolite');
 
-  const heroImage = '/optimized/coconut-carbon-ghibli.png';
+  const heroImage = '/optimized/coconut-carbon-ghibli.webp';
 
   // FAQ questions
   const faqQuestions = [

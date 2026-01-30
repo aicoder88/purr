@@ -193,7 +193,7 @@ export default function AmmoniaControl() {
         subheadline={ammonia.hero.subheadline}
         primaryCTA={{ label: ammonia.hero.cta, href: '/products' }}
         secondaryCTA={{ label: ammonia.hero.secondaryCta, href: '#how-it-works' }}
-        image="/images/ammonia-hero.png"
+        image="/images/ammonia-hero.webp"
         imageAlt="Purrify activated carbon cat litter deodorizer"
       />
 
@@ -281,7 +281,7 @@ export default function AmmoniaControl() {
         id="how-it-works"
         headline={ammonia.solution.headline}
         description={ammonia.solution.description}
-        diagramSrc="/images/ammonia-science.png"
+        diagramSrc="/images/ammonia-science.webp"
         diagramAlt="How activated carbon captures ammonia molecules"
       />
 
@@ -476,7 +476,7 @@ export default function AmmoniaControl() {
 
             <div className="relative">
               <Image
-                src="/images/ammonia-fresh-home.png"
+                src="/images/ammonia-fresh-home.webp"
                 alt="Fresh home with cat after using Purrify"
                 width={600}
                 height={600}

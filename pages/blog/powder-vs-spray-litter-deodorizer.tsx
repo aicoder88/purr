@@ -7,9 +7,9 @@ import { RelatedContent } from '@/components/seo/RelatedContent';
 import { Check, X, Sparkles, TrendingDown, Clock, DollarSign } from 'lucide-react';
 
 // Optimized images
-const heroImage = '/optimized/activated-carbon-granules.jpg';
-const testingImage = '/optimized/multi-cat-household.jpg';
-const scienceImage = '/optimized/carbon_magnified_image.jpg';
+const heroImage = '/optimized/activated-carbon-granules.webp';
+const testingImage = '/optimized/multi-cat-household.webp';
+const scienceImage = '/optimized/carbon_magnified_image.webp';
 const resultsImage = '/optimized/happy-owner.webp';
 
 export default function PowderVsSprayLitterDeodorizer() {

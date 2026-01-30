@@ -88,7 +88,7 @@ const OurStoryPage: NextPage = () => {
         <div className="relative w-full h-[600px] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 z-0">
             <Image
-              src="/images/hero.png"
+              src="/images/hero.webp"
               alt="Happy cat in a sunlit living room"
               fill
               className="object-cover"
@@ -125,7 +125,7 @@ const OurStoryPage: NextPage = () => {
               <div className="lg:w-1/2 relative">
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
                   <Image
-                    src="/images/mission.png"
+                    src="/images/mission.webp"
                     alt="Woman hugging a cat in a clean home"
                     width={800}
                     height={600}
@@ -158,7 +158,7 @@ const OurStoryPage: NextPage = () => {
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full overflow-hidden relative border-2 border-white shadow-md">
                       <Image
-                        src="/images/mark-archer.jpg"
+                        src="/images/mark-archer.webp"
                         alt="Mark Archer"
                         fill
                         className="object-cover"
@@ -230,7 +230,7 @@ const OurStoryPage: NextPage = () => {
                 const isDrMike = member.name === "Dr. Michael Rodriguez";
                 const hasPhoto = isMark || isDrMike;
                 const photoSrc = isMark
-                  ? "/images/mark-archer.jpg"
+                  ? "/images/mark-archer.webp"
                   : isDrMike
                     ? "/images/dr-michael-rodriguez.jpg"
                     : null;

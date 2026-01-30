@@ -12,7 +12,7 @@
   "modifiedDate": "2025-12-29T14:00:00-05:00",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/lavender-cat-ghibli.png",
+    "url": "/optimized/lavender-cat-ghibli.webp",
     "alt": "Ilustración juguetona estilo Studio Ghibli de un gato cubierto de flores de lavanda - demostrando el problema de enmascarar olores",
     "width": 1024,
     "height": 1024
@@ -53,7 +53,7 @@
       "carbón de cáscara de coco para arena de gatos",
       "eliminación de olor de gato"
     ],
-    "ogImage": "/optimized/lavender-cat-ghibli.png",
+    "ogImage": "/optimized/lavender-cat-ghibli.webp",
     "canonical": "https://www.purrify.ca/blog/chemistry-of-cat-smell-industrial-fix"
   },
   "readingTime": 8

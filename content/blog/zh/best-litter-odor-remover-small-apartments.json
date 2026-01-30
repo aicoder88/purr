@@ -12,7 +12,7 @@
   "modifiedDate": "2025-11-10T23:31:02.670Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/apartment-cat-lifestyle.png",
+    "url": "/optimized/apartment-cat-lifestyle.webp",
     "alt": "最佳小公寓猫砂除臭剂：城市解决方案",
     "width": 1600,
     "height": 1067
@@ -41,7 +41,7 @@
       "小公寓除臭猫砂"
     ],
     "canonical": "https://www.purrify.ca/blog/best-litter-odor-remover-small-apartments",
-    "ogImage": "/optimized/apartment-cat-lifestyle.png"
+    "ogImage": "/optimized/apartment-cat-lifestyle.webp"
   },
   "readingTime": 5
 }

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 
 // Relevant images for how-to guide content
-const heroImage = '/optimized/applying-deodorizer-ghibli.png';
+const heroImage = '/optimized/applying-deodorizer-ghibli.webp';
 
 export default function HowToUseLitterDeodorizer() {
   const pageTitle = 'Cat Litter Deodorizer Additive: Step-by-Step Guide';

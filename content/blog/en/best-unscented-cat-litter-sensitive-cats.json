@@ -12,7 +12,7 @@
   "modifiedDate": "2026-01-21T12:00:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/sensitive-cat-no-scent-ghibli.png",
+    "url": "/optimized/sensitive-cat-no-scent-ghibli.webp",
     "alt": "Best Unscented Cat Litter for Sensitive Cats - Natural Coconut Carbon",
     "width": 1024,
     "height": 1024
@@ -42,7 +42,7 @@
       "hypoallergenic cat litter"
     ],
     "canonical": "https://www.purrify.ca/blog/best-unscented-cat-litter-sensitive-cats",
-    "ogImage": "/optimized/sensitive-cat-no-scent-ghibli.png"
+    "ogImage": "/optimized/sensitive-cat-no-scent-ghibli.webp"
   },
   "readingTime": 8,
   "faq": [

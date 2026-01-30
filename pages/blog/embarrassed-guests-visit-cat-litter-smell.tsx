@@ -17,8 +17,8 @@ export default function EmbarrassedGuestsVisitCatLitterSmellPage() {
   const languageAlternates = buildLanguageAlternates('/blog/embarrassed-guests-visit-cat-litter-smell');
 
   const heroImage = '/optimized/embarrassed-hero.jpg';
-  const livingRoomImage = '/optimized/airy-living-room-ghibli.png';
-  const cleanHomeImage = '/optimized/sparkling-clean-home-ghibli.png';
+  const livingRoomImage = '/optimized/airy-living-room-ghibli.webp';
+  const cleanHomeImage = '/optimized/sparkling-clean-home-ghibli.webp';
 
   // HowTo steps for overcoming cat odor embarrassment
   const howToSteps = [

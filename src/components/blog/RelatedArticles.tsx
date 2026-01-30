@@ -68,19 +68,19 @@ const ALL_ARTICLES: Article[] = [
   {
     title: 'Most Powerful Odor Absorber',
     href: '/blog/most-powerful-odor-absorber',
-    image: '/optimized/scientific-odor-control.png',
+    image: '/optimized/scientific-odor-control.webp',
     alt: 'Powerful activated carbon odor absorption'
   },
   {
     title: 'Cat Litter Smells Worse in Summer',
     href: '/blog/cat-litter-smell-worse-summer',
-    image: '/optimized/summer-fresh-cat.png',
+    image: '/optimized/summer-fresh-cat.webp',
     alt: 'Summer heat affecting litter odor'
   },
   {
     title: 'Cat Litter Smells Worse in Winter',
     href: '/blog/cat-litter-smell-worse-winter',
-    image: '/optimized/winter-fresh-cat.png',
+    image: '/optimized/winter-fresh-cat.webp',
     alt: 'Winter indoor air quality for cats'
   },
   {
@@ -92,13 +92,13 @@ const ALL_ARTICLES: Article[] = [
   {
     title: 'Powder vs Spray Litter Deodorizer',
     href: '/blog/powder-vs-spray-litter-deodorizer',
-    image: '/optimized/frequency-hero.png',
+    image: '/optimized/frequency-hero.webp',
     alt: 'Comparing deodorizer application methods'
   },
   {
     title: '90 Days Testing Every Deodorizer',
     href: '/blog/tried-every-litter-deodorizer-90-days-results',
-    image: '/optimized/90day-hero.jpg',
+    image: '/optimized/90day-hero.webp',
     alt: '90-day deodorizer comparison test'
   },
   {
@@ -146,13 +146,13 @@ const ALL_ARTICLES: Article[] = [
   {
     title: 'How to Neutralize Ammonia in Cat Litter',
     href: '/learn/solutions/how-to-neutralize-ammonia-cat-litter',
-    image: '/images/ammonia-science.png',
+    image: '/images/ammonia-science.webp',
     alt: 'Scientific approach to neutralizing ammonia odors'
   },
   {
     title: 'Litter Box Smell Elimination Guide',
     href: '/learn/solutions/litter-box-smell-elimination',
-    image: '/images/litter-box-hero.png',
+    image: '/images/litter-box-hero.webp',
     alt: 'Clean litter box in a fresh home'
   },
   {

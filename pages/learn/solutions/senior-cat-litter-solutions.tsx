@@ -18,9 +18,9 @@ export default function SeniorCatLitterSolutionsPage() {
   const languageAlternates = buildLanguageAlternates('/learn/solutions/senior-cat-litter-solutions');
 
   // SEO optimized images for senior cat care
-  const heroImage = '/images/ammonia-happy-cat.png';
-  const solutionImage = '/images/apartment-hero.png';
-  const careImage = '/images/litter-box-hero.png';
+  const heroImage = '/images/ammonia-happy-cat.webp';
+  const solutionImage = '/images/apartment-hero.webp';
+  const careImage = '/images/litter-box-hero.webp';
 
   // HowTo steps for senior cat odor control
   const howToSteps = [

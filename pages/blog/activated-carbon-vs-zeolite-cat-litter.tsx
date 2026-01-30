@@ -7,7 +7,7 @@ import { RelatedContent } from '@/components/seo/RelatedContent';
 import { Check, X, FlaskConical, Timer, Shield, Leaf, Droplets, Zap } from 'lucide-react';
 
 // Optimized images
-const heroImage = '/optimized/activated-carbon-granules.jpg';
+const heroImage = '/optimized/activated-carbon-granules.webp';
 const comparisonImage = '/optimized/carbon_magnified_image.webp';
 
 export default function ActivatedCarbonVsZeolite() {

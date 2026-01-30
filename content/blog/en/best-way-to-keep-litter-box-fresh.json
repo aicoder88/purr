@@ -12,7 +12,7 @@
   "modifiedDate": "2026-01-02T08:00:00-05:00",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/happy-owner-cat-ghibli.png",
+    "url": "/optimized/happy-owner-cat-ghibli.webp",
     "alt": "How activated carbon traps litter box odor molecules",
     "width": 1024,
     "height": 1024
@@ -43,7 +43,7 @@
       "multi-cat litter box",
       "litter box maintenance"
     ],
-    "ogImage": "/optimized/happy-owner-cat-ghibli.png",
+    "ogImage": "/optimized/happy-owner-cat-ghibli.webp",
     "canonical": "https://www.purrify.ca/blog/best-way-to-keep-litter-box-fresh"
   },
   "readingTime": 10

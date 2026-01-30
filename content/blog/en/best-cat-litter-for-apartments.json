@@ -12,7 +12,7 @@
   "modifiedDate": "2025-01-30T14:50:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/apartment-fresh-cat-ghibli.png",
+    "url": "/optimized/apartment-fresh-cat-ghibli.webp",
     "alt": "Best cat litter for apartments - fresh air in small spaces",
     "width": 1600,
     "height": 1067
@@ -43,7 +43,7 @@
       "cat litter no ventilation",
       "apartment cat odor control"
     ],
-    "ogImage": "/optimized/apartment-fresh-cat-ghibli.png",
+    "ogImage": "/optimized/apartment-fresh-cat-ghibli.webp",
     "canonical": "https://www.purrify.ca/blog/best-cat-litter-for-apartments"
   },
   "readingTime": 10

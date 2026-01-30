@@ -12,7 +12,7 @@
   "modifiedDate": "2024-12-22T14:00:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/powder-spray-comparison-ghibli.png",
+    "url": "/optimized/powder-spray-comparison-ghibli.webp",
     "alt": "粉末vs喷雾猫砂除臭剂对比,展示活性炭颗粒",
     "width": 1200,
     "height": 630
@@ -42,7 +42,7 @@
       "猫砂除臭剂对比",
       "喷雾除臭剂效果"
     ],
-    "ogImage": "/optimized/powder-spray-comparison-ghibli.png"
+    "ogImage": "/optimized/powder-spray-comparison-ghibli.webp"
   },
   "readingTime": 8
 }
