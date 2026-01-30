@@ -44,5 +44,23 @@
     "canonical": "https://www.purrify.ca/blog/best-unscented-cat-litter-sensitive-cats",
     "ogImage": "/optimized/sensitive-cat-no-scent-ghibli.png"
   },
-  "readingTime": 8
+  "readingTime": 8,
+  "faq": [
+    {
+      "question": "How do unscented litters control odour?",
+      "answerHtml": "Through absorption (clay, crystals) or molecular trapping (<a href=\"/products\" class=\"text-[#FF3131] dark:text-[#FF6B6B] hover:underline\">activated carbon</a>). Unlike perfumes that mask odors, these materials physically capture the molecules that cause smell."
+    },
+    {
+      "question": "Is \"dust-free\" really important for sensitive cats?",
+      "answerHtml": "Yes, absolutely. Even unscented clay dust contains silica, which can irritate lungs. Look for 99.9% dust-free formulas, or switch to pellet-style litters which have zero dust."
+    },
+    {
+      "question": "Will my house smell without fragranced litter?",
+      "answerHtml": "No—if you use proper odour elimination. Activated carbon actually removes odor molecules from the air. Fragrances just mask smell temporarily, often creating a worse \"perfume + poop\" combination."
+    },
+    {
+      "question": "Is \"lightly scented\" okay for sensitive cats?",
+      "answerHtml": "Generally, no. \"Light\" fragrances still contain volatile chemicals. If your cat has shown signs of asthma or allergies, 100% fragrance-free is the safest path."
+    }
+  ]
 }

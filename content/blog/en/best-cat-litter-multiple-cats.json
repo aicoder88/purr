@@ -45,5 +45,23 @@
     "canonical": "https://www.purrify.ca/blog/best-cat-litter-multiple-cats",
     "ogImage": "/optimized/multi-cat-happy-home-ghibli.png"
   },
-  "readingTime": 12
+  "readingTime": 12,
+  "faq": [
+    {
+      "question": "How many litter boxes do I need for 2 cats?",
+      "answerHtml": "Three boxes minimum. The rule is one box per cat, plus one extra. This prevents territorial disputes and ensures cats always have a clean option."
+    },
+    {
+      "question": "Is clumping or non-clumping better for multiple cats?",
+      "answerHtml": "Clumping litter is better for multi-cat homes. It allows you to remove only soiled areas, making litter last longer and keeping boxes fresher between full changes."
+    },
+    {
+      "question": "How often should I change litter with multiple cats?",
+      "answerHtml": "Full changes every 5-7 days with quality clumping litter. With <a href=\"/products\" class=\"text-[#FF3131] dark:text-[#FF6B6B] hover:underline\">activated carbon additive</a>, you can extend this to 7+ days while maintaining freshness."
+    },
+    {
+      "question": "Can I use different litter types in different boxes?",
+      "answerHtml": "Yes, but most cats prefer consistency. If you want to test new litter, introduce it gradually in one box while keeping others unchanged."
+    }
+  ]
 }

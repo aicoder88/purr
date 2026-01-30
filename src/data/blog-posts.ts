@@ -41,6 +41,7 @@ export type BlogPost = {
   faq?: Array<{ question: string; answerHtml: string }>;
   cta?: { text: string; url: string };
   howTo?: HowToData | null;
+  citations?: Array<{ text: string; url: string }>;
 };
 
 // Complete blog posts based on actual blog pages in content/blog/en/

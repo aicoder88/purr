@@ -46,5 +46,35 @@
     "canonical": "https://www.purrify.ca/blog/best-cat-litter-deodorizers-2026",
     "ogImage": "/optimized/90day-solution.jpg"
   },
-  "readingTime": 10
+  "readingTime": 10,
+  "faq": [
+    {
+      "question": "What is the best cat litter deodorizer?",
+      "answerHtml": "Activated carbon is the most effective deodorizer type because it physically traps odour molecules rather than masking them. It's the same technology used in municipal water treatment and hospital air filtration systems."
+    },
+    {
+      "question": "Is baking soda or activated carbon better for cat litter?",
+      "answerHtml": "Activated carbon is significantly more effective. Baking soda requires a chemical reaction and large amounts to work. Carbon traps gas molecules passively and continuously. See our detailed <a href=\"/learn/activated-carbon-vs-baking-soda\" class=\"text-[#FF3131] dark:text-[#FF6B6B] hover:underline\">comparison guide</a>."
+    },
+    {
+      "question": "Are fragranced cat litter deodorizers safe?",
+      "answerHtml": "Fragrances are generally pet-friendly, but cats have 200 million scent receptors and often dislike strong scents. Some cats avoid heavily fragranced litter entirely. Fragrance-free options like activated carbon work without risking litter box avoidance."
+    },
+    {
+      "question": "How often should I use cat litter deodorizer?",
+      "answerHtml": "It depends on the type. Sprays need frequent reapplication (daily). Baking soda needs replacing every 1-2 days. Activated carbon like <a href=\"/products\" class=\"text-[#FF3131] dark:text-[#FF6B6B] hover:underline\">Purrify</a> provides 7+ days of freshness per application."
+    },
+    {
+      "question": "Can I use multiple deodorizer types together?",
+      "answerHtml": "Yes. Many cat owners use activated carbon for ongoing protection and enzyme cleaners for accidents outside the box. Avoid layering multiple fragranced products—the combination can be overwhelming for cats."
+    },
+    {
+      "question": "Is activated carbon safe for cats?",
+      "answerHtml": "Yes. Activated carbon is non-toxic and widely used in pet products, aquarium filters, and even emergency medicine. Food-grade coconut shell carbon meets the same purity standards as drinking water filters."
+    },
+    {
+      "question": "Why doesn't fragranced litter work long-term?",
+      "answerHtml": "Fragrances mask odour rather than eliminating it. Your nose adapts to the fragrance (called olfactory fatigue), but the underlying odour molecules remain. Eventually you smell the ammonia through the fading perfume."
+    }
+  ]
 }

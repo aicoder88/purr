@@ -86,7 +86,9 @@ export async function getStaticProps({ params, locale }: { params: { slug: strin
         locale: blogPost.locale as 'en' | 'fr' | 'zh',
         // Include howTo data if present (for step-by-step tutorials)
         // Use null fallback to avoid JSON serialization error with undefined
-        howTo: (blogPost as unknown as { howTo?: BlogPost['howTo'] }).howTo ?? null
+        howTo: (blogPost as unknown as { howTo?: BlogPost['howTo'] }).howTo ?? null,
+        faq: blogPost.faq,
+        citations: blogPost.citations,
       };
 
       return {
@@ -321,7 +323,25 @@ export default function BlogPost({ post }: { post: BlogPost }) {
         '@type': 'WebPage',
         '@id': `${SITE_URL}${post.link}`,
       },
+      ...(post.citations && post.citations.length > 0 && {
+        citation: post.citations.map(c => c.text),
+      }),
     });
+
+    // FAQPage schema
+    if (post.faq && post.faq.length > 0) {
+      schemas.push({
+        '@type': 'FAQPage',
+        mainEntity: post.faq.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answerHtml,
+          },
+        })),
+      });
+    }
 
     // HowTo schema for tutorial posts
     if (post.howTo) {
@@ -597,6 +617,32 @@ export default function BlogPost({ post }: { post: BlogPost }) {
             <TrialCTA variant="compact" />
 
             {/* Related Articles */}
+            {/* Scientific References */}
+            {post.citations && post.citations.length > 0 && (
+              <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-600">
+                <h3 className="font-heading text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+                  {locale === 'fr' ? 'Références Scientifiques' : locale === 'zh' ? '科学参考' : 'Scientific References'}
+                </h3>
+                <ul className="space-y-2">
+                  {post.citations.map((citation, index) => (
+                    <li key={index} className="text-sm text-gray-600 dark:text-gray-400">
+                      <span className="font-semibold">[{index + 1}]</span> {citation.text}{' '}
+                      {citation.url && (
+                        <a
+                          href={citation.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#5B2EFF] dark:text-[#3694FF] hover:underline"
+                        >
+                          Source ↗
+                        </a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-600">
               <RelatedContent currentUrl={post.link} />
             </div>

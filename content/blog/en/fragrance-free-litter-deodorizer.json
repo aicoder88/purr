@@ -47,5 +47,35 @@
     "canonical": "https://www.purrify.ca/blog/fragrance-free-litter-deodorizer",
     "ogImage": "/optimized/benefits-hero-science.webp"
   },
-  "wordCount": 2800
+  "wordCount": 2800,
+  "faq": [
+    {
+      "question": "Does fragrance-free mean it won't control odor?",
+      "answerHtml": "No. \"Fragrance-free\" means it doesn't add scent—it doesn't mask odor with perfume. The best fragrance-free deodorizers (like activated carbon) eliminate odor through adsorption, which is actually more effective than masking."
+    },
+    {
+      "question": "What's the difference between fragrance-free and unscented?",
+      "answerHtml": "<strong>Fragrance-free:</strong> Contains zero fragrance ingredients. No scent added."
+    },
+    {
+      "question": "Will my house smell bad without scented deodorizer?",
+      "answerHtml": "No—the opposite. Scented products create a layered smell: cat urine + artificial fragrance. Fragrance-free deodorizers like activated carbon eliminate the urine odor entirely. Your home smells neutral, not \"covered up.\""
+    },
+    {
+      "question": "Are \"natural\" fragrances like lavender or citrus safe for cats?",
+      "answerHtml": "No. Essential oils (the source of natural fragrances) are particularly toxic to cats. Their livers can't metabolize the terpenes in essential oils. Lavender, citrus, eucalyptus, and tea tree are especially dangerous. Avoid all fragranced products—natural or synthetic."
+    },
+    {
+      "question": "How much activated carbon should I use in the litter box?",
+      "answerHtml": "Sprinkle a thin layer (about 1-2 tablespoons) across the litter surface after scooping. You don't need much—activated carbon is incredibly efficient. Reapply every 5-7 days or as needed."
+    },
+    {
+      "question": "Can I use fragrance-free deodorizer with any type of litter?",
+      "answerHtml": "Yes. Activated carbon works with clay, clumping, silica gel, wood, and paper-based litters. It's compatible with all litter types."
+    },
+    {
+      "question": "My current deodorizer says \"lightly scented.\" Is that OK?",
+      "answerHtml": "If it has any scent—even \"light\"—it contains fragrance compounds. Remember, your cat's nose is 14x more sensitive than yours. What's \"light\" to you may be overwhelming to them. Switch to truly fragrance-free."
+    }
+  ]
 }

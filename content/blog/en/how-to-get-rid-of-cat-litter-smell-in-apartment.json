@@ -49,5 +49,35 @@
     ],
     "ogImage": "/optimized/tried-relief.jpg"
   },
-  "readingTime": 11
+  "readingTime": 11,
+  "faq": [
+    {
+      "question": "How do I keep my apartment from smelling like cat litter?",
+      "answerHtml": "The key is eliminating odour at the source before it can spread through your small space. Add activated carbon to your litter (it traps odour molecules physically), scoop twice daily, use quality clumping litter, and maintain 3-4 inches of litter depth. Avoid air fresheners that just mask the smell."
+    },
+    {
+      "question": "Why does my small apartment smell like cat even though I clean the litter box?",
+      "answerHtml": "Ammonia and sulfur compounds are gases that escape from the litter box immediately—before you can scoop. In small spaces, these molecules concentrate quickly. Cleaning removes solid waste but can't capture airborne odour. You need molecular trapping technology like activated carbon to eliminate the smell at its source."
+    },
+    {
+      "question": "What's the best litter for small apartments?",
+      "answerHtml": "Premium unscented clumping litter paired with activated carbon deodorizer like <a href=\"/products\" class=\"text-blue-600 dark:text-blue-400 underline hover:text-blue-700 dark:hover:text-blue-300\">Purrify</a> works best. The litter forms tight clumps for easy removal; the carbon traps odour molecules before they can spread. Avoid heavily scented litters—the fragrance fades quickly and leaves you with perfume AND cat smell."
+    },
+    {
+      "question": "Where should I put the litter box in a small apartment?",
+      "answerHtml": "Bathrooms work well (exhaust fan helps), but run the fan after your cat uses the box. Avoid HVAC vents that spread odour. If using a closet, leave the door cracked for ventilation. Wherever you place it, activated carbon is essential in small spaces to trap odour at the source."
+    },
+    {
+      "question": "Do air purifiers help with cat litter smell in apartments?",
+      "answerHtml": "Air purifiers with activated carbon filters can help catch molecules that escape, but they're treating the symptom rather than the cause. It's more effective to add activated carbon directly to the litter—trapping odour molecules before they ever enter your apartment's air."
+    },
+    {
+      "question": "How often should I clean the litter box in an apartment?",
+      "answerHtml": "In apartments, scoop twice daily (morning and evening) rather than once. The limited air volume means odour concentrates faster. Also change the entire litter every 2 weeks (not 3-4 like in larger homes) and reapply activated carbon with each full change."
+    },
+    {
+      "question": "Can cat litter smell affect my neighbours in an apartment building?",
+      "answerHtml": "Unfortunately, yes. Apartment ventilation systems can carry odour between units, especially if your litter box is near shared HVAC components. Using activated carbon at the source prevents odour from entering your air system in the first place—protecting both your space and your neighbours'."
+    }
+  ]
 }

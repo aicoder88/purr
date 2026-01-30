@@ -49,5 +49,35 @@
     "canonical": "https://www.purrify.ca/blog/best-cat-litter-odor-control-2026",
     "ogImage": "/optimized/standard-hero-828w.webp"
   },
-  "readingTime": 12
+  "readingTime": 12,
+  "faq": [
+    {
+      "question": "What is the best cat litter for odor control?",
+      "answerHtml": "The best approach combines any quality clumping litter (clay, crystal, or natural) with an activated carbon additive. Litter absorbs liquid waste, while activated carbon—the same material used in water treatment plants—traps the gas molecules that create the smell you notice."
+    },
+    {
+      "question": "How often should I change odor control cat litter?",
+      "answerHtml": "For clumping litters, scoop daily and completely replace every 1-2 weeks. Crystal litters can go 2-4 weeks between full changes. Adding activated carbon can extend freshness by 7+ days regardless of litter type, as it continues trapping odor molecules even as the litter approaches saturation."
+    },
+    {
+      "question": "Why does my cat litter smell so bad even when it's fresh?",
+      "answerHtml": "Most litters absorb liquid but can't trap gas molecules (ammonia and sulfur compounds). These escape into the air immediately. Fragranced litters mask this temporarily but don't eliminate it. True odor control requires something that physically traps gas molecules—like activated carbon."
+    },
+    {
+      "question": "Is activated carbon safe for cats?",
+      "answerHtml": "Activated carbon is non-toxic and widely used in pet products, aquarium filtration, and even emergency medicine. Food-grade coconut shell carbon (like <a href=\"/products\" class=\"text-[#FF3131] dark:text-[#FF6B6B] hover:underline\">Purrify uses</a>) meets the same purity standards as drinking water filters. It's fragrance-free, so it won't stress cats' sensitive respiratory systems."
+    },
+    {
+      "question": "How does activated carbon eliminate odor?",
+      "answerHtml": "Activated carbon has a massive internal surface area—one gram equals a football field—filled with microscopic pores that trap odor molecules on contact. This is called adsorption (with a \"d\"). Unlike baking soda which needs chemical reactions, carbon works through pure physics, trapping molecules permanently."
+    },
+    {
+      "question": "Can I use activated carbon with any litter type?",
+      "answerHtml": "Yes. Activated carbon additives work with clumping clay, crystal silica, pine, corn, wheat, tofu, paper, and any other litter type. Simply sprinkle on top of your existing litter—no mixing required. The carbon sits at the surface where odor molecules escape."
+    },
+    {
+      "question": "What's better for odor control: scented or unscented litter?",
+      "answerHtml": "Unscented litter with an odor-trapping additive outperforms scented litter. Fragrances only mask odors temporarily and can stress cats (they have 200 million scent receptors). True odor elimination requires trapping or neutralizing odor molecules—not covering them with more scent."
+    }
+  ]
 }

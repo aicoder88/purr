@@ -29,6 +29,8 @@ export interface BlogPost {
   seo: SEOMetadata;
   readingTime: number; // minutes
   howTo?: HowToData | null; // For step-by-step tutorial posts
+  faq?: Array<{ question: string; answerHtml: string }>;
+  citations?: Array<{ text: string; url: string }>;
 }
 
 export interface SEOMetadata {

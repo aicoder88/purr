@@ -47,5 +47,31 @@
     "canonical": "https://www.purrify.ca/blog/safe-ways-to-deodorize-litter-box",
     "ogImage": "/optimized/science-diagram.webp"
   },
-  "wordCount": 2200
+  "wordCount": 2200,
+  "faq": [
+    {
+      "question": "Is baking soda safe for cats in litter?",
+      "answerHtml": "In small amounts, yes. Baking soda is non-toxic to cats. However, large quantities can cause stomach upset if ingested during grooming. Use sparingly—a light sprinkle at the bottom of the box is sufficient."
+    },
+    {
+      "question": "Are essential oils safe around cats?",
+      "answerHtml": "No. Most essential oils are toxic to cats because they lack the liver enzymes to metabolize them. Never add essential oils to litter or diffuse them near the litter box. This includes \"natural\" options like lavender, citrus, and tea tree."
+    },
+    {
+      "question": "Can I use Febreze near my cat's litter box?",
+      "answerHtml": "It's not recommended. While Febreze is marketed as pet-safe when dry, the fragrance can irritate sensitive cats and may cause litter box avoidance. Stick to fragrance-free solutions like activated carbon."
+    },
+    {
+      "question": "What's the safest way to clean a litter box?",
+      "answerHtml": "Hot water and unscented dish soap. Rinse thoroughly and dry completely before adding fresh litter. Avoid bleach (reacts with ammonia residue), pine-scented cleaners, and disinfectants with phenol."
+    },
+    {
+      "question": "My cat is avoiding the litter box after I added deodorizer. What should I do?",
+      "answerHtml": "Remove the deodorizer immediately. Scoop out the treated litter and replace with fresh, untreated litter. If you want odor control, switch to activated carbon—it's undetectable to cats. Most cats return to normal use within 24-48 hours after the offending product is removed."
+    },
+    {
+      "question": "Is activated charcoal the same as activated carbon?",
+      "answerHtml": "Yes. \"Activated charcoal\" and \"activated carbon\" refer to the same material. Both are created by heating carbonaceous material (like coconut shells) to create a highly porous structure that traps molecules. Both are safe for cats."
+    }
+  ]
 }

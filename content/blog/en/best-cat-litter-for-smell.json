@@ -51,5 +51,35 @@
     ],
     "ogImage": "/optimized/standard-happy-cat.avif"
   },
-  "readingTime": 10
+  "readingTime": 10,
+  "faq": [
+    {
+      "question": "What cat litter actually eliminates smell instead of masking it?",
+      "answerHtml": "Litters with activated carbon technology eliminate odour through molecular trapping—the same method used in municipal water treatment and hospital air filtration. Unlike fragrances that mask smells temporarily, activated carbon physically captures ammonia and sulfur compounds so they can't reach your nose."
+    },
+    {
+      "question": "Why does my litter box smell even with odour control litter?",
+      "answerHtml": "Most odour control litters rely on fragrance masking, which fades within 24-48 hours. Additionally, infrequent scooping, shallow litter depth, or using the same litter too long overwhelms any odour control technology. Try adding activated carbon deodorizer and scooping daily."
+    },
+    {
+      "question": "Is scented or unscented litter better for odour control?",
+      "answerHtml": "Unscented litter with added odour-trapping technology (like activated carbon) typically performs better than scented litter. Scents fade quickly and can deter cats from using the box. Many cats prefer unscented options, and fragrance-free litter is gentler on sensitive respiratory systems."
+    },
+    {
+      "question": "How does activated carbon compare to baking soda for litter odour?",
+      "answerHtml": "Activated carbon significantly outperforms baking soda. While baking soda neutralizes some acids, it's quickly overwhelmed (2-3 days). Activated carbon physically traps odour molecules in micropores—one gram has a surface area equivalent to a football field—and continues working for 7+ days."
+    },
+    {
+      "question": "Can I add something to my current litter to control smell better?",
+      "answerHtml": "Yes! Activated carbon litter deodorizers like <a href=\"/products\" class=\"text-blue-600 dark:text-blue-400 underline hover:text-blue-700 dark:hover:text-blue-300\">Purrify</a> work with any litter. Simply sprinkle on top after scooping. This adds professional-grade odour control without forcing your cat to adapt to new litter."
+    },
+    {
+      "question": "What's the best litter for multi-cat households with odour problems?",
+      "answerHtml": "Multi-cat homes benefit most from combining quality clumping litter with activated carbon technology. The clumping isolates waste for easy removal, while activated carbon continuously traps the higher ammonia levels produced by multiple cats. Daily scooping and adequate litter box quantity (one per cat plus one extra) are essential."
+    },
+    {
+      "question": "Are cat litter deodorizers with activated carbon pet-friendly?",
+      "answerHtml": "Pure activated carbon is non-toxic and pet-friendly—it's the same material used in water filters that make drinking water clean. Look for food-grade, fragrance-free formulas specifically designed for litter boxes. Avoid products with added perfumes, essential oils, or chemical additives that could irritate cats."
+    }
+  ]
 }

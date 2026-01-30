@@ -47,5 +47,35 @@
     "canonical": "https://www.purrify.ca/blog/how-to-get-rid-of-cat-pee-smell-apartment",
     "ogImage": "/optimized/cat-litter-hero.png"
   },
-  "wordCount": 3800
+  "wordCount": 3800,
+  "faq": [
+    {
+      "question": "How long does cat pee smell last in an apartment?",
+      "answerHtml": "Untreated cat urine smell can last months or even years. The uric acid crystals don't break down on their own—they need enzymatic treatment. With proper cleaning, you can eliminate the smell in 24-48 hours for fresh accidents, 1-2 weeks for set-in stains."
+    },
+    {
+      "question": "Will cat pee smell go away on its own?",
+      "answerHtml": "No. Cat urine contains uric acid that forms crystals. These crystals bond to surfaces and release odor whenever humidity rises. You must break down the crystals with enzymatic cleaners—they won't dissipate naturally."
+    },
+    {
+      "question": "Can I get my deposit back if my apartment smells like cat pee?",
+      "answerHtml": "Maybe. If you've documented your cleaning efforts (receipts for enzyme cleaners, professional carpet cleaning invoices) and eliminated the smell before move-out, yes. If the smell persists during inspection, landlord will likely deduct cleaning costs from your deposit."
+    },
+    {
+      "question": "What's the fastest way to get rid of cat urine smell?",
+      "answerHtml": "For fresh urine: Blot immediately, soak with enzymatic cleaner, extract moisture, dry with fans. For old stains: Multiple rounds of enzyme treatment + professional extraction cleaning. There's no instant fix—enzymes need time to work (10-15 minutes minimum per application)."
+    },
+    {
+      "question": "Do I need to tell my landlord about cat pee accidents?",
+      "answerHtml": "Not immediately, but address it quickly. If you eliminate the smell completely before move-out, no need to volunteer the information. However, if urine damaged flooring (warped hardwood, stained concrete), inform your landlord early—trying to hide it will cost you more at move-out."
+    },
+    {
+      "question": "Can I use bleach on cat pee?",
+      "answerHtml": "Never. Bleach reacts with ammonia in cat urine, creating toxic chloramine gas. It's dangerous to breathe and doesn't eliminate odor—just temporarily masks it. Plus, bleach damages most flooring. Always use enzymatic cleaners."
+    },
+    {
+      "question": "Why does cat pee smell worse in apartments?",
+      "answerHtml": "Less ventilation, smaller spaces, and shared HVAC systems. In a house, odor disperses through more rooms and exits via windows. In apartments, odor concentrates in limited space and recirculates through air vents—spreading to other rooms and sometimes neighboring units."
+    }
+  ]
 }
