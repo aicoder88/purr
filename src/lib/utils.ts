@@ -1,6 +1,5 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
-import { useEffect, useRef } from 'react';
 import { formatCurrencyValue } from './pricing';
 
 // Core utility function for combining Tailwind classes
@@ -22,31 +21,13 @@ export const scrollToSection = (id: string) => {
 
   // Calculate the target position accounting for header
   const elementPosition = element.getBoundingClientRect().top;
-  const offsetPosition = elementPosition + window.scrollY - headerHeight - 16; // 16px extra padding
+  const offsetPosition = elementPosition + (window as unknown as { scrollY: number }).scrollY - headerHeight - 16; // 16px extra padding
 
   window.scrollTo({
     top: offsetPosition,
     behavior: "smooth"
   });
 };
-
-// Custom hook for intervals with proper cleanup
-export function useInterval(callback: () => void, delay: number | null) {
-  const savedCallback = useRef(callback);
-
-  useEffect(() => {
-    savedCallback.current = callback;
-  }, [callback]);
-
-  useEffect(() => {
-    if (delay === null) {
-      return;
-    }
-
-    const id = setInterval(() => savedCallback.current(), delay);
-    return () => clearInterval(id);
-  }, [delay]);
-}
 
 // Additional common utilities
 export const formatPrice = (price: number, currency = 'CAD', locale = 'en-CA'): string => {

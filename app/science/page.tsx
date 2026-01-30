@@ -1,21 +1,12 @@
-/**
- * Science Hub Page
- * GEO (Generative Engine Optimization) compliant page aggregating all scientific claims
- * and peer-reviewed citations supporting Purrify's efficacy
- */
-
-import { NextSeo } from 'next-seo';
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Container } from '../src/components/ui/container';
-import { useTranslation } from '../src/lib/translation-context';
-import { useEnhancedSEO } from '../src/hooks/useEnhancedSEO';
-import { generateJSONLD } from '../src/lib/seo-utils';
+import { Container } from '@/components/ui/container';
 import {
   SCIENTIFIC_CITATIONS,
   CLAIM_REVIEWS,
   VETERINARY_SCIENCE_ADVISOR,
   getCitationsByCategory,
-} from '../src/lib/scientific-citations';
+} from '@/lib/scientific-citations';
 import {
   Microscope,
   BookOpen,
@@ -27,129 +18,145 @@ import {
   FlaskConical,
 } from 'lucide-react';
 
-export default function ScienceHub() {
-  const { t, locale } = useTranslation();
-
-  // GEO-optimized SEO configuration
-  const { nextSeoProps, schema, additionalSchemas, veterinaryAdvisorSchema } = useEnhancedSEO({
-    path: '/science',
+export const metadata: Metadata = {
+  title: 'The Science Behind Purrify: Peer-Reviewed Research & Citations',
+  description:
+    'Explore the peer-reviewed scientific research supporting activated carbon for cat litter odor control. Citations from PubMed, EPA, and veterinary journals.',
+  keywords: [
+    'activated carbon research',
+    'ammonia adsorption',
+    'cat litter science',
+    'peer-reviewed citations',
+    'veterinary research',
+  ],
+  alternates: {
+    canonical: '/science',
+  },
+  openGraph: {
     title: 'The Science Behind Purrify: Peer-Reviewed Research & Citations',
     description:
-      'Explore the peer-reviewed scientific research supporting activated carbon for cat litter odor control. Citations from PubMed, EPA, and veterinary journals.',
-    targetKeyword: 'activated carbon scientific research',
-    schemaType: 'article',
-    schemaData: {
-      headline: 'The Science Behind Purrify: Peer-Reviewed Research & Citations',
-      description:
-        'Explore the peer-reviewed scientific research supporting activated carbon for cat litter odor control.',
-      datePublished: '2025-01-15',
-      dateModified: new Date().toISOString().split('T')[0],
-      image: 'https://www.purrify.ca/optimized/science-hub-og.jpg',
-      category: 'Scientific Research',
-      keywords: [
-        'activated carbon research',
-        'ammonia adsorption',
-        'cat litter science',
-        'peer-reviewed citations',
-        'veterinary research',
-      ],
-      wordCount: 2500,
-      useVeterinaryAdvisor: true,
-    },
-    includeVeterinaryAdvisor: true,
-    claims: [
-      'Activated carbon traps ammonia molecules',
-      'Activated carbon removes hydrogen sulfide',
-      'Coconut shell carbon outperforms other carbon types',
-      'Activated carbon is safe for cats',
+      'Explore the peer-reviewed scientific research supporting activated carbon for cat litter odor control.',
+    url: 'https://www.purrify.ca/science',
+    type: 'article',
+    publishedTime: '2025-01-15',
+    modifiedTime: new Date().toISOString(),
+    images: [
+      {
+        url: 'https://www.purrify.ca/optimized/science-hub-og.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'The Science Behind Purrify',
+      },
     ],
-  });
+  },
+};
 
-  const citationsByCategory = {
-    ammonia: getCitationsByCategory('ammonia'),
-    safety: getCitationsByCategory('safety'),
-    sulfur: getCitationsByCategory('sulfur'),
-    comparison: getCitationsByCategory('comparison'),
-    health: getCitationsByCategory('health'),
+const citationsByCategory = {
+  ammonia: getCitationsByCategory('ammonia'),
+  safety: getCitationsByCategory('safety'),
+  sulfur: getCitationsByCategory('sulfur'),
+  comparison: getCitationsByCategory('comparison'),
+  health: getCitationsByCategory('health'),
+};
+
+const sourceTypeIcons: Record<string, React.ReactNode> = {
+  pubmed: <Microscope className="w-4 h-4" />,
+  epa: <ShieldCheck className="w-4 h-4" />,
+  veterinary: <Award className="w-4 h-4" />,
+  'peer-reviewed': <BookOpen className="w-4 h-4" />,
+};
+
+const sourceTypeLabels: Record<string, string> = {
+  pubmed: 'PubMed',
+  epa: 'EPA',
+  veterinary: 'Veterinary Journal',
+  'peer-reviewed': 'Peer-Reviewed',
+};
+
+export default function SciencePage() {
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'The Science Behind Purrify: Peer-Reviewed Research & Citations',
+    description:
+      'Explore the peer-reviewed scientific research supporting activated carbon for cat litter odor control.',
+    datePublished: '2025-01-15',
+    dateModified: new Date().toISOString().split('T')[0],
+    image: 'https://www.purrify.ca/optimized/science-hub-og.jpg',
+    author: {
+      '@type': 'Organization',
+      name: 'Purrify',
+      url: 'https://www.purrify.ca',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Purrify',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.purrify.ca/optimized/purrify-logo.avif',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://www.purrify.ca/science',
+    },
   };
 
-  const sourceTypeIcons = {
-    pubmed: <Microscope className="w-4 h-4" />,
-    epa: <ShieldCheck className="w-4 h-4" />,
-    veterinary: <Award className="w-4 h-4" />,
-    'peer-reviewed': <BookOpen className="w-4 h-4" />,
+  const veterinaryAdvisorSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: VETERINARY_SCIENCE_ADVISOR.name,
+    jobTitle: VETERINARY_SCIENCE_ADVISOR.jobTitle,
+    description: VETERINARY_SCIENCE_ADVISOR.description,
+    knowsAbout: VETERINARY_SCIENCE_ADVISOR.knowsAbout,
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Purrify',
+    },
   };
 
-  const sourceTypeLabels = {
-    pubmed: 'PubMed',
-    epa: 'EPA',
-    veterinary: 'Veterinary Journal',
-    'peer-reviewed': 'Peer-Reviewed',
+  const collectionPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Scientific Research & Citations',
+    description: 'Peer-reviewed research supporting activated carbon for cat litter odor control',
+    url: 'https://www.purrify.ca/science',
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: SCIENTIFIC_CITATIONS.map((citation, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'ScholarlyArticle',
+          headline: citation.title,
+          author: citation.authors,
+          datePublished: citation.year,
+          isPartOf: {
+            '@type': 'Periodical',
+            name: citation.journal,
+          },
+          identifier: citation.doi || citation.pmid,
+          url: citation.url,
+        },
+      })),
+    },
   };
 
   return (
     <>
-      <NextSeo {...nextSeoProps} />
-
-      {/* Article Schema */}
-      {schema && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={generateJSONLD(schema)} />
-      )}
-
-      {/* Veterinary Science Advisor Schema */}
-      {veterinaryAdvisorSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={generateJSONLD(veterinaryAdvisorSchema)}
-        />
-      )}
-
-      {/* Additional Schemas */}
-      {additionalSchemas.map((additionalSchema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={generateJSONLD(additionalSchema)}
-        />
-      ))}
-
-      {/* CollectionPage Schema for Citations */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={generateJSONLD({
-          '@context': 'https://schema.org',
-          '@type': 'CollectionPage',
-          name: 'Scientific Research & Citations',
-          description: 'Peer-reviewed research supporting activated carbon for cat litter odor control',
-          url: 'https://www.purrify.ca/science',
-          mainEntity: {
-            '@type': 'ItemList',
-            itemListElement: SCIENTIFIC_CITATIONS.map((citation, index) => ({
-              '@type': 'ListItem',
-              position: index + 1,
-              item: {
-                '@type': 'ScholarlyArticle',
-                headline: citation.title,
-                author: citation.authors,
-                datePublished: citation.year,
-                isPartOf: {
-                  '@type': 'Periodical',
-                  name: citation.journal,
-                },
-                identifier: citation.doi || citation.pmid,
-                url: citation.url,
-              },
-            })),
-          },
-        })}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(veterinaryAdvisorSchema) }}
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionPageSchema) }} />
 
       <main className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
         <Container>
           <div className="max-w-5xl mx-auto">
             {/* Breadcrumb */}
             <nav className="mb-8">
-              <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">
+              <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
                 <li>
                   <Link href="/" className="hover:text-[#FF3131] dark:hover:text-[#FF6B6B]">
                     Home
@@ -171,18 +178,17 @@ export default function ScienceHub() {
                 The Science Behind <span className="text-[#FF3131]">Purrify</span>
               </h1>
 
-              <p className="article-summary text-xl text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 max-w-3xl mx-auto leading-relaxed">
-                Every claim we make is backed by peer-reviewed research from PubMed, the EPA, and
-                leading veterinary journals. Explore the scientific foundation of activated carbon
-                odor control.
+              <p className="article-summary text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                Every claim we make is backed by peer-reviewed research from PubMed, the EPA, and leading veterinary
+                journals. Explore the scientific foundation of activated carbon odor control.
               </p>
             </header>
 
             {/* Veterinary Science Advisor Card */}
             <section className="mb-16">
-              <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700">
+              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700">
                 <div className="flex flex-col md:flex-row gap-8 items-start">
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-electric-indigo to-purple-600 flex items-center justify-center text-white dark:text-gray-100 text-3xl font-bold shrink-0">
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-electric-indigo to-purple-600 flex items-center justify-center text-white text-3xl font-bold shrink-0">
                     {VETERINARY_SCIENCE_ADVISOR.name.charAt(0)}
                   </div>
                   <div className="flex-1">
@@ -195,14 +201,14 @@ export default function ScienceHub() {
                     <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-2">
                       {VETERINARY_SCIENCE_ADVISOR.name}
                     </h2>
-                    <p className="text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mb-4">
+                    <p className="text-gray-600 dark:text-gray-400 mb-4">
                       {VETERINARY_SCIENCE_ADVISOR.description}
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {VETERINARY_SCIENCE_ADVISOR.knowsAbout.slice(0, 4).map((topic) => (
                         <span
                           key={topic}
-                          className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 rounded-full text-sm"
+                          className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm"
                         >
                           {topic}
                         </span>
@@ -229,15 +235,11 @@ export default function ScienceHub() {
                   <div className="text-sm text-green-700 dark:text-green-300">Verified Claims</div>
                 </div>
                 <div className="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-6 text-center">
-                  <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-1">
-                    1,500
-                  </div>
+                  <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-1">1,500</div>
                   <div className="text-sm text-purple-700 dark:text-purple-300">m²/g Surface Area</div>
                 </div>
                 <div className="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-6 text-center">
-                  <div className="text-3xl font-bold text-orange-600 dark:text-orange-400 mb-1">
-                    &gt;95%
-                  </div>
+                  <div className="text-3xl font-bold text-orange-600 dark:text-orange-400 mb-1">&gt;95%</div>
                   <div className="text-sm text-orange-700 dark:text-orange-300">Odor Reduction</div>
                 </div>
               </div>
@@ -247,34 +249,28 @@ export default function ScienceHub() {
             <section className="mb-16">
               <div className="flex items-center gap-3 mb-8">
                 <CheckCircle className="w-6 h-6 text-green-500 dark:text-green-400" />
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50">
-                  Fact-Checked Claims
-                </h2>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50">Fact-Checked Claims</h2>
               </div>
 
               <div className="space-y-4">
                 {CLAIM_REVIEWS.map((claim) => (
                   <div
                     key={claim.claim}
-                    className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm"
+                    className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm"
                   >
                     <div className="flex items-start gap-4">
                       <div
                         className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${
                           claim.rating === 5
-                            ? 'bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 dark:bg-green-900/30 dark:text-green-400'
+                            ? 'bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300'
                             : 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400'
                         }`}
                       >
                         {claim.rating}/5
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-semibold text-gray-900 dark:text-gray-50 mb-1">
-                          {claim.claim}
-                        </h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500 mb-3">
-                          {claim.explanation}
-                        </p>
+                        <h3 className="font-semibold text-gray-900 dark:text-gray-50 mb-1">{claim.claim}</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">{claim.explanation}</p>
                         <div className="flex flex-wrap gap-2">
                           {claim.citationIds.map((id) => {
                             const citation = SCIENTIFIC_CITATIONS.find((c) => c.id === id);
@@ -284,7 +280,7 @@ export default function ScienceHub() {
                                 href={citation.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1 px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 rounded-full text-xs hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                                className="inline-flex items-center gap-1 px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
                               >
                                 <FileText className="w-3 h-3" />
                                 {citation.journal} ({citation.year})
@@ -303,9 +299,7 @@ export default function ScienceHub() {
             <section className="mb-16">
               <div className="flex items-center gap-3 mb-8">
                 <BookOpen className="w-6 h-6 text-electric-indigo" />
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50">
-                  Scientific Citations
-                </h2>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50">Scientific Citations</h2>
               </div>
 
               <div className="space-y-8">
@@ -414,40 +408,35 @@ export default function ScienceHub() {
             {/* Key Takeaways */}
             <section className="mb-16">
               <div className="bg-gradient-to-br from-[#E0EFC7] to-[#d4e8b8] dark:from-green-900/30 dark:to-green-800/20 rounded-2xl p-8">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6">
-                  Key Takeaways
-                </h2>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6">Key Takeaways</h2>
                 <div className="key-takeaway space-y-4">
                   <div className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 shrink-0 mt-0.5" />
                     <p className="text-gray-700 dark:text-gray-200">
-                      <strong>Activated carbon effectively adsorbs ammonia</strong> — the primary
-                      odor compound in cat urine — through proven physisorption mechanisms,
-                      achieving 85-95% reduction in controlled studies.
+                      <strong>Activated carbon effectively adsorbs ammonia</strong> — the primary odor compound in cat
+                      urine — through proven physisorption mechanisms, achieving 85-95% reduction in controlled studies.
                     </p>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 shrink-0 mt-0.5" />
                     <p className="text-gray-700 dark:text-gray-200">
-                      <strong>Coconut shell carbon outperforms alternatives</strong> — with
-                      60-80% micropore volume and surface areas of 800-1500 m²/g, it provides
-                      superior gas-phase adsorption compared to zeolite or baking soda.
+                      <strong>Coconut shell carbon outperforms alternatives</strong> — with 60-80% micropore volume and
+                      surface areas of 800-1500 m²/g, it provides superior gas-phase adsorption compared to zeolite or
+                      baking soda.
                     </p>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 shrink-0 mt-0.5" />
                     <p className="text-gray-700 dark:text-gray-200">
-                      <strong>Food-grade activated carbon is safe for cats</strong> — non-toxic,
-                      chemically inert, and widely used in water filtration and medical
-                      applications.
+                      <strong>Food-grade activated carbon is safe for cats</strong> — non-toxic, chemically inert, and
+                      widely used in water filtration and medical applications.
                     </p>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 shrink-0 mt-0.5" />
                     <p className="text-gray-700 dark:text-gray-200">
-                      <strong>Ammonia poses real health risks</strong> — chronic exposure above
-                      10 ppm causes respiratory irritation, and poorly ventilated litter boxes can
-                      generate 15-50 ppm.
+                      <strong>Ammonia poses real health risks</strong> — chronic exposure above 10 ppm causes respiratory
+                      irritation, and poorly ventilated litter boxes can generate 15-50 ppm.
                     </p>
                   </div>
                 </div>
@@ -456,25 +445,24 @@ export default function ScienceHub() {
 
             {/* CTA Section */}
             <section>
-              <div className="text-center bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-100 dark:border-gray-700">
+              <div className="text-center bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-100 dark:border-gray-700">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
                   Experience the Science Yourself
                 </h2>
-                <p className="text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mb-6 max-w-2xl mx-auto">
-                  Backed by peer-reviewed research and trusted by thousands of cat parents. Try
-                  Purrify risk-free and see why activated carbon is the gold standard for odor
-                  control.
+                <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto">
+                  Backed by peer-reviewed research and trusted by thousands of cat parents. Try Purrify risk-free and see
+                  why activated carbon is the gold standard for odor control.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <Link
                     href="/products/standard"
-                    className="px-8 py-3 bg-[#FF3131] text-white dark:text-gray-100 rounded-full font-semibold shadow-lg hover:bg-[#FF5151] transition-colors"
+                    className="px-8 py-3 bg-[#FF3131] text-white rounded-full font-semibold shadow-lg hover:bg-[#FF5151] transition-colors"
                   >
                     Shop Purrify
                   </Link>
                   <Link
                     href="/learn/science"
-                    className="px-8 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 rounded-full font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                    className="px-8 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-full font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                   >
                     Learn More
                   </Link>
@@ -499,29 +487,26 @@ function CitationCard({
   sourceTypeLabels: Record<string, string>;
 }) {
   return (
-    <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
       <div className="flex items-start gap-4">
-        <div className="shrink-0 w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 dark:text-gray-500">
+        <div className="shrink-0 w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400">
           {sourceTypeIcons[citation.sourceType]}
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
-            <span className="px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 dark:text-gray-500 rounded text-xs font-medium">
+            <span className="px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded text-xs font-medium">
               {sourceTypeLabels[citation.sourceType]}
             </span>
-            <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{citation.year}</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">{citation.year}</span>
           </div>
           <h4 className="font-semibold text-gray-900 dark:text-gray-50 mb-1">{citation.title}</h4>
-          <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500 mb-2">
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
             {citation.authors} • {citation.journal}
           </p>
-          <p className="text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mb-3">{citation.summary}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{citation.summary}</p>
           <div className="flex flex-wrap gap-2 mb-3">
             {citation.claims.slice(0, 3).map((claim, index) => (
-              <span
-                key={index}
-                className="px-2 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 rounded text-xs"
-              >
+              <span key={index} className="px-2 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 rounded text-xs">
                 {claim}
               </span>
             ))}
@@ -534,8 +519,8 @@ function CitationCard({
           >
             <ExternalLink className="w-3 h-3" />
             View Source
-            {citation.doi && <span className="text-gray-500 dark:text-gray-400 dark:text-gray-500">• DOI: {citation.doi}</span>}
-            {citation.pmid && <span className="text-gray-500 dark:text-gray-400 dark:text-gray-500">• PMID: {citation.pmid}</span>}
+            {citation.doi && <span className="text-gray-500 dark:text-gray-400">• DOI: {citation.doi}</span>}
+            {citation.pmid && <span className="text-gray-500 dark:text-gray-400">• PMID: {citation.pmid}</span>}
           </a>
         </div>
       </div>
