@@ -1,452 +1,674 @@
-# Purrify Codebase Improvement Plan
+# Purrify Codebase Improvement Plan (AI-Executable)
 
-> **Version**: 1.0  
+> **Version**: 2.0  
 > **Date**: 2026-01-30  
-> **Est. Timeline**: 12-16 weeks  
-> **Team**: Kimi (primary), Gemini (specialized tasks)
+> **Format**: AI-executable sessions with explicit verification gates
 
 ---
 
 ## Executive Summary
 
-This plan addresses critical technical debt accumulated from rapid feature development. The codebase has **713 TypeScript files**, **97 API routes**, **4 languages**, and runs on a **legacy Pages Router** with modern Next.js 16 + React 19.
+This plan addresses critical technical debt in the Purrify codebase. It is designed for execution by AI agents (Gemini, Kimi K2.5, Claude Opus/Sonnet) with explicit verification commands and exit criteria for each session.
 
-**The core insight**: App Router migration is a **foundational prerequisite** that unlocks performance gains, simplifies state management, and enables modern React patterns. Attempting other optimizations first creates double work.
+**Codebase Stats**:
+- ~100 TSX pages (Pages Router)
+- 32 JSON blog posts + 29 custom TSX blog pages
+- 18 API route directories + 13 standalone API files
+- 18 existing test files
+- Next.js 16 + React 19 + Prisma
 
----
-
-## Agent Specialization Guide
-
-| Task Type | Primary Agent | Why |
-|-----------|--------------|-----|
-| **Architecture refactoring** | Kimi | Better at large-scale structural changes, understanding Next.js internals |
-| **Copy writing, content** | Kimi | Superior nuanced writing, brand voice consistency |
-| **Security audits** | Kimi | More thorough threat modeling, edge case analysis |
-| **Image processing pipelines** | Gemini | Can leverage nano-bananna for batch processing, CV tasks |
-| **Data migration scripts** | Gemini | Better at writing reliable bulk data transformations |
-| **Component/UI polish** | Kimi | Better aesthetic judgment, accessibility awareness |
-| **SEO analysis** | Gemini | Can process large datasets, pattern matching across pages |
-| **Testing infrastructure** | Shared | Kimi writes tests, Gemini generates test data |
+**The core insight**: Blog JSON migration to App Router **only matters for SEO if it enables streaming/RSC benefits**. The current JSON + `getStaticProps` pattern with ISR is already SEO-optimal. **Do NOT migrate JSON content to TSX** unless there's a specific streaming/RSC benefit.
 
 ---
 
-## Phase 1: Foundation (Weeks 1-4) 🔴 MUST DO
+## Agent Assignment Matrix
 
-> **Why first**: These changes alter the fundamental architecture. Everything else builds on top.
+| Agent | Best For | Avoid |
+|-------|----------|-------|
+| **Claude Opus/Sonnet** | Architecture refactoring, complex TypeScript, security audits, testing | Batch image processing |
+| **Kimi K2.5** | Copy writing, content optimization, nuanced brand voice | Large file transformations |
+| **Gemini** | Image processing, data migration scripts, SEO analysis, pattern matching | Complex architectural decisions |
 
-### 1.1 App Router Migration Strategy
-**Agent**: Kimi  
-**Effort**: 2-3 weeks  
-**Impact**: Unlocks RSC, streaming, edge runtime, modern caching
+---
 
-**Why MUST do this first**:
-- Server Components eliminate 60%+ of client JS automatically
-- Changes how data fetching works (no more `getStaticProps`/`getServerSideProps`)
-- Affects every page component's structure
-- Doing it later = rewriting components twice
+## Session Protocol
 
-**Migration Strategy** (Incremental):
+Every session MUST follow this structure:
+
+```markdown
+### Session X.Y.Z: [Action]
+
+**Agent**: [Claude/Kimi/Gemini]
+**Requires**: [Previous session IDs or "None"]
+**Max files**: [Number]
+**Estimated tool calls**: [Number]
+
+**Pre-flight check**:
+- [ ] Verify: `[command]` returns [expected]
+
+**Input files**:
+- `path/to/file1`
+- `path/to/file2`
+
+**Steps**:
+1. [Specific action with file path]
+2. [Specific action with file path]
+
+**Verification**:
+```bash
+[exact command to verify success]
 ```
-Step 1: Create app/ directory alongside pages/
-Step 2: Migrate static marketing pages first (about, science, contact)
-Step 3: Migrate blog pages with ISR
-Step 4: Migrate product pages with dynamic params
-Step 5: Migrate API routes to Route Handlers
-Step 6: Remove pages/ after parity achieved
+**Expected output**: [what to look for]
+
+**Exit criteria**:
+- [ ] [Specific condition]
+- [ ] [Specific condition]
+
+**On failure**:
+```bash
+git checkout .
 ```
+Report error and stop.
 
-**Session Breakdown** (context-safe chunks):
-| Session | Task | Files | Est. Time |
-|---------|------|-------|-----------|
-| 1.1.1 | Setup app/ structure, layout.tsx, loading.tsx | 5 | 2h |
-| 1.1.2 | Migrate static pages (about, science, contact) | 3 | 3h |
-| 1.1.3 | Migrate learn/ pages with nested layouts | 13 | 4h |
-| 1.1.4 | Migrate blog index + detail pages | 29 | 5h |
-| 1.1.5 | Migrate product pages | 3 | 3h |
-| 1.1.6 | Migrate API routes to Route Handlers | 20 | 6h |
-| 1.1.7 | Fix i18n for App Router (next-intl) | 10 | 4h |
-
-**Blockers if not done first**:
-- Cannot use Server Components (major perf win)
-- Cannot use modern data fetching patterns
-- Cannot deploy to edge runtime
-- SEO improvements are harder without streaming
-
----
-
-### 1.2 Database Connection Pooling
-**Agent**: Kimi  
-**Effort**: 2 days  
-**Impact**: Eliminates connection limit errors in serverless
-
-**Why MUST do early**:
-- App Router + Serverless = more concurrent connections
-- Current setup likely hits limits under load
-- Affects all data fetching
-
-```typescript
-// Add to prisma/schema.prisma
-generator client {
-  provider = "prisma-client-js"
-  previewFeatures = ["driverAdapters"]
-}
-
-// Use @neondatabase/serverless or pg-pool
+**On success**:
+```bash
+git add -A && git commit -m "session X.Y.Z: [description]"
+```
 ```
 
-**Session**:
-- 1.2.1: Add connection pooling, test with load
+---
+
+## Phase 1: Foundation (Sessions 1.1 - 1.3) 🔴 MUST DO
+
+### Session 1.1.1: Create App Router Skeleton
+
+**Agent**: Claude Opus/Sonnet
+**Requires**: None
+**Max files**: 8
+**Estimated tool calls**: 25
+
+**Pre-flight check**:
+```bash
+cd /Users/macmini/dev/purr && pnpm run build 2>&1 | head -20
+```
+- [ ] Build succeeds or shows current state
+
+**Input files**: None (creating new)
+
+**Steps**:
+1. Create `app/layout.tsx` with root layout wrapping `_app.tsx` patterns
+2. Create `app/loading.tsx` with branded loading spinner
+3. Create `app/error.tsx` with error boundary
+4. Create `app/not-found.tsx` matching current 404
+5. Create `app/globals.css` importing existing styles
+6. Update `next.config.js` to enable App Router alongside Pages
+
+**Verification**:
+```bash
+cd /Users/macmini/dev/purr && ls -la app/ && pnpm run build 2>&1 | grep -E "(error|success|compiled)"
+```
+**Expected output**: app/ directory exists, build completes without new errors
+
+**Exit criteria**:
+- [ ] `app/layout.tsx` exists and exports default function
+- [ ] `app/loading.tsx` exists
+- [ ] `app/error.tsx` exists with 'use client' directive
+- [ ] `pnpm run build` succeeds
+
+**On failure**: `git checkout .` and report error
+
+**On success**:
+```bash
+git add -A && git commit -m "session 1.1.1: create app router skeleton"
+```
 
 ---
 
-### 1.3 TypeScript Strict Mode Enforcement
-**Agent**: Kimi  
-**Effort**: 3-4 days  
-**Impact**: Prevents runtime errors, better DX
+### Session 1.1.2: Migrate Static Marketing Pages
 
-**Why MUST do before adding features**:
-- New code should be strict from the start
-- Easier to fix 100 errors now than 500 later
-- Required for some modern TypeScript patterns
+**Agent**: Claude Opus/Sonnet
+**Requires**: 1.1.1
+**Max files**: 6
+**Estimated tool calls**: 40
 
-**Session Breakdown**:
-| Session | Task | Est. Time |
-|---------|------|-----------|
-| 1.3.1 | Enable strict, fix src/lib/* errors | 3h |
-| 1.3.2 | Fix src/components/* errors | 4h |
-| 1.3.3 | Fix pages/* errors | 4h |
-| 1.3.4 | Fix remaining errors, CI enforcement | 2h |
+**Pre-flight check**:
+```bash
+cd /Users/macmini/dev/purr && ls pages/about/our-story.tsx pages/science.tsx pages/contact.tsx 2>&1
+```
+- [ ] All three files exist
 
----
+**Input files**:
+- `pages/about/our-story.tsx`
+- `pages/science.tsx`
+- `pages/contact.tsx`
 
-## Phase 2: Security Hardening (Weeks 3-5) 🔴 MUST DO
+**Steps**:
+1. Create `app/about/page.tsx` as Server Component (remove hooks, use RSC patterns)
+2. Create `app/about/layout.tsx` for about section
+3. Create `app/science/page.tsx` as Server Component
+4. Create `app/contact/page.tsx` - keep client parts in separate 'use client' components
+5. Extract any interactive forms to `app/contact/_components/ContactForm.tsx` with 'use client'
+6. Add metadata exports to each page for SEO
 
-> **Why now**: Security debt compounds. Data breaches are existential risks.
+**Verification**:
+```bash
+cd /Users/macmini/dev/purr && pnpm run build 2>&1 | tail -10
+```
+**Expected output**: Build succeeds
 
-### 2.1 Customer PII Encryption
-**Agent**: Kimi  
-**Effort**: 3 days  
-**Impact**: Compliance (PIPEDA, GDPR), breach protection
+**Browser verification** (if browser tool available):
+1. Navigate to `http://localhost:3000/about`
+2. Navigate to `http://localhost:3000/science`
+3. Navigate to `http://localhost:3000/contact`
+4. Verify pages render correctly
 
-**Critical**: Comments in schema say "Should be encrypted" but aren't.
+**Exit criteria**:
+- [ ] `app/about/page.tsx` exports metadata object
+- [ ] `app/science/page.tsx` is a Server Component (no 'use client' at top)
+- [ ] Forms still work on contact page
+- [ ] Build succeeds
 
-**Fields to encrypt**:
-- Customer.email
-- Customer.firstName, lastName
-- Customer.address, city, postalCode
-- Customer.phone
+**On failure**: `git checkout .` and report error
 
-**Session Breakdown**:
-| Session | Task | Est. Time |
-|---------|------|-----------|
-| 2.1.1 | Implement field-level encryption utility | 2h |
-| 2.1.2 | Encrypt Customer model fields | 3h |
-| 2.1.3 | Update queries to decrypt automatically | 3h |
-| 2.1.4 | Migration for existing data | 2h |
-| 2.1.5 | Update exports/reporting to handle encryption | 2h |
-
----
-
-### 2.2 API Security Audit & Rate Limiting
-**Agent**: Kimi  
-**Effort**: 4 days  
-**Impact**: DDoS protection, abuse prevention
-
-**Current state**: 97 API routes, no unified protection visible.
-
-**Session Breakdown**:
-| Session | Task | Est. Time |
-|---------|------|-----------|
-| 2.2.1 | Audit all API routes for auth/validation | 3h |
-| 2.2.2 | Implement Upstash Redis rate limiting | 3h |
-| 2.2.3 | Add to sensitive routes (checkout, affiliate) | 3h |
-| 2.2.4 | Add request signing for webhooks | 2h |
-| 2.2.5 | Security headers audit | 2h |
+**On success**:
+```bash
+git add -A && git commit -m "session 1.1.2: migrate static marketing pages to app router"
+```
 
 ---
 
-### 2.3 Input Sanitization Standardization
-**Agent**: Kimi  
-**Effort**: 2 days  
-**Impact**: XSS prevention
+### Session 1.1.3: Migrate Blog Index and Dynamic Route
 
-**Session**:
-- 2.3.1: Audit all user input points
-- 2.3.2: Standardize on zod schemas for all inputs
+**Agent**: Claude Opus/Sonnet
+**Requires**: 1.1.2
+**Max files**: 10
+**Estimated tool calls**: 50
 
----
+**Pre-flight check**:
+```bash
+cd /Users/macmini/dev/purr && ls pages/blog/index.tsx pages/blog/\[slug\].tsx content/blog/en/*.json | wc -l
+```
+- [ ] Returns 34 (32 JSON + 2 TSX)
 
-## Phase 3: Performance (Weeks 5-8) 🟡 SHOULD DO
+**Input files**:
+- `pages/blog/index.tsx`
+- `pages/blog/[slug].tsx`
+- `src/data/blog-posts.ts`
 
-> **Why after foundation**: Performance optimizations are different in App Router vs Pages Router
+**Steps**:
+1. Create `app/blog/page.tsx` (Server Component, fetch blog list)
+2. Create `app/blog/[slug]/page.tsx` with `generateStaticParams()`
+3. Create `app/blog/[slug]/loading.tsx`
+4. Create `app/blog/layout.tsx` with blog-specific layout
+5. Ensure JSON content is loaded via filesystem read (this is FINE for SEO with static generation)
+6. Add `generateMetadata()` for dynamic SEO per blog post
+7. Keep existing JSON content structure - **DO NOT convert to TSX**
 
-### 3.1 Bundle Optimization
-**Agent**: Kimi + Gemini (analysis)  
-**Effort**: 1 week  
-**Impact**: Faster page loads, better Core Web Vitals
+**IMPORTANT**: The JSON blog content system is SEO-optimal with static generation. The App Router migration does NOT require changing the content format.
 
-**Current issues**:
-- recharts imported fully (heavy)
-- 321 useState hooks (many could be Server Components)
-- 129 useEffect hooks (indicates client-side data fetching)
+**Verification**:
+```bash
+cd /Users/macmini/dev/purr && pnpm run build 2>&1 | grep -E "(blog|error)"
+```
+**Expected output**: Blog pages generate statically
 
-**Session Breakdown**:
-| Session | Task | Agent | Est. Time |
-|---------|------|-------|-----------|
-| 3.1.1 | Run bundle analyzer, identify bloat | Kimi | 2h |
-| 3.1.2 | Replace recharts with custom SVG charts | Kimi | 4h |
-| 3.1.3 | Lazy load heavy components | Kimi | 3h |
-| 3.1.4 | Optimize Radix UI imports | Kimi | 2h |
-| 3.1.5 | Implement dynamic imports for sections | Kimi | 3h |
+**Exit criteria**:
+- [ ] `app/blog/page.tsx` lists all blog posts
+- [ ] `app/blog/[slug]/page.tsx` renders JSON content
+- [ ] `generateStaticParams()` returns all 32 slugs
+- [ ] `generateMetadata()` returns title, description, openGraph
+- [ ] Build succeeds with static pages generated
 
----
+**On failure**: `git checkout .` and report error
 
-### 3.2 Image Strategy Overhaul
-**Agent**: Gemini (processing) + Kimi (integration)  
-**Effort**: 1 week  
-**Impact**: Better LCP, reduced bandwidth
-
-**Current state**: 157MB public folder, manual optimization scripts
-
-**Session Breakdown**:
-| Session | Task | Agent | Est. Time |
-|---------|------|-------|-----------|
-| 3.2.1 | Audit all images, identify optimization candidates | Gemini | 2h |
-| 3.2.2 | Batch convert to WebP/AVIF | Gemini | 3h |
-| 3.2.3 | Implement CDN integration (Cloudinary) | Kimi | 4h |
-| 3.2.4 | Update next/image configurations | Kimi | 2h |
-| 3.2.5 | Fix sparse_images issues from audit_progress.json | Gemini | 4h |
-
-**Gemini's advantage**: Can use nano-bananna or similar for batch CV tasks if needed for image categorization.
+**On success**:
+```bash
+git add -A && git commit -m "session 1.1.3: migrate blog to app router with json content preserved"
+```
 
 ---
 
-### 3.3 Database Query Optimization
-**Agent**: Kimi  
-**Effort**: 3 days  
-**Impact**: Faster API responses
+### Session 1.1.4: Migrate Custom TSX Blog Posts
 
-**Issues to address**:
-- N+1 queries in affiliate/referral aggregations
-- Missing indexes on common query patterns
-- Heavy dashboard queries
+**Agent**: Claude Opus/Sonnet
+**Requires**: 1.1.3
+**Max files**: 15 per sub-session
+**Estimated tool calls**: 60 per sub-session
 
-**Session Breakdown**:
-| Session | Task | Est. Time |
-|---------|------|-----------|
-| 3.3.1 | Identify slow queries via logging | 2h |
-| 3.3.2 | Add database views for complex aggregations | 3h |
-| 3.3.3 | Optimize Prisma queries with `include` | 3h |
-| 3.3.4 | Add caching layer for hot data (Redis) | 3h |
+**BATCH STRATEGY**: There are 28 custom TSX blog posts. Split into 2 sub-sessions.
 
----
+#### Session 1.1.4a: First Batch (14 posts)
 
-## Phase 4: Testing & Quality (Weeks 8-10) 🟡 SHOULD DO
+**Pre-flight check**:
+```bash
+cd /Users/macmini/dev/purr && ls pages/blog/*.tsx | head -15
+```
 
-> **Why not earlier**: Test patterns differ between Pages and App Router
+**Steps**:
+1. For each custom TSX blog post in batch:
+   - Create `app/blog/[post-slug]/page.tsx`
+   - Convert to Server Component where possible
+   - Extract interactive parts to client components
+   - Add `generateMetadata()` export
 
-### 4.1 Testing Infrastructure
-**Agent**: Kimi  
-**Effort**: 1 week  
-**Impact**: Confidence in changes, regression prevention
+**Verification**:
+```bash
+cd /Users/macmini/dev/purr && pnpm run build 2>&1 | grep -E "(error|warn)" | head -20
+```
 
-**Current**: 16 test files, mostly SEO utilities
+**Exit criteria**:
+- [ ] All 14 posts build successfully
+- [ ] Each has metadata export
 
-**Session Breakdown**:
-| Session | Task | Est. Time |
-|---------|------|-----------|
-| 4.1.1 | Setup MSW for API mocking | 3h |
-| 4.1.2 | Add component tests for UI primitives | 4h |
-| 4.1.3 | Add integration tests for checkout flow | 4h |
-| 4.1.4 | Add E2E tests for critical paths | 3h |
-| 4.1.5 | Setup coverage reporting in CI | 2h |
+**On success**:
+```bash
+git add -A && git commit -m "session 1.1.4a: migrate first batch custom tsx blog posts"
+```
 
----
+#### Session 1.1.4b: Second Batch (14 posts)
 
-### 4.2 E2E Test Expansion
-**Agent**: Gemini (generating test cases) + Kimi (implementation)  
-**Effort**: 3 days  
-**Impact**: Catch regressions
-
-**Session**:
-- 4.2.1: Generate comprehensive test scenarios (Gemini)
-- 4.2.2: Implement critical path tests (Kimi)
+Same pattern as 1.1.4a for remaining posts.
 
 ---
 
-## Phase 5: Developer Experience (Weeks 10-12) 🟢 NICE TO HAVE
+### Session 1.1.5: Migrate API Routes to Route Handlers
 
-> **Why later**: Nice-to-haves that don't block business value
+**Agent**: Claude Opus/Sonnet
+**Requires**: 1.1.4
+**Max files**: 20
+**Estimated tool calls**: 80
 
-### 5.1 Consolidate SEO Scripts
-**Agent**: Gemini  
-**Effort**: 3 days  
-**Impact**: Faster builds, less maintenance
+**Pre-flight check**:
+```bash
+cd /Users/macmini/dev/purr && ls pages/api/*.ts | wc -l
+```
+- [ ] Returns count of API files
 
-**Current**: 25+ SEO scripts scattered in `scripts/seo/`
+**Input directories**:
+- `pages/api/contact.ts`
+- `pages/api/contact-b2b.ts`
+- `pages/api/subscribe.ts`
+- `pages/api/create-checkout-session.ts`
+- `pages/api/webhooks/`
 
-**Gemini's advantage**: Pattern matching, consolidating similar scripts.
+**Steps**:
+1. Create `app/api/contact/route.ts` with POST handler
+2. Create `app/api/contact-b2b/route.ts` with POST handler
+3. Create `app/api/subscribe/route.ts` with POST handler
+4. Create `app/api/checkout/route.ts` from create-checkout-session
+5. Create `app/api/webhooks/stripe/route.ts`
+6. Use NextRequest/NextResponse patterns
+7. Maintain existing validation logic
 
----
+**Verification**:
+```bash
+cd /Users/macmini/dev/purr && pnpm run build && curl -X POST http://localhost:3000/api/contact -H "Content-Type: application/json" -d '{"test": true}'
+```
+**Expected output**: API responds (may be validation error, but not 404)
 
-### 5.2 Storybook Setup
-**Agent**: Kimi  
-**Effort**: 2 days  
-**Impact**: Component documentation, visual testing
+**Exit criteria**:
+- [ ] All migrated API routes return proper responses
+- [ ] Webhook routes maintain signature verification
+- [ ] Build succeeds
 
----
+**On failure**: `git checkout .` and report error
 
-### 5.3 Documentation Overhaul
-**Agent**: Kimi  
-**Effort**: 2 days  
-**Impact**: Onboarding, maintenance
-
-Update AGENTS.md with new patterns post-migration.
-
----
-
-## Phase 6: Content & CMS (Weeks 12-14) 🟢 NICE TO HAVE
-
-> **Why last**: Content migration is disruptive but not blocking
-
-### 6.1 Headless CMS Migration
-**Agent**: Kimi  
-**Effort**: 2 weeks  
-**Impact**: Better content workflows
-
-**Current**: Blog in JSON files, no CMS
-
-**Session Breakdown**:
-| Session | Task | Est. Time |
-|---------|------|-----------|
-| 6.1.1 | Evaluate CMS options (Sanity vs Strapi) | 3h |
-| 6.1.2 | Setup CMS instance | 4h |
-| 6.1.3 | Write content migration scripts | 6h |
-| 6.1.4 | Update frontend to use CMS API | 6h |
-| 6.1.5 | Content freeze and migration | 4h |
+**On success**:
+```bash
+git add -A && git commit -m "session 1.1.5: migrate core api routes to route handlers"
+```
 
 ---
 
-### 6.2 i18n Optimization
-**Agent**: Kimi  
-**Effort**: 3 days  
-**Impact**: Smaller bundles, better loading
+### Session 1.1.6: Fix i18n for App Router
 
-**Current**: 3600+ line translation files loaded eagerly
+**Agent**: Claude Opus/Sonnet
+**Requires**: 1.1.5
+**Max files**: 12
+**Estimated tool calls**: 45
 
-**Session**:
-- 6.2.1: Implement lazy loading for translations
-- 6.2.2: Move to next-intl for App Router
+**Pre-flight check**:
+```bash
+cd /Users/macmini/dev/purr && grep -r "next-intl\|useTranslation" src/ | head -10
+```
 
----
+**Steps**:
+1. Install/configure `next-intl` for App Router if not already
+2. Create `app/[locale]/layout.tsx` for locale handling
+3. Update static pages to use server-side translations
+4. Ensure client components receive translations through props or context
+5. Update middleware for locale routing
 
-## Phase 7: Advanced Optimizations (Weeks 14-16) 🔵 FUTURE
+**Verification**:
+```bash
+cd /Users/macmini/dev/purr && pnpm run build && curl http://localhost:3000/en/about | grep -i "html"
+```
 
-> **Why future**: Complex, requires previous phases complete
+**Exit criteria**:
+- [ ] English pages render with translations
+- [ ] French pages render (if supported): `/fr/about`
+- [ ] Build succeeds
 
-### 7.1 Edge Runtime Migration
-**Agent**: Kimi  
-**Effort**: 1 week  
-**Impact**: Global performance, lower latency
-
-Requires App Router complete.
-
----
-
-### 7.2 Micro-frontend Architecture
-**Agent**: Kimi  
-**Effort**: 2-3 weeks  
-**Impact**: Independent deployments
-
-Separate admin, affiliate, main site.
-
----
-
-### 7.3 Real-time Features
-**Agent**: Kimi  
-**Effort**: 1 week  
-**Impact**: Better UX
-
-WebSockets for inventory, live chat.
+**On success**:
+```bash
+git add -A && git commit -m "session 1.1.6: configure i18n for app router"
+```
 
 ---
 
-## Risk Assessment
+### Session 1.2.1: Database Connection Pooling
 
-| Risk | Probability | Impact | Mitigation |
-|------|-------------|--------|------------|
-| App Router migration breaks SEO | Medium | High | Extensive testing, staged rollout |
-| Encryption migration corrupts data | Low | Critical | Full backup, gradual rollout |
-| CMS migration loses content | Low | High | Content freeze, verification scripts |
-| Performance regressions | Medium | Medium | Lighthouse CI, performance budgets |
-| Build time increases | Medium | Medium | Parallel builds, caching |
+**Agent**: Claude Opus/Sonnet
+**Requires**: None (can run parallel to 1.1.x)
+**Max files**: 4
+**Estimated tool calls**: 20
 
----
+**Pre-flight check**:
+```bash
+cd /Users/macmini/dev/purr && cat prisma/schema.prisma | head -20
+```
 
-## Success Metrics
+**Input files**:
+- `prisma/schema.prisma`
+- `src/lib/prisma.ts` (or equivalent)
 
-| Metric | Current | Target | Phase |
-|--------|---------|--------|-------|
-| Lighthouse Performance | ~60 | >90 | 3 |
-| Bundle size (main) | ~250KB | <150KB | 3 |
-| API response p95 | ~500ms | <200ms | 3 |
-| Test coverage | ~5% | >70% | 4 |
-| Build time | ~5min | <3min | 1, 5 |
-| Type errors | ~100 | 0 | 1 |
-| Security audit issues | Unknown | 0 critical | 2 |
+**Steps**:
+1. Add `previewFeatures = ["driverAdapters"]` to prisma client generator
+2. Install `@neondatabase/serverless` if using Neon, or configure pg-pool
+3. Create/update `src/lib/db.ts` with pooled connection
+4. Update all Prisma imports to use pooled client
 
----
+**Verification**:
+```bash
+cd /Users/macmini/dev/purr && pnpm prisma generate && pnpm run build
+```
 
-## Execution Checklist
+**Exit criteria**:
+- [ ] Prisma client generates successfully
+- [ ] Build succeeds
+- [ ] No "too many connections" errors in logs
 
-### Before Starting
-- [ ] Full database backup
-- [ ] Branch protection rules
-- [ ] Staging environment ready
-- [ ] Rollback plan documented
-
-### Phase 1 Start
-- [ ] App Router directory created
-- [ ] Feature flags for gradual rollout
-- [ ] Monitoring dashboards setup
-
-### Phase 2 Start
-- [ ] App Router core pages migrated
-- [ ] Encryption keys generated
-- [ ] Security audit baseline
-
-### Phase 3 Start
-- [ ] Security issues resolved
-- [ ] Bundle analyzer integrated
-- [ ] Image CDN account setup
-
-### Phase 4 Start
-- [ ] Performance baseline recorded
-- [ ] MSW setup complete
-- [ ] Test data prepared
+**On success**:
+```bash
+git add -A && git commit -m "session 1.2.1: add database connection pooling"
+```
 
 ---
 
-## Appendix: Context Window Management
+### Session 1.3.1: Enable TypeScript Strict Mode
 
-### Kimi Session Limits
-- **Safe**: Component refactoring (<50 files)
-- **Safe**: API route migration (5-10 routes)
-- **Avoid**: Full App Router migration in one session
-- **Avoid**: Database-wide changes
+**Agent**: Claude Opus/Sonnet
+**Requires**: 1.1.6 (after App Router migration)
+**Max files**: 50
+**Estimated tool calls**: 100
 
-### Gemini Session Limits
-- **Safe**: Image batch processing
-- **Safe**: Data analysis, SEO auditing
-- **Safe**: Test case generation
-- **Avoid**: Complex architectural decisions
+**BATCH STRATEGY**: This session may need to be split based on error count.
 
-### Handoff Protocol
-1. Kimi defines interface/contracts
-2. Gemini implements data processing
-3. Kimi integrates results
-4. Kimi writes tests
-5. Both review
+**Pre-flight check**:
+```bash
+cd /Users/macmini/dev/purr && cat tsconfig.json | grep strict
+```
+
+**Steps**:
+1. Update `tsconfig.json` to enable `"strict": true`
+2. Run `pnpm tsc --noEmit` to get error list
+3. Fix errors in priority order:
+   - `src/lib/*` first
+   - `src/components/*` second
+   - `pages/*` or `app/*` last
+4. Focus on implicit any, null checks, undefined access
+
+**Verification**:
+```bash
+cd /Users/macmini/dev/purr && pnpm tsc --noEmit 2>&1 | tail -20
+```
+**Expected output**: Zero errors or list of remaining
+
+**Exit criteria**:
+- [ ] `pnpm tsc --noEmit` exits with code 0
+- [ ] Build succeeds
+
+**On failure**: If >100 errors, document count and stop for human review
+
+**On success**:
+```bash
+git add -A && git commit -m "session 1.3.1: enable typescript strict mode"
+```
+
+---
+
+## Phase 2: Security Hardening (Sessions 2.1 - 2.3) 🔴 MUST DO
+
+### Session 2.1.1: Implement Field-Level Encryption
+
+**Agent**: Claude Opus/Sonnet
+**Requires**: 1.2.1
+**Max files**: 8
+**Estimated tool calls**: 40
+
+**Pre-flight check**:
+```bash
+cd /Users/macmini/dev/purr && grep -r "Should be encrypted" prisma/schema.prisma
+```
+
+**Input files**:
+- `prisma/schema.prisma`
+- `src/lib/encryption.ts` (create if not exists)
+
+**Steps**:
+1. Create `src/lib/encryption.ts` with encrypt/decrypt functions using Node crypto
+2. Create encryption key configuration in env
+3. Add Prisma middleware for automatic field encryption
+4. Apply to Customer model fields: email, firstName, lastName, address, city, postalCode, phone
+
+**Verification**:
+```bash
+cd /Users/macmini/dev/purr && pnpm run build && pnpm jest __tests__/security/ --passWithNoTests
+```
+
+**Exit criteria**:
+- [ ] `src/lib/encryption.ts` exports `encrypt()` and `decrypt()` functions
+- [ ] Prisma middleware registered
+- [ ] Build succeeds
+- [ ] Security tests pass (if they exist)
+
+**On success**:
+```bash
+git add -A && git commit -m "session 2.1.1: implement field-level encryption for pii"
+```
+
+---
+
+### Session 2.2.1: API Rate Limiting
+
+**Agent**: Claude Opus/Sonnet
+**Requires**: 1.1.5
+**Max files**: 10
+**Estimated tool calls**: 35
+
+**Pre-flight check**:
+```bash
+cd /Users/macmini/dev/purr && grep -r "rate" src/lib/ pages/api/ app/api/ | head -5
+```
+
+**Steps**:
+1. Install `@upstash/ratelimit` and `@upstash/redis`
+2. Create `src/lib/rate-limit.ts` with configurable limits
+3. Apply to sensitive routes:
+   - `app/api/checkout/route.ts`: 10 req/min
+   - `app/api/contact/route.ts`: 5 req/min
+   - `app/api/affiliate/*`: 20 req/min
+4. Add rate limit headers to responses
+
+**Verification**:
+```bash
+cd /Users/macmini/dev/purr && pnpm run build
+# Manual test: hit endpoint > rate limit times
+```
+
+**Exit criteria**:
+- [ ] Rate limit middleware exists
+- [ ] Sensitive routes have rate limiting applied
+- [ ] Build succeeds
+
+**On success**:
+```bash
+git add -A && git commit -m "session 2.2.1: add api rate limiting"
+```
+
+---
+
+### Session 2.3.1: Input Sanitization Audit
+
+**Agent**: Claude Opus/Sonnet
+**Requires**: 2.2.1
+**Max files**: 20
+**Estimated tool calls**: 50
+
+**Pre-flight check**:
+```bash
+cd /Users/macmini/dev/purr && grep -r "zod" src/ pages/ app/ | wc -l
+```
+
+**Steps**:
+1. Audit all API routes for input validation
+2. Ensure all POST/PUT handlers use Zod schemas
+3. Add `sanitize-html` or similar for any user-generated content
+4. Create shared schemas in `src/lib/schemas/`
+
+**Verification**:
+```bash
+cd /Users/macmini/dev/purr && pnpm run build && pnpm test 2>&1 | grep -E "(pass|fail)"
+```
+
+**Exit criteria**:
+- [ ] All API routes have Zod validation
+- [ ] No raw `req.body` access without validation
+- [ ] Tests pass
+
+**On success**:
+```bash
+git add -A && git commit -m "session 2.3.1: standardize input validation with zod"
+```
+
+---
+
+## Phase 3: Performance (Sessions 3.1 - 3.3) 🟡 SHOULD DO
+
+### Session 3.1.1: Bundle Analysis and Optimization
+
+**Agent**: Claude Opus/Sonnet
+**Requires**: 1.3.1
+**Max files**: 15
+**Estimated tool calls**: 45
+
+**Pre-flight check**:
+```bash
+cd /Users/macmini/dev/purr && pnpm run analyze 2>&1 | tail -5
+```
+
+**Steps**:
+1. Run bundle analyzer: `ANALYZE=true pnpm run build`
+2. Identify largest imports (recharts, radix-ui, etc.)
+3. Replace full recharts imports with tree-shakeable alternatives
+4. Add dynamic imports for heavy components
+5. Optimize Radix UI imports
+
+**Verification**:
+```bash
+cd /Users/macmini/dev/purr && pnpm run build 2>&1 | grep "First Load JS"
+```
+**Expected output**: Main bundle < 150KB
+
+**Exit criteria**:
+- [ ] Bundle size reduced by >20%
+- [ ] No functionality broken
+- [ ] Build succeeds
+
+**On success**:
+```bash
+git add -A && git commit -m "session 3.1.1: optimize bundle size"
+```
+
+---
+
+### Session 3.2.1: Image Optimization Pipeline
+
+**Agent**: Gemini (batch processing)
+**Requires**: None (parallel to other work)
+**Max files**: 50
+**Estimated tool calls**: 80
+
+**Pre-flight check**:
+```bash
+cd /Users/macmini/dev/purr && du -sh public/ && find public -name "*.png" -o -name "*.jpg" | wc -l
+```
+
+**Steps**:
+1. Audit all images in `public/` for optimization opportunities
+2. Convert large PNGs/JPGs to WebP using sharp
+3. Generate responsive image sizes
+4. Update image references to use next/image with proper sizing
+
+**Verification**:
+```bash
+cd /Users/macmini/dev/purr && du -sh public/ && pnpm run build
+```
+**Expected output**: public/ size reduced
+
+**Exit criteria**:
+- [ ] All images converted to optimal format
+- [ ] Total public/ size reduced by >30%
+- [ ] Build succeeds
+- [ ] Images render correctly
+
+**On success**:
+```bash
+git add -A && git commit -m "session 3.2.1: optimize images batch 1"
+```
+
+---
+
+## Phase 4: Testing (Sessions 4.1 - 4.2) 🟡 SHOULD DO
+
+### Session 4.1.1: Expand Test Coverage
+
+**Agent**: Claude Opus/Sonnet
+**Requires**: 2.3.1
+**Max files**: 20
+**Estimated tool calls**: 60
+
+**Pre-flight check**:
+```bash
+cd /Users/macmini/dev/purr && pnpm test 2>&1 | tail -10
+```
+
+**Input files** (existing tests):
+- `__tests__/api/seo/*.test.ts`
+- `__tests__/hooks/*.test.ts`
+- `__tests__/security/*.test.ts`
+
+**Steps**:
+1. Add component tests for critical UI components
+2. Add integration tests for checkout flow
+3. Add API tests for contact, subscribe endpoints
+4. Setup MSW for API mocking
+
+**Verification**:
+```bash
+cd /Users/macmini/dev/purr && pnpm test:coverage 2>&1 | tail -20
+```
+**Expected output**: Coverage > 50%
+
+**Exit criteria**:
+- [ ] Test count increased by >20 tests
+- [ ] Coverage > 50%
+- [ ] All tests pass
+
+**On success**:
+```bash
+git add -A && git commit -m "session 4.1.1: expand test coverage"
+```
 
 ---
 
@@ -454,12 +676,62 @@ WebSockets for inventory, live chat.
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| 2026-01-30 | Keep JSON blog content | Already SEO-optimal with ISR/static generation |
 | 2026-01-30 | App Router before performance | Performance solutions differ between routers |
 | 2026-01-30 | Security before performance | Security is non-negotiable, performance is iterative |
-| 2026-01-30 | CMS migration last | Content freeze is disruptive, do when code is stable |
-| 2026-01-30 | Gemini for image processing | Better at batch operations, can use specialized tools |
-| 2026-01-30 | Kimi for architecture | Better at understanding Next.js internals, trade-offs |
+| 2026-01-30 | Gemini for image processing | Better at batch operations |
+| 2026-01-30 | Claude for architecture | Better at understanding Next.js internals |
 
 ---
 
-*This plan is a living document. Update as constraints change.*
+## Rollback Protocol
+
+If any session fails after making changes:
+
+```bash
+# Immediate rollback
+git checkout .
+
+# If already committed
+git revert HEAD
+
+# If multiple commits need rollback
+git log --oneline -10  # Find last good commit
+git reset --hard <commit-hash>
+```
+
+---
+
+## Context Window Safety
+
+### Session Size Limits by Agent
+
+| Agent | Max Files | Max Tool Calls | Safe Scope |
+|-------|-----------|----------------|------------|
+| Claude Opus | 50 | 100 | Multi-file refactoring |
+| Claude Sonnet | 30 | 60 | Single feature implementation |
+| Kimi K2.5 | 20 | 50 | Content + copy work |
+| Gemini | 40 | 80 | Batch processing, analysis |
+
+### Handoff Protocol
+
+1. Completing agent commits with descriptive message
+2. Completing agent documents state in session summary
+3. Next agent runs pre-flight check before starting
+4. If pre-flight fails, stop and report
+
+---
+
+## Success Metrics
+
+| Metric | Current | Target | Verification Command |
+|--------|---------|--------|---------------------|
+| Build time | ~5min | <3min | `time pnpm run build` |
+| Bundle size | ~250KB | <150KB | `pnpm run build \| grep "First Load"` |
+| Lighthouse | ~60 | >90 | Browser Lighthouse audit |
+| Test coverage | ~5% | >50% | `pnpm test:coverage` |
+| Type errors | ~100 | 0 | `pnpm tsc --noEmit 2>&1 \| wc -l` |
+
+---
+
+*This plan is a living document. Each completed session should update progress markers.*
