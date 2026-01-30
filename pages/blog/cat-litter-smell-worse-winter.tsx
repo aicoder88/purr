@@ -195,7 +195,7 @@ export default function CatLitterSmellWorseWinter() {
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-600 dark:text-blue-400 mr-2">🔬</span>
-                  <span><strong>The Science:</strong> Modern energy-efficient homes exchange air only 0.3-0.5 times per hour vs. 1-2 times in summer with open windows.</span>
+                  <span><strong>The Science:</strong> Modern energy-efficient homes exchange air only 0.35 times per hour (ACH)—causing ammonia to concentrate up to 500% higher than summer levels (EPA Indoor Air Quality).</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-600 dark:text-blue-400 mr-2">✅</span>
@@ -241,7 +241,7 @@ export default function CatLitterSmellWorseWinter() {
 
               <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">1. Reduced Air Exchange Rate</h3>
               <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                Modern energy-efficient homes are designed to retain heat—which also means retaining odors. Here's what happens:
+                Modern energy-efficient homes are designed to retain heat—which also means retaining odors. According to the <strong>EPA's Indoor Air Quality (IAQ)</strong> reports, indoor pollutant levels can be 2-5 times higher than outdoor levels in winter due to insufficient ventilation. Here's what happens:
               </p>
 
               <div className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-6 mb-8">
@@ -559,22 +559,26 @@ export default function CatLitterSmellWorseWinter() {
             </div>
 
             {/* CTA Section */}
-            <div className="bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] rounded-2xl p-8 md:p-12 text-center text-white dark:text-gray-100 my-12">
-              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-                Ready to Solve Your Winter Litter Box Odor Problem?
+            <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-8 md:p-12 text-center my-12">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-green-900 mb-6">
+                🧪 The $8 Science Experiment
               </h2>
-              <p className="text-xl mb-6 opacity-90">
-                Stop letting closed windows trap embarrassing ammonia odors. Try Purrify's activated carbon additive risk-free.
+              <p className="text-xl text-green-800 mb-8 max-w-2xl mx-auto">
+                Still skeptical? Try our <strong>trial size</strong> for one litter box, one month.
+                If you don't notice the difference the <em>first day</em> you use it, we'll refund every penny.
+              </p>
+              <p className="text-green-700 text-sm mb-8 font-medium">
+                <em>Same activated carbon used in municipal water filters—now for your cat's litter box.</em>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/products/trial-size">
-                  <button className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-800 px-8 py-4 rounded-lg font-bold text-lg transition-colors shadow-lg">
-                    Try Risk-Free - $8.99 (shipping included)
+                  <button className="bg-[#FF3131] hover:bg-[#E62E2E] text-white px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    Try the Trial Size - $8.99
                   </button>
                 </Link>
                 <Link href="/learn/how-it-works">
-                  <button className="border-2 border-white dark:border-gray-300 text-white dark:text-gray-100 hover:bg-white/10 dark:hover:bg-gray-800 px-8 py-4 rounded-lg font-bold text-lg transition-colors">
-                    Learn How It Works
+                  <button className="border-2 border-green-600 text-green-700 hover:bg-green-100 px-8 py-4 rounded-lg font-bold text-lg transition-colors">
+                    How it Works
                   </button>
                 </Link>
               </div>

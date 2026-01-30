@@ -243,7 +243,7 @@ export default function CatLitterSmellWorseSummer() {
                 <h4 className="font-bold text-blue-900 dark:text-blue-100 mb-3">🌡️ The Temperature Effect:</h4>
                 <p className="text-blue-800 dark:text-blue-200 mb-4">
                   For every <strong>10°C (18°F) increase in temperature</strong>, the rate of chemical reactions—including ammonia
-                  production—roughly <strong>doubles</strong>.
+                  production—roughly <strong>doubles</strong> (known as the <strong>Arrhenius Equation</strong>).
                 </p>
                 <ul className="text-blue-800 dark:text-blue-200 space-y-2">
                   <li><strong>At 15°C (59°F):</strong> Moderate ammonia evaporation</li>
@@ -258,8 +258,8 @@ export default function CatLitterSmellWorseSummer() {
               <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">2. Bacterial Activity Increases in Heat</h3>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
-                The bacteria that convert urea to ammonia are <strong>more active in warm conditions</strong>. They reproduce faster,
-                work faster, and produce more ammonia per hour.
+                The bacteria that convert urea to ammonia (<em>urease-positive bacteria</em>) thrive in warm conditions, with replication rates peaking between 25°C and 40°C.
+                They work faster and produce more ammonia per hour.
               </p>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
@@ -513,11 +513,31 @@ export default function CatLitterSmellWorseSummer() {
                 accelerated ammonia production.
               </p>
 
-              <p className="text-gray-700 dark:text-gray-200">
-                Ready for a summer without cat odor stress?
-                <Link href="/products/trial-size" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium"> Try Purrify's heat-resistant activated carbon</Link>
-                and experience what a fresh home feels like—even in July.
-              </p>
+              {/* CTA Section */}
+              <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-8 md:p-12 text-center my-12">
+                <h2 className="font-heading text-3xl md:text-4xl font-bold text-green-900 mb-6">
+                  🧪 The $8 Summer Science Experiment
+                </h2>
+                <p className="text-xl text-green-800 mb-8 max-w-2xl mx-auto">
+                  Still fighting the heat? Try our <strong>trial size</strong> for one litter box, one month.
+                  If you don't notice the difference the <em>first day</em> you use it, we'll refund every penny.
+                </p>
+                <p className="text-green-700 text-sm mb-8 font-medium">
+                  <em>Same activated carbon used in municipal water filters—now for your cat's litter box.</em>
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link href="/products/trial-size">
+                    <button className="bg-[#FF3131] hover:bg-[#E62E2E] text-white px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                      Try the Trial Size - $8.99
+                    </button>
+                  </Link>
+                  <Link href="/learn/how-it-works">
+                    <button className="border-2 border-green-600 text-green-700 hover:bg-green-100 px-8 py-4 rounded-lg font-bold text-lg transition-colors">
+                      How it Works
+                    </button>
+                  </Link>
+                </div>
+              </div>
             </div>
 
             {/* Related Articles */}
