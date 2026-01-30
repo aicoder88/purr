@@ -51,15 +51,28 @@ async function getBlogPosts(): Promise<BlogPost[]> {
     }
 
     // Transform to match the expected format
-    return posts.map((post) => ({
-      title: post.title,
-      excerpt: post.excerpt,
-      author: post.author.name,
-      date: new Date(post.publishDate).toISOString().split('T')[0],
-      image: post.featuredImage.url,
-      link: `/blog/${post.slug}`,
-      locale: post.locale,
-    }));
+    return posts.map((post) => {
+      // Safely parse date with fallback
+      let dateStr: string;
+      try {
+        const parsedDate = post.publishDate ? new Date(post.publishDate) : null;
+        dateStr = parsedDate && !isNaN(parsedDate.getTime()) 
+          ? parsedDate.toISOString().split('T')[0] 
+          : new Date().toISOString().split('T')[0];
+      } catch {
+        dateStr = new Date().toISOString().split('T')[0];
+      }
+      
+      return {
+        title: post.title,
+        excerpt: post.excerpt,
+        author: post.author?.name || 'Purrify Team',
+        date: dateStr,
+        image: post.featuredImage?.url || '/optimized/cat-litter-hero.webp',
+        link: `/blog/${post.slug}`,
+        locale: post.locale || 'en',
+      };
+    });
   } catch (err) {
     console.error('Error fetching blog posts:', err);
     // Fallback to sampleBlogPosts on error
@@ -148,11 +161,19 @@ export default async function BlogIndexPage() {
                     <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-3">
                       <span className="flex items-center gap-1">
                         <Calendar className="w-4 h-4" />
-                        {new Date(post.date).toLocaleDateString('en-US', {
-                          year: 'numeric',
-                          month: 'short',
-                          day: 'numeric',
-                        })}
+                        {(() => {
+                          try {
+                            const d = new Date(post.date);
+                            if (isNaN(d.getTime())) throw new Error('Invalid date');
+                            return d.toLocaleDateString('en-US', {
+                              year: 'numeric',
+                              month: 'short',
+                              day: 'numeric',
+                            });
+                          } catch {
+                            return post.date || 'Unknown date';
+                          }
+                        })()}
                       </span>
                       <span className="flex items-center gap-1">
                         <User className="w-4 h-4" />
