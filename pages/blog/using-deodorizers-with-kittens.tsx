@@ -65,7 +65,7 @@ export default function UsingDeodorizersWithKittens() {
         <Container>
           <div className="max-w-4xl mx-auto">
             <nav className="mb-8">
-              <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
+              <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">
                 <li><Link href="/" className="hover:text-[#FF3131] dark:hover:text-[#FF6B6B]">Home</Link></li>
                 <li>/</li>
                 <li><Link href="/blog" className="hover:text-[#FF3131] dark:hover:text-[#FF6B6B]">Blog</Link></li>
@@ -81,11 +81,11 @@ export default function UsingDeodorizersWithKittens() {
               <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
                 Using Cat Litter Deodorizers with Kittens: A Care Guide
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 max-w-3xl mx-auto">
                 Everything you need to know about using fragrance-free deodorizers around kittens.
                 Learn what to consider, timing, and how to minimize exposure for young cats.
               </p>
-              <div className="flex items-center justify-center space-x-4 mt-6 text-sm text-gray-500 dark:text-gray-400">
+              <div className="flex items-center justify-center space-x-4 mt-6 text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
                 <span>Published January 25, 2024</span>
                 <span>•</span>
                 <span>7 min read</span>
@@ -101,7 +101,7 @@ export default function UsingDeodorizersWithKittens() {
                 height={2399}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
               />
-              <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+              <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 text-center mt-2">
                 Keeping kittens comfortable while maintaining a fresh, odor-controlled environment
               </p>
             </div>
@@ -153,28 +153,28 @@ export default function UsingDeodorizersWithKittens() {
                   <div className="w-32 flex-shrink-0 font-bold text-gray-900 dark:text-gray-50">Weeks 0-4</div>
                   <div>
                     <strong className="block text-gray-900 dark:text-gray-50">Mom or Foster Care</strong>
-                    <p className="text-gray-600 dark:text-gray-300">Mother cat stimulates elimination. No litter box needed.</p>
+                    <p className="text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">Mother cat stimulates elimination. No litter box needed.</p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <div className="w-32 flex-shrink-0 font-bold text-gray-900 dark:text-gray-50">Weeks 4-8</div>
                   <div>
                     <strong className="block text-gray-900 dark:text-gray-50">The Training Phase</strong>
-                    <p className="text-gray-600 dark:text-gray-300">Use non-clumping paper or pellet litter. <strong>NO DEODORIZERS.</strong> The kitten needs to smell their own waste to understand where the bathroom is.</p>
+                    <p className="text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">Use non-clumping paper or pellet litter. <strong>NO DEODORIZERS.</strong> The kitten needs to smell their own waste to understand where the bathroom is.</p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <div className="w-32 flex-shrink-0 font-bold text-gray-900 dark:text-gray-50">Weeks 8-12</div>
                   <div>
                     <strong className="block text-gray-900 dark:text-gray-50">Introduction Phase</strong>
-                    <p className="text-gray-600 dark:text-gray-300">Switch to clumping litter if they aren't eating it. Introduce <strong>1 teaspoon</strong> of Activated Carbon mixed well into the litter.</p>
+                    <p className="text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">Switch to clumping litter if they aren't eating it. Introduce <strong>1 teaspoon</strong> of Activated Carbon mixed well into the litter.</p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <div className="w-32 flex-shrink-0 font-bold text-gray-900 dark:text-gray-50">3 Months+</div>
                   <div>
                     <strong className="block text-gray-900 dark:text-gray-50">Standard Routine</strong>
-                    <p className="text-gray-600 dark:text-gray-300">Full odor control regimen. Use standard adult amounts of carbon.</p>
+                    <p className="text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">Full odor control regimen. Use standard adult amounts of carbon.</p>
                   </div>
                 </div>
               </div>
@@ -235,7 +235,7 @@ export default function UsingDeodorizersWithKittens() {
                 <p className="text-gray-700 dark:text-gray-200 mb-4">
                   Purrify is fragrance-free, chemical-free, and safe for kittens over 8 weeks. Start their life off fresh.
                 </p>
-                <Link href="/products" className="inline-block px-8 py-3 bg-[#FF3131] text-white rounded-full font-bold text-lg hover:bg-red-600 transition-all transform hover:scale-105 shadow-xl">
+                <Link href="/products" className="inline-block px-8 py-3 bg-[#FF3131] text-white dark:text-gray-100 rounded-full font-bold text-lg hover:bg-red-600 transition-all transform hover:scale-105 shadow-xl">
                   Shop Purrify Family Pack →
                 </Link>
               </div>
@@ -243,7 +243,7 @@ export default function UsingDeodorizersWithKittens() {
             </div>
           </div>
           {/* Related Articles */}
-          <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-600">
+          <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700 dark:border-gray-600">
             <RelatedContent currentUrl="/blog/using-deodorizers-with-kittens" />
           </div>
         </Container>

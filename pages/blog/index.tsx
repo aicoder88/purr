@@ -188,7 +188,7 @@ export default function Blog({ blogPosts, locale }: { blogPosts: BlogPost[], loc
           {/* Visual Breadcrumb Navigation */}
           {breadcrumb && (
             <nav aria-label="Breadcrumb" className="mb-8">
-              <ol className="flex flex-wrap items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+              <ol className="flex flex-wrap items-center gap-2 text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
                 {breadcrumb.items.map((item, index) => (
                   <li key={item.path} className="flex items-center">
                     {index > 0 && (
@@ -197,7 +197,7 @@ export default function Blog({ blogPosts, locale }: { blogPosts: BlogPost[], loc
                       </svg>
                     )}
                     {index === breadcrumb.items.length - 1 ? (
-                      <span aria-current="page" className="text-gray-900 dark:text-gray-100 font-medium">
+                      <span aria-current="page" className="text-gray-900 dark:text-gray-50 dark:text-gray-100 font-medium">
                         {item.name}
                       </span>
                     ) : (
@@ -218,21 +218,21 @@ export default function Blog({ blogPosts, locale }: { blogPosts: BlogPost[], loc
             <h1 className="font-heading text-5xl font-bold tracking-tight mb-4 text-[#03E46A]">
               Purrify Blog
             </h1>
-            <p className="text-gray-600 dark:text-gray-300 dark:text-gray-300 text-lg">
+            <p className="text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 text-lg">
               {t.blogSection.description}
             </p>
           </div>
 
           {blogPosts.length === 0 ? (
             <div className="text-center py-20">
-              <p className="text-gray-600 dark:text-gray-300">No blog posts found. Check back soon!</p>
+              <p className="text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">No blog posts found. Check back soon!</p>
             </div>
           ) : (
             <div ref={blogListRef} className="grid grid-cols-1 md:grid-cols-3 gap-8 cv-auto cis-960">
               {displayedPosts.map((post) => (
                 <article
                   key={post.link}
-                  className="bg-white dark:bg-gray-800/80 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-[#E0EFC7] dark:border-gray-700 transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-gray-700/50 hover:-translate-y-2 group"
+                  className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800/80 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-[#E0EFC7] dark:border-gray-700 transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-gray-700/50 hover:-translate-y-2 group"
                 >
                   <Link
                     href={post.link}
@@ -261,14 +261,14 @@ export default function Blog({ blogPosts, locale }: { blogPosts: BlogPost[], loc
                       <h2 className="font-heading font-bold text-xl mb-3 text-[#5B2EFF] dark:text-[#3694FF] group-hover:text-[#5B2EFF]/80 dark:group-hover:text-[#3694FF]/80 transition-colors">
                         {post.title}
                       </h2>
-                      <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                      <p className="text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mb-4 line-clamp-3">
                         {post.excerpt}
                       </p>
                       <div className="flex justify-between items-center text-sm mb-4">
                         <span className="text-[#03E46A] font-medium">
                           {post.author}
                         </span>
-                        <span className="text-gray-500 dark:text-gray-400 dark:text-gray-400">{post.date}</span>
+                        <span className="text-gray-500 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400 dark:text-gray-500">{post.date}</span>
                       </div>
                       <div className="text-[#03E46A] font-medium flex items-center hover:text-[#03E46A]/80 transition-colors">
                         {t.blogSection.readFullArticle}
@@ -300,8 +300,8 @@ export default function Blog({ blogPosts, locale }: { blogPosts: BlogPost[], loc
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
                 className={`flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 shadow-lg ${currentPage === 1
-                    ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 cursor-not-allowed border border-gray-200 dark:border-gray-700'
-                    : 'bg-white dark:bg-gray-800 text-[#03E46A] hover:bg-[#03E46A] hover:text-white border border-[#E0EFC7] dark:border-gray-700 hover:border-transparent active:scale-95'
+                    ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 cursor-not-allowed border border-gray-200 dark:border-gray-700'
+                    : 'bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800 text-[#03E46A] hover:bg-[#03E46A] hover:text-white dark:text-gray-100 border border-[#E0EFC7] dark:border-gray-700 hover:border-transparent active:scale-95'
                   }`}
                 aria-label="Previous Page"
               >
@@ -311,19 +311,19 @@ export default function Blog({ blogPosts, locale }: { blogPosts: BlogPost[], loc
                 <span>Prev</span>
               </button>
 
-              <div className="flex items-center gap-2 px-6 py-3 bg-white/50 dark:bg-gray-800/50 backdrop-blur-md rounded-full border border-[#E0EFC7] dark:border-gray-700 shadow-md">
-                <span className="text-gray-500 dark:text-gray-400">Page</span>
+              <div className="flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white/50 dark:bg-gray-800/50 backdrop-blur-md rounded-full border border-[#E0EFC7] dark:border-gray-700 shadow-md">
+                <span className="text-gray-500 dark:text-gray-400 dark:text-gray-500">Page</span>
                 <span className="font-bold text-[#5B2EFF] dark:text-[#3694FF] min-w-[1.5rem] text-center">{currentPage}</span>
-                <span className="text-gray-400">/</span>
-                <span className="text-gray-600 dark:text-gray-300 font-medium">{totalPages}</span>
+                <span className="text-gray-400 dark:text-gray-500">/</span>
+                <span className="text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 font-medium">{totalPages}</span>
               </div>
 
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
                 className={`flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 shadow-lg ${currentPage === totalPages
-                    ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 cursor-not-allowed border border-gray-200 dark:border-gray-700'
-                    : 'bg-white dark:bg-gray-800 text-[#03E46A] hover:bg-[#03E46A] hover:text-white border border-[#E0EFC7] dark:border-gray-700 hover:border-transparent active:scale-95'
+                    ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 cursor-not-allowed border border-gray-200 dark:border-gray-700'
+                    : 'bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800 text-[#03E46A] hover:bg-[#03E46A] hover:text-white dark:text-gray-100 border border-[#E0EFC7] dark:border-gray-700 hover:border-transparent active:scale-95'
                   }`}
                 aria-label="Next Page"
               >

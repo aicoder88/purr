@@ -26,7 +26,7 @@ export default function CatLitterOdorMyths() {
                     <div className="max-w-4xl mx-auto">
                         {/* Breadcrumb */}
                         <nav className="mb-8" aria-label="Breadcrumb">
-                            <ol className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+                            <ol className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
                                 <li><Link href="/" className="hover:text-[#5B2EFF]">Home</Link></li>
                                 <li>/</li>
                                 <li><Link href="/blog" className="hover:text-[#5B2EFF]">Blog</Link></li>
@@ -40,7 +40,7 @@ export default function CatLitterOdorMyths() {
                             <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-50 leading-tight">
                                 10 Cat Litter Odor Myths That <span className="text-[#FF3131]">Waste Your Money</span>
                             </h1>
-                            <div className="flex items-center space-x-4 text-gray-600 dark:text-gray-400">
+                            <div className="flex items-center space-x-4 text-gray-600 dark:text-gray-400 dark:text-gray-500">
                                 <span className="flex items-center">
                                     <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                                     January 27, 2026
@@ -63,7 +63,7 @@ export default function CatLitterOdorMyths() {
 
                         {/* Content */}
                         <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:font-heading prose-headings:text-[#5B2EFF] dark:prose-headings:text-[#3694FF]">
-                            <p className="lead text-xl text-gray-700 dark:text-gray-300">
+                            <p className="lead text-xl text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">
                                 If you've ever stood in the pet aisle feeling overwhelmed by litters promising "Alpine Freshness" or "Ocean Breeze," you're not alone. Most cat owners spend hundreds of dollars a year chasing a "fresh" scent that simply doesn't exist in nature.
                             </p>
 
@@ -77,7 +77,7 @@ export default function CatLitterOdorMyths() {
                             <p>
                                 <strong>The Reality:</strong> Scented litters don't eliminate odor; they create a "cloying" mix of ammonia and artificial perfume. Most cats have a sense of smell 14 times stronger than humans. What you perceive as a faint lavender scent is an overwhelming chemical assault to your cat.
                             </p>
-                            <div className="bg-[#FFF5E6] dark:bg-orange-900/20 p-6 rounded-2xl border-l-4 border-orange-400 mb-8">
+                            <div className="bg-[#FFF5E6] dark:bg-orange-900/20 p-6 rounded-2xl border-l-4 border-orange-400 dark:border-orange-500 mb-8">
                                 <p className="m-0 text-orange-800 dark:text-orange-200 font-medium">
                                     <strong>Lab Result:</strong> 70% of cats show a preference for unscented litter. Using scented varieties often leads to "out-of-box" behavioral issues.
                                 </p>
@@ -152,7 +152,7 @@ export default function CatLitterOdorMyths() {
                         {/* Footer Components */}
                         <div className="mt-12 space-y-12">
                             <SocialFollowCTA />
-                            <div className="pt-8 border-t border-gray-200 dark:border-gray-800">
+                            <div className="pt-8 border-t border-gray-200 dark:border-gray-700 dark:border-gray-800">
                                 <RelatedContent currentUrl="/blog/cat-litter-odor-myths" />
                             </div>
                         </div>

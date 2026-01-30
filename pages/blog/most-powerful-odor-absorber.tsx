@@ -37,8 +37,8 @@ const PerformanceChart = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-full h-64 flex items-center justify-center bg-white/40 dark:bg-gray-800/40 rounded-xl border border-gray-200 dark:border-gray-700">
-        <span className="text-sm text-gray-500 dark:text-gray-300">Loading performance comparison…</span>
+      <div className="w-full h-64 flex items-center justify-center bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white/40 dark:bg-gray-800/40 rounded-xl border border-gray-200 dark:border-gray-700">
+        <span className="text-sm text-gray-500 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">Loading performance comparison…</span>
       </div>
     ),
   }
@@ -195,7 +195,7 @@ export default function MostPowerfulOdorAbsorber() {
           <div className="max-w-4xl mx-auto">
             {/* Breadcrumb */}
             <nav className="mb-8">
-              <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
+              <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">
                 <li>
                   <Link href="/" className="hover:text-[#FF3131] dark:hover:text-[#FF6B6B]">
                     Home
@@ -220,12 +220,12 @@ export default function MostPowerfulOdorAbsorber() {
               <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
                 {meta.title}
               </h1>
-              <p className="article-summary text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              <p className="article-summary text-xl text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 max-w-3xl mx-auto">
                 {meta.description}
               </p>
               
               {/* Veterinary Science Advisor Attribution */}
-              <div className="flex items-center justify-center gap-2 mt-6 text-sm text-gray-500 dark:text-gray-400">
+              <div className="flex items-center justify-center gap-2 mt-6 text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
                 <Microscope className="w-4 h-4 text-electric-indigo" />
                 <span>Scientific Review by</span>
                 <Link 
@@ -252,13 +252,13 @@ export default function MostPowerfulOdorAbsorber() {
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
                 priority
               />
-              <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+              <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 text-center mt-2">
                 Activated carbon layered over clumping litter creates a molecular filter that may stop odors before they travel
               </p>
             </div>
 
             {/* Quick Stats with Citations */}
-            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-6 mb-12">
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 dark:border-blue-800 rounded-xl p-6 mb-12">
               <h2 className="font-heading text-xl font-bold text-blue-900 dark:text-blue-100 mb-4">🔬 {meta.stats.title}</h2>
               <div className="grid md:grid-cols-2 gap-4 text-blue-800 dark:text-blue-200">
                 <div className="space-y-1">
@@ -280,7 +280,7 @@ export default function MostPowerfulOdorAbsorber() {
               </div>
               
               {/* Citations Block */}
-              <div className="mt-4 pt-4 border-t border-blue-200 dark:border-blue-800">
+              <div className="mt-4 pt-4 border-t border-blue-200 dark:border-blue-700 dark:border-blue-800">
                 <p className="text-xs text-blue-700 dark:text-blue-200/80 flex items-center gap-1 mb-2">
                   <FileText className="w-3 h-3" />
                   Scientific Sources:
@@ -292,7 +292,7 @@ export default function MostPowerfulOdorAbsorber() {
                       href={citation.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 px-2 py-1 bg-white dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded text-xs hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors"
+                      className="inline-flex items-center gap-1 px-2 py-1 bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded text-xs hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors"
                     >
                       <ExternalLink className="w-3 h-3" />
                       {citation.journal} ({citation.year})
@@ -313,7 +313,7 @@ export default function MostPowerfulOdorAbsorber() {
                   We evaluated the three dominant technologies—Purrify&apos;s coconut-shell activated carbon, zeolite minerals, and silica-based crystals. We looked at surface area, ammonia capture, safety, and day-to-day upkeep so you can pick a system that fits your litter routine.
                 </p>
                 <div className="overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700">
-                  <table className="min-w-full text-sm text-left bg-white dark:bg-gray-900">
+                  <table className="min-w-full text-sm text-left bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white">
                     <thead className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200">
                       <tr>
                         <th className="px-4 py-3">Technology</th>
@@ -344,7 +344,7 @@ export default function MostPowerfulOdorAbsorber() {
                     </tbody>
                   </table>
                 </div>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 mt-2">
                   Source: Anderson et al., Journal of Environmental Chemical Engineering (2022); Rodriguez et al., Carbon (2021).
                 </p>
               </section>
@@ -365,7 +365,7 @@ export default function MostPowerfulOdorAbsorber() {
                   height={1067}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
                 />
-                <div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 dark:border-yellow-600 p-6 rounded-lg">
+                <div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 dark:border-yellow-500 dark:border-yellow-600 p-6 rounded-lg">
                   <h3 className="font-heading text-lg font-semibold text-yellow-900 dark:text-yellow-100 mb-3">Lab Snapshot</h3>
                   <ul className="space-y-2 text-yellow-800 dark:text-yellow-200">
                     <li>• Activated carbon cut airborne ammonia by 92 percent in a 30-minute sealed chamber test.</li>
@@ -391,21 +391,21 @@ export default function MostPowerfulOdorAbsorber() {
                   {relevantClaims.map((claim) => (
                     <div
                       key={claim.claim}
-                      className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm"
+                      className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm"
                     >
                       <div className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-green-500 dark:text-green-400 shrink-0 mt-0.5" />
                         <div className="flex-1">
                           <h3 className="font-semibold text-gray-900 dark:text-gray-50 mb-1">
                             {claim.claim}
                           </h3>
-                          <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded text-xs font-medium">
+                          <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500 mb-2">
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-green-100 dark:bg-green-900/40 dark:bg-green-900/30 text-green-700 dark:text-green-300 dark:text-green-400 rounded text-xs font-medium">
                               <CheckCircle className="w-3 h-3" />
                               Verified: {claim.rating}/5
                             </span>
                           </p>
-                          <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                          <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500 mb-3">
                             {claim.explanation}
                           </p>
                           <div className="flex flex-wrap gap-2">
@@ -419,7 +419,7 @@ export default function MostPowerfulOdorAbsorber() {
                                   href={citation.url}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-xs hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                                  className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 rounded text-xs hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
                                 >
                                   <ExternalLink className="w-3 h-3" />
                                   {citation.journal} ({citation.year})
@@ -461,9 +461,9 @@ export default function MostPowerfulOdorAbsorber() {
 
               <section className="mb-12">
                 <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">See Purrify&apos;s Odor Shield in Action</h2>
-                <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm">
+                <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm">
                   <PerformanceChart />
-                  <p className="text-sm text-gray-600 dark:text-gray-300 mt-4 text-center">
+                  <p className="text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mt-4 text-center">
                     Source: Purrify lab performance comparison (2025); zeolite and baking soda benchmarks from Journal of Environmental Chemical Engineering (2022).
                   </p>
                 </div>
@@ -475,7 +475,7 @@ export default function MostPowerfulOdorAbsorber() {
               <section className="mb-12">
                 <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Activated Carbon Close-Ups</h2>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden shadow-sm">
+                  <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden shadow-sm">
                     <Image
                       src={carbonMacroImage}
                       alt="Macro detail of coconut-shell activated carbon granules used in Purrify"
@@ -484,11 +484,11 @@ export default function MostPowerfulOdorAbsorber() {
                       height={1067}
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 1600px"
                     />
-                    <p className="text-sm text-gray-600 dark:text-gray-300 px-4 py-3">
+                    <p className="text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 px-4 py-3">
                       Coconut-shell pores provide the enormous surface area that lets Purrify trap odor molecules instantly.
                     </p>
                   </div>
-                  <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden shadow-sm">
+                  <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden shadow-sm">
                     <Image
                       src={carbonScoopImage}
                       alt="Cat parent scooping Purrify activated carbon into a litter box"
@@ -497,7 +497,7 @@ export default function MostPowerfulOdorAbsorber() {
                       height={1067}
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 1600px"
                     />
-                    <p className="text-sm text-gray-600 dark:text-gray-300 px-4 py-3">
+                    <p className="text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 px-4 py-3">
                       Sprinkle Purrify over fresh litter to build a breathable odor shield without fragrances.
                     </p>
                   </div>
@@ -517,7 +517,7 @@ export default function MostPowerfulOdorAbsorber() {
               <section className="mb-12">
                 <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Maintenance Timeline That Keeps Performance High</h2>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm">
+                  <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm">
                     <h3 className="font-heading text-xl font-semibold text-[#5B2EFF] dark:text-[#6FA8FF] mb-4">Weekly Routine</h3>
                     <ul className="space-y-2 text-gray-700 dark:text-gray-200">
                       <li>• Scoop twice daily and add a teaspoon of Purrify carbon.</li>
@@ -525,7 +525,7 @@ export default function MostPowerfulOdorAbsorber() {
                       <li>• Rotate the litter box orientation to improve airflow.</li>
                     </ul>
                   </div>
-                  <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm">
+                  <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm">
                     <h3 className="font-heading text-xl font-semibold text-[#5B2EFF] dark:text-[#6FA8FF] mb-4">Monthly Reset</h3>
                     <ul className="space-y-2 text-gray-700 dark:text-gray-200">
                       <li>• Empty the entire box and wash with unscented soap.</li>
@@ -582,19 +582,19 @@ export default function MostPowerfulOdorAbsorber() {
                 </p>
                 
                 {/* Scientific References CTA */}
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 mb-6">
+                <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 mb-6">
                   <div className="flex items-center gap-3 mb-4">
                     <Microscope className="w-6 h-6 text-electric-indigo" />
                     <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-50">
                       Want to Explore the Research?
                     </h3>
                   </div>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  <p className="text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mb-4">
                     All claims in this article are backed by peer-reviewed studies from PubMed, EPA, and veterinary journals.
                   </p>
                   <Link
                     href="/science"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-electric-indigo text-white rounded-lg font-medium hover:bg-electric-indigo/90 transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-electric-indigo text-white dark:text-gray-100 rounded-lg font-medium hover:bg-electric-indigo/90 transition-colors"
                   >
                     <FileText className="w-4 h-4" />
                     View All Scientific Citations

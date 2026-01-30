@@ -240,7 +240,7 @@ export default function ActivatedCarbonBenefits() {
           <div className="max-w-4xl mx-auto">
             {/* Breadcrumb */}
             <nav className="mb-8">
-              <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
+              <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">
                 <li>
                   <Link
                     href="/"
@@ -274,12 +274,12 @@ export default function ActivatedCarbonBenefits() {
                 Activated Carbon Litter Additive Benefits: The Science Behind
                 Superior Odor Control
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 max-w-3xl mx-auto">
                 Discover how activated carbon works at the molecular level to
                 eliminate cat litter odors, creating a fresher, healthier home
                 environment for you and your feline friends.
               </p>
-              <div className="flex items-center justify-center space-x-4 mt-6 text-sm text-gray-500 dark:text-gray-400">
+              <div className="flex items-center justify-center space-x-4 mt-6 text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
                 <span>Published January 15, 2024</span>
                 <span>•</span>
                 <span>8 min read</span>
@@ -297,7 +297,7 @@ export default function ActivatedCarbonBenefits() {
                 priority
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
               />
-              <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+              <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 text-center mt-2">
                 The science behind activated carbon's superior odor elimination
                 properties
               </p>
@@ -367,7 +367,7 @@ export default function ActivatedCarbonBenefits() {
                   height={1067}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
                 />
-                <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+                <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 text-center mt-2">
                   Coconut shells provide the raw material for premium activated
                   carbon
                 </p>
@@ -398,11 +398,11 @@ export default function ActivatedCarbonBenefits() {
                     <li>• Longer lasting effectiveness</li>
                   </ul>
                 </div>
-                <div className="bg-gray-50 dark:bg-gray-900 p-6 rounded-lg">
+                <div className="bg-gray-50 dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white p-6 rounded-lg">
                   <h4 className="font-bold text-gray-700 dark:text-gray-200 mb-3">
                     🪨 Coal-Based Carbon
                   </h4>
-                  <ul className="text-gray-600 dark:text-gray-300 space-y-2">
+                  <ul className="text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 space-y-2">
                     <li>• Larger pore structure</li>
                     <li>• Less effective for small molecules</li>
                     <li>• Non-renewable resource</li>
@@ -454,7 +454,7 @@ export default function ActivatedCarbonBenefits() {
                   height={1067}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
                 />
-                <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+                <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 text-center mt-2">
                   Activated carbon provides health benefits beyond just odor
                   control
                 </p>
@@ -467,7 +467,7 @@ export default function ActivatedCarbonBenefits() {
                 Consider the physics of the litter box. Your cat enters a small, often enclosed space. They dig around, releasing gas pockets, and then lower their nose to within inches of the waste. If your box smells "a little bad" to you standing 5 feet away, it is likely a <strong>toxic gas chamber</strong> for your cat.
               </p>
 
-              <div className="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg mb-8 border-l-4 border-red-500">
+              <div className="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg mb-8 border-l-4 border-red-500 dark:border-red-600">
                 <h3 className="font-bold text-red-900 dark:text-red-100 mb-2">The Ammonia Threat</h3>
                 <p className="text-red-800 dark:text-red-200">
                   Ammonia gas is defined as a respiratory irritant by OSHA. Prolonged exposure can cause:
@@ -487,24 +487,24 @@ export default function ActivatedCarbonBenefits() {
               </p>
 
               <div className="overflow-x-auto mb-8">
-                <table className="min-w-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
+                <table className="min-w-full bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
                   <thead className="bg-gray-100 dark:bg-gray-700">
                     <tr>
-                      <th className="p-4 text-left font-bold text-gray-900 dark:text-gray-100">Scenario</th>
-                      <th className="p-4 text-left font-bold text-gray-900 dark:text-gray-100">Full Change Freq</th>
-                      <th className="p-4 text-left font-bold text-gray-900 dark:text-gray-100">Annual Cost</th>
+                      <th className="p-4 text-left font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100">Scenario</th>
+                      <th className="p-4 text-left font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100">Full Change Freq</th>
+                      <th className="p-4 text-left font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100">Annual Cost</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-b dark:border-gray-700">
-                      <td className="p-4 text-gray-700 dark:text-gray-300"><strong>Standard Litter</strong></td>
-                      <td className="p-4 text-gray-700 dark:text-gray-300">Every 2 weeks</td>
-                      <td className="p-4 text-gray-700 dark:text-gray-300">$312</td>
+                      <td className="p-4 text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500"><strong>Standard Litter</strong></td>
+                      <td className="p-4 text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">Every 2 weeks</td>
+                      <td className="p-4 text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">$312</td>
                     </tr>
                     <tr>
-                      <td className="p-4 text-gray-700 dark:text-gray-300"><strong>With Purrify</strong></td>
-                      <td className="p-4 text-gray-700 dark:text-gray-300">Every 6 weeks</td>
-                      <td className="p-4 text-gray-700 dark:text-gray-300">$104 (+ $40 Carbon)</td>
+                      <td className="p-4 text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500"><strong>With Purrify</strong></td>
+                      <td className="p-4 text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">Every 6 weeks</td>
+                      <td className="p-4 text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">$104 (+ $40 Carbon)</td>
                     </tr>
                   </tbody>
                 </table>
@@ -522,12 +522,12 @@ export default function ActivatedCarbonBenefits() {
               </h2>
               <div className="space-y-4 mb-12">
                 <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-                  <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Is it safe if my cat eats it?</h4>
-                  <p className="text-gray-600 dark:text-gray-300">Yes. Activated carbon is biologically inert. While we don't recommend it as a snack, ingesting small amounts while grooming is harmless.</p>
+                  <h4 className="font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-2">Is it safe if my cat eats it?</h4>
+                  <p className="text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">Yes. Activated carbon is biologically inert. While we don't recommend it as a snack, ingesting small amounts while grooming is harmless.</p>
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-                  <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Does it work with pine or crystal litter?</h4>
-                  <p className="text-gray-600 dark:text-gray-300">Yes. Carbon works on contact with air and is substrate-independent. It works with clay, pine, corn, wheat, and crystal litters.</p>
+                  <h4 className="font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-2">Does it work with pine or crystal litter?</h4>
+                  <p className="text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">Yes. Carbon works on contact with air and is substrate-independent. It works with clay, pine, corn, wheat, and crystal litters.</p>
                 </div>
               </div>
 
@@ -610,7 +610,7 @@ export default function ActivatedCarbonBenefits() {
             </div>
 
             {/* Related Articles */}
-            <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600">
+            <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700 dark:border-gray-600">
               <RelatedContent currentUrl="/blog/activated-carbon-litter-additive-benefits" />
             </div>
           </div>

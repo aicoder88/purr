@@ -143,7 +143,7 @@ export default function CatLitterSmellWorseSummer() {
           <div className="max-w-4xl mx-auto">
             {/* Breadcrumb */}
             <nav className="mb-8">
-              <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
+              <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">
                 <li><Link href="/" className="hover:text-[#FF3131] dark:hover:text-[#FF6B6B]">Home</Link></li>
                 <li>/</li>
                 <li><Link href="/blog" className="hover:text-[#FF3131] dark:hover:text-[#FF6B6B]">Blog</Link></li>
@@ -160,10 +160,10 @@ export default function CatLitterSmellWorseSummer() {
               <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
                 Why Cat Litter Smells Worse in Summer (And 4 Solutions That Actually Work)
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 max-w-3xl mx-auto">
                 Heat doesn't just make you uncomfortable—it makes cat litter ammonia evaporate 10x faster. Discover the science behind summer odor problems and proven solutions that work in hot weather.
               </p>
-              <div className="flex items-center justify-center space-x-4 mt-6 text-sm text-gray-500 dark:text-gray-400">
+              <div className="flex items-center justify-center space-x-4 mt-6 text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
                 <span>Published January 20, 2025</span>
                 <span>•</span>
                 <span>9 min read</span>
@@ -180,7 +180,7 @@ export default function CatLitterSmellWorseSummer() {
                 height={3092}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
               />
-              <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+              <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 text-center mt-2">
                 Summer heat amplifies cat litter ammonia odors dramatically
               </p>
             </div>
@@ -223,7 +223,7 @@ export default function CatLitterSmellWorseSummer() {
                   height={1067}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
                 />
-                <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+                <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 text-center mt-2">
                   Temperature dramatically affects ammonia volatility
                 </p>
               </div>
@@ -359,7 +359,7 @@ export default function CatLitterSmellWorseSummer() {
                   height={1067}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
                 />
-                <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+                <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 text-center mt-2">
                   Smart ventilation helps without sacrificing cool air
                 </p>
               </div>
@@ -447,7 +447,7 @@ export default function CatLitterSmellWorseSummer() {
                   height={1067}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1600px"
                 />
-                <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+                <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 text-center mt-2">
                   Experience summer without cat odor stress
                 </p>
               </div>
@@ -457,7 +457,7 @@ export default function CatLitterSmellWorseSummer() {
                   "Texas summers are brutal. Last year, I was scooping three times a day and my apartment still reeked. Started using
                   Purrify this year—same heat, same cat, but zero smell. It's the only thing that kept up with the temperature."
                 </p>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">— Amanda R., Austin, TX</p>
+                <p className="text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 text-sm">— Amanda R., Austin, TX</p>
               </div>
 
               <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg p-6 mb-8">
@@ -466,7 +466,7 @@ export default function CatLitterSmellWorseSummer() {
                   which was mortifying. This year I combined activated carbon with better ventilation—I actually forgot summer odors
                   were a problem until a friend asked what I changed."
                 </p>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">— Kevin P., Phoenix, AZ</p>
+                <p className="text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 text-sm">— Kevin P., Phoenix, AZ</p>
               </div>
 
               <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Your Summer Odor Control Action Plan</h2>
@@ -514,25 +514,25 @@ export default function CatLitterSmellWorseSummer() {
               </p>
 
               {/* CTA Section */}
-              <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-8 md:p-12 text-center my-12">
-                <h2 className="font-heading text-3xl md:text-4xl font-bold text-green-900 mb-6">
-                  🧪 The $8 Summer Science Experiment
+              <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 dark:border-green-700 rounded-xl p-8 md:p-12 text-center my-12">
+                <h2 className="font-heading text-3xl md:text-4xl font-bold text-green-900 dark:text-green-100 mb-6">
+                  🧪 The Free Summer Science Experiment
                 </h2>
-                <p className="text-xl text-green-800 mb-8 max-w-2xl mx-auto">
-                  Still fighting the heat? Try our <strong>trial size</strong> for one litter box, one month.
-                  If you don't notice the difference the <em>first day</em> you use it, we'll refund every penny.
+                <p className="text-xl text-green-800 dark:text-green-200 mb-8 max-w-2xl mx-auto">
+                  Still fighting the heat? Try our <strong>trial bag</strong> for free (just pay $4.76 shipping).
+                  If you don't notice the difference the <em>first day</em> you use it, we'll refund your shipping cost.
                 </p>
-                <p className="text-green-700 text-sm mb-8 font-medium">
+                <p className="text-green-700 dark:text-green-300 text-sm mb-8 font-medium">
                   <em>Same activated carbon used in municipal water filters—now for your cat's litter box.</em>
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link href="/products/trial-size">
-                    <button className="bg-[#FF3131] hover:bg-[#E62E2E] text-white px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                      Try the Trial Size - $8.99
+                    <button className="bg-[#FF3131] hover:bg-[#E62E2E] text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                      Get Your Free Trial (Just Pay Shipping)
                     </button>
                   </Link>
                   <Link href="/learn/how-it-works">
-                    <button className="border-2 border-green-600 text-green-700 hover:bg-green-100 px-8 py-4 rounded-lg font-bold text-lg transition-colors">
+                    <button className="border-2 border-green-600 dark:border-green-500 text-green-700 dark:text-green-300 hover:bg-green-100 dark:bg-green-900/40 px-8 py-4 rounded-lg font-bold text-lg transition-colors">
                       How it Works
                     </button>
                   </Link>
@@ -541,7 +541,7 @@ export default function CatLitterSmellWorseSummer() {
             </div>
 
             {/* Related Articles */}
-            <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600">
+            <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700 dark:border-gray-600">
               <RelatedContent currentUrl="/blog/cat-litter-smell-worse-summer" />
             </div>
           </div>

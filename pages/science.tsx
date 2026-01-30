@@ -149,7 +149,7 @@ export default function ScienceHub() {
           <div className="max-w-5xl mx-auto">
             {/* Breadcrumb */}
             <nav className="mb-8">
-              <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
+              <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">
                 <li>
                   <Link href="/" className="hover:text-[#FF3131] dark:hover:text-[#FF6B6B]">
                     Home
@@ -171,7 +171,7 @@ export default function ScienceHub() {
                 The Science Behind <span className="text-[#FF3131]">Purrify</span>
               </h1>
 
-              <p className="article-summary text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              <p className="article-summary text-xl text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 max-w-3xl mx-auto leading-relaxed">
                 Every claim we make is backed by peer-reviewed research from PubMed, the EPA, and
                 leading veterinary journals. Explore the scientific foundation of activated carbon
                 odor control.
@@ -180,9 +180,9 @@ export default function ScienceHub() {
 
             {/* Veterinary Science Advisor Card */}
             <section className="mb-16">
-              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700">
+              <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700">
                 <div className="flex flex-col md:flex-row gap-8 items-start">
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-electric-indigo to-purple-600 flex items-center justify-center text-white text-3xl font-bold shrink-0">
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-electric-indigo to-purple-600 flex items-center justify-center text-white dark:text-gray-100 text-3xl font-bold shrink-0">
                     {VETERINARY_SCIENCE_ADVISOR.name.charAt(0)}
                   </div>
                   <div className="flex-1">
@@ -195,14 +195,14 @@ export default function ScienceHub() {
                     <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-2">
                       {VETERINARY_SCIENCE_ADVISOR.name}
                     </h2>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4">
+                    <p className="text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mb-4">
                       {VETERINARY_SCIENCE_ADVISOR.description}
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {VETERINARY_SCIENCE_ADVISOR.knowsAbout.slice(0, 4).map((topic) => (
                         <span
                           key={topic}
-                          className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm"
+                          className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 rounded-full text-sm"
                         >
                           {topic}
                         </span>
@@ -246,7 +246,7 @@ export default function ScienceHub() {
             {/* Claim Reviews Section */}
             <section className="mb-16">
               <div className="flex items-center gap-3 mb-8">
-                <CheckCircle className="w-6 h-6 text-green-500" />
+                <CheckCircle className="w-6 h-6 text-green-500 dark:text-green-400" />
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50">
                   Fact-Checked Claims
                 </h2>
@@ -256,13 +256,13 @@ export default function ScienceHub() {
                 {CLAIM_REVIEWS.map((claim) => (
                   <div
                     key={claim.claim}
-                    className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm"
+                    className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm"
                   >
                     <div className="flex items-start gap-4">
                       <div
                         className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${
                           claim.rating === 5
-                            ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
+                            ? 'bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 dark:bg-green-900/30 dark:text-green-400'
                             : 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400'
                         }`}
                       >
@@ -272,7 +272,7 @@ export default function ScienceHub() {
                         <h3 className="font-semibold text-gray-900 dark:text-gray-50 mb-1">
                           {claim.claim}
                         </h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                        <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500 mb-3">
                           {claim.explanation}
                         </p>
                         <div className="flex flex-wrap gap-2">
@@ -284,7 +284,7 @@ export default function ScienceHub() {
                                 href={citation.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1 px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                                className="inline-flex items-center gap-1 px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 rounded-full text-xs hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
                               >
                                 <FileText className="w-3 h-3" />
                                 {citation.journal} ({citation.year})
@@ -313,7 +313,7 @@ export default function ScienceHub() {
                 {citationsByCategory.ammonia.length > 0 && (
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-4 flex items-center gap-2">
-                      <FlaskConical className="w-5 h-5 text-blue-500" />
+                      <FlaskConical className="w-5 h-5 text-blue-500 dark:text-blue-400" />
                       Ammonia Adsorption Research
                     </h3>
                     <div className="space-y-4">
@@ -333,7 +333,7 @@ export default function ScienceHub() {
                 {citationsByCategory.safety.length > 0 && (
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-4 flex items-center gap-2">
-                      <ShieldCheck className="w-5 h-5 text-green-500" />
+                      <ShieldCheck className="w-5 h-5 text-green-500 dark:text-green-400" />
                       Safety & Toxicology
                     </h3>
                     <div className="space-y-4">
@@ -353,7 +353,7 @@ export default function ScienceHub() {
                 {citationsByCategory.health.length > 0 && (
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-4 flex items-center gap-2">
-                      <Microscope className="w-5 h-5 text-purple-500" />
+                      <Microscope className="w-5 h-5 text-purple-500 dark:text-purple-400" />
                       Health & Environmental Impact
                     </h3>
                     <div className="space-y-4">
@@ -373,7 +373,7 @@ export default function ScienceHub() {
                 {citationsByCategory.comparison.length > 0 && (
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-4 flex items-center gap-2">
-                      <Award className="w-5 h-5 text-orange-500" />
+                      <Award className="w-5 h-5 text-orange-500 dark:text-orange-400" />
                       Comparative Studies
                     </h3>
                     <div className="space-y-4">
@@ -393,7 +393,7 @@ export default function ScienceHub() {
                 {citationsByCategory.sulfur.length > 0 && (
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-4 flex items-center gap-2">
-                      <FlaskConical className="w-5 h-5 text-red-500" />
+                      <FlaskConical className="w-5 h-5 text-red-500 dark:text-red-400" />
                       Sulfur Compound Research
                     </h3>
                     <div className="space-y-4">
@@ -456,11 +456,11 @@ export default function ScienceHub() {
 
             {/* CTA Section */}
             <section>
-              <div className="text-center bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-100 dark:border-gray-700">
+              <div className="text-center bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-100 dark:border-gray-700">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
                   Experience the Science Yourself
                 </h2>
-                <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
+                <p className="text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mb-6 max-w-2xl mx-auto">
                   Backed by peer-reviewed research and trusted by thousands of cat parents. Try
                   Purrify risk-free and see why activated carbon is the gold standard for odor
                   control.
@@ -474,7 +474,7 @@ export default function ScienceHub() {
                   </Link>
                   <Link
                     href="/learn/science"
-                    className="px-8 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-full font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                    className="px-8 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 rounded-full font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                   >
                     Learn More
                   </Link>
@@ -499,23 +499,23 @@ function CitationCard({
   sourceTypeLabels: Record<string, string>;
 }) {
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
       <div className="flex items-start gap-4">
-        <div className="shrink-0 w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400">
+        <div className="shrink-0 w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 dark:text-gray-500">
           {sourceTypeIcons[citation.sourceType]}
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
-            <span className="px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded text-xs font-medium">
+            <span className="px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 dark:text-gray-500 rounded text-xs font-medium">
               {sourceTypeLabels[citation.sourceType]}
             </span>
-            <span className="text-xs text-gray-500 dark:text-gray-400">{citation.year}</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{citation.year}</span>
           </div>
           <h4 className="font-semibold text-gray-900 dark:text-gray-50 mb-1">{citation.title}</h4>
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+          <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500 mb-2">
             {citation.authors} • {citation.journal}
           </p>
-          <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{citation.summary}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mb-3">{citation.summary}</p>
           <div className="flex flex-wrap gap-2 mb-3">
             {citation.claims.slice(0, 3).map((claim, index) => (
               <span
@@ -534,8 +534,8 @@ function CitationCard({
           >
             <ExternalLink className="w-3 h-3" />
             View Source
-            {citation.doi && <span className="text-gray-500 dark:text-gray-400">• DOI: {citation.doi}</span>}
-            {citation.pmid && <span className="text-gray-500 dark:text-gray-400">• PMID: {citation.pmid}</span>}
+            {citation.doi && <span className="text-gray-500 dark:text-gray-400 dark:text-gray-500">• DOI: {citation.doi}</span>}
+            {citation.pmid && <span className="text-gray-500 dark:text-gray-400 dark:text-gray-500">• PMID: {citation.pmid}</span>}
           </a>
         </div>
       </div>

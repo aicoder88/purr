@@ -206,16 +206,16 @@ export default function ViralReport() {
                     <h1 className="text-7xl md:text-9xl font-black mb-6 italic tracking-tighter">
                         THE <span className="gradient-text">VIRAL</span> VAULT
                     </h1>
-                    <p className="text-xl md:text-3xl text-gray-400 font-light max-w-4xl mx-auto">
-                        Stop guessing why your videos die in obscurity. We’ve dissected the <span className="text-white font-bold italic underline decoration-[#FF006E]">Viral Anchors</span> of the pet care world to build your profit machine.
+                    <p className="text-xl md:text-3xl text-gray-400 dark:text-gray-500 dark:text-gray-400 font-light max-w-4xl mx-auto">
+                        Stop guessing why your videos die in obscurity. We’ve dissected the <span className="text-white dark:text-gray-100 font-bold italic underline decoration-[#FF006E]">Viral Anchors</span> of the pet care world to build your profit machine.
                     </p>
                     <div className="mt-12 flex flex-wrap justify-center gap-6">
                         <div className="p-6 bg-[#1e293b] rounded-3xl border-b-4 border-[#FFBE0B]">
-                            <span className="block text-xs uppercase text-gray-500 font-black tracking-widest">Sample Reach</span>
+                            <span className="block text-xs uppercase text-gray-500 dark:text-gray-400 font-black tracking-widest">Sample Reach</span>
                             <span className="text-3xl font-black">100M+ Views</span>
                         </div>
                         <div className="p-6 bg-[#1e293b] rounded-3xl border-b-4 border-[#3A86FF]">
-                            <span className="block text-xs uppercase text-gray-500 font-black tracking-widest">Winning Hook</span>
+                            <span className="block text-xs uppercase text-gray-500 dark:text-gray-400 font-black tracking-widest">Winning Hook</span>
                             <span className="text-3xl font-black">Pattern Interrupt</span>
                         </div>
                     </div>
@@ -226,21 +226,21 @@ export default function ViralReport() {
                     {/* SECTION 1: THE PSYCHOLOGY OF ODOUR */}
                     <section className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div className="space-y-6">
-                            <h2 className="text-5xl font-black text-[#FB5607] italic leading-none">The "Nose Blind" Threat.<br /><span className="text-white text-3xl">Your friends know. You don't.</span></h2>
+                            <h2 className="text-5xl font-black text-[#FB5607] italic leading-none">The "Nose Blind" Threat.<br /><span className="text-white dark:text-gray-100 text-3xl">Your friends know. You don't.</span></h2>
                             <div className="bucket-brigade">
-                                <p className="text-xl text-gray-300 leading-relaxed mb-4">
+                                <p className="text-xl text-gray-300 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400 leading-relaxed mb-4">
                                     Most brands try to sell "Cleanliness." That's a mistake.
                                 </p>
-                                <p className="text-lg text-gray-400 mb-4">
+                                <p className="text-lg text-gray-400 dark:text-gray-500 dark:text-gray-400 mb-4">
                                     The masters of virality sell **Social Status Protection.** They trigger the deep-seated fear of being "that house" with the smell. If you can make an owner feel self-conscious in 3 seconds, you've already made the sale.
                                 </p>
-                                <p className="text-lg text-white font-bold italic">
+                                <p className="text-lg text-white dark:text-gray-100 font-bold italic">
                                     The "Nose Blind" hook isn't about the cat; it's about the guest.
                                 </p>
                             </div>
                         </div>
                         <div className="viral-card p-8">
-                            <h3 className="text-center mb-8 font-bold text-gray-400 uppercase tracking-widest">Emotional Trigger Share-Velocity</h3>
+                            <h3 className="text-center mb-8 font-bold text-gray-400 dark:text-gray-500 dark:text-gray-400 uppercase tracking-widest">Emotional Trigger Share-Velocity</h3>
                             <div className="chart-container">
                                 <canvas ref={shareChartRef}></canvas>
                             </div>
@@ -251,7 +251,7 @@ export default function ViralReport() {
                     <section className="space-y-10">
                         <div className="text-center">
                             <h2 className="text-5xl font-black italic">The Viral Benchmarks</h2>
-                            <p className="text-gray-400 mt-2 italic">Real. Stable. High-Authority Data.</p>
+                            <p className="text-gray-400 dark:text-gray-500 dark:text-gray-400 mt-2 italic">Real. Stable. High-Authority Data.</p>
                             <p className="text-xs text-[#FF006E] font-bold mt-2 uppercase tracking-widest leading-loose">
                                 Note: Links may be blocked by sandbox security. <br />
                                 If they do not open, please copy-paste the URL or search the ID directly on YouTube.
@@ -268,108 +268,108 @@ export default function ViralReport() {
                                         <th className="p-6">Why It Printed Views</th>
                                     </tr>
                                 </thead>
-                                <tbody className="text-gray-300 divide-y divide-slate-800">
+                                <tbody className="text-gray-300 dark:text-gray-400 dark:text-gray-500 dark:text-gray-400 divide-y divide-slate-800">
                                     {/* Video 1 */}
-                                    <tr className="hover:bg-white/5 transition">
+                                    <tr className="hover:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white/5 transition">
                                         <td className="p-6">
-                                            <span className="font-bold text-white block">YouTube</span>
-                                            <span className="text-xs text-gray-500 italic">100M+ Views</span>
+                                            <span className="font-bold text-white dark:text-gray-100 block">YouTube</span>
+                                            <span className="text-xs text-gray-500 dark:text-gray-400 italic">100M+ Views</span>
                                         </td>
                                         <td className="p-6">
                                             <a href="https://www.youtube.com/watch?v=soRNTd2JzW0" target="_blank" rel="noreferrer" className="stable-link text-xl">
                                                 "Gadget Test" ↗
                                             </a>
-                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: soRNTd2JzW0 (That Little Puff)</span>
+                                            <span className="block text-[10px] text-gray-500 dark:text-gray-400 mt-1 font-mono">ID: soRNTd2JzW0 (That Little Puff)</span>
                                         </td>
                                         <td className="p-6"><span className="bg-[#FFBE0B]/20 text-[#FFBE0B] px-3 py-1 rounded-full text-xs font-bold uppercase">Product Demo</span></td>
                                         <td className="p-6 text-sm">Guinness Record holder (7.5B+ total views). Gadget testing format drives massive engagement through curiosity and relatability.</td>
                                     </tr>
                                     {/* Video 2 */}
-                                    <tr className="hover:bg-white/5 transition">
+                                    <tr className="hover:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white/5 transition">
                                         <td className="p-6">
-                                            <span className="font-bold text-white block">YouTube</span>
-                                            <span className="text-xs text-gray-500 italic">1.7M Views</span>
+                                            <span className="font-bold text-white dark:text-gray-100 block">YouTube</span>
+                                            <span className="text-xs text-gray-500 dark:text-gray-400 italic">1.7M Views</span>
                                         </td>
                                         <td className="p-6">
                                             <a href="https://www.youtube.com/watch?v=34cHfvYOYS0" target="_blank" rel="noreferrer" className="stable-link text-xl">
                                                 "YOU'RE DOING CAT LITTER WRONG" ↗
                                             </a>
-                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: 34cHfvYOYS0 (Jackson Galaxy)</span>
+                                            <span className="block text-[10px] text-gray-500 dark:text-gray-400 mt-1 font-mono">ID: 34cHfvYOYS0 (Jackson Galaxy)</span>
                                         </td>
                                         <td className="p-6"><span className="bg-[#8338EC]/20 text-[#8338EC] px-3 py-1 rounded-full text-xs font-bold uppercase">Expert Authority</span></td>
                                         <td className="p-6 text-sm">Uses "The Cat Daddy" to correct viewer mistakes. Triggers "Am I doing this wrong?" anxiety to force retention.</td>
                                     </tr>
                                     {/* Video 3 */}
-                                    <tr className="hover:bg-white/5 transition">
+                                    <tr className="hover:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white/5 transition">
                                         <td className="p-6">
-                                            <span className="font-bold text-white block">YouTube</span>
-                                            <span className="text-xs text-gray-500 italic">5M+ Views</span>
+                                            <span className="font-bold text-white dark:text-gray-100 block">YouTube</span>
+                                            <span className="text-xs text-gray-500 dark:text-gray-400 italic">5M+ Views</span>
                                         </td>
                                         <td className="p-6">
                                             <a href="https://www.youtube.com/watch?v=c2g4fHhpqdk" target="_blank" rel="noreferrer" className="stable-link text-xl">
                                                 "Nala Cat" (World's Richest) ↗
                                             </a>
-                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: c2g4fHhpqdk (Nala Cat)</span>
+                                            <span className="block text-[10px] text-gray-500 dark:text-gray-400 mt-1 font-mono">ID: c2g4fHhpqdk (Nala Cat)</span>
                                         </td>
                                         <td className="p-6"><span className="bg-[#8338EC]/20 text-[#8338EC] px-3 py-1 rounded-full text-xs font-bold uppercase">Celebrity Status</span></td>
                                         <td className="p-6 text-sm">Guinness Record holder (4.5M Instagram). "Rags to riches" story plus aspirational lifestyle creates shareability.</td>
                                     </tr>
                                     {/* Video 4 */}
-                                    <tr className="hover:bg-white/5 transition">
+                                    <tr className="hover:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white/5 transition">
                                         <td className="p-6">
-                                            <span className="font-bold text-white block">YouTube</span>
-                                            <span className="text-xs text-gray-500 italic">Multi-Million</span>
+                                            <span className="font-bold text-white dark:text-gray-100 block">YouTube</span>
+                                            <span className="text-xs text-gray-500 dark:text-gray-400 italic">Multi-Million</span>
                                         </td>
                                         <td className="p-6">
                                             <a href="https://www.youtube.com/watch?v=REDACTED" target="_blank" rel="noreferrer" className="stable-link text-xl">
                                                 "Puff's Top Viral Hits" ↗
                                             </a>
-                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: REDACTED (That Little Puff)</span>
+                                            <span className="block text-[10px] text-gray-500 dark:text-gray-400 mt-1 font-mono">ID: REDACTED (That Little Puff)</span>
                                         </td>
                                         <td className="p-6"><span className="bg-[#FF006E]/20 text-[#FF006E] px-3 py-1 rounded-full text-xs font-bold uppercase">Compilation</span></td>
                                         <td className="p-6 text-sm">Compilation format keeps viewers watching longer. Variety of hooks (hacks, cooking, cuteness) in one video.</td>
                                     </tr>
                                     {/* Video 5 */}
-                                    <tr className="hover:bg-white/5 transition">
+                                    <tr className="hover:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white/5 transition">
                                         <td className="p-6">
-                                            <span className="font-bold text-white block">YouTube</span>
-                                            <span className="text-xs text-gray-500 italic">1.4M Views</span>
+                                            <span className="font-bold text-white dark:text-gray-100 block">YouTube</span>
+                                            <span className="text-xs text-gray-500 dark:text-gray-400 italic">1.4M Views</span>
                                         </td>
                                         <td className="p-6">
                                             <a href="https://www.youtube.com/watch?v=N_GaQltINAs" target="_blank" rel="noreferrer" className="stable-link text-xl">
                                                 "Claude Can Talk" (Ad) ↗
                                             </a>
-                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: N_GaQltINAs (PrettyLitter)</span>
+                                            <span className="block text-[10px] text-gray-500 dark:text-gray-400 mt-1 font-mono">ID: N_GaQltINAs (PrettyLitter)</span>
                                         </td>
                                         <td className="p-6"><span className="bg-[#FFBE0B]/20 text-[#FFBE0B] px-3 py-1 rounded-full text-xs font-bold uppercase">Ad / Dialogue</span></td>
                                         <td className="p-6 text-sm">The classic "Talking Cat". Script-heavy but works because the voice acting fits the cat's personality perfectly.</td>
                                     </tr>
                                     {/* Video 6 */}
-                                    <tr className="hover:bg-white/5 transition">
+                                    <tr className="hover:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white/5 transition">
                                         <td className="p-6">
-                                            <span className="font-bold text-white block">YouTube</span>
-                                            <span className="text-xs text-gray-500 italic">1M+ Views</span>
+                                            <span className="font-bold text-white dark:text-gray-100 block">YouTube</span>
+                                            <span className="text-xs text-gray-500 dark:text-gray-400 italic">1M+ Views</span>
                                         </td>
                                         <td className="p-6">
                                             <a href="https://www.youtube.com/watch?v=REDACTED" target="_blank" rel="noreferrer" className="stable-link text-xl">
                                                 "Remy Flying Cat" ↗
                                             </a>
-                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: REDACTED (Remy's Owner)</span>
+                                            <span className="block text-[10px] text-gray-500 dark:text-gray-400 mt-1 font-mono">ID: REDACTED (Remy's Owner)</span>
                                         </td>
                                         <td className="p-6"><span className="bg-[#3A86FF]/20 text-[#3A86FF] px-3 py-1 rounded-full text-xs font-bold uppercase">Jump Scare</span></td>
                                         <td className="p-6 text-sm">Viral "flying cat" moment. Pattern interrupt + shock value = instant watch-again appeal.</td>
                                     </tr>
                                     {/* Video 7 */}
-                                    <tr className="hover:bg-white/5 transition">
+                                    <tr className="hover:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white/5 transition">
                                         <td className="p-6">
-                                            <span className="font-bold text-white block">YouTube</span>
-                                            <span className="text-xs text-gray-500 italic">Review / React</span>
+                                            <span className="font-bold text-white dark:text-gray-100 block">YouTube</span>
+                                            <span className="text-xs text-gray-500 dark:text-gray-400 italic">Review / React</span>
                                         </td>
                                         <td className="p-6">
                                             <a href="https://www.youtube.com/watch?v=rZQqt6O6HaA" target="_blank" rel="noreferrer" className="stable-link text-xl">
                                                 "Cats React to Robot" ↗
                                             </a>
-                                            <span className="block text-[10px] text-gray-500 mt-1 font-mono">ID: rZQqt6O6HaA (ViralHog)</span>
+                                            <span className="block text-[10px] text-gray-500 dark:text-gray-400 mt-1 font-mono">ID: rZQqt6O6HaA (ViralHog)</span>
                                         </td>
                                         <td className="p-6"><span className="bg-[#FF006E]/20 text-[#FF006E] px-3 py-1 rounded-full text-xs font-bold uppercase">Curiosity Gap</span></td>
                                         <td className="p-6 text-sm">Pure reaction video. The hook is simply "What will the cat do?" which sustains attention.</td>
@@ -382,16 +382,16 @@ export default function ViralReport() {
                     {/* SECTION 3: VISUALIZING SUCCESS */}
                     <section className="grid grid-cols-1 md:grid-cols-2 gap-12">
                         <div className="viral-card p-10">
-                            <h3 className="text-xl font-bold mb-6 text-center text-white italic">Retention: Transformation vs. Demo</h3>
+                            <h3 className="text-xl font-bold mb-6 text-center text-white dark:text-gray-100 italic">Retention: Transformation vs. Demo</h3>
                             <div className="chart-container">
                                 <canvas ref={convChartRef}></canvas>
                             </div>
-                            <p className="text-center text-xs text-gray-500 mt-8 italic">The "Transformation" hook keeps viewers 4.2x longer than "Feature" lists.</p>
+                            <p className="text-center text-xs text-gray-500 dark:text-gray-400 mt-8 italic">The "Transformation" hook keeps viewers 4.2x longer than "Feature" lists.</p>
                         </div>
                         <div className="viral-card p-10 flex flex-col justify-center">
-                            <h3 className="text-xl font-bold mb-6 text-center text-white italic">Viral Impact Matrix</h3>
+                            <h3 className="text-xl font-bold mb-6 text-center text-white dark:text-gray-100 italic">Viral Impact Matrix</h3>
                             <div ref={effortPlotRef} className="w-full h-[320px]"></div>
-                            <p className="text-center text-xs text-gray-500 mt-6 italic">Aim for the Top Left: Low Effort / High Sensory Impact.</p>
+                            <p className="text-center text-xs text-gray-500 dark:text-gray-400 mt-6 italic">Aim for the Top Left: Low Effort / High Sensory Impact.</p>
                         </div>
                     </section>
 
@@ -402,15 +402,15 @@ export default function ViralReport() {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
                                 <div className="space-y-4">
                                     <h4 className="text-[#FF006E] text-2xl font-black italic underline decoration-4">1. The "Shock" Hook</h4>
-                                    <p className="text-gray-400 text-lg leading-relaxed">Start with a guest pinching their nose. Use silence. No music. The visual of "Social Failure" is a **pattern interrupt** that no cat owner can ignore.</p>
+                                    <p className="text-gray-400 dark:text-gray-500 dark:text-gray-400 text-lg leading-relaxed">Start with a guest pinching their nose. Use silence. No music. The visual of "Social Failure" is a **pattern interrupt** that no cat owner can ignore.</p>
                                 </div>
                                 <div className="space-y-4">
                                     <h4 className="text-[#3A86FF] text-2xl font-black italic underline decoration-4">2. The "Magic" ASMR</h4>
-                                    <p className="text-gray-400 text-lg leading-relaxed">Pouring Purrify powder should sound like a waterfall. Use high-fidelity audio of beads hitting the litter. It triggers "Sensory Satisfaction" and builds product trust.</p>
+                                    <p className="text-gray-400 dark:text-gray-500 dark:text-gray-400 text-lg leading-relaxed">Pouring Purrify powder should sound like a waterfall. Use high-fidelity audio of beads hitting the litter. It triggers "Sensory Satisfaction" and builds product trust.</p>
                                 </div>
                             </div>
                             <div className="pt-8">
-                                <button className="bg-[#FF006E] hover:bg-[#FFBE0B] text-white hover:text-black transition-all px-20 py-8 rounded-full font-black text-3xl uppercase italic shadow-[0_0_50px_rgba(255,0,110,0.5)] tracking-tighter">
+                                <button className="bg-[#FF006E] hover:bg-[#FFBE0B] text-white dark:text-gray-100 hover:text-black dark:text-gray-900 dark:text-gray-50 transition-all px-20 py-8 rounded-full font-black text-3xl uppercase italic shadow-[0_0_50px_rgba(255,0,110,0.5)] tracking-tighter">
                                     Deploy Viral Script
                                 </button>
                             </div>

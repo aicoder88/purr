@@ -104,7 +104,7 @@ export default function StrongCatUrineSmell() {
           <div className="max-w-4xl mx-auto">
             {/* Breadcrumb */}
             <nav className="mb-8">
-              <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
+              <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">
                 <li>
                   <Link
                     href="/"
@@ -137,12 +137,12 @@ export default function StrongCatUrineSmell() {
               <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
                 Strong Cat Urine Smell in the Litter Box? Try This Layered Fix
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 max-w-3xl mx-auto">
                 Persistent ammonia smell is usually a trio of airflow,
                 saturation, and neutralization gaps. This guide stacks easy wins
                 so your litter zone smells like fresh laundry instead of a barn.
               </p>
-              <div className="flex items-center justify-center space-x-4 mt-6 text-sm text-gray-500 dark:text-gray-400">
+              <div className="flex items-center justify-center space-x-4 mt-6 text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
                 <span>Published February 1, 2024</span>
                 <span>•</span>
                 <span>6 min read</span>
@@ -160,14 +160,14 @@ export default function StrongCatUrineSmell() {
                 priority
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1200px"
               />
-              <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+              <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 text-center mt-2">
                 A layered cleaning and neutralization routine breaks the odor
                 cycle for good
               </p>
             </div>
 
             {/* Quick Relief Panel */}
-            <section className="bg-white dark:bg-gray-900 border border-[#E0EFC7] dark:border-[#E0EFC7]/30 rounded-2xl p-8 mb-12 shadow-md dark:shadow-none">
+            <section className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white border border-[#E0EFC7] dark:border-[#E0EFC7]/30 rounded-2xl p-8 mb-12 shadow-md dark:shadow-none">
               <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6 flex items-center justify-between">
                 Immediate Odor Relief Checklist
                 <span className="text-sm font-semibold text-[#FF3131] dark:text-[#FF6B6B] bg-[#FFE6E6] dark:bg-[#FFE6E6]/20 px-3 py-1 rounded-full">
@@ -215,14 +215,14 @@ export default function StrongCatUrineSmell() {
             </section>
 
             {/* Safety Warning from JSON */}
-            <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-6 mb-12">
+            <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 dark:border-red-600 p-6 mb-12">
               <h4 className="font-bold text-red-900 dark:text-red-100 mb-2">⚠️ Safety Alert: Bleach vs. Enzyme Cleaners</h4>
               <p className="text-red-800 dark:text-red-200">
                 Cat urine contains ammonia. Bleach contains sodium hypochlorite. Mixing them creates <strong>Chloramine Gas</strong>, which can cause coughing, nausea, and lung damage. Never use bleach on cat urine. Instead, use an <strong>Enzymatic Cleaner</strong> to break down the urea.
               </p>
             </div>
 
-            <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-200 prose-headings:text-gray-900 dark:prose-headings:text-gray-50 prose-strong:text-gray-900 dark:prose-strong:text-gray-50 prose-a:text-[#5B2EFF] dark:prose-a:text-[#C4B5FD]">
+            <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-200 prose-headings:text-gray-900 dark:text-gray-50 dark:prose-headings:text-gray-50 prose-strong:text-gray-900 dark:text-gray-50 dark:prose-strong:text-gray-50 prose-a:text-[#5B2EFF] dark:prose-a:text-[#C4B5FD]">
               <h2>The Science Behind “My House Smells Like Cat Urine”</h2>
               <p>
                 Strong litter box odor is an ammonia problem first and foremost.
@@ -234,7 +234,7 @@ export default function StrongCatUrineSmell() {
               </p>
 
               <div className="grid md:grid-cols-3 gap-6 my-10">
-                <div className="bg-white dark:bg-gray-900 border border-[#E0EFC7] dark:border-[#E0EFC7]/30 rounded-xl p-6 shadow-sm dark:shadow-none">
+                <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white border border-[#E0EFC7] dark:border-[#E0EFC7]/30 rounded-xl p-6 shadow-sm dark:shadow-none">
                   <h3 className="font-heading text-lg font-semibold text-[#5B2EFF] dark:text-[#C4B5FD]">
                     1. Saturation
                   </h3>
@@ -244,7 +244,7 @@ export default function StrongCatUrineSmell() {
                     nonstop.
                   </p>
                 </div>
-                <div className="bg-white dark:bg-gray-900 border border-[#E0EFC7] dark:border-[#E0EFC7]/30 rounded-xl p-6 shadow-sm dark:shadow-none">
+                <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white border border-[#E0EFC7] dark:border-[#E0EFC7]/30 rounded-xl p-6 shadow-sm dark:shadow-none">
                   <h3 className="font-heading text-lg font-semibold text-[#FF3131] dark:text-[#FF6B6B]">
                     2. Air Stagnation
                   </h3>
@@ -253,7 +253,7 @@ export default function StrongCatUrineSmell() {
                     concentrates. Even high-end litter fails without airflow.
                   </p>
                 </div>
-                <div className="bg-white dark:bg-gray-900 border border-[#E0EFC7] dark:border-[#E0EFC7]/30 rounded-xl p-6 shadow-sm dark:shadow-none">
+                <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white border border-[#E0EFC7] dark:border-[#E0EFC7]/30 rounded-xl p-6 shadow-sm dark:shadow-none">
                   <h3 className="font-heading text-lg font-semibold text-[#15803D] dark:text-[#86EFAC]">
                     3. Neutralization Gap
                   </h3>
@@ -328,13 +328,13 @@ export default function StrongCatUrineSmell() {
                 height={724}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 70vw, 1024px"
               />
-              <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+              <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 text-center mt-2">
                 Keep the litter box in a ventilated corner where air can escape,
                 not in a sealed laundry closet
               </p>
             </div>
 
-            <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-200 prose-headings:text-gray-900 dark:prose-headings:text-gray-50 prose-strong:text-gray-900 dark:prose-strong:text-gray-50 prose-a:text-[#5B2EFF] dark:prose-a:text-[#C4B5FD]">
+            <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-200 prose-headings:text-gray-900 dark:text-gray-50 dark:prose-headings:text-gray-50 prose-strong:text-gray-900 dark:text-gray-50 dark:prose-strong:text-gray-50 prose-a:text-[#5B2EFF] dark:prose-a:text-[#C4B5FD]">
               <h2>The Hidden Culprit: Your Litter Box Material</h2>
               <p>
                 Most people use plastic litter boxes. The problem? <strong>Plastic is porous.</strong> Every time your cat scratches the bottom, they create microscopic grooves where bacteria hide.
@@ -344,7 +344,7 @@ export default function StrongCatUrineSmell() {
               </p>
             </div>
 
-            <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-200 prose-headings:text-gray-900 dark:prose-headings:text-gray-50 prose-strong:text-gray-900 dark:prose-strong:text-gray-50 prose-a:text-[#5B2EFF] dark:prose-a:text-[#C4B5FD]">
+            <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-200 prose-headings:text-gray-900 dark:text-gray-50 dark:prose-headings:text-gray-50 prose-strong:text-gray-900 dark:text-gray-50 dark:prose-strong:text-gray-50 prose-a:text-[#5B2EFF] dark:prose-a:text-[#C4B5FD]">
               <h2>Why Activated Carbon Wins Against Persistent Odor</h2>
               <p>
                 Activated carbon is the same technology used in hospital
@@ -356,7 +356,7 @@ export default function StrongCatUrineSmell() {
             </div>
 
             <div className="flex flex-col gap-8 my-12">
-              <div className="bg-white dark:bg-gray-900 border border-[#E0EFC7] dark:border-[#E0EFC7]/30 rounded-2xl p-6 shadow-sm dark:shadow-none flex flex-col justify-between">
+              <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white border border-[#E0EFC7] dark:border-[#E0EFC7]/30 rounded-2xl p-6 shadow-sm dark:shadow-none flex flex-col justify-between">
                 <div>
                   <h3 className="font-heading text-2xl font-bold text-[#5B2EFF] dark:text-[#C4B5FD] mb-4">
                     Odor Lock Technology
@@ -411,7 +411,7 @@ export default function StrongCatUrineSmell() {
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-900 border border-[#E0EFC7] dark:border-[#E0EFC7]/30 rounded-2xl p-8 mb-12 shadow-sm dark:shadow-none">
+            <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white border border-[#E0EFC7] dark:border-[#E0EFC7]/30 rounded-2xl p-8 mb-12 shadow-sm dark:shadow-none">
               <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
                 What Cat Parents Are Saying
               </h2>
@@ -421,12 +421,12 @@ export default function StrongCatUrineSmell() {
                 Purrify. Our guests stopped noticing the cat smell within a
                 week.”
               </blockquote>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
+              <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 mt-4">
                 — Melissa P., two-cat household in Calgary
               </p>
             </div>
 
-            <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-200 prose-headings:text-gray-900 dark:prose-headings:text-gray-50 prose-strong:text-gray-900 dark:prose-strong:text-gray-50 prose-a:text-[#5B2EFF] dark:prose-a:text-[#C4B5FD]">
+            <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-200 prose-headings:text-gray-900 dark:text-gray-50 dark:prose-headings:text-gray-50 prose-strong:text-gray-900 dark:text-gray-50 dark:prose-strong:text-gray-50 prose-a:text-[#5B2EFF] dark:prose-a:text-[#C4B5FD]">
 
               <h2>The "Scrape & Spray" Protocol for Caked-On Odor</h2>
               <p>

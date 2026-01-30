@@ -142,7 +142,7 @@ export default function CatLitterSmellWorseWinter() {
           <div className="max-w-4xl mx-auto">
             {/* Breadcrumb */}
             <nav className="mb-8">
-              <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
+              <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">
                 <li><Link href="/" className="hover:text-[#FF3131] dark:hover:text-[#FF6B6B]">Home</Link></li>
                 <li>/</li>
                 <li><Link href="/blog" className="hover:text-[#FF3131] dark:hover:text-[#FF6B6B]">Blog</Link></li>
@@ -159,10 +159,10 @@ export default function CatLitterSmellWorseWinter() {
               <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
                 Why Cat Litter Smells Worse in Winter (And 5 Solutions That Don't Require Opening Windows)
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 max-w-3xl mx-auto">
                 Closed windows trapping unbearable ammonia odors? You're not alone. Discover why winter makes cat litter smell worse and 5 proven solutions that work without freezing your home.
               </p>
-              <div className="flex items-center justify-center space-x-4 mt-6 text-sm text-gray-500 dark:text-gray-400">
+              <div className="flex items-center justify-center space-x-4 mt-6 text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
                 <span>Published {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                 <span>•</span>
                 <span>10 min read</span>
@@ -180,13 +180,13 @@ export default function CatLitterSmellWorseWinter() {
                 priority
                 sizes="(max-width: 768px) 100vw, 1200px"
               />
-              <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+              <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 text-center mt-2">
                 Winter's closed windows create the perfect storm for trapped cat litter odors
               </p>
             </div>
 
             {/* Quick Summary Box */}
-            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-6 mb-12">
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 dark:border-blue-800 rounded-xl p-6 mb-12">
               <h2 className="font-heading text-2xl font-bold text-blue-900 dark:text-blue-200 mb-4">Quick Summary</h2>
               <ul className="space-y-3 text-blue-800 dark:text-blue-300">
                 <li className="flex items-start">
@@ -208,17 +208,17 @@ export default function CatLitterSmellWorseWinter() {
             <div className="prose prose-lg max-w-none dark:prose-invert">
               <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">The Winter Litter Box Problem Nobody Talks About</h2>
 
-              <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mb-6 text-lg leading-relaxed">
                 You've probably noticed it: the exact same litter box that was manageable in summer suddenly becomes <em>overwhelming</em> in winter. You walk into your home and hit a wall of ammonia smell. Your guests notice the second they walk through the door. Even your cat seems hesitant to use the box.
               </p>
 
-              <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mb-6 leading-relaxed">
                 Here's the frustrating part: <strong>you haven't changed anything</strong>. Same litter. Same cleaning schedule. Same cat. So why does winter make everything worse?
               </p>
 
               <div className="bg-[#FF3131]/10 dark:bg-[#FF3131]/20 border-l-4 border-[#FF3131] p-6 my-8 rounded-r-lg">
-                <p className="text-gray-800 dark:text-gray-200 font-semibold mb-2">The Closed Window Effect:</p>
-                <p className="text-gray-700 dark:text-gray-300">
+                <p className="text-gray-800 dark:text-gray-100 dark:text-gray-200 font-semibold mb-2">The Closed Window Effect:</p>
+                <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">
                   When windows are closed, ammonia molecules have nowhere to go. In a typical 1,000 sq ft home, summer air exchange dilutes odors 4-6 times per day. In winter? Less than once per day. That's a <strong>400-600% increase</strong> in trapped odor molecules.
                 </p>
               </div>
@@ -234,21 +234,21 @@ export default function CatLitterSmellWorseWinter() {
                   height={1067}
                   sizes="(max-width: 768px) 100vw, 1200px"
                 />
-                <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+                <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 text-center mt-2">
                   Closed windows and sealed homes trap odor molecules that would normally escape
                 </p>
               </div>
 
               <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">1. Reduced Air Exchange Rate</h3>
-              <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mb-6 leading-relaxed">
                 Modern energy-efficient homes are designed to retain heat—which also means retaining odors. According to the <strong>EPA's Indoor Air Quality (IAQ)</strong> reports, indoor pollutant levels can be 2-5 times higher than outdoor levels in winter due to insufficient ventilation. Here's what happens:
               </p>
 
               <div className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-6 mb-8">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-3">Summer (Windows Open)</h4>
-                    <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                    <h4 className="font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-3">Summer (Windows Open)</h4>
+                    <ul className="space-y-2 text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">
                       <li>✓ Air exchanges: 1-2 per hour</li>
                       <li>✓ Ammonia dilution: Continuous</li>
                       <li>✓ Odor accumulation: Minimal</li>
@@ -256,8 +256,8 @@ export default function CatLitterSmellWorseWinter() {
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-3">Winter (Windows Closed)</h4>
-                    <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                    <h4 className="font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-3">Winter (Windows Closed)</h4>
+                    <ul className="space-y-2 text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">
                       <li>✗ Air exchanges: 0.3-0.5 per hour</li>
                       <li>✗ Ammonia dilution: Minimal</li>
                       <li>✗ Odor accumulation: Rapid</li>
@@ -268,58 +268,58 @@ export default function CatLitterSmellWorseWinter() {
               </div>
 
               <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">2. Dry Indoor Air</h3>
-              <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mb-6 leading-relaxed">
                 Winter heating systems create extremely dry indoor air (often 15-25% humidity vs. summer's 40-60%). This causes:
               </p>
 
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
                   <span className="text-[#FF3131] dark:text-[#FF5050] mr-3 text-xl">•</span>
-                  <span className="text-gray-700 dark:text-gray-300"><strong>More dust particles:</strong> Dry litter creates more airborne dust carrying odor molecules</span>
+                  <span className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500"><strong>More dust particles:</strong> Dry litter creates more airborne dust carrying odor molecules</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#FF3131] dark:text-[#FF5050] mr-3 text-xl">•</span>
-                  <span className="text-gray-700 dark:text-gray-300"><strong>Faster evaporation:</strong> Urine evaporates more quickly, releasing ammonia faster</span>
+                  <span className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500"><strong>Faster evaporation:</strong> Urine evaporates more quickly, releasing ammonia faster</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#FF3131] dark:text-[#FF5050] mr-3 text-xl">•</span>
-                  <span className="text-gray-700 dark:text-gray-300"><strong>Enhanced sensitivity:</strong> Your nose becomes more sensitive to odors in dry air</span>
+                  <span className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500"><strong>Enhanced sensitivity:</strong> Your nose becomes more sensitive to odors in dry air</span>
                 </li>
               </ul>
 
               <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">3. Heating System Circulation</h3>
-              <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mb-6 leading-relaxed">
                 Your furnace or heating system actively circulates air throughout your home. While this keeps you warm, it also distributes litter box odors to every room—bedrooms, kitchen, living room. What was once localized to the bathroom or laundry room now permeates your entire home.
               </p>
 
               <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6 mt-12">5 Proven Solutions for Winter Cat Litter Odor</h2>
 
-              <p className="text-gray-700 dark:text-gray-300 mb-8 text-lg leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mb-8 text-lg leading-relaxed">
                 The good news? You don't need to choose between fresh air and staying warm. Here are 5 science-backed solutions that eliminate winter odors without opening a single window.
               </p>
 
               <div className="space-y-8 mb-12">
                 {/* Solution 1 */}
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
+                <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
                   <div className="flex items-start mb-4">
                     <div className="bg-[#5B2EFF] text-white dark:text-gray-100 rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl mr-4 flex-shrink-0">
                       1
                     </div>
                     <div>
-                      <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">Trap Odors at the Source with Activated Carbon</h3>
-                      <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                      <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-3">Trap Odors at the Source with Activated Carbon</h3>
+                      <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mb-4 leading-relaxed">
                         The most effective winter solution is preventing odors from entering your air in the first place. Activated carbon works through <em>adsorption</em>—millions of microscopic pores trap ammonia molecules before they can escape the litter box.
                       </p>
                       <div className="bg-[#E0EFC7] dark:bg-[#E0EFC7]/20 rounded-lg p-4 mb-4">
-                        <p className="font-semibold text-gray-900 dark:text-gray-100 mb-2">Why It Works in Winter:</p>
-                        <ul className="space-y-2 text-gray-800 dark:text-gray-200">
+                        <p className="font-semibold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-2">Why It Works in Winter:</p>
+                        <ul className="space-y-2 text-gray-800 dark:text-gray-100 dark:text-gray-200">
                           <li>• Stops odors before they spread through heating vents</li>
                           <li>• Works 24/7 without opening windows</li>
                           <li>• No fragrances competing with dry winter air</li>
                           <li>• Maintains effectiveness for 2-4 weeks</li>
                         </ul>
                       </div>
-                      <p className="text-gray-700 dark:text-gray-300 italic">
+                      <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 italic">
                         <strong>Pro Tip:</strong> In winter, increase activated carbon usage by 50% (use 1.5-2 tablespoons instead of 1) to compensate for reduced air exchange.
                       </p>
                     </div>
@@ -327,14 +327,14 @@ export default function CatLitterSmellWorseWinter() {
                 </div>
 
                 {/* Solution 2 */}
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
+                <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
                   <div className="flex items-start mb-4">
                     <div className="bg-[#5B2EFF] text-white dark:text-gray-100 rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl mr-4 flex-shrink-0">
                       2
                     </div>
                     <div>
-                      <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">Increase Cleaning Frequency by 25-50%</h3>
-                      <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                      <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-3">Increase Cleaning Frequency by 25-50%</h3>
+                      <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mb-4 leading-relaxed">
                         With reduced natural ventilation, waste accumulates faster in your indoor air. Adjust your schedule:
                       </p>
                       <div className="overflow-x-auto mb-4">
@@ -370,32 +370,32 @@ export default function CatLitterSmellWorseWinter() {
                 </div>
 
                 {/* Solution 3 */}
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
+                <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
                   <div className="flex items-start mb-4">
                     <div className="bg-[#5B2EFF] text-white dark:text-gray-100 rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl mr-4 flex-shrink-0">
                       3
                     </div>
                     <div>
-                      <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">Optimize Indoor Air Circulation</h3>
-                      <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                      <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-3">Optimize Indoor Air Circulation</h3>
+                      <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mb-4 leading-relaxed">
                         Since you can't rely on outdoor air, maximize what you have indoors:
                       </p>
                       <ul className="space-y-3">
                         <li className="flex items-start">
                           <span className="text-[#03E46A] dark:text-[#03E46A] mr-3 text-xl">→</span>
-                          <span className="text-gray-700 dark:text-gray-300"><strong>Close vents near litter box:</strong> Prevent heating system from distributing odors throughout your home</span>
+                          <span className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500"><strong>Close vents near litter box:</strong> Prevent heating system from distributing odors throughout your home</span>
                         </li>
                         <li className="flex items-start">
                           <span className="text-[#03E46A] dark:text-[#03E46A] mr-3 text-xl">→</span>
-                          <span className="text-gray-700 dark:text-gray-300"><strong>Use exhaust fans:</strong> Run bathroom fans for 15-20 minutes after scooping to vent directly outside</span>
+                          <span className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500"><strong>Use exhaust fans:</strong> Run bathroom fans for 15-20 minutes after scooping to vent directly outside</span>
                         </li>
                         <li className="flex items-start">
                           <span className="text-[#03E46A] dark:text-[#03E46A] mr-3 text-xl">→</span>
-                          <span className="text-gray-700 dark:text-gray-300"><strong>Add air purifier:</strong> HEPA filter near litter box captures airborne particles</span>
+                          <span className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500"><strong>Add air purifier:</strong> HEPA filter near litter box captures airborne particles</span>
                         </li>
                         <li className="flex items-start">
                           <span className="text-[#03E46A] dark:text-[#03E46A] mr-3 text-xl">→</span>
-                          <span className="text-gray-700 dark:text-gray-300"><strong>Strategic window cracking:</strong> Open one window 1-2 inches for 10 minutes after scooping, then close immediately</span>
+                          <span className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500"><strong>Strategic window cracking:</strong> Open one window 1-2 inches for 10 minutes after scooping, then close immediately</span>
                         </li>
                       </ul>
                     </div>
@@ -403,17 +403,17 @@ export default function CatLitterSmellWorseWinter() {
                 </div>
 
                 {/* Solution 4 */}
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
+                <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
                   <div className="flex items-start mb-4">
                     <div className="bg-[#5B2EFF] text-white dark:text-gray-100 rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl mr-4 flex-shrink-0">
                       4
                     </div>
                     <div>
-                      <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">Switch to Low-Dust Litter</h3>
-                      <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                      <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-3">Switch to Low-Dust Litter</h3>
+                      <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mb-4 leading-relaxed">
                         Winter's dry air exacerbates dust problems. Consider switching to:
                       </p>
-                      <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                      <ul className="space-y-2 text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">
                         <li>• <strong>Large-grain clumping clay:</strong> Less dust than fine-grain varieties</li>
                         <li>• <strong>Crystal/silica litter:</strong> Virtually dust-free, excellent moisture control</li>
                         <li>• <strong>Wood pellets:</strong> Natural, low-dust, absorbs odors well</li>
@@ -424,17 +424,17 @@ export default function CatLitterSmellWorseWinter() {
                 </div>
 
                 {/* Solution 5 */}
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
+                <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
                   <div className="flex items-start mb-4">
                     <div className="bg-[#5B2EFF] text-white dark:text-gray-100 rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl mr-4 flex-shrink-0">
                       5
                     </div>
                     <div>
-                      <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">Consider a Covered Litter Box with Filter</h3>
-                      <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                      <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-3">Consider a Covered Litter Box with Filter</h3>
+                      <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mb-4 leading-relaxed">
                         Covered boxes with activated carbon filters contain odors before they escape—especially important when windows are closed. Look for:
                       </p>
-                      <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                      <ul className="space-y-2 text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">
                         <li>• Top-entry designs (reduces tracking and odor escape)</li>
                         <li>• Built-in activated carbon filters (replace monthly)</li>
                         <li>• Adequate ventilation slots (prevents ammonia buildup inside box)</li>
@@ -457,7 +457,7 @@ export default function CatLitterSmellWorseWinter() {
                   height={1067}
                   sizes="(max-width: 768px) 100vw, 1200px"
                 />
-                <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
+                <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 text-center mt-2">
                   Winter odor control success: Fresh air indoors without opening windows
                 </p>
               </div>
@@ -466,7 +466,7 @@ export default function CatLitterSmellWorseWinter() {
 
               <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 dark:border-red-600 p-6 mb-8 rounded-r-lg">
                 <h3 className="font-heading text-xl font-bold text-red-900 dark:text-red-200 mb-4">❌ Don't Make These Mistakes:</h3>
-                <ul className="space-y-3 text-gray-700 dark:text-gray-300">
+                <ul className="space-y-3 text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">
                   <li><strong>Using more scented litter/sprays:</strong> Fragrances don't eliminate ammonia—they just create competing smells in your sealed home</li>
                   <li><strong>Placing box near heating vents:</strong> Heat accelerates urine evaporation and distributes odors faster</li>
                   <li><strong>Keeping same summer schedule:</strong> Winter requires 25-50% more frequent cleaning</li>
@@ -477,13 +477,13 @@ export default function CatLitterSmellWorseWinter() {
 
               <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6 mt-12">The Complete Winter Strategy</h2>
 
-              <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mb-6 text-lg leading-relaxed">
                 Combine these solutions for maximum effectiveness:
               </p>
 
               <div className="bg-[#E0EFC7] dark:bg-[#E0EFC7]/20 rounded-xl p-6 mb-8">
-                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Your Winter Odor Control Checklist:</h3>
-                <ul className="space-y-3 text-gray-800 dark:text-gray-200">
+                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-4">Your Winter Odor Control Checklist:</h3>
+                <ul className="space-y-3 text-gray-800 dark:text-gray-100 dark:text-gray-200">
                   <li className="flex items-start">
                     <span className="text-[#5B2EFF] mr-3">☑</span>
                     <span>Add activated carbon to litter (1.5-2 tablespoons per box)</span>
@@ -521,36 +521,36 @@ export default function CatLitterSmellWorseWinter() {
 
               <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6 mt-12">When to See Improvement</h2>
 
-              <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mb-6 leading-relaxed">
                 Most cat owners notice dramatic improvement within <strong>24-48 hours</strong> of implementing these solutions:
               </p>
 
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
                   <span className="text-[#03E46A] dark:text-[#03E46A] mr-3 text-xl">✓</span>
-                  <span className="text-gray-700 dark:text-gray-300"><strong>Day 1:</strong> Reduced ammonia smell immediately after adding activated carbon</span>
+                  <span className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500"><strong>Day 1:</strong> Reduced ammonia smell immediately after adding activated carbon</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#03E46A] dark:text-[#03E46A] mr-3 text-xl">✓</span>
-                  <span className="text-gray-700 dark:text-gray-300"><strong>Days 2-3:</strong> Noticeable difference in overall home air quality</span>
+                  <span className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500"><strong>Days 2-3:</strong> Noticeable difference in overall home air quality</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#03E46A] dark:text-[#03E46A] mr-3 text-xl">✓</span>
-                  <span className="text-gray-700 dark:text-gray-300"><strong>Week 1:</strong> Guests no longer notice odor when entering home</span>
+                  <span className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500"><strong>Week 1:</strong> Guests no longer notice odor when entering home</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#03E46A] dark:text-[#03E46A] mr-3 text-xl">✓</span>
-                  <span className="text-gray-700 dark:text-gray-300"><strong>Week 2+:</strong> Consistent odor-free environment maintained through winter</span>
+                  <span className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500"><strong>Week 2+:</strong> Consistent odor-free environment maintained through winter</span>
                 </li>
               </ul>
 
               <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6 mt-12">Spring Transition Tips</h2>
 
-              <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500 mb-6 leading-relaxed">
                 As weather warms and you can open windows again:
               </p>
 
-              <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+              <ul className="space-y-2 text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">
                 <li>• Gradually reduce activated carbon to summer levels (1 tablespoon per box)</li>
                 <li>• Return to normal cleaning schedule as air exchange increases</li>
                 <li>• Deep clean litter boxes during transition to remove winter buildup</li>
@@ -559,25 +559,25 @@ export default function CatLitterSmellWorseWinter() {
             </div>
 
             {/* CTA Section */}
-            <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-8 md:p-12 text-center my-12">
-              <h2 className="font-heading text-3xl md:text-4xl font-bold text-green-900 mb-6">
-                🧪 The $8 Science Experiment
+            <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 dark:border-green-700 rounded-xl p-8 md:p-12 text-center my-12">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-green-900 dark:text-green-100 mb-6">
+                🧪 The Free Science Experiment
               </h2>
-              <p className="text-xl text-green-800 mb-8 max-w-2xl mx-auto">
-                Still skeptical? Try our <strong>trial size</strong> for one litter box, one month.
-                If you don't notice the difference the <em>first day</em> you use it, we'll refund every penny.
+              <p className="text-xl text-green-800 dark:text-green-200 mb-8 max-w-2xl mx-auto">
+                Still skeptical? Try our <strong>trial bag</strong> for free (just pay $4.76 shipping).
+                If you don't notice the difference the <em>first day</em> you use it, we'll refund your shipping cost.
               </p>
-              <p className="text-green-700 text-sm mb-8 font-medium">
+              <p className="text-green-700 dark:text-green-300 text-sm mb-8 font-medium">
                 <em>Same activated carbon used in municipal water filters—now for your cat's litter box.</em>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/products/trial-size">
-                  <button className="bg-[#FF3131] hover:bg-[#E62E2E] text-white px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                    Try the Trial Size - $8.99
+                  <button className="bg-[#FF3131] hover:bg-[#E62E2E] text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    Get Your Free Trial (Just Pay Shipping)
                   </button>
                 </Link>
                 <Link href="/learn/how-it-works">
-                  <button className="border-2 border-green-600 text-green-700 hover:bg-green-100 px-8 py-4 rounded-lg font-bold text-lg transition-colors">
+                  <button className="border-2 border-green-600 dark:border-green-500 text-green-700 dark:text-green-300 hover:bg-green-100 dark:bg-green-900/40 px-8 py-4 rounded-lg font-bold text-lg transition-colors">
                     How it Works
                   </button>
                 </Link>
@@ -589,30 +589,30 @@ export default function CatLitterSmellWorseWinter() {
               <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Frequently Asked Questions</h2>
 
               <div className="space-y-6">
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-200 dark:border-gray-700">
-                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Can I use baking soda instead of activated carbon in winter?</h3>
-                  <p className="text-gray-700 dark:text-gray-300">
+                <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-200 dark:border-gray-700">
+                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-3">Can I use baking soda instead of activated carbon in winter?</h3>
+                  <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">
                     Baking soda has limited effectiveness in winter because it only neutralizes acids—it doesn't trap ammonia molecules. Activated carbon physically adsorbs ammonia, making it far more effective when you can't rely on ventilation. In winter, activated carbon outperforms baking soda by 10-15x in sealed environments.
                   </p>
                 </div>
 
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-200 dark:border-gray-700">
-                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Is it safe to never open windows all winter?</h3>
-                  <p className="text-gray-700 dark:text-gray-300">
+                <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-200 dark:border-gray-700">
+                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-3">Is it safe to never open windows all winter?</h3>
+                  <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">
                     While modern homes can maintain reasonable air quality without opening windows, it's still beneficial to crack a window for 10-15 minutes daily when outdoor temperatures allow (above -10°C). This brief exchange refreshes indoor air without significantly impacting heating costs. Focus odor control at the source with activated carbon rather than relying solely on ventilation.
                   </p>
                 </div>
 
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-200 dark:border-gray-700">
-                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Why does my cat litter smell worse at night in winter?</h3>
-                  <p className="text-gray-700 dark:text-gray-300">
+                <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-200 dark:border-gray-700">
+                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-3">Why does my cat litter smell worse at night in winter?</h3>
+                  <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">
                     Overnight, your home's air exchange drops even further as thermostats lower and everyone sleeps. Without daytime movement, cooking exhaust fans, or door opening/closing, odors concentrate. Additionally, humidity often rises at night (from breathing, showering), which can temporarily make ammonia smell more noticeable. Morning scooping becomes even more critical in winter.
                   </p>
                 </div>
 
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-200 dark:border-gray-700">
-                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Will a dehumidifier help with winter cat litter smell?</h3>
-                  <p className="text-gray-700 dark:text-gray-300">
+                <div className="bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-200 dark:border-gray-700">
+                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 dark:text-gray-100 mb-3">Will a dehumidifier help with winter cat litter smell?</h3>
+                  <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 dark:text-gray-400 dark:text-gray-500">
                     Actually, a <em>humidifier</em> may help more than a dehumidifier. Winter indoor air is typically too dry (15-25% humidity), which increases dust and makes odors seem stronger. Bringing humidity to 35-45% can reduce airborne litter dust and make ammonia less noticeable. However, don't go above 50% as excessive humidity can cause other issues.
                   </p>
                 </div>
@@ -622,7 +622,7 @@ export default function CatLitterSmellWorseWinter() {
         </Container>
 
         {/* Related Articles */}
-        <section className="py-12 border-t border-gray-200 dark:border-gray-800">
+        <section className="py-12 border-t border-gray-200 dark:border-gray-700 dark:border-gray-800">
           <Container>
             <RelatedContent currentUrl="/blog/cat-litter-smell-worse-winter" />
           </Container>
