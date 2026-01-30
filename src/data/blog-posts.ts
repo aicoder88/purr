@@ -38,10 +38,10 @@ export type BlogPost = {
     credit?: string;
   }>;
   toc?: Array<{ title: string; id: string }>;
-  faq?: Array<{ question: string; answerHtml: string }>;
+  faq?: Array<{ question: string; answerHtml: string }> | null;
   cta?: { text: string; url: string };
   howTo?: HowToData | null;
-  citations?: Array<{ text: string; url: string }>;
+  citations?: Array<{ text: string; url: string }> | null;
 };
 
 // Complete blog posts based on actual blog pages in content/blog/en/

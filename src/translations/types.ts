@@ -657,6 +657,7 @@ export interface TranslationType {
     howItWorks: string;
     faq: string;
     science: string;
+    scienceHub?: string;
     safetyInfo: string;
     catLitterGuide: string;
     ammoniaSolutions: string;

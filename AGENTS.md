@@ -1,24 +1,453 @@
-# Repository Guidelines
+# AGENTS.md - Purrify Project Documentation
 
-## Project Structure & Module Organization
-Feature code lives in `src/`, with UI modules under `src/components`, shared helpers in `src/lib`, and locale files in `src/translations`. Legacy Pages Router routes remain in `pages/`, while marketing copy and localized Markdown stay in `content/`. Tests and fixtures are organized as `__tests__/` for Jest, `e2e/` for Playwright, and `test-screenshots/` for golden images. Build utilities sit in `scripts/`, Prisma schema plus migrations in `prisma/`, and deployable assets in `public/`.
+> This file contains essential information for AI coding agents working on the Purrify project. Read this file thoroughly before making any changes.
 
-## Build, Test, and Development Commands
-- `pnpm dev`: clears caches via `predev` and starts the hot-reload server.
-- `pnpm build`: generates the production bundle, then runs sitemap/postbuild hooks; execute before release PRs.
-- `pnpm start`: serves `.next/` output for smoke tests or Playwright.
-- `pnpm lint` / `pnpm check-types`: enforce ESLint (Next preset) and strict TS diagnostics.
-- `pnpm test`: runs `__tests__/translation-completeness.test.js` to ensure every locale key exists.
-- `pnpm test:e2e` (+ `pnpm e2e:web`): launches Playwright suites covering checkout, account, and blog funnels.
+## Project Overview
 
-## Coding Style & Naming Conventions
-Use TypeScript everywhere with 2-space indentation, single quotes, and explicit prop/variable names. React components use `.tsx` and PascalCase filenames (`src/components/HeroBanner.tsx`), helpers use `.ts` with camelCase exports, and routes/content use kebab-case. Run `pnpm lint --fix` and `pnpm prettier --write` before committing to keep formatting consistent.
+**Purrify** is an e-commerce website for an activated carbon cat litter additive product. The website serves multiple markets (Canada, USA) in four languages (English, French, Chinese, Spanish). It features a complete online store, blog with AI-generated content, affiliate program, retailer portal, and comprehensive SEO optimization.
 
-## Testing Guidelines
-Keep translation fixtures in sync before running Jest or the locale coverage test fails fast. Name Playwright specs descriptively (e.g., `checkout completes single bag`) and mirror top funnels. When adding features, update Jest fixtures under `__tests__/fixtures` and regenerate golden screenshots in `test-screenshots/` as needed. Always run `pnpm test` and at least the impacted Playwright specs before pushing.
+- **Website**: https://www.purrify.ca
+- **Primary Market**: Canada (CAD currency)
+- **Secondary Market**: USA (USD currency)
+- **Node Version**: >= 22.x
+- **Package Manager**: pnpm 10.27.0
 
-## Commit & Pull Request Guidelines
-Follow Conventional Commits such as `feat(seo): add hreflang tags`, referencing task IDs in parentheses when relevant. PRs must describe user impact, list commands executed (lint, type-check, Jest, Playwright), and link issues. Include screenshots or logs for UX, SEO, or content changes, and update `CHANGELOG.md` or docs touched by the work. Request review only after lint, type, Jest, and Playwright suites pass locally.
+## Technology Stack
 
-## Security & Configuration Tips
-Never commit `.env*`; keep secrets in `.env.local` or hosted environment variables. Generate Prisma migrations with `pnpm prisma migrate dev` and surface destructive steps for review. Asset and sitemap scripts must only write inside `public/` or `reports/` to keep CI artifacts deterministic.
+### Core Framework
+- **Next.js 16.0.10** - React framework with Pages Router (legacy)
+- **React 19.2.3** - UI library
+- **TypeScript 5.9.3** - Type safety
+
+### Database & ORM
+- **PostgreSQL** - Primary database
+- **Prisma 6.19.1** - Type-safe ORM with client generation
+
+### Authentication
+- **NextAuth.js 4.24.13** - Authentication library
+- **bcryptjs** - Password hashing
+- JWT-based sessions with 24-hour expiration
+
+### Styling & UI
+- **Tailwind CSS 3.4.19** - Utility-first CSS framework
+- **Radix UI** - Headless UI components (extensive usage)
+- **Lucide React** - Icon library
+- **Framer Motion** - Animation library
+- **Embla Carousel** - Carousel component
+
+### Payment & E-commerce
+- **Stripe 18.5.0** - Payment processing
+- Custom checkout session API
+- Subscription/autoship support
+
+### AI & Content Generation
+- **Anthropic Claude SDK** - Primary AI for blog generation
+- **OpenAI SDK** - Alternative AI provider
+- **ChromaDB** - Vector database for content
+
+### Email & Communications
+- **Resend** - Transactional email
+- **EmailJS** - Client-side email sending
+- Custom email templates in `src/emails/`
+
+### Monitoring & Analytics
+- **Sentry** - Error tracking and performance monitoring
+- **Vercel Analytics** - Web analytics
+- Custom UTM tracking implementation
+
+### Testing
+- **Jest 30.2.0** - Unit testing
+- **Playwright 1.57.0** - E2E testing
+- **@testing-library/react** - Component testing
+
+## Project Structure
+
+```
+/
+├── pages/                  # Next.js Pages Router (legacy)
+│   ├── _app.tsx           # App wrapper with providers
+│   ├── _document.tsx      # HTML document customization
+│   ├── api/               # API routes
+│   │   ├── auth/          # NextAuth configuration
+│   │   ├── admin/         # Admin API endpoints
+│   │   ├── affiliate/     # Affiliate program APIs
+│   │   ├── cron/          # Scheduled task endpoints
+│   │   └── webhooks/      # Stripe webhooks
+│   ├── admin/             # Admin dashboard pages
+│   ├── affiliate/         # Affiliate portal pages
+│   ├── blog/              # Blog pages and articles
+│   ├── learn/             # Educational content
+│   ├── locations/         # Store location pages
+│   └── products/          # Product pages
+│
+├── src/
+│   ├── components/        # React components
+│   │   ├── admin/         # Admin-specific components
+│   │   ├── affiliate/     # Affiliate components
+│   │   ├── blog/          # Blog components
+│   │   ├── customer/      # Customer portal components
+│   │   ├── layout/        # Layout components (header, footer)
+│   │   ├── sections/      # Page section components
+│   │   ├── seo/           # SEO components
+│   │   ├── ui/            # Reusable UI components (shadcn/ui style)
+│   │   └── ...
+│   ├── lib/               # Utility libraries
+│   │   ├── affiliate/     # Affiliate logic
+│   │   ├── auth/          # Authentication utilities
+│   │   ├── blog/          # Blog generation & management
+│   │   ├── locations/     # Location data
+│   │   ├── referral/      # Referral program logic
+│   │   ├── security/      # CSRF, rate limiting, sanitization
+│   │   ├── seo/           # SEO utilities
+│   │   └── tracking/      # UTM and analytics tracking
+│   ├── hooks/             # Custom React hooks
+│   ├── translations/      # i18n translations (en, fr, zh, es)
+│   ├── data/              # Static data files
+│   ├── emails/            # Email template components
+│   └── types/             # TypeScript type definitions
+│
+├── content/               # Content files
+│   └── blog/              # Blog content in JSON format
+│       ├── en/            # English blog posts
+│       ├── fr/            # French blog posts
+│       ├── zh/            # Chinese blog posts
+│       └── es/            # Spanish blog posts
+│
+├── prisma/                # Database schema and migrations
+│   └── schema.prisma      # Prisma schema definition
+│
+├── scripts/               # Build and utility scripts
+│   ├── seo/               # SEO validation and optimization
+│   ├── images/            # Image optimization scripts
+│   ├── blog/              # Blog automation scripts
+│   └── build/             # Build-related scripts
+│
+├── __tests__/             # Jest unit tests
+├── e2e/                   # Playwright E2E tests
+├── public/                # Static assets
+│   └── optimized/         # Optimized images (auto-generated)
+└── [config files]
+```
+
+## Build and Development Commands
+
+### Essential Commands
+
+```bash
+# Development
+pnpm dev              # Start development server with hot reload
+                      # Automatically clears webpack cache via predev hook
+
+# Building
+pnpm build            # Production build with SEO validation
+                      # Runs prebuild hooks: validate-no-middleware, SEO checks
+                      # Runs postbuild: next-sitemap, generate-enhanced-sitemap
+
+pnpm prebuild         # Run prebuild validation only
+pnpm prebuild:seo     # Run SEO prebuild validation only
+
+# Production server
+pnpm start            # Serve production build (for testing)
+
+# Code Quality
+pnpm lint             # Run ESLint with Next.js config
+pnpm lint --fix       # Auto-fix ESLint issues
+pnpm check-types      # TypeScript type checking (tsc --noEmit)
+
+# Testing
+pnpm test             # Run Jest unit tests
+pnpm test:watch       # Jest in watch mode
+pnpm test:coverage    # Jest with coverage report
+pnpm test:translations # Translation completeness test only
+pnpm test:e2e         # Run Playwright E2E tests
+pnpm test:e2e:ui      # Run Playwright with UI
+
+# SEO & Performance
+pnpm seo:validate         # Validate SEO compliance
+pnpm seo:validate:strict  # Strict SEO validation (fails on error)
+pnpm seo:health-check     # Comprehensive SEO health check
+pnpm seo:report          # Generate SEO report
+pnpm bundle:analyze       # Analyze bundle size
+pnpm performance:audit    # Full performance audit
+
+# Blog Automation
+pnpm blog:auto:generate   # Generate blog post with AI
+pnpm blog:migrate         # Migrate blog posts between formats
+
+# Image Optimization
+pnpm optimize-images          # Basic image optimization
+pnpm optimize-images:enhanced # Enhanced optimization
+pnpm optimize-images:watch    # Watch mode for development
+
+# Database
+pnpm postinstall      # Generate Prisma client
+```
+
+### Environment Setup
+
+Copy `.env.local.example` to `.env.local` and configure:
+- `NEXTAUTH_SECRET` - Required for authentication
+- `NEXTAUTH_URL` - Your local/dev URL
+- `DATABASE_URL` - PostgreSQL connection string
+- `STRIPE_SECRET_KEY` - For payments
+- `ANTHROPIC_API_KEY` - For AI blog generation
+
+## Code Style Guidelines
+
+### TypeScript Conventions
+- **Strict mode enabled** - No implicit any
+- **2-space indentation**
+- **Single quotes** for strings
+- **Semicolons required**
+- **Explicit prop and variable names** - avoid abbreviations
+
+### File Naming
+- **React components**: PascalCase with `.tsx` extension
+  - Example: `src/components/HeroBanner.tsx`
+- **Utilities/helpers**: camelCase with `.ts` extension
+  - Example: `src/lib/seo-utils.ts`
+- **Routes/content**: kebab-case
+  - Example: `pages/blog/my-awesome-post.tsx`
+
+### Component Structure
+```tsx
+// Import order: React → External libs → Internal modules → Types
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import type { Product } from '@/types';
+
+// Props interface with explicit naming
+interface ProductCardProps {
+  product: Product;
+  onAddToCart: (productId: string) => void;
+  isLoading?: boolean;
+}
+
+// Named function component
+export function ProductCard({ product, onAddToCart, isLoading }: ProductCardProps) {
+  // Component logic
+  
+  return (
+    // JSX
+  );
+}
+```
+
+### Path Aliases
+- `@/*` → `src/*`
+- `@translations/*` → `src/translations/*`
+
+## Testing Instructions
+
+### Unit Testing (Jest)
+
+Tests are located in `__tests__/` directory with the following structure:
+```
+__tests__/
+├── api/              # API route tests
+├── hooks/            # Custom hook tests
+├── security/         # Security utility tests
+├── seo/              # SEO utility tests
+└── translation-completeness.test.js  # Locale coverage
+```
+
+**Before running tests:**
+1. Ensure translation fixtures are in sync
+2. Run `pnpm prisma generate` if database tests are involved
+
+**Running specific tests:**
+```bash
+pnpm test -- __tests__/hooks/useBreadcrumb.test.ts
+pnpm test -- --testNamePattern="specific test name"
+```
+
+### E2E Testing (Playwright)
+
+Tests are in `e2e/` directory:
+```
+e2e/
+├── home.spec.ts                    # Homepage tests
+├── blog-articles.spec.ts           # Blog functionality
+├── checkout-payment-methods.spec.ts # Checkout flow
+├── security-*.spec.ts              # Security tests
+└── seo/                            # SEO rendering tests
+```
+
+**E2E Configuration:**
+- Base URL: `http://localhost:3010`
+- Workers: 2 (limited to prevent overwhelming server)
+- Timeout: 60 seconds
+
+**Running E2E tests:**
+```bash
+# Start dev server and run tests
+pnpm test:e2e
+
+# With UI for debugging
+pnpm test:e2e:ui
+
+# Run specific test file
+pnpm test:e2e -- e2e/home.spec.ts
+```
+
+## Database & ORM
+
+### Prisma Schema
+Located at `prisma/schema.prisma`. Key models include:
+- `User` - Customer accounts
+- `Order` - Purchase orders with Stripe integration
+- `Product` - Product catalog with inventory tracking
+- `BlogPost` - AI-generated blog content
+- `Affiliate` - Affiliate program participants
+- `Retailer` - B2B retailer accounts
+- `ReferralCode` - Customer referral program
+- `Subscription` - Recurring order subscriptions
+
+### Database Commands
+```bash
+# Generate Prisma client (runs automatically on postinstall)
+pnpm prisma generate
+
+# Create and apply migration
+pnpm prisma migrate dev --name migration_name
+
+# Deploy migrations in production
+pnpm prisma migrate deploy
+
+# Open Prisma Studio
+pnpm prisma studio
+```
+
+### Connection Handling
+The Prisma client is configured as a singleton in `src/lib/prisma.ts` to prevent connection pooling issues in development (hot reload) and ensure proper connection management in production.
+
+## Internationalization (i18n)
+
+### Supported Locales
+- `en` - English (default)
+- `fr` - French (Canada)
+- `zh` - Chinese (Simplified)
+- `es` - Spanish
+
+### Translation Structure
+Translations are in `src/translations/`:
+- `types.ts` - TypeScript interface definitions
+- `en.ts`, `fr.ts`, `zh.ts`, `es.ts` - Locale data
+- `index.ts` - Export and utility functions
+- `seo-meta.ts` - SEO-specific translations
+
+### Usage in Components
+```tsx
+import { useTranslation } from '@/lib/translation-context';
+
+function MyComponent() {
+  const { t } = useTranslation('en');
+  return <h1>{t.hero.headline}</h1>;
+}
+```
+
+### Adding New Translations
+1. Add keys to `src/translations/types.ts` interface
+2. Add translations to all locale files (`en.ts`, `fr.ts`, `zh.ts`, `es.ts`)
+3. Run `pnpm test:translations` to verify completeness
+
+## SEO & Performance
+
+### SEO Architecture
+- **Next SEO** - Default SEO configuration in `_app.tsx`
+- **Dynamic sitemap** - Generated at build time via `next-sitemap`
+- **Structured data** - JSON-LD schemas for Organization, Product, FAQ, etc.
+- **Hreflang tags** - Automatic locale alternates
+- **Canonical URLs** - Automatic canonical generation
+
+### Key SEO Scripts
+```bash
+# Validation
+pnpm seo:validate           # Check all SEO requirements
+pnpm seo:validate:images    # Validate image optimization
+pnpm seo:validate:canonicals # Check canonical URLs
+
+# Optimization
+pnpm seo:optimize          # Run SEO optimization
+pnpm seo:keywords          # Keyword analysis
+```
+
+### Performance Optimizations
+- **Image optimization** - WebP/AVIF formats with Next.js Image
+- **Code splitting** - Dynamic imports for heavy components
+- **Cache headers** - Aggressive caching for static assets
+- **Bundle analysis** - Use `pnpm bundle:analyze` to check size
+
+## Security Considerations
+
+### Environment Variables
+- **Never commit** `.env.local` or any `.env*` files
+- Use `.env.local` for local development secrets
+- Use Vercel environment variables for production
+
+### Authentication
+- Admin authentication via NextAuth with credentials provider
+- Rate limiting on login attempts (5 per 15 minutes per IP)
+- Session max age: 24 hours
+- JWT strategy for stateless sessions
+
+### API Security
+- CSRF protection on state-changing endpoints
+- Input sanitization via `src/lib/security/sanitize.ts`
+- Rate limiting on sensitive endpoints
+- Security headers configured in `next.config.js` and `vercel.json`
+
+### File Uploads
+- Validate file types and sizes
+- Store uploads outside web root
+- Use signed URLs for sensitive downloads
+
+## Deployment
+
+### Vercel Configuration
+- **Build command**: `pnpm prisma generate && pnpm build`
+- **Output directory**: `.next`
+- **Framework**: Next.js
+
+### Cron Jobs (Vercel)
+Configured in `vercel.json`:
+- Daily at 2 PM: Abandoned cart emails
+- Daily at 6 AM: Daily maintenance tasks
+
+### Pre-deployment Checklist
+1. Run `pnpm lint` - fix any errors
+2. Run `pnpm check-types` - ensure TypeScript passes
+3. Run `pnpm test` - unit tests pass
+4. Run `pnpm build` - production build succeeds
+5. Run `pnpm test:e2e` - critical paths work
+6. Check `pnpm seo:validate` - no SEO regressions
+
+### Post-deployment Verification
+- Check `/api/health/storage` - storage connectivity
+- Verify Stripe webhook endpoints
+- Test critical user flows (checkout, signup)
+- Monitor Sentry for errors
+
+## Common Issues & Solutions
+
+### Build Failures
+- **Out of memory**: Increase Node memory: `NODE_OPTIONS="--max-old-space-size=4096"`
+- **Type errors**: Run `pnpm check-types` to identify issues
+- **Webpack cache**: Clear with `pnpm clear-cache`
+
+### Database Issues
+- **Connection errors**: Check `DATABASE_URL` environment variable
+- **Prisma client stale**: Run `pnpm prisma generate`
+
+### SEO Issues
+- **Missing hreflang**: Check `next-sitemap.config.js` alternateRefs
+- **Thin content**: Use `pnpm seo:validate:images` to check image sizes
+- **Sitemap errors**: Verify in `next-sitemap.config.js` exclude patterns
+
+## Contact & Resources
+
+- **Site URL**: https://www.purrify.ca
+- **Admin Panel**: https://www.purrify.ca/admin
+- **Affiliate Portal**: https://www.purrify.ca/affiliate
+- **Support Email**: meow@purrify.ca

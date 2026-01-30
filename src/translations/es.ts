@@ -678,6 +678,7 @@ export const es: TranslationType = {
     howItWorks: "Como Funciona",
     faq: "Preguntas Frecuentes",
     science: "Ciencia",
+    scienceHub: "Referencias Científicas",
     safetyInfo: "Informacion de Seguridad",
     catLitterGuide: "Guia de Arena para Gatos",
     ammoniaSolutions: "Soluciones para Amoniaco",

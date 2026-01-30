@@ -792,6 +792,7 @@ export const zh = {
     howItWorks: "工作原理",
     faq: "常见问题",
     science: "科学原理",
+    scienceHub: "研究引用",
     safetyInfo: "安全信息",
     catLitterGuide: "猫砂指南",
     ammoniaSolutions: "氨味解决方案",

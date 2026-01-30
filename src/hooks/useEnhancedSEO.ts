@@ -1,6 +1,7 @@
 /**
  * useEnhancedSEO Hook
  * Provides optimized SEO data to components with automatic i18n and currency handling
+ * GEO (Generative Engine Optimization) compliant with ClaimReview and expert author schemas
  */
 
 import { useTranslation } from '../lib/translation-context';
@@ -8,6 +9,11 @@ import { useCurrency } from '../lib/currency-context';
 import { optimizeMetaTitle, optimizeMetaDescription } from '../lib/seo/meta-optimizer';
 import { getLocalizedUrl, buildLanguageAlternates } from '../lib/seo-utils';
 import { SITE_NAME } from '../lib/constants';
+import { 
+  VETERINARY_SCIENCE_ADVISOR, 
+  getClaimReviewSchema,
+  type ScientificCitation 
+} from '../lib/scientific-citations';
 
 export interface SEOConfig {
   path: string;
@@ -20,8 +26,14 @@ export interface SEOConfig {
   keywords?: string[];
   noindex?: boolean;
   nofollow?: boolean;
-  /** Include expert author schema for AI citation optimization */
+  /** Include expert author schema for AI citation optimization (legacy) */
   includeExpertAuthor?: boolean;
+  /** Include Veterinary Science Advisor schema for GEO compliance */
+  includeVeterinaryAdvisor?: boolean;
+  /** Claims to generate ClaimReview schema for */
+  claims?: string[];
+  /** Scientific citations to include in the article schema */
+  citations?: ScientificCitation[];
 }
 
 export interface BreadcrumbItem {
@@ -66,7 +78,7 @@ export interface EnhancedSEOResult {
     nofollow?: boolean;
   };
   schema: object | null;
-  /** Additional schemas (e.g., expert author) - render all in page head */
+  /** Additional schemas (e.g., expert author, claim reviews) - render all in page head */
   additionalSchemas: object[];
   /** Breadcrumb data - currently not implemented, returns undefined */
   breadcrumb: BreadcrumbData | undefined;
@@ -78,6 +90,12 @@ export interface EnhancedSEOResult {
     titleWarnings: string[];
     descriptionWarnings: string[];
   };
+  /** Veterinary Science Advisor JSON-LD schema */
+  veterinaryAdvisorSchema: object | null;
+  /** ClaimReview schemas for factual claims */
+  claimReviewSchemas: object[];
+  /** SpeakableSpecification schema for voice assistants */
+  speakableSchema: object | null;
 }
 
 /**
@@ -186,11 +204,32 @@ export function useEnhancedSEO(config: SEOConfig): EnhancedSEOResult {
 
   // Generate additional schemas
   const additionalSchemas: object[] = [];
+  const claimReviewSchemas: object[] = [];
 
-  // Add expert author schema if requested
+  // Add expert author schema if requested (legacy)
   if (config.includeExpertAuthor) {
     additionalSchemas.push(generateExpertAuthorSchema());
   }
+
+  // Add Veterinary Science Advisor schema if requested (GEO)
+  if (config.includeVeterinaryAdvisor) {
+    additionalSchemas.push(VETERINARY_SCIENCE_ADVISOR);
+  }
+
+  // Generate ClaimReview schemas for specified claims
+  if (config.claims && config.claims.length > 0) {
+    config.claims.forEach(claim => {
+      const claimSchema = getClaimReviewSchema(claim, canonicalUrl);
+      if (claimSchema) {
+        claimReviewSchemas.push(claimSchema);
+        additionalSchemas.push(claimSchema);
+      }
+    });
+  }
+
+  // Generate SpeakableSpecification schema for voice assistants
+  const speakableSchema = generateSpeakableSchema(canonicalUrl);
+  additionalSchemas.push(speakableSchema);
 
   return {
     nextSeoProps,
@@ -205,6 +244,9 @@ export function useEnhancedSEO(config: SEOConfig): EnhancedSEOResult {
       titleWarnings: optimizedTitle.warnings,
       descriptionWarnings: optimizedDescription.warnings,
     },
+    veterinaryAdvisorSchema: config.includeVeterinaryAdvisor ? VETERINARY_SCIENCE_ADVISOR : null,
+    claimReviewSchemas,
+    speakableSchema,
   };
 }
 
@@ -266,7 +308,15 @@ function generateSchema(
         image: data.image,
         datePublished: data.datePublished,
         dateModified: data.dateModified || new Date().toISOString(),
-        author: {
+        author: data.useVeterinaryAdvisor ? {
+          '@type': 'Person',
+          name: VETERINARY_SCIENCE_ADVISOR.name,
+          jobTitle: VETERINARY_SCIENCE_ADVISOR.jobTitle,
+          url: VETERINARY_SCIENCE_ADVISOR.url,
+          description: VETERINARY_SCIENCE_ADVISOR.description,
+          alumniOf: VETERINARY_SCIENCE_ADVISOR.alumniOf,
+          credential: VETERINARY_SCIENCE_ADVISOR.credential,
+        } : {
           '@type': 'Organization',
           name: SITE_NAME,
           url: 'https://www.purrify.ca',
@@ -288,6 +338,19 @@ function generateSchema(
         articleSection: data.category,
         keywords: data.keywords,
         wordCount: data.wordCount,
+        // Include scientific citations if provided
+        citation: data.citations?.map((citation: ScientificCitation) => ({
+          '@type': 'ScholarlyArticle',
+          headline: citation.title,
+          author: citation.authors,
+          datePublished: citation.year,
+          isPartOf: {
+            '@type': 'Periodical',
+            name: citation.journal,
+          },
+          identifier: citation.doi || citation.pmid,
+          url: citation.url,
+        })),
       };
 
     case 'faq':
@@ -468,5 +531,27 @@ function generateExpertAuthorSchema(): object {
       url: 'https://www.purrify.ca',
     },
     sameAs: ['https://www.instagram.com/purrifyhq'],
+  };
+}
+
+/**
+ * Generate SpeakableSpecification schema for voice assistants
+ * GEO: Enables AI voice assistants to cite key content
+ */
+function generateSpeakableSchema(url: string): object {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': url,
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['.key-takeaway', '.faq-answer', '.article-summary', 'h1', 'h2'],
+      xpath: [
+        '/html/head/title',
+        "//p[contains(@class, 'key-takeaway')]",
+        "//div[contains(@class, 'faq-answer')]",
+        "//p[contains(@class, 'article-summary')]",
+      ],
+    },
   };
 }

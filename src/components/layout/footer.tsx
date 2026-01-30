@@ -12,6 +12,7 @@ import {
   Facebook,
   Star,
   ExternalLink,
+  Microscope,
 } from "lucide-react";
 import { SOCIAL_LINKS } from "../../lib/constants";
 
@@ -277,6 +278,15 @@ export function Footer() {
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.science || ""}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/science"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300 flex items-center gap-1"
+                  >
+                    <Microscope className="w-3 h-3" />
+                    {t.footerNav?.scienceHub || "Research Citations"}
                   </Link>
                 </li>
                 <li>

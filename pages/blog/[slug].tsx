@@ -87,8 +87,8 @@ export async function getStaticProps({ params, locale }: { params: { slug: strin
         // Include howTo data if present (for step-by-step tutorials)
         // Use null fallback to avoid JSON serialization error with undefined
         howTo: (blogPost as unknown as { howTo?: BlogPost['howTo'] }).howTo ?? null,
-        faq: blogPost.faq,
-        citations: blogPost.citations,
+        faq: blogPost.faq ?? null,
+        citations: blogPost.citations ?? null,
       };
 
       return {

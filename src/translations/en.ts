@@ -758,6 +758,7 @@ export const en = {
     howItWorks: "How It Works",
     faq: "FAQ",
     science: "Science",
+    scienceHub: "Research Citations",
     safetyInfo: "Safety Info",
     catLitterGuide: "Cat Litter Guide",
     ammoniaSolutions: "Ammonia Solutions",

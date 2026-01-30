@@ -745,6 +745,7 @@ export const fr = {
     howItWorks: "Comment Ça Marche",
     faq: "FAQ",
     science: "Science",
+    scienceHub: "Références Scientifiques",
     safetyInfo: "Informations de Sécurité",
     catLitterGuide: "Guide de la Litière pour Chats",
     ammoniaSolutions: "Solutions pour l'Ammoniaque",
