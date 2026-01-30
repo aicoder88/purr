@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * Related Content Component
  * Displays related articles/pages based on topic clusters for internal linking
@@ -9,12 +11,30 @@ import Image from 'next/image';
 import { getRelatedPages, getClustersForPage } from '@/lib/seo/topic-clusters';
 import { getPageImage } from '@/lib/seo/page-images';
 import { Container } from '@/components/ui/container';
-import { useTranslation } from '@/lib/translation-context';
+
+// Default translations for when TranslationProvider is not available
+const defaultTranslations = {
+  relatedArticles: {
+    title: 'Related Articles',
+    readMore: 'Read more',
+  },
+};
 
 interface RelatedContentProps {
   currentUrl: string;
   maxItems?: number;
   className?: string;
+}
+
+// Safe hook that returns default values if TranslationProvider is not available
+function useSafeTranslation() {
+  try {
+    // Dynamic import to avoid the error when TranslationProvider is not present
+    const { useTranslation } = require('@/lib/translation-context');
+    return useTranslation();
+  } catch (e) {
+    return { t: defaultTranslations, locale: 'en' };
+  }
 }
 
 /**
@@ -26,7 +46,7 @@ export function RelatedContent({
   maxItems = 3,
   className = '',
 }: RelatedContentProps) {
-  const { t } = useTranslation();
+  const { t } = useSafeTranslation();
   const relatedPages = getRelatedPages(currentUrl, maxItems);
 
   if (relatedPages.length === 0) {

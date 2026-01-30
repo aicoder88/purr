@@ -1,152 +1,119 @@
-import { NextSeo } from 'next-seo';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
-import { useTranslation } from '../../src/lib/translation-context';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
-import { AIQuotableBlock } from '../../src/components/seo/AIQuotableBlock';
-import { RelatedQuestions } from '../../src/components/seo/RelatedQuestions';
-import { RelatedContent } from '../../src/components/seo/RelatedContent';
+import { RelatedContent } from '@/components/seo/RelatedContent';
+
+export const metadata: Metadata = {
+  title: 'Best Cat Litter Additives 2026: Complete Buyer\'s Guide to Odor Control',
+  description: 'Compare the top cat litter additives for odor control in 2026: activated carbon, baking soda, zeolite, enzyme powders, and more. Find out which actually works.',
+  keywords: 'cat litter additive, best litter deodorizer, cat litter odor control 2026, activated carbon cat litter, baking soda cat litter, litter additive comparison',
+  alternates: {
+    canonical: 'https://www.purrify.ca/blog/cat-litter-additive-comparison-2026',
+  },
+  openGraph: {
+    title: 'Best Cat Litter Additives 2026: Complete Buyer\'s Guide to Odor Control',
+    description: 'Compare the top cat litter additives for odor control in 2026: activated carbon, baking soda, zeolite, enzyme powders, and more.',
+    url: 'https://www.purrify.ca/blog/cat-litter-additive-comparison-2026',
+    images: [
+      {
+        url: 'https://www.purrify.ca/optimized/powder-spray-comparison-ghibli.webp',
+        width: 1200,
+        height: 675,
+      },
+    ],
+  },
+};
+
+const heroImage = '/optimized/powder-spray-comparison-ghibli.webp';
+
+const faqQuestions = [
+  {
+    question: 'What is the best cat litter additive for odor control?',
+    answer: 'Activated carbon (specifically coconut shell-derived) is the most effective cat litter additive for odor control, achieving approximately 92% ammonia reduction through physical adsorption. It outperforms baking soda (~15%), zeolite (~45%), and fragrance-based products (~0% actual elimination).',
+  },
+  {
+    question: 'Do cat litter deodorizers actually work?',
+    answer: 'It depends on the type. Activated carbon-based deodorizers genuinely eliminate odor through adsorption. Baking soda provides minimal benefit. Fragrance-based products only mask odors temporarily. Enzyme powders work but require moisture activation. For true odor elimination, choose adsorption-based products.',
+  },
+  {
+    question: 'Is baking soda safe to put in cat litter?',
+    answer: 'Yes, baking soda (sodium bicarbonate) is non-toxic and safe if ingested in small amounts. However, its odor control effectiveness is limited—it only neutralizes about 10-15% of ammonia. It\'s safe but not particularly effective compared to alternatives.',
+  },
+  {
+    question: 'How often should I add litter additive?',
+    answer: 'Most activated carbon additives should be refreshed weekly when you do a complete litter change. Some products recommend a light sprinkle after each scooping. Check your specific product instructions, but weekly replacement is the most common recommendation for optimal effectiveness.',
+  },
+  {
+    question: 'Can I use multiple litter additives together?',
+    answer: 'Yes, you can combine additives without safety concerns. However, it&apos;s often unnecessary—a quality activated carbon additive alone provides better results than combining inferior products. If you do combine, activated carbon + enzyme powder can complement each other.',
+  },
+  {
+    question: 'Are litter additives safe for kittens?',
+    answer: 'Most additives are safe for kittens, but choose carefully. Activated carbon (especially coconut shell) is food-grade and completely safe. Avoid heavily fragranced products that may irritate young respiratory systems. Enzyme products are also generally safe. Always check product labels for age restrictions.',
+  },
+];
+
+const additiveTypes = [
+  {
+    name: 'Activated Carbon',
+    mechanism: 'Physical adsorption',
+    ammoniaReduction: '92%',
+    duration: '5-7 days',
+    safety: 'Food-grade safe',
+    pros: ['Highest effectiveness', 'Traps multiple odor types', 'Non-toxic', 'No fragrance needed'],
+    cons: ['Higher cost', 'Requires weekly replacement', 'Less available in stores'],
+    bestFor: 'Maximum odor control, multi-cat homes, small spaces',
+    rating: 5,
+  },
+  {
+    name: 'Baking Soda',
+    mechanism: 'Chemical neutralization',
+    ammoniaReduction: '10-15%',
+    duration: '3-5 days',
+    safety: 'Food-grade safe',
+    pros: ['Very inexpensive', 'Widely available', 'Familiar product', 'Non-toxic'],
+    cons: ['Limited effectiveness', 'Doesn\'t trap VOCs', 'Needs frequent reapplication'],
+    bestFor: 'Budget-conscious, mild odor issues, supplement to other methods',
+    rating: 2,
+  },
+  {
+    name: 'Zeolite',
+    mechanism: 'Ion exchange + absorption',
+    ammoniaReduction: '40-50%',
+    duration: '3-5 days',
+    safety: 'Natural mineral, safe',
+    pros: ['Good moisture control', 'Natural material', 'Moderate effectiveness'],
+    cons: ['Less effective than carbon', 'Shorter duration', 'Poor VOC control'],
+    bestFor: 'Humidity control priority, moderate odor issues',
+    rating: 3,
+  },
+  {
+    name: 'Enzyme Powders',
+    mechanism: 'Biological breakdown',
+    ammoniaReduction: '60-70%',
+    duration: '5-7 days',
+    safety: 'Generally safe',
+    pros: ['Breaks down urine compounds', 'Works on source', 'Good for accidents'],
+    cons: ['Requires moisture to activate', 'Slower acting', 'Variable effectiveness'],
+    bestFor: 'Treating existing odors, accident cleanup',
+    rating: 3,
+  },
+  {
+    name: 'Fragrance Beads/Crystals',
+    mechanism: 'Masking only',
+    ammoniaReduction: '0%',
+    duration: '1-3 days',
+    safety: 'May irritate sensitive cats',
+    pros: ['Immediate scent improvement', 'Inexpensive', 'Widely available'],
+    cons: ['No actual odor elimination', 'Temporary effect', 'Can deter cats'],
+    bestFor: 'Quick masking before guests (not recommended long-term)',
+    rating: 1,
+  },
+];
 
 export default function CatLitterAdditiveComparison2026Page() {
-  const { locale } = useTranslation();
-  const seoTitle = "Best Cat Litter Additives 2026: Complete Buyer's Guide to Odor Control";
-  const seoDescription = "Compare the top cat litter additives for odor control in 2026: activated carbon, baking soda, zeolite, enzyme powders, and more. Find out which actually works.";
-  const canonicalUrl = getLocalizedUrl('/blog/cat-litter-additive-comparison-2026', locale);
-  const languageAlternates = buildLanguageAlternates('/blog/cat-litter-additive-comparison-2026');
-
-  const heroImage = '/optimized/powder-spray-comparison-ghibli.webp';
-
-  // FAQ questions
-  const faqQuestions = [
-    {
-      question: 'What is the best cat litter additive for odor control?',
-      answer: 'Activated carbon (specifically coconut shell-derived) is the most effective cat litter additive for odor control, achieving approximately 92% ammonia reduction through physical adsorption. It outperforms baking soda (~15%), zeolite (~45%), and fragrance-based products (~0% actual elimination).',
-    },
-    {
-      question: 'Do cat litter deodorizers actually work?',
-      answer: 'It depends on the type. Activated carbon-based deodorizers genuinely eliminate odor through adsorption. Baking soda provides minimal benefit. Fragrance-based products only mask odors temporarily. Enzyme powders work but require moisture activation. For true odor elimination, choose adsorption-based products.',
-    },
-    {
-      question: 'Is baking soda safe to put in cat litter?',
-      answer: 'Yes, baking soda (sodium bicarbonate) is non-toxic and safe if ingested in small amounts. However, its odor control effectiveness is limited—it only neutralizes about 10-15% of ammonia. It\'s safe but not particularly effective compared to alternatives.',
-    },
-    {
-      question: 'How often should I add litter additive?',
-      answer: 'Most activated carbon additives should be refreshed weekly when you do a complete litter change. Some products recommend a light sprinkle after each scooping. Check your specific product instructions, but weekly replacement is the most common recommendation for optimal effectiveness.',
-    },
-    {
-      question: 'Can I use multiple litter additives together?',
-      answer: 'Yes, you can combine additives without safety concerns. However, it\'s often unnecessary—a quality activated carbon additive alone provides better results than combining inferior products. If you do combine, activated carbon + enzyme powder can complement each other.',
-    },
-    {
-      question: 'Are litter additives safe for kittens?',
-      answer: 'Most additives are safe for kittens, but choose carefully. Activated carbon (especially coconut shell) is food-grade and completely safe. Avoid heavily fragranced products that may irritate young respiratory systems. Enzyme products are also generally safe. Always check product labels for age restrictions.',
-    },
-  ];
-
-  const additiveTypes = [
-    {
-      name: 'Activated Carbon',
-      mechanism: 'Physical adsorption',
-      ammoniaReduction: '92%',
-      duration: '5-7 days',
-      safety: 'Food-grade safe',
-      pros: ['Highest effectiveness', 'Traps multiple odor types', 'Non-toxic', 'No fragrance needed'],
-      cons: ['Higher cost', 'Requires weekly replacement', 'Less available in stores'],
-      bestFor: 'Maximum odor control, multi-cat homes, small spaces',
-      rating: 5,
-    },
-    {
-      name: 'Baking Soda',
-      mechanism: 'Chemical neutralization',
-      ammoniaReduction: '10-15%',
-      duration: '3-5 days',
-      safety: 'Food-grade safe',
-      pros: ['Very inexpensive', 'Widely available', 'Familiar product', 'Non-toxic'],
-      cons: ['Limited effectiveness', 'Doesn\'t trap VOCs', 'Needs frequent reapplication'],
-      bestFor: 'Budget-conscious, mild odor issues, supplement to other methods',
-      rating: 2,
-    },
-    {
-      name: 'Zeolite',
-      mechanism: 'Ion exchange + absorption',
-      ammoniaReduction: '40-50%',
-      duration: '3-5 days',
-      safety: 'Natural mineral, safe',
-      pros: ['Good moisture control', 'Natural material', 'Moderate effectiveness'],
-      cons: ['Less effective than carbon', 'Shorter duration', 'Poor VOC control'],
-      bestFor: 'Humidity control priority, moderate odor issues',
-      rating: 3,
-    },
-    {
-      name: 'Enzyme Powders',
-      mechanism: 'Biological breakdown',
-      ammoniaReduction: '60-70%',
-      duration: '5-7 days',
-      safety: 'Generally safe',
-      pros: ['Breaks down urine compounds', 'Works on source', 'Good for accidents'],
-      cons: ['Requires moisture to activate', 'Slower acting', 'Variable effectiveness'],
-      bestFor: 'Treating existing odors, accident cleanup',
-      rating: 3,
-    },
-    {
-      name: 'Fragrance Beads/Crystals',
-      mechanism: 'Masking only',
-      ammoniaReduction: '0%',
-      duration: '1-3 days',
-      safety: 'May irritate sensitive cats',
-      pros: ['Immediate scent improvement', 'Inexpensive', 'Widely available'],
-      cons: ['No actual odor elimination', 'Temporary effect', 'Can deter cats'],
-      bestFor: 'Quick masking before guests (not recommended long-term)',
-      rating: 1,
-    },
-  ];
-
   return (
     <>
-      <NextSeo
-        title={seoTitle}
-        description={seoDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          type: 'article',
-          url: canonicalUrl,
-          title: seoTitle,
-          description: seoDescription,
-          images: [
-            {
-              url: `https://www.purrify.ca${heroImage}`,
-              width: 1200,
-              height: 675,
-              alt: 'Cat litter additive comparison guide 2026',
-            },
-          ],
-        }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: 'cat litter additive, best litter deodorizer, cat litter odor control 2026, activated carbon cat litter, baking soda cat litter, litter additive comparison',
-          },
-        ]}
-      />
-
-      <ArticleSchema
-        title={seoTitle}
-        description={seoDescription}
-        path="/blog/cat-litter-additive-comparison-2026"
-        options={{
-          category: 'Buyer\'s Guide',
-          keywords: ['cat litter', 'additive', 'deodorizer', 'comparison', '2026'],
-          datePublished: '2024-01-23T12:00:00Z',
-          dateModified: new Date().toISOString(),
-          image: heroImage,
-          wordCount: 2800,
-          readingTime: 12
-        }}
-      />
-
       <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
         {/* Hero Section */}
         <section className="py-16 px-4">
@@ -233,13 +200,6 @@ export default function CatLitterAdditiveComparison2026Page() {
                 </p>
               </div>
             </div>
-
-            <AIQuotableBlock
-              fact="Only elimination-based additives (activated carbon, enzymes) actually remove odor molecules from the air. Neutralization provides limited help, and masking does nothing to reduce ammonia concentration—it simply covers the smell temporarily."
-              explanation="This is why switching from masking to elimination often feels like a dramatic improvement."
-              icon="science"
-              variant="highlight"
-            />
           </div>
         </section>
 
@@ -411,13 +371,6 @@ export default function CatLitterAdditiveComparison2026Page() {
                 </p>
               </div>
             </div>
-
-            <AIQuotableBlock
-              fact="Activated carbon achieves 92% ammonia reduction through adsorption, compared to baking soda's 10-15% through neutralization. To achieve equivalent odor control, you would need approximately 10x more baking soda than activated carbon—and it still wouldn't trap VOCs."
-              explanation="The 6x+ performance difference explains why switching to carbon often feels like a dramatic breakthrough."
-              icon="stat"
-              variant="highlight"
-            />
           </div>
         </section>
 
@@ -527,11 +480,18 @@ export default function CatLitterAdditiveComparison2026Page() {
         {/* FAQ Section */}
         <section className="py-12 px-4 bg-white dark:bg-gray-800">
           <div className="max-w-4xl mx-auto">
-            <RelatedQuestions
-              title="Litter Additive FAQ"
-              questions={faqQuestions}
-              defaultOpen={[0]}
-            />
+            <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">
+              FAQ
+            </h2>
+
+            <div className="space-y-4">
+              {faqQuestions.map((faq, index) => (
+                <div key={index} className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
+                  <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">{faq.question}</h3>
+                  <p className="text-gray-700 dark:text-gray-200">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

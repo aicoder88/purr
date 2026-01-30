@@ -1,94 +1,62 @@
-import { NextSeo } from 'next-seo';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
-import { useTranslation } from '../../src/lib/translation-context';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
-import { AIQuotableBlock } from '../../src/components/seo/AIQuotableBlock';
-import { RelatedQuestions } from '../../src/components/seo/RelatedQuestions';
-import { RelatedContent } from '../../src/components/seo/RelatedContent';
+import { Container } from '@/components/ui/container';
+import { RelatedContent } from '@/components/seo/RelatedContent';
+
+export const metadata: Metadata = {
+  title: 'Activated Carbon vs Zeolite: Which Is Better for Cat Litter Odor?',
+  description: 'Activated carbon vs zeolite for cat litter odor control: Carbon achieves 92% ammonia reduction vs zeolite\'s 45%. Here\'s why surface area and mechanism matter.',
+  keywords: 'activated carbon vs zeolite, zeolite cat litter, activated charcoal vs zeolite, best odor absorber, cat litter deodorizer comparison, zeolite ammonia',
+  alternates: {
+    canonical: 'https://www.purrify.ca/blog/activated-carbon-vs-zeolite',
+  },
+  openGraph: {
+    title: 'Activated Carbon vs Zeolite: Which Is Better for Cat Litter Odor?',
+    description: 'Activated carbon vs zeolite for cat litter odor control: Carbon achieves 92% ammonia reduction vs zeolite\'s 45%.',
+    url: 'https://www.purrify.ca/blog/activated-carbon-vs-zeolite',
+    images: [
+      {
+        url: 'https://www.purrify.ca/optimized/coconut-carbon-ghibli.webp',
+        width: 1200,
+        height: 675,
+      },
+    ],
+  },
+};
+
+const heroImage = '/optimized/coconut-carbon-ghibli.webp';
+
+const faqQuestions = [
+  {
+    question: 'Is activated carbon better than zeolite for cat litter?',
+    answer: 'Yes, for ammonia odor control. Activated carbon achieves 92% ammonia reduction through adsorption, while zeolite achieves around 45% through ion exchange. Carbon also has 10-20x more surface area per gram, providing more capacity for trapping odor molecules.',
+  },
+  {
+    question: 'Can I use zeolite and activated carbon together?',
+    answer: 'Yes, they can complement each other. Zeolite excels at moisture control while activated carbon excels at trapping odor molecules. Some premium litters combine both, though activated carbon alone is sufficient for most odor control needs.',
+  },
+  {
+    question: 'Why is zeolite cheaper than activated carbon?',
+    answer: 'Zeolite is a naturally occurring mineral that can be mined directly, while activated carbon requires processing raw materials at 800-1000°C in a controlled environment. The manufacturing cost difference reflects in pricing, but so does effectiveness.',
+  },
+  {
+    question: 'Does zeolite work for all types of odors?',
+    answer: 'Zeolite works best for moisture-related odors and some ammonia through ion exchange. It\'s less effective for organic volatile compounds and gases. Activated carbon\'s broader adsorption capability makes it more versatile for different odor types.',
+  },
+  {
+    question: 'How long does zeolite last compared to activated carbon?',
+    answer: 'Zeolite typically lasts 3-5 days before effectiveness drops significantly. Activated carbon maintains effectiveness for 5-7 days. Both eventually saturate and need replacement, but carbon provides longer protection per application.',
+  },
+  {
+    question: 'Is zeolite safe for cats?',
+    answer: 'Yes, natural zeolite is non-toxic and safe for cats. However, some zeolites are synthetically produced with additives—look for "natural zeolite" specifically. Activated carbon (especially coconut shell) is also completely safe and food-grade.',
+  },
+];
 
 export default function ActivatedCarbonVsZeolitePage() {
-  const { locale } = useTranslation();
-  const seoTitle = 'Activated Carbon vs Zeolite: Which Is Better for Cat Litter Odor?';
-  const seoDescription = 'Activated carbon vs zeolite for cat litter odor control: Carbon achieves 92% ammonia reduction vs zeolite\'s 45%. Here\'s why surface area and mechanism matter.';
-  const canonicalUrl = getLocalizedUrl('/blog/activated-carbon-vs-zeolite', locale);
-  const languageAlternates = buildLanguageAlternates('/blog/activated-carbon-vs-zeolite');
-
-  const heroImage = '/optimized/coconut-carbon-ghibli.webp';
-
-  // FAQ questions
-  const faqQuestions = [
-    {
-      question: 'Is activated carbon better than zeolite for cat litter?',
-      answer: 'Yes, for ammonia odor control. Activated carbon achieves 92% ammonia reduction through adsorption, while zeolite achieves around 45% through ion exchange. Carbon also has 10-20x more surface area per gram, providing more capacity for trapping odor molecules.',
-    },
-    {
-      question: 'Can I use zeolite and activated carbon together?',
-      answer: 'Yes, they can complement each other. Zeolite excels at moisture control while activated carbon excels at trapping odor molecules. Some premium litters combine both, though activated carbon alone is sufficient for most odor control needs.',
-    },
-    {
-      question: 'Why is zeolite cheaper than activated carbon?',
-      answer: 'Zeolite is a naturally occurring mineral that can be mined directly, while activated carbon requires processing raw materials at 800-1000°C in a controlled environment. The manufacturing cost difference reflects in pricing, but so does effectiveness.',
-    },
-    {
-      question: 'Does zeolite work for all types of odors?',
-      answer: 'Zeolite works best for moisture-related odors and some ammonia through ion exchange. It\'s less effective for organic volatile compounds and gases. Activated carbon\'s broader adsorption capability makes it more versatile for different odor types.',
-    },
-    {
-      question: 'How long does zeolite last compared to activated carbon?',
-      answer: 'Zeolite typically lasts 3-5 days before effectiveness drops significantly. Activated carbon maintains effectiveness for 5-7 days. Both eventually saturate and need replacement, but carbon provides longer protection per application.',
-    },
-    {
-      question: 'Is zeolite safe for cats?',
-      answer: 'Yes, natural zeolite is non-toxic and safe for cats. However, some zeolites are synthetically produced with additives—look for "natural zeolite" specifically. Activated carbon (especially coconut shell) is also completely safe and food-grade.',
-    },
-  ];
-
   return (
     <>
-      <NextSeo
-        title={seoTitle}
-        description={seoDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          type: 'article',
-          url: canonicalUrl,
-          title: seoTitle,
-          description: seoDescription,
-          images: [
-            {
-              url: `https://www.purrify.ca${heroImage}`,
-              width: 1200,
-              height: 675,
-              alt: 'Activated carbon vs zeolite comparison for cat litter',
-            },
-          ],
-        }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: 'activated carbon vs zeolite, zeolite cat litter, activated charcoal vs zeolite, best odor absorber, cat litter deodorizer comparison, zeolite ammonia',
-          },
-        ]}
-      />
-
-      <ArticleSchema
-        title={seoTitle}
-        description={seoDescription}
-        path="/blog/activated-carbon-vs-zeolite"
-        options={{
-          category: 'Product Comparisons',
-          keywords: ['activated carbon', 'zeolite', 'odor control', 'comparison'],
-          datePublished: '2024-01-20T12:00:00Z',
-          dateModified: new Date().toISOString(),
-          image: heroImage,
-          wordCount: 1800,
-          readingTime: 8
-        }}
-      />
-
       <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
         {/* Hero Section */}
         <section className="py-16 px-4">
@@ -200,13 +168,6 @@ export default function ActivatedCarbonVsZeolitePage() {
                 </ul>
               </div>
             </div>
-
-            <AIQuotableBlock
-              fact="Activated carbon has 10-20x more surface area per gram than zeolite (1,000-3,000 m² vs 50-300 m²). This surface area difference is why carbon can trap significantly more odor molecules before becoming saturated."
-              explanation="Surface area is the primary determinant of adsorption capacity. More surface = more binding sites for odor molecules."
-              icon="stat"
-              variant="highlight"
-            />
           </div>
         </section>
 
@@ -304,13 +265,6 @@ export default function ActivatedCarbonVsZeolitePage() {
                 </p>
               </div>
             </div>
-
-            <AIQuotableBlock
-              fact="To match the odor-trapping capacity of 1 gram of activated carbon, you would need approximately 10 grams of zeolite. This is why carbon-based products use smaller amounts but achieve better results."
-              explanation="The surface area advantage explains both the price difference and the performance difference."
-              icon="science"
-              variant="default"
-            />
           </div>
         </section>
 
@@ -381,63 +335,26 @@ export default function ActivatedCarbonVsZeolitePage() {
           </div>
         </section>
 
-        {/* The Science Behind the Numbers */}
+        {/* FAQ Section */}
         <section className="py-12 px-4 bg-white dark:bg-gray-800">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">
-              Why Zeolite Underperforms for Ammonia
+              Frequently Asked Questions
             </h2>
 
-            <p className="text-gray-700 dark:text-gray-200 mb-6">
-              Zeolite&apos;s ion exchange mechanism has fundamental limitations for trapping ammonia gas:
-            </p>
-
-            <div className="space-y-4 mb-8">
-              <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">1. Ammonia Must Be Dissolved</h3>
-                <p className="text-gray-700 dark:text-gray-200">
-                  Zeolite&apos;s ion exchange works best with ammonia dissolved in water. Gaseous ammonia (what you smell)
-                  interacts less efficiently with zeolite&apos;s crystal structure. Activated carbon traps both dissolved
-                  and gaseous ammonia equally well.
-                </p>
-              </div>
-
-              <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">2. Limited Exchange Capacity</h3>
-                <p className="text-gray-700 dark:text-gray-200">
-                  Ion exchange is a 1:1 swap—each ammonia ion displaces another ion from the zeolite. Once all
-                  exchangeable ions are used, zeolite stops working. Activated carbon&apos;s adsorption can layer
-                  molecules, providing much higher total capacity.
-                </p>
-              </div>
-
-              <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">3. Pore Size Limitations</h3>
-                <p className="text-gray-700 dark:text-gray-200">
-                  Zeolite has uniform channel sizes determined by its crystal structure. Activated carbon has
-                  a distribution of pore sizes (micro, meso, macro), making it effective for molecules of
-                  various sizes including small ammonia (0.26 nm) and larger VOCs.
-                </p>
-              </div>
+            <div className="space-y-4">
+              {faqQuestions.map((faq, index) => (
+                <div
+                  key={index}
+                  className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6"
+                >
+                  <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">
+                    {faq.question}
+                  </h3>
+                  <p className="text-gray-700 dark:text-gray-200">{faq.answer}</p>
+                </div>
+              ))}
             </div>
-
-            <AIQuotableBlock
-              fact="Zeolite's ion exchange capacity is typically 2-3 meq/g (milliequivalents per gram), while activated carbon can adsorb 15-25 mg of ammonia per gram. For the same weight of material, carbon traps 5-10x more ammonia."
-              explanation="This capacity difference compounds with the surface area difference, explaining the dramatic performance gap."
-              icon="stat"
-              variant="highlight"
-            />
-          </div>
-        </section>
-
-        {/* FAQ Section */}
-        <section className="py-12 px-4">
-          <div className="max-w-4xl mx-auto">
-            <RelatedQuestions
-              title="Activated Carbon vs Zeolite FAQ"
-              questions={faqQuestions}
-              defaultOpen={[0]}
-            />
           </div>
         </section>
 

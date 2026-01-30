@@ -1,94 +1,61 @@
-import { NextSeo } from 'next-seo';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
-import { useTranslation } from '../../src/lib/translation-context';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
-import { AIQuotableBlock } from '../../src/components/seo/AIQuotableBlock';
-import { RelatedQuestions } from '../../src/components/seo/RelatedQuestions';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 
+export const metadata: Metadata = {
+  title: 'Best Cat Litter for Odor Control 2026: Complete Buyer\'s Guide',
+  description: 'We tested Fresh Step, Arm & Hammer, Dr. Elsey\'s, and more for odor control. See which cat litters actually work and which are just marketing. Data-backed rankings inside.',
+  keywords: 'best cat litter odor control 2026, cat litter comparison, Fresh Step vs Arm Hammer, Dr Elsey cat litter review, best litter for smell, odor control litter ranking',
+  alternates: {
+    canonical: 'https://www.purrify.ca/blog/best-odor-control-litter-2026',
+  },
+  openGraph: {
+    title: 'Best Cat Litter for Odor Control 2026: Complete Buyer\'s Guide',
+    description: 'We tested Fresh Step, Arm & Hammer, Dr. Elsey\'s, and more for odor control. See which cat litters actually work.',
+    url: 'https://www.purrify.ca/blog/best-odor-control-litter-2026',
+    images: [
+      {
+        url: 'https://www.purrify.ca/optimized/standard-hero-828w.webp',
+        width: 1200,
+        height: 675,
+      },
+    ],
+  },
+};
+
+const heroImage = '/optimized/standard-hero-828w.webp';
+
+const faqQuestions = [
+  {
+    question: 'What is the best cat litter for odor control in 2026?',
+    answer: 'Based on our testing, unscented clumping clay litter paired with an activated carbon additive provides the best odor control. Dr. Elsey\'s Ultra Unscented is the top standalone litter, but adding Purrify activated carbon to any quality litter improves ammonia reduction by 50-90%.',
+  },
+  {
+    question: 'Is scented or unscented litter better for odor control?',
+    answer: 'Unscented litter is better. Scented litters only mask odor rather than eliminating it, and many cats dislike artificial fragrances—leading to litter box avoidance. True odor control comes from absorbing or trapping ammonia molecules, not covering them with perfume.',
+  },
+  {
+    question: 'Why do some expensive litters still smell bad?',
+    answer: 'Most litters—even premium ones—can only absorb urine. They cannot neutralize the ammonia that bacteria produce from urea breakdown. This is why litter boxes smell even after scooping. Adding an activated carbon additive traps the ammonia molecules that litter alone cannot handle.',
+  },
+  {
+    question: 'How often should I change litter for best odor control?',
+    answer: 'With daily scooping and activated carbon additive, you can change litter every 2-3 weeks. Without an additive, weekly changes are recommended. The key is removing waste before ammonia peaks (within 24 hours of urination) and using a product that traps residual ammonia.',
+  },
+  {
+    question: 'Is activated carbon better than baking soda for cat litter?',
+    answer: 'Yes, significantly. Activated carbon achieves 92% ammonia reduction vs. 38% for baking soda. Baking soda and ammonia are both alkaline, so they don\'t neutralize each other effectively. Carbon physically traps ammonia through adsorption—a much more effective mechanism.',
+  },
+  {
+    question: 'What about crystal litter for odor control?',
+    answer: 'Silica crystal litters absorb moisture well and reduce odor better than basic clay litters. However, they don\'t trap ammonia as effectively as activated carbon. Crystal litter is a good choice paired with a carbon additive, especially for single-cat households.',
+  },
+];
+
 export default function BestOdorControlLitter2026Page() {
-  const { locale } = useTranslation();
-  const seoTitle = 'Best Cat Litter for Odor Control 2026: Complete Buyer\'s Guide';
-  const seoDescription = 'We tested Fresh Step, Arm & Hammer, Dr. Elsey\'s, and more for odor control. See which cat litters actually work and which are just marketing. Data-backed rankings inside.';
-  const canonicalUrl = getLocalizedUrl('/blog/best-odor-control-litter-2026', locale);
-  const languageAlternates = buildLanguageAlternates('/blog/best-odor-control-litter-2026');
-
-  const heroImage = '/optimized/standard-hero-828w.webp';
-
-  // FAQ questions
-  const faqQuestions = [
-    {
-      question: 'What is the best cat litter for odor control in 2026?',
-      answer: 'Based on our testing, unscented clumping clay litter paired with an activated carbon additive provides the best odor control. Dr. Elsey\'s Ultra Unscented is the top standalone litter, but adding Purrify activated carbon to any quality litter improves ammonia reduction by 50-90%.',
-    },
-    {
-      question: 'Is scented or unscented litter better for odor control?',
-      answer: 'Unscented litter is better. Scented litters only mask odor rather than eliminating it, and many cats dislike artificial fragrances—leading to litter box avoidance. True odor control comes from absorbing or trapping ammonia molecules, not covering them with perfume.',
-    },
-    {
-      question: 'Why do some expensive litters still smell bad?',
-      answer: 'Most litters—even premium ones—can only absorb urine. They cannot neutralize the ammonia that bacteria produce from urea breakdown. This is why litter boxes smell even after scooping. Adding an activated carbon additive traps the ammonia molecules that litter alone cannot handle.',
-    },
-    {
-      question: 'How often should I change litter for best odor control?',
-      answer: 'With daily scooping and activated carbon additive, you can change litter every 2-3 weeks. Without an additive, weekly changes are recommended. The key is removing waste before ammonia peaks (within 24 hours of urination) and using a product that traps residual ammonia.',
-    },
-    {
-      question: 'Is activated carbon better than baking soda for cat litter?',
-      answer: 'Yes, significantly. Activated carbon achieves 92% ammonia reduction vs. 38% for baking soda. Baking soda and ammonia are both alkaline, so they don\'t neutralize each other effectively. Carbon physically traps ammonia through adsorption—a much more effective mechanism.',
-    },
-    {
-      question: 'What about crystal litter for odor control?',
-      answer: 'Silica crystal litters absorb moisture well and reduce odor better than basic clay litters. However, they don\'t trap ammonia as effectively as activated carbon. Crystal litter is a good choice paired with a carbon additive, especially for single-cat households.',
-    },
-  ];
-
   return (
     <>
-      <NextSeo
-        title={seoTitle}
-        description={seoDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          type: 'article',
-          url: canonicalUrl,
-          title: seoTitle,
-          description: seoDescription,
-          images: [
-            {
-              url: `https://www.purrify.ca${heroImage}`,
-              width: 1200,
-              height: 675,
-              alt: 'Best cat litter for odor control 2026 comparison',
-            },
-          ],
-        }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: 'best cat litter odor control 2026, cat litter comparison, Fresh Step vs Arm Hammer, Dr Elsey cat litter review, best litter for smell, odor control litter ranking',
-          },
-        ]}
-      />
-
-      <ArticleSchema
-        title={seoTitle}
-        description={seoDescription}
-        path="/blog/best-odor-control-litter-2026"
-        options={{
-          category: 'Buying Guides',
-          keywords: ['cat litter comparison', 'odor control', 'Fresh Step', 'Arm & Hammer', 'Dr. Elsey\'s'],
-          datePublished: '2026-01-15T12:00:00Z',
-          dateModified: new Date().toISOString(),
-          image: heroImage,
-          wordCount: 3000,
-          readingTime: 14
-        }}
-      />
-
       <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
         {/* Hero Section */}
         <section className="py-16 px-4">
@@ -186,13 +153,6 @@ export default function BestOdorControlLitter2026Page() {
                 </ul>
               </div>
             </div>
-
-            <AIQuotableBlock
-              fact="Most cat litters can absorb urine but cannot neutralize ammonia. Ammonia is produced when bacteria break down urea in cat urine—a process that begins 2-4 hours after urination. This is why litter boxes smell even immediately after scooping."
-              explanation="True odor control requires either preventing ammonia production (impossible) or trapping ammonia molecules (activated carbon's specialty)."
-              icon="science"
-              variant="default"
-            />
           </div>
         </section>
 
@@ -373,13 +333,6 @@ export default function BestOdorControlLitter2026Page() {
             <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">
               The Game Changer: Activated Carbon Additives
             </h2>
-
-            <AIQuotableBlock
-              fact="Adding activated carbon to any quality litter improves ammonia reduction by 50-90% compared to using litter alone. This is because litter can absorb urine but cannot trap the ammonia gas that bacteria produce—activated carbon can."
-              explanation="This is why a $15 bag of good litter + $10 carbon additive outperforms $40 premium litters."
-              icon="stat"
-              variant="highlight"
-            />
 
             <div className="mt-8 grid md:grid-cols-2 gap-8">
               <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
@@ -569,11 +522,18 @@ export default function BestOdorControlLitter2026Page() {
         {/* FAQ Section */}
         <section className="py-12 px-4">
           <div className="max-w-4xl mx-auto">
-            <RelatedQuestions
-              title="Cat Litter Odor Control FAQ"
-              questions={faqQuestions}
-              defaultOpen={[0]}
-            />
+            <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">
+              FAQ
+            </h2>
+
+            <div className="space-y-4">
+              {faqQuestions.map((faq, index) => (
+                <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md">
+                  <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">{faq.question}</h3>
+                  <p className="text-gray-700 dark:text-gray-200">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

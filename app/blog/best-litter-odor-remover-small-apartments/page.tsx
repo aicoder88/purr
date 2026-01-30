@@ -1,12 +1,29 @@
-import { NextSeo } from 'next-seo';
+import type { Metadata } from 'next';
 import Image from 'next/image';
-import { Container } from '../../src/components/ui/container';
-import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
+import { Container } from '@/components/ui/container';
 import { RelatedContent } from '@/components/seo/RelatedContent';
-import { generateJSONLD } from '../../src/lib/seo-utils';
-import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
-import { StructuredDataGenerator } from '../../src/lib/seo/structured-data-generator';
+
+export const metadata: Metadata = {
+  title: '5 Ways to Stop Cat Smell in Small Apartments',
+  description: 'Stop cat litter smell in tiny apartments. 5 proven methods to eliminate odors and keep neighbors happy. Works in studios and small spaces!',
+  keywords: 'best cat litter odor remover for small apartments, apartment cat odor control, urban cat litter solutions, small space pet odor',
+  alternates: {
+    canonical: 'https://www.purrify.ca/blog/best-litter-odor-remover-small-apartments',
+  },
+  openGraph: {
+    title: '5 Ways to Stop Cat Smell in Small Apartments',
+    description: 'Stop cat litter smell in tiny apartments. 5 proven methods to eliminate odors and keep neighbors happy.',
+    url: 'https://www.purrify.ca/blog/best-litter-odor-remover-small-apartments',
+    images: [
+      {
+        url: 'https://www.purrify.ca/images/small-apartment-hero-original.png',
+        width: 1024,
+        height: 1024,
+      },
+    ],
+  },
+};
 
 // Relevant images for small apartment cat odor control
 const heroImage = '/optimized/apartment-cat-lifestyle.webp';
@@ -16,81 +33,32 @@ const spaceImage = '/images/placement.webp';
 const carbonImage = '/images/carbon.webp';
 const happyOwnerImage = '/images/happy-owner.webp';
 
-export default function BestForSmallApartments() {
-  // const { t } = useTranslation();
+const faqItems = [
+  {
+    question: 'What is the best litter for apartments with no ventilation?',
+    answer: 'Activated carbon litter additives are ideal for apartments with poor ventilation. They trap odor molecules through adsorption rather than masking them, which is crucial when air doesn\'t circulate well. Combined with clumping litter and daily scooping, this provides the most effective odor control in enclosed spaces.',
+  },
+  {
+    question: 'How do I control cat litter smell in a studio apartment?',
+    answer: 'In studio apartments, place the litter box in the bathroom near the exhaust fan, use activated carbon deodorizer daily, scoop twice daily, and keep a small air purifier nearby. The key is preventing odor buildup rather than trying to eliminate strong smells after they develop.',
+  },
+  {
+    question: 'Can I keep a litter box in an apartment with no windows?',
+    answer: 'Yes, but you need to be extra diligent. Use high-quality clumping litter with activated carbon additives, create airflow with fans pointing toward exhaust vents, and maintain a twice-daily scooping routine. An air purifier with carbon filter is also highly recommended.',
+  },
+  {
+    question: 'How often should I change cat litter in a small apartment?',
+    answer: 'In small apartments, fully replace litter every 5-7 days instead of the typical 2 weeks. Scoop at least twice daily. The limited space means odors concentrate faster, so more frequent maintenance is essential for a fresh-smelling home.',
+  },
+  {
+    question: 'Will my neighbors smell my cat litter through the walls?',
+    answer: 'Strong ammonia odors can travel through shared ventilation systems and door gaps. To prevent this, use activated carbon deodorizers that eliminate odors at the source, maintain daily cleaning, and avoid placing the litter box against shared walls. Proper odor control means neighbors won\'t even know you have a cat.',
+  },
+];
 
-  const pageTitle = '5 Ways to Stop Cat Smell in Small Apartments';
-  const pageDescription = 'Stop cat litter smell in tiny apartments. 5 proven methods to eliminate odors and keep neighbors happy. Works in studios and small spaces!';
-
-  // Use enhanced SEO hook for automated optimization
-  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
-    path: '/blog/best-litter-odor-remover-small-apartments',
-    title: pageTitle,
-    description: pageDescription,
-    targetKeyword: 'best cat litter odor remover for small apartments',
-    schemaType: 'article',
-    schemaData: {
-      headline: 'Stop Apartment Cat Litter Smell - 5 Ways Neighbors Won\'t Notice',
-      description: 'Embarrassed your small apartment reeks of cat litter? These 5 proven methods eliminate odors in tiny spaces. Stop worrying about what neighbors and landlords think!',
-      datePublished: '2024-02-01',
-      dateModified: new Date().toISOString().split('T')[0],
-      image: heroImageOg,
-      category: 'Urban Living Solutions',
-      wordCount: 1800,
-    },
-    image: heroImageOg,
-    keywords: [
-      'best cat litter odor remover for small apartments',
-      'apartment cat odor control',
-      'urban cat litter solutions',
-      'small space pet odor',
-    ],
-  });
-
-  // FAQ data for both schema and display
-  const structuredDataGenerator = new StructuredDataGenerator();
-  const faqItems = [
-    {
-      question: 'What is the best litter for apartments with no ventilation?',
-      answer: 'Activated carbon litter additives are ideal for apartments with poor ventilation. They trap odor molecules through adsorption rather than masking them, which is crucial when air doesn\'t circulate well. Combined with clumping litter and daily scooping, this provides the most effective odor control in enclosed spaces.',
-    },
-    {
-      question: 'How do I control cat litter smell in a studio apartment?',
-      answer: 'In studio apartments, place the litter box in the bathroom near the exhaust fan, use activated carbon deodorizer daily, scoop twice daily, and keep a small air purifier nearby. The key is preventing odor buildup rather than trying to eliminate strong smells after they develop.',
-    },
-    {
-      question: 'Can I keep a litter box in an apartment with no windows?',
-      answer: 'Yes, but you need to be extra diligent. Use high-quality clumping litter with activated carbon additives, create airflow with fans pointing toward exhaust vents, and maintain a twice-daily scooping routine. An air purifier with carbon filter is also highly recommended.',
-    },
-    {
-      question: 'How often should I change cat litter in a small apartment?',
-      answer: 'In small apartments, fully replace litter every 5-7 days instead of the typical 2 weeks. Scoop at least twice daily. The limited space means odors concentrate faster, so more frequent maintenance is essential for a fresh-smelling home.',
-    },
-    {
-      question: 'Will my neighbors smell my cat litter through the walls?',
-      answer: 'Strong ammonia odors can travel through shared ventilation systems and door gaps. To prevent this, use activated carbon deodorizers that eliminate odors at the source, maintain daily cleaning, and avoid placing the litter box against shared walls. Proper odor control means neighbors won\'t even know you have a cat.',
-    },
-  ];
-  const faqSchema = structuredDataGenerator.generateFAQ(faqItems);
-
+export default function BestForSmallApartmentsPage() {
   return (
     <>
-      <NextSeo {...nextSeoProps} />
-
-      {/* Auto-generated Article Schema */}
-      {schema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={generateJSONLD(schema)}
-        />
-      )}
-
-      {/* FAQ Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: faqSchema }}
-      />
-
       <article className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
         <Container>
           <div className="max-w-4xl mx-auto">
@@ -114,7 +82,7 @@ export default function BestForSmallApartments() {
                 Best Litter for Apartments With No Ventilation: Small Space Solutions
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Living in a small apartment doesn't mean compromising on air quality. Discover proven
+                Living in a small apartment doesn&apos;t mean compromising on air quality. Discover proven
                 strategies and products to keep your urban space fresh and odor-free.
               </p>
               <div className="flex items-center justify-center space-x-4 mt-6 text-sm text-gray-500 dark:text-gray-400">
@@ -196,7 +164,7 @@ export default function BestForSmallApartments() {
                     <div className="flex-1">
                       <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Activated Carbon Litter Additives</h3>
                       <p className="text-gray-700 dark:text-gray-200 mb-4">
-                        <strong>Why it's #1:</strong> Maximum odor elimination in minimal space.
+                        <strong>Why it&apos;s #1:</strong> Maximum odor elimination in minimal space.
                         Activated carbon provides professional-grade odor control without taking up extra room.
                       </p>
                       <div className="mb-6">
@@ -262,21 +230,6 @@ export default function BestForSmallApartments() {
                   </div>
                 </div>
 
-                {/* Ventilation Image */}
-                <div className="mb-8">
-                  <Image
-                    src={ventilationImage}
-                    alt="Well-ventilated apartment room with strategic airflow for odor control"
-                    className="w-full h-auto rounded-xl shadow-lg"
-                    width={1024}
-                    height={1024}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 800px, 1024px"
-                  />
-                  <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">
-                    Strategic ventilation is crucial for small apartment odor control
-                  </p>
-                </div>
-
                 {/* Solution 3 */}
                 <div className="border border-gray-200 dark:border-gray-600 rounded-lg p-6">
                   <div className="flex items-start space-x-4">
@@ -286,7 +239,7 @@ export default function BestForSmallApartments() {
                     <div className="flex-1">
                       <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-3">Strategic Ventilation Optimization</h3>
                       <p className="text-gray-700 dark:text-gray-200 mb-4">
-                        Maximize your apartment's natural airflow to work with your odor control products.
+                        Maximize your apartment&apos;s natural airflow to work with your odor control products.
                       </p>
                       <div className="space-y-3">
                         <div className="flex items-start space-x-3">
@@ -434,7 +387,7 @@ export default function BestForSmallApartments() {
               <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Budget-Friendly Solutions</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
-                Effective <strong>small space pet odor</strong> control doesn't have to break the bank.
+                Effective <strong>small space pet odor</strong> control doesn&apos;t have to break the bank.
                 Here are cost-effective strategies for apartment dwellers:
               </p>
 
@@ -464,7 +417,7 @@ export default function BestForSmallApartments() {
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Apartment living means being considerate of neighbors. These practices ensure your
-                odor control doesn't become someone else's problem:
+                odor control doesn&apos;t become someone else&apos;s problem:
               </p>
 
               <div className="mb-8">
@@ -514,7 +467,7 @@ export default function BestForSmallApartments() {
               <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Emergency Odor Control</h2>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
-                Sometimes you need immediate odor control for unexpected situations. Here's your emergency protocol:
+                Sometimes you need immediate odor control for unexpected situations. Here&apos;s your emergency protocol:
               </p>
 
               <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-lg p-6 mb-8">
@@ -532,7 +485,7 @@ export default function BestForSmallApartments() {
                 <h3 className="font-heading text-xl font-bold text-[#FF3131] dark:text-[#FF6B6B] mb-4">🏆 Why Purrify Works Best in Small Apartments</h3>
                 <div className="grid md:grid-cols-2 gap-4 text-gray-700 dark:text-gray-200">
                   <div>
-                    <strong>Compact Storage:</strong> Small containers don't take up precious space
+                    <strong>Compact Storage:</strong> Small containers don&apos;t take up precious space
                   </div>
                   <div>
                     <strong>Maximum Efficiency:</strong> Professional-grade odor control in minimal amounts
@@ -567,8 +520,9 @@ export default function BestForSmallApartments() {
               <p className="text-gray-700 dark:text-gray-200">
                 Remember, successful apartment odor control is about consistency and the right products.
                 <Link href="/products" className="text-[#FF3131] dark:text-[#FF6B6B] hover:underline font-medium">
-                  Start with Purrify's compact 12g size</Link> and experience how professional-grade
-                odor control can transform your small space living experience.
+                  {' '}Start with Purrify&apos;s compact 12g size
+                </Link>{' '}
+                and experience how professional-grade odor control can transform your small space living experience.
               </p>
             </div>
 
@@ -587,41 +541,6 @@ export default function BestForSmallApartments() {
                     <p className="text-gray-700 dark:text-gray-300">{item.answer}</p>
                   </div>
                 ))}
-              </div>
-            </div>
-
-            {/* Additional Resources */}
-            <div className="mt-12 bg-gray-50 dark:bg-gray-800/50 rounded-xl p-8">
-              <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6">More Helpful Resources</h2>
-              <div className="grid md:grid-cols-2 gap-4">
-                <Link href="/learn/solutions/ammonia-smell-cat-litter" className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-700">
-                  <span className="text-2xl">💨</span>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-gray-100">Why Cat Litter Smells Like Ammonia</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Understand the science behind litter box odor</p>
-                  </div>
-                </Link>
-                <Link href="/learn/solutions/multiple-cats-odor-control" className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-700">
-                  <span className="text-2xl">🐱🐱</span>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-gray-100">Multi-Cat Odor Control</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Special tips for households with multiple cats</p>
-                  </div>
-                </Link>
-                <Link href="/learn/activated-carbon-benefits" className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-700">
-                  <span className="text-2xl">⚗️</span>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-gray-100">How Activated Carbon Works</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">The science of odor elimination</p>
-                  </div>
-                </Link>
-                <Link href="/learn/cat-litter-ammonia-health-risks" className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-700">
-                  <span className="text-2xl">⚠️</span>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-gray-100">Ammonia Health Risks</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Why odor control matters for your health</p>
-                  </div>
-                </Link>
               </div>
             </div>
 

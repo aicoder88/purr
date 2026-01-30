@@ -1,134 +1,61 @@
-import { NextSeo } from 'next-seo';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArticleSchema } from '../../src/components/seo/json-ld-schema';
-import { useTranslation } from '../../src/lib/translation-context';
-import { buildLanguageAlternates, getLocalizedUrl } from '../../src/lib/seo-utils';
-import { HowToSection } from '../../src/components/seo/HowToSection';
-import { AIQuotableBlock } from '../../src/components/seo/AIQuotableBlock';
-import { RelatedQuestions } from '../../src/components/seo/RelatedQuestions';
-import { RelatedContent } from '../../src/components/seo/RelatedContent';
+import { RelatedContent } from '@/components/seo/RelatedContent';
+
+export const metadata: Metadata = {
+  title: 'Cat Litter Smell Won\'t Go Away? Here\'s Why (And How to Fix It)',
+  description: 'Frustrated that your cat litter smell won\'t go away no matter what you try? Learn why common methods fail and the science-backed solution that actually works.',
+  keywords: "cat litter smell won't go away, litter box still smells after cleaning, cat urine smell won't go away, persistent cat litter odor, why does my litter box smell so bad",
+  alternates: {
+    canonical: 'https://www.purrify.ca/blog/cat-litter-smell-wont-go-away',
+  },
+  openGraph: {
+    title: 'Cat Litter Smell Won\'t Go Away? Here\'s Why (And How to Fix It)',
+    description: 'Frustrated that your cat litter smell won\'t go away no matter what you try? Learn why common methods fail.',
+    url: 'https://www.purrify.ca/blog/cat-litter-smell-wont-go-away',
+    images: [
+      {
+        url: 'https://www.purrify.ca/optimized/tried-hero.jpg',
+        width: 1200,
+        height: 675,
+      },
+    ],
+  },
+};
+
+const heroImage = '/optimized/tried-hero.jpg';
+
+const faqQuestions = [
+  {
+    question: "Why does my cat's litter box smell even when it's clean?",
+    answer: "Even in a clean box, ammonia can be absorbed into the plastic over time. Microscopic scratches harbor bacteria that produce odor. Additionally, if you're not using an odor-neutralizing additive like activated carbon, trace amounts of urine on litter granules continue producing ammonia. The litter itself may also be low quality and not clumping effectively.",
+  },
+  {
+    question: 'Why did my cat litter suddenly start smelling worse?',
+    answer: "Sudden odor changes often indicate: 1) A medical issue like kidney disease, diabetes, or UTI (vet visit recommended), 2) Diet changes affecting urine concentration, 3) Dehydration making urine more concentrated, 4) A change in litter brand, or 5) Seasonal humidity increases that intensify ammonia volatility.",
+  },
+  {
+    question: 'Does baking soda actually help with litter box smell?',
+    answer: "Baking soda provides minimal help. It works through neutralization (a chemical reaction), but ammonia is produced continuously faster than baking soda can neutralize it. Studies show baking soda reduces ammonia by only 10-15%, while activated carbon achieves 92% reduction through adsorption—physically trapping odor molecules before they reach your nose.",
+  },
+  {
+    question: 'How often should I completely change the litter?',
+    answer: "With clumping litter and daily scooping, a complete change every 2-4 weeks is typically sufficient. However, if odor persists despite scooping, you may need to change more frequently or add an odor-trapping additive. Always wash the box during complete changes.",
+  },
+  {
+    question: 'Will air fresheners help with cat litter smell?',
+    answer: "Air fresheners only mask odors temporarily—they don't eliminate them. Some fragrances can also irritate your cat's sensitive respiratory system. Focus on source control: removing waste quickly and trapping ammonia molecules with activated carbon before they disperse into your home.",
+  },
+  {
+    question: 'Is the litter box smell harmful to my health?',
+    answer: "Yes, prolonged ammonia exposure can be harmful. Concentrations above 25 ppm cause eye and respiratory irritation. Cat litter boxes can reach 50+ ppm in enclosed spaces. Children, pregnant women, and those with asthma are especially vulnerable. Controlling ammonia at the source is both a comfort and health issue.",
+  },
+];
 
 export default function CatLitterSmellWontGoAwayPage() {
-  const { locale } = useTranslation();
-  const seoTitle = "Cat Litter Smell Won't Go Away? Here's Why (And How to Fix It)";
-  const seoDescription = "Frustrated that your cat litter smell won't go away no matter what you try? Learn why common methods fail and the science-backed solution that actually works.";
-  const canonicalUrl = getLocalizedUrl('/blog/cat-litter-smell-wont-go-away', locale);
-  const languageAlternates = buildLanguageAlternates('/blog/cat-litter-smell-wont-go-away');
-
-  const heroImage = '/optimized/tried-hero.jpg';
-
-  // HowTo steps for eliminating persistent odor
-  const howToSteps = [
-    {
-      name: 'Rule out medical issues',
-      text: 'Sudden changes in urine odor can indicate kidney disease, diabetes, or urinary infections. If your cat\'s litter suddenly smells much worse than usual, schedule a vet visit to rule out health problems.',
-      tip: 'Changes in color, frequency, or smell warrant veterinary attention.',
-    },
-    {
-      name: 'Deep clean the litter box',
-      text: 'Empty the box completely. Wash with dish soap and warm water, then disinfect with a diluted bleach solution (1:10 ratio). Rinse thoroughly and dry completely before adding new litter. Replace plastic boxes every 6-12 months.',
-      tip: 'Avoid ammonia-based cleaners—they can trigger more marking behavior.',
-    },
-    {
-      name: 'Switch to unscented clumping litter',
-      text: 'Scented litters often mask rather than eliminate odors, and cats may reject them. Use a high-quality unscented clumping litter that isolates waste quickly, preventing ammonia from spreading through the entire box.',
-      tip: 'Transition gradually by mixing new litter with old over 7-10 days.',
-    },
-    {
-      name: 'Maintain proper litter depth',
-      text: 'Keep litter at 3-4 inches deep. Too shallow and urine reaches the bottom (causing odor buildup); too deep and clumps don\'t form properly. Check depth after each scooping session.',
-      tip: 'Mark the ideal depth level on the inside of your box for easy reference.',
-    },
-    {
-      name: 'Add activated carbon',
-      text: 'Sprinkle activated carbon granules (like Purrify) on top of the litter. Activated carbon adsorbs ammonia and VOCs at the molecular level—the same technology used in gas masks and water purification. Replace weekly for continuous protection.',
-      tip: 'One gram of activated carbon has 3,000 m² of surface area for trapping odors.',
-    },
-    {
-      name: 'Increase scooping frequency',
-      text: 'Scoop at least twice daily—once in the morning and once at night. Ammonia production begins within hours of urination. The faster you remove waste, the less odor develops in the first place.',
-      tip: 'Set phone reminders if you tend to forget.',
-    },
-    {
-      name: 'Improve ventilation',
-      text: 'If the litter box is in an enclosed space, add airflow. A small fan on low speed, an air purifier with activated carbon filter, or simply leaving doors open can prevent odor concentration.',
-      tip: 'Avoid placing boxes in humid areas like bathrooms—humidity intensifies ammonia smell.',
-    },
-  ];
-
-  // FAQ questions
-  const faqQuestions = [
-    {
-      question: "Why does my cat's litter box smell even when it's clean?",
-      answer: "Even in a clean box, ammonia can be absorbed into the plastic over time. Microscopic scratches harbor bacteria that produce odor. Additionally, if you're not using an odor-neutralizing additive like activated carbon, trace amounts of urine on litter granules continue producing ammonia. The litter itself may also be low quality and not clumping effectively.",
-    },
-    {
-      question: 'Why did my cat litter suddenly start smelling worse?',
-      answer: "Sudden odor changes often indicate: 1) A medical issue like kidney disease, diabetes, or UTI (vet visit recommended), 2) Diet changes affecting urine concentration, 3) Dehydration making urine more concentrated, 4) A change in litter brand, or 5) Seasonal humidity increases that intensify ammonia volatility.",
-    },
-    {
-      question: 'Does baking soda actually help with litter box smell?',
-      answer: "Baking soda provides minimal help. It works through neutralization (a chemical reaction), but ammonia is produced continuously faster than baking soda can neutralize it. Studies show baking soda reduces ammonia by only 10-15%, while activated carbon achieves 92% reduction through adsorption—physically trapping odor molecules before they reach your nose.",
-    },
-    {
-      question: 'How often should I completely change the litter?',
-      answer: "With clumping litter and daily scooping, a complete change every 2-4 weeks is typically sufficient. However, if odor persists despite scooping, you may need to change more frequently or add an odor-trapping additive. Always wash the box during complete changes.",
-    },
-    {
-      question: 'Will air fresheners help with cat litter smell?',
-      answer: "Air fresheners only mask odors temporarily—they don't eliminate them. Some fragrances can also irritate your cat's sensitive respiratory system. Focus on source control: removing waste quickly and trapping ammonia molecules with activated carbon before they disperse into your home.",
-    },
-    {
-      question: 'Is the litter box smell harmful to my health?',
-      answer: "Yes, prolonged ammonia exposure can be harmful. Concentrations above 25 ppm cause eye and respiratory irritation. Cat litter boxes can reach 50+ ppm in enclosed spaces. Children, pregnant women, and those with asthma are especially vulnerable. Controlling ammonia at the source is both a comfort and health issue.",
-    },
-  ];
-
   return (
     <>
-      <NextSeo
-        title={seoTitle}
-        description={seoDescription}
-        canonical={canonicalUrl}
-        languageAlternates={languageAlternates}
-        openGraph={{
-          type: 'article',
-          url: canonicalUrl,
-          title: seoTitle,
-          description: seoDescription,
-          images: [
-            {
-              url: `https://www.purrify.ca${heroImage}`,
-              width: 1200,
-              height: 675,
-              alt: 'Cat litter odor elimination guide',
-            },
-          ],
-        }}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: "cat litter smell won't go away, litter box still smells after cleaning, cat urine smell won't go away, persistent cat litter odor, why does my litter box smell so bad",
-          },
-        ]}
-      />
-
-      <ArticleSchema
-        title={seoTitle}
-        description={seoDescription}
-        path="/blog/cat-litter-smell-wont-go-away"
-        options={{
-          category: 'Cat Care',
-          keywords: ['cat litter smell', 'litter box odor', 'ammonia', 'odor control'],
-          datePublished: '2024-01-22T12:00:00Z',
-          dateModified: new Date().toISOString(),
-          image: heroImage,
-          wordCount: 2200,
-          readingTime: 10
-        }}
-      />
-
       <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
         {/* Hero Section */}
         <section className="py-16 px-4">
@@ -229,13 +156,6 @@ export default function CatLitterSmellWontGoAwayPage() {
                 </p>
               </div>
             </div>
-
-            <AIQuotableBlock
-              fact="Cat urine produces ammonia concentrations of 5-50 ppm within 24 hours of urination. Without active odor trapping, a single cat's litter box can exceed the 25 ppm threshold for human respiratory irritation."
-              explanation="This is why 'clean enough' is never enough for sensitive noses—ammonia builds faster than most methods can handle."
-              icon="science"
-              variant="highlight"
-            />
           </div>
         </section>
 
@@ -279,77 +199,6 @@ export default function CatLitterSmellWontGoAwayPage() {
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Activated carbon</p>
               </div>
             </div>
-
-            <AIQuotableBlock
-              fact="One gram of activated carbon has a surface area of 1,000-3,000 square meters—roughly the size of a tennis court. This massive surface area traps ammonia and VOC molecules through Van der Waals forces, permanently removing them from the air."
-              explanation="Adsorption is the same technology used in gas masks, water purification, and hospital air systems."
-              icon="stat"
-              variant="default"
-            />
-          </div>
-        </section>
-
-        {/* Step by Step Solution */}
-        <section className="py-12 px-4 bg-white dark:bg-gray-800">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">
-              How to Finally Eliminate That Persistent Smell
-            </h2>
-
-            <p className="text-gray-700 dark:text-gray-200 mb-8">
-              Follow this systematic approach to address every possible cause. Most people solve their odor
-              problem within the first three steps.
-            </p>
-
-            <HowToSection
-              title="Eliminate Persistent Litter Box Odor"
-              description="A comprehensive guide to finally eliminating cat litter smell that won't go away"
-              steps={howToSteps}
-              totalTime="2-4 hours (initial setup) + 5 minutes daily"
-            />
-          </div>
-        </section>
-
-        {/* Warning Signs */}
-        <section className="py-12 px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">
-              When to See a Vet
-            </h2>
-
-            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-xl p-6 mb-8">
-              <h3 className="font-bold text-red-800 dark:text-red-200 mb-4">
-                Sudden Odor Changes May Indicate Health Issues
-              </h3>
-              <p className="text-gray-700 dark:text-gray-200 mb-4">
-                If your cat&apos;s urine suddenly smells significantly stronger or different than normal,
-                it could indicate a medical condition requiring veterinary attention:
-              </p>
-              <ul className="space-y-2 text-gray-700 dark:text-gray-200">
-                <li className="flex items-start gap-2">
-                  <span className="text-red-500 dark:text-red-400">!</span>
-                  <span><strong>Kidney disease</strong> — produces highly concentrated, pungent urine</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-500 dark:text-red-400">!</span>
-                  <span><strong>Diabetes</strong> — can create a sweet or fruity odor</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-500 dark:text-red-400">!</span>
-                  <span><strong>Urinary tract infection</strong> — may cause unusually foul-smelling urine</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-500 dark:text-red-400">!</span>
-                  <span><strong>Dehydration</strong> — concentrated urine from insufficient water intake</span>
-                </li>
-              </ul>
-            </div>
-
-            <p className="text-gray-700 dark:text-gray-200">
-              If the odor issue is new and your cat hasn&apos;t had a checkup recently, rule out medical
-              causes before assuming it&apos;s a litter box management problem. Senior cats especially
-              should have kidney function tested annually.
-            </p>
           </div>
         </section>
 
@@ -399,14 +248,64 @@ export default function CatLitterSmellWontGoAwayPage() {
           </div>
         </section>
 
-        {/* FAQ Section */}
+        {/* Warning Signs */}
         <section className="py-12 px-4">
           <div className="max-w-4xl mx-auto">
-            <RelatedQuestions
-              title="Persistent Litter Odor FAQ"
-              questions={faqQuestions}
-              defaultOpen={[0]}
-            />
+            <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">
+              When to See a Vet
+            </h2>
+
+            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-xl p-6 mb-8">
+              <h3 className="font-bold text-red-800 dark:text-red-200 mb-4">
+                Sudden Odor Changes May Indicate Health Issues
+              </h3>
+              <p className="text-gray-700 dark:text-gray-200 mb-4">
+                If your cat&apos;s urine suddenly smells significantly stronger or different than normal,
+                it could indicate a medical condition requiring veterinary attention:
+              </p>
+              <ul className="space-y-2 text-gray-700 dark:text-gray-200">
+                <li className="flex items-start gap-2">
+                  <span className="text-red-500 dark:text-red-400">!</span>
+                  <span><strong>Kidney disease</strong> — produces highly concentrated, pungent urine</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-red-500 dark:text-red-400">!</span>
+                  <span><strong>Diabetes</strong> — can create a sweet or fruity odor</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-red-500 dark:text-red-400">!</span>
+                  <span><strong>Urinary tract infection</strong> — may cause unusually foul-smelling urine</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-red-500 dark:text-red-400">!</span>
+                  <span><strong>Dehydration</strong> — concentrated urine from insufficient water intake</span>
+                </li>
+              </ul>
+            </div>
+
+            <p className="text-gray-700 dark:text-gray-200">
+              If the odor issue is new and your cat hasn&apos;t had a checkup recently, rule out medical
+              causes before assuming it&apos;s a litter box management problem. Senior cats especially
+              should have kidney function tested annually.
+            </p>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-12 px-4 bg-white dark:bg-gray-800">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">
+              Frequently Asked Questions
+            </h2>
+
+            <div className="space-y-4">
+              {faqQuestions.map((faq, index) => (
+                <div key={index} className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
+                  <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">{faq.question}</h3>
+                  <p className="text-gray-700 dark:text-gray-200">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

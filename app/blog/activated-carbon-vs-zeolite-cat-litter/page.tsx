@@ -1,8 +1,8 @@
-import Head from 'next/head';
+import type { Metadata } from 'next';
 import Image from 'next/image';
-import { Container } from '../../src/components/ui/container';
-import { SITE_NAME } from '../../src/lib/constants';
 import Link from 'next/link';
+import { Container } from '@/components/ui/container';
+import { SITE_NAME } from '@/lib/constants';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 import { Check, X, FlaskConical, Timer, Shield, Leaf, Droplets, Zap } from 'lucide-react';
 
@@ -10,38 +10,49 @@ import { Check, X, FlaskConical, Timer, Shield, Leaf, Droplets, Zap } from 'luci
 const heroImage = '/optimized/activated-carbon-granules.webp';
 const comparisonImage = '/optimized/carbon_magnified_image.webp';
 
-export default function ActivatedCarbonVsZeolite() {
+export const metadata: Metadata = {
+  title: `Zeolite vs Activated Carbon for Cat Litter: Which Works Better? | ${SITE_NAME}`,
+  description: 'Zeolite and activated carbon both claim to eliminate cat litter odor. We compared their molecular structures, absorption rates, and real-world performance. Here\'s the winner.',
+  keywords: 'zeolite vs activated charcoal, zeolite cat litter, activated carbon cat litter, best cat litter deodorizer, zeolite litter additive',
+  alternates: {
+    canonical: 'https://www.purrify.ca/blog/activated-carbon-vs-zeolite-cat-litter',
+  },
+  openGraph: {
+    title: 'Zeolite vs Activated Carbon: Which Eliminates Cat Litter Odor Better?',
+    description: 'Both claim to eliminate odor, but only one actually traps ammonia at the molecular level. See the science behind the winner.',
+    url: 'https://www.purrify.ca/blog/activated-carbon-vs-zeolite-cat-litter',
+    images: [
+      {
+        url: `https://www.purrify.ca${heroImage}`,
+        width: 1600,
+        height: 900,
+      },
+    ],
+  },
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Zeolite vs Activated Carbon for Cat Litter: The Scientific Comparison',
+  image: [`https://www.purrify.ca${heroImage}`],
+  datePublished: '2025-01-22',
+  dateModified: new Date().toISOString().split('T')[0],
+  author: { '@type': 'Organization', name: 'Purrify' },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Purrify',
+    logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/optimized/logo-icon-512.webp' },
+  },
+};
+
+export default function ActivatedCarbonVsZeoliteCatLitterPage() {
   return (
     <>
-      <Head>
-        <title>{`Zeolite vs Activated Carbon for Cat Litter: Which Works Better? | ${SITE_NAME}`}</title>
-        <meta name="description" content="Zeolite and activated carbon both claim to eliminate cat litter odor. We compared their molecular structures, absorption rates, and real-world performance. Here's the winner." />
-        <meta name="keywords" content="zeolite vs activated charcoal, zeolite cat litter, activated carbon cat litter, best cat litter deodorizer, zeolite litter additive" />
-
-        {/* Open Graph */}
-        <meta property="og:title" content="Zeolite vs Activated Carbon: Which Eliminates Cat Litter Odor Better?" />
-        <meta property="og:description" content="Both claim to eliminate odor, but only one actually traps ammonia at the molecular level. See the science behind the winner." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://www.purrify.ca/blog/activated-carbon-vs-zeolite-cat-litter" />
-        <meta property="og:image" content={`https://www.purrify.ca${heroImage}`} />
-
-        {/* Canonical */}
-        <link rel="canonical" href="https://www.purrify.ca/blog/activated-carbon-vs-zeolite-cat-litter" />
-
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "Zeolite vs Activated Carbon for Cat Litter: The Scientific Comparison",
-            "image": [`https://www.purrify.ca${heroImage}`],
-            "datePublished": "2025-01-22",
-            "dateModified": new Date().toISOString().split('T')[0],
-            "author": { "@type": "Organization", "name": "Purrify" },
-            "publisher": { "@type": "Organization", "name": "Purrify", "logo": { "@type": "ImageObject", "url": "https://www.purrify.ca/optimized/logo-icon-512.webp" } }
-          })}
-        </script>
-      </Head>
-
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <div className="bg-cream-50 dark:bg-gray-900 min-h-screen">
         <Container>
           <article className="max-w-4xl mx-auto py-12 md:py-20 px-4">
@@ -103,14 +114,14 @@ export default function ActivatedCarbonVsZeolite() {
                   <div className="mt-1 bg-forest-100 dark:bg-forest-900/50 p-1 rounded-full text-forest-600 dark:text-forest-400">
                     <Zap className="w-4 h-4" />
                   </div>
-                  <p className="text-gray-700 dark:text-gray-300"><strong>For cat litter odor?</strong> Activated carbon wins. Ammonia is a gas, and carbon's adsorption mechanism is specifically designed to trap gases.</p>
+                  <p className="text-gray-700 dark:text-gray-300"><strong>For cat litter odor?</strong> Activated carbon wins. Ammonia is a gas, and carbon&apos;s adsorption mechanism is specifically designed to trap gases.</p>
                 </li>
               </ul>
             </div>
 
             <div className="prose prose-lg prose-forest max-w-none dark:prose-invert">
               <p className="lead text-2xl font-medium text-gray-800 dark:text-gray-200 mb-10">
-                If you've researched natural odor eliminators, you've probably seen both zeolite and activated carbon marketed as miracle solutions. But which one actually works for the sharp ammonia smell from your cat's litter box?
+                If you&apos;ve researched natural odor eliminators, you&apos;ve probably seen both zeolite and activated carbon marketed as miracle solutions. But which one actually works for the sharp ammonia smell from your cat&apos;s litter box?
               </p>
 
               {/* Understanding the Two Materials */}
@@ -135,7 +146,7 @@ export default function ActivatedCarbonVsZeolite() {
               <div className="bg-gradient-to-r from-forest-50 to-blue-50 dark:from-gray-800 dark:to-gray-800 rounded-2xl p-8 my-12">
                 <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">The Critical Difference: Gas vs. Liquid</h3>
                 <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  Here's what most comparisons miss: <strong>cat litter odor is primarily airborne ammonia gas</strong>, not dissolved ammonia ions.
+                  Here&apos;s what most comparisons miss: <strong>cat litter odor is primarily airborne ammonia gas</strong>, not dissolved ammonia ions.
                 </p>
                 <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                   <li className="flex items-start gap-2">
@@ -144,11 +155,11 @@ export default function ActivatedCarbonVsZeolite() {
                   </li>
                   <li className="flex items-start gap-2">
                     <X className="w-5 h-5 text-red-500 dark:text-red-400 mt-0.5 flex-shrink-0" />
-                    <span>Zeolite's ion exchange works best with dissolved compounds in liquid</span>
+                    <span>Zeolite&apos;s ion exchange works best with dissolved compounds in liquid</span>
                   </li>
                 </ul>
                 <p className="text-gray-700 dark:text-gray-300 mt-4 text-sm italic">
-                  This is why zeolite-based products often disappoint cat owners - they're fighting the wrong battle.
+                  This is why zeolite-based products often disappoint cat owners - they&apos;re fighting the wrong battle.
                 </p>
               </div>
 
@@ -162,14 +173,14 @@ export default function ActivatedCarbonVsZeolite() {
                 </div>
 
                 {[
-                  { name: "Surface Area", carbon: "1,000-3,000 m²/g", zeolite: "300-800 m²/g" },
-                  { name: "Ammonia Gas Trapping", carbon: "Excellent", zeolite: "Moderate" },
-                  { name: "Moisture Absorption", carbon: "Moderate", zeolite: "Excellent" },
-                  { name: "Odor Elimination Speed", carbon: "Immediate", zeolite: "Gradual" },
-                  { name: "Longevity in Litter", carbon: "7-14 Days", zeolite: "3-7 Days" },
-                  { name: "pH Stability", carbon: "Neutral", zeolite: "Slightly Alkaline" },
-                  { name: "Cat Safety", carbon: "Non-toxic, Food-grade", zeolite: "Non-toxic, Natural" },
-                  { name: "Dust Level", carbon: "Low (coconut-based)", zeolite: "Can be dusty" },
+                  { name: 'Surface Area', carbon: '1,000-3,000 m²/g', zeolite: '300-800 m²/g' },
+                  { name: 'Ammonia Gas Trapping', carbon: 'Excellent', zeolite: 'Moderate' },
+                  { name: 'Moisture Absorption', carbon: 'Moderate', zeolite: 'Excellent' },
+                  { name: 'Odor Elimination Speed', carbon: 'Immediate', zeolite: 'Gradual' },
+                  { name: 'Longevity in Litter', carbon: '7-14 Days', zeolite: '3-7 Days' },
+                  { name: 'pH Stability', carbon: 'Neutral', zeolite: 'Slightly Alkaline' },
+                  { name: 'Cat Safety', carbon: 'Non-toxic, Food-grade', zeolite: 'Non-toxic, Natural' },
+                  { name: 'Dust Level', carbon: 'Low (coconut-based)', zeolite: 'Can be dusty' },
                 ].map((row, i) => (
                   <div key={i} className={`grid grid-cols-3 p-4 items-center ${i % 2 === 0 ? 'bg-white dark:bg-gray-900' : 'bg-gray-50/50 dark:bg-gray-800/50'}`}>
                     <div className="font-semibold text-gray-900 dark:text-gray-100 text-sm md:text-base">{row.name}</div>
@@ -186,7 +197,7 @@ export default function ActivatedCarbonVsZeolite() {
                   When Zeolite Does Help
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  To be fair, zeolite isn't useless - it has legitimate applications:
+                  To be fair, zeolite isn&apos;t useless - it has legitimate applications:
                 </p>
                 <ul className="space-y-2 text-gray-700 dark:text-gray-300">
                   <li>• High-humidity environments where moisture control is the priority</li>
@@ -195,7 +206,7 @@ export default function ActivatedCarbonVsZeolite() {
                   <li>• As a secondary additive alongside activated carbon</li>
                 </ul>
                 <p className="text-gray-700 dark:text-gray-300 mt-4">
-                  However, for the specific problem of ammonia odor in cat litter, activated carbon's adsorption mechanism is simply better suited to the task.
+                  However, for the specific problem of ammonia odor in cat litter, activated carbon&apos;s adsorption mechanism is simply better suited to the task.
                 </p>
               </div>
 
@@ -217,7 +228,7 @@ export default function ActivatedCarbonVsZeolite() {
                     <div className="grid md:grid-cols-3 gap-6 text-left w-full max-w-3xl">
                       <div className="bg-white/10 dark:bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 dark:border-white/5">
                         <div className="font-bold text-lg mb-1 text-yellow-400 dark:text-yellow-400">4x More Surface</div>
-                        <p className="text-sm text-forest-100 dark:text-forest-200">Up to 3,000 m²/g vs zeolite's 800 m²/g maximum.</p>
+                        <p className="text-sm text-forest-100 dark:text-forest-200">Up to 3,000 m²/g vs zeolite&apos;s 800 m²/g maximum.</p>
                       </div>
                       <div className="bg-white/10 dark:bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 dark:border-white/5">
                         <div className="font-bold text-lg mb-1 text-yellow-400 dark:text-yellow-400">Gas Specialist</div>
@@ -225,7 +236,7 @@ export default function ActivatedCarbonVsZeolite() {
                       </div>
                       <div className="bg-white/10 dark:bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 dark:border-white/5">
                         <div className="font-bold text-lg mb-1 text-yellow-400 dark:text-yellow-400">Longer Lasting</div>
-                        <p className="text-sm text-forest-100 dark:text-forest-200">Works effectively for 7-14 days vs zeolite's 3-7 days.</p>
+                        <p className="text-sm text-forest-100 dark:text-forest-200">Works effectively for 7-14 days vs zeolite&apos;s 3-7 days.</p>
                       </div>
                     </div>
                   </div>
@@ -239,7 +250,7 @@ export default function ActivatedCarbonVsZeolite() {
                   Our Recommendation
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  If you're dealing with cat litter odor, choose a <strong>coconut shell activated carbon</strong> product. Here's why coconut-based specifically:
+                  If you&apos;re dealing with cat litter odor, choose a <strong>coconut shell activated carbon</strong> product. Here&apos;s why coconut-based specifically:
                 </p>
                 <ul className="space-y-2 text-gray-700 dark:text-gray-300 mb-6">
                   <li className="flex items-start gap-2">
@@ -281,7 +292,7 @@ export default function ActivatedCarbonVsZeolite() {
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
                   <h4 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">Why do some products combine both?</h4>
-                  <p className="text-gray-700 dark:text-gray-300 m-0">Marketing often drives this decision. While the combination can work, it's usually more expensive without providing proportionally better results for odor control specifically.</p>
+                  <p className="text-gray-700 dark:text-gray-300 m-0">Marketing often drives this decision. While the combination can work, it&apos;s usually more expensive without providing proportionally better results for odor control specifically.</p>
                 </div>
               </div>
 
