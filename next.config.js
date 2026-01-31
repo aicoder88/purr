@@ -868,6 +868,8 @@ const nextConfig = {
   },
   // i18n config for Pages Router (required for pages/ directory)
   // App Router uses next-intl with its own routing configuration
+  // NOTE: This config causes a warning from next-intl ("i18n property found..."), 
+  // but it MUST be kept to support existing Pages Router routes during hybrid migration.
   i18n: {
     locales: ['en', 'fr', 'zh', 'es'],
     defaultLocale: 'en',
