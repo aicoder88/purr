@@ -8,7 +8,7 @@ interface HeroVideoProps {
 
 export const HeroVideo = ({ t }: HeroVideoProps) => {
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
-  const { videoRef, mediaContainerRef, state, handleVideoPlay, handleVideoEnded, toggleMute, handleVolumeChange } = useVideoPlayer([isMobile]);
+  const { videoRef, mediaContainerRef, state, replay, toggleMute, handleVolumeChange } = useVideoPlayer([isMobile]);
 
   // Screen size detection for optimized loading
   useEffect(() => {
@@ -33,14 +33,14 @@ export const HeroVideo = ({ t }: HeroVideoProps) => {
 
       {/* Video Container - Responsive Aspect Ratio */}
       <div className={`relative overflow-hidden rounded-3xl shadow-2xl dark:shadow-gray-800 group-hover:shadow-[#E0EFC7]/50 dark:group-hover:shadow-[#3694FF]/30 transition-all duration-500 w-full bg-gray-100 dark:bg-gray-800 mx-auto
-        ${isMobile ? 'aspect-[3/4] w-full max-w-md' : 'h-full min-h-[500px]'}`}
+        ${isMobile ? 'aspect-[3/4] w-full max-w-md' : 'aspect-[4/5] w-full max-w-lg xl:max-w-xl'}`}
       >
 
         {/* Replay Button Overlay */}
-        {state.showPlayButton && (
+        {state.showReplayButton && (
           <button
             className="absolute inset-0 bg-black/20 z-20 flex items-center justify-center cursor-pointer border-0 focus:outline-none focus:ring-2 focus:ring-[#FF3131] focus:ring-offset-2 w-full h-full"
-            onClick={handleVideoPlay}
+            onClick={replay}
             aria-label="Replay video"
             type="button"
           >
@@ -91,7 +91,7 @@ export const HeroVideo = ({ t }: HeroVideoProps) => {
               src="/images/purrify-demo-poster.webp"
               alt="How to use Purrify: Pouring activated carbon litter additive onto litter instantly neutralizing odors."
               fill
-              className="object-cover"
+              className="object-cover object-top"
               sizes="(max-width: 480px) 100vw, 800px"
               priority
             />
@@ -101,7 +101,7 @@ export const HeroVideo = ({ t }: HeroVideoProps) => {
             <video
               key={isMobile ? 'mobile' : 'desktop'} // Force remount on switch to load correct source
               ref={videoRef}
-              className="w-full h-full object-cover dark:brightness-90 dark:contrast-100"
+              className="w-full h-full object-cover object-top dark:brightness-90 dark:contrast-100"
               autoPlay
               muted={state.isMuted}
               playsInline
@@ -113,7 +113,7 @@ export const HeroVideo = ({ t }: HeroVideoProps) => {
               disablePictureInPicture
               disableRemotePlayback
               crossOrigin="anonymous"
-              onEnded={handleVideoEnded}
+              loop={false}
             >
               <source
                 src={isMobile ? mobileSrc.replace('.mp4', '.webm') : desktopSrc.replace('.mp4', '.webm')}
@@ -130,12 +130,9 @@ export const HeroVideo = ({ t }: HeroVideoProps) => {
       </div>
 
       {/* Caption */}
-      <div className="mt-6 text-center max-w-2xl mx-auto relative z-10">
-        <p className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-1">
+      <div className="mt-4 text-center max-w-2xl mx-auto relative z-10">
+        <p className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
           Just Pour. Mix. And Breathe Easy.
-        </p>
-        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
-          No complex setup. See how easily Purrify works with your existing litter to trap odors instantly.
         </p>
       </div>
     </div>

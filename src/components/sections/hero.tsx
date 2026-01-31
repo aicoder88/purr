@@ -9,7 +9,7 @@ export function Hero() {
   const { t, locale } = useTranslation();
 
   return (
-    <section className="relative w-full pt-24 pb-20 overflow-hidden bg-mesh-gradient transition-colors duration-300" style={{ willChange: 'auto' }}>
+    <section className="relative w-full pt-16 md:pt-20 pb-12 md:pb-16 overflow-hidden bg-mesh-gradient transition-colors duration-300" style={{ willChange: 'auto' }}>
 
       {/* Animated decorative background - reduced blur on mobile for performance */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none hidden sm:block">
