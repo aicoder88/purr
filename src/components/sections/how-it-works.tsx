@@ -1,3 +1,5 @@
+"use client";
+
 import { Container } from "@/components/ui/container";
 import Image from 'next/image';
 import { useTranslation } from "../../lib/translation-context";
@@ -5,7 +7,7 @@ import Link from "next/link";
 
 export function HowItWorks() {
   const { t, locale } = useTranslation();
-  
+
   const steps = (t.howItWorks?.steps || []).map((step, index) => ({
     number: step.number,
     title: step.title,
@@ -45,13 +47,12 @@ export function HowItWorks() {
             >
               <div className="bg-white dark:bg-gray-800 backdrop-blur-sm rounded-3xl p-10 h-full border-2 border-purple-200 dark:border-purple-800 shadow-2xl transition-all duration-500 hover:shadow-purple-500/30 dark:hover:shadow-purple-500/50 hover:-translate-y-4 z-10 relative">
                 <div
-                  className={`absolute -top-8 left-1/2 -translate-x-1/2 ${
-                    index === 0
+                  className={`absolute -top-8 left-1/2 -translate-x-1/2 ${index === 0
                       ? "bg-gradient-to-r from-purple-600 to-purple-500"
                       : index === 1
-                      ? "bg-gradient-to-r from-pink-600 to-pink-500"
-                      : "bg-gradient-to-r from-orange-600 to-orange-500"
-                  } text-white w-20 h-20 rounded-full flex items-center justify-center font-black text-3xl shadow-2xl group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 z-20 border-4 border-white dark:border-gray-900`}
+                        ? "bg-gradient-to-r from-pink-600 to-pink-500"
+                        : "bg-gradient-to-r from-orange-600 to-orange-500"
+                    } text-white w-20 h-20 rounded-full flex items-center justify-center font-black text-3xl shadow-2xl group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 z-20 border-4 border-white dark:border-gray-900`}
                 >
                   {step.number}
                 </div>
@@ -69,13 +70,12 @@ export function HowItWorks() {
                     />
                   </div>
                   <h3
-                    className={`font-black text-2xl sm:text-3xl mb-4 ${
-                      index === 0
+                    className={`font-black text-2xl sm:text-3xl mb-4 ${index === 0
                         ? "text-purple-600 dark:text-purple-400"
                         : index === 1
-                        ? "text-pink-600 dark:text-pink-400"
-                        : "text-orange-600 dark:text-orange-400"
-                    }`}
+                          ? "text-pink-600 dark:text-pink-400"
+                          : "text-orange-600 dark:text-orange-400"
+                      }`}
                   >
                     {step.title}
                   </h3>

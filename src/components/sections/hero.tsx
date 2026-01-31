@@ -1,3 +1,5 @@
+"use client";
+
 import { Container } from "@/components/ui/container";
 import { useTranslation } from "../../lib/translation-context";
 import { HeroContent } from "./hero/HeroContent";

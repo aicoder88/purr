@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { useTranslation } from "../../lib/translation-context";
@@ -154,8 +156,8 @@ export const ClientLocationsMap: React.FC<ClientLocationsMapProps> = ({
                   key={cityKey}
                   onClick={() => handleCityClick(cityKey)}
                   className={`px-3 py-1.5 rounded transition-all duration-200 ${activeCity === cityKey
-                      ? "bg-brand-green text-white shadow-md transform scale-105 font-medium"
-                      : "bg-brand-green-light/50 dark:bg-brand-green-light/10 hover:bg-brand-green-light hover:text-brand-dark dark:hover:bg-brand-green-light/20"
+                    ? "bg-brand-green text-white shadow-md transform scale-105 font-medium"
+                    : "bg-brand-green-light/50 dark:bg-brand-green-light/10 hover:bg-brand-green-light hover:text-brand-dark dark:hover:bg-brand-green-light/20"
                     }`}
                 >
                   {t.maps?.cities[cityKey] ||

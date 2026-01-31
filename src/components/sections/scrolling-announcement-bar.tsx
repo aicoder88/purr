@@ -1,3 +1,5 @@
+"use client";
+
 import { Truck, MapPin, Leaf, ShieldCheck, Users } from 'lucide-react';
 import { useTranslation } from '../../lib/translation-context';
 

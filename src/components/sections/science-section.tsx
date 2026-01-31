@@ -1,3 +1,5 @@
+"use client";
+
 import { Container } from "@/components/ui/container";
 import Image from "next/image";
 import { useTranslation } from "../../lib/translation-context";

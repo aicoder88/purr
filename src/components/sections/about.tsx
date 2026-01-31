@@ -1,3 +1,5 @@
+"use client";
+
 import { Container } from "@/components/ui/container";
 import SectionHeader from "../ui/section-header";
 import { useTranslation } from "../../lib/translation-context";

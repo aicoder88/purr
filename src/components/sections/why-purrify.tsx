@@ -1,3 +1,5 @@
+"use client";
+
 import { Container } from "@/components/ui/container";
 import { Wind, Cat, Clock, Layers, Sparkles, PiggyBank } from "lucide-react"; // Changed Leaf to Sparkles
 import Image from 'next/image';

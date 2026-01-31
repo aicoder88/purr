@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { Shield, Award, RefreshCw, Truck, Users, Star } from 'lucide-react';
 import { useTranslation } from '../../lib/translation-context';
