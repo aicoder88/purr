@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 interface VideoPlayerState {
-  showPlayButton: boolean;
+  showReplayButton: boolean;
   showPoster: boolean;
   shouldLoadVideo: boolean;
-  hasAttemptedPlay: boolean;
+  isPlaying: boolean;
   isMuted: boolean;
   volume: number;
 }
@@ -14,42 +14,69 @@ interface VideoPlayerState {
 export const useVideoPlayer = (dependencies: any[] = []) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const mediaContainerRef = useRef<HTMLDivElement>(null);
+  const hasEndedRef = useRef(false);
 
   const [state, setState] = useState<VideoPlayerState>({
-    showPlayButton: false,
+    showReplayButton: false,
     showPoster: true,
     shouldLoadVideo: false,
-    hasAttemptedPlay: false,
+    isPlaying: false,
     isMuted: true, // Default to muted for autoplay
     volume: 1, // Default volume 100%
   });
 
-  const handleVideoPlay = async () => {
+  // Play video
+  const play = useCallback(async () => {
     const video = videoRef.current;
     if (!video) return;
 
     try {
       await video.play();
-      setState(prev => ({ ...prev, showPlayButton: false }));
+      hasEndedRef.current = false;
+      setState(prev => ({ ...prev, isPlaying: true, showReplayButton: false, showPoster: false }));
     } catch (err) {
-      // Video autoplay prevented by browser, show manual play button
-      setState(prev => ({ ...prev, showPlayButton: true }));
+      // Autoplay blocked - show controls
+      setState(prev => ({ ...prev, isPlaying: false }));
     }
-  };
+  }, []);
 
-  const handleVideoPlaying = () => {
-    setState(prev => ({ ...prev, showPoster: false }));
-  };
-
-  const handleVideoError = () => {
-    setState(prev => ({ ...prev, showPlayButton: true }));
-  };
-
-  const toggleMute = () => {
+  // Pause video
+  const pause = useCallback(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    const newMutedState = !state.isMuted;
+    video.pause();
+    setState(prev => ({ ...prev, isPlaying: false }));
+  }, []);
+
+  // Toggle play/pause
+  const togglePlayPause = useCallback(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      play();
+    } else {
+      pause();
+    }
+  }, [play, pause]);
+
+  // Replay from beginning
+  const replay = useCallback(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.currentTime = 0;
+    hasEndedRef.current = false;
+    play();
+  }, [play]);
+
+  // Toggle mute
+  const toggleMute = useCallback(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const newMutedState = !video.muted;
     video.muted = newMutedState;
 
     // If unmuting, ensure volume is up
@@ -60,11 +87,12 @@ export const useVideoPlayer = (dependencies: any[] = []) => {
     setState(prev => ({
       ...prev,
       isMuted: newMutedState,
-      volume: newMutedState ? 0 : (prev.volume || 1)
+      volume: newMutedState ? 0 : (video.volume || 1)
     }));
-  };
+  }, []);
 
-  const handleVolumeChange = (newVolume: number) => {
+  // Handle volume change
+  const handleVolumeChange = useCallback((newVolume: number) => {
     const video = videoRef.current;
     if (!video) return;
 
@@ -76,34 +104,58 @@ export const useVideoPlayer = (dependencies: any[] = []) => {
       volume: newVolume,
       isMuted: newVolume === 0
     }));
-  };
+  }, []);
 
-  // Setup video event listeners
+  // Detect video near end and pause (to prevent auto-loop)
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    const handleCanPlay = () => {
-      // Restore state to video element
-      video.muted = state.isMuted;
-      video.volume = state.volume;
-
-      if (!state.hasAttemptedPlay) {
-        setState(prev => ({ ...prev, hasAttemptedPlay: true }));
-        handleVideoPlay();
+    const handleTimeUpdate = () => {
+      // Pause 0.1 seconds before end to prevent loop restart
+      if (video.duration && video.currentTime >= video.duration - 0.1 && !hasEndedRef.current) {
+        hasEndedRef.current = true;
+        video.pause();
+        setState(prev => ({ ...prev, isPlaying: false, showReplayButton: true }));
       }
     };
 
-    video.addEventListener('canplay', handleCanPlay);
-    video.addEventListener('playing', handleVideoPlaying);
-    video.addEventListener('error', handleVideoError);
+    const handlePlaying = () => {
+      setState(prev => ({ ...prev, showPoster: false, isPlaying: true }));
+    };
+
+    const handlePause = () => {
+      setState(prev => ({ ...prev, isPlaying: false }));
+    };
+
+    video.addEventListener('timeupdate', handleTimeUpdate);
+    video.addEventListener('playing', handlePlaying);
+    video.addEventListener('pause', handlePause);
+
+    return () => {
+      video.removeEventListener('timeupdate', handleTimeUpdate);
+      video.removeEventListener('playing', handlePlaying);
+      video.removeEventListener('pause', handlePause);
+    };
+  }, [state.shouldLoadVideo, ...dependencies]);
+
+  // Auto-play when video can play (muted)
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !state.shouldLoadVideo) return;
+
+    const handleCanPlay = () => {
+      // Auto-play muted
+      video.muted = true;
+      play();
+    };
+
+    video.addEventListener('canplay', handleCanPlay, { once: true });
 
     return () => {
       video.removeEventListener('canplay', handleCanPlay);
-      video.removeEventListener('playing', handleVideoPlaying);
-      video.removeEventListener('error', handleVideoError);
     };
-  }, [state.hasAttemptedPlay, state.shouldLoadVideo, ...dependencies]);
+  }, [state.shouldLoadVideo, play]);
 
   // Load video when in viewport
   useEffect(() => {
@@ -131,16 +183,14 @@ export const useVideoPlayer = (dependencies: any[] = []) => {
     }
   }, []);
 
-  const handleVideoEnded = () => {
-    setState(prev => ({ ...prev, showPlayButton: true }));
-  };
-
   return {
     videoRef,
     mediaContainerRef,
     state,
-    handleVideoPlay,
-    handleVideoEnded,
+    play,
+    pause,
+    togglePlayPause,
+    replay,
     toggleMute,
     handleVolumeChange
   };
