@@ -7,9 +7,11 @@ interface VideoPlayerState {
   showPoster: boolean;
   shouldLoadVideo: boolean;
   hasAttemptedPlay: boolean;
+  isMuted: boolean;
+  volume: number;
 }
 
-export const useVideoPlayer = () => {
+export const useVideoPlayer = (dependencies: any[] = []) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const mediaContainerRef = useRef<HTMLDivElement>(null);
 
@@ -17,7 +19,9 @@ export const useVideoPlayer = () => {
     showPlayButton: false,
     showPoster: true,
     shouldLoadVideo: false,
-    hasAttemptedPlay: false
+    hasAttemptedPlay: false,
+    isMuted: true, // Default to muted for autoplay
+    volume: 1, // Default volume 100%
   });
 
   const handleVideoPlay = async () => {
@@ -41,12 +45,49 @@ export const useVideoPlayer = () => {
     setState(prev => ({ ...prev, showPlayButton: true }));
   };
 
+  const toggleMute = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const newMutedState = !state.isMuted;
+    video.muted = newMutedState;
+
+    // If unmuting, ensure volume is up
+    if (!newMutedState && video.volume === 0) {
+      video.volume = 1;
+    }
+
+    setState(prev => ({
+      ...prev,
+      isMuted: newMutedState,
+      volume: newMutedState ? 0 : (prev.volume || 1)
+    }));
+  };
+
+  const handleVolumeChange = (newVolume: number) => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.volume = newVolume;
+    video.muted = newVolume === 0;
+
+    setState(prev => ({
+      ...prev,
+      volume: newVolume,
+      isMuted: newVolume === 0
+    }));
+  };
+
   // Setup video event listeners
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
     const handleCanPlay = () => {
+      // Restore state to video element
+      video.muted = state.isMuted;
+      video.volume = state.volume;
+
       if (!state.hasAttemptedPlay) {
         setState(prev => ({ ...prev, hasAttemptedPlay: true }));
         handleVideoPlay();
@@ -62,7 +103,7 @@ export const useVideoPlayer = () => {
       video.removeEventListener('playing', handleVideoPlaying);
       video.removeEventListener('error', handleVideoError);
     };
-  }, [state.hasAttemptedPlay]);
+  }, [state.hasAttemptedPlay, state.shouldLoadVideo, ...dependencies]);
 
   // Load video when in viewport
   useEffect(() => {
@@ -99,6 +140,8 @@ export const useVideoPlayer = () => {
     mediaContainerRef,
     state,
     handleVideoPlay,
-    handleVideoEnded
+    handleVideoEnded,
+    toggleMute,
+    handleVolumeChange
   };
 };

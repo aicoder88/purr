@@ -4,6 +4,30 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ---
 
+## 🧠 Core Thinking Principles
+
+### 1. Think Before Coding
+- **Clarify ambiguity**: If a request could mean A or B, ask "Did you mean A or B?" before writing code.
+- **State your plan**: Before multi-file changes, write a 3-line plan: "1. Edit X, 2. Update Y, 3. Verify with Z".
+- **Surface tradeoffs**: If there's a simpler approach, say "Option A is faster but less flexible. Option B is more robust. Which do you prefer?"
+- **Verify resources exist**: See the "No Fabrication Rule" below—never assume files, URLs, or contact info.
+
+### 2. Simplicity First
+- **One-use code stays inline**: Don't extract to a utility unless it's used 2+ times.
+- **Prefer stdlib over npm**: If Node.js or the browser can do it natively, don't install a package.
+- **Delete dead code**: If your change makes something unused, remove it in the same commit.
+
+### 3. Surgical Changes
+- **Match the file's existing style**: If the file uses `function foo()`, don't add `const foo = () =>`.
+- **Don't touch unrelated code**: If you see a typo in a comment 50 lines away, mention it—don't fix it silently.
+- **Small diffs**: A 10-line change shouldn't produce a 200-line diff.
+
+### 4. Goal-Driven Execution
+- **Verify changes work**: Run `pnpm build` or `pnpm lint` after edits. Don't assume success.
+- **Loop on failure**: If a command fails, read the error and fix it. Don't move on.
+
+---
+
 ## 🚀 Quick Start (New Developers)
 
 ```bash

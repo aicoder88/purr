@@ -60,6 +60,17 @@
 - **Playwright 1.57.0** - E2E testing
 - **@testing-library/react** - Component testing
 
+## ⛔ Anti-Patterns (Never Do These)
+
+| Anti-Pattern | Example | Correct Behavior |
+|--------------|---------|------------------|
+| **The Fabricator** | Referencing `/images/logo.png` that doesn't exist | Run `ls public/images/` first |
+| **The Guesser** | Assuming `lodash` is installed | Check `package.json` or ask |
+| **The Over-Engineer** | Creating `ButtonFactory` for one button | Just write the button |
+| **The Lazy Verifier** | Saying "Done" without testing | Run `pnpm build` and confirm |
+| **The Reformatter** | Changing tabs to spaces across the file | Touch only what was requested |
+| **The Silent Changer** | Deleting "unused" code that's actually used elsewhere | Mention it, don't delete |
+
 ## Project Structure
 
 ```
