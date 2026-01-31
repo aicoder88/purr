@@ -19,11 +19,11 @@ import { RelatedContent } from '../../src/components/seo/RelatedContent';
  */
 
 // Image constants with Unsplash optimization
-const heroImage = '/optimized/90day-hero.jpg';
+const heroImage = '/optimized/90day-hero.webp';
 const heroImageOg = 'https://www.purrify.ca/optimized/90day-hero.jpg';
-const problemImage = '/optimized/90day-problem.jpg';
-const scienceImage = '/optimized/90day-science.jpg';
-const solutionImage = '/optimized/90day-solution.jpg';
+const problemImage = '/optimized/90day-problem.webp';
+const scienceImage = '/optimized/90day-science.webp';
+const solutionImage = '/optimized/90day-solution.webp';
 
 export default function TriedEveryLitterDeodorizer90Days() {
   const pageTitle = '90-Day Litter Deodorizer Test Results';

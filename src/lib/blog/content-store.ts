@@ -14,6 +14,70 @@ export interface SaveResult {
   post?: BlogPost;
 }
 
+// Valid slug pattern: lowercase letters, numbers, hyphens, and underscores only
+const VALID_SLUG_PATTERN = /^[a-z0-9_-]+$/;
+const MAX_SLUG_LENGTH = 200;
+
+/**
+ * Sanitize and validate a slug to prevent path traversal attacks
+ * @throws Error if slug is invalid
+ */
+function sanitizeSlug(slug: string): string {
+  if (!slug || typeof slug !== 'string') {
+    throw new Error('Invalid slug: must be a non-empty string');
+  }
+
+  // Trim whitespace
+  const trimmed = slug.trim();
+
+  // Check length
+  if (trimmed.length === 0) {
+    throw new Error('Invalid slug: cannot be empty');
+  }
+
+  if (trimmed.length > MAX_SLUG_LENGTH) {
+    throw new Error(`Invalid slug: exceeds maximum length of ${MAX_SLUG_LENGTH}`);
+  }
+
+  // Check for path traversal attempts
+  if (trimmed.includes('..') || trimmed.includes('/') || trimmed.includes('\\')) {
+    throw new Error('Invalid slug: path traversal detected');
+  }
+
+  // Normalize the slug
+  const normalized = trimmed.toLowerCase();
+
+  // Validate against allowed pattern
+  if (!VALID_SLUG_PATTERN.test(normalized)) {
+    throw new Error('Invalid slug: only lowercase letters, numbers, hyphens, and underscores allowed');
+  }
+
+  return normalized;
+}
+
+/**
+ * Sanitize locale to prevent path traversal
+ */
+function sanitizeLocale(locale: string): string {
+  if (!locale || typeof locale !== 'string') {
+    throw new Error('Invalid locale: must be a non-empty string');
+  }
+
+  const trimmed = locale.trim().toLowerCase();
+
+  // Only allow 2-5 character locale codes (e.g., 'en', 'fr', 'zh-cn')
+  if (!/^[a-z]{2}(-[a-z]{2,3})?$/.test(trimmed)) {
+    throw new Error('Invalid locale format');
+  }
+
+  // Check for path traversal
+  if (trimmed.includes('..') || trimmed.includes('/') || trimmed.includes('\\')) {
+    throw new Error('Invalid locale: path traversal detected');
+  }
+
+  return trimmed;
+}
+
 /**
  * Filesystem-backed content store for blog posts
  * Reads JSON files from /content/blog/{locale}/
@@ -27,7 +91,20 @@ export class ContentStore {
 
   async getPost(slug: string, locale: string): Promise<BlogPost | null> {
     try {
-      const filePath = path.join(this.contentDir, locale, `${slug}.json`);
+      // Sanitize inputs to prevent path traversal
+      const safeSlug = sanitizeSlug(slug);
+      const safeLocale = sanitizeLocale(locale);
+
+      const filePath = path.join(this.contentDir, safeLocale, `${safeSlug}.json`);
+      
+      // Verify the resolved path is within the content directory
+      const resolvedPath = path.resolve(filePath);
+      const resolvedContentDir = path.resolve(this.contentDir);
+      if (!resolvedPath.startsWith(resolvedContentDir)) {
+        console.error(`[SECURITY] Path traversal attempt detected: ${filePath}`);
+        return null;
+      }
+
       if (!fs.existsSync(filePath)) {
         return null;
       }
@@ -46,6 +123,10 @@ export class ContentStore {
       }
       return null;
     } catch (error) {
+      if (error instanceof Error && error.message.includes('path traversal')) {
+        console.error(`[SECURITY] Blocked path traversal attempt for slug: ${slug}`);
+        return null;
+      }
       console.error(`Error reading post ${slug}:`, error);
       return null;
     }
@@ -53,13 +134,25 @@ export class ContentStore {
 
   async getAllPosts(locale: string, includeUnpublished = false): Promise<BlogPost[]> {
     try {
-      const localeDir = path.join(this.contentDir, locale);
+      // Sanitize locale
+      const safeLocale = sanitizeLocale(locale);
+
+      const localeDir = path.join(this.contentDir, safeLocale);
+      
+      // Verify the resolved path is within the content directory
+      const resolvedLocaleDir = path.resolve(localeDir);
+      const resolvedContentDir = path.resolve(this.contentDir);
+      if (!resolvedLocaleDir.startsWith(resolvedContentDir)) {
+        console.error(`[SECURITY] Path traversal attempt detected in getAllPosts: ${localeDir}`);
+        return [];
+      }
+
       if (!fs.existsSync(localeDir)) {
         return [];
       }
 
       const files = fs.readdirSync(localeDir).filter(f => f.endsWith('.json'));
-      console.log(`[getAllPosts] Found ${files.length} JSON files for locale ${locale}`);
+      console.log(`[getAllPosts] Found ${files.length} JSON files for locale ${safeLocale}`);
       const posts: BlogPost[] = [];
       const now = new Date();
 
@@ -91,7 +184,7 @@ export class ContentStore {
         }
       }
 
-      console.log(`[getAllPosts] Returning ${posts.length} posts for locale ${locale}`);
+      console.log(`[getAllPosts] Returning ${posts.length} posts for locale ${safeLocale}`);
 
       // Sort by publish date, newest first
       posts.sort((a, b) =>
@@ -100,6 +193,10 @@ export class ContentStore {
 
       return posts;
     } catch (error) {
+      if (error instanceof Error && error.message.includes('path traversal')) {
+        console.error(`[SECURITY] Blocked path traversal attempt for locale: ${locale}`);
+        return [];
+      }
       console.error(`Error reading posts for locale ${locale}:`, error);
       return [];
     }
@@ -117,14 +214,34 @@ export class ContentStore {
 
   async savePost(post: BlogPost, options: SaveOptions = {}): Promise<SaveResult> {
     try {
-      const localeDir = path.join(this.contentDir, post.locale);
+      // Sanitize slug and locale
+      const safeSlug = sanitizeSlug(post.slug);
+      const safeLocale = sanitizeLocale(post.locale);
+
+      const localeDir = path.join(this.contentDir, safeLocale);
+      
+      // Verify the resolved path is within the content directory
+      const resolvedLocaleDir = path.resolve(localeDir);
+      const resolvedContentDir = path.resolve(this.contentDir);
+      if (!resolvedLocaleDir.startsWith(resolvedContentDir)) {
+        throw new Error('Path traversal detected: invalid locale');
+      }
+
       if (!fs.existsSync(localeDir)) {
         fs.mkdirSync(localeDir, { recursive: true });
       }
-      const filePath = path.join(localeDir, `${post.slug}.json`);
+
+      const filePath = path.join(localeDir, `${safeSlug}.json`);
+      
+      // Verify the final file path is within the content directory
+      const resolvedFilePath = path.resolve(filePath);
+      if (!resolvedFilePath.startsWith(resolvedContentDir)) {
+        throw new Error('Path traversal detected: invalid file path');
+      }
+
       fs.writeFileSync(filePath, JSON.stringify(post, null, 2));
 
-      console.log(`✅ Successfully saved post: ${post.slug}`);
+      console.log(`✅ Successfully saved post: ${safeSlug}`);
 
       return {
         success: true,
@@ -150,15 +267,45 @@ export class ContentStore {
   }
 
   async deletePost(slug: string, locale: string): Promise<void> {
-    const filePath = path.join(this.contentDir, locale, `${slug}.json`);
-    if (fs.existsSync(filePath)) {
-      fs.unlinkSync(filePath);
+    try {
+      // Sanitize inputs
+      const safeSlug = sanitizeSlug(slug);
+      const safeLocale = sanitizeLocale(locale);
+
+      const filePath = path.join(this.contentDir, safeLocale, `${safeSlug}.json`);
+      
+      // Verify the resolved path is within the content directory
+      const resolvedPath = path.resolve(filePath);
+      const resolvedContentDir = path.resolve(this.contentDir);
+      if (!resolvedPath.startsWith(resolvedContentDir)) {
+        console.error(`[SECURITY] Path traversal attempt detected in deletePost: ${filePath}`);
+        throw new Error('Path traversal detected');
+      }
+
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath);
+      }
+    } catch (error) {
+      if (error instanceof Error && error.message.includes('Path traversal')) {
+        console.error(`[SECURITY] Blocked path traversal attempt in deletePost for slug: ${slug}`);
+        throw error;
+      }
+      console.error(`Error deleting post ${slug}:`, error);
+      throw error;
     }
   }
 
   async getCategories(): Promise<Category[]> {
     try {
       const filePath = path.join(this.contentDir, 'categories.json');
+      
+      // Verify the resolved path is within the content directory
+      const resolvedPath = path.resolve(filePath);
+      const resolvedContentDir = path.resolve(this.contentDir);
+      if (!resolvedPath.startsWith(resolvedContentDir)) {
+        return [];
+      }
+
       if (!fs.existsSync(filePath)) {
         return [];
       }
@@ -173,6 +320,14 @@ export class ContentStore {
   async getTags(): Promise<Tag[]> {
     try {
       const filePath = path.join(this.contentDir, 'tags.json');
+      
+      // Verify the resolved path is within the content directory
+      const resolvedPath = path.resolve(filePath);
+      const resolvedContentDir = path.resolve(this.contentDir);
+      if (!resolvedPath.startsWith(resolvedContentDir)) {
+        return [];
+      }
+
       if (!fs.existsSync(filePath)) {
         return [];
       }
@@ -186,11 +341,27 @@ export class ContentStore {
 
   async saveCategories(categories: Category[]): Promise<void> {
     const filePath = path.join(this.contentDir, 'categories.json');
+    
+    // Verify the resolved path is within the content directory
+    const resolvedPath = path.resolve(filePath);
+    const resolvedContentDir = path.resolve(this.contentDir);
+    if (!resolvedPath.startsWith(resolvedContentDir)) {
+      throw new Error('Path traversal detected');
+    }
+
     fs.writeFileSync(filePath, JSON.stringify(categories, null, 2));
   }
 
   async saveTags(tags: Tag[]): Promise<void> {
     const filePath = path.join(this.contentDir, 'tags.json');
+    
+    // Verify the resolved path is within the content directory
+    const resolvedPath = path.resolve(filePath);
+    const resolvedContentDir = path.resolve(this.contentDir);
+    if (!resolvedPath.startsWith(resolvedContentDir)) {
+      throw new Error('Path traversal detected');
+    }
+
     fs.writeFileSync(filePath, JSON.stringify(tags, null, 2));
   }
 }

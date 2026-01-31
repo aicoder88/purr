@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "title": "Purrify - 活性炭猫砂添加剂",
+    "description": "使用 Purrify 活性炭添加剂自然消除猫砂异味。对猫咪安全，有效控制异味。"
+  },
+  "navigation": {
+    "home": "首页",
+    "products": "产品",
+    "blog": "博客",
+    "about": "关于我们",
+    "contact": "联系我们",
+    "science": "科学",
+    "learn": "学习"
+  },
+  "hero": {
+    "headline": "太空站的清新家居秘诀",
+    "subheadline": "NASA级活性炭在分子层面消除猫砂异味——无香精，不掩盖，只有纯净的清新。",
+    "ctaPrimary": "立即购买",
+    "ctaSecondary": "了解工作原理"
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "出错了",
+    "retry": "重试",
+    "readMore": "阅读更多",
+    "shopNow": "立即购买",
+    "learnMore": "了解更多",
+    "addToCart": "加入购物车",
+    "checkout": "结账",
+    "continueShopping": "继续购物"
+  },
+  "blog": {
+    "title": "Purrify 博客",
+    "description": "关于猫咪护理、猫砂技巧和控制异味解决方案的专家建议。帮助您和爱猫打造一个更清新的家。",
+    "readTime": "分钟阅读",
+    "author": "作者",
+    "publishedOn": "发布于"
+  }
+}

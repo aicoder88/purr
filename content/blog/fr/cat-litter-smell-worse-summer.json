@@ -12,7 +12,7 @@
   "modifiedDate": "2025-11-10T23:31:02.671Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/summer-fresh-cat.png",
+    "url": "/optimized/summer-fresh-cat.webp",
     "alt": "Pourquoi la litière sent plus fort en été (et 4 solutions vraiment efficaces)",
     "width": 1200,
     "height": 800
@@ -44,7 +44,7 @@
       "cat smell in hot weather"
     ],
     "canonical": "https://www.purrify.ca/blog/cat-litter-smell-worse-summer",
-    "ogImage": "/optimized/summer-fresh-cat.png"
+    "ogImage": "/optimized/summer-fresh-cat.webp"
   },
   "readingTime": 9
 }

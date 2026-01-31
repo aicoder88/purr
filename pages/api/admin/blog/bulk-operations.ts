@@ -1,10 +1,44 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { z } from 'zod';
 import { requireAuth } from '@/lib/auth/session';
 import { ContentStore } from '@/lib/blog/content-store';
 import { AuditLogger } from '@/lib/blog/audit-logger';
 import { withRateLimit, RATE_LIMITS, combineMiddleware } from '@/lib/security/rate-limit';
 import { withCSRFProtection } from '@/lib/security/csrf';
-import type { BulkOperation } from '@/components/admin/BulkActionsToolbar';
+
+// Define Zod schemas for validation
+const bulkOperationTypeSchema = z.enum(['delete', 'changeStatus', 'assignCategories', 'assignTags']);
+
+const bulkOperationSchema = z.discriminatedUnion('type', [
+  z.object({
+    type: z.literal('delete')
+  }),
+  z.object({
+    type: z.literal('changeStatus'),
+    status: z.enum(['draft', 'scheduled', 'published'])
+  }),
+  z.object({
+    type: z.literal('assignCategories'),
+    categories: z.array(z.string().min(1).max(50)).min(1).max(20)
+  }),
+  z.object({
+    type: z.literal('assignTags'),
+    tags: z.array(z.string().min(1).max(50)).min(1).max(30)
+  })
+]);
+
+const bulkRequestSchema = z.object({
+  operation: bulkOperationSchema,
+  postSlugs: z.array(
+    z.string()
+      .min(1)
+      .max(200)
+      .regex(/^[a-z0-9_-]+$/, 'Slug must contain only lowercase letters, numbers, hyphens, and underscores')
+  ).min(1).max(100) // Limit to 100 posts per bulk operation
+});
+
+// Type inference from Zod schema
+type BulkRequest = z.infer<typeof bulkRequestSchema>;
 
 async function handler(
   req: NextApiRequest,
@@ -20,14 +54,21 @@ async function handler(
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { operation, postSlugs } = req.body as {
-    operation: BulkOperation;
-    postSlugs: string[];
-  };
-
-  if (!operation || !postSlugs || postSlugs.length === 0) {
-    return res.status(400).json({ error: 'Invalid request' });
+  // CRITICAL SECURITY FIX: Validate request body with Zod
+  const parseResult = bulkRequestSchema.safeParse(req.body);
+  
+  if (!parseResult.success) {
+    console.warn('[SECURITY] Invalid bulk operation request:', parseResult.error.issues);
+    return res.status(400).json({
+      error: 'Invalid request data',
+      details: parseResult.error.issues.map(issue => ({
+        path: issue.path.join('.'),
+        message: issue.message
+      }))
+    });
   }
+
+  const { operation, postSlugs } = parseResult.data;
 
   const store = new ContentStore();
   const logger = new AuditLogger();
@@ -84,7 +125,12 @@ async function handler(
             details: { newStatus: operation.status }
           });
         } else if (operation.type === 'assignCategories') {
-          post.categories = [...new Set([...post.categories, ...operation.categories])];
+          // Validate categories don't contain malicious content
+          const sanitizedCategories = operation.categories.map(cat => 
+            cat.replace(/[<>\"'&]/g, '').trim()
+          ).filter(cat => cat.length > 0);
+          
+          post.categories = [...new Set([...post.categories, ...sanitizedCategories])];
           post.modifiedDate = new Date().toISOString();
           await store.savePost(post);
           await logger.log({
@@ -93,10 +139,15 @@ async function handler(
             action: 'bulk_assign_categories',
             resourceType: 'post',
             resourceId: slug,
-            details: { categories: operation.categories }
+            details: { categories: sanitizedCategories }
           });
         } else if (operation.type === 'assignTags') {
-          post.tags = [...new Set([...post.tags, ...operation.tags])];
+          // Validate tags don't contain malicious content
+          const sanitizedTags = operation.tags.map(tag => 
+            tag.replace(/[<>\"'&]/g, '').trim()
+          ).filter(tag => tag.length > 0);
+          
+          post.tags = [...new Set([...post.tags, ...sanitizedTags])];
           post.modifiedDate = new Date().toISOString();
           await store.savePost(post);
           await logger.log({
@@ -105,7 +156,7 @@ async function handler(
             action: 'bulk_assign_tags',
             resourceType: 'post',
             resourceId: slug,
-            details: { tags: operation.tags }
+            details: { tags: sanitizedTags }
           });
         }
 

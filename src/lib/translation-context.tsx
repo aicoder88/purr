@@ -1,3 +1,4 @@
+'use client';
 import { createContext, useContext, ReactNode, useEffect, useState, useMemo, useCallback, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { translations, Locale } from '../translations';
@@ -16,11 +17,13 @@ const VALID_LOCALES: Locale[] = ['en', 'fr', 'zh', 'es'];
 export function TranslationProvider({
   children,
   language,
+  isAppRouter = false,
 }: {
   children: ReactNode;
-  language: string; // receives from _app.tsx
+  language: string; // receives from _app.tsx or layout.tsx
+  isAppRouter?: boolean;
 }) {
-  const router = useRouter();
+  const router = isAppRouter ? null : useRouter();
 
   // Validate and normalize locale to prevent hydration mismatches
   const normalizedLocale = useMemo((): Locale => {
@@ -91,6 +94,11 @@ export function TranslationProvider({
     }
 
     const currentRouter = routerRef.current;
+    if (!currentRouter) {
+      // Fallback for App Router
+      setLocale(targetLocale);
+      return;
+    }
 
     try {
       currentRouter.push(

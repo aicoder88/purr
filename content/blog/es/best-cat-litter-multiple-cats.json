@@ -12,7 +12,7 @@
   "modifiedDate": "2026-01-23T12:00:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/microscopic-pores-ghibli.png",
+    "url": "/optimized/microscopic-pores-ghibli.webp",
     "alt": "Mejor Arena para Múltiples Gatos - Guía Completa",
     "width": 1024,
     "height": 1024
@@ -43,7 +43,7 @@
       "carbón activado multi-gatos"
     ],
     "canonical": "https://www.purrify.ca/es/blog/best-cat-litter-multiple-cats",
-    "ogImage": "/optimized/microscopic-pores-ghibli.png"
+    "ogImage": "/optimized/microscopic-pores-ghibli.webp"
   },
   "readingTime": 12
 }

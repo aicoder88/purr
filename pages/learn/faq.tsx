@@ -51,10 +51,10 @@ const FAQPage: NextPage = () => {
   const pageDescription = 'Get expert answers about activated carbon cat litter additives: how they work, activated carbon vs baking soda comparison, usage tips, safety information, and troubleshooting. Learn why coconut shell activated carbon eliminates cat litter odors better than fragrances or baking soda.';
 
   // FAQ page images - contextually relevant
-  const heroImage = 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1600&q=80'; // Cat owner with questions
-  const sectionImage1 = 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1600&q=80'; // Curious cat looking up
-  const sectionImage2 = 'https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?auto=format&fit=crop&w=1600&q=80'; // Customer service support
-  const solutionImage = 'https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?auto=format&fit=crop&w=1600&q=80'; // Happy cat owner at home
+  const heroImage = '/images/replacements/cat-owner-questions-ghibli.png'; // Cat owner with questions
+  const sectionImage1 = '/images/replacements/curious-cat-ghibli.png'; // Curious cat looking up
+  const sectionImage2 = 'https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?auto=format&fit=crop&w=1600&q=80'; // Customer service support (Remaining)
+  const solutionImage = '/images/replacements/happy-cat-ghibli.png'; // Happy cat owner at home
 
   // Map translation category names to categories with icons
   const categoryIcons = [HelpCircle, Package, Users, HelpCircle, HelpCircle, Truck, CreditCard, MessageCircle];
@@ -310,8 +310,8 @@ const FAQPage: NextPage = () => {
                       key={category.id}
                       onClick={() => handleCategoryClick(category.id)}
                       className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors ${selectedCategory === category.id
-                          ? 'bg-electric-indigo text-white dark:text-gray-100 shadow-lg'
-                          : 'bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:scale-105 transition-all duration-300'
+                        ? 'bg-electric-indigo text-white dark:text-gray-100 shadow-lg'
+                        : 'bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:scale-105 transition-all duration-300'
                         }`}
                     >
                       <div className="flex items-center">
@@ -319,8 +319,8 @@ const FAQPage: NextPage = () => {
                         <span className="font-medium">{category.name}</span>
                       </div>
                       <span className={`text-sm px-2 py-1 rounded-full ${selectedCategory === category.id
-                          ? 'bg-white dark:bg-gray-900/20 text-white dark:text-gray-100'
-                          : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
+                        ? 'bg-white dark:bg-gray-900/20 text-white dark:text-gray-100'
+                        : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
                         }`}>
                         {category.count}
                       </span>

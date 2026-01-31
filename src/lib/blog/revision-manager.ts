@@ -18,8 +18,90 @@ export interface RevisionHistory {
   currentVersion: number;
 }
 
+// Valid slug pattern: lowercase letters, numbers, hyphens, and underscores only
+const VALID_SLUG_PATTERN = /^[a-z0-9_-]+$/;
+const MAX_SLUG_LENGTH = 200;
+
+/**
+ * Sanitize and validate a slug to prevent path traversal attacks
+ * @throws Error if slug is invalid
+ */
+function sanitizeSlug(slug: string): string {
+  if (!slug || typeof slug !== 'string') {
+    throw new Error('Invalid slug: must be a non-empty string');
+  }
+
+  // Trim whitespace
+  const trimmed = slug.trim();
+
+  // Check length
+  if (trimmed.length === 0) {
+    throw new Error('Invalid slug: cannot be empty');
+  }
+
+  if (trimmed.length > MAX_SLUG_LENGTH) {
+    throw new Error(`Invalid slug: exceeds maximum length of ${MAX_SLUG_LENGTH}`);
+  }
+
+  // Check for path traversal attempts
+  if (trimmed.includes('..') || trimmed.includes('/') || trimmed.includes('\\')) {
+    throw new Error('Invalid slug: path traversal detected');
+  }
+
+  // Normalize the slug
+  const normalized = trimmed.toLowerCase();
+
+  // Validate against allowed pattern
+  if (!VALID_SLUG_PATTERN.test(normalized)) {
+    throw new Error('Invalid slug: only lowercase letters, numbers, hyphens, and underscores allowed');
+  }
+
+  return normalized;
+}
+
+/**
+ * Validate version number
+ */
+function validateVersion(version: number): void {
+  if (!Number.isInteger(version) || version < 1) {
+    throw new Error('Invalid version: must be a positive integer');
+  }
+}
+
+/**
+ * Sanitize author string
+ */
+function sanitizeAuthor(author: string): string {
+  if (!author || typeof author !== 'string') {
+    throw new Error('Invalid author: must be a non-empty string');
+  }
+  
+  const trimmed = author.trim();
+  
+  if (trimmed.length === 0 || trimmed.length > 100) {
+    throw new Error('Invalid author: length must be between 1 and 100 characters');
+  }
+
+  // Check for path traversal attempts
+  if (trimmed.includes('..') || trimmed.includes('/') || trimmed.includes('\\')) {
+    throw new Error('Invalid author: contains invalid characters');
+  }
+
+  return trimmed;
+}
+
 export class RevisionManager {
   private revisionsDir = path.join(process.cwd(), 'content', 'revisions');
+
+  /**
+   * Verify a resolved path is within the revisions directory
+   */
+  private verifySafePath(resolvedPath: string): void {
+    const resolvedRevisionsDir = path.resolve(this.revisionsDir);
+    if (!resolvedPath.startsWith(resolvedRevisionsDir)) {
+      throw new Error('Path traversal detected: path is outside revisions directory');
+    }
+  }
 
   /**
    * Create a new revision
@@ -30,25 +112,36 @@ export class RevisionManager {
     changesSummary?: string
   ): Promise<Revision> {
     try {
-      const history = await this.getRevisionHistory(post.slug);
+      // Sanitize inputs
+      const safeSlug = sanitizeSlug(post.slug);
+      const safeAuthor = sanitizeAuthor(author);
+
+      const history = await this.getRevisionHistory(safeSlug);
       const version = history.currentVersion + 1;
 
+      validateVersion(version);
+
       const revision: Revision = {
-        id: `${post.slug}-v${version}`,
-        postSlug: post.slug,
+        id: `${safeSlug}-v${version}`,
+        postSlug: safeSlug,
         version,
         content: post,
-        author,
+        author: safeAuthor,
         timestamp: new Date().toISOString(),
-        changesSummary: changesSummary || 'Post updated'
+        changesSummary: changesSummary ? sanitizeSlug(changesSummary) : 'Post updated'
       };
 
       // Save revision
       const revisionPath = path.join(
         this.revisionsDir,
-        post.slug,
+        safeSlug,
         `v${version}.json`
       );
+      
+      // Verify the resolved path is safe
+      const resolvedRevisionPath = path.resolve(revisionPath);
+      this.verifySafePath(resolvedRevisionPath);
+
       await fs.mkdir(path.dirname(revisionPath), { recursive: true });
       await fs.writeFile(revisionPath, JSON.stringify(revision, null, 2), 'utf-8');
 
@@ -69,7 +162,14 @@ export class RevisionManager {
    */
   async getRevisionHistory(slug: string): Promise<RevisionHistory> {
     try {
-      const historyPath = path.join(this.revisionsDir, slug, 'history.json');
+      // Sanitize slug
+      const safeSlug = sanitizeSlug(slug);
+
+      const historyPath = path.join(this.revisionsDir, safeSlug, 'history.json');
+      
+      // Verify the resolved path is safe
+      const resolvedHistoryPath = path.resolve(historyPath);
+      this.verifySafePath(resolvedHistoryPath);
       
       try {
         const content = await fs.readFile(historyPath, 'utf-8');
@@ -77,12 +177,16 @@ export class RevisionManager {
       } catch {
         // No history exists yet, create new
         return {
-          postSlug: slug,
+          postSlug: safeSlug,
           revisions: [],
           currentVersion: 0
         };
       }
     } catch (error) {
+      if (error instanceof Error && error.message.includes('Path traversal')) {
+        console.error(`[SECURITY] Blocked path traversal attempt in getRevisionHistory for slug: ${slug}`);
+        throw error;
+      }
       console.error('Error getting revision history:', error);
       throw error;
     }
@@ -93,14 +197,27 @@ export class RevisionManager {
    */
   async getRevision(slug: string, version: number): Promise<Revision | null> {
     try {
+      // Sanitize inputs
+      const safeSlug = sanitizeSlug(slug);
+      validateVersion(version);
+
       const revisionPath = path.join(
         this.revisionsDir,
-        slug,
+        safeSlug,
         `v${version}.json`
       );
+      
+      // Verify the resolved path is safe
+      const resolvedRevisionPath = path.resolve(revisionPath);
+      this.verifySafePath(resolvedRevisionPath);
+
       const content = await fs.readFile(revisionPath, 'utf-8');
       return JSON.parse(content);
     } catch (error) {
+      if (error instanceof Error && error.message.includes('Path traversal')) {
+        console.error(`[SECURITY] Blocked path traversal attempt in getRevision for slug: ${slug}`);
+        return null;
+      }
       console.error(`Error getting revision v${version}:`, error);
       return null;
     }
@@ -126,6 +243,11 @@ export class RevisionManager {
     };
   } | null> {
     try {
+      // Sanitize slug and validate versions
+      sanitizeSlug(slug);
+      validateVersion(version1);
+      validateVersion(version2);
+
       const rev1 = await this.getRevision(slug, version1);
       const rev2 = await this.getRevision(slug, version2);
 
@@ -156,7 +278,11 @@ export class RevisionManager {
    */
   async restoreRevision(slug: string, version: number): Promise<BlogPost | null> {
     try {
-      const revision = await this.getRevision(slug, version);
+      // Sanitize inputs
+      const safeSlug = sanitizeSlug(slug);
+      validateVersion(version);
+
+      const revision = await this.getRevision(safeSlug, version);
       
       if (!revision) {
         throw new Error(`Revision v${version} not found`);
@@ -176,6 +302,10 @@ export class RevisionManager {
    */
   async cleanupOldRevisions(daysToKeep: number = 90): Promise<number> {
     try {
+      if (!Number.isInteger(daysToKeep) || daysToKeep < 1 || daysToKeep > 365) {
+        throw new Error('Invalid daysToKeep: must be an integer between 1 and 365');
+      }
+
       const cutoffDate = new Date();
       cutoffDate.setDate(cutoffDate.getDate() - daysToKeep);
       let deletedCount = 0;
@@ -183,33 +313,48 @@ export class RevisionManager {
       const slugs = await fs.readdir(this.revisionsDir);
 
       for (const slug of slugs) {
-        const history = await this.getRevisionHistory(slug);
-        const revisionsToKeep: Revision[] = [];
+        try {
+          // Validate each slug to prevent path traversal during cleanup
+          const safeSlug = sanitizeSlug(slug);
+          const history = await this.getRevisionHistory(safeSlug);
+          const revisionsToKeep: Revision[] = [];
 
-        for (const revision of history.revisions) {
-          const revisionDate = new Date(revision.timestamp);
-          
-          if (revisionDate >= cutoffDate) {
-            revisionsToKeep.push(revision);
-          } else {
-            // Delete old revision file
-            const revisionPath = path.join(
-              this.revisionsDir,
-              slug,
-              `v${revision.version}.json`
-            );
-            try {
-              await fs.unlink(revisionPath);
-              deletedCount++;
-            } catch (error) {
-              console.error(`Failed to delete revision ${revision.id}:`, error);
+          for (const revision of history.revisions) {
+            const revisionDate = new Date(revision.timestamp);
+            
+            if (revisionDate >= cutoffDate) {
+              revisionsToKeep.push(revision);
+            } else {
+              // Delete old revision file
+              const revisionPath = path.join(
+                this.revisionsDir,
+                safeSlug,
+                `v${revision.version}.json`
+              );
+              
+              // Verify the resolved path is safe
+              const resolvedRevisionPath = path.resolve(revisionPath);
+              this.verifySafePath(resolvedRevisionPath);
+
+              try {
+                await fs.unlink(revisionPath);
+                deletedCount++;
+              } catch (error) {
+                console.error(`Failed to delete revision ${revision.id}:`, error);
+              }
             }
           }
-        }
 
-        // Update history
-        history.revisions = revisionsToKeep;
-        await this.saveHistory(history);
+          // Update history
+          history.revisions = revisionsToKeep;
+          await this.saveHistory(history);
+        } catch (error) {
+          if (error instanceof Error && error.message.includes('Invalid slug')) {
+            console.warn(`[SECURITY] Skipping invalid slug during cleanup: ${slug}`);
+            continue;
+          }
+          console.error(`Error processing slug ${slug} during cleanup:`, error);
+        }
       }
 
       return deletedCount;
@@ -223,11 +368,19 @@ export class RevisionManager {
    * Save revision history metadata
    */
   private async saveHistory(history: RevisionHistory): Promise<void> {
+    // Sanitize slug
+    const safeSlug = sanitizeSlug(history.postSlug);
+
     const historyPath = path.join(
       this.revisionsDir,
-      history.postSlug,
+      safeSlug,
       'history.json'
     );
+    
+    // Verify the resolved path is safe
+    const resolvedHistoryPath = path.resolve(historyPath);
+    this.verifySafePath(resolvedHistoryPath);
+
     await fs.mkdir(path.dirname(historyPath), { recursive: true });
     await fs.writeFile(historyPath, JSON.stringify(history, null, 2), 'utf-8');
   }

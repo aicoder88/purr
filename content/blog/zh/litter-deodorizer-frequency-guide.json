@@ -17,7 +17,7 @@
     "如何做"
   ],
   "featuredImage": {
-    "url": "/optimized/frequency-action.png",
+    "url": "/optimized/frequency-action.webp",
     "alt": "带日历和时钟的猫砂盆",
     "width": 1200,
     "height": 630
@@ -32,7 +32,7 @@
       "猫砂氨跟踪"
     ],
     "canonical": "/blog/litter-deodorizer-frequency-guide",
-    "ogImage": "/optimized/frequency-action.png"
+    "ogImage": "/optimized/frequency-action.webp"
   },
   "readingTime": 7,
   "status": "published",

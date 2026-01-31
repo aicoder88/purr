@@ -27,11 +27,11 @@ async function optimizeAllImages() {
     // Ensure directories exist
     ensureDirectoryExists(OPTIMIZED_DIR);
     ensureDirectoryExists(ORIGINAL_IMAGES_DIR);
-    
+
     // Run the image optimization script
     console.log('🖼️ Optimizing all images...');
-    execSync('node scripts/optimize-images.js', { stdio: 'inherit' });
-    
+    execSync('pnpm tsx scripts/optimize-images.ts', { stdio: 'inherit' });
+
     console.log('✅ All images optimized successfully!');
   } catch (error) {
     console.error('❌ Error in image optimization process:', error);

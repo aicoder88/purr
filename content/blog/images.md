@@ -21,7 +21,7 @@ These posts have unique hero images (either AI-generated or carefully selected f
 - [x] cat-litter-odor-control-usa.json → `/optimized/happy-owner.webp`
 - [x] best-litter-box-location-odour-control.json → `/optimized/placement-828w.jpg`
 - [x] house-smells-like-cat-litter-solutions.json → `/optimized/safe-cat-litter.webp`
-- [x] how-to-reduce-litter-box-odor.json → `/optimized/pet-safety-home.webp`
+- [x] how-to-reduce-litter-box-odor.json → `/optimized/fresh-home-hero-ghibli.webp`
 - [x] why-does-my-house-smell-like-cat-litter.json → `/optimized/cat_long_lasting_freshness_800x500.webp`
 - [x] activated-carbon-for-cat-litter-complete-guide.json → `/optimized/carbon-828w.webp`
 - [x] activated-carbon-litter-additive-benefits.json → `/optimized/activated-carbon-granules.webp`
@@ -35,7 +35,7 @@ These posts have unique hero images (either AI-generated or carefully selected f
 - [x] why-does-my-cats-litter-box-smell-so-bad.json → `/optimized/embarrassed-relief.jpg`
 - [x] how-often-change-cat-litter.json → `/optimized/frequency-action.png`
 - [x] litter-deodorizer-frequency-guide.json → `/optimized/frequency-chart.png`
-- [x] best-litter-odor-remover-small-apartments.json → `/optimized/regular_size_solution.webp`
+- [x] best-litter-odor-remover-small-apartments.json → `/optimized/applying-deodorizer-ghibli.webp`
 - [x] how-to-get-rid-of-cat-litter-smell-in-apartment.json → `/optimized/tried-relief.jpg`
 
 ### Existing Unique Images (Already Done)

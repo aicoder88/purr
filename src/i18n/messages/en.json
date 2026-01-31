@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "title": "Purrify - Activated Carbon Cat Litter Additive",
+    "description": "Eliminate litter box odors naturally with Purrify activated carbon additive. Safe for cats, effective odor control."
+  },
+  "navigation": {
+    "home": "Home",
+    "products": "Products",
+    "blog": "Blog",
+    "about": "About",
+    "contact": "Contact",
+    "science": "Science",
+    "learn": "Learn"
+  },
+  "hero": {
+    "headline": "The Space Station Secret for a Fresh Home",
+    "subheadline": "NASA-grade activated carbon eliminates litter box odors at the molecular level — no fragrances, no masking, just pure freshness.",
+    "ctaPrimary": "Shop Now",
+    "ctaSecondary": "Learn How It Works"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try Again",
+    "readMore": "Read More",
+    "shopNow": "Shop Now",
+    "learnMore": "Learn More",
+    "addToCart": "Add to Cart",
+    "checkout": "Checkout",
+    "continueShopping": "Continue Shopping"
+  },
+  "blog": {
+    "title": "Purrify Blog",
+    "description": "Expert advice on cat care, litter box tips, and odor control solutions. Helping you create a fresher home for you and your feline friend.",
+    "readTime": "min read",
+    "author": "By",
+    "publishedOn": "Published on"
+  }
+}

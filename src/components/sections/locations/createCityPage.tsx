@@ -239,12 +239,12 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
     : null;
 
   const trustedAudience = formatTrustedAudience(profile?.metroPopulation ?? null);
-  const keyFeatures = profile && profile.housingHighlights.length > 0
-    ? profile.housingHighlights
-    : ['busy households', 'multi-cat families'];
+  const climateInsights = useMemo(() => profile?.climateConsiderations.slice(0, 3) ?? [], [profile?.climateConsiderations]);
+  const scentPainPoints = useMemo(() => profile?.scentPainPoints.slice(0, 3) ?? [], [profile?.scentPainPoints]);
 
-  const climateInsights = profile?.climateConsiderations.slice(0, 3) ?? [];
-  const scentPainPoints = profile?.scentPainPoints.slice(0, 3) ?? [];
+  const keyFeatures = useMemo(() => profile && profile.housingHighlights.length > 0
+    ? profile.housingHighlights
+    : ['busy households', 'multi-cat families'], [profile?.housingHighlights]);
 
   // Redirect effect for missing city (must be after all hooks)
   useEffect(() => {
@@ -296,8 +296,8 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
     : '';
   const seoDescription = profile
     ? (populationLabel
-        ? interpolate(t.cityPage?.seo?.descriptionWithPopulation ?? 'Cat litter smell in {{city}}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across {{province}}. Loved by {{population}}+ cat owners.', { city: profile.name, province: provinceName, population: populationLabel })
-        : interpolate(t.cityPage?.seo?.descriptionDefault ?? 'Cat litter smell in {{city}}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across {{province}}. Safe for cats & kittens.', { city: profile.name, province: provinceName }))
+      ? interpolate(t.cityPage?.seo?.descriptionWithPopulation ?? 'Cat litter smell in {{city}}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across {{province}}. Loved by {{population}}+ cat owners.', { city: profile.name, province: provinceName, population: populationLabel })
+      : interpolate(t.cityPage?.seo?.descriptionDefault ?? 'Cat litter smell in {{city}}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across {{province}}. Safe for cats & kittens.', { city: profile.name, province: provinceName }))
     : '';
 
   // Enhanced SEO with breadcrumbs (Home > Locations > City)

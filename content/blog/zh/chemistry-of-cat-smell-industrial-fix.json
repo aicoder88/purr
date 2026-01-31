@@ -12,7 +12,7 @@
   "modifiedDate": "2025-12-29T14:00:00-05:00",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/lavender-cat-ghibli.png",
+    "url": "/optimized/lavender-cat-ghibli.webp",
     "alt": "吉卜力工作室风格插图：一只被薰衣草花朵覆盖的顽皮猫——展示掩盖气味的问题",
     "width": 1024,
     "height": 1024
@@ -53,7 +53,7 @@
       "椰壳炭猫砂",
       "猫味去除"
     ],
-    "ogImage": "/optimized/lavender-cat-ghibli.png",
+    "ogImage": "/optimized/lavender-cat-ghibli.webp",
     "canonical": "https://www.purrify.ca/blog/chemistry-of-cat-smell-industrial-fix"
   },
   "readingTime": 8

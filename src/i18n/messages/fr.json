@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "title": "Purrify - Additif au Charbon Actif pour Litière",
+    "description": "Éliminez les odeurs de litière naturellement avec l'additif au charbon actif Purrify. Sûr pour les chats, contrôle efficace des odeurs."
+  },
+  "navigation": {
+    "home": "Accueil",
+    "products": "Produits",
+    "blog": "Blog",
+    "about": "À Propos",
+    "contact": "Contact",
+    "science": "Science",
+    "learn": "Apprendre"
+  },
+  "hero": {
+    "headline": "Le Secret de la Station Spatiale pour une Maison Fraîche",
+    "subheadline": "Le charbon actif de qualité NASA élimine les odeurs de litière au niveau moléculaire — pas de parfums, pas de masquage, juste une fraîcheur pure.",
+    "ctaPrimary": "Acheter",
+    "ctaSecondary": "Comment Ça Marche"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "retry": "Réessayer",
+    "readMore": "Lire la Suite",
+    "shopNow": "Acheter",
+    "learnMore": "En Savoir Plus",
+    "addToCart": "Ajouter au Panier",
+    "checkout": "Paiement",
+    "continueShopping": "Continuer les Achats"
+  },
+  "blog": {
+    "title": "Blog Purrify",
+    "description": "Conseils d'experts sur les soins des chats, l'entretien de la litière et les solutions de contrôle des odeurs. Pour vous aider à créer un foyer plus frais pour vous et votre félin.",
+    "readTime": "min de lecture",
+    "author": "Par",
+    "publishedOn": "Publié le"
+  }
+}

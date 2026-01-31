@@ -12,7 +12,7 @@
   "modifiedDate": "2025-12-18T03:00:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/apartment-cat-lifestyle.png",
+    "url": "/optimized/apartment-cat-lifestyle.webp",
     "alt": "Mejor Eliminador de Olor de Arena para Apartamentos Pequeños: Soluciones Urbanas",
     "width": 1600,
     "height": 1067
@@ -43,7 +43,7 @@
       "control olor arena gato apartamento pequeño"
     ],
     "canonical": "https://es.purrify.ca/blog/best-litter-odor-remover-small-apartments",
-    "ogImage": "/optimized/apartment-cat-lifestyle.png"
+    "ogImage": "/optimized/apartment-cat-lifestyle.webp"
   },
   "readingTime": 5
 }

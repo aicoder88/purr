@@ -17,7 +17,7 @@
     "cómo-hacer"
   ],
   "featuredImage": {
-    "url": "/optimized/frequency-action.png",
+    "url": "/optimized/frequency-action.webp",
     "alt": "Caja de arena de gatos con calendario y reloj",
     "width": 1200,
     "height": 630
@@ -32,7 +32,7 @@
       "seguimiento amoníaco arena gatos"
     ],
     "canonical": "/blog/litter-deodorizer-frequency-guide",
-    "ogImage": "/optimized/frequency-action.png"
+    "ogImage": "/optimized/frequency-action.webp"
   },
   "readingTime": 7,
   "status": "published",

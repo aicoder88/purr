@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "title": "Purrify - Aditivo de Carbón Activado para Arena",
+    "description": "Elimina los olores de la arena naturalmente con el aditivo de carbón activado Purrify. Seguro para gatos, control efectivo de olores."
+  },
+  "navigation": {
+    "home": "Inicio",
+    "products": "Productos",
+    "blog": "Blog",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "science": "Ciencia",
+    "learn": "Aprender"
+  },
+  "hero": {
+    "headline": "El Secreto de la Estación Espacial para un Hogar Fresco",
+    "subheadline": "El carbón activado de grado NASA elimina los olores de la arena a nivel molecular — sin fragancias, sin enmascaramiento, solo frescura pura.",
+    "ctaPrimary": "Comprar",
+    "ctaSecondary": "Cómo Funciona"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Algo salió mal",
+    "retry": "Intentar de Nuevo",
+    "readMore": "Leer Más",
+    "shopNow": "Comprar Ahora",
+    "learnMore": "Más Información",
+    "addToCart": "Añadir al Carrito",
+    "checkout": "Pagar",
+    "continueShopping": "Seguir Comprando"
+  },
+  "blog": {
+    "title": "Blog Purrify",
+    "description": "Consejos expertos sobre el cuidado de gatos, consejos de arena y soluciones para el control de olores. Ayudándote a crear un hogar más fresco para ti y tu felino.",
+    "readTime": "min de lectura",
+    "author": "Por",
+    "publishedOn": "Publicado el"
+  }
+}

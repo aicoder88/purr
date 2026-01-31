@@ -16,8 +16,12 @@ import { useTranslation } from '@/lib/translation-context';
  * - Checkout pages
  * - Cart pages
  */
-export function MobileFloatingCTA() {
-  const router = useRouter();
+interface MobileFloatingCTAProps {
+  isAppRouter?: boolean;
+}
+
+export function MobileFloatingCTA({ isAppRouter = false }: MobileFloatingCTAProps) {
+  const router = isAppRouter ? null : useRouter();
   const { t, locale } = useTranslation();
   const [isClient, setIsClient] = useState(false);
 
@@ -28,7 +32,7 @@ export function MobileFloatingCTA() {
 
   // Determine if the CTA should be hidden based on current route
   const shouldHide = (): boolean => {
-    const { pathname } = router;
+    const pathname = router?.pathname || "";
 
     // Pages where floating CTA should NOT appear
     const hiddenRoutes = [

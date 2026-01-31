@@ -12,7 +12,7 @@
   "modifiedDate": "2024-12-22T14:00:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/powder-spray-comparison-ghibli.png",
+    "url": "/optimized/powder-spray-comparison-ghibli.webp",
     "alt": "Comparación de desodorizante de arena en polvo vs aerosol mostrando gránulos de carbón activado",
     "width": 1200,
     "height": 630
@@ -42,7 +42,7 @@
       "comparación desodorizante arena gato",
       "efectividad desodorizante aerosol"
     ],
-    "ogImage": "/optimized/powder-spray-comparison-ghibli.png"
+    "ogImage": "/optimized/powder-spray-comparison-ghibli.webp"
   },
   "readingTime": 8
 }

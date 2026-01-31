@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useInterval } from '@/lib/utils';
+import { useInterval } from '@/lib/hooks/useInterval';
 
 interface RotatingTextProps {
   texts: string[];

@@ -23,9 +23,9 @@ import {
 } from '../../src/lib/scientific-citations';
 import { Microscope, CheckCircle, FileText, ExternalLink } from 'lucide-react';
 
-const heroImage = '/optimized/most-powerful-absorber-hero-ghibli.png';
-const labImage = '/optimized/quality-control-lab.jpg';
-const layeringImage = '/optimized/carbon-trapping-diagram-ghibli.png';
+const heroImage = '/optimized/most-powerful-absorber-hero-ghibli.webp';
+const labImage = '/optimized/quality-control-lab.webp';
+const layeringImage = '/optimized/carbon-trapping-diagram-ghibli.webp';
 const carbonMacroImage = '/optimized/micropores_magnified_view-828w.webp';
 const carbonScoopImage = '/optimized/activated-carbon-granules.webp';
 

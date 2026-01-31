@@ -12,7 +12,7 @@
   "modifiedDate": "2026-01-02T08:00:00-05:00",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/carbon-trapping-diagram-ghibli.png",
+    "url": "/optimized/carbon-trapping-diagram-ghibli.webp",
     "alt": "快乐的猫主人与清新的家和满足的猫",
     "width": 1024,
     "height": 1024
@@ -40,7 +40,7 @@
       "多猫猫砂盆",
       "猫砂维护"
     ],
-    "ogImage": "/optimized/carbon-trapping-diagram-ghibli.png",
+    "ogImage": "/optimized/carbon-trapping-diagram-ghibli.webp",
     "canonical": "https://www.purrify.ca/blog/best-way-to-keep-litter-box-fresh"
   },
   "readingTime": 10

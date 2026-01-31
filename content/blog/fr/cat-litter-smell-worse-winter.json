@@ -12,7 +12,7 @@
   "modifiedDate": "2025-11-10T23:31:02.673Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/winter-fresh-cat.png",
+    "url": "/optimized/winter-fresh-cat.webp",
     "alt": "Pourquoi la litière sent plus mauvais en hiver (et 5 solutions sans ouvrir les fenêtres)",
     "width": 1200,
     "height": 800
@@ -44,7 +44,7 @@
       "trapped litter box smell"
     ],
     "canonical": "https://www.purrify.ca/blog/cat-litter-smell-worse-winter",
-    "ogImage": "/optimized/winter-fresh-cat.png"
+    "ogImage": "/optimized/winter-fresh-cat.webp"
   },
   "readingTime": 10
 }

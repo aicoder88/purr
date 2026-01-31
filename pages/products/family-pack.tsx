@@ -131,9 +131,9 @@ export default function FamilyPackPage({ priceValidUntil }: FamilyPackPageProps)
   });
 
   // Family pack lifestyle images
-  const heroImage = 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1600&q=80'; // Multiple cats happy home
-  const sectionImage1 = 'https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?auto=format&fit=crop&w=1600&q=80'; // Multi-cat household
-  const solutionImage = 'https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?auto=format&fit=crop&w=1600&q=80'; // Happy multi-cat family
+  const heroImage = '/images/replacements/multi-cat-family-ghibli.png'; // Multiple cats happy home
+  const sectionImage1 = '/images/replacements/multi-cat-home-ghibli.png'; // Multi-cat household
+  const solutionImage = '/images/replacements/multi-cat-success-ghibli.png'; // Happy multi-cat family
 
   const benefits = [
     "Double the supply at less than double the price—the math just makes sense",

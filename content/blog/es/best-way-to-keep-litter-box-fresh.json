@@ -12,7 +12,7 @@
   "modifiedDate": "2026-01-02T08:00:00-05:00",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/carbon-trapping-diagram-ghibli.png",
+    "url": "/optimized/carbon-trapping-diagram-ghibli.webp",
     "alt": "Dueño feliz de gato con hogar fresco y gato contento",
     "width": 1024,
     "height": 1024
@@ -40,7 +40,7 @@
       "caja arena múltiples gatos",
       "mantenimiento caja arena"
     ],
-    "ogImage": "/optimized/carbon-trapping-diagram-ghibli.png",
+    "ogImage": "/optimized/carbon-trapping-diagram-ghibli.webp",
     "canonical": "https://www.purrify.ca/es/blog/best-way-to-keep-litter-box-fresh"
   },
   "readingTime": 10

@@ -1,15 +1,26 @@
+'use client';
+
 /**
  * Related Content Component
  * Displays related articles/pages based on topic clusters for internal linking
  * Enhanced with image support for visual engagement
+ * Now with lazy loading using IntersectionObserver
  */
 
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getRelatedPages, getClustersForPage } from '@/lib/seo/topic-clusters';
 import { getPageImage } from '@/lib/seo/page-images';
 import { Container } from '@/components/ui/container';
-import { useTranslation } from '@/lib/translation-context';
+
+// Default translations for when TranslationProvider is not available
+const defaultTranslations = {
+  relatedArticles: {
+    title: 'Related Articles',
+    readMore: 'Read more',
+  },
+};
 
 interface RelatedContentProps {
   currentUrl: string;
@@ -17,16 +28,69 @@ interface RelatedContentProps {
   className?: string;
 }
 
+// Safe hook that returns default values if TranslationProvider is not available
+function useSafeTranslation() {
+  try {
+    // Dynamic import to avoid the error when TranslationProvider is not present
+    const { useTranslation } = require('@/lib/translation-context');
+    return useTranslation();
+  } catch (e) {
+    return { t: defaultTranslations, locale: 'en' };
+  }
+}
+
 /**
  * Main RelatedContent component with image cards
  * Replaces static RelatedArticles with dynamic topic-cluster-based recommendations
+ * Lazy loads content when entering viewport using IntersectionObserver
  */
 export function RelatedContent({
   currentUrl,
   maxItems = 3,
   className = '',
 }: RelatedContentProps) {
-  const { t } = useTranslation();
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Call hooks unconditionally at the top level (React rules of hooks)
+  const { t } = useSafeTranslation();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '100px' } // Start loading 100px before viewport
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Show skeleton placeholder while not visible
+  if (!isVisible) {
+    return (
+      <section ref={sectionRef} aria-label="Related articles" className={`py-12 ${className}`}>
+        <Container>
+          <div className="animate-pulse">
+            <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-1/3 mb-6"></div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="h-48 bg-gray-200 dark:bg-gray-700 rounded"></div>
+              <div className="h-48 bg-gray-200 dark:bg-gray-700 rounded"></div>
+              <div className="h-48 bg-gray-200 dark:bg-gray-700 rounded"></div>
+            </div>
+          </div>
+        </Container>
+      </section>
+    );
+  }
+
   const relatedPages = getRelatedPages(currentUrl, maxItems);
 
   if (relatedPages.length === 0) {
@@ -37,7 +101,7 @@ export function RelatedContent({
   const clusterName = clusters[0]?.name || 'Related Topics';
 
   return (
-    <section aria-label="Related articles" className={`py-12 ${className}`}>
+    <section ref={sectionRef} aria-label="Related articles" className={`py-12 ${className}`}>
       <Container>
         <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
           {t.relatedArticles?.title || 'Related Articles'}

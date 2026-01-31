@@ -12,7 +12,7 @@
   "modifiedDate": "2025-12-29T14:00:00-05:00",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/lavender-cat-ghibli.png",
+    "url": "/optimized/lavender-cat-ghibli.webp",
     "alt": "Illustration ludique style Studio Ghibli d'un chat couvert de fleurs de lavande - démontrant le problème du masquage d'odeurs",
     "width": 1024,
     "height": 1024
@@ -53,7 +53,7 @@
       "coconut shell carbon cat litter",
       "cat smell removal"
     ],
-    "ogImage": "/optimized/lavender-cat-ghibli.png",
+    "ogImage": "/optimized/lavender-cat-ghibli.webp",
     "canonical": "https://www.purrify.ca/blog/chemistry-of-cat-smell-industrial-fix"
   },
   "readingTime": 8

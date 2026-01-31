@@ -5,6 +5,8 @@ const withBundleAnalyzer =
     ? require("@next/bundle-analyzer")({ enabled: true })
     : (config) => config;
 
+const withNextIntl = require("next-intl/plugin")();
+
 /**
  * Image Optimization
  *
@@ -836,6 +838,25 @@ const nextConfig = {
   output: "standalone",
   outputFileTracingRoot: __dirname,
   outputFileTracingExcludes: {
+    "*": [
+      "node_modules/@next/swc-linux-x64-gnu",
+      "node_modules/@next/swc-linux-x64-musl",
+      "node_modules/@swc/core-linux-x64-gnu",
+      "node_modules/@swc/core-linux-x64-musl",
+      "./public_backup/**/*",
+      "./e2e/**/*",
+      "./docs/**/*",
+      "./scripts/**/*",
+      "./test-results/**/*",
+      "./audit_results/**/*",
+      "./reports/**/*",
+      "./dev/**/*",
+      "./__mocks__/**/*",
+      "./*.md",
+      "./*.py",
+      "./*.js.map",
+      "./*.json",
+    ],
     "/api/health/storage": ["./public/**/*"],
   },
   outputFileTracingIncludes: {
@@ -844,6 +865,11 @@ const nextConfig = {
     "/api/blog-posts": ["./content/blog/**/*"],
     "/blog": ["./content/blog/**/*"],
     "/blog/*": ["./content/blog/**/*"],
+  },
+  i18n: {
+    locales: ["en", "fr", "zh", "es"],
+    defaultLocale: "en",
+    localeDetection: false,
   },
 
   images: {
@@ -893,11 +919,7 @@ const nextConfig = {
     tsconfigPath: "./tsconfig.json",
   },
   distDir: ".next",
-  i18n: {
-    locales: ["en", "fr", "zh", "es"],
-    defaultLocale: "en",
-    localeDetection: false,
-  },
+
   onDemandEntries: {
     maxInactiveAge: 25 * 1000,
     pagesBufferLength: 2,
@@ -989,7 +1011,7 @@ const nextConfig = {
   },
 };
 
-module.exports = withBundleAnalyzer(nextConfig);
+module.exports = withNextIntl(withBundleAnalyzer(nextConfig));
 
 // Injected content via Sentry wizard below
 // Skip Sentry instrumentation in test environment to prevent network timeouts
