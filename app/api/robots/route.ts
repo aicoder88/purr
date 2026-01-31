@@ -1,6 +1,8 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextResponse } from 'next/server';
 
-export default function handler(_req: NextApiRequest, res: NextApiResponse) {
+export const dynamic = 'force-dynamic';
+
+export async function GET() {
   // Always use canonical domain with localized paths (no subdomains)
   const canonicalDomain = 'https://www.purrify.ca';
 
@@ -24,7 +26,11 @@ Sitemap: ${canonicalDomain}/server-sitemap.xml
 Sitemap: ${canonicalDomain}/sitemap-0.xml
 `;
 
-  res.setHeader('Content-Type', 'text/plain');
-  res.setHeader('Cache-Control', 'public, max-age=86400'); // Cache for 24 hours
-  res.status(200).send(robots);
+  return new NextResponse(robots, {
+    status: 200,
+    headers: {
+      'Content-Type': 'text/plain',
+      'Cache-Control': 'public, max-age=86400', // Cache for 24 hours
+    },
+  });
 }

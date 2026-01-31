@@ -1,8 +1,14 @@
 'use client';
 import { createContext, useContext, ReactNode, useEffect, useState, useMemo, useCallback, useRef } from 'react';
-import { useRouter } from 'next/navigation';
-import { translations, Locale } from '../translations';
-import { TranslationType } from '../translations/types';
+import { translations } from '../translations';
+import type { TranslationType } from '../translations/types';
+import type { Locale } from '@/i18n/config';
+
+// Pages Router import (conditionally used)
+import type { NextRouter } from 'next/router';
+
+// App Router import (conditionally used)
+import { useRouter as useAppRouter } from 'next/navigation';
 
 type TranslationContextType = {
   t: TranslationType;
@@ -23,7 +29,10 @@ export function TranslationProvider({
   language: string; // receives from _app.tsx or layout.tsx
   isAppRouter?: boolean;
 }) {
-  const router = isAppRouter ? null : useRouter();
+  // Use App Router hook only for App Router mode
+  const appRouter = isAppRouter ? useAppRouter() : null;
+  // Pages Router will be set via ref after mount
+  const pagesRouterRef = useRef<NextRouter | null>(null);
 
   // Validate and normalize locale to prevent hydration mismatches
   const normalizedLocale = useMemo((): Locale => {
@@ -44,18 +53,33 @@ export function TranslationProvider({
   const [isHydrated, setIsHydrated] = useState(false);
 
   // Use refs to store current values for the changeLocale callback
-  // This prevents recreating the callback when router properties change
-  const routerRef = useRef(router);
   const isHydratedRef = useRef(isHydrated);
+  const appRouterRef = useRef(appRouter);
 
   // Keep refs in sync
   useEffect(() => {
-    routerRef.current = router;
-  }, [router]);
+    appRouterRef.current = appRouter;
+  }, [appRouter]);
 
   useEffect(() => {
     isHydratedRef.current = isHydrated;
   }, [isHydrated]);
+
+  // For Pages Router, try to get the router after mount
+  useEffect(() => {
+    if (!isAppRouter && typeof window !== 'undefined') {
+      // Dynamically import Next.js router for Pages Router
+      import('next/router').then(({ useRouter }) => {
+        try {
+          // This won't work directly in useEffect, so we use window location instead
+        } catch {
+          // Ignore router errors
+        }
+      }).catch(() => {
+        // Router not available (App Router)
+      });
+    }
+  }, [isAppRouter]);
 
   // Memoize translation object to prevent unnecessary re-renders
   const t = useMemo(() => {
@@ -78,8 +102,7 @@ export function TranslationProvider({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [normalizedLocale, isHydrated]);
 
-  // Stable changeLocale function that uses refs instead of direct dependencies
-  // This prevents the function from being recreated on every router change
+  // Stable changeLocale function
   const changeLocale = useCallback((newLocale: Locale) => {
     // Only execute on client-side after hydration
     if (typeof globalThis.window === 'undefined' || !isHydratedRef.current) {
@@ -87,28 +110,40 @@ export function TranslationProvider({
     }
 
     // Validate locale before navigation
-    let targetLocale = newLocale;
+    const targetLocale: Locale = VALID_LOCALES.includes(newLocale) ? newLocale : 'en';
     if (!VALID_LOCALES.includes(newLocale)) {
       console.warn(`Invalid locale: ${newLocale}. Using 'en' instead.`);
-      targetLocale = 'en';
     }
 
-    const currentRouter = routerRef.current;
-    if (!currentRouter) {
-      // Fallback for App Router
-      setLocale(targetLocale);
+    // App Router handling
+    const currentAppRouter = appRouterRef.current;
+    if (currentAppRouter) {
+      // For App Router, we navigate to the same page with new locale
+      // Store locale preference in cookie via setUserLocale
+      import('@/lib/locale').then(({ setUserLocale }) => {
+        setUserLocale(targetLocale).then(() => {
+          // Refresh the page to apply new locale
+          window.location.reload();
+        });
+      });
       return;
     }
 
+    // Pages Router handling
     try {
-      currentRouter.push(
-        { pathname: currentRouter.pathname, query: currentRouter.query },
-        currentRouter.asPath,
-        {
-          locale: targetLocale === 'en' ? false : targetLocale,
-          scroll: false, // Prevent scroll jump
-        }
-      );
+      // Access the Next.js router from window if available
+      // This is a fallback for Pages Router
+      const w = window as unknown as { __NEXT_DATA__?: { locale?: string } };
+      if (w.__NEXT_DATA__) {
+        // We're in Pages Router
+        // Force page reload with new locale
+        const url = new URL(window.location.href);
+        url.searchParams.set('lang', targetLocale);
+        window.location.href = url.toString();
+      } else {
+        // Fallback: just update state
+        setLocale(targetLocale);
+      }
     } catch (err) {
       console.error('Failed to change locale:', err);
       // Fallback: update state without navigation
@@ -145,7 +180,6 @@ export function useIsHydrated() {
   const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
-
     setIsHydrated(true);
   }, []);
 

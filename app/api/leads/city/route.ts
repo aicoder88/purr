@@ -1,6 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
+import * as Sentry from '@sentry/nextjs';
 
 interface CityLeadPayload {
   name?: string;
@@ -96,71 +97,81 @@ async function appendLead(record: CityLeadRecord) {
   await fs.writeFile(leadsLogPath, JSON.stringify(existing, null, 2));
 }
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  res.setHeader('Cache-Control', 'no-store');
-
-  if (req.method !== 'POST') {
-    return res.status(405).json({ success: false, error: 'Method not allowed' });
-  }
-
-  const payload = req.body as Partial<CityLeadPayload> | undefined;
-
-  if (!payload) {
-    return res.status(400).json({ success: false, error: 'Missing payload' });
-  }
-
-  const {
-    name,
-    email,
-    citySlug,
-    cityName,
-    provinceName,
-    provinceCode,
-    marketingConsent = false,
-    scentFocus,
-  } = payload;
-
-  if (!email || !emailRegex.test(email)) {
-    return res.status(400).json({ success: false, error: 'A valid email is required.' });
-  }
-
-  if (!citySlug || !cityName || !provinceName) {
-    return res.status(400).json({
-      success: false,
-      error: 'City information is required to process the lead.',
-    });
-  }
-
-  const record: CityLeadRecord = {
-    id: `${citySlug}-${Date.now()}`,
-    name: name?.trim(),
-    email: email.toLowerCase(),
-    citySlug,
-    cityName,
-    provinceName,
-    provinceCode,
-    marketingConsent: Boolean(marketingConsent),
-    scentFocus,
-    createdAt: new Date().toISOString(),
-  };
+export async function POST(request: NextRequest) {
+  const headers = new Headers();
+  headers.set('Cache-Control', 'no-store');
+  headers.set('X-Content-Type-Options', 'nosniff');
 
   try {
+    const payload = await request.json() as Partial<CityLeadPayload> | undefined;
+
+    if (!payload) {
+      return NextResponse.json(
+        { success: false, error: 'Missing payload' },
+        { status: 400, headers }
+      );
+    }
+
+    const {
+      name,
+      email,
+      citySlug,
+      cityName,
+      provinceName,
+      provinceCode,
+      marketingConsent = false,
+      scentFocus,
+    } = payload;
+
+    if (!email || !emailRegex.test(email)) {
+      return NextResponse.json(
+        { success: false, error: 'A valid email is required.' },
+        { status: 400, headers }
+      );
+    }
+
+    if (!citySlug || !cityName || !provinceName) {
+      return NextResponse.json(
+        { success: false, error: 'City information is required to process the lead.' },
+        { status: 400, headers }
+      );
+    }
+
+    const record: CityLeadRecord = {
+      id: `${citySlug}-${Date.now()}`,
+      name: name?.trim(),
+      email: email.toLowerCase(),
+      citySlug,
+      cityName,
+      provinceName,
+      provinceCode,
+      marketingConsent: Boolean(marketingConsent),
+      scentFocus,
+      createdAt: new Date().toISOString(),
+    };
+
     await appendLead(record);
     await Promise.allSettled([
       forwardToWebhook(record),
       notifySlack(record),
     ]);
+    
     console.info('City lead captured:', {
       citySlug: record.citySlug,
       email: record.email,
       marketingConsent: record.marketingConsent,
     });
-    return res.status(200).json({ success: true });
+
+    return NextResponse.json(
+      { success: true },
+      { status: 200, headers }
+    );
   } catch (error) {
     console.error('Failed to persist city lead:', error);
-    return res.status(500).json({ success: false, error: 'Failed to save lead.' });
+    Sentry.captureException(error);
+    return NextResponse.json(
+      { success: false, error: 'Failed to save lead.' },
+      { status: 500, headers }
+    );
   }
 }

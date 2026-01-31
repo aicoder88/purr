@@ -1,0 +1,30 @@
+'use client';
+
+import { ReactNode } from 'react';
+import { NextIntlClientProvider } from 'next-intl';
+import { SessionProvider } from 'next-auth/react';
+import { ThemeProvider } from '@/components/theme/theme-provider';
+import { TranslationProvider } from '@/lib/translation-context';
+
+interface ProvidersProps {
+  children: ReactNode;
+  locale: string;
+  messages: Record<string, unknown>;
+}
+
+export function Providers({ children, locale, messages }: ProvidersProps) {
+  return (
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      <SessionProvider>
+        <ThemeProvider
+          defaultTheme="system"
+          storageKey="purrify-ui-theme"
+        >
+          <TranslationProvider language={locale} isAppRouter={true}>
+            {children}
+          </TranslationProvider>
+        </ThemeProvider>
+      </SessionProvider>
+    </NextIntlClientProvider>
+  );
+}

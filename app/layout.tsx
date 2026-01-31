@@ -2,12 +2,9 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import '../src/index.css';
 import { getMessages } from 'next-intl/server';
-import { NextIntlProvider } from '@/components/providers/NextIntlProvider';
 import { getUserLocale } from '@/lib/locale';
 import { AppLayout } from '@/components/layout/AppLayout';
-import { TranslationProvider } from '@/lib/translation-context';
-import { NextAuthProvider } from '@/components/providers/NextAuthProvider';
-import { ThemeProvider } from "@/components/theme/theme-provider";
+import { Providers } from './providers';
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, SOCIAL_LINKS } from '@/lib/constants';
 
 const inter = Inter({
@@ -36,20 +33,20 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = await getUserLocale();
   const ogLocale = OG_LOCALE_MAP[locale] ?? 'en_CA';
   const baseUrl = SITE_URL;
-  
+
   // Build language alternates for hreflang
-  const alternates: Metadata['alternates'] = {
-    canonical: baseUrl,
-    languages: {},
-  };
-  
+  const languages: Record<string, string> = {};
+
   // Add language alternates for each supported locale
   for (const loc of SUPPORTED_LOCALES) {
     const langCode = OG_LOCALE_MAP[loc] ?? `en-${loc.toUpperCase()}`;
-    if (alternates.languages) {
-      alternates.languages[langCode] = `${baseUrl}?lang=${loc}`;
-    }
+    languages[langCode] = `${baseUrl}?lang=${loc}`;
   }
+
+  const alternates = {
+    canonical: baseUrl,
+    languages: languages as Record<string, string>,
+  };
 
   return {
     title: {
@@ -156,20 +153,11 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={inter.variable}>
       <body className="font-sans">
-        <NextIntlProvider locale={locale} messages={messages}>
-          <NextAuthProvider>
-            <ThemeProvider
-              defaultTheme="system"
-              storageKey="purrify-ui-theme"
-            >
-              <TranslationProvider language={locale} isAppRouter={true}>
-                <AppLayout>
-                  {children}
-                </AppLayout>
-              </TranslationProvider>
-            </ThemeProvider>
-          </NextAuthProvider>
-        </NextIntlProvider>
+        <Providers locale={locale} messages={messages}>
+          <AppLayout>
+            {children}
+          </AppLayout>
+        </Providers>
       </body>
     </html>
   );

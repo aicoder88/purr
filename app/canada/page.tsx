@@ -1,33 +1,35 @@
-import { NextSeo } from 'next-seo';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useTranslation } from '../src/lib/translation-context';
-import { formatProductPrice } from '../src/lib/pricing';
-import { buildLanguageAlternates, getLocalizedUrl } from '../src/lib/seo-utils';
-import { useEnhancedSEO } from '../src/hooks/useEnhancedSEO';
+import { Container } from '@/components/ui/container';
 import { Check, MapPin, Truck, Leaf, Shield, Star, ChevronRight, Home } from 'lucide-react';
+import { getUserLocale } from '@/lib/locale';
+import { headers } from 'next/headers';
+import type { Currency } from '@/lib/geo/currency-detector';
+import { SITE_NAME } from '@/lib/constants';
+import { buildLanguageAlternates, normalizeLocale } from '@/lib/seo-utils';
+import { getProductPrice, formatProductPrice } from '@/lib/pricing';
 
-export default function CanadaLandingPage() {
-  const { locale } = useTranslation();
-  const trialPrice = formatProductPrice('trial', locale);
-  const standardPrice = formatProductPrice('standard', locale);
+// Generate metadata for the Canada page
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getUserLocale();
+  const normalizedLocale = normalizeLocale(locale);
 
   const pageTitle = 'Best Cat Litter Deodorizer in Canada | Made in Canada | Purrify';
   const pageDescription = 'Looking for cat litter odor control in Canada? Purrify is proudly made in Canada with premium coconut shell activated carbon. Free shipping across Canada on orders over $35.';
 
-  const { nextSeoProps, schema } = useEnhancedSEO({
-    path: '/canada',
+  const canonicalUrl = 'https://www.purrify.ca/canada';
+  const languageAlternates = buildLanguageAlternates('/canada');
+
+  // Convert language alternates to Next.js format
+  const alternates: Record<string, string> = {};
+  languageAlternates.forEach((alt) => {
+    alternates[alt.hrefLang] = alt.href;
+  });
+
+  return {
     title: pageTitle,
     description: pageDescription,
-    targetKeyword: 'cat litter deodorizer Canada',
-    schemaType: 'product',
-    schemaData: {
-      name: 'Purrify Activated Carbon Cat Litter Deodorizer',
-      description: 'Premium coconut shell activated carbon litter additive made in Canada',
-      brand: 'Purrify',
-      category: 'Pet Supplies > Cat Supplies > Cat Litter Accessories',
-    },
-    image: 'https://www.purrify.ca/images/products/purrify-standard-bag.png',
     keywords: [
       'cat litter deodorizer Canada',
       'best cat litter deodorizer Canada',
@@ -37,7 +39,58 @@ export default function CanadaLandingPage() {
       'activated carbon cat litter Canada',
       'natural cat litter deodorizer Canada',
     ],
-  });
+    metadataBase: new URL('https://www.purrify.ca'),
+    alternates: {
+      canonical: canonicalUrl,
+      languages: alternates,
+    },
+    openGraph: {
+      type: 'website',
+      url: canonicalUrl,
+      title: pageTitle,
+      description: pageDescription,
+      locale: normalizedLocale === 'fr' ? 'fr_CA' : normalizedLocale === 'zh' ? 'zh_CN' : normalizedLocale === 'es' ? 'es_ES' : 'en_CA',
+      siteName: SITE_NAME,
+      images: [
+        {
+          url: '/images/products/purrify-standard-bag.png',
+          width: 1200,
+          height: 630,
+          alt: pageTitle,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@purrifyhq',
+      creator: '@purrifyhq',
+      title: pageTitle,
+      description: pageDescription,
+      images: ['/images/products/purrify-standard-bag.png'],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  };
+}
+
+// Async server component for the Canada page
+export default async function CanadaPage() {
+  // Get locale and currency from server
+  const locale = await getUserLocale();
+  const headersList = await headers();
+  const country = headersList.get('x-vercel-ip-country');
+  const currency: Currency = country === 'US' ? 'USD' : 'CAD';
+
+  const normalizedLocale = normalizeLocale(locale);
+
+  // Format prices
+  const trialPrice = formatProductPrice('trial', currency, normalizedLocale);
+  const standardPrice = formatProductPrice('standard', currency, normalizedLocale);
 
   const canadianBenefits = [
     {
@@ -73,42 +126,85 @@ export default function CanadaLandingPage() {
     { name: 'Halifax', province: 'NS' },
   ];
 
+  // Structured Data - Product
+  const productSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'Purrify Activated Carbon Cat Litter Deodorizer',
+    description: 'Premium coconut shell activated carbon litter additive made in Canada',
+    brand: {
+      '@type': 'Brand',
+      name: 'Purrify',
+    },
+    offers: {
+      '@type': 'AggregateOffer',
+      priceCurrency: currency,
+      lowPrice: getProductPrice('trial', currency),
+      highPrice: getProductPrice('jumbo', currency),
+      offerCount: '3',
+      availability: 'https://schema.org/InStock',
+    },
+  };
+
+  // Structured Data - LocalBusiness
+  const localBusinessSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Purrify',
+    description: 'Canadian manufacturer of activated carbon cat litter deodorizer',
+    url: 'https://www.purrify.ca',
+    logo: 'https://www.purrify.ca/images/icon-512.png',
+    image: 'https://www.purrify.ca/images/products/purrify-standard-bag.png',
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'CA',
+    },
+    areaServed: {
+      '@type': 'Country',
+      name: 'Canada',
+    },
+    priceRange: '$$',
+    paymentAccepted: 'Credit Card, PayPal',
+    currenciesAccepted: 'CAD',
+  };
+
+  // Structured Data - Breadcrumb
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://www.purrify.ca',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Canada',
+        item: 'https://www.purrify.ca/canada',
+      },
+    ],
+  };
+
   return (
     <>
-      <NextSeo {...nextSeoProps} />
-
-      {schema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      )}
-
-      {/* LocalBusiness Schema for Canadian presence */}
+      {/* Structured Data */}
       <script
+        id="product-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'LocalBusiness',
-            name: 'Purrify',
-            description: 'Canadian manufacturer of activated carbon cat litter deodorizer',
-            url: 'https://www.purrify.ca',
-            logo: 'https://www.purrify.ca/images/icon-512.png',
-            image: 'https://www.purrify.ca/images/products/purrify-standard-bag.png',
-            address: {
-              '@type': 'PostalAddress',
-              addressCountry: 'CA',
-            },
-            areaServed: {
-              '@type': 'Country',
-              name: 'Canada',
-            },
-            priceRange: '$$',
-            paymentAccepted: 'Credit Card, PayPal',
-            currenciesAccepted: 'CAD',
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        id="localbusiness-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       <div className="bg-cream-50 dark:bg-gray-900 min-h-screen">
@@ -505,3 +601,6 @@ export default function CanadaLandingPage() {
     </>
   );
 }
+
+// Revalidate every hour
+export const revalidate = 3600;

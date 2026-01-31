@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState, useCallback, useMemo } from "react";
 
 // Throttle function to limit how often a function can be called
@@ -14,7 +16,7 @@ const throttle = <T extends (...args: unknown[]) => void>(
       func.apply(this, args);
       lastRan = Date.now();
       inThrottle = true;
-      
+
       setTimeout(() => {
         inThrottle = false;
       }, limit);
@@ -44,22 +46,22 @@ export default function ScrollToTopButton() {
   // Check for reduced motion preference
   useEffect(() => {
     if (typeof globalThis.window === 'undefined') return;
-    
+
     try {
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       setIsReducedMotion(prefersReducedMotion);
-      
+
       const mediaQueryList = window.matchMedia('(prefers-reduced-motion: reduce)');
-      
+
       const handleMotionPreferenceChange = (e: MediaQueryListEvent) => {
         setIsReducedMotion(e.matches);
       };
-      
+
       // Modern event listener for mediaQueryList if available
       if (mediaQueryList.addEventListener) {
         mediaQueryList.addEventListener('change', handleMotionPreferenceChange);
       }
-      
+
       return () => {
         if (mediaQueryList.removeEventListener) {
           mediaQueryList.removeEventListener('change', handleMotionPreferenceChange);
@@ -86,12 +88,12 @@ export default function ScrollToTopButton() {
   // Set up scroll listener with passive option for better performance
   useEffect(() => {
     if (typeof globalThis.window === 'undefined') return;
-    
+
     window.addEventListener("scroll", toggleVisibility, { passive: true });
-    
+
     // Initial check
     toggleVisibility();
-    
+
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, [toggleVisibility]);
 
@@ -113,9 +115,8 @@ export default function ScrollToTopButton() {
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-6 right-6 z-50 p-3 rounded-full bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 shadow-lg transition-opacity duration-300 hover:bg-blue-700 dark:hover:bg-blue-50 dark:hover:bg-blue-900/200 focus:outline-none focus:ring-2 focus:ring-blue-400 ${
-        isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
-      }`}
+      className={`fixed bottom-6 right-6 z-50 p-3 rounded-full bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 shadow-lg transition-opacity duration-300 hover:bg-blue-700 dark:hover:bg-blue-50 dark:hover:bg-blue-900/200 focus:outline-none focus:ring-2 focus:ring-blue-400 ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
       aria-label="Scroll to top"
     >
       {/* Simple arrow icon using SVG */}

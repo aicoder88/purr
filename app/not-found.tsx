@@ -65,7 +65,7 @@ export default function NotFound() {
         404 - Page Not Found
       </h1>
 
-      <p className="text-xl mb-8 text-gray-600">
+      <p className="text-xl mb-8 text-gray-600 dark:text-gray-300">
         We couldn&apos;t find the page you were looking for. Please check the URL or navigate to another section of our site.
       </p>
 
@@ -79,10 +79,10 @@ export default function NotFound() {
             <Link
               key={page.path}
               href={page.path}
-              className="p-4 border border-[#E0EFC7] rounded-lg bg-white hover:bg-gray-50 hover:shadow-md transition-all duration-300 text-left flex flex-col"
+              className="p-4 border border-[#E0EFC7] dark:border-[#2A3A25] rounded-lg bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:shadow-md transition-all duration-300 text-left flex flex-col"
             >
               <span className="font-medium text-[#5B2EFF]">{page.title}</span>
-              <span className="text-sm text-gray-500">{page.description}</span>
+              <span className="text-sm text-gray-500 dark:text-gray-400">{page.description}</span>
             </Link>
           ))}
         </div>

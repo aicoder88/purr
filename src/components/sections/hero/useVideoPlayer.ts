@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect, useRef } from 'react';
 
 interface VideoPlayerState {
@@ -88,10 +90,15 @@ export const useVideoPlayer = () => {
     }
   }, []);
 
+  const handleVideoEnded = () => {
+    setState(prev => ({ ...prev, showPlayButton: true }));
+  };
+
   return {
     videoRef,
     mediaContainerRef,
     state,
-    handleVideoPlay
+    handleVideoPlay,
+    handleVideoEnded
   };
 };

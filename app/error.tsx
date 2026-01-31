@@ -20,7 +20,7 @@ export default function Error({
         <h2 className="text-2xl font-bold text-[#5B2EFF] mb-4">
           Something went wrong!
         </h2>
-        <p className="text-gray-600 mb-6">
+        <p className="text-gray-600 dark:text-gray-300 mb-6">
           We apologize for the inconvenience. Please try again.
         </p>
         <button

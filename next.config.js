@@ -866,10 +866,12 @@ const nextConfig = {
     "/blog": ["./content/blog/**/*"],
     "/blog/*": ["./content/blog/**/*"],
   },
+  // i18n config for Pages Router (required for pages/ directory)
+  // App Router uses next-intl with its own routing configuration
   i18n: {
-    locales: ["en", "fr", "zh", "es"],
-    defaultLocale: "en",
-    localeDetection: false,
+    locales: ['en', 'fr', 'zh', 'es'],
+    defaultLocale: 'en',
+    localeDetection: false, // We'll handle locale detection ourselves
   },
 
   images: {

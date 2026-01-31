@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect, useCallback, ReactNode } from "react";
 import { Button } from "./button";
 import { Slider } from "./slider";
@@ -137,18 +139,18 @@ export function CostCalculator({ className }: CostCalculatorProps) {
     const carsRemoved = carbonSaved / 4600;
     const catsSaved = Math.ceil(litterChangesSaved / 10); // Arbitrary: every 10 litter changes saved helps one shelter cat
 
-     
+
     setAnnualSavings(savings);
-     
+
     setTenYearSavings(tenYearSave);
-     
+
     setEnvironmentalImpact({
       carbonSaved,
       treesEquivalent,
       carsRemoved,
       catsSaved,
     });
-     
+
     setTenYearEnvironmentalImpact({
       carbonSaved: carbonSaved * 10,
       treesEquivalent: treesEquivalent * 10,

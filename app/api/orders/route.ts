@@ -1,12 +1,23 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '../../src/lib/prisma';
-import { getSession } from 'next-auth/react';
-import { checkRateLimit } from '../../src/lib/security/rate-limit';
+import { NextRequest, NextResponse } from 'next/server';
+import prisma from '@/lib/prisma';
+import { checkRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit-app';
+import * as Sentry from '@sentry/nextjs';
 
 interface CartItem {
   id: string;
   quantity: number;
   price: number;
+}
+
+interface CustomerData {
+  email: string;
+  firstName?: string;
+  lastName?: string;
+  address?: string;
+  city?: string;
+  province?: string;
+  postalCode?: string;
+  phone?: string;
 }
 
 // Rate limit for order creation: 10 per minute per IP
@@ -80,49 +91,71 @@ async function recalculateOrderTotal(
   return { total, validatedItems };
 }
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
-  }
-
-  // Apply rate limiting to prevent abuse
-  const { allowed, remaining } = checkRateLimit(req, ORDER_RATE_LIMIT);
-  res.setHeader('X-RateLimit-Remaining', remaining.toString());
-
-  if (!allowed) {
-    return res.status(429).json({ message: ORDER_RATE_LIMIT.message });
-  }
+export async function POST(request: NextRequest) {
+  const headers = new Headers();
+  headers.set('X-Content-Type-Options', 'nosniff');
+  headers.set('X-Frame-Options', 'DENY');
 
   try {
-    const session = await getSession({ req });
-    const { items, customer, currency = 'CAD' } = req.body;
+    // Apply rate limiting to prevent abuse
+    const { allowed, remaining } = checkRateLimit(request, ORDER_RATE_LIMIT);
+    headers.set('X-RateLimit-Remaining', remaining.toString());
+
+    if (!allowed) {
+      return NextResponse.json(
+        { message: ORDER_RATE_LIMIT.message },
+        { status: 429, headers }
+      );
+    }
+
+    const body = await request.json();
+    const { items, customer, currency = 'CAD', total: clientTotal } = body as {
+      items: CartItem[];
+      customer: CustomerData;
+      currency: string;
+      total?: number;
+    };
 
     // Validate required fields
     if (!items || !Array.isArray(items) || items.length === 0) {
-      return res.status(400).json({ message: 'Cart items are required' });
+      return NextResponse.json(
+        { message: 'Cart items are required' },
+        { status: 400, headers }
+      );
     }
 
     if (!customer || !customer.email) {
-      return res.status(400).json({ message: 'Customer information is required' });
+      return NextResponse.json(
+        { message: 'Customer information is required' },
+        { status: 400, headers }
+      );
     }
 
     // Create order in database
     if (!prisma) {
-      return res.status(503).json({ message: 'Database not available' });
+      return NextResponse.json(
+        { message: 'Database not available' },
+        { status: 503, headers }
+      );
     }
 
     // Recalculate total server-side to prevent price tampering
     const { total: serverTotal, validatedItems } = await recalculateOrderTotal(items, currency);
 
     // Log if there's a significant discrepancy (for security monitoring)
-    const clientTotal = Number(req.body.total);
     if (clientTotal && Math.abs(clientTotal - serverTotal) > 0.01) {
+      const forwarded = request.headers.get('x-forwarded-for');
       console.warn(`[SECURITY] Price tampering detected: Client total ${clientTotal} != Server total ${serverTotal}`, {
-        userId: session?.user?.email || 'anonymous',
-        ip: req.headers['x-forwarded-for'] || req.socket.remoteAddress
+        userEmail: customer.email || 'anonymous',
+        ip: forwarded || 'unknown'
+      });
+      Sentry.captureMessage('Price tampering detected', {
+        level: 'warning',
+        extra: {
+          clientTotal,
+          serverTotal,
+          userEmail: customer.email,
+        },
       });
     }
 
@@ -134,13 +167,13 @@ export default async function handler(
         customer: {
           create: {
             email: customer.email,
-            firstName: customer.firstName,
-            lastName: customer.lastName,
-            address: customer.address,
-            city: customer.city,
-            province: customer.province,
-            postalCode: customer.postalCode,
-            phone: customer.phone,
+            firstName: customer.firstName || '',
+            lastName: customer.lastName || '',
+            address: customer.address || '',
+            city: customer.city || '',
+            province: customer.province || '',
+            postalCode: customer.postalCode || '',
+            phone: customer.phone || null,
           },
         },
         items: {
@@ -150,21 +183,30 @@ export default async function handler(
             price: item.price, // Server-verified price
           })),
         },
-        userId: session?.user?.email,
       },
     });
 
-    return res.status(200).json({ orderId: order.id });
+    return NextResponse.json(
+      { orderId: order.id },
+      { status: 200, headers }
+    );
   } catch (error) {
     console.error('Error creating order:', error);
+    Sentry.captureException(error);
     
     if (error instanceof Error) {
       if (error.message.includes('Product not found') || 
           error.message.includes('Insufficient stock')) {
-        return res.status(400).json({ message: error.message });
+        return NextResponse.json(
+          { message: error.message },
+          { status: 400, headers }
+        );
       }
     }
     
-    return res.status(500).json({ message: 'Error creating order' });
+    return NextResponse.json(
+      { message: 'Error creating order' },
+      { status: 500, headers }
+    );
   }
 }

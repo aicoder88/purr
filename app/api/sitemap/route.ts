@@ -1,43 +1,40 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextResponse } from 'next/server';
 import fs from 'node:fs';
 import path from 'node:path';
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export const dynamic = 'force-dynamic';
+
+export async function GET() {
   try {
     // Read the existing sitemap.xml from public folder
     const sitemapPath = path.join(process.cwd(), 'public', 'sitemap.xml');
+    let sitemapContent: string;
 
     if (fs.existsSync(sitemapPath)) {
-      const sitemap = fs.readFileSync(sitemapPath, 'utf8');
-
-      res.setHeader('Content-Type', 'application/xml');
-      res.setHeader('Cache-Control', 'public, max-age=3600'); // Cache for 1 hour
-      res.status(200).send(sitemap);
+      sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
     } else {
       // Generate a basic sitemap if the file doesn't exist
-      const basicSitemap = generateBasicSitemap(req);
-
-      res.setHeader('Content-Type', 'application/xml');
-      res.setHeader('Cache-Control', 'public, max-age=3600');
-      res.status(200).send(basicSitemap);
+      sitemapContent = generateBasicSitemap();
     }
+
+    return new NextResponse(sitemapContent, {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/xml',
+        'Cache-Control': 'public, max-age=3600', // Cache for 1 hour
+      },
+    });
   } catch (err) {
     console.error('Error serving sitemap:', err);
-    res.status(500).json({ error: 'Failed to generate sitemap' });
+    return NextResponse.json(
+      { error: 'Failed to generate sitemap' },
+      { status: 500 }
+    );
   }
 }
 
-function generateBasicSitemap(req: NextApiRequest): string {
-  const host = req.headers.host || 'www.purrify.ca';
-  const protocol = req.headers['x-forwarded-proto'] || 'https';
-
-  // Determine the base URL based on the host
-  let baseUrl = `${protocol}://${host}`;
-
-  // Force canonical www domain for main site
-  if (host.includes('purrify.ca') && !host.includes('fr.') && !host.includes('zh.')) {
-    baseUrl = 'https://www.purrify.ca';
-  }
+function generateBasicSitemap(): string {
+  const baseUrl = 'https://www.purrify.ca';
 
   const urls = [
     { loc: '/', priority: '1.0', changefreq: 'daily' },

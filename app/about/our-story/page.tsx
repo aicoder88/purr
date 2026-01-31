@@ -68,14 +68,14 @@ function SimpleBreadcrumbs({
 }) {
   return (
     <nav className={`flex items-center space-x-2 text-sm ${className}`} aria-label="Breadcrumb">
-      <Link href="/" className="hover:text-white/80 transition-colors">
+      <Link href="/" className="hover:text-white/80 dark:hover:text-gray-100/80 transition-colors">
         <Home className="w-4 h-4" aria-label="Home" />
       </Link>
       {items.map((item, index) => (
         <span key={index} className="flex items-center space-x-2">
           <span aria-hidden="true">/</span>
           {item.href ? (
-            <Link href={item.href} className="hover:text-white/80 transition-colors">
+            <Link href={item.href} className="hover:text-white/80 dark:hover:text-gray-100/80 transition-colors">
               {item.label}
             </Link>
           ) : (
@@ -122,12 +122,12 @@ export default function AboutPage() {
               <div className="max-w-4xl mx-auto text-center text-white dark:text-gray-100">
                 <SimpleBreadcrumbs
                   items={[{ label: 'About' }, { label: 'Our Story' }]}
-                  className="justify-center mb-8 text-white/80"
+                  className="justify-center mb-8 text-white/80 dark:text-gray-100/80"
                 />
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 leading-tight drop-shadow-lg">
                   Our Story
                 </h1>
-                <p className="text-xl md:text-2xl font-light mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow-md text-white/90">
+                <p className="text-xl md:text-2xl font-light mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow-md text-white/90 dark:text-gray-100/90">
                   Born from a cat owner&apos;s frustration, grown into a mission to help families everywhere.
                 </p>
               </div>
@@ -315,11 +315,11 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-white/20">
               {stats.map((stat) => (
                 <div key={stat.label} className="text-center px-4 py-4 md:py-0">
-                  <div className="text-5xl font-heading font-bold text-white mb-2 drop-shadow-sm">{stat.number}</div>
-                  <h3 className="font-heading text-lg font-semibold mb-2 text-white/90 uppercase tracking-wide">
+                  <div className="text-5xl font-heading font-bold text-white dark:text-white mb-2 drop-shadow-sm">{stat.number}</div>
+                  <h3 className="font-heading text-lg font-semibold mb-2 text-white/90 dark:text-white/90 uppercase tracking-wide">
                     {stat.label}
                   </h3>
-                  <p className="text-white/70 text-sm max-w-[200px] mx-auto">{stat.description}</p>
+                  <p className="text-white/70 dark:text-white/70 text-sm max-w-[200px] mx-auto">{stat.description}</p>
                 </div>
               ))}
             </div>
@@ -334,17 +334,17 @@ export default function AboutPage() {
 
           <Container className="relative z-10">
             <div className="text-center max-w-4xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-heading font-bold mb-8 text-white leading-tight">
+              <h2 className="text-4xl md:text-5xl font-heading font-bold mb-8 text-white dark:text-white leading-tight">
                 Ready to Experience the Difference?
               </h2>
-              <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-xl text-gray-300 dark:text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
                 Join thousands of happy cat owners who have transformed their homes with Purrify.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <Link href="/products/trial-size">
                   <Button
                     size="lg"
-                    className="h-auto py-4 px-8 flex items-center justify-center gap-4 bg-electric-indigo hover:bg-electric-indigo-600 text-white font-bold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 rounded-full group"
+                    className="h-auto py-4 px-8 flex items-center justify-center gap-4 bg-electric-indigo hover:bg-electric-indigo-600 text-white dark:text-gray-100 font-bold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 rounded-full group"
                   >
                     <div className="flex flex-col items-start text-left">
                       <span className="text-xl font-bold tracking-tight">
@@ -362,7 +362,7 @@ export default function AboutPage() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="h-full py-4 px-8 border-2 border-white/20 text-white hover:bg-white hover:text-gray-900 hover:scale-105 transition-all duration-300 rounded-full text-lg font-medium backdrop-blur-sm"
+                    className="h-full py-4 px-8 border-2 border-white/20 text-white dark:text-gray-100 hover:bg-white dark:hover:bg-gray-100 hover:text-gray-900 dark:hover:text-gray-900 hover:scale-105 transition-all duration-300 rounded-full text-lg font-medium backdrop-blur-sm"
                   >
                     Get in Touch
                   </Button>

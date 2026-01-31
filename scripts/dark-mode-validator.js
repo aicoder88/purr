@@ -37,7 +37,7 @@ function findFiles(dir, extensions = ['.tsx', '.ts']) {
 }
 
 // Directories to check
-const DIRECTORIES_TO_CHECK = ['pages', 'src/components'];
+const DIRECTORIES_TO_CHECK = ['pages', 'src/components', 'app'];
 
 let totalErrors = 0;
 let filesWithErrors = 0;

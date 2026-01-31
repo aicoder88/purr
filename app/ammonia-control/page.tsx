@@ -1,24 +1,13 @@
-import { NextSeo } from 'next-seo';
-import Script from 'next/script';
-import { useTranslation } from '../src/lib/translation-context';
-import { useCurrency } from '../src/lib/currency-context';
-import { useEnhancedSEO } from '../src/hooks/useEnhancedSEO';
-
-import {
-  LandingHero,
-  ProblemSection,
-  SolutionSection,
-  BenefitPillars,
-  FinalCTA,
-} from '../src/components/sections/landing';
-import { Testimonials } from '../src/components/sections/testimonials';
-import { Container } from '../src/components/ui/container';
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Container } from '@/components/ui/container';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '../src/components/ui/accordion';
+} from '@/components/ui/accordion';
 import {
   XCircle,
   AlertTriangle,
@@ -37,24 +26,106 @@ import {
   CheckCircle,
   Sparkles,
 } from 'lucide-react';
-import Image from 'next/image';
+import { getUserLocale } from '@/lib/locale';
+import { en } from '@/translations/en';
+import { fr } from '@/translations/fr';
+import { zh } from '@/translations/zh';
+import { es } from '@/translations/es';
+import { headers } from 'next/headers';
+import type { Currency } from '@/lib/geo/currency-detector';
+import { SITE_NAME } from '@/lib/constants';
+import { buildLanguageAlternates, normalizeLocale } from '@/lib/seo-utils';
+import {
+  LandingHero,
+  ProblemSection,
+  SolutionSection,
+  BenefitPillars,
+  FinalCTA,
+} from '@/components/sections/landing';
+import { Testimonials } from '@/components/sections/testimonials';
 
-export default function AmmoniaControl() {
-  const { t, locale } = useTranslation();
-  const { currency } = useCurrency();
+// Translation data mapping
+const translations = { en, fr, zh, es };
+
+// Generate metadata for the ammonia control page
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getUserLocale();
+  const normalizedLocale = normalizeLocale(locale);
+  const t = translations[normalizedLocale as keyof typeof translations] || en;
   const ammonia = t.ammonia;
 
-  const canonicalUrl = `https://www.purrify.ca/${locale === 'en' ? '' : locale + '/'}ammonia-control`;
+  const canonicalUrl = `https://www.purrify.ca/${normalizedLocale === 'en' ? '' : normalizedLocale + '/'}ammonia-control`;
+  const languageAlternates = buildLanguageAlternates('/ammonia-control');
 
-  // Use enhanced SEO hook
-  const { nextSeoProps } = useEnhancedSEO({
-    path: '/ammonia-control',
+  // Convert language alternates to Next.js format
+  const alternates: Record<string, string> = {};
+  languageAlternates.forEach((alt) => {
+    alternates[alt.hrefLang] = alt.href;
+  });
+
+  return {
     title: ammonia.meta.title,
     description: ammonia.meta.description,
-    targetKeyword: 'cat litter ammonia control',
-    image: 'https://www.purrify.ca/images/og/ammonia-control.jpg',
-    keywords: ['ammonia cat litter', 'cat urine smell', 'litter box odor', 'ammonia neutralizer'],
-  });
+    keywords: [
+      'ammonia cat litter',
+      'cat urine smell',
+      'litter box odor',
+      'ammonia neutralizer',
+      'cat litter ammonia control',
+      'activated carbon ammonia',
+    ],
+    metadataBase: new URL('https://www.purrify.ca'),
+    alternates: {
+      canonical: canonicalUrl,
+      languages: alternates,
+    },
+    openGraph: {
+      type: 'website',
+      url: canonicalUrl,
+      title: ammonia.meta.title,
+      description: ammonia.meta.description,
+      locale: normalizedLocale === 'fr' ? 'fr_CA' : normalizedLocale === 'zh' ? 'zh_CN' : normalizedLocale === 'es' ? 'es_ES' : 'en_CA',
+      siteName: SITE_NAME,
+      images: [
+        {
+          url: '/images/og/ammonia-control.jpg',
+          width: 1200,
+          height: 630,
+          alt: ammonia.meta.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@purrifyhq',
+      creator: '@purrifyhq',
+      title: ammonia.meta.title,
+      description: ammonia.meta.description,
+      images: ['/images/og/ammonia-control.jpg'],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  };
+}
+
+// Async server component for the ammonia control page
+export default async function AmmoniaControlPage() {
+  // Get locale and currency from server
+  const locale = await getUserLocale();
+  const headersList = await headers();
+  const country = headersList.get('x-vercel-ip-country');
+  const currency: Currency = country === 'US' ? 'USD' : 'CAD';
+
+  const normalizedLocale = normalizeLocale(locale);
+  const t = translations[normalizedLocale as keyof typeof translations] || en;
+  const ammonia = t.ammonia;
+
+  const canonicalUrl = `https://www.purrify.ca/${normalizedLocale === 'en' ? '' : normalizedLocale + '/'}ammonia-control`;
 
   // Problem cards data
   const problemCards = [
@@ -111,6 +182,11 @@ export default function AmmoniaControl() {
     { q: ammonia.faq.q8, a: ammonia.faq.a8 },
   ];
 
+  // Currency symbol
+  const currencySymbol = currency === 'USD' ? '$' : '$';
+  const lowPrice = currency === 'USD' ? '3.99' : '4.76';
+  const highPrice = currency === 'USD' ? '29.99' : '34.99';
+
   // Structured Data - Product
   const productSchema = {
     '@context': 'https://schema.org',
@@ -124,8 +200,8 @@ export default function AmmoniaControl() {
     offers: {
       '@type': 'AggregateOffer',
       priceCurrency: currency,
-      lowPrice: '4.76',
-      highPrice: '34.99',
+      lowPrice: lowPrice,
+      highPrice: highPrice,
       offerCount: '3',
       availability: 'https://schema.org/InStock',
     },
@@ -167,20 +243,18 @@ export default function AmmoniaControl() {
 
   return (
     <>
-      <NextSeo {...nextSeoProps} />
-
       {/* Structured Data */}
-      <Script
+      <script
         id="product-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
       />
-      <Script
+      <script
         id="faq-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <Script
+      <script
         id="breadcrumb-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -594,3 +668,6 @@ export default function AmmoniaControl() {
     </>
   );
 }
+
+// Revalidate every hour
+export const revalidate = 3600;

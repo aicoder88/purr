@@ -454,7 +454,7 @@ export default function ContactPage() {
                   <p className="font-bold text-gray-900 dark:text-white">Instagram</p>
                   <p className="text-sm text-gray-500 dark:text-gray-400">@purrifyhq</p>
                 </div>
-                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-[#E4405F]" />
+                <ExternalLink className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-[#E4405F]" />
               </a>
 
               <a
@@ -470,7 +470,7 @@ export default function ContactPage() {
                   <p className="font-bold text-gray-900 dark:text-white">X (Twitter)</p>
                   <p className="text-sm text-gray-500 dark:text-gray-400">@PurrifyHQ</p>
                 </div>
-                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-[#1DA1F2]" />
+                <ExternalLink className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-[#1DA1F2]" />
               </a>
 
               <a
@@ -486,7 +486,7 @@ export default function ContactPage() {
                   <p className="font-bold text-gray-900 dark:text-white">Facebook</p>
                   <p className="text-sm text-gray-500 dark:text-gray-400">Purrify Canada</p>
                 </div>
-                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-[#1877F2]" />
+                <ExternalLink className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-[#1877F2]" />
               </a>
 
               <a
@@ -502,7 +502,7 @@ export default function ContactPage() {
                   <p className="font-bold text-gray-900 dark:text-white">YouTube</p>
                   <p className="text-sm text-gray-500 dark:text-gray-400">@PurrifyHQ</p>
                 </div>
-                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-[#FF0000]" />
+                <ExternalLink className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-[#FF0000]" />
               </a>
 
               <a
@@ -518,7 +518,7 @@ export default function ContactPage() {
                   <p className="font-bold text-gray-900 dark:text-white">LinkedIn</p>
                   <p className="text-sm text-gray-500 dark:text-gray-400">Purrify</p>
                 </div>
-                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-[#0A66C2]" />
+                <ExternalLink className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-[#0A66C2]" />
               </a>
 
               <a
@@ -536,7 +536,7 @@ export default function ContactPage() {
                   <p className="font-bold text-gray-900 dark:text-white">TikTok</p>
                   <p className="text-sm text-gray-500 dark:text-gray-400">@purrifyhq</p>
                 </div>
-                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-black dark:group-hover:text-white" />
+                <ExternalLink className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-black dark:group-hover:text-white" />
               </a>
             </div>
 
