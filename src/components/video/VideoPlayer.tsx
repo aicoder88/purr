@@ -209,7 +209,10 @@ export function VideoPlayer({
 
       {/* Custom Controls */}
       {controls && !isLoading && (
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className={cn(
+          "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 transition-opacity",
+          isPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"
+        )}>
           {/* Progress Bar */}
           <div className="mb-3">
             <input
