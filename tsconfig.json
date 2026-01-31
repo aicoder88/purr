@@ -49,6 +49,7 @@
     "node_modules",
     "backup/**/*",
     "peak/**/*",
-    "reports/**/*"
+    "reports/**/*",
+    "test_blog_api.ts"
   ]
 }
