@@ -52,6 +52,9 @@ export function RelatedContent({
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
+  // Call hooks unconditionally at the top level (React rules of hooks)
+  const { t } = useSafeTranslation();
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -88,7 +91,6 @@ export function RelatedContent({
     );
   }
 
-  const { t } = useSafeTranslation();
   const relatedPages = getRelatedPages(currentUrl, maxItems);
 
   if (relatedPages.length === 0) {
