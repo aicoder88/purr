@@ -151,71 +151,79 @@ function MyApp({ Component, pageProps, detectedCurrency = 'CAD' }: MyAppProps) {
         <CurrencyProvider detectedCurrency={detectedCurrency}>
           <TranslationProvider language={locale ?? 'en'}>
             <Head>
-            <meta charSet="utf-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-            <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-            <meta name="theme-color" content="#FF3131" media="(prefers-color-scheme: light)" />
-            <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)" />
-            <meta name="format-detection" content="telephone=no" />
-            <meta name="msapplication-TileColor" content="#FF3131" />
-            <meta name="application-name" content={SITE_NAME} />
-            <meta name="referrer" content="origin-when-cross-origin" />
+              <meta charSet="utf-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+              <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+              <meta name="theme-color" content="#FF3131" media="(prefers-color-scheme: light)" />
+              <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)" />
+              <meta name="format-detection" content="telephone=no" />
+              <meta name="msapplication-TileColor" content="#FF3131" />
+              <meta name="application-name" content={SITE_NAME} />
+              <meta name="referrer" content="origin-when-cross-origin" />
 
-            {/* Favicon and App Icons */}
-            <link rel="icon" href="/images/favicon.png" type="image/png" />
-            <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png" />
-            <link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png" />
-            <link rel="icon" type="image/png" sizes="64x64" href="/images/icon-64.png" />
-            <link rel="icon" type="image/png" sizes="128x128" href="/images/icon-128.png" />
-            <link rel="apple-touch-icon" href="/images/apple-touch-icon-root.png" />
+              {/* Favicon and App Icons */}
+              <link rel="icon" href="/images/favicon.png" type="image/png" />
+              <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png" />
+              <link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png" />
+              <link rel="icon" type="image/png" sizes="64x64" href="/images/icon-64.png" />
+              <link rel="icon" type="image/png" sizes="128x128" href="/images/icon-128.png" />
+              <link rel="apple-touch-icon" href="/images/apple-touch-icon-root.png" />
 
-            {/* Preconnect for critical third-party resources */}
-            <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
-            <link rel="preconnect" href="https://js.stripe.com" crossOrigin="anonymous" />
-            <link rel="preconnect" href="https://api.vercel-insights.com" crossOrigin="anonymous" />
+              {/* Preconnect for critical third-party resources */}
+              <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+              <link rel="preconnect" href="https://js.stripe.com" crossOrigin="anonymous" />
+              <link rel="preconnect" href="https://api.vercel-insights.com" crossOrigin="anonymous" />
 
-            {/* DNS Prefetch for non-critical third-parties */}
-            <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-            <link rel="dns-prefetch" href="https://static.zdassets.com" />
-          </Head>
+              {/* DNS Prefetch for non-critical third-parties */}
+              <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+              <link rel="dns-prefetch" href="https://static.zdassets.com" />
 
-          <DefaultSeo {...defaultSeoConfig} />
+              {/* Admin Pages Noindex (Correct Implementation) */}
+              {router.pathname.startsWith('/admin') && (
+                <>
+                  <meta name="robots" content="noindex, nofollow" />
+                  <meta name="googlebot" content="noindex, nofollow" />
+                </>
+              )}
+            </Head>
 
-          {/* Organization Schema Markup */}
-          <Script
-            id="organization-schema"
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                '@context': 'https://schema.org',
-                '@type': 'Organization',
-                name: SITE_NAME,
-                url: canonicalUrl,
-                logo: '/optimized/purrify-logo.avif',
-                sameAs: Object.values(SOCIAL_LINKS),
-                contactPoint: [
-                  {
-                    '@type': 'ContactPoint',
-                    telephone: CONTACT_INFO.phoneInternational,
-                    contactType: 'customer service',
-                    areaServed: 'CA',
-                    availableLanguage: ['English', 'French'],
-                  },
-                ],
-              })
-            }}
-          />
+            <DefaultSeo {...defaultSeoConfig} />
 
-          <div className={`${inter.variable} font-sans`}>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </div>
+            {/* Organization Schema Markup */}
+            <Script
+              id="organization-schema"
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  '@context': 'https://schema.org',
+                  '@type': 'Organization',
+                  name: SITE_NAME,
+                  url: canonicalUrl,
+                  logo: '/optimized/purrify-logo.avif',
+                  sameAs: Object.values(SOCIAL_LINKS),
+                  contactPoint: [
+                    {
+                      '@type': 'ContactPoint',
+                      telephone: CONTACT_INFO.phoneInternational,
+                      contactType: 'customer service',
+                      areaServed: 'CA',
+                      availableLanguage: ['English', 'French'],
+                    },
+                  ],
+                })
+              }}
+            />
 
-          <Toaster />
-          <ToastProvider />
-          <AnalyticsComponent />
-          <CoreWebVitals debug={process.env.NODE_ENV === 'development'} />
+            <div className={`${inter.variable} font-sans`}>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </div>
+
+            <Toaster />
+            <ToastProvider />
+            <AnalyticsComponent />
+            <CoreWebVitals debug={process.env.NODE_ENV === 'development'} />
           </TranslationProvider>
         </CurrencyProvider>
       </ThemeProvider>

@@ -196,7 +196,7 @@ const ProvincePage = ({ province }: ProvincePageProps) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const locales = ['en', 'fr', 'zh'];
 
-  // Pre-render ALL province pages for ALL locales at build time
+  // Pre-render ALL province pages for all locales
   const paths = locales.flatMap((locale) =>
     locationsByProvince.map((province) => ({
       params: { provinceSlug: province.slug },

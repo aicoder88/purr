@@ -118,36 +118,24 @@ git add -A && git commit -m "session 3.2.1: image optimization"
 
 **Steps**:
 
-1. **Install Playwright if needed**:
+1. **Setup Baseline**: Since you don't have pre-migration screenshots, you MUST use the production site as the baseline.
+   - **Baseline URL**: `https://www.purrify.ca`
+   - **Test URL**: `http://localhost:3000`
+
+2. **Install Playwright if needed**:
 ```bash
 cd /Users/macmini/dev/purr && pnpm add -D @playwright/test && npx playwright install
 ```
 
-2. **Create visual test** at `e2e/visual-regression.spec.ts`:
-```typescript
-import { test, expect } from '@playwright/test';
+3. **Update visual test** at `e2e/visual-regression.spec.ts`:
+   - Write a script that captures a screenshot from Production, then captures the same page from Local.
+   - Use a high threshold (0.1) to ignore minor text rendering differences, but flag layout shifts.
 
-const criticalPages = [
-  { name: 'home', url: '/' },
-  { name: 'about', url: '/about' },
-  { name: 'science', url: '/science' },
-  { name: 'contact', url: '/contact' },
-  { name: 'blog', url: '/blog' },
-  { name: 'blog-post', url: '/blog/best-cat-litter-deodorizers-2026' },
-];
+4. **Define critical comparison URLs**:
+   - Home, About, Science, Contact, Blog Index.
+   - Sample 3 posts from Batch 1.
 
-for (const page of criticalPages) {
-  test(`visual: ${page.name}`, async ({ page: browserPage }) => {
-    await browserPage.goto(page.url);
-    await expect(browserPage).toHaveScreenshot(`${page.name}.png`, {
-      fullPage: true,
-      threshold: 0.1,
-    });
-  });
-}
-```
-
-3. **Run tests**:
+5. **Run tests**:
 ```bash
 cd /Users/macmini/dev/purr && pnpm exec playwright test e2e/visual-regression.spec.ts
 ```

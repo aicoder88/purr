@@ -1,12 +1,30 @@
 import { useState, useEffect, useCallback } from 'react';
+import dynamic from 'next/dynamic';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import { requireAuth } from '@/lib/auth/session';
 import OpsLayout from '@/components/admin/ops/OpsLayout';
 import { AnimatedMetricCard } from '@/components/admin/ops/AnimatedMetricCard';
-import { EnhancedChart } from '@/components/admin/ops/EnhancedChart';
 import { RecentActivity } from '@/components/admin/ops/RecentActivity';
+import type { ChartType } from '@/components/admin/ops/EnhancedChart';
+
+// Dynamic import for EnhancedChart to reduce admin bundle size
+// This component uses recharts which is a heavy library
+const EnhancedChart = dynamic(
+  () => import('@/components/admin/ops/EnhancedChart').then((mod) => mod.EnhancedChart),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full h-[280px] flex items-center justify-center bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
+        <div className="flex flex-col items-center gap-2">
+          <div className="w-6 h-6 border-3 border-teal-500 dark:border-teal-400 border-t-transparent rounded-full animate-spin" />
+          <span className="text-xs text-gray-500 dark:text-gray-400">Loading chart...</span>
+        </div>
+      </div>
+    ),
+  }
+);
 import {
   Users,
   Store,
@@ -18,6 +36,13 @@ import {
   RefreshCw
 } from 'lucide-react';
 import { LeadStatus } from '@prisma/client';
+
+// Type definition for chart data
+interface ChartDataPoint {
+  name: string;
+  value: number;
+  [key: string]: string | number;
+}
 
 interface LeadsByStatus {
   status: LeadStatus;

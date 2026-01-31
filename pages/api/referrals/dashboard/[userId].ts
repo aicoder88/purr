@@ -1,4 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '../../../api/auth/[...nextauth]';
+import { checkRateLimit } from '../../../../src/lib/security/rate-limit';
 
 type GtagFunction = (command: 'event' | 'config', action: string, params?: Record<string, unknown>) => void;
 
@@ -68,6 +71,13 @@ interface DashboardResponse {
   data?: ReferralStats;
   error?: string;
 }
+
+// Rate limit for dashboard access: 30 requests per minute per user
+const DASHBOARD_RATE_LIMIT = {
+  windowMs: 60 * 1000,
+  maxRequests: 30,
+  message: 'Too many dashboard requests. Please try again later.'
+};
 
 // Mock data - replace with database queries
 const getMockReferralStats = (userId: string): ReferralStats => {
@@ -146,7 +156,16 @@ const getMockReferralStats = (userId: string): ReferralStats => {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<DashboardResponse>) {
-  const { userId } = req.query;
+  // Apply rate limiting
+  const { allowed, remaining } = checkRateLimit(req, DASHBOARD_RATE_LIMIT);
+  res.setHeader('X-RateLimit-Remaining', remaining.toString());
+
+  if (!allowed) {
+    return res.status(429).json({
+      success: false,
+      error: DASHBOARD_RATE_LIMIT.message
+    });
+  }
 
   if (req.method !== 'GET') {
     return res.status(405).json({
@@ -155,6 +174,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     });
   }
 
+  const { userId } = req.query;
+
   if (!userId || typeof userId !== 'string') {
     return res.status(400).json({
       success: false,
@@ -162,12 +183,55 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     });
   }
 
+  // Validate userId format (alphanumeric, hyphens, underscores only)
+  const USER_ID_PATTERN = /^[a-zA-Z0-9_-]+$/;
+  if (!USER_ID_PATTERN.test(userId) || userId.length > 100) {
+    return res.status(400).json({
+      success: false,
+      error: 'Invalid user ID format'
+    });
+  }
+
   try {
+    // CRITICAL SECURITY FIX: Verify the user is authenticated
+    const session = await getServerSession(req, res, authOptions);
+
+    if (!session || !session.user) {
+      return res.status(401).json({
+        success: false,
+        error: 'Unauthorized: Please sign in to view your referral dashboard'
+      });
+    }
+
+    // CRITICAL SECURITY FIX: Verify the user can only access their own dashboard
+    // Compare the requested userId with the authenticated user's ID/email
+    const authenticatedUserId = (session.user as { id?: string; email?: string }).id || 
+                                (session.user as { email?: string }).email;
+    
+    if (!authenticatedUserId) {
+      return res.status(401).json({
+        success: false,
+        error: 'Unauthorized: Unable to verify user identity'
+      });
+    }
+
+    // Only allow users to access their own dashboard (or admins)
+    const userRole = (session.user as { role?: string }).role || '';
+    const isAdmin = ['admin', 'superadmin'].includes(userRole);
+    
+    if (userId !== authenticatedUserId && !isAdmin) {
+      console.warn(`[SECURITY] Unauthorized dashboard access attempt: User ${authenticatedUserId} tried to access dashboard for ${userId}`);
+      return res.status(403).json({
+        success: false,
+        error: 'Forbidden: You can only view your own referral dashboard'
+      });
+    }
+
     // In production, this would be database queries
     // const referralStats = await getReferralStatsFromDB(userId);
     const referralStats = getMockReferralStats(userId);
 
-    // Track dashboard view
+    // Track dashboard view (only if authenticated and authorized)
     const gtag = getGtag();
     if (gtag) {
       gtag('event', 'referral_dashboard_view', {

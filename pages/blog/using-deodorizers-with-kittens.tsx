@@ -190,7 +190,7 @@ export default function UsingDeodorizersWithKittens() {
               </ol>
 
               <figure className="mb-12">
-                <Image src="/optimized/mother-cat-kitten.jpg" alt="Mother cat watching kitten use litter box illustration" width={800} height={533} className="w-full rounded-lg shadow-lg" />
+                <Image src="/optimized/mother-cat-kitten.png" alt="Mother cat watching kitten use litter box illustration" width={800} height={533} className="w-full rounded-lg shadow-lg" />
               </figure>
 
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">What If My Kitten Eats the Carbon?</h2>

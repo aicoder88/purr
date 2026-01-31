@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '@/components/ui/container';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 import { ContentStore } from '@/lib/blog/content-store';
 import { sampleBlogPosts, getBlogPostContent, type BlogPost } from '@/data/blog-posts';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
@@ -54,6 +55,13 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     description: post.excerpt,
     alternates: {
       canonical: `/blog/${slug}`,
+      languages: {
+        'en-CA': `${SITE_URL}/blog/${slug}`,
+        'fr-CA': `${SITE_URL}/fr/blog/${slug}`,
+        'zh-CN': `${SITE_URL}/zh/blog/${slug}`,
+        'es': `${SITE_URL}/es/blog/${slug}`,
+        'x-default': `${SITE_URL}/blog/${slug}`,
+      },
     },
     openGraph: {
       title: post.title,
@@ -162,10 +170,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       totalTime: post.howTo.totalTime,
       estimatedCost: post.howTo.estimatedCost
         ? {
-            '@type': 'MonetaryAmount',
-            currency: post.howTo.estimatedCost.currency,
-            value: post.howTo.estimatedCost.value,
-          }
+          '@type': 'MonetaryAmount',
+          currency: post.howTo.estimatedCost.currency,
+          value: post.howTo.estimatedCost.value,
+        }
         : undefined,
       supply: post.howTo.supply?.map((s) => ({ '@type': 'HowToSupply', name: s })),
       tool: post.howTo.tool?.map((t) => ({ '@type': 'HowToTool', name: t })),
@@ -325,6 +333,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   </div>
                 </div>
               )}
+
+              {/* Related Content */}
+              <RelatedContent currentUrl={`/blog/${slug}`} className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700" />
             </div>
           </Container>
         </section>

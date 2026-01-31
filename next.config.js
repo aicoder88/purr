@@ -5,6 +5,8 @@ const withBundleAnalyzer =
     ? require("@next/bundle-analyzer")({ enabled: true })
     : (config) => config;
 
+const withNextIntl = require("next-intl/plugin")();
+
 /**
  * Image Optimization
  *
@@ -845,6 +847,11 @@ const nextConfig = {
     "/blog": ["./content/blog/**/*"],
     "/blog/*": ["./content/blog/**/*"],
   },
+  i18n: {
+    locales: ["en", "fr", "zh", "es"],
+    defaultLocale: "en",
+    localeDetection: false,
+  },
 
   images: {
     remotePatterns: REMOTE_IMAGE_HOSTS.map((hostname) => ({
@@ -893,11 +900,7 @@ const nextConfig = {
     tsconfigPath: "./tsconfig.json",
   },
   distDir: ".next",
-  i18n: {
-    locales: ["en", "fr", "zh", "es"],
-    defaultLocale: "en",
-    localeDetection: false,
-  },
+
   onDemandEntries: {
     maxInactiveAge: 25 * 1000,
     pagesBufferLength: 2,
@@ -989,7 +992,7 @@ const nextConfig = {
   },
 };
 
-module.exports = withBundleAnalyzer(nextConfig);
+module.exports = withNextIntl(withBundleAnalyzer(nextConfig));
 
 // Injected content via Sentry wizard below
 // Skip Sentry instrumentation in test environment to prevent network timeouts

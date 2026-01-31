@@ -50,9 +50,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   // Import all cities function to pre-render ALL pages at build time
   const { getAllCities } = await import('../../src/data/locations');
   const allCities = getAllCities();
+
   const locales = ['en', 'fr', 'zh'];
 
-  // Generate paths for ALL cities across ALL locales to eliminate SSR blocking
+  // Generate paths for ALL cities across all available locales
   const paths = locales.flatMap((locale) =>
     allCities.map((city) => ({
       params: { citySlug: city.slug },
