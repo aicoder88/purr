@@ -118,7 +118,7 @@ export default function USALandingPage() {
                 </Link>
                 <div className="flex flex-col justify-center text-sm">
                   <span className="font-bold text-gray-900 dark:text-gray-100">Coming Soon</span>
-                  <span className="text-gray-500">Shipping starts Q1 2026</span>
+                  <span className="text-gray-500 dark:text-gray-400">Shipping starts Q1 2026</span>
                 </div>
               </div>
 

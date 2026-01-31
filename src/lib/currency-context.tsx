@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, useContext, ReactNode, useMemo, useState } from 'react';
 import type { Currency } from './geo/currency-detector';
 

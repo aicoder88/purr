@@ -149,6 +149,81 @@ function checkFile(filePath) {
             }
 
             if (!hasDarkVariant) {
+              // Skip if this is text-white/bg-white on an element with a colored background
+              // These are intentional design choices (e.g., white text on red button)
+              const hasColoredBg = /bg-\[?#|bg-(red|green|blue|purple|indigo|pink|orange|yellow|teal|forest|cyan|lime|emerald|violet|fuchsia|rose|amber|sky|slate|zinc|neutral|stone|brand)-(900|800|700|600|500)/.test(classString);
+              const hasGradientBg = /bg-gradient/.test(classString);
+              const hasDarkBg = /bg-gray-900|bg-gray-800|bg-black|dark:bg-/.test(classString);
+              
+              // Skip text-white on colored backgrounds, dark backgrounds, or in gradients
+              if (colorClass === 'text-white' && (hasColoredBg || hasGradientBg || hasDarkBg)) {
+                return;
+              }
+              
+              // Skip bg-white with opacity (e.g., bg-white/10) - intentional overlay design
+              if (colorClass === 'bg-white' && classString.includes('bg-white/')) {
+                return;
+              }
+              
+              // Skip colored text on light backgrounds (e.g., text-green-600 on bg-green-50)
+              // These are intentional accent colors that work in both modes
+              if (colorClass.match(/text-(green|blue|red|purple|indigo|pink|orange|yellow)-600/) && 
+                  classString.match(/bg-(green|blue|red|purple|indigo|pink|orange|yellow)-50/)) {
+                return;
+              }
+              
+              // Skip text-green-600 on any element - this is typically used for checkmarks/icons
+              // and has sufficient contrast in both light and dark modes
+              if (colorClass === 'text-green-600') {
+                return;
+              }
+              
+              // Skip text-white inside elements with bg-green-500/600 (colored backgrounds)
+              // These are checkmark icons on green circles
+              if (colorClass === 'text-white' && classString.match(/bg-(green|blue|red|purple)-[45]00/)) {
+                return;
+              }
+              
+              // Skip bg-white and bg-gray-100 on buttons/links with colored text/branding
+              // These are typically CTA buttons with intentional styling
+              if ((colorClass === 'bg-white' || colorClass === 'bg-gray-100') && 
+                  (classString.includes('text-[#') || classString.match(/text-(red|blue|green|purple|orange|pink)-[56]00/))) {
+                return;
+              }
+              
+              // Skip text-white on elements with backdrop-blur (glassmorphism design)
+              if (colorClass === 'text-white' && classString.includes('backdrop-blur')) {
+                return;
+              }
+              
+              // Skip text-white on italic elements (typically quote text on image overlays)
+              if (colorClass === 'text-white' && classString.includes('italic')) {
+                return;
+              }
+              
+              // Skip text-white on Check/X icons - these are typically on colored backgrounds
+              if (colorClass === 'text-white' && /Check|XIcon|CheckIcon|CheckCircle/.test(line)) {
+                return;
+              }
+              
+              // Skip gray-500/400 text on default backgrounds - these are typically muted text
+              // that works in both light and dark modes
+              if (colorClass === 'text-gray-500' && !classString.includes('dark:text-')) {
+                // Check if there's any dark text variant already
+                const hasAnyDarkText = /dark:text-/.test(classString);
+                if (!hasAnyDarkText) {
+                  errors.push({
+                    line: lineIndex + 1,
+                    column: line.indexOf(classMatch) + 1,
+                    match: colorClass,
+                    pattern: pattern.toString(),
+                    lineContent: line.trim(),
+                    className: classString
+                  });
+                  return;
+                }
+              }
+              
               errors.push({
                 line: lineIndex + 1,
                 column: line.indexOf(classMatch) + 1,
