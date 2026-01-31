@@ -33,7 +33,7 @@ export const HeroVideo = ({ t }: HeroVideoProps) => {
 
       {/* Video Container - Responsive Aspect Ratio */}
       <div className={`relative overflow-hidden rounded-3xl shadow-2xl dark:shadow-gray-800 group-hover:shadow-[#E0EFC7]/50 dark:group-hover:shadow-[#3694FF]/30 transition-all duration-500 w-full bg-gray-100 dark:bg-gray-800 mx-auto
-        ${isMobile ? 'aspect-[4/5] max-w-sm' : 'aspect-[1920/800] max-w-4xl'}`}
+        ${isMobile ? 'aspect-[3/4] w-full max-w-md' : 'h-full min-h-[500px]'}`}
       >
 
         {/* Replay Button Overlay */}

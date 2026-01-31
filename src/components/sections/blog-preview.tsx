@@ -20,13 +20,13 @@ interface BlogPost {
 export function BlogPreview() {
   const { t } = useTranslation();
   // Initialize with static data immediately to prevent blinking
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>(sampleBlogPosts.slice(0, 2));
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>(sampleBlogPosts.slice(0, 3));
 
   useEffect(() => {
     let isMounted = true;
     async function fetchBlogPosts() {
       try {
-        const response = await fetch("/api/blog-posts?limit=2");
+        const response = await fetch("/api/blog-posts?limit=3");
         if (!response.ok) {
           throw new Error(`Failed to fetch blog posts (status ${response.status})`);
         }
@@ -64,7 +64,7 @@ export function BlogPreview() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {blogPosts.map((post, index) => (
             <Link
               key={post.link || `blog-post-${index}`}

@@ -20,7 +20,7 @@ export function Hero() {
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <HeroContent t={t} locale={locale} />
-          <div className="relative lg:h-full flex items-center">
+          <div className="relative h-full flex items-center">
             <HeroVideo t={t} />
           </div>
         </div>
