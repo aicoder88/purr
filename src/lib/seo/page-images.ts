@@ -19,7 +19,7 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
   // Blog posts
   '/blog/strong-cat-urine-smell-litter-box': {
     image: '/optimized/strong-cat-urine-smell.webp',
-    alt: 'Calm cat resting on a sofa in a bright living room',
+    alt: 'Close up of a clean, odor-free litter box environment',
   },
   '/blog/activated-carbon-litter-additive-benefits': {
     image: '/optimized/carbon_magnified_image.webp',
@@ -46,8 +46,8 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
     alt: 'Modern living room with fresh, clean air',
   },
   '/blog/activated-carbon-vs-baking-soda-comparison': {
-    image: '/optimized/activated-carbon-vs-baking-soda.webp',
-    alt: 'Natural odor control comparison setup',
+    image: '/optimized/activated-carbon-vs-baking-soda-comparison.webp',
+    alt: 'Scientific comparison between activated carbon and baking soda for odor control',
   },
   '/blog/tried-everything-cat-litter-smell-solutions': {
     image: '/optimized/tried-hero.jpg',
@@ -124,8 +124,8 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
     alt: 'Complete cat care setup guide',
   },
   '/learn/activated-carbon-vs-baking-soda-deodorizers': {
-    image: '/optimized/activated-carbon-vs-baking-soda.webp',
-    alt: 'Activated carbon vs baking soda comparison',
+    image: '/optimized/activated-carbon-vs-baking-soda-comparison.webp',
+    alt: 'Comparison of activated carbon vs baking soda for cat litter',
   },
   '/learn/how-to-use-deodorizer': {
     image: '/optimized/before-after.webp',

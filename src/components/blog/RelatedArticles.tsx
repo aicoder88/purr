@@ -15,7 +15,7 @@ const ALL_ARTICLES: Article[] = [
     title: 'Strong Cat Urine Smell Solutions',
     href: '/blog/strong-cat-urine-smell-litter-box',
     image: '/optimized/strong-cat-urine-smell.webp',
-    alt: 'Calm cat resting on a sofa in a bright living room'
+    alt: 'Odor-free home environment for cats'
   },
   {
     title: 'Activated Carbon Litter Additive Benefits',
@@ -56,8 +56,8 @@ const ALL_ARTICLES: Article[] = [
   {
     title: 'Activated Carbon vs Baking Soda Comparison',
     href: '/blog/activated-carbon-vs-baking-soda-comparison',
-    image: '/optimized/activated-carbon-vs-baking-soda.webp',
-    alt: 'Natural odor control comparison setup'
+    image: '/optimized/activated-carbon-vs-baking-soda-comparison.webp',
+    alt: 'Scientific comparison of odor control methods'
   },
   {
     title: 'Tried Everything for Cat Litter Smell?',
