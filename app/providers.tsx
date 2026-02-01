@@ -6,6 +6,7 @@ import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import { TranslationProvider } from '@/lib/translation-context';
 import { CurrencyProvider } from '@/lib/currency-context';
+import { ClientLogic } from '@/components/layout/ClientLogic';
 
 interface ProvidersProps {
   children: ReactNode;
@@ -23,6 +24,7 @@ export function Providers({ children, locale, messages }: ProvidersProps) {
         >
           <CurrencyProvider detectedCurrency="CAD">
             <TranslationProvider language={locale} isAppRouter={true}>
+              <ClientLogic />
               {children}
             </TranslationProvider>
           </CurrencyProvider>

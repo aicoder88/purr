@@ -31,9 +31,10 @@ declare global {
       targetId?: string,
       config?: GtagEvent
     ) => void;
+    va?: (command: string, ...args: unknown[]) => void;
     dataLayer?: unknown[];
   }
 }
 
 // This is necessary to make the file a module
-export {};
+export { };

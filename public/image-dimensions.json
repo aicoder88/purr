@@ -1,344 +1,870 @@
 {
-  "images/ventilation.png": {
-    "width": 1024,
-    "height": 1024,
-    "webp": "optimized/ventilation.webp",
-    "webpSanitized": "optimized/ventilation.webp",
-    "avif": "optimized/ventilation.avif",
-    "avifSanitized": "optimized/ventilation.avif",
-    "optimized": "optimized/ventilation.png"
-  },
   "images/team-avatar.png": {
     "width": 64,
     "height": 64,
-    "webp": "optimized/team-avatar.webp",
-    "webpSanitized": "optimized/team-avatar.webp",
-    "avif": "optimized/team-avatar.avif",
-    "avifSanitized": "optimized/team-avatar.avif",
-    "optimized": "optimized/team-avatar.png"
-  },
-  "images/social-share.png": {
-    "width": 1024,
-    "height": 1024,
-    "webp": "optimized/social-share.webp",
-    "webpSanitized": "optimized/social-share.webp",
-    "avif": "optimized/social-share.avif",
-    "avifSanitized": "optimized/social-share.avif",
-    "optimized": "optimized/social-share.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/social-logo.png": {
     "width": 400,
     "height": 400,
-    "webp": "optimized/social-logo.webp",
-    "webpSanitized": "optimized/social-logo.webp",
-    "avif": "optimized/social-logo.avif",
-    "avifSanitized": "optimized/social-logo.avif",
-    "optimized": "optimized/social-logo.png"
-  },
-  "images/small-apartment-hero-original.png": {
-    "width": 1024,
-    "height": 1024,
-    "webp": "optimized/small-apartment-hero-original.webp",
-    "webpSanitized": "optimized/small-apartment-hero-original.webp",
-    "avif": "optimized/small-apartment-hero-original.avif",
-    "avifSanitized": "optimized/small-apartment-hero-original.avif",
-    "optimized": "optimized/small-apartment-hero-original.png"
-  },
-  "images/placement.png": {
-    "width": 1024,
-    "height": 1024,
-    "webp": "optimized/placement.webp",
-    "webpSanitized": "optimized/placement.webp",
-    "avif": "optimized/placement.avif",
-    "avifSanitized": "optimized/placement.avif",
-    "optimized": "optimized/placement.png"
-  },
-  "images/mission.png": {
-    "width": 1024,
-    "height": 1024,
-    "webp": "optimized/mission.webp",
-    "webpSanitized": "optimized/mission.webp",
-    "avif": "optimized/mission.avif",
-    "avifSanitized": "optimized/mission.avif",
-    "optimized": "optimized/mission.png"
-  },
-  "images/mark-archer.jpg": {
-    "width": 682,
-    "height": 1024,
-    "webp": "optimized/mark-archer.webp",
-    "webpSanitized": "optimized/mark-archer.webp",
-    "avif": "optimized/mark-archer.avif",
-    "avifSanitized": "optimized/mark-archer.avif",
-    "optimized": "optimized/mark-archer.jpg"
-  },
-  "images/logo-light.png": {
-    "width": 1024,
-    "height": 1024,
-    "webp": "optimized/logo-light.webp",
-    "webpSanitized": "optimized/logo-light.webp",
-    "avif": "optimized/logo-light.avif",
-    "avifSanitized": "optimized/logo-light.avif",
-    "optimized": "optimized/logo-light.png"
-  },
-  "images/logo-dark.png": {
-    "width": 1024,
-    "height": 1024,
-    "webp": "optimized/logo-dark.webp",
-    "webpSanitized": "optimized/logo-dark.webp",
-    "avif": "optimized/logo-dark.avif",
-    "avifSanitized": "optimized/logo-dark.avif",
-    "optimized": "optimized/logo-dark.png"
-  },
-  "images/litter-box-hero.png": {
-    "width": 1024,
-    "height": 1024,
-    "webp": "optimized/litter-box-hero.webp",
-    "webpSanitized": "optimized/litter-box-hero.webp",
-    "avif": "optimized/litter-box-hero.avif",
-    "avifSanitized": "optimized/litter-box-hero.avif",
-    "optimized": "optimized/litter-box-hero.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/icon-64.png": {
     "width": 64,
     "height": 64,
-    "webp": "optimized/icon-64.webp",
-    "webpSanitized": "optimized/icon-64.webp",
-    "avif": "optimized/icon-64.avif",
-    "avifSanitized": "optimized/icon-64.avif",
-    "optimized": "optimized/icon-64.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/icon-64-root.png": {
     "width": 64,
     "height": 64,
-    "webp": "optimized/icon-64-root.webp",
-    "webpSanitized": "optimized/icon-64-root.webp",
-    "avif": "optimized/icon-64-root.avif",
-    "avifSanitized": "optimized/icon-64-root.avif",
-    "optimized": "optimized/icon-64-root.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/icon-512.png": {
     "width": 512,
     "height": 512,
-    "webp": "optimized/icon-512.webp",
-    "webpSanitized": "optimized/icon-512.webp",
-    "avif": "optimized/icon-512.avif",
-    "avifSanitized": "optimized/icon-512.avif",
-    "optimized": "optimized/icon-512.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/icon-32.png": {
     "width": 32,
     "height": 32,
-    "webp": "optimized/icon-32.webp",
-    "webpSanitized": "optimized/icon-32.webp",
-    "avif": "optimized/icon-32.avif",
-    "avifSanitized": "optimized/icon-32.avif",
-    "optimized": "optimized/icon-32.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/icon-32-root.png": {
     "width": 32,
     "height": 32,
-    "webp": "optimized/icon-32-root.webp",
-    "webpSanitized": "optimized/icon-32-root.webp",
-    "avif": "optimized/icon-32-root.avif",
-    "avifSanitized": "optimized/icon-32-root.avif",
-    "optimized": "optimized/icon-32-root.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/icon-192.png": {
     "width": 192,
     "height": 192,
-    "webp": "optimized/icon-192.webp",
-    "webpSanitized": "optimized/icon-192.webp",
-    "avif": "optimized/icon-192.avif",
-    "avifSanitized": "optimized/icon-192.avif",
-    "optimized": "optimized/icon-192.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/icon-128.png": {
     "width": 128,
     "height": 128,
-    "webp": "optimized/icon-128.webp",
-    "webpSanitized": "optimized/icon-128.webp",
-    "avif": "optimized/icon-128.avif",
-    "avifSanitized": "optimized/icon-128.avif",
-    "optimized": "optimized/icon-128.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/icon-128-root.png": {
     "width": 128,
     "height": 128,
-    "webp": "optimized/icon-128-root.webp",
-    "webpSanitized": "optimized/icon-128-root.webp",
-    "avif": "optimized/icon-128-root.avif",
-    "avifSanitized": "optimized/icon-128-root.avif",
-    "optimized": "optimized/icon-128-root.png"
-  },
-  "images/hero.png": {
-    "width": 1024,
-    "height": 1024,
-    "webp": "optimized/hero.webp",
-    "webpSanitized": "optimized/hero.webp",
-    "avif": "optimized/hero.avif",
-    "avifSanitized": "optimized/hero.avif",
-    "optimized": "optimized/hero.png"
-  },
-  "images/happy-owner.png": {
-    "width": 1024,
-    "height": 1024,
-    "webp": "optimized/happy-owner.webp",
-    "webpSanitized": "optimized/happy-owner.webp",
-    "avif": "optimized/happy-owner.avif",
-    "avifSanitized": "optimized/happy-owner.avif",
-    "optimized": "optimized/happy-owner.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/favicon.png": {
     "width": 16,
     "height": 16,
-    "webp": "optimized/favicon.webp",
-    "webpSanitized": "optimized/favicon.webp",
-    "avif": "optimized/favicon.avif",
-    "avifSanitized": "optimized/favicon.avif",
-    "optimized": "optimized/favicon.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/dr-michael-rodriguez.jpg": {
     "width": 512,
     "height": 512,
-    "webp": "optimized/dr-michael-rodriguez.webp",
-    "webpSanitized": "optimized/dr-michael-rodriguez.webp",
-    "avif": "optimized/dr-michael-rodriguez.avif",
-    "avifSanitized": "optimized/dr-michael-rodriguez.avif",
-    "optimized": "optimized/dr-michael-rodriguez.jpg"
-  },
-  "images/covered-litter-box-types.png": {
-    "width": 1024,
-    "height": 1024,
-    "webp": "optimized/covered-litter-box-types.webp",
-    "webpSanitized": "optimized/covered-litter-box-types.webp",
-    "avif": "optimized/covered-litter-box-types.avif",
-    "avifSanitized": "optimized/covered-litter-box-types.avif",
-    "optimized": "optimized/covered-litter-box-types.png"
-  },
-  "images/cat-using-covered-litter-box.png": {
-    "width": 1024,
-    "height": 1024,
-    "webp": "optimized/cat-using-covered-litter-box.webp",
-    "webpSanitized": "optimized/cat-using-covered-litter-box.webp",
-    "avif": "optimized/cat-using-covered-litter-box.avif",
-    "avifSanitized": "optimized/cat-using-covered-litter-box.avif",
-    "optimized": "optimized/cat-using-covered-litter-box.png"
-  },
-  "images/cat-litter-box-activated-carbon.png": {
-    "width": 1024,
-    "height": 1024,
-    "webp": "optimized/cat-litter-box-activated-carbon.webp",
-    "webpSanitized": "optimized/cat-litter-box-activated-carbon.webp",
-    "avif": "optimized/cat-litter-box-activated-carbon.avif",
-    "avifSanitized": "optimized/cat-litter-box-activated-carbon.avif",
-    "optimized": "optimized/cat-litter-box-activated-carbon.png"
-  },
-  "images/carbon.png": {
-    "width": 1024,
-    "height": 1024,
-    "webp": "optimized/carbon.webp",
-    "webpSanitized": "optimized/carbon.webp",
-    "avif": "optimized/carbon.avif",
-    "avifSanitized": "optimized/carbon.avif",
-    "optimized": "optimized/carbon.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/apple-touch-icon.png": {
     "width": 180,
     "height": 180,
-    "webp": "optimized/apple-touch-icon.webp",
-    "webpSanitized": "optimized/apple-touch-icon.webp",
-    "avif": "optimized/apple-touch-icon.avif",
-    "avifSanitized": "optimized/apple-touch-icon.avif",
-    "optimized": "optimized/apple-touch-icon.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/apple-touch-icon-root.png": {
     "width": 180,
     "height": 180,
-    "webp": "optimized/apple-touch-icon-root.webp",
-    "webpSanitized": "optimized/apple-touch-icon-root.webp",
-    "avif": "optimized/apple-touch-icon-root.avif",
-    "avifSanitized": "optimized/apple-touch-icon-root.avif",
-    "optimized": "optimized/apple-touch-icon-root.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
-  "images/apartment-living-room.png": {
+  "images/powder_vs_spray_testing_v2.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/apartment-living-room.webp",
-    "webpSanitized": "optimized/apartment-living-room.webp",
-    "avif": "optimized/apartment-living-room.avif",
-    "avifSanitized": "optimized/apartment-living-room.avif",
-    "optimized": "optimized/apartment-living-room.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/powder_vs_spray_testing_v2-640w.avif",
+        "optimized/powder_vs_spray_testing_v2-828w.avif"
+      ],
+      "webp": [
+        "optimized/powder_vs_spray_testing_v2-640w.webp",
+        "optimized/powder_vs_spray_testing_v2-828w.webp"
+      ],
+      "jpg": [
+        "optimized/powder_vs_spray_testing_v2-640w.jpg",
+        "optimized/powder_vs_spray_testing_v2-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
-  "images/apartment-hero.png": {
+  "images/powder_vs_spray_testing.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/apartment-hero.webp",
-    "webpSanitized": "optimized/apartment-hero.webp",
-    "avif": "optimized/apartment-hero.avif",
-    "avifSanitized": "optimized/apartment-hero.avif",
-    "optimized": "optimized/apartment-hero.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/powder_vs_spray_testing-640w.avif",
+        "optimized/powder_vs_spray_testing-828w.avif"
+      ],
+      "webp": [
+        "optimized/powder_vs_spray_testing-640w.webp",
+        "optimized/powder_vs_spray_testing-828w.webp"
+      ],
+      "jpg": [
+        "optimized/powder_vs_spray_testing-640w.jpg",
+        "optimized/powder_vs_spray_testing-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
-  "images/ammonia-science.png": {
+  "images/powder_vs_spray_science_v2.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/ammonia-science.webp",
-    "webpSanitized": "optimized/ammonia-science.webp",
-    "avif": "optimized/ammonia-science.avif",
-    "avifSanitized": "optimized/ammonia-science.avif",
-    "optimized": "optimized/ammonia-science.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/powder_vs_spray_science_v2-640w.avif",
+        "optimized/powder_vs_spray_science_v2-828w.avif"
+      ],
+      "webp": [
+        "optimized/powder_vs_spray_science_v2-640w.webp",
+        "optimized/powder_vs_spray_science_v2-828w.webp"
+      ],
+      "jpg": [
+        "optimized/powder_vs_spray_science_v2-640w.jpg",
+        "optimized/powder_vs_spray_science_v2-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
-  "images/ammonia-hero.png": {
+  "images/powder_vs_spray_science.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/ammonia-hero.webp",
-    "webpSanitized": "optimized/ammonia-hero.webp",
-    "avif": "optimized/ammonia-hero.avif",
-    "avifSanitized": "optimized/ammonia-hero.avif",
-    "optimized": "optimized/ammonia-hero.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/powder_vs_spray_science-640w.avif",
+        "optimized/powder_vs_spray_science-828w.avif"
+      ],
+      "webp": [
+        "optimized/powder_vs_spray_science-640w.webp",
+        "optimized/powder_vs_spray_science-828w.webp"
+      ],
+      "jpg": [
+        "optimized/powder_vs_spray_science-640w.jpg",
+        "optimized/powder_vs_spray_science-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
-  "images/ammonia-happy-cat.png": {
+  "images/powder_vs_spray_results.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/ammonia-happy-cat.webp",
-    "webpSanitized": "optimized/ammonia-happy-cat.webp",
-    "avif": "optimized/ammonia-happy-cat.avif",
-    "avifSanitized": "optimized/ammonia-happy-cat.avif",
-    "optimized": "optimized/ammonia-happy-cat.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/powder_vs_spray_results-640w.avif",
+        "optimized/powder_vs_spray_results-828w.avif"
+      ],
+      "webp": [
+        "optimized/powder_vs_spray_results-640w.webp",
+        "optimized/powder_vs_spray_results-828w.webp"
+      ],
+      "jpg": [
+        "optimized/powder_vs_spray_results-640w.jpg",
+        "optimized/powder_vs_spray_results-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
-  "images/ammonia-fresh-home.png": {
+  "images/powder_vs_spray_hero_v2.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/ammonia-fresh-home.webp",
-    "webpSanitized": "optimized/ammonia-fresh-home.webp",
-    "avif": "optimized/ammonia-fresh-home.avif",
-    "avifSanitized": "optimized/ammonia-fresh-home.avif",
-    "optimized": "optimized/ammonia-fresh-home.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/powder_vs_spray_hero_v2-640w.avif",
+        "optimized/powder_vs_spray_hero_v2-828w.avif"
+      ],
+      "webp": [
+        "optimized/powder_vs_spray_hero_v2-640w.webp",
+        "optimized/powder_vs_spray_hero_v2-828w.webp"
+      ],
+      "jpg": [
+        "optimized/powder_vs_spray_hero_v2-640w.jpg",
+        "optimized/powder_vs_spray_hero_v2-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
-  "images/60g.jpg": {
-    "width": 954,
-    "height": 1536,
-    "webp": "optimized/60g.webp",
-    "webpSanitized": "optimized/60g.webp",
-    "avif": "optimized/60g.avif",
-    "avifSanitized": "optimized/60g.avif",
-    "optimized": "optimized/60g.jpg"
-  },
-  "images/140g.png": {
+  "images/powder_vs_spray_hero.png": {
     "width": 1024,
-    "height": 1536,
-    "webp": "optimized/140g.webp",
-    "webpSanitized": "optimized/140g.webp",
-    "avif": "optimized/140g.avif",
-    "avifSanitized": "optimized/140g.avif",
-    "optimized": "optimized/140g.png"
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/powder_vs_spray_hero-640w.avif",
+        "optimized/powder_vs_spray_hero-828w.avif"
+      ],
+      "webp": [
+        "optimized/powder_vs_spray_hero-640w.webp",
+        "optimized/powder_vs_spray_hero-828w.webp"
+      ],
+      "jpg": [
+        "optimized/powder_vs_spray_hero-640w.jpg",
+        "optimized/powder_vs_spray_hero-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
-  "images/140g.jpg": {
+  "images/logo-1high-reso.png": {
+    "width": 1544,
+    "height": 736,
+    "aspectRatio": 2.097826086956522,
+    "formats": {
+      "avif": [
+        "optimized/logo-1high-reso-640w.avif",
+        "optimized/logo-1high-reso-828w.avif",
+        "optimized/logo-1high-reso-1080w.avif",
+        "optimized/logo-1high-reso-1200w.avif"
+      ],
+      "webp": [
+        "optimized/logo-1high-reso-640w.webp",
+        "optimized/logo-1high-reso-828w.webp",
+        "optimized/logo-1high-reso-1080w.webp",
+        "optimized/logo-1high-reso-1200w.webp"
+      ],
+      "jpg": [
+        "optimized/logo-1high-reso-640w.jpg",
+        "optimized/logo-1high-reso-828w.jpg",
+        "optimized/logo-1high-reso-1080w.jpg",
+        "optimized/logo-1high-reso-1200w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  },
+  "images/replacements/multi-cat-success-ghibli.png": {
     "width": 1024,
-    "height": 1536,
-    "webp": "optimized/140g.webp",
-    "webpSanitized": "optimized/140g.webp",
-    "avif": "optimized/140g.avif",
-    "avifSanitized": "optimized/140g.avif",
-    "optimized": "optimized/140g.jpg"
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/multi-cat-success-ghibli-640w.avif",
+        "optimized/multi-cat-success-ghibli-828w.avif"
+      ],
+      "webp": [
+        "optimized/multi-cat-success-ghibli-640w.webp",
+        "optimized/multi-cat-success-ghibli-828w.webp"
+      ],
+      "jpg": [
+        "optimized/multi-cat-success-ghibli-640w.jpg",
+        "optimized/multi-cat-success-ghibli-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/replacements/multi-cat-home-ghibli.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/multi-cat-home-ghibli-640w.avif",
+        "optimized/multi-cat-home-ghibli-828w.avif"
+      ],
+      "webp": [
+        "optimized/multi-cat-home-ghibli-640w.webp",
+        "optimized/multi-cat-home-ghibli-828w.webp"
+      ],
+      "jpg": [
+        "optimized/multi-cat-home-ghibli-640w.jpg",
+        "optimized/multi-cat-home-ghibli-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/replacements/multi-cat-family-ghibli.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/multi-cat-family-ghibli-640w.avif",
+        "optimized/multi-cat-family-ghibli-828w.avif"
+      ],
+      "webp": [
+        "optimized/multi-cat-family-ghibli-640w.webp",
+        "optimized/multi-cat-family-ghibli-828w.webp"
+      ],
+      "jpg": [
+        "optimized/multi-cat-family-ghibli-640w.jpg",
+        "optimized/multi-cat-family-ghibli-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/replacements/happy-cat-ghibli.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/happy-cat-ghibli-640w.avif",
+        "optimized/happy-cat-ghibli-828w.avif"
+      ],
+      "webp": [
+        "optimized/happy-cat-ghibli-640w.webp",
+        "optimized/happy-cat-ghibli-828w.webp"
+      ],
+      "jpg": [
+        "optimized/happy-cat-ghibli-640w.jpg",
+        "optimized/happy-cat-ghibli-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/replacements/curious-cat-ghibli.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/curious-cat-ghibli-640w.avif",
+        "optimized/curious-cat-ghibli-828w.avif"
+      ],
+      "webp": [
+        "optimized/curious-cat-ghibli-640w.webp",
+        "optimized/curious-cat-ghibli-828w.webp"
+      ],
+      "jpg": [
+        "optimized/curious-cat-ghibli-640w.jpg",
+        "optimized/curious-cat-ghibli-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/replacements/cat-owner-questions-ghibli.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/cat-owner-questions-ghibli-640w.avif",
+        "optimized/cat-owner-questions-ghibli-828w.avif"
+      ],
+      "webp": [
+        "optimized/cat-owner-questions-ghibli-640w.webp",
+        "optimized/cat-owner-questions-ghibli-828w.webp"
+      ],
+      "jpg": [
+        "optimized/cat-owner-questions-ghibli-640w.jpg",
+        "optimized/cat-owner-questions-ghibli-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/replacements/cat-litter-usage-ghibli.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/cat-litter-usage-ghibli-640w.avif",
+        "optimized/cat-litter-usage-ghibli-828w.avif"
+      ],
+      "webp": [
+        "optimized/cat-litter-usage-ghibli-640w.webp",
+        "optimized/cat-litter-usage-ghibli-828w.webp"
+      ],
+      "jpg": [
+        "optimized/cat-litter-usage-ghibli-640w.jpg",
+        "optimized/cat-litter-usage-ghibli-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/replacements/carbon-microscopic.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/carbon-microscopic-640w.avif",
+        "optimized/carbon-microscopic-828w.avif"
+      ],
+      "webp": [
+        "optimized/carbon-microscopic-640w.webp",
+        "optimized/carbon-microscopic-828w.webp"
+      ],
+      "jpg": [
+        "optimized/carbon-microscopic-640w.jpg",
+        "optimized/carbon-microscopic-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/replacements/carbon-granules-detailed.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/carbon-granules-detailed-640w.avif",
+        "optimized/carbon-granules-detailed-828w.avif"
+      ],
+      "webp": [
+        "optimized/carbon-granules-detailed-640w.webp",
+        "optimized/carbon-granules-detailed-828w.webp"
+      ],
+      "jpg": [
+        "optimized/carbon-granules-detailed-640w.jpg",
+        "optimized/carbon-granules-detailed-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/products/purrify-standard-bag.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/purrify-standard-bag-640w.avif",
+        "optimized/purrify-standard-bag-828w.avif"
+      ],
+      "webp": [
+        "optimized/purrify-standard-bag-640w.webp",
+        "optimized/purrify-standard-bag-828w.webp"
+      ],
+      "jpg": [
+        "optimized/purrify-standard-bag-640w.jpg",
+        "optimized/purrify-standard-bag-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/pitchdeck/slide-12-close.png": {
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-12-close-640w.avif",
+        "optimized/slide-12-close-828w.avif",
+        "optimized/slide-12-close-1080w.avif",
+        "optimized/slide-12-close-1200w.avif",
+        "optimized/slide-12-close-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-12-close-640w.webp",
+        "optimized/slide-12-close-828w.webp",
+        "optimized/slide-12-close-1080w.webp",
+        "optimized/slide-12-close-1200w.webp",
+        "optimized/slide-12-close-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-12-close-640w.jpg",
+        "optimized/slide-12-close-828w.jpg",
+        "optimized/slide-12-close-1080w.jpg",
+        "optimized/slide-12-close-1200w.jpg",
+        "optimized/slide-12-close-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  },
+  "images/pitchdeck/slide-11-ask.png": {
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-11-ask-640w.avif",
+        "optimized/slide-11-ask-828w.avif",
+        "optimized/slide-11-ask-1080w.avif",
+        "optimized/slide-11-ask-1200w.avif",
+        "optimized/slide-11-ask-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-11-ask-640w.webp",
+        "optimized/slide-11-ask-828w.webp",
+        "optimized/slide-11-ask-1080w.webp",
+        "optimized/slide-11-ask-1200w.webp",
+        "optimized/slide-11-ask-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-11-ask-640w.jpg",
+        "optimized/slide-11-ask-828w.jpg",
+        "optimized/slide-11-ask-1080w.jpg",
+        "optimized/slide-11-ask-1200w.jpg",
+        "optimized/slide-11-ask-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  },
+  "images/pitchdeck/slide-10-market.png": {
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-10-market-640w.avif",
+        "optimized/slide-10-market-828w.avif",
+        "optimized/slide-10-market-1080w.avif",
+        "optimized/slide-10-market-1200w.avif",
+        "optimized/slide-10-market-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-10-market-640w.webp",
+        "optimized/slide-10-market-828w.webp",
+        "optimized/slide-10-market-1080w.webp",
+        "optimized/slide-10-market-1200w.webp",
+        "optimized/slide-10-market-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-10-market-640w.jpg",
+        "optimized/slide-10-market-828w.jpg",
+        "optimized/slide-10-market-1080w.jpg",
+        "optimized/slide-10-market-1200w.jpg",
+        "optimized/slide-10-market-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  },
+  "images/pitchdeck/slide-09-economics.png": {
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-09-economics-640w.avif",
+        "optimized/slide-09-economics-828w.avif",
+        "optimized/slide-09-economics-1080w.avif",
+        "optimized/slide-09-economics-1200w.avif",
+        "optimized/slide-09-economics-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-09-economics-640w.webp",
+        "optimized/slide-09-economics-828w.webp",
+        "optimized/slide-09-economics-1080w.webp",
+        "optimized/slide-09-economics-1200w.webp",
+        "optimized/slide-09-economics-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-09-economics-640w.jpg",
+        "optimized/slide-09-economics-828w.jpg",
+        "optimized/slide-09-economics-1080w.jpg",
+        "optimized/slide-09-economics-1200w.jpg",
+        "optimized/slide-09-economics-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  },
+  "images/pitchdeck/slide-08-infrastructure.png": {
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-08-infrastructure-640w.avif",
+        "optimized/slide-08-infrastructure-828w.avif",
+        "optimized/slide-08-infrastructure-1080w.avif",
+        "optimized/slide-08-infrastructure-1200w.avif",
+        "optimized/slide-08-infrastructure-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-08-infrastructure-640w.webp",
+        "optimized/slide-08-infrastructure-828w.webp",
+        "optimized/slide-08-infrastructure-1080w.webp",
+        "optimized/slide-08-infrastructure-1200w.webp",
+        "optimized/slide-08-infrastructure-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-08-infrastructure-640w.jpg",
+        "optimized/slide-08-infrastructure-828w.jpg",
+        "optimized/slide-08-infrastructure-1080w.jpg",
+        "optimized/slide-08-infrastructure-1200w.jpg",
+        "optimized/slide-08-infrastructure-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  },
+  "images/pitchdeck/slide-07-platform.png": {
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-07-platform-640w.avif",
+        "optimized/slide-07-platform-828w.avif",
+        "optimized/slide-07-platform-1080w.avif",
+        "optimized/slide-07-platform-1200w.avif",
+        "optimized/slide-07-platform-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-07-platform-640w.webp",
+        "optimized/slide-07-platform-828w.webp",
+        "optimized/slide-07-platform-1080w.webp",
+        "optimized/slide-07-platform-1200w.webp",
+        "optimized/slide-07-platform-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-07-platform-640w.jpg",
+        "optimized/slide-07-platform-828w.jpg",
+        "optimized/slide-07-platform-1080w.jpg",
+        "optimized/slide-07-platform-1200w.jpg",
+        "optimized/slide-07-platform-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  },
+  "images/pitchdeck/slide-06-case-study.png": {
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-06-case-study-640w.avif",
+        "optimized/slide-06-case-study-828w.avif",
+        "optimized/slide-06-case-study-1080w.avif",
+        "optimized/slide-06-case-study-1200w.avif",
+        "optimized/slide-06-case-study-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-06-case-study-640w.webp",
+        "optimized/slide-06-case-study-828w.webp",
+        "optimized/slide-06-case-study-1080w.webp",
+        "optimized/slide-06-case-study-1200w.webp",
+        "optimized/slide-06-case-study-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-06-case-study-640w.jpg",
+        "optimized/slide-06-case-study-828w.jpg",
+        "optimized/slide-06-case-study-1080w.jpg",
+        "optimized/slide-06-case-study-1200w.jpg",
+        "optimized/slide-06-case-study-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  },
+  "images/pitchdeck/slide-05-how-it-works.png": {
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-05-how-it-works-640w.avif",
+        "optimized/slide-05-how-it-works-828w.avif",
+        "optimized/slide-05-how-it-works-1080w.avif",
+        "optimized/slide-05-how-it-works-1200w.avif",
+        "optimized/slide-05-how-it-works-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-05-how-it-works-640w.webp",
+        "optimized/slide-05-how-it-works-828w.webp",
+        "optimized/slide-05-how-it-works-1080w.webp",
+        "optimized/slide-05-how-it-works-1200w.webp",
+        "optimized/slide-05-how-it-works-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-05-how-it-works-640w.jpg",
+        "optimized/slide-05-how-it-works-828w.jpg",
+        "optimized/slide-05-how-it-works-1080w.jpg",
+        "optimized/slide-05-how-it-works-1200w.jpg",
+        "optimized/slide-05-how-it-works-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  },
+  "images/pitchdeck/slide-04-solution.png": {
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-04-solution-640w.avif",
+        "optimized/slide-04-solution-828w.avif",
+        "optimized/slide-04-solution-1080w.avif",
+        "optimized/slide-04-solution-1200w.avif",
+        "optimized/slide-04-solution-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-04-solution-640w.webp",
+        "optimized/slide-04-solution-828w.webp",
+        "optimized/slide-04-solution-1080w.webp",
+        "optimized/slide-04-solution-1200w.webp",
+        "optimized/slide-04-solution-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-04-solution-640w.jpg",
+        "optimized/slide-04-solution-828w.jpg",
+        "optimized/slide-04-solution-1080w.jpg",
+        "optimized/slide-04-solution-1200w.jpg",
+        "optimized/slide-04-solution-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  },
+  "images/pitchdeck/slide-03-urgency.png": {
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-03-urgency-640w.avif",
+        "optimized/slide-03-urgency-828w.avif",
+        "optimized/slide-03-urgency-1080w.avif",
+        "optimized/slide-03-urgency-1200w.avif",
+        "optimized/slide-03-urgency-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-03-urgency-640w.webp",
+        "optimized/slide-03-urgency-828w.webp",
+        "optimized/slide-03-urgency-1080w.webp",
+        "optimized/slide-03-urgency-1200w.webp",
+        "optimized/slide-03-urgency-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-03-urgency-640w.jpg",
+        "optimized/slide-03-urgency-828w.jpg",
+        "optimized/slide-03-urgency-1080w.jpg",
+        "optimized/slide-03-urgency-1200w.jpg",
+        "optimized/slide-03-urgency-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  },
+  "images/pitchdeck/slide-02-problem.png": {
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-02-problem-640w.avif",
+        "optimized/slide-02-problem-828w.avif",
+        "optimized/slide-02-problem-1080w.avif",
+        "optimized/slide-02-problem-1200w.avif",
+        "optimized/slide-02-problem-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-02-problem-640w.webp",
+        "optimized/slide-02-problem-828w.webp",
+        "optimized/slide-02-problem-1080w.webp",
+        "optimized/slide-02-problem-1200w.webp",
+        "optimized/slide-02-problem-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-02-problem-640w.jpg",
+        "optimized/slide-02-problem-828w.jpg",
+        "optimized/slide-02-problem-1080w.jpg",
+        "optimized/slide-02-problem-1200w.jpg",
+        "optimized/slide-02-problem-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  },
+  "images/pitchdeck/slide-01-hook.png": {
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-01-hook-640w.avif",
+        "optimized/slide-01-hook-828w.avif",
+        "optimized/slide-01-hook-1080w.avif",
+        "optimized/slide-01-hook-1200w.avif",
+        "optimized/slide-01-hook-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-01-hook-640w.webp",
+        "optimized/slide-01-hook-828w.webp",
+        "optimized/slide-01-hook-1080w.webp",
+        "optimized/slide-01-hook-1200w.webp",
+        "optimized/slide-01-hook-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-01-hook-640w.jpg",
+        "optimized/slide-01-hook-828w.jpg",
+        "optimized/slide-01-hook-1080w.jpg",
+        "optimized/slide-01-hook-1200w.jpg",
+        "optimized/slide-01-hook-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
   }
 }
