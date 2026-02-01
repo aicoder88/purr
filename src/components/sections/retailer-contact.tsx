@@ -102,12 +102,12 @@ interface StepIndicatorProps {
 
 function StepIndicator({ step, gradient, title, description }: StepIndicatorProps) {
   return (
-    <div className="text-center">
-      <div className={`w-16 h-16 ${gradient} rounded-full flex items-center justify-center text-white font-black text-xl mx-auto mb-4`}>
+    <div className="text-center relative">
+      <div className={`w-14 h-14 ${gradient} rounded-full flex items-center justify-center text-white font-black text-xl mx-auto mb-4 shadow-lg ring-4 ring-white dark:ring-gray-900 relative z-10`}>
         {step}
       </div>
-      <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">{title}</h4>
-      <p className="text-sm text-gray-600 dark:text-gray-300">{description}</p>
+      <h4 className="font-bold text-gray-900 dark:text-white mb-2 text-lg">{title}</h4>
+      <p className="text-sm text-gray-600 dark:text-gray-300 leading-snug">{description}</p>
     </div>
   );
 }
@@ -124,18 +124,18 @@ interface SuccessStoryCardProps {
 
 function SuccessStoryCard({ icon, gradient, businessName, businessType, quote, metric, metricColor }: SuccessStoryCardProps) {
   return (
-    <div className="bg-white dark:bg-gray-800/50 rounded-2xl p-6 backdrop-blur-sm">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-gray-700 h-full flex flex-col">
       <div className="flex items-center mb-4">
-        <div className={`w-12 h-12 ${gradient} rounded-full flex items-center justify-center text-white font-black text-lg mr-4`}>
+        <div className={`w-12 h-12 ${gradient} rounded-full flex items-center justify-center text-white font-black text-lg mr-4 shadow-md`}>
           {icon}
         </div>
         <div>
-          <div className="font-black text-gray-900 dark:text-gray-50">{businessName}</div>
-          <div className="text-sm text-gray-600 dark:text-gray-300">{businessType}</div>
+          <div className="font-black text-gray-900 dark:text-white leading-tight">{businessName}</div>
+          <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mt-0.5">{businessType}</div>
         </div>
       </div>
-      <p className="text-gray-700 dark:text-gray-200 italic mb-3">{quote}</p>
-      <div className={`text-2xl font-black ${metricColor}`}>{metric}</div>
+      <p className="text-gray-700 dark:text-gray-300 italic mb-5 text-sm leading-relaxed flex-grow">"{quote}"</p>
+      <div className={`text-xl font-black ${metricColor} mt-auto pt-4 border-t border-gray-100 dark:border-gray-700`}>{metric}</div>
     </div>
   );
 }
@@ -372,60 +372,60 @@ export function RetailerContact() {
   }
 
   return (
-    <section id="retailer-contact" className="py-16 bg-gradient-to-br from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <section id="retailer-contact" className="py-24 bg-white dark:bg-gray-950/50 transition-colors duration-300">
       <Container>
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-[#5B2EFF]/10 to-[#3694FF]/10 dark:from-[#3694FF]/20 dark:to-[#5B2EFF]/20 text-[#5B2EFF] dark:text-[#3694FF] font-bold text-sm mb-6">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-indigo-50 dark:bg-indigo-900/20 text-[#5B2EFF] dark:text-[#5B2EFF] font-bold text-sm mb-6 border border-indigo-100 dark:border-indigo-800/30">
               🤝 {contact?.sectionBadge || 'Join 21 Established Partners'}
             </div>
-            <h2 className="font-heading text-4xl md:text-6xl font-black text-gray-900 dark:text-gray-50 mb-6">
+            <h2 className="font-heading text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-6">
               {contact?.sectionTitle || 'Start Your'}
-              <span className="block bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] bg-clip-text text-transparent ml-2">
                 {contact?.sectionTitleHighlight || 'Partnership Today'}
               </span>
             </h2>
-            <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 max-w-4xl mx-auto mb-8">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-10">
               {contact?.sectionDescription || 'Ready to earn'} <strong className="text-[#5B2EFF] dark:text-[#3694FF]">50%+</strong>
-              <br />{contact?.setupNote || 'Setup takes less than 24 hours.'}
+              <br className="hidden md:block" /> {contact?.setupNote || 'Setup takes less than 24 hours.'}
             </p>
 
             {/* Urgency & Social Proof */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-12">
-              <div className="bg-gradient-to-r from-[#10B981]/10 to-[#34D399]/10 dark:from-[#10B981]/20 dark:to-[#34D399]/20 rounded-2xl p-4 border border-[#10B981]/20 dark:border-[#34D399]/30">
-                <div className="text-2xl font-black text-[#10B981] dark:text-[#34D399]">{contact?.urgencyStats?.approvalTime?.value || '72hrs'}</div>
-                <div className="text-sm font-semibold text-gray-700 dark:text-gray-200">{contact?.urgencyStats?.approvalTime?.label || 'Approval Time'}</div>
+              <div className="bg-green-50 dark:bg-green-900/10 rounded-2xl p-5 border border-green-100 dark:border-green-800/30">
+                <div className="text-2xl font-black text-[#10B981] dark:text-[#34D399] mb-1">{contact?.urgencyStats?.approvalTime?.value || '72hrs'}</div>
+                <div className="text-sm font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wide">{contact?.urgencyStats?.approvalTime?.label || 'Approval Time'}</div>
               </div>
-              <div className="bg-gradient-to-r from-[#FF6B6B]/10 to-[#FF8E8E]/10 dark:from-[#FF6B6B]/20 dark:to-[#FF8E8E]/20 rounded-2xl p-4 border border-[#FF6B6B]/20 dark:border-[#FF8E8E]/30">
-                <div className="text-2xl font-black text-[#FF6B6B] dark:text-[#FF8E8E]">{contact?.urgencyStats?.setupFees?.value || 'Zero'}</div>
-                <div className="text-sm font-semibold text-gray-700 dark:text-gray-200">{contact?.urgencyStats?.setupFees?.label || 'Setup Fees'}</div>
+              <div className="bg-red-50 dark:bg-red-900/10 rounded-2xl p-5 border border-red-100 dark:border-red-800/30">
+                <div className="text-2xl font-black text-[#FF6B6B] dark:text-[#FF8E8E] mb-1">{contact?.urgencyStats?.setupFees?.value || 'Zero'}</div>
+                <div className="text-sm font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wide">{contact?.urgencyStats?.setupFees?.label || 'Setup Fees'}</div>
               </div>
-              <div className="bg-gradient-to-r from-[#5B2EFF]/10 to-[#3694FF]/10 dark:from-[#3694FF]/20 dark:to-[#5B2EFF]/20 rounded-2xl p-4 border border-[#5B2EFF]/20 dark:border-[#3694FF]/30">
-                <div className="text-2xl font-black text-[#5B2EFF] dark:text-[#3694FF]">{contact?.urgencyStats?.currentPartners?.value || '21'}</div>
-                <div className="text-sm font-semibold text-gray-700 dark:text-gray-200">{contact?.urgencyStats?.currentPartners?.label || 'Current Partners'}</div>
+              <div className="bg-indigo-50 dark:bg-indigo-900/10 rounded-2xl p-5 border border-indigo-100 dark:border-indigo-800/30">
+                <div className="text-2xl font-black text-[#5B2EFF] dark:text-[#5B2EFF] mb-1">{contact?.urgencyStats?.currentPartners?.value || '21'}</div>
+                <div className="text-sm font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wide">{contact?.urgencyStats?.currentPartners?.label || 'Current Partners'}</div>
               </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
             {/* Contact Form */}
-            <div className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-3xl p-8 shadow-2xl border border-gray-200 dark:border-gray-700">
-              <div className="text-center mb-8">
-                <div className={`w-16 h-16 ${GRADIENTS.purpleBlue} rounded-2xl flex items-center justify-center mx-auto mb-4`}>
-                  <FormCheckIcon className="w-8 h-8 text-white dark:text-gray-100" />
+            <div className="lg:col-span-7 bg-white dark:bg-gray-900 rounded-3xl p-8 md:p-10 shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-gray-800">
+              <div className="text-center mb-10">
+                <div className={`w-14 h-14 ${GRADIENTS.purpleBlue} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-[#5B2EFF]/20`}>
+                  <FormCheckIcon className="w-7 h-7 text-white" />
                 </div>
-                <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-gray-50 mb-2">
+                <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-white mb-2">
                   🚀 {form?.title || 'Partnership Application'}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-gray-500 dark:text-gray-400 font-medium">
                   {form?.subtitle || 'Quick 2-minute application. We respond same day!'}
                 </p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="businessName" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+                    <label htmlFor="businessName" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 ml-1">
                       {form?.fields?.businessName?.label || 'Business Name'} *
                     </label>
                     <input
@@ -435,12 +435,12 @@ export function RetailerContact() {
                       value={formData.businessName}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200"
+                      className="w-full px-5 py-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200 outline-none"
                       placeholder={form?.fields?.businessName?.placeholder || 'Your Pet Store Name'}
                     />
                   </div>
                   <div>
-                    <label htmlFor="contactName" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+                    <label htmlFor="contactName" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 ml-1">
                       {form?.fields?.contactName?.label || 'Contact Name'} *
                     </label>
                     <input
@@ -450,14 +450,14 @@ export function RetailerContact() {
                       value={formData.contactName}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200"
+                      className="w-full px-5 py-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200 outline-none"
                       placeholder={form?.fields?.contactName?.placeholder || 'Your Full Name'}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="position" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+                  <label htmlFor="position" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 ml-1">
                     {form?.fields?.position?.label || 'Your Position in the Company'}
                   </label>
                   <input
@@ -466,14 +466,14 @@ export function RetailerContact() {
                     name="position"
                     value={formData.position}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200"
+                    className="w-full px-5 py-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200 outline-none"
                     placeholder={form?.fields?.position?.placeholder || 'e.g., Owner, Manager, Buyer, Sales Representative'}
                   />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+                    <label htmlFor="email" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 ml-1">
                       {form?.fields?.email?.label || 'Email Address'} *
                     </label>
                     <input
@@ -483,12 +483,12 @@ export function RetailerContact() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200"
+                      className="w-full px-5 py-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200 outline-none"
                       placeholder={form?.fields?.email?.placeholder || 'your@email.com'}
                     />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+                    <label htmlFor="phone" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 ml-1">
                       {form?.fields?.phone?.label || 'Phone Number'}
                     </label>
                     <input
@@ -497,15 +497,15 @@ export function RetailerContact() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200"
+                      className="w-full px-5 py-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200 outline-none"
                       placeholder={form?.fields?.phone?.placeholder || '(555) 123-4567'}
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="businessType" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+                    <label htmlFor="businessType" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 ml-1">
                       {form?.fields?.businessType?.label || 'Business Type'} *
                     </label>
                     <select
@@ -514,7 +514,7 @@ export function RetailerContact() {
                       value={formData.businessType}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200"
+                      className="w-full px-5 py-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200 outline-none appearance-none"
                     >
                       {businessTypes.map((type) => (
                         <option key={type.value} value={type.value}>{type.label}</option>
@@ -522,7 +522,7 @@ export function RetailerContact() {
                     </select>
                   </div>
                   <div>
-                    <label htmlFor="locations" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+                    <label htmlFor="locations" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 ml-1">
                       {form?.fields?.locations?.label || 'Number of Locations'}
                     </label>
                     <input
@@ -532,14 +532,14 @@ export function RetailerContact() {
                       value={formData.locations}
                       onChange={handleInputChange}
                       min="1"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200"
+                      className="w-full px-5 py-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200 outline-none"
                       placeholder={form?.fields?.locations?.placeholder || '1'}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="currentProducts" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+                  <label htmlFor="currentProducts" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 ml-1">
                     {form?.fields?.currentProducts?.label || 'Top-Selling Cat Litter Brand'}
                   </label>
                   <input
@@ -548,13 +548,13 @@ export function RetailerContact() {
                     name="currentProducts"
                     value={formData.currentProducts}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200"
+                    className="w-full px-5 py-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200 outline-none"
                     placeholder={form?.fields?.currentProducts?.placeholder || ""}
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+                  <label htmlFor="message" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 ml-1">
                     {form?.fields?.message?.label || 'Additional Information'} *
                   </label>
                   <textarea
@@ -565,16 +565,16 @@ export function RetailerContact() {
                     rows={4}
                     required
                     minLength={10}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200"
+                    className="w-full px-5 py-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200 outline-none resize-none"
                     placeholder={form?.fields?.message?.placeholder || 'Tell us about your business and wholesale needs...'}
                   />
                 </div>
 
                 {submitStatus.message && !isSubmitted && (
                   <div
-                    className={`rounded-lg p-4 ${submitStatus.success
-                        ? 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-400'
-                        : 'bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-400'
+                    className={`rounded-xl p-4 text-sm font-medium ${submitStatus.success
+                      ? 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-400'
+                      : 'bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-400'
                       }`}
                     role="alert"
                     aria-live="polite"
@@ -586,7 +586,7 @@ export function RetailerContact() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] hover:from-[#4C1EEB] hover:to-[#2563EB] text-white dark:text-gray-100 font-black py-6 px-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95 text-lg"
+                  className="w-full bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] hover:from-[#4C1EEB] hover:to-[#2563EB] text-white font-black py-7 px-8 rounded-2xl shadow-xl shadow-[#5B2EFF]/20 hover:shadow-2xl hover:shadow-[#5B2EFF]/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:-translate-y-1 active:scale-95 text-lg border-0"
                 >
                   {isSubmitting ? `⏳ ${form?.submitting || 'Submitting...'}` : `🚀 ${form?.submitButton || 'Submit Partnership Application'}`}
                 </Button>
@@ -594,14 +594,14 @@ export function RetailerContact() {
             </div>
 
             {/* Success Stories & Contact */}
-            <div className="space-y-8">
+            <div className="lg:col-span-5 space-y-8 sticky top-24">
               {/* Success Stories */}
-              <div className="bg-gradient-to-br from-[#5B2EFF]/5 to-[#3694FF]/10 dark:from-[#3694FF]/10 dark:to-[#5B2EFF]/5 rounded-3xl p-8 border-2 border-[#5B2EFF]/20 dark:border-[#3694FF]/30">
-                <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-gray-50 mb-6 text-center">
+              <div className="bg-gray-50 dark:bg-gray-900/40 rounded-3xl p-8 border border-gray-100 dark:border-gray-800">
+                <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-white mb-6 text-center">
                   💰 {stories?.title || 'Partner Success Stories'}
                 </h3>
 
-                <div className="space-y-6">
+                <div className="space-y-5">
                   <SuccessStoryCard
                     icon="🏪"
                     gradient={GRADIENTS.green}
@@ -625,34 +625,28 @@ export function RetailerContact() {
               </div>
 
               {/* Contact Info */}
-              <div className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-3xl p-8 shadow-2xl border border-gray-200 dark:border-gray-700">
+              <div className="bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-gray-800">
                 <div className="text-center mb-8">
-                  <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-gray-50 mb-2">
+                  <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-white mb-2">
                     ⚡ {contactInfo?.title || 'Need Immediate Help?'}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300">
+                  <p className="text-gray-500 dark:text-gray-400">
                     {contactInfo?.subtitle || 'Speak with a partnership specialist now'}
                   </p>
                 </div>
 
-                <div className="space-y-6">
-                  <a href={CONTACT_INFO.phoneHref} className="flex flex-col items-start p-4 bg-gradient-to-r from-[#5B2EFF]/10 to-[#3694FF]/10 dark:from-[#3694FF]/20 dark:to-[#5B2EFF]/20 rounded-2xl hover:from-[#5B2EFF]/20 hover:to-[#3694FF]/20 dark:hover:from-[#3694FF]/30 dark:hover:to-[#5B2EFF]/30 transition-all duration-300 transform hover:scale-105">
-                    <div className="flex items-center">
-                      <div className="w-14 h-14 bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                        <svg className="w-8 h-8 text-white dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="space-y-4">
+                  <a href={CONTACT_INFO.phoneHref} className="flex flex-col items-start p-5 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-all duration-300 transform hover:scale-[1.02] border border-blue-100 dark:border-blue-800/30">
+                    <div className="flex items-center w-full">
+                      <div className="w-12 h-12 bg-[#3694FF] rounded-xl flex items-center justify-center mr-4 flex-shrink-0 shadow-md shadow-blue-500/20">
+                        <svg className="w-6 h-6 text-white dark:text-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                         </svg>
                       </div>
                       <div>
-                        <div className="font-black text-xl text-gray-900 dark:text-gray-50">📞 {PHONE_MESSAGING.callout}</div>
-                        <div className="text-gray-600 dark:text-gray-300 font-semibold">{PHONE_MESSAGING.headline}</div>
+                        <div className="font-black text-lg text-gray-900 dark:text-white">📞 {PHONE_MESSAGING.callout}</div>
+                        <div className="text-gray-600 dark:text-gray-300 text-sm font-medium">{PHONE_MESSAGING.headline}</div>
                       </div>
-                    </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400 mt-3 ml-0">
-                      {PHONE_MESSAGING.explanation}
-                    </div>
-                    <div className="text-sm text-gray-700 dark:text-gray-200 font-semibold italic mt-3 ml-0">
-                      {PHONE_MESSAGING.cta}
                     </div>
                   </a>
 
@@ -661,41 +655,36 @@ export function RetailerContact() {
                     tabIndex={0}
                     onClick={handleWholesaleEmailClick}
                     onKeyDown={handleWholesaleEmailKeyDown}
-                    className="flex items-center p-4 bg-gradient-to-r from-[#10B981]/10 to-[#34D399]/10 dark:from-[#10B981]/20 dark:to-[#34D399]/20 rounded-2xl hover:from-[#10B981]/20 hover:to-[#34D399]/20 dark:hover:from-[#10B981]/30 dark:hover:to-[#34D399]/30 transition-all duration-300 transform hover:scale-105 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#10B981]"
+                    className="flex items-center p-5 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl hover:bg-green-100 dark:hover:bg-green-900/30 transition-all duration-300 transform hover:scale-[1.02] cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#10B981] border border-green-100 dark:border-green-800/30"
                     aria-label={`Email ${WHOLESALE_EMAIL}`}
                   >
-                    <div className="w-14 h-14 bg-gradient-to-r from-[#10B981] to-[#34D399] rounded-xl flex items-center justify-center mr-4">
-                      <svg className="w-8 h-8 text-white dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-12 h-12 bg-[#10B981] rounded-xl flex items-center justify-center mr-4 shadow-md shadow-green-500/20">
+                      <svg className="w-6 h-6 text-white dark:text-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                     </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3">
-                        <div className="font-black text-xl text-gray-900 dark:text-gray-50">✉️ {contactInfo?.wholesaleEmail || WHOLESALE_EMAIL}</div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <div className="font-black text-lg text-gray-900 dark:text-white truncate">✉️ {contactInfo?.wholesaleEmail || WHOLESALE_EMAIL}</div>
                         <button
                           type="button"
                           onClick={handleCopyWholesaleEmail}
-                          className="flex items-center gap-1 text-sm font-semibold text-[#0F766E] dark:text-[#A7F3D0] hover:text-[#065F46] dark:hover:text-[#6EE7B7] transition-colors"
+                          className="flex items-center gap-1 text-xs font-bold text-[#0F766E] dark:text-[#A7F3D0] hover:text-[#065F46] dark:hover:text-[#6EE7B7] transition-colors bg-white/50 dark:bg-black/20 px-2 py-1 rounded"
                           aria-label="Copy wholesale email address"
                         >
-                          <span aria-hidden="true">📋</span>
-                          <span className="sr-only">Click to copy</span>
+                          <span>📋</span>
                         </button>
-                        {copyStatus === 'copied' && (
-                          <span className="text-xs font-medium text-[#065F46] dark:text-[#6EE7B7]">{contactInfo?.copied || 'Copied!'}</span>
-                        )}
-                        {copyStatus === 'failed' && (
-                          <span className="text-xs font-medium text-red-600 dark:text-red-300">{contactInfo?.copyFailed || 'Copy failed'}</span>
-                        )}
                       </div>
-                      <div className="text-gray-600 dark:text-gray-300">{contactInfo?.emailLabel || 'Partnership Email'}</div>
-                      <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">{contactInfo?.emailHint || 'Click to draft an email or copy the address.'}</div>
+                      <div className="text-gray-600 dark:text-gray-300 text-sm font-medium">{contactInfo?.emailLabel || 'Partnership Email'}</div>
+                      {copyStatus === 'copied' && (
+                        <span className="text-xs font-bold text-green-600 dark:text-green-400 absolute right-4 top-4">Copied!</span>
+                      )}
                     </div>
                   </div>
 
-                  <div className="text-center p-4 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 rounded-2xl">
-                    <div className="font-bold text-gray-900 dark:text-gray-50 mb-1">⏰ {contactInfo?.businessHours?.title || 'Business Hours'}</div>
-                    <div className="text-gray-600 dark:text-gray-300">{contactInfo?.businessHours?.hours || 'Monday - Friday: 9 AM - 6 PM EST'}</div>
+                  <div className="text-center p-4 bg-gray-50 dark:bg-gray-800/50 rounded-2xl border border-gray-100 dark:border-gray-700">
+                    <div className="font-bold text-gray-900 dark:text-white mb-1 text-sm bg-gray-200 dark:bg-gray-700 inline-block px-3 py-1 rounded-full">⏰ {contactInfo?.businessHours?.title || 'Business Hours'}</div>
+                    <div className="text-gray-600 dark:text-gray-400 text-sm mt-2 font-medium">{contactInfo?.businessHours?.hours || 'Monday - Friday: 9 AM - 6 PM EST'}</div>
                   </div>
                 </div>
               </div>

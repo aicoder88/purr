@@ -62,15 +62,15 @@ function TrustSignals({ labels }: { labels: { noSetupFees: string; approval72hr:
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 mt-8">
       {signals.map((signal) => (
-        <div key={signal.label} className="flex items-center justify-center space-x-3">
-          <div className={`w-8 h-8 ${signal.bgColor} rounded-full flex items-center justify-center`}>
-            <svg className="w-5 h-5 text-white dark:text-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div key={signal.label} className="flex items-center justify-center space-x-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl p-3">
+          <div className={`w-8 h-8 ${signal.bgColor} rounded-full flex items-center justify-center shadow-md`}>
+            <svg className="w-4 h-4 text-white dark:text-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {getIcon(signal.icon)}
             </svg>
           </div>
-          <span className="font-bold text-gray-800 dark:text-gray-200">{signal.label}</span>
+          <span className="font-bold text-gray-800 dark:text-gray-200 text-sm">{signal.label}</span>
         </div>
       ))}
     </div>
@@ -80,65 +80,79 @@ function TrustSignals({ labels }: { labels: { noSetupFees: string; approval72hr:
 // Tier card component
 function TierCard({ tier, onCtaClick, packageIncludesLabel }: TierCardProps) {
   const cardClasses = tier.highlighted
-    ? `bg-gradient-to-br from-[#5B2EFF]/10 via-white to-[#3694FF]/10 dark:from-[#3694FF]/20 dark:via-gray-800 dark:to-[#5B2EFF]/20 border-3 border-[#5B2EFF] dark:border-[#3694FF] shadow-2xl transform scale-105 z-10`
-    : 'bg-white dark:bg-gray-800/70 border-2 border-gray-200 dark:border-gray-700 shadow-xl hover:shadow-2xl';
+    ? `bg-white dark:bg-gray-800 border-2 border-[#5B2EFF] dark:border-[#3694FF] shadow-2xl shadow-[#5B2EFF]/10 dark:shadow-none transform scale-105 z-10 ring-4 ring-[#5B2EFF]/10 dark:ring-[#3694FF]/10`
+    : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-xl hover:shadow-2xl hover:border-gray-300 dark:hover:border-gray-600';
 
   const badgeClasses = tier.highlighted
-    ? `bg-gradient-to-r ${GRADIENTS.primary} text-white dark:text-gray-100`
+    ? `bg-gradient-to-r ${GRADIENTS.primary} text-white`
     : 'bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900';
 
   const buttonClasses = tier.highlighted
-    ? `bg-gradient-to-r ${GRADIENTS.primary} ${GRADIENTS.primaryHover} text-white dark:text-gray-100 shadow-xl hover:shadow-2xl`
-    : 'bg-gradient-to-r from-gray-800 to-gray-900 dark:from-gray-200 dark:to-gray-300 text-white dark:text-gray-900 hover:from-gray-700 hover:to-gray-800 dark:hover:from-gray-100 dark:hover:to-gray-200 shadow-lg hover:shadow-xl';
+    ? `bg-gradient-to-r ${GRADIENTS.primary} ${GRADIENTS.primaryHover} text-white shadow-xl shadow-[#5B2EFF]/20`
+    : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600';
 
   return (
     <div
-      className={`relative flex flex-col h-full rounded-3xl p-8 ${cardClasses} backdrop-blur-sm transition-all duration-500 hover:transform hover:scale-105`}
+      className={`relative flex flex-col h-full rounded-3xl p-8 ${cardClasses} transition-all duration-300`}
     >
       {/* Badge */}
-      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-        <span className={`px-4 py-2 rounded-full text-sm font-bold ${badgeClasses}`}>
-          {tier.highlighted ? '⭐' : '🚀'} {tier.badge}
-        </span>
-      </div>
+      {tier.highlighted && (
+        <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-full text-center px-4">
+          <span className={`inline-block px-6 py-2 rounded-full text-sm font-bold shadow-lg shadow-[#5B2EFF]/30 ${badgeClasses}`}>
+            {tier.badge === 'Best Value' ? '🔥' : '🚀'} {tier.badge}
+          </span>
+        </div>
+      )}
 
+      {/* Card Header */}
       <div className="text-center mb-8 pt-4">
-        <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-gray-50 mb-2">
+        <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-white mb-3">
           {tier.name}
         </h3>
-        <p className="text-gray-600 dark:text-gray-300 mb-6">{tier.description}</p>
+        <p className="text-gray-500 dark:text-gray-400 text-sm font-medium min-h-[40px]">{tier.description}</p>
 
         {/* Package Contents */}
-        <div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600 rounded-2xl p-6 mb-6">
-          <div className="text-sm font-semibold text-gray-600 dark:text-gray-300 mb-3">
+        <div className="mt-6 bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-5 border border-gray-100 dark:border-gray-700">
+          <div className="text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-3 text-left">
             {packageIncludesLabel}
           </div>
-          <ul className="space-y-2 text-left">
+          <ul className="space-y-2.5 text-left">
             {tier.contents.map((item, i) => (
-              <li key={i} className="text-sm text-gray-700 dark:text-gray-200 font-medium flex items-start">
-                <span className="text-[#5B2EFF] dark:text-[#3694FF] mr-2">•</span>
-                {item.startsWith('BONUS') ? `🎁 ${item}` : item}
+              <li key={i} className="text-sm text-gray-700 dark:text-gray-200 font-semibold flex items-start leading-snug">
+                <span className="text-[#5B2EFF] dark:text-[#3694FF] mr-2 text-lg leading-none">•</span>
+                {item.startsWith('BONUS') ? (
+                  <span className="text-[#5B2EFF] dark:text-[#3694FF]">
+                    {item}
+                  </span>
+                ) : (
+                  item
+                )}
               </li>
             ))}
           </ul>
         </div>
       </div>
 
-      <ul className="space-y-4 mb-8 flex-1">
-        {tier.features.map((feature, i) => (
-          <li key={i} className="flex items-start text-gray-700 dark:text-gray-200">
-            <div className={`w-6 h-6 rounded-full bg-gradient-to-r ${GRADIENTS.checkmark} flex items-center justify-center mr-3 mt-0.5 flex-shrink-0`}>
-              <CheckIcon className="text-white dark:text-gray-100" />
-            </div>
-            <span className="font-medium">{feature}</span>
-          </li>
-        ))}
-      </ul>
+      <div className="flex-1 mb-8">
+        <div className="text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-4 text-left">
+          Features
+        </div>
+        <ul className="space-y-3">
+          {tier.features.map((feature, i) => (
+            <li key={i} className="flex items-start text-gray-600 dark:text-gray-300 text-sm">
+              <div className={`w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5`}>
+                <CheckIcon className="w-3 h-3 text-green-600 dark:text-green-400" />
+              </div>
+              <span className="font-medium">{feature}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-      <div className="mt-auto">
+      <div className="mt-auto pt-6 border-t border-gray-100 dark:border-gray-700">
         <Button
           onClick={onCtaClick}
-          className={`w-full py-4 px-6 rounded-2xl font-black text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 ${buttonClasses}`}
+          className={`w-full py-6 px-6 rounded-2xl font-black text-lg transition-all duration-300 transform hover:-translate-y-1 active:scale-95 border-0 ${buttonClasses}`}
         >
           {tier.highlighted ? '🚀 ' : ''}{tier.cta}
         </Button>
@@ -225,24 +239,24 @@ export function WholesalePricing() {
   };
 
   return (
-    <section id="wholesale-pricing" className="py-16 bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+    <section id="wholesale-pricing" className="py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <Container>
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-[#5B2EFF]/10 to-[#3694FF]/10 dark:from-[#3694FF]/20 dark:to-[#5B2EFF]/20 text-[#5B2EFF] dark:text-[#3694FF] font-semibold text-sm mb-6">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/20 text-[#3694FF] dark:text-[#3694FF] font-bold text-sm mb-6 border border-blue-100 dark:border-blue-800/30">
             💰 {pricing?.sectionBadge || 'Transparent Wholesale Pricing'}
           </div>
-          <h2 className="font-heading text-4xl md:text-6xl font-black text-gray-900 dark:text-gray-50 mb-6">
+          <h2 className="font-heading text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-6">
             {pricing?.title || 'Choose Your'}
-            <span className="block bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] bg-clip-text text-transparent ml-2">
               {pricing?.titleHighlight || 'Profit Level'}
             </span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            {pricing?.subtitle || ""}
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            {pricing?.subtitle || "Start small or go big. We have a package that fits your store's needs."}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
           {pricingTiers.map((tier, index) => (
             <TierCard
               key={index}
@@ -254,36 +268,40 @@ export function WholesalePricing() {
         </div>
 
         {/* Risk Reversal & Urgency */}
-        <div className="bg-gradient-to-r from-[#5B2EFF]/10 via-[#3694FF]/5 to-[#5B2EFF]/10 dark:from-[#3694FF]/15 dark:via-[#5B2EFF]/10 dark:to-[#3694FF]/15 rounded-3xl p-10 text-center border-2 border-[#5B2EFF]/20 dark:border-[#3694FF]/30">
-          <div className="max-w-4xl mx-auto">
-            <h3 className="font-heading text-3xl font-black text-gray-900 dark:text-gray-50 mb-4">
+        <div className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-3xl p-10 md:p-14 text-center border border-gray-100 dark:border-gray-700 shadow-2xl shadow-gray-200/50 dark:shadow-none">
+          {/* Background decorative blobs */}
+          <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-[#5B2EFF]/5 to-[#3694FF]/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+          <div className="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-tl from-[#5B2EFF]/5 to-[#3694FF]/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
+
+          <div className="relative z-10 max-w-4xl mx-auto">
+            <h3 className="font-heading text-3xl font-black text-gray-900 dark:text-white mb-6">
               🎯 {pricing?.bottomCta?.title || 'Ready to Boost Your Revenue?'}
             </h3>
-            <p className="text-xl text-gray-700 dark:text-gray-200 mb-8">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-10">
               {pricing?.bottomCta?.description || 'Join 21 established Montreal and surrounding-area retailers already earning high margins with Purrify.'}
-              <br />{pricing?.bottomCta?.setupNote || 'Setup takes less than 24 hours.'}
+              <br className="hidden md:block" /> {pricing?.bottomCta?.setupNote || 'Setup takes less than 24 hours.'}
             </p>
 
             {/* Trust Signals */}
             <TrustSignals labels={trustSignalLabels} />
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
               <Button
                 onClick={handleScrollToRetailer}
                 size="lg"
-                className={`bg-gradient-to-r ${GRADIENTS.primary} ${GRADIENTS.primaryHover} text-white dark:text-gray-100 font-black py-4 px-10 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 active:scale-95 text-lg`}
+                className={`bg-gradient-to-r ${GRADIENTS.primary} ${GRADIENTS.primaryHover} text-white font-black py-7 px-10 rounded-2xl shadow-xl shadow-[#5B2EFF]/25 hover:shadow-2xl hover:shadow-[#5B2EFF]/35 transition-all duration-300 transform hover:-translate-y-1 active:scale-95 text-lg border-0`}
               >
                 💰 {pricing?.bottomCta?.primaryButton || 'Apply for Partnership'}
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-[#5B2EFF] dark:border-[#3694FF] text-[#5B2EFF] dark:text-[#3694FF] hover:bg-[#5B2EFF] dark:hover:bg-[#3694FF] hover:text-white dark:hover:text-gray-100 font-bold py-4 px-10 rounded-2xl transition-all duration-300 transform hover:scale-105 active:scale-95"
+                className="bg-white dark:bg-gray-900 border-2 border-[#5B2EFF]/20 dark:border-[#3694FF]/30 text-[#5B2EFF] dark:text-[#3694FF] hover:bg-[#5B2EFF]/5 dark:hover:bg-[#3694FF]/10 font-bold py-7 px-10 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 text-lg"
               >
                 📞 {PHONE_MESSAGING.callout}
               </Button>
             </div>
-            <p className="text-center text-sm text-gray-600 dark:text-gray-400 italic mt-4 max-w-lg mx-auto">
+            <p className="text-center text-sm text-gray-500 dark:text-gray-400 font-medium italic mt-6">
               {PHONE_MESSAGING.explanation}
             </p>
           </div>

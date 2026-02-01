@@ -177,20 +177,12 @@ export default function RetailersPage() {
             </nav>
           </div>
         </div>
-        
+
         <RetailerHero />
 
         <WholesalePricing />
 
         <RetailerContact />
-
-        {/* Client Locations Map */}
-        <ClientLocationsMap
-          className="bg-gray-50 dark:bg-gray-900/50"
-          height="400"
-          headerTitle={t.retailers.map.title}
-          headerDescription={t.retailers.map.description}
-        />
 
         {/* Retail Store Locations with Logos */}
         <Stores />
