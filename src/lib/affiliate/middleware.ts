@@ -4,8 +4,7 @@
  */
 
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getServerSession } from 'next-auth/next';
-import { authOptions } from '../../../pages/api/auth/[...nextauth]';
+import { auth } from '@/auth';
 import prisma from '@/lib/prisma';
 
 export interface AffiliateSession {
@@ -33,7 +32,7 @@ type AffiliateApiHandler = (
 export function withAffiliateAuth(handler: AffiliateApiHandler) {
   return async (req: NextApiRequest, res: NextApiResponse) => {
     try {
-      const session = await getServerSession(req, res, authOptions);
+      const session = await auth();
 
       if (!session?.user) {
         return res.status(401).json({ error: 'Not authenticated' });
@@ -102,11 +101,11 @@ export function withAffiliateAuth(handler: AffiliateApiHandler) {
  * Returns null if not authenticated as affiliate
  */
 export async function getAffiliateSession(
-  req: NextApiRequest,
-  res: NextApiResponse
+  _req?: NextApiRequest,
+  _res?: NextApiResponse
 ): Promise<AffiliateSession | null> {
   try {
-    const session = await getServerSession(req, res, authOptions);
+    const session = await auth();
 
     if (!session?.user) {
       return null;

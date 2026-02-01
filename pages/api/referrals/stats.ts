@@ -6,8 +6,7 @@
  */
 
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getServerSession } from 'next-auth/next';
-import { authOptions } from '../auth/[...nextauth]';
+import { auth } from '@/auth';
 import prisma from '../../../src/lib/prisma';
 import { withRateLimit, RATE_LIMITS } from '../../../src/lib/security/rate-limit';
 import {
@@ -77,7 +76,7 @@ async function handler(
 
   try {
     // Get session - user must be logged in
-    const session = await getServerSession(req, res, authOptions);
+    const session = await auth();
 
     if (!session?.user?.email) {
       return res.status(401).json({

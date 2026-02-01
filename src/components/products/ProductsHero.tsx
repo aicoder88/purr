@@ -33,48 +33,47 @@ export function ProductsHero() {
             <Container className="relative z-10">
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
 
-                    {/* Left Column: Copy (The Slide) */}
+                    {/* Left Column: Copy */}
                     <div className="order-2 lg:order-1 flex flex-col items-start text-left">
+                        {/* Badge */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
+                            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-purple/10 text-brand-purple dark:text-purple-300 font-medium text-sm mb-6"
                         >
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-purple/10 text-brand-purple dark:text-purple-300 font-medium text-sm mb-6">
-                                <span className="relative flex h-2 w-2">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 dark:bg-purple-500 opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
-                                </span>
-                                {locale === 'fr' ? "Éliminateur d'Odeur d'Ammoniac" : "Ammonia Odor Eliminator"}
-                            </div>
+                            <span className="relative flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 dark:bg-purple-500 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+                            </span>
+                            {t.productsHero.pill}
                         </motion.div>
 
+                        {/* Heading */}
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
                             className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-50 leading-[1.1] tracking-tight mb-6"
                         >
-                            {locale === 'fr'
-                                ? "Embarrassé par l'odeur de la litière ? Arrêtez de la camoufler."
-                                : "Embarrassed by Cat Litter Smell? Stop Covering It Up."}
+                            {t.productsHero.headline}
                         </motion.h1>
 
+                        {/* Subheading */}
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
                             className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl mb-8"
                         >
-                            {locale === 'fr'
-                                ? "Le bicarbonate de soude et les sprays ne font que masquer le problème. Purrify utilise du charbon actif pour éliminer l'ammoniac au niveau moléculaire. Ce n'est pas de la magie. C'est de la science."
-                                : "Baking soda and sprays just mask the problem. Purrify uses activated carbon to eliminate ammonia at the molecular level. It's not magic. It's science."}
+                            {t.productsHero.subheadline}
                         </motion.p>
 
+                        {/* CTA Buttons */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.3 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
                             className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
                         >
                             <Button
@@ -83,7 +82,7 @@ export function ProductsHero() {
                                 className="bg-brand-purple hover:bg-brand-purple/90 text-white dark:text-gray-100 font-bold text-lg px-8 py-6 h-auto shadow-xl shadow-brand-purple/20 transition-all hover:scale-105"
                             >
                                 <Link href="#product-comparison">
-                                    {locale === 'fr' ? "Trouver Mon Format" : "Find Your Size"}
+                                    {t.productsHero.findSizeButton}
                                 </Link>
                             </Button>
                             <Button
@@ -93,12 +92,13 @@ export function ProductsHero() {
                                 className="text-gray-600 dark:text-gray-300 hover:text-brand-purple dark:hover:text-purple-400 hover:bg-transparent font-medium group"
                             >
                                 <Link href="#science" className="flex items-center gap-2">
-                                    {locale === 'fr' ? "La Science" : "The Science"}
+                                    {t.productsHero.scienceButton}
                                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                 </Link>
                             </Button>
                         </motion.div>
 
+                        {/* Trust Badges */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}

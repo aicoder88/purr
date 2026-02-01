@@ -162,6 +162,15 @@ export const zh = {
     },
   },
 
+  productsHero: {
+    pill: "Ammonia Odor Eliminator",
+    headline: "Embarrassed by Cat Litter Smell? Stop Covering It Up.",
+    subheadline: "Baking soda and sprays just mask the problem. Purrify uses activated carbon to eliminate ammonia at the molecular level. It's not magic. It's science.",
+    scienceButton: "The Science",
+    guarantee: "Zero Odor Guarantee",
+    findSizeButton: "Find Your Size"
+  },
+
   // Hero Section
   hero: {
     catLitter: "猫砂",

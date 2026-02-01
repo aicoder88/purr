@@ -141,6 +141,15 @@ export interface TranslationType {
     };
   };
 
+  productsHero: {
+    pill: string;
+    headline: string;
+    subheadline: string;
+    scienceButton: string;
+    guarantee: string;
+    findSizeButton: string;
+  };
+
   // Products
   products: {
     [key: string]: {

@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getServerSession } from 'next-auth/next';
-import { authOptions } from '../../../api/auth/[...nextauth]';
+import { auth } from '@/auth';
 import { checkRateLimit } from '../../../../src/lib/security/rate-limit';
 
 type GtagFunction = (command: 'event' | 'config', action: string, params?: Record<string, unknown>) => void;
@@ -194,7 +193,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   try {
     // CRITICAL SECURITY FIX: Verify the user is authenticated
-    const session = await getServerSession(req, res, authOptions);
+    const session = await auth();
 
     if (!session || !session.user) {
       return res.status(401).json({

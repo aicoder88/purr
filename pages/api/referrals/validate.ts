@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../../src/lib/prisma';
-import { getSession } from 'next-auth/react';
+import { auth } from '@/auth';
 
 export default async function handler(
   req: NextApiRequest,
@@ -11,7 +11,7 @@ export default async function handler(
   }
 
   try {
-    const session = await getSession({ req });
+    const session = await auth();
     const { code } = req.body;
 
     if (!session?.user?.email) {
@@ -66,4 +66,4 @@ export default async function handler(
     console.error('Error validating referral code:', error);
     return res.status(500).json({ message: 'Error validating referral code' });
   }
-} 
+}

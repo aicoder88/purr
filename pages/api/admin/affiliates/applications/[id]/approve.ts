@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getServerSession } from 'next-auth/next';
-import { authOptions } from '../../../../auth/[...nextauth]';
+import { auth } from '@/auth';
 import prisma from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
 import { generateAffiliateCode } from '@/lib/affiliate/code-generator';
@@ -22,7 +21,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   // Check authentication
-  const session = await getServerSession(req, res, authOptions);
+  const session = await auth();
   if (!session?.user || (session.user as { role?: string }).role !== 'admin') {
     return res.status(401).json({ error: 'Unauthorized' });
   }
@@ -135,7 +134,7 @@ export default async function handler(
             <li><strong>Partner (5+/mo for 2 months):</strong> 30% commission</li>
           </ul>
 
-          <p>Your referral link format: <code style="background-color: #f3f4f6; padding: 4px 8px; border-radius: 4px;">${process.env.NEXT_PUBLIC_SITE_URL}?ref=${code}</code></p>
+          <p>Your referral link format: <code style="background-color: #ff3f4f6; padding: 4px 8px; border-radius: 4px;">${process.env.NEXT_PUBLIC_SITE_URL}?ref=${code}</code></p>
 
           <div style="margin: 24px 0;">
             <a href="${dashboardUrl}" style="display: inline-block; background-color: #0d9488; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">

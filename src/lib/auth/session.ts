@@ -1,20 +1,16 @@
-import { getServerSession } from 'next-auth/next';
-import { authOptions } from '../../../pages/api/auth/[...nextauth]';
+import { auth } from "@/auth";
 import type { GetServerSidePropsContext, NextApiRequest, NextApiResponse } from 'next';
 
-export async function getSession(
-  req: NextApiRequest | GetServerSidePropsContext['req'],
-  res: NextApiResponse | GetServerSidePropsContext['res']
-) {
-  return getServerSession(req, res, authOptions);
+export async function getSession() {
+  return auth();
 }
 
 export async function requireAuth(
-  req: NextApiRequest | GetServerSidePropsContext['req'],
-  res: NextApiResponse | GetServerSidePropsContext['res'],
+  _req?: NextApiRequest | GetServerSidePropsContext['req'],
+  _res?: NextApiResponse | GetServerSidePropsContext['res'],
   allowedRoles: string[] = ['admin', 'editor']
 ) {
-  const session = await getSession(req, res);
+  const session = await auth();
 
   if (!session || !session.user) {
     return { authorized: false, session: null };

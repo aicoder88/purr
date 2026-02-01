@@ -26,6 +26,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Verify changes work**: Run `pnpm build` or `pnpm lint` after edits. Don't assume success.
 - **Loop on failure**: If a command fails, read the error and fix it. Don't move on.
 
+### 5. Strict Branding & Visuals (NEW)
+- **Image Storage**: All new images must be stored in `public/images`, then optimized to `public/optimized`. No other image folders (not even for blog).
+- **No Labels**: Never use labels on bags or bottles in generated images.
+- **No Black Dust**: Never show black clouds or black dust; it looks like dirt, not product.
+- **Odor Direction**: Odor must be shown being **sucked IN** to the carbon, never releasing out.
+- **No Product Generation**: NEVER generate images of Purrify bags, boxes, or logos. Use existing assets only.
+- **Terminology**: "Purrify" is **granules**, NOT "powder". It is an "additive".
+- **Capitalization**: Always "Purrify" (Capitalized).
+
+### 6. Coding Standards (NEW)
+- **No Hardcoded Text**: All user-facing text must be in `src/translations/*.ts`.
+- **Light/Dark Mode**: EVERY text element must have a specific color for both modes. **Never** allow white text on white backgrounds.
+    - Example: `text-gray-900 dark:text-white`
+    - Validate with `pnpm validate-dark-mode`.
+
 ---
 
 ## 🚀 Quick Start (New Developers)

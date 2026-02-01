@@ -72,6 +72,8 @@
 | **The Silent Changer** | Deleting "unused" code that's actually used elsewhere | Mention it, don't delete |
 | **The Powder User** | Calling Purrify a "powder" | Use "granules" or "additive" |
 | **The Hardcoder** | Writing "Add to Cart" directly in JSX | Use `t('addToCart')` |
+| **The White-on-White** | Using text without dark mode support | Always test light/dark modes |
+| **The Label Maker** | Putting labels on generated bags | Never use labels on AI images |
 
 ## Project Structure
 
@@ -188,8 +190,9 @@ pnpm blog:auto:generate   # Generate blog post with AI
 pnpm blog:migrate         # Migrate blog posts between formats
 
 # Image Optimization
-pnpm optimize-images          # Basic image optimization
-pnpm optimize-images:enhanced # Enhanced optimization
+pnpm optimize-images          # Basic image optimization (moves to public/optimized)
+pnpm optimize-images:enhanced # Enhanced optimization (moves to public/optimized)
+# NOTE: All images must be in public/optimized. No other folders allowed.
 pnpm optimize-images:watch    # Watch mode for development
 
 # Database

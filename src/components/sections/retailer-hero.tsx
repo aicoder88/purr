@@ -1,3 +1,5 @@
+"use client";
+
 import { Container } from '../ui/container';
 import { Button } from '../ui/button';
 import { useTranslation } from '../../lib/translation-context';

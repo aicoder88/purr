@@ -163,6 +163,15 @@ export const es: TranslationType = {
     },
   },
 
+  productsHero: {
+    pill: "Eliminador de Olor a Amoniaco",
+    headline: "¿Avergonzado por el Olor a Arena de Gato? Deja de Cubrirlo.",
+    subheadline: "El bicarbonato y los sprays solo enmascaran el problema. Purrify usa carbon activado para eliminar el amoniaco a nivel molecular. No es magia. Es ciencia.",
+    scienceButton: "La Ciencia",
+    guarantee: "Garantía de Cero Olor",
+    findSizeButton: "Encuentra Tu Tamaño"
+  },
+
   // Hero Section
   hero: {
     catLitter: "Eliminador de Olores de Arena para Gatos",

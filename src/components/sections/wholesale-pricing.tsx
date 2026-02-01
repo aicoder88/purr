@@ -1,3 +1,5 @@
+"use client";
+
 import { Container } from '../ui/container';
 import { Button } from '../ui/button';
 import { scrollToSection } from '../../lib/utils';
@@ -259,7 +261,7 @@ export function WholesalePricing() {
             </h3>
             <p className="text-xl text-gray-700 dark:text-gray-200 mb-8">
               {pricing?.bottomCta?.description || 'Join 21 established Montreal and surrounding-area retailers already earning high margins with Purrify.'}
-              <br/>{pricing?.bottomCta?.setupNote || 'Setup takes less than 24 hours.'}
+              <br />{pricing?.bottomCta?.setupNote || 'Setup takes less than 24 hours.'}
             </p>
 
             {/* Trust Signals */}

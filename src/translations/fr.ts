@@ -162,6 +162,15 @@ export const fr = {
     },
   },
 
+  productsHero: {
+    pill: "Éliminateur d'Odeur d'Ammoniac",
+    headline: "Embarrassé par l'odeur de la litière ? Arrêtez de la camoufler.",
+    subheadline: "Le bicarbonate de soude et les sprays ne font que masquer le problème. Purrify utilise du charbon actif pour éliminer l'ammoniac au niveau moléculaire. Ce n'est pas de la magie. C'est de la science.",
+    scienceButton: "La Science",
+    guarantee: "Garantie 0 Odeur",
+    findSizeButton: "Trouver Mon Format"
+  },
+
   // Hero Section
   hero: {
     catLitter: "Litière pour Chat",
