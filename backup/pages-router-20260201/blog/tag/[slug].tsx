@@ -258,7 +258,8 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
 
   return {
     props: {
-      tag: structuredClone(tag),
+      // Use JSON.parse/stringify instead of structuredClone for better compatibility
+      tag: JSON.parse(JSON.stringify(tag)),
       posts,
       seo,
     },

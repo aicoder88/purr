@@ -169,6 +169,16 @@ export function useTranslation() {
   const context = useContext(TranslationContext);
 
   if (context === undefined) {
+    // During SSR/ISR, provide a fallback to prevent errors
+    // This can happen when the component is rendered outside the provider context
+    if (typeof window === 'undefined') {
+      // Return default English translations for server-side rendering
+      return {
+        t: translations.en,
+        locale: 'en' as Locale,
+        changeLocale: () => {},
+      };
+    }
     throw new Error('useTranslation must be used within a TranslationProvider');
   }
 

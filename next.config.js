@@ -865,6 +865,12 @@ const nextConfig = {
     "/api/blog-posts": ["./content/blog/**/*"],
     "/blog": ["./content/blog/**/*"],
     "/blog/*": ["./content/blog/**/*"],
+    "/blog/tag/*": ["./content/blog/**/*"],
+    "/api/auth/*": ["./node_modules/@prisma/client/**/*", "./node_modules/next-seo/**/*"],
+    "/api/retailer/*": ["./node_modules/@prisma/client/**/*", "./node_modules/bcryptjs/**/*"],
+    "/api/affiliate/*": ["./node_modules/@prisma/client/**/*", "./node_modules/bcryptjs/**/*"],
+    "/retailers": ["./node_modules/next-seo/**/*"],
+    "/locations/*": ["./node_modules/next-seo/**/*"],
   },
   // i18n config for Pages Router (required for pages/ directory)
   // App Router uses next-intl with its own routing configuration
@@ -903,7 +909,7 @@ const nextConfig = {
     parallelServerCompiles: true,
     parallelServerBuildTraces: true,
   },
-  serverExternalPackages: ["sharp", "@anthropic-ai/sdk", "openai", "cheerio"],
+  serverExternalPackages: ["sharp", "@anthropic-ai/sdk", "openai", "cheerio", "bcryptjs", "@prisma/client", "next-seo"],
   staticPageGenerationTimeout: 120,
   turbopack: {
     rules: {
