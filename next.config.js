@@ -1001,6 +1001,8 @@ module.exports = withNextIntl(withBundleAnalyzer(nextConfig));
 if (process.env.DISABLE_SENTRY !== "true") {
   const { withSentryConfig } = require("@sentry/nextjs");
 
+  const hasSentryAuthToken = !!process.env.SENTRY_AUTH_TOKEN;
+
   module.exports = withSentryConfig(module.exports, {
     // For all available options, see:
     // https://www.npmjs.com/package/@sentry/webpack-plugin#options
@@ -1022,6 +1024,15 @@ if (process.env.DISABLE_SENTRY !== "true") {
     // Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
     // side errors will fail.
     tunnelRoute: "/monitoring",
+
+    // Disable source maps and release creation if no auth token is available
+    // This prevents warnings during build in environments without the token
+    sourcemaps: {
+      disable: !hasSentryAuthToken,
+    },
+    release: {
+      create: hasSentryAuthToken,
+    },
 
     webpack: {
       // Enables automatic instrumentation of Vercel Cron Monitors. (Does not yet work with App Router route handlers.)
