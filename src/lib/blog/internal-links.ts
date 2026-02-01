@@ -27,7 +27,7 @@ export const INTERNAL_LINK_OPTIONS = [
   { label: 'Activated Carbon vs Baking Soda Comparison', url: '/blog/activated-carbon-vs-baking-soda-comparison' },
   { label: 'Using Deodorizers with Kittens', url: '/blog/using-deodorizers-with-kittens' },
   { label: '90-Day Litter Deodorizer Test Results', url: '/blog/tried-every-litter-deodorizer-90-days-results' },
-  { label: 'Powder vs Spray Litter Deodorizer', url: '/blog/powder-vs-spray-litter-deodorizer' },
+  { label: 'Purrify vs Spray Litter Deodorizer', url: '/blog/powder-vs-spray-litter-deodorizer' },
   // Products
   { label: 'Shop the Standard Size Purrify Kit', url: '/products/standard' },
   { label: 'Shop the Family Pack for Multi-Cat Homes', url: '/products/family-pack' },

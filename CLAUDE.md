@@ -315,15 +315,20 @@ pnpm generate-image \
 
 ### Supported Languages
 - `en` - English (default)
-- `fr` - French
+- `fr` - French (CA)
 - `zh` - Chinese (Simplified)
 - `es` - Spanish
+
+### Terminology Rules
+- **Purrify is NOT a powder**: Use "granules" or "additive". Never use "powder" when referring to the product.
+- **Tone**: Professional yet warm, science-backed but accessible.
 
 ### Adding a Translation Key
 1. Add to ALL files in `src/translations/`:
    - `en.ts`, `fr.ts`, `zh.ts`, `es.ts`
 2. Use the same key structure in each file
-3. Validate: `pnpm test:translations`
+3. No hardcoded user-facing text.
+4. Validate: `pnpm test:translations`
 
 ### Usage in Components
 ```typescript

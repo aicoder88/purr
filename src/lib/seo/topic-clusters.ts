@@ -105,7 +105,7 @@ export const TOPIC_CLUSTERS: TopicCluster[] = [
       '/learn/activated-carbon-vs-baking-soda-deodorizers',
       '/products',
     ],
-    keywords: ['powder', 'spray', 'comparison', 'best deodorizer', 'deodorizer types'],
+    keywords: ['granules', 'spray', 'comparison', 'best deodorizer', 'deodorizer types'],
   },
   {
     id: 'kittens-seniors',

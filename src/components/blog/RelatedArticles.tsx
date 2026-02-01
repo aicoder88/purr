@@ -90,7 +90,7 @@ const ALL_ARTICLES: Article[] = [
     alt: 'Welcoming guests to a fresh home'
   },
   {
-    title: 'Powder vs Spray Litter Deodorizer',
+    title: 'Purrify vs Spray Litter Deodorizer',
     href: '/blog/powder-vs-spray-litter-deodorizer',
     image: '/optimized/frequency-hero.webp',
     alt: 'Comparing deodorizer application methods'

@@ -6,7 +6,7 @@ export const AUTOMATED_BLOG_TOPICS: BlogTopic[] = [
     locale: 'en',
     title: 'How Often to Add Litter Deodorizer? 100-Day Frequency Guide',
     slug: 'litter-deodorizer-frequency-guide',
-    primaryKeyword: 'cat litter deodorizer powder',
+    primaryKeyword: 'cat litter deodorizer granules',
     secondaryKeywords: ['cat litter odor eliminator', 'how often add litter deodorizer'],
     intent: 'High intent – routine optimization',
     hook: 'Daily? Weekly? I tested every frequency for 100 days. Here is the exact schedule that keeps ammonia under 5ppm.',
@@ -111,6 +111,6 @@ export const AUTOMATED_BLOG_TOPICS: BlogTopic[] = [
     shareability: '中文可分享图表 + 分步指南。',
     contentAngle: '强调活性炭吸附、湿度管理、日常习惯。',
     targetAudience: '讲中文的猫奴，尤其是公寓住户。',
-    cta: '立即订购 Purrify 活性炭除臭粉。'
+    cta: '立即订购 Purrify 活性炭除臭颗粒。'
   }
 ];

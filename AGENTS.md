@@ -70,6 +70,8 @@
 | **The Lazy Verifier** | Saying "Done" without testing | Run `pnpm build` and confirm |
 | **The Reformatter** | Changing tabs to spaces across the file | Touch only what was requested |
 | **The Silent Changer** | Deleting "unused" code that's actually used elsewhere | Mention it, don't delete |
+| **The Powder User** | Calling Purrify a "powder" | Use "granules" or "additive" |
+| **The Hardcoder** | Writing "Add to Cart" directly in JSX | Use `t('addToCart')` |
 
 ## Project Structure
 

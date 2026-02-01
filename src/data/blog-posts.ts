@@ -306,8 +306,8 @@ function generateLatestBlogPosts(): BlogPost[] {
       link: '/blog/tried-every-litter-deodorizer-90-days-results'
     },
     {
-      title: 'Powder vs Spray Litter Deodorizer: I Used Both for 60 Days—Here\'s What Actually Works',
-      excerpt: 'Spray deodorizers seem convenient, but they fail after 8 hours. I tested both formats for 60 days with 2 cats. Here\'s why powder wins every time—and the science behind it.',
+      title: 'Purrify vs Spray Litter Deodorizer: I Used Both for 60 Days—Here\'s What Actually Works',
+      excerpt: 'Spray deodorizers seem convenient, but they fail after 8 hours. I tested both formats for 60 days with 2 cats. Here\'s why Purrify wins every time—and the science behind it.',
       author: 'Purrify Team',
       date: '2024-12-22',
       image: '/optimized/activated-carbon-granules.webp',

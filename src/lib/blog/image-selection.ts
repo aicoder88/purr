@@ -4,7 +4,7 @@ const FALLBACK_IMAGES: GeneratedImage[] = [
   {
     kind: 'HERO',
     url: '/optimized/activated-carbon-benefits.webp',
-    alt: 'Cat litter deodorizer - activated carbon powder keeping litter box fresh',
+    alt: 'Cat litter deodorizer - activated carbon granules keeping litter box fresh',
     caption: 'Activated carbon absorbs odor molecules before they escape the litter box.',
     credit: 'Purrify Product Image',
     keywords: ['cat litter deodorizer', 'activated carbon']
