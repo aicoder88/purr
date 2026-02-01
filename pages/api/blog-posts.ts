@@ -28,9 +28,10 @@ export default async function handler(
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  const { limit } = req.query;
+  const limitNum = limit ? parseInt(limit as string, 10) : undefined;
+
   try {
-    const { limit } = req.query;
-    const limitNum = limit ? parseInt(limit as string, 10) : undefined;
     const take = limitNum || 6;
 
     // Check if database is configured
@@ -108,7 +109,8 @@ export default async function handler(
     res.status(200).json(posts);
   } catch (error) {
     console.error('Error fetching WordPress posts:', error);
-    // Return empty array instead of error to prevent page crashes
-    return res.status(200).json([]);
+    // If all else fails, return sample data
+    const fallbackPosts = limitNum ? sampleBlogPosts.slice(0, limitNum) : sampleBlogPosts;
+    return res.status(200).json(fallbackPosts);
   }
 }

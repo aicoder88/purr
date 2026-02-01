@@ -96,7 +96,7 @@ export class ContentStore {
       const safeLocale = sanitizeLocale(locale);
 
       const filePath = path.join(this.contentDir, safeLocale, `${safeSlug}.json`);
-      
+
       // Verify the resolved path is within the content directory
       const resolvedPath = path.resolve(filePath);
       const resolvedContentDir = path.resolve(this.contentDir);
@@ -108,8 +108,21 @@ export class ContentStore {
       if (!fs.existsSync(filePath)) {
         return null;
       }
-      const content = fs.readFileSync(filePath, 'utf-8');
-      const post = JSON.parse(content) as BlogPost;
+
+      let post: BlogPost;
+      try {
+        const content = fs.readFileSync(filePath, 'utf-8');
+        post = JSON.parse(content) as BlogPost;
+      } catch (parseError) {
+        console.error(`[ContentStore] Error parsing JSON for ${slug}:`, parseError);
+        return null;
+      }
+
+      // Basic validation
+      if (!post || typeof post !== 'object') {
+        console.error(`[ContentStore] Invalid post structure for ${slug}`);
+        return null;
+      }
 
       // Only return published posts (or scheduled posts whose date has passed)
       if (post.status === 'published') {
@@ -138,7 +151,7 @@ export class ContentStore {
       const safeLocale = sanitizeLocale(locale);
 
       const localeDir = path.join(this.contentDir, safeLocale);
-      
+
       // Verify the resolved path is within the content directory
       const resolvedLocaleDir = path.resolve(localeDir);
       const resolvedContentDir = path.resolve(this.contentDir);
@@ -162,24 +175,30 @@ export class ContentStore {
           const content = fs.readFileSync(filePath, 'utf-8');
           const post = JSON.parse(content) as BlogPost;
 
+          // Validate required fields
+          if (!post.title || !post.slug) {
+            console.error(`[getAllPosts] Skipping invalid post in ${file}: missing title or slug`);
+            continue;
+          }
+
           if (includeUnpublished) {
-            console.log(`[getAllPosts] Adding ${file} (includeUnpublished)`);
+            // console.log(`[getAllPosts] Adding ${file} (includeUnpublished)`);
             posts.push(post);
           } else if (post.status === 'published') {
-            console.log(`[getAllPosts] Adding ${file} (status=published)`);
+            // console.log(`[getAllPosts] Adding ${file} (status=published)`);
             posts.push(post);
           } else if (post.status === 'scheduled' && post.scheduledDate) {
             const scheduledDate = new Date(post.scheduledDate);
             if (scheduledDate <= now) {
               posts.push(post);
             } else {
-              console.log(`[getAllPosts] Skipping ${file} (future scheduled)`);
+              // console.log(`[getAllPosts] Skipping ${file} (future scheduled)`);
             }
           } else {
-            console.log(`[getAllPosts] Skipping ${file} (status=${post.status})`);
+            // console.log(`[getAllPosts] Skipping ${file} (status=${post.status})`);
           }
         } catch (error) {
-          console.error(`Error reading file ${file}:`, error);
+          console.error(`Error processing blog post file ${file}:`, error);
           // Continue processing other files
         }
       }
@@ -194,10 +213,10 @@ export class ContentStore {
       return posts;
     } catch (error) {
       if (error instanceof Error && error.message.includes('path traversal')) {
-        console.error(`[SECURITY] Blocked path traversal attempt for locale: ${locale}`);
+        console.error(`[SECURITY] Blocked path traversal attempt for locale: ${locale} `);
         return [];
       }
-      console.error(`Error reading posts for locale ${locale}:`, error);
+      console.error(`Error reading posts for locale ${locale}: `, error);
       return [];
     }
   }
@@ -219,7 +238,7 @@ export class ContentStore {
       const safeLocale = sanitizeLocale(post.locale);
 
       const localeDir = path.join(this.contentDir, safeLocale);
-      
+
       // Verify the resolved path is within the content directory
       const resolvedLocaleDir = path.resolve(localeDir);
       const resolvedContentDir = path.resolve(this.contentDir);
@@ -232,7 +251,7 @@ export class ContentStore {
       }
 
       const filePath = path.join(localeDir, `${safeSlug}.json`);
-      
+
       // Verify the final file path is within the content directory
       const resolvedFilePath = path.resolve(filePath);
       if (!resolvedFilePath.startsWith(resolvedContentDir)) {
@@ -241,7 +260,7 @@ export class ContentStore {
 
       fs.writeFileSync(filePath, JSON.stringify(post, null, 2));
 
-      console.log(`✅ Successfully saved post: ${safeSlug}`);
+      console.log(`✅ Successfully saved post: ${safeSlug} `);
 
       return {
         success: true,
@@ -249,12 +268,12 @@ export class ContentStore {
         post,
       };
     } catch (error) {
-      console.error(`Error saving post ${post.slug}:`, error);
+      console.error(`Error saving post ${post.slug}: `, error);
       return {
         success: false,
         validation: {
           valid: false,
-          errors: [{ field: 'system', message: `Failed to save post: ${error}` }],
+          errors: [{ field: 'system', message: `Failed to save post: ${error} ` }],
           warnings: [],
         },
       };
@@ -273,12 +292,12 @@ export class ContentStore {
       const safeLocale = sanitizeLocale(locale);
 
       const filePath = path.join(this.contentDir, safeLocale, `${safeSlug}.json`);
-      
+
       // Verify the resolved path is within the content directory
       const resolvedPath = path.resolve(filePath);
       const resolvedContentDir = path.resolve(this.contentDir);
       if (!resolvedPath.startsWith(resolvedContentDir)) {
-        console.error(`[SECURITY] Path traversal attempt detected in deletePost: ${filePath}`);
+        console.error(`[SECURITY] Path traversal attempt detected in deletePost: ${filePath} `);
         throw new Error('Path traversal detected');
       }
 
@@ -287,10 +306,10 @@ export class ContentStore {
       }
     } catch (error) {
       if (error instanceof Error && error.message.includes('Path traversal')) {
-        console.error(`[SECURITY] Blocked path traversal attempt in deletePost for slug: ${slug}`);
+        console.error(`[SECURITY] Blocked path traversal attempt in deletePost for slug: ${slug} `);
         throw error;
       }
-      console.error(`Error deleting post ${slug}:`, error);
+      console.error(`Error deleting post ${slug}: `, error);
       throw error;
     }
   }
@@ -298,7 +317,7 @@ export class ContentStore {
   async getCategories(): Promise<Category[]> {
     try {
       const filePath = path.join(this.contentDir, 'categories.json');
-      
+
       // Verify the resolved path is within the content directory
       const resolvedPath = path.resolve(filePath);
       const resolvedContentDir = path.resolve(this.contentDir);
@@ -320,7 +339,7 @@ export class ContentStore {
   async getTags(): Promise<Tag[]> {
     try {
       const filePath = path.join(this.contentDir, 'tags.json');
-      
+
       // Verify the resolved path is within the content directory
       const resolvedPath = path.resolve(filePath);
       const resolvedContentDir = path.resolve(this.contentDir);
@@ -341,7 +360,7 @@ export class ContentStore {
 
   async saveCategories(categories: Category[]): Promise<void> {
     const filePath = path.join(this.contentDir, 'categories.json');
-    
+
     // Verify the resolved path is within the content directory
     const resolvedPath = path.resolve(filePath);
     const resolvedContentDir = path.resolve(this.contentDir);
@@ -354,7 +373,7 @@ export class ContentStore {
 
   async saveTags(tags: Tag[]): Promise<void> {
     const filePath = path.join(this.contentDir, 'tags.json');
-    
+
     // Verify the resolved path is within the content directory
     const resolvedPath = path.resolve(filePath);
     const resolvedContentDir = path.resolve(this.contentDir);

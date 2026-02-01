@@ -89,16 +89,26 @@ async function getPost(slug: string): Promise<BlogPost | null> {
     const blogPost = await store.getPost(slug, 'en');
 
     if (blogPost) {
+      let dateStr: string;
+      try {
+        const parsedDate = new Date(blogPost.publishDate);
+        dateStr = !isNaN(parsedDate.getTime())
+          ? parsedDate.toISOString().split('T')[0]
+          : new Date().toISOString().split('T')[0];
+      } catch {
+        dateStr = new Date().toISOString().split('T')[0];
+      }
+
       return {
         title: blogPost.title,
         excerpt: blogPost.excerpt,
-        author: blogPost.author.name,
-        date: new Date(blogPost.publishDate).toISOString().split('T')[0],
-        image: blogPost.featuredImage.url,
-        heroImageAlt: blogPost.featuredImage.alt,
+        author: blogPost.author?.name || 'Purrify Team',
+        date: dateStr,
+        image: blogPost.featuredImage?.url || '/optimized/cat-litter-hero.webp',
+        heroImageAlt: blogPost.featuredImage?.alt || blogPost.title,
         link: `/blog/${blogPost.slug}`,
         content: blogPost.content,
-        locale: blogPost.locale as 'en' | 'fr' | 'zh',
+        locale: (blogPost.locale as 'en' | 'fr' | 'zh') || 'en',
         howTo: (blogPost as unknown as { howTo?: BlogPost['howTo'] }).howTo ?? null,
         faq: blogPost.faq ?? null,
         citations: blogPost.citations ?? null,
@@ -233,11 +243,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-6">
                 <span className="flex items-center gap-1">
                   <Calendar className="w-4 h-4" />
-                  {new Date(post.date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
+                  {(() => {
+                    try {
+                      const d = new Date(post.date);
+                      return !isNaN(d.getTime()) ? d.toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      }) : post.date;
+                    } catch {
+                      return post.date;
+                    }
+                  })()}
                 </span>
                 <span className="flex items-center gap-1">
                   <User className="w-4 h-4" />
