@@ -1,3 +1,5 @@
+"use client";
+
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';

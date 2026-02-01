@@ -5,6 +5,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import { TranslationProvider } from '@/lib/translation-context';
+import { CurrencyProvider } from '@/lib/currency-context';
 
 interface ProvidersProps {
   children: ReactNode;
@@ -20,9 +21,11 @@ export function Providers({ children, locale, messages }: ProvidersProps) {
           defaultTheme="system"
           storageKey="purrify-ui-theme"
         >
-          <TranslationProvider language={locale} isAppRouter={true}>
-            {children}
-          </TranslationProvider>
+          <CurrencyProvider detectedCurrency="CAD">
+            <TranslationProvider language={locale} isAppRouter={true}>
+              {children}
+            </TranslationProvider>
+          </CurrencyProvider>
         </ThemeProvider>
       </SessionProvider>
     </NextIntlClientProvider>

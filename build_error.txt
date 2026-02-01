@@ -1,0 +1,804 @@
+
+> purrify@0.1.0 prebuild
+> node scripts/validate-no-middleware.js && tsx scripts/seo/prebuild-validation.ts && node scripts/vercel-prebuild.js
+
+Middleware validation passed: No conflicting middleware files found.
+🚀 Pre-Build SEO Validation
+
+══════════════════════════════════════════════════════════════════════
+
+1️⃣  Running SEO Compliance Validation...
+
+🔍 Starting SEO compliance validation...
+
+📄 Scanning pages...
+  Found 32 indexable pages
+
+🏷️  Validating meta tags...
+  Meta validation: 0 errors, 0 warnings
+
+🔗 Analyzing internal links...
+  Link analysis complete
+
+🖼️  Validating images...
+🖼️  Validating images...
+
+📝 Scanning image references in source code...
+  Found 9 image references
+
+🏷️  Validating alt text...
+  Found 0 images with alt text issues
+
+📂 Scanning physical image files...
+  Found 480 image files
+
+✅ Validating image files...
+  431/480 images passed validation
+
+  Image validation: 49 issues found
+
+🔗 Validating OG/Canonical URLs...
+  OG/Canonical validation: 0 issues found
+
+
+📊 Validation Summary:
+  Total Pages: 32
+  Pages with Errors: 32
+  Pages with Warnings: 81
+  Orphan Pages: 32
+  Weak Pages: 0
+  Dead End Pages: 32
+  Total Images: 480
+  Images with Issues: 49
+  Images Missing Alt: 0
+  OG/Canonical Mismatches: 0
+  Total Errors: 32
+  Total Warnings: 81
+
+✅ SEO validation PASSED
+
+   ✓ SEO Compliance: 32 errors, 81 warnings
+
+2️⃣  Running Image Validation...
+
+🖼️  Validating images...
+
+📝 Scanning image references in source code...
+  Found 9 image references
+
+🏷️  Validating alt text...
+  Found 0 images with alt text issues
+
+📂 Scanning physical image files...
+  Found 480 image files
+
+✅ Validating image files...
+  431/480 images passed validation
+
+   ℹ️  Image Validation: 49 issues (warnings only)
+
+3️⃣  Running Canonical URL Validation...
+
+🔗 Validating canonical URLs and OG tags...
+
+📄 Scanning pages for canonical tags...
+  Found 34 page files
+
+🔍 Checking for canonical and OG URL presence...
+
+📊 Summary:
+  Pages scanned: 34
+  Missing canonical: 17
+  Missing og:url: 20
+  Total issues: 35
+
+   ✓ Canonical URLs: 15 errors, 20 warnings
+
+══════════════════════════════════════════════════════════════════════
+📊 Validation Summary
+══════════════════════════════════════════════════════════════════════
+Duration: 0.3s
+Critical Issues: 0
+Errors: 47
+Warnings: 150
+
+SEO Compliance: 32 errors, 81 warnings
+Images: 49 issues
+Canonicals: 15 errors, 20 warnings
+══════════════════════════════════════════════════════════════════════
+✅ Pre-build validation PASSED - Build can proceed
+
+Starting Vercel prebuild process...
+Running dark mode validation...
+
+> purrify@0.1.0 validate-dark-mode
+> node scripts/dark-mode-validator.js
+
+🌙 Starting Dark Mode Validation...
+
+Checking 518 files...
+
+
+🌙 Dark Mode Validation Results:
+Files checked: 518
+Files with errors: 0
+Total errors: 0
+
+✅ All files pass dark mode validation!
+Dark mode validation passed
+Optimizing all images...
+🖼️ Optimizing all images...
+Starting image optimization...
+Found 53 images to check.
+Converted: public/images/powder_vs_spray_testing_v2.png (943KB) → public/images/powder_vs_spray_testing_v2.webp
+Converted: public/images/powder_vs_spray_testing.png (1037KB) → public/images/powder_vs_spray_testing.webp
+Converted: public/images/powder_vs_spray_science_v2.png (885KB) → public/images/powder_vs_spray_science_v2.webp
+Converted: public/images/powder_vs_spray_science.png (927KB) → public/images/powder_vs_spray_science.webp
+Converted: public/images/powder_vs_spray_results.png (918KB) → public/images/powder_vs_spray_results.webp
+Converted: public/images/powder_vs_spray_hero_v2.png (841KB) → public/images/powder_vs_spray_hero_v2.webp
+Converted: public/images/powder_vs_spray_hero.png (894KB) → public/images/powder_vs_spray_hero.webp
+Converted: public/optimized/vet-check-reminder.png (594KB) → public/optimized/vet-check-reminder.webp
+Converted: public/optimized/mother-cat-kitten.png (871KB) → public/optimized/mother-cat-kitten.webp
+Converted: public/images/replacements/multi-cat-success-ghibli.png (896KB) → public/images/replacements/multi-cat-success-ghibli.webp
+Converted: public/images/replacements/multi-cat-home-ghibli.png (1003KB) → public/images/replacements/multi-cat-home-ghibli.webp
+Converted: public/images/replacements/multi-cat-family-ghibli.png (930KB) → public/images/replacements/multi-cat-family-ghibli.webp
+Converted: public/images/replacements/happy-cat-ghibli.png (960KB) → public/images/replacements/happy-cat-ghibli.webp
+Converted: public/images/replacements/curious-cat-ghibli.png (1023KB) → public/images/replacements/curious-cat-ghibli.webp
+Converted: public/images/replacements/cat-owner-questions-ghibli.png (998KB) → public/images/replacements/cat-owner-questions-ghibli.webp
+Converted: public/images/replacements/cat-litter-usage-ghibli.png (1005KB) → public/images/replacements/cat-litter-usage-ghibli.webp
+Converted: public/images/replacements/carbon-microscopic.png (909KB) → public/images/replacements/carbon-microscopic.webp
+Converted: public/images/replacements/carbon-granules-detailed.png (551KB) → public/images/replacements/carbon-granules-detailed.webp
+Converted: public/images/products/purrify-standard-bag.png (995KB) → public/images/products/purrify-standard-bag.webp
+Optimization complete.
+Converted: 19
+Skipped (small < 100KB): 34
+✅ All images optimized successfully!
+Image optimization complete
+Adding width and height attributes to images...
+🔍 Loading image dimensions...
+🔍 Finding React files...
+Found 254 React files to process
+✅ Added missing width and height attributes to images in 0 files
+Image dimensions added
+Vercel prebuild process complete!
+
+> purrify@0.1.0 build
+> NODE_OPTIONS="--max-old-space-size=4096" next build
+
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+
+[next-intl] An `i18n` property was found in your Next.js config. This likely causes conflicts and should therefore be removed if you use the App Router.
+
+If you're in progress of migrating from the Pages Router, you can refer to this example: https://next-intl.dev/examples#app-router-migration
+
+
+ ⚠ i18n configuration in next.config.js is unsupported in App Router.
+Learn more about internationalization in App Router: https://nextjs.org/docs/app/building-your-application/routing/internationalization
+   ▲ Next.js 16.0.10 (Turbopack)
+   - Environments: .env.local, .env
+   - Experiments (use with caution):
+     · clientTraceMetadata
+     · optimizePackageImports
+     ✓ parallelServerBuildTraces
+     ✓ parallelServerCompiles
+     ✓ scrollRestoration
+     ✓ webpackBuildWorker
+
+   Creating an optimized production build ...
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+
+[next-intl] An `i18n` property was found in your Next.js config. This likely causes conflicts and should therefore be removed if you use the App Router.
+
+If you're in progress of migrating from the Pages Router, you can refer to this example: https://next-intl.dev/examples#app-router-migration
+
+
+
+> Build error occurred
+Error: Turbopack build failed with 20 errors:
+./app/affiliate/activate/page.tsx:10:14
+Ecmascript file had an error
+[0m [90m  8 |[39m [36mimport[39m [33mImage[39m [36mfrom[39m [32m'next/image'[39m[33m;[39m
+ [90m  9 |[39m
+[31m[1m>[22m[39m[90m 10 |[39m [36mexport[39m [36mconst[39m metadata[33m:[39m [33mMetadata[39m [33m=[39m {
+ [90m    |[39m              [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 11 |[39m   title[33m:[39m [32m'Activate Your Affiliate Account - Purrify'[39m[33m,[39m
+ [90m 12 |[39m   description[33m:[39m [32m'Complete your affiliate activation by purchasing the starter kit.'[39m[33m,[39m
+ [90m 13 |[39m   robots[33m:[39m {[0m
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Route:
+    ./app/affiliate/activate/page.tsx
+    ./pages/api/health/storage.ts
+
+  Client Component Browser:
+    ./app/affiliate/activate/page.tsx [Client Component Browser]
+    ./app/affiliate/activate/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/affiliate/activate/page.tsx [Client Component SSR]
+    ./app/affiliate/activate/page.tsx [Server Component]
+
+
+./app/affiliate/dashboard/assets/page.tsx:18:14
+Ecmascript file had an error
+[0m [90m 16 |[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+ [90m 17 |[39m
+[31m[1m>[22m[39m[90m 18 |[39m [36mexport[39m [36mconst[39m metadata[33m:[39m [33mMetadata[39m [33m=[39m {
+ [90m    |[39m              [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 19 |[39m   title[33m:[39m [32m'Marketing Assets - Purrify Affiliate'[39m[33m,[39m
+ [90m 20 |[39m   description[33m:[39m [32m'Download banners, product images, and copy for your promotions.'[39m[33m,[39m
+ [90m 21 |[39m   robots[33m:[39m {[0m
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Route:
+    ./app/affiliate/dashboard/assets/page.tsx
+    ./pages/api/health/storage.ts
+
+  Client Component Browser:
+    ./app/affiliate/dashboard/assets/page.tsx [Client Component Browser]
+    ./app/affiliate/dashboard/assets/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/affiliate/dashboard/assets/page.tsx [Client Component SSR]
+    ./app/affiliate/dashboard/assets/page.tsx [Server Component]
+
+
+./app/affiliate/dashboard/links/page.tsx:11:14
+Ecmascript file had an error
+[0m [90m  9 |[39m [36mimport[39m { [33mCopy[39m[33m,[39m [33mCheck[39m[33m,[39m [33mExternalLink[39m[33m,[39m [33mQrCode[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+ [90m 10 |[39m
+[31m[1m>[22m[39m[90m 11 |[39m [36mexport[39m [36mconst[39m metadata[33m:[39m [33mMetadata[39m [33m=[39m {
+ [90m    |[39m              [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 12 |[39m   title[33m:[39m [32m'Affiliate Links - Purrify'[39m[33m,[39m
+ [90m 13 |[39m   description[33m:[39m [32m'Generate and manage your affiliate referral links.'[39m[33m,[39m
+ [90m 14 |[39m   robots[33m:[39m {[0m
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Route:
+    ./app/affiliate/dashboard/links/page.tsx
+    ./pages/api/health/storage.ts
+
+  Client Component Browser:
+    ./app/affiliate/dashboard/links/page.tsx [Client Component Browser]
+    ./app/affiliate/dashboard/links/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/affiliate/dashboard/links/page.tsx [Client Component SSR]
+    ./app/affiliate/dashboard/links/page.tsx [Server Component]
+
+
+./app/affiliate/dashboard/page.tsx:27:14
+Ecmascript file had an error
+[0m [90m 25 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m[33m;[39m
+ [90m 26 |[39m
+[31m[1m>[22m[39m[90m 27 |[39m [36mexport[39m [36mconst[39m metadata[33m:[39m [33mMetadata[39m [33m=[39m {
+ [90m    |[39m              [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 28 |[39m   title[33m:[39m [32m'Affiliate Dashboard - Purrify'[39m[33m,[39m
+ [90m 29 |[39m   description[33m:[39m [32m'Track your affiliate earnings, conversions, and performance metrics.'[39m[33m,[39m
+ [90m 30 |[39m   robots[33m:[39m {[0m
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Route:
+    ./app/affiliate/dashboard/page.tsx
+    ./pages/api/health/storage.ts
+
+  Client Component Browser:
+    ./app/affiliate/dashboard/page.tsx [Client Component Browser]
+    ./app/affiliate/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/affiliate/dashboard/page.tsx [Client Component SSR]
+    ./app/affiliate/dashboard/page.tsx [Server Component]
+
+
+./app/affiliate/dashboard/payouts/page.tsx:20:14
+Ecmascript file had an error
+[0m [90m 18 |[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+ [90m 19 |[39m
+[31m[1m>[22m[39m[90m 20 |[39m [36mexport[39m [36mconst[39m metadata[33m:[39m [33mMetadata[39m [33m=[39m {
+ [90m    |[39m              [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 21 |[39m   title[33m:[39m [32m'Payouts - Purrify Affiliate'[39m[33m,[39m
+ [90m 22 |[39m   description[33m:[39m [32m'Manage your earnings and request payouts.'[39m[33m,[39m
+ [90m 23 |[39m   robots[33m:[39m {[0m
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Route:
+    ./app/affiliate/dashboard/payouts/page.tsx
+    ./pages/api/health/storage.ts
+
+  Client Component Browser:
+    ./app/affiliate/dashboard/payouts/page.tsx [Client Component Browser]
+    ./app/affiliate/dashboard/payouts/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/affiliate/dashboard/payouts/page.tsx [Client Component SSR]
+    ./app/affiliate/dashboard/payouts/page.tsx [Server Component]
+
+
+./app/affiliate/dashboard/settings/page.tsx:19:14
+Ecmascript file had an error
+[0m [90m 17 |[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+ [90m 18 |[39m
+[31m[1m>[22m[39m[90m 19 |[39m [36mexport[39m [36mconst[39m metadata[33m:[39m [33mMetadata[39m [33m=[39m {
+ [90m    |[39m              [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 20 |[39m   title[33m:[39m [32m'Settings - Purrify Affiliate'[39m[33m,[39m
+ [90m 21 |[39m   description[33m:[39m [32m'Manage your account and payment settings.'[39m[33m,[39m
+ [90m 22 |[39m   robots[33m:[39m {[0m
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Route:
+    ./app/affiliate/dashboard/settings/page.tsx
+    ./pages/api/health/storage.ts
+
+  Client Component Browser:
+    ./app/affiliate/dashboard/settings/page.tsx [Client Component Browser]
+    ./app/affiliate/dashboard/settings/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/affiliate/dashboard/settings/page.tsx [Client Component SSR]
+    ./app/affiliate/dashboard/settings/page.tsx [Server Component]
+
+
+./app/affiliate/dashboard/stats/page.tsx:18:14
+Ecmascript file had an error
+[0m [90m 16 |[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+ [90m 17 |[39m
+[31m[1m>[22m[39m[90m 18 |[39m [36mexport[39m [36mconst[39m metadata[33m:[39m [33mMetadata[39m [33m=[39m {
+ [90m    |[39m              [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 19 |[39m   title[33m:[39m [32m'Performance Stats - Purrify Affiliate'[39m[33m,[39m
+ [90m 20 |[39m   description[33m:[39m [32m'Track your affiliate performance over time.'[39m[33m,[39m
+ [90m 21 |[39m   robots[33m:[39m {[0m
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Route:
+    ./app/affiliate/dashboard/stats/page.tsx
+    ./pages/api/health/storage.ts
+
+  Client Component Browser:
+    ./app/affiliate/dashboard/stats/page.tsx [Client Component Browser]
+    ./app/affiliate/dashboard/stats/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/affiliate/dashboard/stats/page.tsx [Client Component SSR]
+    ./app/affiliate/dashboard/stats/page.tsx [Server Component]
+
+
+./app/affiliate/login/page.tsx:10:14
+Ecmascript file had an error
+[0m [90m  8 |[39m [36mimport[39m { useTranslation } [36mfrom[39m [32m'@/lib/translation-context'[39m[33m;[39m
+ [90m  9 |[39m
+[31m[1m>[22m[39m[90m 10 |[39m [36mexport[39m [36mconst[39m metadata[33m:[39m [33mMetadata[39m [33m=[39m {
+ [90m    |[39m              [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 11 |[39m   title[33m:[39m [32m'Affiliate Login - Purrify'[39m[33m,[39m
+ [90m 12 |[39m   description[33m:[39m [32m'Sign in to your Purrify affiliate dashboard to track earnings and manage your account.'[39m[33m,[39m
+ [90m 13 |[39m   robots[33m:[39m {[0m
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Route:
+    ./app/affiliate/login/page.tsx
+    ./pages/api/health/storage.ts
+
+  Client Component Browser:
+    ./app/affiliate/login/page.tsx [Client Component Browser]
+    ./app/affiliate/login/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/affiliate/login/page.tsx [Client Component SSR]
+    ./app/affiliate/login/page.tsx [Server Component]
+
+
+./app/affiliate/page.tsx:22:14
+Ecmascript file had an error
+[0m [90m 20 |[39m
+ [90m 21 |[39m [90m// Metadata for SEO[39m
+[31m[1m>[22m[39m[90m 22 |[39m [36mexport[39m [36mconst[39m metadata[33m:[39m [33mMetadata[39m [33m=[39m {
+ [90m    |[39m              [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 23 |[39m   title[33m:[39m [32m'Purrify Affiliate Program - Earn Up to 30% Commission'[39m[33m,[39m
+ [90m 24 |[39m   description[33m:[39m [32m'Join the Purrify affiliate program and earn up to 30% commission promoting our activated carbon cat litter additive. Free to join with instant approval.'[39m[33m,[39m
+ [90m 25 |[39m   keywords[33m:[39m [[32m'affiliate program'[39m[33m,[39m [32m'pet products affiliate'[39m[33m,[39m [32m'cat litter affiliate'[39m[33m,[39m [32m'earn commission'[39m[33m,[39m [32m'partner program'[39m][33m,[39m[0m
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Route:
+    ./app/affiliate/page.tsx
+    ./pages/api/health/storage.ts
+
+  Client Component Browser:
+    ./app/affiliate/page.tsx [Client Component Browser]
+    ./app/affiliate/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/affiliate/page.tsx [Client Component SSR]
+    ./app/affiliate/page.tsx [Server Component]
+
+
+./app/affiliate/signup/page.tsx:10:14
+Ecmascript file had an error
+[0m [90m  8 |[39m [36mimport[39m { useTranslation } [36mfrom[39m [32m'@/lib/translation-context'[39m[33m;[39m
+ [90m  9 |[39m
+[31m[1m>[22m[39m[90m 10 |[39m [36mexport[39m [36mconst[39m metadata[33m:[39m [33mMetadata[39m [33m=[39m {
+ [90m    |[39m              [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 11 |[39m   title[33m:[39m [32m'Join Purrify Affiliate Program - Apply Now'[39m[33m,[39m
+ [90m 12 |[39m   description[33m:[39m [32m'Apply to become a Purrify affiliate partner. Start at 20% commission and grow up to 30% as a Partner. Plus get free products every month!'[39m[33m,[39m
+ [90m 13 |[39m   keywords[33m:[39m [[32m'affiliate signup'[39m[33m,[39m [32m'earn commission'[39m[33m,[39m [32m'partner program'[39m[33m,[39m [32m'affiliate application'[39m][33m,[39m[0m
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Route:
+    ./app/affiliate/signup/page.tsx
+    ./pages/api/health/storage.ts
+
+  Client Component Browser:
+    ./app/affiliate/signup/page.tsx [Client Component Browser]
+    ./app/affiliate/signup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/affiliate/signup/page.tsx [Client Component SSR]
+    ./app/affiliate/signup/page.tsx [Server Component]
+
+
+./app/offline/page.tsx:10:14
+Ecmascript file had an error
+[0m [90m  8 |[39m [36mimport[39m type { [33mMetadata[39m } [36mfrom[39m [32m'next'[39m[33m;[39m
+ [90m  9 |[39m
+[31m[1m>[22m[39m[90m 10 |[39m [36mexport[39m [36mconst[39m metadata[33m:[39m [33mMetadata[39m [33m=[39m {
+ [90m    |[39m              [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 11 |[39m   title[33m:[39m [32m'You are Offline | Purrify'[39m[33m,[39m
+ [90m 12 |[39m   description[33m:[39m [32m'It looks like you are offline. Please check your internet connection and try again.'[39m[33m,[39m
+ [90m 13 |[39m   robots[33m:[39m {[0m
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Route:
+    ./app/offline/page.tsx
+    ./pages/api/health/storage.ts
+
+  Client Component Browser:
+    ./app/offline/page.tsx [Client Component Browser]
+    ./app/offline/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/offline/page.tsx [Client Component SSR]
+    ./app/offline/page.tsx [Server Component]
+
+
+./app/viral/page.tsx:14:14
+Ecmascript file had an error
+[0m [90m 12 |[39m }
+ [90m 13 |[39m
+[31m[1m>[22m[39m[90m 14 |[39m [36mexport[39m [36mconst[39m metadata[33m:[39m [33mMetadata[39m [33m=[39m {
+ [90m    |[39m              [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 15 |[39m   title[33m:[39m [32m'The Viral Odour Vault: Purrify Profit Report'[39m[33m,[39m
+ [90m 16 |[39m   description[33m:[39m [32m'Stop guessing why your videos die in obscurity. We have dissected the Viral Anchors of the pet care world to build your profit machine.'[39m[33m,[39m
+ [90m 17 |[39m   alternates[33m:[39m {[0m
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Route:
+    ./app/viral/page.tsx
+    ./pages/api/health/storage.ts
+
+  Client Component Browser:
+    ./app/viral/page.tsx [Client Component Browser]
+    ./app/viral/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/viral/page.tsx [Client Component SSR]
+    ./app/viral/page.tsx [Server Component]
+
+
+./src/components/sections/locations/CityLeadCaptureCTA.tsx:1:23
+Ecmascript file had an error
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { useCallback[33m,[39m useState } [36mfrom[39m [32m'react'[39m[33m;[39m
+ [90m   |[39m                       [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 2 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m'../../ui/button'[39m[33m;[39m
+ [90m 3 |[39m [36mimport[39m {
+ [90m 4 |[39m   [33mDialog[39m[33m,[39m[0m
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Route:
+    ./src/components/sections/locations/CityLeadCaptureCTA.tsx
+    ./pages/api/health/storage.ts
+
+  Browser:
+    ./src/components/sections/locations/CityLeadCaptureCTA.tsx
+    ./src/components/sections/locations/createCityPage.tsx
+    ./pages/_ignore_locations/[citySlug].tsx
+
+  SSR:
+    ./src/components/sections/locations/CityLeadCaptureCTA.tsx
+    ./src/components/sections/locations/createCityPage.tsx
+    ./pages/_ignore_locations/[citySlug].tsx
+
+  Server Component:
+    ./src/components/sections/locations/CityLeadCaptureCTA.tsx
+    ./src/components/sections/locations/createCityPage.tsx
+    ./app/locations/[citySlug]/page.tsx
+
+
+./src/components/sections/locations/LocalShippingUrgency.tsx:8:10
+Ecmascript file had an error
+[0m [90m  6 |[39m
+ [90m  7 |[39m [36mimport[39m { [33mClock[39m[33m,[39m [33mPackage[39m[33m,[39m [33mTruck[39m[33m,[39m [33mMapPin[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+[31m[1m>[22m[39m[90m  8 |[39m [36mimport[39m { useEffect[33m,[39m useState } [36mfrom[39m [32m'react'[39m[33m;[39m
+ [90m    |[39m          [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m  9 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m[33m;[39m
+ [90m 10 |[39m
+ [90m 11 |[39m [36minterface[39m [33mLocalShippingUrgencyProps[39m {[0m
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Route:
+    ./src/components/sections/locations/LocalShippingUrgency.tsx
+    ./pages/api/health/storage.ts
+
+  Browser:
+    ./src/components/sections/locations/LocalShippingUrgency.tsx
+    ./src/components/sections/locations/createCityPage.tsx
+    ./pages/_ignore_locations/[citySlug].tsx
+
+  SSR:
+    ./src/components/sections/locations/LocalShippingUrgency.tsx
+    ./src/components/sections/locations/createCityPage.tsx
+    ./pages/_ignore_locations/[citySlug].tsx
+
+  Server Component:
+    ./src/components/sections/locations/LocalShippingUrgency.tsx
+    ./src/components/sections/locations/createCityPage.tsx
+    ./app/locations/[citySlug]/page.tsx
+
+
+./src/components/sections/locations/LocalShippingUrgency.tsx:8:21
+Ecmascript file had an error
+[0m [90m  6 |[39m
+ [90m  7 |[39m [36mimport[39m { [33mClock[39m[33m,[39m [33mPackage[39m[33m,[39m [33mTruck[39m[33m,[39m [33mMapPin[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+[31m[1m>[22m[39m[90m  8 |[39m [36mimport[39m { useEffect[33m,[39m useState } [36mfrom[39m [32m'react'[39m[33m;[39m
+ [90m    |[39m                     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m  9 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m[33m;[39m
+ [90m 10 |[39m
+ [90m 11 |[39m [36minterface[39m [33mLocalShippingUrgencyProps[39m {[0m
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Route:
+    ./src/components/sections/locations/LocalShippingUrgency.tsx
+    ./pages/api/health/storage.ts
+
+  Browser:
+    ./src/components/sections/locations/LocalShippingUrgency.tsx
+    ./src/components/sections/locations/createCityPage.tsx
+    ./pages/_ignore_locations/[citySlug].tsx
+
+  SSR:
+    ./src/components/sections/locations/LocalShippingUrgency.tsx
+    ./src/components/sections/locations/createCityPage.tsx
+    ./pages/_ignore_locations/[citySlug].tsx
+
+  Server Component:
+    ./src/components/sections/locations/LocalShippingUrgency.tsx
+    ./src/components/sections/locations/createCityPage.tsx
+    ./app/locations/[citySlug]/page.tsx
+
+
+./src/components/sections/locations/createCityPage.tsx:4:10
+Ecmascript file had an error
+[0m [90m 2 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m[33m;[39m
+ [90m 3 |[39m [36mimport[39m dynamic [36mfrom[39m [32m'next/dynamic'[39m[33m;[39m
+[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m { useEffect[33m,[39m useMemo[33m,[39m useState } [36mfrom[39m [32m'react'[39m[33m;[39m
+ [90m   |[39m          [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 5 |[39m [36mimport[39m { [33mChevronRight[39m[33m,[39m [33mHome[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+ [90m 6 |[39m
+ [90m 7 |[39m [36mimport[39m { [33mLocationSchema[39m } [36mfrom[39m [32m'../../seo/json-ld-schema'[39m[33m;[39m[0m
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Route:
+    ./src/components/sections/locations/createCityPage.tsx
+    ./pages/api/health/storage.ts
+
+  Browser:
+    ./src/components/sections/locations/createCityPage.tsx
+    ./pages/_ignore_locations/[citySlug].tsx
+
+  SSR:
+    ./src/components/sections/locations/createCityPage.tsx
+    ./pages/_ignore_locations/[citySlug].tsx
+
+  Server Component:
+    ./src/components/sections/locations/createCityPage.tsx
+    ./app/locations/[citySlug]/page.tsx
+
+
+./src/components/sections/locations/createCityPage.tsx:4:30
+Ecmascript file had an error
+[0m [90m 2 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m[33m;[39m
+ [90m 3 |[39m [36mimport[39m dynamic [36mfrom[39m [32m'next/dynamic'[39m[33m;[39m
+[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m { useEffect[33m,[39m useMemo[33m,[39m useState } [36mfrom[39m [32m'react'[39m[33m;[39m
+ [90m   |[39m                              [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 5 |[39m [36mimport[39m { [33mChevronRight[39m[33m,[39m [33mHome[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+ [90m 6 |[39m
+ [90m 7 |[39m [36mimport[39m { [33mLocationSchema[39m } [36mfrom[39m [32m'../../seo/json-ld-schema'[39m[33m;[39m[0m
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Route:
+    ./src/components/sections/locations/createCityPage.tsx
+    ./pages/api/health/storage.ts
+
+  Browser:
+    ./src/components/sections/locations/createCityPage.tsx
+    ./pages/_ignore_locations/[citySlug].tsx
+
+  SSR:
+    ./src/components/sections/locations/createCityPage.tsx
+    ./pages/_ignore_locations/[citySlug].tsx
+
+  Server Component:
+    ./src/components/sections/locations/createCityPage.tsx
+    ./app/locations/[citySlug]/page.tsx
+
+
+./src/components/sections/retailer-contact.tsx:1:20
+Ecmascript file had an error
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { useState[33m,[39m useEffect[33m,[39m useCallback[33m,[39m useMemo } [36mfrom[39m [32m'react'[39m[33m;[39m
+ [90m   |[39m                    [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 2 |[39m [36mimport[39m [33m*[39m [36mas[39m [33mSentry[39m [36mfrom[39m [32m'@sentry/nextjs'[39m[33m;[39m
+ [90m 3 |[39m [36mimport[39m { [33mContainer[39m } [36mfrom[39m [32m'../ui/container'[39m[33m;[39m
+ [90m 4 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m'../ui/button'[39m[33m;[39m[0m
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Route:
+    ./src/components/sections/retailer-contact.tsx
+    ./pages/api/health/storage.ts
+
+  Server Component:
+    ./src/components/sections/retailer-contact.tsx
+    ./app/retailers/page.tsx
+
+
+./src/components/sections/retailer-contact.tsx:1:10
+Ecmascript file had an error
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { useState[33m,[39m useEffect[33m,[39m useCallback[33m,[39m useMemo } [36mfrom[39m [32m'react'[39m[33m;[39m
+ [90m   |[39m          [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 2 |[39m [36mimport[39m [33m*[39m [36mas[39m [33mSentry[39m [36mfrom[39m [32m'@sentry/nextjs'[39m[33m;[39m
+ [90m 3 |[39m [36mimport[39m { [33mContainer[39m } [36mfrom[39m [32m'../ui/container'[39m[33m;[39m
+ [90m 4 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m'../ui/button'[39m[33m;[39m[0m
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Route:
+    ./src/components/sections/retailer-contact.tsx
+    ./pages/api/health/storage.ts
+
+  Server Component:
+    ./src/components/sections/retailer-contact.tsx
+    ./app/retailers/page.tsx
+
+
+./src/components/sections/veterinarian-contact.tsx:5:10
+Ecmascript file had an error
+[0m [90m 3 |[39m [36mimport[39m { useTranslation } [36mfrom[39m [32m'../../lib/translation-context'[39m[33m;[39m
+ [90m 4 |[39m [36mimport[39m { [33mCONTACT_INFO[39m } [36mfrom[39m [32m'../../lib/constants'[39m[33m;[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { useState } [36mfrom[39m [32m'react'[39m[33m;[39m
+ [90m   |[39m          [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m
+ [90m 7 |[39m [36mexport[39m [36mfunction[39m [33mVeterinarianContact[39m() {
+ [90m 8 |[39m   [36mconst[39m { t } [33m=[39m useTranslation()[33m;[39m[0m
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import traces:
+  Route:
+    ./src/components/sections/veterinarian-contact.tsx
+    ./pages/api/health/storage.ts
+
+  Server Component:
+    ./src/components/sections/veterinarian-contact.tsx
+    ./app/veterinarians/page.tsx
+
+
+    at <unknown> (./app/affiliate/activate/page.tsx:10:14)
+    at <unknown> (./app/affiliate/dashboard/assets/page.tsx:18:14)
+    at <unknown> (./app/affiliate/dashboard/links/page.tsx:11:14)
+    at <unknown> (./app/affiliate/dashboard/page.tsx:27:14)
+    at <unknown> (./app/affiliate/dashboard/payouts/page.tsx:20:14)
+    at <unknown> (./app/affiliate/dashboard/settings/page.tsx:19:14)
+    at <unknown> (./app/affiliate/dashboard/stats/page.tsx:18:14)
+    at <unknown> (./app/affiliate/login/page.tsx:10:14)
+    at <unknown> (./app/affiliate/page.tsx:22:14)
+    at <unknown> (./app/affiliate/signup/page.tsx:10:14)
+    at <unknown> (./app/offline/page.tsx:10:14)
+    at <unknown> (./app/viral/page.tsx:14:14)
+    at <unknown> (./src/components/sections/locations/CityLeadCaptureCTA.tsx:1:23)
+    at <unknown> (./src/components/sections/locations/LocalShippingUrgency.tsx:8:10)
+    at <unknown> (./src/components/sections/locations/LocalShippingUrgency.tsx:8:21)
+    at <unknown> (./src/components/sections/locations/createCityPage.tsx:4:10)
+    at <unknown> (./src/components/sections/locations/createCityPage.tsx:4:30)
+    at <unknown> (./src/components/sections/retailer-contact.tsx:1:20)
+    at <unknown> (./src/components/sections/retailer-contact.tsx:1:10)
+    at <unknown> (./src/components/sections/veterinarian-contact.tsx:5:10)

@@ -7,10 +7,10 @@ import { RelatedContent } from '@/components/seo/RelatedContent';
 import { Check, X, Sparkles, TrendingDown, Clock, DollarSign } from 'lucide-react';
 
 // Optimized images
-const heroImage = '/optimized/activated-carbon-granules.webp';
-const testingImage = '/optimized/multi-cat-household.webp';
-const scienceImage = '/optimized/carbon_magnified_image.webp';
-const resultsImage = '/optimized/happy-owner.webp';
+const heroImage = '/optimized/powder_vs_spray_hero_v2.webp';
+const testingImage = '/optimized/powder_vs_spray_testing_v2.webp';
+const scienceImage = '/optimized/powder_vs_spray_science_v2.webp';
+const resultsImage = '/optimized/powder_vs_spray_results.webp';
 
 export default function PowderVsSprayLitterDeodorizer() {
     return (

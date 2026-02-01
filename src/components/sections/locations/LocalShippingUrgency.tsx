@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * Local Shipping Urgency Component
  * Displays time-sensitive shipping information for location pages

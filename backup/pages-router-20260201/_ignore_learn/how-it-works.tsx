@@ -1,0 +1,374 @@
+import { NextSeo } from 'next-seo';
+import { Container } from '../../src/components/ui/container';
+import { Button } from '../../src/components/ui/button';
+import { useTranslation } from '../../src/lib/translation-context';
+import { useCurrency } from '../../src/lib/currency-context';
+import { SITE_NAME } from '../../src/lib/constants';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowLeft, Microscope, Zap, Shield, Leaf, ChevronRight, Home } from 'lucide-react';
+import { RelatedContent } from '@/components/seo/RelatedContent';
+import { formatProductPrice } from '../../src/lib/pricing';
+import { getPaymentLink } from '../../src/lib/payment-links';
+import { generateJSONLD } from '../../src/lib/seo-utils';
+import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
+
+export default function HowItWorksPage() {
+  const { t, locale } = useTranslation();
+  const { currency } = useCurrency();
+  const trialPrice = formatProductPrice('trial', currency, locale);
+  const trialCheckoutUrl = getPaymentLink('trialSingle') || '/products/trial-size';
+  const trialSizeCtaLabel =
+    locale === 'fr'
+      ? `Envoyer Mon Essai GRATUIT - ${trialPrice}`
+      : locale === 'zh'
+        ? `发送我的免费试用 - ${trialPrice}`
+        : `Send My FREE Trial - ${trialPrice}`;
+
+  const pageTitle = `How Purrify Works - ${SITE_NAME} Activated Carbon Science`;
+  const pageDescription = "Discover the science behind Purrify's activated carbon technology. Learn how micropores trap odor molecules at the source for superior cat litter odor control.";
+
+  // Use enhanced SEO hook for automated optimization
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/learn/how-it-works',
+    title: pageTitle,
+    description: pageDescription,
+    targetKeyword: 'how activated carbon works',
+    schemaType: 'article',
+    schemaData: {
+      headline: pageTitle,
+      description: pageDescription,
+      datePublished: '2024-01-20T10:00:00Z',
+      dateModified: new Date().toISOString(),
+      image: 'https://www.purrify.ca/optimized/micropores_magnified_view.webp',
+    },
+    image: 'https://www.purrify.ca/optimized/micropores_magnified_view.webp',
+    keywords: ['how activated carbon works', 'cat litter odor control', 'activated carbon science', 'molecular adsorption', 'pet odor elimination'],
+  });
+
+  const sciencePoints = [
+    {
+      icon: Microscope,
+      title: "Activated Carbon Structure",
+      description: "Our activated carbon contains millions of microscopic pores that create an enormous surface area - up to 1,500 square meters per gram.",
+      detail: "These pores are specifically sized to trap odor molecules while allowing air to flow freely through your cat's litter box."
+    },
+    {
+      icon: Zap,
+      title: "Molecular Adsorption",
+      description: "Odor molecules are physically trapped within the carbon's pore structure through a process called adsorption.",
+      detail: "Unlike air fresheners that mask odors, Purrify actually captures and holds odor molecules, preventing them from reaching your nose."
+    },
+    {
+      icon: Shield,
+      title: "Long-Lasting Protection",
+      description: "Once trapped, odor molecules remain locked in the carbon structure until the litter is changed.",
+      detail: "This provides continuous odor control without the need for frequent reapplication or chemical additives."
+    },
+    {
+      icon: Leaf,
+      title: "Natural & Fragrance-Free",
+      description: "Made from coconut shells, our activated carbon is the same type used in household water and air filters.",
+      detail: "No added fragrances or dyes — just pure activated carbon doing the work."
+    }
+  ];
+
+  const steps = [
+    {
+      number: "1",
+      title: "Sprinkle Purrify",
+      description: "Add a thin layer of Purrify on top of fresh or existing litter",
+      image: "/optimized/step-1-sprinkle.webp",
+      tip: "A little goes a long way - just 1-2 teaspoons per litter box change"
+    },
+    {
+      number: "2",
+      title: "Mix Gently",
+      description: "Lightly mix Purrify into the top layer of litter",
+      image: "/optimized/step-2-mix.webp",
+      tip: "No need to completely blend - surface coverage is most effective"
+    },
+    {
+      number: "3",
+      title: "Enjoy Freshness",
+      description: "Experience immediate and long-lasting odor control",
+      image: "/optimized/step-3-enjoy.webp",
+      tip: "Reapply when adding fresh litter or doing a complete change"
+    }
+  ];
+
+  const faqs = [
+    {
+      question: "How quickly does Purrify start working?",
+      answer: "Purrify begins trapping odor molecules immediately upon contact. Most customers notice a significant reduction in odors within the first few hours of application."
+    },
+    {
+      question: "What if my cat ingests some activated carbon?",
+      answer: "Activated carbon used in household filtration is biologically inert. Purrify is designed to stay in the litter; monitor your cat as usual and consult your veterinarian if you have concerns."
+    },
+    {
+      question: "How does this compare to baking soda?",
+      answer: "While baking soda neutralizes acids, activated carbon physically traps a much wider range of odor molecules. Carbon is more effective and longer-lasting than baking soda."
+    },
+    {
+      question: "Will this affect my cat's litter box habits?",
+      answer: "No, Purrify is odorless and doesn't change the texture or feel of your cat's litter. Most cats don't even notice it's there."
+    }
+  ];
+
+  return (
+    <>
+      <NextSeo {...nextSeoProps} />
+
+      {/* Auto-generated Article Schema */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={generateJSONLD(schema)}
+        />
+      )}
+
+      <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
+        {/* Breadcrumb Navigation */}
+        <section className="py-4 border-b border-gray-200 dark:border-gray-800">
+          <Container>
+            <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
+              <Link
+                href={locale === 'fr' ? '/fr' : '/'}
+                className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+              >
+                <Home className="w-4 h-4" />
+              </Link>
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span className="font-medium text-gray-900 dark:text-gray-100">
+                      {item.name}
+                    </span>
+                  ) : (
+                    <Link
+                      href={item.path}
+                      className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </span>
+              ))}
+            </nav>
+          </Container>
+        </section>
+
+        {/* Hero Section */}
+        <section className="py-16">
+          <Container>
+            <div className="text-center max-w-4xl mx-auto">
+              <h1 className="font-heading text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] dark:from-[#FF5050] dark:to-[#3694FF] bg-clip-text text-transparent">
+                The Science Behind Purrify
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                Discover how activated carbon technology eliminates odors at the molecular level,
+                providing superior odor control for your cat's litter box.
+              </p>
+              <div className="relative max-w-2xl mx-auto">
+                <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
+                <div className="relative">
+                  <Image
+                    src="/optimized/micropores-magnified.webp"
+                    alt="Activated Carbon Micropores Under Magnification"
+                    width={600}
+                    height={400}
+                    sizes="(max-width: 768px) 100vw, 600px"
+                    className="w-full h-auto rounded-2xl shadow-2xl"
+                  />
+                  <div className="absolute bottom-4 left-4 bg-black/70 text-white dark:text-gray-100 px-3 py-1 rounded-lg text-sm">
+                    Micropores magnified 1000x
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Science Explanation */}
+        <section className="py-16 bg-white dark:bg-gray-800/50">
+          <Container>
+            <div className="text-center mb-16">
+              <h2 className="font-heading text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+                How Activated Carbon Works
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                Understanding the molecular science that makes Purrify so effective
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              {sciencePoints.map((point, index) => (
+                <div key={index} className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-xl flex items-center justify-center">
+                        <point.icon className="w-6 h-6 text-white dark:text-gray-100" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-100">
+                        {point.title}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                        {point.description}
+                      </p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                        {point.detail}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
+
+        {/* Step-by-Step Usage */}
+        <section className="py-16">
+          <Container>
+            <div className="text-center mb-16">
+              <h2 className="font-heading text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+                How to Use Purrify
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Simple steps for maximum odor control effectiveness
+              </p>
+            </div>
+
+            <div className="space-y-16">
+              {steps.map((step, index) => (
+                <div key={index} className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
+                  <div className={`space-y-6 ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
+                    <div className="flex items-center space-x-4">
+                      <div className="w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full flex items-center justify-center">
+                        <span className="text-white dark:text-gray-100 font-bold text-2xl">{step.number}</span>
+                      </div>
+                      <h3 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100">
+                        {step.title}
+                      </h3>
+                    </div>
+                    <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+                      {step.description}
+                    </p>
+                    <div className="bg-[#E0EFC7]/50 dark:bg-gray-700/50 p-4 rounded-xl">
+                      <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                        💡 <strong>Pro Tip:</strong> {step.tip}
+                      </p>
+                    </div>
+                  </div>
+                  <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
+                    <div className="relative">
+                      <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
+                      <div className="relative">
+                        <Image
+                          src={step.image}
+                          alt={step.title}
+                          width={500}
+                          height={400}
+                          className="w-full h-auto rounded-2xl shadow-2xl"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-white dark:bg-gray-800/50">
+          <Container>
+            <div className="text-center mb-16">
+              <h2 className="font-heading text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+                Common Questions
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300">
+                Everything you need to know about activated carbon technology
+              </p>
+            </div>
+
+            <div className="max-w-4xl mx-auto space-y-6">
+              {faqs.map((faq, index) => (
+                <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+                  <h3 className="font-heading text-lg font-bold mb-3 text-gray-900 dark:text-gray-100">
+                    {faq.question}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center mt-12">
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                Have more questions about how Purrify works?
+              </p>
+              <Link href={`${locale !== 'en' ? `/${locale}` : ''}/contact`}>
+                <Button size="lg" variant="outline">
+                  Contact Our Experts
+                </Button>
+              </Link>
+            </div>
+          </Container>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-16">
+          <Container>
+            <div className="bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] dark:from-[#3694FF] dark:to-[#FF5050] rounded-3xl p-12 text-center text-white dark:text-gray-100">
+              <h2 className="font-heading text-4xl font-bold mb-4">
+                Ready to Experience the Science?
+              </h2>
+              <p className="text-xl mb-8 opacity-90">
+                Try Purrify's activated carbon technology risk-free with our trial size
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href={trialCheckoutUrl} target="_blank" rel="noopener noreferrer">
+                  <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
+                    {trialSizeCtaLabel}
+                    <ChevronRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </a>
+                <Link href={`${locale !== 'en' ? `/${locale}` : ''}/#products`}>
+                  <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
+                    View All Products
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Back Navigation */}
+        <section className="py-8">
+          <Container>
+            <div className="text-center">
+              <Link href={`${locale !== 'en' ? `/${locale}` : ''}/#how-it-works`}>
+                <Button variant="outline" size="lg">
+                  <ArrowLeft className="w-5 h-5 mr-2" />
+                  Back to Homepage
+                </Button>
+              </Link>
+            </div>
+          </Container>
+        </section>
+
+        {/* Related Articles */}
+        <section className="py-16 border-t border-gray-200 dark:border-gray-800">
+          <Container>
+            <RelatedContent currentUrl="/learn/how-it-works" />
+          </Container>
+        </section>
+      </main>
+    </>
+  );
+}

@@ -23,6 +23,7 @@ import {
   Users,
 } from 'lucide-react';
 import { RelatedContent } from '@/components/seo/RelatedContent';
+import { ProductsHero } from '@/components/products/ProductsHero';
 import { EnhancedProductComparison } from '@/components/sections/enhanced-product-comparison';
 import { buildAvailabilityUrl, getPriceValidityDate, generateWebsiteSchema } from '../../src/lib/seo-utils';
 import { useEnhancedSEO } from '../../src/hooks/useEnhancedSEO';
@@ -418,28 +419,7 @@ const ProductsPage: NextPage = () => {
         )}
 
         {/* Hero Section - Hook with Problem + Promise */}
-        <section className="py-16 bg-gradient-to-br from-brand-purple to-brand-red">
-          <Container>
-            <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
-              <Package className="w-16 h-16 mx-auto mb-6 opacity-90" />
-              <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">
-                {locale === 'fr'
-                  ? "Vos chats sont parfaits. L'odeur? Pas tellement."
-                  : "Your Cats Are Perfect. The Smell? Not So Much."}
-              </h1>
-              <p className="text-xl md:text-2xl mb-4 opacity-90">
-                {locale === 'fr'
-                  ? "Le même charbon actif qui rend l'eau potable capture maintenant l'ammoniac de la litière. Pas de parfums. Pas de camouflage. Juste... de l'air frais."
-                  : "The same activated carbon that makes drinking water clean now traps litter box ammonia at the molecular level. No perfumes. No cover-ups. Just... air."}
-              </p>
-              <p className="text-lg opacity-80 italic">
-                {locale === 'fr'
-                  ? "Mais ne nous croyez pas sur parole..."
-                  : "But don't take our word for it..."}
-              </p>
-            </div>
-          </Container>
-        </section>
+        <ProductsHero />
 
         {/* Social Proof FIRST - The "Don't take our word for it" payoff */}
         <section className="py-12 bg-white dark:bg-gray-800">

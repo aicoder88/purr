@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import * as Sentry from '@sentry/nextjs';
 import { Container } from '../ui/container';
@@ -307,7 +309,7 @@ export function RetailerContact() {
             </h2>
             <p className="text-2xl text-gray-700 dark:text-gray-200 mb-8">
               {success?.welcome || 'Welcome to the'} <strong className="text-[#5B2EFF] dark:text-[#3694FF]">Purrify Partner Network!</strong>
-              <br/>{success?.responseTime || 'We will get back to you within 72 hours.'}
+              <br />{success?.responseTime || 'We will get back to you within 72 hours.'}
             </p>
 
             <div className="bg-gradient-to-r from-[#5B2EFF]/10 to-[#3694FF]/10 dark:from-[#3694FF]/20 dark:to-[#5B2EFF]/20 rounded-2xl p-8 border-2 border-[#5B2EFF]/20 dark:border-[#3694FF]/30">
@@ -385,7 +387,7 @@ export function RetailerContact() {
             </h2>
             <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 max-w-4xl mx-auto mb-8">
               {contact?.sectionDescription || 'Ready to earn'} <strong className="text-[#5B2EFF] dark:text-[#3694FF]">50%+</strong>
-              <br/>{contact?.setupNote || 'Setup takes less than 24 hours.'}
+              <br />{contact?.setupNote || 'Setup takes less than 24 hours.'}
             </p>
 
             {/* Urgency & Social Proof */}
@@ -570,11 +572,10 @@ export function RetailerContact() {
 
                 {submitStatus.message && !isSubmitted && (
                   <div
-                    className={`rounded-lg p-4 ${
-                      submitStatus.success
+                    className={`rounded-lg p-4 ${submitStatus.success
                         ? 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-400'
                         : 'bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-400'
-                    }`}
+                      }`}
                     role="alert"
                     aria-live="polite"
                   >
