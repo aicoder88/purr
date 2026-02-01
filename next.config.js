@@ -7,6 +7,8 @@ const withBundleAnalyzer =
 
 const withNextIntl = require("next-intl/plugin")();
 
+// Existing configuration...
+
 /**
  * Image Optimization
  *
@@ -836,29 +838,8 @@ const OPTIMIZE_PACKAGE_IMPORTS = [
 const nextConfig = {
   reactStrictMode: true,
   output: "standalone",
-  outputFileTracingRoot: __dirname,
-  outputFileTracingExcludes: {
-    "*": [
-      "node_modules/@next/swc-linux-x64-gnu",
-      "node_modules/@next/swc-linux-x64-musl",
-      "node_modules/@swc/core-linux-x64-gnu",
-      "node_modules/@swc/core-linux-x64-musl",
-      "./public_backup/**/*",
-      "./e2e/**/*",
-      "./docs/**/*",
-      "./scripts/**/*",
-      "./test-results/**/*",
-      "./audit_results/**/*",
-      "./reports/**/*",
-      "./dev/**/*",
-      "./__mocks__/**/*",
-      "./*.md",
-      "./*.py",
-      "./*.js.map",
-      "./*.json",
-    ],
-    "/api/health/storage": ["./public/**/*"],
-  },
+  // outputFileTracingRoot removed to avoid Vercel deployment issues
+  // complex excludes removed to rely on Next.js defaults
   outputFileTracingIncludes: {
     "/admin/*": ["./content/blog/**/*"],
     "/api/admin/*": ["./content/blog/**/*"],
@@ -898,12 +879,11 @@ const nextConfig = {
     // Next.js 15 performance enhancements
     webpackBuildWorker: true,
     optimizeServerReact: true,
-    parallelServerCompiles: true,
-    parallelServerBuildTraces: true,
   },
   serverExternalPackages: ["sharp", "@anthropic-ai/sdk", "openai", "cheerio", "bcryptjs", "@prisma/client", "next-seo"],
   staticPageGenerationTimeout: 120,
   turbopack: {
+    root: process.cwd(),
     rules: {
       "*.svg": {
         loaders: ["@svgr/webpack"],
