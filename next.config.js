@@ -847,11 +847,6 @@ const nextConfig = {
     "/blog": ["./content/blog/**/*"],
     "/blog/*": ["./content/blog/**/*"],
     "/blog/tag/*": ["./content/blog/**/*"],
-    "/api/auth/*": ["./node_modules/@prisma/client/**/*", "./node_modules/next-seo/**/*"],
-    "/api/retailer/*": ["./node_modules/@prisma/client/**/*", "./node_modules/bcryptjs/**/*"],
-    "/api/affiliate/*": ["./node_modules/@prisma/client/**/*", "./node_modules/bcryptjs/**/*"],
-    "/retailers": ["./node_modules/next-seo/**/*"],
-    "/locations/*": ["./node_modules/next-seo/**/*"],
   },
 
 
