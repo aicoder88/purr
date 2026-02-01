@@ -120,22 +120,21 @@ export default function ContactForm({ translations, locale }: ContactFormProps) 
     <>
       {submitStatus.message && (
         <div
-          className={`mb-8 p-6 rounded-2xl flex items-center text-lg font-semibold ${
-            submitStatus.success
+          className={`mb-8 p-6 rounded-2xl flex items-center text-lg font-semibold ${submitStatus.success
               ? 'bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 text-green-700 dark:text-green-300 border-2 border-green-300 dark:border-green-700'
               : 'bg-gradient-to-r from-red-100 to-pink-100 dark:from-red-900/30 dark:to-pink-900/30 text-red-700 dark:text-red-300 border-2 border-red-300 dark:border-red-700'
-          }`}
+            }`}
         >
           {submitStatus.success && <CheckCircle className="w-6 h-6 mr-3" />}
           {submitStatus.message}
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-8">
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label htmlFor="name" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
-              {translations.fullName || 'Full Name'} *
+          <div className="space-y-2">
+            <label htmlFor="name" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              {translations.fullName || 'Full Name'} <span className="text-purple-600 dark:text-purple-400">*</span>
             </label>
             <Input
               id="name"
@@ -147,15 +146,15 @@ export default function ContactForm({ translations, locale }: ContactFormProps) 
               value={formData.name}
               onChange={handleInputChange}
               placeholder={locale === 'es' ? 'Tu nombre completo' : locale === 'fr' ? 'Votre nom complet' : 'Your full name'}
-              className="w-full bg-gray-50 dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 focus:border-purple-500 dark:focus:border-purple-500 text-gray-900 dark:text-gray-100 rounded-xl py-3 px-4 text-lg transition-all"
+              className="h-12 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 focus:border-purple-500 dark:focus:border-purple-500 focus:ring-purple-500/20"
             />
-            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+            <p className="text-[10px] text-gray-400 dark:text-gray-500">
               {locale === 'es' ? '2-50 caracteres' : locale === 'fr' ? '2-50 caractères' : '2-50 characters'}
             </p>
           </div>
-          <div>
-            <label htmlFor="email" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
-              {translations.emailAddress || 'Email Address'} *
+          <div className="space-y-2">
+            <label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              {translations.emailAddress || 'Email Address'} <span className="text-purple-600 dark:text-purple-400">*</span>
             </label>
             <Input
               id="email"
@@ -165,14 +164,14 @@ export default function ContactForm({ translations, locale }: ContactFormProps) 
               value={formData.email}
               onChange={handleInputChange}
               placeholder="your.email@example.com"
-              className="w-full bg-gray-50 dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 focus:border-purple-500 dark:focus:border-purple-500 text-gray-900 dark:text-gray-100 rounded-xl py-3 px-4 text-lg transition-all"
+              className="h-12 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 focus:border-purple-500 dark:focus:border-purple-500 focus:ring-purple-500/20"
             />
           </div>
         </div>
 
-        <div>
-          <label htmlFor="subject" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
-            {translations.subject || 'Subject'} *
+        <div className="space-y-2">
+          <label htmlFor="subject" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            {translations.subject || 'Subject'} <span className="text-purple-600 dark:text-purple-400">*</span>
           </label>
           <Input
             id="subject"
@@ -183,16 +182,16 @@ export default function ContactForm({ translations, locale }: ContactFormProps) 
             value={formData.subject}
             onChange={handleInputChange}
             placeholder={translations.subjectPlaceholder || 'How can we help?'}
-            className="w-full bg-gray-50 dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 focus:border-purple-500 dark:focus:border-purple-500 text-gray-900 dark:text-gray-100 rounded-xl py-3 px-4 text-lg transition-all"
+            className="h-12 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 focus:border-purple-500 dark:focus:border-purple-500 focus:ring-purple-500/20"
           />
-          <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+          <p className="text-[10px] text-gray-400 dark:text-gray-500">
             {locale === 'es' ? 'Al menos 3 caracteres' : locale === 'fr' ? 'Au moins 3 caractères' : 'At least 3 characters'}
           </p>
         </div>
 
-        <div>
-          <label htmlFor="message" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
-            {translations.message || 'Message'} *
+        <div className="space-y-2">
+          <label htmlFor="message" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            {translations.message || 'Message'} <span className="text-purple-600 dark:text-purple-400">*</span>
           </label>
           <Textarea
             id="message"
@@ -204,15 +203,10 @@ export default function ContactForm({ translations, locale }: ContactFormProps) 
             onChange={handleInputChange}
             placeholder={translations.messagePlaceholder || 'Tell us more about your question...'}
             rows={6}
-            className="w-full bg-gray-50 dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 focus:border-purple-500 dark:focus:border-purple-500 text-gray-900 dark:text-gray-100 rounded-xl py-3 px-4 text-lg transition-all resize-none"
+            className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 focus:border-purple-500 dark:focus:border-purple-500 focus:ring-purple-500/20 resize-none"
           />
-          <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-            {formData.message.length}/900{' '}
-            {locale === 'es'
-              ? 'caracteres (mínimo 10)'
-              : locale === 'fr'
-                ? 'caractères (minimum 10)'
-                : 'characters (minimum 10)'}
+          <p className="text-[10px] text-gray-400 dark:text-gray-500 text-right">
+            {formData.message.length}/900
           </p>
         </div>
 
@@ -220,16 +214,16 @@ export default function ContactForm({ translations, locale }: ContactFormProps) 
           type="submit"
           size="lg"
           disabled={isSubmitting}
-          className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white dark:text-gray-100 font-black text-xl py-7 rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300"
+          className="w-full h-14 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold text-lg rounded-xl shadow-lg hover:shadow-purple-500/25 transition-all duration-300"
         >
           {isSubmitting ? (
             <>
-              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white dark:border-gray-100 mr-3"></div>
+              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
               {translations.sendingMessage || 'Sending...'}
             </>
           ) : (
             <>
-              <Send className="w-6 h-6 mr-3" />
+              <Send className="w-5 h-5 mr-3" />
               {translations.sendMessage || 'Send Message'}
             </>
           )}

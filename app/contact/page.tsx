@@ -15,6 +15,7 @@ import {
   Home,
   ChevronRight,
   CheckCircle,
+  HelpCircle,
 } from 'lucide-react';
 import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
@@ -193,60 +194,53 @@ export default function ContactPage() {
           </Container>
         </section>
 
-        {/* Hero Section - Enhanced */}
-        <section className="py-20 relative overflow-hidden">
-          {/* Animated background elements */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-purple-300/30 dark:bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-300/30 dark:bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        {/* Hero Section - Refined */}
+        <section className="pt-24 pb-20 relative overflow-hidden">
+          {/* Enhanced background elements */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute -top-24 -left-24 w-96 h-96 bg-purple-200/40 dark:bg-purple-600/10 rounded-full blur-[100px]" />
+            <div className="absolute top-1/2 -right-24 w-80 h-80 bg-pink-200/30 dark:bg-pink-600/5 rounded-full blur-[80px]" />
+            <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-orange-100/20 dark:bg-orange-600/5 rounded-full blur-[120px]" />
           </div>
 
-          <Container>
-            <div className="text-center max-w-4xl mx-auto relative z-10">
-              <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/40 dark:to-pink-900/40 rounded-full mb-8 border border-purple-200 dark:border-purple-800 shadow-lg">
-                <MessageCircle className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                <span className="text-purple-700 dark:text-purple-300 font-semibold">24/7 Support Available</span>
+          <Container className="relative">
+            <div className="max-w-3xl mx-auto text-center">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-purple-100 dark:border-purple-800/50 shadow-sm animate-fade-in">
+                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                <span className="text-xs font-bold uppercase tracking-wider text-gray-600 dark:text-gray-400">
+                  {translations.contactMethods[2]?.responseTime || 'Quick Response Time'}
+                </span>
               </div>
 
-              <h1 className="font-heading text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent leading-tight">
-                {translations.title} 🐱
+              <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight text-gray-900 dark:text-white leading-[1.1]">
+                {translations.title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400">Support</span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed font-medium">
+              <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-10 leading-relaxed max-w-2xl mx-auto">
                 {translations.subtitle}
               </p>
 
-              <div className="flex flex-wrap justify-center gap-4 text-sm">
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-md">
-                  <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400" />
-                  <span className="text-gray-700 dark:text-gray-300">Fast Response</span>
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-md">
-                  <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400" />
-                  <span className="text-gray-700 dark:text-gray-300">Expert Advice</span>
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-md">
-                  <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400" />
-                  <span className="text-gray-700 dark:text-gray-300">Friendly Team</span>
-                </div>
+              <div className="flex flex-wrap justify-center gap-6">
+                {['Fast Support', 'Expert Team', 'Pet Friendly'].map((feature) => (
+                  <div key={feature} className="flex items-center gap-2 text-sm font-semibold text-gray-500 dark:text-gray-400">
+                    <CheckCircle className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                    {feature}
+                  </div>
+                ))}
               </div>
             </div>
           </Container>
         </section>
 
-        {/* Contact Methods - Redesigned */}
-        <section className="py-20 relative">
+        {/* Contact Methods */}
+        <section className="py-24">
           <Container>
-            <div className="text-center mb-16">
-              <h2 className="font-heading text-4xl md:text-5xl font-black mb-6 text-gray-900 dark:text-white">
-                {translations.chooseContactMethod}{' '}
-                <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
-                  Preferred Way
-                </span>{' '}
-                to Connect
+            <div className="text-center mb-20">
+              <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-6">
+                Choose How to <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400">Connect</span>
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                We&apos;re available through multiple channels to make it easy for you!
+              <p className="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
+                Pick your preferred method of communication and our team will be ready to help.
               </p>
             </div>
 
@@ -268,69 +262,72 @@ export default function ContactPage() {
           </Container>
         </section>
 
-        {/* Contact Form - Enhanced */}
-        <section className="py-20 relative overflow-hidden">
-          {/* Background decoration */}
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-100/50 via-pink-100/50 to-orange-100/50 dark:from-purple-900/20 dark:via-pink-900/20 dark:to-orange-900/20"></div>
-
+        {/* Contact Form */}
+        <section className="py-24 relative overflow-hidden bg-gray-50/50 dark:bg-gray-900/30">
           <Container>
-            <div className="max-w-4xl mx-auto relative z-10">
-              <div className="text-center mb-12">
-                <h2 className="font-heading text-4xl md:text-5xl font-black mb-4 text-gray-900 dark:text-white">
-                  Send Us a{' '}
-                  <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
-                    Message
-                  </span>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+              <div>
+                <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-6">
+                  Still Haven&apos;t Found what you&apos;re <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400">Looking For?</span>
                 </h2>
-                <p className="text-xl text-gray-600 dark:text-gray-400">
-                  Fill out the form below and we&apos;ll get back to you within 24 hours ⏰
+                <p className="text-lg text-gray-600 dark:text-gray-400 mb-10 leading-relaxed">
+                  Fill out our contact form and one of our experts will get back to you within 24 hours. We love hearing from cat parents!
                 </p>
+                <div className="space-y-6">
+                  {[
+                    { icon: HelpCircle, title: 'In-depth Answers', desc: 'Detailed responses to your technical questions.' },
+                    { icon: MessageCircle, title: 'Direct Access', desc: 'Every message is read by a real human expert.' },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-4">
+                      <div className="p-2.5 rounded-xl bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400">
+                        <item.icon className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-gray-900 dark:text-white">{item.title}</h4>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 p-10 rounded-3xl shadow-2xl border-2 border-purple-200 dark:border-purple-800">
+              <div className="bg-white dark:bg-gray-800 p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-gray-100 dark:border-gray-700/50">
                 <ContactForm translations={translations.form} locale="en" />
               </div>
             </div>
           </Container>
         </section>
 
-        {/* FAQ Section - Enhanced */}
-        <section className="py-20">
+        {/* FAQ Section */}
+        <section className="py-24">
           <Container>
             <div className="text-center mb-16">
-              <h2 className="font-heading text-4xl md:text-5xl font-black mb-4 text-gray-900 dark:text-white">
-                {translations.frequentlyAskedQuestions}{' '}
-                <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
-                  Questions
-                </span>
+              <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-6">
+                Common <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400">Questions</span>
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400">{translations.quickAnswersCommon} 💡</p>
+              <p className="text-gray-500 dark:text-gray-400">{translations.quickAnswersCommon}</p>
             </div>
 
-            <div className="max-w-4xl mx-auto space-y-6">
+            <div className="max-w-3xl mx-auto grid gap-4">
               {translations.faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className="group bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-purple-300 dark:hover:border-purple-600 transform hover:-translate-y-1"
+                  className="bg-white/50 dark:bg-gray-800/30 backdrop-blur-sm p-6 rounded-2xl border border-gray-100 dark:border-gray-700/50 hover:border-purple-200 dark:hover:border-purple-800 transition-colors"
                 >
-                  <h3 className="font-heading text-xl font-black mb-4 text-gray-900 dark:text-white flex items-start">
-                    <span className="text-purple-600 dark:text-purple-400 mr-3 text-2xl">Q:</span>
+                  <h3 className="font-bold text-gray-900 dark:text-white mb-3 text-lg flex gap-3">
+                    <span className="text-purple-600 dark:text-purple-400 font-black">?</span>
                     {faq.question}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed pl-8 text-lg">{faq.answer}</p>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed pl-6">{faq.answer}</p>
                 </div>
               ))}
             </div>
 
-            <div className="text-center mt-16">
-              <p className="text-gray-600 dark:text-gray-400 mb-6 text-lg font-semibold">
-                {translations.dontSeeQuestion}
-              </p>
+            <div className="text-center mt-12">
               <Link href="/#faq">
                 <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white dark:border-purple-400 dark:text-purple-400 dark:hover:bg-purple-600 font-bold text-lg px-8 py-6 rounded-xl transition-all duration-300"
+                  variant="ghost"
+                  className="text-purple-600 dark:text-purple-400 hover:text-purple-700 hover:bg-purple-50 dark:hover:bg-purple-900/20 font-bold"
                 >
                   {translations.viewCompleteFAQ} →
                 </Button>
@@ -339,326 +336,147 @@ export default function ContactPage() {
           </Container>
         </section>
 
-        {/* Phone Messaging Section */}
-        <section className="py-16 bg-gradient-to-r from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-[#FF3131]/5 dark:to-[#5B2EFF]/5">
-          <Container>
+        {/* Phone Support Section */}
+        <section className="py-24 bg-gray-900 text-white dark:bg-black overflow-hidden relative">
+          <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500 rounded-full blur-[140px]" />
+          </div>
+
+          <Container className="relative">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="font-heading text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-                {PHONE_MESSAGING.headline}
+              <h2 className="text-3xl font-black mb-8">
+                Prefer to <span className="text-purple-400 dark:text-purple-400">Talk?</span>
               </h2>
-              <p className="text-xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-4">{PHONE_MESSAGING.callout}</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 italic">
-                Or use our secret code: {PHONE_NUMBER.tagline}
-              </p>
-              <p className="text-base text-gray-700 dark:text-gray-200 mb-4 leading-relaxed">
-                {PHONE_NUMBER.description}
-              </p>
-              <p className="text-base text-gray-700 dark:text-gray-200 mb-6 leading-relaxed">
+              <div className="mb-10">
+                <p className="text-4xl md:text-5xl font-black mb-4 transition-transform hover:scale-105 inline-block">
+                  <a href={CONTACT_INFO.phoneHref} className="hover:text-purple-400 dark:hover:text-purple-400 transition-colors">
+                    {PHONE_MESSAGING.callout}
+                  </a>
+                </p>
+                <p className="text-purple-400 dark:text-purple-400 font-bold uppercase tracking-widest text-sm">
+                  Available Mon-Fri 9AM-5PM EST
+                </p>
+              </div>
+              <p className="text-gray-400 dark:text-gray-500 text-lg leading-relaxed mb-10">
                 {PHONE_MESSAGING.explanation}
               </p>
-              <p className="text-base font-semibold text-gray-900 dark:text-gray-100 italic whitespace-pre-line">
-                {PHONE_MESSAGING.cta}
-              </p>
+              <div className="p-6 rounded-2xl bg-white/5 border border-white/10 text-sm font-medium italic text-gray-300 dark:text-gray-400">
+                &ldquo;{PHONE_MESSAGING.cta}&rdquo;
+              </div>
             </div>
           </Container>
         </section>
 
-        {/* Business Hours & Location */}
-        <section className="py-16">
+        {/* Info Grid: Hours & Location */}
+        <section className="py-24 bg-white dark:bg-gray-950">
           <Container>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <div className="text-center md:text-left">
-                <h2 className="font-heading text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
-                  {translations.businessHours.title}
-                </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
+              <div className="p-8 md:p-12 rounded-[2.5rem] bg-gray-50 dark:bg-gray-900/50 border border-gray-100 dark:border-gray-800">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="p-3 rounded-2xl bg-white dark:bg-gray-800 shadow-sm">
+                    <Clock className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+                  </div>
+                  <h3 className="text-2xl font-black text-gray-900 dark:text-white">{translations.businessHours.title}</h3>
+                </div>
                 <div className="space-y-4">
-                  <div className="flex items-center justify-center md:justify-start">
-                    <Clock className="w-5 h-5 text-[#FF3131] mr-3" />
-                    <div>
-                      <p className="font-semibold text-gray-900 dark:text-gray-100">
-                        {translations.businessHours.weekdays}
-                      </p>
+                  {[
+                    { label: 'Weekdays', val: translations.businessHours.weekdays },
+                    { label: 'Saturday', val: translations.businessHours.saturday },
+                    { label: 'Sunday', val: translations.businessHours.sunday },
+                  ].map((item, i) => (
+                    <div key={i} className="flex justify-between items-center py-3 border-b border-gray-100 dark:border-gray-800 last:border-0">
+                      <span className="text-gray-500 dark:text-gray-400 font-medium">{item.label}</span>
+                      <span className="text-gray-900 dark:text-white font-bold">{item.val.split(': ')[1] || item.val}</span>
                     </div>
-                  </div>
-                  <div className="flex items-center justify-center md:justify-start">
-                    <Clock className="w-5 h-5 text-[#FF3131] mr-3" />
-                    <div>
-                      <p className="font-semibold text-gray-900 dark:text-gray-100">
-                        {translations.businessHours.saturday}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-center md:justify-start">
-                    <Clock className="w-5 h-5 text-[#FF3131] mr-3" />
-                    <div>
-                      <p className="font-semibold text-gray-900 dark:text-gray-100">
-                        {translations.businessHours.sunday}
-                      </p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
 
-              <div className="text-center md:text-left">
-                <h2 className="font-heading text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
-                  {translations.location.title}
-                </h2>
-                <div className="space-y-4">
-                  <div className="flex items-center justify-center md:justify-start">
-                    <MapPin className="w-5 h-5 text-[#FF3131] mr-3" />
-                    <div>
-                      <p className="font-semibold text-gray-900 dark:text-gray-100">Purrify Canada</p>
-                      <p className="text-gray-600 dark:text-gray-300">109-17680 Rue Charles</p>
-                      <p className="text-gray-600 dark:text-gray-300">Mirabel, QC J7J 0T6</p>
-                      <p className="text-gray-600 dark:text-gray-300">Canada</p>
-                    </div>
+              <div className="p-8 md:p-12 rounded-[2.5rem] bg-gray-50 dark:bg-gray-900/50 border border-gray-100 dark:border-gray-800">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="p-3 rounded-2xl bg-white dark:bg-gray-800 shadow-sm">
+                    <MapPin className="w-6 h-6 text-purple-600 dark:text-purple-400" />
                   </div>
-                  <div className="mt-6">
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                      {translations.location.shippingNote}
-                    </p>
-                  </div>
+                  <h3 className="text-2xl font-black text-gray-900 dark:text-white">{translations.location.title}</h3>
                 </div>
+                <div className="text-gray-600 dark:text-gray-400 space-y-2 mb-8">
+                  <p className="font-bold text-gray-900 dark:text-white text-lg">Purrify Canada</p>
+                  <p>109-17680 Rue Charles</p>
+                  <p>Mirabel, QC J7J 0T6</p>
+                  <p>Canada</p>
+                </div>
+                <p className="text-sm font-medium text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/20 px-4 py-2 rounded-full inline-block">
+                  {translations.location.shippingNote}
+                </p>
               </div>
             </div>
           </Container>
         </section>
 
         {/* Social Media Directory */}
-        <section className="py-16 bg-gradient-to-r from-purple-100/50 to-pink-100/50 dark:from-purple-900/20 dark:to-pink-900/20">
+        <section className="py-24 bg-gray-50/50 dark:bg-gray-900/30">
           <Container>
-            <div className="text-center mb-12">
-              <h2 className="font-heading text-3xl md:text-4xl font-black mb-4 text-gray-900 dark:text-white">
-                Connect With Us{' '}
-                <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
-                  Everywhere
-                </span>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-6">
+                Join the <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400">Fam</span>
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400">
-                Follow us on social media for tips, updates, and exclusive offers
-              </p>
+              <p className="text-gray-500 dark:text-gray-400">Follow us for cat tips, updates, and exclusive offers.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {/* Social Media */}
-              <a
-                href={SOCIAL_LINKS.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-[#E4405F] group"
-              >
-                <div className="p-3 bg-gradient-to-br from-[#E4405F] to-[#833AB4] rounded-lg text-white">
-                  <Instagram className="w-6 h-6" />
-                </div>
-                <div className="flex-1">
-                  <p className="font-bold text-gray-900 dark:text-white">Instagram</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">@purrifyhq</p>
-                </div>
-                <ExternalLink className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-[#E4405F]" />
-              </a>
-
-              <a
-                href={SOCIAL_LINKS.x}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-[#1DA1F2] group"
-              >
-                <div className="p-3 bg-[#1DA1F2] rounded-lg text-white">
-                  <Twitter className="w-6 h-6" />
-                </div>
-                <div className="flex-1">
-                  <p className="font-bold text-gray-900 dark:text-white">X (Twitter)</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">@PurrifyHQ</p>
-                </div>
-                <ExternalLink className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-[#1DA1F2]" />
-              </a>
-
-              <a
-                href={SOCIAL_LINKS.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-[#1877F2] group"
-              >
-                <div className="p-3 bg-[#1877F2] rounded-lg text-white">
-                  <Facebook className="w-6 h-6" />
-                </div>
-                <div className="flex-1">
-                  <p className="font-bold text-gray-900 dark:text-white">Facebook</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Purrify Canada</p>
-                </div>
-                <ExternalLink className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-[#1877F2]" />
-              </a>
-
-              <a
-                href={SOCIAL_LINKS.youtube}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-[#FF0000] group"
-              >
-                <div className="p-3 bg-[#FF0000] rounded-lg text-white">
-                  <Youtube className="w-6 h-6" />
-                </div>
-                <div className="flex-1">
-                  <p className="font-bold text-gray-900 dark:text-white">YouTube</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">@PurrifyHQ</p>
-                </div>
-                <ExternalLink className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-[#FF0000]" />
-              </a>
-
-              <a
-                href={SOCIAL_LINKS.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-[#0A66C2] group"
-              >
-                <div className="p-3 bg-[#0A66C2] rounded-lg text-white">
-                  <Linkedin className="w-6 h-6" />
-                </div>
-                <div className="flex-1">
-                  <p className="font-bold text-gray-900 dark:text-white">LinkedIn</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Purrify</p>
-                </div>
-                <ExternalLink className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-[#0A66C2]" />
-              </a>
-
-              <a
-                href={SOCIAL_LINKS.tiktok}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-black dark:hover:border-white group"
-              >
-                <div className="p-3 bg-black dark:bg-white rounded-lg text-white dark:text-black">
-                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12.75 2a.75.75 0 0 1 .75.75c0 2.24 1.53 4.12 3.63 4.5.37.07.62.4.62.77v2.02a.75.75 0 0 1-1.03.7 6.3 6.3 0 0 1-2.47-1.4v6.67A4.82 4.82 0 1 1 8 11.5h.75a.75.75 0 0 1 .75.75v2.14a.75.75 0 0 1-1.02.7 1.83 1.83 0 0 0-.73-.15 1.82 1.82 0 1 0 1.82 1.83V3.5a.75.75 0 0 1 .75-.75h2.43Z" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <p className="font-bold text-gray-900 dark:text-white">TikTok</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">@purrifyhq</p>
-                </div>
-                <ExternalLink className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-black dark:group-hover:text-white" />
-              </a>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {[
+                { label: 'Instagram', handle: '@purrifyhq', icon: Instagram, url: SOCIAL_LINKS.instagram },
+                { label: 'X (Twitter)', handle: '@PurrifyHQ', icon: Twitter, url: SOCIAL_LINKS.x },
+                { label: 'Facebook', handle: 'Purrify Canada', icon: Facebook, url: SOCIAL_LINKS.facebook },
+                { label: 'YouTube', handle: '@PurrifyHQ', icon: Youtube, url: SOCIAL_LINKS.youtube },
+                { label: 'LinkedIn', handle: 'Purrify', icon: Linkedin, url: SOCIAL_LINKS.linkedin },
+                { label: 'TikTok', handle: '@purrifyhq', icon: null, url: SOCIAL_LINKS.tiktok },
+              ].map((social, i) => (
+                <a
+                  key={i}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center p-6 bg-white dark:bg-gray-800 rounded-3xl border border-gray-100 dark:border-gray-700/50 hover:border-purple-200 dark:hover:border-purple-800 transition-all hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 group"
+                >
+                  <div className="mb-4 text-gray-400 dark:text-gray-500 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                    {social.icon ? <social.icon className="w-8 h-8" /> : (
+                      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12.75 2a.75.75 0 0 1 .75.75c0 2.24 1.53 4.12 3.63 4.5.37.07.62.4.62.77v2.02a.75.75 0 0 1-1.03.7 6.3 6.3 0 0 1-2.47-1.4v6.67A4.82 4.82 0 1 1 8 11.5h.75a.75.75 0 0 1 .75.75v2.14a.75.75 0 0 1-1.02.7 1.83 1.83 0 0 0-.73-.15 1.82 1.82 0 1 0 1.82 1.83V3.5a.75.75 0 0 1 .75-.75h2.43Z" />
+                      </svg>
+                    )}
+                  </div>
+                  <span className="text-xs font-bold text-gray-900 dark:text-white text-center">{social.label}</span>
+                </a>
+              ))}
             </div>
 
-            {/* Review Platforms */}
-            <div className="mt-12">
-              <h3 className="font-heading text-xl font-bold text-center mb-6 text-gray-900 dark:text-white">
-                Leave Us a Review
-              </h3>
-              <div className="flex flex-wrap justify-center gap-4">
-                <a
-                  href={SOCIAL_LINKS.trustpilot}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-3 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-[#00B67A]"
-                >
-                  <div className="flex items-center gap-0.5 text-[#00B67A]">
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
-                  </div>
-                  <span className="font-semibold text-gray-700 dark:text-gray-300">Trustpilot</span>
+            <div className="mt-16 flex flex-wrap justify-center gap-6 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
+              {[
+                { name: 'Trustpilot', url: SOCIAL_LINKS.trustpilot },
+                { name: 'Google', url: SOCIAL_LINKS.googleReviews },
+                { name: 'Crunchbase', url: SOCIAL_LINKS.crunchbase },
+                { name: 'Product Hunt', url: SOCIAL_LINKS.producthunt },
+              ].map((p, i) => (
+                <a key={i} href={p.url} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-gray-500 dark:text-gray-400 hover:text-purple-600">
+                  {p.name}
                 </a>
-
-                <a
-                  href={SOCIAL_LINKS.googleReviews}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-3 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-[#4285F4]"
-                >
-                  <div className="flex items-center gap-0.5 text-[#FBBC04]">
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
-                  </div>
-                  <span className="font-semibold text-gray-700 dark:text-gray-300">Google</span>
-                </a>
-
-                <a
-                  href={SOCIAL_LINKS.yelp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-3 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-[#D32323]"
-                >
-                  <div className="flex items-center gap-0.5 text-[#D32323]">
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
-                  </div>
-                  <span className="font-semibold text-gray-700 dark:text-gray-300">Yelp</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Business Profiles */}
-            <div className="mt-12">
-              <h3 className="font-heading text-xl font-bold text-center mb-6 text-gray-900 dark:text-white">
-                Business Profiles
-              </h3>
-              <div className="flex flex-wrap justify-center gap-4">
-                <a
-                  href={SOCIAL_LINKS.crunchbase}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-full shadow-md hover:shadow-lg transition-all text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-[#0288D1]"
-                >
-                  Crunchbase
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-                <a
-                  href={SOCIAL_LINKS.wellfound}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-full shadow-md hover:shadow-lg transition-all text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600"
-                >
-                  Wellfound
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-                <a
-                  href={SOCIAL_LINKS.producthunt}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-full shadow-md hover:shadow-lg transition-all text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-[#DA552F]"
-                >
-                  Product Hunt
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-                <a
-                  href={SOCIAL_LINKS.medium}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-full shadow-md hover:shadow-lg transition-all text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white"
-                >
-                  Medium
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-                <a
-                  href={SOCIAL_LINKS.googleBusiness}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-full shadow-md hover:shadow-lg transition-all text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-[#4285F4]"
-                >
-                  Google Business
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-              </div>
+              ))}
             </div>
           </Container>
         </section>
 
         {/* Back Navigation */}
-        <section className="py-8">
+        <section className="py-16">
           <Container>
             <div className="text-center">
               <Link href="/#contact">
-                <Button variant="outline" size="lg">
-                  <ArrowLeft className="w-5 h-5 mr-2" />
+                <Button
+                  variant="ghost"
+                  size="lg"
+                  className="rounded-full text-gray-500 hover:text-purple-600 dark:hover:text-purple-400"
+                >
+                  <ArrowLeft className="w-5 h-5 mr-3" />
                   {translations.backToHome}
                 </Button>
               </Link>

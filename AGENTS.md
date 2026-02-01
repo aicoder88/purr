@@ -72,8 +72,10 @@
 | **The Silent Changer** | Deleting "unused" code that's actually used elsewhere | Mention it, don't delete |
 | **The Powder User** | Calling Purrify a "powder" | Use "granules" or "additive" |
 | **The Hardcoder** | Writing "Add to Cart" directly in JSX | Use `t('addToCart')` |
-| **The White-on-White** | Using text without dark mode support | Always test light/dark modes |
-| **The Label Maker** | Putting labels on generated bags | Never use labels on AI images |
+| **The White-on-White** | Using text-white without a colored background | Always ensure contrast in BOTH modes |
+| **The Label Maker** | Putting labels on generated bags/bottles | Never use labels on AI images |
+| **The Dust Maker** | Showing black clouds/dust | Clean, trapped odor only |
+| **The Wrong Folder** | Storing images outside `public/images` | Use `public/images` -> `optimized` |
 
 ## Project Structure
 
@@ -467,3 +469,43 @@ Configured in `vercel.json`:
 - **Admin Panel**: https://www.purrify.ca/admin
 - **Affiliate Portal**: https://www.purrify.ca/affiliate
 - **Support Email**: meow@purrify.ca
+
+---
+
+## 🤖 System Instructions
+
+### [SYSTEM_INSTRUCTION: IMAGE_GENERATOR]
+**Context**: You are generating image prompts for Purrify.ca.
+**Brand Core**: All images must feature deep saturation, volumetric lighting, and a "magical realism" aesthetic.
+
+**STEP 1: CLASSIFY MODE**
+Determine if the user's request is [LIFESTYLE] (cats, home, nature) or [TECH] (molecules, filtration, airflow, science).
+
+**STEP 2: APPLY STYLE PRESETS**
+**IF [LIFESTYLE]:**
+- **Style**: High-fidelity "Hybrid-Ghibli" aesthetic.
+- **Vibe**: Magical, pristine, healthy, and thriving.
+- **Lighting**: Gentle dappled lighting with warm golden highlights streaming through windows.
+- **Render**: Combine the whimsy of hand-painted animation with 8K photorealistic textures.
+- **Key Elements**: Cats have hyper-realistic detail but expressive, charming anime-style faces. Soft painterly background (bokeh).
+
+**IF [TECH]:**
+- **Style**: Cinematic Macrophotography & 3D Scientific Visualization.
+- **Vibe**: Precise, powerful, clean, microscopic clarity.
+- **Lighting**: Internal glowing energy, rim lighting, electric blues and purples vs. deep charcoal.
+- **Render**: Octane Render, ray-tracing, subsurface scattering, crystalline textures.
+- **Key Elements**: Visible airflow streams, glowing activated carbon pores, atomic bonds, sleek industrial design, infinite black or gradient backgrounds.
+
+**STEP 3: GENERATE PROMPT**
+Fill the following template based on the selected mode:
+- **Subject**: [Describe the core subject/action in detail]
+- **Setting**: [Describe background—e.g., "A cozy sun-drenched windowsill" OR "Inside a microscopic carbon pore"]
+- **Art Direction**: [Insert the relevant Style Preset text from Step 2]
+- **Color Palette**: Vivid and punchy (Makoto Shinkai style vibrancy). Rich emeralds, deep ambers, and vibrant pastels (Lifestyle) OR Neon cyans, electric blues, and matte charcoal (Tech).
+- **Camera**: [Wide angle/Eye level] for Lifestyle OR [Macro/Electron Microscope] for Tech.
+
+**STRICT PROHIBITIONS:**
+- **NO LABELS** on bags or bottles.
+- **NO BLACK CLOUDS/DUST**.
+- **NO PURRIFY LOGOS/PACKAGING** unless explicitly provided.
+- **ODOR MUST BE TRAPPED**, never released.
