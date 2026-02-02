@@ -81,7 +81,7 @@ export default function ProductsPage() {
 
   // Product images matching the homepage
   const productImages: Record<string, { src: string; size: 'sm' | 'md' | 'lg' }> = {
-    trial: { src: '/optimized/17gpink.webp', size: 'sm' },
+    trial: { src: '/optimized/17g-nice.webp', size: 'sm' },
     regular: { src: '/optimized/60g.webp', size: 'md' },
     large: { src: '/optimized/140g-640w.avif', size: 'lg' },
   };
@@ -235,7 +235,7 @@ export default function ProductsPage() {
       description: 'FREE trial of activated charcoal cat litter additive. Eliminates ammonia odors instantly.',
       sku: 'purrify-12g',
       mpn: 'PURRIFY-12G',
-      image: 'https://www.purrify.ca/optimized/17gpink.webp',
+      image: 'https://www.purrify.ca/optimized/17g-nice.webp',
       url: `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/trial-size`,
       shippingRate: '4.76',
     },

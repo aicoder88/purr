@@ -76,7 +76,7 @@ export function EnhancedProductComparison() {
         'Zero risk, zero commitment'
       ],
       bestFor: translatedProducts[0]?.bestFor || "Cat parents who've been burned before. Test it yourself. Your nose doesn't lie.",
-      image: '/optimized/17gpink.webp',
+      image: '/optimized/17g-nice.webp',
       imageSize: 'sm',
       color: 'from-green-500 to-green-600',
       ctaType: 'stripe',

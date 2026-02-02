@@ -25,7 +25,7 @@ export function OptimizedProductImage({
 }: OptimizedProductImageProps) {
   // Product image paths
   const imagePaths = {
-    trial: '/optimized/17gpink.webp',
+    trial: '/optimized/17g-nice.webp',
     regular: '/optimized/60g.webp',
     large: '/optimized/140g-640w.avif', // Primary - browser will fall back automatically
   };

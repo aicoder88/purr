@@ -70,7 +70,7 @@ export default function TryFreePage() {
     title: pageTitle,
     description: pageDescription,
     targetKeyword: 'free cat litter freshener trial',
-    image: 'https://www.purrify.ca/optimized/17gpink.webp',
+    image: 'https://www.purrify.ca/optimized/17g-nice.webp',
     keywords: ['free trial', 'cat litter freshener', 'odor eliminator sample', 'free shipping'],
   });
 
@@ -165,7 +165,7 @@ export default function TryFreePage() {
               <div className="order-1 md:order-2 flex justify-center">
                 <div className="relative w-64 md:w-80 aspect-[3/4]">
                   <Image
-                    src="/optimized/17gpink.webp"
+                    src="/optimized/17g-nice.webp"
                     alt="Purrify 12g Trial Size - Free Sample"
                     fill
                     sizes="(max-width: 768px) 256px, 320px"

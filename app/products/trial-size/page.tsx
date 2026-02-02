@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     url: 'https://www.purrify.ca/products/trial-size',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/17gpink.webp',
+        url: 'https://www.purrify.ca/optimized/17g-nice.webp',
         width: 400,
         height: 400,
         alt: 'Purrify 12g Trial Size',

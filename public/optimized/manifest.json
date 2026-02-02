@@ -1651,5 +1651,27 @@
     "processed": 1,
     "saved": 33382,
     "errors": 0
+  },
+  "17g-nice": {
+    "original": "/images/17g nice.png",
+    "sizes": {
+      "thumb": {
+        "webp": "/optimized/17g-nice-thumb.webp",
+        "avif": "/optimized/17g-nice-thumb.avif"
+      },
+      "default": {
+        "webp": "/optimized/17g-nice.webp",
+        "avif": "/optimized/17g-nice.avif"
+      },
+      "large": {
+        "webp": "/optimized/17g-nice-large.webp",
+        "avif": "/optimized/17g-nice-large.avif"
+      }
+    },
+    "meta": {
+      "width": 800,
+      "height": 1071,
+      "aspectRatio": "3:4"
+    }
   }
 }

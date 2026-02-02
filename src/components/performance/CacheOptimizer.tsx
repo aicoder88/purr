@@ -301,7 +301,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
 
       // Warm up critical images
       const criticalImages = [
-        '/optimized/17gpink.webp',
+        '/optimized/17g-nice.webp',
         '/optimized/60g.webp',
         '/optimized/140g-640w.avif',
         '/hero-cat.webp'

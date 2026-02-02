@@ -160,7 +160,7 @@ export function ProductsHero() {
                                 {/* Trial Bag (Foreground Left) */}
                                 <div className="absolute bottom-12 left-4 md:left-8 w-[140px] md:w-[180px] z-30">
                                     <Image
-                                        src="/optimized/17gpink.webp"
+                                        src="/optimized/17g-nice.webp"
                                         alt="Purrify Trial Size"
                                         width={640}
                                         height={640}

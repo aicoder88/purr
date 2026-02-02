@@ -93,7 +93,7 @@ export async function generateMetadata({ params }: ReferralPageProps): Promise<M
       type: 'website',
       images: [
         {
-          url: 'https://www.purrify.ca/optimized/17gpink.webp',
+          url: 'https://www.purrify.ca/optimized/17g-nice.webp',
           width: 1200,
           height: 630,
           alt: 'Purrify Free Trial Offer',
