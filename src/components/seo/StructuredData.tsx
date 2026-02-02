@@ -16,42 +16,50 @@ import type {
 } from '@/lib/seo/structured-data-generator';
 
 interface StructuredDataProps {
-  type: 'product' | 'blogPost' | 'article' | 'organization' | 'breadcrumbs' | 'faq' | 'website';
-  data: ProductData | BlogPostData | OrganizationData | BreadcrumbItem[] | FAQItem[] | any;
+  type?: 'product' | 'blogPost' | 'article' | 'organization' | 'breadcrumbs' | 'faq' | 'website' | 'localBusiness';
+  data?: ProductData | BlogPostData | OrganizationData | BreadcrumbItem[] | FAQItem[] | any;
+  schema?: any;
   validate?: boolean;
 }
 
-export function StructuredData({ type, data, validate = false }: StructuredDataProps) {
+export function StructuredData({ type, data, schema, validate = false }: StructuredDataProps) {
   const generator = new StructuredDataGenerator();
-  
+
   let schemaJson: string;
-  
+
   try {
-    switch (type) {
-      case 'product':
-        schemaJson = generator.generateProduct(data as ProductData);
-        break;
-      case 'blogPost':
-        schemaJson = generator.generateBlogPosting(data as BlogPostData);
-        break;
-      case 'article':
-        schemaJson = generator.generateArticle(data as BlogPostData);
-        break;
-      case 'organization':
-        schemaJson = generator.generateOrganization(data as OrganizationData);
-        break;
-      case 'breadcrumbs':
-        schemaJson = generator.generateBreadcrumbs(data as BreadcrumbItem[]);
-        break;
-      case 'faq':
-        schemaJson = generator.generateFAQ(data as FAQItem[]);
-        break;
-      case 'website':
-        schemaJson = generator.generateWebSite(data);
-        break;
-      default:
-        console.error(`Unknown structured data type: ${type}`);
-        return null;
+    if (schema) {
+      schemaJson = typeof schema === 'string' ? schema : JSON.stringify(schema, null, 2);
+    } else {
+      switch (type) {
+        case 'product':
+          schemaJson = generator.generateProduct(data as ProductData);
+          break;
+        case 'blogPost':
+          schemaJson = generator.generateBlogPosting(data as BlogPostData);
+          break;
+        case 'article':
+          schemaJson = generator.generateArticle(data as BlogPostData);
+          break;
+        case 'organization':
+          schemaJson = generator.generateOrganization(data as OrganizationData);
+          break;
+        case 'breadcrumbs':
+          schemaJson = generator.generateBreadcrumbs(data as BreadcrumbItem[]);
+          break;
+        case 'faq':
+          schemaJson = generator.generateFAQ(data as FAQItem[]);
+          break;
+        case 'website':
+          schemaJson = generator.generateWebSite(data);
+          break;
+        case 'localBusiness':
+          schemaJson = generator.generateLocalBusiness(data);
+          break;
+        default:
+          console.error(`Unknown structured data type: ${type}`);
+          return null;
+      }
     }
 
     // Validate if requested
@@ -112,4 +120,11 @@ export function BreadcrumbsStructuredData(props: Omit<StructuredDataProps, 'type
  */
 export function FAQStructuredData(props: Omit<StructuredDataProps, 'type'>) {
   return <StructuredData type="faq" {...props} />;
+}
+
+/**
+ * LocalBusinessStructuredData - Convenience component for local business info
+ */
+export function LocalBusinessStructuredData(props: Omit<StructuredDataProps, 'type'>) {
+  return <StructuredData type="localBusiness" {...props} />;
 }
