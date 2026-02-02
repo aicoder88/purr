@@ -485,7 +485,7 @@ Determine if the user's request is [LIFESTYLE] (cats, home, nature) or [TECH] (m
 **IF [LIFESTYLE]:**
 - **Style**: High-fidelity "Hybrid-Ghibli" aesthetic.
 - **Vibe**: Magical, pristine, healthy, and thriving.
-- **Lighting**: Gentle dappled lighting with warm golden highlights streaming through windows.
+- **Lighting**: Gentle dappled lighting with warm golden highlights 
 - **Render**: Combine the whimsy of hand-painted animation with 8K photorealistic textures.
 - **Key Elements**: Cats have hyper-realistic detail but expressive, charming anime-style faces. Soft painterly background (bokeh).
 
@@ -508,4 +508,4 @@ Fill the following template based on the selected mode:
 - **NO LABELS** on bags or bottles.
 - **NO BLACK CLOUDS/DUST**.
 - **NO PURRIFY LOGOS/PACKAGING** unless explicitly provided.
-- **ODOR MUST BE TRAPPED**, never released.
+- **ODOR MUST BE obviously adsorbed, or TRAPPED**, never released.
