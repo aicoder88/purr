@@ -110,7 +110,7 @@ export default async function CityPage({ params }: CityPageProps) {
   return (
     <>
       <StructuredData schema={localBusinessSchema} />
-      <CityPageTemplate citySlug={citySlug} />
+      <CityPageTemplate citySlug={citySlug} initialProfile={city.profile} />
     </>
   );
 }

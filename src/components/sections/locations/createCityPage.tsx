@@ -12,6 +12,7 @@ import { useTranslation } from '../../../lib/translation-context';
 import { safeTrackEvent } from '../../../lib/analytics';
 import { CityLeadCaptureCTA } from './CityLeadCaptureCTA';
 import { useEnhancedSEO } from '../../../hooks/useEnhancedSEO';
+import { PROVINCES } from '../../../lib/locations/provinces';
 
 // ============================================================================
 // Types & Interfaces
@@ -216,13 +217,25 @@ const buildKeywordList = (
   return deduped.slice(0, 16).join(', ');
 };
 
+import { type CityOdorProfile } from '../../../lib/locations/cities';
+
 export interface CityPageTemplateProps {
   citySlug: string;
+  initialProfile?: CityOdorProfile;
 }
 
-export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
+export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateProps) => {
   const { t, locale } = useTranslation();
-  const cityRecord = citySlug ? getCityBySlug(citySlug) : undefined;
+
+  // Use initialProfile if provided (SSR), otherwise lookup (CSR fallback)
+  const cityRecord = useMemo(() => {
+    if (initialProfile) {
+      return { profile: initialProfile, name: initialProfile.name, slug: initialProfile.slug, provinceCode: initialProfile.provinceCode };
+    }
+
+    // Fallback for CSR navigation or missing prop
+    return citySlug ? getCityBySlug(citySlug) : undefined;
+  }, [citySlug, initialProfile]);
 
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
 
@@ -230,11 +243,18 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
   const profile = cityRecord?.profile;
 
   // Derive values from profile (with safe defaults for missing city case)
-  const { PROVINCES } = require('../../../lib/locations/provinces');
-  const provinceData = profile ? PROVINCES[profile.provinceCode.toLowerCase()] : undefined;
-  const provinceName = profile
-    ? ((locale === 'fr' && provinceData?.nameFr) ? provinceData.nameFr : (provinceData?.name || profile.province))
-    : '';
+  const provinceData = useMemo(() => {
+    if (!profile?.provinceCode) return undefined;
+    const code = profile.provinceCode.toLowerCase();
+    const data = PROVINCES[code];
+    return data;
+  }, [profile?.provinceCode]);
+
+  const provinceName = useMemo(() => {
+    if (!profile) return '';
+    if (locale === 'fr' && provinceData?.nameFr) return provinceData.nameFr;
+    return provinceData?.name || profile.province || '';
+  }, [profile, locale, provinceData]);
 
   const populationLabel = profile && profile.populationLabel !== 'n/a'
     ? profile.populationLabel
@@ -339,10 +359,18 @@ export const CityPageTemplate = ({ citySlug }: CityPageTemplateProps) => {
   }, [profile, provinceName]);
 
   // Handle missing city - show loading state while redirect happens
+  // Hydration safety check - show a targeted loading state if profile is missing
   if (!profile) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
-        <p className="text-gray-600 dark:text-gray-400">{t.cityPage?.loading ?? 'Redirecting...'}</p>
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 p-4 text-center">
+        <div className="w-12 h-12 border-4 border-orange-200 dark:border-gray-700 border-t-orange-600 dark:border-t-orange-400 rounded-full animate-spin mb-4 mx-auto"></div>
+        <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">Preparing City Guide...</h2>
+        <p className="text-gray-600 dark:text-gray-400 max-w-sm">
+          Loading the freshest odor control tips for <span className="font-semibold text-orange-600 dark:text-orange-400 capitalize">{citySlug}</span>.
+        </p>
+        <div className="mt-8 text-xs text-gray-400 dark:text-gray-500 uppercase tracking-widest">
+          {locale === 'fr' ? 'Chargement en cours...' : 'Locating Purrify Resources...'}
+        </div>
       </div>
     );
   }

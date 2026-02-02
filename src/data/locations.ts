@@ -104,7 +104,9 @@ export function getCityInProvinceByName(
 }
 
 export function getCityBySlug(slug: string): LocationCity | undefined {
-  return getAllCities().find((city) => city.slug === slug);
+  if (!slug) return undefined;
+  const normalizedSlug = slug.toLowerCase();
+  return getAllCities().find((city) => city.slug.toLowerCase() === normalizedSlug);
 }
 
 export function getAllProvinceSlugs(): string[] {
