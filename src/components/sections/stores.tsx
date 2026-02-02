@@ -419,10 +419,7 @@ export function Stores() {
           {/* Search/Filter Controls - Placeholder for future implementation if needed, utilizing browser search for now via the grid below */}
         </div>
 
-        {/* Map Section */}
-        <div className="mb-16 rounded-3xl overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-800 h-[400px] md:h-[500px] relative z-0">
-          <ClientLocationsMap className="h-full" height="100%" showHeader={false} />
-        </div>
+
 
         {/* Stores Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
