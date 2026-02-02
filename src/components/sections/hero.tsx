@@ -9,7 +9,7 @@ export function Hero() {
   const { t, locale } = useTranslation();
 
   return (
-    <section className="relative w-full pt-16 md:pt-20 pb-12 md:pb-16 overflow-hidden bg-mesh-gradient transition-colors duration-300" style={{ willChange: 'auto' }}>
+    <section className="relative w-full pt-20 md:pt-28 pb-16 md:pb-24 overflow-hidden bg-mesh-gradient transition-colors duration-300" style={{ willChange: 'auto' }}>
 
       {/* Animated decorative background - reduced blur on mobile for performance */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none hidden sm:block">
@@ -18,9 +18,9 @@ export function Hero() {
       </div>
 
       <Container className="relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <HeroContent t={t} locale={locale} />
-          <div className="relative h-full flex items-center">
+          <div className="relative h-full flex items-center justify-center lg:justify-end">
             <HeroVideo t={t} />
           </div>
         </div>

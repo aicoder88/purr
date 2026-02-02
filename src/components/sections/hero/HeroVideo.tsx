@@ -128,13 +128,6 @@ export const HeroVideo = ({ t }: HeroVideoProps) => {
           )}
         </div>
       </div>
-
-      {/* Caption */}
-      <div className="mt-4 text-center max-w-2xl mx-auto relative z-10">
-        <p className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
-          Just Pour. Mix. And Breathe Easy.
-        </p>
-      </div>
     </div>
   );
 };

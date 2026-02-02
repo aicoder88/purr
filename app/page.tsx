@@ -11,12 +11,12 @@ import { SkipNav } from '@/components/ui/skip-nav';
 import { ErrorBoundary } from '@/components/ui/error-boundary';
 import { TrustBadges } from '@/components/social-proof/TrustBadges';
 import { ClientLocationsMap } from '@/components/maps/ClientLocationsMap';
-import { SocialProofBadges } from '@/components/sections/SocialProofBadges';
+
 import { SITE_NAME, SITE_DESCRIPTION } from '@/lib/constants';
 import { getSEOMeta } from '@/translations/seo-meta';
-import { 
-  getPriceValidityDate, 
-  generateHomepageSchema, 
+import {
+  getPriceValidityDate,
+  generateHomepageSchema,
   buildLanguageAlternates,
   getLocalizedKeywords,
   normalizeLocale,
@@ -31,20 +31,20 @@ import { HomepageClient } from './homepage-client';
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getUserLocale();
   const normalizedLocale = normalizeLocale(locale);
-  
+
   // Get SEO meta for homepage
   const seoMeta = getSEOMeta(normalizedLocale, 'homepage');
   const pageTitle = seoMeta?.title || `${SITE_NAME} - Activated Carbon Cat Litter Additive`;
   const pageDescription = seoMeta?.description || SITE_DESCRIPTION;
-  const keywords = seoMeta?.targetKeyword 
+  const keywords = seoMeta?.targetKeyword
     ? [...getLocalizedKeywords(normalizedLocale), seoMeta.targetKeyword]
     : getLocalizedKeywords(normalizedLocale);
-  
+
   // Build canonical and alternate URLs
   const baseUrl = 'https://www.purrify.ca';
   const canonicalUrl = `${baseUrl}${normalizedLocale === 'en' ? '' : `/${normalizedLocale}`}/`;
   const languageAlternates = buildLanguageAlternates('/');
-  
+
   // Convert language alternates to Next.js format
   const alternates: Record<string, string> = {};
   languageAlternates.forEach((alt) => {
@@ -105,7 +105,7 @@ export async function generateMetadata(): Promise<Metadata> {
 async function generateStructuredData(locale: string, currency: Currency) {
   const normalizedLocale = normalizeLocale(locale);
   const homepageSchema = generateHomepageSchema(normalizedLocale, currency);
-  
+
   return {
     __html: JSON.stringify(homepageSchema, null, 2),
   };
@@ -116,37 +116,37 @@ export default async function HomePage() {
   // Get locale and currency from server
   const locale = await getUserLocale();
   const headersList = await headers();
-  
+
   // Detect currency based on country header (US = USD, others = CAD)
   const country = headersList.get('x-vercel-ip-country');
   const currency: Currency = country === 'US' ? 'USD' : 'CAD';
-  
+
   // Get price validity date (replaces getStaticProps)
   const priceValidUntil = getPriceValidityDate();
-  
+
   // Get normalized locale for SEO
   const normalizedLocale = normalizeLocale(locale);
-  
+
   // Get SEO meta
   const seoMeta = getSEOMeta(normalizedLocale, 'homepage');
   const pageTitle = seoMeta?.title || `${SITE_NAME} - Activated Carbon Cat Litter Additive`;
-  
+
   // Generate structured data
   const structuredData = await generateStructuredData(locale, currency);
 
   return (
     <>
       <SkipNav />
-      
+
       {/* Enhanced JSON-LD Schemas - Auto-generated Homepage Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={structuredData}
       />
 
-      <main 
-        id="main-content" 
-        role="main" 
+      <main
+        id="main-content"
+        role="main"
         className="bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900"
       >
         <ErrorBoundary>
@@ -178,7 +178,7 @@ export default async function HomePage() {
         </div>
 
         {/* Client-side wrapped sections for interactivity */}
-        <HomepageClient 
+        <HomepageClient
           priceValidUntil={priceValidUntil}
           locale={locale}
           currency={currency}
@@ -215,10 +215,7 @@ export default async function HomePage() {
           </ErrorBoundary>
         </div>
 
-        {/* Social Proof Badges - Trusted & Verified */}
-        <ErrorBoundary>
-          <SocialProofBadges />
-        </ErrorBoundary>
+
       </main>
     </>
   );

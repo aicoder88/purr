@@ -60,16 +60,17 @@ export const ClientLocationsMap: React.FC<ClientLocationsMapProps> = ({
   };
 
   return (
-    <section className={`py-8 ${className}`}>
+    <section className={`py-12 md:py-20 ${className}`}>
       {showHeader && (
-        <div className="container mx-auto px-4 mb-8">
-
-          <h2 className="font-heading text-3xl font-bold text-brand-dark dark:text-gray-50 mb-4 text-center">
-            {title}
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 text-center max-w-4xl mx-auto">
-            {description}
-          </p>
+        <div className="container mx-auto px-4 mb-10 md:mb-14">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-brand-dark dark:text-white mb-6 tracking-tight">
+              {title}
+            </h2>
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
+              {description}
+            </p>
+          </div>
         </div>
       )}
 
