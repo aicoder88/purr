@@ -63,24 +63,7 @@ export const ClientLocationsMap: React.FC<ClientLocationsMapProps> = ({
     <section className={`py-8 ${className}`}>
       {showHeader && (
         <div className="container mx-auto px-4 mb-8">
-          <div className="flex justify-center mb-6">
-            <Image
-              src="/optimized/logo-light.webp"
-              alt="Purrify Logo"
-              width={160}
-              height={160}
-              loading="lazy"
-              className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
-            />
-            <Image
-              src="/optimized/logo-dark.webp"
-              alt="Purrify Logo"
-              width={160}
-              height={160}
-              loading="lazy"
-              className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 hidden dark:block"
-            />
-          </div>
+
           <h2 className="font-heading text-3xl font-bold text-brand-dark dark:text-gray-50 mb-4 text-center">
             {title}
           </h2>
