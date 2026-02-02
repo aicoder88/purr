@@ -404,16 +404,16 @@ export function Stores() {
       <Container>
         <div className="text-center mb-12">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-orange-50 dark:bg-orange-900/20 text-[#FF8E3C] dark:text-[#FF8E3C] font-bold text-sm mb-6 border border-orange-100 dark:border-orange-800/30">
-            📍 'Find Purrify Near You'
+            📍 Find Purrify Near You
           </div>
           <h2 className="font-heading text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-6">
-            'Our Retail'
+            Our Retail
             <span className="bg-gradient-to-r from-[#FF8E3C] to-[#FF5050] bg-clip-text text-transparent ml-2">
-              'Partners'
+              Partners
             </span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-10">
-            'Find Purrify at these premium pet retailers across Montreal and beyond.'
+            Find Purrify at these premium pet retailers across Montreal and beyond.
           </p>
 
           {/* Search/Filter Controls - Placeholder for future implementation if needed, utilizing browser search for now via the grid below */}
@@ -500,10 +500,10 @@ export function Stores() {
           <div className="inline-block p-1 bg-gradient-to-r from-[#FF8E3C] to-[#FF5050] rounded-2xl shadow-lg shadow-orange-500/20">
             <div className="bg-white dark:bg-gray-900 rounded-xl px-8 py-10 md:px-16">
               <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-white mb-3">
-                'Don\'t see your favorite store?'
+                Don't see your favorite store?
               </h3>
               <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-lg mx-auto">
-                'Let us know where you shop, and we\'ll contact them!'
+                Let us know where you shop, and we'll contact them!
               </p>
               <button
                 onClick={handleRequestStore}
@@ -526,7 +526,7 @@ export function Stores() {
                 ) : (
                   <>
                     <span className="text-xl">📝</span>
-                    'Request a Store'
+                    Request a Store
                   </>
                 )}
               </button>
