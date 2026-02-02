@@ -6,7 +6,6 @@
  */
 
 import { useMemo } from 'react';
-import Head from 'next/head';
 
 export interface HowToStep {
   name: string;
@@ -81,12 +80,10 @@ export function HowToSection({
   return (
     <>
       {includeSchema && (
-        <Head>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-          />
-        </Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
       )}
 
       <section className={`how-to-section ${className}`}>

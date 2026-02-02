@@ -1,5 +1,4 @@
 import React from 'react';
-import Head from 'next/head';
 import { buildAvailabilityUrl, getPriceValidityDate, type OfferAvailability } from '../../lib/seo-utils';
 import { CONTACT_INFO, SOCIAL_LINKS } from '../../lib/constants';
 
@@ -166,12 +165,10 @@ export const ProductStructuredData: React.FC<ProductStructuredDataProps> = ({ pr
   }
 
   return (
-    <Head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-    </Head>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
   );
 };
 
@@ -202,12 +199,10 @@ export const OrganizationStructuredData: React.FC<OrganizationStructuredDataProp
   };
 
   return (
-    <Head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-    </Head>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
   );
 };
 
@@ -230,12 +225,10 @@ export const WebsiteStructuredData: React.FC<WebsiteStructuredDataProps> = ({ we
   };
 
   return (
-    <Head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-    </Head>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
   );
 };
 
@@ -253,12 +246,10 @@ export const BreadcrumbStructuredData: React.FC<BreadcrumbStructuredDataProps> =
   };
 
   return (
-    <Head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-    </Head>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
   );
 };
 
@@ -278,12 +269,10 @@ export const FAQStructuredData: React.FC<FAQStructuredDataProps> = ({ faqs }) =>
   };
 
   return (
-    <Head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-    </Head>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
   );
 };
 
@@ -313,12 +302,10 @@ export const ArticleStructuredData: React.FC<ArticleStructuredDataProps> = ({ ar
   };
 
   return (
-    <Head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-    </Head>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
   );
 };
 
@@ -367,12 +354,10 @@ export const LocalBusinessStructuredData: React.FC<{
   };
 
   return (
-    <Head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-    </Head>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
   );
 };
 
@@ -411,7 +396,7 @@ export const ReviewStructuredData: React.FC<{
   }));
 
   return (
-    <Head>
+    <>
       {structuredData.map((data, index) => (
         <script
           key={index}
@@ -419,7 +404,7 @@ export const ReviewStructuredData: React.FC<{
           dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
         />
       ))}
-    </Head>
+    </>
   );
 };
 

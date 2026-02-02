@@ -5,7 +5,7 @@
  * Uses the StructuredDataGenerator for consistent schema generation.
  */
 
-import Head from 'next/head';
+
 import { StructuredDataGenerator } from '@/lib/seo/structured-data-generator';
 import type {
   ProductData,
@@ -74,12 +74,10 @@ export function StructuredData({ type, data, schema, validate = false }: Structu
     }
 
     return (
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: schemaJson }}
-        />
-      </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: schemaJson }}
+      />
     );
   } catch (error) {
     console.error('Error generating structured data:', error);

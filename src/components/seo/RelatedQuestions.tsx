@@ -15,7 +15,6 @@
  */
 
 import { useState, useMemo } from 'react';
-import Head from 'next/head';
 
 export interface Question {
   question: string;
@@ -85,12 +84,10 @@ export function RelatedQuestions({
   return (
     <>
       {includeSchema && (
-        <Head>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-          />
-        </Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
       )}
 
       <section className={`related-questions ${className}`}>

@@ -14,7 +14,6 @@
  */
 
 import React, { useMemo } from 'react';
-import Head from 'next/head';
 
 export type ClaimRating = 1 | 2 | 3 | 4 | 5;
 
@@ -158,12 +157,10 @@ export function ClaimReviewBlock({
   return (
     <>
       {includeSchema && (
-        <Head>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-          />
-        </Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
       )}
 
       <div

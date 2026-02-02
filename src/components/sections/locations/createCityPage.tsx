@@ -2,6 +2,7 @@
 
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
+import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { useEffect, useMemo, useState } from 'react';
 import { ChevronRight, Home } from 'lucide-react';
@@ -50,6 +51,22 @@ const GRADIENTS = {
   testimonialCard: 'bg-gradient-to-br from-gray-50 to-white dark:from-gray-700/70 dark:to-gray-700/50',
   videoCta: 'bg-gradient-to-br from-orange-50 to-pink-50 dark:from-orange-900/20 dark:to-pink-900/20',
 } as const;
+
+const HERO_IMAGES: Record<string, string> = {
+  'qc': '/images/locations/provinces/quebec.png',
+  'on': '/images/locations/provinces/ontario.png',
+  'ab': '/images/locations/provinces/alberta.png',
+  'bc': '/images/locations/provinces/british-columbia.png',
+  'ns': '/images/locations/provinces/atlantic.png',
+  'nb': '/images/locations/provinces/atlantic.png',
+  'pe': '/images/locations/provinces/atlantic.png',
+  'nl': '/images/locations/provinces/atlantic.png',
+  'mb': '/images/locations/provinces/prairies.png',
+  'sk': '/images/locations/provinces/prairies.png',
+  'yt': '/images/locations/provinces/north.png',
+  'nt': '/images/locations/provinces/north.png',
+  'nu': '/images/locations/provinces/north.png',
+};
 
 const CTA_BUTTON_CLASSES = `inline-flex items-center justify-center ${GRADIENTS.ctaButton} text-white dark:text-gray-100 font-bold py-3 px-6 rounded-lg transition-all`;
 
@@ -322,6 +339,12 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
       : interpolate(t.cityPage?.seo?.descriptionDefault ?? 'Cat litter smell in {{city}}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across {{province}}. Safe for cats & kittens.', { city: profile.name, province: provinceName }))
     : '';
 
+  const heroImage = useMemo(() => {
+    if (!profile?.provinceCode) return '/images/locations/provinces/ontario.png';
+    const code = profile.provinceCode.toLowerCase();
+    return HERO_IMAGES[code] || '/images/locations/provinces/ontario.png';
+  }, [profile?.provinceCode]);
+
   // Enhanced SEO with breadcrumbs (Home > Locations > City)
   const { breadcrumb } = useEnhancedSEO({
     path: profile ? `/locations/${profile.slug}` : '/locations',
@@ -517,8 +540,21 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
           </nav>
         )}
 
-        <section className="py-20 px-4">
-          <div className="max-w-6xl mx-auto text-center">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden pt-20 pb-16 md:pt-32 md:pb-24">
+          {/* Background Image with Overlay */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src={heroImage}
+              alt={`${profile.name} background`}
+              fill
+              className="object-cover opacity-20 dark:opacity-30"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-50/50 to-orange-50 dark:via-gray-900/50 dark:to-gray-900" />
+          </div>
+
+          <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
             <h1 className={`font-heading text-4xl md:text-6xl font-bold mb-6 ${GRADIENTS.headingText}`}>
               {interpolate(t.cityPage?.hero?.heading ?? 'Best Cat Litter Odor Eliminator in {{city}}', { city: profile.name })}
             </h1>

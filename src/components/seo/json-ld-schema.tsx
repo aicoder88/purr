@@ -1,5 +1,4 @@
 import React from 'react';
-import Head from 'next/head';
 import {
   generateHomepageSchema,
   generateProductPageSchema,
@@ -90,13 +89,11 @@ export const JSONLDSchema: React.FC<JSONLDSchemaProps> = ({
   }
 
   return (
-    <Head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={generateJSONLD(schema)}
-        key={`jsonld-${type}-${locale}`}
-      />
-    </Head>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={generateJSONLD(schema)}
+      key={`jsonld-${type}-${locale}`}
+    />
   );
 };
 
