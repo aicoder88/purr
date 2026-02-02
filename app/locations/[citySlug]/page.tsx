@@ -5,6 +5,8 @@ import { CityPageTemplate } from '@/components/sections/locations/createCityPage
 import { getTranslation } from '@/translations';
 import type { TranslationType } from '@/translations/types';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
+import { generateLocalBusinessSchema } from '@/lib/seo-utils';
+import { StructuredData } from '@/components/seo/StructuredData';
 
 interface CityPageProps {
   params: Promise<{
@@ -97,7 +99,18 @@ export default async function CityPage({ params }: CityPageProps) {
     notFound();
   }
 
-  // Render the CityPageTemplate with the citySlug
-  // This is a client component that handles all the dynamic rendering
-  return <CityPageTemplate citySlug={citySlug} />;
+  // Generate LocalBusiness schema for this city
+  const localBusinessSchema = generateLocalBusinessSchema(
+    city.name,
+    city.profile.province,
+    'en',
+    'CAD'
+  );
+
+  return (
+    <>
+      <StructuredData schema={localBusinessSchema} />
+      <CityPageTemplate citySlug={citySlug} />
+    </>
+  );
 }

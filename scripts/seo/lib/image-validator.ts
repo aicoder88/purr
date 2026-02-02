@@ -52,8 +52,8 @@ const MAX_HEIGHT = 3200; // Max height in pixels
 export async function scanImageReferences(): Promise<ImageReference[]> {
   const references: ImageReference[] = [];
 
-  // Scan TSX/JSX files
-  const sourceFiles = await fg(['pages/**/*.tsx', 'src/**/*.tsx'], {
+  // Scan TSX/JSX files (include app/ directory for App Router)
+  const sourceFiles = await fg(['app/**/*.tsx', 'pages/**/*.tsx', 'src/**/*.tsx'], {
     cwd: process.cwd(),
     ignore: ['**/node_modules/**', '**/.next/**'],
   });

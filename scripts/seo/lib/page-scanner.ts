@@ -1,6 +1,6 @@
 /**
  * Page Scanner Utility
- * Scans all pages in pages/ directory and identifies indexable pages
+ * Scans all pages in app/ directory (Next.js App Router) and identifies indexable pages
  */
 
 import fg from 'fast-glob';
@@ -15,32 +15,36 @@ export interface ScannedPage {
 }
 
 /**
- * Scan all pages in the pages directory
+ * Scan all pages in the app directory (Next.js App Router)
  * @returns Array of scanned pages with metadata
  */
 export async function scanAllPages(): Promise<ScannedPage[]> {
-  const pagesDir = path.join(process.cwd(), 'pages');
+  const appDir = path.join(process.cwd(), 'app');
 
-  // Scan for all .tsx files
-  const files = await fg('**/*.tsx', {
-    cwd: pagesDir,
+  // Check if app directory exists
+  const fs = await import('fs');
+  if (!fs.existsSync(appDir)) {
+    console.log('  ⚠️  App directory not found, falling back to pages/');
+    return scanPagesDirectory();
+  }
+
+  // Scan for all page.tsx files in app directory
+  const files = await fg('**/page.tsx', {
+    cwd: appDir,
     ignore: [
       'api/**', // API routes
-      '_*.tsx', // Next.js internals (_app, _document, _error)
-      '404.tsx', // Error pages
-      '500.tsx',
       'admin/**', // Admin pages
       '**/portal/**', // Customer/retailer portals
     ],
   });
 
   const pages: ScannedPage[] = files.map((file) => {
-    const routePath = filePathToRoute(file);
+    const routePath = appFilePathToRoute(file);
     const pageType = determinePageType(file);
     const isIndexable = shouldIndex(file, routePath);
 
     return {
-      filePath: file,
+      filePath: `app/${file}`,
       routePath,
       pageType,
       isIndexable,
@@ -52,7 +56,76 @@ export async function scanAllPages(): Promise<ScannedPage[]> {
 }
 
 /**
- * Convert file path to route
+ * Fallback: Scan legacy pages directory
+ */
+async function scanPagesDirectory(): Promise<ScannedPage[]> {
+  const pagesDir = path.join(process.cwd(), 'pages');
+  
+  const fs = await import('fs');
+  if (!fs.existsSync(pagesDir)) {
+    console.log('  ⚠️  No pages directory found either');
+    return [];
+  }
+
+  const files = await fg('**/*.tsx', {
+    cwd: pagesDir,
+    ignore: [
+      'api/**',
+      '_*.tsx',
+      '404.tsx',
+      '500.tsx',
+      'admin/**',
+      '**/portal/**',
+    ],
+  });
+
+  const pages: ScannedPage[] = files.map((file) => {
+    const routePath = filePathToRoute(file);
+    const pageType = determinePageType(file);
+    const isIndexable = shouldIndex(file, routePath);
+
+    return {
+      filePath: `pages/${file}`,
+      routePath,
+      pageType,
+      isIndexable,
+      reason: !isIndexable ? getNoindexReason(file) : undefined,
+    };
+  });
+
+  return pages;
+}
+
+/**
+ * Convert app directory file path to route
+ * @param filePath Relative file path from app/ directory
+ * @returns Route path
+ */
+function appFilePathToRoute(filePath: string): string {
+  // Convert file path to route for App Router
+  // app/blog/my-post/page.tsx -> /blog/my-post
+  // app/page.tsx -> /
+  // app/products/[id]/page.tsx -> /products/[id]
+  // app/(group)/about/page.tsx -> /about (group routes)
+  
+  // Remove page.tsx
+  let route = filePath.replace(/\/page\.tsx$/, '').replace(/page\.tsx$/, '');
+  
+  // Remove group routes (group) 
+  route = route.replace(/\([^)]+\)\//g, '').replace(/\([^)]+\)$/g, '');
+  
+  // Handle catch-all and dynamic routes
+  route = route.replace(/\[\.\.\..*\]/, '[...]');
+
+  if (route === '' || route === '/') {
+    return '/';
+  }
+
+  return `/${route}`;
+}
+
+/**
+ * Convert file path to route (legacy pages router)
  * @param filePath Relative file path from pages/ directory
  * @returns Route path
  */

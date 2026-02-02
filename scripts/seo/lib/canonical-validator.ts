@@ -206,8 +206,9 @@ export async function validateAllCanonicals(
 
   console.log('📄 Scanning pages for canonical tags...');
 
-  // Scan TSX pages
-  const pageFiles = await fg(['pages/**/*.tsx'], {
+  // Scan TSX pages (support both App Router and Pages Router)
+  // Exclude: _ignore_* directories, API routes, error pages, admin, portal
+  const pageFiles = await fg(['app/**/page.tsx', 'pages/**/*.tsx'], {
     cwd: process.cwd(),
     ignore: [
       '**/api/**',
@@ -216,6 +217,7 @@ export async function validateAllCanonicals(
       '**/500.tsx',
       '**/admin/**',
       '**/portal/**',
+      '**/_ignore_*/**', // Exclude ignored directories
     ],
   });
 
@@ -228,60 +230,165 @@ export async function validateAllCanonicals(
 
   for (const file of pageFiles) {
     const content = fs.readFileSync(path.join(process.cwd(), file), 'utf-8');
-    const pagePath = file
-      .replace('pages/', '/')
-      .replace('.tsx', '')
-      .replace(/\/index$/, '')
-      .replace(/^index$/, '/');
+    
+    // Handle both App Router (app/**/page.tsx) and Pages Router (pages/**/*.tsx)
+    let pagePath: string;
+    let metadataContent = '';
+    
+    if (file.startsWith('app/')) {
+      // App Router: app/blog/page.tsx -> /blog
+      pagePath = file
+        .replace('app/', '/')
+        .replace('/page.tsx', '')
+        .replace(/\([^)]+\)\//g, '')  // Remove group routes (group)/
+        .replace(/\([^)]+\)$/g, '')    // Remove group routes at end
+        .replace(/\/page$/, '');       // Handle edge cases
+      if (pagePath === '') pagePath = '/';
+      
+      // Check for metadata.ts in the same directory
+      const dir = path.dirname(file);
+      const metadataPath = path.join(process.cwd(), dir, 'metadata.ts');
+      if (fs.existsSync(metadataPath)) {
+        metadataContent = fs.readFileSync(metadataPath, 'utf-8');
+      }
+    } else {
+      // Pages Router: pages/blog.tsx -> /blog
+      pagePath = file
+        .replace('pages/', '/')
+        .replace('.tsx', '')
+        .replace(/\/index$/, '')
+        .replace(/^index$/, '/');
+    }
 
-    // Check if NextSeo is used
+    // Combine content for checking (page content + metadata.ts content if exists)
+    const combinedContent = content + metadataContent;
+
+    // Check for pages that explicitly set noindex - they don't need canonicals
+    const hasNoIndex = combinedContent.includes('index: false') || 
+                       combinedContent.includes('noindex') ||
+                       combinedContent.includes('"noindex"') ||
+                       combinedContent.includes("'noindex'") ||
+                       (metadataContent && metadataContent.includes('robots:'));
+    
+    // Check for LocalizedMeta component which provides canonical dynamically
+    const hasLocalizedMeta = content.includes('LocalizedMeta') && content.includes('canonicalPath');
+    
+    // Check for App Router metadata export pattern
+    const isAppRouter = file.startsWith('app/');
+    const hasMetadataExport = content.includes('export const metadata') || 
+                               content.includes('export async function generateMetadata');
     const hasNextSeo = content.includes('NextSeo') || content.includes('<Head>');
+    // Check for useEnhancedSEO hook which provides canonical and OG URLs dynamically
+    const hasEnhancedSEO = content.includes('useEnhancedSEO');
 
-    if (!hasNextSeo) {
-      issues.push({
-        page: pagePath,
-        severity: 'warning',
-        type: 'canonical',
-        message: 'Page may be missing SEO tags (no NextSeo or Head component found)',
-        fix: 'Add NextSeo component with canonical and og:url',
-      });
-      missingCanonical++;
-      missingOgUrl++;
-      continue;
-    }
+    if (isAppRouter) {
+      // Skip pages that are noindex - they don't need canonicals
+      if (hasNoIndex) {
+        continue;
+      }
 
-    // Look for canonical in source
-    const hasCanonical =
-      content.includes('canonical') ||
-      content.includes('rel="canonical"') ||
-      content.includes("rel='canonical'");
+      // If using useEnhancedSEO hook or LocalizedMeta component, 
+      // they provide canonical and OG URLs dynamically
+      if (hasEnhancedSEO || hasLocalizedMeta) {
+        continue;
+      }
 
-    if (!hasCanonical) {
-      issues.push({
-        page: pagePath,
-        severity: 'error',
-        type: 'canonical',
-        message: 'No canonical URL found in page source',
-        fix: 'Add canonical prop to NextSeo or add <link rel="canonical"> to Head',
-      });
-      missingCanonical++;
-    }
+      // App Router pattern: uses metadata export or useEnhancedSEO hook
+      if (!hasMetadataExport && !hasNextSeo && !hasEnhancedSEO) {
+        issues.push({
+          page: pagePath,
+          severity: 'warning',
+          type: 'canonical',
+          message: 'Page may be missing SEO metadata (no metadata export found)',
+          fix: 'Add export const metadata, export async function generateMetadata, or useEnhancedSEO hook with canonical and openGraph URLs',
+        });
+        missingCanonical++;
+        missingOgUrl++;
+        continue;
+      }
 
-    // Look for og:url
-    const hasOgUrl =
-      content.includes('og:url') ||
-      content.includes('openGraph') ||
-      content.includes('ogUrl');
+      // Look for canonical in metadata
+      const hasCanonical =
+        content.includes('canonical') ||
+        content.includes('alternates');
 
-    if (!hasOgUrl) {
-      issues.push({
-        page: pagePath,
-        severity: 'warning',
-        type: 'og-url',
-        message: 'No og:url found in page source',
-        fix: 'Add openGraph.url to NextSeo or add <meta property="og:url">',
-      });
-      missingOgUrl++;
+      if (!hasCanonical) {
+        issues.push({
+          page: pagePath,
+          severity: 'error',
+          type: 'canonical',
+          message: 'No canonical URL found in metadata export',
+          fix: 'Add alternates: { canonical: "..." } to metadata export',
+        });
+        missingCanonical++;
+      }
+
+      // Look for og:url in openGraph or Head component
+      const hasOgUrl =
+        content.includes('og:url') ||
+        content.includes('openGraph') ||
+        content.includes('url:') ||
+        content.includes('property="og:url"') ||
+        content.includes("property='og:url'");
+
+      if (!hasOgUrl) {
+        issues.push({
+          page: pagePath,
+          severity: 'warning',
+          type: 'og-url',
+          message: 'No openGraph url found in metadata',
+          fix: 'Add openGraph: { url: "..." } to metadata export',
+        });
+        missingOgUrl++;
+      }
+    } else {
+      // Pages Router pattern: uses NextSeo or Head
+      if (!hasNextSeo) {
+        issues.push({
+          page: pagePath,
+          severity: 'warning',
+          type: 'canonical',
+          message: 'Page may be missing SEO tags (no NextSeo or Head component found)',
+          fix: 'Add NextSeo component with canonical and og:url',
+        });
+        missingCanonical++;
+        missingOgUrl++;
+        continue;
+      }
+
+      // Look for canonical in source
+      const hasCanonical =
+        content.includes('canonical') ||
+        content.includes('rel="canonical"') ||
+        content.includes("rel='canonical'");
+
+      if (!hasCanonical) {
+        issues.push({
+          page: pagePath,
+          severity: 'error',
+          type: 'canonical',
+          message: 'No canonical URL found in page source',
+          fix: 'Add canonical prop to NextSeo or add <link rel="canonical"> to Head',
+        });
+        missingCanonical++;
+      }
+
+      // Look for og:url
+      const hasOgUrl =
+        content.includes('og:url') ||
+        content.includes('openGraph') ||
+        content.includes('ogUrl');
+
+      if (!hasOgUrl) {
+        issues.push({
+          page: pagePath,
+          severity: 'warning',
+          type: 'og-url',
+          message: 'No og:url found in page source',
+          fix: 'Add openGraph.url to NextSeo or add <meta property="og:url">',
+        });
+        missingOgUrl++;
+      }
     }
   }
 

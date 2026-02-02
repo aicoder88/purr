@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/free-trial',
   },
+  openGraph: {
+    url: '/free-trial',
+    title: 'Free Trial - Purrify',
+    description: 'Get your free Purrify trial. Just pay shipping.',
+  },
 };
 
 export default function FreeTrialRedirectPage() {

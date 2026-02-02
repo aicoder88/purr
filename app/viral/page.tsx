@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/viral',
   },
+  openGraph: {
+    url: '/viral',
+    title: 'The Viral Odour Vault: Purrify Profit Report',
+    description: 'Dissecting the Viral Anchors of the pet care world.',
+  },
 };
 
 export default function ViralReportPage() {
