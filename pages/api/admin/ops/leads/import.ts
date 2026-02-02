@@ -3,7 +3,7 @@ import { requireAuth } from '@/lib/auth/session';
 import prismaClient from '@/lib/prisma';
 import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit';
 import { withCSRFProtection } from '@/lib/security/csrf';
-import { LeadStatus } from '@prisma/client';
+import { LeadStatus } from '@/generated/client/client';
 import * as Sentry from '@sentry/nextjs';
 
 interface CSVLead {

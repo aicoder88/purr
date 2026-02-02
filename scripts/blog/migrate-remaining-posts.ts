@@ -8,9 +8,13 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { PrismaClient, BlogPostStatus } from '@prisma/client';
+import { BlogPostStatus } from '@/generated/client/client';
+import prismaSingleton from '@/lib/prisma';
 
-const prisma = new PrismaClient();
+if (!prismaSingleton) {
+  throw new Error('Database not configured');
+}
+const prisma = prismaSingleton;
 
 interface JSONBlogPost {
   id: string;
@@ -172,11 +176,11 @@ async function main() {
   for (let i = 0; i < toMigrate.length; i++) {
     const file = toMigrate[i];
     const filePath = path.join(contentDir, file);
-    
+
     process.stdout.write(`[${i + 1}/${toMigrate.length}] ${file.replace('.json', '')}... `);
-    
+
     const result = await migratePost(filePath);
-    
+
     if (result.success) {
       results.success++;
     } else if (result.skipped) {

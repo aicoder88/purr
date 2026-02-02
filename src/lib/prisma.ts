@@ -1,4 +1,6 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '../generated/client/client';
+import { Pool } from 'pg';
+import { PrismaPg } from '@prisma/adapter-pg';
 
 /**
  * Prisma Client Singleton
@@ -8,20 +10,25 @@ import { PrismaClient } from '@prisma/client';
  */
 
 declare global {
-   
   var prisma: PrismaClient | undefined;
 }
 
 // Check if DATABASE_URL is available
-const isDatabaseConfigured = !!process.env.DATABASE_URL;
+const connectionString = process.env.DATABASE_URL;
 
 let prisma: PrismaClient | null = null;
 
-if (isDatabaseConfigured) {
+if (connectionString) {
   if (global.prisma) {
     prisma = global.prisma;
   } else {
+    // Configure PostgreSQL pool
+    const pool = new Pool({ connectionString });
+    // Configure Prisma Adapter
+    const adapter = new PrismaPg(pool);
+    // Initialize Prisma Client with adapter
     prisma = new PrismaClient({
+      adapter,
       log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
     });
     global.prisma = prisma;

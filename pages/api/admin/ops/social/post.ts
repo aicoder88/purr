@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { requireAuth } from '@/lib/auth/session';
 import prisma from '@/lib/prisma';
-import { SocialPostStatus } from '@prisma/client';
+import { SocialPostStatus } from '@/generated/client/client';
 
 function getPrisma() {
   if (!prisma) {

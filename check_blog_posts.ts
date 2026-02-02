@@ -1,9 +1,12 @@
-import { PrismaClient } from '@prisma/client';
+import prisma from '@/lib/prisma';
 
-const prisma = new PrismaClient();
+if (!prisma) {
+  throw new Error('Database not configured');
+}
+const db = prisma;
 
 async function main() {
-  const posts = await prisma.blogPost.findMany({
+  const posts = await db.blogPost.findMany({
     where: { status: 'PUBLISHED' },
     orderBy: { publishedAt: 'desc' },
     take: 2,
@@ -14,7 +17,7 @@ async function main() {
     },
   });
   console.log(JSON.stringify(posts, null, 2));
-  await prisma.$disconnect();
+  await db.$disconnect();
 }
 
 main().catch(console.error);

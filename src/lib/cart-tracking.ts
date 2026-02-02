@@ -6,7 +6,7 @@
  */
 
 import prisma from './prisma';
-import type { CartStatus } from '@prisma/client';
+import type { CartStatus } from '@/generated/client/client';
 
 export interface CartItem {
   productId: string;

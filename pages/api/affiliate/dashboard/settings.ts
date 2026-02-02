@@ -1,7 +1,7 @@
 import type { NextApiResponse } from 'next';
 import prisma from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
-import { PayoutMethod } from '@prisma/client';
+import { PayoutMethod } from '@/generated/client/client';
 import { withAffiliateAuth, AffiliateApiRequest } from '@/lib/affiliate/middleware';
 
 async function handler(req: AffiliateApiRequest, res: NextApiResponse) {

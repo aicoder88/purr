@@ -15,7 +15,7 @@ import {
   Calendar,
   RefreshCw
 } from 'lucide-react';
-import { SocialPostStatus } from '@prisma/client';
+import { SocialPostStatus } from '@/generated/client/client';
 
 interface SocialPostItem {
   id: string;

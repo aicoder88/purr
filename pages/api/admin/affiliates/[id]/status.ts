@@ -7,7 +7,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { auth } from '@/auth';
 import prisma from '@/lib/prisma';
-import { AffiliateStatus } from '@prisma/client';
+import { AffiliateStatus } from '@/generated/client/client';
 import { z } from 'zod';
 
 // Input validation schema

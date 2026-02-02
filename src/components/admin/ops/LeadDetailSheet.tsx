@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Lead, LeadStatus } from '@prisma/client';
+import { Lead, LeadStatus } from '@/generated/client/client';
 import {
   Sheet,
   SheetContent,

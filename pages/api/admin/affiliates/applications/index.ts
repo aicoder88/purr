@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { auth } from '@/auth';
 import prisma from '@/lib/prisma';
-import { AffiliateApplicationStatus } from '@prisma/client';
+import { AffiliateApplicationStatus } from '@/generated/client/client';
 
 export default async function handler(
   req: NextApiRequest,

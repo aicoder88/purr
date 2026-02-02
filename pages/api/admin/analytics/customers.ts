@@ -8,7 +8,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import * as Sentry from '@sentry/nextjs';
 import { requireAuth } from '@/lib/auth/session';
 import prismaClient from '@/lib/prisma';
-import type { CustomerSegment } from '@prisma/client';
+import type { CustomerSegment } from '@/generated/client/client';
 
 interface CustomerAnalyticsResponse {
   success: boolean;

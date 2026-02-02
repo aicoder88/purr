@@ -8,7 +8,7 @@
  */
 
 import prisma from '@/lib/prisma';
-import { AffiliateTier } from '@prisma/client';
+import { AffiliateTier } from '@/generated/client/client';
 import { Resend } from 'resend';
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
 

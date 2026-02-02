@@ -75,3 +75,6 @@ sitemap.xml
 .claude-memory/
 chroma_data/
 *.chroma/
+
+# Generated Prisma Client
+src/generated/

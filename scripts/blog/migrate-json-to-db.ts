@@ -10,9 +10,13 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { PrismaClient, BlogPostStatus } from '@prisma/client';
+import { BlogPostStatus } from '@/generated/client/client';
+import prismaSingleton from '@/lib/prisma';
 
-const prisma = new PrismaClient();
+if (!prismaSingleton) {
+  throw new Error('Database not configured');
+}
+const prisma = prismaSingleton;
 
 interface JSONBlogPost {
   id: string;
@@ -132,15 +136,15 @@ async function migratePost(jsonPath: string): Promise<{ success: boolean; error?
     let externalLinks: any = undefined;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let internalLinks: any = undefined;
-    
+
     if (jsonPost.citations && jsonPost.citations.length > 0) {
-      const external = jsonPost.citations.filter(c => 
+      const external = jsonPost.citations.filter(c =>
         c.url && !c.url.includes('purrify.ca')
       );
-      const internal = jsonPost.citations.filter(c => 
+      const internal = jsonPost.citations.filter(c =>
         c.url && c.url.includes('purrify.ca')
       );
-      
+
       if (external.length > 0) externalLinks = external;
       if (internal.length > 0) internalLinks = internal;
     }
@@ -202,7 +206,7 @@ async function migratePost(jsonPath: string): Promise<{ success: boolean; error?
 
 async function migrateBatch(startIndex: number, count: number): Promise<MigrationResult> {
   const result: MigrationResult = { success: [], failed: [], skipped: [] };
-  
+
   const contentDir = path.join(process.cwd(), 'content', 'blog', 'en');
   const files = fs.readdirSync(contentDir)
     .filter(f => f.endsWith('.json'))

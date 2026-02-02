@@ -79,7 +79,8 @@
     "@emailjs/browser": "^4.4.1",
     "@emotion/react": "^11.14.0",
     "@hookform/resolvers": "^5.2.2",
-    "@prisma/client": "^6.19.1",
+    "@prisma/adapter-pg": "^7.3.0",
+    "@prisma/client": "^7.3.0",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",
     "@radix-ui/react-aspect-ratio": "^1.1.8",
@@ -137,6 +138,7 @@
     "next-intl": "^4.8.1",
     "next-seo": "^6.8.0",
     "openai": "^6.15.0",
+    "pg": "^8.18.0",
     "react": "^19.2.3",
     "react-day-picker": "^9.13.0",
     "react-dom": "^19.2.3",
@@ -162,6 +164,7 @@
     "@types/image-size": "^0.8.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.10.4",
+    "@types/pg": "^8.16.0",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.4.23",
@@ -179,7 +182,7 @@
     "node-mocks-http": "^1.17.2",
     "postcss": "^8.5.6",
     "prettier": "^3.7.4",
-    "prisma": "^6.19.1",
+    "prisma": "^7.3.0",
     "puppeteer": "^24.35.0",
     "rimraf": "^6.1.2",
     "sharp": "^0.34.5",
@@ -205,5 +208,19 @@
     "@typescript-eslint/visitor-keys": "^8.44.0",
     "test-exclude": "^7.0.1"
   },
-  "packageManager": "pnpm@10.27.0"
+  "packageManager": "pnpm@10.27.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "@prisma/client",
+      "@prisma/engines",
+      "@sentry/cli",
+      "@swc/core",
+      "esbuild",
+      "prisma",
+      "puppeteer",
+      "sharp",
+      "unrs-resolver"
+    ]
+  }
 }

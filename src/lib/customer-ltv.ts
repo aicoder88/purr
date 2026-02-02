@@ -5,7 +5,7 @@
  */
 
 import prisma from './prisma';
-import type { CustomerSegment } from '@prisma/client';
+import type { CustomerSegment } from '@/generated/client/client';
 
 function requirePrisma() {
   if (!prisma) {

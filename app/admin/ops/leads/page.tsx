@@ -24,7 +24,7 @@ import {
   AlertDialogTitle
 } from '@/components/ui/alert-dialog';
 import { useToast } from '@/components/ui/use-toast';
-import { Lead, LeadStatus } from '@prisma/client';
+import { Lead, LeadStatus } from '@/generated/client/client';
 import {
   Plus,
   Upload,

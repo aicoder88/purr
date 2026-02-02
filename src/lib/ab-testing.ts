@@ -1,11 +1,10 @@
 /**
  * A/B Testing Framework
  *
- * Client-side and server-side utilities for running A/B tests.
+ * Client-side utilities for running A/B tests.
  */
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import prisma from './prisma';
 
 export type ABVariant = 'control' | 'variant';
 
@@ -15,8 +14,8 @@ export interface ABTestResult {
   config: Record<string, unknown> | null;
 }
 
-const AB_COOKIE_PREFIX = 'purrify_ab_';
-const AB_VIEWED_PREFIX = 'purrify_ab_viewed_';
+export const AB_COOKIE_PREFIX = 'purrify_ab_';
+export const AB_VIEWED_PREFIX = 'purrify_ab_viewed_';
 
 /**
  * Check if code is running in browser
@@ -55,88 +54,6 @@ export function getClientVariant(testSlug: string, trafficSplit: number = 50): A
 }
 
 /**
- * Get variant from request cookies (server-side)
- */
-export function getServerVariant(
-  testSlug: string,
-  cookies: Record<string, string>,
-  trafficSplit: number = 50
-): { variant: ABVariant; isNew: boolean } {
-  const cookieName = `${AB_COOKIE_PREFIX}${testSlug}`;
-
-  // Check for existing assignment
-  if (cookies[cookieName]) {
-    return { variant: cookies[cookieName] as ABVariant, isNew: false };
-  }
-
-  // Assign new variant
-  const variant: ABVariant = Math.random() * 100 < trafficSplit ? 'variant' : 'control';
-  return { variant, isNew: true };
-}
-
-/**
- * Parse cookies from request header
- */
-export function parseCookies(cookieHeader: string | undefined): Record<string, string> {
-  if (!cookieHeader) return {};
-
-  return cookieHeader.split(';').reduce(
-    (acc, cookie) => {
-      const [name, ...valueParts] = cookie.trim().split('=');
-      acc[name] = valueParts.join('=');
-      return acc;
-    },
-    {} as Record<string, string>
-  );
-}
-
-/**
- * Record a view for an A/B test (server-side)
- */
-export async function recordView(testSlug: string, variant: ABVariant): Promise<void> {
-  if (!prisma) return;
-
-  try {
-    if (variant === 'control') {
-      await prisma.aBTest.update({
-        where: { slug: testSlug },
-        data: { controlViews: { increment: 1 } },
-      });
-    } else {
-      await prisma.aBTest.update({
-        where: { slug: testSlug },
-        data: { variantViews: { increment: 1 } },
-      });
-    }
-  } catch {
-    // Silently fail - don't break the page for tracking
-  }
-}
-
-/**
- * Record a conversion for an A/B test (server-side)
- */
-export async function recordConversion(testSlug: string, variant: ABVariant): Promise<void> {
-  if (!prisma) return;
-
-  try {
-    if (variant === 'control') {
-      await prisma.aBTest.update({
-        where: { slug: testSlug },
-        data: { controlConversions: { increment: 1 } },
-      });
-    } else {
-      await prisma.aBTest.update({
-        where: { slug: testSlug },
-        data: { variantConversions: { increment: 1 } },
-      });
-    }
-  } catch {
-    // Silently fail - don't break the page for tracking
-  }
-}
-
-/**
  * Track A/B test event via API (client-side)
  */
 export async function trackABEvent(
@@ -171,35 +88,6 @@ function hasTrackedView(testSlug: string): boolean {
 function markViewTracked(testSlug: string): void {
   if (!isBrowser()) return;
   sessionStorage.setItem(`${AB_VIEWED_PREFIX}${testSlug}`, 'true');
-}
-
-/**
- * Get active A/B test for a page path
- */
-export async function getActiveTest(pagePath: string): Promise<ABTestResult | null> {
-  if (!prisma) return null;
-
-  try {
-    const test = await prisma.aBTest.findFirst({
-      where: {
-        targetPage: pagePath,
-        status: 'RUNNING',
-      },
-    });
-
-    if (!test) return null;
-
-    // Get variant for this session (server-side assignment)
-    const variant: ABVariant = Math.random() * 100 < test.trafficSplit ? 'variant' : 'control';
-
-    return {
-      testSlug: test.slug,
-      variant,
-      config: variant === 'control' ? (test.controlConfig as Record<string, unknown>) : (test.variantConfig as Record<string, unknown>),
-    };
-  } catch {
-    return null;
-  }
 }
 
 /**

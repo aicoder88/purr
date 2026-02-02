@@ -6,7 +6,7 @@ import {
   transformSheetRowToLead,
   type SheetRow
 } from '@/lib/google-sheets';
-import { LeadStatus } from '@prisma/client';
+import { LeadStatus } from '@/generated/client/client';
 
 function getPrisma() {
   if (!prisma) {

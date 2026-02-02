@@ -7,7 +7,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { auth } from '@/auth';
 import prisma from '@/lib/prisma';
-import { PayoutStatus } from '@prisma/client';
+import { PayoutStatus } from '@/generated/client/client';
 
 export default async function handler(
   req: NextApiRequest,

@@ -1,6 +1,6 @@
 import type { NextApiResponse } from 'next';
 import prisma from '@/lib/prisma';
-import { ConversionStatus, Prisma } from '@prisma/client';
+import { ConversionStatus, Prisma } from '@/generated/client/client';
 import { withAffiliateAuth, AffiliateApiRequest } from '@/lib/affiliate/middleware';
 
 async function handler(req: AffiliateApiRequest, res: NextApiResponse) {

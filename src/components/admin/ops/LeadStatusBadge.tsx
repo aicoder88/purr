@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { LeadStatus } from '@prisma/client';
+import { LeadStatus } from '@/generated/client/client';
 
 interface LeadStatusBadgeProps {
   status: LeadStatus;

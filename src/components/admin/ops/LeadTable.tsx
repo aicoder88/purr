@@ -1,5 +1,5 @@
 import { useState, useCallback, useMemo } from 'react';
-import { Lead, LeadStatus } from '@prisma/client';
+import { Lead, LeadStatus } from '@/generated/client/client';
 import {
   Table,
   TableBody,

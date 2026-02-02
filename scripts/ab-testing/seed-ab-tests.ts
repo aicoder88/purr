@@ -12,9 +12,13 @@ import { resolve } from 'path';
 config({ path: resolve(process.cwd(), '.env') });
 config({ path: resolve(process.cwd(), '.env.local') });
 
-import { PrismaClient, Prisma } from '@prisma/client';
+import { Prisma } from '@/generated/client/client';
+import prismaSingleton from '@/lib/prisma';
 
-const prisma = new PrismaClient();
+if (!prismaSingleton) {
+  throw new Error('Database not configured');
+}
+const prisma = prismaSingleton;
 
 interface ABTestSeed {
   name: string;

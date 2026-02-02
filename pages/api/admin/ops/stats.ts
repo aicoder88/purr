@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { requireAuth } from '@/lib/auth/session';
 import prisma from '@/lib/prisma';
-import { LeadStatus, RetailerStatus, OrderStatus } from '@prisma/client';
+import { LeadStatus, RetailerStatus, OrderStatus } from '@/generated/client/client';
 
 // Helper to ensure prisma is available
 function getPrisma() {

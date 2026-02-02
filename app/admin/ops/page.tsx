@@ -34,7 +34,7 @@ import {
   FileText,
   RefreshCw
 } from 'lucide-react';
-import { LeadStatus } from '@prisma/client';
+import { LeadStatus } from '@/generated/client/client';
 
 // Type definition for chart data
 interface ChartDataPoint {

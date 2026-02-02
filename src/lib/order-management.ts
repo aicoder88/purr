@@ -1,6 +1,6 @@
 import prisma from './prisma';
 import { PaymentValidator } from './payment-validation';
-import { OrderStatus } from '@prisma/client';
+import { OrderStatus } from '@/generated/client/client';
 
 export interface Order {
   id: string;
