@@ -1,3 +1,5 @@
+'use client';
+
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "../../lib/translation-context";
@@ -5,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { GRADIENTS, COLORS } from "@/lib/theme-utils";
 import { getPaymentLink } from "@/lib/payment-links";
+import { ArrowRight } from "lucide-react";
 
 interface DecorativeElementProps {
   className: string;
@@ -35,6 +38,7 @@ const customerAvatars = [
 
 export function CTA() {
   const { t } = useTranslation();
+  const paymentLink = getPaymentLink('trialSingle') || '#';
 
   return (
     <section className={`py-12 relative overflow-hidden ${GRADIENTS.background.cta} opacity-90 dark:opacity-95 transition-colors duration-300`}>
@@ -93,15 +97,24 @@ export function CTA() {
 
           {/* CTA Button section */}
           <div className="flex flex-col gap-4 min-w-[200px]">
-            <Button
-              asChild
-              size="lg"
-              className={`${COLORS.surface.light} text-[#5B2EFF] hover:bg-gray-100 dark:bg-[#3694FF] dark:text-white dark:text-gray-100 font-bold py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-lg`}
+            <Link
+              href={paymentLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group"
             >
-              <a href={getPaymentLink('trialSingle') || '#'} target="_blank" rel="noopener noreferrer">
-                {t.cta?.buttonText || "Get My Free Trial"}
-              </a>
-            </Button>
+              <Button
+                size="lg"
+                className="w-full md:w-auto bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-500 text-white font-bold py-7 px-10 rounded-xl shadow-lg hover:shadow-2xl hover:shadow-orange-500/30 hover:-translate-y-1 active:translate-y-0 active:scale-95 transition-all duration-200 text-lg cursor-pointer relative overflow-hidden"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  {t.cta?.buttonText || "Get My Free Trial"}
+                  <ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />
+                </span>
+                {/* Shine effect on hover */}
+                <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+              </Button>
+            </Link>
 
             <p className="text-gray-600 dark:text-gray-100/80 text-xs text-center mt-2">
               {t.cta?.guarantee || "30-Day Money-Back Guarantee • Made in Canada 🇨🇦"}
