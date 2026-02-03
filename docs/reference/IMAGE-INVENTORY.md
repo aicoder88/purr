@@ -357,7 +357,8 @@ A comprehensive catalog of all images in the Purrify website, organized by categ
 |------|------|-------------|
 | en.svg | `/public/flags/en.svg` | English (Canada/US) flag |
 | fr.svg | `/public/flags/fr.svg` | French (Quebec) flag |
-| es.svg | `/public/flags/es.svg` | Spanish flag |
+| mx.svg | `/public/flags/mx.svg` | Spanish flag (Mexico) |
+| es.svg | `/public/flags/es.svg` | Spanish flag (Spain) |
 | zh.svg | `/public/flags/zh.svg` | Chinese flag |
 
 ### App Icons (various sizes)

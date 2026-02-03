@@ -173,6 +173,8 @@ export const zh = {
 
   // Hero Section
   hero: {
+    headline: "爱您的猫，告别异味",
+    subheadline: "活性炭猫砂添加剂，从源头消除异味——不是掩盖，而是真正消除",
     catLitter: "猫砂",
     rabbitLitter: "兔砂",
     fridgeSmells: "冰箱异味",
@@ -1326,7 +1328,9 @@ export const zh = {
       description: "加入遍布加拿大的数百家宠物店，共同销售全国最受欢迎的活性炭猫砂添加剂。销量验证、客户忠诚、营销支持一应俱全。",
       cta: {
         primary: "查看批发价格",
-        secondary: "成为合作伙伴"
+        secondary: "成为合作伙伴",
+        startPartnership: "开启合作伙伴关系",
+        viewPricing: "查看价格详情"
       },
       boostYour: "提升您的",
       petStoreProfits: "宠物店利润",

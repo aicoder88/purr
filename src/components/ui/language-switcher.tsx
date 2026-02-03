@@ -34,9 +34,9 @@ const languages: LanguageOption[] = [
   },
   {
     locale: 'es',
-    name: 'Espanol',
-    flag: '/flags/es.svg',
-    alt: 'Spanish Flag'
+    name: 'Español',
+    flag: '/flags/mx.svg',
+    alt: 'Mexican Flag'
   }
 ];
 
@@ -150,11 +150,10 @@ export function LanguageSwitcher() {
             {languages.map((language) => (
               <li key={language.locale}>
                 <button
-                  className={`flex items-center px-3 py-2 text-sm w-full text-left ${
-                    locale === language.locale
+                  className={`flex items-center px-3 py-2 text-sm w-full text-left ${locale === language.locale
                       ? 'bg-[#FFFFF5] dark:bg-gray-700 text-[#FF3131] dark:text-[#FF5050] font-medium'
                       : 'text-gray-700 dark:text-gray-200 hover:bg-[#FFFFF5] dark:hover:bg-gray-700 hover:text-[#FF3131] dark:hover:text-[#FF5050]'
-                  }`}
+                    }`}
                   onClick={createLanguageClickHandler(language.locale)}
                   type="button"
                 >
