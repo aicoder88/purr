@@ -18,45 +18,43 @@ export interface RevisionHistory {
   currentVersion: number;
 }
 
-// Valid slug pattern: lowercase letters, numbers, hyphens, and underscores only
-const VALID_SLUG_PATTERN = /^[a-z0-9_-]+$/;
-const MAX_SLUG_LENGTH = 200;
+// Valid slug pattern: lowercase letters, numbers, hyphens only (no underscores for stricter security)
+const VALID_SLUG_PATTERN = /^[a-z0-9-]+$/;
+const MAX_SLUG_LENGTH = 100;
 
 /**
  * Sanitize and validate a slug to prevent path traversal attacks
- * @throws Error if slug is invalid
+ * Removes any characters that are not lowercase letters, numbers, or hyphens
+ * @throws Error if slug is invalid after sanitization
  */
 function sanitizeSlug(slug: string): string {
   if (!slug || typeof slug !== 'string') {
     throw new Error('Invalid slug: must be a non-empty string');
   }
 
-  // Trim whitespace
-  const trimmed = slug.trim();
+  // Trim whitespace and convert to lowercase
+  const trimmed = slug.trim().toLowerCase();
 
-  // Check length
-  if (trimmed.length === 0) {
-    throw new Error('Invalid slug: cannot be empty');
-  }
-
-  if (trimmed.length > MAX_SLUG_LENGTH) {
-    throw new Error(`Invalid slug: exceeds maximum length of ${MAX_SLUG_LENGTH}`);
-  }
-
-  // Check for path traversal attempts
+  // Check for path traversal attempts before sanitization
   if (trimmed.includes('..') || trimmed.includes('/') || trimmed.includes('\\')) {
     throw new Error('Invalid slug: path traversal detected');
   }
 
-  // Normalize the slug
-  const normalized = trimmed.toLowerCase();
+  // Sanitize: remove any characters that are not lowercase letters, numbers, or hyphens
+  // This is a more restrictive sanitization that prevents any special characters
+  const sanitized = trimmed.replace(/[^a-z0-9-]/g, '').substring(0, MAX_SLUG_LENGTH);
 
-  // Validate against allowed pattern
-  if (!VALID_SLUG_PATTERN.test(normalized)) {
-    throw new Error('Invalid slug: only lowercase letters, numbers, hyphens, and underscores allowed');
+  // Validate the sanitized result
+  if (sanitized.length === 0) {
+    throw new Error('Invalid slug: cannot be empty after sanitization');
   }
 
-  return normalized;
+  // Final validation against allowed pattern
+  if (!VALID_SLUG_PATTERN.test(sanitized)) {
+    throw new Error('Invalid slug: only lowercase letters, numbers, and hyphens allowed');
+  }
+
+  return sanitized;
 }
 
 /**

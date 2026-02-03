@@ -16,11 +16,12 @@ interface AIGenerationConfig {
   imageCount: number;
 }
 
-// AI generation rate limits - stricter due to API costs
+// AI generation rate limits - stricter due to API costs (~$3-15 per 1K tokens)
+// CRITICAL SECURITY FIX: Stricter limits to prevent API abuse
 const AI_GENERATION_RATE_LIMIT = {
-  windowMs: 60 * 60 * 1000, // 1 hour window
-  maxRequests: 10, // 10 generations per hour per user
-  message: 'AI generation limit reached. Maximum 10 generations per hour allowed.'
+  windowMs: 60 * 1000, // 1 minute window
+  maxRequests: 3, // 3 generations per minute per user
+  message: 'AI generation limit reached. Maximum 3 generations per minute allowed. Please wait before trying again.'
 };
 
 // In-memory store for per-user AI generation tracking
@@ -28,15 +29,20 @@ const AI_GENERATION_RATE_LIMIT = {
 interface RateLimitEntry {
   count: number;
   resetTime: number;
+  lastRequestTime: number;
 }
 
 const userRateLimits = new Map<string, RateLimitEntry>();
 
+// Minimum delay between requests (in ms) - prevents rapid-fire requests
+const MIN_REQUEST_DELAY = 2000; // 2 seconds minimum between requests
+
 /**
  * Check per-user rate limit for AI generation
  * This is in addition to the IP-based rate limiting
+ * CRITICAL SECURITY FIX: Added minimum delay between requests
  */
-function checkUserRateLimit(userId: string): { allowed: boolean; remaining: number; resetTime: number } {
+function checkUserRateLimit(userId: string): { allowed: boolean; remaining: number; resetTime: number; retryAfter?: number } {
   const now = Date.now();
   const entry = userRateLimits.get(userId);
 
@@ -44,7 +50,8 @@ function checkUserRateLimit(userId: string): { allowed: boolean; remaining: numb
     // Create new entry
     const newEntry: RateLimitEntry = {
       count: 1,
-      resetTime: now + AI_GENERATION_RATE_LIMIT.windowMs
+      resetTime: now + AI_GENERATION_RATE_LIMIT.windowMs,
+      lastRequestTime: now
     };
     userRateLimits.set(userId, newEntry);
     return {
@@ -54,8 +61,21 @@ function checkUserRateLimit(userId: string): { allowed: boolean; remaining: numb
     };
   }
 
+  // CRITICAL SECURITY FIX: Check minimum delay between requests
+  const timeSinceLastRequest = now - entry.lastRequestTime;
+  if (timeSinceLastRequest < MIN_REQUEST_DELAY) {
+    const retryAfter = Math.ceil((MIN_REQUEST_DELAY - timeSinceLastRequest) / 1000);
+    return {
+      allowed: false,
+      remaining: 0,
+      resetTime: entry.resetTime,
+      retryAfter
+    };
+  }
+
   // Increment count
   entry.count++;
+  entry.lastRequestTime = now;
 
   const allowed = entry.count <= AI_GENERATION_RATE_LIMIT.maxRequests;
   const remaining = Math.max(0, AI_GENERATION_RATE_LIMIT.maxRequests - entry.count);
@@ -67,11 +87,20 @@ function checkUserRateLimit(userId: string): { allowed: boolean; remaining: numb
   };
 }
 
+/**
+ * Delay function for adding artificial delay between requests
+ * CRITICAL SECURITY FIX: Prevents rapid-fire API calls
+ */
+function delay(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 // Cleanup old entries every 10 minutes
 setInterval(() => {
   const now = Date.now();
   for (const [userId, entry] of userRateLimits.entries()) {
-    if (entry.resetTime < now) {
+    // Clean up entries that have expired AND haven't been used recently
+    if (entry.resetTime < now && (now - entry.lastRequestTime > 60 * 60 * 1000)) {
       userRateLimits.delete(userId);
     }
   }
@@ -96,7 +125,7 @@ export default async function handler(
                  (session.user as { id?: string })?.id || 
                  'unknown';
 
-  // Apply per-user rate limiting for AI generation
+  // CRITICAL SECURITY FIX: Apply per-user rate limiting for AI generation
   const userRateLimit = checkUserRateLimit(userId);
   
   // Set rate limit headers
@@ -108,9 +137,13 @@ export default async function handler(
     console.warn(`[RATE LIMIT] User ${userId} exceeded AI generation limit`);
     return res.status(429).json({
       error: AI_GENERATION_RATE_LIMIT.message,
-      retryAfter: Math.ceil((userRateLimit.resetTime - Date.now()) / 1000)
+      retryAfter: userRateLimit.retryAfter || Math.ceil((userRateLimit.resetTime - Date.now()) / 1000)
     });
   }
+
+  // CRITICAL SECURITY FIX: Add artificial delay to prevent rapid-fire requests
+  // This helps prevent API abuse and reduces costs
+  await delay(1000); // 1 second delay before processing
 
   const config: AIGenerationConfig = req.body;
 

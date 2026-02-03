@@ -6,6 +6,33 @@ import { withCSRFProtection } from '@/lib/security/csrf';
 import formidable from 'formidable';
 import fs from 'fs/promises';
 
+/**
+ * Sanitize slug to prevent path traversal attacks
+ * Removes any characters that are not lowercase letters, numbers, or hyphens
+ */
+function sanitizeSlug(slug: string): string {
+  if (!slug || typeof slug !== 'string') {
+    throw new Error('Invalid slug: must be a non-empty string');
+  }
+
+  // Trim whitespace and convert to lowercase
+  const trimmed = slug.trim().toLowerCase();
+
+  // Check for path traversal attempts
+  if (trimmed.includes('..') || trimmed.includes('/') || trimmed.includes('\\')) {
+    throw new Error('Invalid slug: path traversal detected');
+  }
+
+  // Sanitize: remove any characters that are not lowercase letters, numbers, or hyphens
+  const sanitized = trimmed.replace(/[^a-z0-9-]/g, '').substring(0, 100);
+
+  if (sanitized.length === 0) {
+    throw new Error('Invalid slug: cannot be empty after sanitization');
+  }
+
+  return sanitized;
+}
+
 // Disable body parser for file uploads
 export const config = {
   api: {
@@ -67,7 +94,10 @@ async function handler(
     }
 
     // Generate slug from filename or use timestamp
-    const slug = fields.slug?.[0] || `blog-${Date.now()}`;
+    const rawSlug = fields.slug?.[0] || `blog-${Date.now()}`;
+
+    // Sanitize slug to prevent path traversal
+    const slug = sanitizeSlug(rawSlug);
 
     // Optimize image
     const result = await optimizer.optimizeImage(file, slug);

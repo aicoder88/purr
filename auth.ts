@@ -68,10 +68,14 @@ export const authConfig = {
             return null;
           }
 
-          const adminEmail = process.env.ADMIN_EMAIL || "admin@purrify.ca";
-          const adminPassword = process.env.ADMIN_PASSWORD || "admin123";
+          const adminEmail = process.env.ADMIN_EMAIL;
+          const adminPassword = process.env.ADMIN_PASSWORD;
           const editorEmail = process.env.EDITOR_EMAIL;
           const editorPassword = process.env.EDITOR_PASSWORD;
+
+          if (!adminEmail || !adminPassword) {
+            throw new Error('ADMIN_EMAIL and ADMIN_PASSWORD must be configured');
+          }
 
           if (
             email === adminEmail &&

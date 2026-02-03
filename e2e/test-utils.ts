@@ -8,8 +8,12 @@ import { Page, test } from '@playwright/test';
 export async function tryLogin(page: Page): Promise<boolean> {
   try {
     await page.goto('/admin/login');
-    const email = process.env.ADMIN_EMAIL || 'admin@purrify.ca';
-    const password = process.env.ADMIN_PASSWORD || 'admin123';
+    const email = process.env.ADMIN_EMAIL;
+    const password = process.env.ADMIN_PASSWORD;
+
+    if (!email || !password) {
+      throw new Error('ADMIN_EMAIL and ADMIN_PASSWORD must be configured');
+    }
 
     await page.fill('input[name="email"]', email);
     await page.fill('input[name="password"]', password);

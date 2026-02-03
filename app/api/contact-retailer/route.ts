@@ -27,6 +27,21 @@ const MAX_REQUESTS_PER_WINDOW = 3; // Stricter for retailer forms
 const ipRequestCounts = new Map<string, { count: number; resetTime: number }>();
 
 /**
+ * Sanitize string to prevent email header injection attacks
+ * Removes newlines and carriage returns that could be used to inject headers
+ */
+function sanitizeForEmail(input: string): string {
+  if (!input) return '';
+  
+  // Remove newlines, carriage returns, and null bytes
+  // These are the primary vectors for email header injection
+  return input
+    .replace(/[\r\n\0]/g, '')
+    .replace(/[\x00-\x1F\x7F]/g, '') // Remove control characters
+    .trim();
+}
+
+/**
  * Sanitize HTML content for email display
  */
 function sanitizeEmailHtml(input: string): string {
@@ -93,10 +108,11 @@ export async function POST(request: NextRequest) {
     if (isResendConfigured()) {
       const resend = new Resend(RESEND_CONFIG.apiKey);
 
-      const sanitizedBusinessName = sanitizeEmailHtml(data.businessName);
-      const sanitizedContactName = sanitizeEmailHtml(data.contactName);
-      const sanitizedEmail = sanitizeEmailHtml(data.email);
-      const sanitizedMessage = sanitizeEmailHtml(data.message);
+      // CRITICAL SECURITY FIX: Sanitize all inputs before including in email
+      const sanitizedBusinessName = sanitizeEmailHtml(sanitizeForEmail(data.businessName));
+      const sanitizedContactName = sanitizeEmailHtml(sanitizeForEmail(data.contactName));
+      const sanitizedEmail = sanitizeForEmail(data.email);
+      const sanitizedMessage = sanitizeEmailHtml(sanitizeForEmail(data.message));
 
       const emailHtml = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;">
@@ -135,25 +151,25 @@ export async function POST(request: NextRequest) {
       const { error } = await resend.emails.send({
         from: `${RESEND_CONFIG.fromName} <${RESEND_CONFIG.fromEmail}>`,
         to: RESEND_CONFIG.toEmail,
-        replyTo: data.email,
-        subject: `Retailer Partnership Application: ${data.businessName}`,
+        replyTo: sanitizedEmail,
+        subject: sanitizeForEmail(`Retailer Partnership Application: ${data.businessName}`),
         html: emailHtml,
         text: `
 New Retailer Partnership Application
 
 Business Information:
-- Business Name: ${data.businessName}
-- Contact Name: ${data.contactName}
-- Email: ${data.email}
-${data.phone ? `- Phone: ${data.phone}` : ''}
-${data.position ? `- Position: ${data.position}` : ''}
-${data.businessType ? `- Business Type: ${data.businessType}` : ''}
-${data.locations ? `- Locations: ${data.locations}` : ''}
+- Business Name: ${sanitizedBusinessName}
+- Contact Name: ${sanitizedContactName}
+- Email: ${sanitizedEmail}
+${data.phone ? `- Phone: ${sanitizeForEmail(data.phone)}` : ''}
+${data.position ? `- Position: ${sanitizeForEmail(data.position)}` : ''}
+${data.businessType ? `- Business Type: ${sanitizeForEmail(data.businessType)}` : ''}
+${data.locations ? `- Locations: ${sanitizeForEmail(data.locations)}` : ''}
 
-${data.currentProducts ? `Current Products:\n${data.currentProducts}\n` : ''}
+${data.currentProducts ? `Current Products:\n${sanitizeForEmail(data.currentProducts)}\n` : ''}
 
 Message:
-${data.message}
+${sanitizedMessage}
 
 ---
 Received: ${new Date().toLocaleString()}
