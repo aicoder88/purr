@@ -1,14 +1,6 @@
-import type { Metadata } from 'next';
-import DashboardContent from './DashboardContent';
+"use client";
 
-export const metadata: Metadata = {
-  title: 'Affiliate Dashboard - Purrify',
-  description: 'Track your affiliate earnings, conversions, and performance metrics.',
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
+import DashboardContent from './DashboardContent';
 
 export default function AffiliateDashboardPage() {
   return <DashboardContent />;

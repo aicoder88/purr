@@ -55,6 +55,7 @@ export const en = {
     shipsToUSA: "Ships to USA",
     // Menu controls
     toggleMenu: "Toggle menu",
+    toggleTheme: "Toggle theme",
     signOut: "Sign Out",
     signedIn: "Signed in",
     // B2B pivot keys
@@ -786,7 +787,7 @@ export const en = {
     testimonials: "Testimonials",
     retailers: "For Retailers",
     retailerPortal: "Retailer Portal",
-    hospitality: "Hospitality",
+    hospitality: "For Hospitality",
     groomers: "For Groomers",
     shelters: "Shelters",
     b2bInquiry: "B2B Inquiry",
@@ -3643,6 +3644,155 @@ export const en = {
       }
     },
     backToLearn: "Back to Learn"
+  },
+
+  // Veterinarians Page
+  veterinarians: {
+    seo: {
+      pageTitle: "Purrify for Veterinarians | Natural Odor Control for Clinics",
+      description: "Help your feline patients' families eliminate litter box odor at home. Veterinary-recommended activated carbon solution with no fragrances or chemicals.",
+      keywords: "veterinarian odor control, vet clinic cat litter smell, natural pet odor solution, veterinary recommended deodorizer",
+      openGraphAlt: "Veterinarian recommended activated carbon litter additive"
+    },
+    hero: {
+      badge: "Trusted by Veterinary Professionals",
+      titleLine1: "Help Your Clients",
+      titleLine2: "Eliminate Home Odors",
+      description: "Give your clients a safe, natural solution for litter box odor that actually works. No fragrances to irritate sensitive cats—just pure activated carbon science.",
+      highlight: "Vet Recommended",
+      stats: {
+        natural: "100% Natural",
+        chemicals: "No Chemicals",
+        days: "7-Day Freshness"
+      },
+      cta: {
+        primary: "Partner With Us",
+        secondary: "Learn More"
+      },
+      trustedBy: "Trusted by veterinary clinics across North America",
+      badges: {
+        fragrance: "Fragrance-Free",
+        natural: "All Natural",
+        sensitive: "Sensitive Cat Safe"
+      },
+      valueProps: {
+        health: {
+          title: "Health First",
+          subtitle: "No Irritating Fragrances",
+          description: "Unlike scented litters and sprays that can cause respiratory issues, Purrify uses pure activated carbon with zero additives."
+        },
+        ammonia: {
+          title: "Ammonia Control",
+          subtitle: "Neutralizes at Molecular Level",
+          description: "Traps ammonia molecules—the primary cause of litter box odor—instead of masking them with perfumes."
+        },
+        revenue: {
+          title: "Revenue Opportunity",
+          subtitle: "Retail in Your Clinic",
+          description: "Offer clients a solution they can take home. Competitive wholesale pricing with healthy margins."
+        }
+      }
+    }
+  },
+
+  // Cat Cafes Page
+  catCafes: {
+    seo: {
+      pageTitle: "Purrify for Cat Cafes | Keep Your Space Fresh",
+      description: "The secret weapon of successful cat cafes. Eliminate odors from multiple cats without covering up smells with heavy fragrances.",
+      keywords: "cat cafe odor control, multiple cats smell solution, commercial cat odor eliminator, cat cafe hygiene",
+      openGraphAlt: "Cat cafe odor elimination solution"
+    },
+    hero: {
+      badge: "Cat Cafe Approved",
+      titleLine1: "Happy Cats.",
+      titleLine2: "Fresh Space.",
+      description: "Cat cafes trust Purrify to keep their spaces smelling clean without overwhelming fragrances that stress cats or bother customers.",
+      stats: {
+        days: "7+ Days",
+        fragrances: "0 Fragrances",
+        natural: "100% Natural"
+      },
+      cta: {
+        primary: "Get Wholesale Pricing",
+        secondary: "Learn More"
+      }
+    }
+  },
+
+  // Shelters Page  
+  shelters: {
+    seo: {
+      pageTitle: "Purrify for Shelters | Odor Control for Rescue Organizations",
+      description: "Discounted pricing for animal shelters and rescue organizations. Help cats get adopted faster by eliminating odor barriers.",
+      keywords: "animal shelter odor control, rescue cat litter smell, shelter deodorizer discount, nonprofit pet odor solution",
+      openGraphAlt: "Shelter discount odor control program"
+    },
+    hero: {
+      badge: "Shelter Partner Program",
+      titleLine1: "Help More Cats",
+      titleLine2: "Find Homes",
+      description: "Special pricing for shelters and rescues. When potential adopters don't smell litter boxes, cats get adopted faster.",
+      stats: {
+        cats: "1000+ Cats",
+        shelters: "Partner Shelters",
+        natural: "100% Natural"
+      },
+      cta: {
+        primary: "Apply for Discount",
+        secondary: "Learn More"
+      }
+    }
+  },
+
+  // Groomers Page
+  groomers: {
+    seo: {
+      pageTitle: "Purrify for Groomers | Complete Odor Solution",
+      description: "Offer clients a complete odor solution. From grooming services to home litter box freshness—be their trusted pet care partner.",
+      keywords: "pet groomer odor control, grooming salon smell solution, cat groomer deodorizer, pet care professional",
+      openGraphAlt: "Professional groomer odor control solution"
+    },
+    hero: {
+      badge: "Professional Partner",
+      titleLine1: "Complete Care",
+      titleLine2: "From Groom to Home",
+      description: "Differentiate your grooming business by offering clients a take-home solution for litter box odor that actually works.",
+      stats: {
+        freshness: "7-Day Fresh",
+        clients: "Happy Clients",
+        natural: "All Natural"
+      },
+      cta: {
+        primary: "Become a Partner",
+        secondary: "Learn More"
+      }
+    }
+  },
+
+  // Hospitality Page
+  hospitality: {
+    seo: {
+      pageTitle: "Purrify for Pet-Friendly Hospitality | Zero Odor Solution",
+      description: "Keep your pet-friendly Airbnbs and rentals odor-free. Discreet solution for hosts who accept pets.",
+      keywords: "pet friendly airbnb, cat friendly rental, vacation rental pets, odor control rental property",
+      openGraphAlt: "Hospitality partner program"
+    },
+    hero: {
+      badge: "Hospitality Partner Program",
+      titleLine1: "Pet-Friendly Stays",
+      titleLine2: "Zero Odor",
+      description: "Accept pets without compromising freshness. Discreet solution between bookings.",
+      stats: {
+        reviews: "5-Star Reviews",
+        bookings: "More Bookings",
+        natural: "All Natural"
+      },
+      cta: {
+        primary: "Request a Sample",
+        secondary: "View Host Solutions"
+      }
+    }
   }
 
 };

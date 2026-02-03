@@ -1,14 +1,6 @@
-import type { Metadata } from 'next';
-import PayoutsContent from './PayoutsContent';
+"use client";
 
-export const metadata: Metadata = {
-  title: 'Payouts - Purrify Affiliate',
-  description: 'Manage your earnings and request payouts.',
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
+import PayoutsContent from './PayoutsContent';
 
 export default function AffiliatePayoutsPage() {
   return <PayoutsContent />;

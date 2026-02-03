@@ -8,7 +8,7 @@
 import * as Sentry from '@sentry/nextjs';
 import { requireAuth } from '@/lib/auth/session';
 import prismaClient from '@/lib/prisma';
-import { calculateSignificance } from '@/lib/ab-testing';
+import { calculateSignificance } from '@/lib/ab-testing-server';
 
 interface ABTestResponse {
   success: boolean;

@@ -1,14 +1,6 @@
-import type { Metadata } from 'next';
-import LoginContent from './LoginContent';
+"use client";
 
-export const metadata: Metadata = {
-  title: 'Affiliate Login - Purrify',
-  description: 'Sign in to your Purrify affiliate dashboard to track earnings and manage your account.',
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
+import LoginContent from './LoginContent';
 
 export default function AffiliateLoginPage() {
   return <LoginContent />;

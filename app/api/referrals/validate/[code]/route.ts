@@ -89,9 +89,9 @@ const getMockReferralCode = (code: string): MockReferralCode | null => {
 
 export async function GET(
   _req: Request,
-  { params }: { params: { code: string } }
+  { params }: { params: Promise<{ code: string }> }
 ): Promise<Response> {
-  const { code } = params;
+  const { code } = await params;
 
   if (!code) {
     return Response.json({

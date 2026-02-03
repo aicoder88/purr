@@ -1,14 +1,6 @@
-import type { Metadata } from 'next';
-import OfflineContent from './OfflineContent';
+"use client";
 
-export const metadata: Metadata = {
-  title: 'You are Offline | Purrify',
-  description: 'It looks like you are offline. Please check your internet connection and try again.',
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
+import OfflineContent from './OfflineContent';
 
 export default function OfflinePage() {
   return <OfflineContent />;

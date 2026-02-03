@@ -1,113 +1,76 @@
-import prisma from './prisma';
-import { ABVariant, AB_COOKIE_PREFIX, AB_VIEWED_PREFIX } from './ab-testing';
-
 /**
- * Get variant from request cookies (server-side)
+ * A/B Testing Server Utilities
+ *
+ * Server-safe utilities that don't depend on React.
+ * These can be imported by both server and client code.
  */
-export function getServerVariant(
-    testSlug: string,
-    cookies: Record<string, string>,
-    trafficSplit: number = 50
-): { variant: ABVariant; isNew: boolean } {
-    const cookieName = `${AB_COOKIE_PREFIX}${testSlug}`;
 
-    // Check for existing assignment
-    if (cookies[cookieName]) {
-        return { variant: cookies[cookieName] as ABVariant, isNew: false };
-    }
+export type ABVariant = 'control' | 'variant';
 
-    // Assign new variant
-    const variant: ABVariant = Math.random() * 100 < trafficSplit ? 'variant' : 'control';
-    return { variant, isNew: true };
+export interface ABTestResult {
+  testSlug: string;
+  variant: ABVariant;
+  config: Record<string, unknown> | null;
 }
 
-/**
- * Parse cookies from request header
- */
-export function parseCookies(cookieHeader: string | undefined): Record<string, string> {
-    if (!cookieHeader) return {};
+export const AB_COOKIE_PREFIX = 'purrify_ab_';
+export const AB_VIEWED_PREFIX = 'purrify_ab_viewed_';
 
-    return cookieHeader.split(';').reduce(
-        (acc, cookie) => {
-            const [name, ...valueParts] = cookie.trim().split('=');
-            acc[name] = valueParts.join('=');
-            return acc;
-        },
-        {} as Record<string, string>
-    );
-}
+// Test slugs as constants for type safety
+export const AB_TEST_SLUGS = {
+  HOMEPAGE_HERO: 'homepage-hero-test',
+  CTA_BUTTON_COLOR: 'cta-button-color-test',
+  SOCIAL_PROOF_POSITION: 'social-proof-position-test',
+} as const;
 
 /**
- * Record a view for an A/B test (server-side)
+ * Calculate statistical significance (simplified z-test)
+ * Returns confidence level (0-100%)
  */
-export async function recordView(testSlug: string, variant: ABVariant): Promise<void> {
-    if (!prisma) return;
+export function calculateSignificance(
+  controlViews: number,
+  controlConversions: number,
+  variantViews: number,
+  variantConversions: number
+): { confidence: number; winner: 'control' | 'variant' | 'none' } {
+  // Need minimum sample size
+  if (controlViews < 100 || variantViews < 100) {
+    return { confidence: 0, winner: 'none' };
+  }
 
-    try {
-        if (variant === 'control') {
-            await prisma.aBTest.update({
-                where: { slug: testSlug },
-                data: { controlViews: { increment: 1 } },
-            });
-        } else {
-            await prisma.aBTest.update({
-                where: { slug: testSlug },
-                data: { variantViews: { increment: 1 } },
-            });
-        }
-    } catch {
-        // Silently fail - don't break the page for tracking
-    }
-}
+  const controlRate = controlConversions / controlViews;
+  const variantRate = variantConversions / variantViews;
 
-/**
- * Record a conversion for an A/B test (server-side)
- */
-export async function recordConversion(testSlug: string, variant: ABVariant): Promise<void> {
-    if (!prisma) return;
+  // Pooled proportion
+  const pooledProp =
+    (controlConversions + variantConversions) / (controlViews + variantViews);
 
-    try {
-        if (variant === 'control') {
-            await prisma.aBTest.update({
-                where: { slug: testSlug },
-                data: { controlConversions: { increment: 1 } },
-            });
-        } else {
-            await prisma.aBTest.update({
-                where: { slug: testSlug },
-                data: { variantConversions: { increment: 1 } },
-            });
-        }
-    } catch {
-        // Silently fail - don't break the page for tracking
-    }
-}
+  // Standard error
+  const se = Math.sqrt(
+    pooledProp * (1 - pooledProp) * (1 / controlViews + 1 / variantViews)
+  );
 
-/**
- * Get active A/B test for a page path
- */
-export async function getActiveTest(pagePath: string): Promise<{ testSlug: string; variant: ABVariant; config: Record<string, unknown> | null } | null> {
-    if (!prisma) return null;
+  if (se === 0) {
+    return { confidence: 0, winner: 'none' };
+  }
 
-    try {
-        const test = await prisma.aBTest.findFirst({
-            where: {
-                targetPage: pagePath,
-                status: 'RUNNING',
-            },
-        });
+  // Z-score
+  const zScore = Math.abs(variantRate - controlRate) / se;
 
-        if (!test) return null;
+  // Convert to confidence level (approximation)
+  // z=1.96 -> 95%, z=2.58 -> 99%
+  let confidence = 0;
+  if (zScore >= 2.58) confidence = 99;
+  else if (zScore >= 1.96) confidence = 95;
+  else if (zScore >= 1.65) confidence = 90;
+  else if (zScore >= 1.28) confidence = 80;
+  else confidence = Math.round(zScore * 40); // rough approximation
 
-        // Get variant for this session (server-side assignment)
-        const variant: ABVariant = Math.random() * 100 < test.trafficSplit ? 'variant' : 'control';
+  // Determine winner
+  let winner: 'control' | 'variant' | 'none' = 'none';
+  if (confidence >= 90) {
+    winner = variantRate > controlRate ? 'variant' : 'control';
+  }
 
-        return {
-            testSlug: test.slug,
-            variant,
-            config: variant === 'control' ? (test.controlConfig as Record<string, unknown>) : (test.variantConfig as Record<string, unknown>),
-        };
-    } catch {
-        return null;
-    }
+  return { confidence: Math.min(99, confidence), winner };
 }

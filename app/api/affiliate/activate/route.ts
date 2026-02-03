@@ -7,10 +7,20 @@ import prisma from '@/lib/prisma';
 import { auth } from '@/auth';
 import Stripe from 'stripe';
 
-// Initialize Stripe
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2025-08-27.basil',
-});
+// Lazy initialize Stripe
+let stripe: Stripe | null = null;
+function getStripe(): Stripe {
+  if (!stripe) {
+    const key = process.env.STRIPE_SECRET_KEY;
+    if (!key) {
+      throw new Error('STRIPE_SECRET_KEY is not configured');
+    }
+    stripe = new Stripe(key, {
+      apiVersion: '2025-08-27.basil',
+    });
+  }
+  return stripe;
+}
 
 // Starter Kit Price (in cents)
 const STARTER_KIT_PRICE = 4900; // $49.00 CAD
@@ -55,7 +65,7 @@ export async function POST(): Promise<Response> {
     }
 
     // Create Stripe Checkout session for the starter kit
-    const checkoutSession = await stripe.checkout.sessions.create({
+    const checkoutSession = await getStripe().checkout.sessions.create({
       payment_method_types: ['card'],
       mode: 'payment',
       customer_email: affiliate.email,

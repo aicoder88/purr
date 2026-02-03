@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { ShoppingBag, MapPin, Clock, Star, CheckCircle, Info } from 'lucide-react';
 

@@ -174,9 +174,9 @@ const getMockReferralStats = (userId: string): ReferralStats => {
 
 export async function GET(
   req: Request,
-  { params }: { params: { userId: string } }
+  { params }: { params: Promise<{ userId: string }> }
 ): Promise<Response> {
-  const userId = params.userId;
+  const { userId } = await params;
 
   // Get client IP for rate limiting
   const forwardedFor = req.headers.get('x-forwarded-for');

@@ -6,15 +6,36 @@ import prisma from '@/lib/prisma';
 import { OrderConfirmationEmailHTML, getOrderConfirmationEmailSubject } from '@/emails/order-confirmation';
 import { recordAffiliateConversion, parseAffiliateMetadata } from '@/lib/affiliate/conversion';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2025-08-27.basil',
-});
+// Lazy initialize Stripe
+let stripe: Stripe | null = null;
+function getStripe(): Stripe {
+  if (!stripe) {
+    const key = process.env.STRIPE_SECRET_KEY;
+    if (!key) {
+      throw new Error('STRIPE_SECRET_KEY is not configured');
+    }
+    stripe = new Stripe(key, {
+      apiVersion: '2025-08-27.basil',
+    });
+  }
+  return stripe;
+}
 
-const webhookSecretLive = process.env.STRIPE_WEBHOOK_SECRET!;
+const webhookSecretLive = process.env.STRIPE_WEBHOOK_SECRET;
 const webhookSecretTest = process.env.STRIPE_WEBHOOK_SECRET_TEST;
 
-// Initialize Resend for sending emails directly
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazy initialize Resend for sending emails directly
+let resend: Resend | null = null;
+function getResend(): Resend {
+  if (!resend) {
+    const key = process.env.RESEND_API_KEY;
+    if (!key) {
+      throw new Error('RESEND_API_KEY is not configured');
+    }
+    resend = new Resend(key);
+  }
+  return resend;
+}
 
 // Admin email for notifications
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'hello@purrify.ca';
@@ -89,7 +110,7 @@ async function sendAdminNotification({
           </html>
         `;
 
-        const { data, error } = await resend.emails.send({
+        const { data, error } = await getResend().emails.send({
           from: 'Purrify Notifications <support@purrify.ca>',
           to: ADMIN_EMAIL,
           subject: `🎉 New Sale: $${formattedAmount} - ${productName}`,
@@ -175,7 +196,7 @@ async function sendThankYouEmail({
 
         const emailSubject = getOrderConfirmationEmailSubject(locale);
 
-        const { data, error } = await resend.emails.send({
+        const { data, error } = await getResend().emails.send({
           from: 'Purrify Support <support@purrify.ca>',
           to: customerEmail,
           subject: emailSubject,
@@ -235,7 +256,7 @@ export async function POST(req: NextRequest): Promise<Response> {
 
       for (const secret of secretsToTry) {
         try {
-          event = stripe.webhooks.constructEvent(payload, sig, secret);
+          event = getStripe().webhooks.constructEvent(payload, sig, secret);
           span.setAttribute('eventType', event.type);
           span.setAttribute('eventId', event.id);
           span.setAttribute('webhookMode', secret === webhookSecretLive ? 'live' : 'test');
@@ -298,7 +319,7 @@ export async function POST(req: NextRequest): Promise<Response> {
                   // Send activation confirmation email
                   const customerEmail = session.customer_details?.email;
                   if (customerEmail) {
-                    await resend.emails.send({
+                    await getResend().emails.send({
                       from: 'Purrify Affiliates <support@purrify.ca>',
                       to: customerEmail,
                       subject: 'Your Purrify Affiliate Account is Now Active! 🎉',
@@ -348,7 +369,7 @@ export async function POST(req: NextRequest): Promise<Response> {
             const amount = session.amount_total || 0;
 
             try {
-              const lineItems = await stripe.checkout.sessions.listLineItems(session.id, { limit: 5 });
+              const lineItems = await getStripe().checkout.sessions.listLineItems(session.id, { limit: 5 });
               if (lineItems.data.length > 0) {
                 const item = lineItems.data[0];
                 productName = item.description || item.price?.product?.toString() || 'Purrify';

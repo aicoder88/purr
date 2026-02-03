@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * A/B Testing Framework
  *
@@ -6,16 +8,23 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 
-export type ABVariant = 'control' | 'variant';
+// Import types from server-safe module
+import type { ABVariant, ABTestResult } from './ab-testing-server';
+export type { ABVariant, ABTestResult };
 
-export interface ABTestResult {
-  testSlug: string;
-  variant: ABVariant;
-  config: Record<string, unknown> | null;
-}
-
-export const AB_COOKIE_PREFIX = 'purrify_ab_';
-export const AB_VIEWED_PREFIX = 'purrify_ab_viewed_';
+// Import constants from server-safe module
+import {
+  AB_COOKIE_PREFIX,
+  AB_VIEWED_PREFIX,
+  AB_TEST_SLUGS,
+  calculateSignificance,
+} from './ab-testing-server';
+export {
+  AB_COOKIE_PREFIX,
+  AB_VIEWED_PREFIX,
+  AB_TEST_SLUGS,
+  calculateSignificance,
+};
 
 /**
  * Check if code is running in browser
@@ -91,58 +100,6 @@ function markViewTracked(testSlug: string): void {
 }
 
 /**
- * Calculate statistical significance (simplified z-test)
- * Returns confidence level (0-100%)
- */
-export function calculateSignificance(
-  controlViews: number,
-  controlConversions: number,
-  variantViews: number,
-  variantConversions: number
-): { confidence: number; winner: 'control' | 'variant' | 'none' } {
-  // Need minimum sample size
-  if (controlViews < 100 || variantViews < 100) {
-    return { confidence: 0, winner: 'none' };
-  }
-
-  const controlRate = controlConversions / controlViews;
-  const variantRate = variantConversions / variantViews;
-
-  // Pooled proportion
-  const pooledProp =
-    (controlConversions + variantConversions) / (controlViews + variantViews);
-
-  // Standard error
-  const se = Math.sqrt(
-    pooledProp * (1 - pooledProp) * (1 / controlViews + 1 / variantViews)
-  );
-
-  if (se === 0) {
-    return { confidence: 0, winner: 'none' };
-  }
-
-  // Z-score
-  const zScore = Math.abs(variantRate - controlRate) / se;
-
-  // Convert to confidence level (approximation)
-  // z=1.96 -> 95%, z=2.58 -> 99%
-  let confidence = 0;
-  if (zScore >= 2.58) confidence = 99;
-  else if (zScore >= 1.96) confidence = 95;
-  else if (zScore >= 1.65) confidence = 90;
-  else if (zScore >= 1.28) confidence = 80;
-  else confidence = Math.round(zScore * 40); // rough approximation
-
-  // Determine winner
-  let winner: 'control' | 'variant' | 'none' = 'none';
-  if (confidence >= 90) {
-    winner = variantRate > controlRate ? 'variant' : 'control';
-  }
-
-  return { confidence: Math.min(99, confidence), winner };
-}
-
-/**
  * React hook for A/B testing (client-side) - basic version
  */
 export function useABTest(testSlug: string, trafficSplit: number = 50): {
@@ -205,10 +162,3 @@ export function useABTestWithTracking(
     isLoaded,
   };
 }
-
-// Test slugs as constants for type safety
-export const AB_TEST_SLUGS = {
-  HOMEPAGE_HERO: 'homepage-hero-test',
-  CTA_BUTTON_COLOR: 'cta-button-color-test',
-  SOCIAL_PROOF_POSITION: 'social-proof-position-test',
-} as const;

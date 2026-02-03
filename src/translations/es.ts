@@ -420,6 +420,7 @@ export const es: TranslationType = {
     address: "109-17680 Rue Charles, Mirabel, QC J7J 0T6",
     phone: CONTACT_INFO.phone,
     email: "hello@purrify.ca",
+    courriel: "hello@purrify.ca",
     hours: {
       title: "Horario de Atencion",
       monday: "08:00 am - 8:00 pm",
@@ -706,7 +707,7 @@ export const es: TranslationType = {
     testimonials: "Testimonios",
     retailers: "Para Minoristas",
     retailerPortal: "Portal de Minoristas",
-    hospitality: "Hostelería",
+    hospitality: "Para Hoteles",
     groomers: "Para Peluqueros",
     shelters: "Refugios",
     b2bInquiry: "Consulta B2B",
@@ -3565,5 +3566,155 @@ export const es: TranslationType = {
       }
     },
     backToLearn: "Volver a Aprender"
+  },
+
+  // Veterinarians Page
+  veterinarians: {
+    seo: {
+      pageTitle: "Purrify para Veterinarios | Control de Olores Natural para Clínicas",
+      description: "Ayude a las familias de sus pacientes felinos a eliminar el olor de la caja de arena en casa. Solución de carbón activado recomendada por veterinarios sin fragancias ni químicos.",
+      keywords: "control de olores veterinario, olor de caja de arena clínica veterinaria, solución de olores natural para mascotas, desodorizante recomendado por veterinarios",
+      openGraphAlt: "Aditivo de carbón activado para arena recomendado por veterinarios"
+    },
+    hero: {
+      badge: "Confiado por Profesionales Veterinarios",
+      titleLine1: "Ayude a Sus Clientes",
+      titleLine2: "a Eliminar Olores en Casa",
+      description: "Ofrezca a sus clientes una solución segura y natural para el olor de la caja de arena que realmente funciona. Sin fragancias para irritar gatos sensibles—solo ciencia pura de carbón activado.",
+      highlight: "Recomendado por Veterinarios",
+      stats: {
+        natural: "100% Natural",
+        chemicals: "Sin Químicos",
+        days: "Frescura por 7 Días"
+      },
+      cta: {
+        primary: "Asóciese Con Nosotros",
+        secondary: "Aprenda Más"
+      },
+      trustedBy: "Confiado por clínicas veterinarias en toda Norteamérica",
+      badges: {
+        fragrance: "Sin Fragancia",
+        natural: "Todo Natural",
+        sensitive: "Seguro para Gatos Sensibles"
+      },
+      valueProps: {
+        health: {
+          title: "Salud Primero",
+          subtitle: "Sin Fragancias Irritantes",
+          description: "A diferencia de las arenas perfumadas y sprays que pueden causar problemas respiratorios, Purrify usa carbón activado puro con cero aditivos."
+        },
+        ammonia: {
+          title: "Control de Amoníaco",
+          subtitle: "Neutraliza a Nivel Molecular",
+          description: "Atrapa las moléculas de amoníaco—la causa principal del olor de caja de arena—en lugar de enmascararlas con perfumes."
+        },
+        revenue: {
+          title: "Oportunidad de Ingresos",
+          subtitle: "Venta al Menudeo en Su Clínica",
+          description: "Ofrezca a los clientes una solución que pueden llevar a casa. Precios al por mayor competitivos con márgenes saludables."
+        }
+      }
+    }
+  },
+
+  // Cat Cafes Page
+  catCafes: {
+    seo: {
+      pageTitle: "Purrify para Cafés de Gatos | Mantenga Su Espacio Fresco",
+      description: "El arma secreta de los cafés de gatos exitosos. Elimina olores de múltiples gatos sin cubrir los olores con fragancias fuertes.",
+      keywords: "control de olores café de gatos, solución de olor para múltiples gatos, eliminador de olores comercial para gatos, higiene de café de gatos",
+      openGraphAlt: "Solución de eliminación de olores para cafés de gatos"
+    },
+    hero: {
+      badge: "Aprobado por Cafés de Gatos",
+      titleLine1: "Gatos Felices.",
+      titleLine2: "Espacio Fresco.",
+      description: "Los cafés de gatos confían en Purrify para mantener sus espacios oliendo limpios sin fragancias abrumadoras que estresan a los gatos o molestan a los clientes.",
+      stats: {
+        days: "7+ Días",
+        fragrances: "0 Fragancias",
+        natural: "100% Natural"
+      },
+      cta: {
+        primary: "Obtener Precios al Por Mayor",
+        secondary: "Aprender Más"
+      }
+    }
+  },
+
+  // Shelters Page  
+  shelters: {
+    seo: {
+      pageTitle: "Purrify para Refugios | Control de Olores para Organizaciones de Rescate",
+      description: "Precios con descuento para refugios de animales y organizaciones de rescate. Ayude a los gatos a ser adoptados más rápido eliminando barreras de olor.",
+      keywords: "control de olores refugio de animales, olor de caja de arena gato de rescate, descuento desodorizante refugio, solución de olores para mascotas sin fines de lucro",
+      openGraphAlt: "Programa de descuento de control de olores para refugios"
+    },
+    hero: {
+      badge: "Programa de Asociación con Refugios",
+      titleLine1: "Ayude a Más Gatos",
+      titleLine2: "a Encontrar Hogares",
+      description: "Precios especiales para refugios y rescates. Cuando los adoptantes potenciales no huelen cajas de arena, los gatos son adoptados más rápido.",
+      stats: {
+        cats: "1000+ Gatos",
+        shelters: "Refugios Asociados",
+        natural: "100% Natural"
+      },
+      cta: {
+        primary: "Aplicar para Descuento",
+        secondary: "Aprender Más"
+      }
+    }
+  },
+
+  // Groomers Page
+  groomers: {
+    seo: {
+      pageTitle: "Purrify para Peluqueros | Solución Completa de Olores",
+      description: "Ofrezca a los clientes una solución completa de olores. Desde servicios de peluquería hasta frescura de caja de arena en casa—sea su socio de cuidado de mascotas de confianza.",
+      keywords: "control de olores peluquero de mascotas, solución de olor para salón de peluquería, desodorizante para peluquero de gatos, profesional de cuidado de mascotas",
+      openGraphAlt: "Solución profesional de control de olores para peluqueros"
+    },
+    hero: {
+      badge: "Socio Profesional",
+      titleLine1: "Cuidado Completo",
+      titleLine2: "De la Peluquería al Hogar",
+      description: "Diferencie su negocio de peluquería ofreciendo a los clientes una solución para llevar a casa para el olor de la caja de arena que realmente funciona.",
+      stats: {
+        freshness: "Frescura por 7 Días",
+        clients: "Clientes Felices",
+        natural: "Todo Natural"
+      },
+      cta: {
+        primary: "Convertirse en Socio",
+        secondary: "Aprender Más"
+      }
+    }
+  },
+
+  // Hospitality Page
+  hospitality: {
+    seo: {
+      pageTitle: "Purrify para Hoteles Pet-Friendly | Solución Cero Olor",
+      description: "Mantenga sus Airbnbs y alquileres pet-friendly sin olores. Solución discreta para anfitriones que aceptan mascotas.",
+      keywords: "airbnb pet friendly, alquiler amigable con gatos, vacaciones con mascotas, control de olores propiedad de alquiler",
+      openGraphAlt: "Programa de socios de hospitalidad"
+    },
+    hero: {
+      badge: "Programa de Asociación Hospitalidad",
+      titleLine1: "Estancias Pet-Friendly",
+      titleLine2: "Cero Olor",
+      description: "Acepte mascotas sin comprometer la frescura. Solución discreta entre reservaciones.",
+      stats: {
+        reviews: "Reseñas 5 Estrellas",
+        bookings: "Más Reservas",
+        natural: "Todo Natural"
+      },
+      cta: {
+        primary: "Solicitar una Muestra",
+        secondary: "Ver Soluciones para Anfitriones"
+      }
+    }
   }
+
 };

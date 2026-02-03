@@ -1,14 +1,6 @@
-import type { Metadata } from 'next';
-import AssetsContent from './AssetsContent';
+"use client";
 
-export const metadata: Metadata = {
-  title: 'Marketing Assets - Purrify Affiliate',
-  description: 'Download banners, product images, and copy for your promotions.',
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
+import AssetsContent from './AssetsContent';
 
 export default function AffiliateAssetsPage() {
   return <AssetsContent />;

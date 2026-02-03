@@ -1,14 +1,6 @@
-import type { Metadata } from 'next';
-import LinksContent from './LinksContent';
+"use client";
 
-export const metadata: Metadata = {
-  title: 'Affiliate Links - Purrify',
-  description: 'Generate and manage your affiliate referral links.',
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
+import LinksContent from './LinksContent';
 
 export default function AffiliateLinksPage() {
   return <LinksContent />;

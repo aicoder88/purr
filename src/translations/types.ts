@@ -440,6 +440,7 @@ export interface TranslationType {
     address: string;
     phone: string;
     email: string;
+    courriel?: string;
     hours: {
       title?: string;
       monday: string;

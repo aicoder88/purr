@@ -1,14 +1,6 @@
-import type { Metadata } from 'next';
-import StatsContent from './StatsContent';
+"use client";
 
-export const metadata: Metadata = {
-  title: 'Performance Stats - Purrify Affiliate',
-  description: 'Track your affiliate performance over time.',
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
+import StatsContent from './StatsContent';
 
 export default function AffiliateStatsPage() {
   return <StatsContent />;

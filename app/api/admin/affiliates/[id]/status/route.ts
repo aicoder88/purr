@@ -17,7 +17,7 @@ const updateStatusSchema = z.object({
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   // Check authentication
   const session = await auth();
@@ -25,7 +25,7 @@ export async function PATCH(
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const { id } = params;
+  const { id } = await params;
 
   if (!prisma) {
     return Response.json({ error: 'Database connection error' }, { status: 500 });
