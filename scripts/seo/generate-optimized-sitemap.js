@@ -33,107 +33,110 @@ const ALL_LOCALES = ['en', 'fr', 'zh', 'es'];
 const LOCATION_LOCALES = ['en']; // Only index English location pages to avoid thin content penalty
 const BLOG_LOCALES = ['en']; // Blog is English only
 
-// Static pages with their locale support
+// Static pages with their locale support (all paths with trailing slashes)
 const PAGES = {
   // High priority pages
   highPriority: [
     { path: '', priority: 1.0, changefreq: 'daily', locales: ALL_LOCALES },
-    { path: '/products', priority: 0.9, changefreq: 'daily', locales: ALL_LOCALES },
-    { path: '/products/trial-size', priority: 0.9, changefreq: 'weekly', locales: ALL_LOCALES },
-    { path: '/products/standard', priority: 0.9, changefreq: 'weekly', locales: ALL_LOCALES },
-    { path: '/products/family-pack', priority: 0.9, changefreq: 'weekly', locales: ALL_LOCALES },
+    { path: '/products/', priority: 0.9, changefreq: 'daily', locales: ALL_LOCALES },
+    { path: '/products/trial-size/', priority: 0.9, changefreq: 'weekly', locales: ALL_LOCALES },
+    { path: '/products/standard/', priority: 0.9, changefreq: 'weekly', locales: ALL_LOCALES },
+    { path: '/products/family-pack/', priority: 0.9, changefreq: 'weekly', locales: ALL_LOCALES },
   ],
 
   // Blog pages (English only)
   blog: [
-    { path: '/blog', priority: 0.8, changefreq: 'weekly' },
-    { path: '/blog/activated-carbon-litter-additive-benefits', priority: 0.8, changefreq: 'monthly' },
-    { path: '/blog/activated-carbon-vs-baking-soda-comparison', priority: 0.8, changefreq: 'monthly' },
-    { path: '/blog/best-litter-odor-remover-small-apartments', priority: 0.8, changefreq: 'monthly' },
-    { path: '/blog/cat-litter-smell-worse-summer', priority: 0.8, changefreq: 'monthly' },
-    { path: '/blog/cat-litter-smell-worse-winter', priority: 0.8, changefreq: 'monthly' },
-    { path: '/blog/embarrassed-guests-visit-cat-litter-smell', priority: 0.8, changefreq: 'monthly' },
-    { path: '/blog/house-smells-like-cat-litter-solutions', priority: 0.8, changefreq: 'monthly' },
-    { path: '/blog/how-to-use-cat-litter-deodorizer', priority: 0.8, changefreq: 'monthly' },
-    { path: '/blog/most-powerful-odor-absorber', priority: 0.8, changefreq: 'monthly' },
-    { path: '/blog/multi-cat-litter-deodorizer-guide', priority: 0.8, changefreq: 'monthly' },
-    { path: '/blog/powder-vs-spray-litter-deodorizer', priority: 0.8, changefreq: 'monthly' },
-    { path: '/blog/strong-cat-urine-smell-litter-box', priority: 0.8, changefreq: 'monthly' },
-    { path: '/blog/tried-every-litter-deodorizer-90-days-results', priority: 0.8, changefreq: 'monthly' },
-    { path: '/blog/tried-everything-cat-litter-smell-solutions', priority: 0.8, changefreq: 'monthly' },
-    { path: '/blog/using-deodorizers-with-kittens', priority: 0.8, changefreq: 'monthly' },
-    { path: '/blog/space-station-secret-fresh-home-cat-owners', priority: 0.8, changefreq: 'monthly' },
+    { path: '/blog/', priority: 0.8, changefreq: 'weekly' },
+    { path: '/blog/activated-carbon-litter-additive-benefits/', priority: 0.8, changefreq: 'monthly' },
+    { path: '/blog/activated-carbon-vs-baking-soda-comparison/', priority: 0.8, changefreq: 'monthly' },
+    { path: '/blog/best-litter-odor-remover-small-apartments/', priority: 0.8, changefreq: 'monthly' },
+    { path: '/blog/cat-litter-smell-worse-summer/', priority: 0.8, changefreq: 'monthly' },
+    { path: '/blog/cat-litter-smell-worse-winter/', priority: 0.8, changefreq: 'monthly' },
+    { path: '/blog/embarrassed-guests-visit-cat-litter-smell/', priority: 0.8, changefreq: 'monthly' },
+    { path: '/blog/house-smells-like-cat-litter-solutions/', priority: 0.8, changefreq: 'monthly' },
+    { path: '/blog/how-to-use-cat-litter-deodorizer/', priority: 0.8, changefreq: 'monthly' },
+    { path: '/blog/most-powerful-odor-absorber/', priority: 0.8, changefreq: 'monthly' },
+    { path: '/blog/multi-cat-litter-deodorizer-guide/', priority: 0.8, changefreq: 'monthly' },
+    { path: '/blog/powder-vs-spray-litter-deodorizer/', priority: 0.8, changefreq: 'monthly' },
+    { path: '/blog/strong-cat-urine-smell-litter-box/', priority: 0.8, changefreq: 'monthly' },
+    { path: '/blog/tried-every-litter-deodorizer-90-days-results/', priority: 0.8, changefreq: 'monthly' },
+    { path: '/blog/tried-everything-cat-litter-smell-solutions/', priority: 0.8, changefreq: 'monthly' },
+    { path: '/blog/using-deodorizers-with-kittens/', priority: 0.8, changefreq: 'monthly' },
+    { path: '/blog/space-station-secret-fresh-home-cat-owners/', priority: 0.8, changefreq: 'monthly' },
   ],
 
   // Learn/educational pages
   learn: [
-    { path: '/learn/how-it-works', priority: 0.8, changefreq: 'monthly', locales: ALL_LOCALES },
-    { path: '/learn/faq', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
-    { path: '/learn/safety', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
-    { path: '/learn/science', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
-    { path: '/learn/activated-carbon-benefits', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
-    { path: '/learn/activated-carbon-vs-baking-soda-deodorizers', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
-    { path: '/learn/cat-litter-guide', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
-    { path: '/learn/how-to-use-deodorizer', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
-    { path: '/learn/using-deodorizers-with-kittens', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
-    { path: '/learn/solutions/ammonia-smell-cat-litter', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
-    { path: '/learn/solutions/apartment-cat-smell-solution', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
-    { path: '/learn/solutions/how-to-neutralize-ammonia-cat-litter', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
-    { path: '/learn/solutions/litter-box-smell-elimination', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
-    { path: '/learn/solutions/multiple-cats-odor-control', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
-    { path: '/learn/solutions/natural-cat-litter-additive', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
-    { path: '/learn/solutions/senior-cat-litter-solutions', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
+    { path: '/learn/how-it-works/', priority: 0.8, changefreq: 'monthly', locales: ALL_LOCALES },
+    { path: '/learn/faq/', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
+    { path: '/learn/safety/', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
+    { path: '/learn/science/', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
+    { path: '/learn/activated-carbon-benefits/', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
+    { path: '/learn/activated-carbon-vs-baking-soda-deodorizers/', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
+    { path: '/learn/cat-litter-guide/', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
+    { path: '/learn/how-to-use-deodorizer/', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
+    { path: '/learn/using-deodorizers-with-kittens/', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
+    { path: '/learn/solutions/ammonia-smell-cat-litter/', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
+    { path: '/learn/solutions/apartment-cat-smell-solution/', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
+    { path: '/learn/solutions/how-to-neutralize-ammonia-cat-litter/', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
+    { path: '/learn/solutions/litter-box-smell-elimination/', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
+    { path: '/learn/solutions/multiple-cats-odor-control/', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
+    { path: '/learn/solutions/natural-cat-litter-additive/', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
+    { path: '/learn/solutions/senior-cat-litter-solutions/', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
   ],
 
   // B2B and business pages
   business: [
-    { path: '/b2b', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
-    { path: '/b2b/sell-sheet', priority: 0.6, changefreq: 'monthly', locales: ['en'] },
-    { path: '/retailers', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
-    { path: '/stockists', priority: 0.7, changefreq: 'weekly', locales: ALL_LOCALES },
-    { path: '/shelters', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
-    { path: '/groomers', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
-    { path: '/hospitality', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
-    { path: '/cat-cafes', priority: 0.7, changefreq: 'monthly', locales: ['en'] },
-    { path: '/veterinarians', priority: 0.7, changefreq: 'monthly', locales: ['en'] },
-    { path: '/affiliate', priority: 0.6, changefreq: 'monthly', locales: ['en'] },
-    { path: '/affiliate/signup', priority: 0.6, changefreq: 'monthly', locales: ['en'] },
+    { path: '/b2b/', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
+    { path: '/b2b/sell-sheet/', priority: 0.6, changefreq: 'monthly', locales: ['en'] },
+    { path: '/retailers/', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
+    { path: '/stockists/', priority: 0.7, changefreq: 'weekly', locales: ALL_LOCALES },
+    { path: '/shelters/', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
+    { path: '/groomers/', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
+    { path: '/hospitality/', priority: 0.7, changefreq: 'monthly', locales: ALL_LOCALES },
+    { path: '/cat-cafes/', priority: 0.7, changefreq: 'monthly', locales: ['en'] },
+    { path: '/veterinarians/', priority: 0.7, changefreq: 'monthly', locales: ['en'] },
+    { path: '/affiliate/', priority: 0.6, changefreq: 'monthly', locales: ['en'] },
+    { path: '/affiliate/signup/', priority: 0.6, changefreq: 'monthly', locales: ['en'] },
   ],
 
   // Other pages
   other: [
-    { path: '/about/our-story', priority: 0.6, changefreq: 'monthly', locales: ['en'] },
-    { path: '/contact', priority: 0.6, changefreq: 'monthly', locales: ALL_LOCALES },
-    { path: '/reviews', priority: 0.7, changefreq: 'weekly', locales: ALL_LOCALES },
-    { path: '/results', priority: 0.7, changefreq: 'monthly', locales: ['en'] },
-    { path: '/case-studies', priority: 0.6, changefreq: 'monthly', locales: ['en'] },
-    { path: '/support', priority: 0.5, changefreq: 'monthly', locales: ['en'] },
-    { path: '/support/shipping', priority: 0.5, changefreq: 'monthly', locales: ['en'] },
-    { path: '/buy', priority: 0.8, changefreq: 'daily', locales: ['en'] },
-    { path: '/free-trial', priority: 0.8, changefreq: 'weekly', locales: ['en'] },
-    { path: '/try-free', priority: 0.8, changefreq: 'weekly', locales: ['en'] },
-    { path: '/referral', priority: 0.6, changefreq: 'monthly', locales: ['en'] },
-    { path: '/ammonia-control', priority: 0.7, changefreq: 'monthly', locales: ['en'] },
-    { path: '/invest', priority: 0.5, changefreq: 'monthly', locales: ['en'] },
-    { path: '/us', priority: 0.85, changefreq: 'weekly', locales: ['en'] },
-    { path: '/es/opiniones', priority: 0.7, changefreq: 'weekly', locales: ['es'] },
-    { path: '/tools/cat-litter-calculator', priority: 0.6, changefreq: 'monthly', locales: ['en'] },
+    { path: '/about/our-story/', priority: 0.6, changefreq: 'monthly', locales: ['en'] },
+    { path: '/contact/', priority: 0.6, changefreq: 'monthly', locales: ALL_LOCALES },
+    { path: '/reviews/', priority: 0.7, changefreq: 'weekly', locales: ALL_LOCALES },
+    { path: '/results/', priority: 0.7, changefreq: 'monthly', locales: ['en'] },
+    { path: '/case-studies/', priority: 0.6, changefreq: 'monthly', locales: ['en'] },
+    { path: '/support/', priority: 0.5, changefreq: 'monthly', locales: ['en'] },
+    { path: '/support/shipping/', priority: 0.5, changefreq: 'monthly', locales: ['en'] },
+    { path: '/buy/', priority: 0.8, changefreq: 'daily', locales: ['en'] },
+    { path: '/free-trial/', priority: 0.8, changefreq: 'weekly', locales: ['en'] },
+    { path: '/try-free/', priority: 0.8, changefreq: 'weekly', locales: ['en'] },
+    { path: '/referral/', priority: 0.6, changefreq: 'monthly', locales: ['en'] },
+    { path: '/ammonia-control/', priority: 0.7, changefreq: 'monthly', locales: ['en'] },
+    { path: '/invest/', priority: 0.5, changefreq: 'monthly', locales: ['en'] },
+    { path: '/us/', priority: 0.85, changefreq: 'weekly', locales: ['en'] },
+    { path: '/es/reviews/', priority: 0.7, changefreq: 'weekly', locales: ['es'] },
+    { path: '/tools/cat-litter-calculator/', priority: 0.6, changefreq: 'monthly', locales: ['en'] },
   ],
 
   // Legal pages
   legal: [
-    { path: '/privacy-policy', priority: 0.3, changefreq: 'yearly', locales: ALL_LOCALES },
-    { path: '/terms', priority: 0.3, changefreq: 'yearly', locales: ALL_LOCALES },
+    { path: '/privacy-policy/', priority: 0.3, changefreq: 'yearly', locales: ALL_LOCALES },
+    { path: '/terms/', priority: 0.3, changefreq: 'yearly', locales: ALL_LOCALES },
   ],
 };
 
 function getLocalePath(basePath, locale) {
   if (locale === 'en') return basePath || '/';
   if (basePath.startsWith(`/${locale}/`)) return basePath; // Already localized
-  return `/${locale}${basePath}`;
+  // Ensure trailing slash for non-root paths
+  const localizedPath = `/${locale}${basePath}`;
+  return localizedPath;
 }
 
 function generateUrl(path, priority, changefreq, lastmod, alternates = []) {
+  // Ensure consistent trailing slash handling
   const loc = `${SITE_URL}${path === '/' ? '' : path}`;
   let alternateLinks = '';
 

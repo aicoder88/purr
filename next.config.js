@@ -108,25 +108,8 @@ const REDIRECTS = [
     permanent: true,
     locale: false,
   },
-  // Fix trailing slash redirect loops (SEO critical - must be early in redirects array)
-  {
-    source: "/fr/",
-    destination: "/fr",
-    permanent: true,
-    locale: false,
-  },
-  {
-    source: "/es/",
-    destination: "/es",
-    permanent: true,
-    locale: false,
-  },
-  {
-    source: "/zh/",
-    destination: "/zh",
-    permanent: true,
-    locale: false,
-  },
+  // Note: trailingSlash: true is now set in Next.js config
+  // Locale home pages with trailing slashes are the canonical URLs
   {
     source: "/blog/purrify-vs-arm-hammer",
     destination: "/blog/activated-carbon-vs-baking-soda-comparison",
@@ -926,7 +909,7 @@ const nextConfig = {
     maxInactiveAge: 25 * 1000,
     pagesBufferLength: 2,
   },
-  trailingSlash: false,
+  trailingSlash: true,
   async redirects() {
     return REDIRECTS;
   },
