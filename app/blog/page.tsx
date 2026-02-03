@@ -95,11 +95,12 @@ const POSTS_PER_PAGE = 15;
 export default async function BlogIndexPage({
   searchParams,
 }: {
-  searchParams: { page?: string };
+  searchParams: Promise<{ page?: string }>;
 }) {
   const allBlogPosts = await getBlogPosts();
 
-  const currentPage = Number(searchParams.page) || 1;
+  const params = await searchParams;
+  const currentPage = Number(params.page) || 1;
   const totalPosts = allBlogPosts.length;
   const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
 
