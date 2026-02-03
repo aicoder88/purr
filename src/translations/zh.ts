@@ -163,12 +163,12 @@ export const zh = {
   },
 
   productsHero: {
-    pill: "Ammonia Odor Eliminator",
-    headline: "Embarrassed by Cat Litter Smell? Stop Covering It Up.",
-    subheadline: "Baking soda and sprays just mask the problem. Purrify uses activated carbon to eliminate ammonia at the molecular level. It's not magic. It's science.",
-    scienceButton: "The Science",
-    guarantee: "Zero Odor Guarantee",
-    findSizeButton: "Find Your Size"
+    pill: "氨气异味消除剂",
+    headline: "被猫砂异味困扰？别再掩盖了。",
+    subheadline: "小苏打和喷雾只是掩盖问题。Purrify使用活性炭在分子层面消除氨气。这不是魔法，这是科学。",
+    scienceButton: "科学原理",
+    guarantee: "零异味保证",
+    findSizeButton: "选择适合您的规格"
   },
 
   // Hero Section
@@ -240,36 +240,36 @@ export const zh = {
   // Features
   features: {
     odorElimination: {
-      title: "异味消除",
-      description: "Purrify的先进配方有效地从源头消除令人不快的猫砂盒异味。"
+      title: "锁住异味（而非掩盖）",
+      description: "空气清新剂只是在异味上喷香水。Purrify的活性炭能真正捕获氨气分子并将其锁住。异味消失了——而不是藏起来。"
     },
     catFriendly: {
-      title: "对猫咪友好",
-      description: "采用天然成分制成，无添加香精或染料。"
+      title: "净水器级活性炭",
+      description: "由椰壳制成，采用与净化饮用水相同的工艺。零化学品。零香精。零神秘成分。只有纯净、天然的异味控制。"
     },
     longLastingFreshness: {
-      title: "持久清新",
-      description: "提供长达7天的持续清新效果。"
+      title: "一次撒入，持续一整周",
+      description: "大多数清新剂一天后就没效果了。Purrify可以持续工作整整7天——每次更换猫砂只需快速撒一次，不是每日杂务。"
     },
     worksWithAnyLitter: {
       title: "适用于任何猫砂",
-      description: "与所有类型的猫砂兼容，包括结团砂、水晶砂和天然砂。"
+      description: "粘土、水晶、结团、天然——无论您的猫咪已经在使用什么。无需更换品牌或让您的毛孩子困惑。只需在上面添加Purrify。"
     },
     natural: {
-      title: "天然成分",
-      description: "采用100%天然活性炭制成，无化学品、香精或添加剂。",
+      title: "100%天然成分",
+      description: "由椰壳活性炭制成，不含合成香料或填充剂。无毒无化学添加。",
     },
     costEffective: {
-      title: "经济实惠",
-      description: "延长猫砂使用寿命，为您节省金钱。"
+      title: "让您的猫砂更耐用",
+      description: "当异味得到控制时，您就不会想提前倒掉整盆猫砂。清新的猫砂意味着按计划更换——而不是出于无奈。"
     },
     freePurrify: {
-      title: "免费Purrify",
-      description: "立即获取免费样品。"
+      title: "免费试用Purrify",
+      description: "首次订购即可获赠免费Purrify样品。"
     },
     beforeAfter: {
-      title: "使用前后对比",
-      description: "查看Purrify的惊人效果。"
+      title: "清新空气测试",
+      description: "外出一段时间后走进您的家。注意到有什么不同了吗？使用Purrify后，您唯一能闻到的就是……什么都没有。（这是最好的方式。）"
     }
   },
 
@@ -299,22 +299,22 @@ export const zh = {
 
   // How It Works
   howItWorks: {
-    simpleAs123: "简单三步骤",
+    simpleAs123: "使用起来简单至极",
     steps: [
       {
-        number: "1",
-        title: "撒入",
-        description: "将Purrify撒在干净的猫砂上"
+        number: "01",
+        title: "打开袋子",
+        description: "这就是最难的部分。真的。不需要测量、不需要混合碗、不需要说明书。"
       },
       {
-        number: "2",
-        title: "混合",
-        description: "轻轻搅拌确保均匀分布"
+        number: "02",
+        title: "撒在新鲜猫砂上",
+        description: "在猫咪喜爱的猫砂上轻轻撒一层。适用于粘土、水晶、结团、天然——无论它们已经习惯什么。"
       },
       {
-        number: "3",
-        title: "享受",
-        description: "享受7天的清新无异味环境"
+        number: "03",
+        title: "混合并享受清新",
+        description: "轻轻搅拌一下。现在享受7天不用考虑猫砂盆的日子。您的鼻子（和您的客人）会感谢您。"
       }
     ],
     litterTypes: {
@@ -325,8 +325,8 @@ export const zh = {
       nonClumping: "非结团砂"
     },
     learnTheScience: "了解科学原理",
-    compareSizes: "比较我们的尺寸",
-    coconutDescription: "纯净、可持续的椰壳通过过滤纯净的高压蒸汽活化，打开数百万个孔洞、隧道和通道，锁住异味分子。"
+    compareSizes: "比较我们的规格",
+    coconutDescription: "纯净、可持续的椰壳通过过滤后的纯净高压蒸汽活化，打开数百万个孔洞、隧道和通道，锁住异味分子。"
   },
 
   // Products Section
@@ -525,23 +525,23 @@ export const zh = {
     },
     fastShipping: {
       title: "快速配送",
-      description: "快速可靠的配送",
-      highlight: "当天处理"
+      description: "快速可靠的加拿大邮政配送",
+      highlight: "当天处理订单"
     },
     customerRating: {
       title: "4.9/5客户评分",
-      description: "基于 138 条真实评价",
+      description: "基于 138 条真实验证评价",
       highlight: "98%满意度"
     },
     happyCustomers: {
       title: "1,000+满意客户",
       description: "全加拿大猫主人的信赖之选",
-      highlight: "自2019年"
+      highlight: "自2023年"
     },
     premiumQuality: {
-      title: "优质产品",
-      description: "滤材级活性炭，常用于水/空气过滤",
-      highlight: "无添加香精"
+      title: "优质品质",
+      description: "净水器级活性炭，常用于饮用水和空气净化",
+      highlight: "100%无香精"
     }
   },
 
@@ -703,12 +703,12 @@ export const zh = {
     subtitle: "了解为什么Purrify是追求清新家居的猫主人的完美解决方案。",
     items: [
       {
-        title: "消除异味",
-        description: "Purrify的先进配方从源头有效消除猫砂盆的难闻气味。告别那些可能弥漫在家中的残留异味，为您和您的毛茸茸朋友营造一个更清新、更温馨的环境。"
+        title: "从源头消除异味",
+        description: "Purrify的先进配方在分子层面有效消除猫砂盆的难闻气味。告别那些可能弥漫在家中的残留异味，为您和您的毛茸茸朋友营造一个更清新、更温馨的环境。"
       },
       {
-        title: "简单天然",
-        description: "Purrify由简单的椰壳制成，经活化处理可吸收异味。您可以放心，您为猫咪提供了一个干净清新的猫砂盆环境，而不会让它们接触化学物质或毒素。"
+        title: "简单安全",
+        description: "Purrify由天然椰壳制成，经活化处理可吸收异味。您可以放心，您为猫咪提供了一个干净清新的猫砂盆环境，而不会让它们接触化学物质或毒素。"
       },
       {
         title: "经济实惠",
@@ -719,10 +719,10 @@ export const zh = {
 
   // Science Section (homepage component)
   scienceSection: {
-    badge: "科学小知识（很快）",
-    headline: "活性炭",
-    headlineHighlight: "的工作原理",
-    description: "空气清新剂只是在问题上喷香水。活性炭不同——它有数百万个微小隧道，可以物理捕获异味分子。氨气一旦进入，就再也出不来了。这就是为什么异味真正消失，而不是玩捉迷藏。",
+    badge: "科学小知识（很简单）",
+    headline: "活性炭如何",
+    headlineHighlight: "真正工作",
+    description: "空气清新剂只是在异味上喷香水。活性炭不同——它有数百万个微小隧道，可以物理捕获异味分子。氨气一旦进入，就再也出不来了。这就是为什么异味真正消失，而不是在玩捉迷藏。",
     learnMore: "深入了解科学原理",
     features: [
       {
@@ -731,7 +731,7 @@ export const zh = {
       },
       {
         title: "与净水器相同的技术",
-        description: "如果活性炭被信任用于净化饮用水，您的猫砂盆绝对在它的能力范围内。"
+        description: "如果活性炭能被信任用于净化饮用水，您的猫砂盆绝对在它的能力范围内。"
       },
       {
         title: "由椰壳制成",
@@ -750,11 +750,11 @@ export const zh = {
 
   // Features Section (homepage component)
   featuresSection: {
-    badge: "Purrify的不同之处",
+    badge: "Purrify的独特之处",
     title: "为什么猫咪和铲屎官都爱Purrify？",
-    paragraph1: "你爱你的猫，但说实话——猫砂盆的气味是个问题。你试过香味猫砂、空气清新剂和小苏打——但它们只是掩盖问题，而不是解决它。",
-    paragraph2: "想象一下回到家，闻到的是...什么都没有。只有清新的空气，没有残留的异味，客人来访时也不会尴尬。",
-    tagline: "这正是Purrify所做的...",
+    paragraph1: "您爱您的猫，但说实话——猫砂盆的气味是个问题。您试过香味猫砂、空气清新剂和小苏打——但它们只是掩盖问题，而不是解决它。",
+    paragraph2: "想象一下回到家，闻到的是……什么都没有。只有清新的空气，没有残留的异味，客人来访时也不会尴尬。",
+    tagline: "这正是Purrify能做到的……",
     learnMore: "了解更多"
   },
 
@@ -2557,47 +2557,47 @@ export const zh = {
   // B2B垂直页面
   veterinarians: {
     seo: {
-      pageTitle: "宠物医院合作伙伴",
-      description: "与Purrify合作，向客户推荐天然健康的除臭解决方案。批发价格、样品套装和培训包含在内。",
-      keywords: "宠物医院产品, 猫砂添加剂兽医, 宠物健康产品批发, 兽医推荐猫用品",
-      openGraphAlt: "宠物医院合作伙伴"
+      pageTitle: "兽医诊所专用猫砂除臭解决方案 | Purrify",
+      description: "为兽医诊所提供专业的猫砂异味控制方案。天然活性炭，无香精，对患病和敏感猫咪安全。",
+      keywords: "兽医猫砂除臭,动物医院异味控制,诊所猫砂添加剂,兽医用品,宠物医院除臭",
+      openGraphAlt: "Purrify兽医专用猫砂除臭解决方案"
     },
     hero: {
-      badge: "宠物医院合作计划",
-      titleLine1: "自信地",
-      titleLine2: "推荐",
-      description: "为您的客户提供以健康为导向的除臭解决方案，",
-      highlight: "100%天然无香精",
+      badge: "专业兽医推荐",
+      titleLine1: "为兽医诊所",
+      titleLine2: "打造的异味控制方案",
+      description: "在候诊室和住院区保持清新空气。Purrify使用天然活性炭，无香精，对患病、老年和术后恢复中的猫咪完全安全。",
+      highlight: "专业级异味控制",
       stats: {
-        natural: "天然",
-        chemicals: "无化学物质",
-        days: "天保护"
+        natural: "100%天然",
+        chemicals: "零化学品",
+        days: "7天持续效果"
       },
       cta: {
-        primary: "申请样品套装",
-        secondary: "查看合作选项"
+        primary: "申请批发价格",
+        secondary: "了解更多"
       },
-      trustedBy: "获得兽医专业人士的信赖：",
+      trustedBy: "受加拿大兽医信赖",
       badges: {
         fragrance: "无香精",
-        natural: "无毒",
+        natural: "100%天然",
         sensitive: "敏感猫咪适用"
       },
       valueProps: {
         health: {
-          title: "健康优先配方",
-          subtitle: "无香精无刺激物",
-          description: "椰壳活性炭，零化学添加剂 - 非常适合有呼吸敏感或过敏的猫咪。"
+          title: "患者安全优先",
+          subtitle: "医疗级安全标准",
+          description: "无香精、无化学添加剂，不会对患病或术后恢复中的猫咪造成呼吸道刺激。"
         },
         ammonia: {
-          title: "减少氨气暴露",
-          subtitle: "更好的空气质量",
-          description: "活性炭从源头捕获氨气分子，减少对猫咪及其主人的呼吸道刺激。"
+          title: "氨气有效控制",
+          subtitle: "分子级吸附技术",
+          description: "活性炭在分子层面捕获氨气，消除异味而非掩盖，保持诊所环境清新。"
         },
         revenue: {
-          title: "额外收入来源",
-          subtitle: "高利润，重复购买",
-          description: "客户信任您的推荐。为养猫最大的困扰提供解决方案，建立忠诚度。"
+          title: "提升客户满意度",
+          subtitle: "改善就诊体验",
+          description: "清新的候诊室和住院区让宠物主人更放心，提升诊所专业形象和口碑。"
         }
       }
     }
@@ -2605,175 +2605,263 @@ export const zh = {
 
   catCafes: {
     seo: {
-      pageTitle: "猫咖除臭解决方案",
-      description: "让您的猫咖全天保持清新。Purrify活性炭无香精消除猫砂异味。",
-      keywords: "猫咖除臭, 猫咖用品, 商用猫砂, 猫咖清新",
-      openGraphAlt: "猫咖合作伙伴"
+      pageTitle: "猫咖啡馆异味控制解决方案 | Purrify",
+      description: "专为猫咖啡馆设计的高效异味控制方案。让客人在清新环境中享受与猫咪互动的乐趣。",
+      keywords: "猫咖啡馆除臭,猫咪咖啡厅异味控制,猫吧除臭方案,宠物咖啡馆用品",
+      openGraphAlt: "Purrify猫咖啡馆专用除臭解决方案"
     },
     hero: {
-      badge: "猫咖合作计划",
-      titleLine1: "让您的猫咖",
-      titleLine2: "全天清新",
-      description: "高流量场所需要持续的清新感。使用Purrify的无香精除臭让顾客不断回头。",
+      badge: "猫咖啡馆专用",
+      titleLine1: "让客人专注于",
+      titleLine2: "可爱的猫咪",
+      description: "告别尴尬的猫砂异味。Purrify让您的猫咖啡馆始终保持清新，客人可以更专注于与猫咪互动的美好时光。",
       stats: {
-        days: "天清新",
-        fragrances: "香精",
-        natural: "天然"
+        days: "7天清新",
+        fragrances: "零香精",
+        natural: "100%天然"
       },
       cta: {
-        primary: "申请猫咖样品套装",
-        secondary: "查看批发价格"
+        primary: "申请专业价格",
+        secondary: "查看案例"
       }
+    },
+    form: {
+      title: "申请猫咖啡馆合作伙伴",
+      name: "咖啡馆名称",
+      namePlaceholder: "您的猫咖啡馆名称",
+      contactName: "联系人姓名",
+      contactPlaceholder: "您的姓名",
+      email: "电子邮箱",
+      emailPlaceholder: "your@email.com",
+      phone: "联系电话",
+      phonePlaceholder: "(416) 123-4567",
+      address: "咖啡馆地址",
+      addressPlaceholder: "完整地址",
+      cats: "店内猫咪数量",
+      catsPlaceholder: "例如：8",
+      message: "补充信息",
+      messagePlaceholder: "告诉我们您的需求...",
+      submit: "提交申请",
+      submitting: "提交中...",
+      success: {
+        title: "申请已提交！",
+        message: "感谢您的申请。我们将在24小时内与您联系。"
+      }
+    },
+    contact: {
+      title: "需要更多信息？",
+      description: "我们的B2B团队随时为您提供帮助。",
+      callUs: "致电我们",
+      emailUs: "发送邮件",
+      moreInfo: "了解更多",
+      requestGuide: "申请产品指南"
     }
   },
 
   shelters: {
     seo: {
-      pageTitle: "动物收容所解决方案",
-      description: "有效管理收容所异味。Purrify帮助为潜在领养者创造温馨的环境。",
-      keywords: "收容所除臭, 动物收容所用品, 猫砂批发, 收容所异味管理",
-      openGraphAlt: "收容所合作伙伴"
+      pageTitle: "动物收容所异味控制方案 | Purrify",
+      description: "为动物收容所和救助站提供高性价比的异味控制方案。改善动物生活环境，提升领养率。",
+      keywords: "动物收容所除臭,救助站猫砂除味,收容所用品,流浪猫救助,动物福利",
+      openGraphAlt: "Purrify动物收容所专用除臭方案"
     },
     hero: {
-      badge: "收容所合作计划",
-      titleLine1: "创造",
-      titleLine2: "温馨的领养环境",
-      description: "第一印象对潜在领养者很重要。保持收容所清新，不使用刺激性香精。",
+      badge: "支持动物福利",
+      titleLine1: "改善收容所环境",
+      titleLine2: "提升领养率",
+      description: "为无数等待家园的猫咪创造更好的生活环境。Purrify帮助收容所控制异味，让潜在领养者专注于猫咪本身。",
       stats: {
-        cats: "帮助的猫咪",
-        shelters: "合作收容所",
-        natural: "天然"
+        cats: "服务1000+猫咪",
+        shelters: "支持50+收容所",
+        natural: "100%安全天然"
       },
       cta: {
-        primary: "申请收容所样品",
-        secondary: "查看捐赠计划"
+        primary: "申请收容所优惠",
+        secondary: "联系我们"
       }
+    },
+    form: {
+      title: "申请收容所支持计划",
+      orgName: "机构名称",
+      orgPlaceholder: "收容所/救助站名称",
+      contactName: "联系人姓名",
+      contactPlaceholder: "您的姓名",
+      email: "电子邮箱",
+      emailPlaceholder: "your@email.com",
+      phone: "联系电话",
+      address: "机构地址",
+      catsCount: "收容猫咪数量",
+      catsPlaceholder: "大约数量",
+      nonProfit: "非营利机构编号",
+      nonProfitPlaceholder: "如适用",
+      message: "补充信息",
+      messagePlaceholder: "告诉我们您的需求...",
+      submit: "提交申请",
+      submitting: "提交中...",
+      success: {
+        title: "申请已提交！",
+        message: "感谢您的申请。我们将在24小时内与您联系，讨论如何支持您的重要工作。"
+      }
+    },
+    benefits: {
+      title: "收容所支持计划优势",
+      pricing: {
+        title: "特别优惠价格",
+        description: "为非营利机构提供大幅折扣"
+      },
+      priority: {
+        title: "优先支持",
+        description: "专属客户经理和快速响应"
+      },
+      donations: {
+        title: "捐赠计划",
+        description: "可申请免费产品用于筹款活动"
+      }
+    },
+    contact: {
+      title: "联系我们",
+      description: "我们致力于支持动物福利事业。",
+      callUs: "致电咨询",
+      emailUs: "邮件咨询",
+      moreInfo: "了解更多",
+      requestGuide: "申请合作指南"
     }
   },
 
   groomers: {
     seo: {
-      pageTitle: "猫咪美容师解决方案",
-      description: "保持美容沙龙的清新。Purrify消除猫砂异味，提供更好的客户体验。",
-      keywords: "美容沙龙除臭, 猫咪美容用品, 沙龙清新, 美容除臭",
-      openGraphAlt: "美容师合作伙伴"
+      pageTitle: "宠物美容师专用除臭产品 | Purrify",
+      description: "为宠物美容沙龙提供专业异味控制方案。无香精配方，对敏感宠物安全，提升客户体验。",
+      keywords: "宠物美容除臭,美容沙龙异味控制,宠物美容师用品,专业除味剂",
+      openGraphAlt: "Purrify宠物美容师专用除臭产品"
     },
     hero: {
-      badge: "美容师合作计划",
-      titleLine1: "清新的沙龙",
-      titleLine2: "满意的客户",
-      description: "提供清新无香精环境的优质美容体验。",
+      badge: "专业美容推荐",
+      titleLine1: "专注美容",
+      titleLine2: "而非异味",
+      description: "让您的美容沙龙始终保持清新。Purrify无香精配方对敏感宠物完全安全，让客户和宠物都享受美容过程。",
       stats: {
-        freshness: "清新度",
-        clients: "满意客户",
-        natural: "天然"
+        freshness: "全天候清新",
+        clients: "提升满意度",
+        natural: "宠物安全"
       },
       cta: {
-        primary: "申请样品",
-        secondary: "查看专业价格"
+        primary: "申请专业价格",
+        secondary: "批量订购"
       }
     },
     cta: {
-      primary: "开始销售Purrify",
-      secondary: "咨询信息"
+      primary: "立即申请专业账户",
+      secondary: "下载产品资料"
     },
     opportunity: {
-      title: "美容师的机会",
-      intro: "每次猫咪美容预约都是解决客户#1投诉的机会。",
+      title: "为什么宠物美容师选择Purrify",
+      intro: "作为宠物美容专家，您深知环境对宠物和客户体验的重要性。Purrify为您创造独特的商机。",
       points: {
         clientsAsk: {
-          title: "客户已经在问",
-          description: "猫主人在预约时经常提到猫砂异味问题。"
+          title: "客户主动询问",
+          description: "您的美容客户会主动询问您使用什么产品保持环境如此清新"
         },
         expertPosition: {
-          title: "成为专家",
-          description: "当您推荐Purrify时，您成为猫咪护理的可信顾问。"
+          title: "树立专业形象",
+          description: "向客户展示您对宠物健康和舒适的专业关注"
         },
         repeatRevenue: {
-          title: "重复购买潜力",
-          description: "Purrify是消耗品。客户每月回购。"
+          title: "持续收入来源",
+          description: "客户每月回购，为您创造稳定的额外收入"
         },
         easyDemo: {
-          title: "可展示的效果",
-          description: "在您的沙龙展示效果。一次演示创造终身客户。"
+          title: "轻松演示销售",
+          description: "客户在美容过程中直接体验产品效果，销售更自然"
         }
       }
     },
     addOnSale: {
-      title: "轻松附加销售",
-      description: "Purrify在预约期间自然销售",
+      title: "完美的附加销售产品",
+      description: "Purrify是理想的附加销售产品，因为：",
       points: [
-        "美容时30秒快速解释",
-        "关于猫咪护理的自然对话",
-        "客户已经信任您的建议",
-        "无压力销售 - 产品说明一切"
+        "客户在美容过程中亲身体验产品效果",
+        "体积小、重量轻，客户愿意随身携带",
+        "每月需要回购，创造持续收入",
+        "与您的服务完美互补，提升客户满意度"
       ]
     },
     partnerBenefits: {
-      title: "合作福利",
+      title: "合作伙伴专属权益",
       benefits: {
         wholesale: {
           title: "批发价格",
-          description: "每笔销售的优质利润。提供批量折扣。"
+          description: "享受专属批发折扣，最大化您的利润空间"
         },
         display: {
-          title: "展示材料",
-          description: "免费柜台展示和促销材料。"
+          title: "展示材料支持",
+          description: "免费提供专业展示架、宣传册和样品"
         },
         training: {
           title: "产品培训",
-          description: "产品优势的快速培训。"
+          description: "详细的产品知识和销售技巧培训"
         },
         tracking: {
           title: "销售跟踪",
-          description: "通过合作伙伴门户跟踪您的销售。"
+          description: "专属跟踪链接，实时查看销售和佣金"
         }
       }
     },
     retailPackage: {
-      title: "您的美容师零售包",
-      subtitle: "开始销售所需的一切",
+      title: "零售入门套装",
+      subtitle: "开始零售Purrify所需的一切",
       includes: [
-        "柜台展示架",
-        "演示样品",
-        "促销材料",
-        "培训指南",
-        "营销支持"
+        "20袋试用装（供客户体验）",
+        "10袋标准装（零售）",
+        "专业展示架",
+        "宣传册和价格标签",
+        "样品试用装"
       ]
     },
     testimonials: {
-      title: "美容师怎么说",
+      title: "合作伙伴怎么说",
       items: [
         {
-          quote: "我的客户很高兴我有解决他们猫砂异味问题的方案。",
-          author: "猫咪美容沙龙",
-          location: "多伦多, ON",
-          result: "每月15+单位"
+          quote: "自从在店里销售Purrify，我每个月多了500加币的收入。客户爱它，我也爱它！",
+          author: "王小姐",
+          business: "多伦多宠物美容沙龙"
+        },
+        {
+          quote: "客户总是问我店里为什么闻起来这么清新。现在我可以向他们推荐Purrify了。",
+          author: "李先生",
+          business: "温哥华宠物SPA"
         }
       ]
     },
     form: {
-      title: "合作咨询",
-      businessName: "企业名称",
+      title: "申请专业美容师账户",
+      businessName: "店铺名称",
+      businessPlaceholder: "您的美容沙龙名称",
       contactName: "联系人姓名",
-      email: "电子邮件",
-      phone: "电话",
-      location: "位置",
-      monthlyClients: "每月猫咪客户",
-      interest: "告诉我们您的兴趣",
-      submit: "提交咨询",
+      contactPlaceholder: "您的姓名",
+      email: "电子邮箱",
+      emailPlaceholder: "your@email.com",
+      phone: "联系电话",
+      location: "店铺位置",
+      locationPlaceholder: "城市/省份",
+      monthlyClients: "月均服务客户数",
+      clientsPlaceholder: "大约数量",
+      interest: "感兴趣的产品",
+      interestPlaceholder: "试用装/批发/零售",
+      submit: "提交申请",
+      submitting: "提交中...",
       success: {
-        title: "咨询已收到！",
-        message: "谢谢！我们的团队将在24-48小时内与您联系。"
+        title: "申请成功！",
+        message: "我们将在24小时内审核您的申请并与您联系。"
       }
     },
     contact: {
-      title: "有问题？让我们谈谈！",
-      description: "我们的合作团队随时为您提供帮助。",
-      callUs: "致电我们",
-      emailUs: "给我们发邮件",
-      moreInfo: "需要更多信息？",
-      requestGuide: "索取我们的详细指南"
+      title: "需要更多信息？",
+      description: "我们的专业团队随时为您解答。",
+      callUs: "致电咨询",
+      emailUs: "邮件咨询",
+      moreInfo: "了解更多详情",
+      requestGuide: "申请产品目录"
     }
   },
 
