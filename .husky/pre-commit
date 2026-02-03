@@ -3,6 +3,16 @@
 
 echo "🔍 Running pre-commit validation..."
 
+# Check if pnpm-lock.yaml is in sync with package.json
+if command -v pnpm >/dev/null 2>&1; then
+  echo "Checking lockfile sync..."
+  pnpm install --frozen-lockfile --dry-run 2>/dev/null || {
+    echo "❌ ERROR: pnpm-lock.yaml is out of sync with package.json"
+    echo "   Run 'pnpm install' to update the lockfile, then commit again."
+    exit 1
+  }
+fi
+
 # Check TypeScript
 echo "Checking TypeScript..."
 npm run check-types || exit 1
