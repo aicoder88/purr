@@ -1,99 +1,287 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Page Not Found | Purrify',
-  description: "We couldn't find the page you were looking for. Please check the URL or navigate to another section of our site.",
-  robots: {
-    index: false,
-    follow: false,
-    nocache: true,
-    googleBot: {
-      index: false,
-      follow: false,
-      noimageindex: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'none',
-      'max-snippet': -1,
-    },
-  },
-};
+import { motion } from 'framer-motion';
+import { Home, Package, BookOpen, MessageCircle, HelpCircle, Search, ArrowLeft, Cat } from 'lucide-react';
+import { useState } from 'react';
 
 const suggestedPages = [
   {
     title: 'Home',
     path: '/',
     description: 'Return to our homepage',
+    icon: Home,
+    color: 'from-[#5B2EFF] to-[#8B5CF6]',
   },
   {
     title: 'Products',
-    path: '/#products',
+    path: '/products',
     description: 'Browse our cat litter additives',
-  },
-  {
-    title: 'How It Works',
-    path: '/#how-it-works',
-    description: 'Learn how Purrify eliminates odors',
+    icon: Package,
+    color: 'from-[#03E46A] to-[#10B981]',
   },
   {
     title: 'Blog',
     path: '/blog',
     description: 'Read our latest articles on cat care',
+    icon: BookOpen,
+    color: 'from-[#FF3131] to-[#EF4444]',
+  },
+  {
+    title: 'Support',
+    path: '/support',
+    description: 'Get help with your questions',
+    icon: HelpCircle,
+    color: 'from-[#F59E0B] to-[#FBBF24]',
   },
   {
     title: 'Contact',
-    path: '/#contact',
+    path: '/contact',
     description: 'Get in touch with our team',
+    icon: MessageCircle,
+    color: 'from-[#EC4899] to-[#F472B6]',
+  },
+  {
+    title: 'About',
+    path: '/about',
+    description: 'Learn about Purrify',
+    icon: Cat,
+    color: 'from-[#06B6D4] to-[#22D3EE]',
   },
 ];
 
 export default function NotFound() {
+  const [isHovered, setIsHovered] = useState<string | null>(null);
+
   return (
-    <div className="py-16 px-4 text-center max-w-3xl mx-auto">
-      <div className="mb-8 flex justify-center">
-        <Image
-          src="/optimized/logo-text-120.webp"
-          alt="Purrify Logo"
-          width={120}
-          height={120}
-          className="h-20 w-auto animate-bounce"
-        />
-      </div>
-
-      <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6 text-[#5B2EFF]">
-        404 - Page Not Found
-      </h1>
-
-      <p className="text-xl mb-8 text-gray-600 dark:text-gray-300">
-        We couldn&apos;t find the page you were looking for. Please check the URL or navigate to another section of our site.
-      </p>
-
-      <div className="mb-12 p-4 bg-[#FFFFF5] rounded-lg border border-[#E0EFC7] shadow-sm">
-        <h2 className="font-heading text-xl font-semibold mb-4 text-[#03E46A]">
-          Looking for something?
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {suggestedPages.map((page) => (
-            <Link
-              key={page.path}
-              href={page.path}
-              className="p-4 border border-[#E0EFC7] dark:border-[#2A3A25] rounded-lg bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:shadow-md transition-all duration-300 text-left flex flex-col"
+    <div className="min-h-[calc(100vh-200px)] py-8 md:py-16 px-4 bg-gradient-to-b from-[#FFFFF5] via-white to-[#F0FFF4]">
+      <div className="max-w-5xl mx-auto">
+        {/* Hero Section with Fun Animation */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-10"
+        >
+          {/* Large 404 with Cat Paws */}
+          <div className="relative inline-block mb-6">
+            <motion.h1
+              className="font-heading text-8xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#5B2EFF] via-[#FF3131] to-[#03E46A]"
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              transition={{ type: 'spring', stiffness: 200, damping: 15 }}
             >
-              <span className="font-medium text-[#5B2EFF]">{page.title}</span>
-              <span className="text-sm text-gray-500 dark:text-gray-400">{page.description}</span>
-            </Link>
-          ))}
-        </div>
-      </div>
+              404
+            </motion.h1>
+            {/* Decorative paw prints */}
+            <motion.div
+              className="absolute -top-4 -right-8 text-[#FF3131] opacity-60"
+              animate={{ rotate: [0, 10, -10, 0], scale: [1, 1.1, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <Cat className="w-12 h-12" />
+            </motion.div>
+            <motion.div
+              className="absolute -bottom-2 -left-6 text-[#5B2EFF] opacity-40"
+              animate={{ rotate: [0, -10, 10, 0], scale: [1, 0.9, 1] }}
+              transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
+            >
+              <Cat className="w-8 h-8" />
+            </motion.div>
+          </div>
 
-      <Link
-        href="/"
-        className="inline-block bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131]/70 text-white font-medium py-3 px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
-      >
-        Return Home
-      </Link>
+          <motion.h2
+            className="font-heading text-2xl md:text-3xl font-bold text-gray-800 mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            Oops! This page has wandered off like a curious cat
+          </motion.h2>
+
+          <motion.p
+            className="text-lg text-gray-600 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            We couldn&apos;t find the page you&apos;re looking for. 
+            It might have been moved, deleted, or never existed in the first place.
+          </motion.p>
+        </motion.div>
+
+        {/* Main Content Grid */}
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {/* Left: Fun Illustration */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4 }}
+            className="relative"
+          >
+            <div className="bg-white rounded-3xl shadow-xl overflow-hidden border-4 border-[#E0EFC7]">
+              <div className="relative aspect-square">
+                <Image
+                  src="/optimized/cat-owner-questions-ghibli-640w.webp"
+                  alt="A confused cat owner looking for answers"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                {/* Speech Bubble */}
+                <motion.div
+                  className="absolute top-4 right-4 bg-white rounded-2xl px-4 py-3 shadow-lg border-2 border-[#E0EFC7]"
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.8, type: 'spring' }}
+                >
+                  <p className="text-sm font-medium text-gray-700">
+                    &ldquo;Where did that page go?&rdquo; 🤔
+                  </p>
+                  <div className="absolute -bottom-2 left-6 w-4 h-4 bg-white border-b-2 border-r-2 border-[#E0EFC7] rotate-45"></div>
+                </motion.div>
+              </div>
+              <div className="p-6 bg-gradient-to-r from-[#FFFFF5] to-white">
+                <h3 className="font-heading text-xl font-bold text-[#5B2EFF] mb-2">
+                  Don&apos;t worry, we&apos;ll help you find your way!
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Just like our activated carbon finds and eliminates odors, 
+                  we&apos;ll help you find what you&apos;re looking for.
+                </p>
+              </div>
+            </div>
+
+            {/* Quick Return Button */}
+            <motion.div
+              className="mt-6"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Link
+                href="/"
+                className="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-[#FF3131] to-[#FF6B6B] hover:from-[#E60000] hover:to-[#FF5252] text-white font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                <span>Take Me Home</span>
+                <Cat className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+              </Link>
+            </motion.div>
+          </motion.div>
+
+          {/* Right: Navigation Grid */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5 }}
+          >
+            <div className="bg-white rounded-3xl shadow-xl p-6 border border-[#E0EFC7]">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-3 bg-gradient-to-br from-[#5B2EFF] to-[#8B5CF6] rounded-xl">
+                  <Search className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="font-heading text-xl font-bold text-gray-800">
+                  Where would you like to go?
+                </h3>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {suggestedPages.map((page, index) => {
+                  const Icon = page.icon;
+                  return (
+                    <motion.div
+                      key={page.path}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6 + index * 0.05 }}
+                    >
+                      <Link
+                        href={page.path}
+                        className={`group relative flex items-start gap-3 p-4 rounded-2xl border-2 transition-all duration-300 ${
+                          isHovered === page.path
+                            ? 'border-transparent shadow-lg scale-[1.02]'
+                            : 'border-gray-100 hover:border-[#E0EFC7]'
+                        }`}
+                        style={{
+                          background: isHovered === page.path 
+                            ? `linear-gradient(135deg, ${page.color.includes('from-[#5B2EFF]') ? '#F3F0FF' : page.color.includes('from-[#03E46A]') ? '#F0FDF4' : page.color.includes('from-[#FF3131]') ? '#FEF2F2' : page.color.includes('from-[#F59E0B]') ? '#FFFBEB' : page.color.includes('from-[#EC4899]') ? '#FDF2F8' : '#ECFEFF'} 0%, white 100%)`
+                            : 'white'
+                        }}
+                        onMouseEnter={() => setIsHovered(page.path)}
+                        onMouseLeave={() => setIsHovered(null)}
+                      >
+                        <div className={`p-2.5 rounded-xl bg-gradient-to-br ${page.color} shadow-md group-hover:scale-110 transition-transform duration-300`}>
+                          <Icon className="w-5 h-5 text-white" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="font-semibold text-gray-800 group-hover:text-[#5B2EFF] transition-colors">
+                            {page.title}
+                          </h4>
+                          <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">
+                            {page.description}
+                          </p>
+                        </div>
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Fun Fact Card */}
+            <motion.div
+              className="mt-6 bg-gradient-to-r from-[#03E46A]/10 via-[#5B2EFF]/10 to-[#FF3131]/10 rounded-2xl p-5 border border-[#E0EFC7]"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9 }}
+            >
+              <div className="flex items-start gap-3">
+                <div className="p-2 bg-white rounded-xl shadow-sm">
+                  <span className="text-2xl">💡</span>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-800 text-sm mb-1">
+                    Did you know?
+                  </h4>
+                  <p className="text-xs text-gray-600 leading-relaxed">
+                    Cats spend 70% of their lives sleeping. Maybe this page is just 
+                    taking a cat nap! In the meantime, try our{' '}
+                    <Link href="/science" className="text-[#5B2EFF] hover:underline font-medium">
+                      Science page
+                    </Link>{' '}
+                    to learn how Purrify works.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Search Suggestion */}
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+        >
+          <p className="text-gray-500 text-sm">
+            Still can&apos;t find what you&apos;re looking for?{' '}
+            <Link 
+              href="/contact" 
+              className="text-[#5B2EFF] font-medium hover:underline inline-flex items-center gap-1"
+            >
+              Contact our support team
+              <motion.span
+                animate={{ x: [0, 3, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                →
+              </motion.span>
+            </Link>
+          </p>
+        </motion.div>
+      </div>
     </div>
   );
 }
