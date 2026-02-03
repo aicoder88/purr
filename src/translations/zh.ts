@@ -1841,17 +1841,129 @@ export const zh = {
       id: 1,
       category: "product",
       question: "什么是Purrify，它是如何工作的？",
-      answer: "Purrify是一种活性炭猫砂添加剂，在分子级别消除异味。活性炭具有数百万个微观孔隙，可以捕获和中和引起异味的化合物。",
+      answer: "Purrify是一种活性炭猫砂添加剂，在分子级别消除异味。活性炭具有数百万个微观孔隙，可以捕获和中和引起异味的化合物，相比传统猫砂提供更优越的异味控制。",
       popular: true,
-      tags: ["活性炭", "异味控制"]
+      tags: ["活性炭", "异味控制", "工作原理"]
     },
     {
       id: 2,
       category: "product",
       question: "Purrify可以在猫和人周围使用吗？",
-      answer: "Purrify使用与家用净水器和空气过滤器常见的同类型活性炭，不添加香精或染料。",
+      answer: "Purrify使用与家用净水器和空气过滤器常见的同类型活性炭。它不含添加香精或染料。",
       popular: true,
       tags: ["使用", "滤材级", "无香"]
+    },
+    {
+      id: 3,
+      category: "usage",
+      question: "我应该使用多少Purrify？",
+      answer: "为获得最佳效果，每个标准猫砂盆使用约1-2汤匙Purrify。在完全更换猫砂时将其与现有猫砂充分混合。12克试用装非常适合一次猫砂盆更换。",
+      popular: true,
+      tags: ["用量", "使用", "混合"]
+    },
+    {
+      id: 4,
+      category: "product",
+      question: "Purrify适用于所有类型的猫砂吗？",
+      answer: "是的！Purrify设计用于任何类型的猫砂——粘土、结团型、水晶、天然或可生物降解。它可以增强您现有猫砂的异味控制性能。",
+      popular: true,
+      tags: ["兼容性", "所有猫砂类型", "增强"]
+    },
+    {
+      id: 5,
+      category: "usage",
+      question: "Purrify能持续多久？",
+      answer: "Purrify可将猫砂使用寿命延长2-3倍。使用Purrify时，您通常可以2-3周才需要完全更换猫砂，而不是每周更换，具体取决于猫咪数量和使用频率。",
+      popular: false,
+      tags: ["持续时间", "猫砂寿命", "节省成本"]
+    },
+    {
+      id: 6,
+      category: "shipping",
+      question: "配送速度有多快？",
+      answer: "订单满$25即享免费标准配送（5-7个工作日）。快递配送（2-3天）费用为$9.99，优先配送（1-2天）费用为$14.99。东部时间下午2点前下单当天发货。",
+      popular: true,
+      tags: ["配送速度", "配送时间", "当日发货"]
+    },
+    {
+      id: 7,
+      category: "product",
+      question: "有哪些规格可选？",
+      answer: "我们提供三种规格：12克试用装（仅需支付加拿大$4.76/美国$6.39运费）适合首次使用，50克常规装（$14.99+运费）适合单猫家庭，120克大容量装（$29.99）适合多猫家庭。大容量装每克性价比最高，我们的自动订购套装还包含免费配送。",
+      popular: false,
+      tags: ["规格", "价格", "价值"]
+    },
+    {
+      id: 8,
+      category: "usage",
+      question: "Purrify可以与自动猫砂盆一起使用吗？",
+      answer: "是的，Purrify与自动猫砂盆配合使用效果极佳。只需像往常一样将其与猫砂混合。活性炭不会干扰自动机械装置，并能提供卓越的异味控制。",
+      popular: false,
+      tags: ["自动猫砂盆", "兼容性", "机械装置"]
+    },
+    {
+      id: 9,
+      category: "payment",
+      question: "你们接受哪些付款方式？",
+      answer: "我们接受所有主流信用卡（Visa、MasterCard、American Express）、PayPal、Apple Pay和Google Pay。所有交易均通过Stripe使用256位SSL加密安全处理。",
+      popular: false,
+      tags: ["付款方式", "安全", "信用卡"]
+    },
+    {
+      id: 10,
+      category: "shipping",
+      question: "你们配送到国际吗？",
+      answer: "是的，我们配送到全球许多国家。运费因目的地而异：美国（$12.99）、英国/欧盟（$19.99）、澳大利亚（$24.99）。根据地点不同，配送时间为7-35天。可能产生关税。",
+      popular: false,
+      tags: ["国际配送", "全球", "关税"]
+    },
+    {
+      id: 11,
+      category: "product",
+      question: "如果效果不如预期怎么办？",
+      answer: "我们来帮忙！联系我们的客服团队，我们将指导您完成设置，分享除味技巧，并确保Purrify在您家中发挥最佳效果。",
+      popular: true,
+      tags: ["客服", "帮助", "除味技巧"]
+    },
+    {
+      id: 12,
+      category: "usage",
+      question: "如何知道Purrify是否有效？",
+      answer: "您会在几小时内注意到差异！最明显的迹象是猫砂盆异味大幅减少。您还会发现猫砂保持清新的时间更长，不需要那么频繁地完全更换。",
+      popular: false,
+      tags: ["有效性", "效果", "时间线"]
+    },
+    {
+      id: 13,
+      category: "support",
+      question: "如何联系客服？",
+      answer: "您可以通过hello@purrify.com、联系表单或工作时间电话联系我们。我们通常会在24小时内回复邮件，随时乐意解答任何问题。",
+      popular: false,
+      tags: ["联系", "客服", "响应时间"]
+    },
+    {
+      id: 14,
+      category: "product",
+      question: "Purrify对多猫家庭有帮助吗？",
+      answer: "当然！Purrify在多猫家庭中特别有效，因为那里的异味控制更具挑战性。我们推荐2-3只猫的家庭使用120克大容量装，因为它性价比最高，效果最持久。",
+      popular: false,
+      tags: ["多只猫", "多猫", "大容量"]
+    },
+    {
+      id: 15,
+      category: "usage",
+      question: "我需要改变清理猫砂盆的方式吗？",
+      answer: "不需要改变！继续您日常的铲屎习惯。Purrify在后台消除异味。您可能会发现可以更长时间才完全更换猫砂，节省您的时间和金钱。",
+      popular: false,
+      tags: ["清理习惯", "铲屎", "维护"]
+    },
+    {
+      id: 16,
+      category: "shipping",
+      question: "我可以追踪我的订单吗？",
+      answer: "可以！订单发货后，您将收到包含追踪号码的电子邮件。您可以直接在加拿大邮政网站或通过我们的订单追踪系统追踪包裹。",
+      popular: false,
+      tags: ["追踪", "订单状态", "加拿大邮政"]
     }
   ],
 
