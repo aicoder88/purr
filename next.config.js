@@ -108,6 +108,25 @@ const REDIRECTS = [
     permanent: true,
     locale: false,
   },
+  // Fix trailing slash redirect loops (SEO critical - must be early in redirects array)
+  {
+    source: "/fr/",
+    destination: "/fr",
+    permanent: true,
+    locale: false,
+  },
+  {
+    source: "/es/",
+    destination: "/es",
+    permanent: true,
+    locale: false,
+  },
+  {
+    source: "/zh/",
+    destination: "/zh",
+    permanent: true,
+    locale: false,
+  },
   {
     source: "/blog/purrify-vs-arm-hammer",
     destination: "/blog/activated-carbon-vs-baking-soda-comparison",
@@ -683,6 +702,12 @@ const REDIRECTS = [
   {
     source: "/es/opiniones",
     destination: "/es/reviews",
+    permanent: true,
+  },
+  // Fix: /es/reviews redirect loop - send to working Spanish page
+  {
+    source: "/es/reviews",
+    destination: "/es/products",
     permanent: true,
   },
 
