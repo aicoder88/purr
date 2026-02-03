@@ -109,7 +109,7 @@ export default function FamilyPackPage() {
     schemaData: {
       name: 'Purrify 240g Family Size - Cat Litter Freshener & Charcoal Additive',
       description: 'Best value cat litter freshener for multi-cat homes. 240g activated charcoal cat litter additive from coconut shells. Best value per gram. 100% natural, fragrance-free, pet-friendly deodorizer.',
-      image: ['https://www.purrify.ca/optimized/140g-640w.avif'],
+      image: ['https://www.purrify.ca/images/140g.webp'],
       price: familyPriceAmount.toFixed(2),
       priceValidUntil,
       availability: 'https://schema.org/InStock',
@@ -121,7 +121,7 @@ export default function FamilyPackPage() {
         count: reviewData.reviewCount,
       },
     },
-    image: 'https://www.purrify.ca/optimized/60g.webp',
+    image: 'https://www.purrify.ca/images/140g.webp',
   });
 
   // Family pack lifestyle images
@@ -202,7 +202,7 @@ export default function FamilyPackPage() {
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
                 <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl">
                   <Image
-                    src="/optimized/140g-640w.avif"
+                    src="/images/140g.webp"
                     alt="Purrify 240g Family Size"
                     width={400}
                     height={400}

@@ -26,8 +26,8 @@ export function OptimizedProductImage({
   // Product image paths
   const imagePaths = {
     trial: '/optimized/17g-nice.webp',
-    regular: '/optimized/60g.webp',
-    large: '/optimized/140g-640w.avif', // Primary - browser will fall back automatically
+    regular: '/images/60g.webp',
+    large: '/images/140g.webp', // Primary - browser will fall back automatically
   };
 
   // For the large product, Next.js Image will automatically:

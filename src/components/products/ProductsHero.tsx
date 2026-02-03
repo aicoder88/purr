@@ -137,7 +137,7 @@ export function ProductsHero() {
                                 {/* Regular Bag (Hero) */}
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] md:w-[350px] z-20">
                                     <Image
-                                        src="/optimized/60g.webp"
+                                        src="/images/60g.webp"
                                         alt="Purrify Regular Size"
                                         width={640}
                                         height={640}
@@ -149,7 +149,7 @@ export function ProductsHero() {
                                 {/* Family Bag (Background Right) */}
                                 <div className="absolute top-1/3 right-0 lg:-right-6 w-[200px] md:w-[260px] z-10 opacity-90 blur-[0.5px]">
                                     <Image
-                                        src="/optimized/140g-640w.avif"
+                                        src="/images/140g.webp"
                                         alt="Purrify Family Size"
                                         width={640}
                                         height={640}
