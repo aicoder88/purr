@@ -87,10 +87,10 @@ export default function FreshStepVsArmHammerPage() {
                 Quick Verdict
               </h2>
               <p className="text-purple-700 dark:text-purple-300">
-                <strong>Fresh Step</strong> edges out Arm &amp; Hammer for odor control thanks to its activated
-                carbon content, while <strong>Arm &amp; Hammer</strong> wins on price and offers comparable
+                <strong>Fresh Step</strong> edges out Arm &amp; Hammer for odor control thanks to its <Link href="/learn/activated-carbon-vs-baking-soda-deodorizers" className="text-purple-800 dark:text-purple-200 underline">activated
+                carbon content</Link>, while <strong>Arm &amp; Hammer</strong> wins on price and offers comparable
                 clumping. However, both brands rely primarily on fragrance masking—for true ammonia elimination,
-                supplementing either with activated carbon provides dramatically better results.
+                supplementing either with <Link href="/blog/most-powerful-odor-absorber" className="text-purple-800 dark:text-purple-200 underline">activated carbon</Link> provides dramatically better results.
               </p>
             </div>
           </div>
