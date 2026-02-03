@@ -23,6 +23,14 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: '/us',
+    languages: {
+      'en-US': '/us',
+      'en-CA': '/',
+      'fr-CA': '/fr',
+      'zh-CN': '/zh',
+      'es-US': '/es',
+      'x-default': '/',
+    },
   },
 };
 

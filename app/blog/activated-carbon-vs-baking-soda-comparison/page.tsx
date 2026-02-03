@@ -11,9 +11,9 @@ const heroImage = '/optimized/activated-carbon-vs-baking-soda-comparison.webp';
 const comparisonImage = '/optimized/carbon_magnified_image.webp';
 
 export const metadata: Metadata = {
-  title: `Baking Soda vs Activated Carbon: The Scientific Truth | ${SITE_NAME}`,
-  description: 'Stop wasting money on baking soda. Our lab analysis reveals why activated carbon is 10x more effective for cat litter odor control. The results will surprise you.',
-  keywords: 'activated carbon vs baking soda, cat litter deodorizer comparison, best odor control, charcoal vs baking soda litter',
+  title: `Baking Soda vs Activated Carbon for Cat Litter: 90-Day Test Results | ${SITE_NAME}`,
+  description: '90-day side-by-side test: Activated carbon reduced ammonia by 92% vs 38% for baking soda. See the photos and data that prove which actually works for cat litter odor.',
+  keywords: 'baking soda vs activated carbon cat litter, activated carbon vs baking soda test, cat litter deodorizer comparison, best odor control, charcoal vs baking soda litter',
   alternates: {
     canonical: 'https://www.purrify.ca/blog/activated-carbon-vs-baking-soda-comparison',
   },
@@ -31,10 +31,10 @@ export const metadata: Metadata = {
   },
 };
 
-const structuredData = {
+const articleStructuredData = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'Activated Carbon vs Baking Soda: The Ultimate Odor Control Showdown',
+  headline: 'Baking Soda vs Activated Carbon for Cat Litter: 90-Day Test Results',
   image: [`https://www.purrify.ca${heroImage}`],
   datePublished: '2024-01-15',
   dateModified: new Date().toISOString().split('T')[0],
@@ -46,12 +46,56 @@ const structuredData = {
   },
 };
 
+// FAQ Schema for rich snippets
+const faqStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Is baking soda or activated carbon better for cat litter odor?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Activated carbon is significantly better for cat litter odor control. In our 90-day test, activated carbon reduced ammonia by 92% compared to only 38% for baking soda. Carbon physically traps odor molecules in millions of microscopic pores, while baking soda only provides surface-level chemical neutralization.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does baking soda last in cat litter?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Baking soda typically lasts 24-48 hours in cat litter before becoming saturated. Once the surface layer reacts with acidic compounds, it loses effectiveness and ammonia odors escape. This is why baking soda products require frequent reapplication and often include synthetic fragrances to mask remaining odors.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Why is activated carbon more effective than baking soda?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Activated carbon is more effective because it uses physical adsorption to trap odor molecules in microscopic pores. One gram of activated carbon has over 3,000 square meters of surface area—equivalent to a football field. This allows it to capture all types of odor compounds (ammonia, mercaptans, sulfides) permanently, while baking soda only neutralizes acidic odors chemically.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I mix baking soda and activated carbon in cat litter?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'While mixing baking soda and activated carbon is safe, it is unnecessary and not cost-effective. Activated carbon alone outperforms baking soda for all odor types and lasts 2-3x longer. Adding baking soda provides minimal additional benefit since carbon already handles acidic, basic, and neutral odor compounds through physical adsorption.',
+      },
+    },
+  ],
+};
+
 export default function ActivatedCarbonVsBakingSodaPage() {
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
       />
       <div className="bg-cream-50 dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white dark:bg-gray-900 dark:bg-white min-h-screen">
         <Container>

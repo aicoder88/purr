@@ -14,11 +14,20 @@ const inter = Inter({
   weight: ['400', '500', '600', '700', '800', '900'],
 });
 
-// OG Locale mapping for supported languages
+// Hreflang locale mapping for regional targeting
+// Using proper BCP 47 language tags with hyphens
+const HREFLANG_MAP: Record<string, string> = {
+  en: 'en-CA',    // English - Canada (default)
+  fr: 'fr-CA',    // French - Canada
+  zh: 'zh-CN',    // Chinese - China (Simplified)
+  es: 'es-US',    // Spanish - USA
+};
+
+// OG Locale mapping (OpenGraph uses underscores)
 const OG_LOCALE_MAP: Record<string, string> = {
   fr: 'fr_CA',
   zh: 'zh_CN',
-  es: 'es_ES',
+  es: 'es_US',
   en: 'en_CA',
 };
 
@@ -35,13 +44,21 @@ export async function generateMetadata(): Promise<Metadata> {
   const baseUrl = SITE_URL;
 
   // Build language alternates for hreflang
-  const languages: Record<string, string> = {};
-
-  // Add language alternates for each supported locale
-  for (const loc of SUPPORTED_LOCALES) {
-    const langCode = OG_LOCALE_MAP[loc] ?? `en-${loc.toUpperCase()}`;
-    languages[langCode] = `${baseUrl}?lang=${loc}`;
-  }
+  // Maps language-region codes to their corresponding URLs
+  const languages: Record<string, string> = {
+    // Canadian English (default)
+    'en-CA': `${baseUrl}/`,
+    // Canadian French
+    'fr-CA': `${baseUrl}/fr`,
+    // Chinese (Simplified)
+    'zh-CN': `${baseUrl}/zh`,
+    // US Spanish
+    'es-US': `${baseUrl}/es`,
+    // US English (dedicated landing page)
+    'en-US': `${baseUrl}/us`,
+    // x-default for users whose language doesn't match any above
+    'x-default': `${baseUrl}/`,
+  };
 
   const alternates = {
     canonical: baseUrl,

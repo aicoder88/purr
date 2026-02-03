@@ -122,7 +122,8 @@ module.exports = {
     { href: 'https://www.purrify.ca', hreflang: 'en-CA' },
     { href: 'https://www.purrify.ca/fr', hreflang: 'fr-CA' },
     { href: 'https://www.purrify.ca/zh', hreflang: 'zh-CN' },
-    { href: 'https://www.purrify.ca/es', hreflang: 'es' },
+    { href: 'https://www.purrify.ca/es', hreflang: 'es-US' },
+    { href: 'https://www.purrify.ca/us', hreflang: 'en-US' },
     { href: 'https://www.purrify.ca', hreflang: 'x-default' },
   ],
   // Explicitly define all important pages

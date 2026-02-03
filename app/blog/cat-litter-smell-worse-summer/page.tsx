@@ -258,7 +258,7 @@ export default function CatLitterSmellWorseSummerPage() {
               </div>
 
               <p className="text-gray-700 dark:text-gray-200 mb-6">
-                Unlike baking soda (which stops working when wet) or fragrances (which evaporate faster in heat), <strong>activated
+                Unlike <Link href="/learn/activated-carbon-vs-baking-soda-deodorizers" className="text-[#FF3131] hover:underline">baking soda (which stops working when wet)</Link> or fragrances (which evaporate faster in heat), <strong>activated
                   carbon&apos;s performance doesn&apos;t decline in summer</strong>. In fact, it&apos;s specifically designed for volatile compound control
                 in industrial settings—where temperatures can exceed 40°C.
               </p>

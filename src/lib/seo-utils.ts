@@ -17,10 +17,10 @@ type LocaleCode = 'en' | 'fr' | 'zh' | 'es';
 const DEFAULT_LOCALE: LocaleCode = 'en';
 const SUPPORTED_LOCALES: LocaleCode[] = ['en', 'fr', 'zh', 'es'];
 const LOCALE_HREFLANG_MAP: Record<LocaleCode, string> = {
-  en: 'en-CA',
-  fr: 'fr-CA',
-  zh: 'zh-CN',
-  es: 'es',
+  en: 'en-CA',    // English - Canada (primary market)
+  fr: 'fr-CA',    // French - Canada
+  zh: 'zh-CN',    // Chinese - China (Simplified)
+  es: 'es-US',    // Spanish - USA
 };
 const SCHEMA_ORG_BASE_URL = 'https://schema.org';
 const DEFAULT_PRICE_VALIDITY_DAYS = 365;
@@ -149,8 +149,17 @@ export const buildLanguageAlternates = (canonicalPath: string): LanguageAlternat
 
   const defaultHref = getLocalizedUrl(normalizedPath, DEFAULT_LOCALE);
 
+  // Add US English variant for homepage
+  const usHref = 'https://www.purrify.ca/us';
+
   return [
     ...alternates,
+    // Add en-US variant pointing to /us page (for US market targeting)
+    {
+      locale: DEFAULT_LOCALE,
+      hrefLang: 'en-US',
+      href: usHref,
+    },
     {
       locale: DEFAULT_LOCALE,
       hrefLang: 'x-default',
