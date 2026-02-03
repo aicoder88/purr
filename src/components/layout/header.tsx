@@ -16,7 +16,6 @@ import { LanguageSwitcher } from "../../components/ui/language-switcher";
 import { useTranslation } from "../../lib/translation-context";
 import { ThemeToggle } from "../theme/theme-toggle";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 
@@ -35,11 +34,7 @@ interface NavigationItem {
   dropdownItems?: DropdownItem[];
 }
 
-interface HeaderProps {
-  isAppRouter?: boolean;
-}
-
-export function Header({ isAppRouter = false }: HeaderProps) {
+export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const [isRetailersDropdownOpen, setIsRetailersDropdownOpen] = useState(false);
@@ -47,7 +42,6 @@ export function Header({ isAppRouter = false }: HeaderProps) {
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
   const [expandedMobileSection, setExpandedMobileSection] = useState<string | null>(null);
   const { t, locale } = useTranslation();
-  const router = isAppRouter ? null : useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const headerRef = useRef<HTMLElement | null>(null);
@@ -162,32 +156,15 @@ export function Header({ isAppRouter = false }: HeaderProps) {
     closeMenu();
   }, [scrollToProducts, closeMenu]);
 
-  // Close mobile menu when route changes
+  // Close mobile menu when pathname changes (route change detection)
   useEffect(() => {
-    if (router?.events) {
-      const handleRouteChange = () => {
-        setIsMenuOpen(false);
-        setIsProductsDropdownOpen(false);
-        setIsRetailersDropdownOpen(false);
-        setIsLearnDropdownOpen(false);
-        setIsAboutDropdownOpen(false);
-        setExpandedMobileSection(null);
-      };
-
-      router.events.on("routeChangeStart", handleRouteChange);
-      return () => {
-        router.events.off("routeChangeStart", handleRouteChange);
-      };
-    } else if (pathname) {
-      // App Router fallback
-      setIsMenuOpen(false);
-      setIsProductsDropdownOpen(false);
-      setIsRetailersDropdownOpen(false);
-      setIsLearnDropdownOpen(false);
-      setIsAboutDropdownOpen(false);
-      setExpandedMobileSection(null);
-    }
-  }, [router?.events, pathname, searchParams]);
+    setIsMenuOpen(false);
+    setIsProductsDropdownOpen(false);
+    setIsRetailersDropdownOpen(false);
+    setIsLearnDropdownOpen(false);
+    setIsAboutDropdownOpen(false);
+    setExpandedMobileSection(null);
+  }, [pathname, searchParams]);
 
   // Close any open dropdown when clicking outside the header
   useEffect(() => {

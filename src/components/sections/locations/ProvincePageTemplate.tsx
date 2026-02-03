@@ -1,4 +1,5 @@
-import { NextSeo } from 'next-seo';
+"use client";
+
 import Link from 'next/link';
 import { useEffect } from 'react';
 
@@ -23,14 +24,6 @@ export const ProvincePageTemplate = ({ provinceSlug }: ProvincePageTemplateProps
   const description = locale === 'fr' ? province.descriptionFr : province.description;
   const cityCount = getCityCountByProvince(provinceSlug);
 
-  const seoTitle = locale === 'fr'
-    ? `Désodorisant pour Litière Chat - ${provinceName} | Purrify`
-    : `Cat Litter Odor Control - ${provinceName} | Purrify`;
-
-  const seoDescription = locale === 'fr'
-    ? `Éliminez les odeurs de litière pour chat partout en ${provinceName}. Livraison rapide dans ${cityCount}+ villes. Technologie au charbon actif naturel.`
-    : `Eliminate cat litter odors across ${provinceName}. Fast shipping to ${cityCount}+ cities. Natural activated carbon technology.`;
-
   // Group cities by region for better organization
   const majorCities = cities.filter(city => city.metroPopulation && city.metroPopulation > 100000);
 
@@ -47,24 +40,6 @@ export const ProvincePageTemplate = ({ provinceSlug }: ProvincePageTemplateProps
 
   return (
     <>
-      <NextSeo
-        title={seoTitle}
-        description={seoDescription}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: province.metaKeywords.join(', '),
-          },
-          {
-            name: 'geo.region',
-            content: `CA-${province.code}`,
-          },
-        ]}
-        openGraph={{
-          title: seoTitle,
-          description: seoDescription,
-        }}
-      />
 
       <script
         type="application/ld+json"

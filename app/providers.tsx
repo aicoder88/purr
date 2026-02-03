@@ -23,7 +23,7 @@ export function Providers({ children, locale, messages }: ProvidersProps) {
           storageKey="purrify-ui-theme"
         >
           <CurrencyProvider detectedCurrency="CAD">
-            <TranslationProvider language={locale} isAppRouter={true}>
+            <TranslationProvider language={locale}>
               <ClientLogic />
               {children}
             </TranslationProvider>

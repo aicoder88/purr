@@ -3,47 +3,28 @@
  * Tests for GET /api/seo/stats
  */
 
-import { createMocks } from 'node-mocks-http';
-import handler from '../../../pages/api/seo/stats';
+import { GET } from '../../../app/api/seo/stats/route';
 
 describe('/api/seo/stats', () => {
-  it('should reject non-GET requests', async () => {
-    const { req, res } = createMocks({
-      method: 'POST',
-    });
-
-    await handler(req, res);
-
-    expect(res._getStatusCode()).toBe(405);
-    expect(JSON.parse(res._getData())).toEqual({
-      success: false,
-      error: 'Method not allowed. Use GET.',
-    });
-  });
+  async function getResponseData(response: Response) {
+    return response.json();
+  }
 
   it('should return SEO stats', async () => {
-    const { req, res } = createMocks({
-      method: 'GET',
-    });
+    const response = await GET();
 
-    await handler(req, res);
-
-    expect(res._getStatusCode()).toBe(200);
-    const data = JSON.parse(res._getData());
+    expect(response.status).toBe(200);
+    const data = await getResponseData(response);
     expect(data.success).toBe(true);
     expect(data.data).toBeDefined();
     expect(data.generatedAt).toBeDefined();
   });
 
   it('should include pages stats', async () => {
-    const { req, res } = createMocks({
-      method: 'GET',
-    });
+    const response = await GET();
 
-    await handler(req, res);
-
-    expect(res._getStatusCode()).toBe(200);
-    const data = JSON.parse(res._getData());
+    expect(response.status).toBe(200);
+    const data = await getResponseData(response);
 
     expect(data.data.pages).toBeDefined();
     expect(data.data.pages.total).toBeGreaterThan(0);
@@ -52,14 +33,10 @@ describe('/api/seo/stats', () => {
   });
 
   it('should include cluster stats', async () => {
-    const { req, res } = createMocks({
-      method: 'GET',
-    });
+    const response = await GET();
 
-    await handler(req, res);
-
-    expect(res._getStatusCode()).toBe(200);
-    const data = JSON.parse(res._getData());
+    expect(response.status).toBe(200);
+    const data = await getResponseData(response);
 
     expect(data.data.clusters).toBeDefined();
     expect(data.data.clusters.total).toBeGreaterThanOrEqual(0);
@@ -67,14 +44,10 @@ describe('/api/seo/stats', () => {
   });
 
   it('should include link stats', async () => {
-    const { req, res } = createMocks({
-      method: 'GET',
-    });
+    const response = await GET();
 
-    await handler(req, res);
-
-    expect(res._getStatusCode()).toBe(200);
-    const data = JSON.parse(res._getData());
+    expect(response.status).toBe(200);
+    const data = await getResponseData(response);
 
     expect(data.data.links).toBeDefined();
     expect(typeof data.data.links.suggestionsTotal).toBe('number');
@@ -84,14 +57,10 @@ describe('/api/seo/stats', () => {
   });
 
   it('should include schema stats', async () => {
-    const { req, res } = createMocks({
-      method: 'GET',
-    });
+    const response = await GET();
 
-    await handler(req, res);
-
-    expect(res._getStatusCode()).toBe(200);
-    const data = JSON.parse(res._getData());
+    expect(response.status).toBe(200);
+    const data = await getResponseData(response);
 
     expect(data.data.schema).toBeDefined();
     expect(typeof data.data.schema.productPages).toBe('number');
@@ -103,14 +72,10 @@ describe('/api/seo/stats', () => {
   });
 
   it('should include meta stats', async () => {
-    const { req, res } = createMocks({
-      method: 'GET',
-    });
+    const response = await GET();
 
-    await handler(req, res);
-
-    expect(res._getStatusCode()).toBe(200);
-    const data = JSON.parse(res._getData());
+    expect(response.status).toBe(200);
+    const data = await getResponseData(response);
 
     expect(data.data.meta).toBeDefined();
     expect(typeof data.data.meta.averageTitleLength).toBe('number');
@@ -119,28 +84,20 @@ describe('/api/seo/stats', () => {
   });
 
   it('should return valid ISO timestamp', async () => {
-    const { req, res } = createMocks({
-      method: 'GET',
-    });
+    const response = await GET();
 
-    await handler(req, res);
-
-    expect(res._getStatusCode()).toBe(200);
-    const data = JSON.parse(res._getData());
+    expect(response.status).toBe(200);
+    const data = await getResponseData(response);
 
     const timestamp = new Date(data.generatedAt);
     expect(timestamp.toString()).not.toBe('Invalid Date');
   });
 
   it('should show aggregate rating as enabled (Phase 8 complete)', async () => {
-    const { req, res } = createMocks({
-      method: 'GET',
-    });
+    const response = await GET();
 
-    await handler(req, res);
-
-    expect(res._getStatusCode()).toBe(200);
-    const data = JSON.parse(res._getData());
+    expect(response.status).toBe(200);
+    const data = await getResponseData(response);
 
     expect(data.data.schema.aggregateRatingEnabled).toBe(true);
   });

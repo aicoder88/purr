@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import {
   FileText,
   FolderTree,
@@ -21,7 +21,7 @@ interface AdminLayoutProps {
 
 export default function AdminLayout({ children, title }: AdminLayoutProps) {
   const { data: session } = useSession();
-  const router = useRouter();
+  const pathname = usePathname();
 
   const tabs = [
     { name: 'Posts', href: '/admin/blog', icon: FileText },
@@ -83,8 +83,8 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
           {/* Tabs */}
           <div className="flex space-x-1 -mb-px">
             {visibleTabs.map((tab) => {
-              const isActive = router.pathname === tab.href || 
-                (tab.href !== '/admin/blog' && router.pathname.startsWith(tab.href));
+              const isActive = pathname === tab.href || 
+                (tab.href !== '/admin/blog' && pathname?.startsWith(tab.href));
               const Icon = tab.icon;
 
               return (

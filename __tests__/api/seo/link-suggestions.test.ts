@@ -3,33 +3,23 @@
  * Tests for GET /api/seo/link-suggestions
  */
 
-import { createMocks } from 'node-mocks-http';
-import handler from '../../../pages/api/seo/link-suggestions';
+import { GET } from '../../../app/api/seo/link-suggestions/route';
 
 describe('/api/seo/link-suggestions', () => {
-  it('should reject non-GET requests', async () => {
-    const { req, res } = createMocks({
-      method: 'POST',
-    });
+  function createRequest(url: string): Request {
+    return new Request(url);
+  }
 
-    await handler(req, res);
-
-    expect(res._getStatusCode()).toBe(405);
-    expect(JSON.parse(res._getData())).toEqual({
-      success: false,
-      error: 'Method not allowed. Use GET.',
-    });
-  });
+  async function getResponseData(response: Response) {
+    return response.json();
+  }
 
   it('should return all suggestions without parameters', async () => {
-    const { req, res } = createMocks({
-      method: 'GET',
-    });
+    const req = createRequest('http://localhost:3000/api/seo/link-suggestions');
+    const response = await GET(req);
 
-    await handler(req, res);
-
-    expect(res._getStatusCode()).toBe(200);
-    const data = JSON.parse(res._getData());
+    expect(response.status).toBe(200);
+    const data = await getResponseData(response);
     expect(data.success).toBe(true);
     expect(data.data).toBeDefined();
     expect(Array.isArray(data.data.suggestions)).toBe(true);
@@ -40,17 +30,11 @@ describe('/api/seo/link-suggestions', () => {
   });
 
   it('should filter by page', async () => {
-    const { req, res } = createMocks({
-      method: 'GET',
-      query: {
-        page: '/blog',
-      },
-    });
+    const req = createRequest('http://localhost:3000/api/seo/link-suggestions?page=/blog');
+    const response = await GET(req);
 
-    await handler(req, res);
-
-    expect(res._getStatusCode()).toBe(200);
-    const data = JSON.parse(res._getData());
+    expect(response.status).toBe(200);
+    const data = await getResponseData(response);
     expect(data.success).toBe(true);
     // All suggestions should be FROM the /blog page
     data.data.suggestions.forEach((s: { fromPage: string }) => {
@@ -59,18 +43,11 @@ describe('/api/seo/link-suggestions', () => {
   });
 
   it('should get incoming link suggestions with direction=to', async () => {
-    const { req, res } = createMocks({
-      method: 'GET',
-      query: {
-        page: '/products/trial-size',
-        direction: 'to',
-      },
-    });
+    const req = createRequest('http://localhost:3000/api/seo/link-suggestions?page=/products/trial-size&direction=to');
+    const response = await GET(req);
 
-    await handler(req, res);
-
-    expect(res._getStatusCode()).toBe(200);
-    const data = JSON.parse(res._getData());
+    expect(response.status).toBe(200);
+    const data = await getResponseData(response);
     expect(data.success).toBe(true);
     // All suggestions should be TO the /products/trial-size page
     data.data.suggestions.forEach((s: { toPage: string }) => {
@@ -79,17 +56,11 @@ describe('/api/seo/link-suggestions', () => {
   });
 
   it('should filter by priority', async () => {
-    const { req, res } = createMocks({
-      method: 'GET',
-      query: {
-        priority: 'high',
-      },
-    });
+    const req = createRequest('http://localhost:3000/api/seo/link-suggestions?priority=high');
+    const response = await GET(req);
 
-    await handler(req, res);
-
-    expect(res._getStatusCode()).toBe(200);
-    const data = JSON.parse(res._getData());
+    expect(response.status).toBe(200);
+    const data = await getResponseData(response);
     expect(data.success).toBe(true);
     // All suggestions should be high priority
     data.data.suggestions.forEach((s: { priority: string }) => {
@@ -98,51 +69,32 @@ describe('/api/seo/link-suggestions', () => {
   });
 
   it('should respect limit parameter', async () => {
-    const { req, res } = createMocks({
-      method: 'GET',
-      query: {
-        limit: '5',
-      },
-    });
+    const req = createRequest('http://localhost:3000/api/seo/link-suggestions?limit=5');
+    const response = await GET(req);
 
-    await handler(req, res);
-
-    expect(res._getStatusCode()).toBe(200);
-    const data = JSON.parse(res._getData());
+    expect(response.status).toBe(200);
+    const data = await getResponseData(response);
     expect(data.success).toBe(true);
     expect(data.data.suggestions.length).toBeLessThanOrEqual(5);
   });
 
   it('should group suggestions when requested', async () => {
-    const { req, res } = createMocks({
-      method: 'GET',
-      query: {
-        grouped: 'true',
-        limit: '20',
-      },
-    });
+    const req = createRequest('http://localhost:3000/api/seo/link-suggestions?grouped=true&limit=20');
+    const response = await GET(req);
 
-    await handler(req, res);
-
-    expect(res._getStatusCode()).toBe(200);
-    const data = JSON.parse(res._getData());
+    expect(response.status).toBe(200);
+    const data = await getResponseData(response);
     expect(data.success).toBe(true);
     expect(data.grouped).toBeDefined();
     expect(typeof data.grouped).toBe('object');
   });
 
   it('should return suggestions with correct structure', async () => {
-    const { req, res } = createMocks({
-      method: 'GET',
-      query: {
-        limit: '1',
-      },
-    });
+    const req = createRequest('http://localhost:3000/api/seo/link-suggestions?limit=1');
+    const response = await GET(req);
 
-    await handler(req, res);
-
-    expect(res._getStatusCode()).toBe(200);
-    const data = JSON.parse(res._getData());
+    expect(response.status).toBe(200);
+    const data = await getResponseData(response);
 
     if (data.data.suggestions.length > 0) {
       const suggestion = data.data.suggestions[0];

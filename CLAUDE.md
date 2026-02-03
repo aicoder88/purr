@@ -106,9 +106,9 @@ yarn add
 
 1. **VERIFY FIRST**: Check if it exists in the codebase
    ```bash
-   ls public/images/          # Check images
-   grep -r "@" pages/         # Find social handles
-   grep -r "mailto:" pages/   # Find emails
+   ls public/images/               # Check images
+   grep -r "@" app/ pages/         # Find social handles
+   grep -r "mailto:" app/ pages/   # Find emails
    ```
 
 2. **ASK THE USER**: If you can't verify it exists, ASK before using it
@@ -134,8 +134,10 @@ See [docs/NO_FABRICATION_RULE.md](docs/NO_FABRICATION_RULE.md) for complete guid
 
 | Directory | Purpose | Naming Convention |
 |-----------|---------|-------------------|
-| `pages/` | Next.js pages (routing) | kebab-case: `my-page.tsx` |
-| `pages/api/` | API endpoints | kebab-case: `my-endpoint.ts` |
+| `app/` | App Router pages (Route groups, layouts, error handling) | `page.tsx`, `layout.tsx` |
+| `app/api/` | API routes (Route handlers) | kebab-case: `my-endpoint/route.ts` |
+| `app/(main)/` | Main website route group | Subdirectories with `page.tsx` |
+| `app/admin/` | Admin dashboard | `page.tsx`, `layout.tsx` |
 | `src/components/` | React components | PascalCase: `MyComponent.tsx` |
 | `src/lib/` | Shared utilities | kebab-case files, named exports |
 | `src/hooks/` | Custom React hooks | `use` prefix: `useMyHook.ts` |
@@ -502,29 +504,18 @@ export default function MyPage() {
 
 ```typescript
 // ✅ BEST: Redirect happens before component renders
-import { GetServerSideProps } from 'next';
-import { getSession } from 'next-auth/react';
+import { redirect } from 'next/navigation';
+import { getSession } from '@/lib/auth/session';
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const session = await getSession(ctx);
+export default async function MyPage() {
+  const session = await getSession();
 
   if (!session?.user || session.user.status !== 'approved') {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false,
-      },
-    };
+    redirect('/login'); // ✅ Server-side redirect, no hydration risk
   }
 
-  return {
-    props: { user: session.user },
-  };
-};
-
-export default function MyPage({ user }) {
   // Component always renders for authorized users only
-  return <Content user={user} />;
+  return <Content user={session.user} />;
 }
 ```
 
@@ -581,7 +572,7 @@ Before merging any page component:
 
 - [ ] Does the component ever `return null` conditionally?
 - [ ] If using client-side auth, does it show loading/error states?
-- [ ] Are auth checks in getServerSideProps when possible?
+- [ ] Are auth checks done server-side with `redirect()` when possible?
 - [ ] Does every render path return a valid React element?
 
 **See [docs/HYDRATION_SAFETY.md](docs/HYDRATION_SAFETY.md) for complete guide.**
@@ -617,9 +608,10 @@ function ProductPage() {
 ```typescript
 import { detectCurrencyFromRequest } from '@/lib/geo/currency-detector';
 
-export default async function handler(req, res) {
+export async function GET(req: Request) {
   const currency = detectCurrencyFromRequest(req);
   // Use currency in logic
+  return Response.json({ currency });
 }
 ```
 
@@ -648,25 +640,49 @@ const schema = {
 - `src/lib/currency-context.tsx` - React context
 - `src/lib/pricing.ts` - Pricing functions
 - `src/lib/constants.ts` - USD_PRICES map
-- `pages/_app.tsx` - CurrencyProvider integration
+- `app/layout.tsx` - CurrencyProvider integration (root layout)
 
 ---
 
 ## 🔒 Code Patterns
 
-### Protected API Route
-```typescript
+### App Router Code Patterns
+
+```ts
+// Server Component (default) - async data fetching
+export default async function Page() {
+  const data = await fetchData();
+  return <Component data={data} />;
+}
+
+// Client Component - interactive UI
+'use client';
+export default function ClientComponent() {
+  const [state, setState] = useState();
+  return <div>...</div>;
+}
+
+// API Route (App Router Route Handler)
+export async function GET(req: Request) {
+  const data = await fetchData();
+  return Response.json(data);
+}
+
+// Protected API Route
 import { requireAuth } from '@/lib/auth/session';
 import { withCSRFProtection } from '@/lib/security/csrf';
 import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit';
 
-export default withRateLimit(RATE_LIMITS.CREATE,
-  withCSRFProtection(async (req, res) => {
-    const session = await requireAuth(req, res, ['admin', 'editor']);
-    if (!session) return;
-    // handler logic
-  })
-);
+export async function GET(req: Request) {
+  return withRateLimit(RATE_LIMITS.READ,
+    withCSRFProtection(async () => {
+      const session = await requireAuth(req, ['admin', 'editor']);
+      if (!session) return Response.json({ error: 'Unauthorized' }, { status: 401 });
+      // handler logic
+      return Response.json(data);
+    })
+  );
+}
 ```
 
 ### Rate Limits
@@ -1041,7 +1057,7 @@ These features require explicit user approval before implementing:
 
 ## 🏗️ Tech Stack
 
-**Framework:** Next.js 16 (Pages Router) • React 19 • TypeScript
+**Framework:** Next.js 16 (App Router) • React 19 • TypeScript
 
 **Styling:** Tailwind CSS • Radix UI • Framer Motion
 
@@ -1079,8 +1095,8 @@ These features require explicit user approval before implementing:
 ### Understanding the Codebase?
 - `src/lib/` - Core utilities (auth, currency, pricing, security)
 - `src/components/` - Reusable React components
-- `pages/` - Next.js pages (routing)
-- `pages/api/` - API endpoints
+- `app/` - Next.js App Router pages (routing)
+- `app/api/` - API route handlers
 - `src/translations/` - i18n strings
 
 ### Making Your First Change?
@@ -1093,4 +1109,43 @@ These features require explicit user approval before implementing:
 
 ---
 
-**Last Updated:** 2026-01-27
+## 🔄 App Router Migration Notes
+
+### Key Differences from Pages Router
+
+| Feature | Pages Router | App Router |
+|---------|--------------|------------|
+| **Components** | Client by default | Server by default |
+| **Client Components** | No directive needed | `'use client'` directive required |
+| **Data Fetching** | `getServerSideProps`, `getStaticProps` | Direct async/await in Server Components |
+| **API Routes** | `pages/api/*.ts` with `handler(req, res)` | `app/api/*/route.ts` with `GET/POST/PUT/DELETE` |
+| **SEO/Metadata** | `next-seo` or `<Head>` | Native `Metadata` API in `layout.tsx`/`page.tsx` |
+| **Layouts** | `_app.tsx`, `_document.tsx` | Nested `layout.tsx` files |
+| **Navigation** | `useRouter()` from `next/router` | `redirect()` from `next/navigation` |
+
+### Server Components (Default)
+- Can be async
+- Can fetch data directly
+- Cannot use hooks or browser APIs
+- Smaller bundle size
+
+### Client Components
+- Must add `'use client'` at top of file
+- Can use hooks and browser APIs
+- Can have event handlers and state
+- Interactivity only when needed
+
+### Metadata API
+```typescript
+// In layout.tsx or page.tsx
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Page Title',
+  description: 'Page description',
+};
+```
+
+---
+
+**Last Updated:** 2026-02-03

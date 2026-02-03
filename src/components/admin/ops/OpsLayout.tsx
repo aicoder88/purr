@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import {
   LayoutDashboard,
   Users,
@@ -21,7 +21,7 @@ interface OpsLayoutProps {
 
 export default function OpsLayout({ children, title }: OpsLayoutProps) {
   const { data: session } = useSession();
-  const router = useRouter();
+  const pathname = usePathname();
 
   const tabs = [
     { name: 'Dashboard', href: '/admin/ops', icon: LayoutDashboard },
@@ -36,9 +36,9 @@ export default function OpsLayout({ children, title }: OpsLayoutProps) {
 
   const isActiveTab = (href: string) => {
     if (href === '/admin/ops') {
-      return router.pathname === '/admin/ops';
+      return pathname === '/admin/ops';
     }
-    return router.pathname.startsWith(href);
+    return pathname?.startsWith(href) ?? false;
   };
 
   return (

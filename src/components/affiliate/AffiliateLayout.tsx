@@ -1,7 +1,7 @@
 import { ReactNode, useState } from 'react';
 import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { useTranslation } from '@/lib/translation-context';
 import {
   LayoutDashboard,
@@ -25,7 +25,7 @@ interface AffiliateLayoutProps {
 export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
   const { t } = useTranslation();
   const { data: session } = useSession();
-  const router = useRouter();
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [codeCopied, setCodeCopied] = useState(false);
 
@@ -66,9 +66,9 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
 
   const isActiveRoute = (href: string) => {
     if (href === '/affiliate/dashboard') {
-      return router.pathname === '/affiliate/dashboard';
+      return pathname === '/affiliate/dashboard';
     }
-    return router.pathname.startsWith(href);
+    return pathname?.startsWith(href) ?? false;
   };
 
   const copyCode = async () => {

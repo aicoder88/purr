@@ -1,6 +1,5 @@
 "use client";
 
-import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
@@ -400,31 +399,6 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
 
   return (
     <>
-      <NextSeo
-        title={seoTitle}
-        description={seoDescription}
-        canonical={`https://www.purrify.ca/locations/${profile.slug}`}
-        noindex={locale !== 'en' || !profile.indexed}
-        nofollow={false}
-        additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: keywordContent,
-          },
-          {
-            name: 'geo.region',
-            content: provinceName,
-          },
-          {
-            name: 'geo.placename',
-            content: profile.name,
-          },
-        ]}
-        openGraph={{
-          title: seoTitle,
-          description: seoDescription,
-        }}
-      />
 
       <LocationSchema
         cityName={profile.name}

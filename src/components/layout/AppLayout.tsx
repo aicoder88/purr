@@ -22,8 +22,8 @@ export function AppLayout({ children }: AppLayoutProps) {
         <div className="flex flex-col min-h-screen">
             <PawCursor />
             <ScrollToTopButton />
-            <MobileFloatingCTA isAppRouter={true} />
-            {!hideHeader && <Header isAppRouter={true} />}
+            <MobileFloatingCTA />
+            {!hideHeader && <Header />}
             <main className="flex-grow">{children}</main>
             {!hideFooter && <Footer />}
         </div>

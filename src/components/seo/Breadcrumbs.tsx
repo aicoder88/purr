@@ -4,7 +4,7 @@
  */
 
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { getBreadcrumbs } from '@/lib/seo/topic-clusters';
 
 interface BreadcrumbsProps {
@@ -13,8 +13,8 @@ interface BreadcrumbsProps {
 }
 
 export function Breadcrumbs({ customBreadcrumbs, className = '' }: BreadcrumbsProps) {
-  const router = useRouter();
-  const currentPath = router.asPath.split('?')[0].split('#')[0];
+  const pathname = usePathname();
+  const currentPath = (pathname || '').split('?')[0].split('#')[0];
 
   // Use custom breadcrumbs if provided, otherwise generate from topic clusters
   const breadcrumbs = customBreadcrumbs || getBreadcrumbs(currentPath);
@@ -97,8 +97,8 @@ export function Breadcrumbs({ customBreadcrumbs, className = '' }: BreadcrumbsPr
  * Compact breadcrumbs for mobile
  */
 export function BreadcrumbsCompact({ customBreadcrumbs, className = '' }: BreadcrumbsProps) {
-  const router = useRouter();
-  const currentPath = router.asPath.split('?')[0].split('#')[0];
+  const pathname = usePathname();
+  const currentPath = (pathname || '').split('?')[0].split('#')[0];
 
   const breadcrumbs = customBreadcrumbs || getBreadcrumbs(currentPath);
 

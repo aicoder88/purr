@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { ShoppingBag } from 'lucide-react';
 import { useTranslation } from '@/lib/translation-context';
 
@@ -16,12 +16,8 @@ import { useTranslation } from '@/lib/translation-context';
  * - Checkout pages
  * - Cart pages
  */
-interface MobileFloatingCTAProps {
-  isAppRouter?: boolean;
-}
-
-export function MobileFloatingCTA({ isAppRouter = false }: MobileFloatingCTAProps) {
-  const router = isAppRouter ? null : useRouter();
+export function MobileFloatingCTA() {
+  const pathname = usePathname();
   const { t, locale } = useTranslation();
   const [isClient, setIsClient] = useState(false);
 
@@ -32,7 +28,7 @@ export function MobileFloatingCTA({ isAppRouter = false }: MobileFloatingCTAProp
 
   // Determine if the CTA should be hidden based on current route
   const shouldHide = (): boolean => {
-    const pathname = router?.pathname || "";
+    const currentPath = pathname || "";
 
     // Pages where floating CTA should NOT appear
     const hiddenRoutes = [
@@ -46,7 +42,7 @@ export function MobileFloatingCTA({ isAppRouter = false }: MobileFloatingCTAProp
 
     // Check if current path starts with any hidden route
     const isHiddenRoute = hiddenRoutes.some(route =>
-      pathname === route || pathname.startsWith(`${route}/`)
+      currentPath === route || currentPath.startsWith(`${route}/`)
     );
 
     return isHiddenRoute;
