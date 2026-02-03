@@ -60,6 +60,8 @@ const STORE_LOGOS: Record<string, Omit<LogoConfig, 'className' | 'width' | 'heig
   'K&K Pet Foods': { src: '/optimized/kk.avif', alt: 'K&K Pet Foods Dunbar - Premium Pet Products & Supplies Logo' },
   'Viva Pets': { src: '/optimized/viva-pets.avif', alt: 'Viva Pets - Premium Pet Products & Supplies Logo' },
   'Little Bit Western': { src: '/optimized/little-bit-western.avif', alt: 'Little Bit Western Feed and Supplies Inc. - Pet and Feed Store Logo' },
+  'Best Cat': { src: '/optimized/bestcat.png', alt: 'Best Cat - Premium Pet Products and Supplies Logo' },
+  'Camlachie Feed': { src: '/optimized/camlachie-feed.jpg', alt: 'Camlachie Feed - Pet and Farm Supplies Logo' },
 };
 
 // List of stores that should have white background for their logo
@@ -272,6 +274,22 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     phone: "780-489-7387",
     url: "https://www.vivapets.ca/",
     description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || ""
+  },
+  {
+    name: "Best Cat",
+    location: "Burlington, ON L7N 2R4",
+    address: "3455 Fairview St., Unit 15A, Burlington, ON L7N 2R4",
+    phone: "1-905-333-4060",
+    url: "https://bestcat.ca/",
+    description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || ""
+  },
+  {
+    name: "Camlachie Feed",
+    location: "Camlachie, ON N0N 1E0",
+    address: "3912 Egremont Rd, Camlachie, Ontario, N0N 1E0",
+    phone: "519-899-2285",
+    url: "https://www.camlachiefeed.ca/",
+    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || ""
   },
 ];
 
