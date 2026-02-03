@@ -36,11 +36,17 @@ function getPages() {
   });
 
   return pages.map((page) => {
-    // Convert file path to route
-    const route = page
+    // Convert file path to route (with trailing slash)
+    let route = page
       .replace(PAGES_DIR, '')
       .replace(/\.(js|jsx|ts|tsx)$/, '')
-      .replace(/\/index$/, '/');
+      .replace(/\/index$/, '');
+    
+    // Ensure trailing slash (except for root)
+    if (route !== '' && !route.endsWith('/')) {
+      route = `${route}/`;
+    }
+    if (route === '') route = '/';
 
     // Determine page type for priority and change frequency
     let type = 'default';
@@ -83,7 +89,7 @@ async function generateSitemap() {
       // Add alternate language versions if applicable
       const alternates = page.route === '/' || page.route === '/blog/' 
         ? `<xhtml:link rel="alternate" hreflang="en" href="${url}" />
-           <xhtml:link rel="alternate" hreflang="fr" href="${url}fr/" />
+           <xhtml:link rel="alternate" hreflang="fr" href="${SITE_URL}/fr/" />
            <xhtml:link rel="alternate" hreflang="x-default" href="${url}" />`
         : '';
       

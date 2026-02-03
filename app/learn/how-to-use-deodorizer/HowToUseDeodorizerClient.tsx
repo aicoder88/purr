@@ -20,7 +20,7 @@ import {
 import { useFormatter } from 'next-intl';
 
 export default function HowToUseDeodorizerClient() {
-  const heroImage = '/images/replacements/cat-litter-usage-ghibli.png';
+  const heroImage = '/optimized/cat-litter-usage-ghibli-828w.webp';
   const format = useFormatter();
 
   return (

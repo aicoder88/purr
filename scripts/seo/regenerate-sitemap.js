@@ -7,18 +7,18 @@ const today = new Date().toISOString().split('T')[0];
 
 const urls = [
     { loc: '/', priority: 1.0, changefreq: 'daily' },
-    { loc: '/products/trial-size', priority: 0.9, changefreq: 'weekly' },
-    { loc: '/products/standard', priority: 0.9, changefreq: 'weekly' },
-    { loc: '/products/family-pack', priority: 0.9, changefreq: 'weekly' },
-    { loc: '/products/compare', priority: 0.7, changefreq: 'weekly' },
-    { loc: '/learn/how-it-works', priority: 0.8, changefreq: 'monthly' },
-    { loc: '/learn/cat-litter-guide', priority: 0.7, changefreq: 'monthly' },
-    { loc: '/learn/faq', priority: 0.8, changefreq: 'weekly' },
-    { loc: '/reviews', priority: 0.7, changefreq: 'weekly' },
-    { loc: '/case-studies', priority: 0.6, changefreq: 'monthly' },
-    { loc: '/contact', priority: 0.6, changefreq: 'monthly' },
-    { loc: '/about/our-story', priority: 0.6, changefreq: 'monthly' },
-    { loc: '/blog', priority: 0.8, changefreq: 'daily' },
+    { loc: '/products/trial-size/', priority: 0.9, changefreq: 'weekly' },
+    { loc: '/products/standard/', priority: 0.9, changefreq: 'weekly' },
+    { loc: '/products/family-pack/', priority: 0.9, changefreq: 'weekly' },
+    { loc: '/products/compare/', priority: 0.7, changefreq: 'weekly' },
+    { loc: '/learn/how-it-works/', priority: 0.8, changefreq: 'monthly' },
+    { loc: '/learn/cat-litter-guide/', priority: 0.7, changefreq: 'monthly' },
+    { loc: '/learn/faq/', priority: 0.8, changefreq: 'weekly' },
+    { loc: '/reviews/', priority: 0.7, changefreq: 'weekly' },
+    { loc: '/case-studies/', priority: 0.6, changefreq: 'monthly' },
+    { loc: '/contact/', priority: 0.6, changefreq: 'monthly' },
+    { loc: '/about/our-story/', priority: 0.6, changefreq: 'monthly' },
+    { loc: '/blog/', priority: 0.8, changefreq: 'daily' },
 ];
 
 let xml = '<?xml version="1.0" encoding="UTF-8"?>\\n';

@@ -4,6 +4,7 @@ import { Resend } from 'resend';
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
 import { createContactTicket, isZendeskConfigured } from '@/lib/zendesk';
 import * as Sentry from '@sentry/nextjs';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 /**
  * Sanitize string to prevent email header injection attacks
@@ -87,30 +88,7 @@ const contactFormSchema = z.object({
     ),
 });
 
-// Enhanced rate limiting setup with per-user tracking
-const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
-const MAX_REQUESTS_PER_WINDOW = 5;
-
-interface RateLimitEntry {
-  count: number;
-  resetTime: number;
-  blocked: boolean;
-  blockExpiresAt?: number;
-}
-
-const ipRequestCounts = new Map<string, RateLimitEntry>();
-
-// Cleanup old entries every 5 minutes
-setInterval(() => {
-  const now = Date.now();
-  for (const [ip, entry] of ipRequestCounts.entries()) {
-    if (entry.blockExpiresAt && now > entry.blockExpiresAt) {
-      ipRequestCounts.delete(ip);
-    } else if (!entry.blockExpiresAt && entry.resetTime < now) {
-      ipRequestCounts.delete(ip);
-    }
-  }
-}, 5 * 60 * 1000);
+// Note: Rate limiting is now handled by centralized rate-limit.ts module
 
 /**
  * Send email via Resend API
@@ -198,54 +176,29 @@ ${sanitizedMessage}
   }
 }
 
-/**
- * Apply rate limiting with progressive penalties
- */
-function applyRateLimit(clientIp: string): { allowed: boolean; headers: Headers } {
-  const headers = new Headers();
-  headers.set('X-Content-Type-Options', 'nosniff');
-  headers.set('X-Frame-Options', 'DENY');
-  headers.set('Content-Security-Policy', "default-src 'self'");
 
-  const now = Date.now();
-  const ipData = ipRequestCounts.get(clientIp);
-
-  // Check if IP is currently blocked
-  if (ipData?.blocked && ipData.blockExpiresAt && now < ipData.blockExpiresAt) {
-    const retryAfter = Math.ceil((ipData.blockExpiresAt - now) / 1000);
-    headers.set('Retry-After', retryAfter.toString());
-    return { allowed: false, headers };
-  }
-
-  if (ipData) {
-    if (now < ipData.resetTime) {
-      if (ipData.count >= MAX_REQUESTS_PER_WINDOW) {
-        // Block this IP for 15 minutes due to abuse
-        ipData.blocked = true;
-        ipData.blockExpiresAt = now + (15 * 60 * 1000);
-        console.warn(`[RATE LIMIT] IP ${clientIp} blocked for excessive requests`);
-        return { allowed: false, headers };
-      }
-      ipData.count += 1;
-    } else {
-      ipRequestCounts.set(clientIp, { count: 1, resetTime: now + RATE_LIMIT_WINDOW, blocked: false });
-    }
-  } else {
-    ipRequestCounts.set(clientIp, { count: 1, resetTime: now + RATE_LIMIT_WINDOW, blocked: false });
-  }
-
-  return { allowed: true, headers };
-}
 
 export async function POST(request: NextRequest) {
   // Get client IP
   const forwarded = request.headers.get('x-forwarded-for');
   const clientIp = forwarded ? forwarded.split(',')[0].trim() : 'unknown';
 
-  // Apply rate limiting
-  const { allowed, headers } = applyRateLimit(clientIp);
+  // Apply rate limiting (sensitive: 5 req/min)
+  const rateLimitResult = await checkRateLimit(clientIp, 'sensitive');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+  
+  // Create security headers
+  const headers = new Headers();
+  headers.set('X-Content-Type-Options', 'nosniff');
+  headers.set('X-Frame-Options', 'DENY');
+  headers.set('Content-Security-Policy', "default-src 'self'");
+  
+  // Add rate limit headers
+  Object.entries(rateLimitHeaders).forEach(([key, value]) => {
+    headers.set(key, value);
+  });
 
-  if (!allowed) {
+  if (!rateLimitResult.success) {
     return NextResponse.json(
       { success: false, message: 'Too many requests. Please try again later.' },
       { status: 429, headers }

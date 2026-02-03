@@ -4,9 +4,28 @@ import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { useState, useCallback } from 'react';
-import { BarChart, LineChart, PieChart, ProgressRing } from '@/components/ui/charts';
+import dynamic from 'next/dynamic';
 import { CONTACT_INFO } from '@/lib/constants';
 import type { Metadata } from 'next';
+
+// Dynamic imports for chart components to reduce initial bundle size
+// These components use SVG rendering which can be heavy on initial load
+const BarChart = dynamic(() => import('@/components/ui/charts').then((mod) => mod.BarChart), {
+  ssr: false,
+  loading: () => <div className="h-64 bg-gray-100 dark:bg-gray-800 rounded-xl animate-pulse" />
+});
+const LineChart = dynamic(() => import('@/components/ui/charts').then((mod) => mod.LineChart), {
+  ssr: false,
+  loading: () => <div className="h-64 bg-gray-100 dark:bg-gray-800 rounded-xl animate-pulse" />
+});
+const PieChart = dynamic(() => import('@/components/ui/charts').then((mod) => mod.PieChart), {
+  ssr: false,
+  loading: () => <div className="h-64 bg-gray-100 dark:bg-gray-800 rounded-xl animate-pulse" />
+});
+const ProgressRing = dynamic(() => import('@/components/ui/charts').then((mod) => mod.ProgressRing), {
+  ssr: false,
+  loading: () => <div className="w-20 h-20 rounded-full bg-gray-100 dark:bg-gray-800 animate-pulse" />
+});
 
 // Metadata must be exported from a server component, so we use the generateMetadata pattern
 // For this client component page, metadata is defined in a separate file or we use a wrapper

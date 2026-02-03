@@ -1,15 +1,41 @@
 "use client";
 
 import { useState, useEffect, useCallback } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import AdminLayout from '@/components/admin/AdminLayout';
-import RichTextEditor from '@/components/admin/RichTextEditor';
 import AutoSaveIndicator from '@/components/admin/AutoSaveIndicator';
+
+// Dynamic import for RichTextEditor to reduce initial bundle size
+// Tiptap editor is a heavy library that's only needed when creating posts
+const RichTextEditor = dynamic(() => import('@/components/admin/RichTextEditor'), {
+  ssr: false,
+  loading: () => (
+    <div className="min-h-[400px] bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center">
+      <div className="flex flex-col items-center gap-3">
+        <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
+        <span className="text-sm text-gray-500 dark:text-gray-400">Loading editor...</span>
+      </div>
+    </div>
+  ),
+});
 import HelpBanner from '@/components/admin/HelpBanner';
-import AIContentGenerator from '@/components/admin/AIContentGenerator';
 import { useAutoSave } from '@/hooks/useAutoSave';
+
+// Dynamic import for AIContentGenerator - only loaded when user clicks AI assist button
+const AIContentGenerator = dynamic(() => import('@/components/admin/AIContentGenerator'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex items-center justify-center h-64">
+      <div className="flex flex-col items-center gap-3">
+        <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
+        <span className="text-sm text-gray-500 dark:text-gray-400">Loading AI assistant...</span>
+      </div>
+    </div>
+  ),
+});
 import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
 import { SEOScorer } from '@/lib/blog/seo-scorer';
 import { sanitizeText } from '@/lib/security/sanitize';

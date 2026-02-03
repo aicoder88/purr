@@ -1,12 +1,26 @@
 "use client";
 
 import { useState, useEffect, useCallback } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import AdminLayout from '@/components/admin/AdminLayout';
-import RichTextEditor from '@/components/admin/RichTextEditor';
 import AutoSaveIndicator from '@/components/admin/AutoSaveIndicator';
+
+// Dynamic import for RichTextEditor to reduce initial bundle size
+// Tiptap editor is a heavy library that's only needed when editing posts
+const RichTextEditor = dynamic(() => import('@/components/admin/RichTextEditor'), {
+  ssr: false,
+  loading: () => (
+    <div className="min-h-[400px] bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center">
+      <div className="flex flex-col items-center gap-3">
+        <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
+        <span className="text-sm text-gray-500 dark:text-gray-400">Loading editor...</span>
+      </div>
+    </div>
+  ),
+});
 import { useAutoSave } from '@/hooks/useAutoSave';
 import { SEOScorer } from '@/lib/blog/seo-scorer';
 import { sanitizeText } from '@/lib/security/sanitize';

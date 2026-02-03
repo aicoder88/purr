@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/replacements/cat-litter-usage-ghibli.png',
+        url: 'https://www.purrify.ca/optimized/cat-litter-usage-ghibli-828w.webp',
         width: 1200,
         height: 800,
         alt: 'How to use cat litter deodorizer - step by step guide',
@@ -45,7 +45,7 @@ const articleSchema = {
   inLanguage: 'en-CA',
   headline: 'How to Use Cat Litter Deodorizer Additive - Complete Step-by-Step Guide',
   description: 'Learn how to use activated carbon cat litter additive properly. Step-by-step instructions for your litter box, common mistakes to avoid, and pro tips for maximum odor control.',
-  image: 'https://www.purrify.ca/images/replacements/cat-litter-usage-ghibli.png',
+  image: 'https://www.purrify.ca/optimized/cat-litter-usage-ghibli-828w.webp',
   datePublished: '2024-01-15T10:00:00Z',
   dateModified: new Date().toISOString(),
   author: {
@@ -77,7 +77,7 @@ const howToSchema = {
   '@type': 'HowTo',
   name: 'How to Use Activated Carbon Cat Litter Deodorizer',
   description: 'Step-by-step guide to using activated carbon litter additive for maximum odor control.',
-  image: 'https://www.purrify.ca/images/replacements/cat-litter-usage-ghibli.png',
+  image: 'https://www.purrify.ca/optimized/cat-litter-usage-ghibli-828w.webp',
   totalTime: 'PT5M',
   estimatedCost: {
     '@type': 'MonetaryAmount',

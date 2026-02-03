@@ -119,14 +119,14 @@ module.exports = {
     '/es/dialergptpitchdeck',
   ],
   alternateRefs: [
-    { href: 'https://www.purrify.ca', hreflang: 'en-CA' },
-    { href: 'https://www.purrify.ca/fr', hreflang: 'fr-CA' },
-    { href: 'https://www.purrify.ca/zh', hreflang: 'zh-CN' },
-    { href: 'https://www.purrify.ca/es', hreflang: 'es-US' },
-    { href: 'https://www.purrify.ca/us', hreflang: 'en-US' },
-    { href: 'https://www.purrify.ca', hreflang: 'x-default' },
+    { href: 'https://www.purrify.ca/', hreflang: 'en-CA' },
+    { href: 'https://www.purrify.ca/fr/', hreflang: 'fr-CA' },
+    { href: 'https://www.purrify.ca/zh/', hreflang: 'zh-CN' },
+    { href: 'https://www.purrify.ca/es/', hreflang: 'es-US' },
+    { href: 'https://www.purrify.ca/us/', hreflang: 'en-US' },
+    { href: 'https://www.purrify.ca/', hreflang: 'x-default' },
   ],
-  // Explicitly define all important pages
+  // Explicitly define all important pages (with trailing slashes to match Vercel behavior)
   additionalPaths: async (config) => [
     {
       loc: '/',
@@ -135,19 +135,19 @@ module.exports = {
       lastmod: new Date().toISOString(),
     },
     {
-      loc: '/fr',
+      loc: '/fr/',
       changefreq: 'daily',
       priority: 0.9,
       lastmod: new Date().toISOString(),
     },
     {
-      loc: '/es',
+      loc: '/es/',
       changefreq: 'daily',
       priority: 0.9,
       lastmod: new Date().toISOString(),
     },
     {
-      loc: '/blog',
+      loc: '/blog/',
       changefreq: 'weekly',
       priority: 0.8,
       lastmod: new Date().toISOString(),
@@ -155,62 +155,65 @@ module.exports = {
     // Removed /checkout - it redirects to /products
     // Removed /thank-you - post-purchase page shouldn't be in sitemap
     {
-      loc: '/privacy-policy',
+      loc: '/privacy-policy/',
       changefreq: 'monthly',
       priority: 0.3,
       lastmod: new Date().toISOString(),
     },
     {
-      loc: '/fr/privacy-policy',
+      loc: '/fr/privacy-policy/',
       changefreq: 'monthly',
       priority: 0.3,
       lastmod: new Date().toISOString(),
     },
     {
-      loc: '/es/privacy-policy',
+      loc: '/es/privacy-policy/',
       changefreq: 'monthly',
       priority: 0.3,
       lastmod: new Date().toISOString(),
     },
     {
-      loc: '/terms',
+      loc: '/terms/',
       changefreq: 'monthly',
       priority: 0.3,
       lastmod: new Date().toISOString(),
     },
     {
-      loc: '/fr/terms',
+      loc: '/fr/terms/',
       changefreq: 'monthly',
       priority: 0.3,
       lastmod: new Date().toISOString(),
     },
     {
-      loc: '/es/terms',
+      loc: '/es/terms/',
       changefreq: 'monthly',
       priority: 0.3,
       lastmod: new Date().toISOString(),
     },
-    // Product pages (canonical slugs)
-    { loc: '/products/trial-size', changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString() },
-    { loc: '/products/standard', changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString() },
-    { loc: '/products/family-pack', changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString() },
+    // Product pages (canonical slugs with trailing slashes)
+    { loc: '/products/trial-size/', changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString() },
+    { loc: '/products/standard/', changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString() },
+    { loc: '/products/family-pack/', changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString() },
     // USA landing page - important for US market expansion
-    { loc: '/us', changefreq: 'weekly', priority: 0.85, lastmod: new Date().toISOString() },
+    { loc: '/us/', changefreq: 'weekly', priority: 0.85, lastmod: new Date().toISOString() },
     // Spanish pages - key landing pages for Spanish market
-    { loc: '/es/opiniones', changefreq: 'weekly', priority: 0.7, lastmod: new Date().toISOString() },
-    { loc: '/es/products/trial-size', changefreq: 'weekly', priority: 0.85, lastmod: new Date().toISOString() },
-    { loc: '/es/products/standard', changefreq: 'weekly', priority: 0.85, lastmod: new Date().toISOString() },
-    { loc: '/es/products/family-pack', changefreq: 'weekly', priority: 0.85, lastmod: new Date().toISOString() },
-    { loc: '/es/contact', changefreq: 'monthly', priority: 0.5, lastmod: new Date().toISOString() },
-    { loc: '/es/learn/how-it-works', changefreq: 'monthly', priority: 0.6, lastmod: new Date().toISOString() },
-    { loc: '/es/learn/faq', changefreq: 'monthly', priority: 0.6, lastmod: new Date().toISOString() },
+    { loc: '/es/reviews/', changefreq: 'weekly', priority: 0.7, lastmod: new Date().toISOString() },
+    { loc: '/es/products/trial-size/', changefreq: 'weekly', priority: 0.85, lastmod: new Date().toISOString() },
+    { loc: '/es/products/standard/', changefreq: 'weekly', priority: 0.85, lastmod: new Date().toISOString() },
+    { loc: '/es/products/family-pack/', changefreq: 'weekly', priority: 0.85, lastmod: new Date().toISOString() },
+    { loc: '/es/contact/', changefreq: 'monthly', priority: 0.5, lastmod: new Date().toISOString() },
+    { loc: '/es/learn/how-it-works/', changefreq: 'monthly', priority: 0.6, lastmod: new Date().toISOString() },
+    { loc: '/es/learn/faq/', changefreq: 'monthly', priority: 0.6, lastmod: new Date().toISOString() },
   ],
   transform: async (config, path) => {
+    // Ensure path has trailing slash for consistency (except root)
+    const normalizedPath = path === '' ? path : (path.endsWith('/') ? path : `${path}/`);
+    
     // Blog pages - now available in EN, FR, ZH, ES (Jan 2026)
     // Each locale blog will have its own canonical, no alternateRefs needed (handled at page level)
-    if (path === '/blog' || path.startsWith('/blog/')) {
+    if (normalizedPath === '/blog/' || normalizedPath.startsWith('/blog/')) {
       return {
-        loc: path,
+        loc: normalizedPath,
         changefreq: 'weekly',
         priority: 0.8,
         lastmod: new Date().toISOString(),
@@ -218,9 +221,9 @@ module.exports = {
     }
 
     // Localized blog pages
-    if (path.includes('/blog/') || path.endsWith('/blog')) {
+    if (normalizedPath.includes('/blog/') || normalizedPath.endsWith('/blog/')) {
       return {
-        loc: path,
+        loc: normalizedPath,
         changefreq: 'weekly',
         priority: 0.7,
         lastmod: new Date().toISOString(),
@@ -228,9 +231,9 @@ module.exports = {
     }
 
     // Location pages - reduced priority and frequency (SEO fix 2025-12-26)
-    if (path.startsWith('/locations/') || path.includes('/locations/')) {
+    if (normalizedPath.startsWith('/locations/') || normalizedPath.includes('/locations/')) {
       return {
-        loc: path,
+        loc: normalizedPath,
         changefreq: 'monthly',
         priority: 0.6,
         lastmod: new Date().toISOString(),
@@ -240,9 +243,9 @@ module.exports = {
     // Spanish pages - NO alternateRefs to avoid doubled paths bug
     // next-sitemap auto-appends path to alternateRefs.href even in transform returns
     // Hreflang for locale pages will be handled by the page's own meta tags
-    if (path.startsWith('/es/') || path === '/es') {
+    if (normalizedPath.startsWith('/es/') || normalizedPath === '/es/') {
       return {
-        loc: path,
+        loc: normalizedPath,
         changefreq: 'weekly',
         priority: 0.7,
         lastmod: new Date().toISOString(),
@@ -251,9 +254,9 @@ module.exports = {
     }
 
     // French pages - NO alternateRefs to avoid doubled paths bug
-    if (path.startsWith('/fr/') || path === '/fr') {
+    if (normalizedPath.startsWith('/fr/') || normalizedPath === '/fr/') {
       return {
-        loc: path,
+        loc: normalizedPath,
         changefreq: 'weekly',
         priority: 0.7,
         lastmod: new Date().toISOString(),
@@ -262,9 +265,9 @@ module.exports = {
     }
 
     // Chinese pages - NO alternateRefs to avoid doubled paths bug
-    if (path.startsWith('/zh/') || path === '/zh') {
+    if (normalizedPath.startsWith('/zh/') || normalizedPath === '/zh/') {
       return {
-        loc: path,
+        loc: normalizedPath,
         changefreq: 'weekly',
         priority: 0.7,
         lastmod: new Date().toISOString(),
@@ -273,9 +276,9 @@ module.exports = {
     }
 
     // Home page gets highest priority
-    if (path === '') {
+    if (normalizedPath === '') {
       return {
-        loc: path,
+        loc: '/',
         changefreq: 'daily',
         priority: 1,
         lastmod: new Date().toISOString(),
@@ -284,7 +287,7 @@ module.exports = {
 
     // Default transformation for other pages
     return {
-      loc: path,
+      loc: normalizedPath,
       changefreq: config.changefreq,
       priority: config.priority,
       lastmod: new Date().toISOString(),

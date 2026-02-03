@@ -4,6 +4,7 @@ import { AuditLogger } from '@/lib/blog/audit-logger';
 import { RevisionManager } from '@/lib/blog/revision-manager';
 import { SitemapGenerator } from '@/lib/blog/sitemap-generator';
 import { sanitizeBlogPost } from '@/lib/security/sanitize';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 import type { BlogPost } from '@/types/blog';
 
 export async function GET(request: Request) {
@@ -29,10 +30,31 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
+  // Apply rate limiting (standard: 20 req/min)
+  const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+  
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests. Please try again later.' },
+      { 
+        status: 429, 
+        headers: {
+          ...rateLimitHeaders,
+          'Retry-After': rateLimitHeaders['Retry-After'] || '60',
+        }
+      }
+    );
+  }
+
   const { authorized, session } = await requireAuth();
 
   if (!authorized || !session) {
-    return Response.json({ error: 'Unauthorized' }, { status: 401 });
+    return Response.json(
+      { error: 'Unauthorized' }, 
+      { status: 401, headers: rateLimitHeaders }
+    );
   }
 
   const store = new ContentStore();
@@ -45,7 +67,10 @@ export async function POST(request: Request) {
 
     // Validate required fields
     if (!post.title || !post.content || !post.slug) {
-      return Response.json({ error: 'Missing required fields' }, { status: 400 });
+      return Response.json(
+        { error: 'Missing required fields' }, 
+        { status: 400, headers: rateLimitHeaders }
+      );
     }
 
     // Sanitize post content to prevent XSS
@@ -85,18 +110,42 @@ export async function POST(request: Request) {
       }
     }
 
-    return Response.json({ success: true, post }, { status: 201 });
+    return Response.json({ success: true, post }, { status: 201, headers: rateLimitHeaders });
   } catch (error) {
     console.error('Error handling posts request:', error);
-    return Response.json({ error: 'Internal server error' }, { status: 500 });
+    return Response.json(
+      { error: 'Internal server error' }, 
+      { status: 500, headers: rateLimitHeaders }
+    );
   }
 }
 
 export async function PUT(request: Request) {
+  // Apply rate limiting (standard: 20 req/min)
+  const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+  
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests. Please try again later.' },
+      { 
+        status: 429, 
+        headers: {
+          ...rateLimitHeaders,
+          'Retry-After': rateLimitHeaders['Retry-After'] || '60',
+        }
+      }
+    );
+  }
+
   const { authorized, session } = await requireAuth();
 
   if (!authorized || !session) {
-    return Response.json({ error: 'Unauthorized' }, { status: 401 });
+    return Response.json(
+      { error: 'Unauthorized' }, 
+      { status: 401, headers: rateLimitHeaders }
+    );
   }
 
   const store = new ContentStore();
@@ -108,7 +157,10 @@ export async function PUT(request: Request) {
     let post: BlogPost = await request.json();
 
     if (!post.slug) {
-      return Response.json({ error: 'Missing slug' }, { status: 400 });
+      return Response.json(
+        { error: 'Missing slug' }, 
+        { status: 400, headers: rateLimitHeaders }
+      );
     }
 
     // Sanitize post content to prevent XSS
@@ -150,9 +202,12 @@ export async function PUT(request: Request) {
       }
     }
 
-    return Response.json({ success: true, post });
+    return Response.json({ success: true, post }, { headers: rateLimitHeaders });
   } catch (error) {
     console.error('Error handling posts request:', error);
-    return Response.json({ error: 'Internal server error' }, { status: 500 });
+    return Response.json(
+      { error: 'Internal server error' }, 
+      { status: 500, headers: rateLimitHeaders }
+    );
   }
 }

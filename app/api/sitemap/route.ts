@@ -38,23 +38,23 @@ function generateBasicSitemap(): string {
 
   const urls = [
     { loc: '/', priority: '1.0', changefreq: 'daily' },
-    { loc: '/products/trial-size', priority: '0.9', changefreq: 'weekly' },
-    { loc: '/products/standard', priority: '0.9', changefreq: 'weekly' },
-    { loc: '/products/family-pack', priority: '0.9', changefreq: 'weekly' },
-    { loc: '/products', priority: '0.7', changefreq: 'weekly' },
-    { loc: '/learn/how-it-works', priority: '0.8', changefreq: 'monthly' },
-    { loc: '/learn/cat-litter-guide', priority: '0.7', changefreq: 'monthly' },
-    { loc: '/learn/faq', priority: '0.8', changefreq: 'weekly' },
-    { loc: '/contact', priority: '0.6', changefreq: 'monthly' },
-    { loc: '/about/our-story', priority: '0.6', changefreq: 'monthly' },
-    { loc: '/blog', priority: '0.8', changefreq: 'daily' },
-    { loc: '/blog/activated-carbon-litter-additive-benefits', priority: '0.6', changefreq: 'monthly' },
-    { loc: '/blog/how-to-use-cat-litter-deodorizer', priority: '0.6', changefreq: 'monthly' },
-    { loc: '/blog/best-litter-odor-remover-small-apartments', priority: '0.6', changefreq: 'monthly' },
-    { loc: '/blog/using-deodorizers-with-kittens', priority: '0.6', changefreq: 'monthly' },
-    { loc: '/blog/activated-carbon-vs-baking-soda-comparison', priority: '0.6', changefreq: 'monthly' },
-    { loc: '/case-studies', priority: '0.6', changefreq: 'monthly' },
-    { loc: '/reviews', priority: '0.7', changefreq: 'weekly' }
+    { loc: '/products/trial-size/', priority: '0.9', changefreq: 'weekly' },
+    { loc: '/products/standard/', priority: '0.9', changefreq: 'weekly' },
+    { loc: '/products/family-pack/', priority: '0.9', changefreq: 'weekly' },
+    { loc: '/products/', priority: '0.7', changefreq: 'weekly' },
+    { loc: '/learn/how-it-works/', priority: '0.8', changefreq: 'monthly' },
+    { loc: '/learn/cat-litter-guide/', priority: '0.7', changefreq: 'monthly' },
+    { loc: '/learn/faq/', priority: '0.8', changefreq: 'weekly' },
+    { loc: '/contact/', priority: '0.6', changefreq: 'monthly' },
+    { loc: '/about/our-story/', priority: '0.6', changefreq: 'monthly' },
+    { loc: '/blog/', priority: '0.8', changefreq: 'daily' },
+    { loc: '/blog/activated-carbon-litter-additive-benefits/', priority: '0.6', changefreq: 'monthly' },
+    { loc: '/blog/how-to-use-cat-litter-deodorizer/', priority: '0.6', changefreq: 'monthly' },
+    { loc: '/blog/best-litter-odor-remover-small-apartments/', priority: '0.6', changefreq: 'monthly' },
+    { loc: '/blog/using-deodorizers-with-kittens/', priority: '0.6', changefreq: 'monthly' },
+    { loc: '/blog/activated-carbon-vs-baking-soda-comparison/', priority: '0.6', changefreq: 'monthly' },
+    { loc: '/case-studies/', priority: '0.6', changefreq: 'monthly' },
+    { loc: '/reviews/', priority: '0.7', changefreq: 'weekly' }
   ];
 
   const lastmod = new Date().toISOString().split('T')[0];
