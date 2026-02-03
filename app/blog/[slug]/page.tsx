@@ -7,6 +7,7 @@ import { RelatedContent } from '@/components/seo/RelatedContent';
 import { ContentStore } from '@/lib/blog/content-store';
 import { sampleBlogPosts, getBlogPostContent, type BlogPost } from '@/data/blog-posts';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
+import { generateArticlePageSchema } from '@/lib/seo-utils';
 import { ArrowLeft, Calendar, User, Clock } from 'lucide-react';
 
 interface BlogPostPageProps {
@@ -144,30 +145,26 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.title,
-    description: post.excerpt,
-    image: post.image.startsWith('http') ? post.image : `${SITE_URL}${post.image}`,
-    datePublished: post.date,
-    author: {
-      '@type': 'Person',
-      name: post.author,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: SITE_NAME,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${SITE_URL}/optimized/purrify-logo.avif`,
-      },
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `${SITE_URL}/blog/${slug}`,
-    },
-  };
+  // Generate comprehensive Article schema using centralized utility
+  const wordCount = post.content ? post.content.split(/\s+/).length : 0;
+  const readingTime = wordCount > 0 ? Math.ceil(wordCount / 200) : 0;
+  
+  const articleSchema = generateArticlePageSchema(
+    post.title,
+    post.excerpt,
+    `/blog/${slug}`,
+    post.locale || 'en',
+    {
+      author: post.author,
+      datePublished: post.date,
+      dateModified: post.date,
+      keywords: undefined, // BlogPost type doesn't have tags field
+      category: undefined, // BlogPost type doesn't have category field
+      image: post.image.startsWith('http') ? post.image : `${SITE_URL}${post.image}`,
+      wordCount: wordCount > 0 ? wordCount : undefined,
+      readingTime: readingTime > 0 ? readingTime : undefined,
+    }
+  );
 
   // Add HowTo schema if present
   const schemas: unknown[] = [articleSchema];

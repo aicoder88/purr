@@ -3,6 +3,7 @@ import Stripe from 'stripe';
 import { z } from 'zod';
 import * as Sentry from '@sentry/nextjs';
 import prisma from '@/lib/prisma';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 // Initialize Stripe lazily
 let stripeInstance: Stripe | null = null;
@@ -25,35 +26,29 @@ const createCheckoutSchema = z.object({
   }),
 });
 
-// Rate limiting setup
-const RATE_LIMIT_WINDOW = 60 * 1000;
-const MAX_REQUESTS_PER_WINDOW = 10;
-const ipRequestCounts = new Map<string, { count: number; resetTime: number }>();
-
 export async function POST(request: NextRequest) {
+  // Get client IP
+  const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
+  
+  // Apply rate limiting (sensitive: 5 req/min)
+  const rateLimitResult = await checkRateLimit(clientIp, 'sensitive');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+  
+  // Create security headers
   const headers = new Headers();
   headers.set('X-Content-Type-Options', 'nosniff');
   headers.set('X-Frame-Options', 'DENY');
+  
+  // Add rate limit headers
+  Object.entries(rateLimitHeaders).forEach(([key, value]) => {
+    headers.set(key, value);
+  });
 
-  // Apply rate limiting
-  const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
-  const now = Date.now();
-  const ipData = ipRequestCounts.get(clientIp);
-
-  if (ipData) {
-    if (now < ipData.resetTime) {
-      if (ipData.count >= MAX_REQUESTS_PER_WINDOW) {
-        return NextResponse.json(
-          { error: 'Too many requests. Please try again later.' },
-          { status: 429, headers }
-        );
-      }
-      ipData.count += 1;
-    } else {
-      ipRequestCounts.set(clientIp, { count: 1, resetTime: now + RATE_LIMIT_WINDOW });
-    }
-  } else {
-    ipRequestCounts.set(clientIp, { count: 1, resetTime: now + RATE_LIMIT_WINDOW });
+  if (!rateLimitResult.success) {
+    return NextResponse.json(
+      { error: 'Too many requests. Please try again later.' },
+      { status: 429, headers }
+    );
   }
 
   try {

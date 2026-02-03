@@ -1,6 +1,7 @@
 import { Resend } from 'resend';
 import prisma from '@/lib/prisma';
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -16,6 +17,24 @@ type AffiliateSignupData = {
 };
 
 export async function POST(req: Request): Promise<Response> {
+  // Apply rate limiting (standard: 20 req/min)
+  const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+  
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests. Please try again later.' },
+      { 
+        status: 429, 
+        headers: {
+          ...rateLimitHeaders,
+          'Retry-After': rateLimitHeaders['Retry-After'] || '60',
+        }
+      }
+    );
+  }
+
   try {
     const data: AffiliateSignupData = await req.json();
 
@@ -189,22 +208,27 @@ export async function POST(req: Request): Promise<Response> {
       });
     }
 
-    return Response.json({
-      success: true,
-      message: 'Application submitted successfully',
-    });
+    return Response.json(
+      {
+        success: true,
+        message: 'Application submitted successfully',
+      },
+      { headers: rateLimitHeaders }
+    );
   } catch (error) {
     console.error('Affiliate signup error:', error);
 
     // Handle unique constraint error (email already exists)
     if ((error as { code?: string }).code === 'P2002') {
-      return Response.json({
-        error: 'An application with this email already exists',
-      }, { status: 400 });
+      return Response.json(
+        { error: 'An application with this email already exists' },
+        { status: 400, headers: rateLimitHeaders }
+      );
     }
 
-    return Response.json({
-      error: 'Failed to submit application. Please try again later.',
-    }, { status: 500 });
+    return Response.json(
+      { error: 'Failed to submit application. Please try again later.' },
+      { status: 500, headers: rateLimitHeaders }
+    );
   }
 }
