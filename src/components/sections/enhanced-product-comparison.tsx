@@ -95,7 +95,7 @@ export function EnhancedProductComparison() {
         'Works with any litter'
       ],
       bestFor: translatedProducts[1]?.bestFor || "Single or dual cat homes. The size that keeps customers coming back.",
-      image: '/optimized/60g.webp',
+      image: '/optimized/purrify-standard-bag-640w.webp',
       imageSize: 'md',
       color: 'from-deep-coral to-rose-600',
       badge: {
@@ -117,7 +117,7 @@ export function EnhancedProductComparison() {
         'Perfect for multiple boxes'
       ],
       bestFor: translatedProducts[2]?.bestFor || "Multi-cat households, foster parents, or anyone who's lost count.",
-      image: '/optimized/140g-640w.avif',
+      image: '/optimized/multi-cat-family-ghibli-640w.webp',
       imageSize: 'lg',
       color: 'from-electric-indigo to-purple-600',
       badge: {
