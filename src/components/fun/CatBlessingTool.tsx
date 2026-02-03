@@ -33,13 +33,13 @@ const BLESSINGS: Blessing[] = [
   { text: "Time spent with cats is never wasted!", emoji: "⏰", type: "blessing" },
 ];
 
-// Meow frequencies for different meow types
-const MEOW_PITCHES = [
-  { freq: 800, duration: 200 },    // Short meow
-  { freq: 600, duration: 400 },    // Long meow
-  { freq: 1000, duration: 150 },   // High pitched
-  { freq: 500, duration: 300 },    // Low meow
-  { freq: 700, duration: 250 },    // Standard meow
+// Enhanced meow pitch configurations
+const MEOW_TYPES = [
+  { baseFreq: 800, length: 0.4, modulation: 0.2 }, // Standard Meow
+  { baseFreq: 1100, length: 0.2, modulation: 0.1 }, // Kitten Mew
+  { baseFreq: 600, length: 0.6, modulation: 0.3 }, // Low/Demand Meow
+  { baseFreq: 950, length: 0.3, modulation: 0.15 }, // Chirp
+  { baseFreq: 750, length: 0.5, modulation: 0.25 }, // Question?
 ];
 
 export function CatBlessingTool() {
@@ -62,41 +62,90 @@ export function CatBlessingTool() {
     }
   }, []);
 
-  // Play a synthesized meow sound
+  // Enhanced synthesized meow sound
   const playMeow = useCallback(() => {
     if (isMuted || !audioContextRef.current) return;
 
     try {
       const ctx = audioContextRef.current;
-      const pitch = MEOW_PITCHES[Math.floor(Math.random() * MEOW_PITCHES.length)];
-      
-      // Create oscillator for the meow
-      const oscillator = ctx.createOscillator();
-      const gainNode = ctx.createGain();
-      const filter = ctx.createBiquadFilter();
+      const meowType = MEOW_TYPES[Math.floor(Math.random() * MEOW_TYPES.length)];
 
-      oscillator.type = "sawtooth";
-      oscillator.frequency.setValueAtTime(pitch.freq, ctx.currentTime);
-      oscillator.frequency.exponentialRampToValueAtTime(pitch.freq * 0.7, ctx.currentTime + pitch.duration / 1000);
+      const t = ctx.currentTime;
+      const duration = meowType.length;
 
-      // Add some warmth with a lowpass filter
-      filter.type = "lowpass";
-      filter.frequency.setValueAtTime(2000, ctx.currentTime);
-      filter.Q.value = 5;
+      // 1. Main Tone (Sawtooth + Triangle mix for body)
+      const osc1 = ctx.createOscillator();
+      const osc2 = ctx.createOscillator();
+      const mainGain = ctx.createGain();
+      const mainFilter = ctx.createBiquadFilter();
 
-      // Envelope for natural sound
-      gainNode.gain.setValueAtTime(0, ctx.currentTime);
-      gainNode.gain.linearRampToValueAtTime(0.3, ctx.currentTime + 0.05);
-      gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + pitch.duration / 1000);
+      osc1.type = "sawtooth";
+      osc2.type = "triangle";
 
-      oscillator.connect(filter);
-      filter.connect(gainNode);
-      gainNode.connect(ctx.destination);
+      // Pitch envelope - meows usually go up then down slightly
+      const startFreq = meowType.baseFreq;
+      const peakFreq = meowType.baseFreq * 1.2;
+      const endFreq = meowType.baseFreq * 0.8;
 
-      oscillator.start(ctx.currentTime);
-      oscillator.stop(ctx.currentTime + pitch.duration / 1000);
+      osc1.frequency.setValueAtTime(startFreq, t);
+      osc1.frequency.linearRampToValueAtTime(peakFreq, t + duration * 0.3);
+      osc1.frequency.exponentialRampToValueAtTime(endFreq, t + duration);
+
+      osc2.frequency.setValueAtTime(startFreq, t);
+      osc2.frequency.linearRampToValueAtTime(peakFreq, t + duration * 0.3);
+      osc2.frequency.exponentialRampToValueAtTime(endFreq, t + duration);
+
+      // Filter envelope - simulate mouth opening/closing (wow-wow effect)
+      mainFilter.type = "lowpass";
+      mainFilter.Q.value = 3;
+      mainFilter.frequency.setValueAtTime(400, t);
+      mainFilter.frequency.linearRampToValueAtTime(3000, t + duration * 0.4);
+      mainFilter.frequency.exponentialRampToValueAtTime(600, t + duration);
+
+      // Volume envelope
+      mainGain.gain.setValueAtTime(0, t);
+      mainGain.gain.linearRampToValueAtTime(0.3, t + 0.05); // Attack
+      mainGain.gain.exponentialRampToValueAtTime(0.01, t + duration); // Decay
+
+      // 2. Breath/Hiss Noise (for realism)
+      const noiseBufferSize = ctx.sampleRate * duration;
+      const noiseBuffer = ctx.createBuffer(1, noiseBufferSize, ctx.sampleRate);
+      const output = noiseBuffer.getChannelData(0);
+      for (let i = 0; i < noiseBufferSize; i++) {
+        output[i] = Math.random() * 2 - 1;
+      }
+      const noiseSrc = ctx.createBufferSource();
+      noiseSrc.buffer = noiseBuffer;
+      const noiseFilter = ctx.createBiquadFilter();
+      const noiseGain = ctx.createGain();
+
+      noiseFilter.type = "highpass";
+      noiseFilter.frequency.value = 2000;
+      noiseGain.gain.setValueAtTime(0.02, t);
+      noiseGain.gain.exponentialRampToValueAtTime(0.001, t + duration * 0.5);
+
+      // Connect graph
+      osc1.connect(mainFilter);
+      osc2.connect(mainFilter);
+      mainFilter.connect(mainGain);
+      mainGain.connect(ctx.destination);
+
+      noiseSrc.connect(noiseFilter);
+      noiseFilter.connect(noiseGain);
+      noiseGain.connect(ctx.destination);
+
+      // Start
+      osc1.start(t);
+      osc2.start(t);
+      noiseSrc.start(t);
+
+      // Stop
+      osc1.stop(t + duration + 0.1);
+      osc2.stop(t + duration + 0.1);
+      noiseSrc.stop(t + duration + 0.1);
+
     } catch {
-      // Silent fail if audio doesn't work
+      // Silent fail
     }
   }, [isMuted]);
 
@@ -206,11 +255,19 @@ export function CatBlessingTool() {
         >
           {/* Glow effect */}
           <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
-          
+
           {/* Button */}
           <div className="relative w-16 h-16 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 rounded-full shadow-2xl flex items-center justify-center overflow-hidden">
-            <Cat className="w-8 h-8 text-white" />
-            
+            <motion.div
+              animate={{
+                scale: isOpen ? [1, 1.2, 1] : 1,
+                rotate: isOpen ? [0, -10, 10, 0] : 0
+              }}
+              transition={{ duration: 0.4 }}
+            >
+              <Cat className="w-8 h-8 text-white" />
+            </motion.div>
+
             {/* Sparkle effects */}
             <motion.div
               className="absolute inset-0"
@@ -264,7 +321,7 @@ export function CatBlessingTool() {
             <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-5 border-2 border-purple-200 dark:border-purple-800 relative overflow-hidden">
               {/* Background decoration */}
               <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-bl-full -mr-10 -mt-10" />
-              
+
               {/* Close button */}
               <button
                 onClick={handleClose}
@@ -381,7 +438,7 @@ function ConfettiEffect({ meowCount }: ConfettiEffectProps) {
           rotate: Math.random() * 360,
         }));
         setConfettiItems(newItems);
-        
+
         // Clear confetti after animation
         const timer = setTimeout(() => {
           setConfettiItems([]);
