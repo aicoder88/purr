@@ -250,14 +250,8 @@ export default function AboutPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {team.map((member) => {
-                const isMark = member.name === 'Mark Archer';
-                const isDrMike = member.name === 'Dr. Michael Rodriguez';
-                const hasPhoto = isMark || isDrMike;
-                const photoSrc = isMark
-                  ? '/images/mark-archer.webp'
-                  : isDrMike
-                    ? '/images/dr-michael-rodriguez.jpg'
-                    : null;
+                const photoSrc = member.image;
+                const hasPhoto = !!photoSrc;
                 return (
                   <div
                     key={member.name}
@@ -325,14 +319,23 @@ export default function AboutPage() {
                   className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 flex flex-col h-full"
                 >
                   <div className="relative h-48 w-full bg-gray-100 dark:bg-gray-700 overflow-hidden">
-                    <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 group-hover:from-electric-indigo/10 group-hover:to-deep-coral/10 transition-colors duration-300">
-                      <div className="w-20 h-20 rounded-full bg-white dark:bg-gray-600 flex items-center justify-center shadow-inner mb-3">
-                        <span className="text-2xl font-bold text-electric-indigo dark:text-electric-indigo-300">
-                          {getInitials(member.name)}
-                        </span>
+                    {member.image ? (
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 group-hover:from-electric-indigo/10 group-hover:to-deep-coral/10 transition-colors duration-300">
+                        <div className="w-20 h-20 rounded-full bg-white dark:bg-gray-600 flex items-center justify-center shadow-inner mb-3">
+                          <span className="text-2xl font-bold text-electric-indigo dark:text-electric-indigo-300">
+                            {getInitials(member.name)}
+                          </span>
+                        </div>
+                        <Users className="w-5 h-5 text-gray-400 dark:text-gray-500 absolute bottom-3 right-3 opacity-50" />
                       </div>
-                      <Users className="w-5 h-5 text-gray-400 dark:text-gray-500 absolute bottom-3 right-3 opacity-50" />
-                    </div>
+                    )}
                     {/* Overlay gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
