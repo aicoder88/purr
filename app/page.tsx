@@ -1,5 +1,6 @@
+export const dynamic = 'force-static';
+
 import { Metadata } from 'next';
-import { headers } from 'next/headers';
 import { Hero } from '@/components/sections/hero';
 import { ScienceSection } from '@/components/sections/science-section';
 import { HowItWorks } from '@/components/sections/how-it-works';
@@ -113,13 +114,12 @@ async function generateStructuredData(locale: string, currency: Currency) {
 
 // Async server component for the homepage
 export default async function HomePage() {
-  // Get locale and currency from server
+  // Get locale from server
   const locale = await getUserLocale();
-  const headersList = await headers();
-
-  // Detect currency based on country header (US = USD, others = CAD)
-  const country = headersList.get('x-vercel-ip-country');
-  const currency: Currency = country === 'US' ? 'USD' : 'CAD';
+  
+  // For static generation, we use a default currency
+  // The actual currency detection happens client-side via HomepageClient
+  const currency: Currency = 'CAD';
 
   // Get price validity date (replaces getStaticProps)
   const priceValidUntil = getPriceValidityDate();
@@ -221,5 +221,5 @@ export default async function HomePage() {
   );
 }
 
-// Revalidate the page every hour (equivalent to ISR revalidate: 3600)
-export const revalidate = 3600;
+// Static page - no revalidation needed
+// export const revalidate = 3600;

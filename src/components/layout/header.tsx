@@ -357,6 +357,7 @@ export function Header() {
           <div className="flex items-center">
             <Link
               href="/"
+              prefetch={false}
               className="flex items-center space-x-2 flex-shrink-0"
             >
               <Image
@@ -427,6 +428,7 @@ export function Header() {
                               <Link
                                 key={dropdownItem.label}
                                 href={dropdownItem.href || ""}
+                                prefetch={false}
                                 className={`block py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 focus:text-brand-red dark:focus:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:ring-offset-1 ${dropdownItem.indent ? "pl-6" : "px-4"}`}
                                 role="menuitem"
                               >
@@ -440,6 +442,7 @@ export function Header() {
                 ) : (
                   <Link
                     href={item.href}
+                    prefetch={false}
                     className="text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 transition-colors font-medium"
                   >
                     {item.label}
@@ -484,7 +487,7 @@ export function Header() {
               asChild
               className="flex items-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
             >
-              <Link href="/stores">
+              <Link href="/stores" prefetch={false}>
                 <MapPin className="w-4 h-4" />
                 {t.nav?.findStore || "Find a Store"}
               </Link>
@@ -557,6 +560,7 @@ export function Header() {
                               <Link
                                 key={dropdownItem.label}
                                 href={dropdownItem.href || ""}
+                                prefetch={false}
                                 className={`block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-0.5 ${dropdownItem.indent ? "pl-8" : "px-6"}`}
                                 onClick={closeMenu}
                               >
@@ -570,6 +574,7 @@ export function Header() {
                   ) : (
                     <Link
                       href={item.href}
+                      prefetch={false}
                       className="block px-3 py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1"
                       onClick={closeMenu}
                     >
@@ -619,7 +624,7 @@ export function Header() {
                   asChild
                   className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                 >
-                  <Link href="/stores" onClick={closeMenu}>
+                  <Link href="/stores" prefetch={false} onClick={closeMenu}>
                     <MapPin className="w-4 h-4" />
                     {t.nav?.findStore || "Find a Store"}
                   </Link>
