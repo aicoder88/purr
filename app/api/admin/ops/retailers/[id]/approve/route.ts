@@ -100,7 +100,6 @@ export async function POST(req: Request, { params }: RouteParams) {
           subject: 'Welcome to Purrify Wholesale - Your Account is Approved!',
           html: approvalEmailContent,
         });
-        console.log('Approval email sent to retailer:', retailer.email);
       } catch (emailError) {
         console.error('Failed to send approval email:', emailError);
         // Don't fail the approval if email fails

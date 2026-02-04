@@ -47,7 +47,6 @@ export default function ContactForm() {
     });
 
     const responseData = await response.json();
-    console.log('API response:', responseData);
 
     if (!response.ok) {
       throw new Error(responseData.message || 'API validation failed');
@@ -83,12 +82,6 @@ export default function ContactForm() {
     setSubmitStatus({});
 
     try {
-      console.log('Attempting to submit contact form:', {
-        name: data.name,
-        email: data.email,
-        messageLength: data.message.length
-      });
-
       // Submit via API
       await submitContactForm(data);
 

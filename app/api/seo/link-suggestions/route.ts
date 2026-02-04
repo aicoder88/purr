@@ -6,6 +6,8 @@
  * Used by admin tools to improve internal linking structure
  */
 
+export const revalidate = 3600;
+
 import {
   generateLinkSuggestions,
   getSuggestionsForPage,

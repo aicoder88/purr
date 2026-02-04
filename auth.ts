@@ -59,12 +59,10 @@ export const authConfig = {
           const password = credentials?.password as string | undefined;
           
           if (!email || !password) {
-            console.log("Missing credentials");
             return null;
           }
 
           if (!checkLoginRateLimit(email)) {
-            console.log("Rate limit exceeded for:", email);
             return null;
           }
 
@@ -81,7 +79,6 @@ export const authConfig = {
             email === adminEmail &&
             password === adminPassword
           ) {
-            console.log("Admin login successful");
             return {
               id: "1",
               email: adminEmail,
@@ -96,7 +93,6 @@ export const authConfig = {
             email === editorEmail &&
             password === editorPassword
           ) {
-            console.log("Editor login successful");
             return {
               id: "2",
               email: editorEmail,
@@ -105,7 +101,6 @@ export const authConfig = {
             };
           }
 
-          console.log("Invalid credentials");
           return null;
         } catch (error) {
           console.error("Authorization error:", error);
@@ -126,12 +121,10 @@ export const authConfig = {
           const password = credentials?.password as string | undefined;
           
           if (!email || !password) {
-            console.log("Missing affiliate credentials");
             return null;
           }
 
           if (!checkLoginRateLimit(email)) {
-            console.log("Rate limit exceeded for affiliate:", email);
             return null;
           }
 
@@ -153,12 +146,10 @@ export const authConfig = {
           });
 
           if (!affiliate) {
-            console.log("Affiliate not found:", email);
             return null;
           }
 
           if (affiliate.status !== "ACTIVE") {
-            console.log("Affiliate account not active:", email, affiliate.status);
             return null;
           }
 
@@ -168,11 +159,9 @@ export const authConfig = {
           );
 
           if (!isValidPassword) {
-            console.log("Invalid affiliate password");
             return null;
           }
 
-          console.log("Affiliate login successful:", affiliate.email);
           return {
             id: affiliate.id,
             email: affiliate.email,

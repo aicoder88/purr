@@ -152,7 +152,7 @@ export class GenerationHistoryManager {
         })
       );
 
-      console.log(`Cleaned up ${toDelete.length} old generation records`);
+      // Cleanup completed silently
     } catch (error) {
       console.error('Error cleaning up generations:', error);
     }

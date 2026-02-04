@@ -163,7 +163,6 @@ export class ContentStore {
       }
 
       const files = fs.readdirSync(localeDir).filter(f => f.endsWith('.json'));
-      console.log(`[getAllPosts] Found ${files.length} JSON files for locale ${safeLocale}`);
       const posts: BlogPost[] = [];
       const now = new Date();
 
@@ -201,7 +200,7 @@ export class ContentStore {
         }
       }
 
-      console.log(`[getAllPosts] Returning ${posts.length} posts for locale ${safeLocale}`);
+
 
       // Sort by publish date, newest first
       posts.sort((a, b) =>
@@ -258,7 +257,7 @@ export class ContentStore {
 
       fs.writeFileSync(filePath, JSON.stringify(post, null, 2));
 
-      console.log(`✅ Successfully saved post: ${safeSlug} `);
+
 
       return {
         success: true,

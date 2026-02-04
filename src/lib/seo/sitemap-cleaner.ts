@@ -37,7 +37,7 @@ export class SitemapCleaner {
         urls.push($(el).text());
       });
 
-      console.log(`Validating ${urls.length} URLs from sitemap...`);
+      // Validating sitemap URLs...
 
       for (const url of urls) {
         const urlIssues = await this.validateUrl(url);
@@ -175,10 +175,7 @@ export class SitemapCleaner {
     const output = outputPath || sitemapPath.replace('.xml', '-clean.xml');
     fs.writeFileSync(output, newSitemap);
 
-    console.log(`\n✅ Clean sitemap generated: ${output}`);
-    console.log(`   Original URLs: ${originalUrls.length}`);
-    console.log(`   Valid URLs: ${uniqueValidUrls.length}`);
-    console.log(`   Removed URLs: ${originalUrls.length - uniqueValidUrls.length}`);
+    // Clean sitemap generated
 
     return {
       originalUrls: originalUrls.length,
@@ -213,11 +210,8 @@ ${urlEntries}
     });
 
     if (urls.length <= maxUrls) {
-      console.log(`Sitemap has ${urls.length} URLs, no splitting needed`);
       return [sitemapPath];
     }
-
-    console.log(`Splitting sitemap with ${urls.length} URLs into chunks of ${maxUrls}...`);
 
     const chunks: string[][] = [];
     for (let i = 0; i < urls.length; i += maxUrls) {
@@ -233,14 +227,12 @@ ${urlEntries}
       const chunkXml = this.generateSitemapXML(chunks[i]);
       fs.writeFileSync(chunkPath, chunkXml);
       sitemapFiles.push(chunkPath);
-      console.log(`  Created ${chunkPath} with ${chunks[i].length} URLs`);
     }
 
     // Generate sitemap index
     const indexPath = path.join(dir, `${basename}-index.xml`);
     const indexXml = this.generateSitemapIndex(sitemapFiles);
     fs.writeFileSync(indexPath, indexXml);
-    console.log(`  Created sitemap index: ${indexPath}`);
 
     return sitemapFiles;
   }

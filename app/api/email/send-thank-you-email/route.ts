@@ -57,13 +57,6 @@ export async function POST(req: Request): Promise<Response> {
         const validLocales = ['en', 'fr', 'zh'];
         const emailLocale = validLocales.includes(locale) ? locale : 'en';
 
-        console.log('[Thank You Email] Preparing to send email:', {
-            to: customerEmail,
-            product: productName,
-            amount: amount / 100,
-            locale: emailLocale
-        });
-
         // Generate email HTML
         const emailHTML = OrderConfirmationEmailHTML({
             customerEmail,
@@ -92,11 +85,6 @@ export async function POST(req: Request): Promise<Response> {
                 details: error
             }, { status: 500 });
         }
-
-        console.log('[Thank You Email] Email sent successfully:', {
-            emailId: data?.id,
-            to: customerEmail
-        });
 
         return Response.json({
             success: true,

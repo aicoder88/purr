@@ -97,13 +97,6 @@ export async function POST(request: NextRequest) {
 
     const data = validationResult.data;
 
-    console.log('Processing retailer contact form submission:', {
-      businessName: data.businessName,
-      contactName: data.contactName,
-      email: data.email,
-      timestamp: new Date().toISOString(),
-    });
-
     // Send email via Resend
     if (isResendConfigured()) {
       const resend = new Resend(RESEND_CONFIG.apiKey);
@@ -185,7 +178,6 @@ Received: ${new Date().toLocaleString()}
         );
       }
 
-      console.log('Retailer contact email sent successfully');
     } else {
       console.warn('Resend not configured, retailer contact form logged but not emailed');
     }

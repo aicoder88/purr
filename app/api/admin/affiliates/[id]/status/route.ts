@@ -57,7 +57,6 @@ export async function PATCH(
     // Don't allow reactivating terminated affiliates without explicit flag
     if (affiliate.status === 'TERMINATED' && status !== 'TERMINATED') {
       // For now, allow reactivation. In production, you might want stricter rules.
-      console.log(`Reactivating terminated affiliate: ${affiliate.email}`);
     }
 
     // Update status
@@ -74,10 +73,6 @@ export async function PATCH(
         email: true,
       },
     });
-
-    console.log(
-      `Affiliate ${affiliate.email} status changed from ${affiliate.status} to ${status} by ${session.user?.email}`
-    );
 
     return Response.json({
       success: true,

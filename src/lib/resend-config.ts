@@ -13,16 +13,7 @@ export const RESEND_CONFIG = {
   toEmail: 'support@purrify.ca',
 };
 
-// Debug logging (will be visible in Vercel logs)
-if (typeof globalThis.window === 'undefined') {
-  console.log('[Resend Config Debug]', {
-    apiKeySet: !!RESEND_CONFIG.apiKey,
-    apiKeyLength: RESEND_CONFIG.apiKey?.length || 0,
-    apiKeyPrefix: RESEND_CONFIG.apiKey ? RESEND_CONFIG.apiKey.substring(0, 8) + '...' : 'NOT SET',
-    fromEmail: RESEND_CONFIG.fromEmail,
-    toEmail: RESEND_CONFIG.toEmail,
-  });
-}
+
 
 /**
  * Check if Resend is properly configured

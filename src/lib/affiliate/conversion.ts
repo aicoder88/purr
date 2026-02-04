@@ -64,7 +64,6 @@ export async function recordAffiliateConversion(
     });
 
     if (existingConversion) {
-      console.log(`Conversion already exists for order: ${orderId}`);
       return { success: true, conversionId: existingConversion.id };
     }
 
@@ -103,7 +102,7 @@ export async function recordAffiliateConversion(
     // Track this sale for monthly metrics (lazy tier system)
     await onNewSale(affiliate.id);
 
-    console.log(`Affiliate conversion recorded: ${conversion.id} for affiliate ${affiliateCode} (${affiliate.tier}), commission: $${commissionAmount.toFixed(2)} at ${(effectiveCommissionRate * 100).toFixed(0)}%`);
+    // Affiliate conversion recorded silently
 
     return { success: true, conversionId: conversion.id };
   } catch (error) {

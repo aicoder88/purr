@@ -22,9 +22,7 @@ export async function recordTrialConversion(event: Omit<TrialConversionEvent, 'o
     occurredAt: new Date().toISOString(),
   };
 
-  // Always log for observability
-   
-  console.log('[trial-conversion]', normalized);
+  // Logging is handled by the analytics system
 
   // Best-effort local persistence for dev analysis
   try {

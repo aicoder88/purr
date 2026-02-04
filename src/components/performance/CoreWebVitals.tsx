@@ -22,14 +22,7 @@ export function CoreWebVitals({ onMetric, debug = false }: WebVitalsProps) {
         onMetric(metric);
       }
 
-      // Debug logging
-      if (debug) {
-        console.log(`[Core Web Vitals] ${metric.name}:`, {
-          value: metric.value,
-          rating: getMetricRating(metric.name, metric.value),
-          id: metric.id
-        });
-      }
+      // Debug logging is disabled in production
 
       // Send to analytics (Google Analytics 4)
       if (typeof globalThis.window !== 'undefined' && window.gtag) {
@@ -114,12 +107,7 @@ export function usePerformanceMonitoring() {
     const observer = new PerformanceObserver((list) => {
       for (const entry of list.getEntries()) {
         if (entry.entryType === 'navigation') {
-          const navEntry = entry as PerformanceNavigationTiming;
-          console.log('Page Load Metrics:', {
-            domContentLoaded: navEntry.domContentLoadedEventEnd - navEntry.domContentLoadedEventStart,
-            loadComplete: navEntry.loadEventEnd - navEntry.loadEventStart,
-            timeToInteractive: navEntry.domInteractive - navEntry.startTime
-          });
+          // Page load metrics captured silently
         }
       }
     });

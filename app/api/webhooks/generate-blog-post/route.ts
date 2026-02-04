@@ -216,8 +216,6 @@ export async function POST(req: Request): Promise<Response> {
       const topic = payload.topic || 'Cat Litter Odor Control Tips';
       const locale = payload.locale || 'en';
       
-      console.log(`Generating blog post for topic: ${topic}`);
-      
       // Check for duplicate posts
       const existingPosts = await store.getAllPosts(locale);
       const isDuplicate = await generator.checkDuplicates(topic, existingPosts);
@@ -244,8 +242,6 @@ export async function POST(req: Request): Promise<Response> {
         }, { status: 400 });
       }
       
-      console.log(`Publishing blog post: ${payload.post.title}`);
-      
       // Create post object from provided data
       post = await generator.createPostFromContent(payload.post);
     }
@@ -259,8 +255,6 @@ export async function POST(req: Request): Promise<Response> {
     
     // Publish the post
     await generator.publishPost(post);
-    
-    console.log(`Successfully published post: ${post.slug}`);
     
     // Return success response
     return Response.json({

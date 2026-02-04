@@ -151,7 +151,6 @@ export async function POST(
         html: welcomeEmailContent,
       });
 
-      console.log('Welcome email sent to:', application.email);
     }
 
     return Response.json({

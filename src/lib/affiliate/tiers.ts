@@ -157,11 +157,7 @@ export async function checkAndResetMonthlySales(affiliateId: string): Promise<Mo
     await sendRewardNotificationEmail(affiliate.email, affiliate.name, rewardAmount);
   }
 
-  console.log(
-    `Monthly reset for ${affiliate.email}: ${affiliate.currentMonthSales} sales last month, ` +
-    `partner qualifying months: ${newPartnerQualifyingMonths}` +
-    (rewardGiven ? `, reward given: $${rewardAmount}` : '')
-  );
+  // Monthly reset processed silently
 
   return { wasReset: true, rewardGiven, rewardAmount: rewardGiven ? rewardAmount : undefined };
 }
@@ -236,10 +232,7 @@ export async function checkAndUpgradeTier(affiliateId: string): Promise<TierUpgr
     await sendTierUpgradeEmail(affiliate.email, affiliate.name, oldTier, newTier, newCommissionRate);
   }
 
-  console.log(
-    `Affiliate ${affiliate.email} upgraded from ${oldTier} to ${newTier} ` +
-    `(commission rate: ${(newCommissionRate * 100).toFixed(0)}%)`
-  );
+  // Affiliate tier upgrade processed silently
 
   return {
     upgraded: true,
@@ -353,7 +346,7 @@ async function sendTierUpgradeEmail(
       html: emailContent,
     });
 
-    console.log(`Tier upgrade email sent to ${email}`);
+    // Tier upgrade email sent
   } catch (error) {
     console.error('Failed to send tier upgrade email:', error);
   }
@@ -415,7 +408,7 @@ async function sendRewardNotificationEmail(
       html: emailContent,
     });
 
-    console.log(`Monthly reward email sent to ${email}`);
+    // Monthly reward email sent
   } catch (error) {
     console.error('Failed to send monthly reward email:', error);
   }

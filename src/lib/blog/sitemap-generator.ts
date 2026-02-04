@@ -57,7 +57,6 @@ export class SitemapGenerator {
       );
 
       await fs.writeFile(sitemapPath, xml, "utf-8");
-      console.log("Blog sitemap updated successfully");
     } catch (error) {
       console.error("Error updating blog sitemap:", error);
       throw error;
@@ -129,7 +128,7 @@ export class SitemapGenerator {
         "utf-8",
       );
 
-      console.log("All blog sitemaps updated successfully");
+      // Blog sitemaps updated
     } catch (error) {
       console.error("Error updating sitemaps:", error);
       throw error;

@@ -6,6 +6,8 @@
  * Used by admin dashboard to monitor SEO health
  */
 
+export const revalidate = 3600;
+
 import { generateLinkSuggestions } from '@/lib/seo/link-suggestions';
 import { TOPIC_CLUSTERS } from '@/lib/seo/topic-clusters';
 

@@ -38,9 +38,6 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
       // Simulate API call - replace with actual newsletter service
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Here you would integrate with your email service (Mailchimp, ConvertKit, etc.)
-      console.log('Newsletter signup:', email);
-      
       setStatus('success');
       setEmail('');
       

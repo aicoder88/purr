@@ -38,8 +38,6 @@ const sendUpsellEmail = async (
 
     if (!data.success) {
       console.error('Failed to send upsell email:', data.error);
-    } else {
-      console.log(`Upsell ${type} email sent successfully:`, data.emailId);
     }
 
     return data;
@@ -114,8 +112,6 @@ export default function UpsellClient({ initialEmail, sessionId }: UpsellClientPr
             emailSent = true;
             sendUpsellEmail(customerEmail, 'expired', locale, sessionId).then((result) => {
               if (result.success) {
-                console.log('Timer expiry email sent successfully');
-
                 // Track email sent event
                 if (typeof globalThis.window !== 'undefined') {
                   const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
@@ -191,8 +187,6 @@ export default function UpsellClient({ initialEmail, sessionId }: UpsellClientPr
       // Don't await - send in background and redirect immediately
       sendUpsellEmail(customerEmail, 'declined', locale, sessionId).then((result) => {
         if (result.success) {
-          console.log('Declined follow-up email sent successfully');
-
           // Track email sent event
           if (typeof globalThis.window !== 'undefined') {
             const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;

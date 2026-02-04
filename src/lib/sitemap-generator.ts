@@ -327,7 +327,6 @@ class SitemapGenerator {
     }
 
     fs.writeFileSync(this.config.outputPath, xml, 'utf8');
-    console.log(`Sitemap generated: ${this.config.outputPath}`);
   }
 
   // Generate robots.txt
@@ -364,7 +363,6 @@ Crawl-delay: 1
   saveRobotsTxt(outputPath: string): void {
     const robotsTxt = this.generateRobotsTxt();
     fs.writeFileSync(outputPath, robotsTxt, 'utf8');
-    console.log(`Robots.txt generated: ${outputPath}`);
   }
 
   // Utility function to escape XML characters
@@ -425,9 +423,7 @@ export async function generatePurrifySitemap(): Promise<void> {
   const robotsPath = path.join(process.cwd(), 'public', 'robots.txt');
   generator.saveRobotsTxt(robotsPath);
 
-  // Log statistics
-  const stats = generator.getStats();
-  console.log('Sitemap Statistics:', stats);
+  // Statistics generated silently
 }
 
 // Export for use in build scripts

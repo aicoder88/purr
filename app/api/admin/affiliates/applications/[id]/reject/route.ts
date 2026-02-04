@@ -93,7 +93,6 @@ export async function POST(
         html: rejectionEmailContent,
       });
 
-      console.log('Rejection email sent to:', application.email);
     }
 
     return Response.json({

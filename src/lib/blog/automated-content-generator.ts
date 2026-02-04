@@ -213,7 +213,7 @@ export class AutomatedContentGenerator {
   async generateBlogPost(topic: string): Promise<GenerationResult> {
     for (let attempt = 1; attempt <= this.maxRetries; attempt++) {
       try {
-        console.log(`Generating blog post for "${topic}" (attempt ${attempt}/${this.maxRetries})`);
+        // Attempting to generate blog post
 
         // Generate content using AI
         const content = await this.generateContent(topic);
@@ -276,7 +276,7 @@ export class AutomatedContentGenerator {
           }
         }
 
-        console.log(`✅ Successfully generated valid post: ${post.title}`);
+        // Successfully generated valid post
         
         return {
           success: true,
@@ -436,11 +436,7 @@ Make the content genuinely helpful and informative, not promotional.
   async publishPost(post: BlogPost): Promise<GenerationResult> {
     const saveResult = await this.contentStore.savePost(post);
     
-    if (saveResult.success) {
-      console.log(`✅ Published new blog post: ${post.title}`);
-    } else {
-      console.error(`❌ Failed to publish post: ${post.title}`, saveResult.validation.errors);
-    }
+    // Post publish result handled silently
 
     return {
       success: saveResult.success,
@@ -674,7 +670,7 @@ Make the content genuinely helpful and informative, not promotional.
       
       // If more than 50% of significant words match, consider it a duplicate
       if (commonWords.length / titleWords.length > 0.5) {
-        console.log(`Duplicate detected: "${title}" similar to "${post.title}"`);
+        // Duplicate detected, skipping
         return true;
       }
     }

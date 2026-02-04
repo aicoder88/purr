@@ -160,14 +160,11 @@ export async function POST(
           html: emailContent,
         });
 
-        console.log('Payout confirmation email sent to:', payout.affiliate.email);
       } catch (emailError) {
         // Log but don't fail the request if email fails
         console.error('Failed to send payout confirmation email:', emailError);
       }
     }
-
-    console.log(`Payout ${id} processed by ${adminEmail}, ref: ${transactionRef}`);
 
     return Response.json({
       success: true,

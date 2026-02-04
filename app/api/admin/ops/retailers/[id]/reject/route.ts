@@ -91,7 +91,6 @@ export async function POST(req: Request, { params }: RouteParams) {
           subject: 'Purrify Wholesale Application Update',
           html: rejectionEmailContent,
         });
-        console.log('Rejection email sent to retailer:', retailer.email);
       } catch (emailError) {
         console.error('Failed to send rejection email:', emailError);
         // Don't fail the rejection if email fails

@@ -91,7 +91,7 @@ export class RedirectAnalyzer {
     const pages = await this.getAllPages(siteUrl);
     const chains: RedirectChain[] = [];
 
-    console.log(`Analyzing redirects for ${pages.length} pages...`);
+    // Analyzing redirects...
 
     for (const page of pages) {
       const chain = await this.followRedirectChain(page);
@@ -133,7 +133,7 @@ export class RedirectAnalyzer {
         urls.push($(el).text());
       });
 
-      console.log(`Checking ${urls.length} sitemap URLs for redirects...`);
+      // Checking sitemap URLs for redirects...
 
       for (const url of urls) {
         const chain = await this.followRedirectChain(url);

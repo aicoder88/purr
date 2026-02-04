@@ -1,6 +1,8 @@
 import { sampleBlogPosts, BlogPost } from '@/data/blog-posts';
 import prisma from '@/lib/prisma';
 
+export const revalidate = 3600;
+
 interface WpPost {
   title: {
     rendered: string;
@@ -72,7 +74,6 @@ export async function GET(req: Request): Promise<Response> {
     // Check if WordPress API URL is configured
     if (!process.env.WORDPRESS_API_URL || process.env.WORDPRESS_API_URL === 'https://your-wordpress-site.com/wp-json/wp/v2') {
       // If WordPress is not configured yet, return sample data
-      console.log('WordPress API not configured, returning sample data');
       const posts = limitNum ? sampleBlogPosts.slice(0, limitNum) : sampleBlogPosts;
       return Response.json(posts);
     }

@@ -209,11 +209,6 @@ export async function POST(req: Request): Promise<Response> {
 
     switch (data.type) {
       case 'contact':
-        console.log('Creating contact ticket:', {
-          name: data.name,
-          email: data.email,
-          locale: data.locale,
-        });
         ticketResponse = await createContactTicket({
           name: data.name,
           email: data.email,
@@ -225,11 +220,6 @@ export async function POST(req: Request): Promise<Response> {
         break;
 
       case 'b2b':
-        console.log('Creating B2B ticket:', {
-          businessName: data.businessName,
-          email: data.email,
-          businessType: data.businessType,
-        });
         ticketResponse = await createB2BTicket({
           businessName: data.businessName,
           contactName: data.contactName,
@@ -244,11 +234,6 @@ export async function POST(req: Request): Promise<Response> {
         break;
 
       case 'refund':
-        console.log('Creating refund ticket:', {
-          name: data.name,
-          email: data.email,
-          orderNumber: data.orderNumber,
-        });
         ticketResponse = await createRefundTicket({
           name: data.name,
           email: data.email,
@@ -258,11 +243,6 @@ export async function POST(req: Request): Promise<Response> {
         });
         break;
     }
-
-    console.log('Ticket created successfully:', {
-      id: ticketResponse.ticket.id,
-      status: ticketResponse.ticket.status,
-    });
 
     return Response.json({
       success: true,

@@ -353,7 +353,7 @@ export async function writeSitemaps(
     fs.writeFileSync(filepath, xml, 'utf-8');
     sitemapFiles.push(`${siteUrl}/${filename}`);
 
-    console.log(`✅ Generated ${filename} with ${chunks[i].length} URLs`);
+    // Sitemap file generated
   }
 
   // Write sitemap index if multiple sitemaps
@@ -361,7 +361,7 @@ export async function writeSitemaps(
     const indexPath = path.join(outputDir, 'sitemap.xml');
     const indexXML = generateSitemapIndex(sitemapFiles);
     fs.writeFileSync(indexPath, indexXML, 'utf-8');
-    console.log(`✅ Generated sitemap.xml index with ${chunks.length} sitemaps`);
+    // Sitemap index generated
   }
 
   return sitemapFiles;

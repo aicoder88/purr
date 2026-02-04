@@ -101,20 +101,8 @@ export class OrderManager {
         updatePayload.status = updateData.status;
       }
 
-      if (updateData.trackingNumber) {
-        // Note: Current schema doesn't support trackingNumber field
-        console.log('Tracking number would be updated:', updateData.trackingNumber);
-      }
-
-      if (updateData.estimatedDelivery) {
-        // Note: Current schema doesn't support estimatedDelivery field
-        console.log('Estimated delivery would be updated:', updateData.estimatedDelivery);
-      }
-
-      if (updateData.shippingAddress) {
-        // Note: Current schema doesn't support shippingAddress field
-        console.log('Shipping address would be updated:', updateData.shippingAddress);
-      }
+      // Note: trackingNumber, estimatedDelivery, and shippingAddress fields
+      // would be updated here when schema supports them
 
       if (!prisma) {
         throw new Error('Database connection not established');

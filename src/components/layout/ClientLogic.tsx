@@ -52,22 +52,14 @@ function useServiceWorkerCleanup() {
         if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
             navigator.serviceWorker.getRegistrations().then((registrations) => {
                 for (const registration of registrations) {
-                    registration.unregister().then((success) => {
-                        if (success) {
-                            console.log('[SW Cleanup] Unregistered stale service worker');
-                        }
-                    });
+                    registration.unregister();
                 }
             });
             // Also clear caches that service workers may have created
             if ('caches' in window) {
                 caches.keys().then((cacheNames) => {
                     cacheNames.forEach((cacheName) => {
-                        caches.delete(cacheName).then((success) => {
-                            if (success) {
-                                console.log(`[Cache Cleanup] Deleted cache: ${cacheName}`);
-                            }
-                        });
+                        caches.delete(cacheName);
                     });
                 });
             }

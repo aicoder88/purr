@@ -67,14 +67,6 @@ export async function POST(req: Request): Promise<Response> {
 
     const { name, email, catNames } = validationResult.data;
 
-    // Log the form submission data for demonstration purposes
-    console.log('Form submission data:', {
-      name,
-      email,
-      catNames: catNames || [],
-      timestamp: new Date().toISOString()
-    });
-    
     // Send data to Google Apps Script
     try {
       // Filter cat names to remove empty strings
@@ -103,7 +95,6 @@ export async function POST(req: Request): Promise<Response> {
         });
         
         if (jsonResponse.ok) {
-          console.log('Successfully submitted to Google Apps Script via JSON POST');
           // Return success response
           return Response.json({
             success: true,
@@ -115,11 +106,9 @@ export async function POST(req: Request): Promise<Response> {
               'Content-Security-Policy': "default-src 'self'",
             }
           });
-        } else {
-          console.log(`JSON POST method returned status: ${jsonResponse.status}. Trying URL params method...`);
         }
       } catch (jsonError) {
-        console.log('Error with JSON POST method, trying URL params method...', jsonError);
+        // Ignore JSON POST error and try URL params method
       }
       
       // Method 2: Alternative POST approach with different fetch options
@@ -139,8 +128,6 @@ export async function POST(req: Request): Promise<Response> {
         console.error(`Failed to submit to Google Apps Script: ${getResponse.status} ${getResponse.statusText}`);
         throw new Error(`Failed to submit to Google Apps Script: ${getResponse.statusText}`);
       }
-      
-      console.log('Successfully submitted to Google Apps Script via URL parameters');
     } catch (error) {
       console.error('Error submitting to Google Apps Script:', error);
       return Response.json({

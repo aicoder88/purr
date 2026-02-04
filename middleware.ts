@@ -71,7 +71,6 @@ export function middleware(request: NextRequest) {
   );
   
   if (blockedBot) {
-    console.log(`[Middleware] Blocked bot: ${blockedBot} from ${country} - ${pathname}`);
     return new NextResponse('Forbidden', { 
       status: 403,
       headers: {
@@ -84,7 +83,6 @@ export function middleware(request: NextRequest) {
   if (ALLOWED_COUNTRIES) {
     // Allow-list mode: only allow specific countries
     if (!ALLOWED_COUNTRIES.includes(country) && country !== 'unknown') {
-      console.log(`[Middleware] Blocked country (not in allow-list): ${country} - ${pathname}`);
       return new NextResponse('Forbidden', { 
         status: 403,
         headers: {
@@ -96,7 +94,6 @@ export function middleware(request: NextRequest) {
   } else {
     // Block-list mode: block specific countries
     if (BLOCKED_COUNTRIES.includes(country)) {
-      console.log(`[Middleware] Blocked country (in block-list): ${country} - ${pathname}`);
       return new NextResponse('Forbidden', { 
         status: 403,
         headers: {

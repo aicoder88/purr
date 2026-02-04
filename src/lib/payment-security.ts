@@ -136,8 +136,7 @@ export class PaymentSecurityService {
     return `fp_${Math.abs(hash).toString(36)}`;
   }
 
-  static async logSecurityEvent(type: string, context: Record<string, unknown>, result?: unknown): Promise<void> {
-     
-    console.log(`[security:${type}]`, { context, result });
+  static async logSecurityEvent(_type: string, _context: Record<string, unknown>, _result?: unknown): Promise<void> {
+    // Security event logging is handled by external monitoring
   }
 }

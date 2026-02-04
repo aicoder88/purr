@@ -16,18 +16,7 @@ export const EMAILJS_CONFIG = {
   privateKey: process.env.EMAILJS_PRIVATE_KEY || '',
 };
 
-// Debug logging (will be visible in Vercel logs)
-if (typeof globalThis.window === 'undefined') {
-  console.log('[EmailJS Config Debug]', {
-    publicKeySet: !!EMAILJS_CONFIG.publicKey,
-    publicKeyLength: EMAILJS_CONFIG.publicKey?.length || 0,
-    publicKeyValue: EMAILJS_CONFIG.publicKey ? EMAILJS_CONFIG.publicKey.substring(0, 10) + '...' : 'NOT SET',
-    serviceIdSet: !!EMAILJS_CONFIG.serviceId,
-    serviceIdValue: EMAILJS_CONFIG.serviceId || 'NOT SET',
-    templateIdSet: !!EMAILJS_CONFIG.templateId,
-    templateIdValue: EMAILJS_CONFIG.templateId || 'NOT SET',
-  });
-}
+
 
 /**
  * Check if EmailJS is properly configured

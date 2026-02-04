@@ -276,8 +276,6 @@ export function isEligibleForReferrals(
 ): boolean {
   // Check if user has made previous purchases (basic check)
   // In production, this would check against user purchase history
-  console.log('Checking eligibility for:', userEmail, userId);
-
   const referralInfo = getReferralInfo();
 
   // Don't allow self-referrals

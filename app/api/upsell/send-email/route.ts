@@ -169,12 +169,7 @@ export async function POST(req: Request): Promise<Response> {
       }, { status: 500, headers });
     }
 
-    // Log success
-    console.log(`[Upsell Email] Sent ${type} email to ${email}`, {
-      emailId: result.data?.id,
-      locale,
-      customerName
-    });
+
 
     return Response.json({
       success: true,

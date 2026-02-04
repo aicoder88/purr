@@ -240,11 +240,12 @@ function BannerCard({ banner }: { banner: BannerAsset }) {
     return (
         <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
             <div className="aspect-video bg-gray-100 dark:bg-gray-700 flex items-center justify-center p-4">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                     src={banner.previewUrl}
                     alt={banner.name}
-                    className="max-w-full max-h-full object-contain"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-contain"
                 />
             </div>
             <div className="p-4">

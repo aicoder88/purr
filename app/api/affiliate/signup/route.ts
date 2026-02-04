@@ -197,15 +197,6 @@ export async function POST(req: Request): Promise<Response> {
         html: applicantEmailContent,
       });
 
-      console.log('Affiliate application saved and emails sent:', {
-        applicant: data.name,
-        email: normalizedEmail,
-      });
-    } else {
-      console.log('Affiliate application saved (Resend not configured, emails skipped):', {
-        applicant: data.name,
-        email: normalizedEmail,
-      });
     }
 
     return Response.json(

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Container } from '@/components/ui/container';
 import { SITE_NAME } from '@/lib/constants';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Star, Quote, CheckCircle, Users, Calendar, MapPin } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -330,10 +331,11 @@ export default function OpinionesPage() {
                   </ul>
                 </div>
                 <div className="text-center">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src="/optimized/three_bags_no_bg.webp"
                     alt="Productos Purrify - Desodorizante de carbón activado para arena de gatos"
+                    width={400}
+                    height={400}
                     className="max-w-xs mx-auto"
                   />
                 </div>

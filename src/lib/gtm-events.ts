@@ -16,10 +16,7 @@ export const gtmEvent = (eventName: string, parameters: Record<string, unknown> 
       ...parameters
     });
     
-    // Only log in development
-    if (process.env.NODE_ENV === 'development') {
-      console.log('GTM Event:', eventName, parameters);
-    }
+    // Event logging is disabled in production
   }
 };
 

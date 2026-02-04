@@ -6,6 +6,7 @@ import AffiliateLayout from '@/components/affiliate/AffiliateLayout';
 import { LinkGenerator } from '@/components/affiliate/LinkGenerator';
 import { useTranslation } from '@/lib/translation-context';
 import { Copy, Check, ExternalLink, QrCode } from 'lucide-react';
+import Image from 'next/image';
 
 interface LinkTemplate {
     id: string;
@@ -102,8 +103,7 @@ function QRCodeCard({ affiliateCode, baseUrl }: { affiliateCode: string; baseUrl
             </p>
             <div className="flex justify-center">
                 <div className="bg-white dark:bg-gray-100 p-4 rounded-lg">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                        <Image
                         src={qrCodeUrl}
                         alt="Referral QR Code"
                         width={200}

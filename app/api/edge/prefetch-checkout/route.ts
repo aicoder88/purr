@@ -239,7 +239,5 @@ async function trackPrefetchEvent(data: Record<string, unknown>) {
   };
 
   // In production, send to analytics service
-  console.log('Prefetch event:', event);
-  
   return true;
 }

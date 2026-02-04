@@ -46,12 +46,9 @@ export class BlogRepairUtility {
    * Scan all posts for issues
    */
   async scanAllPosts(locale: string): Promise<ScanReport> {
-    console.log(`🔍 Scanning all posts for locale: ${locale}`);
-    
     const contentDir = path.join(process.cwd(), 'content', 'blog', locale);
     
     if (!fs.existsSync(contentDir)) {
-      console.warn(`Content directory not found: ${contentDir}`);
       return {
         totalPosts: 0,
         validPosts: 0,
@@ -97,8 +94,6 @@ export class BlogRepairUtility {
       }
     }
 
-    console.log(`✅ Scan complete: ${validPosts}/${files.length} posts valid`);
-    
     return {
       totalPosts: files.length,
       validPosts,
@@ -110,7 +105,6 @@ export class BlogRepairUtility {
    * Repair a specific post
    */
   async repairPost(slug: string, locale: string): Promise<RepairResult> {
-    console.log(`🔧 Attempting to repair post: ${slug}`);
     
     try {
       const post = await this.contentStore.getPost(slug, locale);
@@ -126,7 +120,6 @@ export class BlogRepairUtility {
       const validation = this.validator.validatePost(post);
       
       if (validation.valid) {
-        console.log(`✅ Post ${slug} is already valid`);
         return {
           success: true,
           originalPost: post,
@@ -141,7 +134,6 @@ export class BlogRepairUtility {
 
       // Fix template variables in title
       if (this.validator.containsTemplateVariables(post.title)) {
-        console.log(`Fixing template variables in title for ${slug}`);
         // Extract topic from slug
         const topic = slug.replaceAll(/-/g, ' ');
         repairedPost.title = this.capitalizeWords(topic);
@@ -150,7 +142,6 @@ export class BlogRepairUtility {
 
       // Fix template variables in excerpt
       if (this.validator.containsTemplateVariables(post.excerpt)) {
-        console.log(`Fixing template variables in excerpt for ${slug}`);
         // Generate excerpt from content
         const textContent = this.validator.stripHTML(post.content);
         repairedPost.excerpt = textContent.substring(0, 157).trim() + '...';
@@ -159,7 +150,6 @@ export class BlogRepairUtility {
 
       // Fix broken image
       if (post.featuredImage && !this.validator.isValidURL(post.featuredImage.url)) {
-        console.log(`Fixing broken image for ${slug}`);
         repairedPost.featuredImage = {
           url: '/optimized/purrify-logo.avif',
           alt: post.title,
@@ -171,7 +161,6 @@ export class BlogRepairUtility {
 
       // Fix template variables in image alt
       if (post.featuredImage?.alt && this.validator.containsTemplateVariables(post.featuredImage.alt)) {
-        console.log(`Fixing template variables in image alt for ${slug}`);
         repairedPost.featuredImage.alt = post.title;
         repaired = true;
       }
@@ -181,7 +170,6 @@ export class BlogRepairUtility {
         const saveResult = await this.contentStore.savePost(repairedPost, { skipValidation: false });
         
         if (saveResult.success) {
-          console.log(`✅ Successfully repaired post: ${slug}`);
           return {
             success: true,
             originalPost: post,
@@ -189,7 +177,6 @@ export class BlogRepairUtility {
             issues
           };
         } else {
-          console.error(`❌ Failed to save repaired post: ${slug}`);
           return {
             success: false,
             originalPost: post,
@@ -198,7 +185,6 @@ export class BlogRepairUtility {
         }
       }
 
-      console.warn(`⚠️ Could not automatically repair post: ${slug}`);
       return {
         success: false,
         originalPost: post,
@@ -219,7 +205,6 @@ export class BlogRepairUtility {
    * Repair all broken posts
    */
   async repairAllPosts(locale: string): Promise<RepairReport> {
-    console.log(`🔧 Starting repair of all posts for locale: ${locale}`);
     
     const scanReport = await this.scanAllPosts(locale);
     const details: RepairResult[] = [];
@@ -239,8 +224,6 @@ export class BlogRepairUtility {
       }
     }
 
-    console.log(`✅ Repair complete: ${totalRepaired}/${scanReport.postsWithIssues.length} posts repaired`);
-    
     return {
       totalScanned: scanReport.totalPosts,
       totalRepaired,
