@@ -89,15 +89,12 @@ export async function generateMetadata(): Promise<Metadata> {
     referrer: 'origin-when-cross-origin',
     icons: {
       icon: [
-        { url: '/images/Logos/favicon.png', type: 'image/png' },
-        { url: '/images/Logos/icon-32.png', type: 'image/png', sizes: '32x32' },
-        { url: '/images/Logos/icon-64.png', type: 'image/png', sizes: '64x64' },
-        { url: '/images/Logos/icon-128.png', type: 'image/png', sizes: '128x128' },
+        { url: '/optimized/favicon.svg', type: 'image/svg+xml' },
       ],
       apple: [
         { url: '/images/Logos/apple-touch-icon.png', sizes: '180x180' },
       ],
-      shortcut: ['/images/Logos/favicon.png'],
+      shortcut: ['/optimized/favicon.svg'],
     },
     manifest: '/manifest.json',
     alternates,

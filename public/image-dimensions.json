@@ -10,104 +10,65 @@
     },
     "sizes": "100vw"
   },
-  "images/Logos/icon-64.png": {
-    "width": 64,
-    "height": 64,
+  "images/senior-cat-mobility.png": {
+    "width": 1024,
+    "height": 1024,
     "aspectRatio": 1,
     "formats": {
-      "avif": [],
-      "webp": [],
-      "jpg": []
+      "avif": [
+        "optimized/senior-cat-mobility-640w.avif",
+        "optimized/senior-cat-mobility-828w.avif"
+      ],
+      "webp": [
+        "optimized/senior-cat-mobility-640w.webp",
+        "optimized/senior-cat-mobility-828w.webp"
+      ],
+      "jpg": [
+        "optimized/senior-cat-mobility-640w.jpg",
+        "optimized/senior-cat-mobility-828w.jpg"
+      ]
     },
-    "sizes": "100vw"
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
-  "images/Logos/icon-64-root.png": {
-    "width": 64,
-    "height": 64,
+  "images/senior-cat-hero.png": {
+    "width": 1024,
+    "height": 1024,
     "aspectRatio": 1,
     "formats": {
-      "avif": [],
-      "webp": [],
-      "jpg": []
+      "avif": [
+        "optimized/senior-cat-hero-640w.avif",
+        "optimized/senior-cat-hero-828w.avif"
+      ],
+      "webp": [
+        "optimized/senior-cat-hero-640w.webp",
+        "optimized/senior-cat-hero-828w.webp"
+      ],
+      "jpg": [
+        "optimized/senior-cat-hero-640w.jpg",
+        "optimized/senior-cat-hero-828w.jpg"
+      ]
     },
-    "sizes": "100vw"
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
-  "images/Logos/icon-512.png": {
-    "width": 512,
-    "height": 512,
+  "images/purrify-standard-bag.png": {
+    "width": 1024,
+    "height": 1024,
     "aspectRatio": 1,
     "formats": {
-      "avif": [],
-      "webp": [],
-      "jpg": []
+      "avif": [
+        "optimized/purrify-standard-bag-640w.avif",
+        "optimized/purrify-standard-bag-828w.avif"
+      ],
+      "webp": [
+        "optimized/purrify-standard-bag-640w.webp",
+        "optimized/purrify-standard-bag-828w.webp"
+      ],
+      "jpg": [
+        "optimized/purrify-standard-bag-640w.jpg",
+        "optimized/purrify-standard-bag-828w.jpg"
+      ]
     },
-    "sizes": "100vw"
-  },
-  "images/Logos/icon-32.png": {
-    "width": 32,
-    "height": 32,
-    "aspectRatio": 1,
-    "formats": {
-      "avif": [],
-      "webp": [],
-      "jpg": []
-    },
-    "sizes": "100vw"
-  },
-  "images/Logos/icon-32-root.png": {
-    "width": 32,
-    "height": 32,
-    "aspectRatio": 1,
-    "formats": {
-      "avif": [],
-      "webp": [],
-      "jpg": []
-    },
-    "sizes": "100vw"
-  },
-  "images/Logos/icon-128.png": {
-    "width": 128,
-    "height": 128,
-    "aspectRatio": 1,
-    "formats": {
-      "avif": [],
-      "webp": [],
-      "jpg": []
-    },
-    "sizes": "100vw"
-  },
-  "images/Logos/icon-128-root.png": {
-    "width": 128,
-    "height": 128,
-    "aspectRatio": 1,
-    "formats": {
-      "avif": [],
-      "webp": [],
-      "jpg": []
-    },
-    "sizes": "100vw"
-  },
-  "images/Logos/favicon.png": {
-    "width": 16,
-    "height": 16,
-    "aspectRatio": 1,
-    "formats": {
-      "avif": [],
-      "webp": [],
-      "jpg": []
-    },
-    "sizes": "100vw"
-  },
-  "images/dr-michael-rodriguez.jpg": {
-    "width": 512,
-    "height": 512,
-    "aspectRatio": 1,
-    "formats": {
-      "avif": [],
-      "webp": [],
-      "jpg": []
-    },
-    "sizes": "100vw"
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/powder_vs_spray_testing_v2.png": {
     "width": 1024,
@@ -249,7 +210,7 @@
     },
     "sizes": "(max-width: 640px) 100vw, 50vw"
   },
-  "images/replacements/multi-cat-success-ghibli.png": {
+  "images/multi-cat-success-ghibli.png": {
     "width": 1024,
     "height": 1024,
     "aspectRatio": 1,
@@ -269,7 +230,7 @@
     },
     "sizes": "(max-width: 640px) 100vw, 50vw"
   },
-  "images/replacements/multi-cat-home-ghibli.png": {
+  "images/multi-cat-home-ghibli.png": {
     "width": 1024,
     "height": 1024,
     "aspectRatio": 1,
@@ -289,7 +250,7 @@
     },
     "sizes": "(max-width: 640px) 100vw, 50vw"
   },
-  "images/replacements/multi-cat-family-ghibli.png": {
+  "images/multi-cat-family-ghibli.png": {
     "width": 1024,
     "height": 1024,
     "aspectRatio": 1,
@@ -309,7 +270,7 @@
     },
     "sizes": "(max-width: 640px) 100vw, 50vw"
   },
-  "images/replacements/happy-cat-ghibli.png": {
+  "images/happy-cat-ghibli.png": {
     "width": 1024,
     "height": 1024,
     "aspectRatio": 1,
@@ -329,7 +290,18 @@
     },
     "sizes": "(max-width: 640px) 100vw, 50vw"
   },
-  "images/replacements/curious-cat-ghibli.png": {
+  "images/dr-michael-rodriguez.jpg": {
+    "width": 512,
+    "height": 512,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
+  },
+  "images/curious-cat-ghibli.png": {
     "width": 1024,
     "height": 1024,
     "aspectRatio": 1,
@@ -349,7 +321,7 @@
     },
     "sizes": "(max-width: 640px) 100vw, 50vw"
   },
-  "images/replacements/cat-owner-questions-ghibli.png": {
+  "images/cat-owner-questions-ghibli.png": {
     "width": 1024,
     "height": 1024,
     "aspectRatio": 1,
@@ -369,7 +341,7 @@
     },
     "sizes": "(max-width: 640px) 100vw, 50vw"
   },
-  "images/replacements/cat-litter-usage-ghibli.png": {
+  "images/cat-litter-usage-ghibli.png": {
     "width": 1024,
     "height": 1024,
     "aspectRatio": 1,
@@ -389,7 +361,7 @@
     },
     "sizes": "(max-width: 640px) 100vw, 50vw"
   },
-  "images/replacements/carbon-microscopic.png": {
+  "images/carbon-microscopic.png": {
     "width": 1024,
     "height": 1024,
     "aspectRatio": 1,
@@ -409,7 +381,7 @@
     },
     "sizes": "(max-width: 640px) 100vw, 50vw"
   },
-  "images/replacements/carbon-granules-detailed.png": {
+  "images/carbon-granules-detailed.png": {
     "width": 1024,
     "height": 1024,
     "aspectRatio": 1,
@@ -429,22 +401,299 @@
     },
     "sizes": "(max-width: 640px) 100vw, 50vw"
   },
-  "images/purrify-standard-bag.png": {
+  "images/team/trenton-harlow.png": {
     "width": 1024,
     "height": 1024,
     "aspectRatio": 1,
     "formats": {
       "avif": [
-        "optimized/purrify-standard-bag-640w.avif",
-        "optimized/purrify-standard-bag-828w.avif"
+        "optimized/trenton-harlow-640w.avif",
+        "optimized/trenton-harlow-828w.avif"
       ],
       "webp": [
-        "optimized/purrify-standard-bag-640w.webp",
-        "optimized/purrify-standard-bag-828w.webp"
+        "optimized/trenton-harlow-640w.webp",
+        "optimized/trenton-harlow-828w.webp"
       ],
       "jpg": [
-        "optimized/purrify-standard-bag-640w.jpg",
-        "optimized/purrify-standard-bag-828w.jpg"
+        "optimized/trenton-harlow-640w.jpg",
+        "optimized/trenton-harlow-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/team/silas-bennett.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/silas-bennett-640w.avif",
+        "optimized/silas-bennett-828w.avif"
+      ],
+      "webp": [
+        "optimized/silas-bennett-640w.webp",
+        "optimized/silas-bennett-828w.webp"
+      ],
+      "jpg": [
+        "optimized/silas-bennett-640w.jpg",
+        "optimized/silas-bennett-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/team/sage-dean.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/sage-dean-640w.avif",
+        "optimized/sage-dean-828w.avif"
+      ],
+      "webp": [
+        "optimized/sage-dean-640w.webp",
+        "optimized/sage-dean-828w.webp"
+      ],
+      "jpg": [
+        "optimized/sage-dean-640w.jpg",
+        "optimized/sage-dean-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/team/orion-hampton.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/orion-hampton-640w.avif",
+        "optimized/orion-hampton-828w.avif"
+      ],
+      "webp": [
+        "optimized/orion-hampton-640w.webp",
+        "optimized/orion-hampton-828w.webp"
+      ],
+      "jpg": [
+        "optimized/orion-hampton-640w.jpg",
+        "optimized/orion-hampton-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/team/michael-rodriguez.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/michael-rodriguez-640w.avif",
+        "optimized/michael-rodriguez-828w.avif"
+      ],
+      "webp": [
+        "optimized/michael-rodriguez-640w.webp",
+        "optimized/michael-rodriguez-828w.webp"
+      ],
+      "jpg": [
+        "optimized/michael-rodriguez-640w.jpg",
+        "optimized/michael-rodriguez-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/team/merrick-sullivan.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/merrick-sullivan-640w.avif",
+        "optimized/merrick-sullivan-828w.avif"
+      ],
+      "webp": [
+        "optimized/merrick-sullivan-640w.webp",
+        "optimized/merrick-sullivan-828w.webp"
+      ],
+      "jpg": [
+        "optimized/merrick-sullivan-640w.jpg",
+        "optimized/merrick-sullivan-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/team/mark-archer.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/mark-archer-640w.avif",
+        "optimized/mark-archer-828w.avif"
+      ],
+      "webp": [
+        "optimized/mark-archer-640w.webp",
+        "optimized/mark-archer-828w.webp"
+      ],
+      "jpg": [
+        "optimized/mark-archer-640w.jpg",
+        "optimized/mark-archer-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/team/leland-brantley.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/leland-brantley-640w.avif",
+        "optimized/leland-brantley-828w.avif"
+      ],
+      "webp": [
+        "optimized/leland-brantley-640w.webp",
+        "optimized/leland-brantley-828w.webp"
+      ],
+      "jpg": [
+        "optimized/leland-brantley-640w.jpg",
+        "optimized/leland-brantley-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/team/gideon-fletcher.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/gideon-fletcher-640w.avif",
+        "optimized/gideon-fletcher-828w.avif"
+      ],
+      "webp": [
+        "optimized/gideon-fletcher-640w.webp",
+        "optimized/gideon-fletcher-828w.webp"
+      ],
+      "jpg": [
+        "optimized/gideon-fletcher-640w.jpg",
+        "optimized/gideon-fletcher-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/team/finnegan-crosby.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/finnegan-crosby-640w.avif",
+        "optimized/finnegan-crosby-828w.avif"
+      ],
+      "webp": [
+        "optimized/finnegan-crosby-640w.webp",
+        "optimized/finnegan-crosby-828w.webp"
+      ],
+      "jpg": [
+        "optimized/finnegan-crosby-640w.jpg",
+        "optimized/finnegan-crosby-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/team/ezekiel-voss.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/ezekiel-voss-640w.avif",
+        "optimized/ezekiel-voss-828w.avif"
+      ],
+      "webp": [
+        "optimized/ezekiel-voss-640w.webp",
+        "optimized/ezekiel-voss-828w.webp"
+      ],
+      "jpg": [
+        "optimized/ezekiel-voss-640w.jpg",
+        "optimized/ezekiel-voss-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/team/dorian-keller.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/dorian-keller-640w.avif",
+        "optimized/dorian-keller-828w.avif"
+      ],
+      "webp": [
+        "optimized/dorian-keller-640w.webp",
+        "optimized/dorian-keller-828w.webp"
+      ],
+      "jpg": [
+        "optimized/dorian-keller-640w.jpg",
+        "optimized/dorian-keller-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/team/david-kim.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/david-kim-640w.avif",
+        "optimized/david-kim-828w.avif"
+      ],
+      "webp": [
+        "optimized/david-kim-640w.webp",
+        "optimized/david-kim-828w.webp"
+      ],
+      "jpg": [
+        "optimized/david-kim-640w.jpg",
+        "optimized/david-kim-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/team/cassian-reed.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/cassian-reed-640w.avif",
+        "optimized/cassian-reed-828w.avif"
+      ],
+      "webp": [
+        "optimized/cassian-reed-640w.webp",
+        "optimized/cassian-reed-828w.webp"
+      ],
+      "jpg": [
+        "optimized/cassian-reed-640w.jpg",
+        "optimized/cassian-reed-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/products/17g-original.png": {
+    "width": 800,
+    "height": 1071,
+    "aspectRatio": 0.7469654528478058,
+    "formats": {
+      "avif": [
+        "optimized/17g-original-640w.avif"
+      ],
+      "webp": [
+        "optimized/17g-original-640w.webp"
+      ],
+      "jpg": [
+        "optimized/17g-original-640w.jpg"
       ]
     },
     "sizes": "(max-width: 640px) 100vw, 50vw"
@@ -796,5 +1045,277 @@
       ]
     },
     "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  },
+  "images/locations/provinces/quebec.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/quebec-640w.avif",
+        "optimized/quebec-828w.avif"
+      ],
+      "webp": [
+        "optimized/quebec-640w.webp",
+        "optimized/quebec-828w.webp"
+      ],
+      "jpg": [
+        "optimized/quebec-640w.jpg",
+        "optimized/quebec-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/locations/provinces/prairies.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/prairies-640w.avif",
+        "optimized/prairies-828w.avif"
+      ],
+      "webp": [
+        "optimized/prairies-640w.webp",
+        "optimized/prairies-828w.webp"
+      ],
+      "jpg": [
+        "optimized/prairies-640w.jpg",
+        "optimized/prairies-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/locations/provinces/ontario.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/ontario-640w.avif",
+        "optimized/ontario-828w.avif"
+      ],
+      "webp": [
+        "optimized/ontario-640w.webp",
+        "optimized/ontario-828w.webp"
+      ],
+      "jpg": [
+        "optimized/ontario-640w.jpg",
+        "optimized/ontario-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/locations/provinces/north.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/north-640w.avif",
+        "optimized/north-828w.avif"
+      ],
+      "webp": [
+        "optimized/north-640w.webp",
+        "optimized/north-828w.webp"
+      ],
+      "jpg": [
+        "optimized/north-640w.jpg",
+        "optimized/north-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/locations/provinces/british-columbia.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/british-columbia-640w.avif",
+        "optimized/british-columbia-828w.avif"
+      ],
+      "webp": [
+        "optimized/british-columbia-640w.webp",
+        "optimized/british-columbia-828w.webp"
+      ],
+      "jpg": [
+        "optimized/british-columbia-640w.jpg",
+        "optimized/british-columbia-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/locations/provinces/atlantic.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/atlantic-640w.avif",
+        "optimized/atlantic-828w.avif"
+      ],
+      "webp": [
+        "optimized/atlantic-640w.webp",
+        "optimized/atlantic-828w.webp"
+      ],
+      "jpg": [
+        "optimized/atlantic-640w.jpg",
+        "optimized/atlantic-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/locations/provinces/alberta.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/alberta-640w.avif",
+        "optimized/alberta-828w.avif"
+      ],
+      "webp": [
+        "optimized/alberta-640w.webp",
+        "optimized/alberta-828w.webp"
+      ],
+      "jpg": [
+        "optimized/alberta-640w.jpg",
+        "optimized/alberta-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "images/Logos/social-logo.png": {
+    "width": 400,
+    "height": 400,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
+  },
+  "images/Logos/icon-64.png": {
+    "width": 64,
+    "height": 64,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
+  },
+  "images/Logos/icon-64-root.png": {
+    "width": 64,
+    "height": 64,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
+  },
+  "images/Logos/icon-512.png": {
+    "width": 512,
+    "height": 512,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
+  },
+  "images/Logos/icon-32.png": {
+    "width": 32,
+    "height": 32,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
+  },
+  "images/Logos/icon-32-root.png": {
+    "width": 32,
+    "height": 32,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
+  },
+  "images/Logos/icon-192.png": {
+    "width": 192,
+    "height": 192,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
+  },
+  "images/Logos/icon-128.png": {
+    "width": 128,
+    "height": 128,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
+  },
+  "images/Logos/icon-128-root.png": {
+    "width": 128,
+    "height": 128,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
+  },
+  "images/Logos/favicon.png": {
+    "width": 16,
+    "height": 16,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
+  },
+  "images/Logos/apple-touch-icon.png": {
+    "width": 180,
+    "height": 180,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
+  },
+  "images/Logos/apple-touch-icon-root.png": {
+    "width": 180,
+    "height": 180,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   }
 }
