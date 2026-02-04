@@ -156,7 +156,7 @@ export const SubscriptionReminderEmailHTML = ({
           <!-- Header -->
           <tr>
             <td style="padding: 40px 40px 20px; text-align: center; background: linear-gradient(135deg, #03E46A 0%, #02C55A 100%); border-radius: 12px 12px 0 0;">
-              <img src="https://www.purrify.ca/images/purrify-logo.png" alt="Purrify" style="width: 100px; height: auto; margin-bottom: 16px;">
+              <img src="https://www.purrify.ca/images/Logos/purrify-logo.png" alt="Purrify" style="width: 100px; height: auto; margin-bottom: 16px;">
               <h1 style="margin: 0; font-size: 22px; font-weight: 700; color: #ffffff;">Subscription Reminder</h1>
             </td>
           </tr>

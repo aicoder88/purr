@@ -75,7 +75,7 @@ export default function POSPage() {
                         <div className="col-span-6 relative h-full flex items-center justify-center">
                             <div className="relative w-full h-[400px]">
                                 <Image
-                                    src="/images/pos/product.png"
+                                    src="/images/products/60g.webp"
                                     alt="Purrify Product"
                                     fill
                                     className="object-contain drop-shadow-2xl"

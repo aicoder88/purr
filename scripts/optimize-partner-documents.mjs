@@ -139,7 +139,7 @@ ${alternates}
         "url": "https://www.purrify.ca",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://www.purrify.ca/images/icon-512.png"
+          "url": "https://www.purrify.ca/images/Logos/icon-512.png"
         }
       },
       "datePublished": "2026-01-19",

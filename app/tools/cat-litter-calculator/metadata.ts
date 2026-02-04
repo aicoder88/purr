@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: `${SITE_URL}/images/og-calculator.jpg`,
+        url: `${SITE_URL}/optimized/frequency-hero.webp`,
         width: 1200,
         height: 630,
         alt: 'Cat Litter Cost Calculator - Compare annual costs of different litter types',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Cat Litter Cost Calculator',
     description: 'Calculate your annual cat litter costs and compare different litter types.',
-    images: [`${SITE_URL}/images/og-calculator.jpg`],
+    images: [`${SITE_URL}/optimized/frequency-hero.webp`],
   },
   keywords: [
     'cat litter calculator',

@@ -60,7 +60,7 @@ const structuredData = {
         name: 'Purrify',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://www.purrify.ca/images/purrify-logo.png',
+          url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
           width: 400,
           height: 400
         }

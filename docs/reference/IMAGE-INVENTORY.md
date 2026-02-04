@@ -28,13 +28,13 @@ A comprehensive catalog of all images in the Purrify website, organized by categ
 |------|------|-------------|
 | purrify-logo.svg | `/public/images/purrify-logo.svg` | Main Purrify logo in SVG format (scalable) |
 | purrify-logo.png | `/public/images/purrify-logo.png` | Main Purrify logo in PNG format |
-| social-logo.png | `/public/images/social-logo.png` | Social media sharing logo (Open Graph) |
-| favicon.ico | `/public/images/favicon.ico` | Browser tab favicon |
-| favicon-adaptive.svg | `/public/images/favicon-adaptive.svg` | Adaptive favicon for modern browsers |
-| apple-touch-icon.png | `/public/apple-touch-icon.png` | iOS home screen icon |
-| icon-32.png | `/public/images/icon-32.png` | 32x32 favicon |
-| icon-64.png | `/public/images/icon-64.png` | 64x64 favicon |
-| icon-128.png | `/public/images/icon-128.png` | 128x128 app icon |
+| social-logo.png | `/public/images/Logos/social-logo.png` | Social media sharing logo (Open Graph) |
+| favicon.ico | `/public/images/Logos/favicon.ico` | Browser tab favicon |
+| favicon-adaptive.svg | `/public/images/Logos/favicon-adaptive.svg` | Adaptive favicon for modern browsers |
+| apple-touch-icon.png | `/public/images/Logos/apple-touch-icon.png` | iOS home screen icon |
+| icon-32.png | `/public/images/Logos/icon-32.png` | 32x32 favicon |
+| icon-64.png | `/public/images/Logos/icon-64.png` | 64x64 favicon |
+| icon-128.png | `/public/images/Logos/icon-128.png` | 128x128 app icon |
 | purrify-logo-text.webp | `/public/optimized/purrify-logo-text.webp` | Logo with text, optimized |
 | purrify-logo-icon.webp | `/public/optimized/purrify-logo-icon.webp` | Logo icon only, optimized |
 | purrify-dark-mode-logo.webp | `/public/optimized/purrify-dark-mode-logo.webp` | Dark mode variant of logo |
@@ -365,9 +365,9 @@ A comprehensive catalog of all images in the Purrify website, organized by categ
 
 | File | Path | Description |
 |------|------|-------------|
-| icon-192.png | `/public/images/icon-192.png` | PWA icon 192x192 |
-| icon-512.png | `/public/images/icon-512.png` | PWA icon 512x512 |
-| favicon.png | `/public/images/favicon.png` | Standard favicon |
+| icon-192.png | `/public/images/Logos/icon-192.png` | PWA icon 192x192 |
+| icon-512.png | `/public/images/Logos/icon-512.png` | PWA icon 512x512 |
+| favicon.png | `/public/images/Logos/favicon.png` | Standard favicon |
 
 ---
 

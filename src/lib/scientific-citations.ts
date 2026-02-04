@@ -273,7 +273,7 @@ export const VETERINARY_SCIENCE_ADVISOR = {
   jobTitle: 'Veterinary Science Advisor',
   description: 'Board-certified veterinarian specializing in feline medicine and environmental health. PhD in Toxicology from Cornell University with 15+ years of clinical research experience in pet care products and indoor air quality.',
   url: 'https://www.purrify.ca/about/veterinary-advisor',
-  image: 'https://www.purrify.ca/images/dr-sarah-chen.jpg',
+  image: 'https://www.purrify.ca/images/dr-michael-rodriguez.jpg',
   alumniOf: [
     {
       '@type': 'CollegeOrUniversity',

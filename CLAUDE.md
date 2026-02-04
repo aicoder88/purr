@@ -121,7 +121,7 @@ yarn add
 **Real examples of fabrications to avoid:**
 - `@PurrifyPets` (wrong, actual: `@purrifyhq`)
 - `#PurrifyFresh` (doesn't exist, no official hashtags)
-- `/images/logo.png` (doesn't exist, use `/images/icon-512.png`)
+- `/images/logo.png` (doesn't exist, use `/images/Logos/icon-512.png`)
 - `hello@purrify.ca` (verify first, don't assume)
 
 **Why this matters:** Fabricated contact info breaks user trust, creates 404s, sends customers to wrong places, and damages SEO. When in doubt, ASK.

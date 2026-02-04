@@ -391,7 +391,7 @@ export const generateArticleStructuredData = (title: string, description: string
     headline: title,
     description: description,
     url: url,
-    image: options?.image || 'https://www.purrify.ca/images/purrify-logo.png',
+    image: options?.image || 'https://www.purrify.ca/images/Logos/purrify-logo.png',
     author: {
       '@type': 'Organization',
       name: SITE_NAME
@@ -401,7 +401,7 @@ export const generateArticleStructuredData = (title: string, description: string
       name: SITE_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.purrify.ca/images/purrify-logo.png',
+        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
         width: 400,
         height: 400
       }
@@ -430,8 +430,8 @@ export const generateOrganizationSchema = (localeInput: string) => {
     name: SITE_NAME,
     alternateName: SITE_NAME,
     url: baseUrl,
-    logo: `${baseUrl}/images/purrify-logo.png`,
-    image: `${baseUrl}/images/purrify-logo.png`,
+    logo: `${baseUrl}/images/Logos/purrify-logo.png`,
+    image: `${baseUrl}/images/Logos/purrify-logo.png`,
     description: getLocalizedContent(SEO_TRANSLATIONS.organizationDescription, locale),
     foundingDate: '2023',
     address: {
@@ -641,8 +641,8 @@ export const generateLocalBusinessSchema = (cityName: string, province: string, 
     name: `${SITE_NAME} - ${cityName}`,
     description: getLocalizedContent(SEO_TRANSLATIONS.organizationDescription, locale),
     url: getLocalizedUrl(`/locations/${cityName.toLowerCase()}`, locale),
-    logo: 'https://www.purrify.ca/images/purrify-logo.png',
-    image: 'https://www.purrify.ca/images/purrify-logo.png',
+    logo: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+    image: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
     address: {
       '@type': 'PostalAddress',
       addressLocality: cityName,
@@ -762,7 +762,7 @@ export const generateProductPageSchema = (productId: string, localeInput: string
         brand: {
           '@type': 'Brand',
           name: SITE_NAME,
-          logo: `${baseUrl}/images/purrify-logo.png`
+          logo: `${baseUrl}/images/Logos/purrify-logo.png`
         },
         manufacturer: {
           '@type': 'Organization',
@@ -849,12 +849,12 @@ export const generateArticlePageSchema = (title: string, description: string, pa
         headline: title,
         description: description,
         url: url,
-        image: options?.image || `${baseUrl}/images/purrify-logo.png`,
+        image: options?.image || `${baseUrl}/images/Logos/purrify-logo.png`,
         author: {
           '@type': 'Organization',
           name: SITE_NAME,
           url: baseUrl,
-          logo: `${baseUrl}/images/purrify-logo.png`
+          logo: `${baseUrl}/images/Logos/purrify-logo.png`
         },
         publisher: {
           '@type': 'Organization',
@@ -862,7 +862,7 @@ export const generateArticlePageSchema = (title: string, description: string, pa
           url: baseUrl,
           logo: {
             '@type': 'ImageObject',
-            url: `${baseUrl}/images/purrify-logo.png`,
+            url: `${baseUrl}/images/Logos/purrify-logo.png`,
             width: 400,
             height: 400
           }

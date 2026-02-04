@@ -108,7 +108,7 @@ export async function generateMetadata({ params }: ProvincePageProps): Promise<M
       url: canonicalUrl,
       images: [
         {
-          url: HERO_IMAGES[province.slug] || '/images/og-default.png',
+          url: HERO_IMAGES[province.slug] || '/optimized/90day-hero.webp',
           width: 1200,
           height: 630,
           alt: `${province.name} Province Page`,

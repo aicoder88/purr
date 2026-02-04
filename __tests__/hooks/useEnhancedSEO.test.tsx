@@ -107,7 +107,7 @@ describe('useEnhancedSEO', () => {
       const { result } = renderHook(() => useEnhancedSEO(config));
 
       const images = result.current.nextSeoProps.openGraph.images;
-      expect(images[0].url).toBe('https://www.purrify.ca/images/purrify-logo.png');
+      expect(images[0].url).toBe('https://www.purrify.ca/images/Logos/purrify-logo.png');
     });
 
     it('should set article type for blog posts', () => {

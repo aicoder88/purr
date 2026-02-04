@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/activated-carbon-vs-baking-soda.jpg',
+        url: 'https://www.purrify.ca/optimized/activated-carbon-vs-baking-soda-comparison.webp',
         width: 1200,
         height: 800,
         alt: 'Activated carbon vs baking soda comparison for cat litter',
@@ -45,7 +45,7 @@ const articleSchema = {
   inLanguage: 'en-CA',
   headline: 'Activated Carbon vs Baking Soda Cat Litter Deodorizers: Science-Based Comparison',
   description: "Stop wasting money on baking soda. Science reveals activated carbon traps ammonia molecules while baking soda just masks odors. See the 90-day test results.",
-  image: 'https://www.purrify.ca/images/activated-carbon-vs-baking-soda.jpg',
+  image: 'https://www.purrify.ca/optimized/activated-carbon-vs-baking-soda-comparison.webp',
   datePublished: '2024-01-10T10:00:00Z',
   dateModified: new Date().toISOString(),
   author: {
@@ -58,7 +58,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/purrify-logo.png',
+      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
       width: 400,
       height: 400,
     },

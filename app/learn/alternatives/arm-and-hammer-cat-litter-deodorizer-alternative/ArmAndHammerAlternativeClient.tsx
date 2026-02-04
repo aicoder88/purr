@@ -123,7 +123,7 @@ export default function ArmAndHammerAlternativeClient() {
     },
   ];
 
-  const heroImage = '/optimized/baking-soda-alternative.jpg';
+  const heroImage = '/optimized/activated-carbon-vs-baking-soda-comparison.webp';
 
   // Breadcrumb items
   const breadcrumbItems = [

@@ -272,7 +272,7 @@ describe('validateOrganizationSchema', () => {
     '@type': 'Organization',
     name: 'Purrify',
     url: 'https://purrify.ca',
-    logo: 'https://purrify.ca/images/logo.png',
+    logo: 'https://purrify.ca/images/Logos/logo.png',
   };
 
   it('should validate correct organization schema', () => {
@@ -300,7 +300,7 @@ describe('validateOrganizationSchema', () => {
       ...validOrganization,
       logo: {
         '@type': 'ImageObject',
-        url: 'https://purrify.ca/images/logo.png',
+        url: 'https://purrify.ca/images/Logos/logo.png',
         width: '512',
         height: '512',
       },

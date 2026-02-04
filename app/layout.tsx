@@ -89,15 +89,15 @@ export async function generateMetadata(): Promise<Metadata> {
     referrer: 'origin-when-cross-origin',
     icons: {
       icon: [
-        { url: '/images/favicon.png', type: 'image/png' },
-        { url: '/images/icon-32.png', type: 'image/png', sizes: '32x32' },
-        { url: '/images/icon-64.png', type: 'image/png', sizes: '64x64' },
-        { url: '/images/icon-128.png', type: 'image/png', sizes: '128x128' },
+        { url: '/images/Logos/favicon.png', type: 'image/png' },
+        { url: '/images/Logos/icon-32.png', type: 'image/png', sizes: '32x32' },
+        { url: '/images/Logos/icon-64.png', type: 'image/png', sizes: '64x64' },
+        { url: '/images/Logos/icon-128.png', type: 'image/png', sizes: '128x128' },
       ],
       apple: [
-        { url: '/images/apple-touch-icon-root.png', sizes: '180x180' },
+        { url: '/images/Logos/apple-touch-icon.png', sizes: '180x180' },
       ],
-      shortcut: ['/images/favicon.png'],
+      shortcut: ['/images/Logos/favicon.png'],
     },
     manifest: '/manifest.json',
     alternates,
@@ -110,7 +110,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: SITE_DESCRIPTION,
       images: [
         {
-          url: '/images/purrify-logo.png',
+          url: '/images/Logos/purrify-logo.png',
           width: 1200,
           height: 800,
           alt: SITE_NAME,
@@ -124,7 +124,7 @@ export async function generateMetadata(): Promise<Metadata> {
       creator: '@purrify',
       title: `${SITE_NAME} - Cat Litter Odor Control`,
       description: SITE_DESCRIPTION,
-      images: ['/images/purrify-logo.png'],
+      images: ['/images/Logos/purrify-logo.png'],
     },
     robots: {
       index: true,

@@ -28,10 +28,10 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/customer-support-hero.jpg',
+        url: 'https://www.purrify.ca/optimized/90day-hero.webp',
         width: 1200,
         height: 800,
-        alt: `Customer Support - ${SITE_NAME} Help Center`,
+        alt: `Customer Support - Purrify Help Center`,
       },
     ],
   },

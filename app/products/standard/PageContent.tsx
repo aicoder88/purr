@@ -93,7 +93,7 @@ export default function StandardSizePage() {
     schemaData: {
       name: productName,
       description: pageDescription,
-      image: 'https://www.purrify.ca/images/60g.webp',
+      image: 'https://www.purrify.ca/images/products/60g.webp',
       price: numericPrice.toFixed(2),
       priceValidUntil,
       availability: 'https://schema.org/InStock',
@@ -102,7 +102,7 @@ export default function StandardSizePage() {
         count: reviewData.reviewCount,
       },
     },
-    image: 'https://www.purrify.ca/images/60g.webp',
+    image: 'https://www.purrify.ca/images/products/60g.webp',
     keywords: ['cat litter freshener', 'charcoal litter additive', 'cat litter deodorizer', 'odor eliminator'],
   });
 
@@ -111,9 +111,9 @@ export default function StandardSizePage() {
   const autoshipCheckoutUrl = getPaymentLink('standardAutoship') || '#';
 
   // Optimized images
-  const heroImage = "/images/60g.webp";
-  const solutionImage = "/optimized/regular_size_solution.webp";
-  const productImage = "/images/60g.webp";
+  const heroImage = "/images/products/60g.webp";
+  const solutionImage = "/optimized/90day-solution.webp";
+  const productImage = "/images/products/60g.webp";
 
   const benefits = [
     "Ideal for single-cat households",

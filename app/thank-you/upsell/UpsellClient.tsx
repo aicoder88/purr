@@ -241,7 +241,7 @@ export default function UpsellClient({ initialEmail, sessionId }: UpsellClientPr
             <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
             <div className="relative bg-white dark:bg-gray-700 rounded-2xl p-6 shadow-xl">
               <Image
-                src="/images/60g.webp"
+                src="/images/products/60g.webp"
                 alt="Purrify 50g Autoship - 3 Month Supply"
                 width={300}
                 height={300}

@@ -8,11 +8,11 @@ const INPUT_FILE = path.join(__dirname, '../public/purrify text round logo.png')
 const OUTPUTS = [
     { path: '../public/social-logo.png', width: 400, height: 400 },
     { path: '../public/favicon.png', width: 32, height: 32 },
-    { path: '../public/images/favicon.png', width: 32, height: 32 },
-    { path: '../public/images/icon-32.png', width: 32, height: 32 },
-    { path: '../public/images/icon-64.png', width: 64, height: 64 },
-    { path: '../public/images/icon-128.png', width: 128, height: 128 },
-    { path: '../public/images/apple-touch-icon.png', width: 180, height: 180 }
+    { path: '../public/images/Logos/favicon.png', width: 32, height: 32 },
+    { path: '../public/images/Logos/icon-32.png', width: 32, height: 32 },
+    { path: '../public/images/Logos/icon-64.png', width: 64, height: 64 },
+    { path: '../public/images/Logos/icon-128.png', width: 128, height: 128 },
+    { path: '../public/images/Logos/apple-touch-icon.png', width: 180, height: 180 }
 ];
 
 async function generateLogos() {

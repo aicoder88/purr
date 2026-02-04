@@ -88,7 +88,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: SITE_NAME,
       images: [
         {
-          url: '/images/og/ammonia-control.jpg',
+          url: '/optimized/ammonia-hero.webp',
           width: 1200,
           height: 630,
           alt: ammonia.meta.title,
@@ -101,7 +101,7 @@ export async function generateMetadata(): Promise<Metadata> {
       creator: '@purrifyhq',
       title: ammonia.meta.title,
       description: ammonia.meta.description,
-      images: ['/images/og/ammonia-control.jpg'],
+      images: ['/optimized/ammonia-hero.webp'],
     },
     robots: {
       index: true,

@@ -94,7 +94,7 @@ export const UpsellExpiredEmailHTML = ({ customerName = 'Valued Customer', local
           <!-- Header -->
           <tr>
             <td style="padding: 40px 40px 20px; text-align: center;">
-              <img src="https://www.purrify.ca/images/purrify-logo.png" alt="Purrify" style="width: 120px; height: auto;">
+              <img src="https://www.purrify.ca/images/Logos/purrify-logo.png" alt="Purrify" style="width: 120px; height: auto;">
             </td>
           </tr>
 
