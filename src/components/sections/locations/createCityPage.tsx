@@ -522,6 +522,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
               src={heroImage}
               alt={`${profile.name} background`}
               fill
+              sizes="100vw"
               className="object-cover opacity-20 dark:opacity-30"
               priority
             />

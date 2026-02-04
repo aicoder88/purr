@@ -5,6 +5,7 @@
   "installCommand": "pnpm install",
   "outputDirectory": ".next",
   "framework": "nextjs",
+  "regions": ["iad1"],
   "functions": {
     "pages/api/create-checkout-session.ts": {
       "maxDuration": 30
@@ -113,6 +114,88 @@
     {
       "source": "/robots.txt",
       "destination": "/api/robots"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/.env",
+      "destination": "https://http.cat/403",
+      "permanent": true
+    },
+    {
+      "source": "/.env.local",
+      "destination": "https://http.cat/403",
+      "permanent": true
+    },
+    {
+      "source": "/.env.production",
+      "destination": "https://http.cat/403",
+      "permanent": true
+    },
+    {
+      "source": "/index.php",
+      "destination": "https://http.cat/403",
+      "permanent": true
+    },
+    {
+      "source": "/wp-login.php",
+      "destination": "https://http.cat/403",
+      "permanent": true
+    },
+    {
+      "source": "/wp-admin/:path*",
+      "destination": "https://http.cat/403",
+      "permanent": true
+    },
+    {
+      "source": "/xmlrpc.php",
+      "destination": "https://http.cat/403",
+      "permanent": true
+    },
+    {
+      "source": "/wordpress/:path*",
+      "destination": "https://http.cat/403",
+      "permanent": true
+    },
+    {
+      "source": "/wp/:path*",
+      "destination": "https://http.cat/403",
+      "permanent": true
+    },
+    {
+      "source": "/admin.php",
+      "destination": "https://http.cat/403",
+      "permanent": true
+    },
+    {
+      "source": "/config.php",
+      "destination": "https://http.cat/403",
+      "permanent": true
+    },
+    {
+      "source": "/setup.php",
+      "destination": "https://http.cat/403",
+      "permanent": true
+    },
+    {
+      "source": "/phpmyadmin/:path*",
+      "destination": "https://http.cat/403",
+      "permanent": true
+    },
+    {
+      "source": "/.git/:path*",
+      "destination": "https://http.cat/403",
+      "permanent": true
+    },
+    {
+      "source": "/.htaccess",
+      "destination": "https://http.cat/403",
+      "permanent": true
+    },
+    {
+      "source": "/config/:path*",
+      "destination": "https://http.cat/403",
+      "permanent": true
     }
   ],
   "crons": [

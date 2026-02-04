@@ -13,7 +13,7 @@ type TranslationContextType = {
   changeLocale: (locale: Locale) => void;
 };
 
-const TranslationContext = createContext<TranslationContextType | undefined>(undefined);
+export const TranslationContext = createContext<TranslationContextType | undefined>(undefined);
 
 const VALID_LOCALES: Locale[] = ['en', 'fr', 'zh', 'es'];
 
@@ -131,7 +131,7 @@ export function useTranslation() {
       return {
         t: translations.en,
         locale: 'en' as Locale,
-        changeLocale: () => {},
+        changeLocale: () => { },
       };
     }
     throw new Error('useTranslation must be used within a TranslationProvider');

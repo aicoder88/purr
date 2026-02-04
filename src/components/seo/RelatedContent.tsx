@@ -13,6 +13,8 @@ import Image from 'next/image';
 import { getRelatedPages, getClustersForPage } from '@/lib/seo/topic-clusters';
 import { getPageImage } from '@/lib/seo/page-images';
 import { Container } from '@/components/ui/container';
+import { TranslationContext } from '@/lib/translation-context';
+import { useContext } from 'react';
 
 // Default translations for when TranslationProvider is not available
 const defaultTranslations = {
@@ -28,15 +30,21 @@ interface RelatedContentProps {
   className?: string;
 }
 
-// Safe hook that returns default values if TranslationProvider is not available
+// Safe hook that correctly uses context without violating rules of hooks
 function useSafeTranslation() {
-  try {
-    // Dynamic import to avoid the error when TranslationProvider is not present
-    const { useTranslation } = require('@/lib/translation-context');
-    return useTranslation();
-  } catch (e) {
-    return { t: defaultTranslations, locale: 'en' };
+  // Use the exported context directly
+  const context = useContext(TranslationContext);
+
+  // If context is undefined (provider missing), return default values
+  if (context === undefined) {
+    return {
+      t: defaultTranslations,
+      locale: 'en' as const,
+      changeLocale: () => { }
+    };
   }
+
+  return context;
 }
 
 /**

@@ -78,6 +78,7 @@ export default function POSPage() {
                                     src="/images/products/60g.webp"
                                     alt="Purrify Product"
                                     fill
+                                    sizes="(max-width: 768px) 100vw, 400px"
                                     className="object-contain drop-shadow-2xl"
                                 />
                             </div>

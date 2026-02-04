@@ -53,7 +53,7 @@ function extractInternalLinks(content: string, baseUrl: string = ''): string[] {
   for (const pattern of linkPatterns) {
     const matches = content.matchAll(pattern);
     for (const match of matches) {
-      let href = match[1];
+      const href = match[1];
 
       // Skip external links, anchors, and special URLs
       if (

@@ -80,6 +80,7 @@ export default function EmbarrassedGuestsVisitCatLitterSmellPage() {
                 alt="Overcoming cat odor embarrassment"
                 width={1200}
                 height={675}
+                sizes="100vw"
                 className="w-full h-auto"
               />
             </div>

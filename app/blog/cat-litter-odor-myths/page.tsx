@@ -84,7 +84,7 @@ export default function CatLitterOdorMythsPage() {
               <h2 id="myth-1-baking-soda-eliminates-all-cat-odors">Myth #1: Baking Soda Eliminates All Cat Odors</h2>
 
               <figure className="my-8">
-                <Image src="/optimized/ph-scale-ammonia-ghibli.webp" alt="pH Scale showing Baking Soda (Alkaline) vs Ammonia (Alkaline) - they don&apos;t react" width={800} height={450} className="w-full md:w-3/4 mx-auto rounded-xl shadow-lg" />
+                <Image src="/optimized/ph-scale-ammonia-ghibli.webp" alt="pH Scale showing Baking Soda (Alkaline) vs Ammonia (Alkaline) - they don&apos;t react" width={800} height={450} sizes="(max-width: 768px) 100vw, 600px" className="w-full md:w-3/4 mx-auto rounded-xl shadow-lg" />
                 <figcaption className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">Basic Chemistry: You can&apos;t neutralize an alkaline (ammonia) with another alkaline (baking soda).</figcaption>
               </figure>
 
@@ -99,7 +99,7 @@ export default function CatLitterOdorMythsPage() {
               <h2 id="myth-2-coffee-grounds-absorb-litter-box-smell">Myth #2: Coffee Grounds Absorb Litter Box Smell</h2>
 
               <figure className="my-8">
-                <Image src="/optimized/coffee-vs-carbon-ghibli.webp" alt="Comparison: Messy coffee grounds vs clean activated carbon granules" width={800} height={450} className="w-full md:w-3/4 mx-auto rounded-xl shadow-lg" />
+                <Image src="/optimized/coffee-vs-carbon-ghibli.webp" alt="Comparison: Messy coffee grounds vs clean activated carbon granules" width={800} height={450} sizes="(max-width: 768px) 100vw, 600px" className="w-full md:w-3/4 mx-auto rounded-xl shadow-lg" />
                 <figcaption className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2">Left: Coffee grounds make a mess and mask odor. Right: Activated carbon cleanly traps it.</figcaption>
               </figure>
 

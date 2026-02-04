@@ -10,8 +10,8 @@ const typesFile = fs.readFileSync(path.join(__dirname, 'src/translations/types.t
 function extractKeys(content, varName) {
   const keys = [];
   const lines = content.split('\n');
-  let depth = 0;
-  let currentPath = [];
+  const depth = 0;
+  const currentPath = [];
   
   for (const line of lines) {
     // Match object key declarations

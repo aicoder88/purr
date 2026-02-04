@@ -669,5 +669,5 @@ export default async function AmmoniaControlPage() {
   );
 }
 
-// Revalidate every hour
-export const revalidate = 3600;
+// Revalidate daily - content doesn't change frequently
+export const revalidate = 86400;

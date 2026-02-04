@@ -126,6 +126,7 @@ export default function NotFound() {
                   src="/optimized/cat-owner-questions-ghibli-640w.webp"
                   alt="A confused cat owner looking for answers"
                   fill
+                  sizes="(max-width: 768px) 100vw, 400px"
                   className="object-cover"
                   priority
                 />

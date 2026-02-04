@@ -32,6 +32,7 @@ const TestimonialCard = ({ testimonial, index, colorScheme }: TestimonialCardPro
             alt={`Portrait photo of ${testimonial.name}, satisfied Purrify customer`}
             width={64}
             height={64}
+            sizes="64px"
             className="w-full h-full object-cover"
           />
         </div>

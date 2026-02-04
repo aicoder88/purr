@@ -220,7 +220,7 @@ export async function GET(req: Request): Promise<Response> {
     const analyticsData = getMockAnalytics();
 
     // Apply timeframe filtering if specified
-    let filteredData = { ...analyticsData };
+    const filteredData = { ...analyticsData };
     if (timeframe && timeframe !== '30d') {
       // Filter data based on timeframe (7d, 30d, 90d, 1y)
       const days = timeframe === '7d' ? 7 : timeframe === '90d' ? 90 : timeframe === '1y' ? 365 : 30;

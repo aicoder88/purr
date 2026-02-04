@@ -12,7 +12,7 @@ import { RelatedContent } from '@/components/seo/RelatedContent';
 import { ProductFAQ } from '@/components/product/ProductFAQ';
 import { generateFAQSchema } from '@/lib/seo-utils';
 import { getProductPrice, formatProductPrice } from '@/lib/pricing';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { trackTikTokClientEvent } from '@/lib/tiktok-tracking';
 import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
 import { useAggregateReview } from '@/hooks/useAggregateReview';
@@ -22,7 +22,11 @@ export default function TrialSizePage() {
   const { currency } = useCurrency();
   const viewTracked = useRef(false);
 
-  const priceValidUntil = new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+  const [priceValidUntil, setPriceValidUntil] = useState('');
+
+  useEffect(() => {
+    setPriceValidUntil(new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]);
+  }, []);
   const productKey = 'trial';
   const productName = 'Purrify Trial Size (12g)';
 

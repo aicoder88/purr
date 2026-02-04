@@ -92,6 +92,7 @@ export function HowToVideo({
                       alt={step.title}
                       width={200}
                       height={120}
+                      sizes="200px"
                       className="mt-3 w-full h-24 object-cover rounded"
                     />
                   )}
@@ -253,6 +254,7 @@ export function TestimonialVideo({
                 alt={customer.name}
                 width={64}
                 height={64}
+                sizes="64px"
                 className="w-16 h-16 rounded-full object-cover mr-4"
               />
             )}

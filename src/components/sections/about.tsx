@@ -47,6 +47,7 @@ export function About() {
                   alt="Activated carbon granules - natural odor elimination"
                   width={400}
                   height={300}
+                  sizes="(max-width: 768px) 50vw, 200px"
                   className="w-full aspect-[4/3] object-cover transform hover:scale-110 transition duration-500"
                   loading="lazy"
                 />
@@ -57,6 +58,7 @@ export function About() {
                   alt="Microscopic view of activated carbon pores"
                   width={400}
                   height={300}
+                  sizes="(max-width: 768px) 50vw, 200px"
                   className="w-full aspect-[4/3] object-cover transform hover:scale-110 transition duration-500"
                   loading="lazy"
                 />
@@ -67,6 +69,7 @@ export function About() {
                   alt="Happy cat in fresh, clean home environment"
                   width={800}
                   height={400}
+                  sizes="(max-width: 768px) 100vw, 400px"
                   className="w-full aspect-[2/1] object-cover transform hover:scale-110 transition duration-500"
                   loading="lazy"
                 />

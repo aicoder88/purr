@@ -25,6 +25,7 @@ const CustomerAvatar = ({ src, alt }: { src: string; alt: string }) => (
       alt={alt}
       width={40}
       height={40}
+      sizes="40px"
       className="w-full h-full object-cover"
     />
   </div>
@@ -65,6 +66,7 @@ export function CTA() {
             alt={t.homepage.altText.happyCatAlt}
             width={800}
             height={800}
+            sizes="(max-width: 768px) 50vw, 33vw"
             className="absolute top-0 right-0 w-1/3 h-full object-cover opacity-20 rounded-r-3xl"
           />
 

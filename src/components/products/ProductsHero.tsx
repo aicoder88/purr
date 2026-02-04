@@ -141,6 +141,7 @@ export function ProductsHero() {
                                         alt="Purrify Regular Size"
                                         width={640}
                                         height={640}
+                                        sizes="(max-width: 768px) 280px, 350px"
                                         className="w-full h-auto drop-shadow-2xl"
                                         priority
                                     />
@@ -153,6 +154,7 @@ export function ProductsHero() {
                                         alt="Purrify Family Size"
                                         width={640}
                                         height={640}
+                                        sizes="(max-width: 768px) 200px, 260px"
                                         className="w-full h-auto drop-shadow-lg rotate-6"
                                     />
                                 </div>
@@ -164,6 +166,7 @@ export function ProductsHero() {
                                         alt="Purrify Trial Size"
                                         width={640}
                                         height={640}
+                                        sizes="(max-width: 768px) 140px, 180px"
                                         className="w-full h-auto drop-shadow-xl -rotate-12"
                                     />
                                 </div>
