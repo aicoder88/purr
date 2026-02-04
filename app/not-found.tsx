@@ -92,7 +92,7 @@ export default function NotFound() {
           </div>
 
           <motion.h2
-            className="font-heading text-2xl md:text-3xl font-bold text-gray-800 mb-4"
+            className="font-heading text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-200 mb-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -101,12 +101,12 @@ export default function NotFound() {
           </motion.h2>
 
           <motion.p
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
+            className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
           >
-            We couldn&apos;t find the page you&apos;re looking for. 
+            We couldn&apos;t find the page you&apos;re looking for.
             It might have been moved, deleted, or never existed in the first place.
           </motion.p>
         </motion.div>
@@ -120,7 +120,7 @@ export default function NotFound() {
             transition={{ delay: 0.4 }}
             className="relative"
           >
-            <div className="bg-white rounded-3xl shadow-xl overflow-hidden border-4 border-[#E0EFC7]">
+            <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl overflow-hidden border-4 border-[#E0EFC7] dark:border-green-900/30">
               <div className="relative aspect-square">
                 <Image
                   src="/optimized/cat-owner-questions-ghibli-640w.webp"
@@ -132,23 +132,23 @@ export default function NotFound() {
                 />
                 {/* Speech Bubble */}
                 <motion.div
-                  className="absolute top-4 right-4 bg-white rounded-2xl px-4 py-3 shadow-lg border-2 border-[#E0EFC7]"
+                  className="absolute top-4 right-4 bg-white dark:bg-gray-800 rounded-2xl px-4 py-3 shadow-lg border-2 border-[#E0EFC7] dark:border-green-900/30"
                   initial={{ scale: 0, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 0.8, type: 'spring' }}
                 >
-                  <p className="text-sm font-medium text-gray-700">
+                  <p className="text-sm font-medium text-gray-700 dark:text-gray-200">
                     &ldquo;Where did that page go?&rdquo; 🤔
                   </p>
-                  <div className="absolute -bottom-2 left-6 w-4 h-4 bg-white border-b-2 border-r-2 border-[#E0EFC7] rotate-45"></div>
+                  <div className="absolute -bottom-2 left-6 w-4 h-4 bg-white dark:bg-gray-800 border-b-2 border-r-2 border-[#E0EFC7] dark:border-green-900/30 rotate-45"></div>
                 </motion.div>
               </div>
               <div className="p-6 bg-gradient-to-r from-[#FFFFF5] to-white">
                 <h3 className="font-heading text-xl font-bold text-[#5B2EFF] mb-2">
                   Don&apos;t worry, we&apos;ll help you find your way!
                 </h3>
-                <p className="text-gray-600 text-sm">
-                  Just like our activated carbon finds and eliminates odors, 
+                <p className="text-gray-600 dark:text-gray-400 text-sm">
+                  Just like our activated carbon finds and eliminates odors,
                   we&apos;ll help you find what you&apos;re looking for.
                 </p>
               </div>
@@ -177,12 +177,12 @@ export default function NotFound() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5 }}
           >
-            <div className="bg-white rounded-3xl shadow-xl p-6 border border-[#E0EFC7]">
+            <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-6 border border-[#E0EFC7] dark:border-green-900/30">
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-3 bg-gradient-to-br from-[#5B2EFF] to-[#8B5CF6] rounded-xl">
-                  <Search className="w-6 h-6 text-white" />
+                  <Search className="w-6 h-6 text-white dark:text-white" />
                 </div>
-                <h3 className="font-heading text-xl font-bold text-gray-800">
+                <h3 className="font-heading text-xl font-bold text-gray-800 dark:text-gray-200">
                   Where would you like to go?
                 </h3>
               </div>
@@ -199,13 +199,12 @@ export default function NotFound() {
                     >
                       <Link
                         href={page.path}
-                        className={`group relative flex items-start gap-3 p-4 rounded-2xl border-2 transition-all duration-300 ${
-                          isHovered === page.path
+                        className={`group relative flex items-start gap-3 p-4 rounded-2xl border-2 transition-all duration-300 ${isHovered === page.path
                             ? 'border-transparent shadow-lg scale-[1.02]'
                             : 'border-gray-100 hover:border-[#E0EFC7]'
-                        }`}
+                          }`}
                         style={{
-                          background: isHovered === page.path 
+                          background: isHovered === page.path
                             ? `linear-gradient(135deg, ${page.color.includes('from-[#5B2EFF]') ? '#F3F0FF' : page.color.includes('from-[#03E46A]') ? '#F0FDF4' : page.color.includes('from-[#FF3131]') ? '#FEF2F2' : page.color.includes('from-[#F59E0B]') ? '#FFFBEB' : page.color.includes('from-[#EC4899]') ? '#FDF2F8' : '#ECFEFF'} 0%, white 100%)`
                             : 'white'
                         }}
@@ -213,13 +212,13 @@ export default function NotFound() {
                         onMouseLeave={() => setIsHovered(null)}
                       >
                         <div className={`p-2.5 rounded-xl bg-gradient-to-br ${page.color} shadow-md group-hover:scale-110 transition-transform duration-300`}>
-                          <Icon className="w-5 h-5 text-white" />
+                          <Icon className="w-5 h-5 text-white dark:text-white" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-semibold text-gray-800 group-hover:text-[#5B2EFF] transition-colors">
+                          <h4 className="font-semibold text-gray-800 dark:text-gray-200 group-hover:text-[#5B2EFF] dark:group-hover:text-[#8B5CF6] transition-colors">
                             {page.title}
                           </h4>
-                          <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">
+                          <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 leading-relaxed">
                             {page.description}
                           </p>
                         </div>
@@ -238,15 +237,15 @@ export default function NotFound() {
               transition={{ delay: 0.9 }}
             >
               <div className="flex items-start gap-3">
-                <div className="p-2 bg-white rounded-xl shadow-sm">
+                <div className="p-2 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
                   <span className="text-2xl">💡</span>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800 text-sm mb-1">
+                  <h4 className="font-semibold text-gray-800 dark:text-gray-200 text-sm mb-1">
                     Did you know?
                   </h4>
-                  <p className="text-xs text-gray-600 leading-relaxed">
-                    Cats spend 70% of their lives sleeping. Maybe this page is just 
+                  <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Cats spend 70% of their lives sleeping. Maybe this page is just
                     taking a cat nap! In the meantime, try our{' '}
                     <Link href="/science" className="text-[#5B2EFF] hover:underline font-medium">
                       Science page
@@ -266,10 +265,10 @@ export default function NotFound() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
         >
-          <p className="text-gray-500 text-sm">
+          <p className="text-gray-500 dark:text-gray-400 text-sm">
             Still can&apos;t find what you&apos;re looking for?{' '}
-            <Link 
-              href="/contact" 
+            <Link
+              href="/contact"
               className="text-[#5B2EFF] font-medium hover:underline inline-flex items-center gap-1"
             >
               Contact our support team

@@ -41,55 +41,55 @@ const getErrorMessage = (statusCode: number): ErrorInfo => {
       return {
         title: '400 - Bad Request',
         message: 'The request could not be understood by the server due to malformed syntax. Please check the URL and try again.',
-        icon: <AlertCircle className="w-12 h-12 text-orange-500" />
+        icon: <AlertCircle className="w-12 h-12 text-orange-500 dark:text-orange-400" />
       };
     case 401:
       return {
         title: '401 - Unauthorized',
         message: 'You need to authenticate to access this resource. Please sign in to continue.',
-        icon: <Lock className="w-12 h-12 text-orange-500" />
+        icon: <Lock className="w-12 h-12 text-orange-500 dark:text-orange-400" />
       };
     case 403:
       return {
         title: '403 - Access Denied',
         message: 'You do not have permission to access this resource. Contact support if you believe this is an error.',
-        icon: <Lock className="w-12 h-12 text-red-500" />
+        icon: <Lock className="w-12 h-12 text-red-500 dark:text-red-400" />
       };
     case 404:
       return {
         title: '404 - Page Not Found',
         message: 'The page you are looking for might have been moved, deleted, or perhaps never existed.',
-        icon: <FileSearch className="w-12 h-12 text-blue-500" />
+        icon: <FileSearch className="w-12 h-12 text-blue-500 dark:text-blue-400" />
       };
     case 429:
       return {
         title: '429 - Too Many Requests',
         message: 'You have sent too many requests in a given amount of time. Please wait a moment and try again.',
-        icon: <Clock className="w-12 h-12 text-yellow-500" />
+        icon: <Clock className="w-12 h-12 text-yellow-500 dark:text-yellow-400" />
       };
     case 500:
       return {
         title: '500 - Internal Server Error',
         message: 'Something went wrong on our end. Our team has been notified and is working on a fix.',
-        icon: <ServerCrash className="w-12 h-12 text-red-500" />
+        icon: <ServerCrash className="w-12 h-12 text-red-500 dark:text-red-400" />
       };
     case 502:
       return {
         title: '502 - Bad Gateway',
         message: 'We are experiencing temporary issues connecting to our servers. Please try again in a few minutes.',
-        icon: <ServerCrash className="w-12 h-12 text-red-500" />
+        icon: <ServerCrash className="w-12 h-12 text-red-500 dark:text-red-400" />
       };
     case 503:
       return {
         title: '503 - Service Unavailable',
         message: 'The service is temporarily unavailable. We are likely performing maintenance. Please try again later.',
-        icon: <ServerCrash className="w-12 h-12 text-orange-500" />
+        icon: <ServerCrash className="w-12 h-12 text-orange-500 dark:text-orange-400" />
       };
     case 504:
       return {
         title: '504 - Gateway Timeout',
         message: 'The request took too long to complete. This could be due to high traffic. Please try again.',
-        icon: <Clock className="w-12 h-12 text-orange-500" />
+        icon: <Clock className="w-12 h-12 text-orange-500 dark:text-orange-400" />
       };
     default:
       return {
@@ -336,13 +336,12 @@ export default function Error({ error, reset }: ErrorPageProps) {
 
           {/* Error Icon */}
           <div className="flex justify-center mb-6">
-            <div className={`p-4 rounded-full ${
-              isServerError 
-                ? 'bg-red-100 dark:bg-red-900/30' 
-                : isClientError && statusCode !== 404
-                  ? 'bg-orange-100 dark:bg-orange-900/30'
-                  : 'bg-blue-100 dark:bg-blue-900/30'
-            }`}>
+            <div className={`p-4 rounded-full ${isServerError
+              ? 'bg-red-100 dark:bg-red-900/30'
+              : isClientError && statusCode !== 404
+                ? 'bg-orange-100 dark:bg-orange-900/30'
+                : 'bg-blue-100 dark:bg-blue-900/30'
+              }`}>
               {errorInfo.icon}
             </div>
           </div>
@@ -360,11 +359,10 @@ export default function Error({ error, reset }: ErrorPageProps) {
           {/* Status Code Display */}
           <div className="mb-8 inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full">
             <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Error Code:</span>
-            <span className={`text-sm font-bold ${
-              isServerError 
-                ? 'text-red-600 dark:text-red-400' 
-                : 'text-orange-600 dark:text-orange-400'
-            }`}>
+            <span className={`text-sm font-bold ${isServerError
+              ? 'text-red-600 dark:text-red-400'
+              : 'text-orange-600 dark:text-orange-400'
+              }`}>
               {statusCode}
             </span>
           </div>
@@ -406,20 +404,20 @@ export default function Error({ error, reset }: ErrorPageProps) {
               </h2>
               <ul className="text-sm text-orange-700 dark:text-orange-300 space-y-2 text-left max-w-md mx-auto">
                 <li className="flex items-start gap-2">
-                  <span className="text-orange-500 mt-0.5">•</span>
+                  <span className="text-orange-500 dark:text-orange-400 mt-0.5">•</span>
                   <span>Check the URL for any typos</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-orange-500 mt-0.5">•</span>
+                  <span className="text-orange-500 dark:text-orange-400 mt-0.5">•</span>
                   <span>Make sure you are logged in if required</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-orange-500 mt-0.5">•</span>
+                  <span className="text-orange-500 dark:text-orange-400 mt-0.5">•</span>
                   <span>Try accessing the resource again</span>
                 </li>
                 {(statusCode === 401 || statusCode === 403) && (
                   <li className="flex items-start gap-2">
-                    <span className="text-orange-500 mt-0.5">•</span>
+                    <span className="text-orange-500 dark:text-orange-400 mt-0.5">•</span>
                     <span>Sign out and sign back in to refresh your session</span>
                   </li>
                 )}

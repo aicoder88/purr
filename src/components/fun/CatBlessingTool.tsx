@@ -3,6 +3,14 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Cat, X, Volume2, VolumeX, Sparkles, Heart } from "lucide-react";
+import { 
+  playRandomMeow, 
+  playRandomPurr, 
+  startContinuousPurr, 
+  stopPurr,
+  initAudioContext,
+  preloadSounds
+} from "@/lib/sounds/cat-sounds";
 
 interface Blessing {
   text: string;
@@ -11,35 +19,82 @@ interface Blessing {
 }
 
 const BLESSINGS: Blessing[] = [
-  { text: "May your litter box always be fresh!", emoji: "✨", type: "blessing" },
-  { text: "You're purr-fect just the way you are!", emoji: "😺", type: "blessing" },
-  { text: "May your day be filled with cat cuddles!", emoji: "🤗", type: "blessing" },
-  { text: "Your home smells amazing today!", emoji: "🌸", type: "blessing" },
-  { text: "You've been blessed by the Cat Goddess!", emoji: "👑", type: "blessing" },
-  { text: "May your cat's zoomies bring you joy!", emoji: "⚡", type: "blessing" },
-  { text: "Fresh air and happy purrs coming your way!", emoji: "🍃", type: "blessing" },
-  { text: "Your cat thinks you're the best human ever!", emoji: "🏆", type: "blessing" },
-  { text: "May your furniture remain scratch-free!", emoji: "🛋️", type: "blessing" },
-  { text: "Infinite head boops for you!", emoji: "🐱", type: "blessing" },
-  { text: "A cat's purr vibrates at 25-150 Hz, which can promote healing!", emoji: "🔬", type: "fact" },
-  { text: "Cats spend 70% of their lives sleeping!", emoji: "😴", type: "fact" },
-  { text: "A group of cats is called a 'clowder'!", emoji: "👥", type: "fact" },
-  { text: "Cats can make over 100 different sounds!", emoji: "🎵", type: "fact" },
-  { text: "Your cat's nose print is unique, like a human fingerprint!", emoji: "👃", type: "fact" },
-  { text: "Why did the cat sit on the computer? To keep an eye on the mouse!", emoji: "🖱️", type: "joke" },
-  { text: "What's a cat's favorite color? Purr-ple!", emoji: "💜", type: "joke" },
-  { text: "Why don't cats play poker? Too many cheetahs!", emoji: "🃏", type: "joke" },
-  { text: "What do you call a pile of cats? A meow-tain!", emoji: "⛰️", type: "joke" },
-  { text: "Time spent with cats is never wasted!", emoji: "⏰", type: "blessing" },
-];
+  // BLESSINGS - Warm, encouraging, cat-themed positivity
+  { text: "May your litter box always be fresh and your naps always be long!", emoji: "✨", type: "blessing" },
+  { text: "You're absolutely purr-fect just the way you are!", emoji: "😺", type: "blessing" },
+  { text: "May your day be filled with unexpected cat cuddles and warm purrs!", emoji: "🤗", type: "blessing" },
+  { text: "Your home smells fresher than a field of catnip!", emoji: "🌸", type: "blessing" },
+  { text: "You have been officially blessed by the Ancient Cat Goddess!", emoji: "👑", type: "blessing" },
+  { text: "May your cat's 3 AM zoomies bring you unexpected joy and laughter!", emoji: "⚡", type: "blessing" },
+  { text: "Fresh air, happy purrs, and endless treats are coming your way!", emoji: "🍃", type: "blessing" },
+  { text: "Your cat secretly thinks you're the absolute best human in the entire universe!", emoji: "🏆", type: "blessing" },
+  { text: "May your furniture remain mysteriously scratch-free this week!", emoji: "🛋️", type: "blessing" },
+  { text: "Infinite head boops, slow blinks, and toe beans for you!", emoji: "🐱", type: "blessing" },
+  { text: "Time spent with cats is never wasted—and neither is time spent being your amazing self!", emoji: "⏰", type: "blessing" },
+  { text: "May you always find the warmest sunbeam to nap in, just like a wise cat!", emoji: "☀️", type: "blessing" },
+  { text: "Purr-sistence pays off! Keep being your awesome self!", emoji: "💪", type: "blessing" },
+  { text: "May your coffee be hot, your cat be cuddly, and your day be wonderful!", emoji: "☕", type: "blessing" },
+  { text: "You radiate the same energy as a cat who knocked something off a table and doesn't care!", emoji: "😎", type: "blessing" },
+  { text: "May your troubles be light, your treats be plentiful, and your naps be uninterrupted!", emoji: "🌈", type: "blessing" },
+  { text: "You have the confidence of a cat walking across your keyboard during an important meeting!", emoji: "💻", type: "blessing" },
+  { text: "May your heart be light, your lap be warm, and your cat always come when called (yeah right)!", emoji: "💝", type: "blessing" },
+  { text: "You deserve a standing ovation, or at least a slow blink from a discerning feline!", emoji: "👏", type: "blessing" },
+  { text: "May you land on your feet today, just like the graceful cat you are!", emoji: "🐈", type: "blessing" },
+  { text: "The universe is sending you extra soft paws and gentle head-butts today!", emoji: "🌟", type: "blessing" },
+  { text: "May your day have zero hairballs and maximum happiness!", emoji: "🎉", type: "blessing" },
+  { text: "You are as majestic as a cat wearing a tiny crown!", emoji: "👸", type: "blessing" },
+  { text: "May your inbox be empty and your cat's love tank be full!", emoji: "📬", type: "blessing" },
+  { text: "You possess the rare gift of making cats feel understood!", emoji: "🎁", type: "blessing" },
 
-// Enhanced meow pitch configurations
-const MEOW_TYPES = [
-  { baseFreq: 800, length: 0.4, modulation: 0.2 }, // Standard Meow
-  { baseFreq: 1100, length: 0.2, modulation: 0.1 }, // Kitten Mew
-  { baseFreq: 600, length: 0.6, modulation: 0.3 }, // Low/Demand Meow
-  { baseFreq: 950, length: 0.3, modulation: 0.15 }, // Chirp
-  { baseFreq: 750, length: 0.5, modulation: 0.25 }, // Question?
+  // FACTS - Fascinating cat facts that make you go "wow!"
+  { text: "A cat's purr vibrates at 25-150 Hz, a frequency range known to promote healing and bone density!", emoji: "🔬", type: "fact" },
+  { text: "Cats spend an average of 70% of their lives sleeping—that's about 13-16 hours every single day!", emoji: "😴", type: "fact" },
+  { text: "A group of cats is called a 'clowder,' while a group of kittens is called a 'kindle'!", emoji: "👥", type: "fact" },
+  { text: "Cats can make over 100 different sounds, while dogs can only make about 10!", emoji: "🎵", type: "fact" },
+  { text: "Your cat's nose print is as unique as a human fingerprint—no two cats have the same nose pattern!", emoji: "👃", type: "fact" },
+  { text: "Cats have whiskers on their legs as well as their face—these help them sense their surroundings!", emoji: "🐈", type: "fact" },
+  { text: "A cat's brain is 90% similar to a human's brain—we're more alike than different!", emoji: "🧠", type: "fact" },
+  { text: "Cats can jump up to 6 times their body length in a single bound—that's like a human jumping over a house!", emoji: "🦘", type: "fact" },
+  { text: "Ancient Egyptians shaved their eyebrows as a sign of mourning when their cats died!", emoji: "🇪🇬", type: "fact" },
+  { text: "Cats can't taste sweetness—their taste buds lack the receptors for sugary flavors!", emoji: "🍬", type: "fact" },
+  { text: "A cat has 230 bones in its body—humans only have 206!", emoji: "🦴", type: "fact" },
+  { text: "Cats have 32 muscles to control their outer ear—humans only have 6!", emoji: "👂", type: "fact" },
+  { text: "The first cat in space was a French cat named Felicette in 1963—she survived the trip!", emoji: "🚀", type: "fact" },
+  { text: "A cat's heart beats nearly twice as fast as a human heart—110-140 beats per minute!", emoji: "❤️", type: "fact" },
+  { text: "Cats have a third eyelid called a haw that helps protect their eyes and keep them moist!", emoji: "👁️", type: "fact" },
+  { text: "The richest cat in the world inherited $13 million from its owner in Italy!", emoji: "💰", type: "fact" },
+  { text: "Cats spend 30-50% of their waking hours grooming themselves—that's a lot of spa time!", emoji: "🛁", type: "fact" },
+  { text: "A cat's collarbone isn't connected to other bones, allowing them to squeeze through tiny spaces!", emoji: "🦴", type: "fact" },
+  { text: "The oldest known pet cat was found in a 9,500-year-old grave in Cyprus—we've loved cats for millennia!", emoji: "🏺", type: "fact" },
+  { text: "Cats have 5 toes on their front paws but only 4 on their back paws—unless they're polydactyl!", emoji: "🐾", type: "fact" },
+  { text: "A cat's tail helps them balance—it's like their own built-in tightrope walker pole!", emoji: "⚖️", type: "fact" },
+  { text: "Cats can rotate their ears 180 degrees and move each ear independently!", emoji: "👂", type: "fact" },
+  { text: "The longest domestic cat ever measured was 48.5 inches long—that's over 4 feet of cat!", emoji: "📏", type: "fact" },
+
+  // JOKES - Cat puns and humor
+  { text: "Why did the cat sit on the computer? Because it wanted to keep an eye on the mouse!", emoji: "🖱️", type: "joke" },
+  { text: "What's a cat's favorite color? Purr-ple, of course!", emoji: "💜", type: "joke" },
+  { text: "Why don't cats play poker in the jungle? Too many cheetahs!", emoji: "🃏", type: "joke" },
+  { text: "What do you call a pile of cats? A meow-tain!", emoji: "⛰️", type: "joke" },
+  { text: "Your cat is definitely plotting to love you... eventually... maybe... on their terms!", emoji: "😼", type: "joke" },
+  { text: "What do you call a cat who loves to bowl? An alley cat!", emoji: "🎳", type: "joke" },
+  { text: "Why was the cat afraid of the tree? Because of its bark!", emoji: "🌳", type: "joke" },
+  { text: "What's a cat's favorite movie? The Sound of Mewsic!", emoji: "🎬", type: "joke" },
+  { text: "What do you call a cat who wears make-up? Glamour-puss!", emoji: "💄", type: "joke" },
+  { text: "Why did the cat join Instagram? It wanted more followers to ignore!", emoji: "📱", type: "joke" },
+  { text: "What do cats like to eat on a hot day? A mice-cream cone!", emoji: "🍦", type: "joke" },
+  { text: "Why are cats so good at video games? They have nine lives!", emoji: "🎮", type: "joke" },
+  { text: "What's a cat's favorite subject in school? Hiss-tory!", emoji: "📚", type: "joke" },
+  { text: "What do you call a cat that's a beauty influencer? A glam-purr model!", emoji: "📸", type: "joke" },
+  { text: "Why did the cat buy a smartphone? To take more selfies for their cat-stagram!", emoji: "🤳", type: "joke" },
+  { text: "What's a cat's favorite day of the week? Cat-urday!", emoji: "📅", type: "joke" },
+  { text: "What do you call a cat who loves to swim? A catfish!", emoji: "🐟", type: "joke" },
+  { text: "Why don't cats ever tell secrets? Because they might let the cat out of the bag!", emoji: "🤐", type: "joke" },
+  { text: "What's a cat's favorite type of music? Anything with a good beat to nap to!", emoji: "🎵", type: "joke" },
+  { text: "What do you call a cat who meditates? Aware!", emoji: "🧘", type: "joke" },
+  { text: "Why did the cat join the circus? It was a purr-former at heart!", emoji: "🎪", type: "joke" },
+  { text: "What's a cat's favorite breakfast food? Mice Krispies!", emoji: "🥣", type: "joke" },
+  { text: "Why do cats make terrible storytellers? They only have one tail!", emoji: "📖", type: "joke" },
 ];
 
 export function CatBlessingTool() {
@@ -48,106 +103,42 @@ export function CatBlessingTool() {
   const [isMuted, setIsMuted] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [meowCount, setMeowCount] = useState(0);
-  const audioContextRef = useRef<AudioContext | null>(null);
+  const [isPurring, setIsPurring] = useState(false);
+  const [lastSoundWasReal, setLastSoundWasReal] = useState<boolean | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  // Initialize audio context on first user interaction
-  const initAudio = useCallback(() => {
-    if (!audioContextRef.current && typeof window !== "undefined") {
-      try {
-        audioContextRef.current = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
-      } catch {
-        // Audio not supported
-      }
-    }
+  // Preload sounds on mount
+  useEffect(() => {
+    preloadSounds();
   }, []);
 
-  // Enhanced synthesized meow sound
-  const playMeow = useCallback(() => {
-    if (isMuted || !audioContextRef.current) return;
-
-    try {
-      const ctx = audioContextRef.current;
-      const meowType = MEOW_TYPES[Math.floor(Math.random() * MEOW_TYPES.length)];
-
-      const t = ctx.currentTime;
-      const duration = meowType.length;
-
-      // 1. Main Tone (Sawtooth + Triangle mix for body)
-      const osc1 = ctx.createOscillator();
-      const osc2 = ctx.createOscillator();
-      const mainGain = ctx.createGain();
-      const mainFilter = ctx.createBiquadFilter();
-
-      osc1.type = "sawtooth";
-      osc2.type = "triangle";
-
-      // Pitch envelope - meows usually go up then down slightly
-      const startFreq = meowType.baseFreq;
-      const peakFreq = meowType.baseFreq * 1.2;
-      const endFreq = meowType.baseFreq * 0.8;
-
-      osc1.frequency.setValueAtTime(startFreq, t);
-      osc1.frequency.linearRampToValueAtTime(peakFreq, t + duration * 0.3);
-      osc1.frequency.exponentialRampToValueAtTime(endFreq, t + duration);
-
-      osc2.frequency.setValueAtTime(startFreq, t);
-      osc2.frequency.linearRampToValueAtTime(peakFreq, t + duration * 0.3);
-      osc2.frequency.exponentialRampToValueAtTime(endFreq, t + duration);
-
-      // Filter envelope - simulate mouth opening/closing (wow-wow effect)
-      mainFilter.type = "lowpass";
-      mainFilter.Q.value = 3;
-      mainFilter.frequency.setValueAtTime(400, t);
-      mainFilter.frequency.linearRampToValueAtTime(3000, t + duration * 0.4);
-      mainFilter.frequency.exponentialRampToValueAtTime(600, t + duration);
-
-      // Volume envelope
-      mainGain.gain.setValueAtTime(0, t);
-      mainGain.gain.linearRampToValueAtTime(0.3, t + 0.05); // Attack
-      mainGain.gain.exponentialRampToValueAtTime(0.01, t + duration); // Decay
-
-      // 2. Breath/Hiss Noise (for realism)
-      const noiseBufferSize = ctx.sampleRate * duration;
-      const noiseBuffer = ctx.createBuffer(1, noiseBufferSize, ctx.sampleRate);
-      const output = noiseBuffer.getChannelData(0);
-      for (let i = 0; i < noiseBufferSize; i++) {
-        output[i] = Math.random() * 2 - 1;
-      }
-      const noiseSrc = ctx.createBufferSource();
-      noiseSrc.buffer = noiseBuffer;
-      const noiseFilter = ctx.createBiquadFilter();
-      const noiseGain = ctx.createGain();
-
-      noiseFilter.type = "highpass";
-      noiseFilter.frequency.value = 2000;
-      noiseGain.gain.setValueAtTime(0.02, t);
-      noiseGain.gain.exponentialRampToValueAtTime(0.001, t + duration * 0.5);
-
-      // Connect graph
-      osc1.connect(mainFilter);
-      osc2.connect(mainFilter);
-      mainFilter.connect(mainGain);
-      mainGain.connect(ctx.destination);
-
-      noiseSrc.connect(noiseFilter);
-      noiseFilter.connect(noiseGain);
-      noiseGain.connect(ctx.destination);
-
-      // Start
-      osc1.start(t);
-      osc2.start(t);
-      noiseSrc.start(t);
-
-      // Stop
-      osc1.stop(t + duration + 0.1);
-      osc2.stop(t + duration + 0.1);
-      noiseSrc.stop(t + duration + 0.1);
-
-    } catch {
-      // Silent fail
-    }
+  // Play meow sound
+  const playMeow = useCallback(async () => {
+    if (isMuted) return;
+    
+    const usedRealSound = await playRandomMeow();
+    setLastSoundWasReal(usedRealSound);
   }, [isMuted]);
+
+  // Play purr sound
+  const playPurr = useCallback(async () => {
+    if (isMuted) return;
+    
+    await playRandomPurr();
+  }, [isMuted]);
+
+  // Toggle continuous purr
+  const togglePurr = useCallback(async () => {
+    if (isMuted) return;
+    
+    if (isPurring) {
+      stopPurr();
+      setIsPurring(false);
+    } else {
+      await startContinuousPurr();
+      setIsPurring(true);
+    }
+  }, [isMuted, isPurring]);
 
   // Get a random blessing
   const getRandomBlessing = useCallback(() => {
@@ -157,12 +148,12 @@ export function CatBlessingTool() {
 
   // Handle the blessing button click
   const handleBlessing = useCallback(() => {
-    initAudio();
+    initAudioContext();
     playMeow();
     setMeowCount((prev) => prev + 1);
     setCurrentBlessing(getRandomBlessing());
     setIsOpen(true);
-  }, [initAudio, playMeow, getRandomBlessing]);
+  }, [playMeow, getRandomBlessing]);
 
   // Close the blessing popup
   const handleClose = useCallback(() => {
@@ -172,22 +163,34 @@ export function CatBlessingTool() {
 
   // Hide the tool completely
   const handleHide = useCallback(() => {
+    stopPurr();
     setIsVisible(false);
   }, []);
 
-  // Keyboard shortcut - press 'M' to meow
+  // Keyboard shortcut - press 'M' to meow, 'P' to purr
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "m" || e.key === "M") {
         if (!e.ctrlKey && !e.metaKey && !e.altKey) {
           handleBlessing();
         }
+      } else if (e.key === "p" || e.key === "P") {
+        if (!e.ctrlKey && !e.metaKey && !e.altKey) {
+          togglePurr();
+        }
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleBlessing]);
+  }, [handleBlessing, togglePurr]);
+
+  // Stop purr on unmount
+  useEffect(() => {
+    return () => {
+      stopPurr();
+    };
+  }, []);
 
   // Don't render if hidden or reduced motion preference
   if (!isVisible) return null;
@@ -218,8 +221,13 @@ export function CatBlessingTool() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsMuted(!isMuted)}
-            className="p-2 bg-white dark:bg-gray-800 rounded-full shadow-lg text-gray-600 dark:text-gray-300 hover:text-purple-500 transition-colors"
+            className={`p-2 rounded-full shadow-lg transition-colors ${
+              isMuted 
+                ? "bg-red-100 text-red-600 dark:bg-red-900/50 dark:text-red-400" 
+                : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:text-purple-500"
+            }`}
             aria-label={isMuted ? "Unmute meows" : "Mute meows"}
+            title={isMuted ? "Unmute sounds" : "Mute sounds"}
           >
             {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
           </motion.button>
@@ -229,6 +237,7 @@ export function CatBlessingTool() {
             onClick={handleHide}
             className="p-2 bg-white dark:bg-gray-800 rounded-full shadow-lg text-gray-600 dark:text-gray-300 hover:text-red-500 transition-colors"
             aria-label="Hide blessing tool"
+            title="Hide"
           >
             <X className="w-4 h-4" />
           </motion.button>
@@ -265,7 +274,7 @@ export function CatBlessingTool() {
               }}
               transition={{ duration: 0.4 }}
             >
-              <Cat className="w-8 h-8 text-white" />
+              <Cat className="w-8 h-8 text-white dark:text-gray-100" />
             </motion.div>
 
             {/* Sparkle effects */}
@@ -284,7 +293,7 @@ export function CatBlessingTool() {
 
           {/* Pulsing rings */}
           <motion.div
-            className="absolute inset-0 rounded-full border-2 border-purple-400"
+            className="absolute inset-0 rounded-full border-2 border-purple-400 dark:border-purple-500"
             animate={{
               scale: [1, 1.5, 1.5],
               opacity: [0.5, 0, 0],
@@ -316,40 +325,41 @@ export function CatBlessingTool() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.5, y: 50 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="fixed bottom-28 right-6 z-50 max-w-xs"
+            className="fixed bottom-28 right-6 z-50 w-80 sm:w-96 max-w-[90vw]"
           >
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-5 border-2 border-purple-200 dark:border-purple-800 relative overflow-hidden">
+            <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-6 sm:p-8 border-2 border-purple-200 dark:border-purple-800 relative overflow-hidden">
               {/* Background decoration */}
-              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-bl-full -mr-10 -mt-10" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-bl-full -mr-10 -mt-10" />
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-orange-100 to-yellow-100 dark:from-orange-900/20 dark:to-yellow-900/20 rounded-tr-full -ml-8 -mb-8" />
 
               {/* Close button */}
               <button
                 onClick={handleClose}
-                className="absolute top-2 right-2 p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
+                className="absolute top-3 right-3 p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors bg-gray-100 dark:bg-gray-700 rounded-full"
                 aria-label="Close blessing"
               >
-                <X className="w-4 h-4" />
+                <X className="w-5 h-5" />
               </button>
 
               {/* Content */}
               <div className="relative">
                 {/* Type badge */}
-                <div className="flex items-center gap-1 mb-2">
+                <div className="flex items-center gap-2 mb-4">
                   {currentBlessing.type === "blessing" && (
-                    <span className="inline-flex items-center gap-1 text-xs font-medium text-pink-600 dark:text-pink-400 bg-pink-100 dark:bg-pink-900/30 px-2 py-0.5 rounded-full">
-                      <Heart className="w-3 h-3" />
+                    <span className="inline-flex items-center gap-1.5 text-sm font-bold text-pink-600 dark:text-pink-400 bg-pink-100 dark:bg-pink-900/30 px-3 py-1.5 rounded-full">
+                      <Heart className="w-4 h-4" />
                       Blessing
                     </span>
                   )}
                   {currentBlessing.type === "fact" && (
-                    <span className="inline-flex items-center gap-1 text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 px-2 py-0.5 rounded-full">
-                      <Sparkles className="w-3 h-3" />
+                    <span className="inline-flex items-center gap-1.5 text-sm font-bold text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 px-3 py-1.5 rounded-full">
+                      <Sparkles className="w-4 h-4" />
                       Cat Fact
                     </span>
                   )}
                   {currentBlessing.type === "joke" && (
-                    <span className="inline-flex items-center gap-1 text-xs font-medium text-orange-600 dark:text-orange-400 bg-orange-100 dark:bg-orange-900/30 px-2 py-0.5 rounded-full">
-                      <Cat className="w-3 h-3" />
+                    <span className="inline-flex items-center gap-1.5 text-sm font-bold text-orange-600 dark:text-orange-400 bg-orange-100 dark:bg-orange-900/30 px-3 py-1.5 rounded-full">
+                      <Cat className="w-4 h-4" />
                       Meow-Joke
                     </span>
                   )}
@@ -360,31 +370,42 @@ export function CatBlessingTool() {
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.1, type: "spring" }}
-                  className="text-4xl mb-3"
+                  className="text-6xl mb-4"
                 >
                   {currentBlessing.emoji}
                 </motion.div>
 
                 {/* Text */}
-                <p className="text-gray-800 dark:text-gray-200 font-medium leading-relaxed">
+                <p className="text-gray-800 dark:text-gray-200 text-lg sm:text-xl font-semibold leading-relaxed">
                   {currentBlessing.text}
                 </p>
 
                 {/* Action buttons */}
-                <div className="flex gap-2 mt-4">
+                <div className="flex gap-3 mt-6">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={handleBlessing}
-                    className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:shadow-lg transition-shadow"
+                    className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-base font-bold py-3 px-5 rounded-full hover:shadow-lg transition-shadow"
                   >
-                    Another!
+                    Another! 🎲
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={async () => {
+                      await playPurr();
+                    }}
+                    disabled={isMuted}
+                    className="px-5 py-3 text-base font-bold text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed bg-purple-50 dark:bg-purple-900/20 rounded-full"
+                  >
+                    💤 Purr
                   </motion.button>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={handleClose}
-                    className="px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
+                    className="px-5 py-3 text-base font-bold text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
                   >
                     Thanks!
                   </motion.button>
@@ -392,8 +413,8 @@ export function CatBlessingTool() {
               </div>
 
               {/* Cat paw decorations */}
-              <div className="absolute bottom-2 left-2 opacity-20">
-                <Cat className="w-6 h-6 text-purple-400" />
+              <div className="absolute bottom-3 left-3 opacity-20">
+                <Cat className="w-8 h-8 text-purple-400 dark:text-purple-300" />
               </div>
             </div>
           </motion.div>

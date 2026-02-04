@@ -2,10 +2,19 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mouse as MouseIcon, Trophy, RotateCcw } from "lucide-react";
+import { Cat, Trophy, RotateCcw, Zap, Target, Sparkles } from "lucide-react";
+import { playRandomMeow, playRandomPurr, initAudioContext } from "@/lib/sounds/cat-sounds";
 
 const GRID_SIZE = 9;
 const GAME_DURATION = 30;
+
+interface FloatingText {
+    id: number;
+    x: number;
+    y: number;
+    text: string;
+    color: string;
+}
 
 export function WhacAMouse() {
     const [activeHole, setActiveHole] = useState<number | null>(null);
@@ -13,8 +22,14 @@ export function WhacAMouse() {
     const [timeLeft, setTimeLeft] = useState(GAME_DURATION);
     const [isPlaying, setIsPlaying] = useState(false);
     const [highScore, setHighScore] = useState(0);
+    const [combo, setCombo] = useState(0);
+    const [floatingTexts, setFloatingTexts] = useState<FloatingText[]>([]);
+    const [showComboMessage, setShowComboMessage] = useState(false);
+    const [lastHole, setLastHole] = useState<number | null>(null);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
     const moleculeTimerRef = useRef<NodeJS.Timeout | null>(null);
+    const comboTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const floatingIdRef = useRef(0);
 
     // Load high score
     useEffect(() => {
@@ -23,17 +38,29 @@ export function WhacAMouse() {
     }, []);
 
     const startGame = useCallback(() => {
+        initAudioContext();
         setIsPlaying(true);
         setScore(0);
         setTimeLeft(GAME_DURATION);
         setActiveHole(null);
+        setCombo(0);
+        setFloatingTexts([]);
+        setLastHole(null);
+
+        // Play start sound
+        playRandomMeow();
     }, []);
 
     const stopGame = useCallback(() => {
         setIsPlaying(false);
         setActiveHole(null);
+        setCombo(0);
         if (timerRef.current) clearInterval(timerRef.current);
         if (moleculeTimerRef.current) clearTimeout(moleculeTimerRef.current);
+        if (comboTimeoutRef.current) clearTimeout(comboTimeoutRef.current);
+
+        // Play end purr
+        playRandomPurr();
 
         // Update high score
         setHighScore((prev) => {
@@ -66,12 +93,19 @@ export function WhacAMouse() {
         if (!isPlaying) return;
 
         const moveMole = () => {
-            const newHole = Math.floor(Math.random() * GRID_SIZE);
+            // Don't repeat the same hole immediately
+            let newHole;
+            do {
+                newHole = Math.floor(Math.random() * GRID_SIZE);
+            } while (newHole === lastHole && GRID_SIZE > 1);
+
+            setLastHole(newHole);
             setActiveHole(newHole);
 
-            // Speed increases as score goes up
+            // Speed increases as score goes up, with minimum speed cap
             const baseSpeed = 1000;
-            const speedFactor = Math.max(200, baseSpeed - score * 20);
+            const speedBoost = Math.min(score * 25, 500); // Cap the speed increase
+            const speedFactor = Math.max(450, baseSpeed - speedBoost);
 
             moleculeTimerRef.current = setTimeout(moveMole, speedFactor);
         };
@@ -81,38 +115,120 @@ export function WhacAMouse() {
         return () => {
             if (moleculeTimerRef.current) clearTimeout(moleculeTimerRef.current);
         };
-    }, [isPlaying, score]);
+    }, [isPlaying, score, lastHole]);
 
-    const handleWhack = (index: number) => {
+    // Add floating text effect
+    const addFloatingText = useCallback((x: number, y: number, text: string, color: string) => {
+        const id = floatingIdRef.current++;
+        setFloatingTexts(prev => [...prev, { id, x, y, text, color }]);
+
+        setTimeout(() => {
+            setFloatingTexts(prev => prev.filter(ft => ft.id !== id));
+        }, 800);
+    }, []);
+
+    const handleWhack = useCallback((index: number, event?: React.MouseEvent) => {
         if (!isPlaying) return;
 
         if (index === activeHole) {
-            setScore((s) => s + 1);
+            // Successful hit!
+            const newCombo = combo + 1;
+            setCombo(newCombo);
+
+            // Calculate points with combo bonus
+            const basePoints = 1;
+            const comboBonus = Math.floor(newCombo / 3);
+            const points = basePoints + comboBonus;
+
+            setScore(s => s + points);
             setActiveHole(null); // Hide immediately
 
-            // Play sound
-            const audio = new AudioContext();
-            const osc = audio.createOscillator();
-            const gain = audio.createGain();
-            osc.frequency.setValueAtTime(600, audio.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(100, audio.currentTime + 0.1);
-            gain.gain.setValueAtTime(0.1, audio.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.01, audio.currentTime + 0.1);
-            osc.connect(gain);
-            gain.connect(audio.destination);
-            osc.start();
-            osc.stop(audio.currentTime + 0.1);
+            // Play meow sound (varies based on combo)
+            if (newCombo % 5 === 0) {
+                // Special combo meow
+                playRandomMeow();
+                setShowComboMessage(true);
+                setTimeout(() => setShowComboMessage(false), 1000);
+            } else {
+                playRandomMeow();
+            }
+
+            // Show floating text
+            if (event) {
+                const rect = (event.target as HTMLElement).getBoundingClientRect();
+                const text = comboBonus > 0 ? `+${points} 🔥` : `+${points}`;
+                const color = newCombo >= 5 ? '#f59e0b' : newCombo >= 3 ? '#ec4899' : '#8b5cf6';
+                addFloatingText(rect.left + rect.width / 2, rect.top, text, color);
+            }
+
+            // Reset combo timeout
+            if (comboTimeoutRef.current) clearTimeout(comboTimeoutRef.current);
+            comboTimeoutRef.current = setTimeout(() => setCombo(0), 1500);
         } else {
-            setScore((s) => Math.max(0, s - 1)); // Penalty
+            // Missed!
+            setCombo(0);
+            setScore(s => Math.max(0, s - 1));
+
+            if (event) {
+                const rect = (event.target as HTMLElement).getBoundingClientRect();
+                addFloatingText(rect.left + rect.width / 2, rect.top, '-1', '#ef4444');
+            }
         }
+    }, [isPlaying, activeHole, combo, addFloatingText]);
+
+    // Get combo message
+    const getComboMessage = () => {
+        if (combo >= 10) return "🔥 PURRFECT! 🔥";
+        if (combo >= 7) return "😺 AMAZING! 😺";
+        if (combo >= 5) return "✨ AWESOME! ✨";
+        if (combo >= 3) return "🎯 NICE! 🎯";
+        return "";
     };
 
     return (
-        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-purple-200 dark:border-purple-800 w-full max-w-md mx-auto">
+        <div className="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-purple-200 dark:border-purple-800 w-full max-w-md mx-auto overflow-hidden">
+            {/* Floating texts */}
+            <AnimatePresence>
+                {floatingTexts.map(ft => (
+                    <motion.div
+                        key={ft.id}
+                        initial={{ opacity: 1, y: 0, scale: 1 }}
+                        animate={{ opacity: 0, y: -40, scale: 1.2 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="fixed pointer-events-none z-50 text-lg font-bold"
+                        style={{
+                            left: ft.x,
+                            top: ft.y,
+                            color: ft.color,
+                            textShadow: '0 0 10px rgba(0,0,0,0.3)'
+                        }}
+                    >
+                        {ft.text}
+                    </motion.div>
+                ))}
+            </AnimatePresence>
+
+            {/* Combo message overlay */}
+            <AnimatePresence>
+                {showComboMessage && (
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.5 }}
+                        className="absolute inset-0 flex items-center justify-center z-40 pointer-events-none"
+                    >
+                        <div className="bg-gradient-to-r from-orange-400 to-pink-500 text-white text-2xl font-black px-6 py-3 rounded-full shadow-2xl">
+                            {getComboMessage()}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
             <div className="text-center mb-6">
                 <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200 flex items-center justify-center gap-2">
-                    <MouseIcon className="w-6 h-6 text-purple-500" />
-                    Whac-A-Mouse
+                    <Cat className="w-6 h-6 text-purple-500 dark:text-purple-400" />
+                    Catch the Cat!
                 </h2>
 
                 <div className="flex justify-between items-center mt-4 bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
@@ -122,55 +238,104 @@ export function WhacAMouse() {
                     </div>
                     <div className="text-center">
                         <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Time</p>
-                        <p className={`text-xl font-bold ${timeLeft < 10 ? 'text-red-500' : 'text-gray-700 dark:text-gray-300'}`}>
+                        <p className={`text-xl font-bold ${timeLeft < 10 ? 'text-red-500 dark:text-red-400' : 'text-gray-700 dark:text-gray-300'}`}>
                             {timeLeft}s
                         </p>
                     </div>
                     <div className="text-center">
                         <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Best</p>
-                        <p className="text-xl font-bold text-orange-500 flex items-center gap-1">
+                        <p className="text-xl font-bold text-orange-500 dark:text-orange-400 flex items-center gap-1">
                             <Trophy className="w-3 h-3" />
                             {highScore}
                         </p>
                     </div>
                 </div>
+
+                {/* Combo indicator */}
+                {combo > 0 && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="mt-3 flex items-center justify-center gap-2"
+                    >
+                        <div className="flex items-center gap-1 bg-gradient-to-r from-orange-100 to-pink-100 dark:from-orange-900/30 dark:to-pink-900/30 px-3 py-1 rounded-full">
+                            <Zap className="w-4 h-4 text-orange-500 dark:text-orange-400" />
+                            <span className="text-sm font-bold text-orange-600 dark:text-orange-400">
+                                Combo: {combo}
+                            </span>
+                            {combo >= 3 && (
+                                <Sparkles className="w-4 h-4 text-pink-500 dark:text-pink-400" />
+                            )}
+                        </div>
+                    </motion.div>
+                )}
             </div>
 
             <div className="grid grid-cols-3 gap-3 mb-6">
                 {Array.from({ length: GRID_SIZE }).map((_, i) => (
-                    <div
+                    <motion.div
                         key={i}
-                        className="aspect-square bg-purple-100 dark:bg-purple-900/30 rounded-xl relative overflow-hidden cursor-crosshair active:scale-95 transition-transform"
-                        onClick={() => handleWhack(i)}
+                        className="aspect-square bg-gradient-to-b from-purple-100 to-purple-200 dark:from-purple-900/30 dark:to-purple-900/50 rounded-xl relative overflow-hidden cursor-crosshair"
+                        onClick={(e) => handleWhack(i, e)}
+                        whileTap={{ scale: 0.95 }}
                     >
+                        {/* Hole shadow */}
+                        <div className="absolute bottom-0 w-full h-1/3 bg-gradient-to-t from-purple-300/50 to-transparent dark:from-purple-950/50 rounded-b-xl" />
+
+                        {/* Grass tufts */}
+                        <div className="absolute bottom-1 left-2 text-purple-300/30 dark:text-purple-400/30 text-xs">🌿</div>
+                        <div className="absolute bottom-1 right-2 text-purple-300/30 dark:text-purple-400/30 text-xs">🌿</div>
+
                         <AnimatePresence>
                             {activeHole === i && (
                                 <motion.div
-                                    initial={{ y: "100%" }}
-                                    animate={{ y: "10%" }}
-                                    exit={{ y: "100%" }}
-                                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                    initial={{ y: "100%", scale: 0.8 }}
+                                    animate={{ y: "5%", scale: 1 }}
+                                    exit={{ y: "100%", scale: 0.8 }}
+                                    transition={{ type: "spring", stiffness: 400, damping: 15 }}
                                     className="absolute inset-0 flex items-center justify-center"
                                 >
-                                    <MouseIcon className="w-12 h-12 text-gray-600 dark:text-gray-300 fill-current" />
+                                    <div className="relative">
+                                        {/* Cat emoji with glow */}
+                                        <motion.div
+                                            animate={{
+                                                rotate: [-5, 5, -5],
+                                                scale: [1, 1.05, 1]
+                                            }}
+                                            transition={{ duration: 0.5, repeat: Infinity }}
+                                            className="text-5xl filter drop-shadow-lg"
+                                        >
+                                            🐱
+                                        </motion.div>
+
+                                        {/* Eyes */}
+                                        <div className="absolute top-3 left-2 w-1.5 h-1.5 bg-gray-800 dark:bg-gray-200 rounded-full" />
+                                        <div className="absolute top-3 right-2 w-1.5 h-1.5 bg-gray-800 dark:bg-gray-200 rounded-full" />
+                                    </div>
                                 </motion.div>
                             )}
                         </AnimatePresence>
 
-                        {/* Dirt/Hole effect */}
-                        <div className="absolute bottom-0 w-full h-1/4 bg-purple-200 dark:bg-purple-900/50 rounded-b-xl" />
-                    </div>
+                        {/* Target indicator on hover */}
+                        {!isPlaying && (
+                            <div className="absolute inset-0 flex items-center justify-center opacity-10">
+                                <Target className="w-8 h-8 text-purple-400 dark:text-purple-300" />
+                            </div>
+                        )}
+                    </motion.div>
                 ))}
             </div>
 
             <div className="text-center">
                 {!isPlaying ? (
-                    <button
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                         onClick={startGame}
-                        className="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all w-full md:w-auto"
+                        className="bg-gradient-to-r from-purple-500 to-pink-500 text-white dark:text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all w-full md:w-auto"
                     >
-                        {score > 0 ? "Play Again" : "Start Game"}
-                    </button>
+                        {score > 0 ? "Play Again 🎮" : "Start Game 🎮"}
+                    </motion.button>
                 ) : (
                     <button
                         onClick={stopGame}
@@ -181,6 +346,11 @@ export function WhacAMouse() {
                     </button>
                 )}
             </div>
+
+            {/* Instructions */}
+            <p className="text-center text-xs text-gray-400 dark:text-gray-500 mt-4">
+                Click the cats as they pop up! Build combos for bonus points! 🐱
+            </p>
         </div>
     );
 }

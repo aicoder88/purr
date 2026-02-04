@@ -57,13 +57,47 @@ const intlMiddleware = createIntlMiddleware({
   localeDetection: true,
 });
 
+// Countries to block
+const BLOCKED_COUNTRIES = ['SG']; // Singapore
+
+// Blocked User Agents
+const BLOCKED_USER_AGENTS = [
+  'SemrushBot', 'AhrefsBot', 'MJ12bot', 'DotBot',
+  'DataForSeoBot', 'BLEXBot', 'YandexBot', 'BaiduSpider',
+];
+
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const userAgent = request.headers.get('user-agent') || '';
+  // @ts-expect-error - geo is added by Vercel edge runtime
+  const country = request.geo?.country || request.headers.get('cf-ipcountry') || 'unknown';
 
   // Skip middleware for public assets
   if (isPublicPath(pathname)) {
     return NextResponse.next();
+  }
+
+  // Block known bad bots
+  const blockedBot = BLOCKED_USER_AGENTS.find(bot =>
+    userAgent.toLowerCase().includes(bot.toLowerCase())
+  );
+
+  if (blockedBot) {
+    return new NextResponse('Forbidden', {
+      status: 403,
+      headers: { 'X-Blocked-Reason': 'Bot detected' }
+    });
+  }
+
+  // Block specific countries
+  if (BLOCKED_COUNTRIES.includes(country)) {
+    return new NextResponse('Forbidden', {
+      status: 403,
+      headers: {
+        'X-Blocked-Reason': 'Country blocked',
+        'X-Country': country,
+      }
+    });
   }
 
   // Handle i18n for non-API routes

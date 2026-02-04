@@ -15,7 +15,7 @@ const RichTextEditor = dynamic(() => import('@/components/admin/RichTextEditor')
   loading: () => (
     <div className="min-h-[400px] bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center">
       <div className="flex flex-col items-center gap-3">
-        <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-4 border-purple-500 dark:border-purple-400 border-t-transparent rounded-full animate-spin" />
         <span className="text-sm text-gray-500 dark:text-gray-400">Loading editor...</span>
       </div>
     </div>
@@ -30,7 +30,7 @@ const AIContentGenerator = dynamic(() => import('@/components/admin/AIContentGen
   loading: () => (
     <div className="flex items-center justify-center h-64">
       <div className="flex flex-col items-center gap-3">
-        <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-4 border-purple-500 dark:border-purple-400 border-t-transparent rounded-full animate-spin" />
         <span className="text-sm text-gray-500 dark:text-gray-400">Loading AI assistant...</span>
       </div>
     </div>
