@@ -289,7 +289,7 @@ export default function ProductsPage() {
                 "brand": {
                   "@type": "Brand",
                   "name": "Purrify",
-                  "logo": "https://www.purrify.ca/optimized/logo-icon-512.webp"
+                  "logo": "https://www.purrify.ca/optimized/social-logo.webp"
                 },
                 "manufacturer": {
                   "@type": "Organization",

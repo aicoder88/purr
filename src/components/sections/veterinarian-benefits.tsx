@@ -1,7 +1,7 @@
 'use client';
 
-import { Container } from '../ui/container';
-import { useTranslation } from '../../lib/translation-context';
+import { Container } from '@/components/ui/container';
+import { useTranslation } from '@/lib/translation-context';
 
 export function VeterinarianBenefits() {
   const { t } = useTranslation();

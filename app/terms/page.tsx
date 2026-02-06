@@ -1,51 +1,49 @@
-'use client';
-
 import Link from 'next/link';
 import { Home, ChevronRight } from 'lucide-react';
 
 import { Container } from '@/components/ui/container';
 import { SITE_NAME, SITE_DESCRIPTION, CONTACT_INFO } from '@/lib/constants';
-import { useTranslation } from '@/lib/translation-context';
-import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
 import { generateJSONLD } from '@/lib/seo-utils';
+import { Metadata } from 'next';
+
+export const dynamic = 'force-static';
+
+export const metadata: Metadata = {
+  title: `Terms of Service | ${SITE_NAME}`,
+  description: `Terms of Service for ${SITE_NAME}. ${SITE_DESCRIPTION}`,
+};
+
+// Breadcrumb data
+const breadcrumbItems = [
+  { name: 'Home', path: '/' },
+  { name: 'Terms of Service', path: '/terms' },
+];
 
 export default function TermsPage() {
-  const { locale } = useTranslation();
   const pageTitle = `Terms of Service | ${SITE_NAME}`;
   const pageDescription = `Terms of Service for ${SITE_NAME}. ${SITE_DESCRIPTION}`;
 
-  // Use enhanced SEO hook for automated optimization
-  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
-    path: '/terms',
-    title: pageTitle,
+  // Schema data
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: pageTitle,
     description: pageDescription,
-    targetKeyword: 'terms of service',
-    schemaType: 'article',
-    schemaData: {
-      headline: pageTitle,
-      description: pageDescription,
-      datePublished: '2024-01-01T10:00:00Z',
-      dateModified: '2025-05-22T10:00:00Z',
-      category: 'Legal',
-      wordCount: 2000,
+    datePublished: '2024-01-01T10:00:00Z',
+    dateModified: '2025-05-22T10:00:00Z',
+    author: {
+      '@type': 'Organization',
+      name: SITE_NAME,
     },
-    keywords: ['terms of service', 'purrify terms', 'legal terms', 'user agreement'],
-  });
+  };
 
   return (
     <>
-      {/* SEO Meta Tags */}
-      <title>{nextSeoProps.title}</title>
-      <meta name="description" content={nextSeoProps.description} />
-      {nextSeoProps.canonical && <link rel="canonical" href={nextSeoProps.canonical} />}
-      
-      {/* Auto-generated Article Schema with Breadcrumb */}
-      {schema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={generateJSONLD(schema)}
-        />
-      )}
+      {/* Auto-generated Article Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={generateJSONLD(schema)}
+      />
 
       <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
         {/* Breadcrumb Navigation */}
@@ -53,12 +51,12 @@ export default function TermsPage() {
           <Container>
             <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
               <Link
-                href={locale === 'fr' ? '/fr' : '/'}
+                href="/"
                 className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
               >
                 <Home className="w-4 h-4" />
               </Link>
-              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
+              {breadcrumbItems.slice(1).map((item, index, arr) => (
                 <span key={item.path} className="flex items-center">
                   <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
                   {index === arr.length - 1 ? (

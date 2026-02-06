@@ -3,10 +3,10 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Cat, X, Volume2, VolumeX, Sparkles, Heart } from "lucide-react";
-import { 
-  playRandomMeow, 
-  playRandomPurr, 
-  startContinuousPurr, 
+import {
+  playRandomMeow,
+  playRandomPurr,
+  startContinuousPurr,
   stopPurr,
   initAudioContext,
   preloadSounds
@@ -115,7 +115,7 @@ export function CatBlessingTool() {
   // Play meow sound
   const playMeow = useCallback(async () => {
     if (isMuted) return;
-    
+
     const usedRealSound = await playRandomMeow();
     setLastSoundWasReal(usedRealSound);
   }, [isMuted]);
@@ -123,14 +123,14 @@ export function CatBlessingTool() {
   // Play purr sound
   const playPurr = useCallback(async () => {
     if (isMuted) return;
-    
+
     await playRandomPurr();
   }, [isMuted]);
 
   // Toggle continuous purr
   const togglePurr = useCallback(async () => {
     if (isMuted) return;
-    
+
     if (isPurring) {
       stopPurr();
       setIsPurring(false);
@@ -221,11 +221,10 @@ export function CatBlessingTool() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsMuted(!isMuted)}
-            className={`p-2 rounded-full shadow-lg transition-colors ${
-              isMuted 
-                ? "bg-red-100 text-red-600 dark:bg-red-900/50 dark:text-red-400" 
+            className={`p-2 rounded-full shadow-lg transition-colors ${isMuted
+                ? "bg-red-100 text-red-600 dark:bg-red-900/50 dark:text-red-400"
                 : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:text-purple-500"
-            }`}
+              }`}
             aria-label={isMuted ? "Unmute meows" : "Mute meows"}
             title={isMuted ? "Unmute sounds" : "Mute sounds"}
           >
@@ -335,7 +334,7 @@ export function CatBlessingTool() {
               {/* Close button */}
               <button
                 onClick={handleClose}
-                className="absolute top-3 right-3 p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors bg-gray-100 dark:bg-gray-700 rounded-full"
+                className="absolute top-3 right-3 p-2 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 transition-colors bg-gray-100 dark:bg-gray-700 rounded-full"
                 aria-label="Close blessing"
               >
                 <X className="w-5 h-5" />
@@ -450,7 +449,7 @@ function ConfettiEffect({ meowCount }: ConfettiEffectProps) {
     const currentMilestone = Math.floor(meowCount / 10);
     if (meowCount > 0 && currentMilestone > prevMilestoneRef.current) {
       prevMilestoneRef.current = currentMilestone;
-      if (typeof window !== "undefined") {
+      if (typeof globalThis.window !== "undefined") {
         const newItems: ConfettiItem[] = [...Array(20)].map((_, i) => ({
           id: i,
           emoji: ["🎉", "✨", "🐱", "💖", "🌟"][i % 5],
@@ -482,8 +481,8 @@ function ConfettiEffect({ meowCount }: ConfettiEffectProps) {
             <motion.div
               key={`${meowCount}-${item.id}`}
               initial={{
-                x: typeof window !== "undefined" ? window.innerWidth - 100 : 0,
-                y: typeof window !== "undefined" ? window.innerHeight - 100 : 0,
+                x: typeof globalThis.window !== "undefined" ? window.innerWidth - 100 : 0,
+                y: typeof globalThis.window !== "undefined" ? window.innerHeight - 100 : 0,
                 scale: 0,
               }}
               animate={{

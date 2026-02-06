@@ -1,4 +1,4 @@
-import { useTranslation } from "../../lib/translation-context";
+import { useTranslation } from "@/lib/translation-context";
 
 // Default highlight texts for fallback
 const defaultHighlightTexts = [

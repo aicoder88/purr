@@ -316,7 +316,7 @@ export default function Error({ error, reset }: ErrorPageProps) {
           <div className="mb-8 flex justify-center">
             <div className={`relative ${isServerError ? 'animate-pulse' : 'animate-bounce'}`}>
               <Image
-                src="/optimized/logo-text-120.webp"
+                src="/optimized/purrify-logo.webp"
                 alt={`${SITE_NAME} Logo`}
                 width={120}
                 height={120}
@@ -324,7 +324,7 @@ export default function Error({ error, reset }: ErrorPageProps) {
                 priority
               />
               <Image
-                src="/optimized/purrify-dark-mode-logo.webp"
+                src="/optimized/logo-dark.webp"
                 alt={`${SITE_NAME} Logo`}
                 width={120}
                 height={120}

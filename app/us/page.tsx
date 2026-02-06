@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Best Cat Litter Odor Control USA | Shipping Q1 2026 | Purrify',
     description: 'Eliminate cat litter odors at the source. Purrify is coming to the USA in Q1 2026!',
-    images: ['https://www.purrify.ca/images/us/realistic-modern-living.webp'],
+    images: ['https://www.purrify.ca/optimized/realistic-modern-living.webp'],
   },
   alternates: {
     canonical: '/us',
@@ -45,7 +45,7 @@ const structuredData = {
     name: 'Purrify',
   },
   category: 'Pet Supplies > Cat Supplies > Cat Litter Accessories',
-  image: 'https://www.purrify.ca/images/us/realistic-modern-living.webp',
+  image: 'https://www.purrify.ca/optimized/realistic-modern-living.webp',
 };
 
 interface USALandingPageProps {
@@ -154,7 +154,7 @@ export default async function USALandingPage({ params }: USALandingPageProps) {
             <div className="order-1 lg:order-2 relative">
               <div className="relative rounded-3xl overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.3)] group">
                 <Image
-                  src="/images/us/realistic-modern-living.webp"
+                  src="/optimized/realistic-modern-living.webp"
                   alt="Fresh American living room with happy cat"
                   width={800}
                   height={1000}
@@ -182,7 +182,7 @@ export default async function USALandingPage({ params }: USALandingPageProps) {
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div>
                 <Image
-                  src="/images/us/ghibli-us-home.webp"
+                  src="/optimized/ghibli-us-home.webp"
                   alt="Cozy Ghibli style home with cat"
                   width={600}
                   height={600}
@@ -267,7 +267,7 @@ export default async function USALandingPage({ params }: USALandingPageProps) {
               </div>
               <div className="order-1 lg:order-2">
                 <Image
-                  src="/images/us/ghibli-odor-science.webp"
+                  src="/optimized/ghibli-odor-science.webp"
                   alt="Ghibli science showing odor capture"
                   width={600}
                   height={600}
@@ -309,7 +309,7 @@ export default async function USALandingPage({ params }: USALandingPageProps) {
                 </div>
                 <div className="relative min-h-[400px]">
                   <Image
-                    src="/images/us/realistic-carbon-effect.webp"
+                    src="/optimized/realistic-carbon-effect.webp"
                     alt="Realistic macro view of carbon action"
                     fill
                     className="object-cover transition-transform duration-[2s] hover:scale-110"
@@ -372,7 +372,7 @@ export default async function USALandingPage({ params }: USALandingPageProps) {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link
                   href="/products"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-[#FF3131] px-10 py-5 rounded-full font-bold text-xl hover:bg-gray-100 transition-all shadow-xl hover:-translate-y-1"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white dark:bg-gray-100 text-[#FF3131] px-10 py-5 rounded-full font-bold text-xl hover:bg-gray-100 dark:hover:bg-gray-200 transition-all shadow-xl hover:-translate-y-1"
                 >
                   Join the Waitlist Now
                 </Link>

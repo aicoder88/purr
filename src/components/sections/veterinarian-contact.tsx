@@ -1,11 +1,11 @@
 "use client";
 
-import { Container } from '../ui/container';
-import { Button } from '../ui/button';
+import { Container } from '@/components/ui/container';
+import { Button } from '@/components/ui/button';
 
 
-import { useTranslation } from '../../lib/translation-context';
-import { CONTACT_INFO } from '../../lib/constants';
+import { useTranslation } from '@/lib/translation-context';
+import { CONTACT_INFO } from '@/lib/constants';
 import { useState } from 'react';
 
 export function VeterinarianContact() {
@@ -97,7 +97,7 @@ export function VeterinarianContact() {
                       required
                       value={formData.clinicName}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-[#10B981] focus:border-transparent"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#10B981] focus:border-transparent"
                       placeholder={t.veterinarians?.contact?.form?.clinicNamePlaceholder || 'Your Veterinary Clinic'}
                     />
                   </div>
@@ -112,7 +112,7 @@ export function VeterinarianContact() {
                       required
                       value={formData.contactName}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-[#10B981] focus:border-transparent"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#10B981] focus:border-transparent"
                       placeholder={t.veterinarians?.contact?.form?.contactNamePlaceholder || 'Dr. Jane Smith'}
                     />
                   </div>
@@ -130,7 +130,7 @@ export function VeterinarianContact() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-[#10B981] focus:border-transparent"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#10B981] focus:border-transparent"
                       placeholder={t.veterinarians?.contact?.form?.emailPlaceholder || 'clinic@example.com'}
                     />
                   </div>
@@ -144,7 +144,7 @@ export function VeterinarianContact() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-[#10B981] focus:border-transparent"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#10B981] focus:border-transparent"
                       placeholder={t.veterinarians?.contact?.form?.phonePlaceholder || '(555) 123-4567'}
                     />
                   </div>
@@ -160,7 +160,7 @@ export function VeterinarianContact() {
                       name="clinicSize"
                       value={formData.clinicSize}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-[#10B981] focus:border-transparent"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#10B981] focus:border-transparent"
                     >
                       <option value="">{t.veterinarians?.contact?.form?.clinicSizePlaceholder || 'Select size...'}</option>
                       <option value="solo">{t.veterinarians?.contact?.form?.clinicSizeOptions?.solo || 'Solo Practice (1 vet)'}</option>
@@ -179,7 +179,7 @@ export function VeterinarianContact() {
                       name="interest"
                       value={formData.interest}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-[#10B981] focus:border-transparent"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#10B981] focus:border-transparent"
                     >
                       <option value="">{t.veterinarians?.contact?.form?.interestPlaceholder || 'Select interest...'}</option>
                       <option value="samples">{t.veterinarians?.contact?.form?.interestOptions?.samples || 'Free Sample Kit'}</option>
@@ -200,7 +200,7 @@ export function VeterinarianContact() {
                     rows={4}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-[#10B981] focus:border-transparent resize-none"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#10B981] focus:border-transparent resize-none"
                     placeholder={t.veterinarians?.contact?.form?.messagePlaceholder || 'Tell us about your clinic and how you\'d like to work with Purrify...'}
                   />
                 </div>

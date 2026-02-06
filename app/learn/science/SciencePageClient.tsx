@@ -17,54 +17,54 @@ export default function SciencePageClient() {
     title: fact.title,
     description: fact.description
   })) || [
-    {
-      icon: Atom,
-      title: "Engineered Pore Architecture",
-      description: "Working with research scientists, we optimized the exact ratio of micropores (< 2nm), mesopores (2-50nm), and macropores (> 50nm) to create the perfect trap for cat litter odor molecules."
-    },
-    {
-      icon: Microscope,
-      title: "Ammonia Capture Mastery",
-      description: "Ammonia molecules (NH₃) from cat urine are tiny—only 0.26 nanometers. Our micropore-rich structure creates millions of perfectly sized capture sites that lock away ammonia before you can smell it."
-    },
-    {
-      icon: Zap,
-      title: "Mercaptan Elimination",
-      description: "Mercaptans (sulfur compounds) give feces that distinctive rotten-egg smell. Our mesopore channels are specifically sized to trap these larger, more complex molecules permanently."
-    },
-    {
-      icon: Shield,
-      title: "Triple-Pore Synergy",
-      description: "Macropores act as highways delivering odor molecules deep into the carbon. Mesopores catch medium-sized sulfur compounds. Micropores trap the smallest ammonia molecules. Nothing escapes."
-    }
-  ];
+      {
+        icon: Atom,
+        title: "Engineered Pore Architecture",
+        description: "Working with research scientists, we optimized the exact ratio of micropores (< 2nm), mesopores (2-50nm), and macropores (> 50nm) to create the perfect trap for cat litter odor molecules."
+      },
+      {
+        icon: Microscope,
+        title: "Ammonia Capture Mastery",
+        description: "Ammonia molecules (NH₃) from cat urine are tiny—only 0.26 nanometers. Our micropore-rich structure creates millions of perfectly sized capture sites that lock away ammonia before you can smell it."
+      },
+      {
+        icon: Zap,
+        title: "Mercaptan Elimination",
+        description: "Mercaptans (sulfur compounds) give feces that distinctive rotten-egg smell. Our mesopore channels are specifically sized to trap these larger, more complex molecules permanently."
+      },
+      {
+        icon: Shield,
+        title: "Triple-Pore Synergy",
+        description: "Macropores act as highways delivering odor molecules deep into the carbon. Mesopores catch medium-sized sulfur compounds. Micropores trap the smallest ammonia molecules. Nothing escapes."
+      }
+    ];
 
   const processSteps = t.sciencePage?.processTimeline.steps.map((step, index) => ({
     step: String(index + 1),
     title: step.title,
     description: step.description
   })) || [
-    {
-      step: "1",
-      title: "The Culprits: Ammonia & Mercaptans",
-      description: "Cat urine breaks down into ammonia (NH₃)—that sharp, eye-watering smell. Feces releases mercaptans—sulfur compounds that smell like rotten eggs or sewage. These are the molecules we engineered Purrify to capture."
-    },
-    {
-      step: "2",
-      title: "Macropores: The Express Lanes",
-      description: "Large macropores (> 50nm) act as highways, rapidly transporting odor molecules deep into the carbon structure. Think of them as the entry points that prevent bottlenecks."
-    },
-    {
-      step: "3",
-      title: "Mesopores: The Mercaptan Traps",
-      description: "Medium-sized mesopores (2-50nm) are perfectly sized to capture mercaptans and other sulfur compounds from feces. These pores create a tight grip that won't let go."
-    },
-    {
-      step: "4",
-      title: "Micropores: The Ammonia Eliminators",
-      description: "Tiny micropores (< 2nm) are optimized for ammonia's 0.26nm size. With millions of these capture sites per gram, ammonia molecules get locked away permanently before you can smell them."
-    }
-  ];
+      {
+        step: "1",
+        title: "The Culprits: Ammonia & Mercaptans",
+        description: "Cat urine breaks down into ammonia (NH₃)—that sharp, eye-watering smell. Feces releases mercaptans—sulfur compounds that smell like rotten eggs or sewage. These are the molecules we engineered Purrify to capture."
+      },
+      {
+        step: "2",
+        title: "Macropores: The Express Lanes",
+        description: "Large macropores (> 50nm) act as highways, rapidly transporting odor molecules deep into the carbon structure. Think of them as the entry points that prevent bottlenecks."
+      },
+      {
+        step: "3",
+        title: "Mesopores: The Mercaptan Traps",
+        description: "Medium-sized mesopores (2-50nm) are perfectly sized to capture mercaptans and other sulfur compounds from feces. These pores create a tight grip that won't let go."
+      },
+      {
+        step: "4",
+        title: "Micropores: The Ammonia Eliminators",
+        description: "Tiny micropores (< 2nm) are optimized for ammonia's 0.26nm size. With millions of these capture sites per gram, ammonia molecules get locked away permanently before you can smell them."
+      }
+    ];
 
   // Breadcrumb items
   const breadcrumbItems = [
@@ -626,7 +626,7 @@ export default function SciencePageClient() {
                 </Button>
               </Link>
               <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`}>
-                <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-white dark:text-gray-100 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-[#5B2EFF] transition-colors">
+                <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-white dark:text-gray-100 bg-transparent hover:bg-white/10 dark:hover:bg-gray-700/50 transition-colors">
                   {t.sciencePage?.researchSection.buttons.learnMore || ""}
                 </Button>
               </Link>

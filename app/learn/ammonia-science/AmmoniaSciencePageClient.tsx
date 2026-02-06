@@ -174,7 +174,7 @@ export default function AmmoniaSciencePageClient() {
             The Bacterial Process: A Timeline
           </h2>
 
-          <div className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-xl p-6 border-l-4 border-amber-500 mb-8">
+          <div className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-xl p-6 border-l-4 border-amber-500 dark:border-amber-400 mb-8">
             <div className="flex items-start gap-4">
               <span className="text-3xl">📊</span>
               <div>
@@ -205,7 +205,7 @@ export default function AmmoniaSciencePageClient() {
 
             <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-l-4 border-yellow-500 dark:border-yellow-400">
               <div className="flex items-center gap-4 mb-3">
-                <span className="bg-yellow-500 text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold">2-6 Hours</span>
+                <span className="bg-yellow-500 dark:bg-yellow-600 text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold">2-6 Hours</span>
                 <h3 className="font-bold text-gray-900 dark:text-gray-100">Bacterial Colonization</h3>
               </div>
               <p className="text-gray-700 dark:text-gray-200">
@@ -216,7 +216,7 @@ export default function AmmoniaSciencePageClient() {
 
             <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-l-4 border-orange-500 dark:border-orange-400">
               <div className="flex items-center gap-4 mb-3">
-                <span className="bg-orange-500 text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold">6-24 Hours</span>
+                <span className="bg-orange-500 dark:bg-orange-600 text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold">6-24 Hours</span>
                 <h3 className="font-bold text-gray-900 dark:text-gray-100">Ammonia Buildup</h3>
               </div>
               <p className="text-gray-700 dark:text-gray-200">
@@ -325,11 +325,11 @@ export default function AmmoniaSciencePageClient() {
                 <span className="text-gray-700 dark:text-gray-200">Detection threshold - smell is noticeable</span>
               </div>
               <div className="flex items-center gap-4">
-                <span className="bg-yellow-500 text-white dark:text-gray-100 px-3 py-1 rounded text-sm font-bold w-24 text-center">25-50 ppm</span>
+                <span className="bg-yellow-500 dark:bg-yellow-600 text-white dark:text-gray-100 px-3 py-1 rounded text-sm font-bold w-24 text-center">25-50 ppm</span>
                 <span className="text-gray-700 dark:text-gray-200">Eye and respiratory irritation begins</span>
               </div>
               <div className="flex items-center gap-4">
-                <span className="bg-orange-500 text-white dark:text-gray-100 px-3 py-1 rounded text-sm font-bold w-24 text-center">50-100 ppm</span>
+                <span className="bg-orange-500 dark:bg-orange-600 text-white dark:text-gray-100 px-3 py-1 rounded text-sm font-bold w-24 text-center">50-100 ppm</span>
                 <span className="text-gray-700 dark:text-gray-200">Significant irritation, headaches, nausea</span>
               </div>
               <div className="flex items-center gap-4">

@@ -11,7 +11,7 @@ import { captureUTM } from '@/lib/tracking/utm';
  */
 function useSuppressThirdPartyErrors() {
     useEffect(() => {
-        if (typeof window === 'undefined') return;
+        if (typeof globalThis.window === 'undefined') return;
 
         const handleUnhandledRejection = (event: PromiseRejectionEvent) => {
             const errorMessage = event.reason?.message || String(event.reason);
@@ -49,7 +49,7 @@ function useSuppressThirdPartyErrors() {
  */
 function useServiceWorkerCleanup() {
     useEffect(() => {
-        if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+        if (typeof globalThis.window !== 'undefined' && 'serviceWorker' in navigator) {
             navigator.serviceWorker.getRegistrations().then((registrations) => {
                 for (const registration of registrations) {
                     registration.unregister();

@@ -35,15 +35,15 @@ function DefaultErrorFallback({ error, retry }: { error: Error; retry: () => voi
         <div className="w-20 h-20 mx-auto mb-6 bg-red-100 dark:bg-red-900/40 rounded-full flex items-center justify-center">
           <AlertTriangle className="w-10 h-10 text-red-600 dark:text-red-400" />
         </div>
-        
+
         <h2 className="font-heading text-2xl font-bold text-red-800 dark:text-red-200 mb-3">
           Something went wrong
         </h2>
-        
+
         <p className="text-red-600 dark:text-red-300 mb-6 leading-relaxed">
           We apologize for the inconvenience. Our team has been notified and is working to resolve this issue.
         </p>
-        
+
         <div className="space-y-3 mb-6">
           <button
             onClick={retry}
@@ -52,30 +52,30 @@ function DefaultErrorFallback({ error, retry }: { error: Error; retry: () => voi
             <RefreshCw className="w-4 h-4" />
             Try Again
           </button>
-          
+
           <div className="flex gap-3">
             <button
               onClick={navigateHome}
-              className="flex-1 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+              className="flex-1 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100 font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
             >
               <Home className="w-4 h-4" />
               Home
             </button>
-            
+
             <button
               onClick={navigateSupport}
-              className="flex-1 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+              className="flex-1 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100 font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
             >
               <Mail className="w-4 h-4" />
               Support
             </button>
           </div>
         </div>
-        
+
         <div className="text-xs text-red-500 dark:text-red-400 bg-red-100 dark:bg-red-900/30 px-3 py-2 rounded-lg">
           Error ID: {errorId}
         </div>
-        
+
         {process.env.NODE_ENV === 'development' && error && (
           <details className="mt-6 text-left">
             <summary className="text-sm text-red-700 dark:text-red-300 cursor-pointer hover:text-red-800 dark:hover:text-red-200">
@@ -103,8 +103,8 @@ export class ErrorBoundary extends React.Component<Props, State> {
   }
 
   static getDerivedStateFromError(error: Error): State {
-    return { 
-      hasError: true, 
+    return {
+      hasError: true,
       error,
       errorId: Math.random().toString(36).substring(2, 15)
     };
@@ -181,7 +181,7 @@ export function withErrorBoundary<P extends object>(
       <Component {...props} />
     </ErrorBoundary>
   );
-  
+
   WrappedComponent.displayName = `withErrorBoundary(${Component.displayName || Component.name})`;
   return WrappedComponent;
 }

@@ -47,7 +47,7 @@ export function ExitIntentPopup({
 
   // Check if should show popup
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof globalThis.window === 'undefined') return;
 
     // Check if already shown or subscribed
     const hasShown = localStorage.getItem(STORAGE_KEY);
@@ -68,7 +68,7 @@ export function ExitIntentPopup({
 
   // Desktop: Mouse-out detection
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof globalThis.window === 'undefined') return;
 
     const handleMouseOut = (e: MouseEvent) => {
       // Only trigger if mouse leaves through the top of the page
@@ -90,7 +90,7 @@ export function ExitIntentPopup({
 
   // Mobile: Scroll-up detection (aggressive scroll back up = leaving)
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof globalThis.window === 'undefined') return;
 
     let lastScrollY = window.scrollY;
     let scrollUpDistance = 0;

@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/replacements/cat-owner-questions-ghibli.png',
+        url: 'https://www.purrify.ca/optimized/cat-owner-questions-ghibli.webp',
         width: 1200,
         height: 800,
         alt: 'Cat owner with questions about Purrify activated carbon cat litter additive',

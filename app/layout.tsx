@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import '../src/index.css';
-import { getMessages } from 'next-intl/server';
-import { getUserLocale } from '@/lib/locale';
+import { defaultLocale } from '@/i18n/config';
+import { LocaleDetector } from '@/components/LocaleDetector';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { Providers } from './providers';
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, SOCIAL_LINKS } from '@/lib/constants';
@@ -39,7 +39,7 @@ const SUPPORTED_LOCALES = ['en', 'fr', 'zh', 'es'];
  * Includes: OpenGraph, Twitter Cards, Robots, Icons, and Hreflang alternates
  */
 export async function generateMetadata(): Promise<Metadata> {
-  const locale = await getUserLocale();
+  const locale = defaultLocale;
   const ogLocale = OG_LOCALE_MAP[locale] ?? 'en_CA';
   const baseUrl = SITE_URL;
 
@@ -161,18 +161,23 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const locale = await getUserLocale();
-  const messages = await getMessages();
+  // Use default locale for static generation (SSG)
+  const locale = defaultLocale;
+
+  // Load messages directly to avoid dynamic request config using cookies
+  const messages = (await import(`@/i18n/messages/${locale}.json`)).default;
 
   return (
     <html lang={locale} className={inter.variable} suppressHydrationWarning>
       <body className="font-sans">
         <Providers locale={locale} messages={messages}>
+          <LocaleDetector />
           <AppLayout>
             {children}
           </AppLayout>
+
         </Providers>
       </body>
-    </html>
+    </html >
   );
 }

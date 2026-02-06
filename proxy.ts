@@ -23,6 +23,7 @@ const PUBLIC_PATHS = [
   '/images/',
   '/optimized/',
   '/fonts/',
+  '/manifest.json',
 ];
 
 // Define paths that should bypass i18n (API routes, etc.)
@@ -76,6 +77,16 @@ export async function proxy(request: NextRequest) {
   if (isPublicPath(pathname)) {
     return NextResponse.next();
   }
+
+  // FAST PATH: Skip expensive checks for non-admin routes
+  // This avoids bot detection overhead on every page view
+  if (!pathname.startsWith('/admin') && !pathname.startsWith('/affiliate')) {
+    const response = NextResponse.next();
+    response.headers.set('X-Frame-Options', 'SAMEORIGIN');
+    response.headers.set('X-Content-Type-Options', 'nosniff');
+    return response;
+  }
+
 
   // Block known bad bots
   const blockedBot = BLOCKED_USER_AGENTS.find(bot =>

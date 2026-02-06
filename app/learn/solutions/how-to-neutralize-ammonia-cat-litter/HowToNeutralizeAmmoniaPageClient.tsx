@@ -223,7 +223,7 @@ export default function HowToNeutralizeAmmoniaPageClient() {
           {/* Method 2 */}
           <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 mb-6">
             <div className="flex items-center gap-3 mb-4">
-              <span className="bg-gray-400 dark:bg-gray-500 text-white dark:text-gray-100 font-bold px-3 py-1 rounded-full text-sm">#2</span>
+              <span className="bg-gray-600 dark:bg-gray-500 text-white dark:text-gray-100 font-bold px-3 py-1 rounded-full text-sm">#2</span>
               <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100">
                 Baking Soda (Sodium Bicarbonate)
               </h3>
@@ -254,7 +254,7 @@ export default function HowToNeutralizeAmmoniaPageClient() {
           {/* Method 3 */}
           <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 mb-6">
             <div className="flex items-center gap-3 mb-4">
-              <span className="bg-gray-400 dark:bg-gray-500 text-white dark:text-gray-100 font-bold px-3 py-1 rounded-full text-sm">#3</span>
+              <span className="bg-gray-600 dark:bg-gray-500 text-white dark:text-gray-100 font-bold px-3 py-1 rounded-full text-sm">#3</span>
               <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100">
                 Zeolite Additives
               </h3>
@@ -284,7 +284,7 @@ export default function HowToNeutralizeAmmoniaPageClient() {
           {/* Method 4 */}
           <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 mb-6">
             <div className="flex items-center gap-3 mb-4">
-              <span className="bg-gray-400 dark:bg-gray-500 text-white dark:text-gray-100 font-bold px-3 py-1 rounded-full text-sm">#4</span>
+              <span className="bg-gray-600 dark:bg-gray-500 text-white dark:text-gray-100 font-bold px-3 py-1 rounded-full text-sm">#4</span>
               <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100">
                 More Frequent Scooping
               </h3>

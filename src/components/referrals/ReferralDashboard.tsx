@@ -1,10 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Share2, Copy, Trophy, Gift, Users, TrendingUp, Star, Mail, MessageSquare, Facebook, Twitter, Send, Linkedin } from 'lucide-react';
-import { Button } from '../ui/button';
-import { Card } from '../ui/card';
-import { Badge } from '../ui/badge';
-import { useToast } from '../ui/use-toast';
-import { cn } from '../../lib/utils';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { useToast } from '@/components/ui/use-toast';
+import { cn } from '@/lib/utils';
 
 interface ReferralStats {
   userId: string;

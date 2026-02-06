@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Shield, CheckCircle } from 'lucide-react';
-import { Button } from '../ui/button';
-import { useTranslation } from '../../lib/translation-context';
+import { Button } from '@/components/ui/button';
+import { useTranslation } from '@/lib/translation-context';
 import { formatCurrencyValue } from '@/lib/pricing';
 
 // Type declarations for Apple Pay and Google Pay

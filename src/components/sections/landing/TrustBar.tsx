@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { Star } from 'lucide-react';
 import { Container } from '@/components/ui/container';
-import { useTranslation } from '../../../lib/translation-context';
+import { useTranslation } from '@/lib/translation-context';
 
 interface TrustBarProps {
   customerCount: string;

@@ -1,4 +1,4 @@
- 
+
 import { useState, useEffect } from 'react';
 import { Share2, Copy, DollarSign, Trophy, Gift, Users, Star, Crown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -126,7 +126,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
     // Generate referral code and link
     const code = generateReferralCode(userId);
     const link = `https://www.purrify.ca/?ref=${code}&discount=FRIEND25`;
-    
+
     setReferralCode(code);
     setReferralLink(link);
 
@@ -138,11 +138,11 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
     // Generate a user-friendly referral code
     const adjectives = ['HAPPY', 'FRESH', 'CLEAN', 'PURE', 'SWEET'];
     const nouns = ['CAT', 'KITTY', 'PAWS', 'PURR', 'MEOW'];
-    
+
     const adj = adjectives[Math.floor(Math.random() * adjectives.length)];
     const noun = nouns[Math.floor(Math.random() * nouns.length)];
     const num = Math.floor(Math.random() * 99) + 1;
-    
+
     return `${adj}${noun}${num}`;
   };
 
@@ -163,7 +163,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
       await navigator.clipboard.writeText(text);
       setCopiedLink(true);
       setTimeout(() => setCopiedLink(false), 2000);
-      
+
       // Track copy event
       if (window.gtag) {
         window.gtag('event', 'referral_link_copied', {
@@ -179,9 +179,9 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
   const shareToSocial = (platform: keyof typeof SOCIAL_TEMPLATES) => {
     const template = SOCIAL_TEMPLATES[platform];
     const fullText = `${template.text} ${referralLink}`;
-    
+
     let shareUrl = '';
-    
+
     switch (platform) {
       case 'facebook':
         shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(referralLink)}&quote=${encodeURIComponent(fullText)}`;
@@ -234,7 +234,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
   const calculateProgress = (): number => {
     const nextTier = getNextTier();
     if (!nextTier) return 100;
-    
+
     const progress = (stats.totalReferrals / nextTier.requiresReferrals) * 100;
     return Math.min(progress, 100);
   };
@@ -266,7 +266,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
             </div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardContent className="pt-6">
             <div className="text-center">
@@ -276,7 +276,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
             </div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardContent className="pt-6">
             <div className="text-center">
@@ -286,7 +286,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
             </div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardContent className="pt-6">
             <div className="text-center">
@@ -354,7 +354,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
               <CardContent className="space-y-4">
                 <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
                   <p className="font-mono text-sm break-all mb-2">{referralLink}</p>
-                  <Button 
+                  <Button
                     onClick={() => copyToClipboard(referralLink)}
                     className="w-full"
                     variant={copiedLink ? "default" : "outline"}
@@ -363,7 +363,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
                     {copiedLink ? 'Copied!' : 'Copy Link'}
                   </Button>
                 </div>
-                
+
                 <div className="text-center">
                   <p className="text-lg font-semibold text-green-600 dark:text-green-400 mb-2">
                     Your Code: {referralCode}
@@ -389,29 +389,29 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
                   >
                     📷 Instagram
                   </Button>
-                  <Button 
+                  <Button
                     onClick={() => shareToSocial('facebook')}
                     className="bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100"
                   >
                     📘 Facebook
                   </Button>
-                  <Button 
+                  <Button
                     onClick={() => shareToSocial('twitter')}
-                    className="bg-sky-500 text-white dark:text-gray-100"
+                    className="bg-sky-500 dark:bg-sky-600 text-white dark:text-gray-100"
                   >
                     🐦 Twitter
                   </Button>
-                  <Button 
+                  <Button
                     onClick={() => shareToSocial('email')}
                     className="bg-gray-600 dark:bg-gray-600 text-white dark:text-gray-100"
                   >
                     ✉️ Email
                   </Button>
                 </div>
-                
+
                 {/* Template Preview */}
                 <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-                  <select 
+                  <select
                     value={selectedTemplate}
                     onChange={(e) => setSelectedTemplate(e.target.value as keyof typeof SOCIAL_TEMPLATES)}
                     className="w-full mb-3 p-2 border rounded"
@@ -447,13 +447,11 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
                   { rank: 4, name: "You", referrals: stats.totalReferrals, earnings: stats.totalEarnings, tier: currentTier.name },
                   { rank: 5, name: "David L.", referrals: 8, earnings: 120, tier: "Cat Advocate" }
                 ].map((entry, index) => (
-                  <div key={index} className={`flex items-center justify-between p-4 rounded-lg ${
-                    entry.name === 'You' ? 'bg-orange-50 dark:bg-orange-900/20 border border-orange-200' : 'bg-gray-50 dark:bg-gray-800'
-                  }`}>
+                  <div key={index} className={`flex items-center justify-between p-4 rounded-lg ${entry.name === 'You' ? 'bg-orange-50 dark:bg-orange-900/20 border border-orange-200' : 'bg-gray-50 dark:bg-gray-800'
+                    }`}>
                     <div className="flex items-center">
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white dark:text-gray-100 font-bold mr-3 ${
-                        entry.rank <= 3 ? 'bg-gradient-to-r from-yellow-400 to-orange-500' : 'bg-gray-400'
-                      }`}>
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white dark:text-gray-100 font-bold mr-3 ${entry.rank <= 3 ? 'bg-gradient-to-r from-yellow-400 to-orange-500' : 'bg-gray-400'
+                        }`}>
                         {entry.rank}
                       </div>
                       <div>
@@ -510,9 +508,8 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
         <TabsContent value="rewards">
           <div className="grid md:grid-cols-2 gap-6">
             {REFERRAL_TIERS.map((tier) => (
-              <Card key={tier.level} className={`${
-                tier.name === currentTier.name ? 'ring-2 ring-orange-500' : ''
-              }`}>
+              <Card key={tier.level} className={`${tier.name === currentTier.name ? 'ring-2 ring-orange-500' : ''
+                }`}>
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">

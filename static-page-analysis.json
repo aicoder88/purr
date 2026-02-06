@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-02-06T02:26:11.864Z",
+  "timestamp": "2026-02-06T10:37:19.857Z",
   "totalPages": 120,
   "summary": {
-    "alreadyStatic": 74,
+    "alreadyStatic": 76,
     "canOptimize": 0,
     "needsRefactor": 36,
-    "inherentlyDynamic": 5,
+    "inherentlyDynamic": 3,
     "needsReview": 5
   },
   "pages": {
@@ -158,19 +158,9 @@
     ],
     "inherentlyDynamic": [
       {
-        "route": "/ammonia-control",
-        "file": "ammonia-control/page.tsx",
-        "reason": "⚠️ Uses headers() directly"
-      },
-      {
         "route": "/blog",
         "file": "blog/page.tsx",
         "reason": "⚠️ Uses searchParams (inherently dynamic)"
-      },
-      {
-        "route": "/canada",
-        "file": "canada/page.tsx",
-        "reason": "⚠️ Uses headers() directly"
       },
       {
         "route": "/thank-you",
@@ -191,6 +181,10 @@
       {
         "route": "/about",
         "file": "about/page.tsx"
+      },
+      {
+        "route": "/ammonia-control",
+        "file": "ammonia-control/page.tsx"
       },
       {
         "route": "/b2b",
@@ -271,6 +265,10 @@
       {
         "route": "/buy",
         "file": "buy/page.tsx"
+      },
+      {
+        "route": "/canada",
+        "file": "canada/page.tsx"
       },
       {
         "route": "/case-studies",

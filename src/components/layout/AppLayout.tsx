@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { Header } from './header';
+import { HeaderWithSuspense } from './header-suspense';
 import { Footer } from './footer';
 import dynamic from 'next/dynamic';
 
@@ -23,7 +23,7 @@ export function AppLayout({ children }: AppLayoutProps) {
             <PawCursor />
             <ScrollToTopButton />
             <MobileFloatingCTA />
-            {!hideHeader && <Header />}
+            {!hideHeader && <HeaderWithSuspense />}
             <main className="flex-grow">{children}</main>
             {!hideFooter && <Footer />}
         </div>

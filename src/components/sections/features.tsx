@@ -2,8 +2,8 @@ import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { FEATURES } from "@/lib/constants";
 import { Zap, Heart, Clock, Check, Leaf, DollarSign } from "lucide-react";
-import SectionHeader from "../ui/section-header";
-import { useTranslation } from "../../lib/translation-context";
+import SectionHeader from "@/components/ui/section-header";
+import { useTranslation } from "@/lib/translation-context";
 
 const iconMap = {
   Zap: Zap,

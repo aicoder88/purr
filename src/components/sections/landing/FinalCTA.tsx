@@ -44,7 +44,7 @@ export function FinalCTA({
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-white dark:border-gray-200 text-white dark:text-gray-100 hover:bg-white/10 dark:hover:bg-white/20 text-base px-8 py-6"
+                className="bg-transparent border-white dark:border-gray-200 text-white dark:text-gray-100 hover:bg-white/10 dark:hover:bg-white/20 text-base px-8 py-6"
               >
                 <Link href={secondaryCTA.href}>{secondaryCTA.label}</Link>
               </Button>

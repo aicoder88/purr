@@ -11,6 +11,7 @@ type TranslationContextType = {
   t: TranslationType;
   locale: Locale;
   changeLocale: (locale: Locale) => void;
+  setLocaleClient: (locale: Locale) => void; // New method for client-side only update
 };
 
 export const TranslationContext = createContext<TranslationContextType | undefined>(undefined);
@@ -106,12 +107,20 @@ export function TranslationProvider({
     }
   }, []); // Empty deps - uses refs for current values
 
+  // Client-side only locale update (no reload)
+  const setLocaleClient = useCallback((newLocale: Locale) => {
+    if (VALID_LOCALES.includes(newLocale)) {
+      setLocale(newLocale);
+    }
+  }, []);
+
   // Memoize context value to prevent unnecessary re-renders
   const contextValue = useMemo(() => ({
     t,
     locale,
     changeLocale,
-  }), [t, locale, changeLocale]);
+    setLocaleClient,
+  }), [t, locale, changeLocale, setLocaleClient]);
 
   return (
     <TranslationContext.Provider value={contextValue}>
@@ -126,12 +135,13 @@ export function useTranslation() {
   if (context === undefined) {
     // During SSR/ISR, provide a fallback to prevent errors
     // This can happen when the component is rendered outside the provider context
-    if (typeof window === 'undefined') {
+    if (typeof globalThis.window === 'undefined') {
       // Return default English translations for server-side rendering
       return {
         t: translations.en,
         locale: 'en' as Locale,
         changeLocale: () => { },
+        setLocaleClient: () => { },
       };
     }
     throw new Error('useTranslation must be used within a TranslationProvider');

@@ -126,8 +126,8 @@ export default function FamilyPackPage() {
 
   // Family pack lifestyle images
   const heroImage = '/optimized/140g-transparent.webp'; // Multiple cats happy home
-  const sectionImage1 = '/images/replacements/multi-cat-home-ghibli.png'; // Multi-cat household
-  const solutionImage = '/images/replacements/multi-cat-success-ghibli.png'; // Happy multi-cat family
+  const sectionImage1 = '/optimized/multi-cat-home-ghibli.webp'; // Multi-cat household
+  const solutionImage = '/optimized/multi-cat-success-ghibli.webp'; // Happy multi-cat family
 
   const benefits = [
     "Double the supply at less than double the price—the math just makes sense",

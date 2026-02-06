@@ -6,7 +6,6 @@ import { Container } from '@/components/ui/container';
 import {
   SCIENTIFIC_CITATIONS,
   CLAIM_REVIEWS,
-  VETERINARY_SCIENCE_ADVISOR,
   getCitationsByCategory,
 } from '@/lib/scientific-citations';
 import {
@@ -44,7 +43,7 @@ export const metadata: Metadata = {
     modifiedTime: new Date().toISOString(),
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/science-hub-og.jpg',
+        url: 'https://www.purrify.ca/optimized/activated-carbon-science-benefits-ghibli.webp',
         width: 1200,
         height: 630,
         alt: 'The Science Behind Purrify',
@@ -84,7 +83,7 @@ export default function SciencePage() {
       'Explore the peer-reviewed scientific research supporting activated carbon for cat litter odor control.',
     datePublished: '2025-01-15',
     dateModified: new Date().toISOString().split('T')[0],
-    image: 'https://www.purrify.ca/optimized/science-hub-og.jpg',
+    image: 'https://www.purrify.ca/optimized/activated-carbon-science-benefits-ghibli.webp',
     author: {
       '@type': 'Organization',
       name: 'Purrify',
@@ -104,18 +103,7 @@ export default function SciencePage() {
     },
   };
 
-  const veterinaryAdvisorSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: VETERINARY_SCIENCE_ADVISOR.name,
-    jobTitle: VETERINARY_SCIENCE_ADVISOR.jobTitle,
-    description: VETERINARY_SCIENCE_ADVISOR.description,
-    knowsAbout: VETERINARY_SCIENCE_ADVISOR.knowsAbout,
-    worksFor: {
-      '@type': 'Organization',
-      name: 'Purrify',
-    },
-  };
+
 
   const collectionPageSchema = {
     '@context': 'https://schema.org',
@@ -147,10 +135,7 @@ export default function SciencePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(veterinaryAdvisorSchema) }}
-      />
+
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionPageSchema) }} />
 
       <main className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
@@ -186,40 +171,7 @@ export default function SciencePage() {
               </p>
             </header>
 
-            {/* Veterinary Science Advisor Card */}
-            <section className="mb-16">
-              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700">
-                <div className="flex flex-col md:flex-row gap-8 items-start">
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-electric-indigo to-purple-600 flex items-center justify-center text-white text-3xl font-bold shrink-0">
-                    {VETERINARY_SCIENCE_ADVISOR.name.charAt(0)}
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Award className="w-5 h-5 text-electric-indigo" />
-                      <span className="text-sm font-medium text-electric-indigo">
-                        {VETERINARY_SCIENCE_ADVISOR.jobTitle}
-                      </span>
-                    </div>
-                    <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-2">
-                      {VETERINARY_SCIENCE_ADVISOR.name}
-                    </h2>
-                    <p className="text-gray-600 dark:text-gray-400 mb-4">
-                      {VETERINARY_SCIENCE_ADVISOR.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {VETERINARY_SCIENCE_ADVISOR.knowsAbout.slice(0, 4).map((topic) => (
-                        <span
-                          key={topic}
-                          className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm"
-                        >
-                          {topic}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
+
 
             {/* Key Statistics */}
             <section className="mb-16">
@@ -262,11 +214,10 @@ export default function SciencePage() {
                   >
                     <div className="flex items-start gap-4">
                       <div
-                        className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${
-                          claim.rating === 5
-                            ? 'bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300'
-                            : 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400'
-                        }`}
+                        className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${claim.rating === 5
+                          ? 'bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300'
+                          : 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400'
+                          }`}
                       >
                         {claim.rating}/5
                       </div>

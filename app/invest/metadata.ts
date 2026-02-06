@@ -11,6 +11,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Investor Relations - Purrify Cat Litter Investment Opportunity',
     description: 'Investment opportunity in Purrify, an innovative activated carbon cat litter additive company.',
-    images: ['https://www.purrify.ca/purrify-logo-text.png'],
+    images: ['https://www.purrify.ca/purrify-logo.png'],
   },
 };

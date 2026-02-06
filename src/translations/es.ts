@@ -178,7 +178,9 @@ export const es: TranslationType = {
     rabbitLitter: "Desodorizante de Arena para Conejos",
     fridgeSmells: "Control de Olores del Refrigerador",
     ferretCage: "Eliminador de Olores de Jaula de Huron",
-    eliminateCatOdors: "7 Dias Sin Olor de Caja de Arena",
+    headline: "Ama a Tu Gato. Olvidate del Olor.",
+    eliminateCatOdors: "Ama a Tu Gato. Olvidate del Olor.",
+    subheadline: "Una espolvoreada mantiene la arena fresca por 7 dias completos.",
     instantly: "Elimina el Olor de la Caja de Arena Casi Al Instante",
     description: "Usando tecnologia de atrapamiento molecular de coco \"activado\" (sin quimicos) — la misma ciencia de filtracion que se encuentra en los sistemas de agua potable — una sola aplicacion reduce drasticamente el olor de la caja de arena casi inmediatamente y continua funcionando hasta por 7 dias completos.",
     socialProof: {
@@ -217,6 +219,9 @@ export const es: TranslationType = {
     simplified: {
       free: "GRATIS",
       justPayShipping: "Solo paga $4.76 de envio",
+      freeShippingOver: "Envio gratis en ordenes mayores a $50",
+      headline: "Ama a Tu Gato. Olvidate del Olor.",
+      subheadline: "Una espolvoreada mantiene la arena fresca por 7 dias completos.",
       noMore: "Se Acabo",
       litterBoxSmell: "El Olor a Caja de Arena",
       valueProposition: "El carbon activado elimina olores en la fuente. Funciona con cualquier arena.",
@@ -2674,6 +2679,10 @@ export const es: TranslationType = {
         tip1: "Para olores fuertes existentes, haz un cambio completo de arena primero, luego agrega Purrify a la arena fresca",
         tip2: "Hogares multi-gatos pueden necesitar reaplicar cada 4-5 dias en lugar de 7",
         tip3: "Funciona con todos los tipos de arena: aglomerante, arcilla, cristal, madera, maiz o papel"
+      },
+      proTip: {
+        title: "Consejo Pro",
+        description: "Para mejores resultados, aplica Purrify a la arena fresca despues de cada cambio completo de caja."
       }
     },
     benefits: {
@@ -2681,16 +2690,19 @@ export const es: TranslationType = {
       intro: "Hay una razon por la que miles de duenos de gatos han cambiado al carbon activado para control de olores.",
       pillar1: {
         title: "100% Ciencia Natural",
+        intro: "Ingredientes naturales puros",
         description: "Purrify esta hecho de carbon activado premium de cascara de coco - nada mas. Sin quimicos, fragancias, aditivos sinteticos ni rellenos. Es el mismo material usado en purificadores de aire de grado hospitalario y sistemas de filtracion de agua.",
         detail: "El carbon de cascara de coco es apreciado por su alta densidad de microporos, haciendolo particularmente efectivo para atrapar moleculas de gas pequenas como el amoniaco."
       },
       pillar2: {
         title: "Proteccion Duradera",
+        intro: "7+ dias de frescura",
         description: "Una aplicacion de Purrify proporciona control continuo de amoniaco por 7+ dias. A diferencia de las fragancias que se desvanecen en horas o el bicarbonato de sodio que deja de funcionar despues de 48 horas, el carbon activado sigue funcionando hasta que sus poros esten completamente saturados.",
         detail: "La mayoria de los clientes encuentran que pueden reducir sus cambios completos de arena por 30-50%, ahorrando dinero y tiempo."
       },
       pillar3: {
         title: "Seguro para Todos los Gatos",
+        intro: "Sin fragancias ni quimicos",
         description: "Porque Purrify es completamente sin fragancia y hecho de carbon natural, es seguro para gatos de todas las edades y sensibilidades. Gatitos, gatos mayores y gatos con condiciones respiratorias pueden todos beneficiarse sin riesgo de irritacion.",
         detail: "Muchos gatos en realidad prefieren ambientes de arena sin aroma. Puedes notar que tu gato usa la caja mas consistentemente despues de cambiar a Purrify."
       }
@@ -2760,7 +2772,9 @@ export const es: TranslationType = {
       days: { value: "7+", label: "Dias de Frescura" },
       savings: { value: "50%", label: "Menos Cambios de Arena" },
       surfaceArea: { value: "1,150", label: "m2/g Area de Superficie" },
-      natural: { value: "100%", label: "Ingredientes Naturales" }
+      natural: { value: "100%", label: "Ingredientes Naturales" },
+      customers: { value: "1,000+", label: "Clientes Felices" },
+      rating: { value: "4.8/5", label: "Calificacion Promedio" }
     },
     faq: {
       headline: "Preguntas Comunes Sobre Control de Amoniaco",
@@ -2786,6 +2800,7 @@ export const es: TranslationType = {
       subheadline: "Unete a miles de padres de gatos que han eliminado el amoniaco de caja de arena para siempre - no lo enmascararon, lo eliminaron.",
       button: "Comprar Purrify",
       secondaryButton: "Probar Tamano de Prueba",
+      benefit1: "Envio gratis a Canada y EE.UU.",
       benefit2: "Garantia de satisfaccion de 30 dias"
     }
   },
@@ -3639,6 +3654,39 @@ export const es: TranslationType = {
         primary: "Obtener Precios al Por Mayor",
         secondary: "Aprender Más"
       }
+    },
+    form: {
+      title: "Solicitud de Precios para Cafés de Gatos",
+      name: "Nombre del Café",
+      namePlaceholder: "Nombre de tu café de gatos",
+      cafeName: "Nombre del Café",
+      cafePlaceholder: "Nombre de tu café de gatos",
+      contactName: "Nombre de Contacto",
+      contactPlaceholder: "Tu nombre completo",
+      email: "Correo Electrónico",
+      emailPlaceholder: "tu@email.com",
+      phone: "Teléfono",
+      phonePlaceholder: "(555) 123-4567",
+      address: "Dirección",
+      addressPlaceholder: "Dirección de tu café",
+      cats: "Número de Gatos",
+      catsPlaceholder: "¿Cuántos gatos tienes en el café?",
+      message: "Mensaje",
+      messagePlaceholder: "Cuéntanos sobre tu café y necesidades...",
+      submit: "Enviar Solicitud",
+      submitting: "Enviando...",
+      success: {
+        title: "¡Solicitud Enviada!",
+        message: "Nos pondremos en contacto contigo en 24-48 horas con información de precios mayoristas."
+      }
+    },
+    contact: {
+      title: "¿Preguntas?",
+      description: "Nuestro equipo de asociaciones está listo para ayudarte.",
+      callUs: "Llámanos",
+      emailUs: "Escríbenos",
+      moreInfo: "Más información",
+      requestGuide: "Solicitar guía de precios"
     }
   },
 
@@ -3664,6 +3712,55 @@ export const es: TranslationType = {
         primary: "Aplicar para Descuento",
         secondary: "Aprender Más"
       }
+    },
+    form: {
+      title: "Solicitud de Descuento para Refugios",
+      orgName: "Nombre de la Organización",
+      orgNamePlaceholder: "Nombre de tu refugio u organización",
+      orgPlaceholder: "Nombre de tu refugio o rescate",
+      contactName: "Nombre de Contacto",
+      contactPlaceholder: "Tu nombre completo",
+      email: "Correo Electrónico",
+      emailPlaceholder: "tu@email.com",
+      phone: "Teléfono",
+      phonePlaceholder: "(555) 123-4567",
+      address: "Dirección",
+      addressPlaceholder: "Dirección de tu organización",
+      catsCount: "Número de Gatos",
+      catsPlaceholder: "¿Cuántos gatos atiendes mensualmente?",
+      nonProfit: "ID sin fines de lucro (opcional)",
+      nonProfitPlaceholder: "Número de registro de organización sin fines de lucro",
+      message: "Mensaje",
+      messagePlaceholder: "Cuéntanos sobre tu refugio y necesidades...",
+      submit: "Enviar Solicitud",
+      submitting: "Enviando...",
+      success: {
+        title: "¡Solicitud Enviada!",
+        message: "Revisaremos tu solicitud y nos pondremos en contacto en 24-48 horas con información de precios especiales."
+      }
+    },
+    benefits: {
+      title: "Beneficios para Refugios",
+      pricing: {
+        title: "Precios Especiales",
+        description: "Descuentos de hasta 40% para organizaciones sin fines de lucro"
+      },
+      priority: {
+        title: "Soporte Prioritario",
+        description: "Atención dedicada para refugios y organizaciones de rescate"
+      },
+      donations: {
+        title: "Programa de Donaciones",
+        description: "Solicita muestras gratuitas para eventos de adopción"
+      }
+    },
+    contact: {
+      title: "¿Preguntas?",
+      description: "Nuestro equipo de asociaciones con refugios está listo para ayudarte.",
+      callUs: "Llámanos",
+      emailUs: "Escríbenos",
+      moreInfo: "Más información",
+      requestGuide: "Solicitar guía de beneficios"
     }
   },
 
@@ -3689,6 +3786,143 @@ export const es: TranslationType = {
         primary: "Convertirse en Socio",
         secondary: "Aprender Más"
       }
+    },
+    cta: {
+      primary: "Solicitar Precios Mayoristas",
+      secondary: "Ver Guía de Productos"
+    },
+    opportunity: {
+      title: "Oportunidad de Ingresos para Peluqueros",
+      intro: "Los clientes confían en ti para el cuidado de sus mascotas. Ahora puedes ofrecerles una solución completa para el olor de la caja de arena en casa.",
+      points: {
+        clientsAsk: {
+          title: "Los Clientes Preguntan",
+          description: "Los dueños de gatos te piden consejos sobre todo tipo de problemas de cuidado de mascotas, incluyendo olores de caja de arena."
+        },
+        expertPosition: {
+          title: "Posición de Experto",
+          description: "Al ofrecer Purrify, te posicionas como el experto completo en cuidado de gatos, no solo servicios de peluquería."
+        },
+        repeatRevenue: {
+          title: "Ingresos Recurrentes",
+          description: "Los clientes vuelven mensualmente por repuestos, creando un flujo de ingresos predecible para tu negocio."
+        },
+        easyDemo: {
+          title: "Demostración Fácil",
+          description: "El producto se vende solo - una demostración rápida y los clientes pueden oler la diferencia inmediatamente."
+        }
+      }
+    },
+    addOnSale: {
+      title: "Venta Adicional Natural",
+      description: "Purrify es la venta adicional perfecta porque resuelve un problema real que los clientes enfrentan diariamente:",
+      points: [
+        "Los clientes ya confían en ti para el cuidado de sus mascotas",
+        "Resuelve el problema #1 de los dueños de gatos: olores de caja de arena",
+        "Margen de ganancia de 50%+ en cada venta",
+        "Los clientes te lo agradecerán y volverán por más"
+      ]
+    },
+    howItWorks: {
+      title: "Cómo Funciona",
+      steps: [
+        {
+          number: "01",
+          title: "Solicita tu Muestra",
+          description: "Recibe un paquete de demostración gratuito para probar Purrify en tu salón."
+        },
+        {
+          number: "02",
+          title: "Muestra a tus Clientes",
+          description: "Usa Purrify durante el servicio y deja que los clientes vean la diferencia."
+        },
+        {
+          number: "03",
+          title: "Recomienda con Confianza",
+          description: "Tus clientes confiarán en tu recomendación de experto."
+        },
+        {
+          number: "04",
+          title: "Gana Comisiones",
+          description: "Recibe márgenes atractivos en cada venta realizada."
+        }
+      ]
+    },
+    partnerBenefits: {
+      title: "Beneficios de Ser Socio Purrify",
+      benefits: {
+        wholesale: {
+          title: "Precios Mayoristas",
+          description: "Margen de 50%+ con precios mayoristas competitivos"
+        },
+        display: {
+          title: "Exhibidor Gratuito",
+          description: "Recibe un exhibidor de mostrador profesional sin costo"
+        },
+        training: {
+          title: "Capacitación de Producto",
+          description: "Materiales de capacitación para tu equipo de ventas"
+        },
+        tracking: {
+          title: "Seguimiento de Clientes",
+          description: "Sistema para recordar a los clientes cuando necesitan repuestos"
+        }
+      }
+    },
+    retailPackage: {
+      title: "Paquete para Peluqueros",
+      subtitle: "Todo lo que necesitas para empezar",
+      includes: [
+        "20 unidades de Purrify (mezcla de tamaños)",
+        "Exhibidor de mostrador profesional",
+        "Folletos educativos para clientes",
+        "Muestras gratuitas para demostraciones",
+        "Capacitación para tu equipo",
+        "Soporte de marketing"
+      ]
+    },
+    testimonials: {
+      title: "Lo Que Dicen Nuestros Socios",
+      items: [
+        {
+          quote: "Purrify se ha convertido en mi venta adicional más fácil. Los clientes lo piden después de verlo en el mostrador.",
+          author: "María G.",
+          business: "Peluquería Felina, Montreal"
+        }
+      ]
+    },
+    form: {
+      title: "Solicitud de Precios para Peluqueros",
+      salonName: "Nombre del Salón",
+      salonNamePlaceholder: "Nombre de tu salón de mascotas",
+      salonPlaceholder: "Nombre de tu salón de mascotas",
+      contactName: "Nombre de Contacto",
+      contactPlaceholder: "Tu nombre completo",
+      email: "Correo Electrónico",
+      emailPlaceholder: "tu@email.com",
+      phone: "Teléfono",
+      phonePlaceholder: "(555) 123-4567",
+      address: "Dirección",
+      addressPlaceholder: "Dirección de tu negocio",
+      catsPerWeek: "Gatos por Semana",
+      catsPerWeekPlaceholder: "¿Cuántos gatos atiendes a la semana?",
+      catsPlaceholder: "¿Cuántos gatos atiendes a la semana?",
+      message: "Mensaje",
+      messagePlaceholder: "Cuéntanos sobre tu negocio y necesidades...",
+      submit: "Enviar Solicitud",
+      submitting: "Enviando...",
+      success: {
+        title: "¡Solicitud Enviada!",
+        message: "Nos pondremos en contacto contigo en 24-48 horas con información de precios mayoristas."
+      }
+    },
+    contact: {
+      title: "¿Preguntas sobre la Asociación?",
+      description: "Nuestro equipo de socios está listo para ayudarte a expandir tu negocio.",
+      callUs: "Llámanos",
+      emailUs: "Escríbenos",
+      moreInfo: "Más información",
+      requestGuide: "Solicitar guía de asociación"
     }
   },
 

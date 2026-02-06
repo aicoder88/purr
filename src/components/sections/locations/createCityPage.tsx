@@ -6,13 +6,13 @@ import dynamic from 'next/dynamic';
 import { useEffect, useMemo, useState } from 'react';
 import { ChevronRight, Home } from 'lucide-react';
 
-import { LocationSchema } from '../../seo/json-ld-schema';
-import { getCityBySlug } from '../../../data/locations';
-import { useTranslation } from '../../../lib/translation-context';
-import { safeTrackEvent } from '../../../lib/analytics';
+import { LocationSchema } from '@/components/seo/json-ld-schema';
+import { getCityBySlug } from '@/data/locations';
+import { useTranslation } from '@/lib/translation-context';
+import { safeTrackEvent } from '@/lib/analytics';
 import { CityLeadCaptureCTA } from './CityLeadCaptureCTA';
-import { useEnhancedSEO } from '../../../hooks/useEnhancedSEO';
-import { PROVINCES } from '../../../lib/locations/provinces';
+import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
+import { PROVINCES } from '@/lib/locations/provinces';
 
 // ============================================================================
 // Types & Interfaces
@@ -179,7 +179,7 @@ const formatTrustedAudience = (population: number | null): string => {
 };
 
 // Lazy-load testimonial generation (performance optimization)
-import type { TestimonialContext } from '../../../lib/locations/testimonial-templates';
+import type { TestimonialContext } from '@/lib/locations/testimonial-templates';
 
 const generateTestimonials = async (
   cityName: string,
@@ -233,7 +233,7 @@ const buildKeywordList = (
   return deduped.slice(0, 16).join(', ');
 };
 
-import { type CityOdorProfile } from '../../../lib/locations/cities';
+import { type CityOdorProfile } from '@/lib/locations/cities';
 
 export interface CityPageTemplateProps {
   citySlug: string;
@@ -286,7 +286,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
 
   // Redirect effect for missing city (must be after all hooks)
   useEffect(() => {
-    if (!cityRecord && typeof window !== 'undefined') {
+    if (!cityRecord && typeof globalThis.window !== 'undefined') {
       // Client-side: redirect to locations index for stale/missing city pages
       window.location.href = '/locations';
     }
@@ -683,7 +683,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
                   </Link>
                   <Link
                     href="/contact"
-                    className="inline-flex items-center justify-center bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 font-semibold py-3 px-6 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-all border border-gray-300 dark:border-gray-600"
+                    className="inline-flex items-center justify-center bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-semibold py-3 px-6 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-all border border-gray-300 dark:border-gray-600"
                   >
                     {t.cityPage?.cta?.writeReview ?? '✍️ Write a Review'}
                   </Link>
@@ -703,7 +703,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
               {interpolate(t.cityPage?.provinceWide?.description ?? "Join thousands of satisfied cat parents in {{province}} who've eliminated litter box odors for good.", { province: provinceName })}
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
-              <span className="inline-block px-4 py-2 bg-white dark:bg-gray-700 rounded-full text-sm font-medium text-gray-900 dark:text-gray-100 shadow-sm">
+              <span className="inline-block px-4 py-2 bg-white dark:bg-gray-700 rounded-full text-sm font-medium text-gray-900 dark:text-white shadow-sm">
                 {t.cityPage?.provinceWide?.averageRating ?? '⭐ 4.8/5 Average Rating'}
               </span>
               <span className="inline-block px-4 py-2 bg-white dark:bg-gray-700 rounded-full text-sm font-medium text-gray-900 dark:text-gray-100 shadow-sm">

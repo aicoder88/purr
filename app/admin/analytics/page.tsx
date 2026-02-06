@@ -236,7 +236,7 @@ export default function AnalyticsDashboard() {
                 <span className="text-sm text-gray-600 dark:text-gray-400">
                   Avg Order Value
                 </span>
-                <BarChart3 className="w-5 h-5 text-amber-500" />
+                <BarChart3 className="w-5 h-5 text-amber-500 dark:text-amber-400" />
               </div>
               <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                 {formatCurrency(customerData?.summary.averageOrderValue || 0)}
@@ -352,10 +352,10 @@ export default function AnalyticsDashboard() {
                 ))}
                 {(!customerData?.segmentBreakdown ||
                   customerData.segmentBreakdown.length === 0) && (
-                  <p className="text-gray-500 dark:text-gray-400 text-center py-4 col-span-full">
-                    No customer data yet
-                  </p>
-                )}
+                    <p className="text-gray-500 dark:text-gray-400 text-center py-4 col-span-full">
+                      No customer data yet
+                    </p>
+                  )}
               </div>
             </Card>
           </div>

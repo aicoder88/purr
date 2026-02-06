@@ -3,16 +3,20 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '@/components/ui/container';
 import { Check, MapPin, Truck, Leaf, Shield, Star, ChevronRight, Home } from 'lucide-react';
-import { getUserLocale } from '@/lib/locale';
-import { headers } from 'next/headers';
+import { defaultLocale } from '@/i18n/config';
+// import { getUserLocale } from '@/lib/locale';
+// import { headers } from 'next/headers';
 import type { Currency } from '@/lib/geo/currency-detector';
 import { SITE_NAME } from '@/lib/constants';
 import { buildLanguageAlternates, normalizeLocale } from '@/lib/seo-utils';
 import { getProductPrice, formatProductPrice } from '@/lib/pricing';
 
+export const dynamic = 'force-static';
+
 // Generate metadata for the Canada page
 export async function generateMetadata(): Promise<Metadata> {
-  const locale = await getUserLocale();
+  // Use default locale for static generation
+  const locale = defaultLocale;
   const normalizedLocale = normalizeLocale(locale);
 
   const pageTitle = 'Best Cat Litter Deodorizer in Canada | Made in Canada | Purrify';
@@ -80,11 +84,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 // Async server component for the Canada page
 export default async function CanadaPage() {
-  // Get locale and currency from server
-  const locale = await getUserLocale();
-  const headersList = await headers();
-  const country = headersList.get('x-vercel-ip-country');
-  const currency: Currency = country === 'US' ? 'USD' : 'CAD';
+  // Use default locale/currency for static generation
+  const locale = defaultLocale;
+  const currency: Currency = 'CAD';
 
   const normalizedLocale = normalizeLocale(locale);
 

@@ -59,7 +59,7 @@ function createImpactMetrics(impact: EnvironmentalImpact): ImpactMetric[] {
       title: "Trees Equivalent",
       value: impact.treesEquivalent.toFixed(2),
       unit: "",
-      icon: <TreePine className="h-5 w-5 text-emerald-600" />,
+      icon: <TreePine className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />,
       description: "As if you planted this many trees",
       color: "bg-emerald-500",
     },

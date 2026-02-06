@@ -1,10 +1,10 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 
-import { useTranslation } from "../../lib/translation-context";
+import { useTranslation } from "@/lib/translation-context";
 import { Check, Star, Truck, Shield, Clock, Zap } from 'lucide-react';
-import { formatProductPrice, getProductPrice, formatCurrencyValue } from '../../lib/pricing';
-import { getPaymentLink, PaymentLinkKey } from '../../lib/payment-links';
+import { formatProductPrice, getProductPrice, formatCurrencyValue } from '@/lib/pricing';
+import { getPaymentLink, PaymentLinkKey } from '@/lib/payment-links';
 
 type SubscriptionPlan = {
   id: string;
@@ -86,11 +86,11 @@ export function SubscriptionOffer() {
               <Zap className="w-5 h-5 text-purple-600 dark:text-purple-400" />
               <span className="font-bold text-purple-700 dark:text-purple-300">{t.subscriptionOfferExtended?.autoshipBadge || 'Quarterly Autoship'}</span>
             </div>
-            
+
             <h2 className="font-heading text-5xl md:text-7xl font-black tracking-tight mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent leading-tight">
               {t.subscriptionOfferExtended?.headline || 'Subscribe & Save'}
             </h2>
-            
+
             <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-medium">
               {t.subscriptionOfferExtended?.supportingCopy || 'Choose the bundle that automatically restocks every 3 months, keeps your home fresh, and protects your budget.'}
             </p>
@@ -105,15 +105,14 @@ export function SubscriptionOffer() {
               return (
                 <div
                   key={plan.id}
-                  className={`relative overflow-hidden rounded-3xl transition-all duration-500 bg-white dark:bg-gray-800 shadow-2xl hover:shadow-purple-500/30 dark:hover:shadow-purple-500/50 hover:scale-[1.03] max-w-md border-2 ${
-                    plan.highlight ? 'border-purple-300 dark:border-purple-600' : 'border-gray-200 dark:border-gray-700'
-                  }`}
+                  className={`relative overflow-hidden rounded-3xl transition-all duration-500 bg-white dark:bg-gray-800 shadow-2xl hover:shadow-purple-500/30 dark:hover:shadow-purple-500/50 hover:scale-[1.03] max-w-md border-2 ${plan.highlight ? 'border-purple-300 dark:border-purple-600' : 'border-gray-200 dark:border-gray-700'
+                    }`}
                 >
                   {/* Gradient overlay */}
                   {plan.highlight && (
                     <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-pink-500/5 to-orange-500/5 dark:from-purple-500/10 dark:via-pink-500/10 dark:to-orange-500/10 pointer-events-none" aria-hidden="true" />
                   )}
-                  
+
                   {/* Badge */}
                   {plan.badge && (
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
@@ -147,11 +146,10 @@ export function SubscriptionOffer() {
                       </p>
 
                       {/* Shipping Callout - Enhanced */}
-                      <div className={`rounded-xl p-4 font-bold text-base shadow-lg ${
-                        plan.id === 'family-autoship'
+                      <div className={`rounded-xl p-4 font-bold text-base shadow-lg ${plan.id === 'family-autoship'
                           ? 'bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/40 dark:to-emerald-900/40 text-green-800 dark:text-green-200 border-2 border-green-400 dark:border-green-600'
                           : 'bg-gradient-to-r from-amber-100 to-orange-100 dark:from-amber-900/40 dark:to-orange-900/40 text-amber-900 dark:text-amber-200 border-2 border-amber-400 dark:border-amber-600'
-                      }`}>
+                        }`}>
                         {plan.id === 'family-autoship'
                           ? '✓ FREE SHIPPING INCLUDED'
                           : '+ Shipping costs apply'}
@@ -191,7 +189,7 @@ export function SubscriptionOffer() {
                         </Button>
                       ) : (
                         <Button
-                          className="w-full py-6 text-xl font-black bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-400 opacity-60"
+                          className="w-full py-6 text-xl font-black bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-400 opacity-60"
                           disabled
                         >
                           {t.subscriptionOfferExtended?.linkComingSoon || 'Payment link coming soon'}
@@ -217,7 +215,7 @@ export function SubscriptionOffer() {
                 {t.homepage.subscription.quickReliableShipping}
               </p>
             </div>
-            
+
             <div className="flex flex-col items-center group">
               <div className="bg-gradient-to-br from-pink-500 to-pink-600 p-5 rounded-2xl mb-4 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                 <Shield className="w-10 h-10 text-white dark:text-gray-100" />
@@ -229,7 +227,7 @@ export function SubscriptionOffer() {
                 {t.homepage.subscription.moneyBackPromise}
               </p>
             </div>
-            
+
             <div className="flex flex-col items-center group">
               <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-5 rounded-2xl mb-4 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                 <Clock className="w-10 h-10 text-white dark:text-gray-100" />
@@ -241,7 +239,7 @@ export function SubscriptionOffer() {
                 {t.homepage.subscription.fullControlDeliveries}
               </p>
             </div>
-            
+
             <div className="flex flex-col items-center group">
               <div className="bg-gradient-to-br from-purple-600 to-pink-600 p-5 rounded-2xl mb-4 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                 <Star className="w-10 h-10 text-white dark:text-gray-100" />

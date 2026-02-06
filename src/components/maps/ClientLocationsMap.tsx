@@ -2,8 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
-import { useTranslation } from "../../lib/translation-context";
-import { GOOGLE_MAPS_EMBED_ID } from "../../lib/constants";
+import { useTranslation } from "@/lib/translation-context";
+import { GOOGLE_MAPS_EMBED_ID } from "@/lib/constants";
 
 interface ClientLocationsMapProps {
   className?: string;

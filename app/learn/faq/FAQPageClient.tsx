@@ -64,10 +64,10 @@ export default function FAQPageClient() {
   const [openItems, setOpenItems] = useState<number[]>([]);
 
   // FAQ page images - contextually relevant
-  const heroImage = '/images/replacements/cat-owner-questions-ghibli.png';
-  const sectionImage1 = '/images/replacements/curious-cat-ghibli.png';
+  const heroImage = '/optimized/cat-owner-questions-ghibli.webp';
+  const sectionImage1 = '/optimized/curious-cat-ghibli.webp';
   const sectionImage2 = 'https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?auto=format&fit=crop&w=1600&q=80';
-  const solutionImage = '/images/replacements/happy-cat-ghibli.png';
+  const solutionImage = '/optimized/happy-cat-ghibli.webp';
 
   // Map translation category names to categories with icons
   const categoryIcons = [HelpCircle, Package, Users, HelpCircle, HelpCircle, Truck, CreditCard, MessageCircle];

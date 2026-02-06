@@ -219,11 +219,14 @@ export const en = {
       justPayShipping: "Just pay $4.76 shipping",
       noMore: "Love Your Cat.",
       litterBoxSmell: "Lose The Smell.",
+      headline: "Love Your Cat. Lose The Smell.",
+      subheadline: "Water-filter grade activated carbon eliminates odors at the source. Works with any litter your cat already loves.",
       valueProposition: "Water-filter grade carbon traps odors at the source. Works with any litter your cat already loves.",
       trialSize: "Trial Size",
       standard: "Standard",
       familyPack: "Family Pack",
       plusSH: "+ S&H",
+      freeShippingOver: "Free shipping on orders over $50",
       thirtyDayGuarantee: "30-Day Guarantee",
       getFreeSample: "Send Me a Free Bag →",
       soldThisWeek: "87 sold this week",
@@ -2667,6 +2670,10 @@ export const en = {
         tip1: "For strong existing odors, do a complete litter change first, then add Purrify to fresh litter",
         tip2: "Multi-cat households may need to reapply every 4-5 days instead of 7",
         tip3: "Works with all litter types: clumping, clay, crystal, wood, corn, or paper-based"
+      },
+      proTip: {
+        title: "Pro Tip",
+        description: "For best results, completely change litter before first use of Purrify."
       }
     },
     benefits: {
@@ -2674,16 +2681,19 @@ export const en = {
       intro: "There's a reason thousands of cat owners have switched to activated carbon for odor control.",
       pillar1: {
         title: "100% Natural Science",
+        intro: "Made from pure coconut shell activated carbon",
         description: "Purrify is made from premium coconut shell activated carbon—nothing else. No chemicals, fragrances, synthetic additives, or fillers. It's the same material used in hospital-grade air purifiers and water filtration systems.",
         detail: "Coconut shell carbon is prized for its high density of micropores, making it particularly effective for trapping small gas molecules like ammonia."
       },
       pillar2: {
         title: "Long-Lasting Protection",
+        intro: "7+ days of continuous odor control",
         description: "One application of Purrify provides continuous ammonia control for 7+ days. Unlike fragrances that fade within hours or baking soda that stops working after 48 hours, activated carbon keeps working until its pores are fully saturated.",
         detail: "Most customers find they can reduce their complete litter changes by 30-50%, saving both money and time."
       },
       pillar3: {
         title: "Safe for All Cats",
+        intro: "Fragrance-free and safe for all cats",
         description: "Because Purrify is completely fragrance-free and made from natural carbon, it's safe for cats of all ages and sensitivities. Kittens, seniors, and cats with respiratory conditions can all benefit without risk of irritation.",
         detail: "Many cats actually prefer unscented litter environments. You may notice your cat using the box more consistently after switching to Purrify."
       }
@@ -2753,7 +2763,15 @@ export const en = {
       days: { value: "7+", label: "Days of Freshness" },
       savings: { value: "50%", label: "Fewer Litter Changes" },
       surfaceArea: { value: "1,150", label: "m2/g Surface Area" },
-      natural: { value: "100%", label: "Natural Ingredients" }
+      natural: { value: "100%", label: "Natural Ingredients" },
+      customers: {
+        value: "1,000+",
+        label: "Happy Customers"
+      },
+      rating: {
+        value: "4.8/5",
+        label: "Average Rating"
+      }
     },
     faq: {
       headline: "Common Questions About Ammonia Control",
@@ -2779,6 +2797,7 @@ export const en = {
       subheadline: "Join thousands of cat parents who've eliminated litter box ammonia for good—not masked it, eliminated it.",
       button: "Shop Purrify",
       secondaryButton: "Try Trial Size",
+      benefit1: "Start eliminating ammonia odors today",
       benefit2: "30-day satisfaction guarantee"
     }
   },
@@ -3696,6 +3715,168 @@ export const en = {
   },
 
   // Cat Cafes Page
+  // Groomers Page
+  groomers: {
+    seo: {
+      pageTitle: "Purrify for Groomers | Complete Odor Solutions",
+      description: "Offer clients a complete odor solution. From grooming services to home litter box freshness—be their trusted pet care partner.",
+      keywords: "pet groomer odor control, grooming salon smell solution, cat groomer deodorizer, professional pet care",
+      openGraphAlt: "Professional odor control solution for groomers"
+    },
+    hero: {
+      badge: "Professional Partner",
+      titleLine1: "Complete Care",
+      titleLine2: "From Grooming to Home",
+      description: "Differentiate your grooming business by offering clients a take-home solution for litter box odor that actually works.",
+      stats: {
+        freshness: "7-Day Freshness",
+        clients: "Happy Clients",
+        natural: "All Natural"
+      },
+      cta: {
+        primary: "Become a Partner",
+        secondary: "Learn More"
+      }
+    },
+    cta: {
+      primary: "Request Wholesale Pricing",
+      secondary: "View Product Guide"
+    },
+    opportunity: {
+      title: "Revenue Opportunity for Groomers",
+      intro: "Clients trust you with their pet care. Now you can offer them a complete solution for home litter box odor.",
+      points: {
+        clientsAsk: {
+          title: "Clients Ask You",
+          description: "Cat owners ask your advice on all kinds of pet care issues, including litter box odors."
+        },
+        expertPosition: {
+          title: "Expert Positioning",
+          description: "By offering Purrify, you position yourself as the complete cat care expert, not just grooming services."
+        },
+        repeatRevenue: {
+          title: "Recurring Revenue",
+          description: "Clients come back monthly for refills, creating predictable income for your business."
+        },
+        easyDemo: {
+          title: "Easy Demonstration",
+          description: "The product sells itself—a quick demo and clients can smell the difference immediately."
+        }
+      }
+    },
+    addOnSale: {
+      title: "Natural Add-On Sale",
+      description: "Purrify is the perfect add-on because it solves a real problem clients face daily:",
+      points: [
+        "Quick 30-second explanation during grooming",
+        "Natural conversation about cat care",
+        "Clients already trust your recommendations",
+        "No pressure—the product speaks for itself"
+      ]
+    },
+    howItWorks: {
+      title: "How It Works",
+      steps: [
+        {
+          number: "01",
+          title: "Request Your Sample",
+          description: "Receive a free demo pack to test Purrify in your salon."
+        },
+        {
+          number: "02",
+          title: "Show Your Clients",
+          description: "Use Purrify during grooming and let clients see the difference."
+        },
+        {
+          number: "03",
+          title: "Recommend with Confidence",
+          description: "Your clients will trust your expert recommendation."
+        },
+        {
+          number: "04",
+          title: "Earn Commissions",
+          description: "Receive attractive margins on every sale made."
+        }
+      ]
+    },
+    partnerBenefits: {
+      title: "Partner Benefits",
+      benefits: {
+        wholesale: {
+          title: "Wholesale Pricing",
+          description: "Premium margins on every sale. Volume discounts available."
+        },
+        display: {
+          title: "Display Materials",
+          description: "Free counter displays and promotional materials."
+        },
+        training: {
+          title: "Product Training",
+          description: "Quick training on product benefits."
+        },
+        tracking: {
+          title: "Sales Tracking",
+          description: "Track your sales with our partner portal."
+        }
+      }
+    },
+    retailPackage: {
+      title: "Your Groomer Starter Pack",
+      subtitle: "Everything you need to get started",
+      includes: [
+        "Counter display stand",
+        "Demo samples",
+        "Promotional materials",
+        "Training guide",
+        "Marketing support"
+      ]
+    },
+    testimonials: {
+      title: "What Groomers Say",
+      items: [
+        {
+          quote: "My clients love that I have a solution for their litter box odor problems.",
+          author: "Pet Grooming Salon",
+          location: "Montreal, QC",
+          result: "15+ units/month"
+        }
+      ]
+    },
+    form: {
+      title: "Groomer Pricing Request",
+      salonName: "Salon Name",
+      salonNamePlaceholder: "Your grooming salon name",
+      salonPlaceholder: "Your grooming salon name",
+      contactName: "Contact Name",
+      contactPlaceholder: "Your full name",
+      email: "Email",
+      emailPlaceholder: "you@email.com",
+      phone: "Phone",
+      phonePlaceholder: "(555) 123-4567",
+      address: "Address",
+      addressPlaceholder: "Your salon address",
+      catsPerWeek: "Cats per Week",
+      catsPerWeekPlaceholder: "How many cats do you groom per week?",
+      catsPlaceholder: "How many cats do you groom per week?",
+      message: "Message",
+      messagePlaceholder: "Tell us about your salon and needs...",
+      submit: "Submit Request",
+      submitting: "Submitting...",
+      success: {
+        title: "Request Submitted!",
+        message: "We'll get back to you within 24-48 hours with wholesale pricing information."
+      }
+    },
+    contact: {
+      title: "Questions? Let's Talk!",
+      description: "Our partnership team is here to help.",
+      callUs: "Call Us",
+      emailUs: "Email Us",
+      moreInfo: "Need More Information?",
+      requestGuide: "Request our detailed guide"
+    }
+  },
+
   catCafes: {
     seo: {
       pageTitle: "Purrify for Cat Cafes | Keep Your Space Fresh",
@@ -3717,6 +3898,39 @@ export const en = {
         primary: "Get Wholesale Pricing",
         secondary: "Learn More"
       }
+    },
+    form: {
+      title: "Cat Cafe Wholesale Pricing Request",
+      name: "Cafe Name",
+      namePlaceholder: "Your cat cafe name",
+      cafeName: "Cafe Name",
+      cafePlaceholder: "Your cat cafe name",
+      contactName: "Contact Name",
+      contactPlaceholder: "Your full name",
+      email: "Email",
+      emailPlaceholder: "you@email.com",
+      phone: "Phone",
+      phonePlaceholder: "(555) 123-4567",
+      address: "Address",
+      addressPlaceholder: "Your cafe address",
+      cats: "Number of Cats",
+      catsPlaceholder: "How many cats do you have in the cafe?",
+      message: "Message",
+      messagePlaceholder: "Tell us about your cafe and needs...",
+      submit: "Submit Request",
+      submitting: "Submitting...",
+      success: {
+        title: "Request Submitted!",
+        message: "We'll get back to you within 24-48 hours with wholesale pricing information."
+      }
+    },
+    contact: {
+      title: "Questions?",
+      description: "Our partnerships team is ready to help you.",
+      callUs: "Call Us",
+      emailUs: "Email Us",
+      moreInfo: "More Info",
+      requestGuide: "Request Guide"
     }
   },
 
@@ -3742,6 +3956,55 @@ export const en = {
         primary: "Apply for Discount",
         secondary: "Learn More"
       }
+    },
+    benefits: {
+      title: "Shelter Partner Benefits",
+      pricing: {
+        title: "Special Pricing",
+        description: "Discounted rates for nonprofit shelters and rescue organizations."
+      },
+      priority: {
+        title: "Priority Support",
+        description: "Dedicated support team to help with large orders and urgent needs."
+      },
+      donations: {
+        title: "Donation Program",
+        description: "Eligible shelters can receive donated product for fundraising events."
+      }
+    },
+    form: {
+      title: "Shelter Discount Application",
+      orgName: "Organization Name",
+      orgPlaceholder: "Your shelter or rescue name",
+      orgNamePlaceholder: "Your shelter or rescue name",
+      contactName: "Contact Name",
+      contactPlaceholder: "Your full name",
+      email: "Email",
+      emailPlaceholder: "you@email.com",
+      phone: "Phone",
+      phonePlaceholder: "(555) 123-4567",
+      address: "Address",
+      addressPlaceholder: "Your organization address",
+      catsCount: "Number of Cats",
+      catsPlaceholder: "Approximately how many cats do you care for?",
+      nonProfit: "Nonprofit ID",
+      nonProfitPlaceholder: "Your nonprofit/tax ID number",
+      message: "Message",
+      messagePlaceholder: "Tell us about your organization and needs...",
+      submit: "Submit Application",
+      submitting: "Submitting...",
+      success: {
+        title: "Application Submitted!",
+        message: "We'll review your application and get back to you within 48 hours."
+      }
+    },
+    contact: {
+      title: "Questions?",
+      description: "Our shelter partnerships team is here to help.",
+      callUs: "Call Us",
+      emailUs: "Email Us",
+      moreInfo: "More Info",
+      requestGuide: "Request Guide"
     }
   },
 

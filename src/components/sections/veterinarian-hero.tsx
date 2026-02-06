@@ -1,9 +1,9 @@
 'use client';
 
-import { Container } from '../ui/container';
-import { Button } from '../ui/button';
-import { useTranslation } from '../../lib/translation-context';
-import { scrollToSection } from '../../lib/utils';
+import { Container } from '@/components/ui/container';
+import { Button } from '@/components/ui/button';
+import { useTranslation } from '@/lib/translation-context';
+import { scrollToSection } from '@/lib/utils';
 
 export function VeterinarianHero() {
   const { t } = useTranslation();
@@ -84,7 +84,7 @@ export function VeterinarianHero() {
                   onClick={() => scrollToSection("vet-partnership")}
                   size="lg"
                   variant="outline"
-                  className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 text-brand-green-700 dark:text-[#34D399] font-bold py-6 px-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 active:scale-95 border-2 border-[#10B981]/50 dark:border-[#34D399]/50 hover:bg-[#10B981] dark:hover:bg-[#34D399] hover:text-white dark:hover:text-gray-900 transform hover:-translate-y-2 backdrop-blur-sm"
+                  className="bg-white dark:bg-gray-800 text-brand-green-700 dark:text-[#34D399] font-bold py-6 px-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 active:scale-95 border-2 border-[#10B981]/50 dark:border-[#34D399]/50 hover:bg-[#10B981] dark:hover:bg-[#34D399] hover:text-white dark:hover:text-gray-900 transform hover:-translate-y-2 backdrop-blur-sm"
                 >
                   {t.veterinarians?.hero?.cta?.secondary || 'View Partnership Options'}
                 </Button>

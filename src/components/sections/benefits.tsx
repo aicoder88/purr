@@ -1,7 +1,7 @@
 import { Container } from "@/components/ui/container";
-import SectionHeader from "../ui/section-header";
+import SectionHeader from "@/components/ui/section-header";
 import { createColorClasses, createCardClasses, createSectionClasses, GRADIENTS, COLORS } from "@/lib/theme-utils";
-import { useTranslation } from "../../lib/translation-context";
+import { useTranslation } from "@/lib/translation-context";
 
 interface BenefitProps {
   title: string;

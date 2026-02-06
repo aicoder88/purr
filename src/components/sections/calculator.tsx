@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import { Container } from "@/components/ui/container";
-import { useTranslation } from "../../lib/translation-context";
+import { useTranslation } from "@/lib/translation-context";
 
 // Dynamic import for CostCalculator to reduce initial bundle size
 // This component uses recharts and framer-motion which are heavy libraries

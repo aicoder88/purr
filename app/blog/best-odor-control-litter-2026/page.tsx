@@ -169,7 +169,7 @@ export default function BestOdorControlLitter2026Page() {
             {/* #1 Dr. Elsey's */}
             <div className="bg-gradient-to-r from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20 rounded-xl p-6 mb-6 border-2 border-yellow-400 dark:border-yellow-600">
               <div className="flex items-center gap-3 mb-4">
-                <span className="bg-yellow-500 text-white dark:text-gray-100 font-bold px-4 py-2 rounded-full text-lg">🥇 #1</span>
+                <span className="bg-yellow-500 dark:bg-yellow-600 text-white dark:text-gray-100 font-bold px-4 py-2 rounded-full text-lg">🥇 #1</span>
                 <div>
                   <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100">
                     Dr. Elsey&apos;s Ultra Unscented
@@ -210,7 +210,7 @@ export default function BestOdorControlLitter2026Page() {
             {/* #2 Arm & Hammer */}
             <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 mb-6">
               <div className="flex items-center gap-3 mb-4">
-                <span className="bg-gray-400 dark:bg-gray-500 text-white dark:text-gray-100 font-bold px-4 py-2 rounded-full text-lg">🥈 #2</span>
+                <span className="bg-gray-600 dark:bg-gray-500 text-white dark:text-gray-100 font-bold px-4 py-2 rounded-full text-lg">🥈 #2</span>
                 <div>
                   <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100">
                     Arm & Hammer Clump & Seal Unscented

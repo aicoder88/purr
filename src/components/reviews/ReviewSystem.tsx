@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Star, ThumbsUp, ThumbsDown, User, CheckCircle, Filter, SortAsc } from 'lucide-react';
 import Script from 'next/script';
-import { Button } from '../ui/button';
-import { useTranslation } from '../../lib/translation-context';
+import { Button } from '@/components/ui/button';
+import { useTranslation } from '@/lib/translation-context';
 
 // ============================================================================
 // Types & Interfaces

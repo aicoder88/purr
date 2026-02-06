@@ -44,7 +44,7 @@ const articleStructuredData = {
   publisher: {
     '@type': 'Organization',
     name: 'Purrify',
-    logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/optimized/logo-icon-512.webp' },
+    logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/optimized/social-logo.webp' },
   },
 };
 

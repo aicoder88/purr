@@ -1,5 +1,5 @@
-import { Container } from '../ui/container';
-import { useTranslation } from '../../lib/translation-context';
+import { Container } from '@/components/ui/container';
+import { useTranslation } from '@/lib/translation-context';
 
 export function RetailerBenefits() {
   const { t } = useTranslation();

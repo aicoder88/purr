@@ -10,11 +10,11 @@ import {
   User as UserIcon,
   MapPin,
 } from "lucide-react";
-import { Button } from "../../components/ui/button";
-import { Container } from "../../components/ui/container";
-import { LanguageSwitcher } from "../../components/ui/language-switcher";
-import { useTranslation } from "../../lib/translation-context";
-import { ThemeToggle } from "../theme/theme-toggle";
+import { Button } from "@/components/ui/button";
+import { Container } from "@/components/ui/container";
+import { LanguageSwitcher } from "@/components/ui/language-switcher";
+import { useTranslation } from "@/lib/translation-context";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 import Image from "next/image";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";

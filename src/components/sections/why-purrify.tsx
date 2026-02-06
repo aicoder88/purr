@@ -3,7 +3,7 @@
 import { Container } from "@/components/ui/container";
 import { Wind, Cat, Clock, Layers, Sparkles, PiggyBank } from "lucide-react"; // Changed Leaf to Sparkles
 import Image from 'next/image';
-import { useTranslation } from "../../lib/translation-context";
+import { useTranslation } from "@/lib/translation-context";
 
 export function WhyPurrify() {
   const { t } = useTranslation();

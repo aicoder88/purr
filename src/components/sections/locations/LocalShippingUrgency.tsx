@@ -115,7 +115,7 @@ export function LocalShippingUrgency({
             </Link>
             <Link
               href="/products/standard"
-              className="inline-flex items-center justify-center border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 font-bold py-3 px-8 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all"
+              className="inline-flex items-center justify-center border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-100 font-bold py-3 px-8 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-all"
             >
               View All Sizes
             </Link>

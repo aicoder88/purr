@@ -1,12 +1,12 @@
 import { useState, useCallback, useRef } from 'react';
 import { Share2, Copy, Mail, MessageSquare, Facebook, Twitter, Send, Linkedin, QrCode, Download } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
-import { Button } from '../ui/button';
-import { Card } from '../ui/card';
-import { Badge } from '../ui/badge';
-import { useToast } from '../ui/use-toast';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog';
-import { cn } from '../../lib/utils';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { useToast } from '@/components/ui/use-toast';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { cn } from '@/lib/utils';
 
 interface SocialShareToolsProps {
   referralCode: string;

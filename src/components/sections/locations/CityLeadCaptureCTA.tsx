@@ -3,7 +3,7 @@
 
 
 import { useCallback, useState } from 'react';
-import { Button } from '../../ui/button';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -12,12 +12,12 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '../../ui/dialog';
-import { Input } from '../../ui/input';
-import { Label } from '../../ui/label';
-import { Checkbox } from '../../ui/checkbox';
-import { formEvents } from '../../../lib/gtm-events';
-import { safeTrackEvent } from '../../../lib/analytics';
+} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
+import { formEvents } from '@/lib/gtm-events';
+import { safeTrackEvent } from '@/lib/analytics';
 
 interface CityLeadCaptureCTAProps {
   cityName: string;
@@ -157,7 +157,7 @@ export function CityLeadCaptureCTA({
                 onChange={(event) => setEmail(event.target.value)}
               />
             </div>
-            <div className="rounded-md border border-gray-200 dark:border-gray-700 bg-gray-50/70 dark:bg-gray-800/60 p-3 text-sm text-gray-700 dark:text-gray-200">
+            <div className="rounded-md border border-gray-200 dark:border-gray-700 bg-gray-50/70 dark:bg-gray-800/60 p-3 text-sm text-gray-900 dark:text-gray-100">
               <p className="font-semibold text-gray-900 dark:text-gray-50">City insights we&apos;ll send:</p>
               <ul className="mt-2 list-disc space-y-1 pl-5">
                 <li>{scentFocus}</li>

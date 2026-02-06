@@ -2,14 +2,14 @@ import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Check, Zap, Calendar, Shield, Truck, Star } from 'lucide-react';
-import { useTranslation } from '../../lib/translation-context';
-import { formatCurrencyValue } from '../../lib/pricing';
-import { getPaymentLink } from '../../lib/payment-links';
+import { useTranslation } from '@/lib/translation-context';
+import { formatCurrencyValue } from '@/lib/pricing';
+import { getPaymentLink } from '@/lib/payment-links';
 import {
   SUBSCRIPTION_PLANS,
   SubscriptionPlan,
   SubscriptionOptimizer
-} from '../../lib/subscription-optimizer';
+} from '@/lib/subscription-optimizer';
 
 interface SubscriptionSelectorProps {
   productId: string;

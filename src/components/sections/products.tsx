@@ -1,8 +1,8 @@
 import { Container } from "@/components/ui/container";
 import { PRODUCTS } from "@/lib/constants";
 import dynamic from "next/dynamic";
-import { useTranslation } from "../../lib/translation-context";
-import { ReviewSystem } from '../reviews/ReviewSystem';
+import { useTranslation } from "@/lib/translation-context";
+import { ReviewSystem } from '@/components/reviews/ReviewSystem';
 import { useState } from 'react';
 import { createSectionClasses, GRADIENTS, COLORS } from "@/lib/theme-utils";
 import { useIntersectionObserver } from "@/lib/component-utils";

@@ -275,7 +275,7 @@ export default function HowActivatedCarbonWorksClient() {
 
             <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-3">
-                <span className="bg-gray-400 dark:bg-gray-500 text-white dark:text-gray-100 font-bold px-3 py-1 rounded-full text-sm">Macropores</span>
+                <span className="bg-gray-600 dark:bg-gray-500 text-white dark:text-gray-100 font-bold px-3 py-1 rounded-full text-sm">Macropores</span>
                 <span className="text-gray-600 dark:text-gray-300">&gt; 50 nanometers</span>
               </div>
               <p className="text-gray-700 dark:text-gray-200 mb-2">

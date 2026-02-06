@@ -2,9 +2,9 @@
 import Link from "next/link";
 import Script from "next/script";
 import type { SVGProps } from "react";
-import { Container } from "../../components/ui/container";
+import { Container } from "@/components/ui/container";
 import Image from "next/image";
-import { useTranslation } from "../../lib/translation-context";
+import { useTranslation } from "@/lib/translation-context";
 import {
   Instagram,
   Twitter,
@@ -15,7 +15,7 @@ import {
   ExternalLink,
   Microscope,
 } from "lucide-react";
-import { SOCIAL_LINKS } from "../../lib/constants";
+import { SOCIAL_LINKS } from "@/lib/constants";
 
 const MediumIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>

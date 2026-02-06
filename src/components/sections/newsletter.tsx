@@ -1,6 +1,6 @@
 import { Container } from "@/components/ui/container";
-import { NewsletterSignup } from "../newsletter/NewsletterSignup";
-import { useTranslation } from "../../lib/translation-context";
+import { NewsletterSignup } from "@/components/newsletter/NewsletterSignup";
+import { useTranslation } from "@/lib/translation-context";
 import { createSectionClasses } from "@/lib/theme-utils";
 
 export function Newsletter() {

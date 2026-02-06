@@ -1,8 +1,8 @@
 "use client";
 
 import { Container } from "@/components/ui/container";
-import SectionHeader from "../ui/section-header";
-import { useTranslation } from "../../lib/translation-context";
+import SectionHeader from "@/components/ui/section-header";
+import { useTranslation } from "@/lib/translation-context";
 import Link from "next/link";
 
 import Image from 'next/image';
@@ -43,7 +43,7 @@ export function About() {
             <div className="grid grid-cols-2 gap-4">
               <div className="overflow-hidden rounded-xl shadow-lg">
                 <Image
-                  src="/images/replacements/carbon-granules-detailed.png"
+                  src="/optimized/activated-carbon-granules-macro.webp"
                   alt="Activated carbon granules - natural odor elimination"
                   width={400}
                   height={300}
@@ -54,7 +54,7 @@ export function About() {
               </div>
               <div className="overflow-hidden rounded-xl shadow-lg">
                 <Image
-                  src="/images/replacements/carbon-microscopic.png"
+                  src="/optimized/activated-carbon-macro-obsidian.webp"
                   alt="Microscopic view of activated carbon pores"
                   width={400}
                   height={300}
@@ -65,7 +65,7 @@ export function About() {
               </div>
               <div className="overflow-hidden rounded-xl shadow-lg col-span-2">
                 <Image
-                  src="/images/replacements/happy-cat-ghibli.png"
+                  src="/optimized/happy-cat-ghibli.webp"
                   alt="Happy cat in fresh, clean home environment"
                   width={800}
                   height={400}

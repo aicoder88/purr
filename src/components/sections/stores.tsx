@@ -2,8 +2,8 @@
 
 import { Container } from "@/components/ui/container";
 import Image from "next/image";
-import SectionHeader from "../ui/section-header";
-import { useTranslation } from "../../lib/translation-context";
+import SectionHeader from "@/components/ui/section-header";
+import { useTranslation } from "@/lib/translation-context";
 import { useState, useEffect } from "react";
 
 

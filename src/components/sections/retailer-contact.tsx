@@ -4,10 +4,10 @@
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import * as Sentry from '@sentry/nextjs';
-import { Container } from '../ui/container';
-import { Button } from '../ui/button';
-import { CONTACT_INFO, PHONE_MESSAGING } from '../../lib/constants';
-import { useTranslation } from '../../lib/translation-context';
+import { Container } from '@/components/ui/container';
+import { Button } from '@/components/ui/button';
+import { CONTACT_INFO, PHONE_MESSAGING } from '@/lib/constants';
+import { useTranslation } from '@/lib/translation-context';
 
 // ============================================================================
 // Types
@@ -105,7 +105,7 @@ interface StepIndicatorProps {
 function StepIndicator({ step, gradient, title, description }: StepIndicatorProps) {
   return (
     <div className="text-center relative">
-      <div className={`w-14 h-14 ${gradient} rounded-full flex items-center justify-center text-white font-black text-xl mx-auto mb-4 shadow-lg ring-4 ring-white dark:ring-gray-900 relative z-10`}>
+      <div className={`w-14 h-14 ${gradient} rounded-full flex items-center justify-center text-white dark:text-white font-black text-xl mx-auto mb-4 shadow-lg ring-4 ring-white dark:ring-gray-900 relative z-10`}>
         {step}
       </div>
       <h4 className="font-bold text-gray-900 dark:text-white mb-2 text-lg">{title}</h4>
@@ -128,7 +128,7 @@ function SuccessStoryCard({ icon, gradient, businessName, businessType, quote, m
   return (
     <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-gray-700 h-full flex flex-col">
       <div className="flex items-center mb-4">
-        <div className={`w-12 h-12 ${gradient} rounded-full flex items-center justify-center text-white font-black text-lg mr-4 shadow-md`}>
+        <div className={`w-12 h-12 ${gradient} rounded-full flex items-center justify-center text-white dark:text-white font-black text-lg mr-4 shadow-md`}>
           {icon}
         </div>
         <div>
@@ -441,7 +441,7 @@ export function RetailerContact() {
                       value={formData.businessName}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-5 py-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200 outline-none"
+                      className="w-full px-5 py-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200 outline-none"
                       placeholder={form?.fields?.businessName?.placeholder || 'Your Pet Store Name'}
                     />
                   </div>
@@ -456,7 +456,7 @@ export function RetailerContact() {
                       value={formData.contactName}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-5 py-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200 outline-none"
+                      className="w-full px-5 py-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200 outline-none"
                       placeholder={form?.fields?.contactName?.placeholder || 'Your Full Name'}
                     />
                   </div>
@@ -472,7 +472,7 @@ export function RetailerContact() {
                     name="position"
                     value={formData.position}
                     onChange={handleInputChange}
-                    className="w-full px-5 py-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200 outline-none"
+                    className="w-full px-5 py-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-[#5B2EFF] dark:focus:ring-[#3694FF] focus:border-transparent transition-all duration-200 outline-none"
                     placeholder={form?.fields?.position?.placeholder || 'e.g., Owner, Manager, Buyer, Sales Representative'}
                   />
                 </div>

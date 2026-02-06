@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Users, TrendingUp, Leaf } from 'lucide-react';
-import { useTranslation } from '../../lib/translation-context';
+import { useTranslation } from '@/lib/translation-context';
 
 export function UrgencyBanner() {
   const { t } = useTranslation();

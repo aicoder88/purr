@@ -9,10 +9,9 @@ import { useCurrency } from '../lib/currency-context';
 import { optimizeMetaTitle, optimizeMetaDescription } from '../lib/seo/meta-optimizer';
 import { getLocalizedUrl, buildLanguageAlternates } from '../lib/seo-utils';
 import { SITE_NAME } from '../lib/constants';
-import { 
-  VETERINARY_SCIENCE_ADVISOR, 
+import {
   getClaimReviewSchema,
-  type ScientificCitation 
+  type ScientificCitation
 } from '../lib/scientific-citations';
 
 export interface SEOConfig {
@@ -28,7 +27,7 @@ export interface SEOConfig {
   nofollow?: boolean;
   /** Include expert author schema for AI citation optimization (legacy) */
   includeExpertAuthor?: boolean;
-  /** Include Veterinary Science Advisor schema for GEO compliance */
+  /** Include Veterinary Science Advisor schema for GEO compliance (Deprecated) */
   includeVeterinaryAdvisor?: boolean;
   /** Claims to generate ClaimReview schema for */
   claims?: string[];
@@ -90,7 +89,7 @@ export interface EnhancedSEOResult {
     titleWarnings: string[];
     descriptionWarnings: string[];
   };
-  /** Veterinary Science Advisor JSON-LD schema */
+  /** Veterinary Science Advisor JSON-LD schema (Deprecated) */
   veterinaryAdvisorSchema: object | null;
   /** ClaimReview schemas for factual claims */
   claimReviewSchemas: object[];
@@ -175,11 +174,11 @@ export function useEnhancedSEO(config: SEOConfig): EnhancedSEOResult {
     additionalMetaTags: [
       ...(config.keywords
         ? [
-            {
-              name: 'keywords',
-              content: config.keywords.join(', '),
-            },
-          ]
+          {
+            name: 'keywords',
+            content: config.keywords.join(', '),
+          },
+        ]
         : []),
       {
         name: 'author',
@@ -212,8 +211,9 @@ export function useEnhancedSEO(config: SEOConfig): EnhancedSEOResult {
   }
 
   // Add Veterinary Science Advisor schema if requested (GEO)
+  // Veterinary Science Advisor schema removed (Deprecated)
   if (config.includeVeterinaryAdvisor) {
-    additionalSchemas.push(VETERINARY_SCIENCE_ADVISOR);
+    // No-op
   }
 
   // Generate ClaimReview schemas for specified claims
@@ -244,7 +244,7 @@ export function useEnhancedSEO(config: SEOConfig): EnhancedSEOResult {
       titleWarnings: optimizedTitle.warnings,
       descriptionWarnings: optimizedDescription.warnings,
     },
-    veterinaryAdvisorSchema: config.includeVeterinaryAdvisor ? VETERINARY_SCIENCE_ADVISOR : null,
+    veterinaryAdvisorSchema: null,
     claimReviewSchemas,
     speakableSchema,
   };
@@ -290,12 +290,12 @@ function generateSchema(
         },
         aggregateRating: data.rating
           ? {
-              '@type': 'AggregateRating',
-              ratingValue: data.rating.value,
-              reviewCount: data.rating.count,
-              bestRating: 5,
-              worstRating: 1,
-            }
+            '@type': 'AggregateRating',
+            ratingValue: data.rating.value,
+            reviewCount: data.rating.count,
+            bestRating: 5,
+            worstRating: 1,
+          }
           : undefined,
       };
 
@@ -308,15 +308,7 @@ function generateSchema(
         image: data.image,
         datePublished: data.datePublished,
         dateModified: data.dateModified || new Date().toISOString(),
-        author: data.useVeterinaryAdvisor ? {
-          '@type': 'Person',
-          name: VETERINARY_SCIENCE_ADVISOR.name,
-          jobTitle: VETERINARY_SCIENCE_ADVISOR.jobTitle,
-          url: VETERINARY_SCIENCE_ADVISOR.url,
-          description: VETERINARY_SCIENCE_ADVISOR.description,
-          alumniOf: VETERINARY_SCIENCE_ADVISOR.alumniOf,
-          credential: VETERINARY_SCIENCE_ADVISOR.credential,
-        } : {
+        author: {
           '@type': 'Organization',
           name: SITE_NAME,
           url: 'https://www.purrify.ca',
@@ -383,10 +375,10 @@ function generateSchema(
         },
         geo: data.geo
           ? {
-              '@type': 'GeoCoordinates',
-              latitude: data.geo.lat,
-              longitude: data.geo.lng,
-            }
+            '@type': 'GeoCoordinates',
+            latitude: data.geo.lat,
+            longitude: data.geo.lng,
+          }
           : undefined,
         telephone: data.phone,
         priceRange: data.priceRange,
@@ -408,11 +400,11 @@ function generateSchema(
         sameAs: data.socialLinks || [],
         contactPoint: data.contactPoint
           ? {
-              '@type': 'ContactPoint',
-              telephone: data.contactPoint.telephone,
-              contactType: data.contactPoint.type || 'customer support',
-              email: data.contactPoint.email,
-            }
+            '@type': 'ContactPoint',
+            telephone: data.contactPoint.telephone,
+            contactType: data.contactPoint.type || 'customer support',
+            email: data.contactPoint.email,
+          }
           : undefined,
       };
 
@@ -453,12 +445,12 @@ function generateSchema(
         datePublished: data.datePublished || new Date().toISOString(),
         itemReviewed: data.claimAuthor
           ? {
-              '@type': 'Claim',
-              author: {
-                '@type': 'Organization',
-                name: data.claimAuthor,
-              },
-            }
+            '@type': 'Claim',
+            author: {
+              '@type': 'Organization',
+              name: data.claimAuthor,
+            },
+          }
           : undefined,
       };
 

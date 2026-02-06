@@ -2,12 +2,12 @@ import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
 
-import { useTranslation } from "../../lib/translation-context";
-import { useCurrency } from "../../lib/currency-context";
+import { useTranslation } from "@/lib/translation-context";
+import { useCurrency } from "@/lib/currency-context";
 import { CheckCircle, Star, Award, ChevronRight, Clock, Users, MapPin, Sparkles } from 'lucide-react';
 import Image from 'next/image';
-import { formatProductPrice } from '../../lib/pricing';
-import { getPaymentLink } from '../../lib/payment-links';
+import { formatProductPrice } from '@/lib/pricing';
+import { getPaymentLink } from '@/lib/payment-links';
 import { cn } from "@/lib/utils";
 
 type ProductCard = {

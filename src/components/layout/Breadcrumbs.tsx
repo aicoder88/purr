@@ -37,7 +37,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
       .filter(item => !item.href)
       .map(item => ({
         name: item.label,
-        url: typeof window !== 'undefined' ? window.location.href : `${baseUrl}${homeHref}`,
+        url: typeof globalThis.window !== 'undefined' ? window.location.href : `${baseUrl}${homeHref}`,
       })),
   ];
 

@@ -120,7 +120,7 @@ let lastPurrIndex = -1;
  * Initialize the audio context (must be called after user interaction)
  */
 export function initAudioContext(): AudioContext | null {
-  if (typeof window === 'undefined') return null;
+  if (typeof globalThis.window === 'undefined') return null;
   
   if (!audioContext) {
     try {

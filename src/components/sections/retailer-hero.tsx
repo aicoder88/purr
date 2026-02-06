@@ -1,10 +1,10 @@
 "use client";
 
 import Image from 'next/image';
-import { Container } from '../ui/container';
-import { Button } from '../ui/button';
-import { useTranslation } from '../../lib/translation-context';
-import { scrollToSection } from '../../lib/utils';
+import { Container } from '@/components/ui/container';
+import { Button } from '@/components/ui/button';
+import { useTranslation } from '@/lib/translation-context';
+import { scrollToSection } from '@/lib/utils';
 
 export function RetailerHero() {
   const { t } = useTranslation();

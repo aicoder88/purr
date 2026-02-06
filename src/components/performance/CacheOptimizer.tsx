@@ -6,7 +6,7 @@
 'use client';
 
 import { useEffect, useCallback, useState } from 'react';
-import { gtmEvent } from '../../lib/gtm-events';
+import { gtmEvent } from '@/lib/gtm-events';
 
 interface CacheOptimizerProps {
   enabled?: boolean;

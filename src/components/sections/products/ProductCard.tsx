@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import { GRADIENTS, COLORS, TRANSITIONS, createButtonClasses } from "@/lib/theme-utils";
 import { createStaggeredAnimation } from "@/lib/component-utils";
-import { TranslationType } from '../../../translations/types';
-import { getPaymentLink } from '../../../lib/payment-links';
+import { TranslationType } from '@/translations/types';
+import { getPaymentLink } from '@/lib/payment-links';
 
 interface Product {
   id: string;

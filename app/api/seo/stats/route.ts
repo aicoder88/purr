@@ -8,6 +8,7 @@
 
 export const revalidate = 3600;
 
+import { NextResponse } from 'next/server';
 import { generateLinkSuggestions } from '@/lib/seo/link-suggestions';
 import { TOPIC_CLUSTERS } from '@/lib/seo/topic-clusters';
 
@@ -95,7 +96,7 @@ const PAGES_WITH_ENHANCED_SEO = [
 // Estimate total pages in the site
 const TOTAL_ESTIMATED_PAGES = 50; // Approximate based on sitemap
 
-export async function GET(): Promise<Response> {
+export async function GET(): Promise<NextResponse> {
   try {
     // Get link suggestions stats
     const suggestions = generateLinkSuggestions();
@@ -150,14 +151,14 @@ export async function GET(): Promise<Response> {
       },
     };
 
-    return Response.json({
+    return NextResponse.json({
       success: true,
       data: stats,
       generatedAt: new Date().toISOString(),
     });
   } catch (error) {
     console.error('SEO stats error:', error);
-    return Response.json({
+    return NextResponse.json({
       success: false,
       error: 'Internal server error generating SEO stats',
     }, { status: 500 });

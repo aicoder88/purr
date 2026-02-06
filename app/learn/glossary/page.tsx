@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/science-carbon-structure.webp',
+        url: 'https://www.purrify.ca/optimized/carbon-microscopic.webp',
         width: 1200,
         height: 800,
         alt: 'Cat Litter and Activated Carbon Glossary',

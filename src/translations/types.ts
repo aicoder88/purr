@@ -126,6 +126,9 @@ export interface TranslationType {
     simplified?: {
       free: string;
       justPayShipping: string;
+      freeShippingOver?: string;
+      headline?: string;
+      subheadline?: string;
       noMore: string;
       litterBoxSmell: string;
       valueProposition: string;
@@ -2135,6 +2138,7 @@ export interface TranslationType {
       subheadline: string;
       button: string;
       secondaryButton: string;
+      benefit1?: string;
       benefit2: string;
     };
   };

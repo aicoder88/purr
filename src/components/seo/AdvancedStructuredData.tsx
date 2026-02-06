@@ -1,6 +1,6 @@
 import React from 'react';
-import { buildAvailabilityUrl, getPriceValidityDate, type OfferAvailability } from '../../lib/seo-utils';
-import { CONTACT_INFO, SOCIAL_LINKS } from '../../lib/constants';
+import { buildAvailabilityUrl, getPriceValidityDate, type OfferAvailability } from '@/lib/seo-utils';
+import { CONTACT_INFO, SOCIAL_LINKS } from '@/lib/constants';
 
 interface ProductStructuredDataProps {
   product: {

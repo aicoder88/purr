@@ -1,8 +1,10 @@
+'use client';
+
 import { Container } from "@/components/ui/container";
 import { TESTIMONIALS } from "@/lib/constants";
-import SectionHeader from "../ui/section-header";
+import SectionHeader from "@/components/ui/section-header";
 import Image from "next/image";
-import { useTranslation } from "../../lib/translation-context";
+import { useTranslation } from "@/lib/translation-context";
 import { createColorClasses, createSectionClasses, GRADIENTS, COLORS } from "@/lib/theme-utils";
 import { generateStarRating, generateAvatarUrl, QuoteIcon, createStaggeredAnimation } from "@/lib/component-utils";
 

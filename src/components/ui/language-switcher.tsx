@@ -3,8 +3,8 @@ import { useCallback, useId, useMemo, useState, useRef, useEffect } from 'react'
 import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
 import { Button } from './button';
-import { useTranslation } from '../../lib/translation-context';
-import { Locale } from '../../translations';
+import { useTranslation } from '@/lib/translation-context';
+import { Locale } from '@/translations';
 
 interface LanguageOption {
   locale: Locale;

@@ -2,7 +2,7 @@
 
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { useTranslation } from "../../lib/translation-context";
+import { useTranslation } from "@/lib/translation-context";
 import Image from "next/image";
 import Link from "next/link";
 import { GRADIENTS, COLORS } from "@/lib/theme-utils";
@@ -58,7 +58,7 @@ export function CTA() {
       </div>
 
       <Container className="relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12 backdrop-blur-sm bg-white dark:bg-gray-800/10 dark:bg-gray-900/30 rounded-3xl p-10 border border-gray-200 dark:border-[#3694FF]/30 shadow-2xl relative overflow-hidden">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12 backdrop-blur-sm bg-white dark:bg-gray-800/10 dark:bg-gray-900/30 rounded-3xl p-10 border border-gray-200 dark:border-gray-700 shadow-2xl relative overflow-hidden">
 
           {/* Background image */}
           <Image
@@ -71,7 +71,7 @@ export function CTA() {
           />
 
           {/* Content section */}
-          <div className="text-gray-900 dark:text-gray-100 max-w-2xl bg-gray-50 dark:bg-gray-900/80 backdrop-blur-sm p-6 rounded-xl">
+          <div className="text-gray-900 dark:text-gray-100 max-w-2xl bg-gray-50 dark:bg-gray-900 px-6 py-8 rounded-xl">
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight text-gray-900 dark:text-gray-100">
               {t.cta?.title || ""}
             </h2>

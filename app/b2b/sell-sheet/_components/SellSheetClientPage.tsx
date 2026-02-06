@@ -37,7 +37,7 @@ export default function SellSheetClientPage() {
           <header className="flex justify-between items-start mb-8 pb-6 border-b-4 border-[#10B981]">
             <div>
               <Image
-                src="/optimized/logo-text-180.webp"
+                src="/optimized/purrify-logo.webp"
                 alt="Purrify Logo"
                 width={180}
                 height={180}

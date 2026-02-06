@@ -3,9 +3,9 @@
 import Link from 'next/link';
 import { useEffect } from 'react';
 
-import { getProvinceBySlug, getCitiesByProvince, getCityCountByProvince } from '../../../lib/locations/provinces';
-import { useTranslation } from '../../../lib/translation-context';
-import { safeTrackEvent } from '../../../lib/analytics';
+import { getProvinceBySlug, getCitiesByProvince, getCityCountByProvince } from '@/lib/locations/provinces';
+import { useTranslation } from '@/lib/translation-context';
+import { safeTrackEvent } from '@/lib/analytics';
 
 export interface ProvincePageTemplateProps {
   provinceSlug: string;
@@ -290,7 +290,7 @@ export const ProvincePageTemplate = ({ provinceSlug }: ProvincePageTemplateProps
               </Link>
               <Link
                 href="/learn/faq"
-                className="inline-flex items-center justify-center bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 font-semibold py-4 px-8 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-all border border-gray-300 dark:border-gray-600 text-lg"
+                className="inline-flex items-center justify-center bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-semibold py-4 px-8 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-all border border-gray-300 dark:border-gray-600 text-lg"
               >
                 {locale === 'fr' ? 'En Savoir Plus' : 'Learn More'}
               </Link>

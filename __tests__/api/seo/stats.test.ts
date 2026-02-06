@@ -4,9 +4,10 @@
  */
 
 import { GET } from '../../../app/api/seo/stats/route';
+import { NextResponse } from 'next/server';
 
 describe('/api/seo/stats', () => {
-  async function getResponseData(response: Response) {
+  async function getResponseData(response: NextResponse) {
     return response.json();
   }
 
@@ -14,6 +15,7 @@ describe('/api/seo/stats', () => {
     const response = await GET();
 
     expect(response.status).toBe(200);
+    expect(response).toBeInstanceOf(NextResponse);
     const data = await getResponseData(response);
     expect(data.success).toBe(true);
     expect(data.data).toBeDefined();

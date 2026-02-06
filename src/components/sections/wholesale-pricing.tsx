@@ -2,12 +2,12 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Container } from '../ui/container';
-import { Button } from '../ui/button';
-import { scrollToSection } from '../../lib/utils';
+import { Container } from '@/components/ui/container';
+import { Button } from '@/components/ui/button';
+import { scrollToSection } from '@/lib/utils';
 import { useCallback, useMemo } from 'react';
-import { PHONE_MESSAGING } from '../../lib/constants';
-import { useTranslation } from '../../lib/translation-context';
+import { PHONE_MESSAGING } from '@/lib/constants';
+import { useTranslation } from '@/lib/translation-context';
 
 // Types
 interface PricingTier {

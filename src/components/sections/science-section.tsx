@@ -2,7 +2,7 @@
 
 import { Container } from "@/components/ui/container";
 import Image from "next/image";
-import { useTranslation } from "../../lib/translation-context";
+import { useTranslation } from "@/lib/translation-context";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, Microscope, ShieldCheck, Leaf } from "lucide-react";
@@ -75,7 +75,7 @@ export function ScienceSection() {
                             ))}
                         </div>
 
-                        <Button asChild className="bg-gray-900 hover:bg-gray-800 text-white dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 rounded-full px-8 py-6 text-lg font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
+                        <Button asChild className="bg-gray-900 hover:bg-gray-800 text-gray-50 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200 rounded-full px-8 py-6 text-lg font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
                             <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`}>
                                 {t.scienceSection?.learnMore || ""} <ArrowRight className="w-5 h-5 ml-2" />
                             </Link>

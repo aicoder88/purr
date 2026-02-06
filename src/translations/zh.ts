@@ -216,6 +216,8 @@ export const zh = {
       }
     },
     simplified: {
+      headline: "爱您的猫。告别异味。",
+      subheadline: "水过滤级活性炭从源头捕获异味。适用于您的猫喜欢的任何猫砂。",
       free: "免费",
       justPayShipping: "仅需支付4.76美元运费",
       noMore: "告别",
@@ -1546,7 +1548,7 @@ export const zh = {
           businessName: { label: "企业名称", placeholder: "您的宠物店名称", required: true },
           contactName: { label: "联系人姓名", placeholder: "您的全名", required: true },
           position: { label: "您在公司的职位", placeholder: "如：老板、经理、采购、销售代表" },
-          email: { label: "电子邮件地址", placeholder: "your@email.com", required: true },
+          email: { label: "电子邮件地址", placeholder: "example@example.com", required: true },
           phone: { label: "电话号码", placeholder: "(555) 123-4567" },
           businessType: {
             label: "企业类型",
@@ -2743,12 +2745,14 @@ export const zh = {
     },
     form: {
       title: "申请猫咖啡馆合作伙伴",
+      cafeName: "咖啡馆名称",
+      cafePlaceholder: "您的猫咖啡馆名称",
       name: "咖啡馆名称",
       namePlaceholder: "您的猫咖啡馆名称",
       contactName: "联系人姓名",
       contactPlaceholder: "您的姓名",
       email: "电子邮箱",
-      emailPlaceholder: "your@email.com",
+      emailPlaceholder: "example@example.com",
       phone: "联系电话",
       phonePlaceholder: "(416) 123-4567",
       address: "咖啡馆地址",
@@ -2766,11 +2770,11 @@ export const zh = {
     },
     contact: {
       title: "需要更多信息？",
-      description: "我们的B2B团队随时为您提供帮助。",
+      description: "我们的合作伙伴团队随时准备为您提供帮助。",
       callUs: "致电我们",
       emailUs: "发送邮件",
       moreInfo: "了解更多",
-      requestGuide: "申请产品指南"
+      requestGuide: "申请指南"
     }
   },
 
@@ -2799,13 +2803,16 @@ export const zh = {
     form: {
       title: "申请收容所支持计划",
       orgName: "机构名称",
-      orgPlaceholder: "收容所/救助站名称",
+      orgNamePlaceholder: "您的收容所或组织名称",
+      orgPlaceholder: "您的收容所或组织名称",
       contactName: "联系人姓名",
       contactPlaceholder: "您的姓名",
       email: "电子邮箱",
-      emailPlaceholder: "your@email.com",
+      emailPlaceholder: "example@example.com",
       phone: "联系电话",
+      phonePlaceholder: "(416) 123-4567",
       address: "机构地址",
+      addressPlaceholder: "您的组织地址",
       catsCount: "收容猫咪数量",
       catsPlaceholder: "大约数量",
       nonProfit: "非营利机构编号",
@@ -2850,6 +2857,31 @@ export const zh = {
       description: "为宠物美容沙龙提供专业异味控制方案。无香精配方，对敏感宠物安全，提升客户体验。",
       keywords: "宠物美容除臭,美容沙龙异味控制,宠物美容师用品,专业除味剂",
       openGraphAlt: "Purrify宠物美容师专用除臭产品"
+    },
+    howItWorks: {
+      title: "如何运作",
+      steps: [
+        {
+          number: "01",
+          title: "申请样品",
+          description: "收到免费演示包，在您的店铺测试Purrify。"
+        },
+        {
+          number: "02",
+          title: "向客户展示",
+          description: "在美容服务中使用Purrify，让客户看到差异。"
+        },
+        {
+          number: "03",
+          title: "自信推荐",
+          description: "客户会信任您作为专家的推荐。"
+        },
+        {
+          number: "04",
+          title: "获得收益",
+          description: "每笔销售都能获得可观的利润。"
+        }
+      ]
     },
     hero: {
       badge: "专业美容推荐",
@@ -2950,34 +2982,37 @@ export const zh = {
       ]
     },
     form: {
-      title: "申请专业美容师账户",
-      businessName: "店铺名称",
-      businessPlaceholder: "您的美容沙龙名称",
+      title: "宠物美容师批发价格申请",
+      salonName: "店铺名称",
+      salonNamePlaceholder: "您的宠物美容店名称",
+      salonPlaceholder: "您的宠物美容店名称",
       contactName: "联系人姓名",
       contactPlaceholder: "您的姓名",
       email: "电子邮箱",
-      emailPlaceholder: "your@email.com",
+      emailPlaceholder: "example@example.com",
       phone: "联系电话",
-      location: "店铺位置",
-      locationPlaceholder: "城市/省份",
-      monthlyClients: "月均服务客户数",
-      clientsPlaceholder: "大约数量",
-      interest: "感兴趣的产品",
-      interestPlaceholder: "试用装/批发/零售",
+      phonePlaceholder: "(416) 123-4567",
+      address: "店铺地址",
+      addressPlaceholder: "完整地址",
+      catsPerWeek: "每周服务猫咪数量",
+      catsPerWeekPlaceholder: "例如：50",
+      catsPlaceholder: "例如：50",
+      message: "补充信息",
+      messagePlaceholder: "告诉我们您的需求...",
       submit: "提交申请",
       submitting: "提交中...",
       success: {
-        title: "申请成功！",
-        message: "我们将在24小时内审核您的申请并与您联系。"
+        title: "申请已提交！",
+        message: "感谢您的申请。我们将在24小时内与您联系。"
       }
     },
     contact: {
       title: "需要更多信息？",
-      description: "我们的专业团队随时为您解答。",
-      callUs: "致电咨询",
-      emailUs: "邮件咨询",
-      moreInfo: "了解更多详情",
-      requestGuide: "申请产品目录"
+      description: "我们的B2B团队随时为您提供帮助。",
+      callUs: "致电我们",
+      emailUs: "发送邮件",
+      moreInfo: "了解更多",
+      requestGuide: "申请指南"
     }
   },
 

@@ -30,7 +30,7 @@ export {
  * Check if code is running in browser
  */
 function isBrowser(): boolean {
-  return typeof window !== 'undefined';
+  return typeof globalThis.window !== 'undefined';
 }
 
 /**

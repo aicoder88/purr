@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { gtmEvent } from '../../lib/gtm-events';
+import { gtmEvent } from '@/lib/gtm-events';
 
 interface PerformanceMetrics {
   lcp?: number;

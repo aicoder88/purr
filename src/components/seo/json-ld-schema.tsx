@@ -5,7 +5,7 @@ import {
   generateArticlePageSchema,
   generateLocationPageSchema,
   generateJSONLD
-} from '../../lib/seo-utils';
+} from '@/lib/seo-utils';
 
 interface JSONLDSchemaProps {
   type: 'homepage' | 'product' | 'article' | 'location';

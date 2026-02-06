@@ -5,10 +5,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { useTranslation } from "../../lib/translation-context";
+import { useTranslation } from "@/lib/translation-context";
 import Script from 'next/script';
 import { createSectionClasses, createCardClasses, GRADIENTS, COLORS } from "@/lib/theme-utils";
-import SectionHeader from "../ui/section-header";
+import SectionHeader from "@/components/ui/section-header";
 import Link from "next/link";
 
 interface FAQProps {

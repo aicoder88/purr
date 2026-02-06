@@ -19,7 +19,7 @@ export function PawCursor() {
 
   // Check if paw animation should be enabled
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof globalThis.window === "undefined") return;
 
     const checkEnabled = () => {
       const isMobile = window.innerWidth <= 768;

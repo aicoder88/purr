@@ -227,8 +227,13 @@ export const fr = {
       getFreeSample: "Obtenir l'\u00c9chantillon GRATUIT",
       soldThisWeek: "87 vendus cette semaine",
       limitedStock: "Stock limit\u00e9 hiver",
-      moneyBackGuarantee: "Garantie Satisfait ou Rembours\u00e9 30 Jours"
-    }
+      moneyBackGuarantee: "Garantie Satisfait ou Rembours\u00e9 30 Jours",
+      freeShippingOver: "Livraison gratuite sur les commandes de plus de 35$",
+      headline: "Aimez votre chat. Éliminez les odeurs.",
+      subheadline: "Le charbon actif élimine les odeurs d'ammoniac à la source. Fonctionne avec toute litière."
+    },
+    headline: "Aimez votre chat. Éliminez les odeurs.",
+    subheadline: "Le charbon actif élimine les odeurs d'ammoniac à la source. Fonctionne avec toute litière."
   },
 
   // Features
@@ -1493,7 +1498,9 @@ export const fr = {
       description: "Rejoignez des centaines d'animaleries qui offrent l'additif au charbon actif #1 au Canada. Ventes prouvées, clients fidèles et support marketing inclus.",
       cta: {
         primary: "Voir les tarifs de gros",
-        secondary: "Devenir partenaire"
+        secondary: "Devenir partenaire",
+        startPartnership: "Commencer le partenariat aujourd'hui",
+        viewPricing: "Voir les prix"
       },
       boostYour: "Boostez Vos",
       petStoreProfits: "Profits d'Animalerie",
@@ -2448,6 +2455,10 @@ export const fr = {
         tip1: "Pour les odeurs fortes existantes, faites d'abord un changement complet de litière, puis ajoutez Purrify à la litière fraîche",
         tip2: "Les foyers multi-chats peuvent devoir réappliquer tous les 4-5 jours au lieu de 7",
         tip3: "Fonctionne avec tous les types de litière: agglomérante, argile, cristal, bois, maïs ou papier"
+      },
+      proTip: {
+        title: "Conseil Pro",
+        description: "Pour les odeurs fortes, appliquez Purrify immédiatement après le nettoyage de la litière."
       }
     },
     benefits: {
@@ -2455,16 +2466,19 @@ export const fr = {
       intro: "Il y a une raison pour laquelle des milliers de propriétaires de chats sont passés au charbon actif pour le contrôle des odeurs.",
       pillar1: {
         title: "Science 100% Naturelle",
+        intro: "Une solution 100% naturelle pour les odeurs de litière",
         description: "Purrify est fait de charbon actif de noix de coco premium—rien d'autre. Pas de produits chimiques, parfums, additifs synthétiques ou charges. C'est le même matériau utilisé dans les purificateurs d'air de qualité hospitalière et les systèmes de filtration d'eau.",
         detail: "Le charbon de noix de coco est prisé pour sa haute densité de micropores, le rendant particulièrement efficace pour piéger les petites molécules de gaz comme l'ammoniac."
       },
       pillar2: {
         title: "Protection Longue Durée",
+        intro: "Protection longue durée contre les odeurs",
         description: "Une application de Purrify offre un contrôle continu de l'ammoniac pendant 7+ jours. Contrairement aux parfums qui s'estompent en quelques heures ou au bicarbonate qui cesse de fonctionner après 48 heures, le charbon actif continue de fonctionner jusqu'à saturation de ses pores.",
         detail: "La plupart des clients trouvent qu'ils peuvent réduire leurs changements complets de litière de 30-50%, économisant argent et temps."
       },
       pillar3: {
         title: "Sûr pour Tous les Chats",
+        intro: "Sûr pour tous les chats et chatons",
         description: "Parce que Purrify est totalement sans parfum et fait de charbon naturel, il est sûr pour les chats de tous âges et sensibilités. Chatons, seniors et chats avec des conditions respiratoires peuvent tous en bénéficier sans risque d'irritation.",
         detail: "Beaucoup de chats préfèrent en fait les environnements de litière non parfumés. Vous remarquerez peut-être que votre chat utilise la litière plus régulièrement après être passé à Purrify."
       }
@@ -2534,7 +2548,9 @@ export const fr = {
       days: { value: "7+", label: "Jours de Fraîcheur" },
       savings: { value: "50%", label: "Moins de Changements" },
       surfaceArea: { value: "1 150", label: "m²/g de Surface" },
-      natural: { value: "100%", label: "Ingrédients Naturels" }
+      natural: { value: "100%", label: "Ingrédients Naturels" },
+      customers: { value: "1000+", label: "Clients" },
+      rating: { value: "4.9", label: "Note Moyenne" }
     },
     faq: {
       headline: "Questions Courantes sur le Contrôle de l'Ammoniac",
@@ -2560,6 +2576,7 @@ export const fr = {
       subheadline: "Rejoignez des milliers de parents de chats qui ont éliminé l'ammoniac de litière pour de bon—pas masqué, éliminé.",
       button: "Acheter Purrify",
       secondaryButton: "Essayer le Format Découverte",
+      benefit1: "Livraison gratuite disponible",
       benefit2: "Garantie satisfaction 30 jours"
     }
   },
@@ -2615,25 +2632,58 @@ export const fr = {
 
   catCafes: {
     seo: {
-      pageTitle: "Solutions Odeurs Café à Chats",
-      description: "Gardez votre café à chats frais toute la journée. Le charbon actif Purrify élimine les odeurs de litière sans parfum.",
-      keywords: "contrôle odeur café à chats, fournitures café à chats, litière commerciale, fraîcheur café à chats",
-      openGraphAlt: "Partenaires Café à Chats"
+      pageTitle: "Purrify pour Cafés de Chats | Gardez Votre Espace Frais",
+      description: "L'arme secrète des cafés de chats prospères. Éliminez les odeurs de plusieurs chats sans masquer les senteurs avec des parfums lourds.",
+      keywords: "contrôle odeur café chat, solution odeur plusieurs chats, éliminateur odeur chat commercial, hygiène café chat",
+      openGraphAlt: "Solution d'élimination des odeurs pour café à chats"
     },
     hero: {
-      badge: "Partenariat Café à Chats",
-      titleLine1: "Gardez Votre Café à Chats",
-      titleLine2: "Frais Toute la Journée",
-      description: "Les emplacements à haute visibilité nécessitent une fraîcheur constante. Faites revenir les clients avec l'élimination des odeurs sans parfum de Purrify.",
+      badge: "Approuvé par les Cafés de Chats",
+      titleLine1: "Chats Heureux.",
+      titleLine2: "Espace Frais.",
+      description: "Les cafés de chats font confiance à Purrify pour garder leurs espaces propres sans parfums écrasants qui stressent les chats ou dérangent les clients.",
       stats: {
-        days: "Jours Frais",
-        fragrances: "Parfums",
-        natural: "Naturel"
+        days: "7+ Jours",
+        fragrances: "0 Parfums",
+        natural: "100% Naturel"
       },
       cta: {
-        primary: "Demander Kit Échantillon Café",
-        secondary: "Voir Tarifs de Gros"
+        primary: "Obtenir les Prix de Gros",
+        secondary: "En Savoir Plus"
       }
+    },
+    form: {
+      title: "Demande de Prix pour Cafés de Chats",
+      cafeName: "Nom du Café",
+      cafePlaceholder: "Nom de votre café de chats",
+      name: "Nom du Café",
+      namePlaceholder: "Nom de votre café de chats",
+      contactName: "Nom du Contact",
+      contactPlaceholder: "Votre nom complet",
+      email: "Courriel",
+      emailPlaceholder: "vous@email.com",
+      phone: "Téléphone",
+      phonePlaceholder: "(555) 123-4567",
+      address: "Adresse",
+      addressPlaceholder: "Adresse de votre café",
+      cats: "Nombre de Chats",
+      catsPlaceholder: "Combien de chats avez-vous dans le café?",
+      message: "Message",
+      messagePlaceholder: "Parlez-nous de votre café et de vos besoins...",
+      submit: "Envoyer la Demande",
+      submitting: "Envoi en cours...",
+      success: {
+        title: "Demande Envoyée!",
+        message: "Nous vous contacterons dans les 24-48 heures avec des informations sur les prix de gros."
+      }
+    },
+    contact: {
+      title: "Des Questions?",
+      description: "Notre équipe de partenariats est prête à vous aider.",
+      callUs: "Appelez-nous",
+      emailUs: "Envoyez-nous un courriel",
+      moreInfo: "En Savoir Plus",
+      requestGuide: "Demander un Guide"
     }
   },
 
@@ -2658,6 +2708,55 @@ export const fr = {
         primary: "Demander un Échantillon Refuge",
         secondary: "Voir le Programme de Don"
       }
+    },
+    benefits: {
+      title: "Avantages Partenaire Refuge",
+      pricing: {
+        title: "Tarifs Spéciaux",
+        description: "Tarifs réduits pour les refuges sans but lucratif et organisations de sauvetage."
+      },
+      priority: {
+        title: "Support Prioritaire",
+        description: "Équipe de support dédiée pour aider avec les grandes commandes et besoins urgents."
+      },
+      donations: {
+        title: "Programme de Dons",
+        description: "Les refuges éligibles peuvent recevoir des produits donnés pour les événements de collecte de fonds."
+      }
+    },
+    form: {
+      title: "Demande de Partenariat Refuge",
+      orgName: "Nom de l'Organisation",
+      orgPlaceholder: "Nom de votre refuge ou organisation",
+      orgNamePlaceholder: "Nom de votre refuge",
+      contactName: "Nom du Contact",
+      contactPlaceholder: "Votre nom complet",
+      email: "Courriel",
+      emailPlaceholder: "vous@email.com",
+      phone: "Téléphone",
+      phonePlaceholder: "(555) 123-4567",
+      address: "Adresse",
+      addressPlaceholder: "Adresse de votre refuge",
+      catsCount: "Nombre de Chats",
+      catsPlaceholder: "Combien de chats accueillez-vous?",
+      nonProfit: "Numéro d'Organisme Sans But Lucratif (si applicable)",
+      nonProfitPlaceholder: "ex: 123456789 RR 0001",
+      message: "Message",
+      messagePlaceholder: "Parlez-nous de votre refuge et de vos besoins...",
+      submit: "Envoyer la Demande",
+      submitting: "Envoi en cours...",
+      success: {
+        title: "Demande Envoyée!",
+        message: "Nous vous contacterons dans les 24-48 heures avec des informations sur notre programme de partenariat."
+      }
+    },
+    contact: {
+      title: "Des Questions?",
+      description: "Notre équipe de partenariats est prête à vous aider.",
+      callUs: "Appelez-nous",
+      emailUs: "Envoyez-nous un courriel",
+      moreInfo: "En Savoir Plus",
+      requestGuide: "Demander un Guide"
     }
   },
 
@@ -2719,6 +2818,31 @@ export const fr = {
         "Pas de pression - le produit parle de lui-même"
       ]
     },
+    howItWorks: {
+      title: "Comment Ça Marche",
+      steps: [
+        {
+          number: "01",
+          title: "Demandez Votre Échantillon",
+          description: "Recevez un pack de démonstration gratuit pour tester Purrify dans votre salon."
+        },
+        {
+          number: "02",
+          title: "Montrez à Vos Clients",
+          description: "Utilisez Purrify pendant le toilettage et laissez les clients voir la différence."
+        },
+        {
+          number: "03",
+          title: "Recommandez avec Confiance",
+          description: "Vos clients feront confiance à votre recommandation d'expert."
+        },
+        {
+          number: "04",
+          title: "Gagnez des Commissions",
+          description: "Recevez des marges attractives sur chaque vente réalisée."
+        }
+      ]
+    },
     partnerBenefits: {
       title: "Avantages Partenariat",
       benefits: {
@@ -2763,18 +2887,28 @@ export const fr = {
       ]
     },
     form: {
-      title: "Demande de Partenariat",
-      businessName: "Nom de l'Entreprise",
+      title: "Demande de Prix pour Toiletteurs",
+      salonName: "Nom du Salon",
+      salonNamePlaceholder: "Nom de votre salon de toilettage",
+      salonPlaceholder: "Nom de votre salon de toilettage",
       contactName: "Nom du Contact",
+      contactPlaceholder: "Votre nom complet",
       email: "Courriel",
+      emailPlaceholder: "vous@email.com",
       phone: "Téléphone",
-      location: "Emplacement",
-      monthlyClients: "Clients Chats Mensuels",
-      interest: "Parlez-nous de votre intérêt",
+      phonePlaceholder: "(555) 123-4567",
+      address: "Adresse",
+      addressPlaceholder: "Adresse de votre salon",
+      catsPerWeek: "Chats par Semaine",
+      catsPerWeekPlaceholder: "Combien de chats toilettez-vous par semaine?",
+      catsPlaceholder: "Combien de chats toilettez-vous par semaine?",
+      message: "Message",
+      messagePlaceholder: "Parlez-nous de votre salon et de vos besoins...",
       submit: "Envoyer la Demande",
+      submitting: "Envoi en cours...",
       success: {
-        title: "Demande Reçue!",
-        message: "Merci! Notre équipe vous contactera dans les 24-48 heures."
+        title: "Demande Envoyée!",
+        message: "Nous vous contacterons dans les 24-48 heures avec des informations sur les prix de gros."
       }
     },
     contact: {
@@ -3657,6 +3791,5 @@ export const fr = {
       }
     },
     backToLearn: "Retour à Apprendre"
-  }
-
+  },
 };

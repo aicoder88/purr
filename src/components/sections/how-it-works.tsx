@@ -2,7 +2,7 @@
 
 import { Container } from "@/components/ui/container";
 import Image from 'next/image';
-import { useTranslation } from "../../lib/translation-context";
+import { useTranslation } from "@/lib/translation-context";
 import Link from "next/link";
 
 export function HowItWorks() {

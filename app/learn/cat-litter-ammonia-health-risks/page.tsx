@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/ammonia-hero.png',
+        url: 'https://www.purrify.ca/images/ammonia-hero.webp',
         width: 1200,
         height: 800,
         alt: 'Cat litter ammonia health risks - safety guide',
@@ -47,7 +47,7 @@ const articleSchema = {
   inLanguage: 'en-CA',
   headline: 'Is Ammonia From Cat Litter Dangerous? Safe Levels Explained',
   description: "That burning sensation when you scoop? That's ammonia. At high levels, it's harmful to you AND your cat. Here's when to worry—and how to fix it fast.",
-  image: 'https://www.purrify.ca/images/ammonia-hero.png',
+  image: 'https://www.purrify.ca/images/ammonia-hero.webp',
   datePublished: '2025-01-22T10:00:00Z',
   dateModified: new Date().toISOString(),
   author: {

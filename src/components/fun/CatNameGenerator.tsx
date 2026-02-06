@@ -186,7 +186,7 @@ export function CatNameGenerator() {
                     onClick={copyToClipboard}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="absolute top-3 right-3 p-2 text-gray-400 dark:text-gray-500 hover:text-purple-500 dark:hover:text-purple-400 transition-colors bg-white dark:bg-gray-700 rounded-full shadow-sm"
+                    className="absolute top-3 right-3 p-2 text-gray-500 dark:text-gray-400 hover:text-purple-500 dark:hover:text-purple-400 transition-colors bg-white dark:bg-gray-700 rounded-full shadow-sm"
                     title="Copy name"
                 >
                     {copied ? (
@@ -209,7 +209,7 @@ export function CatNameGenerator() {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0 }}
-                            className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full"
+                            className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-green-600 dark:bg-green-600 text-white text-xs font-bold px-2 py-1 rounded-full whitespace-nowrap shadow-sm"
                         >
                             Copied!
                         </motion.div>
