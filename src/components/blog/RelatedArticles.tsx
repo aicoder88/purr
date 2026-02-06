@@ -32,7 +32,7 @@ const ALL_ARTICLES: Article[] = [
   {
     title: 'Best Litter Odor Remover for Small Apartments',
     href: '/blog/best-litter-odor-remover-small-apartments',
-    image: '/optimized/17g-nice.webp',
+    image: '/optimized/17g-transparent.webp',
     alt: 'Compact 12g product ideal for small apartments',
   },
   {
@@ -134,7 +134,7 @@ const ALL_ARTICLES: Article[] = [
   {
     title: 'Activated Carbon Benefits for Cat Owners',
     href: '/learn/activated-carbon-benefits',
-    image: '/optimized/activated-carbon-benefits.webp',
+    image: '/optimized/activated-carbon-science-benefits-ghibli.webp',
     alt: 'Happy cat owner in fresh environment'
   },
   {

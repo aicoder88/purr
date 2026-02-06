@@ -67,9 +67,9 @@ async function getReferralData(code: string): Promise<{ code: string; referralDa
 export async function generateMetadata({ params }: ReferralPageProps): Promise<Metadata> {
   const { code } = await params;
   const { referralData } = await getReferralData(code);
-  
+
   const trialPrice = formatProductPrice('trial');
-  
+
   const pageTitle = referralData.isValid
     ? `${referralData.referrerName} recommends ${SITE_NAME} - Get Your FREE Trial!`
     : `Invalid Referral Code - ${SITE_NAME}`;
@@ -93,7 +93,7 @@ export async function generateMetadata({ params }: ReferralPageProps): Promise<M
       type: 'website',
       images: [
         {
-          url: 'https://www.purrify.ca/optimized/17g-nice.webp',
+          url: 'https://www.purrify.ca/optimized/17g-transparent.webp',
           width: 1200,
           height: 630,
           alt: 'Purrify Free Trial Offer',

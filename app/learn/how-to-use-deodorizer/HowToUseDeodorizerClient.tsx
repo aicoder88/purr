@@ -47,7 +47,7 @@ export default function HowToUseDeodorizerClient() {
         <div className="absolute top-0 left-0 w-full h-full -z-10 bg-gradient-to-b from-brand-green-light/20 to-transparent dark:from-brand-purple/10 dark:to-transparent" />
         <Container>
           <div className="max-w-4xl mx-auto text-center mb-12">
-            <Badge className="mb-4 px-4 py-1.5 bg-brand-green-light text-brand-green font-bold text-sm tracking-wide dark:bg-brand-green/20 border-none">
+            <Badge className="mb-4 px-4 py-1.5 bg-brand-green-light text-brand-green-800 font-bold text-sm tracking-wide dark:bg-brand-green/20 dark:text-brand-green border-none">
               EDUCATIONAL GUIDE
             </Badge>
             <h1 className="font-heading text-4xl md:text-6xl font-black text-gray-900 dark:text-gray-50 mb-6 leading-[1.1]">
@@ -73,7 +73,7 @@ export default function HowToUseDeodorizerClient() {
                   />
                 </div>
                 <div className="p-8 md:p-12 flex flex-col justify-center bg-brand-cream/50 dark:bg-gray-800/50">
-                  <div className="inline-flex items-center gap-2 text-brand-green font-bold mb-4">
+                  <div className="inline-flex items-center gap-2 text-brand-green-700 dark:text-brand-green font-bold mb-4">
                     <Zap size={20} className="fill-current" />
                     <span>IMMEDIATE RESULTS</span>
                   </div>
@@ -129,7 +129,7 @@ export default function HowToUseDeodorizerClient() {
 
             <Card className="border-none shadow-xl bg-gray-50 dark:bg-gray-900/50" id="step-2">
               <CardContent className="p-8">
-                <div className="w-14 h-14 bg-brand-green/10 text-brand-green rounded-2xl flex items-center justify-center mb-6">
+                <div className="w-14 h-14 bg-brand-green/10 text-brand-green-700 dark:text-brand-green rounded-2xl flex items-center justify-center mb-6">
                   <span className="text-2xl font-black">02</span>
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Precise Measurement</h3>
@@ -137,22 +137,22 @@ export default function HowToUseDeodorizerClient() {
                   Use 1-2 tablespoons for a standard box. Multi-cat homes may need up to 3 tablespoons.
                 </p>
                 <div className="flex gap-2">
-                  <Badge className="bg-brand-green/20 text-brand-green border-none">1 Cat: 1-2 Tbsp</Badge>
-                  <Badge className="bg-brand-green/20 text-brand-green border-none">2+ Cats: 3 Tbsp</Badge>
+                  <Badge className="bg-brand-green/20 text-brand-green-800 dark:text-brand-green border-none">1 Cat: 1-2 Tbsp</Badge>
+                  <Badge className="bg-brand-green/20 text-brand-green-800 dark:text-brand-green border-none">2+ Cats: 3 Tbsp</Badge>
                 </div>
               </CardContent>
             </Card>
 
             <Card className="border-none shadow-xl bg-gray-50 dark:bg-gray-900/50" id="step-3">
               <CardContent className="p-8">
-                <div className="w-14 h-14 bg-brand-red/10 text-brand-red rounded-2xl flex items-center justify-center mb-6">
+                <div className="w-14 h-14 bg-brand-red/10 text-brand-red-700 dark:text-brand-red rounded-2xl flex items-center justify-center mb-6">
                   <span className="text-2xl font-black">03</span>
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Strategic Distribution</h3>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
                   Sprinkle evenly across the litter surface. Corners and edges where odors concentrate benefit most.
                 </p>
-                <p className="text-sm font-bold text-brand-red/80 flex items-center gap-1">
+                <p className="text-sm font-bold text-brand-red-700 dark:text-brand-red/80 flex items-center gap-1">
                   <Cat size={16} /> Target Where Your Cat Digs Most
                 </p>
               </CardContent>
@@ -177,7 +177,7 @@ export default function HowToUseDeodorizerClient() {
                   { title: "Applying to Dirty Litter", desc: "Always scoop first. Adding additive to soiled litter reduces effectiveness." }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-4 p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-red-50 dark:border-red-900/30">
-                    <span className="text-red-500 dark:text-red-400 font-black text-lg">✕</span>
+                    <span className="text-red-600 dark:text-red-400 font-black text-lg">✕</span>
                     <div>
                       <h4 className="font-bold text-gray-900 dark:text-white mb-1">{item.title}</h4>
                       <p className="text-sm text-gray-600 dark:text-gray-400">{item.desc}</p>
@@ -189,7 +189,7 @@ export default function HowToUseDeodorizerClient() {
 
             <div>
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-12 h-12 bg-brand-green-light text-brand-green rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-brand-green-light text-brand-green-700 dark:text-brand-green rounded-xl flex items-center justify-center">
                   <Lightbulb size={24} />
                 </div>
                 <h2 className="text-3xl font-black text-gray-900 dark:text-white">Pro Mastery Tips</h2>
@@ -200,7 +200,7 @@ export default function HowToUseDeodorizerClient() {
                   { title: "The 24h Window", desc: "Expecting guests? Apply the additive the night before for maximum freshness.", icon: Sparkles }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-4 p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-brand-green-light/50 dark:border-brand-green/30">
-                    <item.icon className="text-brand-green" size={24} />
+                    <item.icon className="text-brand-green-700 dark:text-brand-green" size={24} />
                     <div>
                       <h4 className="font-bold text-gray-900 dark:text-white mb-1">{item.title}</h4>
                       <p className="text-sm text-gray-600 dark:text-gray-400">{item.desc}</p>

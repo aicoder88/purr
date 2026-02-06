@@ -134,11 +134,11 @@ export function ProductsHero() {
                                 transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
                                 className="relative z-10 w-full h-full"
                             >
-                                {/* Regular Bag (Hero) */}
+                                {/* Family Bag (Hero - Largest) */}
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] md:w-[350px] z-20">
                                     <Image
-                                        src="/images/products/60g.webp"
-                                        alt="Purrify Regular Size"
+                                        src="/optimized/140g-transparent.webp"
+                                        alt="Purrify Family Size"
                                         width={640}
                                         height={640}
                                         sizes="(max-width: 768px) 280px, 350px"
@@ -147,11 +147,11 @@ export function ProductsHero() {
                                     />
                                 </div>
 
-                                {/* Family Bag (Background Right) */}
+                                {/* Regular Bag (Background Right - Medium) */}
                                 <div className="absolute top-1/3 right-0 lg:-right-6 w-[200px] md:w-[260px] z-10 opacity-90 blur-[0.5px]">
                                     <Image
-                                        src="/images/products/140g.webp"
-                                        alt="Purrify Family Size"
+                                        src="/optimized/60g-transparent.webp"
+                                        alt="Purrify Regular Size"
                                         width={640}
                                         height={640}
                                         sizes="(max-width: 768px) 200px, 260px"
@@ -159,10 +159,10 @@ export function ProductsHero() {
                                     />
                                 </div>
 
-                                {/* Trial Bag (Foreground Left) */}
+                                {/* Trial Bag (Foreground Left - Smallest) */}
                                 <div className="absolute bottom-12 left-4 md:left-8 w-[140px] md:w-[180px] z-30">
                                     <Image
-                                        src="/optimized/17g-nice.webp"
+                                        src="/optimized/17g-transparent.webp"
                                         alt="Purrify Trial Size"
                                         width={640}
                                         height={640}

@@ -1,0 +1,485 @@
+{
+  "timestamp": "2026-02-06T02:26:11.864Z",
+  "totalPages": 120,
+  "summary": {
+    "alreadyStatic": 74,
+    "canOptimize": 0,
+    "needsRefactor": 36,
+    "inherentlyDynamic": 5,
+    "needsReview": 5
+  },
+  "pages": {
+    "canOptimize": [],
+    "needsRefactor": [
+      {
+        "route": "/admin/analytics/ab-tests",
+        "file": "admin/analytics/ab-tests/page.tsx"
+      },
+      {
+        "route": "/admin/analytics",
+        "file": "admin/analytics/page.tsx"
+      },
+      {
+        "route": "/admin/blog/categories",
+        "file": "admin/blog/categories/page.tsx"
+      },
+      {
+        "route": "/admin/blog/new",
+        "file": "admin/blog/new/page.tsx"
+      },
+      {
+        "route": "/admin/blog",
+        "file": "admin/blog/page.tsx"
+      },
+      {
+        "route": "/admin/blog/tags",
+        "file": "admin/blog/tags/page.tsx"
+      },
+      {
+        "route": "/admin/ops/affiliates/[id]",
+        "file": "admin/ops/affiliates/[id]/page.tsx"
+      },
+      {
+        "route": "/admin/ops/affiliates",
+        "file": "admin/ops/affiliates/page.tsx"
+      },
+      {
+        "route": "/admin/ops/leads",
+        "file": "admin/ops/leads/page.tsx"
+      },
+      {
+        "route": "/admin/ops/orders",
+        "file": "admin/ops/orders/page.tsx"
+      },
+      {
+        "route": "/admin/ops",
+        "file": "admin/ops/page.tsx"
+      },
+      {
+        "route": "/admin/ops/retailers",
+        "file": "admin/ops/retailers/page.tsx"
+      },
+      {
+        "route": "/admin/ops/social",
+        "file": "admin/ops/social/page.tsx"
+      },
+      {
+        "route": "/admin/referral-analytics",
+        "file": "admin/referral-analytics/page.tsx"
+      },
+      {
+        "route": "/admin/seo",
+        "file": "admin/seo/page.tsx"
+      },
+      {
+        "route": "/affiliate/activate",
+        "file": "affiliate/activate/page.tsx"
+      },
+      {
+        "route": "/affiliate/dashboard/assets",
+        "file": "affiliate/dashboard/assets/page.tsx"
+      },
+      {
+        "route": "/affiliate/dashboard/links",
+        "file": "affiliate/dashboard/links/page.tsx"
+      },
+      {
+        "route": "/affiliate/dashboard",
+        "file": "affiliate/dashboard/page.tsx"
+      },
+      {
+        "route": "/affiliate/dashboard/payouts",
+        "file": "affiliate/dashboard/payouts/page.tsx"
+      },
+      {
+        "route": "/affiliate/dashboard/settings",
+        "file": "affiliate/dashboard/settings/page.tsx"
+      },
+      {
+        "route": "/affiliate/dashboard/stats",
+        "file": "affiliate/dashboard/stats/page.tsx"
+      },
+      {
+        "route": "/affiliate/login",
+        "file": "affiliate/login/page.tsx"
+      },
+      {
+        "route": "/affiliate",
+        "file": "affiliate/page.tsx"
+      },
+      {
+        "route": "/affiliate/signup",
+        "file": "affiliate/signup/page.tsx"
+      },
+      {
+        "route": "/dialergptpitchdeck",
+        "file": "dialergptpitchdeck/page.tsx"
+      },
+      {
+        "route": "/documents",
+        "file": "documents/page.tsx"
+      },
+      {
+        "route": "/invest",
+        "file": "invest/page.tsx"
+      },
+      {
+        "route": "/offline",
+        "file": "offline/page.tsx"
+      },
+      {
+        "route": "/pos",
+        "file": "pos/page.tsx"
+      },
+      {
+        "route": "/privacy-policy",
+        "file": "privacy-policy/page.tsx"
+      },
+      {
+        "route": "/referral",
+        "file": "referral/page.tsx"
+      },
+      {
+        "route": "/retailer/portal/login",
+        "file": "retailer/portal/login/page.tsx"
+      },
+      {
+        "route": "/terms",
+        "file": "terms/page.tsx"
+      },
+      {
+        "route": "/tools/cat-litter-calculator",
+        "file": "tools/cat-litter-calculator/page.tsx"
+      },
+      {
+        "route": "/viral",
+        "file": "viral/page.tsx"
+      }
+    ],
+    "inherentlyDynamic": [
+      {
+        "route": "/ammonia-control",
+        "file": "ammonia-control/page.tsx",
+        "reason": "⚠️ Uses headers() directly"
+      },
+      {
+        "route": "/blog",
+        "file": "blog/page.tsx",
+        "reason": "⚠️ Uses searchParams (inherently dynamic)"
+      },
+      {
+        "route": "/canada",
+        "file": "canada/page.tsx",
+        "reason": "⚠️ Uses headers() directly"
+      },
+      {
+        "route": "/thank-you",
+        "file": "thank-you/page.tsx",
+        "reason": "⚠️ Uses searchParams (inherently dynamic)"
+      },
+      {
+        "route": "/thank-you/upsell",
+        "file": "thank-you/upsell/page.tsx",
+        "reason": "⚠️ Uses searchParams (inherently dynamic)"
+      }
+    ],
+    "alreadyStatic": [
+      {
+        "route": "/about/our-story",
+        "file": "about/our-story/page.tsx"
+      },
+      {
+        "route": "/about",
+        "file": "about/page.tsx"
+      },
+      {
+        "route": "/b2b",
+        "file": "b2b/page.tsx"
+      },
+      {
+        "route": "/b2b/sell-sheet",
+        "file": "b2b/sell-sheet/page.tsx"
+      },
+      {
+        "route": "/blog/[slug]",
+        "file": "blog/[slug]/page.tsx"
+      },
+      {
+        "route": "/blog/activated-carbon-litter-additive-benefits",
+        "file": "blog/activated-carbon-litter-additive-benefits/page.tsx"
+      },
+      {
+        "route": "/blog/activated-carbon-vs-baking-soda-comparison",
+        "file": "blog/activated-carbon-vs-baking-soda-comparison/page.tsx"
+      },
+      {
+        "route": "/blog/activated-carbon-vs-zeolite",
+        "file": "blog/activated-carbon-vs-zeolite/page.tsx"
+      },
+      {
+        "route": "/blog/activated-carbon-vs-zeolite-cat-litter",
+        "file": "blog/activated-carbon-vs-zeolite-cat-litter/page.tsx"
+      },
+      {
+        "route": "/blog/best-litter-odor-remover-small-apartments",
+        "file": "blog/best-litter-odor-remover-small-apartments/page.tsx"
+      },
+      {
+        "route": "/blog/best-odor-control-litter-2026",
+        "file": "blog/best-odor-control-litter-2026/page.tsx"
+      },
+      {
+        "route": "/blog/cat-litter-additive-comparison-2026",
+        "file": "blog/cat-litter-additive-comparison-2026/page.tsx"
+      },
+      {
+        "route": "/blog/cat-litter-odor-myths",
+        "file": "blog/cat-litter-odor-myths/page.tsx"
+      },
+      {
+        "route": "/blog/cat-litter-smell-wont-go-away",
+        "file": "blog/cat-litter-smell-wont-go-away/page.tsx"
+      },
+      {
+        "route": "/blog/cat-litter-smell-worse-summer",
+        "file": "blog/cat-litter-smell-worse-summer/page.tsx"
+      },
+      {
+        "route": "/blog/cat-litter-smell-worse-winter",
+        "file": "blog/cat-litter-smell-worse-winter/page.tsx"
+      },
+      {
+        "route": "/blog/category/[slug]",
+        "file": "blog/category/[slug]/page.tsx"
+      },
+      {
+        "route": "/blog/embarrassed-guests-visit-cat-litter-smell",
+        "file": "blog/embarrassed-guests-visit-cat-litter-smell/page.tsx"
+      },
+      {
+        "route": "/blog/fresh-step-vs-arm-hammer-comparison",
+        "file": "blog/fresh-step-vs-arm-hammer-comparison/page.tsx"
+      },
+      {
+        "route": "/blog/house-smells-like-cat-litter-solutions",
+        "file": "blog/house-smells-like-cat-litter-solutions/page.tsx"
+      },
+      {
+        "route": "/blog/tag/[slug]",
+        "file": "blog/tag/[slug]/page.tsx"
+      },
+      {
+        "route": "/buy",
+        "file": "buy/page.tsx"
+      },
+      {
+        "route": "/case-studies",
+        "file": "case-studies/page.tsx"
+      },
+      {
+        "route": "/cat-cafes",
+        "file": "cat-cafes/page.tsx"
+      },
+      {
+        "route": "/contact",
+        "file": "contact/page.tsx"
+      },
+      {
+        "route": "/customer/portal",
+        "file": "customer/portal/page.tsx"
+      },
+      {
+        "route": "/customer/referrals",
+        "file": "customer/referrals/page.tsx"
+      },
+      {
+        "route": "/es/opiniones",
+        "file": "es/opiniones/page.tsx"
+      },
+      {
+        "route": "/free-trial",
+        "file": "free-trial/page.tsx"
+      },
+      {
+        "route": "/fun",
+        "file": "fun/page.tsx"
+      },
+      {
+        "route": "/groomers",
+        "file": "groomers/page.tsx"
+      },
+      {
+        "route": "/hospitality",
+        "file": "hospitality/page.tsx"
+      },
+      {
+        "route": "/learn/activated-carbon-benefits",
+        "file": "learn/activated-carbon-benefits/page.tsx"
+      },
+      {
+        "route": "/learn/activated-carbon-vs-baking-soda-deodorizers",
+        "file": "learn/activated-carbon-vs-baking-soda-deodorizers/page.tsx"
+      },
+      {
+        "route": "/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative",
+        "file": "learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/page.tsx"
+      },
+      {
+        "route": "/learn/ammonia-science",
+        "file": "learn/ammonia-science/page.tsx"
+      },
+      {
+        "route": "/learn/cat-litter-ammonia-health-risks",
+        "file": "learn/cat-litter-ammonia-health-risks/page.tsx"
+      },
+      {
+        "route": "/learn/cat-litter-guide",
+        "file": "learn/cat-litter-guide/page.tsx"
+      },
+      {
+        "route": "/learn/faq",
+        "file": "learn/faq/page.tsx"
+      },
+      {
+        "route": "/learn/glossary",
+        "file": "learn/glossary/page.tsx"
+      },
+      {
+        "route": "/learn/how-activated-carbon-works",
+        "file": "learn/how-activated-carbon-works/page.tsx"
+      },
+      {
+        "route": "/learn/how-it-works",
+        "file": "learn/how-it-works/page.tsx"
+      },
+      {
+        "route": "/learn/how-to-use-deodorizer",
+        "file": "learn/how-to-use-deodorizer/page.tsx"
+      },
+      {
+        "route": "/learn",
+        "file": "learn/page.tsx"
+      },
+      {
+        "route": "/learn/safety",
+        "file": "learn/safety/page.tsx"
+      },
+      {
+        "route": "/learn/science",
+        "file": "learn/science/page.tsx"
+      },
+      {
+        "route": "/learn/solutions/ammonia-smell-cat-litter",
+        "file": "learn/solutions/ammonia-smell-cat-litter/page.tsx"
+      },
+      {
+        "route": "/learn/solutions/apartment-cat-smell-solution",
+        "file": "learn/solutions/apartment-cat-smell-solution/page.tsx"
+      },
+      {
+        "route": "/learn/solutions/how-to-neutralize-ammonia-cat-litter",
+        "file": "learn/solutions/how-to-neutralize-ammonia-cat-litter/page.tsx"
+      },
+      {
+        "route": "/learn/solutions/litter-box-smell-elimination",
+        "file": "learn/solutions/litter-box-smell-elimination/page.tsx"
+      },
+      {
+        "route": "/learn/solutions/multiple-cats-odor-control",
+        "file": "learn/solutions/multiple-cats-odor-control/page.tsx"
+      },
+      {
+        "route": "/learn/solutions/natural-cat-litter-additive",
+        "file": "learn/solutions/natural-cat-litter-additive/page.tsx"
+      },
+      {
+        "route": "/learn/solutions",
+        "file": "learn/solutions/page.tsx"
+      },
+      {
+        "route": "/learn/solutions/senior-cat-litter-solutions",
+        "file": "learn/solutions/senior-cat-litter-solutions/page.tsx"
+      },
+      {
+        "route": "/learn/using-deodorizers-with-kittens",
+        "file": "learn/using-deodorizers-with-kittens/page.tsx"
+      },
+      {
+        "route": "/locations/[citySlug]",
+        "file": "locations/[citySlug]/page.tsx"
+      },
+      {
+        "route": "/locations",
+        "file": "locations/page.tsx"
+      },
+      {
+        "route": "/locations/province/[provinceSlug]",
+        "file": "locations/province/[provinceSlug]/page.tsx"
+      },
+      {
+        "route": "/",
+        "file": "page.tsx"
+      },
+      {
+        "route": "/products/family-pack",
+        "file": "products/family-pack/page.tsx"
+      },
+      {
+        "route": "/products",
+        "file": "products/page.tsx"
+      },
+      {
+        "route": "/products/standard",
+        "file": "products/standard/page.tsx"
+      },
+      {
+        "route": "/products/trial-size",
+        "file": "products/trial-size/page.tsx"
+      },
+      {
+        "route": "/results",
+        "file": "results/page.tsx"
+      },
+      {
+        "route": "/retailers",
+        "file": "retailers/page.tsx"
+      },
+      {
+        "route": "/reviews",
+        "file": "reviews/page.tsx"
+      },
+      {
+        "route": "/science",
+        "file": "science/page.tsx"
+      },
+      {
+        "route": "/shelters",
+        "file": "shelters/page.tsx"
+      },
+      {
+        "route": "/stores",
+        "file": "stores/page.tsx"
+      },
+      {
+        "route": "/support",
+        "file": "support/page.tsx"
+      },
+      {
+        "route": "/support/shipping",
+        "file": "support/shipping/page.tsx"
+      },
+      {
+        "route": "/support/subscription",
+        "file": "support/subscription/page.tsx"
+      },
+      {
+        "route": "/try-free",
+        "file": "try-free/page.tsx"
+      },
+      {
+        "route": "/veterinarians",
+        "file": "veterinarians/page.tsx"
+      }
+    ]
+  }
+}

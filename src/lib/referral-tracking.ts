@@ -191,7 +191,7 @@ export function applyReferralDiscountToCart(cartItems: Array<{ id: string; price
     price: 0,
     originalPrice: getProductPrice('trial'),
     quantity: 1,
-    image: '/optimized/17g-nice.webp',
+    image: '/optimized/17g-transparent.webp',
     isReferralReward: true,
     referralCode: referralInfo.code,
     description: `Free trial thanks to ${referralInfo.referrerName}`,

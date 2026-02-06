@@ -349,7 +349,7 @@ export function RetailerContact() {
                     <div className="text-xs text-gray-600 dark:text-gray-300">{success?.timeline?.firstShipment?.label || 'First Shipment'}</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-black text-[#10B981] dark:text-[#34D399]">{success?.timeline?.firstSales?.value || 'Week 1'}</div>
+                    <div className="text-2xl font-black text-brand-green-700 dark:text-[#34D399]">{success?.timeline?.firstSales?.value || 'Week 1'}</div>
                     <div className="text-xs text-gray-600 dark:text-gray-300">{success?.timeline?.firstSales?.label || 'First Sales'}</div>
                   </div>
                 </div>
@@ -374,8 +374,12 @@ export function RetailerContact() {
   }
 
   return (
-    <section id="retailer-contact" className="py-24 bg-white dark:bg-gray-950/50 transition-colors duration-300">
-      <Container>
+    <section id="retailer-contact" className="relative py-24 bg-white dark:bg-gray-950/50 transition-colors duration-300 overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#5B2EFF]/5 dark:bg-[#5B2EFF]/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#3694FF]/5 dark:bg-[#3694FF]/10 rounded-full blur-[100px] pointer-events-none" />
+
+      <Container className="relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-indigo-50 dark:bg-indigo-900/20 text-[#5B2EFF] dark:text-[#5B2EFF] font-bold text-sm mb-6 border border-indigo-100 dark:border-indigo-800/30">
@@ -395,7 +399,7 @@ export function RetailerContact() {
             {/* Urgency & Social Proof */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-12">
               <div className="bg-green-50 dark:bg-green-900/10 rounded-2xl p-5 border border-green-100 dark:border-green-800/30">
-                <div className="text-2xl font-black text-[#10B981] dark:text-[#34D399] mb-1">{contact?.urgencyStats?.approvalTime?.value || '72hrs'}</div>
+                <div className="text-2xl font-black text-brand-green-700 dark:text-[#34D399] mb-1">{contact?.urgencyStats?.approvalTime?.value || '72hrs'}</div>
                 <div className="text-sm font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wide">{contact?.urgencyStats?.approvalTime?.label || 'Approval Time'}</div>
               </div>
               <div className="bg-red-50 dark:bg-red-900/10 rounded-2xl p-5 border border-red-100 dark:border-red-800/30">
@@ -611,7 +615,7 @@ export function RetailerContact() {
                     businessType={stories?.stories?.pattesEtGriffes?.businessType || 'Store Owner / Manager'}
                     quote={stories?.stories?.pattesEtGriffes?.quote || 'Our customers ask for Purrify by name now. It\'s an easy recommendation at the counter and reorders have been consistent month after month.'}
                     metric={stories?.stories?.pattesEtGriffes?.metric || '30 day reorder cycle'}
-                    metricColor="text-[#10B981] dark:text-[#34D399]"
+                    metricColor="text-brand-green-700 dark:text-[#34D399]"
                   />
 
                   <SuccessStoryCard

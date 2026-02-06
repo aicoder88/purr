@@ -30,7 +30,7 @@ export async function POST(req: Request): Promise<Response> {
 
     // Calculate pricing and shipping
     const pricing = calculatePricing(productData, quantity, location);
-    
+
     // Prepare Stripe checkout data
     const checkoutData = await prepareStripeData(productData, quantity, pricing);
 
@@ -77,7 +77,7 @@ export async function POST(req: Request): Promise<Response> {
 
   } catch (error) {
     console.error('Prefetch error:', error);
-    
+
     return new Response('Internal server error', {
       status: 500,
       headers: {
@@ -96,15 +96,17 @@ async function getProductData(productId: string) {
       price: getProductPrice('trial'),
       weight: 0.012, // kg
       sku: 'PURR-12G',
-      stripe_price_id: 'price_trial_12g'
+      stripe_price_id: 'price_trial_12g',
+      image: '17g-transparent.webp'
     },
     '50g': {
-      id: '50g', 
+      id: '50g',
       name: 'Purrify 50g Standard',
       price: getProductPrice('standard'),
       weight: 0.05,
       sku: 'PURR-50G',
-      stripe_price_id: 'price_standard_50g'
+      stripe_price_id: 'price_standard_50g',
+      image: '60g-transparent.webp'
     },
     '120g': {
       id: '120g',
@@ -112,7 +114,8 @@ async function getProductData(productId: string) {
       price: getProductPrice('family'),
       weight: 0.12,
       sku: 'PURR-120G',
-      stripe_price_id: 'price_family_120g'
+      stripe_price_id: 'price_family_120g',
+      image: '60g-transparent.webp'
     }
   };
 
@@ -121,7 +124,7 @@ async function getProductData(productId: string) {
 
 function calculatePricing(product: { price: number; taxable?: boolean }, quantity: number, location?: string) {
   const subtotal = product.price * quantity;
-  
+
   // Calculate shipping (free over $35 in Canada)
   let shipping = 0;
   if (subtotal < 35) {
@@ -161,7 +164,7 @@ function calculatePricing(product: { price: number; taxable?: boolean }, quantit
   };
 }
 
-async function prepareStripeData(product: { id: string; name: string; price: number }, quantity: number, pricing: { subtotal: number; taxes: number; total: number; shipping: number }) {
+async function prepareStripeData(product: { id: string; name: string; price: number; image?: string }, quantity: number, pricing: { subtotal: number; taxes: number; total: number; shipping: number }) {
   // Prepare Stripe checkout session data for ultra-fast creation
   return {
     mode: 'payment',
@@ -173,7 +176,7 @@ async function prepareStripeData(product: { id: string; name: string; price: num
           product_data: {
             name: product.name,
             description: `Activated carbon cat litter additive - ${product.id}`,
-            images: [`https://www.purrify.ca/optimized/${product.id}.webp`],
+            images: [`https://www.purrify.ca/optimized/${product.image || `${product.id}.webp`}`],
           },
           unit_amount: Math.round(product.price * 100), // Stripe uses cents
         },
@@ -213,16 +216,16 @@ function generateCacheKey(productId: string, quantity: number, location?: string
 async function storeInEdgeCache(key: string, data: Record<string, unknown>) {
   // In production, this would use Vercel's Edge Config or similar
   // For now, we'll simulate with a simple in-memory approach
-  
+
   // Edge cache simulation - in production use proper edge storage
   const cache = new Map();
   cache.set(key, JSON.stringify(data));
-  
+
   // Set expiration
   setTimeout(() => {
     cache.delete(key);
   }, 5 * 60 * 1000); // 5 minutes
-  
+
   return true;
 }
 

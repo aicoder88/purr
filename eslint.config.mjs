@@ -27,6 +27,7 @@ const eslintConfig = [
       '*.config.ts',
       'next-env.d.ts',
       'public/sw-optimized.js',
+      '.venv-rembg/**',
     ],
   },
   ...nextCoreWebVitals,

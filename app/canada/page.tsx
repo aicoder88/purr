@@ -53,7 +53,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: SITE_NAME,
       images: [
         {
-          url: '/images/purrify-standard-bag.png',
+          url: '/optimized/60g-transparent.webp',
           width: 1200,
           height: 630,
           alt: pageTitle,
@@ -66,7 +66,7 @@ export async function generateMetadata(): Promise<Metadata> {
       creator: '@purrifyhq',
       title: pageTitle,
       description: pageDescription,
-      images: ['/images/purrify-standard-bag.png'],
+      images: ['/optimized/60g-transparent.webp'],
     },
     robots: {
       index: true,
@@ -154,7 +154,7 @@ export default async function CanadaPage() {
     description: 'Canadian manufacturer of activated carbon cat litter deodorizer',
     url: 'https://www.purrify.ca',
     logo: 'https://www.purrify.ca/images/Logos/icon-512.png',
-    image: 'https://www.purrify.ca/images/purrify-standard-bag.png',
+    image: 'https://www.purrify.ca/optimized/60g-transparent.webp',
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'CA',
@@ -266,7 +266,7 @@ export default async function CanadaPage() {
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/purrify-standard-bag.png"
+                  src="/optimized/60g-transparent.webp"
                   alt="Purrify cat litter deodorizer - Made in Canada"
                   width={500}
                   height={500}

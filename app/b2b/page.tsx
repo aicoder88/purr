@@ -1,3 +1,5 @@
+export const dynamic = 'force-static';
+
 import type { Metadata } from 'next';
 import { CONTACT_INFO, PHONE_MESSAGING, SITE_NAME } from '@/lib/constants';
 import B2BClientPage from './_components/B2BClientPage';

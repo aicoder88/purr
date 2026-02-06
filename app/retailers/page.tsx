@@ -1,3 +1,5 @@
+export const dynamic = 'force-static';
+
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { ChevronRight, Home } from 'lucide-react';
@@ -6,21 +8,26 @@ import { ChevronRight, Home } from 'lucide-react';
 import { RetailerHero } from '@/components/sections/retailer-hero';
 import { WholesalePricing } from '@/components/sections/wholesale-pricing';
 import { RetailerContact } from '@/components/sections/retailer-contact';
-import { ClientLocationsMap } from '@/components/maps/ClientLocationsMap';
 import { Stores } from '@/components/sections/stores';
 
-import { SITE_NAME, CONTACT_INFO } from '@/lib/constants';
-import { getLocalizedUrl } from '@/lib/seo-utils';
+import { SITE_NAME } from '@/lib/constants';
 import { getTranslation } from '@/translations';
 
 // Default to English for metadata
 const t = getTranslation('en');
 const canonicalUrl = 'https://www.purrify.ca/retailers';
 
+// Safely access SEO data
+const retailerSeo = t?.retailers?.seo || {
+  pageTitle: 'Wholesale Partner Program',
+  description: 'Join our network of retail partners.',
+  keywords: ''
+};
+
 export const metadata: Metadata = {
-  title: `${SITE_NAME} - ${t.retailers.seo.pageTitle}`,
-  description: t.retailers.seo.description,
-  keywords: t.retailers.seo.keywords?.split(', ') || [
+  title: `${SITE_NAME} - ${retailerSeo.pageTitle}`,
+  description: retailerSeo.description,
+  keywords: retailerSeo.keywords?.split(', ') || [
     'wholesale pet products',
     'cat litter wholesale Canada',
     'pet store supplier',
@@ -30,8 +37,8 @@ export const metadata: Metadata = {
     canonical: canonicalUrl,
   },
   openGraph: {
-    title: `${SITE_NAME} - ${t.retailers.seo.pageTitle}`,
-    description: t.retailers.seo.description,
+    title: `${SITE_NAME} - ${retailerSeo.pageTitle}`,
+    description: retailerSeo.description,
     url: canonicalUrl,
     type: 'website',
   },

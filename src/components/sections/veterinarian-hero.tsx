@@ -17,7 +17,7 @@ export function VeterinarianHero() {
         <div className="max-w-5xl mx-auto">
           {/* Top Badge */}
           <div className="text-center mb-8">
-            <span className="inline-flex items-center px-6 py-3 rounded-full text-sm font-bold bg-gradient-to-r from-[#10B981]/15 to-[#3694FF]/15 dark:from-[#10B981]/25 dark:to-[#3694FF]/25 text-[#10B981] dark:text-[#34D399] border-2 border-[#10B981]/30 dark:border-[#34D399]/40 shadow-lg">
+            <span className="inline-flex items-center px-6 py-3 rounded-full text-sm font-bold bg-gradient-to-r from-[#10B981]/15 to-[#3694FF]/15 dark:from-[#10B981]/25 dark:to-[#3694FF]/25 text-brand-green-700 dark:text-[#34D399] border-2 border-[#10B981]/30 dark:border-[#34D399]/40 shadow-lg">
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
@@ -42,7 +42,7 @@ export function VeterinarianHero() {
               <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-8 leading-relaxed">
                 {t.veterinarians?.hero?.description || 'Give your clients a health-focused odor solution that\'s'}
                 {' '}
-                <strong className="text-[#10B981] dark:text-[#34D399]">
+                <strong className="text-brand-green-700 dark:text-[#34D399]">
                   {t.veterinarians?.hero?.highlight || '100% natural and fragrance-free'}
                 </strong>
               </p>
@@ -50,7 +50,7 @@ export function VeterinarianHero() {
               {/* Key Stats */}
               <div className="grid grid-cols-3 gap-4 mb-8">
                 <div className="text-center p-4 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
-                  <div className="text-3xl font-black text-[#10B981] dark:text-[#34D399]">100%</div>
+                  <div className="text-3xl font-black text-brand-green-700 dark:text-[#34D399]">100%</div>
                   <div className="text-sm font-semibold text-gray-600 dark:text-gray-300">
                     {t.veterinarians?.hero?.stats?.natural || 'Natural'}
                   </div>
@@ -62,7 +62,7 @@ export function VeterinarianHero() {
                   </div>
                 </div>
                 <div className="text-center p-4 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
-                  <div className="text-3xl font-black text-[#10B981] dark:text-[#34D399]">7+</div>
+                  <div className="text-3xl font-black text-brand-green-700 dark:text-[#34D399]">7+</div>
                   <div className="text-sm font-semibold text-gray-600 dark:text-gray-300">
                     {t.veterinarians?.hero?.stats?.days || 'Days Protection'}
                   </div>
@@ -82,7 +82,7 @@ export function VeterinarianHero() {
                   onClick={() => scrollToSection("vet-partnership")}
                   size="lg"
                   variant="outline"
-                  className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 text-[#10B981] dark:text-[#34D399] font-bold py-6 px-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 active:scale-95 border-2 border-[#10B981]/50 dark:border-[#34D399]/50 hover:bg-[#10B981] dark:hover:bg-[#34D399] hover:text-white dark:hover:text-gray-900 transform hover:-translate-y-2 backdrop-blur-sm"
+                  className="bg-white dark:bg-gray-900/80 dark:bg-gray-800/80 text-brand-green-700 dark:text-[#34D399] font-bold py-6 px-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 active:scale-95 border-2 border-[#10B981]/50 dark:border-[#34D399]/50 hover:bg-[#10B981] dark:hover:bg-[#34D399] hover:text-white dark:hover:text-gray-900 transform hover:-translate-y-2 backdrop-blur-sm"
                 >
                   {t.veterinarians?.hero?.cta?.secondary || 'View Partnership Options'}
                 </Button>
@@ -120,7 +120,7 @@ export function VeterinarianHero() {
                     <h3 className="font-heading font-black text-xl text-gray-900 dark:text-gray-50">
                       {t.veterinarians?.hero?.valueProps?.health?.title || 'Health-First Formula'}
                     </h3>
-                    <p className="text-[#10B981] dark:text-[#34D399] font-bold">
+                    <p className="text-brand-green-700 dark:text-[#34D399] font-bold">
                       {t.veterinarians?.hero?.valueProps?.health?.subtitle || 'No fragrances or irritants'}
                     </p>
                   </div>

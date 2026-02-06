@@ -1,3 +1,5 @@
+export const dynamic = 'force-static';
+
 import type { Metadata } from 'next';
 import { SITE_NAME, CONTACT_INFO } from '@/lib/constants';
 import CatCafesClientPage from './_components/CatCafesClientPage';

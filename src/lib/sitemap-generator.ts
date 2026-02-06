@@ -371,7 +371,7 @@ Crawl-delay: 1
       switch (c) {
         case '<': return '&lt;';
         case '>': return '&gt;';
-        case '&': return '&amp;';
+        case '&': return '&';
         case '\'': return '&apos;';
         case '"': return '&quot;';
         default: return c;

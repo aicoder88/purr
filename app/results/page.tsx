@@ -1,3 +1,5 @@
+export const dynamic = 'force-static';
+
 import type { Metadata } from 'next';
 import { SITE_NAME, TESTIMONIALS } from '@/lib/constants';
 import { ResultsContent } from './ResultsContent';

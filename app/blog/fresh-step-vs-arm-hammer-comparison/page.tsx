@@ -1,3 +1,5 @@
+export const dynamic = 'force-static';
+
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -64,7 +66,7 @@ export default function FreshStepVsArmHammerPage() {
                 Brand Comparison
               </span>
               <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-                Fresh Step vs Arm &amp; Hammer
+                Fresh Step vs Arm & Hammer
               </h1>
               <p className="text-xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto">
                 Two of America&apos;s most popular cat litter brands, head-to-head. We compare clumping,
@@ -87,8 +89,8 @@ export default function FreshStepVsArmHammerPage() {
                 Quick Verdict
               </h2>
               <p className="text-purple-700 dark:text-purple-300">
-                <strong>Fresh Step</strong> edges out Arm &amp; Hammer for odor control thanks to its <Link href="/learn/activated-carbon-vs-baking-soda-deodorizers" className="text-purple-800 dark:text-purple-200 underline">activated
-                carbon content</Link>, while <strong>Arm &amp; Hammer</strong> wins on price and offers comparable
+                <strong>Fresh Step</strong> edges out Arm & Hammer for odor control thanks to its <Link href="/learn/activated-carbon-vs-baking-soda-deodorizers" className="text-purple-800 dark:text-purple-200 underline">activated
+                carbon content</Link>, while <strong>Arm & Hammer</strong> wins on price and offers comparable
                 clumping. However, both brands rely primarily on fragrance masking—for true ammonia elimination,
                 supplementing either with <Link href="/blog/most-powerful-odor-absorber" className="text-purple-800 dark:text-purple-200 underline">activated carbon</Link> provides dramatically better results.
               </p>
@@ -122,16 +124,16 @@ export default function FreshStepVsArmHammerPage() {
 
               <div className="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-6 border border-orange-200 dark:border-orange-700">
                 <h3 className="text-2xl font-bold text-orange-800 dark:text-orange-200 mb-4">
-                  Arm &amp; Hammer
+                  Arm & Hammer
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200 mb-4">
-                  Owned by Church &amp; Dwight, Arm &amp; Hammer leverages their iconic baking soda
+                  Owned by Church & Dwight, Arm & Hammer leverages their iconic baking soda
                   brand recognition. Their approach centers on baking soda&apos;s odor-neutralizing
-                  properties plus proprietary &quot;Seal &amp; Destroy&quot; technology.
+                  properties plus proprietary &quot;Seal & Destroy&quot; technology.
                 </p>
                 <ul className="space-y-2 text-gray-700 dark:text-gray-200 text-sm">
                   <li><strong>Key Technology:</strong> Baking soda + fragrance</li>
-                  <li><strong>Popular Lines:</strong> Clump &amp; Seal, Slide, AbsorbX</li>
+                  <li><strong>Popular Lines:</strong> Clump & Seal, Slide, AbsorbX</li>
                   <li><strong>Price Range:</strong> $12-20 per 25 lb box</li>
                   <li><strong>Market Position:</strong> Value-premium</li>
                 </ul>
@@ -152,7 +154,7 @@ export default function FreshStepVsArmHammerPage() {
                   <tr>
                     <th className="px-4 py-3 text-left text-gray-900 dark:text-gray-100">Category</th>
                     <th className="px-4 py-3 text-center text-blue-700 dark:text-blue-300">Fresh Step</th>
-                    <th className="px-4 py-3 text-center text-orange-700 dark:text-orange-300">Arm &amp; Hammer</th>
+                    <th className="px-4 py-3 text-center text-orange-700 dark:text-orange-300">Arm & Hammer</th>
                     <th className="px-4 py-3 text-center text-gray-900 dark:text-gray-100">Winner</th>
                   </tr>
                 </thead>
@@ -173,7 +175,7 @@ export default function FreshStepVsArmHammerPage() {
                     <td className="px-4 py-3 font-medium text-gray-900 dark:text-gray-100">Price per Pound</td>
                     <td className="px-4 py-3 text-center text-gray-700 dark:text-gray-200">$0.60-0.80</td>
                     <td className="px-4 py-3 text-center text-gray-700 dark:text-gray-200">$0.48-0.65</td>
-                    <td className="px-4 py-3 text-center text-orange-600 dark:text-orange-400 font-bold">Arm &amp; Hammer</td>
+                    <td className="px-4 py-3 text-center text-orange-600 dark:text-orange-400 font-bold">Arm & Hammer</td>
                   </tr>
                   <tr className="bg-gray-50 dark:bg-gray-700/50">
                     <td className="px-4 py-3 font-medium text-gray-900 dark:text-gray-100">Ammonia Reduction</td>
@@ -201,7 +203,7 @@ export default function FreshStepVsArmHammerPage() {
               </div>
 
               <div className="bg-red-50 dark:bg-red-900/20 rounded-xl p-6 text-center">
-                <h3 className="font-bold text-red-800 dark:text-red-200 mb-2">Arm &amp; Hammer Baking Soda</h3>
+                <h3 className="font-bold text-red-800 dark:text-red-200 mb-2">Arm & Hammer Baking Soda</h3>
                 <div className="text-3xl font-bold text-red-600 dark:text-red-400 mb-2">~10-15%</div>
                 <p className="text-sm text-gray-600 dark:text-gray-300">Ammonia reduction (chemical neutralization)</p>
               </div>
@@ -222,7 +224,7 @@ export default function FreshStepVsArmHammerPage() {
                 Upgrade Any Litter to Premium Performance
               </h2>
               <p className="text-xl mb-6 opacity-90 text-center max-w-2xl mx-auto">
-                Purrify works with Fresh Step, Arm &amp; Hammer, or any litter you choose.
+                Purrify works with Fresh Step, Arm & Hammer, or any litter you choose.
                 Just sprinkle on top for 92% ammonia reduction—better than either brand achieves alone.
               </p>
 

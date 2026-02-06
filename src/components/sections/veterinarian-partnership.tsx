@@ -55,7 +55,7 @@ export function VeterinarianPartnership() {
       <Container>
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-[#10B981]/10 to-[#3694FF]/10 dark:from-[#10B981]/20 dark:to-[#3694FF]/20 text-[#10B981] dark:text-[#34D399] font-semibold text-sm mb-6">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-[#10B981]/10 to-[#3694FF]/10 dark:from-[#10B981]/20 dark:to-[#3694FF]/20 text-brand-green-700 dark:text-[#34D399] font-semibold text-sm mb-6">
             {t.veterinarians?.partnership?.badge || 'Partnership Options'}
           </div>
           <h2 className="font-heading text-4xl md:text-6xl font-black text-gray-900 dark:text-gray-50 mb-6">
@@ -108,11 +108,10 @@ export function VeterinarianPartnership() {
 
               <Button
                 onClick={() => scrollToSection("vet-contact")}
-                className={`w-full py-4 font-bold rounded-xl ${
-                  tier.popular
+                className={`w-full py-4 font-bold rounded-xl ${tier.popular
                     ? 'bg-gradient-to-r from-[#10B981] to-[#3694FF] hover:from-[#059669] hover:to-[#2563EB] text-white dark:text-white'
                     : 'bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100'
-                }`}
+                  }`}
               >
                 {tier.cta}
               </Button>

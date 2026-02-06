@@ -1,8 +1,8 @@
-import { Resend } from 'resend';
+
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
 import { OrderConfirmationEmailHTML, getOrderConfirmationEmailSubject } from '@/emails/order-confirmation';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { resend } from '@/lib/resend';
 
 interface SendThankYouEmailRequest {
     customerEmail: string;

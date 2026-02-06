@@ -1,3 +1,5 @@
+export const dynamic = 'force-static';
+
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -52,7 +54,7 @@ const caseStudies = [
     situation: "Studio Apartment Challenge",
     timeframe: "30 Days",
     cats: 2,
-    image: "/optimized/60g.webp",
+    image: "/optimized/60g-transparent.webp",
     challenge: {
       description: "Sarah lived in a 400 square foot studio apartment with two cats. The litter box was located near her living area due to space constraints, making odor control critical for her quality of life and ability to have guests over.",
       painPoints: [
@@ -92,7 +94,7 @@ const caseStudies = [
     situation: "Multi-Cat Family Home",
     timeframe: "90 Days",
     cats: 4,
-    image: "/optimized/140g.webp",
+    image: "/optimized/140g-transparent.webp",
     challenge: {
       description: "The Johnson family struggled with odor control for their 4 cats while maintaining a child-friendly environment. Previous solutions contained harsh chemicals or strong fragrances that concerned them.",
       painPoints: [
@@ -132,7 +134,7 @@ const caseStudies = [
     situation: "Senior Cat with Health Concerns",
     timeframe: "60 Days",
     cats: 1,
-    image: "/optimized/17g-nice.webp",
+    image: "/optimized/17g-transparent.webp",
     challenge: {
       description: "Dr. Wong's 15-year-old cat developed respiratory sensitivities, making traditional scented deodorizers unsuitable. The cat needed effective odor control without any irritating chemicals or fragrances.",
       painPoints: [

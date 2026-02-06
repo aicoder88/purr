@@ -1,3 +1,5 @@
+export const dynamic = 'force-static';
+
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -405,7 +407,7 @@ export default function CatLitterAdditiveComparison2026Page() {
                   to the effectiveness difference.
                 </p>
                 <p className="text-yellow-600 dark:text-yellow-400 text-sm font-medium">
-                  Budget option: Arm &amp; Hammer baking soda for litter boxes
+                  Budget option: Arm & Hammer baking soda for litter boxes
                 </p>
               </div>
 

@@ -1,9 +1,11 @@
+export const dynamic = 'force-static';
+
 import type { Metadata } from 'next';
 import { SITE_NAME } from '@/lib/constants';
-import dynamic from 'next/dynamic';
+import dynamicImport from 'next/dynamic';
 
 // Dynamically import the heavy client component to reduce initial bundle size
-const HospitalityClientPage = dynamic(
+const HospitalityClientPage = dynamicImport(
   () => import('./_components/HospitalityClientPage'),
   {
     loading: () => (

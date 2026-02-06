@@ -1,9 +1,11 @@
+export const dynamic = 'force-static';
+
 import type { Metadata } from 'next';
 import { SITE_NAME } from '@/lib/constants';
-import dynamic from 'next/dynamic';
+import dynamicImport from 'next/dynamic';
 
 // Dynamically import the heavy contact page content to reduce initial bundle size
-const ContactPageContent = dynamic(
+const ContactPageContent = dynamicImport(
   () => import('./ContactPageContent').then((mod) => mod.ContactPageContent),
   {
     loading: () => (

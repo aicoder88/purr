@@ -63,7 +63,7 @@ export function CTA() {
           {/* Background image */}
           <Image
             src="/optimized/pet-safety-home.webp"
-            alt={t.homepage.altText.happyCatAlt}
+            alt={t.homepage?.altText?.happyCatAlt || "Happy cat"}
             width={800}
             height={800}
             sizes="(max-width: 768px) 50vw, 33vw"
@@ -87,7 +87,7 @@ export function CTA() {
                   <CustomerAvatar
                     key={index}
                     src={src}
-                    alt={t.homepage.altText.userAvatar}
+                    alt={t.homepage?.altText?.userAvatar || "User"}
                   />
                 ))}
               </div>

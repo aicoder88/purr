@@ -89,7 +89,7 @@ export default function TrialSizePage() {
     schemaData: {
       name: "Purrify 12g Trial - Natural Cat Litter Freshener & Charcoal Additive",
       description: "FREE trial of our activated charcoal cat litter additive. Natural coconut shell carbon litter freshener eliminates ammonia odors instantly. Pet-friendly, fragrance-free formula.",
-      image: ["https://www.purrify.ca/optimized/17g-nice.webp"],
+      image: ["https://www.purrify.ca/optimized/17g-transparent.webp"],
       price: trialPriceString,
       priceValidUntil,
       availability: 'https://schema.org/InStock',
@@ -101,7 +101,7 @@ export default function TrialSizePage() {
         count: reviewData.reviewCount,
       },
     },
-    image: 'https://www.purrify.ca/optimized/17g-nice.webp',
+    image: 'https://www.purrify.ca/optimized/17g-transparent.webp',
     keywords: ['cat litter freshener', 'charcoal litter additive', 'cat litter deodorizer', 'free trial'],
   });
 
@@ -162,7 +162,7 @@ export default function TrialSizePage() {
                 Not masked. Not covered up. <span className="text-green-600 dark:text-green-400">Actually gone.</span>
               </p>
               <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-                *Just $4.76 shipping &amp; handling anywhere in Canada. Limit one per customer.
+                *Just $4.76 shipping & handling anywhere in Canada. Limit one per customer.
               </p>
             </div>
           </Container>
@@ -178,7 +178,7 @@ export default function TrialSizePage() {
                   <div className="absolute -inset-4 bg-gradient-to-r from-electric-indigo-400/20 to-purple-400/20 dark:from-electric-indigo-600/10 dark:to-purple-600/10 rounded-3xl blur-2xl"></div>
                   <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl">
                     <Image
-                      src="/optimized/17g-nice.webp"
+                      src="/optimized/17g-transparent.webp"
                       alt="Purrify 12g Trial Size"
                       width={300}
                       height={300}
@@ -225,7 +225,7 @@ export default function TrialSizePage() {
                     </span>
                   </div>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                    Just {trialPrice} shipping &amp; handling anywhere in Canada
+                    Just {trialPrice} shipping & handling anywhere in Canada
                   </p>
                   <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">
                     One-time trial • Limit one per customer • Works with ANY litter
@@ -274,7 +274,7 @@ export default function TrialSizePage() {
                     </div>
                     <div className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                       <Check className="w-4 h-4 text-green-500 dark:text-green-400" />
-                      <span>Shipping &amp; handling anywhere in Canada included in {trialPrice}</span>
+                      <span>Shipping & handling anywhere in Canada included in {trialPrice}</span>
                     </div>
                     <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                       <p className="text-xs text-gray-500 dark:text-gray-400 text-center mb-2">Secure payment with:</p>
@@ -383,26 +383,9 @@ export default function TrialSizePage() {
                     ))}
                   </div>
                   <p className="text-gray-800 dark:text-gray-200 mb-4 italic">
-                    &quot;My boyfriend told me he could smell the litter box from the hallway. I was MORTIFIED. Got the trial size. He walked in the next day and said &apos;Did you get rid of the cat?&apos; LOL. Game changer.&quot;
                   </p>
                   <p className="font-bold text-gray-900 dark:text-white">- Jessica K., Vancouver</p>
                   <p className="text-sm text-gray-600 dark:text-gray-400">Now a monthly subscriber</p>
-                </div>
-              </div>
-
-              {/* Stats Bar */}
-              <div className="grid grid-cols-3 gap-6 text-center">
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-indigo-100 dark:border-indigo-900/50">
-                  <div className="text-4xl font-black text-electric-indigo-600 dark:text-electric-indigo-400 mb-2">87%</div>
-                  <p className="text-sm text-gray-700 dark:text-gray-300 font-semibold">Upgrade to full-size within 7 days</p>
-                </div>
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-indigo-100 dark:border-indigo-900/50">
-                  <div className="text-4xl font-black text-electric-indigo-600 dark:text-electric-indigo-400 mb-2">60s</div>
-                  <p className="text-sm text-gray-700 dark:text-gray-300 font-semibold">Average time to eliminate odor</p>
-                </div>
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-indigo-100 dark:border-indigo-900/50">
-                  <div className="text-4xl font-black text-electric-indigo-600 dark:text-electric-indigo-400 mb-2">1,127</div>
-                  <p className="text-sm text-gray-700 dark:text-gray-300 font-semibold">Free trials shipped this month</p>
                 </div>
               </div>
             </div>
@@ -425,7 +408,7 @@ export default function TrialSizePage() {
                   <div>
                     <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">Claim Your FREE Trial</h3>
                     <p className="text-gray-700 dark:text-gray-300">
-                      Click the button, just {trialPrice} shipping &amp; handling anywhere in Canada. Done. Your FREE trial ships within 24 hours. You&apos;ll get tracking immediately.
+                      Click the button, just {trialPrice} shipping & handling anywhere in Canada. Done. Your FREE trial ships within 24 hours. You&apos;ll get tracking immediately.
                     </p>
                   </div>
                 </div>
@@ -525,7 +508,7 @@ export default function TrialSizePage() {
                     <div>
                       <p className="font-bold text-xl mb-2">PATH 2: Claim Your FREE Trial</p>
                       <p className="opacity-90">
-                        Click below. Just {trialPrice} shipping &amp; handling anywhere in Canada. Get it in 2-3 days. Use it once.
+                        Click below. Just {trialPrice} shipping & handling anywhere in Canada. Get it in 2-3 days. Use it once.
                         Watch the smell disappear. Join the 87% who upgrade. Finally solve this problem forever.
                       </p>
                     </div>
@@ -545,7 +528,7 @@ export default function TrialSizePage() {
                   size="lg"
                   className="bg-white text-green-700 hover:bg-green-50 dark:bg-green-600 dark:text-white dark:hover:bg-green-500 font-black py-8 px-16 text-2xl shadow-2xl shadow-black/20 transform hover:scale-[1.02] transition-all duration-300 w-full md:w-auto"
                 >
-                  GET MY FREE TRIAL - Just {trialPrice} S&amp;H anywhere in Canada
+                  GET MY FREE TRIAL - Just {trialPrice} S&H anywhere in Canada
                 </Button>
               </a>
               <p className="mb-6 text-sm font-bold text-white/90 dark:text-white/80 max-w-lg mx-auto italic uppercase tracking-tight">
@@ -557,7 +540,7 @@ export default function TrialSizePage() {
               </p>
 
               <p className="text-xs opacity-60 mb-2">
-                *{trialPrice} covers shipping &amp; handling anywhere in Canada only. Product is FREE. Secure checkout with 256-bit SSL encryption.
+                *{trialPrice} covers shipping & handling anywhere in Canada only. Product is FREE. Secure checkout with 256-bit SSL encryption.
               </p>
 
               <p className="text-xs opacity-50">
@@ -575,7 +558,7 @@ export default function TrialSizePage() {
                 🎁 FREE TRIAL OFFER - Limited Time Only
               </p>
               <p className="text-sm opacity-90">
-                Product is FREE • Just {trialPrice} shipping &amp; handling anywhere in Canada • Limit one per customer
+                Product is FREE • Just {trialPrice} shipping & handling anywhere in Canada • Limit one per customer
               </p>
             </div>
           </Container>

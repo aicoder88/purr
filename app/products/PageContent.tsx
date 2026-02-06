@@ -81,15 +81,15 @@ export default function ProductsPage() {
 
   // Product images matching the homepage
   const productImages: Record<string, { src: string; size: 'sm' | 'md' | 'lg' }> = {
-    trial: { src: '/optimized/17g-nice.webp', size: 'sm' },
-    regular: { src: '/images/products/60g.webp', size: 'md' },
-    large: { src: '/images/products/140g.webp', size: 'lg' },
+    trial: { src: '/optimized/17g-transparent.webp', size: 'sm' },
+    regular: { src: '/optimized/60g-transparent.webp', size: 'md' },
+    large: { src: '/optimized/140g-transparent.webp', size: 'lg' },
   };
 
   // Display names that de-emphasize grams
   const productDisplayNames: Record<string, { name: string; nameFr: string; subtitle: string; subtitleFr: string }> = {
     trial: {
-      name: "The Skeptic's Sample",
+      name: "Free Trial",
       nameFr: 'Format Essai',
       subtitle: '12g · One Week of Proof',
       subtitleFr: '12g · Une semaine de preuve'
@@ -111,7 +111,7 @@ export default function ProductsPage() {
   const products = t.productComparison.products.map((product) => {
     const priceKey = productIdAlias[product.id] ?? 'regular';
     const displayName = productDisplayNames[product.id] || { name: product.name, nameFr: product.name, subtitle: product.subtitle, subtitleFr: product.subtitle };
-    const imageData = productImages[product.id] || { src: '/images/products/60g.webp', size: 'md' as const };
+    const imageData = productImages[product.id] || { src: '/optimized/60g-transparent.webp', size: 'md' as const };
 
     return {
       ...product,
@@ -235,7 +235,7 @@ export default function ProductsPage() {
       description: 'FREE trial of activated charcoal cat litter additive. Eliminates ammonia odors instantly.',
       sku: 'purrify-12g',
       mpn: 'PURRIFY-12G',
-      image: 'https://www.purrify.ca/optimized/17g-nice.webp',
+      image: 'https://www.purrify.ca/optimized/17g-transparent.webp',
       url: `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/trial-size`,
       shippingRate: '4.76',
     },
@@ -245,7 +245,7 @@ export default function ProductsPage() {
       description: '50g activated charcoal cat litter additive. 4-6 weeks of odor control. 100% natural.',
       sku: 'purrify-50g',
       mpn: 'PURRIFY-50G',
-      image: 'https://www.purrify.ca/images/products/60g.webp',
+      image: 'https://www.purrify.ca/optimized/60g-transparent.webp',
       url: `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/standard`,
       shippingRate: '6.99',
     },
@@ -255,7 +255,7 @@ export default function ProductsPage() {
       description: 'Best value 240g activated charcoal cat litter additive. Double the supply at less than double the price.',
       sku: 'purrify-240g',
       mpn: 'PURRIFY-240G',
-      image: 'https://www.purrify.ca/images/products/140g.webp',
+      image: 'https://www.purrify.ca/optimized/140g-transparent.webp',
       url: `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/family-pack`,
       shippingRate: '0',
     },

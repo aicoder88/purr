@@ -52,7 +52,7 @@ export default function POSPage() {
 
                     {/* Central Diagram: Product + Benefits */}
                     <div className="flex-1 grid grid-cols-12 gap-8 items-center">
-                        
+
                         {/* Left Column: Problem/Solution */}
                         <div className="col-span-3 flex flex-col gap-8 justify-center">
                             <div className="bg-white/80 dark:bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-orange-100 dark:border-orange-100 text-center">
@@ -75,7 +75,7 @@ export default function POSPage() {
                         <div className="col-span-6 relative h-full flex items-center justify-center">
                             <div className="relative w-full h-[400px]">
                                 <Image
-                                    src="/images/products/60g.webp"
+                                    src="/optimized/60g-transparent.webp"
                                     alt="Purrify Product"
                                     fill
                                     sizes="(max-width: 768px) 100vw, 400px"
@@ -108,18 +108,18 @@ export default function POSPage() {
                         <div className="grid grid-cols-3 gap-4 relative">
                             {/* Connecting Line */}
                             <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-orange-200 to-pink-200 -z-10 transform -translate-y-1/2" />
-                            
+
                             <div className="text-center bg-white dark:bg-white p-2">
                                 <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-2xl text-white flex items-center justify-center text-xl font-bold mx-auto mb-3 shadow-lg transform rotate-3">1</div>
                                 <h4 className="font-bold text-gray-900 dark:text-gray-900 uppercase text-sm">Scoop</h4>
                                 <p className="text-xs text-gray-500 dark:text-gray-500">Scoop waste as usual</p>
                             </div>
-                             <div className="text-center bg-white dark:bg-white p-2">
+                            <div className="text-center bg-white dark:bg-white p-2">
                                 <div className="w-16 h-16 bg-gradient-to-br from-pink-400 to-pink-500 rounded-2xl text-white flex items-center justify-center text-xl font-bold mx-auto mb-3 shadow-lg transform -rotate-3">2</div>
                                 <h4 className="font-bold text-gray-900 dark:text-gray-900 uppercase text-sm">Sprinkle</h4>
                                 <p className="text-xs text-gray-500 dark:text-gray-500">Add 1 tbsp of Purrify</p>
                             </div>
-                             <div className="text-center bg-white dark:bg-white p-2">
+                            <div className="text-center bg-white dark:bg-white p-2">
                                 <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-green-500 rounded-2xl text-white flex items-center justify-center text-xl font-bold mx-auto mb-3 shadow-lg transform rotate-3">3</div>
                                 <h4 className="font-bold text-gray-900 dark:text-gray-900 uppercase text-sm">Fresh Air</h4>
                                 <p className="text-xs text-gray-500 dark:text-gray-500">Live odor-free</p>
@@ -133,14 +133,14 @@ export default function POSPage() {
                             <h3 className="text-2xl font-bold text-orange-300 dark:text-orange-300">Try a Trial Size Today</h3>
                             <p className="text-gray-400 dark:text-gray-400 text-sm">Available at the counter • 100% Satisfaction Guarantee</p>
                         </div>
-                         <div className="flex items-center gap-4 bg-white/10 p-2 rounded-xl border border-white/20">
+                        <div className="flex items-center gap-4 bg-white/10 p-2 rounded-xl border border-white/20">
                             <div className="bg-white dark:bg-white p-1 rounded-lg">
-                                 {/* QR Code Placeholder */}
+                                {/* QR Code Placeholder */}
                                 <div className="w-16 h-16 bg-neutral-900 flex items-center justify-center text-white text-[10px] text-center font-mono leading-tight">
-                                    SCAN<br/>INFO
+                                    SCAN<br />INFO
                                 </div>
                             </div>
-                             <div className="text-left pr-2">
+                            <div className="text-left pr-2">
                                 <p className="font-bold text-sm uppercase tracking-wide text-white dark:text-white">Learn More</p>
                                 <p className="text-xs text-orange-300 dark:text-orange-300 font-bold">purrify.ca</p>
                             </div>

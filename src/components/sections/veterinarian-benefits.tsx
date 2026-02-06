@@ -61,7 +61,7 @@ export function VeterinarianBenefits() {
       <Container>
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-[#10B981]/10 to-[#3694FF]/10 dark:from-[#10B981]/20 dark:to-[#3694FF]/20 text-[#10B981] dark:text-[#34D399] font-semibold text-sm mb-6">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-[#10B981]/10 to-[#3694FF]/10 dark:from-[#10B981]/20 dark:to-[#3694FF]/20 text-brand-green-700 dark:text-[#34D399] font-semibold text-sm mb-6">
             {t.veterinarians?.benefits?.badge || 'Why Veterinarians Choose Purrify'}
           </div>
           <h2 className="font-heading text-4xl md:text-6xl font-black text-gray-900 dark:text-gray-50 mb-6">
@@ -104,7 +104,7 @@ export function VeterinarianBenefits() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left - Client Complaints */}
             <div>
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white dark:bg-gray-800 text-[#10B981] dark:text-[#34D399] font-semibold text-sm mb-6 shadow-lg">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white dark:bg-gray-800 text-brand-green-700 dark:text-[#34D399] font-semibold text-sm mb-6 shadow-lg">
                 {t.veterinarians?.clientComplaints?.badge || 'Sound Familiar?'}
               </div>
               <h3 className="font-heading text-3xl font-black text-gray-900 dark:text-gray-50 mb-6">

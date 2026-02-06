@@ -110,7 +110,7 @@ export function B2BCaseStudies({
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-[#10B981]/10 to-[#3694FF]/10 dark:from-[#10B981]/20 dark:to-[#3694FF]/20 text-[#10B981] dark:text-[#34D399] font-bold text-sm mb-4">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-[#10B981]/10 to-[#3694FF]/10 dark:from-[#10B981]/20 dark:to-[#3694FF]/20 text-brand-green-700 dark:text-[#34D399] font-bold text-sm mb-4">
               <DollarSign className="w-4 h-4 mr-2" />
               {t.b2bCaseStudies?.badge || 'Wholesale Program'}
             </div>
@@ -158,7 +158,7 @@ export function B2BCaseStudies({
 
                   {/* Benefits List */}
                   <div>
-                    <h4 className="text-sm font-bold text-[#10B981] dark:text-[#34D399] uppercase tracking-wide mb-3">
+                    <h4 className="text-sm font-bold text-brand-green-700 dark:text-[#34D399] uppercase tracking-wide mb-3">
                       How Purrify Helps
                     </h4>
                     <ul className="space-y-2">
@@ -167,7 +167,7 @@ export function B2BCaseStudies({
                           key={index}
                           className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300"
                         >
-                          <span className="text-[#10B981] dark:text-[#34D399] mt-0.5">✓</span>
+                          <span className="text-brand-green-700 dark:text-[#34D399] mt-0.5">✓</span>
                           {item}
                         </li>
                       ))}

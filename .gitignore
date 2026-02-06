@@ -78,3 +78,10 @@ chroma_data/
 
 # Generated Prisma Client
 src/generated/
+
+# Python Virtual Environments
+.venv-rembg/
+
+# Temp files
+missing_refs.txt
+optimized_files.txt

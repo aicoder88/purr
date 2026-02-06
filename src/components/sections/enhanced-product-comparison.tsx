@@ -23,7 +23,7 @@ type ProductCard = {
   imageSize: 'sm' | 'md' | 'lg';
   color: string;
   badge?: {
-    type: 'popular' | 'recommended';
+    type: 'popular' | 'recommended' | 'trial';
     label: string;
   };
   ctaType: 'stripe' | 'store';
@@ -40,7 +40,7 @@ export function EnhancedProductComparison() {
   // Product display names
   const productDisplayNames: Record<string, { name: string; nameFr: string; subtitle: string; subtitleFr: string }> = {
     trial: {
-      name: 'The Skeptic\'s Sample',
+      name: 'Free Trial',
       nameFr: 'Format Essai',
       subtitle: '12g · One Week of Proof',
       subtitleFr: '12g · Une semaine de preuve'
@@ -76,9 +76,13 @@ export function EnhancedProductComparison() {
         'Zero risk, zero commitment'
       ],
       bestFor: translatedProducts[0]?.bestFor || "Cat parents who've been burned before. Test it yourself. Your nose doesn't lie.",
-      image: '/optimized/17g-nice.webp',
+      image: '/optimized/17g-transparent.webp',
       imageSize: 'sm',
       color: 'from-green-500 to-green-600',
+      badge: {
+        type: 'trial',
+        label: locale === 'fr' ? 'ÉCHANTILLON' : 'FREE TRIAL',
+      },
       ctaType: 'stripe',
       stripeLink: trialLink,
     },
@@ -95,7 +99,7 @@ export function EnhancedProductComparison() {
         'Works with any litter'
       ],
       bestFor: translatedProducts[1]?.bestFor || "Single or dual cat homes. The size that keeps customers coming back.",
-      image: '/optimized/purrify-standard-bag-640w.webp',
+      image: '/optimized/60g-transparent.webp',
       imageSize: 'md',
       color: 'from-deep-coral to-rose-600',
       badge: {
@@ -117,7 +121,7 @@ export function EnhancedProductComparison() {
         'Perfect for multiple boxes'
       ],
       bestFor: translatedProducts[2]?.bestFor || "Multi-cat households, foster parents, or anyone who's lost count.",
-      image: '/optimized/multi-cat-family-ghibli-640w.webp',
+      image: '/optimized/140g-transparent.webp',
       imageSize: 'lg',
       color: 'from-electric-indigo to-purple-600',
       badge: {
@@ -174,6 +178,14 @@ export function EnhancedProductComparison() {
                 {product.badge?.type === 'recommended' && (
                   <div className="absolute top-4 right-4 bg-brand-red text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold flex items-center z-10">
                     <Award className="w-4 h-4 mr-1" />
+                    {product.badge.label}
+                  </div>
+                )}
+
+                {/* Trial Badge */}
+                {product.badge?.type === 'trial' && (
+                  <div className="absolute top-4 right-4 bg-brand-light text-brand-dark px-3 py-1 rounded-full text-sm font-bold flex items-center z-10">
+                    <Sparkles className="w-4 h-4 mr-1" />
                     {product.badge.label}
                   </div>
                 )}

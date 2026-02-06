@@ -1,3 +1,5 @@
+export const dynamic = 'force-static';
+
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -92,7 +94,7 @@ export default function BestOdorControlLitter2026Page() {
               </h2>
               <p className="text-green-700 dark:text-green-300 mb-4">
                 <strong>Best standalone litter:</strong> Dr. Elsey&apos;s Ultra Unscented (excellent clumping, no fragrance to mask issues)<br />
-                <strong>Best budget option:</strong> Arm &amp; Hammer Clump &amp; Seal Unscented<br />
+                <strong>Best budget option:</strong> Arm & Hammer Clump & Seal Unscented<br />
                 <strong>Best overall strategy:</strong> Any quality unscented clumping litter + activated carbon additive
               </p>
               <Link
@@ -211,7 +213,7 @@ export default function BestOdorControlLitter2026Page() {
                 <span className="bg-gray-400 dark:bg-gray-500 text-white dark:text-gray-100 font-bold px-4 py-2 rounded-full text-lg">🥈 #2</span>
                 <div>
                   <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100">
-                    Arm &amp; Hammer Clump &amp; Seal Unscented
+                    Arm & Hammer Clump & Seal Unscented
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">Best Budget Option</p>
                 </div>
@@ -233,7 +235,7 @@ export default function BestOdorControlLitter2026Page() {
               </div>
 
               <p className="text-gray-700 dark:text-gray-200 mb-4">
-                <strong>Why it ranks #2:</strong> Arm &amp; Hammer&apos;s baking soda formula provides modest odor neutralization (though
+                <strong>Why it ranks #2:</strong> Arm & Hammer&apos;s baking soda formula provides modest odor neutralization (though
                 baking soda only reduces ammonia by ~38%). Clumping is solid, and the price point is excellent for everyday use.
                 The unscented version is preferable—their scented options just mask problems.
               </p>
@@ -308,7 +310,7 @@ export default function BestOdorControlLitter2026Page() {
               </div>
 
               <div className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md">
-                <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Tidy Cats Free &amp; Clean</h4>
+                <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Tidy Cats Free & Clean</h4>
                 <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">Unscented clay, affordable</p>
                 <p className="text-sm text-gray-700 dark:text-gray-200">
                   Basic but functional. Clumping is softer than premium options, requiring more careful scooping.
@@ -433,7 +435,7 @@ export default function BestOdorControlLitter2026Page() {
                     <td className="px-4 py-3 text-center text-yellow-600 dark:text-yellow-400 font-bold">B+</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-medium text-gray-900 dark:text-gray-100">Arm &amp; Hammer Unscented</td>
+                    <td className="px-4 py-3 font-medium text-gray-900 dark:text-gray-100">Arm & Hammer Unscented</td>
                     <td className="px-4 py-3 text-center text-yellow-600 dark:text-yellow-400 font-bold">B</td>
                     <td className="px-4 py-3 text-center text-green-600 dark:text-green-400 font-bold">A-</td>
                     <td className="px-4 py-3 text-center text-yellow-600 dark:text-yellow-400 font-bold">B</td>

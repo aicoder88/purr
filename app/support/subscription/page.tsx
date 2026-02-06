@@ -1,3 +1,5 @@
+export const dynamic = 'force-static';
+
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { RefreshCw, Calendar, CreditCard, PauseCircle, XCircle, Gift, CheckCircle2, Sparkles } from 'lucide-react';

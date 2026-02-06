@@ -165,7 +165,7 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={inter.variable}>
+    <html lang={locale} className={inter.variable} suppressHydrationWarning>
       <body className="font-sans">
         <Providers locale={locale} messages={messages}>
           <AppLayout>

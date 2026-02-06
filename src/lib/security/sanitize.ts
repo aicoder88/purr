@@ -63,6 +63,21 @@ export function sanitizeHTML(dirty: string): string {
 }
 
 /**
+ * Escape HTML special characters to prevent XSS
+ * Use this when embedding user input in HTML content (emails, etc.)
+ */
+export function escapeHtml(unsafe: string): string {
+  if (!unsafe) return '';
+
+  return unsafe
+    .replace(/&/g, '&amp;')   // FIRST - encode & before creating other entities
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+/**
  * Sanitize plain text input (for titles, excerpts, etc.)
  * Strips all HTML tags
  */
@@ -73,11 +88,11 @@ export function sanitizeText(dirty: string): string {
   return dirty
     .replace(/<[^>]*>/g, '')
     .replace(/&nbsp;/g, ' ')
-    .replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
+    .replace(/&amp;/g, '&')  // LAST - decode &amp; after other entities to avoid breaking them
     .trim();
 }
 

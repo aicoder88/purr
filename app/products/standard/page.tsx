@@ -1,3 +1,5 @@
+export const dynamic = 'force-static';
+
 import type { Metadata } from 'next';
 import PageContent from './PageContent';
 
@@ -11,7 +13,7 @@ export const metadata: Metadata = {
     url: 'https://www.purrify.ca/products/standard',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/60g.webp',
+        url: 'https://www.purrify.ca/optimized/60g-transparent.webp',
         width: 600,
         height: 600,
         alt: 'Purrify 50g Standard Size',

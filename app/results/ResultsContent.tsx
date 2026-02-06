@@ -135,7 +135,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
                 href="/products/trial-size"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#FF3131] hover:bg-[#FF3131]/90 text-white dark:text-gray-100 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                {r?.hero?.tryCta || 'Try Risk-Free - Just $4.76 S&amp;H'}
+                {r?.hero?.tryCta || 'Try Risk-Free - Just $4.76 S&H'}
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
@@ -327,7 +327,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
                 href="/products/trial-size"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#FF3131] hover:bg-[#FF3131]/90 text-white dark:text-gray-100 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                {r?.cta?.primaryButton || 'Get Your Trial - $4.76 S&amp;H'}
+                {r?.cta?.primaryButton || 'Get Your Trial - $4.76 S&H'}
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link

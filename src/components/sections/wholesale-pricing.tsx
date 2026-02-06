@@ -1,5 +1,7 @@
 "use client";
 
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { Container } from '../ui/container';
 import { Button } from '../ui/button';
 import { scrollToSection } from '../../lib/utils';
@@ -16,12 +18,15 @@ interface PricingTier {
   highlighted: boolean;
   badge: string;
   cta: string;
+  image: string;
+  imageAlt: string;
 }
 
 interface TierCardProps {
   tier: PricingTier;
   onCtaClick: () => void;
   packageIncludesLabel: string;
+  index: number;
 }
 
 // Shared gradient classes
@@ -78,10 +83,10 @@ function TrustSignals({ labels }: { labels: { noSetupFees: string; approval72hr:
 }
 
 // Tier card component
-function TierCard({ tier, onCtaClick, packageIncludesLabel }: TierCardProps) {
+function TierCard({ tier, onCtaClick, packageIncludesLabel, index }: TierCardProps) {
   const cardClasses = tier.highlighted
-    ? `bg-white dark:bg-gray-800 border-2 border-[#5B2EFF] dark:border-[#3694FF] shadow-2xl shadow-[#5B2EFF]/10 dark:shadow-none transform scale-105 z-10 ring-4 ring-[#5B2EFF]/10 dark:ring-[#3694FF]/10`
-    : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-xl hover:shadow-2xl hover:border-gray-300 dark:hover:border-gray-600';
+    ? `bg-white dark:bg-gray-800 border-2 border-[#5B2EFF] dark:border-[#3694FF] shadow-2xl shadow-[#5B2EFF]/15 transform lg:scale-105 z-10 ring-8 ring-[#5B2EFF]/5 dark:ring-[#3694FF]/5`
+    : 'bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-xl hover:shadow-2xl hover:border-gray-200 dark:hover:border-gray-600';
 
   const badgeClasses = tier.highlighted
     ? `bg-gradient-to-r ${GRADIENTS.primary} text-white`
@@ -92,36 +97,64 @@ function TierCard({ tier, onCtaClick, packageIncludesLabel }: TierCardProps) {
     : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600';
 
   return (
-    <div
-      className={`relative flex flex-col h-full rounded-3xl p-8 ${cardClasses} transition-all duration-300`}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1 }}
+      viewport={{ once: true }}
+      className={`relative flex flex-col h-full rounded-[40px] p-8 ${cardClasses} transition-all duration-500`}
     >
       {/* Badge */}
       {tier.highlighted && (
-        <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-full text-center px-4">
-          <span className={`inline-block px-6 py-2 rounded-full text-sm font-bold shadow-lg shadow-[#5B2EFF]/30 ${badgeClasses}`}>
+        <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-full text-center px-4">
+          <span className={`inline-block px-8 py-2.5 rounded-full text-sm font-black shadow-xl shadow-[#5B2EFF]/30 tracking-tight ${badgeClasses}`}>
             {tier.badge === 'Best Value' ? '🔥' : '🚀'} {tier.badge}
           </span>
         </div>
       )}
 
+      {/* Product Image Section */}
+      <div className="relative h-48 mb-8 mt-4 flex items-center justify-center group">
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 to-transparent dark:from-gray-900/30 rounded-[32px] -z-10 group-hover:scale-105 transition-transform duration-500" />
+        <div className="relative w-40 h-40 transform transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3">
+          <Image
+            src={tier.image}
+            alt={tier.imageAlt}
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
+
+        {/* Floating elements for visual interest */}
+        {tier.highlighted && (
+          <>
+            <div className="absolute top-0 right-4 w-12 h-12 bg-[#5B2EFF]/10 dark:bg-[#5B2EFF]/20 rounded-full blur-xl animate-pulse" />
+            <div className="absolute bottom-4 left-4 w-16 h-16 bg-[#3694FF]/10 dark:bg-[#3694FF]/20 rounded-full blur-xl animate-pulse delay-700" />
+          </>
+        )}
+      </div>
+
       {/* Card Header */}
-      <div className="text-center mb-8 pt-4">
-        <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-white mb-3">
+      <div className="text-center mb-8">
+        <h3 className="font-heading text-3xl font-black text-gray-900 dark:text-white mb-3 tracking-tight">
           {tier.name}
         </h3>
-        <p className="text-gray-500 dark:text-gray-400 text-sm font-medium min-h-[40px]">{tier.description}</p>
+        <p className="text-gray-500 dark:text-gray-400 text-sm font-bold min-h-[40px] leading-relaxed">
+          {tier.description}
+        </p>
 
         {/* Package Contents */}
-        <div className="mt-6 bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-5 border border-gray-100 dark:border-gray-700">
-          <div className="text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-3 text-left">
+        <div className="mt-8 bg-gray-50 dark:bg-gray-800/40 rounded-[32px] p-6 border border-gray-100 dark:border-gray-700/50">
+          <div className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500 mb-4 text-left">
             {packageIncludesLabel}
           </div>
-          <ul className="space-y-2.5 text-left">
+          <ul className="space-y-3 text-left">
             {tier.contents.map((item, i) => (
-              <li key={i} className="text-sm text-gray-700 dark:text-gray-200 font-semibold flex items-start leading-snug">
-                <span className="text-[#5B2EFF] dark:text-[#3694FF] mr-2 text-lg leading-none">•</span>
+              <li key={i} className="text-sm text-gray-700 dark:text-gray-200 font-bold flex items-start leading-snug">
+                <span className="text-[#5B2EFF] dark:text-[#3694FF] mr-3 text-xl leading-none">•</span>
                 {item.startsWith('BONUS') ? (
-                  <span className="text-[#5B2EFF] dark:text-[#3694FF]">
+                  <span className="bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] bg-clip-text text-transparent">
                     {item}
                   </span>
                 ) : (
@@ -133,31 +166,31 @@ function TierCard({ tier, onCtaClick, packageIncludesLabel }: TierCardProps) {
         </div>
       </div>
 
-      <div className="flex-1 mb-8">
-        <div className="text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-4 text-left">
+      <div className="flex-1 mb-10">
+        <div className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500 mb-5 text-left">
           Features
         </div>
-        <ul className="space-y-3">
+        <ul className="space-y-4">
           {tier.features.map((feature, i) => (
             <li key={i} className="flex items-start text-gray-600 dark:text-gray-300 text-sm">
-              <div className={`w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5`}>
-                <CheckIcon className="w-3 h-3 text-green-600 dark:text-green-400" />
+              <div className={`w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/20 flex items-center justify-center mr-4 flex-shrink-0 mt-0.5`}>
+                <CheckIcon className="w-3.5 h-3.5 text-green-600 dark:text-green-400" />
               </div>
-              <span className="font-medium">{feature}</span>
+              <span className="font-bold leading-tight">{feature}</span>
             </li>
           ))}
         </ul>
       </div>
 
-      <div className="mt-auto pt-6 border-t border-gray-100 dark:border-gray-700">
+      <div className="mt-auto pt-8 border-t border-gray-100 dark:border-gray-700">
         <Button
           onClick={onCtaClick}
-          className={`w-full py-6 px-6 rounded-2xl font-black text-lg transition-all duration-300 transform hover:-translate-y-1 active:scale-95 border-0 ${buttonClasses}`}
+          className={`w-full py-8 px-6 rounded-3xl font-black text-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 border-0 shadow-lg ${buttonClasses}`}
         >
           {tier.highlighted ? '🚀 ' : ''}{tier.cta}
         </Button>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -189,6 +222,8 @@ export function WholesalePricing() {
       highlighted: false,
       badge: pricing?.tiers?.starter?.badge || 'Quick Start',
       cta: pricing?.tiers?.starter?.cta || 'Get Started',
+      image: '/optimized/17g-transparent.webp',
+      imageAlt: 'Purrify Starter Pack',
     },
     {
       name: pricing?.tiers?.growth?.name || 'Growth Partner',
@@ -208,6 +243,8 @@ export function WholesalePricing() {
       highlighted: true,
       badge: pricing?.tiers?.growth?.badge || 'Best Value',
       cta: pricing?.tiers?.growth?.cta || 'Start Growing Now',
+      image: '/optimized/60g-transparent.webp',
+      imageAlt: 'Purrify Growth Partner Package',
     },
     {
       name: pricing?.tiers?.scale?.name || 'Scale Success',
@@ -229,6 +266,8 @@ export function WholesalePricing() {
       highlighted: false,
       badge: pricing?.tiers?.scale?.badge || 'Enterprise',
       cta: pricing?.tiers?.scale?.cta || 'Get Started',
+      image: '/optimized/140g-transparent.webp',
+      imageAlt: 'Purrify Scale Success Package',
     },
   ], [pricing]);
 
@@ -263,6 +302,7 @@ export function WholesalePricing() {
               tier={tier}
               onCtaClick={handleScrollToRetailer}
               packageIncludesLabel={pricing?.packageIncludes || 'Package Includes:'}
+              index={index}
             />
           ))}
         </div>

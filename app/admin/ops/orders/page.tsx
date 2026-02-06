@@ -35,7 +35,7 @@ export default function OrdersPage() {
           <ul className="text-sm text-teal-600 dark:text-teal-400 mt-2 text-left list-disc list-inside">
             <li>Consumer orders from Stripe</li>
             <li>Retailer wholesale orders</li>
-            <li>Status tracking &amp; updates</li>
+            <li>Status tracking & updates</li>
             <li>Revenue analytics</li>
           </ul>
         </div>

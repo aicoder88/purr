@@ -1,9 +1,10 @@
-import { Resend } from 'resend';
+
 import prisma from '@/lib/prisma';
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
 import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
+import { escapeHtml } from '@/lib/security/sanitize';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { resend } from '@/lib/resend';
 
 type AffiliateSignupData = {
   name: string;
@@ -21,12 +22,12 @@ export async function POST(req: Request): Promise<Response> {
   const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
   const rateLimitResult = await checkRateLimit(clientIp, 'standard');
   const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
-  
+
   if (!rateLimitResult.success) {
     return Response.json(
       { error: 'Too many requests. Please try again later.' },
-      { 
-        status: 429, 
+      {
+        status: 429,
         headers: {
           ...rateLimitHeaders,
           'Retry-After': rateLimitHeaders['Retry-After'] || '60',
@@ -117,18 +118,18 @@ export async function POST(req: Request): Promise<Response> {
 
         <h3>Applicant Information:</h3>
         <ul>
-          <li><strong>Name:</strong> ${data.name}</li>
-          <li><strong>Email:</strong> ${normalizedEmail}</li>
-          <li><strong>Website/Social:</strong> ${data.website || 'Not provided'}</li>
-          <li><strong>Audience:</strong> ${data.audience}</li>
-          <li><strong>Primary Traffic Source:</strong> ${data.trafficSource}</li>
-          <li><strong>Monthly Visitors/Followers:</strong> ${data.monthlyVisitors}</li>
-          <li><strong>Affiliate Experience:</strong> ${data.experience}</li>
+          <li><strong>Name:</strong> ${escapeHtml(data.name)}</li>
+          <li><strong>Email:</strong> ${escapeHtml(normalizedEmail)}</li>
+          <li><strong>Website/Social:</strong> ${escapeHtml(data.website || 'Not provided')}</li>
+          <li><strong>Audience:</strong> ${escapeHtml(data.audience)}</li>
+          <li><strong>Primary Traffic Source:</strong> ${escapeHtml(data.trafficSource)}</li>
+          <li><strong>Monthly Visitors/Followers:</strong> ${escapeHtml(data.monthlyVisitors)}</li>
+          <li><strong>Affiliate Experience:</strong> ${escapeHtml(data.experience)}</li>
         </ul>
 
         ${data.message ? `
           <h3>Message:</h3>
-          <p>${data.message}</p>
+          <p>${escapeHtml(data.message)}</p>
         ` : ''}
 
         <hr />
@@ -147,7 +148,7 @@ export async function POST(req: Request): Promise<Response> {
         from: `${RESEND_CONFIG.fromName} <${RESEND_CONFIG.fromEmail}>`,
         to: process.env.ADMIN_EMAIL || RESEND_CONFIG.toEmail,
         replyTo: normalizedEmail,
-        subject: `New Affiliate Application: ${data.name}`,
+        subject: `New Affiliate Application: ${escapeHtml(data.name)}`,
         html: adminEmailContent,
       });
 
@@ -156,7 +157,7 @@ export async function POST(req: Request): Promise<Response> {
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #1a1a1a;">Thank You for Applying!</h2>
 
-          <p>Hi ${data.name},</p>
+          <p>Hi ${escapeHtml(data.name)},</p>
 
           <p>We've received your application to join the Purrify Affiliate Program. Thank you for your interest in partnering with us!</p>
 
@@ -165,10 +166,10 @@ export async function POST(req: Request): Promise<Response> {
 
           <h3 style="color: #1a1a1a;">Your Application Details:</h3>
           <ul style="line-height: 1.8;">
-            <li><strong>Name:</strong> ${data.name}</li>
-            <li><strong>Email:</strong> ${normalizedEmail}</li>
-            <li><strong>Website/Social:</strong> ${data.website || 'Not provided'}</li>
-            <li><strong>Primary Traffic Source:</strong> ${data.trafficSource}</li>
+            <li><strong>Name:</strong> ${escapeHtml(data.name)}</li>
+            <li><strong>Email:</strong> ${escapeHtml(normalizedEmail)}</li>
+            <li><strong>Website/Social:</strong> ${escapeHtml(data.website || 'Not provided')}</li>
+            <li><strong>Primary Traffic Source:</strong> ${escapeHtml(data.trafficSource)}</li>
           </ul>
 
           <h3 style="color: #1a1a1a;">Program Highlights:</h3>

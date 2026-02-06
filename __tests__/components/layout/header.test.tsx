@@ -138,8 +138,9 @@ jest.mock('@/components/ui/button', () => ({
     'aria-label'?: string;
   }) {
     if (asChild && React.isValidElement(children)) {
-      return React.cloneElement(children as React.ReactElement, {
-        className: `${(children as React.ReactElement).props.className || ''} ${className || ''}`.trim(),
+      const child = children as React.ReactElement<{ className?: string }>;
+      return React.cloneElement(child, {
+        className: `${child.props.className || ''} ${className || ''}`.trim(),
       });
     }
     return (
@@ -174,7 +175,7 @@ describe('Header', () => {
 
   it('renders the header with logo', () => {
     render(<Header />);
-    
+
     // Check for logo images (both light and dark mode)
     const logos = screen.getAllByAltText(/Purrify/);
     expect(logos.length).toBeGreaterThanOrEqual(1);
@@ -182,7 +183,7 @@ describe('Header', () => {
 
   it('renders main navigation items', () => {
     render(<Header />);
-    
+
     expect(screen.getByText('Products')).toBeInTheDocument();
     expect(screen.getByText('Retailers')).toBeInTheDocument();
     expect(screen.getByText('Learn')).toBeInTheDocument();
@@ -192,13 +193,13 @@ describe('Header', () => {
 
   it('renders Find a Store button', () => {
     render(<Header />);
-    
+
     expect(screen.getByText('Find a Store')).toBeInTheDocument();
   });
 
   it('renders theme toggle', () => {
     render(<Header />);
-    
+
     // Theme toggle appears twice (desktop and mobile), so use getAllByTestId
     const toggles = screen.getAllByTestId('theme-toggle');
     expect(toggles.length).toBeGreaterThanOrEqual(1);
@@ -206,7 +207,7 @@ describe('Header', () => {
 
   it('renders language switcher', () => {
     render(<Header />);
-    
+
     // Language switcher appears twice (desktop and mobile)
     const switchers = screen.getAllByTestId('language-switcher');
     expect(switchers.length).toBeGreaterThanOrEqual(1);
@@ -214,7 +215,7 @@ describe('Header', () => {
 
   it('has correct header structure', () => {
     const { container } = render(<Header />);
-    
+
     const header = container.querySelector('header');
     expect(header).toBeInTheDocument();
     expect(header).toHaveClass('sticky');
@@ -223,14 +224,14 @@ describe('Header', () => {
 
   it('has navigation with correct role', () => {
     render(<Header />);
-    
+
     const nav = screen.getByRole('navigation');
     expect(nav).toBeInTheDocument();
   });
 
   it('has dropdown buttons with correct aria attributes', () => {
     render(<Header />);
-    
+
     const productsDropdown = screen.getByRole('button', { name: /Products/i });
     expect(productsDropdown).toHaveAttribute('aria-haspopup', 'true');
     expect(productsDropdown).toHaveAttribute('aria-expanded');
@@ -238,16 +239,16 @@ describe('Header', () => {
 
   it('toggles mobile menu when menu button is clicked', () => {
     render(<Header />);
-    
+
     // Find the menu toggle button by aria-label
     const menuButton = screen.getByRole('button', { name: /toggle menu/i });
-    
+
     // Initially, mobile menu should be closed
     expect(screen.queryByRole('link', { name: /our story/i })).not.toBeInTheDocument();
-    
+
     // Click to open menu
     fireEvent.click(menuButton);
-    
+
     // Mobile menu should now show some navigation items
     expect(screen.getByText('Products')).toBeInTheDocument();
   });
@@ -272,7 +273,7 @@ describe('Header with authenticated user', () => {
 
   it('displays user email when authenticated', () => {
     render(<Header />);
-    
+
     // Should show username (part before @) - use getAllByText since it appears in multiple places
     const usernameElements = screen.getAllByText((content) => content.includes('test'));
     expect(usernameElements.length).toBeGreaterThanOrEqual(1);
@@ -280,7 +281,7 @@ describe('Header with authenticated user', () => {
 
   it('shows sign out button when authenticated', () => {
     render(<Header />);
-    
+
     // Sign Out appears in multiple places (desktop and mobile)
     const signOutButtons = screen.getAllByText('Sign Out');
     expect(signOutButtons.length).toBeGreaterThanOrEqual(1);
@@ -294,7 +295,7 @@ describe('Header navigation links', () => {
 
   it('renders Products button with dropdown attributes', () => {
     render(<Header />);
-    
+
     // Check Products button has correct attributes
     const productsButton = screen.getByRole('button', { name: /Products/i });
     expect(productsButton).toHaveAttribute('aria-haspopup', 'true');
@@ -303,21 +304,21 @@ describe('Header navigation links', () => {
 
   it('renders correct href for Blog link', () => {
     render(<Header />);
-    
+
     const blogLink = screen.getByRole('link', { name: /^Blog$/i });
     expect(blogLink).toHaveAttribute('href', '/blog');
   });
 
   it('renders correct href for Find a Store button', () => {
     render(<Header />);
-    
+
     const findStoreLink = screen.getByRole('link', { name: /Find a Store/i });
     expect(findStoreLink).toHaveAttribute('href', '/stores');
   });
 
   it('renders logo link to home page', () => {
     render(<Header />);
-    
+
     const logoLinks = screen.getAllByRole('link');
     const homeLink = logoLinks.find(link => link.getAttribute('href') === '/');
     expect(homeLink).toBeDefined();

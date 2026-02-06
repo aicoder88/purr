@@ -264,7 +264,7 @@ ${sitemapEntries}
 
   private escapeXml(str: string): string {
     return str
-      .replaceAll(/&/g, '&amp;')
+      .replaceAll(/&/g, '&amp;')   // FIRST - encode & before creating other entities containing &
       .replaceAll(/</g, '&lt;')
       .replaceAll(/>/g, '&gt;')
       .replaceAll(/"/g, '&quot;')

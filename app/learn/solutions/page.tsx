@@ -1,3 +1,5 @@
+export const dynamic = 'force-static';
+
 import type { Metadata } from 'next';
 import { SITE_NAME } from '../../../src/lib/constants';
 import SolutionsPageClient from './SolutionsPageClient';

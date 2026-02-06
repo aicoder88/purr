@@ -78,14 +78,14 @@ const productImages: ProductImage[] = [
         id: 'product-50g',
         name: 'Purrify 50g Standard',
         description: 'Product image for single-cat households',
-        url: '/optimized/60g-yellow.webp',
+        url: '/optimized/60g-transparent.webp',
         previewUrl: '/optimized/60g-yellow.webp',
     },
     {
         id: 'product-120g',
         name: 'Purrify 120g Family Pack',
         description: 'Product image for multi-cat households',
-        url: '/optimized/140g_thumb.webp',
+        url: '/optimized/140g-transparent.webp',
         previewUrl: '/optimized/140g_thumb.webp',
     },
     {
@@ -217,8 +217,8 @@ function CopyButton({ text, label }: { text: string; label?: string }) {
         <button
             onClick={handleCopy}
             className={`inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${copied
-                    ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300'
-                    : 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 hover:bg-purple-200 dark:hover:bg-purple-900/50'
+                ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300'
+                : 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 hover:bg-purple-200 dark:hover:bg-purple-900/50'
                 }`}
         >
             {copied ? (
@@ -405,8 +405,8 @@ export default function AssetsContent() {
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id)}
                                 className={`flex items-center whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors ${activeTab === tab.id
-                                        ? 'border-purple-500 text-purple-600 dark:text-purple-400'
-                                        : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
+                                    ? 'border-purple-500 text-purple-600 dark:text-purple-400'
+                                    : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
                                     }`}
                             >
                                 <Icon className="w-4 h-4 mr-2" />

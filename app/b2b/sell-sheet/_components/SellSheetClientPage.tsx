@@ -48,7 +48,7 @@ export default function SellSheetClientPage() {
               </p>
             </div>
             <div className="text-right">
-              <p className="text-lg font-bold text-[#10B981]">B2B Partner Program</p>
+              <p className="text-lg font-bold text-brand-green-700 dark:text-brand-green">B2B Partner Program</p>
               <p className="text-sm text-gray-600 dark:text-gray-600">
                 {CONTACT_INFO.email}
               </p>
@@ -61,7 +61,7 @@ export default function SellSheetClientPage() {
 
           {/* Value Proposition */}
           <section className="mb-8">
-            <h2 className="text-2xl font-black text-gray-900 dark:text-gray-900 mb-4 text-[#10B981]">
+            <h2 className="text-2xl font-black text-gray-900 dark:text-gray-900 mb-4 text-brand-green-700 dark:text-brand-green">
               The Natural Solution to Litter Box Odor
             </h2>
             <p className="text-gray-700 dark:text-gray-700 mb-4">
@@ -72,7 +72,7 @@ export default function SellSheetClientPage() {
             </p>
             <div className="grid grid-cols-4 gap-4 text-center">
               <div className="bg-[#10B981]/10 rounded-lg p-3">
-                <p className="text-2xl font-black text-[#10B981]">100%</p>
+                <p className="text-2xl font-black text-brand-green-700 dark:text-brand-green">100%</p>
                 <p className="text-xs text-gray-600 dark:text-gray-600">Natural</p>
               </div>
               <div className="bg-[#3694FF]/10 rounded-lg p-3">
@@ -131,7 +131,7 @@ export default function SellSheetClientPage() {
                     <td className="p-3 text-center text-gray-700 dark:text-gray-700">
                       $4.99
                     </td>
-                    <td className="p-3 text-center font-bold text-[#10B981]">
+                    <td className="p-3 text-center font-bold text-brand-green-700 dark:text-brand-green">
                       $2.99
                     </td>
                     <td className="p-3 text-center text-gray-700 dark:text-gray-700">
@@ -148,7 +148,7 @@ export default function SellSheetClientPage() {
                     <td className="p-3 text-center text-gray-700 dark:text-gray-700">
                       $14.99
                     </td>
-                    <td className="p-3 text-center font-bold text-[#10B981]">
+                    <td className="p-3 text-center font-bold text-brand-green-700 dark:text-brand-green">
                       $8.99
                     </td>
                     <td className="p-3 text-center text-gray-700 dark:text-gray-700">
@@ -165,7 +165,7 @@ export default function SellSheetClientPage() {
                     <td className="p-3 text-center text-gray-700 dark:text-gray-700">
                       $29.99
                     </td>
-                    <td className="p-3 text-center font-bold text-[#10B981]">
+                    <td className="p-3 text-center font-bold text-brand-green-700 dark:text-brand-green">
                       $17.99
                     </td>
                     <td className="p-3 text-center text-gray-700 dark:text-gray-700">
@@ -197,7 +197,7 @@ export default function SellSheetClientPage() {
                   'No dust, no mess, easy to use',
                 ].map((benefit, i) => (
                   <li key={i} className="flex items-start text-sm">
-                    <Check className="w-4 h-4 text-[#10B981] mr-2 mt-0.5 flex-shrink-0" />
+                    <Check className="w-4 h-4 text-brand-green-700 dark:text-brand-green mr-2 mt-0.5 flex-shrink-0" />
                     <span className="text-gray-700 dark:text-gray-700">
                       {benefit}
                     </span>
@@ -241,7 +241,7 @@ export default function SellSheetClientPage() {
             </h3>
             <div className="grid grid-cols-3 gap-4">
               <div>
-                <p className="font-bold text-[#10B981] mb-1">Starter Package</p>
+                <p className="font-bold text-brand-green-700 dark:text-brand-green mb-1">Starter Package</p>
                 <ul className="text-xs text-gray-700 dark:text-gray-700 space-y-1">
                   <li>• Free sample kit</li>
                   <li>• 15% wholesale discount</li>
@@ -318,15 +318,15 @@ export default function SellSheetClientPage() {
             </p>
             <div className="flex justify-center gap-8 text-sm">
               <div>
-                <p className="font-bold text-[#10B981]">Email</p>
+                <p className="font-bold text-brand-green-700 dark:text-brand-green">Email</p>
                 <p>{CONTACT_INFO.email}</p>
               </div>
               <div>
-                <p className="font-bold text-[#10B981]">Phone</p>
+                <p className="font-bold text-brand-green-700 dark:text-brand-green">Phone</p>
                 <p>{CONTACT_INFO.phone}</p>
               </div>
               <div>
-                <p className="font-bold text-[#10B981]">Website</p>
+                <p className="font-bold text-brand-green-700 dark:text-brand-green">Website</p>
                 <p>purrify.ca/veterinarians</p>
               </div>
             </div>

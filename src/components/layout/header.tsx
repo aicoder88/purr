@@ -459,7 +459,7 @@ export function Header() {
                 <div className="w-6 h-6 rounded-full bg-brand-green dark:bg-purple-500 flex items-center justify-center">
                   <UserIcon className="w-3.5 h-3.5 text-white dark:text-gray-100" />
                 </div>
-                <span className="text-sm font-medium text-brand-green-dark dark:text-purple-300">
+                <span className="text-sm font-medium text-brand-green-800 dark:text-purple-300">
                   {session?.user?.email?.split('@')[0] || 'User'}
                 </span>
               </div>
@@ -594,7 +594,7 @@ export function Header() {
                           <UserIcon className="w-4 h-4 text-white dark:text-gray-100" />
                         </div>
                         <div>
-                          <span className="text-sm font-semibold text-brand-green-dark dark:text-purple-300 block">
+                          <span className="text-sm font-semibold text-brand-green-800 dark:text-purple-300 block">
                             {session?.user?.email?.split('@')[0] || 'User'}
                           </span>
                           <span className="text-xs text-gray-500 dark:text-gray-400">{t.nav?.signedIn || ""}</span>
@@ -604,7 +604,7 @@ export function Header() {
                     <Button
                       onClick={() => signOut({ callbackUrl: "/" })}
                       variant="outline"
-                      className="w-full flex items-center justify-center gap-2 border-brand-green/30 dark:border-purple-500/40 text-brand-green-dark dark:text-purple-300 hover:bg-brand-green/10 dark:hover:bg-purple-500/20"
+                      className="w-full flex items-center justify-center gap-2 border-brand-green/30 dark:border-purple-500/40 text-brand-green-800 dark:text-purple-300 hover:bg-brand-green/10 dark:hover:bg-purple-500/20"
                     >
                       <LogOut className="w-4 h-4" />
                       <span>{t.nav?.signOut || ""}</span>

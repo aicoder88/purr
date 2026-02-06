@@ -105,7 +105,7 @@ export default function CatCafesClientPage() {
                     <div className="text-sm font-semibold text-gray-600 dark:text-gray-300">{t.catCafes?.hero?.stats?.days || 'Days Fresh'}</div>
                   </div>
                   <div className="text-center p-4 bg-white dark:bg-gray-800/50 rounded-xl backdrop-blur-sm shadow-lg">
-                    <div className="text-3xl font-black text-[#10B981] dark:text-[#34D399]">0</div>
+                    <div className="text-3xl font-black text-brand-green-700 dark:text-[#34D399]">0</div>
                     <div className="text-sm font-semibold text-gray-600 dark:text-gray-300">{t.catCafes?.hero?.stats?.fragrances || 'Fragrances'}</div>
                   </div>
                   <div className="text-center p-4 bg-white dark:bg-gray-800/50 rounded-xl backdrop-blur-sm shadow-lg">
@@ -161,7 +161,7 @@ export default function CatCafesClientPage() {
                     </div>
                     <div>
                       <h3 className="font-heading font-black text-xl text-gray-900 dark:text-gray-50">{t.catCafes?.valueProps?.catSafe?.title || 'Cat-Friendly Formula'}</h3>
-                      <p className="text-[#10B981] dark:text-[#34D399] font-bold">{t.catCafes?.valueProps?.catSafe?.highlight || 'No irritants or chemicals'}</p>
+                      <p className="text-brand-green-700 dark:text-[#34D399] font-bold">{t.catCafes?.valueProps?.catSafe?.highlight || 'No irritants or chemicals'}</p>
                     </div>
                   </div>
                   <p className="text-gray-700 dark:text-gray-200">{t.catCafes?.valueProps?.catSafe?.description || 'Natural coconut shell activated carbon. No fragrances that could irritate cats or guests with sensitivities.'}</p>
@@ -266,7 +266,7 @@ export default function CatCafesClientPage() {
         <Container>
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-[#10B981]/10 to-[#34D399]/10 dark:from-[#10B981]/20 dark:to-[#34D399]/20 text-[#10B981] dark:text-[#34D399] font-bold text-sm mb-4">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-[#10B981]/10 to-[#34D399]/10 dark:from-[#10B981]/20 dark:to-[#34D399]/20 text-brand-green-700 dark:text-[#34D399] font-bold text-sm mb-4">
                 {t.catCafes?.solution?.badge || 'The Purrify Solution'}
               </div>
               <h2 className="font-heading text-3xl md:text-5xl font-black text-gray-900 dark:text-gray-50 mb-4">
