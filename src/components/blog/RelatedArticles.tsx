@@ -38,7 +38,7 @@ const ALL_ARTICLES: Article[] = [
   {
     title: 'Multi-Cat Litter Deodorizer Guide',
     href: '/blog/multi-cat-litter-deodorizer-guide',
-    image: '/optimized/three_bags_no_bg.webp',
+    image: '/optimized/three-bags-no-bg.webp',
     alt: 'Multiple product sizes for multi-cat households',
   },
   {
@@ -158,7 +158,7 @@ const ALL_ARTICLES: Article[] = [
   {
     title: 'Senior Cat Litter Solutions',
     href: '/learn/solutions/senior-cat-litter-solutions',
-    image: '/optimized/cat_long_lasting_freshness_800x500.webp',
+    image: '/optimized/cat-long-lasting-freshness-800x500.webp',
     alt: 'Comfortable litter solutions for senior cats'
   },
 ];

@@ -334,7 +334,7 @@ export default function OpinionesPage() {
                 </div>
                 <div className="text-center">
                   <Image
-                    src="/optimized/three_bags_no_bg.webp"
+                    src="/optimized/three-bags-no-bg.webp"
                     alt="Productos Purrify - Desodorizante de carbón activado para arena de gatos"
                     width={400}
                     height={400}

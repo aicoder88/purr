@@ -93,7 +93,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "That lingering litter box smell isn't inevitable. Learn why cat odour spreads through your home and discover the science-backed solutions that actually work.",
       author: 'Purrify Team',
       date: '2026-01-03',
-      image: '/optimized/cat_long_lasting_freshness_800x500.webp',
+      image: '/optimized/cat-long-lasting-freshness-800x500.webp',
       link: '/blog/why-does-my-house-smell-like-cat-litter'
     },
     {

@@ -34,7 +34,7 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
     alt: 'Compact 12g product ideal for small apartments',
   },
   '/blog/multi-cat-litter-deodorizer-guide': {
-    image: '/optimized/three_bags_no_bg.webp',
+    image: '/optimized/three-bags-no-bg.webp',
     alt: 'Multiple product sizes for multi-cat households',
   },
   '/blog/using-deodorizers-with-kittens': {
@@ -154,7 +154,7 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
 
   // Product pages
   '/products': {
-    image: '/optimized/three_bags_no_bg.webp',
+    image: '/optimized/three-bags-no-bg.webp',
     alt: 'Purrify product lineup',
   },
   '/products/trial-size': {
@@ -166,7 +166,7 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
     alt: 'Standard Purrify pouch',
   },
   '/products/family-pack': {
-    image: '/optimized/three_bags_no_bg.webp',
+    image: '/optimized/three-bags-no-bg.webp',
     alt: 'Family pack Purrify bundle',
   },
 
@@ -176,7 +176,7 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
     alt: 'Contact us for support',
   },
   '/support/shipping': {
-    image: '/optimized/three_bags_no_bg.webp',
+    image: '/optimized/three-bags-no-bg.webp',
     alt: 'Shipping information',
   },
 };

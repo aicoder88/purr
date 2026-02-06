@@ -13,7 +13,7 @@ export function HowItWorks() {
     title: step.title,
     description: step.description,
     icon: ["✨", "🔄", "😌"][index],
-    image: ["/optimized/panel_1.webp", "/optimized/panel_2.webp", "/optimized/panel_3.webp"][index],
+    image: ["/optimized/panel-1.webp", "/optimized/panel-2.webp", "/optimized/panel-3.webp"][index],
   }));
 
   return (

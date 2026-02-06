@@ -32,7 +32,7 @@ const CustomerAvatar = ({ src, alt }: { src: string; alt: string }) => (
 );
 
 const customerAvatars = [
-  '/optimized/cat_rose_thumbnail.webp',
+  '/optimized/cat-rose-thumbnail.webp',
   '/optimized/multi-cat-household.webp',
   '/optimized/deodorizers-with-kittens.webp'
 ];

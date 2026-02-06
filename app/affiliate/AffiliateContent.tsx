@@ -112,7 +112,7 @@ export default function AffiliateContent() {
                             <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border border-gray-800/50 dark:border-gray-800/50 bg-gray-900/50 dark:bg-gray-900/50 backdrop-blur-sm p-4">
                                 <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-gray-800 dark:bg-gray-800">
                                     <Image
-                                        src="/optimized/three_bags_no_bg.webp"
+                                        src="/optimized/three-bags-no-bg.webp"
                                         alt="Purrify Products"
                                         fill
                                         className="object-contain hover:scale-105 transition-transform duration-700"
