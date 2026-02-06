@@ -1,3 +1,5 @@
+'use client';
+
 import { Container } from '../ui/container';
 import { Button } from '../ui/button';
 import { useTranslation } from '../../lib/translation-context';
@@ -109,8 +111,8 @@ export function VeterinarianPartnership() {
               <Button
                 onClick={() => scrollToSection("vet-contact")}
                 className={`w-full py-4 font-bold rounded-xl ${tier.popular
-                    ? 'bg-gradient-to-r from-[#10B981] to-[#3694FF] hover:from-[#059669] hover:to-[#2563EB] text-white dark:text-white'
-                    : 'bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100'
+                  ? 'bg-gradient-to-r from-[#10B981] to-[#3694FF] hover:from-[#059669] hover:to-[#2563EB] text-white dark:text-white'
+                  : 'bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100'
                   }`}
               >
                 {tier.cta}

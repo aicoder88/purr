@@ -3745,30 +3745,7 @@ export const en = {
     }
   },
 
-  // Groomers Page
-  groomers: {
-    seo: {
-      pageTitle: "Purrify for Groomers | Complete Odor Solution",
-      description: "Offer clients a complete odor solution. From grooming services to home litter box freshness—be their trusted pet care partner.",
-      keywords: "pet groomer odor control, grooming salon smell solution, cat groomer deodorizer, pet care professional",
-      openGraphAlt: "Professional groomer odor control solution"
-    },
-    hero: {
-      badge: "Professional Partner",
-      titleLine1: "Complete Care",
-      titleLine2: "From Groom to Home",
-      description: "Differentiate your grooming business by offering clients a take-home solution for litter box odor that actually works.",
-      stats: {
-        freshness: "7-Day Fresh",
-        clients: "Happy Clients",
-        natural: "All Natural"
-      },
-      cta: {
-        primary: "Become a Partner",
-        secondary: "Learn More"
-      }
-    }
-  },
+
 
   // Hospitality Page
   hospitality: {
