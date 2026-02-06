@@ -5,8 +5,9 @@ import Image from 'next/image';
 import { Container } from '@/components/ui/container';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 import { ContentStore } from '@/lib/blog/content-store';
-import { sampleBlogPosts, getBlogPostContent, type BlogPost } from '@/data/blog-posts';
+import { sampleBlogPosts, getBlogPostContent, type BlogPost as DataBlogPost } from '@/data/blog-posts';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
+import { getUserLocale } from '@/lib/locale';
 import { generateArticlePageSchema } from '@/lib/seo-utils';
 import { ArrowLeft, Calendar, User, Clock } from 'lucide-react';
 
@@ -43,7 +44,8 @@ export async function generateStaticParams() {
 // Generate metadata for each blog post
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getPost(slug);
+  const locale = await getUserLocale();
+  const post = await getPost(slug, locale);
 
   if (!post) {
     return {
@@ -55,7 +57,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     title: `${post.title} | ${SITE_NAME} Blog`,
     description: post.excerpt,
     alternates: {
-      canonical: `/blog/${slug}`,
+      canonical: `${SITE_URL}/blog/${slug}`,
       languages: {
         'en-CA': `${SITE_URL}/blog/${slug}`,
         'fr-CA': `${SITE_URL}/fr/blog/${slug}`,
@@ -83,11 +85,29 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   };
 }
 
-async function getPost(slug: string): Promise<BlogPost | null> {
+// Blog post type for this component
+interface BlogPost {
+  title: string;
+  excerpt: string;
+  author: string;
+  date: string;
+  image: string;
+  heroImageAlt?: string;
+  heroImageCaption?: string;
+  heroImageCredit?: string;
+  link: string;
+  content?: string;
+  locale?: string;
+  howTo?: DataBlogPost['howTo'];
+  faq?: DataBlogPost['faq'];
+  citations?: DataBlogPost['citations'];
+}
+
+async function getPost(slug: string, locale: string): Promise<BlogPost | null> {
   // First, try ContentStore
   try {
     const store = new ContentStore();
-    const blogPost = await store.getPost(slug, 'en');
+    const blogPost = await store.getPost(slug, locale);
 
     if (blogPost) {
       let dateStr: string;
@@ -109,7 +129,7 @@ async function getPost(slug: string): Promise<BlogPost | null> {
         heroImageAlt: blogPost.featuredImage?.alt || blogPost.title,
         link: `/blog/${blogPost.slug}`,
         content: blogPost.content,
-        locale: (blogPost.locale as 'en' | 'fr' | 'zh') || 'en',
+        locale: (blogPost.locale as string) || 'en',
         howTo: (blogPost as unknown as { howTo?: BlogPost['howTo'] }).howTo ?? null,
         faq: blogPost.faq ?? null,
         citations: blogPost.citations ?? null,
@@ -139,7 +159,8 @@ async function getPost(slug: string): Promise<BlogPost | null> {
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = await getPost(slug);
+  const locale = await getUserLocale();
+  const post = await getPost(slug, locale);
 
   if (!post) {
     notFound();
