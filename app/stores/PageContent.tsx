@@ -44,19 +44,19 @@ const DEFAULT_LOGO_CONFIG = {
 
 const STORE_LOGOS: Record<string, Omit<LogoConfig, 'className' | 'width' | 'height'>> = {
   'Chico': { src: '/optimized/chico-logo.svg', alt: 'Chico - Boutique d\'animaux Logo' },
-  'Pattes et Griffes': { src: '/optimized/pattes.webp', alt: 'Pattes et Griffes Logo' },
+  'Pattes et Griffes': { src: '/optimized/stores/pattes.webp', alt: 'Pattes et Griffes Logo' },
   'GIGI': { src: '/optimized/gigi.webp', alt: 'Animal Shop GIGI - Pet Store Logo' },
-  'Pitou Minou': { src: '/optimized/pitou-minou.webp', alt: 'Pitou Minou & Compagnons - Pet Store Logo' },
-  'Doghaus': { src: '/optimized/doghaus.webp', alt: 'Doghaus Montreal - Premium Pet Store Logo' },
-  'Kong': { src: '/optimized/kong-animalerie.webp', alt: 'KONG ANIMALERIE - Montreal Pet Store Logo' },
-  'Coquette': { src: '/optimized/coquette-finegueule.webp', alt: 'Coquette et Finegueule - Pet Store with Grooming Logo' },
-  'Animalerie Mamiwouff': { src: '/optimized/animalerie-mamiwouff.webp', alt: 'Animalerie Mamiwouff - Family-Owned Pet Store Logo' },
-  'Animalerie Lamifidel': { src: '/optimized/lamifidel.avif', alt: 'Animalerie Lamifidel - Complete Pet Care and Supplies Logo' },
-  'Animalerie Petmobile Nathamo': { src: '/optimized/nathamo.avif', alt: 'Animalerie Petmobile Nathamo - Complete Pet Care and Supplies Logo' },
-  'Animalerie Club Wouf Miaou': { src: '/optimized/woofmiao-logo.webp', alt: 'Animalerie Club Wouf Miaou - Pet Store Logo' },
-  'K&K Pet Foods': { src: '/optimized/kk.avif', alt: 'K&K Pet Foods Dunbar - Premium Pet Products & Supplies Logo' },
-  'Viva Pets': { src: '/optimized/viva-pets.avif', alt: 'Viva Pets - Premium Pet Products & Supplies Logo' },
-  'Little Bit Western': { src: '/optimized/little-bit-western.avif', alt: 'Little Bit Western Feed and Supplies Inc. - Pet and Feed Store Logo' },
+  'Pitou Minou': { src: '/optimized/stores/pitou-minou.webp', alt: 'Pitou Minou & Compagnons - Pet Store Logo' },
+  'Doghaus': { src: '/optimized/stores/doghaus.webp', alt: 'Doghaus Montreal - Premium Pet Store Logo' },
+  'Kong': { src: '/optimized/stores/kong-animalerie.webp', alt: 'KONG ANIMALERIE - Montreal Pet Store Logo' },
+  'Coquette': { src: '/optimized/stores/coquette-finegueule.webp', alt: 'Coquette et Finegueule - Pet Store with Grooming Logo' },
+  'Animalerie Mamiwouff': { src: '/optimized/stores/animalerie-mamiwouff.webp', alt: 'Animalerie Mamiwouff - Family-Owned Pet Store Logo' },
+  'Animalerie Lamifidel': { src: '/optimized/stores/lamifidel.avif', alt: 'Animalerie Lamifidel - Complete Pet Care and Supplies Logo' },
+  'Animalerie Petmobile Nathamo': { src: '/optimized/stores/nathamo.avif', alt: 'Animalerie Petmobile Nathamo - Complete Pet Care and Supplies Logo' },
+  'Animalerie Club Wouf Miaou': { src: '/optimized/stores/woofmiao-logo.webp', alt: 'Animalerie Club Wouf Miaou - Pet Store Logo' },
+  'K&K Pet Foods': { src: '/optimized/stores/kk.avif', alt: 'K&K Pet Foods Dunbar - Premium Pet Products & Supplies Logo' },
+  'Viva Pets': { src: '/optimized/viva-pets-original.avif', alt: 'Viva Pets - Premium Pet Products & Supplies Logo' },
+  'Little Bit Western': { src: '/optimized/stores/little-bit-western.avif', alt: 'Little Bit Western Feed and Supplies Inc. - Pet and Feed Store Logo' },
 };
 
 const WHITE_BG_STORES = Object.keys(STORE_LOGOS);

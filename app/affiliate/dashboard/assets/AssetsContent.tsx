@@ -79,14 +79,14 @@ const productImages: ProductImage[] = [
         name: 'Purrify 50g Standard',
         description: 'Product image for single-cat households',
         url: '/optimized/60g-transparent.webp',
-        previewUrl: '/optimized/60g-yellow.webp',
+        previewUrl: '/optimized/60g-transparent.webp',
     },
     {
         id: 'product-120g',
         name: 'Purrify 120g Family Pack',
         description: 'Product image for multi-cat households',
         url: '/optimized/140g-transparent.webp',
-        previewUrl: '/optimized/140g_thumb.webp',
+        previewUrl: '/optimized/140g-transparent.webp',
     },
     {
         id: 'product-trial',

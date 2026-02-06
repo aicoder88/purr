@@ -116,7 +116,7 @@ const TESTIMONIALS: Testimonial[] = [
       location: 'Montreal, QC',
       quote: "Great add‑on at checkout. Customers come back for the larger sizes after trying it once, which tells us it's delivering results.",
       logo: {
-        src: '/optimized/kong-animalerie.webp',
+        src: '/optimized/stores/kong-animalerie.webp',
         alt: 'KONG ANIMALERIE - Montreal Pet Store Logo',
         width: 64,
         height: 64,

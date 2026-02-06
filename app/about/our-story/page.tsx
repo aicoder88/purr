@@ -363,7 +363,7 @@ export default function AboutPage() {
 
         {/* Stats Section */}
         <section className="py-20 bg-electric-indigo text-white dark:text-gray-100 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/optimized/pattern-bg.webp')] opacity-10 mix-blend-overlay" />
+          {/* Background pattern removed - image not found */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-deep-coral/20 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2" />
 
