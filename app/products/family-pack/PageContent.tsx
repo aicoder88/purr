@@ -30,7 +30,7 @@ export default function FamilyPackPage() {
 
   const priceValidUntil = getPriceValidityDate(90);
   const productKey = 'family';
-  const productName = 'Purrify Family Size (240g)';
+  const productName = 'Purrify Family Size (120g)';
 
   // Track ViewContent on page load
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function FamilyPackPage() {
 
     const numericPrice = getProductPrice(productKey, currency);
     trackTikTokClientEvent('ViewContent', {
-      content_id: productKey,
+      content_id: 'purrify-120g',
       content_name: productName,
       content_type: 'product',
       value: numericPrice,
@@ -51,9 +51,10 @@ export default function FamilyPackPage() {
   const handleBuyClick = useCallback((isAutoship: boolean, quantity: number = 1) => {
     const price = isAutoship ? getProductPrice('familyAutoship', currency) : getProductPrice(productKey, currency);
     const name = isAutoship ? `${productName} - Autoship` : productName;
+    const contentId = isAutoship ? 'purrify-120g-autoship' : 'purrify-120g';
 
     trackTikTokClientEvent('AddToCart', {
-      content_id: productKey,
+      content_id: contentId,
       content_name: name,
       content_type: 'product',
       quantity: quantity,
@@ -62,7 +63,7 @@ export default function FamilyPackPage() {
     });
 
     trackTikTokClientEvent('InitiateCheckout', {
-      content_id: productKey,
+      content_id: contentId,
       content_name: name,
       content_type: 'product',
       quantity: quantity,
@@ -79,7 +80,7 @@ export default function FamilyPackPage() {
   // Use optimized SEO meta content
   const seoMeta = getSEOMeta(locale as 'en' | 'fr' | 'zh' | 'es', 'products', 'family');
   const pageTitle = seoMeta?.title || `${SITE_NAME} Family Pack - Best Cat Litter Freshener for Multi-Cat Homes`;
-  const pageDescription = seoMeta?.description || "Best value cat litter freshener for multi-cat households. 240g activated charcoal additive provides 2 months of odor control. Natural coconut shell formula works with any litter. Ships to USA & Canada.";
+  const pageDescription = seoMeta?.description || "Best value cat litter freshener for multi-cat households. 120g activated charcoal additive provides 2 months of odor control. Natural coconut shell formula works with any litter. Ships to USA & Canada.";
 
   const trialPrice = formatProductPrice('trial', currency, locale);
   const standardPrice = formatProductPrice('standard', currency, locale);
@@ -107,25 +108,25 @@ export default function FamilyPackPage() {
     targetKeyword: 'cat litter freshener family pack',
     schemaType: 'product',
     schemaData: {
-      name: 'Purrify 240g Family Size - Cat Litter Freshener & Charcoal Additive',
-      description: 'Best value cat litter freshener for multi-cat homes. 240g activated charcoal cat litter additive from coconut shells. Best value per gram. 100% natural, fragrance-free, pet-friendly deodorizer.',
-      image: ['https://www.purrify.ca/optimized/140g-transparent.webp'],
+      name: 'Purrify 120g Family Size - Cat Litter Freshener & Charcoal Additive',
+      description: 'Best value cat litter freshener for multi-cat homes. 120g activated charcoal cat litter additive from coconut shells. Best value per gram. 100% natural, fragrance-free, pet-friendly deodorizer.',
+      image: ['https://www.purrify.ca/optimized/60g-transparent.webp'],
       price: familyPriceAmount.toFixed(2),
       priceValidUntil,
       availability: 'https://schema.org/InStock',
-      sku: 'purrify-240g',
-      mpn: 'PURRIFY-240G',
+      sku: 'purrify-120g',
+      mpn: 'PURRIFY-120G',
       shippingRate: '0',
       rating: {
         value: reviewData.ratingValue,
         count: reviewData.reviewCount,
       },
     },
-    image: 'https://www.purrify.ca/optimized/140g-transparent.webp',
+    image: 'https://www.purrify.ca/optimized/60g-transparent.webp',
   });
 
   // Family pack lifestyle images
-  const heroImage = '/optimized/140g-transparent.webp'; // Multiple cats happy home
+  const heroImage = '/optimized/60g-transparent.webp'; // Multiple cats happy home
   const sectionImage1 = '/optimized/multi-cat-home-ghibli.webp'; // Multi-cat household
   const solutionImage = '/optimized/multi-cat-success-ghibli.webp'; // Happy multi-cat family
 
@@ -202,8 +203,8 @@ export default function FamilyPackPage() {
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
                 <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl">
                   <Image
-                    src="/optimized/140g-transparent.webp"
-                    alt="Purrify 240g Family Size"
+                    src="/optimized/60g-transparent.webp"
+                    alt="Purrify 120g Family Size"
                     width={400}
                     height={400}
                     sizes="(max-width: 1024px) 100vw, 400px"
@@ -222,7 +223,7 @@ export default function FamilyPackPage() {
                     Purrify Family Pack
                   </h1>
                   <p className="text-xl text-gray-600 dark:text-gray-300 mb-2">
-                    240g Cat Litter Odor Control
+                    120g Cat Litter Odor Control
                   </p>
                   <div className="flex items-center space-x-2 mb-4">
                     <div className="flex items-center">
@@ -295,7 +296,7 @@ export default function FamilyPackPage() {
         <section className="py-12 bg-gray-50 dark:bg-gray-900/30">
           <Container>
             <div className="max-w-3xl mx-auto">
-              <ProductFAQ productType="family" productName="Family Size (240g)" />
+              <ProductFAQ productType="family" productName="Family Size (120g)" />
             </div>
           </Container>
         </section>
@@ -308,7 +309,7 @@ export default function FamilyPackPage() {
                 Maximum Value for Multi-Cat Homes
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Our 240g family pack provides unbeatable value and convenience for households with multiple cats
+                Our 120g family pack provides unbeatable value and convenience for households with multiple cats
               </p>
             </div>
 
@@ -362,13 +363,13 @@ export default function FamilyPackPage() {
                 </div>
                 <div className="text-center">
                   <div className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                    Family Pack (240g)
+                    Family Pack (120g)
                   </div>
                   <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-2">
                     {familyPrice}
                   </div>
                   <div className="text-sm text-green-600 dark:text-green-400 font-semibold">
-                    Cost per 10g: {(familyPriceAmount / 24).toFixed(2)}
+                    Cost per 10g: {(familyPriceAmount / 12).toFixed(2)}
                   </div>
                 </div>
               </div>
@@ -452,7 +453,7 @@ export default function FamilyPackPage() {
                   BEST VALUE
                 </div>
                 <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">Family Pack</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">240g - Best value per gram</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">120g - Best value per gram</p>
                 <Button className="w-full">Currently Viewing</Button>
               </div>
             </div>

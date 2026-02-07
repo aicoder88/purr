@@ -89,7 +89,7 @@ export default function TrialSizePage() {
     schemaData: {
       name: "Purrify 12g Trial - Natural Cat Litter Freshener & Charcoal Additive",
       description: "FREE trial of our activated charcoal cat litter additive. Natural coconut shell carbon litter freshener eliminates ammonia odors instantly. Pet-friendly, fragrance-free formula.",
-      image: ["https://www.purrify.ca/optimized/17g-transparent.webp"],
+      image: ["https://www.purrify.ca/optimized/17g-transparent-v2.webp"],
       price: trialPriceString,
       priceValidUntil,
       availability: 'https://schema.org/InStock',
@@ -101,7 +101,7 @@ export default function TrialSizePage() {
         count: reviewData.reviewCount,
       },
     },
-    image: 'https://www.purrify.ca/optimized/17g-transparent.webp',
+    image: 'https://www.purrify.ca/optimized/17g-transparent-v2.webp',
     keywords: ['cat litter freshener', 'charcoal litter additive', 'cat litter deodorizer', 'free trial'],
   });
 
@@ -153,9 +153,16 @@ export default function TrialSizePage() {
               <div className="inline-block bg-green-600 dark:bg-green-700 text-white dark:text-gray-100 px-4 py-2 rounded-full text-sm font-bold mb-4 uppercase tracking-wide animate-pulse">
                 🎁 LIMITED TIME OFFER - FREE TRIAL
               </div>
-              <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-6 leading-tight">
-                <span className="text-gray-600 dark:text-gray-400 text-xl md:text-2xl lg:text-3xl font-medium italic">&quot;I Thought My Litter Box Would Always Smell...&quot;</span><br />
-                Until I tried this. Now it&apos;s <span className="text-green-600 dark:text-green-400">FREE</span> for you to test.
+              <h1 className="font-heading mb-8 flex flex-col items-center gap-3">
+                <span className="text-gray-500 dark:text-gray-400 text-lg md:text-xl font-medium italic">
+                  &quot;I Thought My Litter Box Would Always Smell...&quot;
+                </span>
+                <span className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white leading-tight tracking-tight">
+                  Until I tried this.
+                </span>
+                <span className="text-xl md:text-3xl font-bold text-gray-800 dark:text-gray-200 mt-2">
+                  Now it&apos;s <span className="text-green-600 dark:text-green-400">FREE</span> for you to test.
+                </span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-semibold mb-4">
                 In 60 seconds, your litter box smell disappears.<br className="hidden md:block" />
@@ -178,7 +185,7 @@ export default function TrialSizePage() {
                   <div className="absolute -inset-4 bg-gradient-to-r from-electric-indigo-400/20 to-purple-400/20 dark:from-electric-indigo-600/10 dark:to-purple-600/10 rounded-3xl blur-2xl"></div>
                   <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl">
                     <Image
-                      src="/optimized/17g-transparent.webp"
+                      src="/optimized/17g-transparent-v2.webp"
                       alt="Purrify 12g Trial Size"
                       width={300}
                       height={300}

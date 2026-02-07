@@ -134,7 +134,7 @@ const caseStudies = [
     situation: "Senior Cat with Health Concerns",
     timeframe: "60 Days",
     cats: 1,
-    image: "/optimized/17g-transparent.webp",
+    image: "/optimized/17g-transparent-v2.webp",
     challenge: {
       description: "Dr. Wong's 15-year-old cat developed respiratory sensitivities, making traditional scented deodorizers unsuitable. The cat needed effective odor control without any irritating chemicals or fragrances.",
       painPoints: [

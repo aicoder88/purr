@@ -97,7 +97,7 @@ async function getProductData(productId: string) {
       weight: 0.012, // kg
       sku: 'PURR-12G',
       stripe_price_id: 'price_trial_12g',
-      image: '17g-transparent.webp'
+      image: '17g-transparent-v2.webp'
     },
     '50g': {
       id: '50g',
@@ -176,7 +176,7 @@ async function prepareStripeData(product: { id: string; name: string; price: num
           product_data: {
             name: product.name,
             description: `Activated carbon cat litter additive - ${product.id}`,
-            images: [`https://www.purrify.ca/optimized/${product.image || `${product.id}.webp`}`],
+            images: ['https://www.purrify.ca/optimized/17g-transparent-v2.webp'],
           },
           unit_amount: Math.round(product.price * 100), // Stripe uses cents
         },

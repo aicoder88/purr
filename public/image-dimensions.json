@@ -539,6 +539,15 @@
     "avifSanitized": "optimized/social-logo.avif",
     "optimized": "optimized/social-logo.png"
   },
+  "images/Logos/logo-dark.png": {
+    "width": 418,
+    "height": 200,
+    "webp": "optimized/logo-dark.webp",
+    "webpSanitized": "optimized/logo-dark.webp",
+    "avif": "optimized/logo-dark.avif",
+    "avifSanitized": "optimized/logo-dark.avif",
+    "optimized": "optimized/logo-dark.png"
+  },
   "images/Logos/icon-64.png": {
     "width": 64,
     "height": 64,

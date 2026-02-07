@@ -144,7 +144,7 @@ export function Footer() {
                     <Image
                       src="/optimized/logo-dark.webp"
                       alt="Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page"
-                      width={120}
+                      width={84}
                       height={40}
                       loading="lazy"
                       className="h-full w-auto filter drop-shadow-sm transition-all duration-300 hidden dark:block"

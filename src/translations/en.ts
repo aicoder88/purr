@@ -108,12 +108,12 @@ export const en = {
       description: "Perfect for skeptics (we get it).\nJust pay $4.76 shipping to try it yourself.\nOne per household — share the love, not the bags."
     },
     "purrify-50g": {
-      name: "The Standard",
-      description: "Ideal for single-cat homes.\nLasts about a month of fresh litter.\nOur most popular size — and most reordered."
+      name: "The Goldilocks Bag",
+      description: "50g · Regular Size\nLasts about a month of fresh litter.\nOur most popular size — and most reordered."
     },
     "purrify-120g": {
-      name: "The Goldilocks Bag",
-      description: "For multi-cat households.\nBuilt for the extra ammonia output.\nBecause two cats don't smell twice as bad — they smell five times as bad."
+      name: "Family Size",
+      description: "120g · Best Value Per Gram\nFor multi-cat households.\nBuilt for the extra ammonia output."
     }
   },
 
@@ -189,7 +189,7 @@ export const en = {
     pricing: {
       trial: "FREE Trial (just pay $4.76 S&H)",
       standard: "50g: $14.99",
-      family: "120g: $24.99"
+      family: "120g: $29.99"
     },
     buttons: {
       shopNow: "Try FREE — Just $4.76 Shipping",
@@ -223,8 +223,8 @@ export const en = {
       subheadline: "Water-filter grade activated carbon eliminates odors at the source. Works with any litter your cat already loves.",
       valueProposition: "Water-filter grade carbon traps odors at the source. Works with any litter your cat already loves.",
       trialSize: "Trial Size",
-      standard: "Standard",
-      familyPack: "Family Pack",
+      standard: "Regular",
+      familyPack: "Family Size",
       plusSH: "+ S&H",
       freeShippingOver: "Free shipping on orders over $50",
       thirtyDayGuarantee: "30-Day Guarantee",
@@ -581,14 +581,14 @@ export const en = {
           sku: "purrify-12g"
         },
         standard: {
-          name: "Purrify 50g Standard Size",
+          name: "Purrify 50g Goldilocks Bag",
           description: "Most popular size - one month supply for single cat households",
           sku: "purrify-50g"
         },
         family: {
-          name: "Purrify 240g Family Size",
+          name: "Purrify 120g Family Size",
           description: "Large size perfect for multi-cat households - maximum odor control",
-          sku: "purrify-240g"
+          sku: "purrify-120g"
         }
       },
       priceRange: "$6.99 - $29.99"

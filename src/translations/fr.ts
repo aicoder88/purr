@@ -109,12 +109,12 @@ export const fr = {
       description: "Essayez Purrify GRATUITEMENT !\nJuste 4,76 $ pour les frais d'envoi partout au Canada\n\nLimite d'un par client"
     },
     "purrify-50g": {
-      name: "Purrify 50g",
-      description: "Idéal pour un Chat\nNotre taille la plus populaire pour les foyers avec un seul chat.\nUn mois de fraîcheur !"
+      name: "Le Format Parfait",
+      description: "50g · Format Standard\nIdéal pour un Chat\nNotre taille la plus populaire pour les foyers avec un seul chat."
     },
     "purrify-120g": {
-      name: "Le Format Parfait",
-      description: "Parfait pour Deux Chats\nDouble la puissance pour les foyers multi-chats.\nContrôle maximal des odeurs."
+      name: "Format Famille",
+      description: "120g · Le Meilleur Rapport Qualité-Prix\nParfait pour les foyers multi-chats.\nContrôle maximal des odeurs."
     }
   },
 

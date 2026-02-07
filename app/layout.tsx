@@ -138,6 +138,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'msapplication-TileColor': '#FF3131',
       'apple-mobile-web-app-title': SITE_NAME,
       'format-detection': 'telephone=no',
+      'p:domain_verify': 'd4a9556d272da1c274d3ee54b09e9f71',
     },
   };
 }

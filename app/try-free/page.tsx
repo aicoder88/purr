@@ -21,7 +21,7 @@ export const metadata = {
     description: 'FREE Purrify Trial | Just Pay $4.76 Shipping | Eliminates cat litter smell instantly with water-filter grade carbon. ★ 4.8 rating. Ships USA & Canada.',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/17g-transparent.webp',
+        url: 'https://www.purrify.ca/optimized/17g-transparent-v2.webp',
         width: 1200,
         height: 800,
         alt: 'Purrify Trial Size - Free Sample',
@@ -120,7 +120,7 @@ function TryFreeContent() {
             <div className="order-1 md:order-2 flex justify-center">
               <div className="relative w-64 md:w-80 aspect-[3/4]">
                 <Image
-                  src="/optimized/17g-transparent.webp"
+                  src="/optimized/17g-transparent-v2.webp"
                   alt="Purrify 12g Trial Size - Free Sample"
                   fill
                   sizes="(max-width: 768px) 256px, 320px"

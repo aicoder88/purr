@@ -110,12 +110,12 @@ export const es: TranslationType = {
       description: "Prueba nuestro desodorizante de arena GRATIS!\nSolo $4.76 de envio a cualquier lugar de Canada\n\nAditivo natural de carbon - Limite uno por cliente"
     },
     "purrify-50g": {
-      name: "Purrify 50g Estandar",
-      description: "El Mejor Desodorizante de Arena para Gatos Solos\nEl mas popular! Nuestro aditivo de carbon activado te da un mes sin olores. Deja de temer la limpieza de la caja."
+      name: "El Tamaño Perfecto",
+      description: "50g · Tamaño Estándar\nEl más popular para hogares de un solo gato.\nDura aproximadamente un mes."
     },
     "purrify-120g": {
-      name: "El Tamaño Perfecto",
-      description: "Desodorizante de Arena para Hogares Multi-Gatos\nPara hogares con 2+ gatos. Nuestro aditivo de carbon elimina hasta el olor a amoniaco mas fuerte. Tus invitados quedaran asombrados."
+      name: "Tamaño Familiar",
+      description: "120g · Mejor Valor Por Gramo\nPara hogares con 2+ gatos.\nDiseñado para el control de olores extra."
     }
   },
 

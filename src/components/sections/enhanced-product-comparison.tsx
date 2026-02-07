@@ -48,14 +48,14 @@ export function EnhancedProductComparison() {
     regular: {
       name: 'The Goldilocks Bag',
       nameFr: 'Le Format Parfait',
-      subtitle: '120g · Regular Size',
-      subtitleFr: '120g · Format Standard'
+      subtitle: '50g · Regular Size',
+      subtitleFr: '50g · Format Standard'
     },
     large: {
       name: 'Family Size',
       nameFr: 'Format Famille',
-      subtitle: '240g · Best Value Per Gram',
-      subtitleFr: '240g · Meilleur rapport qualité-prix'
+      subtitle: '120g · Best Value Per Gram',
+      subtitleFr: '120g · Meilleur rapport qualité-prix'
     },
   };
 
@@ -76,7 +76,7 @@ export function EnhancedProductComparison() {
         'Zero risk, zero commitment'
       ],
       bestFor: translatedProducts[0]?.bestFor || "Cat parents who've been burned before. Test it yourself. Your nose doesn't lie.",
-      image: '/optimized/17g-transparent.webp',
+      image: '/optimized/17g-transparent-v2.webp',
       imageSize: 'sm',
       color: 'from-green-500 to-green-600',
       badge: {
@@ -87,18 +87,18 @@ export function EnhancedProductComparison() {
       stripeLink: trialLink,
     },
     {
-      id: 'purrify-120g',
+      id: 'purrify-50g',
       name: locale === 'fr' ? productDisplayNames.regular.nameFr : productDisplayNames.regular.name,
       subtitle: locale === 'fr' ? productDisplayNames.regular.subtitleFr : productDisplayNames.regular.subtitle,
-      description: 'Not too little, not too much—this is the size most customers reorder. Lasts 7+ days per application for 1-2 cats. Want it to last longer? Use more. It\'s your litter box, your rules. The perfect amount without waste.',
-      duration: '7+ days per application',
-      idealFor: '1-2 cats',
+      description: 'Not too little, not too much—this is the size most customers reorder. Lasts about a month of fresh litter for single-cat homes. The perfect amount without waste.',
+      duration: '30 days',
+      idealFor: '1 cat',
       features: translatedProducts[1]?.features || [
-        'Use more for extended freshness',
-        'Top-up anytime',
+        'One month supply',
+        'Most popular choice',
         'Works with any litter'
       ],
-      bestFor: translatedProducts[1]?.bestFor || "Single or dual cat homes. The size that keeps customers coming back.",
+      bestFor: translatedProducts[1]?.bestFor || "Single cat homes. The size that keeps customers coming back.",
       image: '/optimized/60g-transparent.webp',
       imageSize: 'md',
       color: 'from-deep-coral to-rose-600',
@@ -109,19 +109,19 @@ export function EnhancedProductComparison() {
       ctaType: 'store',
     },
     {
-      id: 'purrify-240g',
+      id: 'purrify-120g',
       name: locale === 'fr' ? productDisplayNames.large.nameFr : productDisplayNames.large.name,
       subtitle: locale === 'fr' ? productDisplayNames.large.subtitleFr : productDisplayNames.large.subtitle,
-      description: 'Double the supply at less than double the price—the math just makes sense. Lasts 7+ days per application across multiple litter boxes. Perfect for multi-cat homes that refuse to compromise on freshness. The go-to size for serious odor control.',
+      description: 'Best value per gram. Lasts 7+ days per application across multiple litter boxes. Perfect for multi-cat homes that refuse to compromise on freshness.',
       duration: '7+ days per application',
-      idealFor: '3+ cats',
+      idealFor: '2+ cats',
       features: translatedProducts[2]?.features || [
         'Best value per gram',
         'Flexible dosing',
         'Perfect for multiple boxes'
       ],
       bestFor: translatedProducts[2]?.bestFor || "Multi-cat households, foster parents, or anyone who's lost count.",
-      image: '/optimized/140g-transparent.webp',
+      image: '/optimized/60g-transparent.webp',
       imageSize: 'lg',
       color: 'from-electric-indigo to-purple-600',
       badge: {

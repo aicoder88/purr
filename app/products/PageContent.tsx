@@ -35,13 +35,13 @@ export default function ProductsPage() {
   const { currency } = useCurrency();
 
   const trialPrice = formatProductPrice('trial', currency, locale);
+  const standardPrice = formatProductPrice('standard', currency, locale);
+  const standardAutoshipPrice = formatProductPrice('standardAutoship', currency, locale);
   const familyPrice = formatProductPrice('family', currency, locale);
   const familyAutoshipPrice = formatProductPrice('familyAutoship', currency, locale);
-  const jumboPrice = formatProductPrice('jumbo', currency, locale);
-  const jumboAutoshipPrice = formatProductPrice('jumboAutoship', currency, locale);
 
+  const standardAutoshipAmount = getProductPrice('standardAutoship', currency);
   const familyAutoshipAmount = getProductPrice('familyAutoship', currency);
-  const jumboAutoshipAmount = getProductPrice('jumboAutoship', currency);
 
   const priceDetails = {
     trial: {
@@ -52,18 +52,18 @@ export default function ProductsPage() {
       autoshipPrice: null as string | null,
     },
     regular: {
+      price: standardPrice,
+      originalPrice: null as string | null,
+      savings: null as string | null,
+      monthlyPrice: formatCurrencyValue(standardAutoshipAmount / 3, locale),
+      autoshipPrice: standardAutoshipPrice,
+    },
+    large: {
       price: familyPrice,
       originalPrice: null as string | null,
       savings: null as string | null,
       monthlyPrice: formatCurrencyValue(familyAutoshipAmount / 3, locale),
       autoshipPrice: familyAutoshipPrice,
-    },
-    large: {
-      price: jumboPrice,
-      originalPrice: null as string | null,
-      savings: null as string | null,
-      monthlyPrice: formatCurrencyValue(jumboAutoshipAmount / 3, locale),
-      autoshipPrice: jumboAutoshipPrice,
     },
   } as const;
 
@@ -75,15 +75,15 @@ export default function ProductsPage() {
 
   const paymentLinks: Record<string, string | null> = {
     trial: getPaymentLink('trialSingle'),
-    regular: getPaymentLink('familyAutoship'),
-    large: getPaymentLink('jumboAutoship'),
+    regular: getPaymentLink('standardAutoship'),
+    large: getPaymentLink('familyAutoship'),
   };
 
   // Product images matching the homepage
   const productImages: Record<string, { src: string; size: 'sm' | 'md' | 'lg' }> = {
-    trial: { src: '/optimized/17g-transparent.webp', size: 'sm' },
+    trial: { src: '/optimized/17g-transparent-v2.webp', size: 'sm' },
     regular: { src: '/optimized/60g-transparent.webp', size: 'md' },
-    large: { src: '/optimized/140g-transparent.webp', size: 'lg' },
+    large: { src: '/optimized/60g-transparent.webp', size: 'lg' },
   };
 
   // Display names that de-emphasize grams
@@ -97,14 +97,14 @@ export default function ProductsPage() {
     regular: {
       name: 'The Goldilocks Bag',
       nameFr: 'Le Format Parfait',
-      subtitle: '120g · Regular Size',
-      subtitleFr: '120g · Format Standard'
+      subtitle: '50g · Regular Size',
+      subtitleFr: '50g · Format Standard'
     },
     large: {
       name: 'Family Size',
       nameFr: 'Format Famille',
-      subtitle: '240g · Best Value Per Gram',
-      subtitleFr: '240g · Meilleur rapport qualité-prix'
+      subtitle: '120g · Best Value Per Gram',
+      subtitleFr: '120g · Meilleur rapport qualité-prix'
     },
   };
 
@@ -146,22 +146,22 @@ export default function ProductsPage() {
       cats: 1,
       litterChanges: t.productComparison.units.weekly,
       trial: `1 ${t.productComparison.units.week}`,
-      regular: `10-12 ${t.productComparison.units.weeks}`,
-      large: `20-24 ${t.productComparison.units.weeks}`
+      regular: `30 ${t.productComparison.units.days}`,
+      large: `10-12 ${t.productComparison.units.weeks}`
     },
     {
       cats: 2,
       litterChanges: `2x ${t.productComparison.units.perWeek}`,
       trial: `3-4 ${t.productComparison.units.days}`,
-      regular: `5-6 ${t.productComparison.units.weeks}`,
-      large: `10-12 ${t.productComparison.units.weeks}`
+      regular: `2-3 ${t.productComparison.units.weeks}`,
+      large: `5-6 ${t.productComparison.units.weeks}`
     },
     {
       cats: 3,
       litterChanges: `3x ${t.productComparison.units.perWeek}`,
       trial: `2-3 ${t.productComparison.units.days}`,
-      regular: `3-4 ${t.productComparison.units.weeks}`,
-      large: `6-8 ${t.productComparison.units.weeks}`
+      regular: `1-2 ${t.productComparison.units.weeks}`,
+      large: `3-4 ${t.productComparison.units.weeks}`
     }
   ];
 
@@ -235,14 +235,14 @@ export default function ProductsPage() {
       description: 'FREE trial of activated charcoal cat litter additive. Eliminates ammonia odors instantly.',
       sku: 'purrify-12g',
       mpn: 'PURRIFY-12G',
-      image: 'https://www.purrify.ca/optimized/17g-transparent.webp',
+      image: 'https://www.purrify.ca/optimized/17g-transparent-v2.webp',
       url: `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/trial-size`,
       shippingRate: '4.76',
     },
     {
       id: 'regular',
       name: 'Purrify 50g - Best Cat Litter Freshener for Single-Cat Homes',
-      description: '50g activated charcoal cat litter additive. 4-6 weeks of odor control. 100% natural.',
+      description: '50g activated charcoal cat litter additive. One month of odor control. 100% natural.',
       sku: 'purrify-50g',
       mpn: 'PURRIFY-50G',
       image: 'https://www.purrify.ca/optimized/60g-transparent.webp',
@@ -251,11 +251,11 @@ export default function ProductsPage() {
     },
     {
       id: 'large',
-      name: 'Purrify 240g Family Size - Cat Litter Freshener for Multi-Cat Homes',
-      description: 'Best value 240g activated charcoal cat litter additive. Double the supply at less than double the price.',
-      sku: 'purrify-240g',
-      mpn: 'PURRIFY-240G',
-      image: 'https://www.purrify.ca/optimized/140g-transparent.webp',
+      name: 'Purrify 120g Family Size - Cat Litter Freshener for Multi-Cat Homes',
+      description: 'Best value 120g activated charcoal cat litter additive. Perfect for multi-cat households.',
+      sku: 'purrify-120g',
+      mpn: 'PURRIFY-120G',
+      image: 'https://www.purrify.ca/optimized/60g-transparent.webp',
       url: `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/family-pack`,
       shippingRate: '0',
     },
@@ -449,8 +449,8 @@ export default function ProductsPage() {
                   <div className="relative hidden md:block">
                     <div className="relative h-64 w-full rounded-xl overflow-hidden shadow-lg">
                       <Image
-                        src="/optimized/small-apartment-odor-control.webp"
-                        alt={locale === 'fr' ? "Chat heureux dans un appartement frais" : "Happy cat in a fresh apartment"}
+                        src="/optimized/sarah-montreal-testimonial.png"
+                        alt={locale === 'fr' ? "Sarah de Montréal avec ses chats dans son appartement" : "Sarah from Montreal with her cats in her apartment"}
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, 33vw"
@@ -473,30 +473,48 @@ export default function ProductsPage() {
         {/* Science Hook - The "Football Field" Revelation */}
         <section className="py-12 bg-brand-purple/5 dark:bg-brand-purple/10">
           <Container>
-            <div className="max-w-4xl mx-auto">
-              <div className="flex items-start space-x-4 p-6 bg-white dark:bg-gray-800 rounded-xl border border-brand-purple/20 shadow-md">
-                <Zap className="w-10 h-10 text-brand-purple flex-shrink-0 mt-1" />
-                <div>
-                  <h2 className="font-heading font-bold text-xl text-gray-900 dark:text-gray-100 mb-3">
-                    {locale === 'fr'
-                      ? "Un grain. La superficie d'un demi-terrain de football."
-                      : "One Gram. Half a Football Field of Surface Area."}
-                  </h2>
-                  <p className="text-gray-700 dark:text-gray-200 mb-4">
-                    {locale === 'fr'
-                      ? "À l'intérieur de chaque grain de charbon actif se trouvent des millions de tunnels microscopiques. Quand les molécules d'ammoniac passent à côté, elles sont piégées de façon permanente."
-                      : "Inside every grain of activated carbon are millions of microscopic tunnels. When ammonia molecules float past, they get trapped permanently."}
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    {locale === 'fr'
-                      ? "Ce n'est pas du camouflage. C'est de la capture moléculaire — la même technologie utilisée dans les masques à gaz, les usines de traitement d'eau et la filtration d'air des hôpitaux."
-                      : "This isn't masking. It's molecular capture — the same technology used in gas masks, water treatment plants, and hospital air filtration."}
-                  </p>
+            <div className="max-w-5xl mx-auto">
+              <div className="bg-white dark:bg-gray-800 rounded-xl border border-brand-purple/20 shadow-md overflow-hidden">
+                <div className="grid grid-cols-1 md:grid-cols-2">
+                  <div className="p-8 md:p-10 flex flex-col justify-center">
+                    <div className="flex items-center gap-3 mb-4">
+                      <Zap className="w-8 h-8 text-brand-purple" />
+                      <h2 className="font-heading font-bold text-2xl text-gray-900 dark:text-gray-100">
+                        {locale === 'fr'
+                          ? "Un grain. La superficie d'un demi-terrain de football."
+                          : "One Gram. Half a Football Field of Surface Area."}
+                      </h2>
+                    </div>
+                    <p className="text-lg text-gray-700 dark:text-gray-200 mb-6 leading-relaxed">
+                      {locale === 'fr'
+                        ? "À l'intérieur de chaque grain de charbon actif se trouvent des millions de tunnels microscopiques. Quand les molécules d'ammoniac passent à côté, elles sont piégées de façon permanente."
+                        : "Inside every grain of activated carbon are millions of microscopic tunnels. When ammonia molecules float past, they get trapped permanently."}
+                    </p>
+                    <p className="text-gray-600 dark:text-gray-400 text-base border-l-4 border-brand-purple/30 pl-4 italic">
+                      {locale === 'fr'
+                        ? "Ce n'est pas du camouflage. C'est de la capture moléculaire — la même technologie utilisée dans les masques à gaz, les usines de traitement d'eau et la filtration d'air des hôpitaux."
+                        : "This isn't masking. It's molecular capture — the same technology used in gas masks, water treatment plants, and hospital air filtration."}
+                    </p>
+                  </div>
+                  <div className="relative h-64 md:h-auto min-h-[300px]">
+                    <Image
+                      src="/optimized/microscopic-carbon-structure.png"
+                      alt={locale === 'fr' ? "Structure microscopique du charbon actif piégeant les molécules" : "Microscopic structure of activated carbon trapping molecules"}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6 md:hidden">
+                      <span className="text-sm font-medium drop-shadow-md" style={{ color: 'white' }}>
+                        {locale === 'fr' ? "Vue microscopique" : "Microscopic View"}
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
               {/* Transition to trust signals */}
-              <p className="text-center mt-8 text-gray-600 dark:text-gray-400">
+              <p className="text-center mt-10 text-gray-600 dark:text-gray-400">
                 {locale === 'fr'
                   ? "La science est impressionnante. Mais voici ce qui compte vraiment pour vous et votre chat:"
                   : "The science is impressive. But here's what actually matters for you and your cat:"}

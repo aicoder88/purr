@@ -222,7 +222,7 @@ export function WholesalePricing() {
       highlighted: false,
       badge: pricing?.tiers?.starter?.badge || 'Quick Start',
       cta: pricing?.tiers?.starter?.cta || 'Get Started',
-      image: '/optimized/17g-transparent.webp',
+      image: '/optimized/17g-transparent-v2.webp',
       imageAlt: 'Purrify Starter Pack',
     },
     {

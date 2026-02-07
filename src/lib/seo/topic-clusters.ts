@@ -151,7 +151,10 @@ export function getRelatedPages(
 
   const related: Array<{ url: string; title: string; type: 'hub' | 'spoke' }> = [];
 
-  // If this is a spoke, always include the hub
+  // Removed: Hub pages are now excluded from "Related Articles" to prevent
+  // jarring transitions from blog posts to commercial landing pages.
+  // The Hub page is still linked via Breadcrumbs and internal navigation.
+  /*
   if (cluster && cluster.spokes.includes(pageUrl)) {
     related.push({
       url: cluster.hubPage,
@@ -159,6 +162,7 @@ export function getRelatedPages(
       type: 'hub',
     });
   }
+  */
 
   // Add other spokes (excluding current page)
   if (cluster) {

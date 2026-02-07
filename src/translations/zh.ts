@@ -109,12 +109,12 @@ export const zh = {
       description: "免费试用Purrify！\n仅需支付$4.76运费（加拿大境内任一地点）\n\n每位客户限购一套"
     },
     "purrify-50g": {
-      name: "Purrify 50g",
-      description: "单猫家庭理想选择\n我们最受欢迎的单猫家庭规格。\n一个月的清新！"
+      name: "黄金尺寸",
+      description: "50g · 标准装\n单猫家庭的理想选择\n我们最受欢迎的尺寸 — 复购率最高。"
     },
     "purrify-120g": {
-      name: "黄金尺寸",
-      description: "双猫家庭完美选择\n多猫家庭的双倍功效。\n最大程度的异味控制。"
+      name: "家庭装",
+      description: "120g · 性价比之王\n专为多猫家庭设计。\n针对高氨气输出打造。"
     }
   },
 

@@ -30,7 +30,7 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
     alt: 'Before and after using deodorizer in litter box',
   },
   '/blog/best-litter-odor-remover-small-apartments': {
-    image: '/optimized/17g-transparent.webp',
+    image: '/optimized/17g-transparent-v2.webp',
     alt: 'Compact 12g product ideal for small apartments',
   },
   '/blog/multi-cat-litter-deodorizer-guide': {
@@ -158,7 +158,7 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
     alt: 'Purrify product lineup',
   },
   '/products/trial-size': {
-    image: '/optimized/17g-transparent.webp',
+    image: '/optimized/17g-transparent-v2.webp',
     alt: 'Trial size Purrify pouch',
   },
   '/products/standard': {
