@@ -223,8 +223,8 @@ export async function GET(
 
     // CRITICAL SECURITY FIX: Verify the user can only access their own dashboard
     // Compare the requested userId with the authenticated user's ID/email
-    const authenticatedUserId = (session.user as { id?: string; email?: string }).id || 
-                                (session.user as { email?: string }).email;
+    const authenticatedUserId = (session.user as { id?: string; email?: string }).id ||
+      (session.user as { email?: string }).email;
 
     if (!authenticatedUserId) {
       return Response.json({
@@ -274,7 +274,7 @@ export async function GET(
 }
 
 // Helper function to calculate referral performance metrics
-export function calculateReferralMetrics(stats: ReferralStats) {
+function calculateReferralMetrics(stats: ReferralStats) {
   const conversionRate = stats.totalReferrals > 0
     ? (stats.completedReferrals / stats.totalReferrals) * 100
     : 0;
@@ -295,7 +295,7 @@ export function calculateReferralMetrics(stats: ReferralStats) {
 }
 
 // Helper function to generate achievement badges
-export function generateAchievementBadges(completedReferrals: number) {
+function generateAchievementBadges(completedReferrals: number) {
   const badges = [];
 
   if (completedReferrals >= 1) badges.push({ name: 'First Referral', icon: '🎯' });

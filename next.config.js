@@ -883,7 +883,7 @@ const nextConfig = {
     webpackBuildWorker: true,
     optimizeServerReact: true,
   },
-  serverExternalPackages: ["sharp", "@anthropic-ai/sdk", "openai", "cheerio", "bcryptjs", "@prisma/client", "next-seo"],
+  serverExternalPackages: ["sharp", "@anthropic-ai/sdk", "openai", "cheerio", "bcryptjs", "@prisma/client"],
   staticPageGenerationTimeout: 120,
   turbopack: {
     root: process.cwd(),

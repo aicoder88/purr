@@ -228,7 +228,7 @@ interface CartItem {
   referralCode?: string;
 }
 
-export function applyReferralDiscount(
+function applyReferralDiscount(
   cartItems: CartItem[],
   referralCode: string
 ): CartItem[] {

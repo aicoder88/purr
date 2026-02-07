@@ -7,7 +7,6 @@ import { Button } from '../../src/components/ui/button';
 import { SITE_NAME, CONTACT_INFO } from '../../src/lib/constants';
 import { buildLanguageAlternates } from '../../src/lib/seo-utils';
 
-import { CONTACT_INFO, SITE_NAME } from '../../src/lib/constants';
 
 export const metadata: Metadata = {
   title: `Customer Support - ${SITE_NAME} Help Center`,

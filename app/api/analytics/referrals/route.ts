@@ -278,7 +278,7 @@ function getMetricValue(data: ReferralAnalytics, metric: string): number | null 
 }
 
 // Helper function for A/B testing insights
-export function calculateTestSignificance(
+function calculateTestSignificance(
   controlConversions: number,
   controlTotal: number,
   testConversions: number,
@@ -290,7 +290,7 @@ export function calculateTestSignificance(
 
   // Simplified significance test - in production use proper statistical testing
   const pooledRate = (controlConversions + testConversions) / (controlTotal + testTotal);
-  const standardError = Math.sqrt(pooledRate * (1 - pooledRate) * (1/controlTotal + 1/testTotal));
+  const standardError = Math.sqrt(pooledRate * (1 - pooledRate) * (1 / controlTotal + 1 / testTotal));
   const zScore = Math.abs(testRate - controlRate) / standardError;
   const confidenceLevel = (1 - 2 * (1 - normalCDF(Math.abs(zScore)))) * 100;
 
@@ -308,12 +308,12 @@ function normalCDF(x: number): number {
 
 // Error function approximation
 function erf(x: number): number {
-  const a1 =  0.254829592;
+  const a1 = 0.254829592;
   const a2 = -0.284496736;
-  const a3 =  1.421413741;
+  const a3 = 1.421413741;
   const a4 = -1.453152027;
-  const a5 =  1.061405429;
-  const p  =  0.3275911;
+  const a5 = 1.061405429;
+  const p = 0.3275911;
 
   const sign = x < 0 ? -1 : 1;
   x = Math.abs(x);

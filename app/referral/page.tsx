@@ -1,4 +1,3 @@
-"use client";
 
 import { Container } from '@/components/ui/container';
 import { ReferralDashboard } from '@/components/referral/ReferralDashboard';

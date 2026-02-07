@@ -95,11 +95,12 @@ const POSTS_PER_PAGE = 15;
 export default async function BlogIndexPage({
   searchParams,
 }: {
-  searchParams: { page?: string };
+  searchParams: Promise<{ page?: string }>;
 }) {
   const allBlogPosts = await getBlogPosts();
 
-  const currentPage = Number(searchParams.page) || 1;
+  const { page } = await searchParams;
+  const currentPage = Number(page) || 1;
   const totalPosts = allBlogPosts.length;
   const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
 
@@ -109,7 +110,7 @@ export default async function BlogIndexPage({
 
   // Generate lastUpdated date within last 90 days
   const lastUpdated = '2025-11-15';
-  
+
   // Generate Blog schema with CollectionPage and BlogPosting items
   const blogListSchema = {
     '@context': 'https://schema.org',
@@ -296,7 +297,7 @@ export default async function BlogIndexPage({
                     ← Previous
                   </Link>
                 ) : (
-                  <span className="px-6 py-3 bg-gray-100 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-800 rounded-lg text-gray-400 dark:text-gray-600 font-medium flex items-center gap-2 cursor-not-allowed">
+                  <span className="px-6 py-3 bg-gray-100 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-800 rounded-lg text-gray-500 dark:text-gray-600 font-medium flex items-center gap-2 cursor-not-allowed">
                     ← Previous
                   </span>
                 )}
@@ -313,7 +314,7 @@ export default async function BlogIndexPage({
                     Next →
                   </Link>
                 ) : (
-                  <span className="px-6 py-3 bg-gray-100 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-800 rounded-lg text-gray-400 dark:text-gray-600 font-medium flex items-center gap-2 cursor-not-allowed">
+                  <span className="px-6 py-3 bg-gray-100 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-800 rounded-lg text-gray-500 dark:text-gray-600 font-medium flex items-center gap-2 cursor-not-allowed">
                     Next →
                   </span>
                 )}

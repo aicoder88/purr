@@ -19,4 +19,4 @@ cp -r public .next/standalone/
 cp -r .next/static .next/standalone/.next/
 
 # Start the standalone server
-PORT=3010 node .next/standalone/server.js
+PORT=3010 AUTH_TRUST_HOST=true NEXTAUTH_URL=http://localhost:3010 node .next/standalone/server.js
