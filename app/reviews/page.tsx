@@ -1,7 +1,6 @@
-export const dynamic = 'force-static';
-
 import type { Metadata } from 'next';
 import PageContent from './PageContent';
+import { SITE_NAME } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Purrify Reviews - What Cat Owners Are Saying',
@@ -13,7 +12,7 @@ export const metadata: Metadata = {
     url: 'https://www.purrify.ca/reviews',
     images: [
       {
-        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        url: 'https://www.purrify.ca/images/purrify-logo.png',
         width: 1200,
         height: 630,
         alt: 'Purrify Customer Reviews',
@@ -23,8 +22,34 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.purrify.ca/reviews',
   },
+  other: {
+    'last-modified': '2025-12-09',
+  },
+};
+
+// AggregateRating schema for Reviews page
+const aggregateRatingSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: SITE_NAME,
+  description: 'Activated carbon cat litter deodorizer',
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    reviewCount: '138',
+    bestRating: '5',
+  },
+  url: 'https://www.purrify.ca/reviews',
 };
 
 export default function ReviewsPage() {
-  return <PageContent />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateRatingSchema) }}
+      />
+      <PageContent />
+    </>
+  );
 }

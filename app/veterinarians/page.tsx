@@ -1,5 +1,3 @@
-export const dynamic = 'force-static';
-
 import type { Metadata } from 'next';
 import { SITE_NAME } from '@/lib/constants';
 import { VeterinarianHero } from '@/components/sections/veterinarian-hero';
@@ -27,6 +25,9 @@ export const metadata: Metadata = {
     url: 'https://www.purrify.ca/veterinarians',
     type: 'website',
   },
+  other: {
+    'last-modified': '2026-01-02',
+  },
 };
 
 // Organization schema for structured data
@@ -38,7 +39,7 @@ const organizationSchema = {
   url: 'https://www.purrify.ca',
   logo: {
     '@type': 'ImageObject',
-    url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+    url: 'https://www.purrify.ca/images/purrify-logo.png',
     width: 400,
     height: 400,
   },

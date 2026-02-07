@@ -1,5 +1,3 @@
-export const dynamic = 'force-static';
-
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { RefreshCw, Calendar, CreditCard, PauseCircle, XCircle, Gift, CheckCircle2, Sparkles } from 'lucide-react';
@@ -26,6 +24,9 @@ export const metadata: Metadata = {
     title: `Subscription & Autoship - ${SITE_NAME} Help Center`,
     description: 'Learn about Purrify autoship subscriptions. Save 30%, get free shipping, and never run out.',
     locale: 'en_CA',
+  },
+  other: {
+    'last-modified': '2025-11-23',
   },
 };
 
@@ -97,9 +98,28 @@ const faqs = [
   }
 ];
 
+// FAQPage schema for Subscription
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+
 export default function SubscriptionPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-green-50 via-white to-emerald-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <main className="min-h-screen bg-gradient-to-br from-green-50 via-white to-emerald-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
       {/* Breadcrumb */}
       <Container>
         <nav className="py-6 text-sm">
@@ -313,5 +333,6 @@ export default function SubscriptionPage() {
         </Container>
       </section>
     </main>
+    </>
   );
 }

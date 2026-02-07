@@ -1,5 +1,3 @@
-export const dynamic = 'force-static';
-
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Container } from '@/components/ui/container';
@@ -34,6 +32,9 @@ export async function generateMetadata(): Promise<Metadata> {
       description: seoDescription,
       url: `${SITE_URL}/locations`,
     },
+    other: {
+      'last-modified': '2025-12-16',
+    },
   };
 }
 
@@ -59,6 +60,36 @@ function generateBreadcrumbSchema(t: TranslationType) {
   };
 }
 
+// LocalBusiness schema for Locations page
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Purrify Canada',
+  description: 'Canadian manufacturer of activated carbon cat litter deodorizer with shipping across all provinces',
+  url: 'https://www.purrify.ca/locations',
+  logo: 'https://www.purrify.ca/images/icon-512.png',
+  image: 'https://www.purrify.ca/images/products/purrify-standard-bag.png',
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'CA',
+  },
+  areaServed: [
+    { '@type': 'State', name: 'Ontario' },
+    { '@type': 'State', name: 'Quebec' },
+    { '@type': 'State', name: 'British Columbia' },
+    { '@type': 'State', name: 'Alberta' },
+    { '@type': 'State', name: 'Manitoba' },
+    { '@type': 'State', name: 'Saskatchewan' },
+    { '@type': 'State', name: 'Nova Scotia' },
+    { '@type': 'State', name: 'New Brunswick' },
+    { '@type': 'State', name: 'Newfoundland and Labrador' },
+    { '@type': 'State', name: 'Prince Edward Island' },
+  ],
+  priceRange: '$$',
+  paymentAccepted: 'Credit Card, PayPal',
+  currenciesAccepted: 'CAD',
+};
+
 export default function LocationsPage() {
   const t = getTranslation('en');
   const locations = t.locations;
@@ -80,6 +111,11 @@ export default function LocationsPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
+      {/* LocalBusiness Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
 
       <div className="min-h-screen bg-gradient-to-br from-orange-50 to-pink-50 dark:from-gray-900 dark:to-gray-800">

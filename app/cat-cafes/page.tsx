@@ -1,5 +1,3 @@
-export const dynamic = 'force-static';
-
 import type { Metadata } from 'next';
 import { SITE_NAME, CONTACT_INFO } from '@/lib/constants';
 import CatCafesClientPage from './_components/CatCafesClientPage';
@@ -25,6 +23,9 @@ export const metadata: Metadata = {
     url: 'https://www.purrify.ca/cat-cafes',
     type: 'website',
   },
+  other: {
+    'last-modified': '2025-12-29',
+  },
 };
 
 // Organization schema for structured data
@@ -36,7 +37,7 @@ const organizationSchema = {
   url: 'https://www.purrify.ca',
   logo: {
     '@type': 'ImageObject',
-    url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+    url: 'https://www.purrify.ca/images/purrify-logo.png',
     width: 400,
     height: 400,
   },

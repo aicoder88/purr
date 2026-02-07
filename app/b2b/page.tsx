@@ -1,5 +1,3 @@
-export const dynamic = 'force-static';
-
 import type { Metadata } from 'next';
 import { CONTACT_INFO, PHONE_MESSAGING, SITE_NAME } from '@/lib/constants';
 import B2BClientPage from './_components/B2BClientPage';
@@ -25,6 +23,9 @@ export const metadata: Metadata = {
     url: 'https://www.purrify.ca/b2b',
     type: 'website',
   },
+  other: {
+    'last-modified': '2026-01-08',
+  },
 };
 
 // Organization schema for structured data
@@ -36,7 +37,7 @@ const organizationSchema = {
   url: 'https://www.purrify.ca',
   logo: {
     '@type': 'ImageObject',
-    url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+    url: 'https://www.purrify.ca/images/purrify-logo.png',
     width: 400,
     height: 400,
   },

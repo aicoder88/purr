@@ -16,8 +16,8 @@ export default function DocumentsPage() {
     : 'Purrify Resource Center - Retail Training Materials';
 
   const pageDescription = locale === 'fr'
-    ? 'Accédez aux guides de formation, matériel de point de vente, calculateurs de profit et autres ressources pour partenaires détaillants Purrify.'
-    : 'Access training guides, POS materials, profit calculators, and other resources for Purrify retail partners.';
+    ? 'Accédez aux ressources exclusives Purrify pour partenaires détaillants: guides de formation, matériel PDV, calculateurs de profit et ressources marketing pour augmenter vos ventes.'
+    : 'Access exclusive Purrify resources for retail partners: training guides, POS materials, profit calculators, and marketing assets to boost your sales.';
 
   const canonicalUrl = `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}documents`;
 
@@ -98,6 +98,24 @@ export default function DocumentsPage() {
       <title>{nextSeoProps.title}</title>
       <meta name="description" content={nextSeoProps.description} />
       {nextSeoProps.canonical && <link rel="canonical" href={nextSeoProps.canonical} />}
+      
+      {/* Open Graph Tags */}
+      <meta property="og:title" content={pageTitle} />
+      <meta property="og:description" content={pageDescription} />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={canonicalUrl} />
+      <meta property="og:image" content="https://www.purrify.ca/og-image.jpg" />
+      <meta property="og:site_name" content="Purrify" />
+      <meta property="og:locale" content={locale === 'fr' ? 'fr_CA' : 'en_CA'} />
+      
+      {/* Twitter Card Tags */}
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:title" content={pageTitle} />
+      <meta name="twitter:description" content={pageDescription} />
+      <meta name="twitter:image" content="https://www.purrify.ca/og-image.jpg" />
+      
+      {/* Last Modified */}
+      <meta name="last-modified" content="2025-11-25T10:30:00Z" />
 
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
         {/* Header */}

@@ -24,6 +24,8 @@ export type BlogPost = {
   excerpt: string;
   author: string;
   date: string;
+  datePublished?: string;
+  lastUpdated?: string;
   image: string;
   link: string;
   content?: string;
@@ -53,6 +55,8 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Tried everything for cat litter odor? Discover activated carbon - the same technology NASA uses in space. No perfumes, no chemicals. Traps ammonia molecules instantly.',
       author: 'Purrify Team',
       date: '2025-12-29',
+      datePublished: '2025-07-26',
+      lastUpdated: '2025-12-27',
       image: '/optimized/scientific-odor-control.webp',
       link: '/blog/space-station-secret-fresh-home-cat-owners'
     },
@@ -61,6 +65,8 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "Cat pee smell in your apartment? Here's exactly how to eliminate the odor from carpet, hardwood, concrete, and walls—before your landlord notices or your deposit disappears.",
       author: 'Purrify Team',
       date: '2026-01-28',
+      datePublished: '2025-10-06',
+      lastUpdated: '2025-10-14',
       image: '/optimized/cat-litter-hero.webp',
       link: '/blog/how-to-get-rid-of-cat-pee-smell-apartment'
     },
@@ -69,6 +75,8 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "Strong fragrances are the #1 reason cats avoid their litter box. Here's why fragrance-free deodorizers work better—and how to eliminate odors without overwhelming your cat's sensitive nose.",
       author: 'Purrify Team',
       date: '2026-01-27',
+      datePublished: '2025-10-14',
+      lastUpdated: '2026-02-02',
       image: '/optimized/benefits-hero-science.webp',
       link: '/blog/fragrance-free-litter-deodorizer'
     },
@@ -77,6 +85,8 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "Worried about your cat's sensitive nose? Here are 7 vet-approved, non-toxic ways to eliminate litter box odor without risking your cat's health. No harsh chemicals, no overpowering scents.",
       author: 'Purrify Team',
       date: '2026-01-26',
+      datePublished: '2025-07-06',
+      lastUpdated: '2025-07-10',
       image: '/optimized/science-diagram.webp',
       link: '/blog/safe-ways-to-deodorize-litter-box'
     },
@@ -85,6 +95,8 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Understanding the molecular science of cat odor reveals why air fresheners fail. Discover how filtration-grade activated carbon - the same technology in water filters and hospital air systems - actually eliminates smell.',
       author: 'Purrify Team',
       date: '2025-12-29',
+      datePublished: '2025-07-13',
+      lastUpdated: '2025-10-17',
       image: '/optimized/lavender-cat-ghibli.webp',
       link: '/blog/chemistry-of-cat-smell-industrial-fix'
     },
@@ -93,7 +105,9 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "That lingering litter box smell isn't inevitable. Learn why cat odour spreads through your home and discover the science-backed solutions that actually work.",
       author: 'Purrify Team',
       date: '2026-01-03',
-      image: '/optimized/cat-long-lasting-freshness-800x500.webp',
+      datePublished: '2025-09-22',
+      lastUpdated: '2025-10-18',
+      image: '/optimized/cat_long_lasting_freshness_800x500.webp',
       link: '/blog/why-does-my-house-smell-like-cat-litter'
     },
     {
@@ -101,6 +115,8 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "Tired of holding your breath near the litter box? Discover why cat litter smells so bad and the science-backed solution that eliminates odors at the molecular level.",
       author: 'Purrify Team',
       date: '2026-01-02',
+      datePublished: '2025-08-16',
+      lastUpdated: '2025-12-08',
       image: '/optimized/cat-fresh-home-ammonia.jpg',
       link: '/blog/why-does-my-cats-litter-box-smell-so-bad'
     },
@@ -109,6 +125,8 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Stop the daily battle with litter box odor. Learn the proven methods that actually work - from proper maintenance to molecular trapping technology used in water filtration.',
       author: 'Purrify Team',
       date: '2026-01-02',
+      datePublished: '2025-06-22',
+      lastUpdated: '2026-01-11',
       image: '/optimized/happy-owner-cat-ghibli.webp',
       link: '/blog/best-way-to-keep-litter-box-fresh'
     },
@@ -117,6 +135,8 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Learn how activated carbon eliminates cat litter odor at the molecular level. The same filtration technology as drinking water systems - now for your litter box.',
       author: 'Purrify Team',
       date: '2026-01-02',
+      datePublished: '2025-07-04',
+      lastUpdated: '2025-07-09',
       image: '/optimized/carbon-828w.webp',
       link: '/blog/activated-carbon-for-cat-litter-complete-guide'
     },
@@ -125,6 +145,8 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "Looking for the best cat litter for odor control? We compare clumping, crystal, natural, and hybrid litters by odor-fighting technology—plus the upgrade that makes any litter work better.",
       author: 'Purrify Team',
       date: '2026-01-03',
+      datePublished: '2025-09-01',
+      lastUpdated: '2025-12-13',
       image: '/optimized/standard-hero-828w.webp',
       link: '/blog/best-cat-litter-odor-control-2026'
     },
@@ -133,6 +155,8 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Comparing cat litter deodorizer types: powder, spray, crystal, enzyme, and activated carbon. Which actually eliminates odour versus just masking it? Science-based guide.',
       author: 'Purrify Team',
       date: '2026-01-03',
+      datePublished: '2025-06-11',
+      lastUpdated: '2025-09-20',
       image: '/optimized/90day-solution.webp',
       link: '/blog/best-cat-litter-deodorizers-2026'
     },
@@ -141,6 +165,8 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Discover proven cat litter odour control tips from daily habits to advanced solutions. Learn why most methods fail and the science-backed approach that actually eliminates litter box smell.',
       author: 'Purrify Team',
       date: '2026-01-03',
+      datePublished: '2025-10-13',
+      lastUpdated: '2026-01-04',
       image: '/optimized/cat-litter-deodorizer-guide.webp',
       link: '/blog/cat-litter-odour-control-tips'
     },

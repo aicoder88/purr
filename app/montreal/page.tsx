@@ -8,6 +8,9 @@ export const metadata: Metadata = {
     index: false,
     follow: false,
   },
+  other: {
+    'last-modified': '2025-12-27',
+  },
 };
 
 interface MontrealRedirectPageProps {

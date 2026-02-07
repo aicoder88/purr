@@ -1,23 +1,6 @@
-export const dynamic = 'force-static';
-
 import type { Metadata } from 'next';
 import { SITE_NAME } from '@/lib/constants';
-import dynamicImport from 'next/dynamic';
-
-// Dynamically import the heavy client component to reduce initial bundle size
-const HospitalityClientPage = dynamicImport(
-  () => import('./_components/HospitalityClientPage'),
-  {
-    loading: () => (
-      <div className="min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center">
-        <div className="animate-pulse flex flex-col items-center gap-4">
-          <div className="h-8 w-64 bg-gray-200 dark:bg-gray-700 rounded" />
-          <div className="h-4 w-48 bg-gray-200 dark:bg-gray-700 rounded" />
-        </div>
-      </div>
-    ),
-  }
-);
+import HospitalityClientPage from './_components/HospitalityClientPage';
 
 export const metadata: Metadata = {
   title: `${SITE_NAME} - Pet-Friendly Rentals Without the Smell | Purrify for Hospitality`,
@@ -39,6 +22,9 @@ export const metadata: Metadata = {
     url: 'https://www.purrify.ca/hospitality',
     type: 'website',
   },
+  other: {
+    'last-modified': '2026-01-25',
+  },
 };
 
 // Organization schema for structured data
@@ -50,7 +36,7 @@ const organizationSchema = {
   url: 'https://www.purrify.ca',
   logo: {
     '@type': 'ImageObject',
-    url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+    url: 'https://www.purrify.ca/images/purrify-logo.png',
     width: 400,
     height: 400,
   },

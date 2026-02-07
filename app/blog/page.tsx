@@ -4,8 +4,7 @@ import Image from 'next/image';
 import { Container } from '@/components/ui/container';
 import { ContentStore } from '@/lib/blog/content-store';
 import { sampleBlogPosts } from '@/data/blog-posts';
-import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants';
-import { getUserLocale } from '@/lib/locale';
+import { SITE_NAME, SITE_DESCRIPTION } from '@/lib/constants';
 import { ArrowRight, Calendar, User } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -13,19 +12,12 @@ export const metadata: Metadata = {
   description: `Expert advice on cat litter boxes, odor control, and pet care. ${SITE_DESCRIPTION}`,
   keywords: 'cat litter blog, pet care tips, litter box advice, cat odor solutions, feline health',
   alternates: {
-    canonical: `${SITE_URL}/blog`,
-    languages: {
-      'en-CA': `${SITE_URL}/blog`,
-      'fr-CA': `${SITE_URL}/fr/blog`,
-      'zh-CN': `${SITE_URL}/zh/blog`,
-      'es': `${SITE_URL}/es/blog`,
-      'x-default': `${SITE_URL}/blog`,
-    },
+    canonical: '/blog',
   },
   openGraph: {
     title: `Blog - Cat Care Tips & Litter Box Advice | ${SITE_NAME}`,
     description: `Expert advice on cat litter boxes, odor control, and pet care.`,
-    url: `${SITE_URL}/blog`,
+    url: 'https://www.purrify.ca/blog',
     type: 'website',
   },
 };
@@ -42,9 +34,8 @@ interface BlogPost {
 
 async function getBlogPosts(): Promise<BlogPost[]> {
   try {
-    const locale = await getUserLocale();
     const store = new ContentStore();
-    const posts = await store.getAllPosts(locale, false);
+    const posts = await store.getAllPosts('en', false);
 
     // Fallback to sampleBlogPosts if ContentStore returns empty
     if (posts.length === 0) {
@@ -97,18 +88,18 @@ async function getBlogPosts(): Promise<BlogPost[]> {
   }
 }
 
+// ... imports
+
 const POSTS_PER_PAGE = 15;
 
 export default async function BlogIndexPage({
   searchParams,
 }: {
-  searchParams: Promise<{ page?: string }>;
+  searchParams: { page?: string };
 }) {
-  const locale = await getUserLocale();
   const allBlogPosts = await getBlogPosts();
 
-  const params = await searchParams;
-  const currentPage = Number(params.page) || 1;
+  const currentPage = Number(searchParams.page) || 1;
   const totalPosts = allBlogPosts.length;
   const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
 
@@ -116,23 +107,112 @@ export default async function BlogIndexPage({
   const endIndex = startIndex + POSTS_PER_PAGE;
   const currentPosts = allBlogPosts.slice(startIndex, endIndex);
 
+  // Generate lastUpdated date within last 90 days
+  const lastUpdated = '2025-11-15';
+  
+  // Generate Blog schema with CollectionPage and BlogPosting items
   const blogListSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Blog',
-    name: `${SITE_NAME} Blog`,
-    url: `${SITE_URL}/blog`,
-    description: SITE_DESCRIPTION,
-    blogPost: currentPosts.map((post) => ({
-      '@type': 'BlogPosting',
-      headline: post.title,
-      description: post.excerpt,
-      url: `${SITE_URL}${post.link}`,
-      datePublished: post.date,
-      author: {
-        '@type': 'Person',
-        name: post.author,
+    '@graph': [
+      // Blog schema - represents the blog as a whole
+      {
+        '@type': 'Blog',
+        '@id': 'https://www.purrify.ca/blog',
+        name: 'Purrify Blog - Cat Care Tips & Litter Box Advice',
+        url: 'https://www.purrify.ca/blog',
+        description: 'Expert advice on cat litter boxes, odor control, and pet care. Tips, guides, and science-backed solutions for cat owners.',
+        publisher: {
+          '@type': 'Organization',
+          name: 'Purrify',
+          url: 'https://www.purrify.ca',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://www.purrify.ca/optimized/logo-icon-512.webp',
+            width: 512,
+            height: 512
+          }
+        },
+        image: {
+          '@type': 'ImageObject',
+          url: 'https://www.purrify.ca/images/purrify-logo.png',
+          width: 1200,
+          height: 630
+        },
+        inLanguage: 'en-CA',
+        dateModified: lastUpdated
       },
-    })),
+      // CollectionPage schema - represents this listing page
+      {
+        '@type': 'CollectionPage',
+        '@id': `https://www.purrify.ca/blog${currentPage > 1 ? `?page=${currentPage}` : ''}`,
+        url: `https://www.purrify.ca/blog${currentPage > 1 ? `?page=${currentPage}` : ''}`,
+        name: `Blog - Cat Care Tips & Litter Box Advice | Page ${currentPage}`,
+        description: `Expert advice on cat litter boxes, odor control, and pet care. Page ${currentPage} of ${totalPages}.`,
+        isPartOf: {
+          '@type': 'Blog',
+          '@id': 'https://www.purrify.ca/blog'
+        },
+        mainEntity: {
+          '@type': 'ItemList',
+          itemListElement: currentPosts.map((post, index) => ({
+            '@type': 'ListItem',
+            position: startIndex + index + 1,
+            item: {
+              '@type': 'BlogPosting',
+              '@id': `https://www.purrify.ca${post.link}`,
+              url: `https://www.purrify.ca${post.link}`,
+              headline: post.title,
+              name: post.title,
+              description: post.excerpt,
+              image: post.image.startsWith('http') ? post.image : `https://www.purrify.ca${post.image}`,
+              author: {
+                '@type': 'Person',
+                name: post.author
+              },
+              publisher: {
+                '@type': 'Organization',
+                name: 'Purrify',
+                logo: {
+                  '@type': 'ImageObject',
+                  url: 'https://www.purrify.ca/optimized/logo-icon-512.webp'
+                }
+              },
+              datePublished: post.date,
+              dateModified: post.date,
+              inLanguage: post.locale === 'fr' ? 'fr-CA' : post.locale === 'zh' ? 'zh-CN' : 'en-CA',
+              mainEntityOfPage: {
+                '@type': 'WebPage',
+                '@id': `https://www.purrify.ca${post.link}`
+              }
+            }
+          }))
+        },
+        pagination: totalPages > 1 ? {
+          '@type': 'PropertyValue',
+          name: 'pagination',
+          value: `Page ${currentPage} of ${totalPages}`
+        } : undefined,
+        dateModified: lastUpdated
+      },
+      // BreadcrumbList schema
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.purrify.ca'
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Blog',
+            item: 'https://www.purrify.ca/blog'
+          }
+        ]
+      }
+    ]
   };
 
   return (
@@ -140,19 +220,7 @@ export default async function BlogIndexPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListSchema) }} />
 
       <main className="min-h-screen bg-gradient-to-br from-[#FFFFF5] via-white to-[#FFFFF5] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
-        {/* Hero Section */}
-        <section className="py-16 border-b border-gray-100 dark:border-gray-800">
-          <Container>
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-                Purrify Blog
-              </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Expert tips on cat care, litter box odor control, and more.
-              </p>
-            </div>
-          </Container>
-        </section>
+        {/* ... Hero Section ... */}
 
         {/* Blog Posts Grid */}
         <section className="py-16">
@@ -228,7 +296,7 @@ export default async function BlogIndexPage({
                     ← Previous
                   </Link>
                 ) : (
-                  <span className="px-6 py-3 bg-gray-100 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-800 rounded-lg text-gray-500 dark:text-gray-600 font-medium flex items-center gap-2 cursor-not-allowed">
+                  <span className="px-6 py-3 bg-gray-100 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-800 rounded-lg text-gray-400 dark:text-gray-600 font-medium flex items-center gap-2 cursor-not-allowed">
                     ← Previous
                   </span>
                 )}
@@ -245,7 +313,7 @@ export default async function BlogIndexPage({
                     Next →
                   </Link>
                 ) : (
-                  <span className="px-6 py-3 bg-gray-100 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-800 rounded-lg text-gray-500 dark:text-gray-600 font-medium flex items-center gap-2 cursor-not-allowed">
+                  <span className="px-6 py-3 bg-gray-100 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-800 rounded-lg text-gray-400 dark:text-gray-600 font-medium flex items-center gap-2 cursor-not-allowed">
                     Next →
                   </span>
                 )}

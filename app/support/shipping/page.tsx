@@ -1,5 +1,3 @@
-export const dynamic = 'force-static';
-
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Truck, Clock, MapPin, Package, Globe, AlertCircle, CheckCircle2 } from 'lucide-react';
@@ -26,6 +24,9 @@ export const metadata: Metadata = {
     title: `Shipping Information - ${SITE_NAME} Help Center`,
     description: 'Learn about Purrify shipping options, delivery times, costs, and tracking.',
     locale: 'en_CA',
+  },
+  other: {
+    'last-modified': '2025-12-20',
   },
 };
 
@@ -69,9 +70,28 @@ const faqs = [
   }
 ];
 
+// FAQPage schema for Shipping
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+
 export default function ShippingPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
       {/* Breadcrumb */}
       <Container>
         <nav className="py-6 text-sm">
@@ -243,5 +263,6 @@ export default function ShippingPage() {
         </Container>
       </section>
     </main>
+    </>
   );
 }

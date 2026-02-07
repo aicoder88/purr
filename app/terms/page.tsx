@@ -1,49 +1,71 @@
+'use client';
+
 import Link from 'next/link';
 import { Home, ChevronRight } from 'lucide-react';
 
 import { Container } from '@/components/ui/container';
 import { SITE_NAME, SITE_DESCRIPTION, CONTACT_INFO } from '@/lib/constants';
+import { useTranslation } from '@/lib/translation-context';
+import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
 import { generateJSONLD } from '@/lib/seo-utils';
-import { Metadata } from 'next';
-
-export const dynamic = 'force-static';
-
-export const metadata: Metadata = {
-  title: `Terms of Service | ${SITE_NAME}`,
-  description: `Terms of Service for ${SITE_NAME}. ${SITE_DESCRIPTION}`,
-};
-
-// Breadcrumb data
-const breadcrumbItems = [
-  { name: 'Home', path: '/' },
-  { name: 'Terms of Service', path: '/terms' },
-];
 
 export default function TermsPage() {
+  const { locale } = useTranslation();
   const pageTitle = `Terms of Service | ${SITE_NAME}`;
-  const pageDescription = `Terms of Service for ${SITE_NAME}. ${SITE_DESCRIPTION}`;
+  const pageDescription = `Read Purrify's Terms of Service. Learn about our policies, user agreements, and conditions for using our activated carbon cat litter products and services.`;
 
-  // Schema data
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: pageTitle,
+  // Use enhanced SEO hook for automated optimization
+  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+    path: '/terms',
+    title: pageTitle,
     description: pageDescription,
-    datePublished: '2024-01-01T10:00:00Z',
-    dateModified: '2025-05-22T10:00:00Z',
-    author: {
-      '@type': 'Organization',
-      name: SITE_NAME,
+    targetKeyword: 'terms of service',
+    schemaType: 'article',
+    schemaData: {
+      headline: pageTitle,
+      description: pageDescription,
+      datePublished: '2024-01-01T10:00:00Z',
+      dateModified: '2025-05-22T10:00:00Z',
+      category: 'Legal',
+      wordCount: 2000,
     },
-  };
+    keywords: ['terms of service', 'purrify terms', 'legal terms', 'user agreement'],
+  });
 
   return (
     <>
-      {/* Auto-generated Article Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={generateJSONLD(schema)}
-      />
+      {/* SEO Meta Tags */}
+      <title>{nextSeoProps.title}</title>
+      <meta name="description" content={nextSeoProps.description} />
+      {nextSeoProps.canonical && <link rel="canonical" href={nextSeoProps.canonical} />}
+      
+      {/* Open Graph Tags */}
+      <meta property="og:title" content={pageTitle} />
+      <meta property="og:description" content={pageDescription} />
+      <meta property="og:type" content="article" />
+      <meta property="og:url" content="https://www.purrify.ca/terms" />
+      <meta property="og:image" content="https://www.purrify.ca/og-image.jpg" />
+      <meta property="og:site_name" content="Purrify" />
+      <meta property="og:locale" content="en_CA" />
+      <meta property="article:published_time" content="2024-01-01T10:00:00Z" />
+      <meta property="article:modified_time" content="2026-01-05T10:00:00Z" />
+      
+      {/* Twitter Card Tags */}
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:title" content={pageTitle} />
+      <meta name="twitter:description" content={pageDescription} />
+      <meta name="twitter:image" content="https://www.purrify.ca/og-image.jpg" />
+      
+      {/* Last Modified */}
+      <meta name="last-modified" content="2026-01-05T10:30:00Z" />
+      
+      {/* Auto-generated Article Schema with Breadcrumb */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={generateJSONLD(schema)}
+        />
+      )}
 
       <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
         {/* Breadcrumb Navigation */}
@@ -51,12 +73,12 @@ export default function TermsPage() {
           <Container>
             <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
               <Link
-                href="/"
+                href={locale === 'fr' ? '/fr' : '/'}
                 className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
               >
                 <Home className="w-4 h-4" />
               </Link>
-              {breadcrumbItems.slice(1).map((item, index, arr) => (
+              {breadcrumb?.items?.slice(1).map((item, index, arr) => (
                 <span key={item.path} className="flex items-center">
                   <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
                   {index === arr.length - 1 ? (

@@ -26,12 +26,12 @@ import {
   CheckCircle,
   Sparkles,
 } from 'lucide-react';
-import { defaultLocale } from '@/i18n/config';
-// import { getUserLocale } from '@/lib/locale';
+import { getUserLocale } from '@/lib/locale';
 import { en } from '@/translations/en';
 import { fr } from '@/translations/fr';
 import { zh } from '@/translations/zh';
 import { es } from '@/translations/es';
+import { headers } from 'next/headers';
 import type { Currency } from '@/lib/geo/currency-detector';
 import { SITE_NAME } from '@/lib/constants';
 import { buildLanguageAlternates, normalizeLocale } from '@/lib/seo-utils';
@@ -49,7 +49,7 @@ const translations = { en, fr, zh, es };
 
 // Generate metadata for the ammonia control page
 export async function generateMetadata(): Promise<Metadata> {
-  const locale = defaultLocale;
+  const locale = await getUserLocale();
   const normalizedLocale = normalizeLocale(locale);
   const t = translations[normalizedLocale as keyof typeof translations] || en;
   const ammonia = t.ammonia;
@@ -88,7 +88,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: SITE_NAME,
       images: [
         {
-          url: '/optimized/ammonia-hero.webp',
+          url: '/images/og/ammonia-control.jpg',
           width: 1200,
           height: 630,
           alt: ammonia.meta.title,
@@ -101,7 +101,7 @@ export async function generateMetadata(): Promise<Metadata> {
       creator: '@purrifyhq',
       title: ammonia.meta.title,
       description: ammonia.meta.description,
-      images: ['/optimized/ammonia-hero.webp'],
+      images: ['/images/og/ammonia-control.jpg'],
     },
     robots: {
       index: true,
@@ -110,14 +110,19 @@ export async function generateMetadata(): Promise<Metadata> {
       'max-snippet': -1,
       'max-video-preview': -1,
     },
+    other: {
+      'last-modified': '2026-01-04',
+    },
   };
 }
 
 // Async server component for the ammonia control page
 export default async function AmmoniaControlPage() {
-  // Static generation for standard locale/currency
-  const locale = defaultLocale;
-  const currency: Currency = 'CAD';
+  // Get locale and currency from server
+  const locale = await getUserLocale();
+  const headersList = await headers();
+  const country = headersList.get('x-vercel-ip-country');
+  const currency: Currency = country === 'US' ? 'USD' : 'CAD';
 
   const normalizedLocale = normalizeLocale(locale);
   const t = translations[normalizedLocale as keyof typeof translations] || en;
@@ -180,10 +185,10 @@ export default async function AmmoniaControlPage() {
     { q: ammonia.faq.q8, a: ammonia.faq.a8 },
   ];
 
-  // Currency symbol - Static for CAD
-  const currencySymbol = '$';
-  const lowPrice = '4.76';
-  const highPrice = '34.99';
+  // Currency symbol
+  const currencySymbol = currency === 'USD' ? '$' : '$';
+  const lowPrice = currency === 'USD' ? '3.99' : '4.76';
+  const highPrice = currency === 'USD' ? '29.99' : '34.99';
 
   // Structured Data - Product
   const productSchema = {
@@ -667,6 +672,5 @@ export default async function AmmoniaControlPage() {
   );
 }
 
-// Revalidate daily - content doesn't change frequently
-export const revalidate = 86400;
-export const dynamic = 'force-static';
+// Revalidate every hour
+export const revalidate = 3600;

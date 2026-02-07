@@ -1,5 +1,3 @@
-export const dynamic = 'force-static';
-
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -24,11 +22,14 @@ export const metadata: Metadata = {
     url: 'https://www.purrify.ca/about/our-story',
     type: 'website',
   },
+  other: {
+    'last-modified': '2025-11-13',
+  },
 };
 
 // Use English data as default for server component
 const storyData = enStoryData;
-const { values, team, stats, salesTeam } = storyData;
+const { values, team, stats } = storyData;
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -183,7 +184,7 @@ export default function AboutPage() {
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full overflow-hidden relative border-2 border-white shadow-md">
                       <Image
-                        src="/images/team/mark-archer.png"
+                        src="/images/mark-archer.webp"
                         alt="Mark Archer"
                         fill
                         className="object-cover"
@@ -252,8 +253,14 @@ export default function AboutPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {team.map((member) => {
-                const photoSrc = member.image;
-                const hasPhoto = !!photoSrc;
+                const isMark = member.name === 'Mark Archer';
+                const isDrMike = member.name === 'Dr. Michael Rodriguez';
+                const hasPhoto = isMark || isDrMike;
+                const photoSrc = isMark
+                  ? '/images/mark-archer.webp'
+                  : isDrMike
+                    ? '/images/dr-michael-rodriguez.jpg'
+                    : null;
                 return (
                   <div
                     key={member.name}
@@ -301,69 +308,9 @@ export default function AboutPage() {
           </Container>
         </section>
 
-        {/* Sales Team Section */}
-        <section className="py-20 bg-gray-50 dark:bg-gray-800/50">
-          <Container>
-            <div className="text-center mb-16">
-              <span className="text-deep-coral font-semibold tracking-wider uppercase text-sm mb-2 block">Sales Force</span>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-                Meet Our Sales Team
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Dedicated professionals connecting retailers with Purrify across Canada.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-              {salesTeam?.map((member) => (
-                <div
-                  key={member.name}
-                  className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 flex flex-col h-full"
-                >
-                  <div className="relative h-48 w-full bg-gray-100 dark:bg-gray-700 overflow-hidden">
-                    {member.image ? (
-                      <Image
-                        src={member.image}
-                        alt={member.name}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 group-hover:from-electric-indigo/10 group-hover:to-deep-coral/10 transition-colors duration-300">
-                        <div className="w-20 h-20 rounded-full bg-white dark:bg-gray-600 flex items-center justify-center shadow-inner mb-3">
-                          <span className="text-2xl font-bold text-electric-indigo dark:text-electric-indigo-300">
-                            {getInitials(member.name)}
-                          </span>
-                        </div>
-                        <Users className="w-5 h-5 text-gray-400 dark:text-gray-500 absolute bottom-3 right-3 opacity-50" />
-                      </div>
-                    )}
-                    {/* Overlay gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-
-                  <div className="p-5 flex-grow flex flex-col">
-                    <h3 className="text-lg font-heading font-bold mb-1 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
-                      {member.name}
-                    </h3>
-                    <p className="text-deep-coral font-medium text-xs mb-3 uppercase tracking-wide">{member.role}</p>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 flex-grow leading-relaxed line-clamp-4">
-                      {member.bio}
-                    </p>
-                    <div className="flex items-center text-gray-500 dark:text-gray-400 text-xs pt-3 border-t border-gray-100 dark:border-gray-700">
-                      <MapPin className="w-3 h-3 mr-1.5 text-electric-indigo" />
-                      {member.location}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Container>
-        </section>
-
         {/* Stats Section */}
         <section className="py-20 bg-electric-indigo text-white dark:text-gray-100 relative overflow-hidden">
-          {/* Background pattern removed - image not found */}
+          <div className="absolute inset-0 bg-[url('/images/pattern-bg.png')] opacity-10 mix-blend-overlay" />
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-deep-coral/20 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2" />
 

@@ -1,5 +1,3 @@
-export const dynamic = 'force-static';
-
 import type { Metadata } from 'next';
 import { SITE_NAME, CONTACT_INFO } from '@/lib/constants';
 import SellSheetClientPage from './_components/SellSheetClientPage';
@@ -17,8 +15,50 @@ export const metadata: Metadata = {
     url: 'https://www.purrify.ca/b2b/sell-sheet',
     type: 'website',
   },
+  other: {
+    'last-modified': '2026-01-23',
+  },
+};
+
+// Organization + Service schema for B2B Sell Sheet
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      name: 'Purrify',
+      url: 'https://www.purrify.ca',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.purrify.ca/images/purrify-logo.png',
+        width: 400,
+        height: 400,
+      },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: CONTACT_INFO.phone,
+        contactType: 'sales',
+        email: 'partners@purrify.ca',
+      },
+    },
+    {
+      '@type': 'Service',
+      name: 'Purrify B2B Sell Sheet',
+      description: 'Wholesale pricing, product specifications, and partnership information for retailers',
+      provider: { '@type': 'Organization', name: 'Purrify' },
+      serviceType: 'B2B Documentation',
+    },
+  ],
 };
 
 export default function SellSheetPage() {
-  return <SellSheetClientPage />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <SellSheetClientPage />
+    </>
+  );
 }
