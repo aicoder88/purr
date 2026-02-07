@@ -22,7 +22,7 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
     alt: 'Close up of a clean, odor-free litter box environment',
   },
   '/blog/activated-carbon-litter-additive-benefits': {
-    image: '/optimized/carbon_magnified_image.webp',
+    image: '/optimized/activated-carbon-benefits.webp',
     alt: "Microscopic view of activated carbon's porous structure",
   },
   '/blog/how-to-use-cat-litter-deodorizer': {
@@ -30,19 +30,19 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
     alt: 'Before and after using deodorizer in litter box',
   },
   '/blog/best-litter-odor-remover-small-apartments': {
-    image: '/optimized/17g-transparent-v2.webp',
+    image: '/optimized/apartment-cat-lifestyle.webp',
     alt: 'Compact 12g product ideal for small apartments',
   },
   '/blog/multi-cat-litter-deodorizer-guide': {
-    image: '/optimized/three-bags-no-bg.webp',
+    image: '/optimized/multi-cat-deodorizer.webp',
     alt: 'Multiple product sizes for multi-cat households',
   },
   '/blog/using-deodorizers-with-kittens': {
-    image: '/optimized/gigi.webp',
+    image: '/optimized/deodorizers-with-kittens.webp',
     alt: 'Kitten next to litter box',
   },
   '/blog/house-smells-like-cat-litter-solutions': {
-    image: '/optimized/house-smells-cat-litter.webp',
+    image: '/optimized/safe-cat-litter.webp',
     alt: 'Modern living room with fresh, clean air',
   },
   '/blog/activated-carbon-vs-baking-soda-comparison': {
@@ -54,7 +54,7 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
     alt: 'Frustrated cat owner seeking solutions',
   },
   '/blog/most-powerful-odor-absorber': {
-    image: '/optimized/scientific-odor-control.webp',
+    image: '/optimized/science-molecule-lab.jpg',
     alt: 'Powerful activated carbon odor absorption',
   },
   '/blog/cat-litter-smell-worse-summer': {
@@ -70,7 +70,7 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
     alt: 'Welcoming guests to a fresh home',
   },
   '/blog/powder-vs-spray-litter-deodorizer': {
-    image: '/optimized/frequency-hero.webp',
+    image: '/optimized/powder_vs_spray_hero_v2.webp',
     alt: 'Comparing deodorizer application methods',
   },
   '/blog/tried-every-litter-deodorizer-90-days-results': {

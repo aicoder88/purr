@@ -12,7 +12,7 @@
   "modifiedDate": "2025-10-06T12:00:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/90day-hero.webp",
+    "url": "/optimized/90day-hero-ghibli.png",
     "alt": "I Tried Every Litter Deodorizer Method for 90 Days—Here's What Actually Worked",
     "width": 1200,
     "height": 800
@@ -46,7 +46,7 @@
       "litter box odor control"
     ],
     "canonical": "https://www.purrify.ca/blog/tried-every-litter-deodorizer-90-days-results",
-    "ogImage": "/optimized/90day-hero.webp"
+    "ogImage": "/optimized/90day-hero-ghibli.png"
   },
   "readingTime": 9
 }

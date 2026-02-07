@@ -12,10 +12,10 @@
   "modifiedDate": "2025-01-20T12:00:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/tried-hero.jpg",
-    "alt": "Tried Everything for Cat Litter Smell? Why Most Solutions Fail",
-    "width": 1600,
-    "height": 2133
+    "url": "/optimized/tried-hero-ghibli.png",
+    "alt": "Frustrated cat owner surrounded by failed litter deodorizer products",
+    "width": 1200,
+    "height": 630
   },
   "categories": [
     "Odor Control Science",
@@ -44,7 +44,7 @@
       "frustrated cat smell"
     ],
     "canonical": "https://www.purrify.ca/blog/tried-everything-cat-litter-smell-solutions",
-    "ogImage": "/optimized/tried-hero.jpg"
+    "ogImage": "/optimized/tried-hero-ghibli.png"
   },
   "readingTime": 9
 }

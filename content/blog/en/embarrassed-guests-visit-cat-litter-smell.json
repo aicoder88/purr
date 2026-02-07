@@ -12,10 +12,10 @@
   "modifiedDate": "2025-01-27T12:00:00.000Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/embarrassed-hero.jpg",
-    "alt": "Overcoming cat odor embarrassment",
+    "url": "/optimized/embarrassed-hero-ghibli.png",
+    "alt": "Embarrassed host with guests due to cat litter smell",
     "width": 1200,
-    "height": 675
+    "height": 630
   },
   "categories": [
     "Real Talk",
@@ -41,7 +41,7 @@
       "eliminate cat smell guests"
     ],
     "canonical": "https://www.purrify.ca/blog/embarrassed-guests-visit-cat-litter-smell",
-    "ogImage": "/optimized/embarrassed-hero.jpg"
+    "ogImage": "/optimized/embarrassed-hero-ghibli.png"
   },
   "readingTime": 6
 }

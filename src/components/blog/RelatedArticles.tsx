@@ -20,7 +20,7 @@ const ALL_ARTICLES: Article[] = [
   {
     title: 'Activated Carbon Litter Additive Benefits',
     href: '/blog/activated-carbon-litter-additive-benefits',
-    image: '/optimized/carbon_magnified_image.webp',
+    image: '/optimized/activated-carbon-benefits.webp',
     alt: "Microscopic view of activated carbon's porous structure",
   },
   {
@@ -32,25 +32,25 @@ const ALL_ARTICLES: Article[] = [
   {
     title: 'Best Litter Odor Remover for Small Apartments',
     href: '/blog/best-litter-odor-remover-small-apartments',
-    image: '/optimized/17g-transparent-v2.webp',
+    image: '/optimized/apartment-cat-lifestyle.webp',
     alt: 'Compact 12g product ideal for small apartments',
   },
   {
     title: 'Multi-Cat Litter Deodorizer Guide',
     href: '/blog/multi-cat-litter-deodorizer-guide',
-    image: '/optimized/three-bags-no-bg.webp',
+    image: '/optimized/multi-cat-deodorizer.webp',
     alt: 'Multiple product sizes for multi-cat households',
   },
   {
     title: 'Using Deodorizers with Kittens',
     href: '/blog/using-deodorizers-with-kittens',
-    image: '/optimized/gigi.webp',
+    image: '/optimized/deodorizers-with-kittens.webp',
     alt: 'Kitten next to litter box',
   },
   {
     title: 'House Smells Like Cat Litter Solutions',
     href: '/blog/house-smells-like-cat-litter-solutions',
-    image: '/optimized/house-smells-cat-litter.webp',
+    image: '/optimized/safe-cat-litter.webp',
     alt: 'Modern living room with fresh, clean air'
   },
   {
@@ -68,7 +68,7 @@ const ALL_ARTICLES: Article[] = [
   {
     title: 'Most Powerful Odor Absorber',
     href: '/blog/most-powerful-odor-absorber',
-    image: '/optimized/scientific-odor-control.webp',
+    image: '/optimized/science-molecule-lab.jpg',
     alt: 'Powerful activated carbon odor absorption'
   },
   {
@@ -92,7 +92,7 @@ const ALL_ARTICLES: Article[] = [
   {
     title: 'Purrify vs Spray Litter Deodorizer',
     href: '/blog/powder-vs-spray-litter-deodorizer',
-    image: '/optimized/frequency-hero.webp',
+    image: '/optimized/powder_vs_spray_hero_v2.webp',
     alt: 'Comparing deodorizer application methods'
   },
   {

@@ -87,7 +87,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       date: '2026-01-26',
       datePublished: '2025-07-06',
       lastUpdated: '2025-07-10',
-      image: '/optimized/science-diagram.webp',
+      image: '/optimized/vet-cat-safe-litter.webp',
       link: '/blog/safe-ways-to-deodorize-litter-box'
     },
     {
@@ -107,7 +107,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       date: '2026-01-03',
       datePublished: '2025-09-22',
       lastUpdated: '2025-10-18',
-      image: '/optimized/cat_long_lasting_freshness_800x500.webp',
+      image: '/optimized/embarrassed-guest-ghibli.webp',
       link: '/blog/why-does-my-house-smell-like-cat-litter'
     },
     {
@@ -147,7 +147,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       date: '2026-01-03',
       datePublished: '2025-09-01',
       lastUpdated: '2025-12-13',
-      image: '/optimized/standard-hero-828w.webp',
+      image: '/optimized/best-litter-smell-ghibli.webp',
       link: '/blog/best-cat-litter-odor-control-2026'
     },
     {
@@ -175,7 +175,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "Where you place your cat's litter box dramatically affects odour. Learn the science behind optimal litter box placement and discover locations that minimise smell throughout your home.",
       author: 'Purrify Team',
       date: '2026-01-03',
-      image: '/optimized/placement-828w.webp',
+      image: '/optimized/placement-2026.png',
       link: '/blog/best-litter-box-location-odour-control'
     },
     {
@@ -199,7 +199,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Living in an apartment with cats? Limited ventilation makes litter odour worse. Compare the best cat litters for apartments and discover the small-space solution that actually works.',
       author: 'Purrify Team',
       date: '2026-01-03',
-      image: '/optimized/apartment-odor-control-small-space-ghibli.webp',
+      image: '/optimized/apartment-fresh-cat-ghibli.webp',
       link: '/blog/best-cat-litter-for-apartments'
     },
     {
@@ -215,7 +215,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "Multi-cat households face exponential odor challenges—not just double the smell, but 4x worse. Here's how to choose litter that actually handles the ammonia load, plus the upgrade that scales with you.",
       author: 'Purrify Team',
       date: '2026-01-03',
-      image: '/optimized/multiple-cats-together-1080w.webp',
+      image: '/optimized/multi-cat-happy-home-ghibli.webp',
       link: '/blog/best-cat-litter-multiple-cats-odor-control'
     },
     {
@@ -280,7 +280,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "Living in an apartment with cats? Learn how to eliminate litter box odor in small spaces without air fresheners, candles, or constant cleaning.",
       author: 'Purrify Team',
       date: '2026-01-02',
-      image: '/optimized/catonbed-1080w.webp',
+      image: '/optimized/landlord-test-success-ghibli.webp',
       link: '/blog/apartment-litter-box-smell-solution'
     },
     {
@@ -296,7 +296,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Cat litter smells like ammonia? Learn exactly what neutralizes ammonia and the 5 most effective methods to eliminate that harsh smell permanently.',
       author: 'Purrify Team',
       date: '2024-12-29',
-      image: '/optimized/ammonia-neutralized-magic-litter-ghibli.webp',
+      image: '/optimized/ammonia-haze-ghibli.webp',
       link: '/blog/how-to-neutralize-ammonia-cat-litter'
     },
     {
@@ -312,7 +312,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "Tired of litter box smell taking over your home? Skip the scented litters and air fresheners. These 7 science-backed methods eliminate odors at the source.",
       author: 'Purrify Team',
       date: '2025-01-02',
-      image: '/optimized/pet-safety-home.webp',
+      image: '/optimized/fresh-home-hero-ghibli.webp',
       link: '/blog/how-to-reduce-litter-box-odor'
     },
     {
@@ -336,7 +336,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Spray deodorizers seem convenient, but they fail after 8 hours. I tested both formats for 60 days with 2 cats. Here\'s why Purrify wins every time—and the science behind it.',
       author: 'Purrify Team',
       date: '2024-12-22',
-      image: '/optimized/activated-carbon-granules.webp',
+      image: '/optimized/powder_vs_spray_hero_v2.webp',
       link: '/blog/powder-vs-spray-litter-deodorizer'
     },
     {
@@ -352,7 +352,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Discover why activated carbon is the most powerful odor absorber for cat litter. Learn the science behind ammonia control and how to layer Purrify for maximum effectiveness.',
       author: 'Purrify Team',
       date: '2024-11-09',
-      image: '/optimized/most-powerful-absorber-hero-ghibli.webp',
+      image: '/optimized/science-molecule-lab.jpg',
       link: '/blog/most-powerful-odor-absorber'
     },
     {
@@ -360,7 +360,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Baking soda not working? Activated carbon destroys ammonia 10x better. See the science behind instant cat litter odor elimination!',
       author: 'Purrify Team',
       date: '2024-01-15',
-      image: '/optimized/activated-carbon-science-benefits-ghibli.webp',
+      image: '/optimized/activated-carbon-benefits.webp',
       link: '/blog/activated-carbon-litter-additive-benefits'
     },
     {
@@ -408,7 +408,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Stop strong cat urine smell fast. Proven layered fix with airflow, hygiene tips, and activated carbon for instant freshness at home.',
       author: 'Purrify Team',
       date: '2025-11-09',
-      image: '/optimized/strong-odor-hero-ghibli.webp',
+      image: '/optimized/strong-cat-urine-smell.webp',
       link: '/blog/strong-cat-urine-smell-litter-box'
     },
     {
@@ -432,7 +432,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Step-by-step guide to using cat litter deodorizer correctly. Avoid common mistakes and maximize odor control with expert tips.',
       author: 'Purrify Team',
       date: '2024-01-15',
-      image: '/optimized/applying-deodorizer-ghibli.webp',
+      image: '/optimized/before-after.webp',
       link: '/blog/how-to-use-cat-litter-deodorizer'
     },
     {
@@ -440,7 +440,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Complete guide to using litter deodorizers with kittens. Learn when, how, and what products work best for tiny paws. Natural, chemical-free options!',
       author: 'Purrify Team',
       date: '2024-01-25',
-      image: '/optimized/kitten-looking-curious-ghibli.webp',
+      image: '/optimized/deodorizers-with-kittens.webp',
       link: '/blog/using-deodorizers-with-kittens'
     },
     {
