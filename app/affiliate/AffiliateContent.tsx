@@ -343,21 +343,21 @@ export default function AffiliateContent() {
                                                         key={tier}
                                                         onClick={() => setSelectedTier(tier)}
                                                         className={`p-4 rounded-xl border-2 transition-all duration-200 text-left ${isSelected
-                                                                ? tier === 'PARTNER'
-                                                                    ? 'border-purple-500 bg-purple-500/20 dark:border-purple-500 dark:bg-purple-500/20'
-                                                                    : tier === 'ACTIVE'
-                                                                        ? 'border-blue-500 bg-blue-500/20 dark:border-blue-500 dark:bg-blue-500/20'
-                                                                        : 'border-gray-500 bg-gray-500/20 dark:border-gray-500 dark:bg-gray-500/20'
-                                                                : 'border-gray-700 dark:border-gray-700 hover:border-gray-600 dark:hover:border-gray-600 bg-gray-800/50 dark:bg-gray-800/50'
+                                                            ? tier === 'PARTNER'
+                                                                ? 'border-purple-500 bg-purple-500/20 dark:border-purple-500 dark:bg-purple-500/20'
+                                                                : tier === 'ACTIVE'
+                                                                    ? 'border-blue-500 bg-blue-500/20 dark:border-blue-500 dark:bg-blue-500/20'
+                                                                    : 'border-gray-500 bg-gray-500/20 dark:border-gray-500 dark:bg-gray-500/20'
+                                                            : 'border-gray-700 dark:border-gray-700 hover:border-gray-600 dark:hover:border-gray-600 bg-gray-800/50 dark:bg-gray-800/50'
                                                             }`}
                                                     >
                                                         <div className={`text-2xl font-bold mb-1 ${isSelected
-                                                                ? tier === 'PARTNER'
-                                                                    ? 'text-purple-400 dark:text-purple-400'
-                                                                    : tier === 'ACTIVE'
-                                                                        ? 'text-blue-400 dark:text-blue-400'
-                                                                        : 'text-gray-300 dark:text-gray-300'
-                                                                : 'text-gray-400 dark:text-gray-400'
+                                                            ? tier === 'PARTNER'
+                                                                ? 'text-purple-400 dark:text-purple-400'
+                                                                : tier === 'ACTIVE'
+                                                                    ? 'text-blue-400 dark:text-blue-400'
+                                                                    : 'text-gray-300 dark:text-gray-300'
+                                                            : 'text-gray-400 dark:text-gray-400'
                                                             }`}>
                                                             {(tierInfo.rate * 100).toFixed(0)}%
                                                         </div>
@@ -577,7 +577,7 @@ export default function AffiliateContent() {
                                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-800 dark:border-gray-800 group">
                                     <div className="aspect-[4/3] relative">
                                         <Image
-                                            src="/optimized/benefits-happy-cats.webp"
+                                            src="/optimized/benefits-happy-cats.avif"
                                             alt="Effective Product"
                                             fill
                                             className="object-cover group-hover:scale-105 transition-transform duration-700"

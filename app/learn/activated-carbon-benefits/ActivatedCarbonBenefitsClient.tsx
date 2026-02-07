@@ -11,7 +11,7 @@ export default function ActivatedCarbonBenefitsClient() {
   // Unique images for science guide - different from other posts
   const heroImage = '/optimized/benefits-hero-science.webp';
   const sectionImage1 = '/optimized/benefits-lab-modern.webp';
-  const sectionImage2 = '/optimized/benefits-happy-cats.webp';
+  const sectionImage2 = '/optimized/benefits-happy-cats.avif';
   const solutionImage = '/optimized/benefits-solution-bright.webp';
 
   // FAQ items for display
