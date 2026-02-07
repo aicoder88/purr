@@ -33,7 +33,7 @@ export default function CatLitterGuidePageClient() {
   const heroImage = '/optimized/litter-guide-hero-setup.webp'; // Modern litter box setup
   const sectionImage1 = '/optimized/safe-cat-litter.webp'; // Different litter types (reused safe litter image)
   const sectionImage2 = '/optimized/step-2-mix.webp'; // Cat owner maintenance (reused mixing image)
-  const solutionImage = '/optimized/benefits-happy-cats.webp'; // Happy multi-cat household
+  const solutionImage = '/optimized/benefits-happy-cats.avif'; // Happy multi-cat household
 
   // Breadcrumb items
   const breadcrumbItems = [
