@@ -28,8 +28,8 @@ export const metadata: Metadata = {
 };
 
 // Relevant images for small apartment cat odor control
-const heroImage = '/optimized/apartment-cat-lifestyle.webp';
-const heroImageOg = 'https://www.purrify.ca/images/small-apartment-hero-original.png';
+const heroImage = '/optimized/apartment-cat-lifestyle-ghibli.png';
+const heroImageOg = '/optimized/apartment-cat-lifestyle-ghibli.png';
 const ventilationImage = '/images/ventilation.webp';
 const spaceImage = '/images/placement.webp';
 const carbonImage = '/images/carbon.webp';

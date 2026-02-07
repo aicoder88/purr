@@ -67,7 +67,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       date: '2026-01-28',
       datePublished: '2025-10-06',
       lastUpdated: '2025-10-14',
-      image: '/optimized/cat-litter-hero.webp',
+      image: '/optimized/coconut-carbon-ghibli.webp',
       link: '/blog/how-to-get-rid-of-cat-pee-smell-apartment'
     },
     {
@@ -167,7 +167,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       date: '2026-01-03',
       datePublished: '2025-10-13',
       lastUpdated: '2026-01-04',
-      image: '/optimized/cat-litter-deodorizer-guide.webp',
+      image: '/optimized/powder-spray-comparison-ghibli.webp',
       link: '/blog/cat-litter-odour-control-tips'
     },
     {
@@ -288,7 +288,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Stop cat litter smell in tiny apartments. 5 proven methods to eliminate odors and keep neighbors happy. Works in studios and small spaces!',
       author: 'Purrify Team',
       date: '2024-02-01',
-      image: '/optimized/apartment-cat-lifestyle.webp',
+      image: '/optimized/apartment-cat-lifestyle-ghibli.png',
       link: '/blog/best-litter-odor-remover-small-apartments'
     },
     {
@@ -328,7 +328,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'My apartment smelled like a petting zoo. I spent $300 testing every deodorizer method I could find. Here\'s what finally eliminated the ammonia smell completely.',
       author: 'Purrify Team',
       date: '2025-10-06',
-      image: '/optimized/90day-hero.webp',
+      image: '/optimized/90day-hero-ghibli.png',
       link: '/blog/tried-every-litter-deodorizer-90-days-results'
     },
     {
@@ -352,7 +352,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Discover why activated carbon is the most powerful odor absorber for cat litter. Learn the science behind ammonia control and how to layer Purrify for maximum effectiveness.',
       author: 'Purrify Team',
       date: '2024-11-09',
-      image: '/optimized/science-molecule-lab.jpg',
+      image: '/optimized/science-molecule-lab-ghibli.png',
       link: '/blog/most-powerful-odor-absorber'
     },
     {
@@ -376,7 +376,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "Stop being embarrassed when guests visit! 5 proven ways to eliminate cat litter smell in 24 hours before company arrives. Never apologize for odors again.",
       author: 'Purrify Team',
       date: '2025-01-20',
-      image: '/optimized/embarrassed-hero.jpg',
+      image: '/optimized/embarrassed-hero-ghibli.png',
       link: '/blog/embarrassed-guests-visit-cat-litter-smell'
     },
     {
@@ -384,7 +384,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "Nothing working for cat litter smell? Discover why baking soda, air fresheners, and cheap deodorizers fail—and the scientific solution that actually works.",
       author: 'Purrify Team',
       date: '2025-01-20',
-      image: '/optimized/tried-hero.jpg',
+      image: '/optimized/tried-hero-ghibli.png',
       link: '/blog/tried-everything-cat-litter-smell-solutions'
     },
     {
@@ -392,7 +392,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "Cat litter smell unbearable in winter? Closed windows trap ammonia odors. Discover 5 proven solutions that work without opening windows in cold weather.",
       author: 'Purrify Team',
       date: '2025-11-09',
-      image: '/optimized/winter-fresh-cat.webp',
+      image: '/optimized/winter-fresh-cat-ghibli.png',
       link: '/blog/cat-litter-smell-worse-winter'
     },
     {
@@ -416,7 +416,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: 'Stop embarrassing cat litter odors in 24 hours. 7 proven methods to eliminate litter box smell and keep your home fresh.',
       author: 'Purrify Team',
       date: '2024-12-15',
-      image: '/optimized/safe-cat-litter.webp',
+      image: '/optimized/safe-cat-litter-ghibli.png',
       link: '/blog/house-smells-like-cat-litter-solutions'
     },
     {
@@ -448,7 +448,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "I tested 10 common cat litter odor control myths—coffee grounds, perfume sprays, daily scooping tricks—and measured the ammonia levels for each. Here's what actually works.",
       author: 'Purrify Team',
       date: '2024-12-09',
-      image: '/optimized/90day-science.webp',
+      image: '/optimized/coffee-vs-carbon-ghibli.webp',
       link: '/blog/cat-litter-odor-myths'
     }
   ];

@@ -29,11 +29,11 @@ export const metadata: Metadata = {
 };
 
 // Relevant images for cat litter odor control
-const heroImage = '/optimized/safe-cat-litter.webp';
-const heroImageOg = 'https://www.purrify.ca/optimized/house-smells-cat-litter.webp';
-const litterBoxImage = '/optimized/multi-cat-household.webp';
-const ventilationImage = '/optimized/catonbed.avif';
-const cleaningImage = '/optimized/clay-cat-litter.webp';
+const heroImage = '/optimized/safe-cat-litter-ghibli.png';
+const heroImageOg = '/optimized/safe-cat-litter-ghibli.png';
+const litterBoxImage = '/optimized/multi-cat-household-ghibli.png';
+const ventilationImage = '/optimized/catonbed-ghibli.png';
+const cleaningImage = '/optimized/clay-cat-litter-ghibli.png';
 
 const structuredData = {
   '@context': 'https://schema.org',

@@ -28,8 +28,8 @@ export const metadata: Metadata = {
   },
 };
 
-const heroImage = '/optimized/winter-fresh-cat.webp';
-const closedWindowImage = '/optimized/frosted-winter-window.webp';
+const heroImage = '/optimized/winter-fresh-cat-ghibli.png';
+const closedWindowImage = '/optimized/frosted-winter-window-ghibli.png';
 const solutionImage = '/optimized/happy-cat-fresh-home.webp';
 
 export default function CatLitterSmellWorseWinterPage() {

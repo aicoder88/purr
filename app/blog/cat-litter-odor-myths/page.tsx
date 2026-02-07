@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
 };
 
-const heroImage = '/optimized/90day-science.webp';
+const heroImage = '/optimized/coffee-vs-carbon-ghibli.webp';
 
 export default function CatLitterOdorMythsPage() {
   return (

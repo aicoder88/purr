@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
 };
 
-const heroImage = '/optimized/embarrassed-hero.jpg';
+const heroImage = '/optimized/embarrassed-hero-ghibli.png';
 const livingRoomImage = '/optimized/airy-living-room-ghibli.webp';
 const cleanHomeImage = '/optimized/sparkling-clean-home-ghibli.webp';
 
@@ -180,7 +180,7 @@ export default function EmbarrassedGuestsVisitCatLitterSmellPage() {
               <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-6">
                 <h3 className="font-bold text-green-800 dark:text-green-200 mb-3">Step 1: Accept You May Have "Nose Blindness"</h3>
                 <p className="text-gray-700 dark:text-gray-200 text-sm">
-                  Leave your home for 2+ hours, then pay attention in the first 30 seconds when you return. 
+                  Leave your home for 2+ hours, then pay attention in the first 30 seconds when you return.
                   Ask a trusted friend for honest feedback about your home's smell.
                 </p>
               </div>
@@ -188,7 +188,7 @@ export default function EmbarrassedGuestsVisitCatLitterSmellPage() {
               <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-6">
                 <h3 className="font-bold text-green-800 dark:text-green-200 mb-3">Step 2: Address the Litter Box Immediately</h3>
                 <p className="text-gray-700 dark:text-gray-200 text-sm">
-                  Do a complete change with fresh litter, wash the box thoroughly, and add activated carbon. 
+                  Do a complete change with fresh litter, wash the box thoroughly, and add activated carbon.
                   If the box is over a year old, replace it—plastic absorbs odors permanently.
                 </p>
               </div>
@@ -196,7 +196,7 @@ export default function EmbarrassedGuestsVisitCatLitterSmellPage() {
               <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-6">
                 <h3 className="font-bold text-green-800 dark:text-green-200 mb-3">Step 3: Hunt for Hidden Accidents</h3>
                 <p className="text-gray-700 dark:text-gray-200 text-sm">
-                  Use a UV flashlight in a dark room to find accidents you never knew existed. 
+                  Use a UV flashlight in a dark room to find accidents you never knew existed.
                   Check behind furniture, near windows, and along baseboards.
                 </p>
               </div>
@@ -204,7 +204,7 @@ export default function EmbarrassedGuestsVisitCatLitterSmellPage() {
               <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-6">
                 <h3 className="font-bold text-green-800 dark:text-green-200 mb-3">Step 4: Deep Clean All Fabric Surfaces</h3>
                 <p className="text-gray-700 dark:text-gray-200 text-sm">
-                  Wash all bedding, throw pillows, curtains, and cat beds. Steam clean carpets 
+                  Wash all bedding, throw pillows, curtains, and cat beds. Steam clean carpets
                   and upholstered furniture to remove accumulated odors.
                 </p>
               </div>
@@ -212,7 +212,7 @@ export default function EmbarrassedGuestsVisitCatLitterSmellPage() {
               <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-6">
                 <h3 className="font-bold text-green-800 dark:text-green-200 mb-3">Step 5: Implement Ongoing Prevention</h3>
                 <p className="text-gray-700 dark:text-gray-200 text-sm">
-                  Use activated carbon continuously, maintain twice-daily scooping, wash cat bedding weekly, 
+                  Use activated carbon continuously, maintain twice-daily scooping, wash cat bedding weekly,
                   and run an air purifier with carbon filter.
                 </p>
               </div>
