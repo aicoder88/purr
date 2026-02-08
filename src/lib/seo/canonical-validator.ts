@@ -12,13 +12,24 @@ export interface CanonicalIssue {
 
 export class CanonicalValidator {
   private canonicalMap = new Map<string, string[]>(); // canonical -> pages claiming it
+  private debug: boolean;
+
+  constructor(debug: boolean = true) {
+    this.debug = debug;
+  }
+
+  private log(...args: unknown[]): void {
+    if (this.debug) {
+      console.log(...args);
+    }
+  }
 
   async validateCanonicals(siteUrl: string): Promise<CanonicalIssue[]> {
     const issues: CanonicalIssue[] = [];
     this.canonicalMap.clear();
 
     const pages = await this.getAllPages(siteUrl);
-    console.log(`Validating canonical tags for ${pages.length} pages...`);
+    this.log(`Validating canonical tags for ${pages.length} pages...`);
 
     for (const pageUrl of pages) {
       try {
@@ -182,7 +193,7 @@ export class CanonicalValidator {
   async fixCanonicalUrl(pageUrl: string, correctCanonical: string): Promise<void> {
     // This would require file system access to update the page
     // Implementation depends on how pages are generated (static, SSR, etc.)
-    console.log(`Would fix canonical for ${pageUrl} to ${correctCanonical}`);
+    this.log(`Would fix canonical for ${pageUrl} to ${correctCanonical}`);
   }
 
   private normalizeUrl(url: string): string {

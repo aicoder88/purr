@@ -38,6 +38,18 @@ interface BrokenLinkReportData {
 }
 
 export class ReportGenerator {
+  private debug: boolean;
+
+  constructor(debug: boolean = true) {
+    this.debug = debug;
+  }
+
+  private log(...args: unknown[]): void {
+    if (this.debug) {
+      console.log(...args);
+    }
+  }
+
   generateBrokenLinkReport(result: LinkCheckResult, outputDir: string = 'reports'): void {
     const timestamp = new Date().toISOString();
     const report: BrokenLinkReportData = {
@@ -68,9 +80,9 @@ export class ReportGenerator {
     const htmlPath = path.join(outputDir, `broken-links-${Date.now()}.html`);
     fs.writeFileSync(htmlPath, this.generateBrokenLinkHTML(report));
 
-    console.log(`\nReports generated:`);
-    console.log(`   JSON: ${jsonPath}`);
-    console.log(`   HTML: ${htmlPath}`);
+    this.log(`\nReports generated:`);
+    this.log(`   JSON: ${jsonPath}`);
+    this.log(`   HTML: ${htmlPath}`);
   }
 
   private generateBrokenLinkHTML(report: BrokenLinkReportData): string {
@@ -191,9 +203,9 @@ export class ReportGenerator {
     const htmlPath = path.join(outputDir, `seo-health-${Date.now()}.html`);
     fs.writeFileSync(htmlPath, this.generateTechnicalSEOHTML(report));
 
-    console.log(`\nTechnical SEO Reports generated:`);
-    console.log(`   JSON: ${jsonPath}`);
-    console.log(`   HTML: ${htmlPath}`);
+    this.log(`\nTechnical SEO Reports generated:`);
+    this.log(`   JSON: ${jsonPath}`);
+    this.log(`   HTML: ${htmlPath}`);
   }
 
   private generateTechnicalSEOHTML(report: TechnicalSEOReport): string {

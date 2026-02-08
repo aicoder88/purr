@@ -143,6 +143,15 @@
     "avifSanitized": "optimized/happy-cat-ghibli.avif",
     "optimized": "optimized/happy-cat-ghibli.png"
   },
+  "images/fragrance-free-hero.png": {
+    "width": 640,
+    "height": 640,
+    "webp": "optimized/fragrance-free-hero.webp",
+    "webpSanitized": "optimized/fragrance-free-hero.webp",
+    "avif": "optimized/fragrance-free-hero.avif",
+    "avifSanitized": "optimized/fragrance-free-hero.avif",
+    "optimized": "optimized/fragrance-free-hero.png"
+  },
   "images/dr-michael-rodriguez.jpg": {
     "width": 512,
     "height": 512,

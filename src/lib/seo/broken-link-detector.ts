@@ -22,6 +22,17 @@ export class BrokenLinkDetector {
   private brokenLinks: BrokenLink[] = [];
   private linkMap = new Map<string, Set<{ source: string; text: string }>>();
   private baseUrl: string = '';
+  private debug: boolean;
+
+  constructor(debug: boolean = true) {
+    this.debug = debug;
+  }
+
+  private log(...args: unknown[]): void {
+    if (this.debug) {
+      console.log(...args);
+    }
+  }
 
   async crawlSite(baseUrl: string, useSitemap: boolean = false): Promise<LinkCheckResult> {
     this.baseUrl = baseUrl;
@@ -33,16 +44,16 @@ export class BrokenLinkDetector {
     
     if (useSitemap) {
       // Get all URLs from sitemap for complete coverage
-      console.log(`Loading URLs from sitemap...`);
+      this.log(`Loading URLs from sitemap...`);
       queue = await this.getUrlsFromSitemap(baseUrl);
-      console.log(`Found ${queue.length} URLs in sitemap`);
+      this.log(`Found ${queue.length} URLs in sitemap`);
     } else {
       queue = [baseUrl];
     }
 
     const allLinks = new Set<string>();
 
-    console.log(`Starting crawl of ${baseUrl}...`);
+    this.log(`Starting crawl of ${baseUrl}...`);
 
     while (queue.length > 0) {
       const url = queue.shift()!;
@@ -89,13 +100,13 @@ export class BrokenLinkDetector {
           });
         }
 
-        console.log(`Crawled: ${url} (${response.status}) - Queue: ${queue.length}`);
+        this.log(`Crawled: ${url} (${response.status}) - Queue: ${queue.length}`);
       } catch (error) {
         console.error(`Error crawling ${url}:`, error instanceof Error ? error.message : error);
       }
     }
 
-    console.log(`\nCrawl complete. Found ${allLinks.size} unique links. Checking status...`);
+    this.log(`\nCrawl complete. Found ${allLinks.size} unique links. Checking status...`);
 
     // Check all found links
     let checked = 0;
@@ -104,7 +115,7 @@ export class BrokenLinkDetector {
       checked++;
 
       if (checked % 10 === 0) {
-        console.log(`Checked ${checked}/${allLinks.size} links...`);
+        this.log(`Checked ${checked}/${allLinks.size} links...`);
       }
 
       if (result.statusCode >= 400 || result.statusCode === 0) {
@@ -196,7 +207,7 @@ export class BrokenLinkDetector {
         urls.push($(el).text());
       });
 
-      console.log(`Validating ${urls.length} URLs from sitemap...`);
+      this.log(`Validating ${urls.length} URLs from sitemap...`);
 
       for (const url of urls) {
         const result = await this.checkUrl(url);
