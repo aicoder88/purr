@@ -3,17 +3,18 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '@/components/ui/container';
 import { Check, MapPin, Truck, Leaf, Shield, Star, ChevronRight, Home } from 'lucide-react';
-import { getUserLocale } from '@/lib/locale';
-import { headers } from 'next/headers';
+import { defaultLocale } from '@/i18n/config';
 import type { Currency } from '@/lib/geo/currency-detector';
 import { SITE_NAME } from '@/lib/constants';
 import { buildLanguageAlternates, normalizeLocale } from '@/lib/seo-utils';
 import { getProductPrice, formatProductPrice } from '@/lib/pricing';
 
+// Force static generation
+export const dynamic = 'force-static';
+
 // Generate metadata for the Canada page
 export async function generateMetadata(): Promise<Metadata> {
-  const locale = await getUserLocale();
-  const normalizedLocale = normalizeLocale(locale);
+  const normalizedLocale = normalizeLocale(defaultLocale);
 
   const pageTitle = 'Best Cat Litter Deodorizer in Canada | Made in Canada | Purrify';
   const pageDescription = 'Looking for cat litter odor control in Canada? Purrify is proudly made in Canada with premium coconut shell activated carbon. Free shipping across Canada on orders over $35.';
@@ -83,13 +84,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
 // Async server component for the Canada page
 export default async function CanadaPage() {
-  // Get locale and currency from server
-  const locale = await getUserLocale();
-  const headersList = await headers();
-  const country = headersList.get('x-vercel-ip-country');
-  const currency: Currency = country === 'US' ? 'USD' : 'CAD';
+  // Static generation with default CAD currency
+  // Client-side detection can adjust if needed
+  const currency: Currency = 'CAD';
 
-  const normalizedLocale = normalizeLocale(locale);
+  const normalizedLocale = normalizeLocale(defaultLocale);
 
   // Format prices
   const trialPrice = formatProductPrice('trial', currency, normalizedLocale);
@@ -605,5 +604,4 @@ export default async function CanadaPage() {
   );
 }
 
-// Revalidate every hour
-export const revalidate = 3600;
+

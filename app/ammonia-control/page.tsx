@@ -26,15 +26,17 @@ import {
   CheckCircle,
   Sparkles,
 } from 'lucide-react';
-import { getUserLocale } from '@/lib/locale';
+import { defaultLocale } from '@/i18n/config';
 import { en } from '@/translations/en';
 import { fr } from '@/translations/fr';
 import { zh } from '@/translations/zh';
 import { es } from '@/translations/es';
-import { headers } from 'next/headers';
 import type { Currency } from '@/lib/geo/currency-detector';
 import { SITE_NAME } from '@/lib/constants';
 import { buildLanguageAlternates, normalizeLocale } from '@/lib/seo-utils';
+
+// Force static generation
+export const dynamic = 'force-static';
 import {
   LandingHero,
   ProblemSection,
@@ -49,8 +51,7 @@ const translations = { en, fr, zh, es };
 
 // Generate metadata for the ammonia control page
 export async function generateMetadata(): Promise<Metadata> {
-  const locale = await getUserLocale();
-  const normalizedLocale = normalizeLocale(locale);
+  const normalizedLocale = normalizeLocale(defaultLocale);
   const t = translations[normalizedLocale as keyof typeof translations] || en;
   const ammonia = t.ammonia;
 
@@ -118,13 +119,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
 // Async server component for the ammonia control page
 export default async function AmmoniaControlPage() {
-  // Get locale and currency from server
-  const locale = await getUserLocale();
-  const headersList = await headers();
-  const country = headersList.get('x-vercel-ip-country');
-  const currency: Currency = country === 'US' ? 'USD' : 'CAD';
+  // Static generation with default CAD currency
+  // Client-side detection can adjust if needed
+  const currency: Currency = 'CAD';
 
-  const normalizedLocale = normalizeLocale(locale);
+  const normalizedLocale = normalizeLocale(defaultLocale);
   const t = translations[normalizedLocale as keyof typeof translations] || en;
   const ammonia = t.ammonia;
 
@@ -185,10 +184,10 @@ export default async function AmmoniaControlPage() {
     { q: ammonia.faq.q8, a: ammonia.faq.a8 },
   ];
 
-  // Currency symbol
-  const currencySymbol = currency === 'USD' ? '$' : '$';
-  const lowPrice = currency === 'USD' ? '3.99' : '4.76';
-  const highPrice = currency === 'USD' ? '29.99' : '34.99';
+  // Currency symbol (static CAD for SSR)
+  const currencySymbol = '$';
+  const lowPrice = '4.76';
+  const highPrice = '34.99';
 
   // Structured Data - Product
   const productSchema = {
@@ -672,5 +671,4 @@ export default async function AmmoniaControlPage() {
   );
 }
 
-// Revalidate every hour
-export const revalidate = 3600;
+

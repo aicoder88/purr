@@ -11,6 +11,9 @@ import { locales, isValidLocale, defaultLocale } from '@/i18n/config';
 import { generateArticlePageSchema } from '@/lib/seo-utils';
 import { ArrowLeft, Calendar, User, Clock } from 'lucide-react';
 
+// Force static generation - no dynamic data fetching
+export const dynamic = 'force-static';
+
 interface BlogPostPageProps {
   params: Promise<{
     locale: string;
@@ -18,15 +21,13 @@ interface BlogPostPageProps {
   }>;
 }
 
-// Generate static params for all blog posts across all locales
+// Generate static params for all blog posts across all locales (including default 'en')
 export async function generateStaticParams() {
   const store = new ContentStore();
   const params: Array<{ locale: string; slug: string }> = [];
 
-  // Get posts for each locale (excluding default 'en' since it's handled separately)
-  const nonDefaultLocales = locales.filter((locale) => locale !== defaultLocale);
-
-  for (const locale of nonDefaultLocales) {
+  // Get posts for each locale (including default 'en')
+  for (const locale of locales) {
     try {
       const posts = await store.getAllPosts(locale, false);
       posts.forEach((post) => {
@@ -203,7 +204,7 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
   const { locale, slug } = await params;
 
   // Validate locale
-  if (!isValidLocale(locale) || locale === defaultLocale) {
+  if (!isValidLocale(locale)) {
     notFound();
   }
 

@@ -22,7 +22,7 @@ import {
   getLocalizedKeywords,
   normalizeLocale,
 } from '@/lib/seo-utils';
-import { getUserLocale } from '@/lib/locale';
+import { defaultLocale } from '@/i18n/config';
 import type { Currency } from '@/lib/geo/currency-detector';
 
 // Import client components
@@ -30,8 +30,7 @@ import { HomepageClient } from './homepage-client';
 
 // Generate metadata for the homepage
 export async function generateMetadata(): Promise<Metadata> {
-  const locale = await getUserLocale();
-  const normalizedLocale = normalizeLocale(locale);
+  const normalizedLocale = normalizeLocale(defaultLocale);
 
   // Get SEO meta for homepage
   const seoMeta = getSEOMeta(normalizedLocale, 'homepage');
@@ -114,25 +113,22 @@ async function generateStructuredData(locale: string, currency: Currency) {
 
 // Async server component for the homepage
 export default async function HomePage() {
-  // Get locale from server
-  const locale = await getUserLocale();
-  
-  // For static generation, we use a default currency
-  // The actual currency detection happens client-side via HomepageClient
+  // For static generation, use default locale and currency
+  // The actual currency/locale detection happens client-side via HomepageClient
   const currency: Currency = 'CAD';
 
   // Get price validity date (replaces getStaticProps)
   const priceValidUntil = getPriceValidityDate();
 
   // Get normalized locale for SEO
-  const normalizedLocale = normalizeLocale(locale);
+  const normalizedLocale = normalizeLocale(defaultLocale);
 
   // Get SEO meta
   const seoMeta = getSEOMeta(normalizedLocale, 'homepage');
   const pageTitle = seoMeta?.title || `${SITE_NAME} - Activated Carbon Cat Litter Additive`;
 
   // Generate structured data
-  const structuredData = await generateStructuredData(locale, currency);
+  const structuredData = await generateStructuredData(defaultLocale, currency);
 
   return (
     <>
@@ -180,7 +176,7 @@ export default async function HomePage() {
         {/* Client-side wrapped sections for interactivity */}
         <HomepageClient
           priceValidUntil={priceValidUntil}
-          locale={locale}
+          locale={defaultLocale}
           currency={currency}
         />
 

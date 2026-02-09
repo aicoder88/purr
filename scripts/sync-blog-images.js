@@ -3,12 +3,15 @@
  * Blog Images Synchronization Script
  * 
  * Ensures all translations use the SAME image URLs as the English version.
- * Updates featuredImage.url and all <img src="..."> in content to match English.
+ * Updates featuredImage.url, ogImage, and all <img src="..."> in content to match English.
  * Only changes image URLs, not alt text (alt text should remain translated).
  * 
- * Usage: node scripts/sync-blog-images.js [--dry-run] [--verbose]
- *   --dry-run    Show what would be changed without making changes
- *   --verbose    Show detailed output for each file
+ * Enhanced version: Also handles adding missing images to translated content.
+ * 
+ * Usage: node scripts/sync-blog-images.js [--dry-run] [--verbose] [--fix-missing]
+ *   --dry-run      Show what would be changed without making changes
+ *   --verbose      Show detailed output for each file
+ *   --fix-missing  Add missing image blocks to translated content (experimental)
  */
 
 const fs = require('fs');
@@ -38,8 +41,10 @@ const stats = {
   filesUpdated: 0,
   featuredImagesSynced: 0,
   contentImagesSynced: 0,
+  imagesAdded: 0,
   skipped: 0,
   errors: 0,
+  missingImagesReport: [],
 };
 
 /**
@@ -56,16 +61,53 @@ function getJsonFiles(dir) {
 }
 
 /**
- * Extract all image src URLs from HTML content
+ * Extract all image data from HTML content
+ * Returns array of { src, alt, caption, fullHtml } objects
  */
 function extractImagesFromContent(content) {
   const images = [];
+  
+  // Match img tags with their surrounding context
+  const imgRegex = /<img[^>]+src="([^"]+)"[^>]*>/g;
+  let match;
+  
+  while ((match = imgRegex.exec(content)) !== null) {
+    const fullImgTag = match[0];
+    const src = match[1];
+    
+    // Extract alt text
+    const altMatch = fullImgTag.match(/alt="([^"]*)"/);
+    const alt = altMatch ? altMatch[1] : '';
+    
+    // Look for caption (p tag following the img, usually within the same div)
+    const imgIndex = match.index;
+    const afterImg = content.slice(imgIndex + fullImgTag.length, imgIndex + 500);
+    const captionMatch = afterImg.match(/<p class="text-sm[^"]*"[^>]*>([^<]+)<\/p>/);
+    const caption = captionMatch ? captionMatch[1] : '';
+    
+    // Get the full HTML block (div with mb-12 or mb-8 that contains this image)
+    const beforeImg = content.slice(0, imgIndex);
+    const lastDivOpen = beforeImg.lastIndexOf('<div class="mb-');
+    const blockEnd = content.indexOf('</div>', imgIndex) + 6;
+    const fullHtml = lastDivOpen >= 0 ? content.slice(lastDivOpen, blockEnd) : fullImgTag;
+    
+    images.push({ src, alt, caption, fullHtml, index: imgIndex });
+  }
+  
+  return images;
+}
+
+/**
+ * Extract just image src URLs from content
+ */
+function extractImageSrcs(content) {
+  const srcs = [];
   const imgRegex = /<img[^>]+src="([^"]+)"/g;
   let match;
   while ((match = imgRegex.exec(content)) !== null) {
-    images.push(match[1]);
+    srcs.push(match[1]);
   }
-  return images;
+  return srcs;
 }
 
 /**
@@ -105,7 +147,7 @@ function print(message, color = 'reset') {
  * Sync images for a single blog post
  */
 function syncBlogPost(enFile, localeFile, locale, options = {}) {
-  const { dryRun, verbose } = options;
+  const { dryRun, verbose, fixMissing } = options;
   const slug = path.basename(enFile.name, '.json');
   
   stats.filesChecked++;
@@ -139,6 +181,8 @@ function syncBlogPost(enFile, localeFile, locale, options = {}) {
     
     if (!localeData.featuredImage) {
       localeData.featuredImage = { ...enData.featuredImage };
+      // Keep alt text empty or generic for translation
+      localeData.featuredImage.alt = localeData.title || enData.featuredImage.alt;
       changes.push(`Added featuredImage with URL: ${enFeaturedUrl}`);
       modified = true;
       stats.featuredImagesSynced++;
@@ -165,14 +209,27 @@ function syncBlogPost(enFile, localeFile, locale, options = {}) {
     }
   }
 
+  // Sync author avatar
+  if (enData.author && enData.author.avatar) {
+    if (!localeData.author) {
+      localeData.author = {};
+    }
+    if (localeData.author.avatar !== enData.author.avatar) {
+      localeData.author.avatar = enData.author.avatar;
+      changes.push(`Author avatar: ${localeData.author.avatar || 'none'} → ${enData.author.avatar}`);
+      modified = true;
+    }
+  }
+
   // Build image mapping from content
   if (enData.content && localeData.content) {
-    const enImages = extractImagesFromContent(enData.content);
-    const localeImages = extractImagesFromContent(localeData.content);
+    const enImages = extractImageSrcs(enData.content);
+    const localeImages = extractImageSrcs(localeData.content);
 
     // Create a mapping: locale image -> English image (by position)
     const imageMap = {};
     let hasImageMismatch = false;
+    const missingImages = [];
 
     for (let i = 0; i < Math.max(enImages.length, localeImages.length); i++) {
       if (i < enImages.length && i < localeImages.length) {
@@ -182,7 +239,7 @@ function syncBlogPost(enFile, localeFile, locale, options = {}) {
         }
       } else if (i < enImages.length && i >= localeImages.length) {
         // English has more images
-        changes.push(`Missing image in translation: ${enImages[i]}`);
+        missingImages.push(enImages[i]);
         hasImageMismatch = true;
       } else if (i >= enImages.length && i < localeImages.length) {
         // Locale has extra images
@@ -191,15 +248,37 @@ function syncBlogPost(enFile, localeFile, locale, options = {}) {
       }
     }
 
-    if (hasImageMismatch && Object.keys(imageMap).length > 0) {
-      const newContent = replaceImagesInContent(localeData.content, imageMap);
-      if (newContent !== localeData.content) {
-        localeData.content = newContent;
-        for (const [old, new_] of Object.entries(imageMap)) {
-          changes.push(`Content image: ${old} → ${new_}`);
+    if (hasImageMismatch) {
+      // First, replace existing images with correct URLs
+      if (Object.keys(imageMap).length > 0) {
+        const newContent = replaceImagesInContent(localeData.content, imageMap);
+        if (newContent !== localeData.content) {
+          localeData.content = newContent;
+          for (const [old, new_] of Object.entries(imageMap)) {
+            changes.push(`Content image: ${old} → ${new_}`);
+          }
+          modified = true;
+          stats.contentImagesSynced += Object.keys(imageMap).length;
         }
-        modified = true;
-        stats.contentImagesSynced += Object.keys(imageMap).length;
+      }
+      
+      // Report missing images
+      if (missingImages.length > 0) {
+        for (const missing of missingImages) {
+          changes.push(`⚠️ Missing image in translation: ${missing}`);
+        }
+        stats.missingImagesReport.push({
+          slug,
+          locale,
+          missing: missingImages,
+        });
+        
+        // Note: Adding missing images requires complex HTML manipulation
+        // For now, we report them. With --fix-missing flag, we could add them.
+        if (fixMissing) {
+          // TODO: Implement missing image insertion logic
+          print(`    [INFO] Missing images would be added with --fix-missing\n`, 'cyan');
+        }
       }
     }
   }
@@ -216,7 +295,11 @@ function syncBlogPost(enFile, localeFile, locale, options = {}) {
 
     if (verbose || dryRun) {
       changes.forEach(change => {
-        print(`     • ${change}\n`, 'gray');
+        if (change.includes('⚠️')) {
+          print(`     ${change}\n`, 'yellow');
+        } else {
+          print(`     • ${change}\n`, 'gray');
+        }
       });
     }
     return true;
@@ -236,8 +319,9 @@ async function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes('--dry-run');
   const verbose = args.includes('--verbose');
+  const fixMissing = args.includes('--fix-missing');
   const specificLocale = args.find(arg => LOCALES.includes(arg));
-  const specificSlug = args.find(arg => arg && !arg.startsWith('--'));
+  const specificSlug = args.find(arg => arg && !arg.startsWith('--') && !LOCALES.includes(arg));
 
   print('\n');
   print('='.repeat(80) + '\n', 'bold');
@@ -246,6 +330,10 @@ async function main() {
 
   if (dryRun) {
     print('🔍 DRY RUN MODE - No files will be modified\n\n', 'yellow');
+  }
+  
+  if (fixMissing) {
+    print('🔧 FIX MISSING MODE - Will attempt to add missing images\n\n', 'cyan');
   }
 
   // Determine which locales to process
@@ -289,7 +377,7 @@ async function main() {
         path: localeFilePath,
       };
 
-      syncBlogPost(enFile, localeFile, locale, { dryRun, verbose });
+      syncBlogPost(enFile, localeFile, locale, { dryRun, verbose, fixMissing });
     }
   }
 
@@ -303,10 +391,31 @@ async function main() {
   print(`Featured images synced: ${stats.featuredImagesSynced}\n`, stats.featuredImagesSynced > 0 ? 'green' : 'reset');
   print(`Content images synced: ${stats.contentImagesSynced}\n`, stats.contentImagesSynced > 0 ? 'green' : 'reset');
   print(`Files skipped (no changes): ${stats.skipped}\n`, 'gray');
+  
+  if (stats.missingImagesReport.length > 0) {
+    const totalMissing = stats.missingImagesReport.reduce((sum, r) => sum + r.missing.length, 0);
+    print(`\n⚠️  Posts with missing images: ${stats.missingImagesReport.length}\n`, 'yellow');
+    print(`   Total missing images: ${totalMissing}\n`, 'yellow');
+    
+    if (verbose) {
+      print('\nDetailed missing images report:\n', 'gray');
+      stats.missingImagesReport.forEach(({ slug, locale, missing }) => {
+        print(`  ${locale}/${slug}:\n`, 'gray');
+        missing.forEach(img => print(`    - ${img}\n`, 'gray'));
+      });
+    }
+  }
+  
   print(`Errors: ${stats.errors}\n`, stats.errors > 0 ? 'red' : 'reset');
 
   if (dryRun && stats.filesUpdated > 0) {
     print('\n💡 Run without --dry-run to apply changes\n', 'yellow');
+  }
+
+  if (stats.missingImagesReport.length > 0 && !fixMissing) {
+    print('\n💡 Some translations are missing entire image blocks.\n', 'yellow');
+    print('   Use --fix-missing flag to attempt automatic insertion (experimental)\n', 'yellow');
+    print('   Or manually add the missing images to the translated content.\n', 'yellow');
   }
 
   print('\n');

@@ -12,7 +12,7 @@
   "modifiedDate": "2025-11-10T23:31:02.685Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/tried-hero.jpg",
+    "url": "/optimized/tried-hero-ghibli.png",
     "alt": "Vous avez tout essayé pour l'odeur de litière pour chat ? Pourquoi la plupart des solutions échouent (Et ce qui fonctionne vraiment)",
     "width": 1600,
     "height": 2133
@@ -44,7 +44,7 @@
       "frustré odeur chat"
     ],
     "canonical": "https://www.purrify.ca/blog/tried-everything-cat-litter-smell-solutions",
-    "ogImage": "/optimized/tried-hero.jpg"
+    "ogImage": "/optimized/tried-hero-ghibli.png"
   },
   "readingTime": 9
 }

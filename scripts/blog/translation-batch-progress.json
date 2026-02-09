@@ -1,0 +1,54 @@
+{
+  "lastProcessedIndex": 11,
+  "completedJobs": [],
+  "failedJobs": [
+    {
+      "id": "baking-soda-vs-activated-carbon-cat-litter_zh",
+      "error": "API error 401: {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"invalid x-api-key\"},\"request_id\":\"req_011CXxyNePxmaaTTxu598VDt\"}"
+    },
+    {
+      "id": "baking-soda-vs-activated-carbon-cat-litter_fr",
+      "error": "API error 401: {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"invalid x-api-key\"},\"request_id\":\"req_011CXxyPSmkAMGiZLEa8NTf1\"}"
+    },
+    {
+      "id": "baking-soda-vs-activated-carbon-cat-litter_es",
+      "error": "API error 401: {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"invalid x-api-key\"},\"request_id\":\"req_011CXxyQL9AUVw4qLKdUUioq\"}"
+    },
+    {
+      "id": "fragrance-free-litter-deodorizer_zh",
+      "error": "API error 401: {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"invalid x-api-key\"},\"request_id\":\"req_011CXxyREBmMkbRpKaSbNafH\"}"
+    },
+    {
+      "id": "fragrance-free-litter-deodorizer_fr",
+      "error": "API error 401: {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"invalid x-api-key\"},\"request_id\":\"req_011CXxySLoQXqfZVgGzoyhHc\"}"
+    },
+    {
+      "id": "fragrance-free-litter-deodorizer_es",
+      "error": "API error 401: {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"invalid x-api-key\"},\"request_id\":\"req_011CXxyT5qXU4ySKLBhfip69\"}"
+    },
+    {
+      "id": "how-to-get-rid-of-cat-pee-smell-apartment_zh",
+      "error": "API error 401: {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"invalid x-api-key\"},\"request_id\":\"req_011CXxyTrEFCJx9ReCPs1wsQ\"}"
+    },
+    {
+      "id": "how-to-get-rid-of-cat-pee-smell-apartment_fr",
+      "error": "API error 401: {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"invalid x-api-key\"},\"request_id\":\"req_011CXxyUpCyjFU8fSyBun15N\"}"
+    },
+    {
+      "id": "how-to-get-rid-of-cat-pee-smell-apartment_es",
+      "error": "API error 401: {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"invalid x-api-key\"},\"request_id\":\"req_011CXxyVxEhtZcLBH6UMrgUj\"}"
+    },
+    {
+      "id": "safe-ways-to-deodorize-litter-box_zh",
+      "error": "API error 401: {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"invalid x-api-key\"},\"request_id\":\"req_011CXxyWZ1VCj4PcYX3uZZaX\"}"
+    },
+    {
+      "id": "safe-ways-to-deodorize-litter-box_fr",
+      "error": "API error 401: {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"invalid x-api-key\"},\"request_id\":\"req_011CXxyXT36aZfxyURxEjQim\"}"
+    },
+    {
+      "id": "safe-ways-to-deodorize-litter-box_es",
+      "error": "API error 401: {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"invalid x-api-key\"},\"request_id\":\"req_011CXxyYKDa9KWLkkEmabexL\"}"
+    }
+  ]
+}

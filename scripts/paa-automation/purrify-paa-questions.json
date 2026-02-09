@@ -1,0 +1,334 @@
+{
+  "highPriority": [
+    {
+      "question": "How do I stop my cat litter from smelling?",
+      "category": "Odor Control",
+      "intent": "TOFU",
+      "priority": 1
+    },
+    {
+      "question": "How do I keep my house from smelling like cat litter?",
+      "category": "Odor Control",
+      "intent": "TOFU",
+      "priority": 1
+    },
+    {
+      "question": "How to eliminate cat litter odor?",
+      "category": "Solutions",
+      "intent": "TOFU",
+      "priority": 1
+    },
+    {
+      "question": "How to control cat litter odor?",
+      "category": "Solutions",
+      "intent": "TOFU",
+      "priority": 1
+    },
+    {
+      "question": "How to reduce cat litter odor?",
+      "category": "Solutions",
+      "intent": "TOFU",
+      "priority": 1
+    },
+    {
+      "question": "How to stop cat litter odor?",
+      "category": "Solutions",
+      "intent": "TOFU",
+      "priority": 1
+    },
+    {
+      "question": "What cat litter smells the best?",
+      "category": "Product",
+      "intent": "BOFU",
+      "priority": 1
+    },
+    {
+      "question": "What cat litter controls odor best?",
+      "category": "Product",
+      "intent": "BOFU",
+      "priority": 1
+    },
+    {
+      "question": "Which cat litter smells the best?",
+      "category": "Product",
+      "intent": "BOFU",
+      "priority": 1
+    },
+    {
+      "question": "Which cat litter controls odor the best?",
+      "category": "Product",
+      "intent": "BOFU",
+      "priority": 1
+    },
+    {
+      "question": "Which cat litter has the best odor control?",
+      "category": "Product",
+      "intent": "BOFU",
+      "priority": 1
+    },
+    {
+      "question": "What eliminates cat litter odor?",
+      "category": "Solutions",
+      "intent": "TOFU",
+      "priority": 1
+    },
+    {
+      "question": "What absorbs cat litter odor?",
+      "category": "Science",
+      "intent": "TOFU",
+      "priority": 1
+    },
+    {
+      "question": "What neutralizes cat litter smell?",
+      "category": "Science",
+      "intent": "TOFU",
+      "priority": 1
+    }
+  ],
+  "healthSafety": [
+    {
+      "question": "Is it safe to sleep in a room with cat litter?",
+      "category": "Health",
+      "intent": "TOFU",
+      "priority": 2
+    },
+    {
+      "question": "Is cat litter smell toxic?",
+      "category": "Health",
+      "intent": "Long Tail",
+      "priority": 2
+    },
+    {
+      "question": "Is cat litter smell bad for you?",
+      "category": "Health",
+      "intent": "Long Tail",
+      "priority": 2
+    },
+    {
+      "question": "Is cat litter smell bad for babies?",
+      "category": "Health",
+      "intent": "Long Tail",
+      "priority": 2
+    },
+    {
+      "question": "Is the smell of cat litter harmful?",
+      "category": "Health",
+      "intent": "Long Tail",
+      "priority": 2
+    },
+    {
+      "question": "Can cat litter smell make you sick?",
+      "category": "Health",
+      "intent": "TOFU",
+      "priority": 2
+    },
+    {
+      "question": "Can cat litter box smell make you sick?",
+      "category": "Health",
+      "intent": "TOFU",
+      "priority": 2
+    },
+    {
+      "question": "Is cat litter deodorizer safe?",
+      "category": "Safety",
+      "intent": "Long Tail",
+      "priority": 2
+    }
+  ],
+  "litterBoxTips": [
+    {
+      "question": "Why do vets not recommend closed litter boxes?",
+      "category": "Litter Box",
+      "intent": "TOFU",
+      "priority": 2
+    },
+    {
+      "question": "Which litter box is best for odor control?",
+      "category": "Litter Box",
+      "intent": "BOFU",
+      "priority": 2
+    },
+    {
+      "question": "Should cat litter be scented?",
+      "category": "Product",
+      "intent": "TOFU",
+      "priority": 2
+    }
+  ],
+  "odorScience": [
+    {
+      "question": "Why does cat litter smell like ammonia?",
+      "category": "Science",
+      "intent": "TOFU",
+      "priority": 2
+    },
+    {
+      "question": "Why does cat litter smell so bad?",
+      "category": "Science",
+      "intent": "TOFU",
+      "priority": 2
+    },
+    {
+      "question": "Why does cat litter smell so strong?",
+      "category": "Science",
+      "intent": "TOFU",
+      "priority": 2
+    },
+    {
+      "question": "Why does cat litter smell?",
+      "category": "Science",
+      "intent": "TOFU",
+      "priority": 2
+    },
+    {
+      "question": "When cat litter smells like ammonia?",
+      "category": "Science",
+      "intent": "TOFU",
+      "priority": 2
+    },
+    {
+      "question": "Does cat litter smell like ammonia?",
+      "category": "Science",
+      "intent": "Long Tail",
+      "priority": 3
+    }
+  ],
+  "odorRemoval": [
+    {
+      "question": "How to remove cat litter smell from room?",
+      "category": "Removal",
+      "intent": "TOFU",
+      "priority": 2
+    },
+    {
+      "question": "How to get cat litter smell out of house?",
+      "category": "Removal",
+      "intent": "TOFU",
+      "priority": 2
+    },
+    {
+      "question": "How to eliminate cat litter smell?",
+      "category": "Removal",
+      "intent": "TOFU",
+      "priority": 2
+    },
+    {
+      "question": "How to prevent cat litter smell?",
+      "category": "Prevention",
+      "intent": "TOFU",
+      "priority": 2
+    },
+    {
+      "question": "How to deodorize cat litter?",
+      "category": "Solutions",
+      "intent": "TOFU",
+      "priority": 2
+    },
+    {
+      "question": "How to make cat litter smell better?",
+      "category": "Solutions",
+      "intent": "TOFU",
+      "priority": 2
+    }
+  ],
+  "productComparison": [
+    {
+      "question": "What cat litter smells the least?",
+      "category": "Product",
+      "intent": "TOFU",
+      "priority": 2
+    },
+    {
+      "question": "Which cat litter smells the least?",
+      "category": "Product",
+      "intent": "TOFU",
+      "priority": 2
+    },
+    {
+      "question": "Which cat litter is best for odor?",
+      "category": "Product",
+      "intent": "BOFU",
+      "priority": 2
+    },
+    {
+      "question": "Which cat litter is best for odor control?",
+      "category": "Product",
+      "intent": "BOFU",
+      "priority": 2
+    },
+    {
+      "question": "World's best cat litter odor control",
+      "category": "Brand",
+      "intent": "BOFU",
+      "priority": 2
+    }
+  ],
+  "miscellaneous": [
+    {
+      "question": "Does cat litter absorb odors?",
+      "category": "Science",
+      "intent": "Long Tail",
+      "priority": 3
+    },
+    {
+      "question": "Does cat litter eliminate odor?",
+      "category": "Science",
+      "intent": "Long Tail",
+      "priority": 3
+    },
+    {
+      "question": "Does cat litter get rid of smells?",
+      "category": "Science",
+      "intent": "Long Tail",
+      "priority": 3
+    },
+    {
+      "question": "Does cat litter remove odors?",
+      "category": "Science",
+      "intent": "Long Tail",
+      "priority": 3
+    },
+    {
+      "question": "Does cat litter smell?",
+      "category": "General",
+      "intent": "Long Tail",
+      "priority": 3
+    },
+    {
+      "question": "Does cat litter smell bad?",
+      "category": "General",
+      "intent": "Long Tail",
+      "priority": 3
+    },
+    {
+      "question": "Does cat litter smell stick to clothes?",
+      "category": "General",
+      "intent": "Long Tail",
+      "priority": 3
+    },
+    {
+      "question": "Can cat litter smell like gas?",
+      "category": "General",
+      "intent": "TOFU",
+      "priority": 3
+    },
+    {
+      "question": "How bad does cat litter smell?",
+      "category": "General",
+      "intent": "TOFU",
+      "priority": 3
+    },
+    {
+      "question": "How does cat litter smell?",
+      "category": "General",
+      "intent": "TOFU",
+      "priority": 3
+    },
+    {
+      "question": "What does cat litter smell like?",
+      "category": "General",
+      "intent": "TOFU",
+      "priority": 3
+    }
+  ]
+}

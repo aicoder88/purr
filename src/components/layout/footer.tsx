@@ -417,6 +417,14 @@ export function Footer() {
                     {t.footerNav?.litterCalculator || "Litter Calculator"}
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href="/learn/cat-litter-answers"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    Cat Litter Q&A
+                  </Link>
+                </li>
               </ul>
             </div>
 

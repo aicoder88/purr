@@ -12,7 +12,7 @@
   "modifiedDate": "2025-11-10T23:31:02.675Z",
   "status": "published",
   "featuredImage": {
-    "url": "/optimized/embarrassed-hero.jpg",
+    "url": "/optimized/embarrassed-hero-ghibli.png",
     "alt": "Embarrassed When Guests Visit? 5 Ways to Eliminate Cat Litter Smell Before Company Arrives",
     "width": 1200,
     "height": 800
@@ -44,7 +44,7 @@
       "house smells like cat"
     ],
     "canonical": "https://www.purrify.ca/blog/embarrassed-guests-visit-cat-litter-smell",
-    "ogImage": "/optimized/embarrassed-hero.jpg"
+    "ogImage": "/optimized/embarrassed-hero-ghibli.png"
   },
   "readingTime": 8
 }

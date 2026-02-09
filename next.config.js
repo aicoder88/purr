@@ -108,6 +108,12 @@ const REDIRECTS = [
     permanent: true,
     locale: false,
   },
+  // Redirect non-localized blog routes to English locale
+  {
+    source: "/blog/:slug*",
+    destination: "/en/blog/:slug*",
+    permanent: true,
+  },
   // Note: trailingSlash: true is now set in Next.js config
   // Locale home pages with trailing slashes are the canonical URLs
   {

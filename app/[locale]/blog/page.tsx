@@ -16,13 +16,11 @@ interface BlogIndexPageProps {
   searchParams: Promise<{ page?: string }>;
 }
 
-// Generate static params for all supported locales
+// Generate static params for all supported locales (including default 'en')
 export async function generateStaticParams() {
-  return locales
-    .filter((locale) => locale !== defaultLocale)
-    .map((locale) => ({
-      locale,
-    }));
+  return locales.map((locale) => ({
+    locale,
+  }));
 }
 
 // Generate metadata for the localized blog index
@@ -194,7 +192,7 @@ export default async function LocalizedBlogIndexPage({
   const { locale } = await params;
   
   // Validate locale
-  if (!isValidLocale(locale) || locale === defaultLocale) {
+  if (!isValidLocale(locale)) {
     notFound();
   }
 
