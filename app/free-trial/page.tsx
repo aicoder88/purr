@@ -14,6 +14,10 @@ export const metadata: Metadata = {
     title: 'Free Trial - Purrify',
     description: 'Get your free Purrify trial. Just pay shipping.',
   },
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function FreeTrialRedirectPage() {

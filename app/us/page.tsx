@@ -5,8 +5,8 @@ import { Check, MapPin, Truck, Leaf, Shield, Star, ChevronRight, Home, Zap, Cloc
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Best Cat Litter Odor Control USA | Shipping Q1 2026 | Purrify',
-  description: 'Eliminate cat litter odors at the source. Purrify is coming to the USA in Q1 2026! Premium activated carbon cat litter deodorizer for ultimate odor control.',
+  title: 'Cat Litter Odor Control USA | Free Shipping | Purrify',
+  description: 'Eliminate cat litter odors at the source. Purrify is coming to USA in Q1 2026! Premium activated carbon cat litter deodorizer for odor control.',
   keywords: [
     'cat litter odor control',
     'best cat litter odor control USA',
@@ -17,12 +17,31 @@ export const metadata: Metadata = {
     'Purrify USA shipping',
   ],
   openGraph: {
-    title: 'Best Cat Litter Odor Control USA | Shipping Q1 2026 | Purrify',
+    type: 'website',
+    url: 'https://www.purrify.ca/us',
+    siteName: 'Purrify',
+    title: 'Cat Litter Odor Control USA | Free Shipping | Purrify',
+    description: 'Eliminate cat litter odors at the source. Purrify is coming to the USA in Q1 2026!',
+    locale: 'en_US',
+    images: [
+      {
+        url: 'https://www.purrify.ca/images/us/realistic-modern-living.webp',
+        width: 1200,
+        height: 800,
+        alt: 'Purrify USA - Coming Q1 2026',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@purrifyhq',
+    creator: '@purrifyhq',
+    title: 'Cat Litter Odor Control USA | Free Shipping | Purrify',
     description: 'Eliminate cat litter odors at the source. Purrify is coming to the USA in Q1 2026!',
     images: ['https://www.purrify.ca/images/us/realistic-modern-living.webp'],
   },
   alternates: {
-    canonical: '/us',
+    canonical: 'https://www.purrify.ca/us',
   },
   other: {
     'last-modified': '2026-01-15',

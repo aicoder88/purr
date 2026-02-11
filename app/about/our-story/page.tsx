@@ -10,14 +10,14 @@ import { generateWebsiteSchema } from '@/lib/seo-utils';
 import { Heart, Users, ChevronRight, MapPin, Quote, Home } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Our Story - The Mission Behind Purrify Cat Litter Additive | Purrify',
+  title: 'Our Story: Mission Behind Purrify | Purrify',
   description: 'Learn about Purrify\'s founding story, mission, and the team dedicated to solving cat litter odor problems. Discover our commitment to pets, families, and the environment.',
   keywords: 'Purrify story, company mission, cat litter innovation, pet care, environmental responsibility, Canadian company',
   alternates: {
     canonical: '/about/our-story',
   },
   openGraph: {
-    title: 'Our Story - The Mission Behind Purrify',
+    title: 'Our Story: Mission Behind Purrify | Purrify',
     description: 'Discover the story behind Purrify and our mission to help cat owners create fresher, cleaner homes.',
     url: 'https://www.purrify.ca/about/our-story',
     type: 'website',

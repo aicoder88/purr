@@ -14,12 +14,14 @@ export const metadata: Metadata = {
   description: pageDescription,
   keywords: ['multi cat household odor solution', 'multiple cats smell', 'how to control cat smell with multiple cats', 'best litter for multiple cats', 'cat odor 3 cats 4 cats 5 cats', 'multi-cat litter box odor'],
   alternates: {
-    canonical: '/learn/solutions/multiple-cats-odor-control',
+    canonical: 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control',
       'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/multiple-cats-odor-control',
       'zh-CN': 'https://www.purrify.ca/zh/learn/solutions/multiple-cats-odor-control',
-      'es': 'https://www.purrify.ca/es/learn/solutions/multiple-cats-odor-control',
+      'es-US': 'https://www.purrify.ca/es/learn/solutions/multiple-cats-odor-control',
+      'en-US': 'https://www.purrify.ca/es/learn/solutions/multiple-cats-odor-control',
+      'x-default': 'https://www.purrify.ca/es/learn/solutions/multiple-cats-odor-control',
     },
   },
   openGraph: {

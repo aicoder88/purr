@@ -60,6 +60,10 @@ export const es: TranslationType = {
     toggleTheme: "Alternar tema",
     signOut: "Cerrar Sesion",
     signedIn: "Sesion Iniciada",
+    // SEO FIX (Feb 2026): Added missing nav keys
+    catLitterAnswers: "Preguntas y Respuestas",
+    scienceHub: "Referencias Científicas",
+    carbonVsBakingSoda: "Carbón vs Bicarbonato",
     // B2B pivot keys
     findStore: "Encontrar Tienda",
     findNearYou: "Encontrar Cerca de Ti",
@@ -696,6 +700,8 @@ export const es: TranslationType = {
     scienceHub: "Referencias Científicas",
     safetyInfo: "Informacion de Seguridad",
     catLitterGuide: "Guia de Arena para Gatos",
+    catLitterAnswers: "Preguntas y Respuestas",
+    carbonVsBakingSoda: "Carbón vs Bicarbonato",
     ammoniaSolutions: "Soluciones para Amoniaco",
     litterCalculator: "Calculadora de Arena",
     // Article links

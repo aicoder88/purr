@@ -29,18 +29,29 @@ module.exports = {
     '/static/*',
     '/free',
     '/fr/free',
+    '/zh/free',
+    '/es/free',
     '/test',
     '/demo/*',
-    // Note: FR/ZH/ES blog exclusions removed - translated blog content now exists (Jan 2026)
-    // Pages that redirect - exclude to avoid canonical pointing to redirect issues
-    '/checkout',
-    '/cart-2',
-    '/products/compare',
-    '/comments/feed',
-    '/support/contact',
-    '/customers',
-    '/thank-you',
-    '/thank-you/*',
+    
+    // === REDIRECTING PAGES - Fix for Ahrefs "3XX redirect in sitemap" ===
+    // Server-side redirect pages (these redirect to other pages)
+    '/free-trial',              // Redirects to /try-free
+    '/fr/free-trial',
+    '/zh/free-trial', 
+    '/es/free-trial',
+    '/buy',                     // Redirects to /products
+    '/fr/buy',
+    '/zh/buy',
+    '/es/buy',
+    '/about',                   // Redirects to /about/our-story
+    '/fr/about',
+    '/zh/about',
+    '/es/about',
+    '/montreal',                // Redirects to /locations/montreal
+    '/support/contact',         // Redirects to /contact
+    '/documents',               // Redirects to /invest (per next.config.js)
+    
     // Old product slugs that redirect
     '/products/purrify-20g',
     '/products/purrify-50g',
@@ -48,18 +59,149 @@ module.exports = {
     '/products/medium-size',
     '/products/large-size',
     '/products/family',
+    '/fr/products/medium-size',
+    '/fr/products/large-size',
+    '/fr/products/family',
+    
     // Solutions pages that redirect to /learn/solutions
     '/solutions',
     '/solutions/*',
-    // Redirect pages that don't render content
+    
+    // Legacy redirects
+    '/checkout',
+    '/cart-2',
+    '/products/compare',
+    '/comments/feed',
+    '/feed',
+    '/wishlist',
+    '/shopdsf',
+    '/home-three',
+    '/purrify-cat-litter-odor-eliminator-copy',
+    '/cart',
+    '/order',
+    '/orders',
+    '/account',
+    '/login',
+    '/signup',
+    '/register',
+    '/faq',
+    '/help',
+    '/shipping',
+    '/returns',
+    '/guarantee',
+    '/pricing',
+    '/plans',
+    '/subscribe',
+    '/unsubscribe',
+    '/info',
+    '/catalog',
+    '/store',
+    '/boutique',
+    '/tienda',
+    '/shop',
+    '/tos',
+    '/privacy',
+    '/my-account',
+    '/purrify-odor-eliminator',
+    '/services-two-2',
+    '/dn',
+    '/checkout-2',
+    '/my-account-2',
+    '/trial',
+    '/fr/trial',
+    '/zh/trial',
+    '/es/trial',
+    
+    // Old blog redirects
+    '/blog/activated-carbon-science',
+    '/blog/beyond-masking-odors',
+    '/blog/fresh-home-multiple-cats',
+    '/blog/purrify-vs-arm-hammer',
+    '/learn/purrify-vs-arm-hammer',
+    '/learn/safe-for-kittens',
+    '/learn/activated-carbon-vs-baking-soda',
+    
+    // Customers redirects
+    '/customers',
     '/customers/testimonials',
     '/customers/case-studies',
     '/support/subscription',
-    '/montreal', // Redirects to locations
+    
+    // Utility pages (noindex)
+    '/pos',
+    '/pos/*',
+    '/tools/*',
+    
+    // Chinese customer pages (protected)
+    '/zh/customer/portal',
+    '/zh/customer/referrals',
+    '/zh/retailer/portal/login',
+    
+    // Spanish customer pages (protected)
+    '/es/customer/portal',
+    '/es/customer/referrals',
+    '/es/retailer/portal/login',
+    
+    // Spanish utility pages
+    '/es/pos',
+    '/es/pos/*',
+    '/es/tools/*',
+    
+    // System pages
     '/sentry-example-page',
     '/offline',
     '/server-sitemap.xml',
-    // Old province abbreviation URLs (now redirect to /province/full-name)
+    '/thank-you',
+    '/thank-you/*',
+    '/auth/signin',
+    '/affiliate/forgot-password',
+    
+    // === NOINDEX PAGES - Fix for Ahrefs "Noindex page in sitemap" ===
+    // Affiliate portal pages (require authentication - should be noindex)
+    '/affiliate/dashboard',
+    '/affiliate/dashboard/*',
+    '/affiliate/login',
+    '/affiliate/activate',
+    '/affiliate/signup',
+    
+    // French affiliate pages
+    '/fr/affiliate/dashboard',
+    '/fr/affiliate/dashboard/*',
+    '/fr/affiliate/login',
+    '/fr/affiliate/activate',
+    '/fr/affiliate/signup',
+    
+    // Customer portal pages (require authentication - should be noindex)
+    '/customer/portal',
+    '/customer/referrals',
+    '/fr/customer/portal',
+    '/fr/customer/referrals',
+    '/zh/customer/portal',
+    '/zh/customer/referrals',
+    
+    // Retailer portal (require authentication)
+    '/retailer/portal/login',
+    '/fr/retailer/portal/login',
+    '/zh/retailer/portal/login',
+    
+    // Admin pages
+    '/admin',
+    '/admin/*',
+    
+    // Results page (post-purchase/utility - noindex)
+    '/results',
+    '/fr/results',
+    '/zh/results',
+    '/es/results',
+    
+    // Private/internal pages (noindex)
+    '/dialergptpitchdeck',
+    '/documents',
+    
+    // === NON-CANONICAL PAGES - Fix for Ahrefs "Non-canonical page in sitemap" ===
+    // Note: /es/opiniones is a valid page with its own canonical - NOT excluded
+    
+    // === OLD PROVINCE ABBREVIATION URLS (Redirect to /province/full-name) ===
     '/locations/ab',
     '/locations/bc',
     '/locations/mb',
@@ -99,24 +241,23 @@ module.exports = {
     '/zh/locations/qc',
     '/zh/locations/sk',
     '/zh/locations/yt',
-    // Exclude ALL non-English location pages (noindexed to prevent thin content)
+    
+    // === NON-ENGLISH LOCATION PAGES (noindexed to prevent thin content) ===
     '/fr/locations',
     '/fr/locations/*',
     '/zh/locations',
     '/zh/locations/*',
     '/es/locations',
     '/es/locations/*',
-    // Exclude Spanish protected/portal pages (not public-facing)
+    
+    // === SPANISH PROTECTED/PORTAL PAGES ===
     '/es/affiliate/*',
     '/es/retailer/*',
     '/es/customer/*',
     '/es/admin/*',
-    // Exclude Spanish versions of pages that redirect or are post-purchase
-    '/es/results',
-    '/es/free',
-    // B2B Spanish pages - keep some, exclude portal-specific
     '/es/invest',
     '/es/dialergptpitchdeck',
+    '/es/documents',
   ],
   alternateRefs: [
     { href: 'https://www.purrify.ca/', hreflang: 'en-CA' },
@@ -126,16 +267,24 @@ module.exports = {
     { href: 'https://www.purrify.ca/us/', hreflang: 'en-US' },
     { href: 'https://www.purrify.ca/', hreflang: 'x-default' },
   ],
-  // Explicitly define all important pages (with trailing slashes to match Vercel behavior)
+  // === ADDITIONAL PATHS - Fix for Ahrefs "Indexable page not in sitemap" ===
   additionalPaths: async (config) => [
+    // Core homepage
     {
       loc: '/',
       changefreq: 'daily',
       priority: 1,
       lastmod: new Date().toISOString(),
     },
+    // Locale homepages - IMPORTANT for indexable pages not in sitemap
     {
       loc: '/fr/',
+      changefreq: 'daily',
+      priority: 0.9,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/zh/',
       changefreq: 'daily',
       priority: 0.9,
       lastmod: new Date().toISOString(),
@@ -147,13 +296,443 @@ module.exports = {
       lastmod: new Date().toISOString(),
     },
     {
+      loc: '/us/',
+      changefreq: 'weekly',
+      priority: 0.85,
+      lastmod: new Date().toISOString(),
+    },
+    // Main blog index
+    {
       loc: '/blog/',
       changefreq: 'weekly',
       priority: 0.8,
       lastmod: new Date().toISOString(),
     },
-    // Removed /checkout - it redirects to /products
-    // Removed /thank-you - post-purchase page shouldn't be in sitemap
+    // Blog locale pages
+    {
+      loc: '/fr/blog/',
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/zh/blog/',
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/es/blog/',
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    // Product pages
+    {
+      loc: '/products/trial-size/',
+      changefreq: 'weekly',
+      priority: 0.9,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/products/standard/',
+      changefreq: 'weekly',
+      priority: 0.9,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/products/family-pack/',
+      changefreq: 'weekly',
+      priority: 0.9,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/products/',
+      changefreq: 'daily',
+      priority: 0.85,
+      lastmod: new Date().toISOString(),
+    },
+    // Spanish products
+    {
+      loc: '/es/products/trial-size/',
+      changefreq: 'weekly',
+      priority: 0.85,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/es/products/standard/',
+      changefreq: 'weekly',
+      priority: 0.85,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/es/products/family-pack/',
+      changefreq: 'weekly',
+      priority: 0.85,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/es/products/',
+      changefreq: 'weekly',
+      priority: 0.8,
+      lastmod: new Date().toISOString(),
+    },
+    // French products  
+    {
+      loc: '/fr/products/trial-size/',
+      changefreq: 'weekly',
+      priority: 0.85,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/fr/products/standard/',
+      changefreq: 'weekly',
+      priority: 0.85,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/fr/products/family-pack/',
+      changefreq: 'weekly',
+      priority: 0.85,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/fr/products/',
+      changefreq: 'weekly',
+      priority: 0.8,
+      lastmod: new Date().toISOString(),
+    },
+    // Learn pages
+    {
+      loc: '/learn/',
+      changefreq: 'weekly',
+      priority: 0.75,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/how-it-works/',
+      changefreq: 'monthly',
+      priority: 0.8,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/faq/',
+      changefreq: 'monthly',
+      priority: 0.8,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/cat-litter-guide/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/science/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/safety/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/glossary/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    // Learn solutions
+    {
+      loc: '/learn/solutions/',
+      changefreq: 'weekly',
+      priority: 0.75,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/solutions/ammonia-smell-cat-litter/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/solutions/apartment-cat-smell-solution/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/solutions/litter-box-smell-elimination/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/solutions/multiple-cats-odor-control/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/solutions/natural-cat-litter-additive/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/solutions/senior-cat-litter-solutions/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    // Spanish learn pages
+    {
+      loc: '/es/learn/',
+      changefreq: 'weekly',
+      priority: 0.75,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/es/learn/how-it-works/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/es/learn/faq/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    // French learn pages
+    {
+      loc: '/fr/learn/',
+      changefreq: 'weekly',
+      priority: 0.75,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/fr/learn/how-it-works/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/fr/learn/faq/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    // Locations
+    {
+      loc: '/locations/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    // Support pages
+    {
+      loc: '/support/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/support/shipping/',
+      changefreq: 'monthly',
+      priority: 0.5,
+      lastmod: new Date().toISOString(),
+    },
+    // French support
+    {
+      loc: '/fr/support/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    // Contact pages
+    {
+      loc: '/contact/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/fr/contact/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/es/contact/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    // About pages
+    {
+      loc: '/about/our-story/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/fr/about/our-story/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    // Reviews
+    {
+      loc: '/reviews/',
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/fr/reviews/',
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/es/reviews/',
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    // Case studies
+    {
+      loc: '/case-studies/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    // Stores/Retailers
+    {
+      loc: '/stores/',
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/fr/stores/',
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/zh/stores/',
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/es/stores/',
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/retailers/',
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    // B2B pages
+    {
+      loc: '/b2b/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/b2b/sell-sheet/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/fr/b2b/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    // Referral
+    {
+      loc: '/referral/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    // Fun/Tools
+    {
+      loc: '/fun/',
+      changefreq: 'weekly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/tools/cat-litter-calculator/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    // Veterinarians, Shelters, etc
+    {
+      loc: '/veterinarians/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/shelters/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/groomers/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/cat-cafes/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/hospitality/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    // Science
+    {
+      loc: '/science/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    // Canada/US pages
+    {
+      loc: '/canada/',
+      changefreq: 'weekly',
+      priority: 0.8,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/try-free/',
+      changefreq: 'weekly',
+      priority: 0.8,
+      lastmod: new Date().toISOString(),
+    },
+    // Legal pages
     {
       loc: '/privacy-policy/',
       changefreq: 'monthly',
@@ -190,27 +769,229 @@ module.exports = {
       priority: 0.3,
       lastmod: new Date().toISOString(),
     },
-    // Product pages (canonical slugs with trailing slashes)
-    { loc: '/products/trial-size/', changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString() },
-    { loc: '/products/standard/', changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString() },
-    { loc: '/products/family-pack/', changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString() },
-    // USA landing page - important for US market expansion
-    { loc: '/us/', changefreq: 'weekly', priority: 0.85, lastmod: new Date().toISOString() },
-    // Spanish pages - key landing pages for Spanish market
-    { loc: '/es/reviews/', changefreq: 'weekly', priority: 0.7, lastmod: new Date().toISOString() },
-    { loc: '/es/products/trial-size/', changefreq: 'weekly', priority: 0.85, lastmod: new Date().toISOString() },
-    { loc: '/es/products/standard/', changefreq: 'weekly', priority: 0.85, lastmod: new Date().toISOString() },
-    { loc: '/es/products/family-pack/', changefreq: 'weekly', priority: 0.85, lastmod: new Date().toISOString() },
-    { loc: '/es/contact/', changefreq: 'monthly', priority: 0.5, lastmod: new Date().toISOString() },
-    { loc: '/es/learn/how-it-works/', changefreq: 'monthly', priority: 0.6, lastmod: new Date().toISOString() },
-    { loc: '/es/learn/faq/', changefreq: 'monthly', priority: 0.6, lastmod: new Date().toISOString() },
+    // === MISSING INDEXABLE PAGES - Adding all important pages ===
+    // Learn alternatives
+    {
+      loc: '/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    // Learn answers
+    {
+      loc: '/learn/cat-litter-answers/',
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/answers/does-activated-carbon-work-for-cat-litter/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/answers/how-do-i-keep-my-house-from-smelling-like-cat-litter/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/answers/how-do-i-stop-my-cat-litter-from-smelling/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/answers/how-often-should-i-change-cat-litter/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/answers/how-to-eliminate-cat-litter-odor/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/answers/how-to-keep-litter-box-from-smelling/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/answers/is-it-safe-to-sleep-in-a-room-with-cat-litter/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/answers/what-absorbs-cat-litter-odor/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/answers/what-cat-litter-controls-odor-best/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/answers/what-eliminates-cat-litter-odor/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/answers/why-does-cat-litter-smell-worse-in-summer/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/answers/why-does-my-house-smell-like-cat-pee/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    // More learn pages
+    {
+      loc: '/learn/activated-carbon-benefits/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/activated-carbon-vs-baking-soda-deodorizers/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/ammonia-science/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/cat-litter-ammonia-health-risks/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/how-activated-carbon-works/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/how-to-use-deodorizer/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/learn/using-deodorizers-with-kittens/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    // POS and affiliate landing
+    {
+      loc: '/pos/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/affiliate/',
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/fr/affiliate/',
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    // Invest
+    {
+      loc: '/invest/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: '/fr/invest/',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    // Viral
+    {
+      loc: '/viral/',
+      changefreq: 'weekly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    },
+    // Ammonia control
+    {
+      loc: '/ammonia-control/',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
   ],
   transform: async (config, path) => {
     // Ensure path has trailing slash for consistency (except root)
     const normalizedPath = path === '' ? path : (path.endsWith('/') ? path : `${path}/`);
     
-    // Blog pages - now available in EN, FR, ZH, ES (Jan 2026)
-    // Each locale blog will have its own canonical, no alternateRefs needed (handled at page level)
+    // Skip if this is a redirecting URL or should be excluded
+    const redirectingPatterns = [
+      '/free-trial',
+      '/buy',
+      '/about',
+      '/montreal',
+      '/support/contact',
+      '/documents',
+      '/free',
+      '/checkout',
+      '/cart-2',
+      '/products/compare',
+      '/es/opiniones',
+    ];
+    
+    for (const pattern of redirectingPatterns) {
+      if (normalizedPath === pattern || normalizedPath === `${pattern}/`) {
+        return null; // Exclude from sitemap
+      }
+    }
+    
+    // Skip noindex pages (protected portals)
+    const noindexPatterns = [
+      '/affiliate/dashboard',
+      '/affiliate/login',
+      '/affiliate/activate',
+      '/affiliate/signup',
+      '/customer/portal',
+      '/customer/referrals',
+      '/retailer/portal',
+      '/results',
+      '/admin',
+      '/thank-you',
+    ];
+    
+    for (const pattern of noindexPatterns) {
+      if (normalizedPath.startsWith(pattern)) {
+        return null; // Exclude from sitemap
+      }
+    }
+
+    // Blog pages
     if (normalizedPath === '/blog/' || normalizedPath.startsWith('/blog/')) {
       return {
         loc: normalizedPath,
@@ -221,7 +1002,7 @@ module.exports = {
     }
 
     // Localized blog pages
-    if (normalizedPath.includes('/blog/') || normalizedPath.endsWith('/blog/')) {
+    if (normalizedPath.match(/^\/(fr|zh|es)\/blog\//)) {
       return {
         loc: normalizedPath,
         changefreq: 'weekly',
@@ -230,8 +1011,8 @@ module.exports = {
       };
     }
 
-    // Location pages - reduced priority and frequency (SEO fix 2025-12-26)
-    if (normalizedPath.startsWith('/locations/') || normalizedPath.includes('/locations/')) {
+    // Location pages
+    if (normalizedPath.startsWith('/locations/')) {
       return {
         loc: normalizedPath,
         changefreq: 'monthly',
@@ -240,47 +1021,65 @@ module.exports = {
       };
     }
 
-    // Spanish pages - NO alternateRefs to avoid doubled paths bug
-    // next-sitemap auto-appends path to alternateRefs.href even in transform returns
-    // Hreflang for locale pages will be handled by the page's own meta tags
+    // Spanish pages - Include alternateRefs for proper hreflang
     if (normalizedPath.startsWith('/es/') || normalizedPath === '/es/') {
       return {
         loc: normalizedPath,
         changefreq: 'weekly',
         priority: 0.7,
         lastmod: new Date().toISOString(),
-        // No alternateRefs - let page-level meta handle hreflang to avoid sitemap path doubling
+        alternateRefs: config.alternateRefs,
       };
     }
 
-    // French pages - NO alternateRefs to avoid doubled paths bug
+    // French pages - Include alternateRefs for proper hreflang
     if (normalizedPath.startsWith('/fr/') || normalizedPath === '/fr/') {
       return {
         loc: normalizedPath,
         changefreq: 'weekly',
         priority: 0.7,
         lastmod: new Date().toISOString(),
-        // No alternateRefs - let page-level meta handle hreflang
+        alternateRefs: config.alternateRefs,
       };
     }
 
-    // Chinese pages - NO alternateRefs to avoid doubled paths bug
+    // Chinese pages - Include alternateRefs for proper hreflang
     if (normalizedPath.startsWith('/zh/') || normalizedPath === '/zh/') {
       return {
         loc: normalizedPath,
         changefreq: 'weekly',
         priority: 0.7,
         lastmod: new Date().toISOString(),
-        // No alternateRefs - let page-level meta handle hreflang
+        alternateRefs: config.alternateRefs,
       };
     }
 
     // Home page gets highest priority
-    if (normalizedPath === '') {
+    if (normalizedPath === '' || normalizedPath === '/') {
       return {
         loc: '/',
         changefreq: 'daily',
         priority: 1,
+        lastmod: new Date().toISOString(),
+      };
+    }
+
+    // Product pages
+    if (normalizedPath.startsWith('/products/')) {
+      return {
+        loc: normalizedPath,
+        changefreq: 'weekly',
+        priority: 0.9,
+        lastmod: new Date().toISOString(),
+      };
+    }
+
+    // Learn pages
+    if (normalizedPath.startsWith('/learn/')) {
+      return {
+        loc: normalizedPath,
+        changefreq: 'monthly',
+        priority: 0.75,
         lastmod: new Date().toISOString(),
       };
     }

@@ -4,22 +4,24 @@ import type { Metadata } from 'next';
 import { SITE_NAME } from '../../../src/lib/constants';
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} - Safety Information & Technical Specifications`,
-  description: 'Comprehensive technical datasheet and safety information for Purrify Activated Carbon. Learn about certifications, specifications, and safe usage guidelines.',
+  title: `Is Activated Carbon Safe for Cats? | ${SITE_NAME}`,
+  description: 'Comprehensive technical datasheet and safety information for Purrify Activated Carbon. Learn about certifications, specs, and safe usage guidelines.',
   keywords: ['activated carbon safety', 'pet-safe deodorizer', 'food grade carbon', 'NSF certified', 'technical specifications', 'coconut shell carbon safety'],
   alternates: {
-    canonical: '/learn/safety',
+    canonical: 'https://www.purrify.ca/learn/safety',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/safety',
       'fr-CA': 'https://www.purrify.ca/fr/learn/safety',
       'zh-CN': 'https://www.purrify.ca/zh/learn/safety',
-      'es': 'https://www.purrify.ca/es/learn/safety',
+      'es-US': 'https://www.purrify.ca/es/learn/safety',
+      'en-US': 'https://www.purrify.ca/es/learn/safety',
+      'x-default': 'https://www.purrify.ca/es/learn/safety',
     },
   },
   openGraph: {
     type: 'article',
     url: 'https://www.purrify.ca/learn/safety',
-    title: `${SITE_NAME} - Safety Information & Technical Specifications`,
+    title: `Is Activated Carbon Safe for Cats? | ${SITE_NAME}`,
     description: 'Comprehensive technical datasheet and safety information for Purrify Activated Carbon.',
     locale: 'en_CA',
     images: [
@@ -45,7 +47,7 @@ const articleSchema = {
   '@id': 'https://www.purrify.ca/learn/safety',
   url: 'https://www.purrify.ca/learn/safety',
   inLanguage: 'en-CA',
-  headline: `${SITE_NAME} - Safety Information & Technical Specifications`,
+  headline: `Is Activated Carbon Safe for Cats? | ${SITE_NAME}`,
   description: 'Comprehensive technical datasheet and safety information for Purrify Activated Carbon. Learn about certifications, specifications, and safe usage guidelines.',
   image: 'https://www.purrify.ca/optimized/quality-control-lab.webp',
   datePublished: '2024-01-10T10:00:00Z',

@@ -3,6 +3,7 @@ export const dynamic = 'force-static';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import { SITE_NAME, SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Is It Safe to Sleep in a Room With Cat Litter? - Purrify',
@@ -16,6 +17,22 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: '/learn/answers/is-it-safe-to-sleep-in-a-room-with-cat-litter',
+  },
+  openGraph: {
+    title: 'Is It Safe to Sleep in a Room With Cat Litter? - Purrify',
+    description: 'Learn if sleeping near a litter box is safe and how to minimize any risks with proper odor control and ventilation.',
+    url: `${SITE_URL}/learn/answers/is-it-safe-to-sleep-in-a-room-with-cat-litter`,
+    type: 'article',
+    siteName: SITE_NAME,
+    locale: 'en_CA',
+    images: [
+      {
+        url: `${SITE_URL}/images/Logos/purrify-logo.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Is It Safe to Sleep in a Room With Cat Litter?',
+      },
+    ],
   },
 };
 

@@ -2,12 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Metadata } from 'next';
 import { Eye, EyeOff, Mail, Lock, MapPin, Building2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-
-// Note: Since this is a client component, we export metadata separately
-// The actual metadata will be set in a layout.tsx or a server wrapper
 
 interface LoginForm {
   email: string;

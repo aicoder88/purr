@@ -3,8 +3,8 @@ import { CONTACT_INFO, PHONE_MESSAGING, SITE_NAME } from '@/lib/constants';
 import B2BClientPage from './_components/B2BClientPage';
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} - Purrify B2B - Retail Partnership & Wholesale Canada`,
-  description: 'Become a Purrify retail partner. Exclusive wholesale program for pet stores, animal boutiques, and distributors across Canada. Attractive margins and comprehensive marketing support.',
+  title: `Purrify B2B Wholesale | Retail Partnerships`,
+  description: 'Become a Purrify retail partner. Wholesale program for pet stores and distributors across Canada. Attractive margins and marketing support.',
   keywords: [
     'Purrify wholesale',
     'pet store wholesale Canada',
@@ -15,13 +15,31 @@ export const metadata: Metadata = {
     'B2B pet products',
   ],
   alternates: {
-    canonical: '/b2b',
+    canonical: 'https://www.purrify.ca/b2b',
   },
   openGraph: {
-    title: `${SITE_NAME} - Purrify B2B - Retail Partnership & Wholesale Canada`,
-    description: 'Become a Purrify retail partner. Exclusive wholesale program for pet stores, animal boutiques, and distributors across Canada.',
-    url: 'https://www.purrify.ca/b2b',
     type: 'website',
+    url: 'https://www.purrify.ca/b2b',
+    siteName: SITE_NAME,
+    title: `Purrify B2B Wholesale | Retail Partnerships`,
+    description: 'Become a Purrify retail partner. Wholesale program for pet stores and distributors across Canada. Attractive margins and marketing support.',
+    locale: 'en_CA',
+    images: [
+      {
+        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        width: 1200,
+        height: 800,
+        alt: `${SITE_NAME} B2B Wholesale`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@purrifyhq',
+    creator: '@purrifyhq',
+    title: `Purrify B2B Wholesale | Retail Partnerships`,
+    description: 'Become a Purrify retail partner. Wholesale program for pet stores and distributors across Canada.',
+    images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
   },
   other: {
     'last-modified': '2026-01-08',

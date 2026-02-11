@@ -187,6 +187,55 @@ export default function RetailersPage() {
 
         <RetailerContact />
 
+        {/* B2B Resources Section */}
+        <section className="py-16 bg-gray-50 dark:bg-gray-800/50">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                Retailer Resources
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Everything you need to successfully sell Purrify in your store
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              <Link 
+                href="/pos" 
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-200 dark:border-gray-700"
+              >
+                <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-2">
+                  POS Materials
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm">
+                  Download shelf talkers, posters, and display materials for your store
+                </p>
+              </Link>
+              <Link 
+                href="/b2b/sell-sheet" 
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-200 dark:border-gray-700"
+              >
+                <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-2">
+                  Sell Sheet
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm">
+                  Product information and selling points for your staff
+                </p>
+              </Link>
+              <Link 
+                href="/case-studies" 
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-200 dark:border-gray-700"
+              >
+                <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-2">
+                  Success Stories
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm">
+                  See how other retailers have increased sales with Purrify
+                </p>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Retail Store Locations with Logos */}
         <Stores />
       </main>

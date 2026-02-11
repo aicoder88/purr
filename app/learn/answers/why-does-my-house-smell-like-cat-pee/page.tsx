@@ -4,6 +4,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
+import { SITE_NAME, SITE_URL } from '@/lib/constants';
+
 export const metadata: Metadata = {
   title: 'Why Does My House Smell Like Cat Pee? - Purrify',
   description: 'Discover why cat urine odor lingers in your home and the science-backed solutions to eliminate it permanently. Stop masking, start removing.',
@@ -16,6 +18,22 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: '/learn/answers/why-does-my-house-smell-like-cat-pee',
+  },
+  openGraph: {
+    title: 'Why Does My House Smell Like Cat Pee? - Purrify',
+    description: 'Discover why cat urine odor lingers in your home and the science-backed solutions to eliminate it permanently.',
+    url: `${SITE_URL}/learn/answers/why-does-my-house-smell-like-cat-pee`,
+    type: 'article',
+    siteName: SITE_NAME,
+    locale: 'en_CA',
+    images: [
+      {
+        url: `${SITE_URL}/images/Logos/purrify-logo.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Why Does My House Smell Like Cat Pee?',
+      },
+    ],
   },
 };
 

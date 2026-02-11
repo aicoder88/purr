@@ -4,22 +4,24 @@ import type { Metadata } from 'next';
 import { SITE_NAME } from '../../../src/lib/constants';
 
 export const metadata: Metadata = {
-  title: `How to Use Cat Litter Deodorizer Additive - Complete Step-by-Step Guide | ${SITE_NAME}`,
-  description: 'Learn how to use activated carbon cat litter additive properly. Step-by-step instructions for your litter box, common mistakes to avoid, and pro tips for maximum odor control.',
+  title: `How to Use Cat Litter Deodorizer: Step Guide | ${SITE_NAME}`,
+  description: 'Learn how to use activated carbon cat litter additive properly. Step-by-step instructions, common mistakes to avoid, and pro tips for maximum odor control.',
   keywords: ['how to use cat litter deodorizer', 'cat litter additive instructions', 'activated carbon how to use', 'litter box deodorizer guide', 'cat litter odor control tips'],
   alternates: {
-    canonical: '/learn/how-to-use-deodorizer',
+    canonical: 'https://www.purrify.ca/learn/how-to-use-deodorizer',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/how-to-use-deodorizer',
       'fr-CA': 'https://www.purrify.ca/fr/learn/how-to-use-deodorizer',
       'zh-CN': 'https://www.purrify.ca/zh/learn/how-to-use-deodorizer',
-      'es': 'https://www.purrify.ca/es/learn/how-to-use-deodorizer',
+      'es-US': 'https://www.purrify.ca/es/learn/how-to-use-deodorizer',
+      'en-US': 'https://www.purrify.ca/es/learn/how-to-use-deodorizer',
+      'x-default': 'https://www.purrify.ca/es/learn/how-to-use-deodorizer',
     },
   },
   openGraph: {
     type: 'article',
     url: 'https://www.purrify.ca/learn/how-to-use-deodorizer',
-    title: 'How to Use Cat Litter Deodorizer Additive - Complete Step-by-Step Guide',
+    title: 'How to Use Cat Litter Deodorizer: Step Guide',
     description: 'Learn how to use activated carbon cat litter additive properly. Step-by-step instructions for maximum odor control.',
     locale: 'en_CA',
     images: [

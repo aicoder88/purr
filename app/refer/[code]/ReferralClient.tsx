@@ -91,9 +91,9 @@ export function ReferralClient({ code, referralData }: ReferralClientProps) {
           <div className="w-16 h-16 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-6">
             <Clock className="w-8 h-8 text-red-600 dark:text-red-400" />
           </div>
-          <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+          <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             Referral Code Not Valid
-          </h1>
+          </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
             {referralData.error || 'This referral code may have expired or reached its maximum uses.'}
           </p>

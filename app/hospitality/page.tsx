@@ -3,7 +3,7 @@ import { SITE_NAME } from '@/lib/constants';
 import HospitalityClientPage from './_components/HospitalityClientPage';
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} - Pet-Friendly Rentals Without the Smell | Purrify for Hospitality`,
+  title: `Pet-Friendly Rentals Without Smell | ${SITE_NAME}`,
   description: 'Airbnb hosts & vacation rental owners: Accept pets confidently. Purrify eliminates pet odors between guests for better reviews and more bookings.',
   keywords: [
     'pet friendly airbnb',
@@ -14,13 +14,31 @@ export const metadata: Metadata = {
     'hospitality odor solutions',
   ],
   alternates: {
-    canonical: '/hospitality',
+    canonical: 'https://www.purrify.ca/hospitality',
   },
   openGraph: {
-    title: `${SITE_NAME} - Pet-Friendly Rentals Without the Smell`,
-    description: 'Airbnb hosts & vacation rental owners: Accept pets confidently. Purrify eliminates pet odors between guests.',
-    url: 'https://www.purrify.ca/hospitality',
     type: 'website',
+    url: 'https://www.purrify.ca/hospitality',
+    siteName: SITE_NAME,
+    title: `Pet-Friendly Rentals Without Smell | ${SITE_NAME}`,
+    description: 'Airbnb hosts & vacation rental owners: Accept pets confidently. Purrify eliminates pet odors between guests.',
+    locale: 'en_CA',
+    images: [
+      {
+        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        width: 1200,
+        height: 800,
+        alt: `${SITE_NAME} for Hospitality`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@purrifyhq',
+    creator: '@purrifyhq',
+    title: `Pet-Friendly Rentals Without Smell | ${SITE_NAME}`,
+    description: 'Airbnb hosts & vacation rental owners: Accept pets confidently. Purrify eliminates pet odors between guests.',
+    images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
   },
   other: {
     'last-modified': '2026-01-25',

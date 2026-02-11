@@ -31,7 +31,7 @@ interface OrganizationStructuredDataProps {
     logo: string;
     description: string;
     address?: {
-      streetAddress: string;
+      streetAddress?: string;
       addressLocality: string;
       addressRegion: string;
       postalCode: string;
@@ -124,24 +124,22 @@ export const ProductStructuredData: React.FC<ProductStructuredDataProps> = ({ pr
   const priceValidUntil = getPriceValidityDate();
   const availabilityUrl = buildAvailabilityUrl(product.availability ?? 'InStock');
 
-  const structuredData: ProductStructuredData = {
-    "@context": "https://schema.org/",
+  const structuredData: Record<string, unknown> = {
+    "@context": "https://schema.org",
     "@type": "Product",
     "name": product.name,
     "description": product.description,
     "image": product.image,
     "brand": {
       "@type": "Brand",
-      "name": product.brand || ""
+      "name": product.brand || "Purrify"
     },
-    "category": product.category || "",
     "sku": product.sku || product.id,
-    "mpn": product.mpn || product.id,
-    "gtin": product.gtin,
+    "mpn": product.mpn || `PURRIFY-${product.id.toUpperCase()}`,
     "offers": {
       "@type": "Offer",
-      "price": product.price.toString(),
-      "priceCurrency": product.currency || "",
+      "price": product.price.toFixed(2),
+      "priceCurrency": product.currency || "CAD",
       "availability": availabilityUrl,
       "priceValidUntil": priceValidUntil,
       "itemCondition": `https://schema.org/${product.condition || 'NewCondition'}`,
@@ -152,6 +150,16 @@ export const ProductStructuredData: React.FC<ProductStructuredDataProps> = ({ pr
       }
     }
   };
+
+  // Add category only if provided
+  if (product.category) {
+    structuredData.category = product.category;
+  }
+
+  // Add GTIN only if provided
+  if (product.gtin) {
+    structuredData.gtin = product.gtin;
+  }
 
   // Add review data if available
   if (product.reviews && product.reviews.reviewCount > 0) {
@@ -174,29 +182,48 @@ export const ProductStructuredData: React.FC<ProductStructuredDataProps> = ({ pr
 
 // Organization Structured Data
 export const OrganizationStructuredData: React.FC<OrganizationStructuredDataProps> = ({ organization }) => {
-  const structuredData = {
+  const structuredData: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": organization.name,
     "url": organization.url,
     "logo": organization.logo,
     "description": organization.description,
-    "address": organization.address ? {
+  };
+
+  // Add address only if provided
+  if (organization.address) {
+    structuredData.address = {
       "@type": "PostalAddress",
       "streetAddress": organization.address.streetAddress,
       "addressLocality": organization.address.addressLocality,
       "addressRegion": organization.address.addressRegion,
       "postalCode": organization.address.postalCode,
       "addressCountry": organization.address.addressCountry
-    } : undefined,
-    "contactPoint": organization.contactPoint ? {
+    };
+  }
+
+  // contactPoint must be an array for Google Rich Results
+  if (organization.contactPoint) {
+    structuredData.contactPoint = [{
       "@type": "ContactPoint",
       "telephone": organization.contactPoint.telephone,
       "contactType": organization.contactPoint.contactType,
-      "email": organization.contactPoint.email
-    } : undefined,
-    "sameAs": organization.socialMedia || []
-  };
+      "email": organization.contactPoint.email,
+      "areaServed": ["CA", "US"],
+      "availableLanguage": ["English", "French"]
+    }];
+  }
+
+  // Add sameAs only if valid URLs provided
+  if (organization.socialMedia && organization.socialMedia.length > 0) {
+    const validSocialLinks = organization.socialMedia.filter(url => 
+      url && typeof url === 'string' && url.startsWith('http')
+    );
+    if (validSocialLinks.length > 0) {
+      structuredData.sameAs = validSocialLinks;
+    }
+  }
 
   return (
     <script
@@ -278,27 +305,48 @@ export const FAQStructuredData: React.FC<FAQStructuredDataProps> = ({ faqs }) =>
 
 // Article Structured Data
 export const ArticleStructuredData: React.FC<ArticleStructuredDataProps> = ({ article }) => {
+  // Ensure headline doesn't exceed 110 characters for Google guidelines
+  const headline = article.headline?.length > 110 
+    ? article.headline.substring(0, 107) + '...' 
+    : article.headline;
+
+  // Ensure dates are in ISO 8601 format
+  const datePublished = article.datePublished?.includes('T') 
+    ? article.datePublished 
+    : new Date(article.datePublished).toISOString();
+  const dateModified = article.dateModified 
+    ? (article.dateModified.includes('T') ? article.dateModified : new Date(article.dateModified).toISOString())
+    : datePublished;
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": article.headline,
+    "headline": headline,
     "description": article.description,
     "image": article.image,
     "author": {
-      "@type": "Person",
-      "name": article.author
+      "@type": "Organization",
+      "name": article.author,
+      "url": "https://www.purrify.ca"
     },
     "publisher": {
       "@type": "Organization",
       "name": article.publisher.name,
+      "url": "https://www.purrify.ca",
       "logo": {
         "@type": "ImageObject",
-        "url": article.publisher.logo
+        "url": article.publisher.logo,
+        "width": 400,
+        "height": 400
       }
     },
-    "datePublished": article.datePublished,
-    "dateModified": article.dateModified || article.datePublished,
-    "url": article.url
+    "datePublished": datePublished,
+    "dateModified": dateModified,
+    "url": article.url,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": article.url
+    }
   };
 
   return (
@@ -328,11 +376,12 @@ export const LocalBusinessStructuredData: React.FC<{
       latitude: number;
       longitude: number;
     };
+    image?: string;
   };
 }> = ({ business }) => {
-  const structuredData = {
+  const structuredData: Record<string, unknown> = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["LocalBusiness", "Organization"],
     "name": business.name,
     "address": {
       "@type": "PostalAddress",
@@ -344,14 +393,39 @@ export const LocalBusinessStructuredData: React.FC<{
     },
     "telephone": business.telephone,
     "url": business.url,
-    "openingHours": business.openingHours,
-    "priceRange": business.priceRange,
-    "geo": business.geo ? {
+  };
+
+  // Add image if provided (recommended for LocalBusiness)
+  if (business.image) {
+    structuredData.image = business.image;
+  }
+
+  // Add opening hours if provided
+  if (business.openingHours && business.openingHours.length > 0) {
+    structuredData.openingHoursSpecification = business.openingHours.map((hours) => {
+      const parts = hours.split(' ');
+      return {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": parts[0],
+        "opens": parts[1] || '09:00',
+        "closes": parts[2] || '17:00'
+      };
+    });
+  }
+
+  // Add price range if provided
+  if (business.priceRange) {
+    structuredData.priceRange = business.priceRange;
+  }
+
+  // Add geo coordinates if provided
+  if (business.geo) {
+    structuredData.geo = {
       "@type": "GeoCoordinates",
       "latitude": business.geo.latitude,
       "longitude": business.geo.longitude
-    } : undefined
-  };
+    };
+  }
 
   return (
     <script
@@ -413,21 +487,22 @@ export const PurrifyStructuredData: React.FC = () => {
   const organizationData = {
     name: "Purrify",
     url: "https://www.purrify.ca",
-    logo: "https://www.purrify.ca/optimized/icon-512.webp",
+    logo: "https://www.purrify.ca/images/Logos/purrify-logo.png",
     description: "Premium activated carbon cat litter additive that eliminates odors at the molecular level. Made in Canada with natural ingredients.",
     address: {
-      streetAddress: "123 Pet Care Avenue",
-      addressLocality: "Toronto",
-      addressRegion: "ON",
-      postalCode: "M5V 3A8",
+      addressLocality: "Mirabel",
+      addressRegion: "QC",
+      postalCode: "J7J 0T6",
       addressCountry: "CA"
     },
     contactPoint: {
       telephone: CONTACT_INFO.phoneInternational,
-      contactType: "Customer Service",
+      contactType: "customer service",
       email: CONTACT_INFO.email
     },
-    socialMedia: Object.values(SOCIAL_LINKS)
+    socialMedia: Object.values(SOCIAL_LINKS).filter(
+      (url): url is string => typeof url === 'string' && url.startsWith('http')
+    )
   };
 
   const websiteData = {

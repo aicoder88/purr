@@ -4,16 +4,18 @@ import type { Metadata } from 'next';
 import { SITE_NAME } from '../../../src/lib/constants';
 
 export const metadata: Metadata = {
-  title: `Using Cat Litter Deodorizers with Kittens: A Care Guide | ${SITE_NAME}`,
+  title: `Cat Litter Deodorizers with Kittens Guide | ${SITE_NAME}`,
   description: 'Guidance on introducing fragrance-free, activated carbon deodorizers around kittens: considerations, timing, and how to minimize exposure.',
   keywords: ['cat litter deodorizer kittens', 'kitten litter box safety', 'activated carbon kittens', 'cat litter additive kittens safe'],
   alternates: {
-    canonical: '/learn/using-deodorizers-with-kittens',
+    canonical: 'https://www.purrify.ca/learn/using-deodorizers-with-kittens',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/using-deodorizers-with-kittens',
       'fr-CA': 'https://www.purrify.ca/fr/learn/using-deodorizers-with-kittens',
       'zh-CN': 'https://www.purrify.ca/zh/learn/using-deodorizers-with-kittens',
-      'es': 'https://www.purrify.ca/es/learn/using-deodorizers-with-kittens',
+      'es-US': 'https://www.purrify.ca/es/learn/using-deodorizers-with-kittens',
+      'en-US': 'https://www.purrify.ca/es/learn/using-deodorizers-with-kittens',
+      'x-default': 'https://www.purrify.ca/es/learn/using-deodorizers-with-kittens',
     },
   },
   openGraph: {

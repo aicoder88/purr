@@ -5,15 +5,17 @@ import { SITE_NAME } from '../../../src/lib/constants';
 
 export const metadata: Metadata = {
   title: `Cat Litter & Activated Carbon Glossary - ${SITE_NAME}`,
-  description: 'Learn key terms about activated carbon, cat litter odor control, and pet care science. Definitions of adsorption, ammonia, activated carbon, coconut shell carbon, VOCs, and more.',
+  description: 'Learn key terms about activated carbon, cat litter odor control, and pet care science. Definitions of adsorption, ammonia, activated carbon, and more.',
   keywords: ['activated carbon glossary', 'cat litter terms', 'adsorption definition', 'ammonia science', 'coconut shell carbon', 'VOCs', 'pet care science'],
   alternates: {
-    canonical: '/learn/glossary',
+    canonical: 'https://www.purrify.ca/learn/glossary',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/glossary',
       'fr-CA': 'https://www.purrify.ca/fr/learn/glossary',
       'zh-CN': 'https://www.purrify.ca/zh/learn/glossary',
-      'es': 'https://www.purrify.ca/es/learn/glossary',
+      'es-US': 'https://www.purrify.ca/es/learn/glossary',
+      'en-US': 'https://www.purrify.ca/es/learn/glossary',
+      'x-default': 'https://www.purrify.ca/es/learn/glossary',
     },
   },
   openGraph: {

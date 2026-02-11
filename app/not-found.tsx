@@ -247,7 +247,7 @@ export default function NotFound() {
                   <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
                     Cats spend 70% of their lives sleeping. Maybe this page is just
                     taking a cat nap! In the meantime, try our{' '}
-                    <Link href="/science" className="text-[#5B2EFF] hover:underline font-medium">
+                    <Link href="/learn/science" className="text-[#5B2EFF] hover:underline font-medium">
                       Science page
                     </Link>{' '}
                     to learn how Purrify works.

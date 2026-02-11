@@ -5,20 +5,23 @@ import { SITE_NAME } from '../../../src/lib/constants';
 
 export const metadata: Metadata = {
   title: `The Science of Activated Carbon - ${SITE_NAME}`,
-  description: 'Explore the molecular science behind activated carbon. Learn how micropores, mesopores, and macropores work together to eliminate cat litter odors at the source.',
+  description: 'Explore molecular science behind activated carbon. Learn how micropores, mesopores, and macropores eliminate cat litter odors at the source.',
   keywords: ['activated carbon science', 'cat litter odor control', 'micropores', 'ammonia elimination', 'mercaptan removal'],
   alternates: {
-    canonical: '/learn/science',
+    canonical: 'https://www.purrify.ca/learn/science',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/science',
       'fr-CA': 'https://www.purrify.ca/fr/learn/science',
       'zh-CN': 'https://www.purrify.ca/zh/learn/science',
-      'es': 'https://www.purrify.ca/es/learn/science',
+      'es-US': 'https://www.purrify.ca/es/learn/science',
+      'en-US': 'https://www.purrify.ca/es/learn/science',
+      'x-default': 'https://www.purrify.ca/es/learn/science',
     },
   },
   openGraph: {
     type: 'article',
     url: 'https://www.purrify.ca/learn/science',
+    siteName: SITE_NAME,
     title: `The Science of Activated Carbon - ${SITE_NAME}`,
     description: 'Explore the molecular science behind activated carbon.',
     locale: 'en_CA',
@@ -35,6 +38,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@purrifyhq',
     creator: '@purrifyhq',
+    title: `The Science of Activated Carbon - ${SITE_NAME}`,
+    description: 'Explore the molecular science behind activated carbon.',
+    images: ['https://www.purrify.ca/optimized/benefits-hero-science.webp'],
   },
 };
 

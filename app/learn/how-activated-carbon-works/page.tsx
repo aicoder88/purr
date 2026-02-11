@@ -4,16 +4,18 @@ import type { Metadata } from 'next';
 import { SITE_NAME } from '../../../src/lib/constants';
 
 export const metadata: Metadata = {
-  title: `How Does Activated Carbon Work? Complete Science Guide | ${SITE_NAME}`,
-  description: "Activated carbon traps odor molecules through adsorption—a physical process where molecules stick to its massive surface area. One gram = 3,000 m² surface. Here's exactly how it works.",
+  title: `How Does Activated Carbon Work? Science Guide | ${SITE_NAME}`,
+  description: "Activated carbon traps odor molecules through adsorption. One gram has 3,000 m² surface area for maximum odor elimination power.",
   keywords: ['how does activated carbon work', 'activated carbon adsorption', 'activated carbon surface area', 'how activated carbon removes odors', 'activated carbon for cat litter', 'coconut shell activated carbon'],
   alternates: {
-    canonical: '/learn/how-activated-carbon-works',
+    canonical: 'https://www.purrify.ca/learn/how-activated-carbon-works',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/how-activated-carbon-works',
       'fr-CA': 'https://www.purrify.ca/fr/learn/how-activated-carbon-works',
       'zh-CN': 'https://www.purrify.ca/zh/learn/how-activated-carbon-works',
-      'es': 'https://www.purrify.ca/es/learn/how-activated-carbon-works',
+      'es-US': 'https://www.purrify.ca/es/learn/how-activated-carbon-works',
+      'en-US': 'https://www.purrify.ca/es/learn/how-activated-carbon-works',
+      'x-default': 'https://www.purrify.ca/es/learn/how-activated-carbon-works',
     },
   },
   openGraph: {

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Container } from '@/components/ui/container';
+import { SITE_NAME, SITE_URL } from '@/lib/constants';
 import {
   SCIENTIFIC_CITATIONS,
   CLAIM_REVIEWS,
@@ -18,7 +19,7 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'The Science Behind Purrify: Peer-Reviewed Research & Citations',
+  title: 'Science Behind Purrify: Research & Citations | Purrify',
   description:
     'Explore the peer-reviewed scientific research supporting activated carbon for cat litter odor control. Citations from PubMed, EPA, and veterinary journals.',
   keywords: [
@@ -32,11 +33,13 @@ export const metadata: Metadata = {
     canonical: '/science',
   },
   openGraph: {
-    title: 'The Science Behind Purrify: Peer-Reviewed Research & Citations',
+    title: 'Science Behind Purrify: Research & Citations | Purrify',
     description:
       'Explore the peer-reviewed scientific research supporting activated carbon for cat litter odor control.',
     url: 'https://www.purrify.ca/science',
     type: 'article',
+    siteName: SITE_NAME,
+    locale: 'en_CA',
     publishedTime: '2025-01-15',
     modifiedTime: new Date().toISOString(),
     images: [

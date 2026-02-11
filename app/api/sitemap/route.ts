@@ -4,6 +4,118 @@ import path from 'node:path';
 
 export const revalidate = 86400;
 
+// === EXCLUDED URLS - Fix for Ahrefs sitemap issues ===
+const EXCLUDED_URLS = [
+  // 3XX Redirects
+  '/free-trial',
+  '/buy',
+  '/about',
+  '/montreal',
+  '/support/contact',
+  '/documents',
+  '/free',
+  '/checkout',
+  '/cart-2',
+  '/products/compare',
+  '/solutions',
+  '/customers',
+  '/customers/testimonials',
+  '/customers/case-studies',
+  '/support/subscription',
+  
+  // Noindex pages (protected portals)
+  '/affiliate/dashboard',
+  '/affiliate/login',
+  '/affiliate/activate',
+  '/affiliate/signup',
+  '/customer/portal',
+  '/customer/referrals',
+  '/retailer/portal/login',
+  '/results',
+  '/admin',
+  '/thank-you',
+  '/thank-you/upsell',
+  
+  // Non-canonical pages
+  '/es/opiniones',
+];
+
+// === ADDITIONAL INDEXABLE PAGES - Fix for "Indexable page not in sitemap" ===
+const ADDITIONAL_URLS = [
+  // Locale homepages (critical missing pages)
+  { loc: '/fr/', priority: '0.9', changefreq: 'daily' },
+  { loc: '/zh/', priority: '0.9', changefreq: 'daily' },
+  { loc: '/es/', priority: '0.9', changefreq: 'daily' },
+  { loc: '/us/', priority: '0.85', changefreq: 'weekly' },
+  
+  // Blog locale pages
+  { loc: '/fr/blog/', priority: '0.7', changefreq: 'weekly' },
+  { loc: '/zh/blog/', priority: '0.7', changefreq: 'weekly' },
+  { loc: '/es/blog/', priority: '0.7', changefreq: 'weekly' },
+  
+  // Product locale pages
+  { loc: '/fr/products/', priority: '0.8', changefreq: 'weekly' },
+  { loc: '/fr/products/trial-size/', priority: '0.85', changefreq: 'weekly' },
+  { loc: '/fr/products/standard/', priority: '0.85', changefreq: 'weekly' },
+  { loc: '/fr/products/family-pack/', priority: '0.85', changefreq: 'weekly' },
+  { loc: '/es/products/', priority: '0.8', changefreq: 'weekly' },
+  { loc: '/zh/products/', priority: '0.8', changefreq: 'weekly' },
+  
+  // Learn locale pages
+  { loc: '/fr/learn/', priority: '0.75', changefreq: 'weekly' },
+  { loc: '/fr/learn/how-it-works/', priority: '0.7', changefreq: 'monthly' },
+  { loc: '/fr/learn/faq/', priority: '0.7', changefreq: 'monthly' },
+  { loc: '/es/learn/', priority: '0.75', changefreq: 'weekly' },
+  { loc: '/es/learn/how-it-works/', priority: '0.7', changefreq: 'monthly' },
+  { loc: '/es/learn/faq/', priority: '0.7', changefreq: 'monthly' },
+  { loc: '/zh/learn/', priority: '0.75', changefreq: 'weekly' },
+  
+  // Support locale pages
+  { loc: '/fr/support/', priority: '0.6', changefreq: 'monthly' },
+  
+  // Contact locale pages
+  { loc: '/fr/contact/', priority: '0.6', changefreq: 'monthly' },
+  { loc: '/zh/contact/', priority: '0.6', changefreq: 'monthly' },
+  
+  // Reviews locale pages
+  { loc: '/fr/reviews/', priority: '0.7', changefreq: 'weekly' },
+  { loc: '/es/reviews/', priority: '0.7', changefreq: 'weekly' },
+  
+  // Stores locale pages
+  { loc: '/fr/stores/', priority: '0.7', changefreq: 'weekly' },
+  { loc: '/zh/stores/', priority: '0.7', changefreq: 'weekly' },
+  { loc: '/es/stores/', priority: '0.7', changefreq: 'weekly' },
+  
+  // B2B locale pages
+  { loc: '/fr/b2b/', priority: '0.7', changefreq: 'monthly' },
+  
+  // About locale pages
+  { loc: '/fr/about/our-story/', priority: '0.6', changefreq: 'monthly' },
+  
+  // Learn answers pages (important for SEO)
+  { loc: '/learn/cat-litter-answers/', priority: '0.7', changefreq: 'weekly' },
+  { loc: '/learn/answers/does-activated-carbon-work-for-cat-litter/', priority: '0.6', changefreq: 'monthly' },
+  { loc: '/learn/answers/how-do-i-keep-my-house-from-smelling-like-cat-litter/', priority: '0.6', changefreq: 'monthly' },
+  { loc: '/learn/answers/how-do-i-stop-my-cat-litter-from-smelling/', priority: '0.6', changefreq: 'monthly' },
+  { loc: '/learn/answers/how-often-should-i-change-cat-litter/', priority: '0.6', changefreq: 'monthly' },
+  { loc: '/learn/answers/how-to-eliminate-cat-litter-odor/', priority: '0.6', changefreq: 'monthly' },
+  { loc: '/learn/answers/how-to-keep-litter-box-from-smelling/', priority: '0.6', changefreq: 'monthly' },
+  { loc: '/learn/answers/is-it-safe-to-sleep-in-a-room-with-cat-litter/', priority: '0.6', changefreq: 'monthly' },
+  { loc: '/learn/answers/what-absorbs-cat-litter-odor/', priority: '0.6', changefreq: 'monthly' },
+  { loc: '/learn/answers/what-cat-litter-controls-odor-best/', priority: '0.6', changefreq: 'monthly' },
+  { loc: '/learn/answers/what-eliminates-cat-litter-odor/', priority: '0.6', changefreq: 'monthly' },
+  { loc: '/learn/answers/why-does-cat-litter-smell-worse-in-summer/', priority: '0.6', changefreq: 'monthly' },
+  { loc: '/learn/answers/why-does-my-house-smell-like-cat-pee/', priority: '0.6', changefreq: 'monthly' },
+  
+  // Other important pages
+  { loc: '/try-free/', priority: '0.8', changefreq: 'weekly' },
+  { loc: '/canada/', priority: '0.8', changefreq: 'weekly' },
+  { loc: '/science/', priority: '0.7', changefreq: 'monthly' },
+  { loc: '/ammonia-control/', priority: '0.7', changefreq: 'monthly' },
+  { loc: '/viral/', priority: '0.6', changefreq: 'weekly' },
+  { loc: '/pos/', priority: '0.6', changefreq: 'monthly' },
+];
+
 export async function GET() {
   try {
     // Read the existing sitemap.xml from public folder
@@ -41,21 +153,47 @@ function generateBasicSitemap(): string {
     { loc: '/products/trial-size/', priority: '0.9', changefreq: 'weekly' },
     { loc: '/products/standard/', priority: '0.9', changefreq: 'weekly' },
     { loc: '/products/family-pack/', priority: '0.9', changefreq: 'weekly' },
-    { loc: '/products/', priority: '0.7', changefreq: 'weekly' },
+    { loc: '/products/', priority: '0.85', changefreq: 'weekly' },
+    { loc: '/es/products/trial-size/', priority: '0.85', changefreq: 'weekly' },
+    { loc: '/es/products/standard/', priority: '0.85', changefreq: 'weekly' },
+    { loc: '/es/products/family-pack/', priority: '0.85', changefreq: 'weekly' },
+    { loc: '/us/', priority: '0.85', changefreq: 'weekly' },
+    { loc: '/canada/', priority: '0.8', changefreq: 'weekly' },
+    { loc: '/try-free/', priority: '0.8', changefreq: 'weekly' },
     { loc: '/learn/how-it-works/', priority: '0.8', changefreq: 'monthly' },
-    { loc: '/learn/cat-litter-guide/', priority: '0.7', changefreq: 'monthly' },
     { loc: '/learn/faq/', priority: '0.8', changefreq: 'weekly' },
+    { loc: '/blog/', priority: '0.8', changefreq: 'daily' },
+    { loc: '/learn/', priority: '0.75', changefreq: 'weekly' },
+    { loc: '/es/learn/how-it-works/', priority: '0.7', changefreq: 'monthly' },
+    { loc: '/es/learn/faq/', priority: '0.7', changefreq: 'monthly' },
+    { loc: '/fr/learn/how-it-works/', priority: '0.7', changefreq: 'monthly' },
+    { loc: '/fr/learn/faq/', priority: '0.7', changefreq: 'monthly' },
+    { loc: '/learn/solutions/', priority: '0.75', changefreq: 'weekly' },
+    { loc: '/reviews/', priority: '0.7', changefreq: 'weekly' },
+    { loc: '/es/reviews/', priority: '0.7', changefreq: 'weekly' },
+    { loc: '/case-studies/', priority: '0.6', changefreq: 'monthly' },
+    { loc: '/stores/', priority: '0.7', changefreq: 'weekly' },
+    { loc: '/retailers/', priority: '0.7', changefreq: 'weekly' },
+    { loc: '/b2b/', priority: '0.7', changefreq: 'monthly' },
     { loc: '/contact/', priority: '0.6', changefreq: 'monthly' },
     { loc: '/about/our-story/', priority: '0.6', changefreq: 'monthly' },
-    { loc: '/blog/', priority: '0.8', changefreq: 'daily' },
+    { loc: '/support/', priority: '0.6', changefreq: 'monthly' },
+    { loc: '/privacy-policy/', priority: '0.3', changefreq: 'monthly' },
+    { loc: '/terms/', priority: '0.3', changefreq: 'monthly' },
+    // Blog posts
     { loc: '/blog/activated-carbon-litter-additive-benefits/', priority: '0.6', changefreq: 'monthly' },
     { loc: '/blog/how-to-use-cat-litter-deodorizer/', priority: '0.6', changefreq: 'monthly' },
     { loc: '/blog/best-litter-odor-remover-small-apartments/', priority: '0.6', changefreq: 'monthly' },
     { loc: '/blog/using-deodorizers-with-kittens/', priority: '0.6', changefreq: 'monthly' },
     { loc: '/blog/activated-carbon-vs-baking-soda-comparison/', priority: '0.6', changefreq: 'monthly' },
-    { loc: '/case-studies/', priority: '0.6', changefreq: 'monthly' },
-    { loc: '/reviews/', priority: '0.7', changefreq: 'weekly' }
+    // Locale homepages (FIX: indexable pages not in sitemap)
+    { loc: '/fr/', priority: '0.9', changefreq: 'daily' },
+    { loc: '/es/', priority: '0.9', changefreq: 'daily' },
+    { loc: '/zh/', priority: '0.9', changefreq: 'daily' },
   ];
+  
+  // Add additional URLs for missing indexable pages
+  urls.push(...ADDITIONAL_URLS);
 
   const lastmod = new Date().toISOString().split('T')[0];
 

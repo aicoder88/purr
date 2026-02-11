@@ -3,9 +3,10 @@ export const dynamic = 'force-static';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import { SITE_NAME, SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'How Often Should I Change Cat Litter? Quick Reference | Purrify',
+  title: 'How Often to Change Cat Litter? Schedule Guide | Purrify',
   description: 'Quick reference guide for litter changing schedules by type. At-a-glance timelines for clumping, crystal, and natural litters.',
   keywords: [
     'how often should i change cat litter',
@@ -15,6 +16,22 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: '/learn/answers/how-often-should-i-change-cat-litter',
+  },
+  openGraph: {
+    title: 'How Often to Change Cat Litter? Schedule Guide | Purrify',
+    description: 'Quick reference guide for litter changing schedules by type. At-a-glance timelines for clumping, crystal, and natural litters.',
+    url: `${SITE_URL}/learn/answers/how-often-should-i-change-cat-litter`,
+    type: 'article',
+    siteName: SITE_NAME,
+    locale: 'en_CA',
+    images: [
+      {
+        url: `${SITE_URL}/images/Logos/purrify-logo.png`,
+        width: 1200,
+        height: 630,
+        alt: 'How Often to Change Cat Litter?',
+      },
+    ],
   },
 };
 

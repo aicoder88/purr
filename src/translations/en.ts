@@ -58,6 +58,10 @@ export const en = {
     toggleTheme: "Toggle theme",
     signOut: "Sign Out",
     signedIn: "Signed in",
+    // SEO FIX (Feb 2026): Added missing nav keys
+    catLitterAnswers: "Cat Litter Q&A",
+    scienceHub: "Research Citations",
+    carbonVsBakingSoda: "Carbon vs Baking Soda",
     // B2B pivot keys
     findStore: "Get Purrify Near You",
     findNearYou: "Find It Near You",
@@ -774,6 +778,8 @@ export const en = {
     scienceHub: "Research Citations",
     safetyInfo: "Safety Info",
     catLitterGuide: "Cat Litter Guide",
+    catLitterAnswers: "Cat Litter Q&A",
+    carbonVsBakingSoda: "Carbon vs Baking Soda",
     ammoniaSolutions: "Ammonia Solutions",
     litterCalculator: "Litter Calculator",
     // Article links

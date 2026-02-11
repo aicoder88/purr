@@ -59,6 +59,10 @@ export const fr = {
     toggleTheme: "Basculer le thème",
     signOut: "Se Déconnecter",
     signedIn: "Connecté",
+    // SEO FIX (Feb 2026): Added missing nav keys
+    catLitterAnswers: "Q&R sur la Litière",
+    scienceHub: "Références Scientifiques",
+    carbonVsBakingSoda: "Charbon vs Bicarbonate",
     // B2B pivot keys
     findStore: "Trouvez Purrify Près de Vous",
     findNearYou: "Trouver Près de Vous",
@@ -762,6 +766,8 @@ export const fr = {
     scienceHub: "Références Scientifiques",
     safetyInfo: "Informations de Sécurité",
     catLitterGuide: "Guide de la Litière pour Chats",
+    catLitterAnswers: "Q&R sur la Litière",
+    carbonVsBakingSoda: "Charbon vs Bicarbonate",
     ammoniaSolutions: "Solutions pour l'Ammoniaque",
     litterCalculator: "Calculateur de Litière",
     // Article links

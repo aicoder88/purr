@@ -21,9 +21,8 @@ export async function generateMetadata(): Promise<Metadata> {
       canonical: `${SITE_URL}/locations`,
       languages: {
         'en-CA': `${SITE_URL}/locations`,
-        'fr-CA': `${SITE_URL}/fr/locations`,
-        'zh-CN': `${SITE_URL}/zh/locations`,
-        'es': `${SITE_URL}/es/locations`,
+        // Note: Non-English location pages are excluded from sitemap (noindexed)
+        // Only English version exists to prevent thin content
         'x-default': `${SITE_URL}/locations`,
       },
     },
@@ -31,6 +30,27 @@ export async function generateMetadata(): Promise<Metadata> {
       title: seoTitle,
       description: seoDescription,
       url: `${SITE_URL}/locations`,
+      type: 'website',
+      siteName: SITE_NAME,
+      locale: 'en_CA',
+      images: [
+        {
+          url: `${SITE_URL}/images/Logos/purrify-logo.png`,
+          width: 1200,
+          height: 630,
+          alt: seoTitle,
+        },
+      ],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
     other: {
       'last-modified': '2025-12-16',

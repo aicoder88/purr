@@ -3,7 +3,7 @@ import { SITE_NAME, CONTACT_INFO } from '@/lib/constants';
 import GroomersClientPage from './_components/GroomersClientPage';
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} - For Pet Groomers | Add Purrify to Your Services`,
+  title: `Purrify for Pet Groomers | Wholesale Program`,
   description: 'Pet groomers: offer more value with Purrify. Easy add-on sale, wholesale pricing, and retail display materials included.',
   keywords: [
     'pet groomer wholesale',
@@ -14,13 +14,31 @@ export const metadata: Metadata = {
     'grooming supplies wholesale',
   ],
   alternates: {
-    canonical: '/groomers',
+    canonical: 'https://www.purrify.ca/groomers',
   },
   openGraph: {
-    title: `${SITE_NAME} - For Pet Groomers | Add Purrify to Your Services`,
-    description: 'Pet groomers: offer more value with Purrify. Easy add-on sale, wholesale pricing, and retail display materials included.',
-    url: 'https://www.purrify.ca/groomers',
     type: 'website',
+    url: 'https://www.purrify.ca/groomers',
+    siteName: SITE_NAME,
+    title: `Purrify for Pet Groomers | Wholesale Program`,
+    description: 'Pet groomers: offer more value with Purrify. Easy add-on sale, wholesale pricing, and retail display materials included.',
+    locale: 'en_CA',
+    images: [
+      {
+        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        width: 1200,
+        height: 800,
+        alt: `${SITE_NAME} for Pet Groomers`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@purrifyhq',
+    creator: '@purrifyhq',
+    title: `Purrify for Pet Groomers | Wholesale Program`,
+    description: 'Pet groomers: offer more value with Purrify. Easy add-on sale, wholesale pricing, and retail display materials included.',
+    images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
   },
   other: {
     'last-modified': '2026-02-03',

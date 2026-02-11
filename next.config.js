@@ -96,727 +96,1274 @@ const HEADERS = [
 const REDIRECTS = [
   {
     source: "/:path*",
-    has: [{ type: "host", value: "purrify.ca" }],
+    has: [
+      {
+        type: "host",
+        value: "purrify.ca"
+      }
+    ],
     destination: "https://www.purrify.ca/:path*",
     permanent: true,
-    locale: false,
+    locale: false
   },
   {
     source: "/:path*",
-    has: [{ type: "header", key: "x-forwarded-proto", value: "http" }],
+    has: [
+      {
+        type: "header",
+        key: "x-forwarded-proto",
+        value: "http"
+      }
+    ],
     destination: "https://www.purrify.ca/:path*",
     permanent: true,
-    locale: false,
+    locale: false
   },
-  // Redirect non-localized blog routes to English locale
   {
     source: "/blog/:slug*",
     destination: "/en/blog/:slug*",
-    permanent: true,
-  },
-  // Note: trailingSlash: true is now set in Next.js config
-  // Locale home pages with trailing slashes are the canonical URLs
-  {
-    source: "/blog/purrify-vs-arm-hammer",
-    destination: "/blog/activated-carbon-vs-baking-soda-comparison",
-    permanent: true,
+    permanent: true
   },
   {
-    source: "/learn/purrify-vs-arm-hammer",
-    destination: "/learn/activated-carbon-vs-baking-soda-deodorizers",
-    permanent: true,
+    source: "/:path+/es/:path2*",
+    destination: "/es/:path2*",
+    permanent: true
   },
   {
-    source: "/blog/safe-for-kittens",
-    destination: "/blog/using-deodorizers-with-kittens",
-    permanent: true,
+    source: "/:path+/fr/:path2*",
+    destination: "/fr/:path2*",
+    permanent: true
   },
   {
-    source: "/learn/safe-for-kittens",
-    destination: "/learn/using-deodorizers-with-kittens",
-    permanent: true,
+    source: "/:path+/zh/:path2*",
+    destination: "/zh/:path2*",
+    permanent: true
   },
   {
     source: "//(.*)",
     destination: "/$1",
-    permanent: true,
+    permanent: true
   },
   {
-    source: "/documents",
-    destination: "/invest",
-    permanent: true,
-  },
-  // Stockists renamed to stores (Jan 2026)
-  {
-    source: "/stockists",
-    destination: "/stores",
-    permanent: true,
+    source: "/blog/purrify-vs-arm-hammer",
+    destination: "/blog/activated-carbon-vs-baking-soda-comparison",
+    permanent: true
   },
   {
-    source: "/fr/stockists",
-    destination: "/fr/stores",
-    permanent: true,
+    source: "/blog/safe-for-kittens",
+    destination: "/blog/using-deodorizers-with-kittens",
+    permanent: true
   },
   {
-    source: "/zh/stockists",
-    destination: "/zh/stores",
-    permanent: true,
+    source: "/blog/activated-carbon-science",
+    destination: "/blog/activated-carbon-litter-additive-benefits",
+    permanent: true
   },
   {
-    source: "/es/stockists",
-    destination: "/es/stores",
-    permanent: true,
+    source: "/blog/beyond-masking-odors",
+    destination: "/blog/most-powerful-odor-absorber",
+    permanent: true
+  },
+  {
+    source: "/blog/fresh-home-multiple-cats",
+    destination: "/blog/multi-cat-litter-deodorizer-guide",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)/blog/activated-carbon-science",
+    destination: "/blog/activated-carbon-litter-additive-benefits",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)/blog/fresh-home-multiple-cats",
+    destination: "/blog/multi-cat-litter-deodorizer-guide",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)/blog/beyond-masking-odors",
+    destination: "/blog/most-powerful-odor-absorber",
+    permanent: true
+  },
+  {
+    source: "/learn/purrify-vs-arm-hammer",
+    destination: "/learn/activated-carbon-vs-baking-soda-deodorizers",
+    permanent: true
+  },
+  {
+    source: "/learn/safe-for-kittens",
+    destination: "/learn/using-deodorizers-with-kittens",
+    permanent: true
+  },
+  {
+    source: "/learn/activated-carbon-vs-baking-soda",
+    destination: "/learn/activated-carbon-vs-baking-soda-deodorizers",
+    permanent: true
+  },
+  {
+    source: "/solutions/ammonia-smell-cat-litter",
+    destination: "/learn/solutions/ammonia-smell-cat-litter",
+    permanent: true
+  },
+  {
+    source: "/solutions/apartment-cat-smell-solution",
+    destination: "/learn/solutions/apartment-cat-smell-solution",
+    permanent: true
+  },
+  {
+    source: "/solutions/litter-box-smell-elimination",
+    destination: "/learn/solutions/litter-box-smell-elimination",
+    permanent: true
+  },
+  {
+    source: "/solutions/multiple-cats-odor-control",
+    destination: "/learn/solutions/multiple-cats-odor-control",
+    permanent: true
+  },
+  {
+    source: "/solutions/natural-cat-litter-additive",
+    destination: "/learn/solutions/natural-cat-litter-additive",
+    permanent: true
+  },
+  {
+    source: "/solutions/senior-cat-litter-solutions",
+    destination: "/learn/solutions/senior-cat-litter-solutions",
+    permanent: true
+  },
+  {
+    source: "/solutions",
+    destination: "/learn",
+    permanent: true
   },
   {
     source: "/products/purrify-20g",
     destination: "/products/trial-size",
-    permanent: true,
+    permanent: true
   },
   {
     source: "/products/purrify-50g",
     destination: "/products/standard",
-    permanent: true,
+    permanent: true
   },
   {
     source: "/products/purrify-120g",
     destination: "/products/family-pack",
-    permanent: true,
+    permanent: true
   },
   {
     source: "/products/medium-size",
     destination: "/products/standard",
     permanent: true,
-    locale: false,
-  },
-  {
-    source: "/products/trial",
-    destination: "/products/trial-size",
-    permanent: true,
-  },
-  // Short URL for easy social sharing (e.g., purrify.ca/trial)
-  {
-    source: "/trial",
-    destination: "/products/trial-size",
-    permanent: true,
-  },
-  {
-    source: "/:locale(fr|zh|es)/trial",
-    destination: "/:locale/products/trial-size",
-    permanent: true,
-  },
-  {
-    source: "/learn/activated-carbon-vs-baking-soda",
-    destination: "/learn/activated-carbon-vs-baking-soda-deodorizers",
-    permanent: true,
+    locale: false
   },
   {
     source: "/products/large-size",
     destination: "/products/family-pack",
     permanent: true,
-    locale: false,
+    locale: false
   },
   {
     source: "/products/family",
     destination: "/products/family-pack",
     permanent: true,
-    locale: false,
+    locale: false
   },
   {
-    source: "/demo/:path*",
-    destination: "/",
-    permanent: false,
-  },
-  {
-    source: "/support/contact",
-    destination: "/contact",
-    permanent: true,
-  },
-  {
-    source: "/customers",
-    destination: "/case-studies",
-    permanent: true,
-  },
-
-  // Solutions pages moved to /learn/solutions
-  {
-    source: "/solutions/ammonia-smell-cat-litter",
-    destination: "/learn/solutions/ammonia-smell-cat-litter",
-    permanent: true,
-  },
-  {
-    source: "/solutions/apartment-cat-smell-solution",
-    destination: "/learn/solutions/apartment-cat-smell-solution",
-    permanent: true,
-  },
-  {
-    source: "/solutions/litter-box-smell-elimination",
-    destination: "/learn/solutions/litter-box-smell-elimination",
-    permanent: true,
-  },
-  {
-    source: "/solutions/multiple-cats-odor-control",
-    destination: "/learn/solutions/multiple-cats-odor-control",
-    permanent: true,
-  },
-  {
-    source: "/solutions/natural-cat-litter-additive",
-    destination: "/learn/solutions/natural-cat-litter-additive",
-    permanent: true,
-  },
-  {
-    source: "/solutions/senior-cat-litter-solutions",
-    destination: "/learn/solutions/senior-cat-litter-solutions",
-    permanent: true,
-  },
-  {
-    source: "/solutions",
-    destination: "/learn",
-    permanent: true,
-  },
-
-  // E-commerce & Legacy artifacts
-  {
-    source: "/checkout",
-    destination: "/products",
-    permanent: true,
-  },
-  {
-    source: "/cart-2",
-    destination: "/products",
-    permanent: true,
+    source: "/products/trial",
+    destination: "/products/trial-size",
+    permanent: true
   },
   {
     source: "/products/compare",
     destination: "/products",
-    permanent: true,
+    permanent: true
   },
   {
-    source: "/comments/feed",
-    destination: "/blog",
-    permanent: true,
+    source: "/trial",
+    destination: "/products/trial-size",
+    permanent: true
   },
   {
-    source: "/feed",
-    destination: "/blog",
-    permanent: true,
+    source: "/:locale(fr|zh|es)/trial",
+    destination: "/:locale/products/trial-size",
+    permanent: true
   },
   {
-    source: "/wishlist",
-    destination: "/products",
-    permanent: true,
+    source: "/stockists",
+    destination: "/stores",
+    permanent: true
   },
   {
-    source: "/shopdsf",
-    destination: "/products",
-    permanent: true,
+    source: "/fr/stockists",
+    destination: "/fr/stores",
+    permanent: true
   },
   {
-    source: "/home-three",
-    destination: "/",
-    permanent: true,
+    source: "/zh/stockists",
+    destination: "/zh/stores",
+    permanent: true
   },
   {
-    source: "/purrify-cat-litter-odor-eliminator-copy",
-    destination: "/products",
-    permanent: true,
+    source: "/es/stockists",
+    destination: "/es/stores",
+    permanent: true
   },
-
-  // Common 404 patterns (SEO fix Jan 2026)
-  {
-    source: "/cart",
-    destination: "/products",
-    permanent: true,
-  },
-  {
-    source: "/order",
-    destination: "/customer/portal",
-    permanent: true,
-  },
-  {
-    source: "/orders",
-    destination: "/customer/portal",
-    permanent: true,
-  },
-  {
-    source: "/account",
-    destination: "/customer/portal",
-    permanent: true,
-  },
-  {
-    source: "/login",
-    destination: "/admin/login",
-    permanent: false,
-  },
-  {
-    source: "/signup",
-    destination: "/products",
-    permanent: true,
-  },
-  {
-    source: "/register",
-    destination: "/products",
-    permanent: true,
-  },
-  {
-    source: "/faq",
-    destination: "/support",
-    permanent: true,
-  },
-  {
-    source: "/help",
-    destination: "/support",
-    permanent: true,
-  },
-  {
-    source: "/shipping",
-    destination: "/support/shipping",
-    permanent: true,
-  },
-  {
-    source: "/returns",
-    destination: "/support",
-    permanent: true,
-  },
-  {
-    source: "/guarantee",
-    destination: "/support",
-    permanent: true,
-  },
-  {
-    source: "/about",
-    destination: "/about/our-story",
-    permanent: true,
-  },
-  {
-    source: "/pricing",
-    destination: "/products",
-    permanent: true,
-  },
-  {
-    source: "/plans",
-    destination: "/products",
-    permanent: true,
-  },
-  {
-    source: "/subscribe",
-    destination: "/products",
-    permanent: true,
-  },
-  {
-    source: "/unsubscribe",
-    destination: "/support",
-    permanent: true,
-  },
-  {
-    source: "/info",
-    destination: "/learn",
-    permanent: true,
-  },
-  {
-    source: "/catalog",
-    destination: "/products",
-    permanent: true,
-  },
-  {
-    source: "/store",
-    destination: "/products",
-    permanent: true,
-  },
-  {
-    source: "/boutique",
-    destination: "/products",
-    permanent: true,
-  },
-  {
-    source: "/tienda",
-    destination: "/products",
-    permanent: true,
-  },
-
-  // Legacy blog post redirects (old slugs that no longer exist)
-  {
-    source: "/blog/activated-carbon-science",
-    destination: "/blog/activated-carbon-litter-additive-benefits",
-    permanent: true,
-  },
-  {
-    source: "/blog/beyond-masking-odors",
-    destination: "/blog/most-powerful-odor-absorber",
-    permanent: true,
-  },
-  {
-    source: "/blog/fresh-home-multiple-cats",
-    destination: "/blog/multi-cat-litter-deodorizer-guide",
-    permanent: true,
-  },
-
-  // WordPress legacy query parameters
-  {
-    source: "/",
-    has: [{ type: "query", key: "p", value: "138" }],
-    destination: "/blog",
-    permanent: true,
-  },
-  {
-    source: "/",
-    has: [{ type: "query", key: "p", value: "137" }],
-    destination: "/blog",
-    permanent: true,
-  },
-  {
-    source: "/",
-    has: [{ type: "query", key: "p", value: "130" }],
-    destination: "/blog",
-    permanent: true,
-  },
-  {
-    source: "/",
-    has: [{ type: "query", key: "p", value: "131" }],
-    destination: "/blog",
-    permanent: true,
-  },
-  {
-    source: "/",
-    has: [{ type: "query", key: "p", value: "132" }],
-    destination: "/blog",
-    permanent: true,
-  },
-  {
-    source: "/",
-    has: [{ type: "query", key: "p", value: "134" }],
-    destination: "/blog",
-    permanent: true,
-  },
-
-  // Province code redirects to standard URLs
   {
     source: "/locations/ab",
     destination: "/locations/province/alberta",
-    permanent: true,
+    permanent: true
   },
   {
     source: "/locations/bc",
     destination: "/locations/province/british-columbia",
-    permanent: true,
+    permanent: true
   },
   {
     source: "/locations/mb",
     destination: "/locations/province/manitoba",
-    permanent: true,
-  },
-  {
-    source: "/locations/nb",
-    destination: "/locations",
-    permanent: true,
-  },
-  {
-    source: "/locations/nl",
-    destination: "/locations",
-    permanent: true,
+    permanent: true
   },
   {
     source: "/locations/ns",
     destination: "/locations/province/nova-scotia",
-    permanent: true,
+    permanent: true
   },
   {
     source: "/locations/on",
     destination: "/locations/province/ontario",
-    permanent: true,
-  },
-  {
-    source: "/locations/pe",
-    destination: "/locations",
-    permanent: true,
+    permanent: true
   },
   {
     source: "/locations/qc",
     destination: "/locations/province/quebec",
-    permanent: true,
+    permanent: true
   },
   {
     source: "/locations/sk",
     destination: "/locations/province/saskatchewan",
-    permanent: true,
+    permanent: true
+  },
+  {
+    source: "/locations/nb",
+    destination: "/locations",
+    permanent: true
+  },
+  {
+    source: "/locations/nl",
+    destination: "/locations",
+    permanent: true
+  },
+  {
+    source: "/locations/pe",
+    destination: "/locations",
+    permanent: true
   },
   {
     source: "/locations/nt",
     destination: "/locations",
-    permanent: true,
+    permanent: true
   },
   {
     source: "/locations/nu",
     destination: "/locations",
-    permanent: true,
+    permanent: true
   },
   {
     source: "/locations/yt",
     destination: "/locations",
-    permanent: true,
+    permanent: true
   },
-  // Fix broken /www. redirect from crystaldeodorantprotection.com domain
-  {
-    source: "/www.",
-    destination: "/",
-    permanent: true,
-  },
-
-  // Fix /purr/* URLs from external affiliate sites (EcoCatLitters, CatLitterSmell, etc.)
-  {
-    source: "/purr/trial",
-    destination: "/products/trial-size",
-    permanent: true,
-  },
-  {
-    source: "/purr/products",
-    destination: "/products",
-    permanent: true,
-  },
-  {
-    source: "/purr/how-it-works",
-    destination: "/learn/how-it-works",
-    permanent: true,
-  },
-  {
-    source: "/purr",
-    destination: "/products",
-    permanent: true,
-  },
-
-  // Non-existent province page redirects (provinces not in database)
   {
     source: "/locations/province/prince-edward-island",
     destination: "/locations",
-    permanent: true,
+    permanent: true
   },
   {
     source: "/locations/province/northwest-territories",
     destination: "/locations",
-    permanent: true,
+    permanent: true
   },
   {
     source: "/locations/province/nunavut",
     destination: "/locations",
-    permanent: true,
+    permanent: true
   },
   {
     source: "/locations/province/yukon",
     destination: "/locations",
-    permanent: true,
+    permanent: true
   },
   {
     source: "/locations/province/new-brunswick",
     destination: "/locations",
-    permanent: true,
+    permanent: true
   },
   {
     source: "/locations/province/newfoundland-and-labrador",
     destination: "/locations",
-    permanent: true,
+    permanent: true
   },
-
-  // Localized province redirects (provinces without stores)
   {
     source: "/:locale(fr|zh|es)/locations/province/prince-edward-island",
     destination: "/:locale/locations",
-    permanent: true,
+    permanent: true
   },
   {
     source: "/:locale(fr|zh|es)/locations/province/northwest-territories",
     destination: "/:locale/locations",
-    permanent: true,
+    permanent: true
   },
   {
     source: "/:locale(fr|zh|es)/locations/province/nunavut",
     destination: "/:locale/locations",
-    permanent: true,
+    permanent: true
   },
   {
     source: "/:locale(fr|zh|es)/locations/province/yukon",
     destination: "/:locale/locations",
-    permanent: true,
+    permanent: true
   },
   {
     source: "/:locale(fr|zh|es)/locations/province/new-brunswick",
     destination: "/:locale/locations",
-    permanent: true,
+    permanent: true
   },
   {
     source: "/:locale(fr|zh|es)/locations/province/newfoundland-and-labrador",
     destination: "/:locale/locations",
-    permanent: true,
+    permanent: true
   },
-
-  // Spanish location redirects (Jan 2026 SEO fix)
   {
     source: "/es/locations/montreal",
-    destination: "/es/stockists",
-    permanent: true,
+    destination: "/es/stores",
+    permanent: true
   },
   {
     source: "/es/locations/province/alberta",
-    destination: "/es/stockists",
-    permanent: true,
+    destination: "/es/stores",
+    permanent: true
   },
   {
     source: "/es/locations/province/british-columbia",
-    destination: "/es/stockists",
-    permanent: true,
+    destination: "/es/stores",
+    permanent: true
   },
   {
     source: "/es/locations/province/manitoba",
-    destination: "/es/stockists",
-    permanent: true,
+    destination: "/es/stores",
+    permanent: true
   },
   {
     source: "/es/locations/province/nova-scotia",
-    destination: "/es/stockists",
-    permanent: true,
+    destination: "/es/stores",
+    permanent: true
   },
   {
     source: "/es/locations/province/ontario",
-    destination: "/es/stockists",
-    permanent: true,
+    destination: "/es/stores",
+    permanent: true
   },
   {
     source: "/es/locations/province/quebec",
-    destination: "/es/stockists",
-    permanent: true,
+    destination: "/es/stores",
+    permanent: true
   },
   {
     source: "/es/locations/province/saskatchewan",
-    destination: "/es/stockists",
-    permanent: true,
+    destination: "/es/stores",
+    permanent: true
   },
   {
     source: "/es/opiniones",
     destination: "/es/reviews",
-    permanent: true,
+    permanent: true
   },
-  // Fix: /es/reviews redirect loop - send to working Spanish page
   {
     source: "/es/reviews",
     destination: "/es/products",
-    permanent: true,
-  },
-
-  // System page redirects (Jan 2026 SEO fix)
-  {
-    source: "/auth/signin",
-    destination: "/admin/login",
-    permanent: false,
+    permanent: true
   },
   {
-    source: "/affiliate/forgot-password",
-    destination: "/affiliate",
-    permanent: false,
+    source: "/purr/trial",
+    destination: "/products/trial-size",
+    permanent: true
   },
-
-  // Legacy URL redirects (Ahrefs 404 report - Jan 2026)
   {
-    source: "/shop",
+    source: "/purr/products",
     destination: "/products",
-    permanent: true,
+    permanent: true
   },
   {
-    source: "/tos",
-    destination: "/terms",
-    permanent: true,
+    source: "/purr/how-it-works",
+    destination: "/learn/how-it-works",
+    permanent: true
   },
   {
-    source: "/privacy",
-    destination: "/privacy-policy",
-    permanent: true,
-  },
-  {
-    source: "/my-account",
-    destination: "/customer/portal",
-    permanent: true,
-  },
-  {
-    source: "/purrify-odor-eliminator",
+    source: "/purr",
     destination: "/products",
-    permanent: true,
+    permanent: true
   },
   {
-    source: "/services-two-2",
-    destination: "/",
-    permanent: true,
+    source: "/purrify-cat-litter-odor-eliminator-copy",
+    destination: "/products",
+    permanent: true
   },
   {
-    source: "/dn",
-    destination: "/",
-    permanent: true,
+    source: "/checkout",
+    destination: "/products",
+    permanent: true
   },
   {
     source: "/checkout-2",
     destination: "/products",
-    permanent: true,
+    permanent: true
+  },
+  {
+    source: "/cart",
+    destination: "/products",
+    permanent: true
+  },
+  {
+    source: "/cart-2",
+    destination: "/products",
+    permanent: true
+  },
+  {
+    source: "/order",
+    destination: "/customer/portal",
+    permanent: true
+  },
+  {
+    source: "/orders",
+    destination: "/customer/portal",
+    permanent: true
+  },
+  {
+    source: "/account",
+    destination: "/customer/portal",
+    permanent: true
+  },
+  {
+    source: "/my-account",
+    destination: "/customer/portal",
+    permanent: true
   },
   {
     source: "/my-account-2",
     destination: "/customer/portal",
-    permanent: true,
+    permanent: true
   },
   {
-    source: "/test",
-    destination: "/",
-    permanent: false,
+    source: "/wishlist",
+    destination: "/products",
+    permanent: true
   },
-
-  // Localized checkout redirects
+  {
+    source: "/shop",
+    destination: "/products",
+    permanent: true
+  },
+  {
+    source: "/shopdsf",
+    destination: "/products",
+    permanent: true
+  },
+  {
+    source: "/store",
+    destination: "/products",
+    permanent: true
+  },
+  {
+    source: "/boutique",
+    destination: "/products",
+    permanent: true
+  },
+  {
+    source: "/tienda",
+    destination: "/products",
+    permanent: true
+  },
+  {
+    source: "/catalog",
+    destination: "/products",
+    permanent: true
+  },
+  {
+    source: "/pricing",
+    destination: "/products",
+    permanent: true
+  },
+  {
+    source: "/plans",
+    destination: "/products",
+    permanent: true
+  },
+  {
+    source: "/subscribe",
+    destination: "/products",
+    permanent: true
+  },
+  {
+    source: "/buy-now",
+    destination: "/products",
+    permanent: true
+  },
+  {
+    source: "/purchase",
+    destination: "/products",
+    permanent: true
+  },
+  {
+    source: "/order-now",
+    destination: "/products",
+    permanent: true
+  },
+  {
+    source: "/signup",
+    destination: "/products",
+    permanent: true
+  },
+  {
+    source: "/register",
+    destination: "/products",
+    permanent: true
+  },
   {
     source: "/:locale(fr|zh|es)/checkout",
     destination: "/:locale/products",
-    permanent: true,
-  },
-
-  // Localized old blog slug redirects
-  {
-    source: "/:locale(fr|zh|es)/blog/activated-carbon-science",
-    destination: "/blog/activated-carbon-litter-additive-benefits",
-    permanent: true,
+    permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)/blog/fresh-home-multiple-cats",
-    destination: "/blog/multi-cat-litter-deodorizer-guide",
-    permanent: true,
+    source: "/login",
+    destination: "/admin/login",
+    permanent: false
   },
   {
-    source: "/:locale(fr|zh|es)/blog/beyond-masking-odors",
-    destination: "/blog/most-powerful-odor-absorber",
-    permanent: true,
-  },
-
-  // Catch doubled locale paths from malformed hreflang (SEO fix Jan 2026)
-  // These were caused by sitemap auto-appending paths to alternateRefs
-  {
-    source: "/:path*/es/:path2*",
-    destination: "/es/:path2*",
-    permanent: true,
+    source: "/signin",
+    destination: "/admin/login",
+    permanent: false
   },
   {
-    source: "/:path*/fr/:path2*",
-    destination: "/fr/:path2*",
-    permanent: true,
+    source: "/auth/signin",
+    destination: "/admin/login",
+    permanent: false
   },
   {
-    source: "/:path*/zh/:path2*",
-    destination: "/zh/:path2*",
-    permanent: true,
+    source: "/sign-out",
+    destination: "/",
+    permanent: false
   },
-
-  // Common typo/variation redirects
+  {
+    source: "/logout",
+    destination: "/",
+    permanent: false
+  },
+  {
+    source: "/affiliate/forgot-password",
+    destination: "/affiliate",
+    permanent: false
+  },
+  {
+    source: "/support/contact",
+    destination: "/contact",
+    permanent: true
+  },
+  {
+    source: "/contact-us",
+    destination: "/contact",
+    permanent: true
+  },
+  {
+    source: "/get-in-touch",
+    destination: "/contact",
+    permanent: true
+  },
+  {
+    source: "/faq",
+    destination: "/support",
+    permanent: true
+  },
+  {
+    source: "/help",
+    destination: "/support",
+    permanent: true
+  },
+  {
+    source: "/support-center",
+    destination: "/support",
+    permanent: true
+  },
+  {
+    source: "/help-center",
+    destination: "/support",
+    permanent: true
+  },
+  {
+    source: "/shipping",
+    destination: "/support/shipping",
+    permanent: true
+  },
+  {
+    source: "/returns",
+    destination: "/support",
+    permanent: true
+  },
+  {
+    source: "/guarantee",
+    destination: "/support",
+    permanent: true
+  },
+  {
+    source: "/unsubscribe",
+    destination: "/support",
+    permanent: true
+  },
+  {
+    source: "/about",
+    destination: "/about/our-story",
+    permanent: true
+  },
+  {
+    source: "/company",
+    destination: "/about/our-story",
+    permanent: true
+  },
+  {
+    source: "/team",
+    destination: "/about/our-story",
+    permanent: true
+  },
+  {
+    source: "/mission",
+    destination: "/about/our-story",
+    permanent: true
+  },
+  {
+    source: "/our-story",
+    destination: "/about/our-story",
+    permanent: true
+  },
+  {
+    source: "/customers",
+    destination: "/case-studies",
+    permanent: true
+  },
+  {
+    source: "/documents",
+    destination: "/invest",
+    permanent: true
+  },
+  {
+    source: "/find-a-store",
+    destination: "/stores",
+    permanent: true
+  },
+  {
+    source: "/find-store",
+    destination: "/stores",
+    permanent: true
+  },
+  {
+    source: "/retail-locations",
+    destination: "/stores",
+    permanent: true
+  },
+  {
+    source: "/where-to-buy",
+    destination: "/stores",
+    permanent: true
+  },
+  {
+    source: "/store-locator",
+    destination: "/stores",
+    permanent: true
+  },
+  {
+    source: "/affiliates",
+    destination: "/affiliate",
+    permanent: true
+  },
+  {
+    source: "/partner",
+    destination: "/affiliate",
+    permanent: true
+  },
+  {
+    source: "/partners",
+    destination: "/affiliate",
+    permanent: true
+  },
+  {
+    source: "/referral-program",
+    destination: "/referral",
+    permanent: true
+  },
+  {
+    source: "/guides/:path*",
+    destination: "/learn/:path*",
+    permanent: true
+  },
+  {
+    source: "/education/:path*",
+    destination: "/learn/:path*",
+    permanent: true
+  },
+  {
+    source: "/resources/:path*",
+    destination: "/learn/:path*",
+    permanent: true
+  },
+  {
+    source: "/info",
+    destination: "/learn",
+    permanent: true
+  },
+  {
+    source: "/blog/litter-box-odor-control",
+    destination: "/learn/solutions/litter-box-smell-elimination",
+    permanent: true
+  },
+  {
+    source: "/blog/natural-odor-control",
+    destination: "/learn/solutions/natural-cat-litter-additive",
+    permanent: true
+  },
+  {
+    source: "/blog/ammonia-smell-solutions",
+    destination: "/learn/solutions/ammonia-smell-cat-litter",
+    permanent: true
+  },
+  {
+    source: "/blog/apartment-cat-owners",
+    destination: "/learn/solutions/apartment-cat-smell-solution",
+    permanent: true
+  },
+  {
+    source: "/blog/multi-cat-solutions",
+    destination: "/learn/solutions/multiple-cats-odor-control",
+    permanent: true
+  },
+  {
+    source: "/blog/senior-cat-care",
+    destination: "/learn/solutions/senior-cat-litter-solutions",
+    permanent: true
+  },
+  {
+    source: "/blog/how-it-works",
+    destination: "/learn/how-it-works",
+    permanent: true
+  },
+  {
+    source: "/blog/science",
+    destination: "/learn/science",
+    permanent: true
+  },
+  {
+    source: "/blog/faq",
+    destination: "/learn/faq",
+    permanent: true
+  },
+  {
+    source: "/blog/safety",
+    destination: "/learn/safety",
+    permanent: true
+  },
+  {
+    source: "/blog/using-purrify",
+    destination: "/learn/how-to-use-deodorizer",
+    permanent: true
+  },
+  {
+    source: "/blog/carbon-benefits",
+    destination: "/learn/activated-carbon-benefits",
+    permanent: true
+  },
+  {
+    source: "/blog/how-often-change-cat-litter",
+    destination: "/learn/cat-litter-guide",
+    permanent: true
+  },
+  {
+    source: "/blog/how-to-eliminate-cat-litter-odor",
+    destination: "/learn/solutions/litter-box-smell-elimination",
+    permanent: true
+  },
+  {
+    source: "/blog/how-to-neutralize-ammonia-cat-litter",
+    destination: "/learn/solutions/how-to-neutralize-ammonia-cat-litter",
+    permanent: true
+  },
+  {
+    source: "/blog/how-to-reduce-litter-box-odor",
+    destination: "/learn/solutions/litter-box-smell-elimination",
+    permanent: true
+  },
+  {
+    source: "/blog/how-to-use-cat-litter-deodorizer",
+    destination: "/learn/how-to-use-deodorizer",
+    permanent: true
+  },
+  {
+    source: "/blog/activated-carbon-for-cat-litter-complete-guide",
+    destination: "/en/blog/activated-carbon-for-cat-litter-complete-guide",
+    permanent: true
+  },
+  {
+    source: "/blog/apartment-litter-box-smell-solution",
+    destination: "/en/blog/apartment-litter-box-smell-solution",
+    permanent: true
+  },
+  {
+    source: "/blog/baking-soda-vs-activated-carbon-cat-litter",
+    destination: "/en/blog/baking-soda-vs-activated-carbon-cat-litter",
+    permanent: true
+  },
+  {
+    source: "/blog/best-cat-litter-deodorizers-2026",
+    destination: "/en/blog/best-cat-litter-deodorizers-2026",
+    permanent: true
+  },
+  {
+    source: "/blog/best-cat-litter-for-apartments",
+    destination: "/en/blog/best-cat-litter-for-apartments",
+    permanent: true
+  },
+  {
+    source: "/blog/best-cat-litter-for-smell",
+    destination: "/en/blog/best-cat-litter-for-smell",
+    permanent: true
+  },
+  {
+    source: "/blog/best-cat-litter-multiple-cats",
+    destination: "/en/blog/best-cat-litter-multiple-cats",
+    permanent: true
+  },
+  {
+    source: "/blog/best-cat-litter-multiple-cats-odor-control",
+    destination: "/en/blog/best-cat-litter-multiple-cats-odor-control",
+    permanent: true
+  },
+  {
+    source: "/blog/best-cat-litter-odor-control-2026",
+    destination: "/en/blog/best-cat-litter-odor-control-2026",
+    permanent: true
+  },
+  {
+    source: "/blog/best-clumping-cat-litter-odor-control",
+    destination: "/en/blog/best-clumping-cat-litter-odor-control",
+    permanent: true
+  },
+  {
+    source: "/blog/best-covered-litter-boxes-odor-control",
+    destination: "/en/blog/best-covered-litter-boxes-odor-control",
+    permanent: true
+  },
+  {
+    source: "/blog/best-litter-box-location-odour-control",
+    destination: "/en/blog/best-litter-box-location-odour-control",
+    permanent: true
+  },
+  {
+    source: "/blog/best-natural-cat-litter-odor-control",
+    destination: "/en/blog/best-natural-cat-litter-odor-control",
+    permanent: true
+  },
+  {
+    source: "/blog/best-self-cleaning-litter-box-odor-control",
+    destination: "/en/blog/best-self-cleaning-litter-box-odor-control",
+    permanent: true
+  },
+  {
+    source: "/blog/best-unscented-cat-litter-sensitive-cats",
+    destination: "/en/blog/best-unscented-cat-litter-sensitive-cats",
+    permanent: true
+  },
+  {
+    source: "/blog/best-unscented-cat-litters",
+    destination: "/en/blog/best-unscented-cat-litters",
+    permanent: true
+  },
+  {
+    source: "/blog/best-way-to-keep-litter-box-fresh",
+    destination: "/en/blog/best-way-to-keep-litter-box-fresh",
+    permanent: true
+  },
+  {
+    source: "/blog/cat-litter-odor-control-usa",
+    destination: "/en/blog/cat-litter-odor-control-usa",
+    permanent: true
+  },
+  {
+    source: "/blog/cat-litter-odour-control-tips",
+    destination: "/en/blog/cat-litter-odour-control-tips",
+    permanent: true
+  },
+  {
+    source: "/blog/chemistry-of-cat-smell-industrial-fix",
+    destination: "/en/blog/chemistry-of-cat-smell-industrial-fix",
+    permanent: true
+  },
+  {
+    source: "/blog/how-to-get-rid-of-cat-litter-smell-apartment",
+    destination: "/en/blog/how-to-get-rid-of-cat-litter-smell-apartment",
+    permanent: true
+  },
+  {
+    source: "/blog/how-to-get-rid-of-cat-litter-smell-in-apartment",
+    destination: "/en/blog/how-to-get-rid-of-cat-litter-smell-in-apartment",
+    permanent: true
+  },
+  {
+    source: "/blog/how-to-get-rid-of-cat-pee-smell-apartment",
+    destination: "/en/blog/how-to-get-rid-of-cat-pee-smell-apartment",
+    permanent: true
+  },
+  {
+    source: "/blog/litter-deodorizer-frequency-guide",
+    destination: "/en/blog/litter-deodorizer-frequency-guide",
+    permanent: true
+  },
+  {
+    source: "/blog/safe-ways-to-deodorize-litter-box",
+    destination: "/en/blog/safe-ways-to-deodorize-litter-box",
+    permanent: true
+  },
+  {
+    source: "/blog/space-station-secret-fresh-home-cat-owners",
+    destination: "/en/blog/space-station-secret-fresh-home-cat-owners",
+    permanent: true
+  },
+  {
+    source: "/blog/strong-cat-urine-smell-litter-box",
+    destination: "/en/blog/strong-cat-urine-smell-litter-box",
+    permanent: true
+  },
+  {
+    source: "/blog/tried-every-litter-deodorizer-90-days-results",
+    destination: "/en/blog/tried-every-litter-deodorizer-90-days-results",
+    permanent: true
+  },
+  {
+    source: "/blog/tried-everything-cat-litter-smell-solutions",
+    destination: "/en/blog/tried-everything-cat-litter-smell-solutions",
+    permanent: true
+  },
+  {
+    source: "/blog/why-does-my-cats-litter-box-smell-so-bad",
+    destination: "/en/blog/why-does-my-cats-litter-box-smell-so-bad",
+    permanent: true
+  },
+  {
+    source: "/blog/why-does-my-house-smell-like-cat-litter",
+    destination: "/en/blog/why-does-my-house-smell-like-cat-litter",
+    permanent: true
+  },
+  {
+    source: "/tos",
+    destination: "/terms",
+    permanent: true
+  },
+  {
+    source: "/terms-of-service",
+    destination: "/terms",
+    permanent: true
+  },
+  {
+    source: "/terms-and-conditions",
+    destination: "/terms",
+    permanent: true
+  },
+  {
+    source: "/legal",
+    destination: "/terms",
+    permanent: true
+  },
+  {
+    source: "/privacy",
+    destination: "/privacy-policy",
+    permanent: true
+  },
+  {
+    source: "/comments/feed",
+    destination: "/blog",
+    permanent: true
+  },
+  {
+    source: "/feed",
+    destination: "/blog",
+    permanent: true
+  },
+  {
+    source: "/rss.xml",
+    destination: "/blog",
+    permanent: true
+  },
+  {
+    source: "/feed.xml",
+    destination: "/blog",
+    permanent: true
+  },
+  {
+    source: "/atom.xml",
+    destination: "/blog",
+    permanent: true
+  },
+  {
+    source: "/sitemap_index.xml",
+    destination: "/sitemap.xml",
+    permanent: true
+  },
+  {
+    source: "/wp-admin/:path*",
+    destination: "/",
+    permanent: true
+  },
+  {
+    source: "/wp-login.php",
+    destination: "/",
+    permanent: true
+  },
+  {
+    source: "/wordpress/:path*",
+    destination: "/",
+    permanent: true
+  },
+  {
+    source: "/wp/:path*",
+    destination: "/",
+    permanent: true
+  },
+  {
+    source: "/administrator/:path*",
+    destination: "/",
+    permanent: true
+  },
+  {
+    source: "/phpmyadmin/:path*",
+    destination: "/",
+    permanent: true
+  },
+  {
+    source: "/pma/:path*",
+    destination: "/",
+    permanent: true
+  },
+  {
+    source: "/dbadmin/:path*",
+    destination: "/",
+    permanent: true
+  },
+  {
+    source: "/mysql/:path*",
+    destination: "/",
+    permanent: true
+  },
+  {
+    source: "/.env",
+    destination: "/",
+    permanent: true
+  },
+  {
+    source: "/.git/:path*",
+    destination: "/",
+    permanent: true
+  },
+  {
+    source: "/config/:path*",
+    destination: "/",
+    permanent: true
+  },
+  {
+    source: "/wp-content/:path*",
+    destination: "/",
+    permanent: true
+  },
+  {
+    source: "/wp-includes/:path*",
+    destination: "/",
+    permanent: true
+  },
+  {
+    source: "/themes/:path*",
+    destination: "/",
+    permanent: true
+  },
+  {
+    source: "/plugins/:path*",
+    destination: "/",
+    permanent: true
+  },
+  {
+    source: "/category/:path*",
+    destination: "/products",
+    permanent: true
+  },
+  {
+    source: "/tag/:path*",
+    destination: "/products",
+    permanent: true
+  },
+  {
+    source: "/collections/:path*",
+    destination: "/products",
+    permanent: true
+  },
+  {
+    source: "/collections",
+    destination: "/products",
+    permanent: true
+  },
+  {
+    source: "/brands/:path*",
+    destination: "/products",
+    permanent: true
+  },
+  {
+    source: "/brand/:path*",
+    destination: "/products",
+    permanent: true
+  },
+  {
+    source: "/product/:path*",
+    destination: "/products/:path*",
+    permanent: true
+  },
+  {
+    source: "/shop/:path*",
+    destination: "/products/:path*",
+    permanent: true
+  },
+  {
+    source: "/store/:path*",
+    destination: "/products/:path*",
+    permanent: true
+  },
   {
     source: "/producto/:path*",
     destination: "/products/:path*",
-    permanent: true,
+    permanent: true
   },
   {
     source: "/produit/:path*",
     destination: "/products/:path*",
-    permanent: true,
+    permanent: true
   },
+  {
+    source: "/www.",
+    destination: "/",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|es|zh)/products/:path+/",
+    destination: "/:locale/products/:path*",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|es|zh)/about",
+    destination: "/:locale/about/our-story",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|es|zh)/contact-us",
+    destination: "/:locale/contact",
+    permanent: true
+  },
+  {
+    source: "/demo/:path*",
+    destination: "/",
+    permanent: false
+  },
+  {
+    source: "/test",
+    destination: "/",
+    permanent: false
+  },
+  {
+    source: "/home-three",
+    destination: "/",
+    permanent: true
+  },
+  {
+    source: "/services-two-2",
+    destination: "/",
+    permanent: true
+  },
+  {
+    source: "/dn",
+    destination: "/",
+    permanent: true
+  },
+  {
+    source: "/",
+    has: [
+      {
+        type: "query",
+        key: "p",
+        value: "138"
+      }
+    ],
+    destination: "/blog",
+    permanent: true
+  },
+  {
+    source: "/",
+    has: [
+      {
+        type: "query",
+        key: "p",
+        value: "137"
+      }
+    ],
+    destination: "/blog",
+    permanent: true
+  },
+  {
+    source: "/",
+    has: [
+      {
+        type: "query",
+        key: "p",
+        value: "130"
+      }
+    ],
+    destination: "/blog",
+    permanent: true
+  },
+  {
+    source: "/",
+    has: [
+      {
+        type: "query",
+        key: "p",
+        value: "131"
+      }
+    ],
+    destination: "/blog",
+    permanent: true
+  },
+  {
+    source: "/",
+    has: [
+      {
+        type: "query",
+        key: "p",
+        value: "132"
+      }
+    ],
+    destination: "/blog",
+    permanent: true
+  },
+  {
+    source: "/",
+    has: [
+      {
+        type: "query",
+        key: "p",
+        value: "134"
+      }
+    ],
+    destination: "/blog",
+    permanent: true
+  }
 ];
 
 const OPTIMIZE_PACKAGE_IMPORTS = [

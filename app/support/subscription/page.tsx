@@ -10,12 +10,14 @@ export const metadata: Metadata = {
   description: 'Learn about Purrify autoship subscriptions. Save 30%, get free shipping, and never run out. Cancel, pause, or modify anytime.',
   keywords: ['subscription', 'autoship', 'recurring orders', 'save money', 'automatic delivery'],
   alternates: {
-    canonical: '/support/subscription',
+    canonical: 'https://www.purrify.ca/support/subscription',
     languages: {
       'en-CA': 'https://www.purrify.ca/support/subscription',
       'fr-CA': 'https://www.purrify.ca/fr/support/subscription',
       'zh-CN': 'https://www.purrify.ca/zh/support/subscription',
-      'es': 'https://www.purrify.ca/es/support/subscription',
+      'es-US': 'https://www.purrify.ca/es/support/subscription',
+      'en-US': 'https://www.purrify.ca/support/subscription',
+      'x-default': 'https://www.purrify.ca/support/subscription',
     },
   },
   openGraph: {

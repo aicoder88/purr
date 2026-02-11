@@ -12,12 +12,13 @@ export const metadata: Metadata = {
   description: "Before & After: See how 1,000+ cat owners eliminated litter box odors. Real photos, real results. '95% odor reduction in 24 hours.' Ships to USA & Canada.",
   keywords: ['Purrify case studies', 'cat odor success stories', 'customer results', 'before and after', 'cat litter deodorizer effectiveness'],
   alternates: {
-    canonical: '/case-studies',
+    canonical: 'https://www.purrify.ca/case-studies',
     languages: {
       'en-CA': 'https://www.purrify.ca/case-studies',
       'fr-CA': 'https://www.purrify.ca/fr/case-studies',
       'zh-CN': 'https://www.purrify.ca/zh/case-studies',
-      'es': 'https://www.purrify.ca/es/case-studies',
+      'es-US': 'https://www.purrify.ca/es/case-studies',
+      'en-US': 'https://www.purrify.ca/case-studies',
       'x-default': 'https://www.purrify.ca/case-studies',
     },
   },

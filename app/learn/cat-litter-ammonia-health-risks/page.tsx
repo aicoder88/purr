@@ -4,16 +4,18 @@ import type { Metadata } from 'next';
 import { SITE_NAME } from '../../../src/lib/constants';
 
 export const metadata: Metadata = {
-  title: `Is Ammonia From Cat Litter Dangerous? Safe Levels Explained | ${SITE_NAME}`,
+  title: `Is Cat Litter Ammonia Dangerous? Health Guide | ${SITE_NAME}`,
   description: "That burning sensation when you scoop? That's ammonia. At high levels, it's harmful to you AND your cat. Here's when to worry—and how to fix it fast.",
   keywords: ['ammonia cat litter dangerous', 'cat litter ammonia health risks', 'is ammonia from cat litter harmful', 'cat litter fumes dangerous'],
   alternates: {
-    canonical: '/learn/cat-litter-ammonia-health-risks',
+    canonical: 'https://www.purrify.ca/learn/cat-litter-ammonia-health-risks',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/cat-litter-ammonia-health-risks',
       'fr-CA': 'https://www.purrify.ca/fr/learn/cat-litter-ammonia-health-risks',
       'zh-CN': 'https://www.purrify.ca/zh/learn/cat-litter-ammonia-health-risks',
-      'es': 'https://www.purrify.ca/es/learn/cat-litter-ammonia-health-risks',
+      'es-US': 'https://www.purrify.ca/es/learn/cat-litter-ammonia-health-risks',
+      'en-US': 'https://www.purrify.ca/es/learn/cat-litter-ammonia-health-risks',
+      'x-default': 'https://www.purrify.ca/es/learn/cat-litter-ammonia-health-risks',
     },
   },
   openGraph: {

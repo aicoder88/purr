@@ -72,9 +72,8 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
       canonical: canonicalUrl,
       languages: {
         'en-CA': `${SITE_URL}/locations/${city.slug}`,
-        'fr-CA': `${SITE_URL}/fr/locations/${city.slug}`,
-        'zh-CN': `${SITE_URL}/zh/locations/${city.slug}`,
-        'es': `${SITE_URL}/es/locations/${city.slug}`,
+        // Note: Non-English location pages are excluded from sitemap (noindexed)
+        // Only English version exists to prevent thin content
         'x-default': `${SITE_URL}/locations/${city.slug}`,
       },
     },
@@ -82,6 +81,17 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
       title: seoTitle,
       description: seoDescription,
       url: canonicalUrl,
+      type: 'website',
+      siteName: SITE_NAME,
+      locale: 'en_CA',
+      images: [
+        {
+          url: `${SITE_URL}/images/Logos/purrify-logo.png`,
+          width: 1200,
+          height: 630,
+          alt: seoTitle,
+        },
+      ],
     },
     robots: {
       // Only index English pages for SEO

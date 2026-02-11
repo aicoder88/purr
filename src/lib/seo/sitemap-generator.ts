@@ -150,13 +150,21 @@ export function shouldExclude(route: string, excludePatterns: string[]): boolean
     '/offline',
     '/sentry-example-page',
     '/server-sitemap',
+    
+    // === REDIRECTING PAGES (3XX) ===
     '/thank-you',
     '/checkout',
     '/cart-2',
     '/free',
     '/test',
     '/demo/',
-    // Redirects
+    '/free-trial',
+    '/buy',
+    '/about',
+    '/montreal',
+    '/support/contact',
+    '/documents',
+    // Legacy redirects
     '/products/compare',
     '/products/purrify-20g',
     '/products/purrify-50g',
@@ -165,11 +173,38 @@ export function shouldExclude(route: string, excludePatterns: string[]): boolean
     '/products/large-size',
     '/products/family',
     '/solutions',
+    '/customers',
     '/customers/testimonials',
     '/customers/case-studies',
     '/support/subscription',
-    '/support/contact',
-    '/montreal',
+    // Common 404 patterns that redirect
+    '/cart',
+    '/order',
+    '/orders',
+    '/account',
+    '/login',
+    '/signup',
+    '/register',
+    '/faq',
+    '/help',
+    '/shipping',
+    '/returns',
+    '/guarantee',
+    '/pricing',
+    '/plans',
+    '/subscribe',
+    '/unsubscribe',
+    '/info',
+    '/catalog',
+    '/store',
+    '/boutique',
+    '/tienda',
+    '/shop',
+    '/tos',
+    '/privacy',
+    '/my-account',
+    '/trial',
+    
     // Old province abbreviations (redirects)
     '/locations/ab',
     '/locations/bc',
@@ -184,6 +219,22 @@ export function shouldExclude(route: string, excludePatterns: string[]): boolean
     '/locations/qc',
     '/locations/sk',
     '/locations/yt',
+    
+    // === NOINDEX PAGES (protected portals) ===
+    '/affiliate/dashboard',
+    '/affiliate/login',
+    '/affiliate/activate',
+    '/affiliate/signup',
+    '/customer/portal',
+    '/customer/referrals',
+    '/retailer/portal',
+    '/results',
+    '/auth/signin',
+    '/affiliate/forgot-password',
+    
+    // === NON-CANONICAL PAGES ===
+    '/es/opiniones', // Canonical points to /reviews
+    
     // Non-English location pages (noindexed)
     '/fr/locations',
     '/zh/locations',
@@ -196,6 +247,7 @@ export function shouldExclude(route: string, excludePatterns: string[]): boolean
     '/es/results',
     '/es/invest',
     '/es/dialergptpitchdeck',
+    '/es/documents',
   ];
 
   const allExcludePatterns = [...alwaysExclude, ...excludePatterns];

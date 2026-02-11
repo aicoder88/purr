@@ -4,22 +4,24 @@ import type { Metadata } from 'next';
 import { SITE_NAME } from '../../../src/lib/constants';
 
 export const metadata: Metadata = {
-  title: `Activated Carbon vs Baking Soda for Cat Litter: Which Actually Works? | ${SITE_NAME}`,
-  description: "Stop wasting money on baking soda. Science reveals activated carbon traps ammonia molecules while baking soda just masks odors. See the 90-day test results.",
+  title: `Activated Carbon vs Baking Soda: Which Works? | ${SITE_NAME}`,
+  description: "Stop wasting money on baking soda. Science reveals activated carbon traps ammonia molecules while baking soda only masks odors. See test results.",
   keywords: ['does baking soda help cat litter smell', 'baking soda vs charcoal for odor', 'activated carbon cat litter deodorizer', 'baking soda cat litter comparison', 'activated carbon vs baking soda cat litter'],
   alternates: {
-    canonical: '/learn/activated-carbon-vs-baking-soda-deodorizers',
+    canonical: 'https://www.purrify.ca/learn/activated-carbon-vs-baking-soda-deodorizers',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/activated-carbon-vs-baking-soda-deodorizers',
       'fr-CA': 'https://www.purrify.ca/fr/learn/activated-carbon-vs-baking-soda-deodorizers',
       'zh-CN': 'https://www.purrify.ca/zh/learn/activated-carbon-vs-baking-soda-deodorizers',
-      'es': 'https://www.purrify.ca/es/learn/activated-carbon-vs-baking-soda-deodorizers',
+      'es-US': 'https://www.purrify.ca/es/learn/activated-carbon-vs-baking-soda-deodorizers',
+      'en-US': 'https://www.purrify.ca/es/learn/activated-carbon-vs-baking-soda-deodorizers',
+      'x-default': 'https://www.purrify.ca/es/learn/activated-carbon-vs-baking-soda-deodorizers',
     },
   },
   openGraph: {
     type: 'article',
     url: 'https://www.purrify.ca/learn/activated-carbon-vs-baking-soda-deodorizers',
-    title: 'Baking Soda for Cat Litter? It Fails After 48 Hours (Try This Instead)',
+    title: 'Baking Soda for Cat Litter? It Fails (Try This) | Purrify',
     description: "You sprinkled baking soda. Two days later, the smell's back. That's because baking soda can't trap ammonia—it just masks it.",
     locale: 'en_CA',
     images: [

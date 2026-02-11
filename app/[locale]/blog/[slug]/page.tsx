@@ -59,6 +59,12 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     };
   }
 
+  // Build hreflang alternates with self-referencing support
+  const hrefLang = locale === 'en' ? 'en-CA' : 
+                   locale === 'fr' ? 'fr-CA' : 
+                   locale === 'zh' ? 'zh-CN' : 
+                   locale === 'es' ? 'es-US' : 'en-CA';
+
   return {
     title: `${post.title} | ${SITE_NAME} Blog`,
     description: post.excerpt,
@@ -68,8 +74,21 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
         'en-CA': `${SITE_URL}/blog/${slug}`,
         'fr-CA': `${SITE_URL}/fr/blog/${slug}`,
         'zh-CN': `${SITE_URL}/zh/blog/${slug}`,
-        'es': `${SITE_URL}/es/blog/${slug}`,
+        'es-US': `${SITE_URL}/es/blog/${slug}`,
+        'en-US': `${SITE_URL}/blog/${slug}`,
         'x-default': `${SITE_URL}/blog/${slug}`,
+        // Self-reference for the current locale
+        [hrefLang]: `${SITE_URL}/${locale}/blog/${slug}`,
+      },
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
       },
     },
     openGraph: {
@@ -239,29 +258,50 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
   // Add HowTo schema if present
   const schemas: unknown[] = [articleSchema];
   if (post.howTo) {
-    const howToSchema = {
+    const howToSchema: Record<string, unknown> = {
       '@context': 'https://schema.org',
       '@type': 'HowTo',
       name: post.howTo.name,
       description: post.howTo.description,
-      totalTime: post.howTo.totalTime,
-      estimatedCost: post.howTo.estimatedCost
-        ? {
-            '@type': 'MonetaryAmount',
-            currency: post.howTo.estimatedCost.currency,
-            value: post.howTo.estimatedCost.value,
-          }
-        : undefined,
-      supply: post.howTo.supply?.map((s) => ({ '@type': 'HowToSupply', name: s })),
-      tool: post.howTo.tool?.map((t) => ({ '@type': 'HowToTool', name: t })),
-      step: post.howTo.steps.map((step) => ({
-        '@type': 'HowToStep',
-        name: step.name,
-        text: step.text,
-        position: step.position,
-        image: step.image ? { '@type': 'ImageObject', url: step.image } : undefined,
-      })),
+      step: post.howTo.steps.map((step) => {
+        const stepData: Record<string, unknown> = {
+          '@type': 'HowToStep',
+          name: step.name,
+          text: step.text,
+          position: step.position,
+        };
+        // Only add image if provided
+        if (step.image) {
+          stepData.image = { '@type': 'ImageObject', url: step.image };
+        }
+        // Only add url if the step has a specific anchor
+        const stepUrl = `${SITE_URL}/${locale}/blog/${slug}`;
+        stepData.url = stepUrl;
+        return stepData;
+      }),
     };
+    
+    // Only add optional fields if they exist and have content
+    if (post.howTo.totalTime) {
+      howToSchema.totalTime = post.howTo.totalTime;
+    }
+    
+    if (post.howTo.estimatedCost?.currency && post.howTo.estimatedCost?.value) {
+      howToSchema.estimatedCost = {
+        '@type': 'MonetaryAmount',
+        currency: post.howTo.estimatedCost.currency,
+        value: post.howTo.estimatedCost.value,
+      };
+    }
+    
+    if (post.howTo.supply && post.howTo.supply.length > 0) {
+      howToSchema.supply = post.howTo.supply.map((s) => ({ '@type': 'HowToSupply', name: s }));
+    }
+    
+    if (post.howTo.tool && post.howTo.tool.length > 0) {
+      howToSchema.tool = post.howTo.tool.map((t) => ({ '@type': 'HowToTool', name: t }));
+    }
+    
     schemas.push(howToSchema);
   }
 
@@ -270,16 +310,21 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
     const faqSchema = {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
-      mainEntity: post.faq.map((item) => ({
-        '@type': 'Question',
-        name: item.question,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: item.answerHtml,
-        },
-      })),
+      mainEntity: post.faq
+        .filter((item) => item.question && item.answerHtml) // Filter out incomplete FAQ items
+        .map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answerHtml,
+          },
+        })),
     };
-    schemas.push(faqSchema);
+    // Only add FAQ schema if there are valid questions after filtering
+    if (faqSchema.mainEntity.length > 0) {
+      schemas.push(faqSchema);
+    }
   }
 
   // Format date based on locale

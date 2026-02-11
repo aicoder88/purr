@@ -41,9 +41,9 @@ export default function AffiliateContent() {
         return (
             <div className="min-h-screen bg-white dark:bg-gray-950 flex items-center justify-center p-4">
                 <div className="max-w-md text-center">
-                    <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
                         Page Temporarily Unavailable
-                    </h1>
+                    </h2>
                     <p className="text-gray-700 dark:text-gray-300 mb-6">
                         We&apos;re experiencing technical difficulties. Please try refreshing the page or come back later.
                     </p>

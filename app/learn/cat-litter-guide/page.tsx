@@ -4,22 +4,24 @@ import type { Metadata } from 'next';
 import { SITE_NAME } from '../../../src/lib/constants';
 
 export const metadata: Metadata = {
-  title: `Complete Cat Litter Guide - Types, Tips & Best Practices | ${SITE_NAME}`,
-  description: 'Comprehensive guide to cat litter types, maintenance tips, and solving common problems. Learn how to choose the best litter for your cat and keep it fresh longer.',
+  title: `Cat Litter Guide: Types & Best Practices | ${SITE_NAME}`,
+  description: 'Comprehensive guide to cat litter types and maintenance tips. Learn how to choose the best litter for your cat and keep it fresh longer.',
   keywords: ['cat litter guide', 'cat litter types', 'litter maintenance tips', 'clay litter', 'clumping litter', 'silica litter', 'natural cat litter'],
   alternates: {
-    canonical: '/learn/cat-litter-guide',
+    canonical: 'https://www.purrify.ca/learn/cat-litter-guide',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/cat-litter-guide',
       'fr-CA': 'https://www.purrify.ca/fr/learn/cat-litter-guide',
       'zh-CN': 'https://www.purrify.ca/zh/learn/cat-litter-guide',
-      'es': 'https://www.purrify.ca/es/learn/cat-litter-guide',
+      'es-US': 'https://www.purrify.ca/es/learn/cat-litter-guide',
+      'en-US': 'https://www.purrify.ca/es/learn/cat-litter-guide',
+      'x-default': 'https://www.purrify.ca/es/learn/cat-litter-guide',
     },
   },
   openGraph: {
     type: 'article',
     url: 'https://www.purrify.ca/learn/cat-litter-guide',
-    title: `Complete Cat Litter Guide - Types, Tips & Best Practices | ${SITE_NAME}`,
+    title: `Cat Litter Guide: Types & Best Practices | ${SITE_NAME}`,
     description: 'Comprehensive guide to cat litter types, maintenance tips, and solving common problems.',
     locale: 'en_CA',
     images: [

@@ -1,19 +1,29 @@
 import type { Metadata } from 'next';
-import { SITE_NAME, CONTACT_INFO } from '@/lib/constants';
+import { SITE_NAME, SITE_URL, CONTACT_INFO } from '@/lib/constants';
 import SellSheetClientPage from './_components/SellSheetClientPage';
 
 export const metadata: Metadata = {
   title: `${SITE_NAME} B2B Sell Sheet - Wholesale Partner Information`,
-  description: 'Download our B2B sell sheet with wholesale pricing, product specifications, and partnership opportunities. Perfect for retailers, veterinarians, and pet professionals.',
+  description: 'Download our B2B sell sheet with wholesale pricing and partnership opportunities. Perfect for retailers, veterinarians, and pet professionals.',
   keywords: ['wholesale', 'b2b', 'sell sheet', 'partner program'],
   alternates: {
     canonical: '/b2b/sell-sheet',
   },
   openGraph: {
     title: `${SITE_NAME} B2B Sell Sheet - Wholesale Partner Information`,
-    description: 'Download our B2B sell sheet with wholesale pricing, product specifications, and partnership opportunities.',
-    url: 'https://www.purrify.ca/b2b/sell-sheet',
+    description: 'Download our B2B sell sheet with wholesale pricing and partnership opportunities. Perfect for retailers, veterinarians, and pet professionals.',
+    url: `${SITE_URL}/b2b/sell-sheet`,
     type: 'website',
+    siteName: SITE_NAME,
+    locale: 'en_CA',
+    images: [
+      {
+        url: `${SITE_URL}/images/Logos/purrify-logo.png`,
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} B2B Sell Sheet`,
+      },
+    ],
   },
   other: {
     'last-modified': '2026-01-23',

@@ -1028,7 +1028,7 @@ export const seoMetaFr: SEOMetaContent = {
       }
     },
     activatedCarbonVsZeolite: {
-      title: 'Charbon Actif vs Zéolite Pour Litière Chat: Lequel Fonctionne Mieux?',
+      title: 'Charbon Actif vs Zéolite Litière: Lequel Mieux?',
       description: 'Comparaison scientifique charbon actif et zéolite pour contrôle odeur litière. Voyez résultats tests, avantages/inconvénients, lequel absorbe mieux l\'ammoniaque.',
       targetKeyword: 'charbon actif vs zéolite litière chat',
       datePublished: '2025-07-10',
@@ -2006,7 +2006,7 @@ export const seoMetaEs: SEOMetaContent = {
       }
     },
     activatedCarbonVsZeolite: {
-      title: '¿Carbón Activado vs Zeolita Para Arena de Gatos: Cuál Funciona Mejor?',
+      title: '¿Carbón Activado vs Zeolita Arena: Cuál Mejor?',
       description: 'Comparación científica de carbón activado y zeolita para control de olor en arena. Ve resultados de pruebas, pros/contras, cuál absorbe mejor el amoníaco.',
       targetKeyword: 'carbón activado vs zeolita arena gatos',
       datePublished: '2025-07-20',

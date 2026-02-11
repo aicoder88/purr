@@ -14,12 +14,14 @@ export const metadata: Metadata = {
   description: pageDescription,
   keywords: ['how to neutralize ammonia in cat litter', 'cat litter ammonia neutralizer', 'reduce ammonia in litter box', 'best cat litter for ammonia control', 'ammonia absorber for cat litter', 'cat urine ammonia smell'],
   alternates: {
-    canonical: '/learn/solutions/how-to-neutralize-ammonia-cat-litter',
+    canonical: 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter',
       'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/how-to-neutralize-ammonia-cat-litter',
       'zh-CN': 'https://www.purrify.ca/zh/learn/solutions/how-to-neutralize-ammonia-cat-litter',
-      'es': 'https://www.purrify.ca/es/learn/solutions/how-to-neutralize-ammonia-cat-litter',
+      'es-US': 'https://www.purrify.ca/es/learn/solutions/how-to-neutralize-ammonia-cat-litter',
+      'en-US': 'https://www.purrify.ca/es/learn/solutions/how-to-neutralize-ammonia-cat-litter',
+      'x-default': 'https://www.purrify.ca/es/learn/solutions/how-to-neutralize-ammonia-cat-litter',
     },
   },
   openGraph: {

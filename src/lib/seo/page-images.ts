@@ -179,6 +179,76 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
     image: '/optimized/three-bags-no-bg.webp',
     alt: 'Shipping information',
   },
+  
+  // SEO FIX (Feb 2026): Added images for /learn/answers/ pages
+  '/learn/answers/does-activated-carbon-work-for-cat-litter': {
+    image: '/optimized/activated-carbon-benefits.webp',
+    alt: 'Scientific proof that activated carbon works for cat litter odor',
+  },
+  '/learn/answers/how-do-i-keep-my-house-from-smelling-like-cat-litter': {
+    image: '/optimized/fresh-home-hero-ghibli.webp',
+    alt: 'Fresh home without cat litter smell',
+  },
+  '/learn/answers/how-do-i-stop-my-cat-litter-from-smelling': {
+    image: '/optimized/litter-box-smell-solution.webp',
+    alt: 'Stop cat litter smell effectively',
+  },
+  '/learn/answers/how-often-should-i-change-cat-litter': {
+    image: '/optimized/frequency-hero.webp',
+    alt: 'Cat litter change frequency guide',
+  },
+  '/learn/answers/how-to-eliminate-cat-litter-odor': {
+    image: '/optimized/fresh-home-hero-ghibli.webp',
+    alt: 'Eliminate cat litter odor completely',
+  },
+  '/learn/answers/how-to-keep-litter-box-from-smelling': {
+    image: '/optimized/before-after.webp',
+    alt: 'Keep litter box smelling fresh',
+  },
+  '/learn/answers/is-it-safe-to-sleep-in-a-room-with-cat-litter': {
+    image: '/optimized/safe-cat-litter.webp',
+    alt: 'Safety of sleeping near cat litter',
+  },
+  '/learn/answers/what-absorbs-cat-litter-odor': {
+    image: '/optimized/science-molecule-lab.jpg',
+    alt: 'What absorbs cat litter odor best',
+  },
+  '/learn/answers/what-cat-litter-controls-odor-best': {
+    image: '/optimized/best-litter-smell-ghibli.webp',
+    alt: 'Best cat litter for odor control',
+  },
+  '/learn/answers/what-eliminates-cat-litter-odor': {
+    image: '/optimized/carbon-828w.webp',
+    alt: 'What eliminates cat litter odor',
+  },
+  '/learn/answers/why-does-cat-litter-smell-worse-in-summer': {
+    image: '/optimized/summer-fresh-cat.webp',
+    alt: 'Why cat litter smells worse in summer',
+  },
+  '/learn/answers/why-does-my-house-smell-like-cat-pee': {
+    image: '/optimized/cat-fresh-home-ammonia.jpg',
+    alt: 'House smelling like cat pee solutions',
+  },
+  
+  // SEO FIX (Feb 2026): Added images for alternatives pages
+  '/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative': {
+    image: '/optimized/activated-carbon-vs-baking-soda-comparison.webp',
+    alt: 'Better alternative to Arm & Hammer cat litter deodorizer',
+  },
+  
+  // SEO FIX (Feb 2026): Added images for tools and science pages
+  '/tools/cat-litter-calculator': {
+    image: '/optimized/cat-litter-deodorizer-guide.webp',
+    alt: 'Cat litter calculator tool',
+  },
+  '/science': {
+    image: '/optimized/carbon_magnified_image.webp',
+    alt: 'Scientific research and citations for Purrify',
+  },
+  '/learn/cat-litter-answers': {
+    image: '/optimized/cat-litter-deodorizer-guide.webp',
+    alt: 'Cat litter questions and expert answers',
+  },
 };
 
 /**

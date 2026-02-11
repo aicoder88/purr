@@ -14,12 +14,14 @@ export const metadata: Metadata = {
   description: pageDescription,
   keywords: ['cat litter smells like ammonia', 'ammonia smell cat litter', 'cat litter ammonia smell', 'ammonia from cat litter', 'how to neutralize ammonia in cat litter', 'best cat litter for ammonia smell'],
   alternates: {
-    canonical: '/learn/solutions/ammonia-smell-cat-litter',
+    canonical: 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter',
       'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/ammonia-smell-cat-litter',
       'zh-CN': 'https://www.purrify.ca/zh/learn/solutions/ammonia-smell-cat-litter',
-      'es': 'https://www.purrify.ca/es/learn/solutions/ammonia-smell-cat-litter',
+      'es-US': 'https://www.purrify.ca/es/learn/solutions/ammonia-smell-cat-litter',
+      'en-US': 'https://www.purrify.ca/es/learn/solutions/ammonia-smell-cat-litter',
+      'x-default': 'https://www.purrify.ca/es/learn/solutions/ammonia-smell-cat-litter',
     },
   },
   openGraph: {

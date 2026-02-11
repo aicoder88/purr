@@ -9,12 +9,14 @@ export const metadata: Metadata = {
   description: 'Find the right solution for your cat litter odor problem. Expert guides for ammonia smell, apartment living, multiple cats, senior cats, and more.',
   keywords: ['cat litter odor solutions', 'ammonia smell fix', 'apartment cat smell', 'multi-cat odor control', 'natural cat litter additive'],
   alternates: {
-    canonical: '/learn/solutions',
+    canonical: 'https://www.purrify.ca/learn/solutions',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/solutions',
       'fr-CA': 'https://www.purrify.ca/fr/learn/solutions',
       'zh-CN': 'https://www.purrify.ca/zh/learn/solutions',
-      'es': 'https://www.purrify.ca/es/learn/solutions',
+      'es-US': 'https://www.purrify.ca/es/learn/solutions',
+      'en-US': 'https://www.purrify.ca/es/learn/solutions',
+      'x-default': 'https://www.purrify.ca/es/learn/solutions',
     },
   },
   openGraph: {

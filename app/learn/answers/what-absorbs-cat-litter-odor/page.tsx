@@ -3,6 +3,7 @@ export const dynamic = 'force-static';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import { SITE_NAME, SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'What Absorbs Cat Litter Odor? - Purrify',
@@ -16,6 +17,22 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: '/learn/answers/what-absorbs-cat-litter-odor',
+  },
+  openGraph: {
+    title: 'What Absorbs Cat Litter Odor? - Purrify',
+    description: 'Learn what materials actually absorb cat litter odor versus masking it. Discover activated carbon, zeolite, and other solutions.',
+    url: `${SITE_URL}/learn/answers/what-absorbs-cat-litter-odor`,
+    type: 'article',
+    siteName: SITE_NAME,
+    locale: 'en_CA',
+    images: [
+      {
+        url: `${SITE_URL}/images/Logos/purrify-logo.png`,
+        width: 1200,
+        height: 630,
+        alt: 'What Absorbs Cat Litter Odor?',
+      },
+    ],
   },
 };
 

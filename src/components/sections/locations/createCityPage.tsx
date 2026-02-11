@@ -415,13 +415,6 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
               {
                 '@type': 'Product',
                 name: `Purrify Cat Litter Odor Eliminator - ${profile.name}`,
-                aggregateRating: {
-                  '@type': 'AggregateRating',
-                  ratingValue: averageRating,
-                  reviewCount,
-                  bestRating: '5',
-                  worstRating: '1',
-                },
                 offers: {
                   '@type': 'Offer',
                   availability: 'https://schema.org/InStock',

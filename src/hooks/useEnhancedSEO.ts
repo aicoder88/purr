@@ -268,8 +268,8 @@ function generateSchema(
   };
 
   switch (type) {
-    case 'product':
-      return {
+    case 'product': {
+      const productSchema: Record<string, unknown> = {
         ...baseSchema,
         '@type': 'Product',
         name: data.name,
@@ -288,26 +288,34 @@ function generateSchema(
           availability: data.availability || 'https://schema.org/InStock',
           itemCondition: 'https://schema.org/NewCondition',
         },
-        aggregateRating: data.rating
-          ? {
-            '@type': 'AggregateRating',
-            ratingValue: data.rating.value,
-            reviewCount: data.rating.count,
-            bestRating: 5,
-            worstRating: 1,
-          }
-          : undefined,
       };
+      // Only add aggregateRating if rating data is provided
+      if (data.rating && data.rating.value && data.rating.count) {
+        productSchema.aggregateRating = {
+          '@type': 'AggregateRating',
+          ratingValue: data.rating.value.toString(),
+          reviewCount: data.rating.count.toString(),
+          bestRating: '5',
+          worstRating: '1',
+        };
+      }
+      return productSchema;
+    }
 
-    case 'article':
-      return {
+    case 'article': {
+      // Ensure headline doesn't exceed 110 characters for Google guidelines
+      const headline = data.headline?.length > 110 
+        ? data.headline.substring(0, 107) + '...' 
+        : data.headline;
+      
+      const articleSchema: Record<string, unknown> = {
         ...baseSchema,
         '@type': 'Article',
-        headline: data.headline,
+        headline,
         description: data.description,
-        image: data.image,
-        datePublished: data.datePublished,
-        dateModified: data.dateModified || new Date().toISOString(),
+        image: data.image || 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        datePublished: data.datePublished || new Date().toISOString(),
+        dateModified: data.dateModified || data.datePublished || new Date().toISOString(),
         author: {
           '@type': 'Organization',
           name: SITE_NAME,
@@ -316,6 +324,7 @@ function generateSchema(
         publisher: {
           '@type': 'Organization',
           name: SITE_NAME,
+          url: 'https://www.purrify.ca',
           logo: {
             '@type': 'ImageObject',
             url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
@@ -327,11 +336,16 @@ function generateSchema(
           '@type': 'WebPage',
           '@id': url,
         },
-        articleSection: data.category,
-        keywords: data.keywords,
-        wordCount: data.wordCount,
-        // Include scientific citations if provided
-        citation: data.citations?.map((citation: ScientificCitation) => ({
+      };
+      
+      // Add optional fields only if provided
+      if (data.category) articleSchema.articleSection = data.category;
+      if (data.keywords) articleSchema.keywords = data.keywords;
+      if (data.wordCount) articleSchema.wordCount = data.wordCount;
+      
+      // Include scientific citations if provided
+      if (data.citations?.length) {
+        articleSchema.citation = data.citations.map((citation: ScientificCitation) => ({
           '@type': 'ScholarlyArticle',
           headline: citation.title,
           author: citation.authors,
@@ -342,8 +356,11 @@ function generateSchema(
           },
           identifier: citation.doi || citation.pmid,
           url: citation.url,
-        })),
-      };
+        }));
+      }
+      
+      return articleSchema;
+    }
 
     case 'faq':
       return {

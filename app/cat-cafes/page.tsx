@@ -15,13 +15,31 @@ export const metadata: Metadata = {
     'odor elimination',
   ],
   alternates: {
-    canonical: '/cat-cafes',
+    canonical: 'https://www.purrify.ca/cat-cafes',
   },
   openGraph: {
+    type: 'website',
+    url: 'https://www.purrify.ca/cat-cafes',
+    siteName: SITE_NAME,
     title: `${SITE_NAME} - Cat Cafe Odor Solutions`,
     description: 'Keep your cat cafe fresh all day. Purrify activated carbon eliminates litter box odors without fragrances.',
-    url: 'https://www.purrify.ca/cat-cafes',
-    type: 'website',
+    locale: 'en_CA',
+    images: [
+      {
+        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        width: 1200,
+        height: 800,
+        alt: `${SITE_NAME} for Cat Cafes`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@purrifyhq',
+    creator: '@purrifyhq',
+    title: `${SITE_NAME} - Cat Cafe Odor Solutions`,
+    description: 'Keep your cat cafe fresh all day. Purrify activated carbon eliminates litter box odors without fragrances.',
+    images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
   },
   other: {
     'last-modified': '2025-12-29',

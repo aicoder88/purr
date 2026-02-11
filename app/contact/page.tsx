@@ -35,13 +35,31 @@ export const metadata: Metadata = {
     'pet product support',
   ],
   alternates: {
-    canonical: '/contact',
+    canonical: 'https://www.purrify.ca/contact',
   },
   openGraph: {
+    type: 'website',
+    url: 'https://www.purrify.ca/contact',
+    siteName: SITE_NAME,
     title: `Contact Us - ${SITE_NAME}`,
     description: 'Get in touch with the Purrify team for support and inquiries.',
-    url: 'https://www.purrify.ca/contact',
-    type: 'website',
+    locale: 'en_CA',
+    images: [
+      {
+        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        width: 1200,
+        height: 800,
+        alt: `Contact ${SITE_NAME}`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@purrifyhq',
+    creator: '@purrifyhq',
+    title: `Contact Us - ${SITE_NAME}`,
+    description: 'Get in touch with the Purrify team for support and inquiries.',
+    images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
   },
   other: {
     'last-modified': '2026-02-04',

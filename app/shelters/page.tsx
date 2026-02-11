@@ -3,7 +3,7 @@ import { SITE_NAME, CONTACT_INFO } from '@/lib/constants';
 import SheltersClientPage from './_components/SheltersClientPage';
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} - Purrify for Shelters - Animal Shelter Partner Program`,
+  title: `Purrify for Shelters | Partner Program | ${SITE_NAME}`,
   description: 'Exclusive program for animal shelters and rescue organizations. Volume discounts, donation matching, and support for shelters across Canada.',
   keywords: [
     'Purrify shelters',
@@ -15,13 +15,31 @@ export const metadata: Metadata = {
     'animal shelter supplies',
   ],
   alternates: {
-    canonical: '/shelters',
+    canonical: 'https://www.purrify.ca/shelters',
   },
   openGraph: {
-    title: `${SITE_NAME} - Purrify for Shelters - Animal Shelter Partner Program`,
-    description: 'Exclusive program for animal shelters and rescue organizations. Volume discounts, donation matching, and support for shelters.',
-    url: 'https://www.purrify.ca/shelters',
     type: 'website',
+    url: 'https://www.purrify.ca/shelters',
+    siteName: SITE_NAME,
+    title: `Purrify for Shelters | Partner Program | ${SITE_NAME}`,
+    description: 'Exclusive program for animal shelters and rescue organizations. Volume discounts, donation matching, and support for shelters.',
+    locale: 'en_CA',
+    images: [
+      {
+        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        width: 1200,
+        height: 800,
+        alt: `${SITE_NAME} for Shelters`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@purrifyhq',
+    creator: '@purrifyhq',
+    title: `Purrify for Shelters | Partner Program | ${SITE_NAME}`,
+    description: 'Exclusive program for animal shelters and rescue organizations. Volume discounts, donation matching, and support.',
+    images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
   },
   other: {
     'last-modified': '2025-12-26',

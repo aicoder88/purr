@@ -14,12 +14,14 @@ export const metadata: Metadata = {
   description: pageDescription,
   keywords: ['non-toxic cat litter deodorizer', 'safe cat litter deodorizer', 'natural litter deodorizer', 'fragrance-free cat litter', 'chemical-free cat odor control', 'pet-safe litter additive'],
   alternates: {
-    canonical: '/learn/solutions/natural-cat-litter-additive',
+    canonical: 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive',
       'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/natural-cat-litter-additive',
       'zh-CN': 'https://www.purrify.ca/zh/learn/solutions/natural-cat-litter-additive',
-      'es': 'https://www.purrify.ca/es/learn/solutions/natural-cat-litter-additive',
+      'es-US': 'https://www.purrify.ca/es/learn/solutions/natural-cat-litter-additive',
+      'en-US': 'https://www.purrify.ca/es/learn/solutions/natural-cat-litter-additive',
+      'x-default': 'https://www.purrify.ca/es/learn/solutions/natural-cat-litter-additive',
     },
   },
   openGraph: {

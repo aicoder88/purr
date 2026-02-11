@@ -13,12 +13,14 @@ export const metadata: Metadata = {
   description: 'Need help? Fast support for orders, shipping, returns. Email, phone, or WhatsApp available 7 days/week. Response within 24 hours. Ships to USA & Canada.',
   keywords: ['customer support', 'help center', 'contact purrify', 'order help'],
   alternates: {
-    canonical: '/support',
+    canonical: 'https://www.purrify.ca/support',
     languages: {
       'en-CA': 'https://www.purrify.ca/support',
       'fr-CA': 'https://www.purrify.ca/fr/support',
       'zh-CN': 'https://www.purrify.ca/zh/support',
-      'es': 'https://www.purrify.ca/es/support',
+      'es-US': 'https://www.purrify.ca/es/support',
+      'en-US': 'https://www.purrify.ca/support',
+      'x-default': 'https://www.purrify.ca/support',
     },
   },
   openGraph: {

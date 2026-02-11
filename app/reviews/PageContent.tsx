@@ -99,12 +99,17 @@ const stats = [
 export default function Reviews() {
   const locale = 'en';
   
-  // Schema for structured data
+  // Schema for structured data - Fixed to meet Google Rich Results requirements
   const schema = {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "Purrify Cat Litter Deodorizer",
     "description": "Activated carbon cat litter additive that eliminates odors naturally",
+    "image": [
+      "https://www.purrify.ca/optimized/60g-transparent.webp",
+      "https://www.purrify.ca/optimized/120g-transparent.webp",
+      "https://www.purrify.ca/images/Logos/purrify-logo.png"
+    ],
     "brand": {
       "@type": "Brand",
       "name": "Purrify"
@@ -113,14 +118,9 @@ export default function Reviews() {
       "@type": "Offer",
       "price": "4.76",
       "priceCurrency": "CAD",
-      "availability": "https://schema.org/InStock"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": 4.9,
-      "reviewCount": 138,
-      "bestRating": 5,
-      "worstRating": 1,
+      "availability": "https://schema.org/InStock",
+      "url": "https://www.purrify.ca",
+      "itemCondition": "https://schema.org/NewCondition"
     },
     "review": reviews.slice(0, 3).map(review => ({
       "@type": "Review",
@@ -131,9 +131,15 @@ export default function Reviews() {
       "reviewBody": review.review,
       "reviewRating": {
         "@type": "Rating",
-        "ratingValue": review.rating
+        "ratingValue": review.rating.toString(),
+        "bestRating": "5",
+        "worstRating": "1"
       },
-      "datePublished": review.date,
+      "datePublished": new Date(review.date).toISOString(),
+      "itemReviewed": {
+        "@type": "Product",
+        "name": "Purrify Cat Litter Deodorizer"
+      }
     })),
   };
 

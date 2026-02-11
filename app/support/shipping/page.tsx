@@ -10,12 +10,14 @@ export const metadata: Metadata = {
   description: 'Learn about Purrify shipping options, delivery times, costs, and tracking. We ship to USA and Canada with fast, reliable delivery.',
   keywords: ['shipping', 'delivery', 'tracking', 'shipping costs', 'international shipping'],
   alternates: {
-    canonical: '/support/shipping',
+    canonical: 'https://www.purrify.ca/support/shipping',
     languages: {
       'en-CA': 'https://www.purrify.ca/support/shipping',
       'fr-CA': 'https://www.purrify.ca/fr/support/shipping',
       'zh-CN': 'https://www.purrify.ca/zh/support/shipping',
-      'es': 'https://www.purrify.ca/es/support/shipping',
+      'es-US': 'https://www.purrify.ca/es/support/shipping',
+      'en-US': 'https://www.purrify.ca/support/shipping',
+      'x-default': 'https://www.purrify.ca/support/shipping',
     },
   },
   openGraph: {

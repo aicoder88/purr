@@ -287,6 +287,19 @@ export function Header() {
           label: t.nav?.technologyComparison || "",
           href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/activated-carbon-vs-baking-soda-deodorizers`,
         },
+        // SEO FIX (Feb 2026): Added direct links to reduce redirect chains
+        {
+          label: t.nav?.catLitterAnswers || "Cat Litter Q&A",
+          href: "/learn/cat-litter-answers",
+        },
+        {
+          label: t.nav?.scienceHub || "Research Citations",
+          href: "/science",
+        },
+        {
+          label: t.nav?.litterCalculator || "Litter Calculator",
+          href: "/tools/cat-litter-calculator",
+        },
         { label: t.nav?.solutions || "", isGroupHeader: true },
         {
           label: t.nav?.ammoniaSmellControl || "",

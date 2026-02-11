@@ -8,6 +8,7 @@
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
+import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { useTranslation } from '@/lib/translation-context';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -145,7 +146,7 @@ export function ReferralDashboard({ className = '' }: ReferralDashboardProps) {
         </CardHeader>
         <CardContent>
           <Button asChild>
-            <a href="/auth/signin">{t.referral?.dashboard?.signIn || 'Sign In'}</a>
+            <Link href="/admin/login">{t.referral?.dashboard?.signIn || 'Sign In'}</Link>
           </Button>
         </CardContent>
       </Card>

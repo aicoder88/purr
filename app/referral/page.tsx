@@ -8,7 +8,31 @@ export const metadata: Metadata = {
   title: `Referral Program - Give $5, Get $5 | ${SITE_NAME}`,
   description: 'Share Purrify with friends and earn rewards. Give $5 off to your friends and get $5 credit when they make their first purchase.',
   alternates: {
-    canonical: '/referral',
+    canonical: 'https://www.purrify.ca/referral',
+  },
+  openGraph: {
+    type: 'website',
+    url: 'https://www.purrify.ca/referral',
+    siteName: SITE_NAME,
+    title: `Referral Program - Give $5, Get $5 | ${SITE_NAME}`,
+    description: 'Share Purrify with friends and earn rewards. Give $5 off to your friends and get $5 credit when they make their first purchase.',
+    locale: 'en_CA',
+    images: [
+      {
+        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        width: 1200,
+        height: 800,
+        alt: `${SITE_NAME} Referral Program`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@purrifyhq',
+    creator: '@purrifyhq',
+    title: `Referral Program - Give $5, Get $5 | ${SITE_NAME}`,
+    description: 'Share Purrify with friends and earn rewards. Give $5 off to your friends and get $5 credit.',
+    images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
   },
   other: {
     'last-modified': '2025-11-17',

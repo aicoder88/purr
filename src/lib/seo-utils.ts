@@ -141,6 +141,7 @@ export type LanguageAlternate = {
 export const buildLanguageAlternates = (canonicalPath: string): LanguageAlternate[] => {
   const normalizedPath = normalizeCanonicalPath(canonicalPath);
 
+  // Build alternates for all supported locales with proper self-referencing
   const alternates = SUPPORTED_LOCALES.map(locale => ({
     locale,
     hrefLang: LOCALE_HREFLANG_MAP[locale],
@@ -149,23 +150,33 @@ export const buildLanguageAlternates = (canonicalPath: string): LanguageAlternat
 
   const defaultHref = getLocalizedUrl(normalizedPath, DEFAULT_LOCALE);
 
-  // Add US English variant for homepage
-  const usHref = 'https://www.purrify.ca/us';
+  // Only add en-US and x-default for non-locale-specific paths
+  // (i.e., not for /fr/*, /zh/*, /es/* paths which should be self-contained)
+  const isRootPath = normalizedPath === '/' || normalizedPath === '';
+  
+  // Build the complete alternate set
+  const result: LanguageAlternate[] = [...alternates];
+  
+  // Add en-US variant - points to /us for homepage, or locale equivalent for other pages
+  // For non-root paths, en-US should point to the same path as en-CA (no /us/ prefix)
+  const usHref = isRootPath 
+    ? 'https://www.purrify.ca/us'
+    : getLocalizedUrl(normalizedPath, DEFAULT_LOCALE);
+  
+  result.push({
+    locale: DEFAULT_LOCALE,
+    hrefLang: 'en-US',
+    href: usHref,
+  });
+  
+  // Add x-default pointing to the default locale version
+  result.push({
+    locale: DEFAULT_LOCALE,
+    hrefLang: 'x-default',
+    href: defaultHref,
+  });
 
-  return [
-    ...alternates,
-    // Add en-US variant pointing to /us page (for US market targeting)
-    {
-      locale: DEFAULT_LOCALE,
-      hrefLang: 'en-US',
-      href: usHref,
-    },
-    {
-      locale: DEFAULT_LOCALE,
-      hrefLang: 'x-default',
-      href: defaultHref,
-    },
-  ];
+  return result;
 };
 
 function normalizeCanonicalPath(path: string | undefined) {
@@ -350,25 +361,21 @@ export const generateProductStructuredData = (productId: string, localeInput: st
       '@type': 'Brand',
       name: SITE_NAME
     },
-    category: 'Pet Supplies > Cat Care > Litter Additives',
     sku: product.id,
     mpn: `PURRIFY-${product.id.toUpperCase()}`,
     offers: {
       '@type': 'Offer',
-      price: product.price.toString(),
+      price: product.price.toFixed(2),
       priceCurrency: 'CAD',
       availability: buildAvailabilityUrl(),
       url: localizedUrl,
-      priceValidUntil: getPriceValidityDate()
+      priceValidUntil: getPriceValidityDate(),
+      itemCondition: 'https://schema.org/NewCondition',
+      seller: {
+        '@type': 'Organization',
+        name: SITE_NAME
+      }
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: 4.9,
-      reviewCount: 138,
-      bestRating: 5,
-      worstRating: 1
-    },
-    inLanguage: locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : locale === 'es' ? 'es' : 'en-CA'
   };
 };
 
@@ -423,46 +430,39 @@ export const generateOrganizationSchema = (localeInput: string) => {
   const locale = normalizeLocale(localeInput);
   const baseUrl = 'https://www.purrify.ca';
 
+  // Filter valid social links (must be URLs)
+  const validSocialLinks = Object.values(SOCIAL_LINKS).filter(
+    (url): url is string => typeof url === 'string' && url.startsWith('http')
+  );
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     '@id': `${baseUrl}/#organization`,
     name: SITE_NAME,
-    alternateName: SITE_NAME,
     url: baseUrl,
     logo: `${baseUrl}/images/Logos/purrify-logo.png`,
     image: `${baseUrl}/images/Logos/purrify-logo.png`,
     description: getLocalizedContent(SEO_TRANSLATIONS.organizationDescription, locale),
-    foundingDate: '2023',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: CONTACT_INFO.address.split(',')[0],
       addressLocality: 'Mirabel',
       addressRegion: 'QC',
       postalCode: 'J7J 0T6',
       addressCountry: 'CA'
     },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: '45.6501',
-      longitude: '-73.8359'
-    },
-    contactPoint: {
-      '@type': 'ContactPoint',
-      telephone: CONTACT_INFO.phoneInternational,
-      email: CONTACT_INFO.email,
-      contactType: 'customer service',
-      areaServed: ['CA', 'US'],
-      availableLanguage: ['English', 'French', 'Chinese', 'Spanish']
-    },
-    sameAs: Object.values(SOCIAL_LINKS),
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: CONTACT_INFO.phoneInternational,
+        email: CONTACT_INFO.email,
+        contactType: 'customer service',
+        areaServed: ['CA', 'US'],
+        availableLanguage: ['English', 'French', 'Chinese', 'Spanish']
+      }
+    ],
+    sameAs: validSocialLinks,
     knowsAbout: getLocalizedKeywords(locale),
-    areaServed: {
-      '@type': 'Country',
-      name: 'Canada'
-    },
-    currenciesAccepted: 'CAD',
-    paymentAccepted: ['Credit Card', 'PayPal', 'Stripe']
   };
 };
 
@@ -470,6 +470,7 @@ export const generateOrganizationSchema = (localeInput: string) => {
 export const generateBreadcrumbSchema = (path: string, localeInput: string) => {
   const locale = normalizeLocale(localeInput);
   const pathSegments = path.split('/').filter(segment => segment !== '' && segment !== locale);
+  const baseUrl = 'https://www.purrify.ca';
 
   const breadcrumbs = [
     {
@@ -498,12 +499,19 @@ export const generateBreadcrumbSchema = (path: string, localeInput: string) => {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: breadcrumbs.map((breadcrumb, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      name: breadcrumb.name,
-      item: breadcrumb.url
-    }))
+    itemListElement: breadcrumbs.map((breadcrumb, index) => {
+      // Ensure the URL is absolute
+      const itemUrl = breadcrumb.url.startsWith('http') 
+        ? breadcrumb.url 
+        : `${baseUrl}${breadcrumb.url}`;
+      
+      return {
+        '@type': 'ListItem',
+        position: index + 1,
+        name: breadcrumb.name,
+        item: itemUrl
+      };
+    })
   };
 };
 
@@ -572,50 +580,17 @@ export const generateOfferSchema = (product: Product, localeInput: string, curre
 
   return {
     '@type': 'Offer',
-    price: product.price.toString(),
+    price: product.price.toFixed(2),
     priceCurrency: currency,
     availability: buildAvailabilityUrl(),
     url: localizedUrl,
     seller: {
       '@type': 'Organization',
-      name: SITE_NAME
+      name: SITE_NAME,
+      url: 'https://www.purrify.ca'
     },
     priceValidUntil: getPriceValidityDate(),
     itemCondition: 'https://schema.org/NewCondition',
-    shippingDetails: {
-      '@type': 'OfferShippingDetails',
-      shippingRate: {
-        '@type': 'MonetaryAmount',
-        value: '0',
-        currency: currency
-      },
-      shippingDestination: {
-        '@type': 'DefinedRegion',
-        addressCountry: currency === 'USD' ? 'US' : 'CA'
-      },
-      deliveryTime: {
-        '@type': 'ShippingDeliveryTime',
-        handlingTime: {
-          '@type': 'QuantitativeValue',
-          minValue: 1,
-          maxValue: 2,
-          unitCode: 'd'
-        },
-        transitTime: {
-          '@type': 'QuantitativeValue',
-          minValue: 2,
-          maxValue: 5,
-          unitCode: 'd'
-        }
-      }
-    },
-    hasMerchantReturnPolicy: {
-      '@type': 'MerchantReturnPolicy',
-      returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
-      merchantReturnDays: 30,
-      returnMethod: 'https://schema.org/ReturnByMail',
-      returnFees: 'https://schema.org/FreeReturn'
-    }
   };
 };
 
@@ -769,7 +744,6 @@ export const generateProductPageSchema = (productId: string, localeInput: string
           name: SITE_NAME,
           url: baseUrl
         },
-        category: 'Pet Supplies > Cat Care > Litter Additives',
         sku: product.id,
         mpn: `PURRIFY-${product.id.toUpperCase()}`,
         gtin13: `978${product.id.slice(-10).padStart(10, '0')}`,
@@ -782,14 +756,6 @@ export const generateProductPageSchema = (productId: string, localeInput: string
         color: 'Black',
         material: 'Activated Carbon',
         offers: generateOfferSchema(product, locale, currency),
-        aggregateRating: {
-          '@type': 'AggregateRating',
-          ratingValue: '4.9',
-          reviewCount: '127',
-          bestRating: '5',
-          worstRating: '1'
-        },
-        // review: generateReviewSchema(productId, locale), // Temporarily removed
         additionalProperty: [
           {
             '@type': 'PropertyValue',
@@ -815,7 +781,6 @@ export const generateProductPageSchema = (productId: string, localeInput: string
           '@type': 'Audience',
           name: 'Cat Owners'
         },
-        inLanguage: locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : locale === 'es' ? 'es' : 'en-CA'
       },
 
       // Breadcrumb Schema
@@ -838,69 +803,62 @@ export const generateArticlePageSchema = (title: string, description: string, pa
   const locale = normalizeLocale(localeInput);
   const url = getLocalizedUrl(path, locale);
   const baseUrl = 'https://www.purrify.ca';
+  
+  // Ensure headline doesn't exceed 110 characters
+  const headline = title?.length > 110 ? title.substring(0, 107) + '...' : title;
+  
+  // Ensure dates are in ISO 8601 format
+  const now = new Date().toISOString();
+  const datePublished = options?.datePublished 
+    ? (options.datePublished.includes('T') ? options.datePublished : new Date(options.datePublished).toISOString())
+    : now;
+  const dateModified = options?.dateModified 
+    ? (options.dateModified.includes('T') ? options.dateModified : new Date(options.dateModified).toISOString())
+    : datePublished;
 
-  return {
+  // Build article schema with required properties for Google Rich Results
+  const articleSchema: Record<string, unknown> = {
     '@context': 'https://schema.org',
-    '@graph': [
-      // Main Article Schema
-      {
-        '@type': 'Article',
-        '@id': url,
-        headline: title,
-        description: description,
-        url: url,
-        image: options?.image || `${baseUrl}/images/Logos/purrify-logo.png`,
-        author: {
-          '@type': 'Organization',
-          name: SITE_NAME,
-          url: baseUrl,
-          logo: `${baseUrl}/images/Logos/purrify-logo.png`
-        },
-        publisher: {
-          '@type': 'Organization',
-          name: SITE_NAME,
-          url: baseUrl,
-          logo: {
-            '@type': 'ImageObject',
-            url: `${baseUrl}/images/Logos/purrify-logo.png`,
-            width: 400,
-            height: 400
-          }
-        },
-        datePublished: options?.datePublished || new Date().toISOString(),
-        dateModified: options?.dateModified || new Date().toISOString(),
-        articleSection: options?.category || 'Pet Care',
-        keywords: options?.keywords?.join(', ') || getLocalizedKeywords(locale).join(', '),
-        wordCount: options?.wordCount || 1500,
-        timeRequired: options?.readingTime ? `PT${options.readingTime}M` : 'PT8M',
-        inLanguage: locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : locale === 'es' ? 'es' : 'en-CA',
-        about: {
-          '@type': 'Thing',
-          name: 'Cat Litter Odor Control',
-          description: 'Information about controlling cat litter odors using activated carbon'
-        },
-        mainEntity: {
-          '@type': 'Thing',
-          name: title,
-          description: description
-        },
-        isPartOf: {
-          '@type': 'WebSite',
-          '@id': `${baseUrl}/#website`
-        },
-        potentialAction: {
-          '@type': 'ReadAction',
-          target: url
-        }
-      },
-
-      // Breadcrumb Schema
-      generateBreadcrumbSchema(path, locale),
-
-      // FAQ Schema if it's a how-to or benefits article
-      ...(path.includes('benefits') || path.includes('how') ? [generateFAQSchema(locale)] : [])
-    ]
+    '@type': 'Article',
+    '@id': url,
+    headline,
+    description,
+    url,
+    image: options?.image || `${baseUrl}/images/Logos/purrify-logo.png`,
+    author: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: baseUrl,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: baseUrl,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${baseUrl}/images/Logos/purrify-logo.png`,
+        width: 400,
+        height: 400
+      }
+    },
+    datePublished,
+    dateModified,
+    inLanguage: locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : locale === 'es' ? 'es' : 'en-CA',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': url
+    },
   };
+  
+  // Only add optional fields if they have values
+  if (options?.category) articleSchema.articleSection = options.category;
+  if (options?.keywords?.length) articleSchema.keywords = options.keywords.join(', ');
+  if (options?.wordCount) articleSchema.wordCount = options.wordCount;
+  if (options?.readingTime) articleSchema.timeRequired = `PT${options.readingTime}M`;
+
+  // Return only the article schema (not @graph) for cleaner markup
+  // Breadcrumb should be added separately at page level if needed
+  return articleSchema;
 };
 
 // Generate location page schema

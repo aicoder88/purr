@@ -6,7 +6,7 @@ import { ChevronRight, HelpCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Cat Litter Questions Answered | Expert Advice - Purrify',
-  description: 'Get expert answers to every cat litter question: odor control, ammonia elimination, litter box placement, and activated carbon science. Real solutions from Purrify.',
+  description: 'Get expert answers to cat litter questions: odor control, ammonia elimination, litter box placement, and activated carbon science. Real solutions.',
   keywords: [
     'cat litter questions',
     'litter box odor answers',

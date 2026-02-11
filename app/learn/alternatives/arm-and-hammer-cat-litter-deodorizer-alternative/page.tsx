@@ -5,7 +5,7 @@ import { SITE_NAME } from '../../../../src/lib/constants';
 import ArmAndHammerAlternativeClient from './ArmAndHammerAlternativeClient';
 
 export const metadata: Metadata = {
-  title: 'Arm & Hammer Cat Litter Deodorizer Not Working? Try This Instead',
+  title: 'Arm & Hammer Not Working? Better Alternative | Purrify',
   description: "Baking soda stops working after 48 hours. It can't neutralize ammonia (same pH). Here's the science-backed alternative that lasts 3x longer.",
   keywords: [
     'Arm & Hammer alternative',
@@ -16,18 +16,20 @@ export const metadata: Metadata = {
     'cat litter smell solution',
   ],
   alternates: {
-    canonical: '/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
+    canonical: 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
       'fr-CA': 'https://www.purrify.ca/fr/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
       'zh-CN': 'https://www.purrify.ca/zh/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
-      'es': 'https://www.purrify.ca/es/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
+      'es-US': 'https://www.purrify.ca/es/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
+      'en-US': 'https://www.purrify.ca/es/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
+      'x-default': 'https://www.purrify.ca/es/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
     },
   },
   openGraph: {
     type: 'article',
     url: 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
-    title: 'Arm & Hammer Cat Litter Deodorizer Not Working? Try This Instead',
+    title: 'Arm & Hammer Not Working? Better Alternative | Purrify',
     description: "Baking soda stops working after 48 hours. It can't neutralize ammonia (same pH). Here's the science-backed alternative that lasts 3x longer.",
     locale: 'en_CA',
     images: [

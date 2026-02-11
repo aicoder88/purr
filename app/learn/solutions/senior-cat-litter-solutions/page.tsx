@@ -14,12 +14,14 @@ export const metadata: Metadata = {
     description: pageDescription,
     keywords: ['senior cat litter solutions', 'best litter for senior cats', 'best cat litter for older cats', 'litter box for senior cats with arthritis', 'low dust litter for senior cats', 'senior cat litter box'],
     alternates: {
-        canonical: '/learn/solutions/senior-cat-litter-solutions',
+        canonical: 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions',
         languages: {
             'en-CA': 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions',
             'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/senior-cat-litter-solutions',
             'zh-CN': 'https://www.purrify.ca/zh/learn/solutions/senior-cat-litter-solutions',
-            'es': 'https://www.purrify.ca/es/learn/solutions/senior-cat-litter-solutions',
+            'es-US': 'https://www.purrify.ca/es/learn/solutions/senior-cat-litter-solutions',
+            'en-US': 'https://www.purrify.ca/es/learn/solutions/senior-cat-litter-solutions',
+            'x-default': 'https://www.purrify.ca/es/learn/solutions/senior-cat-litter-solutions',
         },
     },
     openGraph: {

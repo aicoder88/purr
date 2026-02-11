@@ -54,6 +54,12 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
     description: `Expert advice on cat litter boxes, odor control, and pet care. ${SITE_DESCRIPTION}`,
   };
 
+  // Build hreflang alternates with self-referencing support
+  const hrefLang = locale === 'en' ? 'en-CA' : 
+                   locale === 'fr' ? 'fr-CA' : 
+                   locale === 'zh' ? 'zh-CN' : 
+                   locale === 'es' ? 'es-US' : 'en-CA';
+  
   return {
     title: localeMeta.title,
     description: localeMeta.description,
@@ -63,8 +69,21 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
         'en-CA': `${SITE_URL}/blog`,
         'fr-CA': `${SITE_URL}/fr/blog`,
         'zh-CN': `${SITE_URL}/zh/blog`,
-        'es': `${SITE_URL}/es/blog`,
+        'es-US': `${SITE_URL}/es/blog`,
+        'en-US': `${SITE_URL}/blog`,
         'x-default': `${SITE_URL}/blog`,
+        // Self-reference for the current locale
+        [hrefLang]: `${SITE_URL}/${locale}/blog`,
+      },
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
       },
     },
     openGraph: {
@@ -72,6 +91,16 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
       description: localeMeta.description,
       url: `${SITE_URL}/${locale}/blog`,
       type: 'website',
+      siteName: SITE_NAME,
+      locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : locale === 'es' ? 'es_US' : 'en_CA',
+      images: [
+        {
+          url: `${SITE_URL}/images/Logos/purrify-logo.png`,
+          width: 1200,
+          height: 630,
+          alt: localeMeta.title,
+        },
+      ],
     },
   };
 }
@@ -214,17 +243,41 @@ export default async function LocalizedBlogIndexPage({
     name: `${SITE_NAME} Blog - ${locale.toUpperCase()}`,
     url: `${SITE_URL}/${locale}/blog`,
     description: SITE_DESCRIPTION,
-    blogPost: currentPosts.map((post) => ({
-      '@type': 'BlogPosting',
-      headline: post.title,
-      description: post.excerpt,
-      url: `${SITE_URL}${post.link}`,
-      datePublished: post.date,
-      author: {
-        '@type': 'Person',
-        name: post.author,
-      },
-    })),
+    blogPost: currentPosts.map((post) => {
+      // Ensure date is in ISO 8601 format
+      const datePublished = post.date?.includes('T') 
+        ? post.date 
+        : new Date(post.date).toISOString();
+      
+      return {
+        '@type': 'BlogPosting',
+        headline: post.title?.length > 110 ? post.title.substring(0, 107) + '...' : post.title,
+        description: post.excerpt,
+        url: `${SITE_URL}${post.link}`,
+        image: post.image?.startsWith('http') ? post.image : `${SITE_URL}${post.image}`,
+        datePublished,
+        dateModified: datePublished,
+        author: {
+          '@type': 'Person',
+          name: post.author,
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: SITE_NAME,
+          url: SITE_URL,
+          logo: {
+            '@type': 'ImageObject',
+            url: `${SITE_URL}/images/Logos/purrify-logo.png`,
+            width: 400,
+            height: 400,
+          },
+        },
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': `${SITE_URL}${post.link}`,
+        },
+      };
+    }),
   };
 
   return (

@@ -57,6 +57,10 @@ export interface TranslationType {
     toggleTheme?: string;
     signOut?: string;
     signedIn?: string;
+    // SEO FIX (Feb 2026): Added missing nav keys
+    catLitterAnswers?: string;
+    scienceHub?: string;
+    carbonVsBakingSoda?: string;
     // B2B pivot keys
     findStore?: string;
     findNearYou?: string;
@@ -673,6 +677,8 @@ export interface TranslationType {
     scienceHub?: string;
     safetyInfo: string;
     catLitterGuide: string;
+    catLitterAnswers: string;
+    carbonVsBakingSoda: string;
     ammoniaSolutions: string;
     litterCalculator: string;
     // Article links

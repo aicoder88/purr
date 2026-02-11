@@ -7,39 +7,78 @@ export const metadata: Metadata = {
   description: 'Read verified reviews from real cat owners who have transformed their homes with Purrify. ★ 4.9/5 average rating from 138+ customers across Canada.',
   keywords: ['Purrify reviews', 'cat litter freshener reviews', 'customer testimonials', 'verified reviews', 'cat owner feedback'],
   openGraph: {
+    type: 'website',
+    url: 'https://www.purrify.ca/reviews',
+    siteName: SITE_NAME,
     title: 'Purrify Reviews - What Cat Owners Are Saying',
     description: 'Read verified reviews from real cat owners who have transformed their homes with Purrify. ★ 4.9/5 average rating from 138+ customers.',
-    url: 'https://www.purrify.ca/reviews',
+    locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/purrify-logo.png',
+        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
         width: 1200,
-        height: 630,
+        height: 800,
         alt: 'Purrify Customer Reviews',
       },
     ],
   },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@purrifyhq',
+    creator: '@purrifyhq',
+    title: 'Purrify Reviews - What Cat Owners Are Saying',
+    description: 'Read verified reviews from real cat owners who have transformed their homes with Purrify. ★ 4.9/5 average rating from 138+ customers.',
+    images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
+  },
   alternates: {
     canonical: 'https://www.purrify.ca/reviews',
+    languages: {
+      'en-CA': 'https://www.purrify.ca/reviews',
+      'fr-CA': 'https://www.purrify.ca/fr/reviews',
+      'zh-CN': 'https://www.purrify.ca/zh/reviews',
+      'es-US': 'https://www.purrify.ca/es/opiniones',  // Spanish uses /es/opiniones
+      'en-US': 'https://www.purrify.ca/reviews',
+      'x-default': 'https://www.purrify.ca/reviews',
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   other: {
     'last-modified': '2025-12-09',
   },
 };
 
-// AggregateRating schema for Reviews page
-const aggregateRatingSchema = {
+// Product schema with AggregateRating for Reviews page
+const productSchema = {
   '@context': 'https://schema.org',
   '@type': 'Product',
   name: SITE_NAME,
-  description: 'Activated carbon cat litter deodorizer',
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    reviewCount: '138',
-    bestRating: '5',
+  description: 'Activated carbon cat litter deodorizer that eliminates odors at the molecular level',
+  image: [
+    'https://www.purrify.ca/optimized/60g-transparent.webp',
+    'https://www.purrify.ca/optimized/120g-transparent.webp',
+    'https://www.purrify.ca/images/Logos/purrify-logo.png',
+  ],
+  brand: {
+    '@type': 'Brand',
+    name: SITE_NAME,
   },
-  url: 'https://www.purrify.ca/reviews',
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'CAD',
+    price: '4.76',
+    availability: 'https://schema.org/InStock',
+    url: 'https://www.purrify.ca',
+    itemCondition: 'https://schema.org/NewCondition',
+  },
 };
 
 export default function ReviewsPage() {
@@ -47,7 +86,7 @@ export default function ReviewsPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateRatingSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
       />
       <PageContent />
     </>

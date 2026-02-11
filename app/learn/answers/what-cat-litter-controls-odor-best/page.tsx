@@ -4,6 +4,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, Users, Home, Cat } from 'lucide-react';
 
+import { SITE_NAME, SITE_URL } from '@/lib/constants';
+
 export const metadata: Metadata = {
   title: 'What Cat Litter Controls Odor Best? Decision Guide | Purrify',
   description: 'Choose the best odor-control litter for your situation. Decision framework based on cats, home type, and maintenance preferences.',
@@ -15,6 +17,22 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: '/learn/answers/what-cat-litter-controls-odor-best',
+  },
+  openGraph: {
+    title: 'What Cat Litter Controls Odor Best? Decision Guide | Purrify',
+    description: 'Choose the best odor-control litter for your situation. Decision framework based on cats, home type, and maintenance preferences.',
+    url: `${SITE_URL}/learn/answers/what-cat-litter-controls-odor-best`,
+    type: 'article',
+    siteName: SITE_NAME,
+    locale: 'en_CA',
+    images: [
+      {
+        url: `${SITE_URL}/images/Logos/purrify-logo.png`,
+        width: 1200,
+        height: 630,
+        alt: 'What Cat Litter Controls Odor Best?',
+      },
+    ],
   },
 };
 

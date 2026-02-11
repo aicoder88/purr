@@ -332,11 +332,27 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/science"
+                    href="/learn/science"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300 flex items-center gap-1"
                   >
                     <Microscope className="w-3 h-3" />
                     {t.footerNav?.scienceHub || "Research Citations"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/learn/cat-litter-answers"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.catLitterAnswers || "Cat Litter Q&A"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/learn/activated-carbon-vs-baking-soda-deodorizers"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.carbonVsBakingSoda || "Carbon vs Baking Soda"}
                   </Link>
                 </li>
                 <li>
@@ -422,7 +438,7 @@ export function Footer() {
                     href="/learn/cat-litter-answers"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    Cat Litter Q&A
+                    {t.footerNav?.catLitterAnswers || "Cat Litter Q&A"}
                   </Link>
                 </li>
               </ul>
@@ -594,6 +610,30 @@ export function Footer() {
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.results || "Success Stories"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/case-studies"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.caseStudies || "Case Studies"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/fun"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.fun || "Fun & Games"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/viral"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.viral || "Viral"}
                   </Link>
                 </li>
                 <li>

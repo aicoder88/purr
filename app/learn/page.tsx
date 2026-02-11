@@ -5,8 +5,8 @@ import { SITE_NAME } from '../../src/lib/constants';
 import LearnPageClient from './LearnPageClient';
 
 export const metadata: Metadata = {
-  title: `Learn - Cat Litter Odor Control Guides & Science | ${SITE_NAME}`,
-  description: 'Comprehensive guides on cat litter odor control. Learn how activated carbon works, explore solutions for every situation, and discover the science behind Purrify.',
+  title: `Cat Litter Odor Guides & Science | ${SITE_NAME}`,
+  description: 'Comprehensive guides on cat litter odor control. Learn how activated carbon works, explore solutions for every situation, and discover Purrify science.',
   keywords: [
     'cat litter odor control',
     'activated carbon guide',
@@ -16,19 +16,22 @@ export const metadata: Metadata = {
     'multi-cat odor control',
   ],
   alternates: {
-    canonical: '/learn',
+    canonical: 'https://www.purrify.ca/learn',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn',
       'fr-CA': 'https://www.purrify.ca/fr/learn',
       'zh-CN': 'https://www.purrify.ca/zh/learn',
-      'es': 'https://www.purrify.ca/es/learn',
+      'es-US': 'https://www.purrify.ca/es/learn',
+      'en-US': 'https://www.purrify.ca/learn',
+      'x-default': 'https://www.purrify.ca/learn',
     },
   },
   openGraph: {
     type: 'website',
     url: 'https://www.purrify.ca/learn',
-    title: `Learn - Cat Litter Odor Control Guides & Science | ${SITE_NAME}`,
-    description: 'Comprehensive guides on cat litter odor control. Learn how activated carbon works and explore solutions for every situation.',
+    siteName: SITE_NAME,
+    title: `Cat Litter Odor Guides & Science | ${SITE_NAME}`,
+    description: 'Comprehensive guides on cat litter odor control. Learn how activated carbon works, explore solutions for every situation, and discover Purrify.',
     locale: 'en_CA',
     images: [
       {
@@ -43,6 +46,19 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@purrifyhq',
     creator: '@purrifyhq',
+    title: `Cat Litter Odor Guides & Science | ${SITE_NAME}`,
+    description: 'Comprehensive guides on cat litter odor control. Learn how activated carbon works, explore solutions for every situation, and discover Purrify.',
+    images: ['https://www.purrify.ca/optimized/micropores_magnified_view.webp'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 

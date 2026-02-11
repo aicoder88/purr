@@ -4,22 +4,24 @@ import type { Metadata } from 'next';
 import { SITE_NAME } from '../../../src/lib/constants';
 
 export const metadata: Metadata = {
-  title: `Why Cat Urine Smells Like Ammonia (The Chemistry + How to Stop It) | ${SITE_NAME}`,
+  title: `Why Cat Urine Smells Like Ammonia (And Fixes) | ${SITE_NAME}`,
   description: "Bacteria convert urea to ammonia gas within 2-4 hours. By hour 24, it's unbearable. Here's the chemistry behind the stink—and how to break the cycle.",
   keywords: ['why cat urine smells like ammonia', 'cat pee ammonia smell', 'urea to ammonia', 'cat litter ammonia science', 'why cat litter smells', 'ammonia from cat urine'],
   alternates: {
-    canonical: '/learn/ammonia-science',
+    canonical: 'https://www.purrify.ca/learn/ammonia-science',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/ammonia-science',
       'fr-CA': 'https://www.purrify.ca/fr/learn/ammonia-science',
       'zh-CN': 'https://www.purrify.ca/zh/learn/ammonia-science',
-      'es': 'https://www.purrify.ca/es/learn/ammonia-science',
+      'es-US': 'https://www.purrify.ca/es/learn/ammonia-science',
+      'en-US': 'https://www.purrify.ca/es/learn/ammonia-science',
+      'x-default': 'https://www.purrify.ca/es/learn/ammonia-science',
     },
   },
   openGraph: {
     type: 'article',
     url: 'https://www.purrify.ca/learn/ammonia-science',
-    title: `Why Cat Urine Smells Like Ammonia (The Chemistry + How to Stop It) | ${SITE_NAME}`,
+    title: `Why Cat Urine Smells Like Ammonia (And Fixes) | ${SITE_NAME}`,
     description: "Bacteria convert urea to ammonia gas within 2-4 hours. Here's the chemistry behind the stink—and how to break the cycle.",
     locale: 'en_CA',
     images: [

@@ -3,9 +3,10 @@ export const dynamic = 'force-static';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, CheckCircle2, XCircle } from 'lucide-react';
+import { SITE_NAME, SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Does Activated Carbon Work for Cat Litter? Evidence & Facts | Purrify',
+  title: 'Does Activated Carbon Work for Cat Litter? Proof | Purrify',
   description: 'Yes—here is the proof. Scientific evidence, real-world test results, and why activated carbon outperforms baking soda and fragrances.',
   keywords: [
     'does activated carbon work for cat litter',
@@ -15,6 +16,22 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: '/learn/answers/does-activated-carbon-work-for-cat-litter',
+  },
+  openGraph: {
+    title: 'Does Activated Carbon Work for Cat Litter? Proof | Purrify',
+    description: 'Yes—here is the proof. Scientific evidence, real-world test results, and why activated carbon outperforms baking soda and fragrances.',
+    url: `${SITE_URL}/learn/answers/does-activated-carbon-work-for-cat-litter`,
+    type: 'article',
+    siteName: SITE_NAME,
+    locale: 'en_CA',
+    images: [
+      {
+        url: `${SITE_URL}/images/Logos/purrify-logo.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Does Activated Carbon Work for Cat Litter?',
+      },
+    ],
   },
 };
 

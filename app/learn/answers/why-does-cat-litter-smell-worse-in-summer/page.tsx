@@ -3,6 +3,7 @@ export const dynamic = 'force-static';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import { SITE_NAME, SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Why does cat litter smell worse in summer? - Purrify',
@@ -15,6 +16,22 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: '/learn/answers/why-does-cat-litter-smell-worse-in-summer',
+  },
+  openGraph: {
+    title: 'Why does cat litter smell worse in summer? - Purrify',
+    description: 'Get the answer to why cat litter smells worse in summer and discover science-backed solutions for cat litter odor control.',
+    url: `${SITE_URL}/learn/answers/why-does-cat-litter-smell-worse-in-summer`,
+    type: 'article',
+    siteName: SITE_NAME,
+    locale: 'en_CA',
+    images: [
+      {
+        url: `${SITE_URL}/images/Logos/purrify-logo.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Why does cat litter smell worse in summer?',
+      },
+    ],
   },
 };
 

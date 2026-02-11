@@ -59,6 +59,10 @@ export const zh = {
     toggleTheme: "切换主题",
     signOut: "退出登录",
     signedIn: "已登录",
+    // SEO FIX (Feb 2026): Added missing nav keys
+    catLitterAnswers: "猫砂问答",
+    scienceHub: "研究引用",
+    carbonVsBakingSoda: "活性炭与小苏打对比",
     // B2B pivot keys
     findStore: "在您附近找到Purrify",
     findNearYou: "附近查找",
@@ -808,6 +812,8 @@ export const zh = {
     scienceHub: "研究引用",
     safetyInfo: "安全信息",
     catLitterGuide: "猫砂指南",
+    catLitterAnswers: "猫砂问答",
+    carbonVsBakingSoda: "活性炭与小苏打对比",
     ammoniaSolutions: "氨味解决方案",
     litterCalculator: "猫砂计算器",
     // Article links

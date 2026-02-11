@@ -3,8 +3,8 @@ export const dynamic = 'force-static';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Frequently Asked Questions About Activated Carbon Cat Litter - Purrify',
-  description: 'Get expert answers about activated carbon cat litter additives: how they work, activated carbon vs baking soda comparison, usage tips, safety information, and troubleshooting. Learn why coconut shell activated carbon eliminates cat litter odors better than fragrances or baking soda.',
+  title: 'Cat Litter Odor FAQ - Activated Carbon Questions | Purrify',
+  description: 'Get expert answers about activated carbon cat litter additives: how they work, usage tips, safety, and troubleshooting. Coconut shell carbon works best.',
   keywords: [
     'activated carbon cat litter FAQ',
     'activated carbon vs baking soda',
@@ -18,19 +18,22 @@ export const metadata: Metadata = {
     'best cat litter odor control',
   ],
   alternates: {
-    canonical: '/learn/faq',
+    canonical: 'https://www.purrify.ca/learn/faq',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/faq',
       'fr-CA': 'https://www.purrify.ca/fr/learn/faq',
       'zh-CN': 'https://www.purrify.ca/zh/learn/faq',
-      'es': 'https://www.purrify.ca/es/learn/faq',
+      'es-US': 'https://www.purrify.ca/es/learn/faq',
+      'en-US': 'https://www.purrify.ca/learn/faq',
+      'x-default': 'https://www.purrify.ca/learn/faq',
     },
   },
   openGraph: {
     type: 'website',
     url: 'https://www.purrify.ca/learn/faq',
-    title: 'Frequently Asked Questions About Activated Carbon Cat Litter - Purrify',
-    description: 'Get expert answers about activated carbon cat litter additives: how they work, usage tips, safety information, and troubleshooting.',
+    siteName: 'Purrify',
+    title: 'Cat Litter Odor FAQ - Activated Carbon Questions | Purrify',
+    description: 'Get expert answers about activated carbon cat litter additives: how they work, usage tips, safety, and troubleshooting.',
     locale: 'en_CA',
     images: [
       {
@@ -45,6 +48,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@purrifyhq',
     creator: '@purrifyhq',
+    title: 'Cat Litter Odor FAQ - Activated Carbon Questions | Purrify',
+    description: 'Get expert answers about activated carbon cat litter additives: how they work, usage tips, safety, and troubleshooting.',
+    images: ['https://www.purrify.ca/optimized/cat-owner-questions-ghibli.webp'],
   },
   other: {
     'last-modified': '2025-01-09',

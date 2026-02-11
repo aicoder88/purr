@@ -28,24 +28,31 @@ export interface AggregateReviewResult {
 
 /**
  * Product review data
- * This data should be updated as real reviews come in
+ * NOTE: These are placeholder values. For valid structured data,
+ * aggregateRating should only be included when backed by actual
+ * review data on the page with corresponding Review markup.
+ * 
+ * To enable aggregateRating in schema:
+ * 1. Collect real reviews through the review system
+ * 2. Update these values from the actual review database
+ * 3. Ensure individual Review markup is present on the page
  */
 const PRODUCT_REVIEWS: Record<string, Omit<AggregateReview, 'bestRating' | 'worstRating'>> = {
   trial: {
-    ratingValue: 4.8,
-    reviewCount: 127,
+    ratingValue: 0,
+    reviewCount: 0,
   },
   standard: {
-    ratingValue: 4.8,
-    reviewCount: 284,
+    ratingValue: 0,
+    reviewCount: 0,
   },
   family: {
-    ratingValue: 4.9,
-    reviewCount: 127,
+    ratingValue: 0,
+    reviewCount: 0,
   },
   familyAutoship: {
-    ratingValue: 4.9,
-    reviewCount: 127,
+    ratingValue: 0,
+    reviewCount: 0,
   },
 };
 

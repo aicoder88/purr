@@ -243,13 +243,6 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
     '@type': 'Product',
     '@id': 'https://www.purrify.ca/products/purrify-cat-litter-additive',
     name: 'Purrify Activated Carbon Cat Litter Additive',
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: averageRating.toFixed(1),
-      reviewCount: DISPLAY_REVIEW_COUNT.toString(),
-      bestRating: '5',
-      worstRating: '1'
-    },
     review: filteredReviews.slice(0, 10).map(review => ({
       '@type': 'Review',
       '@id': `https://www.purrify.ca/reviews/${review.id}`,

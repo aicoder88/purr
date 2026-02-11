@@ -8,17 +8,20 @@ export const metadata: Metadata = {
   description: "Discover the science behind Purrify's activated carbon technology. Learn how micropores trap odor molecules at the source for superior cat litter odor control.",
   keywords: ['how activated carbon works', 'cat litter odor control', 'activated carbon science', 'molecular adsorption', 'pet odor elimination'],
   alternates: {
-    canonical: '/learn/how-it-works',
+    canonical: 'https://www.purrify.ca/learn/how-it-works',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/how-it-works',
       'fr-CA': 'https://www.purrify.ca/fr/learn/how-it-works',
       'zh-CN': 'https://www.purrify.ca/zh/learn/how-it-works',
-      'es': 'https://www.purrify.ca/es/learn/how-it-works',
+      'es-US': 'https://www.purrify.ca/es/learn/how-it-works',
+      'en-US': 'https://www.purrify.ca/es/learn/how-it-works',
+      'x-default': 'https://www.purrify.ca/es/learn/how-it-works',
     },
   },
   openGraph: {
     type: 'article',
     url: 'https://www.purrify.ca/learn/how-it-works',
+    siteName: SITE_NAME,
     title: `How Purrify Works - ${SITE_NAME} Activated Carbon Science`,
     description: "Discover the science behind Purrify's activated carbon technology.",
     locale: 'en_CA',
@@ -35,6 +38,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@purrifyhq',
     creator: '@purrifyhq',
+    title: `How Purrify Works - ${SITE_NAME} Activated Carbon Science`,
+    description: "Discover the science behind Purrify's activated carbon technology.",
+    images: ['https://www.purrify.ca/optimized/micropores_magnified_view.webp'],
   },
 };
 

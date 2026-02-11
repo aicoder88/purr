@@ -141,9 +141,9 @@ export default function SEODashboard() {
     return (
       <Container className="py-16">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             Access Denied
-          </h1>
+          </h2>
           <p className="text-gray-600 dark:text-gray-400 mb-6">
             You must be logged in as an admin to view this page.
           </p>

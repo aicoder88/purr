@@ -17,13 +17,31 @@ export const metadata: Metadata = {
     'clinic odor control',
   ],
   alternates: {
-    canonical: '/veterinarians',
+    canonical: 'https://www.purrify.ca/veterinarians',
   },
   openGraph: {
+    type: 'website',
+    url: 'https://www.purrify.ca/veterinarians',
+    siteName: SITE_NAME,
     title: `${SITE_NAME} - Veterinary Clinic Partners`,
     description: 'Partner with Purrify to recommend a health-focused, natural odor solution to your clients.',
-    url: 'https://www.purrify.ca/veterinarians',
-    type: 'website',
+    locale: 'en_CA',
+    images: [
+      {
+        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        width: 1200,
+        height: 800,
+        alt: `${SITE_NAME} for Veterinary Clinics`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@purrifyhq',
+    creator: '@purrifyhq',
+    title: `${SITE_NAME} - Veterinary Clinic Partners`,
+    description: 'Partner with Purrify to recommend a health-focused, natural odor solution to your clients.',
+    images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
   },
   other: {
     'last-modified': '2026-01-02',

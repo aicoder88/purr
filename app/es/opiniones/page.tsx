@@ -8,27 +8,36 @@ import Image from 'next/image';
 import { Star, Quote, CheckCircle, Users, Calendar, MapPin } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: `Purrify Opiniones - Reseñas de Clientes Verificados | ${SITE_NAME}`,
-  description: 'Lee opiniones verificadas de Purrify. Descubre por qué más de 1,000 dueños de gatos confían en Purrify para eliminar olores de arena naturalmente. Reseñas reales de Canadá.',
+  title: `Opiniones Purrify | Reseñas Verificadas`,
+  description: 'Lee opiniones verificadas de Purrify. Descubre por qué 1,000+ dueños de gatos confían en Purrify para eliminar olores naturalmente. Reseñas reales.',
   keywords: 'purrify opiniones, purrify reseñas, desodorizante arena gatos opiniones, eliminador olores gatos, carbón activado arena gatos',
+  robots: {
+    index: false,
+    follow: true,
+  },
   alternates: {
-    canonical: 'https://www.purrify.ca/reviews',
+    canonical: 'https://www.purrify.ca/es/opiniones',
     languages: {
       'en-CA': 'https://www.purrify.ca/reviews',
+      'fr-CA': 'https://www.purrify.ca/fr/reviews',
+      'zh-CN': 'https://www.purrify.ca/zh/reviews',
+      'es-US': 'https://www.purrify.ca/es/opiniones',
+      'en-US': 'https://www.purrify.ca/reviews',
       'x-default': 'https://www.purrify.ca/reviews',
     },
   },
   openGraph: {
-    title: 'Purrify Opiniones - Reseñas de Clientes Verificados',
-    description: 'Descubre por qué más de 1,000 dueños de gatos confían en Purrify para eliminar olores de arena con carbón activado natural.',
-    url: 'https://www.purrify.ca/es/opiniones',
     type: 'website',
+    url: 'https://www.purrify.ca/es/opiniones',
+    siteName: SITE_NAME,
+    title: 'Purrify Opiniones - Reseñas de Clientes Verificados',
+    description: 'Descubre por qué 1,000+ dueños de gatos confían en Purrify para eliminar olores con carbón activado natural.',
     locale: 'es_ES',
     images: [
       {
         url: 'https://www.purrify.ca/optimized/three_bags_no_bg.webp',
         width: 1200,
-        height: 630,
+        height: 800,
         alt: 'Purrify Opiniones',
       },
     ],
@@ -135,13 +144,6 @@ export default function OpinionesPage() {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "Purrify Desodorizante de Arena para Gatos",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "500",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
     "review": reviews.slice(0, 3).map(review => ({
       "@type": "Review",
       "reviewRating": {
