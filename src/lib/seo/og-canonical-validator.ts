@@ -42,6 +42,12 @@ function extractCanonicalUrl(content: string, filePath: string): string | null {
   const variableMatch = content.match(/canonical=\{([^}]+)\}/);
   if (variableMatch) {
     const variable = variableMatch[1].trim();
+
+    // Check if it's a literal string inside JSX expression (starts with quotes)
+    if (variable.startsWith('"') || variable.startsWith("'") || variable.startsWith('`')) {
+      return variable.replace(/['"`]/g, '');
+    }
+
     // Try to find the variable declaration
     const varDeclPattern = new RegExp(`const\\s+${variable}\\s*=\\s*['"\`]([^'"\`]+)['"\`]`);
     const varMatch = content.match(varDeclPattern);
@@ -56,14 +62,21 @@ function extractCanonicalUrl(content: string, filePath: string): string | null {
       // Return the route path, we'll need to handle localization later
       return funcMatch[1];
     }
-
-    return null;
   }
 
-  // Match canonical="literal"
-  const literalMatch = content.match(/canonical=["']([^"']+)["']/);
+  // Match canonical="literal" or canonical={`...`}
+  const literalMatch = content.match(/canonical=["'`]((?:[^"'`]+|\$\{[\s\S]*?\})+)["'`]/);
   if (literalMatch) {
     return literalMatch[1];
+  }
+
+  // Next.js App Router Metadata support
+  // Match inside alternates object: alternates: { canonical: ... }
+  // Supports literals '...', "...", `...` and variable names
+  const alternatesMatch = content.match(/alternates:\s*\{\s*[\s\S]*?canonical:\s*(['"`](?:[^"'`]+|\$\{[\s\S]*?\})+['"`]|[a-zA-Z0-9_]+)/);
+  if (alternatesMatch) {
+    const value = alternatesMatch[1];
+    return resolveUrlValue(value, content);
   }
 
   return null;
@@ -84,73 +97,114 @@ function extractOGUrl(content: string, filePath: string): string | null {
   // Look for openGraph prop in NextSeo
   // Pattern: openGraph={{ url: ... }}
 
-  // First, find the openGraph object
+  // First, find the openGraph object in NextSeo
   const ogMatch = content.match(/openGraph=\{\{([^}]+)\}\}/s);
-  if (!ogMatch) {
-    // Try multi-line pattern
-    const multiLineMatch = content.match(/openGraph=\{\{([\s\S]*?)\}\}/);
-    if (!multiLineMatch) {
-      return null;
-    }
-
-    const ogContent = multiLineMatch[1];
-
-    // Look for url property
+  if (ogMatch) {
+    const ogContent = ogMatch[1];
     const urlMatch = ogContent.match(/url:\s*([^,\n]+)/);
+
     if (urlMatch) {
-      const urlValue = urlMatch[1].trim();
-
-      // If it's a variable, try to find its declaration
-      if (!urlValue.startsWith('"') && !urlValue.startsWith("'")) {
-        const varPattern = new RegExp(`const\\s+${urlValue}\\s*=\\s*['"\`]([^'"\`]+)['"\`]`);
-        const varMatch = content.match(varPattern);
-        if (varMatch) {
-          return varMatch[1];
-        }
-
-        // Try function call pattern
-        const funcPattern = new RegExp(`const\\s+${urlValue}\\s*=\\s*getLocalizedUrl\\(['"\`]([^'"\`]+)['"\`]`);
-        const funcMatch = content.match(funcPattern);
-        if (funcMatch) {
-          return funcMatch[1];
-        }
-      } else {
-        // It's a literal string
-        return urlValue.replace(/['"]/g, '');
-      }
+      return resolveUrlValue(urlMatch[1], content);
     }
-
-    return null;
   }
 
-  const ogContent = ogMatch[1];
+  // Try multi-line pattern for NextSeo
+  const multiLineMatch = content.match(/openGraph=\{\{([\s\S]*?)\}\}/);
+  if (multiLineMatch) {
+    const ogContent = multiLineMatch[1];
+    const urlMatch = ogContent.match(/url:\s*([^,\n]+)/);
 
-  // Look for url property
-  const urlMatch = ogContent.match(/url:\s*([^,\n]+)/);
-  if (urlMatch) {
-    const urlValue = urlMatch[1].trim();
+    if (urlMatch) {
+      return resolveUrlValue(urlMatch[1], content);
+    }
+  }
 
-    // If it's a variable, try to find its declaration
-    if (!urlValue.startsWith('"') && !urlValue.startsWith("'")) {
-      const varPattern = new RegExp(`const\\s+${urlValue}\\s*=\\s*['"\`]([^'"\`]+)['"\`]`);
-      const varMatch = content.match(varPattern);
-      if (varMatch) {
-        return varMatch[1];
+  // Next.js App Router Metadata support
+  // Match inside openGraph object: openGraph: { ... url: ... ... }
+  // This needs to handle nested objects (images, etc.) so we use a more permissive approach
+  const openGraphStart = content.indexOf('openGraph:');
+  if (openGraphStart !== -1) {
+    // Find the opening brace after openGraph:
+    const afterColon = content.slice(openGraphStart + 'openGraph:'.length);
+    const braceMatch = afterColon.match(/\s*\{/);
+    if (braceMatch) {
+      const openBracePos = openGraphStart + 'openGraph:'.length + braceMatch.index! + 1;
+      // Find the matching closing brace by counting braces
+      let braceCount = 1;
+      let closeBracePos = openBracePos;
+      for (let i = openBracePos; i < content.length && braceCount > 0; i++) {
+        if (content[i] === '{') braceCount++;
+        if (content[i] === '}') braceCount--;
+        if (braceCount === 0) {
+          closeBracePos = i;
+          break;
+        }
       }
 
-      // Try function call pattern
-      const funcPattern = new RegExp(`const\\s+${urlValue}\\s*=\\s*getLocalizedUrl\\(['"\`]([^'"\`]+)['"\`]`);
-      const funcMatch = content.match(funcPattern);
-      if (funcMatch) {
-        return funcMatch[1];
+      const ogContent = content.slice(openBracePos, closeBracePos);
+      // Now look for url property within this content
+      const urlMatch = ogContent.match(/url:\s*(['"`](?:[^"'`]+|\$\{[\s\S]*?\})+['"`]|[a-zA-Z0-9_]+)/);
+      if (urlMatch) {
+        return resolveUrlValue(urlMatch[1], content);
       }
-    } else {
-      // It's a literal string
-      return urlValue.replace(/['"]/g, '');
     }
   }
 
   return null;
+}
+
+function resolveUrlValue(urlValue: string, content: string): string | null {
+  const trimmedValue = urlValue.trim();
+
+  // If it's a variable, try to find its declaration
+  if (!trimmedValue.startsWith('"') && !trimmedValue.startsWith("'") && !trimmedValue.startsWith('`')) {
+    const varPattern = new RegExp(`const\\s+${trimmedValue}\\s*=\\s*['"\`]([^'"\`]+)['"\`]`);
+    const varMatch = content.match(varPattern);
+    if (varMatch) {
+      return varMatch[1];
+    }
+
+    // Try function call pattern
+    const funcPattern = new RegExp(`const\\s+${trimmedValue}\\s*=\\s*getLocalizedUrl\\(['"\`]([^'"\`]+)['"\`]`);
+    const funcMatch = content.match(funcPattern);
+    if (funcMatch) {
+      return funcMatch[1];
+    }
+
+    return null;
+  } else {
+    // It's a literal string - strip quotes
+    let literalValue = trimmedValue.replace(/^['"`]|['"`]$/g, '');
+
+    // Check if it contains template literal variables like ${SITE_URL}
+    if (literalValue.includes('${')) {
+      // Extract all ${variable} references
+      const templateVars = literalValue.match(/\$\{([^}]+)\}/g);
+      if (templateVars) {
+        for (const templateVar of templateVars) {
+          const varName = templateVar.slice(2, -1).trim(); // Remove ${ and }
+
+          // Try to find the variable declaration in the content
+          const varPattern = new RegExp(`(?:export\\s+)?const\\s+${varName}\\s*=\\s*(?:process\\.env\\.[A-Z_]+\\s*\\|\\|\\s*)?['"\`]([^'"\`]+)['"\`]`);
+          const varMatch = content.match(varPattern);
+
+          if (varMatch) {
+            // Replace the template variable with its value
+            literalValue = literalValue.replace(templateVar, varMatch[1]);
+          } else {
+            // If we can't resolve it, try common constants
+            if (varName === 'SITE_URL') {
+              literalValue = literalValue.replace(templateVar, 'https://www.purrify.ca');
+            } else if (varName === 'SITE_NAME') {
+              literalValue = literalValue.replace(templateVar, 'Purrify');
+            }
+          }
+        }
+      }
+    }
+
+    return literalValue;
+  }
 }
 
 /**
@@ -160,8 +214,15 @@ function extractOGUrl(content: string, filePath: string): string | null {
 function normalizeUrl(url: string): string {
   if (!url) return '';
 
+  let normalized = url;
+
+  // Handle relative URLs (e.g., '/science') by adding a base domain
+  if (normalized.startsWith('/')) {
+    normalized = 'purrify.ca' + normalized;
+  }
+
   // Remove trailing slash
-  let normalized = url.replace(/\/$/, '');
+  normalized = normalized.replace(/\/$/, '');
 
   // Remove protocol for comparison
   normalized = normalized.replace(/^https?:\/\//, '');
@@ -196,10 +257,17 @@ export function validatePageFile(filePath: string): OGCanonicalIssue[] {
     const canonical = extractCanonicalUrl(content, filePath);
     const ogUrl = extractOGUrl(content, filePath);
 
+    // console.log(`Debug ${filePath}: Canonical="${canonical}", OG="${ogUrl}"`);
+
     // Check if both are present
     if (!canonical && !ogUrl) {
       // Page might not have SEO tags, which is handled by meta validation
       return [];
+    }
+
+    if (canonical && ogUrl && !compareUrls(canonical, ogUrl)) {
+      // Debug mismatch
+      // console.log(`MISMATCH ${filePath}: \nC: ${canonical}\nO: ${ogUrl}`);
     }
 
     if (!canonical) {
@@ -257,7 +325,8 @@ export async function validateOGCanonicalUrls(pages: Array<{ filePath: string; r
   let validCount = 0;
 
   for (const page of pages) {
-    const fullPath = path.join(process.cwd(), 'pages', page.filePath);
+    // filePath already includes 'app/' or 'pages/' prefix from scanner
+    const fullPath = path.join(process.cwd(), page.filePath);
     const pageIssues = validatePageFile(fullPath);
 
     if (pageIssues.length === 0) {

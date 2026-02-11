@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: 'Lee opiniones verificadas de Purrify. Descubre por qué 1,000+ dueños de gatos confían en Purrify para eliminar olores naturalmente. Reseñas reales.',
   keywords: 'purrify opiniones, purrify reseñas, desodorizante arena gatos opiniones, eliminador olores gatos, carbón activado arena gatos',
   robots: {
-    index: false,
+    index: true,
     follow: true,
   },
   alternates: {
@@ -250,9 +250,8 @@ export default function OpinionesPage() {
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
-                        className={`h-4 w-4 ${
-                          i < review.rating ? 'text-yellow-400 fill-current' : 'text-gray-300 dark:text-gray-600'
-                        }`}
+                        className={`h-4 w-4 ${i < review.rating ? 'text-yellow-400 fill-current' : 'text-gray-300 dark:text-gray-600'
+                          }`}
                       />
                     ))}
                     <span className="ml-2 text-sm text-gray-600 dark:text-gray-300">{review.date}</span>

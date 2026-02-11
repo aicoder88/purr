@@ -17,6 +17,11 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     alternates: {
       canonical: '/thank-you/upsell',
     },
+    openGraph: {
+      url: 'https://www.purrify.ca/thank-you/upsell',
+      title: 'Special One-Time Offer - Purrify',
+      description: 'Exclusive one-time offer for new customers. Save 25% on quarterly autoship subscription.',
+    },
   };
 }
 

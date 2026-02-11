@@ -14,7 +14,7 @@ module.exports = {
       },
     ],
     additionalSitemaps: [
-      'https://www.purrify.ca/server-sitemap.xml', // For dynamically generated content
+
     ],
     host: 'https://www.purrify.ca',
   },
@@ -33,12 +33,12 @@ module.exports = {
     '/es/free',
     '/test',
     '/demo/*',
-    
+
     // === REDIRECTING PAGES - Fix for Ahrefs "3XX redirect in sitemap" ===
     // Server-side redirect pages (these redirect to other pages)
     '/free-trial',              // Redirects to /try-free
     '/fr/free-trial',
-    '/zh/free-trial', 
+    '/zh/free-trial',
     '/es/free-trial',
     '/buy',                     // Redirects to /products
     '/fr/buy',
@@ -51,7 +51,7 @@ module.exports = {
     '/montreal',                // Redirects to /locations/montreal
     '/support/contact',         // Redirects to /contact
     '/documents',               // Redirects to /invest (per next.config.js)
-    
+
     // Old product slugs that redirect
     '/products/purrify-20g',
     '/products/purrify-50g',
@@ -62,11 +62,11 @@ module.exports = {
     '/fr/products/medium-size',
     '/fr/products/large-size',
     '/fr/products/family',
-    
+
     // Solutions pages that redirect to /learn/solutions
     '/solutions',
     '/solutions/*',
-    
+
     // Legacy redirects
     '/checkout',
     '/cart-2',
@@ -111,7 +111,7 @@ module.exports = {
     '/fr/trial',
     '/zh/trial',
     '/es/trial',
-    
+
     // Old blog redirects
     '/blog/activated-carbon-science',
     '/blog/beyond-masking-odors',
@@ -120,42 +120,42 @@ module.exports = {
     '/learn/purrify-vs-arm-hammer',
     '/learn/safe-for-kittens',
     '/learn/activated-carbon-vs-baking-soda',
-    
+
     // Customers redirects
     '/customers',
     '/customers/testimonials',
     '/customers/case-studies',
     '/support/subscription',
-    
+
     // Utility pages (noindex)
     '/pos',
     '/pos/*',
     '/tools/*',
-    
+
     // Chinese customer pages (protected)
     '/zh/customer/portal',
     '/zh/customer/referrals',
     '/zh/retailer/portal/login',
-    
+
     // Spanish customer pages (protected)
     '/es/customer/portal',
     '/es/customer/referrals',
     '/es/retailer/portal/login',
-    
+
     // Spanish utility pages
     '/es/pos',
     '/es/pos/*',
     '/es/tools/*',
-    
+
     // System pages
     '/sentry-example-page',
     '/offline',
-    '/server-sitemap.xml',
+
     '/thank-you',
     '/thank-you/*',
     '/auth/signin',
     '/affiliate/forgot-password',
-    
+
     // === NOINDEX PAGES - Fix for Ahrefs "Noindex page in sitemap" ===
     // Affiliate portal pages (require authentication - should be noindex)
     '/affiliate/dashboard',
@@ -163,14 +163,14 @@ module.exports = {
     '/affiliate/login',
     '/affiliate/activate',
     '/affiliate/signup',
-    
+
     // French affiliate pages
     '/fr/affiliate/dashboard',
     '/fr/affiliate/dashboard/*',
     '/fr/affiliate/login',
     '/fr/affiliate/activate',
     '/fr/affiliate/signup',
-    
+
     // Customer portal pages (require authentication - should be noindex)
     '/customer/portal',
     '/customer/referrals',
@@ -178,29 +178,29 @@ module.exports = {
     '/fr/customer/referrals',
     '/zh/customer/portal',
     '/zh/customer/referrals',
-    
+
     // Retailer portal (require authentication)
     '/retailer/portal/login',
     '/fr/retailer/portal/login',
     '/zh/retailer/portal/login',
-    
+
     // Admin pages
     '/admin',
     '/admin/*',
-    
+
     // Results page (post-purchase/utility - noindex)
     '/results',
     '/fr/results',
     '/zh/results',
     '/es/results',
-    
+
     // Private/internal pages (noindex)
     '/dialergptpitchdeck',
     '/documents',
-    
+
     // === NON-CANONICAL PAGES - Fix for Ahrefs "Non-canonical page in sitemap" ===
     // Note: /es/opiniones is a valid page with its own canonical - NOT excluded
-    
+
     // === OLD PROVINCE ABBREVIATION URLS (Redirect to /province/full-name) ===
     '/locations/ab',
     '/locations/bc',
@@ -241,15 +241,13 @@ module.exports = {
     '/zh/locations/qc',
     '/zh/locations/sk',
     '/zh/locations/yt',
-    
+
     // === NON-ENGLISH LOCATION PAGES (noindexed to prevent thin content) ===
     '/fr/locations',
     '/fr/locations/*',
     '/zh/locations',
     '/zh/locations/*',
     '/es/locations',
-    '/es/locations/*',
-    
     // === SPANISH PROTECTED/PORTAL PAGES ===
     '/es/affiliate/*',
     '/es/retailer/*',
@@ -258,6 +256,8 @@ module.exports = {
     '/es/invest',
     '/es/dialergptpitchdeck',
     '/es/documents',
+
+
   ],
   alternateRefs: [
     { href: 'https://www.purrify.ca/', hreflang: 'en-CA' },
@@ -900,12 +900,7 @@ module.exports = {
       lastmod: new Date().toISOString(),
     },
     // POS and affiliate landing
-    {
-      loc: '/pos/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
+
     {
       loc: '/affiliate/',
       changefreq: 'weekly',
@@ -949,7 +944,7 @@ module.exports = {
   transform: async (config, path) => {
     // Ensure path has trailing slash for consistency (except root)
     const normalizedPath = path === '' ? path : (path.endsWith('/') ? path : `${path}/`);
-    
+
     // Skip if this is a redirecting URL or should be excluded
     const redirectingPatterns = [
       '/free-trial',
@@ -964,13 +959,13 @@ module.exports = {
       '/products/compare',
       '/es/opiniones',
     ];
-    
+
     for (const pattern of redirectingPatterns) {
       if (normalizedPath === pattern || normalizedPath === `${pattern}/`) {
         return null; // Exclude from sitemap
       }
     }
-    
+
     // Skip noindex pages (protected portals)
     const noindexPatterns = [
       '/affiliate/dashboard',
@@ -984,7 +979,7 @@ module.exports = {
       '/admin',
       '/thank-you',
     ];
-    
+
     for (const pattern of noindexPatterns) {
       if (normalizedPath.startsWith(pattern)) {
         return null; // Exclude from sitemap

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'FREE Cat Litter Deodorizer Trial | Just Pay $4.76 Shipping | 87% upgrade within 7 days. ★ 4.8 rating. Ships USA & Canada. Risk-free.',
   keywords: ['cat litter freshener', 'free trial', 'charcoal litter additive', 'cat litter deodorizer', 'activated carbon trial'],
   openGraph: {
-    type: 'product',
+    type: 'website',
     url: 'https://www.purrify.ca/products/trial-size',
     siteName: 'Purrify',
     title: 'Free Cat Litter Freshener Trial | Purrify',

@@ -59,6 +59,7 @@ export const en = {
     signOut: "Sign Out",
     signedIn: "Signed in",
     // SEO FIX (Feb 2026): Added missing nav keys
+    litterCalculator: "Litter Calculator",
     catLitterAnswers: "Cat Litter Q&A",
     scienceHub: "Research Citations",
     carbonVsBakingSoda: "Carbon vs Baking Soda",
@@ -810,7 +811,10 @@ export const en = {
     trustpilot: "Trustpilot",
     googleReviews: "Google Reviews",
     // SEO
-    sitemap: "Sitemap"
+    sitemap: "Sitemap",
+    caseStudies: "Case Studies",
+    fun: "Fun & Games",
+    viral: "Viral"
   },
 
   // Free Trial

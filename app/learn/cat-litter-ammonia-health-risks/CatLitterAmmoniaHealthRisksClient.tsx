@@ -129,16 +129,28 @@ export default function CatLitterAmmoniaHealthRisksClient() {
             </p>
 
             <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 my-8">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">The Chemistry</h3>
-              <p className="text-gray-700 dark:text-gray-300 mb-4">
-                Cat urine contains high levels of urea (a nitrogen compound). Bacteria naturally present in the litter produce an enzyme called urease that converts urea into ammonia and carbon dioxide:
-              </p>
-              <div className="bg-white dark:bg-gray-700 rounded-lg p-4 text-center font-mono text-gray-700 dark:text-gray-300">
-                Urea + H₂O → 2NH₃ (ammonia) + CO₂
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">The Chemistry</h3>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">
+                    Cat urine contains high levels of urea (a nitrogen compound). Bacteria naturally present in the litter produce an enzyme called urease that converts urea into ammonia and carbon dioxide:
+                  </p>
+                  <div className="bg-white dark:bg-gray-700 rounded-lg p-4 text-center font-mono text-gray-700 dark:text-gray-300">
+                    Urea + H₂O → 2NH₃ (ammonia) + CO₂
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm mt-4">
+                    This is why the ammonia smell gets stronger over time - more urea is being converted to gas.
+                  </p>
+                </div>
+                <div className="relative h-full min-h-[200px]">
+                  <img
+                    src="/optimized/ammonia-science.webp"
+                    alt="Scientific diagram of ammonia production from cat urine"
+                    className="w-full h-full object-cover rounded-xl shadow-md"
+                    loading="lazy"
+                  />
+                </div>
               </div>
-              <p className="text-gray-600 dark:text-gray-400 text-sm mt-4">
-                This is why the ammonia smell gets stronger over time - more urea is being converted to gas.
-              </p>
             </div>
 
             {/* Exposure Levels */}
@@ -159,12 +171,11 @@ export default function CatLitterAmmoniaHealthRisksClient() {
                   <div className="font-semibold text-gray-900 dark:text-gray-100">{item.level}</div>
                   <div className="col-span-2 text-gray-700 dark:text-gray-300 text-sm">{item.description}</div>
                   <div className="text-center">
-                    <span className={`inline-flex px-2 py-1 rounded-full text-xs font-medium ${
-                      item.color === 'green' ? 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300' :
-                      item.color === 'yellow' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300' :
-                      item.color === 'orange' ? 'bg-orange-100 text-orange-800 dark:bg-orange-900/50 dark:text-orange-300' :
-                      'bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300'
-                    }`}>
+                    <span className={`inline-flex px-2 py-1 rounded-full text-xs font-medium ${item.color === 'green' ? 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300' :
+                        item.color === 'yellow' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300' :
+                          item.color === 'orange' ? 'bg-orange-100 text-orange-800 dark:bg-orange-900/50 dark:text-orange-300' :
+                            'bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300'
+                      }`}>
                       {item.risk}
                     </span>
                   </div>
@@ -178,6 +189,15 @@ export default function CatLitterAmmoniaHealthRisksClient() {
 
             {/* Who is at Risk */}
             <h2 className="text-3xl font-bold mb-6 mt-12 text-gray-900 dark:text-gray-100">Who is at Risk?</h2>
+
+            <div className="mb-8">
+              <img
+                src="/optimized/ammonia-haze-ghibli.webp"
+                alt="Visual representation of potential ammonia exposure in the home"
+                className="w-full h-64 object-cover rounded-xl shadow-lg"
+                loading="lazy"
+              />
+            </div>
 
             <div className="grid md:grid-cols-3 gap-6 my-8">
               {riskGroups.map((group, index) => (
@@ -220,10 +240,20 @@ export default function CatLitterAmmoniaHealthRisksClient() {
 
             {/* Why Activated Carbon Works */}
             <div className="bg-forest-900 dark:bg-forest-950 text-white dark:text-gray-100 rounded-2xl p-8 my-12">
-              <h3 className="text-2xl font-bold mb-4">Why Activated Carbon is the Best Solution</h3>
-              <p className="text-forest-100 dark:text-forest-200 mb-6">
-                Unlike air fresheners that mask odors or baking soda that only neutralizes acids, activated carbon physically traps ammonia molecules through <strong>adsorption</strong>. The ammonia is permanently captured in the carbon&apos;s micropores, preventing it from ever reaching your nose - or your lungs.
-              </p>
+              <div className="grid md:grid-cols-2 gap-8 items-center mb-8">
+                <div>
+                  <h3 className="text-2xl font-bold mb-4">Why Activated Carbon is the Best Solution</h3>
+                  <p className="text-forest-100 dark:text-forest-200">
+                    Unlike air fresheners that mask odors or baking soda that only neutralizes acids, activated carbon physically traps ammonia molecules through <strong>adsorption</strong>. The ammonia is permanently captured in the carbon&apos;s micropores, preventing it from ever reaching your nose - or your lungs.
+                  </p>
+                </div>
+                <img
+                  src="/optimized/microscopic-carbon-odor-trap.webp"
+                  alt="Microscopic view of activated carbon trapping ammonia molecules"
+                  className="w-full rounded-xl shadow-lg border border-forest-700/50"
+                  loading="lazy"
+                />
+              </div>
               <div className="grid md:grid-cols-3 gap-4">
                 <div className="bg-white/10 dark:bg-white/10 rounded-lg p-4">
                   <Check className="w-5 h-5 text-green-400 dark:text-green-300 mb-2" />

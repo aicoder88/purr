@@ -54,3 +54,27 @@
 ### Microscopic Carbon Trap
 Fascinating close-up of odor molecules being trapped at the molecular level.
 ![Microscopic Trap](/Users/macmini/.gemini/antigravity/brain/cc36f754-052f-497b-9603-9aebb99fc983/microscopic-carbon-odor-trap.png)
+
+### Diverse US Homes
+![Diverse US Homes](/Users/macpro/dev/purr/public/optimized/usa-cat-homes-diversity.webp)
+
+### Happy US Customer
+![Happy US Customer](/Users/macpro/dev/purr/public/optimized/usa-happy-customer.webp)
+
+## Batch 6: `cat-litter-ammonia-health-risks.tsx`
+**Status**: ✅ Completed (Reused High-Impact Assets)
+
+### Ammonia Chemistry
+![Ammonia Chemistry](/Users/macpro/dev/purr/public/optimized/ammonia-science.webp)
+
+### Health Risk Visual
+![Health Risk](/Users/macpro/dev/purr/public/optimized/ammonia-haze-ghibli.webp)
+
+## Batch 7: `how-activated-carbon-works.tsx`
+**Status**: ✅ Completed (Reused High-Impact Assets)
+
+### Activated Carbon Source
+![Coconut Shell](/Users/macpro/dev/purr/public/optimized/coconut-shell-natural.webp)
+
+### Adsorption Diagram
+![Adsorption](/Users/macpro/dev/purr/public/optimized/molecular-adsorption-science.webp)

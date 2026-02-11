@@ -58,6 +58,7 @@ export interface TranslationType {
     signOut?: string;
     signedIn?: string;
     // SEO FIX (Feb 2026): Added missing nav keys
+    litterCalculator?: string;
     catLitterAnswers?: string;
     scienceHub?: string;
     carbonVsBakingSoda?: string;
@@ -710,6 +711,10 @@ export interface TranslationType {
     googleReviews: string;
     // SEO
     sitemap?: string;
+    // New Pages
+    caseStudies?: string;
+    fun?: string;
+    viral?: string;
   };
 
   // Free Trial

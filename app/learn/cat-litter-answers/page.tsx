@@ -269,32 +269,32 @@ export default function CatLitterAnswersPage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* Hero Section */}
-      <section className="relative bg-[#1E4D6B] py-20 px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-[#1E4D6B] dark:bg-[#1E4D6B] py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
             <HelpCircle className="w-4 h-4 text-[#F7A41D]" />
-            <span className="text-white/90 text-sm font-medium">People Also Ask</span>
+            <span className="text-white/90 dark:text-white/90 text-sm font-medium">People Also Ask</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white dark:text-white mb-6 leading-tight">
             Cat Litter Questions,<br />
             <span className="text-[#F7A41D]">Expert Answers</span>
           </h1>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Real answers to the most searched cat litter questions. 
+          <p className="text-xl text-white/80 dark:text-white/80 max-w-2xl mx-auto">
+            Real answers to the most searched cat litter questions.
             No fluff, no marketing speak—just science-backed solutions.
           </p>
         </div>
       </section>
 
       {/* Category Filter */}
-      <section className="py-8 px-4 border-b border-gray-200 bg-white sticky top-0 z-10">
+      <section className="py-8 px-4 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 sticky top-0 z-10">
         <div className="max-w-6xl mx-auto flex flex-wrap gap-3 justify-center">
-          <span className="text-sm font-medium text-gray-500 py-2">Filter by topic:</span>
+          <span className="text-sm font-medium text-gray-500 dark:text-gray-400 py-2">Filter by topic:</span>
           {categories.map((category) => (
             <a
               key={category}
               href={`#${category.toLowerCase().replace(/\s+/g, '-')}`}
-              className="px-4 py-2 bg-gray-100 hover:bg-[#1E4D6B] hover:text-white rounded-full text-sm font-medium text-gray-700 transition-colors"
+              className="px-4 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-[#1E4D6B] hover:text-white rounded-full text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors"
             >
               {category}
             </a>
@@ -304,17 +304,17 @@ export default function CatLitterAnswersPage() {
 
       {/* Questions Grid */}
       {/* Content Type Legend */}
-      <section className="py-6 px-4 bg-gray-50 border-y border-gray-200">
+      <section className="py-6 px-4 bg-gray-50 dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800">
         <div className="max-w-6xl mx-auto">
-          <p className="text-sm text-gray-600 mb-3">Content types:</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">Content types:</p>
           <div className="flex flex-wrap gap-4 text-sm">
             <span className="flex items-center gap-2">
               <span className="px-2 py-1 bg-[#F7A41D]/10 text-[#F7A41D] rounded text-xs font-medium">Quick Answer</span>
-              <span className="text-gray-500">Fast facts & checklists (~2 min read)</span>
+              <span className="text-gray-500 dark:text-gray-400">Fast facts & checklists (~2 min read)</span>
             </span>
             <span className="flex items-center gap-2">
-              <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs font-medium">Deep Guide</span>
-              <span className="text-gray-500">Comprehensive coverage (~8-10 min read)</span>
+              <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded text-xs font-medium">Deep Guide</span>
+              <span className="text-gray-500 dark:text-gray-400">Comprehensive coverage (~8-10 min read)</span>
             </span>
           </div>
         </div>
@@ -324,7 +324,7 @@ export default function CatLitterAnswersPage() {
         <div className="max-w-6xl mx-auto">
           {categories.map((category) => (
             <div key={category} id={category.toLowerCase().replace(/\s+/g, '-')} className="mb-16">
-              <h2 className="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-3">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 flex items-center gap-3">
                 <span className="w-1 h-8 bg-[#F7A41D] rounded-full"></span>
                 {category}
               </h2>
@@ -335,17 +335,17 @@ export default function CatLitterAnswersPage() {
                     <Link
                       key={q.slug}
                       href={`/learn/answers/${q.slug}`}
-                      className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl border border-gray-100 hover:border-[#F7A41D]/30 transition-all duration-300"
+                      className="group bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm hover:shadow-xl border border-gray-100 dark:border-gray-700 hover:border-[#F7A41D]/30 transition-all duration-300"
                     >
                       <div className="flex items-start justify-between gap-3 mb-2">
-                        <h3 className="text-lg font-semibold text-gray-900 group-hover:text-[#1E4D6B] leading-snug">
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-[#1E4D6B] dark:group-hover:text-[#F7A41D] leading-snug">
                           {q.question}
                         </h3>
                         <span className="flex-shrink-0 px-2 py-1 bg-[#F7A41D]/10 text-[#F7A41D] text-xs font-medium rounded">
                           Quick Answer
                         </span>
                       </div>
-                      <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                      <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-2">
                         {q.preview}
                       </p>
                       <div className="flex items-center justify-between">
@@ -353,7 +353,7 @@ export default function CatLitterAnswersPage() {
                           Read answer
                           <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                         </div>
-                        <span className="text-xs text-gray-400">~2 min</span>
+                        <span className="text-xs text-gray-400 dark:text-gray-500">~2 min</span>
                       </div>
                     </Link>
                   ))}
@@ -364,12 +364,12 @@ export default function CatLitterAnswersPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-4 bg-[#1E4D6B]">
+      <section className="py-16 px-4 bg-[#1E4D6B] dark:bg-[#1E4D6B]">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
+          <h2 className="text-3xl font-bold text-white dark:text-white mb-4">
             Still have questions?
           </h2>
-          <p className="text-white/80 mb-8">
+          <p className="text-white/80 dark:text-white/80 mb-8">
             Try Purrify risk-free. If you do not notice a difference, we will refund you.
           </p>
           <Link
@@ -378,7 +378,7 @@ export default function CatLitterAnswersPage() {
           >
             Get Your Free Trial
           </Link>
-          <p className="text-white/60 text-sm mt-4">
+          <p className="text-white/60 dark:text-white/60 text-sm mt-4">
             Just pay $4.76 shipping. One per household.
           </p>
         </div>

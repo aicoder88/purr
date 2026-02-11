@@ -5,8 +5,8 @@ export const metadata: Metadata = {
   title: 'Join Affiliate Program | Purrify',
   description: 'Sign up for the Purrify affiliate program and start earning commissions.',
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
   },
 };
 

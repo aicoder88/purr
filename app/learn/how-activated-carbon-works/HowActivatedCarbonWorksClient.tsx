@@ -125,7 +125,15 @@ export default function HowActivatedCarbonWorksClient() {
             </p>
 
             <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 mb-8">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Common Source Materials</h3>
+              <div className="grid md:grid-cols-2 gap-8 items-center mb-6">
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Common Source Materials</h3>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">
+                    While activated carbon can be made from various carbon-rich materials, the source material significantly impacts the final pore structure and effectiveness.
+                  </p>
+                </div>
+                <img src="/optimized/coconut-shell-natural.webp" alt="Natural coconut shells used for activated carbon" className="w-full rounded-lg shadow-md" loading="lazy" />
+              </div>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="flex items-start gap-3">
                   <span className="text-green-500 dark:text-green-400 text-xl">1.</span>
@@ -168,12 +176,15 @@ export default function HowActivatedCarbonWorksClient() {
             Adsorption vs. Absorption: The Critical Difference
           </h2>
 
-          <AIQuotableBlock
-            fact="Activated carbon works through adsorption, not absorption. In adsorption, molecules stick to the surface; in absorption, they soak into the material. This distinction explains why activated carbon traps odors permanently rather than just temporarily holding them."
-            explanation="Think of adsorption like sticky tape (molecules adhere to surface) vs. absorption like a sponge (liquid soaks throughout)."
-            icon="science"
-            variant="default"
-          />
+          <div className="grid md:grid-cols-2 gap-8 items-center mb-8">
+            <AIQuotableBlock
+              fact="Activated carbon works through adsorption, not absorption. In adsorption, molecules stick to the surface; in absorption, they soak into the material. This distinction explains why activated carbon traps odors permanently rather than just temporarily holding them."
+              explanation="Think of adsorption like sticky tape (molecules adhere to surface) vs. absorption like a sponge (liquid soaks throughout)."
+              icon="science"
+              variant="default"
+            />
+            <img src="/optimized/molecular-adsorption-science.webp" alt="Diagram showing adsorption vs absorption" className="w-full rounded-xl shadow-lg" loading="lazy" />
+          </div>
 
           <div className="grid md:grid-cols-2 gap-8 mt-8">
             <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 border border-blue-200 dark:border-blue-700">
@@ -240,10 +251,13 @@ export default function HowActivatedCarbonWorksClient() {
             Understanding Pore Structure
           </h2>
 
-          <p className="text-gray-700 dark:text-gray-200 mb-8">
-            Activated carbon&apos;s effectiveness depends entirely on its pore structure. During activation, three types
-            of pores are created, each serving different purposes:
-          </p>
+          <div className="grid md:grid-cols-2 gap-8 items-center mb-8">
+            <p className="text-gray-700 dark:text-gray-200">
+              Activated carbon&apos;s effectiveness depends entirely on its pore structure. During activation, three types
+              of pores are created, each serving different purposes. It's this complex network that gives carbon its massive surface area.
+            </p>
+            <img src="/optimized/micropores-magnified-view.webp" alt="Magnified view of activated carbon pore structure" className="w-full rounded-xl shadow-lg border border-gray-200 dark:border-gray-700" loading="lazy" />
+          </div>
 
           <div className="space-y-6 mb-8">
             <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-6 border border-green-200 dark:border-green-700">

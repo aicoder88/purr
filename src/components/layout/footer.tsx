@@ -451,7 +451,7 @@ export function Footer() {
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
                   <Link
-                    href="/blog/house-smells-like-cat-litter-solutions"
+                    href="/en/blog/house-smells-like-cat-litter-solutions"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.houseSmells || ""}
@@ -459,7 +459,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/blog/multi-cat-litter-deodorizer-guide"
+                    href="/en/blog/multi-cat-litter-deodorizer-guide"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.multiCatGuide || ""}
@@ -467,7 +467,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/blog/tried-everything-cat-litter-smell-solutions"
+                    href="/en/blog/tried-everything-cat-litter-smell-solutions"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.triedEverything || ""}
@@ -475,7 +475,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/blog/most-powerful-odor-absorber"
+                    href="/en/blog/most-powerful-odor-absorber"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.powerfulAbsorber || ""}
@@ -483,7 +483,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/blog/best-litter-odor-remover-small-apartments"
+                    href="/en/blog/best-litter-odor-remover-small-apartments"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.smallApartments || ""}

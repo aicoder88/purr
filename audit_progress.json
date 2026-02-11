@@ -53,7 +53,7 @@
     "path": "content/blog/en/cat-litter-odor-control-usa.json",
     "metrics": {
       "word_count": 850,
-      "image_count": 3,
+      "image_count": 5,
       "score": 5
     },
     "issues": [],
@@ -317,13 +317,11 @@
     "path": "pages/learn/cat-litter-ammonia-health-risks.tsx",
     "metrics": {
       "word_count": 990,
-      "image_count": 0,
-      "score": 4
+      "image_count": 3,
+      "score": 5
     },
-    "issues": [
-      "sparse_images"
-    ],
-    "status": "pending"
+    "issues": [],
+    "status": "good"
   },
   {
     "file": "how-activated-carbon-works.tsx",
@@ -331,13 +329,11 @@
     "path": "pages/learn/how-activated-carbon-works.tsx",
     "metrics": {
       "word_count": 1654,
-      "image_count": 1,
-      "score": 4
+      "image_count": 4,
+      "score": 5
     },
-    "issues": [
-      "sparse_images"
-    ],
-    "status": "pending"
+    "issues": [],
+    "status": "good"
   },
   {
     "file": "ammonia-science.tsx",

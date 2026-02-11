@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Best cat litter freshener for single-cat homes. 50g activated charcoal eliminates ammonia for 4-6 weeks. Natural, works with any litter.',
   keywords: ['cat litter freshener', 'charcoal litter additive', 'cat litter deodorizer', 'odor eliminator', '50g', 'standard size'],
   openGraph: {
-    type: 'product',
+    type: 'website',
     url: 'https://www.purrify.ca/products/standard',
     siteName: 'Purrify',
     title: 'Purrify 50g - Best Cat Litter Freshener for Single-Cat Homes',

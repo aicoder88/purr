@@ -83,9 +83,9 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const params = await searchParams;
   const sessionId = typeof params.session_id === 'string' ? params.session_id : undefined;
   const { orderDetails } = await getOrderDetails(sessionId);
-  
+
   const firstName = orderDetails?.customerName?.split(' ')[0];
-  const title = firstName 
+  const title = firstName
     ? `Thank You for Your Order, ${firstName}! - Purrify`
     : 'Thank You for Your Order! - Purrify';
 
@@ -99,6 +99,11 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     alternates: {
       canonical: '/thank-you',
     },
+    openGraph: {
+      url: 'https://www.purrify.ca/thank-you',
+      title,
+      description: 'Your Purrify order has been confirmed. Get ready to experience an odor-free home!',
+    },
   };
 }
 
@@ -110,8 +115,8 @@ export default async function ThankYouPage({ searchParams }: Props) {
   return (
     <main className="min-h-screen bg-gradient-to-br from-green-50 via-white to-emerald-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
       <Container>
-        <ThankYouClient 
-          orderDetails={orderDetails} 
+        <ThankYouClient
+          orderDetails={orderDetails}
           error={error}
           sessionId={sessionId}
         />

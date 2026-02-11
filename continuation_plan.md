@@ -3,17 +3,20 @@
 This document serves as the "source of truth" for completing the visual and content audit of the Purrify website. As context length increases, refer to this guide to resume work consistently.
 
 ## Current Progress Snapshot
-- **Blog Posts Completed**: 5 / 31
-- **Static Pages Completed**: 0 / 22
+- **Blog Posts Completed**: 6 / 31
+- **Static Pages Completed**: 2 / 22
 - **Audit Progress File**: [audit_progress.json](./audit_progress.json) (Updated after every file)
 - **Original Implementation Plan**: [implementation_plan.md](./implementation_plan.md)
 - **Visual Evidence**: [walkthrough.md](./walkthrough.md)
 
-### Completed Files (Batch 1-4)
+### Completed Files (Batch 1-7)
 1. `how-to-get-rid-of-cat-pee-smell-apartment.json` (Ghibli)
 2. `how-to-get-rid-of-cat-litter-smell-in-apartment.json` (Ghibli)
 3. `how-to-neutralize-ammonia-cat-litter.json` (Realistic/High-Impact)
 4. `why-does-my-house-smell-like-cat-litter.json` (Realistic/High-Impact)
+5. `cat-litter-odor-control-usa.json` (Realistic/Scientific)
+6. `cat-litter-ammonia-health-risks.tsx` (Visual Scientific)
+7. `how-activated-carbon-works.tsx` (Visual Scientific)
 
 ---
 
@@ -67,9 +70,9 @@ When injecting images into the `content` field of JSON files, use the surroundin
 ---
 
 ## Remaining High-Priority Batch
-1. `cat-litter-odor-control-usa.json` (Current Target)
-2. `cat-litter-ammonia-health-risks.tsx` (Static Page Transition)
-3. `how-activated-carbon-works.tsx` (Static Page Transition)
+1. `best-litter-box-location-odour-control.json` (Next Target)
+2. `how-often-change-cat-litter.json`
+3. `apartment-litter-box-smell-solution.json`
 
 ## Artifact Locations
 - **Task List**: [task.md](file:///Users/macmini/.gemini/antigravity/brain/cc36f754-052f-497b-9603-9aebb99fc983/task.md)

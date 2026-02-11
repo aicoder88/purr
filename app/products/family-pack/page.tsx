@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Best value cat litter freshener for multi-cat homes. 240g activated charcoal provides 2 months of odor control. Natural, works with any litter.',
   keywords: ['cat litter freshener', 'family pack', 'multi-cat', 'activated charcoal', 'odor control', '240g', 'best value'],
   openGraph: {
-    type: 'product',
+    type: 'website',
     url: 'https://www.purrify.ca/products/family-pack',
     siteName: 'Purrify',
     title: 'Purrify Family Pack (240g) - Best Value for Multi-Cat Homes',
