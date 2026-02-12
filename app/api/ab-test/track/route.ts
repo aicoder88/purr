@@ -46,26 +46,56 @@ async function updateTestMetrics(body: TrackBody): Promise<void> {
     const commercialExperiment = getCommercialExperimentBySlug(testSlug);
 
     if (commercialExperiment) {
-      await prismaClient.aBTest.upsert({
+      const existingTest = await prismaClient.aBTest.findUnique({
         where: { slug: testSlug },
-        create: {
-          name: commercialExperiment.name,
-          slug: commercialExperiment.slug,
-          description: commercialExperiment.description,
-          status: 'RUNNING',
-          targetPage: commercialExperiment.targetPage,
-          trafficSplit: commercialExperiment.trafficSplit,
-          controlName: 'Control',
-          variantName: 'Variant',
-          createdBy: 'system-commercial-experiment',
-          startedAt: new Date(),
-          [updateField]: 1,
-        },
-        update: {
-          status: 'RUNNING',
-          [updateField]: { increment: 1 },
-        },
+        select: { status: true },
       });
+
+      if (existingTest) {
+        if (existingTest.status !== 'RUNNING') {
+          return;
+        }
+
+        await prismaClient.aBTest.updateMany({
+          where: {
+            slug: testSlug,
+            status: 'RUNNING',
+          },
+          data: {
+            [updateField]: { increment: 1 },
+          },
+        });
+        return;
+      }
+
+      try {
+        await prismaClient.aBTest.create({
+          data: {
+            name: commercialExperiment.name,
+            slug: commercialExperiment.slug,
+            description: commercialExperiment.description,
+            status: 'RUNNING',
+            targetPage: commercialExperiment.targetPage,
+            trafficSplit: commercialExperiment.trafficSplit,
+            controlName: 'Control',
+            variantName: 'Variant',
+            createdBy: 'system-commercial-experiment',
+            startedAt: new Date(),
+            [updateField]: 1,
+          },
+        });
+      } catch {
+        // Another request may have created the row first; only count if still running.
+        await prismaClient.aBTest.updateMany({
+          where: {
+            slug: testSlug,
+            status: 'RUNNING',
+          },
+          data: {
+            [updateField]: { increment: 1 },
+          },
+        });
+      }
       return;
     }
 

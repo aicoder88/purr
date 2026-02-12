@@ -26,7 +26,9 @@ export async function generateMetadata({ params }: LocalizedLearnPageProps): Pro
     title: 'Cat Litter Odor Guides & Science | Purrify',
     description: 'Comprehensive guides on cat litter odor control. Learn how activated carbon works, explore solutions for every situation, and discover Purrify science.',
     alternates: {
-      canonical: `https://www.purrify.ca/${locale}/learn/`,
+      canonical: locale === 'en'
+        ? 'https://www.purrify.ca/learn/'
+        : `https://www.purrify.ca/${locale}/learn/`,
       languages: {
         'en-CA': 'https://www.purrify.ca/learn/',
         'fr-CA': 'https://www.purrify.ca/fr/learn/',

@@ -31,14 +31,9 @@ import { formatProductPrice, getProductPrice, formatCurrencyValue } from '@/lib/
 import { getPaymentLink } from '@/lib/payment-links';
 
 interface ProductsExperimentCopy {
-  heroHeadline: string;
-  heroSubheadline: string;
-  heroPrimaryCta: string;
-  heroProofOrder: 'before-cta' | 'after-cta';
-  finalCtaHeading: string;
-  finalCtaBody: string;
-  finalCtaPrimary: string;
-  finalCtaSecondary: string;
+  headline: 'control' | 'variant';
+  ctaCopy: 'control' | 'variant';
+  proofOrder: 'control' | 'variant';
 }
 
 interface ProductsPageContentProps {
@@ -48,6 +43,7 @@ interface ProductsPageContentProps {
 export default function ProductsPage({ experimentCopy }: ProductsPageContentProps) {
   const { locale, t } = useTranslation();
   const { currency } = useCurrency();
+  const useEnglishVariantCtaCopy = locale === 'en' && experimentCopy.ctaCopy === 'variant';
 
   const trialPrice = formatProductPrice('trial', currency, locale);
   const standardPrice = formatProductPrice('standard', currency, locale);
@@ -427,10 +423,11 @@ export default function ProductsPage({ experimentCopy }: ProductsPageContentProp
         {/* Hero Section - Hook with Problem + Promise */}
         <ProductsHero
           experimentCopy={{
-            headline: experimentCopy.heroHeadline,
-            subheadline: experimentCopy.heroSubheadline,
-            primaryCta: experimentCopy.heroPrimaryCta,
-            proofOrder: experimentCopy.heroProofOrder,
+            headlineVariant: experimentCopy.headline,
+            ctaVariant: experimentCopy.ctaCopy,
+            proofOrder: experimentCopy.proofOrder === 'variant'
+              ? 'before-cta'
+              : 'after-cta',
           }}
         />
 
@@ -722,10 +719,18 @@ export default function ProductsPage({ experimentCopy }: ProductsPageContentProp
             <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
               <MapPin className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-                {experimentCopy.finalCtaHeading}
+                {useEnglishVariantCtaCopy
+                  ? 'Ready to Get Odor Control Working This Week?'
+                  : locale === 'fr'
+                    ? 'Trouvez Purrify près de chez vous'
+                    : 'Get Purrify Near You'}
               </h2>
               <p className="text-xl mb-4 opacity-90">
-                {experimentCopy.finalCtaBody}
+                {useEnglishVariantCtaCopy
+                  ? 'Find a nearby retailer or contact us for the fastest way to start.'
+                  : locale === 'fr'
+                    ? 'Disponible dans les animaleries à travers le Canada. Demandez Purrify à votre magasin préféré.'
+                    : 'Available at pet stores across Canada. Ask for Purrify at your favorite store.'}
               </p>
               <p className="text-base mb-8 opacity-80">
                 {locale === 'fr'
@@ -736,13 +741,21 @@ export default function ProductsPage({ experimentCopy }: ProductsPageContentProp
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/stores`}>
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-brand-purple hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
                     <MapPin className="w-5 h-5 mr-2" />
-                    {experimentCopy.finalCtaPrimary}
+                    {useEnglishVariantCtaCopy
+                      ? 'Find Nearby Availability'
+                      : locale === 'fr'
+                        ? 'Trouver un magasin'
+                        : 'Find a Store'}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/contact`}>
                   <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-white bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
-                    {experimentCopy.finalCtaSecondary}
+                    {useEnglishVariantCtaCopy
+                      ? 'Talk to Product Support'
+                      : locale === 'fr'
+                        ? 'Des questions? Contactez-nous'
+                        : 'Questions? Contact Us'}
                   </Button>
                 </Link>
               </div>

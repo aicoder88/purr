@@ -26,7 +26,9 @@ export async function generateMetadata({ params }: LocalizedReviewsPageProps): P
     title: 'Purrify Reviews - What Cat Owners Are Saying',
     description: 'Read verified reviews from real cat owners who have transformed their homes with Purrify. ★ 4.9/5 average rating from 138+ customers across Canada.',
     alternates: {
-      canonical: `https://www.purrify.ca/${locale}/reviews/`,
+      canonical: locale === 'en'
+        ? 'https://www.purrify.ca/reviews/'
+        : `https://www.purrify.ca/${locale}/reviews/`,
       languages: {
         'en-CA': 'https://www.purrify.ca/reviews/',
         'fr-CA': 'https://www.purrify.ca/fr/reviews/',

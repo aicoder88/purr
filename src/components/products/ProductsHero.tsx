@@ -10,9 +10,8 @@ import { Star, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useTranslation } from '@/lib/translation-context';
 
 interface ProductsHeroExperimentCopy {
-    headline: string;
-    subheadline: string;
-    primaryCta: string;
+    headlineVariant: 'control' | 'variant';
+    ctaVariant: 'control' | 'variant';
     proofOrder: 'before-cta' | 'after-cta';
 }
 
@@ -22,6 +21,8 @@ interface ProductsHeroProps {
 
 export function ProductsHero({ experimentCopy }: ProductsHeroProps) {
     const { t, locale } = useTranslation();
+    const useEnglishVariantHeadline = locale === 'en' && experimentCopy.headlineVariant === 'variant';
+    const useEnglishVariantCta = locale === 'en' && experimentCopy.ctaVariant === 'variant';
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -83,7 +84,9 @@ export function ProductsHero({ experimentCopy }: ProductsHeroProps) {
                             transition={{ duration: 0.5, delay: 0.1 }}
                             className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-50 leading-[1.1] tracking-tight mb-6"
                         >
-                            {experimentCopy.headline}
+                            {useEnglishVariantHeadline
+                                ? 'Stop Litter Box Odor at the Source'
+                                : t.productsHero.headline}
                         </motion.h1>
 
                         {/* Subheading */}
@@ -93,7 +96,9 @@ export function ProductsHero({ experimentCopy }: ProductsHeroProps) {
                             transition={{ duration: 0.5, delay: 0.2 }}
                             className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl mb-8"
                         >
-                            {experimentCopy.subheadline}
+                            {useEnglishVariantHeadline
+                                ? 'Choose the format that matches your home and eliminate ammonia before it spreads.'
+                                : t.productsHero.subheadline}
                         </motion.p>
 
                         {experimentCopy.proofOrder === 'before-cta' && trustBadge}
@@ -111,7 +116,7 @@ export function ProductsHero({ experimentCopy }: ProductsHeroProps) {
                                 className="bg-brand-purple hover:bg-brand-purple/90 text-white dark:text-gray-100 font-bold text-lg px-8 py-6 h-auto shadow-xl shadow-brand-purple/20 transition-all hover:scale-105"
                             >
                                 <Link href="#product-comparison">
-                                    {experimentCopy.primaryCta}
+                                    {useEnglishVariantCta ? 'Choose My Best Fit' : t.productsHero.findSizeButton}
                                 </Link>
                             </Button>
                             <Button

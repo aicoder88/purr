@@ -59,30 +59,9 @@ export const metadata: Metadata = {
 export default async function ProductsPage() {
   const experiments = await getCommercialExperimentState();
   const experimentCopy = {
-    heroHeadline: experiments.headline === 'variant'
-      ? 'Stop Litter Box Odor at the Source'
-      : 'Purrify Products - Activated Carbon Litter Additive',
-    heroSubheadline: experiments.headline === 'variant'
-      ? 'Choose the format that matches your home and eliminate ammonia before it spreads.'
-      : 'Find the right size for your home and eliminate odors with activated carbon granules.',
-    heroPrimaryCta: experiments.ctaCopy === 'variant'
-      ? 'Choose My Best Fit'
-      : 'Find My Perfect Size',
-    heroProofOrder: experiments.proofOrder === 'variant'
-      ? 'before-cta'
-      : 'after-cta',
-    finalCtaHeading: experiments.ctaCopy === 'variant'
-      ? 'Ready to Get Odor Control Working This Week?'
-      : 'Get Purrify Near You',
-    finalCtaBody: experiments.ctaCopy === 'variant'
-      ? 'Find a nearby retailer or contact us for the fastest way to start.'
-      : 'Available at pet stores across Canada. Ask for Purrify at your favorite store.',
-    finalCtaPrimary: experiments.ctaCopy === 'variant'
-      ? 'Find Nearby Availability'
-      : 'Find a Store',
-    finalCtaSecondary: experiments.ctaCopy === 'variant'
-      ? 'Talk to Product Support'
-      : 'Questions? Contact Us',
+    headline: experiments.headline,
+    ctaCopy: experiments.ctaCopy,
+    proofOrder: experiments.proofOrder,
   } as const;
 
   return (
