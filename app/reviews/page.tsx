@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 import PageContent from './PageContent';
 import { SITE_NAME } from '@/lib/constants';
+import { getCommercialExperimentState } from '@/lib/experiments/commercial-server';
+import { ServerExperimentViewTracker } from '@/components/experiments/ServerExperimentViewTracker';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Purrify Reviews - What Cat Owners Are Saying',
@@ -36,7 +40,7 @@ export const metadata: Metadata = {
       'en-CA': 'https://www.purrify.ca/reviews',
       'fr-CA': 'https://www.purrify.ca/fr/reviews',
       'zh-CN': 'https://www.purrify.ca/zh/reviews',
-      'es-US': 'https://www.purrify.ca/es/opiniones',  // Spanish uses /es/opiniones
+      'es-US': 'https://www.purrify.ca/es/reviews',
       'en-US': 'https://www.purrify.ca/reviews',
       'x-default': 'https://www.purrify.ca/reviews',
     },
@@ -81,14 +85,40 @@ const productSchema = {
   },
 };
 
-export default function ReviewsPage() {
+export default async function ReviewsPage() {
+  const experiments = await getCommercialExperimentState();
+  const experimentCopy = {
+    headline: experiments.headline === 'variant'
+      ? 'Verified Reviews From Cat Owners Who Solved Odor Fast'
+      : 'What Our Customers Are Saying',
+    subheadline: experiments.headline === 'variant'
+      ? 'Unfiltered experiences from households that switched to Purrify and measured the difference at home.'
+      : 'Real reviews from real cat owners who have transformed their homes with Purrify.',
+    ctaHeadline: experiments.ctaCopy === 'variant'
+      ? 'Ready to Test This in Your Home?'
+      : 'Ready to Experience the Difference?',
+    ctaBody: experiments.ctaCopy === 'variant'
+      ? 'Start with a low-risk trial and verify results in your own litter routine.'
+      : 'Join thousands of satisfied cat owners who have eliminated litter box odors for good.',
+    primaryCta: experiments.ctaCopy === 'variant'
+      ? 'See Product Options'
+      : 'Shop Now',
+    secondaryCta: experiments.ctaCopy === 'variant'
+      ? 'Start Low-Risk Trial'
+      : 'Try Free Sample',
+    proofOrder: experiments.proofOrder === 'variant'
+      ? 'trust-first'
+      : 'reviews-first',
+  } as const;
+
   return (
     <>
+      <ServerExperimentViewTracker assignments={experiments.assignments} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
       />
-      <PageContent />
+      <PageContent experimentCopy={experimentCopy} />
     </>
   );
 }

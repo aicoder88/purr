@@ -774,6 +774,10 @@ model ABTest {
   variantViews      Int    @default(0)
   controlConversions Int   @default(0)
   variantConversions Int   @default(0)
+  controlOrders     Int    @default(0)
+  variantOrders     Int    @default(0)
+  controlRevenue    Float  @default(0)
+  variantRevenue    Float  @default(0)
   // Dates
   startedAt   DateTime?
   endedAt     DateTime?

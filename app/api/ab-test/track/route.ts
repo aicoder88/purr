@@ -8,6 +8,7 @@
 
 import { after } from 'next/server';
 import prismaClient from '@/lib/prisma';
+import { getCommercialExperimentBySlug } from '@/lib/experiments/commercial';
 
 interface TrackResponse {
   success: boolean;
@@ -32,15 +33,6 @@ async function updateTestMetrics(body: TrackBody): Promise<void> {
   try {
     const { testSlug, variant, type } = body;
 
-    // Check if test exists and is running
-    const test = await prismaClient.aBTest.findUnique({
-      where: { slug: testSlug },
-    });
-
-    if (!test || test.status !== 'RUNNING') {
-      return; // Silently skip - don't expose test existence
-    }
-
     // Update the appropriate counter
     const updateField =
       variant === 'control'
@@ -50,6 +42,41 @@ async function updateTestMetrics(body: TrackBody): Promise<void> {
         : type === 'view'
           ? 'variantViews'
           : 'variantConversions';
+
+    const commercialExperiment = getCommercialExperimentBySlug(testSlug);
+
+    if (commercialExperiment) {
+      await prismaClient.aBTest.upsert({
+        where: { slug: testSlug },
+        create: {
+          name: commercialExperiment.name,
+          slug: commercialExperiment.slug,
+          description: commercialExperiment.description,
+          status: 'RUNNING',
+          targetPage: commercialExperiment.targetPage,
+          trafficSplit: commercialExperiment.trafficSplit,
+          controlName: 'Control',
+          variantName: 'Variant',
+          createdBy: 'system-commercial-experiment',
+          startedAt: new Date(),
+          [updateField]: 1,
+        },
+        update: {
+          status: 'RUNNING',
+          [updateField]: { increment: 1 },
+        },
+      });
+      return;
+    }
+
+    // Check if test exists and is running
+    const test = await prismaClient.aBTest.findUnique({
+      where: { slug: testSlug },
+    });
+
+    if (!test || test.status !== 'RUNNING') {
+      return; // Silently skip - don't expose test existence
+    }
 
     await prismaClient.aBTest.update({
       where: { slug: testSlug },

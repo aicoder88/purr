@@ -9,7 +9,18 @@ import { Container } from '@/components/ui/container';
 import { Star, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useTranslation } from '@/lib/translation-context';
 
-export function ProductsHero() {
+interface ProductsHeroExperimentCopy {
+    headline: string;
+    subheadline: string;
+    primaryCta: string;
+    proofOrder: 'before-cta' | 'after-cta';
+}
+
+interface ProductsHeroProps {
+    experimentCopy: ProductsHeroExperimentCopy;
+}
+
+export function ProductsHero({ experimentCopy }: ProductsHeroProps) {
     const { t, locale } = useTranslation();
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
@@ -18,7 +29,23 @@ export function ProductsHero() {
     });
 
     const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
-    const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+    const trustBadge = (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="mt-8 flex items-center gap-4 text-sm font-medium text-gray-500 dark:text-gray-400"
+        >
+            <div className="flex -space-x-1">
+                {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:fill-yellow-500 dark:text-yellow-500" />
+                ))}
+            </div>
+            <span>
+                {locale === 'fr' ? "Noté 4.9/5 par les parents de chats" : "Rated 4.9/5 by cat parents"}
+            </span>
+        </motion.div>
+    );
 
     return (
         <section
@@ -56,7 +83,7 @@ export function ProductsHero() {
                             transition={{ duration: 0.5, delay: 0.1 }}
                             className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-50 leading-[1.1] tracking-tight mb-6"
                         >
-                            {t.productsHero.headline}
+                            {experimentCopy.headline}
                         </motion.h1>
 
                         {/* Subheading */}
@@ -66,8 +93,10 @@ export function ProductsHero() {
                             transition={{ duration: 0.5, delay: 0.2 }}
                             className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl mb-8"
                         >
-                            {t.productsHero.subheadline}
+                            {experimentCopy.subheadline}
                         </motion.p>
+
+                        {experimentCopy.proofOrder === 'before-cta' && trustBadge}
 
                         {/* CTA Buttons */}
                         <motion.div
@@ -82,7 +111,7 @@ export function ProductsHero() {
                                 className="bg-brand-purple hover:bg-brand-purple/90 text-white dark:text-gray-100 font-bold text-lg px-8 py-6 h-auto shadow-xl shadow-brand-purple/20 transition-all hover:scale-105"
                             >
                                 <Link href="#product-comparison">
-                                    {t.productsHero.findSizeButton}
+                                    {experimentCopy.primaryCta}
                                 </Link>
                             </Button>
                             <Button
@@ -98,22 +127,7 @@ export function ProductsHero() {
                             </Button>
                         </motion.div>
 
-                        {/* Trust Badges */}
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.5, delay: 0.5 }}
-                            className="mt-8 flex items-center gap-4 text-sm font-medium text-gray-500 dark:text-gray-400"
-                        >
-                            <div className="flex -space-x-1">
-                                {[...Array(5)].map((_, i) => (
-                                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:fill-yellow-500 dark:text-yellow-500" />
-                                ))}
-                            </div>
-                            <span>
-                                {locale === 'fr' ? "Noté 4.9/5 par les parents de chats" : "Rated 4.9/5 by cat parents"}
-                            </span>
-                        </motion.div>
+                        {experimentCopy.proofOrder === 'after-cta' && trustBadge}
                     </div>
 
                     {/* Right Column: Visuals */}

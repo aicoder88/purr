@@ -38,6 +38,10 @@ interface ABTest {
   variantViews: number;
   controlConversions: number;
   variantConversions: number;
+  controlOrders: number;
+  variantOrders: number;
+  controlRevenue: number;
+  variantRevenue: number;
   startedAt: string | null;
   endedAt: string | null;
   createdAt: string;
@@ -45,6 +49,13 @@ interface ABTest {
     controlRate: number;
     variantRate: number;
     improvement: number;
+    controlOrderRate: number;
+    variantOrderRate: number;
+    controlRevenuePerVisitor: number;
+    variantRevenuePerVisitor: number;
+    controlAOV: number;
+    variantAOV: number;
+    revenueLift: number;
     confidence: number;
     winner: 'control' | 'variant' | 'none';
   };
@@ -345,10 +356,13 @@ export default function ABTestsPage() {
                       {test.controlName}
                     </p>
                     <p className="text-lg font-bold text-gray-900 dark:text-gray-100">
-                      {test.stats.controlRate}%
+                      {test.stats.controlOrderRate}%
                     </p>
                     <p className="text-xs text-gray-500 dark:text-gray-400">
-                      {test.controlConversions}/{test.controlViews}
+                      {test.controlOrders} orders · ${test.controlRevenue.toFixed(2)}
+                    </p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      RPV ${test.stats.controlRevenuePerVisitor.toFixed(2)} · AOV ${test.stats.controlAOV.toFixed(2)}
                     </p>
                   </div>
                   <div className="text-center">
@@ -356,32 +370,35 @@ export default function ABTestsPage() {
                       {test.variantName}
                     </p>
                     <p className="text-lg font-bold text-gray-900 dark:text-gray-100">
-                      {test.stats.variantRate}%
+                      {test.stats.variantOrderRate}%
                     </p>
                     <p className="text-xs text-gray-500 dark:text-gray-400">
-                      {test.variantConversions}/{test.variantViews}
+                      {test.variantOrders} orders · ${test.variantRevenue.toFixed(2)}
+                    </p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      RPV ${test.stats.variantRevenuePerVisitor.toFixed(2)} · AOV ${test.stats.variantAOV.toFixed(2)}
                     </p>
                   </div>
                   <div className="text-center">
                     <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">
-                      Lift
+                      Revenue Lift
                     </p>
                     <p
                       className={`text-lg font-bold flex items-center justify-center ${
-                        test.stats.improvement > 0
+                        test.stats.revenueLift > 0
                           ? 'text-green-600 dark:text-green-400'
-                          : test.stats.improvement < 0
+                          : test.stats.revenueLift < 0
                             ? 'text-red-600 dark:text-red-400'
                             : 'text-gray-600 dark:text-gray-400'
                       }`}
                     >
-                      {test.stats.improvement > 0 ? (
+                      {test.stats.revenueLift > 0 ? (
                         <TrendingUp className="w-4 h-4 mr-1" />
-                      ) : test.stats.improvement < 0 ? (
+                      ) : test.stats.revenueLift < 0 ? (
                         <TrendingDown className="w-4 h-4 mr-1" />
                       ) : null}
-                      {test.stats.improvement > 0 ? '+' : ''}
-                      {test.stats.improvement}%
+                      {test.stats.revenueLift > 0 ? '+' : ''}
+                      {test.stats.revenueLift}%
                     </p>
                     <p className="text-xs text-gray-500 dark:text-gray-400">
                       {test.stats.confidence}% conf

@@ -10,7 +10,19 @@ import { getPaymentLink } from '@/lib/payment-links';
 import { useEffect, useRef, useCallback } from 'react';
 import { trackTikTokClientEvent } from '@/lib/tiktok-tracking';
 
-export function TryFreeClient() {
+interface TryFreeExperimentCopy {
+  headline: string;
+  subheadline: string;
+  primaryCta: string;
+  finalCta: string;
+  proofOrder: 'price-first' | 'stats-first';
+}
+
+interface TryFreeClientProps {
+  experimentCopy: TryFreeExperimentCopy;
+}
+
+export function TryFreeClient({ experimentCopy }: TryFreeClientProps) {
   const { locale } = useTranslation();
   const viewTracked = useRef(false);
 
@@ -89,54 +101,97 @@ export function TryFreeClient() {
               </div>
 
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-50 mb-4 leading-tight">
-                Try Purrify{' '}
-                <span className="text-[#03E46A]">FREE</span>
+                {experimentCopy.headline}
               </h1>
 
               <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6">
-                Discover why cat owners are switching to activated carbon odor control.
-                <strong className="text-gray-900 dark:text-gray-100"> Just pay {trialPrice} shipping.</strong>
+                {experimentCopy.subheadline}
+                <strong className="text-gray-900 dark:text-gray-100"> {trialPrice} shipping.</strong>
               </p>
 
-              {/* Price callout */}
-              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 mb-6 shadow-lg">
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 line-through">$9.99 value</p>
-                    <p className="text-3xl font-bold text-gray-900 dark:text-gray-50">FREE</p>
+              {experimentCopy.proofOrder === 'stats-first' ? (
+                <>
+                  {/* Social proof stats */}
+                  <div className="grid grid-cols-3 gap-4 mb-6">
+                    {socialProof.map((item, i) => (
+                      <div key={i} className="text-center">
+                        <p className="text-2xl md:text-3xl font-bold text-[#03E46A]">{item.stat}</p>
+                        <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400">{item.label}</p>
+                      </div>
+                    ))}
                   </div>
-                  <div className="text-right">
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Shipping only</p>
-                    <p className="text-2xl font-bold text-[#03E46A]">{trialPrice}</p>
+                  {/* Price callout */}
+                  <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 mb-6 shadow-lg">
+                    <div className="flex items-center justify-between mb-4">
+                      <div>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 line-through">$9.99 value</p>
+                        <p className="text-3xl font-bold text-gray-900 dark:text-gray-50">FREE</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm text-gray-500 dark:text-gray-400">Shipping only</p>
+                        <p className="text-2xl font-bold text-[#03E46A]">{trialPrice}</p>
+                      </div>
+                    </div>
+
+                    <Button
+                      asChild
+                      size="lg"
+                      className="w-full bg-[#03E46A] hover:bg-[#02C55A] text-white dark:text-gray-900 font-bold text-lg py-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
+                      onClick={handleGetTrial}
+                    >
+                      <a href={checkoutUrl}>
+                        {experimentCopy.primaryCta}
+                      </a>
+                    </Button>
+
+                    <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-3">
+                      <ShieldCheck className="inline h-4 w-4 mr-1" />
+                      30-day money-back guarantee
+                    </p>
                   </div>
-                </div>
+                </>
+              ) : (
+                <>
+                  {/* Price callout */}
+                  <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 mb-6 shadow-lg">
+                    <div className="flex items-center justify-between mb-4">
+                      <div>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 line-through">$9.99 value</p>
+                        <p className="text-3xl font-bold text-gray-900 dark:text-gray-50">FREE</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm text-gray-500 dark:text-gray-400">Shipping only</p>
+                        <p className="text-2xl font-bold text-[#03E46A]">{trialPrice}</p>
+                      </div>
+                    </div>
 
-                <Button
-                  asChild
-                  size="lg"
-                  className="w-full bg-[#03E46A] hover:bg-[#02C55A] text-white dark:text-gray-900 font-bold text-lg py-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
-                  onClick={handleGetTrial}
-                >
-                  <a href={checkoutUrl}>
-                    Get My Free Trial
-                  </a>
-                </Button>
+                    <Button
+                      asChild
+                      size="lg"
+                      className="w-full bg-[#03E46A] hover:bg-[#02C55A] text-white dark:text-gray-900 font-bold text-lg py-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
+                      onClick={handleGetTrial}
+                    >
+                      <a href={checkoutUrl}>
+                        {experimentCopy.primaryCta}
+                      </a>
+                    </Button>
 
-                <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-3">
-                  <ShieldCheck className="inline h-4 w-4 mr-1" />
-                  30-day money-back guarantee
-                </p>
-              </div>
-
-              {/* Social proof stats */}
-              <div className="grid grid-cols-3 gap-4">
-                {socialProof.map((item, i) => (
-                  <div key={i} className="text-center">
-                    <p className="text-2xl md:text-3xl font-bold text-[#03E46A]">{item.stat}</p>
-                    <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400">{item.label}</p>
+                    <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-3">
+                      <ShieldCheck className="inline h-4 w-4 mr-1" />
+                      30-day money-back guarantee
+                    </p>
                   </div>
-                ))}
-              </div>
+                  {/* Social proof stats */}
+                  <div className="grid grid-cols-3 gap-4">
+                    {socialProof.map((item, i) => (
+                      <div key={i} className="text-center">
+                        <p className="text-2xl md:text-3xl font-bold text-[#03E46A]">{item.stat}</p>
+                        <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400">{item.label}</p>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
 
             {/* Right: Image */}
@@ -245,7 +300,7 @@ export function TryFreeClient() {
               onClick={handleGetTrial}
             >
               <a href={checkoutUrl}>
-                Claim My Free Trial
+                {experimentCopy.finalCta}
               </a>
             </Button>
             <p className="mt-4 text-sm opacity-80">

@@ -9,8 +9,17 @@ import type { NextRequest } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 import { isAICrawler, getAICrawlerName } from './src/lib/ai-user-agents';
 import { defaultLocale, isValidLocale, type Locale } from './src/i18n/config';
+import { getRouteCachePolicy } from './src/lib/cache/route-cache-policy-map';
+import {
+  COMMERCIAL_EXPERIMENTS,
+  isCommercialRoute,
+  isExperimentVariant,
+  normalizeRoutePath,
+  type ExperimentVariant,
+} from './src/lib/experiments/commercial';
 
 const LOCALE_COOKIE_NAME = 'NEXT_LOCALE';
+const EXPERIMENT_VISITOR_COOKIE_NAME = 'purrify_exp_vid';
 
 // Define paths that should bypass middleware
 const PUBLIC_PATHS = [
@@ -88,8 +97,10 @@ function getPathWithoutLocale(pathname: string): string {
 
 // Only these routes are explicitly implemented under /[locale]/...
 function supportsLocalePrefix(pathWithoutLocale: string): boolean {
-  if (pathWithoutLocale === '/') return true;
-  return pathWithoutLocale === '/blog' || pathWithoutLocale === '/blog/' || pathWithoutLocale.startsWith('/blog/');
+  const normalizedPath = normalizeRoutePath(pathWithoutLocale);
+  if (normalizedPath === '/') return true;
+  if (normalizedPath === '/blog' || normalizedPath.startsWith('/blog/')) return true;
+  return isCommercialRoute(normalizedPath);
 }
 
 function resolveLocale(request: NextRequest, pathLocale: Locale | null): Locale {
@@ -116,6 +127,112 @@ function persistLocale(response: NextResponse, locale: Locale): void {
     sameSite: 'strict',
     secure: process.env.NODE_ENV === 'production',
   });
+}
+
+function mergeVaryHeaders(existing: string | null, additional: string[]): string {
+  const merged = new Set<string>();
+
+  if (existing) {
+    existing
+      .split(',')
+      .map((item) => item.trim())
+      .filter(Boolean)
+      .forEach((item) => merged.add(item));
+  }
+
+  additional
+    .map((item) => item.trim())
+    .filter(Boolean)
+    .forEach((item) => merged.add(item));
+
+  return Array.from(merged).join(', ');
+}
+
+function applyRouteCachePolicy(response: NextResponse, pathname: string): void {
+  const policy = getRouteCachePolicy(pathname);
+  if (!policy) {
+    return;
+  }
+
+  response.headers.set('Cache-Control', policy.cacheControl);
+
+  if (policy.vary && policy.vary.length > 0) {
+    response.headers.set('Vary', mergeVaryHeaders(response.headers.get('Vary'), policy.vary));
+  }
+}
+
+function getDeterministicBucket(seed: string): number {
+  let hash = 0;
+  for (let i = 0; i < seed.length; i += 1) {
+    hash = (hash * 31 + seed.charCodeAt(i)) % 10000;
+  }
+  return Math.abs(hash) % 100;
+}
+
+function assignExperimentVariant(visitorId: string, testSlug: string, trafficSplit: number): ExperimentVariant {
+  const bucket = getDeterministicBucket(`${visitorId}:${testSlug}`);
+  return bucket < trafficSplit ? 'variant' : 'control';
+}
+
+function resolveCommercialExperimentContext(
+  request: NextRequest,
+  pathWithoutLocale: string
+): {
+  requestHeaders: Headers;
+  cookiesToSet: Array<{ name: string; value: string; maxAge: number }>;
+} {
+  const requestHeaders = new Headers();
+  const cookiesToSet: Array<{ name: string; value: string; maxAge: number }> = [];
+
+  if (!isCommercialRoute(pathWithoutLocale)) {
+    return { requestHeaders, cookiesToSet };
+  }
+
+  const existingVisitorId = request.cookies.get(EXPERIMENT_VISITOR_COOKIE_NAME)?.value;
+  const visitorId = existingVisitorId && existingVisitorId.length > 0
+    ? existingVisitorId
+    : crypto.randomUUID();
+
+  if (!existingVisitorId) {
+    cookiesToSet.push({
+      name: EXPERIMENT_VISITOR_COOKIE_NAME,
+      value: visitorId,
+      maxAge: 60 * 60 * 24 * 365,
+    });
+  }
+
+  for (const experiment of COMMERCIAL_EXPERIMENTS) {
+    const cookieVariant = request.cookies.get(experiment.cookieName)?.value;
+    const variant = isExperimentVariant(cookieVariant)
+      ? cookieVariant
+      : assignExperimentVariant(visitorId, experiment.slug, experiment.trafficSplit);
+
+    requestHeaders.set(experiment.headerName, variant);
+
+    if (!isExperimentVariant(cookieVariant)) {
+      cookiesToSet.push({
+        name: experiment.cookieName,
+        value: variant,
+        maxAge: 60 * 60 * 24 * 30,
+      });
+    }
+  }
+
+  return { requestHeaders, cookiesToSet };
+}
+
+function persistExperimentCookies(
+  response: NextResponse,
+  cookiesToSet: Array<{ name: string; value: string; maxAge: number }>
+): void {
+  for (const cookie of cookiesToSet) {
+    response.cookies.set(cookie.name, cookie.value, {
+      path: '/',
+      maxAge: cookie.maxAge,
+      sameSite: 'lax',
+      secure: process.env.NODE_ENV === 'production',
+    });
+  }
 }
 
 export async function proxy(request: NextRequest) {
@@ -152,18 +269,24 @@ export async function proxy(request: NextRequest) {
 
   const pathLocale = getPathLocale(pathname);
   const resolvedLocale = resolveLocale(request, pathLocale);
+  const pathWithoutLocale = getPathWithoutLocale(pathname);
   const requestHeaders = buildRequestHeaders(request, resolvedLocale);
+  const experimentContext = resolveCommercialExperimentContext(request, pathWithoutLocale);
+
+  experimentContext.requestHeaders.forEach((value, key) => {
+    requestHeaders.set(key, value);
+  });
 
   if (pathLocale) {
-    const pathWithoutLocale = getPathWithoutLocale(pathname);
-
     if (!supportsLocalePrefix(pathWithoutLocale)) {
       const redirectUrl = request.nextUrl.clone();
       redirectUrl.pathname = pathWithoutLocale;
 
       const redirectResponse = NextResponse.redirect(redirectUrl);
       persistLocale(redirectResponse, pathLocale);
+      persistExperimentCookies(redirectResponse, experimentContext.cookiesToSet);
       applySecurityHeaders(redirectResponse);
+      applyRouteCachePolicy(redirectResponse, pathname);
       return redirectResponse;
     }
   }
@@ -180,7 +303,9 @@ export async function proxy(request: NextRequest) {
       url.searchParams.set('callbackUrl', pathname);
       const response = NextResponse.redirect(url);
       persistLocale(response, resolvedLocale);
+      persistExperimentCookies(response, experimentContext.cookiesToSet);
       applySecurityHeaders(response);
+      applyRouteCachePolicy(response, pathname);
       return response;
     }
 
@@ -190,7 +315,9 @@ export async function proxy(request: NextRequest) {
       if (userRole !== 'admin') {
         const response = NextResponse.redirect(new URL('/admin/blog', request.url));
         persistLocale(response, resolvedLocale);
+        persistExperimentCookies(response, experimentContext.cookiesToSet);
         applySecurityHeaders(response);
+        applyRouteCachePolicy(response, pathname);
         return response;
       }
     }
@@ -215,7 +342,9 @@ export async function proxy(request: NextRequest) {
     response.headers.set('X-Content-Optimized-For', 'AI-Consumption');
     response.headers.set('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
     persistLocale(response, resolvedLocale);
+    persistExperimentCookies(response, experimentContext.cookiesToSet);
     applySecurityHeaders(response);
+    applyRouteCachePolicy(response, pathname);
     return response;
   }
 
@@ -226,7 +355,9 @@ export async function proxy(request: NextRequest) {
   });
 
   persistLocale(response, resolvedLocale);
+  persistExperimentCookies(response, experimentContext.cookiesToSet);
   applySecurityHeaders(response);
+  applyRouteCachePolicy(response, pathname);
   return response;
 }
 

@@ -31,6 +31,20 @@ interface LearnCard {
   icon: React.ComponentType<{ className?: string }>;
 }
 
+interface LearnExperimentCopy {
+  headline: string;
+  subheadline: string;
+  proofLead: string;
+  ctaHeadline: string;
+  ctaBody: string;
+  ctaLabel: string;
+  proofOrder: 'before-guides' | 'after-guides';
+}
+
+interface LearnPageClientProps {
+  experimentCopy: LearnExperimentCopy;
+}
+
 const MAIN_GUIDES: LearnCard[] = [
   {
     title: 'How It Works',
@@ -149,7 +163,33 @@ const SOLUTIONS: LearnCard[] = [
   },
 ];
 
-export default function LearnPageClient() {
+export default function LearnPageClient({ experimentCopy }: LearnPageClientProps) {
+  const proofSection = (
+    <section className="pb-8 px-4">
+      <Container>
+        <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 md:p-8">
+          <h2 className="text-2xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100">
+            {experimentCopy.proofLead}
+          </h2>
+          <div className="grid grid-cols-3 gap-4 text-center">
+            <div>
+              <p className="text-2xl font-bold text-[#03E46A]">4.9/5</p>
+              <p className="text-xs text-gray-600 dark:text-gray-400">Average rating</p>
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-[#03E46A]">1,000+</p>
+              <p className="text-xs text-gray-600 dark:text-gray-400">Cat households</p>
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-[#03E46A]">99%</p>
+              <p className="text-xs text-gray-600 dark:text-gray-400">Odor reduction claim</p>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+
   return (
     <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
       {/* Breadcrumb */}
@@ -170,15 +210,16 @@ export default function LearnPageClient() {
         <Container>
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-              Learn Everything About Cat Litter Odor Control
+              {experimentCopy.headline}
             </h1>
             <p className="text-xl text-gray-700 dark:text-gray-300 mb-8">
-              Explore our comprehensive guides, scientific explanations, and targeted solutions 
-              to keep your home fresh and your cat happy.
+              {experimentCopy.subheadline}
             </p>
           </div>
         </Container>
       </section>
+
+      {experimentCopy.proofOrder === 'before-guides' && proofSection}
 
       {/* Main Guides Section */}
       <section className="pb-8 px-4">
@@ -228,6 +269,8 @@ export default function LearnPageClient() {
           </div>
         </Container>
       </section>
+
+      {experimentCopy.proofOrder === 'after-guides' && proofSection}
 
       {/* Solutions Section */}
       <section className="py-12 px-4 bg-white dark:bg-gray-800/50">
@@ -292,17 +335,16 @@ export default function LearnPageClient() {
         <Container>
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="text-3xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">
-              Ready to Experience the Difference?
+              {experimentCopy.ctaHeadline}
             </h2>
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
-              Put what you&apos;ve learned into practice. Try Purrify risk-free with our trial size 
-              and see why thousands of cat parents swear by it.
+              {experimentCopy.ctaBody}
             </p>
             <Link
               href="/products/trial-size"
               className="inline-flex items-center justify-center px-8 py-4 bg-[#03E46A] hover:bg-[#02c75b] text-white dark:text-gray-100 font-bold rounded-full transition-colors shadow-lg hover:shadow-xl"
             >
-              Try Purrify Risk-Free
+              {experimentCopy.ctaLabel}
               <ChevronRight className="w-5 h-5 ml-2" />
             </Link>
           </div>

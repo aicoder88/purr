@@ -30,7 +30,22 @@ import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '@/lib/pricing';
 import { getPaymentLink } from '@/lib/payment-links';
 
-export default function ProductsPage() {
+interface ProductsExperimentCopy {
+  heroHeadline: string;
+  heroSubheadline: string;
+  heroPrimaryCta: string;
+  heroProofOrder: 'before-cta' | 'after-cta';
+  finalCtaHeading: string;
+  finalCtaBody: string;
+  finalCtaPrimary: string;
+  finalCtaSecondary: string;
+}
+
+interface ProductsPageContentProps {
+  experimentCopy: ProductsExperimentCopy;
+}
+
+export default function ProductsPage({ experimentCopy }: ProductsPageContentProps) {
   const { locale, t } = useTranslation();
   const { currency } = useCurrency();
 
@@ -410,7 +425,14 @@ export default function ProductsPage() {
         )}
 
         {/* Hero Section - Hook with Problem + Promise */}
-        <ProductsHero />
+        <ProductsHero
+          experimentCopy={{
+            headline: experimentCopy.heroHeadline,
+            subheadline: experimentCopy.heroSubheadline,
+            primaryCta: experimentCopy.heroPrimaryCta,
+            proofOrder: experimentCopy.heroProofOrder,
+          }}
+        />
 
         {/* Social Proof FIRST - The "Don't take our word for it" payoff */}
         <section className="py-12 bg-white dark:bg-gray-800">
@@ -700,14 +722,10 @@ export default function ProductsPage() {
             <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
               <MapPin className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-                {locale === 'fr'
-                  ? "Trouvez Purrify près de chez vous"
-                  : "Get Purrify Near You"}
+                {experimentCopy.finalCtaHeading}
               </h2>
               <p className="text-xl mb-4 opacity-90">
-                {locale === 'fr'
-                  ? "Disponible dans les animaleries à travers le Canada. Demandez Purrify à votre magasin préféré."
-                  : "Available at pet stores across Canada. Ask for Purrify at your favorite store."}
+                {experimentCopy.finalCtaBody}
               </p>
               <p className="text-base mb-8 opacity-80">
                 {locale === 'fr'
@@ -718,13 +736,13 @@ export default function ProductsPage() {
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/stores`}>
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-brand-purple hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
                     <MapPin className="w-5 h-5 mr-2" />
-                    {locale === 'fr' ? "Trouver un magasin" : "Find a Store"}
+                    {experimentCopy.finalCtaPrimary}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
                 <Link href={`${locale === 'fr' ? '/fr' : ''}/contact`}>
                   <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-white bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
-                    {locale === 'fr' ? "Des questions? Contactez-nous" : "Questions? Contact Us"}
+                    {experimentCopy.finalCtaSecondary}
                   </Button>
                 </Link>
               </div>

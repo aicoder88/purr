@@ -73,6 +73,33 @@ export async function GET(_req: Request, { params }: RouteParams): Promise<Respo
         : 0;
     const improvement =
       controlRate > 0 ? ((variantRate - controlRate) / controlRate) * 100 : 0;
+    const controlOrderRate =
+      test.controlViews > 0
+        ? (test.controlOrders / test.controlViews) * 100
+        : 0;
+    const variantOrderRate =
+      test.variantViews > 0
+        ? (test.variantOrders / test.variantViews) * 100
+        : 0;
+    const controlRevenuePerVisitor =
+      test.controlViews > 0
+        ? test.controlRevenue / test.controlViews
+        : 0;
+    const variantRevenuePerVisitor =
+      test.variantViews > 0
+        ? test.variantRevenue / test.variantViews
+        : 0;
+    const controlAOV =
+      test.controlOrders > 0
+        ? test.controlRevenue / test.controlOrders
+        : 0;
+    const variantAOV =
+      test.variantOrders > 0
+        ? test.variantRevenue / test.variantOrders
+        : 0;
+    const revenueLift = test.controlRevenue > 0
+      ? ((test.variantRevenue - test.controlRevenue) / test.controlRevenue) * 100
+      : 0;
 
     const response: ABTestResponse = {
       success: true,
@@ -82,6 +109,13 @@ export async function GET(_req: Request, { params }: RouteParams): Promise<Respo
           controlRate: Math.round(controlRate * 100) / 100,
           variantRate: Math.round(variantRate * 100) / 100,
           improvement: Math.round(improvement * 100) / 100,
+          controlOrderRate: Math.round(controlOrderRate * 100) / 100,
+          variantOrderRate: Math.round(variantOrderRate * 100) / 100,
+          controlRevenuePerVisitor: Math.round(controlRevenuePerVisitor * 100) / 100,
+          variantRevenuePerVisitor: Math.round(variantRevenuePerVisitor * 100) / 100,
+          controlAOV: Math.round(controlAOV * 100) / 100,
+          variantAOV: Math.round(variantAOV * 100) / 100,
+          revenueLift: Math.round(revenueLift * 100) / 100,
           confidence,
           winner,
         },
@@ -291,6 +325,10 @@ export async function POST(req: Request, { params }: RouteParams): Promise<Respo
           variantViews: 0,
           controlConversions: 0,
           variantConversions: 0,
+          controlOrders: 0,
+          variantOrders: 0,
+          controlRevenue: 0,
+          variantRevenue: 0,
           startedAt: null,
           endedAt: null,
           status: 'DRAFT',

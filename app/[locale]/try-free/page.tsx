@@ -1,0 +1,74 @@
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { TryFreeClient } from '@/app/try-free/TryFreeClient';
+import { locales, isValidLocale } from '@/i18n/config';
+import { getCommercialExperimentState } from '@/lib/experiments/commercial-server';
+import { ServerExperimentViewTracker } from '@/components/experiments/ServerExperimentViewTracker';
+
+interface LocalizedTryFreePageProps {
+  params: Promise<{ locale: string }>;
+}
+
+export const dynamic = 'force-dynamic';
+
+export async function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({ params }: LocalizedTryFreePageProps): Promise<Metadata> {
+  const { locale } = await params;
+
+  if (!isValidLocale(locale)) {
+    return { title: 'Not Found' };
+  }
+
+  return {
+    title: 'FREE Purrify Trial | Just Pay Shipping | Eliminates Odors',
+    description: 'FREE Purrify Trial | Just Pay Shipping | Eliminates cat litter smell instantly with water-filter grade carbon. ★ 4.8 rating. Ships USA & Canada.',
+    alternates: {
+      canonical: `https://www.purrify.ca/${locale}/try-free/`,
+      languages: {
+        'en-CA': 'https://www.purrify.ca/try-free/',
+        'fr-CA': 'https://www.purrify.ca/fr/try-free/',
+        'zh-CN': 'https://www.purrify.ca/zh/try-free/',
+        'es-US': 'https://www.purrify.ca/es/try-free/',
+        'en-US': 'https://www.purrify.ca/try-free/',
+        'x-default': 'https://www.purrify.ca/try-free/',
+      },
+    },
+  };
+}
+
+export default async function LocalizedTryFreePage({ params }: LocalizedTryFreePageProps) {
+  const { locale } = await params;
+
+  if (!isValidLocale(locale)) {
+    notFound();
+  }
+
+  const experiments = await getCommercialExperimentState();
+  const experimentCopy = {
+    headline: experiments.headline === 'variant'
+      ? 'End Litter Box Odor in 7 Days for Free'
+      : 'Try Purrify FREE',
+    subheadline: experiments.headline === 'variant'
+      ? 'Water-filter grade activated carbon that neutralizes odor instead of masking it. Just pay'
+      : 'Discover why cat owners are switching to activated carbon odor control. Just pay',
+    primaryCta: experiments.ctaCopy === 'variant'
+      ? 'Start My 7-Day Trial'
+      : 'Get My Free Trial',
+    finalCta: experiments.ctaCopy === 'variant'
+      ? 'Activate My Free Trial'
+      : 'Claim My Free Trial',
+    proofOrder: experiments.proofOrder === 'variant'
+      ? 'stats-first'
+      : 'price-first',
+  } as const;
+
+  return (
+    <>
+      <ServerExperimentViewTracker assignments={experiments.assignments} />
+      <TryFreeClient experimentCopy={experimentCopy} />
+    </>
+  );
+}
