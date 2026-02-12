@@ -1,509 +1,364 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
-import { useTranslation } from '../../../src/lib/translation-context';
+import Link from 'next/link';
+import { CheckCircle, CircleDot, Droplets, FlaskConical, Layers, Thermometer } from 'lucide-react';
+import { Container } from '@/components/ui/container';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+import { useTranslation } from '@/lib/translation-context';
+import { localizePath } from '@/lib/i18n/locale-path';
 
 export default function AmmoniaSciencePageClient() {
-  const { locale } = useTranslation();
-  const heroImage = '/images/ammonia-science.webp';
+  const { t, locale } = useTranslation();
+  const ammonia = t.ammonia;
 
-  // HowTo steps for reducing ammonia
-  const howToSteps = [
-    {
-      name: 'Understand the timeline',
-      text: 'Ammonia production begins 2-4 hours after urination as bacteria colonize the urine. The smell intensifies over 24-48 hours as more urea is converted.',
-      tip: 'This is why daily scooping is critical—remove waste before ammonia peaks.',
-    },
-    {
-      name: 'Remove urine quickly',
-      text: 'Scoop urine clumps as soon as possible after your cat uses the litter box. The less time bacteria have to work, the less ammonia is produced.',
-    },
-    {
-      name: 'Control moisture and temperature',
-      text: 'Bacteria thrive in warm, moist conditions. Keep litter boxes in cool, well-ventilated areas and use litter that clumps well to isolate moisture.',
-    },
-    {
-      name: 'Add activated carbon',
-      text: 'Activated carbon traps ammonia molecules as they\'re released, preventing them from reaching your nose. Add 2-3 tablespoons to your litter and refresh weekly.',
-    },
-    {
-      name: 'Deep clean regularly',
-      text: 'Empty and wash the litter box with enzyme cleaner every 1-2 weeks. This removes bacterial colonies that produce ammonia even without fresh urine.',
-      tip: 'Never use bleach—it reacts with ammonia to create toxic chloramine gas.',
-    },
+  const faqItems = [
+    { question: ammonia.faq.q1, answer: ammonia.faq.a1 },
+    { question: ammonia.faq.q2, answer: ammonia.faq.a2 },
+    { question: ammonia.faq.q3, answer: ammonia.faq.a3 },
+    { question: ammonia.faq.q4, answer: ammonia.faq.a4 },
+    { question: ammonia.faq.q5, answer: ammonia.faq.a5 },
+    { question: ammonia.faq.q6, answer: ammonia.faq.a6 },
+    { question: ammonia.faq.q7, answer: ammonia.faq.a7 },
+    { question: ammonia.faq.q8, answer: ammonia.faq.a8 },
   ];
 
-  // FAQ questions
-  const faqQuestions = [
-    {
-      question: 'Why does cat urine smell like ammonia?',
-      answer: 'Cat urine contains urea, a nitrogen-rich waste product. When bacteria break down urea through a process called urease hydrolysis, they release ammonia gas (NH₃). This is the same sharp, pungent smell you recognize from cleaning products. The smell intensifies over time as more urea is converted to ammonia.',
-    },
-    {
-      question: 'Why does cat urine smell stronger than other animals?',
-      answer: 'Cats evolved as desert animals that conserve water by producing highly concentrated urine. This means cat urine has 2-3x more urea per volume than dog or human urine. More urea = more ammonia production = stronger smell. Male cats and senior cats often have even more concentrated urine.',
-    },
-    {
-      question: 'Is the ammonia smell from cat litter dangerous?',
-      answer: 'Yes, at high concentrations. Ammonia levels above 25 ppm can cause eye and respiratory irritation in both humans and cats. Cat litter boxes can produce 5-50 ppm depending on cleanliness. Cats are especially vulnerable since they\'re close to the box and have sensitive respiratory systems.',
-    },
-    {
-      question: 'Why does my litter box smell worse in summer?',
-      answer: 'Bacteria multiply faster in warm conditions, accelerating ammonia production. At 30°C (86°F), bacterial activity can be 2-3x higher than at 20°C (68°F). Summer humidity also keeps urine moist longer, providing ideal conditions for the bacteria that convert urea to ammonia.',
-    },
-    {
-      question: 'Can diet affect how strong cat urine smells?',
-      answer: 'Yes. High-protein diets produce more nitrogen waste (urea) in urine, leading to stronger ammonia smell. Poor kidney function (common in senior cats) also concentrates urine further. If your cat\'s urine suddenly smells much stronger, consult a vet—it could indicate health issues.',
-    },
-    {
-      question: 'How long does it take for cat urine to start smelling like ammonia?',
-      answer: 'Ammonia production begins within 2-4 hours of urination as bacteria colonize the urine. The smell becomes noticeable to humans within 6-12 hours and peaks around 24-48 hours. This is why daily scooping is essential—you\'re racing against bacterial metabolism.',
-    },
+  const howToSteps = [
+    ammonia.howToUse.step1,
+    ammonia.howToUse.step2,
+    ammonia.howToUse.step3,
+  ];
+
+  const results = [
+    ammonia.results.day1,
+    ammonia.results.day3,
+    ammonia.results.week1,
+    ammonia.results.ongoing,
+  ];
+
+  const problemCards = [
+    ammonia.problem.card1,
+    ammonia.problem.card2,
+    ammonia.problem.card3,
+    ammonia.problem.card4,
+  ];
+
+  const comparisonRows = [
+    ammonia.comparison.purrify,
+    ammonia.comparison.bakingSoda,
+    ammonia.comparison.scented,
+    ammonia.comparison.airFreshener,
+    ammonia.comparison.frequentChanges,
   ];
 
   return (
-    <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
-      {/* Hero Section */}
-      <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full text-sm font-medium mb-4">
-              Pet Science
-            </span>
-            <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-              Why Cat Urine Smells Like Ammonia
-            </h1>
-            <p className="text-xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto">
-              The sharp ammonia smell in your litter box isn&apos;t the urine itself—it&apos;s a byproduct of
-              bacterial metabolism. Understanding this chemistry is the key to eliminating it.
-            </p>
-          </div>
-
-          {/* Hero Image */}
-          <div className="relative rounded-2xl overflow-hidden shadow-xl mb-12">
-            <Image
-              src={heroImage}
-              alt="Molecular diagram showing urea converting to ammonia"
-              width={1200}
-              height={675}
-              className="w-full h-auto"
-            />
-          </div>
-
-          {/* Key Fact */}
-          <div className="bg-gradient-to-r from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 rounded-xl p-6 border-l-4 border-purple-500 dark:border-purple-400">
-            <div className="flex items-start gap-4">
-              <span className="text-3xl">🔬</span>
-              <div>
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Key Science Fact</h3>
-                <p className="text-gray-700 dark:text-gray-200">
-                  Cat urine doesn&apos;t immediately smell like ammonia. The smell develops over 2-4 hours as bacteria break down urea
-                  (a nitrogen compound) into ammonia gas. This is why fresh accidents don&apos;t smell as bad as day-old litter.
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mt-2 italic">
-                  The enzyme urease, produced by bacteria, catalyzes the breakdown of urea into ammonia (NH₃) and carbon dioxide (CO₂).
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+    <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
+      <section className="py-14 border-b border-gray-200 dark:border-gray-800">
+        <Container>
+          <nav className="text-sm text-gray-600 dark:text-gray-300">
+            <ol className="flex items-center gap-2">
+              <li>
+                <Link href={localizePath('/', locale)} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
+                  {t.nav.home}
+                </Link>
+              </li>
+              <li>/</li>
+              <li className="font-medium text-gray-900 dark:text-gray-100">{ammonia.breadcrumb}</li>
+            </ol>
+          </nav>
+        </Container>
       </section>
 
-      {/* The Chemistry */}
-      <section className="py-12 px-4 bg-white dark:bg-gray-800">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">
-            The Chemistry: From Urea to Ammonia
-          </h2>
-
-          <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-8 mb-8">
-            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6">The Urease Hydrolysis Reaction</h3>
-
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 mb-6">
-              <p className="text-center font-mono text-lg text-gray-700 dark:text-gray-200 mb-4">
-                (NH₂)₂CO + H₂O → 2NH₃ + CO₂
-              </p>
-              <p className="text-center text-sm text-gray-600 dark:text-gray-300">
-                Urea + Water → <strong>Ammonia</strong> + Carbon Dioxide
+      <section className="py-14">
+        <Container>
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-10">
+              <h1 className="text-4xl md:text-5xl font-heading font-bold text-gray-900 dark:text-gray-50 mb-5">
+                {ammonia.hero.headline}
+              </h1>
+              <p className="text-lg md:text-xl text-gray-700 dark:text-gray-200 max-w-4xl mx-auto">
+                {ammonia.hero.subheadline}
               </p>
             </div>
 
-            <p className="text-gray-700 dark:text-gray-200">
-              This reaction is catalyzed by <strong>urease</strong>, an enzyme produced by bacteria commonly found in
-              soil, water, and animal environments. The same bacteria quickly colonize cat litter boxes, where they
-              find an abundant supply of urea from cat urine.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 border border-blue-200 dark:border-blue-700">
-              <h3 className="text-xl font-bold text-blue-800 dark:text-blue-200 mb-4">What is Urea?</h3>
-              <p className="text-gray-700 dark:text-gray-200 mb-4">
-                Urea is the primary nitrogen waste product in mammal urine. When cats metabolize protein from their
-                food, the nitrogen must be excreted. The liver converts toxic ammonia into urea, which is safer to
-                store and transport via the bloodstream to the kidneys.
-              </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                <li>• Chemical formula: (NH₂)₂CO</li>
-                <li>• Contains 46% nitrogen by weight</li>
-                <li>• Water-soluble and odorless when pure</li>
-              </ul>
-            </div>
-
-            <div className="bg-red-50 dark:bg-red-900/20 rounded-xl p-6 border border-red-200 dark:border-red-700">
-              <h3 className="text-xl font-bold text-red-800 dark:text-red-200 mb-4">What is Ammonia?</h3>
-              <p className="text-gray-700 dark:text-gray-200 mb-4">
-                Ammonia (NH₃) is a colorless gas with a characteristic pungent smell. It&apos;s highly alkaline (pH ~11.6)
-                and irritating to mucous membranes. The human nose can detect ammonia at concentrations as low as 25 ppm.
-              </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                <li>• Chemical formula: NH₃</li>
-                <li>• Lighter than air (rises upward)</li>
-                <li>• Highly soluble in water</li>
-              </ul>
+            <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10">
+              <Image
+                src="/images/ammonia-science.webp"
+                alt={ammonia.meta.title}
+                width={1200}
+                height={675}
+                className="w-full h-auto"
+              />
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* The Bacterial Process */}
-      <section className="py-12 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">
-            The Bacterial Process: A Timeline
-          </h2>
-
-          <div className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-xl p-6 border-l-4 border-amber-500 dark:border-amber-400 mb-8">
-            <div className="flex items-start gap-4">
-              <span className="text-3xl">📊</span>
-              <div>
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Ammonia Production Timeline</h3>
-                <p className="text-gray-700 dark:text-gray-200">
-                  Ammonia production from cat urine peaks between 24-48 hours after urination. At this point, bacterial
-                  colonies have fully established and are converting urea at maximum efficiency. This is why two-day-old
-                  litter smells dramatically worse than one-day-old litter.
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mt-2 italic">
-                  Daily scooping removes waste before ammonia production peaks.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-8 space-y-6">
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-l-4 border-green-500 dark:border-green-400">
-              <div className="flex items-center gap-4 mb-3">
-                <span className="bg-green-500 text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold">0-2 Hours</span>
-                <h3 className="font-bold text-gray-900 dark:text-gray-100">Fresh Urine</h3>
-              </div>
-              <p className="text-gray-700 dark:text-gray-200">
-                Urine is deposited and begins to cool. Bacteria from the environment start to colonize.
-                Little to no ammonia smell is detectable at this stage.
-              </p>
-            </div>
-
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-l-4 border-yellow-500 dark:border-yellow-400">
-              <div className="flex items-center gap-4 mb-3">
-                <span className="bg-yellow-500 dark:bg-yellow-600 text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold">2-6 Hours</span>
-                <h3 className="font-bold text-gray-900 dark:text-gray-100">Bacterial Colonization</h3>
-              </div>
-              <p className="text-gray-700 dark:text-gray-200">
-                Bacteria multiply rapidly in the nutrient-rich urine. Urease enzymes begin breaking down urea.
-                A faint ammonia smell may be detectable to sensitive noses.
-              </p>
-            </div>
-
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-l-4 border-orange-500 dark:border-orange-400">
-              <div className="flex items-center gap-4 mb-3">
-                <span className="bg-orange-500 dark:bg-orange-600 text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold">6-24 Hours</span>
-                <h3 className="font-bold text-gray-900 dark:text-gray-100">Ammonia Buildup</h3>
-              </div>
-              <p className="text-gray-700 dark:text-gray-200">
-                Ammonia production accelerates. The smell becomes clearly noticeable to humans.
-                Litter box odor begins to spread to surrounding areas.
-              </p>
-            </div>
-
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-l-4 border-red-500 dark:border-red-400">
-              <div className="flex items-center gap-4 mb-3">
-                <span className="bg-red-500 text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold">24-48 Hours</span>
-                <h3 className="font-bold text-gray-900 dark:text-gray-100">Peak Ammonia</h3>
-              </div>
-              <p className="text-gray-700 dark:text-gray-200">
-                Maximum bacterial activity. Ammonia levels can reach 50+ ppm near the litter box.
-                The smell is overwhelming and can permeate entire rooms.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Cat Urine is Especially Strong */}
-      <section className="py-12 px-4 bg-white dark:bg-gray-800">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">
-            Why Cat Urine Smells Stronger Than Other Animals
-          </h2>
-
-          <p className="text-gray-700 dark:text-gray-200 mb-8">
-            If you&apos;ve owned both cats and dogs, you&apos;ve probably noticed that cat urine has a much more
-            intense smell. This isn&apos;t just your imagination—there are biological reasons for this difference.
-          </p>
-
-          <div className="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-xl p-6 border-l-4 border-indigo-500 dark:border-indigo-400 mb-8">
-            <div className="flex items-start gap-4">
-              <span className="text-3xl">🏜️</span>
-              <div>
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Desert Adaptation</h3>
-                <p className="text-gray-700 dark:text-gray-200">
-                  Cats evolved as desert animals that conserve water by producing highly concentrated urine.
-                  Cat urine contains 2-3x more urea per volume than dog urine, which means 2-3x more ammonia
-                  is produced during bacterial breakdown.
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mt-2 italic">
-                  This water-conservation adaptation made sense in the desert but creates challenges for indoor cat owners.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-8 grid md:grid-cols-3 gap-6">
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-5">
-              <div className="text-3xl mb-3">🏜️</div>
-              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Desert Evolution</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
-                Cats evolved to conserve water in arid environments, producing highly concentrated urine
-                with minimal water content.
-              </p>
-            </div>
-
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-5">
-              <div className="text-3xl mb-3">🥩</div>
-              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Obligate Carnivores</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
-                As obligate carnivores, cats eat high-protein diets that produce more nitrogen waste
-                (urea) than omnivore diets.
-              </p>
-            </div>
-
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-5">
-              <div className="text-3xl mb-3">🔬</div>
-              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Felinine</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
-                Cat urine contains felinine, a unique amino acid that breaks down into sulfur compounds,
-                adding to the distinctive odor.
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-8 bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 dark:border-yellow-400 p-6 rounded-r-xl">
-            <h3 className="font-bold text-yellow-800 dark:text-yellow-200 mb-2">Special Cases: Even Stronger Smell</h3>
-            <ul className="text-gray-700 dark:text-gray-200 space-y-2">
-              <li>• <strong>Unneutered male cats:</strong> Produce hormones that make urine smell especially pungent for territorial marking</li>
-              <li>• <strong>Senior cats:</strong> Often have reduced kidney function, producing more concentrated urine</li>
-              <li>• <strong>Cats with UTIs or kidney disease:</strong> May have abnormal urine composition with stronger odor</li>
-              <li>• <strong>Dehydrated cats:</strong> Produce more concentrated urine with higher urea content</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Health Concerns */}
-      <section className="py-12 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">
-            Health Concerns: Ammonia Exposure Risks
-          </h2>
-
-          <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-xl p-8 mb-8">
-            <h3 className="text-xl font-bold text-red-800 dark:text-red-200 mb-4">Ammonia Exposure Levels</h3>
-
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <span className="bg-green-500 text-white dark:text-gray-100 px-3 py-1 rounded text-sm font-bold w-24 text-center">5-25 ppm</span>
-                <span className="text-gray-700 dark:text-gray-200">Detection threshold - smell is noticeable</span>
-              </div>
-              <div className="flex items-center gap-4">
-                <span className="bg-yellow-500 dark:bg-yellow-600 text-white dark:text-gray-100 px-3 py-1 rounded text-sm font-bold w-24 text-center">25-50 ppm</span>
-                <span className="text-gray-700 dark:text-gray-200">Eye and respiratory irritation begins</span>
-              </div>
-              <div className="flex items-center gap-4">
-                <span className="bg-orange-500 dark:bg-orange-600 text-white dark:text-gray-100 px-3 py-1 rounded text-sm font-bold w-24 text-center">50-100 ppm</span>
-                <span className="text-gray-700 dark:text-gray-200">Significant irritation, headaches, nausea</span>
-              </div>
-              <div className="flex items-center gap-4">
-                <span className="bg-red-500 text-white dark:text-gray-100 px-3 py-1 rounded text-sm font-bold w-24 text-center">100+ ppm</span>
-                <span className="text-gray-700 dark:text-gray-200">Dangerous - can cause chemical burns</span>
-              </div>
-            </div>
-
-            <p className="mt-6 text-gray-700 dark:text-gray-200 text-sm">
-              <strong>Note:</strong> Poorly maintained litter boxes can reach 50+ ppm near the box surface. Cats breathing
-              at this level regularly may develop respiratory issues.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-4">Risks for Cats</h3>
-              <ul className="space-y-2 text-gray-700 dark:text-gray-200">
-                <li className="flex items-start gap-2">
-                  <span className="text-red-500 dark:text-red-400">•</span>
-                  <span>Upper respiratory infections</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-500 dark:text-red-400">•</span>
-                  <span>Eye irritation and discharge</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-500 dark:text-red-400">•</span>
-                  <span>Litter box avoidance (accidents)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-500 dark:text-red-400">•</span>
-                  <span>Chronic respiratory inflammation</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-4">Risks for Humans</h3>
-              <ul className="space-y-2 text-gray-700 dark:text-gray-200">
-                <li className="flex items-start gap-2">
-                  <span className="text-red-500 dark:text-red-400">•</span>
-                  <span>Headaches and fatigue</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-500 dark:text-red-400">•</span>
-                  <span>Respiratory irritation</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-500 dark:text-red-400">•</span>
-                  <span>Worsening of asthma symptoms</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-500 dark:text-red-400">•</span>
-                  <span>Eye and throat irritation</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* HowTo Section */}
-      <section className="py-12 px-4 bg-white dark:bg-gray-800">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">
-            How to Reduce Ammonia in Your Litter Box
-          </h2>
-          <p className="text-gray-700 dark:text-gray-200 mb-8">
-            Follow these steps to minimize ammonia production and keep your home smelling fresh.
-            <span className="text-sm text-gray-500 dark:text-gray-400 ml-2">(Estimated time: 15 minutes for setup, daily maintenance)</span>
-          </p>
-
-          <div className="space-y-6">
-            {howToSteps.map((step, index) => (
-              <div key={index} className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white dark:text-gray-100 font-bold">{index + 1}</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{step.name}</h3>
-                    <p className="text-gray-700 dark:text-gray-200 mb-2">{step.text}</p>
-                    {step.tip && (
-                      <p className="text-sm text-purple-600 dark:text-purple-400 italic">
-                        💡 Tip: {step.tip}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-12 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">
-            Ammonia & Cat Urine FAQ
-          </h2>
-
-          <div className="space-y-6">
-            {faqQuestions.map((faq, index) => (
-              <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-3">
-                  {faq.question}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {faq.answer}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 px-4 bg-white dark:bg-gray-800">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-r from-electric-indigo to-deep-coral rounded-2xl p-8 md:p-12 text-center text-white dark:text-gray-100">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-              Stop Ammonia at the Source
+      <section className="py-14 bg-white dark:bg-gray-800">
+        <Container>
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl font-heading font-bold text-gray-900 dark:text-gray-50 mb-4">
+              {ammonia.understanding.headline}
             </h2>
-            <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-              Purrify&apos;s activated carbon traps ammonia molecules before they reach your nose.
-              No masking, no fragrances—just science-based odor elimination.
+            <p className="text-gray-700 dark:text-gray-200 mb-10">
+              {ammonia.understanding.intro}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}
-                className="inline-block bg-white dark:bg-gray-100 text-electric-indigo font-bold py-4 px-8 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-200 hover:scale-105 transition-all duration-300 shadow-lg"
-              >
-                Try Purrify Today
-              </Link>
-              <Link
-                href={`${locale === 'fr' ? '/fr' : ''}/learn/how-activated-carbon-works`}
-                className="inline-block border-2 border-white dark:border-gray-100 text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:bg-white/10 dark:hover:bg-gray-100/10 hover:scale-105 transition-all duration-300"
-              >
-                How Carbon Traps Ammonia
-              </Link>
+            <div className="grid md:grid-cols-3 gap-6">
+              <article className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
+                <div className="w-11 h-11 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-4">
+                  <FlaskConical className="w-6 h-6 text-blue-600 dark:text-blue-300" />
+                </div>
+                <h3 className="font-bold text-gray-900 dark:text-gray-50 mb-2">
+                  {ammonia.understanding.chemistry.title}
+                </h3>
+                <p className="text-gray-700 dark:text-gray-200 text-sm mb-4">
+                  {ammonia.understanding.chemistry.description}
+                </p>
+                <p className="font-mono text-xs md:text-sm text-blue-700 dark:text-blue-300 bg-blue-100/80 dark:bg-blue-900/30 rounded-md p-3">
+                  {ammonia.understanding.chemistry.formula}
+                </p>
+              </article>
+
+              <article className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
+                <div className="w-11 h-11 bg-amber-100 dark:bg-amber-900/30 rounded-lg flex items-center justify-center mb-4">
+                  <Thermometer className="w-6 h-6 text-amber-600 dark:text-amber-300" />
+                </div>
+                <h3 className="font-bold text-gray-900 dark:text-gray-50 mb-3">
+                  {ammonia.understanding.factors.title}
+                </h3>
+                <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-200">
+                  <li className="flex gap-2">
+                    <Thermometer className="w-4 h-4 mt-0.5 text-amber-500 dark:text-amber-300 flex-shrink-0" />
+                    <span>{ammonia.understanding.factors.point1}</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <Droplets className="w-4 h-4 mt-0.5 text-blue-500 dark:text-blue-300 flex-shrink-0" />
+                    <span>{ammonia.understanding.factors.point2}</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <Layers className="w-4 h-4 mt-0.5 text-purple-500 dark:text-purple-300 flex-shrink-0" />
+                    <span>{ammonia.understanding.factors.point3}</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <CircleDot className="w-4 h-4 mt-0.5 text-gray-500 dark:text-gray-300 flex-shrink-0" />
+                    <span>{ammonia.understanding.factors.point4}</span>
+                  </li>
+                </ul>
+              </article>
+
+              <article className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
+                <h3 className="font-bold text-gray-900 dark:text-gray-50 mb-2">
+                  {ammonia.understanding.health.title}
+                </h3>
+                <p className="text-gray-700 dark:text-gray-200 text-sm">
+                  {ammonia.understanding.health.description}
+                </p>
+              </article>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* Related Content */}
-      <section className="py-12 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-            Related Articles
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/solutions/ammonia-smell-cat-litter`} className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 border-2 border-[#FF3131]/20 dark:border-[#FF5050]/20">
-              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Fix Ammonia Smell Fast</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">Quick solutions for immediate relief</p>
-            </Link>
-            <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/cat-litter-ammonia-health-risks`} className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Ammonia Health Risks</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">Safe exposure levels explained</p>
-            </Link>
-            <Link href={`${locale === 'fr' ? '/fr' : ''}/blog/how-to-neutralize-ammonia-cat-litter`} className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">5 Neutralization Methods</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">Ranked by effectiveness</p>
-            </Link>
-            <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-activated-carbon-works`} className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">How Activated Carbon Works</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">The science of odor adsorption</p>
-            </Link>
+      <section className="py-14">
+        <Container>
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl font-heading font-bold text-gray-900 dark:text-gray-50 mb-4">
+              {ammonia.problem.headline}
+            </h2>
+            <p className="text-gray-700 dark:text-gray-200 mb-10">
+              {ammonia.problem.intro}
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {problemCards.map((card, index) => (
+                <article key={`${card.title}-${index}`} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+                  <h3 className="font-bold text-gray-900 dark:text-gray-50 mb-2">{card.title}</h3>
+                  <p className="text-sm text-gray-700 dark:text-gray-200">{card.description}</p>
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
+        </Container>
       </section>
-    </div>
+
+      <section className="py-14 bg-white dark:bg-gray-800">
+        <Container>
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl font-heading font-bold text-gray-900 dark:text-gray-50 mb-4">
+              {ammonia.solution.headline}
+            </h2>
+            <p className="text-gray-700 dark:text-gray-200 mb-3">
+              {ammonia.solution.intro}
+            </p>
+            <p className="text-gray-700 dark:text-gray-200 mb-10">
+              {ammonia.solution.description}
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              <article className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 border border-blue-100 dark:border-blue-800">
+                <h3 className="font-bold text-blue-900 dark:text-blue-200 mb-2">{ammonia.solution.adsorption.title}</h3>
+                <p className="text-sm text-gray-700 dark:text-gray-200">{ammonia.solution.adsorption.description}</p>
+              </article>
+              <article className="bg-indigo-50 dark:bg-indigo-900/20 rounded-xl p-6 border border-indigo-100 dark:border-indigo-800">
+                <h3 className="font-bold text-indigo-900 dark:text-indigo-200 mb-2">{ammonia.solution.pores.title}</h3>
+                <ul className="space-y-1 text-sm text-gray-700 dark:text-gray-200 mb-3">
+                  <li>{ammonia.solution.pores.micro}</li>
+                  <li>{ammonia.solution.pores.meso}</li>
+                  <li>{ammonia.solution.pores.macro}</li>
+                </ul>
+                <p className="text-sm text-gray-700 dark:text-gray-200">{ammonia.solution.pores.description}</p>
+              </article>
+              <article className="bg-emerald-50 dark:bg-emerald-900/20 rounded-xl p-6 border border-emerald-100 dark:border-emerald-800">
+                <h3 className="font-bold text-emerald-900 dark:text-emerald-200 mb-2">{ammonia.solution.surface.title}</h3>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-300 mb-2">{ammonia.solution.surface.stat}</p>
+                <p className="text-sm text-gray-700 dark:text-gray-200 mb-3">{ammonia.solution.surface.comparison}</p>
+                <p className="text-sm text-gray-700 dark:text-gray-200">{ammonia.solution.surface.explanation}</p>
+              </article>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-14">
+        <Container>
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl font-heading font-bold text-gray-900 dark:text-gray-50 mb-4">
+              {ammonia.howToUse.headline}
+            </h2>
+            <p className="text-gray-700 dark:text-gray-200 mb-8">
+              {ammonia.howToUse.intro}
+            </p>
+
+            <div className="space-y-4 mb-8">
+              {howToSteps.map((step) => (
+                <article key={step.number} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+                  <div className="flex items-start gap-4">
+                    <div className="w-9 h-9 rounded-full bg-[#FF3131] text-white flex items-center justify-center font-bold">
+                      {step.number}
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-gray-900 dark:text-gray-50 mb-1">{step.title}</h3>
+                      <p className="text-sm text-gray-700 dark:text-gray-200">{step.description}</p>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            {ammonia.howToUse.proTip && (
+              <div className="bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-400 dark:border-amber-500 rounded-r-xl p-6">
+                <h3 className="font-bold text-amber-900 dark:text-amber-200 mb-2">{ammonia.howToUse.proTip.title}</h3>
+                <p className="text-sm text-gray-700 dark:text-gray-200">{ammonia.howToUse.proTip.description}</p>
+              </div>
+            )}
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-14 bg-white dark:bg-gray-800">
+        <Container>
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl font-heading font-bold text-gray-900 dark:text-gray-50 mb-4">
+              {ammonia.results.headline}
+            </h2>
+            <p className="text-gray-700 dark:text-gray-200 mb-8">
+              {ammonia.results.intro}
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              {results.map((result, index) => (
+                <article key={`${result.title}-${index}`} className="bg-gray-50 dark:bg-gray-700 rounded-xl p-5">
+                  <h3 className="font-bold text-gray-900 dark:text-gray-50 mb-2">{result.title}</h3>
+                  <p className="text-sm text-gray-700 dark:text-gray-200">{result.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-14">
+        <Container>
+          <div className="max-w-5xl mx-auto overflow-x-auto">
+            <h2 className="text-3xl font-heading font-bold text-gray-900 dark:text-gray-50 mb-4">
+              {ammonia.comparison.headline}
+            </h2>
+            <p className="text-gray-700 dark:text-gray-200 mb-8">{ammonia.comparison.intro}</p>
+
+            <table className="w-full bg-white dark:bg-gray-800 rounded-xl overflow-hidden">
+              <thead>
+                <tr className="bg-gray-100 dark:bg-gray-700 text-left">
+                  <th className="p-4 text-gray-900 dark:text-gray-50">{ammonia.comparison.headers.method}</th>
+                  <th className="p-4 text-gray-900 dark:text-gray-50">{ammonia.comparison.headers.effectiveness}</th>
+                  <th className="p-4 text-gray-900 dark:text-gray-50">{ammonia.comparison.headers.duration}</th>
+                  <th className="p-4 text-gray-900 dark:text-gray-50">{ammonia.comparison.headers.safety}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonRows.map((row, index) => (
+                  <tr key={`${row.method}-${index}`} className="border-t border-gray-200 dark:border-gray-700">
+                    <td className="p-4 text-gray-900 dark:text-gray-50">{row.method}</td>
+                    <td className="p-4 text-gray-700 dark:text-gray-200">{row.effectiveness}</td>
+                    <td className="p-4 text-gray-700 dark:text-gray-200">{row.duration}</td>
+                    <td className="p-4 text-gray-700 dark:text-gray-200">{row.safety}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+
+            <p className="text-sm text-gray-600 dark:text-gray-300 mt-4">{ammonia.comparison.note}</p>
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-14 bg-white dark:bg-gray-800">
+        <Container>
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-heading font-bold text-gray-900 dark:text-gray-50 mb-6">
+              {ammonia.faq.headline}
+            </h2>
+            <Accordion type="single" collapsible className="space-y-3">
+              {faqItems.map((item, index) => (
+                <AccordionItem key={`${item.question}-${index}`} value={`faq-${index}`} className="bg-gray-50 dark:bg-gray-700 rounded-xl px-5 border-0">
+                  <AccordionTrigger className="text-left text-gray-900 dark:text-gray-50 hover:no-underline">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-700 dark:text-gray-200 pb-5">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-16">
+        <Container>
+          <div className="max-w-4xl mx-auto bg-gradient-to-r from-electric-indigo to-deep-coral rounded-2xl p-8 md:p-10 text-center text-white">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">{ammonia.cta.headline}</h2>
+            <p className="text-lg opacity-90 max-w-2xl mx-auto mb-8">{ammonia.cta.subheadline}</p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-6">
+              <Link href={localizePath('/products/trial-size', locale)} className="inline-flex items-center justify-center bg-white text-electric-indigo font-bold rounded-lg px-6 py-3 hover:bg-gray-100 transition-colors">
+                {ammonia.cta.secondaryButton}
+              </Link>
+              <Link href={localizePath('/products', locale)} className="inline-flex items-center justify-center border-2 border-white font-bold rounded-lg px-6 py-3 hover:bg-white/10 transition-colors">
+                {ammonia.cta.button}
+              </Link>
+            </div>
+            <p className="text-sm opacity-90 flex items-center justify-center gap-2">
+              <CheckCircle className="w-4 h-4" />
+              <span>{ammonia.cta.benefit2}</span>
+            </p>
+          </div>
+        </Container>
+      </section>
+    </main>
   );
 }

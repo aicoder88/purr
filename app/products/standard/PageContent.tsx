@@ -19,8 +19,177 @@ import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
 import { useAggregateReview } from '@/hooks/useAggregateReview';
 import { trackTikTokClientEvent } from '@/lib/tiktok-tracking';
 
+type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
+
+const STANDARD_PAGE_COPY: Record<SupportedLocale, {
+  breadcrumbProducts: string;
+  badgeMostPopular: string;
+  verifiedStories: string;
+  heroDescription: string;
+  shipsNextBusinessDay: string;
+  lifestyleImageAlt: string;
+  provenBadge: string;
+  headlineTop: string;
+  headlineBottom: string;
+  scienceDescription: string;
+  benefits: string[];
+  valueCardOneTitle: string;
+  valueCardOneBody: string;
+  valueCardTwoTitle: string;
+  valueCardTwoBody: string;
+  valueCardThreeTitle: string;
+  valueCardThreeBody: string;
+  detailHeadlineTop: string;
+  detailHeadlineBottom: string;
+  detailDescription: string;
+  resultsLabel: string;
+  testimonialQuote: string;
+  testimonialAttribution: string;
+  granulesImageAlt: string;
+  backToAllSizes: string;
+  productFaqName: string;
+}> = {
+  en: {
+    breadcrumbProducts: 'Products',
+    badgeMostPopular: 'Most Popular',
+    verifiedStories: '138+ Verified Home Stories',
+    heroDescription: 'The perfect solution for single-cat households. 50 grams of high-surface-area activated carbon that traps ammonia before it ever reaches your nose.',
+    shipsNextBusinessDay: 'Ships Next Business Day',
+    lifestyleImageAlt: 'Purrify Regular Size in action',
+    provenBadge: 'Scientifically Proven',
+    headlineTop: 'Stop Masking.',
+    headlineBottom: 'Start Eliminating.',
+    scienceDescription: "Most deodorizers use heavy perfumes to hide smells. Purrify works like a magnet-trapping ammonia gas molecules inside millions of microscopic pores. It's the same filtration-grade technology used in drinking water systems and hospital air purifiers.",
+    benefits: [
+      'Ideal for single-cat households',
+      '4-6 weeks of continuous odor control',
+      'Advanced activated carbon formula',
+      '100% natural, fragrance-free, and safe',
+      'Works instantly on litter box smells',
+    ],
+    valueCardOneTitle: 'Professional Grade',
+    valueCardOneBody: 'Used by vets and professional cleaning services across Canada.',
+    valueCardTwoTitle: '100% Cat Safe',
+    valueCardTwoBody: 'Fragrance-free, chemical-free, and safe if accidentally ingested.',
+    valueCardThreeTitle: 'Best Value',
+    valueCardThreeBody: 'One regular size replaces 4-5 spray cans or expensive plugins.',
+    detailHeadlineTop: 'High-Surface Area',
+    detailHeadlineBottom: 'Molecular Filtration',
+    detailDescription: 'Our activated carbon is sourced from premium coconut shells, processed to maximize the surface area that "captures" odor particles. Just one gram has a surface area equivalent to a tennis court.',
+    resultsLabel: 'Real Results',
+    testimonialQuote: `"My husband used to complain the second he walked through the door. Since we started using the Regular Size, he doesn't even notice the litter area anymore! Game changer for our small apartment."`,
+    testimonialAttribution: '- Sarah L., Toronto',
+    granulesImageAlt: 'Purrify carbon granules close-up',
+    backToAllSizes: 'Back to all sizes',
+    productFaqName: 'Standard Size (50g)',
+  },
+  fr: {
+    breadcrumbProducts: 'Produits',
+    badgeMostPopular: 'Le plus populaire',
+    verifiedStories: '138+ avis verifies de foyers',
+    heroDescription: 'La solution ideale pour les foyers avec un seul chat. 50 grammes de charbon actif a grande surface qui capte lammoniac avant meme que vous le sentiez.',
+    shipsNextBusinessDay: 'Expedie le prochain jour ouvrable',
+    lifestyleImageAlt: 'Format standard Purrify en action',
+    provenBadge: 'Scientifiquement prouve',
+    headlineTop: 'Arretez de masquer.',
+    headlineBottom: 'Commencez a eliminer.',
+    scienceDescription: "La plupart des desodorisants utilisent des parfums lourds pour masquer les odeurs. Purrify agit comme un aimant et capture les molecules dammoniac dans des millions de pores microscopiques. Cest la meme technologie de filtration utilisee pour leau potable et les purificateurs dair hospitaliers.",
+    benefits: [
+      'Ideal pour les foyers avec un chat',
+      '4-6 semaines de controle continu des odeurs',
+      'Formule avancee au charbon actif',
+      '100% naturel, sans parfum et sur',
+      'Agit instantanement sur les odeurs de litiere',
+    ],
+    valueCardOneTitle: 'Qualite professionnelle',
+    valueCardOneBody: 'Utilise par des veterinaires et des services de nettoyage professionnels partout au Canada.',
+    valueCardTwoTitle: '100% sur pour les chats',
+    valueCardTwoBody: 'Sans parfum, sans produits chimiques et sur meme en cas dingestion accidentelle.',
+    valueCardThreeTitle: 'Meilleur rapport qualite-prix',
+    valueCardThreeBody: 'Un format standard remplace 4-5 aerosols ou diffuseurs couteux.',
+    detailHeadlineTop: 'Surface elevee',
+    detailHeadlineBottom: 'Filtration moleculaire',
+    detailDescription: 'Notre charbon actif provient de coques de noix de coco de qualite superieure et est traite pour maximiser la surface qui capture les particules odorantes. Un seul gramme offre une surface equivalente a un court de tennis.',
+    resultsLabel: 'Resultats reels',
+    testimonialQuote: '"Mon mari se plaignait des quil franchissait la porte. Depuis que nous utilisons le format standard, il ne remarque meme plus la zone de litiere. Un vrai changement pour notre petit appartement."',
+    testimonialAttribution: '- Sarah L., Toronto',
+    granulesImageAlt: 'Gros plan des granules de carbone Purrify',
+    backToAllSizes: 'Retour a tous les formats',
+    productFaqName: 'Format standard (50g)',
+  },
+  zh: {
+    breadcrumbProducts: '产品',
+    badgeMostPopular: '最受欢迎',
+    verifiedStories: '138+ 条真实家庭评价',
+    heroDescription: '单猫家庭的理想选择。50克高比表面积活性炭，在异味进入鼻子前先吸附氨气。',
+    shipsNextBusinessDay: '下一个工作日发货',
+    lifestyleImageAlt: 'Purrify 标准装使用场景',
+    provenBadge: '科学验证',
+    headlineTop: '别再掩盖异味。',
+    headlineBottom: '开始真正消除。',
+    scienceDescription: '多数除味产品依赖浓香掩盖气味。Purrify 像磁铁一样，把氨分子锁进数百万个微孔中。这与饮用水系统和医院空气净化器使用的是同级过滤技术。',
+    benefits: [
+      '非常适合单猫家庭',
+      '持续 4-6 周除味',
+      '高性能活性炭配方',
+      '100% 天然、无香精、更安全',
+      '可立即改善猫砂盆异味',
+    ],
+    valueCardOneTitle: '专业级品质',
+    valueCardOneBody: '已被加拿大多家兽医机构和专业清洁服务采用。',
+    valueCardTwoTitle: '100% 猫咪安全',
+    valueCardTwoBody: '无香精、无化学添加，误食也更安心。',
+    valueCardThreeTitle: '性价比更高',
+    valueCardThreeBody: '一包标准装可替代 4-5 罐喷雾或昂贵插电除味器。',
+    detailHeadlineTop: '高比表面积',
+    detailHeadlineBottom: '分子级过滤',
+    detailDescription: '我们的活性炭来自优质椰壳，经工艺优化后拥有更高比表面积来捕捉异味颗粒。仅 1 克的表面积就接近一个网球场。',
+    resultsLabel: '真实效果',
+    testimonialQuote: '"我丈夫以前一进门就会抱怨。用了标准装后，他几乎感觉不到猫砂区的味道了。对我们的小公寓来说是巨大改变。"',
+    testimonialAttribution: '- Sarah L., 多伦多',
+    granulesImageAlt: 'Purrify 活性炭颗粒特写',
+    backToAllSizes: '返回全部规格',
+    productFaqName: '标准装 (50g)',
+  },
+  es: {
+    breadcrumbProducts: 'Productos',
+    badgeMostPopular: 'Mas popular',
+    verifiedStories: '138+ historias verificadas de hogares',
+    heroDescription: 'La solucion perfecta para hogares con un solo gato. 50 gramos de carbon activado de alta superficie que atrapa el amoniaco antes de que llegue a tu nariz.',
+    shipsNextBusinessDay: 'Envia el siguiente dia habil',
+    lifestyleImageAlt: 'Tamano regular de Purrify en uso',
+    provenBadge: 'Comprobado cientificamente',
+    headlineTop: 'Deja de enmascarar.',
+    headlineBottom: 'Empieza a eliminar.',
+    scienceDescription: 'La mayoria de los desodorizantes usan perfumes fuertes para ocultar olores. Purrify funciona como un iman y atrapa moleculas de amoniaco dentro de millones de poros microscopicos. Es la misma tecnologia de filtracion usada en sistemas de agua potable y purificadores de aire hospitalarios.',
+    benefits: [
+      'Ideal para hogares con un solo gato',
+      '4-6 semanas de control continuo de olores',
+      'Formula avanzada de carbon activado',
+      '100% natural, sin fragancia y seguro',
+      'Actua al instante sobre olores de la caja de arena',
+    ],
+    valueCardOneTitle: 'Grado profesional',
+    valueCardOneBody: 'Usado por veterinarios y servicios de limpieza profesional en Canada.',
+    valueCardTwoTitle: '100% seguro para gatos',
+    valueCardTwoBody: 'Sin fragancias, sin quimicos y seguro incluso si se ingiere accidentalmente.',
+    valueCardThreeTitle: 'Mejor valor',
+    valueCardThreeBody: 'Un tamano regular reemplaza 4-5 aerosoles o difusores costosos.',
+    detailHeadlineTop: 'Alta superficie',
+    detailHeadlineBottom: 'Filtracion molecular',
+    detailDescription: 'Nuestro carbon activado proviene de cascara de coco premium y se procesa para maximizar la superficie que captura particulas de olor. Un solo gramo tiene una superficie equivalente a una cancha de tenis.',
+    resultsLabel: 'Resultados reales',
+    testimonialQuote: '"Mi esposo solia quejarse apenas entraba por la puerta. Desde que usamos el tamano regular, ya ni nota el area de la caja de arena. Cambio total para nuestro apartamento pequeno."',
+    testimonialAttribution: '- Sarah L., Toronto',
+    granulesImageAlt: 'Primer plano de granulos de carbono Purrify',
+    backToAllSizes: 'Volver a todos los tamanos',
+    productFaqName: 'Tamano estandar (50g)',
+  },
+};
+
 export default function StandardSizePage() {
   const { t, locale } = useTranslation();
+  const copy = STANDARD_PAGE_COPY[locale as SupportedLocale] || STANDARD_PAGE_COPY.en;
   const { currency } = useCurrency();
   const viewTracked = useRef(false);
   const purchaseCardsRef = useRef<HTMLDivElement>(null);
@@ -29,7 +198,6 @@ export default function StandardSizePage() {
   const priceValidUntil = getPriceValidityDate(90);
   const productKey = 'standard'; // 50g Standard Size
   const productName = t.products?.["purrify-50g"]?.name || "";
-  const productPrice = formatProductPrice(productKey, currency, locale);
   const numericPrice = getProductPrice(productKey, currency);
 
   // Track ViewContent on page load
@@ -106,7 +274,6 @@ export default function StandardSizePage() {
     keywords: ['cat litter freshener', 'charcoal litter additive', 'cat litter deodorizer', 'odor eliminator'],
   });
 
-  const canonicalUrl = nextSeoProps.canonical;
   const singleCheckoutUrl = getPaymentLink('standardSingle') || '#';
   const autoshipCheckoutUrl = getPaymentLink('standardAutoship') || '#';
 
@@ -115,16 +282,10 @@ export default function StandardSizePage() {
   const solutionImage = "/optimized/90day-solution.webp";
   const productImage = "/optimized/60g-transparent.webp";
 
-  const benefits = [
-    "Ideal for single-cat households",
-    "4-6 weeks of continuous odor control",
-    "Advanced activated carbon formula",
-    "100% natural, fragrance-free, and safe",
-    "Works instantly on litter box smells"
-  ];
+  const benefits = copy.benefits;
 
   const productFaqType = 'standard';
-  const productFaqName = "Standard Size (50g)";
+  const productFaqName = copy.productFaqName;
 
 
   return (
@@ -159,7 +320,7 @@ export default function StandardSizePage() {
               <li>/</li>
               <li>
                 <Link href={`${locale !== 'en' ? `/${locale}` : ''}/#products`} className="hover:text-deep-coral transition-colors">
-                  Products
+                  {copy.breadcrumbProducts}
                 </Link>
               </li>
               <li>/</li>
@@ -187,7 +348,7 @@ export default function StandardSizePage() {
                   <div className="absolute top-8 right-8">
                     <div className="bg-deep-coral text-white dark:text-white px-5 py-2 rounded-full text-xs font-black uppercase tracking-widest shadow-xl flex items-center gap-2">
                       <Zap className="w-4 h-4 fill-current" />
-                      Most Popular
+                      {copy.badgeMostPopular}
                     </div>
                   </div>
                 </div>
@@ -209,11 +370,11 @@ export default function StandardSizePage() {
                       ))}
                       <span className="text-sm font-bold text-gray-700 dark:text-gray-300 ml-1">4.9</span>
                     </div>
-                    <span className="text-gray-500 dark:text-gray-400 text-sm font-medium">138+ Verified Home Stories</span>
+                    <span className="text-gray-500 dark:text-gray-400 text-sm font-medium">{copy.verifiedStories}</span>
                   </div>
 
                   <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl">
-                    The perfect solution for single-cat households. 50 grams of high-surface-area activated carbon that traps ammonia before it ever reaches your nose.
+                    {copy.heroDescription}
                   </p>
                 </div>
 
@@ -239,7 +400,7 @@ export default function StandardSizePage() {
                   <GuaranteeBadge size="md" />
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium bg-blue-50 text-blue-700 border border-blue-200 dark:bg-blue-900/20 dark:text-blue-300 dark:border-blue-800 rounded-md">
                     <Truck className="w-4 h-4" />
-                    Ships Next Business Day
+                    {copy.shipsNextBusinessDay}
                   </div>
                 </div>
               </div>
@@ -264,7 +425,7 @@ export default function StandardSizePage() {
                 <div className="absolute -inset-4 bg-gradient-to-tr from-purple-500/10 to-pink-500/10 rounded-3xl blur-2xl"></div>
                 <Image
                   src={heroImage}
-                  alt="Purrify Regular Size in action"
+                  alt={copy.lifestyleImageAlt}
                   width={800}
                   height={600}
                   className="relative rounded-[40px] shadow-2xl border-8 border-white dark:border-gray-800"
@@ -272,14 +433,14 @@ export default function StandardSizePage() {
               </div>
               <div className="order-1 lg:order-2 space-y-8">
                 <div className="inline-block bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest">
-                  Scientifically Proven
+                  {copy.provenBadge}
                 </div>
                 <h2 className="font-heading text-4xl md:text-5xl font-black text-gray-900 dark:text-white leading-tight">
-                  Stop Masking. <br />
-                  <span className="text-electric-indigo">Start Eliminating.</span>
+                  {copy.headlineTop} <br />
+                  <span className="text-electric-indigo">{copy.headlineBottom}</span>
                 </h2>
                 <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                  Most deodorizers use heavy perfumes to hide smells. Purrify works like a magnet—trapping ammonia gas molecules inside millions of microscopic pores. It's the same filtration-grade technology used in drinking water systems and hospital air purifiers.
+                  {copy.scienceDescription}
                 </p>
                 <div className="space-y-4">
                   {benefits.map((benefit, i) => (
@@ -304,22 +465,22 @@ export default function StandardSizePage() {
                 <div className="w-16 h-16 bg-electric-indigo/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <Star className="w-8 h-8 text-electric-indigo" />
                 </div>
-                <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-white">Professional Grade</h3>
-                <p className="text-gray-600 dark:text-gray-400">Used by vets and professional cleaning services across Canada.</p>
+                <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-white">{copy.valueCardOneTitle}</h3>
+                <p className="text-gray-600 dark:text-gray-400">{copy.valueCardOneBody}</p>
               </div>
               <div className="bg-white/40 dark:bg-gray-800/40 backdrop-blur-md border border-white/20 dark:border-gray-700/30 p-10 rounded-[32px] text-center space-y-4 hover:-translate-y-2 transition-transform">
                 <div className="w-16 h-16 bg-deep-coral/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <Heart className="w-8 h-8 text-deep-coral" />
                 </div>
-                <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-white">100% Cat Safe</h3>
-                <p className="text-gray-600 dark:text-gray-400">Fragrance-free, chemical-free, and safe if accidentally ingested.</p>
+                <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-white">{copy.valueCardTwoTitle}</h3>
+                <p className="text-gray-600 dark:text-gray-400">{copy.valueCardTwoBody}</p>
               </div>
               <div className="bg-white/40 dark:bg-gray-800/40 backdrop-blur-md border border-white/20 dark:border-gray-700/30 p-10 rounded-[32px] text-center space-y-4 hover:-translate-y-2 transition-transform">
                 <div className="w-16 h-16 bg-green-500/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <ShoppingCart className="w-8 h-8 text-green-500 dark:text-green-400" />
                 </div>
-                <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-white">Best Value</h3>
-                <p className="text-gray-600 dark:text-gray-400">One regular size replaces 4-5 spray cans or expensive plugins.</p>
+                <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-white">{copy.valueCardThreeTitle}</h3>
+                <p className="text-gray-600 dark:text-gray-400">{copy.valueCardThreeBody}</p>
               </div>
             </div>
           </Container>
@@ -332,22 +493,22 @@ export default function StandardSizePage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <div className="space-y-8">
                 <h2 className="font-heading text-4xl md:text-5xl font-black leading-tight text-white dark:text-white">
-                  High-Surface Area <br />
-                  <span className="text-deep-coral">Molecular Filtration</span>
+                  {copy.detailHeadlineTop} <br />
+                  <span className="text-deep-coral">{copy.detailHeadlineBottom}</span>
                 </h2>
                 <p className="text-xl text-gray-400 dark:text-gray-300 leading-relaxed">
-                  Our activated carbon is sourced from premium coconut shells, processed to maximize the surface area that "captures" odor particles. Just one gram has a surface area equivalent to a tennis court.
+                  {copy.detailDescription}
                 </p>
                 <div className="bg-white/10 dark:bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10 dark:border-white/5">
-                  <p className="text-deep-coral font-black mb-2 uppercase tracking-widest text-sm">Real Results</p>
-                  <p className="italic text-lg text-white dark:text-white">&quot;My husband used to complain the second he walked through the door. Since we started using the Regular Size, he doesn't even notice the litter area anymore! Game changer for our small apartment.&quot;</p>
-                  <p className="mt-4 font-bold text-white dark:text-white">— Sarah L., Toronto</p>
+                  <p className="text-deep-coral font-black mb-2 uppercase tracking-widest text-sm">{copy.resultsLabel}</p>
+                  <p className="italic text-lg text-white dark:text-white">{copy.testimonialQuote}</p>
+                  <p className="mt-4 font-bold text-white dark:text-white">{copy.testimonialAttribution}</p>
                 </div>
               </div>
               <div className="relative">
                 <Image
                   src={solutionImage}
-                  alt="Purrify carbon granules close-up"
+                  alt={copy.granulesImageAlt}
                   width={800}
                   height={800}
                   className="rounded-[40px] shadow-2xl grayscale brightness-110 hover:grayscale-0 transition-all duration-700"
@@ -386,7 +547,7 @@ export default function StandardSizePage() {
         <section className="py-12 border-t border-gray-100 dark:border-gray-900">
           <Container className="text-center">
             <Link href={`${locale !== 'en' ? `/${locale}` : ''}/#products`} className="inline-flex items-center text-gray-500 dark:text-gray-400 hover:text-deep-coral font-bold gap-2 transition-colors">
-              <ArrowLeft className="w-5 h-5" /> Back to all sizes
+              <ArrowLeft className="w-5 h-5" /> {copy.backToAllSizes}
             </Link>
           </Container>
         </section>

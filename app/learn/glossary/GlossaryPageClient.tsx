@@ -22,22 +22,176 @@ interface GlossaryTerm {
   category: 'science' | 'product' | 'usage' | 'comparison';
 }
 
+type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
+
+const GLOSSARY_UI_COPY: Record<SupportedLocale, {
+  breadcrumbAriaLabel: string;
+  homeSrOnly: string;
+  breadcrumbLearn: string;
+  breadcrumbGlossary: string;
+  heroTitle: string;
+  heroSubtitle: string;
+  heroDescription: string;
+  searchPlaceholder: string;
+  allTerms: string;
+  scienceCategory: string;
+  productCategory: string;
+  comparisonCategory: string;
+  termLabelSingular: string;
+  termLabelPlural: string;
+  foundLabel: string;
+  relatedLabel: string;
+  emptyTitle: string;
+  emptyDescription: string;
+  ctaTitle: string;
+  ctaDescription: string;
+  ctaLearnHow: string;
+  continueLearning: string;
+  relatedHowItWorksTitle: string;
+  relatedHowItWorksDescription: string;
+  relatedFaqDescription: string;
+  relatedSafetyTitle: string;
+  relatedSafetyDescription: string;
+  trialPrefix: string;
+}> = {
+  en: {
+    breadcrumbAriaLabel: 'Breadcrumb',
+    homeSrOnly: 'Home',
+    breadcrumbLearn: 'Learn',
+    breadcrumbGlossary: 'Glossary',
+    heroTitle: 'Cat Litter & Activated Carbon Glossary',
+    heroSubtitle: 'Understanding the science behind odor control',
+    heroDescription: 'Learn the key terms and concepts behind activated carbon technology, cat litter science, and effective odor elimination.',
+    searchPlaceholder: 'Search terms...',
+    allTerms: 'All Terms',
+    scienceCategory: 'Science & Chemistry',
+    productCategory: 'Product Types',
+    comparisonCategory: 'Comparisons',
+    termLabelSingular: 'term',
+    termLabelPlural: 'terms',
+    foundLabel: 'found',
+    relatedLabel: 'Related:',
+    emptyTitle: 'No terms found',
+    emptyDescription: 'Try adjusting your search terms or category filter',
+    ctaTitle: 'See Activated Carbon in Action',
+    ctaDescription: 'Now that you understand the science, experience it for yourself with our risk-free trial.',
+    ctaLearnHow: 'Learn How It Works',
+    continueLearning: 'Continue Learning',
+    relatedHowItWorksTitle: 'How It Works',
+    relatedHowItWorksDescription: 'Dive deeper into the science of activated carbon and molecular adsorption.',
+    relatedFaqDescription: 'Get answers to common questions about activated carbon and Purrify.',
+    relatedSafetyTitle: 'Safety Information',
+    relatedSafetyDescription: 'Learn about certifications, standards, and product safety details.',
+    trialPrefix: 'Try Risk-Free',
+  },
+  fr: {
+    breadcrumbAriaLabel: "Fil d'Ariane",
+    homeSrOnly: 'Accueil',
+    breadcrumbLearn: 'Apprendre',
+    breadcrumbGlossary: 'Glossaire',
+    heroTitle: 'Glossaire Litiere et Charbon Actif',
+    heroSubtitle: 'Comprendre la science derriere le controle des odeurs',
+    heroDescription: 'Decouvrez les termes essentiels sur le charbon actif, la litiere et lelimination des odeurs.',
+    searchPlaceholder: 'Rechercher un terme...',
+    allTerms: 'Tous les termes',
+    scienceCategory: 'Science et chimie',
+    productCategory: 'Types de produits',
+    comparisonCategory: 'Comparaisons',
+    termLabelSingular: 'terme',
+    termLabelPlural: 'termes',
+    foundLabel: 'trouves',
+    relatedLabel: 'Associes :',
+    emptyTitle: 'Aucun terme trouve',
+    emptyDescription: 'Essayez un autre terme de recherche ou un autre filtre',
+    ctaTitle: 'Voir le charbon actif en action',
+    ctaDescription: 'Maintenant que vous comprenez la science, essayez notre essai sans risque.',
+    ctaLearnHow: 'Voir comment ca marche',
+    continueLearning: 'Continuer lapprentissage',
+    relatedHowItWorksTitle: 'Comment ca marche',
+    relatedHowItWorksDescription: 'Approfondissez la science du charbon actif et de ladsorption moleculaire.',
+    relatedFaqDescription: 'Obtenez des reponses aux questions frequentes sur le charbon actif et Purrify.',
+    relatedSafetyTitle: 'Informations de securite',
+    relatedSafetyDescription: 'Consultez les certifications, normes et details de securite du produit.',
+    trialPrefix: 'Essayer sans risque',
+  },
+  zh: {
+    breadcrumbAriaLabel: '面包屑导航',
+    homeSrOnly: '首页',
+    breadcrumbLearn: '学习中心',
+    breadcrumbGlossary: '术语表',
+    heroTitle: '猫砂与活性炭术语表',
+    heroSubtitle: '了解除味背后的科学原理',
+    heroDescription: '掌握活性炭技术、猫砂科学与高效除味的核心术语。 ',
+    searchPlaceholder: '搜索术语...',
+    allTerms: '全部术语',
+    scienceCategory: '科学与化学',
+    productCategory: '产品类型',
+    comparisonCategory: '对比说明',
+    termLabelSingular: '个术语',
+    termLabelPlural: '个术语',
+    foundLabel: '已找到',
+    relatedLabel: '相关：',
+    emptyTitle: '未找到术语',
+    emptyDescription: '请尝试调整关键词或分类筛选',
+    ctaTitle: '查看活性炭的实际效果',
+    ctaDescription: '既然你已了解原理，现在就亲自体验我们的无风险试用。',
+    ctaLearnHow: '了解工作原理',
+    continueLearning: '继续学习',
+    relatedHowItWorksTitle: '工作原理',
+    relatedHowItWorksDescription: '深入了解活性炭与分子吸附背后的科学。',
+    relatedFaqDescription: '查看关于活性炭和 Purrify 的常见问题解答。',
+    relatedSafetyTitle: '安全信息',
+    relatedSafetyDescription: '了解认证标准与产品安全细节。',
+    trialPrefix: '无风险试用',
+  },
+  es: {
+    breadcrumbAriaLabel: 'Miga de pan',
+    homeSrOnly: 'Inicio',
+    breadcrumbLearn: 'Aprender',
+    breadcrumbGlossary: 'Glosario',
+    heroTitle: 'Glosario de Arena para Gatos y Carbon Activado',
+    heroSubtitle: 'Entiende la ciencia detras del control de olores',
+    heroDescription: 'Aprende los terminos clave sobre tecnologia de carbon activado, ciencia de arena para gatos y eliminacion efectiva de olores.',
+    searchPlaceholder: 'Buscar terminos...',
+    allTerms: 'Todos los terminos',
+    scienceCategory: 'Ciencia y quimica',
+    productCategory: 'Tipos de producto',
+    comparisonCategory: 'Comparaciones',
+    termLabelSingular: 'termino',
+    termLabelPlural: 'terminos',
+    foundLabel: 'encontrados',
+    relatedLabel: 'Relacionado:',
+    emptyTitle: 'No se encontraron terminos',
+    emptyDescription: 'Intenta ajustar la busqueda o el filtro de categoria',
+    ctaTitle: 'Ve el carbon activado en accion',
+    ctaDescription: 'Ahora que entiendes la ciencia, pruebalo con nuestra prueba sin riesgo.',
+    ctaLearnHow: 'Aprende como funciona',
+    continueLearning: 'Seguir aprendiendo',
+    relatedHowItWorksTitle: 'Como Funciona',
+    relatedHowItWorksDescription: 'Profundiza en la ciencia del carbon activado y la adsorcion molecular.',
+    relatedFaqDescription: 'Obtén respuestas a preguntas comunes sobre carbon activado y Purrify.',
+    relatedSafetyTitle: 'Informacion de seguridad',
+    relatedSafetyDescription: 'Conoce certificaciones, normas y detalles de seguridad del producto.',
+    trialPrefix: 'Probar sin riesgo',
+  },
+};
+
 export default function GlossaryPageClient() {
   const { locale } = useTranslation();
+  const localePrefix = locale === 'en' ? '' : `/${locale}`;
+  const glossaryUi = GLOSSARY_UI_COPY[locale as SupportedLocale] || GLOSSARY_UI_COPY.en;
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const trialPrice = formatProductPrice('trial', locale);
   const trialCtaLabel =
-    locale === 'fr'
-      ? `Essayer sans risque - ${trialPrice} (livraison incluse)`
-      : locale === 'zh'
-        ? `无风险试用 - ${trialPrice}（含运费）`
-        : `Try Risk-Free - ${trialPrice} (shipping included)`;
+    locale === 'zh'
+      ? `${glossaryUi.trialPrefix} - ${trialPrice}（含运费）`
+      : `${glossaryUi.trialPrefix} - ${trialPrice} (shipping included)`;
 
   // Breadcrumb items
   const breadcrumbItems = [
-    { name: 'Learn', path: '/learn' },
-    { name: 'Glossary', path: '/learn/glossary' },
+    { name: glossaryUi.breadcrumbLearn, path: `${localePrefix}/learn` },
+    { name: glossaryUi.breadcrumbGlossary, path: `${localePrefix}/learn/glossary` },
   ];
 
   const glossaryTerms: GlossaryTerm[] = [
@@ -172,10 +326,10 @@ export default function GlossaryPageClient() {
   ];
 
   const categories = [
-    { id: 'all', name: 'All Terms', count: glossaryTerms.length },
-    { id: 'science', name: 'Science & Chemistry', count: glossaryTerms.filter(t => t.category === 'science').length },
-    { id: 'product', name: 'Product Types', count: glossaryTerms.filter(t => t.category === 'product').length },
-    { id: 'comparison', name: 'Comparisons', count: glossaryTerms.filter(t => t.category === 'comparison').length }
+    { id: 'all', name: glossaryUi.allTerms, count: glossaryTerms.length },
+    { id: 'science', name: glossaryUi.scienceCategory, count: glossaryTerms.filter(t => t.category === 'science').length },
+    { id: 'product', name: glossaryUi.productCategory, count: glossaryTerms.filter(t => t.category === 'product').length },
+    { id: 'comparison', name: glossaryUi.comparisonCategory, count: glossaryTerms.filter(t => t.category === 'comparison').length }
   ];
 
   const filteredTerms = glossaryTerms.filter(term => {
@@ -198,10 +352,10 @@ export default function GlossaryPageClient() {
       {/* Breadcrumb Navigation */}
       <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
         <Container>
-          <nav aria-label="Breadcrumb" className="flex items-center text-sm">
-            <Link href="/" className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+          <nav aria-label={glossaryUi.breadcrumbAriaLabel} className="flex items-center text-sm">
+            <Link href={localePrefix || '/'} className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
               <Home className="w-4 h-4" />
-              <span className="sr-only">Home</span>
+              <span className="sr-only">{glossaryUi.homeSrOnly}</span>
             </Link>
             {breadcrumbItems.map((item, index, arr) => (
               <span key={item.path} className="flex items-center">
@@ -225,13 +379,13 @@ export default function GlossaryPageClient() {
           <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
             <BookOpen className="w-16 h-16 mx-auto mb-6 opacity-90" />
             <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-              Cat Litter & Activated Carbon Glossary
+              {glossaryUi.heroTitle}
             </h1>
             <p className="text-xl md:text-2xl mb-4 opacity-90 speakable-content">
-              Understanding the science behind odor control
+              {glossaryUi.heroSubtitle}
             </p>
             <p className="text-lg opacity-75 max-w-2xl mx-auto">
-              Learn the key terms and concepts behind activated carbon technology, cat litter science, and effective odor elimination.
+              {glossaryUi.heroDescription}
             </p>
 
             {/* Search Bar */}
@@ -239,7 +393,7 @@ export default function GlossaryPageClient() {
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
               <input
                 type="text"
-                placeholder="Search terms..."
+                placeholder={glossaryUi.searchPlaceholder}
                 value={searchTerm}
                 onChange={handleSearchChange}
                 className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg text-gray-900 dark:text-gray-50 text-lg focus:outline-none focus:ring-2 focus:ring-white/50 transition-all"
@@ -275,7 +429,7 @@ export default function GlossaryPageClient() {
         <Container>
           <div className="max-w-4xl mx-auto">
             <p className="text-center text-gray-600 dark:text-gray-400 mb-8">
-              {filteredTerms.length} term{filteredTerms.length !== 1 ? 's' : ''} found
+              {filteredTerms.length} {filteredTerms.length !== 1 ? glossaryUi.termLabelPlural : glossaryUi.termLabelSingular} {glossaryUi.foundLabel}
             </p>
 
             <div className="space-y-6">
@@ -298,7 +452,7 @@ export default function GlossaryPageClient() {
                   )}
                   {term.relatedTerms && term.relatedTerms.length > 0 && (
                     <div className="flex flex-wrap gap-2 mt-4">
-                      <span className="text-sm text-gray-500 dark:text-gray-500">Related:</span>
+                      <span className="text-sm text-gray-500 dark:text-gray-500">{glossaryUi.relatedLabel}</span>
                       {term.relatedTerms.map((related) => {
                         const relatedTerm = glossaryTerms.find(t => t.term === related);
                         return (
@@ -321,10 +475,10 @@ export default function GlossaryPageClient() {
               <div className="text-center py-12">
                 <BookOpen className="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
                 <h3 className="font-heading text-xl font-semibold text-gray-600 dark:text-gray-400 mb-2">
-                  No terms found
+                  {glossaryUi.emptyTitle}
                 </h3>
                 <p className="text-gray-500 dark:text-gray-500">
-                  Try adjusting your search terms or category filter
+                  {glossaryUi.emptyDescription}
                 </p>
               </div>
             )}
@@ -337,21 +491,21 @@ export default function GlossaryPageClient() {
         <Container>
           <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
-              See Activated Carbon in Action
+              {glossaryUi.ctaTitle}
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Now that you understand the science, experience it for yourself with our risk-free trial.
+              {glossaryUi.ctaDescription}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
+              <Link href={`${localePrefix}/products/trial-size`}>
                 <Button size="lg" className="bg-white dark:bg-gray-900 text-electric-indigo hover:bg-gray-100 hover:scale-105 dark:hover:bg-gray-700 font-bold transition-all duration-300">
                   {trialCtaLabel}
                   <ChevronRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`}>
+              <Link href={`${localePrefix}/learn/how-it-works`}>
                 <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 hover:bg-white hover:scale-105 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-50 transition-all duration-300">
-                  Learn How It Works
+                  {glossaryUi.ctaLearnHow}
                 </Button>
               </Link>
             </div>
@@ -364,40 +518,40 @@ export default function GlossaryPageClient() {
         <Container>
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">
-              Continue Learning
+              {glossaryUi.continueLearning}
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`} className="group">
+            <Link href={`${localePrefix}/learn/how-it-works`} className="group">
               <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
                 <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
-                  How It Works
+                  {glossaryUi.relatedHowItWorksTitle}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Dive deeper into the science of activated carbon and molecular adsorption.
+                  {glossaryUi.relatedHowItWorksDescription}
                 </p>
               </div>
             </Link>
 
-            <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/faq`} className="group">
+            <Link href={`${localePrefix}/learn/faq`} className="group">
               <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
                 <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
                   FAQ
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Get answers to common questions about activated carbon and Purrify.
+                  {glossaryUi.relatedFaqDescription}
                 </p>
               </div>
             </Link>
 
-            <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/safety`} className="group">
+            <Link href={`${localePrefix}/learn/safety`} className="group">
               <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
                 <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
-                  Safety Information
+                  {glossaryUi.relatedSafetyTitle}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Learn about certifications, standards, and product safety details.
+                  {glossaryUi.relatedSafetyDescription}
                 </p>
               </div>
             </Link>

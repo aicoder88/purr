@@ -122,6 +122,7 @@ const defaultPlatformNames: Record<string, string> = {
 export function Footer() {
   const currentYear = new Date().getFullYear();
   const { t, locale } = useTranslation();
+  const localePrefix = locale === 'en' ? '' : `/${locale}`;
 
   return (
     <footer className="bg-[#FFFFF5] dark:bg-gray-900 border-t border-[#E0EFC7] dark:border-gray-800 transition-colors duration-300">
@@ -131,7 +132,7 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
             <div className="space-y-4">
               <div className="flex items-center mb-4">
-                <Link href={locale === "fr" ? "/fr/" : "/"} className="group">
+                <Link href={localePrefix || '/'} className="group">
                   <div className="h-6 w-auto mr-2 flex items-center">
                     <Image
                       src="/optimized/logo-light.webp"
@@ -269,12 +270,7 @@ export function Footer() {
                 */}
                 <li>
                   <Link
-                    href={
-                      locale === "fr" ? "/fr/stores" :
-                        locale === "zh" ? "/zh/stores" :
-                          locale === "es" ? "/es/stores" :
-                            "/stores"
-                    }
+                    href={`${localePrefix}/stores`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300 font-medium"
                   >
                     {t.nav?.findStore || "Find a Store"}
@@ -282,11 +278,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={
-                      locale === "fr"
-                        ? "/fr/products"
-                        : "/products"
-                    }
+                    href={`${localePrefix}/products`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.compareSizes || ""}
@@ -302,11 +294,7 @@ export function Footer() {
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
                   <Link
-                    href={
-                      locale === "fr"
-                        ? "/fr/learn/how-it-works"
-                        : "/learn/how-it-works"
-                    }
+                    href={`${localePrefix}/learn/how-it-works`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.howItWorks || ""}
@@ -314,7 +302,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === "fr" ? "/fr/learn/faq" : "/learn/faq"}
+                    href={`${localePrefix}/learn/faq`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.faq || ""}
@@ -322,9 +310,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={
-                      locale === "fr" ? "/fr/learn/science" : "/learn/science"
-                    }
+                    href={`${localePrefix}/learn/science`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.science || ""}
@@ -357,9 +343,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={
-                      locale === "fr" ? "/fr/learn/safety" : "/learn/safety"
-                    }
+                    href={`${localePrefix}/learn/safety`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.safetyInfo || ""}
@@ -367,11 +351,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={
-                      locale === "fr"
-                        ? "/fr/learn/cat-litter-guide"
-                        : "/learn/cat-litter-guide"
-                    }
+                    href={`${localePrefix}/learn/cat-litter-guide`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.catLitterGuide || ""}
@@ -499,11 +479,7 @@ export function Footer() {
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
                   <Link
-                    href={
-                      locale === "fr"
-                        ? "/fr/about/our-story"
-                        : "/about/our-story"
-                    }
+                    href={`${localePrefix}/about/our-story`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.about || ""}
@@ -511,7 +487,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === "fr" ? "/fr/blog" : "/blog"}
+                    href={`${localePrefix}/blog`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.blog || ""}
@@ -519,7 +495,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === "fr" ? "/fr/reviews" : "/reviews"}
+                    href={`${localePrefix}/reviews`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.testimonials || ""}
@@ -527,7 +503,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === "fr" ? "/fr/retailers" : locale === "zh" ? "/zh/retailers" : "/retailers"}
+                    href={`${localePrefix}/retailers`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.retailers || ""}
@@ -543,12 +519,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={
-                      locale === "fr" ? "/fr/hospitality" :
-                        locale === "zh" ? "/zh/hospitality" :
-                          locale === "es" ? "/es/hospitality" :
-                            "/hospitality"
-                    }
+                    href={`${localePrefix}/hospitality`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.hospitality || "Hospitality"}
@@ -556,12 +527,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={
-                      locale === "fr" ? "/fr/groomers" :
-                        locale === "zh" ? "/zh/groomers" :
-                          locale === "es" ? "/es/groomers" :
-                            "/groomers"
-                    }
+                    href={`${localePrefix}/groomers`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.groomers || "For Groomers"}
@@ -569,12 +535,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={
-                      locale === "fr" ? "/fr/shelters" :
-                        locale === "zh" ? "/zh/shelters" :
-                          locale === "es" ? "/es/shelters" :
-                            "/shelters"
-                    }
+                    href={`${localePrefix}/shelters`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.shelters || "Shelters"}
@@ -638,7 +599,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={locale === "fr" ? "/fr/contact" : "/contact"}
+                    href={`${localePrefix}/contact`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.contact || ""}
@@ -764,15 +725,13 @@ export function Footer() {
           <div className="mt-12 pt-8 border-t border-[#E0EFC7] dark:border-gray-800">
             <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-4 mb-4">
               <Link
-                href={
-                  locale === "fr" ? "/fr/privacy-policy" : "/privacy-policy"
-                }
+                href={`${localePrefix}/privacy-policy`}
                 className="text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
               >
                 {t.nav.privacyPolicy}
               </Link>
               <Link
-                href={locale === "fr" ? "/fr/terms" : "/terms"}
+                href={`${localePrefix}/terms`}
                 className="text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
               >
                 {t.nav.termsOfService}

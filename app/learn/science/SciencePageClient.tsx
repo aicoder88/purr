@@ -9,8 +9,98 @@ import { ArrowLeft, Atom, Zap, Shield, Microscope, FlaskConical, BarChart3, Home
 import Image from 'next/image';
 import { RelatedContent } from '../../../src/components/seo/RelatedContent';
 
+type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
+
+const SCIENCE_UI_COPY: Record<SupportedLocale, {
+  breadcrumbAriaLabel: string;
+  smellLabel: string;
+  moleculeSizeLabel: string;
+  problemLabel: string;
+  whyHardLabel: string;
+  targetLabel: string;
+  densityLabel: string;
+  functionLabel: string;
+  happyCatAlt: string;
+  contentCatAlt: string;
+  microscopeAlt: string;
+  chemistryAlt: string;
+  molecularAlt: string;
+  stableValue: string;
+  minimalValue: string;
+}> = {
+  en: {
+    breadcrumbAriaLabel: 'Breadcrumb',
+    smellLabel: 'The Smell:',
+    moleculeSizeLabel: 'Molecule Size:',
+    problemLabel: 'The Problem:',
+    whyHardLabel: "Why It's Hard:",
+    targetLabel: 'Target:',
+    densityLabel: 'Density:',
+    functionLabel: 'Function:',
+    happyCatAlt: 'Happy cat in clean, fresh home environment',
+    contentCatAlt: 'Content cat enjoying clean, odor-free environment',
+    microscopeAlt: 'Laboratory microscope for activated carbon research',
+    chemistryAlt: 'Chemistry laboratory testing activated carbon samples',
+    molecularAlt: 'Molecular structure visualization showing pore architecture',
+    stableValue: 'Stable',
+    minimalValue: 'Minimal',
+  },
+  fr: {
+    breadcrumbAriaLabel: "Fil d'Ariane",
+    smellLabel: "L'odeur :",
+    moleculeSizeLabel: 'Taille de la molecule :',
+    problemLabel: 'Le probleme :',
+    whyHardLabel: "Pourquoi c'est difficile :",
+    targetLabel: 'Cible :',
+    densityLabel: 'Densite :',
+    functionLabel: 'Fonction :',
+    happyCatAlt: 'Chat heureux dans un environnement propre et frais',
+    contentCatAlt: 'Chat detendu profitant dun environnement sans odeur',
+    microscopeAlt: 'Microscope de laboratoire pour la recherche sur le charbon actif',
+    chemistryAlt: 'Laboratoire de chimie testant des echantillons de charbon actif',
+    molecularAlt: 'Visualisation de structure moleculaire montrant larchitecture des pores',
+    stableValue: 'Stable',
+    minimalValue: 'Minimale',
+  },
+  zh: {
+    breadcrumbAriaLabel: '面包屑导航',
+    smellLabel: '气味：',
+    moleculeSizeLabel: '分子大小：',
+    problemLabel: '问题：',
+    whyHardLabel: '难点：',
+    targetLabel: '目标：',
+    densityLabel: '密度：',
+    functionLabel: '作用：',
+    happyCatAlt: '干净清新家庭环境中的快乐猫咪',
+    contentCatAlt: '在无异味环境中放松的猫咪',
+    microscopeAlt: '用于活性炭研究的实验室显微镜',
+    chemistryAlt: '化学实验室测试活性炭样品',
+    molecularAlt: '展示孔隙结构的分子结构可视化图',
+    stableValue: '稳定',
+    minimalValue: '极低',
+  },
+  es: {
+    breadcrumbAriaLabel: 'Miga de pan',
+    smellLabel: 'El olor:',
+    moleculeSizeLabel: 'Tamano molecular:',
+    problemLabel: 'El problema:',
+    whyHardLabel: 'Por que es dificil:',
+    targetLabel: 'Objetivo:',
+    densityLabel: 'Densidad:',
+    functionLabel: 'Funcion:',
+    happyCatAlt: 'Gato feliz en un hogar limpio y fresco',
+    contentCatAlt: 'Gato relajado disfrutando un entorno sin olores',
+    microscopeAlt: 'Microscopio de laboratorio para investigacion de carbon activado',
+    chemistryAlt: 'Laboratorio de quimica probando muestras de carbon activado',
+    molecularAlt: 'Visualizacion de estructura molecular que muestra la arquitectura de poros',
+    stableValue: 'Estable',
+    minimalValue: 'Minima',
+  },
+};
+
 export default function SciencePageClient() {
   const { t, locale } = useTranslation();
+  const uiCopy = SCIENCE_UI_COPY[locale as SupportedLocale] || SCIENCE_UI_COPY.en;
 
   const scienceFacts = t.sciencePage?.scienceFacts.facts.map((fact, index) => ({
     icon: [Atom, Microscope, Zap, Shield][index],
@@ -68,8 +158,8 @@ export default function SciencePageClient() {
 
   // Breadcrumb items
   const breadcrumbItems = [
-    { name: 'Learn', path: '/learn' },
-    { name: 'Science', path: '/learn/science' },
+    { name: t.sciencePage?.breadcrumb?.learn || 'Learn', path: '/learn' },
+    { name: t.sciencePage?.breadcrumb?.science || 'Science', path: '/learn/science' },
   ];
 
   return (
@@ -77,7 +167,7 @@ export default function SciencePageClient() {
       {/* Breadcrumb Navigation */}
       <section className="py-4 border-b border-gray-200 dark:border-gray-800">
         <Container>
-          <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
+          <nav aria-label={uiCopy.breadcrumbAriaLabel} className="flex items-center space-x-2 text-sm">
             <Link
               href={locale === 'fr' ? '/fr' : '/'}
               className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
@@ -151,19 +241,19 @@ export default function SciencePageClient() {
               <ul className="space-y-3 text-gray-700 dark:text-gray-200">
                 <li className="flex items-start space-x-2">
                   <span className="text-red-500 dark:text-red-400 mt-1">•</span>
-                  <span><strong>The Smell:</strong> {t.sciencePage?.understanding.ammonia.smell || ""}</span>
+                  <span><strong>{uiCopy.smellLabel}</strong> {t.sciencePage?.understanding.ammonia.smell || ''}</span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <span className="text-red-500 dark:text-red-400 mt-1">•</span>
-                  <span><strong>Molecule Size:</strong> {t.sciencePage?.understanding.ammonia.moleculeSize || ""}</span>
+                  <span><strong>{uiCopy.moleculeSizeLabel}</strong> {t.sciencePage?.understanding.ammonia.moleculeSize || ''}</span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <span className="text-red-500 dark:text-red-400 mt-1">•</span>
-                  <span><strong>The Problem:</strong> {t.sciencePage?.understanding.ammonia.problem || ""}</span>
+                  <span><strong>{uiCopy.problemLabel}</strong> {t.sciencePage?.understanding.ammonia.problem || ''}</span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <span className="text-red-500 dark:text-red-400 mt-1">•</span>
-                  <span><strong>Why It&apos;s Hard:</strong> {t.sciencePage?.understanding.ammonia.whyHard || ""}</span>
+                  <span><strong>{uiCopy.whyHardLabel}</strong> {t.sciencePage?.understanding.ammonia.whyHard || ''}</span>
                 </li>
               </ul>
             </div>
@@ -179,19 +269,19 @@ export default function SciencePageClient() {
               <ul className="space-y-3 text-gray-700 dark:text-gray-200">
                 <li className="flex items-start space-x-2">
                   <span className="text-yellow-500 dark:text-yellow-400 mt-1">•</span>
-                  <span><strong>The Smell:</strong> {t.sciencePage?.understanding.mercaptans.smell || ""}</span>
+                  <span><strong>{uiCopy.smellLabel}</strong> {t.sciencePage?.understanding.mercaptans.smell || ''}</span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <span className="text-yellow-500 dark:text-yellow-400 mt-1">•</span>
-                  <span><strong>Molecule Size:</strong> {t.sciencePage?.understanding.mercaptans.moleculeSize || ""}</span>
+                  <span><strong>{uiCopy.moleculeSizeLabel}</strong> {t.sciencePage?.understanding.mercaptans.moleculeSize || ''}</span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <span className="text-yellow-500 dark:text-yellow-400 mt-1">•</span>
-                  <span><strong>The Problem:</strong> {t.sciencePage?.understanding.mercaptans.problem || ""}</span>
+                  <span><strong>{uiCopy.problemLabel}</strong> {t.sciencePage?.understanding.mercaptans.problem || ''}</span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <span className="text-yellow-500 dark:text-yellow-400 mt-1">•</span>
-                  <span><strong>Why It&apos;s Hard:</strong> {t.sciencePage?.understanding.mercaptans.whyHard || ""}</span>
+                  <span><strong>{uiCopy.whyHardLabel}</strong> {t.sciencePage?.understanding.mercaptans.whyHard || ''}</span>
                 </li>
               </ul>
             </div>
@@ -208,7 +298,7 @@ export default function SciencePageClient() {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <Image
                 src="/optimized/happy-cat-fresh-home.webp"
-                alt="Happy cat in clean, fresh home environment"
+                alt={uiCopy.happyCatAlt}
                 width={1600}
                 height={900}
                 className="w-full h-auto"
@@ -223,7 +313,7 @@ export default function SciencePageClient() {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <Image
                 src="/optimized/content-cat-owner.webp"
-                alt="Content cat enjoying clean, odor-free environment"
+                alt={uiCopy.contentCatAlt}
                 width={1600}
                 height={900}
                 className="w-full h-auto"
@@ -262,9 +352,9 @@ export default function SciencePageClient() {
                 <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">{t.sciencePage?.poreSize.micropores.specialist || ""}</p>
               </div>
               <div className="space-y-3 text-gray-700 dark:text-gray-200">
-                <p><strong>Target:</strong> {t.sciencePage?.poreSize.micropores.target || ""}</p>
-                <p><strong>Density:</strong> {t.sciencePage?.poreSize.micropores.density || ""}</p>
-                <p><strong>Function:</strong> {t.sciencePage?.poreSize.micropores.function || ""}</p>
+                <p><strong>{uiCopy.targetLabel}</strong> {t.sciencePage?.poreSize.micropores.target || ''}</p>
+                <p><strong>{uiCopy.densityLabel}</strong> {t.sciencePage?.poreSize.micropores.density || ''}</p>
+                <p><strong>{uiCopy.functionLabel}</strong> {t.sciencePage?.poreSize.micropores.function || ''}</p>
               </div>
             </div>
 
@@ -275,9 +365,9 @@ export default function SciencePageClient() {
                 <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">{t.sciencePage?.poreSize.mesopores.specialist || ""}</p>
               </div>
               <div className="space-y-3 text-gray-700 dark:text-gray-200">
-                <p><strong>Target:</strong> {t.sciencePage?.poreSize.mesopores.target || ""}</p>
-                <p><strong>Density:</strong> {t.sciencePage?.poreSize.mesopores.density || ""}</p>
-                <p><strong>Function:</strong> {t.sciencePage?.poreSize.mesopores.function || ""}</p>
+                <p><strong>{uiCopy.targetLabel}</strong> {t.sciencePage?.poreSize.mesopores.target || ''}</p>
+                <p><strong>{uiCopy.densityLabel}</strong> {t.sciencePage?.poreSize.mesopores.density || ''}</p>
+                <p><strong>{uiCopy.functionLabel}</strong> {t.sciencePage?.poreSize.mesopores.function || ''}</p>
               </div>
             </div>
 
@@ -288,9 +378,9 @@ export default function SciencePageClient() {
                 <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">{t.sciencePage?.poreSize.macropores.specialist || ""}</p>
               </div>
               <div className="space-y-3 text-gray-700 dark:text-gray-200">
-                <p><strong>Target:</strong> {t.sciencePage?.poreSize.macropores.target || ""}</p>
-                <p><strong>Density:</strong> {t.sciencePage?.poreSize.macropores.density || ""}</p>
-                <p><strong>Function:</strong> {t.sciencePage?.poreSize.macropores.function || ""}</p>
+                <p><strong>{uiCopy.targetLabel}</strong> {t.sciencePage?.poreSize.macropores.target || ''}</p>
+                <p><strong>{uiCopy.densityLabel}</strong> {t.sciencePage?.poreSize.macropores.density || ''}</p>
+                <p><strong>{uiCopy.functionLabel}</strong> {t.sciencePage?.poreSize.macropores.function || ''}</p>
               </div>
             </div>
           </div>
@@ -305,19 +395,19 @@ export default function SciencePageClient() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
               <div className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-xl">
                 <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">≥1000</div>
-                <div className="text-xs text-gray-600 dark:text-gray-300">Iodine Number mg/g</div>
+                <div className="text-xs text-gray-600 dark:text-gray-300">{t.sciencePage?.poreSize.surfaceArea.iodineNumber || 'Iodine Number mg/g'}</div>
               </div>
               <div className="p-4 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-xl">
                 <div className="text-2xl font-bold text-purple-600 dark:text-purple-400 mb-1">≥50%</div>
-                <div className="text-xs text-gray-600 dark:text-gray-300">CTC Adsorption</div>
+                <div className="text-xs text-gray-600 dark:text-gray-300">{t.sciencePage?.poreSize.surfaceArea.ctcAdsorption || 'CTC Adsorption'}</div>
               </div>
               <div className="p-4 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-xl">
                 <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">≥98%</div>
-                <div className="text-xs text-gray-600 dark:text-gray-300">Hardness</div>
+                <div className="text-xs text-gray-600 dark:text-gray-300">{t.sciencePage?.poreSize.surfaceArea.hardness || 'Hardness'}</div>
               </div>
               <div className="p-4 bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 rounded-xl">
                 <div className="text-2xl font-bold text-red-600 dark:text-red-400 mb-1">≤5%</div>
-                <div className="text-xs text-gray-600 dark:text-gray-300">Moisture</div>
+                <div className="text-xs text-gray-600 dark:text-gray-300">{t.sciencePage?.poreSize.surfaceArea.moisture || 'Moisture'}</div>
               </div>
             </div>
           </div>
@@ -368,7 +458,7 @@ export default function SciencePageClient() {
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                   <Image
                     src="/optimized/science-microscope-research.webp"
-                    alt="Laboratory microscope for activated carbon research"
+                    alt={uiCopy.microscopeAlt}
                     width={1200}
                     height={800}
                     className="w-full h-auto"
@@ -380,7 +470,7 @@ export default function SciencePageClient() {
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                   <Image
                     src="/optimized/chemistry-lab-testing.webp"
-                    alt="Chemistry laboratory testing activated carbon samples"
+                    alt={uiCopy.chemistryAlt}
                     width={1200}
                     height={800}
                     className="w-full h-auto"
@@ -395,7 +485,7 @@ export default function SciencePageClient() {
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                   <Image
                     src="/optimized/molecular-structure-pore.webp"
-                    alt="Molecular structure visualization showing pore architecture"
+                    alt={uiCopy.molecularAlt}
                     width={1200}
                     height={800}
                     className="w-full h-auto"
@@ -463,20 +553,20 @@ export default function SciencePageClient() {
               </h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
-                  <span className="text-gray-700 dark:text-gray-200 font-medium">Effective Size:</span>
+                  <span className="text-gray-700 dark:text-gray-200 font-medium">{t.sciencePage?.technicalPerformance.particleSize.effectiveSize || 'Effective Size:'}</span>
                   <span className="text-lg font-bold text-blue-600 dark:text-blue-400">{t.sciencePage?.technicalPerformance.particleSize.effectiveSize || ""}</span>
                 </div>
                 <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
-                  <span className="text-gray-700 dark:text-gray-200 font-medium">Mean Diameter:</span>
+                  <span className="text-gray-700 dark:text-gray-200 font-medium">{t.sciencePage?.technicalPerformance.particleSize.meanDiameter || 'Mean Diameter:'}</span>
                   <span className="text-lg font-bold text-blue-600 dark:text-blue-400">{t.sciencePage?.technicalPerformance.particleSize.meanDiameter || ""}</span>
                 </div>
                 <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
-                  <span className="text-gray-700 dark:text-gray-200 font-medium">Uniformity Coefficient:</span>
+                  <span className="text-gray-700 dark:text-gray-200 font-medium">{t.sciencePage?.technicalPerformance.particleSize.uniformityCoefficient || 'Uniformity Coefficient:'}</span>
                   <span className="text-lg font-bold text-blue-600 dark:text-blue-400">{t.sciencePage?.technicalPerformance.particleSize.uniformityCoefficient || ""}</span>
                 </div>
                 <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
                   <p className="text-sm text-gray-700 dark:text-gray-200">
-                    <strong>Why this matters:</strong> {t.sciencePage?.technicalPerformance.particleSize.whyMatters || ""}
+                    {t.sciencePage?.technicalPerformance.particleSize.whyMatters || ''}
                   </p>
                 </div>
               </div>
@@ -492,20 +582,20 @@ export default function SciencePageClient() {
               </h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
-                  <span className="text-gray-700 dark:text-gray-200 font-medium">Half-Length Value:</span>
+                  <span className="text-gray-700 dark:text-gray-200 font-medium">{t.sciencePage?.technicalPerformance.adsorption.halfLength || 'Half-Length Value:'}</span>
                   <span className="text-lg font-bold text-purple-600 dark:text-purple-400">{t.sciencePage?.technicalPerformance.adsorption.halfLength || ""}</span>
                 </div>
                 <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
-                  <span className="text-gray-700 dark:text-gray-200 font-medium">Apparent Density:</span>
+                  <span className="text-gray-700 dark:text-gray-200 font-medium">{t.sciencePage?.technicalPerformance.adsorption.apparentDensity || 'Apparent Density:'}</span>
                   <span className="text-lg font-bold text-purple-600 dark:text-purple-400">{t.sciencePage?.technicalPerformance.adsorption.apparentDensity || ""}</span>
                 </div>
                 <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
-                  <span className="text-gray-700 dark:text-gray-200 font-medium">BET Surface Area:</span>
+                  <span className="text-gray-700 dark:text-gray-200 font-medium">{t.sciencePage?.technicalPerformance.adsorption.betSurface || 'BET Surface Area:'}</span>
                   <span className="text-lg font-bold text-purple-600 dark:text-purple-400">{t.sciencePage?.technicalPerformance.adsorption.betSurface || ""}</span>
                 </div>
                 <div className="mt-6 p-4 bg-purple-50 dark:bg-purple-900/20 rounded-xl">
                   <p className="text-sm text-gray-700 dark:text-gray-200">
-                    <strong>Why this matters:</strong> {t.sciencePage?.technicalPerformance.adsorption.whyMatters || ""}
+                    {t.sciencePage?.technicalPerformance.adsorption.whyMatters || ''}
                   </p>
                 </div>
               </div>
@@ -533,11 +623,11 @@ export default function SciencePageClient() {
                     <div className="text-sm text-gray-600 dark:text-gray-300">{t.sciencePage?.engineeredPerformance.stats.temperatureLabel || ""}</div>
                   </div>
                   <div className="text-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
-                    <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">Stable</div>
+                    <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">{uiCopy.stableValue}</div>
                     <div className="text-sm text-gray-600 dark:text-gray-300">{t.sciencePage?.engineeredPerformance.stats.performanceLabel || ""}</div>
                   </div>
                   <div className="text-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
-                    <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">Minimal</div>
+                    <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">{uiCopy.minimalValue}</div>
                     <div className="text-sm text-gray-600 dark:text-gray-300">{t.sciencePage?.engineeredPerformance.stats.pressureLossLabel || ""}</div>
                   </div>
                 </div>

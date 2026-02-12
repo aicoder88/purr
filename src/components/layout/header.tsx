@@ -42,6 +42,7 @@ export function Header() {
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
   const [expandedMobileSection, setExpandedMobileSection] = useState<string | null>(null);
   const { t, locale } = useTranslation();
+  const localePrefix = locale === 'en' ? '' : `/${locale}`;
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const headerRef = useRef<HTMLElement | null>(null);
@@ -187,16 +188,16 @@ export function Header() {
     {
       id: "products",
       label: t.nav?.products || "",
-      href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/#products`,
+      href: `${localePrefix}/#products`,
       hasDropdown: true,
       dropdownItems: [
         {
           label: t.nav?.trialSize || "",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/products/trial-size`,
+          href: `${localePrefix}/products/trial-size`,
         },
         {
           label: t.nav?.compareSizes || "",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/products`,
+          href: `${localePrefix}/products`,
         },
         {
           label: t.nav?.shipsToUSA || "",
@@ -207,34 +208,34 @@ export function Header() {
     {
       id: "retailers",
       label: t.nav?.retailers || "",
-      href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/retailers`,
+      href: `${localePrefix}/retailers`,
       hasDropdown: true,
       dropdownItems: [
         {
           label: t.nav?.retailers || "",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/retailers`,
+          href: `${localePrefix}/retailers`,
         },
         {
           label: t.nav?.wholesalePricing || "",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/retailers#wholesale-pricing`,
+          href: `${localePrefix}/retailers#wholesale-pricing`,
         },
         {
           label: t.nav?.becomePartner || "",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/retailers#retailer-contact`,
+          href: `${localePrefix}/retailers#retailer-contact`,
         },
         {
           label: t.nav?.marketingSupport || "",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/retailers#marketing-support`,
+          href: `${localePrefix}/retailers#marketing-support`,
         },
         { label: t.nav?.partnerPrograms || "Partner Programs", isGroupHeader: true },
         {
           label: t.nav?.forGroomers || "For Groomers",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/groomers`,
+          href: `${localePrefix}/groomers`,
           indent: true,
         },
         {
           label: t.nav?.forShelters || "For Shelters",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/shelters`,
+          href: `${localePrefix}/shelters`,
           indent: true,
         },
         {
@@ -252,40 +253,40 @@ export function Header() {
     {
       id: "learn",
       label: t.nav?.learn || "",
-      href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn`,
+      href: `${localePrefix}/learn`,
       hasDropdown: true,
       dropdownItems: [
         {
           label: t.nav?.howItWorksPage || "",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/how-it-works`,
+          href: `${localePrefix}/learn/how-it-works`,
         },
         {
           label: t.nav?.faq || "",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/faq`,
+          href: `${localePrefix}/learn/faq`,
         },
         {
           label: t.nav?.science || "",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/science`,
+          href: `${localePrefix}/learn/science`,
         },
         {
           label: t.nav?.safetyInfo || "",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/safety`,
+          href: `${localePrefix}/learn/safety`,
         },
         {
           label: t.nav?.activatedCarbonBenefits || "",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/activated-carbon-benefits`,
+          href: `${localePrefix}/learn/activated-carbon-benefits`,
         },
         {
           label: t.nav?.catLitterGuide || "",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/cat-litter-guide`,
+          href: `${localePrefix}/learn/cat-litter-guide`,
         },
         {
           label: t.nav?.howToUse || "",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/how-to-use-deodorizer`,
+          href: `${localePrefix}/learn/how-to-use-deodorizer`,
         },
         {
           label: t.nav?.technologyComparison || "",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/activated-carbon-vs-baking-soda-deodorizers`,
+          href: `${localePrefix}/learn/activated-carbon-vs-baking-soda-deodorizers`,
         },
         // SEO FIX (Feb 2026): Added direct links to reduce redirect chains
         {
@@ -303,32 +304,32 @@ export function Header() {
         { label: t.nav?.solutions || "", isGroupHeader: true },
         {
           label: t.nav?.ammoniaSmellControl || "",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/solutions/ammonia-smell-cat-litter`,
+          href: `${localePrefix}/learn/solutions/ammonia-smell-cat-litter`,
           indent: true,
         },
         {
           label: t.nav?.apartmentLiving || "",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/solutions/apartment-cat-smell-solution`,
+          href: `${localePrefix}/learn/solutions/apartment-cat-smell-solution`,
           indent: true,
         },
         {
           label: t.nav?.litterBoxOdor || "",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/solutions/litter-box-smell-elimination`,
+          href: `${localePrefix}/learn/solutions/litter-box-smell-elimination`,
           indent: true,
         },
         {
           label: t.nav?.multipleCats || "",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/solutions/multiple-cats-odor-control`,
+          href: `${localePrefix}/learn/solutions/multiple-cats-odor-control`,
           indent: true,
         },
         {
           label: t.nav?.naturalAdditive || "",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/solutions/natural-cat-litter-additive`,
+          href: `${localePrefix}/learn/solutions/natural-cat-litter-additive`,
           indent: true,
         },
         {
           label: t.nav?.seniorCats || "",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : ""}/learn/solutions/senior-cat-litter-solutions`,
+          href: `${localePrefix}/learn/solutions/senior-cat-litter-solutions`,
           indent: true,
         },
       ],
@@ -336,25 +337,25 @@ export function Header() {
     {
       id: "blog",
       label: t.nav?.blog || "Blog",
-      href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : locale === "es" ? "/es" : ""}/blog`,
+      href: `${localePrefix}/blog`,
     },
     {
       id: "about",
       label: t.nav?.about || "",
-      href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : locale === "es" ? "/es" : ""}/about/our-story`,
+      href: `${localePrefix}/about/our-story`,
       hasDropdown: true,
       dropdownItems: [
         {
           label: t.nav?.ourStory || "Our Story",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : locale === "es" ? "/es" : ""}/about/our-story`,
+          href: `${localePrefix}/about/our-story`,
         },
         {
           label: t.nav?.customerReviews || "Reviews",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : locale === "es" ? "/es" : ""}/reviews`,
+          href: `${localePrefix}/reviews`,
         },
         {
           label: t.nav?.contact || "Contact",
-          href: `${locale === "fr" ? "/fr" : locale === "zh" ? "/zh" : locale === "es" ? "/es" : ""}/contact`,
+          href: `${localePrefix}/contact`,
         },
       ],
     },
@@ -369,7 +370,7 @@ export function Header() {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link
-              href="/"
+              href={localePrefix || '/'}
               prefetch={false}
               className="flex items-center space-x-2 flex-shrink-0"
             >

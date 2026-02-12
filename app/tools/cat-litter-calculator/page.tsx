@@ -1,128 +1,437 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useMemo } from 'react';
-import { Container } from '../../../src/components/ui/container';
-import { Button } from '../../../src/components/ui/button';
-import { useTranslation } from '../../../src/lib/translation-context';
-import {
-  Calculator,
-  ChevronRight,
-  Home,
-  Cat,
-  DollarSign,
-  TrendingDown,
-  Leaf,
-  Info,
-  Share2,
-  Check
-} from 'lucide-react';
+import { useMemo, useState } from 'react';
+import { Calculator, Cat, Check, ChevronRight, DollarSign, Home, Info, Leaf, Share2, TrendingDown } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Container } from '@/components/ui/container';
+import { useTranslation } from '@/lib/translation-context';
+import { localizePath } from '@/lib/i18n/locale-path';
 
 interface LitterType {
   id: string;
   name: string;
   pricePerKg: number;
-  usagePerCatPerMonth: number; // kg
-  odorRating: number; // 1-5
+  usagePerCatPerMonth: number;
+  odorRating: number;
   dustLevel: string;
   clumping: boolean;
   biodegradable: boolean;
   notes: string;
 }
 
-const litterTypes: LitterType[] = [
+const LITTER_TYPES: LitterType[] = [
   {
     id: 'clay-clumping',
     name: 'Clay Clumping',
-    pricePerKg: 2.50,
+    pricePerKg: 2.5,
     usagePerCatPerMonth: 4.5,
     odorRating: 3,
     dustLevel: 'High',
     clumping: true,
     biodegradable: false,
-    notes: 'Most popular. Creates solid clumps but can be dusty.'
+    notes: 'Most common; solid clumps and moderate odor control.',
   },
   {
     id: 'clay-non-clumping',
     name: 'Clay Non-Clumping',
-    pricePerKg: 1.50,
+    pricePerKg: 1.5,
     usagePerCatPerMonth: 6,
     odorRating: 2,
     dustLevel: 'High',
     clumping: false,
     biodegradable: false,
-    notes: 'Budget option. Requires full replacement more often.'
+    notes: 'Lower price but requires more frequent full replacement.',
   },
   {
     id: 'silica-crystal',
     name: 'Silica Crystal',
-    pricePerKg: 8.00,
+    pricePerKg: 8,
     usagePerCatPerMonth: 2,
     odorRating: 4,
     dustLevel: 'Low',
     clumping: false,
     biodegradable: false,
-    notes: 'Low maintenance, good odor control but some cats dislike texture.'
+    notes: 'Lower monthly usage with strong odor control.',
   },
   {
     id: 'wood-pellet',
     name: 'Wood Pellets',
-    pricePerKg: 1.20,
+    pricePerKg: 1.2,
     usagePerCatPerMonth: 5,
     odorRating: 3,
     dustLevel: 'Low',
     clumping: false,
     biodegradable: true,
-    notes: 'Eco-friendly, natural pine scent. Breaks into sawdust when wet.'
+    notes: 'Natural and biodegradable option with moderate control.',
   },
   {
     id: 'paper',
     name: 'Paper-Based',
-    pricePerKg: 3.50,
+    pricePerKg: 3.5,
     usagePerCatPerMonth: 4,
     odorRating: 2,
     dustLevel: 'Very Low',
     clumping: false,
     biodegradable: true,
-    notes: 'Good for cats with respiratory issues. Less odor control.'
+    notes: 'Low-dust option often chosen for sensitive cats.',
   },
   {
     id: 'corn',
     name: 'Corn/Wheat',
-    pricePerKg: 4.00,
+    pricePerKg: 4,
     usagePerCatPerMonth: 3.5,
     odorRating: 3,
     dustLevel: 'Low',
     clumping: true,
     biodegradable: true,
-    notes: 'Natural clumping, flushable. Can attract insects if humid.'
+    notes: 'Natural clumping profile and moderate monthly usage.',
   },
   {
     id: 'tofu',
     name: 'Tofu-Based',
-    pricePerKg: 5.00,
+    pricePerKg: 5,
     usagePerCatPerMonth: 3,
     odorRating: 3,
     dustLevel: 'Very Low',
     clumping: true,
     biodegradable: true,
-    notes: 'Ultra-low dust, flushable. Newer option gaining popularity.'
+    notes: 'Very low dust with strong clumping behavior.',
   },
   {
     id: 'walnut',
     name: 'Walnut Shell',
-    pricePerKg: 4.50,
+    pricePerKg: 4.5,
     usagePerCatPerMonth: 3.5,
     odorRating: 4,
     dustLevel: 'Low',
     clumping: true,
     biodegradable: true,
-    notes: 'Natural dark color hides stains. Good odor control.'
-  }
+    notes: 'Natural option with stronger odor performance.',
+  },
 ];
+
+type ToolCopy = {
+  breadcrumbAria: string;
+  home: string;
+  pageName: string;
+  heroTitle: string;
+  heroDescription: string;
+  detailsHeading: string;
+  catsLabel: string;
+  litterLabel: string;
+  customPriceLabel: string;
+  customPricePlaceholder: string;
+  propertiesHeading: string;
+  odorLabel: string;
+  dustLabel: string;
+  clumpingLabel: string;
+  ecoLabel: string;
+  yes: string;
+  no: string;
+  ecoTrue: string;
+  ecoFalse: string;
+  annualCostHeading: string;
+  yearlySuffix: string;
+  monthlyLabel: string;
+  dailyLabel: string;
+  usageHeading: string;
+  monthlyUsageLabel: string;
+  annualUsageLabel: string;
+  potentialSavingsHeading: string;
+  potentialSavingsBodyPrefix: string;
+  potentialSavingsBodySuffix: string;
+  addDeodorizer: string;
+  addDeodorizerBody: string;
+  deodorizerCostLabel: string;
+  litterSavingsLabel: string;
+  netCostLabel: string;
+  copiedLink: string;
+  shareResults: string;
+  compareHeading: string;
+  litterTypeHeader: string;
+  priceHeader: string;
+  annualCostHeader: string;
+  odorHeader: string;
+  ecoHeader: string;
+  selectedBadge: string;
+  annualShort: string;
+  tableFootnotePrefix: string;
+  tableFootnoteSuffix: string;
+  tipsHeading: string;
+  tips: Array<{ title: string; description: string }>;
+  ctaTitle: string;
+  ctaBody: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
+  shareTitle: string;
+  shareBodyPrefix: string;
+  shareBodySuffix: string;
+};
+
+const COPY: Record<'en' | 'fr' | 'zh' | 'es', ToolCopy> = {
+  en: {
+    breadcrumbAria: 'Breadcrumb',
+    home: 'Home',
+    pageName: 'Cat Litter Calculator',
+    heroTitle: 'Cat Litter Cost Calculator',
+    heroDescription: 'Estimate annual litter costs, compare litter types, and review practical savings opportunities.',
+    detailsHeading: 'Your Details',
+    catsLabel: 'Number of Cats',
+    litterLabel: 'Litter Type',
+    customPriceLabel: 'Your Price per kg (optional)',
+    customPricePlaceholder: 'Enter a custom price',
+    propertiesHeading: 'Litter Properties',
+    odorLabel: 'Odor',
+    dustLabel: 'Dust',
+    clumpingLabel: 'Clumping',
+    ecoLabel: 'Eco',
+    yes: 'Yes',
+    no: 'No',
+    ecoTrue: 'Biodegradable',
+    ecoFalse: 'Not biodegradable',
+    annualCostHeading: 'Your Annual Cat Litter Cost',
+    yearlySuffix: '/year',
+    monthlyLabel: 'Monthly',
+    dailyLabel: 'Daily',
+    usageHeading: 'Litter Usage',
+    monthlyUsageLabel: 'Monthly usage',
+    annualUsageLabel: 'Annual usage',
+    potentialSavingsHeading: 'Potential Savings',
+    potentialSavingsBodyPrefix: 'Switching to',
+    potentialSavingsBodySuffix: 'could reduce annual cost.',
+    addDeodorizer: 'Add Deodorizer',
+    addDeodorizerBody: 'Activated carbon can extend litter life and reduce odor without perfume masking.',
+    deodorizerCostLabel: 'Deodorizer cost',
+    litterSavingsLabel: 'Litter savings',
+    netCostLabel: 'Net cost',
+    copiedLink: 'Link Copied',
+    shareResults: 'Share Results',
+    compareHeading: 'Compare All Litter Types',
+    litterTypeHeader: 'Litter Type',
+    priceHeader: '$/kg',
+    annualCostHeader: 'Annual Cost',
+    odorHeader: 'Odor',
+    ecoHeader: 'Eco',
+    selectedBadge: 'Selected',
+    annualShort: '/yr',
+    tableFootnotePrefix: 'Annual costs estimated for',
+    tableFootnoteSuffix: 'cat(s). Actual costs vary by household.',
+    tipsHeading: 'Tips to Reduce Cat Litter Costs',
+    tips: [
+      { title: 'Buy in bulk', description: 'Larger packs usually lower your effective price per kg.' },
+      { title: 'Scoop daily', description: 'Frequent scooping helps delay full litter replacement.' },
+      { title: 'Use a litter mat', description: 'Reduce tracked litter waste and improve reuse.' },
+      { title: 'Use deodorizer strategically', description: 'Activated carbon can reduce the need for early full dumps.' },
+      { title: 'Match box size to cat usage', description: 'Oversized boxes often consume unnecessary litter volume.' },
+      { title: 'Use subscription discounts', description: 'Recurring delivery can lower long-term costs.' },
+    ],
+    ctaTitle: 'Managing Odor Alongside Cost?',
+    ctaBody: 'Purrify uses activated coconut carbon to trap odor molecules at the source.',
+    ctaPrimary: 'Try Free (Just Pay Shipping)',
+    ctaSecondary: 'Learn How It Works',
+    shareTitle: 'Cat Litter Cost Calculator',
+    shareBodyPrefix: 'Estimated annual litter cost:',
+    shareBodySuffix: 'with this setup.',
+  },
+  fr: {
+    breadcrumbAria: 'Fil d Ariane',
+    home: 'Accueil',
+    pageName: 'Calculateur de Litiere',
+    heroTitle: 'Calculateur de Cout de Litiere',
+    heroDescription: 'Estimez vos couts annuels de litiere et comparez les types de litiere.',
+    detailsHeading: 'Vos Parametres',
+    catsLabel: 'Nombre de Chats',
+    litterLabel: 'Type de Litiere',
+    customPriceLabel: 'Votre prix par kg (optionnel)',
+    customPricePlaceholder: 'Entrez un prix personnalise',
+    propertiesHeading: 'Caracteristiques',
+    odorLabel: 'Odeur',
+    dustLabel: 'Poussiere',
+    clumpingLabel: 'Agglomerante',
+    ecoLabel: 'Eco',
+    yes: 'Oui',
+    no: 'Non',
+    ecoTrue: 'Biodegradable',
+    ecoFalse: 'Non biodegradable',
+    annualCostHeading: 'Cout Annuel de Litiere',
+    yearlySuffix: '/an',
+    monthlyLabel: 'Mensuel',
+    dailyLabel: 'Quotidien',
+    usageHeading: 'Utilisation de Litiere',
+    monthlyUsageLabel: 'Utilisation mensuelle',
+    annualUsageLabel: 'Utilisation annuelle',
+    potentialSavingsHeading: 'Economies Potentielles',
+    potentialSavingsBodyPrefix: 'Passer a',
+    potentialSavingsBodySuffix: 'peut reduire votre cout annuel.',
+    addDeodorizer: 'Ajouter un Desodorisant',
+    addDeodorizerBody: 'Le carbone active peut prolonger la duree d usage de la litiere et reduire les odeurs.',
+    deodorizerCostLabel: 'Cout desodorisant',
+    litterSavingsLabel: 'Economies litiere',
+    netCostLabel: 'Cout net',
+    copiedLink: 'Lien Copie',
+    shareResults: 'Partager les Resultats',
+    compareHeading: 'Comparer Tous les Types de Litiere',
+    litterTypeHeader: 'Type',
+    priceHeader: '$/kg',
+    annualCostHeader: 'Cout Annuel',
+    odorHeader: 'Odeur',
+    ecoHeader: 'Eco',
+    selectedBadge: 'Selectionne',
+    annualShort: '/an',
+    tableFootnotePrefix: 'Couts annuels estimes pour',
+    tableFootnoteSuffix: 'chat(s). Les resultats varient selon le foyer.',
+    tipsHeading: 'Conseils pour Reduire les Couts',
+    tips: [
+      { title: 'Acheter en gros', description: 'Les grands formats reduisent souvent le cout au kg.' },
+      { title: 'Ramasser chaque jour', description: 'Le nettoyage quotidien prolonge la duree de la litiere.' },
+      { title: 'Utiliser un tapis', description: 'Recupere la litiere sortie du bac pour limiter le gaspillage.' },
+      { title: 'Ajouter du carbone active', description: 'Peut diminuer la frequence des changements complets.' },
+      { title: 'Adapter la taille du bac', description: 'Un bac surdimensionne consomme plus de litiere.' },
+      { title: 'Abonnements', description: 'La livraison recurrente peut offrir un rabais.' },
+    ],
+    ctaTitle: 'Controler les Odeurs et le Budget ?',
+    ctaBody: 'Purrify utilise du carbone active de noix de coco pour capter les molecules d odeur.',
+    ctaPrimary: 'Essai Gratuit (Frais d envoi)',
+    ctaSecondary: 'Voir le Fonctionnement',
+    shareTitle: 'Calculateur de Cout de Litiere',
+    shareBodyPrefix: 'Cout annuel estime :',
+    shareBodySuffix: 'avec cette configuration.',
+  },
+  zh: {
+    breadcrumbAria: '面包屑导航',
+    home: '首页',
+    pageName: '猫砂计算器',
+    heroTitle: '猫砂成本计算器',
+    heroDescription: '估算年度猫砂成本并比较不同猫砂类型。',
+    detailsHeading: '输入参数',
+    catsLabel: '猫咪数量',
+    litterLabel: '猫砂类型',
+    customPriceLabel: '自定义单价（每公斤）',
+    customPricePlaceholder: '输入自定义价格',
+    propertiesHeading: '猫砂属性',
+    odorLabel: '除味',
+    dustLabel: '粉尘',
+    clumpingLabel: '结团',
+    ecoLabel: '环保',
+    yes: '是',
+    no: '否',
+    ecoTrue: '可降解',
+    ecoFalse: '不可降解',
+    annualCostHeading: '年度猫砂成本',
+    yearlySuffix: '/年',
+    monthlyLabel: '每月',
+    dailyLabel: '每日',
+    usageHeading: '猫砂用量',
+    monthlyUsageLabel: '月用量',
+    annualUsageLabel: '年用量',
+    potentialSavingsHeading: '潜在节省',
+    potentialSavingsBodyPrefix: '切换到',
+    potentialSavingsBodySuffix: '可降低年度成本。',
+    addDeodorizer: '加入除味添加剂',
+    addDeodorizerBody: '活性炭可延长猫砂使用周期并减少异味。',
+    deodorizerCostLabel: '添加剂成本',
+    litterSavingsLabel: '猫砂节省',
+    netCostLabel: '净成本',
+    copiedLink: '链接已复制',
+    shareResults: '分享结果',
+    compareHeading: '所有猫砂类型对比',
+    litterTypeHeader: '类型',
+    priceHeader: '每公斤价格',
+    annualCostHeader: '年度成本',
+    odorHeader: '除味',
+    ecoHeader: '环保',
+    selectedBadge: '已选',
+    annualShort: '/年',
+    tableFootnotePrefix: '以下年度成本基于',
+    tableFootnoteSuffix: '只猫估算，实际情况因家庭而异。',
+    tipsHeading: '降低猫砂成本建议',
+    tips: [
+      { title: '大包装采购', description: '大包装通常每公斤更便宜。' },
+      { title: '每日铲砂', description: '可延长整盆更换周期。' },
+      { title: '使用猫砂垫', description: '减少带出浪费。' },
+      { title: '合理使用活性炭', description: '减少因异味提前整盆更换。' },
+      { title: '匹配猫砂盆尺寸', description: '过大猫砂盆通常会增加消耗。' },
+      { title: '订阅优惠', description: '周期配送有时更省。' },
+    ],
+    ctaTitle: '想同时控制成本和异味？',
+    ctaBody: 'Purrify 使用椰壳活性炭在分子层面捕捉异味。',
+    ctaPrimary: '免费试用（仅付运费）',
+    ctaSecondary: '查看原理',
+    shareTitle: '猫砂成本计算器',
+    shareBodyPrefix: '年度成本估算：',
+    shareBodySuffix: '（当前配置）。',
+  },
+  es: {
+    breadcrumbAria: 'Ruta de navegacion',
+    home: 'Inicio',
+    pageName: 'Calculadora de Arena',
+    heroTitle: 'Calculadora de Costo de Arena para Gatos',
+    heroDescription: 'Calcula costos anuales, compara tipos de arena y encuentra oportunidades de ahorro.',
+    detailsHeading: 'Tus Datos',
+    catsLabel: 'Numero de Gatos',
+    litterLabel: 'Tipo de Arena',
+    customPriceLabel: 'Tu precio por kg (opcional)',
+    customPricePlaceholder: 'Ingresa un precio personalizado',
+    propertiesHeading: 'Propiedades de la Arena',
+    odorLabel: 'Olor',
+    dustLabel: 'Polvo',
+    clumpingLabel: 'Aglomerante',
+    ecoLabel: 'Eco',
+    yes: 'Si',
+    no: 'No',
+    ecoTrue: 'Biodegradable',
+    ecoFalse: 'No biodegradable',
+    annualCostHeading: 'Costo Anual de Arena',
+    yearlySuffix: '/ano',
+    monthlyLabel: 'Mensual',
+    dailyLabel: 'Diario',
+    usageHeading: 'Uso de Arena',
+    monthlyUsageLabel: 'Uso mensual',
+    annualUsageLabel: 'Uso anual',
+    potentialSavingsHeading: 'Ahorro Potencial',
+    potentialSavingsBodyPrefix: 'Cambiar a',
+    potentialSavingsBodySuffix: 'puede reducir tu costo anual.',
+    addDeodorizer: 'Agregar Desodorizante',
+    addDeodorizerBody: 'El carbon activado puede extender la vida de la arena y reducir olores.',
+    deodorizerCostLabel: 'Costo desodorizante',
+    litterSavingsLabel: 'Ahorro en arena',
+    netCostLabel: 'Costo neto',
+    copiedLink: 'Enlace copiado',
+    shareResults: 'Compartir resultados',
+    compareHeading: 'Comparar Todos los Tipos de Arena',
+    litterTypeHeader: 'Tipo',
+    priceHeader: '$/kg',
+    annualCostHeader: 'Costo Anual',
+    odorHeader: 'Olor',
+    ecoHeader: 'Eco',
+    selectedBadge: 'Seleccionado',
+    annualShort: '/ano',
+    tableFootnotePrefix: 'Costos anuales estimados para',
+    tableFootnoteSuffix: 'gato(s). El costo real puede variar.',
+    tipsHeading: 'Consejos para Reducir Costos',
+    tips: [
+      { title: 'Compra al por mayor', description: 'Los paquetes grandes suelen bajar el costo por kg.' },
+      { title: 'Retira desechos a diario', description: 'Extiende la vida util de la arena.' },
+      { title: 'Usa tapete para arena', description: 'Reduce perdida por arrastre fuera de la caja.' },
+      { title: 'Usa carbono activado', description: 'Puede reducir cambios completos anticipados.' },
+      { title: 'Tamano correcto de caja', description: 'Una caja sobredimensionada aumenta consumo.' },
+      { title: 'Descuentos por suscripcion', description: 'Las entregas recurrentes pueden costar menos.' },
+    ],
+    ctaTitle: 'Controlar Olor y Costo al Mismo Tiempo?',
+    ctaBody: 'Purrify usa carbono activado de coco para atrapar olor en la fuente.',
+    ctaPrimary: 'Prueba Gratis (Solo Envio)',
+    ctaSecondary: 'Ver Como Funciona',
+    shareTitle: 'Calculadora de Costo de Arena',
+    shareBodyPrefix: 'Costo anual estimado:',
+    shareBodySuffix: 'con esta configuracion.',
+  },
+};
 
 export default function CatLitterCalculatorPage() {
   const { locale } = useTranslation();
+  const language = locale === 'fr' || locale === 'zh' || locale === 'es' ? locale : 'en';
+  const copy = COPY[language];
 
   const [numberOfCats, setNumberOfCats] = useState(1);
   const [selectedLitter, setSelectedLitter] = useState('clay-clumping');
@@ -130,7 +439,7 @@ export default function CatLitterCalculatorPage() {
   const [useDeodorizer, setUseDeodorizer] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const selectedLitterType = litterTypes.find(l => l.id === selectedLitter) || litterTypes[0];
+  const selectedLitterType = LITTER_TYPES.find((litter) => litter.id === selectedLitter) || LITTER_TYPES[0];
   const effectivePrice = customPricePerKg ?? selectedLitterType.pricePerKg;
 
   const calculations = useMemo(() => {
@@ -138,362 +447,318 @@ export default function CatLitterCalculatorPage() {
     const monthlyCost = monthlyUsageKg * effectivePrice;
     const annualCost = monthlyCost * 12;
 
-    // Deodorizer calculations (Purrify pricing)
-    const deodomonthlyCost = numberOfCats <= 1 ? 8.99 : numberOfCats <= 2 ? 12.99 : 16.99;
-    const deodoAnnualCost = deodomonthlyCost * 12;
+    const deodorizerMonthly = numberOfCats <= 1 ? 8.99 : numberOfCats <= 2 ? 12.99 : 16.99;
+    const deodorizerAnnual = deodorizerMonthly * 12;
+    const litterSavings = annualCost * 0.2;
+    const netDeodorizerCost = deodorizerAnnual - litterSavings;
 
-    // With deodorizer, litter lasts ~25% longer due to less frequent full changes
-    const litterSavingsWithDeodorizer = annualCost * 0.20;
-    const netDeodorizerCost = deodoAnnualCost - litterSavingsWithDeodorizer;
-
-    // Compare all litter types
-    const allLitterCosts = litterTypes.map(litter => ({
+    const allLitterCosts = LITTER_TYPES.map((litter) => ({
       ...litter,
-      annualCost: litter.usagePerCatPerMonth * numberOfCats * litter.pricePerKg * 12
+      annualCost: litter.usagePerCatPerMonth * numberOfCats * litter.pricePerKg * 12,
     })).sort((a, b) => a.annualCost - b.annualCost);
 
-    const cheapestLitter = allLitterCosts[0];
-    const potentialSavings = annualCost - cheapestLitter.annualCost;
+    const cheapest = allLitterCosts[0];
+    const potentialSavings = annualCost - cheapest.annualCost;
 
     return {
       monthlyUsageKg,
       monthlyCost,
       annualCost,
-      deodoAnnualCost,
-      litterSavingsWithDeodorizer,
+      costPerDay: annualCost / 365,
+      deodorizerAnnual,
+      litterSavings,
       netDeodorizerCost,
       allLitterCosts,
-      cheapestLitter,
+      cheapest,
       potentialSavings,
-      costPerDay: annualCost / 365
     };
-  }, [selectedLitterType, numberOfCats, effectivePrice]);
+  }, [effectivePrice, numberOfCats, selectedLitterType.usagePerCatPerMonth]);
 
   const handleShare = async () => {
-    const shareUrl = `${window.location.origin}/tools/cat-litter-calculator?cats=${numberOfCats}&litter=${selectedLitter}`;
+    const url = `${window.location.origin}/tools/cat-litter-calculator?cats=${numberOfCats}&litter=${selectedLitter}`;
+    const text = `${copy.shareBodyPrefix} $${calculations.annualCost.toFixed(0)} ${copy.shareBodySuffix}`;
 
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Cat Litter Cost Calculator',
-          text: `I spend $${calculations.annualCost.toFixed(0)}/year on cat litter for ${numberOfCats} cat${numberOfCats > 1 ? 's' : ''}. Check yours:`,
-          url: shareUrl
+          title: copy.shareTitle,
+          text,
+          url,
         });
       } catch {
-        // User cancelled or error
+        // Ignore user cancel
       }
-    } else {
-      await navigator.clipboard.writeText(shareUrl);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      return;
     }
+
+    await navigator.clipboard.writeText(url);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
     <>
-      {/* Breadcrumb */}
       <div className="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
         <Container>
-          <nav className="py-3 flex items-center text-sm text-gray-600 dark:text-gray-300">
-            <Link href="/" className="flex items-center hover:text-green-600 dark:hover:text-green-400">
+          <nav aria-label={copy.breadcrumbAria} className="py-3 flex items-center text-sm text-gray-600 dark:text-gray-300">
+            <Link href={localizePath('/', locale)} className="flex items-center hover:text-green-600 dark:hover:text-green-400">
               <Home className="w-4 h-4 mr-1" />
-              Home
+              {copy.home}
             </Link>
             <ChevronRight className="w-4 h-4 mx-2" />
-            <span className="text-gray-900 dark:text-gray-100 font-medium">Cat Litter Calculator</span>
+            <span className="text-gray-900 dark:text-gray-100 font-medium">{copy.pageName}</span>
           </nav>
         </Container>
       </div>
 
-      {/* Hero Section */}
       <section className="bg-gradient-to-b from-green-50 to-white dark:from-gray-900 dark:to-gray-800 py-12">
         <Container>
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full mb-6">
               <Calculator className="w-8 h-8 text-green-600 dark:text-green-400" />
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4">
-              Cat Litter Cost Calculator
-            </h1>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
-              Find out exactly how much you spend on cat litter per year. Compare different litter types and discover potential savings.
-            </p>
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4">{copy.heroTitle}</h1>
+            <p className="text-lg text-gray-600 dark:text-gray-300">{copy.heroDescription}</p>
           </div>
         </Container>
       </section>
 
-      {/* Calculator Section */}
       <section className="py-12 bg-white dark:bg-gray-900">
         <Container>
-          <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8">
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-50 mb-6">{copy.detailsHeading}</h2>
 
-              {/* Input Panel */}
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
-                <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-50 mb-6">
-                  Your Details
-                </h2>
+              <div className="mb-6">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
+                  <Cat className="w-4 h-4 inline mr-2" />
+                  {copy.catsLabel}
+                </label>
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => setNumberOfCats(Math.max(1, numberOfCats - 1))}
+                    className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 font-bold text-lg"
+                  >
+                    -
+                  </button>
+                  <span className="text-2xl font-bold text-gray-900 dark:text-gray-50 w-12 text-center">{numberOfCats}</span>
+                  <button
+                    onClick={() => setNumberOfCats(Math.min(10, numberOfCats + 1))}
+                    className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 font-bold text-lg"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
 
-                {/* Number of Cats */}
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
-                    <Cat className="w-4 h-4 inline mr-2" />
-                    Number of Cats
-                  </label>
-                  <div className="flex items-center gap-3">
-                    <button
-                      onClick={() => setNumberOfCats(Math.max(1, numberOfCats - 1))}
-                      className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 font-bold text-lg"
-                    >
-                      -
-                    </button>
-                    <span className="text-2xl font-bold text-gray-900 dark:text-gray-50 w-12 text-center">
-                      {numberOfCats}
+              <div className="mb-6">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">{copy.litterLabel}</label>
+                <select
+                  value={selectedLitter}
+                  onChange={(event) => {
+                    setSelectedLitter(event.target.value);
+                    setCustomPricePerKg(null);
+                  }}
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500"
+                >
+                  {LITTER_TYPES.map((litter) => (
+                    <option key={litter.id} value={litter.id}>
+                      {`${litter.name} (~$${litter.pricePerKg.toFixed(2)}/kg)`}
+                    </option>
+                  ))}
+                </select>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">{selectedLitterType.notes}</p>
+              </div>
+
+              <div className="mb-6">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
+                  <DollarSign className="w-4 h-4 inline mr-1" />
+                  {copy.customPriceLabel}
+                </label>
+                <input
+                  type="number"
+                  step="0.01"
+                  min="0"
+                  placeholder={copy.customPricePlaceholder}
+                  value={customPricePerKg ?? ''}
+                  onChange={(event) => setCustomPricePerKg(event.target.value ? parseFloat(event.target.value) : null)}
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+
+              <div className="bg-white dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-600">
+                <h3 className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-3">{copy.propertiesHeading}</h3>
+                <div className="grid grid-cols-2 gap-3 text-sm">
+                  <div className="flex items-center gap-2">
+                    <span className="text-gray-500 dark:text-gray-400">{copy.odorLabel}:</span>
+                    <div className="flex">
+                      {[1, 2, 3, 4, 5].map((rating) => (
+                        <span key={rating} className={rating <= selectedLitterType.odorRating ? 'text-yellow-500 dark:text-yellow-400' : 'text-gray-300 dark:text-gray-600'}>
+                          ★
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-gray-500 dark:text-gray-400">{copy.dustLabel}:</span>
+                    <span className="text-gray-900 dark:text-gray-100">{selectedLitterType.dustLevel}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-gray-500 dark:text-gray-400">{copy.clumpingLabel}:</span>
+                    <span className={selectedLitterType.clumping ? 'text-green-600 dark:text-green-400' : 'text-gray-500 dark:text-gray-400'}>
+                      {selectedLitterType.clumping ? copy.yes : copy.no}
                     </span>
-                    <button
-                      onClick={() => setNumberOfCats(Math.min(10, numberOfCats + 1))}
-                      className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 font-bold text-lg"
-                    >
-                      +
-                    </button>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Leaf className={`w-4 h-4 ${selectedLitterType.biodegradable ? 'text-green-600 dark:text-green-400' : 'text-gray-400 dark:text-gray-500'}`} />
+                    <span className={selectedLitterType.biodegradable ? 'text-green-600 dark:text-green-400' : 'text-gray-500 dark:text-gray-400'}>
+                      {selectedLitterType.biodegradable ? copy.ecoTrue : copy.ecoFalse}
+                    </span>
                   </div>
                 </div>
+              </div>
+            </div>
 
-                {/* Litter Type */}
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
-                    Litter Type
-                  </label>
-                  <select
-                    value={selectedLitter}
-                    onChange={(e) => {
-                      setSelectedLitter(e.target.value);
-                      setCustomPricePerKg(null);
-                    }}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500"
-                  >
-                    {litterTypes.map(litter => (
-                      <option key={litter.id} value={litter.id}>
-                        {litter.name} (~${litter.pricePerKg.toFixed(2)}/kg)
-                      </option>
-                    ))}
-                  </select>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
-                    {selectedLitterType.notes}
-                  </p>
+            <div className="space-y-6">
+              <div className="bg-gradient-to-br from-green-500 to-green-600 dark:from-green-600 dark:to-green-700 rounded-2xl p-6 text-white dark:text-gray-50 shadow-lg">
+                <h2 className="text-lg font-medium opacity-90 mb-2">{copy.annualCostHeading}</h2>
+                <div className="text-5xl font-bold mb-4">
+                  {`$${calculations.annualCost.toFixed(0)}`}
+                  <span className="text-xl font-normal opacity-80">{copy.yearlySuffix}</span>
                 </div>
-
-                {/* Custom Price */}
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
-                    <DollarSign className="w-4 h-4 inline mr-1" />
-                    Your Price per kg (optional)
-                  </label>
-                  <input
-                    type="number"
-                    step="0.01"
-                    min="0"
-                    placeholder={`Default: $${selectedLitterType.pricePerKg.toFixed(2)}`}
-                    value={customPricePerKg ?? ''}
-                    onChange={(e) => setCustomPricePerKg(e.target.value ? parseFloat(e.target.value) : null)}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500"
-                  />
-                </div>
-
-                {/* Litter Properties */}
-                <div className="bg-white dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-600">
-                  <h3 className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-3">
-                    Litter Properties
-                  </h3>
-                  <div className="grid grid-cols-2 gap-3 text-sm">
-                    <div className="flex items-center gap-2">
-                      <span className="text-gray-500 dark:text-gray-400">Odor Control:</span>
-                      <div className="flex">
-                        {[1,2,3,4,5].map(i => (
-                          <span key={i} className={i <= selectedLitterType.odorRating ? 'text-yellow-500 dark:text-yellow-400' : 'text-gray-300 dark:text-gray-600'}>
-                            ★
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-gray-500 dark:text-gray-400">Dust:</span>
-                      <span className="text-gray-900 dark:text-gray-100">{selectedLitterType.dustLevel}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-gray-500 dark:text-gray-400">Clumping:</span>
-                      <span className={selectedLitterType.clumping ? 'text-green-600 dark:text-green-400' : 'text-gray-500 dark:text-gray-400'}>
-                        {selectedLitterType.clumping ? 'Yes' : 'No'}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Leaf className={`w-4 h-4 ${selectedLitterType.biodegradable ? 'text-green-600 dark:text-green-400' : 'text-gray-400 dark:text-gray-500'}`} />
-                      <span className={selectedLitterType.biodegradable ? 'text-green-600 dark:text-green-400' : 'text-gray-500 dark:text-gray-400'}>
-                        {selectedLitterType.biodegradable ? 'Eco-Friendly' : 'Not Biodegradable'}
-                      </span>
-                    </div>
+                <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/20">
+                  <div>
+                    <div className="text-sm opacity-80">{copy.monthlyLabel}</div>
+                    <div className="text-xl font-semibold">{`$${calculations.monthlyCost.toFixed(2)}`}</div>
+                  </div>
+                  <div>
+                    <div className="text-sm opacity-80">{copy.dailyLabel}</div>
+                    <div className="text-xl font-semibold">{`$${calculations.costPerDay.toFixed(2)}`}</div>
                   </div>
                 </div>
               </div>
 
-              {/* Results Panel */}
-              <div className="space-y-6">
-                {/* Main Cost Card */}
-                <div className="bg-gradient-to-br from-green-500 to-green-600 dark:from-green-600 dark:to-green-700 rounded-2xl p-6 text-white dark:text-gray-50 shadow-lg">
-                  <h2 className="text-lg font-medium opacity-90 mb-2">Your Annual Cat Litter Cost</h2>
-                  <div className="text-5xl font-bold mb-4">
-                    ${calculations.annualCost.toFixed(0)}
-                    <span className="text-xl font-normal opacity-80">/year</span>
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-5 border border-gray-200 dark:border-gray-700">
+                <h3 className="font-semibold text-gray-900 dark:text-gray-50 mb-3">{copy.usageHeading}</h3>
+                <div className="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                  <div className="flex justify-between">
+                    <span>{copy.monthlyUsageLabel}:</span>
+                    <span className="font-medium text-gray-900 dark:text-gray-100">{`${calculations.monthlyUsageKg.toFixed(1)} kg`}</span>
                   </div>
-                  <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/20">
+                  <div className="flex justify-between">
+                    <span>{copy.annualUsageLabel}:</span>
+                    <span className="font-medium text-gray-900 dark:text-gray-100">{`${(calculations.monthlyUsageKg * 12).toFixed(0)} kg`}</span>
+                  </div>
+                </div>
+              </div>
+
+              {calculations.potentialSavings > 20 && (
+                <div className="bg-amber-50 dark:bg-amber-900/30 rounded-xl p-5 border border-amber-200 dark:border-amber-700">
+                  <div className="flex items-start gap-3">
+                    <TrendingDown className="w-5 h-5 text-amber-600 dark:text-amber-400 mt-0.5" />
                     <div>
-                      <div className="text-sm opacity-80">Monthly</div>
-                      <div className="text-xl font-semibold">${calculations.monthlyCost.toFixed(2)}</div>
-                    </div>
-                    <div>
-                      <div className="text-sm opacity-80">Daily</div>
-                      <div className="text-xl font-semibold">${calculations.costPerDay.toFixed(2)}</div>
+                      <h3 className="font-semibold text-amber-800 dark:text-amber-200">{copy.potentialSavingsHeading}</h3>
+                      <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">
+                        {`${copy.potentialSavingsBodyPrefix} ${calculations.cheapest.name} ${copy.potentialSavingsBodySuffix}`}
+                        {` $${calculations.potentialSavings.toFixed(0)}`}
+                      </p>
                     </div>
                   </div>
                 </div>
+              )}
 
-                {/* Litter Usage */}
-                <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-5 border border-gray-200 dark:border-gray-700">
-                  <h3 className="font-semibold text-gray-900 dark:text-gray-50 mb-3">Litter Usage</h3>
-                  <div className="text-sm text-gray-600 dark:text-gray-300 space-y-2">
-                    <div className="flex justify-between">
-                      <span>Monthly usage:</span>
-                      <span className="font-medium text-gray-900 dark:text-gray-100">{calculations.monthlyUsageKg.toFixed(1)} kg</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Annual usage:</span>
-                      <span className="font-medium text-gray-900 dark:text-gray-100">{(calculations.monthlyUsageKg * 12).toFixed(0)} kg</span>
-                    </div>
+              <div className="bg-blue-50 dark:bg-blue-900/30 rounded-xl p-5 border border-blue-200 dark:border-blue-700">
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={useDeodorizer}
+                    onChange={(event) => setUseDeodorizer(event.target.checked)}
+                    className="mt-1 w-5 h-5 rounded border-gray-300 dark:border-gray-600 text-green-600 dark:text-green-400 focus:ring-green-500"
+                  />
+                  <div>
+                    <span className="font-semibold text-blue-800 dark:text-blue-200">{copy.addDeodorizer}</span>
+                    <p className="text-sm text-blue-700 dark:text-blue-300 mt-1">{copy.addDeodorizerBody}</p>
                   </div>
-                </div>
+                </label>
 
-                {/* Savings Opportunity */}
-                {calculations.potentialSavings > 20 && (
-                  <div className="bg-amber-50 dark:bg-amber-900/30 rounded-xl p-5 border border-amber-200 dark:border-amber-700">
-                    <div className="flex items-start gap-3">
-                      <TrendingDown className="w-5 h-5 text-amber-600 dark:text-amber-400 mt-0.5" />
-                      <div>
-                        <h3 className="font-semibold text-amber-800 dark:text-amber-200">Potential Savings</h3>
-                        <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">
-                          Switching to <strong>{calculations.cheapestLitter.name}</strong> could save you{' '}
-                          <strong>${calculations.potentialSavings.toFixed(0)}/year</strong>
-                        </p>
-                      </div>
+                {useDeodorizer && (
+                  <div className="mt-4 pt-4 border-t border-blue-200 dark:border-blue-600 text-sm text-blue-800 dark:text-blue-200 space-y-2">
+                    <div className="flex justify-between">
+                      <span>{copy.deodorizerCostLabel}:</span>
+                      <span>{`$${calculations.deodorizerAnnual.toFixed(0)}/year`}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>{copy.litterSavingsLabel}:</span>
+                      <span className="text-green-600 dark:text-green-400">{`-$${calculations.litterSavings.toFixed(0)}/year`}</span>
+                    </div>
+                    <div className="flex justify-between font-semibold pt-2 border-t border-blue-200 dark:border-blue-600">
+                      <span>{copy.netCostLabel}:</span>
+                      <span>{`$${calculations.netDeodorizerCost.toFixed(0)}/year`}</span>
                     </div>
                   </div>
                 )}
-
-                {/* Deodorizer Toggle */}
-                <div className="bg-blue-50 dark:bg-blue-900/30 rounded-xl p-5 border border-blue-200 dark:border-blue-700">
-                  <label className="flex items-start gap-3 cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={useDeodorizer}
-                      onChange={(e) => setUseDeodorizer(e.target.checked)}
-                      className="mt-1 w-5 h-5 rounded border-gray-300 dark:border-gray-600 text-green-600 dark:text-green-400 focus:ring-green-500"
-                    />
-                    <div>
-                      <span className="font-semibold text-blue-800 dark:text-blue-200">Add Litter Deodorizer?</span>
-                      <p className="text-sm text-blue-700 dark:text-blue-300 mt-1">
-                        Activated carbon deodorizers extend litter life by ~20% and eliminate odors without fragrances.
-                      </p>
-                    </div>
-                  </label>
-
-                  {useDeodorizer && (
-                    <div className="mt-4 pt-4 border-t border-blue-200 dark:border-blue-600 text-sm text-blue-800 dark:text-blue-200 space-y-2">
-                      <div className="flex justify-between">
-                        <span>Deodorizer cost:</span>
-                        <span>${calculations.deodoAnnualCost.toFixed(0)}/year</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Litter savings:</span>
-                        <span className="text-green-600 dark:text-green-400">-${calculations.litterSavingsWithDeodorizer.toFixed(0)}/year</span>
-                      </div>
-                      <div className="flex justify-between font-semibold pt-2 border-t border-blue-200 dark:border-blue-600">
-                        <span>Net cost for odor-free litter:</span>
-                        <span>${calculations.netDeodorizerCost.toFixed(0)}/year</span>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Share Button */}
-                <Button
-                  onClick={handleShare}
-                  variant="outline"
-                  className="w-full flex items-center justify-center gap-2"
-                >
-                  {copied ? (
-                    <>
-                      <Check className="w-4 h-4" />
-                      Link Copied!
-                    </>
-                  ) : (
-                    <>
-                      <Share2 className="w-4 h-4" />
-                      Share Your Results
-                    </>
-                  )}
-                </Button>
               </div>
+
+              <Button onClick={handleShare} variant="outline" className="w-full flex items-center justify-center gap-2">
+                {copied ? (
+                  <>
+                    <Check className="w-4 h-4" />
+                    {copy.copiedLink}
+                  </>
+                ) : (
+                  <>
+                    <Share2 className="w-4 h-4" />
+                    {copy.shareResults}
+                  </>
+                )}
+              </Button>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* Comparison Table */}
       <section className="py-12 bg-gray-50 dark:bg-gray-800">
         <Container>
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">
-              Compare All Litter Types
-            </h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">{copy.compareHeading}</h2>
             <div className="overflow-x-auto">
               <table className="w-full bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
                 <thead>
                   <tr className="bg-gray-50 dark:bg-gray-800">
-                    <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 dark:text-gray-100">Litter Type</th>
-                    <th className="px-4 py-3 text-right text-sm font-semibold text-gray-900 dark:text-gray-100">$/kg</th>
-                    <th className="px-4 py-3 text-right text-sm font-semibold text-gray-900 dark:text-gray-100">Annual Cost</th>
-                    <th className="px-4 py-3 text-center text-sm font-semibold text-gray-900 dark:text-gray-100">Odor</th>
-                    <th className="px-4 py-3 text-center text-sm font-semibold text-gray-900 dark:text-gray-100">Eco</th>
+                    <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 dark:text-gray-100">{copy.litterTypeHeader}</th>
+                    <th className="px-4 py-3 text-right text-sm font-semibold text-gray-900 dark:text-gray-100">{copy.priceHeader}</th>
+                    <th className="px-4 py-3 text-right text-sm font-semibold text-gray-900 dark:text-gray-100">{copy.annualCostHeader}</th>
+                    <th className="px-4 py-3 text-center text-sm font-semibold text-gray-900 dark:text-gray-100">{copy.odorHeader}</th>
+                    <th className="px-4 py-3 text-center text-sm font-semibold text-gray-900 dark:text-gray-100">{copy.ecoHeader}</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {calculations.allLitterCosts.map((litter, idx) => (
+                  {calculations.allLitterCosts.map((litter, index) => (
                     <tr
                       key={litter.id}
                       className={`border-t border-gray-100 dark:border-gray-700 ${
                         litter.id === selectedLitter
                           ? 'bg-green-50 dark:bg-green-900/20'
-                          : idx % 2 === 0 ? 'bg-white dark:bg-gray-900' : 'bg-gray-50 dark:bg-gray-800/50'
+                          : index % 2 === 0 ? 'bg-white dark:bg-gray-900' : 'bg-gray-50 dark:bg-gray-800/50'
                       }`}
                     >
                       <td className="px-4 py-3 text-sm text-gray-900 dark:text-gray-100 font-medium">
                         {litter.name}
                         {litter.id === selectedLitter && (
                           <span className="ml-2 text-xs bg-green-100 dark:bg-green-800 text-green-700 dark:text-green-300 px-2 py-0.5 rounded">
-                            Selected
+                            {copy.selectedBadge}
                           </span>
                         )}
                       </td>
-                      <td className="px-4 py-3 text-sm text-right text-gray-700 dark:text-gray-300">
-                        ${litter.pricePerKg.toFixed(2)}
-                      </td>
+                      <td className="px-4 py-3 text-sm text-right text-gray-700 dark:text-gray-300">{`$${litter.pricePerKg.toFixed(2)}`}</td>
                       <td className="px-4 py-3 text-sm text-right font-semibold text-gray-900 dark:text-gray-100">
-                        ${litter.annualCost.toFixed(0)}
-                        <span className="text-gray-500 dark:text-gray-400 font-normal">/yr</span>
+                        {`$${litter.annualCost.toFixed(0)}`}
+                        <span className="text-gray-500 dark:text-gray-400 font-normal">{copy.annualShort}</span>
                       </td>
                       <td className="px-4 py-3 text-center">
                         <div className="flex justify-center">
-                          {[1,2,3,4,5].map(i => (
-                            <span key={i} className={`text-xs ${i <= litter.odorRating ? 'text-yellow-500 dark:text-yellow-400' : 'text-gray-300 dark:text-gray-600'}`}>
+                          {[1, 2, 3, 4, 5].map((rating) => (
+                            <span key={rating} className={`text-xs ${rating <= litter.odorRating ? 'text-yellow-500 dark:text-yellow-400' : 'text-gray-300 dark:text-gray-600'}`}>
                               ★
                             </span>
                           ))}
@@ -503,7 +768,7 @@ export default function CatLitterCalculatorPage() {
                         {litter.biodegradable ? (
                           <Leaf className="w-4 h-4 text-green-500 dark:text-green-400 mx-auto" />
                         ) : (
-                          <span className="text-gray-300 dark:text-gray-600">—</span>
+                          <span className="text-gray-300 dark:text-gray-600">-</span>
                         )}
                       </td>
                     </tr>
@@ -512,81 +777,48 @@ export default function CatLitterCalculatorPage() {
               </table>
             </div>
             <p className="text-xs text-gray-500 dark:text-gray-400 mt-4 text-center">
-              * Annual costs based on {numberOfCats} cat{numberOfCats > 1 ? 's' : ''} using average consumption rates. Actual costs may vary.
+              {`${copy.tableFootnotePrefix} ${numberOfCats} ${copy.tableFootnoteSuffix}`}
             </p>
           </div>
         </Container>
       </section>
 
-      {/* Tips Section */}
       <section className="py-12 bg-white dark:bg-gray-900">
         <Container>
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">
-              Tips to Reduce Cat Litter Costs
-            </h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">{copy.tipsHeading}</h2>
             <div className="space-y-4">
-              {[
-                {
-                  title: 'Buy in bulk',
-                  description: 'Large bags (18kg+) often cost 30-40% less per kg than smaller bags.'
-                },
-                {
-                  title: 'Scoop daily',
-                  description: 'Regular scooping extends litter life significantly vs weekly deep cleans.'
-                },
-                {
-                  title: 'Use a litter mat',
-                  description: 'Catches tracked litter so it can be returned to the box instead of vacuumed up.'
-                },
-                {
-                  title: 'Add a deodorizer',
-                  description: 'Activated carbon extends time between full litter changes by absorbing odors.'
-                },
-                {
-                  title: 'Right-size your box',
-                  description: 'A properly sized box uses less litter than an oversized one.'
-                },
-                {
-                  title: 'Consider subscriptions',
-                  description: 'Many brands offer 10-15% off for auto-delivery subscriptions.'
-                }
-              ].map((tip, idx) => (
-                <div key={idx} className="flex gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+              {copy.tips.map((tip, index) => (
+                <article key={tip.title} className="flex gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
                   <div className="flex-shrink-0 w-8 h-8 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
-                    <span className="text-green-600 dark:text-green-400 font-bold text-sm">{idx + 1}</span>
+                    <span className="text-green-600 dark:text-green-400 font-bold text-sm">{index + 1}</span>
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-gray-100">{tip.title}</h3>
                     <p className="text-sm text-gray-600 dark:text-gray-300">{tip.description}</p>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           </div>
         </Container>
       </section>
 
-      {/* CTA Section */}
       <section className="py-12 bg-green-50 dark:bg-gray-800">
         <Container>
           <div className="max-w-2xl mx-auto text-center">
             <Info className="w-10 h-10 text-green-600 dark:text-green-400 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
-              Tired of Litter Box Odors?
-            </h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
-              Purrify uses activated carbon from coconut shells to trap odor molecules - the same technology used in water filters. No fragrances, no chemicals, just science.
-            </p>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">{copy.ctaTitle}</h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-6">{copy.ctaBody}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/free">
+              <Link href={localizePath('/free', locale)}>
                 <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white dark:text-gray-100">
-                  Try Free (Just Pay Shipping)
+                  {copy.ctaPrimary}
                 </Button>
               </Link>
-              <Link href="/learn/how-it-works">
+              <Link href={localizePath('/learn/how-it-works', locale)}>
                 <Button size="lg" variant="outline">
-                  Learn How It Works
+                  {copy.ctaSecondary}
                 </Button>
               </Link>
             </div>

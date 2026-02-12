@@ -17,13 +17,150 @@ interface SubscriptionSelectorProps {
   selectedPlan?: SubscriptionPlan | null;
 }
 
+type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
+
+const SUBSCRIPTION_UI_COPY: Record<SupportedLocale, {
+  heading: string;
+  subtitle: string;
+  mostPopular: string;
+  perMonth: string;
+  billedQuarterly: string;
+  billedBiannual: string;
+  savePrefix: string;
+  annualValue: string;
+  retentionRate: string;
+  buttonSelected: string;
+  buttonGetStarted: string;
+  buttonChoosePlan: string;
+  trustSecure: string;
+  trustFreeShipping: string;
+  trustCancelAnytime: string;
+  whySubscribe: string;
+  saveMoneyTitle: string;
+  saveMoneyDescription: string;
+  freeShippingTitle: string;
+  freeShippingDescription: string;
+  vipTitle: string;
+  vipDescription: string;
+  faqPrompt: string;
+  faqLink: string;
+}> = {
+  en: {
+    heading: 'Subscribe & Save',
+    subtitle: 'Get Purrify delivered automatically and save up to 30%',
+    mostPopular: 'MOST POPULAR',
+    perMonth: 'per month',
+    billedQuarterly: 'per month (billed quarterly)',
+    billedBiannual: 'per month (billed every 6 months)',
+    savePrefix: 'Save',
+    annualValue: 'Annual Value:',
+    retentionRate: 'Retention Rate:',
+    buttonSelected: 'Selected',
+    buttonGetStarted: 'Get Started',
+    buttonChoosePlan: 'Choose Plan',
+    trustSecure: 'Secure',
+    trustFreeShipping: 'Free Shipping',
+    trustCancelAnytime: 'Cancel Anytime',
+    whySubscribe: 'Why Subscribe?',
+    saveMoneyTitle: 'Save Money',
+    saveMoneyDescription: 'Up to 30% savings vs one-time purchases',
+    freeShippingTitle: 'Free Shipping',
+    freeShippingDescription: 'Always free, always on time',
+    vipTitle: 'VIP Treatment',
+    vipDescription: 'Priority support & exclusive perks',
+    faqPrompt: 'Questions?',
+    faqLink: 'View subscription FAQ',
+  },
+  fr: {
+    heading: 'Abonnez-vous et economisez',
+    subtitle: "Recevez Purrify automatiquement et economisez jusqua 30%",
+    mostPopular: 'LE PLUS POPULAIRE',
+    perMonth: 'par mois',
+    billedQuarterly: 'par mois (facture trimestriellement)',
+    billedBiannual: 'par mois (facture tous les 6 mois)',
+    savePrefix: 'Economisez',
+    annualValue: 'Valeur annuelle :',
+    retentionRate: 'Taux de retention :',
+    buttonSelected: 'Selectionne',
+    buttonGetStarted: 'Commencer',
+    buttonChoosePlan: 'Choisir ce plan',
+    trustSecure: 'Securise',
+    trustFreeShipping: 'Livraison gratuite',
+    trustCancelAnytime: 'Annuler a tout moment',
+    whySubscribe: 'Pourquoi sabonner ?',
+    saveMoneyTitle: 'Economisez',
+    saveMoneyDescription: 'Jusqua 30% deconomies vs achat ponctuel',
+    freeShippingTitle: 'Livraison gratuite',
+    freeShippingDescription: 'Toujours gratuite et ponctuelle',
+    vipTitle: 'Traitement VIP',
+    vipDescription: 'Support prioritaire et avantages exclusifs',
+    faqPrompt: 'Des questions ?',
+    faqLink: "Voir la FAQ d'abonnement",
+  },
+  zh: {
+    heading: '订阅更省',
+    subtitle: '自动配送 Purrify，最高可节省 30%',
+    mostPopular: '最受欢迎',
+    perMonth: '每月',
+    billedQuarterly: '每月（按季度计费）',
+    billedBiannual: '每月（每6个月计费）',
+    savePrefix: '节省',
+    annualValue: '年度价值：',
+    retentionRate: '续订率：',
+    buttonSelected: '已选择',
+    buttonGetStarted: '立即开始',
+    buttonChoosePlan: '选择套餐',
+    trustSecure: '安全支付',
+    trustFreeShipping: '免费配送',
+    trustCancelAnytime: '随时取消',
+    whySubscribe: '为什么订阅？',
+    saveMoneyTitle: '更省钱',
+    saveMoneyDescription: '相比单次购买最高可省 30%',
+    freeShippingTitle: '免费配送',
+    freeShippingDescription: '始终免费，准时送达',
+    vipTitle: 'VIP 体验',
+    vipDescription: '优先支持与专属权益',
+    faqPrompt: '有问题？',
+    faqLink: '查看订阅常见问题',
+  },
+  es: {
+    heading: 'Suscribete y ahorra',
+    subtitle: 'Recibe Purrify automaticamente y ahorra hasta 30%',
+    mostPopular: 'MAS POPULAR',
+    perMonth: 'por mes',
+    billedQuarterly: 'por mes (facturado trimestralmente)',
+    billedBiannual: 'por mes (facturado cada 6 meses)',
+    savePrefix: 'Ahorra',
+    annualValue: 'Valor anual:',
+    retentionRate: 'Tasa de retencion:',
+    buttonSelected: 'Seleccionado',
+    buttonGetStarted: 'Comenzar',
+    buttonChoosePlan: 'Elegir plan',
+    trustSecure: 'Seguro',
+    trustFreeShipping: 'Envio gratis',
+    trustCancelAnytime: 'Cancela cuando quieras',
+    whySubscribe: 'Por que suscribirte?',
+    saveMoneyTitle: 'Ahorra dinero',
+    saveMoneyDescription: 'Hasta 30% de ahorro vs compras individuales',
+    freeShippingTitle: 'Envio gratis',
+    freeShippingDescription: 'Siempre gratis y a tiempo',
+    vipTitle: 'Beneficios VIP',
+    vipDescription: 'Soporte prioritario y ventajas exclusivas',
+    faqPrompt: 'Preguntas?',
+    faqLink: 'Ver FAQ de suscripcion',
+  },
+};
+
 export function SubscriptionSelector({
   productId,
   onPlanSelect,
   selectedPlan = null
 }: SubscriptionSelectorProps) {
-  const { t, locale } = useTranslation();
+  const { locale } = useTranslation();
   const [hoveredPlan, setHoveredPlan] = useState<string | null>(null);
+
+  const copy = SUBSCRIPTION_UI_COPY[locale as SupportedLocale] || SUBSCRIPTION_UI_COPY.en;
+  const localePrefix = locale === 'en' ? '' : `/${locale}`;
 
   const handlePlanSelect = useCallback((plan: SubscriptionPlan) => {
     onPlanSelect(plan);
@@ -45,13 +182,13 @@ export function SubscriptionSelector({
   const getBillingPeriodText = (plan: SubscriptionPlan): string => {
     switch (plan.billingPeriod) {
       case 'monthly':
-        return 'per month';
+        return copy.perMonth;
       case 'quarterly':
-        return 'per month (billed quarterly)';
+        return copy.billedQuarterly;
       case 'biannual':
-        return 'per month (billed every 6 months)';
+        return copy.billedBiannual;
       default:
-        return 'per month';
+        return copy.perMonth;
     }
   };
 
@@ -59,10 +196,10 @@ export function SubscriptionSelector({
     <div className="w-full">
       <div className="text-center mb-8">
         <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-2">
-          Subscribe & Save
+          {copy.heading}
         </h3>
         <p className="text-gray-600 dark:text-gray-300">
-          Get Purrify delivered automatically and save up to 30%
+          {copy.subtitle}
         </p>
       </div>
 
@@ -89,14 +226,12 @@ export function SubscriptionSelector({
               onMouseEnter={() => setHoveredPlan(plan.id)}
               onMouseLeave={() => setHoveredPlan(null)}
             >
-              {/* Recommended badge */}
               {isRecommended && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-gray-900 dark:text-gray-800 px-4 py-1 rounded-full text-sm font-bold shadow-lg">
-                  ⭐ MOST POPULAR
+                  ⭐ {copy.mostPopular}
                 </div>
               )}
 
-              {/* Plan header */}
               <div className="text-center mb-6">
                 <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                   {plan.name}
@@ -106,7 +241,6 @@ export function SubscriptionSelector({
                 </p>
               </div>
 
-              {/* Pricing */}
               <div className="text-center mb-6">
                 <div className="text-4xl font-bold text-[#FF3131] dark:text-[#FF5555] mb-1">
                   {formatCurrencyValue(monthlyPrice, locale)}
@@ -116,12 +250,11 @@ export function SubscriptionSelector({
                 </div>
                 {plan.savingsPercentage > 0 && (
                   <div className="inline-block bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 px-3 py-1 rounded-full text-sm font-bold mt-2">
-                    Save {plan.savingsPercentage}%
+                    {copy.savePrefix} {plan.savingsPercentage}%
                   </div>
                 )}
               </div>
 
-              {/* Features */}
               <ul className="space-y-3 mb-6">
                 {plan.features.map((feature, index) => (
                   <li key={index} className="flex items-start gap-2">
@@ -131,17 +264,15 @@ export function SubscriptionSelector({
                 ))}
               </ul>
 
-              {/* Value metrics */}
               <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 mb-6">
                 <div className="text-center text-sm text-gray-600 dark:text-gray-300">
                   <div className="font-semibold text-gray-900 dark:text-white mb-1">
-                    Annual Value: {formatCurrencyValue(ltv, locale)}
+                    {copy.annualValue} {formatCurrencyValue(ltv, locale)}
                   </div>
-                  <div>Retention Rate: {Math.round(plan.retentionRate * 100)}%</div>
+                  <div>{copy.retentionRate} {Math.round(plan.retentionRate * 100)}%</div>
                 </div>
               </div>
 
-              {/* Action button */}
               {paymentLink ? (
                 <Button
                   asChild
@@ -159,7 +290,7 @@ export function SubscriptionSelector({
                     rel="noopener noreferrer"
                     onClick={() => handlePlanSelect(plan)}
                   >
-                    {isSelected ? 'Selected' : isRecommended ? 'Get Started' : 'Choose Plan'}
+                    {isSelected ? copy.buttonSelected : isRecommended ? copy.buttonGetStarted : copy.buttonChoosePlan}
                   </a>
                 </Button>
               ) : (
@@ -173,24 +304,23 @@ export function SubscriptionSelector({
                   `}
                   onClick={() => handlePlanSelect(plan)}
                 >
-                  {isSelected ? 'Selected' : isRecommended ? 'Get Started' : 'Choose Plan'}
+                  {isSelected ? copy.buttonSelected : isRecommended ? copy.buttonGetStarted : copy.buttonChoosePlan}
                 </Button>
               )}
 
-              {/* Trust indicators */}
               <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600">
                 <div className="flex items-center justify-center gap-4 text-xs text-gray-500 dark:text-gray-400">
                   <div className="flex items-center gap-1">
                     <Shield className="w-3 h-3" />
-                    <span>Secure</span>
+                    <span>{copy.trustSecure}</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <Truck className="w-3 h-3" />
-                    <span>Free Shipping</span>
+                    <span>{copy.trustFreeShipping}</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <Calendar className="w-3 h-3" />
-                    <span>Cancel Anytime</span>
+                    <span>{copy.trustCancelAnytime}</span>
                   </div>
                 </div>
               </div>
@@ -199,11 +329,10 @@ export function SubscriptionSelector({
         })}
       </div>
 
-      {/* Benefits section */}
       <div className="mt-12 bg-gradient-to-r from-[#FF3131]/5 to-[#FF3131]/10 dark:from-gray-800 dark:to-gray-700/80 rounded-2xl p-8 border border-[#FF3131]/10 dark:border-gray-600">
         <div className="text-center mb-6">
           <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-            Why Subscribe?
+            {copy.whySubscribe}
           </h4>
         </div>
 
@@ -213,10 +342,10 @@ export function SubscriptionSelector({
               <Zap className="w-8 h-8 text-[#FF3131]" />
             </div>
             <div className="font-bold text-gray-900 dark:text-white mb-1">
-              Save Money
+              {copy.saveMoneyTitle}
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-300">
-              Up to 30% savings vs one-time purchases
+              {copy.saveMoneyDescription}
             </div>
           </div>
           <div>
@@ -224,10 +353,10 @@ export function SubscriptionSelector({
               <Truck className="w-8 h-8 text-[#FF3131]" />
             </div>
             <div className="font-bold text-gray-900 dark:text-white mb-1">
-              Free Shipping
+              {copy.freeShippingTitle}
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-300">
-              Always free, always on time
+              {copy.freeShippingDescription}
             </div>
           </div>
           <div>
@@ -235,21 +364,20 @@ export function SubscriptionSelector({
               <Star className="w-8 h-8 text-[#FF3131]" />
             </div>
             <div className="font-bold text-gray-900 dark:text-white mb-1">
-              VIP Treatment
+              {copy.vipTitle}
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-300">
-              Priority support & exclusive perks
+              {copy.vipDescription}
             </div>
           </div>
         </div>
       </div>
 
-      {/* FAQ section */}
       <div className="mt-8 text-center">
         <p className="text-sm text-gray-600 dark:text-gray-300">
-          Questions? {' '}
-          <Link href="/support/subscription" className="text-[#FF3131] hover:underline">
-            View subscription FAQ
+          {copy.faqPrompt} {' '}
+          <Link href={`${localePrefix}/support/subscription`} className="text-[#FF3131] hover:underline">
+            {copy.faqLink}
           </Link>
         </p>
       </div>

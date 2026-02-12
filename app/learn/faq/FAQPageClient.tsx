@@ -29,13 +29,14 @@ import Image from 'next/image';
 import { stripContext } from '@/lib/seo-utils';
 
 // FAQ Schema Generator
-function generateFAQSchema(questions: { question: string; answer: string }[]) {
+function generateFAQSchema(questions: { question: string; answer: string }[], locale: string) {
+  const inLanguage = locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : locale === 'es' ? 'es-US' : 'en-CA';
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     '@id': 'https://www.purrify.ca/learn/faq',
     url: 'https://www.purrify.ca/learn/faq',
-    inLanguage: 'en-CA',
+    inLanguage,
     mainEntity: questions.map((q) => ({
       '@type': 'Question',
       name: q.question,
@@ -50,16 +51,18 @@ function generateFAQSchema(questions: { question: string; answer: string }[]) {
 export default function FAQPageClient() {
   const { t, locale } = useTranslation();
   const { currency } = useCurrency();
+  const localePrefix = locale === 'en' ? '' : `/${locale}`;
+  const faqPage = t.faqPage;
   const trialPrice = formatProductPrice('trial', currency, locale);
-  const standardPrice = formatProductPrice('standard', currency, locale);
-  const familyPrice = formatProductPrice('family', currency, locale);
   const trialCheckoutUrl = getPaymentLink('trialSingle') || '/products/trial-size';
-  const trialCtaLabel =
-    locale === 'fr'
+  const trialCtaLabel = faqPage?.tryRiskFree ||
+    (locale === 'fr'
       ? `Envoyer Mon Essai GRATUIT - ${trialPrice}`
       : locale === 'zh'
         ? `发送我的免费试用 - ${trialPrice}`
-        : `Send My FREE Trial - ${trialPrice}`;
+        : locale === 'es'
+          ? `Envía Mi Prueba GRATIS - ${trialPrice}`
+          : `Send My FREE Trial - ${trialPrice}`);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [openItems, setOpenItems] = useState<number[]>([]);
@@ -75,7 +78,7 @@ export default function FAQPageClient() {
   const categoryCounts = [38, 14, 9, 6, 4, 2, 2, 1];
   const categoryIds = ['all', 'product', 'usage', 'comparison', 'troubleshooting', 'shipping', 'payment', 'support'];
 
-  const categories = (t.faqPage?.categoryList || []).map((cat, index) => ({
+  const categories = (faqPage?.categoryList || []).map((cat, index) => ({
     id: categoryIds[index],
     name: cat.name,
     icon: categoryIcons[index],
@@ -93,7 +96,7 @@ export default function FAQPageClient() {
     return 'support';
   };
 
-  const faqItems = (t.faqPage?.faqItems || []).map((item, index) => ({
+  const faqItems = (faqPage?.faqItems || []).map((item, index) => ({
     id: index + 1,
     question: item.question,
     answer: item.answer,
@@ -139,15 +142,15 @@ export default function FAQPageClient() {
 
   // Breadcrumb items
   const breadcrumbItems = [
-    { name: 'Learn', path: '/learn' },
-    { name: 'FAQ', path: '/learn/faq' },
+    { name: faqPage?.breadcrumbs?.learn || 'Learn', path: '/learn' },
+    { name: faqPage?.breadcrumbs?.faq || 'FAQ', path: '/learn/faq' },
   ];
 
   // Generate FAQ schema from all items
   const faqSchema = generateFAQSchema(faqItems.map(item => ({
     question: item.question,
     answer: item.answer,
-  })));
+  })), locale);
 
   // Generate Breadcrumb schema
   const breadcrumbSchema = {
@@ -188,7 +191,7 @@ export default function FAQPageClient() {
           <Container>
             <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
               <Link
-                href={locale === 'fr' ? '/fr' : '/'}
+                href={localePrefix || '/'}
                 className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
               >
                 <Home className="w-4 h-4" />
@@ -202,7 +205,7 @@ export default function FAQPageClient() {
                     </span>
                   ) : (
                     <Link
-                      href={item.path}
+                      href={`${localePrefix}${item.path}`}
                       className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
                     >
                       {item.name}
@@ -220,13 +223,16 @@ export default function FAQPageClient() {
             <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
               <HelpCircle className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-                Frequently Asked Questions
+                {faqPage?.title || 'Frequently Asked Questions'}
               </h1>
               <p className="text-xl md:text-2xl mb-4 opacity-90">
-                Everything you need to know about Purrify
+                {faqPage?.subtitle || 'Everything you need to know about Purrify'}
               </p>
               <p className="text-sm mb-8 opacity-75">
-                Last updated: {new Date(lastUpdated).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                Last updated: {new Date(lastUpdated).toLocaleDateString(
+                  locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : locale === 'es' ? 'es-ES' : 'en-US',
+                  { year: 'numeric', month: 'long', day: 'numeric' },
+                )}
               </p>
 
               {/* Search Bar */}
@@ -234,7 +240,7 @@ export default function FAQPageClient() {
                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
                 <input
                   type="text"
-                  placeholder="Search for answers..."
+                  placeholder={faqPage?.searchPlaceholder || 'Search for answers...'}
                   value={searchTerm}
                   onChange={handleSearchChange}
                   className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg text-gray-900 dark:text-gray-50 text-lg focus:outline-none focus:ring-2 focus:ring-white/50 transition-all"
@@ -257,8 +263,8 @@ export default function FAQPageClient() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8 text-white dark:text-gray-100">
-                  <h2 className="text-3xl font-heading font-bold mb-2">Your Questions, Answered</h2>
-                  <p className="text-xl opacity-90">Everything you need to know about Purrify</p>
+                  <h2 className="text-3xl font-heading font-bold mb-2">{faqPage?.title || 'Frequently Asked Questions'}</h2>
+                  <p className="text-xl opacity-90">{faqPage?.subtitle || 'Everything you need to know about Purrify'}</p>
                 </div>
               </div>
             </div>
@@ -270,10 +276,10 @@ export default function FAQPageClient() {
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">
-                Most Popular Questions
+                {faqPage?.popularQuestions || 'Most Popular Questions'}
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
-                Quick answers to what customers ask most
+                {faqPage?.quickAnswers || 'Quick answers to what customers ask most'}
               </p>
             </div>
 
@@ -321,7 +327,7 @@ export default function FAQPageClient() {
               <div className="lg:w-1/4">
                 <h3 className="text-xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100 flex items-center">
                   <Filter className="w-5 h-5 mr-2" />
-                  Categories
+                  {faqPage?.categories || 'Categories'}
                 </h3>
                 <div className="space-y-2">
                   {categories.map((category) => (
@@ -352,14 +358,17 @@ export default function FAQPageClient() {
               <div className="lg:w-3/4">
                 <div className="mb-6 flex items-center justify-between">
                   <h3 className="text-xl font-heading font-bold text-gray-900 dark:text-gray-100">
-                    {filteredFAQs.length} Question{filteredFAQs.length !== 1 ? 's' : ''} Found
+                    {filteredFAQs.length}{' '}
+                    {filteredFAQs.length === 1
+                      ? (faqPage?.questionsFound || 'Question')
+                      : (faqPage?.questionsFoundPlural || 'Questions Found')}
                   </h3>
                   {searchTerm && (
                     <button
                       onClick={handleClearSearch}
                       className="text-electric-indigo hover:text-electric-indigo-600 font-medium transition-colors"
                     >
-                      Clear Search
+                      {faqPage?.clearSearch || 'Clear Search'}
                     </button>
                   )}
                 </div>
@@ -378,7 +387,7 @@ export default function FAQPageClient() {
                           <div className="flex flex-wrap gap-2">
                             {item.featured && (
                               <span className="px-2 py-1 bg-deep-coral/10 dark:bg-deep-coral/20 text-deep-coral dark:text-deep-coral-400 rounded-full text-xs font-medium">
-                                Popular
+                                {faqPage?.popularTag || 'Popular'}
                               </span>
                             )}
                             <span className="px-2 py-1 bg-electric-indigo/10 dark:bg-electric-indigo/20 text-electric-indigo dark:text-electric-indigo-400 rounded-full text-xs font-medium">
@@ -399,12 +408,12 @@ export default function FAQPageClient() {
                             {item.answer}
                           </p>
                           {(item as { link?: string }).link && (
-                            <Link href={`${locale !== 'en' ? `/${locale}` : ''}${(item as { link?: string }).link}`}>
+                            <Link href={`${localePrefix}${(item as { link?: string }).link}`}>
                               <Button
                                 size="sm"
                                 className="mt-4 bg-gradient-to-r from-deep-coral to-electric-indigo hover:from-deep-coral-600 hover:to-electric-indigo-600 text-white dark:text-gray-100 font-semibold hover:scale-105 transition-all duration-300"
                               >
-                                View Safety Information →
+                                {(t.nav?.safetyInfo || 'Safety Information') + ' →'}
                               </Button>
                             </Link>
                           )}
@@ -418,10 +427,10 @@ export default function FAQPageClient() {
                   <div className="text-center py-12">
                     <HelpCircle className="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
                     <h3 className="font-heading text-xl font-semibold text-gray-600 dark:text-gray-400 mb-2">
-                      No questions found
+                      {faqPage?.noQuestionsFound || 'No questions found'}
                     </h3>
                     <p className="text-gray-500 dark:text-gray-500">
-                      Try adjusting your search terms or category filter
+                      {faqPage?.adjustSearchTerms || 'Try adjusting your search terms or category filter'}
                     </p>
                   </div>
                 )}
@@ -456,46 +465,46 @@ export default function FAQPageClient() {
           <Container>
             <div className="text-center max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-                Still Have Questions?
+                {faqPage?.stillHaveQuestions || 'Still Have Questions?'}
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-                Can&apos;t find what you&apos;re looking for? Our customer support team is here to help!
+                {faqPage?.cantFindWhatLooking || 'Can\'t find what you\'re looking for? Our customer support team is here to help!'}
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 text-center hover:scale-105 transition-all duration-300">
                   <Mail className="w-8 h-8 text-electric-indigo dark:text-electric-indigo-400 mx-auto mb-4" />
-                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">Email Support</h3>
+                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">{faqPage?.emailSupport || 'Email Support'}</h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                    Get detailed answers via email
+                    {faqPage?.detailedEmailHelp || 'Get detailed answers via email'}
                   </p>
-                  <Link href={`${locale !== 'en' ? `/${locale}` : ''}/contact`}>
+                  <Link href={`${localePrefix}/contact`}>
                     <Button size="sm" className="bg-electric-indigo hover:bg-electric-indigo-600 hover:scale-105 text-white dark:text-gray-100 transition-all duration-300">
-                      Contact Us
+                      {faqPage?.contactUs || 'Contact Us'}
                     </Button>
                   </Link>
                 </div>
 
                 <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 text-center hover:scale-105 transition-all duration-300">
                   <Phone className="w-8 h-8 text-[#03E46A] mx-auto mb-4" />
-                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">Phone Support</h3>
+                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">{faqPage?.phoneSupport || 'Phone Support'}</h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                    Speak with our team directly
+                    {faqPage?.speakDirectlyTeam || 'Speak with our team directly'}
                   </p>
                   <Button size="sm" variant="outline" className="border-[#03E46A] text-[#03E46A] hover:bg-[#03E46A] hover:text-white dark:text-gray-100">
-                    Call Now
+                    {faqPage?.callNow || 'Call Now'}
                   </Button>
                 </div>
 
                 <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 text-center hover:scale-105 transition-all duration-300">
                   <MessageCircle className="w-8 h-8 text-green-500 dark:text-green-400 mx-auto mb-4" />
-                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">WhatsApp</h3>
+                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">{faqPage?.liveChat || 'Live Chat'}</h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                    Chat with us instantly
+                    {faqPage?.realTimeChatHelp || 'Chat with us instantly'}
                   </p>
                   <a href="https://wa.me/385993433344?text=Hi%20I%27m%20interested%20in%20Purrify" target="_blank" rel="noopener noreferrer">
                     <Button size="sm" variant="outline" className="border-green-500 dark:border-green-400 text-green-500 dark:text-green-400 hover:bg-green-500 hover:text-white dark:hover:bg-green-600 dark:hover:text-gray-100">
-                      Chat Now
+                      {faqPage?.startChat || 'Chat Now'}
                     </Button>
                   </a>
                 </div>
@@ -530,10 +539,10 @@ export default function FAQPageClient() {
           <Container>
             <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
-                Ready to Try Purrify?
+                {faqPage?.readyToTryPurrify || 'Ready to Try Purrify?'}
               </h2>
               <p className="text-xl mb-8 opacity-90">
-                Start with our risk-free trial size and experience the difference for yourself.
+                {faqPage?.startWithRiskFreeTrial || 'Start with our risk-free trial size and experience the difference for yourself.'}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href={trialCheckoutUrl} target="_blank" rel="noopener noreferrer">
@@ -542,9 +551,9 @@ export default function FAQPageClient() {
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </a>
-                <Link href={`${locale !== 'en' ? `/${locale}` : ''}/products`}>
+                <Link href={`${localePrefix}/products`}>
                   <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 hover:bg-white hover:scale-105 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-50 transition-all duration-300">
-                    Compare All Sizes
+                    {faqPage?.compareAllSizes || 'Compare All Sizes'}
                   </Button>
                 </Link>
               </div>
@@ -557,40 +566,40 @@ export default function FAQPageClient() {
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">
-                Learn More About Purrify
+                {faqPage?.learnMoreAboutPurrify || 'Learn More About Purrify'}
               </h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Link href={`${locale !== 'en' ? `/${locale}` : ''}/learn/how-it-works`} className="group">
+              <Link href={`${localePrefix}/learn/how-it-works`} className="group">
                 <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
-                    How It Works
+                    {faqPage?.howItWorks || 'How It Works'}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Learn the science behind our activated carbon technology and why it&apos;s so effective.
+                    {faqPage?.learnScience || 'Learn the science behind our activated carbon technology and why it\'s so effective.'}
                   </p>
                 </div>
               </Link>
 
-              <Link href={`${locale !== 'en' ? `/${locale}` : ''}/learn/cat-litter-guide`} className="group">
+              <Link href={`${localePrefix}/learn/cat-litter-guide`} className="group">
                 <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
-                    Cat Litter Guide
+                    {faqPage?.catLitterGuide || 'Cat Litter Guide'}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Complete guide to cat litter types, maintenance tips, and best practices.
+                    {faqPage?.completeGuide || 'Complete guide to cat litter types, maintenance tips, and best practices.'}
                   </p>
                 </div>
               </Link>
 
-              <Link href={`${locale !== 'en' ? `/${locale}` : ''}/reviews`} className="group">
+              <Link href={`${localePrefix}/reviews`} className="group">
                 <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
-                    Customer Stories
+                    {faqPage?.customerStories || 'Customer Stories'}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Read real experiences from cat owners who transformed their homes with Purrify.
+                    {faqPage?.realExperiences || 'Read real experiences from cat owners who transformed their homes with Purrify.'}
                   </p>
                 </div>
               </Link>

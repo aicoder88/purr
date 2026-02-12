@@ -1,11 +1,12 @@
 'use client';
-import { createContext, useContext, ReactNode, useEffect, useState, useMemo, useCallback, useRef } from 'react';
+import { createContext, useContext, ReactNode, useEffect, useState, useMemo, useCallback } from 'react';
 import { translations } from '../translations';
 import type { TranslationType } from '../translations/types';
 import type { Locale } from '@/i18n/config';
+import { localizePath } from '@/lib/i18n/locale-path';
 
 // App Router import
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 type TranslationContextType = {
   t: TranslationType;
@@ -25,8 +26,9 @@ export function TranslationProvider({
   children: ReactNode;
   language: string; // receives from layout.tsx
 }) {
-  // Use App Router hook
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   // Validate and normalize locale to prevent hydration mismatches
   const normalizedLocale = useMemo((): Locale => {
@@ -45,19 +47,6 @@ export function TranslationProvider({
   // Use stable initial state to prevent hydration mismatches
   const [locale, setLocale] = useState<Locale>(normalizedLocale);
   const [isHydrated, setIsHydrated] = useState(false);
-
-  // Use refs to store current values for the changeLocale callback
-  const isHydratedRef = useRef(isHydrated);
-  const routerRef = useRef(router);
-
-  // Keep refs in sync
-  useEffect(() => {
-    routerRef.current = router;
-  }, [router]);
-
-  useEffect(() => {
-    isHydratedRef.current = isHydrated;
-  }, [isHydrated]);
 
   // Memoize translation object to prevent unnecessary re-renders
   const t = useMemo(() => {
@@ -83,7 +72,7 @@ export function TranslationProvider({
   // Stable changeLocale function
   const changeLocale = useCallback((newLocale: Locale) => {
     // Only execute on client-side after hydration
-    if (typeof globalThis.window === 'undefined' || !isHydratedRef.current) {
+    if (typeof globalThis.window === 'undefined' || !isHydrated) {
       return;
     }
 
@@ -93,19 +82,26 @@ export function TranslationProvider({
       console.warn(`Invalid locale: ${newLocale}. Using 'en' instead.`);
     }
 
-    // App Router handling
-    const currentRouter = routerRef.current;
-    if (currentRouter) {
-      // For App Router, we navigate to the same page with new locale
-      // Store locale preference in cookie via setUserLocale
-      import('@/lib/locale').then(({ setUserLocale }) => {
-        setUserLocale(targetLocale).then(() => {
-          // Refresh the page to apply new locale
-          window.location.reload();
-        });
-      });
+    // Persist locale for server-side rendering and future visits.
+    const secure = window.location.protocol === 'https:' ? ';Secure' : '';
+    document.cookie = `NEXT_LOCALE=${targetLocale};path=/;max-age=31536000;SameSite=Strict${secure}`;
+
+    // Update client translations immediately for instant UI feedback.
+    setLocale(targetLocale);
+
+    const currentPath = pathname || '/';
+    const query = searchParams?.toString();
+    const currentUrl = query ? `${currentPath}?${query}` : currentPath;
+    const nextPath = localizePath(currentPath, targetLocale);
+    const nextUrl = query ? `${nextPath}?${query}` : nextPath;
+
+    if (nextUrl !== currentUrl) {
+      router.push(nextUrl);
+      return;
     }
-  }, []); // Empty deps - uses refs for current values
+
+    router.refresh();
+  }, [isHydrated, pathname, router, searchParams]);
 
   // Client-side only locale update (no reload)
   const setLocaleClient = useCallback((newLocale: Locale) => {

@@ -6,7 +6,7 @@ import { useTranslation } from "@/lib/translation-context";
 import Link from "next/link";
 
 export function HowItWorks() {
-  const { t, locale } = useTranslation();
+  const { t } = useTranslation();
 
   const steps = (t.howItWorks?.steps || []).map((step, index) => ({
     number: step.number,
@@ -31,7 +31,7 @@ export function HowItWorks() {
         {/* Section Heading */}
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="font-heading text-5xl md:text-7xl font-black tracking-tight mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent">
-            Ridiculously Easy to Use
+            {t.howItWorks?.simpleAs123 || 'Ridiculously Easy to Use'}
           </h2>
         </div>
 
