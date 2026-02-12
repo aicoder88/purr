@@ -179,6 +179,12 @@ Copy `.env.local.example` to `.env.local` and configure:
 - **File naming**: PascalCase (.tsx components), camelCase (.ts utilities), kebab-case (routes)
 - **Path aliases**: `@/*` -> `src/*`, `@translations/*` -> `src/translations/*`
 
+### Next.js App Router Rules (CRITICAL)
+- **Metadata**: NEVER export `metadata` from a file marked with `'use client'`. This breaks the build.
+  - **Pattern**: Create a Server Component `page.tsx` that exports `metadata` and imports a Client Component (e.g. `ClientPage.tsx`) for the interactive UI.
+- **Hooks**: ALWAYS add `'use client'` to the very top of any file using React hooks (`useState`, `useEffect`, etc.).
+
+
 ### Dark Mode (Required)
 Every element needs both light and dark variants.
 - **Text**: `text-gray-900 dark:text-gray-50`
