@@ -214,7 +214,10 @@ Copy `.env.local.example` to `.env.local` and configure at least:
 ### Component Patterns
 - Prefer Server Components by default; use `'use client'` only when needed.
 - Import order: React -> external libs -> internal modules -> types.
-- Use named function components and explicit Props interfaces.
+- **Next.js App Router Rules (CRITICAL)**:
+  - **Metadata**: NEVER export `metadata` from a file marked with `'use client'`. Create a Server Component `page.tsx` that exports `metadata` and imports a Client Component for the application logic.
+  - **Hooks**: ALWAYS add `'use client'` to the very top of any component file using React hooks (`useState`, `useEffect`).
+
 
 ### Path Aliases
 - `@/*` -> `src/*`

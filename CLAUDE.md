@@ -100,6 +100,9 @@ pnpm clear-cache        # Clear webpack cache
 - **File naming**: PascalCase for components (.tsx), camelCase for utilities (.ts), kebab-case for routes
 - **Dark mode required**: Every `text-white` needs a dark variant or colored background. Every `bg-white` needs `dark:bg-gray-900`. Validate with `pnpm validate-dark-mode`.
 - **Hydration safety**: Never conditionally `return null` in page components. Use server-side `redirect()` or return a loading/error component instead. See `docs/HYDRATION_SAFETY.md`.
+- **Next.js App Router Rules**:
+  - **Metadata**: NEVER export `metadata` from a file with `'use client'`. If you need metadata + interactivity, create a Server Component `page.tsx` that exports metadata and imports a Client Component for the UI.
+  - **Hooks**: ALWAYS add `'use client'` to the top of any file using React hooks (`useState`, `useEffect`, etc.).
 
 ### Protected API Route Pattern
 ```typescript
