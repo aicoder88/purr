@@ -4,7 +4,6 @@
  */
 
 import {
-  LocaleCode,
   OptimizedMetaTitle,
   OptimizedMetaDescription,
   MetaContentValidation,
@@ -26,13 +25,11 @@ const TITLE_SUFFIX = ' | Purrify';
  *
  * @param title - Raw title text
  * @param targetKeyword - Optional target keyword to front-load
- * @param locale - Optional locale for localization
  * @returns Optimized title with metadata
  */
 export function optimizeMetaTitle(
   title: string,
-  targetKeyword?: string,
-  locale?: LocaleCode
+  targetKeyword?: string
 ): OptimizedMetaTitle {
   const warnings: string[] = [];
   let optimized = title.trim();
@@ -109,13 +106,11 @@ export function optimizeMetaTitle(
  *
  * @param description - Raw description text
  * @param targetKeyword - Optional target keyword to validate
- * @param locale - Optional locale for localization
  * @returns Optimized description with metadata
  */
 export function optimizeMetaDescription(
   description: string,
-  targetKeyword?: string,
-  locale?: LocaleCode
+  targetKeyword?: string
 ): OptimizedMetaDescription {
   const warnings: string[] = [];
   let optimized = description.trim();

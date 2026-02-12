@@ -1,19 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit-app';
 
 /**
  * API endpoint for client-side error tracking
  * Receives error reports from the frontend and logs them
  */
-export async function POST(request: NextRequest) {
+async function handler(request: NextRequest) {
     try {
         const body = await request.json();
+
+        // Input validation
+        const message = body.message ? String(body.message).substring(0, 5000) : '';
+        const stack = body.stack ? String(body.stack).substring(0, 10000) : '';
+        const url = body.url ? String(body.url).substring(0, 2048) : '';
 
         // Log the error to console in development
         if (process.env.NODE_ENV === 'development') {
             console.error('[Client Error]:', {
-                message: body.message,
-                stack: body.stack,
-                url: body.url,
+                message,
+                stack,
+                url,
                 timestamp: new Date().toISOString(),
             });
         }
@@ -30,3 +36,5 @@ export async function POST(request: NextRequest) {
         );
     }
 }
+
+export const POST = withRateLimit(RATE_LIMITS.CREATE, handler);

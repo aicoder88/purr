@@ -1,5 +1,6 @@
 /// <reference types="@testing-library/jest-dom" />
 import { render, screen, fireEvent } from '@testing-library/react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 describe('Button', () => {
@@ -52,7 +53,7 @@ describe('Button', () => {
     const onClick = jest.fn();
     render(<Button onClick={onClick}>Click me</Button>);
     const button = screen.getByRole('button', { name: /click me/i });
-    
+
     fireEvent.click(button);
     expect(onClick).toHaveBeenCalledTimes(1);
   });
@@ -61,10 +62,10 @@ describe('Button', () => {
     const onClick = jest.fn();
     render(<Button disabled onClick={onClick}>Disabled</Button>);
     const button = screen.getByRole('button');
-    
+
     expect(button).toBeDisabled();
     expect(button).toHaveAttribute('aria-disabled', 'true');
-    
+
     fireEvent.click(button);
     expect(onClick).not.toHaveBeenCalled();
   });
@@ -72,11 +73,11 @@ describe('Button', () => {
   it('shows loading state', () => {
     render(<Button loading>Loading</Button>);
     const button = screen.getByRole('button');
-    
+
     expect(button).toBeDisabled();
     expect(button).toHaveAttribute('aria-disabled', 'true');
     expect(screen.getByText('Loading...')).toBeInTheDocument();
-    
+
     // Check for loading spinner SVG
     const svg = button.querySelector('svg');
     expect(svg).toBeInTheDocument();
@@ -92,7 +93,7 @@ describe('Button', () => {
     const onClick = jest.fn();
     render(<Button loading onClick={onClick}>Loading</Button>);
     const button = screen.getByRole('button');
-    
+
     fireEvent.click(button);
     expect(onClick).not.toHaveBeenCalled();
   });
@@ -111,7 +112,7 @@ describe('Button', () => {
   it('renders as child when asChild is true', () => {
     render(
       <Button asChild>
-        <a href="/test">Link Button</a>
+        <Link href="/test">Link Button</Link>
       </Button>
     );
     const link = screen.getByRole('link', { name: /link button/i });
@@ -122,7 +123,7 @@ describe('Button', () => {
   it('renders as child with disabled state', () => {
     render(
       <Button asChild disabled>
-        <a href="/test">Disabled Link</a>
+        <Link href="/test">Disabled Link</Link>
       </Button>
     );
     const link = screen.getByRole('link');

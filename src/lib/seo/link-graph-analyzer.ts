@@ -4,6 +4,7 @@
  */
 
 import * as cheerio from 'cheerio';
+import type { AnyNode } from 'domhandler';
 import { LinkGraphNode, LinkSuggestion } from './types';
 
 export class LinkGraphAnalyzer {
@@ -313,8 +314,14 @@ export function normalizeLinkHref(href: string, basePath: string): string {
     const url = new URL(clean);
     return url.pathname;
   } catch {
-    // Invalid URL, return as-is
-    return clean;
+    // Resolve relative links against the current page path
+    try {
+      const baseUrl = new URL(basePath, 'https://example.com');
+      return new URL(clean, baseUrl).pathname;
+    } catch {
+      // Invalid URL, return as-is
+      return clean;
+    }
   }
 }
 
@@ -327,7 +334,7 @@ export function normalizeLinkHref(href: string, basePath: string): string {
  */
 function extractContext(
   $: cheerio.CheerioAPI,
-  element: any,
+  element: AnyNode,
   maxLength: number = 50
 ): string {
   const $el = $(element);

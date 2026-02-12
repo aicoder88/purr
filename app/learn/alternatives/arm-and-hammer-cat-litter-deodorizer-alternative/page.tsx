@@ -3,7 +3,7 @@ export const dynamic = 'force-static';
 import type { Metadata } from 'next';
 import { SITE_NAME } from '../../../../src/lib/constants';
 import { stripContext } from '@/lib/seo-utils';
-import ArmAndHammerAlternativeClient from './ArmAndHammerAlternativeClient';
+import ArmAndHammerClient from './ArmAndHammerClient';
 
 export const metadata: Metadata = {
   title: 'Arm & Hammer Not Working? Better Alternative | Purrify',
@@ -197,7 +197,7 @@ export default function ArmAndHammerAlternativePage() {
           }),
         }}
       />
-      <ArmAndHammerAlternativeClient />
+      <ArmAndHammerClient />
     </>
   );
 }

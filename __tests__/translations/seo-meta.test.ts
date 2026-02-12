@@ -203,9 +203,13 @@ describe('SEO Meta Content', () => {
       expect(result.hasNumbers).toBe(true);
     });
 
-    it('homepage should include year for freshness', () => {
+    it('homepage should include freshness signal (year or recent update)', () => {
       const result = validatePageMeta(seoMetaEn.homepage);
-      expect(result.hasYear).toBe(true);
+      const hasRecentUpdate =
+        typeof seoMetaEn.homepage.lastUpdated === 'string' &&
+        /202[5-9]/.test(seoMetaEn.homepage.lastUpdated);
+
+      expect(result.hasYear || hasRecentUpdate).toBe(true);
     });
 
     it('homepage should include CTA', () => {

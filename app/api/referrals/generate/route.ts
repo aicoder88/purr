@@ -27,31 +27,7 @@ interface GenerateReferralResponse {
 }
 
 // Rate limiting setup
-const RATE_LIMIT_WINDOW = 60 * 1000;
-const MAX_REQUESTS_PER_WINDOW = 10;
-const ipRequestCounts = new Map<string, { count: number; resetTime: number }>();
-
-function checkRateLimit(ip: string): { allowed: boolean; remaining: number } {
-  const now = Date.now();
-  const record = ipRequestCounts.get(ip);
-
-  if (!record) {
-    ipRequestCounts.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW });
-    return { allowed: true, remaining: MAX_REQUESTS_PER_WINDOW - 1 };
-  }
-
-  if (now > record.resetTime) {
-    ipRequestCounts.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW });
-    return { allowed: true, remaining: MAX_REQUESTS_PER_WINDOW - 1 };
-  }
-
-  if (record.count >= MAX_REQUESTS_PER_WINDOW) {
-    return { allowed: false, remaining: 0 };
-  }
-
-  record.count += 1;
-  return { allowed: true, remaining: MAX_REQUESTS_PER_WINDOW - record.count };
-}
+import { checkRateLimit } from '@/lib/rate-limit';
 
 export async function POST(req: Request): Promise<Response> {
   // Get client IP for rate limiting
@@ -59,16 +35,23 @@ export async function POST(req: Request): Promise<Response> {
   const clientIp = forwardedFor?.split(',')[0] || 'unknown';
 
   // Apply rate limiting
-  const { allowed, remaining } = checkRateLimit(clientIp);
+  // Apply rate limiting
+  const { success, remaining, limit, reset, retryAfter } = await checkRateLimit(clientIp, 'standard');
   const headers = new Headers();
-  headers.set('X-RateLimit-Remaining', remaining.toString());
 
-  if (!allowed) {
+  if (!success) {
+    headers.set('X-RateLimit-Remaining', '0');
+    headers.set('X-RateLimit-Limit', limit.toString());
+    headers.set('X-RateLimit-Reset', reset.toString());
+    headers.set('Retry-After', retryAfter?.toString() || '60');
+
     return Response.json({
       success: false,
       error: 'Too many requests. Please try again later.',
     }, { status: 429, headers });
   }
+
+  headers.set('X-RateLimit-Remaining', remaining.toString());
 
   // CSRF protection - check origin for state-changing operations
   const origin = req.headers.get('origin') || req.headers.get('referer');

@@ -4,6 +4,7 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -129,9 +130,9 @@ export default function LoginForm() {
             <div className="mt-4 text-center text-sm">
                 <p className="text-gray-500 dark:text-gray-400">
                     Don't have an affiliate account?{" "}
-                    <a href="/affiliate/signup" className="text-blue-600 dark:text-blue-400 hover:underline">
+                    <Link href="/affiliate/signup" className="text-blue-600 dark:text-blue-400 hover:underline">
                         Join now
-                    </a>
+                    </Link>
                 </p>
             </div>
         </div>

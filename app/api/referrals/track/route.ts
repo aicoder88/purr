@@ -1,3 +1,4 @@
+// TODO: Rewrite this endpoint to use Prisma-backed persistence instead of in-memory Maps and mock referral lookups.
 import { getProductPrice } from '@/lib/pricing';
 
 interface TrackingData {
@@ -307,7 +308,7 @@ async function trackReferralPurchase(
   return rewards;
 }
 
-// Helper function to get referral code data (mock)
+// Helper function placeholder until referral code validation is implemented with Prisma.
 interface MockReferralCode {
   userId: string;
   code: string;
@@ -316,22 +317,8 @@ interface MockReferralCode {
 }
 
 function getMockReferralCode(code: string): MockReferralCode | null {
-  const mockCodes: Record<string, MockReferralCode> = {
-    'SARAH15-CAT': {
-      userId: 'user_001',
-      code: 'SARAH15-CAT',
-      referrerName: 'Sarah M.',
-      isActive: true
-    },
-    'MIKE42-CAT': {
-      userId: 'user_002',
-      code: 'MIKE42-CAT',
-      referrerName: 'Michael R.',
-      isActive: true
-    }
-  };
-
-  return mockCodes[code] ?? null;
+  void code;
+  return null;
 }
 
 // Helper function to count completed referrals for a user

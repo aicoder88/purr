@@ -1,6 +1,8 @@
 import * as bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import prisma from '@/lib/prisma';
+import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit-app';
+import { NextRequest } from 'next/server';
 
 const JWT_SECRET = process.env.RETAILER_JWT_SECRET;
 
@@ -9,7 +11,7 @@ interface LoginRequest {
   password: string;
 }
 
-export async function POST(req: Request): Promise<Response> {
+async function handler(req: NextRequest): Promise<Response> {
   try {
     const body = await req.json();
     const { email, password }: LoginRequest = body;
@@ -93,3 +95,5 @@ export async function POST(req: Request): Promise<Response> {
     return Response.json({ message: 'Login failed. Please try again.' }, { status: 500 });
   }
 }
+
+export const POST = withRateLimit(RATE_LIMITS.AUTH, handler);

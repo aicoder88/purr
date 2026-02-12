@@ -17,9 +17,7 @@ const b2bContactSchema = z.object({
 });
 
 // Rate limiting setup
-const RATE_LIMIT_WINDOW = 60 * 1000;
-const MAX_REQUESTS_PER_WINDOW = 3;
-const ipRequestCounts = new Map<string, { count: number; resetTime: number }>();
+import { checkRateLimit } from '@/lib/rate-limit';
 
 export async function POST(request: NextRequest) {
   const headers = new Headers();
@@ -27,24 +25,20 @@ export async function POST(request: NextRequest) {
   headers.set('X-Frame-Options', 'DENY');
 
   // Apply rate limiting
-  const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
-  const now = Date.now();
-  const ipData = ipRequestCounts.get(clientIp);
+  const clientIp = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
 
-  if (ipData) {
-    if (now < ipData.resetTime) {
-      if (ipData.count >= MAX_REQUESTS_PER_WINDOW) {
-        return NextResponse.json(
-          { success: false, message: 'Too many requests. Please try again later.' },
-          { status: 429, headers }
-        );
-      }
-      ipData.count += 1;
-    } else {
-      ipRequestCounts.set(clientIp, { count: 1, resetTime: now + RATE_LIMIT_WINDOW });
-    }
-  } else {
-    ipRequestCounts.set(clientIp, { count: 1, resetTime: now + RATE_LIMIT_WINDOW });
+  const rateLimitResult = await checkRateLimit(clientIp, 'sensitive');
+
+  if (!rateLimitResult.success) {
+    headers.set('Retry-After', (rateLimitResult.retryAfter?.toString() || '60'));
+    headers.set('X-RateLimit-Limit', rateLimitResult.limit.toString());
+    headers.set('X-RateLimit-Remaining', rateLimitResult.remaining.toString());
+    headers.set('X-RateLimit-Reset', rateLimitResult.reset.toString());
+
+    return NextResponse.json(
+      { success: false, message: 'Too many requests. Please try again later.' },
+      { status: 429, headers }
+    );
   }
 
   try {

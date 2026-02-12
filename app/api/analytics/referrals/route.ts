@@ -1,3 +1,4 @@
+// TODO: Replace this mock analytics endpoint with real Prisma database queries and derived metrics.
 type GtagFunction = (command: 'event' | 'config', action: string, params?: Record<string, unknown>) => void;
 
 const getGtag = (): GtagFunction | undefined => {

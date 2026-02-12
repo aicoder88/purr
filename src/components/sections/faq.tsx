@@ -72,7 +72,7 @@ export function FAQ({ includeStructuredData = false }: FAQProps) {
           </div>
 
           <div className={`max-w-3xl mx-auto ${cardClasses} p-8`}>
-            <Accordion type="single" collapsible className="w-full">
+            <Accordion type="single" collapsible className="w-full" aria-label="Frequently Asked Questions">
               {faqs.map((faq, index) => (
                 <AccordionItem
                   key={`faq-${faq.question.slice(0, 20).replaceAll(/\s+/g, '-').toLowerCase()}-${index}`}

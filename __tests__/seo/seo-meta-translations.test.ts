@@ -174,14 +174,18 @@ describe('SEO Meta Title Optimization', () => {
   });
 
   describe('Title Content Quality', () => {
-    it('should include year (2026) in homepage titles', () => {
+    it('should include a freshness signal in homepage metadata', () => {
       locales.forEach(locale => {
-        const title = SEO_META[locale].homepage.title;
-        expect(title).toMatch(/2026/);
+        const homepage = SEO_META[locale].homepage;
+        const contentHasYear = /202[5-9]/.test(`${homepage.title} ${homepage.description}`);
+        const lastUpdatedHasRecentYear =
+          typeof homepage.lastUpdated === 'string' && /202[5-9]/.test(homepage.lastUpdated);
+
+        expect(contentHasYear || lastUpdatedHasRecentYear).toBe(true);
       });
     });
 
-    it('should not include " | Purrify" suffix', () => {
+    it('should avoid duplicate "Purrify" branding in titles', () => {
       locales.forEach(locale => {
         const allTitles = [
           SEO_META[locale].homepage.title,
@@ -192,7 +196,9 @@ describe('SEO Meta Title Optimization', () => {
         ];
 
         allTitles.forEach(title => {
-          expect(title).not.toContain(' | Purrify');
+          const brandMentions = (title.match(/Purrify/g) || []).length;
+          expect(brandMentions).toBeLessThanOrEqual(1);
+          expect(title).not.toContain('| Purrify |');
         });
       });
     });

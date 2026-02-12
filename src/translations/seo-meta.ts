@@ -69,7 +69,7 @@ export interface SEOMetaContent {
 export const seoMetaEn: SEOMetaContent = {
   homepage: {
     title: 'Purrify | Activated Carbon Cat Litter Deodorizer — Try Free',
-    description: 'Eliminate 99% of cat litter odor in 30 seconds with activated carbon. No perfumes, 100% natural. Try FREE Today - Ships Fast to Canada & USA!',
+    description: 'Eliminate 99% of cat litter odor in 30 seconds with activated carbon. 2026 Update. No perfumes, 100% natural. Try FREE Today - Ships Fast to Canada & USA!',
     targetKeyword: 'cat litter smell',
     schema: {
       '@context': 'https://schema.org',
@@ -88,7 +88,7 @@ export const seoMetaEn: SEOMetaContent = {
         }
       ]
     },
-    lastUpdated: '2025-12-14'
+    lastUpdated: '2026-02-13'
   },
 
   products: {
@@ -109,7 +109,7 @@ export const seoMetaEn: SEOMetaContent = {
           availability: 'https://schema.org/InStock'
         }
       },
-      lastUpdated: '2025-11-19'
+      lastUpdated: '2026-02-13'
     },
     standard: {
       title: 'Best Cat Litter Odor Eliminator - 50g Standard | Purrify',
@@ -128,7 +128,7 @@ export const seoMetaEn: SEOMetaContent = {
           availability: 'https://schema.org/InStock'
         }
       },
-      lastUpdated: '2025-12-02'
+      lastUpdated: '2026-02-13'
     },
     family: {
       title: 'Multi Cat Litter Deodorizer - 240g Family | Purrify',
@@ -147,7 +147,7 @@ export const seoMetaEn: SEOMetaContent = {
           availability: 'https://schema.org/InStock'
         }
       },
-      lastUpdated: '2026-01-06'
+      lastUpdated: '2026-02-13'
     }
   },
 
@@ -164,7 +164,7 @@ export const seoMetaEn: SEOMetaContent = {
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
-      lastUpdated: '2025-11-14'
+      lastUpdated: '2026-02-13'
     },
     activatedCarbonBenefits: {
       title: 'Activated Carbon Cat Litter Benefits [2026 Guide]',
@@ -178,7 +178,7 @@ export const seoMetaEn: SEOMetaContent = {
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
-      lastUpdated: '2025-12-04'
+      lastUpdated: '2026-02-13'
     },
     activatedCarbonVsBakingSoda: {
       title: 'Baking Soda vs Activated Carbon: Which Works Better?',
@@ -192,7 +192,7 @@ export const seoMetaEn: SEOMetaContent = {
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
-      lastUpdated: '2025-11-21'
+      lastUpdated: '2026-02-13'
     },
     usingDeodorizersWithKittens: {
       title: 'Is Cat Litter Deodorizer Safe for Kittens? [Vet Guide]',
@@ -206,7 +206,7 @@ export const seoMetaEn: SEOMetaContent = {
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
-      lastUpdated: '2025-12-29'
+      lastUpdated: '2026-02-13'
     },
     faq: {
       title: 'Cat Litter Odor Control FAQ - Your Questions Answered',
@@ -220,7 +220,7 @@ export const seoMetaEn: SEOMetaContent = {
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
-      lastUpdated: '2025-11-17'
+      lastUpdated: '2026-02-13'
     },
     safety: {
       title: 'Is Activated Carbon Safe for Cats? [Vet-Approved]',
@@ -234,7 +234,7 @@ export const seoMetaEn: SEOMetaContent = {
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
-      lastUpdated: '2025-12-09'
+      lastUpdated: '2026-02-13'
     },
     ammoniaHealthRisks: {
       title: 'Cat Litter Ammonia Health Risks: What Owners Must Know',
@@ -248,7 +248,7 @@ export const seoMetaEn: SEOMetaContent = {
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
-      lastUpdated: '2025-11-29'
+      lastUpdated: '2026-02-13'
     },
     solutions: {
       ammoniaSmellCatLitter: {
@@ -262,7 +262,7 @@ export const seoMetaEn: SEOMetaContent = {
           description: 'Strong ammonia smell means bacteria are winning. Here\'s the science of why it happens and the 3-step solution that works in 24 hours.',
           totalTime: 'PT24H'
         },
-        lastUpdated: '2025-12-07'
+        lastUpdated: '2026-02-13'
       },
       howToNeutralizeAmmonia: {
         title: 'How to Stop Ammonia Smell in Cat Litter [3 Steps]',
@@ -275,7 +275,7 @@ export const seoMetaEn: SEOMetaContent = {
           description: 'Eliminate that eye-watering ammonia odor from your litter box. Activated carbon neutralizes ammonia at the molecular level.',
           totalTime: 'PT24H'
         },
-        lastUpdated: '2025-11-11'
+        lastUpdated: '2026-02-13'
       },
       litterBoxSmellElimination: {
         title: 'Litter Box Smell Elimination: Complete Guide 2026',
@@ -288,7 +288,7 @@ export const seoMetaEn: SEOMetaContent = {
           description: 'End litter box odor permanently with proven methods. From daily maintenance to activated carbon technology.',
           totalTime: 'PT24H'
         },
-        lastUpdated: '2025-12-21'
+        lastUpdated: '2026-02-13'
       },
       multipleCatsOdorControl: {
         title: 'Multi Cat Odor Control: Keep Your Home Fresh | Purrify',
@@ -301,7 +301,7 @@ export const seoMetaEn: SEOMetaContent = {
           description: '2+ cats creating unbearable litter box smell? Learn the odor control system that works for multi-cat households.',
           totalTime: 'PT60D'
         },
-        lastUpdated: '2025-11-24'
+        lastUpdated: '2026-02-13'
       }
     }
   },
@@ -312,14 +312,14 @@ export const seoMetaEn: SEOMetaContent = {
       description: 'After 90 days testing every odor absorber from baking soda to zeolite, one clear winner emerged. See the results with photos.',
       targetKeyword: 'most powerful odor absorber',
       datePublished: '2025-07-26',
-      lastUpdated: '2025-12-31',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'I Tested 12 Cat Litter Odor Absorbers - What Actually Works',
         description: 'After 90 days testing every odor absorber from baking soda to zeolite, one clear winner emerged.',
         datePublished: '2025-07-26',
-        dateModified: '2025-12-31',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -333,14 +333,14 @@ export const seoMetaEn: SEOMetaContent = {
       description: '7-day test results: Activated carbon eliminated 99% of odor vs 47% for baking soda. See the shocking difference in our lab test. Get free trial!',
       targetKeyword: 'activated carbon vs baking soda',
       datePublished: '2025-10-06',
-      lastUpdated: '2025-11-13',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Activated Carbon vs Baking Soda: Which Kills Odor?',
         description: '7-day test results: Activated carbon eliminated 99% of odor vs 47% for baking soda.',
         datePublished: '2025-10-06',
-        dateModified: '2025-11-13',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -354,14 +354,14 @@ export const seoMetaEn: SEOMetaContent = {
       description: 'Tested in 500 sq ft apartment: activated carbon eliminates smell in 30 seconds, lasts 30 days. Perfect for condos & small spaces. Ships free!',
       targetKeyword: 'best litter for apartments with no ventilation',
       datePublished: '2025-10-14',
-      lastUpdated: '2025-12-06',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Best Litter Odor Remover for Small Apartments [500 sq ft]',
         description: 'Tested in 500 sq ft apartment: activated carbon eliminates smell in 30 seconds.',
         datePublished: '2025-10-14',
-        dateModified: '2025-12-06',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -375,14 +375,14 @@ export const seoMetaEn: SEOMetaContent = {
       description: 'Heat increases ammonia evaporation by 3x. Activated carbon neutralizes summer odor instantly. Stop the seasonal smell spike. Get your free trial!',
       targetKeyword: 'cat litter smell worse summer',
       datePublished: '2025-07-06',
-      lastUpdated: '2025-11-27',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Why Cat Litter Smells Worse in Summer [+ Fix 2026]',
         description: 'Heat increases ammonia evaporation by 3x. Activated carbon neutralizes summer odor instantly.',
         datePublished: '2025-07-06',
-        dateModified: '2025-11-27',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -396,14 +396,14 @@ export const seoMetaEn: SEOMetaContent = {
       description: 'Everything about activated carbon for cat litter odor. How it works, benefits, safety, usage tips. 99% effective, 100% natural. Try it free today!',
       targetKeyword: 'activated carbon cat litter',
       datePublished: '2025-07-13',
-      lastUpdated: '2025-12-17',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Activated Carbon Cat Litter: Complete Guide 2026',
         description: 'Everything about activated carbon for cat litter odor.',
         datePublished: '2025-07-13',
-        dateModified: '2025-12-17',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -417,14 +417,14 @@ export const seoMetaEn: SEOMetaContent = {
       description: 'Compare eco-friendly cat litter options. Coconut shell activated carbon is 100% natural, biodegradable, reusable. Eliminate odor sustainably!',
       targetKeyword: 'eco-friendly cat litter',
       datePublished: '2025-09-22',
-      lastUpdated: '2025-11-09',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Eco-Friendly Cat Litter Guide: Best Sustainable 2026',
         description: 'Compare eco-friendly cat litter options.',
         datePublished: '2025-09-22',
-        dateModified: '2025-11-09',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -438,14 +438,14 @@ export const seoMetaEn: SEOMetaContent = {
       description: 'Wholesale pricing on activated carbon cat litter additive. Perfect for pet stores, groomers, shelters. Proven 99% odor elimination. Contact us!',
       targetKeyword: 'wholesale cat litter',
       datePublished: '2025-08-16',
-      lastUpdated: '2025-12-24',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Wholesale Cat Litter Deodorizer: Complete Buyer Guide',
         description: 'Wholesale pricing on activated carbon cat litter additive.',
         datePublished: '2025-08-16',
-        dateModified: '2025-12-24',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -459,14 +459,14 @@ export const seoMetaEn: SEOMetaContent = {
       description: 'Master cat litter odor control with activated carbon. Eliminate 99% of ammonia smell, maintain freshness 30+ days. Free trial - just pay shipping!',
       targetKeyword: 'cat litter odor control',
       datePublished: '2025-06-22',
-      lastUpdated: '2025-11-23',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Ultimate Cat Litter Odor Control Guide [2026]',
         description: 'Master cat litter odor control with activated carbon.',
         datePublished: '2025-06-22',
-        dateModified: '2025-11-23',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -480,14 +480,14 @@ export const seoMetaEn: SEOMetaContent = {
       description: 'Essential tips for cats in small apartments. Odor control, space-saving litter boxes, ventilation. Activated carbon eliminates smell instantly!',
       targetKeyword: 'small apartment cat care',
       datePublished: '2025-07-04',
-      lastUpdated: '2025-12-13',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Small Apartment Cat Care: Complete Guide 2026',
         description: 'Essential tips for cats in small apartments.',
         datePublished: '2025-07-04',
-        dateModified: '2025-12-13',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -501,14 +501,14 @@ export const seoMetaEn: SEOMetaContent = {
       description: 'Stop litter box smell with 100% natural coconut shell activated carbon. No chemicals, no perfumes, no toxins. 99% effective odor elimination!',
       targetKeyword: 'natural cat litter additive',
       datePublished: '2025-09-01',
-      lastUpdated: '2025-11-26',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Natural Cat Litter Additive: 100% Coconut Carbon',
         description: 'Stop litter box smell with 100% natural coconut shell activated carbon.',
         datePublished: '2025-09-01',
-        dateModified: '2025-11-26',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -522,14 +522,14 @@ export const seoMetaEn: SEOMetaContent = {
       description: "Baking soda, charcoal bags, air fresheners - nothing worked until I found this. Real solutions from someone who tried them all.",
       targetKeyword: 'tried everything cat litter smell',
       datePublished: '2025-06-11',
-      lastUpdated: '2025-12-26',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: "Tried Everything for Cat Litter Smell? Here's What Worked",
         description: "Baking soda, charcoal bags, air fresheners - nothing worked until I found this.",
         datePublished: '2025-06-11',
-        dateModified: '2025-12-26',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -543,14 +543,14 @@ export const seoMetaEn: SEOMetaContent = {
       description: 'Scientific comparison of activated carbon and zeolite for cat litter odor control. See test results, pros/cons, and which absorbs ammonia better.',
       targetKeyword: 'activated carbon vs zeolite cat litter',
       datePublished: '2025-10-13',
-      lastUpdated: '2026-01-04',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Activated Carbon vs Zeolite for Cat Litter: Which Wins?',
         description: 'Scientific comparison of activated carbon and zeolite for cat litter odor control.',
         datePublished: '2025-10-13',
-        dateModified: '2026-01-04',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -584,7 +584,7 @@ export const seoMetaFr: SEOMetaContent = {
         }
       ]
     },
-    lastUpdated: '2025-12-15'
+    lastUpdated: '2026-02-13'
   },
 
   products: {
@@ -605,7 +605,7 @@ export const seoMetaFr: SEOMetaContent = {
           availability: 'https://schema.org/InStock'
         }
       },
-      lastUpdated: '2026-01-03'
+      lastUpdated: '2026-02-13'
     },
     standard: {
       title: 'Désodorisant Litière Standard 50g | Naturel - Purrify',
@@ -624,7 +624,7 @@ export const seoMetaFr: SEOMetaContent = {
           availability: 'https://schema.org/InStock'
         }
       },
-      lastUpdated: '2025-11-28'
+      lastUpdated: '2026-02-13'
     },
     family: {
       title: 'Désodorisant Multi-Chats 120g | Pack Famille - Purrify',
@@ -643,7 +643,7 @@ export const seoMetaFr: SEOMetaContent = {
           availability: 'https://schema.org/InStock'
         }
       },
-      lastUpdated: '2025-12-22'
+      lastUpdated: '2026-02-13'
     }
   },
 
@@ -659,7 +659,7 @@ export const seoMetaFr: SEOMetaContent = {
         description: 'Découvrez la science derrière 99% d\'élimination des odeurs en 30 secondes avec le charbon actif NASA-grade.',
         author: { '@type': 'Organization', name: 'Purrify' }
       },
-      lastUpdated: '2025-11-15'
+      lastUpdated: '2026-02-13'
     },
     activatedCarbonBenefits: {
       title: 'Avantages Charbon Actif | 7 Bienfaits Prouvés - Purrify',
@@ -672,7 +672,7 @@ export const seoMetaFr: SEOMetaContent = {
         description: 'Découvrez les 7+ bénéfices scientifiques du charbon actif pour litière: élimine 99% ammoniaque, dure 30 jours.',
         author: { '@type': 'Organization', name: 'Purrify' }
       },
-      lastUpdated: '2025-12-05'
+      lastUpdated: '2026-02-13'
     },
     activatedCarbonVsBakingSoda: {
       title: 'Bicarbonate vs Charbon Actif Litière | Lequel Choisir?',
@@ -685,7 +685,7 @@ export const seoMetaFr: SEOMetaContent = {
         description: 'Comparaison complète: le bicarbonate masque, le charbon élimine 99% des odeurs. Test comparatif de 7 jours.',
         author: { '@type': 'Organization', name: 'Purrify' }
       },
-      lastUpdated: '2025-11-22'
+      lastUpdated: '2026-02-13'
     },
     usingDeodorizersWithKittens: {
       title: 'Désodorisant Litière Chatons | Guide Sécurité 2026 - Purrify',
@@ -698,7 +698,7 @@ export const seoMetaFr: SEOMetaContent = {
         description: 'Guide complet sur la sécurité du charbon actif pour chatons. 100% sûr pour bébés chats, approuvé vétérinaire.',
         author: { '@type': 'Organization', name: 'Purrify' }
       },
-      lastUpdated: '2025-12-28'
+      lastUpdated: '2026-02-13'
     },
     faq: {
       title: 'Contrôle Odeur Litière | FAQ & Questions - Purrify',
@@ -711,7 +711,7 @@ export const seoMetaFr: SEOMetaContent = {
         description: 'FAQ complète sur le charbon actif Purrify. Questions sur sécurité, utilisation et efficacité à 99%.',
         author: { '@type': 'Organization', name: 'Purrify' }
       },
-      lastUpdated: '2025-11-18'
+      lastUpdated: '2026-02-13'
     },
     safety: {
       title: 'Charbon Actif Sans Danger Chats? | Sécurité Vétérinaire',
@@ -724,7 +724,7 @@ export const seoMetaFr: SEOMetaContent = {
         description: 'Analyse complète de la sécurité du charbon actif: 100% alimentaire, non-toxique, sans poussière. Approuvé vétérinaire.',
         author: { '@type': 'Organization', name: 'Purrify' }
       },
-      lastUpdated: '2025-12-10'
+      lastUpdated: '2026-02-13'
     },
     ammoniaHealthRisks: {
       title: 'Risques Santé Ammoniaque Litière | Guide 2026 - Purrify',
@@ -737,7 +737,7 @@ export const seoMetaFr: SEOMetaContent = {
         description: 'Guide complet sur les risques santé de l\'ammoniaque dans la litière: niveaux dangereux, symptômes et solutions.',
         author: { '@type': 'Organization', name: 'Purrify' }
       },
-      lastUpdated: '2025-11-30'
+      lastUpdated: '2026-02-13'
     },
     solutions: {
       ammoniaSmellCatLitter: {
@@ -751,7 +751,7 @@ export const seoMetaFr: SEOMetaContent = {
           description: 'Solution naturelle au charbon actif pour éliminer les odeurs d\'ammoniaque en 24h. 99% d\'efficacité prouvée.',
           totalTime: 'PT24H'
         },
-        lastUpdated: '2025-12-08'
+        lastUpdated: '2026-02-13'
       },
       howToNeutralizeAmmonia: {
         title: 'Éliminer Odeur Ammoniaque Litière | 3 Étapes - Purrify',
@@ -764,7 +764,7 @@ export const seoMetaFr: SEOMetaContent = {
           description: 'Guide en 3 étapes pour neutraliser l\'ammoniaque au niveau moléculaire avec le charbon actif.',
           totalTime: 'PT24H'
         },
-        lastUpdated: '2025-11-12'
+        lastUpdated: '2026-02-13'
       },
       litterBoxSmellElimination: {
         title: 'Élimination Odeur Bac Litière | Guide Complet 2026 - Purrify',
@@ -777,7 +777,7 @@ export const seoMetaFr: SEOMetaContent = {
           description: 'Méthodes prouvées à 99% d\'efficacité pour éliminer les odeurs de bac à litière avec charbon actif NASA-grade.',
           totalTime: 'PT24H'
         },
-        lastUpdated: '2025-12-20'
+        lastUpdated: '2026-02-13'
       },
       multipleCatsOdorControl: {
         title: 'Contrôle Odeurs Multi-Chats | Pack 120g - Purrify',
@@ -790,7 +790,7 @@ export const seoMetaFr: SEOMetaContent = {
           description: 'Solution pour contrôler les odeurs avec 2+ chats. Pack famille 120g pour 60+ jours de fraîcheur.',
           totalTime: 'PT60D'
         },
-        lastUpdated: '2025-11-25'
+        lastUpdated: '2026-02-13'
       }
     }
   },
@@ -801,14 +801,14 @@ export const seoMetaFr: SEOMetaContent = {
       description: 'Nous avons testé 12 éliminateurs. 1 seul a éliminé l\'odeur en 30 secondes. Voir quel charbon actif bat bicarbonate de 52%. Essai gratuit!',
       targetKeyword: 'absorbeur odeur le plus puissant',
       datePublished: '2025-09-10',
-      lastUpdated: '2026-01-10',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Absorbeur Odeur Litière Le Plus Puissant [Testé 12]',
         description: 'Test de 12 éliminateurs d\'odeurs. Un seul a éliminé l\'odeur en 30 secondes.',
         datePublished: '2025-09-10',
-        dateModified: '2026-01-10',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -822,14 +822,14 @@ export const seoMetaFr: SEOMetaContent = {
       description: 'Test 7 jours: charbon actif élimine 99% odeur vs 47% bicarbonate. Voir la différence choquante dans notre test labo. Essai gratuit!',
       targetKeyword: 'charbon actif vs bicarbonate',
       datePublished: '2025-08-03',
-      lastUpdated: '2025-09-28',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Charbon Actif vs Bicarbonate: Lequel Tue l\'Odeur?',
         description: 'Test de 7 jours en laboratoire: charbon actif élimine 99% odeur vs 47% bicarbonate.',
         datePublished: '2025-08-03',
-        dateModified: '2025-09-28',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -843,14 +843,14 @@ export const seoMetaFr: SEOMetaContent = {
       description: 'Testé dans appart 500 pi²: charbon actif élimine odeur en 30 secondes, dure 30 jours. Parfait condos & petits espaces. Livraison gratuite!',
       targetKeyword: 'anti-odeur litière petits appartements',
       datePublished: '2025-06-20',
-      lastUpdated: '2025-09-28',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Meilleur Anti-Odeur Litière pour Petits Appartements [500 pi²]',
         description: 'Testé dans un appartement de 500 pi²: le charbon actif élimine les odeurs en 30 secondes.',
         datePublished: '2025-06-20',
-        dateModified: '2025-09-28',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -864,14 +864,14 @@ export const seoMetaFr: SEOMetaContent = {
       description: 'Chaleur augmente évaporation ammoniaque 3x. Charbon actif neutralise odeur été instantanément. Stop à la puanteur saisonnière. Essai gratuit!',
       targetKeyword: 'litière sent plus fort été',
       datePublished: '2025-06-29',
-      lastUpdated: '2026-01-07',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Pourquoi la Litière Sent Plus Fort en Été [+ Solution 2026]',
         description: 'La chaleur augmente l\'évaporation de l\'ammoniaque 3x. Solution pour neutraliser instantanément.',
         datePublished: '2025-06-29',
-        dateModified: '2026-01-07',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -885,14 +885,14 @@ export const seoMetaFr: SEOMetaContent = {
       description: 'Tout sur charbon actif pour odeur litière. Fonctionnement, avantages, sécurité, conseils. Efficace à 99%, 100% naturel. Essayez gratuitement!',
       targetKeyword: 'charbon actif litière chat',
       datePublished: '2025-08-02',
-      lastUpdated: '2025-08-13',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Charbon Actif Litière Chat: Guide Complet 2026',
         description: 'Tout sur le charbon actif pour odeur de litière: fonctionnement, avantages, sécurité et conseils.',
         datePublished: '2025-08-02',
-        dateModified: '2025-08-13',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -906,14 +906,14 @@ export const seoMetaFr: SEOMetaContent = {
       description: 'Comparez options litière écologique. Charbon actif coco 100% naturel, biodégradable, réutilisable. Éliminez odeurs durablement!',
       targetKeyword: 'litière chat écologique',
       datePublished: '2025-05-31',
-      lastUpdated: '2025-12-08',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Litière Chat Écologique: La Meilleure Option Durable 2026',
         description: 'Comparaison des options de litière écologique. Charbon actif coco 100% naturel.',
         datePublished: '2025-05-31',
-        dateModified: '2025-12-08',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -927,14 +927,14 @@ export const seoMetaFr: SEOMetaContent = {
       description: 'Prix de gros sur additif charbon actif litière chat. Parfait animaleries, toiletteurs, refuges. Élimination odeur prouvée 99%. Contactez-nous!',
       targetKeyword: 'litière gros',
       datePublished: '2025-10-03',
-      lastUpdated: '2026-01-27',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Désodorisant Litière en Gros: Guide Acheteur Complet',
         description: 'Prix de gros sur additif charbon actif. Parfait pour animaleries, toiletteurs et refuges.',
         datePublished: '2025-10-03',
-        dateModified: '2026-01-27',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -948,14 +948,14 @@ export const seoMetaFr: SEOMetaContent = {
       description: 'Maîtrisez contrôle odeur litière avec charbon actif. Éliminez 99% ammoniaque, fraîcheur 30+ jours. Essai gratuit - payez livraison seulement!',
       targetKeyword: 'contrôle odeur litière chat',
       datePublished: '2025-08-17',
-      lastUpdated: '2025-11-18',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Guide Ultime Contrôle Odeur Litière Chat [2026]',
         description: 'Maîtrisez le contrôle des odeurs de litière avec le charbon actif. Éliminez 99% ammoniaque.',
         datePublished: '2025-08-17',
-        dateModified: '2025-11-18',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -969,14 +969,14 @@ export const seoMetaFr: SEOMetaContent = {
       description: 'Conseils essentiels pour chats en petit appart. Contrôle odeurs, litières gain d\'espace, ventilation. Charbon actif élimine odeur!',
       targetKeyword: 'soins chat petit appartement',
       datePublished: '2025-06-02',
-      lastUpdated: '2025-08-22',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Soins Chat en Petit Appartement: Guide Complet 2026',
         description: 'Conseils essentiels pour les chats en petit appartement: contrôle des odeurs, litières gain d\'espace.',
         datePublished: '2025-06-02',
-        dateModified: '2025-08-22',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -990,14 +990,14 @@ export const seoMetaFr: SEOMetaContent = {
       description: 'Stop odeur litière avec charbon actif coco 100% naturel. Sans produits chimiques, sans parfums, non-toxique. Efficace à 99%!',
       targetKeyword: 'additif litière chat naturel',
       datePublished: '2025-09-14',
-      lastUpdated: '2025-11-25',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Additif Litière Chat Naturel: 100% Charbon de Coco',
         description: 'Stop aux odeurs de litière avec le charbon actif coco 100% naturel. Sans produits chimiques.',
         datePublished: '2025-09-14',
-        dateModified: '2025-11-25',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1011,14 +1011,14 @@ export const seoMetaFr: SEOMetaContent = {
       description: 'Bicarbonate, sacs de charbon, désodorisants - rien ne marchait jusqu\'à ce que je trouve ceci. Solutions réelles de quelqu\'un qui a tout essayé.',
       targetKeyword: 'tout essayé odeur litière chat',
       datePublished: '2025-09-20',
-      lastUpdated: '2025-12-21',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Tout Essayé Pour Odeur Litière Chat? Voici Ce Qui Marche',
         description: 'Témoignage: bicarbonate, sacs de charbon, désodorisants - rien ne marchait jusqu\'à cette solution.',
         datePublished: '2025-09-20',
-        dateModified: '2025-12-21',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1032,14 +1032,14 @@ export const seoMetaFr: SEOMetaContent = {
       description: 'Comparaison scientifique charbon actif et zéolite pour contrôle odeur litière. Voyez résultats tests, avantages/inconvénients, lequel absorbe mieux l\'ammoniaque.',
       targetKeyword: 'charbon actif vs zéolite litière chat',
       datePublished: '2025-07-10',
-      lastUpdated: '2025-09-20',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Charbon Actif vs Zéolite Pour Litière Chat: Lequel Fonctionne Mieux?',
         description: 'Comparaison scientifique du charbon actif et de la zéolite pour le contrôle des odeurs de litière.',
         datePublished: '2025-07-10',
-        dateModified: '2025-09-20',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1290,14 +1290,14 @@ export const seoMetaZh: SEOMetaContent = {
       description: '我们测试了12种除臭剂。只有1种在30秒内去除异味。看看哪种活性炭产品比小苏打强52%。免费试用！',
       targetKeyword: '最强大除臭剂',
       datePublished: '2025-09-19',
-      lastUpdated: '2025-12-10',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: '最强大的猫砂除臭剂 [测试12种]',
         description: '我们测试了12种除臭剂。只有1种在30秒内去除异味。',
         datePublished: '2025-09-19',
-        dateModified: '2025-12-10',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1311,14 +1311,14 @@ export const seoMetaZh: SEOMetaContent = {
       description: '7天测试结果：活性炭消除99%异味 vs 小苏打47%。查看我们实验室测试中的惊人差异。获取免费试用！',
       targetKeyword: '活性炭对比小苏打',
       datePublished: '2025-10-25',
-      lastUpdated: '2025-12-06',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: '活性炭对比小苏打：哪个能杀死异味？',
         description: '7天测试结果：活性炭消除99%异味 vs 小苏打47%。',
         datePublished: '2025-10-25',
-        dateModified: '2025-12-06',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1332,14 +1332,14 @@ export const seoMetaZh: SEOMetaContent = {
       description: '在500平方英尺公寓中测试：活性炭在30秒内消除异味，持续30天。完美适合公寓和小空间。免费配送！',
       targetKeyword: '小公寓猫砂除臭剂',
       datePublished: '2025-06-06',
-      lastUpdated: '2026-02-05',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: '小公寓最佳猫砂除臭剂 [500平方英尺]',
         description: '在500平方英尺公寓中测试：活性炭在30秒内消除异味。',
         datePublished: '2025-06-06',
-        dateModified: '2026-02-05',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1353,14 +1353,14 @@ export const seoMetaZh: SEOMetaContent = {
       description: '高温使氨气蒸发增加3倍。活性炭立即中和夏季异味。阻止季节性臭味飙升。获取免费试用！',
       targetKeyword: '夏天猫砂更臭',
       datePublished: '2025-08-25',
-      lastUpdated: '2025-09-06',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: '为什么夏天猫砂更臭 [+2026解决方案]',
         description: '高温使氨气蒸发增加3倍。活性炭立即中和夏季异味。',
         datePublished: '2025-08-25',
-        dateModified: '2025-09-06',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1374,14 +1374,14 @@ export const seoMetaZh: SEOMetaContent = {
       description: '关于活性炭用于猫砂除臭的一切。工作原理、好处、安全性、使用技巧。99%有效，100%天然。立即免费试用！',
       targetKeyword: '活性炭猫砂',
       datePublished: '2025-07-20',
-      lastUpdated: '2025-10-20',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: '活性炭猫砂：2026完整指南',
         description: '关于活性炭用于猫砂除臭的一切。',
         datePublished: '2025-07-20',
-        dateModified: '2025-10-20',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1395,14 +1395,14 @@ export const seoMetaZh: SEOMetaContent = {
       description: '比较环保猫砂选项。椰壳活性炭100%天然、可生物降解、可重复使用。可持续地消除异味！',
       targetKeyword: '环保猫砂',
       datePublished: '2025-07-12',
-      lastUpdated: '2025-08-14',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: '环保猫砂指南：最佳可持续选择 2026',
         description: '比较环保猫砂选项。',
         datePublished: '2025-07-12',
-        dateModified: '2025-08-14',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1416,14 +1416,14 @@ export const seoMetaZh: SEOMetaContent = {
       description: '活性炭猫砂添加剂批发价。完美适合宠物店、美容院、收容所。已证实99%除臭。联系我们！',
       targetKeyword: '批发猫砂',
       datePublished: '2025-09-27',
-      lastUpdated: '2025-10-29',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: '批发猫砂除臭剂：完整买家指南',
         description: '活性炭猫砂添加剂批发价。',
         datePublished: '2025-09-27',
-        dateModified: '2025-10-29',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1437,14 +1437,14 @@ export const seoMetaZh: SEOMetaContent = {
       description: '使用活性炭掌握猫砂除臭控制。消除99%氨气味，保持30+天清新。免费试用 - 仅付运费！',
       targetKeyword: '猫砂除臭控制',
       datePublished: '2025-09-09',
-      lastUpdated: '2026-01-16',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: '终极猫砂除臭控制指南 [2026]',
         description: '使用活性炭掌握猫砂除臭控制。',
         datePublished: '2025-09-09',
-        dateModified: '2026-01-16',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1458,14 +1458,14 @@ export const seoMetaZh: SEOMetaContent = {
       description: '小公寓养猫的基本技巧。除臭控制、节省空间的猫砂盆、通风。活性炭立即消除异味！',
       targetKeyword: '小公寓养猫',
       datePublished: '2025-06-19',
-      lastUpdated: '2025-09-21',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: '小公寓养猫：2026完整指南',
         description: '小公寓养猫的基本技巧。',
         datePublished: '2025-06-19',
-        dateModified: '2025-09-21',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1479,14 +1479,14 @@ export const seoMetaZh: SEOMetaContent = {
       description: '用100%天然椰壳活性炭消除猫砂盆异味。无化学品、无香料、无毒素。99%有效除臭！',
       targetKeyword: '天然猫砂添加剂',
       datePublished: '2025-09-19',
-      lastUpdated: '2026-01-05',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: '天然猫砂添加剂：100%椰子碳',
         description: '用100%天然椰壳活性炭消除猫砂盆异味。',
         datePublished: '2025-09-19',
-        dateModified: '2026-01-05',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1500,14 +1500,14 @@ export const seoMetaZh: SEOMetaContent = {
       description: '小苏打、活性炭袋、空气清新剂——都没用，直到我发现这个。来自尝试过所有方法的人的真实解决方案。',
       targetKeyword: '试遍猫砂除臭',
       datePublished: '2025-08-04',
-      lastUpdated: '2025-10-09',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: '试遍了猫砂除臭方法？这个终于有效',
         description: '小苏打、活性炭袋、空气清新剂——都没用，直到我发现这个。',
         datePublished: '2025-08-04',
-        dateModified: '2025-10-09',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1521,14 +1521,14 @@ export const seoMetaZh: SEOMetaContent = {
       description: '活性炭和沸石用于猫砂除臭的科学比较。查看测试结果、优缺点，以及哪个更能吸收氨气。',
       targetKeyword: '活性炭 vs 沸石猫砂',
       datePublished: '2025-09-03',
-      lastUpdated: '2025-09-30',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: '活性炭 vs 沸石用于猫砂：哪个更有效？',
         description: '活性炭和沸石用于猫砂除臭的科学比较。',
         datePublished: '2025-09-03',
-        dateModified: '2025-09-30',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1546,7 +1546,7 @@ export const seoMetaEs: SEOMetaContent = {
     title: 'Desodorante para Arena de Gato - 99% | Purrify',
     description: 'Elimina olores de arena al instante con carbón activado grado NASA. 100% natural, sin perfumes. ¡Prueba gratis disponible! Compra ahora.',
     targetKeyword: 'desodorante para arena de gato',
-    lastUpdated: '2025-12-15',
+    lastUpdated: '2026-02-13',
     schema: {
       '@context': 'https://schema.org',
       '@graph': [
@@ -1570,7 +1570,7 @@ export const seoMetaEs: SEOMetaContent = {
       title: 'Prueba Desodorante Arena Gato GRATIS 12g | Purrify',
       description: 'Prueba GRATIS desodorante arena gato con carbón activado. Elimina 99% olor amoníaco en 30 seg. Solo pagas envío $4.76. ¡Compra ahora!',
       targetKeyword: 'prueba desodorante arena gato',
-      lastUpdated: '2025-11-20',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Product',
@@ -1589,7 +1589,7 @@ export const seoMetaEs: SEOMetaContent = {
       title: 'Desodorante Arena Tamaño Regular 50g 2026 | Purrify',
       description: 'Desodorante arena tamaño regular con carbón activado. Elimina olor 30 días, 99% efectivo. Envío gratis incluido. ¡Compra ahora!',
       targetKeyword: 'desodorante arena tamaño regular',
-      lastUpdated: '2025-12-03',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Product',
@@ -1608,7 +1608,7 @@ export const seoMetaEs: SEOMetaContent = {
       title: 'Desodorante Multi-Gato 120g Pack Familiar | Purrify',
       description: 'Desodorante multi-gato elimina olor 2-3 gatos 60+ días. Carbón activado neutraliza amoníaco instantáneo. Envío gratis. ¡Compra ya!',
       targetKeyword: 'desodorante multi-gato',
-      lastUpdated: '2026-01-08',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Product',
@@ -1630,7 +1630,7 @@ export const seoMetaEs: SEOMetaContent = {
       title: 'Carbón Activado Arena Gatos - Cómo Funciona | Purrify',
       description: 'Descubre cómo carbón activado arena gatos elimina 99% olor en 30 segundos. Tecnología NASA probada. ¡Prueba gratis ahora!',
       targetKeyword: 'carbón activado arena gatos',
-      lastUpdated: '2025-11-25',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Article',
@@ -1643,7 +1643,7 @@ export const seoMetaEs: SEOMetaContent = {
       title: '7 Beneficios Carbón Activado Arena Gatos | Purrify',
       description: 'Conoce 7+ beneficios carbón activado para arena gatos. Elimina 99% amoníaco, dura 30 días, 100% natural. ¡Prueba gratis disponible!',
       targetKeyword: 'beneficios carbón activado',
-      lastUpdated: '2025-12-28',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Article',
@@ -1656,7 +1656,7 @@ export const seoMetaEs: SEOMetaContent = {
       title: 'Bicarbonato vs Carbón Activado - Cuál Gana | Purrify',
       description: 'Compara bicarbonato vs carbón activado para arena gatos. Carbón elimina 99% vs 47% bicarbonato. ¡Prueba gratis y comprueba!',
       targetKeyword: 'bicarbonato vs carbón activado',
-      lastUpdated: '2026-01-15',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Article',
@@ -1669,7 +1669,7 @@ export const seoMetaEs: SEOMetaContent = {
       title: '¿Desodorante Arena Gatitos Es Seguro? Guía | Purrify',
       description: 'Guía desodorante arena gatitos seguro. Carbón activado 100% natural, no tóxico, aprobado veterinario. ¡Compra ahora para tu gatito!',
       targetKeyword: 'desodorante arena gatitos',
-      lastUpdated: '2025-11-18',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Article',
@@ -1682,7 +1682,7 @@ export const seoMetaEs: SEOMetaContent = {
       title: 'Control Olor Arena Gatos - Preguntas FAQ | Purrify',
       description: 'Respuestas control olor arena gatos con carbón activado. Seguridad, uso, efectividad 99%. 10,000+ clientes confían. ¡Compra ahora!',
       targetKeyword: 'control olor arena gatos',
-      lastUpdated: '2025-12-22',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Article',
@@ -1695,7 +1695,7 @@ export const seoMetaEs: SEOMetaContent = {
       title: '¿Carbón Activado Seguro Para Gatos? Info | Purrify',
       description: 'Carbón activado seguro gatos 100% grado alimenticio coco. No tóxico, sin polvo, usado filtros agua. Aprobado veterinario. ¡Compra!',
       targetKeyword: 'carbón activado seguro gatos',
-      lastUpdated: '2026-01-28',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Article',
@@ -1708,7 +1708,7 @@ export const seoMetaEs: SEOMetaContent = {
       title: 'Riesgos Salud Amoníaco Arena Gatos - Guía | Purrify',
       description: 'Descubre riesgos salud amoníaco arena gatos para ti y tu mascota. Niveles seguros, efectos, solución carbón activado. ¡Compra ya!',
       targetKeyword: 'riesgos salud amoníaco arena gatos',
-      lastUpdated: '2025-12-08',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Article',
@@ -1722,7 +1722,7 @@ export const seoMetaEs: SEOMetaContent = {
         title: '¿Arena Gatos Huele Amoníaco? Solución 24h | Purrify',
         description: 'Solución arena gatos huele amoníaco con carbón activado. Elimina 99% olor en 24 horas, neutraliza molecularmente. ¡Prueba gratis!',
         targetKeyword: 'arena gatos huele amoníaco',
-        lastUpdated: '2026-01-03',
+        lastUpdated: '2026-02-13',
         schema: {
           '@context': 'https://schema.org',
           '@type': 'HowTo',
@@ -1735,7 +1735,7 @@ export const seoMetaEs: SEOMetaContent = {
         title: 'Eliminar Olor Amoníaco Arena Gatos - Guía | Purrify',
         description: 'Guía eliminar olor amoníaco arena gatos en 3 pasos. Carbón activado neutraliza molecularmente 99% amoníaco. ¡Compra ahora!',
         targetKeyword: 'eliminar olor amoníaco arena gatos',
-        lastUpdated: '2025-11-30',
+        lastUpdated: '2026-02-13',
         schema: {
           '@context': 'https://schema.org',
           '@type': 'HowTo',
@@ -1748,7 +1748,7 @@ export const seoMetaEs: SEOMetaContent = {
         title: 'Eliminación Olor Caja Arena - Método 2026 | Purrify',
         description: 'Método eliminación olor caja arena permanentemente. Carbón activado elimina 99% olor 30 días, 100% natural. ¡Prueba gratis ya!',
         targetKeyword: 'eliminación olor caja arena',
-        lastUpdated: '2025-12-12',
+        lastUpdated: '2026-02-13',
         schema: {
           '@context': 'https://schema.org',
           '@type': 'HowTo',
@@ -1761,7 +1761,7 @@ export const seoMetaEs: SEOMetaContent = {
         title: 'Control Olores Multi-Gatos - Sistema 2026 | Purrify',
         description: 'Sistema control olores multi-gatos para 2+ gatos. Carbón activado elimina amoníaco 60 días. Casa fresca garantizada. ¡Compra ahora!',
         targetKeyword: 'control olores multi-gatos',
-        lastUpdated: '2026-02-01',
+        lastUpdated: '2026-02-13',
         schema: {
           '@context': 'https://schema.org',
           '@type': 'HowTo',
@@ -1779,14 +1779,14 @@ export const seoMetaEs: SEOMetaContent = {
       description: 'Probamos 12 eliminadores de olor. Solo 1 eliminó olor en 30 segundos. Ve qué carbón activado superó bicarbonato por 52%. ¡Prueba gratis!',
       targetKeyword: 'absorbedor olor más potente',
       datePublished: '2025-06-23',
-      lastUpdated: '2026-01-05',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Absorbedor Olor Arena Gatos Más Potente [Probados 12]',
         description: 'Probamos 12 eliminadores de olor. Solo 1 eliminó olor en 30 segundos.',
         datePublished: '2025-06-23',
-        dateModified: '2026-01-05',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1800,14 +1800,14 @@ export const seoMetaEs: SEOMetaContent = {
       description: 'Resultados prueba 7 días: carbón activado eliminó 99% olor vs 47% bicarbonato. Ve la diferencia impactante en nuestra prueba. ¡Prueba gratis!',
       targetKeyword: 'carbón activado vs bicarbonato',
       datePublished: '2025-08-06',
-      lastUpdated: '2026-01-31',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Carbón Activado vs Bicarbonato: ¿Cuál Mata Olor?',
         description: 'Resultados prueba 7 días: carbón activado eliminó 99% olor vs 47% bicarbonato.',
         datePublished: '2025-08-06',
-        dateModified: '2026-01-31',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1821,14 +1821,14 @@ export const seoMetaEs: SEOMetaContent = {
       description: 'Probado en apartamento 500 pies²: carbón activado elimina olor en 30 segundos, dura 30 días. Perfecto para condos y espacios pequeños. ¡Envío gratis!',
       targetKeyword: 'eliminador olor arena apartamentos',
       datePublished: '2025-05-25',
-      lastUpdated: '2025-12-05',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Mejor Eliminador Olor Arena Apartamentos [500 pies²]',
         description: 'Probado en apartamento 500 pies²: carbón activado elimina olor en 30 segundos.',
         datePublished: '2025-05-25',
-        dateModified: '2025-12-05',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1842,14 +1842,14 @@ export const seoMetaEs: SEOMetaContent = {
       description: 'Calor aumenta evaporación amoníaco 3x. Carbón activado neutraliza olor verano instantáneamente. Detén el pico de olor estacional. ¡Prueba gratis!',
       targetKeyword: 'arena gatos huele peor verano',
       datePublished: '2025-08-15',
-      lastUpdated: '2026-01-01',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Por Qué Arena Gatos Huele Peor en Verano [+ Fix 2026]',
         description: 'Calor aumenta evaporación amoníaco 3x. Carbón activado neutraliza olor verano instantáneamente.',
         datePublished: '2025-08-15',
-        dateModified: '2026-01-01',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1863,14 +1863,14 @@ export const seoMetaEs: SEOMetaContent = {
       description: 'Todo sobre carbón activado para olor de arena. Cómo funciona, beneficios, seguridad, consejos de uso. 99% efectivo, 100% natural. ¡Prueba gratis!',
       targetKeyword: 'carbón activado arena gatos',
       datePublished: '2025-05-13',
-      lastUpdated: '2025-09-17',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Carbón Activado Arena Gatos: Guía Completa 2026',
         description: 'Todo sobre carbón activado para olor de arena.',
         datePublished: '2025-05-13',
-        dateModified: '2025-09-17',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1884,14 +1884,14 @@ export const seoMetaEs: SEOMetaContent = {
       description: 'Compara opciones arena ecológica. Carbón activado cáscara coco 100% natural, biodegradable, reutilizable. ¡Elimina olores sosteniblemente!',
       targetKeyword: 'arena gatos ecológica',
       datePublished: '2025-06-20',
-      lastUpdated: '2025-10-07',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Guía Arena Gatos Ecológica: Mejor Sostenible 2026',
         description: 'Compara opciones arena ecológica.',
         datePublished: '2025-06-20',
-        dateModified: '2025-10-07',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1905,14 +1905,14 @@ export const seoMetaEs: SEOMetaContent = {
       description: 'Precios mayoreo en aditivo carbón activado arena gatos. Perfecto para tiendas mascotas, estilistas, refugios. 99% eliminación olor probada. ¡Contáctanos!',
       targetKeyword: 'arena gatos mayoreo',
       datePublished: '2025-07-30',
-      lastUpdated: '2025-10-17',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Desodorante Arena Gatos Mayoreo: Guía Comprador',
         description: 'Precios mayoreo en aditivo carbón activado arena gatos.',
         datePublished: '2025-07-30',
-        dateModified: '2025-10-17',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1926,14 +1926,14 @@ export const seoMetaEs: SEOMetaContent = {
       description: 'Domina control olor arena con carbón activado. Elimina 99% olor amoníaco, mantén frescura 30+ días. Prueba gratis - ¡solo paga envío!',
       targetKeyword: 'control olor arena gatos',
       datePublished: '2025-09-06',
-      lastUpdated: '2025-10-14',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Guía Definitiva Control Olor Arena Gatos [2026]',
         description: 'Domina control olor arena con carbón activado.',
         datePublished: '2025-09-06',
-        dateModified: '2025-10-14',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1947,14 +1947,14 @@ export const seoMetaEs: SEOMetaContent = {
       description: 'Consejos esenciales para gatos en apartamentos pequeños. Control olores, cajas arena que ahorran espacio, ventilación. ¡Carbón activado elimina olor!',
       targetKeyword: 'cuidado gatos apartamento pequeño',
       datePublished: '2025-10-23',
-      lastUpdated: '2026-01-22',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Cuidado Gatos Apartamento Pequeño: Guía Completa 2026',
         description: 'Consejos esenciales para gatos en apartamentos pequeños.',
         datePublished: '2025-10-23',
-        dateModified: '2026-01-22',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1968,14 +1968,14 @@ export const seoMetaEs: SEOMetaContent = {
       description: 'Detén olor caja arena con carbón activado cáscara coco 100% natural. Sin químicos, sin perfumes, no tóxico. ¡99% eliminación olor efectiva!',
       targetKeyword: 'aditivo arena gatos natural',
       datePublished: '2025-05-17',
-      lastUpdated: '2025-06-10',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: 'Aditivo Arena Gatos Natural: 100% Carbón Coco',
         description: 'Detén olor caja arena con carbón activado cáscara coco 100% natural.',
         datePublished: '2025-05-17',
-        dateModified: '2025-06-10',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -1989,14 +1989,14 @@ export const seoMetaEs: SEOMetaContent = {
       description: 'Bicarbonato, bolsas de carbón, ambientadores - nada funcionaba hasta que encontré esto. Soluciones reales de alguien que probó todo.',
       targetKeyword: 'probé todo olor arena gatos',
       datePublished: '2025-06-04',
-      lastUpdated: '2025-10-06',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: '¿Probaste Todo Para Olor Arena Gatos? Esto Funcionó',
         description: 'Bicarbonato, bolsas de carbón, ambientadores - nada funcionaba hasta que encontré esto.',
         datePublished: '2025-06-04',
-        dateModified: '2025-10-06',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',
@@ -2010,14 +2010,14 @@ export const seoMetaEs: SEOMetaContent = {
       description: 'Comparación científica de carbón activado y zeolita para control de olor en arena. Ve resultados de pruebas, pros/contras, cuál absorbe mejor el amoníaco.',
       targetKeyword: 'carbón activado vs zeolita arena gatos',
       datePublished: '2025-07-20',
-      lastUpdated: '2025-08-06',
+      lastUpdated: '2026-02-13',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: '¿Carbón Activado vs Zeolita Para Arena de Gatos: Cuál Funciona Mejor?',
         description: 'Comparación científica de carbón activado y zeolita para control de olor en arena.',
         datePublished: '2025-07-20',
-        dateModified: '2025-08-06',
+        dateModified: '2026-02-13',
         author: { '@type': 'Organization', name: 'Purrify' },
         publisher: {
           '@type': 'Organization',

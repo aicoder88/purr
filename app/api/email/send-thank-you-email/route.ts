@@ -1,8 +1,10 @@
 
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
 import { OrderConfirmationEmailHTML, getOrderConfirmationEmailSubject } from '@/emails/order-confirmation';
-
 import { resend } from '@/lib/resend';
+import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit-app';
+import { requireAuth } from '@/lib/auth/session';
+import { NextRequest } from 'next/server';
 
 interface SendThankYouEmailRequest {
     customerEmail: string;
@@ -14,8 +16,14 @@ interface SendThankYouEmailRequest {
     locale?: string;
 }
 
-export async function POST(req: Request): Promise<Response> {
+async function handler(req: NextRequest): Promise<Response> {
     try {
+        // Verify authentication
+        const { authorized } = await requireAuth();
+        if (!authorized) {
+            return Response.json({ error: 'Unauthorized' }, { status: 401 });
+        }
+
         // Verify Resend is configured
         if (!isResendConfigured()) {
             console.error('[Thank You Email] Resend is not configured');
@@ -100,3 +108,5 @@ export async function POST(req: Request): Promise<Response> {
         }, { status: 500 });
     }
 }
+
+export const POST = withRateLimit(RATE_LIMITS.CREATE, handler);

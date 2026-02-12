@@ -112,7 +112,7 @@ export const REAL_PURR_SOUNDS: CatSound[] = [
 // Sound playback state
 let audioContext: AudioContext | null = null;
 let currentPurrSource: AudioBufferSourceNode | OscillatorNode | null = null;
-let soundCache: Map<string, AudioBuffer> = new Map();
+const soundCache: Map<string, AudioBuffer> = new Map();
 let lastMeowIndex = -1;
 let lastPurrIndex = -1;
 

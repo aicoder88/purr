@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import * as Sentry from '@sentry/nextjs';
 import prisma from '@/lib/prisma';
+import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit-app';
 
 interface SubscribeRequest {
   email: string;
@@ -14,7 +15,7 @@ function isValidEmail(email: string): boolean {
   return emailRegex.test(email);
 }
 
-export async function POST(request: NextRequest) {
+async function handler(request: NextRequest) {
   try {
     const body = await request.json() as SubscribeRequest;
     const { email, source = 'unknown', locale = 'en' } = body;
@@ -102,3 +103,5 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+
+export const POST = withRateLimit(RATE_LIMITS.CREATE, handler);

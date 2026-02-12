@@ -1,3 +1,5 @@
+'use client';
+
 import { Container } from "@/components/ui/container";
 import { PRODUCTS } from "@/lib/constants";
 import dynamic from "next/dynamic";

@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import { Users, TrendingUp, Leaf } from 'lucide-react';
 import { useTranslation } from '@/lib/translation-context';

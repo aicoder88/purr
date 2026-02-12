@@ -117,3 +117,54 @@ export function checkRateLimit(
     resetTime: entry.resetTime,
   };
 }
+
+type RouteHandler = (req: NextRequest, context?: any) => Promise<Response> | Response;
+
+/**
+ * Middleware to apply rate limiting to App Router routes
+ */
+export function withRateLimit(
+  config: RateLimitConfig,
+  handler: RouteHandler
+): RouteHandler {
+  return async (req: NextRequest, context?: any) => {
+    const { allowed, remaining, resetTime } = checkRateLimit(req, config);
+
+    // If rate limited, return error response immediately
+    if (!allowed) {
+      return Response.json(
+        {
+          error: config.message || 'Too many requests',
+          retryAfter: Math.ceil((resetTime - Date.now()) / 1000),
+        },
+        {
+          status: 429,
+          headers: {
+            'X-RateLimit-Limit': config.maxRequests.toString(),
+            'X-RateLimit-Remaining': remaining.toString(),
+            'X-RateLimit-Reset': new Date(resetTime).toISOString(),
+            'Retry-After': Math.ceil((resetTime - Date.now()) / 1000).toString(),
+          },
+        }
+      );
+    }
+
+    // Execute handler
+    const response = await handler(req, context);
+
+    // Add rate limit headers to successful response
+    // Clone response if needed to add headers (Headers are immutable in some contexts, but Response.headers might be mutable)
+    // For simplicity, we'll try to set them if possible, but Response objects are often immutable.
+    // However, in Next.js App Router, we return a Response. We can create a new one or set headers if mutable.
+
+    try {
+      response.headers.set('X-RateLimit-Limit', config.maxRequests.toString());
+      response.headers.set('X-RateLimit-Remaining', remaining.toString());
+      response.headers.set('X-RateLimit-Reset', new Date(resetTime).toISOString());
+    } catch (e) {
+      // Ignore if headers are immutable
+    }
+
+    return response;
+  };
+}

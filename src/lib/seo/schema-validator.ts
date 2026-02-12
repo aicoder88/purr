@@ -327,22 +327,21 @@ const validators: Record<string, ValidateFunction> = {
  * Convert ajv errors to ValidationError format
  */
 function convertAjvErrors(
-  errors: ErrorObject[],
-  schemaType: string
+  errors: ErrorObject[]
 ): ValidationError[] {
   return errors.map((error) => ({
     severity: 'error',
     type: 'schema',
     field: error.instancePath || error.params?.missingProperty || 'root',
     message: `${error.instancePath || 'root'} ${error.message}`,
-    fix: getFixSuggestion(error, schemaType),
+    fix: getFixSuggestion(error),
   }));
 }
 
 /**
  * Get fix suggestion for common validation errors
  */
-function getFixSuggestion(error: ErrorObject, schemaType: string): string {
+function getFixSuggestion(error: ErrorObject): string {
   const { keyword, params, instancePath } = error;
 
   switch (keyword) {
@@ -385,7 +384,7 @@ export function validateProductSchema(data: unknown): ValidationResult {
     };
   }
 
-  const errors = convertAjvErrors(validator.errors || [], 'Product');
+  const errors = convertAjvErrors(validator.errors || []);
 
   return {
     isValid: false,
@@ -416,7 +415,7 @@ export function validateArticleSchema(data: unknown): ValidationResult {
     };
   }
 
-  const errors = convertAjvErrors(validator.errors || [], schemaType);
+  const errors = convertAjvErrors(validator.errors || []);
 
   return {
     isValid: false,
@@ -440,7 +439,7 @@ export function validateFAQSchema(data: unknown): ValidationResult {
     };
   }
 
-  const errors = convertAjvErrors(validator.errors || [], 'FAQPage');
+  const errors = convertAjvErrors(validator.errors || []);
 
   return {
     isValid: false,
@@ -464,7 +463,7 @@ export function validateOrganizationSchema(data: unknown): ValidationResult {
     };
   }
 
-  const errors = convertAjvErrors(validator.errors || [], 'Organization');
+  const errors = convertAjvErrors(validator.errors || []);
 
   return {
     isValid: false,

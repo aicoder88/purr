@@ -117,18 +117,28 @@ export const generateAvatarUrl = (_name: string, index: number) => {
  * );
  * ```
  */
-export const generateStarRating = (stars: number = 5) =>
-  Array(stars).fill(0).map((_, i) => {
-    return (
-      <svg
-        key={i}
-        className="w-4 h-4 text-yellow-400 dark:text-yellow-300 fill-current"
-        viewBox="0 0 24 24"
-      >
-        <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-      </svg>
-    );
-  });
+export const generateStarRating = (stars: number = 5) => {
+  const visualStars = Math.max(0, Math.round(stars));
+  const ratingText = `${stars} out of 5 stars`;
+
+  return (
+    <>
+      {Array(visualStars).fill(0).map((_, i) => {
+        return (
+          <svg
+            key={i}
+            className="w-4 h-4 text-yellow-400 dark:text-yellow-300 fill-current"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
+          </svg>
+        );
+      })}
+      <span className="sr-only">{ratingText}</span>
+    </>
+  );
+};
 
 /**
  * Quote icon SVG component for testimonials and review sections.

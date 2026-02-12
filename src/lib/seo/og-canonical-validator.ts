@@ -27,7 +27,7 @@ export interface OGCanonicalResult {
 /**
  * Extract canonical URL from page source
  */
-function extractCanonicalUrl(content: string, filePath: string): string | null {
+function extractCanonicalUrl(content: string): string | null {
   // First, check for raw HTML link tag <link rel="canonical" href="..." />
   // This handles both orders: rel then href, or href then rel
   const linkMatch = content.match(/<link\s+(?:rel=["']canonical["']\s+href=["']([^"']+)["']|href=["']([^"']+)["']\s+rel=["']canonical["'])/);
@@ -85,7 +85,7 @@ function extractCanonicalUrl(content: string, filePath: string): string | null {
 /**
  * Extract Open Graph URL from page source
  */
-function extractOGUrl(content: string, filePath: string): string | null {
+function extractOGUrl(content: string): string | null {
   // First, check for raw HTML meta tag <meta property="og:url" content="..." />
   // More permissive regex that handles any whitespace and attribute order
   const ogUrlPattern = /<meta[^>]*property\s*=\s*["']og:url["'][^>]*content\s*=\s*["']([^"']+)["'][^>]*>|<meta[^>]*content\s*=\s*["']([^"']+)["'][^>]*property\s*=\s*["']og:url["'][^>]*>/;
@@ -254,8 +254,8 @@ export function validatePageFile(filePath: string): OGCanonicalIssue[] {
   try {
     const content = fs.readFileSync(filePath, 'utf-8');
 
-    const canonical = extractCanonicalUrl(content, filePath);
-    const ogUrl = extractOGUrl(content, filePath);
+    const canonical = extractCanonicalUrl(content);
+    const ogUrl = extractOGUrl(content);
 
     // console.log(`Debug ${filePath}: Canonical="${canonical}", OG="${ogUrl}"`);
 

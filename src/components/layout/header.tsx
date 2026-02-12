@@ -35,6 +35,7 @@ interface NavigationItem {
 }
 
 export function Header() {
+  const mobileMenuId = 'mobile-navigation-menu';
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const [isRetailersDropdownOpen, setIsRetailersDropdownOpen] = useState(false);
@@ -548,7 +549,8 @@ export function Header() {
               size="icon"
               className="ml-1 h-11 w-11 p-0"
               onClick={toggleMenu}
-              aria-label={t.nav?.toggleMenu || ""}
+              aria-label={t.nav?.toggleMenu || 'Toggle menu'}
+              aria-controls={mobileMenuId}
             >
               {isMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -561,7 +563,7 @@ export function Header() {
 
         {/* Mobile menu - Accordion style */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-brand-green-light/30 dark:border-purple-500/30 bg-white dark:bg-gray-900/95 backdrop-blur-md shadow-lg max-h-[80vh] overflow-y-auto">
+          <div id={mobileMenuId} className="md:hidden border-t border-brand-green-light/30 dark:border-purple-500/30 bg-white dark:bg-gray-900/95 backdrop-blur-md shadow-lg max-h-[80vh] overflow-y-auto">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navigationItems.map((item) => (
                 <div key={item.id}>

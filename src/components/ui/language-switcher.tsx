@@ -1,3 +1,5 @@
+'use client';
+
 // import Link from 'next/link';
 import { useCallback, useId, useMemo, useState, useRef, useEffect } from 'react';
 import Image from 'next/image';

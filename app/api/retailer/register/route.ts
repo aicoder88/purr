@@ -1,6 +1,8 @@
 import * as bcrypt from 'bcryptjs';
 import { z } from 'zod';
 import prisma from '@/lib/prisma';
+import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit-app';
+import { NextRequest } from 'next/server';
 
 interface RegisterRequest {
   businessName: string;
@@ -33,7 +35,7 @@ const passwordSchema = z.string()
   .regex(/[0-9]/, 'Password must contain at least one number')
   .regex(/[^A-Za-z0-9]/, 'Password must contain at least one special character');
 
-export async function POST(req: Request): Promise<Response> {
+async function handler(req: NextRequest): Promise<Response> {
   try {
     const body = await req.json();
     const {
@@ -99,14 +101,14 @@ export async function POST(req: Request): Promise<Response> {
         },
         billingAddress: billingAddress
           ? {
-              create: {
-                street: billingAddress.street,
-                city: billingAddress.city,
-                province: billingAddress.province,
-                postalCode: billingAddress.postalCode,
-                country: billingAddress.country || 'CA',
-              },
-            }
+            create: {
+              street: billingAddress.street,
+              city: billingAddress.city,
+              province: billingAddress.province,
+              postalCode: billingAddress.postalCode,
+              country: billingAddress.country || 'CA',
+            },
+          }
           : undefined,
       },
       include: {
@@ -136,3 +138,5 @@ export async function POST(req: Request): Promise<Response> {
     return Response.json({ message: 'Registration failed. Please try again.' }, { status: 500 });
   }
 }
+
+export const POST = withRateLimit(RATE_LIMITS.CREATE, handler);

@@ -177,7 +177,7 @@ export function FreeGiveawayForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[#333333] dark:text-gray-200 mb-2">
+          <label htmlFor="cat-names" className="block text-sm font-medium text-[#333333] dark:text-gray-200 mb-2">
             {t.freeGiveaway?.catNames || ""}
           </label>
           
@@ -185,6 +185,7 @@ export function FreeGiveawayForm() {
             {fields.map((field, index) => (
               <div key={field.id}>
                 <Input
+                  id={index === 0 ? 'cat-names' : `cat-names-${index + 1}`}
                   placeholder={t.freeGiveaway?.catNamePlaceholder?.replace('{index}', (index + 1).toString()) || `Name of Cat ${index + 1}`}
                   {...register(`catNames.${index}.value` as const)}
                   className="border-[#E0EFC7] focus:border-[#FF3131] focus:ring-[#FF3131]"

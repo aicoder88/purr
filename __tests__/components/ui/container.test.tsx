@@ -62,7 +62,7 @@ describe('Container', () => {
           <h1>Title</h1>
           <nav>
             <Link href="/">Home</Link>
-            <a href="/about">About</a>
+            <Link href="/about">About</Link>
           </nav>
         </header>
       </Container>

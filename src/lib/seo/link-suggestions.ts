@@ -3,7 +3,7 @@
  * Suggests where to add internal links based on content analysis
  */
 
-import { TOPIC_CLUSTERS, getClusterForPage, getPagesLinkingTo } from './topic-clusters';
+import { TOPIC_CLUSTERS, getClusterForPage } from './topic-clusters';
 
 export interface LinkSuggestion {
   fromPage: string;
@@ -64,14 +64,7 @@ export function generateLinkSuggestions(): LinkSuggestion[] {
     }
   }
 
-  // 2. Product page suggestions
-  const productPages = [
-    '/products/trial-size',
-    '/products/standard',
-    '/products/family-pack',
-  ];
-
-  // All blog posts about products should link to product pages
+  // 2. All blog posts about products should link to product pages
   for (const cluster of TOPIC_CLUSTERS) {
     for (const spoke of cluster.spokes) {
       if (spoke.includes('/blog/')) {
