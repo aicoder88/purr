@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: "That burning sensation when you scoop? That's ammonia. At high levels, it's harmful to you AND your cat. Here's when to worry—and how to fix it fast.",
   keywords: ['ammonia cat litter dangerous', 'cat litter ammonia health risks', 'is ammonia from cat litter harmful', 'cat litter fumes dangerous'],
   alternates: {
-    canonical: 'https://www.purrify.ca/learn/cat-litter-ammonia-health-risks',
+    canonical: 'https://www.purrify.ca/learn/cat-litter-ammonia-health-risks/',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/cat-litter-ammonia-health-risks',
       'fr-CA': 'https://www.purrify.ca/fr/learn/cat-litter-ammonia-health-risks',
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'article',
-    url: 'https://www.purrify.ca/learn/cat-litter-ammonia-health-risks',
+    url: 'https://www.purrify.ca/learn/cat-litter-ammonia-health-risks/',
     title: 'Is Ammonia From Cat Litter Dangerous? Safe Levels Explained',
     description: "That burning sensation when you scoop? That's ammonia. At high levels, it's harmful to you AND your cat.",
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/ammonia-hero.webp',
+        url: 'https://www.purrify.ca/images/ammonia-hero.webp/',
         width: 1200,
         height: 800,
         alt: 'Cat litter ammonia health risks - safety guide',
@@ -45,7 +45,7 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   '@id': 'https://www.purrify.ca/learn/cat-litter-ammonia-health-risks',
-  url: 'https://www.purrify.ca/learn/cat-litter-ammonia-health-risks',
+  url: 'https://www.purrify.ca/learn/cat-litter-ammonia-health-risks/',
   inLanguage: 'en-CA',
   headline: 'Is Ammonia From Cat Litter Dangerous? Safe Levels Explained',
   description: "That burning sensation when you scoop? That's ammonia. At high levels, it's harmful to you AND your cat. Here's when to worry—and how to fix it fast.",
@@ -62,7 +62,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
       width: 400,
       height: 400,
     },

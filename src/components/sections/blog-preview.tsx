@@ -18,7 +18,7 @@ interface BlogPost {
 }
 
 export function BlogPreview() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   // Initialize with static data immediately to prevent blinking
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>(sampleBlogPosts.slice(0, 3));
 
@@ -26,7 +26,7 @@ export function BlogPreview() {
     let isMounted = true;
     async function fetchBlogPosts() {
       try {
-        const response = await fetch("/api/blog-posts?limit=3");
+        const response = await fetch(`/api/blog-posts?limit=3&locale=${locale}`);
         if (!response.ok) {
           throw new Error(`Failed to fetch blog posts (status ${response.status})`);
         }
@@ -44,7 +44,7 @@ export function BlogPreview() {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [locale]);
 
   return (
     <section
@@ -59,7 +59,7 @@ export function BlogPreview() {
           <h2 className="font-heading text-5xl font-bold tracking-tight mb-4 text-[#03E46A] dark:text-[#3694FF]">
             {t.blogSection.fromOurBlog}
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 text-lg dark:text-gray-300">
+          <p className="text-gray-600 dark:text-gray-300 text-lg">
             {t.blogSection.description}
           </p>
         </div>
@@ -68,7 +68,7 @@ export function BlogPreview() {
           {blogPosts.map((post, index) => (
             <Link
               key={post.link || `blog-post-${index}`}
-              href={`/blog/${post.link.split('/').pop()}`}
+              href={post.link.startsWith('/') ? post.link : `/${locale}/blog/${post.link.split('/').pop()}`}
               className="block bg-white dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-[#E0EFC7] dark:border-gray-700 transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#5B2EFF]/30 hover:-translate-y-2 group cursor-pointer"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
@@ -130,7 +130,7 @@ export function BlogPreview() {
             asChild
             className="bg-gradient-to-r from-[#03E46A] to-[#5B2EFF] dark:from-[#5B2EFF] dark:to-[#03E46A] hover:from-[#03E46A]/90 hover:to-[#5B2EFF] dark:hover:from-[#5B2EFF]/90 dark:hover:to-[#03E46A] text-white dark:text-gray-100 font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0"
           >
-            <Link href={typeof window !== 'undefined' && window.location.pathname.startsWith('/fr') ? '/fr/blog' : typeof window !== 'undefined' && window.location.pathname.startsWith('/es') ? '/es/blog' : typeof window !== 'undefined' && window.location.pathname.startsWith('/zh') ? '/zh/blog' : '/blog'}>
+            <Link href={locale === 'en' ? '/en/blog' : `/${locale}/blog`}>
               {t.blogSection.viewAllArticles}
             </Link>
           </Button>

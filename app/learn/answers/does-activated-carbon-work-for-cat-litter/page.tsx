@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     'carbon litter additive results'
   ],
   alternates: {
-    canonical: '/learn/answers/does-activated-carbon-work-for-cat-litter',
+    canonical: '/learn/answers/does-activated-carbon-work-for-cat-litter/',
   },
   openGraph: {
     title: 'Does Activated Carbon Work for Cat Litter? Proof | Purrify',

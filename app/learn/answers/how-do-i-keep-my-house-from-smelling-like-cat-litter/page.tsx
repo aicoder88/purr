@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     'home odor control'
   ],
   alternates: {
-    canonical: '/learn/answers/how-do-i-keep-my-house-from-smelling-like-cat-litter',
+    canonical: '/learn/answers/how-do-i-keep-my-house-from-smelling-like-cat-litter/',
   },
   openGraph: {
     title: 'Stop House Smelling Like Cat Litter | Purrify',

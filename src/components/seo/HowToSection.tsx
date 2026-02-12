@@ -43,7 +43,7 @@ export function HowToSection({
   totalTime,
   timeDisplay,
   url,
-  includeSchema = true,
+  includeSchema = false,
   className = '',
 }: HowToSectionProps) {
   // Generate HowTo schema

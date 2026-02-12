@@ -3,6 +3,7 @@ export const dynamic = 'force-static';
 import type { Metadata } from 'next';
 import { SITE_NAME } from '../../../../src/lib/constants';
 import HowToNeutralizeAmmoniaPageClient from './HowToNeutralizeAmmoniaPageClient';
+import { stripContext } from '../../../../src/lib/seo-utils';
 
 const pageTitle = `How to Neutralize Ammonia in Cat Litter (5 Methods That Actually Work) | ${SITE_NAME}`;
 const pageDescription = 'Cat litter ammonia smell making you gag? Activated carbon neutralizes ammonia 10x better than baking soda. See the 5 proven methods ranked by effectiveness.';
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   description: pageDescription,
   keywords: ['how to neutralize ammonia in cat litter', 'cat litter ammonia neutralizer', 'reduce ammonia in litter box', 'best cat litter for ammonia control', 'ammonia absorber for cat litter', 'cat urine ammonia smell'],
   alternates: {
-    canonical: 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter',
+    canonical: 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter',
       'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/how-to-neutralize-ammonia-cat-litter',
@@ -68,7 +69,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
       width: 400,
       height: 400,
     },
@@ -176,15 +177,16 @@ export default function HowToNeutralizeAmmoniaCatLitterPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@graph': [
+              stripContext(articleSchema),
+              stripContext(howToSchema),
+              stripContext(faqSchema),
+            ],
+          }),
+        }}
       />
       <HowToNeutralizeAmmoniaPageClient />
     </>

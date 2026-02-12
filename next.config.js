@@ -94,6 +94,371 @@ const HEADERS = [
 ];
 
 const REDIRECTS = [
+  // --- SUBDOMAIN & LOCALE FIXES ---
+  // Fix double mentions of locale in path for subdomains
+  {
+    source: "/fr/:path*",
+    has: [{ type: "host", value: "fr.purrify.ca" }],
+    destination: "https://www.purrify.ca/fr/:path*",
+    permanent: true
+  },
+  {
+    source: "/zh/:path*",
+    has: [{ type: "host", value: "zh.purrify.ca" }],
+    destination: "https://www.purrify.ca/zh/:path*",
+    permanent: true
+  },
+  {
+    source: "/es/:path*",
+    has: [{ type: "host", value: "es.purrify.ca" }],
+    destination: "https://www.purrify.ca/es/:path*",
+    permanent: true
+  },
+  // Redirect subdomains to main domain with locale
+  {
+    source: "/:path*",
+    has: [{ type: "host", value: "fr.purrify.ca" }],
+    destination: "https://www.purrify.ca/fr/:path*",
+    permanent: true
+  },
+  {
+    source: "/:path*",
+    has: [{ type: "host", value: "zh.purrify.ca" }],
+    destination: "https://www.purrify.ca/zh/:path*",
+    permanent: true
+  },
+  {
+    source: "/:path*",
+    has: [{ type: "host", value: "es.purrify.ca" }],
+    destination: "https://www.purrify.ca/es/:path*",
+    permanent: true
+  },
+  // Fix double locale paths (e.g. /fr/fr/...)
+  {
+    source: "/fr/fr/:path*",
+    destination: "/fr/:path*",
+    permanent: true
+  },
+  {
+    source: "/zh/zh/:path*",
+    destination: "/zh/:path*",
+    permanent: true
+  },
+  {
+    source: "/es/es/:path*",
+    destination: "/es/:path*",
+    permanent: true
+  },
+
+  // --- SPECIFIC FIXES ---
+  {
+    source: "/_ignore_locations/:path*",
+    destination: "/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)/blog/how-to-use-cat-litter-deodorizer",
+    destination: "/:locale/learn/how-to-use-deodorizer",
+    permanent: true
+  },
+
+  // --- INVALID LOCATION REDIRECTS ---
+  {
+    source: "/:locale(fr|zh|es)?/locations/lake-louise",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/medicine-hat",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/tuktoyaktuk",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/kimberley",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/saguenay",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/victoria",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/swan-river",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/port-hawkesbury",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/fredericton",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/wabana",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/st-johns",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/penticton",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/labrador-city",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/sainte-anne-de-beaupre",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/grand-fallswindsor",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/campbell-river",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/inuvik",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/glace-bay",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/chilliwack",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/revelstoke",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/fort-smith",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/saint-albert",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/saint-anthony",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/saint-john",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/happy-valleygoose-bay",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/churchill",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/pictou",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/sainte-therese",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/iroquois-falls",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/bathurst",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/fort-saint-john",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/esquimalt",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/hope",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/iqaluit",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/sarnia-clearwater",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/delta",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/dauphin",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/corner-brook",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/powell-river",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/yellowknife",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/thompson",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/caraquet",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/ferryland",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/saint-boniface",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/kirkland-lake",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/vernon",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/mb",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/prince-rupert",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/saint-eustache",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/waskaganish",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/kamloops",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/brandon",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/nanaimo",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/moncton",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/brantford",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/chatham-kent",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/digby",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/west-vancouver",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|zh|es)?/locations/white-rock",
+    destination: "/:locale/stores",
+    permanent: true
+  },
+
   {
     source: "/:path*",
     has: [
@@ -118,11 +483,6 @@ const REDIRECTS = [
     destination: "https://www.purrify.ca/:path*",
     permanent: true,
     locale: false
-  },
-  {
-    source: "/blog/:slug*",
-    destination: "/en/blog/:slug*",
-    permanent: true
   },
   {
     source: "/:path+/es/:path2*",
@@ -171,17 +531,17 @@ const REDIRECTS = [
   },
   {
     source: "/:locale(fr|zh|es)/blog/activated-carbon-science",
-    destination: "/blog/activated-carbon-litter-additive-benefits",
+    destination: "/:locale/blog/activated-carbon-litter-additive-benefits",
     permanent: true
   },
   {
     source: "/:locale(fr|zh|es)/blog/fresh-home-multiple-cats",
-    destination: "/blog/multi-cat-litter-deodorizer-guide",
+    destination: "/:locale/blog/multi-cat-litter-deodorizer-guide",
     permanent: true
   },
   {
     source: "/:locale(fr|zh|es)/blog/beyond-masking-odors",
-    destination: "/blog/most-powerful-odor-absorber",
+    destination: "/:locale/blog/most-powerful-odor-absorber",
     permanent: true
   },
   {
@@ -902,159 +1262,10 @@ const REDIRECTS = [
     destination: "/learn/how-to-use-deodorizer",
     permanent: true
   },
+  // All other blog posts redirect to their canonical /en/blog path
   {
-    source: "/blog/activated-carbon-for-cat-litter-complete-guide",
-    destination: "/en/blog/activated-carbon-for-cat-litter-complete-guide",
-    permanent: true
-  },
-  {
-    source: "/blog/apartment-litter-box-smell-solution",
-    destination: "/en/blog/apartment-litter-box-smell-solution",
-    permanent: true
-  },
-  {
-    source: "/blog/baking-soda-vs-activated-carbon-cat-litter",
-    destination: "/en/blog/baking-soda-vs-activated-carbon-cat-litter",
-    permanent: true
-  },
-  {
-    source: "/blog/best-cat-litter-deodorizers-2026",
-    destination: "/en/blog/best-cat-litter-deodorizers-2026",
-    permanent: true
-  },
-  {
-    source: "/blog/best-cat-litter-for-apartments",
-    destination: "/en/blog/best-cat-litter-for-apartments",
-    permanent: true
-  },
-  {
-    source: "/blog/best-cat-litter-for-smell",
-    destination: "/en/blog/best-cat-litter-for-smell",
-    permanent: true
-  },
-  {
-    source: "/blog/best-cat-litter-multiple-cats",
-    destination: "/en/blog/best-cat-litter-multiple-cats",
-    permanent: true
-  },
-  {
-    source: "/blog/best-cat-litter-multiple-cats-odor-control",
-    destination: "/en/blog/best-cat-litter-multiple-cats-odor-control",
-    permanent: true
-  },
-  {
-    source: "/blog/best-cat-litter-odor-control-2026",
-    destination: "/en/blog/best-cat-litter-odor-control-2026",
-    permanent: true
-  },
-  {
-    source: "/blog/best-clumping-cat-litter-odor-control",
-    destination: "/en/blog/best-clumping-cat-litter-odor-control",
-    permanent: true
-  },
-  {
-    source: "/blog/best-covered-litter-boxes-odor-control",
-    destination: "/en/blog/best-covered-litter-boxes-odor-control",
-    permanent: true
-  },
-  {
-    source: "/blog/best-litter-box-location-odour-control",
-    destination: "/en/blog/best-litter-box-location-odour-control",
-    permanent: true
-  },
-  {
-    source: "/blog/best-natural-cat-litter-odor-control",
-    destination: "/en/blog/best-natural-cat-litter-odor-control",
-    permanent: true
-  },
-  {
-    source: "/blog/best-self-cleaning-litter-box-odor-control",
-    destination: "/en/blog/best-self-cleaning-litter-box-odor-control",
-    permanent: true
-  },
-  {
-    source: "/blog/best-unscented-cat-litter-sensitive-cats",
-    destination: "/en/blog/best-unscented-cat-litter-sensitive-cats",
-    permanent: true
-  },
-  {
-    source: "/blog/best-unscented-cat-litters",
-    destination: "/en/blog/best-unscented-cat-litters",
-    permanent: true
-  },
-  {
-    source: "/blog/best-way-to-keep-litter-box-fresh",
-    destination: "/en/blog/best-way-to-keep-litter-box-fresh",
-    permanent: true
-  },
-  {
-    source: "/blog/cat-litter-odor-control-usa",
-    destination: "/en/blog/cat-litter-odor-control-usa",
-    permanent: true
-  },
-  {
-    source: "/blog/cat-litter-odour-control-tips",
-    destination: "/en/blog/cat-litter-odour-control-tips",
-    permanent: true
-  },
-  {
-    source: "/blog/chemistry-of-cat-smell-industrial-fix",
-    destination: "/en/blog/chemistry-of-cat-smell-industrial-fix",
-    permanent: true
-  },
-  {
-    source: "/blog/how-to-get-rid-of-cat-litter-smell-apartment",
-    destination: "/en/blog/how-to-get-rid-of-cat-litter-smell-apartment",
-    permanent: true
-  },
-  {
-    source: "/blog/how-to-get-rid-of-cat-litter-smell-in-apartment",
-    destination: "/en/blog/how-to-get-rid-of-cat-litter-smell-in-apartment",
-    permanent: true
-  },
-  {
-    source: "/blog/how-to-get-rid-of-cat-pee-smell-apartment",
-    destination: "/en/blog/how-to-get-rid-of-cat-pee-smell-apartment",
-    permanent: true
-  },
-  {
-    source: "/blog/litter-deodorizer-frequency-guide",
-    destination: "/en/blog/litter-deodorizer-frequency-guide",
-    permanent: true
-  },
-  {
-    source: "/blog/safe-ways-to-deodorize-litter-box",
-    destination: "/en/blog/safe-ways-to-deodorize-litter-box",
-    permanent: true
-  },
-  {
-    source: "/blog/space-station-secret-fresh-home-cat-owners",
-    destination: "/en/blog/space-station-secret-fresh-home-cat-owners",
-    permanent: true
-  },
-  {
-    source: "/blog/strong-cat-urine-smell-litter-box",
-    destination: "/en/blog/strong-cat-urine-smell-litter-box",
-    permanent: true
-  },
-  {
-    source: "/blog/tried-every-litter-deodorizer-90-days-results",
-    destination: "/en/blog/tried-every-litter-deodorizer-90-days-results",
-    permanent: true
-  },
-  {
-    source: "/blog/tried-everything-cat-litter-smell-solutions",
-    destination: "/en/blog/tried-everything-cat-litter-smell-solutions",
-    permanent: true
-  },
-  {
-    source: "/blog/why-does-my-cats-litter-box-smell-so-bad",
-    destination: "/en/blog/why-does-my-cats-litter-box-smell-so-bad",
-    permanent: true
-  },
-  {
-    source: "/blog/why-does-my-house-smell-like-cat-litter",
-    destination: "/en/blog/why-does-my-house-smell-like-cat-litter",
+    source: "/blog/:slug*",
+    destination: "/en/blog/:slug*",
     permanent: true
   },
   {

@@ -115,7 +115,7 @@ const PRODUCT_FAQS: Record<ProductType, FAQ[]> = {
 export function ProductFAQ({
   productType,
   productName,
-  includeStructuredData = true
+  includeStructuredData = false
 }: ProductFAQProps) {
   const faqs = PRODUCT_FAQS[productType] || PRODUCT_FAQS.family;
 

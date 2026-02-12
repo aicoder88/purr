@@ -86,7 +86,7 @@ const localBusinessSchema = {
   '@type': 'LocalBusiness',
   name: 'Purrify Canada',
   description: 'Canadian manufacturer of activated carbon cat litter deodorizer with shipping across all provinces',
-  url: 'https://www.purrify.ca/locations',
+  url: 'https://www.purrify.ca/locations/',
   logo: 'https://www.purrify.ca/images/icon-512.png',
   image: 'https://www.purrify.ca/images/products/purrify-standard-bag.png',
   address: {

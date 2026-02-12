@@ -42,14 +42,18 @@ export async function generateMetadata(): Promise<Metadata> {
 
   // Build canonical and alternate URLs
   const baseUrl = 'https://www.purrify.ca';
-  const canonicalUrl = `${baseUrl}${normalizedLocale === 'en' ? '' : `/${normalizedLocale}`}/`;
+  const canonicalUrl = `${baseUrl}/`;
   const languageAlternates = buildLanguageAlternates('/');
 
   // Convert language alternates to Next.js format
-  const alternates: Record<string, string> = {};
-  languageAlternates.forEach((alt) => {
-    alternates[alt.hrefLang] = alt.href;
-  });
+  const alternates: Record<string, string> = {
+    'en-CA': `${baseUrl}/`,
+    'fr-CA': `${baseUrl}/fr/`,
+    'zh-CN': `${baseUrl}/zh/`,
+    'es-US': `${baseUrl}/es/`,
+    'en-US': `${baseUrl}/us/`,
+    'x-default': `${baseUrl}/`,
+  };
 
   return {
     title: pageTitle,

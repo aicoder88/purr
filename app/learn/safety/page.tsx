@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Comprehensive technical datasheet and safety information for Purrify Activated Carbon. Learn about certifications, specs, and safe usage guidelines.',
   keywords: ['activated carbon safety', 'pet-safe deodorizer', 'food grade carbon', 'NSF certified', 'technical specifications', 'coconut shell carbon safety'],
   alternates: {
-    canonical: 'https://www.purrify.ca/learn/safety',
+    canonical: 'https://www.purrify.ca/learn/safety/',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/safety',
       'fr-CA': 'https://www.purrify.ca/fr/learn/safety',
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'article',
-    url: 'https://www.purrify.ca/learn/safety',
+    url: 'https://www.purrify.ca/learn/safety/',
     title: `Is Activated Carbon Safe for Cats? | ${SITE_NAME}`,
     description: 'Comprehensive technical datasheet and safety information for Purrify Activated Carbon.',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/quality-control-lab.webp',
+        url: 'https://www.purrify.ca/optimized/quality-control-lab.webp/',
         width: 1600,
         height: 1067,
         alt: 'Quality control laboratory testing for activated carbon',
@@ -45,7 +45,7 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   '@id': 'https://www.purrify.ca/learn/safety',
-  url: 'https://www.purrify.ca/learn/safety',
+  url: 'https://www.purrify.ca/learn/safety/',
   inLanguage: 'en-CA',
   headline: `Is Activated Carbon Safe for Cats? | ${SITE_NAME}`,
   description: 'Comprehensive technical datasheet and safety information for Purrify Activated Carbon. Learn about certifications, specifications, and safe usage guidelines.',
@@ -62,7 +62,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
       width: 400,
       height: 400,
     },

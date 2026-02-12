@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: 'https://www.purrify.ca/es/opiniones',
+    canonical: 'https://www.purrify.ca/es/opiniones/',
     languages: {
       'en-CA': 'https://www.purrify.ca/reviews',
       'fr-CA': 'https://www.purrify.ca/fr/reviews',
@@ -28,14 +28,14 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/es/opiniones',
+    url: 'https://www.purrify.ca/es/opiniones/',
     siteName: SITE_NAME,
     title: 'Purrify Opiniones - Reseñas de Clientes Verificados',
     description: 'Descubre por qué 1,000+ dueños de gatos confían en Purrify para eliminar olores con carbón activado natural.',
     locale: 'es_ES',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/three_bags_no_bg.webp',
+        url: 'https://www.purrify.ca/optimized/three_bags_no_bg.webp/',
         width: 1200,
         height: 800,
         alt: 'Purrify Opiniones',

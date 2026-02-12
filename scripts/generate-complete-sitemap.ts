@@ -33,7 +33,10 @@ const STATIC_ROUTES: RouteConfig[] = [
   { path: '/products/trial-size', priority: 0.9, changefreq: 'weekly' },
   { path: '/products/standard', priority: 0.9, changefreq: 'weekly' },
   { path: '/products/family-pack', priority: 0.9, changefreq: 'weekly' },
-  { path: '/blog', priority: 0.8, changefreq: 'daily' },
+  { path: '/en/blog', priority: 0.8, changefreq: 'daily' },
+  { path: '/fr/blog', priority: 0.8, changefreq: 'daily' },
+  { path: '/es/blog', priority: 0.8, changefreq: 'daily' },
+  { path: '/zh/blog', priority: 0.8, changefreq: 'daily' },
   { path: '/reviews', priority: 0.8, changefreq: 'weekly' },
   { path: '/us', priority: 0.85, changefreq: 'weekly' },
   { path: '/canada', priority: 0.8, changefreq: 'weekly' },
@@ -135,10 +138,10 @@ function generateSitemap() {
     });
   }
 
-  // Add static blog posts
+  // Add static blog posts (Fix: Use /en prefix)
   for (const slug of STATIC_BLOG_POSTS) {
     urls.push({
-      loc: `${SITE_URL}/blog/${slug}`,
+      loc: `${SITE_URL}/en/blog/${slug}`,
       lastmod: date,
       changefreq: 'weekly',
       priority: 0.8,
@@ -151,8 +154,13 @@ function generateSitemap() {
       if (post.link && post.link.startsWith('/blog/')) {
         const slug = post.link.replace('/blog/', '');
         if (!STATIC_BLOG_POSTS.includes(slug)) {
+          // Normalize to /en/blog
+          const normalizedLink = post.link.startsWith('/en/blog/')
+            ? post.link
+            : `/en${post.link}`;
+
           urls.push({
-            loc: `${SITE_URL}${post.link}`,
+            loc: `${SITE_URL}${normalizedLink}`,
             lastmod: post.date ? new Date(post.date).toISOString() : date,
             changefreq: 'weekly',
             priority: 0.7,
@@ -213,7 +221,7 @@ function generateSitemap() {
   // Generate XML
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
   xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
-  
+
   for (const url of uniqueUrls) {
     xml += '  <url>\n';
     xml += `    <loc>${url.loc}</loc>\n`;
@@ -222,7 +230,7 @@ function generateSitemap() {
     xml += `    <priority>${url.priority.toFixed(1)}</priority>\n`;
     xml += '  </url>\n';
   }
-  
+
   xml += '</urlset>';
 
   fs.writeFileSync(OUTPUT_FILE, xml, 'utf8');
@@ -230,7 +238,7 @@ function generateSitemap() {
   console.log('\n✅ Sitemap generated successfully!');
   console.log(`   Total URLs: ${uniqueUrls.length}`);
   console.log(`   Output: ${OUTPUT_FILE}\n`);
-  
+
   // Print summary
   const categories: Record<string, number> = {
     'Homepage': uniqueUrls.filter(u => u.loc === SITE_URL + '/').length,
@@ -243,7 +251,7 @@ function generateSitemap() {
     'Other': 0,
   };
   categories['Other'] = uniqueUrls.length - Object.values(categories).reduce((a, b) => a + b, 0);
-  
+
   console.log('Breakdown by category:');
   for (const [cat, count] of Object.entries(categories)) {
     if (count > 0) console.log(`   ${cat}: ${count}`);

@@ -9,14 +9,14 @@ export const metadata: Metadata = {
   keywords: ['cat litter freshener', 'free trial', 'charcoal litter additive', 'cat litter deodorizer', 'activated carbon trial'],
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/products/trial-size',
+    url: 'https://www.purrify.ca/products/trial-size/',
     siteName: 'Purrify',
     title: 'Free Cat Litter Freshener Trial | Purrify',
     description: 'FREE trial of our activated charcoal cat litter additive. Natural coconut shell carbon litter freshener eliminates ammonia odors instantly.',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/17g-transparent-v2.webp',
+        url: 'https://www.purrify.ca/optimized/17g-transparent-v2.webp/',
         width: 1200,
         height: 1200,
         alt: 'Purrify 12g Trial Size',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     images: ['https://www.purrify.ca/optimized/17g-transparent-v2.webp'],
   },
   alternates: {
-    canonical: 'https://www.purrify.ca/products/trial-size',
+    canonical: 'https://www.purrify.ca/products/trial-size/',
   },
   robots: {
     index: true,

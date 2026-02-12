@@ -8,18 +8,18 @@ export const metadata: Metadata = {
   title: `About Us - ${SITE_NAME}`,
   description: 'Learn about Purrify and our mission to eliminate cat litter odors naturally with activated carbon technology.',
   alternates: {
-    canonical: 'https://www.purrify.ca/about',
+    canonical: 'https://www.purrify.ca/about/',
   },
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/about',
+    url: 'https://www.purrify.ca/about/',
     siteName: SITE_NAME,
     title: `About Us - ${SITE_NAME}`,
     description: 'Learn about Purrify and our mission to eliminate cat litter odors naturally with activated carbon technology.',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
         width: 1200,
         height: 800,
         alt: `About ${SITE_NAME}`,

@@ -3,6 +3,7 @@ export const dynamic = 'force-static';
 import type { Metadata } from 'next';
 import { SITE_NAME } from '../../../../src/lib/constants';
 import ApartmentCatSmellPageClient from './ApartmentCatSmellPageClient';
+import { stripContext } from '../../../../src/lib/seo-utils';
 
 const pageTitle = `Cat in a 400 Sq Ft Apartment? How to Eliminate Litter Smell Completely | ${SITE_NAME}`;
 const pageDescription = 'No windows near your litter box. No ventilation. Roommates complaining. Here are 5 solutions that work in small apartments—guests will never know you have a cat.';
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   description: pageDescription,
   keywords: ['best litter for apartments with no ventilation', 'how to get rid of cat litter smell in apartment', 'odor control cat litter small apartment', 'apartment cat smell solution', 'cat litter for small spaces'],
   alternates: {
-    canonical: 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution',
+    canonical: 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution',
       'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/apartment-cat-smell-solution',
@@ -68,7 +69,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
       width: 400,
       height: 400,
     },
@@ -176,15 +177,16 @@ export default function ApartmentCatSmellSolutionPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@graph': [
+              stripContext(articleSchema),
+              stripContext(howToSchema),
+              stripContext(faqSchema),
+            ],
+          }),
+        }}
       />
       <ApartmentCatSmellPageClient />
     </>

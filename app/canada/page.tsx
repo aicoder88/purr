@@ -6,7 +6,7 @@ import { Check, MapPin, Truck, Leaf, Shield, Star, ChevronRight, Home } from 'lu
 import { defaultLocale } from '@/i18n/config';
 import type { Currency } from '@/lib/geo/currency-detector';
 import { SITE_NAME } from '@/lib/constants';
-import { buildLanguageAlternates, normalizeLocale } from '@/lib/seo-utils';
+import { buildLanguageAlternates, normalizeLocale, stripContext } from '@/lib/seo-utils';
 import { getProductPrice, formatProductPrice } from '@/lib/pricing';
 
 // Force static generation
@@ -54,7 +54,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: SITE_NAME,
       images: [
         {
-          url: 'https://www.purrify.ca/images/products/purrify-standard-bag.png',
+          url: 'https://www.purrify.ca/images/products/purrify-standard-bag.png/',
           width: 1200,
           height: 630,
           alt: pageTitle,
@@ -194,19 +194,17 @@ export default async function CanadaPage() {
     <>
       {/* Structured Data */}
       <script
-        id="product-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
-      />
-      <script
-        id="localbusiness-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
-      <script
-        id="breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@graph': [
+              stripContext(productSchema),
+              stripContext(localBusinessSchema),
+              stripContext(breadcrumbSchema),
+            ],
+          }),
+        }}
       />
 
       <div className="bg-cream-50 dark:bg-gray-900 min-h-screen">

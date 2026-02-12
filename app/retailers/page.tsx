@@ -10,7 +10,7 @@ import { ClientLocationsMap } from '@/components/maps/ClientLocationsMap';
 import { Stores } from '@/components/sections/stores';
 
 import { SITE_NAME, CONTACT_INFO } from '@/lib/constants';
-import { getLocalizedUrl } from '@/lib/seo-utils';
+import { getLocalizedUrl, stripContext } from '@/lib/seo-utils';
 import { getTranslation } from '@/translations';
 
 // Default to English for metadata
@@ -141,15 +141,16 @@ export default function RetailersPage() {
       {/* Schema.org structured data */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@graph': [
+              stripContext(organizationSchema),
+              stripContext(faqSchema),
+              stripContext(breadcrumbSchema),
+            ],
+          }),
+        }}
       />
 
       <main className="min-h-screen bg-white dark:bg-gray-900">
@@ -199,8 +200,8 @@ export default function RetailersPage() {
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
-              <Link 
-                href="/pos" 
+              <Link
+                href="/pos"
                 className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-200 dark:border-gray-700"
               >
                 <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-2">
@@ -210,8 +211,8 @@ export default function RetailersPage() {
                   Download shelf talkers, posters, and display materials for your store
                 </p>
               </Link>
-              <Link 
-                href="/b2b/sell-sheet" 
+              <Link
+                href="/b2b/sell-sheet"
                 className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-200 dark:border-gray-700"
               >
                 <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-2">
@@ -221,8 +222,8 @@ export default function RetailersPage() {
                   Product information and selling points for your staff
                 </p>
               </Link>
-              <Link 
-                href="/case-studies" 
+              <Link
+                href="/case-studies"
                 className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-200 dark:border-gray-700"
               >
                 <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-2">

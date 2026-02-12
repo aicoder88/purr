@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     'litter box odor checklist'
   ],
   alternates: {
-    canonical: '/learn/answers/how-to-eliminate-cat-litter-odor',
+    canonical: '/learn/answers/how-to-eliminate-cat-litter-odor/',
   },
   openGraph: {
     title: 'Eliminate Cat Litter Odor Fast | Action Guide | Purrify',

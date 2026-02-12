@@ -22,7 +22,7 @@ const EXCLUDED_URLS = [
   '/customers/testimonials',
   '/customers/case-studies',
   '/support/subscription',
-  
+
   // Noindex pages (protected portals)
   '/affiliate/dashboard',
   '/affiliate/login',
@@ -35,63 +35,24 @@ const EXCLUDED_URLS = [
   '/admin',
   '/thank-you',
   '/thank-you/upsell',
-  
+
   // Non-canonical pages
   '/es/opiniones',
 ];
 
 // === ADDITIONAL INDEXABLE PAGES - Fix for "Indexable page not in sitemap" ===
 const ADDITIONAL_URLS = [
-  // Locale homepages (critical missing pages)
+  // Locale homepages (Implemented via app/[locale]/page.tsx)
   { loc: '/fr/', priority: '0.9', changefreq: 'daily' },
   { loc: '/zh/', priority: '0.9', changefreq: 'daily' },
   { loc: '/es/', priority: '0.9', changefreq: 'daily' },
   { loc: '/us/', priority: '0.85', changefreq: 'weekly' },
-  
-  // Blog locale pages
+
+  // Blog locale pages (Implemented via app/[locale]/blog/page.tsx)
   { loc: '/fr/blog/', priority: '0.7', changefreq: 'weekly' },
   { loc: '/zh/blog/', priority: '0.7', changefreq: 'weekly' },
   { loc: '/es/blog/', priority: '0.7', changefreq: 'weekly' },
-  
-  // Product locale pages
-  { loc: '/fr/products/', priority: '0.8', changefreq: 'weekly' },
-  { loc: '/fr/products/trial-size/', priority: '0.85', changefreq: 'weekly' },
-  { loc: '/fr/products/standard/', priority: '0.85', changefreq: 'weekly' },
-  { loc: '/fr/products/family-pack/', priority: '0.85', changefreq: 'weekly' },
-  { loc: '/es/products/', priority: '0.8', changefreq: 'weekly' },
-  { loc: '/zh/products/', priority: '0.8', changefreq: 'weekly' },
-  
-  // Learn locale pages
-  { loc: '/fr/learn/', priority: '0.75', changefreq: 'weekly' },
-  { loc: '/fr/learn/how-it-works/', priority: '0.7', changefreq: 'monthly' },
-  { loc: '/fr/learn/faq/', priority: '0.7', changefreq: 'monthly' },
-  { loc: '/es/learn/', priority: '0.75', changefreq: 'weekly' },
-  { loc: '/es/learn/how-it-works/', priority: '0.7', changefreq: 'monthly' },
-  { loc: '/es/learn/faq/', priority: '0.7', changefreq: 'monthly' },
-  { loc: '/zh/learn/', priority: '0.75', changefreq: 'weekly' },
-  
-  // Support locale pages
-  { loc: '/fr/support/', priority: '0.6', changefreq: 'monthly' },
-  
-  // Contact locale pages
-  { loc: '/fr/contact/', priority: '0.6', changefreq: 'monthly' },
-  { loc: '/zh/contact/', priority: '0.6', changefreq: 'monthly' },
-  
-  // Reviews locale pages
-  { loc: '/fr/reviews/', priority: '0.7', changefreq: 'weekly' },
-  { loc: '/es/reviews/', priority: '0.7', changefreq: 'weekly' },
-  
-  // Stores locale pages
-  { loc: '/fr/stores/', priority: '0.7', changefreq: 'weekly' },
-  { loc: '/zh/stores/', priority: '0.7', changefreq: 'weekly' },
-  { loc: '/es/stores/', priority: '0.7', changefreq: 'weekly' },
-  
-  // B2B locale pages
-  { loc: '/fr/b2b/', priority: '0.7', changefreq: 'monthly' },
-  
-  // About locale pages
-  { loc: '/fr/about/our-story/', priority: '0.6', changefreq: 'monthly' },
-  
+
   // Learn answers pages (important for SEO)
   { loc: '/learn/cat-litter-answers/', priority: '0.7', changefreq: 'weekly' },
   { loc: '/learn/answers/does-activated-carbon-work-for-cat-litter/', priority: '0.6', changefreq: 'monthly' },
@@ -106,7 +67,7 @@ const ADDITIONAL_URLS = [
   { loc: '/learn/answers/what-eliminates-cat-litter-odor/', priority: '0.6', changefreq: 'monthly' },
   { loc: '/learn/answers/why-does-cat-litter-smell-worse-in-summer/', priority: '0.6', changefreq: 'monthly' },
   { loc: '/learn/answers/why-does-my-house-smell-like-cat-pee/', priority: '0.6', changefreq: 'monthly' },
-  
+
   // Other important pages
   { loc: '/try-free/', priority: '0.8', changefreq: 'weekly' },
   { loc: '/canada/', priority: '0.8', changefreq: 'weekly' },
@@ -162,7 +123,10 @@ function generateBasicSitemap(): string {
     { loc: '/try-free/', priority: '0.8', changefreq: 'weekly' },
     { loc: '/learn/how-it-works/', priority: '0.8', changefreq: 'monthly' },
     { loc: '/learn/faq/', priority: '0.8', changefreq: 'weekly' },
-    { loc: '/blog/', priority: '0.8', changefreq: 'daily' },
+    { loc: '/en/blog/', priority: '0.8', changefreq: 'daily' },
+    { loc: '/fr/blog/', priority: '0.8', changefreq: 'daily' },
+    { loc: '/es/blog/', priority: '0.8', changefreq: 'daily' },
+    { loc: '/zh/blog/', priority: '0.8', changefreq: 'daily' },
     { loc: '/learn/', priority: '0.75', changefreq: 'weekly' },
     { loc: '/es/learn/how-it-works/', priority: '0.7', changefreq: 'monthly' },
     { loc: '/es/learn/faq/', priority: '0.7', changefreq: 'monthly' },
@@ -180,29 +144,34 @@ function generateBasicSitemap(): string {
     { loc: '/support/', priority: '0.6', changefreq: 'monthly' },
     { loc: '/privacy-policy/', priority: '0.3', changefreq: 'monthly' },
     { loc: '/terms/', priority: '0.3', changefreq: 'monthly' },
-    // Blog posts
-    { loc: '/blog/activated-carbon-litter-additive-benefits/', priority: '0.6', changefreq: 'monthly' },
-    { loc: '/blog/how-to-use-cat-litter-deodorizer/', priority: '0.6', changefreq: 'monthly' },
-    { loc: '/blog/best-litter-odor-remover-small-apartments/', priority: '0.6', changefreq: 'monthly' },
-    { loc: '/blog/using-deodorizers-with-kittens/', priority: '0.6', changefreq: 'monthly' },
-    { loc: '/blog/activated-carbon-vs-baking-soda-comparison/', priority: '0.6', changefreq: 'monthly' },
+    // Blog posts (Fix: Use /en prefix for English)
+    { loc: '/en/blog/activated-carbon-litter-additive-benefits/', priority: '0.6', changefreq: 'monthly' },
+    { loc: '/en/blog/how-to-use-cat-litter-deodorizer/', priority: '0.6', changefreq: 'monthly' },
+    { loc: '/en/blog/best-litter-odor-remover-small-apartments/', priority: '0.6', changefreq: 'monthly' },
+    { loc: '/en/blog/using-deodorizers-with-kittens/', priority: '0.6', changefreq: 'monthly' },
+    { loc: '/en/blog/activated-carbon-vs-baking-soda-comparison/', priority: '0.6', changefreq: 'monthly' },
     // Locale homepages (FIX: indexable pages not in sitemap)
     { loc: '/fr/', priority: '0.9', changefreq: 'daily' },
     { loc: '/es/', priority: '0.9', changefreq: 'daily' },
     { loc: '/zh/', priority: '0.9', changefreq: 'daily' },
   ];
-  
+
   // Add additional URLs for missing indexable pages
   urls.push(...ADDITIONAL_URLS);
+
+  // Filter out excluded URLs
+  const filteredUrls = urls.filter(url => !EXCLUDED_URLS.includes(url.loc));
 
   const lastmod = new Date().toISOString().split('T')[0];
 
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
   xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
 
-  urls.forEach(url => {
+  filteredUrls.forEach(url => {
+    // Ensure trailing slash
+    const loc = url.loc.endsWith('/') ? url.loc : `${url.loc}/`;
     xml += '  <url>\n';
-    xml += `    <loc>${baseUrl}${url.loc}</loc>\n`;
+    xml += `    <loc>${baseUrl}${loc}</loc>\n`;
     xml += `    <lastmod>${lastmod}</lastmod>\n`;
     xml += `    <changefreq>${url.changefreq}</changefreq>\n`;
     xml += `    <priority>${url.priority}</priority>\n`;

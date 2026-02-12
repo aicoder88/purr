@@ -2,6 +2,7 @@ export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
 import { SITE_NAME } from '../../../../src/lib/constants';
+import { stripContext } from '@/lib/seo-utils';
 import SeniorCatPageClient from './SeniorCatPageClient';
 
 const pageTitle = `Best Litter for Senior Cats with Arthritis & Mobility Issues | ${SITE_NAME}`;
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
     description: pageDescription,
     keywords: ['senior cat litter solutions', 'best litter for senior cats', 'best cat litter for older cats', 'litter box for senior cats with arthritis', 'low dust litter for senior cats', 'senior cat litter box'],
     alternates: {
-        canonical: 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions',
+        canonical: 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions/',
         languages: {
             'en-CA': 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions',
             'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/senior-cat-litter-solutions',
@@ -68,7 +69,7 @@ const articleSchema = {
         name: SITE_NAME,
         logo: {
             '@type': 'ImageObject',
-            url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+            url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
             width: 400,
             height: 400,
         },
@@ -181,15 +182,16 @@ export default function SeniorCatLitterSolutionsPage() {
         <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        '@context': 'https://schema.org',
+                        '@graph': [
+                            stripContext(articleSchema),
+                            stripContext(howToSchema),
+                            stripContext(faqSchema),
+                        ],
+                    }),
+                }}
             />
             <SeniorCatPageClient />
         </>

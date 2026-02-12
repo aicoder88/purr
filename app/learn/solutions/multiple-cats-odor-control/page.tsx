@@ -2,6 +2,7 @@ export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
 import { SITE_NAME } from '../../../../src/lib/constants';
+import { stripContext } from '@/lib/seo-utils';
 import MultipleCatsOdorControlPageClient from './MultipleCatsOdorControlPageClient';
 
 const pageTitle = `Multi-Cat Household Odor Solution: Complete Guide for 2+ Cats | ${SITE_NAME}`;
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   description: pageDescription,
   keywords: ['multi cat household odor solution', 'multiple cats smell', 'how to control cat smell with multiple cats', 'best litter for multiple cats', 'cat odor 3 cats 4 cats 5 cats', 'multi-cat litter box odor'],
   alternates: {
-    canonical: 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control',
+    canonical: 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control/',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control',
       'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/multiple-cats-odor-control',
@@ -68,7 +69,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
       width: 400,
       height: 400,
     },
@@ -176,15 +177,16 @@ export default function MultipleCatsOdorControlPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@graph': [
+              stripContext(articleSchema),
+              stripContext(howToSchema),
+              stripContext(faqSchema),
+            ],
+          }),
+        }}
       />
       <MultipleCatsOdorControlPageClient />
     </>

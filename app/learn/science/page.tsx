@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Explore molecular science behind activated carbon. Learn how micropores, mesopores, and macropores eliminate cat litter odors at the source.',
   keywords: ['activated carbon science', 'cat litter odor control', 'micropores', 'ammonia elimination', 'mercaptan removal'],
   alternates: {
-    canonical: 'https://www.purrify.ca/learn/science',
+    canonical: 'https://www.purrify.ca/learn/science/',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/science',
       'fr-CA': 'https://www.purrify.ca/fr/learn/science',
@@ -20,14 +20,14 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'article',
-    url: 'https://www.purrify.ca/learn/science',
+    url: 'https://www.purrify.ca/learn/science/',
     siteName: SITE_NAME,
     title: `The Science of Activated Carbon - ${SITE_NAME}`,
     description: 'Explore the molecular science behind activated carbon.',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/benefits-hero-science.webp',
+        url: 'https://www.purrify.ca/optimized/benefits-hero-science.webp/',
         width: 1200,
         height: 800,
         alt: 'The Science of Activated Carbon',
@@ -49,7 +49,7 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   '@id': 'https://www.purrify.ca/learn/science',
-  url: 'https://www.purrify.ca/learn/science',
+  url: 'https://www.purrify.ca/learn/science/',
   inLanguage: 'en-CA',
   headline: `The Science of Activated Carbon - ${SITE_NAME}`,
   description: 'Explore the molecular science behind activated carbon. Learn how micropores, mesopores, and macropores work together to eliminate cat litter odors at the source.',
@@ -66,7 +66,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
       width: 400,
       height: 400,
     },

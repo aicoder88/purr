@@ -3,6 +3,7 @@ export const dynamic = 'force-static';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ChevronRight, HelpCircle } from 'lucide-react';
+import { stripContext } from '@/lib/seo-utils';
 
 export const metadata: Metadata = {
   title: 'Cat Litter Questions Answered | Expert Advice - Purrify',
@@ -17,11 +18,11 @@ export const metadata: Metadata = {
     'ammonia odor solutions',
   ],
   alternates: {
-    canonical: '/learn/cat-litter-answers',
+    canonical: '/learn/cat-litter-answers/',
   },
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/learn/cat-litter-answers',
+    url: 'https://www.purrify.ca/learn/cat-litter-answers/',
     title: 'Cat Litter Questions Answered | Expert Advice - Purrify',
     description: 'Get expert answers to every cat litter question: odor control, ammonia elimination, litter box placement, and activated carbon science.',
     locale: 'en_CA',
@@ -390,15 +391,19 @@ export default function CatLitterAnswersPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: paaQuestions.map((q) => ({
-              '@type': 'Question',
-              name: q.question,
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: q.preview,
-              },
-            })),
+            '@graph': [
+              stripContext({
+                '@type': 'FAQPage',
+                mainEntity: paaQuestions.map((q) => ({
+                  '@type': 'Question',
+                  name: q.question,
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: q.preview,
+                  },
+                })),
+              }),
+            ],
           }),
         }}
       />

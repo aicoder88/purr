@@ -3,6 +3,7 @@ export const dynamic = 'force-static';
 import type { Metadata } from 'next';
 import { SITE_NAME } from '../../../../src/lib/constants';
 import NaturalCatLitterAdditivePageClient from './NaturalCatLitterAdditivePageClient';
+import { stripContext } from '../../../../src/lib/seo-utils';
 
 const pageTitle = `Non-Toxic Cat Litter Deodorizer: Safe for Cats, Effective for Odor | ${SITE_NAME}`;
 const pageDescription = 'Looking for a non-toxic cat litter deodorizer? Activated carbon is food-grade, fragrance-free, and safe if ingested. Works 10x longer than baking soda without chemicals.';
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   description: pageDescription,
   keywords: ['non-toxic cat litter deodorizer', 'safe cat litter deodorizer', 'natural litter deodorizer', 'fragrance-free cat litter', 'chemical-free cat odor control', 'pet-safe litter additive'],
   alternates: {
-    canonical: 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive',
+    canonical: 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive',
       'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/natural-cat-litter-additive',
@@ -68,7 +69,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
       width: 400,
       height: 400,
     },
@@ -176,15 +177,16 @@ export default function NaturalCatLitterAdditivePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@graph': [
+              stripContext(articleSchema),
+              stripContext(howToSchema),
+              stripContext(faqSchema),
+            ],
+          }),
+        }}
       />
       <NaturalCatLitterAdditivePageClient />
     </>

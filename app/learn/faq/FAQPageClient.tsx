@@ -26,6 +26,7 @@ import {
   CreditCard
 } from 'lucide-react';
 import Image from 'next/image';
+import { stripContext } from '@/lib/seo-utils';
 
 // FAQ Schema Generator
 function generateFAQSchema(questions: { question: string; answer: string }[]) {
@@ -148,12 +149,37 @@ export default function FAQPageClient() {
     answer: item.answer,
   })));
 
+  // Generate Breadcrumb schema
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://www.purrify.ca',
+      },
+      ...breadcrumbItems.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 2,
+        name: item.name,
+        item: `https://www.purrify.ca${item.path}`,
+      })),
+    ],
+  };
+
   return (
     <>
-      {/* Auto-generated FAQ Schema */}
+      {/* Consolidated Schema */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@graph': [stripContext(faqSchema), stripContext(breadcrumbSchema)],
+          }),
+        }}
       />
 
       <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">

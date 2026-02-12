@@ -1,5 +1,5 @@
 import { SITE_NAME, SITE_DESCRIPTION, PRODUCTS, CONTACT_INFO, SOCIAL_LINKS } from './constants';
-import { getProductPrice, getPriceRange} from './pricing';
+import { getProductPrice, getPriceRange } from './pricing';
 import type { Currency } from './geo/currency-detector';
 
 // SEO utilities for comprehensive structured data and multilingual support
@@ -41,6 +41,15 @@ export const getPriceValidityDate = (validForDays: number = DEFAULT_PRICE_VALIDI
 
 export const buildAvailabilityUrl = (availability: OfferAvailability = 'InStock') =>
   `${SCHEMA_ORG_BASE_URL}/${availability}`;
+
+/**
+ * Strips @context from a schema object, useful for items in a @graph
+ */
+export const stripContext = (schema: any) => {
+  if (!schema || typeof schema !== 'object') return schema;
+  const { '@context': _, ...rest } = schema;
+  return rest;
+};
 
 export const SEO_TRANSLATIONS = {
   siteDescription: {
@@ -122,14 +131,18 @@ export const normalizeLocale = (locale: string): LocaleCode => {
 export const getLocalizedUrl = (path: string, localeInput: string) => {
   const locale = normalizeLocale(localeInput);
   const baseUrl = 'https://www.purrify.ca';
-  const localePrefix = locale === 'en' ? '' : `/${locale}`;
   const normalizedPath = normalizeCanonicalPath(path);
 
+  // Special handling for blog paths which are only available under /[locale]/blog
+  // but redirected from /blog. We want to point to the 200 OK version.
+  const isBlogPath = normalizedPath.startsWith('/blog/') || normalizedPath === '/blog';
+  const localePrefix = (locale === 'en' && isBlogPath) ? '/en' : (locale === 'en' ? '' : `/${locale}`);
+
   if (normalizedPath === '/') {
-    return `${baseUrl}${localePrefix}/`;
+    return `${baseUrl}/`;
   }
 
-  return `${baseUrl}${localePrefix}${normalizedPath}`;
+  return `${baseUrl}${localePrefix}${normalizedPath.replace(/^\/(en|fr|zh|es)(\/|$)/, '/')}`;
 };
 
 export type LanguageAlternate = {
@@ -148,32 +161,28 @@ export const buildLanguageAlternates = (canonicalPath: string): LanguageAlternat
     href: getLocalizedUrl(normalizedPath, locale),
   }));
 
-  const defaultHref = getLocalizedUrl(normalizedPath, DEFAULT_LOCALE);
+  // For English (CA), we want to be consistent with the canonical URL
+  const enCaHref = getLocalizedUrl(normalizedPath, 'en');
 
-  // Only add en-US and x-default for non-locale-specific paths
-  // (i.e., not for /fr/*, /zh/*, /es/* paths which should be self-contained)
-  const isRootPath = normalizedPath === '/' || normalizedPath === '';
-  
-  // Build the complete alternate set
-  const result: LanguageAlternate[] = [...alternates];
-  
   // Add en-US variant - points to /us for homepage, or locale equivalent for other pages
-  // For non-root paths, en-US should point to the same path as en-CA (no /us/ prefix)
-  const usHref = isRootPath 
-    ? 'https://www.purrify.ca/us'
-    : getLocalizedUrl(normalizedPath, DEFAULT_LOCALE);
-  
+  const isRootPath = normalizedPath === '/' || normalizedPath === '';
+  const usHref = isRootPath
+    ? 'https://www.purrify.ca/us/'
+    : enCaHref;
+
+  const result: LanguageAlternate[] = [...alternates];
+
   result.push({
     locale: DEFAULT_LOCALE,
     hrefLang: 'en-US',
     href: usHref,
   });
-  
+
   // Add x-default pointing to the default locale version
   result.push({
     locale: DEFAULT_LOCALE,
     hrefLang: 'x-default',
-    href: defaultHref,
+    href: enCaHref,
   });
 
   return result;
@@ -187,7 +196,8 @@ function normalizeCanonicalPath(path: string | undefined) {
   const withLeadingSlash = path.startsWith('/') ? path : `/${path}`;
   const trimmed = withLeadingSlash.replace(/\/+$/, '');
 
-  return trimmed.length === 0 ? '/' : trimmed;
+  // Ensure trailing slash for consistency with next.config.js trailingSlash: true
+  return trimmed.length === 0 ? '/' : `${trimmed}/`;
 }
 
 // Generate localized content
@@ -501,10 +511,10 @@ export const generateBreadcrumbSchema = (path: string, localeInput: string) => {
     '@type': 'BreadcrumbList',
     itemListElement: breadcrumbs.map((breadcrumb, index) => {
       // Ensure the URL is absolute
-      const itemUrl = breadcrumb.url.startsWith('http') 
-        ? breadcrumb.url 
+      const itemUrl = breadcrumb.url.startsWith('http')
+        ? breadcrumb.url
         : `${baseUrl}${breadcrumb.url}`;
-      
+
       return {
         '@type': 'ListItem',
         position: index + 1,
@@ -683,10 +693,10 @@ export const generateHomepageSchema = (localeInput: string, currency: string = '
     '@context': 'https://schema.org',
     '@graph': [
       // Website Schema
-      generateWebsiteSchema(locale),
+      stripContext(generateWebsiteSchema(locale)),
 
       // Organization Schema
-      generateOrganizationSchema(locale),
+      stripContext(generateOrganizationSchema(locale)),
 
       // Product Collection
       {
@@ -710,7 +720,7 @@ export const generateHomepageSchema = (localeInput: string, currency: string = '
       },
 
       // FAQ Schema for homepage FAQ section
-      generateFAQSchema(locale)
+      stripContext(generateFAQSchema(locale))
     ]
   };
 };
@@ -784,7 +794,7 @@ export const generateProductPageSchema = (productId: string, localeInput: string
       },
 
       // Breadcrumb Schema
-      generateBreadcrumbSchema(`/products/${productId}`, locale)
+      stripContext(generateBreadcrumbSchema(`/products/${productId}`, locale))
     ]
   };
 };
@@ -803,16 +813,16 @@ export const generateArticlePageSchema = (title: string, description: string, pa
   const locale = normalizeLocale(localeInput);
   const url = getLocalizedUrl(path, locale);
   const baseUrl = 'https://www.purrify.ca';
-  
+
   // Ensure headline doesn't exceed 110 characters
   const headline = title?.length > 110 ? title.substring(0, 107) + '...' : title;
-  
+
   // Ensure dates are in ISO 8601 format
   const now = new Date().toISOString();
-  const datePublished = options?.datePublished 
+  const datePublished = options?.datePublished
     ? (options.datePublished.includes('T') ? options.datePublished : new Date(options.datePublished).toISOString())
     : now;
-  const dateModified = options?.dateModified 
+  const dateModified = options?.dateModified
     ? (options.dateModified.includes('T') ? options.dateModified : new Date(options.dateModified).toISOString())
     : datePublished;
 
@@ -849,7 +859,7 @@ export const generateArticlePageSchema = (title: string, description: string, pa
       '@id': url
     },
   };
-  
+
   // Only add optional fields if they have values
   if (options?.category) articleSchema.articleSection = options.category;
   if (options?.keywords?.length) articleSchema.keywords = options.keywords.join(', ');

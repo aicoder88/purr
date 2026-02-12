@@ -2,6 +2,7 @@ export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
 import { SITE_NAME } from '../../../../src/lib/constants';
+import { stripContext } from '@/lib/seo-utils';
 import ArmAndHammerAlternativeClient from './ArmAndHammerAlternativeClient';
 
 export const metadata: Metadata = {
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     'cat litter smell solution',
   ],
   alternates: {
-    canonical: 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
+    canonical: 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
       'fr-CA': 'https://www.purrify.ca/fr/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
@@ -28,13 +29,13 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'article',
-    url: 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
+    url: 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/',
     title: 'Arm & Hammer Not Working? Better Alternative | Purrify',
     description: "Baking soda stops working after 48 hours. It can't neutralize ammonia (same pH). Here's the science-backed alternative that lasts 3x longer.",
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/activated-carbon-vs-baking-soda-comparison.webp',
+        url: 'https://www.purrify.ca/optimized/activated-carbon-vs-baking-soda-comparison.webp/',
         width: 1200,
         height: 630,
         alt: 'Arm & Hammer cat litter deodorizer alternative - activated carbon comparison',
@@ -53,7 +54,7 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   '@id': 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
-  url: 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
+  url: 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/',
   inLanguage: 'en-CA',
   headline: 'Arm & Hammer Cat Litter Deodorizer Not Working? Try This Instead',
   description: "Baking soda stops working after 48 hours. It can't neutralize ammonia (same pH). Here's the science-backed alternative that lasts 3x longer.",
@@ -70,7 +71,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
       width: 400,
       height: 400,
     },
@@ -95,7 +96,7 @@ const howToSchema = {
   name: 'How to Switch from Arm & Hammer to Activated Carbon',
   description: "Making the switch is simple. You don't need to change your litter or routine dramatically.",
   totalTime: 'PT5M',
-  url: 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
+  url: 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/',
   step: [
     {
       '@type': 'HowToStep',
@@ -185,15 +186,16 @@ export default function ArmAndHammerAlternativePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@graph': [
+              stripContext(articleSchema),
+              stripContext(howToSchema),
+              stripContext(faqSchema),
+            ],
+          }),
+        }}
       />
       <ArmAndHammerAlternativeClient />
     </>

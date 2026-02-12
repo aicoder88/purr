@@ -2,6 +2,7 @@ export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
 import { SITE_NAME } from '../../../../src/lib/constants';
+import { stripContext } from '@/lib/seo-utils';
 import AmmoniaSmellPageClient from './AmmoniaSmellPageClient';
 
 const pageTitle = `Cat Litter Smells Like Ammonia? Baking Soda Can't Fix It (Here's Why) | ${SITE_NAME}`;
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   description: pageDescription,
   keywords: ['cat litter smells like ammonia', 'ammonia smell cat litter', 'cat litter ammonia smell', 'ammonia from cat litter', 'how to neutralize ammonia in cat litter', 'best cat litter for ammonia smell'],
   alternates: {
-    canonical: 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter',
+    canonical: 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter/',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter',
       'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/ammonia-smell-cat-litter',
@@ -68,7 +69,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
       width: 400,
       height: 400,
     },
@@ -181,15 +182,16 @@ export default function AmmoniaSmellCatLitterPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@graph': [
+              stripContext(articleSchema),
+              stripContext(howToSchema),
+              stripContext(faqSchema),
+            ],
+          }),
+        }}
       />
       <AmmoniaSmellPageClient />
     </>

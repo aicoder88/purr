@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: "Bacteria convert urea to ammonia gas within 2-4 hours. By hour 24, it's unbearable. Here's the chemistry behind the stink—and how to break the cycle.",
   keywords: ['why cat urine smells like ammonia', 'cat pee ammonia smell', 'urea to ammonia', 'cat litter ammonia science', 'why cat litter smells', 'ammonia from cat urine'],
   alternates: {
-    canonical: 'https://www.purrify.ca/learn/ammonia-science',
+    canonical: 'https://www.purrify.ca/learn/ammonia-science/',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/ammonia-science',
       'fr-CA': 'https://www.purrify.ca/fr/learn/ammonia-science',
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'article',
-    url: 'https://www.purrify.ca/learn/ammonia-science',
+    url: 'https://www.purrify.ca/learn/ammonia-science/',
     title: `Why Cat Urine Smells Like Ammonia (And Fixes) | ${SITE_NAME}`,
     description: "Bacteria convert urea to ammonia gas within 2-4 hours. Here's the chemistry behind the stink—and how to break the cycle.",
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/ammonia-science.webp',
+        url: 'https://www.purrify.ca/images/ammonia-science.webp/',
         width: 1200,
         height: 675,
         alt: 'The science of ammonia production in cat litter',
@@ -45,7 +45,7 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   '@id': 'https://www.purrify.ca/learn/ammonia-science',
-  url: 'https://www.purrify.ca/learn/ammonia-science',
+  url: 'https://www.purrify.ca/learn/ammonia-science/',
   inLanguage: 'en-CA',
   headline: `Why Cat Urine Smells Like Ammonia (The Chemistry + How to Stop It) | ${SITE_NAME}`,
   description: "Bacteria convert urea to ammonia gas within 2-4 hours. By hour 24, it's unbearable. Here's the chemistry behind the stink—and how to break the cycle.",
@@ -62,7 +62,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
       width: 400,
       height: 400,
     },

@@ -6,17 +6,17 @@ export const metadata: Metadata = {
   title: 'FREE Purrify Trial | Just Pay Shipping | Eliminates Odors',
   description: 'FREE Purrify Trial | Just Pay Shipping | Eliminates cat litter smell instantly with water-filter grade carbon. ★ 4.8 rating. Ships USA & Canada.',
   alternates: {
-    canonical: 'https://www.purrify.ca/try-free',
+    canonical: 'https://www.purrify.ca/try-free/',
   },
   keywords: ['free trial', 'cat litter freshener', 'odor eliminator sample', 'free shipping'],
   openGraph: {
     title: 'FREE Purrify Trial | Just Pay Shipping | Eliminates Odors',
     description: 'FREE Purrify Trial | Just Pay Shipping | Eliminates cat litter smell instantly with water-filter grade carbon. ★ 4.8 rating. Ships USA & Canada.',
-    url: 'https://www.purrify.ca/try-free',
+    url: 'https://www.purrify.ca/try-free/',
     siteName: SITE_NAME,
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/17gpink.webp',
+        url: 'https://www.purrify.ca/optimized/17gpink.webp/',
         width: 1200,
         height: 800,
         alt: 'FREE Purrify Trial | Just Pay Shipping | Eliminates Odors',

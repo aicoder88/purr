@@ -8,7 +8,7 @@ import { ContentStore } from '@/lib/blog/content-store';
 import { sampleBlogPosts, getBlogPostContent, type BlogPost as DataBlogPost } from '@/data/blog-posts';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
 import { locales, isValidLocale, defaultLocale } from '@/i18n/config';
-import { generateArticlePageSchema } from '@/lib/seo-utils';
+import { generateArticlePageSchema, stripContext } from '@/lib/seo-utils';
 import { ArrowLeft, Calendar, User, Clock } from 'lucide-react';
 
 // Force static generation - no dynamic data fetching
@@ -60,25 +60,25 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   // Build hreflang alternates with self-referencing support
-  const hrefLang = locale === 'en' ? 'en-CA' : 
-                   locale === 'fr' ? 'fr-CA' : 
-                   locale === 'zh' ? 'zh-CN' : 
-                   locale === 'es' ? 'es-US' : 'en-CA';
+  const hrefLang = locale === 'en' ? 'en-CA' :
+    locale === 'fr' ? 'fr-CA' :
+      locale === 'zh' ? 'zh-CN' :
+        locale === 'es' ? 'es-US' : 'en-CA';
 
   return {
     title: `${post.title} | ${SITE_NAME} Blog`,
     description: post.excerpt,
     alternates: {
-      canonical: `${SITE_URL}/${locale}/blog/${slug}`,
+      canonical: `${SITE_URL}/${locale}/blog/${slug}/`,
       languages: {
-        'en-CA': `${SITE_URL}/blog/${slug}`,
-        'fr-CA': `${SITE_URL}/fr/blog/${slug}`,
-        'zh-CN': `${SITE_URL}/zh/blog/${slug}`,
-        'es-US': `${SITE_URL}/es/blog/${slug}`,
-        'en-US': `${SITE_URL}/blog/${slug}`,
-        'x-default': `${SITE_URL}/blog/${slug}`,
+        'en-CA': `${SITE_URL}/en/blog/${slug}/`,
+        'fr-CA': `${SITE_URL}/fr/blog/${slug}/`,
+        'zh-CN': `${SITE_URL}/zh/blog/${slug}/`,
+        'es-US': `${SITE_URL}/es/blog/${slug}/`,
+        'en-US': `${SITE_URL}/en/blog/${slug}/`,
+        'x-default': `${SITE_URL}/en/blog/${slug}/`,
         // Self-reference for the current locale
-        [hrefLang]: `${SITE_URL}/${locale}/blog/${slug}`,
+        [hrefLang]: `${SITE_URL}/${locale}/blog/${slug}/`,
       },
     },
     robots: {
@@ -94,7 +94,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      url: `${SITE_URL}/${locale}/blog/${slug}`,
+      url: `${SITE_URL}/${locale}/blog/${slug}/`,
       type: 'article',
       publishedTime: post.date,
       authors: [post.author],
@@ -241,7 +241,7 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
   const articleSchema = generateArticlePageSchema(
     post.title,
     post.excerpt,
-    `/${locale}/blog/${slug}`,
+    `/${locale}/blog/${slug}/`,
     locale,
     {
       author: post.author,
@@ -280,12 +280,12 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
         return stepData;
       }),
     };
-    
+
     // Only add optional fields if they exist and have content
     if (post.howTo.totalTime) {
       howToSchema.totalTime = post.howTo.totalTime;
     }
-    
+
     if (post.howTo.estimatedCost?.currency && post.howTo.estimatedCost?.value) {
       howToSchema.estimatedCost = {
         '@type': 'MonetaryAmount',
@@ -293,15 +293,15 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
         value: post.howTo.estimatedCost.value,
       };
     }
-    
+
     if (post.howTo.supply && post.howTo.supply.length > 0) {
       howToSchema.supply = post.howTo.supply.map((s) => ({ '@type': 'HowToSupply', name: s }));
     }
-    
+
     if (post.howTo.tool && post.howTo.tool.length > 0) {
       howToSchema.tool = post.howTo.tool.map((t) => ({ '@type': 'HowToTool', name: t }));
     }
-    
+
     schemas.push(howToSchema);
   }
 
@@ -343,9 +343,15 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
 
   return (
     <>
-      {schemas.map((schema, index) => (
-        <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      ))}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@graph': schemas.map((s) => stripContext(s)),
+          }),
+        }}
+      />
 
       <main className="min-h-screen bg-gradient-to-br from-[#FFFFF5] via-white to-[#FFFFF5] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
         {/* Back Navigation */}

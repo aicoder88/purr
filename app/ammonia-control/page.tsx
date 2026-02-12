@@ -33,7 +33,7 @@ import { zh } from '@/translations/zh';
 import { es } from '@/translations/es';
 import type { Currency } from '@/lib/geo/currency-detector';
 import { SITE_NAME } from '@/lib/constants';
-import { buildLanguageAlternates, normalizeLocale } from '@/lib/seo-utils';
+import { buildLanguageAlternates, normalizeLocale, stripContext } from '@/lib/seo-utils';
 
 // Force static generation
 export const dynamic = 'force-static';
@@ -247,19 +247,17 @@ export default async function AmmoniaControlPage() {
     <>
       {/* Structured Data */}
       <script
-        id="product-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
-      />
-      <script
-        id="faq-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <script
-        id="breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@graph': [
+              stripContext(productSchema),
+              stripContext(faqSchema),
+              stripContext(breadcrumbSchema),
+            ],
+          }),
+        }}
       />
 
       {/* Hero Section */}

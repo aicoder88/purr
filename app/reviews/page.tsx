@@ -8,14 +8,14 @@ export const metadata: Metadata = {
   keywords: ['Purrify reviews', 'cat litter freshener reviews', 'customer testimonials', 'verified reviews', 'cat owner feedback'],
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/reviews',
+    url: 'https://www.purrify.ca/reviews/',
     siteName: SITE_NAME,
     title: 'Purrify Reviews - What Cat Owners Are Saying',
     description: 'Read verified reviews from real cat owners who have transformed their homes with Purrify. ★ 4.9/5 average rating from 138+ customers.',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
         width: 1200,
         height: 800,
         alt: 'Purrify Customer Reviews',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
   },
   alternates: {
-    canonical: 'https://www.purrify.ca/reviews',
+    canonical: 'https://www.purrify.ca/reviews/',
     languages: {
       'en-CA': 'https://www.purrify.ca/reviews',
       'fr-CA': 'https://www.purrify.ca/fr/reviews',

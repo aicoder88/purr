@@ -14,18 +14,18 @@ export const metadata: Metadata = {
     'grooming supplies wholesale',
   ],
   alternates: {
-    canonical: 'https://www.purrify.ca/groomers',
+    canonical: 'https://www.purrify.ca/groomers/',
   },
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/groomers',
+    url: 'https://www.purrify.ca/groomers/',
     siteName: SITE_NAME,
     title: `Purrify for Pet Groomers | Wholesale Program`,
     description: 'Pet groomers: offer more value with Purrify. Easy add-on sale, wholesale pricing, and retail display materials included.',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
         width: 1200,
         height: 800,
         alt: `${SITE_NAME} for Pet Groomers`,
@@ -54,7 +54,7 @@ const organizationSchema = {
   url: 'https://www.purrify.ca',
   logo: {
     '@type': 'ImageObject',
-    url: 'https://www.purrify.ca/images/purrify-logo.png',
+    url: 'https://www.purrify.ca/images/purrify-logo.png/',
     width: 400,
     height: 400,
   },

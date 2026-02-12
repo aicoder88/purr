@@ -4,134 +4,90 @@
 
 ---
 
-## 🚨 Core Mandates (MUST FOLLOW)
+## Core Mandates
 
-### 📦 Package Manager: pnpm ONLY
-**CRITICAL:** This project uses **pnpm exclusively**. Do NOT use npm or yarn.
-*   **Install:** `pnpm install`
-*   **Add:** `pnpm add package-name`
-*   **Dev:** `pnpm dev`
-*   **Run Scripts:** `pnpm script-name`
+### Package Manager: pnpm ONLY
+This project uses **pnpm exclusively**. Do NOT use npm or yarn.
 
-### 🚫 No Fabrication Rule
+### No Fabrication Rule
 **NEVER fabricate or assume the existence of:**
-*   ❌ Contact info (phone numbers, emails, addresses)
-*   ❌ Social media (handles, hashtags)
-*   ❌ File paths (images, PDFs, assets)
-*   ❌ URLs (subdomains, pages, external links)
-*   **VERIFY FIRST**: Check `public/`, `pages/`, or ask the user.
+- Contact info, social media handles, hashtags
+- File paths, image paths, URLs
+- **VERIFY FIRST**: Check the filesystem or ask the user.
 
-### 💧 Hydration Safety
-**CRITICAL:** Never conditionally return `null` in page components based on client state. This causes hydration mismatches.
-*   **Bad:** `if (!session) return null;`
-*   **Good:** Use server-side redirects (`getServerSideProps`) or return a loading/error component (`<LoadingSpinner />`).
-
----
-
-## 🧠 Core Thinking Principles
-
-### 1. Think Before Coding
-- **Clarify ambiguity**: If a request could mean A or B, ask "Did you mean A or B?" before writing code.
-- **State your plan**: Before multi-file changes, write a 3-line plan: "1. Edit X, 2. Update Y, 3. Verify with Z".
--   **Surface tradeoffs**: If there's a simpler approach, say "Option A is faster but less flexible. Option B is more robust. Which do you prefer?"
--   **Verify resources exist**: See the "No Fabrication Rule" above.
-
-### 2. Simplicity First
--   **One-use code stays inline**: Don't extract to a utility unless it's used 2+ times.
--   **Prefer stdlib over npm**: If Node.js or the browser can do it natively, don't install a package.
--   **Delete dead code**: If your change makes something unused, remove it in the same commit.
-
-### 3. Surgical Changes
--   **Match the file's existing style**: If the file uses `function foo()`, don't add `const foo = () =>`.
--   **Don't touch unrelated code**: If you see a typo in a comment 50 lines away, mention it—don't fix it silently.
--   **Small diffs**: A 10-line change shouldn't produce a 200-line diff.
-
-### 4. Goal-Driven Execution
--   **Verify changes work**: Run `pnpm build` or `pnpm lint` after edits. Don't assume success.
--   **Loop on failure**: If a command fails, read the error and fix it. Don't move on.
--   **Localhost Issues**: Start local server (`pnpm dev`) immediately when localhost pages don't work. Don't try to open more pages.
-
+### Hydration Safety
+Never conditionally return `null` in page components based on client state. Use server-side `redirect()` from `next/navigation` or return a loading/error component instead. See `docs/HYDRATION_SAFETY.md`.
 
 ---
 
 ## Project Overview
 
-**Purrify** is an e-commerce website for an activated carbon cat litter additive product. The website serves multiple markets (Canada, USA) in four languages (English, French, Chinese, Spanish). It features a complete online store, blog with AI-generated content, affiliate program, retailer portal, and comprehensive SEO optimization.
+**Purrify** is an e-commerce site for an activated carbon cat litter additive. Serves Canada (CAD) and USA (USD) in four languages (en, fr, zh, es).
 
 - **Website**: https://www.purrify.ca
-- **Primary Market**: Canada (CAD currency)
-- **Secondary Market**: USA (USD currency)
-- **Node Version**: >= 22.x
-- **Package Manager**: pnpm 10.27.0
+- **Node**: >= 22.x
+- **Package Manager**: pnpm
 
 ---
 
 ## Technology Stack
 
-### Core Framework
-- **Next.js 16.0.10** - React framework with Pages Router (legacy)
-- **React 19.2.3** - UI library
-- **TypeScript 5.9.3** - Type safety
+### Core
+- **Next.js 16** - App Router
+- **React 19** - UI library
+- **TypeScript 5.9** - Strict mode enabled
 
 ### Database & ORM
-- **PostgreSQL** - Primary database
-- **Prisma 6.19.1** - Type-safe ORM with client generation
+- **PostgreSQL** via Supabase
+- **Prisma 7** - Type-safe ORM, singleton in `src/lib/prisma.ts`
 
 ### Authentication
-- **NextAuth.js 4.24.13** - Authentication library
-- **bcryptjs** - Password hashing
-- JWT-based sessions with 24-hour expiration
+- **NextAuth v5** (beta) - Credentials provider, JWT sessions
+- `requireAuth()` from `src/lib/auth/session.ts` for protected routes
+- Rate limiting in `src/lib/security/rate-limit.ts` (AUTH: 5/15min, CREATE: 10/min, UPLOAD: 15/min)
+- CSRF protection in `src/lib/security/csrf.ts`
+- Roles: admin, editor, affiliate
 
 ### Styling & UI
-- **Tailwind CSS 3.4.19** - Utility-first CSS framework
-- **Radix UI** - Headless UI components (extensive usage)
-- **Lucide React** - Icon library
-- **Framer Motion** - Animation library
-- **Embla Carousel** - Carousel component
+- **Tailwind CSS 3.4** with dark mode (`class` strategy)
+- **Radix UI** - Headless components (shadcn/ui style) in `src/components/ui/`
+- **Lucide React** - Icons
+- **Framer Motion** - Animations
 
-### Payment & E-commerce
-- **Stripe 18.5.0** - Payment processing
-- Custom checkout session API
-- Subscription/autoship support
+### Payments
+- **Stripe** - Payment links in `src/lib/payment-links.ts`, webhooks at `app/api/webhooks/stripe/`
 
-### AI & Content Generation
-- **Anthropic Claude SDK** - Primary AI for blog generation
-- **OpenAI SDK** - Alternative AI provider
-- **ChromaDB** - Vector database for content
+### i18n
+- **next-intl v4** - Locales: `en` (default), `fr`, `zh`, `es`
+- Config: `src/i18n/config.ts`
+- Middleware: `proxy.ts` (NOT `middleware.ts` -- Next.js 16 change)
 
-### Email & Communications
-- **Resend** - Transactional email
-- **EmailJS** - Client-side email sending
-- Custom email templates in `src/emails/`
-
-### Monitoring & Analytics
-- **Sentry** - Error tracking and performance monitoring
-- **Vercel Analytics** - Web analytics
-- Custom UTM tracking implementation
+### Monitoring
+- **Sentry** - Error tracking
+- **Vercel Analytics**
 
 ### Testing
-- **Jest 30.2.0** - Unit testing
-- **Playwright 1.57.0** - E2E testing
-- **@testing-library/react** - Component testing
+- **Jest** - Unit tests in `__tests__/`
+- **Playwright** - E2E tests in `e2e/`
 
 ---
 
-## ⛔ Anti-Patterns (Never Do These)
+## Anti-Patterns (Never Do These)
 
 | Anti-Pattern | Example | Correct Behavior |
-|--------------|---------|------------------|
-| **The Fabricator** | Referencing `/images/logo.png` that doesn't exist | Run `ls public/images/` first |
+|---|---|---|
+| **The Fabricator** | Referencing `/images/logo.png` that doesn't exist | Verify the file exists first |
 | **The Guesser** | Assuming `lodash` is installed | Check `package.json` or ask |
 | **The Over-Engineer** | Creating `ButtonFactory` for one button | Just write the button |
 | **The Lazy Verifier** | Saying "Done" without testing | Run `pnpm build` and confirm |
 | **The Reformatter** | Changing tabs to spaces across the file | Touch only what was requested |
 | **The Silent Changer** | Deleting "unused" code that's actually used elsewhere | Mention it, don't delete |
 | **The Powder User** | Calling Purrify a "powder" | Use "granules" or "additive" |
-| **The Hardcoder** | Writing "Add to Cart" directly in JSX | Use `t('addToCart')` |
+| **The Hardcoder** | Writing "Add to Cart" directly in JSX | Use translation keys |
 | **The White-on-White** | Using text-white without a colored background | Always ensure contrast in BOTH modes |
 | **The Label Maker** | Putting labels on generated bags/bottles | Never use labels on AI images |
 | **The Dust Maker** | Showing black clouds/dust | Clean, trapped odor only |
-| **The Wrong Folder** | Storing images outside `public/images` | Use `public/images` -> `optimized` |
+| **The Wrong Folder** | Storing images outside the workflow | Source in `public/original-images/`, output in `public/optimized/` |
 
 ---
 
@@ -139,265 +95,220 @@
 
 ```
 /
-├── pages/                  # Next.js Pages Router (legacy)
-│   ├── _app.tsx           # App wrapper with providers
-│   ├── _document.tsx      # HTML document customization
-│   ├── api/               # API routes
-│   │   ├── auth/          # NextAuth configuration
-│   │   ├── admin/         # Admin API endpoints
-│   │   ├── affiliate/     # Affiliate program APIs
-│   │   ├── cron/          # Scheduled task endpoints
-│   │   └── webhooks/      # Stripe webhooks
-│   ├── admin/             # Admin dashboard pages
-│   ├── affiliate/         # Affiliate portal pages
-│   ├── blog/              # Blog pages and articles
-│   ├── learn/             # Educational content
-│   ├── locations/         # Store location pages
-│   └── products/          # Product pages
-│
+├── app/                        # Next.js App Router
+│   ├── [locale]/               # Internationalized routes (en, fr, zh, es)
+│   ├── api/                    # API routes (checkout, webhooks, orders, admin, auth)
+│   ├── admin/                  # Admin dashboard
+│   └── affiliate/              # Affiliate portal
 ├── src/
-│   ├── components/        # React components
-│   │   ├── admin/         # Admin-specific components
-│   │   ├── affiliate/     # Affiliate components
-│   │   ├── blog/          # Blog components
-│   │   ├── customer/      # Customer portal components
-│   │   ├── layout/        # Layout components (header, footer)
-│   │   ├── sections/      # Page section components
-│   │   ├── seo/           # SEO components
-│   │   ├── ui/            # Reusable UI components (shadcn/ui style)
+│   ├── components/             # React components by domain
+│   │   ├── ui/                 # Radix UI-based (shadcn/ui style)
+│   │   ├── seo/                # SEO components
+│   │   └── ...                 # product, layout, admin, reviews, blog, etc.
+│   ├── lib/                    # Utilities by domain
+│   │   ├── auth/               # Authentication
+│   │   ├── blog/               # Blog generation & management
+│   │   ├── geo/                # Currency detection
+│   │   ├── security/           # CSRF, rate limiting, sanitization
+│   │   ├── seo/                # SEO utilities
 │   │   └── ...
-│   ├── lib/               # Utility libraries
-│   │   ├── affiliate/     # Affiliate logic
-│   │   ├── auth/          # Authentication utilities
-│   │   ├── blog/          # Blog generation & management
-│   │   ├── locations/     # Location data
-│   │   ├── referral/      # Referral program logic
-│   │   ├── security/      # CSRF, rate limiting, sanitization
-│   │   ├── seo/           # SEO utilities
-│   │   └── tracking/      # UTM and analytics tracking
-│   ├── hooks/             # Custom React hooks
-│   ├── translations/      # i18n translations (en, fr, zh, es)
-│   ├── data/              # Static data files
-│   ├── emails/            # Email template components
-│   └── types/             # TypeScript type definitions
-│
-├── content/               # Content files
-│   └── blog/              # Blog content in JSON format
-│       ├── en/            # English blog posts
-│       ├── fr/            # French blog posts
-│       ├── zh/            # Chinese blog posts
-│       └── es/            # Spanish blog posts
-│
-├── prisma/                # Database schema and migrations
-│   └── schema.prisma      # Prisma schema definition
-│
-├── scripts/               # Build and utility scripts
-│   ├── seo/               # SEO validation and optimization
-│   ├── images/            # Image optimization scripts
-│   ├── blog/              # Blog automation scripts
-│   └── build/             # Build-related scripts
-│
-├── __tests__/             # Jest unit tests
-├── e2e/                   # Playwright E2E tests
-├── public/                # Static assets
-│   └── optimized/         # Optimized images (auto-generated)
-└── [config files]
+│   ├── hooks/                  # Custom React hooks
+│   ├── translations/           # i18n (en.ts, fr.ts, zh.ts, es.ts, types.ts, seo-meta.ts)
+│   ├── i18n/                   # i18n config and routing
+│   ├── emails/                 # Email templates
+│   └── types/                  # TypeScript types
+├── content/blog/{en,fr,zh,es}/ # Blog post JSON files
+├── prisma/                     # Schema and migrations
+├── scripts/                    # Build, SEO, image, blog scripts
+├── proxy.ts                    # Middleware (Next.js 16 — NOT middleware.ts)
+├── __tests__/                  # Jest unit tests
+├── e2e/                        # Playwright E2E tests
+└── public/optimized/           # Optimized images (auto-generated)
 ```
 
 ---
 
-## Build and Development Commands
-
-### Essential Commands
+## Commands
 
 ```bash
 # Development
-pnpm dev              # Start development server with hot reload
-
-# Building
-pnpm build            # Production build with SEO validation
-
-# Code Quality
-pnpm lint             # Run ESLint with Next.js config
-pnpm check-types      # TypeScript type checking (tsc --noEmit)
+pnpm dev                    # Dev server (auto-clears webpack cache)
+pnpm build                  # Production build (4GB memory, pre/post SEO hooks)
+pnpm lint                   # ESLint
+pnpm check-types            # tsc --noEmit
 
 # Testing
-pnpm test             # Run Jest unit tests
-pnpm test:e2e         # Run Playwright E2E tests
+pnpm test                   # Jest unit tests
+pnpm test -- __tests__/path/to/test.ts    # Single test file
+pnpm test -- --testNamePattern="name"     # Single test by name
+pnpm test:translations      # Translation completeness
+pnpm test:e2e               # Playwright E2E (localhost:3010)
+pnpm test:e2e:ui            # Playwright with browser UI
 
-# SEO & Performance (See SEO section)
-pnpm seo:validate     # Validate SEO compliance
+# Validation
+pnpm seo:validate           # Lenient SEO check (same as prebuild)
+pnpm seo:validate:strict    # Strict SEO check (fails on error)
+pnpm validate-dark-mode     # Dark mode variant coverage
+pnpm validate-hydration     # Hydration anti-patterns
+pnpm validate-images        # Image size limits
+
+# Database
+pnpm prisma generate        # Regenerate client (also runs on postinstall)
+pnpm prisma migrate dev --name migration_name
+pnpm prisma studio          # Database GUI (localhost:5555)
+
+# Other
+pnpm clear-cache            # Clear webpack cache
+pnpm blog:auto:generate     # AI blog generation
+pnpm repair-blog            # Fix broken blog posts
+pnpm optimize-images:enhanced  # Optimize images
 ```
 
 ### Environment Setup
-
 Copy `.env.local.example` to `.env.local` and configure:
-- `NEXTAUTH_SECRET` - Required for authentication
-- `NEXTAUTH_URL` - Your local/dev URL
-- `DATABASE_URL` - PostgreSQL connection string
-- `STRIPE_SECRET_KEY` - For payments
-- `ANTHROPIC_API_KEY` - For AI blog generation
+- `NEXTAUTH_SECRET`, `NEXTAUTH_URL`, `DATABASE_URL`, `STRIPE_SECRET_KEY`, `ANTHROPIC_API_KEY`
 
 ---
 
-## Code Style Guidelines
+## Code Style
 
-### TypeScript Conventions
-- **Strict mode enabled** - No implicit any
-- **2-space indentation**
-- **Single quotes** for strings
-- **Semicolons required**
-- **Explicit prop and variable names** - avoid abbreviations
+- **TypeScript strict mode**, 2-space indent, single quotes, semicolons
+- **Server Components by default** -- add `'use client'` only when needed
+- **Import order**: React -> External libs -> Internal modules -> Types
+- **Named function components** with explicit Props interfaces
+- **File naming**: PascalCase (.tsx components), camelCase (.ts utilities), kebab-case (routes)
+- **Path aliases**: `@/*` -> `src/*`, `@translations/*` -> `src/translations/*`
 
-### File Naming
-- **React components**: PascalCase with `.tsx` extension (e.g., `src/components/HeroBanner.tsx`)
-- **Utilities/helpers**: camelCase with `.ts` extension (e.g., `src/lib/seo-utils.ts`)
-- **Routes/content**: kebab-case (e.g., `pages/blog/my-awesome-post.tsx`)
+### Dark Mode (Required)
+Every element needs both light and dark variants.
+- **Text**: `text-gray-900 dark:text-gray-50`
+- **Backgrounds**: `bg-white dark:bg-gray-900`
+- **CRITICAL**: `text-white` must ALWAYS have a dark variant or a colored background that persists in dark mode.
+- **Validate**: `pnpm validate-dark-mode`
 
-### Component Structure
-```tsx
-import React from 'react';
-import { Button } from '@/components/ui/button';
+---
 
-interface ProductCardProps {
-  product: Product;
-}
+## Translations
 
-export function ProductCard({ product }: ProductCardProps) {
-  return (
-      <div className="p-4 bg-white dark:bg-gray-900">
-        <h1>{product.name}</h1>
-      </div>
+- Two hooks available:
+  - `import { useTranslation } from '@/lib/translation-context'` -- context-based: `const { t } = useTranslation()`
+  - `import { useTranslation } from '@/translations'` -- direct: `useTranslation('en')`
+- Access via object properties: `t.hero.headline` (not string keys)
+- Adding translations: update `src/translations/types.ts`, then all 4 locale files, run `pnpm test:translations`
+- All user-facing text must use translation keys. No hardcoded strings.
+
+---
+
+## Currency System
+
+- Geo-detection via Vercel `x-vercel-ip-country`: US -> USD, all others -> CAD
+- Client: `useCurrency()` from `src/lib/currency-context.tsx`
+- Server: `detectCurrencyFromRequest()` from `src/lib/geo/currency-detector.ts`
+- Pricing: `src/lib/pricing.ts`
+- Always store currency with orders in the database
+
+---
+
+## Protected API Route Pattern
+
+```typescript
+import { requireAuth } from '@/lib/auth/session';
+import { withCSRFProtection } from '@/lib/security/csrf';
+import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit';
+
+export async function POST(req: Request) {
+  return withRateLimit(RATE_LIMITS.CREATE,
+    withCSRFProtection(async () => {
+      const session = await requireAuth(req, ['admin']);
+      if (!session) return Response.json({ error: 'Unauthorized' }, { status: 401 });
+      // handler logic
+    })
   );
 }
 ```
 
-### Dark Mode (Required)
-Every element needs both light and dark variants.
--   **Text**: `text-gray-900 dark:text-gray-50`
--   **Backgrounds**: `bg-white dark:bg-gray-900`
--   **CRITICAL**: `text-white` must ALWAYS have a dark variant (e.g., `dark:text-gray-100`) or a colored background that persists in dark mode.
--   **Validate**: `pnpm validate-dark-mode`
+---
+
+## Image Workflow
+
+1. Source images in `public/original-images/`
+2. Run `pnpm optimize-images:enhanced`
+3. Output lands in `public/optimized/`
+4. Reference as `/optimized/image-name.webp`
+5. Validate: `pnpm validate-images`
+
+Never generate product images (bags/boxes/logos) with AI -- use existing assets only.
 
 ---
 
-## 🗄️ Database & Prisma
+## SEO
 
-### Workflow
-1.  **Edit Schema**: `prisma/schema.prisma`
-2.  **Migrate (Dev)**: `pnpm prisma migrate dev --name describe_change`
-3.  **Generate Client**: `pnpm prisma generate`
-4.  **Studio**: `pnpm prisma studio` (View data)
-
-### Connection
-The Prisma client is configured as a singleton in `src/lib/prisma.ts` to prevent connection pooling issues.
+- Structured data (JSON-LD) for Organization, Product, FAQ, etc.
+- Dynamic sitemap via `next-sitemap` (generated at postbuild)
+- Two validation scripts: `prebuild-validation.ts` (lenient, CI) vs `validate-seo-compliance.ts` (strict, manual)
+- `SKIP_SEO_VALIDATION=true` as emergency build bypass
+- SEO components in `src/components/seo/`
+- Blog style guide: `docs/BLOG_STYLE_GUIDE.md`
 
 ---
 
-## 🌐 Internationalization (i18n)
+## Branding Rules
 
-### Structure
-Translations are in `src/translations/`:
--   `types.ts`: Interface definitions
--   `{en,fr,zh,es}.ts`: Locale data
-
-### Terminology Rules
--   **Purrify is NOT a powder**: Use "granules" or "additive".
--   **Tone**: Professional, warm, science-backed.
+- **Purrify** is always capitalized. It is "granules" or "additive", never "powder".
+- Never fabricate contact info, social handles, URLs, or file paths.
+- No black dust/clouds in visuals -- odor is shown being trapped/adsorbed, never released.
+- No labels on AI-generated product imagery.
+- Copy tone: professional yet warm, science-backed but accessible.
 
 ---
 
-## 🖼️ Image Workflow
+## Deployment (Vercel)
 
-### Storage & Optimization
-1.  **Source**: Place in `public/original-images/`
-2.  **Optimize**: Run `pnpm optimize-images:enhanced`
-3.  **Result**: Images move to `public/optimized/`
-4.  **Use**: Reference `/optimized/image-name.webp`
-
-### AI Image Standards
--   **Engine**: FAL / Midjourney (via scripts)
--   **Style**: Studio Ghibli / Anime Aesthetic ("magical realism", "sparkling clean").
--   **Prohibitions**: No black dust, no labels on bags, no product packaging generation.
+- Build: `pnpm prisma generate && pnpm build`
+- Pre-deploy: `pnpm lint && pnpm check-types && pnpm test && pnpm build`
+- Cron jobs in `vercel.json` (abandoned cart emails, daily maintenance)
 
 ---
 
-## 💰 Currency System (Geo-located)
+## Troubleshooting
 
--   **US Visitors**: USD
--   **Others**: CAD (fallback)
--   **Implementation**: `useCurrency` hook (`src/lib/currency-context.tsx`).
--   **Database**: Orders store the currency used.
-
----
-
-## 📝 Blog Content System
-
--   **Format**: JSON files in `content/blog/{lang}/`.
--   **Structure**: Title, slug, excerpt, content (HTML), featuredImage.
--   **Generation**: `pnpm blog:auto:generate`.
+- **Build out of memory**: Already configured with `NODE_OPTIONS="--max-old-space-size=4096"`
+- **Webpack cache**: `pnpm clear-cache`
+- **Stale Prisma client**: `pnpm prisma generate`
+- **"Both middleware.ts and proxy.ts detected"**: Delete `middleware.ts`, use only `proxy.ts`
+- **Build failing on SEO orphan pages**: Ensure prebuild uses `prebuild-validation.ts` not `validate-seo-compliance.ts --fail-on-error`
+- **Hot reload broken**: `pnpm clear-cache && pnpm dev`
+- **Type errors after schema change**: `pnpm prisma generate` then restart dev server
 
 ---
 
-## 🔒 Security & Auth
-
--   **Auth**: NextAuth.js (Credentials + JWT).
--   **Rate Limits**: Configured in `src/lib/security/rate-limit.ts` (Login, Create, Upload).
--   **Sanitization**: `src/lib/security/sanitize.ts`.
--   **Environment**: Never commit `.env` files.
-
----
-
-## 🧪 Testing Strategy
-
--   **Unit Tests (`__tests__/`)**: Pure functions, hooks, utilities. Run `pnpm test`.
--   **E2E Tests (`e2e/`)**: Critical user flows (Checkout, Login). Run `pnpm test:e2e`.
--   **Translation Tests**: `pnpm test:translations`.
-
----
-
-## 🚀 Deployment (Vercel)
-
--   **Build**: `pnpm prisma generate && pnpm build`
--   **Output**: `.next`
--   **Pre-deploy Check**: Lint, Type-check, Test, Build, SEO Validate.
-
----
-
-## 🤖 System Instructions (Image Generation)
+## Image Generation System Instructions
 
 ### [SYSTEM_INSTRUCTION: IMAGE_GENERATOR]
-**Context**: You are generating image prompts for Purrify.ca.
-**Brand Core**: All images must feature deep saturation, volumetric lighting, and a "magical realism" aesthetic.
+**Context**: Generating image prompts for Purrify.ca.
+**Brand Core**: Deep saturation, volumetric lighting, "magical realism" aesthetic.
 
 **STEP 1: CLASSIFY MODE**
-Determine if the user's request is [LIFESTYLE] (cats, home, nature) or [TECH] (molecules, filtration, air flow, science).
+[LIFESTYLE] (cats, home, nature) or [TECH] (molecules, filtration, airflow, science).
 
 **STEP 2: APPLY STYLE PRESETS**
+
 **IF [LIFESTYLE]:**
 - **Style**: High-fidelity "Hybrid-Ghibli" aesthetic.
-- **Vibe**: Magical, pristine, healthy, and thriving.
-- **Lighting**: Gentle dappled lighting with warm golden highlights streaming through windows.
-- **Render**: Combine the whimsy of hand-painted animation with 8K photorealistic textures.
-- **Key Elements**: Cats have hyper-realistic detail but expressive, charming anime-style faces. Soft painterly background (bokeh).
+- **Vibe**: Magical, pristine, healthy, thriving.
+- **Lighting**: Gentle dappled lighting with warm golden highlights.
+- **Render**: Hand-painted animation whimsy + 8K photorealistic textures.
+- **Key Elements**: Hyper-realistic cats with expressive anime-style faces. Soft painterly backgrounds.
 
 **IF [TECH]:**
 - **Style**: Cinematic Macrophotography & 3D Scientific Visualization.
 - **Vibe**: Precise, powerful, clean, microscopic clarity.
-- **Lighting**: Internal glowing energy, rim lighting, electric blues and purples vs. deep charcoal.
+- **Lighting**: Internal glowing energy, rim lighting, electric blues/purples vs deep charcoal.
 - **Render**: Octane Render, ray-tracing, subsurface scattering, crystalline textures.
-- **Key Elements**: Visible airflow streams, glowing activated carbon pores, atomic bonds, sleek industrial design, infinite black or gradient backgrounds.
-
-**STEP 3: GENERATE PROMPT**
-Fill the following template based on the selected mode:
-- **Subject**: [Describe the core subject/action in detail]
-- **Setting**: [Describe background—e.g., "A cozy sun-drenched windowsill" OR "Inside a microscopic carbon pore"]
-- **Art Direction**: [Insert the relevant Style Preset text from Step 2]
-- **Color Palette**: Vivid and punchy (Makoto Shinkai style vibrancy). Rich emeralds, deep ambers, and vibrant pastels (Lifestyle) OR Neon cyans, electric blues, and matte charcoal (Tech).
-- **Camera**: [Wide angle/Eye level] for Lifestyle OR [Macro/Electron Microscope] for Tech.
+- **Key Elements**: Visible airflow streams, glowing activated carbon pores, atomic bonds.
 
 **STRICT PROHIBITIONS:**
-- **NO LABELS** on bags or bottles.
-- **NO BLACK CLOUDS/DUST**.
-- **NO PURRIFY LOGOS/PACKAGING** unless explicitly provided.
-- **ODOR MUST BE OBVIOUSLY adsorbed or TRAPPED**, never released.
+- NO LABELS on bags or bottles.
+- NO BLACK CLOUDS/DUST.
+- NO PURRIFY LOGOS/PACKAGING unless explicitly provided.
+- ODOR MUST BE adsorbed or TRAPPED, never released.

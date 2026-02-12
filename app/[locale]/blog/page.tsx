@@ -26,7 +26,7 @@ export async function generateStaticParams() {
 // Generate metadata for the localized blog index
 export async function generateMetadata({ params }: BlogIndexPageProps): Promise<Metadata> {
   const { locale } = await params;
-  
+
   if (!isValidLocale(locale)) {
     return {
       title: 'Not Found',
@@ -55,25 +55,25 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
   };
 
   // Build hreflang alternates with self-referencing support
-  const hrefLang = locale === 'en' ? 'en-CA' : 
-                   locale === 'fr' ? 'fr-CA' : 
-                   locale === 'zh' ? 'zh-CN' : 
-                   locale === 'es' ? 'es-US' : 'en-CA';
-  
+  const hrefLang = locale === 'en' ? 'en-CA' :
+    locale === 'fr' ? 'fr-CA' :
+      locale === 'zh' ? 'zh-CN' :
+        locale === 'es' ? 'es-US' : 'en-CA';
+
   return {
     title: localeMeta.title,
     description: localeMeta.description,
     alternates: {
-      canonical: `${SITE_URL}/${locale}/blog`,
+      canonical: `${SITE_URL}/${locale}/blog/`,
       languages: {
-        'en-CA': `${SITE_URL}/blog`,
-        'fr-CA': `${SITE_URL}/fr/blog`,
-        'zh-CN': `${SITE_URL}/zh/blog`,
-        'es-US': `${SITE_URL}/es/blog`,
-        'en-US': `${SITE_URL}/blog`,
-        'x-default': `${SITE_URL}/blog`,
+        'en-CA': `${SITE_URL}/en/blog/`,
+        'fr-CA': `${SITE_URL}/fr/blog/`,
+        'zh-CN': `${SITE_URL}/zh/blog/`,
+        'es-US': `${SITE_URL}/es/blog/`,
+        'en-US': `${SITE_URL}/en/blog/`,
+        'x-default': `${SITE_URL}/en/blog/`,
         // Self-reference for the current locale
-        [hrefLang]: `${SITE_URL}/${locale}/blog`,
+        [hrefLang]: `${SITE_URL}/${locale}/blog/`,
       },
     },
     robots: {
@@ -89,7 +89,7 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
     openGraph: {
       title: localeMeta.title,
       description: localeMeta.description,
-      url: `${SITE_URL}/${locale}/blog`,
+      url: `${SITE_URL}/${locale}/blog/`,
       type: 'website',
       siteName: SITE_NAME,
       locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : locale === 'es' ? 'es_US' : 'en_CA',
@@ -219,7 +219,7 @@ export default async function LocalizedBlogIndexPage({
   searchParams,
 }: BlogIndexPageProps) {
   const { locale } = await params;
-  
+
   // Validate locale
   if (!isValidLocale(locale)) {
     notFound();
@@ -241,14 +241,14 @@ export default async function LocalizedBlogIndexPage({
     '@context': 'https://schema.org',
     '@type': 'Blog',
     name: `${SITE_NAME} Blog - ${locale.toUpperCase()}`,
-    url: `${SITE_URL}/${locale}/blog`,
+    url: `${SITE_URL}/${locale}/blog/`,
     description: SITE_DESCRIPTION,
     blogPost: currentPosts.map((post) => {
       // Ensure date is in ISO 8601 format
-      const datePublished = post.date?.includes('T') 
-        ? post.date 
+      const datePublished = post.date?.includes('T')
+        ? post.date
         : new Date(post.date).toISOString();
-      
+
       return {
         '@type': 'BlogPosting',
         headline: post.title?.length > 110 ? post.title.substring(0, 107) + '...' : post.title,

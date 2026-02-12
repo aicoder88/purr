@@ -9,14 +9,14 @@ export const metadata: Metadata = {
   keywords: ['Purrify products', 'cat litter additive', 'activated carbon', 'odor control', 'trial size', 'family pack'],
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/products',
+    url: 'https://www.purrify.ca/products/',
     siteName: 'Purrify',
     title: 'Purrify Products - Activated Carbon Litter Additive',
     description: '★ 4.8 Rating | FREE Trial Available | Shop Purrify activated carbon litter additives. Eliminates odors instantly.',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
         width: 1200,
         height: 800,
         alt: 'Purrify Products',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
   },
   alternates: {
-    canonical: 'https://www.purrify.ca/products',
+    canonical: 'https://www.purrify.ca/products/',
   },
   robots: {
     index: true,

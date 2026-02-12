@@ -9,14 +9,14 @@ export const metadata: Metadata = {
   keywords: ['cat litter freshener', 'charcoal litter additive', 'cat litter deodorizer', 'odor eliminator', '50g', 'standard size'],
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/products/standard',
+    url: 'https://www.purrify.ca/products/standard/',
     siteName: 'Purrify',
     title: 'Purrify 50g - Best Cat Litter Freshener for Single-Cat Homes',
     description: 'Best-selling cat litter freshener for single-cat homes. 50g activated charcoal from coconut shells. Eliminates ammonia for 4-6 weeks.',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/60g-transparent.webp',
+        url: 'https://www.purrify.ca/optimized/60g-transparent.webp/',
         width: 1200,
         height: 1200,
         alt: 'Purrify 50g Standard Size',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     images: ['https://www.purrify.ca/optimized/60g-transparent.webp'],
   },
   alternates: {
-    canonical: 'https://www.purrify.ca/products/standard',
+    canonical: 'https://www.purrify.ca/products/standard/',
   },
   robots: {
     index: true,

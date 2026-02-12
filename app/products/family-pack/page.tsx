@@ -9,14 +9,14 @@ export const metadata: Metadata = {
   keywords: ['cat litter freshener', 'family pack', 'multi-cat', 'activated charcoal', 'odor control', '240g', 'best value'],
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/products/family-pack',
+    url: 'https://www.purrify.ca/products/family-pack/',
     siteName: 'Purrify',
     title: 'Purrify Family Pack (240g) - Best Value for Multi-Cat Homes',
     description: 'Best value cat litter freshener for multi-cat homes. 240g activated charcoal from coconut shells. Best value per gram.',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/140g-640w.avif',
+        url: 'https://www.purrify.ca/optimized/140g-640w.avif/',
         width: 1200,
         height: 1200,
         alt: 'Purrify 240g Family Pack',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     images: ['https://www.purrify.ca/optimized/140g-640w.avif'],
   },
   alternates: {
-    canonical: 'https://www.purrify.ca/products/family-pack',
+    canonical: 'https://www.purrify.ca/products/family-pack/',
   },
   robots: {
     index: true,

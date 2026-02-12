@@ -25,7 +25,7 @@ import {
 import { RelatedContent } from '@/components/seo/RelatedContent';
 import { ProductsHero } from '@/components/products/ProductsHero';
 import { EnhancedProductComparison } from '@/components/sections/enhanced-product-comparison';
-import { buildAvailabilityUrl, getPriceValidityDate, generateWebsiteSchema } from '@/lib/seo-utils';
+import { buildAvailabilityUrl, getPriceValidityDate, generateWebsiteSchema, stripContext } from '@/lib/seo-utils';
 import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '@/lib/pricing';
 import { getPaymentLink } from '@/lib/payment-links';
@@ -349,8 +349,8 @@ export default function ProductsPage() {
           })
         }
       },
-      ...(breadcrumb ? [breadcrumb.schema] : []),
-      generateWebsiteSchema(locale)
+      ...(breadcrumb ? [stripContext(breadcrumb.schema)] : []),
+      stripContext(generateWebsiteSchema(locale))
     ]
   };
 

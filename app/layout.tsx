@@ -49,13 +49,13 @@ export async function generateMetadata(): Promise<Metadata> {
     // Canadian English (default)
     'en-CA': `${baseUrl}/`,
     // Canadian French
-    'fr-CA': `${baseUrl}/fr`,
+    'fr-CA': `${baseUrl}/fr/`,
     // Chinese (Simplified)
-    'zh-CN': `${baseUrl}/zh`,
+    'zh-CN': `${baseUrl}/zh/`,
     // US Spanish
-    'es-US': `${baseUrl}/es`,
+    'es-US': `${baseUrl}/es/`,
     // US English (dedicated landing page)
-    'en-US': `${baseUrl}/us`,
+    'en-US': `${baseUrl}/us/`,
     // x-default for users whose language doesn't match any above
     'x-default': `${baseUrl}/`,
   };

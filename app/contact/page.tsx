@@ -20,6 +20,7 @@ import {
 import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { SITE_NAME, CONTACT_INFO, PHONE_MESSAGING, PHONE_NUMBER, SOCIAL_LINKS } from '@/lib/constants';
+import { stripContext } from '@/lib/seo-utils';
 import ContactForm from './_components/ContactForm';
 import ContactMethodCard from './_components/ContactMethodCard';
 
@@ -35,18 +36,18 @@ export const metadata: Metadata = {
     'pet product support',
   ],
   alternates: {
-    canonical: 'https://www.purrify.ca/contact',
+    canonical: 'https://www.purrify.ca/contact/',
   },
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/contact',
+    url: 'https://www.purrify.ca/contact/',
     siteName: SITE_NAME,
     title: `Contact Us - ${SITE_NAME}`,
     description: 'Get in touch with the Purrify team for support and inquiries.',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
         width: 1200,
         height: 800,
         alt: `Contact ${SITE_NAME}`,
@@ -181,9 +182,28 @@ export default function ContactPage() {
     })),
   };
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbItems.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: `https://www.purrify.ca${item.path === '/' ? '' : item.path}`,
+    })),
+  };
+
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@graph': [stripContext(faqSchema), stripContext(breadcrumbSchema)],
+          }),
+        }}
+      />
 
       <main className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900">
         {/* Breadcrumb Navigation */}

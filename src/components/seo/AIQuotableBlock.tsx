@@ -83,7 +83,7 @@ export function AIQuotableBlock({
   source = 'Purrify Research Team',
   icon = 'science',
   variant = 'default',
-  includeSchema = true,
+  includeSchema = false,
   className = '',
 }: AIQuotableBlockProps) {
   const styles = variantStyles[variant];

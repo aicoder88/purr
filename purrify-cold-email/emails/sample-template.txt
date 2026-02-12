@@ -1,0 +1,37 @@
+Subject: {{FirstName}}, quick question about {{StoreName}}
+
+Hi {{FirstName}},
+
+How often do customers at {{StoreName}} ask if you have something that actually WORKS for litter box smell?
+
+I'm guessing weekly, if not daily.
+
+Here's the challenge: Most products on your shelf don't actually eliminate odor - they just mask it or reduce it slightly.
+
+Purrify is different. It's an activated coconut carbon additive that eliminates ammonia at the molecular level. No perfume. No harsh chemicals. Just actual odor elimination.
+
+20+ pet stores in Montreal have made it a top-seller because:
+- It actually works (customers come back for more)
+- 40-60% profit margins
+- Repeat purchases every 4-6 weeks
+- Near-zero returns
+
+We've helped stores transform their most frustrated customers into their most loyal ones.
+
+Would 10 minutes on a call be worth exploring how this could work for {{StoreName}} in {{City}}?
+
+Best,
+[Your Name]
+[Title]
+Purrify
+[Phone]
+[Email]
+
+---
+PERSONALIZATION NOTES:
+This email uses the following merge tags:
+- {{FirstName}} - Store owner's first name
+- {{StoreName}} - Business name
+- {{City}} - Store location
+
+Make sure these fields exist in your CSV file.

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: 'Download our B2B sell sheet with wholesale pricing and partnership opportunities. Perfect for retailers, veterinarians, and pet professionals.',
   keywords: ['wholesale', 'b2b', 'sell sheet', 'partner program'],
   alternates: {
-    canonical: '/b2b/sell-sheet',
+    canonical: '/b2b/sell-sheet/',
   },
   openGraph: {
     title: `${SITE_NAME} B2B Sell Sheet - Wholesale Partner Information`,
@@ -40,7 +40,7 @@ const schema = {
       url: 'https://www.purrify.ca',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.purrify.ca/images/purrify-logo.png',
+        url: 'https://www.purrify.ca/images/purrify-logo.png/',
         width: 400,
         height: 400,
       },

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     'litter decision guide'
   ],
   alternates: {
-    canonical: '/learn/answers/what-cat-litter-controls-odor-best',
+    canonical: '/learn/answers/what-cat-litter-controls-odor-best/',
   },
   openGraph: {
     title: 'What Cat Litter Controls Odor Best? Decision Guide | Purrify',

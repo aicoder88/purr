@@ -97,10 +97,10 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
       follow: false,
     },
     alternates: {
-      canonical: '/thank-you',
+      canonical: '/thank-you/',
     },
     openGraph: {
-      url: 'https://www.purrify.ca/thank-you',
+      url: 'https://www.purrify.ca/thank-you/',
       title,
       description: 'Your Purrify order has been confirmed. Get ready to experience an odor-free home!',
     },

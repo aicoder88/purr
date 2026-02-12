@@ -11,7 +11,7 @@ import { ArrowLeft, Check, Star, ShoppingCart, Heart, Zap, Truck, MapPin, Chevro
 import { RelatedContent } from '@/components/seo/RelatedContent';
 import { ProductFAQ } from '@/components/product/ProductFAQ';
 import { GuaranteeBadge } from '@/components/ui/GuaranteeBadge';
-import { getPriceValidityDate, buildAvailabilityUrl } from '@/lib/seo-utils';
+import { getPriceValidityDate, buildAvailabilityUrl, generateFAQSchema, stripContext } from '@/lib/seo-utils';
 import { formatProductPrice, getProductPrice } from '@/lib/pricing';
 import { getPaymentLink } from '@/lib/payment-links';
 import { useEffect, useRef, useCallback, useState } from 'react';
@@ -133,7 +133,16 @@ export default function StandardSizePage() {
       {schema && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [
+                stripContext(schema),
+                // FAQ Schema for product page
+                stripContext(generateFAQSchema(locale)),
+              ],
+            }),
+          }}
         />
       )}
 

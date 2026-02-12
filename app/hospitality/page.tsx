@@ -14,18 +14,18 @@ export const metadata: Metadata = {
     'hospitality odor solutions',
   ],
   alternates: {
-    canonical: 'https://www.purrify.ca/hospitality',
+    canonical: 'https://www.purrify.ca/hospitality/',
   },
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/hospitality',
+    url: 'https://www.purrify.ca/hospitality/',
     siteName: SITE_NAME,
     title: `Pet-Friendly Rentals Without Smell | ${SITE_NAME}`,
     description: 'Airbnb hosts & vacation rental owners: Accept pets confidently. Purrify eliminates pet odors between guests.',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
         width: 1200,
         height: 800,
         alt: `${SITE_NAME} for Hospitality`,
@@ -54,7 +54,7 @@ const organizationSchema = {
   url: 'https://www.purrify.ca',
   logo: {
     '@type': 'ImageObject',
-    url: 'https://www.purrify.ca/images/purrify-logo.png',
+    url: 'https://www.purrify.ca/images/purrify-logo.png/',
     width: 400,
     height: 400,
   },

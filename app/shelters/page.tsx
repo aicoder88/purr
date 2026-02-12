@@ -15,18 +15,18 @@ export const metadata: Metadata = {
     'animal shelter supplies',
   ],
   alternates: {
-    canonical: 'https://www.purrify.ca/shelters',
+    canonical: 'https://www.purrify.ca/shelters/',
   },
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/shelters',
+    url: 'https://www.purrify.ca/shelters/',
     siteName: SITE_NAME,
     title: `Purrify for Shelters | Partner Program | ${SITE_NAME}`,
     description: 'Exclusive program for animal shelters and rescue organizations. Volume discounts, donation matching, and support for shelters.',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
         width: 1200,
         height: 800,
         alt: `${SITE_NAME} for Shelters`,
@@ -55,7 +55,7 @@ const organizationSchema = {
   url: 'https://www.purrify.ca',
   logo: {
     '@type': 'ImageObject',
-    url: 'https://www.purrify.ca/images/purrify-logo.png',
+    url: 'https://www.purrify.ca/images/purrify-logo.png/',
     width: 400,
     height: 400,
   },

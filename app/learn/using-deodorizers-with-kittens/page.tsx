@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Guidance on introducing fragrance-free, activated carbon deodorizers around kittens: considerations, timing, and how to minimize exposure.',
   keywords: ['cat litter deodorizer kittens', 'kitten litter box safety', 'activated carbon kittens', 'cat litter additive kittens safe'],
   alternates: {
-    canonical: 'https://www.purrify.ca/learn/using-deodorizers-with-kittens',
+    canonical: 'https://www.purrify.ca/learn/using-deodorizers-with-kittens/',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/using-deodorizers-with-kittens',
       'fr-CA': 'https://www.purrify.ca/fr/learn/using-deodorizers-with-kittens',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'article',
-    url: 'https://www.purrify.ca/learn/using-deodorizers-with-kittens',
+    url: 'https://www.purrify.ca/learn/using-deodorizers-with-kittens/',
     title: 'Using Cat Litter Deodorizers with Kittens: A Care Guide',
     description: 'Guidance on introducing fragrance-free, activated carbon deodorizers around kittens: considerations, timing, and how to minimize exposure.',
     locale: 'en_CA',
@@ -45,7 +45,7 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   '@id': 'https://www.purrify.ca/learn/using-deodorizers-with-kittens',
-  url: 'https://www.purrify.ca/learn/using-deodorizers-with-kittens',
+  url: 'https://www.purrify.ca/learn/using-deodorizers-with-kittens/',
   inLanguage: 'en-CA',
   headline: 'Using Cat Litter Deodorizers with Kittens: A Care Guide',
   description: 'Guidance on introducing fragrance-free, activated carbon deodorizers around kittens: considerations, timing, and how to minimize exposure.',
@@ -62,7 +62,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
       width: 400,
       height: 400,
     },

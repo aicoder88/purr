@@ -7,6 +7,7 @@ import {
   CLAIM_REVIEWS,
   getCitationsByCategory,
 } from '@/lib/scientific-citations';
+import { stripContext } from '@/lib/seo-utils';
 import {
   Microscope,
   BookOpen,
@@ -30,13 +31,13 @@ export const metadata: Metadata = {
     'veterinary research',
   ],
   alternates: {
-    canonical: '/science',
+    canonical: '/science/',
   },
   openGraph: {
     title: 'Science Behind Purrify: Research & Citations | Purrify',
     description:
       'Explore the peer-reviewed scientific research supporting activated carbon for cat litter odor control.',
-    url: 'https://www.purrify.ca/science',
+    url: 'https://www.purrify.ca/science/',
     type: 'article',
     siteName: SITE_NAME,
     locale: 'en_CA',
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
     modifiedTime: new Date().toISOString(),
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/science-hub-og.jpg',
+        url: 'https://www.purrify.ca/optimized/science-hub-og.jpg/',
         width: 1200,
         height: 630,
         alt: 'The Science Behind Purrify',
@@ -98,7 +99,7 @@ export default function SciencePage() {
       name: 'Purrify',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.purrify.ca/optimized/purrify-logo.avif',
+        url: 'https://www.purrify.ca/optimized/purrify-logo.avif/',
       },
     },
     mainEntityOfPage: {
@@ -113,7 +114,7 @@ export default function SciencePage() {
     '@type': 'CollectionPage',
     name: 'Scientific Research & Citations',
     description: 'Peer-reviewed research supporting activated carbon for cat litter odor control',
-    url: 'https://www.purrify.ca/science',
+    url: 'https://www.purrify.ca/science/',
     mainEntity: {
       '@type': 'ItemList',
       itemListElement: SCIENTIFIC_CITATIONS.map((citation, index) => ({
@@ -137,8 +138,18 @@ export default function SciencePage() {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionPageSchema) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@graph': [
+              stripContext(articleSchema),
+              stripContext(collectionPageSchema),
+            ],
+          }),
+        }}
+      />
 
       <main className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
         <Container>

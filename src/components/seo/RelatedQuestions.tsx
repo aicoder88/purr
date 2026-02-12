@@ -41,7 +41,7 @@ export function RelatedQuestions({
   questions,
   allowMultiple = true,
   defaultOpen = [0],
-  includeSchema = true,
+  includeSchema = false,
   className = '',
 }: RelatedQuestionsProps) {
   const [openItems, setOpenItems] = useState<Set<number>>(new Set(defaultOpen));
@@ -116,9 +116,8 @@ export function RelatedQuestions({
                     {item.question}
                   </span>
                   <svg
-                    className={`w-5 h-5 text-gray-500 dark:text-gray-400 flex-shrink-0 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180' : ''
-                    }`}
+                    className={`w-5 h-5 text-gray-500 dark:text-gray-400 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''
+                      }`}
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -134,9 +133,8 @@ export function RelatedQuestions({
 
                 <div
                   id={`faq-answer-${index}`}
-                  className={`overflow-hidden transition-all duration-200 ${
-                    isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
-                  }`}
+                  className={`overflow-hidden transition-all duration-200 ${isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+                    }`}
                   role="region"
                   aria-labelledby={`faq-question-${index}`}
                 >

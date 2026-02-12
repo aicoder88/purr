@@ -10,7 +10,7 @@ import Link from 'next/link';
 import { ArrowLeft, Check, Star, ShoppingCart, AlertCircle, TrendingUp, MapPin, Store } from 'lucide-react';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 import { ProductFAQ } from '@/components/product/ProductFAQ';
-import { generateFAQSchema } from '@/lib/seo-utils';
+import { generateFAQSchema, stripContext } from '@/lib/seo-utils';
 import { getProductPrice, formatProductPrice } from '@/lib/pricing';
 import { useEffect, useRef, useState } from 'react';
 import { trackTikTokClientEvent } from '@/lib/tiktok-tracking';
@@ -115,9 +115,9 @@ export default function TrialSizePage() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@graph": [
-                schema,
+                stripContext(schema),
                 // FAQ Schema for product page
-                generateFAQSchema(locale),
+                stripContext(generateFAQSchema(locale)),
               ],
             }),
           }}

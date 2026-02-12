@@ -2,13 +2,14 @@ export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
 import { SITE_NAME } from '../../../src/lib/constants';
+import { stripContext } from '@/lib/seo-utils';
 
 export const metadata: Metadata = {
   title: `Activated Carbon Litter Benefits Guide | ${SITE_NAME}`,
   description: 'Discover how activated carbon litter additive benefits your cat and home. Learn the science behind odor elimination and safety.',
   keywords: ['activated carbon cat litter', 'activated carbon litter additive benefits', 'cat litter deodorizer', 'activated carbon odor control', 'natural cat litter odor eliminator'],
   alternates: {
-    canonical: 'https://www.purrify.ca/learn/activated-carbon-benefits',
+    canonical: 'https://www.purrify.ca/learn/activated-carbon-benefits/',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/activated-carbon-benefits',
       'fr-CA': 'https://www.purrify.ca/fr/learn/activated-carbon-benefits',
@@ -20,13 +21,13 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'article',
-    url: 'https://www.purrify.ca/learn/activated-carbon-benefits',
+    url: 'https://www.purrify.ca/learn/activated-carbon-benefits/',
     title: 'Activated Carbon Litter Benefits Guide',
     description: 'Discover how activated carbon litter additive benefits your cat and home. Learn the science behind odor elimination and safety.',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/benefits-hero-science.webp',
+        url: 'https://www.purrify.ca/optimized/benefits-hero-science.webp/',
         width: 1200,
         height: 800,
         alt: 'Activated carbon litter additive benefits - science guide',
@@ -45,7 +46,7 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   '@id': 'https://www.purrify.ca/learn/activated-carbon-benefits',
-  url: 'https://www.purrify.ca/learn/activated-carbon-benefits',
+  url: 'https://www.purrify.ca/learn/activated-carbon-benefits/',
   inLanguage: 'en-CA',
   headline: 'Activated Carbon Litter Additive Benefits - Complete Science Guide',
   description: 'Discover how activated carbon litter additive benefits your cat and home. Learn the science behind odor elimination, safety, and why activated carbon is the best cat litter deodorizer.',
@@ -62,7 +63,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
       width: 400,
       height: 400,
     },
@@ -142,15 +143,16 @@ export default function ActivatedCarbonBenefitsPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@graph': [
+              stripContext(articleSchema),
+              stripContext(faqSchema),
+              stripContext(howToSchema),
+            ],
+          }),
+        }}
       />
       <ActivatedCarbonBenefitsClient />
     </>

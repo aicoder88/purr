@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { formatProductPrice } from '@/lib/pricing';
 import { Check, MapPin, Truck, Leaf, Shield, Star, ChevronRight, Home, Zap, Clock } from 'lucide-react';
+import { stripContext } from '@/lib/seo-utils';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -18,14 +19,14 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/us',
+    url: 'https://www.purrify.ca/us/',
     siteName: 'Purrify',
     title: 'Cat Litter Odor Control USA | Free Shipping | Purrify',
     description: 'Eliminate cat litter odors at the source. Purrify is coming to the USA in Q1 2026!',
     locale: 'en_US',
     images: [
       {
-        url: 'https://www.purrify.ca/images/us/realistic-modern-living.webp',
+        url: 'https://www.purrify.ca/images/us/realistic-modern-living.webp/',
         width: 1200,
         height: 800,
         alt: 'Purrify USA - Coming Q1 2026',
@@ -41,7 +42,15 @@ export const metadata: Metadata = {
     images: ['https://www.purrify.ca/images/us/realistic-modern-living.webp'],
   },
   alternates: {
-    canonical: 'https://www.purrify.ca/us',
+    canonical: 'https://www.purrify.ca/us/',
+    languages: {
+      'en-CA': 'https://www.purrify.ca/',
+      'fr-CA': 'https://www.purrify.ca/fr/',
+      'zh-CN': 'https://www.purrify.ca/zh/',
+      'es-US': 'https://www.purrify.ca/es/',
+      'en-US': 'https://www.purrify.ca/us/',
+      'x-default': 'https://www.purrify.ca/',
+    },
   },
   other: {
     'last-modified': '2026-01-15',
@@ -68,7 +77,7 @@ const localBusinessSchema = {
   '@type': 'LocalBusiness',
   name: 'Purrify USA',
   description: 'Premium activated carbon cat litter deodorizer coming to USA in Q1 2026',
-  url: 'https://www.purrify.ca/us',
+  url: 'https://www.purrify.ca/us/',
   logo: 'https://www.purrify.ca/images/icon-512.png',
   image: 'https://www.purrify.ca/images/us/realistic-modern-living.webp',
   address: {
@@ -120,11 +129,15 @@ export default async function USALandingPage({ params }: USALandingPageProps) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@graph': [
+              stripContext(productSchema),
+              stripContext(localBusinessSchema),
+            ],
+          }),
+        }}
       />
 
       <div className="bg-cream-50 dark:bg-gray-900 min-h-screen">

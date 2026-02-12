@@ -15,18 +15,18 @@ export const metadata: Metadata = {
     'B2B pet products',
   ],
   alternates: {
-    canonical: 'https://www.purrify.ca/b2b',
+    canonical: 'https://www.purrify.ca/b2b/',
   },
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/b2b',
+    url: 'https://www.purrify.ca/b2b/',
     siteName: SITE_NAME,
     title: `Purrify B2B Wholesale | Retail Partnerships`,
     description: 'Become a Purrify retail partner. Wholesale program for pet stores and distributors across Canada. Attractive margins and marketing support.',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
         width: 1200,
         height: 800,
         alt: `${SITE_NAME} B2B Wholesale`,
@@ -55,7 +55,7 @@ const organizationSchema = {
   url: 'https://www.purrify.ca',
   logo: {
     '@type': 'ImageObject',
-    url: 'https://www.purrify.ca/images/purrify-logo.png',
+    url: 'https://www.purrify.ca/images/purrify-logo.png/',
     width: 400,
     height: 400,
   },

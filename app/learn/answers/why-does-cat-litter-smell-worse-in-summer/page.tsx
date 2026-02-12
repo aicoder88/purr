@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     'cat odor solutions',
   ],
   alternates: {
-    canonical: '/learn/answers/why-does-cat-litter-smell-worse-in-summer',
+    canonical: '/learn/answers/why-does-cat-litter-smell-worse-in-summer/',
   },
   openGraph: {
     title: 'Why does cat litter smell worse in summer? - Purrify',

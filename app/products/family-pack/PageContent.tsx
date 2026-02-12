@@ -10,7 +10,7 @@ import { useTranslation } from '@/lib/translation-context';
 import { useCurrency } from '@/lib/currency-context';
 import { getSEOMeta } from '@/translations/seo-meta';
 import { SITE_NAME } from '@/lib/constants';
-import { getPriceValidityDate, generateFAQSchema } from '@/lib/seo-utils';
+import { getPriceValidityDate, generateFAQSchema, stripContext } from '@/lib/seo-utils';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '@/lib/pricing';
 import { getPaymentLink } from '@/lib/payment-links';
 import Image from 'next/image';
@@ -163,9 +163,9 @@ export default function FamilyPackPage() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@graph": [
-                schema,
+                stripContext(schema),
                 // FAQ Schema for product page
-                generateFAQSchema(locale),
+                stripContext(generateFAQSchema(locale)),
               ],
             }),
           }}

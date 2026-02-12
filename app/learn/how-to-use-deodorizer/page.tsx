@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Learn how to use activated carbon cat litter additive properly. Step-by-step instructions, common mistakes to avoid, and pro tips for maximum odor control.',
   keywords: ['how to use cat litter deodorizer', 'cat litter additive instructions', 'activated carbon how to use', 'litter box deodorizer guide', 'cat litter odor control tips'],
   alternates: {
-    canonical: 'https://www.purrify.ca/learn/how-to-use-deodorizer',
+    canonical: 'https://www.purrify.ca/learn/how-to-use-deodorizer/',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/how-to-use-deodorizer',
       'fr-CA': 'https://www.purrify.ca/fr/learn/how-to-use-deodorizer',
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'article',
-    url: 'https://www.purrify.ca/learn/how-to-use-deodorizer',
+    url: 'https://www.purrify.ca/learn/how-to-use-deodorizer/',
     title: 'How to Use Cat Litter Deodorizer: Step Guide',
     description: 'Learn how to use activated carbon cat litter additive properly. Step-by-step instructions for maximum odor control.',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/cat-litter-usage-ghibli-828w.webp',
+        url: 'https://www.purrify.ca/optimized/cat-litter-usage-ghibli-828w.webp/',
         width: 1200,
         height: 800,
         alt: 'How to use cat litter deodorizer - step by step guide',
@@ -45,7 +45,7 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   '@id': 'https://www.purrify.ca/learn/how-to-use-deodorizer',
-  url: 'https://www.purrify.ca/learn/how-to-use-deodorizer',
+  url: 'https://www.purrify.ca/learn/how-to-use-deodorizer/',
   inLanguage: 'en-CA',
   headline: 'How to Use Cat Litter Deodorizer Additive - Complete Step-by-Step Guide',
   description: 'Learn how to use activated carbon cat litter additive properly. Step-by-step instructions for your litter box, common mistakes to avoid, and pro tips for maximum odor control.',
@@ -62,7 +62,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
       width: 400,
       height: 400,
     },
@@ -93,19 +93,19 @@ const howToSchema = {
       '@type': 'HowToStep',
       name: 'Clean the Slate',
       text: 'Start with a clean litter box. Remove all waste and clumps. If doing a deep clean, wash the box with mild soap.',
-      url: 'https://www.purrify.ca/learn/how-to-use-deodorizer#step-1',
+      url: 'https://www.purrify.ca/learn/how-to-use-deodorizer#step-1/',
     },
     {
       '@type': 'HowToStep',
       name: 'Precise Measurement',
       text: 'Use 1-2 tablespoons for a standard box. Multi-cat homes may need up to 3 tablespoons.',
-      url: 'https://www.purrify.ca/learn/how-to-use-deodorizer#step-2',
+      url: 'https://www.purrify.ca/learn/how-to-use-deodorizer#step-2/',
     },
     {
       '@type': 'HowToStep',
       name: 'Strategic Distribution',
       text: 'Sprinkle evenly across the litter surface. Corners and edges where odors concentrate benefit most.',
-      url: 'https://www.purrify.ca/learn/how-to-use-deodorizer#step-3',
+      url: 'https://www.purrify.ca/learn/how-to-use-deodorizer#step-3/',
     },
   ],
 };

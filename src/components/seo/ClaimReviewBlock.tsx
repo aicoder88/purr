@@ -110,7 +110,7 @@ export function ClaimReviewBlock({
   claimSource,
   evidence,
   url,
-  includeSchema = true,
+  includeSchema = false,
   className = '',
 }: ClaimReviewBlockProps) {
   const colors = ratingColors[rating];

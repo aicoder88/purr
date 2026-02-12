@@ -2,13 +2,14 @@ export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
 import { SITE_NAME } from '../../../src/lib/constants';
+import { stripContext } from '@/lib/seo-utils';
 
 export const metadata: Metadata = {
   title: `Activated Carbon vs Baking Soda: Which Works? | ${SITE_NAME}`,
   description: "Stop wasting money on baking soda. Science reveals activated carbon traps ammonia molecules while baking soda only masks odors. See test results.",
   keywords: ['does baking soda help cat litter smell', 'baking soda vs charcoal for odor', 'activated carbon cat litter deodorizer', 'baking soda cat litter comparison', 'activated carbon vs baking soda cat litter'],
   alternates: {
-    canonical: 'https://www.purrify.ca/learn/activated-carbon-vs-baking-soda-deodorizers',
+    canonical: 'https://www.purrify.ca/learn/activated-carbon-vs-baking-soda-deodorizers/',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/activated-carbon-vs-baking-soda-deodorizers',
       'fr-CA': 'https://www.purrify.ca/fr/learn/activated-carbon-vs-baking-soda-deodorizers',
@@ -20,13 +21,13 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'article',
-    url: 'https://www.purrify.ca/learn/activated-carbon-vs-baking-soda-deodorizers',
+    url: 'https://www.purrify.ca/learn/activated-carbon-vs-baking-soda-deodorizers/',
     title: 'Baking Soda for Cat Litter? It Fails (Try This) | Purrify',
     description: "You sprinkled baking soda. Two days later, the smell's back. That's because baking soda can't trap ammonia—it just masks it.",
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/activated-carbon-vs-baking-soda-comparison.webp',
+        url: 'https://www.purrify.ca/optimized/activated-carbon-vs-baking-soda-comparison.webp/',
         width: 1200,
         height: 800,
         alt: 'Activated carbon vs baking soda comparison for cat litter',
@@ -45,7 +46,7 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   '@id': 'https://www.purrify.ca/learn/activated-carbon-vs-baking-soda-deodorizers',
-  url: 'https://www.purrify.ca/learn/activated-carbon-vs-baking-soda-deodorizers',
+  url: 'https://www.purrify.ca/learn/activated-carbon-vs-baking-soda-deodorizers/',
   inLanguage: 'en-CA',
   headline: 'Activated Carbon vs Baking Soda Cat Litter Deodorizers: Science-Based Comparison',
   description: "Stop wasting money on baking soda. Science reveals activated carbon traps ammonia molecules while baking soda just masks odors. See the 90-day test results.",
@@ -62,7 +63,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
       width: 400,
       height: 400,
     },
@@ -131,11 +132,12 @@ export default function ActivatedCarbonVsBakingSodaPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@graph': [stripContext(articleSchema), stripContext(faqSchema)],
+          }),
+        }}
       />
       <ActivatedCarbonVsBakingSodaClient />
     </>

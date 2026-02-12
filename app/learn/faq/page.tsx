@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     'best cat litter odor control',
   ],
   alternates: {
-    canonical: 'https://www.purrify.ca/learn/faq',
+    canonical: 'https://www.purrify.ca/learn/faq/',
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/faq',
       'fr-CA': 'https://www.purrify.ca/fr/learn/faq',
@@ -30,14 +30,14 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/learn/faq',
+    url: 'https://www.purrify.ca/learn/faq/',
     siteName: 'Purrify',
     title: 'Cat Litter Odor FAQ - Activated Carbon Questions | Purrify',
     description: 'Get expert answers about activated carbon cat litter additives: how they work, usage tips, safety, and troubleshooting.',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/cat-owner-questions-ghibli.webp',
+        url: 'https://www.purrify.ca/optimized/cat-owner-questions-ghibli.webp/',
         width: 1200,
         height: 800,
         alt: 'Cat owner with questions about Purrify activated carbon cat litter additive',
