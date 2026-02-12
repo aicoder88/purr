@@ -152,8 +152,8 @@ export async function validateAllPages(options: {
   const passed = options.failOnError
     ? !hasErrors
     : options.failOnWarning
-    ? !hasWarnings
-    : true;
+      ? !hasWarnings
+      : true;
 
   if (!passed) {
     console.error('❌ SEO validation FAILED\n');
@@ -251,7 +251,12 @@ async function analyzeLinkStructure(pages: ScannedPage[]): Promise<{
   const mainNavSections = [
     '/products', '/products/standard', '/products/family-pack', '/products/trial-size',
     '/blog', '/learn', '/science', '/reviews', '/about', '/contact', '/buy', '/stores',
-    '/referral', '/affiliate'
+    '/referral', '/affiliate',
+    '/locations', '/canada',
+    '/locations/province/british-columbia', '/locations/province/alberta',
+    '/locations/province/ontario', '/locations/province/quebec',
+    '/locations/province/atlantic', '/locations/province/prairies',
+    '/locations/province/north'
   ];
 
   // All pages are typically linked from navigation through the layout
@@ -325,10 +330,10 @@ async function analyzeLinkStructure(pages: ScannedPage[]): Promise<{
   orphanPages.forEach((page) => {
     // Skip if it's a dynamic route (expected to have few links)
     if (page.includes('[')) return;
-    
+
     // Skip homepage - it's the entry point and doesn't need incoming links
     if (page === '/') return;
-    
+
     errors.push({
       page,
       severity: 'error',
@@ -343,7 +348,7 @@ async function analyzeLinkStructure(pages: ScannedPage[]): Promise<{
   weakPages.forEach((page) => {
     // Skip dynamic routes and utility pages
     if (page.includes('[') || page.startsWith('/admin') || page.startsWith('/api')) return;
-    
+
     warnings.push({
       page,
       severity: 'warning',
@@ -358,7 +363,7 @@ async function analyzeLinkStructure(pages: ScannedPage[]): Promise<{
   deadEndPages.forEach((page) => {
     // Skip pages that naturally end user journeys
     if (page.startsWith('/buy') || page.includes('checkout') || page.includes('thank-you')) return;
-    
+
     warnings.push({
       page,
       severity: 'warning',

@@ -2,658 +2,1416 @@
   "images/team-avatar.png": {
     "width": 64,
     "height": 64,
-    "webp": "optimized/team-avatar.webp",
-    "webpSanitized": "optimized/team-avatar.webp",
-    "avif": "optimized/team-avatar.avif",
-    "avifSanitized": "optimized/team-avatar.avif",
-    "optimized": "optimized/team-avatar.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/senior-cat-mobility.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/senior-cat-mobility.webp",
-    "webpSanitized": "optimized/senior-cat-mobility.webp",
-    "avif": "optimized/senior-cat-mobility.avif",
-    "avifSanitized": "optimized/senior-cat-mobility.avif",
-    "optimized": "optimized/senior-cat-mobility.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/senior-cat-mobility-640w.avif",
+        "optimized/senior-cat-mobility-828w.avif"
+      ],
+      "webp": [
+        "optimized/senior-cat-mobility-640w.webp",
+        "optimized/senior-cat-mobility-828w.webp"
+      ],
+      "jpg": [
+        "optimized/senior-cat-mobility-640w.jpg",
+        "optimized/senior-cat-mobility-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/senior-cat-hero.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/senior-cat-hero.webp",
-    "webpSanitized": "optimized/senior-cat-hero.webp",
-    "avif": "optimized/senior-cat-hero.avif",
-    "avifSanitized": "optimized/senior-cat-hero.avif",
-    "optimized": "optimized/senior-cat-hero.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/senior-cat-hero-640w.avif",
+        "optimized/senior-cat-hero-828w.avif"
+      ],
+      "webp": [
+        "optimized/senior-cat-hero-640w.webp",
+        "optimized/senior-cat-hero-828w.webp"
+      ],
+      "jpg": [
+        "optimized/senior-cat-hero-640w.jpg",
+        "optimized/senior-cat-hero-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/retailer-hero-lifestyle.png": {
     "width": 640,
     "height": 640,
-    "webp": "optimized/retailer-hero-lifestyle.webp",
-    "webpSanitized": "optimized/retailer-hero-lifestyle.webp",
-    "avif": "optimized/retailer-hero-lifestyle.avif",
-    "avifSanitized": "optimized/retailer-hero-lifestyle.avif",
-    "optimized": "optimized/retailer-hero-lifestyle.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/retailer-hero-lifestyle-640w.avif"
+      ],
+      "webp": [
+        "optimized/retailer-hero-lifestyle-640w.webp"
+      ],
+      "jpg": [
+        "optimized/retailer-hero-lifestyle-640w.jpg"
+      ]
+    },
+    "sizes": "100vw"
   },
   "images/purrify-standard-bag.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/purrify-standard-bag.webp",
-    "webpSanitized": "optimized/purrify-standard-bag.webp",
-    "avif": "optimized/purrify-standard-bag.avif",
-    "avifSanitized": "optimized/purrify-standard-bag.avif",
-    "optimized": "optimized/purrify-standard-bag.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/purrify-standard-bag-640w.avif",
+        "optimized/purrify-standard-bag-828w.avif"
+      ],
+      "webp": [
+        "optimized/purrify-standard-bag-640w.webp",
+        "optimized/purrify-standard-bag-828w.webp"
+      ],
+      "jpg": [
+        "optimized/purrify-standard-bag-640w.jpg",
+        "optimized/purrify-standard-bag-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/powder_vs_spray_testing_v2.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/powder_vs_spray_testing_v2.webp",
-    "webpSanitized": "optimized/powder_vs_spray_testing_v2.webp",
-    "avif": "optimized/powder_vs_spray_testing_v2.avif",
-    "avifSanitized": "optimized/powder_vs_spray_testing_v2.avif",
-    "optimized": "optimized/powder_vs_spray_testing_v2.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/powder_vs_spray_testing_v2-640w.avif",
+        "optimized/powder_vs_spray_testing_v2-828w.avif"
+      ],
+      "webp": [
+        "optimized/powder_vs_spray_testing_v2-640w.webp",
+        "optimized/powder_vs_spray_testing_v2-828w.webp"
+      ],
+      "jpg": [
+        "optimized/powder_vs_spray_testing_v2-640w.jpg",
+        "optimized/powder_vs_spray_testing_v2-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/powder_vs_spray_testing.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/powder_vs_spray_testing.webp",
-    "webpSanitized": "optimized/powder_vs_spray_testing.webp",
-    "avif": "optimized/powder_vs_spray_testing.avif",
-    "avifSanitized": "optimized/powder_vs_spray_testing.avif",
-    "optimized": "optimized/powder_vs_spray_testing.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/powder_vs_spray_testing-640w.avif",
+        "optimized/powder_vs_spray_testing-828w.avif"
+      ],
+      "webp": [
+        "optimized/powder_vs_spray_testing-640w.webp",
+        "optimized/powder_vs_spray_testing-828w.webp"
+      ],
+      "jpg": [
+        "optimized/powder_vs_spray_testing-640w.jpg",
+        "optimized/powder_vs_spray_testing-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/powder_vs_spray_science_v2.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/powder_vs_spray_science_v2.webp",
-    "webpSanitized": "optimized/powder_vs_spray_science_v2.webp",
-    "avif": "optimized/powder_vs_spray_science_v2.avif",
-    "avifSanitized": "optimized/powder_vs_spray_science_v2.avif",
-    "optimized": "optimized/powder_vs_spray_science_v2.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/powder_vs_spray_science_v2-640w.avif",
+        "optimized/powder_vs_spray_science_v2-828w.avif"
+      ],
+      "webp": [
+        "optimized/powder_vs_spray_science_v2-640w.webp",
+        "optimized/powder_vs_spray_science_v2-828w.webp"
+      ],
+      "jpg": [
+        "optimized/powder_vs_spray_science_v2-640w.jpg",
+        "optimized/powder_vs_spray_science_v2-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/powder_vs_spray_science.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/powder_vs_spray_science.webp",
-    "webpSanitized": "optimized/powder_vs_spray_science.webp",
-    "avif": "optimized/powder_vs_spray_science.avif",
-    "avifSanitized": "optimized/powder_vs_spray_science.avif",
-    "optimized": "optimized/powder_vs_spray_science.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/powder_vs_spray_science-640w.avif",
+        "optimized/powder_vs_spray_science-828w.avif"
+      ],
+      "webp": [
+        "optimized/powder_vs_spray_science-640w.webp",
+        "optimized/powder_vs_spray_science-828w.webp"
+      ],
+      "jpg": [
+        "optimized/powder_vs_spray_science-640w.jpg",
+        "optimized/powder_vs_spray_science-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/powder_vs_spray_results.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/powder_vs_spray_results.webp",
-    "webpSanitized": "optimized/powder_vs_spray_results.webp",
-    "avif": "optimized/powder_vs_spray_results.avif",
-    "avifSanitized": "optimized/powder_vs_spray_results.avif",
-    "optimized": "optimized/powder_vs_spray_results.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/powder_vs_spray_results-640w.avif",
+        "optimized/powder_vs_spray_results-828w.avif"
+      ],
+      "webp": [
+        "optimized/powder_vs_spray_results-640w.webp",
+        "optimized/powder_vs_spray_results-828w.webp"
+      ],
+      "jpg": [
+        "optimized/powder_vs_spray_results-640w.jpg",
+        "optimized/powder_vs_spray_results-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/powder_vs_spray_hero_v2.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/powder_vs_spray_hero_v2.webp",
-    "webpSanitized": "optimized/powder_vs_spray_hero_v2.webp",
-    "avif": "optimized/powder_vs_spray_hero_v2.avif",
-    "avifSanitized": "optimized/powder_vs_spray_hero_v2.avif",
-    "optimized": "optimized/powder_vs_spray_hero_v2.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/powder_vs_spray_hero_v2-640w.avif",
+        "optimized/powder_vs_spray_hero_v2-828w.avif"
+      ],
+      "webp": [
+        "optimized/powder_vs_spray_hero_v2-640w.webp",
+        "optimized/powder_vs_spray_hero_v2-828w.webp"
+      ],
+      "jpg": [
+        "optimized/powder_vs_spray_hero_v2-640w.jpg",
+        "optimized/powder_vs_spray_hero_v2-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/powder_vs_spray_hero.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/powder_vs_spray_hero.webp",
-    "webpSanitized": "optimized/powder_vs_spray_hero.webp",
-    "avif": "optimized/powder_vs_spray_hero.avif",
-    "avifSanitized": "optimized/powder_vs_spray_hero.avif",
-    "optimized": "optimized/powder_vs_spray_hero.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/powder_vs_spray_hero-640w.avif",
+        "optimized/powder_vs_spray_hero-828w.avif"
+      ],
+      "webp": [
+        "optimized/powder_vs_spray_hero-640w.webp",
+        "optimized/powder_vs_spray_hero-828w.webp"
+      ],
+      "jpg": [
+        "optimized/powder_vs_spray_hero-640w.jpg",
+        "optimized/powder_vs_spray_hero-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/multi-cat-success-ghibli.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/multi-cat-success-ghibli.webp",
-    "webpSanitized": "optimized/multi-cat-success-ghibli.webp",
-    "avif": "optimized/multi-cat-success-ghibli.avif",
-    "avifSanitized": "optimized/multi-cat-success-ghibli.avif",
-    "optimized": "optimized/multi-cat-success-ghibli.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/multi-cat-success-ghibli-640w.avif",
+        "optimized/multi-cat-success-ghibli-828w.avif"
+      ],
+      "webp": [
+        "optimized/multi-cat-success-ghibli-640w.webp",
+        "optimized/multi-cat-success-ghibli-828w.webp"
+      ],
+      "jpg": [
+        "optimized/multi-cat-success-ghibli-640w.jpg",
+        "optimized/multi-cat-success-ghibli-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/multi-cat-home-ghibli.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/multi-cat-home-ghibli.webp",
-    "webpSanitized": "optimized/multi-cat-home-ghibli.webp",
-    "avif": "optimized/multi-cat-home-ghibli.avif",
-    "avifSanitized": "optimized/multi-cat-home-ghibli.avif",
-    "optimized": "optimized/multi-cat-home-ghibli.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/multi-cat-home-ghibli-640w.avif",
+        "optimized/multi-cat-home-ghibli-828w.avif"
+      ],
+      "webp": [
+        "optimized/multi-cat-home-ghibli-640w.webp",
+        "optimized/multi-cat-home-ghibli-828w.webp"
+      ],
+      "jpg": [
+        "optimized/multi-cat-home-ghibli-640w.jpg",
+        "optimized/multi-cat-home-ghibli-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/multi-cat-family-ghibli.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/multi-cat-family-ghibli.webp",
-    "webpSanitized": "optimized/multi-cat-family-ghibli.webp",
-    "avif": "optimized/multi-cat-family-ghibli.avif",
-    "avifSanitized": "optimized/multi-cat-family-ghibli.avif",
-    "optimized": "optimized/multi-cat-family-ghibli.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/multi-cat-family-ghibli-640w.avif",
+        "optimized/multi-cat-family-ghibli-828w.avif"
+      ],
+      "webp": [
+        "optimized/multi-cat-family-ghibli-640w.webp",
+        "optimized/multi-cat-family-ghibli-828w.webp"
+      ],
+      "jpg": [
+        "optimized/multi-cat-family-ghibli-640w.jpg",
+        "optimized/multi-cat-family-ghibli-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/happy-cat-ghibli.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/happy-cat-ghibli.webp",
-    "webpSanitized": "optimized/happy-cat-ghibli.webp",
-    "avif": "optimized/happy-cat-ghibli.avif",
-    "avifSanitized": "optimized/happy-cat-ghibli.avif",
-    "optimized": "optimized/happy-cat-ghibli.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/happy-cat-ghibli-640w.avif",
+        "optimized/happy-cat-ghibli-828w.avif"
+      ],
+      "webp": [
+        "optimized/happy-cat-ghibli-640w.webp",
+        "optimized/happy-cat-ghibli-828w.webp"
+      ],
+      "jpg": [
+        "optimized/happy-cat-ghibli-640w.jpg",
+        "optimized/happy-cat-ghibli-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/fragrance-free-hero.png": {
     "width": 640,
     "height": 640,
-    "webp": "optimized/fragrance-free-hero.webp",
-    "webpSanitized": "optimized/fragrance-free-hero.webp",
-    "avif": "optimized/fragrance-free-hero.avif",
-    "avifSanitized": "optimized/fragrance-free-hero.avif",
-    "optimized": "optimized/fragrance-free-hero.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/fragrance-free-hero-640w.avif"
+      ],
+      "webp": [
+        "optimized/fragrance-free-hero-640w.webp"
+      ],
+      "jpg": [
+        "optimized/fragrance-free-hero-640w.jpg"
+      ]
+    },
+    "sizes": "100vw"
   },
   "images/dr-michael-rodriguez.jpg": {
     "width": 512,
     "height": 512,
-    "webp": "optimized/dr-michael-rodriguez.webp",
-    "webpSanitized": "optimized/dr-michael-rodriguez.webp",
-    "avif": "optimized/dr-michael-rodriguez.avif",
-    "avifSanitized": "optimized/dr-michael-rodriguez.avif",
-    "optimized": "optimized/dr-michael-rodriguez.jpg"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/curious-cat-ghibli.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/curious-cat-ghibli.webp",
-    "webpSanitized": "optimized/curious-cat-ghibli.webp",
-    "avif": "optimized/curious-cat-ghibli.avif",
-    "avifSanitized": "optimized/curious-cat-ghibli.avif",
-    "optimized": "optimized/curious-cat-ghibli.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/curious-cat-ghibli-640w.avif",
+        "optimized/curious-cat-ghibli-828w.avif"
+      ],
+      "webp": [
+        "optimized/curious-cat-ghibli-640w.webp",
+        "optimized/curious-cat-ghibli-828w.webp"
+      ],
+      "jpg": [
+        "optimized/curious-cat-ghibli-640w.jpg",
+        "optimized/curious-cat-ghibli-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/cat-owner-questions-ghibli.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/cat-owner-questions-ghibli.webp",
-    "webpSanitized": "optimized/cat-owner-questions-ghibli.webp",
-    "avif": "optimized/cat-owner-questions-ghibli.avif",
-    "avifSanitized": "optimized/cat-owner-questions-ghibli.avif",
-    "optimized": "optimized/cat-owner-questions-ghibli.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/cat-owner-questions-ghibli-640w.avif",
+        "optimized/cat-owner-questions-ghibli-828w.avif"
+      ],
+      "webp": [
+        "optimized/cat-owner-questions-ghibli-640w.webp",
+        "optimized/cat-owner-questions-ghibli-828w.webp"
+      ],
+      "jpg": [
+        "optimized/cat-owner-questions-ghibli-640w.jpg",
+        "optimized/cat-owner-questions-ghibli-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/cat-litter-usage-ghibli.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/cat-litter-usage-ghibli.webp",
-    "webpSanitized": "optimized/cat-litter-usage-ghibli.webp",
-    "avif": "optimized/cat-litter-usage-ghibli.avif",
-    "avifSanitized": "optimized/cat-litter-usage-ghibli.avif",
-    "optimized": "optimized/cat-litter-usage-ghibli.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/cat-litter-usage-ghibli-640w.avif",
+        "optimized/cat-litter-usage-ghibli-828w.avif"
+      ],
+      "webp": [
+        "optimized/cat-litter-usage-ghibli-640w.webp",
+        "optimized/cat-litter-usage-ghibli-828w.webp"
+      ],
+      "jpg": [
+        "optimized/cat-litter-usage-ghibli-640w.jpg",
+        "optimized/cat-litter-usage-ghibli-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/carbon-microscopic.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/carbon-microscopic.webp",
-    "webpSanitized": "optimized/carbon-microscopic.webp",
-    "avif": "optimized/carbon-microscopic.avif",
-    "avifSanitized": "optimized/carbon-microscopic.avif",
-    "optimized": "optimized/carbon-microscopic.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/carbon-microscopic-640w.avif",
+        "optimized/carbon-microscopic-828w.avif"
+      ],
+      "webp": [
+        "optimized/carbon-microscopic-640w.webp",
+        "optimized/carbon-microscopic-828w.webp"
+      ],
+      "jpg": [
+        "optimized/carbon-microscopic-640w.jpg",
+        "optimized/carbon-microscopic-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/carbon-granules-detailed.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/carbon-granules-detailed.webp",
-    "webpSanitized": "optimized/carbon-granules-detailed.webp",
-    "avif": "optimized/carbon-granules-detailed.avif",
-    "avifSanitized": "optimized/carbon-granules-detailed.avif",
-    "optimized": "optimized/carbon-granules-detailed.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/carbon-granules-detailed-640w.avif",
+        "optimized/carbon-granules-detailed-828w.avif"
+      ],
+      "webp": [
+        "optimized/carbon-granules-detailed-640w.webp",
+        "optimized/carbon-granules-detailed-828w.webp"
+      ],
+      "jpg": [
+        "optimized/carbon-granules-detailed-640w.jpg",
+        "optimized/carbon-granules-detailed-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/team/trenton-harlow.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/trenton-harlow.webp",
-    "webpSanitized": "optimized/trenton-harlow.webp",
-    "avif": "optimized/trenton-harlow.avif",
-    "avifSanitized": "optimized/trenton-harlow.avif",
-    "optimized": "optimized/trenton-harlow.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/trenton-harlow-640w.avif",
+        "optimized/trenton-harlow-828w.avif"
+      ],
+      "webp": [
+        "optimized/trenton-harlow-640w.webp",
+        "optimized/trenton-harlow-828w.webp"
+      ],
+      "jpg": [
+        "optimized/trenton-harlow-640w.jpg",
+        "optimized/trenton-harlow-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/team/silas-bennett.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/silas-bennett.webp",
-    "webpSanitized": "optimized/silas-bennett.webp",
-    "avif": "optimized/silas-bennett.avif",
-    "avifSanitized": "optimized/silas-bennett.avif",
-    "optimized": "optimized/silas-bennett.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/silas-bennett-640w.avif",
+        "optimized/silas-bennett-828w.avif"
+      ],
+      "webp": [
+        "optimized/silas-bennett-640w.webp",
+        "optimized/silas-bennett-828w.webp"
+      ],
+      "jpg": [
+        "optimized/silas-bennett-640w.jpg",
+        "optimized/silas-bennett-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/team/sage-dean.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/sage-dean.webp",
-    "webpSanitized": "optimized/sage-dean.webp",
-    "avif": "optimized/sage-dean.avif",
-    "avifSanitized": "optimized/sage-dean.avif",
-    "optimized": "optimized/sage-dean.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/sage-dean-640w.avif",
+        "optimized/sage-dean-828w.avif"
+      ],
+      "webp": [
+        "optimized/sage-dean-640w.webp",
+        "optimized/sage-dean-828w.webp"
+      ],
+      "jpg": [
+        "optimized/sage-dean-640w.jpg",
+        "optimized/sage-dean-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/team/orion-hampton.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/orion-hampton.webp",
-    "webpSanitized": "optimized/orion-hampton.webp",
-    "avif": "optimized/orion-hampton.avif",
-    "avifSanitized": "optimized/orion-hampton.avif",
-    "optimized": "optimized/orion-hampton.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/orion-hampton-640w.avif",
+        "optimized/orion-hampton-828w.avif"
+      ],
+      "webp": [
+        "optimized/orion-hampton-640w.webp",
+        "optimized/orion-hampton-828w.webp"
+      ],
+      "jpg": [
+        "optimized/orion-hampton-640w.jpg",
+        "optimized/orion-hampton-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/team/michael-rodriguez.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/michael-rodriguez.webp",
-    "webpSanitized": "optimized/michael-rodriguez.webp",
-    "avif": "optimized/michael-rodriguez.avif",
-    "avifSanitized": "optimized/michael-rodriguez.avif",
-    "optimized": "optimized/michael-rodriguez.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/michael-rodriguez-640w.avif",
+        "optimized/michael-rodriguez-828w.avif"
+      ],
+      "webp": [
+        "optimized/michael-rodriguez-640w.webp",
+        "optimized/michael-rodriguez-828w.webp"
+      ],
+      "jpg": [
+        "optimized/michael-rodriguez-640w.jpg",
+        "optimized/michael-rodriguez-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/team/merrick-sullivan.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/merrick-sullivan.webp",
-    "webpSanitized": "optimized/merrick-sullivan.webp",
-    "avif": "optimized/merrick-sullivan.avif",
-    "avifSanitized": "optimized/merrick-sullivan.avif",
-    "optimized": "optimized/merrick-sullivan.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/merrick-sullivan-640w.avif",
+        "optimized/merrick-sullivan-828w.avif"
+      ],
+      "webp": [
+        "optimized/merrick-sullivan-640w.webp",
+        "optimized/merrick-sullivan-828w.webp"
+      ],
+      "jpg": [
+        "optimized/merrick-sullivan-640w.jpg",
+        "optimized/merrick-sullivan-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/team/mark-archer.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/mark-archer.webp",
-    "webpSanitized": "optimized/mark-archer.webp",
-    "avif": "optimized/mark-archer.avif",
-    "avifSanitized": "optimized/mark-archer.avif",
-    "optimized": "optimized/mark-archer.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/mark-archer-640w.avif",
+        "optimized/mark-archer-828w.avif"
+      ],
+      "webp": [
+        "optimized/mark-archer-640w.webp",
+        "optimized/mark-archer-828w.webp"
+      ],
+      "jpg": [
+        "optimized/mark-archer-640w.jpg",
+        "optimized/mark-archer-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/team/leland-brantley.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/leland-brantley.webp",
-    "webpSanitized": "optimized/leland-brantley.webp",
-    "avif": "optimized/leland-brantley.avif",
-    "avifSanitized": "optimized/leland-brantley.avif",
-    "optimized": "optimized/leland-brantley.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/leland-brantley-640w.avif",
+        "optimized/leland-brantley-828w.avif"
+      ],
+      "webp": [
+        "optimized/leland-brantley-640w.webp",
+        "optimized/leland-brantley-828w.webp"
+      ],
+      "jpg": [
+        "optimized/leland-brantley-640w.jpg",
+        "optimized/leland-brantley-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/team/gideon-fletcher.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/gideon-fletcher.webp",
-    "webpSanitized": "optimized/gideon-fletcher.webp",
-    "avif": "optimized/gideon-fletcher.avif",
-    "avifSanitized": "optimized/gideon-fletcher.avif",
-    "optimized": "optimized/gideon-fletcher.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/gideon-fletcher-640w.avif",
+        "optimized/gideon-fletcher-828w.avif"
+      ],
+      "webp": [
+        "optimized/gideon-fletcher-640w.webp",
+        "optimized/gideon-fletcher-828w.webp"
+      ],
+      "jpg": [
+        "optimized/gideon-fletcher-640w.jpg",
+        "optimized/gideon-fletcher-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/team/finnegan-crosby.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/finnegan-crosby.webp",
-    "webpSanitized": "optimized/finnegan-crosby.webp",
-    "avif": "optimized/finnegan-crosby.avif",
-    "avifSanitized": "optimized/finnegan-crosby.avif",
-    "optimized": "optimized/finnegan-crosby.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/finnegan-crosby-640w.avif",
+        "optimized/finnegan-crosby-828w.avif"
+      ],
+      "webp": [
+        "optimized/finnegan-crosby-640w.webp",
+        "optimized/finnegan-crosby-828w.webp"
+      ],
+      "jpg": [
+        "optimized/finnegan-crosby-640w.jpg",
+        "optimized/finnegan-crosby-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/team/ezekiel-voss.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/ezekiel-voss.webp",
-    "webpSanitized": "optimized/ezekiel-voss.webp",
-    "avif": "optimized/ezekiel-voss.avif",
-    "avifSanitized": "optimized/ezekiel-voss.avif",
-    "optimized": "optimized/ezekiel-voss.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/ezekiel-voss-640w.avif",
+        "optimized/ezekiel-voss-828w.avif"
+      ],
+      "webp": [
+        "optimized/ezekiel-voss-640w.webp",
+        "optimized/ezekiel-voss-828w.webp"
+      ],
+      "jpg": [
+        "optimized/ezekiel-voss-640w.jpg",
+        "optimized/ezekiel-voss-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/team/dorian-keller.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/dorian-keller.webp",
-    "webpSanitized": "optimized/dorian-keller.webp",
-    "avif": "optimized/dorian-keller.avif",
-    "avifSanitized": "optimized/dorian-keller.avif",
-    "optimized": "optimized/dorian-keller.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/dorian-keller-640w.avif",
+        "optimized/dorian-keller-828w.avif"
+      ],
+      "webp": [
+        "optimized/dorian-keller-640w.webp",
+        "optimized/dorian-keller-828w.webp"
+      ],
+      "jpg": [
+        "optimized/dorian-keller-640w.jpg",
+        "optimized/dorian-keller-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/team/david-kim.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/david-kim.webp",
-    "webpSanitized": "optimized/david-kim.webp",
-    "avif": "optimized/david-kim.avif",
-    "avifSanitized": "optimized/david-kim.avif",
-    "optimized": "optimized/david-kim.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/david-kim-640w.avif",
+        "optimized/david-kim-828w.avif"
+      ],
+      "webp": [
+        "optimized/david-kim-640w.webp",
+        "optimized/david-kim-828w.webp"
+      ],
+      "jpg": [
+        "optimized/david-kim-640w.jpg",
+        "optimized/david-kim-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/team/cassian-reed.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/cassian-reed.webp",
-    "webpSanitized": "optimized/cassian-reed.webp",
-    "avif": "optimized/cassian-reed.avif",
-    "avifSanitized": "optimized/cassian-reed.avif",
-    "optimized": "optimized/cassian-reed.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/cassian-reed-640w.avif",
+        "optimized/cassian-reed-828w.avif"
+      ],
+      "webp": [
+        "optimized/cassian-reed-640w.webp",
+        "optimized/cassian-reed-828w.webp"
+      ],
+      "jpg": [
+        "optimized/cassian-reed-640w.jpg",
+        "optimized/cassian-reed-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/products/60g-transparent.png": {
     "width": 394,
     "height": 634,
-    "webp": "optimized/60g-transparent.webp",
-    "webpSanitized": "optimized/60g-transparent.webp",
-    "avif": "optimized/60g-transparent.avif",
-    "avifSanitized": "optimized/60g-transparent.avif",
-    "optimized": "optimized/60g-transparent.png"
+    "aspectRatio": 0.6214511041009464,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/products/17g-transparent.png": {
     "width": 1566,
     "height": 2261,
-    "webp": "optimized/17g-transparent.webp",
-    "webpSanitized": "optimized/17g-transparent.webp",
-    "avif": "optimized/17g-transparent.avif",
-    "avifSanitized": "optimized/17g-transparent.avif",
-    "optimized": "optimized/17g-transparent.png"
+    "aspectRatio": 0.6926138876603273,
+    "formats": {
+      "avif": [
+        "optimized/17g-transparent-640w.avif",
+        "optimized/17g-transparent-828w.avif",
+        "optimized/17g-transparent-1080w.avif",
+        "optimized/17g-transparent-1200w.avif"
+      ],
+      "webp": [
+        "optimized/17g-transparent-640w.webp",
+        "optimized/17g-transparent-828w.webp",
+        "optimized/17g-transparent-1080w.webp",
+        "optimized/17g-transparent-1200w.webp"
+      ],
+      "jpg": [
+        "optimized/17g-transparent-640w.jpg",
+        "optimized/17g-transparent-828w.jpg",
+        "optimized/17g-transparent-1080w.jpg",
+        "optimized/17g-transparent-1200w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
   },
   "images/products/140g-transparent.png": {
     "width": 1024,
     "height": 1536,
-    "webp": "optimized/140g-transparent.webp",
-    "webpSanitized": "optimized/140g-transparent.webp",
-    "avif": "optimized/140g-transparent.avif",
-    "avifSanitized": "optimized/140g-transparent.avif",
-    "optimized": "optimized/140g-transparent.png"
+    "aspectRatio": 0.6666666666666666,
+    "formats": {
+      "avif": [
+        "optimized/140g-transparent-640w.avif",
+        "optimized/140g-transparent-828w.avif"
+      ],
+      "webp": [
+        "optimized/140g-transparent-640w.webp",
+        "optimized/140g-transparent-828w.webp"
+      ],
+      "jpg": [
+        "optimized/140g-transparent-640w.jpg",
+        "optimized/140g-transparent-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/products/140g-removebg-preview.png": {
     "width": 408,
     "height": 612,
-    "webp": "optimized/140g-removebg-preview.webp",
-    "webpSanitized": "optimized/140g-removebg-preview.webp",
-    "avif": "optimized/140g-removebg-preview.avif",
-    "avifSanitized": "optimized/140g-removebg-preview.avif",
-    "optimized": "optimized/140g-removebg-preview.png"
+    "aspectRatio": 0.6666666666666666,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/pitchdeck/slide-12-close.png": {
     "width": 1920,
     "height": 1080,
-    "webp": "optimized/slide-12-close.webp",
-    "webpSanitized": "optimized/slide-12-close.webp",
-    "avif": "optimized/slide-12-close.avif",
-    "avifSanitized": "optimized/slide-12-close.avif",
-    "optimized": "optimized/slide-12-close.png"
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-12-close-640w.avif",
+        "optimized/slide-12-close-828w.avif",
+        "optimized/slide-12-close-1080w.avif",
+        "optimized/slide-12-close-1200w.avif",
+        "optimized/slide-12-close-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-12-close-640w.webp",
+        "optimized/slide-12-close-828w.webp",
+        "optimized/slide-12-close-1080w.webp",
+        "optimized/slide-12-close-1200w.webp",
+        "optimized/slide-12-close-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-12-close-640w.jpg",
+        "optimized/slide-12-close-828w.jpg",
+        "optimized/slide-12-close-1080w.jpg",
+        "optimized/slide-12-close-1200w.jpg",
+        "optimized/slide-12-close-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
   },
   "images/pitchdeck/slide-11-ask.png": {
     "width": 1920,
     "height": 1080,
-    "webp": "optimized/slide-11-ask.webp",
-    "webpSanitized": "optimized/slide-11-ask.webp",
-    "avif": "optimized/slide-11-ask.avif",
-    "avifSanitized": "optimized/slide-11-ask.avif",
-    "optimized": "optimized/slide-11-ask.png"
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-11-ask-640w.avif",
+        "optimized/slide-11-ask-828w.avif",
+        "optimized/slide-11-ask-1080w.avif",
+        "optimized/slide-11-ask-1200w.avif",
+        "optimized/slide-11-ask-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-11-ask-640w.webp",
+        "optimized/slide-11-ask-828w.webp",
+        "optimized/slide-11-ask-1080w.webp",
+        "optimized/slide-11-ask-1200w.webp",
+        "optimized/slide-11-ask-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-11-ask-640w.jpg",
+        "optimized/slide-11-ask-828w.jpg",
+        "optimized/slide-11-ask-1080w.jpg",
+        "optimized/slide-11-ask-1200w.jpg",
+        "optimized/slide-11-ask-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
   },
   "images/pitchdeck/slide-10-market.png": {
     "width": 1920,
     "height": 1080,
-    "webp": "optimized/slide-10-market.webp",
-    "webpSanitized": "optimized/slide-10-market.webp",
-    "avif": "optimized/slide-10-market.avif",
-    "avifSanitized": "optimized/slide-10-market.avif",
-    "optimized": "optimized/slide-10-market.png"
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-10-market-640w.avif",
+        "optimized/slide-10-market-828w.avif",
+        "optimized/slide-10-market-1080w.avif",
+        "optimized/slide-10-market-1200w.avif",
+        "optimized/slide-10-market-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-10-market-640w.webp",
+        "optimized/slide-10-market-828w.webp",
+        "optimized/slide-10-market-1080w.webp",
+        "optimized/slide-10-market-1200w.webp",
+        "optimized/slide-10-market-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-10-market-640w.jpg",
+        "optimized/slide-10-market-828w.jpg",
+        "optimized/slide-10-market-1080w.jpg",
+        "optimized/slide-10-market-1200w.jpg",
+        "optimized/slide-10-market-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
   },
   "images/pitchdeck/slide-09-economics.png": {
     "width": 1920,
     "height": 1080,
-    "webp": "optimized/slide-09-economics.webp",
-    "webpSanitized": "optimized/slide-09-economics.webp",
-    "avif": "optimized/slide-09-economics.avif",
-    "avifSanitized": "optimized/slide-09-economics.avif",
-    "optimized": "optimized/slide-09-economics.png"
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-09-economics-640w.avif",
+        "optimized/slide-09-economics-828w.avif",
+        "optimized/slide-09-economics-1080w.avif",
+        "optimized/slide-09-economics-1200w.avif",
+        "optimized/slide-09-economics-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-09-economics-640w.webp",
+        "optimized/slide-09-economics-828w.webp",
+        "optimized/slide-09-economics-1080w.webp",
+        "optimized/slide-09-economics-1200w.webp",
+        "optimized/slide-09-economics-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-09-economics-640w.jpg",
+        "optimized/slide-09-economics-828w.jpg",
+        "optimized/slide-09-economics-1080w.jpg",
+        "optimized/slide-09-economics-1200w.jpg",
+        "optimized/slide-09-economics-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
   },
   "images/pitchdeck/slide-08-infrastructure.png": {
     "width": 1920,
     "height": 1080,
-    "webp": "optimized/slide-08-infrastructure.webp",
-    "webpSanitized": "optimized/slide-08-infrastructure.webp",
-    "avif": "optimized/slide-08-infrastructure.avif",
-    "avifSanitized": "optimized/slide-08-infrastructure.avif",
-    "optimized": "optimized/slide-08-infrastructure.png"
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-08-infrastructure-640w.avif",
+        "optimized/slide-08-infrastructure-828w.avif",
+        "optimized/slide-08-infrastructure-1080w.avif",
+        "optimized/slide-08-infrastructure-1200w.avif",
+        "optimized/slide-08-infrastructure-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-08-infrastructure-640w.webp",
+        "optimized/slide-08-infrastructure-828w.webp",
+        "optimized/slide-08-infrastructure-1080w.webp",
+        "optimized/slide-08-infrastructure-1200w.webp",
+        "optimized/slide-08-infrastructure-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-08-infrastructure-640w.jpg",
+        "optimized/slide-08-infrastructure-828w.jpg",
+        "optimized/slide-08-infrastructure-1080w.jpg",
+        "optimized/slide-08-infrastructure-1200w.jpg",
+        "optimized/slide-08-infrastructure-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
   },
   "images/pitchdeck/slide-07-platform.png": {
     "width": 1920,
     "height": 1080,
-    "webp": "optimized/slide-07-platform.webp",
-    "webpSanitized": "optimized/slide-07-platform.webp",
-    "avif": "optimized/slide-07-platform.avif",
-    "avifSanitized": "optimized/slide-07-platform.avif",
-    "optimized": "optimized/slide-07-platform.png"
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-07-platform-640w.avif",
+        "optimized/slide-07-platform-828w.avif",
+        "optimized/slide-07-platform-1080w.avif",
+        "optimized/slide-07-platform-1200w.avif",
+        "optimized/slide-07-platform-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-07-platform-640w.webp",
+        "optimized/slide-07-platform-828w.webp",
+        "optimized/slide-07-platform-1080w.webp",
+        "optimized/slide-07-platform-1200w.webp",
+        "optimized/slide-07-platform-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-07-platform-640w.jpg",
+        "optimized/slide-07-platform-828w.jpg",
+        "optimized/slide-07-platform-1080w.jpg",
+        "optimized/slide-07-platform-1200w.jpg",
+        "optimized/slide-07-platform-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
   },
   "images/pitchdeck/slide-06-case-study.png": {
     "width": 1920,
     "height": 1080,
-    "webp": "optimized/slide-06-case-study.webp",
-    "webpSanitized": "optimized/slide-06-case-study.webp",
-    "avif": "optimized/slide-06-case-study.avif",
-    "avifSanitized": "optimized/slide-06-case-study.avif",
-    "optimized": "optimized/slide-06-case-study.png"
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-06-case-study-640w.avif",
+        "optimized/slide-06-case-study-828w.avif",
+        "optimized/slide-06-case-study-1080w.avif",
+        "optimized/slide-06-case-study-1200w.avif",
+        "optimized/slide-06-case-study-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-06-case-study-640w.webp",
+        "optimized/slide-06-case-study-828w.webp",
+        "optimized/slide-06-case-study-1080w.webp",
+        "optimized/slide-06-case-study-1200w.webp",
+        "optimized/slide-06-case-study-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-06-case-study-640w.jpg",
+        "optimized/slide-06-case-study-828w.jpg",
+        "optimized/slide-06-case-study-1080w.jpg",
+        "optimized/slide-06-case-study-1200w.jpg",
+        "optimized/slide-06-case-study-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
   },
   "images/pitchdeck/slide-05-how-it-works.png": {
     "width": 1920,
     "height": 1080,
-    "webp": "optimized/slide-05-how-it-works.webp",
-    "webpSanitized": "optimized/slide-05-how-it-works.webp",
-    "avif": "optimized/slide-05-how-it-works.avif",
-    "avifSanitized": "optimized/slide-05-how-it-works.avif",
-    "optimized": "optimized/slide-05-how-it-works.png"
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-05-how-it-works-640w.avif",
+        "optimized/slide-05-how-it-works-828w.avif",
+        "optimized/slide-05-how-it-works-1080w.avif",
+        "optimized/slide-05-how-it-works-1200w.avif",
+        "optimized/slide-05-how-it-works-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-05-how-it-works-640w.webp",
+        "optimized/slide-05-how-it-works-828w.webp",
+        "optimized/slide-05-how-it-works-1080w.webp",
+        "optimized/slide-05-how-it-works-1200w.webp",
+        "optimized/slide-05-how-it-works-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-05-how-it-works-640w.jpg",
+        "optimized/slide-05-how-it-works-828w.jpg",
+        "optimized/slide-05-how-it-works-1080w.jpg",
+        "optimized/slide-05-how-it-works-1200w.jpg",
+        "optimized/slide-05-how-it-works-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
   },
   "images/pitchdeck/slide-04-solution.png": {
     "width": 1920,
     "height": 1080,
-    "webp": "optimized/slide-04-solution.webp",
-    "webpSanitized": "optimized/slide-04-solution.webp",
-    "avif": "optimized/slide-04-solution.avif",
-    "avifSanitized": "optimized/slide-04-solution.avif",
-    "optimized": "optimized/slide-04-solution.png"
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-04-solution-640w.avif",
+        "optimized/slide-04-solution-828w.avif",
+        "optimized/slide-04-solution-1080w.avif",
+        "optimized/slide-04-solution-1200w.avif",
+        "optimized/slide-04-solution-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-04-solution-640w.webp",
+        "optimized/slide-04-solution-828w.webp",
+        "optimized/slide-04-solution-1080w.webp",
+        "optimized/slide-04-solution-1200w.webp",
+        "optimized/slide-04-solution-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-04-solution-640w.jpg",
+        "optimized/slide-04-solution-828w.jpg",
+        "optimized/slide-04-solution-1080w.jpg",
+        "optimized/slide-04-solution-1200w.jpg",
+        "optimized/slide-04-solution-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
   },
   "images/pitchdeck/slide-03-urgency.png": {
     "width": 1920,
     "height": 1080,
-    "webp": "optimized/slide-03-urgency.webp",
-    "webpSanitized": "optimized/slide-03-urgency.webp",
-    "avif": "optimized/slide-03-urgency.avif",
-    "avifSanitized": "optimized/slide-03-urgency.avif",
-    "optimized": "optimized/slide-03-urgency.png"
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-03-urgency-640w.avif",
+        "optimized/slide-03-urgency-828w.avif",
+        "optimized/slide-03-urgency-1080w.avif",
+        "optimized/slide-03-urgency-1200w.avif",
+        "optimized/slide-03-urgency-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-03-urgency-640w.webp",
+        "optimized/slide-03-urgency-828w.webp",
+        "optimized/slide-03-urgency-1080w.webp",
+        "optimized/slide-03-urgency-1200w.webp",
+        "optimized/slide-03-urgency-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-03-urgency-640w.jpg",
+        "optimized/slide-03-urgency-828w.jpg",
+        "optimized/slide-03-urgency-1080w.jpg",
+        "optimized/slide-03-urgency-1200w.jpg",
+        "optimized/slide-03-urgency-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
   },
   "images/pitchdeck/slide-02-problem.png": {
     "width": 1920,
     "height": 1080,
-    "webp": "optimized/slide-02-problem.webp",
-    "webpSanitized": "optimized/slide-02-problem.webp",
-    "avif": "optimized/slide-02-problem.avif",
-    "avifSanitized": "optimized/slide-02-problem.avif",
-    "optimized": "optimized/slide-02-problem.png"
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-02-problem-640w.avif",
+        "optimized/slide-02-problem-828w.avif",
+        "optimized/slide-02-problem-1080w.avif",
+        "optimized/slide-02-problem-1200w.avif",
+        "optimized/slide-02-problem-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-02-problem-640w.webp",
+        "optimized/slide-02-problem-828w.webp",
+        "optimized/slide-02-problem-1080w.webp",
+        "optimized/slide-02-problem-1200w.webp",
+        "optimized/slide-02-problem-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-02-problem-640w.jpg",
+        "optimized/slide-02-problem-828w.jpg",
+        "optimized/slide-02-problem-1080w.jpg",
+        "optimized/slide-02-problem-1200w.jpg",
+        "optimized/slide-02-problem-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
   },
   "images/pitchdeck/slide-01-hook.png": {
     "width": 1920,
     "height": 1080,
-    "webp": "optimized/slide-01-hook.webp",
-    "webpSanitized": "optimized/slide-01-hook.webp",
-    "avif": "optimized/slide-01-hook.avif",
-    "avifSanitized": "optimized/slide-01-hook.avif",
-    "optimized": "optimized/slide-01-hook.png"
+    "aspectRatio": 1.7777777777777777,
+    "formats": {
+      "avif": [
+        "optimized/slide-01-hook-640w.avif",
+        "optimized/slide-01-hook-828w.avif",
+        "optimized/slide-01-hook-1080w.avif",
+        "optimized/slide-01-hook-1200w.avif",
+        "optimized/slide-01-hook-1920w.avif"
+      ],
+      "webp": [
+        "optimized/slide-01-hook-640w.webp",
+        "optimized/slide-01-hook-828w.webp",
+        "optimized/slide-01-hook-1080w.webp",
+        "optimized/slide-01-hook-1200w.webp",
+        "optimized/slide-01-hook-1920w.webp"
+      ],
+      "jpg": [
+        "optimized/slide-01-hook-640w.jpg",
+        "optimized/slide-01-hook-828w.jpg",
+        "optimized/slide-01-hook-1080w.jpg",
+        "optimized/slide-01-hook-1200w.jpg",
+        "optimized/slide-01-hook-1920w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
   },
   "images/locations/provinces/quebec.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/quebec.webp",
-    "webpSanitized": "optimized/quebec.webp",
-    "avif": "optimized/quebec.avif",
-    "avifSanitized": "optimized/quebec.avif",
-    "optimized": "optimized/quebec.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/quebec-640w.avif",
+        "optimized/quebec-828w.avif"
+      ],
+      "webp": [
+        "optimized/quebec-640w.webp",
+        "optimized/quebec-828w.webp"
+      ],
+      "jpg": [
+        "optimized/quebec-640w.jpg",
+        "optimized/quebec-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/locations/provinces/prairies.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/prairies.webp",
-    "webpSanitized": "optimized/prairies.webp",
-    "avif": "optimized/prairies.avif",
-    "avifSanitized": "optimized/prairies.avif",
-    "optimized": "optimized/prairies.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/prairies-640w.avif",
+        "optimized/prairies-828w.avif"
+      ],
+      "webp": [
+        "optimized/prairies-640w.webp",
+        "optimized/prairies-828w.webp"
+      ],
+      "jpg": [
+        "optimized/prairies-640w.jpg",
+        "optimized/prairies-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/locations/provinces/ontario.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/ontario.webp",
-    "webpSanitized": "optimized/ontario.webp",
-    "avif": "optimized/ontario.avif",
-    "avifSanitized": "optimized/ontario.avif",
-    "optimized": "optimized/ontario.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/ontario-640w.avif",
+        "optimized/ontario-828w.avif"
+      ],
+      "webp": [
+        "optimized/ontario-640w.webp",
+        "optimized/ontario-828w.webp"
+      ],
+      "jpg": [
+        "optimized/ontario-640w.jpg",
+        "optimized/ontario-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/locations/provinces/north.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/north.webp",
-    "webpSanitized": "optimized/north.webp",
-    "avif": "optimized/north.avif",
-    "avifSanitized": "optimized/north.avif",
-    "optimized": "optimized/north.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/north-640w.avif",
+        "optimized/north-828w.avif"
+      ],
+      "webp": [
+        "optimized/north-640w.webp",
+        "optimized/north-828w.webp"
+      ],
+      "jpg": [
+        "optimized/north-640w.jpg",
+        "optimized/north-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/locations/provinces/british-columbia.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/british-columbia.webp",
-    "webpSanitized": "optimized/british-columbia.webp",
-    "avif": "optimized/british-columbia.avif",
-    "avifSanitized": "optimized/british-columbia.avif",
-    "optimized": "optimized/british-columbia.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/british-columbia-640w.avif",
+        "optimized/british-columbia-828w.avif"
+      ],
+      "webp": [
+        "optimized/british-columbia-640w.webp",
+        "optimized/british-columbia-828w.webp"
+      ],
+      "jpg": [
+        "optimized/british-columbia-640w.jpg",
+        "optimized/british-columbia-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/locations/provinces/atlantic.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/atlantic.webp",
-    "webpSanitized": "optimized/atlantic.webp",
-    "avif": "optimized/atlantic.avif",
-    "avifSanitized": "optimized/atlantic.avif",
-    "optimized": "optimized/atlantic.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/atlantic-640w.avif",
+        "optimized/atlantic-828w.avif"
+      ],
+      "webp": [
+        "optimized/atlantic-640w.webp",
+        "optimized/atlantic-828w.webp"
+      ],
+      "jpg": [
+        "optimized/atlantic-640w.jpg",
+        "optimized/atlantic-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/locations/provinces/alberta.png": {
     "width": 1024,
     "height": 1024,
-    "webp": "optimized/alberta.webp",
-    "webpSanitized": "optimized/alberta.webp",
-    "avif": "optimized/alberta.avif",
-    "avifSanitized": "optimized/alberta.avif",
-    "optimized": "optimized/alberta.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/alberta-640w.avif",
+        "optimized/alberta-828w.avif"
+      ],
+      "webp": [
+        "optimized/alberta-640w.webp",
+        "optimized/alberta-828w.webp"
+      ],
+      "jpg": [
+        "optimized/alberta-640w.jpg",
+        "optimized/alberta-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "images/Logos/social-logo.png": {
     "width": 400,
     "height": 400,
-    "webp": "optimized/social-logo.webp",
-    "webpSanitized": "optimized/social-logo.webp",
-    "avif": "optimized/social-logo.avif",
-    "avifSanitized": "optimized/social-logo.avif",
-    "optimized": "optimized/social-logo.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/Logos/logo-dark.png": {
     "width": 418,
     "height": 200,
-    "webp": "optimized/logo-dark.webp",
-    "webpSanitized": "optimized/logo-dark.webp",
-    "avif": "optimized/logo-dark.avif",
-    "avifSanitized": "optimized/logo-dark.avif",
-    "optimized": "optimized/logo-dark.png"
+    "aspectRatio": 2.09,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/Logos/icon-64.png": {
     "width": 64,
     "height": 64,
-    "webp": "optimized/icon-64.webp",
-    "webpSanitized": "optimized/icon-64.webp",
-    "avif": "optimized/icon-64.avif",
-    "avifSanitized": "optimized/icon-64.avif",
-    "optimized": "optimized/icon-64.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/Logos/icon-64-root.png": {
     "width": 64,
     "height": 64,
-    "webp": "optimized/icon-64-root.webp",
-    "webpSanitized": "optimized/icon-64-root.webp",
-    "avif": "optimized/icon-64-root.avif",
-    "avifSanitized": "optimized/icon-64-root.avif",
-    "optimized": "optimized/icon-64-root.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/Logos/icon-512.png": {
     "width": 512,
     "height": 512,
-    "webp": "optimized/icon-512.webp",
-    "webpSanitized": "optimized/icon-512.webp",
-    "avif": "optimized/icon-512.avif",
-    "avifSanitized": "optimized/icon-512.avif",
-    "optimized": "optimized/icon-512.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/Logos/icon-32.png": {
     "width": 32,
     "height": 32,
-    "webp": "optimized/icon-32.webp",
-    "webpSanitized": "optimized/icon-32.webp",
-    "avif": "optimized/icon-32.avif",
-    "avifSanitized": "optimized/icon-32.avif",
-    "optimized": "optimized/icon-32.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/Logos/icon-32-root.png": {
     "width": 32,
     "height": 32,
-    "webp": "optimized/icon-32-root.webp",
-    "webpSanitized": "optimized/icon-32-root.webp",
-    "avif": "optimized/icon-32-root.avif",
-    "avifSanitized": "optimized/icon-32-root.avif",
-    "optimized": "optimized/icon-32-root.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/Logos/icon-192.png": {
     "width": 192,
     "height": 192,
-    "webp": "optimized/icon-192.webp",
-    "webpSanitized": "optimized/icon-192.webp",
-    "avif": "optimized/icon-192.avif",
-    "avifSanitized": "optimized/icon-192.avif",
-    "optimized": "optimized/icon-192.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/Logos/icon-128.png": {
     "width": 128,
     "height": 128,
-    "webp": "optimized/icon-128.webp",
-    "webpSanitized": "optimized/icon-128.webp",
-    "avif": "optimized/icon-128.avif",
-    "avifSanitized": "optimized/icon-128.avif",
-    "optimized": "optimized/icon-128.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/Logos/icon-128-root.png": {
     "width": 128,
     "height": 128,
-    "webp": "optimized/icon-128-root.webp",
-    "webpSanitized": "optimized/icon-128-root.webp",
-    "avif": "optimized/icon-128-root.avif",
-    "avifSanitized": "optimized/icon-128-root.avif",
-    "optimized": "optimized/icon-128-root.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/Logos/favicon.png": {
     "width": 16,
     "height": 16,
-    "webp": "optimized/favicon.webp",
-    "webpSanitized": "optimized/favicon.webp",
-    "avif": "optimized/favicon.avif",
-    "avifSanitized": "optimized/favicon.avif",
-    "optimized": "optimized/favicon.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/Logos/apple-touch-icon.png": {
     "width": 180,
     "height": 180,
-    "webp": "optimized/apple-touch-icon.webp",
-    "webpSanitized": "optimized/apple-touch-icon.webp",
-    "avif": "optimized/apple-touch-icon.avif",
-    "avifSanitized": "optimized/apple-touch-icon.avif",
-    "optimized": "optimized/apple-touch-icon.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   },
   "images/Logos/apple-touch-icon-root.png": {
     "width": 180,
     "height": 180,
-    "webp": "optimized/apple-touch-icon-root.webp",
-    "webpSanitized": "optimized/apple-touch-icon-root.webp",
-    "avif": "optimized/apple-touch-icon-root.avif",
-    "avifSanitized": "optimized/apple-touch-icon-root.avif",
-    "optimized": "optimized/apple-touch-icon-root.png"
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [],
+      "webp": [],
+      "jpg": []
+    },
+    "sizes": "100vw"
   }
 }

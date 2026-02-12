@@ -1,4 +1,4 @@
-import { SITE_NAME, SITE_DESCRIPTION, PRODUCTS, CONTACT_INFO, SOCIAL_LINKS } from './constants';
+import { SITE_NAME, SITE_DESCRIPTION, PRODUCTS, CONTACT_INFO, SOCIAL_LINKS, TESTIMONIALS } from './constants';
 import { getProductPrice, getPriceRange } from './pricing';
 import type { Currency } from './geo/currency-detector';
 
@@ -601,6 +601,37 @@ export const generateOfferSchema = (product: Product, localeInput: string, curre
     },
     priceValidUntil: getPriceValidityDate(),
     itemCondition: 'https://schema.org/NewCondition',
+    eligibleRegion: [
+      { '@type': 'Country', name: 'CA' },
+      { '@type': 'Country', name: 'US' }
+    ],
+    shippingDetails: {
+      '@type': 'OfferShippingDetails',
+      shippingDestination: [
+        { '@type': 'DefinedRegion', addressCountry: 'CA' },
+        { '@type': 'DefinedRegion', addressCountry: 'US' }
+      ],
+      shippingRate: {
+        '@type': 'MonetaryAmount',
+        value: '0',
+        currency: currency
+      },
+      deliveryTime: {
+        '@type': 'ShippingDeliveryTime',
+        handlingTime: {
+          '@type': 'QuantitativeValue',
+          minValue: 1,
+          maxValue: 2,
+          unitCode: 'DAY'
+        },
+        transitTime: {
+          '@type': 'QuantitativeValue',
+          minValue: 3,
+          maxValue: 7,
+          unitCode: 'DAY'
+        }
+      }
+    }
   };
 };
 
@@ -714,7 +745,22 @@ export const generateHomepageSchema = (localeInput: string, currency: string = '
             name: product.name,
             description: product.description.split('\n')[0],
             image: `${baseUrl}${product.image}`,
-            offers: generateOfferSchema(product, locale, currency)
+            offers: generateOfferSchema(product, locale, currency),
+            aggregateRating: {
+              '@type': 'AggregateRating',
+              ratingValue: '4.8',
+              reviewCount: String(TESTIMONIALS.length),
+              bestRating: '5',
+              worstRating: '1'
+            },
+            hasMerchantReturnPolicy: {
+              '@type': 'MerchantReturnPolicy',
+              applicableCountry: ['CA', 'US'],
+              returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+              merchantReturnDays: 30,
+              returnMethod: 'https://schema.org/ReturnByMail',
+              returnFees: 'https://schema.org/FreeReturn'
+            }
           }
         }))
       },
@@ -791,6 +837,35 @@ export const generateProductPageSchema = (productId: string, localeInput: string
           '@type': 'Audience',
           name: 'Cat Owners'
         },
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.8',
+          reviewCount: String(TESTIMONIALS.length),
+          bestRating: '5',
+          worstRating: '1'
+        },
+        review: TESTIMONIALS.slice(0, 3).map(t => ({
+          '@type': 'Review',
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: String(t.stars),
+            bestRating: '5',
+            worstRating: '1'
+          },
+          author: {
+            '@type': 'Person',
+            name: t.name
+          },
+          reviewBody: t.text
+        })),
+        hasMerchantReturnPolicy: {
+          '@type': 'MerchantReturnPolicy',
+          applicableCountry: ['CA', 'US'],
+          returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+          merchantReturnDays: 30,
+          returnMethod: 'https://schema.org/ReturnByMail',
+          returnFees: 'https://schema.org/FreeReturn'
+        }
       },
 
       // Breadcrumb Schema

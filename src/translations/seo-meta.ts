@@ -68,7 +68,7 @@ export interface SEOMetaContent {
 // English SEO Meta
 export const seoMetaEn: SEOMetaContent = {
   homepage: {
-    title: 'Stop Cat Litter Smell Instantly - Activated Carbon 2026',
+    title: 'Purrify | Activated Carbon Cat Litter Deodorizer — Try Free',
     description: 'Eliminate 99% of cat litter odor in 30 seconds with activated carbon. No perfumes, 100% natural. Try FREE Today - Ships Fast to Canada & USA!',
     targetKeyword: 'cat litter smell',
     schema: {

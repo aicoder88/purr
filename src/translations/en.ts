@@ -793,6 +793,8 @@ export const en = {
     about: "About Us",
     blog: "Blog",
     locations: "Locations",
+    allLocations: "All Locations",
+    canada: "Canada Wide",
     stockists: "Stores",
     testimonials: "Testimonials",
     retailers: "For Retailers",

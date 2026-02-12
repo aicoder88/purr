@@ -27,7 +27,7 @@ const TRUST_BADGES: TrustBadge[] = [
     titleKey: 'moneyBack',
     descriptionKey: 'moneyBack',
     highlightKey: 'moneyBack',
-    color: 'text-emerald-500 dark:text-emerald-400'
+    color: 'text-emerald-600 dark:text-emerald-400'
   },
   {
     id: 'secure-payment',
@@ -35,7 +35,7 @@ const TRUST_BADGES: TrustBadge[] = [
     titleKey: 'securePayment',
     descriptionKey: 'securePayment',
     highlightKey: 'securePayment',
-    color: 'text-blue-500 dark:text-blue-400'
+    color: 'text-blue-600 dark:text-blue-400'
   },
   {
     id: 'fast-shipping',
@@ -43,7 +43,7 @@ const TRUST_BADGES: TrustBadge[] = [
     titleKey: 'fastShipping',
     descriptionKey: 'fastShipping',
     highlightKey: 'fastShipping',
-    color: 'text-indigo-500 dark:text-indigo-400'
+    color: 'text-indigo-600 dark:text-indigo-400'
   },
   {
     id: 'customer-satisfaction',
@@ -51,7 +51,7 @@ const TRUST_BADGES: TrustBadge[] = [
     titleKey: 'customerRating',
     descriptionKey: 'customerRating',
     highlightKey: 'customerRating',
-    color: 'text-amber-500 dark:text-amber-400'
+    color: 'text-amber-600 dark:text-amber-400'
   },
   {
     id: 'trusted-customers',
@@ -59,7 +59,7 @@ const TRUST_BADGES: TrustBadge[] = [
     titleKey: 'happyCustomers',
     descriptionKey: 'happyCustomers',
     highlightKey: 'happyCustomers',
-    color: 'text-violet-500 dark:text-violet-400'
+    color: 'text-violet-600 dark:text-violet-400'
   },
   {
     id: 'quality-guarantee',
@@ -67,7 +67,7 @@ const TRUST_BADGES: TrustBadge[] = [
     titleKey: 'premiumQuality',
     descriptionKey: 'premiumQuality',
     highlightKey: 'premiumQuality',
-    color: 'text-rose-500 dark:text-rose-400'
+    color: 'text-rose-600 dark:text-rose-400'
   }
 ];
 

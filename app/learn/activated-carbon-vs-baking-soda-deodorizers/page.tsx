@@ -11,12 +11,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.purrify.ca/learn/activated-carbon-vs-baking-soda-deodorizers/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/learn/activated-carbon-vs-baking-soda-deodorizers',
-      'fr-CA': 'https://www.purrify.ca/fr/learn/activated-carbon-vs-baking-soda-deodorizers',
-      'zh-CN': 'https://www.purrify.ca/zh/learn/activated-carbon-vs-baking-soda-deodorizers',
-      'es-US': 'https://www.purrify.ca/es/learn/activated-carbon-vs-baking-soda-deodorizers',
-      'en-US': 'https://www.purrify.ca/es/learn/activated-carbon-vs-baking-soda-deodorizers',
-      'x-default': 'https://www.purrify.ca/es/learn/activated-carbon-vs-baking-soda-deodorizers',
+      'en-CA': 'https://www.purrify.ca/learn/activated-carbon-vs-baking-soda-deodorizers/',
+      'fr-CA': 'https://www.purrify.ca/fr/learn/activated-carbon-vs-baking-soda-deodorizers/',
+      'zh-CN': 'https://www.purrify.ca/zh/learn/activated-carbon-vs-baking-soda-deodorizers/',
+      'es-US': 'https://www.purrify.ca/es/learn/activated-carbon-vs-baking-soda-deodorizers/',
+      'en-US': 'https://www.purrify.ca/us/learn/activated-carbon-vs-baking-soda-deodorizers/',
+      'x-default': 'https://www.purrify.ca/learn/activated-carbon-vs-baking-soda-deodorizers/',
     },
   },
   openGraph: {
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/activated-carbon-vs-baking-soda-comparison.webp/',
+        url: 'https://www.purrify.ca/optimized/activated-carbon-vs-baking-soda-comparison.webp',
         width: 1200,
         height: 800,
         alt: 'Activated carbon vs baking soda comparison for cat litter',

@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { useVideoPlayer } from './useVideoPlayer';
 import Image from 'next/image';
 
@@ -7,19 +6,7 @@ interface HeroVideoProps {
 }
 
 export const HeroVideo = ({ t }: HeroVideoProps) => {
-  const [isMobile, setIsMobile] = useState<boolean | null>(null);
-  const { videoRef, mediaContainerRef, state, replay, toggleMute, handleVolumeChange } = useVideoPlayer([isMobile]);
-
-  // Screen size detection for optimized loading
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024); // lg breakpoint usually 1024px
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  const { videoRef, mediaContainerRef, state, replay, toggleMute, handleVolumeChange } = useVideoPlayer([]);
 
   // Determine video sources based on existing assets (placeholder for new exports)
   // Note: These will be updated once the user provides the new 1920x800 and 1080x1350 files
@@ -32,9 +19,7 @@ export const HeroVideo = ({ t }: HeroVideoProps) => {
       <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
 
       {/* Video Container - Responsive Aspect Ratio */}
-      <div className={`relative overflow-hidden rounded-3xl shadow-2xl dark:shadow-gray-800 group-hover:shadow-[#E0EFC7]/50 dark:group-hover:shadow-[#3694FF]/30 transition-all duration-500 w-full bg-gray-100 dark:bg-gray-800 mx-auto
-        ${isMobile ? 'aspect-[3/4] w-full max-w-md' : 'aspect-[4/5] w-full max-w-lg xl:max-w-xl'}`}
-      >
+      <div className="relative overflow-hidden rounded-3xl shadow-2xl dark:shadow-gray-800 group-hover:shadow-[#E0EFC7]/50 dark:group-hover:shadow-[#3694FF]/30 transition-all duration-500 w-full bg-gray-100 dark:bg-gray-800 mx-auto aspect-[3/4] max-w-md lg:aspect-[4/5] lg:max-w-lg xl:max-w-xl">
 
         {/* Replay Button Overlay */}
         {state.showReplayButton && (
@@ -97,9 +82,8 @@ export const HeroVideo = ({ t }: HeroVideoProps) => {
             />
           )}
 
-          {state.shouldLoadVideo && isMobile !== null && (
+          {state.shouldLoadVideo && (
             <video
-              key={isMobile ? 'mobile' : 'desktop'} // Force remount on switch to load correct source
               ref={videoRef}
               className="w-full h-full object-cover object-top dark:brightness-90 dark:contrast-100"
               autoPlay
@@ -116,12 +100,24 @@ export const HeroVideo = ({ t }: HeroVideoProps) => {
               loop={false}
             >
               <source
-                src={isMobile ? mobileSrc.replace('.mp4', '.webm') : desktopSrc.replace('.mp4', '.webm')}
+                src={mobileSrc.replace('.mp4', '.webm')}
                 type="video/webm"
+                media="(max-width: 1023px)"
               />
               <source
-                src={isMobile ? mobileSrc : desktopSrc}
+                src={desktopSrc.replace('.mp4', '.webm')}
+                type="video/webm"
+                media="(min-width: 1024px)"
+              />
+              <source
+                src={mobileSrc}
                 type="video/mp4"
+                media="(max-width: 1023px)"
+              />
+              <source
+                src={desktopSrc}
+                type="video/mp4"
+                media="(min-width: 1024px)"
               />
               <p>Your browser does not support the video tag.</p>
             </video>

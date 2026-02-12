@@ -14,7 +14,7 @@ import { Loader2 } from "lucide-react";
 export default function LoginForm() {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const callbackUrl = searchParams.get("callbackUrl") || "/admin";
+    const callbackUrl = searchParams?.get("callbackUrl") || "/admin";
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 

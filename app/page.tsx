@@ -11,7 +11,7 @@ import { Stores } from '@/components/sections/stores';
 import { SkipNav } from '@/components/ui/skip-nav';
 import { ErrorBoundary } from '@/components/ui/error-boundary';
 import { TrustBadges } from '@/components/social-proof/TrustBadges';
-import { ClientLocationsMap } from '@/components/maps/ClientLocationsMap';
+import { LazyClientLocationsMap } from '@/components/maps/LazyClientLocationsMap';
 
 import { SITE_NAME, SITE_DESCRIPTION } from '@/lib/constants';
 import { getSEOMeta } from '@/translations/seo-meta';
@@ -194,7 +194,7 @@ export default async function HomePage() {
         {/* Client Locations Map */}
         <div className="cv-auto cis-720">
           <ErrorBoundary>
-            <ClientLocationsMap
+            <LazyClientLocationsMap
               className="bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900"
               height="400"
             />

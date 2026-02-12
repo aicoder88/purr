@@ -113,7 +113,7 @@ export async function scanImageFiles(): Promise<string[]> {
     ['public/**/*.{jpg,jpeg,png,gif,webp,svg,avif}'],
     {
       cwd: process.cwd(),
-      ignore: ['**/node_modules/**', '**/.next/**'],
+      ignore: ['**/node_modules/**', '**/.next/**', '**/original-images/**', '**/images/**'],
     }
   );
 

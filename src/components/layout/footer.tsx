@@ -128,7 +128,7 @@ export function Footer() {
       <Container>
         {/* Main Footer Content */}
         <div className="py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
             <div className="space-y-4">
               <div className="flex items-center mb-4">
                 <Link href={locale === "fr" ? "/fr/" : "/"} className="group">
@@ -642,6 +642,85 @@ export function Footer() {
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.contact || ""}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="space-y-4">
+              <h3 className="font-heading text-sm font-semibold text-[#333333] dark:text-gray-100">
+                {t.footerNav?.locations || "Locations"}
+              </h3>
+              <ul className="space-y-2 text-sm dark:text-sm">
+                <li>
+                  <Link
+                    href="/locations"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.allLocations || "All Locations"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/canada"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.canada || "Canada Wide"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/locations/province/british-columbia"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    British Columbia
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/locations/province/alberta"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    Alberta
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/locations/province/ontario"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    Ontario
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/locations/province/quebec"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    Quebec
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/locations/province/atlantic"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    Atlantic Canada
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/locations/province/prairies"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    Prairies
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/locations/province/north"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    The North
                   </Link>
                 </li>
               </ul>

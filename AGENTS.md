@@ -2,148 +2,131 @@
 
 > This file contains essential information for AI coding agents working on the Purrify project. Read this file thoroughly before making any changes.
 
+## Core Mandates
+
+### Package Manager: pnpm ONLY
+- This project uses `pnpm` exclusively.
+- Do not use `npm` or `yarn` for manual commands.
+
+### No Fabrication Rule
+- Never fabricate or assume the existence of:
+  - contact info, social handles, hashtags
+  - file paths, image paths, URLs
+  - APIs, scripts, components, database models
+- Verify first by checking the filesystem/code.
+
+### Hydration Safety
+- Never conditionally `return null` in page components based on client state.
+- Use server-side redirects or explicit loading/error UI.
+- Reference: `docs/HYDRATION_SAFETY.md`
+
 ## Project Overview
 
-**Purrify** is an e-commerce website for an activated carbon cat litter additive product. The website serves multiple markets (Canada, USA) in four languages (English, French, Chinese, Spanish). It features a complete online store, blog with AI-generated content, affiliate program, retailer portal, and comprehensive SEO optimization.
+**Purrify** is an e-commerce website for an activated carbon cat litter additive product. It serves Canada (CAD) and USA (USD) in four languages (English, French, Chinese, Spanish), with a full store, blog, affiliate system, retailer workflows, and SEO tooling.
 
 - **Website**: https://www.purrify.ca
-- **Primary Market**: Canada (CAD currency)
-- **Secondary Market**: USA (USD currency)
-- **Node Version**: >= 22.x
-- **Package Manager**: pnpm 10.27.0
+- **Primary Market**: Canada (CAD)
+- **Secondary Market**: USA (USD)
+- **Node Version**: `22.x`
+- **Package Manager**: `pnpm`
 
 ## Technology Stack
 
 ### Core Framework
-- **Next.js 16.0.10** - React framework with Pages Router (legacy)
-- **React 19.2.3** - UI library
-- **TypeScript 5.9.3** - Type safety
+- **Next.js 16.0.10** - App Router (primary)
+- **React 19.2.3**
+- **TypeScript 5.9.3** (strict mode)
+- **next-intl 4.8.2** for i18n routing/messages
 
 ### Database & ORM
-- **PostgreSQL** - Primary database
-- **Prisma 6.19.1** - Type-safe ORM with client generation
+- **PostgreSQL**
+- **Prisma 7.3.0** (`prisma` + `@prisma/client`)
+- Prisma singleton in `src/lib/prisma.ts`
 
-### Authentication
-- **NextAuth.js 4.24.13** - Authentication library
-- **bcryptjs** - Password hashing
-- JWT-based sessions with 24-hour expiration
+### Authentication & Security
+- **NextAuth 5.0.0-beta.25** (JWT session strategy)
+- `requireAuth()` helper in `src/lib/auth/session.ts`
+- Rate limiting in `src/lib/security/rate-limit.ts` / `src/lib/security/rate-limit-app.ts`
+- CSRF helpers in `src/lib/security/csrf.ts`
 
 ### Styling & UI
-- **Tailwind CSS 3.4.19** - Utility-first CSS framework
-- **Radix UI** - Headless UI components (extensive usage)
-- **Lucide React** - Icon library
-- **Framer Motion** - Animation library
-- **Embla Carousel** - Carousel component
+- **Tailwind CSS 3.4.19**
+- **Radix UI** (shadcn-style components in `src/components/ui/`)
+- **Lucide React**
+- **Framer Motion**
+- **Embla Carousel**
 
-### Payment & E-commerce
-- **Stripe 18.5.0** - Payment processing
-- Custom checkout session API
-- Subscription/autoship support
+### Payment & Commerce
+- **Stripe 18.5.0**
+- Payment links in `src/lib/payment-links.ts`
+- Stripe webhooks under `app/api/webhooks/stripe/`
 
-### AI & Content Generation
-- **Anthropic Claude SDK** - Primary AI for blog generation
-- **OpenAI SDK** - Alternative AI provider
-- **ChromaDB** - Vector database for content
-
-### Email & Communications
-- **Resend** - Transactional email
-- **EmailJS** - Client-side email sending
-- Custom email templates in `src/emails/`
+### AI & Content
+- **Anthropic SDK** and **OpenAI SDK**
+- Blog automation scripts in `scripts/` and blog JSON content under `content/blog/{en,fr,zh,es}/`
 
 ### Monitoring & Analytics
-- **Sentry** - Error tracking and performance monitoring
-- **Vercel Analytics** - Web analytics
-- Custom UTM tracking implementation
+- **Sentry**
+- **Vercel Analytics**
+- Custom UTM tracking
 
 ### Testing
-- **Jest 30.2.0** - Unit testing
-- **Playwright 1.57.0** - E2E testing
-- **@testing-library/react** - Component testing
+- **Jest 30.2.0**
+- **Playwright 1.57.0**
+- **@testing-library/react**
 
 ## ⛔ Anti-Patterns (Never Do These)
 
 | Anti-Pattern | Example | Correct Behavior |
 |--------------|---------|------------------|
-| **The Fabricator** | Referencing `/images/logo.png` that doesn't exist | Run `ls public/images/` first |
-| **The Guesser** | Assuming `lodash` is installed | Check `package.json` or ask |
-| **The Over-Engineer** | Creating `ButtonFactory` for one button | Just write the button |
-| **The Lazy Verifier** | Saying "Done" without testing | Run `pnpm build` and confirm |
-| **The Reformatter** | Changing tabs to spaces across the file | Touch only what was requested |
-| **The Silent Changer** | Deleting "unused" code that's actually used elsewhere | Mention it, don't delete |
+| **The Fabricator** | Referencing `/images/logo.png` that does not exist | Verify in filesystem first |
+| **The Guesser** | Assuming `lodash` is installed | Check `package.json` |
+| **The Over-Engineer** | Creating `ButtonFactory` for one button | Write the simple button |
+| **The Lazy Verifier** | Saying "Done" without validation | Run relevant checks (`build`, tests, lint) |
+| **The Reformatter** | Reformatting unrelated lines | Touch only requested/affected code |
+| **The Silent Changer** | Removing code without calling it out | Explain risk before deleting |
 | **The Powder User** | Calling Purrify a "powder" | Use "granules" or "additive" |
-| **The Hardcoder** | Writing "Add to Cart" directly in JSX | Use `t('addToCart')` |
-| **The White-on-White** | Using text-white without a colored background | Always ensure contrast in BOTH modes |
-| **The Label Maker** | Putting labels on generated bags/bottles | Never use labels on AI images |
-| **The Dust Maker** | Showing black clouds/dust | Clean, trapped odor only |
-| **The Wrong Folder** | Storing images outside `public/images` | Use `public/images` -> `optimized` |
+| **The Hardcoder** | Hardcoded UI strings | Use translation keys/hook output |
+| **The White-on-White** | `text-white` on white/light bg | Ensure contrast in both light/dark |
+| **The Label Maker** | Labels on generated bags/bottles | Never use labels on AI images |
+| **The Dust Maker** | Black dust clouds | Show odor trapped/adsorbed only |
+| **The Wrong Folder** | Random image storage | Source: `public/original-images/`, output: `public/optimized/` |
 
 ## Project Structure
 
 ```
 /
-├── pages/                  # Next.js Pages Router (legacy)
-│   ├── _app.tsx           # App wrapper with providers
-│   ├── _document.tsx      # HTML document customization
-│   ├── api/               # API routes
-│   │   ├── auth/          # NextAuth configuration
-│   │   ├── admin/         # Admin API endpoints
-│   │   ├── affiliate/     # Affiliate program APIs
-│   │   ├── cron/          # Scheduled task endpoints
-│   │   └── webhooks/      # Stripe webhooks
-│   ├── admin/             # Admin dashboard pages
-│   ├── affiliate/         # Affiliate portal pages
-│   ├── blog/              # Blog pages and articles
-│   ├── learn/             # Educational content
-│   ├── locations/         # Store location pages
-│   └── products/          # Product pages
-│
+├── app/                        # Next.js App Router routes (primary)
+│   ├── [locale]/               # i18n routes (en, fr, zh, es)
+│   ├── api/                    # Route handlers
+│   ├── admin/                  # Admin pages
+│   └── affiliate/              # Affiliate pages
+├── pages/api/                  # Legacy API routes (keep stable unless migrating)
 ├── src/
-│   ├── components/        # React components
-│   │   ├── admin/         # Admin-specific components
-│   │   ├── affiliate/     # Affiliate components
-│   │   ├── blog/          # Blog components
-│   │   ├── customer/      # Customer portal components
-│   │   ├── layout/        # Layout components (header, footer)
-│   │   ├── sections/      # Page section components
-│   │   ├── seo/           # SEO components
-│   │   ├── ui/            # Reusable UI components (shadcn/ui style)
+│   ├── components/             # UI and domain components
+│   │   ├── ui/                 # Radix/shadcn-style primitives
+│   │   ├── seo/                # SEO components
 │   │   └── ...
-│   ├── lib/               # Utility libraries
-│   │   ├── affiliate/     # Affiliate logic
-│   │   ├── auth/          # Authentication utilities
-│   │   ├── blog/          # Blog generation & management
-│   │   ├── locations/     # Location data
-│   │   ├── referral/      # Referral program logic
-│   │   ├── security/      # CSRF, rate limiting, sanitization
-│   │   ├── seo/           # SEO utilities
-│   │   └── tracking/      # UTM and analytics tracking
-│   ├── hooks/             # Custom React hooks
-│   ├── translations/      # i18n translations (en, fr, zh, es)
-│   ├── data/              # Static data files
-│   ├── emails/            # Email template components
-│   └── types/             # TypeScript type definitions
-│
-├── content/               # Content files
-│   └── blog/              # Blog content in JSON format
-│       ├── en/            # English blog posts
-│       ├── fr/            # French blog posts
-│       ├── zh/            # Chinese blog posts
-│       └── es/            # Spanish blog posts
-│
-├── prisma/                # Database schema and migrations
-│   └── schema.prisma      # Prisma schema definition
-│
-├── scripts/               # Build and utility scripts
-│   ├── seo/               # SEO validation and optimization
-│   ├── images/            # Image optimization scripts
-│   ├── blog/              # Blog automation scripts
-│   └── build/             # Build-related scripts
-│
-├── __tests__/             # Jest unit tests
-├── e2e/                   # Playwright E2E tests
-├── public/                # Static assets
-│   └── optimized/         # Optimized images (auto-generated)
-└── [config files]
+│   ├── lib/                    # Utilities by domain
+│   │   ├── auth/
+│   │   ├── blog/
+│   │   ├── geo/
+│   │   ├── security/
+│   │   └── ...
+│   ├── i18n/                   # next-intl config/routing/request
+│   ├── translations/           # Locale dictionaries + types
+│   ├── hooks/
+│   ├── emails/
+│   └── types/
+├── content/blog/{en,fr,zh,es}/ # Blog post JSON
+├── prisma/                     # Prisma schema + migrations
+├── scripts/                    # Build, SEO, image, blog scripts
+├── proxy.ts                    # Middleware entry (Next.js 16)
+├── __tests__/                  # Jest tests
+├── e2e/                        # Playwright tests
+└── public/
+    ├── original-images/        # Image inputs
+    └── optimized/              # Optimized outputs
 ```
 
 ## Build and Development Commands
@@ -152,316 +135,261 @@
 
 ```bash
 # Development
-pnpm dev              # Start development server with hot reload
-                      # Automatically clears webpack cache via predev hook
+pnpm dev
 
-# Building
-pnpm build            # Production build with SEO validation
-                      # Runs prebuild hooks: validate-no-middleware, SEO checks
-                      # Runs postbuild: next-sitemap, generate-enhanced-sitemap
+# Build pipeline
+pnpm prebuild
+pnpm prebuild:seo
+pnpm build
+pnpm start
 
-pnpm prebuild         # Run prebuild validation only
-pnpm prebuild:seo     # Run SEO prebuild validation only
+# Quality
+pnpm lint
+pnpm lint --fix
+pnpm check-types
 
-# Production server
-pnpm start            # Serve production build (for testing)
+# Tests
+pnpm test
+pnpm test:watch
+pnpm test:coverage
+pnpm test:translations
+pnpm test:e2e
+pnpm test:e2e:ui
 
-# Code Quality
-pnpm lint             # Run ESLint with Next.js config
-pnpm lint --fix       # Auto-fix ESLint issues
-pnpm check-types      # TypeScript type checking (tsc --noEmit)
+# Validation
+pnpm validate-dark-mode
+pnpm validate-hydration
+pnpm validate-images
+pnpm validate-links
+pnpm validate-schemas
+pnpm validate-sitemap
 
-# Testing
-pnpm test             # Run Jest unit tests
-pnpm test:watch       # Jest in watch mode
-pnpm test:coverage    # Jest with coverage report
-pnpm test:translations # Translation completeness test only
-pnpm test:e2e         # Run Playwright E2E tests
-pnpm test:e2e:ui      # Run Playwright with UI
+# SEO
+pnpm seo:validate
+pnpm seo:validate:strict
+pnpm seo:health-check
+pnpm seo:report
+pnpm bundle:analyze
+pnpm performance:audit
 
-# SEO & Performance
-pnpm seo:validate         # Validate SEO compliance
-pnpm seo:validate:strict  # Strict SEO validation (fails on error)
-pnpm seo:health-check     # Comprehensive SEO health check
-pnpm seo:report          # Generate SEO report
-pnpm bundle:analyze       # Analyze bundle size
-pnpm performance:audit    # Full performance audit
+# Blog
+pnpm blog:auto:generate
+pnpm blog:migrate
+pnpm repair-blog
 
-# Blog Automation
-pnpm blog:auto:generate   # Generate blog post with AI
-pnpm blog:migrate         # Migrate blog posts between formats
-
-# Image Optimization
-pnpm optimize-images          # Basic image optimization (moves to public/optimized)
-pnpm optimize-images:enhanced # Enhanced optimization (moves to public/optimized)
-# NOTE: All images must be in public/optimized. No other folders allowed.
-pnpm optimize-images:watch    # Watch mode for development
+# Images
+pnpm optimize-images
+pnpm optimize-images:enhanced
+pnpm optimize-images:watch
 
 # Database
-pnpm postinstall      # Generate Prisma client
+pnpm prisma generate
+pnpm prisma migrate dev --name migration_name
+pnpm prisma studio
 ```
 
 ### Environment Setup
 
-Copy `.env.local.example` to `.env.local` and configure:
-- `NEXTAUTH_SECRET` - Required for authentication
-- `NEXTAUTH_URL` - Your local/dev URL
-- `DATABASE_URL` - PostgreSQL connection string
-- `STRIPE_SECRET_KEY` - For payments
-- `ANTHROPIC_API_KEY` - For AI blog generation
+Copy `.env.local.example` to `.env.local` and configure at least:
+- `NEXTAUTH_SECRET`
+- `NEXTAUTH_URL`
+- `DATABASE_URL`
+- `STRIPE_SECRET_KEY`
+- `ANTHROPIC_API_KEY`
 
 ## Code Style Guidelines
 
 ### TypeScript Conventions
-- **Strict mode enabled** - No implicit any
-- **2-space indentation**
-- **Single quotes** for strings
-- **Semicolons required**
-- **Explicit prop and variable names** - avoid abbreviations
+- Strict typing, no implicit any
+- 2-space indentation
+- Single quotes
+- Semicolons required
+- Explicit naming over abbreviations
 
 ### File Naming
-- **React components**: PascalCase with `.tsx` extension
-  - Example: `src/components/HeroBanner.tsx`
-- **Utilities/helpers**: camelCase with `.ts` extension
-  - Example: `src/lib/seo-utils.ts`
-- **Routes/content**: kebab-case
-  - Example: `pages/blog/my-awesome-post.tsx`
+- React components: PascalCase `.tsx`
+- Utilities/helpers: camelCase `.ts`
+- Routes/content slugs: kebab-case
 
-### Component Structure
-```tsx
-// Import order: React → External libs → Internal modules → Types
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import type { Product } from '@/types';
-
-// Props interface with explicit naming
-interface ProductCardProps {
-  product: Product;
-  onAddToCart: (productId: string) => void;
-  isLoading?: boolean;
-}
-
-// Named function component
-export function ProductCard({ product, onAddToCart, isLoading }: ProductCardProps) {
-  // Component logic
-  
-  return (
-    // JSX
-  );
-}
-```
+### Component Patterns
+- Prefer Server Components by default; use `'use client'` only when needed.
+- Import order: React -> external libs -> internal modules -> types.
+- Use named function components and explicit Props interfaces.
 
 ### Path Aliases
-- `@/*` → `src/*`
-- `@translations/*` → `src/translations/*`
+- `@/*` -> `src/*`
+- `@translations/*` -> `src/translations/*`
+
+### Dark Mode (Required)
+- Every text/background choice must work in both themes.
+- Any `text-white` usage must have safe contrast in dark mode.
+- Validate with `pnpm validate-dark-mode`.
 
 ## Testing Instructions
 
 ### Unit Testing (Jest)
 
-Tests are located in `__tests__/` directory with the following structure:
-```
-__tests__/
-├── api/              # API route tests
-├── hooks/            # Custom hook tests
-├── security/         # Security utility tests
-├── seo/              # SEO utility tests
-└── translation-completeness.test.js  # Locale coverage
-```
-
-**Before running tests:**
-1. Ensure translation fixtures are in sync
-2. Run `pnpm prisma generate` if database tests are involved
-
-**Running specific tests:**
 ```bash
 pnpm test -- __tests__/hooks/useBreadcrumb.test.ts
 pnpm test -- --testNamePattern="specific test name"
 ```
 
 ### E2E Testing (Playwright)
-
-Tests are in `e2e/` directory:
-```
-e2e/
-├── home.spec.ts                    # Homepage tests
-├── blog-articles.spec.ts           # Blog functionality
-├── checkout-payment-methods.spec.ts # Checkout flow
-├── security-*.spec.ts              # Security tests
-└── seo/                            # SEO rendering tests
-```
-
-**E2E Configuration:**
 - Base URL: `http://localhost:3010`
-- Workers: 2 (limited to prevent overwhelming server)
-- Timeout: 60 seconds
-
-**Running E2E tests:**
-```bash
-# Start dev server and run tests
-pnpm test:e2e
-
-# With UI for debugging
-pnpm test:e2e:ui
-
-# Run specific test file
-pnpm test:e2e -- e2e/home.spec.ts
-```
+- Run with `pnpm test:e2e`
+- Debug with `pnpm test:e2e:ui`
 
 ## Database & ORM
 
 ### Prisma Schema
-Located at `prisma/schema.prisma`. Key models include:
-- `User` - Customer accounts
-- `Order` - Purchase orders with Stripe integration
-- `Product` - Product catalog with inventory tracking
-- `BlogPost` - AI-generated blog content
-- `Affiliate` - Affiliate program participants
-- `Retailer` - B2B retailer accounts
-- `ReferralCode` - Customer referral program
-- `Subscription` - Recurring order subscriptions
-
-### Database Commands
-```bash
-# Generate Prisma client (runs automatically on postinstall)
-pnpm prisma generate
-
-# Create and apply migration
-pnpm prisma migrate dev --name migration_name
-
-# Deploy migrations in production
-pnpm prisma migrate deploy
-
-# Open Prisma Studio
-pnpm prisma studio
-```
+- Schema: `prisma/schema.prisma`
+- Typical models: `User`, `Order`, `Product`, `BlogPost`, `Affiliate`, `Retailer`, `ReferralCode`, `Subscription`
 
 ### Connection Handling
-The Prisma client is configured as a singleton in `src/lib/prisma.ts` to prevent connection pooling issues in development (hot reload) and ensure proper connection management in production.
+- Use singleton Prisma client in `src/lib/prisma.ts`.
+- Regenerate on schema/tooling changes: `pnpm prisma generate`.
 
 ## Internationalization (i18n)
 
 ### Supported Locales
-- `en` - English (default)
-- `fr` - French (Canada)
-- `zh` - Chinese (Simplified)
-- `es` - Spanish
+- `en` (default)
+- `fr`
+- `zh`
+- `es`
 
-### Translation Structure
-Translations are in `src/translations/`:
-- `types.ts` - TypeScript interface definitions
-- `en.ts`, `fr.ts`, `zh.ts`, `es.ts` - Locale data
-- `index.ts` - Export and utility functions
-- `seo-meta.ts` - SEO-specific translations
+### i18n Architecture
+- Locale routing/config under `src/i18n/`
+- Middleware file is `proxy.ts` (not `middleware.ts`)
+- Translation dictionaries in `src/translations/`
 
-### Usage in Components
+### Translation Usage
+Two patterns are used in this codebase:
+
 ```tsx
 import { useTranslation } from '@/lib/translation-context';
 
-function MyComponent() {
+function ComponentWithContext() {
+  const { t } = useTranslation();
+  return <h1>{t.hero.headline}</h1>;
+}
+```
+
+```tsx
+import { useTranslation } from '@/translations';
+
+function ComponentWithDirectLocale() {
   const { t } = useTranslation('en');
   return <h1>{t.hero.headline}</h1>;
 }
 ```
 
 ### Adding New Translations
-1. Add keys to `src/translations/types.ts` interface
-2. Add translations to all locale files (`en.ts`, `fr.ts`, `zh.ts`, `es.ts`)
-3. Run `pnpm test:translations` to verify completeness
+1. Update `src/translations/types.ts`
+2. Add keys to `en.ts`, `fr.ts`, `zh.ts`, and `es.ts`
+3. Run `pnpm test:translations`
+
+## Currency System
+
+- Country detection uses Vercel `x-vercel-ip-country`.
+- Client hook: `useCurrency()` from `src/lib/currency-context.tsx`
+- Server helper: `detectCurrencyFromRequest()` from `src/lib/geo/currency-detector.ts`
+- Always persist currency with order data.
+
+## Security Considerations
+
+### Authentication
+- NextAuth v5 beta with JWT sessions.
+- Protected route helper: `requireAuth()` from `src/lib/auth/session.ts`.
+- Roles used in app: `admin`, `editor`, `affiliate`.
+
+### Rate Limits and CSRF
+- Rate limits: `src/lib/security/rate-limit.ts` and `src/lib/security/rate-limit-app.ts`
+- CSRF helpers: `src/lib/security/csrf.ts`
+- Input sanitization: `src/lib/security/sanitize.ts`
+
+### Protected API Route Pattern (App Route)
+
+```typescript
+import { requireAuth } from '@/lib/auth/session';
+
+export async function POST(request: Request) {
+  const { authorized, session } = await requireAuth();
+
+  if (!authorized || !session) {
+    return Response.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  // handler logic
+  return Response.json({ success: true });
+}
+```
+
+## Image Workflow
+
+1. Put source images in `public/original-images/`
+2. Run `pnpm optimize-images:enhanced`
+3. Output files are written to `public/optimized/`
+4. Reference as `/optimized/image-name.webp`
+5. Validate sizes using `pnpm validate-images`
+
+Never generate product packaging (bags/boxes/logos) with AI unless explicit approved assets are provided.
 
 ## SEO & Performance
 
 ### SEO Architecture
-- **Next SEO** - Default SEO configuration in `_app.tsx`
-- **Dynamic sitemap** - Generated at build time via `next-sitemap`
-- **Structured data** - JSON-LD schemas for Organization, Product, FAQ, etc.
-- **Hreflang tags** - Automatic locale alternates
-- **Canonical URLs** - Automatic canonical generation
+- Structured data (JSON-LD) via SEO components in `src/components/seo/`
+- Dynamic sitemap from `next-sitemap` at postbuild
+- Prebuild validation: `scripts/seo/prebuild-validation.ts`
+- Strict validation: `scripts/seo/validate-seo-compliance.ts`
+- Emergency bypass: `SKIP_SEO_VALIDATION=true`
 
-### Key SEO Scripts
+### Key Scripts
 ```bash
-# Validation
-pnpm seo:validate           # Check all SEO requirements
-pnpm seo:validate:images    # Validate image optimization
-pnpm seo:validate:canonicals # Check canonical URLs
-
-# Optimization
-pnpm seo:optimize          # Run SEO optimization
-pnpm seo:keywords          # Keyword analysis
+pnpm seo:validate
+pnpm seo:validate:strict
+pnpm seo:validate:images
+pnpm seo:validate:canonicals
+pnpm seo:report
 ```
-
-### Performance Optimizations
-- **Image optimization** - WebP/AVIF formats with Next.js Image
-- **Code splitting** - Dynamic imports for heavy components
-- **Cache headers** - Aggressive caching for static assets
-- **Bundle analysis** - Use `pnpm bundle:analyze` to check size
-
-## Security Considerations
-
-### Environment Variables
-- **Never commit** `.env.local` or any `.env*` files
-- Use `.env.local` for local development secrets
-- Use Vercel environment variables for production
-
-### Authentication
-- Admin authentication via NextAuth with credentials provider
-- Rate limiting on login attempts (5 per 15 minutes per IP)
-- Session max age: 24 hours
-- JWT strategy for stateless sessions
-
-### API Security
-- CSRF protection on state-changing endpoints
-- Input sanitization via `src/lib/security/sanitize.ts`
-- Rate limiting on sensitive endpoints
-- Security headers configured in `next.config.js` and `vercel.json`
-
-### File Uploads
-- Validate file types and sizes
-- Store uploads outside web root
-- Use signed URLs for sensitive downloads
 
 ## Deployment
 
 ### Vercel Configuration
-- **Build command**: `pnpm prisma generate && pnpm build`
-- **Output directory**: `.next`
-- **Framework**: Next.js
-
-### Cron Jobs (Vercel)
-Configured in `vercel.json`:
-- Daily at 2 PM: Abandoned cart emails
-- Daily at 6 AM: Daily maintenance tasks
+- Build command: `pnpm prisma generate && pnpm build`
+- Framework: Next.js
+- Output: `.next`
 
 ### Pre-deployment Checklist
-1. Run `pnpm lint` - fix any errors
-2. Run `pnpm check-types` - ensure TypeScript passes
-3. Run `pnpm test` - unit tests pass
-4. Run `pnpm build` - production build succeeds
-5. Run `pnpm test:e2e` - critical paths work
-6. Check `pnpm seo:validate` - no SEO regressions
+1. `pnpm lint`
+2. `pnpm check-types`
+3. `pnpm test`
+4. `pnpm build`
+5. `pnpm test:e2e`
+6. `pnpm seo:validate`
 
 ### Post-deployment Verification
-- Check `/api/health/storage` - storage connectivity
-- Verify Stripe webhook endpoints
-- Test critical user flows (checkout, signup)
-- Monitor Sentry for errors
+- Check `/api/health/storage`
+- Verify Stripe webhooks
+- Validate checkout/login critical paths
+- Monitor Sentry for regressions
 
 ## Common Issues & Solutions
 
 ### Build Failures
-- **Out of memory**: Increase Node memory: `NODE_OPTIONS="--max-old-space-size=4096"`
-- **Type errors**: Run `pnpm check-types` to identify issues
-- **Webpack cache**: Clear with `pnpm clear-cache`
+- Out-of-memory: build already sets `NODE_OPTIONS="--max-old-space-size=4096"`
+- Cache issues: `pnpm clear-cache`
+- Hydration issues: run `pnpm validate-hydration`
 
-### Database Issues
-- **Connection errors**: Check `DATABASE_URL` environment variable
-- **Prisma client stale**: Run `pnpm prisma generate`
+### Prisma/Database Issues
+- Connection errors: verify `DATABASE_URL`
+- Stale client: `pnpm prisma generate`
 
-### SEO Issues
-- **Missing hreflang**: Check `next-sitemap.config.js` alternateRefs
-- **Thin content**: Use `pnpm seo:validate:images` to check image sizes
-- **Sitemap errors**: Verify in `next-sitemap.config.js` exclude patterns
+### Next.js Middleware Conflict
+- If both `middleware.ts` and `proxy.ts` exist, remove `middleware.ts`.
+
+### SEO Validation Confusion
+- Prebuild is lenient (`prebuild-validation.ts`)
+- `seo:validate:strict` is fail-on-error mode
 
 ## Contact & Resources
 
@@ -469,6 +397,16 @@ Configured in `vercel.json`:
 - **Admin Panel**: https://www.purrify.ca/admin
 - **Affiliate Portal**: https://www.purrify.ca/affiliate
 - **Support Email**: meow@purrify.ca
+- **Blog Style Guide**: `docs/BLOG_STYLE_GUIDE.md`
+
+## Branding Rules
+
+- Always capitalize **Purrify**.
+- Use "granules" or "additive"; never call the product a "powder".
+- No fabricated social handles, contact details, URLs, or file paths.
+- No labels on AI-generated product imagery.
+- No black dust/cloud visuals; odor must be shown as trapped/adsorbed.
+- Copy tone should be professional, warm, science-backed, and accessible.
 
 ---
 
@@ -479,33 +417,33 @@ Configured in `vercel.json`:
 **Brand Core**: All images must feature deep saturation, volumetric lighting, and a "magical realism" aesthetic.
 
 **STEP 1: CLASSIFY MODE**
-Determine if the user's request is [LIFESTYLE] (cats, home, nature) or [TECH] (molecules, filtration, airflow, science).
+Determine if the request is [LIFESTYLE] (cats, home, nature) or [TECH] (molecules, filtration, airflow, science).
 
 **STEP 2: APPLY STYLE PRESETS**
+
 **IF [LIFESTYLE]:**
 - **Style**: High-fidelity "Hybrid-Ghibli" aesthetic.
 - **Vibe**: Magical, pristine, healthy, and thriving.
-- **Lighting**: Gentle dappled lighting with warm golden highlights 
-- **Render**: Combine the whimsy of hand-painted animation with 8K photorealistic textures.
-- **Key Elements**: Cats have hyper-realistic detail but expressive, charming anime-style faces. Soft painterly background (bokeh).
+- **Lighting**: Gentle dappled lighting with warm golden highlights.
+- **Render**: Hand-painted animation whimsy + 8K photorealistic textures.
+- **Key Elements**: Hyper-realistic cats with expressive anime-style faces. Soft painterly bokeh backgrounds.
 
 **IF [TECH]:**
 - **Style**: Cinematic Macrophotography & 3D Scientific Visualization.
 - **Vibe**: Precise, powerful, clean, microscopic clarity.
-- **Lighting**: Internal glowing energy, rim lighting, electric blues and purples vs. deep charcoal.
+- **Lighting**: Internal glowing energy, rim lighting, electric blues and purples vs deep charcoal.
 - **Render**: Octane Render, ray-tracing, subsurface scattering, crystalline textures.
-- **Key Elements**: Visible airflow streams, glowing activated carbon pores, atomic bonds, sleek industrial design, infinite black or gradient backgrounds.
+- **Key Elements**: Visible airflow streams, glowing activated carbon pores, atomic bonds, sleek industrial design.
 
-**STEP 3: GENERATE PROMPT**
-Fill the following template based on the selected mode:
+**STEP 3: GENERATE PROMPT TEMPLATE**
 - **Subject**: [Describe the core subject/action in detail]
-- **Setting**: [Describe background—e.g., "A cozy sun-drenched windowsill" OR "Inside a microscopic carbon pore"]
-- **Art Direction**: [Insert the relevant Style Preset text from Step 2]
-- **Color Palette**: Vivid and punchy (Makoto Shinkai style vibrancy). Rich emeralds, deep ambers, and vibrant pastels (Lifestyle) OR Neon cyans, electric blues, and matte charcoal (Tech).
-- **Camera**: [Wide angle/Eye level] for Lifestyle OR [Macro/Electron Microscope] for Tech.
+- **Setting**: [Describe the environment]
+- **Art Direction**: [Insert the relevant preset text from Step 2]
+- **Color Palette**: Vivid and punchy. Lifestyle: rich emeralds, deep ambers, vibrant pastels. Tech: neon cyans, electric blues, matte charcoal.
+- **Camera**: Lifestyle -> wide angle/eye level. Tech -> macro/electron microscope style.
 
 **STRICT PROHIBITIONS:**
 - **NO LABELS** on bags or bottles.
 - **NO BLACK CLOUDS/DUST**.
 - **NO PURRIFY LOGOS/PACKAGING** unless explicitly provided.
-- **ODOR MUST BE obviously adsorbed, or TRAPPED**, never released.
+- **ODOR MUST BE ADSORBED/TRAPPED**, never released.

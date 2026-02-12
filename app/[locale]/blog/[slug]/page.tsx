@@ -65,11 +65,14 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       locale === 'zh' ? 'zh-CN' :
         locale === 'es' ? 'es-US' : 'en-CA';
 
+  const metaTitle = post.seoTitle || post.title;
+  const metaDescription = post.seoDescription || post.excerpt;
+
   return {
-    title: `${post.title} | ${SITE_NAME} Blog`,
-    description: post.excerpt,
+    title: `${metaTitle} | ${SITE_NAME}`,
+    description: metaDescription,
     alternates: {
-      canonical: `${SITE_URL}/${locale}/blog/${slug}/`,
+      canonical: post.canonicalUrl || `${SITE_URL}/${locale}/blog/${slug}/`,
       languages: {
         'en-CA': `${SITE_URL}/en/blog/${slug}/`,
         'fr-CA': `${SITE_URL}/fr/blog/${slug}/`,
@@ -92,8 +95,8 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       },
     },
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
+      title: metaTitle,
+      description: metaDescription,
       url: `${SITE_URL}/${locale}/blog/${slug}/`,
       type: 'article',
       publishedTime: post.date,
@@ -123,6 +126,9 @@ interface BlogPost {
   link: string;
   content?: string;
   locale?: string;
+  canonicalUrl?: string;
+  seoTitle?: string;
+  seoDescription?: string;
   howTo?: DataBlogPost['howTo'];
   faq?: DataBlogPost['faq'];
   citations?: DataBlogPost['citations'];
@@ -155,6 +161,9 @@ async function getPost(slug: string, locale: string): Promise<BlogPost | null> {
         link: `/${locale}/blog/${blogPost.slug}`,
         content: blogPost.content,
         locale: (blogPost.locale as string) || locale,
+        canonicalUrl: blogPost.seo?.canonical || undefined,
+        seoTitle: blogPost.seo?.title || undefined,
+        seoDescription: blogPost.seo?.description || undefined,
         howTo: (blogPost as unknown as { howTo?: BlogPost['howTo'] }).howTo ?? null,
         faq: blogPost.faq ?? null,
         citations: blogPost.citations ?? null,
