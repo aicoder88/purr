@@ -13,32 +13,13 @@ import { Resend } from 'resend';
 import prisma from '@/lib/prisma';
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
 import { ReviewRequestEmailHTML, getReviewRequestEmailSubject } from '@/emails/review-request';
+import { extractCronSecret } from '@/lib/security/cron-secret';
 
 // Number of days after delivery to send review request
 const DAYS_AFTER_DELIVERY = 7;
 
 // Maximum emails to send per cron run (to avoid rate limits)
 const MAX_EMAILS_PER_RUN = 50;
-
-interface CronResponse {
-  success: boolean;
-  sent?: number;
-  skipped?: number;
-  errors?: number;
-  message?: string;
-  details?: Array<{ orderId: string; email: string; status: string }>;
-}
-
-/**
- * Extract cron secret from request headers or query
- */
-function extractCronSecret(req: NextRequest): string | null {
-  const headerSecret = req.headers.get('x-cron-secret');
-  if (headerSecret) return headerSecret;
-
-  const { searchParams } = new URL(req.url);
-  return searchParams.get('secret');
-}
 
 /**
  * Determine locale from customer data or default

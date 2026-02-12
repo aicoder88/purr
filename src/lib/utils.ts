@@ -21,7 +21,7 @@ export const scrollToSection = (id: string) => {
 
   // Calculate the target position accounting for header
   const elementPosition = element.getBoundingClientRect().top;
-  const offsetPosition = elementPosition + (window as unknown as { scrollY: number }).scrollY - headerHeight - 16; // 16px extra padding
+  const offsetPosition = elementPosition + window.scrollY - headerHeight - 16; // 16px extra padding
 
   window.scrollTo({
     top: offsetPosition,

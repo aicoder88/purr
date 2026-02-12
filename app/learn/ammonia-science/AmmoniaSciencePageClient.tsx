@@ -345,7 +345,7 @@ export default function AmmoniaSciencePageClient() {
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">{ammonia.cta.headline}</h2>
             <p className="text-lg opacity-90 max-w-2xl mx-auto mb-8">{ammonia.cta.subheadline}</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-6">
-              <Link href={localizePath('/products/trial-size', locale)} className="inline-flex items-center justify-center bg-white text-electric-indigo font-bold rounded-lg px-6 py-3 hover:bg-gray-100 transition-colors">
+              <Link href={localizePath('/products/trial-size', locale)} className="inline-flex items-center justify-center bg-white dark:bg-white text-electric-indigo dark:text-electric-indigo font-bold rounded-lg px-6 py-3 hover:bg-gray-100 dark:hover:bg-gray-100 transition-colors">
                 {ammonia.cta.secondaryButton}
               </Link>
               <Link href={localizePath('/products', locale)} className="inline-flex items-center justify-center border-2 border-white font-bold rounded-lg px-6 py-3 hover:bg-white/10 transition-colors">

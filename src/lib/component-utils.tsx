@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { formatCurrencyValue } from '@/lib/pricing';
+import { formatPrice } from '@/lib/utils';
 
 /**
  * Common utilities and hooks for React components.
@@ -238,22 +238,4 @@ export const CheckIcon = ({ size = 'w-4 h-4' }: { size?: string }) => (
   </svg>
 );
 
-/**
- * Formats a price number as a localized currency string.
- * Re-exported from utils for convenience in component files.
- *
- * @param price - The numeric price value
- * @param currency - The currency code (default: 'CAD')
- * @param locale - Optional locale override (default: 'en-CA')
- * @returns Formatted currency string for Canadian locale
- *
- * @example
- * ```typescript
- * formatPrice(19.99);        // Returns: "$19.99"
- * formatPrice(25.50, 'USD'); // Returns: "$25.50"
- * ```
- */
-export const formatPrice = (price: number, currency = 'CAD', locale = 'en-CA'): string => {
-  // Always pass both currency and locale to formatCurrencyValue
-  return formatCurrencyValue(price, currency, locale);
-};
+export { formatPrice };

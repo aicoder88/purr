@@ -2,19 +2,9 @@ import type { NextRequest } from 'next/server';
 import * as Sentry from '@sentry/nextjs';
 import { AutomatedContentGenerator } from '@/lib/blog/automated-content-generator';
 import { ContentStore } from '@/lib/blog/content-store';
+import { extractCronSecret } from '@/lib/security/cron-secret';
 
 const THREE_DAYS_IN_MS = (Number(process.env.AUTOBLOG_INTERVAL_DAYS ?? '3') || 3) * 24 * 60 * 60 * 1000;
-
-/**
- * Extract cron secret from request headers or query params
- */
-function extractSecret(req: NextRequest): string | null {
-  const headerSecret = req.headers.get('x-cron-secret');
-  if (headerSecret) return headerSecret;
-  
-  const { searchParams } = new URL(req.url);
-  return searchParams.get('secret');
-}
 
 /**
  * Get the most recent post from filesystem to check interval
@@ -62,7 +52,7 @@ async function handleGenerateBlogPost(req: NextRequest): Promise<Response> {
 
       const expectedSecret = process.env.AUTOBLOG_CRON_SECRET;
       if (expectedSecret) {
-        const providedSecret = extractSecret(req);
+        const providedSecret = extractCronSecret(req);
         if (providedSecret !== expectedSecret) {
           logger.warn('Invalid cron secret provided');
           return Response.json({ error: 'Invalid cron secret' }, { status: 401 });

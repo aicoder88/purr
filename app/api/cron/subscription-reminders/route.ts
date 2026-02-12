@@ -13,6 +13,7 @@ import * as Sentry from '@sentry/nextjs';
 import { Resend } from 'resend';
 import prismaClient from '@/lib/prisma';
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
+import { extractCronSecret } from '@/lib/security/cron-secret';
 
 import {
   SubscriptionReminderEmailHTML,
@@ -32,26 +33,6 @@ const REMINDER_DAYS_BEFORE = 3;
 
 // Maximum emails to send per cron run
 const MAX_EMAILS_PER_RUN = 50;
-
-interface CronResponse {
-  success: boolean;
-  subscriptionsChecked?: number;
-  remindersSent?: number;
-  skipped?: number;
-  errors?: number;
-  message?: string;
-}
-
-/**
- * Extract cron secret from request headers or query
- */
-function extractCronSecret(req: NextRequest): string | null {
-  const headerSecret = req.headers.get('x-cron-secret');
-  if (headerSecret) return headerSecret;
-
-  const { searchParams } = new URL(req.url);
-  return searchParams.get('secret');
-}
 
 /**
  * Format date for display

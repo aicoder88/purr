@@ -193,7 +193,7 @@ export default function TrialSizePage() {
                 <div className="flex items-center gap-2">
                   <div className="flex">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:text-yellow-400" />
                     ))}
                   </div>
                   <span className="text-gray-700 dark:text-gray-300 font-semibold">
@@ -276,7 +276,7 @@ export default function TrialSizePage() {
               <div className="grid md:grid-cols-3 gap-6">
                 {steps.map((step) => (
                   <article key={`${step.number}-${step.title}`} className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 text-center">
-                    <div className="w-10 h-10 mx-auto rounded-full bg-electric-indigo text-white flex items-center justify-center font-bold mb-4">
+                    <div className="w-10 h-10 mx-auto rounded-full bg-electric-indigo dark:bg-electric-indigo text-white dark:text-white flex items-center justify-center font-bold mb-4">
                       {step.number}
                     </div>
                     <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{step.title}</h3>
@@ -315,7 +315,7 @@ export default function TrialSizePage() {
 
         <section className="py-16 bg-gradient-to-br from-green-900 to-slate-900 dark:from-green-950 dark:to-slate-950">
           <Container>
-            <div className="max-w-4xl mx-auto text-center text-white">
+            <div className="max-w-4xl mx-auto text-center text-white dark:text-white">
               <h2 className="font-heading text-4xl md:text-5xl font-black mb-4">
                 {tryFreePage?.finalCta?.headline}
               </h2>
@@ -326,7 +326,7 @@ export default function TrialSizePage() {
               <a href={checkoutUrl} target="_blank" rel="noopener noreferrer" onClick={handleBuyClick} className="inline-block mb-4">
                 <Button
                   size="lg"
-                  className="bg-white text-green-700 hover:bg-green-50 font-black py-8 px-14 text-xl shadow-2xl transition-all duration-300"
+                  className="bg-white dark:bg-white text-green-700 dark:text-green-700 hover:bg-green-50 dark:hover:bg-green-50 font-black py-8 px-14 text-xl shadow-2xl transition-all duration-300"
                 >
                   {tryFreePage?.finalCta?.buttonText}
                 </Button>

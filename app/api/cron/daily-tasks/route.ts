@@ -6,6 +6,7 @@ import { ContentStore } from '@/lib/blog/content-store';
 import { AuditLogger } from '@/lib/blog/audit-logger';
 import { SitemapGenerator } from '@/lib/blog/sitemap-generator';
 import prisma from '@/lib/prisma';
+import { extractCronSecret } from '@/lib/security/cron-secret';
 import { Resend } from 'resend';
 
 interface TaskResult {
@@ -13,19 +14,6 @@ interface TaskResult {
   success: boolean;
   message?: string;
   details?: Record<string, unknown>;
-}
-
-/**
- * Extract cron secret from request headers or query params
- */
-function extractCronSecret(req: NextRequest): string | null {
-  // Check header first
-  const headerSecret = req.headers.get('x-cron-secret');
-  if (headerSecret) return headerSecret;
-  
-  // Check query params
-  const { searchParams } = new URL(req.url);
-  return searchParams.get('secret');
 }
 
 export async function GET(req: NextRequest): Promise<Response> {

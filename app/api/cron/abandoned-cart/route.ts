@@ -13,6 +13,7 @@ import type { NextRequest } from 'next/server';
 import * as Sentry from '@sentry/nextjs';
 import { Resend } from 'resend';
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
+import { extractCronSecret } from '@/lib/security/cron-secret';
 import {
   getCartsNeedingRecoveryEmails,
   recordRecoveryEmailSent,
@@ -30,27 +31,6 @@ const MAX_EMAILS_PER_RUN = 50;
 
 // Discount percentage for second recovery email
 const DISCOUNT_PERCENTAGE = 10;
-
-interface CronResponse {
-  success: boolean;
-  sent?: number;
-  skipped?: number;
-  errors?: number;
-  cleanedUp?: number;
-  message?: string;
-  details?: Array<{ cartId: string; email: string; status: string }>;
-}
-
-/**
- * Extract cron secret from request headers or query
- */
-function extractCronSecret(req: NextRequest): string | null {
-  const headerSecret = req.headers.get('x-cron-secret');
-  if (headerSecret) return headerSecret;
-
-  const { searchParams } = new URL(req.url);
-  return searchParams.get('secret');
-}
 
 /**
  * Generate cart recovery URL with session restoration

@@ -12,7 +12,8 @@ import type { NextRequest } from 'next/server';
 import * as Sentry from '@sentry/nextjs';
 import { Resend } from 'resend';
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
-import { getLowStockProducts, type LowStockProduct } from '@/lib/inventory';
+import { getLowStockProducts } from '@/lib/inventory';
+import { extractCronSecret } from '@/lib/security/cron-secret';
 import {
   LowStockAlertEmailHTML,
   getLowStockAlertSubject,
@@ -20,26 +21,6 @@ import {
 
 // Admin email to receive notifications (can be comma-separated for multiple)
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@purrify.ca';
-
-interface CronResponse {
-  success: boolean;
-  productsChecked?: number;
-  lowStockCount?: number;
-  outOfStockCount?: number;
-  emailSent?: boolean;
-  message?: string;
-}
-
-/**
- * Extract cron secret from request headers or query
- */
-function extractCronSecret(req: NextRequest): string | null {
-  const headerSecret = req.headers.get('x-cron-secret');
-  if (headerSecret) return headerSecret;
-
-  const { searchParams } = new URL(req.url);
-  return searchParams.get('secret');
-}
 
 export async function GET(req: NextRequest): Promise<Response> {
   return handleLowStockAlerts(req);

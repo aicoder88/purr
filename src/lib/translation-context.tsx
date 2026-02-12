@@ -6,7 +6,7 @@ import type { Locale } from '@/i18n/config';
 import { localizePath } from '@/lib/i18n/locale-path';
 
 // App Router import
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 type TranslationContextType = {
   t: TranslationType;
@@ -28,7 +28,7 @@ export function TranslationProvider({
 }) {
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+
 
   // Validate and normalize locale to prevent hydration mismatches
   const normalizedLocale = useMemo((): Locale => {
@@ -76,7 +76,7 @@ export function TranslationProvider({
       return;
     }
 
-    // Validate locale before navigation
+    // Validates locale before navigation
     const targetLocale: Locale = VALID_LOCALES.includes(newLocale) ? newLocale : 'en';
     if (!VALID_LOCALES.includes(newLocale)) {
       console.warn(`Invalid locale: ${newLocale}. Using 'en' instead.`);
@@ -90,10 +90,14 @@ export function TranslationProvider({
     setLocale(targetLocale);
 
     const currentPath = pathname || '/';
-    const query = searchParams?.toString();
-    const currentUrl = query ? `${currentPath}?${query}` : currentPath;
+    const query = window.location.search;
+    // window.location.search includes the '?' if params exist
+    const currentUrl = query ? `${currentPath}${query}` : currentPath;
     const nextPath = localizePath(currentPath, targetLocale);
-    const nextUrl = query ? `${nextPath}?${query}` : nextPath;
+
+    // localizePath might or might not handle query params, usually not.
+    // If localizePath returns path without query, we append it.
+    const nextUrl = query ? `${nextPath}${query}` : nextPath;
 
     if (nextUrl !== currentUrl) {
       router.push(nextUrl);
@@ -101,7 +105,7 @@ export function TranslationProvider({
     }
 
     router.refresh();
-  }, [isHydrated, pathname, router, searchParams]);
+  }, [isHydrated, pathname, router]);
 
   // Client-side only locale update (no reload)
   const setLocaleClient = useCallback((newLocale: Locale) => {
