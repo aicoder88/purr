@@ -419,7 +419,11 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
               {(post.heroImageCaption || post.heroImageCredit) && (
                 <div className="mt-3 text-sm text-gray-500 dark:text-gray-400 text-center">
                   {post.heroImageCaption && <span>{post.heroImageCaption}</span>}
-                  {post.heroImageCredit && <span className="ml-2">Credit: {post.heroImageCredit}</span>}
+                  {post.heroImageCredit && (
+                    <span className="ml-2">
+                      {locale === 'fr' ? 'Credit :' : locale === 'zh' ? '来源：' : locale === 'es' ? 'Credito:' : 'Credit:'} {post.heroImageCredit}
+                    </span>
+                  )}
                 </div>
               )}
             </div>

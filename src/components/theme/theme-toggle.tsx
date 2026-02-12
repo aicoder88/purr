@@ -14,7 +14,15 @@ import { useTranslation } from "@/lib/translation-context";
 
 export function ThemeToggle() {
   const { setTheme } = useTheme();
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
+  const themeLabels =
+    locale === 'fr'
+      ? { light: 'Clair', dark: 'Sombre', system: 'Systeme' }
+      : locale === 'zh'
+        ? { light: '浅色', dark: '深色', system: '系统' }
+        : locale === 'es'
+          ? { light: 'Claro', dark: 'Oscuro', system: 'Sistema' }
+          : { light: 'Light', dark: 'Dark', system: 'System' };
 
   const setLightTheme = useCallback(() => setTheme("light"), [setTheme]);
   const setDarkTheme = useCallback(() => setTheme("dark"), [setTheme]);
@@ -32,15 +40,15 @@ export function ThemeToggle() {
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={setLightTheme}>
           <Sun className="mr-2 h-4 w-4" />
-          <span>Light</span>
+          <span>{themeLabels.light}</span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={setDarkTheme}>
           <Moon className="mr-2 h-4 w-4" />
-          <span>Dark</span>
+          <span>{themeLabels.dark}</span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={setSystemTheme}>
           <Laptop className="mr-2 h-4 w-4" />
-          <span>System</span>
+          <span>{themeLabels.system}</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

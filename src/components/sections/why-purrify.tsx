@@ -6,7 +6,31 @@ import Image from 'next/image';
 import { useTranslation } from "@/lib/translation-context";
 
 export function WhyPurrify() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
+  const heroCopy =
+    locale === 'fr'
+      ? {
+        badge: 'Ce qui rend Purrify different',
+        title: 'Pourquoi les parents de chats l adorent',
+        subtitle: 'Sans parfum. Sans camouflage. Juste une solution qui fonctionne vraiment.',
+      }
+      : locale === 'zh'
+        ? {
+          badge: 'Purrify 有何不同',
+          title: '猫家长喜爱的原因',
+          subtitle: '无香精，无掩盖。只有真正有效的方案。',
+        }
+        : locale === 'es'
+          ? {
+            badge: 'Que hace diferente a Purrify',
+            title: 'Por que los tutores de gatos lo aman',
+            subtitle: 'Sin perfumes. Sin encubrimientos. Solo lo que realmente funciona.',
+          }
+          : {
+            badge: 'What Makes Purrify Different',
+            title: 'Why Cat Parents Love It',
+            subtitle: 'No perfumes. No cover-ups. Just the good stuff that actually works.',
+          };
 
   const reasons = [
     {
@@ -74,14 +98,14 @@ export function WhyPurrify() {
       <Container className="relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/40 dark:to-pink-900/40 rounded-full mb-8 border border-purple-200 dark:border-purple-800 shadow-lg">
-            <span className="text-purple-700 dark:text-purple-300 font-semibold">What Makes Purrify Different</span>
+            <span className="text-purple-700 dark:text-purple-300 font-semibold">{heroCopy.badge}</span>
           </div>
 
           <h2 className="font-heading text-5xl md:text-7xl font-black tracking-tight mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent">
-            Why Cat Parents Love It
+            {heroCopy.title}
           </h2>
           <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-medium">
-            No perfumes. No cover-ups. Just the good stuff that actually works.
+            {heroCopy.subtitle}
           </p>
         </div>
 

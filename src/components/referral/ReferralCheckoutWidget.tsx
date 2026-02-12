@@ -25,7 +25,7 @@ export function ReferralCheckoutWidget({
   onRemoved,
   className = '',
 }: ReferralCheckoutWidgetProps) {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const [code, setCode] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -33,6 +33,14 @@ export function ReferralCheckoutWidget({
   const [discount, setDiscount] = useState<number>(0);
   const [referrerName, setReferrerName] = useState<string | null>(null);
   const [showInput, setShowInput] = useState(false);
+  const referralCodePlaceholder =
+    locale === 'fr'
+      ? 'ex.: SARAH15-PURR'
+      : locale === 'zh'
+        ? '例如：SARAH15-PURR'
+        : locale === 'es'
+          ? 'p. ej., SARAH15-PURR'
+          : 'e.g., SARAH15-PURR';
 
   const applyCode = useCallback(async () => {
     if (!code.trim()) {
@@ -159,7 +167,7 @@ export function ReferralCheckoutWidget({
             setCode(e.target.value.toUpperCase());
             setError(null);
           }}
-          placeholder="e.g., SARAH15-PURR"
+          placeholder={referralCodePlaceholder}
           className="flex-1 font-mono uppercase bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-50 border-gray-200 dark:border-gray-700"
           disabled={loading}
           onKeyDown={(e) => {

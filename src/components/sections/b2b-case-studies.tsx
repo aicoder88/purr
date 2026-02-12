@@ -90,7 +90,23 @@ export function B2BCaseStudies({
   title,
   subtitle,
 }: B2BPartnerBenefitsProps) {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
+  const challengeLabel =
+    locale === 'fr'
+      ? 'Le defi'
+      : locale === 'zh'
+        ? '挑战'
+        : locale === 'es'
+          ? 'El desafio'
+          : 'The Challenge';
+  const helpsLabel =
+    locale === 'fr'
+      ? 'Comment Purrify aide'
+      : locale === 'zh'
+        ? 'Purrify 如何帮助'
+        : locale === 'es'
+          ? 'Como ayuda Purrify'
+          : 'How Purrify Helps';
 
   // Filter and limit benefits
   const filteredBenefits = businessType
@@ -149,7 +165,7 @@ export function B2BCaseStudies({
                   {/* Challenge */}
                   <div className="mb-6">
                     <h4 className="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">
-                      The Challenge
+                      {challengeLabel}
                     </h4>
                     <p className="text-sm text-gray-700 dark:text-gray-300">
                       {benefit.challenge}
@@ -159,7 +175,7 @@ export function B2BCaseStudies({
                   {/* Benefits List */}
                   <div>
                     <h4 className="text-sm font-bold text-brand-green-700 dark:text-[#34D399] uppercase tracking-wide mb-3">
-                      How Purrify Helps
+                      {helpsLabel}
                     </h4>
                     <ul className="space-y-2">
                       {benefit.benefits.map((item, index) => (
@@ -181,7 +197,7 @@ export function B2BCaseStudies({
                         <Quote className="w-5 h-5 text-[#3694FF] dark:text-[#60A5FA] flex-shrink-0 mt-1" />
                         <div>
                           <p className="text-sm text-gray-600 dark:text-gray-400 italic leading-relaxed">
-                            &ldquo;{TESTIMONIALS[benefit.testimonialIndex].text}&rdquo;
+                            “{TESTIMONIALS[benefit.testimonialIndex].text}”
                           </p>
                           <p className="mt-2 text-xs font-semibold text-gray-800 dark:text-gray-200">
                             — {TESTIMONIALS[benefit.testimonialIndex].name}

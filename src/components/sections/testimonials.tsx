@@ -47,7 +47,7 @@ const TestimonialCard = ({ testimonial, index, colorScheme }: TestimonialCardPro
           {generateStarRating(testimonial.stars || 5)}
         </div>
         <p className={`${COLORS.text.primary} italic mb-6 leading-relaxed text-sm md:text-base line-clamp-4 md:line-clamp-6`}>
-          &quot;{testimonial.text}&quot;
+          “{testimonial.text}”
         </p>
         <div className="flex items-center justify-between">
           <p className={`font-bold ${colors.text} text-sm md:text-base`}>

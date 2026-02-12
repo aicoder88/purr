@@ -37,6 +37,115 @@ interface BadgeConfig {
   hoverColor: string;
 }
 
+type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
+
+const footerUiCopy: Record<SupportedLocale, {
+  logoAlt: string;
+  socialAria: {
+    instagram: string;
+    x: string;
+    facebook: string;
+    linkedin: string;
+    youtube: string;
+    tiktok: string;
+    medium: string;
+  };
+  regions: {
+    britishColumbia: string;
+    alberta: string;
+    ontario: string;
+    quebec: string;
+    atlanticCanada: string;
+    prairies: string;
+    north: string;
+  };
+}> = {
+  en: {
+    logoAlt: 'Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page',
+    socialAria: {
+      instagram: 'Follow Purrify on Instagram',
+      x: 'Follow Purrify on X',
+      facebook: 'Follow Purrify on Facebook',
+      linkedin: 'Follow Purrify on LinkedIn',
+      youtube: 'Subscribe to Purrify on YouTube',
+      tiktok: 'Follow Purrify on TikTok',
+      medium: 'Read Purrify on Medium',
+    },
+    regions: {
+      britishColumbia: 'British Columbia',
+      alberta: 'Alberta',
+      ontario: 'Ontario',
+      quebec: 'Quebec',
+      atlanticCanada: 'Atlantic Canada',
+      prairies: 'Prairies',
+      north: 'The North',
+    },
+  },
+  fr: {
+    logoAlt: "Purrify - Additif premium de charbon actif pour litiere - Retour a l'accueil",
+    socialAria: {
+      instagram: 'Suivre Purrify sur Instagram',
+      x: 'Suivre Purrify sur X',
+      facebook: 'Suivre Purrify sur Facebook',
+      linkedin: 'Suivre Purrify sur LinkedIn',
+      youtube: 'S abonner a Purrify sur YouTube',
+      tiktok: 'Suivre Purrify sur TikTok',
+      medium: 'Lire Purrify sur Medium',
+    },
+    regions: {
+      britishColumbia: 'Colombie-Britannique',
+      alberta: 'Alberta',
+      ontario: 'Ontario',
+      quebec: 'Quebec',
+      atlanticCanada: 'Canada atlantique',
+      prairies: 'Prairies',
+      north: 'Le Nord',
+    },
+  },
+  zh: {
+    logoAlt: 'Purrify - 高端活性炭猫砂添加剂 - 返回首页',
+    socialAria: {
+      instagram: '在 Instagram 关注 Purrify',
+      x: '在 X 关注 Purrify',
+      facebook: '在 Facebook 关注 Purrify',
+      linkedin: '在 LinkedIn 关注 Purrify',
+      youtube: '在 YouTube 订阅 Purrify',
+      tiktok: '在 TikTok 关注 Purrify',
+      medium: '在 Medium 阅读 Purrify',
+    },
+    regions: {
+      britishColumbia: '不列颠哥伦比亚省',
+      alberta: '阿尔伯塔省',
+      ontario: '安大略省',
+      quebec: '魁北克省',
+      atlanticCanada: '加拿大大西洋地区',
+      prairies: '草原省份',
+      north: '北部地区',
+    },
+  },
+  es: {
+    logoAlt: 'Purrify - Aditivo premium de carbon activado para arena - Volver al inicio',
+    socialAria: {
+      instagram: 'Seguir a Purrify en Instagram',
+      x: 'Seguir a Purrify en X',
+      facebook: 'Seguir a Purrify en Facebook',
+      linkedin: 'Seguir a Purrify en LinkedIn',
+      youtube: 'Suscribirse a Purrify en YouTube',
+      tiktok: 'Seguir a Purrify en TikTok',
+      medium: 'Leer Purrify en Medium',
+    },
+    regions: {
+      britishColumbia: 'Columbia Britanica',
+      alberta: 'Alberta',
+      ontario: 'Ontario',
+      quebec: 'Quebec',
+      atlanticCanada: 'Canada Atlantico',
+      prairies: 'Praderas',
+      north: 'El Norte',
+    },
+  },
+};
+
 const badgeConfigs: BadgeConfig[] = [
   {
     key: 'trustpilot',
@@ -123,6 +232,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
   const { t, locale } = useTranslation();
   const localePrefix = locale === 'en' ? '' : `/${locale}`;
+  const copy = footerUiCopy[locale as SupportedLocale] || footerUiCopy.en;
 
   return (
     <footer className="bg-[#FFFFF5] dark:bg-gray-900 border-t border-[#E0EFC7] dark:border-gray-800 transition-colors duration-300">
@@ -136,7 +246,7 @@ export function Footer() {
                   <div className="h-6 w-auto mr-2 flex items-center">
                     <Image
                       src="/optimized/logo-light.webp"
-                      alt="Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page"
+                      alt={copy.logoAlt}
                       width={120}
                       height={40}
                       loading="lazy"
@@ -144,7 +254,7 @@ export function Footer() {
                     />
                     <Image
                       src="/optimized/logo-dark.webp"
-                      alt="Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page"
+                      alt={copy.logoAlt}
                       width={84}
                       height={40}
                       loading="lazy"
@@ -162,7 +272,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
-                  aria-label="Follow Purrify on Instagram"
+                  aria-label={copy.socialAria.instagram}
                 >
                   <Instagram className="h-5 w-5" />
                 </a>
@@ -171,7 +281,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
-                  aria-label="Follow Purrify on X"
+                  aria-label={copy.socialAria.x}
                 >
                   <Twitter className="h-5 w-5" />
                 </a>
@@ -180,7 +290,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
-                  aria-label="Follow Purrify on Facebook"
+                  aria-label={copy.socialAria.facebook}
                 >
                   <Facebook className="h-5 w-5" />
                 </a>
@@ -189,7 +299,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
-                  aria-label="Follow Purrify on LinkedIn"
+                  aria-label={copy.socialAria.linkedin}
                 >
                   <Linkedin className="h-5 w-5" />
                 </a>
@@ -198,7 +308,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
-                  aria-label="Subscribe to Purrify on YouTube"
+                  aria-label={copy.socialAria.youtube}
                 >
                   <Youtube className="h-5 w-5" />
                 </a>
@@ -207,7 +317,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
-                  aria-label="Follow Purrify on TikTok"
+                  aria-label={copy.socialAria.tiktok}
                 >
                   <TikTokIcon className="h-5 w-5" />
                 </a>
@@ -216,7 +326,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
-                  aria-label="Read Purrify on Medium"
+                  aria-label={copy.socialAria.medium}
                 >
                   <MediumIcon className="h-5 w-5" />
                 </a>
@@ -633,7 +743,7 @@ export function Footer() {
                     href="/locations/province/british-columbia"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    British Columbia
+                    {copy.regions.britishColumbia}
                   </Link>
                 </li>
                 <li>
@@ -641,7 +751,7 @@ export function Footer() {
                     href="/locations/province/alberta"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    Alberta
+                    {copy.regions.alberta}
                   </Link>
                 </li>
                 <li>
@@ -649,7 +759,7 @@ export function Footer() {
                     href="/locations/province/ontario"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    Ontario
+                    {copy.regions.ontario}
                   </Link>
                 </li>
                 <li>
@@ -657,7 +767,7 @@ export function Footer() {
                     href="/locations/province/quebec"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    Quebec
+                    {copy.regions.quebec}
                   </Link>
                 </li>
                 <li>
@@ -665,7 +775,7 @@ export function Footer() {
                     href="/locations/province/atlantic"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    Atlantic Canada
+                    {copy.regions.atlanticCanada}
                   </Link>
                 </li>
                 <li>
@@ -673,7 +783,7 @@ export function Footer() {
                     href="/locations/province/prairies"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    Prairies
+                    {copy.regions.prairies}
                   </Link>
                 </li>
                 <li>
@@ -681,7 +791,7 @@ export function Footer() {
                     href="/locations/province/north"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
-                    The North
+                    {copy.regions.north}
                   </Link>
                 </li>
               </ul>

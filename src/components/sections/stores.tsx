@@ -67,6 +67,60 @@ const STORE_LOGOS: Record<string, Omit<LogoConfig, 'className' | 'width' | 'heig
 // List of stores that should have white background for their logo
 const WHITE_BG_STORES = Object.keys(STORE_LOGOS);
 
+type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
+
+const storesUiCopy: Record<SupportedLocale, {
+  sectionBadge: string;
+  headingPrefix: string;
+  headingHighlight: string;
+  subtitle: string;
+  websiteLabel: string;
+  requestTitle: string;
+  requestSubtitle: string;
+  requestButton: string;
+}> = {
+  en: {
+    sectionBadge: 'Find Purrify Near You',
+    headingPrefix: 'Our Retail',
+    headingHighlight: 'Partners',
+    subtitle: 'Find Purrify at these premium pet retailers across Montreal and beyond.',
+    websiteLabel: 'Website',
+    requestTitle: "Don't see your favorite store?",
+    requestSubtitle: "Let us know where you shop, and we'll contact them!",
+    requestButton: 'Request a Store',
+  },
+  fr: {
+    sectionBadge: 'Trouvez Purrify pres de vous',
+    headingPrefix: 'Nos partenaires',
+    headingHighlight: 'detail',
+    subtitle: 'Trouvez Purrify dans des animaleries premium a Montreal et ailleurs.',
+    websiteLabel: 'Site web',
+    requestTitle: 'Vous ne voyez pas votre boutique preferee?',
+    requestSubtitle: 'Dites-nous ou vous magasinez, et nous les contacterons.',
+    requestButton: 'Demander un magasin',
+  },
+  zh: {
+    sectionBadge: '在你附近找到 Purrify',
+    headingPrefix: '我们的零售',
+    headingHighlight: '合作伙伴',
+    subtitle: '在蒙特利尔及周边优质宠物门店找到 Purrify。',
+    websiteLabel: '官网',
+    requestTitle: '没看到你常去的门店？',
+    requestSubtitle: '告诉我们你常去哪里，我们会联系他们！',
+    requestButton: '申请新增门店',
+  },
+  es: {
+    sectionBadge: 'Encuentra Purrify cerca de ti',
+    headingPrefix: 'Nuestros socios',
+    headingHighlight: 'minoristas',
+    subtitle: 'Encuentra Purrify en tiendas premium para mascotas en Montreal y mas alla.',
+    websiteLabel: 'Sitio web',
+    requestTitle: 'No ves tu tienda favorita?',
+    requestSubtitle: 'Dinos donde compras y nos pondremos en contacto con ellos.',
+    requestButton: 'Solicitar una tienda',
+  },
+};
+
 // ============================================================================
 // Helper Functions
 // ============================================================================
@@ -377,7 +431,8 @@ function StoreLogoImage({
 }
 
 export function Stores() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
+  const uiCopy = storesUiCopy[locale as SupportedLocale] || storesUiCopy.en;
   const stores = getStoresWithTranslations(t);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -422,16 +477,16 @@ export function Stores() {
       <Container>
         <div className="text-center mb-12">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-orange-50 dark:bg-orange-900/20 text-[#FF8E3C] dark:text-[#FF8E3C] font-bold text-sm mb-6 border border-orange-100 dark:border-orange-800/30">
-            📍 Find Purrify Near You
+            📍 {uiCopy.sectionBadge}
           </div>
           <h2 className="font-heading text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-6">
-            Our Retail
+            {uiCopy.headingPrefix}
             <span className="bg-gradient-to-r from-[#FF8E3C] to-[#FF5050] bg-clip-text text-transparent ml-2">
-              Partners
+              {uiCopy.headingHighlight}
             </span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-10">
-            Find Purrify at these premium pet retailers across Montreal and beyond.
+            {uiCopy.subtitle}
           </p>
 
           {/* Search/Filter Controls - Placeholder for future implementation if needed, utilizing browser search for now via the grid below */}
@@ -502,7 +557,7 @@ export function Stores() {
                           className="flex items-center text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors gap-2"
                         >
                           <WebsiteIcon className="w-4 h-4 flex-shrink-0" />
-                          <span>Website</span>
+                          <span>{uiCopy.websiteLabel}</span>
                         </a>
                       )}
                     </div>
@@ -518,10 +573,10 @@ export function Stores() {
           <div className="inline-block p-1 bg-gradient-to-r from-[#FF8E3C] to-[#FF5050] rounded-2xl shadow-lg shadow-orange-500/20">
             <div className="bg-white dark:bg-gray-900 rounded-xl px-8 py-10 md:px-16">
               <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-white mb-3">
-                Don't see your favorite store?
+                {uiCopy.requestTitle}
               </h3>
               <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-lg mx-auto">
-                Let us know where you shop, and we'll contact them!
+                {uiCopy.requestSubtitle}
               </p>
               <button
                 onClick={handleRequestStore}
@@ -544,7 +599,7 @@ export function Stores() {
                 ) : (
                   <>
                     <span className="text-xl">📝</span>
-                    Request a Store
+                    {t.storesSection?.requestStoreAvailability || uiCopy.requestButton}
                   </>
                 )}
               </button>

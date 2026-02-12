@@ -236,7 +236,7 @@ export default function UpsellClient({ initialEmail, sessionId }: UpsellClientPr
             <div className="relative bg-white dark:bg-gray-700 rounded-2xl p-6 shadow-xl">
               <Image
                 src="/optimized/60g-transparent.webp"
-                alt="Purrify 50g Autoship - 3 Month Supply"
+                alt={t.upsell?.productSubtitle || 'Purrify 50g Autoship - 3 Month Supply'}
                 width={300}
                 height={300}
                 className="w-full h-auto object-contain"
@@ -353,7 +353,7 @@ export default function UpsellClient({ initialEmail, sessionId }: UpsellClientPr
       {/* Testimonial */}
       <div className="bg-gradient-to-r from-[#5B2EFF]/10 to-[#FF3131]/10 dark:from-[#3694FF]/10 dark:to-[#FF5050]/10 rounded-xl p-8 mb-8 border border-gray-200 dark:border-gray-700">
         <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-4 italic">
-          &quot;{t.upsell?.testimonialText || 'I almost skipped the autoship offer, but I\'m so glad I didn\'t! It\'s one less thing to remember, and the savings add up. Plus, I never run out right when I need it most.'}&quot;
+          “{t.upsell?.testimonialText || 'I almost skipped the autoship offer, but I\'m so glad I didn\'t! It\'s one less thing to remember, and the savings add up. Plus, I never run out right when I need it most.'}”
         </p>
         <p className="font-semibold text-gray-900 dark:text-gray-50">
           {t.upsell?.testimonialAuthor || '— Sarah M., Toronto'}

@@ -710,7 +710,7 @@ export default function HospitalityClientPage() {
                 ))}
               </div>
               <p className="text-gray-700 dark:text-gray-300 italic mb-4">
-                &ldquo;{testimonial.quote}&rdquo;
+                “{testimonial.quote}”
               </p>
               <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
                 <p className="font-semibold text-gray-900 dark:text-white">{testimonial.author}</p>

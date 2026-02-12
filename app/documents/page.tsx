@@ -4,6 +4,7 @@ import { useTranslation } from '@/lib/translation-context';
 import { FileText, Download, Search, Calendar } from 'lucide-react';
 import { useState } from 'react';
 import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
+import { CONTACT_INFO } from '@/lib/constants';
 
 export default function DocumentsPage() {
   const { locale } = useTranslation();
@@ -232,9 +233,9 @@ export default function DocumentsPage() {
             <p className="font-bold mb-2">
               {locale === 'fr' ? 'Besoin d\'aide?' : 'Need help?'}
             </p>
-            <p className="text-gray-300 dark:text-gray-400">
-              {locale === 'fr' ? 'Contactez-nous: ' : 'Contact us: '}
-              <a href="mailto:hello@purrify.ca" className="text-blue-400 hover:text-blue-300 dark:text-blue-400 dark:hover:text-blue-300">hello@purrify.ca</a>
+              <p className="text-gray-300 dark:text-gray-400">
+                {locale === 'fr' ? 'Contactez-nous: ' : 'Contact us: '}
+              <a href={`mailto:${CONTACT_INFO.email}`} className="text-blue-400 hover:text-blue-300 dark:text-blue-400 dark:hover:text-blue-300">{CONTACT_INFO.email}</a>
               {' | '}
               <a href="tel:1-450-663-6773" className="text-blue-400 hover:text-blue-300 dark:text-blue-400 dark:hover:text-blue-300">1-450-663-6773</a>
             </p>

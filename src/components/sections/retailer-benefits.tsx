@@ -2,7 +2,31 @@ import { Container } from '@/components/ui/container';
 import { useTranslation } from '@/lib/translation-context';
 
 export function RetailerBenefits() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
+  const successMetrics =
+    locale === 'fr'
+      ? [
+        { value: '17', label: 'Partenaires de detail actuels' },
+        { value: '$2.3M', label: 'Revenus annuels en detail' },
+        { value: '98%', label: 'Satisfaction des partenaires' },
+      ]
+      : locale === 'zh'
+        ? [
+          { value: '17', label: '当前零售合作伙伴' },
+          { value: '$2.3M', label: '年度零售营收' },
+          { value: '98%', label: '合作伙伴满意度' },
+        ]
+        : locale === 'es'
+          ? [
+            { value: '17', label: 'Socios minoristas actuales' },
+            { value: '$2.3M', label: 'Ingresos minoristas anuales' },
+            { value: '98%', label: 'Satisfaccion de socios' },
+          ]
+          : [
+            { value: '17', label: 'Current Retail Partners' },
+            { value: '$2.3M', label: 'Annual Retail Revenue' },
+            { value: '98%', label: 'Partner Satisfaction' },
+          ];
 
   const benefits = [
     {
@@ -116,18 +140,12 @@ export function RetailerBenefits() {
               {t.retailers?.benefits?.success?.title || 'Real Success Stories'}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              <div>
-                <div className="text-3xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-2">17</div>
-                <div className="text-gray-600 dark:text-gray-300">Current Retail Partners</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-2">$2.3M</div>
-                <div className="text-gray-600 dark:text-gray-300">Annual Retail Revenue</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-[#5B2EFF] dark:text-[#3694FF] mb-2">98%</div>
-                <div className="text-gray-600 dark:text-gray-300">Partner Satisfaction</div>
-              </div>
+              {successMetrics.map((metric, index) => (
+                <div key={metric.label}>
+                  <div className={`text-3xl font-bold mb-2 ${index === 1 ? 'text-[#FF3131] dark:text-[#FF5050]' : 'text-[#5B2EFF] dark:text-[#3694FF]'}`}>{metric.value}</div>
+                  <div className="text-gray-600 dark:text-gray-300">{metric.label}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

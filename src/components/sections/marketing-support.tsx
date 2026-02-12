@@ -1,8 +1,79 @@
 import { Container } from '@/components/ui/container';
 import { useTranslation } from '@/lib/translation-context';
 
+type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
+
+const marketingSupportUiCopy: Record<SupportedLocale, {
+  coopBenefits: [string, string, string];
+  qualificationTitle: string;
+  minimumMonthlyOrderLabel: string;
+  minimumMonthlyOrderValue: string;
+  partnershipDurationLabel: string;
+  partnershipDurationValue: string;
+  creditLimitLabel: string;
+  creditLimitValue: string;
+}> = {
+  en: {
+    coopBenefits: [
+      'Up to 50% advertising cost coverage',
+      'Pre-approved ad templates and copy',
+      'Performance tracking and ROI analysis',
+    ],
+    qualificationTitle: 'Qualification Requirements',
+    minimumMonthlyOrderLabel: 'Minimum Monthly Order',
+    minimumMonthlyOrderValue: '48 units',
+    partnershipDurationLabel: 'Partnership Duration',
+    partnershipDurationValue: '6+ months',
+    creditLimitLabel: 'Credit Limit',
+    creditLimitValue: '$500/month',
+  },
+  fr: {
+    coopBenefits: [
+      "Jusqu'a 50% des couts publicitaires couverts",
+      'Modeles publicitaires et textes pre-approuves',
+      'Suivi des performances et analyse du ROI',
+    ],
+    qualificationTitle: "Conditions d'admissibilite",
+    minimumMonthlyOrderLabel: 'Commande mensuelle minimale',
+    minimumMonthlyOrderValue: '48 unites',
+    partnershipDurationLabel: 'Duree du partenariat',
+    partnershipDurationValue: '6+ mois',
+    creditLimitLabel: 'Plafond de credit',
+    creditLimitValue: '500 $/mois',
+  },
+  zh: {
+    coopBenefits: [
+      '最高可获得 50% 广告费用支持',
+      '预审通过的广告模板与文案',
+      '效果追踪与投资回报分析',
+    ],
+    qualificationTitle: '申请条件',
+    minimumMonthlyOrderLabel: '每月最低订单',
+    minimumMonthlyOrderValue: '48 件',
+    partnershipDurationLabel: '合作时长',
+    partnershipDurationValue: '6 个月以上',
+    creditLimitLabel: '补贴上限',
+    creditLimitValue: '$500/月',
+  },
+  es: {
+    coopBenefits: [
+      'Hasta 50% de cobertura en costos publicitarios',
+      'Plantillas y textos publicitarios preaprobados',
+      'Seguimiento de rendimiento y analisis de ROI',
+    ],
+    qualificationTitle: 'Requisitos de calificacion',
+    minimumMonthlyOrderLabel: 'Pedido minimo mensual',
+    minimumMonthlyOrderValue: '48 unidades',
+    partnershipDurationLabel: 'Duracion de la alianza',
+    partnershipDurationValue: '6+ meses',
+    creditLimitLabel: 'Limite de credito',
+    creditLimitValue: '$500/mes',
+  },
+};
+
 export function MarketingSupport() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
+  const uiCopy = marketingSupportUiCopy[locale as SupportedLocale] || marketingSupportUiCopy.en;
 
   const supportItems = [
     {
@@ -119,39 +190,39 @@ export function MarketingSupport() {
                   <svg className="w-5 h-5 text-green-500 dark:text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  Up to 50% advertising cost coverage
+                  {uiCopy.coopBenefits[0]}
                 </li>
                 <li className="flex items-center text-gray-700 dark:text-gray-200">
                   <svg className="w-5 h-5 text-green-500 dark:text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  Pre-approved ad templates and copy
+                  {uiCopy.coopBenefits[1]}
                 </li>
                 <li className="flex items-center text-gray-700 dark:text-gray-200">
                   <svg className="w-5 h-5 text-green-500 dark:text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  Performance tracking and ROI analysis
+                  {uiCopy.coopBenefits[2]}
                 </li>
               </ul>
             </div>
 
             <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
               <h4 className="text-lg font-bold text-gray-900 dark:text-gray-50 mb-4">
-                Qualification Requirements
+                {uiCopy.qualificationTitle}
               </h4>
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600 dark:text-gray-300">Minimum Monthly Order</span>
-                  <span className="font-semibold text-gray-900 dark:text-gray-50">48 units</span>
+                  <span className="text-gray-600 dark:text-gray-300">{uiCopy.minimumMonthlyOrderLabel}</span>
+                  <span className="font-semibold text-gray-900 dark:text-gray-50">{uiCopy.minimumMonthlyOrderValue}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600 dark:text-gray-300">Partnership Duration</span>
-                  <span className="font-semibold text-gray-900 dark:text-gray-50">6+ months</span>
+                  <span className="text-gray-600 dark:text-gray-300">{uiCopy.partnershipDurationLabel}</span>
+                  <span className="font-semibold text-gray-900 dark:text-gray-50">{uiCopy.partnershipDurationValue}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600 dark:text-gray-300">Credit Limit</span>
-                  <span className="font-semibold text-[#5B2EFF] dark:text-[#3694FF]">$500/month</span>
+                  <span className="text-gray-600 dark:text-gray-300">{uiCopy.creditLimitLabel}</span>
+                  <span className="font-semibold text-[#5B2EFF] dark:text-[#3694FF]">{uiCopy.creditLimitValue}</span>
                 </div>
               </div>
             </div>

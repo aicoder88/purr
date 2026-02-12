@@ -26,6 +26,16 @@ import { B2BCaseStudies } from '@/components/sections/b2b-case-studies';
 
 export default function SheltersClientPage() {
   const { t, locale } = useTranslation();
+  const shelterEmail = 'shelters@purrify.ca';
+  const breadcrumbAriaLabel =
+    locale === 'fr'
+      ? 'Fil d Ariane'
+      : locale === 'zh'
+        ? '面包屑导航'
+        : locale === 'es'
+          ? 'Miga de pan'
+          : 'Breadcrumb';
+  const homeLabel = t.nav?.home || 'Home';
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -96,8 +106,8 @@ export default function SheltersClientPage() {
 
   // Breadcrumb items
   const breadcrumbItems = [
-    { name: 'Home', path: '/' },
-    { name: locale === 'fr' ? 'Refuges' : 'Shelters', path: '/shelters' },
+    { name: homeLabel, path: locale === 'en' ? '/' : `/${locale}` },
+    { name: locale === 'fr' ? 'Refuges' : locale === 'zh' ? '收容所' : locale === 'es' ? 'Refugios' : 'Shelters', path: `${locale === 'en' ? '' : `/${locale}`}/shelters` },
   ];
 
   // Shelter-specific challenges
@@ -225,7 +235,7 @@ export default function SheltersClientPage() {
     <div className="max-w-7xl mx-auto px-4 py-12 bg-white dark:bg-gray-900 min-h-screen">
       {/* Breadcrumb Navigation */}
       <nav
-        aria-label="Breadcrumb"
+        aria-label={breadcrumbAriaLabel}
         className="mb-6"
       >
         <ol className="flex items-center space-x-2 text-sm">
@@ -660,11 +670,11 @@ export default function SheltersClientPage() {
                 <div className="space-y-4">
                   <div className="space-x-4">
                     <a
-                      href="mailto:shelters@purrify.ca"
+                      href={`mailto:${shelterEmail}`}
                       className="inline-flex items-center gap-2 text-pink-600 dark:text-pink-400 hover:underline"
                     >
                       <Mail className="h-4 w-4" />
-                      shelters@purrify.ca
+                      {shelterEmail}
                     </a>
                     <a
                       href={CONTACT_INFO.phoneHref}
@@ -778,8 +788,8 @@ export default function SheltersClientPage() {
             <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
               {locale === 'fr' ? 'Écrivez-nous' : 'Email Us'}
             </h4>
-            <a href="mailto:shelters@purrify.ca" className="text-pink-600 dark:text-pink-400 hover:underline">
-              shelters@purrify.ca
+            <a href={`mailto:${shelterEmail}`} className="text-pink-600 dark:text-pink-400 hover:underline">
+              {shelterEmail}
             </a>
           </div>
           <div className="text-center">

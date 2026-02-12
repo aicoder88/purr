@@ -164,13 +164,21 @@ const ALL_ARTICLES: Article[] = [
 ];
 
 export function RelatedArticles({ currentPath, limit = 3 }: { currentPath?: string; limit?: number }) {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const items = ALL_ARTICLES.filter(a => a.href !== currentPath).slice(0, limit);
+  const relatedAriaLabel =
+    locale === 'fr'
+      ? 'Articles connexes'
+      : locale === 'zh'
+        ? '相关文章'
+        : locale === 'es'
+          ? 'Articulos relacionados'
+          : 'Related articles';
 
   if (items.length === 0) return null;
 
   return (
-    <section aria-label="Related articles" className="py-12">
+    <section aria-label={relatedAriaLabel} className="py-12">
       <Container>
         <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
           {t.relatedArticles?.title || ""}

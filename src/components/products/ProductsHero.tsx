@@ -21,6 +21,30 @@ interface ProductsHeroProps {
 
 export function ProductsHero({ experimentCopy }: ProductsHeroProps) {
     const { t, locale } = useTranslation();
+    const productImageAlts =
+        locale === 'fr'
+            ? {
+                family: 'Purrify format familial',
+                regular: 'Purrify format regulier',
+                trial: 'Purrify format essai',
+            }
+            : locale === 'zh'
+                ? {
+                    family: 'Purrify 家庭装',
+                    regular: 'Purrify 常规装',
+                    trial: 'Purrify 试用装',
+                }
+                : locale === 'es'
+                    ? {
+                        family: 'Purrify tamano familiar',
+                        regular: 'Purrify tamano regular',
+                        trial: 'Purrify tamano de prueba',
+                    }
+                    : {
+                        family: 'Purrify Family Size',
+                        regular: 'Purrify Regular Size',
+                        trial: 'Purrify Trial Size',
+                    };
     const useEnglishVariantHeadline = locale === 'en' && experimentCopy.headlineVariant === 'variant';
     const useEnglishVariantCta = locale === 'en' && experimentCopy.ctaVariant === 'variant';
     const containerRef = useRef<HTMLDivElement>(null);
@@ -157,7 +181,7 @@ export function ProductsHero({ experimentCopy }: ProductsHeroProps) {
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] md:w-[350px] z-20">
                                     <Image
                                         src="/optimized/140g-transparent.webp"
-                                        alt="Purrify Family Size"
+                                        alt={productImageAlts.family}
                                         width={640}
                                         height={640}
                                         sizes="(max-width: 768px) 280px, 350px"
@@ -170,7 +194,7 @@ export function ProductsHero({ experimentCopy }: ProductsHeroProps) {
                                 <div className="absolute top-1/3 right-0 lg:-right-6 w-[200px] md:w-[260px] z-10 opacity-90 blur-[0.5px]">
                                     <Image
                                         src="/optimized/60g-transparent.webp"
-                                        alt="Purrify Regular Size"
+                                        alt={productImageAlts.regular}
                                         width={640}
                                         height={640}
                                         sizes="(max-width: 768px) 200px, 260px"
@@ -182,7 +206,7 @@ export function ProductsHero({ experimentCopy }: ProductsHeroProps) {
                                 <div className="absolute bottom-12 left-4 md:left-8 w-[140px] md:w-[180px] z-30">
                                     <Image
                                         src="/optimized/17g-transparent-v2.webp"
-                                        alt="Purrify Trial Size"
+                                        alt={productImageAlts.trial}
                                         width={640}
                                         height={640}
                                         sizes="(max-width: 768px) 140px, 180px"

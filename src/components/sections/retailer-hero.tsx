@@ -7,8 +7,40 @@ import { useTranslation } from '@/lib/translation-context';
 import { scrollToSection } from '@/lib/utils';
 
 export function RetailerHero() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const hero = t.retailers?.hero;
+  const heroUiCopy =
+    locale === 'fr'
+      ? {
+        mainDescription: "Rejoignez 21 detaillants etablis qui vendent la solution anti-odeur #1 au Canada avec des marges de 50%+.",
+        heroImageAlt: 'Presentoir en magasin pour detail',
+        fastSelling: 'Rotation rapide',
+        inventoryTurn: 'Vitesse de rotation',
+        inventoryDescription: "Reassort moyen tous les 14 jours. Ne laissez pas cet espace rayon inactif.",
+      }
+      : locale === 'zh'
+        ? {
+          mainDescription: '加入 21 家成熟零售商，共同销售加拿大排名第一的猫砂除味方案，利润率可达 50%+。',
+          heroImageAlt: '宠物门店零售陈列',
+          fastSelling: '快速动销',
+          inventoryTurn: '库存周转',
+          inventoryDescription: '平均每 14 天补货一次，别让你的货架空间浪费。',
+        }
+        : locale === 'es'
+          ? {
+            mainDescription: 'Unete a 21 minoristas establecidos que venden la solucion #1 contra olores de gato en Canada con margenes de 50%+.',
+            heroImageAlt: 'Exhibicion minorista en tienda de mascotas',
+            fastSelling: 'Alta rotacion',
+            inventoryTurn: 'Rotacion de inventario',
+            inventoryDescription: 'Reabastecimiento promedio cada 14 dias. No dejes que tu espacio en estanteria se desperdicie.',
+          }
+          : {
+            mainDescription: "Join 21 established retailers selling Canada's #1 cat odor solution with 50%+ margins.",
+            heroImageAlt: 'Pet store retail display',
+            fastSelling: 'Fast-Selling',
+            inventoryTurn: 'Inventory Turn',
+            inventoryDescription: "Average retailer restocking every 14 days. Don't let your shelf space go to waste.",
+          };
 
   return (
     <section className="relative w-full pt-32 pb-24 overflow-hidden bg-white dark:bg-gray-950 transition-colors duration-300">
@@ -47,11 +79,7 @@ export function RetailerHero() {
               </h1>
 
               <p className="text-2xl text-gray-600 dark:text-gray-300 mb-12 leading-relaxed font-medium max-w-xl mx-auto lg:mx-0">
-                {hero?.mainDescription || (
-                  <>
-                    Join <strong className="text-[#5B2EFF] dark:text-[#3694FF]">{hero?.retailerCount || '21 established retailers'}</strong> selling Canada's #1 cat odor solution with <strong>{hero?.marginHighlight || '50%+ margins'}</strong>.
-                  </>
-                )}
+                {hero?.mainDescription || heroUiCopy.mainDescription}
               </p>
 
               {/* Key Stats */}
@@ -121,7 +149,7 @@ export function RetailerHero() {
               <div className="relative rounded-[40px] overflow-hidden shadow-2xl shadow-gray-200 dark:shadow-none border-8 border-white dark:border-gray-800 rotate-2 hover:rotate-0 transition-transform duration-700 aspect-[4/3]">
                 <Image
                   src="/optimized/retailer-hero-lifestyle.png"
-                  alt="Pet store retail display"
+                  alt={heroUiCopy.heroImageAlt}
                   fill
                   className="object-cover"
                   priority
@@ -138,12 +166,12 @@ export function RetailerHero() {
                     </svg>
                   </div>
                   <div>
-                    <div className="text-lg font-black text-gray-900 dark:text-white leading-tight">Fast-Selling</div>
-                    <div className="text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">Inventory Turn</div>
+                    <div className="text-lg font-black text-gray-900 dark:text-white leading-tight">{heroUiCopy.fastSelling}</div>
+                    <div className="text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">{heroUiCopy.inventoryTurn}</div>
                   </div>
                 </div>
                 <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
-                  Average retailer restocking every 14 days. Don't let your shelf space go to waste.
+                  {heroUiCopy.inventoryDescription}
                 </p>
               </div>
 

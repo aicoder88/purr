@@ -26,6 +26,7 @@ interface TierCardProps {
   tier: PricingTier;
   onCtaClick: () => void;
   packageIncludesLabel: string;
+  featuresLabel: string;
   index: number;
 }
 
@@ -83,7 +84,7 @@ function TrustSignals({ labels }: { labels: { noSetupFees: string; approval72hr:
 }
 
 // Tier card component
-function TierCard({ tier, onCtaClick, packageIncludesLabel, index }: TierCardProps) {
+function TierCard({ tier, onCtaClick, packageIncludesLabel, featuresLabel, index }: TierCardProps) {
   const cardClasses = tier.highlighted
     ? `bg-white dark:bg-gray-800 border-2 border-[#5B2EFF] dark:border-[#3694FF] shadow-2xl shadow-[#5B2EFF]/15 transform lg:scale-105 z-10 ring-8 ring-[#5B2EFF]/5 dark:ring-[#3694FF]/5`
     : 'bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-xl hover:shadow-2xl hover:border-gray-200 dark:hover:border-gray-600';
@@ -168,7 +169,7 @@ function TierCard({ tier, onCtaClick, packageIncludesLabel, index }: TierCardPro
 
       <div className="flex-1 mb-10">
         <div className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500 mb-5 text-left">
-          Features
+          {featuresLabel}
         </div>
         <ul className="space-y-4">
           {tier.features.map((feature, i) => (
@@ -197,6 +198,7 @@ function TierCard({ tier, onCtaClick, packageIncludesLabel, index }: TierCardPro
 export function WholesalePricing() {
   const { t } = useTranslation();
   const pricing = t.retailers?.wholesalePricing;
+  const featuresLabel = t.productComparison?.features || 'Features';
 
   const handleScrollToRetailer = useCallback(() => {
     scrollToSection('retailer-contact');
@@ -302,6 +304,7 @@ export function WholesalePricing() {
               tier={tier}
               onCtaClick={handleScrollToRetailer}
               packageIncludesLabel={pricing?.packageIncludes || 'Package Includes:'}
+              featuresLabel={featuresLabel}
               index={index}
             />
           ))}

@@ -23,6 +23,22 @@ interface ResultsContentProps {
 export function ResultsContent({ testimonials }: ResultsContentProps) {
   const { t, locale } = useTranslation();
   const r = t.results || {};
+  const breadcrumbLabel =
+    locale === 'fr'
+      ? 'Fil d Ariane'
+      : locale === 'zh'
+        ? '面包屑导航'
+        : locale === 'es'
+          ? 'Miga de pan'
+          : 'Breadcrumb';
+  const resultsBreadcrumb =
+    locale === 'fr'
+      ? 'Resultats'
+      : locale === 'zh'
+        ? '效果'
+        : locale === 'es'
+          ? 'Resultados'
+          : 'Results';
 
   // Stats data
   const stats = [
@@ -80,7 +96,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
       {/* Breadcrumb Navigation */}
       <section className="py-4 border-b border-gray-200 dark:border-gray-800">
         <Container>
-          <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
+          <nav aria-label={breadcrumbLabel} className="flex items-center space-x-2 text-sm">
             <Link
               href={locale === 'fr' ? '/fr' : '/'}
               className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
@@ -89,7 +105,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
             </Link>
             <span className="flex items-center">
               <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
-              <span className="font-medium text-gray-900 dark:text-gray-100">Results</span>
+              <span className="font-medium text-gray-900 dark:text-gray-100">{resultsBreadcrumb}</span>
             </span>
           </nav>
         </Container>

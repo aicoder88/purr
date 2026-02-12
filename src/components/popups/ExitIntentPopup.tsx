@@ -36,7 +36,7 @@ export function ExitIntentPopup({
   discountCode = 'WELCOME10',
   className,
 }: ExitIntentPopupProps) {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -202,6 +202,14 @@ export function ExitIntentPopup({
       t.exitPopup?.successMessage ||
       `Use code ${discountCode} at checkout for ${discountPercent}% off!`,
   };
+  const closePopupLabel =
+    locale === 'fr'
+      ? 'Fermer la fenetre'
+      : locale === 'zh'
+        ? '关闭弹窗'
+        : locale === 'es'
+          ? 'Cerrar ventana'
+          : 'Close popup';
 
   return (
     <div
@@ -236,7 +244,7 @@ export function ExitIntentPopup({
             'hover:bg-gray-100 dark:hover:bg-gray-800',
             'transition-colors'
           )}
-          aria-label="Close popup"
+          aria-label={closePopupLabel}
         >
           <X className="w-5 h-5" />
         </button>

@@ -157,7 +157,35 @@ const BUSINESS_METRICS: BusinessMetric[] = [
 ];
 
 export function RetailerTestimonials() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
+  const caseStudyCopy =
+    locale === 'fr'
+      ? {
+        title: 'Vous voulez voir des etudes de cas detaillees?',
+        description: "Telechargez nos histoires de succes retail pour voir comment d'autres magasins ont fait croitre leur activite avec Purrify.",
+        download: 'Telecharger les etudes de cas',
+        schedule: 'Planifier un appel avec un representant',
+      }
+      : locale === 'zh'
+        ? {
+          title: '想看更详细的案例研究？',
+          description: '下载我们的零售成功案例，了解其他门店如何借助 Purrify 提升业绩。',
+          download: '下载案例研究',
+          schedule: '预约代表电话',
+        }
+        : locale === 'es'
+          ? {
+            title: 'Quieres ver estudios de caso detallados?',
+            description: 'Descarga nuestras historias de exito minorista para ver como otras tiendas han crecido con Purrify.',
+            download: 'Descargar estudios de caso',
+            schedule: 'Programar llamada con un representante',
+          }
+          : {
+            title: 'Want to see detailed case studies?',
+            description: 'Download our retail success stories to see how other stores have grown their business with Purrify.',
+            download: 'Download Case Studies',
+            schedule: 'Schedule Call with Rep',
+          };
 
   return (
     <section className="py-16 bg-gray-50 dark:bg-gray-800">
@@ -234,17 +262,17 @@ export function RetailerTestimonials() {
         {/* Case Study CTA */}
         <div className="mt-12 text-center">
           <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-4">
-            Want to see detailed case studies?
+            {caseStudyCopy.title}
           </h3>
           <p className="text-gray-600 dark:text-gray-300 mb-6">
-            Download our retail success stories to see how other stores have grown their business with Purrify.
+            {caseStudyCopy.description}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className={`bg-gradient-to-r ${GRADIENTS.primary} ${GRADIENTS.primaryHover} text-white dark:text-white font-bold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300`}>
-              Download Case Studies
+              {caseStudyCopy.download}
             </button>
             <button className="border-2 border-[#5B2EFF] dark:border-[#3694FF] text-[#5B2EFF] dark:text-[#3694FF] hover:bg-[#5B2EFF] dark:hover:bg-[#3694FF] hover:text-white dark:hover:text-white font-bold py-3 px-8 rounded-lg transition-all duration-300">
-              Schedule Call with Rep
+              {caseStudyCopy.schedule}
             </button>
           </div>
         </div>

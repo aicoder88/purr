@@ -126,7 +126,11 @@ export function FreeGiveawayForm() {
     <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-8 border border-[#E0EFC7] dark:border-gray-800 transition-colors duration-300">
       <h2 className="font-heading text-2xl font-bold text-[#1E1B4B] dark:text-white dark:text-gray-100 dark:text-gray-100 mb-6">{t.freeGiveaway?.formTitle || ""}</h2>
       
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" aria-label="Free giveaway form">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="space-y-6"
+        aria-label={t.freeGiveaway?.formTitle || ''}
+      >
         <div>
           <label
             htmlFor="name"
@@ -163,7 +167,7 @@ export function FreeGiveawayForm() {
             aria-invalid={errors.email ? 'true' : 'false'}
             aria-describedby={errors.email ? 'email-error' : undefined}
             className="mt-1 block w-full border-[#E0EFC7] focus:border-[#FF3131] focus:ring-[#FF3131]"
-            placeholder="your.email@example.com"
+            placeholder={t.freeGiveaway?.emailAddress || ''}
           />
           {errors.email && (
             <p id="email-error" className="mt-1 text-sm text-red-600 dark:text-red-400">

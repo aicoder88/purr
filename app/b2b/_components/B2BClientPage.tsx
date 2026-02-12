@@ -22,6 +22,23 @@ import { formatProductPrice } from '@/lib/pricing';
 
 export default function B2BClientPage() {
   const { locale } = useTranslation();
+  const partnerEmail = 'partners@purrify.ca';
+  const breadcrumbAriaLabel =
+    locale === 'fr'
+      ? 'Fil d Ariane'
+      : locale === 'zh'
+        ? '面包屑导航'
+        : locale === 'es'
+          ? 'Miga de pan'
+          : 'Breadcrumb';
+  const homeLabel =
+    locale === 'fr'
+      ? 'Accueil'
+      : locale === 'zh'
+        ? '首页'
+        : locale === 'es'
+          ? 'Inicio'
+          : 'Home';
   const [formSubmitted, setFormSubmitted] = useState(false);
   const handleFormSubmit = useCallback(() => setFormSubmitted(true), []);
 
@@ -160,7 +177,7 @@ export default function B2BClientPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-12 bg-white dark:bg-gray-900 min-h-screen">
       {/* Breadcrumb Navigation */}
-      <nav aria-label="Breadcrumb" className="mb-6">
+      <nav aria-label={breadcrumbAriaLabel} className="mb-6">
         <ol className="flex items-center space-x-2 text-sm">
           <li className="flex items-center">
             <Link
@@ -168,7 +185,7 @@ export default function B2BClientPage() {
               className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
             >
               <Home className="h-4 w-4" />
-              <span className="sr-only">Home</span>
+              <span className="sr-only">{homeLabel}</span>
             </Link>
           </li>
           <li className="flex items-center">
@@ -602,11 +619,11 @@ export default function B2BClientPage() {
                 <div className="space-y-4">
                   <div className="space-x-4">
                     <a
-                      href="mailto:partners@purrify.ca"
+                      href={`mailto:${partnerEmail}`}
                       className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline"
                     >
                       <Mail className="h-4 w-4" />
-                      partners@purrify.ca
+                      {partnerEmail}
                     </a>
                     <a
                       href={CONTACT_INFO.phoneHref}
@@ -660,10 +677,10 @@ export default function B2BClientPage() {
               {locale === 'fr' ? 'Écrivez-nous' : 'Email Us'}
             </h4>
             <a
-              href="mailto:partners@purrify.ca"
+              href={`mailto:${partnerEmail}`}
               className="text-blue-600 dark:text-blue-400 hover:underline"
             >
-              partners@purrify.ca
+              {partnerEmail}
             </a>
           </div>
           <div className="text-center">
@@ -679,7 +696,7 @@ export default function B2BClientPage() {
                 : 'Contact our team to receive our detailed partnership guide'}
             </p>
             <a
-              href="mailto:partners@purrify.ca"
+              href={`mailto:${partnerEmail}`}
               className="text-blue-600 dark:text-blue-400 hover:underline"
             >
               {locale === 'fr' ? 'Demander le Guide' : 'Request Guide'}

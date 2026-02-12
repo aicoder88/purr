@@ -2,22 +2,36 @@ import dynamic from "next/dynamic";
 import { Container } from "@/components/ui/container";
 import { useTranslation } from "@/lib/translation-context";
 
+function CalculatorLoading() {
+  const { locale } = useTranslation();
+  const loadingText =
+    locale === 'fr'
+      ? 'Chargement du calculateur...'
+      : locale === 'zh'
+        ? '计算器加载中...'
+        : locale === 'es'
+          ? 'Cargando calculadora...'
+          : 'Loading calculator...';
+
+  return (
+    <div className="w-full h-96 flex items-center justify-center bg-white/50 dark:bg-gray-800/50 rounded-2xl border border-gray-200 dark:border-gray-700">
+      <div className="flex flex-col items-center gap-3">
+        <div className="w-8 h-8 border-4 border-[#5B2EFF] border-t-transparent rounded-full animate-spin" />
+        <span className="text-sm text-gray-500 dark:text-gray-400">
+          {loadingText}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 // Dynamic import for CostCalculator to reduce initial bundle size
 // This component uses recharts and framer-motion which are heavy libraries
 const CostCalculator = dynamic(
   () => import("@/components/ui/calculator").then((mod) => mod.CostCalculator),
   {
     ssr: false,
-    loading: () => (
-      <div className="w-full h-96 flex items-center justify-center bg-white/50 dark:bg-gray-800/50 rounded-2xl border border-gray-200 dark:border-gray-700">
-        <div className="flex flex-col items-center gap-3">
-          <div className="w-8 h-8 border-4 border-[#5B2EFF] border-t-transparent rounded-full animate-spin" />
-          <span className="text-sm text-gray-500 dark:text-gray-400">
-            Loading calculator...
-          </span>
-        </div>
-      </div>
-    ),
+    loading: () => <CalculatorLoading />,
   }
 );
 

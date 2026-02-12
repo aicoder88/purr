@@ -89,6 +89,80 @@ interface MobilePaymentProps {
   className?: string;
 }
 
+type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
+
+const mobilePaymentUiCopy: Record<SupportedLocale, {
+  choosePaymentMethod: string;
+  applePayDescription: string;
+  googlePayDescription: string;
+  cardName: string;
+  cardDescription: string;
+  notAvailableSuffix: string;
+  notSupportedOnDevice: string;
+  biometricTip: string;
+  expressCheckout: string;
+  payWithApplePay: string;
+  payWithGooglePay: string;
+  regularCheckoutHint: string;
+}> = {
+  en: {
+    choosePaymentMethod: 'Choose Payment Method',
+    applePayDescription: 'Pay securely with Touch ID or Face ID',
+    googlePayDescription: 'Fast and secure Google payments',
+    cardName: 'Credit/Debit Card',
+    cardDescription: 'Visa, Mastercard, American Express',
+    notAvailableSuffix: '(Not Available)',
+    notSupportedOnDevice: 'Not supported on this device/browser',
+    biometricTip: 'Tip: Use biometric authentication for faster checkout',
+    expressCheckout: 'Express Checkout',
+    payWithApplePay: 'Pay with Apple Pay',
+    payWithGooglePay: 'Pay with Google Pay',
+    regularCheckoutHint: 'or continue with regular checkout below',
+  },
+  fr: {
+    choosePaymentMethod: 'Choisissez un mode de paiement',
+    applePayDescription: 'Payez en toute securite avec Touch ID ou Face ID',
+    googlePayDescription: 'Paiement Google rapide et securise',
+    cardName: 'Carte de credit/debit',
+    cardDescription: 'Visa, Mastercard, American Express',
+    notAvailableSuffix: '(Non disponible)',
+    notSupportedOnDevice: "Non pris en charge sur cet appareil/navigateur",
+    biometricTip: 'Astuce : utilisez la biometrie pour un paiement plus rapide',
+    expressCheckout: 'Paiement express',
+    payWithApplePay: 'Payer avec Apple Pay',
+    payWithGooglePay: 'Payer avec Google Pay',
+    regularCheckoutHint: 'ou continuez avec le paiement standard ci-dessous',
+  },
+  zh: {
+    choosePaymentMethod: '选择支付方式',
+    applePayDescription: '使用 Touch ID 或 Face ID 安全支付',
+    googlePayDescription: '快速安全的 Google 支付',
+    cardName: '信用卡/借记卡',
+    cardDescription: 'Visa、Mastercard、American Express',
+    notAvailableSuffix: '（不可用）',
+    notSupportedOnDevice: '此设备/浏览器不支持',
+    biometricTip: '提示：使用生物识别可更快完成结账',
+    expressCheckout: '快速结账',
+    payWithApplePay: '使用 Apple Pay 支付',
+    payWithGooglePay: '使用 Google Pay 支付',
+    regularCheckoutHint: '或继续使用下方常规结账',
+  },
+  es: {
+    choosePaymentMethod: 'Elige metodo de pago',
+    applePayDescription: 'Paga de forma segura con Touch ID o Face ID',
+    googlePayDescription: 'Pagos de Google rapidos y seguros',
+    cardName: 'Tarjeta de credito/debito',
+    cardDescription: 'Visa, Mastercard, American Express',
+    notAvailableSuffix: '(No disponible)',
+    notSupportedOnDevice: 'No compatible con este dispositivo/navegador',
+    biometricTip: 'Consejo: usa autenticacion biometrica para pagar mas rapido',
+    expressCheckout: 'Pago express',
+    payWithApplePay: 'Pagar con Apple Pay',
+    payWithGooglePay: 'Pagar con Google Pay',
+    regularCheckoutHint: 'o continua con el pago normal abajo',
+  },
+};
+
 export const MobilePayment: React.FC<MobilePaymentProps> = ({
   amount,
   currency = 'CAD',
@@ -96,7 +170,8 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
   onPaymentError,
   className = ''
 }) => {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
+  const uiCopy = mobilePaymentUiCopy[locale as SupportedLocale] || mobilePaymentUiCopy.en;
   const [availablePayments, setAvailablePayments] = useState<PaymentMethod[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [selectedMethod, setSelectedMethod] = useState<string | null>(null);
@@ -108,26 +183,26 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
         name: 'Apple Pay',
         icon: '🍎',
         available: checkApplePayAvailability(),
-        description: 'Pay securely with Touch ID or Face ID'
+        description: uiCopy.applePayDescription
       },
       {
         id: 'google-pay',
         name: 'Google Pay',
         icon: '🟢',
         available: checkGooglePayAvailability(),
-        description: 'Fast and secure Google payments'
+        description: uiCopy.googlePayDescription
       },
       {
         id: 'card',
-        name: 'Credit/Debit Card',
+        name: uiCopy.cardName,
         icon: '💳',
         available: true,
-        description: 'Visa, Mastercard, American Express'
+        description: uiCopy.cardDescription
       }
     ];
 
     setAvailablePayments(payments);
-  }, []);
+  }, [uiCopy]);
 
   useEffect(() => {
     checkPaymentAvailability();
@@ -309,7 +384,7 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
     <div className={`space-y-4 ${className}`}>
       <div className="text-center mb-6">
         <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
-          Choose Payment Method
+          {uiCopy.choosePaymentMethod}
         </h3>
         <div className="text-2xl font-bold text-[#5B2EFF]">
           {formatAmount(amount)}
@@ -355,10 +430,10 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
                   <span className="text-2xl grayscale">{payment.icon}</span>
                   <div className="text-left">
                     <div className="font-semibold text-gray-600 dark:text-gray-400">
-                      {payment.name} (Not Available)
+                      {payment.name} {uiCopy.notAvailableSuffix}
                     </div>
                     <div className="text-sm text-gray-500 dark:text-gray-400">
-                      Not supported on this device/browser
+                      {uiCopy.notSupportedOnDevice}
                     </div>
                   </div>
                 </div>
@@ -381,7 +456,7 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
 
       {/* Mobile-specific features */}
       <div className="md:hidden mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
-        <p>💡 Tip: Use biometric authentication for faster checkout</p>
+        <p>💡 {uiCopy.biometricTip}</p>
       </div>
     </div>
   );
@@ -397,6 +472,8 @@ interface ExpressCheckoutButtonsProps {
 const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
   className = '',
 }) => {
+  const { locale } = useTranslation();
+  const uiCopy = mobilePaymentUiCopy[locale as SupportedLocale] || mobilePaymentUiCopy.en;
   const [showApplePay, setShowApplePay] = useState(false);
   const [showGooglePay, setShowGooglePay] = useState(false);
 
@@ -445,7 +522,7 @@ const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
   return (
     <div className={`space-y-3 ${className}`}>
       <div className="text-center text-sm text-gray-600 dark:text-gray-400 mb-3">
-        Express Checkout
+        {uiCopy.expressCheckout}
       </div>
       
       {showApplePay && (
@@ -454,7 +531,7 @@ const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
           onClick={handleApplePayExpress}
         >
           <span>🍎</span>
-          <span className="font-semibold">Pay with Apple Pay</span>
+          <span className="font-semibold">{uiCopy.payWithApplePay}</span>
         </button>
       )}
       
@@ -464,12 +541,12 @@ const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
           onClick={handleGooglePayExpress}
         >
           <span>🟢</span>
-          <span className="font-semibold">Pay with Google Pay</span>
+          <span className="font-semibold">{uiCopy.payWithGooglePay}</span>
         </button>
       )}
       
       <div className="text-center text-xs text-gray-500 dark:text-gray-400">
-        or continue with regular checkout below
+        {uiCopy.regularCheckoutHint}
       </div>
     </div>
   );

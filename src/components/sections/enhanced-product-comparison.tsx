@@ -285,9 +285,7 @@ export function EnhancedProductComparison() {
                           </Button>
                         </Link>
                         {/* Invisible placeholder to match trial card's shipping text height */}
-                        <p className="text-xs text-center text-gray-500 dark:text-gray-400 invisible" aria-hidden="true">
-                          &nbsp;
-                        </p>
+                        <p className="h-4 text-xs text-center text-gray-500 dark:text-gray-400 invisible" aria-hidden="true" />
                       </div>
                     )}
                   </div>

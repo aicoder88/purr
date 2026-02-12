@@ -23,11 +23,19 @@ interface AffiliateLayoutProps {
 }
 
 export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const { data: session } = useSession();
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [codeCopied, setCodeCopied] = useState(false);
+  const uiCopy =
+    locale === 'fr'
+      ? { affiliateTitle: 'Affilie Purrify', viewSite: 'Voir le site' }
+      : locale === 'zh'
+        ? { affiliateTitle: 'Purrify 联盟', viewSite: '查看网站' }
+        : locale === 'es'
+          ? { affiliateTitle: 'Afiliado Purrify', viewSite: 'Ver sitio' }
+          : { affiliateTitle: 'Purrify Affiliate', viewSite: 'View Site' };
 
   const affiliateCode = (session?.user as { affiliateCode?: string })?.affiliateCode || '';
 
@@ -93,7 +101,7 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
               <span className="text-white dark:text-gray-100 font-bold text-sm">P</span>
             </div>
             <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-              Purrify Affiliate
+              {uiCopy.affiliateTitle}
             </span>
           </Link>
           <button
@@ -149,7 +157,7 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
                 <span className="text-white dark:text-gray-100 font-bold text-sm">P</span>
               </div>
               <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                Purrify Affiliate
+                {uiCopy.affiliateTitle}
               </span>
             </Link>
           </div>
@@ -220,7 +228,7 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
                 className="flex-1 flex items-center justify-center px-3 py-2 text-xs text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
               >
                 <ExternalLink className="w-3 h-3 mr-1" />
-                View Site
+                {uiCopy.viewSite}
               </Link>
               <button
                 onClick={handleSignOut}

@@ -43,6 +43,14 @@ interface ProductsPageContentProps {
 export default function ProductsPage({ experimentCopy }: ProductsPageContentProps) {
   const { locale, t } = useTranslation();
   const { currency } = useCurrency();
+  const breadcrumbAriaLabel =
+    locale === 'fr'
+      ? 'Fil d Ariane'
+      : locale === 'zh'
+        ? '面包屑导航'
+        : locale === 'es'
+          ? 'Miga de pan'
+          : 'Breadcrumb';
   const useEnglishVariantCtaCopy = locale === 'en' && experimentCopy.ctaCopy === 'variant';
 
   const trialPrice = formatProductPrice('trial', currency, locale);
@@ -377,7 +385,7 @@ export default function ProductsPage({ experimentCopy }: ProductsPageContentProp
         {/* Breadcrumb Navigation */}
         {breadcrumb && breadcrumb.items.length > 1 && (
           <nav
-            aria-label="Breadcrumb"
+            aria-label={breadcrumbAriaLabel}
             className="py-4 border-b border-brand-light dark:border-gray-800"
           >
             <Container>
@@ -441,10 +449,10 @@ export default function ProductsPage({ experimentCopy }: ProductsPageContentProp
                   {/* Testimonial Content */}
                   <div className="md:col-span-2">
                     <h2 className="font-heading text-2xl font-bold text-brand-purple dark:text-purple-400 mb-4">
-                      &ldquo;{t.productsPage?.testimonial?.headline || "Game changer for my apartment!"}&rdquo;
+                      “{t.productsPage?.testimonial?.headline || "Game changer for my apartment!"}”
                     </h2>
                     <blockquote className="text-lg text-gray-700 dark:text-gray-200 mb-6 leading-relaxed">
-                      &ldquo;{t.productsPage?.testimonial?.quote || "I live in a small studio apartment with two cats, and the litter box smell was becoming unbearable. Purrify completely eliminated the odor within 24 hours. I was skeptical about the price at first, but it lasts so much longer than other products I've tried. Worth every penny!"}&rdquo;
+                      “{t.productsPage?.testimonial?.quote || "I live in a small studio apartment with two cats, and the litter box smell was becoming unbearable. Purrify completely eliminated the odor within 24 hours. I was skeptical about the price at first, but it lasts so much longer than other products I've tried. Worth every penny!"}”
                     </blockquote>
                     <div className="flex items-center gap-3">
                       <div className="flex gap-1">

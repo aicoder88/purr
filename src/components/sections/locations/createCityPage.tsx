@@ -101,7 +101,7 @@ function TestimonialCard({ testimonial, wasHelpfulText = 'Was this helpful?' }: 
       </div>
 
       <p className="italic mb-4 text-gray-700 dark:text-gray-200 flex-grow leading-relaxed">
-        &quot;{testimonial.quote}&quot;
+        “{testimonial.quote}”
       </p>
 
       <div className="border-t border-gray-200 dark:border-gray-600 pt-4 mt-auto">
@@ -242,6 +242,30 @@ export interface CityPageTemplateProps {
 
 export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateProps) => {
   const { t, locale } = useTranslation();
+  const breadcrumbAriaLabel =
+    locale === 'fr'
+      ? 'Fil d Ariane'
+      : locale === 'zh'
+        ? '面包屑导航'
+        : locale === 'es'
+          ? 'Miga de pan'
+          : 'Breadcrumb';
+  const preparingCityGuideText =
+    locale === 'fr'
+      ? 'Preparation du guide de la ville...'
+      : locale === 'zh'
+        ? '正在准备城市指南...'
+        : locale === 'es'
+          ? 'Preparando guia de la ciudad...'
+          : 'Preparing City Guide...';
+  const loadingTipsPrefix =
+    locale === 'fr'
+      ? 'Chargement des meilleurs conseils anti-odeurs pour'
+      : locale === 'zh'
+        ? '正在加载适合以下城市的新鲜除味建议：'
+        : locale === 'es'
+          ? 'Cargando los mejores consejos de control de olor para'
+          : 'Loading the freshest odor control tips for';
 
   // Use initialProfile if provided (SSR), otherwise lookup (CSR fallback)
   const cityRecord = useMemo(() => {
@@ -386,9 +410,9 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 p-4 text-center">
         <div className="w-12 h-12 border-4 border-orange-200 dark:border-gray-700 border-t-orange-600 dark:border-t-orange-400 rounded-full animate-spin mb-4 mx-auto"></div>
-        <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">Preparing City Guide...</h2>
+        <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{preparingCityGuideText}</h2>
         <p className="text-gray-600 dark:text-gray-400 max-w-sm">
-          Loading the freshest odor control tips for <span className="font-semibold text-orange-600 dark:text-orange-400 capitalize">{citySlug}</span>.
+          {loadingTipsPrefix} <span className="font-semibold text-orange-600 dark:text-orange-400 capitalize">{citySlug}</span>.
         </p>
         <div className="mt-8 text-xs text-gray-400 dark:text-gray-500 uppercase tracking-widest">
           {locale === 'fr' ? 'Chargement en cours...' : 'Locating Purrify Resources...'}
@@ -464,7 +488,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
         {/* Visual Breadcrumb Navigation */}
         {breadcrumb && breadcrumb.items.length > 1 && (
           <nav
-            aria-label="Breadcrumb"
+            aria-label={breadcrumbAriaLabel}
             className="bg-white/50 dark:bg-gray-800/50 border-b border-orange-100 dark:border-gray-700"
           >
             <div className="max-w-6xl mx-auto px-4">

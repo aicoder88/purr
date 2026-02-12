@@ -147,7 +147,7 @@ function SuccessStoryCard({ icon, gradient, businessName, businessType, quote, m
 // ============================================================================
 
 export function RetailerContact() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const contact = t.retailers?.contact;
   const form = contact?.form;
   const success = contact?.success;
@@ -160,6 +160,30 @@ export function RetailerContact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>({});
   const [copyStatus, setCopyStatus] = useState<'idle' | 'copied' | 'failed'>('idle');
+  const uiCopy =
+    locale === 'fr'
+      ? {
+        partnerNetwork: 'Reseau de partenaires Purrify!',
+        copyWholesaleAria: "Copier l adresse e-mail de vente en gros",
+        copied: 'Copie!',
+      }
+      : locale === 'zh'
+        ? {
+          partnerNetwork: 'Purrify 合作伙伴网络！',
+          copyWholesaleAria: '复制批发邮箱地址',
+          copied: '已复制！',
+        }
+        : locale === 'es'
+          ? {
+            partnerNetwork: 'Red de socios de Purrify!',
+            copyWholesaleAria: 'Copiar direccion de correo mayorista',
+            copied: 'Copiado!',
+          }
+          : {
+            partnerNetwork: 'Purrify Partner Network!',
+            copyWholesaleAria: 'Copy wholesale email address',
+            copied: 'Copied!',
+          };
 
   // Build business types from translations
   const businessTypes = useMemo(() => [
@@ -310,7 +334,7 @@ export function RetailerContact() {
               🎉 {success?.title || 'Application Received!'}
             </h2>
             <p className="text-2xl text-gray-700 dark:text-gray-200 mb-8">
-              {success?.welcome || 'Welcome to the'} <strong className="text-[#5B2EFF] dark:text-[#3694FF]">Purrify Partner Network!</strong>
+              {success?.welcome || 'Welcome to the'} <strong className="text-[#5B2EFF] dark:text-[#3694FF]">{uiCopy.partnerNetwork}</strong>
               <br />{success?.responseTime || 'We will get back to you within 72 hours.'}
             </p>
 
@@ -676,14 +700,14 @@ export function RetailerContact() {
                           type="button"
                           onClick={handleCopyWholesaleEmail}
                           className="flex items-center gap-1 text-xs font-bold text-[#0F766E] dark:text-[#A7F3D0] hover:text-[#065F46] dark:hover:text-[#6EE7B7] transition-colors bg-white/50 dark:bg-black/20 px-2 py-1 rounded"
-                          aria-label="Copy wholesale email address"
+                          aria-label={uiCopy.copyWholesaleAria}
                         >
                           <span>📋</span>
                         </button>
                       </div>
                       <div className="text-gray-600 dark:text-gray-300 text-sm font-medium">{contactInfo?.emailLabel || 'Partnership Email'}</div>
                       {copyStatus === 'copied' && (
-                        <span className="text-xs font-bold text-green-600 dark:text-green-400 absolute right-4 top-4">Copied!</span>
+                        <span className="text-xs font-bold text-green-600 dark:text-green-400 absolute right-4 top-4">{uiCopy.copied}</span>
                       )}
                     </div>
                   </div>

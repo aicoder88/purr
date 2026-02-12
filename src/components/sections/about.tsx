@@ -9,6 +9,42 @@ import Image from 'next/image';
 
 export function About() {
   const { t, locale } = useTranslation();
+  const aboutUiCopy =
+    locale === 'fr'
+      ? {
+        discoverScience: 'Decouvrez la science',
+        behindOur: 'derriere notre',
+        activatedCarbonFormula: 'formule au charbon active',
+        granulesAlt: 'Granules de charbon active - elimination naturelle des odeurs',
+        poresAlt: 'Vue microscopique des pores du charbon actif',
+        happyCatAlt: 'Chat heureux dans un foyer frais et propre',
+      }
+      : locale === 'zh'
+        ? {
+          discoverScience: '探索其科学原理',
+          behindOur: '了解我们的',
+          activatedCarbonFormula: '活性炭配方',
+          granulesAlt: '活性炭颗粒 - 天然除味',
+          poresAlt: '活性炭孔隙的显微图',
+          happyCatAlt: '清新居家环境中的开心猫咪',
+        }
+        : locale === 'es'
+          ? {
+            discoverScience: 'Descubre la ciencia',
+            behindOur: 'detras de nuestra',
+            activatedCarbonFormula: 'formula de carbon activado',
+            granulesAlt: 'Granulos de carbon activado - eliminacion natural del olor',
+            poresAlt: 'Vista microscopica de poros de carbon activado',
+            happyCatAlt: 'Gato feliz en un hogar limpio y fresco',
+          }
+          : {
+            discoverScience: 'Discover the science',
+            behindOur: 'behind our',
+            activatedCarbonFormula: 'activated carbon formula',
+            granulesAlt: 'Activated carbon granules - natural odor elimination',
+            poresAlt: 'Microscopic view of activated carbon pores',
+            happyCatAlt: 'Happy cat in fresh, clean home environment',
+          };
   return (
     <section className="pt-20 pb-16 bg-gradient-to-b from-[#FFFFF5] to-background dark:from-gray-900 dark:to-gray-800 transition-colors duration-300" id="about">
       <Container>
@@ -34,7 +70,7 @@ export function About() {
           </div>
 
           <p className="text-3xl font-semibold text-foreground mb-6">
-            {t.features.catFriendly.description} <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`} className="text-[#FF3131] hover:text-[#FF3131]/80 underline font-medium">Discover the science</Link> behind our <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`} className="text-[#5B2EFF] hover:text-[#5B2EFF]/80 underline font-medium">activated carbon formula</Link>.
+            {t.features.catFriendly.description} <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`} className="text-[#FF3131] hover:text-[#FF3131]/80 underline font-medium">{aboutUiCopy.discoverScience}</Link> {aboutUiCopy.behindOur} <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`} className="text-[#5B2EFF] hover:text-[#5B2EFF]/80 underline font-medium">{aboutUiCopy.activatedCarbonFormula}</Link>.
           </p>
         </div>
 
@@ -44,7 +80,7 @@ export function About() {
               <div className="overflow-hidden rounded-xl shadow-lg">
                 <Image
                   src="/optimized/activated-carbon-granules-macro.webp"
-                  alt="Activated carbon granules - natural odor elimination"
+                  alt={aboutUiCopy.granulesAlt}
                   width={400}
                   height={300}
                   sizes="(max-width: 768px) 50vw, 200px"
@@ -55,7 +91,7 @@ export function About() {
               <div className="overflow-hidden rounded-xl shadow-lg">
                 <Image
                   src="/optimized/activated-carbon-macro-obsidian.webp"
-                  alt="Microscopic view of activated carbon pores"
+                  alt={aboutUiCopy.poresAlt}
                   width={400}
                   height={300}
                   sizes="(max-width: 768px) 50vw, 200px"
@@ -66,7 +102,7 @@ export function About() {
               <div className="overflow-hidden rounded-xl shadow-lg col-span-2">
                 <Image
                   src="/optimized/happy-cat-ghibli.webp"
-                  alt="Happy cat in fresh, clean home environment"
+                  alt={aboutUiCopy.happyCatAlt}
                   width={800}
                   height={400}
                   sizes="(max-width: 768px) 100vw, 400px"

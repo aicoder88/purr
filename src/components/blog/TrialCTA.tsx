@@ -26,6 +26,7 @@ export function TrialCTA({ className = '', variant = 'default' }: TrialCTAProps)
   const trialSizeText = t.nav?.trialSize || 'FREE Trial (Just Pay S&H)';
   const tryFreeText = t.nav?.tryFree || 'Try Free';
   const readMoreText = t.relatedArticles?.readMore || 'Learn more';
+  const trialImageAlt = t.products?.['purrify-12g']?.name || 'Purrify Trial Size';
   const limitedOfferText = 'Limited Time Offer';
   const trialDescription =
     'Experience the power of activated carbon odor control risk-free.';
@@ -67,7 +68,7 @@ export function TrialCTA({ className = '', variant = 'default' }: TrialCTAProps)
           <div className="relative w-16 h-16 flex-shrink-0">
             <Image
               src="/optimized/17g-transparent.webp"
-              alt="Purrify Trial Size"
+              alt={trialImageAlt}
               fill
               className="object-contain"
               sizes="64px"
@@ -110,7 +111,7 @@ export function TrialCTA({ className = '', variant = 'default' }: TrialCTAProps)
           <div className="relative w-32 h-32 md:w-40 md:h-40 flex-shrink-0">
             <Image
               src="/optimized/17g-transparent.webp"
-              alt="Purrify Trial Size"
+              alt={trialImageAlt}
               fill
               className="object-contain drop-shadow-lg"
               sizes="(max-width: 768px) 128px, 160px"

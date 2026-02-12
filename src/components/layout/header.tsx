@@ -42,6 +42,26 @@ export function Header() {
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
   const [expandedMobileSection, setExpandedMobileSection] = useState<string | null>(null);
   const { t, locale } = useTranslation();
+  const headerUiCopy =
+    locale === 'fr'
+      ? {
+        logoAlt: "Purrify - additif premium de charbon actif pour litiere - accueil",
+        signOutAria: 'Se deconnecter',
+      }
+      : locale === 'zh'
+        ? {
+          logoAlt: 'Purrify - 高端活性炭猫砂添加剂 - 首页',
+          signOutAria: '退出登录',
+        }
+        : locale === 'es'
+          ? {
+            logoAlt: 'Purrify - aditivo premium de carbon activado para arena - inicio',
+            signOutAria: 'Cerrar sesion',
+          }
+          : {
+            logoAlt: 'Purrify - Premium Activated Carbon Cat Litter Additive - Home',
+            signOutAria: 'Sign out',
+          };
   const localePrefix = locale === 'en' ? '' : `/${locale}`;
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -376,7 +396,7 @@ export function Header() {
             >
               <Image
                 src="/optimized/logo-light.webp"
-                alt="Purrify - Premium Activated Carbon Cat Litter Additive - Home"
+                alt={headerUiCopy.logoAlt}
                 width={120}
                 height={40}
                 priority
@@ -384,7 +404,7 @@ export function Header() {
               />
               <Image
                 src="/optimized/logo-dark.webp"
-                alt="Purrify - Premium Activated Carbon Cat Litter Additive - Home"
+                alt={headerUiCopy.logoAlt}
                 width={84}
                 height={40}
                 priority
@@ -517,7 +537,7 @@ export function Header() {
                 variant="ghost"
                 size="icon"
                 className="h-11 w-11 p-0"
-                aria-label="Sign out"
+                aria-label={headerUiCopy.signOutAria}
               >
                 <LogOut className="h-5 w-5" />
               </Button>

@@ -48,10 +48,85 @@ function generateFAQSchema(questions: { question: string; answer: string }[], lo
   };
 }
 
+type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
+
+const FAQ_UI_COPY: Record<SupportedLocale, {
+  breadcrumbAriaLabel: string;
+  lastUpdatedLabel: string;
+  heroImageAlt: string;
+  curiousCatImageAlt: string;
+  curiousCatTitle: string;
+  curiousCatSubtitle: string;
+  supportTeamImageAlt: string;
+  supportTeamTitle: string;
+  supportTeamSubtitle: string;
+  happyOwnerImageAlt: string;
+  happyOwnerTitle: string;
+  happyOwnerSubtitle: string;
+}> = {
+  en: {
+    breadcrumbAriaLabel: 'Breadcrumb',
+    lastUpdatedLabel: 'Last updated:',
+    heroImageAlt: 'Cat owner researching Purrify product information and frequently asked questions',
+    curiousCatImageAlt: 'Curious cat looking up with questions about Purrify cat litter additive',
+    curiousCatTitle: 'Even Your Cat Has Questions',
+    curiousCatSubtitle: "Let's find the answers together",
+    supportTeamImageAlt: 'Friendly customer service support team ready to help with Purrify questions',
+    supportTeamTitle: 'Expert Support Team',
+    supportTeamSubtitle: 'Ready to answer your questions',
+    happyOwnerImageAlt: 'Happy cat owner enjoying odor-free home with Purrify activated carbon additive',
+    happyOwnerTitle: 'Join Thousands of Happy Cat Owners',
+    happyOwnerSubtitle: 'Experience the Purrify difference today',
+  },
+  fr: {
+    breadcrumbAriaLabel: "Fil d'Ariane",
+    lastUpdatedLabel: 'Derniere mise a jour :',
+    heroImageAlt: 'Proprietaire de chat consultant les informations produit et la FAQ Purrify',
+    curiousCatImageAlt: 'Chat curieux avec des questions sur ladditif de litiere Purrify',
+    curiousCatTitle: 'Votre chat a aussi des questions',
+    curiousCatSubtitle: 'Trouvons les reponses ensemble',
+    supportTeamImageAlt: 'Equipe de support prete a aider pour les questions Purrify',
+    supportTeamTitle: 'Equipe support experte',
+    supportTeamSubtitle: 'Prete a repondre a vos questions',
+    happyOwnerImageAlt: 'Proprietaire de chat profitant dun foyer sans odeur avec Purrify',
+    happyOwnerTitle: 'Rejoignez des milliers de proprietaires satisfaits',
+    happyOwnerSubtitle: 'Decouvrez la difference Purrify des aujourd hui',
+  },
+  zh: {
+    breadcrumbAriaLabel: '面包屑导航',
+    lastUpdatedLabel: '最近更新：',
+    heroImageAlt: '猫主人正在查看 Purrify 产品信息与常见问题',
+    curiousCatImageAlt: '好奇猫咪正在了解 Purrify 猫砂添加剂问题',
+    curiousCatTitle: '连猫咪也有问题',
+    curiousCatSubtitle: '我们一起来找到答案',
+    supportTeamImageAlt: '友好的客服团队随时解答 Purrify 相关问题',
+    supportTeamTitle: '专业支持团队',
+    supportTeamSubtitle: '随时为你答疑',
+    happyOwnerImageAlt: '猫主人在使用 Purrify 后享受无异味居家环境',
+    happyOwnerTitle: '加入成千上万满意猫主人',
+    happyOwnerSubtitle: '立即体验 Purrify 的不同',
+  },
+  es: {
+    breadcrumbAriaLabel: 'Miga de pan',
+    lastUpdatedLabel: 'Ultima actualizacion:',
+    heroImageAlt: 'Dueno de gato revisando informacion de Purrify y preguntas frecuentes',
+    curiousCatImageAlt: 'Gato curioso con preguntas sobre el aditivo Purrify para arena',
+    curiousCatTitle: 'Hasta tu gato tiene preguntas',
+    curiousCatSubtitle: 'Encontremos respuestas juntos',
+    supportTeamImageAlt: 'Equipo de soporte listo para ayudar con preguntas sobre Purrify',
+    supportTeamTitle: 'Equipo de soporte experto',
+    supportTeamSubtitle: 'Listo para responder tus preguntas',
+    happyOwnerImageAlt: 'Dueno de gato feliz disfrutando un hogar sin olores con Purrify',
+    happyOwnerTitle: 'Unete a miles de duenos felices',
+    happyOwnerSubtitle: 'Vive hoy la diferencia Purrify',
+  },
+};
+
 export default function FAQPageClient() {
   const { t, locale } = useTranslation();
   const { currency } = useCurrency();
   const localePrefix = locale === 'en' ? '' : `/${locale}`;
+  const uiCopy = FAQ_UI_COPY[locale as SupportedLocale] || FAQ_UI_COPY.en;
   const faqPage = t.faqPage;
   const trialPrice = formatProductPrice('trial', currency, locale);
   const trialCheckoutUrl = getPaymentLink('trialSingle') || '/products/trial-size';
@@ -189,7 +264,7 @@ export default function FAQPageClient() {
         {/* Breadcrumb Navigation */}
         <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
           <Container>
-            <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
+            <nav aria-label={uiCopy.breadcrumbAriaLabel} className="flex items-center space-x-2 text-sm">
               <Link
                 href={localePrefix || '/'}
                 className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
@@ -229,7 +304,7 @@ export default function FAQPageClient() {
                 {faqPage?.subtitle || 'Everything you need to know about Purrify'}
               </p>
               <p className="text-sm mb-8 opacity-75">
-                Last updated: {new Date(lastUpdated).toLocaleDateString(
+                {uiCopy.lastUpdatedLabel} {new Date(lastUpdated).toLocaleDateString(
                   locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : locale === 'es' ? 'es-ES' : 'en-US',
                   { year: 'numeric', month: 'long', day: 'numeric' },
                 )}
@@ -256,7 +331,7 @@ export default function FAQPageClient() {
             <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
               <Image
                 src={heroImage}
-                alt="Cat owner researching Purrify product information and frequently asked questions"
+                alt={uiCopy.heroImageAlt}
                 width={1600}
                 height={1067}
                 className="w-full h-auto"
@@ -304,15 +379,15 @@ export default function FAQPageClient() {
             <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
               <Image
                 src={sectionImage1}
-                alt="Curious cat looking up with questions about Purrify cat litter additive"
+                alt={uiCopy.curiousCatImageAlt}
                 width={1600}
                 height={1067}
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8 text-white dark:text-gray-100">
-                  <h3 className="text-2xl font-heading font-bold mb-2">Even Your Cat Has Questions</h3>
-                  <p className="text-lg opacity-90">Let&apos;s find the answers together</p>
+                  <h3 className="text-2xl font-heading font-bold mb-2">{uiCopy.curiousCatTitle}</h3>
+                  <p className="text-lg opacity-90">{uiCopy.curiousCatSubtitle}</p>
                 </div>
               </div>
             </div>
@@ -445,15 +520,15 @@ export default function FAQPageClient() {
             <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
               <Image
                 src={sectionImage2}
-                alt="Friendly customer service support team ready to help with Purrify questions"
+                alt={uiCopy.supportTeamImageAlt}
                 width={1600}
                 height={1067}
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8 text-white dark:text-gray-100">
-                  <h3 className="text-2xl font-heading font-bold mb-2">Expert Support Team</h3>
-                  <p className="text-lg opacity-90">Ready to answer your questions</p>
+                  <h3 className="text-2xl font-heading font-bold mb-2">{uiCopy.supportTeamTitle}</h3>
+                  <p className="text-lg opacity-90">{uiCopy.supportTeamSubtitle}</p>
                 </div>
               </div>
             </div>
@@ -519,15 +594,15 @@ export default function FAQPageClient() {
             <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
               <Image
                 src={solutionImage}
-                alt="Happy cat owner enjoying odor-free home with Purrify activated carbon additive"
+                alt={uiCopy.happyOwnerImageAlt}
                 width={1600}
                 height={1067}
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8 text-white dark:text-gray-100">
-                  <h3 className="text-2xl font-heading font-bold mb-2">Join Thousands of Happy Cat Owners</h3>
-                  <p className="text-lg opacity-90">Experience the Purrify difference today</p>
+                  <h3 className="text-2xl font-heading font-bold mb-2">{uiCopy.happyOwnerTitle}</h3>
+                  <p className="text-lg opacity-90">{uiCopy.happyOwnerSubtitle}</p>
                 </div>
               </div>
             </div>

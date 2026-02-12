@@ -19,13 +19,29 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
   items,
   className = "py-4 border-b border-[#E0EFC7] dark:border-gray-800"
 }) => {
-  const { locale } = useTranslation();
+  const { locale, t } = useTranslation();
   const homeHref = locale === 'en' ? '/' : `/${locale}`;
+  const breadcrumbLabel =
+    locale === 'fr'
+      ? 'Fil d Ariane'
+      : locale === 'zh'
+        ? '面包屑导航'
+        : locale === 'es'
+          ? 'Miga de pan'
+          : 'Breadcrumb';
+  const homeAriaLabel =
+    locale === 'fr'
+      ? 'Accueil'
+      : locale === 'zh'
+        ? '首页'
+        : locale === 'es'
+          ? 'Inicio'
+          : 'Home';
   const baseUrl = 'https://www.purrify.ca';
 
   // Generate breadcrumb structured data
   const breadcrumbItems = [
-    { name: 'Home', url: `${baseUrl}${homeHref}` },
+    { name: t.nav?.home || 'Home', url: `${baseUrl}${homeHref}` },
     ...items
       .filter(item => item.href) // Only include items with hrefs
       .map(item => ({
@@ -57,10 +73,10 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
         <Container>
           <nav
             className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400"
-            aria-label="Breadcrumb"
+            aria-label={breadcrumbLabel}
           >
             <Link href={homeHref} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
-              <Home className="w-4 h-4" aria-label="Home" />
+              <Home className="w-4 h-4" aria-label={homeAriaLabel} />
             </Link>
             {items.map((item, index) => (
               <span key={index} className="flex items-center space-x-2">

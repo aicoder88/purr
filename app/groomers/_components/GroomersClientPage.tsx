@@ -26,6 +26,16 @@ import { formatProductPrice } from '@/lib/pricing';
 
 export default function GroomersClientPage() {
   const { t, locale } = useTranslation();
+  const partnerEmail = 'partners@purrify.ca';
+  const breadcrumbAriaLabel =
+    locale === 'fr'
+      ? 'Fil d Ariane'
+      : locale === 'zh'
+        ? '面包屑导航'
+        : locale === 'es'
+          ? 'Miga de pan'
+          : 'Breadcrumb';
+  const homeLabel = t.nav?.home || 'Home';
   const [formSubmitted, setFormSubmitted] = useState(false);
   const handleFormSubmit = useCallback(() => setFormSubmitted(true), []);
 
@@ -162,7 +172,7 @@ export default function GroomersClientPage() {
     <main className="min-h-screen bg-white dark:bg-gray-900">
       {/* Breadcrumb Navigation */}
       <nav
-        aria-label="Breadcrumb"
+        aria-label={breadcrumbAriaLabel}
         className="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-700"
       >
         <div className="max-w-7xl mx-auto px-4 py-3">
@@ -173,7 +183,7 @@ export default function GroomersClientPage() {
                 className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
               >
                 <Home className="h-4 w-4" />
-                <span className="sr-only">Home</span>
+                <span className="sr-only">{homeLabel}</span>
               </Link>
             </li>
             <li className="flex items-center">
@@ -492,7 +502,7 @@ export default function GroomersClientPage() {
                   </div>
                 </div>
                 <p className="text-gray-700 dark:text-gray-300 italic mb-4">
-                  &ldquo;{testimonial.quote}&rdquo;
+                  “{testimonial.quote}”
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex text-yellow-400 dark:text-yellow-300">
@@ -683,11 +693,11 @@ export default function GroomersClientPage() {
                 <div className="space-y-4">
                   <div className="flex flex-wrap justify-center gap-4">
                     <a
-                      href="mailto:partners@purrify.ca"
+                      href={`mailto:${partnerEmail}`}
                       className="inline-flex items-center gap-2 text-purple-600 dark:text-purple-400 hover:underline"
                     >
                       <Mail className="h-4 w-4" />
-                      partners@purrify.ca
+                      {partnerEmail}
                     </a>
                     <a
                       href={CONTACT_INFO.phoneHref}
@@ -802,8 +812,8 @@ export default function GroomersClientPage() {
               <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                 {groomers.contact.emailUs}
               </h4>
-              <a href="mailto:partners@purrify.ca" className="text-purple-600 dark:text-purple-400 hover:underline">
-                partners@purrify.ca
+              <a href={`mailto:${partnerEmail}`} className="text-purple-600 dark:text-purple-400 hover:underline">
+                {partnerEmail}
               </a>
             </div>
 
@@ -812,7 +822,7 @@ export default function GroomersClientPage() {
               <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                 {groomers.contact.moreInfo}
               </h4>
-              <a href="mailto:partners@purrify.ca" className="text-purple-600 dark:text-purple-400 hover:underline text-sm">
+              <a href={`mailto:${partnerEmail}`} className="text-purple-600 dark:text-purple-400 hover:underline text-sm">
                 {groomers.contact.requestGuide}
               </a>
             </div>

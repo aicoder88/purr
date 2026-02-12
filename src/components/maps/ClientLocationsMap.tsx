@@ -29,11 +29,19 @@ export const ClientLocationsMap: React.FC<ClientLocationsMapProps> = ({
   headerTitle,
   headerDescription,
 }) => {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const [isLoading, setIsLoading] = React.useState(true);
   const [activeCity, setActiveCity] = React.useState<
     keyof typeof CITY_COORDINATES | null
   >(null);
+  const loadingMapText =
+    locale === 'fr'
+      ? 'Chargement de la carte...'
+      : locale === 'zh'
+        ? '地图加载中...'
+        : locale === 'es'
+          ? 'Cargando mapa...'
+          : 'Loading Map...';
 
   const title =
     headerTitle ||
@@ -103,7 +111,7 @@ export const ClientLocationsMap: React.FC<ClientLocationsMapProps> = ({
                   ></path>
                 </svg>
                 <p className="text-gray-500 dark:text-gray-300 font-medium">
-                  Loading Map...
+                  {loadingMapText}
                 </p>
               </div>
             </div>

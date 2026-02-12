@@ -18,6 +18,7 @@ import {
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/lib/translation-context';
+import { CONTACT_INFO } from '@/lib/constants';
 
 interface OrderDetails {
   customerEmail?: string;
@@ -37,8 +38,16 @@ interface ThankYouClientProps {
 }
 
 export default function ThankYouClient({ orderDetails, error, sessionId }: ThankYouClientProps) {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const thankYou = t.thankYou!;
+  const anytimeLabel =
+    locale === 'fr'
+      ? 'Nimporte quand'
+      : locale === 'zh'
+        ? '随时'
+        : locale === 'es'
+          ? 'En cualquier momento'
+          : 'Anytime';
   const formattedAmount = orderDetails?.amount ? (orderDetails.amount / 100).toFixed(2) : null;
   const [referralCode, setReferralCode] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
@@ -401,7 +410,7 @@ export default function ThankYouClient({ orderDetails, error, sessionId }: Thank
               <p className="text-sm text-gray-600 dark:text-gray-400">{thankYou.autoshipCta.shipping}</p>
             </div>
             <div className="text-center p-4 bg-gray-50 dark:bg-gray-900 rounded-xl">
-              <p className="text-2xl font-bold text-[#03E46A]">Anytime</p>
+              <p className="text-2xl font-bold text-[#03E46A]">{anytimeLabel}</p>
               <p className="text-sm text-gray-600 dark:text-gray-400">{thankYou.autoshipCta.cancel}</p>
             </div>
           </div>
@@ -421,11 +430,11 @@ export default function ThankYouClient({ orderDetails, error, sessionId }: Thank
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="mailto:support@purrify.ca"
+            href={`mailto:${CONTACT_INFO.email}`}
             className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-lg text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
           >
             <Mail className="w-5 h-5 mr-2" />
-            support@purrify.ca
+            {CONTACT_INFO.email}
           </a>
           <Link
             href="/"

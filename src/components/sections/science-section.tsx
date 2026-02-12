@@ -91,7 +91,7 @@ export function ScienceSection() {
                             <div className="relative rounded-[2rem] overflow-hidden aspect-square bg-gray-100 dark:bg-gray-900">
                                 <Image
                                     src="/optimized/Carbon-sktech.webp"
-                                    alt="Activated Carbon Mechanism"
+                                    alt={t.homepage?.altText?.scientificDiagram || 'Activated Carbon Mechanism'}
                                     fill
                                     className="object-cover"
                                     sizes="(max-width: 768px) 100vw, 600px"

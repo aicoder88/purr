@@ -11,11 +11,29 @@ import { ChevronRight, Home } from 'lucide-react';
 
 export default function CatCafesClientPage() {
   const { t, locale } = useTranslation();
+  const wholesaleEmail = 'wholesale@purrify.ca';
+  const breadcrumbAriaLabel =
+    locale === 'fr'
+      ? 'Fil d Ariane'
+      : locale === 'zh'
+        ? '面包屑导航'
+        : locale === 'es'
+          ? 'Miga de pan'
+          : 'Breadcrumb';
+  const homeLabel = t.nav?.home || 'Home';
+  const catCafesLabel =
+    locale === 'fr'
+      ? 'Cafes a chats'
+      : locale === 'zh'
+        ? '猫咖'
+        : locale === 'es'
+          ? 'Cafes de gatos'
+          : 'Cat Cafes';
 
   // Breadcrumb items
   const breadcrumbItems = [
-    { name: 'Home', path: '/' },
-    { name: 'Cat Cafes', path: '/cat-cafes' },
+    { name: homeLabel, path: locale === 'en' ? '/' : `/${locale}` },
+    { name: catCafesLabel, path: `${locale === 'en' ? '' : `/${locale}`}/cat-cafes` },
   ];
 
   return (
@@ -23,7 +41,7 @@ export default function CatCafesClientPage() {
       {/* Breadcrumb Navigation */}
       <div className="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-700">
         <Container>
-          <nav aria-label="Breadcrumb" className="py-3">
+          <nav aria-label={breadcrumbAriaLabel} className="py-3">
             <ol className="flex items-center space-x-2 text-sm">
               {breadcrumbItems.map((item, index) => {
                 const isLast = index === breadcrumbItems.length - 1;
@@ -408,7 +426,7 @@ export default function CatCafesClientPage() {
                   {t.catCafes?.contact?.formTitle || 'Get Started Today'}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  {t.catCafes?.contact?.formSubtitle || 'Fill out the form below or contact us directly at wholesale@purrify.ca'}
+                  {t.catCafes?.contact?.formSubtitle || `Fill out the form below or contact us directly at ${wholesaleEmail}`}
                 </p>
               </div>
 
@@ -418,7 +436,7 @@ export default function CatCafesClientPage() {
                     <svg className="w-8 h-8 text-[#5B2EFF] dark:text-[#3694FF] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    <span className="font-black text-xl text-gray-900 dark:text-gray-50">wholesale@purrify.ca</span>
+                    <span className="font-black text-xl text-gray-900 dark:text-gray-50">{wholesaleEmail}</span>
                   </div>
                   <p className="text-center text-gray-700 dark:text-gray-300">
                     {t.catCafes?.contact?.emailPrompt || 'Email us with your cafe name, location, and number of cats. We\'ll respond within 24 hours with a custom quote.'}

@@ -39,8 +39,16 @@ export function ReferralWidget({
   className = '',
   compact = false,
 }: ReferralWidgetProps) {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const [copied, setCopied] = useState<'code' | 'url' | null>(null);
+  const shareLabels =
+    locale === 'fr'
+      ? { whatsapp: 'WhatsApp', facebook: 'Facebook' }
+      : locale === 'zh'
+        ? { whatsapp: 'WhatsApp', facebook: 'Facebook' }
+        : locale === 'es'
+          ? { whatsapp: 'WhatsApp', facebook: 'Facebook' }
+          : { whatsapp: 'WhatsApp', facebook: 'Facebook' };
 
   const copyToClipboard = useCallback(async (text: string, type: 'code' | 'url') => {
     try {
@@ -202,7 +210,7 @@ export function ReferralWidget({
               className="flex flex-col items-center gap-1 h-auto py-3 border-gray-200 dark:border-gray-700 text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-900/20"
             >
               <WhatsAppIcon className="h-5 w-5" />
-              <span className="text-xs">WhatsApp</span>
+              <span className="text-xs">{shareLabels.whatsapp}</span>
             </Button>
 
             {/* Facebook */}
@@ -212,7 +220,7 @@ export function ReferralWidget({
               className="flex flex-col items-center gap-1 h-auto py-3 border-gray-200 dark:border-gray-700 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20"
             >
               <FacebookIcon className="h-5 w-5" />
-              <span className="text-xs">Facebook</span>
+              <span className="text-xs">{shareLabels.facebook}</span>
             </Button>
 
             {/* Twitter/X */}

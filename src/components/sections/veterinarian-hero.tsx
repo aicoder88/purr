@@ -58,7 +58,7 @@ export function VeterinarianHero() {
                   </div>
                 </div>
                 <div className="text-center p-4 bg-white dark:bg-gray-900/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
-                  <div className="text-3xl font-black text-[#3694FF] dark:text-[#60A5FA]">Zero</div>
+                  <div className="text-3xl font-black text-[#3694FF] dark:text-[#60A5FA]">0</div>
                   <div className="text-sm font-semibold text-gray-600 dark:text-gray-300">
                     {t.veterinarians?.hero?.stats?.chemicals || 'Chemicals'}
                   </div>

@@ -26,13 +26,21 @@ export function LandingHero({
   image,
   imageAlt = '',
 }: LandingHeroProps) {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
+  const breadcrumbAriaLabel =
+    locale === 'fr'
+      ? 'Fil d Ariane'
+      : locale === 'zh'
+        ? '面包屑导航'
+        : locale === 'es'
+          ? 'Miga de pan'
+          : 'Breadcrumb';
 
   return (
     <section className="bg-white dark:bg-gray-900 py-12 lg:py-20">
       <Container>
         {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="mb-8">
+        <nav aria-label={breadcrumbAriaLabel} className="mb-8">
           <ol className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
             <li>
               <Link
