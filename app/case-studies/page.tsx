@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     url: 'https://www.purrify.ca/case-studies/',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/three_bags_no_bg.webp/',
+        url: 'https://www.purrify.ca/optimized/three_bags_no_bg.webp',
         width: 1200,
         height: 630,
         alt: 'Purrify Customer Success Stories',

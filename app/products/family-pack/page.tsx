@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/140g-640w.avif/',
+        url: 'https://www.purrify.ca/optimized/140g-640w.avif',
         width: 1200,
         height: 1200,
         alt: 'Purrify 240g Family Pack',

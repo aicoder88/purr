@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
+        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
         width: 1200,
         height: 800,
         alt: `${SITE_NAME} Referral Program`,

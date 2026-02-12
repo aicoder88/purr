@@ -132,7 +132,13 @@ export default function HowActivatedCarbonWorksClient() {
                     While activated carbon can be made from various carbon-rich materials, the source material significantly impacts the final pore structure and effectiveness.
                   </p>
                 </div>
-                <img src="/optimized/coconut-shell-natural.webp" alt="Natural coconut shells used for activated carbon" className="w-full rounded-lg shadow-md" loading="lazy" />
+                <Image
+                  src="/optimized/coconut-shell-natural.webp"
+                  alt="Natural coconut shells used for activated carbon"
+                  width={800}
+                  height={533}
+                  className="w-full rounded-lg shadow-md h-auto"
+                />
               </div>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="flex items-start gap-3">
@@ -183,7 +189,13 @@ export default function HowActivatedCarbonWorksClient() {
               icon="science"
               variant="default"
             />
-            <img src="/optimized/molecular-adsorption-science.webp" alt="Diagram showing adsorption vs absorption" className="w-full rounded-xl shadow-lg" loading="lazy" />
+            <Image
+              src="/optimized/molecular-adsorption-science.webp"
+              alt="Diagram showing adsorption vs absorption"
+              width={800}
+              height={533}
+              className="w-full rounded-xl shadow-lg h-auto"
+            />
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mt-8">
@@ -256,7 +268,13 @@ export default function HowActivatedCarbonWorksClient() {
               Activated carbon&apos;s effectiveness depends entirely on its pore structure. During activation, three types
               of pores are created, each serving different purposes. It's this complex network that gives carbon its massive surface area.
             </p>
-            <img src="/optimized/micropores-magnified-view.webp" alt="Magnified view of activated carbon pore structure" className="w-full rounded-xl shadow-lg border border-gray-200 dark:border-gray-700" loading="lazy" />
+            <Image
+              src="/optimized/micropores-magnified-view.webp"
+              alt="Magnified view of activated carbon pore structure"
+              width={800}
+              height={533}
+              className="w-full rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 h-auto"
+            />
           </div>
 
           <div className="space-y-6 mb-8">

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     images: [
       {
-        url: 'https://www.purrify.ca/images/us/realistic-modern-living.webp/',
+        url: 'https://www.purrify.ca/images/us/realistic-modern-living.webp',
         width: 1200,
         height: 800,
         alt: 'Purrify USA - Coming Q1 2026',

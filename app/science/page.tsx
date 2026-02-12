@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     modifiedTime: new Date().toISOString(),
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/science-hub-og.jpg/',
+        url: 'https://www.purrify.ca/optimized/science-hub-og.jpg',
         width: 1200,
         height: 630,
         alt: 'The Science Behind Purrify',
@@ -99,7 +99,7 @@ export default function SciencePage() {
       name: 'Purrify',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.purrify.ca/optimized/purrify-logo.avif/',
+        url: 'https://www.purrify.ca/optimized/purrify-logo.avif',
       },
     },
     mainEntityOfPage: {

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/17gpink.webp/',
+        url: 'https://www.purrify.ca/optimized/17gpink.webp',
         width: 1200,
         height: 800,
         alt: 'FREE Purrify Trial | Just Pay Shipping | Eliminates Odors',

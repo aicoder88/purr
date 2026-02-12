@@ -290,11 +290,13 @@ export default async function LocalizedBlogIndexPage({
           <Container>
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+                {locale === 'en' && 'Purrify Blog'}
                 {locale === 'fr' && 'Blog Purrify'}
                 {locale === 'es' && 'Blog Purrify'}
                 {locale === 'zh' && 'Purrify 博客'}
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                {locale === 'en' && 'Expert tips on cat care, litter odor control, and a healthier home.'}
                 {locale === 'fr' && 'Conseils d\'experts sur les soins pour chats, le contrôle des odeurs de litière et plus encore.'}
                 {locale === 'es' && 'Consejos expertos sobre el cuidado de gatos, control de olores de arena y más.'}
                 {locale === 'zh' && '关于猫咪护理、猫砂除臭等方面的专家建议。'}

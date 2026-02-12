@@ -69,7 +69,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
+      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
       width: 400,
       height: 400,
     },

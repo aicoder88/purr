@@ -63,11 +63,9 @@ const CACHE_HEADER_CONFIGS = [
   ["/robots.txt", "public, max-age=86400"],
   [
     "/api/(.*)",
-    "public, max-age=300, s-maxage=600",
-    [{ key: "Vary", value: "Accept-Encoding, Accept-Language" }],
+    "private, no-store",
+    [{ key: "Vary", value: "Authorization, Cookie, Accept-Encoding, Accept-Language" }],
   ],
-  ["/api/products", "public, max-age=3600, s-maxage=7200"],
-  ["/api/testimonials", "public, max-age=1800, s-maxage=3600"],
   [
     "/fonts/(.*)",
     "public, max-age=31536000, immutable",

@@ -44,30 +44,6 @@ function useSuppressThirdPartyErrors() {
 }
 
 /**
- * Cleanup any stale service workers that may be causing cache issues.
- * This runs once on app load to ensure old SW caches don't persist.
- */
-function useServiceWorkerCleanup() {
-    useEffect(() => {
-        if (typeof globalThis.window !== 'undefined' && 'serviceWorker' in navigator) {
-            navigator.serviceWorker.getRegistrations().then((registrations) => {
-                for (const registration of registrations) {
-                    registration.unregister();
-                }
-            });
-            // Also clear caches that service workers may have created
-            if ('caches' in window) {
-                caches.keys().then((cacheNames) => {
-                    cacheNames.forEach((cacheName) => {
-                        caches.delete(cacheName);
-                    });
-                });
-            }
-        }
-    }, []);
-}
-
-/**
  * Capture UTM parameters from URL on initial page load.
  * Stores attribution data for ad spend optimization tracking.
  */
@@ -78,7 +54,6 @@ function useUTMCapture() {
 }
 
 export function ClientLogic() {
-    useServiceWorkerCleanup();
     useSuppressThirdPartyErrors();
     useUTMCapture();
 

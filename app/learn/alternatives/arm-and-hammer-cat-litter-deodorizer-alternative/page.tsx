@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/activated-carbon-vs-baking-soda-comparison.webp/',
+        url: 'https://www.purrify.ca/optimized/activated-carbon-vs-baking-soda-comparison.webp',
         width: 1200,
         height: 630,
         alt: 'Arm & Hammer cat litter deodorizer alternative - activated carbon comparison',
@@ -71,7 +71,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
+      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
       width: 400,
       height: 400,
     },

@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/ammonia-hero.webp/',
+        url: 'https://www.purrify.ca/images/ammonia-hero.webp',
         width: 1200,
         height: 675,
         alt: 'Cat litter odor solutions guide',

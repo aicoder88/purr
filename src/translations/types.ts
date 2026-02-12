@@ -692,6 +692,8 @@ export interface TranslationType {
     about: string;
     blog: string;
     locations: string;
+    allLocations?: string;
+    canada?: string;
     stockists: string;
     testimonials: string;
     retailers: string;

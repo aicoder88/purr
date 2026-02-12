@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/micropores_magnified_view.webp/',
+        url: 'https://www.purrify.ca/optimized/micropores_magnified_view.webp',
         width: 1200,
         height: 800,
         alt: 'How Purrify Works - Activated Carbon Science',
@@ -66,7 +66,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
+      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
       width: 400,
       height: 400,
     },

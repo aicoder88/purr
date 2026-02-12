@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/cat-litter-usage-ghibli-828w.webp/',
+        url: 'https://www.purrify.ca/optimized/cat-litter-usage-ghibli-828w.webp',
         width: 1200,
         height: 800,
         alt: 'How to use cat litter deodorizer - step by step guide',
@@ -62,7 +62,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
+      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
       width: 400,
       height: 400,
     },

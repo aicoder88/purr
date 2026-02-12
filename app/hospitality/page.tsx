@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
+        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
         width: 1200,
         height: 800,
         alt: `${SITE_NAME} for Hospitality`,
@@ -54,7 +54,7 @@ const organizationSchema = {
   url: 'https://www.purrify.ca',
   logo: {
     '@type': 'ImageObject',
-    url: 'https://www.purrify.ca/images/purrify-logo.png/',
+    url: 'https://www.purrify.ca/images/purrify-logo.png',
     width: 400,
     height: 400,
   },

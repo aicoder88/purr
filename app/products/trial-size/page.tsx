@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/17g-transparent-v2.webp/',
+        url: 'https://www.purrify.ca/optimized/17g-transparent-v2.webp',
         width: 1200,
         height: 1200,
         alt: 'Purrify 12g Trial Size',

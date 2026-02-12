@@ -1,15 +1,16 @@
 /**
  * Next.js 16 Proxy Configuration
- * Combines admin authentication, GEO (Generative Engine Optimization), 
- * i18n (next-intl), security, and performance middleware
+ * Combines admin authentication, GEO (Generative Engine Optimization),
+ * locale preference handling, and security middleware.
  */
 
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 import { isAICrawler, getAICrawlerName } from './src/lib/ai-user-agents';
-import createIntlMiddleware from 'next-intl/middleware';
-import { locales, defaultLocale } from './src/i18n/config';
+import { defaultLocale, isValidLocale, type Locale } from './src/i18n/config';
+
+const LOCALE_COOKIE_NAME = 'NEXT_LOCALE';
 
 // Define paths that should bypass middleware
 const PUBLIC_PATHS = [
@@ -26,38 +27,6 @@ const PUBLIC_PATHS = [
   '/manifest.json',
 ];
 
-// Define paths that should bypass i18n (API routes, etc.)
-const I18N_SKIP_PATHS = [
-  '/api/',
-  '/_next/',
-  '/static/',
-  '/favicon.ico',
-  '/robots.txt',
-  '/sitemap',
-];
-
-/**
- * Check if a path should bypass middleware processing
- */
-function isPublicPath(pathname: string): boolean {
-  return PUBLIC_PATHS.some((path) => pathname.startsWith(path));
-}
-
-/**
- * Check if a path should skip i18n middleware
- */
-function shouldSkipI18n(pathname: string): boolean {
-  return I18N_SKIP_PATHS.some((path) => pathname.startsWith(path));
-}
-
-// Create next-intl middleware
-const intlMiddleware = createIntlMiddleware({
-  locales,
-  defaultLocale,
-  localePrefix: 'as-needed',
-  localeDetection: true,
-});
-
 // Countries to block
 const BLOCKED_COUNTRIES = ['SG']; // Singapore
 
@@ -67,29 +36,100 @@ const BLOCKED_USER_AGENTS = [
   'DataForSeoBot', 'BLEXBot', 'YandexBot', 'BaiduSpider',
 ];
 
+function isPublicPath(pathname: string): boolean {
+  return PUBLIC_PATHS.some((path) => pathname.startsWith(path));
+}
+
+function applySecurityHeaders(response: NextResponse): void {
+  response.headers.set('X-DNS-Prefetch-Control', 'on');
+  response.headers.set('X-Frame-Options', 'SAMEORIGIN');
+  response.headers.set('X-Content-Type-Options', 'nosniff');
+  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+
+  if (process.env.NODE_ENV === 'development') {
+    response.headers.set('X-GEO-Ready', 'true');
+  }
+}
+
+function getLocaleFromAcceptLanguage(header: string | null): Locale {
+  if (!header) return defaultLocale;
+
+  const normalized = header.toLowerCase();
+
+  if (normalized.includes('fr')) return 'fr';
+  if (normalized.includes('zh')) return 'zh';
+  if (normalized.includes('es')) return 'es';
+
+  return defaultLocale;
+}
+
+function getPathLocale(pathname: string): Locale | null {
+  const segment = pathname.split('/')[1];
+  return isValidLocale(segment) ? segment : null;
+}
+
+function getPathWithoutLocale(pathname: string): string {
+  const parts = pathname.split('/').filter(Boolean);
+  if (parts.length === 0) {
+    return '/';
+  }
+
+  if (isValidLocale(parts[0])) {
+    const remaining = parts.slice(1);
+    if (remaining.length === 0) {
+      return '/';
+    }
+
+    return `/${remaining.join('/')}${pathname.endsWith('/') ? '/' : ''}`;
+  }
+
+  return pathname;
+}
+
+// Only these routes are explicitly implemented under /[locale]/...
+function supportsLocalePrefix(pathWithoutLocale: string): boolean {
+  if (pathWithoutLocale === '/') return true;
+  return pathWithoutLocale === '/blog' || pathWithoutLocale === '/blog/' || pathWithoutLocale.startsWith('/blog/');
+}
+
+function resolveLocale(request: NextRequest, pathLocale: Locale | null): Locale {
+  if (pathLocale) return pathLocale;
+
+  const cookieLocale = request.cookies.get(LOCALE_COOKIE_NAME)?.value;
+  if (cookieLocale && isValidLocale(cookieLocale)) {
+    return cookieLocale;
+  }
+
+  return getLocaleFromAcceptLanguage(request.headers.get('accept-language'));
+}
+
+function buildRequestHeaders(request: NextRequest, locale: Locale): Headers {
+  const headers = new Headers(request.headers);
+  headers.set('x-purrify-locale', locale);
+  return headers;
+}
+
+function persistLocale(response: NextResponse, locale: Locale): void {
+  response.cookies.set(LOCALE_COOKIE_NAME, locale, {
+    path: '/',
+    maxAge: 60 * 60 * 24 * 365,
+    sameSite: 'strict',
+    secure: process.env.NODE_ENV === 'production',
+  });
+}
+
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const userAgent = request.headers.get('user-agent') || '';
+
   // @ts-expect-error - geo is added by Vercel edge runtime
   const country = request.geo?.country || request.headers.get('cf-ipcountry') || 'unknown';
 
-  // Skip middleware for public assets
   if (isPublicPath(pathname)) {
     return NextResponse.next();
   }
 
-  // FAST PATH: Skip expensive checks for non-admin routes
-  // This avoids bot detection overhead on every page view
-  if (!pathname.startsWith('/admin') && !pathname.startsWith('/affiliate')) {
-    const response = NextResponse.next();
-    response.headers.set('X-Frame-Options', 'SAMEORIGIN');
-    response.headers.set('X-Content-Type-Options', 'nosniff');
-    return response;
-  }
-
-
-  // Block known bad bots
-  const blockedBot = BLOCKED_USER_AGENTS.find(bot =>
+  const blockedBot = BLOCKED_USER_AGENTS.find((bot) =>
     userAgent.toLowerCase().includes(bot.toLowerCase())
   );
 
@@ -100,7 +140,6 @@ export async function proxy(request: NextRequest) {
     });
   }
 
-  // Block specific countries
   if (BLOCKED_COUNTRIES.includes(country)) {
     return new NextResponse('Forbidden', {
       status: 403,
@@ -111,61 +150,23 @@ export async function proxy(request: NextRequest) {
     });
   }
 
-  // Handle i18n for non-API routes
-  /*
-  if (!shouldSkipI18n(pathname)) {
-    const intlResponse = intlMiddleware(request);
-    if (intlResponse) {
-      // Continue with other middleware after i18n
-      // Protect /admin routes (except login)
-      if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login')) {
-        const token = await getToken({
-          req: request,
-          secret: process.env.NEXTAUTH_SECRET
-        });
+  const pathLocale = getPathLocale(pathname);
+  const resolvedLocale = resolveLocale(request, pathLocale);
+  const requestHeaders = buildRequestHeaders(request, resolvedLocale);
 
-        if (!token) {
-          const url = new URL('/admin/login', request.url);
-          url.searchParams.set('callbackUrl', pathname);
-          return NextResponse.redirect(url);
-        }
+  if (pathLocale) {
+    const pathWithoutLocale = getPathWithoutLocale(pathname);
 
-        // Check role for specific routes
-        const userRole = token.role as string;
-        const adminOnlyRoutes = ['/admin/blog/categories', '/admin/blog/tags'];
-        if (adminOnlyRoutes.some(route => pathname.startsWith(route))) {
-          if (userRole !== 'admin') {
-            return NextResponse.redirect(new URL('/admin/blog', request.url));
-          }
-        }
-      }
+    if (!supportsLocalePrefix(pathWithoutLocale)) {
+      const redirectUrl = request.nextUrl.clone();
+      redirectUrl.pathname = pathWithoutLocale;
 
-      // Check for AI crawler
-      const isAI = isAICrawler(userAgent);
-      if (isAI) {
-        const aiCrawlerName = getAICrawlerName(userAgent) || 'unknown';
-        intlResponse.headers.set('X-GEO-Detected', 'true');
-        intlResponse.headers.set('X-AI-Crawler', aiCrawlerName);
-        intlResponse.headers.set('X-GEO-Version', '1.0.0');
-        intlResponse.headers.set('X-Content-Optimized-For', 'AI-Consumption');
-        intlResponse.headers.set('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
-      }
-
-      // Add security headers
-      intlResponse.headers.set('X-DNS-Prefetch-Control', 'on');
-      intlResponse.headers.set('X-Frame-Options', 'SAMEORIGIN');
-      intlResponse.headers.set('X-Content-Type-Options', 'nosniff');
-      intlResponse.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-
-      // Add GEO readiness header for debugging
-      if (process.env.NODE_ENV === 'development') {
-        intlResponse.headers.set('X-GEO-Ready', 'true');
-      }
-
-      return intlResponse;
+      const redirectResponse = NextResponse.redirect(redirectUrl);
+      persistLocale(redirectResponse, pathLocale);
+      applySecurityHeaders(redirectResponse);
+      return redirectResponse;
     }
   }
-  */
 
   // Protect /admin routes (except login)
   if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login')) {
@@ -177,46 +178,55 @@ export async function proxy(request: NextRequest) {
     if (!token) {
       const url = new URL('/admin/login', request.url);
       url.searchParams.set('callbackUrl', pathname);
-      return NextResponse.redirect(url);
+      const response = NextResponse.redirect(url);
+      persistLocale(response, resolvedLocale);
+      applySecurityHeaders(response);
+      return response;
     }
 
-    // Check role for specific routes
     const userRole = token.role as string;
     const adminOnlyRoutes = ['/admin/blog/categories', '/admin/blog/tags'];
-    if (adminOnlyRoutes.some(route => pathname.startsWith(route))) {
+    if (adminOnlyRoutes.some((route) => pathname.startsWith(route))) {
       if (userRole !== 'admin') {
-        return NextResponse.redirect(new URL('/admin/blog', request.url));
+        const response = NextResponse.redirect(new URL('/admin/blog', request.url));
+        persistLocale(response, resolvedLocale);
+        applySecurityHeaders(response);
+        return response;
       }
     }
   }
 
-  // Check for AI crawler
   const isAI = isAICrawler(userAgent);
   if (isAI) {
     const aiCrawlerName = getAICrawlerName(userAgent) || 'unknown';
     const url = request.nextUrl.clone();
     url.searchParams.set('_ai', '1');
     url.searchParams.set('_ai_crawler', aiCrawlerName);
-    const response = NextResponse.rewrite(url);
+
+    const response = NextResponse.rewrite(url, {
+      request: {
+        headers: requestHeaders,
+      },
+    });
+
     response.headers.set('X-GEO-Detected', 'true');
     response.headers.set('X-AI-Crawler', aiCrawlerName);
     response.headers.set('X-GEO-Version', '1.0.0');
     response.headers.set('X-Content-Optimized-For', 'AI-Consumption');
     response.headers.set('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
+    persistLocale(response, resolvedLocale);
+    applySecurityHeaders(response);
     return response;
   }
 
-  // For regular users, add security headers
-  const response = NextResponse.next();
-  response.headers.set('X-DNS-Prefetch-Control', 'on');
-  response.headers.set('X-Frame-Options', 'SAMEORIGIN');
-  response.headers.set('X-Content-Type-Options', 'nosniff');
-  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  const response = NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  });
 
-  if (process.env.NODE_ENV === 'development') {
-    response.headers.set('X-GEO-Ready', 'true');
-  }
-
+  persistLocale(response, resolvedLocale);
+  applySecurityHeaders(response);
   return response;
 }
 

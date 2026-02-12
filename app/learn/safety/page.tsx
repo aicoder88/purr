@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/quality-control-lab.webp/',
+        url: 'https://www.purrify.ca/optimized/quality-control-lab.webp',
         width: 1600,
         height: 1067,
         alt: 'Quality control laboratory testing for activated carbon',
@@ -62,7 +62,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
+      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
       width: 400,
       height: 400,
     },

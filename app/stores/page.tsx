@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     url: 'https://www.purrify.ca/stores/',
     images: [
       {
-        url: 'https://www.purrify.ca/images/purrify-logo.png/',
+        url: 'https://www.purrify.ca/images/purrify-logo.png',
         width: 1200,
         height: 630,
         alt: 'Purrify Store Locator',

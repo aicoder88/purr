@@ -54,7 +54,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: SITE_NAME,
       images: [
         {
-          url: 'https://www.purrify.ca/images/products/purrify-standard-bag.png/',
+          url: 'https://www.purrify.ca/images/products/purrify-standard-bag.png',
           width: 1200,
           height: 630,
           alt: pageTitle,

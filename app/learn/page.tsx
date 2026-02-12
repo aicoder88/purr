@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/micropores_magnified_view.webp/',
+        url: 'https://www.purrify.ca/optimized/micropores_magnified_view.webp',
         width: 1200,
         height: 800,
         alt: 'Learn about cat litter odor control with Purrify',

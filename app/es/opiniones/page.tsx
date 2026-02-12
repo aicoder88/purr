@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     locale: 'es_ES',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/three_bags_no_bg.webp/',
+        url: 'https://www.purrify.ca/optimized/three_bags_no_bg.webp',
         width: 1200,
         height: 800,
         alt: 'Purrify Opiniones',

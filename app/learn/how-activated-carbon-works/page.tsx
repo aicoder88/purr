@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/ammonia-science.webp/',
+        url: 'https://www.purrify.ca/images/ammonia-science.webp',
         width: 1200,
         height: 675,
         alt: 'How activated carbon works - molecular diagram',
@@ -63,7 +63,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png/',
+      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
       width: 400,
       height: 400,
     },
