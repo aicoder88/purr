@@ -1,5 +1,7 @@
 import { sampleBlogPosts, BlogPost } from '@/data/blog-posts';
 import prisma from '@/lib/prisma';
+import { ContentStore } from '@/lib/blog/content-store';
+import { isValidLocale } from '@/i18n/config';
 
 export const revalidate = 3600;
 
@@ -25,9 +27,34 @@ export async function GET(req: Request): Promise<Response> {
   const { searchParams } = new URL(req.url);
   const limit = searchParams.get('limit');
   const limitNum = limit ? parseInt(limit, 10) : undefined;
+  const localeParam = searchParams.get('locale') || 'en';
+  const locale = isValidLocale(localeParam) ? localeParam : 'en';
 
   try {
     const take = limitNum || 6;
+
+    // Prefer filesystem-backed content (content/blog/{locale}) so blog cards always
+    // use each post's featured image (canonical for hero/cards/social sharing).
+    try {
+      const store = new ContentStore();
+      const posts = await store.getAllPosts(locale, false);
+      if (posts.length > 0) {
+        return Response.json(
+          posts.slice(0, take).map((post) => ({
+            title: post.title,
+            excerpt: post.excerpt,
+            author: post.author?.name || 'Purrify Team',
+            date: post.publishDate?.includes('T') ? post.publishDate.split('T')[0] : post.publishDate,
+            image: post.featuredImage.url,
+            link: `/${locale}/blog/${post.slug}`,
+            content: post.content,
+            locale: post.locale,
+          }))
+        );
+      }
+    } catch (error) {
+      console.error('Error fetching filesystem blog posts:', error);
+    }
 
     // Check if database is configured
     if (!prisma) {
@@ -61,9 +88,9 @@ export async function GET(req: Request): Promise<Response> {
           author: post.author ?? 'Purrify Research Lab',
           date: (post.publishedAt ?? post.createdAt).toISOString().split('T')[0],
           image: post.heroImageUrl,
-          link: `/blog/${post.slug}`,
+          link: `/${isValidLocale(String(post.locale || '').toLowerCase()) ? String(post.locale).toLowerCase() : 'en'}/blog/${post.slug}`,
           content: post.content,
-          locale: (post.locale as 'en' | 'fr' | 'zh' | undefined) ?? 'en',
+          locale: (post.locale as 'en' | 'fr' | 'zh' | 'es' | undefined) ?? 'en',
         }))
       );
     }
@@ -95,7 +122,7 @@ export async function GET(req: Request): Promise<Response> {
       author: post._embedded?.author?.[0]?.name || "Purrify Team",
       date: new Date(post.date).toISOString().split('T')[0],
       image: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/optimized/purrify-logo.avif",
-      link: `/blog/${post.slug}`,
+      link: `/${locale}/blog/${post.slug}`,
       content: post.content.rendered,
       locale: 'en'
     }));

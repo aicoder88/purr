@@ -1,50 +1,50 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { Container } from "@/components/ui/container";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { useTranslation } from "@/lib/translation-context";
+import Link from 'next/link';
 import Image from 'next/image';
-import { sampleBlogPosts } from "@/data/blog-posts";
+import { Container } from '@/components/ui/container';
+import { Button } from '@/components/ui/button';
+import { getTranslation } from '@/translations';
+import { ContentStore } from '@/lib/blog/content-store';
+import { isValidLocale, type Locale } from '@/i18n/config';
 
-interface BlogPost {
+type PreviewPost = {
   title: string;
   excerpt: string;
   author: string;
   date: string;
   image: string;
+  imageAlt: string;
   link: string;
+};
+
+async function getPreviewPosts(locale: Locale, limit: number): Promise<PreviewPost[]> {
+  const store = new ContentStore();
+  const posts = await store.getAllPosts(locale, false);
+
+  return posts.slice(0, limit).map((post) => {
+    const date = post.publishDate?.includes('T')
+      ? post.publishDate.split('T')[0]
+      : post.publishDate;
+
+    return {
+      title: post.title,
+      excerpt: post.excerpt,
+      author: post.author?.name || 'Purrify Team',
+      date,
+      image: post.featuredImage.url,
+      imageAlt: post.featuredImage.alt || post.title,
+      link: `/${locale}/blog/${post.slug}`,
+    };
+  });
 }
 
-export function BlogPreview() {
-  const { t, locale } = useTranslation();
-  // Initialize with static data immediately to prevent blinking
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>(sampleBlogPosts.slice(0, 3));
+export async function BlogPreview({ locale }: { locale: string }) {
+  const resolvedLocale: Locale = isValidLocale(locale) ? locale : 'en';
+  const t = getTranslation(resolvedLocale);
 
-  useEffect(() => {
-    let isMounted = true;
-    async function fetchBlogPosts() {
-      try {
-        const response = await fetch(`/api/blog-posts?limit=3&locale=${locale}`);
-        if (!response.ok) {
-          throw new Error(`Failed to fetch blog posts (status ${response.status})`);
-        }
-        const data = await response.json();
-        // Only update if we got different data to avoid unnecessary re-renders
-        if (isMounted && data.length > 0) {
-          setBlogPosts(data);
-        }
-      } catch (err) {
-        // Already initialized with static data, no need to update on error
-        // Silently fall back to static content
-      }
-    }
-    fetchBlogPosts();
-    return () => {
-      isMounted = false;
-    };
-  }, [locale]);
+  let blogPosts = await getPreviewPosts(resolvedLocale, 3);
+  if (blogPosts.length === 0 && resolvedLocale !== 'en') {
+    blogPosts = await getPreviewPosts('en', 3);
+  }
 
   return (
     <section
@@ -67,20 +67,20 @@ export function BlogPreview() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {blogPosts.map((post, index) => (
             <Link
-              key={post.link || `blog-post-${index}`}
-              href={post.link.startsWith('/') ? post.link : `/${locale}/blog/${post.link.split('/').pop()}`}
+              key={post.link}
+              href={post.link}
               className="block bg-white dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-[#E0EFC7] dark:border-gray-700 transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#5B2EFF]/30 hover:-translate-y-2 group cursor-pointer"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#03E46A]/20 to-[#5B2EFF]/20 dark:from-[#5B2EFF]/30 dark:to-[#03E46A]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#03E46A]/20 to-[#5B2EFF]/20 dark:from-[#5B2EFF]/30 dark:to-[#03E46A]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="relative w-full h-[200px] sm:h-[250px]">
                   <Image
                     src={post.image}
-                    alt={`Featured image for blog post: ${post.title} - Purrify cat litter knowledge`}
+                    alt={post.imageAlt}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className={`w-full h-full ${post.image.includes('carbon_magnified') ? 'object-contain' : 'object-cover'} transition-transform duration-700 group-hover:scale-110`}
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                     priority={index === 0}
                     quality={75}
                   />
@@ -130,7 +130,7 @@ export function BlogPreview() {
             asChild
             className="bg-gradient-to-r from-[#03E46A] to-[#5B2EFF] dark:from-[#5B2EFF] dark:to-[#03E46A] hover:from-[#03E46A]/90 hover:to-[#5B2EFF] dark:hover:from-[#5B2EFF]/90 dark:hover:to-[#03E46A] text-white dark:text-gray-100 font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0"
           >
-            <Link href={locale === 'en' ? '/en/blog' : `/${locale}/blog`}>
+            <Link href={`/${resolvedLocale}/blog`}>
               {t.blogSection.viewAllArticles}
             </Link>
           </Button>

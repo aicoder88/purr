@@ -158,7 +158,7 @@ export default async function LocalizedHomePage({ params }: LocalizedHomepagePro
 
                 <div className="cv-auto cis-720">
                     <ErrorBoundary>
-                        <BlogPreview />
+                        <BlogPreview locale={locale} />
                     </ErrorBoundary>
                 </div>
             </main>

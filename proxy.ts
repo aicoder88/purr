@@ -369,6 +369,9 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.).*)',
+    // Exclude API routes from middleware to avoid counting health checks (and other API traffic)
+    // as Vercel Edge Requests. Locale/experiments/country-bot logic is not needed for /api/*.
+    // Also exclude Sentry tunnel route to keep client error delivery out of middleware.
+    '/((?!_next/static|_next/image|favicon.ico|api|monitoring|.*\\.).*)',
   ],
 };

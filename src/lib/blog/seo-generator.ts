@@ -19,7 +19,8 @@ export class SEOGenerator {
       canonical: post.seo.canonical || url,
       ogTitle: post.seo.title || post.title,
       ogDescription: post.seo.description || post.excerpt,
-      ogImage: post.seo.ogImage || post.featuredImage.url,
+      // Featured image is the canonical image source for hero/cards/social sharing.
+      ogImage: post.featuredImage.url,
       ogType: 'article',
       twitterCard: 'summary_large_image',
       keywords: post.seo.keywords,

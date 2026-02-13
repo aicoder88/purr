@@ -67,6 +67,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
   const metaTitle = post.seoTitle || post.title;
   const metaDescription = post.seoDescription || post.excerpt;
+  const metaImageUrl = post.image.startsWith('http') ? post.image : `${SITE_URL}${post.image}`;
 
   return {
     title: `${metaTitle} | ${SITE_NAME}`,
@@ -103,12 +104,20 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       authors: [post.author],
       images: [
         {
-          url: post.image.startsWith('http') ? post.image : `${SITE_URL}${post.image}`,
+          url: metaImageUrl,
           width: 1200,
           height: 630,
           alt: post.heroImageAlt || post.title,
         },
       ],
+    },
+    // Root layout defines default Twitter metadata (site/creator/logo). For blog posts, we
+    // override the title/description/image so the link preview matches the hero image.
+    twitter: {
+      card: 'summary_large_image',
+      title: metaTitle,
+      description: metaDescription,
+      images: [metaImageUrl],
     },
   };
 }

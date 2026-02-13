@@ -211,7 +211,7 @@ export default async function HomePage() {
         {/* Blog Preview */}
         <div className="cv-auto cis-720">
           <ErrorBoundary>
-            <BlogPreview />
+            <BlogPreview locale={defaultLocale} />
           </ErrorBoundary>
         </div>
 

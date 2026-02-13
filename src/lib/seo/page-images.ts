@@ -5,6 +5,7 @@
  */
 
 import { sampleBlogPosts } from '../../data/blog-posts';
+import { BLOG_FEATURED_IMAGE_MAP } from '@/generated/blog-featured-image-map';
 
 export interface PageImage {
   image: string;
@@ -256,13 +257,21 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
  * Returns a default fallback if no specific image is mapped
  */
 export function getPageImage(url: string): PageImage {
-  // 1. Check manual mapping first
-  if (PAGE_IMAGES[url]) {
-    return PAGE_IMAGES[url];
+  const normalizedUrl = normalizeUrlKey(url);
+
+  // 1. Canonical blog featured images (generated from content/blog/*).
+  const blogFeatured = BLOG_FEATURED_IMAGE_MAP[normalizedUrl];
+  if (blogFeatured) {
+    return blogFeatured;
   }
 
-  // 2. Check blog posts data
-  const blogPost = sampleBlogPosts.find((post) => post.link === url);
+  // 2. Check manual mapping
+  if (PAGE_IMAGES[normalizedUrl]) {
+    return PAGE_IMAGES[normalizedUrl];
+  }
+
+  // 3. Fallback to sample blog posts (legacy/static)
+  const blogPost = sampleBlogPosts.find((post) => normalizeUrlKey(post.link) === normalizedUrl);
   if (blogPost) {
     return {
       image: blogPost.image,
@@ -270,7 +279,7 @@ export function getPageImage(url: string): PageImage {
     };
   }
 
-  // 3. Fallback
+  // 4. Generic fallback
   return {
     image: '/optimized/cat-litter-deodorizer-guide.webp',
     alt: 'Purrify cat litter deodorizer',
@@ -281,5 +290,15 @@ export function getPageImage(url: string): PageImage {
  * Check if a page has a mapped image
  */
 export function hasPageImage(url: string): boolean {
-  return url in PAGE_IMAGES;
+  const normalizedUrl = normalizeUrlKey(url);
+  return normalizedUrl in BLOG_FEATURED_IMAGE_MAP || normalizedUrl in PAGE_IMAGES;
+}
+
+function normalizeUrlKey(input: string): string {
+  const withoutHash = input.split('#')[0] ?? input;
+  const withoutQuery = withoutHash.split('?')[0] ?? withoutHash;
+  if (withoutQuery.length > 1 && withoutQuery.endsWith('/')) {
+    return withoutQuery.slice(0, -1);
+  }
+  return withoutQuery;
 }
