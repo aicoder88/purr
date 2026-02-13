@@ -37,9 +37,9 @@ export const metadata: Metadata = {
 };
 
 const relatedQuestions = [
-  { slug: 'which-cat-litter-controls-odor-the-best', question: 'Which cat litter controls odor the best?' },
-  { slug: 'what-cat-litter-smells-the-best', question: 'What cat litter smells the best?' },
-  { slug: 'how-do-i-stop-my-cat-litter-from-smelling', question: 'How do I stop my cat litter from smelling?' },
+  { slug: 'how-do-i-stop-my-cat-litter-from-smelling', question: 'Which cat litter controls odor the best?' },
+  { slug: 'what-eliminates-cat-litter-odor', question: 'What cat litter smells the best?' },
+  { slug: 'how-to-keep-litter-box-from-smelling', question: 'How do I stop my cat litter from smelling?' },
 ];
 
 export default function QuestionPage() {
@@ -174,7 +174,7 @@ export default function QuestionPage() {
                 Get the odor-elimination upgrade for any litter.
               </p>
               <Link
-                href="/products"
+                href="/products/"
                 className="inline-flex items-center justify-center px-6 py-3 bg-[#F7A41D] hover:bg-[#E09400] text-white dark:text-white font-semibold rounded-full transition-colors"
               >
                 Shop Purrify

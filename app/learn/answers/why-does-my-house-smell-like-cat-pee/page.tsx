@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 const relatedQuestions = [
   { slug: 'how-to-keep-litter-box-from-smelling', question: 'How do I keep my litter box from smelling?' },
   { slug: 'does-activated-carbon-work-for-cat-litter', question: 'Does activated carbon work?' },
-  { slug: 'how-to-get-rid-of-cat-odor-in-small-space', question: 'How do I remove odor in apartments?' },
+  { slug: 'how-do-i-keep-my-house-from-smelling-like-cat-litter', question: 'How do I remove odor in apartments?' },
 ];
 
 export default function QuestionPage() {
@@ -101,7 +101,7 @@ export default function QuestionPage() {
                 Eliminate odor at the source. Try Purrify.
               </p>
               <Link
-                href="/products"
+                href="/products/"
                 className="inline-flex items-center justify-center px-6 py-3 bg-[#F7A41D] hover:bg-[#E09400] text-white dark:text-white font-semibold rounded-full transition-colors"
               >
                 Get Free Trial

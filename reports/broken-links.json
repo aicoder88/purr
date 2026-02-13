@@ -1,24 +1,8 @@
 {
-  "timestamp": "2025-12-26T18:39:53.795Z",
-  "totalLinks": 36,
-  "validLinks": 33,
-  "brokenLinks": 3,
+  "timestamp": "2026-02-13T10:37:51.529Z",
+  "totalLinks": 55,
+  "validLinks": 55,
+  "brokenLinks": 0,
   "errorLinks": 0,
-  "results": [
-    {
-      "url": "/affiliate/signup",
-      "status": "broken",
-      "statusCode": 404
-    },
-    {
-      "url": "/learn/solutions/ammonia-smell-cat-litter",
-      "status": "broken",
-      "statusCode": 404
-    },
-    {
-      "url": "/affiliate",
-      "status": "broken",
-      "statusCode": 404
-    }
-  ]
+  "results": []
 }

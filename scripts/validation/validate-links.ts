@@ -10,11 +10,15 @@ import * as path from 'node:path';
 import { glob } from 'glob';
 import {
   validateExternalLinks,
-  validateInternalLinks,
   generateValidationReport,
   extractLinks,
   type LinkValidationResult,
 } from '../../src/lib/seo/link-validator';
+
+const APP_DIR = path.join(process.cwd(), 'app');
+const PAGES_DIR = path.join(process.cwd(), 'pages');
+const SUPPORTED_LOCALES = new Set(['en', 'fr', 'zh', 'es']);
+const STATIC_INTERNAL_PATHS = ['/sitemap.xml', '/robots.txt', '/favicon.ico'];
 
 // Known external links to check (social media, partners, etc.)
 const PRIORITY_EXTERNAL_LINKS = [
@@ -25,91 +29,114 @@ const PRIORITY_EXTERNAL_LINKS = [
   'https://www.youtube.com/@PurrifyHQ',
 ];
 
-// Valid internal routes (all existing pages)
-const VALID_ROUTES = [
-  '/',
-  '/free',
-  '/contact',
-  '/reviews',
-  '/case-studies',
-  '/stockists',
-  
-  // Products
-  '/products/trial-size',
-  '/products/standard',
-  '/products/family-pack',
-  '/products/compare',
-  
-  // Learn
-  '/learn/how-it-works',
-  '/learn/science',
-  '/learn/safety',
-  '/learn/faq',
-  '/learn/cat-litter-guide',
-  '/learn/how-to-use-deodorizer',
-  '/learn/activated-carbon-benefits',
-  '/learn/activated-carbon-vs-baking-soda-deodorizers',
-  '/learn/using-deodorizers-with-kittens',
-  
-  // Solutions
-  '/solutions/ammonia-smell-cat-litter',
-  '/solutions/apartment-cat-smell-solution',
-  '/solutions/litter-box-smell-elimination',
-  '/solutions/multiple-cats-odor-control',
-  '/solutions/natural-cat-litter-additive',
-  '/solutions/senior-cat-litter-solutions',
-  
-  // Blog
-  '/blog',
-  '/blog/house-smells-like-cat-litter-solutions',
-  '/blog/tried-everything-cat-litter-smell-solutions',
-  '/blog/activated-carbon-vs-baking-soda-comparison',
-  '/blog/using-deodorizers-with-kittens',
-  '/blog/multi-cat-litter-deodorizer-guide',
-  '/blog/activated-carbon-litter-additive-benefits',
-  '/blog/best-litter-odor-remover-small-apartments',
-  '/blog/how-to-use-cat-litter-deodorizer',
-  
-  // Support
-  '/support',
-  '/contact',
-  '/support/shipping',
-  
-  // Customer
-  '/customer/portal',
-  '/customer/referrals',
-  '/reviews',
-  '/case-studies',
-  
-  // Support
-  '/support/subscription',
-  
-  // Locations
-  '/locations',
-  '/locations/montreal',
-  '/locations/toronto',
-  '/locations/vancouver',
-  '/locations/calgary',
-  '/locations/ottawa',
-  '/locations/province/on',
-  '/locations/province/qc',
-  '/locations/province/ab',
-  '/locations/province/bc',
-  '/locations/province/mb',
-  '/locations/province/sk',
-  '/locations/province/ns',
-  '/locations/province/nb',
-  '/locations/province/nl',
-  '/locations/province/pe',
-  
-  // B2B & Admin
-  '/b2b',
-  '/retailer/portal/login',
-  '/admin/login',
-  '/admin/blog',
-  '/admin/blog/new',
-  '/admin/blog/analytics',
-];
+function normalizeInternalRoute(link: string): string {
+  let route = link.split('?')[0].split('#')[0] || '/';
+
+  if (!route.startsWith('/')) {
+    route = `/${route}`;
+  }
+
+  route = route.replaceAll(/\/+/g, '/');
+
+  if (route.length > 1 && route.endsWith('/')) {
+    route = route.slice(0, -1);
+  }
+
+  return route || '/';
+}
+
+function stripLocalePrefix(route: string): string {
+  const parts = route.split('/').filter(Boolean);
+  if (parts.length > 0 && SUPPORTED_LOCALES.has(parts[0])) {
+    const withoutLocale = `/${parts.slice(1).join('/')}`;
+    return withoutLocale === '/' ? '/' : withoutLocale;
+  }
+  return route;
+}
+
+function matchesRoutePattern(routePattern: string, route: string): boolean {
+  if (routePattern.includes('[')) {
+    const regexPattern = routePattern.replaceAll(/\[.*?\]/g, '[^/]+');
+    return new RegExp(`^${regexPattern}$`).test(route);
+  }
+
+  return routePattern === route;
+}
+
+function isValidInternalLink(link: string, validRoutes: string[]): boolean {
+  const normalizedRoute = normalizeInternalRoute(link);
+  const strippedRoute = stripLocalePrefix(normalizedRoute);
+  const candidates = strippedRoute === normalizedRoute
+    ? [normalizedRoute]
+    : [normalizedRoute, strippedRoute];
+
+  return validRoutes.some((routePattern) =>
+    candidates.some((candidate) => matchesRoutePattern(routePattern, candidate))
+  );
+}
+
+function collectAppRoutes(dir: string, segments: string[], routes: Set<string>): void {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+
+    if (entry.isDirectory()) {
+      if (entry.name === 'api') continue;
+
+      if (entry.name.startsWith('(') || entry.name.startsWith('@')) {
+        collectAppRoutes(fullPath, segments, routes);
+        continue;
+      }
+
+      collectAppRoutes(fullPath, [...segments, entry.name], routes);
+      continue;
+    }
+
+    if (entry.isFile() && /^page\.(tsx|ts|jsx|js)$/.test(entry.name)) {
+      const route = segments.length === 0 ? '/' : `/${segments.join('/')}`;
+      routes.add(normalizeInternalRoute(route));
+    }
+  }
+}
+
+function collectPagesRoutes(dir: string, segments: string[], routes: Set<string>): void {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+
+    if (entry.isDirectory()) {
+      if (entry.name === 'api' || entry.name.startsWith('_')) continue;
+      collectPagesRoutes(fullPath, [...segments, entry.name], routes);
+      continue;
+    }
+
+    if (!entry.isFile() || !/\.(tsx|ts|jsx|js)$/.test(entry.name)) continue;
+    if (entry.name.startsWith('_')) continue;
+
+    const fileBase = entry.name.replace(/\.(tsx|ts|jsx|js)$/, '');
+    const routeSegments = fileBase === 'index'
+      ? segments
+      : [...segments, fileBase];
+    const route = routeSegments.length === 0 ? '/' : `/${routeSegments.join('/')}`;
+    routes.add(normalizeInternalRoute(route));
+  }
+}
+
+function getValidRoutes(): string[] {
+  const routes = new Set<string>(STATIC_INTERNAL_PATHS.map(normalizeInternalRoute));
+
+  if (fs.existsSync(APP_DIR)) {
+    collectAppRoutes(APP_DIR, [], routes);
+  }
+
+  if (fs.existsSync(PAGES_DIR)) {
+    collectPagesRoutes(PAGES_DIR, [], routes);
+  }
+
+  return Array.from(routes);
+}
 
 async function scanPageFiles(): Promise<{ internal: string[]; external: string[] }> {
   const allInternal = new Set<string>();
@@ -147,13 +174,22 @@ async function main() {
   try {
     // Scan files for links
     const { internal, external } = await scanPageFiles();
+    const validRoutes = getValidRoutes();
     
     console.log(`Found ${internal.length} internal links`);
     console.log(`Found ${external.length} external links\n`);
+    console.log(`Discovered ${validRoutes.length} valid internal routes\n`);
     
     // Validate internal links
     console.log('Validating internal links...');
-    const internalResults = validateInternalLinks(internal, VALID_ROUTES);
+    const internalResults: LinkValidationResult[] = internal.map((link) => {
+      const isValid = isValidInternalLink(link, validRoutes);
+      return {
+        url: link,
+        status: isValid ? 'valid' : 'broken',
+        statusCode: isValid ? 200 : 404,
+      };
+    });
     const brokenInternal = internalResults.filter(r => r.status === 'broken');
     
     if (brokenInternal.length > 0) {

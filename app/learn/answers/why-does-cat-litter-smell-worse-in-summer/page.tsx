@@ -90,7 +90,7 @@ export default function QuestionPage() {
                 Try Purrify risk-free.
               </p>
               <Link
-                href="/products"
+                href="/products/"
                 className="inline-flex items-center justify-center px-6 py-3 bg-[#F7A41D] hover:bg-[#E09400] text-white dark:text-white font-semibold rounded-full transition-colors"
               >
                 Get Free Trial

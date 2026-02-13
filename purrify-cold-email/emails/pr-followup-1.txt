@@ -1,0 +1,17 @@
+Subject: Quick follow-up on litter odor story for {{StoreName}}
+
+Hi {{FirstName}},
+
+Quick follow-up in case this is relevant for your audience at {{StoreName}}.
+
+I can share a short, publication-ready package covering:
+- science of activated carbon odor adsorption
+- practical odor-control routine for cat owners
+- source-backed notes your team can verify quickly
+
+If this is better for another editor or desk, happy to send it there instead.
+
+Thanks again,
+{{FirstName}} {{LastName}}
+Purrify
+meow@purrify.ca

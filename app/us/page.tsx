@@ -171,7 +171,7 @@ export default async function USALandingPage({ params }: USALandingPageProps) {
 
               <div className="flex flex-col sm:flex-row gap-4 mb-10">
                 <Link
-                  href="/products"
+                  href="/products/"
                   className="inline-flex items-center justify-center gap-2 bg-[#FF3131] text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-[#E02828] transition-all transform hover:scale-105 shadow-2xl hover:shadow-red-500/20"
                 >
                   Join the Waitlist
@@ -424,13 +424,13 @@ export default async function USALandingPage({ params }: USALandingPageProps) {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link
-                  href="/products"
+                  href="/products/"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white dark:bg-white text-[#FF3131] px-10 py-5 rounded-full font-bold text-xl hover:bg-gray-100 dark:hover:bg-gray-100 transition-all shadow-xl hover:-translate-y-1"
                 >
                   Join the Waitlist Now
                 </Link>
                 <Link
-                  href="/blog"
+                  href="/en/blog/"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white px-10 py-5 rounded-full font-bold text-xl transition-all border border-white/30 backdrop-blur-sm"
                 >
                   Read Our Odor Blog

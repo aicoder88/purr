@@ -284,7 +284,7 @@ export default function SeniorCatPageClient() {
 
                     <div className="text-center">
                         <Link
-                            href="/products"
+                            href="/products/"
                             className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 text-lg mr-4 shadow-lg"
                         >
                             Shop Purrify Now
@@ -357,7 +357,7 @@ export default function SeniorCatPageClient() {
                             </p>
                         </Link>
                         <Link
-                            href="/blog"
+                            href="/en/blog/"
                             className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] dark:hover:border-[#FF5050] transition-all group"
                         >
                             <div className="text-3xl mb-3">📚</div>

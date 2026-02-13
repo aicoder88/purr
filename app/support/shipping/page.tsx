@@ -256,7 +256,7 @@ export default function ShippingPage() {
                 Get free shipping on orders over $50 in Canada and $75 in the US.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/products">
+                <Link href="/products/">
                   <Button size="lg" className="bg-white dark:bg-gray-900 text-blue-600 dark:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 font-bold text-lg px-8">
                     Shop Now
                   </Button>

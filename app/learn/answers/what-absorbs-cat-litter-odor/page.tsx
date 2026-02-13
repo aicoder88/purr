@@ -38,7 +38,7 @@ export const metadata: Metadata = {
 
 const relatedQuestions = [
   { slug: 'what-eliminates-cat-litter-odor', question: 'What eliminates cat litter odor?' },
-  { slug: 'what-neutralizes-cat-litter-smell', question: 'What neutralizes cat litter smell?' },
+  { slug: 'what-eliminates-cat-litter-odor', question: 'What neutralizes cat litter smell?' },
   { slug: 'does-activated-carbon-work-for-cat-litter', question: 'Does activated carbon work for cat litter?' },
 ];
 
@@ -117,7 +117,7 @@ export default function QuestionPage() {
                 Use the best odor absorber available.
               </p>
               <Link
-                href="/products"
+                href="/products/"
                 className="inline-flex items-center justify-center px-6 py-3 bg-[#F7A41D] hover:bg-[#E09400] text-white dark:text-white font-semibold rounded-full transition-colors"
               >
                 Get Purrify

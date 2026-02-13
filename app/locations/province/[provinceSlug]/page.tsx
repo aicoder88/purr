@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { existsSync } from 'node:fs';
+import path from 'node:path';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -24,26 +26,137 @@ const PROVINCE_DISPLAY_OVERRIDES: Record<string, string> = {
   'Newfoundland and Labrador': 'Newfoundland & Labrador',
 };
 
-const HERO_IMAGES: Record<string, string> = {
-  'qc': '/images/locations/provinces/quebec.png',
-  'on': '/images/locations/provinces/ontario.png',
-  'ab': '/images/locations/provinces/alberta.png',
-  'bc': '/images/locations/provinces/british-columbia.png',
-  'ns': '/images/locations/provinces/atlantic.png',
-  'nb': '/images/locations/provinces/atlantic.png',
-  'pe': '/images/locations/provinces/atlantic.png',
-  'nl': '/images/locations/provinces/atlantic.png',
-  'mb': '/images/locations/provinces/prairies.png',
-  'sk': '/images/locations/provinces/prairies.png',
-  'yt': '/images/locations/provinces/north.png',
-  'nt': '/images/locations/provinces/north.png',
-  'nu': '/images/locations/provinces/north.png',
+const PROVINCE_HERO_FALLBACKS: Record<string, string> = {
+  ON: '/images/locations/provinces/ontario.png',
+  QC: '/images/locations/provinces/quebec.png',
+  AB: '/images/locations/provinces/alberta.png',
+  BC: '/images/locations/provinces/british-columbia.png',
+  NS: '/images/locations/provinces/atlantic.png',
+  NB: '/images/locations/provinces/atlantic.png',
+  PE: '/images/locations/provinces/atlantic.png',
+  NL: '/images/locations/provinces/atlantic.png',
+  MB: '/images/locations/provinces/prairies.png',
+  SK: '/images/locations/provinces/prairies.png',
+  YT: '/images/locations/provinces/north.png',
+  NT: '/images/locations/provinces/north.png',
+  NU: '/images/locations/provinces/north.png',
 };
 
 const GRADIENTS = {
   pageBackground: 'bg-gradient-to-br from-orange-50 to-pink-50 dark:from-gray-900 dark:to-gray-800',
   headingText: 'bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent',
   blueSection: 'bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20',
+};
+
+const PROVINCE_IMAGE_SLUG_ALIASES: Record<string, string[]> = {
+  'newfoundland-and-labrador': ['newfoundland-labrador'],
+};
+
+const PROVINCE_ASSET_EXTENSIONS = ['webp', 'png', 'jpg', 'avif'] as const;
+const provinceHeroImageCache = new Map<string, string>();
+
+const hashString = (value: string): number => {
+  let hash = 0;
+
+  for (let i = 0; i < value.length; i += 1) {
+    hash = (hash << 5) - hash + value.charCodeAt(i);
+    hash |= 0;
+  }
+
+  return Math.abs(hash);
+};
+
+const hasPublicAsset = (assetPath: string): boolean => {
+  const relativeAssetPath = assetPath.replace(/^\//, '');
+  return existsSync(path.join(process.cwd(), 'public', relativeAssetPath));
+};
+
+const resolveProvinceHeroImage = (province: Province): string => {
+  const cachedPath = provinceHeroImageCache.get(province.slug);
+  if (cachedPath) {
+    return cachedPath;
+  }
+
+  const fallback = PROVINCE_HERO_FALLBACKS[province.code] ?? PROVINCE_HERO_FALLBACKS.ON;
+  const slugCandidates = [
+    province.slug,
+    ...(PROVINCE_IMAGE_SLUG_ALIASES[province.slug] ?? []),
+    province.code.toLowerCase(),
+  ];
+  const imageCandidates = slugCandidates.flatMap((slugCandidate) => [
+    ...PROVINCE_ASSET_EXTENSIONS.map(
+      (extension) => `/images/locations/provinces/${slugCandidate}.${extension}`
+    ),
+    ...PROVINCE_ASSET_EXTENSIONS.map((extension) => `/optimized/${slugCandidate}.${extension}`),
+  ]);
+  const resolvedImage = imageCandidates.find(hasPublicAsset) ?? fallback;
+
+  provinceHeroImageCache.set(province.slug, resolvedImage);
+  return resolvedImage;
+};
+
+const normalizeCopyFragment = (value: string): string =>
+  value.replace(/[.!?]+$/g, '').trim().toLowerCase();
+
+type ProvinceTestimonialContext = {
+  cityName: string;
+  provinceName: string;
+  painPoint: string;
+  climateTip: string;
+  housingHighlight: string;
+};
+
+const PROVINCE_TESTIMONIAL_TEMPLATES = [
+  (context: ProvinceTestimonialContext) =>
+    `In ${context.cityName}, ${context.painPoint}. Purrify keeps our place fresh without adding perfume.`,
+  (context: ProvinceTestimonialContext) =>
+    `Between ${context.housingHighlight} and ${context.climateTip}, we needed something reliable. Purrify is the first additive that kept odors under control.`,
+  (context: ProvinceTestimonialContext) =>
+    `We tried sprays and scented products in ${context.provinceName}, but this worked better right away. The litter box area finally smells clean.`,
+  (context: ProvinceTestimonialContext) =>
+    `Our routine in ${context.cityName} is simple now: scoop, add Purrify, done. No heavy fragrance, just cleaner air.`,
+  (context: ProvinceTestimonialContext) =>
+    `${context.climateTip} used to make odor spikes worse for us in ${context.cityName}. Purrify fixed that without changing our litter brand.`,
+];
+
+const buildProvinceTestimonial = (
+  province: Province
+): {
+  quote: string;
+  author: string;
+} => {
+  const anchorCity = province.cities[0];
+  const cityName = anchorCity?.name ?? province.name;
+  const painPoint = normalizeCopyFragment(
+    anchorCity?.profile.scentPainPoints[0] ?? 'litter box odor would take over the room'
+  );
+  const climateTip = normalizeCopyFragment(
+    anchorCity?.profile.climateConsiderations[0] ?? 'seasonal weather shifts'
+  );
+  const housingHighlight = normalizeCopyFragment(
+    anchorCity?.profile.housingHighlights[0] ?? 'multi-cat households'
+  );
+  const context: ProvinceTestimonialContext = {
+    cityName,
+    provinceName: province.name,
+    painPoint,
+    climateTip,
+    housingHighlight,
+  };
+  const hash = hashString(province.slug);
+  const template = PROVINCE_TESTIMONIAL_TEMPLATES[
+    hash % PROVINCE_TESTIMONIAL_TEMPLATES.length
+  ];
+  const authorLabels = [
+    `${cityName} cat parent`,
+    `${province.name} multi-cat household`,
+    `${cityName} foster home`,
+  ];
+
+  return {
+    quote: template(context),
+    author: authorLabels[hash % authorLabels.length],
+  };
 };
 
 /** Replace {{key}} placeholders with values */
@@ -88,6 +201,7 @@ export async function generateMetadata({ params }: ProvincePageProps): Promise<M
     ? interpolate(locations.province.description, { province: province.name })
     : `Find Purrify in ${province.name}`;
   const canonicalUrl = `${SITE_URL}/locations/province/${province.slug}`;
+  const heroImage = resolveProvinceHeroImage(province);
 
   return {
     title: seoTitle,
@@ -109,7 +223,7 @@ export async function generateMetadata({ params }: ProvincePageProps): Promise<M
       url: canonicalUrl,
       images: [
         {
-          url: HERO_IMAGES[province.slug] || '/optimized/90day-hero.webp',
+          url: heroImage,
           width: 1200,
           height: 630,
           alt: `${province.name} Province Page`,
@@ -174,7 +288,8 @@ export default async function ProvincePage({ params }: ProvincePageProps) {
 
   const displayName = PROVINCE_DISPLAY_OVERRIDES[province.name] ?? province.name;
   const breadcrumb = generateBreadcrumbSchema(t, province);
-  const heroImage = HERO_IMAGES[provinceSlug] || HERO_IMAGES['on']; // Fallback to Ontario if not found
+  const heroImage = resolveProvinceHeroImage(province);
+  const provinceTestimonial = buildProvinceTestimonial(province);
 
   return (
     <>
@@ -371,9 +486,9 @@ export default async function ProvincePage({ params }: ProvincePageProps) {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent dark:from-black/60" />
                 <div className="absolute bottom-6 left-6 right-6">
                   <p className="text-white dark:text-gray-100 font-semibold italic text-lg leading-snug">
-                    &quot;Finally, something that actually works for my multi-cat household in {province.name}.&quot;
+                    &quot;{provinceTestimonial.quote}&quot;
                   </p>
-                  <p className="text-orange-200 dark:text-orange-300 mt-2 text-sm font-bold uppercase tracking-wider">— Happy {province.name} Pet Parent</p>
+                  <p className="text-orange-200 dark:text-orange-300 mt-2 text-sm font-bold uppercase tracking-wider">— {provinceTestimonial.author}</p>
                 </div>
               </div>
             </div>

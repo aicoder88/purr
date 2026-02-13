@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 const relatedQuestions = [
   { slug: 'how-do-i-stop-my-cat-litter-from-smelling', question: 'How do I stop my cat litter from smelling?' },
   { slug: 'how-to-eliminate-cat-litter-odor', question: 'How to eliminate cat litter odor?' },
-  { slug: 'how-to-remove-cat-litter-smell-from-room', question: 'How to remove cat litter smell from room?' },
+  { slug: 'how-to-keep-litter-box-from-smelling', question: 'How to remove cat litter smell from room?' },
 ];
 
 export default function QuestionPage() {
@@ -97,7 +97,7 @@ export default function QuestionPage() {
                 Keep your whole house fresh with Purrify.
               </p>
               <Link
-                href="/products"
+                href="/products/"
                 className="inline-flex items-center justify-center px-6 py-3 bg-[#F7A41D] hover:bg-[#E09400] text-white dark:text-white font-semibold rounded-full transition-colors"
               >
                 Get Free Trial

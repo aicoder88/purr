@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 };
 
 const relatedQuestions = [
-  { slug: 'how-to-control-cat-litter-odor', question: 'How to control cat litter odor?' },
+  { slug: 'how-to-keep-litter-box-from-smelling', question: 'How to control cat litter odor?' },
   { slug: 'what-eliminates-cat-litter-odor', question: 'What eliminates cat litter odor?' },
   { slug: 'how-do-i-stop-my-cat-litter-from-smelling', question: 'How do I stop my cat litter from smelling?' },
 ];
@@ -126,7 +126,7 @@ export default function QuestionPage() {
                 Get the key ingredient for step 4.
               </p>
               <Link
-                href="/products"
+                href="/products/"
                 className="inline-flex items-center justify-center px-6 py-3 bg-[#F7A41D] hover:bg-[#E09400] text-white dark:text-white font-semibold rounded-full transition-colors"
               >
                 Get Activated Carbon

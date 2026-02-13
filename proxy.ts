@@ -41,9 +41,11 @@ const BLOCKED_COUNTRIES = ['SG']; // Singapore
 
 // Blocked User Agents
 const BLOCKED_USER_AGENTS = [
-  'SemrushBot', 'AhrefsBot', 'MJ12bot', 'DotBot',
+  'SemrushBot', 'MJ12bot', 'DotBot',
   'DataForSeoBot', 'BLEXBot', 'YandexBot', 'BaiduSpider',
 ];
+
+const COUNTRY_BLOCK_EXEMPT_USER_AGENTS = ['AhrefsBot', 'AhrefsSiteAudit'];
 
 function isPublicPath(pathname: string): boolean {
   return PUBLIC_PATHS.some((path) => pathname.startsWith(path));
@@ -238,6 +240,10 @@ function persistExperimentCookies(
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const userAgent = request.headers.get('user-agent') || '';
+  const userAgentLower = userAgent.toLowerCase();
+  const isCountryBlockExempt = COUNTRY_BLOCK_EXEMPT_USER_AGENTS.some((bot) =>
+    userAgentLower.includes(bot.toLowerCase())
+  );
 
   // @ts-expect-error - geo is added by Vercel edge runtime
   const country = request.geo?.country || request.headers.get('cf-ipcountry') || 'unknown';
@@ -247,7 +253,7 @@ export async function proxy(request: NextRequest) {
   }
 
   const blockedBot = BLOCKED_USER_AGENTS.find((bot) =>
-    userAgent.toLowerCase().includes(bot.toLowerCase())
+    userAgentLower.includes(bot.toLowerCase())
   );
 
   if (blockedBot) {
@@ -257,7 +263,7 @@ export async function proxy(request: NextRequest) {
     });
   }
 
-  if (BLOCKED_COUNTRIES.includes(country)) {
+  if (BLOCKED_COUNTRIES.includes(country) && !isCountryBlockExempt) {
     return new NextResponse('Forbidden', {
       status: 403,
       headers: {

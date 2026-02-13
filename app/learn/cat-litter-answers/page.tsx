@@ -41,25 +41,25 @@ const paaQuestions = [
     preview: 'Clumping clay litter with activated carbon provides the best odor control through adsorption technology...',
   },
   {
-    slug: 'what-cat-litter-smells-the-best',
+    slug: 'what-cat-litter-controls-odor-best',
     question: 'What cat litter smells the best?',
     category: 'Product',
     preview: 'The best smelling litter is actually unscented litter with activated carbon that eliminates odor at the source...',
   },
   {
-    slug: 'which-cat-litter-smells-the-best',
+    slug: 'what-cat-litter-controls-odor-best',
     question: 'Which cat litter smells the best?',
     category: 'Product',
     preview: 'Natural odor elimination beats artificial fragrances. Activated carbon enhanced litters perform best...',
   },
   {
-    slug: 'which-cat-litter-controls-odor-the-best',
+    slug: 'what-cat-litter-controls-odor-best',
     question: 'Which cat litter controls odor the best?',
     category: 'Product',
     preview: 'Look for clumping litter combined with activated carbon additives for maximum ammonia elimination...',
   },
   {
-    slug: 'which-cat-litter-has-the-best-odor-control',
+    slug: 'what-cat-litter-controls-odor-best',
     question: 'Which cat litter has the best odor control?',
     category: 'Product',
     preview: 'Odor control depends on clumping ability plus odor-eliminating technology like activated carbon...',
@@ -84,19 +84,19 @@ const paaQuestions = [
     preview: 'Eliminate odor permanently with activated carbon that adsorbs ammonia molecules from the air...',
   },
   {
-    slug: 'how-to-control-cat-litter-odor',
+    slug: 'how-to-eliminate-cat-litter-odor',
     question: 'How to control cat litter odor?',
     category: 'Solutions',
     preview: 'Control odor through daily scooping, proper ventilation, and activated carbon additives...',
   },
   {
-    slug: 'how-to-reduce-cat-litter-odor',
+    slug: 'how-to-eliminate-cat-litter-odor',
     question: 'How to reduce cat litter odor?',
     category: 'Solutions',
     preview: 'Reduce odor by removing waste daily and using carbon-based additives that bind ammonia...',
   },
   {
-    slug: 'how-to-stop-cat-litter-odor',
+    slug: 'how-to-eliminate-cat-litter-odor',
     question: 'How to stop cat litter odor?',
     category: 'Solutions',
     preview: 'Stop odor completely with activated carbon technology that removes ammonia from the air...',
@@ -114,7 +114,7 @@ const paaQuestions = [
     preview: 'Activated carbon absorbs odor best with over 1,000 square meters of surface area per gram...',
   },
   {
-    slug: 'what-neutralizes-cat-litter-smell',
+    slug: 'what-eliminates-cat-litter-odor',
     question: 'What neutralizes cat litter smell?',
     category: 'Science',
     preview: 'Activated carbon neutralizes ammonia odor by binding molecules to its porous surface...',
@@ -157,7 +157,7 @@ const paaQuestions = [
     preview: 'Choose a low-traffic area with ventilation. Bathrooms, laundry rooms, or spare corners work best...',
   },
   {
-    slug: 'how-to-get-rid-of-cat-odor-in-small-space',
+    slug: 'how-do-i-keep-my-house-from-smelling-like-cat-litter',
     question: 'How do I get rid of cat odor in a small space?',
     category: 'Apartment Living',
     preview: 'Small spaces amplify ammonia buildup. Activated carbon additives work better than air fresheners...',
@@ -175,7 +175,7 @@ const paaQuestions = [
     preview: 'Heat and humidity accelerate ammonia release from urine. Air conditioning helps but does not solve the root cause...',
   },
   {
-    slug: 'can-i-use-essential-oils-in-cat-litter',
+    slug: 'is-it-safe-to-sleep-in-a-room-with-cat-litter',
     question: 'Can I use essential oils in cat litter?',
     category: 'Safety',
     preview: 'Most essential oils are toxic to cats. Even diluted, they can cause respiratory issues and liver damage...',
@@ -188,19 +188,19 @@ const paaQuestions = [
     preview: 'Sleeping near a litter box is generally safe with proper odor control and ventilation...',
   },
   {
-    slug: 'is-cat-litter-smell-toxic',
+    slug: 'is-it-safe-to-sleep-in-a-room-with-cat-litter',
     question: 'Is cat litter smell toxic?',
     category: 'Health',
     preview: 'Ammonia from cat urine can irritate airways in high concentrations. Proper odor control prevents issues...',
   },
   {
-    slug: 'is-cat-litter-smell-bad-for-you',
+    slug: 'is-it-safe-to-sleep-in-a-room-with-cat-litter',
     question: 'Is cat litter smell bad for you?',
     category: 'Health',
     preview: 'Prolonged exposure to ammonia can cause respiratory irritation. Activated carbon eliminates this risk...',
   },
   {
-    slug: 'can-cat-litter-smell-make-you-sick',
+    slug: 'is-it-safe-to-sleep-in-a-room-with-cat-litter',
     question: 'Can cat litter smell make you sick?',
     category: 'Health',
     preview: 'Ammonia buildup can cause headaches and breathing issues. Eliminating odor prevents health effects...',
@@ -220,32 +220,32 @@ const paaQuestions = [
   },
   // === ODOR SCIENCE ===
   {
-    slug: 'why-does-cat-litter-smell-like-ammonia',
+    slug: 'why-does-my-house-smell-like-cat-pee',
     question: 'Why does cat litter smell like ammonia?',
     category: 'Science',
     preview: 'Cat urine contains urea which breaks down into ammonia. Bacteria accelerate this process...',
   },
   {
-    slug: 'why-does-cat-litter-smell-so-bad',
+    slug: 'how-do-i-stop-my-cat-litter-from-smelling',
     question: 'Why does cat litter smell so bad?',
     category: 'Science',
     preview: 'Concentrated ammonia from urine breakdown creates the strong, unpleasant litter box odor...',
   },
   {
-    slug: 'does-cat-litter-smell-like-ammonia',
+    slug: 'why-does-my-house-smell-like-cat-pee',
     question: 'Does cat litter smell like ammonia?',
     category: 'Science',
     preview: 'Yes, cat litter typically smells like ammonia due to the breakdown of urea in cat urine...',
   },
   // === ODOR REMOVAL ===
   {
-    slug: 'how-to-remove-cat-litter-smell-from-room',
+    slug: 'how-to-keep-litter-box-from-smelling',
     question: 'How to remove cat litter smell from room?',
     category: 'Removal',
     preview: 'Remove room odors with activated carbon air purifiers and enzymatic cleaners on surfaces...',
   },
   {
-    slug: 'how-to-get-cat-litter-smell-out-of-house',
+    slug: 'how-do-i-keep-my-house-from-smelling-like-cat-litter',
     question: 'How to get cat litter smell out of house?',
     category: 'Removal',
     preview: 'Deep clean with enzymatic cleaners and add activated carbon to litter boxes for ongoing control...',
@@ -257,7 +257,7 @@ const paaQuestions = [
     preview: 'Eliminate smell permanently with activated carbon additives that adsorb ammonia molecules...',
   },
   {
-    slug: 'how-to-prevent-cat-litter-smell',
+    slug: 'how-to-eliminate-cat-litter-odor',
     question: 'How to prevent cat litter smell?',
     category: 'Prevention',
     preview: 'Prevent smell before it starts with daily scooping and activated carbon in the litter...',
@@ -374,7 +374,7 @@ export default function CatLitterAnswersPage() {
             Try Purrify risk-free. If you do not notice a difference, we will refund you.
           </p>
           <Link
-            href="/products"
+            href="/products/"
             className="inline-flex items-center justify-center px-8 py-4 bg-[#F7A41D] hover:bg-[#E09400] text-white font-semibold rounded-full transition-colors"
           >
             Get Your Free Trial

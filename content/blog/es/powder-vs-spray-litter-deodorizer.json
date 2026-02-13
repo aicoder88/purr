@@ -32,7 +32,7 @@
   "locale": "es",
   "translations": {},
   "seo": {
-    "title": "Purrify vs Aerosol para Arena: Resultados de Prueba de 60 Días | Purrify",
+    "title": "Purrify vs Aerosol para Arena: Resultados de Prueba de 60 Días |…",
     "description": "Probé Purrify y desodorizantes en aerosol para arena durante 60 días. Purrify duró 10 veces más y costó 75% menos. Aquí está la ciencia detrás de por qué Purrify gana siempre.",
     "keywords": [
       "desodorizante arena",
@@ -40,9 +40,14 @@
       "mejor eliminador olor caja arena",
       "gránulos carbón activado",
       "comparación desodorizante arena gato",
-      "efectividad desodorizante aerosol"
+      "efectividad desodorizante aerosol",
+      "desodorizante-arena",
+      "purrify-vs-aerosol",
+      "carbón-activado",
+      "comparación-productos"
     ],
-    "ogImage": "/optimized/powder_vs_spray_hero_v2.webp"
+    "ogImage": "/optimized/powder_vs_spray_hero_v2.webp",
+    "canonical": "https://www.purrify.ca/es/blog/powder-vs-spray-litter-deodorizer"
   },
   "readingTime": 8
 }

@@ -67,7 +67,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       date: '2026-01-28',
       datePublished: '2025-10-06',
       lastUpdated: '2025-10-14',
-      image: '/optimized/coconut-carbon-ghibli.webp',
+      image: '/optimized/cat-litter-hero.webp',
       link: '/blog/how-to-get-rid-of-cat-pee-smell-apartment'
     },
     {
@@ -77,7 +77,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       date: '2026-01-27',
       datePublished: '2025-10-14',
       lastUpdated: '2026-02-02',
-      image: '/optimized/benefits-hero-science.webp',
+      image: '/optimized/fragrance-free-hero.webp',
       link: '/blog/fragrance-free-litter-deodorizer'
     },
     {
@@ -167,7 +167,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       date: '2026-01-03',
       datePublished: '2025-10-13',
       lastUpdated: '2026-01-04',
-      image: '/optimized/powder-spray-comparison-ghibli.webp',
+      image: '/optimized/cat-litter-deodorizer-guide.webp',
       link: '/blog/cat-litter-odour-control-tips'
     },
     {
@@ -400,7 +400,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "Cat litter smell unbearable in summer? Discover why heat makes ammonia odors 10x stronger and 4 science-backed solutions that work in hot weather.",
       author: 'Purrify Team',
       date: '2025-01-20',
-      image: '/optimized/summer-fresh-cat.webp',
+      image: '/optimized/summer-fresh-cat-ghibli.png',
       link: '/blog/cat-litter-smell-worse-summer'
     },
     {
@@ -448,7 +448,7 @@ function generateLatestBlogPosts(): BlogPost[] {
       excerpt: "I tested 10 common cat litter odor control myths—coffee grounds, perfume sprays, daily scooping tricks—and measured the ammonia levels for each. Here's what actually works.",
       author: 'Purrify Team',
       date: '2024-12-09',
-      image: '/optimized/coffee-vs-carbon-ghibli.webp',
+      image: '/optimized/90day-science.webp',
       link: '/blog/cat-litter-odor-myths'
     }
   ];

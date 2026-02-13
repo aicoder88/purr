@@ -321,7 +321,7 @@ export default function ActivatedCarbonBenefitsClient() {
                 Try 12g Trial Size
               </Link>
               <Link
-                href="/products"
+                href="/products/"
                 className="inline-block border border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
               >
                 View All Sizes

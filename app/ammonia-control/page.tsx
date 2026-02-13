@@ -265,7 +265,7 @@ export default async function AmmoniaControlPage() {
         breadcrumb={ammonia.breadcrumb}
         headline={ammonia.hero.headline}
         subheadline={ammonia.hero.subheadline}
-        primaryCTA={{ label: ammonia.hero.cta, href: '/products' }}
+        primaryCTA={{ label: ammonia.hero.cta, href: '/products/' }}
         secondaryCTA={{ label: ammonia.hero.secondaryCta, href: '#how-it-works' }}
         image="/images/ammonia-hero.webp"
         imageAlt="Purrify activated carbon cat litter deodorizer"
@@ -661,7 +661,7 @@ export default async function AmmoniaControlPage() {
       <FinalCTA
         headline={ammonia.cta.headline}
         subheadline={ammonia.cta.subheadline}
-        primaryCTA={{ label: ammonia.cta.button, href: '/products' }}
+        primaryCTA={{ label: ammonia.cta.button, href: '/products/' }}
         secondaryCTA={{ label: ammonia.cta.secondaryButton, href: '/products/trial' }}
         benefits={[ammonia.cta.benefit2]}
       />

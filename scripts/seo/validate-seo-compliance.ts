@@ -377,7 +377,7 @@ async function analyzeLinkStructure(pages: ScannedPage[]): Promise<{
   return {
     errors,
     warnings,
-    orphanCount: orphanPages.filter((p) => !p.includes('[')).length,
+    orphanCount: orphanPages.filter((p) => !p.includes('[') && p !== '/').length,
     weakCount: weakPages.filter((p) => !p.includes('[')).length,
     deadEndCount: deadEndPages.filter((p) => !p.startsWith('/buy') && !p.includes('checkout') && !p.includes('thank-you')).length,
   };

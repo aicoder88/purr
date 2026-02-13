@@ -32,17 +32,22 @@
   "locale": "fr",
   "translations": {},
   "seo": {
-    "title": "Purrify vs Spray pour litière : Résultats de test de 60 jours | Purrify",
-    "description": "J'ai testé Purrify et des désodorisants pour litière en spray pendant 60 jours. Purrify a duré 10 fois plus longtemps et coûté 75 % moins cher. Voici pourquoi Purrify gagne à chaque fois.",
+    "title": "Purrify vs Spray pour litière : Résultats de test de 60 jours |…",
+    "description": "J'ai testé Purrify et des désodorisants pour litière en spray pendant 60 jours. Purrify a duré 10 fois plus longtemps et coûté 75 % moins cher. Voici pourquoi Purrify gagne…",
     "keywords": [
       "désodorisant litière",
       "purrify vs spray",
       "meilleur éliminateur odeur litière",
       "granulés charbon actif",
       "comparaison désodorisant litière chat",
-      "efficacité désodorisant spray"
+      "efficacité désodorisant spray",
+      "désodorisant-litière",
+      "purrify-vs-spray",
+      "charbon-actif",
+      "comparaison-produits"
     ],
-    "ogImage": "/optimized/powder_vs_spray_hero_v2.webp"
+    "ogImage": "/optimized/powder_vs_spray_hero_v2.webp",
+    "canonical": "https://www.purrify.ca/fr/blog/powder-vs-spray-litter-deodorizer"
   },
   "readingTime": 8
 }

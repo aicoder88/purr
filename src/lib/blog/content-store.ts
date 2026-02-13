@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import type { BlogPost, Category, Tag } from '@/types/blog';
+import { syncPreviewAndHeroImage } from '@/lib/blog/hero-preview-image-sync';
 
 export interface SaveOptions {
   skipValidation?: boolean;
@@ -230,9 +231,13 @@ export class ContentStore {
 
   async savePost(post: BlogPost, options: SaveOptions = {}): Promise<SaveResult> {
     try {
+      // Keep the first content image (hero) and preview image in sync.
+      const syncResult = syncPreviewAndHeroImage(post);
+      const syncedPost = syncResult.post as BlogPost;
+
       // Sanitize slug and locale
-      const safeSlug = sanitizeSlug(post.slug);
-      const safeLocale = sanitizeLocale(post.locale);
+      const safeSlug = sanitizeSlug(syncedPost.slug);
+      const safeLocale = sanitizeLocale(syncedPost.locale);
 
       const localeDir = path.join(this.contentDir, safeLocale);
 
@@ -255,14 +260,14 @@ export class ContentStore {
         throw new Error('Path traversal detected: invalid file path');
       }
 
-      fs.writeFileSync(filePath, JSON.stringify(post, null, 2));
+      fs.writeFileSync(filePath, JSON.stringify(syncedPost, null, 2));
 
 
 
       return {
         success: true,
         validation: { valid: true, errors: [], warnings: [] },
-        post,
+        post: syncedPost,
       };
     } catch (error) {
       console.error(`Error saving post ${post.slug}: `, error);

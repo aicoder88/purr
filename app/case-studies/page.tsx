@@ -397,7 +397,7 @@ export default function CaseStudiesPage() {
                 </p>
                 <div className="space-x-4">
                   <Link
-                    href="/products"
+                    href="/products/"
                     className="inline-flex items-center bg-[#FF3131] text-white dark:text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/90 transition-colors"
                   >
                     Shop Purrify

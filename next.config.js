@@ -563,6 +563,101 @@ const REDIRECTS = [
     permanent: true
   },
   {
+    source: "/learn/answers/how-to-control-cat-litter-odor",
+    destination: "/learn/answers/how-to-eliminate-cat-litter-odor",
+    permanent: true
+  },
+  {
+    source: "/learn/answers/how-to-reduce-cat-litter-odor",
+    destination: "/learn/answers/how-to-eliminate-cat-litter-odor",
+    permanent: true
+  },
+  {
+    source: "/learn/answers/how-to-stop-cat-litter-odor",
+    destination: "/learn/answers/how-to-eliminate-cat-litter-odor",
+    permanent: true
+  },
+  {
+    source: "/learn/answers/how-to-prevent-cat-litter-smell",
+    destination: "/learn/answers/how-to-eliminate-cat-litter-odor",
+    permanent: true
+  },
+  {
+    source: "/learn/answers/how-to-remove-cat-litter-smell-from-room",
+    destination: "/learn/answers/how-to-keep-litter-box-from-smelling",
+    permanent: true
+  },
+  {
+    source: "/learn/answers/how-to-get-cat-litter-smell-out-of-house",
+    destination: "/learn/answers/how-do-i-keep-my-house-from-smelling-like-cat-litter",
+    permanent: true
+  },
+  {
+    source: "/learn/answers/what-neutralizes-cat-litter-smell",
+    destination: "/learn/answers/what-eliminates-cat-litter-odor",
+    permanent: true
+  },
+  {
+    source: "/learn/answers/what-cat-litter-smells-the-best",
+    destination: "/learn/answers/what-cat-litter-controls-odor-best",
+    permanent: true
+  },
+  {
+    source: "/learn/answers/which-cat-litter-controls-odor-the-best",
+    destination: "/learn/answers/what-cat-litter-controls-odor-best",
+    permanent: true
+  },
+  {
+    source: "/learn/answers/which-cat-litter-has-the-best-odor-control",
+    destination: "/learn/answers/what-cat-litter-controls-odor-best",
+    permanent: true
+  },
+  {
+    source: "/learn/answers/which-cat-litter-smells-the-best",
+    destination: "/learn/answers/what-cat-litter-controls-odor-best",
+    permanent: true
+  },
+  {
+    source: "/learn/answers/does-cat-litter-smell-like-ammonia",
+    destination: "/learn/answers/why-does-my-house-smell-like-cat-pee",
+    permanent: true
+  },
+  {
+    source: "/learn/answers/why-does-cat-litter-smell-like-ammonia",
+    destination: "/learn/answers/why-does-my-house-smell-like-cat-pee",
+    permanent: true
+  },
+  {
+    source: "/learn/answers/why-does-cat-litter-smell-so-bad",
+    destination: "/learn/answers/how-do-i-stop-my-cat-litter-from-smelling",
+    permanent: true
+  },
+  {
+    source: "/learn/answers/is-cat-litter-smell-toxic",
+    destination: "/learn/cat-litter-ammonia-health-risks",
+    permanent: true
+  },
+  {
+    source: "/learn/answers/is-cat-litter-smell-bad-for-you",
+    destination: "/learn/cat-litter-ammonia-health-risks",
+    permanent: true
+  },
+  {
+    source: "/learn/answers/can-cat-litter-smell-make-you-sick",
+    destination: "/learn/cat-litter-ammonia-health-risks",
+    permanent: true
+  },
+  {
+    source: "/learn/answers/can-i-use-essential-oils-in-cat-litter",
+    destination: "/learn/safety",
+    permanent: true
+  },
+  {
+    source: "/learn/answers/how-to-get-rid-of-cat-odor-in-small-space",
+    destination: "/learn/solutions/apartment-cat-smell-solution",
+    permanent: true
+  },
+  {
     source: "/solutions/ammonia-smell-cat-litter",
     destination: "/learn/solutions/ammonia-smell-cat-litter",
     permanent: true

@@ -37,8 +37,8 @@ export const metadata: Metadata = {
 };
 
 const relatedQuestions = [
-  { slug: 'is-cat-litter-smell-toxic', question: 'Is cat litter smell toxic?' },
-  { slug: 'can-cat-litter-smell-make-you-sick', question: 'Can cat litter smell make you sick?' },
+  { slug: 'why-does-my-house-smell-like-cat-pee', question: 'Is cat litter smell toxic?' },
+  { slug: 'how-do-i-stop-my-cat-litter-from-smelling', question: 'Can cat litter smell make you sick?' },
   { slug: 'how-do-i-keep-my-house-from-smelling-like-cat-litter', question: 'How do I keep my house from smelling like cat litter?' },
 ];
 
@@ -101,7 +101,7 @@ export default function QuestionPage() {
                 Sleep better with odor-free litter.
               </p>
               <Link
-                href="/products"
+                href="/products/"
                 className="inline-flex items-center justify-center px-6 py-3 bg-[#F7A41D] hover:bg-[#E09400] text-white dark:text-white font-semibold rounded-full transition-colors"
               >
                 Get Free Trial

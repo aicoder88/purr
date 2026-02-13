@@ -269,7 +269,7 @@ export default function CatLitterAmmoniaHealthRisksClient() {
                 </div>
               </div>
               <Link
-                href="/products"
+                href="/products/"
                 className="inline-flex items-center gap-2 bg-white dark:bg-gray-100 text-forest-900 dark:text-forest-950 font-medium px-6 py-3 rounded-lg mt-6 hover:bg-forest-50 dark:hover:bg-gray-200 transition-colors"
               >
                 Try Purrify Activated Carbon

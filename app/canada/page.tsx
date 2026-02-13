@@ -244,7 +244,7 @@ export default async function CanadaPage() {
                   Try for {trialPrice}
                 </Link>
                 <Link
-                  href="/products"
+                  href="/products/"
                   className="inline-flex items-center justify-center gap-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all border border-gray-200 dark:border-gray-700"
                 >
                   View All Products
