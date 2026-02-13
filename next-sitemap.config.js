@@ -1,21 +1,25 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: 'https://www.purrify.ca',
+  generateIndexSitemap: false,
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [
       {
         userAgent: '*',
         allow: '/',
+        disallow: ['/api/*', '/admin/*'],
       },
-      {
-        userAgent: '*',
-        disallow: ['/api/*', '/admin/*', '/_next/*', '/static/*'],
-      },
+      { userAgent: 'GPTBot', allow: '/' },
+      { userAgent: 'ChatGPT-User', allow: '/' },
+      { userAgent: 'OAI-SearchBot', allow: '/' },
+      { userAgent: 'ClaudeBot', allow: '/' },
+      { userAgent: 'PerplexityBot', allow: '/' },
+      { userAgent: 'CCBot', allow: '/' },
+      { userAgent: 'Google-Extended', allow: '/' },
+      { userAgent: 'Bytespider', allow: '/' },
     ],
-    additionalSitemaps: [
-
-    ],
+    additionalSitemaps: [],
     host: 'https://www.purrify.ca',
   },
   changefreq: 'daily',

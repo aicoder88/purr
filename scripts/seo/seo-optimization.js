@@ -26,14 +26,14 @@ class SEOOptimizer {
     console.log(`${prefix} [${timestamp}] ${message}`);
   }
 
-  // Generate comprehensive sitemap
+  // Generate canonical sitemap
   async generateSitemap() {
     this.log('Generating sitemap...');
     
     try {
-      // Use the working sitemap generation script
+      // Generate only the canonical sitemap + robots via next-sitemap
       const { execSync } = require('node:child_process');
-      execSync('pnpm generate-enhanced-sitemap', { cwd: this.projectRoot, stdio: 'inherit' });
+      execSync('pnpm next-sitemap', { cwd: this.projectRoot, stdio: 'inherit' });
       this.log('Sitemap generated successfully', 'success');
     } catch (error) {
       this.log(`Sitemap generation failed: ${error.message}`, 'error');
@@ -64,29 +64,36 @@ class SEOOptimizer {
   createDefaultRobotsTxt() {
     const robotsContent = `User-agent: *
 Allow: /
+Disallow: /api/*
+Disallow: /admin/*
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
 
 # Sitemaps
 Sitemap: https://www.purrify.ca/sitemap.xml
-Sitemap: https://www.purrify.ca/sitemap-index.xml
-
-# Block admin and private areas
-Disallow: /admin/
-Disallow: /api/
-Disallow: /_next/
-Disallow: /checkout/success
-Disallow: /checkout/cancel
-
-# Allow important pages
-Allow: /
-Allow: /fr/
-Allow: /products/
-Allow: /learn/
-Allow: /customers/
-Allow: /support/
-Allow: /about/
-
-# Crawl delay
-Crawl-delay: 1`;
+`;
 
     const robotsPath = path.join(this.publicDir, 'robots.txt');
     fs.writeFileSync(robotsPath, robotsContent);

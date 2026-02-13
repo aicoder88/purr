@@ -1,13 +1,40 @@
 # *
 User-agent: *
 Allow: /
-
-# *
-User-agent: *
 Disallow: /api/*
 Disallow: /admin/*
-Disallow: /_next/*
-Disallow: /static/*
+
+# GPTBot
+User-agent: GPTBot
+Allow: /
+
+# ChatGPT-User
+User-agent: ChatGPT-User
+Allow: /
+
+# OAI-SearchBot
+User-agent: OAI-SearchBot
+Allow: /
+
+# ClaudeBot
+User-agent: ClaudeBot
+Allow: /
+
+# PerplexityBot
+User-agent: PerplexityBot
+Allow: /
+
+# CCBot
+User-agent: CCBot
+Allow: /
+
+# Google-Extended
+User-agent: Google-Extended
+Allow: /
+
+# Bytespider
+User-agent: Bytespider
+Allow: /
 
 # Host
 Host: https://www.purrify.ca
