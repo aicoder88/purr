@@ -8,7 +8,7 @@ export interface ScientificCitation {
   title: string;
   authors: string;
   journal: string;
-  year: number;
+  year?: number;
   doi?: string;
   pmid?: string;
   url: string;
@@ -30,18 +30,20 @@ export interface ClaimReview {
  */
 export const SCIENTIFIC_CITATIONS: ScientificCitation[] = [
   {
-    id: 'ammonia-adsorption-2019',
-    title: 'Adsorption of Ammonia on Activated Carbon: A Review of Mechanisms and Kinetics',
-    authors: 'Zhang, L., Wang, Y., Chen, X.',
-    journal: 'Journal of Hazardous Materials',
-    year: 2019,
-    url: 'https://scholar.google.com/scholar?q=Adsorption+of+Ammonia+on+Activated+Carbon+Zhang',
-    summary: 'Activated carbon demonstrates high adsorption capacity for ammonia (NH₃) through physisorption mechanisms. The study reviews kinetics and the role of surface chemistry in optimal binding.',
+    id: 'ammonia-removal-activated-carbon-2011',
+    title: 'Ammonia Removal Using Activated Carbons: Effect of the Surface Chemistry in Dry and Moist Conditions',
+    authors: 'Goncalves, M.; Sanchez-Garcia, L.; de Oliveira Jardim, E.; Silvestre-Albero, J.; Rodriguez-Reinoso, F.',
+    journal: 'Environmental Science & Technology',
+    year: 2011,
+    doi: '10.1021/es203093v',
+    pmid: '22049916',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/22049916/',
+    summary: 'Study evaluating activated carbons for ammonia (NH3) removal under dry and moist conditions, including how surface chemistry influences adsorption performance.',
     claims: [
       'Activated carbon adsorbs ammonia molecules',
-      'Physisorption is the primary mechanism for ammonia capture',
+      'Activated carbon can remove ammonia under different humidity conditions',
     ],
-    sourceType: 'peer-reviewed',
+    sourceType: 'pubmed',
   },
   {
     id: 'h2s-removal-biogas-2020',
@@ -49,25 +51,39 @@ export const SCIENTIFIC_CITATIONS: ScientificCitation[] = [
     authors: 'Sawalha, H., Maghalseh, M., Qutaina, J., Junaidi, K., Rene, E.R.',
     journal: 'Bioengineered',
     year: 2020,
-    url: 'https://www.tandfonline.com/doi/full/10.1080/21655979.2020.1736254',
-    summary: 'Activated carbon synthesized from biomass demonstrates high efficiency in removing hydrogen sulfide (H₂S) through adsorption, achieving significant removal rates.',
+    doi: '10.1080/21655979.2020.1768736',
+    pmid: '32463312',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/32463312/',
+    summary: 'Study evaluating activated carbon derived from biomass for hydrogen sulfide (H2S) removal via adsorption.',
     claims: [
       'Activated carbon removes hydrogen sulfide',
-      'Achieves high removal efficiency for sulfur compounds',
+      'Activated carbon adsorbs sulfur-containing odor compounds',
     ],
-    sourceType: 'peer-reviewed',
+    sourceType: 'pubmed',
   },
   {
-    id: 'epa-indoor-air',
-    title: 'Indoor Air Quality (IAQ) and Activated Carbon',
-    authors: 'EPA Office of Radiation and Indoor Air',
+    id: 'epa-activated-carbon-adsorption-pdf-2018',
+    title: 'EPA - Activated Carbon Adsorption',
+    authors: 'United States Environmental Protection Agency (EPA)',
+    journal: 'United States Environmental Protection Agency',
+    url: 'https://www.epa.gov/sites/default/files/2018-11/documents/activated_carbon_adsorption_intro_0.pdf',
+    summary: 'EPA introductory document on activated carbon adsorption.',
+    claims: [
+      'Activated carbon adsorption is driven by surface area and pore structure',
+      'Activated carbon can adsorb odor-causing molecules',
+    ],
+    sourceType: 'epa',
+  },
+  {
+    id: 'epa-guide-air-cleaners-2023',
+    title: 'Guide to Air Cleaners in the Home',
+    authors: 'United States Environmental Protection Agency (EPA)',
     journal: 'United States Environmental Protection Agency',
     year: 2023,
-    url: 'https://www.epa.gov/indoor-air-quality-iaq',
-    summary: 'EPA resources highlight the importance of controlling indoor pollutants. Activated carbon is a recognized technology for adsorbing odors and volatile organic compounds (VOCs).',
+    url: 'https://www.epa.gov/indoor-air-quality-iaq/guide-air-cleaners-home',
+    summary: 'EPA consumer guidance describing which types of home air cleaners can help with different pollutants, including activated carbon for certain gases.',
     claims: [
-      'Activated carbon removes VOCs and odor molecules',
-      'Effective technology for indoor air purification',
+      'Activated carbon filters can help reduce certain gases and odors indoors',
     ],
     sourceType: 'epa',
   },
@@ -82,22 +98,22 @@ export const CLAIM_REVIEWS: ClaimReview[] = [
     claim: 'Activated carbon traps ammonia molecules',
     rating: 5,
     ratingLabel: 'True',
-    citationIds: ['ammonia-adsorption-2019'],
-    explanation: 'Peer-reviewed studies confirm activated carbon effectively adsorbs ammonia through physisorption mechanisms.',
+    citationIds: ['ammonia-removal-activated-carbon-2011'],
+    explanation: 'A PubMed-indexed study evaluates activated carbons for ammonia removal, including performance under dry and moist conditions.',
   },
   {
     claim: 'Activated carbon removes hydrogen sulfide',
     rating: 5,
     ratingLabel: 'True',
     citationIds: ['h2s-removal-biogas-2020'],
-    explanation: 'Research demonstrates high removal efficiency for hydrogen sulfide (H₂S), a key odor compound.',
+    explanation: 'A PubMed-indexed study evaluates activated carbon for hydrogen sulfide (H2S) adsorption.',
   },
   {
     claim: 'Activated carbon is effective for indoor air quality',
     rating: 5,
     ratingLabel: 'True',
-    citationIds: ['epa-indoor-air'],
-    explanation: 'The EPA references activated carbon as an established method for reducing indoor odors and VOCs.',
+    citationIds: ['epa-guide-air-cleaners-2023'],
+    explanation: 'EPA guidance describes activated carbon filters as an option for reducing certain indoor gases and odors.',
   },
 ];
 
@@ -148,18 +164,25 @@ export function getClaimReviewSchema(claimText: string, pageUrl: string): object
     datePublished: new Date().toISOString(),
     citation: claim.citationIds.map(id => {
       const citation = SCIENTIFIC_CITATIONS.find(c => c.id === id);
-      return citation ? {
+      if (!citation) return null;
+
+      const scholarlyArticle: Record<string, unknown> = {
         '@type': 'ScholarlyArticle',
         headline: citation.title,
         author: citation.authors,
-        datePublished: citation.year,
         isPartOf: {
           '@type': 'Periodical',
           name: citation.journal,
         },
         identifier: citation.doi || citation.pmid,
         url: citation.url,
-      } : null;
+      };
+
+      if (citation.year) {
+        scholarlyArticle.datePublished = citation.year;
+      }
+
+      return scholarlyArticle;
     }).filter(Boolean),
   };
 }
@@ -167,13 +190,14 @@ export function getClaimReviewSchema(claimText: string, pageUrl: string): object
 /**
  * Get all citations for a specific category
  */
-export function getCitationsByCategory(category: 'ammonia' | 'safety' | 'sulfur' | 'comparison' | 'health'): ScientificCitation[] {
+export function getCitationsByCategory(category: 'ammonia' | 'safety' | 'sulfur' | 'comparison' | 'health' | 'fundamentals'): ScientificCitation[] {
   const keywords: Record<string, string[]> = {
-    ammonia: ['ammonia', 'NH₃', 'nitrogen'],
+    ammonia: ['ammonia', 'nh3', 'nitrogen'],
     safety: ['safety', 'non-toxic', 'pet care', 'iaq'],
-    sulfur: ['sulfur', 'hydrogen sulfide', 'H₂S'],
+    sulfur: ['sulfur', 'hydrogen sulfide', 'h2s'],
     comparison: ['zeolite', 'comparison', 'versus'],
     health: ['health', 'exposure', 'respiratory', 'iaq'],
+    fundamentals: ['activated carbon adsorption'],
   };
 
   const searchTerms = keywords[category] || [];

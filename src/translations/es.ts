@@ -188,9 +188,9 @@ export const es: TranslationType = {
     instantly: "Elimina el Olor de la Caja de Arena Casi Al Instante",
     description: "Usando tecnologia de atrapamiento molecular de coco \"activado\" (sin quimicos) — la misma ciencia de filtracion que se encuentra en los sistemas de agua potable — una sola aplicacion reduce drasticamente el olor de la caja de arena casi inmediatamente y continua funcionando hasta por 7 dias completos.",
     socialProof: {
-      trustNumber: "1,000+",
-      trustText: "padres de gatos se despidieron del olor de caja de arena",
-      ratingText: "4.8/5 estrellas - 'Mi apartamento ya no apesta!'"
+      trustNumber: "Sin fragancia",
+      trustText: "aditivo de carbon activado",
+      ratingText: "Control de olor sin perfumes"
     },
     pricing: {
       trial: "Prueba GRATIS (solo $4.76 envio)",
@@ -205,7 +205,7 @@ export const es: TranslationType = {
     },
     ariaLabels: {
       shopNow: "Comprar productos Purrify ahora",
-      reviews: "Leer mas de 138 opiniones de clientes",
+      reviews: "Leer opiniones de clientes",
       playVideo: "Reproducir video demostrativo mostrando como Purrify elimina olores de arena"
     },
     dualPath: {
@@ -1005,12 +1005,12 @@ export const es: TranslationType = {
   reviewsSection: {
     customerReviews: "Opiniones de Clientes",
     realStories: "Historias reales de padres de gatos felices",
-    verifiedReviews: "Opiniones Verificadas",
+    verifiedReviews: "Opiniones de Clientes",
     averageRating: "Calificacion Promedio",
     readMore: "Leer Mas",
     writeReview: "Escribir Opinion",
     helpful: "Util",
-    verified: "Verificado",
+    verified: "Cliente",
     productUsed: "Producto Usado",
     catsOwned: "Gatos que Tiene",
     useCase: "Caso de Uso"
@@ -1032,7 +1032,7 @@ export const es: TranslationType = {
     keyPainPoints: "Puntos de Dolor Clave",
     implementation: "Implementacion",
     writeYourStory: "Listo para escribir tu propia historia de exito?",
-    joinSatisfied: "Unete a mas de 1,000 clientes satisfechos transformando sus hogares con Purrify.",
+    joinSatisfied: "Comienza con una prueba de bajo riesgo y ve como encaja en tu rutina.",
     shopPurrify: "Comprar Purrify",
     tryFreeSample: "Probar una Muestra Gratis",
     moreCustomerStories: "Mas Historias de Clientes",
@@ -1100,14 +1100,14 @@ export const es: TranslationType = {
       highlight: "Procesamiento el Mismo Dia"
     },
     customerRating: {
-      title: "Calificacion 4.9/5 de Clientes",
-      description: "Basado en 138 opiniones verificadas",
-      highlight: "98% Satisfaccion"
+      title: "Comentarios de Clientes",
+      description: "Guias y recursos para reducir olor con aditivo de carbon activado",
+      highlight: "Sin Fragancia"
     },
     happyCustomers: {
-      title: "Mas de 1,000 Clientes Felices",
-      description: "Confiado por duenos de gatos en Canada",
-      highlight: "Desde 2019"
+      title: "Comunidad de Duenos de Gatos",
+      description: "Usado por duenos de gatos en Canada",
+      highlight: "Soporte en Canada"
     },
     premiumQuality: {
       title: "Calidad Premium",
@@ -1999,13 +1999,13 @@ export const es: TranslationType = {
       quickReliableShipping: "Envio rapido y confiable",
       skipAnytime: "Salta Cuando Quieras",
       fullControlDeliveries: "Control total sobre entregas",
-      lovedByCustomers: "Amado por mas de 1,000 clientes",
-      joinSatisfiedCustomers: "Unete a mas de 1,000 clientes satisfechos:",
+      lovedByCustomers: "Amado por duenos de gatos",
+      joinSatisfiedCustomers: "Unete a clientes satisfechos:",
       thirtyDayGuarantee: "Soporte continuo de olores",
       moneyBackPromise: "Atencion al cliente dedicada",
-      fiveStarRated: "Calificacion 5 Estrellas",
-      reviewsRating: "4.9/5 de 138 opiniones",
-      testimonialQuote: "\"He ahorrado mas de $200 este ano con mi suscripcion, y la caja de arena de mis gatos nunca huele!\" - Sarah M."
+      fiveStarRated: "Enfoque sin fragancia",
+      reviewsRating: "Opiniones de clientes",
+      testimonialQuote: ""
     }
   },
 
@@ -2815,13 +2815,13 @@ export const es: TranslationType = {
   tryFreePage: {
     meta: {
       title: "Prueba Purrify Gratis - Solo $4.76 de Envio | Eliminador de Olores de Arena para Gatos",
-      description: "Obtiene tu prueba GRATIS de Purrify - solo $4.76 de envio. Elimina el olor de caja de arena en 30 segundos. 138+ opiniones de 5 estrellas. Garantia de 30 dias."
+      description: "Obtiene tu prueba GRATIS de Purrify - solo $4.76 de envio. Pruebalo en tu rutina de arena y ve la diferencia."
     },
     hero: {
       badge: "Oferta Por Tiempo Limitado",
       headline: "Prueba Purrify Gratis",
       subheadline: "Solo $4.76 de Envio",
-      description: "Descubre por que mas de 1,000 padres de gatos confian en Purrify para eliminar el olor de caja de arena. Obtiene tu prueba gratis hoy y experimenta la diferencia.",
+      description: "Prueba un aditivo de carbon activado en tu rutina de arena y ve la diferencia.",
       cta: "Obtener Mi Prueba Gratis",
       shippingNote: "Envios a cualquier lugar de Canada"
     },
@@ -2857,10 +2857,10 @@ export const es: TranslationType = {
       ]
     },
     socialProof: {
-      headline: "Unete a Mas de 1,000 Padres de Gatos Felices",
-      rating: "4.9",
-      reviewCount: "138",
-      reviewLabel: "Opiniones Verificadas",
+      headline: "Que Puedes Esperar",
+      rating: "",
+      reviewCount: "",
+      reviewLabel: "",
       testimonials: [
         {
           text: "Era esceptica, pero en horas todo mi apartamento olia fresco. Mis invitados no tenian idea de que tenia gatos!",
@@ -3119,7 +3119,7 @@ export const es: TranslationType = {
   reviews: {
     heading: "Lo Que Dicen los Dueños de Gatos",
     subheading: "Reseñas reales de clientes reales",
-    verifiedPurchase: "Compra Verificada",
+    verifiedPurchase: "Compra",
     helpful: "Útil",
     writeReview: "Escribir una Reseña",
     filterBy: "Filtrar por",
@@ -3136,39 +3136,39 @@ export const es: TranslationType = {
 
   // Reviews Page (Full Page)
   reviewsPage: {
-    pageTitle: "Reseñas de Clientes - Testimonios Verificados",
-    metaDescription: "★ Calificación de 4.9/5 | Más de 1,000 dueños de gatos eliminaron el olor de la caja de arena con Purrify. Lee reseñas reales. Envíos a EE.UU. y Canadá.",
+    pageTitle: "Reseñas de Clientes",
+    metaDescription: "Comentarios de clientes sobre Purrify y cómo usar un aditivo de carbón activado para reducir el olor de la caja de arena. Envíos a EE.UU. y Canadá.",
     badge: "Reseñas de Clientes",
     heading: "Historias Reales de Dueños de Gatos Felices",
-    description: "Descubre por qué más de 1,000 dueños de gatos canadienses confían en Purrify para eliminar naturalmente los olores de la caja de arena. Lee reseñas verificadas de clientes reales en todo Canadá.",
+    description: "Comentarios de clientes sobre Purrify y consejos prácticos para reducir el olor de la caja de arena con un aditivo de carbón activado.",
     breadcrumb: {
       home: "Inicio",
       reviews: "Reseñas"
     },
     stats: {
       averageRating: "Calificación Promedio",
-      verifiedReviews: "Reseñas Verificadas",
+      verifiedReviews: "Reseñas de Clientes",
       happyCustomers: "Clientes Satisfechos",
       monthsInMarket: "Meses en el Mercado"
     },
     reviewCard: {
-      verified: "Verificado",
+      verified: "Cliente",
       product: "Producto",
       cats: "Gatos",
       useCase: "Caso de Uso"
     },
     trustSection: {
       heading: "Por Qué los Clientes Confían en Purrify",
-      verifiedTitle: "Reseñas Verificadas",
-      verifiedDesc: "Todas las reseñas son de compradores verificados que han usado productos Purrify.",
-      ratingTitle: "Calificación de 4.9/5",
-      ratingDesc: "Calificaciones consistentemente altas en todos los tamaños de productos y tipos de clientes.",
-      customersTitle: "Más de 1,000 Clientes",
-      customersDesc: "Una comunidad creciente de dueños de gatos satisfechos en todo Canadá."
+      verifiedTitle: "Reseñas de Clientes",
+      verifiedDesc: "Publicaremos reseñas y calificaciones cuando el sistema de reseñas de terceros esté listo.",
+      ratingTitle: "Ciencia y guías",
+      ratingDesc: "Revisa citas y guías para verificar afirmaciones clave.",
+      customersTitle: "Recursos útiles",
+      customersDesc: "Soluciones para olor de la caja de arena, amoníaco y uso seguro."
     },
     ctaSection: {
-      heading: "Únete a Más de 1,000 Dueños de Gatos Felices",
-      description: "Experimenta los mismos resultados que nuestros clientes verificados. Prueba Purrify sin riesgo y descubre por qué es el desodorizante natural para arena más confiable de Canadá.",
+      heading: "¿Listo para probarlo en casa?",
+      description: "Comienza con una prueba de bajo riesgo y ve cómo encaja en tu rutina de arena.",
       shopNow: "Comprar Ahora",
       tryFreeSample: "Probar Muestra Gratis"
     },
@@ -3194,10 +3194,11 @@ export const es: TranslationType = {
   // Review System Component
   reviewSystem: {
     customerReviews: "Reseñas de Clientes",
+    comingSoon: "Las reseñas de clientes aparecerán aquí cuando nuestro sistema de reseñas esté en funcionamiento.",
     reviews: "reseñas",
     basedOn: "Basado en",
     wouldRecommend: "lo recomendarían",
-    verifiedPurchases: "compras verificadas",
+    verifiedPurchases: "compras",
     viewAllReviews: "Ver Todas las Reseñas",
     loadMoreReviews: "Cargar Más Reseñas",
     filters: {
@@ -3217,7 +3218,7 @@ export const es: TranslationType = {
       mostHelpful: "Más Útil"
     },
     review: {
-      verifiedPurchase: "Compra Verificada",
+      verifiedPurchase: "Compra",
       size: "Tamaño",
       cat: "gato",
       cats: "gatos",

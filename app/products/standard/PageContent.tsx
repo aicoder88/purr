@@ -52,7 +52,7 @@ const STANDARD_PAGE_COPY: Record<SupportedLocale, {
   en: {
     breadcrumbProducts: 'Products',
     badgeMostPopular: 'Most Popular',
-    verifiedStories: '138+ Verified Home Stories',
+    verifiedStories: 'Activated carbon additive',
     heroDescription: 'The perfect solution for single-cat households. 50 grams of high-surface-area activated carbon that traps ammonia before it ever reaches your nose.',
     shipsNextBusinessDay: 'Ships Next Business Day',
     lifestyleImageAlt: 'Purrify Regular Size in action',
@@ -86,7 +86,7 @@ const STANDARD_PAGE_COPY: Record<SupportedLocale, {
   fr: {
     breadcrumbProducts: 'Produits',
     badgeMostPopular: 'Le plus populaire',
-    verifiedStories: '138+ avis verifies de foyers',
+    verifiedStories: 'Additif au charbon actif',
     heroDescription: 'La solution ideale pour les foyers avec un seul chat. 50 grammes de charbon actif a grande surface qui capte lammoniac avant meme que vous le sentiez.',
     shipsNextBusinessDay: 'Expedie le prochain jour ouvrable',
     lifestyleImageAlt: 'Format standard Purrify en action',
@@ -120,7 +120,7 @@ const STANDARD_PAGE_COPY: Record<SupportedLocale, {
   zh: {
     breadcrumbProducts: '产品',
     badgeMostPopular: '最受欢迎',
-    verifiedStories: '138+ 条真实家庭评价',
+    verifiedStories: '活性炭添加剂',
     heroDescription: '单猫家庭的理想选择。50克高比表面积活性炭，在异味进入鼻子前先吸附氨气。',
     shipsNextBusinessDay: '下一个工作日发货',
     lifestyleImageAlt: 'Purrify 标准装使用场景',
@@ -154,7 +154,7 @@ const STANDARD_PAGE_COPY: Record<SupportedLocale, {
   es: {
     breadcrumbProducts: 'Productos',
     badgeMostPopular: 'Mas popular',
-    verifiedStories: '138+ historias verificadas de hogares',
+    verifiedStories: 'Aditivo de carbon activado',
     heroDescription: 'La solucion perfecta para hogares con un solo gato. 50 gramos de carbon activado de alta superficie que atrapa el amoniaco antes de que llegue a tu nariz.',
     shipsNextBusinessDay: 'Envia el siguiente dia habil',
     lifestyleImageAlt: 'Tamano regular de Purrify en uso',
@@ -363,12 +363,10 @@ export default function StandardSizePage() {
                     </span>
                   </h1>
 
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="flex items-center gap-1 bg-white/50 dark:bg-gray-800/50 px-3 py-1 rounded-full border border-gray-100 dark:border-gray-700">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400 dark:text-yellow-500" />
-                      ))}
-                      <span className="text-sm font-bold text-gray-700 dark:text-gray-300 ml-1">4.9</span>
+                  <div className="flex flex-wrap items-center gap-3 mb-6">
+                    <div className="inline-flex items-center gap-2 bg-white/50 dark:bg-gray-800/50 px-3 py-1 rounded-full border border-gray-100 dark:border-gray-700 text-sm font-bold text-gray-700 dark:text-gray-300">
+                      <Zap className="w-4 h-4" />
+                      {copy.provenBadge}
                     </div>
                     <span className="text-gray-500 dark:text-gray-400 text-sm font-medium">{copy.verifiedStories}</span>
                   </div>

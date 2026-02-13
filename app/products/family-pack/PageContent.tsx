@@ -144,20 +144,7 @@ const COPY: Record<'en' | 'fr' | 'zh' | 'es', FamilyCopy> = {
   },
 };
 
-const TESTIMONIALS = [
-  {
-    name: 'Kai L., Outremont',
-    text: 'Great for our two-cat setup. No perfume cloud, just cleaner litter air.',
-    rating: 5,
-    petName: 'Luna and Shadow',
-  },
-  {
-    name: 'Noor A., West Island',
-    text: 'Three cats in a small home and this format keeps our routine manageable.',
-    rating: 5,
-    petName: 'Muffin, Simba and Cleo',
-  },
-];
+const TESTIMONIALS: Array<{ name: string; text: string; rating: number; petName: string }> = [];
 
 export default function FamilyPackPage() {
   const { t, locale } = useTranslation();
@@ -298,14 +285,6 @@ export default function FamilyPackPage() {
                     {copy.heroTitle}
                   </h1>
                   <p className="text-xl text-gray-600 dark:text-gray-300 mb-2">{copy.heroSubtitle}</p>
-                  <div className="flex items-center space-x-2 mb-4">
-                    <div className="flex items-center">
-                      {[...Array(5)].map((_, index) => (
-                        <Star key={index} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:text-yellow-300" />
-                      ))}
-                    </div>
-                    <span className="text-gray-600 dark:text-gray-400">{`${reviewData.reviewCount} ${copy.reviewsLabel}`}</span>
-                  </div>
                 </div>
 
                 <div className="space-y-3">
@@ -405,34 +384,38 @@ export default function FamilyPackPage() {
           </Container>
         </section>
 
-        <section className="py-16">
-          <Container>
-            <div className="text-center mb-12">
-              <h2 className="font-heading text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">{copy.storiesHeading}</h2>
-            </div>
+        {TESTIMONIALS.length > 0 && (
+          <section className="py-16">
+            <Container>
+              <div className="text-center mb-12">
+                <h2 className="font-heading text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
+                  {copy.storiesHeading}
+                </h2>
+              </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {TESTIMONIALS.map((testimonial) => (
-                <article key={testimonial.name} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-                  <div className="flex items-center mb-4">
-                    {[...Array(testimonial.rating)].map((_, index) => (
-                      <Star key={index} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:text-yellow-300" />
-                    ))}
-                  </div>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">{`"${testimonial.text}"`}</p>
-                  <p className="font-semibold text-gray-900 dark:text-gray-50">{testimonial.name}</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">{testimonial.petName}</p>
-                </article>
-              ))}
-            </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                {TESTIMONIALS.map((testimonial) => (
+                  <article key={testimonial.name} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+                    <div className="flex items-center mb-4">
+                      {[...Array(testimonial.rating)].map((_, index) => (
+                        <Star key={index} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:text-yellow-300" />
+                      ))}
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300 mb-4">{`"${testimonial.text}"`}</p>
+                    <p className="font-semibold text-gray-900 dark:text-gray-50">{testimonial.name}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">{testimonial.petName}</p>
+                  </article>
+                ))}
+              </div>
 
-            <div className="text-center mt-12">
-              <Link href={localizePath('/reviews', locale)}>
-                <Button variant="outline" size="lg">{copy.storiesCta}</Button>
-              </Link>
-            </div>
-          </Container>
-        </section>
+              <div className="text-center mt-12">
+                <Link href={localizePath('/reviews', locale)}>
+                  <Button variant="outline" size="lg">{copy.storiesCta}</Button>
+                </Link>
+              </div>
+            </Container>
+          </section>
+        )}
 
         <section className="py-16 bg-white dark:bg-gray-800/50">
           <Container>

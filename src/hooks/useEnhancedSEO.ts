@@ -289,16 +289,6 @@ function generateSchema(
           itemCondition: 'https://schema.org/NewCondition',
         },
       };
-      // Only add aggregateRating if rating data is provided
-      if (data.rating && data.rating.value && data.rating.count) {
-        productSchema.aggregateRating = {
-          '@type': 'AggregateRating',
-          ratingValue: data.rating.value.toString(),
-          reviewCount: data.rating.count.toString(),
-          bestRating: '5',
-          worstRating: '1',
-        };
-      }
       return productSchema;
     }
 

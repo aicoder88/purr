@@ -59,15 +59,11 @@ export function ProductsHero({ experimentCopy }: ProductsHeroProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="mt-8 flex items-center gap-4 text-sm font-medium text-gray-500 dark:text-gray-400"
+            className="mt-8 flex items-center gap-3 text-sm font-medium text-gray-500 dark:text-gray-400"
         >
-            <div className="flex -space-x-1">
-                {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:fill-yellow-500 dark:text-yellow-500" />
-                ))}
-            </div>
+            <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400" />
             <span>
-                {locale === 'fr' ? "Noté 4.9/5 par les parents de chats" : "Rated 4.9/5 by cat parents"}
+                {locale === 'fr' ? "Aditif sans parfum" : locale === 'zh' ? "无香型添加剂" : locale === 'es' ? "Aditivo sin fragancia" : "Fragrance-free additive"}
             </span>
         </motion.div>
     );

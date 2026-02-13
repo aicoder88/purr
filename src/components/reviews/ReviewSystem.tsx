@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Star, ThumbsUp, ThumbsDown, User, CheckCircle, Filter, SortAsc } from 'lucide-react';
-import Script from 'next/script';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/lib/translation-context';
 
@@ -54,106 +53,7 @@ const formatDate = (dateString: string): string => {
   });
 };
 
-const SAMPLE_REVIEWS: Review[] = [
-  {
-    id: '1',
-    userId: 'user1',
-    userName: 'Sarah M.',
-    rating: 5,
-    title: 'Life-changing for my multi-cat household!',
-    content: 'I have 3 cats and the litter box smell was becoming unbearable. Purrify completely eliminated the odor within hours. I can\'t believe how well this works! My guests don\'t even know I have cats anymore.',
-    date: '2024-01-15',
-    verified: true,
-    helpful: 24,
-    notHelpful: 1,
-    productSize: '120g',
-    catCount: 3,
-    usageDuration: '6 months',
-    wouldRecommend: true
-  },
-  {
-    id: '2',
-    userId: 'user2',
-    userName: 'Mike R.',
-    rating: 5,
-    title: 'Skeptical at first, now a believer',
-    content: 'I was doubtful about activated carbon making such a difference, but wow! The science really works. My apartment stays fresh all week instead of needing daily litter changes.',
-    date: '2024-01-12',
-    verified: true,
-    helpful: 18,
-    notHelpful: 0,
-    productSize: '50g',
-    catCount: 1,
-    usageDuration: '3 months',
-    wouldRecommend: true
-  },
-  {
-    id: '3',
-    userId: 'user3',
-    userName: 'Jennifer L.',
-    rating: 4,
-    title: 'Great product, wish I found it sooner',
-    content: 'Works exactly as advertised. The trial size convinced me to buy the large size. Only wish is that it came in even larger quantities for bulk savings.',
-    date: '2024-01-10',
-    verified: true,
-    helpful: 15,
-    notHelpful: 2,
-    productSize: '12g',
-    catCount: 2,
-    usageDuration: '2 months',
-    wouldRecommend: true
-  },
-  {
-    id: '4',
-    userId: 'user4',
-    userName: 'David K.',
-    rating: 5,
-    title: 'Perfect for automatic litter boxes',
-    content: 'I use this with my Litter-Robot and it\'s a perfect combination. The activated carbon doesn\'t interfere with the mechanism and keeps everything odor-free.',
-    date: '2024-01-08',
-    verified: true,
-    helpful: 12,
-    notHelpful: 0,
-    productSize: '120g',
-    catCount: 2,
-    usageDuration: '4 months',
-    wouldRecommend: true
-  },
-  {
-    id: '5',
-    userId: 'user5',
-    userName: 'Amanda T.',
-    rating: 4,
-    title: 'Good value for money',
-    content: 'Makes my litter last much longer, so it pays for itself. The 120g size is definitely the best value. Easy to use and effective.',
-    date: '2024-01-05',
-    verified: true,
-    helpful: 9,
-    notHelpful: 1,
-    productSize: '120g',
-    catCount: 1,
-    usageDuration: '5 months',
-    wouldRecommend: true
-  },
-  {
-    id: '6',
-    userId: 'user6',
-    userName: 'Robert H.',
-    rating: 5,
-    title: 'Veterinarian approved!',
-    content: 'As a vet, I\'m always cautious about new products. Purrify\'s fragrance-free, activated carbon approach is effective, and I now recommend it to clients seeking an odor-control option.',
-    date: '2024-01-03',
-    verified: true,
-    helpful: 31,
-    notHelpful: 0,
-    productSize: '50g',
-    catCount: 2,
-    usageDuration: '8 months',
-    wouldRecommend: true
-  }
-];
-
-const DISPLAY_REVIEW_COUNT = 138;
+const SAMPLE_REVIEWS: Review[] = [];
 
 // ============================================================================
 // Component
@@ -174,11 +74,15 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
 
   // Calculate review statistics
   const totalReviews = reviews.length;
-  const averageRating = reviews.reduce((sum, review) => sum + review.rating, 0) / totalReviews;
+  const averageRating = totalReviews > 0
+    ? reviews.reduce((sum, review) => sum + review.rating, 0) / totalReviews
+    : 0;
   const ratingDistribution = [5, 4, 3, 2, 1].map(rating => ({
     rating,
     count: reviews.filter(r => r.rating === rating).length,
-    percentage: (reviews.filter(r => r.rating === rating).length / totalReviews) * 100
+    percentage: totalReviews > 0
+      ? (reviews.filter(r => r.rating === rating).length / totalReviews) * 100
+      : 0
   }));
 
   // Filter and sort reviews
@@ -237,98 +141,36 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
     );
   };
 
-  // Generate structured data for reviews
-  const reviewsStructuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    '@id': 'https://www.purrify.ca/products/purrify-cat-litter-additive',
-    name: 'Purrify Activated Carbon Cat Litter Additive',
-    review: filteredReviews.slice(0, 10).map(review => ({
-      '@type': 'Review',
-      '@id': `https://www.purrify.ca/reviews/${review.id}`,
-      author: {
-        '@type': 'Person',
-        name: review.userName
-      },
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: review.rating.toString(),
-        bestRating: '5',
-        worstRating: '1'
-      },
-      name: review.title,
-      reviewBody: review.content,
-      datePublished: review.date,
-      publisher: {
-        '@type': 'Organization',
-        name: 'Purrify'
-      },
-      positiveNotes: review.wouldRecommend ? 'Customer recommends this product' : undefined,
-      itemReviewed: {
-        '@type': 'Product',
-        name: 'Purrify Activated Carbon Cat Litter Additive',
-        brand: {
-          '@type': 'Brand',
-          name: 'Purrify'
-        }
-      }
-    }))
-  };
+  // Reviews are intentionally not rendered until backed by a real review system.
+  // `includeSchema` is ignored to avoid emitting Review/AggregateRating schema.
+  void includeSchema;
+
+  if (totalReviews === 0) {
+    return (
+      <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
+        <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+          {t.reviewSystem?.customerReviews || ""}
+        </h3>
+        <p className="text-gray-600 dark:text-gray-300 text-sm">
+          {t.reviewSystem?.comingSoon || ""}
+        </p>
+      </div>
+    );
+  }
 
   if (compact) {
     return (
       <>
-        {includeSchema && (
-          <Script
-            id="reviews-structured-data"
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(reviewsStructuredData)
-            }}
-          />
-        )}
         <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100">
               {t.reviewSystem?.customerReviews || ""}
             </h3>
-            <div className="flex items-center space-x-2">
-              {renderStars(averageRating)}
-              <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                {averageRating.toFixed(1)}
-              </span>
-              <span className="text-gray-600 dark:text-gray-400">
-                ({DISPLAY_REVIEW_COUNT} {t.reviewSystem?.reviews || ""})
-              </span>
-            </div>
           </div>
 
-          <div className="space-y-4">
-            {filteredReviews.slice(0, 3).map((review) => (
-              <div key={review.id} className="border-b border-gray-100 dark:border-gray-700 pb-4 last:border-b-0">
-                <div className="flex items-start justify-between mb-2">
-                  <div className="flex items-center space-x-2">
-                    {renderStars(review.rating, 'sm')}
-                    <span className="font-semibold text-gray-900 dark:text-gray-100">
-                      {review.userName}
-                    </span>
-                    {review.verified && (
-                      <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400" />
-                    )}
-                  </div>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">
-                    {formatDate(review.date)}
-                  </span>
-                </div>
-                <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-1">
-                  {review.title}
-                </h4>
-                <p className="text-gray-600 dark:text-gray-300 text-sm line-clamp-2">
-                  {review.content}
-                </p>
-              </div>
-            ))}
-          </div>
+          <p className="text-gray-600 dark:text-gray-300 text-sm">
+            {t.reviewSystem?.comingSoon || ""}
+          </p>
 
           <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
             <Button
@@ -345,58 +187,16 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
 
   return (
     <>
-      {includeSchema && (
-        <Script
-          id="reviews-structured-data-full"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(reviewsStructuredData)
-          }}
-        />
-      )}
       <div className="space-y-8">
         {/* Review Summary */}
         <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Overall Rating */}
-            <div className="text-center lg:text-left">
-              <div className="flex items-center justify-center lg:justify-start space-x-4 mb-4">
-                <span className="text-5xl font-bold text-gray-900 dark:text-gray-100">
-                  {averageRating.toFixed(1)}
-                </span>
-                <div>
-                  {renderStars(averageRating, 'lg')}
-                  <p className="text-gray-600 dark:text-gray-300 mt-1">
-                    {t.reviewSystem?.basedOn || ""} {DISPLAY_REVIEW_COUNT} {t.reviewSystem?.reviews || ""}
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center justify-center lg:justify-start space-x-4 text-sm text-gray-600 dark:text-gray-400">
-                <span>{Math.round((reviews.filter(r => r.wouldRecommend).length / totalReviews) * 100)}% {t.reviewSystem?.wouldRecommend || ""}</span>
-                <span>•</span>
-                <span>{reviews.filter(r => r.verified).length} {t.reviewSystem?.verifiedPurchases || ""}</span>
-              </div>
-            </div>
-
-            {/* Rating Distribution */}
-            <div className="space-y-2">
-              {ratingDistribution.map(({ rating, count, percentage }) => (
-                <div key={rating} className="flex items-center space-x-3">
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300 w-8">
-                    {rating}★
-                  </span>
-                  <div className="flex-1 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                    <div
-                      className="bg-yellow-400 dark:bg-yellow-400 h-2 rounded-full transition-all duration-300"
-                      style={{ width: `${percentage}%` }}
-                    />
-                  </div>
-                  <span className="text-sm text-gray-600 dark:text-gray-400 w-8">
-                    {count}
-                  </span>
-                </div>
-              ))}
-            </div>
+          <div>
+            <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+              {t.reviewSystem?.customerReviews || "Customer Reviews"}
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300">
+              {t.reviewSystem?.comingSoon || 'Customer reviews will appear here once our review system is live.'}
+            </p>
           </div>
 
 

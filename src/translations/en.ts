@@ -925,12 +925,12 @@ export const en = {
   reviewsSection: {
     customerReviews: "Customer Reviews",
     realStories: "Real stories from happy cat parents",
-    verifiedReviews: "Verified Reviews",
+    verifiedReviews: "Customer Reviews",
     averageRating: "Average Rating",
     readMore: "Read More",
     writeReview: "Write a Review",
     helpful: "Helpful",
-    verified: "Verified",
+    verified: "Customer",
     productUsed: "Product Used",
     catsOwned: "Cats Owned",
     useCase: "Use Case"
@@ -1020,14 +1020,14 @@ export const en = {
       highlight: "Same Day Processing"
     },
     customerRating: {
-      title: "4.9/5 Customer Rating",
-      description: "Based on 138 verified reviews",
-      highlight: "98% Satisfaction"
+      title: "Customer Feedback",
+      description: "See how cat owners use an activated carbon additive for odor control",
+      highlight: "Fragrance-Free"
     },
     happyCustomers: {
-      title: "1,000+ Happy Customers",
-      description: "Trusted by cat owners across Canada",
-      highlight: "Since 2019"
+      title: "Cat Owner Community",
+      description: "Used by cat owners across Canada",
+      highlight: "Canada-Based Support"
     },
     premiumQuality: {
       title: "Premium Quality",
@@ -1991,13 +1991,13 @@ export const en = {
       quickReliableShipping: "Quick and reliable shipping",
       skipAnytime: "Skip Anytime",
       fullControlDeliveries: "Full control over deliveries",
-      lovedByCustomers: "Loved by 1,000+ customers",
-      joinSatisfiedCustomers: "Join over 1,000 satisfied customers:",
+      lovedByCustomers: "Loved by cat owners",
+      joinSatisfiedCustomers: "Join satisfied customers:",
       thirtyDayGuarantee: "Ongoing odor support",
       moneyBackPromise: "Dedicated customer care",
-      fiveStarRated: "5-Star Rated",
-      reviewsRating: "4.9/5 from 138 reviews",
-      testimonialQuote: "\"I've saved over $200 this year with my subscription, and my cats' litter box never smells!\" - Sarah M."
+      fiveStarRated: "Fragrance-free approach",
+      reviewsRating: "Customer reviews",
+      testimonialQuote: ""
     }
   },
 
@@ -2818,13 +2818,13 @@ export const en = {
   tryFreePage: {
     meta: {
       title: "Try Purrify Free - Just $4.76 Shipping | Cat Litter Odor Eliminator",
-      description: "Get your FREE Purrify trial - just pay $4.76 shipping. Eliminate litter box smell in 30 seconds. 138+ 5-star reviews. 30-day money-back guarantee."
+      description: "Get your FREE Purrify trial - just pay $4.76 shipping. Try it in your litter routine and see the difference."
     },
     hero: {
       badge: "Limited Time Offer",
       headline: "Try Purrify Free",
       subheadline: "Just $4.76 Shipping",
-      description: "Discover why 1,000+ cat parents trust Purrify to eliminate litter box odor. Get your free trial today and experience the difference.",
+      description: "Try an activated carbon additive in your litter routine and see the difference.",
       cta: "Get My Free Trial",
       shippingNote: "Ships anywhere in Canada"
     },
@@ -2860,10 +2860,10 @@ export const en = {
       ]
     },
     socialProof: {
-      headline: "Join 1,000+ Happy Cat Parents",
-      rating: "4.9",
-      reviewCount: "138",
-      reviewLabel: "Verified Reviews",
+      headline: "What to Expect",
+      rating: "",
+      reviewCount: "",
+      reviewLabel: "",
       testimonials: [
         {
           text: "I was skeptical, but within hours my entire apartment smelled fresh. My guests had no idea I had cats!",
@@ -3207,7 +3207,7 @@ export const en = {
   reviews: {
     heading: "What Cat Owners Say",
     subheading: "Real reviews from real customers",
-    verifiedPurchase: "Verified Purchase",
+    verifiedPurchase: "Purchase",
     helpful: "Helpful",
     writeReview: "Write a Review",
     filterBy: "Filter by",
@@ -3224,18 +3224,18 @@ export const en = {
 
   // Reviews Page (Full Page)
   reviewsPage: {
-    pageTitle: "Customer Reviews - Verified Testimonials",
-    metaDescription: "★ 4.9/5 Rating | 1,000+ cat owners eliminated litter box smell with Purrify. Read real reviews. Ships to USA & Canada.",
+    pageTitle: "Customer Reviews",
+    metaDescription: "Customer feedback about Purrify and how cat owners use an activated carbon additive to reduce litter box odor. Ships to USA & Canada.",
     badge: "Customer Reviews",
     heading: "Real Stories from Happy Cat Owners",
-    description: "See why 1,000+ Canadian cat owners trust Purrify to eliminate litter box odors naturally. Read verified reviews from real customers across Canada.",
+    description: "Customer feedback about Purrify and how cat owners use an activated carbon additive to reduce litter box odor.",
     breadcrumb: {
       home: "Home",
       reviews: "Reviews"
     },
     stats: {
       averageRating: "Average Rating",
-      verifiedReviews: "Verified Reviews",
+      verifiedReviews: "Customer Reviews",
       happyCustomers: "Happy Customers",
       monthsInMarket: "Months in Market"
     },
@@ -3247,16 +3247,16 @@ export const en = {
     },
     trustSection: {
       heading: "Why Customers Trust Purrify",
-      verifiedTitle: "Verified Reviews",
-      verifiedDesc: "All reviews are from verified purchasers who have used Purrify products.",
-      ratingTitle: "4.9/5 Rating",
-      ratingDesc: "Consistently high ratings across all product sizes and customer types.",
-      customersTitle: "1,000+ Customers",
-      customersDesc: "Growing community of satisfied cat owners across Canada."
+      verifiedTitle: "Customer Feedback",
+      verifiedDesc: "We will publish reviews and ratings once a third-party review system is in place.",
+      ratingTitle: "Science-linked",
+      ratingDesc: "See citations and how-to guides to verify key claims.",
+      customersTitle: "Helpful Resources",
+      customersDesc: "Guides for litter box odor control, ammonia, and safe use."
     },
     ctaSection: {
-      heading: "Join 1,000+ Happy Cat Owners",
-      description: "Experience the same results as our verified customers. Try Purrify risk-free and see why it's Canada's most trusted natural cat litter deodorizer.",
+      heading: "Ready to Try It at Home?",
+      description: "Start with a low-risk trial and see how it fits into your litter routine.",
       shopNow: "Shop Now",
       tryFreeSample: "Try Free Sample"
     },
@@ -3282,10 +3282,11 @@ export const en = {
   // Review System Component
   reviewSystem: {
     customerReviews: "Customer Reviews",
+    comingSoon: "Customer reviews will appear here once our review system is live.",
     reviews: "reviews",
     basedOn: "Based on",
     wouldRecommend: "would recommend",
-    verifiedPurchases: "verified purchases",
+    verifiedPurchases: "purchases",
     viewAllReviews: "View All Reviews",
     loadMoreReviews: "Load More Reviews",
     filters: {
@@ -3305,7 +3306,7 @@ export const en = {
       mostHelpful: "Most Helpful"
     },
     review: {
-      verifiedPurchase: "Verified Purchase",
+      verifiedPurchase: "Purchase",
       size: "Size",
       cat: "cat",
       cats: "cats",

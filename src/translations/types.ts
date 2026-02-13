@@ -2535,6 +2535,7 @@ export interface TranslationType {
   // Review System Component
   reviewSystem?: {
     customerReviews: string;
+    comingSoon: string;
     reviews: string;
     basedOn: string;
     wouldRecommend: string;

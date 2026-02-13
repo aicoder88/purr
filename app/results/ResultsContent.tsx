@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '@/components/ui/container';
-import { SITE_NAME, TESTIMONIALS } from '@/lib/constants';
 
 // Local type for testimonial data used in this component
 interface Testimonial {
@@ -12,7 +11,7 @@ interface Testimonial {
   stars?: number;
 }
 import { useTranslation } from '@/lib/translation-context';
-import { Star, Quote, CheckCircle, Users, Clock, Sparkles, ArrowRight, Shield, Zap, Home, ChevronRight } from 'lucide-react';
+import { Quote, CheckCircle, Users, Clock, Sparkles, ArrowRight, Shield, Zap, Home, ChevronRight } from 'lucide-react';
 import { COLORS, GRADIENTS, createCardClasses, createSectionClasses } from '@/lib/theme-utils';
 import { generateStarRating, generateAvatarUrl } from '@/lib/component-utils';
 
@@ -42,10 +41,10 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
 
   // Stats data
   const stats = [
-    { value: '4.9', label: r?.stats?.rating || 'Average Rating', suffix: '/5', icon: Star },
-    { value: '138+', label: r?.stats?.reviews || 'Verified Reviews', icon: CheckCircle },
-    { value: '7', label: r?.stats?.days || 'Days of Freshness', suffix: '+', icon: Clock },
-    { value: '1,000+', label: r?.stats?.customers || 'Happy Cat Parents', icon: Users },
+    { value: r?.stats?.fragranceFreeValue || 'Fragrance-free', label: r?.stats?.fragranceFreeLabel || 'No perfumes', icon: Shield },
+    { value: r?.stats?.worksWithAnyLitterValue || 'Works with most litter', label: r?.stats?.worksWithAnyLitterLabel || 'Additive, not a litter', icon: CheckCircle },
+    { value: r?.stats?.easyToUseValue || 'Easy to use', label: r?.stats?.easyToUseLabel || 'Sprinkle and mix', icon: Zap },
+    { value: r?.stats?.scienceValue || 'Science-linked', label: r?.stats?.scienceLabel || 'See citations', icon: Sparkles },
   ];
 
   // Before/After transformation points
@@ -57,7 +56,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
     },
     {
       before: r?.transformations?.item2?.before || 'Constant litter box cleaning',
-      after: r?.transformations?.item2?.after || '7+ days of freshness per application',
+      after: r?.transformations?.item2?.after || 'Longer freshness with simple top-ups',
       icon: Clock,
     },
     {
@@ -87,7 +86,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
     {
       number: '3',
       title: r?.howItWorks?.step3?.title || 'Enjoy',
-      description: r?.howItWorks?.step3?.description || 'Breathe easy for 7+ days',
+      description: r?.howItWorks?.step3?.description || 'Keep the litter area fresher between changes',
     },
   ];
 
@@ -119,7 +118,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#E0EFC7] dark:bg-[#E0EFC7]/20 rounded-full mb-6">
               <Sparkles className="w-4 h-4 text-[#FF3131]" />
               <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">
-                {r?.hero?.badge || 'Verified Customer Results'}
+                {r?.hero?.badge || 'Customer Results'}
               </span>
             </div>
 
@@ -130,19 +129,23 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
 
             {/* Subheadline */}
             <p className={`text-xl md:text-2xl ${COLORS.text.secondary} max-w-3xl mx-auto mb-8`}>
-              {r?.hero?.subtitle || 'See why 1,000+ cat owners trust Purrify to eliminate litter box odor naturally. No perfumes, no chemicals - just science that works.'}
+              {r?.hero?.subtitle || 'See practical ways cat owners use an activated carbon additive to reduce litter box odor. No perfumes, no masking - just adsorption.'}
             </p>
 
-            {/* Star Rating Display */}
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-6 h-6 text-yellow-400 dark:text-yellow-300 fill-current" />
-                ))}
-              </div>
-              <span className={`text-lg font-semibold ${COLORS.text.primary}`}>
-                4.9/5 {r?.hero?.basedOn || 'based on'} 138+ {r?.hero?.verifiedReviews || 'verified reviews'}
-              </span>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8 text-sm">
+              <Link
+                href="/science"
+                className={`font-semibold ${COLORS.text.primary} hover:text-[#FF3131] transition-colors`}
+              >
+                {r?.hero?.scienceLink || 'See research citations'}
+              </Link>
+              <span className="hidden sm:block text-gray-400 dark:text-gray-600">•</span>
+              <Link
+                href="/learn/how-to-use-deodorizer"
+                className={`font-semibold ${COLORS.text.primary} hover:text-[#FF3131] transition-colors`}
+              >
+                {r?.hero?.howToLink || 'How to use the additive'}
+              </Link>
             </div>
 
             {/* CTA */}
@@ -171,7 +174,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
                     <IconComponent className="w-6 h-6 text-[#FF3131] dark:text-[#FF5050]" />
                   </div>
                   <div className={`text-3xl md:text-4xl font-bold ${COLORS.text.primary}`}>
-                    {stat.value}{stat.suffix || ''}
+                    {stat.value}
                   </div>
                   <div className={`text-sm ${COLORS.text.tertiary}`}>{stat.label}</div>
                 </div>
@@ -233,69 +236,68 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
         </Container>
       </section>
 
-      {/* Testimonial Grid */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-purple-50/50 via-pink-50/50 to-orange-50/50 dark:from-gray-900 dark:via-purple-950/20 dark:to-gray-900">
-        <Container>
-          <div className="text-center mb-12">
-            <h2 className={`font-heading text-3xl md:text-4xl font-bold mb-4 ${COLORS.text.primary}`}>
-              {r?.testimonials?.title || 'What Cat Parents Are Saying'}
-            </h2>
-            <p className={`text-lg ${COLORS.text.tertiary} max-w-2xl mx-auto`}>
-              {r?.testimonials?.subtitle || 'Real reviews from verified customers across Canada'}
-            </p>
-          </div>
+      {/* Testimonials (disabled until real, verifiable reviews exist) */}
+      {testimonials.length > 0 && (
+        <section className="py-16 md:py-24 bg-gradient-to-br from-purple-50/50 via-pink-50/50 to-orange-50/50 dark:from-gray-900 dark:via-purple-950/20 dark:to-gray-900">
+          <Container>
+            <div className="text-center mb-12">
+              <h2 className={`font-heading text-3xl md:text-4xl font-bold mb-4 ${COLORS.text.primary}`}>
+                {r?.testimonials?.title || 'What Cat Parents Are Saying'}
+              </h2>
+              <p className={`text-lg ${COLORS.text.tertiary} max-w-2xl mx-auto`}>
+                {r?.testimonials?.subtitle || 'Feedback from cat owners using an activated carbon additive'}
+              </p>
+            </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={index}
-                className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-              >
-                {/* Avatar and Name */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#E0EFC7] dark:border-gray-600">
-                    <Image
-                      src={generateAvatarUrl(testimonial.name, index)}
-                      alt={testimonial.name}
-                      width={48}
-                      height={48}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div>
-                    <p className={`font-semibold ${COLORS.text.primary}`}>{testimonial.name}</p>
-                    <div className="flex items-center gap-1">
-                      {generateStarRating(testimonial.stars || 5)}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              {testimonials.map((testimonial, index) => (
+                <div
+                  key={index}
+                  className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                >
+                  {/* Avatar and Name */}
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#E0EFC7] dark:border-gray-600">
+                      <Image
+                        src={generateAvatarUrl(testimonial.name, index)}
+                        alt={testimonial.name}
+                        width={48}
+                        height={48}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <p className={`font-semibold ${COLORS.text.primary}`}>{testimonial.name}</p>
+                      <div className="flex items-center gap-1">
+                        {generateStarRating(testimonial.stars || 5)}
+                      </div>
                     </div>
                   </div>
-                  <div className="ml-auto">
-                    <CheckCircle className="w-5 h-5 text-green-500 dark:text-green-400" />
+
+                  {/* Quote */}
+                  <div className="relative">
+                    <Quote className="absolute -top-2 -left-1 w-6 h-6 text-[#FF3131]/20 dark:text-[#FF5050]/20" />
+                    <p className={`${COLORS.text.secondary} text-sm leading-relaxed pl-4`}>
+                      {testimonial.text}
+                    </p>
                   </div>
                 </div>
+              ))}
+            </div>
 
-                {/* Quote */}
-                <div className="relative">
-                  <Quote className="absolute -top-2 -left-1 w-6 h-6 text-[#FF3131]/20 dark:text-[#FF5050]/20" />
-                  <p className={`${COLORS.text.secondary} text-sm leading-relaxed pl-4`}>
-                    {testimonial.text}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* More Reviews Link */}
-          <div className="text-center mt-12">
-            <Link
-              href="/reviews"
-              className={`inline-flex items-center gap-2 px-6 py-3 ${COLORS.surface.light} rounded-full shadow-md hover:shadow-lg transition-all duration-300 ${COLORS.text.primary} font-medium`}
-            >
-              {r?.testimonials?.viewAll || 'View All Reviews'}
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </Container>
-      </section>
+            {/* More Reviews Link */}
+            <div className="text-center mt-12">
+              <Link
+                href="/reviews"
+                className={`inline-flex items-center gap-2 px-6 py-3 ${COLORS.surface.light} rounded-full shadow-md hover:shadow-lg transition-all duration-300 ${COLORS.text.primary} font-medium`}
+              >
+                {r?.testimonials?.viewAll || 'View All Reviews'}
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </Container>
+        </section>
+      )}
 
       {/* How It Works */}
       <section className="py-16 md:py-24">
@@ -332,10 +334,10 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
         <Container>
           <div className="max-w-3xl mx-auto text-center">
             <h2 className={`font-heading text-3xl md:text-4xl font-bold mb-4 ${COLORS.text.primary}`}>
-              {r?.cta?.title || 'Join 1,000+ Happy Cat Parents'}
+              {r?.cta?.title || 'Ready to try it at home?'}
             </h2>
             <p className={`text-lg ${COLORS.text.secondary} mb-8 max-w-2xl mx-auto`}>
-              {r?.cta?.subtitle || 'Experience the same results as our verified customers. Try Purrify risk-free and see why it is Canada\'s most trusted natural cat litter deodorizer.'}
+              {r?.cta?.subtitle || 'Start with a low-risk trial and see how it fits into your litter routine.'}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -358,15 +360,15 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
             <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm">
               <div className="flex items-center gap-2">
                 <Shield className="w-4 h-4 text-green-500 dark:text-green-400" />
-                <span className={COLORS.text.tertiary}>{r?.cta?.trust1 || '100% Natural'}</span>
+                <span className={COLORS.text.tertiary}>{r?.cta?.trust1 || 'Fragrance-free'}</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400" />
-                <span className={COLORS.text.tertiary}>{r?.cta?.trust2 || 'Made in Canada'}</span>
+                <Zap className="w-4 h-4 text-green-500 dark:text-green-400" />
+                <span className={COLORS.text.tertiary}>{r?.cta?.trust2 || 'Works with most litter'}</span>
               </div>
               <div className="flex items-center gap-2">
-                <Star className="w-4 h-4 text-yellow-400 dark:text-yellow-300 fill-current" />
-                <span className={COLORS.text.tertiary}>{r?.cta?.trust3 || '4.9/5 Rating'}</span>
+                <Sparkles className="w-4 h-4 text-green-500 dark:text-green-400" />
+                <span className={COLORS.text.tertiary}>{r?.cta?.trust3 || 'See science citations'}</span>
               </div>
             </div>
 

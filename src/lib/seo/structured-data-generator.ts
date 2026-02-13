@@ -331,35 +331,8 @@ export class StructuredDataGenerator {
       schema.sku = product.sku;
     }
 
-    // Add aggregate rating if provided
-    if (product.rating) {
-      schema.aggregateRating = {
-        '@type': 'AggregateRating',
-        ratingValue: product.rating.value,
-        reviewCount: product.rating.count,
-        bestRating: 5,
-        worstRating: 1,
-      };
-    }
-
-    // Add reviews if provided
-    if (product.reviews && product.reviews.length > 0) {
-      schema.review = product.reviews.map((review) => ({
-        '@type': 'Review',
-        author: {
-          '@type': 'Person',
-          name: review.author,
-        },
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: review.rating,
-          bestRating: 5,
-          worstRating: 1,
-        },
-        reviewBody: review.reviewBody,
-        datePublished: review.datePublished,
-      }));
-    }
+    // Note: Review/AggregateRating schema is intentionally omitted unless
+    // the site is backed by a real review system and compliant markup.
 
     return JSON.stringify(schema, null, 2);
   }

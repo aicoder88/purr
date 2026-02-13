@@ -1,16 +1,16 @@
 export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
-import { SITE_NAME, TESTIMONIALS } from '@/lib/constants';
+import { SITE_NAME } from '@/lib/constants';
 import { ResultsContent } from './ResultsContent';
 
 export const metadata: Metadata = {
   title: `Real Results From Real Cat Parents | ${SITE_NAME}`,
-  description: 'See how 1,000+ cat owners eliminated litter box odor with Purrify. Real testimonials and verified reviews from happy cat parents across Canada.',
-  keywords: ['purrify results', 'cat litter reviews', 'testimonials', 'before after', 'customer reviews', 'verified reviews'],
+  description: 'See practical ways cat owners use an activated carbon additive to reduce litter box odor, with tips and examples.',
+  keywords: ['purrify results', 'cat litter odor', 'odor control tips', 'activated carbon additive', 'before after'],
   openGraph: {
     title: `Real Results From Real Cat Parents | ${SITE_NAME}`,
-    description: 'See how 1,000+ cat owners eliminated litter box odor with Purrify. Real testimonials, verified reviews, and proven results from happy cat parents across Canada.',
+    description: 'See practical ways cat owners use an activated carbon additive to reduce litter box odor, with tips and examples.',
     type: 'website',
   },
   robots: {
@@ -20,9 +20,6 @@ export const metadata: Metadata = {
 };
 
 export default function ResultsPage() {
-  // Use first 9 testimonials
-  const testimonials = TESTIMONIALS.slice(0, 9);
-
   // Product schema for structured data
   const schema = {
     '@context': 'https://schema.org',
@@ -56,7 +53,7 @@ export default function ResultsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <ResultsContent testimonials={testimonials} />
+      <ResultsContent testimonials={[]} />
     </>
   );
 }

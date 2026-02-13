@@ -32,8 +32,8 @@ export default function HospitalityClientPage() {
       heroSubtitle: 'Accept pets, charge premium fees, and never worry about lingering odors affecting your reviews',
       statBookings: 'More Bookings',
       statBookingsDesc: 'Pet-friendly listings get more reservations',
-      statReviews: 'Better Reviews',
-      statReviewsDesc: 'Fresh-smelling properties get higher ratings',
+      statReviews: 'No Added Fragrance',
+      statReviewsDesc: 'Odor control without perfumes',
       statRevenue: 'Revenue Boost',
       statRevenueDesc: 'From pet fees and increased bookings',
       ctaPrimary: 'Order for Your Properties',
@@ -546,10 +546,7 @@ export default function HospitalityClientPage() {
                 <div className="text-xs text-gray-600 dark:text-gray-400">{t.statBookingsDesc}</div>
               </div>
               <div>
-                <div className="flex items-center justify-center gap-1 text-3xl font-bold text-amber-600 dark:text-amber-400 mb-2">
-                  <Star className="h-6 w-6 fill-current" />
-                  4.9
-                </div>
+                <div className="text-3xl font-bold text-amber-600 dark:text-amber-400 mb-2">Fragrance-free</div>
                 <div className="text-sm font-semibold text-gray-800 dark:text-gray-200">{t.statReviews}</div>
                 <div className="text-xs text-gray-600 dark:text-gray-400">{t.statReviewsDesc}</div>
               </div>

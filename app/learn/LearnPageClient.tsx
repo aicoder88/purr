@@ -173,16 +173,16 @@ export default function LearnPageClient({ experimentCopy }: LearnPageClientProps
           </h2>
           <div className="grid grid-cols-3 gap-4 text-center">
             <div>
-              <p className="text-2xl font-bold text-[#03E46A]">4.9/5</p>
-              <p className="text-xs text-gray-600 dark:text-gray-400">Average rating</p>
+              <p className="text-2xl font-bold text-[#03E46A]">Fragrance-free</p>
+              <p className="text-xs text-gray-600 dark:text-gray-400">No perfumes</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-[#03E46A]">1,000+</p>
-              <p className="text-xs text-gray-600 dark:text-gray-400">Cat households</p>
+              <p className="text-2xl font-bold text-[#03E46A]">Any litter</p>
+              <p className="text-xs text-gray-600 dark:text-gray-400">Additive, not a litter</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-[#03E46A]">99%</p>
-              <p className="text-xs text-gray-600 dark:text-gray-400">Odor reduction claim</p>
+              <p className="text-2xl font-bold text-[#03E46A]">Citations</p>
+              <p className="text-xs text-gray-600 dark:text-gray-400">Science hub</p>
             </div>
           </div>
         </div>

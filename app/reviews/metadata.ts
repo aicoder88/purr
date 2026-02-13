@@ -1,18 +1,17 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Purrify Reviews | Verified Customer Testimonials',
-  description: 'Read verified reviews from real cat owners who have eliminated litter box odors with Purrify. 4.9/5 average rating from 138+ reviews.',
+  title: 'Purrify Reviews | Customer Feedback',
+  description: 'Read customer feedback about Purrify and learn how cat owners use an activated carbon additive for litter box odor control.',
   keywords: [
     'purrify reviews',
     'cat litter deodorizer reviews',
     'customer testimonials',
-    'verified reviews',
     'cat odor eliminator reviews',
   ],
   openGraph: {
-    title: 'Purrify Reviews | Verified Customer Testimonials',
-    description: 'Read verified reviews from real cat owners who have eliminated litter box odors with Purrify.',
+    title: 'Purrify Reviews | Customer Feedback',
+    description: 'Read customer feedback about Purrify and learn how cat owners use an activated carbon additive for litter box odor control.',
     images: ['https://www.purrify.ca/optimized/logo-light.webp'],
   },
   alternates: {

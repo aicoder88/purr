@@ -22,13 +22,13 @@ import {
 export const metadata: Metadata = {
   title: 'Science Behind Purrify: Research & Citations | Purrify',
   description:
-    'Explore the peer-reviewed scientific research supporting activated carbon for cat litter odor control. Citations from PubMed, EPA, and veterinary journals.',
+    'Explore scientific research and authoritative resources supporting activated carbon for cat litter odor control, with citations to primary and trusted sources.',
   keywords: [
     'activated carbon research',
     'ammonia adsorption',
     'cat litter science',
     'peer-reviewed citations',
-    'veterinary research',
+    'pubmed research',
   ],
   alternates: {
     canonical: '/science/',
@@ -63,7 +63,11 @@ const citationsByCategory = {
   sulfur: getCitationsByCategory('sulfur'),
   comparison: getCitationsByCategory('comparison'),
   health: getCitationsByCategory('health'),
+  fundamentals: getCitationsByCategory('fundamentals'),
 };
+
+const citationTopicCount = Object.values(citationsByCategory).filter((list) => list.length > 0).length;
+const citationSourceTypeCount = new Set(SCIENTIFIC_CITATIONS.map((c) => c.sourceType)).size;
 
 const sourceTypeIcons: Record<string, React.ReactNode> = {
   pubmed: <Microscope className="w-4 h-4" />,
@@ -75,7 +79,7 @@ const sourceTypeIcons: Record<string, React.ReactNode> = {
 const sourceTypeLabels: Record<string, string> = {
   pubmed: 'PubMed',
   epa: 'EPA',
-  veterinary: 'Veterinary Journal',
+  veterinary: 'Veterinary Resource',
   'peer-reviewed': 'Peer-Reviewed',
 };
 
@@ -124,7 +128,6 @@ export default function SciencePage() {
           '@type': 'ScholarlyArticle',
           headline: citation.title,
           author: citation.authors,
-          datePublished: citation.year,
           isPartOf: {
             '@type': 'Periodical',
             name: citation.journal,
@@ -179,8 +182,8 @@ export default function SciencePage() {
               </h1>
 
               <p className="article-summary text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                Every claim we make is backed by peer-reviewed research from PubMed, the EPA, and leading veterinary
-                journals. Explore the scientific foundation of activated carbon odor control.
+                This hub links to scientific research and authoritative guidance on activated carbon adsorption and odor
+                control. Use the citations below to verify specific claims and explore the underlying science.
               </p>
             </header>
 
@@ -191,21 +194,25 @@ export default function SciencePage() {
                   <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">
                     {SCIENTIFIC_CITATIONS.length}
                   </div>
-                  <div className="text-sm text-blue-700 dark:text-blue-300">Peer-Reviewed Studies</div>
+                  <div className="text-sm text-blue-700 dark:text-blue-300">Citations</div>
                 </div>
                 <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-6 text-center">
                   <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-1">
                     {CLAIM_REVIEWS.length}
                   </div>
-                  <div className="text-sm text-green-700 dark:text-green-300">Verified Claims</div>
+                  <div className="text-sm text-green-700 dark:text-green-300">Claim Checks</div>
                 </div>
                 <div className="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-6 text-center">
-                  <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-1">1,500</div>
-                  <div className="text-sm text-purple-700 dark:text-purple-300">m²/g Surface Area</div>
+                  <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-1">
+                    {citationTopicCount}
+                  </div>
+                  <div className="text-sm text-purple-700 dark:text-purple-300">Topics Covered</div>
                 </div>
                 <div className="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-6 text-center">
-                  <div className="text-3xl font-bold text-orange-600 dark:text-orange-400 mb-1">&gt;95%</div>
-                  <div className="text-sm text-orange-700 dark:text-orange-300">Odor Reduction</div>
+                  <div className="text-3xl font-bold text-orange-600 dark:text-orange-400 mb-1">
+                    {citationSourceTypeCount}
+                  </div>
+                  <div className="text-sm text-orange-700 dark:text-orange-300">Source Types</div>
                 </div>
               </div>
             </section>
@@ -247,7 +254,7 @@ export default function SciencePage() {
                                 className="inline-flex items-center gap-1 px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
                               >
                                 <FileText className="w-3 h-3" />
-                                {citation.journal} ({citation.year})
+                                {citation.journal}{citation.year ? ` (${citation.year})` : ''}
                               </a>
                             ) : null;
                           })}
@@ -267,6 +274,26 @@ export default function SciencePage() {
               </div>
 
               <div className="space-y-8">
+                {/* Fundamentals */}
+                {citationsByCategory.fundamentals.length > 0 && (
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-4 flex items-center gap-2">
+                      <BookOpen className="w-5 h-5 text-electric-indigo" />
+                      Activated Carbon Adsorption Fundamentals
+                    </h3>
+                    <div className="space-y-4">
+                      {citationsByCategory.fundamentals.map((citation) => (
+                        <CitationCard
+                          key={citation.id}
+                          citation={citation}
+                          sourceTypeIcons={sourceTypeIcons}
+                          sourceTypeLabels={sourceTypeLabels}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {/* Ammonia Research */}
                 {citationsByCategory.ammonia.length > 0 && (
                   <div>
@@ -377,30 +404,29 @@ export default function SciencePage() {
                   <div className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 shrink-0 mt-0.5" />
                     <p className="text-gray-700 dark:text-gray-200">
-                      <strong>Activated carbon effectively adsorbs ammonia</strong> — the primary odor compound in cat
-                      urine — through proven physisorption mechanisms, achieving 85-95% reduction in controlled studies.
+                      <strong>Activated carbon can adsorb ammonia</strong>, the key odor compound in cat urine, and its
+                      performance depends on carbon properties and environment (e.g., moisture).
                     </p>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 shrink-0 mt-0.5" />
                     <p className="text-gray-700 dark:text-gray-200">
-                      <strong>Coconut shell carbon outperforms alternatives</strong> — with 60-80% micropore volume and
-                      surface areas of 800-1500 m²/g, it provides superior gas-phase adsorption compared to zeolite or
-                      baking soda.
+                      <strong>Activated carbon is used for gas-phase adsorption</strong> in many contexts, including
+                      sulfur-containing odor compounds like hydrogen sulfide (H2S).
                     </p>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 shrink-0 mt-0.5" />
                     <p className="text-gray-700 dark:text-gray-200">
-                      <strong>Food-grade activated carbon is safe for cats</strong> — non-toxic, chemically inert, and
-                      widely used in water filtration and medical applications.
+                      <strong>For indoor odor and gas reduction</strong>, EPA guidance describes activated carbon
+                      filtration as an option for certain pollutants.
                     </p>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 shrink-0 mt-0.5" />
                     <p className="text-gray-700 dark:text-gray-200">
-                      <strong>Ammonia poses real health risks</strong> — chronic exposure above 10 ppm causes respiratory
-                      irritation, and poorly ventilated litter boxes can generate 15-50 ppm.
+                      <strong>Pet health concerns should be discussed with your veterinarian</strong>, especially for
+                      households with sensitive cats or respiratory issues.
                     </p>
                   </div>
                 </div>
@@ -461,7 +487,9 @@ function CitationCard({
             <span className="px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded text-xs font-medium">
               {sourceTypeLabels[citation.sourceType]}
             </span>
-            <span className="text-xs text-gray-500 dark:text-gray-400">{citation.year}</span>
+            {citation.year && (
+              <span className="text-xs text-gray-500 dark:text-gray-400">{citation.year}</span>
+            )}
           </div>
           <h4 className="font-semibold text-gray-900 dark:text-gray-50 mb-1">{citation.title}</h4>
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">

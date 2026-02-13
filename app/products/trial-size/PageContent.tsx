@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, Check, ShieldCheck, ShoppingCart, Star } from 'lucide-react';
+import { ArrowLeft, Check, ShieldCheck, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
 import { ProductFAQ } from '@/components/product/ProductFAQ';
@@ -56,7 +56,8 @@ export default function TrialSizePage() {
 
   const steps = ((tryFreePage?.howItWorks?.steps as TryFreeStep[]) || []).filter(Boolean);
   const points = ((tryFreePage?.problem?.points as string[]) || []).filter(Boolean);
-  const testimonials = ((tryFreePage?.socialProof?.testimonials as TryFreeTestimonial[]) || []).filter(Boolean);
+  // Disable on-site testimonial rendering until backed by a real, verifiable review system.
+  const testimonials: TryFreeTestimonial[] = [];
   const trustItems = tryFreePage?.trust ? Object.values(tryFreePage.trust) as string[] : [];
 
   const { data: reviewData } = useAggregateReview(productKey, locale);
@@ -190,15 +191,9 @@ export default function TrialSizePage() {
                   {tryFreePage?.hero?.description}
                 </p>
 
-                <div className="flex items-center gap-2">
-                  <div className="flex">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:text-yellow-400" />
-                    ))}
-                  </div>
-                  <span className="text-gray-700 dark:text-gray-300 font-semibold">
-                    {tryFreePage?.socialProof?.rating} • {tryFreePage?.socialProof?.reviewCount} {tryFreePage?.socialProof?.reviewLabel}
-                  </span>
+                <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+                  <ShieldCheck className="w-4 h-4 text-green-600 dark:text-green-400" />
+                  <span>{tryFreePage?.guarantee?.headline || t.hero?.simplified?.moneyBackGuarantee || 'Money-Back Guarantee'}</span>
                 </div>
 
                 <div className="bg-white dark:bg-gray-800 border-2 border-green-200 dark:border-green-800 rounded-xl p-6">
@@ -291,20 +286,6 @@ export default function TrialSizePage() {
         <section className="py-14 bg-gray-50 dark:bg-gray-900/50">
           <Container>
             <div className="max-w-5xl mx-auto">
-              <h2 className="font-heading text-3xl md:text-4xl font-black text-center text-gray-900 dark:text-white mb-10">
-                {tryFreePage?.socialProof?.headline}
-              </h2>
-
-              <div className="grid md:grid-cols-3 gap-6 mb-10">
-                {testimonials.map((testimonial, index) => (
-                  <article key={`${testimonial.author}-${index}`} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
-                    <p className="text-gray-800 dark:text-gray-200 mb-4 italic">{testimonial.text}</p>
-                    <p className="font-bold text-gray-900 dark:text-white">{testimonial.author}</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">{testimonial.location}</p>
-                  </article>
-                ))}
-              </div>
-
               <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700">
                 <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">{tryFreePage?.guarantee?.headline}</h3>
                 <p className="text-gray-700 dark:text-gray-300">{tryFreePage?.guarantee?.description}</p>

@@ -82,9 +82,9 @@ export default function SellSheetClientPage() {
                 </p>
               </div>
               <div className="bg-[#F59E0B]/10 rounded-lg p-3">
-                <p className="text-2xl font-black text-[#F59E0B]">4.9</p>
+                <p className="text-2xl font-black text-[#F59E0B]">Carbon</p>
                 <p className="text-xs text-gray-600 dark:text-gray-600">
-                  Star Rating
+                  Activated
                 </p>
               </div>
               <div className="bg-[#EC4899]/10 rounded-lg p-3">

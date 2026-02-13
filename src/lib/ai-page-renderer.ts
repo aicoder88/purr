@@ -107,7 +107,9 @@ export function generateAIMarkdown(page: AIPageContent): string {
       sections.push('');
       sections.push(`**Authors:** ${citation.authors}`);
       sections.push(`**Journal:** ${citation.journal}`);
-      sections.push(`**Year:** ${citation.year}`);
+      if (citation.year) {
+        sections.push(`**Year:** ${citation.year}`);
+      }
       if (citation.doi) {
         sections.push(`**DOI:** ${citation.doi}`);
       }

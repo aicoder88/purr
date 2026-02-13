@@ -187,9 +187,9 @@ export const zh = {
     instantly: "瞬间见效",
     description: "先进的活性炭技术中和氨气和异味的速度比传统解决方案快3倍。几秒钟内将您的猫砂盒从有异味变为清新。",
     socialProof: {
-      trustNumber: "1,000+",
-      trustText: "猫主人信任Purrify",
-      ratingText: "来自 138 条评论的 4.8/5 评分"
+      trustNumber: "无香型",
+      trustText: "活性炭添加剂",
+      ratingText: "不靠香味掩盖异味"
     },
     pricing: {
       trial: "免费试用 (仅需 $4.76 运费)",
@@ -198,13 +198,13 @@ export const zh = {
     },
     buttons: {
       shopNow: "🛒 立即购买 - $24.95",
-      reviews: "⭐ 138+ 评论",
+      reviews: "客户评价",
       learnMore: "了解工作原理",
       tryFree: "免费试用"
     },
     ariaLabels: {
       shopNow: "立即购买Purrify产品",
-      reviews: "阅读138+顾客评论",
+      reviews: "阅读客户评价",
       playVideo: "播放演示视频，展示Purrify消除猫砂异味的效果"
     },
     dualPath: {
@@ -537,14 +537,14 @@ export const zh = {
       highlight: "当天处理订单"
     },
     customerRating: {
-      title: "4.9/5客户评分",
-      description: "基于 138 条真实验证评价",
-      highlight: "98%满意度"
+      title: "客户反馈",
+      description: "查看猫主人如何使用活性炭添加剂减少异味",
+      highlight: "无香型"
     },
     happyCustomers: {
-      title: "1,000+满意客户",
-      description: "全加拿大猫主人的信赖之选",
-      highlight: "自2023年"
+      title: "猫主人社区",
+      description: "被加拿大家庭使用",
+      highlight: "加拿大客服支持"
     },
     premiumQuality: {
       title: "优质品质",
@@ -953,12 +953,12 @@ export const zh = {
   reviewsSection: {
     customerReviews: "客户评价",
     realStories: "真实故事来自快乐的猫主人",
-    verifiedReviews: "已验证评价",
+    verifiedReviews: "客户评价",
     averageRating: "平均评分",
     readMore: "阅读更多",
     writeReview: "写评价",
     helpful: "有帮助",
-    verified: "已验证",
+    verified: "客户",
     productUsed: "使用产品",
     catsOwned: "猫咪数量",
     useCase: "使用场景"
@@ -1034,7 +1034,7 @@ export const zh = {
     highestRated: "评分最高",
     lowestRated: "评分最低",
     mostHelpful: "最有帮助",
-    verifiedPurchase: "已验证购买",
+    verifiedPurchase: "购买",
 
     // Payment & Cart
     securePayment: "安全支付",
@@ -2250,13 +2250,13 @@ export const zh = {
       quickReliableShipping: "快速可靠的配送",
       skipAnytime: "随时跳过",
       fullControlDeliveries: "对配送全面控制",
-      lovedByCustomers: "深受 1,000+ 客户的喜爱",
-      joinSatisfiedCustomers: "加入超过 1,000 满意客户的行列：",
+      lovedByCustomers: "深受猫主人的喜爱",
+      joinSatisfiedCustomers: "加入满意客户的行列：",
       thirtyDayGuarantee: "持续支持",
       moneyBackPromise: "客户关怀承诺",
-      fiveStarRated: "五星评级",
-      reviewsRating: "138 条评价中 4.9/5 星",
-      testimonialQuote: "\"今年通过订阅我节省了超过200美元，我的猫咪猫砂盒从不异味！\" - Sarah M."
+      fiveStarRated: "无香型方式",
+      reviewsRating: "客户评价",
+      testimonialQuote: ""
     }
   },
 
@@ -2644,8 +2644,8 @@ export const zh = {
     stats: {
       days: { value: "7+", label: "天清新" },
       savings: { value: "更少", label: "更换次数" },
-      customers: { value: "10,000+", label: "快乐猫咪" },
-      rating: { value: "4.9★", label: "客户评分" },
+      customers: { value: "支持", label: "在加拿大" },
+      rating: { value: "评价", label: "客户" },
       surfaceArea: { value: "1,150", label: "m²/g表面积" },
       natural: { value: "100%", label: "天然成分" }
     },
@@ -3352,7 +3352,7 @@ export const zh = {
   reviews: {
     heading: "猫主人怎么说",
     subheading: "来自真实客户的真实评价",
-    verifiedPurchase: "已验证购买",
+    verifiedPurchase: "购买",
     helpful: "有帮助",
     writeReview: "撰写评价",
     filterBy: "筛选",
@@ -3369,39 +3369,39 @@ export const zh = {
 
   // Reviews Page (Full Page)
   reviewsPage: {
-    pageTitle: "客户评价 - 真实见证",
-    metaDescription: "★ 4.9/5评分 | 超过1,000名猫主人使用Purrify消除了猫砂盆异味。阅读真实评价。配送至美国和加拿大。",
+    pageTitle: "客户评价",
+    metaDescription: "客户对Purrify的反馈，以及如何使用活性炭添加剂减少猫砂盆异味。配送至美国和加拿大。",
     badge: "客户评价",
     heading: "来自快乐猫主人的真实故事",
-    description: "了解为什么超过1,000名加拿大猫主人信任Purrify来自然消除猫砂盆异味。阅读来自加拿大各地真实客户的验证评价。",
+    description: "客户对Purrify的反馈，以及如何使用活性炭添加剂减少猫砂盆异味。",
     breadcrumb: {
       home: "首页",
       reviews: "评价"
     },
     stats: {
       averageRating: "平均评分",
-      verifiedReviews: "已验证评价",
+      verifiedReviews: "客户评价",
       happyCustomers: "满意客户",
       monthsInMarket: "上市月数"
     },
     reviewCard: {
-      verified: "已验证",
+      verified: "客户",
       product: "产品",
       cats: "猫咪数量",
       useCase: "使用场景"
     },
     trustSection: {
       heading: "为什么客户信任Purrify",
-      verifiedTitle: "已验证评价",
-      verifiedDesc: "所有评价均来自使用过Purrify产品的验证购买者。",
-      ratingTitle: "4.9/5评分",
-      ratingDesc: "所有产品尺寸和客户类型均保持高评分。",
-      customersTitle: "超过1,000名客户",
-      customersDesc: "不断壮大的加拿大满意猫主人社区。"
+      verifiedTitle: "客户评价",
+      verifiedDesc: "当第三方评价系统上线后，我们将在此发布评价与评分。",
+      ratingTitle: "科学与指南",
+      ratingDesc: "查看引用与使用指南，验证关键说法。",
+      customersTitle: "实用资源",
+      customersDesc: "关于猫砂盆异味、氨气与安全使用的解决方案。"
     },
     ctaSection: {
-      heading: "加入超过1,000名快乐猫主人",
-      description: "获得与我们验证客户相同的效果。无风险试用Purrify，了解为什么它是加拿大最值得信赖的天然猫砂除臭剂。",
+      heading: "准备在家试试吗？",
+      description: "从低风险试用开始，看看它如何融入你的猫砂日常。",
       shopNow: "立即购买",
       tryFreeSample: "试用免费样品"
     },
@@ -3427,10 +3427,11 @@ export const zh = {
   // Review System Component
   reviewSystem: {
     customerReviews: "客户评价",
+    comingSoon: "客户评价将在我们的评价系统上线后显示在这里。",
     reviews: "条评价",
     basedOn: "基于",
     wouldRecommend: "会推荐",
-    verifiedPurchases: "已验证购买",
+    verifiedPurchases: "购买",
     viewAllReviews: "查看所有评价",
     loadMoreReviews: "加载更多评价",
     filters: {
@@ -3450,7 +3451,7 @@ export const zh = {
       mostHelpful: "最有帮助"
     },
     review: {
-      verifiedPurchase: "已验证购买",
+      verifiedPurchase: "购买",
       size: "尺寸",
       cat: "只猫",
       cats: "只猫",
@@ -3582,13 +3583,13 @@ export const zh = {
   tryFreePage: {
     meta: {
       title: "免费试用Purrify - 仅需4.76美元运费 | 猫砂异味消除剂",
-      description: "获取您的免费Purrify试用装 - 仅需支付4.76美元运费。30秒内消除猫砂异味。138+条五星评价。30天退款保证。"
+      description: "获取您的免费Purrify试用装 - 仅需支付4.76美元运费。在猫砂日常中试用，看看效果差异。"
     },
     hero: {
       badge: "限时优惠",
       headline: "免费试用Purrify",
       subheadline: "仅需4.76美元运费",
-      description: "了解为什么1,000+猫主人信赖Purrify消除猫砂异味。立即获取您的免费试用装，体验不同之处。",
+      description: "在猫砂日常中试用活性炭添加剂，看看效果差异。",
       cta: "获取我的免费试用装",
       shippingNote: "加拿大全境配送"
     },
@@ -3624,10 +3625,10 @@ export const zh = {
       ]
     },
     socialProof: {
-      headline: "加入1,000+快乐猫主人",
-      rating: "4.9",
-      reviewCount: "138",
-      reviewLabel: "验证评价",
+      headline: "你可以期待什么",
+      rating: "",
+      reviewCount: "",
+      reviewLabel: "",
       testimonials: [
         {
           text: "我原本持怀疑态度，但几小时内我的整个公寓就闻起来很清新了。我的客人根本不知道我养猫！",

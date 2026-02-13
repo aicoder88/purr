@@ -392,8 +392,7 @@ export default function CaseStudiesPage() {
                   Ready to Write Your Own Success Story?
                 </h2>
                 <p className="text-gray-700 dark:text-gray-200 mb-6 max-w-2xl mx-auto">
-                  Join 1,000+ satisfied customers who have transformed their homes with Purrify.
-                  Start your journey to odor-free living today.
+                  Start with a low-risk trial and see how an activated carbon additive fits into your litter routine.
                 </p>
                 <div className="space-x-4">
                   <Link
@@ -420,7 +419,7 @@ export default function CaseStudiesPage() {
                 <Link href="/reviews" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
                   <Users className="h-8 w-8 text-[#FF3131] mx-auto mb-3" />
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Customer Reviews</h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">Read verified reviews from 500+ customers</p>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">Customer feedback and how-to resources</p>
                 </Link>
                 <Link href="/reviews" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
                   <CheckCircle className="h-8 w-8 text-[#FF3131] mx-auto mb-3" />

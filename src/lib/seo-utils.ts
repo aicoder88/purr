@@ -1,4 +1,4 @@
-import { SITE_NAME, SITE_DESCRIPTION, PRODUCTS, CONTACT_INFO, SOCIAL_LINKS, TESTIMONIALS } from './constants';
+import { SITE_NAME, SITE_DESCRIPTION, PRODUCTS, CONTACT_INFO, SOCIAL_LINKS } from './constants';
 import { getProductPrice, getPriceRange } from './pricing';
 import type { Currency } from './geo/currency-detector';
 
@@ -746,13 +746,6 @@ export const generateHomepageSchema = (localeInput: string, currency: string = '
             description: product.description.split('\n')[0],
             image: `${baseUrl}${product.image}`,
             offers: generateOfferSchema(product, locale, currency),
-            aggregateRating: {
-              '@type': 'AggregateRating',
-              ratingValue: '4.8',
-              reviewCount: String(TESTIMONIALS.length),
-              bestRating: '5',
-              worstRating: '1'
-            },
             hasMerchantReturnPolicy: {
               '@type': 'MerchantReturnPolicy',
               applicableCountry: ['CA', 'US'],
@@ -837,27 +830,6 @@ export const generateProductPageSchema = (productId: string, localeInput: string
           '@type': 'Audience',
           name: 'Cat Owners'
         },
-        aggregateRating: {
-          '@type': 'AggregateRating',
-          ratingValue: '4.8',
-          reviewCount: String(TESTIMONIALS.length),
-          bestRating: '5',
-          worstRating: '1'
-        },
-        review: TESTIMONIALS.slice(0, 3).map(t => ({
-          '@type': 'Review',
-          reviewRating: {
-            '@type': 'Rating',
-            ratingValue: String(t.stars),
-            bestRating: '5',
-            worstRating: '1'
-          },
-          author: {
-            '@type': 'Person',
-            name: t.name
-          },
-          reviewBody: t.text
-        })),
         hasMerchantReturnPolicy: {
           '@type': 'MerchantReturnPolicy',
           applicableCountry: ['CA', 'US'],

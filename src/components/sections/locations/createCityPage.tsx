@@ -151,12 +151,6 @@ const LocalShippingUrgency = dynamic(() => import('./LocalShippingUrgency').then
 // Utility Functions
 // ============================================================================
 
-const numberFormatter = new Intl.NumberFormat('en-CA');
-const compactNumberFormatter = new Intl.NumberFormat('en-CA', {
-  notation: 'compact',
-  maximumFractionDigits: 1,
-});
-
 // Helper function to interpolate template strings with {{variable}} syntax
 const interpolate = (template: string, vars: Record<string, string>): string => {
   return Object.entries(vars).reduce(
@@ -165,22 +159,6 @@ const interpolate = (template: string, vars: Record<string, string>): string => 
   );
 };
 
-const formatTrustedAudience = (population: number | null): string => {
-  if (!population || population <= 0) {
-    return '50+';
-  }
-
-  if (population >= 1_000_000) {
-    return compactNumberFormatter.format(Math.round(population * 0.6));
-  }
-
-  const approximatedOwners = Math.max(Math.round(population / 1000) * 10, 50);
-  return numberFormatter.format(approximatedOwners);
-};
-
-// Lazy-load testimonial generation (performance optimization)
-import type { TestimonialContext } from '@/lib/locations/testimonial-templates';
-
 const generateTestimonials = async (
   cityName: string,
   provinceName: string,
@@ -188,17 +166,13 @@ const generateTestimonials = async (
   climateHighlight: string,
   citySlug: string,
 ) => {
-  // Dynamic import testimonial generation (reduces initial bundle size)
-  const { buildPersonaTestimonial } = await import('../../../lib/locations/testimonial-templates');
-
-  const context: TestimonialContext = {
-    cityName,
-    provinceName,
-    housingHighlight,
-    climateHighlight,
-  };
-
-  return [0, 1, 2].map((slotIndex) => buildPersonaTestimonial(citySlug, slotIndex, context));
+  // Testimonials are intentionally disabled until backed by a real, verifiable review system.
+  void cityName;
+  void provinceName;
+  void housingHighlight;
+  void climateHighlight;
+  void citySlug;
+  return [];
 };
 
 const buildKeywordList = (
@@ -300,7 +274,6 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
     ? profile.populationLabel
     : null;
 
-  const trustedAudience = formatTrustedAudience(profile?.metroPopulation ?? null);
   const climateInsights = useMemo(() => profile?.climateConsiderations.slice(0, 3) ?? [], [profile?.climateConsiderations]);
   const scentPainPoints = useMemo(() => profile?.scentPainPoints.slice(0, 3) ?? [], [profile?.scentPainPoints]);
 
@@ -385,13 +358,41 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
   const painPoint = scentPainPoints[0] ?? 'constant litter box odors';
   const schemaLocale = locale === 'fr' || locale === 'zh' ? locale : 'en';
 
-  // Calculate average rating from testimonials (handle initial empty state)
-  const averageRating = testimonials.length > 0
-    ? (testimonials.reduce((sum, t) => sum + t.stars, 0) / testimonials.length).toFixed(1)
-    : '4.8';
-  const reviewCount = testimonials.length > 0
-    ? testimonials.reduce((sum, t) => sum + t.helpfulCount, 0)
-    : 150;
+  const provinceWidePills = locale === 'fr'
+    ? {
+      pill1: 'Additif sans parfum',
+      pill2: 'Compatible avec la plupart des litieres',
+      pill3: `Livraison rapide au ${provinceName}`,
+      heading: `Les proprietaires de chats au ${provinceName} aiment Purrify`,
+      description: `Des conseils et des ressources utiles pour reduire l'odeur de la litiere dans tout le ${provinceName}.`,
+      explore: `Explorer plus de pages au ${provinceName} →`,
+    }
+    : locale === 'zh'
+      ? {
+        pill1: '无香型添加剂',
+        pill2: '适用于大多数猫砂',
+        pill3: `${provinceName}快速配送`,
+        heading: `${provinceName}的猫主人选择Purrify`,
+        description: `实用指南与资源，帮助你减少猫砂盆异味。`,
+        explore: `查看更多${provinceName}页面 →`,
+      }
+      : locale === 'es'
+        ? {
+          pill1: 'Aditivo sin fragancia',
+          pill2: 'Funciona con la mayoria de arenas',
+          pill3: `Envio rapido a ${provinceName}`,
+          heading: `Duenos de gatos en ${provinceName} eligen Purrify`,
+          description: `Guias y recursos practicos para reducir el olor de la caja de arena en ${provinceName}.`,
+          explore: `Explorar mas paginas en ${provinceName} →`,
+        }
+        : {
+          pill1: 'Fragrance-free additive',
+          pill2: 'Works with most litter',
+          pill3: `Fast ${provinceName} shipping`,
+          heading: `Cat owners across ${provinceName} choose Purrify`,
+          description: `Helpful guides and resources to reduce litter box odor across ${provinceName}.`,
+          explore: `Explore more ${provinceName} pages →`,
+        };
 
   useEffect(() => {
     if (!profile) return;
@@ -551,7 +552,13 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
               {interpolate(t.cityPage?.hero?.heading ?? 'Best Cat Litter Odor Eliminator in {{city}}', { city: profile.name })}
             </h1>
             <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-8">
-              {interpolate(t.cityPage?.hero?.subheading ?? 'Trusted by {{audience}}+ cat owners in {{city}} and across {{province}}', { audience: trustedAudience, city: profile.name, province: provinceName })}
+              {locale === 'fr'
+                ? `Aditif au charbon actif pour reduire les odeurs de litiere a ${profile.name}, ${provinceName}.`
+                : locale === 'zh'
+                  ? `${profile.name}（${provinceName}）猫砂除味活性炭添加剂指南。`
+                  : locale === 'es'
+                    ? `Aditivo de carbon activado para reducir el olor de la caja de arena en ${profile.name}, ${provinceName}.`
+                    : `Activated carbon additive to reduce litter box odor in ${profile.name}, ${provinceName}.`}
             </p>
 
             <div className="bg-white dark:bg-gray-800/90 rounded-lg p-6 shadow-lg max-w-3xl mx-auto">
@@ -671,63 +678,39 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
           </div>
         </section>
 
-        <section className="py-16 px-4 bg-white dark:bg-gray-800">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="font-heading text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-50">
-              {interpolate(t.cityPage?.testimonials?.heading ?? 'What {{city}} Cat Owners Say', { city: profile.name })}
-            </h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              {testimonials.map((testimonial) => (
-                <TestimonialCard key={testimonial.author} testimonial={testimonial} wasHelpfulText={t.cityPage?.testimonials?.wasHelpful ?? 'Was this helpful?'} />
-              ))}
-            </div>
-
-            {/* Video Testimonial CTA */}
-            <div className="mt-12 text-center">
-              <div className={`${GRADIENTS.videoCta} rounded-xl p-8 border-2 border-dashed border-orange-300 dark:border-orange-700`}>
-                <h3 className="font-heading text-2xl font-bold mb-3 text-gray-900 dark:text-gray-50">
-                  {interpolate(t.cityPage?.testimonials?.shareStory?.heading ?? 'Share Your {{city}} Success Story', { city: profile.name })}
-                </h3>
-                <p className="text-gray-700 dark:text-gray-200 mb-6 max-w-2xl mx-auto">
-                  {interpolate(t.cityPage?.testimonials?.shareStory?.description ?? "Are you a {{city}} cat owner who loves Purrify? We'd love to feature your story and help other local cat parents discover odor-free living.", { city: profile.name })}
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link
-                    href="/contact"
-                    className={`${CTA_BUTTON_CLASSES} shadow-lg hover:shadow-xl`}
-                  >
-                    {t.cityPage?.cta?.submitVideo ?? '📹 Submit Your Video Review'}
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-semibold py-3 px-6 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-all border border-gray-300 dark:border-gray-600"
-                  >
-                    {t.cityPage?.cta?.writeReview ?? '✍️ Write a Review'}
-                  </Link>
-                </div>
+        {testimonials.length > 0 && (
+          <section className="py-16 px-4 bg-white dark:bg-gray-800">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="font-heading text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-50">
+                {interpolate(t.cityPage?.testimonials?.heading ?? 'What {{city}} Cat Owners Say', { city: profile.name })}
+              </h2>
+              <div className="grid md:grid-cols-3 gap-8">
+                {testimonials.map((testimonial) => (
+                  <TestimonialCard key={testimonial.author} testimonial={testimonial} wasHelpfulText={t.cityPage?.testimonials?.wasHelpful ?? 'Was this helpful?'} />
+                ))}
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* Related City Success Stories */}
         <section className={`py-16 px-4 ${GRADIENTS.purpleSection}`}>
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-heading text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50">
-              {interpolate(t.cityPage?.provinceWide?.heading ?? 'Cat Owners Across {{province}} Love Purrify', { province: provinceName })}
+              {provinceWidePills.heading}
             </h2>
             <p className="text-gray-700 dark:text-gray-200 mb-8">
-              {interpolate(t.cityPage?.provinceWide?.description ?? "Join thousands of satisfied cat parents in {{province}} who've eliminated litter box odors for good.", { province: provinceName })}
+              {provinceWidePills.description}
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <span className="inline-block px-4 py-2 bg-white dark:bg-gray-700 rounded-full text-sm font-medium text-gray-900 dark:text-white shadow-sm">
-                {t.cityPage?.provinceWide?.averageRating ?? '⭐ 4.8/5 Average Rating'}
+                {provinceWidePills.pill1}
               </span>
               <span className="inline-block px-4 py-2 bg-white dark:bg-gray-700 rounded-full text-sm font-medium text-gray-900 dark:text-gray-100 shadow-sm">
-                {interpolate(t.cityPage?.provinceWide?.happyHomes ?? '🏠 {{audience}}+ Happy Homes', { audience: trustedAudience })}
+                {provinceWidePills.pill2}
               </span>
               <span className="inline-block px-4 py-2 bg-white dark:bg-gray-700 rounded-full text-sm font-medium text-gray-900 dark:text-gray-100 shadow-sm">
-                {interpolate(t.cityPage?.provinceWide?.fastShipping ?? '🚚 Fast {{province}} Shipping', { province: provinceName })}
+                {provinceWidePills.pill3}
               </span>
             </div>
             <div className="mt-8">
@@ -735,7 +718,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
                 href={`/locations/${profile.provinceCode?.toLowerCase() || profile.province.toLowerCase().replaceAll(/\s+/g, '-')}`}
                 className="inline-flex items-center text-orange-600 dark:text-orange-400 font-semibold hover:text-orange-700 dark:hover:text-orange-300 transition-colors"
               >
-                {interpolate(t.cityPage?.cta?.exploreTestimonials ?? 'Explore more {{province}} testimonials →', { province: profile.province })}
+                {provinceWidePills.explore}
               </Link>
             </div>
           </div>

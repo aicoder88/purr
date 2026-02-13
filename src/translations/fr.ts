@@ -185,9 +185,9 @@ export const fr = {
     instantly: "Instantanément",
     description: "La technologie avancée au carbone activé neutralise l'ammoniac et les odeurs 3x plus rapidement que les solutions traditionnelles. Transformez votre litière de malodorante à fraîche en quelques secondes.",
     socialProof: {
-      trustNumber: "1 000+",
-      trustText: "propriétaires de chats font confiance à Purrify",
-      ratingText: "4,8/5 sur 138 avis"
+      trustNumber: "Sans parfum",
+      trustText: "additif au charbon actif",
+      ratingText: "Controle des odeurs sans parfums"
     },
     pricing: {
       trial: "Essai GRATUIT (4,76 $ frais de port)",
@@ -196,13 +196,13 @@ export const fr = {
     },
     buttons: {
       shopNow: "🛒 Acheter - 24,95 $",
-      reviews: "⭐ 138+ Avis",
+      reviews: "Avis clients",
       learnMore: "Comment ça marche",
       tryFree: "Essayer GRATUITEMENT"
     },
     ariaLabels: {
       shopNow: "Acheter les produits Purrify maintenant",
-      reviews: "Lire 138+ avis clients",
+      reviews: "Lire les avis clients",
       playVideo: "Lire la vidéo de démonstration montrant Purrify éliminant les odeurs de litière pour chat"
     },
     dualPath: {
@@ -749,7 +749,7 @@ export const fr = {
   // Footer Navigation
   footerNav: {
     // Section headers
-    trustedReviews: "Avis Vérifiés",
+    trustedReviews: "Avis clients",
     products: "Produits",
     learn: "Apprendre",
     popularArticles: "Articles Populaires",
@@ -921,12 +921,12 @@ export const fr = {
   reviewsSection: {
     customerReviews: "Avis Clients",
     realStories: "Vraies histoires de propriétaires de chats heureux",
-    verifiedReviews: "Avis Vérifiés",
+    verifiedReviews: "Avis clients",
     averageRating: "Note Moyenne",
     readMore: "Lire Plus",
     writeReview: "Écrire un Avis",
     helpful: "Utile",
-    verified: "Vérifié",
+    verified: "Client",
     productUsed: "Produit Utilisé",
     catsOwned: "Chats Possédés",
     useCase: "Cas d'Usage"
@@ -1021,14 +1021,14 @@ export const fr = {
       highlight: "Traitement le Jour Même"
     },
     customerRating: {
-      title: "Note Client 4,9/5",
-      description: "Basé sur 138 avis vérifiés",
-      highlight: "98% de Satisfaction"
+      title: "Avis clients",
+      description: "Conseils et ressources pour réduire les odeurs de litière avec un additif au charbon actif",
+      highlight: "Sans parfum"
     },
     happyCustomers: {
-      title: "1 000+ Clients Satisfaits",
-      description: "Fait confiance par les propriétaires de chats à travers le Canada",
-      highlight: "Depuis 2019"
+      title: "Communauté de propriétaires de chats",
+      description: "Utilisé par des propriétaires de chats à travers le Canada",
+      highlight: "Support au Canada"
     },
     premiumQuality: {
       title: "Qualité Premium",
@@ -2159,13 +2159,13 @@ export const fr = {
       quickReliableShipping: "Expédition rapide et fiable",
       skipAnytime: "Ignorer À Tout Moment",
       fullControlDeliveries: "Contrôle total sur les livraisons",
-      lovedByCustomers: "Aimé par plus de 1 000 clients",
-      joinSatisfiedCustomers: "Rejoignez plus de 1 000 clients satisfaits :",
+      lovedByCustomers: "Aimé par des propriétaires de chats",
+      joinSatisfiedCustomers: "Rejoignez des clients satisfaits :",
       thirtyDayGuarantee: "Support continu",
       moneyBackPromise: "Engagement service client",
-      fiveStarRated: "Classé 5 Étoiles",
-      reviewsRating: "4,9/5 sur 138 avis",
-      testimonialQuote: "\"J'ai économisé plus de 200$ cette année avec mon abonnement, et la litière de mes chats ne sent jamais !\" - Sarah M."
+      fiveStarRated: "Approche sans parfum",
+      reviewsRating: "Avis clients",
+      testimonialQuote: ""
     }
   },
 
@@ -2555,8 +2555,8 @@ export const fr = {
       savings: { value: "50%", label: "Moins de Changements" },
       surfaceArea: { value: "1 150", label: "m²/g de Surface" },
       natural: { value: "100%", label: "Ingrédients Naturels" },
-      customers: { value: "1000+", label: "Clients" },
-      rating: { value: "4.9", label: "Note Moyenne" }
+      customers: { value: "Support", label: "Au Canada" },
+      rating: { value: "Avis", label: "Clients" }
     },
     faq: {
       headline: "Questions Courantes sur le Contrôle de l'Ammoniac",
@@ -3242,7 +3242,7 @@ export const fr = {
   reviews: {
     heading: "Ce que disent les propriétaires de chats",
     subheading: "De vrais avis de vrais clients",
-    verifiedPurchase: "Achat vérifié",
+    verifiedPurchase: "Achat",
     helpful: "Utile",
     writeReview: "Écrire un avis",
     filterBy: "Filtrer par",
@@ -3259,39 +3259,39 @@ export const fr = {
 
   // Reviews Page (Full Page)
   reviewsPage: {
-    pageTitle: "Avis Clients - Témoignages Vérifiés",
-    metaDescription: "★ Note de 4.9/5 | Plus de 1 000 propriétaires de chats ont éliminé les odeurs de litière avec Purrify. Lisez de vrais avis. Livraison aux États-Unis et au Canada.",
+    pageTitle: "Avis Clients",
+    metaDescription: "Avis clients sur Purrify et comment utiliser un additif au charbon actif pour réduire les odeurs de litière. Livraison aux États-Unis et au Canada.",
     badge: "Avis Clients",
     heading: "Vraies Histoires de Propriétaires de Chats Heureux",
-    description: "Découvrez pourquoi plus de 1 000 propriétaires de chats canadiens font confiance à Purrify pour éliminer naturellement les odeurs de litière. Lisez les avis vérifiés de vrais clients à travers le Canada.",
+    description: "Avis clients sur Purrify et conseils pratiques pour réduire les odeurs de litière avec un additif au charbon actif.",
     breadcrumb: {
       home: "Accueil",
       reviews: "Avis"
     },
     stats: {
       averageRating: "Note Moyenne",
-      verifiedReviews: "Avis Vérifiés",
+      verifiedReviews: "Avis clients",
       happyCustomers: "Clients Satisfaits",
       monthsInMarket: "Mois sur le Marché"
     },
     reviewCard: {
-      verified: "Vérifié",
+      verified: "Client",
       product: "Produit",
       cats: "Chats",
       useCase: "Cas d'Usage"
     },
     trustSection: {
       heading: "Pourquoi les Clients Font Confiance à Purrify",
-      verifiedTitle: "Avis Vérifiés",
-      verifiedDesc: "Tous les avis proviennent d'acheteurs vérifiés qui ont utilisé les produits Purrify.",
-      ratingTitle: "Note de 4.9/5",
-      ratingDesc: "Notes constamment élevées pour toutes les tailles de produits et types de clients.",
-      customersTitle: "Plus de 1 000 Clients",
-      customersDesc: "Une communauté grandissante de propriétaires de chats satisfaits à travers le Canada."
+      verifiedTitle: "Avis clients",
+      verifiedDesc: "Nous publierons avis et notes dès qu'un système d'avis tiers sera en place.",
+      ratingTitle: "Science et ressources",
+      ratingDesc: "Consultez les citations et les guides pour vérifier les affirmations clés.",
+      customersTitle: "Guides pratiques",
+      customersDesc: "Solutions pour odeur de litière, ammoniac et utilisation en toute sécurité."
     },
     ctaSection: {
-      heading: "Rejoignez Plus de 1 000 Propriétaires de Chats Heureux",
-      description: "Obtenez les mêmes résultats que nos clients vérifiés. Essayez Purrify sans risque et découvrez pourquoi c'est le désodorisant pour litière naturel le plus fiable au Canada.",
+      heading: "Prêt à essayer chez vous ?",
+      description: "Commencez avec un essai à faible risque et voyez comment cela s'intègre à votre routine de litière.",
       shopNow: "Acheter Maintenant",
       tryFreeSample: "Essayer un Échantillon Gratuit"
     },
@@ -3317,6 +3317,7 @@ export const fr = {
   // Review System Component
   reviewSystem: {
     customerReviews: "Avis clients",
+    comingSoon: "Les avis clients apparaîtront ici dès que notre système d'avis sera en ligne.",
     reviews: "avis",
     basedOn: "Basé sur",
     wouldRecommend: "recommanderaient",
@@ -3472,13 +3473,13 @@ export const fr = {
   tryFreePage: {
     meta: {
       title: "Essayez Purrify Gratuitement - Seulement 4,76 $ de Livraison | Élimination des Odeurs de Litière pour Chat",
-      description: "Obtenez votre essai GRATUIT de Purrify - payez seulement 4,76 $ de livraison. Éliminez les odeurs de litière en 30 secondes. Plus de 138 avis 5 étoiles. Garantie de remboursement de 30 jours."
+      description: "Obtenez votre essai GRATUIT de Purrify - payez seulement 4,76 $ de livraison. Essayez-le dans votre routine de litière et voyez la différence."
     },
     hero: {
       badge: "Offre à Durée Limitée",
       headline: "Essayez Purrify Gratuitement",
       subheadline: "Seulement 4,76 $ de Livraison",
-      description: "Découvrez pourquoi plus de 1 000 parents de chats font confiance à Purrify pour éliminer les odeurs de litière. Obtenez votre essai gratuit aujourd'hui et découvrez la différence.",
+      description: "Essayez un additif au charbon actif dans votre routine de litière et voyez la différence.",
       cta: "Obtenir Mon Essai Gratuit",
       shippingNote: "Livraison partout au Canada"
     },
@@ -3514,10 +3515,10 @@ export const fr = {
       ]
     },
     socialProof: {
-      headline: "Rejoignez Plus de 1 000 Parents de Chats Heureux",
-      rating: "4.9",
-      reviewCount: "138",
-      reviewLabel: "Avis Vérifiés",
+      headline: "À quoi vous attendre",
+      rating: "",
+      reviewCount: "",
+      reviewLabel: "",
       testimonials: [
         {
           text: "J'étais sceptique, mais en quelques heures mon appartement entier sentait frais. Mes invités n'avaient aucune idée que j'avais des chats !",

@@ -1,6 +1,4 @@
 import type { Metadata } from 'next';
-import { existsSync } from 'node:fs';
-import path from 'node:path';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -48,13 +46,6 @@ const GRADIENTS = {
   blueSection: 'bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20',
 };
 
-const PROVINCE_IMAGE_SLUG_ALIASES: Record<string, string[]> = {
-  'newfoundland-and-labrador': ['newfoundland-labrador'],
-};
-
-const PROVINCE_ASSET_EXTENSIONS = ['webp', 'png', 'jpg', 'avif'] as const;
-const provinceHeroImageCache = new Map<string, string>();
-
 const hashString = (value: string): number => {
   let hash = 0;
 
@@ -66,33 +57,8 @@ const hashString = (value: string): number => {
   return Math.abs(hash);
 };
 
-const hasPublicAsset = (assetPath: string): boolean => {
-  const relativeAssetPath = assetPath.replace(/^\//, '');
-  return existsSync(path.join(process.cwd(), 'public', relativeAssetPath));
-};
-
 const resolveProvinceHeroImage = (province: Province): string => {
-  const cachedPath = provinceHeroImageCache.get(province.slug);
-  if (cachedPath) {
-    return cachedPath;
-  }
-
-  const fallback = PROVINCE_HERO_FALLBACKS[province.code] ?? PROVINCE_HERO_FALLBACKS.ON;
-  const slugCandidates = [
-    province.slug,
-    ...(PROVINCE_IMAGE_SLUG_ALIASES[province.slug] ?? []),
-    province.code.toLowerCase(),
-  ];
-  const imageCandidates = slugCandidates.flatMap((slugCandidate) => [
-    ...PROVINCE_ASSET_EXTENSIONS.map(
-      (extension) => `/images/locations/provinces/${slugCandidate}.${extension}`
-    ),
-    ...PROVINCE_ASSET_EXTENSIONS.map((extension) => `/optimized/${slugCandidate}.${extension}`),
-  ]);
-  const resolvedImage = imageCandidates.find(hasPublicAsset) ?? fallback;
-
-  provinceHeroImageCache.set(province.slug, resolvedImage);
-  return resolvedImage;
+  return PROVINCE_HERO_FALLBACKS[province.code] ?? PROVINCE_HERO_FALLBACKS.ON;
 };
 
 const normalizeCopyFragment = (value: string): string =>

@@ -8,14 +8,14 @@ export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Purrify Reviews - What Cat Owners Are Saying',
-  description: 'Read verified reviews from real cat owners who have transformed their homes with Purrify. ★ 4.9/5 average rating from 138+ customers across Canada.',
-  keywords: ['Purrify reviews', 'cat litter freshener reviews', 'customer testimonials', 'verified reviews', 'cat owner feedback'],
+  description: 'Read customer feedback about Purrify and learn how cat owners use an activated carbon additive to reduce litter box odor.',
+  keywords: ['Purrify reviews', 'cat litter deodorizer reviews', 'customer testimonials', 'cat owner feedback'],
   openGraph: {
     type: 'website',
     url: 'https://www.purrify.ca/reviews/',
     siteName: SITE_NAME,
     title: 'Purrify Reviews - What Cat Owners Are Saying',
-    description: 'Read verified reviews from real cat owners who have transformed their homes with Purrify. ★ 4.9/5 average rating from 138+ customers.',
+    description: 'Read customer feedback about Purrify and learn how cat owners use an activated carbon additive to reduce litter box odor.',
     locale: 'en_CA',
     images: [
       {
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     site: '@purrifyhq',
     creator: '@purrifyhq',
     title: 'Purrify Reviews - What Cat Owners Are Saying',
-    description: 'Read verified reviews from real cat owners who have transformed their homes with Purrify. ★ 4.9/5 average rating from 138+ customers.',
+    description: 'Read customer feedback about Purrify and learn how cat owners use an activated carbon additive to reduce litter box odor.',
     images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
   },
   alternates: {
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   },
 };
 
-// Product schema with AggregateRating for Reviews page
+// Product schema for Reviews page (no Review/AggregateRating schema)
 const productSchema = {
   '@context': 'https://schema.org',
   '@type': 'Product',
@@ -89,17 +89,17 @@ export default async function ReviewsPage() {
   const experiments = await getCommercialExperimentState();
   const experimentCopy = {
     headline: experiments.headline === 'variant'
-      ? 'Verified Reviews From Cat Owners Who Solved Odor Fast'
+      ? 'Customer Feedback From Cat Owners'
       : 'What Our Customers Are Saying',
     subheadline: experiments.headline === 'variant'
-      ? 'Unfiltered experiences from households that switched to Purrify and measured the difference at home.'
-      : 'Real reviews from real cat owners who have transformed their homes with Purrify.',
+      ? 'What to expect from an activated carbon additive, and how to use it in your own routine.'
+      : 'What to expect from an activated carbon additive, and how to use it in your own routine.',
     ctaHeadline: experiments.ctaCopy === 'variant'
       ? 'Ready to Test This in Your Home?'
       : 'Ready to Experience the Difference?',
     ctaBody: experiments.ctaCopy === 'variant'
       ? 'Start with a low-risk trial and verify results in your own litter routine.'
-      : 'Join thousands of satisfied cat owners who have eliminated litter box odors for good.',
+      : 'Start with a low-risk trial and see how it fits into your litter routine.',
     primaryCta: experiments.ctaCopy === 'variant'
       ? 'See Product Options'
       : 'Shop Now',

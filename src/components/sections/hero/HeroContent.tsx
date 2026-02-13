@@ -1,10 +1,9 @@
 "use client";
 
-import { useCallback, useState, useEffect } from "react";
+import { useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { scrollToSection } from "@/lib/utils";
 import Link from "next/link";
-import { heroTestimonials } from "@/data/hero-testimonials";
 import { useABTestWithTracking, AB_TEST_SLUGS } from "@/lib/ab-testing";
 import { getPaymentLink } from "@/lib/payment-links";
 
@@ -178,24 +177,6 @@ export const HeroContent = ({ t }: HeroContentProps) => {
     scrollToSection("products");
   }, [trackHeroConversion, trackCtaConversion]);
 
-  // Rotating testimonials - rotating every 1.5 seconds
-  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setCurrentTestimonialIndex((prev) => (prev + 1) % heroTestimonials.length);
-        setIsTransitioning(false);
-      }, 300); // Fade out duration
-    }, 1500); // Rotate every 1.5 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const currentTestimonial = heroTestimonials[currentTestimonialIndex];
-
   // Use new simplified headline structure or fallback to existing
   const headline = t.hero.headline || t.hero.eliminateCatOdors;
   const subheadline = t.hero.subheadline || t.hero.instantly;
@@ -209,17 +190,6 @@ export const HeroContent = ({ t }: HeroContentProps) => {
   if (isSimplifiedHero) {
     return (
       <div className="flex flex-col justify-center space-y-6 md:space-y-8 lg:space-y-10 relative z-10 py-4">
-        {/* Social Proof Badge - Rotating Testimonials */}
-        <div
-          className="inline-flex items-center self-start gap-2 px-4 py-2 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-md border border-gray-200/50 dark:border-gray-700/50 shadow-sm animate-fade-in-up transition-opacity duration-500"
-          style={{ opacity: isTransitioning ? 0.3 : 1 }}
-        >
-          <StarRating rating={currentTestimonial.stars} />
-          <span className="text-sm font-bold text-gray-800 dark:text-gray-200 ml-1">
-            &apos;{currentTestimonial.quote}&apos;
-          </span>
-        </div>
-
         {/* Simplified Headline */}
         <div className="space-y-4">
           <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] text-gray-900 dark:text-white">
@@ -239,10 +209,6 @@ export const HeroContent = ({ t }: HeroContentProps) => {
         <div className="flex flex-col sm:flex-row sm:items-center gap-6 md:gap-10 py-2 border-y border-gray-200/30 dark:border-gray-700/30">
           {/* Trust indicators */}
           <div className="flex flex-col gap-1">
-            <div className="flex items-center gap-2">
-              <StarRating rating={5} />
-              <span className="text-base font-bold text-gray-900 dark:text-gray-100">4.9/5</span>
-            </div>
             <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold">
               <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
               {t.hero.simplified?.thirtyDayGuarantee || "30-Day Guarantee"}
@@ -295,17 +261,6 @@ export const HeroContent = ({ t }: HeroContentProps) => {
   // Control: Current Hero (with CTA color A/B test applied)
   return (
     <div className="flex flex-col justify-center space-y-6 md:space-y-8 lg:space-y-10 relative z-10 py-4">
-      {/* Social Proof Badge - Rotating Testimonials (slowed for readability) */}
-      <div
-        className="inline-flex items-center self-start gap-2 px-4 py-2 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-md border border-gray-200/50 dark:border-gray-700/50 shadow-sm animate-fade-in-up transition-opacity duration-500"
-        style={{ opacity: isTransitioning ? 0.3 : 1 }}
-      >
-        <StarRating rating={currentTestimonial.stars} />
-        <span className="text-sm font-bold text-gray-800 dark:text-gray-200 ml-1">
-          &apos;{currentTestimonial.quote}&apos;
-        </span>
-      </div>
-
       {/* Simplified Headline - outcome-focused */}
       <div className="space-y-4">
         <h1 className="font-heading text-4xl sm:text-5xl md:text-7xl font-black tracking-tight leading-[1.05] text-gray-900 dark:text-white">
@@ -326,10 +281,6 @@ export const HeroContent = ({ t }: HeroContentProps) => {
       {/* Trust & Social Proof Row */}
       <div className="flex flex-col sm:flex-row sm:items-center gap-6 md:gap-10 py-2 border-y border-gray-200/30 dark:border-gray-700/30">
         <div className="flex flex-col gap-1">
-          <div className="flex items-center gap-2">
-            <StarRating rating={5} />
-            <span className="text-base font-bold text-gray-900 dark:text-gray-100">4.9/5</span>
-          </div>
           <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold">
             <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
             {t.hero.simplified?.moneyBackGuarantee || "Money-Back Guarantee"}
