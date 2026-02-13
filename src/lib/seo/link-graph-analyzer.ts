@@ -4,7 +4,6 @@
  */
 
 import * as cheerio from 'cheerio';
-import type { AnyNode } from 'domhandler';
 import { LinkGraphNode, LinkSuggestion } from './types';
 
 export class LinkGraphAnalyzer {
@@ -334,7 +333,7 @@ export function normalizeLinkHref(href: string, basePath: string): string {
  */
 function extractContext(
   $: cheerio.CheerioAPI,
-  element: AnyNode,
+  element: NonNullable<Parameters<cheerio.CheerioAPI>[0]>,
   maxLength: number = 50
 ): string {
   const $el = $(element);

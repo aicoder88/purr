@@ -1,0 +1,59 @@
+BBials provided by user
+API_TOKEN = "HiissonUJNogEteIqR94BzLxbbPpM3qZcbZAssM-"
+ACCOUNT_ID = "adab47b0e1de759ceeafe5711fdfebe6"
+2~D The "Naughty List" of countries based on your Vercel logs
+E: Sweden, HK: Hong Kong, JP: Japan, IN: India, BR: Brazil2~2E = "Automated Global Bot Block"
+
+headers = {
+    "Authorization": f"Bearer {API_TOKEN}",
+    "Content-Type": "application/json"
+}
+
+def apply_block():
+    # 1. Get all zones (domains) in the account
+    print("🛰️ Fetching all domains from Cloudflare...")
+    zones_url = "https://api.cloudflare.com/client/v4/zones"
+    zones_resp = requests.get(zones_url, headers=headers).json()
+
+    if not zones_resp.get("success"):
+        print(f"❌ Error fetching zones: {zones_resp.get('errors')}")
+        return
+
+    zones = zones_resp.get("result", [])
+    print(f"✅ Found {len(zones)} domains.\n")
+
+    for zone in zones:
+        zone_id = zone['id']
+        zone_name = zone['name']
+        print(f"🛡️ Processing {zone_name}...")
+
+        # 2. Get the entry point for the custom firewall ruleset
+        ruleset_url = f"https://api.cloudflare.com/client/v4/zones/{zone_id}/rulesets/phases/http_request_firewall_custom/entrypoint"
+        rs_resp = requests.get(ruleset_url, headers=headers).json()
+        
+        if not rs_resp.get("success"):
+            print(f"   ⚠️ Skipping {zone_name}: Could not access WAF settings.")
+            continue
+
+        ruleset_id = rs_resp['result']['id']
+
+        # 3. Add the block rule to the ruleset
+        # Expression: If country is in our list, BLOCK them.
+        rule_data = {
+            "action": "block",
+            "description": RULE_NAME,
+            "expression": f"ip.src.country in {COUNTRIES}",
+            "enabled": True
+        }
+
+        add_rule_url = f"https://api.cloudflare.com/client/v4/zones/{zone_id}/rulesets/{ruleset_id}/rules"
+        r = requests.post(add_rule_url, headers=headers, json=rule_data)
+
+        if r.status_code in [200, 201]:
+            print(f"   ✅ BLOCK RULE DEPLOYED")
+        else:
+            print(f"   ❌ FAILED: {r.text}")
+
+if __name__ == "__main__":
+    apply_block()
+    print("\n🚀 All done! Check your Vercel logs in 5-10 minutes; traffic should drop to zero.")
