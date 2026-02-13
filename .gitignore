@@ -88,3 +88,6 @@ optimized_files.txt
 dark-mode-*.txt
 COMPLETION_STATUS.md
 TASK_14_COMPLETION.md
+
+# Local-only: previous submodule that should not be tracked/deployed
+/purrify-retail-training/

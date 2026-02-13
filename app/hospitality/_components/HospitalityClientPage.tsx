@@ -32,6 +32,7 @@ export default function HospitalityClientPage() {
       heroSubtitle: 'Accept pets, charge premium fees, and never worry about lingering odors affecting your reviews',
       statBookings: 'More Bookings',
       statBookingsDesc: 'Pet-friendly listings get more reservations',
+      statFragranceFreeValue: 'Fragrance-free',
       statReviews: 'No Added Fragrance',
       statReviewsDesc: 'Odor control without perfumes',
       statRevenue: 'Revenue Boost',
@@ -196,6 +197,7 @@ export default function HospitalityClientPage() {
       heroSubtitle: 'Acceptez les animaux, facturez des frais premium, et ne vous inquietez jamais des odeurs persistantes affectant vos avis',
       statBookings: 'Plus de Reservations',
       statBookingsDesc: 'Les annonces acceptant les animaux obtiennent plus de reservations',
+      statFragranceFreeValue: 'Sans parfum',
       statReviews: 'Meilleurs Avis',
       statReviewsDesc: 'Les proprietes sans odeurs recoivent de meilleures notes',
       statRevenue: 'Augmentation des Revenus',
@@ -360,6 +362,7 @@ export default function HospitalityClientPage() {
       heroSubtitle: '接受宠物,收取高额费用,再也不用担心异味影响您的评价',
       statBookings: '更多预订',
       statBookingsDesc: '宠物友好型房源获得更多预订',
+      statFragranceFreeValue: '无香型',
       statReviews: '更好评价',
       statReviewsDesc: '清新的房产获得更高评分',
       statRevenue: '收入增长',
@@ -544,12 +547,12 @@ export default function HospitalityClientPage() {
                 <div className="text-3xl font-bold text-amber-600 dark:text-amber-400 mb-2">+60%</div>
                 <div className="text-sm font-semibold text-gray-800 dark:text-gray-200">{t.statBookings}</div>
                 <div className="text-xs text-gray-600 dark:text-gray-400">{t.statBookingsDesc}</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-amber-600 dark:text-amber-400 mb-2">Fragrance-free</div>
-                <div className="text-sm font-semibold text-gray-800 dark:text-gray-200">{t.statReviews}</div>
-                <div className="text-xs text-gray-600 dark:text-gray-400">{t.statReviewsDesc}</div>
-              </div>
+	              </div>
+	              <div>
+	                <div className="text-3xl font-bold text-amber-600 dark:text-amber-400 mb-2">{t.statFragranceFreeValue}</div>
+	                <div className="text-sm font-semibold text-gray-800 dark:text-gray-200">{t.statReviews}</div>
+	                <div className="text-xs text-gray-600 dark:text-gray-400">{t.statReviewsDesc}</div>
+	              </div>
               <div>
                 <div className="text-3xl font-bold text-amber-600 dark:text-amber-400 mb-2">+35%</div>
                 <div className="text-sm font-semibold text-gray-800 dark:text-gray-200">{t.statRevenue}</div>
