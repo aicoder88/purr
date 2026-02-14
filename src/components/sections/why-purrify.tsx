@@ -158,6 +158,13 @@ export function WhyPurrify() {
             );
           })}
         </div>
+
+        {/* Transition teaser */}
+        {t.sectionTeasers?.whyPurrify && (
+          <p className="text-center text-lg text-gray-500 dark:text-gray-400 italic mt-16">
+            {t.sectionTeasers.whyPurrify}
+          </p>
+        )}
       </Container>
 
       {/* Enhanced scroll indicator */}

@@ -128,6 +128,13 @@ export function ScienceSection() {
                         </div>
                     </div>
                 </div>
+
+                {/* Transition teaser */}
+                {t.sectionTeasers?.science && (
+                    <p className="text-center text-lg text-gray-500 dark:text-gray-400 italic mt-16 col-span-full">
+                        {t.sectionTeasers.science}
+                    </p>
+                )}
             </Container>
         </section>
     );

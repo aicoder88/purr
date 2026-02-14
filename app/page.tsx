@@ -2,6 +2,7 @@ export const dynamic = 'force-static';
 
 import { Metadata } from 'next';
 import { Hero } from '@/components/sections/hero';
+import { AgitationSection } from '@/components/sections/agitation-section';
 import { ScienceSection } from '@/components/sections/science-section';
 import { HowItWorks } from '@/components/sections/how-it-works';
 import { WhyPurrify } from '@/components/sections/why-purrify';
@@ -156,24 +157,31 @@ export default async function HomePage() {
         {/* Scrolling Announcement Bar below hero */}
         <ScrollingAnnouncementBar />
 
-        {/* Science Section */}
+        {/* Agitation Section - feel the pain before the solution */}
         <div className="cv-auto cis-720">
           <ErrorBoundary>
-            <ScienceSection />
+            <AgitationSection />
           </ErrorBoundary>
         </div>
 
-        {/* How It Works Section */}
+        {/* How It Works Section - the answer reveal */}
         <div className="cv-auto cis-720">
           <ErrorBoundary>
             <HowItWorks />
           </ErrorBoundary>
         </div>
 
-        {/* Why Purrify Section */}
+        {/* Why Purrify Section - benefit stack */}
         <div className="cv-auto cis-720">
           <ErrorBoundary>
             <WhyPurrify />
+          </ErrorBoundary>
+        </div>
+
+        {/* Science Section - moved down for conversational flow */}
+        <div className="cv-auto cis-720">
+          <ErrorBoundary>
+            <ScienceSection />
           </ErrorBoundary>
         </div>
 

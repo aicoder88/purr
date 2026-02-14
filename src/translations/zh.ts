@@ -399,6 +399,21 @@ export const zh = {
     b2bGuarantee: "全国宠物零售商有售"
   },
 
+  // TODO: translate - Agitation Section (homepage - pain/problem awareness)
+  agitationSection: {
+    headline: "You Know That Moment...",
+    paragraphs: [
+      "You walk in the door after a long day. And there it is. That smell.",
+      "The one that hits you before you've even taken off your coat.",
+      "The one you've stopped noticing... until company comes over. Until your mother-in-law wrinkles her nose. Until you catch your friend doing that subtle sniff at the door.",
+      "You love your cat. But that litter box? It's a ticking time bomb of ammonia.",
+      "And here's the worst part: Air fresheners aren't fixing it. They're just spraying perfume on top of a problem.",
+      "The smell is still there. Lurking. Waiting. Ready to assault anyone who walks through your door."
+    ],
+    pivot: "But what if it didn't have to be this way?",
+    transition: "Cat parents across Canada are discovering something that actually works. And it takes 30 seconds..."
+  },
+
   // FAQ
   faq: {
     title: "常见问题",

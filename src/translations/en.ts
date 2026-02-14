@@ -183,9 +183,9 @@ export const en = {
     ferretCage: "Ferret Cage Smell Killer",
     headline: "Love Your Cat. Lose The Smell.",
     eliminateCatOdors: "Love Your Cat. Lose The Smell.",
-    subheadline: "One sprinkle keeps litter fresh for 7 full days.",
-    instantly: "One sprinkle keeps litter fresh for 7 full days.",
-    description: "You adore your cat. The litter box smell? Not so much. Purrify uses the same activated carbon found in water filters to trap ammonia at the source — no perfumes, no cover-ups, just fresh air. Sprinkle once, breathe easy for a week.",
+    subheadline: "1,000+ cat parents discovered the 30-second secret to a home that smells like... nothing. For a full week.",
+    instantly: "1,000+ cat parents discovered the 30-second secret to a home that smells like... nothing. For a full week.",
+    description: "You adore your cat. The litter box smell? Not so much. Purrify uses the same activated carbon found in water filters to trap ammonia at the source — no perfumes, no cover-ups, just fresh air. Keep scrolling to discover why air fresheners actually make litter box smell worse...",
     socialProof: {
       trustNumber: "1,000+",
       trustText: "happy cat parents across Canada",
@@ -305,7 +305,8 @@ export const en = {
     },
     learnTheScience: "Learn the science",
     compareSizes: "compare our sizes",
-    coconutDescription: "Pure, sustainable coconut shells are activated with filtered, pure, high pressure steam to open millions of holes, tunnels, and passage-ways to lock away odor molecules."
+    coconutDescription: "Pure, sustainable coconut shells are activated with filtered, pure, high pressure steam to open millions of holes, tunnels, and passage-ways to lock away odor molecules.",
+    transitionTeaser: "And here's why cat parents love it even more..."
   },
 
   // Products Section
@@ -358,8 +359,8 @@ export const en = {
 
   // Call to Action
   cta: {
-    title: "Ready to Breathe Easy?",
-    subtitle: "Try Purrify free — just cover the $4.76 shipping. If you're not impressed within 30 days, we'll refund even that.",
+    title: "Your Home Could Smell This Good By Next Week",
+    subtitle: "While you're reading this, 1,000+ cat parents across Canada are enjoying homes that smell like... nothing. No ammonia punch. No artificial cover-ups. Just fresh, clean air. One sprinkle. 7 days. A home you're actually excited to invite people into.",
     buttonText: "Get My Free Trial →",
     joinText: "30-Day Money-Back Guarantee • Made in Canada 🇨🇦",
     guarantee: "30-Day Money-Back Guarantee • Made in Canada 🇨🇦",
@@ -691,10 +692,10 @@ export const en = {
 
   // Science Section (homepage component)
   scienceSection: {
-    badge: "The Nerdy Bit (It's Quick)",
-    headline: "How Activated Carbon",
-    headlineHighlight: "Actually Works",
-    description: "Air fresheners just spray perfume over the problem. Activated carbon is different — it has millions of tiny tunnels that physically trap odor molecules. Once ammonia goes in, it doesn't come back out. That's why the smell actually disappears instead of playing hide-and-seek.",
+    badge: "The Secret Sauce",
+    headline: "We Don't Hide The Smell.",
+    headlineHighlight: "We Trap It.",
+    description: "You know those fancy water filters that make tap water actually taste good? Purrify uses the exact same stuff. It's called activated coconut carbon. Air fresheners spray perfume over the problem. Baking soda just sits there. But activated carbon has millions of microscopic tunnels that actually trap ammonia molecules. They go in. They don't come out. That's not marketing fluff. That's chemistry.",
     learnMore: "Dive Deeper Into The Science",
     features: [
       {
@@ -720,6 +721,21 @@ export const en = {
     }
   },
 
+  // Agitation Section (homepage - pain/problem awareness)
+  agitationSection: {
+    headline: "You Know That Moment...",
+    paragraphs: [
+      "You walk in the door after a long day. And there it is. That smell.",
+      "The one that hits you before you've even taken off your coat.",
+      "The one you've stopped noticing... until company comes over. Until your mother-in-law wrinkles her nose. Until you catch your friend doing that subtle sniff at the door.",
+      "You love your cat. But that litter box? It's a ticking time bomb of ammonia.",
+      "And here's the worst part: Air fresheners aren't fixing it. They're just spraying perfume on top of a problem.",
+      "The smell is still there. Lurking. Waiting. Ready to assault anyone who walks through your door."
+    ],
+    pivot: "But what if it didn't have to be this way?",
+    transition: "Cat parents across Canada are discovering something that actually works. And it takes 30 seconds..."
+  },
+
   // Features Section (homepage component)
   featuresSection: {
     badge: "The Purrify Difference",
@@ -734,6 +750,12 @@ export const en = {
   calculatorSection: {
     title: "Save Money While Keeping Your Home Fresh",
     description: "Purrify extends the life of your cat litter by up to 50%, saving you money while eliminating odors. See how much you could save with our calculator below."
+  },
+
+  // Section transition teasers (greased slide copywriting)
+  sectionTeasers: {
+    whyPurrify: "But how does it actually work?",
+    science: "Ready to try it yourself?"
   },
 
   // Section Header highlights

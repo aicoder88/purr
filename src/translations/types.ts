@@ -237,6 +237,14 @@ export interface TranslationType {
     }>;
   };
 
+  // Agitation Section (homepage - pain/problem awareness)
+  agitationSection?: {
+    headline: string;
+    paragraphs: string[];
+    pivot: string;
+    transition: string;
+  };
+
   // Science Section (homepage component)
   scienceSection?: {
     badge: string;
@@ -272,6 +280,12 @@ export interface TranslationType {
   calculatorSection?: {
     title: string;
     description: string;
+  };
+
+  // Section transition teasers
+  sectionTeasers?: {
+    whyPurrify: string;
+    science: string;
   };
 
   // Section Header highlights
@@ -316,6 +330,7 @@ export interface TranslationType {
     learnTheScience?: string;
     compareSizes?: string;
     coconutDescription?: string;
+    transitionTeaser?: string;
   };
 
   // Products Section

@@ -86,6 +86,12 @@ export function HowItWorks() {
           ))}
         </div>
 
+        {/* Transition teaser */}
+        {t.howItWorks?.transitionTeaser && (
+          <p className="text-center text-lg text-gray-500 dark:text-gray-400 italic mt-16">
+            {t.howItWorks.transitionTeaser}
+          </p>
+        )}
       </Container>
     </section>
   );
