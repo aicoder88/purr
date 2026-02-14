@@ -52,7 +52,17 @@ poll() {
       set -e
       if [[ -s events.json ]]; then
         echo '--- Build events (tail) ---'
-        jq -r '.events[]? | (.created | tostring) + " " + (.payload?.text // .type // "")' events.json | tail -n 200
+        # Vercel has returned both shapes in the wild:
+        # 1) { "events": [ ... ] }
+        # 2) [ ... ]
+        jq -r '
+          def events_list:
+            if type == "array" then .
+            elif (type == "object" and has("events")) then .events
+            else []
+            end;
+          events_list[]? | (.created | tostring) + " " + (.payload?.text // .type // "")
+        ' events.json | tail -n 200
         echo '---------------------------'
       else
         echo "No events available or failed to fetch."
@@ -77,4 +87,3 @@ done
 echo "::error::Timed out waiting for Vercel deployment for commit ${SHA}" >&2
 echo "Timed out waiting for deployment of ${SHA}" >> "$GITHUB_STEP_SUMMARY"
 exit 1
-
