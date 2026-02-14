@@ -733,7 +733,17 @@ export const en = {
       "The smell is still there. Lurking. Waiting. Ready to assault anyone who walks through your door."
     ],
     pivot: "But what if it didn't have to be this way?",
-    transition: "Cat parents across Canada are discovering something that actually works. And it takes 30 seconds..."
+    transition: "Cat parents across Canada are discovering something that actually works. And it takes 30 seconds...",
+    ui: {
+      imageAlt: "Embarrassed cat owner",
+      imageCaption: "\"i swear i just cleaned it...\"",
+      floatingCardTitle: "Ammonia Bomb",
+      floatingCardDescription: "Litter box odors can travel 20 ft in seconds.",
+      timelineTimeArrival: "5:30 PM",
+      timelineTimeCompany: "5:31 PM",
+      timelineTimeThinking: "Thinking...",
+      timelineTimeReality: "Reality"
+    }
   },
 
   // Features Section (homepage component)
@@ -2455,6 +2465,7 @@ export const en = {
   maps: {
     findNearYou: "Find Purrify Near You | Retail Store Locations",
     discoverWhere: "Discover where to buy Purrify across Canada. Each location represents a retail store where you can find our products.",
+    loadingMap: "Loading map...",
     retailStores: "Purrify retail stores across Canada - Montreal, Toronto, Vancouver and more",
     cities: {
       montreal: "Montreal",

@@ -394,19 +394,28 @@ export const fr = {
     b2bGuarantee: "Disponible chez les détaillants d'animaux partout au pays"
   },
 
-  // TODO: translate - Agitation Section (homepage - pain/problem awareness)
   agitationSection: {
-    headline: "You Know That Moment...",
+    headline: "Vous Connaissez Ce Moment...",
     paragraphs: [
-      "You walk in the door after a long day. And there it is. That smell.",
-      "The one that hits you before you've even taken off your coat.",
-      "The one you've stopped noticing... until company comes over. Until your mother-in-law wrinkles her nose. Until you catch your friend doing that subtle sniff at the door.",
-      "You love your cat. But that litter box? It's a ticking time bomb of ammonia.",
-      "And here's the worst part: Air fresheners aren't fixing it. They're just spraying perfume on top of a problem.",
-      "The smell is still there. Lurking. Waiting. Ready to assault anyone who walks through your door."
+      "Vous rentrez chez vous après une longue journée. Et là, ça vous frappe. Cette odeur.",
+      "Celle qui vous saute au nez avant même d'avoir enlevé votre manteau.",
+      "Celle que vous ne remarquez plus... jusqu'à ce que quelqu'un passe. Jusqu'à ce que votre belle-mère fronce le nez. Jusqu'à ce que vous surpreniez un ami faire ce petit reniflement à l'entrée.",
+      "Vous aimez votre chat. Mais cette litière ? C'est une bombe à retardement d'ammoniac.",
+      "Et le pire : les désodorisants ne règlent rien. Ils vaporisent juste du parfum par-dessus le problème.",
+      "L'odeur est toujours là. En embuscade. À attendre. Prête à attaquer quiconque franchit votre porte."
     ],
-    pivot: "But what if it didn't have to be this way?",
-    transition: "Cat parents across Canada are discovering something that actually works. And it takes 30 seconds..."
+    pivot: "Et si ça n'avait pas à être comme ça ?",
+    transition: "Des propriétaires de chats partout au Canada découvrent enfin quelque chose qui fonctionne vraiment. Et ça prend 30 secondes...",
+    ui: {
+      imageAlt: "Propriétaire de chat gêné",
+      imageCaption: "\"je te jure que je viens de nettoyer...\"",
+      floatingCardTitle: "Bombe d'ammoniac",
+      floatingCardDescription: "Les odeurs de litière peuvent se propager sur 6 m en quelques secondes.",
+      timelineTimeArrival: "17 h 30",
+      timelineTimeCompany: "17 h 31",
+      timelineTimeThinking: "Réflexion...",
+      timelineTimeReality: "Réalité"
+    }
   },
 
   // FAQ
@@ -2228,6 +2237,7 @@ export const fr = {
   maps: {
     findNearYou: "Trouvez Purrify Près de Chez Vous | Magasins Détaillants",
     discoverWhere: "Découvrez où acheter Purrify à travers le Canada. Chaque point représente un magasin de détail où vous pouvez trouver nos produits.",
+    loadingMap: "Chargement de la carte...",
     retailStores: "🗺️ Magasins détaillants Purrify à travers le Canada - Montréal, Toronto, Vancouver et plus",
     cities: {
       montreal: "Montréal",

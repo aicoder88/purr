@@ -371,19 +371,28 @@ export const es: TranslationType = {
     b2bGuarantee: "Disponible en minoristas de mascotas en todo el pais"
   },
 
-  // TODO: translate - Agitation Section (homepage - pain/problem awareness)
   agitationSection: {
-    headline: "You Know That Moment...",
+    headline: "Ya Conoces Ese Momento...",
     paragraphs: [
-      "You walk in the door after a long day. And there it is. That smell.",
-      "The one that hits you before you've even taken off your coat.",
-      "The one you've stopped noticing... until company comes over. Until your mother-in-law wrinkles her nose. Until you catch your friend doing that subtle sniff at the door.",
-      "You love your cat. But that litter box? It's a ticking time bomb of ammonia.",
-      "And here's the worst part: Air fresheners aren't fixing it. They're just spraying perfume on top of a problem.",
-      "The smell is still there. Lurking. Waiting. Ready to assault anyone who walks through your door."
+      "Entras por la puerta después de un día largo. Y ahí está. Ese olor.",
+      "El que te golpea antes de que siquiera te quites el abrigo.",
+      "El que ya no notas... hasta que viene visita. Hasta que tu suegra arruga la nariz. Hasta que ves a tu amigo hacer ese olfateo discreto en la entrada.",
+      "Amas a tu gato. Pero esa caja de arena? Es una bomba de amoníaco a punto de estallar.",
+      "Y lo peor: los ambientadores no lo arreglan. Solo rocían perfume encima del problema.",
+      "El olor sigue ahí. Acechando. Esperando. Listo para atacar a cualquiera que cruce tu puerta."
     ],
-    pivot: "But what if it didn't have to be this way?",
-    transition: "Cat parents across Canada are discovering something that actually works. And it takes 30 seconds..."
+    pivot: "Y si no tuviera que ser así?",
+    transition: "Padres de gatos en todo Canadá están descubriendo algo que de verdad funciona. Y toma 30 segundos...",
+    ui: {
+      imageAlt: "Dueño de gato avergonzado",
+      imageCaption: "\"te juro que lo acabo de limpiar...\"",
+      floatingCardTitle: "Bomba de amoníaco",
+      floatingCardDescription: "Los olores de la caja de arena pueden recorrer 6 m en segundos.",
+      timelineTimeArrival: "5:30 p. m.",
+      timelineTimeCompany: "5:31 p. m.",
+      timelineTimeThinking: "Pensando...",
+      timelineTimeReality: "Realidad"
+    }
   },
 
   // FAQ
@@ -2452,6 +2461,7 @@ export const es: TranslationType = {
   maps: {
     findNearYou: "Encuentra Purrify Cerca de Ti | Ubicaciones de Tiendas Minoristas",
     discoverWhere: "Descubre donde comprar Purrify en Canada. Cada ubicacion representa una tienda minorista donde puedes encontrar nuestros productos.",
+    loadingMap: "Cargando mapa...",
     retailStores: "Tiendas minoristas Purrify en Canada - Montreal, Toronto, Vancouver y mas",
     cities: {
       montreal: "Montreal",

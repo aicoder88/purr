@@ -399,19 +399,28 @@ export const zh = {
     b2bGuarantee: "全国宠物零售商有售"
   },
 
-  // TODO: translate - Agitation Section (homepage - pain/problem awareness)
   agitationSection: {
-    headline: "You Know That Moment...",
+    headline: "你一定经历过这一刻...",
     paragraphs: [
-      "You walk in the door after a long day. And there it is. That smell.",
-      "The one that hits you before you've even taken off your coat.",
-      "The one you've stopped noticing... until company comes over. Until your mother-in-law wrinkles her nose. Until you catch your friend doing that subtle sniff at the door.",
-      "You love your cat. But that litter box? It's a ticking time bomb of ammonia.",
-      "And here's the worst part: Air fresheners aren't fixing it. They're just spraying perfume on top of a problem.",
-      "The smell is still there. Lurking. Waiting. Ready to assault anyone who walks through your door."
+      "忙碌一天回到家，刚进门就闻到了那股味道。",
+      "甚至还没来得及脱外套，它就扑面而来。",
+      "你平时可能已经习惯了... 直到有客人上门。直到婆婆皱起鼻子。直到你看到朋友站在门口悄悄闻了一下。",
+      "你很爱你的猫。但那只猫砂盆？就像一颗正在倒计时的氨气炸弹。",
+      "更糟的是：空气清新剂并没有解决问题。它只是把香味喷在问题上面。",
+      "那股味道还在。潜伏着。等待着。随时准备“袭击”每一个走进你家的人。"
     ],
-    pivot: "But what if it didn't have to be this way?",
-    transition: "Cat parents across Canada are discovering something that actually works. And it takes 30 seconds..."
+    pivot: "但如果不必这样呢？",
+    transition: "加拿大各地的猫爸猫妈正在发现一种真正有效的方法。而且只要 30 秒...",
+    ui: {
+      imageAlt: "尴尬的猫主人",
+      imageCaption: "\"我发誓我刚清理过...\"",
+      floatingCardTitle: "氨气炸弹",
+      floatingCardDescription: "猫砂盆异味几秒钟就能飘到 6 米开外。",
+      timelineTimeArrival: "17:30",
+      timelineTimeCompany: "17:31",
+      timelineTimeThinking: "思考中...",
+      timelineTimeReality: "现实"
+    }
   },
 
   // FAQ
@@ -2454,6 +2463,7 @@ export const zh = {
   maps: {
     findNearYou: "在您附近找到Purrify | 零售店位置",
     discoverWhere: "发现在加拿大各地哪里可以购买Purrify。每个位置代表一个可以找到我们产品的零售店。",
+    loadingMap: "正在加载地图...",
     retailStores: "Purrify在加拿大各地的零售店 - 蒙特利尔、多伦多、温哥华等",
     cities: {
       montreal: "蒙特利尔",

@@ -9,13 +9,15 @@ export function AgitationSection() {
 
   const section = t.agitationSection;
   if (!section) return null;
+  const ui = section.ui;
+  if (!ui) return null;
 
   // Split paragraphs into timeline items
   const timelineItems = [
-    { text: section.paragraphs[0], time: "5:30 PM", icon: Home },
-    { text: section.paragraphs[2], time: "5:31 PM", icon: Users },
-    { text: section.paragraphs[3], time: "Thinking...", icon: Bomb },
-    { text: section.paragraphs[5], time: "Reality", icon: ShieldAlert },
+    { text: section.paragraphs[0], time: ui.timelineTimeArrival, icon: Home },
+    { text: section.paragraphs[2], time: ui.timelineTimeCompany, icon: Users },
+    { text: section.paragraphs[3], time: ui.timelineTimeThinking, icon: Bomb },
+    { text: section.paragraphs[5], time: ui.timelineTimeReality, icon: ShieldAlert },
   ];
 
   return (
@@ -29,12 +31,12 @@ export function AgitationSection() {
             <div className="relative bg-white dark:bg-gray-900 rounded-[2rem] shadow-2xl overflow-hidden border border-gray-100 dark:border-gray-800">
               <img
                 src="/images/embarrassed-host.png"
-                alt="Embarrassed cat owner"
+                alt={ui.imageAlt}
                 className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-8">
                 <p className="text-white font-bold text-lg">
-                  "i swear i just cleaned it..."
+                  {ui.imageCaption}
                 </p>
               </div>
             </div>
@@ -45,10 +47,10 @@ export function AgitationSection() {
                 <div className="w-8 h-8 bg-red-100 dark:bg-red-900/50 rounded-full flex items-center justify-center">
                   <Bomb className="w-4 h-4 text-red-600 dark:text-red-400" />
                 </div>
-                <span className="font-bold text-red-600 dark:text-red-400 text-sm">Ammonia Bomb</span>
+                <span className="font-bold text-red-600 dark:text-red-400 text-sm">{ui.floatingCardTitle}</span>
               </div>
               <p className="text-xs text-gray-600 dark:text-gray-400">
-                Litter box odors can travel 20 ft in seconds.
+                {ui.floatingCardDescription}
               </p>
             </div>
           </div>

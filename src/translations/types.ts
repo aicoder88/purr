@@ -243,6 +243,16 @@ export interface TranslationType {
     paragraphs: string[];
     pivot: string;
     transition: string;
+    ui?: {
+      imageAlt: string;
+      imageCaption: string;
+      floatingCardTitle: string;
+      floatingCardDescription: string;
+      timelineTimeArrival: string;
+      timelineTimeCompany: string;
+      timelineTimeThinking: string;
+      timelineTimeReality: string;
+    };
   };
 
   // Science Section (homepage component)
@@ -1891,6 +1901,7 @@ export interface TranslationType {
   maps?: {
     findNearYou: string;
     discoverWhere: string;
+    loadingMap: string;
     retailStores: string;
     cities: {
       montreal: string;
