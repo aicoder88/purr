@@ -27,7 +27,7 @@ These posts have unique hero images (either AI-generated or carefully selected f
 - [x] activated-carbon-litter-additive-benefits.json → `/optimized/activated-carbon-granules.webp`
 - [x] space-station-secret-fresh-home-cat-owners.json → `/optimized/science-molecule-lab.jpg`
 - [x] best-covered-litter-boxes-odor-control.json → `/optimized/cat_rose_thumbnail.webp`
-- [x] cat-litter-odour-control-tips.json → `/optimized/cat-litter-deodorizer-guide.webp`
+- [x] cat-litter-odour-control-tips.json → `/optimized/cat-litter-odour-control-tips-hero.webp`
 - [x] cat-litter-smell-worse-winter.json → `/optimized/catonbed-828w.webp`
 - [x] best-cat-litter-deodorizers-2026.json → `/optimized/90day-solution.jpg`
 - [x] cat-litter-odor-myths.json → `/optimized/90day-science.jpg`
