@@ -49,7 +49,7 @@ export default function UsingDeodorizersWithKittensClient() {
           </p>
         </header>
 
-        <div className="prose prose-lg max-w-none">
+        <div className="prose prose-lg max-w-none dark:prose-invert">
           {/* Hero Image - Adorable Kitten */}
           <div className="mb-8">
             <Image

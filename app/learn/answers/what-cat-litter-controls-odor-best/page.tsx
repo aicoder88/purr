@@ -70,7 +70,7 @@ export default function QuestionPage() {
           </p>
         </div>
 
-        <div className="prose prose-lg max-w-none">
+        <div className="prose prose-lg max-w-none dark:prose-invert">
           <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 mb-8">
             <p className="text-gray-800 dark:text-gray-100 leading-relaxed text-lg">
               The best odor-control litter depends on your specific situation. For most households, clumping clay litter with activated carbon additive provides the best results. For single-cat homes with daily scooping, crystal litter works well. For eco-conscious owners, natural litters with carbon supplements are effective. The key differentiator is not the base litter alone but whether you add activated carbon, which does the actual odor elimination. Match your litter choice to your household size, scooping frequency, and odor sensitivity.

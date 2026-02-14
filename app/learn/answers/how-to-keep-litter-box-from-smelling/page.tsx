@@ -68,7 +68,7 @@ export default function QuestionPage() {
           </p>
         </div>
 
-        <div className="prose prose-lg max-w-none">
+        <div className="prose prose-lg max-w-none dark:prose-invert">
           <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 mb-8">
             <p className="text-gray-800 dark:text-gray-100 leading-relaxed text-lg">
               Keep your litter box from smelling by following a simple two-part routine. Daily: Scoop waste every morning and evening (2 minutes each). Weekly: Completely change litter and wash the box with soap and water (15 minutes). The secret ingredient most people miss: add activated carbon additive to your litter—it eliminates odor molecules rather than just masking them. Place the box in a well-ventilated area, keep litter depth at 2-3 inches, and never let waste sit overnight. This routine takes less than 5 minutes per day but prevents odor from ever building up.

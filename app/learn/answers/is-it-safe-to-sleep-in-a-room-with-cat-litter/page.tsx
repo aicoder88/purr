@@ -70,7 +70,7 @@ export default function QuestionPage() {
           </p>
         </div>
 
-        <div className="prose prose-lg max-w-none">
+        <div className="prose prose-lg max-w-none dark:prose-invert">
           <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 mb-8">
             <p className="text-gray-800 dark:text-gray-100 leading-relaxed text-lg">
               Yes, it is generally safe to sleep in a room with a cat litter box if you maintain proper odor control and ventilation. The primary concern is ammonia buildup from urine, which can irritate respiratory passages in high concentrations. However, with daily scooping, quality clumping litter, and an activated carbon additive to eliminate ammonia at the source, risks are minimal. Ensure the room has adequate airflow by keeping a window slightly open or using a small air purifier. Pregnant women should avoid changing litter due to toxoplasmosis risk, but sleeping in the same room poses no danger if someone else handles cleaning. Keep the litter box as far from your bed as possible.

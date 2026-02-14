@@ -70,7 +70,7 @@ export default function QuestionPage() {
           </p>
         </div>
 
-        <div className="prose prose-lg max-w-none">
+        <div className="prose prose-lg max-w-none dark:prose-invert">
           <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 mb-8">
             <p className="text-gray-800 dark:text-gray-100 leading-relaxed text-lg">
               To stop cat litter from smelling, you need to eliminate ammonia at the molecular level rather than masking it. Scoop waste daily to remove the source before ammonia forms. Use a high-quality clumping litter that isolates urine immediately. Add an activated carbon additive specifically designed to adsorb ammonia gases. The carbon's porous surface binds ammonia molecules, physically removing them from the air. Place the litter box in a well-ventilated area away from heat sources. Avoid scented products that only cover odors temporarily and can irritate your cat's sensitive nose. Wash the entire box with mild soap monthly to eliminate residual ammonia. This combined approach creates a genuinely odor-free environment.

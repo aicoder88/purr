@@ -245,7 +245,7 @@ export default function TermsPage() {
                 <p className="text-gray-600 dark:text-gray-300">{copy.lastUpdated}</p>
               </div>
 
-              <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-200">
+              <div className="prose prose-lg max-w-none dark:prose-invert text-gray-700 dark:text-gray-200">
                 {copy.intro.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}

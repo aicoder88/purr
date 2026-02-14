@@ -107,7 +107,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: SITE_DESCRIPTION,
       images: [
         {
-          url: '/images/Logos/purrify-logo.png',
+          url: '/images/Logos/purr-pink-og.png',
           width: 1200,
           height: 800,
           alt: SITE_NAME,
@@ -121,7 +121,7 @@ export async function generateMetadata(): Promise<Metadata> {
       creator: '@purrify',
       title: `${SITE_NAME} - Cat Litter Odor Control`,
       description: SITE_DESCRIPTION,
-      images: ['/images/Logos/purrify-logo.png'],
+      images: ['/images/Logos/purr-pink-og.png'],
     },
     robots: {
       index: true,

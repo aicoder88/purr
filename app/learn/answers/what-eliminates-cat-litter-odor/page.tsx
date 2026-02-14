@@ -70,7 +70,7 @@ export default function QuestionPage() {
           </p>
         </div>
 
-        <div className="prose prose-lg max-w-none">
+        <div className="prose prose-lg max-w-none dark:prose-invert">
           <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 mb-8">
             <p className="text-gray-800 dark:text-gray-100 leading-relaxed text-lg">
               Activated carbon is the most effective substance for eliminating cat litter odor. It works through adsorption, binding ammonia and other odor molecules to its porous surface. One gram of activated carbon contains over 1,000 square meters of surface area, creating massive capacity for trapping gases. Unlike baking soda which only masks odors temporarily, activated carbon physically removes them from the air. Enzymatic cleaners are also effective for eliminating odors from accidents outside the box, as they break down the organic compounds causing smell. For ongoing litter box maintenance, activated carbon additives mixed into litter provide continuous odor elimination for up to a week per application.

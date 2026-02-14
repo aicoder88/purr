@@ -245,10 +245,10 @@ export function Footer() {
                 <Link href={localePrefix || '/'} className="group">
                   <div className="h-6 w-auto mr-2 flex items-center">
                     <Image
-                      src="/optimized/logo-light.webp"
+                      src="/optimized/logo-light-pink.webp"
                       alt={copy.logoAlt}
                       width={120}
-                      height={40}
+                      height={57}
                       loading="lazy"
                       className="h-full w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
                     />

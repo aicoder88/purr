@@ -80,7 +80,7 @@ export default function ActivatedCarbonBenefitsClient() {
           <HubSpokeNav clusterId="activated-carbon" currentUrl="/learn/activated-carbon-benefits" />
         </div>
 
-        <div className="prose prose-lg max-w-none">
+        <div className="prose prose-lg max-w-none dark:prose-invert">
           {/* Hero Image */}
           <div className="mb-8">
             <Image

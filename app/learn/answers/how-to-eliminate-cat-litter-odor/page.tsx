@@ -70,7 +70,7 @@ export default function QuestionPage() {
           </p>
         </div>
 
-        <div className="prose prose-lg max-w-none">
+        <div className="prose prose-lg max-w-none dark:prose-invert">
           <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 mb-8">
             <p className="text-gray-800 dark:text-gray-100 leading-relaxed text-lg">
               To eliminate cat litter odor today, follow this 5-step checklist: (1) Empty the box completely and wash with dish soap and hot water. (2) Dry thoroughly—moisture breeds bacteria. (3) Fill with 2-3 inches of quality clumping litter. (4) Mix in activated carbon additive—this is the key step that eliminates odor molecules rather than masking them. (5) Scoop waste daily without fail. For immediate room freshening, place a small air purifier with carbon filter near the box. This checklist addresses the root cause (ammonia) rather than temporarily covering smells.

@@ -44,7 +44,7 @@ export default function ActivatedCarbonVsBakingSodaClient() {
           </p>
         </header>
 
-        <div className="prose prose-lg max-w-none">
+        <div className="prose prose-lg max-w-none dark:prose-invert">
           <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-400 dark:border-blue-400 p-6 mb-8">
             <h2 className="font-heading text-2xl font-semibold text-blue-900 dark:text-blue-100 mb-3">Quick Summary</h2>
             <p className="text-blue-800 dark:text-blue-200 mb-4">

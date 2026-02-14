@@ -71,7 +71,7 @@ export default function QuestionPage() {
           </p>
         </div>
 
-        <div className="prose prose-lg max-w-none">
+        <div className="prose prose-lg max-w-none dark:prose-invert">
           <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 mb-8">
             <p className="text-gray-800 dark:text-gray-100 leading-relaxed text-lg">
               Your house smells like cat pee because of ammonia, a compound in urine that becomes concentrated as it breaks down. Standard cat litter does not neutralize ammonia; it merely absorbs liquid. Over time, ammonia gas escapes into the air, permeating fabrics, walls, and carpets. Heat and humidity accelerate this process. If your cat has had accidents outside the box, urine crystals may remain in flooring or furniture, releasing odor continuously. Baking soda and air fresheners only mask the smell temporarily. The only effective solution is to neutralize ammonia at the molecular level using activated carbon or enzymatic cleaners that break down the compounds causing odor.

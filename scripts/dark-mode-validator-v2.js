@@ -262,6 +262,42 @@ function checkFile(filePath) {
     const classStringsInLine = extractClassStrings(line);
 
     classStringsInLine.forEach(({ value: classString, source }) => {
+      // Typography plugin safety: `prose` sets nested element colors (e.g. <strong>) via CSS vars.
+      // Without `prose-invert` in dark mode, bold/links can become dark-on-dark and unreadable.
+      const hasProse =
+        /(?:^|\s)prose(?:\s|$)/.test(classString) ||
+        /(?:^|\s)prose-/.test(classString);
+      if (hasProse && !/prose-invert/.test(classString)) {
+        errors.push({
+          line: lineIndex + 1,
+          column: line.indexOf(classString) + 1,
+          match: 'prose',
+          pattern: 'prose-missing-invert',
+          lineContent: line.trim(),
+          className: classString,
+          message: "Typography `prose` without `dark:prose-invert` can make <strong>/<a> unreadable in dark mode. Add `dark:prose-invert` (or `prose-invert`).",
+          source
+        });
+      }
+
+      // Blog CTA pattern: light gradient backgrounds must define dark gradient stops.
+      // Without dark:from/to, dark-mode text variants can become light-on-light.
+      const isGreenCtaGradient = /bg-gradient-to-r\b/.test(classString) &&
+        /(?:^|\s)from-green-50(?:\s|$)/.test(classString) &&
+        /(?:^|\s)to-emerald-50(?:\s|$)/.test(classString);
+      if (isGreenCtaGradient && (!/dark:from-/.test(classString) || !/dark:to-/.test(classString))) {
+        errors.push({
+          line: lineIndex + 1,
+          column: line.indexOf(classString) + 1,
+          match: 'bg-gradient-to-r from-green-50 to-emerald-50',
+          pattern: 'gradient-missing-dark-stops',
+          lineContent: line.trim(),
+          className: classString,
+          message: 'Gradient CTA missing `dark:from-*`/`dark:to-*` stops (breaks contrast in dark mode).',
+          source
+        });
+      }
+
       // Task 13: Smart Contrast Check
       const contrastIssues = checkSmartContrast(classString);
       contrastIssues.forEach(issue => {

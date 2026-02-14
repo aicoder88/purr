@@ -466,10 +466,10 @@ export default function StoresPage() {
         <section className="text-center mb-12">
           <div className="flex justify-center mb-6">
             <Image
-              src="/optimized/logo-light.webp"
+              src="/optimized/logo-light-pink.webp"
               alt="Purrify Logo"
               width={480}
-              height={220}
+              height={230}
               className="h-12 w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
             />
             <Image
@@ -577,8 +577,8 @@ export default function StoresPage() {
                         {/* Store Header with Logo */}
                         <div className="flex items-start gap-4 mb-4">
                           <div className={`w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0 ${shouldUseWhiteBg
-                              ? 'bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700'
-                              : 'bg-gradient-to-br from-brand-red to-brand-red/80'
+                            ? 'bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700'
+                            : 'bg-gradient-to-br from-brand-red to-brand-red/80'
                             }`}>
                             <StoreLogoImage logoConfig={logoConfig} storeName={store.name} />
                           </div>
@@ -587,10 +587,10 @@ export default function StoresPage() {
                               {store.name}
                             </h3>
                             <span className={`inline-block px-2 py-0.5 text-xs rounded-full ${store.type === 'independent'
-                                ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300'
-                                : store.type === 'franchise'
-                                  ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300'
-                                  : 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300'
+                              ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300'
+                              : store.type === 'franchise'
+                                ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300'
+                                : 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300'
                               }`}>
                               {store.type === 'independent' && 'Independent'}
                               {store.type === 'franchise' && 'Franchise'}

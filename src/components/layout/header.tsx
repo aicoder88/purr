@@ -396,10 +396,10 @@ export function Header() {
               className="flex items-center space-x-2 flex-shrink-0"
             >
               <Image
-                src="/optimized/logo-light.webp"
+                src="/optimized/logo-light-pink.webp"
                 alt={headerUiCopy.logoAlt}
                 width={120}
-                height={40}
+                height={57}
                 priority
                 className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
               />

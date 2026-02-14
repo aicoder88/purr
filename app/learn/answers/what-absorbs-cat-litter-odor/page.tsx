@@ -70,7 +70,7 @@ export default function QuestionPage() {
           </p>
         </div>
 
-        <div className="prose prose-lg max-w-none">
+        <div className="prose prose-lg max-w-none dark:prose-invert">
           <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 mb-8">
             <p className="text-gray-800 dark:text-gray-100 leading-relaxed text-lg">
               Activated carbon is the most effective material for absorbing cat litter odor. Made from coconut shells, wood, or coal, it has millions of microscopic pores that trap ammonia and other odor molecules through a process called adsorption. Zeolite, a natural volcanic mineral, also absorbs odors reasonably well but has less surface area than activated carbon. Baking soda absorbs some moisture but has minimal effect on ammonia gas. Charcoal briquettes can help in a pinch but are not food-safe and less effective than activated carbon designed for odor control. For best results, use activated carbon specifically manufactured for pet odor applications, as it has the optimal pore size for ammonia molecules.

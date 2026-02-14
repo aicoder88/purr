@@ -68,7 +68,7 @@ export default function QuestionPage() {
           </p>
         </div>
 
-        <div className="prose prose-lg max-w-none">
+        <div className="prose prose-lg max-w-none dark:prose-invert">
           <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 mb-8">
             <p className="text-gray-800 dark:text-gray-100 leading-relaxed text-lg">
               Change clumping litter every 1-2 weeks, crystal litter every 2-4 weeks, and non-clumping clay every 2-3 days. Scoop waste daily regardless of litter type. With activated carbon additives, you can extend clumping litter to 2-3 weeks. Multi-cat households should change 50% more frequently. The exact timing depends on litter type, number of cats, and whether you use odor-controlling additives. Watch for signs it is time: persistent odor after scooping, discolored litter, or your cat avoiding the box.

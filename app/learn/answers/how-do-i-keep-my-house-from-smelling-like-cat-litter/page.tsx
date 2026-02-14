@@ -70,7 +70,7 @@ export default function QuestionPage() {
           </p>
         </div>
 
-        <div className="prose prose-lg max-w-none">
+        <div className="prose prose-lg max-w-none dark:prose-invert">
           <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 mb-8">
             <p className="text-gray-800 dark:text-gray-100 leading-relaxed text-lg">
               To keep your house from smelling like cat litter, start by eliminating odor at the source. Use an activated carbon additive in the litter box to adsorb ammonia before it escapes. Place the litter box in a low-traffic area with good airflow, such as a bathroom with a vent fan or near a window. Use an air purifier with a carbon filter in the room. Scoop waste daily and change litter completely every two weeks. Seal soiled litter in airtight bags before disposal. Vacuum and mop regularly around the box area. For existing odors, wipe down walls and baseboards with an enzymatic cleaner that breaks down ammonia compounds.
