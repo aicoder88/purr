@@ -186,7 +186,7 @@ export function RelatedArticles({ currentPath, limit = 3 }: { currentPath?: stri
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {items.map((item) => (
             <article key={item.href} className="group rounded-xl overflow-hidden border border-[#E0EFC7] dark:border-gray-700 bg-white dark:bg-gray-800/80 shadow-sm hover:shadow-md transition-all">
-              <Link href={item.href} className="block focus:outline-none focus:ring-2 focus:ring-[#03E46A]">
+              <Link href={item.href} prefetch={false} className="block focus:outline-none focus:ring-2 focus:ring-[#03E46A]">
                 <div className="relative aspect-video overflow-hidden">
                   <Image src={item.image} alt={item.alt} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>

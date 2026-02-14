@@ -121,7 +121,7 @@ export function HubSpokeNav({
             <ul className="space-y-1">
               {groups.blog.map((item) => (
                 <li key={item.url}>
-                  <Link
+                  <Link prefetch={false}
                     href={item.url}
                     className="group flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1"
                   >
@@ -155,7 +155,7 @@ export function HubSpokeNav({
             <ul className="space-y-1">
               {groups.learn.map((item) => (
                 <li key={item.url}>
-                  <Link
+                  <Link prefetch={false}
                     href={item.url}
                     className="group flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1"
                   >
@@ -189,7 +189,7 @@ export function HubSpokeNav({
             <ul className="space-y-1">
               {groups.products.map((item) => (
                 <li key={item.url}>
-                  <Link
+                  <Link prefetch={false}
                     href={item.url}
                     className="group flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1"
                   >
@@ -245,7 +245,7 @@ export function HubSpokeNavSidebar({
       <ul className="space-y-2">
         {spokes.slice(0, 5).map((url) => (
           <li key={url}>
-            <Link
+            <Link prefetch={false}
               href={url}
               className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline"
             >
@@ -255,7 +255,7 @@ export function HubSpokeNavSidebar({
         ))}
       </ul>
       {spokes.length > 5 && (
-        <Link
+        <Link prefetch={false}
           href={cluster.hubPage}
           className="block mt-3 text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
         >

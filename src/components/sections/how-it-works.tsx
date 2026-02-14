@@ -3,7 +3,7 @@
 import { Container } from "@/components/ui/container";
 import Image from 'next/image';
 import { useTranslation } from "@/lib/translation-context";
-import Link from "next/link";
+import { ArrowDown } from 'lucide-react';
 
 export function HowItWorks() {
   const { t } = useTranslation();
@@ -48,10 +48,10 @@ export function HowItWorks() {
               <div className="bg-white dark:bg-gray-800 backdrop-blur-sm rounded-3xl p-10 h-full border-2 border-purple-200 dark:border-purple-800 shadow-2xl transition-all duration-500 hover:shadow-purple-500/30 dark:hover:shadow-purple-500/50 hover:-translate-y-4 z-10 relative">
                 <div
                   className={`absolute -top-8 left-1/2 -translate-x-1/2 ${index === 0
-                      ? "bg-gradient-to-r from-purple-600 to-purple-500"
-                      : index === 1
-                        ? "bg-gradient-to-r from-pink-600 to-pink-500"
-                        : "bg-gradient-to-r from-orange-600 to-orange-500"
+                    ? "bg-gradient-to-r from-purple-600 to-purple-500"
+                    : index === 1
+                      ? "bg-gradient-to-r from-pink-600 to-pink-500"
+                      : "bg-gradient-to-r from-orange-600 to-orange-500"
                     } text-white w-20 h-20 rounded-full flex items-center justify-center font-black text-3xl shadow-2xl group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 z-20 border-4 border-white dark:border-gray-900`}
                 >
                   {step.number}
@@ -71,10 +71,10 @@ export function HowItWorks() {
                   </div>
                   <h3
                     className={`font-black text-2xl sm:text-3xl mb-4 ${index === 0
-                        ? "text-purple-600 dark:text-purple-400"
-                        : index === 1
-                          ? "text-pink-600 dark:text-pink-400"
-                          : "text-orange-600 dark:text-orange-400"
+                      ? "text-purple-600 dark:text-purple-400"
+                      : index === 1
+                        ? "text-pink-600 dark:text-pink-400"
+                        : "text-orange-600 dark:text-orange-400"
                       }`}
                   >
                     {step.title}
@@ -86,11 +86,18 @@ export function HowItWorks() {
           ))}
         </div>
 
-        {/* Transition teaser */}
+        {/* Transition teaser - Better visual treatment */}
         {t.howItWorks?.transitionTeaser && (
-          <p className="text-center text-lg text-gray-500 dark:text-gray-400 italic mt-16">
-            {t.howItWorks.transitionTeaser}
-          </p>
+          <div className="mt-20">
+            <div className="max-w-md mx-auto bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm rounded-3xl p-6 text-center border border-purple-100 dark:border-purple-900 shadow-sm group hover:shadow-md transition-all duration-300">
+              <p className="text-xl text-gray-900 dark:text-white font-bold italic mb-3">
+                {t.howItWorks.transitionTeaser}
+              </p>
+              <div className="flex justify-center">
+                <ArrowDown className="w-5 h-5 text-pink-500 animate-bounce-subtle" />
+              </div>
+            </div>
+          </div>
         )}
       </Container>
     </section>

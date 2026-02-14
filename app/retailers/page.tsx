@@ -238,6 +238,7 @@ export default function RetailersPage() {
         </section>
 
         {/* Retail Store Locations with Logos */}
+        <ClientLocationsMap />
         <Stores />
       </main>
     </>

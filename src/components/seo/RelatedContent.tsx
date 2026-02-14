@@ -122,7 +122,7 @@ export function RelatedContent({
                 key={page.url}
                 className="group rounded-xl overflow-hidden border border-[#E0EFC7] dark:border-gray-700 bg-white dark:bg-gray-800/80 shadow-sm hover:shadow-md transition-all"
               >
-                <Link
+                <Link prefetch={false}
                   href={page.url}
                   className="block focus:outline-none focus:ring-2 focus:ring-[#03E46A]"
                 >
@@ -193,7 +193,7 @@ export function RelatedContentSidebar({
       <ul className="space-y-3">
         {relatedPages.map((page) => (
           <li key={page.url}>
-            <Link
+            <Link prefetch={false}
               href={page.url}
               className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline"
             >
@@ -233,7 +233,7 @@ export function RelatedContentInline({
       <ul className="space-y-2">
         {relatedPages.map((page) => (
           <li key={page.url}>
-            <Link
+            <Link prefetch={false}
               href={page.url}
               className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline font-medium"
             >
@@ -272,7 +272,7 @@ export function RelatedContentList({
 
         <div className="space-y-4">
           {relatedPages.map((page) => (
-            <Link
+            <Link prefetch={false}
               key={page.url}
               href={page.url}
               className="block p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 transition-colors group"

@@ -129,11 +129,18 @@ export function ScienceSection() {
                     </div>
                 </div>
 
-                {/* Transition teaser */}
+                {/* Transition teaser - Better visual treatment */}
                 {t.sectionTeasers?.science && (
-                    <p className="text-center text-lg text-gray-500 dark:text-gray-400 italic mt-16 col-span-full">
-                        {t.sectionTeasers.science}
-                    </p>
+                    <div className="mt-24 col-span-full flex justify-center">
+                        <Link href="#products" className="bg-white dark:bg-gray-800 rounded-full px-8 py-4 shadow-xl border border-gray-100 dark:border-gray-700 flex items-center gap-4 group hover:-translate-y-1 transition-transform duration-300">
+                            <p className="text-xl font-bold text-gray-900 dark:text-white">
+                                {t.sectionTeasers.science}
+                            </p>
+                            <div className="w-10 h-10 rounded-full bg-electric-indigo text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <ArrowRight className="w-5 h-5 animate-pulse" />
+                            </div>
+                        </Link>
+                    </div>
                 )}
             </Container>
         </section>

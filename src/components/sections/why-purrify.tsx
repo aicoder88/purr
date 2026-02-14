@@ -1,7 +1,7 @@
 "use client";
 
 import { Container } from "@/components/ui/container";
-import { Wind, Cat, Clock, Layers, Sparkles, PiggyBank } from "lucide-react"; // Changed Leaf to Sparkles
+import { Wind, Cat, Clock, Layers, Sparkles, PiggyBank, ArrowDown } from "lucide-react"; // Changed Leaf to Sparkles, added ArrowDown
 import Image from 'next/image';
 import { useTranslation } from "@/lib/translation-context";
 
@@ -86,7 +86,7 @@ export function WhyPurrify() {
 
   return (
     <section
-      className="relative pt-20 pb-12 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900 transition-colors duration-300 overflow-hidden"
+      className="relative py-16 md:py-24 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900 transition-colors duration-300 overflow-hidden"
       id="why-purrify"
     >
       {/* Animated background elements */}
@@ -96,8 +96,8 @@ export function WhyPurrify() {
       </div>
 
       <Container className="relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/40 dark:to-pink-900/40 rounded-full mb-8 border border-purple-200 dark:border-purple-800 shadow-lg">
+        <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+          <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/40 dark:to-pink-900/40 rounded-full mb-6 md:mb-8 border border-purple-200 dark:border-purple-800 shadow-lg">
             <span className="text-purple-700 dark:text-purple-300 font-semibold">{heroCopy.badge}</span>
           </div>
 
@@ -109,7 +109,7 @@ export function WhyPurrify() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {reasons.map((reason, index) => {
             const theme = colorThemes[index % 3];
             const IconComponent = reason.icon;
@@ -159,33 +159,18 @@ export function WhyPurrify() {
           })}
         </div>
 
-        {/* Transition teaser */}
+        {/* Transition teaser - Better visual treatment to avoid loneliness and overlap */}
         {t.sectionTeasers?.whyPurrify && (
-          <p className="text-center text-lg text-gray-500 dark:text-gray-400 italic mt-16">
-            {t.sectionTeasers.whyPurrify}
-          </p>
+          <div className="mt-12 md:mt-20 mb-6 md:mb-10 flex justify-center">
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-full px-8 py-3 text-center border border-purple-100 dark:border-purple-900 shadow-lg group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex items-center gap-3">
+              <p className="text-lg font-bold text-gray-700 dark:text-gray-200 italic">
+                {t.sectionTeasers.whyPurrify}
+              </p>
+              <ArrowDown className="w-5 h-5 text-purple-600 dark:text-purple-400 animate-bounce-subtle" />
+            </div>
+          </div>
         )}
       </Container>
-
-      {/* Enhanced scroll indicator */}
-      <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-4 z-20 flex justify-center w-full">
-        <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-full p-2 shadow-lg">
-          <svg
-            className="w-8 h-8 animate-bounce"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M6 9l6 6 6-6"
-              stroke="white"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-      </div>
     </section>
   );
 }

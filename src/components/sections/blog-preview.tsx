@@ -69,6 +69,7 @@ export async function BlogPreview({ locale }: { locale: string }) {
             <Link
               key={post.link}
               href={post.link}
+              prefetch={false}
               className="block bg-white dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-[#E0EFC7] dark:border-gray-700 transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#5B2EFF]/30 hover:-translate-y-2 group cursor-pointer"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
@@ -130,7 +131,7 @@ export async function BlogPreview({ locale }: { locale: string }) {
             asChild
             className="bg-gradient-to-r from-[#03E46A] to-[#5B2EFF] dark:from-[#5B2EFF] dark:to-[#03E46A] hover:from-[#03E46A]/90 hover:to-[#5B2EFF] dark:hover:from-[#5B2EFF]/90 dark:hover:to-[#03E46A] text-white dark:text-gray-100 font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0"
           >
-            <Link href={`/${resolvedLocale}/blog`}>
+            <Link href={`/${resolvedLocale}/blog`} prefetch={false}>
               {t.blogSection.viewAllArticles}
             </Link>
           </Button>
