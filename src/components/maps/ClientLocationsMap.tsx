@@ -10,7 +10,7 @@ function LocationsMapLoading() {
 
   return (
     <div className="h-[600px] w-full bg-gray-100 dark:bg-gray-800 rounded-xl animate-pulse flex flex-col items-center justify-center border border-gray-200 dark:border-gray-700">
-      <div className="w-12 h-12 border-4 border-orange-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+      <div className="w-12 h-12 border-4 border-orange-500 dark:border-orange-400 border-t-transparent rounded-full animate-spin mb-4"></div>
       <p className="text-gray-500 dark:text-gray-400 font-medium">
         {t.maps?.loadingMap ?? ""}
       </p>

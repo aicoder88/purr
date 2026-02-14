@@ -94,7 +94,7 @@ export function HowItWorks() {
                 {t.howItWorks.transitionTeaser}
               </p>
               <div className="flex justify-center">
-                <ArrowDown className="w-5 h-5 text-pink-500 animate-bounce-subtle" />
+                <ArrowDown className="w-5 h-5 text-pink-500 dark:text-pink-400 animate-bounce-subtle" />
               </div>
             </div>
           </div>

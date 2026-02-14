@@ -55,8 +55,8 @@ export default function RetailerMap() {
         return (
             <div className="h-full w-full flex items-center justify-center bg-gray-50 dark:bg-gray-800/50">
                 <div className="text-center">
-                    <div className="w-10 h-10 border-4 border-orange-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                    <p className="text-gray-500 font-medium">Loading locations...</p>
+                    <div className="w-10 h-10 border-4 border-orange-500 dark:border-orange-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                    <p className="text-gray-500 dark:text-gray-400 font-medium">Loading locations...</p>
                 </div>
             </div>
         );
@@ -94,7 +94,7 @@ export default function RetailerMap() {
                         <Popup>
                             <div className="p-1 min-w-[200px]">
                                 <h3 className="font-bold text-lg mb-1">{loc.store_name}</h3>
-                                <p className="text-sm text-gray-600 mb-2 font-sans">
+                                <p className="text-sm text-gray-600 dark:text-gray-600 mb-2 font-sans">
                                     {loc.address}<br />
                                     {loc.city}, {loc.province} {loc.postal_code}
                                 </p>
@@ -107,7 +107,7 @@ export default function RetailerMap() {
                                             href={loc.website}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold py-2 px-3 rounded-lg text-center transition-colors"
+                                            className="bg-orange-500 hover:bg-orange-600 dark:bg-orange-600 dark:hover:bg-orange-700 text-white text-xs font-bold py-2 px-3 rounded-lg text-center transition-colors"
                                         >
                                             Visit Website →
                                         </a>

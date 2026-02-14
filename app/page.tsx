@@ -160,7 +160,7 @@ export default async function HomePage() {
         {/* Agitation Section - feel the pain before the solution */}
         <div className="cv-auto cis-720">
           <ErrorBoundary>
-            <AgitationSection />
+            <AgitationSection locale={defaultLocale} />
           </ErrorBoundary>
         </div>
 

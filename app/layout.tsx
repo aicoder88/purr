@@ -6,6 +6,7 @@ import { LocaleDetector } from '@/components/LocaleDetector';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { Providers } from './providers';
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, SOCIAL_LINKS } from '@/lib/constants';
+import '@/lib/chunk-retry-handler';
 
 const inter = Inter({
   subsets: ['latin'],

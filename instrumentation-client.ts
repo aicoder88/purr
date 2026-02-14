@@ -9,6 +9,10 @@ if (process.env.NODE_ENV === 'production') {
       dsn: "https://417e8c4f09f6ee842bef52a337877258@o4510602036772864.ingest.de.sentry.io/4510602102112336",
       integrations: [],
       tracesSampleRate: 0.1,
+
+      // Enable performance profiling (fixes "performanceMetrics feature not found" error)
+      profilesSampleRate: 0.1,
+
       replaysSessionSampleRate: 0,
       replaysOnErrorSampleRate: 0,
 

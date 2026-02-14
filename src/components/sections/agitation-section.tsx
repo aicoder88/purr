@@ -1,11 +1,14 @@
-"use client";
-
 import { Container } from "@/components/ui/container";
-import { useTranslation } from "@/lib/translation-context";
+import { translations } from "@/translations";
+import type { Locale } from "@/i18n/config";
 import { Home, Wind, Users, Bomb, ShieldAlert, Ghost, ArrowDown } from "lucide-react";
 
-export function AgitationSection() {
-  const { t } = useTranslation();
+interface AgitationSectionProps {
+  locale?: Locale;
+}
+
+export function AgitationSection({ locale = 'en' }: AgitationSectionProps) {
+  const t = translations[locale] || translations.en;
 
   const section = t.agitationSection;
   if (!section) return null;
@@ -35,7 +38,7 @@ export function AgitationSection() {
                 className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-8">
-                <p className="text-white font-bold text-lg">
+                <p className="text-gray-50 font-bold text-lg">
                   {ui.imageCaption}
                 </p>
               </div>
@@ -70,7 +73,7 @@ export function AgitationSection() {
                       } transition-colors duration-300`} />
 
                     <div className="flex items-start gap-4">
-                      <span className="text-xs font-bold uppercase tracking-wider text-gray-400 mt-1 w-20 shrink-0">
+                      <span className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mt-1 w-20 shrink-0">
                         {item.time}
                       </span>
                       <div>

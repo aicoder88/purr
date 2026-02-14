@@ -136,7 +136,7 @@ export function ScienceSection() {
                             <p className="text-xl font-bold text-gray-900 dark:text-white">
                                 {t.sectionTeasers.science}
                             </p>
-                            <div className="w-10 h-10 rounded-full bg-electric-indigo text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                            <div className="w-10 h-10 rounded-full bg-electric-indigo text-gray-50 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                                 <ArrowRight className="w-5 h-5 animate-pulse" />
                             </div>
                         </Link>
