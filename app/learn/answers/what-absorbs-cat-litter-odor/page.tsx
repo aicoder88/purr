@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     'cat litter deodorizer'
   ],
   alternates: {
-    canonical: '/learn/answers/what-absorbs-cat-litter-odor/',
+    canonical: 'https://www.purrify.ca/learn/answers/what-absorbs-cat-litter-odor/'
   },
   openGraph: {
     title: 'What Absorbs Cat Litter Odor? - Purrify',

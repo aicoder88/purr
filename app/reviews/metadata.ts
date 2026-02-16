@@ -15,6 +15,6 @@ export const metadata: Metadata = {
     images: ['https://www.purrify.ca/optimized/logo-light-pink.webp'],
   },
   alternates: {
-    canonical: '/reviews',
+    canonical: 'https://www.purrify.ca/reviews/'
   },
 };

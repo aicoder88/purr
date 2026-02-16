@@ -7,21 +7,7 @@ import { getPaymentLink } from '@/lib/payment-links';
 
 // Metadata is defined in page.tsx (Server Component)
 
-interface ReviewsExperimentCopy {
-  headline: string;
-  subheadline: string;
-  primaryCta: string;
-  secondaryCta: string;
-  ctaHeadline: string;
-  ctaBody: string;
-  proofOrder: 'reviews-first' | 'trust-first';
-}
-
-interface ReviewsPageContentProps {
-  experimentCopy: ReviewsExperimentCopy;
-}
-
-export default function Reviews({ experimentCopy }: ReviewsPageContentProps) {
+export default function Reviews() {
   return (
     <>
       <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
@@ -55,16 +41,16 @@ export default function Reviews({ experimentCopy }: ReviewsPageContentProps) {
                   Customer Feedback
                 </div>
                 <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
-                  {experimentCopy.headline}
+                  What Our Customers Are Saying
                 </h1>
                 <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
-                  {experimentCopy.subheadline}
+                  What to expect from an activated carbon additive, and how to use it in your own routine.
                 </p>
               </div>
 
               <div className="flex flex-col">
                 {/* Review Policy / How To Verify */}
-                <div className={`bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-8 mb-16 cv-auto cis-480 ${experimentCopy.proofOrder === 'trust-first' ? 'order-1' : 'order-2'}`}>
+                <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-8 mb-16 cv-auto cis-480 order-2">
                   <div className="grid md:grid-cols-3 gap-6">
                     <div className="flex items-start gap-3">
                       <div className="w-10 h-10 rounded-full bg-[#FF3131]/10 flex items-center justify-center flex-shrink-0">
@@ -125,17 +111,17 @@ export default function Reviews({ experimentCopy }: ReviewsPageContentProps) {
               <div className="text-center cv-auto cis-480">
                 <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#E0EFC7] border border-[#FF3131]/20 rounded-xl p-8">
                   <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
-                    {experimentCopy.ctaHeadline}
+                    Ready to Experience the Difference?
                   </h2>
                   <p className="text-gray-700 dark:text-gray-200 mb-6 max-w-2xl mx-auto">
-                    {experimentCopy.ctaBody}
+                    Start with a low-risk trial and see how it fits into your litter routine.
                   </p>
                   <div className="space-x-4">
                     <Link
                       href="/products/"
                       className="inline-block bg-[#FF3131] text-white dark:text-white dark:text-gray-100 px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/90 transition-colors"
                     >
-                      {experimentCopy.primaryCta}
+                      Shop Now
                     </Link>
                     <a
                       href={getPaymentLink('trialSingle') || '#'}
@@ -143,7 +129,7 @@ export default function Reviews({ experimentCopy }: ReviewsPageContentProps) {
                       rel="noopener noreferrer"
                       className="inline-block border border-[#FF3131] text-[#FF3131] px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/5 transition-colors"
                     >
-                      {experimentCopy.secondaryCta}
+                      Try Free Sample
                     </a>
                   </div>
                 </div>

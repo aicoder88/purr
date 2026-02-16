@@ -1,0 +1,135 @@
+{
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We're here to help",
+    "address": "109-17680 Rue Charles, Mirabel, QC J7J 0T6",
+    "phone": "1 (450) 663-6773",
+    "email": "hello@purrify.ca",
+    "courriel": "hello@purrify.ca",
+    "hours": {
+      "title": "Opening Hours",
+      "monday": "08:00 am - 8:00 pm",
+      "tuesday": "08:00 am - 8:00 pm",
+      "wednesday": "08:00 am - 8:00 pm",
+      "thursday": "08:00 am - 8:00 pm",
+      "friday": "08:00 am - 8:00 pm",
+      "saturday": "09:00 am - 8:00 pm",
+      "sunday": "Closed"
+    },
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Send"
+    }
+  },
+  "contactSection": {
+    "getInTouch": "Get in Touch",
+    "ourLocation": "Our Location",
+    "phoneNumber": "Phone Number",
+    "phoneDescription": "We locked those stubborn odors right inside our phone number. Call 1-450-6-ODORS-3 (that's 1 (450) 663-6773) and see how serious we are about fresh air.",
+    "openingHours": "Opening Hours",
+    "weekdays": "Weekdays",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "sendMessage": "Send Message",
+    "replyTime": "We'll reply within 24 hours"
+  },
+  "contactPage": {
+    "title": "We're Here to Help",
+    "subtitle": "Our friendly customer support team is ready to assist you with expert advice and solutions.",
+    "chooseContactMethod": "Choose How to Contact Us",
+    "contactReasons": [
+      {
+        "value": "general",
+        "label": "General Question"
+      },
+      {
+        "value": "order",
+        "label": "Order Status"
+      },
+      {
+        "value": "product",
+        "label": "Product Question"
+      },
+      {
+        "value": "shipping",
+        "label": "Shipping Issue"
+      },
+      {
+        "value": "return",
+        "label": "Return/Exchange"
+      },
+      {
+        "value": "other",
+        "label": "Other"
+      }
+    ],
+    "contactMethods": [
+      {
+        "title": "Email Support",
+        "description": "Get detailed help with your questions",
+        "responseTime": "Response within 24 hours"
+      },
+      {
+        "title": "Phone Support",
+        "description": "Speak directly with our team",
+        "responseTime": "Mon-Fri 9AM-5PM EST"
+      },
+      {
+        "title": "Live Chat",
+        "description": "Chat with us in real-time",
+        "responseTime": "Available Now"
+      }
+    ],
+    "form": {
+      "fullName": "Full Name",
+      "emailAddress": "Email Address",
+      "subject": "Subject",
+      "message": "Message",
+      "contactReason": "Contact Reason",
+      "orderNumber": "Order Number (if applicable)",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "successMessage": "Thank you for contacting us! We'll respond within 24 hours.",
+      "errorMessage": "Sorry, there was an error sending your message. Please try again or contact us directly.",
+      "sendingMessage": "Sending Message...",
+      "sendMessage": "Send Message",
+      "subjectPlaceholder": "Brief description of your request",
+      "messagePlaceholder": "Please provide details about your question or concern...",
+      "orderNumberPlaceholder": "e.g. PUR-12345",
+      "contactNow": "Contact Now"
+    },
+    "faqs": [
+      {
+        "question": "How long does shipping take?",
+        "answer": "Standard shipping takes 3-5 business days within Canada. We also offer expedited shipping options."
+      },
+      {
+        "question": "Can I use Purrify around my cat?",
+        "answer": "Purrify uses the same type of activated carbon found in many home water filters and contains no added fragrances or dyes."
+      },
+      {
+        "question": "How do I use Purrify?",
+        "answer": "Simply sprinkle 1-2 tablespoons of Purrify over your existing litter after cleaning. It works with all litter types."
+      }
+    ],
+    "businessHours": {
+      "title": "Business Hours",
+      "weekdays": "Monday - Friday: 9:00 AM - 5:00 PM EST",
+      "saturday": "Saturday: 10:00 AM - 2:00 PM EST",
+      "sunday": "Sunday: Closed",
+      "closed": "Closed"
+    },
+    "location": {
+      "title": "Our Location",
+      "address": "Montreal, Quebec, Canada",
+      "shippingNote": "We ship across Canada and offer local pickup in the Montreal area."
+    },
+    "frequentlyAskedQuestions": "Frequently Asked Questions",
+    "quickAnswersCommon": "Quick answers to common questions",
+    "dontSeeQuestion": "Don't see your question here?",
+    "viewCompleteFAQ": "View Complete FAQ",
+    "backToHome": "Back to Home"
+  }
+}

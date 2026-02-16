@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description: 'Learn about Purrify\'s founding story, mission, and the team dedicated to solving cat litter odor problems. Discover our commitment to pets, families, and the environment.',
   keywords: 'Purrify story, company mission, cat litter innovation, pet care, environmental responsibility, Canadian company',
   alternates: {
-    canonical: '/about/our-story/',
+    canonical: 'https://www.purrify.ca/about/our-story/'
   },
   openGraph: {
     title: 'Our Story: Mission Behind Purrify | Purrify',

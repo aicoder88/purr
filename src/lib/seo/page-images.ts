@@ -260,7 +260,9 @@ export function getPageImage(url: string): PageImage {
   const normalizedUrl = normalizeUrlKey(url);
 
   // 1. Canonical blog featured images (generated from content/blog/*).
-  const blogFeatured = BLOG_FEATURED_IMAGE_MAP[normalizedUrl];
+  // The map uses /en/blog/ keys; also check without the /en/ prefix for the canonical /blog/ URLs.
+  const blogFeatured = BLOG_FEATURED_IMAGE_MAP[normalizedUrl]
+    || BLOG_FEATURED_IMAGE_MAP[`/en${normalizedUrl}`];
   if (blogFeatured) {
     return blogFeatured;
   }
@@ -291,7 +293,9 @@ export function getPageImage(url: string): PageImage {
  */
 export function hasPageImage(url: string): boolean {
   const normalizedUrl = normalizeUrlKey(url);
-  return normalizedUrl in BLOG_FEATURED_IMAGE_MAP || normalizedUrl in PAGE_IMAGES;
+  return normalizedUrl in BLOG_FEATURED_IMAGE_MAP
+    || `/en${normalizedUrl}` in BLOG_FEATURED_IMAGE_MAP
+    || normalizedUrl in PAGE_IMAGES;
 }
 
 function normalizeUrlKey(input: string): string {

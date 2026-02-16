@@ -430,7 +430,7 @@ export default async function USALandingPage({ params }: USALandingPageProps) {
                   Join the Waitlist Now
                 </Link>
                 <Link
-                  href="/en/blog/"
+                  href="/blog/"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white px-10 py-5 rounded-full font-bold text-xl transition-all border border-white/30 backdrop-blur-sm"
                 >
                   Read Our Odor Blog

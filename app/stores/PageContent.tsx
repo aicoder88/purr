@@ -354,7 +354,7 @@ export default function StoresPage() {
 
   const priceValidUntil = getPriceValidityDate();
   const availabilityUrl = buildAvailabilityUrl();
-  const canonicalUrl = 'https://www.purrify.ca/stores';
+  const canonicalUrl = 'https://www.purrify.ca/stores/';
 
   // Filter stores based on search and filters
   const filteredStores = useMemo(() => {

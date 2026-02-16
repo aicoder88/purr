@@ -1,0 +1,729 @@
+{
+  "retailers": {
+    "seo": {
+      "pageTitle": "Desodorizante de Arena Gatos Mayorista | 50% Margenes para Tiendas de Mascotas",
+      "description": "Minoristas de Mascotas: 50%+ margenes en el desodorizante de arena #1 mas reordenado de Canada. Materiales POS gratis + soporte de marketing. Convierte en socio mayorista hoy.",
+      "openGraphAlt": "Socios Mayoristas",
+      "keywords": "desodorizante arena gatos mayorista, mayorista tienda mascotas, distribuidor aditivo arena gatos, productos arena gatos a granel, suministros mascotas mayorista Canada, asociacion minorista mascotas"
+    },
+    "map": {
+      "title": "Nuestros Socios Minoristas y Clientes | Red Purrify",
+      "description": "Descubre nuestra red creciente de minoristas y clientes satisfechos en Canada. Unete a nuestra familia de socios exitosos."
+    },
+    "hero": {
+      "badge": "#1 Socio de Tiendas de Mascotas en Canada",
+      "title": "Asociate con Purrify",
+      "subtitle": "Exito Mayorista",
+      "description": "Unete a cientos de tiendas de mascotas y minoristas que ofrecen el aditivo de carbon activado #1 de Canada. Ventas comprobadas, clientes leales, soporte de marketing incluido.",
+      "boostYour": "Aumenta Tus",
+      "petStoreProfits": "Ganancias de Tienda",
+      "mainDescription": "Unete a <strong class=\"text-[#5B2EFF] dark:text-[#3694FF]\">21 minoristas establecidos</strong> vendiendo la solucion de olores de gatos #1 de Canada con <strong>margenes del 50%+</strong>",
+      "retailerCount": "21 minoristas establecidos",
+      "marginHighlight": "margenes del 50%+",
+      "stats": {
+        "profitMargins": {
+          "value": "50%",
+          "label": "Margenes de Ganancia"
+        },
+        "repurchaseRate": {
+          "value": "89%",
+          "label": "Tasa de Recompra"
+        },
+        "setupTime": {
+          "value": "24h",
+          "label": "Tiempo de Configuracion"
+        }
+      },
+      "cta": {
+        "primary": "Ver Precios Mayoristas",
+        "secondary": "Convertirse en Socio",
+        "startPartnership": "Iniciar Asociacion Hoy",
+        "viewPricing": "Ver Precios"
+      },
+      "trustIndicators": {
+        "label": "Confiado por minoristas lideres:",
+        "types": {
+          "petStores": "Tiendas de Mascotas",
+          "vetClinics": "Clinicas Veterinarias",
+          "groomers": "Peluquerias",
+          "distributors": "Distribuidores"
+        }
+      },
+      "valueProps": {
+        "highMargin": {
+          "title": "Producto de Alto Margen",
+          "highlight": "Hasta 55% de margenes de ganancia",
+          "description": "Precios premium con envio liviano. Mayores margenes que productos tradicionales de arena pesada."
+        },
+        "customerLoyalty": {
+          "title": "Lealtad del Cliente",
+          "highlight": "Calificacion 4.8/5 estrellas",
+          "description": "Los clientes se vuelven defensores leales. Recompras mensuales y referencias impulsan ingresos constantes."
+        },
+        "completeSupport": {
+          "title": "Soporte Completo",
+          "highlight": "Todo incluido",
+          "description": "Materiales POS, capacitacion, soporte de marketing y gestion de cuenta dedicada incluidos."
+        }
+      }
+    },
+    "benefits": {
+      "pricing": {
+        "title": "Precios Mayoristas",
+        "description": "Hasta 50% de margenes con descuentos por volumen"
+      },
+      "marketing": {
+        "title": "Soporte de Marketing",
+        "description": "Materiales POS, capacitacion, publicidad cooperativa"
+      },
+      "proven": {
+        "title": "Producto Probado",
+        "description": "4.8/5 estrellas, alta tasa de recompra"
+      },
+      "highDemand": {
+        "title": "Alta Demanda de Clientes",
+        "description": "Los duenos de mascotas buscan activamente soluciones de olores. Purrify aborda la queja #1 sobre tener gatos - olores de caja de arena."
+      },
+      "highMargins": {
+        "title": "Margenes Premium",
+        "description": "Producto pequeno y liviano con alto valor percibido. Mejores margenes que productos tradicionales de arena pesada."
+      },
+      "easyStocking": {
+        "title": "Facil de Almacenar",
+        "description": "Empaque compacto ahorra espacio de estante. No requiere refrigeracion. Larga vida util sin preocupaciones de expiracion."
+      },
+      "marketingSupport": {
+        "title": "Soporte de Marketing Completo",
+        "description": "Proporcionamos todo lo que necesitas: exhibidores de estante, capacitacion de producto, materiales educativos para clientes y publicidad cooperativa."
+      },
+      "customerLoyalty": {
+        "title": "Construye Lealtad del Cliente",
+        "description": "Cuando Purrify resuelve su problema de olores, los clientes se vuelven leales a tu tienda. Regresan mensualmente y recomiendan a amigos."
+      },
+      "fastMoving": {
+        "title": "Inventario de Movimiento Rapido",
+        "description": "A diferencia de accesorios de mascotas de lento movimiento, Purrify es un producto consumible con reordenes mensuales predecibles."
+      },
+      "title": "Por que los Minoristas Eligen Purrify",
+      "description": "Unete a cientos de tiendas de mascotas y minoristas exitosos que han agregado Purrify a su linea de productos con resultados sobresalientes.",
+      "success": {
+        "title": "Historias de Exito Reales"
+      }
+    },
+    "pricing": {
+      "title": "Niveles de Precios Mayoristas",
+      "description": "Opciones de precios flexibles disenadas para maximizar tus margenes mientras proporcionas valor excepcional a tus clientes.",
+      "tiers": {
+        "starter": {
+          "name": "Inicial",
+          "description": "Perfecto para tiendas de mascotas pequenas"
+        },
+        "growth": {
+          "name": "Crecimiento",
+          "description": "Mas popular para tiendas establecidas"
+        },
+        "enterprise": {
+          "name": "Empresarial",
+          "description": "Para cadenas y grandes minoristas"
+        }
+      },
+      "additional": {
+        "title": "Descuentos por Volumen Disponibles",
+        "description": "Buscas cantidades mayores? Ofrecemos precios personalizados para cadenas, distribuidores y minoristas de alto volumen. Contactanos para una cotizacion personalizada."
+      }
+    },
+    "marketing": {
+      "title": "Soporte de Marketing Completo",
+      "description": "Proporcionamos todo lo que necesitas para vender Purrify exitosamente. Desde exhibidores en tienda hasta capacitacion del personal, te tenemos cubierto.",
+      "coop": {
+        "title": "Programa de Publicidad Cooperativa",
+        "description": "Califica para creditos de publicidad para promocionar Purrify en tu mercado local. Te ayudaremos a cubrir costos para anuncios en periodicos, spots de radio y campanas de marketing local."
+      }
+    },
+    "testimonials": {
+      "title": "Lo que Dicen Nuestros Socios Minoristas",
+      "description": "Retroalimentacion real de duenos y gerentes exitosos de tiendas de mascotas en Canada.",
+      "metrics": {
+        "title": "Resultados Comerciales Comprobados"
+      }
+    },
+    "wholesalePricing": {
+      "sectionBadge": "Precios Mayoristas Transparentes",
+      "title": "Elige Tu",
+      "titleHighlight": "Nivel de Ganancias",
+      "subtitle": "Asociate con la solucion de olores de gatos de mas rapida venta de Canada. Sin tarifas ocultas, sin sorpresas.",
+      "packageIncludes": "El Paquete Incluye:",
+      "tiers": {
+        "starter": {
+          "name": "Paquete Inicial",
+          "description": "Perfecto para probar el mercado",
+          "contents": [
+            "Una caja de tamano de prueba (25 bolsas pequenas)",
+            "Una caja de mediano (15 bolsas medianas)",
+            "Una caja de grande (10 bolsas grandes)"
+          ],
+          "features": [
+            "Producto probado 4.8/5 estrellas",
+            "Ventaja de envio liviano",
+            "Exhibidor POS basico incluido",
+            "Soporte por correo y guia de configuracion",
+            "Reemplazo gratis de productos danados"
+          ],
+          "badge": "Inicio Rapido",
+          "cta": "Comenzar"
+        },
+        "growth": {
+          "name": "Socio de Crecimiento",
+          "description": "La opcion inteligente para minoristas en crecimiento",
+          "contents": [
+            "Cinco cajas de tamano de prueba (125 bolsas pequenas)",
+            "Cinco cajas de mediano (75 bolsas medianas)",
+            "Cinco cajas de grande (50 bolsas grandes)",
+            "BONUS: 5 bolsas medianas extra gratis"
+          ],
+          "features": [
+            "Exhibidor de mostrador premium",
+            "Materiales de capacitacion para personal",
+            "Activos de marketing digital (publicaciones sociales, plantillas de correo)",
+            "Soporte prioritario por telefono y correo"
+          ],
+          "badge": "Mejor Valor",
+          "cta": "Empezar a Crecer Ahora"
+        },
+        "scale": {
+          "name": "Escalar Exito",
+          "description": "Para crecimiento serio de ingresos",
+          "contents": [
+            "Diez cajas de tamano de prueba (250 bolsas pequenas)",
+            "Diez cajas de mediano (150 bolsas medianas)",
+            "Diez cajas de grande (100 bolsas grandes)",
+            "BONUS: 25 bolsas de prueba extra para enganchar nuevos clientes"
+          ],
+          "features": [
+            "Todo en Socio de Crecimiento",
+            "Gerente de cuenta dedicado",
+            "Materiales de marketing personalizados y co-branding",
+            "Derechos de proteccion territorial",
+            "Revisiones comerciales trimestrales y analiticas de ventas",
+            "Asignacion prioritaria de inventario"
+          ],
+          "badge": "Empresarial",
+          "cta": "Comenzar"
+        }
+      },
+      "trustSignals": {
+        "noSetupFees": "Sin Tarifas de Configuracion",
+        "approval72hr": "Aprobacion en 72h",
+        "provenROI": "ROI Comprobado"
+      },
+      "bottomCta": {
+        "title": "Listo para Aumentar Tus Ingresos?",
+        "description": "Unete a 21 minoristas establecidos de Montreal y areas circundantes que ya obtienen altos margenes con Purrify.",
+        "setupNote": "La configuracion toma menos de 24 horas.",
+        "primaryButton": "Solicitar Asociacion",
+        "secondaryButton": "Llamanos"
+      }
+    },
+    "contact": {
+      "title": "Conviertete en Socio Minorista de Purrify",
+      "description": "Listo para agregar el aditivo de arena #1 de Canada a tu tienda? Completa el formulario abajo y te responderemos en 24 horas.",
+      "sectionBadge": "Unete a 21 Socios Establecidos",
+      "sectionTitle": "Inicia Tu",
+      "sectionTitleHighlight": "Asociacion Hoy",
+      "sectionDescription": "Listo para obtener margenes del 50%+ con la solucion #1 de olores de gatos de Canada?",
+      "setupNote": "La configuracion toma menos de 24 horas.",
+      "urgencyStats": {
+        "approvalTime": {
+          "value": "72h",
+          "label": "Tiempo de Aprobacion"
+        },
+        "setupFees": {
+          "value": "Cero",
+          "label": "Tarifas de Configuracion"
+        },
+        "currentPartners": {
+          "value": "21",
+          "label": "Socios Actuales"
+        }
+      },
+      "form": {
+        "title": "Solicitud de Asociacion",
+        "subtitle": "Solicitud rapida de 2 minutos. Respondemos el mismo dia!",
+        "fields": {
+          "businessName": {
+            "label": "Nombre del Negocio",
+            "placeholder": "Nombre de Tu Tienda de Mascotas",
+            "required": true
+          },
+          "contactName": {
+            "label": "Nombre de Contacto",
+            "placeholder": "Tu Nombre Completo",
+            "required": true
+          },
+          "position": {
+            "label": "Tu Posicion en la Empresa",
+            "placeholder": "ej., Dueno, Gerente, Comprador, Representante de Ventas"
+          },
+          "email": {
+            "label": "Correo Electronico",
+            "placeholder": "tu@email.com",
+            "required": true
+          },
+          "phone": {
+            "label": "Numero de Telefono",
+            "placeholder": "(555) 123-4567"
+          },
+          "businessType": {
+            "label": "Tipo de Negocio",
+            "placeholder": "Seleccionar Tipo de Negocio",
+            "required": true,
+            "options": {
+              "independentPetStore": "Tienda de Mascotas Independiente",
+              "petStoreChain": "Cadena de Tiendas de Mascotas",
+              "veterinaryClinic": "Clinica Veterinaria",
+              "groomingSalon": "Salon de Peluqueria",
+              "distributor": "Distribuidor",
+              "other": "Otro"
+            }
+          },
+          "locations": {
+            "label": "Numero de Ubicaciones",
+            "placeholder": "1"
+          },
+          "currentProducts": {
+            "label": "Marca de Arena para Gatos Mas Vendida",
+            "placeholder": "Cual es la marca #1 de arena para gatos que mas vendes?"
+          },
+          "message": {
+            "label": "Informacion Adicional",
+            "placeholder": "Cuentanos sobre tu negocio y necesidades mayoristas..."
+          }
+        },
+        "submitButton": "Enviar Solicitud de Asociacion",
+        "submitting": "Enviando..."
+      },
+      "success": {
+        "title": "Solicitud Recibida!",
+        "welcome": "Bienvenido a la Red de Socios Purrify!",
+        "responseTime": "Te contactaremos dentro de 72 horas.",
+        "nextSteps": {
+          "title": "Tus Proximos Pasos",
+          "step1": {
+            "title": "Revision de Solicitud",
+            "description": "Nuestro equipo revisa los detalles de tu tienda"
+          },
+          "step2": {
+            "title": "Llamada de Asociacion",
+            "description": "Discutir precios, soporte y logistica"
+          },
+          "step3": {
+            "title": "Comenzar a Vender",
+            "description": "Recibir inventario y lanzar"
+          }
+        },
+        "timeline": {
+          "title": "Cronograma Esperado hasta Ingresos",
+          "approval": {
+            "value": "72h",
+            "label": "Aprobacion"
+          },
+          "firstShipment": {
+            "value": "3-5 dias",
+            "label": "Primer Envio"
+          },
+          "firstSales": {
+            "value": "Semana 1",
+            "label": "Primeras Ventas"
+          }
+        },
+        "needHelp": "Necesitas asistencia inmediata?"
+      },
+      "successStories": {
+        "title": "Historias de Exito de Socios",
+        "stories": {
+          "pattesEtGriffes": {
+            "businessName": "Pattes et Griffes – Sainte‑Thérèse",
+            "businessType": "Propietario / Gerente",
+            "quote": "Nuestros clientes ahora piden Purrify por nombre. Es una recomendacion facil en el mostrador y los pedidos son consistentes mes tras mes.",
+            "metric": "Ciclo de 30 dias"
+          },
+          "chico": {
+            "businessName": "Chico – Boul. St‑Laurent (Montreal)",
+            "businessType": "Gerente de Tienda",
+            "quote": "Simple de almacenar, margenes solidos, y se mueve. Los materiales POS ayudaron a nuestro equipo a explicar los beneficios rapidamente a los clientes.",
+            "metric": "Alta rotacion"
+          }
+        }
+      },
+      "contactInfo": {
+        "title": "Necesitas Ayuda Inmediata?",
+        "subtitle": "Habla con un especialista en asociaciones ahora",
+        "wholesaleEmail": "wholesale@purrify.ca",
+        "emailLabel": "Correo de Asociaciones",
+        "emailHint": "Haz clic para redactar un correo o copiar la direccion.",
+        "copied": "Copiado!",
+        "copyFailed": "Fallo al copiar",
+        "businessHours": {
+          "title": "Horario Comercial",
+          "hours": "Lunes - Viernes: 9 AM - 6 PM EST"
+        }
+      },
+      "errors": {
+        "submitFailed": "Hubo un error al enviar tu consulta. Por favor intenta de nuevo o contactanos directamente a wholesale@purrify.ca",
+        "defaultSuccess": "Solicitud de asociacion enviada exitosamente! Te contactaremos dentro de 72 horas."
+      }
+    }
+  },
+  "caseStudies": {
+    "customerSuccess": "Historias de Exito de Clientes",
+    "realResults": "Resultados reales de clientes reales",
+    "detailedStories": "Mira como Purrify transforma hogares en Canada a traves de casos de estudio detallados",
+    "averageOdorReduction": "Reduccion Promedio de Olores",
+    "timeToSeeResults": "Tiempo para Ver Resultados",
+    "customerSatisfaction": "Satisfaccion del Cliente",
+    "catsPerStudy": "Gatos por Estudio",
+    "theChallenge": "El Desafio",
+    "theSolution": "La Solucion",
+    "theResults": "Los Resultados",
+    "longTermOutcome": "Resultado a Largo Plazo",
+    "keyPainPoints": "Puntos de Dolor Clave",
+    "implementation": "Implementacion",
+    "writeYourStory": "Listo para escribir tu propia historia de exito?",
+    "joinSatisfied": "Comienza con una prueba de bajo riesgo y ve como encaja en tu rutina.",
+    "shopPurrify": "Comprar Purrify",
+    "tryFreeSample": "Probar una Muestra Gratis",
+    "moreCustomerStories": "Mas Historias de Clientes",
+    "videoTestimonials": "Testimonios en Video",
+    "productComparison": "Comparacion de Productos"
+  },
+  "b2bCaseStudies": {
+    "badge": "Programa Mayorista",
+    "title": "Beneficios de Socio por Tipo de Negocio",
+    "subtitle": "Ve como Purrify ayuda a negocios como el tuyo",
+    "cta": "Interesado en precios mayoristas para tu negocio?",
+    "ctaButton": "Contactar Nuestro Equipo de Asociaciones",
+    "businessTypes": {
+      "veterinarian": "Clinicas Veterinarias",
+      "catCafe": "Cafes de Gatos",
+      "shelter": "Refugios de Animales",
+      "groomer": "Salones de Estetica",
+      "hospitality": "Alquileres Pet-Friendly"
+    },
+    "labels": {
+      "challenge": "El Desafio",
+      "solution": "Como Ayuda Purrify",
+      "catsServed": "gatos atendidos"
+    }
+  },
+  "groomers": {
+    "seo": {
+      "pageTitle": "Purrify para Peluqueros | Solución Completa de Olores",
+      "description": "Ofrezca a los clientes una solución completa de olores. Desde servicios de peluquería hasta frescura de caja de arena en casa—sea su socio de cuidado de mascotas de confianza.",
+      "keywords": "control de olores peluquero de mascotas, solución de olor para salón de peluquería, desodorizante para peluquero de gatos, profesional de cuidado de mascotas",
+      "openGraphAlt": "Solución profesional de control de olores para peluqueros"
+    },
+    "hero": {
+      "badge": "Socio Profesional",
+      "titleLine1": "Cuidado Completo",
+      "titleLine2": "De la Peluquería al Hogar",
+      "description": "Diferencie su negocio de peluquería ofreciendo a los clientes una solución para llevar a casa para el olor de la caja de arena que realmente funciona.",
+      "stats": {
+        "freshness": "Frescura por 7 Días",
+        "clients": "Clientes Felices",
+        "natural": "Todo Natural"
+      },
+      "cta": {
+        "primary": "Convertirse en Socio",
+        "secondary": "Aprender Más"
+      }
+    },
+    "cta": {
+      "primary": "Solicitar Precios Mayoristas",
+      "secondary": "Ver Guía de Productos"
+    },
+    "opportunity": {
+      "title": "Oportunidad de Ingresos para Peluqueros",
+      "intro": "Los clientes confían en ti para el cuidado de sus mascotas. Ahora puedes ofrecerles una solución completa para el olor de la caja de arena en casa.",
+      "points": {
+        "clientsAsk": {
+          "title": "Los Clientes Preguntan",
+          "description": "Los dueños de gatos te piden consejos sobre todo tipo de problemas de cuidado de mascotas, incluyendo olores de caja de arena."
+        },
+        "expertPosition": {
+          "title": "Posición de Experto",
+          "description": "Al ofrecer Purrify, te posicionas como el experto completo en cuidado de gatos, no solo servicios de peluquería."
+        },
+        "repeatRevenue": {
+          "title": "Ingresos Recurrentes",
+          "description": "Los clientes vuelven mensualmente por repuestos, creando un flujo de ingresos predecible para tu negocio."
+        },
+        "easyDemo": {
+          "title": "Demostración Fácil",
+          "description": "El producto se vende solo - una demostración rápida y los clientes pueden oler la diferencia inmediatamente."
+        }
+      }
+    },
+    "addOnSale": {
+      "title": "Venta Adicional Natural",
+      "description": "Purrify es la venta adicional perfecta porque resuelve un problema real que los clientes enfrentan diariamente:",
+      "points": [
+        "Los clientes ya confían en ti para el cuidado de sus mascotas",
+        "Resuelve el problema #1 de los dueños de gatos: olores de caja de arena",
+        "Margen de ganancia de 50%+ en cada venta",
+        "Los clientes te lo agradecerán y volverán por más"
+      ]
+    },
+    "howItWorks": {
+      "title": "Cómo Funciona",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Solicita tu Muestra",
+          "description": "Recibe un paquete de demostración gratuito para probar Purrify en tu salón."
+        },
+        {
+          "number": "02",
+          "title": "Muestra a tus Clientes",
+          "description": "Usa Purrify durante el servicio y deja que los clientes vean la diferencia."
+        },
+        {
+          "number": "03",
+          "title": "Recomienda con Confianza",
+          "description": "Tus clientes confiarán en tu recomendación de experto."
+        },
+        {
+          "number": "04",
+          "title": "Gana Comisiones",
+          "description": "Recibe márgenes atractivos en cada venta realizada."
+        }
+      ]
+    },
+    "partnerBenefits": {
+      "title": "Beneficios de Ser Socio Purrify",
+      "benefits": {
+        "wholesale": {
+          "title": "Precios Mayoristas",
+          "description": "Margen de 50%+ con precios mayoristas competitivos"
+        },
+        "display": {
+          "title": "Exhibidor Gratuito",
+          "description": "Recibe un exhibidor de mostrador profesional sin costo"
+        },
+        "training": {
+          "title": "Capacitación de Producto",
+          "description": "Materiales de capacitación para tu equipo de ventas"
+        },
+        "tracking": {
+          "title": "Seguimiento de Clientes",
+          "description": "Sistema para recordar a los clientes cuando necesitan repuestos"
+        }
+      }
+    },
+    "retailPackage": {
+      "title": "Paquete para Peluqueros",
+      "subtitle": "Todo lo que necesitas para empezar",
+      "includes": [
+        "20 unidades de Purrify (mezcla de tamaños)",
+        "Exhibidor de mostrador profesional",
+        "Folletos educativos para clientes",
+        "Muestras gratuitas para demostraciones",
+        "Capacitación para tu equipo",
+        "Soporte de marketing"
+      ]
+    },
+    "testimonials": {
+      "title": "Lo Que Dicen Nuestros Socios",
+      "items": [
+        {
+          "quote": "Purrify se ha convertido en mi venta adicional más fácil. Los clientes lo piden después de verlo en el mostrador.",
+          "author": "María G.",
+          "business": "Peluquería Felina, Montreal"
+        }
+      ]
+    },
+    "form": {
+      "title": "Solicitud de Precios para Peluqueros",
+      "salonName": "Nombre del Salón",
+      "salonNamePlaceholder": "Nombre de tu salón de mascotas",
+      "salonPlaceholder": "Nombre de tu salón de mascotas",
+      "contactName": "Nombre de Contacto",
+      "contactPlaceholder": "Tu nombre completo",
+      "email": "Correo Electrónico",
+      "emailPlaceholder": "tu@email.com",
+      "phone": "Teléfono",
+      "phonePlaceholder": "(555) 123-4567",
+      "address": "Dirección",
+      "addressPlaceholder": "Dirección de tu negocio",
+      "catsPerWeek": "Gatos por Semana",
+      "catsPerWeekPlaceholder": "¿Cuántos gatos atiendes a la semana?",
+      "catsPlaceholder": "¿Cuántos gatos atiendes a la semana?",
+      "message": "Mensaje",
+      "messagePlaceholder": "Cuéntanos sobre tu negocio y necesidades...",
+      "submit": "Enviar Solicitud",
+      "submitting": "Enviando...",
+      "success": {
+        "title": "¡Solicitud Enviada!",
+        "message": "Nos pondremos en contacto contigo en 24-48 horas con información de precios mayoristas."
+      }
+    },
+    "contact": {
+      "title": "¿Preguntas sobre la Asociación?",
+      "description": "Nuestro equipo de socios está listo para ayudarte a expandir tu negocio.",
+      "callUs": "Llámanos",
+      "emailUs": "Escríbenos",
+      "moreInfo": "Más información",
+      "requestGuide": "Solicitar guía de asociación"
+    }
+  },
+  "catCafes": {
+    "seo": {
+      "pageTitle": "Purrify para Cafés de Gatos | Mantenga Su Espacio Fresco",
+      "description": "El arma secreta de los cafés de gatos exitosos. Elimina olores de múltiples gatos sin cubrir los olores con fragancias fuertes.",
+      "keywords": "control de olores café de gatos, solución de olor para múltiples gatos, eliminador de olores comercial para gatos, higiene de café de gatos",
+      "openGraphAlt": "Solución de eliminación de olores para cafés de gatos"
+    },
+    "hero": {
+      "badge": "Aprobado por Cafés de Gatos",
+      "titleLine1": "Gatos Felices.",
+      "titleLine2": "Espacio Fresco.",
+      "description": "Los cafés de gatos confían en Purrify para mantener sus espacios oliendo limpios sin fragancias abrumadoras que estresan a los gatos o molestan a los clientes.",
+      "stats": {
+        "days": "7+ Días",
+        "fragrances": "0 Fragancias",
+        "natural": "100% Natural"
+      },
+      "cta": {
+        "primary": "Obtener Precios al Por Mayor",
+        "secondary": "Aprender Más"
+      }
+    },
+    "form": {
+      "title": "Solicitud de Precios para Cafés de Gatos",
+      "name": "Nombre del Café",
+      "namePlaceholder": "Nombre de tu café de gatos",
+      "cafeName": "Nombre del Café",
+      "cafePlaceholder": "Nombre de tu café de gatos",
+      "contactName": "Nombre de Contacto",
+      "contactPlaceholder": "Tu nombre completo",
+      "email": "Correo Electrónico",
+      "emailPlaceholder": "tu@email.com",
+      "phone": "Teléfono",
+      "phonePlaceholder": "(555) 123-4567",
+      "address": "Dirección",
+      "addressPlaceholder": "Dirección de tu café",
+      "cats": "Número de Gatos",
+      "catsPlaceholder": "¿Cuántos gatos tienes en el café?",
+      "message": "Mensaje",
+      "messagePlaceholder": "Cuéntanos sobre tu café y necesidades...",
+      "submit": "Enviar Solicitud",
+      "submitting": "Enviando...",
+      "success": {
+        "title": "¡Solicitud Enviada!",
+        "message": "Nos pondremos en contacto contigo en 24-48 horas con información de precios mayoristas."
+      }
+    },
+    "contact": {
+      "title": "¿Preguntas?",
+      "description": "Nuestro equipo de asociaciones está listo para ayudarte.",
+      "callUs": "Llámanos",
+      "emailUs": "Escríbenos",
+      "moreInfo": "Más información",
+      "requestGuide": "Solicitar guía de precios"
+    }
+  },
+  "shelters": {
+    "seo": {
+      "pageTitle": "Purrify para Refugios | Control de Olores para Organizaciones de Rescate",
+      "description": "Precios con descuento para refugios de animales y organizaciones de rescate. Ayude a los gatos a ser adoptados más rápido eliminando barreras de olor.",
+      "keywords": "control de olores refugio de animales, olor de caja de arena gato de rescate, descuento desodorizante refugio, solución de olores para mascotas sin fines de lucro",
+      "openGraphAlt": "Programa de descuento de control de olores para refugios"
+    },
+    "hero": {
+      "badge": "Programa de Asociación con Refugios",
+      "titleLine1": "Ayude a Más Gatos",
+      "titleLine2": "a Encontrar Hogares",
+      "description": "Precios especiales para refugios y rescates. Cuando los adoptantes potenciales no huelen cajas de arena, los gatos son adoptados más rápido.",
+      "stats": {
+        "cats": "1000+ Gatos",
+        "shelters": "Refugios Asociados",
+        "natural": "100% Natural"
+      },
+      "cta": {
+        "primary": "Aplicar para Descuento",
+        "secondary": "Aprender Más"
+      }
+    },
+    "form": {
+      "title": "Solicitud de Descuento para Refugios",
+      "orgName": "Nombre de la Organización",
+      "orgNamePlaceholder": "Nombre de tu refugio u organización",
+      "orgPlaceholder": "Nombre de tu refugio o rescate",
+      "contactName": "Nombre de Contacto",
+      "contactPlaceholder": "Tu nombre completo",
+      "email": "Correo Electrónico",
+      "emailPlaceholder": "tu@email.com",
+      "phone": "Teléfono",
+      "phonePlaceholder": "(555) 123-4567",
+      "address": "Dirección",
+      "addressPlaceholder": "Dirección de tu organización",
+      "catsCount": "Número de Gatos",
+      "catsPlaceholder": "¿Cuántos gatos atiendes mensualmente?",
+      "nonProfit": "ID sin fines de lucro (opcional)",
+      "nonProfitPlaceholder": "Número de registro de organización sin fines de lucro",
+      "message": "Mensaje",
+      "messagePlaceholder": "Cuéntanos sobre tu refugio y necesidades...",
+      "submit": "Enviar Solicitud",
+      "submitting": "Enviando...",
+      "success": {
+        "title": "¡Solicitud Enviada!",
+        "message": "Revisaremos tu solicitud y nos pondremos en contacto en 24-48 horas con información de precios especiales."
+      }
+    },
+    "benefits": {
+      "title": "Beneficios para Refugios",
+      "pricing": {
+        "title": "Precios Especiales",
+        "description": "Descuentos de hasta 40% para organizaciones sin fines de lucro"
+      },
+      "priority": {
+        "title": "Soporte Prioritario",
+        "description": "Atención dedicada para refugios y organizaciones de rescate"
+      },
+      "donations": {
+        "title": "Programa de Donaciones",
+        "description": "Solicita muestras gratuitas para eventos de adopción"
+      }
+    },
+    "contact": {
+      "title": "¿Preguntas?",
+      "description": "Nuestro equipo de asociaciones con refugios está listo para ayudarte.",
+      "callUs": "Llámanos",
+      "emailUs": "Escríbenos",
+      "moreInfo": "Más información",
+      "requestGuide": "Solicitar guía de beneficios"
+    }
+  },
+  "hospitality": {
+    "seo": {
+      "pageTitle": "Purrify para Hoteles Pet-Friendly | Solución Cero Olor",
+      "description": "Mantenga sus Airbnbs y alquileres pet-friendly sin olores. Solución discreta para anfitriones que aceptan mascotas.",
+      "keywords": "airbnb pet friendly, alquiler amigable con gatos, vacaciones con mascotas, control de olores propiedad de alquiler",
+      "openGraphAlt": "Programa de socios de hospitalidad"
+    },
+    "hero": {
+      "badge": "Programa de Asociación Hospitalidad",
+      "titleLine1": "Estancias Pet-Friendly",
+      "titleLine2": "Cero Olor",
+      "description": "Acepte mascotas sin comprometer la frescura. Solución discreta entre reservaciones.",
+      "stats": {
+        "reviews": "Reseñas 5 Estrellas",
+        "bookings": "Más Reservas",
+        "natural": "Todo Natural"
+      },
+      "cta": {
+        "primary": "Solicitar una Muestra",
+        "secondary": "Ver Soluciones para Anfitriones"
+      }
+    }
+  }
+}

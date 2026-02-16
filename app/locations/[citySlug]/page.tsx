@@ -63,7 +63,7 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
       .replace('{{city}}', city.name)
       .replace('{{province}}', city.profile.province);
 
-  const canonicalUrl = `${SITE_URL}/locations/${city.slug}`;
+  const canonicalUrl = `${SITE_URL}/locations/${city.slug}/`;
 
   return {
     title: seoTitle,
@@ -71,10 +71,10 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        'en-CA': `${SITE_URL}/locations/${city.slug}`,
+        'en-CA': `${SITE_URL}/locations/${city.slug}/`,
         // Note: Non-English location pages are excluded from sitemap (noindexed)
         // Only English version exists to prevent thin content
-        'x-default': `${SITE_URL}/locations/${city.slug}`,
+        'x-default': `${SITE_URL}/locations/${city.slug}/`,
       },
     },
     openGraph: {

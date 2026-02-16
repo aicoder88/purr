@@ -1,0 +1,216 @@
+{
+  "thankYou": {
+    "heading": "Merci!",
+    "headingWithName": "Merci, {{name}}!",
+    "subheading": "Votre commande a été confirmée.",
+    "subheadingExtended": "Votre commande a été confirmée. Préparez-vous à découvrir la maison la plus fraîche que vous ayez jamais eue!",
+    "orderConfirmed": "Commande confirmée",
+    "orderNumber": "Numéro de commande",
+    "product": "Produit",
+    "quantity": "Quantité",
+    "total": "Total",
+    "expectedDelivery": "Livraison prévue",
+    "deliveryCA": "7-10 jours ouvrables au Canada",
+    "deliveryUS": "10-14 jours ouvrables aux États-Unis",
+    "deliveryIntl": "14-21 jours ouvrables international",
+    "shipsWithin": "Expédition dans 1-2 jours ouvrables",
+    "confirmationSent": "Courriel de confirmation envoyé à",
+    "checkSpam": "Vérifiez vos courriels indésirables si vous ne le voyez pas dans 5 minutes",
+    "trackingInfo": "Les informations de suivi seront envoyées à votre courriel une fois votre commande expédiée.",
+    "whatToExpect": {
+      "heading": "À quoi s'attendre",
+      "step1Title": "Recevez votre Purrify",
+      "step1Desc": "Votre colis arrivera dans un emballage discret et écologique. Chaque contenant est scellé pour la fraîcheur.",
+      "step2Title": "Instructions de première utilisation",
+      "step2Desc": "Pour de meilleurs résultats, commencez avec une litière propre:",
+      "step2Item1": "Nettoyez et rafraîchissez votre bac à litière",
+      "step2Item2": "Saupoudrez une fine couche de Purrify sur le dessus",
+      "step2Item3": "Pas besoin de mélanger - ça fonctionne depuis la surface",
+      "step2Item4": "Réappliquez après chaque changement de litière",
+      "step3Title": "Vivez la différence",
+      "step3Desc": "La plupart des clients remarquent une différence en 60 secondes! Le charbon actif piège instantanément les molécules d'ammoniac - pas de masquage, juste une vraie élimination des odeurs.",
+      "proTip": "Conseil pro:",
+      "proTipText": "Un peu suffit! Utilisez juste assez pour couvrir légèrement la surface. Une application excessive ne nuira pas, mais n'est pas nécessaire."
+    },
+    "shareSection": {
+      "heading": "Partagez la fraîcheur",
+      "description": "Connaissez-vous quelqu'un avec une litière malodorante? Partagez votre lien de parrainage et ils recevront un essai GRATUIT!",
+      "generating": "Génération de votre lien de parrainage personnel...",
+      "whatsapp": "WhatsApp",
+      "facebook": "Facebook",
+      "email": "Courriel"
+    },
+    "autoshipCta": {
+      "heading": "Ne manquez plus jamais",
+      "saveBadge": "ÉCONOMISEZ 30%",
+      "description": "Abonnez-vous à l'expédition automatique et économisez 30% sur chaque commande, plus la livraison GRATUITE. Annulez à tout moment.",
+      "savings": "Économies",
+      "shipping": "Livraison",
+      "cancel": "Annulation",
+      "button": "Passer à l'expédition automatique"
+    },
+    "helpSection": {
+      "question": "Questions?",
+      "weAreHere": "Nous sommes là pour vous aider!",
+      "returnHome": "Retour à l'accueil"
+    },
+    "questionsHeading": "Des questions sur votre commande?",
+    "questionsDescription": "Contactez notre équipe de support et nous serons heureux de vous aider.",
+    "contactSupport": "Contacter le support",
+    "continueShopping": "Continuer les achats",
+    "referralCta": {
+      "heading": "Vous aimez Purrify?",
+      "description": "Partagez avec vos amis et gagnez 5$ de crédit pour chaque parrainage!",
+      "button": "Obtenir mon lien de parrainage"
+    }
+  },
+  "freeTrialPage": {
+    "urgentBanner": "OFFRE À DURÉE LIMITÉE",
+    "free": "GRATUIT",
+    "claimTrial": "Réclamez Votre Essai GRATUIT de Purrify",
+    "whatYouGet": "Ce que vous obtenez GRATUITEMENT :",
+    "freeTrialBag": "Sac d'essai à usage unique de notre formule naturelle anti-odeurs",
+    "expertTips": "Conseils d'experts en soins pour chats et guides",
+    "zeroCommitment": "Zéro engagement - c'est notre cadeau pour vous",
+    "attention": "ATTENTION PROPRIÉTAIRES DE CHATS QUI EN ONT ASSEZ DE RETENIR LEUR SOUFFLE :",
+    "limitedQuantity": "aux 500 premiers propriétaires de chats",
+    "alreadyClaimed": "Déjà réclamés",
+    "countdownLabels": {
+      "hours": "HEURES",
+      "minutes": "MINS",
+      "seconds": "SECS"
+    },
+    "testimonials": [
+      {
+        "text": "Je n'arrivais pas à y croire. En quelques HEURES, toute ma maison sentait à nouveau le frais. J'ai même invité ma belle-mère pour la première fois depuis des mois !",
+        "author": "Jennifer M., Montréal"
+      },
+      {
+        "text": "Mon mari pensait que j'avais complètement jeté la litière. L'odeur avait simplement... disparu.",
+        "author": "Lisa K., Mirabel, QC"
+      }
+    ],
+    "testimonialsTestUsers": "Ce que disent nos testeurs bêta :",
+    "claimNow": "RÉCLAMEZ VOTRE SAC GRATUIT MAINTENANT",
+    "warningHighDemand": "⚠️ ATTENTION : En raison de la forte demande, nous ne pouvons pas garantir la disponibilité après l'expiration du minuteur.",
+    "privacyNotice": "100% Gratuit. Aucune carte de crédit requise.",
+    "zeroCommitmentGift": "Zéro engagement - c'est notre cadeau pour vous",
+    "instantOdorElimination": "Élimination instantanée des odeurs - fonctionne avec TOUTE litière que vous utilisez actuellement",
+    "completeInstructions": "Instructions complètes pour des résultats de fraîcheur maximale",
+    "noShippingFees": "Pas de frais d'expédition, pas de coûts cachés, pas de piège",
+    "disappearsIn": "ATTENTION : Cette offre disparaît dans :",
+    "limitedTo500": "Limité aux 500 premiers propriétaires de chats seulement.",
+    "yourFreeTrialWaits": "Votre sac gratuit vous attend - mais seulement si vous agissez maintenant.",
+    "betaTestersHeader": "Ce que disent nos testeurs bêta :",
+    "claimFreeTrialNow": "RÉCLAMEZ VOTRE SAC GRATUIT MAINTENANT",
+    "attention100Free": "100% Gratuit. Aucune carte de crédit requise.",
+    "noCreditCard": "Aucune carte de crédit requise.",
+    "limitedTimeOffer": "Offre à durée limitée. Un sac gratuit par foyer.",
+    "restrictionsApply": "Des restrictions d'expédition peuvent s'appliquer. Nous nous réservons le droit de mettre fin à cette promotion à tout moment.",
+    "highDemandWarning": "En raison de la forte demande, nous ne pouvons pas garantir la disponibilité après l'expiration du minuteur",
+    "disclaimer": "100% Gratuit. Aucune carte de crédit requise. Offre à durée limitée. Un sac gratuit par foyer. Des restrictions d'expédition peuvent s'appliquer. Nous nous réservons le droit de mettre fin à cette promotion à tout moment"
+  },
+  "tryFreePage": {
+    "meta": {
+      "title": "Essayez Purrify Gratuitement - Seulement 4,76 $ de Livraison | Élimination des Odeurs de Litière pour Chat",
+      "description": "Obtenez votre essai GRATUIT de Purrify - payez seulement 4,76 $ de livraison. Essayez-le dans votre routine de litière et voyez la différence."
+    },
+    "hero": {
+      "badge": "Offre à Durée Limitée",
+      "headline": "Essayez Purrify Gratuitement",
+      "subheadline": "Seulement 4,76 $ de Livraison",
+      "description": "Essayez un additif au charbon actif dans votre routine de litière et voyez la différence.",
+      "cta": "Obtenir Mon Essai Gratuit",
+      "shippingNote": "Livraison partout au Canada"
+    },
+    "problem": {
+      "headline": "Fatigué de Retenir Votre Respiration ?",
+      "subheadline": "On comprend. Cette odeur de litière est embarrassante.",
+      "points": [
+        "Les invités arrivent et vous vous précipitez pour vérifier la litière",
+        "Ouvrir les fenêtres en hiver juste pour aérer l'odeur",
+        "Acheter constamment des désodorisants qui ne fonctionnent pas",
+        "S'inquiéter que votre maison sent qu'un chat y vit"
+      ]
+    },
+    "howItWorks": {
+      "headline": "Air Frais en 30 Secondes",
+      "subheadline": "Simple comme 1-2-3",
+      "steps": [
+        {
+          "number": "1",
+          "title": "Saupoudrer",
+          "description": "Ouvrez le sac et saupoudrez sur la litière de votre chat"
+        },
+        {
+          "number": "2",
+          "title": "Piéger",
+          "description": "Le charbon actif piège instantanément les molécules d'ammoniac"
+        },
+        {
+          "number": "3",
+          "title": "Fraîcheur",
+          "description": "Profitez de plus de 7 jours de fraîcheur sans odeur"
+        }
+      ]
+    },
+    "socialProof": {
+      "headline": "À quoi vous attendre",
+      "rating": "",
+      "reviewCount": "",
+      "reviewLabel": "",
+      "testimonials": [
+        {
+          "text": "J'étais sceptique, mais en quelques heures mon appartement entier sentait frais. Mes invités n'avaient aucune idée que j'avais des chats !",
+          "author": "Sarah M.",
+          "location": "Toronto, ON"
+        },
+        {
+          "text": "Enfin quelque chose qui fonctionne vraiment. Fini de masquer les odeurs avec des désodorisants.",
+          "author": "Mike R.",
+          "location": "Vancouver, BC"
+        },
+        {
+          "text": "Les meilleurs 4,76 $ que j'aie jamais dépensés. J'ai déjà commandé la taille complète !",
+          "author": "Jennifer K.",
+          "location": "Montréal, QC"
+        }
+      ]
+    },
+    "guarantee": {
+      "headline": "Garantie Satisfait ou Remboursé de 30 Jours",
+      "description": "Si vous n'êtes pas émerveillé par les résultats, nous vous remboursons. Sans poser de questions.",
+      "badge": "Essai Sans Risque"
+    },
+    "finalCta": {
+      "headline": "Prêt à Respirer Facilement ?",
+      "description": "Obtenez votre essai gratuit de Purrify aujourd'hui. Payez seulement 4,76 $ de livraison.",
+      "buttonText": "Obtenir Mon Essai Gratuit",
+      "note": "Annulez à tout moment. Aucun abonnement requis."
+    },
+    "trust": {
+      "madeInCanada": "Fabriqué au Canada",
+      "natural": "100% Naturel",
+      "fragrance": "Sans Parfum",
+      "secure": "Paiement Sécurisé"
+    }
+  },
+  "forms": {
+    "success": {
+      "general": "Merci de nous avoir contactés ! Nous vous répondrons dans les 24 heures.",
+      "b2bContact": "Merci de votre intérêt ! Notre équipe vous contactera dans les 24 à 48 heures pour discuter des prochaines étapes.",
+      "retailerContact": "Merci de votre intérêt ! Notre équipe partenaires vous contactera dans les 24 à 48 heures pour discuter des tarifs et des prochaines étapes.",
+      "hospitalityContact": "Merci ! Notre équipe hôtellerie vous contactera dans les 24 heures avec des tarifs personnalisés pour vos propriétés.",
+      "shelterContact": "Merci de votre intérêt ! Notre équipe vous contactera dans les 24 à 48 heures pour discuter de comment nous pouvons soutenir votre refuge.",
+      "groomerContact": "Merci de votre intérêt ! Notre équipe partenaires vous contactera dans les 24 à 48 heures pour discuter des prochaines étapes.",
+      "vetContact": "Merci de votre intérêt ! Notre équipe vétérinaire vous contactera dans les 24 à 48 heures pour discuter des opportunités de partenariat.",
+      "catCafeContact": "Merci de votre intérêt ! Notre équipe vous contactera dans les 24 à 48 heures pour discuter de comment Purrify peut bénéficier à votre café à chats."
+    },
+    "errors": {
+      "pleaseEnterTitle": "Veuillez entrer un titre",
+      "invalidEmail": "Courriel ou mot de passe invalide",
+      "requiredField": "Ce champ est requis",
+      "submitFailed": "Échec de l'envoi du formulaire. Veuillez réessayer."
+    }
+  }
+}

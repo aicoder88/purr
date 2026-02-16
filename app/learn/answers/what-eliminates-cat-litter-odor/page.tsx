@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     'best cat litter deodorizer'
   ],
   alternates: {
-    canonical: '/learn/answers/what-eliminates-cat-litter-odor/',
+    canonical: 'https://www.purrify.ca/learn/answers/what-eliminates-cat-litter-odor/'
   },
   openGraph: {
     title: 'What Eliminates Cat Litter Odor? - Purrify',

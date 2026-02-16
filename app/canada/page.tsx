@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const pageTitle = 'Best Cat Litter Deodorizer in Canada | Made in Canada | Purrify';
   const pageDescription = 'Looking for cat litter odor control in Canada? Purrify is proudly made in Canada with premium coconut shell activated carbon. Free shipping across Canada on orders over $35.';
 
-  const canonicalUrl = 'https://www.purrify.ca/canada';
+  const canonicalUrl = 'https://www.purrify.ca/canada/';
   const languageAlternates = buildLanguageAlternates('/canada');
 
   // Convert language alternates to Next.js format

@@ -1,0 +1,196 @@
+{
+  "affiliate": {
+    "metaTitle": "Gagnez un Revenu Mensuel avec le Programme d'Affiliation Purrify",
+    "metaDescription": "Recommandez Purrify aux propriétaires de chats et gagnez une commission récurrente de 30% à vie. Rejoignez des centaines d'affiliés qui gagnent un revenu passif en aidant les chats à vivre sans odeur.",
+    "hero": {
+      "badge": "Rejoignez Notre Programme d'Affiliation",
+      "title": "Gagnez un Revenu Mensuel Avec Purrify",
+      "subtitle": "Recommandez Purrify aux propriétaires de chats et gagnez 30% de revenu récurrent mensuel à vie.",
+      "primaryCTA": "Devenez Affilié",
+      "secondaryCTA": "Voir le Calculateur de Revenus"
+    },
+    "calculator": {
+      "title": "Calculez Vos Gains Potentiels",
+      "subtitle": "Ajustez les curseurs pour voir combien vous pourriez gagner avec la commission de 30% de Purrify",
+      "standardProduct": "50g Standard (24,99$) - Références/Mois",
+      "familyPack": "120g Format Familial (44,99$) - Références/Mois",
+      "perSale": "par vente",
+      "monthlyIncome": "Revenu Mensuel Estimé",
+      "yearlyIncome": "Revenu Annuel Estimé",
+      "disclaimer": "Ce sont des gains potentiels basés sur une commission de 30%. Les résultats réels peuvent varier.",
+      "cta": "Commencez à Gagner Maintenant"
+    },
+    "howItWorks": {
+      "title": "Comment Ça Marche",
+      "step1": {
+        "title": "Rejoignez le Programme",
+        "description": "Créez votre compte d'affilié et recevez votre lien de parrainage unique. C'est gratuit de rejoindre et prend moins de 2 minutes."
+      },
+      "step2": {
+        "title": "Partagez Votre Lien",
+        "description": "Partagez votre lien de parrainage avec votre audience via les médias sociaux, articles de blog, vidéos ou email. Nous fournissons du matériel marketing pour vous aider à réussir."
+      },
+      "step3": {
+        "title": "Soyez Payé à Vie",
+        "description": "Gagnez une commission récurrente de 30% sur chaque vente de vos parrainés - pas seulement le premier achat, mais pour toujours. Paiements envoyés mensuellement par votre méthode préférée."
+      }
+    },
+    "benefits": {
+      "title": "Pourquoi Rejoindre le Programme d'Affiliation Purrify?",
+      "subtitle": "Nous avons conçu notre programme pour vous aider à réussir avec des commissions et un soutien de premier plan dans l'industrie",
+      "benefit1": {
+        "title": "Commissions à Vie de 30%",
+        "description": "Contrairement à la plupart des programmes qui ne paient que sur la première vente, vous gagnez 30% sur chaque achat de vos parrainés - pour toujours. Construisez un véritable revenu passif."
+      },
+      "benefit2": {
+        "title": "Produit à Haute Conversion",
+        "description": "Purrify résout un vrai problème auquel les propriétaires de chats sont confrontés quotidiennement. Avec 4,8/5 étoiles et un taux de satisfaction de 98%, nos produits se vendent tout seuls."
+      },
+      "benefit3": {
+        "title": "Suivi en Temps Réel",
+        "description": "Surveillez vos gains, clics et conversions en temps réel avec notre tableau de bord d'affilié avancé. Transparence totale sur vos performances."
+      },
+      "benefit4": {
+        "title": "Ressources Marketing",
+        "description": "Accédez à des bannières professionnelles, modèles d'email, images de produits et textes éprouvés. Nous fournissons tout ce dont vous avez besoin pour réussir."
+      }
+    },
+    "testimonials": {
+      "title": "Histoires de Succès de Nos Affiliés",
+      "testimonial1": {
+        "quote": "J'ai gagné plus de 3 400$ au cours des 6 derniers mois simplement en recommandant Purrify à l'audience de mon blog sur les chats. Les commissions récurrentes s'accumulent rapidement!",
+        "name": "Jessica M.",
+        "role": "Propriétaire de Blog sur les Chats"
+      },
+      "testimonial2": {
+        "quote": "Meilleur programme d'affiliation auquel j'ai adhéré. Excellent produit, taux de conversion élevé, et la commission à vie de 30% est imbattable. Je recommande vivement!",
+        "name": "Mike T.",
+        "role": "Critique de Produits pour Animaux"
+      },
+      "testimonial3": {
+        "quote": "L'équipe de support est incroyable. Ils m'ont aidé à optimiser mon contenu et maintenant je gagne un revenu mensuel stable. C'est vraiment un revenu passif.",
+        "name": "Amanda R.",
+        "role": "Créatrice YouTube"
+      }
+    },
+    "faq": {
+      "title": "Questions Fréquemment Posées",
+      "question1": "Combien puis-je gagner?",
+      "answer1": "Vous gagnez une commission de 30% sur chaque vente. Si vous parrainez 10 clients achetant le format standard à 24,99$ mensuellement, c'est 74,97$/mois en revenu récurrent. Il n'y a pas de limite à combien vous pouvez gagner.",
+      "question2": "Quand suis-je payé?",
+      "answer2": "Les commissions sont payées mensuellement via PayPal, dépôt direct ou chèque. Nous payons le 15 de chaque mois pour les gains du mois précédent. Paiement minimum de 50$.",
+      "question3": "Combien de temps durent les cookies?",
+      "answer3": "Nos cookies d'affiliation durent 90 jours. Si quelqu'un clique sur votre lien et achète dans les 90 jours, vous obtenez le crédit pour cette vente et tous les achats futurs de ce client.",
+      "question4": "Ai-je besoin d'un site web?",
+      "answer4": "Non! Bien qu'avoir un site web aide, vous pouvez partager votre lien d'affilié sur les médias sociaux, YouTube, newsletters par email, ou partout où vous connectez avec des propriétaires de chats.",
+      "question5": "Quel matériel marketing fournissez-vous?",
+      "answer5": "Nous fournissons des bannières professionnelles, images de produits, modèles d'email, publications sur les médias sociaux et textes éprouvés. Tout ce dont vous avez besoin pour commencer à promouvoir immédiatement."
+    },
+    "finalCTA": {
+      "title": "Prêt à Commencer à Gagner?",
+      "subtitle": "Rejoignez des centaines d'affiliés prospères gagnant un revenu passif avec Purrify",
+      "cta": "Rejoignez le Programme d'Affiliation",
+      "disclaimer": "Gratuit de rejoindre • Pas de frais mensuels • Commencez à gagner immédiatement"
+    }
+  },
+  "affiliateDashboard": {
+    "pageTitle": "Tableau de Bord Affilié",
+    "loginTitle": "Connexion Affilié",
+    "dashboard": "Tableau de bord",
+    "earnings": "Revenus",
+    "payouts": "Paiements",
+    "settings": "Paramètres",
+    "logout": "Déconnexion",
+    "overview": {
+      "welcome": "Bienvenue",
+      "yourCode": "Votre Code Affilié",
+      "copyCode": "Copier le Code",
+      "copiedCode": "Copié !",
+      "shareLink": "Votre Lien de Partage",
+      "copyLink": "Copier le Lien",
+      "copiedLink": "Lien Copié !"
+    },
+    "stats": {
+      "totalClicks": "Clics Totaux",
+      "totalConversions": "Conversions",
+      "conversionRate": "Taux de Conversion",
+      "pendingEarnings": "Revenus en Attente",
+      "availableBalance": "Solde Disponible",
+      "totalEarnings": "Revenus à Vie",
+      "pendingNote": "Les commissions sont libérées après 30 jours"
+    },
+    "conversions": {
+      "title": "Conversions Récentes",
+      "noConversions": "Pas encore de conversions. Partagez votre lien pour commencer à gagner !",
+      "date": "Date",
+      "orderId": "Nº Commande",
+      "orderAmount": "Montant Commande",
+      "commission": "Commission",
+      "status": "Statut",
+      "statusPending": "En attente",
+      "statusCleared": "Libérée",
+      "statusPaid": "Payée",
+      "statusVoided": "Annulée"
+    },
+    "payoutsSection": {
+      "title": "Historique des Paiements",
+      "requestPayout": "Demander un Paiement",
+      "minimumPayout": "Le paiement minimum est de 50 $",
+      "payoutMethod": "Méthode de Paiement",
+      "paypalEmail": "Email PayPal",
+      "etransferEmail": "Email Virement Interac",
+      "amount": "Montant",
+      "requestedDate": "Demandé",
+      "processedDate": "Traité",
+      "status": "Statut",
+      "statusPending": "En attente",
+      "statusProcessing": "En traitement",
+      "statusCompleted": "Complété",
+      "statusRejected": "Rejeté",
+      "noPayouts": "Aucun historique de paiement",
+      "insufficientBalance": "Solde insuffisant pour le paiement",
+      "payoutRequested": "Demande de paiement soumise avec succès"
+    },
+    "settingsSection": {
+      "title": "Paramètres du Compte",
+      "payoutSettings": "Paramètres de Paiement",
+      "payoutMethodLabel": "Méthode de Paiement Préférée",
+      "paypalOption": "PayPal",
+      "etransferOption": "Virement Interac (Canada seulement)",
+      "emailLabel": "Adresse Email de Paiement",
+      "saveSettings": "Enregistrer",
+      "settingsSaved": "Paramètres enregistrés avec succès"
+    },
+    "assets": {
+      "title": "Ressources Marketing",
+      "description": "Téléchargez des bannières, images de produits et textes pour vos promotions.",
+      "banners": "Bannières",
+      "productImages": "Images Produits",
+      "socialPosts": "Publications Sociales",
+      "brandGuide": "Guide de Marque",
+      "brandColors": "Couleurs de Marque",
+      "guidelines": "Directives d'Utilisation",
+      "downloadAll": "Tout Télécharger",
+      "copyText": "Copier le Texte"
+    },
+    "login": {
+      "title": "Connexion Affilié",
+      "email": "Adresse Email",
+      "password": "Mot de Passe",
+      "rememberMe": "Se souvenir de moi",
+      "forgotPassword": "Mot de passe oublié ?",
+      "loginButton": "Se Connecter",
+      "loggingIn": "Connexion en cours...",
+      "noAccount": "Pas encore affilié ?",
+      "applyNow": "Postuler Maintenant",
+      "invalidCredentials": "Email ou mot de passe invalide",
+      "accountInactive": "Votre compte affilié n'est pas actif"
+    },
+    "errors": {
+      "loadFailed": "Échec du chargement des données",
+      "saveFailed": "Échec de l'enregistrement des paramètres",
+      "payoutFailed": "Échec de la demande de paiement",
+      "sessionExpired": "Votre session a expiré. Veuillez vous reconnecter."
+    }
+  }
+}

@@ -34,6 +34,7 @@ interface FaqItem {
 
 interface HowItWorksCopy {
   breadcrumbAriaLabel: string;
+  breadcrumbHome: string;
   breadcrumbLearn: string;
   breadcrumbCurrent: string;
   heroTitle: string;
@@ -62,6 +63,7 @@ interface HowItWorksCopy {
 const HOW_IT_WORKS_COPY: Record<SupportedLocale, HowItWorksCopy> = {
   en: {
     breadcrumbAriaLabel: 'Breadcrumb',
+    breadcrumbHome: 'Home',
     breadcrumbLearn: 'Learn',
     breadcrumbCurrent: 'How It Works',
     heroTitle: 'The Science Behind Purrify',
@@ -148,6 +150,7 @@ const HOW_IT_WORKS_COPY: Record<SupportedLocale, HowItWorksCopy> = {
   },
   fr: {
     breadcrumbAriaLabel: "Fil d'Ariane",
+    breadcrumbHome: 'Accueil',
     breadcrumbLearn: 'Apprendre',
     breadcrumbCurrent: 'Comment ca marche',
     heroTitle: 'La science derriere Purrify',
@@ -234,6 +237,7 @@ const HOW_IT_WORKS_COPY: Record<SupportedLocale, HowItWorksCopy> = {
   },
   zh: {
     breadcrumbAriaLabel: '面包屑导航',
+    breadcrumbHome: '首页',
     breadcrumbLearn: '学习中心',
     breadcrumbCurrent: '工作原理',
     heroTitle: 'Purrify 背后的科学原理',
@@ -320,6 +324,7 @@ const HOW_IT_WORKS_COPY: Record<SupportedLocale, HowItWorksCopy> = {
   },
   es: {
     breadcrumbAriaLabel: 'Miga de pan',
+    breadcrumbHome: 'Inicio',
     breadcrumbLearn: 'Aprender',
     breadcrumbCurrent: 'Como Funciona',
     heroTitle: 'La Ciencia Detras de Purrify',
@@ -432,7 +437,8 @@ export default function HowItWorksPageClient() {
           <nav aria-label={copy.breadcrumbAriaLabel} className="flex items-center space-x-2 text-sm">
             <Link
               href={localePrefix || '/'}
-              className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+              aria-label={copy.breadcrumbHome}
+              className="flex items-center justify-center min-h-11 min-w-11 p-2 text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
             >
               <Home className="w-4 h-4" />
             </Link>
@@ -446,7 +452,7 @@ export default function HowItWorksPageClient() {
                 ) : (
                   <Link
                     href={item.path}
-                    className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+                    className="inline-flex items-center min-h-11 px-2 text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -477,6 +483,7 @@ export default function HowItWorksPageClient() {
                   height={400}
                   sizes="(max-width: 768px) 100vw, 600px"
                   className="w-full h-auto rounded-2xl shadow-2xl"
+                  priority
                 />
                 <div className="absolute bottom-4 left-4 bg-black/70 text-white dark:text-gray-100 px-3 py-1 rounded-lg text-sm">
                   {copy.heroImageCaption}

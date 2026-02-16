@@ -1,0 +1,415 @@
+{
+  "products": {
+    "purrify-12g": {
+      "name": "免费试用装",
+      "description": "免费试用Purrify！\n仅需支付$4.76运费（加拿大境内任一地点）\n\n每位客户限购一套"
+    },
+    "purrify-50g": {
+      "name": "黄金尺寸",
+      "description": "50g · 标准装\n单猫家庭的理想选择\n我们最受欢迎的尺寸 — 复购率最高。"
+    },
+    "purrify-120g": {
+      "name": "家庭装",
+      "description": "120g · 性价比之王\n专为多猫家庭设计。\n针对高氨气输出打造。"
+    }
+  },
+  "pricing": {
+    "oneTimeLabel": "一次性购买",
+    "autoshipLabel": "自动订购省更多",
+    "autoshipBestLabel": "超值自动订购方案",
+    "billedEvery": "账单周期：每",
+    "months": "个月",
+    "shippingIncluded": "含运费",
+    "freeShipping": "免运费",
+    "plusShipping": "+ 运费",
+    "shippingCalculated": "运费将在结账时计算",
+    "startAutoship": "开启自动订购",
+    "buyNow": "立即购买",
+    "linkComingSoon": "支付链接即将上线",
+    "recommended": "推荐选择",
+    "perMonth": "≈ {price}/月",
+    "saveVsOneTime": "比单次购买节省 {percent}%",
+    "trialSizeSection": "免费试用 - 仅付运费",
+    "quarterlyAutoshipSection": "订购享优惠 - 季度自动配送",
+    "stripeShippingNote": "产品将收货地址将以您在下一页 Stripe 填写的 'SHIP TO' 为准"
+  },
+  "productsHero": {
+    "pill": "氨气异味消除剂",
+    "headline": "被猫砂异味困扰？别再掩盖了。",
+    "subheadline": "小苏打和喷雾只是掩盖问题。Purrify使用活性炭在分子层面消除氨气。这不是魔法，这是科学。",
+    "scienceButton": "科学原理",
+    "guarantee": "零异味保证",
+    "findSizeButton": "选择适合您的规格"
+  },
+  "productComparison": {
+    "title": "比较Purrify产品",
+    "subtitle": "为您的家庭找到完美尺寸 - 从试用装到批量节省",
+    "findPerfectSize": "为您的家庭找到完美尺寸",
+    "products": [
+      {
+        "id": "trial",
+        "name": "免费试用",
+        "subtitle": "12g 套装",
+        "duration": "1周",
+        "cats": "1只猫",
+        "features": [
+          "12g活性炭",
+          "仅付运费",
+          "完美体验"
+        ],
+        "bestFor": "想要免费试用Purrify的新客户",
+        "cta": "获取免费试用"
+      },
+      {
+        "id": "regular",
+        "name": "常规装",
+        "subtitle": "120g · 标准装",
+        "duration": "3个月",
+        "cats": "1-2只猫",
+        "features": [
+          "120g活性炭",
+          "订阅省更多",
+          "免费配送"
+        ],
+        "bestFor": "单猫或双猫家庭的持续清新选择",
+        "cta": "订阅省钱"
+      },
+      {
+        "id": "large",
+        "name": "大装",
+        "subtitle": "240g 套装 - 最佳价值",
+        "duration": "3个月",
+        "cats": "3+只猫",
+        "features": [
+          "240g活性炭",
+          "最大节省",
+          "免费配送"
+        ],
+        "bestFor": "多猫家庭和重度使用者",
+        "cta": "订阅省钱"
+      }
+    ],
+    "comparisonFeatures": [
+      {
+        "feature": "异味消除"
+      },
+      {
+        "feature": "适用于任何猫砂"
+      },
+      {
+        "feature": "延长猫砂寿命"
+      },
+      {
+        "feature": "专家指导"
+      },
+      {
+        "feature": "批量节省"
+      },
+      {
+        "feature": "适合多猫"
+      }
+    ],
+    "usageCalculator": {
+      "title": "每种尺寸能持续多长时间？",
+      "subtitle": "根据您家庭规模估算持续时间",
+      "numberOfCats": "猫咪数量",
+      "typicalChanges": "典型更换",
+      "estimateDuration": "根据您家庭规模估算持续时间"
+    },
+    "stillUnsure": "仍然不确定选择哪种尺寸？",
+    "getPersonalizedAdvice": "获取个性化建议",
+    "tryRiskFree": "无风险试用 - $4.76",
+    "learnMoreAboutPurrify": "了解更多关于Purrify",
+    "featuresComparison": "功能比较",
+    "seeHowProductsCompare": "看看我们的产品如何并排比较",
+    "howLongWillEachSizeLast": "每种尺寸能持续多长时间？",
+    "popular": "热门",
+    "bestValue": "最佳价值",
+    "perfectForFirstTime": "新用户的完美选择",
+    "idealForSingleCat": "单猫家庭的理想选择",
+    "perfectForMultiCat": "多猫家庭的完美选择",
+    "economicChoice": "经济选择",
+    "maxValuePerGram": "每克最大价值",
+    "bulkSavingsIncluded": "包含批量节省",
+    "sustainableSupply": "可持续供应",
+    "features": "特点",
+    "idealFor": "适合",
+    "duration": "持续时间",
+    "saveMoney": "节省",
+    "getBestValue": "获取最佳价值",
+    "chooseThisSize": "选择此尺寸",
+    "tryWithoutRisk": "无风险试用",
+    "chooseSmallSize": "选择小装",
+    "tableHeaders": {
+      "feature": "特征",
+      "trial": "12g 试用装",
+      "regular": "120g 常规装",
+      "large": "240g 大装"
+    },
+    "units": {
+      "cat": "只猫",
+      "cats": "只猫",
+      "week": "周",
+      "weeks": "周",
+      "day": "天",
+      "days": "天",
+      "weekly": "每周",
+      "perWeek": "每周"
+    },
+    "seo": {
+      "title": "找到完美尺寸",
+      "description": "比较所有Purrify尺寸，找到满足您家庭需求的完美活性炭猫砂添加剂。"
+    },
+    "stillUnsureDescription": "从我们的无风险试用装开始，亲自体验Purrify的不同。",
+    "relatedPages": [
+      {
+        "title": "工作原理",
+        "description": "了解我们活性炭技术背后的科学原理及其高效原因。",
+        "link": "/learn/how-it-works"
+      },
+      {
+        "title": "客户评价",
+        "description": "看看1,000+满意客户如何评价他们的Purrify体验。",
+        "link": "/reviews"
+      },
+      {
+        "title": "猫砂指南",
+        "description": "了解不同类型的猫砂以及如何为您的爱猫选择最佳选择。",
+        "link": "/learn/cat-litter-guide"
+      }
+    ]
+  },
+  "productsPage": {
+    "hero": {
+      "headline": "您的猫咪完美无瑕。气味？另当别论。",
+      "subheadline": "与净化饮用水相同的活性炭。在分子层面捕获猫砂盆氨气。无香精。无掩盖。只有...清新空气。",
+      "supporting": "选择您的尺寸。让您的鼻子来验证。"
+    },
+    "quickDecision": {
+      "title": "不确定选哪个尺寸？让您的鼻子来判断。",
+      "subtitle": "选择适合您家的尺寸:",
+      "trial": {
+        "question": "之前被虚假承诺坑过？",
+        "answer": "怀疑者试用装 (12g)",
+        "detail": "只需支付运费。7天让您的鼻子验证。有效或您只损失$4.76。"
+      },
+      "regular": {
+        "question": "家里有一两只猫？",
+        "answer": "标准装 (120g)",
+        "detail": "最受欢迎的尺寸。每次使用可保持7天以上清新。用量越多，清新越久。"
+      },
+      "large": {
+        "question": "多猫家庭？",
+        "answer": "家庭装 (240g)",
+        "detail": "每克最佳性价比。同样强效的配方，双倍的供应量。"
+      }
+    },
+    "trustSignals": {
+      "waterFilter": {
+        "title": "与Brita滤芯相同的材料",
+        "description": "符合NSF/ANSI 61标准。如果它能让自来水变得可饮用，想象一下它对氨气的效果。"
+      },
+      "ingredients": {
+        "title": "成分：椰壳。就这些。",
+        "description": "没有让猫咪紧张的香精。没有需要担心的化学品。只有来自椰壳的纯净活性炭。"
+      },
+      "science": {
+        "title": "科学，不是香水",
+        "description": "一克炭的表面积相当于一个足球场。那些微观隧道永久捕获异味分子。消失了。不是躲起来了。"
+      }
+    },
+    "products": {
+      "trial": {
+        "name": "怀疑者试用装",
+        "subtitle": "12g · 一周的证明",
+        "features": [
+          "足够7天清新空气",
+          "只需支付$4.76运费",
+          "每户限一份（抱歉，不能囤积免费产品）"
+        ],
+        "bestFor": "曾被'神奇'产品坑过的猫主人。我们理解。先自己验证。"
+      },
+      "regular": {
+        "name": "标准装",
+        "subtitle": "120g · 标准装",
+        "features": [
+          "每次使用7天以上清新",
+          "用量越多清新越久",
+          "适用于您猫咪已经认可的任何猫砂"
+        ],
+        "bestFor": "一两只猫的家庭，'有客人要来'不再让您惊慌。"
+      },
+      "large": {
+        "name": "家庭装",
+        "subtitle": "240g · 每克最佳性价比",
+        "features": [
+          "每次使用7天以上清新",
+          "每克最佳性价比",
+          "灵活用量（用得越多，持续越久）"
+        ],
+        "bestFor": "多猫家庭、寄养家庭，或已经数不清有几个猫砂盆的人。"
+      }
+    },
+    "whatYouGet": {
+      "title": "袋子里到底有什么",
+      "subtitle": "（以及为什么您的猫永远不会注意到它）",
+      "benefits": [
+        {
+          "title": "净水器级活性炭",
+          "description": "与Brita滤芯和医院空气净化系统使用的完全相同的材料。不是'类似'。是相同的。"
+        },
+        {
+          "title": "零香精。零化学品。零担忧。",
+          "description": "猫有2亿个嗅觉感受器。人工香精会让它们紧张。Purrify无形中工作。"
+        },
+        {
+          "title": "粘土、水晶、结团、天然...我们不挑剔",
+          "description": "适用于您猫咪训练您购买的任何猫砂。无需更换的烦恼。"
+        },
+        {
+          "title": "打开。撒上。完成。",
+          "description": "在表面撒薄薄一层。30秒的努力换来7天的效果。"
+        }
+      ]
+    },
+    "didYouKnow": {
+      "title": "您的猫不在乎的科学（但您的鼻子会感谢）",
+      "body": "一克活性炭包含约3,000平方米的表面积。这比半个足球场还大——而它比一粒豌豆还小。\n\n里面有数百万个微观孔隙和隧道。当氨分子飘过时，它们会被永久捕获。\n\n这不是掩盖。这是分子捕获。与防毒面具、水处理厂和医院空气过滤系统使用的相同技术。现在就在您猫咪的猫砂上。"
+    },
+    "cta": {
+      "title": "您的鼻子值得更好的。您的猫也是。",
+      "subtitle": "在您喜爱的宠物店询问Purrify。如果他们还没有，他们应该有。",
+      "secondary": "没找到您的店？告诉我们。我们会联系他们。"
+    },
+    "relatedPages": [
+      {
+        "title": "科学原理（没有枯燥的部分）",
+        "description": "了解我们活性炭技术背后的科学原理以及它为何如此有效。",
+        "link": "/learn/how-it-works"
+      },
+      {
+        "title": "1,000+位猫主人的评价",
+        "description": "看看满意的客户对他们的Purrify体验怎么说。",
+        "link": "/reviews"
+      },
+      {
+        "title": "完整猫砂指南",
+        "description": "了解不同的猫砂类型以及如何为您的猫选择最佳选项。",
+        "link": "/learn/cat-litter-guide"
+      }
+    ],
+    "testimonial": {
+      "quote": "我和两只猫住在一间小单身公寓里，猫砂盆的气味已经让人无法忍受。Purrify在24小时内完全消除了异味。起初我对价格持怀疑态度，但它比我试过的其他产品持续时间长得多。物超所值！",
+      "author": "Sarah M.",
+      "location": "蒙特利尔, QC",
+      "details": "2只猫，小公寓",
+      "headline": "我公寓的救星！"
+    }
+  },
+  "subscriptionOfferExtended": {
+    "autoshipBadge": "季度自动配送",
+    "headline": "自动守护你的猫砂清新",
+    "supportingCopy": "选择每3个月自动补货的组合，省心、省钱、家里始终清新。",
+    "perMonthLabel": "≈ {price}/月",
+    "saveVsOneTime": "比单次购买节省 {percent}%",
+    "skipOrCancelAnytime": "随时跳过或取消",
+    "shippingIncluded": "含运费",
+    "freeShippingIncluded": "免运费",
+    "priorityCustomerSupport": "优先客户支持",
+    "startAutoship": "开启自动订购",
+    "linkComingSoon": "支付链接即将上线",
+    "quarterlyBilling": "每 3 个月结算一次",
+    "autoshipHero": "自动订购省更多",
+    "autoshipHighlight": "订阅立享优惠",
+    "standardPlanTitle": "季度自动配送 – 3 × 50g",
+    "standardDescription": "单猫家庭的理想选择，每个月都保持清新。",
+    "includesThreeStandard": "包含 3 袋 50g，一次送达",
+    "familyPlanTitle": "超值自动配送 – 3 × 常规装 120g",
+    "familyDescription": "专为多猫或敏感家庭设计，单次使用成本最低。",
+    "includesThreeFamily": "包含 3 袋 120g 常规装（一次送达）",
+    "bestValueBadge": "最佳价值",
+    "save": "节省",
+    "joinThePurrifyFamily": "加入Purrify大家庭"
+  },
+  "paymentSecurity": {
+    "securePayment": "安全支付",
+    "sslEncrypted": "256位SSL",
+    "sslEncryptedCheckout": "您的支付信息经过加密且安全。我们绝不存储您的支付详情。"
+  },
+  "testimonialsSection": {
+    "customerLove": "客户喜爱",
+    "littersOfLove": "来自宠物主人社区的满满爱意",
+    "dontJustTakeOurWord": "不要只听我们的一面之词。这里是我们的客户对Purrify的评价。",
+    "readMoreReviews": "阅读更多评价"
+  },
+  "storesSection": {
+    "availableInStores": "门店有售",
+    "soldInFollowingStores": "在以下门店有售",
+    "subtitle": "在您附近的宠物用品店寻找Purrify",
+    "requestStoreAvailability": "申请门店供货",
+    "dontSeeLocalStore": "没看到您当地的门店？",
+    "callStore": "致电门店",
+    "sending": "发送中...",
+    "requestSent": "请求已发送！",
+    "requestSuccess": "谢谢！我们会帮助您在当地商店购买Purrify。",
+    "requestError": "发生错误。请直接联系我们 support@purrify.ca",
+    "storeDescriptions": {
+      "completePetCareAndSupplies": "完整的宠物护理和用品",
+      "premiumPetBoutique": "高端宠物精品店",
+      "familyOwnedPetStore": "家庭经营的宠物店",
+      "globalPetFoodsLocation": "Global Pet Foods门店",
+      "premiumPetProductsAndSupplies": "高端宠物产品和用品",
+      "fullServicePetStore": "全方位服务宠物店",
+      "petStoreWithGroomingServices": "提供美容服务的宠物店"
+    }
+  },
+  "upsell": {
+    "pageTitle": "特别一次性优惠 - Purrify",
+    "metaDescription": "新客户专属一次性优惠。季度自动订购可节省25%。",
+    "offerExpired": "优惠已过期",
+    "offerExpiresIn": "优惠将在以下时间后过期",
+    "headline": "等等！独家一次性优惠",
+    "subheadline": "添加自动订购，立省25%",
+    "saveBadge": "节省29%",
+    "productTitle": "Purrify 50g 自动订购",
+    "productSubtitle": "3个月供应（3 × 50g 袋装）",
+    "youSave": "您节省",
+    "benefit1": "永不缺货 - 每3个月自动配送",
+    "benefit2": "包含免费送货（节省$7.99）",
+    "benefit3": "永久锁定此特惠价格",
+    "benefit4": "随时取消或跳过（无需承诺）",
+    "benefit5": "每次发货前自动提醒",
+    "processing": "处理中...",
+    "addToOrder": "是的！添加到我的订单",
+    "noThanks": "不用了，我宁愿以后支付全价",
+    "feature1Title": "即时激活",
+    "feature1Description": "您的自动订购在此订单后立即开始",
+    "feature2Title": "100%满意",
+    "feature2Description": "每次发货均享30天退款保证",
+    "feature3Title": "灵活控制",
+    "feature3Description": "随时在线跳过、暂停或取消",
+    "testimonialText": "我差点跳过自动订购优惠，但我很高兴我没有这样做！少了一件要记住的事情，节省的费用也会累积。而且，我永远不会在最需要的时候用完。",
+    "testimonialAuthor": "— Sarah M., 多伦多",
+    "faqTitle": "常见问题",
+    "faq1Question": "我可以随时取消吗？",
+    "faq1Answer": "当然可以！随时从您的账户仪表板取消、跳过或修改订阅。无需费用，无需麻烦。",
+    "faq2Question": "我什么时候会被收费？",
+    "faq2Answer": "您今天将为此特别优惠付费。您的下一次发货将在3个月后，您将在7天前收到提醒电子邮件。",
+    "faq3Question": "价格是锁定的吗？",
+    "faq3Answer": "是的！只要您继续订阅，此特惠价格就会锁定。您永远不会支付超过此价格。",
+    "bottomNote": "此一次性优惠仅在您首次购买后立即可用",
+    "returnHome": "返回首页"
+  },
+  "productPages": {
+    "cancelAnytime": "随时取消。免费配送。",
+    "shipsFree": "免费配送",
+    "subscribeAndSave": "订阅并节省",
+    "save": "节省",
+    "savePercent": "节省{percent}%",
+    "perMonth": "每月",
+    "billedQuarterly": "按季度计费",
+    "shippingSavings": "每单节省$15-20+，相比单独购买",
+    "save25vsStandard": "相比购买两个标准装节省25%",
+    "save25FamilyPack": "家庭装节省25%"
+  }
+}

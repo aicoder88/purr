@@ -1,0 +1,72 @@
+{
+  "products": {
+    "purrify-12g": {
+      "name": "Prueba GRATIS",
+      "description": "Prueba nuestro desodorizante de arena GRATIS!\nSolo $4.76 de envio a cualquier lugar de Canada\n\nAditivo natural de carbon - Limite uno por cliente"
+    },
+    "purrify-50g": {
+      "name": "El Tamaño Perfecto",
+      "description": "50g · Tamaño Estándar\nEl más popular para hogares de un solo gato.\nDura aproximadamente un mes."
+    },
+    "purrify-120g": {
+      "name": "Tamaño Familiar",
+      "description": "120g · Mejor Valor Por Gramo\nPara hogares con 2+ gatos.\nDiseñado para el control de olores extra."
+    }
+  },
+  "pricing": {
+    "oneTimeLabel": "Compra unica",
+    "autoshipLabel": "Autoenvio y Ahorra",
+    "autoshipBestLabel": "Mejor Valor Autoenvio",
+    "billedEvery": "Facturado cada",
+    "months": "meses",
+    "shippingIncluded": "Envio incluido",
+    "freeShipping": "Envio gratis incluido",
+    "plusShipping": "+ envio",
+    "shippingCalculated": "Envio calculado al pagar",
+    "startAutoship": "Iniciar Autoenvio",
+    "buyNow": "Comprar Ahora",
+    "linkComingSoon": "Enlace de pago proximamente",
+    "recommended": "Mas recomendado",
+    "perMonth": "aprox. {price}/mes",
+    "saveVsOneTime": "Ahorra {percent}% vs compra unica",
+    "trialSizeSection": "Prueba GRATIS - Solo Paga Envio",
+    "quarterlyAutoshipSection": "Suscribete y Ahorra - Autoenvio Trimestral",
+    "stripeShippingNote": "el producto se enviara a la direccion de envio de Stripe EN LA SIGUIENTE PAGINA"
+  },
+  "freeTrial": {
+    "urgentBanner": "Oferta Por Tiempo Limitado",
+    "free": "Gratis"
+  },
+  "trustBadges": {
+    "moneyBack": {
+      "title": "Soporte Basado en Canada",
+      "description": "Personas reales listas para ayudarte a controlar los olores",
+      "highlight": "Expertos en cuidado de gatos"
+    },
+    "securePayment": {
+      "title": "Pago Seguro",
+      "description": "Pago encriptado con SSL a traves de Stripe",
+      "highlight": "SSL 256-bit"
+    },
+    "fastShipping": {
+      "title": "Envio Rapido",
+      "description": "Entrega rapida y confiable",
+      "highlight": "Procesamiento el Mismo Dia"
+    },
+    "customerRating": {
+      "title": "Comentarios de Clientes",
+      "description": "Guias y recursos para reducir olor con aditivo de carbon activado",
+      "highlight": "Sin Fragancia"
+    },
+    "happyCustomers": {
+      "title": "Comunidad de Duenos de Gatos",
+      "description": "Usado por duenos de gatos en Canada",
+      "highlight": "Soporte en Canada"
+    },
+    "premiumQuality": {
+      "title": "Calidad Premium",
+      "description": "Carbon activado de grado filtracion usado en filtros de agua y aire",
+      "highlight": "Sin Fragancia"
+    }
+  }
+}

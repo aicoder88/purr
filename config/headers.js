@@ -1,0 +1,66 @@
+const SECURITY_HEADERS = [
+  { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "X-Frame-Options", value: "DENY" },
+  { key: "X-XSS-Protection", value: "1; mode=block" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  {
+    key: "Permissions-Policy",
+    value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+  },
+  { key: "Cross-Origin-Embedder-Policy", value: "unsafe-none" },
+  { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+  { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
+  // CSP Note: 'unsafe-inline' for scripts is required for Next.js to function properly.
+  // In a production app, consider implementing nonce-based CSP for stricter security.
+  // The 'unsafe-eval' is needed for various libraries including Next.js itself.
+  {
+    key: "Content-Security-Policy",
+    value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' *.google.com *.gstatic.com *.googletagmanager.com; style-src 'self' 'unsafe-inline' *.googleapis.com; img-src 'self' blob: data: *.purrify.ca *.google.com *.gstatic.com *.facebook.com *.fna.fbcdn.net *.dicebear.com *.unsplash.com *.randomuser.me *.chico.ca *.pattesgriffes.com *.pitou-minou.ca *.doghausmtl.com *.coquetteetfinegueule.com *.animaleriegigi.com unpkg.com *.unpkg.com *.tile.openstreetmap.org; font-src 'self' data:; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; block-all-mixed-content; upgrade-insecure-requests; require-trusted-types-for 'script';"
+  },
+];
+
+// [source, cacheControl, extraHeaders?]
+const CACHE_HEADER_CONFIGS = [
+  ["/images/(.*)", "public, max-age=31536000, immutable"],
+  ["/optimized/(.*)", "public, max-age=31536000, immutable"],
+  ["/_next/static/(.*)", "public, max-age=31536000, immutable"],
+  ["/_next/image(.*)", "public, max-age=31536000, immutable"],
+  ["/sitemap.xml", "public, max-age=3600"],
+  ["/robots.txt", "public, max-age=86400"],
+  // Note: External resource caching (e.g., OpenStreetMap tiles) must be configured
+  // at the CDN/proxy level (Vercel Edge Config, Cloudflare, etc.)
+  [
+    "/api/(.*)",
+    "private, no-store",
+    [{ key: "Vary", value: "Authorization, Cookie, Accept-Encoding, Accept-Language" }],
+  ],
+  [
+    "/fonts/(.*)",
+    "public, max-age=31536000, immutable",
+    [{ key: "Cross-Origin-Resource-Policy", value: "cross-origin" }],
+  ],
+  ["/:path*\\.(css|js|woff|woff2|ttf|eot)", "public, max-age=31536000, immutable"],
+  [
+    "/:path*\\.(jpg|jpeg|png|gif|ico|svg|webp|avif)",
+    "public, max-age=2592000",
+    [{ key: "Vary", value: "Accept" }],
+  ],
+  ["/static/(.*)", "public, max-age=31536000, immutable"],
+  [
+    "/videos/(.*)",
+    "public, max-age=31536000, immutable",
+    [{ key: "Accept-Ranges", value: "bytes" }],
+  ],
+];
+
+/** @type {import('next').Header[]} */
+const HEADERS = [
+  { source: "/(.*)", headers: SECURITY_HEADERS },
+  ...CACHE_HEADER_CONFIGS.map(([source, cacheControl, extraHeaders = []]) => ({
+    source,
+    headers: [{ key: "Cache-Control", value: cacheControl }, ...extraHeaders],
+  })),
+];
+
+module.exports = { HEADERS };

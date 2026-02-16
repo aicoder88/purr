@@ -1,0 +1,109 @@
+{
+  "reviews": {
+    "heading": "Lo Que Dicen los Dueños de Gatos",
+    "subheading": "Reseñas reales de clientes reales",
+    "verifiedPurchase": "Compra",
+    "helpful": "Útil",
+    "writeReview": "Escribir una Reseña",
+    "filterBy": "Filtrar por",
+    "allRatings": "Todas las Calificaciones",
+    "sortBy": "Ordenar por",
+    "mostRecent": "Más Reciente",
+    "mostHelpful": "Más Útil",
+    "highestRated": "Mayor Calificación",
+    "lowestRated": "Menor Calificación",
+    "showingReviews": "Mostrando {{count}} reseñas",
+    "noReviews": "Aún no hay reseñas. ¡Sé el primero en compartir tu experiencia!",
+    "loadMore": "Cargar Más Reseñas"
+  },
+  "reviewsPage": {
+    "pageTitle": "Reseñas de Clientes",
+    "metaDescription": "Comentarios de clientes sobre Purrify y cómo usar un aditivo de carbón activado para reducir el olor de la caja de arena. Envíos a EE.UU. y Canadá.",
+    "badge": "Reseñas de Clientes",
+    "heading": "Historias Reales de Dueños de Gatos Felices",
+    "description": "Comentarios de clientes sobre Purrify y consejos prácticos para reducir el olor de la caja de arena con un aditivo de carbón activado.",
+    "breadcrumb": {
+      "home": "Inicio",
+      "reviews": "Reseñas"
+    },
+    "stats": {
+      "averageRating": "Calificación Promedio",
+      "verifiedReviews": "Reseñas de Clientes",
+      "happyCustomers": "Clientes Satisfechos",
+      "monthsInMarket": "Meses en el Mercado"
+    },
+    "reviewCard": {
+      "verified": "Cliente",
+      "product": "Producto",
+      "cats": "Gatos",
+      "useCase": "Caso de Uso"
+    },
+    "trustSection": {
+      "heading": "Por Qué los Clientes Confían en Purrify",
+      "verifiedTitle": "Reseñas de Clientes",
+      "verifiedDesc": "Publicaremos reseñas y calificaciones cuando el sistema de reseñas de terceros esté listo.",
+      "ratingTitle": "Ciencia y guías",
+      "ratingDesc": "Revisa citas y guías para verificar afirmaciones clave.",
+      "customersTitle": "Recursos útiles",
+      "customersDesc": "Soluciones para olor de la caja de arena, amoníaco y uso seguro."
+    },
+    "ctaSection": {
+      "heading": "¿Listo para probarlo en casa?",
+      "description": "Comienza con una prueba de bajo riesgo y ve cómo encaja en tu rutina de arena.",
+      "shopNow": "Comprar Ahora",
+      "tryFreeSample": "Probar Muestra Gratis"
+    },
+    "relatedLinks": {
+      "heading": "Más Información Sobre Purrify",
+      "comparison": "Comparación de Productos",
+      "comparisonDesc": "Ver cómo se compara Purrify",
+      "caseStudies": "Casos de Estudio",
+      "caseStudiesDesc": "Historias de éxito detalladas",
+      "usageInfo": "Información de Uso",
+      "usageInfoDesc": "Uso con gatos y gatitos",
+      "storeLocations": "Ubicaciones de Tiendas",
+      "storeLocationsDesc": "Encuentra Purrify cerca de ti"
+    }
+  },
+  "reviewSystem": {
+    "customerReviews": "Reseñas de Clientes",
+    "comingSoon": "Las reseñas de clientes aparecerán aquí cuando nuestro sistema de reseñas esté en funcionamiento.",
+    "reviews": "reseñas",
+    "basedOn": "Basado en",
+    "wouldRecommend": "lo recomendarían",
+    "verifiedPurchases": "compras",
+    "viewAllReviews": "Ver Todas las Reseñas",
+    "loadMoreReviews": "Cargar Más Reseñas",
+    "filters": {
+      "allRatings": "Todas las Calificaciones",
+      "stars": "Estrellas",
+      "star": "Estrella",
+      "allSizes": "Todos los Tamaños",
+      "trial": "12g Prueba",
+      "regular": "50g Regular",
+      "large": "120g Grande"
+    },
+    "sort": {
+      "newestFirst": "Más Reciente",
+      "oldestFirst": "Más Antiguo",
+      "highestRated": "Mayor Calificación",
+      "lowestRated": "Menor Calificación",
+      "mostHelpful": "Más Útil"
+    },
+    "review": {
+      "verifiedPurchase": "Compra",
+      "size": "Tamaño",
+      "cat": "gato",
+      "cats": "gatos",
+      "usingFor": "Usando durante",
+      "helpful": "Útil",
+      "recommendsProduct": "Recomienda este producto"
+    }
+  },
+  "testimonialsSection": {
+    "customerLove": "Amor de Clientes",
+    "littersOfLove": "Resultados Reales de Padres de Gatos Felices",
+    "dontJustTakeOurWord": "No solo tomes nuestra palabra. Esto es lo que nuestros clientes dicen sobre Purrify.",
+    "readMoreReviews": "Leer Mas Opiniones"
+  }
+}

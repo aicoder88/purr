@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     'cat odor health'
   ],
   alternates: {
-    canonical: '/learn/answers/is-it-safe-to-sleep-in-a-room-with-cat-litter/',
+    canonical: 'https://www.purrify.ca/learn/answers/is-it-safe-to-sleep-in-a-room-with-cat-litter/'
   },
   openGraph: {
     title: 'Is It Safe to Sleep in a Room With Cat Litter? - Purrify',

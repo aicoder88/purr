@@ -4,10 +4,6 @@ import { z } from 'zod';
 import * as Sentry from '@sentry/nextjs';
 import prisma from '@/lib/prisma';
 import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
-import {
-  getCommercialAssignmentsFromCookieReader,
-  serializeAssignments,
-} from '@/lib/experiments/commercial';
 
 // Initialize Stripe lazily
 let stripeInstance: Stripe | null = null;
@@ -67,9 +63,6 @@ export async function POST(request: NextRequest) {
     }
 
     const { orderId, currency, customer } = validationResult.data;
-    const serializedAssignments = serializeAssignments(
-      getCommercialAssignmentsFromCookieReader(request.cookies)
-    );
 
     // Check prisma is available
     if (!prisma) {
@@ -114,7 +107,6 @@ export async function POST(request: NextRequest) {
       metadata: {
         orderId: order.id,
         customerName: customer.name || '',
-        ...(serializedAssignments ? { abAssignments: serializedAssignments } : {}),
       },
     });
 

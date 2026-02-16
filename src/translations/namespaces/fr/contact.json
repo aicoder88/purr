@@ -1,0 +1,143 @@
+{
+  "contact": {
+    "title": "Contactez-Nous",
+    "subtitle": "Nous sommes là pour vous aider",
+    "address": "109-17680 Rue Charles, Mirabel, QC J7J 0T6",
+    "phone": "1 (450) 663-6773",
+    "email": "hello@purrify.ca",
+    "courriel": "hello@purrify.ca",
+    "hours": {
+      "title": "Heures d'Ouverture",
+      "monday": "08:00 am - 8:00 pm",
+      "tuesday": "08:00 am - 8:00 pm",
+      "wednesday": "08:00 am - 8:00 pm",
+      "thursday": "08:00 am - 8:00 pm",
+      "friday": "08:00 am - 8:00 pm",
+      "saturday": "09:00 am - 8:00 pm",
+      "sunday": "Fermé"
+    },
+    "form": {
+      "name": "Nom",
+      "email": "Courriel",
+      "message": "Message",
+      "submit": "Envoyer"
+    }
+  },
+  "contactSection": {
+    "getInTouch": "Contactez-nous",
+    "ourLocation": "Notre adresse",
+    "phoneNumber": "Numéro de téléphone",
+    "phoneDescription": "Nous avons carrément enfermé les odeurs dans notre numéro. Composez le 1-450-6-ODORS-3 (soit 1 (450) 663-6773) et voyez à quel point nous prenons l'air frais au sérieux.",
+    "openingHours": "Heures d'ouverture",
+    "weekdays": "Lun - Ven:",
+    "saturday": "Samedi:",
+    "sunday": "Dimanche:",
+    "sendMessage": "Envoyez-nous un message",
+    "replyTime": "Nous vous répondrons dans les 24 heures"
+  },
+  "contactPage": {
+    "title": "Nous Sommes Là Pour Vous Aider",
+    "subtitle": "Notre équipe de support client amicale est prête à vous assister avec des conseils d'experts et des solutions.",
+    "chooseContactMethod": "Choisissez Comment Nous Contacter",
+    "contactReasons": [
+      {
+        "value": "general",
+        "label": "Question Générale"
+      },
+      {
+        "value": "product",
+        "label": "Information Produit"
+      },
+      {
+        "value": "order",
+        "label": "Support Commande"
+      },
+      {
+        "value": "shipping",
+        "label": "Question Livraison"
+      },
+      {
+        "value": "return",
+        "label": "Retour/Remboursement"
+      },
+      {
+        "value": "wholesale",
+        "label": "Demande Grossiste"
+      },
+      {
+        "value": "feedback",
+        "label": "Commentaire/Avis"
+      }
+    ],
+    "contactMethods": [
+      {
+        "title": "Support Email",
+        "description": "Obtenez de l'aide détaillée par email",
+        "responseTime": "Habituellement dans les 24 heures"
+      },
+      {
+        "title": "Support Téléphonique",
+        "description": "Parlez directement avec notre équipe",
+        "responseTime": "Lun-Ven, 9h-17h EST"
+      },
+      {
+        "title": "Chat en Direct",
+        "description": "Aide instantanée pour questions rapides",
+        "responseTime": "Réponse moyenne: 2 minutes"
+      }
+    ],
+    "form": {
+      "fullName": "Nom Complet",
+      "emailAddress": "Adresse Courriel",
+      "subject": "Sujet",
+      "message": "Message",
+      "contactReason": "Raison du Contact",
+      "orderNumber": "Numéro de Commande (si applicable)",
+      "submit": "Envoyer le Message",
+      "submitting": "Envoi du Message...",
+      "successMessage": "Merci de nous avoir contactés! Nous vous répondrons dans les 24 heures.",
+      "errorMessage": "Désolé, il y a eu une erreur en envoyant votre message. Veuillez réessayer ou nous contacter directement.",
+      "sendingMessage": "Envoi du Message...",
+      "sendMessage": "Envoyer le Message",
+      "subjectPlaceholder": "Brève description de votre demande",
+      "messagePlaceholder": "Veuillez fournir des détails sur votre question ou préoccupation...",
+      "orderNumberPlaceholder": "ex: PUR-12345",
+      "contactNow": "Contacter Maintenant"
+    },
+    "faqs": [
+      {
+        "question": "À quelle vitesse verrai-je des résultats avec Purrify?",
+        "answer": "La plupart des clients remarquent une réduction significative des odeurs dans les premières heures d'application. Le charbon activé commence à piéger les molécules d'odeur immédiatement au contact."
+      },
+      {
+        "question": "Que faire si je n'obtiens pas les résultats espérés?",
+        "answer": "Écrivez-nous ! Notre équipe d'accompagnement analysera votre installation, partagera des conseils personnalisés et s'assurera que Purrify fonctionne au mieux chez vous."
+      },
+      {
+        "question": "Offrez-vous des prix de gros pour plusieurs chats?",
+        "answer": "Oui! Notre format économique de 500g offre la meilleure valeur pour les foyers multi-chats. Nous avons aussi des prix de gros disponibles pour les animaleries et vétérinaires."
+      },
+      {
+        "question": "Purrify est-il sûr si mon chat l'ingère accidentellement?",
+        "answer": "Absolument. Le charbon activé est complètement sûr pour les chats et est même utilisé en médecine vétérinaire. Cependant, Purrify est conçu pour rester mélangé avec la litière."
+      }
+    ],
+    "businessHours": {
+      "title": "Heures d'Affaires",
+      "weekdays": "9h00 - 17h00 EST",
+      "saturday": "10h00 - 14h00 EST",
+      "sunday": "Fermé",
+      "closed": "Fermé"
+    },
+    "location": {
+      "title": "Notre Emplacement",
+      "address": "Montréal, Québec, Canada",
+      "shippingNote": "Nous expédions partout au Canada et offrons la collecte locale dans la région de Montréal."
+    },
+    "frequentlyAskedQuestions": "Questions Fréquemment Posées",
+    "quickAnswersCommon": "Réponses rapides aux questions communes",
+    "dontSeeQuestion": "Vous ne voyez pas votre question ici?",
+    "viewCompleteFAQ": "Voir FAQ Complète",
+    "backToHome": "Retour à l'Accueil"
+  }
+}

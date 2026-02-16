@@ -1,0 +1,729 @@
+{
+  "retailers": {
+    "seo": {
+      "pageTitle": "Wholesale Cat Litter Deodorizer | 50% Margins for Pet Stores",
+      "description": "Pet Retailers: 50%+ margins on Canada's #1 reordered cat litter deodorizer. Free POS materials + marketing support. Become a wholesale partner today.",
+      "openGraphAlt": "Wholesale Partners",
+      "keywords": "wholesale cat litter deodorizer, pet store wholesale, cat litter additive distributor, bulk cat litter products, wholesale pet supplies Canada, pet retail partnership"
+    },
+    "map": {
+      "title": "Our Retail Partners and Clients | Purrify Network",
+      "description": "Discover our growing network of retailers and satisfied clients across Canada. Join our family of successful partners."
+    },
+    "hero": {
+      "badge": "#1 Pet Store Partner in Canada",
+      "title": "Partner with Purrify",
+      "subtitle": "Wholesale Success",
+      "description": "Join hundreds of pet stores and retailers offering Canada's #1 activated carbon cat litter additive. Proven sales, loyal customers, marketing support included.",
+      "cta": {
+        "primary": "View Wholesale Pricing",
+        "secondary": "Become a Partner",
+        "startPartnership": "Start Partnership Today",
+        "viewPricing": "View Pricing"
+      },
+      "boostYour": "Boost Your",
+      "petStoreProfits": "Pet Store Profits",
+      "mainDescription": "Join 21 established retailers selling Canada's #1 cat odor solution with 50%+ margins",
+      "retailerCount": "21 established retailers",
+      "marginHighlight": "50%+ margins",
+      "stats": {
+        "profitMargins": {
+          "value": "50%",
+          "label": "Profit Margins"
+        },
+        "repurchaseRate": {
+          "value": "89%",
+          "label": "Repurchase Rate"
+        },
+        "setupTime": {
+          "value": "24h",
+          "label": "Setup Time"
+        }
+      },
+      "valueProps": {
+        "highMargin": {
+          "title": "High-Margin Product",
+          "highlight": "Up to 55% profit margins",
+          "description": "Premium pricing with lightweight shipping. Higher margins than traditional heavy litter products."
+        },
+        "customerLoyalty": {
+          "title": "Customer Loyalty",
+          "highlight": "4.8/5 star rating",
+          "description": "Customers become loyal advocates. Monthly repurchases and referrals drive steady revenue."
+        },
+        "completeSupport": {
+          "title": "Complete Support",
+          "highlight": "Everything included",
+          "description": "POS materials, training, marketing support, and dedicated account management included."
+        }
+      },
+      "trustIndicators": {
+        "label": "Trusted by leading retailers:",
+        "types": {
+          "petStores": "Pet Stores",
+          "vetClinics": "Vet Clinics",
+          "groomers": "Groomers",
+          "distributors": "Distributors"
+        }
+      }
+    },
+    "benefits": {
+      "pricing": {
+        "title": "Wholesale Pricing",
+        "description": "Up to 50% margins with volume discounts"
+      },
+      "marketing": {
+        "title": "Marketing Support",
+        "description": "POS materials, training, co-op advertising"
+      },
+      "proven": {
+        "title": "Proven Product",
+        "description": "4.8/5 stars, high repeat purchase rate"
+      },
+      "highDemand": {
+        "title": "High Customer Demand",
+        "description": "Pet owners actively seek odor solutions. Purrify addresses the #1 complaint about cat ownership - litter box odors."
+      },
+      "highMargins": {
+        "title": "Premium Margins",
+        "description": "Small, lightweight product with high perceived value. Better margins than traditional heavy cat litter products."
+      },
+      "easyStocking": {
+        "title": "Easy to Stock",
+        "description": "Compact packaging saves shelf space. No refrigeration required. Long shelf life with no expiration concerns."
+      },
+      "marketingSupport": {
+        "title": "Complete Marketing Support",
+        "description": "We provide everything you need: shelf displays, product training, customer education materials, and co-op advertising."
+      },
+      "customerLoyalty": {
+        "title": "Builds Customer Loyalty",
+        "description": "When Purrify solves their odor problem, customers become loyal to your store. They return monthly and recommend to friends."
+      },
+      "fastMoving": {
+        "title": "Fast-Moving Inventory",
+        "description": "Unlike slow-moving pet accessories, Purrify is a consumable product with predictable monthly reorders."
+      },
+      "title": "Why Retailers Choose Purrify",
+      "description": "Join hundreds of successful pet stores and retailers who have added Purrify to their product lineup with outstanding results.",
+      "success": {
+        "title": "Real Success Stories"
+      }
+    },
+    "pricing": {
+      "title": "Wholesale Pricing Tiers",
+      "description": "Flexible pricing options designed to maximize your margins while providing exceptional value to your customers.",
+      "tiers": {
+        "starter": {
+          "name": "Starter",
+          "description": "Perfect for small pet stores"
+        },
+        "growth": {
+          "name": "Growth",
+          "description": "Most popular for established stores"
+        },
+        "enterprise": {
+          "name": "Enterprise",
+          "description": "For chains and large retailers"
+        }
+      },
+      "additional": {
+        "title": "Volume Discounts Available",
+        "description": "Looking for larger quantities? We offer custom pricing for chains, distributors, and high-volume retailers. Contact us for a personalized quote."
+      }
+    },
+    "wholesalePricing": {
+      "sectionBadge": "Transparent Wholesale Pricing",
+      "title": "Choose Your",
+      "titleHighlight": "Profit Level",
+      "subtitle": "Partner with Canada's fastest-selling cat odor solution. No hidden fees, no surprises.",
+      "packageIncludes": "Package Includes:",
+      "trustSignals": {
+        "noSetupFees": "No Setup Fees",
+        "approval72hr": "72hr Approval",
+        "provenROI": "Proven ROI"
+      },
+      "tiers": {
+        "starter": {
+          "name": "Starter Package",
+          "badge": "Quick Start",
+          "description": "Perfect for testing the waters",
+          "contents": [
+            "One box of trial size (25 small bags)",
+            "One box of medium (15 medium bags)",
+            "One box of large (10 large bags)"
+          ],
+          "features": [
+            "Proven 4.8/5 star product",
+            "Lightweight shipping advantage",
+            "Basic POS display included",
+            "Email support & setup guide",
+            "Free product replacement for damaged goods"
+          ],
+          "cta": "Get Started"
+        },
+        "growth": {
+          "name": "Growth Partner",
+          "badge": "Best Value",
+          "description": "The smart choice for growing retailers",
+          "contents": [
+            "Five boxes of trial size (125 small bags)",
+            "Five boxes of medium (75 medium bags)",
+            "Five boxes of large (50 large bags)",
+            "BONUS: 5 extra medium bags free"
+          ],
+          "features": [
+            "Premium counter display",
+            "Staff training materials",
+            "Digital marketing assets (social posts, email templates)",
+            "Priority phone & email support"
+          ],
+          "cta": "Start Growing Now"
+        },
+        "scale": {
+          "name": "Scale Success",
+          "badge": "Enterprise",
+          "description": "For serious revenue growth",
+          "contents": [
+            "Ten boxes of trial size (250 small bags)",
+            "Ten boxes of medium (150 medium bags)",
+            "Ten boxes of large (100 large bags)",
+            "BONUS: 25 extra trial bags to hook new customers"
+          ],
+          "features": [
+            "Everything in Growth Partner",
+            "Dedicated account manager",
+            "Custom marketing materials & co-branding",
+            "Territory protection rights",
+            "Quarterly business reviews & sales analytics",
+            "Priority inventory allocation"
+          ],
+          "cta": "Get Started"
+        }
+      },
+      "bottomCta": {
+        "title": "Ready to Boost Your Revenue?",
+        "description": "Join 21 established Montreal and surrounding-area retailers already earning high margins with Purrify.",
+        "setupNote": "Setup takes less than 24 hours.",
+        "primaryButton": "Apply for Partnership",
+        "secondaryButton": "Call Us"
+      }
+    },
+    "marketing": {
+      "title": "Complete Marketing Support",
+      "description": "We provide everything you need to successfully sell Purrify. From in-store displays to staff training, we've got you covered.",
+      "coop": {
+        "title": "Co-op Advertising Program",
+        "description": "Qualify for advertising credits to promote Purrify in your local market. We'll help cover costs for newspaper ads, radio spots, and local marketing campaigns."
+      }
+    },
+    "testimonials": {
+      "title": "What Our Retail Partners Say",
+      "description": "Real feedback from successful pet store owners and managers across Canada.",
+      "metrics": {
+        "title": "Proven Business Results"
+      }
+    },
+    "contact": {
+      "title": "Become a Purrify Retail Partner",
+      "description": "Ready to add Canada's #1 cat litter additive to your store? Fill out the form below and we'll get back to you within 24 hours.",
+      "sectionBadge": "Join 21 Established Partners",
+      "sectionTitle": "Start Your",
+      "sectionTitleHighlight": "Partnership Today",
+      "sectionDescription": "Ready to earn 50%+ margins with Canada's #1 cat odor solution?",
+      "setupNote": "Setup takes less than 24 hours.",
+      "urgencyStats": {
+        "approvalTime": {
+          "value": "72hrs",
+          "label": "Approval Time"
+        },
+        "setupFees": {
+          "value": "Zero",
+          "label": "Setup Fees"
+        },
+        "currentPartners": {
+          "value": "21",
+          "label": "Current Partners"
+        }
+      },
+      "form": {
+        "title": "Partnership Application",
+        "subtitle": "Quick 2-minute application. We respond same day!",
+        "fields": {
+          "businessName": {
+            "label": "Business Name",
+            "placeholder": "Your Pet Store Name",
+            "required": true
+          },
+          "contactName": {
+            "label": "Contact Name",
+            "placeholder": "Your Full Name",
+            "required": true
+          },
+          "position": {
+            "label": "Your Position in the Company",
+            "placeholder": "e.g., Owner, Manager, Buyer, Sales Representative"
+          },
+          "email": {
+            "label": "Email Address",
+            "placeholder": "your@email.com",
+            "required": true
+          },
+          "phone": {
+            "label": "Phone Number",
+            "placeholder": "(555) 123-4567"
+          },
+          "businessType": {
+            "label": "Business Type",
+            "placeholder": "Select Business Type",
+            "required": true,
+            "options": {
+              "independentPetStore": "Independent Pet Store",
+              "petStoreChain": "Pet Store Chain",
+              "veterinaryClinic": "Veterinary Clinic",
+              "groomingSalon": "Grooming Salon",
+              "distributor": "Distributor",
+              "other": "Other"
+            }
+          },
+          "locations": {
+            "label": "Number of Locations",
+            "placeholder": "1"
+          },
+          "currentProducts": {
+            "label": "Top-Selling Cat Litter Brand",
+            "placeholder": "What's the #1 brand of cat litter that you sell most of?"
+          },
+          "message": {
+            "label": "Additional Information",
+            "placeholder": "Tell us about your business and wholesale needs..."
+          }
+        },
+        "submitButton": "Submit Partnership Application",
+        "submitting": "Submitting..."
+      },
+      "success": {
+        "title": "Application Received!",
+        "welcome": "Welcome to the Purrify Partner Network!",
+        "responseTime": "We will get back to you within 72 hours.",
+        "nextSteps": {
+          "title": "Your Next Steps",
+          "step1": {
+            "title": "Application Review",
+            "description": "Our team reviews your store details"
+          },
+          "step2": {
+            "title": "Partnership Call",
+            "description": "Discuss pricing, support & logistics"
+          },
+          "step3": {
+            "title": "Start Selling",
+            "description": "Receive inventory & launch"
+          }
+        },
+        "timeline": {
+          "title": "Expected Timeline to Revenue",
+          "approval": {
+            "value": "72hrs",
+            "label": "Approval"
+          },
+          "firstShipment": {
+            "value": "3-5 days",
+            "label": "First Shipment"
+          },
+          "firstSales": {
+            "value": "Week 1",
+            "label": "First Sales"
+          }
+        },
+        "needHelp": "Need immediate assistance?"
+      },
+      "successStories": {
+        "title": "Partner Success Stories",
+        "stories": {
+          "pattesEtGriffes": {
+            "businessName": "Pattes et Griffes – Sainte‑Thérèse",
+            "businessType": "Store Owner / Manager",
+            "quote": "Our customers ask for Purrify by name now. It's an easy recommendation at the counter and reorders have been consistent month after month.",
+            "metric": "30 day reorder cycle"
+          },
+          "chico": {
+            "businessName": "Chico – Boul. St‑Laurent (Montreal)",
+            "businessType": "Store Manager",
+            "quote": "Simple to stock, strong margins, and it moves. The POS materials helped our team explain the benefits quickly to shoppers.",
+            "metric": "High shelf sell‑through"
+          }
+        }
+      },
+      "contactInfo": {
+        "title": "Need Immediate Help?",
+        "subtitle": "Speak with a partnership specialist now",
+        "wholesaleEmail": "wholesale@purrify.ca",
+        "emailLabel": "Partnership Email",
+        "emailHint": "Click to draft an email or copy the address.",
+        "copied": "Copied!",
+        "copyFailed": "Copy failed",
+        "businessHours": {
+          "title": "Business Hours",
+          "hours": "Monday - Friday: 9 AM - 6 PM EST"
+        }
+      },
+      "errors": {
+        "submitFailed": "There was an error submitting your inquiry. Please try again or contact us directly at wholesale@purrify.ca",
+        "defaultSuccess": "Partnership application sent successfully! We'll contact you within 72 hours."
+      }
+    }
+  },
+  "caseStudies": {
+    "customerSuccess": "Customer Success Stories",
+    "realResults": "Real results from real customers",
+    "detailedStories": "See how Purrify transforms homes across Canada through detailed case studies",
+    "averageOdorReduction": "Average Odor Reduction",
+    "timeToSeeResults": "Time to See Results",
+    "customerSatisfaction": "Customer Satisfaction",
+    "catsPerStudy": "Cats per Study",
+    "theChallenge": "The Challenge",
+    "theSolution": "The Solution",
+    "theResults": "The Results",
+    "longTermOutcome": "Long-Term Outcome",
+    "keyPainPoints": "Key Pain Points",
+    "implementation": "Implementation",
+    "writeYourStory": "Ready to write your own success story?",
+    "joinSatisfied": "Join 1,000+ satisfied customers transforming their homes with Purrify.",
+    "shopPurrify": "Shop Purrify",
+    "tryFreeSample": "Try a Free Sample",
+    "moreCustomerStories": "More Customer Stories",
+    "videoTestimonials": "Video Testimonials",
+    "productComparison": "Product Comparison"
+  },
+  "b2bCaseStudies": {
+    "badge": "Wholesale Program",
+    "title": "Partner Benefits by Business Type",
+    "subtitle": "See how Purrify helps businesses like yours",
+    "cta": "Interested in wholesale pricing for your business?",
+    "ctaButton": "Contact Our Partnership Team",
+    "businessTypes": {
+      "veterinarian": "Veterinary Clinics",
+      "catCafe": "Cat Cafes",
+      "shelter": "Animal Shelters",
+      "groomer": "Grooming Salons",
+      "hospitality": "Pet-Friendly Rentals"
+    },
+    "labels": {
+      "challenge": "The Challenge",
+      "solution": "How Purrify Helps",
+      "catsServed": "cats served"
+    }
+  },
+  "groomers": {
+    "seo": {
+      "pageTitle": "Purrify for Groomers | Complete Odor Solutions",
+      "description": "Offer clients a complete odor solution. From grooming services to home litter box freshness—be their trusted pet care partner.",
+      "keywords": "pet groomer odor control, grooming salon smell solution, cat groomer deodorizer, professional pet care",
+      "openGraphAlt": "Professional odor control solution for groomers"
+    },
+    "hero": {
+      "badge": "Professional Partner",
+      "titleLine1": "Complete Care",
+      "titleLine2": "From Grooming to Home",
+      "description": "Differentiate your grooming business by offering clients a take-home solution for litter box odor that actually works.",
+      "stats": {
+        "freshness": "7-Day Freshness",
+        "clients": "Happy Clients",
+        "natural": "All Natural"
+      },
+      "cta": {
+        "primary": "Become a Partner",
+        "secondary": "Learn More"
+      }
+    },
+    "cta": {
+      "primary": "Request Wholesale Pricing",
+      "secondary": "View Product Guide"
+    },
+    "opportunity": {
+      "title": "Revenue Opportunity for Groomers",
+      "intro": "Clients trust you with their pet care. Now you can offer them a complete solution for home litter box odor.",
+      "points": {
+        "clientsAsk": {
+          "title": "Clients Ask You",
+          "description": "Cat owners ask your advice on all kinds of pet care issues, including litter box odors."
+        },
+        "expertPosition": {
+          "title": "Expert Positioning",
+          "description": "By offering Purrify, you position yourself as the complete cat care expert, not just grooming services."
+        },
+        "repeatRevenue": {
+          "title": "Recurring Revenue",
+          "description": "Clients come back monthly for refills, creating predictable income for your business."
+        },
+        "easyDemo": {
+          "title": "Easy Demonstration",
+          "description": "The product sells itself—a quick demo and clients can smell the difference immediately."
+        }
+      }
+    },
+    "addOnSale": {
+      "title": "Natural Add-On Sale",
+      "description": "Purrify is the perfect add-on because it solves a real problem clients face daily:",
+      "points": [
+        "Quick 30-second explanation during grooming",
+        "Natural conversation about cat care",
+        "Clients already trust your recommendations",
+        "No pressure—the product speaks for itself"
+      ]
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Request Your Sample",
+          "description": "Receive a free demo pack to test Purrify in your salon."
+        },
+        {
+          "number": "02",
+          "title": "Show Your Clients",
+          "description": "Use Purrify during grooming and let clients see the difference."
+        },
+        {
+          "number": "03",
+          "title": "Recommend with Confidence",
+          "description": "Your clients will trust your expert recommendation."
+        },
+        {
+          "number": "04",
+          "title": "Earn Commissions",
+          "description": "Receive attractive margins on every sale made."
+        }
+      ]
+    },
+    "partnerBenefits": {
+      "title": "Partner Benefits",
+      "benefits": {
+        "wholesale": {
+          "title": "Wholesale Pricing",
+          "description": "Premium margins on every sale. Volume discounts available."
+        },
+        "display": {
+          "title": "Display Materials",
+          "description": "Free counter displays and promotional materials."
+        },
+        "training": {
+          "title": "Product Training",
+          "description": "Quick training on product benefits."
+        },
+        "tracking": {
+          "title": "Sales Tracking",
+          "description": "Track your sales with our partner portal."
+        }
+      }
+    },
+    "retailPackage": {
+      "title": "Your Groomer Starter Pack",
+      "subtitle": "Everything you need to get started",
+      "includes": [
+        "Counter display stand",
+        "Demo samples",
+        "Promotional materials",
+        "Training guide",
+        "Marketing support"
+      ]
+    },
+    "testimonials": {
+      "title": "What Groomers Say",
+      "items": [
+        {
+          "quote": "My clients love that I have a solution for their litter box odor problems.",
+          "author": "Pet Grooming Salon",
+          "location": "Montreal, QC",
+          "result": "15+ units/month"
+        }
+      ]
+    },
+    "form": {
+      "title": "Groomer Pricing Request",
+      "salonName": "Salon Name",
+      "salonNamePlaceholder": "Your grooming salon name",
+      "salonPlaceholder": "Your grooming salon name",
+      "contactName": "Contact Name",
+      "contactPlaceholder": "Your full name",
+      "email": "Email",
+      "emailPlaceholder": "you@email.com",
+      "phone": "Phone",
+      "phonePlaceholder": "(555) 123-4567",
+      "address": "Address",
+      "addressPlaceholder": "Your salon address",
+      "catsPerWeek": "Cats per Week",
+      "catsPerWeekPlaceholder": "How many cats do you groom per week?",
+      "catsPlaceholder": "How many cats do you groom per week?",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your salon and needs...",
+      "submit": "Submit Request",
+      "submitting": "Submitting...",
+      "success": {
+        "title": "Request Submitted!",
+        "message": "We'll get back to you within 24-48 hours with wholesale pricing information."
+      }
+    },
+    "contact": {
+      "title": "Questions? Let's Talk!",
+      "description": "Our partnership team is here to help.",
+      "callUs": "Call Us",
+      "emailUs": "Email Us",
+      "moreInfo": "Need More Information?",
+      "requestGuide": "Request our detailed guide"
+    }
+  },
+  "catCafes": {
+    "seo": {
+      "pageTitle": "Purrify for Cat Cafes | Keep Your Space Fresh",
+      "description": "The secret weapon of successful cat cafes. Eliminate odors from multiple cats without covering up smells with heavy fragrances.",
+      "keywords": "cat cafe odor control, multiple cats smell solution, commercial cat odor eliminator, cat cafe hygiene",
+      "openGraphAlt": "Cat cafe odor elimination solution"
+    },
+    "hero": {
+      "badge": "Cat Cafe Approved",
+      "titleLine1": "Happy Cats.",
+      "titleLine2": "Fresh Space.",
+      "description": "Cat cafes trust Purrify to keep their spaces smelling clean without overwhelming fragrances that stress cats or bother customers.",
+      "stats": {
+        "days": "7+ Days",
+        "fragrances": "0 Fragrances",
+        "natural": "100% Natural"
+      },
+      "cta": {
+        "primary": "Get Wholesale Pricing",
+        "secondary": "Learn More"
+      }
+    },
+    "form": {
+      "title": "Cat Cafe Wholesale Pricing Request",
+      "name": "Cafe Name",
+      "namePlaceholder": "Your cat cafe name",
+      "cafeName": "Cafe Name",
+      "cafePlaceholder": "Your cat cafe name",
+      "contactName": "Contact Name",
+      "contactPlaceholder": "Your full name",
+      "email": "Email",
+      "emailPlaceholder": "you@email.com",
+      "phone": "Phone",
+      "phonePlaceholder": "(555) 123-4567",
+      "address": "Address",
+      "addressPlaceholder": "Your cafe address",
+      "cats": "Number of Cats",
+      "catsPlaceholder": "How many cats do you have in the cafe?",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your cafe and needs...",
+      "submit": "Submit Request",
+      "submitting": "Submitting...",
+      "success": {
+        "title": "Request Submitted!",
+        "message": "We'll get back to you within 24-48 hours with wholesale pricing information."
+      }
+    },
+    "contact": {
+      "title": "Questions?",
+      "description": "Our partnerships team is ready to help you.",
+      "callUs": "Call Us",
+      "emailUs": "Email Us",
+      "moreInfo": "More Info",
+      "requestGuide": "Request Guide"
+    }
+  },
+  "shelters": {
+    "seo": {
+      "pageTitle": "Purrify for Shelters | Odor Control for Rescue Organizations",
+      "description": "Discounted pricing for animal shelters and rescue organizations. Help cats get adopted faster by eliminating odor barriers.",
+      "keywords": "animal shelter odor control, rescue cat litter smell, shelter deodorizer discount, nonprofit pet odor solution",
+      "openGraphAlt": "Shelter discount odor control program"
+    },
+    "hero": {
+      "badge": "Shelter Partner Program",
+      "titleLine1": "Help More Cats",
+      "titleLine2": "Find Homes",
+      "description": "Special pricing for shelters and rescues. When potential adopters don't smell litter boxes, cats get adopted faster.",
+      "stats": {
+        "cats": "1000+ Cats",
+        "shelters": "Partner Shelters",
+        "natural": "100% Natural"
+      },
+      "cta": {
+        "primary": "Apply for Discount",
+        "secondary": "Learn More"
+      }
+    },
+    "benefits": {
+      "title": "Shelter Partner Benefits",
+      "pricing": {
+        "title": "Special Pricing",
+        "description": "Discounted rates for nonprofit shelters and rescue organizations."
+      },
+      "priority": {
+        "title": "Priority Support",
+        "description": "Dedicated support team to help with large orders and urgent needs."
+      },
+      "donations": {
+        "title": "Donation Program",
+        "description": "Eligible shelters can receive donated product for fundraising events."
+      }
+    },
+    "form": {
+      "title": "Shelter Discount Application",
+      "orgName": "Organization Name",
+      "orgPlaceholder": "Your shelter or rescue name",
+      "orgNamePlaceholder": "Your shelter or rescue name",
+      "contactName": "Contact Name",
+      "contactPlaceholder": "Your full name",
+      "email": "Email",
+      "emailPlaceholder": "you@email.com",
+      "phone": "Phone",
+      "phonePlaceholder": "(555) 123-4567",
+      "address": "Address",
+      "addressPlaceholder": "Your organization address",
+      "catsCount": "Number of Cats",
+      "catsPlaceholder": "Approximately how many cats do you care for?",
+      "nonProfit": "Nonprofit ID",
+      "nonProfitPlaceholder": "Your nonprofit/tax ID number",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your organization and needs...",
+      "submit": "Submit Application",
+      "submitting": "Submitting...",
+      "success": {
+        "title": "Application Submitted!",
+        "message": "We'll review your application and get back to you within 48 hours."
+      }
+    },
+    "contact": {
+      "title": "Questions?",
+      "description": "Our shelter partnerships team is here to help.",
+      "callUs": "Call Us",
+      "emailUs": "Email Us",
+      "moreInfo": "More Info",
+      "requestGuide": "Request Guide"
+    }
+  },
+  "hospitality": {
+    "seo": {
+      "pageTitle": "Purrify for Pet-Friendly Hospitality | Zero Odor Solution",
+      "description": "Keep your pet-friendly Airbnbs and rentals odor-free. Discreet solution for hosts who accept pets.",
+      "keywords": "pet friendly airbnb, cat friendly rental, vacation rental pets, odor control rental property",
+      "openGraphAlt": "Hospitality partner program"
+    },
+    "hero": {
+      "badge": "Hospitality Partner Program",
+      "titleLine1": "Pet-Friendly Stays",
+      "titleLine2": "Zero Odor",
+      "description": "Accept pets without compromising freshness. Discreet solution between bookings.",
+      "stats": {
+        "reviews": "5-Star Reviews",
+        "bookings": "More Bookings",
+        "natural": "All Natural"
+      },
+      "cta": {
+        "primary": "Request a Sample",
+        "secondary": "View Host Solutions"
+      }
+    }
+  }
+}

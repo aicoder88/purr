@@ -8,7 +8,6 @@
 
 import { after } from 'next/server';
 import prismaClient from '@/lib/prisma';
-import { getCommercialExperimentBySlug } from '@/lib/experiments/commercial';
 
 interface TrackResponse {
   success: boolean;
@@ -42,62 +41,6 @@ async function updateTestMetrics(body: TrackBody): Promise<void> {
         : type === 'view'
           ? 'variantViews'
           : 'variantConversions';
-
-    const commercialExperiment = getCommercialExperimentBySlug(testSlug);
-
-    if (commercialExperiment) {
-      const existingTest = await prismaClient.aBTest.findUnique({
-        where: { slug: testSlug },
-        select: { status: true },
-      });
-
-      if (existingTest) {
-        if (existingTest.status !== 'RUNNING') {
-          return;
-        }
-
-        await prismaClient.aBTest.updateMany({
-          where: {
-            slug: testSlug,
-            status: 'RUNNING',
-          },
-          data: {
-            [updateField]: { increment: 1 },
-          },
-        });
-        return;
-      }
-
-      try {
-        await prismaClient.aBTest.create({
-          data: {
-            name: commercialExperiment.name,
-            slug: commercialExperiment.slug,
-            description: commercialExperiment.description,
-            status: 'RUNNING',
-            targetPage: commercialExperiment.targetPage,
-            trafficSplit: commercialExperiment.trafficSplit,
-            controlName: 'Control',
-            variantName: 'Variant',
-            createdBy: 'system-commercial-experiment',
-            startedAt: new Date(),
-            [updateField]: 1,
-          },
-        });
-      } catch {
-        // Another request may have created the row first; only count if still running.
-        await prismaClient.aBTest.updateMany({
-          where: {
-            slug: testSlug,
-            status: 'RUNNING',
-          },
-          data: {
-            [updateField]: { increment: 1 },
-          },
-        });
-      }
-      return;
-    }
 
     // Check if test exists and is running
     const test = await prismaClient.aBTest.findUnique({

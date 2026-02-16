@@ -190,10 +190,10 @@ export const SOCIAL_LINKS = {
   x: BUSINESS_PROFILE.socialMedia.twitter ?? 'https://x.com/PurrifyHQ',
   twitter: BUSINESS_PROFILE.socialMedia.twitter ?? 'https://x.com/PurrifyHQ', // Alias for x
   instagram: BUSINESS_PROFILE.socialMedia.instagram ?? 'https://www.instagram.com/purrifyhq/',
-  linkedin: BUSINESS_PROFILE.socialMedia.linkedin ?? 'https://www.linkedin.com/company/purrify',
+  linkedin: BUSINESS_PROFILE.socialMedia.linkedin ?? 'https://www.linkedin.com/company/purrifyhq/',
   youtube: BUSINESS_PROFILE.socialMedia.youtube ?? 'https://www.youtube.com/@PurrifyHQ',
   tiktok: BUSINESS_PROFILE.socialMedia.tiktok ?? 'https://www.tiktok.com/@purrifyhq',
-  facebook: BUSINESS_PROFILE.socialMedia.facebook ?? 'https://www.facebook.com/purrify',
+  facebook: BUSINESS_PROFILE.socialMedia.facebook ?? 'https://www.facebook.com/Purrifyhq',
   trustpilot: BUSINESS_PROFILE.socialMedia.trustpilot ?? 'https://www.trustpilot.com/review/purrify.ca',
   googleBusiness: BUSINESS_PROFILE.socialMedia.googleBusiness ?? 'https://share.google/S4ckzwuljW3gDUOqr',
   googleReviews: BUSINESS_PROFILE.socialMedia.googleReviews ?? 'https://g.page/r/CUB8bZ_ibMbwEBI/review',

@@ -1,10 +1,6 @@
-export const dynamic = 'force-dynamic';
-
 import type { Metadata } from 'next';
 import { SITE_NAME } from '../../src/lib/constants';
 import LearnPageClient from './LearnPageClient';
-import { getCommercialExperimentState } from '@/lib/experiments/commercial-server';
-import { ServerExperimentViewTracker } from '@/components/experiments/ServerExperimentViewTracker';
 
 export const metadata: Metadata = {
   title: `Cat Litter Odor Guides & Science | ${SITE_NAME}`,
@@ -162,35 +158,9 @@ const breadcrumbSchema = {
   ],
 };
 
-export default async function LearnPage() {
-  const experiments = await getCommercialExperimentState();
-  const experimentCopy = {
-    headline: experiments.headline === 'variant'
-      ? 'The Fastest Path to an Odor-Free Litter Routine'
-      : 'Learn Everything About Cat Litter Odor Control',
-    subheadline: experiments.headline === 'variant'
-      ? 'Start with what works in real homes, then dig into the science and step-by-step guides.'
-      : 'Explore our comprehensive guides, scientific explanations, and targeted solutions to keep your home fresh and your cat happy.',
-    proofLead: experiments.proofOrder === 'variant'
-      ? 'Start with the proof cat owners care about.'
-      : 'Understand the science first, then choose the right solution.',
-    ctaHeadline: experiments.ctaCopy === 'variant'
-      ? 'Ready to Put This Into Practice?'
-      : 'Ready to Experience the Difference?',
-    ctaBody: experiments.ctaCopy === 'variant'
-      ? 'Apply what you learned with a low-risk trial and validate results in your own home.'
-      : 'Put what you\'ve learned into practice. Try Purrify risk-free with our trial size and see why thousands of cat parents swear by it.',
-    ctaLabel: experiments.ctaCopy === 'variant'
-      ? 'Start My Low-Risk Trial'
-      : 'Try Purrify Risk-Free',
-    proofOrder: experiments.proofOrder === 'variant'
-      ? 'before-guides'
-      : 'after-guides',
-  } as const;
-
+export default function LearnPage() {
   return (
     <>
-      <ServerExperimentViewTracker assignments={experiments.assignments} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionPageSchema) }}
@@ -199,7 +169,7 @@ export default async function LearnPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <LearnPageClient experimentCopy={experimentCopy} />
+      <LearnPageClient />
     </>
   );
 }

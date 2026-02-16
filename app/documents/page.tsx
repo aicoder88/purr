@@ -20,7 +20,7 @@ export default function DocumentsPage() {
     ? 'Accédez aux ressources exclusives Purrify pour partenaires détaillants: guides de formation, matériel PDV, calculateurs de profit et ressources marketing pour augmenter vos ventes.'
     : 'Access exclusive Purrify resources for retail partners: training guides, POS materials, profit calculators, and marketing assets to boost your sales.';
 
-  const canonicalUrl = `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}documents`;
+  const canonicalUrl = `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}documents/`;
 
   // Use enhanced SEO hook
   const { nextSeoProps } = useEnhancedSEO({

@@ -15,7 +15,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
       follow: false,
     },
     alternates: {
-      canonical: '/thank-you/upsell/',
+      canonical: 'https://www.purrify.ca/thank-you/upsell/'
     },
     openGraph: {
       url: 'https://www.purrify.ca/thank-you/upsell/',

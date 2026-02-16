@@ -1,0 +1,109 @@
+{
+  "reviews": {
+    "heading": "猫主人怎么说",
+    "subheading": "来自真实客户的真实评价",
+    "verifiedPurchase": "购买",
+    "helpful": "有帮助",
+    "writeReview": "撰写评价",
+    "filterBy": "筛选",
+    "allRatings": "所有评分",
+    "sortBy": "排序",
+    "mostRecent": "最新",
+    "mostHelpful": "最有帮助",
+    "highestRated": "评分最高",
+    "lowestRated": "评分最低",
+    "showingReviews": "显示{{count}}条评价",
+    "noReviews": "暂无评价。成为第一个分享体验的人！",
+    "loadMore": "加载更多评价"
+  },
+  "reviewsPage": {
+    "pageTitle": "客户评价",
+    "metaDescription": "客户对Purrify的反馈，以及如何使用活性炭添加剂减少猫砂盆异味。配送至美国和加拿大。",
+    "badge": "客户评价",
+    "heading": "来自快乐猫主人的真实故事",
+    "description": "客户对Purrify的反馈，以及如何使用活性炭添加剂减少猫砂盆异味。",
+    "breadcrumb": {
+      "home": "首页",
+      "reviews": "评价"
+    },
+    "stats": {
+      "averageRating": "平均评分",
+      "verifiedReviews": "客户评价",
+      "happyCustomers": "满意客户",
+      "monthsInMarket": "上市月数"
+    },
+    "reviewCard": {
+      "verified": "客户",
+      "product": "产品",
+      "cats": "猫咪数量",
+      "useCase": "使用场景"
+    },
+    "trustSection": {
+      "heading": "为什么客户信任Purrify",
+      "verifiedTitle": "客户评价",
+      "verifiedDesc": "当第三方评价系统上线后，我们将在此发布评价与评分。",
+      "ratingTitle": "科学与指南",
+      "ratingDesc": "查看引用与使用指南，验证关键说法。",
+      "customersTitle": "实用资源",
+      "customersDesc": "关于猫砂盆异味、氨气与安全使用的解决方案。"
+    },
+    "ctaSection": {
+      "heading": "准备在家试试吗？",
+      "description": "从低风险试用开始，看看它如何融入你的猫砂日常。",
+      "shopNow": "立即购买",
+      "tryFreeSample": "试用免费样品"
+    },
+    "relatedLinks": {
+      "heading": "了解更多关于Purrify",
+      "comparison": "产品比较",
+      "comparisonDesc": "查看Purrify的对比",
+      "caseStudies": "案例研究",
+      "caseStudiesDesc": "详细的成功故事",
+      "usageInfo": "使用信息",
+      "usageInfoDesc": "与猫和小猫一起使用",
+      "storeLocations": "门店位置",
+      "storeLocationsDesc": "查找附近的Purrify"
+    }
+  },
+  "reviewSystem": {
+    "customerReviews": "客户评价",
+    "comingSoon": "客户评价将在我们的评价系统上线后显示在这里。",
+    "reviews": "条评价",
+    "basedOn": "基于",
+    "wouldRecommend": "会推荐",
+    "verifiedPurchases": "购买",
+    "viewAllReviews": "查看所有评价",
+    "loadMoreReviews": "加载更多评价",
+    "filters": {
+      "allRatings": "所有评分",
+      "stars": "星",
+      "star": "星",
+      "allSizes": "所有尺寸",
+      "trial": "12g 试用装",
+      "regular": "50g 标准装",
+      "large": "120g 大号装"
+    },
+    "sort": {
+      "newestFirst": "最新优先",
+      "oldestFirst": "最早优先",
+      "highestRated": "评分最高",
+      "lowestRated": "评分最低",
+      "mostHelpful": "最有帮助"
+    },
+    "review": {
+      "verifiedPurchase": "购买",
+      "size": "尺寸",
+      "cat": "只猫",
+      "cats": "只猫",
+      "usingFor": "使用时长",
+      "helpful": "有帮助",
+      "recommendsProduct": "推荐此产品"
+    }
+  },
+  "testimonialsSection": {
+    "customerLove": "客户喜爱",
+    "littersOfLove": "来自宠物主人社区的满满爱意",
+    "dontJustTakeOurWord": "不要只听我们的一面之词。这里是我们的客户对Purrify的评价。",
+    "readMoreReviews": "阅读更多评价"
+  }
+}

@@ -1,0 +1,412 @@
+{
+  "products": {
+    "purrify-12g": {
+      "name": "Prueba GRATIS",
+      "description": "Prueba nuestro desodorizante de arena GRATIS!\nSolo $4.76 de envio a cualquier lugar de Canada\n\nAditivo natural de carbon - Limite uno por cliente"
+    },
+    "purrify-50g": {
+      "name": "El Tamaño Perfecto",
+      "description": "50g · Tamaño Estándar\nEl más popular para hogares de un solo gato.\nDura aproximadamente un mes."
+    },
+    "purrify-120g": {
+      "name": "Tamaño Familiar",
+      "description": "120g · Mejor Valor Por Gramo\nPara hogares con 2+ gatos.\nDiseñado para el control de olores extra."
+    }
+  },
+  "pricing": {
+    "oneTimeLabel": "Compra unica",
+    "autoshipLabel": "Autoenvio y Ahorra",
+    "autoshipBestLabel": "Mejor Valor Autoenvio",
+    "billedEvery": "Facturado cada",
+    "months": "meses",
+    "shippingIncluded": "Envio incluido",
+    "freeShipping": "Envio gratis incluido",
+    "plusShipping": "+ envio",
+    "shippingCalculated": "Envio calculado al pagar",
+    "startAutoship": "Iniciar Autoenvio",
+    "buyNow": "Comprar Ahora",
+    "linkComingSoon": "Enlace de pago proximamente",
+    "recommended": "Mas recomendado",
+    "perMonth": "aprox. {price}/mes",
+    "saveVsOneTime": "Ahorra {percent}% vs compra unica",
+    "trialSizeSection": "Prueba GRATIS - Solo Paga Envio",
+    "quarterlyAutoshipSection": "Suscribete y Ahorra - Autoenvio Trimestral",
+    "stripeShippingNote": "el producto se enviara a la direccion de envio de Stripe EN LA SIGUIENTE PAGINA"
+  },
+  "productsHero": {
+    "pill": "Eliminador de Olor a Amoniaco",
+    "headline": "¿Avergonzado por el Olor a Arena de Gato? Deja de Cubrirlo.",
+    "subheadline": "El bicarbonato y los sprays solo enmascaran el problema. Purrify usa carbon activado para eliminar el amoniaco a nivel molecular. No es magia. Es ciencia.",
+    "scienceButton": "La Ciencia",
+    "guarantee": "Garantía de Cero Olor",
+    "findSizeButton": "Encuentra Tu Tamaño"
+  },
+  "productComparison": {
+    "title": "Elige Tu Tamano Perfecto",
+    "subtitle": "Encuentra el tamano ideal de Purrify para tu hogar",
+    "findPerfectSize": "Encuentra tu tamano perfecto basado en tus necesidades",
+    "products": [
+      {
+        "id": "trial",
+        "name": "Prueba GRATIS",
+        "subtitle": "Paquete 12g",
+        "duration": "1 semana",
+        "cats": "1 gato",
+        "features": [
+          "12g carbon activado",
+          "Solo paga envio",
+          "Introduccion perfecta"
+        ],
+        "bestFor": "Nuevos clientes que quieren probar Purrify sin riesgo",
+        "cta": "Obtener Prueba GRATIS"
+      },
+      {
+        "id": "regular",
+        "name": "Regular",
+        "subtitle": "120g · Tamaño Regular",
+        "duration": "3 meses",
+        "cats": "1-2 gatos",
+        "features": [
+          "120g carbon activado",
+          "Suscribete y ahorra",
+          "Envio gratis"
+        ],
+        "bestFor": "Hogares con uno o dos gatos que quieren frescura continua",
+        "cta": "Suscribete y Ahorra"
+      },
+      {
+        "id": "large",
+        "name": "Grande",
+        "subtitle": "Paquete 240g - Mejor Valor",
+        "duration": "3 meses",
+        "cats": "3+ gatos",
+        "features": [
+          "240g carbon activado",
+          "Maximo ahorro",
+          "Envio gratis"
+        ],
+        "bestFor": "Hogares multi-gatos y usuarios frecuentes",
+        "cta": "Suscribete y Ahorra"
+      }
+    ],
+    "comparisonFeatures": [
+      {
+        "feature": "Eliminacion de olores"
+      },
+      {
+        "feature": "Sin fragancia"
+      },
+      {
+        "feature": "Funciona con todas las arenas"
+      },
+      {
+        "feature": "Ingredientes naturales"
+      },
+      {
+        "feature": "Coaching personalizado de olores"
+      }
+    ],
+    "usageCalculator": {
+      "title": "Calculadora de Uso",
+      "subtitle": "Calcula cuanto durara cada tamano",
+      "numberOfCats": "Numero de gatos:",
+      "typicalChanges": "Cambios de arena por semana:",
+      "estimateDuration": "Duracion estimada:"
+    },
+    "stillUnsure": "Aun no estas seguro de cual tamano es adecuado para ti?",
+    "getPersonalizedAdvice": "Obtiene consejos personalizados de nuestro equipo",
+    "tryRiskFree": "Probar Sin Riesgo",
+    "learnMoreAboutPurrify": "Aprende mas sobre como funciona Purrify",
+    "featuresComparison": "Comparacion de Caracteristicas",
+    "seeHowProductsCompare": "Ve como se comparan nuestros productos",
+    "howLongWillEachSizeLast": "Cuanto durara cada tamano?",
+    "popular": "POPULAR",
+    "bestValue": "MEJOR VALOR",
+    "perfectForFirstTime": "Perfecto para usuarios nuevos",
+    "idealForSingleCat": "Ideal para hogares con un gato",
+    "perfectForMultiCat": "Perfecto para hogares multi-gatos",
+    "economicChoice": "Opcion mas economica para familias grandes",
+    "maxValuePerGram": "Maximo valor por gramo",
+    "bulkSavingsIncluded": "Ahorros por volumen incluidos",
+    "sustainableSupply": "Suministro sostenible para usuarios frecuentes",
+    "features": "Caracteristicas",
+    "idealFor": "Ideal Para",
+    "duration": "Duracion",
+    "saveMoney": "Ahorra Dinero",
+    "getBestValue": "Obtener Mejor Valor",
+    "chooseThisSize": "Elegir Este Tamano",
+    "tryWithoutRisk": "Probar Sin Riesgo",
+    "chooseSmallSize": "Elegir Tamano Pequeno",
+    "seo": {
+      "title": "Encuentra el Tamano Perfecto",
+      "description": "Compara todos los tamanos de Purrify y encuentra el aditivo de carbon activado perfecto para las necesidades de tu hogar."
+    },
+    "stillUnsureDescription": "Empieza con nuestro tamano de prueba sin riesgo y experimenta la diferencia Purrify por ti mismo.",
+    "tableHeaders": {
+      "feature": "Caracteristica",
+      "trial": "12g Prueba",
+      "regular": "120g Regular",
+      "large": "240g Grande"
+    },
+    "units": {
+      "cat": "Gato",
+      "cats": "Gatos",
+      "week": "semana",
+      "weeks": "semanas",
+      "day": "dia",
+      "days": "dias",
+      "weekly": "Semanal",
+      "perWeek": "por semana"
+    },
+    "relatedPages": [
+      {
+        "title": "Como Funciona",
+        "description": "Descubre la ciencia detras de nuestra tecnologia de carbon activado y por que es tan efectiva.",
+        "link": "/learn/how-it-works"
+      },
+      {
+        "title": "Opiniones de Clientes",
+        "description": "Ve lo que mas de 1,000 clientes satisfechos dicen sobre su experiencia con Purrify.",
+        "link": "/reviews"
+      },
+      {
+        "title": "Guia de Arena para Gatos",
+        "description": "Aprende sobre diferentes tipos de arena y como elegir la mejor opcion para tu gato.",
+        "link": "/learn/cat-litter-guide"
+      }
+    ]
+  },
+  "productsPage": {
+    "hero": {
+      "headline": "Tus Gatos Son Perfectos. ¿El Olor? No Tanto.",
+      "subheadline": "El mismo carbon activado que limpia tu agua potable. Atrapa el amoniaco de la caja de arena a nivel molecular. Sin perfumes. Sin disfraces. Solo... aire.",
+      "supporting": "Elige tu tamano. Deja que tu nariz sea el juez."
+    },
+    "quickDecision": {
+      "title": "¿No Estas Seguro de Que Tamano? Deja Que Tu Nariz Decida.",
+      "subtitle": "Elige el tamaño ideal para tu hogar:",
+      "trial": {
+        "question": "¿Te han decepcionado falsas promesas antes?",
+        "answer": "La Muestra del Esceptico (12g)",
+        "detail": "Solo paga el envio. 7 dias para convencer a tu nariz. Funciona o solo pierdes $4.76."
+      },
+      "regular": {
+        "question": "¿Uno o dos gatos en casa?",
+        "answer": "Tamano Regular (120g)",
+        "detail": "El tamano mas popular. Dura 7+ dias por aplicacion. Usa mas, permanece fresco mas tiempo."
+      },
+      "large": {
+        "question": "¿Hogar con varios gatos?",
+        "answer": "Tamano Familiar (240g)",
+        "detail": "Mejor valor por gramo. Misma formula poderosa, doble de suministro."
+      }
+    },
+    "trustSignals": {
+      "waterFilter": {
+        "title": "Lo Mismo que Tu Brita",
+        "description": "Cumple con los estandares NSF/ANSI 61. Si es lo suficientemente bueno para hacer el agua potable, imagina lo que hace con el amoniaco."
+      },
+      "ingredients": {
+        "title": "Ingredientes: Cascaras de Coco. Eso Es Todo.",
+        "description": "Sin fragancias que estresen a tu gato. Sin quimicos de que preocuparse. Solo carbon activado puro de cascaras de coco."
+      },
+      "science": {
+        "title": "Ciencia, No Perfume",
+        "description": "Un gramo tiene el area de superficie de un campo de futbol. Esos tuneles microscopicos atrapan moleculas de olor permanentemente. Desaparecidas. No escondidas."
+      }
+    },
+    "products": {
+      "trial": {
+        "name": "La Bolsa del Esceptico",
+        "subtitle": "12g · Una Semana de Prueba",
+        "features": [
+          "Suficiente para 7 dias de aire fresco",
+          "Solo cubre el envio de $4.76",
+          "Uno por hogar (lo siento, no se puede acumular producto gratis)"
+        ],
+        "bestFor": "Padres de gatos que han sido decepcionados por productos 'milagrosos' antes. Lo entendemos. Pruebalo tu mismo primero."
+      },
+      "regular": {
+        "name": "Tamano Regular",
+        "subtitle": "120g · Tamaño Regular",
+        "features": [
+          "7+ dias de frescura por aplicacion",
+          "Usa mas para frescura extendida",
+          "Funciona con cualquier arena que tu gato ya aprueba"
+        ],
+        "bestFor": "Hogares con uno o dos gatos donde 'vienen visitas' ya no causa panico."
+      },
+      "large": {
+        "name": "Tamano Familiar",
+        "subtitle": "240g · Mejor Valor Por Gramo",
+        "features": [
+          "7+ dias de frescura por aplicacion",
+          "Mejor valor por gramo",
+          "Dosificacion flexible (usa mas, dura mas)"
+        ],
+        "bestFor": "Hogares multi-gatos, padres de acogida, o cualquiera que haya dejado de contar cajas de arena."
+      }
+    },
+    "whatYouGet": {
+      "title": "Que Hay Realmente en la Bolsa",
+      "subtitle": "(Y Por Que Tu Gato Nunca lo Notara)",
+      "benefits": [
+        {
+          "title": "Carbon Activado Grado Filtro de Agua",
+          "description": "Exactamente el mismo material usado en filtros Brita y purificacion de aire hospitalario. No 'similar a.' El mismo."
+        },
+        {
+          "title": "Cero Fragancias. Cero Quimicos. Cero Preocupaciones.",
+          "description": "Los gatos tienen 200 millones de receptores olfativos. Las fragancias artificiales los estresan. Purrify trabaja invisiblemente."
+        },
+        {
+          "title": "Arcilla, Cristal, Aglomerante, Natural... No Juzgamos",
+          "description": "Funciona con cualquier arena que tu gato te haya entrenado a comprar. Sin drama de cambios."
+        },
+        {
+          "title": "Abre. Espolvorea. Listo.",
+          "description": "Una capa fina encima. 30 segundos de esfuerzo para 7 dias de resultados."
+        }
+      ]
+    },
+    "didYouKnow": {
+      "title": "La Ciencia Que A Tu Gato No Le Importa (Pero Tu Nariz Agradecera)",
+      "body": "Un solo gramo de carbon activado contiene aproximadamente 3,000 metros cuadrados de area de superficie. Eso es mas grande que medio campo de futbol — en algo mas pequeno que un guisante.\n\nAdentro hay millones de poros y tuneles microscopicos. Cuando las moleculas de amoniaco pasan flotando, quedan atrapadas permanentemente.\n\nEsto no es enmascarar. Es captura molecular. La misma tecnologia usada en mascaras de gas, plantas de tratamiento de agua y filtracion de aire hospitalario. Ahora sobre la arena de tu gato."
+    },
+    "cta": {
+      "title": "Tu Nariz Merece Mejor. Tu Gato Tambien.",
+      "subtitle": "Pregunta por Purrify en tu tienda de mascotas favorita. Si aun no lo tienen, deberian.",
+      "secondary": "¿No ves tu tienda? Cuentanos. Nos comunicaremos y lo haremos realidad."
+    },
+    "relatedPages": [
+      {
+        "title": "La Ciencia (Sin las Partes Aburridas)",
+        "description": "Descubre la ciencia detras de nuestra tecnologia de carbon activado y por que es tan efectiva.",
+        "link": "/learn/how-it-works"
+      },
+      {
+        "title": "Lo Que Dijeron 1,000+ Padres de Gatos",
+        "description": "Ve lo que los clientes satisfechos dicen sobre su experiencia con Purrify.",
+        "link": "/reviews"
+      },
+      {
+        "title": "La Guia Completa de Arena para Gatos",
+        "description": "Aprende sobre diferentes tipos de arena y como elegir la mejor opcion para tu gato.",
+        "link": "/learn/cat-litter-guide"
+      }
+    ],
+    "testimonial": {
+      "quote": "Vivo en un pequeno estudio con dos gatos, y el olor de la caja de arena se estaba volviendo insoportable. Purrify elimino completamente el olor en 24 horas. Al principio era esceptica sobre el precio, pero dura mucho mas que otros productos que he probado. ¡Vale cada centavo!",
+      "author": "Sarah M.",
+      "location": "Montreal, QC",
+      "details": "2 gatos, apartamento pequeno",
+      "headline": "¡Revolucionario para mi apartamento!"
+    }
+  },
+  "subscriptionOfferExtended": {
+    "autoshipBadge": "Autoenvio Trimestral",
+    "headline": "Configura y olvida tu defensa contra olores de arena",
+    "supportingCopy": "Elige el paquete que se reabastece automaticamente cada 3 meses, mantiene tu hogar fresco y protege tu presupuesto.",
+    "perMonthLabel": "aprox. {price}/mes efectivo",
+    "saveVsOneTime": "Ahorra {percent}% vs compra unica",
+    "skipOrCancelAnytime": "Salta o cancela cuando quieras",
+    "shippingIncluded": "Envio incluido",
+    "freeShippingIncluded": "Envio gratis incluido",
+    "priorityCustomerSupport": "Soporte al cliente prioritario",
+    "startAutoship": "Iniciar Autoenvio",
+    "linkComingSoon": "Enlace de pago proximamente",
+    "quarterlyBilling": "Facturado cada 3 meses",
+    "autoshipHero": "Autoenvio y Ahorra",
+    "autoshipHighlight": "Suscribete y Ahorra",
+    "standardPlanTitle": "Autoenvio Trimestral - 3 x 50g",
+    "standardDescription": "Perfecto para hogares con un gato que quieren control de olores fresco cada mes.",
+    "includesThreeStandard": "Incluye 3 x bolsas de 50g entregadas juntas",
+    "familyPlanTitle": "Autoenvio Mejor Valor - 3 x Tamano Regular 120g",
+    "familyDescription": "Disenado para hogares multi-gatos y propensos a alergias. Nuestro mejor precio por cucharada.",
+    "includesThreeFamily": "Incluye 3 x paquetes de 120g tamano regular (entregados juntos)",
+    "bestValueBadge": "Mejor Valor",
+    "save": "Ahorra",
+    "joinThePurrifyFamily": "Unete a la Familia Purrify"
+  },
+  "paymentSecurity": {
+    "securePayment": "Pago Seguro",
+    "sslEncrypted": "SSL 256-bit",
+    "sslEncryptedCheckout": "Pago encriptado con SSL a traves de Stripe"
+  },
+  "testimonialsSection": {
+    "customerLove": "Amor de Clientes",
+    "littersOfLove": "Resultados Reales de Padres de Gatos Felices",
+    "dontJustTakeOurWord": "No solo tomes nuestra palabra. Esto es lo que nuestros clientes dicen sobre Purrify.",
+    "readMoreReviews": "Leer Mas Opiniones"
+  },
+  "storesSection": {
+    "availableInStores": "DISPONIBLE EN TIENDAS",
+    "soldInFollowingStores": "VENDIDO EN LAS SIGUIENTES TIENDAS",
+    "subtitle": "Encuentra Purrify en tus tiendas de mascotas favoritas en Canada. Visita cualquiera de estas ubicaciones para comprar nuestro aditivo premium para arena de gatos.",
+    "requestStoreAvailability": "Solicitar Disponibilidad en Tienda",
+    "dontSeeLocalStore": "No ves tu tienda local? Contactanos para solicitar Purrify en tu tienda de mascotas favorita!",
+    "callStore": "Llamar Tienda",
+    "sending": "Enviando...",
+    "requestSent": "Solicitud Enviada!",
+    "requestSuccess": "Gracias! Nos comunicaremos para ayudar a conseguir Purrify en tu tienda local.",
+    "requestError": "Ocurrio un error. Por favor contactanos directamente a support@purrify.ca",
+    "storeDescriptions": {
+      "completePetCareAndSupplies": "Cuidado completo de mascotas y suministros",
+      "premiumPetBoutique": "Boutique premium de mascotas",
+      "familyOwnedPetStore": "Tienda de mascotas familiar",
+      "globalPetFoodsLocation": "Ubicacion de Global Pet Foods",
+      "premiumPetProductsAndSupplies": "Productos y suministros premium para mascotas",
+      "fullServicePetStore": "Tienda de mascotas de servicio completo",
+      "petStoreWithGroomingServices": "Tienda de mascotas con servicios de estetica"
+    }
+  },
+  "upsell": {
+    "pageTitle": "Oferta Especial Unica - Purrify",
+    "metaDescription": "Oferta exclusiva unica para nuevos clientes. Ahorra 25% en suscripcion de autoenvio trimestral.",
+    "offerExpired": "Oferta Expirada",
+    "offerExpiresIn": "Oferta expira en",
+    "headline": "Espera! Oferta Exclusiva Unica",
+    "subheadline": "Agrega autoenvio a tu orden y ahorra 25%",
+    "saveBadge": "AHORRA 29%",
+    "productTitle": "Autoenvio Purrify 50g",
+    "productSubtitle": "Suministro de 3 Meses (3 x bolsas de 50g)",
+    "youSave": "Ahorras",
+    "benefit1": "Nunca te quedes sin stock - entregado cada 3 meses",
+    "benefit2": "Envio gratis incluido (ahorra $7.99)",
+    "benefit3": "Asegura este precio especial para siempre",
+    "benefit4": "Cancela o salta cuando quieras (sin compromisos)",
+    "benefit5": "Recordatorios automaticos antes de cada envio",
+    "processing": "Procesando...",
+    "addToOrder": "Si! Agregar a Mi Orden",
+    "noThanks": "No gracias, prefiero pagar precio completo despues",
+    "feature1Title": "Activacion Instantanea",
+    "feature1Description": "Tu autoenvio comienza inmediatamente despues de esta orden",
+    "feature2Title": "100% Satisfaccion",
+    "feature2Description": "Garantia de devolucion de 30 dias en cada envio",
+    "feature3Title": "Control Flexible",
+    "feature3Description": "Salta, pausa o cancela en linea cuando quieras",
+    "testimonialText": "Casi rechace la oferta de autoenvio, pero me alegro tanto de no haberlo hecho! Es una cosa menos que recordar, y los ahorros se acumulan. Ademas, nunca me quedo sin justo cuando mas lo necesito.",
+    "testimonialAuthor": "- Sarah M., Toronto",
+    "faqTitle": "Preguntas Comunes",
+    "faq1Question": "Puedo cancelar cuando quiera?",
+    "faq1Answer": "Absolutamente! Cancela, salta o modifica tu suscripcion cuando quieras desde tu panel de cuenta. Sin tarifas, sin complicaciones.",
+    "faq2Question": "Cuando me cobraran?",
+    "faq2Answer": "Se te cobrara hoy por esta oferta especial. Tu proximo envio sera en 3 meses, y recibiras un correo recordatorio 7 dias antes.",
+    "faq3Question": "El precio esta asegurado?",
+    "faq3Answer": "Si! Este precio especial esta asegurado mientras permanezcas suscrito. Nunca pagaras mas de esta tarifa.",
+    "bottomNote": "Esta oferta unica solo esta disponible inmediatamente despues de tu primera compra",
+    "returnHome": "Volver al inicio"
+  },
+  "productPages": {
+    "cancelAnytime": "Cancela en cualquier momento. Envío gratis.",
+    "shipsFree": "Envío gratis",
+    "subscribeAndSave": "Suscríbete y ahorra",
+    "save": "Ahorra",
+    "savePercent": "Ahorra {percent}%",
+    "perMonth": "por mes",
+    "billedQuarterly": "Facturado trimestralmente",
+    "shippingSavings": "Ahorra $15-20+ por pedido vs compras individuales",
+    "save25vsStandard": "Ahorra 25% en comparación con comprar dos tamaños estándar",
+    "save25FamilyPack": "Ahorra 25% con nuestro Pack Familiar"
+  }
+}

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     'house smells like cat urine',
   ],
   alternates: {
-    canonical: '/learn/answers/why-does-my-house-smell-like-cat-pee/',
+    canonical: 'https://www.purrify.ca/learn/answers/why-does-my-house-smell-like-cat-pee/'
   },
   openGraph: {
     title: 'Why Does My House Smell Like Cat Pee? - Purrify',

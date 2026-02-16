@@ -1,0 +1,324 @@
+{
+  "siteName": "Purrify",
+  "siteDescription": "Additif de litière pour chat à base de charbon actif qui élimine les odeurs à la source.",
+  "nav": {
+    "home": "Accueil",
+    "products": "Produits",
+    "learn": "Apprendre",
+    "howItWorks": "Comment Ça Marche",
+    "about": "À Propos",
+    "whyPurrify": "Pourquoi Purrify",
+    "tryFree": "Essai GRATUIT",
+    "testimonials": "Témoignages",
+    "leaveReview": "Laisser un Avis",
+    "contact": "Contact",
+    "blog": "Blog",
+    "privacyPolicy": "Politique de Confidentialité",
+    "termsOfService": "Conditions d'Utilisation",
+    "trialSize": "Essai GRATUIT (Frais envoi seul.)",
+    "compareSizes": "Comparer les Tailles",
+    "viewAllProducts": "Voir Tous les Produits",
+    "howItWorksPage": "Comment Ça Marche",
+    "faq": "FAQ",
+    "science": "Science",
+    "buyNow": "Acheter Maintenant !",
+    "retailers": "Pour Détaillants",
+    "wholesalePricing": "Prix de Gros",
+    "becomePartner": "Devenir Partenaire",
+    "marketingSupport": "Support Marketing",
+    "partnerPrograms": "Programmes Partenaires",
+    "forGroomers": "Pour Toiletteurs",
+    "forShelters": "Pour Refuges",
+    "affiliateProgram": "Programme d'Affiliation",
+    "b2bInquiry": "Demande B2B",
+    "customerReviews": "Avis Clients",
+    "shipsToUSA": "Expédition aux États-Unis",
+    "safetyInfo": "Informations de Sécurité",
+    "activatedCarbonBenefits": "Avantages du Charbon Actif",
+    "catLitterGuide": "Guide de la Litière pour Chats",
+    "howToUse": "Comment Utiliser",
+    "technologyComparison": "Comparaison des Technologies",
+    "solutions": "Solutions",
+    "ammoniaSmellControl": "Contrôle des Odeurs d'Ammoniaque",
+    "apartmentLiving": "Vie en Appartement",
+    "litterBoxOdor": "Odeur de Bac à Litière",
+    "multipleCats": "Plusieurs Chats",
+    "naturalAdditive": "Additif Naturel",
+    "seniorCats": "Chats Âgés",
+    "toggleMenu": "Basculer le menu",
+    "toggleTheme": "Basculer le thème",
+    "signOut": "Se Déconnecter",
+    "signedIn": "Connecté",
+    "catLitterAnswers": "Q&R sur la Litière",
+    "scienceHub": "Références Scientifiques",
+    "carbonVsBakingSoda": "Charbon vs Bicarbonate",
+    "findStore": "Trouvez Purrify Près de Vous",
+    "findNearYou": "Trouver Près de Vous",
+    "whereToBuy": "Où Acheter",
+    "askForPurrify": "Demandez Purrify dans Votre Magasin",
+    "ourStory": "Notre Histoire"
+  },
+  "locationsMenu": {
+    "selectProvince": "Sélectionnez une province",
+    "hoverPrompt": "Survolez une province pour voir les villes.",
+    "provinceCitiesHeading": "Villes de {{province}}",
+    "viewProvinceGuide": "Voir le guide de la province {{province}}"
+  },
+  "footer": {
+    "quickLinks": "Liens Rapides",
+    "openingHours": "Heures d'Ouverture",
+    "contactUs": "Contactez-Nous",
+    "allRightsReserved": "Tous Droits Réservés"
+  },
+  "footerNav": {
+    "trustedReviews": "Avis clients",
+    "products": "Produits",
+    "learn": "Apprendre",
+    "popularArticles": "Articles Populaires",
+    "company": "Entreprise",
+    "trialSize": "Taille d'Essai",
+    "standardSize": "Taille Standard",
+    "familyPack": "Pack Familial",
+    "compareSizes": "Comparer les Tailles",
+    "howItWorks": "Comment Ça Marche",
+    "faq": "FAQ",
+    "science": "Science",
+    "scienceHub": "Références Scientifiques",
+    "safetyInfo": "Informations de Sécurité",
+    "catLitterGuide": "Guide de la Litière pour Chats",
+    "catLitterAnswers": "Q&R sur la Litière",
+    "carbonVsBakingSoda": "Charbon vs Bicarbonate",
+    "ammoniaSolutions": "Solutions pour l'Ammoniaque",
+    "litterCalculator": "Calculateur de Litière",
+    "houseSmells": "Maison Sent la Litière pour Chat ?",
+    "multiCatGuide": "Guide Désodorisant Multi-Chats",
+    "triedEverything": "Tout Essayé pour l'Odeur de Chat ?",
+    "powerfulAbsorber": "Absorbeur d'Odeurs le Plus Puissant",
+    "smallApartments": "Meilleur pour Petits Appartements",
+    "about": "À Propos de Nous",
+    "blog": "Blog",
+    "locations": "Emplacements",
+    "stockists": "Magasins",
+    "testimonials": "Témoignages",
+    "retailers": "Pour Détaillants",
+    "retailerPortal": "Portail Détaillant",
+    "hospitality": "Hôtellerie",
+    "groomers": "Pour Toiletteurs",
+    "shelters": "Refuges",
+    "b2bInquiry": "Demande B2B",
+    "invest": "Investisseurs",
+    "affiliateProgram": "Programme d'Affiliation",
+    "results": "Histoires de Succès",
+    "contact": "Contact",
+    "privacyPolicy": "Politique de Confidentialité",
+    "termsOfService": "Conditions d'Utilisation",
+    "trustpilot": "Trustpilot",
+    "googleReviews": "Avis Google",
+    "sitemap": "Plan du site"
+  },
+  "notFoundPage": {
+    "title": "404 - Page Non Trouvée",
+    "description": "Oups ! La page que vous recherchez a peut-être été déplacée, supprimée ou n'a peut-être jamais existé.",
+    "lookingFor": "Vous pourriez chercher :",
+    "returnHome": "Retour à la Page d'Accueil",
+    "suggestedPages": {
+      "home": {
+        "title": "Accueil",
+        "description": "Retour à notre page d'accueil"
+      },
+      "products": {
+        "title": "Produits",
+        "description": "Parcourez nos additifs pour litière de chat"
+      },
+      "howItWorks": {
+        "title": "Comment Ça Marche",
+        "description": "Découvrez comment Purrify élimine les odeurs"
+      },
+      "blog": {
+        "title": "Blog",
+        "description": "Lisez nos derniers articles sur les soins des chats"
+      },
+      "contact": {
+        "title": "Contact",
+        "description": "Contactez notre équipe"
+      }
+    }
+  },
+  "structuredData": {
+    "organization": {
+      "name": "Purrify",
+      "description": "Additif premium de litière pour chat à base de charbon actif qui élimine les odeurs au niveau moléculaire. Fabriqué au Canada avec du charbon de coque de coco naturel.",
+      "foundingDate": "2023",
+      "contactPoint": {
+        "telephone": "+1 (450) 663-6773",
+        "email": "hello@purrify.ca",
+        "contactType": "service client",
+        "areaServed": [
+          "CA",
+          "US"
+        ],
+        "availableLanguage": [
+          "Anglais",
+          "Français",
+          "Chinois"
+        ]
+      },
+      "areaServed": "Canada"
+    },
+    "product": {
+      "name": "Additif de Litière pour Chat à Base de Charbon Actif Purrify",
+      "description": "Additif de litière pour chat à base de charbon actif qui élimine les odeurs à la source."
+    },
+    "localBusiness": {
+      "type": "Animalerie",
+      "name": "Purrify",
+      "description": "Additif de litière pour chat à base de charbon actif qui élimine les odeurs à la source."
+    },
+    "breadcrumb": {
+      "home": "Accueil"
+    },
+    "video": {
+      "name": "Démonstration de l'additif de litière pour chat Purrify",
+      "description": "Voir comment Purrify élimine efficacement les odeurs de litière pour chat à la source."
+    },
+    "website": {
+      "name": "Purrify - Additif de Litière pour Chat à Base de Charbon Actif",
+      "description": "Additif premium de litière pour chat à base de charbon actif qui élimine les odeurs au niveau moléculaire.",
+      "inLanguage": "fr-CA"
+    },
+    "offerCatalog": {
+      "name": "Produits de Contrôle d'Odeurs de Litière pour Chat",
+      "products": {
+        "trial": {
+          "name": "Purrify 12g Taille d'Essai",
+          "description": "Taille d'essai - additif de litière pour chat à base de charbon actif parfait pour tester",
+          "sku": "purrify-12g"
+        },
+        "standard": {
+          "name": "Purrify 50g Taille Standard",
+          "description": "Taille la plus populaire - approvisionnement d'un mois pour les foyers à un seul chat",
+          "sku": "purrify-50g"
+        },
+        "family": {
+          "name": "Purrify 120g Pack Familial",
+          "description": "Grande taille parfaite pour les foyers multi-chats - contrôle maximal des odeurs",
+          "sku": "purrify-120g"
+        }
+      },
+      "priceRange": "6,99 $ - 29,99 $"
+    },
+    "faqPage": {
+      "questions": [
+        {
+          "question": "Qu'est-ce que Purrify et comment ça fonctionne?",
+          "answer": "Purrify est un additif de charbon actif pour litière de chat qui élimine les odeurs au niveau moléculaire. Le charbon actif possède des millions de pores microscopiques qui piègent et neutralisent les composés générateurs d'odeurs, offrant un contrôle des odeurs supérieur par rapport à la litière traditionnelle seule."
+        },
+        {
+          "question": "Purrify est-il sûr pour les chats et les humains?",
+          "answer": "Oui, Purrify est complètement sûr pour les chats et les humains. Notre charbon actif est de qualité alimentaire et non toxique. Il a été testé de manière approfondie et est fait de matériaux naturels. De nombreux filtres à eau et purificateurs d'air utilisent le même type de charbon actif."
+        },
+        {
+          "question": "Combien de Purrify dois-je utiliser?",
+          "answer": "Pour des résultats optimaux, utilisez environ 1-2 cuillères à soupe de Purrify par bac à litière standard. Mélangez-le soigneusement avec votre litière existante lorsque vous effectuez un changement complet. La taille d'essai de 12g est parfaite pour un changement de bac à litière."
+        },
+        {
+          "question": "Purrify fonctionne-t-il avec tous les types de litière?",
+          "answer": "Oui! Purrify est conçu pour fonctionner avec tout type de litière pour chat - argile, agglomérante, cristal, naturelle ou biodégradable. Il améliore les propriétés de contrôle des odeurs de la litière que vous utilisez déjà."
+        }
+      ]
+    }
+  },
+  "ui": {
+    "allRatings": "Toutes les Notes",
+    "allSizes": "Toutes les Tailles",
+    "newestFirst": "Plus Récent d'Abord",
+    "oldestFirst": "Plus Ancien d'Abord",
+    "highestRated": "Mieux Noté",
+    "lowestRated": "Moins Bien Noté",
+    "mostHelpful": "Plus Utile",
+    "verifiedPurchase": "Achat Vérifié",
+    "securePayment": "Paiement Sécurisé",
+    "shoppingCart": "Panier d'Achat",
+    "happyCustomers": "Clients Satisfaits",
+    "moneyBack": "Support expert",
+    "averageRating": "Note Moyenne",
+    "satisfactionRate": "Taux de Satisfaction",
+    "skipAnytime": "Ignorer à Tout Moment",
+    "highlyRated": "Très Bien Noté",
+    "errorDetails": "Détails de l'Erreur",
+    "moneyBackGuarantee": "Garantie de remboursement de 30 jours"
+  },
+  "announcementBar": {
+    "freeShipping": {
+      "line1": "Livraison gratuite",
+      "line2": "sur toutes les commandes avec abonnement"
+    },
+    "madeInCanada": {
+      "line1": "Fabriqué au Canada",
+      "line2": "à partir d'ingrédients locaux et mondiaux"
+    },
+    "naturalCarbon": {
+      "line1": "Ingrédients non toxiques",
+      "line2": "Fabriqué à partir de carbone de noix de coco activé 100 % naturel"
+    },
+    "socialProof": {
+      "line1": "Sans produits chimiques, parfums ou additifs",
+      "line2": "Utilisé par des milliers de propriétaires de chats au Canada"
+    },
+    "moneyBack": {
+      "line1": "Garantie de remboursement de 30 jours",
+      "line2": "Pas satisfait ? Remboursement complet, sans questions"
+    }
+  },
+  "seo": {
+    "keywords": "litière pour chat, contrôle des odeurs, charbon actif, additif de litière pour chat, odeur d'animal, élimination des odeurs de chat, litière écologique pour chat, contrôle naturel des odeurs, soins des chats, fournitures pour animaux, vidéo de chat",
+    "openGraph": {
+      "title": "Purrify - Additif de Litière pour Chat à Base de Charbon Actif",
+      "description": "Additif de litière pour chat à base de charbon actif qui élimine les odeurs à la source."
+    },
+    "metaDescription": "Purrify est un additif premium de litière pour chat à base de charbon actif qui élimine les odeurs au niveau moléculaire. Fabriqué à partir de charbon de coque de coco naturel, il offre 7 jours de fraîcheur et fonctionne avec tous les types de litière. Fait confiance par plus de 1 000 propriétaires de chats au Canada."
+  },
+  "seoKeywords": {
+    "headTerms": [
+      "odeur litière chat",
+      "odeurs bac à litière",
+      "neutraliser odeur litière",
+      "éliminer odeur litière",
+      "meilleure litière contre odeur",
+      "désodorisant litière naturel"
+    ],
+    "symptomVariants": [
+      "odeur ammoniaque litière",
+      "litière sent dans appartement",
+      "pourquoi ma litière sent mauvais",
+      "odeur de litière embarrassante"
+    ],
+    "solutionVariants": [
+      "désodorisant litière sans parfum",
+      "charbon actif pour litière",
+      "neutraliser odeur bac à litière rapidement",
+      "astuce pour enlever odeur litière chat"
+    ],
+    "modifiers": {
+      "housing": [
+        "condo",
+        "appartement",
+        "sous-sol",
+        "maison multi-chats"
+      ],
+      "seasonal": [
+        "fenêtres fermées en hiver",
+        "été humide",
+        "hiver canadien",
+        "saison des pluies"
+      ],
+      "retailer": [
+        "Mondou",
+        "Pet Valu",
+        "Global Pet Foods",
+        "Ren's Pets",
+        "PetSmart"
+      ]
+    }
+  }
+}

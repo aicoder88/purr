@@ -8,7 +8,7 @@ import { AIQuotableBlock } from '../../../../src/components/seo/AIQuotableBlock'
 import { RelatedQuestions } from '../../../../src/components/seo/RelatedQuestions';
 
 export default function LitterBoxSmellPageClient() {
-  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination';
+  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/';
 
   // SEO optimized images for odor elimination
   const heroImage = '/images/litter-box-hero.webp';

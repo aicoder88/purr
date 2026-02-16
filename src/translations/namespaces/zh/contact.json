@@ -1,0 +1,143 @@
+{
+  "contact": {
+    "title": "联系我们",
+    "subtitle": "我们很乐意听到您的声音",
+    "address": "加拿大蒙特利尔",
+    "phone": "1 (450) 663-6773",
+    "email": "hello@purrify.ca",
+    "courriel": "hello@purrify.ca",
+    "hours": {
+      "title": "营业时间",
+      "monday": "周一：上午9点 - 下午5点",
+      "tuesday": "周二：上午9点 - 下午5点",
+      "wednesday": "周三：上午9点 - 下午5点",
+      "thursday": "周四：上午9点 - 下午5点",
+      "friday": "周五：上午9点 - 下午5点",
+      "saturday": "周六：上午10点 - 下午2点",
+      "sunday": "周日：休息"
+    },
+    "form": {
+      "name": "姓名",
+      "email": "邮箱",
+      "message": "留言",
+      "submit": "发送消息"
+    }
+  },
+  "contactSection": {
+    "getInTouch": "联系我们",
+    "ourLocation": "我们的位置",
+    "phoneNumber": "电话号码",
+    "phoneDescription": "我们把那股顽固的味道牢牢关进了电话号码里。拨打 1-450-6-ODORS-3 (也就是 1 (450) 663-6773)，体验我们对清新空气的执着。",
+    "openingHours": "营业时间",
+    "weekdays": "工作日：上午9点 - 下午5点",
+    "saturday": "周六：上午10点 - 下午2点",
+    "sunday": "周日：休息",
+    "sendMessage": "发送消息",
+    "replyTime": "我们通常在24小时内回复"
+  },
+  "contactPage": {
+    "title": "我们随时为您提供帮助",
+    "subtitle": "我们友好的客户支持团队随时准备为您提供专业建议和解决方案。",
+    "chooseContactMethod": "选择联系我们的方式",
+    "contactReasons": [
+      {
+        "value": "general",
+        "label": "一般问题"
+      },
+      {
+        "value": "product",
+        "label": "产品信息"
+      },
+      {
+        "value": "order",
+        "label": "订单支持"
+      },
+      {
+        "value": "shipping",
+        "label": "运输问题"
+      },
+      {
+        "value": "return",
+        "label": "退货/退款"
+      },
+      {
+        "value": "wholesale",
+        "label": "批发咨询"
+      },
+      {
+        "value": "feedback",
+        "label": "意见反馈"
+      }
+    ],
+    "contactMethods": [
+      {
+        "title": "邮件支持",
+        "description": "通过邮件获得详细帮助",
+        "responseTime": "通常在24小时内"
+      },
+      {
+        "title": "电话支持",
+        "description": "直接与我们的团队交谈",
+        "responseTime": "周一至周五，上午9点-下午5点"
+      },
+      {
+        "title": "在线客服",
+        "description": "快速问题的即时帮助",
+        "responseTime": "平均响应时间：2分钟"
+      }
+    ],
+    "form": {
+      "fullName": "全名",
+      "emailAddress": "邮箱地址",
+      "subject": "主题",
+      "message": "留言",
+      "contactReason": "联系原因",
+      "orderNumber": "订单号（如适用）",
+      "submit": "发送消息",
+      "submitting": "发送中...",
+      "successMessage": "感谢您联系我们！我们将在24小时内回复您。",
+      "errorMessage": "抱歉，发送消息时出现错误。请重试或直接联系我们。",
+      "sendingMessage": "发送中...",
+      "sendMessage": "发送消息",
+      "subjectPlaceholder": "简要描述您的请求",
+      "messagePlaceholder": "请提供关于您的问题或疑虑的详细信息...",
+      "orderNumberPlaceholder": "例如：PUR-12345",
+      "contactNow": "立即联系"
+    },
+    "faqs": [
+      {
+        "question": "使用Purrify多快能看到效果？",
+        "answer": "大多数客户在使用后的几小时内就能注意到异味显著减少。活性炭一接触就开始捕获异味分子。"
+      },
+      {
+        "question": "如果效果不明显我该怎么办？",
+        "answer": "请随时联系我们！我们的客服团队会查看您的使用方式，提供定制建议，并帮助您获得理想的除臭效果。"
+      },
+      {
+        "question": "多猫家庭有批发价吗？",
+        "answer": "是的！我们的500g经济装为多猫家庭提供最佳价值。我们还为宠物店和兽医提供批发价。"
+      },
+      {
+        "question": "如果我的猫不小心吃到一些怎么办？",
+        "answer": "家用过滤中常见的活性炭属于惰性材料。Purrify设计为与猫砂混合使用；如少量摄入一般按常规观察即可，如摄入较多或有担忧请咨询兽医。"
+      }
+    ],
+    "businessHours": {
+      "title": "营业时间",
+      "weekdays": "上午9:00 - 下午5:00 EST",
+      "saturday": "上午10:00 - 下午2:00 EST",
+      "sunday": "休息",
+      "closed": "休息"
+    },
+    "location": {
+      "title": "我们的位置",
+      "address": "蒙特利尔，魁北克省，加拿大",
+      "shippingNote": "我们向全加拿大发货，并在蒙特利尔地区提供本地取货。"
+    },
+    "frequentlyAskedQuestions": "常见问题",
+    "quickAnswersCommon": "常见问题的快速答案",
+    "dontSeeQuestion": "没有看到您的问题？",
+    "viewCompleteFAQ": "查看完整FAQ",
+    "backToHome": "返回首页"
+  }
+}

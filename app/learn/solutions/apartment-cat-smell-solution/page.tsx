@@ -7,7 +7,7 @@ import { stripContext } from '../../../../src/lib/seo-utils';
 
 const pageTitle = `Cat in a 400 Sq Ft Apartment? How to Eliminate Litter Smell Completely | ${SITE_NAME}`;
 const pageDescription = 'No windows near your litter box. No ventilation. Roommates complaining. Here are 5 solutions that work in small apartments—guests will never know you have a cat.';
-const canonicalUrl = 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution';
+const canonicalUrl = 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/';
 const heroImage = 'https://www.purrify.ca/images/apartment-hero.webp';
 
 export const metadata: Metadata = {

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     images: ['https://www.purrify.ca/optimized/logo-light-pink.webp'],
   },
   alternates: {
-    canonical: '/stores',
+    canonical: 'https://www.purrify.ca/stores/'
   },
   other: {
     'geo.region': 'CA',

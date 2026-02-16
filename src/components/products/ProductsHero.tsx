@@ -9,17 +9,7 @@ import { Container } from '@/components/ui/container';
 import { Star, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useTranslation } from '@/lib/translation-context';
 
-interface ProductsHeroExperimentCopy {
-    headlineVariant: 'control' | 'variant';
-    ctaVariant: 'control' | 'variant';
-    proofOrder: 'before-cta' | 'after-cta';
-}
-
-interface ProductsHeroProps {
-    experimentCopy: ProductsHeroExperimentCopy;
-}
-
-export function ProductsHero({ experimentCopy }: ProductsHeroProps) {
+export function ProductsHero() {
     const { t, locale } = useTranslation();
     const productImageAlts =
         locale === 'fr'
@@ -45,8 +35,8 @@ export function ProductsHero({ experimentCopy }: ProductsHeroProps) {
                         regular: 'Purrify Regular Size',
                         trial: 'Purrify Trial Size',
                     };
-    const useEnglishVariantHeadline = locale === 'en' && experimentCopy.headlineVariant === 'variant';
-    const useEnglishVariantCta = locale === 'en' && experimentCopy.ctaVariant === 'variant';
+    const useEnglishVariantHeadline = false;
+    const useEnglishVariantCta = false;
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -121,7 +111,7 @@ export function ProductsHero({ experimentCopy }: ProductsHeroProps) {
                                 : t.productsHero.subheadline}
                         </motion.p>
 
-                        {experimentCopy.proofOrder === 'before-cta' && trustBadge}
+                        {trustBadge}
 
                         {/* CTA Buttons */}
                         <motion.div
@@ -152,7 +142,7 @@ export function ProductsHero({ experimentCopy }: ProductsHeroProps) {
                             </Button>
                         </motion.div>
 
-                        {experimentCopy.proofOrder === 'after-cta' && trustBadge}
+
                     </div>
 
                     {/* Right Column: Visuals */}
@@ -183,6 +173,7 @@ export function ProductsHero({ experimentCopy }: ProductsHeroProps) {
                                         sizes="(max-width: 768px) 280px, 350px"
                                         className="w-full h-auto drop-shadow-2xl"
                                         priority
+                                        fetchPriority="high"
                                     />
                                 </div>
 
@@ -195,6 +186,7 @@ export function ProductsHero({ experimentCopy }: ProductsHeroProps) {
                                         height={640}
                                         sizes="(max-width: 768px) 200px, 260px"
                                         className="w-full h-auto drop-shadow-lg rotate-6"
+                                        loading="lazy"
                                     />
                                 </div>
 
@@ -207,6 +199,7 @@ export function ProductsHero({ experimentCopy }: ProductsHeroProps) {
                                         height={640}
                                         sizes="(max-width: 768px) 140px, 180px"
                                         className="w-full h-auto drop-shadow-xl -rotate-12"
+                                        loading="lazy"
                                     />
                                 </div>
 

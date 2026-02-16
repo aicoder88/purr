@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     'pubmed research',
   ],
   alternates: {
-    canonical: '/science/',
+    canonical: 'https://www.purrify.ca/science/'
   },
   openGraph: {
     title: 'Science Behind Purrify: Research & Citations | Purrify',

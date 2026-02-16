@@ -8,7 +8,7 @@ import { AIQuotableBlock } from '../../../../src/components/seo/AIQuotableBlock'
 import { RelatedQuestions } from '../../../../src/components/seo/RelatedQuestions';
 
 export default function HowToNeutralizeAmmoniaPageClient() {
-  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter';
+  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/';
 
   const heroImage = '/images/ammonia-hero.webp';
   const scienceImage = '/images/ammonia-science.webp';

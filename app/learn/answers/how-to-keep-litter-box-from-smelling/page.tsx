@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     'litter box maintenance schedule'
   ],
   alternates: {
-    canonical: '/learn/answers/how-to-keep-litter-box-from-smelling/',
+    canonical: 'https://www.purrify.ca/learn/answers/how-to-keep-litter-box-from-smelling/'
   },
   openGraph: {
     title: 'Keep Litter Box From Smelling: Daily Routine | Purrify',

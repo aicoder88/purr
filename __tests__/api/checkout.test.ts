@@ -12,8 +12,6 @@ const mockStripeConstructor = jest.fn().mockImplementation(() => ({
 const mockOrderFindUnique = jest.fn();
 const mockCheckRateLimit = jest.fn();
 const mockCreateRateLimitHeaders = jest.fn();
-const mockGetCommercialAssignments = jest.fn();
-const mockSerializeAssignments = jest.fn();
 const mockCaptureException = jest.fn();
 
 jest.mock('stripe', () => ({
@@ -33,11 +31,6 @@ jest.mock('@/lib/prisma', () => ({
 jest.mock('@/lib/rate-limit', () => ({
   checkRateLimit: mockCheckRateLimit,
   createRateLimitHeaders: mockCreateRateLimitHeaders,
-}));
-
-jest.mock('@/lib/experiments/commercial', () => ({
-  getCommercialAssignmentsFromCookieReader: mockGetCommercialAssignments,
-  serializeAssignments: mockSerializeAssignments,
 }));
 
 jest.mock('@sentry/nextjs', () => ({
@@ -80,16 +73,10 @@ describe('/api/checkout', () => {
       'X-RateLimit-Remaining': '4',
       'X-RateLimit-Reset': '1234567890',
     });
-    mockGetCommercialAssignments.mockReturnValue([]);
-    mockSerializeAssignments.mockReturnValue('');
   });
 
   it('creates a Stripe checkout session for a valid order', async () => {
     const orderId = '550e8400-e29b-41d4-a716-446655440000';
-    mockGetCommercialAssignments.mockReturnValue([
-      { testSlug: 'commercial-headline-test', variant: 'variant' },
-    ]);
-    mockSerializeAssignments.mockReturnValue('commercial-headline-test:variant');
     mockOrderFindUnique.mockResolvedValue({
       id: orderId,
       items: [
@@ -149,7 +136,6 @@ describe('/api/checkout', () => {
     expect(stripePayload.metadata).toMatchObject({
       orderId,
       customerName: 'Jane Doe',
-      abAssignments: 'commercial-headline-test:variant',
     });
   });
 

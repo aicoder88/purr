@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     'customer service',
   ],
   alternates: {
-    canonical: '/customer/portal/',
+    canonical: 'https://www.purrify.ca/customer/portal/'
   },
   openGraph: {
     type: 'website',

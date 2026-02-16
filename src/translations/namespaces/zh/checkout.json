@@ -1,0 +1,216 @@
+{
+  "thankYou": {
+    "heading": "谢谢您！",
+    "headingWithName": "谢谢您，{{name}}！",
+    "subheading": "您的订单已确认。",
+    "subheadingExtended": "您的订单已确认。准备好体验您拥有过的最清新的家吧！",
+    "orderConfirmed": "订单已确认",
+    "orderNumber": "订单号",
+    "product": "产品",
+    "quantity": "数量",
+    "total": "总计",
+    "expectedDelivery": "预计送达",
+    "deliveryCA": "加拿大境内7-10个工作日",
+    "deliveryUS": "美国10-14个工作日",
+    "deliveryIntl": "国际14-21个工作日",
+    "shipsWithin": "1-2个工作日内发货",
+    "confirmationSent": "确认邮件已发送至",
+    "checkSpam": "如果5分钟内未收到，请检查垃圾邮件文件夹",
+    "trackingInfo": "订单发货后，物流信息将发送到您的邮箱。",
+    "whatToExpect": {
+      "heading": "期待什么",
+      "step1Title": "收到您的Purrify",
+      "step1Desc": "您的包裹将以环保的隐蔽包装送达。每个容器都已密封以保持新鲜。",
+      "step2Title": "首次使用说明",
+      "step2Desc": "为获得最佳效果，请从干净的猫砂盆开始：",
+      "step2Item1": "清洁并更换猫砂盆",
+      "step2Item2": "在表面撒上薄薄一层Purrify",
+      "step2Item3": "无需混合 - 从表面起作用",
+      "step2Item4": "每次更换猫砂后重新使用",
+      "step3Title": "体验不同",
+      "step3Desc": "大多数客户在60秒内就能感受到差异！活性炭瞬间捕捉氨分子 - 不是遮盖，而是真正消除异味。",
+      "proTip": "专业提示：",
+      "proTipText": "少量即可！只需轻轻覆盖表面即可。过量使用不会造成伤害，但没有必要。"
+    },
+    "shareSection": {
+      "heading": "分享清新",
+      "description": "认识有臭猫砂盆的人吗？分享您的推荐链接，他们将获得免费试用！",
+      "generating": "正在生成您的个人推荐链接...",
+      "whatsapp": "WhatsApp",
+      "facebook": "Facebook",
+      "email": "邮件"
+    },
+    "autoshipCta": {
+      "heading": "再也不会断货",
+      "saveBadge": "节省30%",
+      "description": "订阅自动配送，每次订单节省30%，加上免费送货。随时取消。",
+      "savings": "节省",
+      "shipping": "配送",
+      "cancel": "取消",
+      "button": "升级至自动配送"
+    },
+    "helpSection": {
+      "question": "问题？",
+      "weAreHere": "我们随时为您服务！",
+      "returnHome": "返回首页"
+    },
+    "questionsHeading": "对订单有疑问？",
+    "questionsDescription": "联系我们的客服团队，我们很乐意为您提供帮助。",
+    "contactSupport": "联系客服",
+    "continueShopping": "继续购物",
+    "referralCta": {
+      "heading": "喜欢Purrify吗？",
+      "description": "与朋友分享，每次推荐可获得5加元积分！",
+      "button": "获取我的推荐链接"
+    }
+  },
+  "freeTrialPage": {
+    "urgentBanner": "限时优惠",
+    "free": "免费",
+    "claimTrial": "获取您的免费Purrify试用装",
+    "whatYouGet": "您将获得：",
+    "freeTrialBag": "价值$4.76的12g Purrify试用装（仅需支付$4.76加拿大境内运费）",
+    "expertTips": "专家猫咪护理技巧和指南",
+    "zeroCommitment": "零承诺 - 这是我们送给您的礼物",
+    "attention": "注意：对于厌倦了憋气的猫主人",
+    "limitedQuantity": "仅限前500名猫主人",
+    "alreadyClaimed": "已领取",
+    "countdownLabels": {
+      "hours": "小时",
+      "minutes": "分钟",
+      "seconds": "秒"
+    },
+    "testimonials": [
+      {
+        "text": "我简直不敢相信。几个小时内，我的整个房子又恢复了清新。我甚至几个月来第一次邀请了婆婆过来！",
+        "author": "张女士，多伦多"
+      },
+      {
+        "text": "我丈夫以为我把猫砂全部扔掉了。异味就这样...消失了。",
+        "author": "李女士，温哥华"
+      }
+    ],
+    "testimonialsTestUsers": "我们的测试用户怎么说：",
+    "claimNow": "立即领取您的免费试用装",
+    "warningHighDemand": "⚠️ 注意：由于需求量大，我们无法保证倒计时结束后仍有库存。",
+    "privacyNotice": "100%免费。无需信用卡。",
+    "zeroCommitmentGift": "零承诺 - 这是我们送给您的礼物",
+    "instantOdorElimination": "体验神奇的异味消除效果",
+    "completeInstructions": "完整的使用说明以获得最佳效果",
+    "noShippingFees": "无运费，无隐藏费用，无陷阱",
+    "disappearsIn": "注意：此优惠将在以下时间后消失：",
+    "limitedTo500": "仅限前500名猫主人。",
+    "yourFreeTrialWaits": "您的免费试用装正在等待 - 但只有现在行动才能获得。",
+    "betaTestersHeader": "我们的测试用户怎么说：",
+    "claimFreeTrialNow": "立即领取您的免费试用装",
+    "attention100Free": "100%免费。无需信用卡。",
+    "noCreditCard": "无需信用卡。",
+    "limitedTimeOffer": "限时优惠。每户限领一份。",
+    "restrictionsApply": "可能适用运费限制。我们保留随时终止此促销活动的权利。",
+    "highDemandWarning": "由于需求量大，我们无法保证倒计时结束后仍有库存",
+    "disclaimer": "100%免费。无需信用卡。限时优惠。每户限领一份。可能适用运费限制。我们保留随时终止此促销活动的权利"
+  },
+  "tryFreePage": {
+    "meta": {
+      "title": "免费试用Purrify - 仅需4.76美元运费 | 猫砂异味消除剂",
+      "description": "获取您的免费Purrify试用装 - 仅需支付4.76美元运费。在猫砂日常中试用，看看效果差异。"
+    },
+    "hero": {
+      "badge": "限时优惠",
+      "headline": "免费试用Purrify",
+      "subheadline": "仅需4.76美元运费",
+      "description": "在猫砂日常中试用活性炭添加剂，看看效果差异。",
+      "cta": "获取我的免费试用装",
+      "shippingNote": "加拿大全境配送"
+    },
+    "problem": {
+      "headline": "厌倦了屏住呼吸？",
+      "subheadline": "我们理解。那猫砂异味令人尴尬。",
+      "points": [
+        "客人来访时匆忙检查猫砂盒",
+        "冬天也要开窗通风只为驱散异味",
+        "不断购买无效的空气清新剂",
+        "担心家里闻起来像有猫住"
+      ]
+    },
+    "howItWorks": {
+      "headline": "30秒清新空气",
+      "subheadline": "简单三步",
+      "steps": [
+        {
+          "number": "1",
+          "title": "撒入",
+          "description": "打开包装，撒在猫砂上"
+        },
+        {
+          "number": "2",
+          "title": "捕捉",
+          "description": "活性炭瞬间捕捉氨气分子"
+        },
+        {
+          "number": "3",
+          "title": "清新",
+          "description": "享受7天以上的无异味清新"
+        }
+      ]
+    },
+    "socialProof": {
+      "headline": "你可以期待什么",
+      "rating": "",
+      "reviewCount": "",
+      "reviewLabel": "",
+      "testimonials": [
+        {
+          "text": "我原本持怀疑态度，但几小时内我的整个公寓就闻起来很清新了。我的客人根本不知道我养猫！",
+          "author": "Sarah M.",
+          "location": "Toronto, ON"
+        },
+        {
+          "text": "终于有真正有效的产品了。不再需要用空气清新剂掩盖异味。",
+          "author": "Mike R.",
+          "location": "Vancouver, BC"
+        },
+        {
+          "text": "这是我花过的最值的4.76美元。已经订购了完整尺寸！",
+          "author": "Jennifer K.",
+          "location": "Montreal, QC"
+        }
+      ]
+    },
+    "guarantee": {
+      "headline": "30天退款保证",
+      "description": "如果您对效果不满意，我们将退款。无需任何理由。",
+      "badge": "无风险试用"
+    },
+    "finalCta": {
+      "headline": "准备好轻松呼吸了吗？",
+      "description": "立即获取您的免费Purrify试用装。仅需支付4.76美元运费。",
+      "buttonText": "获取我的免费试用装",
+      "note": "随时取消。无需订阅。"
+    },
+    "trust": {
+      "madeInCanada": "加拿大制造",
+      "natural": "100%天然",
+      "fragrance": "无香料",
+      "secure": "安全结账"
+    }
+  },
+  "forms": {
+    "success": {
+      "general": "感谢您联系我们！我们将在24小时内回复您。",
+      "b2bContact": "感谢您的关注！我们的团队将在24-48小时内与您联系，讨论后续步骤。",
+      "retailerContact": "感谢您的关注！我们的合作伙伴团队将在24-48小时内与您联系，讨论价格和后续步骤。",
+      "hospitalityContact": "谢谢！我们的酒店团队将在24小时内与您联系，为您的物业提供定制价格。",
+      "shelterContact": "感谢您的关注！我们的团队将在24-48小时内与您联系，讨论我们如何支持您的收容所。",
+      "groomerContact": "感谢您的关注！我们的合作伙伴团队将在24-48小时内与您联系，讨论后续步骤。",
+      "vetContact": "感谢您的关注！我们的兽医团队将在24-48小时内与您联系，讨论合作机会。",
+      "catCafeContact": "感谢您的关注！我们的团队将在24-48小时内与您联系，讨论Purrify如何使您的猫咖受益。"
+    },
+    "errors": {
+      "pleaseEnterTitle": "请输入标题",
+      "invalidEmail": "电子邮件或密码无效",
+      "requiredField": "此字段为必填项",
+      "submitFailed": "提交表单失败。请重试。"
+    }
+  }
+}

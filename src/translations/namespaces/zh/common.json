@@ -1,0 +1,324 @@
+{
+  "siteName": "Purrify",
+  "siteDescription": "活性炭猫砂添加剂，从源头消除异味。",
+  "nav": {
+    "home": "首页",
+    "products": "产品",
+    "learn": "了解更多",
+    "howItWorks": "工作原理",
+    "about": "关于我们",
+    "whyPurrify": "为什么选择Purrify",
+    "tryFree": "免费试用装",
+    "testimonials": "用户评价",
+    "leaveReview": "留下评价",
+    "contact": "联系我们",
+    "blog": "博客",
+    "privacyPolicy": "隐私政策",
+    "termsOfService": "服务条款",
+    "trialSize": "免费试用 (仅付运费)",
+    "compareSizes": "比较规格",
+    "viewAllProducts": "查看所有产品",
+    "howItWorksPage": "工作原理",
+    "faq": "常见问题",
+    "science": "科学原理",
+    "buyNow": "立即购买！",
+    "retailers": "零售商",
+    "wholesalePricing": "批发价格",
+    "becomePartner": "成为合作伙伴",
+    "marketingSupport": "营销支持",
+    "partnerPrograms": "合作伙伴计划",
+    "forGroomers": "宠物美容师",
+    "forShelters": "动物收容所",
+    "affiliateProgram": "联盟计划",
+    "b2bInquiry": "企业合作咨询",
+    "customerReviews": "客户评价",
+    "shipsToUSA": "配送至美国",
+    "safetyInfo": "安全信息",
+    "activatedCarbonBenefits": "活性炭的好处",
+    "catLitterGuide": "猫砂指南",
+    "howToUse": "使用方法",
+    "technologyComparison": "技术对比",
+    "solutions": "解决方案",
+    "ammoniaSmellControl": "氨味控制",
+    "apartmentLiving": "公寓生活",
+    "litterBoxOdor": "猫砂盆异味",
+    "multipleCats": "多只猫",
+    "naturalAdditive": "天然添加剂",
+    "seniorCats": "老年猫",
+    "toggleMenu": "切换菜单",
+    "toggleTheme": "切换主题",
+    "signOut": "退出登录",
+    "signedIn": "已登录",
+    "catLitterAnswers": "猫砂问答",
+    "scienceHub": "研究引用",
+    "carbonVsBakingSoda": "活性炭与小苏打对比",
+    "findStore": "在您附近找到Purrify",
+    "findNearYou": "附近查找",
+    "whereToBuy": "哪里购买",
+    "askForPurrify": "在您的商店询问Purrify",
+    "ourStory": "我们的故事"
+  },
+  "locationsMenu": {
+    "selectProvince": "选择省份",
+    "hoverPrompt": "将鼠标悬停在省份上即可查看城市。",
+    "provinceCitiesHeading": "{{province}} 城市",
+    "viewProvinceGuide": "查看 {{province}} 省指南"
+  },
+  "footer": {
+    "quickLinks": "快速链接",
+    "openingHours": "营业时间",
+    "contactUs": "联系我们",
+    "allRightsReserved": "版权所有"
+  },
+  "footerNav": {
+    "trustedReviews": "可信评价",
+    "products": "产品",
+    "learn": "了解更多",
+    "popularArticles": "热门文章",
+    "company": "公司",
+    "trialSize": "试用装",
+    "standardSize": "标准装",
+    "familyPack": "家庭装",
+    "compareSizes": "比较规格",
+    "howItWorks": "工作原理",
+    "faq": "常见问题",
+    "science": "科学原理",
+    "scienceHub": "研究引用",
+    "safetyInfo": "安全信息",
+    "catLitterGuide": "猫砂指南",
+    "catLitterAnswers": "猫砂问答",
+    "carbonVsBakingSoda": "活性炭与小苏打对比",
+    "ammoniaSolutions": "氨味解决方案",
+    "litterCalculator": "猫砂计算器",
+    "houseSmells": "家里有猫砂味？",
+    "multiCatGuide": "多猫除臭指南",
+    "triedEverything": "试过所有猫味解决方案？",
+    "powerfulAbsorber": "最强除味剂",
+    "smallApartments": "最适合小公寓",
+    "about": "关于我们",
+    "blog": "博客",
+    "locations": "门店位置",
+    "stockists": "门店",
+    "testimonials": "用户评价",
+    "retailers": "零售商",
+    "retailerPortal": "零售商门户",
+    "hospitality": "酒店业",
+    "groomers": "宠物美容师",
+    "shelters": "收容所",
+    "b2bInquiry": "企业合作咨询",
+    "invest": "投资者",
+    "affiliateProgram": "联盟计划",
+    "results": "成功案例",
+    "contact": "联系我们",
+    "privacyPolicy": "隐私政策",
+    "termsOfService": "服务条款",
+    "trustpilot": "Trustpilot",
+    "googleReviews": "谷歌评论",
+    "sitemap": "网站地图"
+  },
+  "notFoundPage": {
+    "title": "404 - 页面未找到",
+    "description": "哎呀！您要查找的页面可能已被移动、删除或从未存在过。",
+    "lookingFor": "您可能在寻找：",
+    "returnHome": "返回首页",
+    "suggestedPages": {
+      "home": {
+        "title": "首页",
+        "description": "返回我们的主页"
+      },
+      "products": {
+        "title": "产品",
+        "description": "浏览我们的猫砂添加剂"
+      },
+      "howItWorks": {
+        "title": "工作原理",
+        "description": "了解Purrify如何消除异味"
+      },
+      "blog": {
+        "title": "博客",
+        "description": "阅读我们关于猫咪护理的最新文章"
+      },
+      "contact": {
+        "title": "联系我们",
+        "description": "与我们的团队联系"
+      }
+    }
+  },
+  "structuredData": {
+    "organization": {
+      "name": "Purrify",
+      "description": "优质活性炭猫砂添加剂，在分子水平上消除异味。采用天然椰壳炭在加拿大制造。",
+      "foundingDate": "2023",
+      "contactPoint": {
+        "telephone": "+1 (450) 663-6773",
+        "email": "hello@purrify.ca",
+        "contactType": "客户服务",
+        "areaServed": [
+          "CA",
+          "US"
+        ],
+        "availableLanguage": [
+          "英语",
+          "法语",
+          "中文"
+        ]
+      },
+      "areaServed": "加拿大"
+    },
+    "product": {
+      "name": "Purrify活性炭猫砂添加剂",
+      "description": "活性炭猫砂添加剂，从根源消除异味。"
+    },
+    "localBusiness": {
+      "type": "宠物用品店",
+      "name": "Purrify",
+      "description": "活性炭猫砂添加剂，从根源消除异味。"
+    },
+    "breadcrumb": {
+      "home": "首页"
+    },
+    "video": {
+      "name": "Purrify猫砂添加剂有效性演示",
+      "description": "了解Purrify如何有效消除猫砂异味。"
+    },
+    "website": {
+      "name": "Purrify - 活性炭猫砂添加剂",
+      "description": "优质活性炭猫砂添加剂，在分子水平上消除异味。",
+      "inLanguage": "zh-CN"
+    },
+    "offerCatalog": {
+      "name": "猫砂异味控制产品",
+      "products": {
+        "trial": {
+          "name": "Purrify 12g 试用装",
+          "description": "试用装活性炭猫砂添加剂 - 完美的测试选择",
+          "sku": "purrify-12g"
+        },
+        "standard": {
+          "name": "Purrify 50g 标准装",
+          "description": "最受欢迎的规格 - 单猫家庭一个月用量",
+          "sku": "purrify-50g"
+        },
+        "family": {
+          "name": "Purrify 120g 家庭装",
+          "description": "大容量装，非常适合多猫家庭 - 最大程度控制异味",
+          "sku": "purrify-120g"
+        }
+      },
+      "priceRange": "$6.99 - $29.99"
+    },
+    "faqPage": {
+      "questions": [
+        {
+          "question": "什么是Purrify，它是如何工作的？",
+          "answer": "Purrify是一种猫砂活性炭添加剂，在分子水平上消除异味。活性炭拥有数百万个微孔，可以捕获和中和产生异味的化合物，相比传统猫砂提供更优异的异味控制效果。"
+        },
+        {
+          "question": "Purrify可以在猫和人周围使用吗？",
+          "answer": "Purrify使用与家用净水器和空气过滤器常见的同类型活性炭，不添加香精或染料。"
+        },
+        {
+          "question": "我应该使用多少Purrify？",
+          "answer": "为获得最佳效果，每个标准猫砂盆使用大约1-2汤匙Purrify。在完全更换猫砂时将其与现有猫砂充分混合。12g试用装正好适合一次猫砂盆更换。"
+        },
+        {
+          "question": "Purrify适用于所有类型的猫砂吗？",
+          "answer": "是的！Purrify设计用于任何类型的猫砂 - 粘土、结团、水晶、天然或可生物降解的。它增强您已经在使用的猫砂的异味控制特性。"
+        }
+      ]
+    }
+  },
+  "ui": {
+    "allRatings": "所有评分",
+    "allSizes": "所有规格",
+    "newestFirst": "最新优先",
+    "oldestFirst": "最旧优先",
+    "highestRated": "评分最高",
+    "lowestRated": "评分最低",
+    "mostHelpful": "最有帮助",
+    "verifiedPurchase": "购买",
+    "securePayment": "安全支付",
+    "shoppingCart": "购物车",
+    "happyCustomers": "满意客户",
+    "moneyBack": "专家支持",
+    "averageRating": "平均评分",
+    "satisfactionRate": "满意度",
+    "skipAnytime": "随时跳过",
+    "highlyRated": "高度评价",
+    "errorDetails": "错误详情",
+    "moneyBackGuarantee": "30天退款保证"
+  },
+  "announcementBar": {
+    "freeShipping": {
+      "line1": "免运费",
+      "line2": "适用于所有自动订购项目"
+    },
+    "madeInCanada": {
+      "line1": "加拿大制造",
+      "line2": "采用本地及全球采购原料"
+    },
+    "naturalCarbon": {
+      "line1": "无毒成分",
+      "line2": "由100%天然活性椰壳炭制成"
+    },
+    "socialProof": {
+      "line1": "无化学品、香精或添加剂",
+      "line2": "加拿大数千名猫主人的共同选择"
+    },
+    "moneyBack": {
+      "line1": "30天退款保证",
+      "line2": "不满意？无条件全额退款"
+    }
+  },
+  "seo": {
+    "keywords": "猫砂添加剂, 异味控制, 活性炭, 宠物护理, 猫咪产品",
+    "openGraph": {
+      "title": "Purrify - 活性炭猫砂添加剂",
+      "description": "使用Purrify活性炭添加剂消除猫砂盒异味。天然、无香、有效。"
+    },
+    "metaDescription": "Purrify是一款优质的活性炭猫砂添加剂，可在分子水平上消除异味。采用天然椰壳炭制成，提供7天清新效果，适用于所有类型的猫砂。深受加拿大 1,000+ 猫主人的信赖。"
+  },
+  "seoKeywords": {
+    "headTerms": [
+      "猫砂异味",
+      "猫砂除味",
+      "猫砂除臭",
+      "猫砂气味清除",
+      "最佳猫砂除臭剂",
+      "天然猫砂除臭"
+    ],
+    "symptomVariants": [
+      "猫砂氨味太重",
+      "小公寓猫砂味道大",
+      "猫砂为什么这么臭",
+      "猫砂味让客人尴尬"
+    ],
+    "solutionVariants": [
+      "天然猫砂除臭方法",
+      "活性炭猫砂添加剂",
+      "无香精猫砂除臭剂",
+      "如何快速去除猫砂味"
+    ],
+    "modifiers": {
+      "housing": [
+        "公寓",
+        "地下室",
+        "多猫家庭",
+        "共用空间"
+      ],
+      "seasonal": [
+        "冬天关窗",
+        "潮湿夏季",
+        "加拿大冬季",
+        "雨季通风差"
+      ],
+      "retailer": [
+        "Pet Valu",
+        "PetSmart",
+        "Global Pet Foods",
+        "Ren's Pets",
+        "Mondou"
+      ]
+    }
+  }
+}

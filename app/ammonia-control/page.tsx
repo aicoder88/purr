@@ -55,7 +55,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = translations[normalizedLocale as keyof typeof translations] || en;
   const ammonia = t.ammonia;
 
-  const canonicalUrl = `https://www.purrify.ca/${normalizedLocale === 'en' ? '' : normalizedLocale + '/'}ammonia-control`;
+  const canonicalUrl = `https://www.purrify.ca/${normalizedLocale === 'en' ? '' : normalizedLocale + '/'}ammonia-control/`;
   const languageAlternates = buildLanguageAlternates('/ammonia-control');
 
   // Convert language alternates to Next.js format
@@ -127,7 +127,7 @@ export default async function AmmoniaControlPage() {
   const t = translations[normalizedLocale as keyof typeof translations] || en;
   const ammonia = t.ammonia;
 
-  const canonicalUrl = `https://www.purrify.ca/${normalizedLocale === 'en' ? '' : normalizedLocale + '/'}ammonia-control`;
+  const canonicalUrl = `https://www.purrify.ca/${normalizedLocale === 'en' ? '' : normalizedLocale + '/'}ammonia-control/`;
 
   // Problem cards data
   const problemCards = [

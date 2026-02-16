@@ -1,9 +1,5 @@
-export const dynamic = 'force-dynamic';
-
 import type { Metadata } from 'next';
 import PageContent from './PageContent';
-import { getCommercialExperimentState } from '@/lib/experiments/commercial-server';
-import { ServerExperimentViewTracker } from '@/components/experiments/ServerExperimentViewTracker';
 
 export const metadata: Metadata = {
   title: 'Purrify Products - Activated Carbon Litter Additive',
@@ -56,18 +52,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function ProductsPage() {
-  const experiments = await getCommercialExperimentState();
-  const experimentCopy = {
-    headline: experiments.headline,
-    ctaCopy: experiments.ctaCopy,
-    proofOrder: experiments.proofOrder,
-  } as const;
-
-  return (
-    <>
-      <ServerExperimentViewTracker assignments={experiments.assignments} />
-      <PageContent experimentCopy={experimentCopy} />
-    </>
-  );
+export default function ProductsPage() {
+  return <PageContent />;
 }

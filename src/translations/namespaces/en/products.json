@@ -1,0 +1,412 @@
+{
+  "products": {
+    "purrify-12g": {
+      "name": "Free Trial",
+      "description": "Perfect for skeptics (we get it).\nJust pay $4.76 shipping to try it yourself.\nOne per household — share the love, not the bags."
+    },
+    "purrify-50g": {
+      "name": "The Goldilocks Bag",
+      "description": "50g · Regular Size\nLasts about a month of fresh litter.\nOur most popular size — and most reordered."
+    },
+    "purrify-120g": {
+      "name": "Family Size",
+      "description": "120g · Best Value Per Gram\nFor multi-cat households.\nBuilt for the extra ammonia output."
+    }
+  },
+  "pricing": {
+    "oneTimeLabel": "One-time purchase",
+    "autoshipLabel": "Autoship & Save",
+    "autoshipBestLabel": "Best Value Autoship",
+    "billedEvery": "Billed every",
+    "months": "months",
+    "shippingIncluded": "Shipping included",
+    "freeShipping": "Free shipping included",
+    "plusShipping": "+ shipping",
+    "shippingCalculated": "Shipping calculated at checkout",
+    "startAutoship": "Start Autoship",
+    "buyNow": "Buy Now",
+    "linkComingSoon": "Payment link coming soon",
+    "recommended": "Most recommended",
+    "perMonth": "≈ {price}/month",
+    "saveVsOneTime": "Save {percent}% vs one-time",
+    "trialSizeSection": "FREE Trial - Just Pay Shipping",
+    "quarterlyAutoshipSection": "Subscribe & Save - Quarterly Autoship",
+    "stripeShippingNote": "the product will be shipped to the stripe \"SHIP TO\" address ON THE NEXT PAGE"
+  },
+  "productsHero": {
+    "pill": "Ammonia Odor Eliminator",
+    "headline": "Embarrassed by Cat Litter Smell? Stop Covering It Up.",
+    "subheadline": "Baking soda and sprays just mask the problem. Purrify uses activated carbon to eliminate ammonia at the molecular level. It's not magic. It's science.",
+    "scienceButton": "The Science",
+    "guarantee": "Zero Odor Guarantee",
+    "findSizeButton": "Find Your Size"
+  },
+  "productComparison": {
+    "title": "Choose Your Perfect Size",
+    "subtitle": "Find the ideal Purrify size for your household",
+    "findPerfectSize": "Find your perfect size based on your needs",
+    "products": [
+      {
+        "id": "trial",
+        "name": "The Skeptic's Sample",
+        "subtitle": "12g · One Week of Proof",
+        "duration": "7+ days",
+        "cats": "1 cat",
+        "features": [
+          "One week of fresh-air confidence",
+          "Just $4.76 shipping",
+          "Zero risk, zero commitment"
+        ],
+        "bestFor": "Cat parents who've been burned before. Test it yourself. Your nose doesn't lie.",
+        "cta": "Get Purrify Near You"
+      },
+      {
+        "id": "regular",
+        "name": "Regular Size",
+        "subtitle": "120g · Regular Size",
+        "duration": "7+ days per application",
+        "cats": "1-2 cats",
+        "features": [
+          "Use more for extended freshness",
+          "Top-up anytime",
+          "Works with any litter"
+        ],
+        "bestFor": "Single or dual cat homes. The size that keeps customers coming back.",
+        "cta": "Get Purrify Near You"
+      },
+      {
+        "id": "large",
+        "name": "Family Size",
+        "subtitle": "240g · Best Value Per Gram",
+        "duration": "7+ days per application",
+        "cats": "3+ cats",
+        "features": [
+          "Best value per gram",
+          "Flexible dosing",
+          "Perfect for multiple boxes"
+        ],
+        "bestFor": "Multi-cat households, foster parents, or anyone who's lost count.",
+        "cta": "Get Purrify Near You"
+      }
+    ],
+    "comparisonFeatures": [
+      {
+        "feature": "Odor elimination"
+      },
+      {
+        "feature": "Fragrance-free"
+      },
+      {
+        "feature": "Works with all litters"
+      },
+      {
+        "feature": "Natural ingredients"
+      },
+      {
+        "feature": "Personalized odor coaching"
+      }
+    ],
+    "usageCalculator": {
+      "title": "Usage Calculator",
+      "subtitle": "Calculate how long each size will last",
+      "numberOfCats": "Number of cats:",
+      "typicalChanges": "Litter changes per week:",
+      "estimateDuration": "Estimated duration:"
+    },
+    "stillUnsure": "Still unsure which size is right for you?",
+    "getPersonalizedAdvice": "Get personalized advice from our team",
+    "tryRiskFree": "Try Risk-Free",
+    "learnMoreAboutPurrify": "Learn more about how Purrify works",
+    "featuresComparison": "Features Comparison",
+    "seeHowProductsCompare": "See how our products compare",
+    "howLongWillEachSizeLast": "How long will each size last?",
+    "popular": "POPULAR",
+    "bestValue": "BEST VALUE",
+    "perfectForFirstTime": "Perfect for first-time users",
+    "idealForSingleCat": "Ideal for single cat households",
+    "perfectForMultiCat": "Perfect for multi-cat households",
+    "economicChoice": "Most economic choice for large families",
+    "maxValuePerGram": "Maximum value per gram",
+    "bulkSavingsIncluded": "Bulk savings included",
+    "sustainableSupply": "Sustainable supply for heavy users",
+    "features": "Features",
+    "idealFor": "Ideal For",
+    "duration": "Duration",
+    "saveMoney": "Save Money",
+    "getBestValue": "Get Best Value",
+    "chooseThisSize": "Choose This Size",
+    "tryWithoutRisk": "Try Without Risk",
+    "chooseSmallSize": "Choose Small Size",
+    "seo": {
+      "title": "Find the Perfect Size",
+      "description": "Compare all Purrify sizes and find the perfect activated carbon litter additive for your household needs."
+    },
+    "stillUnsureDescription": "Start with our risk-free trial size and experience the Purrify difference for yourself.",
+    "tableHeaders": {
+      "feature": "Feature",
+      "trial": "12g Trial",
+      "regular": "120g Regular Size",
+      "large": "240g Family Size"
+    },
+    "units": {
+      "cat": "Cat",
+      "cats": "Cats",
+      "week": "week",
+      "weeks": "weeks",
+      "day": "day",
+      "days": "days",
+      "weekly": "Weekly",
+      "perWeek": "per week"
+    },
+    "relatedPages": [
+      {
+        "title": "How It Works",
+        "description": "Discover the science behind our activated carbon technology and why it's so effective.",
+        "link": "/learn/how-it-works"
+      },
+      {
+        "title": "Customer Reviews",
+        "description": "See what 1,000+ satisfied customers are saying about their Purrify experience.",
+        "link": "/reviews"
+      },
+      {
+        "title": "Cat Litter Guide",
+        "description": "Learn about different litter types and how to choose the best option for your cat.",
+        "link": "/learn/cat-litter-guide"
+      }
+    ]
+  },
+  "productsPage": {
+    "hero": {
+      "headline": "Your Cats Are Perfect. The Smell? Not So Much.",
+      "subheadline": "Same activated carbon that cleans your drinking water. Traps litter box ammonia at the molecular level. No perfumes. No cover-ups. Just... air.",
+      "supporting": "Pick your size. Prove it to your nose."
+    },
+    "quickDecision": {
+      "title": "Not Sure Which Size? Let Your Nose Be the Judge.",
+      "subtitle": "Pick the size that fits your home:",
+      "trial": {
+        "question": "Burned by false promises before?",
+        "answer": "The Skeptic's Sample (12g)",
+        "detail": "Just pay shipping. 7 days to convince your nose. It works or you're out $4.76."
+      },
+      "regular": {
+        "question": "One or two cats at home?",
+        "answer": "Regular Size (120g)",
+        "detail": "Most popular size. Lasts 7+ days per application. Use more, stays fresh longer."
+      },
+      "large": {
+        "question": "Running a multi-cat household?",
+        "answer": "Family Size (240g)",
+        "detail": "Best value per gram. Same powerful formula, double the supply."
+      }
+    },
+    "trustSignals": {
+      "waterFilter": {
+        "title": "The Same Stuff in Your Brita",
+        "description": "Meets NSF/ANSI 61 standards. If it's good enough to make tap water drinkable, imagine what it does to ammonia."
+      },
+      "ingredients": {
+        "title": "Ingredients: Coconut Shells. That's It.",
+        "description": "No fragrance to stress your cat. No chemicals to worry about. Just pure, activated carbon from coconut shells."
+      },
+      "science": {
+        "title": "Science, Not Perfume",
+        "description": "One gram has the surface area of a football field. Those microscopic tunnels trap odor molecules permanently. Gone. Not hiding."
+      }
+    },
+    "products": {
+      "trial": {
+        "name": "The Skeptic's Bag",
+        "subtitle": "12g · One Week of Proof",
+        "features": [
+          "Enough for 7 days of fresh air",
+          "Just cover the $4.76 shipping",
+          "One per household (sorry, no stockpiling free stuff)"
+        ],
+        "bestFor": "Cat parents who've been burned by 'miracle' products before. We get it. Prove it to yourself first."
+      },
+      "regular": {
+        "name": "Regular Size",
+        "subtitle": "120g · Regular Size",
+        "features": [
+          "7+ days freshness per application",
+          "Use more for extended freshness",
+          "Works with whatever litter your cat already approves of"
+        ],
+        "bestFor": "Single or dual cat homes where 'company's coming over' doesn't trigger panic anymore."
+      },
+      "large": {
+        "name": "Family Size",
+        "subtitle": "240g · Best Value Per Gram",
+        "features": [
+          "7+ days freshness per application",
+          "Best value per gram",
+          "Flexible dosing (use more, lasts longer)"
+        ],
+        "bestFor": "Multi-cat households, foster parents, or anyone who's given up counting litter boxes."
+      }
+    },
+    "whatYouGet": {
+      "title": "What's Actually in the Bag",
+      "subtitle": "(And Why Your Cat Will Never Notice It)",
+      "benefits": [
+        {
+          "title": "Water-Filter Grade Activated Carbon",
+          "description": "The exact same material used in Brita filters and hospital air purification. Not 'similar to.' The same."
+        },
+        {
+          "title": "Zero Fragrances. Zero Chemicals. Zero Worries.",
+          "description": "Cats have 200 million scent receptors. Artificial fragrances stress them. Purrify works invisibly."
+        },
+        {
+          "title": "Clay, Crystal, Clumping, Natural... We Don't Judge",
+          "description": "Works with whatever litter your cat has trained you to buy. No switching drama."
+        },
+        {
+          "title": "Open. Sprinkle. Done.",
+          "description": "A thin layer on top. 30 seconds of effort for 7 days of results."
+        }
+      ]
+    },
+    "didYouKnow": {
+      "title": "The Science Your Cat Doesn't Care About (But Your Nose Will)",
+      "body": "A single gram of activated carbon contains roughly 3,000 square meters of surface area. That's bigger than half a football field — in something smaller than a pea.\n\nInside are millions of microscopic pores and tunnels. When ammonia molecules float past, they get trapped permanently.\n\nThis isn't masking. It's molecular capture. The same technology used in gas masks, water treatment plants, and hospital air filtration. Now sitting on top of your cat's litter."
+    },
+    "cta": {
+      "title": "Your Nose Deserves Better. So Does Your Cat.",
+      "subtitle": "Ask for Purrify at your favorite pet store. If they don't carry it yet, they should.",
+      "secondary": "Not seeing your store? Let us know. We'll reach out and make it happen."
+    },
+    "relatedPages": [
+      {
+        "title": "The Science (Without the Boring Parts)",
+        "description": "Discover the science behind our activated carbon technology and why it's so effective.",
+        "link": "/learn/how-it-works"
+      },
+      {
+        "title": "What 1,000+ Cat Parents Said",
+        "description": "See what satisfied customers are saying about their Purrify experience.",
+        "link": "/reviews"
+      },
+      {
+        "title": "The Complete Cat Litter Guide",
+        "description": "Learn about different litter types and how to choose the best option for your cat.",
+        "link": "/learn/cat-litter-guide"
+      }
+    ],
+    "testimonial": {
+      "quote": "I live in a small studio apartment with two cats, and the litter box smell was becoming unbearable. Purrify completely eliminated the odor within 24 hours. I was skeptical about the price at first, but it lasts so much longer than other products I've tried. Worth every penny!",
+      "author": "Sarah M.",
+      "location": "Montreal, QC",
+      "details": "2 cats, small apartment",
+      "headline": "Game changer for my apartment!"
+    }
+  },
+  "subscriptionOfferExtended": {
+    "autoshipBadge": "Quarterly Autoship",
+    "headline": "Set & forget your litter odor defense",
+    "supportingCopy": "Choose the bundle that automatically restocks every 3 months, keeps your home fresh, and protects your budget.",
+    "perMonthLabel": "≈ {price}/month effective",
+    "saveVsOneTime": "Save {percent}% vs one-time purchase",
+    "skipOrCancelAnytime": "Skip or cancel anytime",
+    "shippingIncluded": "Shipping included",
+    "freeShippingIncluded": "Free shipping included",
+    "priorityCustomerSupport": "Priority customer support",
+    "startAutoship": "Start Autoship",
+    "linkComingSoon": "Payment link coming soon",
+    "quarterlyBilling": "Billed every 3 months",
+    "autoshipHero": "Autoship & Save",
+    "autoshipHighlight": "Subscribe & Save",
+    "standardPlanTitle": "Quarterly Autoship – 3 × 50g",
+    "standardDescription": "Perfect for single-cat households that want fresh odor control every month.",
+    "includesThreeStandard": "Includes 3 × 50g bags delivered together",
+    "familyPlanTitle": "Best Value Autoship – 3 × Regular size 120g",
+    "familyDescription": "Designed for multi-cat and allergy-prone homes. Our best price per scoop.",
+    "includesThreeFamily": "Includes 3 × Regular size 120g packs (delivered together)",
+    "bestValueBadge": "Best Value",
+    "save": "Save",
+    "joinThePurrifyFamily": "Join the Purrify Family"
+  },
+  "paymentSecurity": {
+    "securePayment": "Secure Payment",
+    "sslEncrypted": "256-bit SSL",
+    "sslEncryptedCheckout": "SSL encrypted checkout with Stripe"
+  },
+  "testimonialsSection": {
+    "customerLove": "Customer Love",
+    "littersOfLove": "Real Results From Happy Cat Parents",
+    "dontJustTakeOurWord": "Don't just take our word for it. Here's what our customers have to say about Purrify.",
+    "readMoreReviews": "Read More Reviews"
+  },
+  "storesSection": {
+    "availableInStores": "AVAILABLE IN STORES",
+    "soldInFollowingStores": "SOLD IN THE FOLLOWING STORES",
+    "subtitle": "Find Purrify at your favorite pet stores across Canada. Visit any of these locations to purchase our premium cat litter additive.",
+    "requestStoreAvailability": "Request Store Availability",
+    "dontSeeLocalStore": "Don't see your local store? Contact us to request Purrify at your favorite pet store!",
+    "callStore": "Call Store",
+    "sending": "Sending...",
+    "requestSent": "Request Sent!",
+    "requestSuccess": "Thank you! We'll reach out to help get Purrify at your local store.",
+    "requestError": "An error occurred. Please contact us directly at support@purrify.ca",
+    "storeDescriptions": {
+      "completePetCareAndSupplies": "Complete pet care and supplies",
+      "premiumPetBoutique": "Premium pet boutique",
+      "familyOwnedPetStore": "Family-owned pet store",
+      "globalPetFoodsLocation": "Global Pet Foods location",
+      "premiumPetProductsAndSupplies": "Premium pet products & supplies",
+      "fullServicePetStore": "Full-service pet store",
+      "petStoreWithGroomingServices": "Pet store with grooming services"
+    }
+  },
+  "upsell": {
+    "pageTitle": "Special One-Time Offer - Purrify",
+    "metaDescription": "Exclusive one-time offer for new customers. Save 25% on quarterly autoship subscription.",
+    "offerExpired": "Offer Expired",
+    "offerExpiresIn": "Offer expires in",
+    "headline": "Wait! One-Time Exclusive Offer",
+    "subheadline": "Add autoship to your order and save 25%",
+    "saveBadge": "SAVE 29%",
+    "productTitle": "Purrify 50g Autoship",
+    "productSubtitle": "3-Month Supply (3 × 50g bags)",
+    "youSave": "You save",
+    "benefit1": "Never run out - delivered every 3 months",
+    "benefit2": "Free shipping included (save $7.99)",
+    "benefit3": "Lock in this special price forever",
+    "benefit4": "Cancel or skip anytime (no commitments)",
+    "benefit5": "Automatic reminders before each shipment",
+    "processing": "Processing...",
+    "addToOrder": "Yes! Add to My Order",
+    "noThanks": "No thanks, I prefer to pay full price later",
+    "feature1Title": "Instant Activation",
+    "feature1Description": "Your autoship starts immediately after this order",
+    "feature2Title": "100% Satisfaction",
+    "feature2Description": "30-day money-back guarantee on every shipment",
+    "feature3Title": "Flexible Control",
+    "feature3Description": "Skip, pause, or cancel online anytime",
+    "testimonialText": "I almost skipped the autoship offer, but I'm so glad I didn't! It's one less thing to remember, and the savings add up. Plus, I never run out right when I need it most.",
+    "testimonialAuthor": "— Sarah M., Toronto",
+    "faqTitle": "Common Questions",
+    "faq1Question": "Can I cancel anytime?",
+    "faq1Answer": "Absolutely! Cancel, skip, or modify your subscription anytime from your account dashboard. No fees, no hassles.",
+    "faq2Question": "When will I be charged?",
+    "faq2Answer": "You'll be charged today for this special offer. Your next shipment will be in 3 months, and you'll receive a reminder email 7 days before.",
+    "faq3Question": "Is the price locked in?",
+    "faq3Answer": "Yes! This special price is locked in for as long as you remain subscribed. You'll never pay more than this rate.",
+    "bottomNote": "This one-time offer is only available immediately after your first purchase",
+    "returnHome": "Return to homepage"
+  },
+  "productPages": {
+    "cancelAnytime": "Cancel anytime. Ships free.",
+    "shipsFree": "Ships free",
+    "subscribeAndSave": "Subscribe & Save",
+    "save": "Save",
+    "savePercent": "Save {percent}%",
+    "perMonth": "per month",
+    "billedQuarterly": "Billed quarterly",
+    "shippingSavings": "Save $15-$20+ per order vs single purchases",
+    "save25vsStandard": "Save 25% compared to buying two standard sizes",
+    "save25FamilyPack": "Save 25% with our Family Pack"
+  }
+}

@@ -1,0 +1,729 @@
+{
+  "retailers": {
+    "seo": {
+      "pageTitle": "Partenaires grossistes & détaillants",
+      "description": "Rejoignez notre réseau de détaillants. Tarifs de gros, support marketing et produit éprouvé pour les animaleries partout au Canada.",
+      "openGraphAlt": "Partenaires grossistes",
+      "keywords": "additif litière chat grossiste, produits animalerie, partenariat détaillant, commandes en gros, tarifs grossiste, support marketing"
+    },
+    "map": {
+      "title": "Nos Partenaires Détaillants et Clients | Réseau Purrify",
+      "description": "Découvrez notre réseau grandissant de détaillants et clients satisfaits à travers le Canada. Rejoignez notre famille de partenaires prospères."
+    },
+    "hero": {
+      "badge": "Partenariat d'affaires",
+      "title": "Devenez partenaire de Purrify",
+      "subtitle": "Succès en gros",
+      "description": "Rejoignez des centaines d'animaleries qui offrent l'additif au charbon actif #1 au Canada. Ventes prouvées, clients fidèles et support marketing inclus.",
+      "cta": {
+        "primary": "Voir les tarifs de gros",
+        "secondary": "Devenir partenaire",
+        "startPartnership": "Commencer le partenariat aujourd'hui",
+        "viewPricing": "Voir les prix"
+      },
+      "boostYour": "Boostez Vos",
+      "petStoreProfits": "Profits d'Animalerie",
+      "mainDescription": "Rejoignez 21 détaillants établis qui vendent la solution anti-odeur #1 au Canada avec des marges de 50%+",
+      "retailerCount": "21 détaillants établis",
+      "marginHighlight": "marges de 50%+",
+      "stats": {
+        "profitMargins": {
+          "value": "50%",
+          "label": "Marges de Profit"
+        },
+        "repurchaseRate": {
+          "value": "89%",
+          "label": "Taux de Rachat"
+        },
+        "setupTime": {
+          "value": "24h",
+          "label": "Temps d'Installation"
+        }
+      },
+      "valueProps": {
+        "highMargin": {
+          "title": "Produit à Haute Marge",
+          "highlight": "Jusqu'à 55% de marge",
+          "description": "Prix premium avec expédition légère. Marges plus élevées que les produits de litière lourds traditionnels."
+        },
+        "customerLoyalty": {
+          "title": "Fidélité Client",
+          "highlight": "Note de 4.8/5 étoiles",
+          "description": "Les clients deviennent des ambassadeurs fidèles. Les rachats mensuels et les recommandations génèrent un revenu stable."
+        },
+        "completeSupport": {
+          "title": "Support Complet",
+          "highlight": "Tout inclus",
+          "description": "Matériel PLV, formation, support marketing et gestion de compte dédiée inclus."
+        }
+      },
+      "trustIndicators": {
+        "label": "Approuvé par les détaillants leaders:",
+        "types": {
+          "petStores": "Animaleries",
+          "vetClinics": "Cliniques Vétérinaires",
+          "groomers": "Toiletteurs",
+          "distributors": "Distributeurs"
+        }
+      }
+    },
+    "benefits": {
+      "pricing": {
+        "title": "Tarifs de gros",
+        "description": "Jusqu'à 50 % de marge avec des remises sur volume"
+      },
+      "marketing": {
+        "title": "Support marketing",
+        "description": "Matériel PLV, formation d'équipe, publicité coopérative"
+      },
+      "proven": {
+        "title": "Produit éprouvé",
+        "description": "4,8/5 étoiles et fort taux de réachat"
+      },
+      "highDemand": {
+        "title": "Forte demande",
+        "description": "Les propriétaires recherchent des solutions d'odeurs. Purrify règle la plainte #1 liée aux litières."
+      },
+      "highMargins": {
+        "title": "Marges premium",
+        "description": "Produit léger à forte valeur perçue. Marges supérieures à la litière traditionnelle."
+      },
+      "easyStocking": {
+        "title": "Facile à stocker",
+        "description": "Emballage compact, pas besoin de réfrigération, longue durée de vie."
+      },
+      "marketingSupport": {
+        "title": "Support marketing complet",
+        "description": "Présentoirs, formation produit, matériel éducatif et publicité coop incluse."
+      },
+      "customerLoyalty": {
+        "title": "Fidélise la clientèle",
+        "description": "Une fois leur problème d'odeur résolu, vos clients reviennent chaque mois et recommandent votre boutique."
+      },
+      "fastMoving": {
+        "title": "Rotation rapide",
+        "description": "Consommable avec réapprovisionnement mensuel prévisible."
+      },
+      "title": "Pourquoi les détaillants choisissent Purrify",
+      "description": "Rejoignez des animaleries prospères qui ont ajouté Purrify à leur assortiment avec des résultats remarquables.",
+      "success": {
+        "title": "Histoires de succès réelles"
+      }
+    },
+    "pricing": {
+      "title": "Paliers de prix de gros",
+      "description": "Options flexibles pour maximiser vos marges tout en offrant une valeur exceptionnelle à vos clients.",
+      "tiers": {
+        "starter": {
+          "name": "Départ",
+          "description": "Parfait pour les petites animaleries"
+        },
+        "growth": {
+          "name": "Croissance",
+          "description": "Le plus populaire pour les boutiques établies"
+        },
+        "enterprise": {
+          "name": "Entreprise",
+          "description": "Pour les chaînes et grands détaillants"
+        }
+      },
+      "additional": {
+        "title": "Remises de volume disponibles",
+        "description": "Besoin de quantités plus importantes ? Nous offrons des prix sur mesure pour les chaînes, distributeurs et détaillants à fort volume."
+      }
+    },
+    "marketing": {
+      "title": "Support marketing complet",
+      "description": "Nous fournissons tout ce qu'il faut pour vendre Purrify : présentoirs, formation, scripts et contenus prêts à l'emploi.",
+      "coop": {
+        "title": "Programme de publicité coop",
+        "description": "Bénéficiez de crédits publicitaires pour promouvoir Purrify dans votre marché local (imprimé, radio, numérique)."
+      }
+    },
+    "testimonials": {
+      "title": "Ce que disent nos partenaires",
+      "description": "Avis réels de propriétaires et gérants d'animaleries partout au Canada.",
+      "metrics": {
+        "title": "Résultats commerciaux prouvés"
+      }
+    },
+    "wholesalePricing": {
+      "sectionBadge": "Prix de Gros Transparents",
+      "title": "Choisissez Votre",
+      "titleHighlight": "Niveau de Profit",
+      "subtitle": "Partenariat avec la solution anti-odeur féline la plus vendue au Canada. Pas de frais cachés, pas de surprises.",
+      "packageIncludes": "Le Forfait Comprend:",
+      "trustSignals": {
+        "noSetupFees": "Pas de Frais d'Installation",
+        "approval72hr": "Approbation en 72h",
+        "provenROI": "ROI Prouvé"
+      },
+      "tiers": {
+        "starter": {
+          "name": "Forfait Débutant",
+          "badge": "Démarrage Rapide",
+          "description": "Parfait pour tester les eaux",
+          "contents": [
+            "Une boîte format essai (25 petits sacs)",
+            "Une boîte format moyen (15 sacs moyens)",
+            "Une boîte format grand (10 grands sacs)"
+          ],
+          "features": [
+            "Produit éprouvé 4.8/5 étoiles",
+            "Avantage d'expédition légère",
+            "Présentoir PLV de base inclus",
+            "Support email et guide d'installation",
+            "Remplacement gratuit des produits endommagés"
+          ],
+          "cta": "Commencer"
+        },
+        "growth": {
+          "name": "Partenaire Croissance",
+          "badge": "Meilleure Valeur",
+          "description": "Le choix intelligent pour les détaillants en croissance",
+          "contents": [
+            "Cinq boîtes format essai (125 petits sacs)",
+            "Cinq boîtes format moyen (75 sacs moyens)",
+            "Cinq boîtes format grand (50 grands sacs)",
+            "BONUS: 5 sacs moyens gratuits"
+          ],
+          "features": [
+            "Présentoir comptoir premium",
+            "Matériel de formation du personnel",
+            "Actifs marketing digitaux (posts sociaux, modèles email)",
+            "Support téléphone et email prioritaire"
+          ],
+          "cta": "Commencer à Grandir"
+        },
+        "scale": {
+          "name": "Succès à l'Échelle",
+          "badge": "Entreprise",
+          "description": "Pour une croissance sérieuse des revenus",
+          "contents": [
+            "Dix boîtes format essai (250 petits sacs)",
+            "Dix boîtes format moyen (150 sacs moyens)",
+            "Dix boîtes format grand (100 grands sacs)",
+            "BONUS: 25 sacs essai supplémentaires pour accrocher de nouveaux clients"
+          ],
+          "features": [
+            "Tout dans Partenaire Croissance",
+            "Gestionnaire de compte dédié",
+            "Matériel marketing personnalisé et co-branding",
+            "Droits de protection territoriale",
+            "Revues d'affaires trimestrielles et analyses de ventes",
+            "Allocation d'inventaire prioritaire"
+          ],
+          "cta": "Commencer"
+        }
+      },
+      "bottomCta": {
+        "title": "Prêt à Augmenter Vos Revenus?",
+        "description": "Rejoignez 21 détaillants établis de Montréal et environs qui gagnent déjà de hautes marges avec Purrify.",
+        "setupNote": "L'installation prend moins de 24 heures.",
+        "primaryButton": "Postuler pour le Partenariat",
+        "secondaryButton": "Appelez-nous"
+      }
+    },
+    "contact": {
+      "title": "Devenez Partenaire Détaillant Purrify",
+      "description": "Prêt à ajouter l'additif de litière #1 au Canada à votre magasin? Remplissez le formulaire ci-dessous et nous vous répondrons dans les 24 heures.",
+      "sectionBadge": "Rejoignez 21 Partenaires Établis",
+      "sectionTitle": "Commencez Votre",
+      "sectionTitleHighlight": "Partenariat Aujourd'hui",
+      "sectionDescription": "Prêt à gagner des marges de 50%+ avec la solution anti-odeur #1 au Canada?",
+      "setupNote": "L'installation prend moins de 24 heures.",
+      "urgencyStats": {
+        "approvalTime": {
+          "value": "72h",
+          "label": "Temps d'Approbation"
+        },
+        "setupFees": {
+          "value": "Zéro",
+          "label": "Frais d'Installation"
+        },
+        "currentPartners": {
+          "value": "21",
+          "label": "Partenaires Actuels"
+        }
+      },
+      "form": {
+        "title": "Candidature de Partenariat",
+        "subtitle": "Candidature rapide de 2 minutes. Nous répondons le jour même!",
+        "fields": {
+          "businessName": {
+            "label": "Nom de l'Entreprise",
+            "placeholder": "Nom de Votre Animalerie",
+            "required": true
+          },
+          "contactName": {
+            "label": "Nom du Contact",
+            "placeholder": "Votre Nom Complet",
+            "required": true
+          },
+          "position": {
+            "label": "Votre Poste dans l'Entreprise",
+            "placeholder": "ex. Propriétaire, Gérant, Acheteur, Représentant"
+          },
+          "email": {
+            "label": "Adresse Email",
+            "placeholder": "votre@email.com",
+            "required": true
+          },
+          "phone": {
+            "label": "Numéro de Téléphone",
+            "placeholder": "(555) 123-4567"
+          },
+          "businessType": {
+            "label": "Type d'Entreprise",
+            "placeholder": "Sélectionner le Type d'Entreprise",
+            "required": true,
+            "options": {
+              "independentPetStore": "Animalerie Indépendante",
+              "petStoreChain": "Chaîne d'Animaleries",
+              "veterinaryClinic": "Clinique Vétérinaire",
+              "groomingSalon": "Salon de Toilettage",
+              "distributor": "Distributeur",
+              "other": "Autre"
+            }
+          },
+          "locations": {
+            "label": "Nombre d'Emplacements",
+            "placeholder": "1"
+          },
+          "currentProducts": {
+            "label": "Marque de Litière la Plus Vendue",
+            "placeholder": "Quelle est la marque #1 de litière que vous vendez le plus?"
+          },
+          "message": {
+            "label": "Informations Supplémentaires",
+            "placeholder": "Parlez-nous de votre entreprise et de vos besoins en gros..."
+          }
+        },
+        "submitButton": "Soumettre la Candidature de Partenariat",
+        "submitting": "Soumission en cours..."
+      },
+      "success": {
+        "title": "Candidature Reçue!",
+        "welcome": "Bienvenue dans le Réseau de Partenaires Purrify!",
+        "responseTime": "Nous vous répondrons dans les 72 heures.",
+        "nextSteps": {
+          "title": "Vos Prochaines Étapes",
+          "step1": {
+            "title": "Examen de la Candidature",
+            "description": "Notre équipe examine les détails de votre magasin"
+          },
+          "step2": {
+            "title": "Appel de Partenariat",
+            "description": "Discussion sur les prix, le support et la logistique"
+          },
+          "step3": {
+            "title": "Commencer à Vendre",
+            "description": "Recevoir l'inventaire et lancer"
+          }
+        },
+        "timeline": {
+          "title": "Délai Prévu pour les Revenus",
+          "approval": {
+            "value": "72h",
+            "label": "Approbation"
+          },
+          "firstShipment": {
+            "value": "3-5 jours",
+            "label": "Première Expédition"
+          },
+          "firstSales": {
+            "value": "Semaine 1",
+            "label": "Premières Ventes"
+          }
+        },
+        "needHelp": "Besoin d'aide immédiate?"
+      },
+      "successStories": {
+        "title": "Histoires de Succès de Partenaires",
+        "stories": {
+          "pattesEtGriffes": {
+            "businessName": "Pattes et Griffes – Sainte‑Thérèse",
+            "businessType": "Propriétaire / Gérant",
+            "quote": "Nos clients demandent Purrify par son nom maintenant. C'est une recommandation facile au comptoir et les commandes sont constantes mois après mois.",
+            "metric": "Cycle de 30 jours"
+          },
+          "chico": {
+            "businessName": "Chico – Boul. St‑Laurent (Montréal)",
+            "businessType": "Gérant de Magasin",
+            "quote": "Simple à stocker, bonnes marges, et ça se vend bien. Les matériels POS ont aidé notre équipe à expliquer les avantages rapidement aux clients.",
+            "metric": "Rotation élevée"
+          }
+        }
+      },
+      "contactInfo": {
+        "title": "Besoin d'Aide Immédiate?",
+        "subtitle": "Parlez avec un spécialiste partenariat maintenant",
+        "wholesaleEmail": "wholesale@purrify.ca",
+        "emailLabel": "Email Partenariat",
+        "emailHint": "Cliquez pour rédiger un email ou copier l'adresse.",
+        "copied": "Copié!",
+        "copyFailed": "Échec de la copie",
+        "businessHours": {
+          "title": "Heures d'Ouverture",
+          "hours": "Lundi - Vendredi: 9h - 18h EST"
+        }
+      },
+      "errors": {
+        "submitFailed": "Une erreur s'est produite lors de la soumission. Veuillez réessayer ou nous contacter directement à wholesale@purrify.ca",
+        "defaultSuccess": "Candidature de partenariat envoyée avec succès! Nous vous contacterons dans les 72 heures."
+      }
+    }
+  },
+  "caseStudies": {
+    "customerSuccess": "Études de Cas de Succès Client",
+    "realResults": "Vrais résultats de vrais clients",
+    "detailedStories": "Découvrez comment Purrify transforme les foyers à travers le Canada grâce à des études de cas détaillées",
+    "averageOdorReduction": "Réduction Moyenne des Odeurs",
+    "timeToSeeResults": "Temps pour Voir les Résultats",
+    "customerSatisfaction": "Satisfaction Client",
+    "catsPerStudy": "Chats par Étude",
+    "theChallenge": "Le Défi",
+    "theSolution": "La Solution",
+    "theResults": "Les Résultats",
+    "longTermOutcome": "Résultat à Long Terme",
+    "keyPainPoints": "Points de Douleur Clés",
+    "implementation": "Mise en Œuvre",
+    "writeYourStory": "Prêt à écrire votre propre histoire de succès ?",
+    "joinSatisfied": "Rejoignez 1 000+ clients satisfaits qui transforment leurs foyers avec Purrify.",
+    "shopPurrify": "Acheter Purrify",
+    "tryFreeSample": "Essayer un Échantillon Gratuit",
+    "moreCustomerStories": "Plus d'Histoires de Clients",
+    "videoTestimonials": "Témoignages Vidéo",
+    "productComparison": "Comparaison de Produits"
+  },
+  "b2bCaseStudies": {
+    "badge": "Résultats Concrets",
+    "title": "Témoignages de Nos Partenaires",
+    "subtitle": "Découvrez comment des entreprises comme la vôtre ont obtenu des résultats mesurables avec Purrify",
+    "cta": "Prêt à voir des résultats similaires pour votre entreprise?",
+    "ctaButton": "Contactez Notre Équipe Partenariat",
+    "businessTypes": {
+      "veterinarian": "Clinique Vétérinaire",
+      "catCafe": "Café à Chats",
+      "shelter": "Refuge Animalier",
+      "groomer": "Salon de Toilettage",
+      "hospitality": "Location Pet-Friendly"
+    },
+    "labels": {
+      "challenge": "Défi",
+      "solution": "Solution",
+      "catsServed": "chats servis"
+    }
+  },
+  "groomers": {
+    "seo": {
+      "pageTitle": "Solutions Toiletteurs pour Chats",
+      "description": "Maintenez un salon de toilettage frais. Purrify élimine les odeurs de litière pour une meilleure expérience client.",
+      "keywords": "odeur salon toilettage, fournitures toilettage chat, fraîcheur salon, contrôle odeur toilettage",
+      "openGraphAlt": "Partenaires Toiletteurs"
+    },
+    "hero": {
+      "badge": "Programme Partenariat Toiletteurs",
+      "titleLine1": "Un Salon Frais",
+      "titleLine2": "Des Clients Satisfaits",
+      "description": "Offrez une expérience de toilettage premium avec un environnement frais et sans parfum.",
+      "stats": {
+        "freshness": "Fraîcheur",
+        "clients": "Clients Satisfaits",
+        "natural": "Naturel"
+      },
+      "cta": {
+        "primary": "Demander un Échantillon",
+        "secondary": "Voir les Tarifs Pro"
+      }
+    },
+    "cta": {
+      "primary": "Commencer à Vendre Purrify",
+      "secondary": "Demander des Informations"
+    },
+    "opportunity": {
+      "title": "L'Opportunité pour les Toiletteurs",
+      "intro": "Chaque rendez-vous de toilettage est une opportunité de résoudre la plainte #1 de vos clients.",
+      "points": {
+        "clientsAsk": {
+          "title": "Les Clients Demandent Déjà",
+          "description": "Les propriétaires de chats mentionnent fréquemment les odeurs de litière lors des rendez-vous."
+        },
+        "expertPosition": {
+          "title": "Positionnez-vous en Expert",
+          "description": "Quand vous recommandez Purrify, vous devenez le conseiller de confiance pour les soins félins."
+        },
+        "repeatRevenue": {
+          "title": "Revenus Récurrents",
+          "description": "Purrify est un produit consommable. Les clients reviennent mensuellement."
+        },
+        "easyDemo": {
+          "title": "Résultats Démontrables",
+          "description": "Montrez la différence dans votre salon. Une démo crée un client à vie."
+        }
+      }
+    },
+    "addOnSale": {
+      "title": "Vente Additionnelle Facile",
+      "description": "Purrify se vend tout seul pendant les rendez-vous",
+      "points": [
+        "Explication rapide de 30 secondes pendant le toilettage",
+        "Conversation naturelle sur les soins félins",
+        "Les clients font déjà confiance à vos recommandations",
+        "Pas de pression - le produit parle de lui-même"
+      ]
+    },
+    "howItWorks": {
+      "title": "Comment Ça Marche",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Demandez Votre Échantillon",
+          "description": "Recevez un pack de démonstration gratuit pour tester Purrify dans votre salon."
+        },
+        {
+          "number": "02",
+          "title": "Montrez à Vos Clients",
+          "description": "Utilisez Purrify pendant le toilettage et laissez les clients voir la différence."
+        },
+        {
+          "number": "03",
+          "title": "Recommandez avec Confiance",
+          "description": "Vos clients feront confiance à votre recommandation d'expert."
+        },
+        {
+          "number": "04",
+          "title": "Gagnez des Commissions",
+          "description": "Recevez des marges attractives sur chaque vente réalisée."
+        }
+      ]
+    },
+    "partnerBenefits": {
+      "title": "Avantages Partenariat",
+      "benefits": {
+        "wholesale": {
+          "title": "Tarifs de Gros",
+          "description": "Marges premium sur chaque vente. Remises volume disponibles."
+        },
+        "display": {
+          "title": "Matériel d'Affichage",
+          "description": "Présentoirs comptoir gratuits et matériel promotionnel."
+        },
+        "training": {
+          "title": "Formation Produit",
+          "description": "Formation rapide sur les avantages du produit."
+        },
+        "tracking": {
+          "title": "Suivi des Ventes",
+          "description": "Suivez vos ventes avec notre portail partenaire."
+        }
+      }
+    },
+    "retailPackage": {
+      "title": "Votre Pack Toiletteur",
+      "subtitle": "Tout ce dont vous avez besoin pour commencer",
+      "includes": [
+        "Présentoir comptoir",
+        "Échantillons pour démos",
+        "Matériel promotionnel",
+        "Guide de formation",
+        "Support marketing"
+      ]
+    },
+    "testimonials": {
+      "title": "Ce que Disent les Toiletteurs",
+      "items": [
+        {
+          "quote": "Mes clients adorent que j'aie une solution pour leurs problèmes d'odeur de litière.",
+          "author": "Salon de Toilettage Chat",
+          "location": "Montréal, QC",
+          "result": "15+ unités/mois"
+        }
+      ]
+    },
+    "form": {
+      "title": "Demande de Prix pour Toiletteurs",
+      "salonName": "Nom du Salon",
+      "salonNamePlaceholder": "Nom de votre salon de toilettage",
+      "salonPlaceholder": "Nom de votre salon de toilettage",
+      "contactName": "Nom du Contact",
+      "contactPlaceholder": "Votre nom complet",
+      "email": "Courriel",
+      "emailPlaceholder": "vous@email.com",
+      "phone": "Téléphone",
+      "phonePlaceholder": "(555) 123-4567",
+      "address": "Adresse",
+      "addressPlaceholder": "Adresse de votre salon",
+      "catsPerWeek": "Chats par Semaine",
+      "catsPerWeekPlaceholder": "Combien de chats toilettez-vous par semaine?",
+      "catsPlaceholder": "Combien de chats toilettez-vous par semaine?",
+      "message": "Message",
+      "messagePlaceholder": "Parlez-nous de votre salon et de vos besoins...",
+      "submit": "Envoyer la Demande",
+      "submitting": "Envoi en cours...",
+      "success": {
+        "title": "Demande Envoyée!",
+        "message": "Nous vous contacterons dans les 24-48 heures avec des informations sur les prix de gros."
+      }
+    },
+    "contact": {
+      "title": "Questions? Parlons-en!",
+      "description": "Notre équipe partenariat est là pour vous aider.",
+      "callUs": "Appelez-nous",
+      "emailUs": "Écrivez-nous",
+      "moreInfo": "Besoin de Plus d'Informations?",
+      "requestGuide": "Demandez notre guide détaillé"
+    }
+  },
+  "catCafes": {
+    "seo": {
+      "pageTitle": "Purrify pour Cafés de Chats | Gardez Votre Espace Frais",
+      "description": "L'arme secrète des cafés de chats prospères. Éliminez les odeurs de plusieurs chats sans masquer les senteurs avec des parfums lourds.",
+      "keywords": "contrôle odeur café chat, solution odeur plusieurs chats, éliminateur odeur chat commercial, hygiène café chat",
+      "openGraphAlt": "Solution d'élimination des odeurs pour café à chats"
+    },
+    "hero": {
+      "badge": "Approuvé par les Cafés de Chats",
+      "titleLine1": "Chats Heureux.",
+      "titleLine2": "Espace Frais.",
+      "description": "Les cafés de chats font confiance à Purrify pour garder leurs espaces propres sans parfums écrasants qui stressent les chats ou dérangent les clients.",
+      "stats": {
+        "days": "7+ Jours",
+        "fragrances": "0 Parfums",
+        "natural": "100% Naturel"
+      },
+      "cta": {
+        "primary": "Obtenir les Prix de Gros",
+        "secondary": "En Savoir Plus"
+      }
+    },
+    "form": {
+      "title": "Demande de Prix pour Cafés de Chats",
+      "cafeName": "Nom du Café",
+      "cafePlaceholder": "Nom de votre café de chats",
+      "name": "Nom du Café",
+      "namePlaceholder": "Nom de votre café de chats",
+      "contactName": "Nom du Contact",
+      "contactPlaceholder": "Votre nom complet",
+      "email": "Courriel",
+      "emailPlaceholder": "vous@email.com",
+      "phone": "Téléphone",
+      "phonePlaceholder": "(555) 123-4567",
+      "address": "Adresse",
+      "addressPlaceholder": "Adresse de votre café",
+      "cats": "Nombre de Chats",
+      "catsPlaceholder": "Combien de chats avez-vous dans le café?",
+      "message": "Message",
+      "messagePlaceholder": "Parlez-nous de votre café et de vos besoins...",
+      "submit": "Envoyer la Demande",
+      "submitting": "Envoi en cours...",
+      "success": {
+        "title": "Demande Envoyée!",
+        "message": "Nous vous contacterons dans les 24-48 heures avec des informations sur les prix de gros."
+      }
+    },
+    "contact": {
+      "title": "Des Questions?",
+      "description": "Notre équipe de partenariats est prête à vous aider.",
+      "callUs": "Appelez-nous",
+      "emailUs": "Envoyez-nous un courriel",
+      "moreInfo": "En Savoir Plus",
+      "requestGuide": "Demander un Guide"
+    }
+  },
+  "shelters": {
+    "seo": {
+      "pageTitle": "Solutions Refuges Animaliers",
+      "description": "Gérez efficacement les odeurs de refuge. Purrify aide à créer un environnement accueillant pour les adoptants potentiels.",
+      "keywords": "contrôle odeur refuge, fournitures refuge animalier, litière gros quantité, gestion odeurs refuge",
+      "openGraphAlt": "Partenaires Refuges"
+    },
+    "hero": {
+      "badge": "Programme Partenariat Refuges",
+      "titleLine1": "Créez un Environnement",
+      "titleLine2": "Accueillant pour l'Adoption",
+      "description": "Les premières impressions comptent pour les adoptants potentiels. Gardez votre refuge frais sans parfums agressifs.",
+      "stats": {
+        "cats": "Chats Aidés",
+        "shelters": "Refuges Partenaires",
+        "natural": "Naturel"
+      },
+      "cta": {
+        "primary": "Demander un Échantillon Refuge",
+        "secondary": "Voir le Programme de Don"
+      }
+    },
+    "benefits": {
+      "title": "Avantages Partenaire Refuge",
+      "pricing": {
+        "title": "Tarifs Spéciaux",
+        "description": "Tarifs réduits pour les refuges sans but lucratif et organisations de sauvetage."
+      },
+      "priority": {
+        "title": "Support Prioritaire",
+        "description": "Équipe de support dédiée pour aider avec les grandes commandes et besoins urgents."
+      },
+      "donations": {
+        "title": "Programme de Dons",
+        "description": "Les refuges éligibles peuvent recevoir des produits donnés pour les événements de collecte de fonds."
+      }
+    },
+    "form": {
+      "title": "Demande de Partenariat Refuge",
+      "orgName": "Nom de l'Organisation",
+      "orgPlaceholder": "Nom de votre refuge ou organisation",
+      "orgNamePlaceholder": "Nom de votre refuge",
+      "contactName": "Nom du Contact",
+      "contactPlaceholder": "Votre nom complet",
+      "email": "Courriel",
+      "emailPlaceholder": "vous@email.com",
+      "phone": "Téléphone",
+      "phonePlaceholder": "(555) 123-4567",
+      "address": "Adresse",
+      "addressPlaceholder": "Adresse de votre refuge",
+      "catsCount": "Nombre de Chats",
+      "catsPlaceholder": "Combien de chats accueillez-vous?",
+      "nonProfit": "Numéro d'Organisme Sans But Lucratif (si applicable)",
+      "nonProfitPlaceholder": "ex: 123456789 RR 0001",
+      "message": "Message",
+      "messagePlaceholder": "Parlez-nous de votre refuge et de vos besoins...",
+      "submit": "Envoyer la Demande",
+      "submitting": "Envoi en cours...",
+      "success": {
+        "title": "Demande Envoyée!",
+        "message": "Nous vous contacterons dans les 24-48 heures avec des informations sur notre programme de partenariat."
+      }
+    },
+    "contact": {
+      "title": "Des Questions?",
+      "description": "Notre équipe de partenariats est prête à vous aider.",
+      "callUs": "Appelez-nous",
+      "emailUs": "Envoyez-nous un courriel",
+      "moreInfo": "En Savoir Plus",
+      "requestGuide": "Demander un Guide"
+    }
+  },
+  "hospitality": {
+    "seo": {
+      "pageTitle": "Solutions Hébergement Pet-Friendly",
+      "description": "Gardez vos hébergements Airbnb et locations pet-friendly sans odeur. Solution discrète pour les propriétaires acceptant les animaux.",
+      "keywords": "airbnb pet friendly, hébergement chat, location vacances animaux, contrôle odeur location",
+      "openGraphAlt": "Partenaires Hébergement"
+    },
+    "hero": {
+      "badge": "Programme Partenariat Hébergement",
+      "titleLine1": "Hébergements Pet-Friendly",
+      "titleLine2": "Zéro Odeur",
+      "description": "Acceptez les animaux sans compromettre la fraîcheur. Solution discrète entre les réservations.",
+      "stats": {
+        "reviews": "Avis 5 Étoiles",
+        "bookings": "Réservations",
+        "natural": "Naturel"
+      },
+      "cta": {
+        "primary": "Demander un Échantillon",
+        "secondary": "Voir les Solutions Hôtes"
+      }
+    }
+  }
+}

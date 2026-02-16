@@ -1,10 +1,6 @@
 import type { Metadata } from 'next';
 import PageContent from './PageContent';
 import { SITE_NAME } from '@/lib/constants';
-import { getCommercialExperimentState } from '@/lib/experiments/commercial-server';
-import { ServerExperimentViewTracker } from '@/components/experiments/ServerExperimentViewTracker';
-
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Purrify Reviews - What Cat Owners Are Saying',
@@ -85,40 +81,14 @@ const productSchema = {
   },
 };
 
-export default async function ReviewsPage() {
-  const experiments = await getCommercialExperimentState();
-  const experimentCopy = {
-    headline: experiments.headline === 'variant'
-      ? 'Customer Feedback From Cat Owners'
-      : 'What Our Customers Are Saying',
-    subheadline: experiments.headline === 'variant'
-      ? 'What to expect from an activated carbon additive, and how to use it in your own routine.'
-      : 'What to expect from an activated carbon additive, and how to use it in your own routine.',
-    ctaHeadline: experiments.ctaCopy === 'variant'
-      ? 'Ready to Test This in Your Home?'
-      : 'Ready to Experience the Difference?',
-    ctaBody: experiments.ctaCopy === 'variant'
-      ? 'Start with a low-risk trial and verify results in your own litter routine.'
-      : 'Start with a low-risk trial and see how it fits into your litter routine.',
-    primaryCta: experiments.ctaCopy === 'variant'
-      ? 'See Product Options'
-      : 'Shop Now',
-    secondaryCta: experiments.ctaCopy === 'variant'
-      ? 'Start Low-Risk Trial'
-      : 'Try Free Sample',
-    proofOrder: experiments.proofOrder === 'variant'
-      ? 'trust-first'
-      : 'reviews-first',
-  } as const;
-
+export default function ReviewsPage() {
   return (
     <>
-      <ServerExperimentViewTracker assignments={experiments.assignments} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
       />
-      <PageContent experimentCopy={experimentCopy} />
+      <PageContent />
     </>
   );
 }

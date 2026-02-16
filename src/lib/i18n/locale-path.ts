@@ -1,7 +1,22 @@
 import type { Locale } from '@/i18n/config';
-import { isCommercialRoute, normalizeRoutePath } from '@/lib/experiments/commercial';
 
 const LOCALE_SEGMENT_PATTERN = /^\/(en|fr|zh|es)(?=\/|$)/;
+
+const COMMERCIAL_ROUTE_PATHS = [
+  '/products',
+  '/learn',
+  '/try-free',
+  '/reviews',
+] as const;
+
+function normalizeRoutePath(pathname: string): string {
+  if (!pathname || pathname === '/') {
+    return '/';
+  }
+
+  const stripped = pathname.replace(/\/+$/, '');
+  return stripped.length === 0 ? '/' : stripped;
+}
 
 function normalizePathname(pathname: string): string {
   if (!pathname) {
@@ -11,6 +26,10 @@ function normalizePathname(pathname: string): string {
   const withLeadingSlash = pathname.startsWith('/') ? pathname : `/${pathname}`;
   const trimmed = withLeadingSlash.replace(/\/+$/, '');
   return trimmed.length === 0 ? '/' : trimmed;
+}
+
+function isCommercialRoute(pathname: string): boolean {
+  return COMMERCIAL_ROUTE_PATHS.includes(normalizeRoutePath(pathname) as (typeof COMMERCIAL_ROUTE_PATHS)[number]);
 }
 
 function supportsLocalePrefix(pathWithoutLocale: string): boolean {

@@ -1,0 +1,109 @@
+{
+  "reviews": {
+    "heading": "What Cat Owners Say",
+    "subheading": "Real reviews from real customers",
+    "verifiedPurchase": "Purchase",
+    "helpful": "Helpful",
+    "writeReview": "Write a Review",
+    "filterBy": "Filter by",
+    "allRatings": "All Ratings",
+    "sortBy": "Sort by",
+    "mostRecent": "Most Recent",
+    "mostHelpful": "Most Helpful",
+    "highestRated": "Highest Rated",
+    "lowestRated": "Lowest Rated",
+    "showingReviews": "Showing {{count}} reviews",
+    "noReviews": "No reviews yet. Be the first to share your experience!",
+    "loadMore": "Load More Reviews"
+  },
+  "reviewsPage": {
+    "pageTitle": "Customer Reviews",
+    "metaDescription": "Customer feedback about Purrify and how cat owners use an activated carbon additive to reduce litter box odor. Ships to USA & Canada.",
+    "badge": "Customer Reviews",
+    "heading": "Real Stories from Happy Cat Owners",
+    "description": "Customer feedback about Purrify and how cat owners use an activated carbon additive to reduce litter box odor.",
+    "breadcrumb": {
+      "home": "Home",
+      "reviews": "Reviews"
+    },
+    "stats": {
+      "averageRating": "Average Rating",
+      "verifiedReviews": "Customer Reviews",
+      "happyCustomers": "Happy Customers",
+      "monthsInMarket": "Months in Market"
+    },
+    "reviewCard": {
+      "verified": "Verified",
+      "product": "Product",
+      "cats": "Cats",
+      "useCase": "Use Case"
+    },
+    "trustSection": {
+      "heading": "Why Customers Trust Purrify",
+      "verifiedTitle": "Customer Feedback",
+      "verifiedDesc": "We will publish reviews and ratings once a third-party review system is in place.",
+      "ratingTitle": "Science-linked",
+      "ratingDesc": "See citations and how-to guides to verify key claims.",
+      "customersTitle": "Helpful Resources",
+      "customersDesc": "Guides for litter box odor control, ammonia, and safe use."
+    },
+    "ctaSection": {
+      "heading": "Ready to Try It at Home?",
+      "description": "Start with a low-risk trial and see how it fits into your litter routine.",
+      "shopNow": "Shop Now",
+      "tryFreeSample": "Try Free Sample"
+    },
+    "relatedLinks": {
+      "heading": "Learn More About Purrify",
+      "comparison": "Product Comparison",
+      "comparisonDesc": "See how Purrify compares",
+      "caseStudies": "Case Studies",
+      "caseStudiesDesc": "Detailed success stories",
+      "usageInfo": "Usage Information",
+      "usageInfoDesc": "Using around cats and kittens",
+      "storeLocations": "Store Locations",
+      "storeLocationsDesc": "Find Purrify near you"
+    }
+  },
+  "reviewSystem": {
+    "customerReviews": "Customer Reviews",
+    "comingSoon": "Customer reviews will appear here once our review system is live.",
+    "reviews": "reviews",
+    "basedOn": "Based on",
+    "wouldRecommend": "would recommend",
+    "verifiedPurchases": "purchases",
+    "viewAllReviews": "View All Reviews",
+    "loadMoreReviews": "Load More Reviews",
+    "filters": {
+      "allRatings": "All Ratings",
+      "stars": "Stars",
+      "star": "Star",
+      "allSizes": "All Sizes",
+      "trial": "12g Trial",
+      "regular": "50g Regular",
+      "large": "120g Large"
+    },
+    "sort": {
+      "newestFirst": "Newest First",
+      "oldestFirst": "Oldest First",
+      "highestRated": "Highest Rated",
+      "lowestRated": "Lowest Rated",
+      "mostHelpful": "Most Helpful"
+    },
+    "review": {
+      "verifiedPurchase": "Purchase",
+      "size": "Size",
+      "cat": "cat",
+      "cats": "cats",
+      "usingFor": "Using for",
+      "helpful": "Helpful",
+      "recommendsProduct": "Recommends this product"
+    }
+  },
+  "testimonialsSection": {
+    "customerLove": "Customer Love",
+    "littersOfLove": "Real Results From Happy Cat Parents",
+    "dontJustTakeOurWord": "Don't just take our word for it. Here's what our customers have to say about Purrify.",
+    "readMoreReviews": "Read More Reviews"
+  }
+}

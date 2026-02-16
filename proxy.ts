@@ -10,16 +10,8 @@ import { getToken } from 'next-auth/jwt';
 import { isAICrawler, getAICrawlerName } from './src/lib/ai-user-agents';
 import { defaultLocale, isValidLocale, type Locale } from './src/i18n/config';
 import { getRouteCachePolicy } from './src/lib/cache/route-cache-policy-map';
-import {
-  COMMERCIAL_EXPERIMENTS,
-  isCommercialRoute,
-  isExperimentVariant,
-  normalizeRoutePath,
-  type ExperimentVariant,
-} from './src/lib/experiments/commercial';
 
 const LOCALE_COOKIE_NAME = 'NEXT_LOCALE';
-const EXPERIMENT_VISITOR_COOKIE_NAME = 'purrify_exp_vid';
 
 // Define paths that should bypass middleware
 const PUBLIC_PATHS = [
@@ -46,6 +38,27 @@ const BLOCKED_USER_AGENTS = [
 ];
 
 const COUNTRY_BLOCK_EXEMPT_USER_AGENTS = ['AhrefsBot', 'AhrefsSiteAudit'];
+
+// Commercial routes that support locale prefix
+const COMMERCIAL_ROUTE_PATHS = [
+  '/products',
+  '/learn',
+  '/try-free',
+  '/reviews',
+] as const;
+
+function normalizeRoutePath(pathname: string): string {
+  if (!pathname || pathname === '/') {
+    return '/';
+  }
+
+  const stripped = pathname.replace(/\/+$/, '');
+  return stripped.length === 0 ? '/' : stripped;
+}
+
+function isCommercialRoute(pathname: string): boolean {
+  return COMMERCIAL_ROUTE_PATHS.includes(normalizeRoutePath(pathname) as (typeof COMMERCIAL_ROUTE_PATHS)[number]);
+}
 
 function isPublicPath(pathname: string): boolean {
   return PUBLIC_PATHS.some((path) => pathname.startsWith(path));
@@ -163,82 +176,8 @@ function applyRouteCachePolicy(response: NextResponse, pathname: string): void {
   }
 }
 
-function getDeterministicBucket(seed: string): number {
-  let hash = 0;
-  for (let i = 0; i < seed.length; i += 1) {
-    hash = (hash * 31 + seed.charCodeAt(i)) % 10000;
-  }
-  return Math.abs(hash) % 100;
-}
-
-function assignExperimentVariant(visitorId: string, testSlug: string, trafficSplit: number): ExperimentVariant {
-  const bucket = getDeterministicBucket(`${visitorId}:${testSlug}`);
-  return bucket < trafficSplit ? 'variant' : 'control';
-}
-
-function resolveCommercialExperimentContext(
-  request: NextRequest,
-  pathWithoutLocale: string
-): {
-  requestHeaders: Headers;
-  cookiesToSet: Array<{ name: string; value: string; maxAge: number }>;
-} {
-  const requestHeaders = new Headers();
-  const cookiesToSet: Array<{ name: string; value: string; maxAge: number }> = [];
-
-  if (!isCommercialRoute(pathWithoutLocale)) {
-    return { requestHeaders, cookiesToSet };
-  }
-
-  const existingVisitorId = request.cookies.get(EXPERIMENT_VISITOR_COOKIE_NAME)?.value;
-  const visitorId = existingVisitorId && existingVisitorId.length > 0
-    ? existingVisitorId
-    : crypto.randomUUID();
-
-  if (!existingVisitorId) {
-    cookiesToSet.push({
-      name: EXPERIMENT_VISITOR_COOKIE_NAME,
-      value: visitorId,
-      maxAge: 60 * 60 * 24 * 365,
-    });
-  }
-
-  for (const experiment of COMMERCIAL_EXPERIMENTS) {
-    const cookieVariant = request.cookies.get(experiment.cookieName)?.value;
-    const variant = isExperimentVariant(cookieVariant)
-      ? cookieVariant
-      : assignExperimentVariant(visitorId, experiment.slug, experiment.trafficSplit);
-
-    requestHeaders.set(experiment.headerName, variant);
-
-    if (!isExperimentVariant(cookieVariant)) {
-      cookiesToSet.push({
-        name: experiment.cookieName,
-        value: variant,
-        maxAge: 60 * 60 * 24 * 30,
-      });
-    }
-  }
-
-  return { requestHeaders, cookiesToSet };
-}
-
-function persistExperimentCookies(
-  response: NextResponse,
-  cookiesToSet: Array<{ name: string; value: string; maxAge: number }>
-): void {
-  for (const cookie of cookiesToSet) {
-    response.cookies.set(cookie.name, cookie.value, {
-      path: '/',
-      maxAge: cookie.maxAge,
-      sameSite: 'lax',
-      secure: process.env.NODE_ENV === 'production',
-    });
-  }
-}
-
 export async function proxy(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  const { pathname, search } = request.nextUrl;
   const userAgent = request.headers.get('user-agent') || '';
   const userAgentLower = userAgent.toLowerCase();
   const isCountryBlockExempt = COUNTRY_BLOCK_EXEMPT_USER_AGENTS.some((bot) =>
@@ -247,6 +186,26 @@ export async function proxy(request: NextRequest) {
 
   // @ts-expect-error - geo is added by Vercel edge runtime
   const country = request.geo?.country || request.headers.get('cf-ipcountry') || 'unknown';
+
+  // Handle trailing slash redirects (from former middleware.ts)
+  if (!pathname.endsWith('/') && pathname !== '/') {
+    // Skip API routes
+    if (!pathname.startsWith('/api')) {
+      // Skip Next.js internals
+      if (!pathname.startsWith('/_next')) {
+        // Skip static files with extensions
+        if (!pathname.match(/\.[a-zA-Z0-9]+$/) && !pathname.includes('.')) {
+          // Skip sitemap and robots
+          if (pathname !== '/sitemap.xml' && pathname !== '/robots.txt') {
+            // Redirect to trailing slash version with 308 (permanent redirect)
+            const url = request.nextUrl.clone();
+            url.pathname = pathname + '/';
+            return NextResponse.redirect(url, 308);
+          }
+        }
+      }
+    }
+  }
 
   if (isPublicPath(pathname)) {
     return NextResponse.next();
@@ -277,11 +236,6 @@ export async function proxy(request: NextRequest) {
   const resolvedLocale = resolveLocale(request, pathLocale);
   const pathWithoutLocale = getPathWithoutLocale(pathname);
   const requestHeaders = buildRequestHeaders(request, resolvedLocale);
-  const experimentContext = resolveCommercialExperimentContext(request, pathWithoutLocale);
-
-  experimentContext.requestHeaders.forEach((value, key) => {
-    requestHeaders.set(key, value);
-  });
 
   if (pathLocale) {
     if (!supportsLocalePrefix(pathWithoutLocale)) {
@@ -290,7 +244,6 @@ export async function proxy(request: NextRequest) {
 
       const redirectResponse = NextResponse.redirect(redirectUrl);
       persistLocale(redirectResponse, pathLocale);
-      persistExperimentCookies(redirectResponse, experimentContext.cookiesToSet);
       applySecurityHeaders(redirectResponse);
       applyRouteCachePolicy(redirectResponse, pathname);
       return redirectResponse;
@@ -309,7 +262,6 @@ export async function proxy(request: NextRequest) {
       url.searchParams.set('callbackUrl', pathname);
       const response = NextResponse.redirect(url);
       persistLocale(response, resolvedLocale);
-      persistExperimentCookies(response, experimentContext.cookiesToSet);
       applySecurityHeaders(response);
       applyRouteCachePolicy(response, pathname);
       return response;
@@ -321,7 +273,6 @@ export async function proxy(request: NextRequest) {
       if (userRole !== 'admin') {
         const response = NextResponse.redirect(new URL('/admin/blog', request.url));
         persistLocale(response, resolvedLocale);
-        persistExperimentCookies(response, experimentContext.cookiesToSet);
         applySecurityHeaders(response);
         applyRouteCachePolicy(response, pathname);
         return response;
@@ -348,7 +299,6 @@ export async function proxy(request: NextRequest) {
     response.headers.set('X-Content-Optimized-For', 'AI-Consumption');
     response.headers.set('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
     persistLocale(response, resolvedLocale);
-    persistExperimentCookies(response, experimentContext.cookiesToSet);
     applySecurityHeaders(response);
     applyRouteCachePolicy(response, pathname);
     return response;
@@ -361,7 +311,6 @@ export async function proxy(request: NextRequest) {
   });
 
   persistLocale(response, resolvedLocale);
-  persistExperimentCookies(response, experimentContext.cookiesToSet);
   applySecurityHeaders(response);
   applyRouteCachePolicy(response, pathname);
   return response;

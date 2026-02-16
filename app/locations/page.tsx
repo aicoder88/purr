@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: seoTitle,
     description: seoDescription,
     alternates: {
-      canonical: `${SITE_URL}/locations`,
+      canonical: `${SITE_URL}/locations/`,
       languages: {
         'en-CA': `${SITE_URL}/locations`,
         // Note: Non-English location pages are excluded from sitemap (noindexed)

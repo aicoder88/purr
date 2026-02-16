@@ -1,0 +1,71 @@
+{
+  "referral": {
+    "dashboard": {
+      "title": "Give $5, Get $5",
+      "loginRequired": "Sign in to access your referral dashboard and start earning rewards.",
+      "signIn": "Sign In",
+      "retry": "Try Again",
+      "generateDescription": "Generate your unique referral code and share it with friends. They get $5 off their first order, and you get $5 credit when they purchase!",
+      "generateButton": "Generate My Referral Code",
+      "generating": "Generating..."
+    },
+    "stats": {
+      "completedReferrals": "Completed Referrals",
+      "totalEarned": "Total Earned",
+      "availableCredit": "Available Credit",
+      "pending": "Pending"
+    },
+    "milestone": {
+      "title": "Milestone Progress",
+      "referrals": "referrals",
+      "nextReward": "Next reward"
+    },
+    "rewards": {
+      "title": "Your Rewards",
+      "credit": "Credit",
+      "available": "Available"
+    },
+    "activity": {
+      "title": "Recent Activity",
+      "completed": "Completed",
+      "pending": "Pending"
+    },
+    "widget": {
+      "title": "Give $5, Get $5",
+      "giveGet": "Give $5, Get $5",
+      "description": "Share your code with friends. They get $5 off, you get $5 credit!",
+      "shareDescription": "Share your code with friends",
+      "yourCode": "Your Referral Code",
+      "shareLink": "Share Link",
+      "copy": "Copy",
+      "copyCode": "Copy Code",
+      "copyLink": "Copy Link",
+      "copied": "Copied!",
+      "shareVia": "Share via",
+      "howItWorks": "How it works",
+      "step1": "Share your code or link with friends",
+      "step2": "They get $5 off their first order",
+      "step3": "You get $5 credit when they purchase"
+    },
+    "share": {
+      "email": "Email",
+      "sms": "SMS",
+      "link": "Link"
+    },
+    "checkout": {
+      "haveCode": "Have a referral code? Click here",
+      "enterReferralCode": "Enter Referral Code",
+      "enterCode": "Please enter a referral code",
+      "emailRequired": "Please enter your email first",
+      "invalidCode": "Invalid referral code",
+      "error": "Failed to apply code. Please try again.",
+      "apply": "Apply",
+      "applying": "Applying...",
+      "applied": "Referral code applied!",
+      "referredBy": "Referred by {name}",
+      "off": "off",
+      "remove": "Remove",
+      "discountNote": "Get $5 off your order with a friend's referral code"
+    }
+  }
+}

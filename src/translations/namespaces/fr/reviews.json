@@ -1,0 +1,109 @@
+{
+  "reviews": {
+    "heading": "Ce que disent les propriétaires de chats",
+    "subheading": "De vrais avis de vrais clients",
+    "verifiedPurchase": "Achat",
+    "helpful": "Utile",
+    "writeReview": "Écrire un avis",
+    "filterBy": "Filtrer par",
+    "allRatings": "Toutes les notes",
+    "sortBy": "Trier par",
+    "mostRecent": "Plus récent",
+    "mostHelpful": "Plus utile",
+    "highestRated": "Mieux noté",
+    "lowestRated": "Moins bien noté",
+    "showingReviews": "Affichage de {{count}} avis",
+    "noReviews": "Aucun avis pour le moment. Soyez le premier à partager votre expérience!",
+    "loadMore": "Charger plus d'avis"
+  },
+  "reviewsPage": {
+    "pageTitle": "Avis Clients",
+    "metaDescription": "Avis clients sur Purrify et comment utiliser un additif au charbon actif pour réduire les odeurs de litière. Livraison aux États-Unis et au Canada.",
+    "badge": "Avis Clients",
+    "heading": "Vraies Histoires de Propriétaires de Chats Heureux",
+    "description": "Avis clients sur Purrify et conseils pratiques pour réduire les odeurs de litière avec un additif au charbon actif.",
+    "breadcrumb": {
+      "home": "Accueil",
+      "reviews": "Avis"
+    },
+    "stats": {
+      "averageRating": "Note Moyenne",
+      "verifiedReviews": "Avis clients",
+      "happyCustomers": "Clients Satisfaits",
+      "monthsInMarket": "Mois sur le Marché"
+    },
+    "reviewCard": {
+      "verified": "Client",
+      "product": "Produit",
+      "cats": "Chats",
+      "useCase": "Cas d'Usage"
+    },
+    "trustSection": {
+      "heading": "Pourquoi les Clients Font Confiance à Purrify",
+      "verifiedTitle": "Avis clients",
+      "verifiedDesc": "Nous publierons avis et notes dès qu'un système d'avis tiers sera en place.",
+      "ratingTitle": "Science et ressources",
+      "ratingDesc": "Consultez les citations et les guides pour vérifier les affirmations clés.",
+      "customersTitle": "Guides pratiques",
+      "customersDesc": "Solutions pour odeur de litière, ammoniac et utilisation en toute sécurité."
+    },
+    "ctaSection": {
+      "heading": "Prêt à essayer chez vous ?",
+      "description": "Commencez avec un essai à faible risque et voyez comment cela s'intègre à votre routine de litière.",
+      "shopNow": "Acheter Maintenant",
+      "tryFreeSample": "Essayer un Échantillon Gratuit"
+    },
+    "relatedLinks": {
+      "heading": "En Savoir Plus sur Purrify",
+      "comparison": "Comparaison de Produits",
+      "comparisonDesc": "Voir comment Purrify se compare",
+      "caseStudies": "Études de Cas",
+      "caseStudiesDesc": "Histoires de succès détaillées",
+      "usageInfo": "Informations d'Utilisation",
+      "usageInfoDesc": "Utilisation avec les chats et chatons",
+      "storeLocations": "Points de Vente",
+      "storeLocationsDesc": "Trouver Purrify près de chez vous"
+    }
+  },
+  "reviewSystem": {
+    "customerReviews": "Avis clients",
+    "comingSoon": "Les avis clients apparaîtront ici dès que notre système d'avis sera en ligne.",
+    "reviews": "avis",
+    "basedOn": "Basé sur",
+    "wouldRecommend": "recommanderaient",
+    "verifiedPurchases": "achats vérifiés",
+    "viewAllReviews": "Voir tous les avis",
+    "loadMoreReviews": "Charger plus d'avis",
+    "filters": {
+      "allRatings": "Toutes les notes",
+      "stars": "Étoiles",
+      "star": "Étoile",
+      "allSizes": "Toutes les tailles",
+      "trial": "12g Essai",
+      "regular": "50g Standard",
+      "large": "120g Grand"
+    },
+    "sort": {
+      "newestFirst": "Plus récent",
+      "oldestFirst": "Plus ancien",
+      "highestRated": "Mieux noté",
+      "lowestRated": "Moins bien noté",
+      "mostHelpful": "Plus utile"
+    },
+    "review": {
+      "verifiedPurchase": "Achat vérifié",
+      "size": "Taille",
+      "cat": "chat",
+      "cats": "chats",
+      "usingFor": "Utilisé depuis",
+      "helpful": "Utile",
+      "recommendsProduct": "Recommande ce produit"
+    }
+  },
+  "testimonialsSection": {
+    "customerLove": "Amour des Clients",
+    "littersOfLove": "Des Portées d'Amour de la Communauté des Propriétaires d'Animaux",
+    "dontJustTakeOurWord": "Ne nous croyez pas sur parole. Voici ce que nos clients disent de Purrify.",
+    "readMoreReviews": "Lire Plus d'Avis"
+  }
+}

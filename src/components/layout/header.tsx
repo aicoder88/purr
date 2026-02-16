@@ -551,6 +551,7 @@ export function Header() {
               onClick={toggleMenu}
               aria-label={t.nav?.toggleMenu || 'Toggle menu'}
               aria-controls={mobileMenuId}
+              aria-expanded={isMenuOpen}
             >
               {isMenuOpen ? (
                 <X className="h-6 w-6" />

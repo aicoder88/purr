@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '@/components/ui/container';
@@ -69,20 +69,24 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   const metaDescription = post.seoDescription || post.excerpt;
   const metaImageUrl = post.image.startsWith('http') ? post.image : `${SITE_URL}${post.image}`;
 
+  const canonicalSlugPath = locale === 'en'
+    ? `${SITE_URL}/blog/${slug}/`
+    : `${SITE_URL}/${locale}/blog/${slug}/`;
+
   return {
     title: `${metaTitle} | ${SITE_NAME}`,
     description: metaDescription,
     alternates: {
-      canonical: post.canonicalUrl || `${SITE_URL}/${locale}/blog/${slug}/`,
+      canonical: post.canonicalUrl || canonicalSlugPath,
       languages: {
-        'en-CA': `${SITE_URL}/en/blog/${slug}/`,
+        'en-CA': `${SITE_URL}/blog/${slug}/`,
         'fr-CA': `${SITE_URL}/fr/blog/${slug}/`,
         'zh-CN': `${SITE_URL}/zh/blog/${slug}/`,
         'es-US': `${SITE_URL}/es/blog/${slug}/`,
-        'en-US': `${SITE_URL}/en/blog/${slug}/`,
-        'x-default': `${SITE_URL}/en/blog/${slug}/`,
+        'en-US': `${SITE_URL}/blog/${slug}/`,
+        'x-default': `${SITE_URL}/blog/${slug}/`,
         // Self-reference for the current locale
-        [hrefLang]: `${SITE_URL}/${locale}/blog/${slug}/`,
+        [hrefLang]: canonicalSlugPath,
       },
     },
     robots: {
@@ -98,7 +102,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     openGraph: {
       title: metaTitle,
       description: metaDescription,
-      url: `${SITE_URL}/${locale}/blog/${slug}/`,
+      url: canonicalSlugPath,
       type: 'article',
       publishedTime: post.date,
       authors: [post.author],
@@ -239,6 +243,11 @@ const uiStrings: Record<string, { backToBlog: string; allArticles: string; visit
 
 export default async function LocalizedBlogPostPage({ params }: BlogPostPageProps) {
   const { locale, slug } = await params;
+
+  // English is served at /blog/ (no locale prefix)
+  if (locale === 'en') {
+    redirect(`/blog/${slug}/`);
+  }
 
   // Validate locale
   if (!isValidLocale(locale)) {

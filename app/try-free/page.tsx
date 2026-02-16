@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import { TryFreeClient } from './TryFreeClient';
 import { SITE_NAME } from '@/lib/constants';
-import { getCommercialExperimentState } from '@/lib/experiments/commercial-server';
-import { ServerExperimentViewTracker } from '@/components/experiments/ServerExperimentViewTracker';
 
 export const metadata: Metadata = {
   title: 'FREE Purrify Trial | Just Pay Shipping | Eliminates Odors',
@@ -44,30 +42,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function TryFreePage() {
-  const experiments = await getCommercialExperimentState();
-  const experimentCopy = {
-    headline: experiments.headline === 'variant'
-      ? 'End Litter Box Odor in 7 Days for Free'
-      : 'Try Purrify FREE',
-    subheadline: experiments.headline === 'variant'
-      ? 'Water-filter grade activated carbon that neutralizes odor instead of masking it. Just pay'
-      : 'Discover why cat owners are switching to activated carbon odor control. Just pay',
-    primaryCta: experiments.ctaCopy === 'variant'
-      ? 'Start My 7-Day Trial'
-      : 'Get My Free Trial',
-    finalCta: experiments.ctaCopy === 'variant'
-      ? 'Activate My Free Trial'
-      : 'Claim My Free Trial',
-    proofOrder: experiments.proofOrder === 'variant'
-      ? 'stats-first'
-      : 'price-first',
-  } as const;
-
-  return (
-    <>
-      <ServerExperimentViewTracker assignments={experiments.assignments} />
-      <TryFreeClient experimentCopy={experimentCopy} />
-    </>
-  );
+export default function TryFreePage() {
+  return <TryFreeClient />;
 }

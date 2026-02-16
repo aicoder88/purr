@@ -5,7 +5,6 @@ import * as Sentry from '@sentry/nextjs';
 import prisma from '@/lib/prisma';
 import { OrderConfirmationEmailHTML, getOrderConfirmationEmailSubject } from '@/emails/order-confirmation';
 import { recordAffiliateConversion, parseAffiliateMetadata } from '@/lib/affiliate/conversion';
-import { parseAssignments, getCommercialExperimentBySlug } from '@/lib/experiments/commercial';
 
 // Lazy initialize Stripe
 let stripe: Stripe | null = null;
@@ -40,104 +39,6 @@ function getResend(): Resend {
 
 // Admin email for notifications
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'hello@purrify.ca';
-
-async function trackCommercialExperimentRevenue(
-  serializedAssignments: string | undefined,
-  amountInCents: number
-): Promise<void> {
-  if (!prisma || !serializedAssignments || amountInCents <= 0) {
-    return;
-  }
-
-  const assignments = parseAssignments(serializedAssignments);
-  if (assignments.length === 0) {
-    return;
-  }
-
-  const revenueAmount = amountInCents / 100;
-
-  for (const assignment of assignments) {
-    const experiment = getCommercialExperimentBySlug(assignment.testSlug);
-    if (!experiment) {
-      continue;
-    }
-
-    const isVariant = assignment.variant === 'variant';
-    const runningUpdateData = isVariant
-      ? {
-        variantConversions: { increment: 1 },
-        variantOrders: { increment: 1 },
-        variantRevenue: { increment: revenueAmount },
-      }
-      : {
-        controlConversions: { increment: 1 },
-        controlOrders: { increment: 1 },
-        controlRevenue: { increment: revenueAmount },
-      };
-
-    const existingTest = await prisma.aBTest.findUnique({
-      where: { slug: experiment.slug },
-      select: { status: true },
-    });
-
-    if (existingTest) {
-      if (existingTest.status !== 'RUNNING') {
-        continue;
-      }
-
-      await prisma.aBTest.updateMany({
-        where: {
-          slug: experiment.slug,
-          status: 'RUNNING',
-        },
-        data: runningUpdateData,
-      });
-      continue;
-    }
-
-    const createDataBase = {
-      name: experiment.name,
-      slug: experiment.slug,
-      description: experiment.description,
-      status: 'RUNNING' as const,
-      targetPage: experiment.targetPage,
-      trafficSplit: experiment.trafficSplit,
-      controlName: 'Control',
-      variantName: 'Variant',
-      createdBy: 'system-commercial-experiment',
-      startedAt: new Date(),
-    };
-
-    const createData = isVariant
-      ? {
-        ...createDataBase,
-        variantConversions: 1,
-        variantOrders: 1,
-        variantRevenue: revenueAmount,
-      }
-      : {
-        ...createDataBase,
-        controlConversions: 1,
-        controlOrders: 1,
-        controlRevenue: revenueAmount,
-      };
-
-    try {
-      await prisma.aBTest.create({
-        data: createData,
-      });
-    } catch {
-      // Another webhook/process may have created it first; only count if still running.
-      await prisma.aBTest.updateMany({
-        where: {
-          slug: experiment.slug,
-          status: 'RUNNING',
-        },
-        data: runningUpdateData,
-      });
-    }
-  }
-}
 
 /**
  * Send admin notification email when a sale is made
@@ -466,7 +367,6 @@ export async function POST(req: NextRequest): Promise<Response> {
             let productName = 'Purrify';
             let quantity = 1;
             const amount = session.amount_total || 0;
-            const serializedAssignments = session.metadata?.abAssignments;
 
             try {
               const lineItems = await getStripe().checkout.sessions.listLineItems(session.id, { limit: 5 });
@@ -557,7 +457,6 @@ export async function POST(req: NextRequest): Promise<Response> {
                 }
               }
 
-              await trackCommercialExperimentRevenue(serializedAssignments, amount);
               break;
             }
 
@@ -616,7 +515,6 @@ export async function POST(req: NextRequest): Promise<Response> {
                 });
               }
 
-              await trackCommercialExperimentRevenue(serializedAssignments, amount);
               break;
             }
 
@@ -716,7 +614,6 @@ export async function POST(req: NextRequest): Promise<Response> {
               }
             }
 
-            await trackCommercialExperimentRevenue(serializedAssignments, amount);
             break;
           }
 

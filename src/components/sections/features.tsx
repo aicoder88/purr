@@ -57,7 +57,7 @@ export function Features() {
                       ? "from-[#FF3131] to-[#FF3131]/80"
                       : index % 3 === 1
                       ? "from-[#5B2EFF] to-[#5B2EFF]/80"
-                      : "from-[#03E46A] to-[#03E46A]/80"
+                      : "from-green-600 to-green-500"
                   } p-3 sm:p-4 rounded-2xl w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mb-4 sm:mb-6 shadow-md group-hover:scale-110 transition-transform duration-300`}
                 >
                   <IconComponent className="h-7 w-7 text-white dark:text-gray-100 dark:text-gray-100" />
@@ -68,7 +68,7 @@ export function Features() {
                       ? "text-[#FF3131]"
                       : index % 3 === 1
                       ? "text-[#5B2EFF]"
-                      : "text-[#03E46A]"
+                      : "text-green-700 dark:text-green-500"
                   }`}
                 >
                   {feature.title}
@@ -85,7 +85,7 @@ export function Features() {
                         ? "text-[#FF3131] group-hover:text-[#FF3131]/80"
                         : index % 3 === 1
                         ? "text-[#5B2EFF] group-hover:text-[#5B2EFF]/80"
-                        : "text-[#03E46A] group-hover:text-[#03E46A]/80"
+                        : "text-green-700 dark:text-green-500 group-hover:text-green-800 dark:group-hover:text-green-400"
                     }`}
                   >
                     {t.featuresSection?.learnMore || ""}

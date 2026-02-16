@@ -8,7 +8,7 @@ import { HowToSection } from '../../../src/components/seo/HowToSection';
 
 export default function HowActivatedCarbonWorksClient() {
   const heroImage = '/images/ammonia-science.webp';
-  const canonicalUrl = 'https://www.purrify.ca/learn/how-activated-carbon-works';
+  const canonicalUrl = 'https://www.purrify.ca/learn/how-activated-carbon-works/';
 
   // HowTo steps for using activated carbon
   const howToSteps = [

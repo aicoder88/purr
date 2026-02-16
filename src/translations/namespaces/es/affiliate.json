@@ -1,0 +1,196 @@
+{
+  "affiliate": {
+    "metaTitle": "Gana Ingresos Mensuales con el Programa de Afiliados Purrify",
+    "metaDescription": "Refiere duenos de gatos a Purrify y gana 30% de comision recurrente de por vida. Unete a cientos de afiliados exitosos ganando ingresos pasivos ayudando a gatos a vivir sin olores.",
+    "hero": {
+      "badge": "Unete a Nuestro Programa de Afiliados",
+      "title": "Gana Ingresos Mensuales Con Purrify",
+      "subtitle": "Refiere duenos de gatos a Purrify y gana 30% de ingresos recurrentes mensuales de por vida.",
+      "primaryCTA": "Convertirse en Afiliado",
+      "secondaryCTA": "Ver Calculadora de Ganancias"
+    },
+    "calculator": {
+      "title": "Calcula Tus Ganancias Potenciales",
+      "subtitle": "Ajusta los controles para ver cuanto podrias ganar con la comision del 30% de Purrify",
+      "standardProduct": "50g Estandar ($24.99) - Referidos/Mes",
+      "familyPack": "120g Paquete Familiar ($44.99) - Referidos/Mes",
+      "perSale": "por venta",
+      "monthlyIncome": "Ingreso Mensual Estimado",
+      "yearlyIncome": "Ingreso Anual Estimado",
+      "disclaimer": "Estas son ganancias potenciales basadas en 30% de comision. Los resultados reales pueden variar.",
+      "cta": "Empezar a Ganar Ahora"
+    },
+    "howItWorks": {
+      "title": "Como Funciona",
+      "step1": {
+        "title": "Unete al Programa",
+        "description": "Crea tu cuenta de afiliado y recibe tu enlace de referido unico. Es gratis unirse y toma menos de 2 minutos."
+      },
+      "step2": {
+        "title": "Comparte Tu Enlace",
+        "description": "Comparte tu enlace de referido con tu audiencia a traves de redes sociales, publicaciones de blog, videos o correo. Proporcionamos materiales de marketing para ayudarte a tener exito."
+      },
+      "step3": {
+        "title": "Cobra de Por Vida",
+        "description": "Gana 30% de comision recurrente en cada venta que hagan tus referidos - no solo la primera compra, sino para siempre. Pagos enviados mensualmente via tu metodo preferido."
+      }
+    },
+    "benefits": {
+      "title": "Por que Unirte al Programa de Afiliados de Purrify?",
+      "subtitle": "Hemos disenado nuestro programa para ayudarte a tener exito con comisiones y soporte lideres en la industria",
+      "benefit1": {
+        "title": "30% de Comisiones de Por Vida",
+        "description": "A diferencia de la mayoria de programas que solo pagan en la primera venta, ganas 30% en cada compra que hagan tus referidos - para siempre. Construye verdaderos ingresos pasivos."
+      },
+      "benefit2": {
+        "title": "Producto de Alta Conversion",
+        "description": "Purrify resuelve un problema real que los duenos de gatos enfrentan diariamente. Con 4.8/5 estrellas y 98% de tasa de satisfaccion, nuestros productos se venden solos."
+      },
+      "benefit3": {
+        "title": "Rastreo en Tiempo Real",
+        "description": "Monitorea tus ganancias, clics y conversiones en tiempo real con nuestro panel avanzado de afiliados. Total transparencia en tu rendimiento."
+      },
+      "benefit4": {
+        "title": "Recursos de Marketing",
+        "description": "Accede a banners profesionales, plantillas de correo, imagenes de productos y textos probados. Proporcionamos todo lo que necesitas para tener exito."
+      }
+    },
+    "testimonials": {
+      "title": "Historias de Exito de Nuestros Afiliados",
+      "testimonial1": {
+        "quote": "He ganado mas de $3,400 en los ultimos 6 meses solo recomendando Purrify a mi audiencia de blog de gatos. Las comisiones recurrentes se acumulan rapido!",
+        "name": "Jessica M.",
+        "role": "Duena de Blog de Gatos"
+      },
+      "testimonial2": {
+        "quote": "El mejor programa de afiliados al que me he unido. Gran producto, alta tasa de conversion, y la comision del 30% de por vida es inigualable. Muy recomendado!",
+        "name": "Mike T.",
+        "role": "Resenador de Productos para Mascotas"
+      },
+      "testimonial3": {
+        "quote": "El equipo de soporte es increible. Me ayudaron a optimizar mi contenido y ahora estoy ganando ingresos mensuales estables. Esto es verdaderamente ingreso pasivo.",
+        "name": "Amanda R.",
+        "role": "Creadora de YouTube"
+      }
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "question1": "Cuanto puedo ganar?",
+      "answer1": "Ganas 30% de comision en cada venta. Si refieres 10 clientes comprando el tamano estandar de $24.99 mensualmente, eso es $74.97/mes en ingresos recurrentes. No hay limite de cuanto puedes ganar.",
+      "question2": "Cuando me pagan?",
+      "answer2": "Las comisiones se pagan mensualmente via PayPal, deposito directo o cheque. Pagamos el 15 de cada mes por las ganancias del mes anterior. El pago minimo es $50.",
+      "question3": "Cuanto duran las cookies?",
+      "answer3": "Nuestras cookies de afiliado duran 90 dias. Si alguien hace clic en tu enlace y compra dentro de 90 dias, obtienes credito por esa venta y todas las compras futuras de ese cliente.",
+      "question4": "Necesito un sitio web?",
+      "answer4": "No! Aunque tener un sitio web ayuda, puedes compartir tu enlace de afiliado en redes sociales, YouTube, boletines por correo, o donde sea que conectes con duenos de gatos.",
+      "question5": "Que materiales de marketing proporcionan?",
+      "answer5": "Proporcionamos banners profesionales, imagenes de productos, plantillas de correo, publicaciones para redes sociales y textos probados. Todo lo que necesitas para empezar a promocionar inmediatamente."
+    },
+    "finalCTA": {
+      "title": "Listo para Empezar a Ganar?",
+      "subtitle": "Unete a cientos de afiliados exitosos ganando ingresos pasivos con Purrify",
+      "cta": "Unirse al Programa de Afiliados",
+      "disclaimer": "Gratis para unirse - Sin tarifas mensuales - Empieza a ganar inmediatamente"
+    }
+  },
+  "affiliateDashboard": {
+    "pageTitle": "Panel de Afiliado",
+    "loginTitle": "Inicio de Sesión Afiliado",
+    "dashboard": "Panel",
+    "earnings": "Ganancias",
+    "payouts": "Pagos",
+    "settings": "Configuración",
+    "logout": "Cerrar Sesión",
+    "overview": {
+      "welcome": "Bienvenido de nuevo",
+      "yourCode": "Tu Código de Afiliado",
+      "copyCode": "Copiar Código",
+      "copiedCode": "¡Copiado!",
+      "shareLink": "Tu Enlace para Compartir",
+      "copyLink": "Copiar Enlace",
+      "copiedLink": "¡Enlace Copiado!"
+    },
+    "stats": {
+      "totalClicks": "Clics Totales",
+      "totalConversions": "Conversiones",
+      "conversionRate": "Tasa de Conversión",
+      "pendingEarnings": "Ganancias Pendientes",
+      "availableBalance": "Saldo Disponible",
+      "totalEarnings": "Ganancias Totales",
+      "pendingNote": "Las comisiones se liberan después de 30 días"
+    },
+    "conversions": {
+      "title": "Conversiones Recientes",
+      "noConversions": "Sin conversiones aún. ¡Comparte tu enlace para empezar a ganar!",
+      "date": "Fecha",
+      "orderId": "Nº Pedido",
+      "orderAmount": "Monto del Pedido",
+      "commission": "Comisión",
+      "status": "Estado",
+      "statusPending": "Pendiente",
+      "statusCleared": "Liberada",
+      "statusPaid": "Pagada",
+      "statusVoided": "Anulada"
+    },
+    "payoutsSection": {
+      "title": "Historial de Pagos",
+      "requestPayout": "Solicitar Pago",
+      "minimumPayout": "El pago mínimo es de $50",
+      "payoutMethod": "Método de Pago",
+      "paypalEmail": "Email de PayPal",
+      "etransferEmail": "Email de Transferencia",
+      "amount": "Monto",
+      "requestedDate": "Solicitado",
+      "processedDate": "Procesado",
+      "status": "Estado",
+      "statusPending": "Pendiente",
+      "statusProcessing": "Procesando",
+      "statusCompleted": "Completado",
+      "statusRejected": "Rechazado",
+      "noPayouts": "Sin historial de pagos",
+      "insufficientBalance": "Saldo insuficiente para el pago",
+      "payoutRequested": "Solicitud de pago enviada exitosamente"
+    },
+    "settingsSection": {
+      "title": "Configuración de Cuenta",
+      "payoutSettings": "Configuración de Pagos",
+      "payoutMethodLabel": "Método de Pago Preferido",
+      "paypalOption": "PayPal",
+      "etransferOption": "Transferencia Electrónica (solo Canadá)",
+      "emailLabel": "Email para Pagos",
+      "saveSettings": "Guardar Configuración",
+      "settingsSaved": "Configuración guardada exitosamente"
+    },
+    "assets": {
+      "title": "Recursos de Marketing",
+      "description": "Descarga banners, imágenes de productos y textos para tus promociones.",
+      "banners": "Banners",
+      "productImages": "Imágenes de Productos",
+      "socialPosts": "Publicaciones Sociales",
+      "brandGuide": "Guía de Marca",
+      "brandColors": "Colores de Marca",
+      "guidelines": "Directrices de Uso",
+      "downloadAll": "Descargar Todo",
+      "copyText": "Copiar Texto"
+    },
+    "login": {
+      "title": "Inicio de Sesión Afiliado",
+      "email": "Correo Electrónico",
+      "password": "Contraseña",
+      "rememberMe": "Recordarme",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "loginButton": "Iniciar Sesión",
+      "loggingIn": "Iniciando sesión...",
+      "noAccount": "¿Aún no eres afiliado?",
+      "applyNow": "Aplica Ahora",
+      "invalidCredentials": "Email o contraseña inválidos",
+      "accountInactive": "Tu cuenta de afiliado no está activa"
+    },
+    "errors": {
+      "loadFailed": "Error al cargar los datos",
+      "saveFailed": "Error al guardar la configuración",
+      "payoutFailed": "Error al solicitar el pago",
+      "sessionExpired": "Tu sesión ha expirado. Por favor, inicia sesión de nuevo."
+    }
+  }
+}

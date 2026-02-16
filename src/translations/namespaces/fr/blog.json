@@ -1,0 +1,46 @@
+{
+  "blog": {
+    "multiCat": {
+      "title": "Meilleur Désodorisant pour Litière Multi-Chats : Guide Ultime de Contrôle des Odeurs 2024",
+      "description": "Découvrez le désodorisant le plus efficace pour les foyers multi-chats. Solutions expertes pour éliminer les odeurs fortes de plusieurs chats utilisant la technologie au charbon actif éprouvée.",
+      "category": "Guide Foyer Multi-Chats",
+      "publishDate": "Publié le 16 septembre 2024",
+      "readTime": "12 min de lecture",
+      "breadcrumb": "Solutions Multi-Chats",
+      "stats": {
+        "title": "Statistiques Foyer Multi-Chats",
+        "strongerOdors": "Odeurs plus fortes vs un seul chat",
+        "litterBoxes": "Bacs à litière par chat minimum",
+        "moreDeodorizer": "Plus de désodorisant nécessaire",
+        "maintenance": "Entretien requis"
+      }
+    },
+    "odorAbsorber": {
+      "title": "Absorbeur d'odeurs le plus puissant pour la litière : guide scientifique 2025",
+      "description": "Découvrez les stratégies d'absorption d'odeurs les plus puissantes pour la litière. Comparez le carbone activé, la zéolite et les systèmes hybrides afin que votre maison puisse rester fraîche sans parfums agressifs.",
+      "category": "Science et technologie des odeurs",
+      "publishDate": "Publié le 19 octobre 2025",
+      "readTime": "Lecture de 14 min",
+      "breadcrumb": "Science des odeurs",
+      "stats": {
+        "title": "Repères sur l'élimination des odeurs",
+        "ammoniaReduction": "Réduction d'ammoniac mesurée jusqu'à 92 % avec des couches de carbone activé",
+        "adsorptionSpeed": "Structure poreuse capturant les molécules en moins de 60 secondes",
+        "safeUsage": "Sans parfum, sans additifs - conçu pour les chats sensibles",
+        "refreshTiming": "Rafraîchir le carbone à chaque ramassage ou ajout de litière pour garder l'efficacité"
+      }
+    }
+  },
+  "blogSection": {
+    "catCareTips": "Conseils et astuces pour chats",
+    "fromOurBlog": "De notre blog",
+    "description": "Conseils, astuces et informations pour les propriétaires de chats qui souhaitent une maison fraîche et des chats heureux et en bonne santé.",
+    "newPost": "Nouvel article",
+    "readFullArticle": "Lire l'article complet",
+    "viewAllArticles": "Voir tous les articles"
+  },
+  "relatedArticles": {
+    "title": "Articles connexes",
+    "readMore": "Lire la suite"
+  }
+}

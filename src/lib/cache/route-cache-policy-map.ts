@@ -1,5 +1,3 @@
-import { normalizeRoutePath } from '@/lib/experiments/commercial';
-
 export interface RouteCachePolicy {
   cacheControl: string;
   vary?: string[];
@@ -11,7 +9,16 @@ const COMMERCIAL_DYNAMIC_ROUTES = ['/products', '/learn', '/try-free', '/reviews
 
 const BLOG_ROUTE_REGEX = /^\/(?:en|fr|zh|es)?\/?blog(?:\/.*)?$/;
 
-const LOCALE_OPTIONAL_PREFIX = /^(?:\/(?:en|fr|zh|es))?(\/.*)$/;
+const LOCALE_OPTIONAL_PREFIX = /^(?:\/(?:en|fr|zh|es))(\/.*)$/;
+
+function normalizeRoutePath(pathname: string): string {
+  if (!pathname || pathname === '/') {
+    return '/';
+  }
+
+  const stripped = pathname.replace(/\/+$/, '');
+  return stripped.length === 0 ? '/' : stripped;
+}
 
 function stripLocalePrefix(pathname: string): string {
   const match = normalizeRoutePath(pathname).match(LOCALE_OPTIONAL_PREFIX);
@@ -41,12 +48,7 @@ export function getRouteCachePolicy(pathname: string): RouteCachePolicy | null {
   if (isCommercialDynamicRoute(normalizedPath)) {
     return {
       cacheControl: 'public, s-maxage=300, stale-while-revalidate=1800',
-      vary: [
-        'x-purrify-locale',
-        'x-purrify-exp-commercial-headline-test',
-        'x-purrify-exp-commercial-proof-order-test',
-        'x-purrify-exp-commercial-cta-copy-test',
-      ],
+      vary: ['x-purrify-locale'],
     };
   }
 

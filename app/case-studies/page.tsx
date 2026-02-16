@@ -196,7 +196,7 @@ function generateSchema() {
 }
 
 export default function CaseStudiesPage() {
-  const canonicalUrl = 'https://www.purrify.ca/case-studies';
+  const canonicalUrl = 'https://www.purrify.ca/case-studies/';
   const schema = generateSchema();
 
   return (

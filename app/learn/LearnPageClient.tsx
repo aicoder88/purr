@@ -31,20 +31,6 @@ interface LearnCard {
   icon: React.ComponentType<{ className?: string }>;
 }
 
-interface LearnExperimentCopy {
-  headline: string;
-  subheadline: string;
-  proofLead: string;
-  ctaHeadline: string;
-  ctaBody: string;
-  ctaLabel: string;
-  proofOrder: 'before-guides' | 'after-guides';
-}
-
-interface LearnPageClientProps {
-  experimentCopy: LearnExperimentCopy;
-}
-
 const MAIN_GUIDES: LearnCard[] = [
   {
     title: 'How It Works',
@@ -163,13 +149,13 @@ const SOLUTIONS: LearnCard[] = [
   },
 ];
 
-export default function LearnPageClient({ experimentCopy }: LearnPageClientProps) {
+export default function LearnPageClient() {
   const proofSection = (
     <section className="pb-8 px-4">
       <Container>
         <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 md:p-8">
           <h2 className="text-2xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100">
-            {experimentCopy.proofLead}
+            Understand the science first, then choose the right solution.
           </h2>
           <div className="grid grid-cols-3 gap-4 text-center">
             <div>
@@ -210,16 +196,16 @@ export default function LearnPageClient({ experimentCopy }: LearnPageClientProps
         <Container>
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-              {experimentCopy.headline}
+              Learn Everything About Cat Litter Odor Control
             </h1>
             <p className="text-xl text-gray-700 dark:text-gray-300 mb-8">
-              {experimentCopy.subheadline}
+              Explore our comprehensive guides, scientific explanations, and targeted solutions to keep your home fresh and your cat happy.
             </p>
           </div>
         </Container>
       </section>
 
-      {experimentCopy.proofOrder === 'before-guides' && proofSection}
+      {proofSection}
 
       {/* Main Guides Section */}
       <section className="pb-8 px-4">
@@ -270,7 +256,7 @@ export default function LearnPageClient({ experimentCopy }: LearnPageClientProps
         </Container>
       </section>
 
-      {experimentCopy.proofOrder === 'after-guides' && proofSection}
+
 
       {/* Solutions Section */}
       <section className="py-12 px-4 bg-white dark:bg-gray-800/50">
@@ -335,16 +321,16 @@ export default function LearnPageClient({ experimentCopy }: LearnPageClientProps
         <Container>
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="text-3xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">
-              {experimentCopy.ctaHeadline}
+              Ready to Experience the Difference?
             </h2>
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
-              {experimentCopy.ctaBody}
+              Put what you&apos;ve learned into practice. Try Purrify risk-free with our trial size and see why thousands of cat parents swear by it.
             </p>
             <Link
               href="/products/trial-size"
               className="inline-flex items-center justify-center px-8 py-4 bg-[#03E46A] hover:bg-[#02c75b] text-white dark:text-gray-100 font-bold rounded-full transition-colors shadow-lg hover:shadow-xl"
             >
-              {experimentCopy.ctaLabel}
+              Try Purrify Risk-Free
               <ChevronRight className="w-5 h-5 ml-2" />
             </Link>
           </div>

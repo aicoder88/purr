@@ -2,14 +2,10 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { TryFreeClient } from '@/app/try-free/TryFreeClient';
 import { locales, isValidLocale } from '@/i18n/config';
-import { getCommercialExperimentState } from '@/lib/experiments/commercial-server';
-import { ServerExperimentViewTracker } from '@/components/experiments/ServerExperimentViewTracker';
 
 interface LocalizedTryFreePageProps {
   params: Promise<{ locale: string }>;
 }
-
-export const dynamic = 'force-dynamic';
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -48,29 +44,5 @@ export default async function LocalizedTryFreePage({ params }: LocalizedTryFreeP
     notFound();
   }
 
-  const experiments = await getCommercialExperimentState();
-  const experimentCopy = {
-    headline: experiments.headline === 'variant'
-      ? 'End Litter Box Odor in 7 Days for Free'
-      : 'Try Purrify FREE',
-    subheadline: experiments.headline === 'variant'
-      ? 'Water-filter grade activated carbon that neutralizes odor instead of masking it. Just pay'
-      : 'Discover why cat owners are switching to activated carbon odor control. Just pay',
-    primaryCta: experiments.ctaCopy === 'variant'
-      ? 'Start My 7-Day Trial'
-      : 'Get My Free Trial',
-    finalCta: experiments.ctaCopy === 'variant'
-      ? 'Activate My Free Trial'
-      : 'Claim My Free Trial',
-    proofOrder: experiments.proofOrder === 'variant'
-      ? 'stats-first'
-      : 'price-first',
-  } as const;
-
-  return (
-    <>
-      <ServerExperimentViewTracker assignments={experiments.assignments} />
-      <TryFreeClient experimentCopy={experimentCopy} />
-    </>
-  );
+  return <TryFreeClient />;
 }

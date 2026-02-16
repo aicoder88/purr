@@ -1,0 +1,135 @@
+{
+  "contact": {
+    "title": "Contactanos",
+    "subtitle": "Estamos aqui para ayudar",
+    "address": "109-17680 Rue Charles, Mirabel, QC J7J 0T6",
+    "phone": "1 (450) 663-6773",
+    "email": "hello@purrify.ca",
+    "courriel": "hello@purrify.ca",
+    "hours": {
+      "title": "Horario de Atencion",
+      "monday": "08:00 am - 8:00 pm",
+      "tuesday": "08:00 am - 8:00 pm",
+      "wednesday": "08:00 am - 8:00 pm",
+      "thursday": "08:00 am - 8:00 pm",
+      "friday": "08:00 am - 8:00 pm",
+      "saturday": "09:00 am - 8:00 pm",
+      "sunday": "Cerrado"
+    },
+    "form": {
+      "name": "Nombre",
+      "email": "Correo",
+      "message": "Mensaje",
+      "submit": "Enviar"
+    }
+  },
+  "contactSection": {
+    "getInTouch": "Ponte en Contacto",
+    "ourLocation": "Nuestra Ubicacion",
+    "phoneNumber": "Numero de Telefono",
+    "phoneDescription": "Atrapamos esos olores persistentes en nuestro numero de telefono. Llama al 1-450-6-ODORS-3 (eso es 1 (450) 663-6773) y ve que tan serios somos sobre el aire fresco.",
+    "openingHours": "Horario de Atencion",
+    "weekdays": "Dias de Semana",
+    "saturday": "Sabado",
+    "sunday": "Domingo",
+    "sendMessage": "Enviar Mensaje",
+    "replyTime": "Responderemos en 24 horas"
+  },
+  "contactPage": {
+    "title": "Estamos Aqui para Ayudar",
+    "subtitle": "Nuestro amigable equipo de soporte al cliente esta listo para asistirte con consejos expertos y soluciones.",
+    "chooseContactMethod": "Elige Como Contactarnos",
+    "contactReasons": [
+      {
+        "value": "general",
+        "label": "Pregunta General"
+      },
+      {
+        "value": "order",
+        "label": "Estado de Orden"
+      },
+      {
+        "value": "product",
+        "label": "Pregunta de Producto"
+      },
+      {
+        "value": "shipping",
+        "label": "Problema de Envio"
+      },
+      {
+        "value": "return",
+        "label": "Devolucion/Cambio"
+      },
+      {
+        "value": "other",
+        "label": "Otro"
+      }
+    ],
+    "contactMethods": [
+      {
+        "title": "Soporte por Correo",
+        "description": "Obtiene ayuda detallada con tus preguntas",
+        "responseTime": "Respuesta en 24 horas"
+      },
+      {
+        "title": "Soporte Telefonico",
+        "description": "Habla directamente con nuestro equipo",
+        "responseTime": "Lun-Vie 9AM-5PM EST"
+      },
+      {
+        "title": "Chat en Vivo",
+        "description": "Chatea con nosotros en tiempo real",
+        "responseTime": "Disponible Ahora"
+      }
+    ],
+    "form": {
+      "fullName": "Nombre Completo",
+      "emailAddress": "Direccion de Correo",
+      "subject": "Asunto",
+      "message": "Mensaje",
+      "contactReason": "Razon de Contacto",
+      "orderNumber": "Numero de Orden (si aplica)",
+      "submit": "Enviar Mensaje",
+      "submitting": "Enviando...",
+      "successMessage": "Gracias por contactarnos! Responderemos en 24 horas.",
+      "errorMessage": "Lo sentimos, hubo un error al enviar tu mensaje. Por favor intenta de nuevo o contactanos directamente.",
+      "sendingMessage": "Enviando Mensaje...",
+      "sendMessage": "Enviar Mensaje",
+      "subjectPlaceholder": "Breve descripcion de tu solicitud",
+      "messagePlaceholder": "Por favor proporciona detalles sobre tu pregunta o inquietud...",
+      "orderNumberPlaceholder": "ej. PUR-12345",
+      "contactNow": "Contactar Ahora"
+    },
+    "faqs": [
+      {
+        "question": "Cuanto tarda el envio?",
+        "answer": "El envio estandar toma 3-5 dias habiles dentro de Canada. Tambien ofrecemos opciones de envio expedito."
+      },
+      {
+        "question": "Puedo usar Purrify cerca de mi gato?",
+        "answer": "Purrify usa el mismo tipo de carbon activado que se encuentra en muchos filtros de agua domesticos y no contiene fragancias ni colorantes agregados."
+      },
+      {
+        "question": "Como uso Purrify?",
+        "answer": "Simplemente espolvorea 1-2 cucharadas de Purrify sobre tu arena existente despues de limpiar. Funciona con todos los tipos de arena."
+      }
+    ],
+    "businessHours": {
+      "title": "Horario de Atencion",
+      "weekdays": "Lunes - Viernes: 9:00 AM - 5:00 PM EST",
+      "saturday": "Sabado: 10:00 AM - 2:00 PM EST",
+      "sunday": "Domingo: Cerrado",
+      "closed": "Cerrado"
+    },
+    "location": {
+      "title": "Nuestra Ubicacion",
+      "address": "Montreal, Quebec, Canada",
+      "shippingNote": "Enviamos a todo Canada y ofrecemos recoleccion local en el area de Montreal."
+    },
+    "frequentlyAskedQuestions": "Preguntas Frecuentes",
+    "quickAnswersCommon": "Respuestas rapidas a preguntas comunes",
+    "dontSeeQuestion": "No ves tu pregunta aqui?",
+    "viewCompleteFAQ": "Ver FAQ Completo",
+    "backToHome": "Volver al Inicio"
+  }
+}

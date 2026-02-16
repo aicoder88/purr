@@ -46,9 +46,9 @@ export const ProductCard = ({
         opacity: isVisible ? 1 : 0
       }}
     >
-      {/* Popular badge */}
+      {/* Popular badge - High contrast for WCAG AA compliance */}
       {index === 1 && (
-        <div className="absolute -top-4 left-0 right-0 mx-auto w-max px-4 py-1 bg-[#FF3131] text-white dark:text-gray-100 font-bold text-sm rounded-full shadow-lg z-30">
+        <div className="absolute -top-4 left-0 right-0 mx-auto w-max px-4 py-1 bg-[#DC2626] text-white font-bold text-sm rounded-full shadow-lg z-30">
           {t.productsSection?.mostPopular || ""}
         </div>
       )}
@@ -89,9 +89,9 @@ export const ProductCard = ({
             </div>
           </div>
 
-          {/* Size badge */}
-          <div className="absolute top-3 sm:top-4 right-3 sm:right-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/90 px-3 sm:px-5 py-1.5 sm:py-2 rounded-full shadow-lg transform rotate-2 group-hover:rotate-0 transition-transform duration-300 z-30">
-            <span className="text-white dark:text-gray-100 font-bold text-sm sm:text-lg drop-shadow-md">{product.size}</span>
+          {/* Size badge - High contrast for WCAG AA compliance */}
+          <div className="absolute top-3 sm:top-4 right-3 sm:right-4 bg-red-700 dark:bg-red-800 bg-gradient-to-r from-[#DC2626] to-[#B91C1C] dark:from-red-700 dark:to-red-800 px-3 sm:px-5 py-1.5 sm:py-2 rounded-full shadow-lg transform rotate-2 group-hover:rotate-0 transition-transform duration-300 z-30">
+            <span className="text-white dark:text-white font-bold text-sm sm:text-lg drop-shadow-md bg-inherit">{product.size}</span>
           </div>
         </div>
       </div>

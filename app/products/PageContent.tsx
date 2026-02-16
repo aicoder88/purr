@@ -30,17 +30,7 @@ import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '@/lib/pricing';
 import { getPaymentLink } from '@/lib/payment-links';
 
-interface ProductsExperimentCopy {
-  headline: 'control' | 'variant';
-  ctaCopy: 'control' | 'variant';
-  proofOrder: 'control' | 'variant';
-}
-
-interface ProductsPageContentProps {
-  experimentCopy: ProductsExperimentCopy;
-}
-
-export default function ProductsPage({ experimentCopy }: ProductsPageContentProps) {
+export default function ProductsPage() {
   const { locale, t } = useTranslation();
   const { currency } = useCurrency();
   const breadcrumbAriaLabel =
@@ -51,7 +41,7 @@ export default function ProductsPage({ experimentCopy }: ProductsPageContentProp
         : locale === 'es'
           ? 'Miga de pan'
           : 'Breadcrumb';
-  const useEnglishVariantCtaCopy = locale === 'en' && experimentCopy.ctaCopy === 'variant';
+  const useEnglishVariantCtaCopy = false;
 
   const trialPrice = formatProductPrice('trial', currency, locale);
   const standardPrice = formatProductPrice('standard', currency, locale);
@@ -429,15 +419,7 @@ export default function ProductsPage({ experimentCopy }: ProductsPageContentProp
         )}
 
         {/* Hero Section - Hook with Problem + Promise */}
-        <ProductsHero
-          experimentCopy={{
-            headlineVariant: experimentCopy.headline,
-            ctaVariant: experimentCopy.ctaCopy,
-            proofOrder: experimentCopy.proofOrder === 'variant'
-              ? 'before-cta'
-              : 'after-cta',
-          }}
-        />
+        <ProductsHero />
 
         {/* Social Proof FIRST - The "Don't take our word for it" payoff */}
         <section className="py-12 bg-white dark:bg-gray-800">
@@ -785,7 +767,7 @@ export default function ProductsPage({ experimentCopy }: ProductsPageContentProp
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {(t.productsPage?.relatedPages || t.productComparison.relatedPages).map((page, index) => (
                 <Link href={`${locale === 'fr' ? '/fr' : ''}${page.link}`} key={index} className="group">
                   <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-brand-light dark:border-gray-700 hover:shadow-xl transition-shadow">
@@ -798,6 +780,16 @@ export default function ProductsPage({ experimentCopy }: ProductsPageContentProp
                   </div>
                 </Link>
               ))}
+              <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/activated-carbon-vs-baking-soda-deodorizers`} className="group">
+                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-brand-light dark:border-gray-700 hover:shadow-xl transition-shadow">
+                  <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-brand-purple transition-colors">
+                    Carbon vs Baking Soda
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    See the science behind why activated carbon outperforms baking soda for litter box odor control.
+                  </p>
+                </div>
+              </Link>
             </div>
           </Container>
         </section>

@@ -1,0 +1,72 @@
+{
+  "products": {
+    "purrify-12g": {
+      "name": "Free Trial",
+      "description": "Perfect for skeptics (we get it).\nJust pay $4.76 shipping to try it yourself.\nOne per household — share the love, not the bags."
+    },
+    "purrify-50g": {
+      "name": "The Goldilocks Bag",
+      "description": "50g · Regular Size\nLasts about a month of fresh litter.\nOur most popular size — and most reordered."
+    },
+    "purrify-120g": {
+      "name": "Family Size",
+      "description": "120g · Best Value Per Gram\nFor multi-cat households.\nBuilt for the extra ammonia output."
+    }
+  },
+  "pricing": {
+    "oneTimeLabel": "One-time purchase",
+    "autoshipLabel": "Autoship & Save",
+    "autoshipBestLabel": "Best Value Autoship",
+    "billedEvery": "Billed every",
+    "months": "months",
+    "shippingIncluded": "Shipping included",
+    "freeShipping": "Free shipping included",
+    "plusShipping": "+ shipping",
+    "shippingCalculated": "Shipping calculated at checkout",
+    "startAutoship": "Start Autoship",
+    "buyNow": "Buy Now",
+    "linkComingSoon": "Payment link coming soon",
+    "recommended": "Most recommended",
+    "perMonth": "≈ {price}/month",
+    "saveVsOneTime": "Save {percent}% vs one-time",
+    "trialSizeSection": "FREE Trial - Just Pay Shipping",
+    "quarterlyAutoshipSection": "Subscribe & Save - Quarterly Autoship",
+    "stripeShippingNote": "the product will be shipped to the stripe \"SHIP TO\" address ON THE NEXT PAGE"
+  },
+  "freeTrial": {
+    "urgentBanner": "Limited Time Offer",
+    "free": "Free"
+  },
+  "trustBadges": {
+    "moneyBack": {
+      "title": "Canada-Based Support",
+      "description": "Real people ready to help you dial in odor control",
+      "highlight": "Cat-care experts"
+    },
+    "securePayment": {
+      "title": "Secure Payment",
+      "description": "SSL encrypted checkout with Stripe",
+      "highlight": "256-bit SSL"
+    },
+    "fastShipping": {
+      "title": "Fast Shipping",
+      "description": "Quick and reliable delivery",
+      "highlight": "Same Day Processing"
+    },
+    "customerRating": {
+      "title": "Customer Feedback",
+      "description": "See how cat owners use an activated carbon additive for odor control",
+      "highlight": "Fragrance-Free"
+    },
+    "happyCustomers": {
+      "title": "Cat Owner Community",
+      "description": "Used by cat owners across Canada",
+      "highlight": "Canada-Based Support"
+    },
+    "premiumQuality": {
+      "title": "Premium Quality",
+      "description": "Filtration-grade activated carbon used in water and air filters",
+      "highlight": "Fragrance-Free"
+    }
+  }
+}

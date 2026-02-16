@@ -8,7 +8,7 @@ import { AIQuotableBlock } from '../../../../src/components/seo/AIQuotableBlock'
 import { RelatedQuestions } from '../../../../src/components/seo/RelatedQuestions';
 
 export default function AmmoniaSmellPageClient() {
-  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter';
+  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter/';
 
   // Ammonia smell solution images
   const heroImage = '/images/ammonia-hero.webp';
@@ -327,7 +327,7 @@ export default function AmmoniaSmellPageClient() {
           <h2 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100 mb-6 text-center">
             Learn More About Ammonia & Cat Litter
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Link
               href="/learn/ammonia-science"
               className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] dark:hover:border-[#FF5050] transition-all group"
@@ -362,6 +362,18 @@ export default function AmmoniaSmellPageClient() {
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">
                 Proven methods to eliminate ammonia smell permanently.
+              </p>
+            </Link>
+            <Link
+              href="/learn/activated-carbon-vs-baking-soda-deodorizers"
+              className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] dark:hover:border-[#FF5050] transition-all group"
+            >
+              <div className="text-3xl mb-3">⚖️</div>
+              <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-[#FF3131] dark:group-hover:text-[#FF5050] transition-colors">
+                Carbon vs Baking Soda
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300">
+                Compare activated carbon and baking soda for ammonia control — see which actually works.
               </p>
             </Link>
           </div>

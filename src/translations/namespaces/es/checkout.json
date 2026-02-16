@@ -1,0 +1,216 @@
+{
+  "thankYou": {
+    "heading": "¡Gracias!",
+    "headingWithName": "¡Gracias, {{name}}!",
+    "subheading": "Tu pedido ha sido confirmado.",
+    "subheadingExtended": "Tu pedido ha sido confirmado. ¡Prepárate para experimentar el hogar más fresco que jamás hayas tenido!",
+    "orderConfirmed": "Pedido Confirmado",
+    "orderNumber": "Número de Pedido",
+    "product": "Producto",
+    "quantity": "Cantidad",
+    "total": "Total",
+    "expectedDelivery": "Entrega Esperada",
+    "deliveryCA": "7-10 días hábiles dentro de Canadá",
+    "deliveryUS": "10-14 días hábiles a Estados Unidos",
+    "deliveryIntl": "14-21 días hábiles internacional",
+    "shipsWithin": "Se envía en 1-2 días hábiles",
+    "confirmationSent": "Correo de confirmación enviado a",
+    "checkSpam": "Revisa tu carpeta de spam si no lo ves en 5 minutos",
+    "trackingInfo": "La información de seguimiento se enviará a tu correo cuando tu pedido sea enviado.",
+    "whatToExpect": {
+      "heading": "Qué Esperar",
+      "step1Title": "Recibe Tu Purrify",
+      "step1Desc": "Tu paquete llegará en un empaque discreto y ecológico. Cada contenedor está sellado para mantener la frescura.",
+      "step2Title": "Instrucciones de Primer Uso",
+      "step2Desc": "Para mejores resultados, comienza con una caja de arena limpia:",
+      "step2Item1": "Limpia y refresca tu caja de arena",
+      "step2Item2": "Espolvorea una capa fina de Purrify encima",
+      "step2Item3": "No necesitas mezclar - funciona desde la superficie",
+      "step2Item4": "Vuelve a aplicar después de cada cambio de arena",
+      "step3Title": "Experimenta la Diferencia",
+      "step3Desc": "¡La mayoría de los clientes notan la diferencia en 60 segundos! El carbón activado atrapa las moléculas de amoníaco instantáneamente - sin enmascarar, solo eliminación real de olores.",
+      "proTip": "Consejo Pro:",
+      "proTipText": "¡Un poco rinde mucho! Usa solo lo suficiente para cubrir ligeramente la superficie. Usar de más no hará daño, pero no es necesario."
+    },
+    "shareSection": {
+      "heading": "Comparte la Frescura",
+      "description": "¿Conoces a alguien con una caja de arena maloliente? ¡Comparte tu enlace de referido y obtendrán una prueba GRATIS!",
+      "generating": "Generando tu enlace de referido personal...",
+      "whatsapp": "WhatsApp",
+      "facebook": "Facebook",
+      "email": "Correo"
+    },
+    "autoshipCta": {
+      "heading": "Nunca Te Quedes Sin",
+      "saveBadge": "AHORRA 30%",
+      "description": "Suscríbete a Autoship y ahorra 30% en cada pedido, además de envío GRATIS. Cancela cuando quieras.",
+      "savings": "Ahorro",
+      "shipping": "Envío",
+      "cancel": "Cancelar",
+      "button": "Actualizar a Autoship"
+    },
+    "helpSection": {
+      "question": "¿Preguntas?",
+      "weAreHere": "¡Estamos aquí para ayudar!",
+      "returnHome": "Volver al Inicio"
+    },
+    "questionsHeading": "¿Preguntas Sobre Tu Pedido?",
+    "questionsDescription": "Contacta a nuestro equipo de soporte y estaremos felices de ayudar.",
+    "contactSupport": "Contactar Soporte",
+    "continueShopping": "Continuar Comprando",
+    "referralCta": {
+      "heading": "¿Te Encanta Purrify?",
+      "description": "¡Comparte con amigos y gana $5 de crédito por cada referido!",
+      "button": "Obtener Mi Link de Referido"
+    }
+  },
+  "freeTrialPage": {
+    "urgentBanner": "OFERTA POR TIEMPO LIMITADO",
+    "free": "GRATIS",
+    "claimTrial": "Reclama Tu Prueba GRATIS de Purrify",
+    "whatYouGet": "Lo Que Obtienes:",
+    "freeTrialBag": "Bolsa de Prueba 12g de Purrify (Solo $4.76 de envio a cualquier lugar de Canada)",
+    "expertTips": "Consejos expertos de cuidado de gatos y guias",
+    "zeroCommitment": "Cero compromiso - este es nuestro regalo para ti",
+    "attention": "ATENCION: Para duenos de gatos cansados de contener la respiracion",
+    "limitedQuantity": "Limitado a los primeros 500 duenos de gatos",
+    "alreadyClaimed": "Ya reclamados",
+    "countdownLabels": {
+      "hours": "HORAS",
+      "minutes": "MINS",
+      "seconds": "SEGS"
+    },
+    "testimonials": [
+      {
+        "text": "No lo podia creer. En HORAS, toda mi casa olia fresca otra vez. Hasta invite a mi suegra por primera vez en meses!",
+        "author": "Jennifer M., Montreal"
+      },
+      {
+        "text": "Mi esposo penso que habia tirado toda la arena. El olor simplemente... desaparecio.",
+        "author": "Lisa K., Mirabel, QC"
+      }
+    ],
+    "testimonialsTestUsers": "Lo que dicen nuestros probadores beta:",
+    "claimNow": "RECLAMA TU PRUEBA GRATIS AHORA",
+    "warningHighDemand": "ADVERTENCIA: Debido a la alta demanda, no podemos garantizar disponibilidad despues de que expire el temporizador.",
+    "privacyNotice": "100% Gratis. No se requiere tarjeta de credito.",
+    "zeroCommitmentGift": "Cero compromiso - este es nuestro regalo para ti",
+    "instantOdorElimination": "Experimenta la magia de eliminacion instantanea de olores",
+    "completeInstructions": "Instrucciones completas para mejores resultados",
+    "noShippingFees": "Sin tarifas de envio, sin costos ocultos, sin trampa",
+    "disappearsIn": "ADVERTENCIA: Esta oferta desaparece en:",
+    "limitedTo500": "Limitado a los primeros 500 duenos de gatos.",
+    "yourFreeTrialWaits": "Tu prueba gratis te espera - pero solo si actuas ahora.",
+    "betaTestersHeader": "Lo que dicen nuestros probadores beta:",
+    "claimFreeTrialNow": "RECLAMA TU PRUEBA GRATIS AHORA",
+    "attention100Free": "100% Gratis. No se requiere tarjeta de credito.",
+    "noCreditCard": "No se requiere tarjeta de credito.",
+    "limitedTimeOffer": "Oferta por tiempo limitado. Una muestra gratis por hogar.",
+    "restrictionsApply": "Pueden aplicar restricciones de envio. Nos reservamos el derecho de terminar esta promocion en cualquier momento.",
+    "highDemandWarning": "Debido a la alta demanda, no podemos garantizar disponibilidad despues de que expire el temporizador",
+    "disclaimer": "100% Gratis. No se requiere tarjeta de credito. Oferta por tiempo limitado. Una muestra gratis por hogar. Pueden aplicar restricciones de envio. Nos reservamos el derecho de terminar esta promocion en cualquier momento."
+  },
+  "tryFreePage": {
+    "meta": {
+      "title": "Prueba Purrify Gratis - Solo $4.76 de Envio | Eliminador de Olores de Arena para Gatos",
+      "description": "Obtiene tu prueba GRATIS de Purrify - solo $4.76 de envio. Pruebalo en tu rutina de arena y ve la diferencia."
+    },
+    "hero": {
+      "badge": "Oferta Por Tiempo Limitado",
+      "headline": "Prueba Purrify Gratis",
+      "subheadline": "Solo $4.76 de Envio",
+      "description": "Prueba un aditivo de carbon activado en tu rutina de arena y ve la diferencia.",
+      "cta": "Obtener Mi Prueba Gratis",
+      "shippingNote": "Envios a cualquier lugar de Canada"
+    },
+    "problem": {
+      "headline": "Cansado de Contener la Respiracion?",
+      "subheadline": "Te entendemos. Ese olor de caja de arena es vergonzoso.",
+      "points": [
+        "Invitados llegando y corres a revisar la caja de arena",
+        "Abriendo ventanas en invierno solo para ventilar el olor",
+        "Constantemente comprando ambientadores que no funcionan",
+        "Preocupandote de que tu casa huele a que vive un gato"
+      ]
+    },
+    "howItWorks": {
+      "headline": "Aire Fresco en 30 Segundos",
+      "subheadline": "Simple como 1-2-3",
+      "steps": [
+        {
+          "number": "1",
+          "title": "Espolvorear",
+          "description": "Abre la bolsa y espolvorea sobre la arena de tu gato"
+        },
+        {
+          "number": "2",
+          "title": "Atrapar",
+          "description": "El carbon activado atrapa moleculas de amoniaco instantaneamente"
+        },
+        {
+          "number": "3",
+          "title": "Fresco",
+          "description": "Disfruta 7+ dias de frescura sin olores"
+        }
+      ]
+    },
+    "socialProof": {
+      "headline": "Que Puedes Esperar",
+      "rating": "",
+      "reviewCount": "",
+      "reviewLabel": "",
+      "testimonials": [
+        {
+          "text": "Era esceptica, pero en horas todo mi apartamento olia fresco. Mis invitados no tenian idea de que tenia gatos!",
+          "author": "Sarah M.",
+          "location": "Toronto, ON"
+        },
+        {
+          "text": "Finalmente algo que realmente funciona. No mas enmascarar olores con ambientadores.",
+          "author": "Mike R.",
+          "location": "Vancouver, BC"
+        },
+        {
+          "text": "Los mejores $4.76 que he gastado. Ya ordene el tamano completo!",
+          "author": "Jennifer K.",
+          "location": "Montreal, QC"
+        }
+      ]
+    },
+    "guarantee": {
+      "headline": "Garantia de 30 Dias",
+      "description": "Si no estas asombrado por los resultados, te reembolsamos. Sin preguntas.",
+      "badge": "Prueba Sin Riesgo"
+    },
+    "finalCta": {
+      "headline": "Listo para Respirar Tranquilo?",
+      "description": "Obtiene tu prueba gratis de Purrify hoy. Solo $4.76 de envio.",
+      "buttonText": "Obtener Mi Prueba Gratis",
+      "note": "Cancela cuando quieras. No se requiere suscripcion."
+    },
+    "trust": {
+      "madeInCanada": "Hecho en Canada",
+      "natural": "100% Natural",
+      "fragrance": "Sin Fragancia",
+      "secure": "Pago Seguro"
+    }
+  },
+  "forms": {
+    "success": {
+      "general": "¡Gracias por contactarnos! Te responderemos en 24 horas.",
+      "b2bContact": "¡Gracias por tu interés! Nuestro equipo se pondrá en contacto contigo en 24-48 horas para discutir los próximos pasos.",
+      "retailerContact": "¡Gracias por tu interés! Nuestro equipo de socios se pondrá en contacto contigo en 24-48 horas para discutir precios y próximos pasos.",
+      "hospitalityContact": "¡Gracias! Nuestro equipo de hostelería se pondrá en contacto contigo en 24 horas con precios personalizados para tus propiedades.",
+      "shelterContact": "¡Gracias por tu interés! Nuestro equipo se pondrá en contacto contigo en 24-48 horas para discutir cómo podemos apoyar tu refugio.",
+      "groomerContact": "¡Gracias por tu interés! Nuestro equipo de socios se pondrá en contacto contigo en 24-48 horas para discutir los próximos pasos.",
+      "vetContact": "¡Gracias por tu interés! Nuestro equipo veterinario se pondrá en contacto contigo en 24-48 horas para discutir oportunidades de asociación.",
+      "catCafeContact": "¡Gracias por tu interés! Nuestro equipo se pondrá en contacto contigo en 24-48 horas para discutir cómo Purrify puede beneficiar a tu café de gatos."
+    },
+    "errors": {
+      "pleaseEnterTitle": "Por favor ingresa un título",
+      "invalidEmail": "Correo electrónico o contraseña inválidos",
+      "requiredField": "Este campo es obligatorio",
+      "submitFailed": "Error al enviar el formulario. Por favor intenta de nuevo."
+    }
+  }
+}

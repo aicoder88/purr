@@ -166,7 +166,7 @@ export async function generateMetadata({ params }: ProvincePageProps): Promise<M
   const seoDescription = locations
     ? interpolate(locations.province.description, { province: province.name })
     : `Find Purrify in ${province.name}`;
-  const canonicalUrl = `${SITE_URL}/locations/province/${province.slug}`;
+  const canonicalUrl = `${SITE_URL}/locations/province/${province.slug}/`;
   const heroImage = resolveProvinceHeroImage(province);
 
   return {
@@ -175,12 +175,12 @@ export async function generateMetadata({ params }: ProvincePageProps): Promise<M
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        'en-CA': `${SITE_URL}/locations/province/${province.slug}`,
-        'fr-CA': `${SITE_URL}/fr/locations/province/${province.slug}`,
-        'zh-CN': `${SITE_URL}/zh/locations/province/${province.slug}`,
-        'es-US': `${SITE_URL}/es/locations/province/${province.slug}`,
-        'en-US': `${SITE_URL}/es/locations/province/${province.slug}`,
-        'x-default': `${SITE_URL}/locations/province/${province.slug}`,
+        'en-CA': `${SITE_URL}/locations/province/${province.slug}/`,
+        'fr-CA': `${SITE_URL}/fr/locations/province/${province.slug}/`,
+        'zh-CN': `${SITE_URL}/zh/locations/province/${province.slug}/`,
+        'es-US': `${SITE_URL}/es/locations/province/${province.slug}/`,
+        'en-US': `${SITE_URL}/es/locations/province/${province.slug}/`,
+        'x-default': `${SITE_URL}/locations/province/${province.slug}/`,
       },
     },
     openGraph: {

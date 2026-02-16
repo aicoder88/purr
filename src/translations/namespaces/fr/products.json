@@ -1,0 +1,418 @@
+{
+  "products": {
+    "purrify-12g": {
+      "name": "Essai GRATUIT",
+      "description": "Essayez Purrify GRATUITEMENT !\nJuste 4,76 $ pour les frais d'envoi partout au Canada\n\nLimite d'un par client"
+    },
+    "purrify-50g": {
+      "name": "Le Format Parfait",
+      "description": "50g · Format Standard\nIdéal pour un Chat\nNotre taille la plus populaire pour les foyers avec un seul chat."
+    },
+    "purrify-120g": {
+      "name": "Format Famille",
+      "description": "120g · Le Meilleur Rapport Qualité-Prix\nParfait pour les foyers multi-chats.\nContrôle maximal des odeurs."
+    }
+  },
+  "pricing": {
+    "oneTimeLabel": "Achat unique",
+    "autoshipLabel": "Abonnement & économies",
+    "autoshipBestLabel": "Meilleur abonnement",
+    "billedEvery": "Facturé tous les",
+    "months": "mois",
+    "shippingIncluded": "Livraison incluse",
+    "freeShipping": "Livraison gratuite incluse",
+    "plusShipping": "+ frais de livraison",
+    "shippingCalculated": "Frais de livraison calculés à la caisse",
+    "startAutoship": "Activer l'abonnement",
+    "buyNow": "Acheter maintenant",
+    "linkComingSoon": "Lien de paiement bientôt disponible",
+    "recommended": "Recommandé",
+    "perMonth": "≈ {price}/mois",
+    "saveVsOneTime": "Économisez {percent}% vs achat unique",
+    "trialSizeSection": "Essai GRATUIT - Frais d'envoi seulement",
+    "quarterlyAutoshipSection": "S'abonner & économiser - Abonnement trimestriel",
+    "stripeShippingNote": "le produit sera expédié à l'adresse 'EXPÉDIER À' de Stripe SUR LA PAGE SUIVANTE"
+  },
+  "productsHero": {
+    "pill": "Éliminateur d'Odeur d'Ammoniac",
+    "headline": "Embarrassé par l'odeur de la litière ? Arrêtez de la camoufler.",
+    "subheadline": "Le bicarbonate de soude et les sprays ne font que masquer le problème. Purrify utilise du charbon actif pour éliminer l'ammoniac au niveau moléculaire. Ce n'est pas de la magie. C'est de la science.",
+    "scienceButton": "La Science",
+    "guarantee": "Garantie 0 Odeur",
+    "findSizeButton": "Trouver Mon Format"
+  },
+  "productComparison": {
+    "title": "Comparer les Produits Purrify",
+    "subtitle": "Trouvez la taille parfaite pour votre foyer - de l'essai aux économies en vrac",
+    "findPerfectSize": "Trouvez la taille parfaite pour votre foyer",
+    "products": [
+      {
+        "id": "trial",
+        "name": "L'Échantillon du Sceptique",
+        "subtitle": "12g · Une Semaine de Preuve",
+        "duration": "7+ jours",
+        "cats": "1 chat",
+        "features": [
+          "Une semaine de confiance à l'air frais",
+          "Seulement 4,76$ d'expédition",
+          "Zéro risque, zéro engagement"
+        ],
+        "bestFor": "Parents de chats qui ont été déçus auparavant. Testez par vous-même. Votre nez ne ment pas.",
+        "cta": "Trouvez Purrify Près de Vous"
+      },
+      {
+        "id": "regular",
+        "name": "Format Régulier",
+        "subtitle": "120g · Format Standard",
+        "duration": "7+ jours par application",
+        "cats": "1-2 chats",
+        "features": [
+          "Utilisez plus pour une fraîcheur prolongée",
+          "Rechargez à tout moment",
+          "Fonctionne avec toute litière"
+        ],
+        "bestFor": "Foyers avec un ou deux chats. Le format que les clients rachètent.",
+        "cta": "Trouvez Purrify Près de Vous"
+      },
+      {
+        "id": "large",
+        "name": "Format Famille",
+        "subtitle": "240g · Meilleur Rapport Qualité-Prix",
+        "duration": "7+ jours par application",
+        "cats": "3+ chats",
+        "features": [
+          "Meilleur rapport qualité-prix au gramme",
+          "Dosage flexible",
+          "Parfait pour plusieurs bacs"
+        ],
+        "bestFor": "Foyers multi-chats, parents d'accueil, ou quiconque a perdu le compte.",
+        "cta": "Trouvez Purrify Près de Vous"
+      }
+    ],
+    "comparisonFeatures": [
+      {
+        "feature": "Élimination d'Odeurs"
+      },
+      {
+        "feature": "Fonctionne avec Toute Litière"
+      },
+      {
+        "feature": "Prolonge la Vie de la Litière"
+      },
+      {
+        "feature": "Support dédié aux odeurs"
+      },
+      {
+        "feature": "Livraison Gratuite"
+      },
+      {
+        "feature": "Économies en Vrac"
+      },
+      {
+        "feature": "Convient Multi-Chats"
+      }
+    ],
+    "usageCalculator": {
+      "title": "Combien de Temps Chaque Taille Durera-t-elle?",
+      "subtitle": "Estimez la durée selon la taille de votre foyer",
+      "numberOfCats": "Nombre de Chats",
+      "typicalChanges": "Changements Typiques",
+      "estimateDuration": "Estimez la durée selon la taille de votre foyer"
+    },
+    "stillUnsure": "Toujours Pas Sûr de la Taille à Choisir?",
+    "getPersonalizedAdvice": "Obtenez des Conseils Personnalisés",
+    "tryRiskFree": "Essayez Sans Risque - 4,99$",
+    "learnMoreAboutPurrify": "En Savoir Plus Sur Purrify",
+    "featuresComparison": "Comparaison des Caractéristiques",
+    "seeHowProductsCompare": "Voyez comment nos produits se comparent côte à côte",
+    "howLongWillEachSizeLast": "Combien de Temps Chaque Taille Durera-t-elle?",
+    "popular": "Populaire",
+    "bestValue": "Meilleure Valeur",
+    "perfectForFirstTime": "Parfait pour les nouveaux utilisateurs",
+    "idealForSingleCat": "Idéal pour les foyers à un chat",
+    "perfectForMultiCat": "Parfait pour les foyers multi-chats",
+    "economicChoice": "Choix économique",
+    "maxValuePerGram": "Valeur maximale par gramme",
+    "bulkSavingsIncluded": "Économies en vrac incluses",
+    "sustainableSupply": "Approvisionnement durable",
+    "features": "Caractéristiques",
+    "idealFor": "Idéal Pour",
+    "duration": "Durée",
+    "saveMoney": "Économisez",
+    "getBestValue": "Obtenir la Meilleure Valeur",
+    "chooseThisSize": "Choisir Cette Taille",
+    "tryWithoutRisk": "Essayez Sans Risque",
+    "chooseSmallSize": "Choisir Petite Taille",
+    "seo": {
+      "title": "Trouvez la Taille Parfaite",
+      "description": "Comparez toutes les tailles Purrify et trouvez l'additif pour litière au charbon actif parfait pour les besoins de votre foyer."
+    },
+    "stillUnsureDescription": "Commencez avec notre taille d'essai sans risque et découvrez la différence Purrify par vous-même.",
+    "tableHeaders": {
+      "feature": "Caractéristique",
+      "trial": "Essai 12g",
+      "regular": "Régulier 120g",
+      "large": "Grand 240g"
+    },
+    "units": {
+      "cat": "Chat",
+      "cats": "Chats",
+      "week": "semaine",
+      "weeks": "semaines",
+      "day": "jour",
+      "days": "jours",
+      "weekly": "Hebdomadaire",
+      "perWeek": "par semaine"
+    },
+    "relatedPages": [
+      {
+        "title": "Comment ça marche",
+        "description": "Découvrez la science derrière notre technologie au charbon actif et pourquoi elle est si efficace.",
+        "link": "/learn/how-it-works"
+      },
+      {
+        "title": "Avis Clients",
+        "description": "Voyez ce que 1 000+ clients satisfaits disent de leur expérience avec Purrify.",
+        "link": "/reviews"
+      },
+      {
+        "title": "Guide de Litière",
+        "description": "Apprenez sur les différents types de litière et comment choisir la meilleure option pour votre chat.",
+        "link": "/learn/cat-litter-guide"
+      }
+    ]
+  },
+  "productsPage": {
+    "hero": {
+      "headline": "Vos Chats Sont Parfaits. L'Odeur? Pas Tellement.",
+      "subheadline": "Le même charbon actif qui nettoie votre eau potable. Piège l'ammoniaque de la litière au niveau moléculaire. Pas de parfums. Pas de masquage. Juste... de l'air.",
+      "supporting": "Choisissez votre format. Prouvez-le à votre nez."
+    },
+    "quickDecision": {
+      "title": "Pas Sûr du Format? Laissez Votre Nez Juger.",
+      "subtitle": "Choisissez le format adapté à votre foyer:",
+      "trial": {
+        "question": "Déçu par de fausses promesses auparavant?",
+        "answer": "L'Échantillon du Sceptique (12g)",
+        "detail": "Payez seulement les frais de port. 7 jours pour convaincre votre nez. Ça marche ou vous perdez 4,76$."
+      },
+      "regular": {
+        "question": "Un ou deux chats à la maison?",
+        "answer": "Format Régulier (120g)",
+        "detail": "Le format le plus populaire. Dure 7+ jours par application. Utilisez plus, reste frais plus longtemps."
+      },
+      "large": {
+        "question": "Vous gérez un foyer multi-chats?",
+        "answer": "Format Famille (240g)",
+        "detail": "Meilleur rapport qualité-prix au gramme. Même formule puissante, double la quantité."
+      }
+    },
+    "trustSignals": {
+      "waterFilter": {
+        "title": "Le même produit que dans votre Brita",
+        "description": "Répond aux normes NSF/ANSI 61. Si c'est assez bon pour rendre l'eau du robinet potable, imaginez ce que ça fait à l'ammoniaque."
+      },
+      "ingredients": {
+        "title": "Ingrédients : Coques de noix de coco. C'est tout.",
+        "description": "Pas de parfum pour stresser votre chat. Pas de produits chimiques. Juste du charbon actif pur de coques de noix de coco."
+      },
+      "science": {
+        "title": "La science, pas le parfum",
+        "description": "Un gramme a la surface d'un terrain de football. Ces tunnels microscopiques piègent les molécules d'odeur en permanence. Disparues. Pas cachées."
+      }
+    },
+    "products": {
+      "trial": {
+        "name": "Le sac du sceptique",
+        "subtitle": "12g · Une semaine de preuve",
+        "features": [
+          "Assez pour 7 jours d'air frais",
+          "Juste les frais de port de 4,76$",
+          "Un par foyer (désolé, pas de stockage gratuit)"
+        ],
+        "bestFor": "Parents de chats qui ont été déçus par des produits 'miracles' avant. On comprend. Prouvez-le vous-même d'abord."
+      },
+      "regular": {
+        "name": "Le juste milieu",
+        "subtitle": "120g · Format Standard",
+        "features": [
+          "10-12 semaines de contrôle des odeurs pour 1-2 chats",
+          "Le format que la plupart des clients recommandent",
+          "Fonctionne avec la litière que votre chat a déjà approuvée"
+        ],
+        "bestFor": "Foyers d'un ou deux chats où 'des invités arrivent' ne déclenche plus la panique."
+      },
+      "large": {
+        "name": "Le sac 'On a combien de chats?'",
+        "subtitle": "240g · Meilleur rapport qualité-prix pour foyers multi-chats",
+        "features": [
+          "20-24 semaines pour 1 chat, 10-12 semaines pour 2+",
+          "Livraison gratuite (parce que vous dépensez déjà assez en nourriture pour chat)",
+          "Meilleur rapport qualité-prix que nous offrons"
+        ],
+        "bestFor": "Foyers multi-chats, familles d'accueil, ou quiconque a abandonné de compter les litières."
+      }
+    },
+    "whatYouGet": {
+      "title": "Ce qu'il y a vraiment dans le sac",
+      "subtitle": "(Et pourquoi votre chat ne le remarquera jamais)",
+      "benefits": [
+        {
+          "title": "Charbon actif de qualité filtration d'eau",
+          "description": "Exactement le même matériau utilisé dans les filtres Brita et la purification d'air hospitalière. Pas 'similaire à.' Le même."
+        },
+        {
+          "title": "Zéro parfum. Zéro produit chimique. Zéro souci.",
+          "description": "Les chats ont 200 millions de récepteurs olfactifs. Les parfums artificiels les stressent. Purrify agit invisiblement."
+        },
+        {
+          "title": "Argile, cristal, agglomérante, naturelle... On ne juge pas",
+          "description": "Fonctionne avec la litière que votre chat vous a entraîné à acheter. Pas de drame de changement."
+        },
+        {
+          "title": "Ouvrir. Saupoudrer. C'est fait.",
+          "description": "Une fine couche sur le dessus. 30 secondes d'effort pour 7 jours de résultats."
+        }
+      ]
+    },
+    "didYouKnow": {
+      "title": "La science dont votre chat se fiche (Mais votre nez sera ravi)",
+      "body": "Un seul gramme de charbon actif contient environ 3 000 mètres carrés de surface. C'est plus grand que la moitié d'un terrain de football — dans quelque chose plus petit qu'un petit pois.\n\nÀ l'intérieur se trouvent des millions de pores et tunnels microscopiques. Quand les molécules d'ammoniaque passent, elles sont piégées en permanence.\n\nCe n'est pas du masquage. C'est de la capture moléculaire. La même technologie utilisée dans les masques à gaz, les usines de traitement d'eau et la filtration d'air hospitalière. Maintenant sur la litière de votre chat."
+    },
+    "cta": {
+      "title": "Votre nez mérite mieux. Votre chat aussi.",
+      "subtitle": "Demandez Purrify dans votre animalerie préférée. S'ils ne l'ont pas encore, ils devraient.",
+      "secondary": "Vous ne voyez pas votre magasin? Dites-le nous. On fera le nécessaire."
+    },
+    "relatedPages": [
+      {
+        "title": "La science (sans les parties ennuyeuses)",
+        "description": "Découvrez la science derrière notre technologie au charbon actif et pourquoi elle est si efficace.",
+        "link": "/learn/how-it-works"
+      },
+      {
+        "title": "Ce que 1 000+ parents de chats ont dit",
+        "description": "Voyez ce que les clients satisfaits disent de leur expérience avec Purrify.",
+        "link": "/reviews"
+      },
+      {
+        "title": "Le guide complet de la litière pour chat",
+        "description": "Apprenez sur les différents types de litière et comment choisir la meilleure option pour votre chat.",
+        "link": "/learn/cat-litter-guide"
+      }
+    ],
+    "testimonial": {
+      "quote": "Je vis dans un petit studio avec deux chats, et l'odeur de la litière devenait insupportable. Purrify a complètement éliminé l'odeur en 24 heures. J'étais sceptique sur le prix au début, mais ça dure tellement plus longtemps que les autres produits que j'ai essayés. Chaque sou en vaut la peine!",
+      "author": "Sarah M.",
+      "location": "Montréal, QC",
+      "details": "2 chats, petit appartement",
+      "headline": "Un changement total pour mon appartement!"
+    }
+  },
+  "subscriptionOfferExtended": {
+    "autoshipBadge": "Abonnement trimestriel",
+    "headline": "Votre défense anti-odeurs en pilote automatique",
+    "supportingCopy": "Choisissez le lot qui se renouvelle automatiquement tous les 3 mois, garde votre maison fraîche et protège votre budget.",
+    "perMonthLabel": "≈ {price}/mois",
+    "saveVsOneTime": "Économisez {percent}% vs achat unique",
+    "skipOrCancelAnytime": "Suspendre ou annuler à tout moment",
+    "shippingIncluded": "Livraison incluse",
+    "freeShippingIncluded": "Livraison gratuite incluse",
+    "priorityCustomerSupport": "Support client prioritaire",
+    "startAutoship": "Activer l'abonnement",
+    "linkComingSoon": "Lien de paiement bientôt disponible",
+    "quarterlyBilling": "Facturé tous les 3 mois",
+    "autoshipHero": "Abonnement & économies",
+    "autoshipHighlight": "S'abonner et économiser",
+    "standardPlanTitle": "Abonnement trimestriel – 3 × 50g",
+    "standardDescription": "Idéal pour les foyers avec un chat qui veulent un contrôle des odeurs continu.",
+    "includesThreeStandard": "Comprend 3 sachets de 50g livrés ensemble",
+    "familyPlanTitle": "Abonnement meilleur rapport – 3 × format régulier 120g",
+    "familyDescription": "Pensé pour les foyers multi-chats et sensibles aux allergies. Notre meilleur prix par utilisation.",
+    "includesThreeFamily": "Comprend 3 sachets format régulier 120g (livrés ensemble)",
+    "bestValueBadge": "Meilleure valeur",
+    "save": "Économisez",
+    "joinThePurrifyFamily": "Rejoignez la famille Purrify"
+  },
+  "paymentSecurity": {
+    "securePayment": "Paiement Sécurisé",
+    "sslEncrypted": "SSL 256-bit",
+    "sslEncryptedCheckout": "Paiement crypté SSL avec Stripe"
+  },
+  "testimonialsSection": {
+    "customerLove": "Amour des Clients",
+    "littersOfLove": "Des Portées d'Amour de la Communauté des Propriétaires d'Animaux",
+    "dontJustTakeOurWord": "Ne nous croyez pas sur parole. Voici ce que nos clients disent de Purrify.",
+    "readMoreReviews": "Lire Plus d'Avis"
+  },
+  "storesSection": {
+    "availableInStores": "DISPONIBLE EN MAGASIN",
+    "soldInFollowingStores": "VENDU DANS LES MAGASINS SUIVANTS",
+    "subtitle": "Trouvez Purrify dans vos magasins d'animaux préférés à travers le Canada. Visitez l'un de ces emplacements pour acheter notre additif de litière pour chat premium.",
+    "requestStoreAvailability": "Demander la Disponibilité en Magasin",
+    "dontSeeLocalStore": "Vous ne voyez pas votre magasin local ? Contactez-nous pour demander Purrify dans votre magasin d'animaux préféré !",
+    "callStore": "Appeler le Magasin",
+    "sending": "Envoi en cours...",
+    "requestSent": "Demande Envoyée !",
+    "requestSuccess": "Merci ! Nous vous contacterons pour aider à obtenir Purrify dans votre magasin local.",
+    "requestError": "Une erreur s'est produite. Veuillez nous contacter directement à support@purrify.ca",
+    "storeDescriptions": {
+      "completePetCareAndSupplies": "Soins complets et fournitures pour animaux",
+      "premiumPetBoutique": "Boutique premium pour animaux",
+      "familyOwnedPetStore": "Magasin d'animaux familial",
+      "globalPetFoodsLocation": "Emplacement Global Pet Foods",
+      "premiumPetProductsAndSupplies": "Produits et fournitures premium pour animaux",
+      "fullServicePetStore": "Magasin d'animaux complet",
+      "petStoreWithGroomingServices": "Magasin d'animaux avec services de toilettage"
+    }
+  },
+  "upsell": {
+    "pageTitle": "Offre Spéciale Unique - Purrify",
+    "metaDescription": "Offre unique exclusive pour les nouveaux clients. Économisez 25% sur l'abonnement trimestriel automatique.",
+    "offerExpired": "Offre Expirée",
+    "offerExpiresIn": "L'offre expire dans",
+    "headline": "Attendez! Offre Exclusive Unique",
+    "subheadline": "Ajoutez l'abonnement automatique et économisez 25%",
+    "saveBadge": "ÉCONOMISEZ 29%",
+    "productTitle": "Purrify 50g Abonnement Automatique",
+    "productSubtitle": "Approvisionnement de 3 Mois (3 × 50g sachets)",
+    "youSave": "Vous économisez",
+    "benefit1": "Ne manquez jamais - livré tous les 3 mois",
+    "benefit2": "Livraison gratuite incluse (économisez 7,99 $)",
+    "benefit3": "Verrouillez ce prix spécial pour toujours",
+    "benefit4": "Annulez ou sautez à tout moment (sans engagement)",
+    "benefit5": "Rappels automatiques avant chaque expédition",
+    "processing": "Traitement en cours...",
+    "addToOrder": "Oui! Ajouter à Ma Commande",
+    "noThanks": "Non merci, je préfère payer le prix plein plus tard",
+    "feature1Title": "Activation Instantanée",
+    "feature1Description": "Votre abonnement automatique commence immédiatement après cette commande",
+    "feature2Title": "100% Satisfaction",
+    "feature2Description": "Garantie de remboursement de 30 jours sur chaque expédition",
+    "feature3Title": "Contrôle Flexible",
+    "feature3Description": "Sautez, suspendez ou annulez en ligne à tout moment",
+    "testimonialText": "J'ai failli sauter l'offre d'abonnement automatique, mais je suis si content de ne pas l'avoir fait! C'est une chose de moins à retenir, et les économies s'accumulent. De plus, je ne manque jamais quand j'en ai le plus besoin.",
+    "testimonialAuthor": "— Sarah M., Toronto",
+    "faqTitle": "Questions Courantes",
+    "faq1Question": "Puis-je annuler à tout moment?",
+    "faq1Answer": "Absolument! Annulez, sautez ou modifiez votre abonnement à tout moment depuis votre tableau de bord. Pas de frais, pas de tracas.",
+    "faq2Question": "Quand serai-je facturé?",
+    "faq2Answer": "Vous serez facturé aujourd'hui pour cette offre spéciale. Votre prochaine expédition sera dans 3 mois, et vous recevrez un email de rappel 7 jours avant.",
+    "faq3Question": "Le prix est-il verrouillé?",
+    "faq3Answer": "Oui! Ce prix spécial est verrouillé tant que vous restez abonné. Vous ne paierez jamais plus que ce tarif.",
+    "bottomNote": "Cette offre unique n'est disponible qu'immédiatement après votre premier achat",
+    "returnHome": "Retour à l'accueil"
+  },
+  "productPages": {
+    "cancelAnytime": "Annulez à tout moment. Livraison gratuite.",
+    "shipsFree": "Livraison gratuite",
+    "subscribeAndSave": "Abonnez-vous et économisez",
+    "save": "Économisez",
+    "savePercent": "Économisez {percent}%",
+    "perMonth": "par mois",
+    "billedQuarterly": "Facturé trimestriellement",
+    "shippingSavings": "Économisez 15-20$+ par commande par rapport aux achats individuels",
+    "save25vsStandard": "Économisez 25% par rapport à l'achat de deux formats standards",
+    "save25FamilyPack": "Économisez 25% avec notre Pack Familial"
+  }
+}

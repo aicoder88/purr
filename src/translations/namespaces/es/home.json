@@ -1,0 +1,526 @@
+{
+  "hero": {
+    "catLitter": "Eliminador de Olores de Arena para Gatos",
+    "rabbitLitter": "Desodorizante de Arena para Conejos",
+    "fridgeSmells": "Control de Olores del Refrigerador",
+    "ferretCage": "Eliminador de Olores de Jaula de Huron",
+    "headline": "Ama a Tu Gato. Olvidate del Olor.",
+    "eliminateCatOdors": "Ama a Tu Gato. Olvidate del Olor.",
+    "subheadline": "Una espolvoreada mantiene la arena fresca por 7 dias completos.",
+    "instantly": "Elimina el Olor de la Caja de Arena Casi Al Instante",
+    "description": "Usando tecnologia de atrapamiento molecular de coco \"activado\" (sin quimicos) — la misma ciencia de filtracion que se encuentra en los sistemas de agua potable — una sola aplicacion reduce drasticamente el olor de la caja de arena casi inmediatamente y continua funcionando hasta por 7 dias completos.",
+    "socialProof": {
+      "trustNumber": "Sin fragancia",
+      "trustText": "aditivo de carbon activado",
+      "ratingText": "Control de olor sin perfumes"
+    },
+    "pricing": {
+      "trial": "Prueba GRATIS (solo $4.76 envio)",
+      "standard": "50g: $14.99",
+      "family": "120g: $24.99"
+    },
+    "buttons": {
+      "shopNow": "Detener el Mal Olor - Prueba Sin Riesgo $24.95",
+      "reviews": "Prueba de que Funciona",
+      "learnMore": "Como Elimina Olores",
+      "tryFree": "Probar Muestra GRATIS"
+    },
+    "ariaLabels": {
+      "shopNow": "Comprar productos Purrify ahora",
+      "reviews": "Leer opiniones de clientes",
+      "playVideo": "Reproducir video demostrativo mostrando como Purrify elimina olores de arena"
+    },
+    "dualPath": {
+      "consumer": {
+        "title": "Para Tu Gato",
+        "description": "Duenos de gatos individuales - pago instantaneo, entrega directa",
+        "cta": "Comprar Ahora para Tu Gato"
+      },
+      "retailer": {
+        "title": "Tiendas de Mascotas y Minoristas",
+        "description": "Precios mayoristas, pedidos al por mayor, soporte de marketing",
+        "cta": "Portal Mayorista"
+      }
+    },
+    "simplified": {
+      "free": "GRATIS",
+      "justPayShipping": "Solo paga $4.76 de envio",
+      "freeShippingOver": "Envio gratis en ordenes mayores a $50",
+      "headline": "Ama a Tu Gato. Olvidate del Olor.",
+      "subheadline": "Una espolvoreada mantiene la arena fresca por 7 dias completos.",
+      "noMore": "Se Acabo",
+      "litterBoxSmell": "El Olor a Caja de Arena",
+      "valueProposition": "El carbon activado elimina olores en la fuente. Funciona con cualquier arena.",
+      "trialSize": "Tamano Prueba",
+      "standard": "Estandar",
+      "familyPack": "Paquete Familiar",
+      "plusSH": "+ Envio",
+      "thirtyDayGuarantee": "Garantia 30 Dias",
+      "getFreeSample": "Obtener Muestra GRATIS",
+      "soldThisWeek": "87 vendidos esta semana",
+      "limitedStock": "Stock limitado invierno",
+      "moneyBackGuarantee": "Garantia de Devolucion de Dinero 30 Dias"
+    }
+  },
+  "features": {
+    "odorElimination": {
+      "title": "Atrapa el Olor a Amoniaco",
+      "description": "***Carbon activado de grado filtro de aire y agua*** no solo enmascara olores - atrapa moleculas de amoniaco en la fuente. Tu nariz te lo agradecera!"
+    },
+    "catFriendly": {
+      "title": "Usado en Filtros de Agua y Aire Mundial",
+      "description": "Carbon de coco natural sin quimicos, fragancias ni colorantes.\n\nEl mismo tipo usado en filtros de agua y aire en todo el mundo, lo suficientemente potente para multiples gatos."
+    },
+    "longLastingFreshness": {
+      "title": "7 Dias de Aire Fresco Por Aplicacion",
+      "description": "Una aplicacion = una semana completa sin ese vergonzoso olor de caja de arena. Deja de limpiar constantemente - empieza a respirar tranquilo."
+    },
+    "natural": {
+      "title": "100% Ingredientes Naturales",
+      "description": "Hecho de carbon activado de cascara de coco sin fragancias sinteticas ni rellenos. No toxico y libre de quimicos."
+    },
+    "worksWithAnyLitter": {
+      "title": "Funciona con la Arena Favorita de Tu Gato",
+      "description": "Arcilla, cristal, aglomerante, no aglomerante - no importa! No necesitas estresar a tu gato con un cambio de arena. Purrify funciona con lo que ya usas."
+    },
+    "costEffective": {
+      "title": "Ahorra Dinero en Arena",
+      "description": "Extiende la vida de la arena previniendo acumulacion de olores. Usa menos, cambia menos seguido, respira mejor. Tu billetera tambien te lo agradecera."
+    },
+    "freePurrify": {
+      "title": "Purrify Gratis",
+      "description": "Obtiene una muestra gratis de Purrify con tu primera orden."
+    },
+    "beforeAfter": {
+      "title": "Antes y Despues",
+      "description": "Mira la diferencia que Purrify hace en la caja de arena de tu gato."
+    }
+  },
+  "benefits": {
+    "molecular": {
+      "title": "Nivel Molecular",
+      "description": "Elimina olores en la fuente"
+    },
+    "sevenDayFreshness": {
+      "title": "7 Dias de Frescura",
+      "description": "Control de olores duradero"
+    },
+    "natural": {
+      "title": "100% Natural",
+      "description": "Sin quimicos agregados; 100% carbon activado de coco natural"
+    },
+    "universalFit": {
+      "title": "Ajuste Universal",
+      "description": "Funciona con todos los tipos de arena"
+    },
+    "highlyRated": {
+      "title": "Altamente Calificado",
+      "description": "Amado por padres de gatos en Canada\nEnvio rapido en Canada"
+    }
+  },
+  "benefitsSection": {
+    "sectionHeader": "Convierte los Problemas de Olor de Gato en Cosa del Pasado",
+    "title": "Beneficios de Purrify",
+    "subtitle": "Descubre por que Purrify es la solucion perfecta para duenos de gatos que quieren un hogar con olor fresco.",
+    "items": [
+      {
+        "title": "Eliminacion de Olores",
+        "description": "La formula avanzada de Purrify elimina efectivamente los olores desagradables de la caja de arena en su origen. Di adios a los olores persistentes que pueden permear tu hogar y da la bienvenida a un ambiente mas fresco y acogedor para ti y tu amigo peludo."
+      },
+      {
+        "title": "Simple",
+        "description": "Purrify esta formulado con cascaras de coco simples, activadas para absorber olores. Puedes confiar en que estas proporcionando a tu gato un ambiente de caja limpia sin exponerlos a quimicos o toxinas."
+      },
+      {
+        "title": "Economico",
+        "description": "Purrify ayuda a extender la vida de la arena de tu gato previniendo la acumulacion de olores, lo que significa que necesitaras cambiar la arena con menos frecuencia. Esto no solo te ahorra dinero sino que tambien reduce el desperdicio, siendo beneficioso para tu bolsillo y el medio ambiente."
+      }
+    ]
+  },
+  "howItWorks": {
+    "simpleAs123": "Aire Fresco en 60 Segundos - Simple como 1-2-3",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Abrir y Verter",
+        "description": "Abre la bolsa - tu nariz notara la diferencia inmediatamente! Sin ensamblaje, sin instrucciones complicadas."
+      },
+      {
+        "number": "02",
+        "title": "Espolvorear la Magia",
+        "description": "Solo espolvorea una capa fina sobre la arena limpia. Funciona con CUALQUIER marca - arcilla, cristal, aglomerante, lo que sea."
+      },
+      {
+        "number": "03",
+        "title": "Mezclar y Disfrutar lo Limpio!",
+        "description": "Mezcla suavemente y observa (huele?) la magia suceder. 7 dias de aire fresco empiezan AHORA. Tus invitados quedaran asombrados."
+      }
+    ],
+    "litterTypes": {
+      "clumping": "AGLOMERANTE",
+      "crystal": "CRISTAL",
+      "natural": "NATURAL",
+      "clay": "ARCILLA",
+      "nonClumping": "NO AGLOMERANTE"
+    },
+    "learnTheScience": "Aprende la ciencia",
+    "compareSizes": "compara nuestros tamanos",
+    "coconutDescription": "Cascaras de coco puras y sostenibles son activadas con vapor de agua filtrado puro a alta presion para abrir millones de agujeros, tuneles y pasajes que atrapan las moleculas de olor."
+  },
+  "productsSection": {
+    "forEveryCatHousehold": "PARA CADA HOGAR CON GATOS",
+    "pickYourPowerLevel": "ELIGE TU NIVEL DE PODER PURRIFY",
+    "subtitle": "Ya sea que tengas un gatito o multiples gatos, tenemos el tamano ideal de Purrify para tu hogar.",
+    "powerLevels": {
+      "kittenPower": "Poder Gatito",
+      "standardPower": "Poder Estandar",
+      "maximumPower": "Poder Maximo"
+    },
+    "mostPopular": "MAS POPULAR",
+    "addToCart": "Agregar al Carrito",
+    "buyNow": "Comprar Ahora",
+    "subscribeNow": "Suscribete y Ahorra",
+    "adding": "Agregando...",
+    "viewAllProducts": "VER TODOS LOS PRODUCTOS",
+    "quantity": "Cantidad",
+    "decreaseQuantity": "Disminuir cantidad",
+    "increaseQuantity": "Aumentar cantidad",
+    "findNearYou": "Encontrar Cerca de Ti",
+    "askYourStore": "Pregunta por Purrify en Tu Tienda Local de Mascotas",
+    "availableAtStores": "Disponible en tiendas de mascotas en todo Canada"
+  },
+  "cta": {
+    "title": "Deja de Avergonzarte por el Olor de Arena de Gato!",
+    "subtitle": "Unete a mas de 1,000 padres de gatos que finalmente tienen hogares con olor fresco. Sin mas contener la respiracion, sin mas disculparse con los invitados. Recupera tu confianza - empieza a respirar tranquilo otra vez.",
+    "buttonText": "ELIMINAR EL MAL OLOR AHORA",
+    "joinText": "Unete a mas de 1,000 familias con hogares sin olores - Visita tu tienda local",
+    "guarantee": "Resultados comprobados que puedes oler (o no puedes oler!)",
+    "b2bTitle": "Encuentra Purrify Cerca de Ti",
+    "b2bSubtitle": "Disponible en tiendas de mascotas en todo Canada. Pregunta por Purrify en tu tienda local de mascotas.",
+    "b2bButtonText": "Encontrar una Tienda Cerca de Ti",
+    "b2bGuarantee": "Disponible en minoristas de mascotas en todo el pais"
+  },
+  "trustBar": {
+    "happyCats": "gatos felices",
+    "reviews": "resenas"
+  },
+  "about": {
+    "naturalAndEffective": "Natural y Efectivo"
+  },
+  "newsletter": {
+    "title": "Suscribete a nuestro boletin",
+    "subtitle": "Mantente actualizado con las ultimas noticias y promociones",
+    "placeholder": "Tu direccion de correo",
+    "buttonText": "Suscribirse",
+    "successMessage": "Gracias por suscribirte!",
+    "errorMessage": "Ocurrio un error. Por favor intenta de nuevo.",
+    "errorInvalidEmail": "Por favor ingresa una direccion de correo valida",
+    "errorGeneric": "Algo salio mal. Por favor intenta de nuevo.",
+    "privacyText": "Sin spam, cancela cuando quieras. Respetamos tu privacidad.",
+    "joinFamily": {
+      "title": "Unete a la Familia Purrify",
+      "subtitle": "Obtiene 10% de descuento en tu primera orden mas consejos exclusivos de cuidado de gatos",
+      "benefits": {
+        "firstOrder": "10% de Descuento en Primera Orden",
+        "firstOrderDesc": "Descuento exclusivo para nuevos suscriptores",
+        "catCareTips": "Consejos de Cuidado de Gatos",
+        "catCareTipsDesc": "Consejos expertos semanales y tips de arena",
+        "earlyAccess": "Acceso Anticipado",
+        "earlyAccessDesc": "Se el primero en conocer nuevos productos",
+        "communityStories": "Historias de la Comunidad",
+        "communityStoriesDesc": "Historias de exito de otros duenos de gatos"
+      },
+      "emailPlaceholder": "Ingresa tu direccion de correo",
+      "ctaButton": "Obtener 10% de Descuento en Tu Primera Orden",
+      "joinText": "Unete a mas de 1,000 clientes felices - Sin spam, cancela cuando quieras",
+      "welcomeMessage": "Bienvenido a Purrify!",
+      "features": {
+        "weeklyTips": "Tips semanales",
+        "exclusiveOffers": "Ofertas exclusivas",
+        "earlyAccessProducts": "Acceso anticipado"
+      }
+    },
+    "popup": {
+      "title": "Obtien {discount}% de Descuento en Tu Primera Orden!",
+      "description": "Unete a mas de 1,000 clientes felices y recibe consejos exclusivos, descuentos y acceso anticipado a nuevos productos.",
+      "buttonText": "Obtener {discount}% de Descuento Ahora"
+    },
+    "footer": {
+      "title": "Mantente Actualizado con Purrify",
+      "description": "Recibe consejos de cuidado de gatos y ofertas exclusivas directamente en tu bandeja de entrada.",
+      "placeholder": "Tu correo",
+      "buttonText": "Suscribirse"
+    },
+    "inline": {
+      "title": "Unete a la Comunidad Purrify",
+      "description": "Recibe consejos expertos de cuidado de gatos y ofertas exclusivas directamente en tu bandeja de entrada.",
+      "buttonText": "Suscribirse Gratis",
+      "successText": "Suscripcion Exitosa!"
+    }
+  },
+  "homepage": {
+    "seo": {
+      "pageTitle": "Aditivo de Control de Olores de Arena para Gatos",
+      "keywords": "control de olores arena gatos, arena gatos carbon activado, aditivo natural arena gatos, control de olores mascotas sin fragancia, desodorizante arena gatos, eliminacion olor mascotas, productos cuidado gatos, control natural olores, solucion arena gatos, suministros mascotas EE.UU., suministros mascotas Canada, envios a EE.UU.",
+      "openGraphImageAlt": "Solucion Premium de Control de Olores de Arena para Gatos",
+      "videoAlt": "Demostracion de Efectividad del Aditivo Purrify para Arena de Gatos",
+      "videoDescription": "Aditivo Purrify para Arena de Gatos en Accion - Demostracion Antes y Despues",
+      "videoEffectivenessDemo": "Demostracion de Efectividad del Aditivo Purrify para Arena de Gatos"
+    },
+    "trustBadges": {
+      "securePayment": {
+        "title": "Pago Seguro",
+        "description": "SSL 256-bit",
+        "detail": "Pago encriptado con SSL a traves de Stripe"
+      }
+    },
+    "socialProof": {
+      "nationalDelivery": "100% Natural - Hecho en Canada - Envios a EE.UU.",
+      "fastDelivery": "Entrega rapida a EE.UU. y Canada",
+      "recentOrders": "ordenes esta semana"
+    },
+    "hero": {
+      "videoAriaLabel": "Video demostrativo mostrando el aditivo de carbon activado Purrify eliminando olores de arena de gatos antes y despues de la aplicacion",
+      "videoFallbackText": "Tu navegador no soporta la etiqueta de video. Este video demuestra el aditivo de carbon activado Purrify eliminando olores antes y despues de la aplicacion en arena de gatos.",
+      "videoDescriptions": "Descripciones en Espanol",
+      "highlyRated": "Altamente Calificado",
+      "moneyBackGuarantee": "Equipo de Soporte Experto",
+      "freeShippingCanada": "Envio Gratis en Canada"
+    },
+    "enhancedComparison": {
+      "duration": "Duracion",
+      "coverage": "Cobertura",
+      "chooseYourPerfectSize": "Elige Tu Tamano Perfecto",
+      "allSizesDeliver": "Todos los tamanos entregan la misma poderosa eliminacion de olores. Elige segun el tamano de tu hogar y frecuencia de uso.",
+      "whyChoosePurrify": "Convierte los Problemas de Olor de Gato en Cosa del Pasado",
+      "joinThousands": "Unete a mas de 1,000 padres de gatos satisfechos que confian en Purrify",
+      "happyCustomers": "Clientes Felices",
+      "averageRating": "Calificacion Promedio",
+      "satisfactionRate": "Tasa de Satisfaccion",
+      "odorFreeGuarantee": "Aire fresco con cada aplicacion",
+      "tryRiskFree": "Probar Sin Riesgo",
+      "chooseThisSize": "Elegir Este Tamano"
+    },
+    "altText": {
+      "scientificDiagram": "Diagrama cientifico mostrando la estructura molecular del carbon activado con microporos que atrapan moleculas de olor",
+      "productPackages": "Tres paquetes de productos Purrify mostrando diferentes tamanos: prueba 12g, estandar 50g, y paquete familiar 120g",
+      "microscopicView": "Vista microscopica del carbon activado mostrando estructura porosa que captura moleculas de olor",
+      "happyCat": "Gato feliz descansando tranquilamente en un ambiente domestico fresco y sin olores",
+      "happyCatAlt": "Gato feliz",
+      "userAvatar": "Usuario",
+      "customerTestimonials": "Ver testimonios de clientes",
+      "leaveGoogleReview": "Dejar una opinion en Google",
+      "litterCompatibility": "Gato disfrutando su arena favorita mientras Purrify funciona con cualquier tipo de arena"
+    },
+    "subscription": {
+      "fastDelivery": "Entrega Rapida",
+      "quickReliableShipping": "Envio rapido y confiable",
+      "skipAnytime": "Salta Cuando Quieras",
+      "fullControlDeliveries": "Control total sobre entregas",
+      "lovedByCustomers": "Amado por duenos de gatos",
+      "joinSatisfiedCustomers": "Unete a clientes satisfechos:",
+      "thirtyDayGuarantee": "Soporte continuo de olores",
+      "moneyBackPromise": "Atencion al cliente dedicada",
+      "fiveStarRated": "Enfoque sin fragancia",
+      "reviewsRating": "Opiniones de clientes",
+      "testimonialQuote": ""
+    }
+  },
+  "featuresSection": {
+    "badge": "La Diferencia Purrify",
+    "title": "Por que los Gatos y sus Duenos Aman Purrify?",
+    "paragraph1": "Amas a tu gato, pero seamos honestos—el olor de la caja de arena es un problema. Has probado arena perfumada, ambientadores y bicarbonato de sodio—pero solo enmascaran el problema, no lo solucionan.",
+    "paragraph2": "Imagina entrar a tu casa y oler... nada. Solo aire limpio, sin olores persistentes, y sin olores vergonzosos cuando llegan invitados.",
+    "tagline": "Eso es exactamente lo que hace Purrify...",
+    "learnMore": "Aprende mas"
+  },
+  "trustBadges": {
+    "moneyBack": {
+      "title": "Soporte Basado en Canada",
+      "description": "Personas reales listas para ayudarte a controlar los olores",
+      "highlight": "Expertos en cuidado de gatos"
+    },
+    "securePayment": {
+      "title": "Pago Seguro",
+      "description": "Pago encriptado con SSL a traves de Stripe",
+      "highlight": "SSL 256-bit"
+    },
+    "fastShipping": {
+      "title": "Envio Rapido",
+      "description": "Entrega rapida y confiable",
+      "highlight": "Procesamiento el Mismo Dia"
+    },
+    "customerRating": {
+      "title": "Comentarios de Clientes",
+      "description": "Guias y recursos para reducir olor con aditivo de carbon activado",
+      "highlight": "Sin Fragancia"
+    },
+    "happyCustomers": {
+      "title": "Comunidad de Duenos de Gatos",
+      "description": "Usado por duenos de gatos en Canada",
+      "highlight": "Soporte en Canada"
+    },
+    "premiumQuality": {
+      "title": "Calidad Premium",
+      "description": "Carbon activado de grado filtracion usado en filtros de agua y aire",
+      "highlight": "Sin Fragancia"
+    }
+  },
+  "emailCapture": {
+    "waitDontGo": "Espera! No te vayas todavia!",
+    "exclusiveOffer": "Desbloquea una oferta exclusiva",
+    "subtitle": "Antes de irte, obtiene 15% de descuento en tu primera orden",
+    "emailPlaceholder": "Ingresa tu direccion de correo",
+    "claimDiscount": "Reclamar 15% de Descuento",
+    "noThanks": "No gracias",
+    "instantAccess": "Acceso instantaneo a tu codigo de descuento",
+    "limitedTime": "Oferta por tiempo limitado - no te la pierdas!",
+    "successMessage": "Exito! Revisa tu bandeja de entrada para el codigo de descuento.",
+    "errorMessage": "Algo salio mal - por favor intenta de nuevo."
+  },
+  "reviewsSection": {
+    "customerReviews": "Opiniones de Clientes",
+    "realStories": "Historias reales de padres de gatos felices",
+    "verifiedReviews": "Opiniones de Clientes",
+    "averageRating": "Calificacion Promedio",
+    "readMore": "Leer Mas",
+    "writeReview": "Escribir Opinion",
+    "helpful": "Util",
+    "verified": "Cliente",
+    "productUsed": "Producto Usado",
+    "catsOwned": "Gatos que Tiene",
+    "useCase": "Caso de Uso"
+  },
+  "freeGiveaway": {
+    "formTitle": "Ingresa Tus Datos",
+    "fullName": "Nombre Completo",
+    "emailAddress": "Direccion de Correo",
+    "catNames": "Nombres de Tus Gatos",
+    "catNamePlaceholder": "Nombre del Gato {index}",
+    "addAnotherCat": "Agregar Otro Gato",
+    "submitting": "Enviando...",
+    "submitButton": "OBTENER MI BOLSA GRATIS AHORA",
+    "successMessage": "Tu solicitud de bolsa gratis ha sido enviada exitosamente!",
+    "errorMessage": "Error al enviar tu solicitud. Por favor intenta de nuevo.",
+    "errorGeneric": "Ocurrio un error. Por favor intenta mas tarde.",
+    "privacyNotice": "Al enviar este formulario, nos permites contactarte sobre tu muestra gratis de Purrify. Respetamos tu privacidad y nunca compartiremos tu informacion con terceros."
+  },
+  "enhancedProductComparison": {
+    "compareAndSave": "COMPARA Y AHORRA",
+    "chooseYourPerfectSize": "Elige Tu Tamano Perfecto",
+    "purrifySize": "Tamano Purrify",
+    "subtitle": "Todos los tamanos entregan la misma poderosa eliminacion de olores. Elige segun el tamano de tu hogar y frecuencia de uso.",
+    "trial": "PRUEBA",
+    "mostPopular": "MAS POPULAR",
+    "bestValue": "MEJOR VALOR",
+    "premium": "Premium",
+    "perfectForFirstTime": "Perfecto para usuarios nuevos",
+    "idealForSingleCat": "Ideal para hogares con un gato",
+    "perfectForMultiCat": "Perfecto para hogares multi-gatos",
+    "duration": "Duracion",
+    "coverage": "Cobertura",
+    "odorControl": "Control de Olores 7 Dias",
+    "odorControlTrial": "Control de Olores 7 Dias",
+    "odorControlMedium": "Control de Olores 14 Dias",
+    "odorControlLarge": "Control de olores 30 dias",
+    "naturalIngredients": "100% Ingredientes Naturales",
+    "easyApplication": "Aplicacion Facil",
+    "moneyBackGuarantee": "Soporte experto en olores",
+    "freeShipping": "Envio incluido",
+    "freeShippingDetailed": "El envio esta incluido.",
+    "autoshipHero": "Autoenvio y Ahorra",
+    "autoshipHighlight": "Suscribete y Ahorra",
+    "bulkDiscount": "Descuento por Volumen Disponible",
+    "prioritySupport": "Soporte al Cliente Prioritario",
+    "tryRiskFree": "Probar Sin Riesgo",
+    "chooseThisSize": "Elegir Este Tamano",
+    "chosenByCustomers": "68% de los clientes eligen este paquete",
+    "whyChoosePurrify": "Por que Elegir Purrify?",
+    "joinThousands": "Unete a mas de 1,000 duenos de gatos que confian en Purrify",
+    "happyCustomers": "Clientes Felices",
+    "averageRating": "Calificacion Promedio",
+    "satisfactionRate": "Tasa de Satisfaccion",
+    "odorFreeGuarantee": "Aire fresco con cada aplicacion",
+    "moneyBackGuaranteeText": "Preguntas? Nuestro equipo de cuidado de gatos esta listo para ayudarte a obtener resultados."
+  },
+  "subscriptionOffer": {
+    "subscribeAndSave": "Suscribete y Ahorra",
+    "neverRunOut": "Nunca Te Quedes Sin Stock",
+    "subtitle": "Configura entregas automaticas para asegurar ahorros exclusivos. Cancela cuando quieras.",
+    "monthly": "Mensual",
+    "everyTwoMonths": "Cada 2 Meses",
+    "quarterly": "Trimestral",
+    "save": "Ahorra",
+    "mostFlexible": "Mas Flexible",
+    "bestValue": "Mejor Valor",
+    "maxSavings": "Maximo Ahorro",
+    "oneTimePurchase": "Compra Unica",
+    "subscriptionBenefits": "Beneficios de Suscripcion",
+    "exclusiveDiscounts": "Descuentos solo para suscriptores",
+    "prioritySupport": "Soporte al cliente prioritario",
+    "flexibleSchedule": "Horario de entrega flexible",
+    "cancelAnytime": "Cancela cuando quieras",
+    "startSubscription": "Iniciar Suscripcion",
+    "selectPlan": "Seleccionar Plan",
+    "popularChoice": "Opcion Popular"
+  },
+  "urgencyBanner": {
+    "limitedTime": "Oferta Por Tiempo Limitado",
+    "saveToday": "Ahorra Hoy",
+    "onAllOrders": "en todas las ordenes",
+    "hurryOffer": "Apurate! Esta oferta termina pronto",
+    "claimDiscount": "Reclamar Descuento",
+    "timeLeft": "Tiempo Restante",
+    "days": "dias",
+    "hours": "horas",
+    "minutes": "minutos",
+    "seconds": "segundos",
+    "onlyLeft": "solo quedan",
+    "inStock": "en stock",
+    "orderNow": "Ordenar Ahora"
+  },
+  "agitationSection": {
+    "headline": "Ya Conoces Ese Momento...",
+    "paragraphs": [
+      "Entras por la puerta después de un día largo. Y ahí está. Ese olor.",
+      "El que te golpea antes de que siquiera te quites el abrigo.",
+      "El que ya no notas... hasta que viene visita. Hasta que tu suegra arruga la nariz. Hasta que ves a tu amigo hacer ese olfateo discreto en la entrada.",
+      "Amas a tu gato. Pero esa caja de arena? Es una bomba de amoníaco a punto de estallar.",
+      "Y lo peor: los ambientadores no lo arreglan. Solo rocían perfume encima del problema.",
+      "El olor sigue ahí. Acechando. Esperando. Listo para atacar a cualquiera que cruce tu puerta."
+    ],
+    "pivot": "Y si no tuviera que ser así?",
+    "transition": "Padres de gatos en todo Canadá están descubriendo algo que de verdad funciona. Y toma 30 segundos...",
+    "ui": {
+      "imageAlt": "Dueño de gato avergonzado",
+      "imageCaption": "\"te juro que lo acabo de limpiar...\"",
+      "floatingCardTitle": "Bomba de amoníaco",
+      "floatingCardDescription": "Los olores de la caja de arena pueden recorrer 6 m en segundos.",
+      "timelineTimeArrival": "5:30 p. m.",
+      "timelineTimeCompany": "5:31 p. m.",
+      "timelineTimeThinking": "Pensando...",
+      "timelineTimeReality": "Realidad"
+    }
+  },
+  "calculatorSection": {
+    "title": "Ahorra Dinero Mientras Mantienes Tu Hogar Fresco",
+    "description": "Purrify extiende la vida de la arena de tu gato hasta un 50%, ahorrandote dinero mientras elimina olores. Mira cuanto podrias ahorrar con nuestra calculadora."
+  },
+  "socialProofBadges": {
+    "trustedVerified": "Verificado y Confiable",
+    "findUsOn": "Encuentranos En",
+    "viewOnPlatform": "Ver Purrify en {{platform}}",
+    "platforms": {
+      "trustpilot": "Trustpilot",
+      "googleBusiness": "Google Business",
+      "crunchbase": "Crunchbase",
+      "productHunt": "Product Hunt",
+      "yelp": "Yelp",
+      "wellfound": "Wellfound"
+    }
+  },
+  "scrollingBar": {
+    "freeShipping": "Envio Gratis en Todas las Ordenes de Suscripcion",
+    "madeInCanada": "Fabricado en Canada con Ingredientes Domesticos y de Origen Global"
+  }
+}

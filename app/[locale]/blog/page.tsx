@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '@/components/ui/container';
@@ -60,20 +60,22 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
       locale === 'zh' ? 'zh-CN' :
         locale === 'es' ? 'es-US' : 'en-CA';
 
+  const canonicalPath = locale === 'en' ? `${SITE_URL}/blog/` : `${SITE_URL}/${locale}/blog/`;
+
   return {
     title: localeMeta.title,
     description: localeMeta.description,
     alternates: {
-      canonical: `${SITE_URL}/${locale}/blog/`,
+      canonical: canonicalPath,
       languages: {
-        'en-CA': `${SITE_URL}/en/blog/`,
+        'en-CA': `${SITE_URL}/blog/`,
         'fr-CA': `${SITE_URL}/fr/blog/`,
         'zh-CN': `${SITE_URL}/zh/blog/`,
         'es-US': `${SITE_URL}/es/blog/`,
-        'en-US': `${SITE_URL}/en/blog/`,
-        'x-default': `${SITE_URL}/en/blog/`,
+        'en-US': `${SITE_URL}/blog/`,
+        'x-default': `${SITE_URL}/blog/`,
         // Self-reference for the current locale
-        [hrefLang]: `${SITE_URL}/${locale}/blog/`,
+        [hrefLang]: canonicalPath,
       },
     },
     robots: {
@@ -89,7 +91,7 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
     openGraph: {
       title: localeMeta.title,
       description: localeMeta.description,
-      url: `${SITE_URL}/${locale}/blog/`,
+      url: canonicalPath,
       type: 'website',
       siteName: SITE_NAME,
       locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : locale === 'es' ? 'es_US' : 'en_CA',
@@ -220,6 +222,11 @@ export default async function LocalizedBlogIndexPage({
 }: BlogIndexPageProps) {
   const { locale } = await params;
 
+  // English is served at /blog/ (no locale prefix)
+  if (locale === 'en') {
+    redirect('/blog/');
+  }
+
   // Validate locale
   if (!isValidLocale(locale)) {
     notFound();
@@ -241,7 +248,7 @@ export default async function LocalizedBlogIndexPage({
     '@context': 'https://schema.org',
     '@type': 'Blog',
     name: `${SITE_NAME} Blog - ${locale.toUpperCase()}`,
-    url: `${SITE_URL}/${locale}/blog/`,
+    url: `${SITE_URL}/${locale}/blog/`,  // non-English locales only reach here
     description: SITE_DESCRIPTION,
     blogPost: currentPosts.map((post) => {
       // Ensure date is in ISO 8601 format
@@ -309,7 +316,7 @@ export default async function LocalizedBlogIndexPage({
         <section className="py-16">
           <Container>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-              {currentPosts.map((post) => (
+              {currentPosts.map((post, index) => (
                 <article
                   key={post.link}
                   className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 flex flex-col h-full"
@@ -319,6 +326,7 @@ export default async function LocalizedBlogIndexPage({
                       src={post.image}
                       alt={post.title}
                       fill
+                      priority={index === 0}
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -358,7 +366,8 @@ export default async function LocalizedBlogIndexPage({
 
                     <Link
                       href={post.link}
-                      className="inline-flex items-center gap-2 text-electric-indigo font-semibold hover:gap-3 transition-all"
+                      className="inline-flex items-center gap-2 text-electric-indigo-600 font-semibold hover:gap-3 transition-all"
+                      aria-label={`${t.readMore}: ${post.title}`}
                     >
                       {t.readMore}
                       <ArrowRight className="w-4 h-4" />

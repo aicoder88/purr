@@ -1,0 +1,72 @@
+{
+  "products": {
+    "purrify-12g": {
+      "name": "免费试用装",
+      "description": "免费试用Purrify！\n仅需支付$4.76运费（加拿大境内任一地点）\n\n每位客户限购一套"
+    },
+    "purrify-50g": {
+      "name": "黄金尺寸",
+      "description": "50g · 标准装\n单猫家庭的理想选择\n我们最受欢迎的尺寸 — 复购率最高。"
+    },
+    "purrify-120g": {
+      "name": "家庭装",
+      "description": "120g · 性价比之王\n专为多猫家庭设计。\n针对高氨气输出打造。"
+    }
+  },
+  "pricing": {
+    "oneTimeLabel": "一次性购买",
+    "autoshipLabel": "自动订购省更多",
+    "autoshipBestLabel": "超值自动订购方案",
+    "billedEvery": "账单周期：每",
+    "months": "个月",
+    "shippingIncluded": "含运费",
+    "freeShipping": "免运费",
+    "plusShipping": "+ 运费",
+    "shippingCalculated": "运费将在结账时计算",
+    "startAutoship": "开启自动订购",
+    "buyNow": "立即购买",
+    "linkComingSoon": "支付链接即将上线",
+    "recommended": "推荐选择",
+    "perMonth": "≈ {price}/月",
+    "saveVsOneTime": "比单次购买节省 {percent}%",
+    "trialSizeSection": "免费试用 - 仅付运费",
+    "quarterlyAutoshipSection": "订购享优惠 - 季度自动配送",
+    "stripeShippingNote": "产品将收货地址将以您在下一页 Stripe 填写的 'SHIP TO' 为准"
+  },
+  "freeTrial": {
+    "urgentBanner": "限时优惠",
+    "free": "免费"
+  },
+  "trustBadges": {
+    "moneyBack": {
+      "title": "加拿大客服团队",
+      "description": "真实团队随时帮助您优化除臭效果",
+      "highlight": "猫咪护理专家"
+    },
+    "securePayment": {
+      "title": "安全支付",
+      "description": "SSL加密结账与Stripe",
+      "highlight": "256位SSL"
+    },
+    "fastShipping": {
+      "title": "快速配送",
+      "description": "快速可靠的加拿大邮政配送",
+      "highlight": "当天处理订单"
+    },
+    "customerRating": {
+      "title": "客户反馈",
+      "description": "查看猫主人如何使用活性炭添加剂减少异味",
+      "highlight": "无香型"
+    },
+    "happyCustomers": {
+      "title": "猫主人社区",
+      "description": "被加拿大家庭使用",
+      "highlight": "加拿大客服支持"
+    },
+    "premiumQuality": {
+      "title": "优质品质",
+      "description": "净水器级活性炭，常用于饮用水和空气净化",
+      "highlight": "100%无香精"
+    }
+  }
+}

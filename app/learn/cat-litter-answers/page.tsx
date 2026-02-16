@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     'ammonia odor solutions',
   ],
   alternates: {
-    canonical: '/learn/cat-litter-answers/',
+    canonical: 'https://www.purrify.ca/learn/cat-litter-answers/'
   },
   openGraph: {
     type: 'website',

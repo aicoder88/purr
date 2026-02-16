@@ -113,10 +113,10 @@ export const BUSINESS_PROFILE: BusinessProfile = {
   ],
 
   socialMedia: {
-    facebook: 'https://web.facebook.com/profile.php?id=61586480918382',
+    facebook: 'https://www.facebook.com/Purrifyhq',
     instagram: 'https://www.instagram.com/purrifyhq/',
     twitter: 'https://x.com/PurrifyHQ',
-    linkedin: 'https://www.linkedin.com/company/purrify',
+    linkedin: 'https://www.linkedin.com/company/purrifyhq/',
     youtube: 'https://www.youtube.com/@PurrifyHQ',
     tiktok: 'https://www.tiktok.com/@purrifyhq',
     trustpilot: 'https://www.trustpilot.com/review/purrify.ca',
@@ -281,8 +281,8 @@ export const validateNAPConsistency = (name: string, address: string, phone: str
     addressMatch: address === expectedAddress,
     phoneMatch: phone === expectedPhone,
     isConsistent: name === BUSINESS_PROFILE.name &&
-                   address === expectedAddress &&
-                   phone === expectedPhone
+      address === expectedAddress &&
+      phone === expectedPhone
   };
 };
 

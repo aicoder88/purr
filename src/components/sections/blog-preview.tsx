@@ -32,7 +32,7 @@ async function getPreviewPosts(locale: Locale, limit: number): Promise<PreviewPo
       date,
       image: post.featuredImage.url,
       imageAlt: post.featuredImage.alt || post.title,
-      link: `/${locale}/blog/${post.slug}`,
+      link: locale === 'en' ? `/blog/${post.slug}` : `/${locale}/blog/${post.slug}`,
     };
   });
 }
@@ -105,7 +105,10 @@ export async function BlogPreview({ locale }: { locale: string }) {
                 </div>
               </div>
               <div className="px-6 pb-6 pt-0">
-                <div className="text-[#03E46A] dark:text-[#5B2EFF] font-medium flex items-center hover:text-[#03E46A]/80 dark:hover:text-[#5B2EFF]/80 transition-colors">
+                <div 
+                  className="text-[#03C45A] dark:text-[#4B2AEF] font-medium flex items-center hover:text-[#03C45A]/80 dark:hover:text-[#4B2AEF]/80 transition-colors"
+                  aria-label={`${t.blogSection.readFullArticle}: ${post.title}`}
+                >
                   {t.blogSection.readFullArticle}
                   <svg
                     className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
@@ -131,7 +134,7 @@ export async function BlogPreview({ locale }: { locale: string }) {
             asChild
             className="bg-gradient-to-r from-[#03E46A] to-[#5B2EFF] dark:from-[#5B2EFF] dark:to-[#03E46A] hover:from-[#03E46A]/90 hover:to-[#5B2EFF] dark:hover:from-[#5B2EFF]/90 dark:hover:to-[#03E46A] text-white dark:text-gray-100 font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0"
           >
-            <Link href={`/${resolvedLocale}/blog`} prefetch={false}>
+            <Link href={resolvedLocale === 'en' ? '/blog' : `/${resolvedLocale}/blog`} prefetch={false}>
               {t.blogSection.viewAllArticles}
             </Link>
           </Button>

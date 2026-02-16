@@ -1,0 +1,71 @@
+{
+  "referral": {
+    "dashboard": {
+      "title": "Donnez 5$, Recevez 5$",
+      "loginRequired": "Connectez-vous pour acceder a votre tableau de bord de parrainage et commencer a gagner des recompenses.",
+      "signIn": "Se Connecter",
+      "retry": "Reessayer",
+      "generateDescription": "Generez votre code de parrainage unique et partagez-le avec vos amis. Ils obtiennent 5$ de rabais sur leur premiere commande, et vous recevez 5$ de credit quand ils achetent!",
+      "generateButton": "Generer Mon Code de Parrainage",
+      "generating": "Generation en cours..."
+    },
+    "stats": {
+      "completedReferrals": "Parrainages Completes",
+      "totalEarned": "Total Gagne",
+      "availableCredit": "Credit Disponible",
+      "pending": "En Attente"
+    },
+    "milestone": {
+      "title": "Progression Jalon",
+      "referrals": "parrainages",
+      "nextReward": "Prochaine recompense"
+    },
+    "rewards": {
+      "title": "Vos Recompenses",
+      "credit": "Credit",
+      "available": "Disponible"
+    },
+    "activity": {
+      "title": "Activite Recente",
+      "completed": "Complete",
+      "pending": "En Attente"
+    },
+    "widget": {
+      "title": "Donnez 5$, Recevez 5$",
+      "giveGet": "Donnez 5$, Recevez 5$",
+      "description": "Partagez votre code avec vos amis. Ils obtiennent 5$ de rabais, vous recevez 5$ de credit!",
+      "shareDescription": "Partagez votre code avec vos amis",
+      "yourCode": "Votre Code de Parrainage",
+      "shareLink": "Lien de Partage",
+      "copy": "Copier",
+      "copyCode": "Copier le Code",
+      "copyLink": "Copier le Lien",
+      "copied": "Copie!",
+      "shareVia": "Partager via",
+      "howItWorks": "Comment ca marche",
+      "step1": "Partagez votre code ou lien avec vos amis",
+      "step2": "Ils obtiennent 5$ de rabais sur leur premiere commande",
+      "step3": "Vous recevez 5$ de credit quand ils achetent"
+    },
+    "share": {
+      "email": "Courriel",
+      "sms": "SMS",
+      "link": "Lien"
+    },
+    "checkout": {
+      "haveCode": "Avez-vous un code de parrainage? Cliquez ici",
+      "enterReferralCode": "Entrez le Code de Parrainage",
+      "enterCode": "Veuillez entrer un code de parrainage",
+      "emailRequired": "Veuillez d'abord entrer votre courriel",
+      "invalidCode": "Code de parrainage invalide",
+      "error": "Echec de l'application du code. Veuillez reessayer.",
+      "apply": "Appliquer",
+      "applying": "Application...",
+      "applied": "Code de parrainage applique!",
+      "referredBy": "Parraine par {name}",
+      "off": "de rabais",
+      "remove": "Retirer",
+      "discountNote": "Obtenez 5$ de rabais avec le code de parrainage d'un ami"
+    }
+  }
+}

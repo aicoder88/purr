@@ -31,10 +31,10 @@ const REDIRECTS = [
   // ============================================================
   // 2. LOCALE & PATH NORMALIZATION
   // ============================================================
-  // Redirect non-localized blog routes to English locale
+  // Redirect locale-prefixed English blog routes to canonical non-prefixed URL
   {
-    source: "/blog/:slug*",
-    destination: "/en/blog/:slug*",
+    source: "/en/blog/:slug*",
+    destination: "/blog/:slug*",
     permanent: true,
   },
   // Fix doubled locale paths (e.g., /en/es/blog/ → /es/blog/)
@@ -211,7 +211,90 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 7. SHORT URLS & QUICK LINKS
+  // 7. B2B VERTICAL CONSOLIDATION REDIRECTS (Feb 2026)
+  // ============================================================
+  // Consolidated 6 separate B2B landing pages into /b2b/ with tabs
+  // Previous: /cat-cafes, /groomers, /hospitality, /shelters, /veterinarians
+  // Now: All redirect to /b2b/ with tab navigation for each vertical
+  {
+    source: "/cat-cafes",
+    destination: "/b2b",
+    permanent: true,
+  },
+  {
+    source: "/cat-cafes/:path*",
+    destination: "/b2b",
+    permanent: true,
+  },
+  {
+    source: "/groomers",
+    destination: "/b2b",
+    permanent: true,
+  },
+  {
+    source: "/groomers/:path*",
+    destination: "/b2b",
+    permanent: true,
+  },
+  {
+    source: "/hospitality",
+    destination: "/b2b",
+    permanent: true,
+  },
+  {
+    source: "/hospitality/:path*",
+    destination: "/b2b",
+    permanent: true,
+  },
+  {
+    source: "/shelters",
+    destination: "/b2b",
+    permanent: true,
+  },
+  {
+    source: "/shelters/:path*",
+    destination: "/b2b",
+    permanent: true,
+  },
+  {
+    source: "/veterinarians",
+    destination: "/b2b",
+    permanent: true,
+  },
+  {
+    source: "/veterinarians/:path*",
+    destination: "/b2b",
+    permanent: true,
+  },
+  // Localized versions
+  {
+    source: "/:locale(fr|zh|es)/cat-cafes",
+    destination: "/b2b",
+    permanent: true,
+  },
+  {
+    source: "/:locale(fr|zh|es)/groomers",
+    destination: "/b2b",
+    permanent: true,
+  },
+  {
+    source: "/:locale(fr|zh|es)/hospitality",
+    destination: "/b2b",
+    permanent: true,
+  },
+  {
+    source: "/:locale(fr|zh|es)/shelters",
+    destination: "/b2b",
+    permanent: true,
+  },
+  {
+    source: "/:locale(fr|zh|es)/veterinarians",
+    destination: "/b2b",
+    permanent: true,
+  },
+
+  // ============================================================
+  // 8. SHORT URLS & QUICK LINKS
   // ============================================================
   {
     source: "/trial",
@@ -225,7 +308,7 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 8. STOCKISTS → STORES REBRAND
+  // 9. STOCKISTS → STORES REBRAND
   // ============================================================
   {
     source: "/stockists",
@@ -249,7 +332,7 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 9. PROVINCE CODE REDIRECTS
+  // 10. PROVINCE CODE REDIRECTS
   // ============================================================
   {
     source: "/locations/ab",
@@ -319,7 +402,7 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 10. PROVINCE FULL NAME REDIRECTS (non-existent pages)
+  // 11. PROVINCE FULL NAME REDIRECTS (non-existent pages)
   // ============================================================
   {
     source: "/locations/province/prince-edward-island",
@@ -384,7 +467,7 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 11. SPANISH LOCATION REDIRECTS (direct to /es/stores)
+  // 12. SPANISH LOCATION REDIRECTS (direct to /es/stores)
   // ============================================================
   {
     source: "/es/locations/montreal",
@@ -438,7 +521,7 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 12. PURR/* AFFILIATE REDIRECTS
+  // 13. PURR/* AFFILIATE REDIRECTS
   // ============================================================
   {
     source: "/purr/trial",
@@ -467,7 +550,7 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 13. E-COMMERCE LEGACY REDIRECTS
+  // 14. E-COMMERCE LEGACY REDIRECTS
   // ============================================================
   {
     source: "/checkout",
@@ -597,7 +680,7 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 14. AUTH & ADMIN REDIRECTS
+  // 15. AUTH & ADMIN REDIRECTS
   // ============================================================
   {
     source: "/login",
@@ -631,7 +714,7 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 15. SUPPORT & CONTACT REDIRECTS
+  // 16. SUPPORT & CONTACT REDIRECTS
   // ============================================================
   {
     source: "/support/contact",
@@ -690,7 +773,7 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 16. ABOUT & COMPANY REDIRECTS
+  // 17. ABOUT & COMPANY REDIRECTS
   // ============================================================
   {
     source: "/about",
@@ -729,7 +812,7 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 17. STORE LOCATOR REDIRECTS
+  // 18. STORE LOCATOR REDIRECTS
   // ============================================================
   {
     source: "/find-a-store",
@@ -758,7 +841,7 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 18. AFFILIATE & PARTNER REDIRECTS
+  // 19. AFFILIATE & PARTNER REDIRECTS
   // ============================================================
   {
     source: "/affiliates",
@@ -782,7 +865,7 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 19. CONTENT MIGRATION (/guides, /education, /resources → /learn)
+  // 20. CONTENT MIGRATION (/guides, /education, /resources → /learn)
   // ============================================================
   {
     source: "/guides/:path*",
@@ -806,7 +889,7 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 20. BLOG → LEARN MIGRATIONS
+  // 21. BLOG → LEARN MIGRATIONS
   // ============================================================
   {
     source: "/blog/litter-box-odor-control",
@@ -895,166 +978,166 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 21. LEGACY BLOG POSTS → DYNAMIC ROUTES
+  // 22. LEGACY BLOG POSTS → DYNAMIC ROUTES
   // ============================================================
   {
     source: "/blog/activated-carbon-for-cat-litter-complete-guide",
-    destination: "/en/blog/activated-carbon-for-cat-litter-complete-guide",
+    destination: "/blog/activated-carbon-for-cat-litter-complete-guide",
     permanent: true,
   },
   {
     source: "/blog/apartment-litter-box-smell-solution",
-    destination: "/en/blog/apartment-litter-box-smell-solution",
+    destination: "/blog/apartment-litter-box-smell-solution",
     permanent: true,
   },
   {
     source: "/blog/baking-soda-vs-activated-carbon-cat-litter",
-    destination: "/en/blog/baking-soda-vs-activated-carbon-cat-litter",
+    destination: "/blog/baking-soda-vs-activated-carbon-cat-litter",
     permanent: true,
   },
   {
     source: "/blog/best-cat-litter-deodorizers-2026",
-    destination: "/en/blog/best-cat-litter-deodorizers-2026",
+    destination: "/blog/best-cat-litter-deodorizers-2026",
     permanent: true,
   },
   {
     source: "/blog/best-cat-litter-for-apartments",
-    destination: "/en/blog/best-cat-litter-for-apartments",
+    destination: "/blog/best-cat-litter-for-apartments",
     permanent: true,
   },
   {
     source: "/blog/best-cat-litter-for-smell",
-    destination: "/en/blog/best-cat-litter-for-smell",
+    destination: "/blog/best-cat-litter-for-smell",
     permanent: true,
   },
   {
     source: "/blog/best-cat-litter-multiple-cats",
-    destination: "/en/blog/best-cat-litter-multiple-cats",
+    destination: "/blog/best-cat-litter-multiple-cats",
     permanent: true,
   },
   {
     source: "/blog/best-cat-litter-multiple-cats-odor-control",
-    destination: "/en/blog/best-cat-litter-multiple-cats-odor-control",
+    destination: "/blog/best-cat-litter-multiple-cats-odor-control",
     permanent: true,
   },
   {
     source: "/blog/best-cat-litter-odor-control-2026",
-    destination: "/en/blog/best-cat-litter-odor-control-2026",
+    destination: "/blog/best-cat-litter-odor-control-2026",
     permanent: true,
   },
   {
     source: "/blog/best-clumping-cat-litter-odor-control",
-    destination: "/en/blog/best-clumping-cat-litter-odor-control",
+    destination: "/blog/best-clumping-cat-litter-odor-control",
     permanent: true,
   },
   {
     source: "/blog/best-covered-litter-boxes-odor-control",
-    destination: "/en/blog/best-covered-litter-boxes-odor-control",
+    destination: "/blog/best-covered-litter-boxes-odor-control",
     permanent: true,
   },
   {
     source: "/blog/best-litter-box-location-odour-control",
-    destination: "/en/blog/best-litter-box-location-odour-control",
+    destination: "/blog/best-litter-box-location-odour-control",
     permanent: true,
   },
   {
     source: "/blog/best-natural-cat-litter-odor-control",
-    destination: "/en/blog/best-natural-cat-litter-odor-control",
+    destination: "/blog/best-natural-cat-litter-odor-control",
     permanent: true,
   },
   {
     source: "/blog/best-self-cleaning-litter-box-odor-control",
-    destination: "/en/blog/best-self-cleaning-litter-box-odor-control",
+    destination: "/blog/best-self-cleaning-litter-box-odor-control",
     permanent: true,
   },
   {
     source: "/blog/best-unscented-cat-litter-sensitive-cats",
-    destination: "/en/blog/best-unscented-cat-litter-sensitive-cats",
+    destination: "/blog/best-unscented-cat-litter-sensitive-cats",
     permanent: true,
   },
   {
     source: "/blog/best-unscented-cat-litters",
-    destination: "/en/blog/best-unscented-cat-litters",
+    destination: "/blog/best-unscented-cat-litters",
     permanent: true,
   },
   {
     source: "/blog/best-way-to-keep-litter-box-fresh",
-    destination: "/en/blog/best-way-to-keep-litter-box-fresh",
+    destination: "/blog/best-way-to-keep-litter-box-fresh",
     permanent: true,
   },
   {
     source: "/blog/cat-litter-odor-control-usa",
-    destination: "/en/blog/cat-litter-odor-control-usa",
+    destination: "/blog/cat-litter-odor-control-usa",
     permanent: true,
   },
   {
     source: "/blog/cat-litter-odour-control-tips",
-    destination: "/en/blog/cat-litter-odour-control-tips",
+    destination: "/blog/cat-litter-odour-control-tips",
     permanent: true,
   },
   {
     source: "/blog/chemistry-of-cat-smell-industrial-fix",
-    destination: "/en/blog/chemistry-of-cat-smell-industrial-fix",
+    destination: "/blog/chemistry-of-cat-smell-industrial-fix",
     permanent: true,
   },
   {
     source: "/blog/how-to-get-rid-of-cat-litter-smell-apartment",
-    destination: "/en/blog/how-to-get-rid-of-cat-litter-smell-apartment",
+    destination: "/blog/how-to-get-rid-of-cat-litter-smell-apartment",
     permanent: true,
   },
   {
     source: "/blog/how-to-get-rid-of-cat-litter-smell-in-apartment",
-    destination: "/en/blog/how-to-get-rid-of-cat-litter-smell-in-apartment",
+    destination: "/blog/how-to-get-rid-of-cat-litter-smell-in-apartment",
     permanent: true,
   },
   {
     source: "/blog/how-to-get-rid-of-cat-pee-smell-apartment",
-    destination: "/en/blog/how-to-get-rid-of-cat-pee-smell-apartment",
+    destination: "/blog/how-to-get-rid-of-cat-pee-smell-apartment",
     permanent: true,
   },
   {
     source: "/blog/litter-deodorizer-frequency-guide",
-    destination: "/en/blog/litter-deodorizer-frequency-guide",
+    destination: "/blog/litter-deodorizer-frequency-guide",
     permanent: true,
   },
   {
     source: "/blog/safe-ways-to-deodorize-litter-box",
-    destination: "/en/blog/safe-ways-to-deodorize-litter-box",
+    destination: "/blog/safe-ways-to-deodorize-litter-box",
     permanent: true,
   },
   {
     source: "/blog/space-station-secret-fresh-home-cat-owners",
-    destination: "/en/blog/space-station-secret-fresh-home-cat-owners",
+    destination: "/blog/space-station-secret-fresh-home-cat-owners",
     permanent: true,
   },
   {
     source: "/blog/strong-cat-urine-smell-litter-box",
-    destination: "/en/blog/strong-cat-urine-smell-litter-box",
+    destination: "/blog/strong-cat-urine-smell-litter-box",
     permanent: true,
   },
   {
     source: "/blog/tried-every-litter-deodorizer-90-days-results",
-    destination: "/en/blog/tried-every-litter-deodorizer-90-days-results",
+    destination: "/blog/tried-every-litter-deodorizer-90-days-results",
     permanent: true,
   },
   {
     source: "/blog/tried-everything-cat-litter-smell-solutions",
-    destination: "/en/blog/tried-everything-cat-litter-smell-solutions",
+    destination: "/blog/tried-everything-cat-litter-smell-solutions",
     permanent: true,
   },
   {
     source: "/blog/why-does-my-cats-litter-box-smell-so-bad",
-    destination: "/en/blog/why-does-my-cats-litter-box-smell-so-bad",
+    destination: "/blog/why-does-my-cats-litter-box-smell-so-bad",
     permanent: true,
   },
   {
     source: "/blog/why-does-my-house-smell-like-cat-litter",
-    destination: "/en/blog/why-does-my-house-smell-like-cat-litter",
+    destination: "/blog/why-does-my-house-smell-like-cat-litter",
     permanent: true,
   },
 
   // ============================================================
-  // 22. LEGAL PAGE REDIRECTS
+  // 23. LEGAL PAGE REDIRECTS
   // ============================================================
   {
     source: "/tos",
@@ -1083,7 +1166,7 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 23. FEED & RSS REDIRECTS
+  // 24. FEED & RSS REDIRECTS
   // ============================================================
   {
     source: "/comments/feed",
@@ -1117,7 +1200,7 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 24. WORDPRESS & CMS SECURITY SCANS
+  // 25. WORDPRESS & CMS SECURITY SCANS
   // ============================================================
   {
     source: "/wp-admin/:path*",
@@ -1201,7 +1284,7 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 25. E-COMMERCE PLATFORM LEGACY
+  // 26. E-COMMERCE PLATFORM LEGACY
   // ============================================================
   {
     source: "/category/:path*",
@@ -1250,7 +1333,7 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 26. TYPO & VARIATION REDIRECTS
+  // 27. TYPO & VARIATION REDIRECTS
   // ============================================================
   {
     source: "/producto/:path*",
@@ -1269,7 +1352,7 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 27. TRAILING SLASH NORMALIZATION (for localized products)
+  // 28. TRAILING SLASH NORMALIZATION (for localized products)
   // ============================================================
   {
     source: "/:locale(fr|es|zh)/products/:path+/",
@@ -1290,7 +1373,7 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 28. DEMO & TEST REDIRECTS
+  // 29. DEMO & TEST REDIRECTS
   // ============================================================
   {
     source: "/demo/:path*",
@@ -1319,7 +1402,7 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 29. WORDPRESS QUERY PARAMETER REDIRECTS
+  // 30. WORDPRESS QUERY PARAMETER REDIRECTS
   // ============================================================
   {
     source: "/",
@@ -1359,7 +1442,7 @@ const REDIRECTS = [
   },
 
   // ============================================================
-  // 30. BLOG PAGINATION FIX
+  // 31. BLOG PAGINATION FIX
   // ============================================================
   // Note: /blog?page=1 redirect removed as it creates a loop
   // The blog page should handle page=1 as the canonical URL

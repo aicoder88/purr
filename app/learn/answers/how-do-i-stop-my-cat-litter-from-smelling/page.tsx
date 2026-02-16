@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     'eliminate cat litter smell'
   ],
   alternates: {
-    canonical: '/learn/answers/how-do-i-stop-my-cat-litter-from-smelling/',
+    canonical: 'https://www.purrify.ca/learn/answers/how-do-i-stop-my-cat-litter-from-smelling/'
   },
   openGraph: {
     title: 'How Do I Stop My Cat Litter From Smelling? - Purrify',

@@ -1,0 +1,46 @@
+{
+  "blog": {
+    "multiCat": {
+      "title": "7 Maneras de Controlar el Olor de Arena Multi-Gatos",
+      "description": "Abrumado por el olor de caja de arena de multiples gatos? Estos 7 metodos probados eliminan hasta los olores de amoniaco multi-gatos mas fuertes. Deja de temer llegar a casa con ese olor horrible!",
+      "category": "Guia para Hogares Multi-Gatos",
+      "publishDate": "Publicado el 16 de septiembre de 2024",
+      "readTime": "12 min de lectura",
+      "breadcrumb": "Soluciones Multi-Gatos",
+      "stats": {
+        "title": "Estadisticas de Hogares Multi-Gatos",
+        "strongerOdors": "Olores mas fuertes vs gato solo",
+        "litterBoxes": "Cajas de arena minimo por gato",
+        "moreDeodorizer": "Mas desodorizante necesario",
+        "maintenance": "Mantenimiento requerido"
+      }
+    },
+    "odorAbsorber": {
+      "title": "Absorbente de Olores Mas Potente para Arena de Gatos: Guia Cientifica 2025",
+      "description": "Descubre las estrategias de absorbente de olores mas potentes para cajas de arena de gatos. Compara carbon activado, zeolita y sistemas hibridos para que tu hogar se mantenga fresco sin perfumes fuertes.",
+      "category": "Ciencia y Tecnologia de Olores",
+      "publishDate": "Publicado el 19 de octubre de 2025",
+      "readTime": "14 min de lectura",
+      "breadcrumb": "Ciencia de Olores",
+      "stats": {
+        "title": "Parametros de Eliminacion de Olores",
+        "ammoniaReduction": "Datos de laboratorio independiente muestran hasta 92% de reduccion de amoniaco con capas de carbon activado",
+        "adsorptionSpeed": "La estructura porosa del carbon atrapa moleculas de olor en menos de 60 segundos",
+        "safeUsage": "Sin quimicos, fragancias ni aditivos - no toxico para gatos sensibles",
+        "refreshTiming": "Refresca el carbon con cada limpieza o relleno de arena para rendimiento consistente"
+      }
+    }
+  },
+  "blogSection": {
+    "catCareTips": "Consejos de Cuidado de Gatos",
+    "fromOurBlog": "De Nuestro Blog",
+    "description": "Consejos expertos y tips para duenos de gatos",
+    "newPost": "Nueva Publicacion",
+    "readFullArticle": "Leer Articulo Completo",
+    "viewAllArticles": "Ver Todos los Articulos"
+  },
+  "relatedArticles": {
+    "title": "Artículos Relacionados",
+    "readMore": "Leer más"
+  }
+}

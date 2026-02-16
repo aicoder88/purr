@@ -8,7 +8,7 @@ import { AIQuotableBlock } from '../../../../src/components/seo/AIQuotableBlock'
 import { RelatedQuestions } from '../../../../src/components/seo/RelatedQuestions';
 
 export default function NaturalCatLitterAdditivePageClient() {
-  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive';
+  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/';
 
   // Natural cat litter additive images
   const heroImage = '/images/litter-box-hero.webp';

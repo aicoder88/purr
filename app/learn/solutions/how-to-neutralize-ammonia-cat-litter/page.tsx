@@ -7,7 +7,7 @@ import { stripContext } from '../../../../src/lib/seo-utils';
 
 const pageTitle = `How to Neutralize Ammonia in Cat Litter (5 Methods That Actually Work) | ${SITE_NAME}`;
 const pageDescription = 'Cat litter ammonia smell making you gag? Activated carbon neutralizes ammonia 10x better than baking soda. See the 5 proven methods ranked by effectiveness.';
-const canonicalUrl = 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter';
+const canonicalUrl = 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/';
 const heroImage = 'https://www.purrify.ca/images/ammonia-hero.webp';
 
 export const metadata: Metadata = {

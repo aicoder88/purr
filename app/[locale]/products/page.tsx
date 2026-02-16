@@ -2,14 +2,10 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import PageContent from '@/app/products/PageContent';
 import { locales, isValidLocale } from '@/i18n/config';
-import { getCommercialExperimentState } from '@/lib/experiments/commercial-server';
-import { ServerExperimentViewTracker } from '@/components/experiments/ServerExperimentViewTracker';
 
 interface LocalizedProductsPageProps {
   params: Promise<{ locale: string }>;
 }
-
-export const dynamic = 'force-dynamic';
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -50,17 +46,5 @@ export default async function LocalizedProductsPage({ params }: LocalizedProduct
     notFound();
   }
 
-  const experiments = await getCommercialExperimentState();
-  const experimentCopy = {
-    headline: experiments.headline,
-    ctaCopy: experiments.ctaCopy,
-    proofOrder: experiments.proofOrder,
-  } as const;
-
-  return (
-    <>
-      <ServerExperimentViewTracker assignments={experiments.assignments} />
-      <PageContent experimentCopy={experimentCopy} />
-    </>
-  );
+  return <PageContent />;
 }

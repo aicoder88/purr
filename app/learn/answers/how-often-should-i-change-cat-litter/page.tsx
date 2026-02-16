@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     'when to change cat litter'
   ],
   alternates: {
-    canonical: '/learn/answers/how-often-should-i-change-cat-litter/',
+    canonical: 'https://www.purrify.ca/learn/answers/how-often-should-i-change-cat-litter/'
   },
   openGraph: {
     title: 'How Often to Change Cat Litter? Schedule Guide | Purrify',

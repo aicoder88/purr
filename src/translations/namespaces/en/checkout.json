@@ -1,0 +1,216 @@
+{
+  "thankYou": {
+    "heading": "Thank You!",
+    "headingWithName": "Thank You, {{name}}!",
+    "subheading": "Your order has been confirmed.",
+    "subheadingExtended": "Your order has been confirmed. Get ready to experience the freshest home you've ever had!",
+    "orderConfirmed": "Order Confirmed",
+    "orderNumber": "Order Number",
+    "product": "Product",
+    "quantity": "Quantity",
+    "total": "Total",
+    "expectedDelivery": "Expected Delivery",
+    "deliveryCA": "7-10 business days within Canada",
+    "deliveryUS": "10-14 business days to the United States",
+    "deliveryIntl": "14-21 business days international",
+    "shipsWithin": "Ships within 1-2 business days",
+    "confirmationSent": "Confirmation email sent to",
+    "checkSpam": "Check your spam folder if you don't see it within 5 minutes",
+    "trackingInfo": "Tracking information will be sent to your email once your order ships.",
+    "whatToExpect": {
+      "heading": "What to Expect",
+      "step1Title": "Receive Your Purrify",
+      "step1Desc": "Your package will arrive in discrete, eco-friendly packaging. Each container is sealed for freshness.",
+      "step2Title": "First Use Instructions",
+      "step2Desc": "For best results, start with a clean litter box:",
+      "step2Item1": "Clean and refresh your litter box",
+      "step2Item2": "Sprinkle a thin layer of Purrify on top",
+      "step2Item3": "No need to mix - it works from the surface",
+      "step2Item4": "Reapply after each litter change",
+      "step3Title": "Experience the Difference",
+      "step3Desc": "Most customers notice a difference within 60 seconds! The activated carbon traps ammonia molecules instantly - no masking, just real odor elimination.",
+      "proTip": "Pro Tip:",
+      "proTipText": "A little goes a long way! Use just enough to lightly cover the surface. Over-application won't hurt, but it's not necessary."
+    },
+    "shareSection": {
+      "heading": "Share the Freshness",
+      "description": "Know someone with a stinky litter box? Share your referral link and they'll get a FREE trial!",
+      "generating": "Generating your personal referral link...",
+      "whatsapp": "WhatsApp",
+      "facebook": "Facebook",
+      "email": "Email"
+    },
+    "autoshipCta": {
+      "heading": "Never Run Out Again",
+      "saveBadge": "SAVE 30%",
+      "description": "Subscribe to Autoship and save 30% on every order, plus get FREE shipping. Cancel anytime.",
+      "savings": "Savings",
+      "shipping": "Shipping",
+      "cancel": "Cancel",
+      "button": "Upgrade to Autoship"
+    },
+    "helpSection": {
+      "question": "Questions?",
+      "weAreHere": "We're here to help!",
+      "returnHome": "Return to Home"
+    },
+    "questionsHeading": "Questions About Your Order?",
+    "questionsDescription": "Contact our support team and we'll be happy to help.",
+    "contactSupport": "Contact Support",
+    "continueShopping": "Continue Shopping",
+    "referralCta": {
+      "heading": "Love Purrify?",
+      "description": "Share with friends and earn $5 credit for each referral!",
+      "button": "Get My Referral Link"
+    }
+  },
+  "freeTrialPage": {
+    "urgentBanner": "LIMITED TIME OFFER",
+    "free": "FREE",
+    "claimTrial": "Claim Your FREE Purrify Trial",
+    "whatYouGet": "What You Get:",
+    "freeTrialBag": "12g Purrify Trial Size (Just $4.76 S&H anywhere in Canada)",
+    "expertTips": "Expert cat care tips and guides",
+    "zeroCommitment": "Zero commitment - this is our gift to you",
+    "attention": "ATTENTION: For cat owners tired of holding their breath",
+    "limitedQuantity": "Limited to first 500 cat owners only",
+    "alreadyClaimed": "Already claimed",
+    "countdownLabels": {
+      "hours": "HOURS",
+      "minutes": "MINS",
+      "seconds": "SECS"
+    },
+    "testimonials": [
+      {
+        "text": "I couldn't believe it. Within HOURS, my entire house smelled fresh again. I even had my mother-in-law over for the first time in months!",
+        "author": "Jennifer M., Montreal"
+      },
+      {
+        "text": "My husband thought I had completely thrown out the litter. The smell had just... vanished.",
+        "author": "Lisa K., Mirabel, QC"
+      }
+    ],
+    "testimonialsTestUsers": "What our beta testers say:",
+    "claimNow": "CLAIM YOUR FREE TRIAL NOW",
+    "warningHighDemand": "WARNING: Due to high demand, we cannot guarantee availability after the timer expires.",
+    "privacyNotice": "100% Free. No credit card required.",
+    "zeroCommitmentGift": "Zero commitment - this is our gift to you",
+    "instantOdorElimination": "Experience instant odor elimination magic",
+    "completeInstructions": "Complete instructions for best results",
+    "noShippingFees": "No shipping fees, no hidden costs, no catch",
+    "disappearsIn": "WARNING: This offer disappears in:",
+    "limitedTo500": "Limited to first 500 cat owners only.",
+    "yourFreeTrialWaits": "Your free trial awaits - but only if you act now.",
+    "betaTestersHeader": "What our beta testers say:",
+    "claimFreeTrialNow": "CLAIM YOUR FREE TRIAL NOW",
+    "attention100Free": "100% Free. No credit card required.",
+    "noCreditCard": "No credit card required.",
+    "limitedTimeOffer": "Limited time offer. One free sample per household.",
+    "restrictionsApply": "Shipping restrictions may apply. We reserve the right to end this promotion at any time.",
+    "highDemandWarning": "Due to high demand, we cannot guarantee availability after the timer expires",
+    "disclaimer": "100% Free. No credit card required. Limited time offer. One free sample per household. Shipping restrictions may apply. We reserve the right to end this promotion at any time."
+  },
+  "tryFreePage": {
+    "meta": {
+      "title": "Try Purrify Free - Just $4.76 Shipping | Cat Litter Odor Eliminator",
+      "description": "Get your FREE Purrify trial - just pay $4.76 shipping. Try it in your litter routine and see the difference."
+    },
+    "hero": {
+      "badge": "Limited Time Offer",
+      "headline": "Try Purrify Free",
+      "subheadline": "Just $4.76 Shipping",
+      "description": "Try an activated carbon additive in your litter routine and see the difference.",
+      "cta": "Get My Free Trial",
+      "shippingNote": "Ships anywhere in Canada"
+    },
+    "problem": {
+      "headline": "Tired of Holding Your Breath?",
+      "subheadline": "We get it. That litter box smell is embarrassing.",
+      "points": [
+        "Guests arriving and you rush to check the litter box",
+        "Opening windows in winter just to air out the smell",
+        "Constantly buying air fresheners that don't work",
+        "Worrying your home smells like a cat lives there"
+      ]
+    },
+    "howItWorks": {
+      "headline": "Fresh Air in 30 Seconds",
+      "subheadline": "Simple as 1-2-3",
+      "steps": [
+        {
+          "number": "1",
+          "title": "Sprinkle",
+          "description": "Open the bag and sprinkle over your cat's litter"
+        },
+        {
+          "number": "2",
+          "title": "Trap",
+          "description": "Activated carbon traps ammonia molecules instantly"
+        },
+        {
+          "number": "3",
+          "title": "Fresh",
+          "description": "Enjoy 7+ days of odor-free freshness"
+        }
+      ]
+    },
+    "socialProof": {
+      "headline": "What to Expect",
+      "rating": "",
+      "reviewCount": "",
+      "reviewLabel": "",
+      "testimonials": [
+        {
+          "text": "I was skeptical, but within hours my entire apartment smelled fresh. My guests had no idea I had cats!",
+          "author": "Sarah M.",
+          "location": "Toronto, ON"
+        },
+        {
+          "text": "Finally something that actually works. No more masking smells with air fresheners.",
+          "author": "Mike R.",
+          "location": "Vancouver, BC"
+        },
+        {
+          "text": "The best $4.76 I ever spent. Already ordered the full size!",
+          "author": "Jennifer K.",
+          "location": "Montreal, QC"
+        }
+      ]
+    },
+    "guarantee": {
+      "headline": "30-Day Money-Back Guarantee",
+      "description": "If you're not amazed by the results, we'll refund you. No questions asked.",
+      "badge": "Risk-Free Trial"
+    },
+    "finalCta": {
+      "headline": "Ready to Breathe Easy?",
+      "description": "Get your free Purrify trial today. Just pay $4.76 shipping.",
+      "buttonText": "Get My Free Trial",
+      "note": "Cancel anytime. No subscription required."
+    },
+    "trust": {
+      "madeInCanada": "Made in Canada",
+      "natural": "100% Natural",
+      "fragrance": "Fragrance-Free",
+      "secure": "Secure Checkout"
+    }
+  },
+  "forms": {
+    "success": {
+      "general": "Thank you for contacting us! We'll get back to you within 24 hours.",
+      "b2bContact": "Thank you for your interest! Our team will contact you within 24-48 hours to discuss next steps.",
+      "retailerContact": "Thank you for your interest! Our partner team will contact you within 24-48 hours to discuss pricing and next steps.",
+      "hospitalityContact": "Thank you! Our hospitality team will contact you within 24 hours with custom pricing for your properties.",
+      "shelterContact": "Thank you for your interest! Our team will contact you within 24-48 hours to discuss how we can support your shelter.",
+      "groomerContact": "Thank you for your interest! Our partner team will contact you within 24-48 hours to discuss next steps.",
+      "vetContact": "Thank you for your interest! Our veterinary team will contact you within 24-48 hours to discuss partnership opportunities.",
+      "catCafeContact": "Thank you for your interest! Our team will contact you within 24-48 hours to discuss how Purrify can benefit your cat cafe."
+    },
+    "errors": {
+      "pleaseEnterTitle": "Please enter a title",
+      "invalidEmail": "Invalid email or password",
+      "requiredField": "This field is required",
+      "submitFailed": "Failed to submit form. Please try again."
+    }
+  }
+}

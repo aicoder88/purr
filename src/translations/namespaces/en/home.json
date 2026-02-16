@@ -1,0 +1,531 @@
+{
+  "hero": {
+    "catLitter": "Cat Litter Odor Eliminator",
+    "rabbitLitter": "Rabbit Litter Deodorizer",
+    "fridgeSmells": "Fridge Odor Control",
+    "ferretCage": "Ferret Cage Smell Killer",
+    "headline": "Love Your Cat. Lose The Smell.",
+    "eliminateCatOdors": "Love Your Cat. Lose The Smell.",
+    "subheadline": "1,000+ cat parents discovered the 30-second secret to a home that smells like... nothing. For a full week.",
+    "instantly": "1,000+ cat parents discovered the 30-second secret to a home that smells like... nothing. For a full week.",
+    "description": "You adore your cat. The litter box smell? Not so much. Purrify uses the same activated carbon found in water filters to trap ammonia at the source — no perfumes, no cover-ups, just fresh air. Keep scrolling to discover why air fresheners actually make litter box smell worse...",
+    "socialProof": {
+      "trustNumber": "1,000+",
+      "trustText": "happy cat parents across Canada",
+      "ratingText": "4.8/5 — 'I can finally have guests over without apologizing!'"
+    },
+    "pricing": {
+      "trial": "FREE Trial (just pay $4.76 S&H)",
+      "standard": "50g: $14.99",
+      "family": "120g: $29.99"
+    },
+    "buttons": {
+      "shopNow": "Try FREE — Just $4.76 Shipping",
+      "reviews": "See What Cat Parents Say",
+      "learnMore": "How It Works",
+      "tryFree": "Get My Free Trial"
+    },
+    "ariaLabels": {
+      "shopNow": "Try Purrify free with just shipping cost",
+      "reviews": "Read customer reviews from cat parents",
+      "playVideo": "Play demonstration video showing Purrify eliminating cat litter odors"
+    },
+    "dualPath": {
+      "consumer": {
+        "title": "For Your Cat",
+        "description": "Individual cat owners - instant checkout, direct delivery",
+        "cta": "Buy Now for Your Cat"
+      },
+      "retailer": {
+        "title": "Pet Stores & Retailers",
+        "description": "Wholesale pricing, bulk orders, marketing support",
+        "cta": "Wholesale Portal"
+      }
+    },
+    "simplified": {
+      "free": "FREE",
+      "justPayShipping": "Just pay $4.76 shipping",
+      "noMore": "Love Your Cat.",
+      "litterBoxSmell": "Lose The Smell.",
+      "headline": "Love Your Cat. Lose The Smell.",
+      "subheadline": "Water-filter grade activated carbon eliminates odors at the source. Works with any litter your cat already loves.",
+      "valueProposition": "Water-filter grade carbon traps odors at the source. Works with any litter your cat already loves.",
+      "trialSize": "Trial Size",
+      "standard": "Regular",
+      "familyPack": "Family Size",
+      "plusSH": "+ S&H",
+      "freeShippingOver": "Free shipping on orders over $50",
+      "thirtyDayGuarantee": "30-Day Guarantee",
+      "getFreeSample": "Send Me a Free Bag →",
+      "soldThisWeek": "87 sold this week",
+      "limitedStock": "Limited winter stock",
+      "moneyBackGuarantee": "30-Day Money-Back Guarantee"
+    }
+  },
+  "features": {
+    "odorElimination": {
+      "title": "Traps The Smell (Doesn't Mask It)",
+      "description": "Air fresheners layer perfume on top of the problem. Purrify's activated carbon actually captures ammonia molecules and locks them away. The smell is gone — not hiding."
+    },
+    "catFriendly": {
+      "title": "Water-Filter Grade Carbon",
+      "description": "Made from coconut shells using the same process that makes drinking water safe. Zero chemicals. Zero fragrances. Zero mystery ingredients. Just pure, natural odor control."
+    },
+    "longLastingFreshness": {
+      "title": "One Sprinkle Lasts A Whole Week",
+      "description": "Most fresheners fade after a day. Purrify keeps working for 7 full days — that's one quick sprinkle per litter change, not a daily chore."
+    },
+    "natural": {
+      "title": "100% Natural Ingredients",
+      "description": "Made from coconut shell activated carbon with no synthetic fragrances or fillers. Non-toxic and chemicals-free."
+    },
+    "worksWithAnyLitter": {
+      "title": "Works With Any Litter",
+      "description": "Clay, crystal, clumping, natural — whatever your cat already uses. No need to switch brands or confuse your furry friend. Just add Purrify on top."
+    },
+    "costEffective": {
+      "title": "Makes Your Litter Last Longer",
+      "description": "When odors stay under control, you're not tempted to dump the whole box early. Fresh-smelling litter means changing on schedule — not out of desperation."
+    },
+    "freePurrify": {
+      "title": "Free Purrify",
+      "description": "Get a free Purrify sample with your first order."
+    },
+    "beforeAfter": {
+      "title": "The Fresh Air Test",
+      "description": "Walk into your home after being out for a while. Notice the difference? After Purrify, the only thing you'll smell is... nothing. (In the best way.)"
+    }
+  },
+  "benefits": {
+    "molecular": {
+      "title": "Molecular Level",
+      "description": "Eliminates odors at the source"
+    },
+    "sevenDayFreshness": {
+      "title": "7-Day Freshness",
+      "description": "Long-lasting odor control"
+    },
+    "natural": {
+      "title": "100% Natural",
+      "description": "No added chemicals; 100% natural activated coconut carbon"
+    },
+    "universalFit": {
+      "title": "Universal Fit",
+      "description": "Works with all litter types"
+    },
+    "highlyRated": {
+      "title": "Highly Rated",
+      "description": "Loved by cat parents across Canada\nFast shipping in Canada"
+    }
+  },
+  "benefitsSection": {
+    "sectionHeader": "Turn Cat Odor Problems Into a Thing of the Past",
+    "title": "Benefits of Purrify",
+    "subtitle": "Discover why Purrify is the perfect solution for cat owners who want a fresh-smelling home.",
+    "items": [
+      {
+        "title": "Odor Elimination",
+        "description": "Purrify's advanced formula effectively eliminates unpleasant litter box odors at their source. Say goodbye to the lingering smells that can permeate your home and welcome a fresher, more inviting environment for both you and your furry friend."
+      },
+      {
+        "title": "Simple",
+        "description": "Purrify is formulated with simple coconut shells, activated to soak up odor. You can trust that you're providing your cat with a clean smelling box environment without exposing them to chemicals or toxins."
+      },
+      {
+        "title": "Cost-Effective",
+        "description": "Purrify helps extend the life of your cat's litter by preventing odor buildup, which means you'll need to change the litter less frequently. This not only saves you money but also reduces waste, making it a win-win for both your wallet and the environment."
+      }
+    ]
+  },
+  "howItWorks": {
+    "simpleAs123": "Ridiculously Easy to Use",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Open the Bag",
+        "description": "That's the hardest part. Seriously. No measuring, no mixing bowls, no instruction manual required."
+      },
+      {
+        "number": "02",
+        "title": "Sprinkle on Fresh Litter",
+        "description": "A light layer on top of your cat's favorite litter. Works with clay, crystal, clumping, natural — whatever they're already happy with."
+      },
+      {
+        "number": "03",
+        "title": "Mix & Enjoy the Clean",
+        "description": "Give it a gentle stir. Now enjoy 7 days of not thinking about the litter box. Your nose (and your guests) will thank you."
+      }
+    ],
+    "litterTypes": {
+      "clumping": "CLUMPING",
+      "crystal": "CRYSTAL",
+      "natural": "NATURAL",
+      "clay": "CLAY",
+      "nonClumping": "NON-CLUMPING"
+    },
+    "learnTheScience": "Learn the science",
+    "compareSizes": "compare our sizes",
+    "coconutDescription": "Pure, sustainable coconut shells are activated with filtered, pure, high pressure steam to open millions of holes, tunnels, and passage-ways to lock away odor molecules.",
+    "transitionTeaser": "And here's why cat parents love it even more..."
+  },
+  "productsSection": {
+    "forEveryCatHousehold": "FIND YOUR FIT",
+    "pickYourPowerLevel": "START FREE, STOCK UP LATER",
+    "subtitle": "Not sure? Try the free sample first. When you're convinced (you will be), come back for the full-size.",
+    "powerLevels": {
+      "kittenPower": "Free Trial",
+      "standardPower": "The Standard",
+      "maximumPower": "Family Size"
+    },
+    "mostPopular": "MOST POPULAR",
+    "addToCart": "Add to Cart",
+    "buyNow": "Buy Now",
+    "subscribeNow": "Subscribe & Save",
+    "adding": "Adding...",
+    "viewAllProducts": "VIEW ALL PRODUCTS",
+    "quantity": "Quantity",
+    "decreaseQuantity": "Decrease quantity",
+    "increaseQuantity": "Increase quantity",
+    "findNearYou": "Find It Near You",
+    "askYourStore": "Ask for Purrify at Your Local Store",
+    "availableAtStores": "Available at pet stores across Canada"
+  },
+  "cta": {
+    "title": "Your Home Could Smell This Good By Next Week",
+    "subtitle": "While you're reading this, 1,000+ cat parents across Canada are enjoying homes that smell like... nothing. No ammonia punch. No artificial cover-ups. Just fresh, clean air. One sprinkle. 7 days. A home you're actually excited to invite people into.",
+    "buttonText": "Get My Free Trial →",
+    "joinText": "30-Day Money-Back Guarantee • Made in Canada 🇨🇦",
+    "guarantee": "30-Day Money-Back Guarantee • Made in Canada 🇨🇦",
+    "b2bTitle": "Find Purrify Near You",
+    "b2bSubtitle": "Available at pet stores across Canada. Ask for Purrify at your local pet retailer.",
+    "b2bButtonText": "Find a Store Near You",
+    "b2bGuarantee": "Available at pet retailers nationwide"
+  },
+  "trustBar": {
+    "happyCats": "happy cats",
+    "reviews": "reviews"
+  },
+  "about": {
+    "naturalAndEffective": "Natural & Effective"
+  },
+  "newsletter": {
+    "title": "Subscribe to our newsletter",
+    "subtitle": "Stay updated with the latest news and promotions",
+    "placeholder": "Your email address",
+    "buttonText": "Subscribe",
+    "successMessage": "Thank you for subscribing!",
+    "errorMessage": "An error occurred. Please try again.",
+    "errorInvalidEmail": "Please enter a valid email address",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "privacyText": "No spam, unsubscribe anytime. We respect your privacy.",
+    "joinFamily": {
+      "title": "Join the Purrify Family",
+      "subtitle": "Get 10% off your first order plus exclusive cat care tips",
+      "benefits": {
+        "firstOrder": "10% Off First Order",
+        "firstOrderDesc": "Exclusive discount for new subscribers",
+        "catCareTips": "Cat Care Tips",
+        "catCareTipsDesc": "Weekly expert advice and litter tips",
+        "earlyAccess": "Early Access",
+        "earlyAccessDesc": "Be first to know about new products",
+        "communityStories": "Community Stories",
+        "communityStoriesDesc": "Success stories from other cat owners"
+      },
+      "emailPlaceholder": "Enter your email address",
+      "ctaButton": "Get 10% Off Your First Order",
+      "joinText": "Join 1,000+ happy customers • No spam, unsubscribe anytime",
+      "welcomeMessage": "Welcome to Purrify!",
+      "features": {
+        "weeklyTips": "✓ Weekly tips",
+        "exclusiveOffers": "✓ Exclusive offers",
+        "earlyAccessProducts": "✓ Early access"
+      }
+    },
+    "popup": {
+      "title": "Get {discount}% Off Your First Order!",
+      "description": "Join 1,000+ happy customers and get exclusive tips, discounts, and early access to new products.",
+      "buttonText": "Get {discount}% Off Now"
+    },
+    "footer": {
+      "title": "Stay Updated with Purrify",
+      "description": "Get cat care tips and exclusive offers delivered to your inbox.",
+      "placeholder": "Your email",
+      "buttonText": "Subscribe"
+    },
+    "inline": {
+      "title": "Join the Purrify Community",
+      "description": "Get expert cat care tips and exclusive offers straight to your inbox.",
+      "buttonText": "Subscribe for Free",
+      "successText": "Successfully Subscribed!"
+    }
+  },
+  "homepage": {
+    "seo": {
+      "pageTitle": "Cat Litter Odor Control Additive",
+      "keywords": "cat litter odor control, activated carbon cat litter, natural cat litter additive, fragrance-free pet odor control, cat litter deodorizer, pet odor elimination, cat care products, natural odor control, cat litter solution, pet supplies USA, pet supplies Canada, ships to USA",
+      "openGraphImageAlt": "Premium Cat Litter Odor Control Solution",
+      "videoAlt": "Purrify Cat Litter Additive Effectiveness Demonstration",
+      "videoDescription": "Purrify Cat Litter Additive in Action - Before and After Demonstration",
+      "videoEffectivenessDemo": "Purrify Cat Litter Additive Effectiveness Demonstration"
+    },
+    "trustBadges": {
+      "securePayment": {
+        "title": "Secure Payment",
+        "description": "256-bit SSL",
+        "detail": "SSL encrypted checkout with Stripe"
+      }
+    },
+    "socialProof": {
+      "nationalDelivery": "100% Natural • Made in Canada • Ships to USA",
+      "fastDelivery": "Fast delivery to USA & Canada",
+      "recentOrders": "orders this week"
+    },
+    "hero": {
+      "videoAriaLabel": "Demonstration video showing Purrify activated carbon litter additive eliminating cat litter odors before and after application",
+      "videoFallbackText": "Your browser does not support the video tag. This video demonstrates Purrify activated carbon litter additive eliminating odors before and after application to cat litter.",
+      "videoDescriptions": "English Descriptions",
+      "highlyRated": "Highly Rated",
+      "moneyBackGuarantee": "Expert Support Team",
+      "freeShippingCanada": "Free Shipping in Canada"
+    },
+    "enhancedComparison": {
+      "duration": "Duration",
+      "coverage": "Coverage",
+      "chooseYourPerfectSize": "Choose Your Perfect Size",
+      "allSizesDeliver": "All sizes deliver the same powerful odor elimination. Choose based on your household size and usage frequency.",
+      "whyChoosePurrify": "Turn Cat Odor Problems Into a Thing of the Past",
+      "joinThousands": "Join 1,000+ satisfied cat parents who trust Purrify",
+      "happyCustomers": "Happy Customers",
+      "averageRating": "Average Rating",
+      "satisfactionRate": "Satisfaction Rate",
+      "odorFreeGuarantee": "Fresh air with every application",
+      "tryRiskFree": "Try Risk-Free",
+      "chooseThisSize": "Choose This Size"
+    },
+    "altText": {
+      "scientificDiagram": "Scientific diagram showing activated carbon molecular structure with micropores that trap odor molecules",
+      "productPackages": "Three Purrify product packages showing different sizes: 12g trial, 120g regular size, and 240g family size",
+      "microscopicView": "Microscopic view of activated carbon showing porous structure that captures odor molecules",
+      "happyCat": "Happy cat resting peacefully in a fresh, odor-free home environment",
+      "happyCatAlt": "Happy cat",
+      "userAvatar": "User",
+      "customerTestimonials": "View customer testimonials",
+      "leaveGoogleReview": "Leave a Google review",
+      "litterCompatibility": "Cat enjoying their favorite litter while Purrify works with every type of litter"
+    },
+    "subscription": {
+      "fastDelivery": "Fast Delivery",
+      "quickReliableShipping": "Quick and reliable shipping",
+      "skipAnytime": "Skip Anytime",
+      "fullControlDeliveries": "Full control over deliveries",
+      "lovedByCustomers": "Loved by cat owners",
+      "joinSatisfiedCustomers": "Join satisfied customers:",
+      "thirtyDayGuarantee": "Ongoing odor support",
+      "moneyBackPromise": "Dedicated customer care",
+      "fiveStarRated": "Fragrance-free approach",
+      "reviewsRating": "Customer reviews",
+      "testimonialQuote": ""
+    }
+  },
+  "featuresSection": {
+    "badge": "The Purrify Difference",
+    "title": "Why do Cats and Pet Parents Love Purrify?",
+    "paragraph1": "You love your cat, but let's be real—litter box odor is a problem. You've tried scented litter, air fresheners, and baking soda—but they only mask the problem, not fix it.",
+    "paragraph2": "Imagine walking into your home and smelling… nothing. Just clean air, no lingering odors, and no embarrassing smells when guests visit.",
+    "tagline": "That's exactly what Purrify does...",
+    "learnMore": "Learn more"
+  },
+  "sectionTeasers": {
+    "whyPurrify": "But how does it actually work?",
+    "science": "Ready to try it yourself?"
+  },
+  "trustBadges": {
+    "moneyBack": {
+      "title": "Canada-Based Support",
+      "description": "Real people ready to help you dial in odor control",
+      "highlight": "Cat-care experts"
+    },
+    "securePayment": {
+      "title": "Secure Payment",
+      "description": "SSL encrypted checkout with Stripe",
+      "highlight": "256-bit SSL"
+    },
+    "fastShipping": {
+      "title": "Fast Shipping",
+      "description": "Quick and reliable delivery",
+      "highlight": "Same Day Processing"
+    },
+    "customerRating": {
+      "title": "Customer Feedback",
+      "description": "See how cat owners use an activated carbon additive for odor control",
+      "highlight": "Fragrance-Free"
+    },
+    "happyCustomers": {
+      "title": "Cat Owner Community",
+      "description": "Used by cat owners across Canada",
+      "highlight": "Canada-Based Support"
+    },
+    "premiumQuality": {
+      "title": "Premium Quality",
+      "description": "Filtration-grade activated carbon used in water and air filters",
+      "highlight": "Fragrance-Free"
+    }
+  },
+  "emailCapture": {
+    "waitDontGo": "Wait! Don't leave yet!",
+    "exclusiveOffer": "Unlock an exclusive offer",
+    "subtitle": "Before you go, grab 15% off your first order",
+    "emailPlaceholder": "Enter your email address",
+    "claimDiscount": "Claim 15% Discount",
+    "noThanks": "No thanks",
+    "instantAccess": "Instant access to your discount code",
+    "limitedTime": "Limited-time offer—don't miss out!",
+    "successMessage": "Success! Check your inbox for the discount code.",
+    "errorMessage": "Something went wrong—please try again."
+  },
+  "reviewsSection": {
+    "customerReviews": "Customer Reviews",
+    "realStories": "Real stories from happy cat parents",
+    "verifiedReviews": "Customer Reviews",
+    "averageRating": "Average Rating",
+    "readMore": "Read More",
+    "writeReview": "Write a Review",
+    "helpful": "Helpful",
+    "verified": "Customer",
+    "productUsed": "Product Used",
+    "catsOwned": "Cats Owned",
+    "useCase": "Use Case"
+  },
+  "freeGiveaway": {
+    "formTitle": "Enter Your Details",
+    "fullName": "Full Name",
+    "emailAddress": "Email Address",
+    "catNames": "Names of Your Cats",
+    "catNamePlaceholder": "Name of Cat {index}",
+    "addAnotherCat": "Add Another Cat",
+    "submitting": "Submitting...",
+    "submitButton": "GET MY FREE BAG NOW",
+    "successMessage": "Your free bag request has been submitted successfully!",
+    "errorMessage": "Failed to submit your request. Please try again.",
+    "errorGeneric": "An error occurred. Please try again later.",
+    "privacyNotice": "By submitting this form, you're allowing us to contact you about your free Purrify sample. We respect your privacy and will never share your information with third parties."
+  },
+  "enhancedProductComparison": {
+    "compareAndSave": "COMPARE & SAVE",
+    "chooseYourPerfectSize": "Choose Your Perfect Size",
+    "purrifySize": "Purrify Size",
+    "subtitle": "All sizes deliver the same powerful odor elimination. Choose based on your household size and usage frequency.",
+    "trial": "TRIAL",
+    "mostPopular": "MOST POPULAR",
+    "bestValue": "BEST VALUE",
+    "premium": "Premium",
+    "perfectForFirstTime": "Perfect for first-time users",
+    "idealForSingleCat": "Ideal for single-cat homes",
+    "perfectForMultiCat": "Perfect for multi-cat households",
+    "duration": "Duration",
+    "coverage": "Coverage",
+    "odorControl": "7-Day Odor Control",
+    "odorControlTrial": "7-Day Odor Control",
+    "odorControlMedium": "14-Day Odor Control",
+    "odorControlLarge": "30-day odor control",
+    "naturalIngredients": "100% Natural Ingredients",
+    "easyApplication": "Easy Application",
+    "moneyBackGuarantee": "Expert odor support",
+    "freeShipping": "Shipping included",
+    "freeShippingDetailed": "Shipping is included.",
+    "autoshipHero": "Autoship & Save",
+    "autoshipHighlight": "Subscribe & Save",
+    "bulkDiscount": "Bulk Discount Available",
+    "prioritySupport": "Priority Customer Support",
+    "tryRiskFree": "Try Risk-Free",
+    "chooseThisSize": "Choose This Size",
+    "chosenByCustomers": "68% of customers choose this bundle",
+    "whyChoosePurrify": "Why Choose Purrify?",
+    "joinThousands": "Join 1,000+ cat owners who trust Purrify",
+    "happyCustomers": "Happy Customers",
+    "averageRating": "Average Rating",
+    "satisfactionRate": "Satisfaction Rate",
+    "odorFreeGuarantee": "Fresh air with every application",
+    "moneyBackGuaranteeText": "Questions? Our cat-care team is ready to help you get results."
+  },
+  "subscriptionOffer": {
+    "subscribeAndSave": "Subscribe & Save",
+    "neverRunOut": "Never Run Out Again",
+    "subtitle": "Set up automatic deliveries to lock in exclusive savings. Cancel anytime.",
+    "monthly": "Monthly",
+    "everyTwoMonths": "Every 2 Months",
+    "quarterly": "Quarterly",
+    "save": "Save",
+    "mostFlexible": "Most Flexible",
+    "bestValue": "Best Value",
+    "maxSavings": "Maximum Savings",
+    "oneTimePurchase": "One-Time Purchase",
+    "subscriptionBenefits": "Subscription Benefits",
+    "exclusiveDiscounts": "Subscriber-only discounts",
+    "prioritySupport": "Priority customer support",
+    "flexibleSchedule": "Flexible delivery schedule",
+    "cancelAnytime": "Cancel anytime",
+    "startSubscription": "Start Subscription",
+    "selectPlan": "Select Plan",
+    "popularChoice": "Popular Choice"
+  },
+  "urgencyBanner": {
+    "limitedTime": "Limited Time Offer",
+    "saveToday": "Save Today",
+    "onAllOrders": "on all orders",
+    "hurryOffer": "Hurry! This offer ends soon",
+    "claimDiscount": "Claim Discount",
+    "timeLeft": "Time Left",
+    "days": "days",
+    "hours": "hours",
+    "minutes": "minutes",
+    "seconds": "seconds",
+    "onlyLeft": "only left",
+    "inStock": "in stock",
+    "orderNow": "Order Now"
+  },
+  "agitationSection": {
+    "headline": "You Know That Moment...",
+    "paragraphs": [
+      "You walk in the door after a long day. And there it is. That smell.",
+      "The one that hits you before you've even taken off your coat.",
+      "The one you've stopped noticing... until company comes over. Until your mother-in-law wrinkles her nose. Until you catch your friend doing that subtle sniff at the door.",
+      "You love your cat. But that litter box? It's a ticking time bomb of ammonia.",
+      "And here's the worst part: Air fresheners aren't fixing it. They're just spraying perfume on top of a problem.",
+      "The smell is still there. Lurking. Waiting. Ready to assault anyone who walks through your door."
+    ],
+    "pivot": "But what if it didn't have to be this way?",
+    "transition": "Cat parents across Canada are discovering something that actually works. And it takes 30 seconds...",
+    "ui": {
+      "imageAlt": "Embarrassed cat owner",
+      "imageCaption": "\"i swear i just cleaned it...\"",
+      "floatingCardTitle": "Ammonia Bomb",
+      "floatingCardDescription": "Litter box odors can travel 20 ft in seconds.",
+      "timelineTimeArrival": "5:30 PM",
+      "timelineTimeCompany": "5:31 PM",
+      "timelineTimeThinking": "Thinking...",
+      "timelineTimeReality": "Reality"
+    }
+  },
+  "calculatorSection": {
+    "title": "Save Money While Keeping Your Home Fresh",
+    "description": "Purrify extends the life of your cat litter by up to 50%, saving you money while eliminating odors. See how much you could save with our calculator below."
+  },
+  "socialProofBadges": {
+    "trustedVerified": "Trusted & Verified",
+    "findUsOn": "Find Us On",
+    "viewOnPlatform": "View Purrify on {{platform}}",
+    "platforms": {
+      "trustpilot": "Trustpilot",
+      "googleBusiness": "Google Business",
+      "crunchbase": "Crunchbase",
+      "productHunt": "Product Hunt",
+      "yelp": "Yelp",
+      "wellfound": "Wellfound"
+    }
+  },
+  "scrollingBar": {
+    "freeShipping": "Free Shipping on All Subscription Orders",
+    "madeInCanada": "Manufactured in Canada from Domestic and Globally Sourced Ingredients"
+  }
+}

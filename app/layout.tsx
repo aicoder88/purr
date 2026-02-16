@@ -62,7 +62,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 
   const alternates = {
-    canonical: baseUrl,
+    canonical: `${baseUrl}/`,
     languages: languages as Record<string, string>,
   };
 

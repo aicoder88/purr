@@ -1,0 +1,46 @@
+{
+  "blog": {
+    "multiCat": {
+      "title": "7 Ways to Control Multi-Cat Litter Odor",
+      "description": "Overwhelmed by multiple cat litter box smell? These 7 proven methods eliminate even the strongest multi-cat ammonia odors. Stop dreading coming home to that awful stink!",
+      "category": "Multi-Cat Household Guide",
+      "publishDate": "Published September 16, 2024",
+      "readTime": "12 min read",
+      "breadcrumb": "Multi-Cat Solutions",
+      "stats": {
+        "title": "Multi-Cat Household Stats",
+        "strongerOdors": "Stronger odors vs single cat",
+        "litterBoxes": "Litter boxes per cat minimum",
+        "moreDeodorizer": "More deodorizer needed",
+        "maintenance": "Maintenance required"
+      }
+    },
+    "odorAbsorber": {
+      "title": "Most Powerful Odor Absorber for Cat Litter: Science-Backed 2025 Guide",
+      "description": "Discover the most powerful odor absorber strategies for cat litter boxes. Compare activated carbon, zeolite, and hybrid systems so your home may stay fresh without harsh perfumes.",
+      "category": "Odor Science & Technology",
+      "publishDate": "Published October 19, 2025",
+      "readTime": "14 min read",
+      "breadcrumb": "Odor Science",
+      "stats": {
+        "title": "Odor Elimination Benchmarks",
+        "ammoniaReduction": "Independent lab data shows up to 92% ammonia reduction with activated carbon layers",
+        "adsorptionSpeed": "Porous carbon structure traps odor molecules in under 60 seconds",
+        "safeUsage": "No chemicals, fragrances, or additives - non-toxic for sensitive cats",
+        "refreshTiming": "Refresh carbon every scoop or litter top-up for consistent performance"
+      }
+    }
+  },
+  "blogSection": {
+    "catCareTips": "Cat Care Tips",
+    "fromOurBlog": "From Our Blog",
+    "description": "Expert advice and tips for cat owners",
+    "newPost": "New Post",
+    "readFullArticle": "Read Full Article",
+    "viewAllArticles": "View All Articles"
+  },
+  "relatedArticles": {
+    "title": "Related Articles",
+    "readMore": "Read more"
+  }
+}

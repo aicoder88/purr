@@ -1,0 +1,72 @@
+{
+  "products": {
+    "purrify-12g": {
+      "name": "Essai GRATUIT",
+      "description": "Essayez Purrify GRATUITEMENT !\nJuste 4,76 $ pour les frais d'envoi partout au Canada\n\nLimite d'un par client"
+    },
+    "purrify-50g": {
+      "name": "Le Format Parfait",
+      "description": "50g · Format Standard\nIdéal pour un Chat\nNotre taille la plus populaire pour les foyers avec un seul chat."
+    },
+    "purrify-120g": {
+      "name": "Format Famille",
+      "description": "120g · Le Meilleur Rapport Qualité-Prix\nParfait pour les foyers multi-chats.\nContrôle maximal des odeurs."
+    }
+  },
+  "pricing": {
+    "oneTimeLabel": "Achat unique",
+    "autoshipLabel": "Abonnement & économies",
+    "autoshipBestLabel": "Meilleur abonnement",
+    "billedEvery": "Facturé tous les",
+    "months": "mois",
+    "shippingIncluded": "Livraison incluse",
+    "freeShipping": "Livraison gratuite incluse",
+    "plusShipping": "+ frais de livraison",
+    "shippingCalculated": "Frais de livraison calculés à la caisse",
+    "startAutoship": "Activer l'abonnement",
+    "buyNow": "Acheter maintenant",
+    "linkComingSoon": "Lien de paiement bientôt disponible",
+    "recommended": "Recommandé",
+    "perMonth": "≈ {price}/mois",
+    "saveVsOneTime": "Économisez {percent}% vs achat unique",
+    "trialSizeSection": "Essai GRATUIT - Frais d'envoi seulement",
+    "quarterlyAutoshipSection": "S'abonner & économiser - Abonnement trimestriel",
+    "stripeShippingNote": "le produit sera expédié à l'adresse 'EXPÉDIER À' de Stripe SUR LA PAGE SUIVANTE"
+  },
+  "freeTrial": {
+    "urgentBanner": "URGENT: L'OFFRE GRATUITE SE TERMINE BIENTÔT",
+    "free": "GRATUIT"
+  },
+  "trustBadges": {
+    "moneyBack": {
+      "title": "Support au Canada",
+      "description": "Une équipe réelle vous aide à optimiser le contrôle des odeurs",
+      "highlight": "Experts félins"
+    },
+    "securePayment": {
+      "title": "Paiement Sécurisé",
+      "description": "Paiement crypté SSL avec Stripe",
+      "highlight": "SSL 256-bit"
+    },
+    "fastShipping": {
+      "title": "Livraison Rapide",
+      "description": "Livraison rapide et fiable",
+      "highlight": "Traitement le Jour Même"
+    },
+    "customerRating": {
+      "title": "Avis clients",
+      "description": "Conseils et ressources pour réduire les odeurs de litière avec un additif au charbon actif",
+      "highlight": "Sans parfum"
+    },
+    "happyCustomers": {
+      "title": "Communauté de propriétaires de chats",
+      "description": "Utilisé par des propriétaires de chats à travers le Canada",
+      "highlight": "Support au Canada"
+    },
+    "premiumQuality": {
+      "title": "Qualité Premium",
+      "description": "Charbon actif de qualité filtration utilisé dans les filtres à eau et à air",
+      "highlight": "Sans parfum"
+    }
+  }
+}
