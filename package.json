@@ -10,7 +10,7 @@
     "dev": "next dev",
     "postinstall": "prisma generate",
     "blog:generate-featured-image-map": "tsx scripts/blog/generate-blog-featured-image-map.ts",
-    "prebuild": "node scripts/validate-no-middleware.js && pnpm blog:generate-featured-image-map && pnpm validate-i18n:hardcoded && pnpm validate-dark-mode && pnpm blog:validate-hero-preview && tsx scripts/seo/prebuild-validation.ts && node scripts/vercel-prebuild.js",
+    "prebuild": "node scripts/validate-no-middleware.js && pnpm blog:generate-featured-image-map && pnpm validate-i18n:hardcoded && pnpm validate-dark-mode && pnpm blog:validate-hero-preview && tsx scripts/seo/prebuild-validation.ts",
     "prebuild:seo": "tsx scripts/seo/prebuild-validation.ts",
     "build": "NODE_OPTIONS=\"--max-old-space-size=4096\" next build",
     "postbuild:seo": "tsx scripts/seo/seo-health-check.ts",
