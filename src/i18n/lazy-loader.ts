@@ -56,12 +56,12 @@ export function prefetchNamespace(
   namespace: TranslationNamespace
 ): void {
   const cacheKey = getCacheKey(locale, namespace);
-  
+
   // Skip if already cached or loading
   if (namespaceCache.has(cacheKey) || pendingLoads.has(cacheKey)) {
     return;
   }
-  
+
   // Load in background
   loadNamespace(locale, namespace).catch(() => {
     // Silently fail on prefetch errors
@@ -74,40 +74,40 @@ export async function loadNamespace(
   namespace: TranslationNamespace
 ): Promise<TranslationModule> {
   const cacheKey = getCacheKey(locale, namespace);
-  
+
   // Return from cache if available
   const cached = namespaceCache.get(cacheKey);
   if (cached) {
     return cached;
   }
-  
+
   // Return pending promise if already loading
   const pending = pendingLoads.get(cacheKey);
   if (pending) {
     return pending;
   }
-  
+
   // Mark as loading
   loadStates.set(cacheKey, { state: 'loading' });
-  
+
   // Create load promise
   const loadPromise = importNamespace(locale, namespace);
   pendingLoads.set(cacheKey, loadPromise);
-  
+
   try {
-    const module = await loadPromise;
-    
+    const loadedModule = await loadPromise;
+
     // Cache the result
-    namespaceCache.set(cacheKey, module);
-    loadStates.set(cacheKey, { 
-      state: 'loaded', 
-      loadedAt: Date.now() 
+    namespaceCache.set(cacheKey, loadedModule);
+    loadStates.set(cacheKey, {
+      state: 'loaded',
+      loadedAt: Date.now()
     });
-    
-    return module;
+
+    return loadedModule;
   } catch (error) {
-    loadStates.set(cacheKey, { 
-      state: 'error', 
+    loadStates.set(cacheKey, {
+      state: 'error',
       error: error instanceof Error ? error : new Error(String(error))
     });
     throw error;
@@ -127,9 +127,9 @@ export async function loadNamespaces(
       module: await loadNamespace(locale, ns),
     }))
   );
-  
+
   const modules = {} as Record<TranslationNamespace, TranslationModule>;
-  
+
   for (const result of results) {
     if (result.status === 'fulfilled') {
       modules[result.value.namespace] = result.value.module;
@@ -137,7 +137,7 @@ export async function loadNamespaces(
       console.error('[i18n] Failed to load namespace:', result.reason);
     }
   }
-  
+
   return modules;
 }
 
@@ -149,16 +149,16 @@ async function importNamespace(
   try {
     // Dynamic import based on locale and namespace
     // This creates separate chunks for each namespace
-    const module = await import(
+    const importedModule = await import(
       /* webpackChunkName: "i18n-[locale]-[namespace]" */
       /* webpackMode: "lazy" */
       `@/translations/namespaces/${locale}/${namespace}.json`
     );
-    
-    return module.default ?? module;
+
+    return importedModule.default ?? importedModule;
   } catch (error) {
     console.error(`[i18n] Failed to load namespace "${namespace}" for locale "${locale}":`, error);
-    
+
     // Fallback: try to load from the main translation file
     // This ensures we don't break if a namespace file is missing
     try {
@@ -166,9 +166,9 @@ async function importNamespace(
         /* webpackChunkName: "i18n-[locale]-fallback" */
         `@/translations/${locale}`
       );
-      
+
       const translations = fallbackModule[locale] ?? fallbackModule.default ?? fallbackModule;
-      
+
       // Extract only the keys relevant to this namespace
       return extractNamespaceKeys(translations, namespace);
     } catch (fallbackError) {
@@ -186,16 +186,16 @@ function extractNamespaceKeys(
 ): TranslationModule {
   // Import the namespace key map
   const { NAMESPACE_KEY_MAP } = require('./namespaces');
-  
+
   const keys: (keyof TranslationType)[] = NAMESPACE_KEY_MAP[namespace] ?? [];
   const result: TranslationModule = {};
-  
+
   for (const key of keys) {
     if (key in translations) {
       result[key] = translations[key] as never;
     }
   }
-  
+
   return result;
 }
 
@@ -217,7 +217,7 @@ export function getCacheStats(): {
   for (const [key, module] of namespaceCache) {
     totalSize += JSON.stringify(module).length;
   }
-  
+
   return {
     cached: namespaceCache.size,
     pending: pendingLoads.size,

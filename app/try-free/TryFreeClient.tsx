@@ -86,16 +86,16 @@ export function TryFreeClient() {
   }, [numericPrice]);
 
   const benefits = [
-    { icon: Sparkles, text: copy.benefits[0] },
-    { icon: ShieldCheck, text: copy.benefits[1] },
-    { icon: Truck, text: copy.benefits[2] },
-    { icon: Clock, text: copy.benefits[3] },
+    { icon: Sparkles, text: copy.benefits?.[0] || '' },
+    { icon: ShieldCheck, text: copy.benefits?.[1] || '' },
+    { icon: Truck, text: copy.benefits?.[2] || '' },
+    { icon: Clock, text: copy.benefits?.[3] || '' },
   ];
 
   const socialProof = [
-    { stat: '87%', label: copy.socialProofLabels[0] },
-    { stat: '4.8', label: copy.socialProofLabels[1] },
-    { stat: '2-3', label: copy.socialProofLabels[2] },
+    { stat: '87%', label: copy.socialProofLabels?.[0] || '' },
+    { stat: '4.8', label: copy.socialProofLabels?.[1] || '' },
+    { stat: '2-3', label: copy.socialProofLabels?.[2] || '' },
   ];
 
   return (
@@ -167,7 +167,7 @@ export function TryFreeClient() {
               <div className="relative w-64 md:w-80 aspect-[3/4]">
                 <Image
                   src="/optimized/17gpink.webp"
-                  alt={copy.productImageAlt}
+                  alt={copy.productImageAlt || ''}
                   fill
                   sizes="(max-width: 768px) 256px, 320px"
                   className="object-contain drop-shadow-2xl"
@@ -211,7 +211,7 @@ export function TryFreeClient() {
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {copy.steps.map((item, i) => (
+            {(copy.steps || []).map((item, i) => (
               <div key={i} className="text-center">
                 <div className="w-12 h-12 bg-[#03E46A] text-white dark:text-gray-900 font-bold text-xl rounded-full flex items-center justify-center mx-auto mb-4">
                   {item.step}

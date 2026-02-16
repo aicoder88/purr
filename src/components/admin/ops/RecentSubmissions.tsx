@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { formatDistanceToNow } from 'date-fns';
 import {
@@ -47,10 +47,10 @@ const platformColors: Record<string, string> = {
   blog: 'bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400'
 };
 
-const statusConfig: Record<SocialPostStatus, { 
-  label: string; 
-  color: string; 
-  icon: React.ElementType 
+const statusConfig: Record<SocialPostStatus, {
+  label: string;
+  color: string;
+  icon: React.ElementType
 }> = {
   DRAFT: {
     label: 'Draft',
@@ -93,14 +93,14 @@ export function RecentSubmissions({ onRefresh }: RecentSubmissionsProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [statusFilter, setStatusFilter] = useState<SocialPostStatus | 'all'>('all');
 
-  const fetchPosts = async () => {
+  const fetchPosts = useCallback(async () => {
     setIsLoading(true);
     try {
       const params = new URLSearchParams();
       if (statusFilter !== 'all') {
         params.set('status', statusFilter);
       }
-      
+
       const response = await fetch(`/api/admin/ops/social/submissions?${params}`);
       if (response.ok) {
         const data = await response.json();
@@ -111,11 +111,11 @@ export function RecentSubmissions({ onRefresh }: RecentSubmissionsProps) {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [statusFilter]);
 
   useEffect(() => {
     fetchPosts();
-  }, [statusFilter]);
+  }, [fetchPosts]);
 
   const handleRefresh = () => {
     fetchPosts();
@@ -146,7 +146,7 @@ export function RecentSubmissions({ onRefresh }: RecentSubmissionsProps) {
             <option value="PUBLISHED">Published</option>
             <option value="FAILED">Failed</option>
           </select>
-          
+
           {/* Refresh Button */}
           <button
             onClick={handleRefresh}
@@ -171,7 +171,7 @@ export function RecentSubmissions({ onRefresh }: RecentSubmissionsProps) {
           posts.map((post, index) => {
             const status = statusConfig[post.status];
             const StatusIcon = status.icon;
-            
+
             return (
               <motion.div
                 key={post.id}
@@ -186,7 +186,7 @@ export function RecentSubmissions({ onRefresh }: RecentSubmissionsProps) {
                     {post.platforms.map((platform) => {
                       const Icon = platformIcons[platform] || FileText;
                       const colorClass = platformColors[platform] || 'bg-gray-100 text-gray-600';
-                      
+
                       return (
                         <span
                           key={platform}
@@ -198,26 +198,26 @@ export function RecentSubmissions({ onRefresh }: RecentSubmissionsProps) {
                       );
                     })}
                   </div>
-                  
+
                   {/* Status Badge */}
                   <span className={`inline-flex items-center space-x-1 px-2 py-1 rounded-full text-xs font-medium ${status.color}`}>
                     <StatusIcon className="w-3 h-3" />
                     <span>{status.label}</span>
                   </span>
                 </div>
-                
+
                 {/* Content Preview */}
                 <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-2 mb-2">
                   {post.content}
                 </p>
-                
+
                 {/* Timestamp */}
                 <p className="text-xs text-gray-500 dark:text-gray-400">
                   {post.publishedAt
                     ? `Published ${formatDistanceToNow(new Date(post.publishedAt), { addSuffix: true })}`
                     : post.scheduledAt
-                    ? `Scheduled for ${new Date(post.scheduledAt).toLocaleDateString()}`
-                    : `Created ${formatDistanceToNow(new Date(post.createdAt), { addSuffix: true })}`}
+                      ? `Scheduled for ${new Date(post.scheduledAt).toLocaleDateString()}`
+                      : `Created ${formatDistanceToNow(new Date(post.createdAt), { addSuffix: true })}`}
                 </p>
               </motion.div>
             );

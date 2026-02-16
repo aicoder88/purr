@@ -2287,29 +2287,29 @@ export interface TranslationType {
   };
 
   tryFreePage?: {
-    title: string;
-    description: string;
-    shippingSuffix: string;
-    cta: string;
-    claimCta: string;
-    urgencyBadge: string;
-    valueLabel: string;
-    freeLabel: string;
-    shippingOnlyLabel: string;
-    guaranteeLabel: string;
-    productImageAlt: string;
-    freeBadgeLabel: string;
-    benefitsHeading: string;
-    benefits: string[];
-    socialProofLabels: string[];
-    howItWorksHeading: string;
-    steps: Array<{ step: string; title: string; desc: string }>;
-    testimonialQuote: string;
-    testimonialAttribution: string;
-    finalHeading: string;
-    finalDescriptionPrefix: string;
-    finalDescriptionSuffix: string;
-    limitNotice: string;
+    title?: string;
+    description?: string;
+    shippingSuffix?: string;
+    cta?: string;
+    claimCta?: string;
+    urgencyBadge?: string;
+    valueLabel?: string;
+    freeLabel?: string;
+    shippingOnlyLabel?: string;
+    guaranteeLabel?: string;
+    productImageAlt?: string;
+    freeBadgeLabel?: string;
+    benefitsHeading?: string;
+    benefits?: string[];
+    socialProofLabels?: string[];
+    howItWorksHeading?: string;
+    steps?: Array<{ step: string; title: string; desc: string }>;
+    testimonialQuote?: string;
+    testimonialAttribution?: string;
+    finalHeading?: string;
+    finalDescriptionPrefix?: string;
+    finalDescriptionSuffix?: string;
+    limitNotice?: string;
     meta?: {
       title: string;
       description: string;
@@ -2326,6 +2326,43 @@ export interface TranslationType {
       headline: string;
       subheadline: string;
       points: string[];
+    };
+    howItWorks?: {
+      headline: string;
+      subheadline: string;
+      steps: Array<{
+        number: string;
+        title: string;
+        description: string;
+      }>;
+    };
+    socialProof?: {
+      headline: string;
+      rating: string;
+      reviewCount: string;
+      reviewLabel: string;
+      testimonials: Array<{
+        text: string;
+        author: string;
+        location: string;
+      }>;
+    };
+    guarantee?: {
+      headline: string;
+      description: string;
+      badge: string;
+    };
+    finalCta?: {
+      headline: string;
+      description: string;
+      buttonText: string;
+      note: string;
+    };
+    trust?: {
+      [key: string]: string;
+    };
+    freeTrialPage?: {
+      free: string;
     };
   };
 

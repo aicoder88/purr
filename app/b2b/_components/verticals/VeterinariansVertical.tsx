@@ -175,7 +175,7 @@ export function VeterinariansVertical({ locale }: VeterinariansVerticalProps) {
     <div className="space-y-16">
       {/* Hero */}
       <section className="text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold bg-gradient-to-r from-emerald-500/15 to-blue-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 mb-6">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold bg-gradient-to-r from-emerald-500/15 to-blue-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 dark:border-emerald-500/20 mb-6">
           <Shield className="h-4 w-4" />
           {t.hero.badge}
         </div>
@@ -252,7 +252,7 @@ export function VeterinariansVertical({ locale }: VeterinariansVerticalProps) {
                 <div
                   className={`w-16 h-16 bg-gradient-to-r ${benefit.color} rounded-2xl flex items-center justify-center mr-6 flex-shrink-0`}
                 >
-                  <FlaskConical className="h-8 w-8 text-white" />
+                  <FlaskConical className="h-8 w-8 text-white dark:text-white" />
                 </div>
                 <div>
                   <h4 className="font-heading font-black text-xl text-gray-900 dark:text-white mb-3">
@@ -287,11 +287,10 @@ export function VeterinariansVertical({ locale }: VeterinariansVerticalProps) {
           {t.partnership.tiers.map((tier, index) => (
             <div
               key={index}
-              className={`relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-xl border-2 ${
-                tier.popular
-                  ? 'border-emerald-500 transform md:-translate-y-4'
+              className={`relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-xl border-2 ${tier.popular
+                  ? 'border-emerald-500 dark:border-emerald-400 transform md:-translate-y-4'
                   : 'border-gray-200 dark:border-gray-700'
-              }`}
+                }`}
             >
               {tier.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
@@ -320,11 +319,10 @@ export function VeterinariansVertical({ locale }: VeterinariansVerticalProps) {
               </ul>
 
               <Button
-                className={`w-full py-4 font-bold rounded-xl ${
-                  tier.popular
+                className={`w-full py-4 font-bold rounded-xl ${tier.popular
                     ? 'bg-gradient-to-r from-emerald-500 to-blue-500 text-white'
                     : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
-                }`}
+                  }`}
               >
                 {locale === 'fr' ? 'En Savoir Plus' : 'Learn More'}
               </Button>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Eye, Users, Clock, TrendingUp } from 'lucide-react';
 import LoadingSpinner from './LoadingSpinner';
 import type { PostAnalytics } from '@/lib/blog/analytics-service';
@@ -12,11 +12,7 @@ export default function PostAnalyticsView({ slug }: PostAnalyticsViewProps) {
   const [loading, setLoading] = useState(true);
   const [dateRange, setDateRange] = useState('30d');
 
-  useEffect(() => {
-    loadAnalytics();
-  }, [slug, dateRange]);
-
-  const loadAnalytics = async () => {
+  const loadAnalytics = useCallback(async () => {
     try {
       setLoading(true);
       const response = await fetch(`/api/admin/blog/analytics/${slug}?range=${dateRange}`);
@@ -29,7 +25,11 @@ export default function PostAnalyticsView({ slug }: PostAnalyticsViewProps) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [slug, dateRange]);
+
+  useEffect(() => {
+    loadAnalytics();
+  }, [loadAnalytics]);
 
   const formatNumber = (num: number): string => {
     if (num >= 1000) {

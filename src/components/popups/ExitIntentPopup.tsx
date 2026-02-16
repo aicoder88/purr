@@ -125,6 +125,10 @@ export function ExitIntentPopup({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleClose = useCallback(() => {
+    setIsVisible(false);
+  }, []);
+
   // Keyboard handling
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -135,11 +139,7 @@ export function ExitIntentPopup({
 
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [isVisible]);
-
-  const handleClose = useCallback(() => {
-    setIsVisible(false);
-  }, []);
+  }, [isVisible, handleClose]);
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {

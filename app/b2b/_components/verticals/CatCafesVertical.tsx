@@ -29,7 +29,7 @@ export function CatCafesVertical({ locale }: CatCafesVerticalProps) {
     },
     valueProps: [
       {
-        icon: <Users className="h-6 w-6 text-white" />,
+        icon: <Users className="h-6 w-6 text-white dark:text-white" />,
         title:
           locale === 'fr'
             ? 'Expérience Client Avant Tout'
@@ -45,7 +45,7 @@ export function CatCafesVertical({ locale }: CatCafesVerticalProps) {
         color: 'from-blue-500 to-purple-500',
       },
       {
-        icon: <Shield className="h-6 w-6 text-white" />,
+        icon: <Shield className="h-6 w-6 text-white dark:text-white" />,
         title:
           locale === 'fr' ? 'Formule Sans Danger' : 'Cat-Friendly Formula',
         highlight:
@@ -57,7 +57,7 @@ export function CatCafesVertical({ locale }: CatCafesVerticalProps) {
         color: 'from-green-500 to-emerald-500',
       },
       {
-        icon: <Zap className="h-6 w-6 text-white" />,
+        icon: <Zap className="h-6 w-6 text-white dark:text-white" />,
         title: locale === 'fr' ? 'Application Rapide' : 'Quick Application',
         highlight:
           locale === 'fr' ? '60 secondes par bac' : '60 seconds per box',
@@ -138,7 +138,7 @@ export function CatCafesVertical({ locale }: CatCafesVerticalProps) {
     <div className="space-y-16">
       {/* Hero */}
       <section className="text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold bg-gradient-to-r from-purple-500/15 to-blue-500/15 text-purple-700 dark:text-purple-300 border border-purple-500/30 mb-6">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold bg-gradient-to-r from-purple-500/15 to-blue-500/15 text-purple-700 dark:text-purple-300 border border-purple-500/30 dark:border-purple-500/20 mb-6">
           <Coffee className="h-4 w-4" />
           {locale === 'fr' ? 'Partenariat Café à Chats' : 'Cat Cafe Partnership'}
         </div>
@@ -186,7 +186,7 @@ export function CatCafesVertical({ locale }: CatCafesVerticalProps) {
             <Button
               size="lg"
               variant="outline"
-              className="bg-white dark:bg-gray-800 text-purple-600 dark:text-purple-400 font-bold py-6 px-10 rounded-2xl border-2 border-purple-500/50"
+              className="bg-white dark:bg-gray-800 text-purple-600 dark:text-purple-400 font-bold py-6 px-10 rounded-2xl border-2 border-purple-500/50 dark:border-purple-500/40"
             >
               {t.cta.secondary}
             </Button>

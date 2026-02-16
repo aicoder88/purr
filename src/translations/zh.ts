@@ -487,7 +487,8 @@ export const zh = {
       email: "邮箱",
       message: "留言",
       submit: "发送消息"
-    }
+    },
+    partnersEmail: "partners@purrify.ca",
   },
 
   // Newsletter

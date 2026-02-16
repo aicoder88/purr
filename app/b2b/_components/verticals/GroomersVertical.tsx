@@ -88,7 +88,7 @@ export function GroomersVertical({ locale }: GroomersVerticalProps) {
           : 'Partnership Benefits',
       items: [
         {
-          icon: <DollarSign className="h-6 w-6 text-green-600" />,
+          icon: <DollarSign className="h-6 w-6 text-green-600 dark:text-green-400" />,
           title: locale === 'fr' ? 'Prix de Gros' : 'Wholesale Pricing',
           description:
             locale === 'fr'
@@ -96,7 +96,7 @@ export function GroomersVertical({ locale }: GroomersVerticalProps) {
               : 'Premium margins on every sale. Volume discounts available.',
         },
         {
-          icon: <Package className="h-6 w-6 text-blue-600" />,
+          icon: <Package className="h-6 w-6 text-blue-600 dark:text-blue-400" />,
           title:
             locale === 'fr'
               ? 'Matériel de Présentation'
@@ -107,7 +107,7 @@ export function GroomersVertical({ locale }: GroomersVerticalProps) {
               : 'Free counter displays, shelf talkers, and promotional materials.',
         },
         {
-          icon: <Users className="h-6 w-6 text-purple-600" />,
+          icon: <Users className="h-6 w-6 text-purple-600 dark:text-purple-400" />,
           title: locale === 'fr' ? 'Formation Produit' : 'Product Training',
           description:
             locale === 'fr'
@@ -237,7 +237,7 @@ export function GroomersVertical({ locale }: GroomersVerticalProps) {
           </p>
           <Link
             href="mailto:partners@purrify.ca"
-            className="inline-block bg-white text-purple-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors"
+            className="inline-block bg-white dark:bg-gray-900 text-purple-600 dark:text-purple-400 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
           >
             {locale === 'fr' ? 'Contactez-nous' : 'Contact Us'}
           </Link>

@@ -21,8 +21,18 @@ function getStripe(): Stripe {
   return stripe;
 }
 
-const webhookSecretLive = process.env.STRIPE_WEBHOOK_SECRET;
-const webhookSecretTest = process.env.STRIPE_WEBHOOK_SECRET_TEST;
+// Use environment-appropriate webhook secret — never try both
+function getWebhookSecret(): string {
+  const isProduction = process.env.NODE_ENV === 'production';
+  const secret = isProduction
+    ? process.env.STRIPE_WEBHOOK_SECRET
+    : (process.env.STRIPE_WEBHOOK_SECRET_TEST || process.env.STRIPE_WEBHOOK_SECRET);
+
+  if (!secret) {
+    throw new Error(`STRIPE_WEBHOOK_SECRET${isProduction ? '' : '_TEST'} is not configured`);
+  }
+  return secret;
+}
 
 // Lazy initialize Resend for sending emails directly
 let resend: Resend | null = null;
@@ -249,35 +259,46 @@ export async function POST(req: NextRequest): Promise<Response> {
         return Response.json({ message: 'Missing stripe-signature header' }, { status: 400 });
       }
 
-      // Try live secret first, then test secret
-      const secretsToTry = [webhookSecretLive, webhookSecretTest].filter(Boolean) as string[];
-      let event: Stripe.Event | null = null;
-      let lastError: Error | null = null;
-
-      for (const secret of secretsToTry) {
-        try {
-          event = getStripe().webhooks.constructEvent(payload, sig, secret);
-          span.setAttribute('eventType', event.type);
-          span.setAttribute('eventId', event.id);
-          span.setAttribute('webhookMode', secret === webhookSecretLive ? 'live' : 'test');
-          logger.info('Stripe webhook received', {
-            eventType: event.type,
-            eventId: event.id,
-            mode: secret === webhookSecretLive ? 'live' : 'test'
-          });
-          break;
-        } catch (err) {
-          lastError = err instanceof Error ? err : new Error('Unknown error');
-          // Continue to try next secret
-        }
-      }
-
-      if (!event) {
-        Sentry.captureException(lastError);
+      // Verify webhook signature with environment-appropriate secret
+      let event: Stripe.Event;
+      try {
+        const secret = getWebhookSecret();
+        event = getStripe().webhooks.constructEvent(payload, sig, secret);
+      } catch (err) {
+        const error = err instanceof Error ? err : new Error('Unknown error');
+        Sentry.captureException(error);
         logger.error('Webhook signature verification failed', {
-          error: lastError?.message || 'Unknown error'
+          error: error.message,
         });
         return new Response('Webhook signature verification failed', { status: 400 });
+      }
+
+      span.setAttribute('eventType', event.type);
+      span.setAttribute('eventId', event.id);
+      logger.info('Stripe webhook received', {
+        eventType: event.type,
+        eventId: event.id,
+      });
+
+      // Idempotency: check if this event was already processed
+      // Stripe event IDs are globally unique (e.g., evt_1234...)
+      if (prisma) {
+        const alreadyProcessed = await prisma.auditLog.findFirst({
+          where: {
+            entity: 'stripe_webhook',
+            entityId: event.id,
+            action: 'PAYMENT_PROCESSED',
+          },
+        });
+
+        if (alreadyProcessed) {
+          logger.info('Webhook event already processed (idempotent skip)', {
+            eventId: event.id,
+            eventType: event.type,
+            processedAt: alreadyProcessed.createdAt,
+          });
+          return Response.json({ received: true, deduplicated: true });
+        }
       }
 
       try {
@@ -646,6 +667,26 @@ export async function POST(req: NextRequest): Promise<Response> {
               eventType: event.type,
               eventId: event.id
             });
+        }
+
+        // Record successful processing for idempotency
+        if (prisma) {
+          try {
+            await prisma.auditLog.create({
+              data: {
+                action: 'PAYMENT_PROCESSED',
+                entity: 'stripe_webhook',
+                entityId: event.id,
+                changes: { eventType: event.type },
+              },
+            });
+          } catch (auditErr) {
+            // Non-fatal: log but don't fail the webhook
+            logger.warn('Failed to write idempotency audit log', {
+              error: auditErr instanceof Error ? auditErr.message : 'Unknown',
+              eventId: event.id,
+            });
+          }
         }
 
         logger.info('Webhook processed successfully', {

@@ -1,4 +1,5 @@
 import type { NextRequest } from 'next/server';
+import { signOrderId, ORDER_MAX_AGE_MS } from '@/lib/security/checkout-token';
 
 const mockStripeSessionsCreate = jest.fn();
 const mockStripeConstructor = jest.fn().mockImplementation(() => ({
@@ -61,6 +62,7 @@ describe('/api/checkout', () => {
 
     process.env.STRIPE_SECRET_KEY = 'sk_test_checkout';
     process.env.NEXTAUTH_URL = 'https://www.purrify.ca';
+    process.env.NEXTAUTH_SECRET = 'test-secret-for-checkout-tokens';
 
     mockCheckRateLimit.mockResolvedValue({
       success: true,
@@ -75,10 +77,14 @@ describe('/api/checkout', () => {
     });
   });
 
-  it('creates a Stripe checkout session for a valid order', async () => {
+  it('creates a Stripe checkout session for a valid order with valid token', async () => {
     const orderId = '550e8400-e29b-41d4-a716-446655440000';
+    const checkoutToken = signOrderId(orderId);
+
     mockOrderFindUnique.mockResolvedValue({
       id: orderId,
+      status: 'PENDING',
+      createdAt: new Date(),
       items: [
         {
           price: 14.99,
@@ -98,6 +104,7 @@ describe('/api/checkout', () => {
 
     const response = await POST(createRequest({
       orderId,
+      checkoutToken,
       currency: 'USD',
       customer: {
         email: 'jane@example.com',
@@ -140,10 +147,14 @@ describe('/api/checkout', () => {
   });
 
   it('returns 404 when order lookup fails', async () => {
+    const orderId = '550e8400-e29b-41d4-a716-446655440000';
+    const checkoutToken = signOrderId(orderId);
+
     mockOrderFindUnique.mockResolvedValue(null);
 
     const response = await POST(createRequest({
-      orderId: '550e8400-e29b-41d4-a716-446655440000',
+      orderId,
+      checkoutToken,
       currency: 'CAD',
       customer: { email: 'jane@example.com' },
     }));
@@ -168,9 +179,171 @@ describe('/api/checkout', () => {
     expect(mockStripeSessionsCreate).not.toHaveBeenCalled();
   });
 
-  it('returns 500 and captures exception when Stripe session creation fails', async () => {
+  it('returns 400 for missing checkout token', async () => {
+    const response = await POST(createRequest({
+      orderId: '550e8400-e29b-41d4-a716-446655440000',
+      currency: 'CAD',
+      customer: { email: 'jane@example.com' },
+      // checkoutToken is missing
+    }));
+
+    expect(response.status).toBe(400);
+    const data = await getResponseData(response);
+    expect(data.error).toBe('Invalid request data');
+    expect(mockOrderFindUnique).not.toHaveBeenCalled();
+    expect(mockStripeSessionsCreate).not.toHaveBeenCalled();
+  });
+
+  it('returns 403 for invalid checkout token', async () => {
+    const orderId = '550e8400-e29b-41d4-a716-446655440000';
+
+    const response = await POST(createRequest({
+      orderId,
+      checkoutToken: 'invalid-token',
+      currency: 'CAD',
+      customer: { email: 'jane@example.com' },
+    }));
+
+    expect(response.status).toBe(403);
+    const data = await getResponseData(response);
+    expect(data.error).toBe('Invalid checkout token');
+    expect(mockOrderFindUnique).not.toHaveBeenCalled();
+    expect(mockStripeSessionsCreate).not.toHaveBeenCalled();
+  });
+
+  it('returns 403 for tampered checkout token (wrong orderId)', async () => {
+    const orderId = '550e8400-e29b-41d4-a716-446655440000';
+    const wrongOrderId = '660e8400-e29b-41d4-a716-446655440001';
+    // Token signed for a different order
+    const tamperedToken = signOrderId(wrongOrderId);
+
+    const response = await POST(createRequest({
+      orderId,
+      checkoutToken: tamperedToken,
+      currency: 'CAD',
+      customer: { email: 'jane@example.com' },
+    }));
+
+    expect(response.status).toBe(403);
+    const data = await getResponseData(response);
+    expect(data.error).toBe('Invalid checkout token');
+    expect(mockOrderFindUnique).not.toHaveBeenCalled();
+    expect(mockStripeSessionsCreate).not.toHaveBeenCalled();
+  });
+
+  it('returns 409 when order is already paid', async () => {
+    const orderId = '550e8400-e29b-41d4-a716-446655440000';
+    const checkoutToken = signOrderId(orderId);
+
     mockOrderFindUnique.mockResolvedValue({
-      id: '550e8400-e29b-41d4-a716-446655440000',
+      id: orderId,
+      status: 'PAID',
+      createdAt: new Date(),
+      items: [
+        {
+          price: 14.99,
+          quantity: 1,
+          product: {
+            name: 'Purrify Trial Size',
+            description: 'Activated carbon cat litter additive',
+            image: null,
+          },
+        },
+      ],
+    });
+
+    const response = await POST(createRequest({
+      orderId,
+      checkoutToken,
+      currency: 'CAD',
+      customer: { email: 'jane@example.com' },
+    }));
+
+    expect(response.status).toBe(409);
+    const data = await getResponseData(response);
+    expect(data.error).toBe('Order already processed');
+    expect(mockStripeSessionsCreate).not.toHaveBeenCalled();
+  });
+
+  it('returns 409 when order is already cancelled', async () => {
+    const orderId = '550e8400-e29b-41d4-a716-446655440000';
+    const checkoutToken = signOrderId(orderId);
+
+    mockOrderFindUnique.mockResolvedValue({
+      id: orderId,
+      status: 'CANCELLED',
+      createdAt: new Date(),
+      items: [
+        {
+          price: 14.99,
+          quantity: 1,
+          product: {
+            name: 'Purrify Trial Size',
+            description: 'Activated carbon cat litter additive',
+            image: null,
+          },
+        },
+      ],
+    });
+
+    const response = await POST(createRequest({
+      orderId,
+      checkoutToken,
+      currency: 'CAD',
+      customer: { email: 'jane@example.com' },
+    }));
+
+    expect(response.status).toBe(409);
+    const data = await getResponseData(response);
+    expect(data.error).toBe('Order already processed');
+    expect(mockStripeSessionsCreate).not.toHaveBeenCalled();
+  });
+
+  it('returns 410 when order has expired (> 1 hour old)', async () => {
+    const orderId = '550e8400-e29b-41d4-a716-446655440000';
+    const checkoutToken = signOrderId(orderId);
+
+    // Create a date 2 hours ago (older than ORDER_MAX_AGE_MS)
+    const twoHoursAgo = new Date(Date.now() - (ORDER_MAX_AGE_MS + 60 * 60 * 1000));
+
+    mockOrderFindUnique.mockResolvedValue({
+      id: orderId,
+      status: 'PENDING',
+      createdAt: twoHoursAgo,
+      items: [
+        {
+          price: 14.99,
+          quantity: 1,
+          product: {
+            name: 'Purrify Trial Size',
+            description: 'Activated carbon cat litter additive',
+            image: null,
+          },
+        },
+      ],
+    });
+
+    const response = await POST(createRequest({
+      orderId,
+      checkoutToken,
+      currency: 'CAD',
+      customer: { email: 'jane@example.com' },
+    }));
+
+    expect(response.status).toBe(410);
+    const data = await getResponseData(response);
+    expect(data.error).toBe('Order expired');
+    expect(mockStripeSessionsCreate).not.toHaveBeenCalled();
+  });
+
+  it('returns 500 and captures exception when Stripe session creation fails', async () => {
+    const orderId = '550e8400-e29b-41d4-a716-446655440000';
+    const checkoutToken = signOrderId(orderId);
+
+    mockOrderFindUnique.mockResolvedValue({
+      id: orderId,
+      status: 'PENDING',
+      createdAt: new Date(),
       items: [
         {
           price: 12.5,
@@ -186,7 +359,8 @@ describe('/api/checkout', () => {
     mockStripeSessionsCreate.mockRejectedValue(new Error('Stripe unavailable'));
 
     const response = await POST(createRequest({
-      orderId: '550e8400-e29b-41d4-a716-446655440000',
+      orderId,
+      checkoutToken,
       currency: 'CAD',
       customer: { email: 'jane@example.com' },
     }));

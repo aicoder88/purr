@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { TrendingUp, TrendingDown, Eye, FileText, Target, Users, Clock, BarChart3 } from 'lucide-react';
 import LoadingSpinner from './LoadingSpinner';
 import type { DashboardMetrics } from '@/lib/blog/analytics-service';
@@ -8,11 +8,7 @@ export default function AnalyticsDashboard() {
   const [loading, setLoading] = useState(true);
   const [dateRange, setDateRange] = useState('7d');
 
-  useEffect(() => {
-    loadMetrics();
-  }, [dateRange]);
-
-  const loadMetrics = async () => {
+  const loadMetrics = useCallback(async () => {
     try {
       setLoading(true);
       const response = await fetch(`/api/admin/blog/analytics?range=${dateRange}`);
@@ -25,7 +21,11 @@ export default function AnalyticsDashboard() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [dateRange]);
+
+  useEffect(() => {
+    loadMetrics();
+  }, [loadMetrics]);
 
   const handleExport = async (format: 'csv' | 'pdf') => {
     try {
@@ -249,9 +249,8 @@ function MetricCard({ title, value, change, icon }: MetricCardProps) {
       <div className="flex items-end justify-between">
         <span className="text-3xl font-bold text-gray-900 dark:text-gray-100">{value}</span>
         {change !== undefined && (
-          <div className={`flex items-center space-x-1 text-sm ${
-            change >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
-          }`}>
+          <div className={`flex items-center space-x-1 text-sm ${change >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
+            }`}>
             {change >= 0 ? <TrendingUp className="w-4 h-4" /> : <TrendingDown className="w-4 h-4" />}
             <span>{Math.abs(change).toFixed(1)}%</span>
           </div>

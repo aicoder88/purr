@@ -482,7 +482,8 @@ export const fr = {
       email: "Courriel",
       message: "Message",
       submit: "Envoyer"
-    }
+    },
+    partnersEmail: "partners@purrify.ca",
   },
 
   // Newsletter

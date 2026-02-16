@@ -4,6 +4,7 @@ import { z } from 'zod';
 import * as Sentry from '@sentry/nextjs';
 import prisma from '@/lib/prisma';
 import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
+import { verifyCheckoutToken, isOrderExpired } from '@/lib/security/checkout-token';
 
 // Initialize Stripe lazily
 let stripeInstance: Stripe | null = null;
@@ -19,6 +20,7 @@ function getStripe(): Stripe {
 // Input validation schema
 const createCheckoutSchema = z.object({
   orderId: z.string().uuid('Invalid order ID format'),
+  checkoutToken: z.string().min(1, 'Checkout token is required'),
   currency: z.enum(['CAD', 'USD'], { message: 'Currency must be CAD or USD' }),
   customer: z.object({
     email: z.string().email('Invalid email format').max(254, 'Email too long'),
@@ -62,7 +64,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { orderId, currency, customer } = validationResult.data;
+    const { orderId, checkoutToken, currency, customer } = validationResult.data;
+
+    // Verify checkout token for ownership
+    if (!verifyCheckoutToken(orderId, checkoutToken)) {
+      return NextResponse.json(
+        { error: 'Invalid checkout token' },
+        { status: 403, headers }
+      );
+    }
 
     // Check prisma is available
     if (!prisma) {
@@ -82,6 +92,22 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: 'Order not found' },
         { status: 404, headers }
+      );
+    }
+
+    // Verify order status - only allow checkout for PENDING orders
+    if (order.status !== 'PENDING') {
+      return NextResponse.json(
+        { error: 'Order already processed' },
+        { status: 409, headers }
+      );
+    }
+
+    // Verify order age - reject orders older than 1 hour
+    if (isOrderExpired(order.createdAt)) {
+      return NextResponse.json(
+        { error: 'Order expired' },
+        { status: 410, headers }
       );
     }
 

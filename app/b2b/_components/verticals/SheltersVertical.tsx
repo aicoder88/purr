@@ -75,7 +75,7 @@ export function SheltersVertical({ locale }: SheltersVerticalProps) {
           : 'Why Purrify for Shelters',
       items: [
         {
-          icon: <Shield className="h-6 w-6 text-emerald-600" />,
+          icon: <Shield className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />,
           title: locale === 'fr' ? 'Naturel et Sans Danger' : 'Natural and Non-Toxic',
           description:
             locale === 'fr'
@@ -92,7 +92,7 @@ export function SheltersVertical({ locale }: SheltersVerticalProps) {
               : 'Significant volume pricing. Extends litter life.',
         },
         {
-          icon: <Heart className="h-6 w-6 text-pink-600" />,
+          icon: <Heart className="h-6 w-6 text-pink-600 dark:text-pink-400" />,
           title:
             locale === 'fr'
               ? "Environnement d'Adoption"
@@ -315,7 +315,7 @@ export function SheltersVertical({ locale }: SheltersVerticalProps) {
           <h3 className="font-heading text-2xl font-bold mb-4">{t.contact.title}</h3>
           <a
             href={`mailto:${t.contact.email}`}
-            className="inline-block bg-white text-pink-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors"
+            className="inline-block bg-white dark:bg-gray-900 text-pink-600 dark:text-pink-400 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
           >
             {t.contact.email}
           </a>

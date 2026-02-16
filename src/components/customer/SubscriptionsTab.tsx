@@ -19,7 +19,7 @@ export function SubscriptionsTab({
   const [subscriptionList, setSubscriptionList] = useState(subscriptions);
   const [loading, setLoading] = useState(false);
 
-  const handleFrequencyChange = async (subscriptionId: string, newFrequency: string) => {
+  const handleFrequencyChange = useCallback(async (subscriptionId: string, newFrequency: string) => {
     setLoading(true);
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
@@ -27,10 +27,10 @@ export function SubscriptionsTab({
       setSubscriptionList(prev => prev.map(sub =>
         sub.id === subscriptionId
           ? {
-              ...sub,
-              frequency: newFrequency as Subscription['frequency'],
-              nextDelivery: calculateNextDelivery(newFrequency)
-            }
+            ...sub,
+            frequency: newFrequency as Subscription['frequency'],
+            nextDelivery: calculateNextDelivery(newFrequency)
+          }
           : sub
       ));
     } catch (error) {
@@ -38,7 +38,7 @@ export function SubscriptionsTab({
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   const calculateNextDelivery = (frequency: string): string => {
     const now = new Date();
@@ -65,25 +65,9 @@ export function SubscriptionsTab({
     return (e: React.ChangeEvent<HTMLSelectElement>) => {
       handleFrequencyChange(subscriptionId, e.target.value);
     };
-  }, []);
+  }, [handleFrequencyChange]);
 
-  const handleSubscriptionPause = useCallback((subscriptionId: string) => {
-    return () => handleSubscriptionAction(subscriptionId, 'pause');
-  }, []);
-
-  const handleSubscriptionResume = useCallback((subscriptionId: string) => {
-    return () => handleSubscriptionAction(subscriptionId, 'resume');
-  }, []);
-
-  const handleSubscriptionCancel = useCallback((subscriptionId: string) => {
-    return () => handleSubscriptionAction(subscriptionId, 'cancel');
-  }, []);
-
-  useEffect(() => {
-    setSubscriptionList(subscriptions);
-  }, [subscriptions]);
-
-  const handleSubscriptionAction = async (subscriptionId: string, action: 'pause' | 'resume' | 'cancel') => {
+  const handleSubscriptionAction = useCallback(async (subscriptionId: string, action: 'pause' | 'resume' | 'cancel') => {
     setLoading(true);
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
@@ -91,9 +75,9 @@ export function SubscriptionsTab({
       setSubscriptionList(prev => prev.map(sub =>
         sub.id === subscriptionId
           ? {
-              ...sub,
-              status: action === 'pause' ? 'paused' : action === 'resume' ? 'active' : 'cancelled'
-            }
+            ...sub,
+            status: action === 'pause' ? 'paused' : action === 'resume' ? 'active' : 'cancelled'
+          }
           : sub
       ));
 
@@ -109,7 +93,23 @@ export function SubscriptionsTab({
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  const handleSubscriptionPause = useCallback((subscriptionId: string) => {
+    return () => handleSubscriptionAction(subscriptionId, 'pause');
+  }, [handleSubscriptionAction]);
+
+  const handleSubscriptionResume = useCallback((subscriptionId: string) => {
+    return () => handleSubscriptionAction(subscriptionId, 'resume');
+  }, [handleSubscriptionAction]);
+
+  const handleSubscriptionCancel = useCallback((subscriptionId: string) => {
+    return () => handleSubscriptionAction(subscriptionId, 'cancel');
+  }, [handleSubscriptionAction]);
+
+  useEffect(() => {
+    setSubscriptionList(subscriptions);
+  }, [subscriptions]);
 
   return (
     <div className="space-y-6">

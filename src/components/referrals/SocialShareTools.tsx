@@ -180,7 +180,7 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
         });
       }
     }
-  }, [generatePersonalizedMessage, shareUrl, referralCode]);
+  }, [generatePersonalizedMessage, referralCode]);
 
   // Generate QR code
   const generateQRCode = useCallback(() => {

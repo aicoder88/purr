@@ -216,7 +216,7 @@ export default function B2BClientPage() {
             </a>
             <a
               href={`tel:${t.contact.phone}`}
-              className="inline-flex items-center justify-center gap-2 border border-blue-600 text-blue-600 dark:text-blue-400 bg-white dark:bg-gray-800 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
+              className="inline-flex items-center justify-center gap-2 border border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 bg-white dark:bg-gray-800 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
             >
               {t.contact.phone}
             </a>

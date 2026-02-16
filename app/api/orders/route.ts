@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { checkRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit-app';
+import { signOrderId } from '@/lib/security/checkout-token';
 import * as Sentry from '@sentry/nextjs';
 
 interface CartItem {
@@ -186,8 +187,11 @@ export async function POST(request: NextRequest) {
       },
     });
 
+    // Generate checkout token for ownership verification
+    const checkoutToken = signOrderId(order.id);
+
     return NextResponse.json(
-      { orderId: order.id },
+      { orderId: order.id, checkoutToken },
       { status: 200, headers }
     );
   } catch (error) {

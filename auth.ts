@@ -57,7 +57,7 @@ export const authConfig = {
         try {
           const email = credentials?.email as string | undefined;
           const password = credentials?.password as string | undefined;
-          
+
           if (!email || !password) {
             return null;
           }
@@ -67,38 +67,64 @@ export const authConfig = {
           }
 
           const adminEmail = process.env.ADMIN_EMAIL;
-          const adminPassword = process.env.ADMIN_PASSWORD;
           const editorEmail = process.env.EDITOR_EMAIL;
-          const editorPassword = process.env.EDITOR_PASSWORD;
 
-          if (!adminEmail || !adminPassword) {
-            throw new Error('ADMIN_EMAIL and ADMIN_PASSWORD must be configured');
+          // ADMIN_PASSWORD_HASH and EDITOR_PASSWORD_HASH should be bcrypt hashes.
+          // Generate with: node -e "require('bcryptjs').hash('yourpass', 12).then(console.log)"
+          const adminPasswordHash = process.env.ADMIN_PASSWORD_HASH;
+          const editorPasswordHash = process.env.EDITOR_PASSWORD_HASH;
+
+          // Fallback: support legacy plaintext ADMIN_PASSWORD during migration
+          const adminPasswordLegacy = process.env.ADMIN_PASSWORD;
+          const editorPasswordLegacy = process.env.EDITOR_PASSWORD;
+
+          if (!adminEmail || (!adminPasswordHash && !adminPasswordLegacy)) {
+            throw new Error('ADMIN_EMAIL and ADMIN_PASSWORD_HASH must be configured');
           }
 
-          if (
-            email === adminEmail &&
-            password === adminPassword
-          ) {
-            return {
-              id: "1",
-              email: adminEmail,
-              name: "Admin",
-              role: "admin"
-            };
+          // Check admin credentials
+          if (email === adminEmail) {
+            let isValid = false;
+            if (adminPasswordHash) {
+              isValid = await bcrypt.compare(password, adminPasswordHash);
+            } else if (adminPasswordLegacy) {
+              // Legacy plaintext fallback — log warning to encourage migration
+              isValid = password === adminPasswordLegacy;
+              if (isValid) {
+                console.warn('[AUTH] Admin login using plaintext ADMIN_PASSWORD. Migrate to ADMIN_PASSWORD_HASH (bcrypt) for security.');
+              }
+            }
+
+            if (isValid) {
+              return {
+                id: "1",
+                email: adminEmail,
+                name: "Admin",
+                role: "admin"
+              };
+            }
           }
 
-          if (
-            editorEmail &&
-            editorPassword &&
-            email === editorEmail &&
-            password === editorPassword
-          ) {
-            return {
-              id: "2",
-              email: editorEmail,
-              name: "Editor",
-              role: "editor"
-            };
+          // Check editor credentials
+          if (editorEmail && email === editorEmail) {
+            let isValid = false;
+            if (editorPasswordHash) {
+              isValid = await bcrypt.compare(password, editorPasswordHash);
+            } else if (editorPasswordLegacy) {
+              isValid = password === editorPasswordLegacy;
+              if (isValid) {
+                console.warn('[AUTH] Editor login using plaintext EDITOR_PASSWORD. Migrate to EDITOR_PASSWORD_HASH (bcrypt) for security.');
+              }
+            }
+
+            if (isValid) {
+              return {
+                id: "2",
+                email: editorEmail,
+                name: "Editor",
+                role: "editor"
+              };
+            }
           }
 
           return null;
@@ -181,6 +207,7 @@ export const authConfig = {
     async jwt({ token, user }) {
       if (user) {
         const extUser = user as ExtendedUser;
+        token.userId = extUser.id;
         token.role = extUser.role;
         token.affiliateId = extUser.affiliateId;
         token.affiliateCode = extUser.affiliateCode;
@@ -190,6 +217,7 @@ export const authConfig = {
     async session({ session, token }) {
       if (session.user) {
         const extUser = session.user as ExtendedUser;
+        (extUser as ExtendedUser & { userId?: string }).userId = token.userId as string | undefined;
         extUser.role = token.role as string | undefined;
         extUser.affiliateId = token.affiliateId as string | undefined;
         extUser.affiliateCode = token.affiliateCode as string | undefined;
@@ -203,7 +231,7 @@ export const authConfig = {
   },
   session: {
     strategy: "jwt",
-    maxAge: 24 * 60 * 60
+    maxAge: 4 * 60 * 60 // 4 hours (reduced from 24h for security)
   },
   secret: process.env.NEXTAUTH_SECRET,
   debug: process.env.NODE_ENV === "development"

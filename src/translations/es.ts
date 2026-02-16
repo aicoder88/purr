@@ -469,7 +469,8 @@ export const es: TranslationType = {
       email: "Correo",
       message: "Mensaje",
       submit: "Enviar"
-    }
+    },
+    partnersEmail: "partners@purrify.ca",
   },
 
   // Newsletter

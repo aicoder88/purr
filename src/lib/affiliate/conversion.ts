@@ -115,20 +115,36 @@ export async function recordAffiliateConversion(
 }
 
 /**
- * Parse affiliate metadata from Stripe session
+ * Parse and validate affiliate metadata from Stripe session.
  * Expects format: "CODE:SESSION_ID"
+ *
+ * Validates:
+ * - Total length <= 100 chars (prevents injection via oversized metadata)
+ * - Code is alphanumeric + hyphens only, 3-20 chars
+ * - Session ID is alphanumeric + hyphens/underscores, 5-50 chars
  */
 export function parseAffiliateMetadata(metadata: string | undefined): { code: string; sessionId: string } | null {
-  if (!metadata) return null;
+  if (!metadata || metadata.length > 100) return null;
 
   try {
-    const [code, sessionId] = metadata.split(':');
-    if (code && sessionId) {
-      return { code, sessionId };
+    const colonIndex = metadata.indexOf(':');
+    if (colonIndex === -1) return null;
+
+    const code = metadata.slice(0, colonIndex);
+    const sessionId = metadata.slice(colonIndex + 1);
+
+    // Validate code format: alphanumeric + hyphens, 3-20 chars
+    if (!code || code.length < 3 || code.length > 20 || !/^[A-Za-z0-9-]+$/.test(code)) {
+      return null;
     }
+
+    // Validate session ID format: alphanumeric + hyphens/underscores, 5-50 chars
+    if (!sessionId || sessionId.length < 5 || sessionId.length > 50 || !/^[A-Za-z0-9_-]+$/.test(sessionId)) {
+      return null;
+    }
+
+    return { code, sessionId };
   } catch {
     return null;
   }
-
-  return null;
 }
