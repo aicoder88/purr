@@ -63,6 +63,7 @@ export const en = {
     catLitterAnswers: "Cat Litter Q&A",
     scienceHub: "Research Citations",
     carbonVsBakingSoda: "Carbon vs Baking Soda",
+    carbonVsBakingSodaDesc: "See the science behind why activated carbon outperforms baking soda for litter box odor control.",
     // B2B pivot keys
     findStore: "Get Purrify Near You",
     findNearYou: "Find It Near You",
@@ -445,7 +446,8 @@ export const en = {
       email: "Email",
       message: "Message",
       submit: "Send"
-    }
+    },
+    partnersEmail: "partners@purrify.ca"
   },
 
   // Newsletter
@@ -1114,8 +1116,10 @@ export const en = {
     limitedTimeOffer: "Limited time offer. One free sample per household.",
     restrictionsApply: "Shipping restrictions may apply. We reserve the right to end this promotion at any time.",
     highDemandWarning: "Due to high demand, we cannot guarantee availability after the timer expires",
-    disclaimer: "100% Free. No credit card required. Limited time offer. One free sample per household. Shipping restrictions may apply. We reserve the right to end this promotion at any time."
+    disclaimer: "Offer valid for new customers only. One trial per household. Shipping rates may vary by location."
   },
+
+
 
   // Contact Page
   contactPage: {
@@ -2849,6 +2853,33 @@ export const en = {
 
   // Try Free Landing Page (for Ad Campaigns)
   tryFreePage: {
+    title: "Try Purrify FREE",
+    description: "Discover why cat owners are switching to activated carbon odor control. Just pay",
+    shippingSuffix: "shipping",
+    cta: "Get My Free Trial",
+    claimCta: "Claim My Free Trial",
+    urgencyBadge: "Limited Time Offer",
+    valueLabel: "$9.99 value",
+    freeLabel: "FREE",
+    shippingOnlyLabel: "Shipping only",
+    guaranteeLabel: "30-day money-back guarantee",
+    productImageAlt: "Purrify 12g Trial Size - Free Sample",
+    freeBadgeLabel: "FREE!",
+    benefitsHeading: "Why Cat Owners Love Purrify",
+    benefits: ["Eliminates odor instantly", "100% natural coconut carbon", "Fast Canada-wide shipping", "30-day money-back guarantee"],
+    socialProofLabels: ["upgrade to full size", "star rating", "weeks of freshness"],
+    howItWorksHeading: "How It Works",
+    steps: [
+      { step: "1", title: "Sprinkle", desc: "Add to any litter your cat already uses" },
+      { step: "2", title: "Trap", desc: "Activated carbon traps ammonia molecules" },
+      { step: "3", title: "Enjoy", desc: "Fresh-smelling home for 2-3 weeks" },
+    ],
+    testimonialQuote: "I was skeptical at first, but after trying the free sample, I immediately ordered the full size. My litter box area has never smelled better!",
+    testimonialAttribution: "- Sarah M., Toronto",
+    finalHeading: "Ready to eliminate litter box odor?",
+    finalDescriptionPrefix: "Get your free trial today - just pay",
+    finalDescriptionSuffix: "shipping",
+    limitNotice: "Limit 1 per customer | Ships within 24 hours",
     meta: {
       title: "Try Purrify Free - Just $4.76 Shipping | Cat Litter Odor Eliminator",
       description: "Get your FREE Purrify trial - just pay $4.76 shipping. Try it in your litter routine and see the difference."

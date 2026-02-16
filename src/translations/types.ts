@@ -62,6 +62,7 @@ export interface TranslationType {
     catLitterAnswers?: string;
     scienceHub?: string;
     carbonVsBakingSoda?: string;
+    carbonVsBakingSodaDesc?: string;
     // B2B pivot keys
     findStore?: string;
     findNearYou?: string;
@@ -490,6 +491,7 @@ export interface TranslationType {
       message: string;
       submit: string;
     };
+    partnersEmail: string;
   };
 
   // Newsletter
@@ -792,6 +794,8 @@ export interface TranslationType {
     highDemandWarning: string;
     disclaimer: string;
   };
+
+
 
   // Contact Page
   contactPage: {
@@ -2282,9 +2286,48 @@ export interface TranslationType {
     };
   };
 
-  // Try Free Page - Landing page for ad campaigns
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  tryFreePage?: Record<string, any>;
+  tryFreePage?: {
+    title: string;
+    description: string;
+    shippingSuffix: string;
+    cta: string;
+    claimCta: string;
+    urgencyBadge: string;
+    valueLabel: string;
+    freeLabel: string;
+    shippingOnlyLabel: string;
+    guaranteeLabel: string;
+    productImageAlt: string;
+    freeBadgeLabel: string;
+    benefitsHeading: string;
+    benefits: string[];
+    socialProofLabels: string[];
+    howItWorksHeading: string;
+    steps: Array<{ step: string; title: string; desc: string }>;
+    testimonialQuote: string;
+    testimonialAttribution: string;
+    finalHeading: string;
+    finalDescriptionPrefix: string;
+    finalDescriptionSuffix: string;
+    limitNotice: string;
+    meta?: {
+      title: string;
+      description: string;
+    };
+    hero?: {
+      badge: string;
+      headline: string;
+      subheadline: string;
+      description: string;
+      cta: string;
+      shippingNote: string;
+    };
+    problem?: {
+      headline: string;
+      subheadline: string;
+      points: string[];
+    };
+  };
 
   // City Page Translations (for location-based SEO pages)
   cityPage?: {

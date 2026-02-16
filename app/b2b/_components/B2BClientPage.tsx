@@ -38,7 +38,7 @@ interface TabConfig {
 }
 
 export default function B2BClientPage() {
-  const { locale } = useTranslation();
+  const { t, locale } = useTranslation();
   const [activeTab, setActiveTab] = useState<VerticalTab>('retail');
 
   const tabs: TabConfig[] = [
@@ -154,11 +154,10 @@ export default function B2BClientPage() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${
-                activeTab === tab.id
-                  ? 'bg-blue-600 text-white shadow-lg transform scale-105'
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-              }`}
+              className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${activeTab === tab.id
+                ? 'bg-blue-600 text-white shadow-lg transform scale-105'
+                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                }`}
             >
               {tab.icon}
               {tab.label}
@@ -210,16 +209,16 @@ export default function B2BClientPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="mailto:partners@purrify.ca"
+              href={`mailto:${t.contact.partnersEmail}`}
               className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors"
             >
-              partners@purrify.ca
+              {t.contact.partnersEmail}
             </a>
             <a
-              href="tel:+1234567890"
+              href={`tel:${t.contact.phone}`}
               className="inline-flex items-center justify-center gap-2 border border-blue-600 text-blue-600 dark:text-blue-400 bg-white dark:bg-gray-800 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
             >
-              1-800-PURRIFY
+              {t.contact.phone}
             </a>
           </div>
         </div>

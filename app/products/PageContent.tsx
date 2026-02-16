@@ -783,10 +783,10 @@ export default function ProductsPage() {
               <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/activated-carbon-vs-baking-soda-deodorizers`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-brand-light dark:border-gray-700 hover:shadow-xl transition-shadow">
                   <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-brand-purple transition-colors">
-                    Carbon vs Baking Soda
+                    {t.nav.carbonVsBakingSoda}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    See the science behind why activated carbon outperforms baking soda for litter box odor control.
+                    {t.nav.carbonVsBakingSodaDesc}
                   </p>
                 </div>
               </Link>

@@ -12,134 +12,39 @@ import { trackTikTokClientEvent } from '@/lib/tiktok-tracking';
 
 type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
 
-const TRY_FREE_UI_COPY: Record<SupportedLocale, {
-  urgencyBadge: string;
-  shippingSuffix: string;
-  valueLabel: string;
-  freeLabel: string;
-  shippingOnlyLabel: string;
-  guaranteeLabel: string;
-  productImageAlt: string;
-  freeBadgeLabel: string;
-  benefitsHeading: string;
-  benefits: string[];
-  socialProofLabels: string[];
-  howItWorksHeading: string;
-  steps: Array<{ step: string; title: string; desc: string }>;
-  testimonialQuote: string;
-  testimonialAttribution: string;
-  finalHeading: string;
-  finalDescriptionPrefix: string;
-  finalDescriptionSuffix: string;
-  limitNotice: string;
-}> = {
-  en: {
-    urgencyBadge: 'Limited Time Offer',
-    shippingSuffix: 'shipping.',
-    valueLabel: '$9.99 value',
-    freeLabel: 'FREE',
-    shippingOnlyLabel: 'Shipping only',
-    guaranteeLabel: '30-day money-back guarantee',
-    productImageAlt: 'Purrify 12g Trial Size - Free Sample',
-    freeBadgeLabel: 'FREE!',
-    benefitsHeading: 'Why Cat Owners Love Purrify',
-    benefits: ['Eliminates odor instantly', '100% natural coconut carbon', 'Fast Canada-wide shipping', '30-day money-back guarantee'],
-    socialProofLabels: ['upgrade to full size', 'star rating', 'weeks of freshness'],
-    howItWorksHeading: 'How It Works',
-    steps: [
-      { step: '1', title: 'Sprinkle', desc: 'Add to any litter your cat already uses' },
-      { step: '2', title: 'Trap', desc: 'Activated carbon traps ammonia molecules' },
-      { step: '3', title: 'Enjoy', desc: 'Fresh-smelling home for 2-3 weeks' },
-    ],
-    testimonialQuote: 'I was skeptical at first, but after trying the free sample, I immediately ordered the full size. My litter box area has never smelled better!',
-    testimonialAttribution: '- Sarah M., Toronto',
-    finalHeading: 'Ready to eliminate litter box odor?',
-    finalDescriptionPrefix: 'Get your free trial today - just pay',
-    finalDescriptionSuffix: 'shipping',
-    limitNotice: 'Limit 1 per customer | Ships within 24 hours',
-  },
-  fr: {
-    urgencyBadge: 'Offre a duree limitee',
-    shippingSuffix: 'de livraison.',
-    valueLabel: 'Valeur 9,99 $',
-    freeLabel: 'GRATUIT',
-    shippingOnlyLabel: 'Livraison seulement',
-    guaranteeLabel: 'Garantie de remboursement 30 jours',
-    productImageAlt: 'Purrify format essai 12g - echantillon gratuit',
-    freeBadgeLabel: 'GRATUIT !',
-    benefitsHeading: 'Pourquoi les proprietaires de chats aiment Purrify',
-    benefits: ['Elimine les odeurs instantanement', 'Charbon de coco 100% naturel', 'Livraison rapide partout au Canada', 'Garantie de remboursement 30 jours'],
-    socialProofLabels: ['passent au format complet', 'note moyenne', 'semaines de fraicheur'],
-    howItWorksHeading: 'Comment ca marche',
-    steps: [
-      { step: '1', title: 'Saupoudrer', desc: 'Ajoutez sur la litiere que votre chat utilise deja' },
-      { step: '2', title: 'Pieger', desc: 'Le charbon actif piege les molecules dammoniac' },
-      { step: '3', title: 'Profiter', desc: 'Maison fraiche pendant 2 a 3 semaines' },
-    ],
-    testimonialQuote: 'Jetais sceptique au debut, mais apres lessai gratuit, jai commande le format complet. La zone litiere ne sent plus !',
-    testimonialAttribution: '- Sarah M., Toronto',
-    finalHeading: 'Pret a eliminer les odeurs de litiere ?',
-    finalDescriptionPrefix: 'Obtenez votre essai gratuit aujourdhui - payez seulement',
-    finalDescriptionSuffix: 'de livraison',
-    limitNotice: 'Limite 1 par client | Expedie sous 24 heures',
-  },
-  zh: {
-    urgencyBadge: '限时优惠',
-    shippingSuffix: '运费。',
-    valueLabel: '价值 $9.99',
-    freeLabel: '免费',
-    shippingOnlyLabel: '仅付运费',
-    guaranteeLabel: '30天退款保证',
-    productImageAlt: 'Purrify 12g 试用装 - 免费样品',
-    freeBadgeLabel: '免费！',
-    benefitsHeading: '为什么猫主人喜欢 Purrify',
-    benefits: ['即时减少异味', '100% 天然椰壳活性炭', '加拿大快速配送', '30天退款保证'],
-    socialProofLabels: ['升级到正式装', '星级评分', '周清新体验'],
-    howItWorksHeading: '使用方法',
-    steps: [
-      { step: '1', title: '撒入', desc: '添加到你正在使用的任意猫砂中' },
-      { step: '2', title: '捕捉', desc: '活性炭吸附氨分子' },
-      { step: '3', title: '享受', desc: '2-3 周持续清新' },
-    ],
-    testimonialQuote: '我一开始不太相信，但试用后立刻下单正式装。猫砂区从没这么清新过！',
-    testimonialAttribution: '- Sarah M., Toronto',
-    finalHeading: '准备消除猫砂异味了吗？',
-    finalDescriptionPrefix: '立即领取免费试用，仅需支付',
-    finalDescriptionSuffix: '运费',
-    limitNotice: '每位客户限领 1 份 | 24 小时内发货',
-  },
-  es: {
-    urgencyBadge: 'Oferta por tiempo limitado',
-    shippingSuffix: 'de envio.',
-    valueLabel: 'Valor de $9.99',
-    freeLabel: 'GRATIS',
-    shippingOnlyLabel: 'Solo envio',
-    guaranteeLabel: 'Garantia de devolucion de 30 dias',
-    productImageAlt: 'Purrify tamano de prueba 12g - muestra gratis',
-    freeBadgeLabel: 'GRATIS!',
-    benefitsHeading: 'Por que los duenos de gatos aman Purrify',
-    benefits: ['Elimina olores al instante', 'Carbon de coco 100% natural', 'Envio rapido en Canada', 'Garantia de devolucion de 30 dias'],
-    socialProofLabels: ['actualizan al tamano completo', 'calificacion', 'semanas de frescura'],
-    howItWorksHeading: 'Como Funciona',
-    steps: [
-      { step: '1', title: 'Espolvorea', desc: 'Agrega a cualquier arena que tu gato ya usa' },
-      { step: '2', title: 'Atrapa', desc: 'El carbon activado atrapa moleculas de amoniaco' },
-      { step: '3', title: 'Disfruta', desc: 'Hogar fresco por 2-3 semanas' },
-    ],
-    testimonialQuote: 'Al principio era esceptica, pero despues de la muestra gratis pedi el tamano completo. El area de la caja de arena nunca habia olido tan bien.',
-    testimonialAttribution: '- Sarah M., Toronto',
-    finalHeading: 'Listo para eliminar el olor de la caja de arena?',
-    finalDescriptionPrefix: 'Obtén tu prueba gratis hoy, solo paga',
-    finalDescriptionSuffix: 'de envio',
-    limitNotice: 'Limite 1 por cliente | Envio en 24 horas',
-  },
-};
+
 
 export function TryFreeClient() {
-  const { locale } = useTranslation();
+  const { t, locale } = useTranslation();
   const viewTracked = useRef(false);
 
-  const copy = TRY_FREE_UI_COPY[locale as SupportedLocale] || TRY_FREE_UI_COPY.en;
+  // Fallback to empty object if translation is missing to prevent crash
+  // In a real app we might want to ensure types guarantee this exists
+  const copy = t.tryFreePage || {
+    urgencyBadge: '',
+    shippingSuffix: '',
+    valueLabel: '',
+    freeLabel: '',
+    shippingOnlyLabel: '',
+    guaranteeLabel: '',
+    productImageAlt: '',
+    freeBadgeLabel: '',
+    benefitsHeading: '',
+    benefits: [],
+    socialProofLabels: [],
+    howItWorksHeading: '',
+    steps: [],
+    testimonialQuote: '',
+    testimonialAttribution: '',
+    finalHeading: '',
+    finalDescriptionPrefix: '',
+    finalDescriptionSuffix: '',
+    limitNotice: '',
+    title: '',
+    description: '',
+    cta: '',
+    claimCta: ''
+  };
 
   const productKey = 'trial';
   const productName = 'Purrify Trial Size (12g)';
@@ -210,11 +115,11 @@ export function TryFreeClient() {
               </div>
 
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-50 mb-4 leading-tight">
-                Try Purrify FREE
+                {copy.title}
               </h1>
 
               <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6">
-                Discover why cat owners are switching to activated carbon odor control. Just pay
+                {copy.description}
                 <strong className="text-gray-900 dark:text-gray-100"> {trialPrice} {copy.shippingSuffix}</strong>
               </p>
 
@@ -238,7 +143,7 @@ export function TryFreeClient() {
                     onClick={handleGetTrial}
                   >
                     <a href={checkoutUrl}>
-                      Get My Free Trial
+                      {copy.cta}
                     </a>
                   </Button>
 
@@ -353,7 +258,7 @@ export function TryFreeClient() {
               onClick={handleGetTrial}
             >
               <a href={checkoutUrl}>
-                Claim My Free Trial
+                {copy.claimCta}
               </a>
             </Button>
             <p className="mt-4 text-sm opacity-80">
