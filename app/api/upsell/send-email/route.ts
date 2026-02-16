@@ -14,7 +14,7 @@ interface SendUpsellEmailRequest {
   sessionId?: string;
 }
 
-interface SendUpsellEmailResponse {
+interface _SendUpsellEmailResponse {
   success: boolean;
   message?: string;
   error?: string;

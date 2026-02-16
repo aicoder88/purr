@@ -2,6 +2,7 @@ import { requireAuth } from '@/lib/auth/session';
 import prismaClient from '@/lib/prisma';
 import { LeadStatus } from '@/generated/client/client';
 import * as Sentry from '@sentry/nextjs';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 interface LeadsQueryParams {
   page?: string;
@@ -16,6 +17,18 @@ interface LeadsQueryParams {
 }
 
 export async function GET(req: Request) {
+  // Apply rate limiting (generous: 100 req/min for reads)
+  const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'generous');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   const { authorized, session } = await requireAuth();
 
   if (!authorized || !session) {
@@ -38,8 +51,8 @@ export async function GET(req: Request) {
       sortOrder = 'desc'
     } = Object.fromEntries(url.searchParams) as LeadsQueryParams;
 
-    const pageNum = parseInt(page, 10);
-    const limitNum = Math.min(parseInt(limit, 10), 100);
+    const pageNum = Math.max(1, parseInt(page, 10) || 1);
+    const limitNum = Math.min(100, Math.max(1, parseInt(limit, 10) || 20));
     const skip = (pageNum - 1) * limitNum;
 
     // Build where clause
@@ -122,15 +135,27 @@ export async function GET(req: Request) {
         totalPages: Math.ceil(totalCount / limitNum)
       },
       statusCounts: statusCountsObj
-    }, { status: 200 });
+    }, { status: 200, headers: rateLimitHeaders });
   } catch (error) {
     Sentry.captureException(error);
     logger.error('Leads API error', { error: error instanceof Error ? error.message : 'Unknown error' });
-    return Response.json({ error: 'Internal server error' }, { status: 500 });
+    return Response.json({ error: 'Internal server error' }, { status: 500, headers: rateLimitHeaders });
   }
 }
 
 export async function POST(req: Request) {
+  // Apply rate limiting (standard: 20 req/min for writes)
+  const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   const { authorized, session } = await requireAuth();
 
   if (!authorized || !session) {
@@ -194,10 +219,10 @@ export async function POST(req: Request) {
 
     logger.info('Lead created', { leadId: lead.id, companyName: lead.companyName });
 
-    return Response.json({ success: true, lead }, { status: 201 });
+    return Response.json({ success: true, lead }, { status: 201, headers: rateLimitHeaders });
   } catch (error) {
     Sentry.captureException(error);
     logger.error('Leads API error', { error: error instanceof Error ? error.message : 'Unknown error' });
-    return Response.json({ error: 'Internal server error' }, { status: 500 });
+    return Response.json({ error: 'Internal server error' }, { status: 500, headers: rateLimitHeaders });
   }
 }

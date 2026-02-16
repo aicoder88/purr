@@ -2,9 +2,22 @@ import { requireAuth } from '@/lib/auth/session';
 import { CategoryManager } from '@/lib/blog/category-manager';
 import { AuditLogger } from '@/lib/blog/audit-logger';
 import { sanitizeText } from '@/lib/security/sanitize';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 import type { Category } from '@/types/blog';
 
 export async function GET(request: Request) {
+  // Apply rate limiting (generous: 100 req/min for reads)
+  const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'generous');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   const { authorized, session } = await requireAuth();
 
   if (!authorized || !session) {
@@ -19,20 +32,32 @@ export async function GET(request: Request) {
     
     if (withStats) {
       const categories = await categoryManager.getCategoriesWithStats();
-      return Response.json(categories);
+      return Response.json(categories, { headers: rateLimitHeaders });
     } else {
       const categories = await categoryManager.getCategoriesWithStats();
-      return Response.json(categories);
+      return Response.json(categories, { headers: rateLimitHeaders });
     }
   } catch (error) {
     console.error('Category management error:', error);
     return Response.json({
       error: error instanceof Error ? error.message : 'Internal server error'
-    }, { status: 500 });
+    }, { status: 500, headers: rateLimitHeaders });
   }
 }
 
 export async function POST(request: Request) {
+  // Apply rate limiting (standard: 20 req/min for writes)
+  const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   const { authorized, session } = await requireAuth();
 
   if (!authorized || !session) {
@@ -61,16 +86,28 @@ export async function POST(request: Request) {
       details: { name: category.name }
     });
 
-    return Response.json({ success: true, category }, { status: 201 });
+    return Response.json({ success: true, category }, { status: 201, headers: rateLimitHeaders });
   } catch (error) {
     console.error('Category management error:', error);
     return Response.json({
       error: error instanceof Error ? error.message : 'Internal server error'
-    }, { status: 500 });
+    }, { status: 500, headers: rateLimitHeaders });
   }
 }
 
 export async function PUT(request: Request) {
+  // Apply rate limiting (standard: 20 req/min for writes)
+  const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   const { authorized, session } = await requireAuth();
 
   if (!authorized || !session) {
@@ -99,16 +136,28 @@ export async function PUT(request: Request) {
       details: updates
     });
 
-    return Response.json({ success: true });
+    return Response.json({ success: true }, { headers: rateLimitHeaders });
   } catch (error) {
     console.error('Category management error:', error);
     return Response.json({
       error: error instanceof Error ? error.message : 'Internal server error'
-    }, { status: 500 });
+    }, { status: 500, headers: rateLimitHeaders });
   }
 }
 
 export async function DELETE(request: Request) {
+  // Apply rate limiting (standard: 20 req/min for writes)
+  const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   const { authorized, session } = await requireAuth();
 
   if (!authorized || !session) {
@@ -138,11 +187,11 @@ export async function DELETE(request: Request) {
       details: { reassignTo: reassignTo || undefined }
     });
 
-    return Response.json({ success: true });
+    return Response.json({ success: true }, { headers: rateLimitHeaders });
   } catch (error) {
     console.error('Category management error:', error);
     return Response.json({
       error: error instanceof Error ? error.message : 'Internal server error'
-    }, { status: 500 });
+    }, { status: 500, headers: rateLimitHeaders });
   }
 }

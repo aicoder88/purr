@@ -1,7 +1,8 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { translations } from "@/translations";
 import type { Locale } from "@/i18n/config";
-import { Home, Wind, Users, Bomb, ShieldAlert, Ghost, ArrowDown } from "lucide-react";
+import { Home, Users, Bomb, ShieldAlert } from "lucide-react";
 
 interface AgitationSectionProps {
   locale?: Locale;
@@ -32,9 +33,11 @@ export function AgitationSection({ locale = 'en' }: AgitationSectionProps) {
           <div className="relative order-2 lg:order-1">
             <div className="absolute inset-0 bg-gradient-to-tr from-purple-100 to-orange-100 dark:from-purple-900/20 dark:to-orange-900/20 rounded-[2rem] transform -rotate-2 scale-105 blur-2xl" />
             <div className="relative bg-white dark:bg-gray-900 rounded-[2rem] shadow-2xl overflow-hidden border border-gray-100 dark:border-gray-800">
-              <img
+              <Image
                 src="/images/embarrassed-host.png"
                 alt={ui.imageAlt}
+                width={800}
+                height={600}
                 className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-8">
@@ -66,7 +69,6 @@ export function AgitationSection({ locale = 'en' }: AgitationSectionProps) {
 
             <div className="space-y-8 relative pl-8 border-l-2 border-dashed border-gray-200 dark:border-gray-800 ml-4">
               {timelineItems.map((item, index) => {
-                const Icon = item.icon;
                 return (
                   <div key={index} className="relative group">
                     <div className={`absolute -left-[41px] top-0 w-6 h-6 rounded-full border-4 border-white dark:border-gray-950 ${index === timelineItems.length - 1 ? 'bg-red-500' : 'bg-gray-300 dark:bg-gray-700 group-hover:bg-electric-indigo'

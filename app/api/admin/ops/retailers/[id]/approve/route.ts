@@ -2,12 +2,25 @@ import { auth } from '@/auth';
 import prisma from '@/lib/prisma';
 import { Resend } from 'resend';
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 interface RouteParams {
   params: Promise<{ id: string }>;
 }
 
 export async function POST(req: Request, { params }: RouteParams) {
+  // Apply rate limiting (standard: 20 req/min for writes)
+  const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   // Check authentication
   const session = await auth();
   if (!session?.user || (session.user as { role?: string }).role !== 'admin') {
@@ -114,9 +127,9 @@ export async function POST(req: Request, { params }: RouteParams) {
         email: updatedRetailer.email,
         status: updatedRetailer.status,
       },
-    }, { status: 200 });
+    }, { status: 200, headers: rateLimitHeaders });
   } catch (error) {
     console.error('Failed to approve retailer:', error);
-    return Response.json({ error: 'Failed to approve retailer' }, { status: 500 });
+    return Response.json({ error: 'Failed to approve retailer' }, { status: 500, headers: rateLimitHeaders });
   }
 }

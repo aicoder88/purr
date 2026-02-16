@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 import { HeaderWithSuspense } from './header-suspense';
 import { Footer } from './footer';
+import { SkipNav } from '../ui/skip-nav';
 import dynamic from 'next/dynamic';
 
 interface AppLayoutProps {
@@ -20,11 +21,12 @@ export function AppLayout({ children }: AppLayoutProps) {
 
     return (
         <div className="flex flex-col min-h-screen">
+            <SkipNav />
             <PawCursor />
             <ScrollToTopButton />
             <MobileFloatingCTA />
             {!hideHeader && <HeaderWithSuspense />}
-            <main className="flex-grow">{children}</main>
+            <main id="main-content" className="flex-grow">{children}</main>
             {!hideFooter && <Footer />}
         </div>
     );

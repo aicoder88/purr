@@ -1,23 +1,28 @@
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
+import {
+  RATE_LIMIT_GENEROUS,
+  RATE_LIMIT_STANDARD,
+  RATE_LIMIT_SENSITIVE,
+} from '@/lib/config/ui-constants';
 
 // Rate limit configurations for different route types
 const RATE_LIMIT_CONFIG = {
-  // Sensitive routes: contact, checkout - 5 req/min
+  // Sensitive routes: contact, checkout
   sensitive: {
-    limit: 5,
+    limit: RATE_LIMIT_SENSITIVE,
     windowSeconds: 60,
     blockDurationSeconds: 15 * 60, // 15 min block if exceeded
   },
-  // Standard routes: affiliate, admin - 20 req/min
+  // Standard routes: affiliate, admin
   standard: {
-    limit: 20,
+    limit: RATE_LIMIT_STANDARD,
     windowSeconds: 60,
     blockDurationSeconds: 5 * 60, // 5 min block if exceeded
   },
-  // Generous routes: public read APIs - 100 req/min
+  // Generous routes: public read APIs
   generous: {
-    limit: 100,
+    limit: RATE_LIMIT_GENEROUS,
     windowSeconds: 60,
     blockDurationSeconds: 60, // 1 min block if exceeded
   },
@@ -49,6 +54,9 @@ if (typeof setInterval !== 'undefined') {
     }
   }, 5 * 60 * 1000);
 }
+
+// Track Redis availability for fail-closed logic
+let redisAvailable = true;
 
 // Check if Upstash Redis is configured
 function isRedisConfigured(): boolean {
@@ -106,6 +114,7 @@ export async function checkRateLimit(
   if (ratelimit) {
     try {
       const { success, limit, remaining, reset } = await ratelimit.limit(identifier);
+      redisAvailable = true;
       return {
         success,
         limit,
@@ -114,12 +123,26 @@ export async function checkRateLimit(
         retryAfter: success ? undefined : Math.ceil((reset - Date.now()) / 1000),
       };
     } catch (error) {
-      console.error('Redis rate limit error, falling back to in-memory:', error);
-      // Fall through to in-memory fallback
+      console.error('Redis rate limit error:', error);
+      redisAvailable = false;
+      // Fall through to fail-closed or in-memory fallback
     }
+  } else {
+    redisAvailable = false;
   }
 
-  // In-memory fallback
+  // Fail-closed in production if Redis is unavailable
+  if (process.env.NODE_ENV === 'production' && !redisAvailable) {
+    return {
+      success: false,
+      limit: 0,
+      remaining: 0,
+      reset: Date.now() + 60000,
+      retryAfter: 60,
+    };
+  }
+
+  // In-memory fallback (only for non-production or if Redis was never configured)
   return checkInMemoryRateLimit(key, config);
 }
 

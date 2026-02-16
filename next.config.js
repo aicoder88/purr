@@ -14,7 +14,7 @@ const { images, OPTIMIZE_PACKAGE_IMPORTS } = require("./config/images");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  productionBrowserSourceMaps: true,
+  productionBrowserSourceMaps: false,
   output: "standalone",
   // outputFileTracingRoot removed to avoid Vercel deployment issues
   // complex excludes removed to rely on Next.js defaults

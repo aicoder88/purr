@@ -108,7 +108,6 @@ export function BreadcrumbsCompact({ customBreadcrumbs, className = '' }: Breadc
 
   // On mobile, show only parent and current page
   const parent = breadcrumbs[breadcrumbs.length - 2];
-  const current = breadcrumbs[breadcrumbs.length - 1];
 
   return (
     <nav

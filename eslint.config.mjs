@@ -36,15 +36,22 @@ const eslintConfig = [
     rules: {
       // Disable rules that are too strict for now
       'react/no-unescaped-entities': 'off',
-      '@typescript-eslint/no-unused-vars': 'warn',
-      'react-hooks/exhaustive-deps': 'warn',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+        },
+      ],
+      'react-hooks/exhaustive-deps': 'error',
       'react-hooks/set-state-in-effect': 'off',
       'react-hooks/error-boundaries': 'off',
       'react-hooks/immutability': 'off',
       'react-hooks/preserve-manual-memoization': 'off',
       'react-hooks/ref-access-during-render': 'off',
       'react-hooks/refs': 'off',
-      'prefer-const': 'warn',
+      'prefer-const': 'error',
       '@typescript-eslint/no-require-imports': 'off',
 
       // Performance-related rules

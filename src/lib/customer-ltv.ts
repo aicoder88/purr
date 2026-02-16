@@ -14,7 +14,7 @@ function requirePrisma() {
   return prisma;
 }
 
-interface CustomerOrderData {
+interface _CustomerOrderData {
   email: string;
   totalAmount: number;
   createdAt: Date;

@@ -1,12 +1,8 @@
 'use client';
-
-import { Building2, Star, DollarSign, Clock, CheckCircle, Package, Phone, Mail } from 'lucide-react';
-import Link from 'next/link';
-
+import { Building2, Star,   CheckCircle,  Phone, Mail } from 'lucide-react';
 interface HospitalityVerticalProps {
   locale: string;
 }
-
 export function HospitalityVertical({ locale }: HospitalityVerticalProps) {
   const t = {
     hero: {
@@ -132,7 +128,6 @@ export function HospitalityVertical({ locale }: HospitalityVerticalProps) {
           : 'Questions About the Hospitality Program?',
     },
   };
-
   return (
     <div className="space-y-16">
       {/* Hero */}
@@ -147,7 +142,6 @@ export function HospitalityVertical({ locale }: HospitalityVerticalProps) {
         <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
           {t.hero.subtitle}
         </p>
-
         {/* Stats */}
         <div className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-6 mb-8 max-w-3xl mx-auto">
           <div className="grid grid-cols-3 gap-6 text-center">
@@ -167,7 +161,6 @@ export function HospitalityVertical({ locale }: HospitalityVerticalProps) {
           </div>
         </div>
       </section>
-
       {/* Challenges */}
       <section>
         <h3 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-4 text-center">
@@ -191,7 +184,6 @@ export function HospitalityVertical({ locale }: HospitalityVerticalProps) {
           ))}
         </div>
       </section>
-
       {/* Solution */}
       <section className="bg-green-50 dark:bg-green-900/10 rounded-2xl p-8">
         <h3 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-4 text-center">
@@ -216,7 +208,6 @@ export function HospitalityVertical({ locale }: HospitalityVerticalProps) {
           ))}
         </div>
       </section>
-
       {/* Pricing */}
       <section>
         <h3 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
@@ -253,7 +244,6 @@ export function HospitalityVertical({ locale }: HospitalityVerticalProps) {
           ))}
         </div>
       </section>
-
       {/* Contact */}
       <section className="text-center bg-gray-50 dark:bg-gray-800 rounded-2xl p-8">
         <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-4">

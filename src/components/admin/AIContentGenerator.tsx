@@ -14,8 +14,27 @@ interface AIGenerationConfig {
   imageCount: number;
 }
 
+interface AIPreview {
+  title: string;
+  content: string;
+  excerpt: string;
+}
+
+interface AITemplate {
+  id: string;
+  name: string;
+  description: string;
+}
+
+interface AIHistoryRecord {
+  id: string;
+  config: AIGenerationConfig;
+  result: AIPreview;
+  timestamp: string | Date;
+}
+
 interface AIContentGeneratorProps {
-  onGenerate: (content: { title: string; content: string; excerpt: string }) => void;
+  onGenerate: (content: AIPreview) => void;
   onClose: () => void;
 }
 
@@ -32,10 +51,10 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
   });
   const [keywordInput, setKeywordInput] = useState('');
   const [generating, setGenerating] = useState(false);
-  const [preview, setPreview] = useState<any>(null);
-  const [templates, setTemplates] = useState<any[]>([]);
+  const [preview, setPreview] = useState<AIPreview | null>(null);
+  const [templates, setTemplates] = useState<AITemplate[]>([]);
   const [showHistory, setShowHistory] = useState(false);
-  const [history, setHistory] = useState<any[]>([]);
+  const [history, setHistory] = useState<AIHistoryRecord[]>([]);
 
   useEffect(() => {
     loadTemplates();
@@ -48,7 +67,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
         const data = await response.json();
         setTemplates(data);
       }
-    } catch (error) {
+    } catch {
       // Silently fail - templates are optional
     }
   };
@@ -60,7 +79,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
         const data = await response.json();
         setHistory(data);
       }
-    } catch (error) {
+    } catch {
       // Silently fail - history is optional
     }
   };
@@ -88,7 +107,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
       const result = await response.json();
       setPreview(result);
       toast.success('Content generated successfully!');
-    } catch (error) {
+    } catch {
       toast.error('Failed to generate content');
     } finally {
       setGenerating(false);

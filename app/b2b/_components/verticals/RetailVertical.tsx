@@ -1,7 +1,4 @@
 'use client';
-
-import Link from 'next/link';
-import { useTranslation } from '@/lib/translation-context';
 import {
   TrendingUp,
   Users,
@@ -14,19 +11,16 @@ import {
   FileText,
   CheckCircle,
 } from 'lucide-react';
-import { CONTACT_INFO, PHONE_MESSAGING, SITE_NAME } from '@/lib/constants';
+import { CONTACT_INFO, PHONE_MESSAGING } from '@/lib/constants';
 import { formatProductPrice } from '@/lib/pricing';
-
 interface RetailVerticalProps {
   locale: string;
 }
-
 export function RetailVertical({ locale }: RetailVerticalProps) {
   const partnerEmail = 'partners@purrify.ca';
   const trialPrice = formatProductPrice('trial', locale);
   const standardPrice = formatProductPrice('standard', locale);
   const familyPrice = formatProductPrice('family', locale);
-
   const benefits = [
     {
       icon: <TrendingUp className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
@@ -77,7 +71,6 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
           : 'Net 30 payment terms for established partners with consignment available for new retailers.',
     },
   ];
-
   const pricingTiers = [
     {
       name: locale === 'fr' ? 'Nouveau Détaillant' : 'New Retailer',
@@ -118,7 +111,6 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
       highlighted: false,
     },
   ];
-
   const successStories = [
     {
       store: "Chico Boutique d'animaux",
@@ -151,7 +143,6 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
       avatar: 'UPS',
     },
   ];
-
   return (
     <div className="space-y-16">
       {/* Hero Stats */}
@@ -177,7 +168,6 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
           </div>
         </div>
       </div>
-
       {/* Partnership Benefits */}
       <section>
         <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
@@ -200,7 +190,6 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
           ))}
         </div>
       </section>
-
       {/* Wholesale Pricing */}
       <section id="wholesale-pricing">
         <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
@@ -254,7 +243,6 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
           ))}
         </div>
       </section>
-
       {/* Success Stories */}
       <section>
         <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
@@ -296,7 +284,6 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
           ))}
         </div>
       </section>
-
       {/* Product Information */}
       <section className="bg-gray-50 dark:bg-gray-800 rounded-lg p-8">
         <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
@@ -350,7 +337,6 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
           </div>
         </div>
       </section>
-
       {/* Contact */}
       <section className="text-center bg-gray-50 dark:bg-gray-800 rounded-lg p-8">
         <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-6">

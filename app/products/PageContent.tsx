@@ -8,7 +8,7 @@ import { useTranslation } from '@/lib/translation-context';
 import { useCurrency } from '@/lib/currency-context';
 import {
   CheckCircle,
-  Package,
+  _Package,
   ChevronRight,
   Home,
   Zap,
@@ -117,7 +117,7 @@ export default function ProductsPage() {
     },
   };
 
-  const products = t.productComparison.products.map((product) => {
+  const _products = t.productComparison.products.map((product) => {
     const priceKey = productIdAlias[product.id] ?? 'regular';
     const displayName = productDisplayNames[product.id] || { name: product.name, nameFr: product.name, subtitle: product.subtitle, subtitleFr: product.subtitle };
     const imageData = productImages[product.id] || { src: '/optimized/60g-transparent.webp', size: 'md' as const };
@@ -140,7 +140,7 @@ export default function ProductsPage() {
     };
   });
 
-  const comparisonFeatures = t.productComparison.comparisonFeatures.map((item, index) => ({
+  const _comparisonFeatures = t.productComparison.comparisonFeatures.map((item, index) => ({
     feature: item.feature,
     trial: index < 4,
     regular: true,
@@ -227,7 +227,7 @@ export default function ProductsPage() {
     : "★ 4.8 Rating | FREE Trial Available | Shop Purrify activated carbon litter additives. Eliminates odors instantly. Ships to USA & Canada. 30-day guarantee.";
 
   // Enhanced SEO with breadcrumbs
-  const { nextSeoProps, breadcrumb } = useEnhancedSEO({
+  const { _nextSeoProps, breadcrumb } = useEnhancedSEO({
     path: '/products',
     title: pageTitle,
     description: pageDescription,

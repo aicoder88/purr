@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
-import { CONTACT_INFO, PHONE_MESSAGING, SITE_NAME } from '@/lib/constants';
+import { CONTACT_INFO,  SITE_NAME } from '@/lib/constants';
 import B2BClientPage from './_components/B2BClientPage';
-
 export const metadata: Metadata = {
   title: `Purrify B2B Wholesale | Retail Partnerships`,
   description: 'Become a Purrify retail partner. Wholesale program for pet stores and distributors across Canada. Attractive margins and marketing support.',
@@ -45,7 +44,6 @@ export const metadata: Metadata = {
     'last-modified': '2026-01-08',
   },
 };
-
 // Organization schema for structured data
 const organizationSchema = {
   '@context': 'https://schema.org',
@@ -66,7 +64,6 @@ const organizationSchema = {
     email: 'partners@purrify.ca',
   },
 };
-
 export default function B2BPage() {
   return (
     <>

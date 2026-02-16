@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import AdminLayout from '@/components/admin/AdminLayout';
 import type { Tag } from '@/types/blog';
 import { ArrowLeft, Plus, Edit2, Trash2, Save, X, Tag as TagIcon } from 'lucide-react';
@@ -15,7 +14,6 @@ async function fetchTags() {
 }
 
 export default function TagsPage() {
-  const router = useRouter();
   const [tags, setTags] = useState<Tag[]>([]);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editForm, setEditForm] = useState<Partial<Tag>>({});

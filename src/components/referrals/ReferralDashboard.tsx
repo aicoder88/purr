@@ -91,7 +91,7 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
       } else {
         setError(data.error || 'Failed to load referral data');
       }
-    } catch (err) {
+    } catch {
       setError('Network error loading referral data');
     } finally {
       setLoading(false);

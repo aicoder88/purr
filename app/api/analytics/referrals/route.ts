@@ -279,7 +279,7 @@ function getMetricValue(data: ReferralAnalytics, metric: string): number | null 
 }
 
 // Helper function for A/B testing insights
-function calculateTestSignificance(
+function _calculateTestSignificance(
   controlConversions: number,
   controlTotal: number,
   testConversions: number,

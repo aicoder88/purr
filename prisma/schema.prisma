@@ -815,12 +815,17 @@ model AffiliateApplication {
   reviewedAt      DateTime?
   reviewedBy      String?                     // Admin user ID
   rejectionReason String?
+  // Email verification fields
+  emailVerified   Boolean                     @default(false)
+  verifyToken     String?                     @unique
+  verifyExpiresAt DateTime?
   createdAt       DateTime                    @default(now())
   updatedAt       DateTime                    @updatedAt
 
   @@index([status])
   @@index([createdAt])
   @@index([email])
+  @@index([verifyToken])
   @@map("affiliate_applications")
 }
 

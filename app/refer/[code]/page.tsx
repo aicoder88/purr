@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { SITE_NAME } from '@/lib/constants';
 import { formatProductPrice } from '@/lib/pricing';
 import { ReferralClient } from './ReferralClient';

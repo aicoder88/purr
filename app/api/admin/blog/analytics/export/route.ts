@@ -1,7 +1,20 @@
 import { requireAuth } from '@/lib/auth/session';
 import { AnalyticsService } from '@/lib/blog/analytics-service';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 export async function GET(request: Request) {
+  // Apply rate limiting (generous: 100 req/min for reads)
+  const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'generous');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   const { authorized } = await requireAuth();
 
   if (!authorized) {
@@ -49,10 +62,11 @@ export async function GET(request: Request) {
       headers: {
         'Content-Type': contentType,
         'Content-Disposition': `attachment; filename="${filename}"`,
+        ...rateLimitHeaders,
       },
     });
   } catch (error) {
     console.error('Export API error:', error);
-    return Response.json({ error: 'Internal server error' }, { status: 500 });
+    return Response.json({ error: 'Internal server error' }, { status: 500, headers: rateLimitHeaders });
   }
 }

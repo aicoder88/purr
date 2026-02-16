@@ -67,7 +67,7 @@ export default function ScrollToTopButton() {
           mediaQueryList.removeEventListener('change', handleMotionPreferenceChange);
         }
       };
-    } catch (err) {
+    } catch {
       // Silently fail - will default to no motion preference
     }
   }, []);

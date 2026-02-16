@@ -6,6 +6,7 @@ import {
   type SheetRow
 } from '@/lib/google-sheets';
 import { LeadStatus } from '@/generated/client/client';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 function getPrisma() {
   if (!prisma) {
@@ -23,7 +24,19 @@ interface SyncResult {
   lastSyncedAt: string;
 }
 
-export async function POST() {
+export async function POST(req: Request) {
+  // Apply rate limiting (standard: 20 req/min for writes)
+  const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   // Auth check
   const { authorized } = await requireAuth();
   if (!authorized) {
@@ -115,11 +128,11 @@ export async function POST() {
       lastSyncedAt: new Date().toISOString()
     };
 
-    return Response.json(result, { status: 200 });
+    return Response.json(result, { status: 200, headers: rateLimitHeaders });
   } catch (error) {
     console.error('Error syncing leads:', error);
     return Response.json({ 
       error: error instanceof Error ? error.message : 'Failed to sync leads' 
-    }, { status: 500 });
+    }, { status: 500, headers: rateLimitHeaders });
   }
 }

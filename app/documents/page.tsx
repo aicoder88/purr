@@ -1,27 +1,21 @@
 'use client';
-
 import { useTranslation } from '@/lib/translation-context';
-import { FileText, Download, Search, Calendar } from 'lucide-react';
+import {  Download, Search, Calendar } from 'lucide-react';
 import { useState } from 'react';
 import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
 import { CONTACT_INFO } from '@/lib/constants';
-
 export default function DocumentsPage() {
   const { locale } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedLanguage, setSelectedLanguage] = useState('all');
-
   const pageTitle = locale === 'fr'
     ? 'Centre de Ressources Purrify - Matériel de Formation pour Détaillants'
     : 'Purrify Resource Center - Retail Training Materials';
-
   const pageDescription = locale === 'fr'
     ? 'Accédez aux ressources exclusives Purrify pour partenaires détaillants: guides de formation, matériel PDV, calculateurs de profit et ressources marketing pour augmenter vos ventes.'
     : 'Access exclusive Purrify resources for retail partners: training guides, POS materials, profit calculators, and marketing assets to boost your sales.';
-
   const canonicalUrl = `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}documents/`;
-
   // Use enhanced SEO hook
   const { nextSeoProps } = useEnhancedSEO({
     path: '/documents',
@@ -30,7 +24,6 @@ export default function DocumentsPage() {
     targetKeyword: 'purrify retail training',
     keywords: ['training materials', 'retail resources', 'staff guide', 'pos materials'],
   });
-
   // PDF documents only
   const resources = [
     {
@@ -67,32 +60,26 @@ export default function DocumentsPage() {
       icon: <Calendar className="h-6 w-6" />
     }
   ];
-
   const categories = [
     { id: 'all', label: locale === 'fr' ? 'Tous' : 'All' },
     { id: 'training', label: locale === 'fr' ? 'Formation' : 'Training' },
     { id: 'marketing', label: locale === 'fr' ? 'Marketing' : 'Marketing' },
     { id: 'seasonal', label: locale === 'fr' ? 'Saisonnier' : 'Seasonal' }
   ];
-
   const languages = [
     { id: 'all', label: locale === 'fr' ? 'Toutes les langues' : 'All Languages' },
     { id: 'english', label: 'English' },
     { id: 'french', label: 'Français' },
     { id: 'chinese', label: '中文' }
   ];
-
   const filteredResources = resources.filter(resource => {
     const matchesSearch = searchTerm === '' ||
       resource.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       resource.description.toLowerCase().includes(searchTerm.toLowerCase());
-
     const matchesCategory = selectedCategory === 'all' || resource.category === selectedCategory;
     const matchesLanguage = selectedLanguage === 'all' || resource.languages.includes(selectedLanguage);
-
     return matchesSearch && matchesCategory && matchesLanguage;
   });
-
   return (
     <>
       {/* SEO Meta Tags */}
@@ -117,7 +104,6 @@ export default function DocumentsPage() {
       
       {/* Last Modified */}
       <meta name="last-modified" content="2025-11-25T10:30:00Z" />
-
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
         {/* Header */}
         <div className="bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-700 dark:to-blue-600 text-white dark:text-gray-100 py-16">
@@ -132,7 +118,6 @@ export default function DocumentsPage() {
             </p>
           </div>
         </div>
-
         {/* Main Content */}
         <div className="container mx-auto px-4 py-12">
           {/* Search and Filters */}
@@ -149,7 +134,6 @@ export default function DocumentsPage() {
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                 />
               </div>
-
               {/* Category Filter */}
               <select
                 value={selectedCategory}
@@ -160,7 +144,6 @@ export default function DocumentsPage() {
                   <option key={cat.id} value={cat.id}>{cat.label}</option>
                 ))}
               </select>
-
               {/* Language Filter */}
               <select
                 value={selectedLanguage}
@@ -173,7 +156,6 @@ export default function DocumentsPage() {
               </select>
             </div>
           </div>
-
           {/* Resources Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredResources.map(resource => (
@@ -187,15 +169,12 @@ export default function DocumentsPage() {
                       {resource.category.charAt(0).toUpperCase() + resource.category.slice(1)}
                     </span>
                   </div>
-
                   <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">
                     {locale === 'fr' ? resource.titleFr : resource.title}
                   </h3>
-
                   <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
                     {locale === 'fr' ? resource.descriptionFr : resource.description}
                   </p>
-
                   <div className="flex flex-wrap gap-2 mb-4">
                     {resource.languages.map(lang => (
                       <span key={lang} className="px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded">
@@ -203,7 +182,6 @@ export default function DocumentsPage() {
                       </span>
                     ))}
                   </div>
-
                   <a
                     href={resource.path}
                     target="_blank"
@@ -217,7 +195,6 @@ export default function DocumentsPage() {
               </div>
             ))}
           </div>
-
           {filteredResources.length === 0 && (
             <div className="text-center py-12">
               <p className="text-gray-500 dark:text-gray-400 text-lg">
@@ -226,7 +203,6 @@ export default function DocumentsPage() {
             </div>
           )}
         </div>
-
         {/* Footer */}
         <div className="bg-gray-800 dark:bg-gray-950 text-white dark:text-gray-100 py-8 mt-12">
           <div className="container mx-auto px-4 text-center">

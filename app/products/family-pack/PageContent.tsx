@@ -1,5 +1,4 @@
 'use client';
-
 import { useCallback, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,7 +10,6 @@ import { ProductFAQ } from '@/components/product/ProductFAQ';
 import { GuaranteeBadge } from '@/components/ui/GuaranteeBadge';
 import { useCurrency } from '@/lib/currency-context';
 import { localizePath } from '@/lib/i18n/locale-path';
-import { getPaymentLink } from '@/lib/payment-links';
 import { formatCurrencyValue, formatProductPrice, getProductPrice } from '@/lib/pricing';
 import { getSEOMeta } from '@/translations/seo-meta';
 import { SITE_NAME } from '@/lib/constants';
@@ -20,7 +18,6 @@ import { trackTikTokClientEvent } from '@/lib/tiktok-tracking';
 import { useTranslation } from '@/lib/translation-context';
 import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
 import { useAggregateReview } from '@/hooks/useAggregateReview';
-
 type FamilyCopy = {
   breadcrumbAria: string;
   productsLabel: string;
@@ -56,7 +53,6 @@ type FamilyCopy = {
   imageThreeTitle: string;
   imageThreeBody: string;
 };
-
 const EN_COPY: FamilyCopy = {
   breadcrumbAria: 'Breadcrumb',
   productsLabel: 'Products',
@@ -106,7 +102,6 @@ const EN_COPY: FamilyCopy = {
   imageThreeTitle: 'Best Value Option',
   imageThreeBody: 'Lower price-per-gram for long-term use.',
 };
-
 const COPY: Record<'en' | 'fr' | 'zh' | 'es', FamilyCopy> = {
   en: EN_COPY,
   fr: {
@@ -143,33 +138,26 @@ const COPY: Record<'en' | 'fr' | 'zh' | 'es', FamilyCopy> = {
     backButton: 'Volver a Productos',
   },
 };
-
 const TESTIMONIALS: Array<{ name: string; text: string; rating: number; petName: string }> = [];
-
 export default function FamilyPackPage() {
   const { t, locale } = useTranslation();
   const { currency } = useCurrency();
   const language = locale === 'fr' || locale === 'zh' || locale === 'es' ? locale : 'en';
   const copy = COPY[language];
-
   const viewTracked = useRef(false);
   const productKey = 'family';
   const productName = t.products?.['purrify-120g']?.name || 'Purrify Family Size';
   const priceValidUntil = getPriceValidityDate(90);
-
   const familyPriceAmount = getProductPrice('family', currency);
   const standardPriceAmount = getProductPrice('standard', currency);
   const familyPrice = formatProductPrice('family', currency, locale);
   const standardPrice = formatProductPrice('standard', currency, locale);
   const familyPerUnit = familyPriceAmount / 12;
   const standardPerUnit = standardPriceAmount / 5;
-
   const seoMeta = getSEOMeta(locale as 'en' | 'fr' | 'zh' | 'es', 'products', 'family');
   const pageTitle = seoMeta?.title || `${SITE_NAME} Family Pack`;
   const pageDescription = seoMeta?.description || 'Family-size activated carbon litter additive for multi-cat homes.';
-
   const { data: reviewData } = useAggregateReview(productKey, locale);
-
   const { schema } = useEnhancedSEO({
     path: '/products/family-pack',
     title: pageTitle,
@@ -193,7 +181,6 @@ export default function FamilyPackPage() {
     },
     image: 'https://www.purrify.ca/optimized/60g-transparent.webp',
   });
-
   useEffect(() => {
     if (viewTracked.current) return;
     viewTracked.current = true;
@@ -205,7 +192,6 @@ export default function FamilyPackPage() {
       currency: 'CAD',
     });
   }, [familyPriceAmount, productName]);
-
   const handleBuyClick = useCallback(() => {
     trackTikTokClientEvent('AddToCart', {
       content_id: 'purrify-120g',
@@ -215,7 +201,6 @@ export default function FamilyPackPage() {
       value: familyPriceAmount,
       currency: 'CAD',
     });
-
     trackTikTokClientEvent('InitiateCheckout', {
       content_id: 'purrify-120g',
       content_name: productName,
@@ -225,12 +210,10 @@ export default function FamilyPackPage() {
       currency: 'CAD',
     });
   }, [familyPriceAmount, productName]);
-
   const checkoutUrl = localizePath('/checkout', locale);
   const heroImage = '/optimized/60g-transparent.webp';
   const sectionImage1 = '/optimized/multi-cat-home-ghibli.webp';
   const solutionImage = '/optimized/multi-cat-success-ghibli.webp';
-
   return (
     <>
       {schema && (
@@ -244,7 +227,6 @@ export default function FamilyPackPage() {
           }}
         />
       )}
-
       <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
         <Container>
           <nav aria-label={copy.breadcrumbAria} className="py-4 text-sm">
@@ -265,7 +247,6 @@ export default function FamilyPackPage() {
             </ol>
           </nav>
         </Container>
-
         <section className="py-12">
           <Container>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -278,7 +259,6 @@ export default function FamilyPackPage() {
                   </div>
                 </div>
               </div>
-
               <div className="space-y-6">
                 <div>
                   <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent">
@@ -286,7 +266,6 @@ export default function FamilyPackPage() {
                   </h1>
                   <p className="text-xl text-gray-600 dark:text-gray-300 mb-2">{copy.heroSubtitle}</p>
                 </div>
-
                 <div className="space-y-3">
                   {copy.benefits.map((benefit) => (
                     <div key={benefit} className="flex items-center space-x-3">
@@ -295,7 +274,6 @@ export default function FamilyPackPage() {
                     </div>
                   ))}
                 </div>
-
                 <div className="space-y-5">
                   <div className="rounded-2xl border-2 border-[#FF3131] bg-white dark:bg-gray-900 p-8 shadow-xl">
                     <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-4">{copy.storesTitle}</h3>
@@ -307,7 +285,6 @@ export default function FamilyPackPage() {
                       </Link>
                     </Button>
                   </div>
-
                   <div className="flex space-x-3">
                     <Link href={localizePath('/reviews', locale)} className="flex-1">
                       <Button variant="outline" size="lg" className="w-full">
@@ -317,7 +294,6 @@ export default function FamilyPackPage() {
                     </Link>
                   </div>
                 </div>
-
                 <div className="border-t pt-6 space-y-4">
                   <div className="flex flex-wrap gap-3">
                     <GuaranteeBadge size="md" />
@@ -335,7 +311,6 @@ export default function FamilyPackPage() {
             </div>
           </Container>
         </section>
-
         <section className="py-12 bg-gray-50 dark:bg-gray-900/30">
           <Container>
             <div className="max-w-3xl mx-auto">
@@ -343,14 +318,12 @@ export default function FamilyPackPage() {
             </div>
           </Container>
         </section>
-
         <section className="py-16 bg-white dark:bg-gray-800/50">
           <Container>
             <div className="text-center mb-12">
               <h2 className="font-heading text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">{copy.valueHeading}</h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">{copy.valueSubheading}</p>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {copy.cards.map((card, index) => (
                 <div key={card.title} className="text-center">
@@ -362,7 +335,6 @@ export default function FamilyPackPage() {
                 </div>
               ))}
             </div>
-
             <div className="mt-12 bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-xl p-8">
               <h3 className="font-heading text-2xl font-bold text-center mb-6 text-gray-900 dark:text-gray-50">{copy.calculatorHeading}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -383,7 +355,6 @@ export default function FamilyPackPage() {
             </div>
           </Container>
         </section>
-
         {TESTIMONIALS.length > 0 && (
           <section className="py-16">
             <Container>
@@ -392,7 +363,6 @@ export default function FamilyPackPage() {
                   {copy.storiesHeading}
                 </h2>
               </div>
-
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 {TESTIMONIALS.map((testimonial) => (
                   <article key={testimonial.name} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
@@ -407,7 +377,6 @@ export default function FamilyPackPage() {
                   </article>
                 ))}
               </div>
-
               <div className="text-center mt-12">
                 <Link href={localizePath('/reviews', locale)}>
                   <Button variant="outline" size="lg">{copy.storiesCta}</Button>
@@ -416,14 +385,12 @@ export default function FamilyPackPage() {
             </Container>
           </section>
         )}
-
         <section className="py-16 bg-white dark:bg-gray-800/50">
           <Container>
             <div className="text-center mb-12">
               <h2 className="font-heading text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">{copy.sizeHeading}</h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">{copy.sizeSubheading}</p>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {copy.sizeCards.map((card) => (
                 <div key={card.title} className={`${card.active ? 'bg-gradient-to-br from-[#03E46A]/10 to-[#5B2EFF]/10 dark:from-[#03E46A]/10 dark:to-[#3694FF]/10 border-2 border-[#03E46A]' : 'bg-white dark:bg-gray-800'} p-6 rounded-xl shadow-lg text-center`}>
@@ -446,7 +413,6 @@ export default function FamilyPackPage() {
             </div>
           </Container>
         </section>
-
         <section className="py-8">
           <Container>
             <div className="text-center">
@@ -459,7 +425,6 @@ export default function FamilyPackPage() {
             </div>
           </Container>
         </section>
-
         <section className="py-8">
           <Container>
             <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
@@ -473,7 +438,6 @@ export default function FamilyPackPage() {
             </div>
           </Container>
         </section>
-
         <section className="py-8">
           <Container>
             <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
@@ -487,7 +451,6 @@ export default function FamilyPackPage() {
             </div>
           </Container>
         </section>
-
         <section className="py-8">
           <Container>
             <div className="max-w-3xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
@@ -501,13 +464,11 @@ export default function FamilyPackPage() {
             </div>
           </Container>
         </section>
-
         <section className="py-16 border-t border-gray-200 dark:border-gray-800">
           <Container>
             <RelatedContent currentUrl="/products/family-pack" />
           </Container>
         </section>
-
         <section className="py-8 text-center">
           <Container>
             <a href={checkoutUrl} onClick={handleBuyClick}>

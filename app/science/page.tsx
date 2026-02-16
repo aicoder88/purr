@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Container } from '@/components/ui/container';
-import { SITE_NAME, SITE_URL } from '@/lib/constants';
+import { SITE_NAME } from '@/lib/constants';
 import {
   SCIENTIFIC_CITATIONS,
   CLAIM_REVIEWS,

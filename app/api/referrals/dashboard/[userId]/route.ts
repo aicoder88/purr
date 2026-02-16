@@ -63,7 +63,7 @@ interface SocialShareStats {
   total: number;
 }
 
-interface DashboardResponse {
+interface _DashboardResponse {
   success: boolean;
   data?: ReferralStats;
   error?: string;
@@ -274,7 +274,7 @@ export async function GET(
 }
 
 // Helper function to calculate referral performance metrics
-function calculateReferralMetrics(stats: ReferralStats) {
+function _calculateReferralMetrics(stats: ReferralStats) {
   const conversionRate = stats.totalReferrals > 0
     ? (stats.completedReferrals / stats.totalReferrals) * 100
     : 0;
@@ -295,7 +295,7 @@ function calculateReferralMetrics(stats: ReferralStats) {
 }
 
 // Helper function to generate achievement badges
-function generateAchievementBadges(completedReferrals: number) {
+function _generateAchievementBadges(completedReferrals: number) {
   const badges = [];
 
   if (completedReferrals >= 1) badges.push({ name: 'First Referral', icon: '🎯' });

@@ -1,11 +1,8 @@
 export const dynamic = 'force-static';
-
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, CheckCircle2 } from 'lucide-react';
-
+import { ArrowLeft } from 'lucide-react';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
-
 export const metadata: Metadata = {
   title: 'Eliminate Cat Litter Odor Fast | Action Guide | Purrify',
   description: 'Eliminate cat litter odor today with this 5-step action checklist. Quick fixes you can implement immediately for a fresher home.',
@@ -35,13 +32,11 @@ export const metadata: Metadata = {
     ],
   },
 };
-
 const relatedQuestions = [
   { slug: 'how-to-keep-litter-box-from-smelling', question: 'How to control cat litter odor?' },
   { slug: 'what-eliminates-cat-litter-odor', question: 'What eliminates cat litter odor?' },
   { slug: 'how-do-i-stop-my-cat-litter-from-smelling', question: 'How do I stop my cat litter from smelling?' },
 ];
-
 export default function QuestionPage() {
   return (
     <main className="min-h-screen bg-white dark:bg-gray-900">
@@ -56,7 +51,6 @@ export default function QuestionPage() {
           </Link>
         </div>
       </header>
-
       <article className="max-w-3xl mx-auto px-4 py-12">
         <div className="mb-8">
           <span className="inline-block px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-sm font-medium rounded-full mb-4">
@@ -69,14 +63,12 @@ export default function QuestionPage() {
             Last updated: February 2025 • 2 min read
           </p>
         </div>
-
         <div className="prose prose-lg max-w-none dark:prose-invert">
           <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 mb-8">
             <p className="text-gray-800 dark:text-gray-100 leading-relaxed text-lg">
               To eliminate cat litter odor today, follow this 5-step checklist: (1) Empty the box completely and wash with dish soap and hot water. (2) Dry thoroughly—moisture breeds bacteria. (3) Fill with 2-3 inches of quality clumping litter. (4) Mix in activated carbon additive—this is the key step that eliminates odor molecules rather than masking them. (5) Scoop waste daily without fail. For immediate room freshening, place a small air purifier with carbon filter near the box. This checklist addresses the root cause (ammonia) rather than temporarily covering smells.
             </p>
           </div>
-
           {/* Quick Checklist - Different format from blog */}
           <div className="border-t border-gray-200 dark:border-gray-700 pt-8">
             <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
@@ -107,20 +99,17 @@ export default function QuestionPage() {
                 </div>
               ))}
             </div>
-
             <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
               <p className="text-blue-800 dark:text-blue-300 text-sm">
                 <strong>💡 Pro tip:</strong> Steps 1-4 are one-time setup. Step 5 (daily scooping) is what maintains the freshness long-term.
               </p>
             </div>
-
             <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 mt-8">
               What makes this work
             </h2>
             <p className="text-gray-700 dark:text-gray-300 mb-4">
               Most odor solutions fail because they mask ammonia with fragrance. Activated carbon actually removes ammonia molecules through adsorption—physically trapping them in microscopic pores. This is why step 4 is critical.
             </p>
-
             <div className="bg-[#1E4D6B] dark:bg-[#1E4D6B] rounded-xl p-6 text-center mt-8">
               <p className="text-white dark:text-white font-medium mb-4">
                 Get the key ingredient for step 4.
@@ -135,7 +124,6 @@ export default function QuestionPage() {
                 Free trial • Just pay shipping
               </p>
             </div>
-
             <div className="mt-8 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
               <p className="text-gray-600 dark:text-gray-400 dark:text-gray-500 text-sm">
                 <strong>Want the deep dive?</strong> Read our complete guide: <Link href="/blog/how-to-eliminate-cat-litter-odor" className="text-[#1E4D6B] underline">How to Eliminate Cat Litter Odor: Complete Guide</Link>
@@ -143,7 +131,6 @@ export default function QuestionPage() {
             </div>
           </div>
         </div>
-
         <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
             Related Questions
@@ -161,7 +148,6 @@ export default function QuestionPage() {
           </div>
         </div>
       </article>
-
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

@@ -1,0 +1,382 @@
+
+> purrify@0.1.0 prelint /Users/macmini/dev/purr
+> pnpm blog:generate-featured-image-map
+
+
+> purrify@0.1.0 blog:generate-featured-image-map /Users/macmini/dev/purr
+> tsx scripts/blog/generate-blog-featured-image-map.ts
+
+[generate-blog-featured-image-map] Wrote 245 entries to /Users/macmini/dev/purr/src/generated/blog-featured-image-map.ts
+
+> purrify@0.1.0 lint /Users/macmini/dev/purr
+> eslint .
+
+
+/Users/macmini/dev/purr/__mocks__/cheerio.ts
+   35:34  warning  Unexpected any. Specify a different type                        @typescript-eslint/no-explicit-any
+   96:40  warning  Unexpected any. Specify a different type                        @typescript-eslint/no-explicit-any
+  105:12  warning  Unexpected any. Specify a different type                        @typescript-eslint/no-explicit-any
+  126:1   warning  Assign object to a variable before exporting as module default  import/no-anonymous-default-export
+
+/Users/macmini/dev/purr/__tests__/components/OptimizedImage.test.tsx
+   50:7   warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+   70:30  warning  'src' is defined but never used                                                                                                                                                                                                                                                          @typescript-eslint/no-unused-vars
+  273:37  warning  'onLoad' is defined but never used                                                                                                                                                                                                                                                       @typescript-eslint/no-unused-vars
+  274:16  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  274:16  warning  img elements must have an alt prop, either with meaningful text, or an empty string for decorative images                                                                                                                                                                                jsx-a11y/alt-text
+
+/Users/macmini/dev/purr/__tests__/components/fun/CatBlessingTool.test.tsx
+  6:10  warning  'render' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/__tests__/components/layout/header.test.tsx
+   2:37  warning  'waitFor' is defined but never used                                                                                                                                                                                                                                                      @typescript-eslint/no-unused-vars
+   6:18  warning  Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  46:12  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/macmini/dev/purr/__tests__/hooks/useBreadcrumb.test.ts
+   22:16  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   24:10  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   96:18  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   98:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  111:18  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  113:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  178:18  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  180:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  207:47  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  209:16  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/macmini/dev/purr/__tests__/hooks/useEnhancedSEO.test.ts
+   28:16  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   30:10  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   35:10  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  350:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  375:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  382:18  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  384:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  399:18  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  401:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  416:18  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  418:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/macmini/dev/purr/__tests__/lib/security/sanitize.test.ts
+  117:59  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/macmini/dev/purr/__tests__/mocks/image-utils.ts
+  12:34  warning  '_src' is defined but never used  @typescript-eslint/no-unused-vars
+  21:37  warning  '_src' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/__tests__/mocks/next-image.tsx
+  40:5  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/macmini/dev/purr/__tests__/seo/page-scanner.test.ts
+  27:13  warning  '_dynamicPages' is assigned a value but never used   @typescript-eslint/no-unused-vars
+  28:13  warning  '_catchAllPages' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/__tests__/seo/schema-validator.test.ts
+   42:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   50:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   61:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   72:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  108:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  135:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  222:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  286:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  293:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  438:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  440:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  449:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/macmini/dev/purr/__tests__/seo/seo-meta-translations.test.ts
+  10:3  warning  'SEOMetaContent' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/__tests__/seo/validate-seo-compliance.test.ts
+  273:13  warning  'mockContent' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/__tests__/types/jest-dom.d.ts
+  22:48  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/macmini/dev/purr/app/api/admin/blog/bulk-operations/route.ts
+   7:7  warning  'bulkOperationTypeSchema' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  38:6  warning  'BulkRequest' is defined but never used                       @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/api/analytics/referrals/route.ts
+  282:10  warning  'calculateTestSignificance' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/api/contact/route.ts
+  127:13  warning  'data' is assigned a value but never used            @typescript-eslint/no-unused-vars
+  250:15  warning  'ticketResponse' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/api/free-giveaway/route.ts
+   10:6   warning  'ResponseData' is defined but never used  @typescript-eslint/no-unused-vars
+  103:16  warning  'jsonError' is defined but never used     @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/api/orders/route.ts
+   3:26  warning  'RATE_LIMITS' is defined but never used  @typescript-eslint/no-unused-vars
+  37:3   warning  '_currency' is defined but never used    @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/api/referrals/apply/route.ts
+  22:11  warning  'ApplyReferralResponse' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/api/referrals/dashboard/[userId]/route.ts
+   66:11  warning  'DashboardResponse' is defined but never used          @typescript-eslint/no-unused-vars
+  277:10  warning  'calculateReferralMetrics' is defined but never used   @typescript-eslint/no-unused-vars
+  298:10  warning  'generateAchievementBadges' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/api/referrals/generate/route.ts
+  17:11  warning  'GenerateReferralResponse' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/api/referrals/stats/route.ts
+  14:3   warning  'REFERRAL_CONFIG' is defined but never used  @typescript-eslint/no-unused-vars
+  38:11  warning  'StatsResponse' is defined but never used    @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/api/referrals/track/route.ts
+  260:3  warning  '_orderValue' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/api/referrals/validate/[code]/route.ts
+   10:3   warning  'validateReferralCodeFormat' is defined but never used  @typescript-eslint/no-unused-vars
+   15:11  warning  'ReferralCodeValidation' is defined but never used      @typescript-eslint/no-unused-vars
+  231:10  warning  'applyReferralDiscount' is defined but never used       @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/api/seo/stats/route.ts
+  51:11  warning  'StatsResponse' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/api/tracking/tiktok/route.ts
+  22:11  warning  'TrackingResponse' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/api/upsell/send-email/route.ts
+  17:11  warning  'SendUpsellEmailResponse' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/api/webhooks/generate-blog-post/route.ts
+   41:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  212:15  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/macmini/dev/purr/app/api/zendesk/create-ticket/route.ts
+  139:6  warning  'ResponseData' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/b2b/_components/verticals/HospitalityVertical.tsx
+  3:27  warning  'DollarSign' is defined but never used  @typescript-eslint/no-unused-vars
+  3:39  warning  'Clock' is defined but never used       @typescript-eslint/no-unused-vars
+  3:59  warning  'Package' is defined but never used     @typescript-eslint/no-unused-vars
+  4:8   warning  'Link' is defined but never used        @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/b2b/_components/verticals/RetailVertical.tsx
+   3:8   warning  'Link' is defined but never used            @typescript-eslint/no-unused-vars
+   4:10  warning  'useTranslation' is defined but never used  @typescript-eslint/no-unused-vars
+  17:41  warning  'SITE_NAME' is defined but never used       @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/b2b/_components/verticals/SheltersVertical.tsx
+  3:17  warning  'Users' is defined but never used        @typescript-eslint/no-unused-vars
+  3:55  warning  'CheckCircle' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/b2b/_components/verticals/VeterinariansVertical.tsx
+  3:10  warning  'Container' is defined but never used   @typescript-eslint/no-unused-vars
+  6:32  warning  'Heart' is defined but never used       @typescript-eslint/no-unused-vars
+  6:39  warning  'DollarSign' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/b2b/page.tsx
+  2:24  warning  'PHONE_MESSAGING' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/b2b/sell-sheet/_components/SellSheetClientPage.tsx
+  3:10  warning  'SITE_NAME' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/canada/page.tsx
+  4:10  warning  'Container' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/contact/page.tsx
+  13:3  warning  'ExternalLink' is defined but never used  @typescript-eslint/no-unused-vars
+  14:3  warning  'Star' is defined but never used          @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/documents/page.tsx
+  4:10  warning  'FileText' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/homepage-client.tsx
+  42:34  warning  'priceValidUntil' is defined but never used  @typescript-eslint/no-unused-vars
+  42:51  warning  'locale' is defined but never used           @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/learn/answers/does-activated-carbon-work-for-cat-litter/page.tsx
+  5:21  warning  'CheckCircle2' is defined but never used  @typescript-eslint/no-unused-vars
+  5:35  warning  'XCircle' is defined but never used       @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/learn/answers/how-to-eliminate-cat-litter-odor/page.tsx
+  5:21  warning  'CheckCircle2' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/learn/cat-litter-ammonia-health-risks/CatLitterAmmoniaHealthRisksClient.tsx
+  146:19  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  194:15  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  250:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/macmini/dev/purr/app/page.tsx
+  127:9  warning  'normalizedLocale' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/products/PageContent.tsx
+   11:3   warning  'Package' is defined but never used                      @typescript-eslint/no-unused-vars
+  120:9   warning  'products' is assigned a value but never used            @typescript-eslint/no-unused-vars
+  143:9   warning  'comparisonFeatures' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  230:11  warning  'nextSeoProps' is assigned a value but never used        @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/products/family-pack/PageContent.tsx
+  14:10  warning  'getPaymentLink' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/products/standard/PageContent.tsx
+   14:32  warning  'buildAvailabilityUrl' is defined but never used            @typescript-eslint/no-unused-vars
+   15:10  warning  'formatProductPrice' is defined but never used              @typescript-eslint/no-unused-vars
+  196:10  warning  'quantity' is assigned a value but never used               @typescript-eslint/no-unused-vars
+  196:20  warning  'setQuantity' is assigned a value but never used            @typescript-eslint/no-unused-vars
+  242:9   warning  'handleStickyAddToCart' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  255:11  warning  'nextSeoProps' is assigned a value but never used           @typescript-eslint/no-unused-vars
+  277:9   warning  'singleCheckoutUrl' is assigned a value but never used      @typescript-eslint/no-unused-vars
+  278:9   warning  'autoshipCheckoutUrl' is assigned a value but never used    @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/products/trial-size/PageContent.tsx
+  28:6  warning  'TryFreeTestimonial' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/app/viral/ViralContent.tsx
+   8:16  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   9:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  43:44  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/macmini/dev/purr/e2e/seo/schema-rendering.spec.ts
+  20:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/macmini/dev/purr/reports/performance-optimizations/ReviewSystem.optimized.tsx
+  15:6   warning  'SortOption' is defined but never used            @typescript-eslint/no-unused-vars
+  17:11  warning  'Review' is defined but never used                @typescript-eslint/no-unused-vars
+  81:3   warning  'showFilters' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  82:3   warning  'maxReviews' is defined but never used            @typescript-eslint/no-unused-vars
+  83:3   warning  'compact' is assigned a value but never used      @typescript-eslint/no-unused-vars
+  85:11  warning  't' is assigned a value but never used            @typescript-eslint/no-unused-vars
+  89:9   warning  'reviewStats' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/seo_meta_audit.js
+  27:35  warning  'filePath' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/src/components/admin/AIContentGenerator.tsx
+  249:85  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  265:87  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  282:93  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/macmini/dev/purr/src/components/admin/AdminLayout.tsx
+  36:38  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/macmini/dev/purr/src/components/admin/MediaLibrary.tsx
+  194:21  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/macmini/dev/purr/src/components/customer/ProfileTab.tsx
+  140:10  warning  'ActionButtons' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/src/components/maps/LeafletRetailerMap.tsx
+  22:54  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/macmini/dev/purr/src/components/referrals/ViralReferralSystem.tsx
+  137:33  warning  '_userId' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/src/components/reviews/ReviewSystem.tsx
+  77:9  warning  'averageRating' is assigned a value but never used       @typescript-eslint/no-unused-vars
+  80:9  warning  'ratingDistribution' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/src/components/sections/hero/HeroContent.tsx
+    4:10  warning  'scrollToSection' is defined but never used               @typescript-eslint/no-unused-vars
+  123:22  warning  'trackHeroConversion' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  129:22  warning  'trackCtaConversion' is assigned a value but never used   @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/src/components/sections/hero/HeroVideo.tsx
+  4:11  error  An empty interface declaration allows any non-nullish value, including literals like `0` and `""`.
+- If that's what you want, disable this lint rule with an inline comment or configure the 'allowInterfaces' rule option.
+- If you want a type meaning "any object", you probably want `object` instead.
+- If you want a type meaning "any value", you probably want `unknown` instead  @typescript-eslint/no-empty-object-type
+
+/Users/macmini/dev/purr/src/components/sections/hero/useVideoPlayer.ts
+  14:46  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/macmini/dev/purr/src/components/sections/locations/createCityPage.tsx
+  178:7  warning  'buildKeywordList' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  310:9  warning  'provinceLabel' is assigned a value but never used     @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/src/components/seo/Breadcrumbs.tsx
+  111:9  warning  'current' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/src/components/seo/HowToSection.tsx
+  129:21  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/macmini/dev/purr/src/components/seo/StructuredData.tsx
+  20:89  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  21:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/macmini/dev/purr/src/components/social-proof/LivePurchaseNotifications.tsx
+  172:48  warning  'notification' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/src/components/ui/calculator.tsx
+  11:7  warning  'COLORS' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/src/components/video/VideoPlayer.tsx
+  392:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/macmini/dev/purr/src/hooks/useEnhancedSEO.ts
+  258:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/macmini/dev/purr/src/i18n/lazy-loader.ts
+  217:15  warning  'key' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/src/lib/affiliate/clearing.ts
+  83:11  warning  'tierResult' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/src/lib/affiliate/middleware.ts
+  104:3  warning  '_req' is defined but never used  @typescript-eslint/no-unused-vars
+  105:3  warning  '_res' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/src/lib/affiliate/tiers.ts
+  45:10  warning  'getCurrentMonthKey' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/src/lib/ai-page-renderer.ts
+  264:1  warning  Assign object to a variable before exporting as module default  import/no-anonymous-default-export
+
+/Users/macmini/dev/purr/src/lib/ai-user-agents.ts
+  132:1  warning  Assign object to a variable before exporting as module default  import/no-anonymous-default-export
+
+/Users/macmini/dev/purr/src/lib/blog/analytics-service.ts
+   60:40  warning  '_dateRange' is defined but never used  @typescript-eslint/no-unused-vars
+  104:29  warning  '_dateRange' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/src/lib/blog/automated-content-generator.ts
+  416:52  warning  'count' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/src/lib/blog/content-store.ts
+   14:41   warning  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+   14:58   warning  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+  232:34   warning  'options' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  285:30   warning  'slug' is defined but never used              @typescript-eslint/no-unused-vars
+  285:44   warning  'locale' is defined but never used            @typescript-eslint/no-unused-vars
+  285:95   warning  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+  285:112  warning  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+
+/Users/macmini/dev/purr/src/lib/customer-ltv.ts
+  17:11  warning  'CustomerOrderData' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/src/lib/payment-security.ts
+  139:33  warning  '_type' is defined but never used     @typescript-eslint/no-unused-vars
+  139:48  warning  '_context' is defined but never used  @typescript-eslint/no-unused-vars
+  139:83  warning  '_result' is defined but never used   @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/src/lib/pricing.ts
+  90:7  warning  'MIN_PRICE' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  91:7  warning  'MAX_PRICE' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/src/lib/referral-tracking.ts
+  207:65  warning  '_rewards' is defined but never used  @typescript-eslint/no-unused-vars
+  275:3   warning  'userId' is defined but never used    @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/src/lib/scientific-citations.ts
+  214:1  warning  Assign object to a variable before exporting as module default  import/no-anonymous-default-export
+
+/Users/macmini/dev/purr/src/lib/security/rate-limit-app.ts
+  121:50  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  130:45  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  164:14  warning  'e' is defined but never used             @typescript-eslint/no-unused-vars
+
+/Users/macmini/dev/purr/src/lib/seo-utils.ts
+  48:38  warning  Unexpected any. Specify a different type       @typescript-eslint/no-explicit-any
+  50:23  warning  '_context' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+✖ 190 problems (1 error, 189 warnings)
+
+ ELIFECYCLE  Command failed with exit code 1.

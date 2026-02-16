@@ -19,7 +19,7 @@ interface TrackingRequest {
   ttp?: string;
 }
 
-interface TrackingResponse {
+interface _TrackingResponse {
   success: boolean;
   error?: string;
 }

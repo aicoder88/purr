@@ -45,9 +45,9 @@ export const buildAvailabilityUrl = (availability: OfferAvailability = 'InStock'
 /**
  * Strips @context from a schema object, useful for items in a @graph
  */
-export const stripContext = (schema: any) => {
+export const stripContext = (schema: unknown) => {
   if (!schema || typeof schema !== 'object') return schema;
-  const { '@context': _, ...rest } = schema;
+  const { '@context': _context, ...rest } = schema as Record<string, unknown>;
   return rest;
 };
 

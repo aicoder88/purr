@@ -33,7 +33,7 @@ export function SubscriptionsTab({
           }
           : sub
       ));
-    } catch (error) {
+    } catch {
       // Silently fail
     } finally {
       setLoading(false);
@@ -88,7 +88,7 @@ export function SubscriptionsTab({
           subscription_id: subscriptionId
         });
       }
-    } catch (error) {
+    } catch {
       // Silently fail
     } finally {
       setLoading(false);

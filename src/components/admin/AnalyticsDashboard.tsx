@@ -16,7 +16,7 @@ export default function AnalyticsDashboard() {
         const data = await response.json();
         setMetrics(data);
       }
-    } catch (error) {
+    } catch {
       // Silently fail
     } finally {
       setLoading(false);
@@ -41,7 +41,7 @@ export default function AnalyticsDashboard() {
         window.URL.revokeObjectURL(url);
         document.body.removeChild(a);
       }
-    } catch (error) {
+    } catch {
       // Silently fail
     }
   };

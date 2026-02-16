@@ -72,18 +72,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
   const [filterRating, setFilterRating] = useState<number | null>(null);
   const [filterSize, setFilterSize] = useState<string | null>(null);
 
-  // Calculate review statistics
   const totalReviews = reviews.length;
-  const averageRating = totalReviews > 0
-    ? reviews.reduce((sum, review) => sum + review.rating, 0) / totalReviews
-    : 0;
-  const ratingDistribution = [5, 4, 3, 2, 1].map(rating => ({
-    rating,
-    count: reviews.filter(r => r.rating === rating).length,
-    percentage: totalReviews > 0
-      ? (reviews.filter(r => r.rating === rating).length / totalReviews) * 100
-      : 0
-  }));
 
   // Filter and sort reviews
   useEffect(() => {

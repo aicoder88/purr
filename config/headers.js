@@ -1,3 +1,11 @@
+const isDev = process.env.NODE_ENV === 'development';
+
+// CSP: 'unsafe-eval' allowed only in dev mode for debugging/hot reload
+// 'unsafe-inline' kept for GTM compatibility
+const scriptSrc = isDev
+  ? "'self' 'unsafe-eval' 'unsafe-inline' *.google.com *.gstatic.com *.googletagmanager.com"
+  : "'self' 'unsafe-inline' *.google.com *.gstatic.com *.googletagmanager.com";
+
 const SECURITY_HEADERS = [
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -11,12 +19,11 @@ const SECURITY_HEADERS = [
   { key: "Cross-Origin-Embedder-Policy", value: "unsafe-none" },
   { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
   { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
-  // CSP Note: 'unsafe-inline' for scripts is required for Next.js to function properly.
+  // CSP Note: 'unsafe-inline' for scripts is required for GTM.
   // In a production app, consider implementing nonce-based CSP for stricter security.
-  // The 'unsafe-eval' is needed for various libraries including Next.js itself.
   {
     key: "Content-Security-Policy",
-    value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' *.google.com *.gstatic.com *.googletagmanager.com; style-src 'self' 'unsafe-inline' *.googleapis.com; img-src 'self' blob: data: *.purrify.ca *.google.com *.gstatic.com *.facebook.com *.fna.fbcdn.net *.dicebear.com *.unsplash.com *.randomuser.me *.chico.ca *.pattesgriffes.com *.pitou-minou.ca *.doghausmtl.com *.coquetteetfinegueule.com *.animaleriegigi.com unpkg.com *.unpkg.com *.tile.openstreetmap.org; font-src 'self' data:; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; block-all-mixed-content; upgrade-insecure-requests; require-trusted-types-for 'script';"
+    value: `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline' *.googleapis.com; img-src 'self' blob: data: *.purrify.ca *.google.com *.gstatic.com *.facebook.com *.fna.fbcdn.net *.dicebear.com *.unsplash.com *.randomuser.me *.chico.ca *.pattesgriffes.com *.pitou-minou.ca *.doghausmtl.com *.coquetteetfinegueule.com *.animaleriegigi.com unpkg.com *.unpkg.com *.tile.openstreetmap.org; font-src 'self' data:; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; block-all-mixed-content; upgrade-insecure-requests; require-trusted-types-for 'script';`
   },
 ];
 

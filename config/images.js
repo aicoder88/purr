@@ -25,7 +25,8 @@ const images = {
   qualities: [75, 90],
   minimumCacheTTL: 31536000,
   dangerouslyAllowSVG: true,
-  contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  contentDispositionType: 'attachment',
+  contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox",
 };
 
 const OPTIMIZE_PACKAGE_IMPORTS = [

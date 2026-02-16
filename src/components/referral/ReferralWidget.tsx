@@ -9,7 +9,7 @@
 
 import React, { useState, useCallback } from 'react';
 import { useTranslation } from '@/lib/translation-context';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
@@ -35,7 +35,6 @@ export function ReferralWidget({
   code,
   shareUrl,
   shareUrls,
-  referrerName = 'Friend',
   className = '',
   compact = false,
 }: ReferralWidgetProps) {

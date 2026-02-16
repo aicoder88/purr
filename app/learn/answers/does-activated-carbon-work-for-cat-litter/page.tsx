@@ -1,10 +1,8 @@
 export const dynamic = 'force-static';
-
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, CheckCircle2, XCircle } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
-
 export const metadata: Metadata = {
   title: 'Does Activated Carbon Work for Cat Litter? Proof | Purrify',
   description: 'Yes—here is the proof. Scientific evidence, real-world test results, and why activated carbon outperforms baking soda and fragrances.',
@@ -34,12 +32,10 @@ export const metadata: Metadata = {
     ],
   },
 };
-
 const relatedQuestions = [
   { slug: 'what-absorbs-cat-litter-odor', question: 'What absorbs cat litter odor?' },
   { slug: 'how-to-eliminate-cat-litter-odor', question: 'How to eliminate cat litter odor?' },
 ];
-
 export default function QuestionPage() {
   return (
     <main className="min-h-screen bg-white dark:bg-gray-900">
@@ -54,7 +50,6 @@ export default function QuestionPage() {
           </Link>
         </div>
       </header>
-
       <article className="max-w-3xl mx-auto px-4 py-12">
         <div className="mb-8">
           <span className="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-sm font-medium rounded-full mb-4">
@@ -67,7 +62,6 @@ export default function QuestionPage() {
             Last updated: February 2025 • Evidence review
           </p>
         </div>
-
         <div className="prose prose-lg max-w-none dark:prose-invert">
           {/* Clear YES answer */}
           <div className="bg-green-50 dark:bg-green-900/20 border-2 border-green-200 dark:border-green-800 rounded-2xl p-8 mb-8 text-center">
@@ -77,7 +71,6 @@ export default function QuestionPage() {
               Activated carbon eliminates cat litter odor through adsorption—a physical process where ammonia molecules bind to carbon's porous surface. One gram has 1,000+ square meters of surface area. The same technology is used in water treatment plants, gas masks, and hospital air filtration systems.
             </p>
           </div>
-
           {/* Evidence breakdown */}
           <div className="border-t border-gray-200 dark:border-gray-700 pt-8">
             <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
@@ -93,7 +86,6 @@ export default function QuestionPage() {
                   <p className="text-gray-700 dark:text-gray-300">Municipal water treatment uses activated carbon to remove contaminants. If it works for drinking water, it works for cat litter.</p>
                 </div>
               </div>
-
               {/* Point 2 */}
               <div className="flex gap-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center font-bold text-blue-700 dark:text-blue-400">2</div>
@@ -102,7 +94,6 @@ export default function QuestionPage() {
                   <p className="text-gray-700 dark:text-gray-300">One gram = 1,000+ m² surface area (size of 10 tennis courts). Ammonia molecules collide with and stick to this massive surface.</p>
                 </div>
               </div>
-
               {/* Point 3 */}
               <div className="flex gap-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center font-bold text-blue-700 dark:text-blue-400">3</div>
@@ -112,7 +103,6 @@ export default function QuestionPage() {
                 </div>
               </div>
             </div>
-
             {/* Comparison table */}
             <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 mt-8">
               Activated Carbon vs. Alternatives
@@ -145,7 +135,6 @@ export default function QuestionPage() {
                 </tbody>
               </table>
             </div>
-
             {/* Common skepticism addressed */}
             <div className="mt-8 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
               <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Common concern: "I tried it and it didn't work"</h4>
@@ -153,7 +142,6 @@ export default function QuestionPage() {
                 Usually means: (1) Not enough carbon used, (2) Carbon was already saturated, or (3) Expecting it to work without daily scooping. Carbon eliminates airborne ammonia—it does not remove physical waste.
               </p>
             </div>
-
             <div className="bg-[#1E4D6B] dark:bg-[#1E4D6B] rounded-xl p-6 text-center mt-8">
               <p className="text-white dark:text-white font-medium mb-4">
                 Try it yourself with our risk-free trial.
@@ -168,7 +156,6 @@ export default function QuestionPage() {
                 Not satisfied? Full refund.
               </p>
             </div>
-
             <div className="mt-8 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
               <p className="text-gray-600 dark:text-gray-400 dark:text-gray-500 text-sm">
                 <strong>Want the deep science?</strong> Read: <Link href="/learn/how-activated-carbon-works" className="text-[#1E4D6B] underline">How Does Activated Carbon Work? Complete Science Guide</Link>
@@ -176,7 +163,6 @@ export default function QuestionPage() {
             </div>
           </div>
         </div>
-
         <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
             Related Questions
@@ -194,7 +180,6 @@ export default function QuestionPage() {
           </div>
         </div>
       </article>
-
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

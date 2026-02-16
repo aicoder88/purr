@@ -10,7 +10,7 @@ import { getPaymentLink } from '@/lib/payment-links';
 import { useEffect, useRef, useCallback } from 'react';
 import { trackTikTokClientEvent } from '@/lib/tiktok-tracking';
 
-type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
+
 
 
 

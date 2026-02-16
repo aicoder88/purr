@@ -1,11 +1,7 @@
 import { useVideoPlayer } from './useVideoPlayer';
 import Image from 'next/image';
 
-interface HeroVideoProps {
-  t: any; // Using any to avoid strict type checking for unused props since we are hardcoding
-}
-
-export const HeroVideo = ({ t }: HeroVideoProps) => {
+export const HeroVideo = () => {
   const { videoRef, mediaContainerRef, state, replay, toggleMute, handleVolumeChange } = useVideoPlayer([]);
 
   // Determine video sources based on existing assets (placeholder for new exports)

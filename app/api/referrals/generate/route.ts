@@ -14,7 +14,7 @@ import {
 } from '@/lib/referral';
 import * as Sentry from '@sentry/nextjs';
 
-interface GenerateReferralResponse {
+interface _GenerateReferralResponse {
   success: boolean;
   data?: {
     code: string;

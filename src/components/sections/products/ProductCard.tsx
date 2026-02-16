@@ -1,3 +1,4 @@
+import React from 'react';
 import Image from 'next/image';
 import { GRADIENTS, COLORS, TRANSITIONS, createButtonClasses } from "@/lib/theme-utils";
 import { createStaggeredAnimation } from "@/lib/component-utils";
@@ -20,12 +21,12 @@ interface ProductCardProps {
   t: TranslationType;
 }
 
-export const ProductCard = ({
+export const ProductCard = React.memo(function ProductCard({
   product,
   index,
   isVisible,
   t
-}: ProductCardProps) => {
+}: ProductCardProps) {
   const staggerStyle = createStaggeredAnimation(index);
 
   // Map product IDs to payment link keys
@@ -48,7 +49,11 @@ export const ProductCard = ({
     >
       {/* Popular badge - High contrast for WCAG AA compliance */}
       {index === 1 && (
-        <div className="absolute -top-4 left-0 right-0 mx-auto w-max px-4 py-1 bg-[#DC2626] text-white font-bold text-sm rounded-full shadow-lg z-30">
+        <div 
+          className="absolute -top-4 left-0 right-0 mx-auto w-max px-4 py-1 bg-[#DC2626] text-white font-bold text-sm rounded-full shadow-lg z-30"
+          aria-label={t.productsSection?.mostPopular || "Most Popular"}
+          role="status"
+        >
           {t.productsSection?.mostPopular || ""}
         </div>
       )}
@@ -123,7 +128,7 @@ export const ProductCard = ({
           </div>
 
           <a
-            href={getPaymentLink(getPaymentLinkKey(product.id)) || '#'}
+            href={getPaymentLink(getPaymentLinkKey(product.id)) || '/products'}
             target="_blank"
             rel="noopener noreferrer"
             className={`w-full inline-flex items-center justify-center ${createButtonClasses('primary')} text-lg`}
@@ -136,4 +141,4 @@ export const ProductCard = ({
       </div>
     </div>
   );
-};
+});

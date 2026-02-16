@@ -10,17 +10,17 @@
 
 'use client';
 
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useMemo } from 'react';
 import { useLazyTranslation, usePrefetchTranslation } from '@/lib/translation-context-lazy';
 import type { TranslationNamespace } from '@/i18n/namespaces';
 
 interface UseTranslationNamespacesOptions {
   /** Namespaces required by this component */
   namespaces: TranslationNamespace | TranslationNamespace[];
-  
+
   /** Whether to load immediately on mount */
   loadImmediately?: boolean;
-  
+
   /** Whether to prefetch related namespaces */
   prefetchRelated?: boolean;
 }
@@ -28,13 +28,13 @@ interface UseTranslationNamespacesOptions {
 interface UseTranslationNamespacesReturn {
   /** Whether all required namespaces are loaded */
   isLoaded: boolean;
-  
+
   /** Loading status */
   status: 'idle' | 'loading' | 'loaded' | 'error';
-  
+
   /** Manually trigger load (if not loading immediately) */
   load: () => Promise<void>;
-  
+
   /** Prefetch additional namespaces */
   prefetch: (...namespaces: TranslationNamespace[]) => void;
 }
@@ -61,41 +61,48 @@ export function useTranslationNamespaces(
   options: UseTranslationNamespacesOptions
 ): UseTranslationNamespacesReturn {
   const { namespaces, loadImmediately = true, prefetchRelated = false } = options;
-  const nsArray = Array.isArray(namespaces) ? namespaces : [namespaces];
-  
+
+  // Create a stable key for namespaces array
+  const nsKey = Array.isArray(namespaces) ? namespaces.sort().join(',') : namespaces;
+
+  // Memoize the array to provide a stable dependency
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const nsArray = useMemo(() => Array.isArray(namespaces) ? namespaces : [namespaces], [nsKey]);
+
   const context = useLazyTranslation();
-  const prefetch = usePrefetchTranslation();
-  
+  // prefetch is available but not used directly in the effect, we use context.prefetchNamespace
+  usePrefetchTranslation();
+
   // Load namespaces on mount if requested
   useEffect(() => {
     if (loadImmediately) {
       context.loadNamespaces(nsArray);
     }
-    
+
     // Prefetch related namespaces for faster navigation
     if (prefetchRelated) {
       const relatedNamespaces = getRelatedNamespaces(nsArray);
       relatedNamespaces.forEach((ns) => context.prefetchNamespace(ns));
     }
-  }, [loadImmediately, prefetchRelated, nsArray.join(','), context]);
-  
+  }, [loadImmediately, prefetchRelated, nsArray, context]);
+
   // Manual load function
   const load = useCallback(async () => {
     await context.loadNamespaces(nsArray);
   }, [context, nsArray]);
-  
+
   // Prefetch function
   const prefetchFn = useCallback((...additionalNamespaces: TranslationNamespace[]) => {
     additionalNamespaces.forEach((ns) => context.prefetchNamespace(ns));
   }, [context]);
-  
+
   // Check if all required namespaces are loaded
-  const isLoaded = nsArray.every((ns) => 
+  const isLoaded = nsArray.every((ns) =>
     context.loadingState.status === 'loaded' ||
-    (context.loadingState.status === 'loading' && 
-     context.loadingState.loaded.includes(ns))
+    (context.loadingState.status === 'loading' &&
+      context.loadingState.loaded.includes(ns))
   );
-  
+
   return {
     isLoaded,
     status: context.loadingState.status,
@@ -125,14 +132,14 @@ function getRelatedNamespaces(namespaces: TranslationNamespace[]): TranslationNa
     admin: ['common'],
     account: ['common'],
   };
-  
+
   const related = new Set<TranslationNamespace>();
-  
+
   for (const ns of namespaces) {
     const relatedNs = relatedMap[ns] || [];
     relatedNs.forEach((r) => related.add(r));
   }
-  
+
   // Don't include already-loaded namespaces
   return Array.from(related).filter((ns) => !namespaces.includes(ns));
 }
@@ -152,9 +159,9 @@ export function usePageTranslations(
     if (typeof window === 'undefined') {
       return ['common'];
     }
-    
+
     const pathname = window.location.pathname;
-    
+
     // Simple route matching
     if (pathname === '/') return ['home'];
     if (pathname.startsWith('/products')) return ['products'];
@@ -167,15 +174,15 @@ export function usePageTranslations(
     if (pathname.startsWith('/refer')) return ['referral'];
     if (pathname.startsWith('/locations') || pathname.startsWith('/stores')) return ['locations'];
     if (pathname.startsWith('/thank-you') || pathname.startsWith('/checkout')) return ['checkout'];
-    
+
     return ['common'];
   }, []);
-  
+
   const routeNamespaces = getRouteNamespaces();
-  const allNamespaces = additionalNamespaces 
+  const allNamespaces = additionalNamespaces
     ? [...new Set([...routeNamespaces, ...additionalNamespaces])]
     : routeNamespaces;
-  
+
   return useTranslationNamespaces({
     namespaces: allNamespaces,
     loadImmediately: true,

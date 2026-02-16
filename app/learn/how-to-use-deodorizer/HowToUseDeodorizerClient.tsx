@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 import { HubSpokeNav } from '@/components/seo/HubSpokeNav';
-import { formatProductPrice } from '../../../src/lib/pricing';
 import { Container } from '../../../src/components/ui/container';
 import { Card, CardContent } from '../../../src/components/ui/card';
 import { Badge } from '../../../src/components/ui/badge';
@@ -17,11 +16,9 @@ import {
   Home,
   ChevronRight,
 } from 'lucide-react';
-import { useFormatter } from 'next-intl';
 
 export default function HowToUseDeodorizerClient() {
   const heroImage = '/optimized/cat-litter-usage-ghibli-828w.webp';
-  const format = useFormatter();
 
   return (
     <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
 import OpsLayout from '@/components/admin/ops/OpsLayout';
 import { Store, CheckCircle, XCircle, Loader2 } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
@@ -17,7 +16,6 @@ interface Retailer {
 }
 
 export default function RetailersPage() {
-  const router = useRouter();
   const { toast } = useToast();
   const [processingId, setProcessingId] = useState<string | null>(null);
   const [retailers, setRetailers] = useState<Retailer[]>([]);

@@ -175,37 +175,6 @@ const generateTestimonials = async (
   return [];
 };
 
-const buildKeywordList = (
-  cityName: string,
-  provinceName: string,
-  provinceCode: string,
-  englishQueries: string[],
-  translationKeywords: string[] | undefined,
-): string => {
-  // More specific cat-related keywords to avoid matching industrial odor control queries
-  const baseKeywords = [
-    `cat litter deodorizer ${cityName}`,
-    `cat litter smell ${cityName}`,
-    `best cat litter ${cityName}`,
-    `cat litter delivery ${provinceName}`,
-    `cat litter additive ${provinceCode}`,
-    `pet odor eliminator ${cityName}`,
-  ];
-
-  const localizedHeadTerms = (translationKeywords ?? []).map(
-    (term) => `${term} ${cityName}`,
-  );
-
-  const deduped = Array.from(
-    new Set([
-      ...baseKeywords,
-      ...englishQueries.slice(0, 8),
-      ...localizedHeadTerms,
-    ]),
-  );
-
-  return deduped.slice(0, 16).join(', ');
-};
 
 import { type CityOdorProfile } from '@/lib/locations/cities';
 
@@ -279,7 +248,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
 
   const keyFeatures = useMemo(() => profile && profile.housingHighlights.length > 0
     ? profile.housingHighlights
-    : ['busy households', 'multi-cat families'], [profile?.housingHighlights]);
+    : ['busy households', 'multi-cat families'], [profile]);
 
   // Redirect effect for missing city (must be after all hooks)
   useEffect(() => {
@@ -306,25 +275,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
     loadTestimonials();
   }, [profile, keyFeatures, climateInsights]);
 
-  const keywordContent = useMemo(
-    () => profile ? buildKeywordList(
-      profile.name,
-      provinceName,
-      profile.provinceCode,
-      profile.englishQueries,
-      t.seoKeywords?.headTerms,
-    ) : '',
-    [
-      profile,
-      provinceName,
-      t.seoKeywords?.headTerms,
-    ],
-  );
 
-  const provinceLabel = profile?.provinceCode?.trim() || profile?.province || '';
-  const locationLabel = provinceLabel
-    ? `${profile?.name ?? ''}, ${provinceLabel}`
-    : profile?.name ?? '';
 
   const seoTitle = profile
     ? interpolate(t.cityPage?.seo?.title ?? 'Cat Litter Deodorizer in {{city}} | Purrify Activated Carbon', { city: profile.name })

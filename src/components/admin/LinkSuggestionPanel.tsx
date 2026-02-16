@@ -49,7 +49,6 @@ export function LinkSuggestionPanel({
 }: LinkSuggestionPanelProps) {
   const [activeTab, setActiveTab] = useState<TabType>('suggestions');
   const [analyzer, setAnalyzer] = useState<LinkGraphAnalyzer | null>(null);
-  const [engine, setEngine] = useState<LinkSuggestionEngine | null>(null);
   const [suggestions, setSuggestions] = useState<Map<string, LinkSuggestion[]>>(
     new Map()
   );
@@ -79,7 +78,6 @@ export function LinkSuggestionPanel({
       // Create suggestion engine
       const graph = graphAnalyzer.getAllNodes();
       const suggestionEngine = new LinkSuggestionEngine(graph);
-      setEngine(suggestionEngine);
 
       // Generate full report
       const report = suggestionEngine.getFullReport();
@@ -179,31 +177,28 @@ export function LinkSuggestionPanel({
         <nav className="flex space-x-8 px-6" aria-label="Tabs">
           <button
             onClick={() => setActiveTab('suggestions')}
-            className={`py-4 px-1 border-b-2 font-medium text-sm ${
-              activeTab === 'suggestions'
-                ? 'border-blue-500 text-blue-600 dark:text-blue-400'
-                : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
-            }`}
+            className={`py-4 px-1 border-b-2 font-medium text-sm ${activeTab === 'suggestions'
+              ? 'border-blue-500 text-blue-600 dark:text-blue-400'
+              : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
+              }`}
           >
             Suggestions ({filteredSuggestions.size})
           </button>
           <button
             onClick={() => setActiveTab('issues')}
-            className={`py-4 px-1 border-b-2 font-medium text-sm ${
-              activeTab === 'issues'
-                ? 'border-blue-500 text-blue-600 dark:text-blue-400'
-                : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
-            }`}
+            className={`py-4 px-1 border-b-2 font-medium text-sm ${activeTab === 'issues'
+              ? 'border-blue-500 text-blue-600 dark:text-blue-400'
+              : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
+              }`}
           >
             Issues ({pagesNeedingLinks.length})
           </button>
           <button
             onClick={() => setActiveTab('stats')}
-            className={`py-4 px-1 border-b-2 font-medium text-sm ${
-              activeTab === 'stats'
-                ? 'border-blue-500 text-blue-600 dark:text-blue-400'
-                : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
-            }`}
+            className={`py-4 px-1 border-b-2 font-medium text-sm ${activeTab === 'stats'
+              ? 'border-blue-500 text-blue-600 dark:text-blue-400'
+              : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
+              }`}
           >
             Statistics
           </button>
@@ -272,13 +267,12 @@ function SuggestionsTab({
                   <div className="flex-1">
                     <div className="flex items-center space-x-2 mb-2">
                       <span
-                        className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                          suggestion.priority === 'high'
-                            ? 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200'
-                            : suggestion.priority === 'medium'
+                        className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${suggestion.priority === 'high'
+                          ? 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200'
+                          : suggestion.priority === 'medium'
                             ? 'bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200'
                             : 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200'
-                        }`}
+                          }`}
                       >
                         {suggestion.priority}
                       </span>
@@ -370,19 +364,18 @@ function IssuesTab({
               </code>
             </div>
             <span
-              className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                page.issue === 'orphan'
-                  ? 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200'
-                  : page.issue === 'weak'
+              className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${page.issue === 'orphan'
+                ? 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200'
+                : page.issue === 'weak'
                   ? 'bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200'
                   : 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200'
-              }`}
+                }`}
             >
               {page.issue === 'orphan'
                 ? 'Orphan Page'
                 : page.issue === 'weak'
-                ? 'Weak Links'
-                : 'Low Authority'}
+                  ? 'Weak Links'
+                  : 'Low Authority'}
             </span>
           </div>
 
@@ -433,16 +426,16 @@ function StatsTab({
   stats,
 }: {
   stats:
-    | {
-        totalPages: number;
-        orphanPages: number;
-        weakPages: number;
-        deadEndPages: number;
-        averageIncomingLinks: number;
-        averageOutgoingLinks: number;
-        totalLinks: number;
-      }
-    | undefined;
+  | {
+    totalPages: number;
+    orphanPages: number;
+    weakPages: number;
+    deadEndPages: number;
+    averageIncomingLinks: number;
+    averageOutgoingLinks: number;
+    totalLinks: number;
+  }
+  | undefined;
 }) {
   if (!stats) {
     return (

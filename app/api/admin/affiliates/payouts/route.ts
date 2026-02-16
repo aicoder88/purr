@@ -7,8 +7,21 @@
 import { auth } from '@/auth';
 import prisma from '@/lib/prisma';
 import { PayoutStatus } from '@/generated/client/client';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 export async function GET(req: Request) {
+  // Apply rate limiting (generous: 100 req/min for reads)
+  const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'generous');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   // Check authentication
   const session = await auth();
   if (!session?.user || (session.user as { role?: string }).role !== 'admin') {
@@ -126,9 +139,9 @@ export async function GET(req: Request) {
     return Response.json({
       payouts: transformedPayouts,
       stats,
-    });
+    }, { headers: rateLimitHeaders });
   } catch (error) {
     console.error('Failed to fetch payouts:', error);
-    return Response.json({ error: 'Failed to fetch payouts' }, { status: 500 });
+    return Response.json({ error: 'Failed to fetch payouts' }, { status: 500, headers: rateLimitHeaders });
   }
 }

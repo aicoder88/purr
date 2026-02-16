@@ -67,7 +67,7 @@ jest.mock('next/image', () => ({
 
 // Mock @/lib/image-utils
 jest.mock('@/lib/image-utils', () => ({
-  getImageMetadata: jest.fn((src: string) => ({
+  getImageMetadata: jest.fn((_src: string) => ({
     width: 800,
     height: 600,
     sizes: '100vw',
@@ -270,7 +270,7 @@ describe('OptimizedImage', () => {
     jest.resetModules();
     jest.doMock('next/image', () => ({
       __esModule: true,
-      default: function MockImage({ onLoad }: { onLoad?: () => void }) {
+      default: function MockImage({ _onLoad }: { onLoad?: () => void }) {
         return <img data-testid="next-image" />;
       },
     }));

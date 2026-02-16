@@ -137,7 +137,7 @@ export function CustomerSupport({ customerId }: CustomerSupportProps) {
       ];
 
       setTickets(mockTickets);
-    } catch (error) {
+    } catch {
       // Silently fail
     } finally {
       setLoading(false);
@@ -176,7 +176,7 @@ export function CustomerSupport({ customerId }: CustomerSupportProps) {
           event_label: newTicket.category
         });
       }
-    } catch (error) {
+    } catch {
       // Silently fail
     }
   };
@@ -193,10 +193,10 @@ export function CustomerSupport({ customerId }: CustomerSupportProps) {
       setTickets(prev => prev.map(ticket =>
         ticket.id === ticketId
           ? {
-              ...ticket,
-              messages: [...ticket.messages, newMessage],
-              updated: new Date().toISOString()
-            }
+            ...ticket,
+            messages: [...ticket.messages, newMessage],
+            updated: new Date().toISOString()
+          }
           : ticket
       ));
 
@@ -207,7 +207,7 @@ export function CustomerSupport({ customerId }: CustomerSupportProps) {
           updated: new Date().toISOString()
         } : null);
       }
-    } catch (error) {
+    } catch {
       // Silently fail
     }
   };

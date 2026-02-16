@@ -2,6 +2,7 @@ import { requireAuth } from '@/lib/auth/session';
 import prismaClient from '@/lib/prisma';
 import { LeadStatus } from '@/generated/client/client';
 import * as Sentry from '@sentry/nextjs';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 interface BulkUpdateRequest {
   ids: string[];
@@ -10,6 +11,18 @@ interface BulkUpdateRequest {
 }
 
 export async function POST(req: Request) {
+  // Apply rate limiting (standard: 20 req/min for writes)
+  const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   const { authorized, session } = await requireAuth();
 
   if (!authorized || !session) {
@@ -55,7 +68,7 @@ export async function POST(req: Request) {
       return Response.json({
         success: true,
         updatedCount: result.count
-      }, { status: 200 });
+      }, { status: 200, headers: rateLimitHeaders });
     }
 
     if (action === 'delete') {
@@ -68,13 +81,13 @@ export async function POST(req: Request) {
       return Response.json({
         success: true,
         deletedCount: result.count
-      }, { status: 200 });
+      }, { status: 200, headers: rateLimitHeaders });
     }
 
-    return Response.json({ error: 'Invalid action' }, { status: 400 });
+    return Response.json({ error: 'Invalid action' }, { status: 400, headers: rateLimitHeaders });
   } catch (error) {
     Sentry.captureException(error);
     logger.error('Bulk leads API error', { error: error instanceof Error ? error.message : 'Unknown error' });
-    return Response.json({ error: 'Internal server error' }, { status: 500 });
+    return Response.json({ error: 'Internal server error' }, { status: 500, headers: rateLimitHeaders });
   }
 }

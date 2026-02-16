@@ -4,10 +4,6 @@ const fs = require('fs');
 const path = require('path');
 
 // Configuration
-const TITLE_MAX_LENGTH = 60;
-const DESC_MIN_LENGTH = 120;
-const DESC_MAX_LENGTH = 155;
-const APP_DIR = '/Users/macpro/dev/purr/app';
 
 // Track changes
 const changes = {
@@ -30,14 +26,14 @@ function writeFile(filePath, content) {
 function fixLongDescription(filePath, oldDesc, newDesc) {
   try {
     let content = readFile(filePath);
-    
+
     // Escape special regex characters in the old description
     const escapedDesc = oldDesc.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    
+
     // Replace the description
     const descRegex = new RegExp(`(description:\s*['"])${escapedDesc}(['"])`, 'g');
     content = content.replace(descRegex, `$1${newDesc}$2`);
-    
+
     writeFile(filePath, content);
     console.log(`✅ Fixed long description in ${path.relative('/Users/macpro/dev/purr', filePath)}`);
     changes.descriptionsFixed.push({ file: filePath, type: 'too_long' });
@@ -53,14 +49,14 @@ function fixLongDescription(filePath, oldDesc, newDesc) {
 function fixShortDescription(filePath, oldDesc, newDesc) {
   try {
     let content = readFile(filePath);
-    
+
     // Escape special regex characters
     const escapedDesc = oldDesc.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    
+
     // Replace the description
     const descRegex = new RegExp(`(description:\s*['"])${escapedDesc}(['"])`, 'g');
     content = content.replace(descRegex, `$1${newDesc}$2`);
-    
+
     writeFile(filePath, content);
     console.log(`✅ Fixed short description in ${path.relative('/Users/macpro/dev/purr', filePath)}`);
     changes.descriptionsFixed.push({ file: filePath, type: 'too_short' });

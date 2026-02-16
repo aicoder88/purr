@@ -8,7 +8,7 @@
 
 
 
-import { Clock, Package, Truck, MapPin } from 'lucide-react';
+import { Clock, Package, MapPin } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 

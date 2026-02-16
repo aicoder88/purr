@@ -1451,16 +1451,16 @@ const REDIRECTS = [
 
 // Verification: Check for loops
 try {
-  const loops = module.exports.REDIRECTS.filter(r => 
-    !r.source.includes('(') && 
-    !r.source.includes(':') && 
-    !r.source.includes('*') && 
+  const loops = module.exports.REDIRECTS.filter(r =>
+    !r.source.includes('(') &&
+    !r.source.includes(':') &&
+    !r.source.includes('*') &&
     r.source === r.destination
   );
   if (loops.length > 0) {
     console.error('WARNING: Redirect loops detected:', loops.map(l => l.source));
   }
-} catch (e) {
+} catch {
   // Ignore during module load
 }
 

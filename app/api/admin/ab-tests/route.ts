@@ -9,6 +9,7 @@ import * as Sentry from '@sentry/nextjs';
 import { requireAuth } from '@/lib/auth/session';
 import prismaClient from '@/lib/prisma';
 import { calculateSignificance } from '@/lib/ab-testing-server';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 interface ABTestResponse {
   success: boolean;
@@ -16,7 +17,19 @@ interface ABTestResponse {
   error?: string;
 }
 
-export async function GET(): Promise<Response> {
+export async function GET(req: Request): Promise<Response> {
+  // Apply rate limiting (generous: 100 req/min for reads)
+  const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'generous');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { success: false, error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   // Require admin authentication
   const auth = await requireAuth(undefined, undefined, ['admin']);
   if (!auth.authorized) {
@@ -105,7 +118,7 @@ export async function GET(): Promise<Response> {
       data: testsWithStats,
     };
 
-    return Response.json(response);
+    return Response.json(response, { headers: rateLimitHeaders });
   } catch (error) {
     Sentry.captureException(error);
     return Response.json(
@@ -113,12 +126,24 @@ export async function GET(): Promise<Response> {
         success: false,
         error: error instanceof Error ? error.message : 'Internal server error',
       },
-      { status: 500 }
+      { status: 500, headers: rateLimitHeaders }
     );
   }
 }
 
 export async function POST(req: Request): Promise<Response> {
+  // Apply rate limiting (standard: 20 req/min for writes)
+  const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { success: false, error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   // Require admin authentication
   const auth = await requireAuth(undefined, undefined, ['admin']);
   if (!auth.authorized) {
@@ -191,7 +216,7 @@ export async function POST(req: Request): Promise<Response> {
       data: test,
     };
 
-    return Response.json(response, { status: 201 });
+    return Response.json(response, { status: 201, headers: rateLimitHeaders });
   } catch (error) {
     Sentry.captureException(error);
     return Response.json(
@@ -199,7 +224,7 @@ export async function POST(req: Request): Promise<Response> {
         success: false,
         error: error instanceof Error ? error.message : 'Internal server error',
       },
-      { status: 500 }
+      { status: 500, headers: rateLimitHeaders }
     );
   }
 }

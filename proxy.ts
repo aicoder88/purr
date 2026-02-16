@@ -177,7 +177,7 @@ function applyRouteCachePolicy(response: NextResponse, pathname: string): void {
 }
 
 export async function proxy(request: NextRequest) {
-  const { pathname, search } = request.nextUrl;
+  const { pathname } = request.nextUrl;
   const userAgent = request.headers.get('user-agent') || '';
   const userAgentLower = userAgent.toLowerCase();
   const isCountryBlockExempt = COUNTRY_BLOCK_EXEMPT_USER_AGENTS.some((bot) =>

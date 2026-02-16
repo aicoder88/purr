@@ -124,7 +124,7 @@ async function sendEmailViaResend(
       };
     }
 
-    const { data, error } = await resend.emails.send({
+    const { _data, error } = await resend.emails.send({
       from: `${RESEND_CONFIG.fromName} <${RESEND_CONFIG.fromEmail}>`,
       to: RESEND_CONFIG.toEmail,
       replyTo: sanitizedEmail,
@@ -247,7 +247,7 @@ export async function POST(request: NextRequest) {
     if (isZendeskConfigured()) {
       try {
         const acceptLanguage = request.headers.get('accept-language') || '';
-        const ticketResponse = await createContactTicket({
+        const _ticketResponse = await createContactTicket({
           name,
           email,
           message,

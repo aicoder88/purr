@@ -214,8 +214,8 @@ export function getCacheStats(): {
   totalSize: number;
 } {
   let totalSize = 0;
-  for (const [key, module] of namespaceCache) {
-    totalSize += JSON.stringify(module).length;
+  for (const mod of namespaceCache.values()) {
+    totalSize += JSON.stringify(mod).length;
   }
 
   return {

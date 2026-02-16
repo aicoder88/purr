@@ -285,6 +285,40 @@ async function handleDailyTasks(req: NextRequest): Promise<Response> {
         });
       }
 
+      // Task 5: Expire Referral Rewards
+      try {
+        sentryLogger.info('Running task: Expire Referral Rewards');
+
+        const expiredRewards = await prisma.referralReward.updateMany({
+          where: {
+            status: 'AVAILABLE',
+            expiresAt: {
+              lt: now
+            }
+          },
+          data: {
+            status: 'EXPIRED'
+          }
+        });
+
+        sentryLogger.info('Expired referral rewards', {
+          count: expiredRewards.count
+        });
+
+        results.push({
+          task: 'expireReferralRewards',
+          success: true,
+          details: { expiredCount: expiredRewards.count }
+        });
+      } catch (error) {
+        Sentry.captureException(error);
+        results.push({
+          task: 'expireReferralRewards',
+          success: false,
+          message: error instanceof Error ? error.message : 'Unknown error'
+        });
+      }
+
       const successCount = results.filter(r => r.success).length;
       span.setAttribute('tasksCompleted', successCount);
       span.setAttribute('totalTasks', results.length);

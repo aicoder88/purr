@@ -1,5 +1,6 @@
 import { requireAuth } from '@/lib/auth/session';
 import { AnalyticsService } from '@/lib/blog/analytics-service';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 interface Params {
   slug: string;
@@ -9,6 +10,18 @@ export async function GET(
   request: Request,
   { params }: { params: Promise<Params> }
 ) {
+  // Apply rate limiting (generous: 100 req/min for reads)
+  const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'generous');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   const { authorized } = await requireAuth();
 
   if (!authorized) {
@@ -55,9 +68,9 @@ export async function GET(
       return Response.json({ error: 'Analytics not found' }, { status: 404 });
     }
 
-    return Response.json(analytics);
+    return Response.json(analytics, { headers: rateLimitHeaders });
   } catch (error) {
     console.error('Analytics API error:', error);
-    return Response.json({ error: 'Internal server error' }, { status: 500 });
+    return Response.json({ error: 'Internal server error' }, { status: 500, headers: rateLimitHeaders });
   }
 }

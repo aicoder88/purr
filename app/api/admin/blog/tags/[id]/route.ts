@@ -1,5 +1,6 @@
 import { requireAuth } from '@/lib/auth/session';
 import { ContentStore } from '@/lib/blog/content-store';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 import fs from 'fs/promises';
 import path from 'node:path';
 
@@ -11,6 +12,18 @@ export async function DELETE(
   request: Request,
   { params }: { params: Promise<Params> }
 ) {
+  // Apply rate limiting (standard: 20 req/min for writes)
+  const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   const { authorized } = await requireAuth();
 
   if (!authorized) {
@@ -35,9 +48,9 @@ export async function DELETE(
     // Save to file
     await fs.writeFile(tagsPath, JSON.stringify(filteredTags, null, 2));
 
-    return Response.json({ success: true });
+    return Response.json({ success: true }, { headers: rateLimitHeaders });
   } catch (error) {
     console.error('Error handling tag request:', error);
-    return Response.json({ error: 'Internal server error' }, { status: 500 });
+    return Response.json({ error: 'Internal server error' }, { status: 500, headers: rateLimitHeaders });
   }
 }

@@ -5,7 +5,17 @@ import { RevisionManager } from '@/lib/blog/revision-manager';
 import { SitemapGenerator } from '@/lib/blog/sitemap-generator';
 import { sanitizeBlogPost } from '@/lib/security/sanitize';
 import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
+import { z } from 'zod';
 import type { BlogPost } from '@/types/blog';
+
+// Zod schema for POST body validation
+const postSchema = z.object({
+  title: z.string().max(200, 'Title must be at most 200 characters'),
+  slug: z.string()
+    .max(100, 'Slug must be at most 100 characters')
+    .regex(/^[a-z0-9-]+$/, 'Slug must contain only lowercase letters, numbers, and hyphens'),
+  content: z.string().max(100000, 'Content must be at most 100,000 characters'),
+});
 
 export async function GET(request: Request) {
   const { authorized, session } = await requireAuth();
@@ -63,9 +73,21 @@ export async function POST(request: Request) {
   const sitemapGenerator = new SitemapGenerator();
 
   try {
-    let post: BlogPost = await request.json();
+    const body = await request.json();
+    
+    // Validate with Zod schema
+    const validationResult = postSchema.safeParse(body);
+    if (!validationResult.success) {
+      const errors = validationResult.error.errors.map(e => `${e.path.join('.')}: ${e.message}`);
+      return Response.json(
+        { error: 'Validation failed', details: errors },
+        { status: 400, headers: rateLimitHeaders }
+      );
+    }
+    
+    let post: BlogPost = body;
 
-    // Validate required fields
+    // Validate required fields (additional check for fields not in schema)
     if (!post.title || !post.content || !post.slug) {
       return Response.json(
         { error: 'Missing required fields' }, 

@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { RefreshCw, Calendar, CreditCard, PauseCircle, XCircle, Gift, CheckCircle2, Sparkles } from 'lucide-react';
+import { RefreshCw, Calendar, CreditCard, PauseCircle, Gift, CheckCircle2, Sparkles } from 'lucide-react';
 import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
-import { CONTACT_INFO, SITE_NAME } from '@/lib/constants';
+import { SITE_NAME } from '@/lib/constants';
 import { stripContext } from '@/lib/seo-utils';
 
 export const metadata: Metadata = {

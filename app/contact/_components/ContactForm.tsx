@@ -124,6 +124,8 @@ export default function ContactForm({ translations, locale }: ContactFormProps) 
               ? 'bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 text-green-700 dark:text-green-300 border-2 border-green-300 dark:border-green-700'
               : 'bg-gradient-to-r from-red-100 to-pink-100 dark:from-red-900/30 dark:to-pink-900/30 text-red-700 dark:text-red-300 border-2 border-red-300 dark:border-red-700'
             }`}
+          aria-live="polite"
+          aria-atomic="true"
         >
           {submitStatus.success && <CheckCircle className="w-6 h-6 mr-3" />}
           {submitStatus.message}

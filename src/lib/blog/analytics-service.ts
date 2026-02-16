@@ -57,7 +57,7 @@ export class AnalyticsService {
   /**
    * Get analytics for a specific post
    */
-  async getPostAnalytics(slug: string, _dateRange?: DateRange): Promise<PostAnalytics | null> {
+  async getPostAnalytics(slug: string): Promise<PostAnalytics | null> {
     try {
       // Try to load from cache first
       const cached = await this.loadCachedAnalytics(slug);
@@ -101,7 +101,7 @@ export class AnalyticsService {
   /**
    * Get dashboard metrics
    */
-  async getDashboardMetrics(_dateRange?: DateRange): Promise<DashboardMetrics> {
+  async getDashboardMetrics(): Promise<DashboardMetrics> {
     try {
       const posts = await this.contentStore.getAllPosts('en', false);
 
@@ -171,8 +171,8 @@ export class AnalyticsService {
   /**
    * Export analytics report
    */
-  async exportReport(format: 'csv' | 'pdf', dateRange: DateRange): Promise<Buffer> {
-    const metrics = await this.getDashboardMetrics(dateRange);
+  async exportReport(format: 'csv' | 'pdf', _dateRange: DateRange): Promise<Buffer> {
+    const metrics = await this.getDashboardMetrics();
 
     if (format === 'csv') {
       return this.generateCSV(metrics);

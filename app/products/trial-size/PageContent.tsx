@@ -25,7 +25,7 @@ type TryFreeStep = {
   description?: string;
 };
 
-type TryFreeTestimonial = {
+type _TryFreeTestimonial = {
   text?: string;
   author?: string;
   location?: string;
@@ -56,8 +56,6 @@ export default function TrialSizePage() {
 
   const steps = ((tryFreePage?.howItWorks?.steps as TryFreeStep[]) || []).filter(Boolean);
   const points = ((tryFreePage?.problem?.points as string[]) || []).filter(Boolean);
-  // Disable on-site testimonial rendering until backed by a real, verifiable review system.
-  const testimonials: TryFreeTestimonial[] = [];
   const trustItems = tryFreePage?.trust ? Object.values(tryFreePage.trust) as string[] : [];
 
   const { data: reviewData } = useAggregateReview(productKey, locale);

@@ -1,11 +1,8 @@
 'use client';
-
-import { Heart, Users, Shield, DollarSign, Cat, Home, CheckCircle, Truck } from 'lucide-react';
-
+import { Heart,  Shield, DollarSign, Cat, Home,  Truck } from 'lucide-react';
 interface SheltersVerticalProps {
   locale: string;
 }
-
 export function SheltersVertical({ locale }: SheltersVerticalProps) {
   const t = {
     hero: {
@@ -176,7 +173,6 @@ export function SheltersVertical({ locale }: SheltersVerticalProps) {
           : 'Join the Shelter Program',
     },
   };
-
   return (
     <div className="space-y-16">
       {/* Hero */}
@@ -194,7 +190,6 @@ export function SheltersVertical({ locale }: SheltersVerticalProps) {
         <p className="text-lg text-gray-500 dark:text-gray-400 mb-8 max-w-3xl mx-auto">
           {t.hero.description}
         </p>
-
         {/* Stats */}
         <div className="bg-pink-50 dark:bg-pink-900/20 border border-pink-200 dark:border-pink-800 rounded-lg p-6 max-w-2xl mx-auto">
           <div className="grid grid-cols-3 gap-6 text-center">
@@ -213,7 +208,6 @@ export function SheltersVertical({ locale }: SheltersVerticalProps) {
           </div>
         </div>
       </section>
-
       {/* Challenges */}
       <section>
         <h3 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-4 text-center">
@@ -236,7 +230,6 @@ export function SheltersVertical({ locale }: SheltersVerticalProps) {
           ))}
         </div>
       </section>
-
       {/* Benefits */}
       <section className="bg-gradient-to-br from-pink-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl p-8">
         <h3 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
@@ -261,7 +254,6 @@ export function SheltersVertical({ locale }: SheltersVerticalProps) {
           ))}
         </div>
       </section>
-
       {/* Program Features */}
       <section>
         <h3 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
@@ -280,7 +272,6 @@ export function SheltersVertical({ locale }: SheltersVerticalProps) {
           ))}
         </div>
       </section>
-
       {/* Steps */}
       <section className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8">
         <h3 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
@@ -307,7 +298,6 @@ export function SheltersVertical({ locale }: SheltersVerticalProps) {
           ))}
         </div>
       </section>
-
       {/* Contact */}
       <section className="text-center">
         <div className="bg-gradient-to-r from-pink-600 to-purple-600 rounded-2xl p-8 text-white max-w-2xl mx-auto">

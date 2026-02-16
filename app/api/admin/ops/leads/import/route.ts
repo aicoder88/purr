@@ -2,6 +2,7 @@ import { requireAuth } from '@/lib/auth/session';
 import prismaClient from '@/lib/prisma';
 import { LeadStatus } from '@/generated/client/client';
 import * as Sentry from '@sentry/nextjs';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 interface CSVLead {
   store_name: string;
@@ -52,7 +53,22 @@ function mapStatus(csvStatus: string | undefined): LeadStatus {
   return statusMap[csvStatus.toLowerCase()] || 'NEW';
 }
 
+const MAX_CONTENT_LENGTH = 5 * 1024 * 1024; // 5MB
+const MAX_COMPANY_NAME_LENGTH = 200;
+
 export async function POST(req: Request) {
+  // Apply rate limiting (standard: 20 req/min for writes)
+  const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   const { authorized, session } = await requireAuth();
 
   if (!authorized || !session) {
@@ -63,6 +79,12 @@ export async function POST(req: Request) {
 
   if (!prismaClient) {
     return Response.json({ error: 'Database not configured' }, { status: 503 });
+  }
+
+  // Check content length
+  const contentLength = parseInt(req.headers.get('content-length') || '0', 10);
+  if (contentLength > MAX_CONTENT_LENGTH) {
+    return Response.json({ error: 'Request body too large. Maximum 5MB allowed.' }, { status: 413 });
   }
 
   // Store reference to avoid null checks in async callbacks
@@ -104,8 +126,20 @@ export async function POST(req: Request) {
               return;
             }
 
+            const companyName = csvLead.store_name.trim();
+            
+            // Validate company name length
+            if (companyName.length > MAX_COMPANY_NAME_LENGTH) {
+              results.errors.push({ 
+                row: rowNum, 
+                error: `Company name exceeds maximum length of ${MAX_COMPANY_NAME_LENGTH} characters`,
+                companyName: companyName.substring(0, 50) + '...'
+              });
+              return;
+            }
+
             const leadData = {
-              companyName: csvLead.store_name.trim(),
+              companyName: companyName,
               phone: csvLead.phone?.trim() || null,
               contactName: csvLead.owner_manager?.trim() || null,
               notes: csvLead.notes?.trim() || null,
@@ -179,10 +213,10 @@ export async function POST(req: Request) {
     return Response.json({
       success: true,
       results
-    }, { status: 200 });
+    }, { status: 200, headers: rateLimitHeaders });
   } catch (error) {
     Sentry.captureException(error);
     logger.error('CSV import error', { error: error instanceof Error ? error.message : 'Unknown error' });
-    return Response.json({ error: 'Internal server error' }, { status: 500 });
+    return Response.json({ error: 'Internal server error' }, { status: 500, headers: rateLimitHeaders });
   }
 }

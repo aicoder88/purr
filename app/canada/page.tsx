@@ -1,33 +1,26 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Container } from '@/components/ui/container';
 import { Check, MapPin, Truck, Leaf, Shield, Star, ChevronRight, Home } from 'lucide-react';
 import { defaultLocale } from '@/i18n/config';
 import type { Currency } from '@/lib/geo/currency-detector';
 import { SITE_NAME } from '@/lib/constants';
 import { buildLanguageAlternates, normalizeLocale, stripContext } from '@/lib/seo-utils';
 import { getProductPrice, formatProductPrice } from '@/lib/pricing';
-
 // Force static generation
 export const dynamic = 'force-static';
-
 // Generate metadata for the Canada page
 export async function generateMetadata(): Promise<Metadata> {
   const normalizedLocale = normalizeLocale(defaultLocale);
-
   const pageTitle = 'Best Cat Litter Deodorizer in Canada | Made in Canada | Purrify';
   const pageDescription = 'Looking for cat litter odor control in Canada? Purrify is proudly made in Canada with premium coconut shell activated carbon. Free shipping across Canada on orders over $35.';
-
   const canonicalUrl = 'https://www.purrify.ca/canada/';
   const languageAlternates = buildLanguageAlternates('/canada');
-
   // Convert language alternates to Next.js format
   const alternates: Record<string, string> = {};
   languageAlternates.forEach((alt) => {
     alternates[alt.hrefLang] = alt.href;
   });
-
   return {
     title: pageTitle,
     description: pageDescription,
@@ -81,19 +74,15 @@ export async function generateMetadata(): Promise<Metadata> {
     },
   };
 }
-
 // Async server component for the Canada page
 export default async function CanadaPage() {
   // Static generation with default CAD currency
   // Client-side detection can adjust if needed
   const currency: Currency = 'CAD';
-
   const normalizedLocale = normalizeLocale(defaultLocale);
-
   // Format prices
   const trialPrice = formatProductPrice('trial', currency, normalizedLocale);
   const standardPrice = formatProductPrice('standard', currency, normalizedLocale);
-
   const canadianBenefits = [
     {
       icon: MapPin,
@@ -116,7 +105,6 @@ export default async function CanadaPage() {
       description: 'Real support from a Canadian team who understands Canadian pet owners.',
     },
   ];
-
   const majorCities = [
     { name: 'Toronto', province: 'ON' },
     { name: 'Vancouver', province: 'BC' },
@@ -127,7 +115,6 @@ export default async function CanadaPage() {
     { name: 'Winnipeg', province: 'MB' },
     { name: 'Halifax', province: 'NS' },
   ];
-
   // Structured Data - Product
   const productSchema = {
     '@context': 'https://schema.org',
@@ -147,7 +134,6 @@ export default async function CanadaPage() {
       availability: 'https://schema.org/InStock',
     },
   };
-
   // Structured Data - LocalBusiness
   const localBusinessSchema = {
     '@context': 'https://schema.org',
@@ -169,7 +155,6 @@ export default async function CanadaPage() {
     paymentAccepted: 'Credit Card, PayPal',
     currenciesAccepted: 'CAD',
   };
-
   // Structured Data - Breadcrumb
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -189,7 +174,6 @@ export default async function CanadaPage() {
       },
     ],
   };
-
   return (
     <>
       {/* Structured Data */}
@@ -206,7 +190,6 @@ export default async function CanadaPage() {
           }),
         }}
       />
-
       <div className="bg-cream-50 dark:bg-gray-900 min-h-screen">
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto pt-6 pb-4 px-4 flex items-center text-sm text-gray-500 dark:text-gray-400">
@@ -217,7 +200,6 @@ export default async function CanadaPage() {
           <ChevronRight className="w-4 h-4 mx-2" />
           <span className="text-gray-900 dark:text-gray-100 font-medium">Canada</span>
         </nav>
-
         {/* Hero Section */}
         <header className="max-w-6xl mx-auto px-4 py-12 md:py-16">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -226,16 +208,13 @@ export default async function CanadaPage() {
                 <MapPin className="w-4 h-4" />
                 <span>Proudly Made in Canada</span>
               </div>
-
               <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-50 leading-tight">
                 Canada&apos;s Best Cat Litter Deodorizer
               </h1>
-
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                 Canadian cat owners trust Purrify to eliminate litter box odours. Made in Canada with premium
                 coconut shell activated carbon—the same filtration-grade material used in water purifiers.
               </p>
-
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link
                   href="/products/trial-size"
@@ -250,7 +229,6 @@ export default async function CanadaPage() {
                   View All Products
                 </Link>
               </div>
-
               <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
                 <div className="flex items-center gap-1">
                   <Truck className="w-4 h-4" />
@@ -262,7 +240,6 @@ export default async function CanadaPage() {
                 </div>
               </div>
             </div>
-
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <Image
@@ -281,7 +258,6 @@ export default async function CanadaPage() {
             </div>
           </div>
         </header>
-
         {/* Why Canadian Section */}
         <section className="bg-white dark:bg-gray-800 py-16">
           <div className="max-w-6xl mx-auto px-4">
@@ -292,7 +268,6 @@ export default async function CanadaPage() {
               Supporting Canadian businesses means faster shipping, local support, and products designed
               for Canadian homes.
             </p>
-
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {canadianBenefits.map((benefit) => (
                 <div key={benefit.title} className="text-center">
@@ -306,7 +281,6 @@ export default async function CanadaPage() {
             </div>
           </div>
         </section>
-
         {/* Made in Canada Story */}
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto">
@@ -317,7 +291,6 @@ export default async function CanadaPage() {
                   Our Canadian Story
                 </h2>
               </div>
-
               <div className="prose prose-lg dark:prose-invert max-w-none">
                 <p className="text-gray-700 dark:text-gray-300">
                   Purrify was born from a simple frustration: why couldn&apos;t we find a cat litter deodorizer
@@ -333,7 +306,6 @@ export default async function CanadaPage() {
                   molecular level. No masking. No chemicals. Just clean air and happy cats.
                 </p>
               </div>
-
               <div className="mt-8 grid grid-cols-3 gap-6 text-center">
                 <div>
                   <div className="text-3xl font-bold text-red-600 dark:text-red-400">100%</div>
@@ -351,7 +323,6 @@ export default async function CanadaPage() {
             </div>
           </div>
         </section>
-
         {/* Shipping Across Canada */}
         <section className="bg-gray-50 dark:bg-gray-800/50 py-16 px-4">
           <div className="max-w-6xl mx-auto">
@@ -361,7 +332,6 @@ export default async function CanadaPage() {
             <p className="text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-12">
               We ship to every province and territory. Most orders arrive within 3-7 business days.
             </p>
-
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
               {majorCities.map((city) => (
                 <div
@@ -373,7 +343,6 @@ export default async function CanadaPage() {
                 </div>
               ))}
             </div>
-
             <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
               <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-4 text-center">
                 Shipping Options
@@ -401,7 +370,6 @@ export default async function CanadaPage() {
             </div>
           </div>
         </section>
-
         {/* Canadian Reviews */}
         <section className="py-16 px-4">
           <div className="max-w-6xl mx-auto">
@@ -411,7 +379,6 @@ export default async function CanadaPage() {
             <p className="text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-12">
               Join thousands of Canadian cat owners who&apos;ve switched to Purrify.
             </p>
-
             <div className="grid md:grid-cols-3 gap-8">
               <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
                 <div className="flex items-center gap-1 mb-4">
@@ -425,7 +392,6 @@ export default async function CanadaPage() {
                 </p>
                 <div className="text-sm text-gray-500 dark:text-gray-400">— Sarah M., Toronto, ON</div>
               </div>
-
               <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
                 <div className="flex items-center gap-1 mb-4">
                   {[...Array(5)].map((_, i) => (
@@ -438,7 +404,6 @@ export default async function CanadaPage() {
                 </p>
                 <div className="text-sm text-gray-500 dark:text-gray-400">— Michael R., Vancouver, BC</div>
               </div>
-
               <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
                 <div className="flex items-center gap-1 mb-4">
                   {[...Array(5)].map((_, i) => (
@@ -454,7 +419,6 @@ export default async function CanadaPage() {
             </div>
           </div>
         </section>
-
         {/* CTA Section */}
         <section className="bg-gradient-to-r from-[#FF3131] to-[#FF5050] py-16 px-4">
           <div className="max-w-4xl mx-auto text-center text-white dark:text-gray-100">
@@ -465,7 +429,6 @@ export default async function CanadaPage() {
               Made in Canada. Shipped from Canada. Loved by Canadian cat parents.
               Join the thousands who&apos;ve discovered the Purrify difference.
             </p>
-
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link
                 href="/products/trial-size"
@@ -480,20 +443,17 @@ export default async function CanadaPage() {
                 Standard Size - {standardPrice}
               </Link>
             </div>
-
             <p className="text-sm opacity-75">
               Free shipping on orders over $35 CAD • 100% satisfaction guarantee • Made in Canada 🇨🇦
             </p>
           </div>
         </section>
-
         {/* FAQ Section */}
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-heading font-bold text-center text-gray-900 dark:text-gray-50 mb-12">
               Frequently Asked Questions
             </h2>
-
             <div className="space-y-6">
               <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">
@@ -504,7 +464,6 @@ export default async function CanadaPage() {
                   carbon and produce our product domestically, supporting Canadian jobs and ensuring quality control.
                 </p>
               </div>
-
               <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">
                   Do you ship to all provinces and territories?
@@ -514,7 +473,6 @@ export default async function CanadaPage() {
                   on orders over $35 CAD. Remote areas may have slightly longer delivery times.
                 </p>
               </div>
-
               <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">
                   How long does shipping take within Canada?
@@ -525,7 +483,6 @@ export default async function CanadaPage() {
                   (2-4 days) is available at checkout.
                 </p>
               </div>
-
               <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">
                   What makes Purrify different from other cat litter deodorizers in Canada?
@@ -536,7 +493,6 @@ export default async function CanadaPage() {
                   3-7x longer than traditional deodorizers. Plus, you&apos;re supporting a Canadian business.
                 </p>
               </div>
-
               <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">
                   Can I buy Purrify in Canadian stores?
@@ -550,14 +506,12 @@ export default async function CanadaPage() {
             </div>
           </div>
         </section>
-
         {/* Related Content */}
         <section className="bg-gray-50 dark:bg-gray-800/50 py-16 px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-50 mb-8">
               Learn More About Cat Litter Odour Control
             </h2>
-
             <div className="grid md:grid-cols-3 gap-6">
               <Link
                 href="/learn/how-activated-carbon-works"
@@ -570,7 +524,6 @@ export default async function CanadaPage() {
                   The science behind odour elimination
                 </p>
               </Link>
-
               <Link
                 href="/learn/solutions/apartment-cat-smell-solution"
                 className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all border border-gray-200 dark:border-gray-700 group"
@@ -582,7 +535,6 @@ export default async function CanadaPage() {
                   Perfect for Canadian condos and apartments
                 </p>
               </Link>
-
               <Link
                 href="/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative"
                 className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all border border-gray-200 dark:border-gray-700 group"
@@ -601,5 +553,3 @@ export default async function CanadaPage() {
     </>
   );
 }
-
-

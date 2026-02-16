@@ -1,8 +1,21 @@
 import { auth } from '@/auth';
 import prisma from '@/lib/prisma';
 import { AffiliateStatus } from '@/generated/client/client';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 export async function GET(req: Request) {
+  // Apply rate limiting (generous: 100 req/min for reads)
+  const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'generous');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   // Check authentication
   const session = await auth();
   if (!session?.user || (session.user as { role?: string }).role !== 'admin') {
@@ -22,8 +35,8 @@ export async function GET(req: Request) {
     const sortBy = searchParams.get('sortBy') || 'createdAt';
     const sortOrder = searchParams.get('sortOrder') || 'desc';
 
-    const pageNum = parseInt(page, 10);
-    const limitNum = parseInt(limit, 10);
+    const pageNum = Math.max(1, parseInt(page, 10) || 1);
+    const limitNum = Math.min(100, Math.max(1, parseInt(limit, 10) || 20));
     const skip = (pageNum - 1) * limitNum;
 
     // Build where clause
@@ -99,9 +112,9 @@ export async function GET(req: Request) {
         total,
         totalPages: Math.ceil(total / limitNum),
       },
-    });
+    }, { headers: rateLimitHeaders });
   } catch (error) {
     console.error('Failed to fetch affiliates:', error);
-    return Response.json({ error: 'Failed to fetch affiliates' }, { status: 500 });
+    return Response.json({ error: 'Failed to fetch affiliates' }, { status: 500, headers: rateLimitHeaders });
   }
 }

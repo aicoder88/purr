@@ -11,7 +11,6 @@ import {
   Linkedin,
   Youtube,
   Facebook,
-  Star,
   ExternalLink,
   Microscope,
 } from "lucide-react";

@@ -1,10 +1,9 @@
 'use client';
-import { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import Link from "next/link";
 import {
   Menu,
   X,
-  ShoppingBag,
   ChevronDown,
   LogOut,
   User as UserIcon,
@@ -37,10 +36,7 @@ interface NavigationItem {
 export function Header() {
   const mobileMenuId = 'mobile-navigation-menu';
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
-  const [isRetailersDropdownOpen, setIsRetailersDropdownOpen] = useState(false);
-  const [isLearnDropdownOpen, setIsLearnDropdownOpen] = useState(false);
-  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [expandedMobileSection, setExpandedMobileSection] = useState<string | null>(null);
   const { t, locale } = useTranslation();
   const headerUiCopy =
@@ -73,27 +69,7 @@ export function Header() {
   const handleNavMouseEnter = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       const id = (e.currentTarget.dataset.menuId as string) || "";
-      if (id === "products") {
-        setIsProductsDropdownOpen(true);
-        setIsRetailersDropdownOpen(false);
-        setIsLearnDropdownOpen(false);
-        setIsAboutDropdownOpen(false);
-      } else if (id === "retailers") {
-        setIsProductsDropdownOpen(false);
-        setIsRetailersDropdownOpen(true);
-        setIsLearnDropdownOpen(false);
-        setIsAboutDropdownOpen(false);
-      } else if (id === "learn") {
-        setIsProductsDropdownOpen(false);
-        setIsRetailersDropdownOpen(false);
-        setIsLearnDropdownOpen(true);
-        setIsAboutDropdownOpen(false);
-      } else if (id === "about") {
-        setIsProductsDropdownOpen(false);
-        setIsRetailersDropdownOpen(false);
-        setIsLearnDropdownOpen(false);
-        setIsAboutDropdownOpen(true);
-      }
+      setActiveDropdown(id);
     },
     [],
   );
@@ -101,41 +77,9 @@ export function Header() {
   const handleNavClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       const id = (e.currentTarget.dataset.menuId as string) || "";
-      if (id === "products") {
-        const next = !isProductsDropdownOpen;
-        setIsProductsDropdownOpen(next);
-        if (next) {
-          setIsRetailersDropdownOpen(false);
-          setIsLearnDropdownOpen(false);
-          setIsAboutDropdownOpen(false);
-        }
-      } else if (id === "retailers") {
-        const next = !isRetailersDropdownOpen;
-        setIsRetailersDropdownOpen(next);
-        if (next) {
-          setIsProductsDropdownOpen(false);
-          setIsLearnDropdownOpen(false);
-          setIsAboutDropdownOpen(false);
-        }
-      } else if (id === "learn") {
-        const next = !isLearnDropdownOpen;
-        setIsLearnDropdownOpen(next);
-        if (next) {
-          setIsProductsDropdownOpen(false);
-          setIsRetailersDropdownOpen(false);
-          setIsAboutDropdownOpen(false);
-        }
-      } else if (id === "about") {
-        const next = !isAboutDropdownOpen;
-        setIsAboutDropdownOpen(next);
-        if (next) {
-          setIsProductsDropdownOpen(false);
-          setIsRetailersDropdownOpen(false);
-          setIsLearnDropdownOpen(false);
-        }
-      }
+      setActiveDropdown((current) => current === id ? null : id);
     },
-    [isProductsDropdownOpen, isRetailersDropdownOpen, isLearnDropdownOpen, isAboutDropdownOpen],
+    [],
   );
 
   const handleNavKeyDown = useCallback(
@@ -143,18 +87,13 @@ export function Header() {
       const id = (e.currentTarget.dataset.menuId as string) || "";
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
-        // Delegate to click handler for toggling
-        // Create a synthetic event object compatible with handleNavClick
-        handleNavClick(e as unknown as React.MouseEvent<HTMLButtonElement>);
+        setActiveDropdown((current) => current === id ? null : id);
       }
       if (e.key === "Escape") {
-        if (id === "products") setIsProductsDropdownOpen(false);
-        if (id === "retailers") setIsRetailersDropdownOpen(false);
-        if (id === "learn") setIsLearnDropdownOpen(false);
-        if (id === "about") setIsAboutDropdownOpen(false);
+        setActiveDropdown(null);
       }
     },
-    [handleNavClick],
+    [],
   );
 
   const toggleMenu = useCallback(() => {
@@ -165,26 +104,11 @@ export function Header() {
     setIsMenuOpen(false);
   }, []);
 
-  const scrollToProducts = useCallback(() => {
-    const productsSection = document.getElementById("products");
-    if (productsSection) {
-      productsSection.scrollIntoView({ behavior: "smooth" });
-    }
-    closeMenu();
-  }, [closeMenu]);
-
-  const handleBuyNowMobile = useCallback(() => {
-    scrollToProducts();
-    closeMenu();
-  }, [scrollToProducts, closeMenu]);
 
   // Close mobile menu when pathname changes (route change detection)
   useEffect(() => {
     setIsMenuOpen(false);
-    setIsProductsDropdownOpen(false);
-    setIsRetailersDropdownOpen(false);
-    setIsLearnDropdownOpen(false);
-    setIsAboutDropdownOpen(false);
+    setActiveDropdown(null);
     setExpandedMobileSection(null);
   }, [pathname, searchParams]);
 
@@ -194,18 +118,15 @@ export function Header() {
       const target = e.target as HTMLElement;
       // Only close if clicking completely outside the header
       if (headerRef.current && !headerRef.current.contains(target)) {
-        setIsProductsDropdownOpen(false);
-        setIsRetailersDropdownOpen(false);
-        setIsLearnDropdownOpen(false);
-        setIsAboutDropdownOpen(false);
+        setActiveDropdown(null);
       }
     };
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
-  // Navigation items for better organization
-  const navigationItems: NavigationItem[] = [
+  // Navigation items - memoized to prevent unnecessary re-renders
+  const navigationItems: NavigationItem[] = useMemo(() => [
     {
       id: "products",
       label: t.nav?.products || "",
@@ -380,7 +301,7 @@ export function Header() {
         },
       ],
     },
-  ];
+  ], [t, localePrefix]);
 
   return (
     <header
@@ -424,14 +345,7 @@ export function Header() {
                       className="flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 focus:text-brand-red dark:focus:text-brand-red-400 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 rounded-sm"
                       data-dropdown
                       data-menu-id={item.id}
-                      aria-expanded={
-                        (item.id === "products" && isProductsDropdownOpen) ||
-                          (item.id === "retailers" && isRetailersDropdownOpen) ||
-                          (item.id === "learn" && isLearnDropdownOpen) ||
-                          (item.id === "about" && isAboutDropdownOpen)
-                          ? "true"
-                          : "false"
-                      }
+                      aria-expanded={activeDropdown === item.id ? "true" : "false"}
                       aria-haspopup="true"
                       onMouseEnter={handleNavMouseEnter}
                       // Do not auto-dismiss on mouse leave
@@ -441,10 +355,7 @@ export function Header() {
                       {item.label}
                       <ChevronDown className="ml-1 h-4 w-4" />
                     </button>
-                    {((item.id === "products" && isProductsDropdownOpen) ||
-                      (item.id === "retailers" && isRetailersDropdownOpen) ||
-                      (item.id === "learn" && isLearnDropdownOpen) ||
-                      (item.id === "about" && isAboutDropdownOpen)) && (
+                    {activeDropdown === item.id && (
                         <div
                           className="absolute top-full left-0 mt-1 bg-white dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 z-50 w-64 max-h-96 overflow-y-auto p-2"
                           role="menu"
@@ -509,15 +420,6 @@ export function Header() {
                 <span>{t.nav?.signOut || ""}</span>
               </Button>
             )}
-            {/* B2C: ORIGINAL BUY NOW BUTTON
-            <Button
-              onClick={scrollToProducts}
-              className="flex items-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
-            >
-              <ShoppingBag className="w-4 h-4" />
-              {t.nav?.buyNow || ""}
-            </Button>
-            */}
             <Button
               asChild
               className="flex items-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
@@ -648,15 +550,6 @@ export function Header() {
                     </Button>
                   </div>
                 )}
-                {/* B2C: ORIGINAL BUY NOW BUTTON
-                <Button
-                  onClick={handleBuyNowMobile}
-                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
-                >
-                  <ShoppingBag className="w-4 h-4" />
-                  {t.nav?.buyNow || ""}
-                </Button>
-                */}
                 <Button
                   asChild
                   className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"

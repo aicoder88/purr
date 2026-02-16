@@ -1,4 +1,4 @@
- 
+
 import { useState, useEffect, useCallback } from 'react';
 import { ShoppingBag, MapPin, Clock, Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -87,7 +87,7 @@ const PURCHASE_DATA: PurchaseNotification[] = [
   }
 ];
 
-export function LivePurchaseNotifications({ 
+export function LivePurchaseNotifications({
   enabled = true,
   position = 'bottom-left',
   maxNotifications = 3
@@ -104,7 +104,7 @@ export function LivePurchaseNotifications({
 
     const showNotification = () => {
       const randomNotification = PURCHASE_DATA[Math.floor(Math.random() * PURCHASE_DATA.length)];
-      
+
       // Create a unique notification with updated timestamp
       const newNotification: PurchaseNotification = {
         ...randomNotification,
@@ -114,14 +114,14 @@ export function LivePurchaseNotifications({
 
       setNotifications(prev => {
         const updated = [newNotification, ...prev].slice(0, maxNotifications);
-        
+
         // Track social proof impression
         safeTrackEvent('social_proof_shown', {
           event_category: 'conversion',
           event_label: 'purchasenotification',
           value: 1
         });
-        
+
         return updated;
       });
 
@@ -130,7 +130,7 @@ export function LivePurchaseNotifications({
         setNotifications(prev => prev.filter(n => n.id !== newNotification.id));
         timeouts.delete(removeTimeout);
       }, 8000);
-      
+
       timeouts.add(removeTimeout);
     };
 
@@ -169,7 +169,7 @@ export function LivePurchaseNotifications({
     return options[Math.floor(Math.random() * options.length)];
   };
 
-  const handleNotificationClick = useCallback((notification: PurchaseNotification) => {
+  const handleNotificationClick = useCallback((_notification: PurchaseNotification) => {
     // Track click on social proof
     safeTrackEvent('social_proof_clicked', {
       event_category: 'conversion',
@@ -260,14 +260,14 @@ export function LivePurchaseNotifications({
                   </div>
                 )}
               </div>
-              
+
               <p
                 id={`notification-${notification.id}-product`}
                 className="text-sm text-gray-600 dark:text-gray-300 mb-1"
               >
                 purchased <span className="font-medium">{notification.product}</span>
               </p>
-              
+
               <div
                 id={`notification-${notification.id}-meta`}
                 className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400"
@@ -312,7 +312,7 @@ export function LiveVisitorCounter() {
     // Initial visitor count (simulate realistic numbers)
     const baseCount = 47 + Math.floor(Math.random() * 23);
     setVisitorCount(baseCount);
-    
+
     // Show after 5 seconds
     const timer = setTimeout(() => {
       setIsVisible(true);

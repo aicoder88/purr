@@ -136,7 +136,7 @@ export default function CSVImportModal({
     try {
       const text = await selectedFile.text();
       const data = parseCSV(text);
-      
+
       if (data.length === 0) {
         setError('No valid data found in CSV. Make sure the first column header is "store_name".');
         setParsedData([]);
@@ -144,7 +144,7 @@ export default function CSVImportModal({
       }
 
       setParsedData(data);
-    } catch (err) {
+    } catch {
       setError('Failed to parse CSV file');
       setParsedData([]);
     }

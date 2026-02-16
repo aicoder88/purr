@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Container } from '@/components/ui/container';
 import {
   Accordion,
@@ -185,7 +184,6 @@ export default async function AmmoniaControlPage() {
   ];
 
   // Currency symbol (static CAD for SSR)
-  const currencySymbol = '$';
   const lowPrice = '4.76';
   const highPrice = '34.99';
 

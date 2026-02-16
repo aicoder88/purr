@@ -136,7 +136,7 @@ function verifyCSRFToken(req: Request): boolean {
 // API HANDLER
 // ============================================================================
 
-type ResponseData = {
+type _ResponseData = {
   success: boolean;
   message: string;
   ticketId?: number;

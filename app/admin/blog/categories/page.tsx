@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import AdminLayout from '@/components/admin/AdminLayout';
 import type { Category } from '@/types/blog';
 import { ArrowLeft, Plus, Edit2, Trash2, Save, X } from 'lucide-react';
@@ -15,7 +14,6 @@ async function fetchCategories() {
 }
 
 export default function CategoriesPage() {
-  const router = useRouter();
   const [categories, setCategories] = useState<Category[]>([]);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editForm, setEditForm] = useState<Partial<Category>>({});

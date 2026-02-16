@@ -5,7 +5,7 @@ import { defaultLocale } from '@/i18n/config';
 import { LocaleDetector } from '@/components/LocaleDetector';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { Providers } from './providers';
-import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, SOCIAL_LINKS } from '@/lib/constants';
+import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants';
 import '@/lib/chunk-retry-handler';
 
 const inter = Inter({
@@ -15,15 +15,6 @@ const inter = Inter({
   weight: ['400', '500', '600', '700', '800', '900'],
 });
 
-// Hreflang locale mapping for regional targeting
-// Using proper BCP 47 language tags with hyphens
-const HREFLANG_MAP: Record<string, string> = {
-  en: 'en-CA',    // English - Canada (default)
-  fr: 'fr-CA',    // French - Canada
-  zh: 'zh-CN',    // Chinese - China (Simplified)
-  es: 'es-US',    // Spanish - USA
-};
-
 // OG Locale mapping (OpenGraph uses underscores)
 const OG_LOCALE_MAP: Record<string, string> = {
   fr: 'fr_CA',
@@ -31,9 +22,6 @@ const OG_LOCALE_MAP: Record<string, string> = {
   es: 'es_US',
   en: 'en_CA',
 };
-
-// Supported locales for hreflang
-const SUPPORTED_LOCALES = ['en', 'fr', 'zh', 'es'];
 
 /**
  * Generate metadata for the app based on locale

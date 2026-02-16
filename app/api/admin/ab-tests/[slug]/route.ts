@@ -11,6 +11,7 @@ import * as Sentry from '@sentry/nextjs';
 import { requireAuth } from '@/lib/auth/session';
 import prismaClient from '@/lib/prisma';
 import { calculateSignificance } from '@/lib/ab-testing';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 interface ABTestResponse {
   success: boolean;
@@ -22,7 +23,19 @@ interface RouteParams {
   params: Promise<{ slug: string }>;
 }
 
-export async function GET(_req: Request, { params }: RouteParams): Promise<Response> {
+export async function GET(req: Request, { params }: RouteParams): Promise<Response> {
+  // Apply rate limiting (generous: 100 req/min for reads)
+  const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'generous');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { success: false, error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   // Require admin authentication
   const auth = await requireAuth(undefined, undefined, ['admin']);
   if (!auth.authorized) {
@@ -122,7 +135,7 @@ export async function GET(_req: Request, { params }: RouteParams): Promise<Respo
       },
     };
 
-    return Response.json(response);
+    return Response.json(response, { headers: rateLimitHeaders });
   } catch (error) {
     Sentry.captureException(error);
     return Response.json(
@@ -130,12 +143,24 @@ export async function GET(_req: Request, { params }: RouteParams): Promise<Respo
         success: false,
         error: error instanceof Error ? error.message : 'Internal server error',
       },
-      { status: 500 }
+      { status: 500, headers: rateLimitHeaders }
     );
   }
 }
 
 export async function PUT(req: Request, { params }: RouteParams): Promise<Response> {
+  // Apply rate limiting (standard: 20 req/min for writes)
+  const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { success: false, error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   // Require admin authentication
   const auth = await requireAuth(undefined, undefined, ['admin']);
   if (!auth.authorized) {
@@ -211,7 +236,7 @@ export async function PUT(req: Request, { params }: RouteParams): Promise<Respon
       data: updated,
     };
 
-    return Response.json(response);
+    return Response.json(response, { headers: rateLimitHeaders });
   } catch (error) {
     Sentry.captureException(error);
     return Response.json(
@@ -219,12 +244,24 @@ export async function PUT(req: Request, { params }: RouteParams): Promise<Respon
         success: false,
         error: error instanceof Error ? error.message : 'Internal server error',
       },
-      { status: 500 }
+      { status: 500, headers: rateLimitHeaders }
     );
   }
 }
 
 export async function POST(req: Request, { params }: RouteParams): Promise<Response> {
+  // Apply rate limiting (standard: 20 req/min for writes)
+  const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { success: false, error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   // Require admin authentication
   const auth = await requireAuth(undefined, undefined, ['admin']);
   if (!auth.authorized) {
@@ -346,7 +383,7 @@ export async function POST(req: Request, { params }: RouteParams): Promise<Respo
       data: updated,
     };
 
-    return Response.json(response);
+    return Response.json(response, { headers: rateLimitHeaders });
   } catch (error) {
     Sentry.captureException(error);
     return Response.json(
@@ -354,12 +391,24 @@ export async function POST(req: Request, { params }: RouteParams): Promise<Respo
         success: false,
         error: error instanceof Error ? error.message : 'Internal server error',
       },
-      { status: 500 }
+      { status: 500, headers: rateLimitHeaders }
     );
   }
 }
 
-export async function DELETE(_req: Request, { params }: RouteParams): Promise<Response> {
+export async function DELETE(req: Request, { params }: RouteParams): Promise<Response> {
+  // Apply rate limiting (standard: 20 req/min for writes)
+  const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { success: false, error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   // Require admin authentication
   const auth = await requireAuth(undefined, undefined, ['admin']);
   if (!auth.authorized) {
@@ -413,7 +462,7 @@ export async function DELETE(_req: Request, { params }: RouteParams): Promise<Re
       data: updated,
     };
 
-    return Response.json(response);
+    return Response.json(response, { headers: rateLimitHeaders });
   } catch (error) {
     Sentry.captureException(error);
     return Response.json(
@@ -421,7 +470,7 @@ export async function DELETE(_req: Request, { params }: RouteParams): Promise<Re
         success: false,
         error: error instanceof Error ? error.message : 'Internal server error',
       },
-      { status: 500 }
+      { status: 500, headers: rateLimitHeaders }
     );
   }
 }

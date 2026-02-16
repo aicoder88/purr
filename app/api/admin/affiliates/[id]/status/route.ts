@@ -8,6 +8,7 @@ import { auth } from '@/auth';
 import prisma from '@/lib/prisma';
 import { AffiliateStatus } from '@/generated/client/client';
 import { z } from 'zod';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 // Input validation schema
 const updateStatusSchema = z.object({
@@ -19,6 +20,18 @@ export async function PATCH(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  // Apply rate limiting (standard: 20 req/min for writes)
+  const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   // Check authentication
   const session = await auth();
   if (!session?.user || (session.user as { role?: string }).role !== 'admin') {
@@ -77,9 +90,9 @@ export async function PATCH(
     return Response.json({
       success: true,
       affiliate: updatedAffiliate,
-    });
+    }, { headers: rateLimitHeaders });
   } catch (error) {
     console.error('Failed to update affiliate status:', error);
-    return Response.json({ error: 'Failed to update affiliate status' }, { status: 500 });
+    return Response.json({ error: 'Failed to update affiliate status' }, { status: 500, headers: rateLimitHeaders });
   }
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Mail, X, Gift, Sparkles, Bell, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/lib/translation-context';
@@ -12,20 +12,20 @@ interface NewsletterSignupProps {
   className?: string;
 }
 
-export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
+export const NewsletterSignup: React.FC<NewsletterSignupProps> = React.memo(function NewsletterSignup({
   variant = 'default',
   showBenefits = true,
   discount = 10,
   className = ''
-}) => {
+}) {
   const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!email || !email.includes('@')) {
       setStatus('error');
       setErrorMessage(t.newsletter?.errorInvalidEmail || 'Please enter a valid email address');
@@ -35,20 +35,28 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
     setStatus('loading');
 
     try {
-      // Simulate API call - replace with actual newsletter service
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'newsletter' }),
+      });
       
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || 'Subscription failed');
+      }
+
       setStatus('success');
       setEmail('');
-      
+
       // Reset after 3 seconds
       setTimeout(() => setStatus('idle'), 3000);
     } catch (err) {
       setStatus('error');
-      setErrorMessage(t.newsletter?.errorGeneric || 'Something went wrong. Please try again.');
+      setErrorMessage(err instanceof Error ? err.message : (t.newsletter?.errorGeneric || 'Something went wrong. Please try again.'));
       setTimeout(() => setStatus('idle'), 3000);
     }
-  };
+  }, [t, discount]);
 
   const benefits = [
     {
@@ -82,7 +90,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
         <div className={`${cardClasses} p-8 max-w-md w-full relative shadow-2xl`}>
           <button
             className={`absolute top-4 right-4 ${COLORS.text.muted} hover:${COLORS.text.tertiary} ${TRANSITIONS.default}`}
-            onClick={() => {/* Handle close */}}
+            onClick={() => {/* Handle close */ }}
           >
             <X className="w-6 h-6" />
           </button>
@@ -313,6 +321,6 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
       </div>
     </div>
   );
-};
+});
 
 export default NewsletterSignup;

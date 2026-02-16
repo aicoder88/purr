@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, X, HelpCircle, Brain, Trophy, RotateCcw, Sparkles, Star } from "lucide-react";
+import { Check, X, Brain, Trophy, RotateCcw, Sparkles, Star } from "lucide-react";
 import { playRandomMeow, playRandomPurr, initAudioContext } from "@/lib/sounds/cat-sounds";
 
 interface Question {
@@ -307,8 +307,8 @@ export function CatTrivia() {
                         animate={{ opacity: 1, y: 0, height: 'auto' }}
                         exit={{ opacity: 0, y: -10, height: 0 }}
                         className={`p-4 rounded-xl mb-4 ${isCorrect
-                                ? 'bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 border border-green-200 dark:border-green-800'
-                                : 'bg-gradient-to-r from-red-100 to-pink-100 dark:from-red-900/30 dark:to-pink-900/30 border border-red-200 dark:border-red-800'
+                            ? 'bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 border border-green-200 dark:border-green-800'
+                            : 'bg-gradient-to-r from-red-100 to-pink-100 dark:from-red-900/30 dark:to-pink-900/30 border border-red-200 dark:border-red-800'
                             }`}
                     >
                         <div className="flex items-start gap-3">

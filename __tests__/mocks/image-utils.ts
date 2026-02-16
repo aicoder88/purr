@@ -9,7 +9,7 @@ export interface ImageMetadata {
   blurDataURL?: string;
 }
 
-export function getImageMetadata(src: string): ImageMetadata | null {
+export function getImageMetadata(_src: string): ImageMetadata | null {
   // Return default metadata for testing
   return {
     width: 800,
@@ -18,6 +18,6 @@ export function getImageMetadata(src: string): ImageMetadata | null {
   };
 }
 
-export function generateBlurDataURL(src: string): string {
+export function generateBlurDataURL(_src: string): string {
   return 'data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA';
 }

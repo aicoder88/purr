@@ -118,7 +118,7 @@ export function checkRateLimit(
   };
 }
 
-type RouteHandler = (req: NextRequest, context?: any) => Promise<Response> | Response;
+type RouteHandler = (req: NextRequest, context?: unknown) => Promise<Response> | Response;
 
 /**
  * Middleware to apply rate limiting to App Router routes
@@ -127,7 +127,7 @@ export function withRateLimit(
   config: RateLimitConfig,
   handler: RouteHandler
 ): RouteHandler {
-  return async (req: NextRequest, context?: any) => {
+  return async (req: NextRequest, context?: unknown) => {
     const { allowed, remaining, resetTime } = checkRateLimit(req, config);
 
     // If rate limited, return error response immediately
@@ -161,7 +161,7 @@ export function withRateLimit(
       response.headers.set('X-RateLimit-Limit', config.maxRequests.toString());
       response.headers.set('X-RateLimit-Remaining', remaining.toString());
       response.headers.set('X-RateLimit-Reset', new Date(resetTime).toISOString());
-    } catch (e) {
+    } catch (_e) {
       // Ignore if headers are immutable
     }
 

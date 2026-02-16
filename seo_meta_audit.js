@@ -24,7 +24,7 @@ function getLength(str) {
 }
 
 // Helper to extract metadata from file content
-function extractMetadata(content, filePath) {
+function extractMetadata(content, _filePath) {
   const metadata = { title: null, description: null };
   
   // Try to find title

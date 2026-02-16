@@ -19,7 +19,6 @@ import { getSEOMeta } from '@/translations/seo-meta';
 import {
   getPriceValidityDate,
   generateHomepageSchema,
-  buildLanguageAlternates,
   getLocalizedKeywords,
   normalizeLocale,
 } from '@/lib/seo-utils';
@@ -44,7 +43,6 @@ export async function generateMetadata(): Promise<Metadata> {
   // Build canonical and alternate URLs
   const baseUrl = 'https://www.purrify.ca';
   const canonicalUrl = `${baseUrl}/`;
-  const languageAlternates = buildLanguageAlternates('/');
 
   // Convert language alternates to Next.js format
   const alternates: Record<string, string> = {
@@ -126,11 +124,8 @@ export default async function HomePage() {
   const priceValidUntil = getPriceValidityDate();
 
   // Get normalized locale for SEO
-  const normalizedLocale = normalizeLocale(defaultLocale);
+  const _normalizedLocale = normalizeLocale(defaultLocale);
 
-  // Get SEO meta
-  const seoMeta = getSEOMeta(normalizedLocale, 'homepage');
-  const pageTitle = seoMeta?.title || `${SITE_NAME} - Activated Carbon Cat Litter Additive`;
 
   // Generate structured data
   const structuredData = await generateStructuredData(defaultLocale, currency);

@@ -1,21 +1,5 @@
-import { useTranslation } from '@/lib/translation-context';
-import {
-  buildLanguageAlternates,
-  getLocalizedUrl,
-  normalizeMetaDescription,
-  normalizeMetaTitle,
-} from '@/lib/seo-utils';
-
 interface LocalizedMetaProps {
-  title?: string;
-  description?: string;
-  keywords?: string;
-  canonicalPath: string;
-  ogTitle?: string;
-  ogDescription?: string;
-  ogImage?: string;
   structuredData?: object;
-  additionalMeta?: React.ReactNode;
 }
 
 /**

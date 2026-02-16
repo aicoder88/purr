@@ -7,12 +7,12 @@
 
 import prisma from '@/lib/prisma';
 import {
-  validateReferralCodeFormat,
+  _validateReferralCodeFormat,
   REFERRAL_CONFIG,
 } from '@/lib/referral';
 import { getProductPrice, formatProductPrice } from '@/lib/pricing';
 
-interface ReferralCodeValidation {
+interface _ReferralCodeValidation {
   isValid: boolean;
   code?: string;
   referrerName?: string;
@@ -228,7 +228,7 @@ interface CartItem {
   referralCode?: string;
 }
 
-function applyReferralDiscount(
+function _applyReferralDiscount(
   cartItems: CartItem[],
   referralCode: string
 ): CartItem[] {

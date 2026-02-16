@@ -26,35 +26,35 @@ export interface AIPageContent {
  */
 export function generateAIMarkdown(page: AIPageContent): string {
   const sections: string[] = [];
-  
+
   // Header with metadata
   sections.push(`# ${page.title}`);
   sections.push('');
   sections.push(`**URL:** ${page.url}`);
   sections.push(`**Description:** ${page.description}`);
-  
+
   if (page.author) {
     sections.push(`**Author:** ${page.author}`);
   }
-  
+
   if (page.publishedDate) {
     sections.push(`**Published:** ${page.publishedDate}`);
   }
-  
+
   if (page.modifiedDate) {
     sections.push(`**Last Modified:** ${page.modifiedDate}`);
   }
-  
+
   sections.push('');
   sections.push('---');
   sections.push('');
-  
+
   // Main content (already markdown)
   sections.push(page.content);
   sections.push('');
   sections.push('---');
   sections.push('');
-  
+
   // Key Takeaways
   if (page.keyTakeaways.length > 0) {
     sections.push('## Key Takeaways');
@@ -64,7 +64,7 @@ export function generateAIMarkdown(page: AIPageContent): string {
     });
     sections.push('');
   }
-  
+
   // Verified Claims
   if (page.claims.length > 0) {
     sections.push('## Fact-Checked Claims');
@@ -85,7 +85,7 @@ export function generateAIMarkdown(page: AIPageContent): string {
       sections.push('');
     });
   }
-  
+
   // FAQs
   if (page.faqs && page.faqs.length > 0) {
     sections.push('## Frequently Asked Questions');
@@ -97,7 +97,7 @@ export function generateAIMarkdown(page: AIPageContent): string {
       sections.push('');
     });
   }
-  
+
   // Scientific Citations
   if (page.citations.length > 0) {
     sections.push('## Scientific References');
@@ -130,13 +130,13 @@ export function generateAIMarkdown(page: AIPageContent): string {
       sections.push('');
     });
   }
-  
+
   // Footer
   sections.push('---');
   sections.push('');
   sections.push('*This content is optimized for AI consumption and includes structured citations for training and reference purposes.*');
   sections.push(`*Source: ${page.url}*`);
-  
+
   return sections.join('\n');
 }
 
@@ -201,36 +201,36 @@ export function stripHtml(html: string): string {
  */
 export function htmlToMarkdown(html: string): string {
   let markdown = html;
-  
+
   // Headers
   markdown = markdown.replace(/<h1[^>]*>(.*?)<\/h1>/gi, '# $1\n\n');
   markdown = markdown.replace(/<h2[^>]*>(.*?)<\/h2>/gi, '## $1\n\n');
   markdown = markdown.replace(/<h3[^>]*>(.*?)<\/h3>/gi, '### $1\n\n');
   markdown = markdown.replace(/<h4[^>]*>(.*?)<\/h4>/gi, '#### $1\n\n');
-  
+
   // Paragraphs
   markdown = markdown.replace(/<p[^>]*>(.*?)<\/p>/gi, '$1\n\n');
-  
+
   // Bold/Strong
   markdown = markdown.replace(/<(strong|b)[^>]*>(.*?)<\/(strong|b)>/gi, '**$2**');
-  
+
   // Italic/Em
   markdown = markdown.replace(/<(em|i)[^>]*>(.*?)<\/(em|i)>/gi, '*$2*');
-  
+
   // Links
   markdown = markdown.replace(/<a[^>]*href="([^"]*)"[^>]*>(.*?)<\/a>/gi, '[$2]($1)');
-  
+
   // Lists
   markdown = markdown.replace(/<li[^>]*>(.*?)<\/li>/gi, '- $1\n');
   markdown = markdown.replace(/<\/(ul|ol)>/gi, '\n');
-  
+
   // Remove remaining tags
   markdown = markdown.replace(/<[^>]+>/g, '');
-  
+
   // Clean up whitespace
   markdown = markdown.replace(/\n\n+/g, '\n\n');
   markdown = markdown.trim();
-  
+
   return markdown;
 }
 
@@ -246,25 +246,27 @@ export function shouldServeAIVersion(
   if (url.searchParams.get('_ai') === '1') {
     return true;
   }
-  
+
   // Check for AI crawler User-Agent
   const { isAICrawler } = require('./ai-user-agents');
   if (isAICrawler(userAgent)) {
     return true;
   }
-  
+
   // Check for AI request headers
   if (headers.get('X-Accept-Format')?.includes('markdown')) {
     return true;
   }
-  
+
   return false;
 }
 
-export default {
+const AIPageRenderer = {
   generateAIMarkdown,
   generateAIJSON,
   stripHtml,
   htmlToMarkdown,
   shouldServeAIVersion,
 };
+
+export default AIPageRenderer;

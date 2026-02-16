@@ -71,9 +71,11 @@ export function assessPaymentRisk(ctx: PaymentContext): RiskAssessment {
   return { totalScore, signals, recommendation };
 }
 
+import { CAD_TO_USD_RATE } from '@/lib/config/ui-constants';
+
 function normalizeToUSD(amountCents: number, currency: string): number {
   const c = currency.toUpperCase();
-  const rate = c === 'CAD' ? 0.74 : c === 'USD' ? 1 : 1; // coarse default
+  const rate = c === 'CAD' ? CAD_TO_USD_RATE : c === 'USD' ? 1 : 1; // coarse default
   return amountCents * rate;
 }
 
@@ -136,7 +138,7 @@ export class PaymentSecurityService {
     return `fp_${Math.abs(hash).toString(36)}`;
   }
 
-  static async logSecurityEvent(_type: string, _context: Record<string, unknown>, _result?: unknown): Promise<void> {
+  static async logSecurityEvent(): Promise<void> {
     // Security event logging is handled by external monitoring
   }
 }

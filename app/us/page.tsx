@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { formatProductPrice } from '@/lib/pricing';
-import { Check, MapPin, Truck, Leaf, Shield, Star, ChevronRight, Home, Zap, Clock } from 'lucide-react';
+import { Check, MapPin, Truck, Leaf, Star, ChevronRight, Home, Zap, Clock } from 'lucide-react';
 import { stripContext } from '@/lib/seo-utils';
 import type { Metadata } from 'next';
 
@@ -93,14 +92,9 @@ const localBusinessSchema = {
   currenciesAccepted: 'USD',
 };
 
-interface USALandingPageProps {
-  params: Promise<{ locale?: string }>;
-}
 
-export default async function USALandingPage({ params }: USALandingPageProps) {
-  const { locale = 'en' } = await params;
-  const trialPrice = formatProductPrice('trial', locale);
-  const standardPrice = formatProductPrice('standard', locale);
+
+export default async function USALandingPage() {
 
   const usBenefits = [
     {

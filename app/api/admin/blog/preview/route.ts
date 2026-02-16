@@ -1,10 +1,23 @@
 import { requireAuth } from '@/lib/auth/session';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 import crypto from 'node:crypto';
 
 // Store preview tokens in memory (in production, use Redis or database)
 const previewTokens = new Map<string, { slug: string; locale: string; expiresAt: number }>();
 
 export async function POST(request: Request) {
+  // Apply rate limiting (standard: 20 req/min for writes)
+  const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   const { authorized } = await requireAuth();
 
   if (!authorized) {
@@ -35,10 +48,22 @@ export async function POST(request: Request) {
     token,
     previewUrl: `/blog/preview/${token}`,
     expiresAt: new Date(expiresAt).toISOString()
-  });
+  }, { headers: rateLimitHeaders });
 }
 
 export async function GET(request: Request) {
+  // Apply rate limiting (generous: 100 req/min for reads)
+  const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'generous');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   const { authorized } = await requireAuth();
 
   if (!authorized) {
@@ -64,5 +89,5 @@ export async function GET(request: Request) {
     return Response.json({ error: 'Preview expired' }, { status: 410 });
   }
 
-  return Response.json(preview);
+  return Response.json(preview, { headers: rateLimitHeaders });
 }

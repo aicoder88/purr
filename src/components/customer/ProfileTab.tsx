@@ -127,46 +127,6 @@ function FormSection({ title, children }: FormSectionProps) {
   );
 }
 
-interface ActionButtonsProps {
-  isEditing: boolean;
-  loading: boolean;
-  onSave: () => void;
-  onCancel: () => void;
-  onEdit: () => void;
-  saveLabel?: string;
-  editLabel?: string;
-}
-
-function ActionButtons({ isEditing, loading, onSave, onCancel, onEdit, saveLabel = 'Save Changes', editLabel = 'Edit' }: ActionButtonsProps) {
-  if (isEditing) {
-    return (
-      <div className="flex gap-3">
-        <button
-          onClick={onSave}
-          disabled={loading}
-          className="flex-1 px-4 py-2 bg-green-600 text-white dark:text-gray-100 font-medium rounded-md hover:bg-green-700 transition-colors disabled:opacity-50"
-        >
-          {loading ? 'Saving...' : saveLabel}
-        </button>
-        <button
-          onClick={onCancel}
-          className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-        >
-          Cancel
-        </button>
-      </div>
-    );
-  }
-
-  return (
-    <button
-      onClick={onEdit}
-      className="w-full px-4 py-2 bg-blue-600 text-white dark:text-gray-100 font-medium rounded-md hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors"
-    >
-      {editLabel}
-    </button>
-  );
-}
 
 // ============================================================================
 // Main Component
@@ -267,7 +227,7 @@ export function ProfileTab({ customer }: ProfileTabProps) {
           event_label: 'profile_information'
         });
       }
-    } catch (error) {
+    } catch {
       // Silently fail
     } finally {
       setLoading(false);
@@ -279,7 +239,7 @@ export function ProfileTab({ customer }: ProfileTabProps) {
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
       setEditingAddress(false);
-    } catch (error) {
+    } catch {
       // Silently fail
     } finally {
       setLoading(false);
@@ -298,7 +258,7 @@ export function ProfileTab({ customer }: ProfileTabProps) {
       setShowPasswordForm(false);
       setPasswordData(INITIAL_PASSWORD_DATA);
       alert('Password updated successfully');
-    } catch (error) {
+    } catch {
       alert('Failed to change password');
     } finally {
       setLoading(false);
@@ -309,7 +269,7 @@ export function ProfileTab({ customer }: ProfileTabProps) {
     try {
       setPreferences(prev => ({ ...prev, [key]: value }));
       await new Promise(resolve => setTimeout(resolve, 500));
-    } catch (error) {
+    } catch {
       // Silently fail
     }
   };

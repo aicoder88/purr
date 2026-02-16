@@ -39,13 +39,6 @@ export function getCommissionRate(tier: AffiliateTier): number {
   return COMMISSION_RATES[tier] || COMMISSION_RATES.STARTER;
 }
 
-/**
- * Get the current month key in YYYY-MM format
- */
-function getCurrentMonthKey(): string {
-  const now = new Date();
-  return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
-}
 
 /**
  * Get the previous month key in YYYY-MM format

@@ -7,7 +7,7 @@ import {
   SEO_META,
   getSEOMeta,
   getSolutionSEOMeta,
-  SEOMetaContent,
+  _SEOMetaContent,
   PageMeta,
 } from '../../src/translations/seo-meta';
 import { LocaleCode } from '../../src/lib/seo/types';

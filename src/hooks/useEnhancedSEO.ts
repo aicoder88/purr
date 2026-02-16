@@ -20,7 +20,7 @@ export interface SEOConfig {
   description: string;
   targetKeyword?: string;
   schemaType?: 'product' | 'article' | 'faq' | 'location' | 'organization' | 'howto' | 'claimReview' | 'comparison';
-  schemaData?: Record<string, any>;
+  schemaData?: Record<string, unknown>;
   image?: string;
   keywords?: string[];
   noindex?: boolean;
@@ -138,7 +138,7 @@ function getOGLocale(locale: string): string {
  * Provides optimized SEO props with automatic i18n, currency, and schema support
  */
 export function useEnhancedSEO(config: SEOConfig): EnhancedSEOResult {
-  const { t, locale } = useTranslation();
+  const { locale } = useTranslation();
   const { currency } = useCurrency();
 
   // Optimize meta content
@@ -255,6 +255,7 @@ export function useEnhancedSEO(config: SEOConfig): EnhancedSEOResult {
  */
 function generateSchema(
   type: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: Record<string, any>,
   url: string,
   locale: string,
@@ -294,10 +295,10 @@ function generateSchema(
 
     case 'article': {
       // Ensure headline doesn't exceed 110 characters for Google guidelines
-      const headline = data.headline?.length > 110 
-        ? data.headline.substring(0, 107) + '...' 
+      const headline = data.headline?.length > 110
+        ? data.headline.substring(0, 107) + '...'
         : data.headline;
-      
+
       const articleSchema: Record<string, unknown> = {
         ...baseSchema,
         '@type': 'Article',
@@ -327,12 +328,12 @@ function generateSchema(
           '@id': url,
         },
       };
-      
+
       // Add optional fields only if provided
       if (data.category) articleSchema.articleSection = data.category;
       if (data.keywords) articleSchema.keywords = data.keywords;
       if (data.wordCount) articleSchema.wordCount = data.wordCount;
-      
+
       // Include scientific citations if provided
       if (data.citations?.length) {
         articleSchema.citation = data.citations.map((citation: ScientificCitation) => ({
@@ -348,7 +349,7 @@ function generateSchema(
           url: citation.url,
         }));
       }
-      
+
       return articleSchema;
     }
 

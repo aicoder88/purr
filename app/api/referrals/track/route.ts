@@ -1,5 +1,10 @@
 import prisma from '@/lib/prisma';
 import { getProductPrice } from '@/lib/pricing';
+import {
+  REFERRAL_MAX_CREDITS_PER_USER,
+  REFERRAL_CREDIT_AMOUNT,
+  REFERRAL_MILESTONE_INTERVAL,
+} from '@/lib/config/ui-constants';
 
 interface TrackingData {
   source?: string;
@@ -40,13 +45,10 @@ interface TrackReferralRequestBody {
   trackingData?: TrackingData;
 }
 
-// Maximum rewards a single user can accumulate (prevents gaming)
-const MAX_REFERRAL_CREDITS_PER_USER = 50; // $250 max in $5 credits
+// Maximum milestone rewards a single user can accumulate
 const MAX_MILESTONE_REWARDS_PER_USER = 5;
-const REFERRAL_CREDIT_AMOUNT = 5.00; // $5 per referral
 const REWARD_EXPIRY_DAYS = 90;
 const MILESTONE_EXPIRY_DAYS = 180;
-const MILESTONE_INTERVAL = 3; // Every 3 referrals
 
 export async function POST(req: Request): Promise<Response> {
   try {
@@ -292,7 +294,7 @@ async function handlePurchase(
     },
   });
 
-  if (existingRewardCount >= MAX_REFERRAL_CREDITS_PER_USER) {
+  if (existingRewardCount >= REFERRAL_MAX_CREDITS_PER_USER) {
     // Still track the redemption but don't issue more rewards
     return Response.json({
       success: true,
@@ -371,7 +373,7 @@ async function handlePurchase(
   });
 
   if (
-    completedCount % MILESTONE_INTERVAL === 0 &&
+    completedCount % REFERRAL_MILESTONE_INTERVAL === 0 &&
     completedCount > 0 &&
     existingMilestoneCount < MAX_MILESTONE_REWARDS_PER_USER
   ) {

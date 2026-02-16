@@ -80,7 +80,7 @@ export async function clearPendingConversions(affiliateId: string): Promise<{
 
   // If any conversions were cleared, check for tier upgrade
   if (updateResult.count > 0) {
-    const tierResult = await onConversionCleared(affiliateId);
+    const _tierResult = await onConversionCleared(affiliateId);
     // Tier upgrade check completed silently
   }
 

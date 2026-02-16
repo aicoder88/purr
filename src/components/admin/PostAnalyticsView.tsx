@@ -20,7 +20,7 @@ export default function PostAnalyticsView({ slug }: PostAnalyticsViewProps) {
         const data = await response.json();
         setAnalytics(data);
       }
-    } catch (error) {
+    } catch {
       // Silently fail
     } finally {
       setLoading(false);

@@ -9,8 +9,8 @@ import { RetailerContact } from '@/components/sections/retailer-contact';
 import { ClientLocationsMap } from '@/components/maps/ClientLocationsMap';
 import { Stores } from '@/components/sections/stores';
 
-import { SITE_NAME, CONTACT_INFO } from '@/lib/constants';
-import { getLocalizedUrl, stripContext } from '@/lib/seo-utils';
+import { SITE_NAME } from '@/lib/constants';
+import { stripContext } from '@/lib/seo-utils';
 import { getTranslation } from '@/translations';
 
 // Default to English for metadata

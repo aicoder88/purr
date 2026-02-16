@@ -211,10 +211,12 @@ export function getCitationsByCategory(category: 'ammonia' | 'safety' | 'sulfur'
   );
 }
 
-export default {
+const ScientificCitationUtils = {
   SCIENTIFIC_CITATIONS,
   CLAIM_REVIEWS,
   getCitationsForClaim,
   getClaimReviewSchema,
   getCitationsByCategory,
 };
+
+export default ScientificCitationUtils;

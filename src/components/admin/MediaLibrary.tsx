@@ -10,8 +10,8 @@ interface MediaLibraryProps {
   mode?: 'select' | 'manage';
 }
 
-export default function MediaLibrary({ 
-  onSelect, 
+export default function MediaLibrary({
+  onSelect,
   onClose,
   mode = 'select'
 }: MediaLibraryProps) {
@@ -29,14 +29,14 @@ export default function MediaLibrary({
     try {
       setLoading(true);
       const response = await fetch('/api/admin/blog/media');
-      
+
       if (!response.ok) {
         throw new Error('Failed to load media');
       }
 
       const data = await response.json();
       setMedia(data);
-    } catch (error) {
+    } catch {
       toast.error('Failed to load media library');
     } finally {
       setLoading(false);
@@ -45,7 +45,7 @@ export default function MediaLibrary({
 
   const handleDelete = async (id: string) => {
     const item = media.find(m => m.id === id);
-    
+
     if (!item) return;
 
     if (item.usedIn.length > 0) {
@@ -68,7 +68,7 @@ export default function MediaLibrary({
 
       setMedia(media.filter(m => m.id !== id));
       toast.success('Image deleted');
-    } catch (error) {
+    } catch {
       toast.error('Failed to delete image');
     }
   };
@@ -82,12 +82,12 @@ export default function MediaLibrary({
 
   const filteredMedia = media.filter(item => {
     // Apply search filter
-    const matchesSearch = searchQuery === '' || 
+    const matchesSearch = searchQuery === '' ||
       item.filename.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.alt?.toLowerCase().includes(searchQuery.toLowerCase());
 
     // Apply usage filter
-    const matchesFilter = 
+    const matchesFilter =
       filterBy === 'all' ||
       (filterBy === 'used' && item.usedIn.length > 0) ||
       (filterBy === 'unused' && item.usedIn.length === 0);
@@ -183,11 +183,10 @@ export default function MediaLibrary({
               {filteredMedia.map((item) => (
                 <div
                   key={item.id}
-                  className={`group relative bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden cursor-pointer transition-all ${
-                    selectedItem === item.id
+                  className={`group relative bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden cursor-pointer transition-all ${selectedItem === item.id
                       ? 'ring-2 ring-purple-600'
                       : 'hover:ring-2 hover:ring-purple-400'
-                  }`}
+                    }`}
                   onClick={() => setSelectedItem(item.id)}
                 >
                   {/* Image */}
@@ -197,7 +196,7 @@ export default function MediaLibrary({
                       alt={item.alt || item.filename}
                       className="w-full h-full object-cover"
                     />
-                    
+
                     {/* Selected indicator */}
                     {selectedItem === item.id && (
                       <div className="absolute top-2 right-2 bg-purple-600 text-white dark:text-gray-100 rounded-full p-1">

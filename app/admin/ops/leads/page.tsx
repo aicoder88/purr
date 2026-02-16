@@ -43,7 +43,7 @@ interface Pagination {
 
 export default function LeadsPage() {
   const { toast } = useToast();
-  
+
   // Data state
   const [leads, setLeads] = useState<Lead[]>([]);
   const [pagination, setPagination] = useState<Pagination>({
@@ -62,16 +62,16 @@ export default function LeadsPage() {
     NO_RESPONSE: 0
   });
   const [isLoading, setIsLoading] = useState(true);
-  
+
   // Filter state
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<LeadStatus | 'ALL'>('ALL');
   const [sortField, setSortField] = useState('createdAt');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
-  
+
   // Selection state
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
-  
+
   // Modal state
   const [isImportModalOpen, setIsImportModalOpen] = useState(false);
   const [isDetailSheetOpen, setIsDetailSheetOpen] = useState(false);
@@ -95,13 +95,14 @@ export default function LeadsPage() {
 
       const response = await fetch(`/api/admin/ops/leads?${params}`);
       if (!response.ok) throw new Error('Failed to fetch leads');
-      
+
       const data = await response.json();
       setLeads(data.leads);
       setPagination(data.pagination);
       setStatusCounts(data.statusCounts);
       setSelectedIds([]);
-    } catch (error) {
+      setSelectedIds([]);
+    } catch {
       toast({
         title: 'Error',
         description: 'Failed to fetch leads',
@@ -115,7 +116,7 @@ export default function LeadsPage() {
   // Initial fetch
   useEffect(() => {
     fetchLeads(1);
-  }, []);
+  }, [fetchLeads]);
 
   // Refetch when filters change
   useEffect(() => {
@@ -173,12 +174,12 @@ export default function LeadsPage() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(leadData)
         });
-        
+
         if (!response.ok) {
           const error = await response.json();
           throw new Error(error.error || 'Failed to create lead');
         }
-        
+
         toast({
           title: 'Lead Created',
           description: 'New lead has been added successfully'
@@ -189,18 +190,18 @@ export default function LeadsPage() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(leadData)
         });
-        
+
         if (!response.ok) {
           const error = await response.json();
           throw new Error(error.error || 'Failed to update lead');
         }
-        
+
         toast({
           title: 'Lead Updated',
           description: 'Lead has been updated successfully'
         });
       }
-      
+
       fetchLeads(pagination.page);
     } catch (error) {
       toast({
@@ -220,22 +221,22 @@ export default function LeadsPage() {
   // Confirm delete lead
   const confirmDeleteLead = async () => {
     if (!deleteConfirmLead) return;
-    
+
     try {
       const response = await fetch(`/api/admin/ops/leads/${deleteConfirmLead.id}`, {
         method: 'DELETE'
       });
-      
+
       if (!response.ok) throw new Error('Failed to delete lead');
-      
+
       toast({
         title: 'Lead Deleted',
         description: 'Lead has been removed'
       });
-      
+
       setDeleteConfirmLead(null);
       fetchLeads(pagination.page);
-    } catch (error) {
+    } catch {
       toast({
         title: 'Error',
         description: 'Failed to delete lead',
@@ -252,21 +253,21 @@ export default function LeadsPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status })
       });
-      
+
       if (!response.ok) throw new Error('Failed to update status');
-      
+
       // Update local state
       setLeads((prev) =>
         prev.map((lead) =>
           lead.id === leadId ? { ...lead, status } : lead
         )
       );
-      
+
       toast({
         title: 'Status Updated',
         description: `Lead status changed to ${statusConfig[status].label}`
       });
-    } catch (error) {
+    } catch {
       toast({
         title: 'Error',
         description: 'Failed to update status',
@@ -278,7 +279,7 @@ export default function LeadsPage() {
   // Handle bulk status change
   const handleBulkStatusChange = async (status: LeadStatus) => {
     if (selectedIds.length === 0) return;
-    
+
     try {
       const response = await fetch('/api/admin/ops/leads/bulk', {
         method: 'POST',
@@ -289,18 +290,18 @@ export default function LeadsPage() {
           status
         })
       });
-      
+
       if (!response.ok) throw new Error('Failed to update leads');
-      
+
       const { updatedCount } = await response.json();
-      
+
       toast({
         title: 'Leads Updated',
         description: `${updatedCount} leads changed to ${statusConfig[status].label}`
       });
-      
+
       fetchLeads(pagination.page);
-    } catch (error) {
+    } catch {
       toast({
         title: 'Error',
         description: 'Failed to update leads',
@@ -326,19 +327,19 @@ export default function LeadsPage() {
           action: 'delete'
         })
       });
-      
+
       if (!response.ok) throw new Error('Failed to delete leads');
-      
+
       const { deletedCount } = await response.json();
-      
+
       toast({
         title: 'Leads Deleted',
         description: `${deletedCount} leads have been removed`
       });
-      
+
       setBulkDeleteConfirm(false);
       fetchLeads(pagination.page);
-    } catch (error) {
+    } catch {
       toast({
         title: 'Error',
         description: 'Failed to delete leads',
@@ -390,17 +391,15 @@ export default function LeadsPage() {
         </div>
       </div>
 
-      {/* Status Summary */}
       <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 mb-6">
-        {Object.entries(statusConfig).map(([status, config]) => (
+        {Object.entries(statusConfig).map(([status]) => (
           <button
             key={status}
             onClick={() => setStatusFilter(status === statusFilter ? 'ALL' : (status as LeadStatus))}
-            className={`p-3 rounded-lg border transition-all ${
-              statusFilter === status
-                ? 'border-teal-500 dark:border-teal-400 ring-2 ring-teal-500/20 dark:ring-teal-400/20'
-                : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600'
-            } bg-white dark:bg-gray-800`}
+            className={`p-3 rounded-lg border transition-all ${statusFilter === status
+              ? 'border-teal-500 dark:border-teal-400 ring-2 ring-teal-500/20 dark:ring-teal-400/20'
+              : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600'
+              } bg-white dark:bg-gray-800`}
           >
             <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">
               {statusCounts[status as LeadStatus] || 0}
@@ -510,7 +509,7 @@ export default function LeadsPage() {
               Delete Lead
             </AlertDialogTitle>
             <AlertDialogDescription className="text-gray-600 dark:text-gray-400">
-              Are you sure you want to delete &quot;{deleteConfirmLead?.companyName}&quot;? 
+              Are you sure you want to delete &quot;{deleteConfirmLead?.companyName}&quot;?
               This action cannot be undone.
             </AlertDialogDescription>
           </AlertDialogHeader>
@@ -539,7 +538,7 @@ export default function LeadsPage() {
               Delete {selectedIds.length} Lead{selectedIds.length > 1 ? 's' : ''}
             </AlertDialogTitle>
             <AlertDialogDescription className="text-gray-600 dark:text-gray-400">
-              Are you sure you want to delete {selectedIds.length} selected lead{selectedIds.length > 1 ? 's' : ''}? 
+              Are you sure you want to delete {selectedIds.length} selected lead{selectedIds.length > 1 ? 's' : ''}?
               This action cannot be undone.
             </AlertDialogDescription>
           </AlertDialogHeader>

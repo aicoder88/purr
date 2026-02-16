@@ -7,7 +7,7 @@ const freeGiveawayFormSchema = z.object({
   catNames: z.array(z.string().optional()).optional(),
 });
 
-type ResponseData = {
+type _ResponseData = {
   success: boolean;
   message: string;
 };
@@ -100,7 +100,7 @@ export async function POST(req: Request): Promise<Response> {
             }
           });
         }
-      } catch (jsonError) {
+      } catch (_jsonError) {
         // Ignore JSON POST error and try URL params method
       }
 

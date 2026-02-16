@@ -15,6 +15,7 @@ async function extractSchemas(page: import('@playwright/test').Page) {
   });
 
   // Recursively flatten schemas: handle nested @graph arrays
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function flattenSchemas(items: any[]): any[] {
     const result: any[] = [];
     for (const item of items) {

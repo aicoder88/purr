@@ -19,7 +19,7 @@ const applyReferralSchema = z.object({
   email: z.string().email('Invalid email format'),
 });
 
-interface ApplyReferralResponse {
+interface _ApplyReferralResponse {
   success: boolean;
   data?: {
     code: string;

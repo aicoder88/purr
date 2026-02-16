@@ -16,6 +16,7 @@ export function sanitizeHTML(dirty: string): string {
 
   // For server-side, we'll use a basic HTML escape approach
   // and whitelist common safe tags using regex replacement
+  /* 
   const allowedTags = [
     'p', 'br', 'strong', 'em', 'u', 's', 'mark', 'small', 'sub', 'sup',
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
@@ -31,6 +32,7 @@ export function sanitizeHTML(dirty: string): string {
     'img': ['src', 'alt', 'width', 'height'],
     '*': ['class', 'id']
   };
+  */
 
   // First, remove script tags and event handlers
   let clean = dirty

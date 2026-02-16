@@ -107,7 +107,10 @@ export async function POST(req: Request): Promise<Response> {
     // Return success immediately - don't wait for DB
     return Response.json({ success: true } as TrackResponse);
   } catch {
-    // Silently succeed on errors - don't break the page
-    return Response.json({ success: true } as TrackResponse);
+    // Return visible error so broken tests don't appear successful
+    return Response.json(
+      { success: false, error: 'Invalid request' },
+      { status: 400 }
+    );
   }
 }

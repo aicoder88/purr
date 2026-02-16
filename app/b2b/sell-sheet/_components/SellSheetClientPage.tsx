@@ -1,15 +1,12 @@
 'use client';
-
-import { SITE_NAME, CONTACT_INFO } from '@/lib/constants';
+import {  CONTACT_INFO } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { Printer, Check } from 'lucide-react';
-
 export default function SellSheetClientPage() {
   const handlePrint = () => {
     window.print();
   };
-
   return (
     <>
       {/* Print Button - Hidden in print */}
@@ -29,7 +26,6 @@ export default function SellSheetClientPage() {
           Back
         </Button>
       </div>
-
       {/* Sell Sheet Content - Optimized for printing */}
       <main className="min-h-screen bg-white dark:bg-gray-900 print:bg-white">
         <div className="max-w-[8.5in] mx-auto p-8 print:p-4">
@@ -58,7 +54,6 @@ export default function SellSheetClientPage() {
               <p className="text-sm text-gray-600 dark:text-gray-600">purrify.ca</p>
             </div>
           </header>
-
           {/* Value Proposition */}
           <section className="mb-8">
             <h2 className="text-2xl font-black text-gray-900 dark:text-gray-900 mb-4 text-brand-green-700 dark:text-brand-green">
@@ -93,7 +88,6 @@ export default function SellSheetClientPage() {
               </div>
             </div>
           </section>
-
           {/* Product Line */}
           <section className="mb-8">
             <h3 className="text-xl font-black text-gray-900 dark:text-gray-900 mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
@@ -179,7 +173,6 @@ export default function SellSheetClientPage() {
               ★ Best seller - recommended starter SKU for new partners
             </p>
           </section>
-
           {/* Two Column Section */}
           <div className="grid grid-cols-2 gap-8 mb-8">
             {/* Key Benefits */}
@@ -205,7 +198,6 @@ export default function SellSheetClientPage() {
                 ))}
               </ul>
             </section>
-
             {/* Ideal For */}
             <section>
               <h3 className="text-lg font-black text-gray-900 dark:text-gray-900 mb-3 border-b border-gray-200 dark:border-gray-700 pb-2">
@@ -233,7 +225,6 @@ export default function SellSheetClientPage() {
               </ul>
             </section>
           </div>
-
           {/* Partnership Benefits */}
           <section className="mb-8 bg-gradient-to-r from-[#10B981]/10 to-[#3694FF]/10 rounded-lg p-6">
             <h3 className="text-lg font-black text-gray-900 dark:text-gray-900 mb-4">
@@ -268,7 +259,6 @@ export default function SellSheetClientPage() {
               </div>
             </div>
           </section>
-
           {/* Product Specs */}
           <section className="mb-8">
             <h3 className="text-lg font-black text-gray-900 dark:text-gray-900 mb-3 border-b border-gray-200 dark:border-gray-700 pb-2">
@@ -309,7 +299,6 @@ export default function SellSheetClientPage() {
               </div>
             </div>
           </section>
-
           {/* Footer CTA */}
           <footer className="bg-gray-900 dark:bg-gray-950 text-white dark:text-white rounded-lg p-6 text-center">
             <h3 className="text-xl font-black mb-2">Ready to Partner?</h3>
@@ -333,7 +322,6 @@ export default function SellSheetClientPage() {
           </footer>
         </div>
       </main>
-
       {/* Print Styles */}
       <style jsx global>{`
         @media print {

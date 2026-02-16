@@ -104,7 +104,6 @@ export function CatBlessingTool() {
   const [isVisible, setIsVisible] = useState(true);
   const [meowCount, setMeowCount] = useState(0);
   const [isPurring, setIsPurring] = useState(false);
-  const [lastSoundWasReal, setLastSoundWasReal] = useState<boolean | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   // Preload sounds on mount
@@ -116,8 +115,7 @@ export function CatBlessingTool() {
   const playMeow = useCallback(async () => {
     if (isMuted) return;
 
-    const usedRealSound = await playRandomMeow();
-    setLastSoundWasReal(usedRealSound);
+    await playRandomMeow();
   }, [isMuted]);
 
   // Play purr sound
@@ -222,8 +220,8 @@ export function CatBlessingTool() {
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsMuted(!isMuted)}
             className={`p-2 rounded-full shadow-lg transition-colors ${isMuted
-                ? "bg-red-100 text-red-600 dark:bg-red-900/50 dark:text-red-400"
-                : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:text-purple-500"
+              ? "bg-red-100 text-red-600 dark:bg-red-900/50 dark:text-red-400"
+              : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:text-purple-500"
               }`}
             aria-label={isMuted ? "Unmute meows" : "Mute meows"}
             title={isMuted ? "Unmute sounds" : "Mute sounds"}

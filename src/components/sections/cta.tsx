@@ -1,11 +1,12 @@
 'use client';
 
+import React from 'react';
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/lib/translation-context";
 import Image from "next/image";
 import Link from "next/link";
-import { GRADIENTS, COLORS } from "@/lib/theme-utils";
+import { GRADIENTS } from "@/lib/theme-utils";
 import { getPaymentLink } from "@/lib/payment-links";
 import { ArrowRight } from "lucide-react";
 
@@ -37,9 +38,9 @@ const customerAvatars = [
   '/optimized/deodorizers-with-kittens.webp'
 ];
 
-export function CTA() {
+export const CTA = React.memo(function CTA() {
   const { t } = useTranslation();
-  const paymentLink = getPaymentLink('trialSingle') || '#';
+  const paymentLink = getPaymentLink('trialSingle') || '/products';
 
   return (
     <section className={`py-12 relative overflow-hidden ${GRADIENTS.background.cta} opacity-90 dark:opacity-95 transition-colors duration-300`}>
@@ -126,4 +127,4 @@ export function CTA() {
       </Container>
     </section>
   );
-}
+});

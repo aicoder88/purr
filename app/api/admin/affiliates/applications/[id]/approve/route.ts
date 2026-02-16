@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs';
 import { generateAffiliateCode } from '@/lib/affiliate/code-generator';
 import { Resend } from 'resend';
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 // Generate a random password
 function generatePassword(): string {
@@ -19,6 +20,18 @@ export async function POST(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  // Apply rate limiting (standard: 20 req/min for writes)
+  const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   // Check authentication
   const session = await auth();
   if (!session?.user || (session.user as { role?: string }).role !== 'admin') {
@@ -160,9 +173,9 @@ export async function POST(
         code: result.code,
         email: result.email,
       },
-    });
+    }, { headers: rateLimitHeaders });
   } catch (error) {
     console.error('Failed to approve application:', error);
-    return Response.json({ error: 'Failed to approve application' }, { status: 500 });
+    return Response.json({ error: 'Failed to approve application' }, { status: 500, headers: rateLimitHeaders });
   }
 }

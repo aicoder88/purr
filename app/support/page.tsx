@@ -1,11 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { Mail, Phone, Truck, MessageCircle, Clock, HelpCircle, Package, Shield } from 'lucide-react';
-
-import { Container } from '../../src/components/ui/container';
-import { Button } from '../../src/components/ui/button';
 import { SITE_NAME, CONTACT_INFO } from '../../src/lib/constants';
-import { buildLanguageAlternates } from '../../src/lib/seo-utils';
 
 
 export const metadata: Metadata = {

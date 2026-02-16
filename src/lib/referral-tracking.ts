@@ -143,7 +143,7 @@ export async function trackReferralPurchase(
 
       // Show success notification if rewards were issued
       if (result.rewardEligible && result.rewards) {
-        showReferralSuccessNotification(referralInfo.referrerName, result.rewards);
+        showReferralSuccessNotification(referralInfo.referrerName);
       }
     }
 
@@ -204,7 +204,7 @@ export function applyReferralDiscountToCart(cartItems: Array<{ id: string; price
 /**
  * Show referral success notification
  */
-function showReferralSuccessNotification(referrerName?: string, _rewards?: { type: string; amount: number }): void {
+function showReferralSuccessNotification(referrerName?: string): void {
   if (typeof globalThis.window === 'undefined') return;
 
   // Create and show a toast notification
@@ -271,8 +271,7 @@ export async function generateReferralCode(
  * Validate if user is eligible for referral program
  */
 export function isEligibleForReferrals(
-  userEmail: string,
-  userId?: string
+  userEmail: string
 ): boolean {
   // Check if user has made previous purchases (basic check)
   // In production, this would check against user purchase history

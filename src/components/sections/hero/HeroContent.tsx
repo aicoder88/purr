@@ -1,9 +1,6 @@
 "use client";
 
-import { useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { scrollToSection } from "@/lib/utils";
-import Link from "next/link";
 import { useABTestWithTracking, AB_TEST_SLUGS } from "@/lib/ab-testing";
 import { getPaymentLink } from "@/lib/payment-links";
 
@@ -117,65 +114,18 @@ const SocialProofAvatars = () => (
   </div>
 );
 
-const StarRating = ({ rating = 5 }: { rating?: number }) => {
-  const fullStars = Math.floor(rating);
-  const hasHalfStar = rating % 1 !== 0;
-
-  return (
-    <div className="flex text-yellow-400 dark:text-yellow-300 gap-0.5">
-      {[1, 2, 3, 4, 5].map((star) => {
-        if (star <= fullStars) {
-          // Full star
-          return (
-            <svg key={`star-${star}`} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-          );
-        } else if (star === fullStars + 1 && hasHalfStar) {
-          // Half star
-          return (
-            <svg key={`star-${star}`} className="w-5 h-5" viewBox="0 0 20 20">
-              <defs>
-                <linearGradient id="half-star">
-                  <stop offset="50%" stopColor="currentColor" className="text-yellow-400 dark:text-yellow-300" />
-                  <stop offset="50%" stopColor="currentColor" className="text-gray-300 dark:text-gray-600" />
-                </linearGradient>
-              </defs>
-              <path fill="url(#half-star)" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-          );
-        } else {
-          // Empty star
-          return (
-            <svg key={`star-${star}`} className="w-5 h-5 fill-current text-gray-300 dark:text-gray-600" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-          );
-        }
-      })}
-    </div>
-  );
-};
 
 export const HeroContent = ({ t }: HeroContentProps) => {
   // A/B Test: Homepage Hero Layout
   const {
     isVariant: isSimplifiedHero,
-    trackConversion: trackHeroConversion,
   } = useABTestWithTracking(AB_TEST_SLUGS.HOMEPAGE_HERO);
 
   // A/B Test: CTA Button Color
   const {
     isVariant: isOrangeButton,
-    trackConversion: trackCtaConversion,
   } = useABTestWithTracking(AB_TEST_SLUGS.CTA_BUTTON_COLOR);
 
-  const handleScrollToProducts = useCallback(() => {
-    // Track conversions for both tests when CTA is clicked
-    trackHeroConversion();
-    trackCtaConversion();
-    scrollToSection("products");
-  }, [trackHeroConversion, trackCtaConversion]);
 
   // Use new simplified headline structure or fallback to existing
   const headline = t.hero.headline || t.hero.eliminateCatOdors;
@@ -236,7 +186,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
             className={`${ctaButtonClasses} !py-8 !px-10`}
             aria-label={t.hero.buttons.tryFree || "Get My Free Trial"}
           >
-            <a href={getPaymentLink('trialSingle') || '#'} target="_blank" rel="noopener noreferrer">
+            <a href={getPaymentLink('trialSingle') || '/products'} target="_blank" rel="noopener noreferrer">
               <LightningIcon className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
               <span className="tracking-tight">{t.hero.simplified?.getFreeSample || "Send Me a Free Bag →"}</span>
               <ArrowIcon className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
@@ -307,7 +257,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
           className={`${ctaButtonClasses} !py-8 !px-10`}
           aria-label={t.hero.buttons.tryFree || "Get My Free Trial"}
         >
-          <a href={getPaymentLink('trialSingle') || '#'} target="_blank" rel="noopener noreferrer">
+          <a href={getPaymentLink('trialSingle') || '/products'} target="_blank" rel="noopener noreferrer">
             <LightningIcon className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
             <span className="tracking-tight">{t.hero.buttons.tryFree || "Get My Free Trial"}</span>
             <ArrowIcon className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />

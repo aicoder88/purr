@@ -6,8 +6,6 @@ import Link from 'next/link';
 import OpsLayout from '@/components/admin/ops/OpsLayout';
 import { AnimatedMetricCard } from '@/components/admin/ops/AnimatedMetricCard';
 import { RecentActivity } from '@/components/admin/ops/RecentActivity';
-import type { ChartType } from '@/components/admin/ops/EnhancedChart';
-
 // Dynamic import for EnhancedChart to reduce admin bundle size
 // This component uses recharts which is a heavy library
 const EnhancedChart = dynamic(
@@ -35,13 +33,6 @@ import {
   RefreshCw
 } from 'lucide-react';
 import { LeadStatus } from '@/generated/client/client';
-
-// Type definition for chart data
-interface ChartDataPoint {
-  name: string;
-  value: number;
-  [key: string]: string | number;
-}
 
 interface LeadsByStatus {
   status: LeadStatus;

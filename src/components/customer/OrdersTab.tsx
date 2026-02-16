@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 import { Package, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { Order } from './customer-portal-types';
@@ -87,9 +88,9 @@ export function OrdersTab({
       }
 
       alert(`Order ${order.orderNumber} has been added to your cart!`);
-    } catch (error) {
+    } catch {
       alert('Failed to reorder. Please try again.');
-    } finally{
+    } finally {
       setLoading(false);
     }
   };
@@ -104,7 +105,7 @@ export function OrdersTab({
       // Mock invoice download - replace with actual invoice generation
       await new Promise(resolve => setTimeout(resolve, 1000));
       alert(`Invoice for order ${orderNumber} will be downloaded shortly.`);
-    } catch (error) {
+    } catch {
       alert('Failed to download invoice. Please try again.');
     }
   };
@@ -211,11 +212,14 @@ export function OrdersTab({
                     {order.items.map((item) => (
                       <div key={item.id} className="flex items-center space-x-4">
                         {item.image && (
-                          <img
-                            src={item.image}
-                            alt={item.name}
-                            className="w-12 h-12 object-cover rounded border border-gray-200 dark:border-gray-600"
-                          />
+                          <div className="relative w-12 h-12 flex-shrink-0">
+                            <Image
+                              src={item.image}
+                              alt={item.name}
+                              fill
+                              className="object-cover rounded border border-gray-200 dark:border-gray-600"
+                            />
+                          </div>
                         )}
                         <div className="flex-1">
                           <p className="font-medium text-gray-900 dark:text-gray-50">{item.name}</p>

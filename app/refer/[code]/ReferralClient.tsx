@@ -7,7 +7,6 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { Container } from '@/components/ui/container';
-import { SITE_NAME } from '@/lib/constants';
 import { formatProductPrice } from '@/lib/pricing';
 
 interface ReferralData {

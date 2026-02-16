@@ -34,7 +34,7 @@ export default function BulkActionsToolbar({
     try {
       await onExecute(operation);
       onClearSelection();
-    } catch (error) {
+    } catch {
       // Silently fail
     } finally {
       setExecuting(false);

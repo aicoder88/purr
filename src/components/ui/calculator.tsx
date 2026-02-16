@@ -7,21 +7,7 @@ import { motion } from "framer-motion";
 import { Leaf, Car, TreePine, Cat, DollarSign, Clock } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
-// Color constants
-const COLORS = {
-  purple: '#5B2EFF',
-  green: '#03E46A',
-  red: '#FF3131',
-  border: '#E0EFC7',
-} as const;
 
-// Gradient classes
-const GRADIENTS = {
-  purpleGreen: `from-[${COLORS.purple}] to-[${COLORS.green}]`,
-  greenPurple: `from-[${COLORS.green}] to-[${COLORS.purple}]`,
-  purpleGreenBg: `from-[${COLORS.purple}]/10 to-[${COLORS.green}]/10`,
-  greenPurpleBg: `from-[${COLORS.green}]/10 to-[${COLORS.purple}]/10`,
-} as const;
 
 // Types
 interface CostCalculatorProps {

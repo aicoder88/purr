@@ -270,7 +270,7 @@ describe('SEO Compliance Validation System', () => {
     });
 
     it('should detect matching canonical and OG URLs', () => {
-      const mockContent = `
+      const _mockContent = `
         export default function Page() {
           const canonicalUrl = 'https://example.com/test';
           return (

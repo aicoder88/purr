@@ -11,7 +11,7 @@ import {
   generateShareUrls,
   calculateMilestoneProgress,
   maskEmail,
-  REFERRAL_CONFIG,
+  _REFERRAL_CONFIG,
 } from '@/lib/referral';
 import * as Sentry from '@sentry/nextjs';
 
@@ -35,7 +35,7 @@ interface AvailableReward {
   createdAt: string;
 }
 
-interface StatsResponse {
+interface _StatsResponse {
   success: boolean;
   data?: {
     code: string;

@@ -6,7 +6,7 @@ type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
   return {
     title: 'Special One-Time Offer - Purrify',
     description: 'Exclusive one-time offer for new customers. Save 25% on quarterly autoship subscription.',

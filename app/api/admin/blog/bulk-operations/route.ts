@@ -2,9 +2,10 @@ import { z } from 'zod';
 import { requireAuth } from '@/lib/auth/session';
 import { ContentStore } from '@/lib/blog/content-store';
 import { AuditLogger } from '@/lib/blog/audit-logger';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 // Define Zod schemas for validation
-const bulkOperationTypeSchema = z.enum(['delete', 'changeStatus', 'assignCategories', 'assignTags']);
+const _bulkOperationTypeSchema = z.enum(['delete', 'changeStatus', 'assignCategories', 'assignTags']);
 
 const bulkOperationSchema = z.discriminatedUnion('type', [
   z.object({
@@ -35,9 +36,21 @@ const bulkRequestSchema = z.object({
 });
 
 // Type inference from Zod schema
-type BulkRequest = z.infer<typeof bulkRequestSchema>;
+type _BulkRequest = z.infer<typeof bulkRequestSchema>;
 
 export async function POST(request: Request) {
+  // Apply rate limiting (standard: 20 req/min for writes)
+  const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   const { authorized, session } = await requireAuth();
 
   if (!authorized || !session) {
@@ -164,9 +177,9 @@ export async function POST(request: Request) {
     return Response.json({
       success: true,
       results
-    });
+    }, { headers: rateLimitHeaders });
   } catch (error) {
     console.error('Bulk operation error:', error);
-    return Response.json({ error: 'Internal server error' }, { status: 500 });
+    return Response.json({ error: 'Internal server error' }, { status: 500, headers: rateLimitHeaders });
   }
 }

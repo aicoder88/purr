@@ -43,7 +43,7 @@ declare global {
       supportsVersion: (version: number) => boolean;
       STATUS_SUCCESS: number;
       STATUS_FAILURE: number;
-      new (version: number, paymentRequest: ApplePayPaymentRequest): {
+      new(version: number, paymentRequest: ApplePayPaymentRequest): {
         onvalidatemerchant: (event: ApplePayValidateMerchantEvent) => void;
         onpaymentauthorized: (event: ApplePayPaymentAuthorizedEvent) => void;
         oncancel: () => void;
@@ -176,6 +176,22 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
   const [isProcessing, setIsProcessing] = useState(false);
   const [selectedMethod, setSelectedMethod] = useState<string | null>(null);
 
+
+  const checkApplePayAvailability = useCallback((): boolean => {
+    if (typeof globalThis.window === 'undefined') return false;
+
+    // Check if Apple Pay is available
+    return !!(window.ApplePaySession &&
+      window.ApplePaySession.canMakePayments());
+  }, []);
+
+  const checkGooglePayAvailability = useCallback((): boolean => {
+    if (typeof globalThis.window === 'undefined') return false;
+
+    // Check if Google Pay is available
+    return !!(window.google?.payments?.api);
+  }, []);
+
   const checkPaymentAvailability = useCallback(() => {
     const payments: PaymentMethod[] = [
       {
@@ -202,28 +218,26 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
     ];
 
     setAvailablePayments(payments);
-  }, [uiCopy]);
+  }, [uiCopy, checkApplePayAvailability, checkGooglePayAvailability]);
 
   useEffect(() => {
     checkPaymentAvailability();
   }, [checkPaymentAvailability]);
 
-  const checkApplePayAvailability = (): boolean => {
-    if (typeof globalThis.window === 'undefined') return false;
-    
-    // Check if Apple Pay is available
-    return !!(window.ApplePaySession && 
-             window.ApplePaySession.canMakePayments());
-  };
+  const processPayment = useCallback(async (_paymentData: ApplePayPayment | unknown, method: string): Promise<PaymentResult> => {
+    // Simulate payment processing
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (Math.random() > 0.1) { // 90% success rate for demo
+          resolve({ success: true, transactionId: `test_${Date.now()}`, method, amount, currency } as PaymentResult);
+        } else {
+          reject(new Error('Payment processing failed'));
+        }
+      }, 2000);
+    });
+  }, [amount, currency]);
 
-  const checkGooglePayAvailability = (): boolean => {
-    if (typeof globalThis.window === 'undefined') return false;
-    
-    // Check if Google Pay is available
-    return !!(window.google?.payments?.api);
-  };
-
-  const handleApplePay = async () => {
+  const handleApplePay = useCallback(async () => {
     if (!checkApplePayAvailability()) {
       onPaymentError?.({ message: 'Apple Pay not available' });
       return;
@@ -236,7 +250,7 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
       if (!window.ApplePaySession) {
         throw new Error('Apple Pay is not available');
       }
-      
+
       const paymentRequest: ApplePayPaymentRequest = {
         countryCode: 'CA',
         currencyCode: currency,
@@ -250,7 +264,7 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
 
       const session = new window.ApplePaySession(3, paymentRequest);
 
-      session.onvalidatemerchant = async (_event: ApplePayValidateMerchantEvent) => {
+      session.onvalidatemerchant = async () => {
         // In production, validate with your payment processor
         try {
           // Simulate merchant validation
@@ -259,7 +273,7 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
           // session.completeMerchantValidation(merchantSession);
           // For now, complete with empty object to proceed to payment
           session.completeMerchantValidation({});
-        } catch (err) {
+        } catch {
           if ('abort' in session) {
             session.abort();
           }
@@ -292,9 +306,9 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
       setIsProcessing(false);
       setSelectedMethod(null);
     }
-  };
+  }, [amount, currency, checkApplePayAvailability, onPaymentError, onPaymentSuccess, processPayment]);
 
-  const handleGooglePay = async () => {
+  const handleGooglePay = useCallback(async () => {
     if (!checkGooglePayAvailability()) {
       onPaymentError?.({ success: false, message: 'Google Pay not available' });
       return;
@@ -355,20 +369,7 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
       setIsProcessing(false);
       setSelectedMethod(null);
     }
-  };
-
-  const processPayment = async (_paymentData: ApplePayPayment | unknown, method: string): Promise<PaymentResult> => {
-    // Simulate payment processing
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (Math.random() > 0.1) { // 90% success rate for demo
-          resolve({ success: true, transactionId: `test_${Date.now()}`, method, amount, currency } as PaymentResult);
-        } else {
-          reject(new Error('Payment processing failed'));
-        }
-      }, 2000);
-    });
-  };
+  }, [amount, currency, checkGooglePayAvailability, onPaymentError, onPaymentSuccess, processPayment]);
 
   const formatAmount = useCallback((amount: number) => formatCurrencyValue(amount), []);
 
@@ -378,7 +379,7 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
       else if (paymentId === 'google-pay') handleGooglePay();
       // For card payments, you'd typically redirect to a form
     };
-  }, []);
+  }, [handleApplePay, handleGooglePay]);
 
   return (
     <div className={`space-y-4 ${className}`}>
@@ -398,17 +399,15 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
               <Button
                 onClick={handlePaymentMethodSelect(payment.id)}
                 disabled={isProcessing}
-                className={`w-full p-4 h-auto flex items-center justify-between border-2 transition-all ${
-                  selectedMethod === payment.id
-                    ? 'border-[#5B2EFF] bg-[#5B2EFF]/10'
-                    : 'border-gray-200 dark:border-gray-700 hover:border-[#5B2EFF]/50'
-                } ${
-                  payment.id === 'apple-pay' 
-                    ? 'bg-black hover:bg-gray-800 text-white dark:text-gray-100' 
+                className={`w-full p-4 h-auto flex items-center justify-between border-2 transition-all ${selectedMethod === payment.id
+                  ? 'border-[#5B2EFF] bg-[#5B2EFF]/10'
+                  : 'border-gray-200 dark:border-gray-700 hover:border-[#5B2EFF]/50'
+                  } ${payment.id === 'apple-pay'
+                    ? 'bg-black hover:bg-gray-800 text-white dark:text-gray-100'
                     : payment.id === 'google-pay'
-                    ? 'bg-[#4285f4] hover:bg-[#3367d6] text-white dark:text-gray-100'
-                    : 'bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100'
-                }`}
+                      ? 'bg-[#4285f4] hover:bg-[#3367d6] text-white dark:text-gray-100'
+                      : 'bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100'
+                  }`}
                 variant="outline"
               >
                 <div className="flex items-center space-x-3">
@@ -479,27 +478,27 @@ const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
 
   const checkApplePayAvailability = useCallback((): boolean => {
     if (typeof globalThis.window === 'undefined') return false;
-    const applePayWindow = window as unknown as { 
+    const applePayWindow = window as unknown as {
       ApplePaySession?: {
         canMakePayments: () => boolean;
         supportsVersion: (version: number) => boolean;
         STATUS_SUCCESS: number;
         STATUS_FAILURE: number;
-        new (version: number, paymentRequest: ApplePayPaymentRequest): unknown;
-      } 
+        new(version: number, paymentRequest: ApplePayPaymentRequest): unknown;
+      }
     };
-    return !!(applePayWindow.ApplePaySession && 
-             applePayWindow.ApplePaySession.canMakePayments());
+    return !!(applePayWindow.ApplePaySession &&
+      applePayWindow.ApplePaySession.canMakePayments());
   }, []);
 
   const checkGooglePayAvailability = useCallback((): boolean => {
     if (typeof globalThis.window === 'undefined') return false;
-    const googleWindow = window as unknown as { 
-      google?: { 
-        payments?: { 
-          api?: unknown 
-        } 
-      } 
+    const googleWindow = window as unknown as {
+      google?: {
+        payments?: {
+          api?: unknown
+        }
+      }
     };
     return !!(googleWindow.google?.payments?.api);
   }, []);
@@ -524,7 +523,7 @@ const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
       <div className="text-center text-sm text-gray-600 dark:text-gray-400 mb-3">
         {uiCopy.expressCheckout}
       </div>
-      
+
       {showApplePay && (
         <button
           className="w-full bg-black dark:bg-black text-white dark:text-gray-100 rounded-lg p-3 flex items-center justify-center space-x-2 hover:bg-gray-800 dark:hover:bg-gray-700 transition-colors"
@@ -534,7 +533,7 @@ const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
           <span className="font-semibold">{uiCopy.payWithApplePay}</span>
         </button>
       )}
-      
+
       {showGooglePay && (
         <button
           className="w-full bg-[#4285f4] text-white dark:text-gray-100 rounded-lg p-3 flex items-center justify-center space-x-2 hover:bg-[#3367d6] transition-colors"
@@ -544,7 +543,7 @@ const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
           <span className="font-semibold">{uiCopy.payWithGooglePay}</span>
         </button>
       )}
-      
+
       <div className="text-center text-xs text-gray-500 dark:text-gray-400">
         {uiCopy.regularCheckoutHint}
       </div>

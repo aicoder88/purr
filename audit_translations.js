@@ -4,48 +4,6 @@ const path = require('path');
 // Read the files
 const enFile = fs.readFileSync(path.join(__dirname, 'src/translations/en.ts'), 'utf-8');
 const frFile = fs.readFileSync(path.join(__dirname, 'src/translations/fr.ts'), 'utf-8');
-const typesFile = fs.readFileSync(path.join(__dirname, 'src/translations/types.ts'), 'utf-8');
-
-// Extract object keys from TypeScript file
-function extractKeys(content, varName) {
-  const keys = [];
-  const lines = content.split('\n');
-  const depth = 0;
-  const currentPath = [];
-  
-  for (const line of lines) {
-    // Match object key declarations
-    const keyMatch = line.match(/^\s+(\w+):\s*[\[{]?/);
-    if (keyMatch) {
-      const key = keyMatch[1];
-      const indent = line.match(/^(\s*)/)[1].length;
-      
-      // Adjust depth based on indentation
-      while (currentPath.length > 0 && indent <= currentPath[currentPath.length - 1].indent) {
-        currentPath.pop();
-      }
-      
-      currentPath.push({ key, indent });
-      keys.push(currentPath.map(p => p.key).join('.'));
-    }
-  }
-  
-  return keys;
-}
-
-// Simple approach - find top-level and nested keys
-function findKeys(objStr, prefix = '') {
-  const keys = [];
-  const regex = /(\w+):\s*[{\[]/g;
-  let match;
-  
-  while ((match = regex.exec(objStr)) !== null) {
-    keys.push(prefix ? `${prefix}.${match[1]}` : match[1]);
-  }
-  
-  return keys;
-}
-
 // Manual comparison of key sections
 console.log('=== TRANSLATION AUDIT ===\n');
 

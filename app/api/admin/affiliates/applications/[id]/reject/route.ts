@@ -2,11 +2,24 @@ import { auth } from '@/auth';
 import prisma from '@/lib/prisma';
 import { Resend } from 'resend';
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 export async function POST(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  // Apply rate limiting (standard: 20 req/min for writes)
+  const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   // Check authentication
   const session = await auth();
   if (!session?.user || (session.user as { role?: string }).role !== 'admin') {
@@ -98,9 +111,9 @@ export async function POST(
     return Response.json({
       success: true,
       message: 'Application rejected',
-    });
+    }, { headers: rateLimitHeaders });
   } catch (error) {
     console.error('Failed to reject application:', error);
-    return Response.json({ error: 'Failed to reject application' }, { status: 500 });
+    return Response.json({ error: 'Failed to reject application' }, { status: 500, headers: rateLimitHeaders });
   }
 }

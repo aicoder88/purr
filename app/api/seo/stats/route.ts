@@ -48,7 +48,7 @@ interface SEOStats {
   };
 }
 
-interface StatsResponse {
+interface _StatsResponse {
   success: boolean;
   data?: SEOStats;
   generatedAt?: string;

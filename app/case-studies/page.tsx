@@ -5,7 +5,6 @@ import { TrendingUp, Users, Clock, CheckCircle, ArrowRight, Home, Cat } from 'lu
 
 import { Container } from '@/components/ui/container';
 import { SITE_NAME } from '@/lib/constants';
-import { buildLanguageAlternates, getLocalizedUrl } from '@/lib/seo-utils';
 
 export const metadata: Metadata = {
   title: `Success Stories - Real Customer Results | ${SITE_NAME}`,
@@ -196,7 +195,6 @@ function generateSchema() {
 }
 
 export default function CaseStudiesPage() {
-  const canonicalUrl = 'https://www.purrify.ca/case-studies/';
   const schema = generateSchema();
 
   return (

@@ -129,7 +129,7 @@ export function hasAIRequestHeaders(headers: Headers): boolean {
   return AI_API_HEADERS.some((header) => headers.get(header) !== null);
 }
 
-export default {
+const AIUserAgentUtils = {
   AI_USER_AGENTS,
   AI_API_HEADERS,
   isAICrawler,
@@ -137,3 +137,5 @@ export default {
   getAICrawlerInfo,
   hasAIRequestHeaders,
 };
+
+export default AIUserAgentUtils;

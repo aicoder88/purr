@@ -490,6 +490,27 @@ export async function POST(req: NextRequest): Promise<Response> {
             if (orderType === 'retailer_order') {
               const paymentIntent = session.payment_intent as string;
 
+              // Check current order status before updating (idempotency guard)
+              const currentRetailerOrder = await prisma.retailerOrder.findUnique({
+                where: { id: orderId },
+                select: { status: true },
+              });
+
+              if (!currentRetailerOrder) {
+                logger.warn('Retailer order not found for webhook', { orderId });
+                break;
+              }
+
+              if (currentRetailerOrder.status === 'PAID') {
+                logger.info('Retailer order already paid, skipping', { orderId });
+                break;
+              }
+
+              if (currentRetailerOrder.status === 'CANCELLED') {
+                logger.info('Retailer order cancelled, skipping', { orderId });
+                break;
+              }
+
               // Update retailer order status
               await prisma.retailerOrder.update({
                 where: { id: orderId },
@@ -536,6 +557,27 @@ export async function POST(req: NextRequest): Promise<Response> {
                 });
               }
 
+              break;
+            }
+
+            // Check current order status before updating (idempotency guard)
+            const currentOrder = await prisma.order.findUnique({
+              where: { id: orderId },
+              select: { status: true },
+            });
+
+            if (!currentOrder) {
+              logger.warn('Order not found for webhook', { orderId });
+              break;
+            }
+
+            if (currentOrder.status === 'PAID') {
+              logger.info('Order already paid, skipping', { orderId });
+              break;
+            }
+
+            if (currentOrder.status === 'CANCELLED') {
+              logger.info('Order cancelled, skipping', { orderId });
               break;
             }
 

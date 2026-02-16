@@ -11,7 +11,7 @@ export interface SaveOptions {
 
 export interface SaveResult {
   success: boolean;
-  validation: { valid: boolean; errors: any[]; warnings: any[] };
+  validation: { valid: boolean; errors: unknown[]; warnings: unknown[] };
   post?: BlogPost;
 }
 
@@ -229,7 +229,7 @@ export class ContentStore {
     return allPosts.filter(post => post.tags.includes(tag));
   }
 
-  async savePost(post: BlogPost, options: SaveOptions = {}): Promise<SaveResult> {
+  async savePost(post: BlogPost, _options: SaveOptions = {}): Promise<SaveResult> {
     try {
       // Keep the first content image (hero) and preview image in sync.
       const syncResult = syncPreviewAndHeroImage(post);
@@ -282,7 +282,7 @@ export class ContentStore {
     }
   }
 
-  async validateExistingPost(slug: string, locale: string): Promise<{ valid: boolean; errors: any[]; warnings: any[] }> {
+  async validateExistingPost(_slug: string, _locale: string): Promise<{ valid: boolean; errors: unknown[]; warnings: unknown[] }> {
     // Validation disabled for now
     return { valid: true, errors: [], warnings: [] };
   }

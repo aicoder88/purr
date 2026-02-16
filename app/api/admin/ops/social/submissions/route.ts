@@ -1,6 +1,7 @@
 import { requireAuth } from '@/lib/auth/session';
 import prisma from '@/lib/prisma';
 import { SocialPostStatus } from '@/generated/client/client';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 function getPrisma() {
   if (!prisma) {
@@ -27,6 +28,18 @@ interface SubmissionsResponse {
 }
 
 export async function GET(req: Request) {
+  // Apply rate limiting (generous: 100 req/min for reads)
+  const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'generous');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   // Auth check
   const { authorized } = await requireAuth();
   if (!authorized) {
@@ -84,9 +97,9 @@ export async function GET(req: Request) {
       limit
     };
 
-    return Response.json(response, { status: 200 });
+    return Response.json(response, { status: 200, headers: rateLimitHeaders });
   } catch (error) {
     console.error('Error fetching social posts:', error);
-    return Response.json({ error: 'Failed to fetch posts' }, { status: 500 });
+    return Response.json({ error: 'Failed to fetch posts' }, { status: 500, headers: rateLimitHeaders });
   }
 }

@@ -1,8 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/lib/translation-context';
 import { getLocalizedUrl } from '@/lib/seo-utils';
@@ -54,7 +52,6 @@ interface UpsellClientProps {
 
 export default function UpsellClient({ initialEmail, sessionId }: UpsellClientProps) {
   const { t, locale } = useTranslation();
-  const router = useRouter();
   const [timeLeft, setTimeLeft] = useState(TIMER_DURATION);
   const [isLoading, setIsLoading] = useState(false);
   const [customerEmail, setCustomerEmail] = useState<string | null>(initialEmail || null);

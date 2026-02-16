@@ -1,5 +1,4 @@
 "use client";
-
 import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/lib/translation-context';
@@ -11,16 +10,14 @@ import { ArrowLeft, Check, Star, ShoppingCart, Heart, Zap, Truck, MapPin, Chevro
 import { RelatedContent } from '@/components/seo/RelatedContent';
 import { ProductFAQ } from '@/components/product/ProductFAQ';
 import { GuaranteeBadge } from '@/components/ui/GuaranteeBadge';
-import { getPriceValidityDate, buildAvailabilityUrl, generateFAQSchema, stripContext } from '@/lib/seo-utils';
-import { formatProductPrice, getProductPrice } from '@/lib/pricing';
+import { getPriceValidityDate,  generateFAQSchema, stripContext } from '@/lib/seo-utils';
+import {  getProductPrice } from '@/lib/pricing';
 import { getPaymentLink } from '@/lib/payment-links';
 import { useEffect, useRef, useCallback, useState } from 'react';
 import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
 import { useAggregateReview } from '@/hooks/useAggregateReview';
 import { trackTikTokClientEvent } from '@/lib/tiktok-tracking';
-
 type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
-
 const STANDARD_PAGE_COPY: Record<SupportedLocale, {
   breadcrumbProducts: string;
   badgeMostPopular: string;
@@ -186,25 +183,21 @@ const STANDARD_PAGE_COPY: Record<SupportedLocale, {
     productFaqName: 'Tamano estandar (50g)',
   },
 };
-
 export default function StandardSizePage() {
   const { t, locale } = useTranslation();
   const copy = STANDARD_PAGE_COPY[locale as SupportedLocale] || STANDARD_PAGE_COPY.en;
   const { currency } = useCurrency();
   const viewTracked = useRef(false);
   const purchaseCardsRef = useRef<HTMLDivElement>(null);
-  const [quantity, setQuantity] = useState(1);
-
+  const [_quantity, _setQuantity] = useState(1);
   const priceValidUntil = getPriceValidityDate(90);
   const productKey = 'standard'; // 50g Standard Size
   const productName = t.products?.["purrify-50g"]?.name || "";
   const numericPrice = getProductPrice(productKey, currency);
-
   // Track ViewContent on page load
   useEffect(() => {
     if (viewTracked.current) return;
     viewTracked.current = true;
-
     trackTikTokClientEvent('ViewContent', {
       content_id: productKey,
       content_name: productName,
@@ -213,12 +206,10 @@ export default function StandardSizePage() {
       currency: 'CAD',
     });
   }, [productKey, productName, numericPrice]);
-
   // Track AddToCart + InitiateCheckout when user clicks buy
   const handleBuyClick = useCallback((isAutoship: boolean, quantity: number = 1) => {
     const price = isAutoship ? getProductPrice('standardAutoship', currency) : numericPrice;
     const name = isAutoship ? `${productName} - Autoship` : productName;
-
     trackTikTokClientEvent('AddToCart', {
       content_id: productKey,
       content_name: name,
@@ -227,7 +218,6 @@ export default function StandardSizePage() {
       value: price * quantity,
       currency: 'CAD',
     });
-
     trackTikTokClientEvent('InitiateCheckout', {
       content_id: productKey,
       content_name: name,
@@ -237,22 +227,18 @@ export default function StandardSizePage() {
       currency: 'CAD',
     });
   }, [numericPrice, productName, productKey, currency]);
-
   // Handler for sticky cart
-  const handleStickyAddToCart = useCallback((quantity: number) => {
+  const _handleStickyAddToCart = useCallback((quantity: number) => {
     handleBuyClick(false, quantity);
   }, [handleBuyClick]);
-
   // Use optimized SEO meta content
   const seoMeta = getSEOMeta(locale as 'en' | 'fr' | 'zh' | 'es', 'products', 'standard');
   const pageTitle = seoMeta?.title || `${productName} - Cat Litter Freshener & Charcoal Additive | Purrify`;
   const pageDescription = seoMeta?.description || "Best cat litter freshener for single-cat homes. 50g activated charcoal cat litter additive eliminates ammonia odors for 4-6 weeks. Natural, fragrance-free, works with any litter. Ships to USA & Canada.";
-
   // Get aggregate review data
   const { data: reviewData } = useAggregateReview(productKey, locale);
-
   // Use enhanced SEO hook
-  const { nextSeoProps, schema } = useEnhancedSEO({
+  const { _nextSeoProps, schema } = useEnhancedSEO({
     path: '/products/standard',
     title: pageTitle,
     description: pageDescription,
@@ -273,21 +259,15 @@ export default function StandardSizePage() {
     image: 'https://www.purrify.ca/optimized/60g-transparent.webp',
     keywords: ['cat litter freshener', 'charcoal litter additive', 'cat litter deodorizer', 'odor eliminator'],
   });
-
-  const singleCheckoutUrl = getPaymentLink('standardSingle') || '#';
-  const autoshipCheckoutUrl = getPaymentLink('standardAutoship') || '#';
-
+  const _singleCheckoutUrl = getPaymentLink('standardSingle') || '#';
+  const _autoshipCheckoutUrl = getPaymentLink('standardAutoship') || '#';
   // Optimized images
   const heroImage = "/optimized/60g-transparent.webp";
   const solutionImage = "/optimized/90day-solution.webp";
   const productImage = "/optimized/60g-transparent.webp";
-
   const benefits = copy.benefits;
-
   const productFaqType = 'standard';
   const productFaqName = copy.productFaqName;
-
-
   return (
     <>
       {/* Enhanced Product JSON-LD from useEnhancedSEO hook */}
@@ -306,7 +286,6 @@ export default function StandardSizePage() {
           }}
         />
       )}
-
       <main className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900">
         {/* Breadcrumb Navigation */}
         <Container>
@@ -328,7 +307,6 @@ export default function StandardSizePage() {
             </ol>
           </nav>
         </Container>
-
         {/* Hero Section */}
         <section className="pb-16 pt-4">
           <Container>
@@ -353,7 +331,6 @@ export default function StandardSizePage() {
                   </div>
                 </div>
               </div>
-
               {/* Product Info */}
               <div className="space-y-8">
                 <div>
@@ -362,7 +339,6 @@ export default function StandardSizePage() {
                       {productName}
                     </span>
                   </h1>
-
                   <div className="flex flex-wrap items-center gap-3 mb-6">
                     <div className="inline-flex items-center gap-2 bg-white/50 dark:bg-gray-800/50 px-3 py-1 rounded-full border border-gray-100 dark:border-gray-700 text-sm font-bold text-gray-700 dark:text-gray-300">
                       <Zap className="w-4 h-4" />
@@ -370,12 +346,10 @@ export default function StandardSizePage() {
                     </div>
                     <span className="text-gray-500 dark:text-gray-400 text-sm font-medium">{copy.verifiedStories}</span>
                   </div>
-
                   <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl">
                     {copy.heroDescription}
                   </p>
                 </div>
-
                 {/* B2B: Find a Store CTA */}
                 <div ref={purchaseCardsRef} className="bg-white dark:bg-gray-900 border-2 border-deep-coral rounded-3xl p-8 shadow-xl">
                   <h3 className="font-bold text-xl text-gray-900 dark:text-white mb-4">
@@ -392,7 +366,6 @@ export default function StandardSizePage() {
                     </Link>
                   </Button>
                 </div>
-
                 {/* Quick Trust */}
                 <div className="flex flex-wrap gap-4 pt-2">
                   <GuaranteeBadge size="md" />
@@ -405,7 +378,6 @@ export default function StandardSizePage() {
             </div>
           </Container>
         </section>
-
         {/* Product-Specific FAQ */}
         <section className="py-12 bg-white/30 dark:bg-gray-900/30">
           <Container>
@@ -414,7 +386,6 @@ export default function StandardSizePage() {
             </div>
           </Container>
         </section>
-
         {/* Feature/Lifestyle Section 1 */}
         <section className="py-24 bg-white/50 dark:bg-black/20 overflow-hidden">
           <Container>
@@ -454,7 +425,6 @@ export default function StandardSizePage() {
             </div>
           </Container>
         </section>
-
         {/* Values Block */}
         <section className="py-24">
           <Container>
@@ -483,7 +453,6 @@ export default function StandardSizePage() {
             </div>
           </Container>
         </section>
-
         {/* Product Detail Image */}
         <section className="py-24 bg-gray-900 dark:bg-gray-900 text-white dark:text-white overflow-hidden relative">
           <div className="absolute inset-0 bg-gradient-to-tr from-electric-indigo/20 to-deep-coral/20 opacity-40"></div>
@@ -515,7 +484,6 @@ export default function StandardSizePage() {
             </div>
           </Container>
         </section>
-
         {/* Bottom CTA - B2B: Find a Store */}
         <section className="py-32 bg-white dark:bg-gray-950">
           <Container>
@@ -540,7 +508,6 @@ export default function StandardSizePage() {
             </div>
           </Container>
         </section>
-
         {/* Back navigation */}
         <section className="py-12 border-t border-gray-100 dark:border-gray-900">
           <Container className="text-center">
@@ -549,7 +516,6 @@ export default function StandardSizePage() {
             </Link>
           </Container>
         </section>
-
         {/* Related Articles */}
         <section className="py-24 border-t border-gray-200 dark:border-gray-800">
           <Container>

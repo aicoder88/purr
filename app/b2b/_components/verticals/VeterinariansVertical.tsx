@@ -1,14 +1,10 @@
 'use client';
-
-import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { scrollToSection } from '@/lib/utils';
-import { Shield, FlaskConical, Heart, DollarSign, CheckCircle } from 'lucide-react';
-
+import { Shield, FlaskConical,   CheckCircle } from 'lucide-react';
 interface VeterinariansVerticalProps {
   locale: string;
 }
-
 export function VeterinariansVertical({ locale }: VeterinariansVerticalProps) {
   const t = {
     hero: {
@@ -170,7 +166,6 @@ export function VeterinariansVertical({ locale }: VeterinariansVerticalProps) {
       ],
     },
   };
-
   return (
     <div className="space-y-16">
       {/* Hero */}
@@ -179,21 +174,18 @@ export function VeterinariansVertical({ locale }: VeterinariansVerticalProps) {
           <Shield className="h-4 w-4" />
           {t.hero.badge}
         </div>
-
         <h2 className="font-heading text-5xl md:text-6xl font-black text-gray-900 dark:text-white mb-6">
           <span className="block">{t.hero.titleLine1}</span>
           <span className="block bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-transparent">
             {t.hero.titleLine2}
           </span>
         </h2>
-
         <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
           {t.hero.description}{' '}
           <strong className="text-emerald-600 dark:text-emerald-400">
             {t.hero.highlight}
           </strong>
         </p>
-
         {/* Stats */}
         <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto mb-8">
           <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
@@ -215,7 +207,6 @@ export function VeterinariansVertical({ locale }: VeterinariansVerticalProps) {
             </div>
           </div>
         </div>
-
         <Button
           onClick={() => scrollToSection('vet-contact')}
           size="lg"
@@ -224,7 +215,6 @@ export function VeterinariansVertical({ locale }: VeterinariansVerticalProps) {
           {t.hero.cta.primary}
         </Button>
       </section>
-
       {/* Benefits */}
       <section className="bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 rounded-2xl p-8">
         <div className="text-center mb-12">
@@ -241,7 +231,6 @@ export function VeterinariansVertical({ locale }: VeterinariansVerticalProps) {
             {t.benefits.subtitle}
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {t.benefits.items.map((benefit, index) => (
             <div
@@ -265,7 +254,6 @@ export function VeterinariansVertical({ locale }: VeterinariansVerticalProps) {
           ))}
         </div>
       </section>
-
       {/* Partnership Tiers */}
       <section id="vet-contact">
         <div className="text-center mb-12">
@@ -282,7 +270,6 @@ export function VeterinariansVertical({ locale }: VeterinariansVerticalProps) {
             {t.partnership.subtitle}
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {t.partnership.tiers.map((tier, index) => (
             <div
@@ -299,14 +286,12 @@ export function VeterinariansVertical({ locale }: VeterinariansVerticalProps) {
                   </span>
                 </div>
               )}
-
               <div className="text-center mb-8">
                 <h4 className="font-heading text-2xl font-black text-gray-900 dark:text-white mb-2">
                   {tier.name}
                 </h4>
                 <p className="text-gray-600 dark:text-gray-300">{tier.description}</p>
               </div>
-
               <ul className="space-y-4 mb-8">
                 {tier.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-start">
@@ -317,7 +302,6 @@ export function VeterinariansVertical({ locale }: VeterinariansVerticalProps) {
                   </li>
                 ))}
               </ul>
-
               <Button
                 className={`w-full py-4 font-bold rounded-xl ${tier.popular
                     ? 'bg-gradient-to-r from-emerald-500 to-blue-500 text-white'

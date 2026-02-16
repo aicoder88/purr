@@ -124,7 +124,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
 
   useEffect(() => {
     // Generate referral code and link
-    const code = generateReferralCode(userId);
+    const code = generateReferralCode();
     const link = `https://www.purrify.ca/?ref=${code}&discount=FRIEND25`;
 
     setReferralCode(code);
@@ -134,7 +134,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
     loadReferralStats(userId);
   }, [userId]);
 
-  const generateReferralCode = (_userId: string): string => {
+  const generateReferralCode = (): string => {
     // Generate a user-friendly referral code
     const adjectives = ['HAPPY', 'FRESH', 'CLEAN', 'PURE', 'SWEET'];
     const nouns = ['CAT', 'KITTY', 'PAWS', 'PURR', 'MEOW'];

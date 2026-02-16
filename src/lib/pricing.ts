@@ -70,9 +70,9 @@ export const formatProductPrice = (
   // Explicitly check for all known locale codes and locale patterns
   const knownLocales = ['en', 'fr', 'zh', 'es'];
   const isLocale = currencyOrLocale !== 'CAD' && currencyOrLocale !== 'USD' &&
-                   (currencyOrLocale.includes('-') ||
-                    currencyOrLocale.includes('_') ||
-                    knownLocales.includes(currencyOrLocale));
+    (currencyOrLocale.includes('-') ||
+      currencyOrLocale.includes('_') ||
+      knownLocales.includes(currencyOrLocale));
 
   if (isLocale) {
     // Old signature: formatProductPrice(idOrKey, locale)
@@ -85,18 +85,14 @@ export const formatProductPrice = (
   return formatCurrency(getProductPrice(idOrKey, currency), currency, resolvedLocale);
 };
 
-const allProductValues = (Object.values(PRODUCT_ID_ALIAS) as ProductCatalogId[]).map(id => getProductPrice(id, 'CAD'));
-
-const MIN_PRICE = Math.min(...allProductValues);
-const MAX_PRICE = Math.max(...allProductValues);
 
 export const getPriceRange = (currencyOrLocale: Currency | string = 'CAD', locale?: string) => {
   // Backward compatibility: if first param looks like a locale, treat it as such
   const knownLocales = ['en', 'fr', 'zh', 'es'];
   const isLocale = currencyOrLocale !== 'CAD' && currencyOrLocale !== 'USD' &&
-                   (currencyOrLocale.includes('-') ||
-                    currencyOrLocale.includes('_') ||
-                    knownLocales.includes(currencyOrLocale));
+    (currencyOrLocale.includes('-') ||
+      currencyOrLocale.includes('_') ||
+      knownLocales.includes(currencyOrLocale));
 
   let currency: Currency;
   let resolvedLocale: string;
@@ -138,9 +134,9 @@ export const formatCurrencyValue = (value: number, currencyOrLocale: Currency | 
   // Backward compatibility: if second param looks like a locale, treat it as such
   const knownLocales = ['en', 'fr', 'zh', 'es'];
   const isLocale = currencyOrLocale !== 'CAD' && currencyOrLocale !== 'USD' &&
-                   (currencyOrLocale.includes('-') ||
-                    currencyOrLocale.includes('_') ||
-                    knownLocales.includes(currencyOrLocale));
+    (currencyOrLocale.includes('-') ||
+      currencyOrLocale.includes('_') ||
+      knownLocales.includes(currencyOrLocale));
 
   if (isLocale) {
     // Old signature: formatCurrencyValue(value, locale)

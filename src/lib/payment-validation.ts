@@ -122,8 +122,9 @@ export class PaymentValidator {
       recommendation: 'approve',
     };
 
-    const amountUSD = checkoutData.currency === 'cad' 
-      ? checkoutData.amount * 0.74 
+    const { CAD_TO_USD_RATE } = await import('@/lib/config/ui-constants');
+    const amountUSD = checkoutData.currency === 'cad'
+      ? checkoutData.amount * CAD_TO_USD_RATE
       : checkoutData.amount;
 
     if (amountUSD > 50000) {

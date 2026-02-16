@@ -1,6 +1,7 @@
 import { requireAuth } from '@/lib/auth/session';
 import prisma from '@/lib/prisma';
 import { LeadStatus, RetailerStatus, OrderStatus } from '@/generated/client/client';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 // Helper to ensure prisma is available
 function getPrisma() {
@@ -60,7 +61,19 @@ interface OpsStats {
   }>;
 }
 
-export async function GET() {
+export async function GET(req: Request) {
+  // Apply rate limiting (generous: 100 req/min for reads)
+  const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'generous');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   // Auth check
   const { authorized } = await requireAuth();
   if (!authorized) {
@@ -289,9 +302,9 @@ export async function GET() {
       recentActivity: recentActivity.slice(0, 10)
     };
 
-    return Response.json(stats, { status: 200 });
+    return Response.json(stats, { status: 200, headers: rateLimitHeaders });
   } catch (error) {
     console.error('Error fetching ops stats:', error);
-    return Response.json({ error: 'Failed to fetch stats' }, { status: 500 });
+    return Response.json({ error: 'Failed to fetch stats' }, { status: 500, headers: rateLimitHeaders });
   }
 }

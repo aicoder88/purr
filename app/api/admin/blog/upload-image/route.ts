@@ -1,5 +1,6 @@
 import { ImageOptimizer } from '@/lib/blog/image-optimizer';
 import { requireAuth } from '@/lib/auth/session';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 /**
  * Sanitize slug to prevent path traversal attacks
@@ -42,6 +43,18 @@ interface UploadResponse {
 }
 
 export async function POST(request: Request) {
+  // Apply rate limiting (standard: 20 req/min for writes)
+  const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { success: false, error: 'Too many requests' } as UploadResponse,
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   // Check authentication
   const { authorized } = await requireAuth();
   if (!authorized) {
@@ -79,12 +92,12 @@ export async function POST(request: Request) {
       optimized: result.optimized,
       width: result.width,
       height: result.height
-    } as UploadResponse);
+    } as UploadResponse, { headers: rateLimitHeaders });
   } catch (error) {
     console.error('Error uploading image:', error);
     return Response.json({
       success: false,
       error: error instanceof Error ? error.message : 'Failed to upload image'
-    } as UploadResponse, { status: 500 });
+    } as UploadResponse, { status: 500, headers: rateLimitHeaders });
   }
 }

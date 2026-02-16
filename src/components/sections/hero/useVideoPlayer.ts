@@ -34,7 +34,7 @@ export const useVideoPlayer = (dependencies: any[] = []) => {
       await video.play();
       hasEndedRef.current = false;
       setState(prev => ({ ...prev, isPlaying: true, showReplayButton: false, showPoster: false }));
-    } catch (err) {
+    } catch {
       // Autoplay blocked - show controls
       setState(prev => ({ ...prev, isPlaying: false }));
     }
@@ -137,7 +137,8 @@ export const useVideoPlayer = (dependencies: any[] = []) => {
       video.removeEventListener('playing', handlePlaying);
       video.removeEventListener('pause', handlePause);
     };
-  }, [state.shouldLoadVideo, ...dependencies]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.shouldLoadVideo, JSON.stringify(dependencies)]);
 
   // Auto-play when video can play (muted)
   useEffect(() => {

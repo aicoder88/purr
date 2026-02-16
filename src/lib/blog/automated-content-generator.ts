@@ -413,7 +413,7 @@ Make the content genuinely helpful and informative, not promotional.
   /**
    * Fetch relevant images (AI-generated with fallback to default)
    */
-  private async fetchRelevantImages(topic: string, count: number): Promise<Array<{
+  private async fetchRelevantImages(topic: string, _count: number): Promise<Array<{
     url: string;
     alt: string;
     width: number;

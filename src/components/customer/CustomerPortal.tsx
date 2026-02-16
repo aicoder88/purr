@@ -116,7 +116,7 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
       setCustomer(mockCustomer);
       setOrders(mockOrders);
       setSubscriptions(mockSubscriptions);
-    } catch (error) {
+    } catch {
       // Silently fail
     } finally {
       setLoading(false);

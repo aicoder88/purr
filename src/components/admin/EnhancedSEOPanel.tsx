@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { AlertCircle, CheckCircle, AlertTriangle, Zap, Link as LinkIcon, Search } from 'lucide-react';
 import type { SEOScore, SEOSuggestion, InternalLinkSuggestion, KeywordCannibalization } from '@/lib/blog/seo-scorer';
 import { toast } from 'sonner';
@@ -6,26 +6,17 @@ import { toast } from 'sonner';
 interface EnhancedSEOPanelProps {
   score: SEOScore;
   slug?: string;
-  onApplyFix?: (action: string, data: any) => void;
+  onApplyFix?: (action: string, data: Record<string, unknown>) => void;
 }
 
 export default function EnhancedSEOPanel({ score, slug, onApplyFix }: EnhancedSEOPanelProps) {
   const [internalLinks, setInternalLinks] = useState<InternalLinkSuggestion[]>([]);
   const [cannibalization, setCannibalization] = useState<KeywordCannibalization[]>([]);
-  const [loadingLinks, setLoadingLinks] = useState(false);
-  const [loadingCannibalization, setLoadingCannibalization] = useState(false);
 
-  useEffect(() => {
-    if (slug) {
-      loadInternalLinkSuggestions();
-      checkCannibalization();
-    }
-  }, [slug]);
-
-  const loadInternalLinkSuggestions = async () => {
+  const loadInternalLinkSuggestions = useCallback(async () => {
     if (!slug) return;
 
-    setLoadingLinks(true);
+    if (!slug) return;
     try {
       const response = await fetch('/api/admin/blog/seo-autofix', {
         method: 'POST',
@@ -37,17 +28,15 @@ export default function EnhancedSEOPanel({ score, slug, onApplyFix }: EnhancedSE
         const data = await response.json();
         setInternalLinks(data.result || []);
       }
-    } catch (error) {
+    } catch {
       // Silently fail - suggestions are optional
-    } finally {
-      setLoadingLinks(false);
     }
-  };
+  }, [slug]);
 
-  const checkCannibalization = async () => {
+  const checkCannibalization = useCallback(async () => {
     if (!slug) return;
 
-    setLoadingCannibalization(true);
+    if (!slug) return;
     try {
       const response = await fetch('/api/admin/blog/seo-autofix', {
         method: 'POST',
@@ -59,12 +48,17 @@ export default function EnhancedSEOPanel({ score, slug, onApplyFix }: EnhancedSE
         const data = await response.json();
         setCannibalization(data.result || []);
       }
-    } catch (error) {
+    } catch {
       // Silently fail - cannibalization check is optional
-    } finally {
-      setLoadingCannibalization(false);
     }
-  };
+  }, [slug]);
+
+  useEffect(() => {
+    if (slug) {
+      loadInternalLinkSuggestions();
+      checkCannibalization();
+    }
+  }, [slug, loadInternalLinkSuggestions, checkCannibalization]);
 
   const handleAutoFix = async (suggestion: SEOSuggestion) => {
     if (!suggestion.autoFixable || !suggestion.autoFixAction) return;
@@ -77,7 +71,7 @@ export default function EnhancedSEOPanel({ score, slug, onApplyFix }: EnhancedSE
       }
 
       toast.success('Fix applied successfully!');
-    } catch (error) {
+    } catch {
       toast.error('Failed to apply fix');
     }
   };
@@ -168,10 +162,10 @@ export default function EnhancedSEOPanel({ score, slug, onApplyFix }: EnhancedSE
                 <p className="text-sm text-gray-900 dark:text-gray-100">{suggestion.message}</p>
                 <div className="flex items-center space-x-2 mt-2">
                   <span className={`text-xs px-2 py-0.5 rounded-full ${suggestion.priority === 'high'
-                      ? 'bg-red-100 dark:bg-red-900/20 text-red-700 dark:text-red-300'
-                      : suggestion.priority === 'medium'
-                        ? 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-300'
-                        : 'bg-blue-100 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300'
+                    ? 'bg-red-100 dark:bg-red-900/20 text-red-700 dark:text-red-300'
+                    : suggestion.priority === 'medium'
+                      ? 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-300'
+                      : 'bg-blue-100 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300'
                     }`}>
                     {suggestion.priority}
                   </span>

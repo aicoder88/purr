@@ -100,7 +100,7 @@ export function LaserChase() {
         }, 600);
     };
 
-    const handleDotClick = (e: React.MouseEvent) => {
+    const handleDotClick = () => {
         if (!isPlaying) return;
 
         const newCombo = combo + 1;
@@ -294,7 +294,7 @@ export function LaserChase() {
                         }}
                         onClick={(e) => {
                             e.stopPropagation();
-                            handleDotClick(e);
+                            handleDotClick();
                         }}
                     >
                         {/* Glow effect */}

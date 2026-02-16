@@ -8,6 +8,7 @@
 import * as Sentry from '@sentry/nextjs';
 import { requireAuth } from '@/lib/auth/session';
 import prismaClient from '@/lib/prisma';
+import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 interface UTMMetrics {
   source: string | null;
@@ -48,6 +49,18 @@ interface UTMAnalyticsResponse {
 }
 
 export async function GET(req: Request): Promise<Response> {
+  // Apply rate limiting (generous: 100 req/min for reads)
+  const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
+  const rateLimitResult = await checkRateLimit(clientIp, 'generous');
+  const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
+
+  if (!rateLimitResult.success) {
+    return Response.json(
+      { success: false, error: 'Too many requests' },
+      { status: 429, headers: rateLimitHeaders }
+    );
+  }
+
   // Require admin authentication
   const auth = await requireAuth(undefined, undefined, ['admin']);
   if (!auth.authorized) {
@@ -224,7 +237,7 @@ export async function GET(req: Request): Promise<Response> {
       },
     };
 
-    return Response.json(response);
+    return Response.json(response, { headers: rateLimitHeaders });
   } catch (error) {
     Sentry.captureException(error);
     return Response.json(
@@ -232,7 +245,7 @@ export async function GET(req: Request): Promise<Response> {
         success: false,
         error: error instanceof Error ? error.message : 'Internal server error',
       },
-      { status: 500 }
+      { status: 500, headers: rateLimitHeaders }
     );
   }
 }

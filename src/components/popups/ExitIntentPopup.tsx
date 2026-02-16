@@ -5,6 +5,10 @@ import { X, Mail, Gift, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useTranslation } from '@/lib/translation-context';
+import {
+  WELCOME_DISCOUNT_CODE,
+  WELCOME_DISCOUNT_PERCENT,
+} from '@/lib/config/ui-constants';
 
 interface ExitIntentPopupProps {
   /** Delay in ms before popup can trigger (prevents immediate popups) */
@@ -32,8 +36,8 @@ const STORAGE_SUBSCRIBED_KEY = 'purrify_email_subscribed';
  */
 export function ExitIntentPopup({
   delayMs = 5000,
-  discountPercent = 10,
-  discountCode = 'WELCOME10',
+  discountPercent = WELCOME_DISCOUNT_PERCENT,
+  discountCode = WELCOME_DISCOUNT_CODE,
   className,
 }: ExitIntentPopupProps) {
   const { t, locale } = useTranslation();

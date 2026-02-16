@@ -9,7 +9,7 @@
  * ✅ GOOD: if (!data) return <ErrorPage />;
  */
 
-export default {
+const plugin = {
   rules: {
     'no-conditional-return-null': {
       meta: {
@@ -41,7 +41,7 @@ export default {
 
         return {
           // Detect export default function Component
-          ExportDefaultDeclaration(_node) {
+          ExportDefaultDeclaration() {
             inExport = true;
           },
 
@@ -70,13 +70,13 @@ export default {
           },
 
           // Track nested functions (we only care about top-level component)
-          'FunctionDeclaration, FunctionExpression, ArrowFunctionExpression'(_node) {
+          'FunctionDeclaration, FunctionExpression, ArrowFunctionExpression'() {
             if (isInComponentBody) {
               componentDepth++;
             }
           },
 
-          'FunctionDeclaration, FunctionExpression, ArrowFunctionExpression:exit'(_node) {
+          'FunctionDeclaration, FunctionExpression, ArrowFunctionExpression:exit'() {
             if (isInComponentBody) {
               componentDepth--;
               if (componentDepth === 0) {
@@ -119,3 +119,5 @@ export default {
     },
   },
 };
+
+export default plugin;

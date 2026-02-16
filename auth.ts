@@ -231,7 +231,7 @@ export const authConfig = {
   },
   session: {
     strategy: "jwt",
-    maxAge: 4 * 60 * 60 // 4 hours (reduced from 24h for security)
+    maxAge: 2 * 60 * 60 // 2 hours (reduced from 24h for security)
   },
   secret: process.env.NEXTAUTH_SECRET,
   debug: process.env.NODE_ENV === "development"
