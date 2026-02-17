@@ -57,7 +57,7 @@ export class AnalyticsService {
   /**
    * Get analytics for a specific post
    */
-  async getPostAnalytics(slug: string): Promise<PostAnalytics | null> {
+  async getPostAnalytics(slug: string, dateRange?: DateRange): Promise<PostAnalytics | null> {
     try {
       // Try to load from cache first
       const cached = await this.loadCachedAnalytics(slug);
@@ -101,7 +101,7 @@ export class AnalyticsService {
   /**
    * Get dashboard metrics
    */
-  async getDashboardMetrics(): Promise<DashboardMetrics> {
+  async getDashboardMetrics(_dateRange?: DateRange): Promise<DashboardMetrics> {
     try {
       const posts = await this.contentStore.getAllPosts('en', false);
 
