@@ -89,7 +89,7 @@ export async function POST(request: Request) {
     await logger.log({
       userId: session.user?.email || 'unknown',
       userEmail: session.user?.email || 'unknown',
-      action: '',
+      action: 'create',
       resourceType: 'tag',
       resourceId: tag.id,
       details: { name: tag.name }

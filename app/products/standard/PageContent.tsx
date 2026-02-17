@@ -10,8 +10,8 @@ import { ArrowLeft, Check, Star, ShoppingCart, Heart, Zap, Truck, MapPin, Chevro
 import { RelatedContent } from '@/components/seo/RelatedContent';
 import { ProductFAQ } from '@/components/product/ProductFAQ';
 import { GuaranteeBadge } from '@/components/ui/GuaranteeBadge';
-import { getPriceValidityDate,  generateFAQSchema, stripContext } from '@/lib/seo-utils';
-import {  getProductPrice } from '@/lib/pricing';
+import { getPriceValidityDate, generateFAQSchema, stripContext } from '@/lib/seo-utils';
+import { getProductPrice } from '@/lib/pricing';
 import { getPaymentLink } from '@/lib/payment-links';
 import { useEffect, useRef, useCallback, useState } from 'react';
 import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
@@ -238,7 +238,7 @@ export default function StandardSizePage() {
   // Get aggregate review data
   const { data: reviewData } = useAggregateReview(productKey, locale);
   // Use enhanced SEO hook
-  const { nextSeoProps, schema } = useEnhancedSEO({
+  const { schema } = useEnhancedSEO({
     path: '/products/standard',
     title: pageTitle,
     description: pageDescription,

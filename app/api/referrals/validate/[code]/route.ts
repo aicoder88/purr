@@ -7,7 +7,7 @@
 
 import prisma from '@/lib/prisma';
 import {
-  _validateReferralCodeFormat,
+
   REFERRAL_CONFIG,
 } from '@/lib/referral';
 import { getProductPrice, formatProductPrice } from '@/lib/pricing';

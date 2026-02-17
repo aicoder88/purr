@@ -1,4 +1,3 @@
-import { LocalizedMeta } from '@/components/seo/LocalizedMeta';
 import { Metadata } from 'next';
 import { CONTACT_INFO } from '@/lib/constants';
 
@@ -7,6 +6,9 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = {
   title: 'Privacy Policy - Purrify Cat Litter Additive Data Protection',
   description: 'Learn how Purrify collects, uses, and protects your information. Read our privacy policy for details on data usage, security, and your rights.',
+  alternates: {
+    canonical: '/privacy-policy',
+  },
 };
 
 // English privacy policy content (static for server component)
@@ -63,11 +65,7 @@ const privacyContent = {
 export default function PrivacyPolicyPage() {
   return (
     <>
-      <LocalizedMeta
-        title="Privacy Policy - Purrify Cat Litter Additive Data Protection"
-        description="Learn how Purrify collects, uses, and protects your information. Read our privacy policy for details on data usage, security, and your rights."
-        canonicalPath="/privacy-policy"
-      />
+
       <main className="max-w-4xl mx-auto py-12 px-4">
         <h1 className="font-heading text-4xl font-bold mb-6 text-gray-900 dark:text-gray-50">
           {privacyContent.title}

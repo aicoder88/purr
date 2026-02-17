@@ -8,7 +8,6 @@ import { useTranslation } from '@/lib/translation-context';
 import { useCurrency } from '@/lib/currency-context';
 import {
   CheckCircle,
-  _Package,
   ChevronRight,
   Home,
   Zap,
@@ -227,7 +226,7 @@ export default function ProductsPage() {
     : "★ 4.8 Rating | FREE Trial Available | Shop Purrify activated carbon litter additives. Eliminates odors instantly. Ships to USA & Canada. 30-day guarantee.";
 
   // Enhanced SEO with breadcrumbs
-  const { _nextSeoProps, breadcrumb } = useEnhancedSEO({
+  const { breadcrumb } = useEnhancedSEO({
     path: '/products',
     title: pageTitle,
     description: pageDescription,

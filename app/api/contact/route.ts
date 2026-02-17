@@ -12,7 +12,7 @@ import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
  */
 function sanitizeForEmail(input: string): string {
   if (!input) return '';
-  
+
   // Remove newlines, carriage returns, and null bytes
   // These are the primary vectors for email header injection
   return input
@@ -30,13 +30,13 @@ function isValidEmailFormat(email: string): boolean {
   if (/%[0-9a-fA-F]{2}/.test(email)) {
     return false;
   }
-  
+
   // Check for suspicious characters in the local part
   const suspiciousPatterns = /[()<>,;:\\"\[\]]/;
   if (suspiciousPatterns.test(email)) {
     return false;
   }
-  
+
   // Standard email validation
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   return emailRegex.test(email);
@@ -48,7 +48,7 @@ function isValidEmailFormat(email: string): boolean {
  */
 function sanitizeEmailHtml(input: string): string {
   if (!input) return '';
-  
+
   return input
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
@@ -124,7 +124,7 @@ async function sendEmailViaResend(
       };
     }
 
-    const { _data, error } = await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: `${RESEND_CONFIG.fromName} <${RESEND_CONFIG.fromEmail}>`,
       to: RESEND_CONFIG.toEmail,
       replyTo: sanitizedEmail,
@@ -186,13 +186,13 @@ export async function POST(request: NextRequest) {
   // Apply rate limiting (sensitive: 5 req/min)
   const rateLimitResult = await checkRateLimit(clientIp, 'sensitive');
   const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
-  
+
   // Create security headers
   const headers = new Headers();
   headers.set('X-Content-Type-Options', 'nosniff');
   headers.set('X-Frame-Options', 'DENY');
   headers.set('Content-Security-Policy', "default-src 'self'");
-  
+
   // Add rate limit headers
   Object.entries(rateLimitHeaders).forEach(([key, value]) => {
     headers.set(key, value);
@@ -207,7 +207,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = await request.json();
-    
+
     // CRITICAL SECURITY FIX: Validate form data with Zod (with enhanced sanitization)
     const validationResult = contactFormSchema.safeParse(body);
 

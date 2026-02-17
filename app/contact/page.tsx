@@ -10,8 +10,7 @@ import {
   Facebook,
   Youtube,
   Linkedin,
-  _ExternalLink,
-  _Star,
+
   Home,
   ChevronRight,
   CheckCircle,

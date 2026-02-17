@@ -39,7 +39,7 @@ interface HomepageClientProps {
   currency: Currency;
 }
 
-export function HomepageClient({ _priceValidUntil, _locale, currency }: HomepageClientProps) {
+export function HomepageClient({ currency }: HomepageClientProps) {
   // A/B Test: Social Proof Position (badges moved to bottom of page)
   const { trackConversion: trackSocialProofConversion } = useABTestWithTracking(
     AB_TEST_SLUGS.SOCIAL_PROOF_POSITION

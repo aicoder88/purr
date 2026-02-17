@@ -30,7 +30,7 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const locale = searchParams.get('locale') || 'en';
     const includeUnpublished = searchParams.get('includeUnpublished') === 'true';
-    
+
     const posts = await store.getAllPosts(locale, includeUnpublished);
     return Response.json(posts);
   } catch (error) {
@@ -44,12 +44,12 @@ export async function POST(request: Request) {
   const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
   const rateLimitResult = await checkRateLimit(clientIp, 'standard');
   const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
-  
+
   if (!rateLimitResult.success) {
     return Response.json(
       { error: 'Too many requests. Please try again later.' },
-      { 
-        status: 429, 
+      {
+        status: 429,
         headers: {
           ...rateLimitHeaders,
           'Retry-After': rateLimitHeaders['Retry-After'] || '60',
@@ -62,7 +62,7 @@ export async function POST(request: Request) {
 
   if (!authorized || !session) {
     return Response.json(
-      { error: 'Unauthorized' }, 
+      { error: 'Unauthorized' },
       { status: 401, headers: rateLimitHeaders }
     );
   }
@@ -74,23 +74,23 @@ export async function POST(request: Request) {
 
   try {
     const body = await request.json();
-    
+
     // Validate with Zod schema
     const validationResult = postSchema.safeParse(body);
     if (!validationResult.success) {
-      const errors = validationResult.error.errors.map(e => `${e.path.join('.')}: ${e.message}`);
+      const errors = validationResult.error.issues.map(e => `${e.path.join('.')}: ${e.message}`);
       return Response.json(
         { error: 'Validation failed', details: errors },
         { status: 400, headers: rateLimitHeaders }
       );
     }
-    
+
     let post: BlogPost = body;
 
     // Validate required fields (additional check for fields not in schema)
     if (!post.title || !post.content || !post.slug) {
       return Response.json(
-        { error: 'Missing required fields' }, 
+        { error: 'Missing required fields' },
         { status: 400, headers: rateLimitHeaders }
       );
     }
@@ -136,7 +136,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error('Error handling posts request:', error);
     return Response.json(
-      { error: 'Internal server error' }, 
+      { error: 'Internal server error' },
       { status: 500, headers: rateLimitHeaders }
     );
   }
@@ -147,12 +147,12 @@ export async function PUT(request: Request) {
   const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
   const rateLimitResult = await checkRateLimit(clientIp, 'standard');
   const rateLimitHeaders = createRateLimitHeaders(rateLimitResult);
-  
+
   if (!rateLimitResult.success) {
     return Response.json(
       { error: 'Too many requests. Please try again later.' },
-      { 
-        status: 429, 
+      {
+        status: 429,
         headers: {
           ...rateLimitHeaders,
           'Retry-After': rateLimitHeaders['Retry-After'] || '60',
@@ -165,7 +165,7 @@ export async function PUT(request: Request) {
 
   if (!authorized || !session) {
     return Response.json(
-      { error: 'Unauthorized' }, 
+      { error: 'Unauthorized' },
       { status: 401, headers: rateLimitHeaders }
     );
   }
@@ -180,7 +180,7 @@ export async function PUT(request: Request) {
 
     if (!post.slug) {
       return Response.json(
-        { error: 'Missing slug' }, 
+        { error: 'Missing slug' },
         { status: 400, headers: rateLimitHeaders }
       );
     }
@@ -228,7 +228,7 @@ export async function PUT(request: Request) {
   } catch (error) {
     console.error('Error handling posts request:', error);
     return Response.json(
-      { error: 'Internal server error' }, 
+      { error: 'Internal server error' },
       { status: 500, headers: rateLimitHeaders }
     );
   }

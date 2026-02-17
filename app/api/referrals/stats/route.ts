@@ -11,7 +11,7 @@ import {
   generateShareUrls,
   calculateMilestoneProgress,
   maskEmail,
-  _REFERRAL_CONFIG,
+
 } from '@/lib/referral';
 import * as Sentry from '@sentry/nextjs';
 
