@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import type { BlogPost, Category, Tag } from '@/types/blog';
 import { syncPreviewAndHeroImage } from '@/lib/blog/hero-preview-image-sync';
+import type { ValidationResult, ValidationError, ValidationWarning } from './content-validator';
 
 export interface SaveOptions {
   skipValidation?: boolean;
@@ -11,7 +12,7 @@ export interface SaveOptions {
 
 export interface SaveResult {
   success: boolean;
-  validation: { valid: boolean; errors: unknown[]; warnings: unknown[] };
+  validation: ValidationResult;
   post?: BlogPost;
 }
 
@@ -266,7 +267,7 @@ export class ContentStore {
 
       return {
         success: true,
-        validation: { valid: true, errors: [], warnings: [] },
+        validation: { valid: true, errors: [] as ValidationError[], warnings: [] as ValidationWarning[] },
         post: syncedPost,
       };
     } catch (error) {
@@ -275,16 +276,16 @@ export class ContentStore {
         success: false,
         validation: {
           valid: false,
-          errors: [{ field: 'system', message: `Failed to save post: ${error} ` }],
-          warnings: [],
+          errors: [{ field: 'system', message: `Failed to save post: ${error} ` }] as ValidationError[],
+          warnings: [] as ValidationWarning[],
         },
       };
     }
   }
 
-  async validateExistingPost(_slug: string, _locale: string): Promise<{ valid: boolean; errors: unknown[]; warnings: unknown[] }> {
+  async validateExistingPost(_slug: string, _locale: string): Promise<ValidationResult> {
     // Validation disabled for now
-    return { valid: true, errors: [], warnings: [] };
+    return { valid: true, errors: [] as ValidationError[], warnings: [] as ValidationWarning[] };
   }
 
   async deletePost(slug: string, locale: string): Promise<void> {

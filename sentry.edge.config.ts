@@ -39,7 +39,7 @@ Sentry.init({
     const requestLocale = event.contexts?.locale || 
                           event.request?.headers?.['accept-language']?.split('-')[0]?.toLowerCase();
     
-    if (requestLocale && euLocales.includes(requestLocale)) {
+    if (requestLocale && typeof requestLocale === 'string' && euLocales.includes(requestLocale)) {
       // Remove user data for EU users
       if (event.user) {
         delete event.user.email;
@@ -49,9 +49,10 @@ Sentry.init({
         event.user = event.user.id ? { id: event.user.id } : undefined;
       }
       // Remove request headers that might contain PII
-      if (event.request?.headers) {
+      const headers = event.request?.headers;
+      if (headers) {
         const headersToRemove = ['cookie', 'authorization', 'x-forwarded-for', 'x-real-ip', 'referer'];
-        headersToRemove.forEach(header => delete event.request.headers[header]);
+        headersToRemove.forEach(header => delete headers[header]);
       }
     }
     

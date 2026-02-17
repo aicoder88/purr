@@ -238,7 +238,7 @@ export default function StandardSizePage() {
   // Get aggregate review data
   const { data: reviewData } = useAggregateReview(productKey, locale);
   // Use enhanced SEO hook
-  const { _nextSeoProps, schema } = useEnhancedSEO({
+  const { nextSeoProps, schema } = useEnhancedSEO({
     path: '/products/standard',
     title: pageTitle,
     description: pageDescription,

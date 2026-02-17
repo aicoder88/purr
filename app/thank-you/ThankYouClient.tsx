@@ -34,9 +34,10 @@ interface OrderDetails {
 interface ThankYouClientProps {
   orderDetails: OrderDetails | null;
   error?: string;
+  sessionId?: string;
 }
 
-export default function ThankYouClient({ orderDetails, error }: ThankYouClientProps) {
+export default function ThankYouClient({ orderDetails, error, sessionId }: ThankYouClientProps) {
   const { t, locale } = useTranslation();
   const thankYou = t.thankYou!;
   const anytimeLabel =
