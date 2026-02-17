@@ -37,17 +37,14 @@ export async function GET(req: Request) {
     const limitNum = Math.min(100, Math.max(1, parseInt(limit, 10) || 20));
     const skip = (pageNum - 1) * limitNum;
 
-    // Build where clause - only show verified pending applications
+    // Build where clause - show all applications (including legacy pre-verification)
     const where: {
       status?: AffiliateApplicationStatus;
-      emailVerified: boolean;
       OR?: Array<{
         name?: { contains: string; mode: 'insensitive' };
         email?: { contains: string; mode: 'insensitive' };
       }>;
-    } = {
-      emailVerified: true,
-    };
+    } = {};
 
     if (status && status !== 'ALL') {
       where.status = status as AffiliateApplicationStatus;

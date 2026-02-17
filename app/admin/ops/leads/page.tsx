@@ -113,12 +113,7 @@ export default function LeadsPage() {
     }
   }, [searchQuery, statusFilter, sortField, sortOrder, toast]);
 
-  // Initial fetch
-  useEffect(() => {
-    fetchLeads(1);
-  }, [fetchLeads]);
-
-  // Refetch when filters change
+  // Initial fetch - also triggers when filters change since fetchLeads depends on them
   useEffect(() => {
     fetchLeads(1);
   }, [fetchLeads]);
