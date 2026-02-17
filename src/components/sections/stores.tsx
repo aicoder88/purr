@@ -437,11 +437,15 @@ export function Stores() {
   };
 
   return (
-    <section id="stores" className="py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <section id="stores" className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <Container>
         <div className="text-center mb-12">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-orange-50 dark:bg-orange-900/20 text-[#FF8E3C] dark:text-[#FF8E3C] font-bold text-sm mb-6 border border-orange-100 dark:border-orange-800/30">
-            📍 {uiCopy.sectionBadge}
+          <div className="inline-flex items-center gap-2 mb-6">
+            <span className="h-px w-8 bg-gradient-to-r from-transparent to-[#FF8E3C]"></span>
+            <span className="text-[#FF8E3C] font-bold tracking-wider text-sm uppercase flex items-center gap-2">
+              <span className="text-lg">📍</span> {uiCopy.sectionBadge}
+            </span>
+            <span className="h-px w-8 bg-gradient-to-l from-transparent to-[#FF8E3C]"></span>
           </div>
           <h2 className="font-heading text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-6">
             {uiCopy.headingPrefix}

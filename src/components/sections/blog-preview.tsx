@@ -53,8 +53,10 @@ export async function BlogPreview({ locale }: { locale: string }) {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-[#5B2EFF]/30 rounded-full text-[#FF3131] dark:text-[#E0EFC7] font-medium text-sm mb-4">
-            {t.blogSection.catCareTips}
+          <div className="inline-flex items-center gap-2 mb-6">
+            <span className="h-px w-8 bg-gradient-to-r from-transparent to-[#03E46A] dark:to-[#3694FF]"></span>
+            <span className="text-[#03E46A] dark:text-[#3694FF] font-bold tracking-wider text-sm uppercase">{t.blogSection.catCareTips}</span>
+            <span className="h-px w-8 bg-gradient-to-l from-transparent to-[#03E46A] dark:to-[#3694FF]"></span>
           </div>
           <h2 className="font-heading text-5xl font-bold tracking-tight mb-4 text-[#03E46A] dark:text-[#3694FF]">
             {t.blogSection.fromOurBlog}
@@ -105,7 +107,7 @@ export async function BlogPreview({ locale }: { locale: string }) {
                 </div>
               </div>
               <div className="px-6 pb-6 pt-0">
-                <div 
+                <div
                   className="text-[#03C45A] dark:text-[#4B2AEF] font-medium flex items-center hover:text-[#03C45A]/80 dark:hover:text-[#4B2AEF]/80 transition-colors"
                   aria-label={`${t.blogSection.readFullArticle}: ${post.title}`}
                 >

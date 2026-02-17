@@ -111,29 +111,18 @@ export const useVideoPlayer = (dependencies: any[] = []) => {
     const video = videoRef.current;
     if (!video) return;
 
-    const handleTimeUpdate = () => {
-      // Pause 0.1 seconds before end to prevent loop restart
-      if (video.duration && video.currentTime >= video.duration - 0.1 && !hasEndedRef.current) {
-        hasEndedRef.current = true;
-        video.pause();
-        setState(prev => ({ ...prev, isPlaying: false, showReplayButton: true }));
-      }
-    };
-
     const handlePlaying = () => {
-      setState(prev => ({ ...prev, showPoster: false, isPlaying: true }));
+      setState(prev => ({ ...prev, showPoster: false, isPlaying: true, showReplayButton: false }));
     };
 
     const handlePause = () => {
       setState(prev => ({ ...prev, isPlaying: false }));
     };
 
-    video.addEventListener('timeupdate', handleTimeUpdate);
     video.addEventListener('playing', handlePlaying);
     video.addEventListener('pause', handlePause);
 
     return () => {
-      video.removeEventListener('timeupdate', handleTimeUpdate);
       video.removeEventListener('playing', handlePlaying);
       video.removeEventListener('pause', handlePause);
     };

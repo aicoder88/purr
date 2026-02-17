@@ -93,7 +93,7 @@ export const HeroVideo = () => {
               disablePictureInPicture
               disableRemotePlayback
               crossOrigin="anonymous"
-              loop={false}
+              loop={true}
             >
               <source
                 src={mobileSrc.replace('.mp4', '.webm')}

@@ -36,7 +36,7 @@ export function ScienceSection() {
     const featureItems = t.scienceSection?.features || defaultFeatures;
 
     return (
-        <section className="py-24 bg-white dark:bg-gray-900 overflow-hidden">
+        <section id="science" className="pt-12 pb-24 md:pt-16 md:pb-24 bg-white dark:bg-gray-900 overflow-hidden">
             <Container>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     {/* Text Content */}

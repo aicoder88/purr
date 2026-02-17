@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/container";
 import { Wind, Cat, Clock, Layers, Sparkles, PiggyBank, ArrowDown } from "lucide-react"; // Changed Leaf to Sparkles, added ArrowDown
 import Image from 'next/image';
 import { useTranslation } from "@/lib/translation-context";
+import Link from "next/link";
 
 export function WhyPurrify() {
   const { t, locale } = useTranslation();
@@ -86,7 +87,7 @@ export function WhyPurrify() {
 
   return (
     <section
-      className="relative py-16 md:py-24 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900 transition-colors duration-300 overflow-hidden"
+      className="relative pt-16 pb-8 md:pt-24 md:pb-12 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900 transition-colors duration-300 overflow-hidden"
       id="why-purrify"
     >
       {/* Animated background elements */}
@@ -159,15 +160,23 @@ export function WhyPurrify() {
           })}
         </div>
 
-        {/* Transition teaser - Better visual treatment to avoid loneliness and overlap */}
+        {/* Transition teaser - Greased Slide Design */}
         {t.sectionTeasers?.whyPurrify && (
-          <div className="mt-12 md:mt-20 mb-6 md:mb-10 flex justify-center">
-            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-full px-8 py-3 text-center border border-purple-100 dark:border-purple-900 shadow-lg group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex items-center gap-3">
-              <p className="text-lg font-bold text-gray-700 dark:text-gray-200 italic">
+          <div className="mt-16 sm:mt-20 w-full flex justify-center relative z-20">
+            {/* Horizontal divider line that the pill sits on */}
+            <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-200 dark:via-purple-800 to-transparent transform -translate-y-1/2"></div>
+
+            <Link
+              href="#science"
+              className="relative bg-white dark:bg-gray-900 border border-purple-100 dark:border-purple-800 rounded-full px-10 py-5 shadow-2xl hover:shadow-[0_20px_50px_rgba(168,85,247,0.2)] hover:border-purple-300 dark:hover:border-purple-600 transition-all duration-500 hover:-translate-y-1 group flex items-center gap-4"
+            >
+              <span className="text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 group-hover:from-purple-600 group-hover:to-pink-600 transition-all duration-500">
                 {t.sectionTeasers.whyPurrify}
-              </p>
-              <ArrowDown className="w-5 h-5 text-purple-600 dark:text-purple-400 animate-bounce-subtle" />
-            </div>
+              </span>
+              <div className="w-10 h-10 rounded-full bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition-all duration-500">
+                <ArrowDown className="w-5 h-5 group-hover:animate-bounce" />
+              </div>
+            </Link>
           </div>
         )}
       </Container>
