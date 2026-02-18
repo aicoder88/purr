@@ -9,7 +9,6 @@ import { WhyPurrify } from '@/components/sections/why-purrify';
 import { BlogPreview } from '@/components/sections/blog-preview';
 import { ScrollingAnnouncementBar } from '@/components/sections/scrolling-announcement-bar';
 import { Stores } from '@/components/sections/stores';
-import { SkipNav } from '@/components/ui/skip-nav';
 import { ErrorBoundary } from '@/components/ui/error-boundary';
 import { TrustBadges } from '@/components/social-proof/TrustBadges';
 import { LazyClientLocationsMap } from '@/components/maps/LazyClientLocationsMap';
@@ -137,8 +136,6 @@ export default async function HomePage() {
 
   return (
     <>
-      <SkipNav />
-
       {/* Enhanced JSON-LD Schemas - Auto-generated Homepage Schema */}
       <script
         type="application/ld+json"

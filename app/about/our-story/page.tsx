@@ -146,11 +146,11 @@ export default function AboutPage() {
               <div className="lg:w-1/2">
                 <div className="flex items-center gap-3 mb-4">
                   <Heart className="w-6 h-6 text-deep-coral" />
-                  <span className="text-electric-indigo font-semibold tracking-wider uppercase text-sm">Our Mission</span>
+                  <span className="text-electric-indigo dark:text-electric-indigo-300 font-semibold tracking-wider uppercase text-sm">Our Mission</span>
                 </div>
                 <h2 className="text-4xl md:text-5xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100 leading-tight">
                   Revolutionizing the{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric-indigo to-deep-coral">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric-indigo to-deep-coral dark:from-electric-indigo-400 dark:to-deep-coral-400">
                     Cat Ownership
                   </span>{' '}
                   Experience

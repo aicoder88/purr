@@ -6,7 +6,6 @@ import { WhyPurrify } from '@/components/sections/why-purrify';
 import { BlogPreview } from '@/components/sections/blog-preview';
 import { ScrollingAnnouncementBar } from '@/components/sections/scrolling-announcement-bar';
 import { Stores } from '@/components/sections/stores';
-import { SkipNav } from '@/components/ui/skip-nav';
 import { ErrorBoundary } from '@/components/ui/error-boundary';
 import { TrustBadges } from '@/components/social-proof/TrustBadges';
 import { ClientLocationsMap } from '@/components/maps/ClientLocationsMap';
@@ -98,7 +97,6 @@ export default async function LocalizedHomePage({ params }: LocalizedHomepagePro
 
     return (
         <>
-            <SkipNav />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSchema) }}

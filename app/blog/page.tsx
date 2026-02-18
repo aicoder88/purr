@@ -256,7 +256,7 @@ export default async function BlogIndexPage({ searchParams }: PageProps) {
 
                     <Link
                       href={post.link}
-                      className="inline-flex items-center gap-2 text-electric-indigo-600 font-semibold hover:gap-3 transition-all"
+                      className="inline-flex items-center gap-2 text-electric-indigo-600 dark:text-electric-indigo-400 font-semibold hover:gap-3 transition-all"
                       aria-label={`Read More: ${post.title}`}
                     >
                       Read More
@@ -278,7 +278,7 @@ export default async function BlogIndexPage({ searchParams }: PageProps) {
                     ← Previous
                   </Link>
                 ) : (
-                  <span className="px-6 py-3 bg-gray-100 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-800 rounded-lg text-gray-500 dark:text-gray-600 font-medium flex items-center gap-2 cursor-not-allowed">
+                  <span className="px-6 py-3 bg-gray-100 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-800 rounded-lg text-gray-500 dark:text-gray-400 font-medium flex items-center gap-2 cursor-not-allowed">
                     ← Previous
                   </span>
                 )}
@@ -295,7 +295,7 @@ export default async function BlogIndexPage({ searchParams }: PageProps) {
                     Next →
                   </Link>
                 ) : (
-                  <span className="px-6 py-3 bg-gray-100 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-800 rounded-lg text-gray-500 dark:text-gray-600 font-medium flex items-center gap-2 cursor-not-allowed">
+                  <span className="px-6 py-3 bg-gray-100 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-800 rounded-lg text-gray-500 dark:text-gray-400 font-medium flex items-center gap-2 cursor-not-allowed">
                     Next →
                   </span>
                 )}

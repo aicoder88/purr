@@ -24,11 +24,17 @@ export function AppLayout({ children }: AppLayoutProps) {
     return (
         <div className="flex flex-col min-h-screen">
             <SkipNav />
-            {mounted && <PawCursor />}
-            {mounted && <ScrollToTopButton />}
-            {mounted && <MobileFloatingCTA />}
+            {mounted && (
+                <>
+                    <PawCursor />
+                    <ScrollToTopButton />
+                    <MobileFloatingCTA />
+                </>
+            )}
             <HeaderWithSuspense />
-            <main id="main-content" className="flex-grow">{children}</main>
+            <div className="flex-grow">
+                {children}
+            </div>
             <Footer />
         </div>
     );

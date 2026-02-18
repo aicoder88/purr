@@ -511,7 +511,7 @@ export default function ProductsPage() {
               </div>
 
               {/* Transition to trust signals */}
-              <p className="text-center mt-10 text-gray-600 dark:text-gray-400">
+              <p className="text-center mt-10 text-gray-600 dark:text-gray-300">
                 {locale === 'fr'
                   ? "La science est impressionnante. Mais voici ce qui compte vraiment pour vous et votre chat:"
                   : "The science is impressive. But here's what actually matters for you and your cat:"}

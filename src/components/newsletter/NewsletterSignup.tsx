@@ -56,7 +56,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = React.memo(func
       setErrorMessage(err instanceof Error ? err.message : (t.newsletter?.errorGeneric || 'Something went wrong. Please try again.'));
       setTimeout(() => setStatus('idle'), 3000);
     }
-  }, [t, discount]);
+  }, [t, email]);
 
   const benefits = [
     {

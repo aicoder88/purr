@@ -202,7 +202,7 @@ export default function CaseStudiesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF]">
+      <div className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
         <Container>
           <div className="max-w-6xl mx-auto">
             {/* Breadcrumb */}
@@ -216,7 +216,7 @@ export default function CaseStudiesPage() {
 
             {/* Header */}
             <div className="text-center mb-16">
-              <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
+              <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-green-900/40 rounded-full text-[#FF3131] dark:text-[#FF4D4D] font-medium text-sm mb-4">
                 Customer Success Stories
               </div>
               <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
@@ -253,7 +253,7 @@ export default function CaseStudiesPage() {
               {caseStudies.map((study) => (
                 <div key={study.id} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-2xl overflow-hidden shadow-lg">
                   {/* Header */}
-                  <div className="bg-gradient-to-r from-[#FF3131]/5 to-[#E0EFC7]/50 p-8">
+                  <div className="bg-gradient-to-r from-[#FF3131]/5 to-[#E0EFC7]/50 dark:from-[#FF3131]/10 dark:to-green-900/20 p-8">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
                       <div className="flex-1">
                         <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-50 mb-2">
@@ -342,7 +342,7 @@ export default function CaseStudiesPage() {
                     {/* Results */}
                     <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-xl p-6 mb-6">
                       <h3 className="font-heading text-xl font-bold text-green-900 dark:text-green-100 mb-4 flex items-center">
-                        <div className="w-8 h-8 bg-green-100 dark:bg-green-800 rounded-full flex items-center justify-center mr-3">
+                        <div className="w-8 h-8 bg-green-100 dark:bg-green-900/40 rounded-full flex items-center justify-center mr-3">
                           <span className="text-green-600 dark:text-green-400 font-bold text-sm">3</span>
                         </div>
                         The Results
@@ -361,7 +361,7 @@ export default function CaseStudiesPage() {
                     </div>
 
                     {/* Quote */}
-                    <div className="bg-[#FF3131]/5 border-l-4 border-[#FF3131] p-6 mb-6">
+                    <div className="bg-[#FF3131]/5 dark:bg-[#FF3131]/10 border-l-4 border-[#FF3131] p-6 mb-6">
                       <blockquote className="text-gray-800 dark:text-gray-100 italic text-lg mb-3">
                         &ldquo;{study.quote}&rdquo;
                       </blockquote>
@@ -383,7 +383,7 @@ export default function CaseStudiesPage() {
 
             {/* Call to Action */}
             <div className="mt-16 text-center cv-auto cis-480">
-              <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#E0EFC7] border border-[#FF3131]/20 rounded-xl p-8">
+              <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#E0EFC7] dark:from-[#311010] dark:to-green-900/20 border border-[#FF3131]/20 dark:border-[#FF3131]/10 rounded-xl p-8">
                 <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
                   Ready to Write Your Own Success Story?
                 </h2>
@@ -400,7 +400,7 @@ export default function CaseStudiesPage() {
                   </Link>
                   <Link
                     href="/free"
-                    className="inline-block border border-[#FF3131] text-[#FF3131] px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/5 transition-colors"
+                    className="inline-block border border-[#FF3131] text-[#FF3131] dark:text-[#FF4D4D] px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/5 transition-colors"
                   >
                     Try Free Sample
                   </Link>

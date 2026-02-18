@@ -351,7 +351,7 @@ export default function SupportPageClient() {
                         {option.description}
                       </p>
 
-                      <div className="mt-6 flex items-center text-purple-600 dark:text-purple-400 font-bold">
+                      <div className="mt-6 flex items-center text-purple-600 dark:text-purple-400 font-bold group-hover:text-purple-500 transition-colors">
                         {copy.learnMoreLabel} →
                       </div>
                     </div>

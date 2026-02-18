@@ -168,7 +168,7 @@ export function EnhancedProductComparison() {
               >
                 {/* Popular Badge */}
                 {product.badge?.type === 'popular' && (
-                  <div className="absolute top-4 right-4 bg-green-500 dark:bg-green-600 text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold flex items-center z-10">
+                  <div className="absolute top-4 right-4 bg-green-500 dark:bg-green-500 text-white dark:text-white px-3 py-1 rounded-full text-sm font-bold flex items-center z-10">
                     <Star className="w-4 h-4 mr-1" />
                     {product.badge.label}
                   </div>
@@ -184,7 +184,7 @@ export function EnhancedProductComparison() {
 
                 {/* Trial Badge */}
                 {product.badge?.type === 'trial' && (
-                  <div className="absolute top-4 right-4 bg-brand-light text-brand-dark px-3 py-1 rounded-full text-sm font-bold flex items-center z-10">
+                  <div className="absolute top-4 right-4 bg-brand-light dark:bg-emerald-900/40 text-brand-dark dark:text-emerald-400 px-3 py-1 rounded-full text-sm font-bold flex items-center z-10">
                     <Sparkles className="w-4 h-4 mr-1" />
                     {product.badge.label}
                   </div>

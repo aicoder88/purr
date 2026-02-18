@@ -388,7 +388,7 @@ export default function FAQPageClient() {
                         <span className="font-medium">{category.name}</span>
                       </div>
                       <span className={`text-sm px-2 py-1 rounded-full ${selectedCategory === category.id
-                        ? 'bg-white dark:bg-gray-900/20 text-white dark:text-gray-100'
+                        ? 'bg-white dark:bg-electric-indigo/40 text-electric-indigo dark:text-white'
                         : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
                         }`}>
                         {category.count}
@@ -430,11 +430,11 @@ export default function FAQPageClient() {
                           </h4>
                           <div className="flex flex-wrap gap-2">
                             {item.featured && (
-                              <span className="px-2 py-1 bg-deep-coral/10 dark:bg-deep-coral/20 text-deep-coral dark:text-deep-coral-400 rounded-full text-xs font-medium">
+                              <span className="px-2 py-1 bg-deep-coral/10 dark:bg-deep-coral/40 text-deep-coral dark:text-white rounded-full text-xs font-medium">
                                 {faqPage?.popularTag || 'Popular'}
                               </span>
                             )}
-                            <span className="px-2 py-1 bg-electric-indigo/10 dark:bg-electric-indigo/20 text-electric-indigo dark:text-electric-indigo-400 rounded-full text-xs font-medium">
+                            <span className="px-2 py-1 bg-electric-indigo/10 dark:bg-electric-indigo/40 text-electric-indigo dark:text-white rounded-full text-xs font-medium">
                               {categories.find(cat => cat.id === item.category)?.name}
                             </span>
                           </div>

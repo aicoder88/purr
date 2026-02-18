@@ -13,12 +13,49 @@ import type {
   OrganizationData,
   BreadcrumbItem,
   FAQItem,
+  ClaimReviewData,
+  ExpertAuthorData,
+  HowToData,
 } from '@/lib/seo/structured-data-generator';
 
+interface WebSiteData {
+  name: string;
+  url: string;
+  searchUrl?: string;
+}
+
+interface LocalBusinessData {
+  name: string;
+  description: string;
+  url: string;
+  telephone: string;
+  email: string;
+  address: {
+    streetAddress: string;
+    addressLocality: string;
+    addressRegion: string;
+    postalCode: string;
+    addressCountry: string;
+  };
+  openingHours?: string[];
+  priceRange?: string;
+  image?: string;
+}
+
+interface VideoData {
+  name: string;
+  description: string;
+  thumbnailUrl: string;
+  uploadDate: string;
+  duration?: string;
+  contentUrl?: string;
+  embedUrl?: string;
+}
+
 interface StructuredDataProps {
-  type?: 'product' | 'blogPost' | 'article' | 'organization' | 'breadcrumbs' | 'faq' | 'website' | 'localBusiness';
-  data?: ProductData | BlogPostData | OrganizationData | BreadcrumbItem[] | FAQItem[] | any;
-  schema?: any;
+  type?: 'product' | 'blogPost' | 'article' | 'organization' | 'breadcrumbs' | 'faq' | 'website' | 'localBusiness' | 'video' | 'howTo' | 'claimReview' | 'expertAuthor';
+  data?: ProductData | BlogPostData | OrganizationData | BreadcrumbItem[] | FAQItem[] | WebSiteData | LocalBusinessData | VideoData | HowToData | ClaimReviewData | ExpertAuthorData;
+  schema?: string | Record<string, unknown>;
   validate?: boolean;
 }
 
@@ -30,7 +67,7 @@ export function StructuredData({ type, data, schema, validate = false }: Structu
   try {
     if (schema) {
       schemaJson = typeof schema === 'string' ? schema : JSON.stringify(schema, null, 2);
-    } else {
+    } else if (data) {
       switch (type) {
         case 'product':
           schemaJson = generator.generateProduct(data as ProductData);
@@ -51,15 +88,29 @@ export function StructuredData({ type, data, schema, validate = false }: Structu
           schemaJson = generator.generateFAQ(data as FAQItem[]);
           break;
         case 'website':
-          schemaJson = generator.generateWebSite(data);
+          schemaJson = generator.generateWebSite(data as WebSiteData);
           break;
         case 'localBusiness':
-          schemaJson = generator.generateLocalBusiness(data);
+          schemaJson = generator.generateLocalBusiness(data as LocalBusinessData);
+          break;
+        case 'video':
+          schemaJson = generator.generateVideo(data as VideoData);
+          break;
+        case 'howTo':
+          schemaJson = generator.generateHowTo(data as HowToData);
+          break;
+        case 'claimReview':
+          schemaJson = generator.generateClaimReview(data as ClaimReviewData);
+          break;
+        case 'expertAuthor':
+          schemaJson = generator.generateExpertAuthor(data as ExpertAuthorData);
           break;
         default:
           console.error(`Unknown structured data type: ${type}`);
           return null;
       }
+    } else {
+      return null;
     }
 
     // Validate if requested

@@ -125,7 +125,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
           <span className="block bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-700 to-gray-500 dark:from-white dark:via-gray-200 dark:to-gray-400">
             {headline}
           </span>
-          <span className="block mt-2 sm:mt-3 text-xl sm:text-2xl md:text-3xl font-bold text-electric-indigo dark:text-electric-indigo-300">
+          <span className="block mt-2 sm:mt-3 text-xl sm:text-2xl md:text-3xl font-bold text-electric-indigo dark:text-[#818CF8]">
             {subheadline}
           </span>
         </h1>

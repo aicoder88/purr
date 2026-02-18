@@ -461,7 +461,7 @@ export default function LearnPageContent() {
               </p>
               <Link
                 href="/products/trial-size"
-                className="inline-flex items-center justify-center px-8 py-4 bg-[#03E46A] hover:bg-[#02c75b] text-white dark:text-gray-100 font-bold rounded-full transition-colors shadow-lg hover:shadow-xl"
+                className="inline-flex items-center justify-center px-8 py-4 bg-[#03E46A] hover:bg-[#02c75b] text-white dark:text-gray-900 font-bold rounded-full transition-colors shadow-lg hover:shadow-xl"
               >
                 Try Purrify Risk-Free
                 <ChevronRight className="w-5 h-5 ml-2" />

@@ -138,7 +138,7 @@ export function B2BCaseStudies({
                 className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-2xl transition-shadow duration-300"
               >
                 {/* Header */}
-                <div className="bg-gradient-to-r from-[#10B981]/10 to-[#3694FF]/10 dark:from-[#10B981]/20 dark:to-[#3694FF]/20 p-6 border-b border-gray-200 dark:border-gray-700">
+                <div className="bg-gradient-to-r from-[#10B981]/10 to-[#3694FF]/10 dark:from-[#10B981]/10 dark:to-[#3694FF]/10 p-6 border-b border-gray-200 dark:border-gray-700">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-[#10B981] to-[#3694FF] flex items-center justify-center text-white dark:text-gray-100">
                       {businessTypeIcons[benefit.businessType]}
