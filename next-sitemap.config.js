@@ -126,20 +126,6 @@ module.exports = {
     '/pos/*',
     '/tools/*',
 
-    // Chinese customer pages (protected)
-    '/zh/customer/portal',
-    '/zh/customer/referrals',
-    '/zh/retailer/portal/login',
-
-    // Spanish customer pages (protected)
-    '/es/customer/portal',
-    '/es/customer/referrals',
-    '/es/retailer/portal/login',
-
-    '/pos',
-    '/pos/*',
-    '/tools/*',
-
     // System pages
 
     '/offline',
@@ -257,18 +243,6 @@ module.exports = {
     // Blog locale pages
     {
       loc: '/fr/blog/',
-      changefreq: 'weekly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/zh/blog/',
-      changefreq: 'weekly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/es/blog/',
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date().toISOString(),
@@ -550,12 +524,6 @@ module.exports = {
     {
       loc: '/fun/',
       changefreq: 'weekly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/tools/cat-litter-calculator/',
-      changefreq: 'monthly',
       priority: 0.6,
       lastmod: new Date().toISOString(),
     },
@@ -863,7 +831,7 @@ module.exports = {
     }
 
     // Localized blog pages
-    if (normalizedPath.match(/^\/(fr|zh|es)\/blog\//)) {
+    if (normalizedPath.match(/^\/fr\/blog\//)) {
       return {
         loc: normalizedPath,
         changefreq: 'weekly',

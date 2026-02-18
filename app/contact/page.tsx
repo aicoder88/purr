@@ -1,4 +1,5 @@
-import type { Metadata } from 'next';
+'use client';
+
 import Link from 'next/link';
 import {
   ArrowLeft,
@@ -19,70 +20,11 @@ import {
 import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { SITE_NAME, CONTACT_INFO, PHONE_MESSAGING, PHONE_NUMBER, SOCIAL_LINKS } from '@/lib/constants';
-import { stripContext } from '@/lib/seo-utils';
+import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
 import ContactForm from './_components/ContactForm';
 import ContactMethodCard from './_components/ContactMethodCard';
 
-export const metadata: Metadata = {
-  title: `Contact Us - ${SITE_NAME} Customer Support & Help`,
-  description:
-    'Get in touch with the Purrify team for product questions, business inquiries, and customer support. Fast response times and expert assistance.',
-  keywords: [
-    'contact purrify',
-    'cat litter customer support',
-    'purrify help',
-    'activated carbon questions',
-    'pet product support',
-  ],
-  alternates: {
-    canonical: 'https://www.purrify.ca/contact/',
-    languages: {
-      'en-CA': 'https://www.purrify.ca/contact/',
-      'fr-CA': 'https://www.purrify.ca/fr/contact/',
-      'zh-CN': 'https://www.purrify.ca/zh/contact/',
-      'es-US': 'https://www.purrify.ca/es/contact/',
-      'en-US': 'https://www.purrify.ca/contact/',
-      'x-default': 'https://www.purrify.ca/contact/',
-    },
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  openGraph: {
-    type: 'website',
-    url: 'https://www.purrify.ca/contact/',
-    siteName: SITE_NAME,
-    title: `Contact Us - ${SITE_NAME}`,
-    description: 'Get in touch with the Purrify team for support and inquiries.',
-    locale: 'en_CA',
-    images: [
-      {
-        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
-        width: 1200,
-        height: 800,
-        alt: `Contact ${SITE_NAME}`,
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    site: '@purrifyhq',
-    creator: '@purrifyhq',
-    title: `Contact Us - ${SITE_NAME}`,
-    description: 'Get in touch with the Purrify team for support and inquiries.',
-    images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
-  },
-  other: {
-    'last-modified': '2026-02-04',
-  },
-};
+
 
 // Default English translations for server component
 const translations = {
@@ -186,6 +128,40 @@ const breadcrumbItems = [
 ];
 
 export default function ContactPage() {
+  const { schema, additionalSchemas } = useEnhancedSEO({
+    path: '/contact',
+    title: `Contact Us - ${SITE_NAME} Customer Support & Help`,
+    description:
+      'Get in touch with the Purrify team for product questions, business inquiries, and customer support. Fast response times and expert assistance.',
+    targetKeyword: 'contact purrify',
+    schemaType: 'organization',
+    schemaData: {
+      description: 'Purrify customer support and contact information. Get help with activated carbon cat litter additive products.',
+      socialLinks: [
+        SOCIAL_LINKS.instagram,
+        SOCIAL_LINKS.x,
+        SOCIAL_LINKS.facebook,
+        SOCIAL_LINKS.youtube,
+        SOCIAL_LINKS.linkedin,
+        SOCIAL_LINKS.tiktok,
+      ],
+      contactPoint: {
+        telephone: CONTACT_INFO.phone,
+        type: 'customer support',
+        email: 'support@purrify.ca',
+      },
+    },
+    image: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+    keywords: [
+      'contact purrify',
+      'cat litter customer support',
+      'purrify help',
+      'activated carbon questions',
+      'pet product support',
+    ],
+  });
+
+  // Build FAQ schema manually for the contact page FAQs
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -210,15 +186,18 @@ export default function ContactPage() {
     })),
   };
 
+  const allSchemas = [schema, faqSchema, breadcrumbSchema, ...additionalSchemas].filter(Boolean);
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@graph': [stripContext(faqSchema), stripContext(breadcrumbSchema)],
-          }),
+          __html: JSON.stringify(
+            allSchemas.length === 1
+              ? allSchemas[0]
+              : { '@context': 'https://schema.org', '@graph': allSchemas }
+          ),
         }}
       />
 

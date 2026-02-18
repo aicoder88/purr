@@ -1,4 +1,5 @@
-import type { Metadata } from 'next';
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '@/components/ui/container';
@@ -6,50 +7,12 @@ import { Button } from '@/components/ui/button';
 import { PageLayout } from '@/components/layout/PageLayout';
 import { enStoryData } from '@/lib/page-data';
 import { PRODUCT_PRICES } from '@/lib/pricing';
-import { generateWebsiteSchema } from '@/lib/seo-utils';
+import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
 import { Heart, Users, ChevronRight, MapPin, Quote, Home } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Our Story: Mission Behind Purrify | Purrify',
-  description: 'Learn about Purrify\'s founding story, mission, and the team dedicated to solving cat litter odor problems. Discover our commitment to pets, families, and the environment.',
-  keywords: 'Purrify story, company mission, cat litter innovation, pet care, environmental responsibility, Canadian company',
-  alternates: {
-    canonical: 'https://www.purrify.ca/about/our-story/'
-  },
-  openGraph: {
-    title: 'Our Story: Mission Behind Purrify | Purrify',
-    description: 'Discover the story behind Purrify and our mission to help cat owners create fresher, cleaner homes.',
-    url: 'https://www.purrify.ca/about/our-story/',
-    type: 'website',
-  },
-  other: {
-    'last-modified': '2025-11-13',
-  },
-};
-
-// Use English data as default for server component
+// Use English data as default for client component
 const storyData = enStoryData;
 const { values, team, stats } = storyData;
-
-const structuredData = {
-  '@context': 'https://schema.org',
-  '@type': 'AboutPage',
-  name: 'Our Story',
-  description: 'The story behind Purrify cat litter additive and our mission to help cat owners create fresher, cleaner homes.',
-  url: 'https://www.purrify.ca/about/our-story/',
-  mainEntity: {
-    '@type': 'Organization',
-    name: 'Purrify',
-    description: 'Canadian company creating innovative cat litter additives for odor elimination',
-    foundingDate: '2019',
-    founders: [
-      {
-        '@type': 'Person',
-        name: 'Mark Archer',
-      },
-    ],
-  },
-};
 
 // Helper to get initials for team members without photos
 const getInitials = (name: string) => {
@@ -91,20 +54,41 @@ function SimpleBreadcrumbs({
 }
 
 export default function AboutPage() {
+  const { schema, additionalSchemas } = useEnhancedSEO({
+    path: '/about/our-story',
+    title: 'Our Story: Mission Behind Purrify',
+    description: "Learn about Purrify's founding story, mission, and the team dedicated to solving cat litter odor problems. Discover our commitment to pets, families, and the environment.",
+    targetKeyword: 'Purrify story',
+    schemaType: 'article',
+    schemaData: {
+      headline: 'Our Story: Mission Behind Purrify',
+      description: 'The story behind Purrify cat litter additive and our mission to help cat owners create fresher, cleaner homes.',
+      image: 'https://www.purrify.ca/images/hero.webp',
+      datePublished: '2019-01-01T00:00:00Z',
+      dateModified: '2025-11-13T00:00:00Z',
+      category: 'About',
+      keywords: ['Purrify story', 'company mission', 'cat litter innovation', 'pet care', 'environmental responsibility', 'Canadian company'],
+    },
+    image: 'https://www.purrify.ca/images/hero.webp',
+    keywords: ['Purrify story', 'company mission', 'cat litter innovation', 'pet care', 'environmental responsibility', 'Canadian company'],
+  });
+
+  const allSchemas = [schema, ...additionalSchemas].filter(Boolean);
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateWebsiteSchema('en')),
-        }}
-      />
+      {allSchemas.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              allSchemas.length === 1
+                ? allSchemas[0]
+                : { '@context': 'https://schema.org', '@graph': allSchemas }
+            ),
+          }}
+        />
+      )}
 
       <PageLayout>
         {/* Custom Hero Section with Background Image */}

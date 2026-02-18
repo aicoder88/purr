@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { RelatedSolutions } from '../../../../src/components/learn/RelatedSolutions';
+import { RelatedContent } from '../../../../src/components/seo/RelatedContent';
 import { HowToSection } from '../../../../src/components/seo/HowToSection';
 import { AIQuotableBlock } from '../../../../src/components/seo/AIQuotableBlock';
 import { RelatedQuestions } from '../../../../src/components/seo/RelatedQuestions';
@@ -356,6 +357,13 @@ export default function MultipleCatsOdorControlPageClient() {
       </section>
 
       <RelatedSolutions currentPath="/learn/solutions/multiple-cats-odor-control" />
+
+      {/* Related Articles */}
+      <section className="py-16 border-t border-gray-200 dark:border-gray-800">
+        <div className="max-w-6xl mx-auto px-4">
+          <RelatedContent currentUrl="/learn/solutions/multiple-cats-odor-control" />
+        </div>
+      </section>
     </div>
   );
 }

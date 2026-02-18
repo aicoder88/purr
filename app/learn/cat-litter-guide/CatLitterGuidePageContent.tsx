@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Container } from '../../../src/components/ui/container';
 import { Button } from '../../../src/components/ui/button';
 import { useTranslation } from '../../../src/lib/translation-context';
+import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
 import Image from 'next/image';
 import {
   CheckCircle,
@@ -473,11 +474,30 @@ const GUIDE_COPY: Record<SupportedLocale, GuideCopy> = {
 
 const MAINTENANCE_ICONS = [Clock, Droplets, Shield, Heart];
 
-export default function CatLitterGuidePageClient() {
+export default function CatLitterGuidePageContent() {
   const { locale } = useTranslation();
   const localePrefix = locale === 'en' ? '' : `/${locale}`;
   const homePath = localePrefix || '/';
   const copy = GUIDE_COPY[locale as SupportedLocale] || GUIDE_COPY.en;
+
+  const { schema, additionalSchemas } = useEnhancedSEO({
+    path: '/learn/cat-litter-guide',
+    title: 'Cat Litter Guide: Types & Best Practices',
+    description: 'Comprehensive guide to cat litter types, maintenance tips, and solving common problems. Learn how to choose the best litter for your cat and keep it fresh longer.',
+    targetKeyword: 'cat litter guide',
+    schemaType: 'article',
+    schemaData: {
+      headline: 'Complete Cat Litter Guide - Types, Tips & Best Practices',
+      description: 'Comprehensive guide to cat litter types, maintenance tips, and solving common problems. Learn how to choose the best litter for your cat and keep it fresh longer.',
+      image: 'https://www.purrify.ca/optimized/litter-guide-hero-setup.webp',
+      datePublished: '2024-01-01T10:00:00Z',
+      dateModified: new Date().toISOString(),
+      category: 'Pet Care Guides',
+      keywords: ['cat litter guide', 'cat litter types', 'litter maintenance tips', 'clay litter', 'clumping litter', 'silica litter', 'natural cat litter'],
+    },
+    image: 'https://www.purrify.ca/optimized/litter-guide-hero-setup.webp',
+    keywords: ['cat litter guide', 'cat litter types', 'litter maintenance tips', 'clay litter', 'clumping litter', 'silica litter', 'natural cat litter'],
+  });
 
   const trialPrice = formatProductPrice('trial', locale);
   const trialCheckoutUrl = getPaymentLink('trialSingle') || `${localePrefix}/products/trial-size`;
@@ -494,8 +514,23 @@ export default function CatLitterGuidePageClient() {
     { name: copy.breadcrumbGuide, path: `${localePrefix}/learn/cat-litter-guide` },
   ];
 
+  const allSchemas = [schema, ...additionalSchemas].filter(Boolean);
+
   return (
-    <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
+    <>
+      {allSchemas.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              allSchemas.length === 1
+                ? allSchemas[0]
+                : { '@context': 'https://schema.org', '@graph': allSchemas }
+            ),
+          }}
+        />
+      )}
+      <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
       {/* Breadcrumb Navigation */}
       <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
         <Container>
@@ -765,5 +800,6 @@ export default function CatLitterGuidePageClient() {
         </Container>
       </section>
     </main>
+    </>
   );
 }

@@ -2,6 +2,7 @@ export const dynamic = 'force-static';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
 export const metadata: Metadata = {
   title: 'Eliminate Cat Litter Odor Fast | Action Guide | Purrify',
@@ -146,6 +147,11 @@ export default function QuestionPage() {
               </Link>
             ))}
           </div>
+        </div>
+
+        {/* Related Articles */}
+        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+          <RelatedContent currentUrl="/learn/answers/how-to-eliminate-cat-litter-odor" />
         </div>
       </article>
       <script
