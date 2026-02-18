@@ -12,8 +12,6 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/using-deodorizers-with-kittens',
       'fr-CA': 'https://www.purrify.ca/fr/learn/using-deodorizers-with-kittens',
-      'zh-CN': 'https://www.purrify.ca/zh/learn/using-deodorizers-with-kittens',
-      'es-US': 'https://www.purrify.ca/es/learn/using-deodorizers-with-kittens',
       'en-US': 'https://www.purrify.ca/es/learn/using-deodorizers-with-kittens',
       'x-default': 'https://www.purrify.ca/es/learn/using-deodorizers-with-kittens',
     },

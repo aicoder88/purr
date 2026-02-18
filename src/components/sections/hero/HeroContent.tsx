@@ -125,7 +125,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
           <span className="block bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-700 to-gray-500 dark:from-white dark:via-gray-200 dark:to-gray-400">
             {headline}
           </span>
-          <span className="block mt-2 sm:mt-3 text-xl sm:text-2xl md:text-3xl font-medium text-electric-indigo">
+          <span className="block mt-2 sm:mt-3 text-xl sm:text-2xl md:text-3xl font-bold text-electric-indigo dark:text-electric-indigo-300">
             {subheadline}
           </span>
         </h1>
@@ -162,10 +162,10 @@ export const HeroContent = ({ t }: HeroContentProps) => {
       <div className="flex flex-col gap-4 pt-4 max-w-md">
         <Button
           asChild
-          className={`${CTA_BUTTON_CLASSES} !py-8 !px-10`}
+          className={`${CTA_BUTTON_CLASSES} !min-h-[64px] !py-8 !px-10`}
           aria-label={t.hero.buttons.tryFree || "Get My Free Trial"}
         >
-          <a href={getPaymentLink('trialSingle') || '/products'}>
+          <a href={getPaymentLink('trialSingle') || '/products'} className="flex items-center justify-center gap-3 w-full h-full">
             <LightningIcon className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
             <span className="tracking-tight">{t.hero.buttons.tryFree || "Get My Free Trial"}</span>
             <ArrowIcon className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />

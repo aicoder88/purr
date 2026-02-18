@@ -23,8 +23,6 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/faq',
       'fr-CA': 'https://www.purrify.ca/fr/learn/faq',
-      'zh-CN': 'https://www.purrify.ca/zh/learn/faq',
-      'es-US': 'https://www.purrify.ca/es/learn/faq',
       'en-US': 'https://www.purrify.ca/learn/faq',
       'x-default': 'https://www.purrify.ca/learn/faq',
     },

@@ -35,8 +35,6 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': 'https://www.purrify.ca/reviews',
       'fr-CA': 'https://www.purrify.ca/fr/reviews',
-      'zh-CN': 'https://www.purrify.ca/zh/reviews',
-      'es-US': 'https://www.purrify.ca/es/reviews',
       'en-US': 'https://www.purrify.ca/reviews',
       'x-default': 'https://www.purrify.ca/reviews',
     },

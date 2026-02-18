@@ -20,8 +20,6 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': 'https://www.purrify.ca/referral/',
       'fr-CA': 'https://www.purrify.ca/fr/referral/',
-      'zh-CN': 'https://www.purrify.ca/zh/referral/',
-      'es-US': 'https://www.purrify.ca/es/referral/',
       'en-US': 'https://www.purrify.ca/referral/',
       'x-default': 'https://www.purrify.ca/referral/',
     },

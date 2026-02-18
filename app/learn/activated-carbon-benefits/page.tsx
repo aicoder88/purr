@@ -13,8 +13,6 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/activated-carbon-benefits',
       'fr-CA': 'https://www.purrify.ca/fr/learn/activated-carbon-benefits',
-      'zh-CN': 'https://www.purrify.ca/zh/learn/activated-carbon-benefits',
-      'es-US': 'https://www.purrify.ca/es/learn/activated-carbon-benefits',
       'en-US': 'https://www.purrify.ca/es/learn/activated-carbon-benefits',
       'x-default': 'https://www.purrify.ca/es/learn/activated-carbon-benefits',
     },

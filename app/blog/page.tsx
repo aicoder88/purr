@@ -207,14 +207,16 @@ export default async function BlogIndexPage({ searchParams }: PageProps) {
               {currentPosts.map((post, index) => (
                 <article
                   key={post.link}
-                  className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 flex flex-col h-full"
+                  className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 flex flex-col h-full cv-auto cis-480"
                 >
                   <Link href={post.link} className="block relative h-48 overflow-hidden">
                     <Image
                       src={post.image}
                       alt={post.title}
                       fill
-                      priority={index === 0}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      priority={index < 3}
+                      {...(index === 0 ? { fetchPriority: "high" } : {})}
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

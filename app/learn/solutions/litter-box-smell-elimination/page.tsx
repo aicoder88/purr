@@ -19,8 +19,6 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination',
       'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/litter-box-smell-elimination',
-      'zh-CN': 'https://www.purrify.ca/zh/learn/solutions/litter-box-smell-elimination',
-      'es-US': 'https://www.purrify.ca/es/learn/solutions/litter-box-smell-elimination',
       'en-US': 'https://www.purrify.ca/es/learn/solutions/litter-box-smell-elimination',
       'x-default': 'https://www.purrify.ca/es/learn/solutions/litter-box-smell-elimination',
     },

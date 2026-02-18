@@ -334,6 +334,7 @@ export default async function ProvincePage({ params }: ProvincePageProps) {
               src={heroImage}
               alt={`${province.name} background`}
               fill
+              sizes="100vw"
               className="object-cover opacity-20 dark:opacity-30"
               priority
             />
@@ -469,6 +470,7 @@ export default async function ProvincePage({ params }: ProvincePageProps) {
                   src={heroImage}
                   alt={`${province.name} lifestyle`}
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent dark:from-black/60" />

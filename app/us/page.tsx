@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     images: [
       {
-        url: 'https://www.purrify.ca/images/us/realistic-modern-living.webp',
+        url: 'https://www.purrify.ca/optimized/realistic-modern-living.webp',
         width: 1200,
         height: 800,
         alt: 'Purrify USA - Coming Q1 2026',
@@ -38,15 +38,13 @@ export const metadata: Metadata = {
     creator: '@purrifyhq',
     title: 'Cat Litter Odor Control USA | Free Shipping | Purrify',
     description: 'Eliminate cat litter odors at the source. Purrify is coming to the USA in Q1 2026!',
-    images: ['https://www.purrify.ca/images/us/realistic-modern-living.webp'],
+    images: ['https://www.purrify.ca/optimized/realistic-modern-living.webp'],
   },
   alternates: {
     canonical: 'https://www.purrify.ca/us/',
     languages: {
       'en-CA': 'https://www.purrify.ca/',
       'fr-CA': 'https://www.purrify.ca/fr/',
-      'zh-CN': 'https://www.purrify.ca/zh/',
-      'es-US': 'https://www.purrify.ca/es/',
       'en-US': 'https://www.purrify.ca/us/',
       'x-default': 'https://www.purrify.ca/',
     },
@@ -77,7 +75,7 @@ const productSchema = {
     name: 'Purrify',
   },
   category: 'Pet Supplies > Cat Supplies > Cat Litter Accessories',
-  image: 'https://www.purrify.ca/images/us/realistic-modern-living.webp',
+  image: 'https://www.purrify.ca/optimized/realistic-modern-living.webp',
 };
 
 // LocalBusiness schema for USA
@@ -88,7 +86,7 @@ const localBusinessSchema = {
   description: 'Premium activated carbon cat litter deodorizer coming to USA in Q1 2026',
   url: 'https://www.purrify.ca/us/',
   logo: 'https://www.purrify.ca/images/icon-512.png',
-  image: 'https://www.purrify.ca/images/us/realistic-modern-living.webp',
+  image: 'https://www.purrify.ca/optimized/realistic-modern-living.webp',
   address: {
     '@type': 'PostalAddress',
     addressCountry: 'US',
@@ -101,8 +99,6 @@ const localBusinessSchema = {
   paymentAccepted: 'Credit Card, PayPal',
   currenciesAccepted: 'USD',
 };
-
-
 
 export default async function USALandingPage() {
 
@@ -211,7 +207,7 @@ export default async function USALandingPage() {
             <div className="order-1 lg:order-2 relative">
               <div className="relative rounded-3xl overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.3)] group">
                 <Image
-                  src="/images/us/realistic-modern-living.webp"
+                  src="/optimized/realistic-modern-living.webp"
                   alt="Fresh American living room with happy cat"
                   width={800}
                   height={1000}
@@ -239,7 +235,7 @@ export default async function USALandingPage() {
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div>
                 <Image
-                  src="/images/us/ghibli-us-home.webp"
+                  src="/optimized/ghibli-us-home.webp"
                   alt="Cozy Ghibli style home with cat"
                   width={600}
                   height={600}
@@ -324,7 +320,7 @@ export default async function USALandingPage() {
               </div>
               <div className="order-1 lg:order-2">
                 <Image
-                  src="/images/us/ghibli-odor-science.webp"
+                  src="/optimized/ghibli-odor-science.webp"
                   alt="Ghibli science showing odor capture"
                   width={600}
                   height={600}
@@ -366,7 +362,7 @@ export default async function USALandingPage() {
                 </div>
                 <div className="relative min-h-[400px]">
                   <Image
-                    src="/images/us/realistic-carbon-effect.webp"
+                    src="/optimized/realistic-carbon-effect.webp"
                     alt="Realistic macro view of carbon action"
                     fill
                     className="object-cover transition-transform duration-[2s] hover:scale-110"

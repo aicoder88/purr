@@ -1,7 +1,13 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
 import PageContent from '@/app/products/PageContent';
 import { locales, isValidLocale } from '@/i18n/config';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1.0,
+  maximumScale: 5.0,
+};
 
 interface LocalizedProductsPageProps {
   params: Promise<{ locale: string }>;
@@ -66,8 +72,6 @@ export async function generateMetadata({ params }: LocalizedProductsPageProps): 
       languages: {
         'en-CA': 'https://www.purrify.ca/products/',
         'fr-CA': 'https://www.purrify.ca/fr/products/',
-        'zh-CN': 'https://www.purrify.ca/zh/products/',
-        'es-US': 'https://www.purrify.ca/es/products/',
         'en-US': 'https://www.purrify.ca/products/',
         'x-default': 'https://www.purrify.ca/products/',
       },

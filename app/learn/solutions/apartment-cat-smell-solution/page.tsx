@@ -19,8 +19,6 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution',
       'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/apartment-cat-smell-solution',
-      'zh-CN': 'https://www.purrify.ca/zh/learn/solutions/apartment-cat-smell-solution',
-      'es-US': 'https://www.purrify.ca/es/learn/solutions/apartment-cat-smell-solution',
       'en-US': 'https://www.purrify.ca/es/learn/solutions/apartment-cat-smell-solution',
       'x-default': 'https://www.purrify.ca/es/learn/solutions/apartment-cat-smell-solution',
     },

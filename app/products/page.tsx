@@ -1,5 +1,11 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import PageContent from './PageContent';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1.0,
+  maximumScale: 5.0,
+};
 
 export const metadata: Metadata = {
   title: 'Purrify Products - Activated Carbon Litter Additive',
@@ -34,8 +40,6 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': 'https://www.purrify.ca/products/',
       'fr-CA': 'https://www.purrify.ca/fr/products/',
-      'zh-CN': 'https://www.purrify.ca/zh/products/',
-      'es-US': 'https://www.purrify.ca/es/products/',
       'en-US': 'https://www.purrify.ca/products/',
       'x-default': 'https://www.purrify.ca/products/',
     },

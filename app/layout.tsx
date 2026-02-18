@@ -166,6 +166,12 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className={inter.variable} suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body className="font-sans">
         <Providers locale={locale} messages={messages}>
           <LocaleDetector />

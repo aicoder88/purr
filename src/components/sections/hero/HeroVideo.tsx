@@ -88,9 +88,9 @@ export const HeroVideo = () => {
               fill
               className="object-cover object-top"
               sizes="(max-width: 768px) 100vw, 800px"
-              priority={!isMobile} // Priority on desktop, lazy on mobile
-              loading={isMobile ? 'lazy' : 'eager'}
-              quality={isMobile ? 75 : 85} // Lower quality on mobile for faster load
+              priority={true} // Priority on both desktop and mobile for LCP
+              loading="eager"
+              quality={85} // Maintain quality for critical hero image
             />
           )}
 
@@ -105,8 +105,7 @@ export const HeroVideo = () => {
               preload={isMobile ? 'none' : 'metadata'} // Don't preload on mobile until visible
               poster="/images/purrify-demo-poster.webp"
               aria-label="How to use Purrify: Pouring activated carbon litter additive onto litter to instantly neutralize odors."
-              role="img"
-              tabIndex={-1}
+              tabIndex={0} // Make focusable for screen readers
               controls={false}
               disablePictureInPicture
               disableRemotePlayback

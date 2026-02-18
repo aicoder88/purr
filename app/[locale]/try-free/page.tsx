@@ -28,8 +28,6 @@ export async function generateMetadata({ params }: LocalizedTryFreePageProps): P
       languages: {
         'en-CA': 'https://www.purrify.ca/try-free/',
         'fr-CA': 'https://www.purrify.ca/fr/try-free/',
-        'zh-CN': 'https://www.purrify.ca/zh/try-free/',
-        'es-US': 'https://www.purrify.ca/es/try-free/',
         'en-US': 'https://www.purrify.ca/try-free/',
         'x-default': 'https://www.purrify.ca/try-free/',
       },

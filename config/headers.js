@@ -24,7 +24,7 @@ const SECURITY_HEADERS = [
   // Trusted Types: Allow all policies in development to prevent TrustedScriptURL/TrustedHTML errors
   {
     key: "Content-Security-Policy",
-    value: `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline' *.googleapis.com; img-src 'self' blob: data: *.purrify.ca *.google.com *.gstatic.com *.facebook.com *.fna.fbcdn.net *.dicebear.com *.unsplash.com *.randomuser.me *.chico.ca *.pattesgriffes.com *.pitou-minou.ca *.doghausmtl.com *.coquetteetfinegueule.com *.animaleriegigi.com unpkg.com *.unpkg.com *.tile.openstreetmap.org; font-src 'self' data:; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; block-all-mixed-content; upgrade-insecure-requests; trusted-types 'allow-duplicates' *;`
+    value: `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline' *.googleapis.com; img-src 'self' blob: data: *.purrify.ca *.google.com *.gstatic.com *.facebook.com *.fna.fbcdn.net *.dicebear.com *.unsplash.com *.randomuser.me unpkg.com *.unpkg.com *.tile.openstreetmap.org; font-src 'self' data:; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; block-all-mixed-content; upgrade-insecure-requests; trusted-types 'allow-duplicates' nextjs nextjs-hydration gtm googletagmanager;`
   },
 ];
 

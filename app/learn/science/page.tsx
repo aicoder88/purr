@@ -12,8 +12,6 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/science',
       'fr-CA': 'https://www.purrify.ca/fr/learn/science',
-      'zh-CN': 'https://www.purrify.ca/zh/learn/science',
-      'es-US': 'https://www.purrify.ca/es/learn/science',
       'en-US': 'https://www.purrify.ca/es/learn/science',
       'x-default': 'https://www.purrify.ca/es/learn/science',
     },

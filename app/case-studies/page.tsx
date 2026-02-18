@@ -15,8 +15,6 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': 'https://www.purrify.ca/case-studies',
       'fr-CA': 'https://www.purrify.ca/fr/case-studies',
-      'zh-CN': 'https://www.purrify.ca/zh/case-studies',
-      'es-US': 'https://www.purrify.ca/es/case-studies',
       'en-US': 'https://www.purrify.ca/case-studies',
       'x-default': 'https://www.purrify.ca/case-studies',
     },

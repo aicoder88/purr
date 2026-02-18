@@ -12,8 +12,6 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/how-to-use-deodorizer',
       'fr-CA': 'https://www.purrify.ca/fr/learn/how-to-use-deodorizer',
-      'zh-CN': 'https://www.purrify.ca/zh/learn/how-to-use-deodorizer',
-      'es-US': 'https://www.purrify.ca/es/learn/how-to-use-deodorizer',
       'en-US': 'https://www.purrify.ca/es/learn/how-to-use-deodorizer',
       'x-default': 'https://www.purrify.ca/es/learn/how-to-use-deodorizer',
     },

@@ -12,8 +12,6 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/glossary',
       'fr-CA': 'https://www.purrify.ca/fr/learn/glossary',
-      'zh-CN': 'https://www.purrify.ca/zh/learn/glossary',
-      'es-US': 'https://www.purrify.ca/es/learn/glossary',
       'en-US': 'https://www.purrify.ca/es/learn/glossary',
       'x-default': 'https://www.purrify.ca/es/learn/glossary',
     },

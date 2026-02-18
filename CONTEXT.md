@@ -103,6 +103,10 @@ These pages are on page 2, one push to page 1 = major traffic:
 - [x] **Removed A/B testing from homepage Hero** — eliminated blocking API call to `/api/ab-test/track`
 - [x] **Moved announcement bar animation styles to global CSS** — removed `dangerouslySetInnerHTML` blocking render
 - [x] **Optimized HeroVideo for mobile** — lazy loading poster on mobile, reduced quality, `preload="none"` for video on mobile
+- [x] **Fixed Products Page SEO 85 mobile** — Added `viewport` export to `app/[locale]/products/page.tsx`, removed zh-CN/es-US locale references
+- [x] **Fixed trailing slash inconsistency** — `trailingSlash: true` already in next.config.js, cleaned up canonical URLs across 38 files
+- [x] **Cleaned up zh-CN and es-US locale references** — Removed from 38+ page metadata files (only en/fr supported)
+- [x] **Added preconnect hints** — Added DNS preconnect for Google Tag Manager, Google Analytics, and fonts in layout.tsx
 
 ---
 
@@ -118,26 +122,13 @@ These pages are on page 2, one push to page 1 = major traffic:
 - Third-party scripts
 
 **Quick wins to try:**
-- Add `priority` prop to hero LCP image
+- Add `priority` prop to hero LCP image (already has `priority={true}`)
 - Check if any heavy components can be lazy-loaded
 - Audit third-party scripts (analytics, tracking)
 
-### 2. Products Page SEO Score 85 (mobile) vs 100 (desktop)
-**Files:** 
-- `app/[locale]/products/page.tsx` (localized — scores 85)
-- `app/products/page.tsx` (root — scores 100)
-
-**Investigation needed:**
-- Compare meta tags between both versions
-- Check viewport settings on localized version
-- Mobile-specific meta tag issues
-
-### 3. Fix Trailing Slash / Canonical Inconsistency
-**Issue:** `/ammonia-smell-cat-litter` vs `/ammonia-smell-cat-litter/` both indexed
-
-**Action:** Enforce one pattern. Next.js App Router should handle this via:
-- `trailingSlash` config in `next.config.js`
-- Consistent canonical URLs in metadata
+**Completed:**
+- Preconnect hints added for GTM, GA, and fonts
+- HeroVideo already optimized with `preload="none"` on mobile
 
 ---
 
@@ -145,9 +136,9 @@ These pages are on page 2, one push to page 1 = major traffic:
 
 ### 4. Content: Push `/learn/activated-carbon-vs-baking-soda-deodorizers` to Page 1
 This page has 2,101 impressions at position 13.1 — it's the single biggest traffic lever right now.
-- Add internal links from homepage, products page, and related blog posts pointing to this URL
+- ✅ Internal links already exist from: footer, Products page (Related Pages section), Learn hub page, Science section, How It Works section
 - Improve the page's content depth / headings to target the exact query
-- Add FAQ schema targeting "activated charcoal vs baking soda for odors" (currently ranking #1 for that exact query on another page)
+- ✅ FAQ schema already exists on the page targeting "activated charcoal vs baking soda for odors"
 
 ---
 

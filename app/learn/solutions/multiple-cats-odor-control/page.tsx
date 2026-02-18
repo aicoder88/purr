@@ -19,8 +19,6 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control',
       'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/multiple-cats-odor-control',
-      'zh-CN': 'https://www.purrify.ca/zh/learn/solutions/multiple-cats-odor-control',
-      'es-US': 'https://www.purrify.ca/es/learn/solutions/multiple-cats-odor-control',
       'en-US': 'https://www.purrify.ca/es/learn/solutions/multiple-cats-odor-control',
       'x-default': 'https://www.purrify.ca/es/learn/solutions/multiple-cats-odor-control',
     },

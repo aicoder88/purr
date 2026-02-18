@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { SITE_NAME, CONTACT_INFO } from '../../src/lib/constants';
 
-
 export const metadata: Metadata = {
   title: `Customer Support - ${SITE_NAME} Help Center`,
   description: 'Need help? Fast support for orders, shipping, returns. Email, phone, or WhatsApp available 7 days/week. Response within 24 hours. Ships to USA & Canada.',
@@ -11,8 +10,6 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': 'https://www.purrify.ca/support',
       'fr-CA': 'https://www.purrify.ca/fr/support',
-      'zh-CN': 'https://www.purrify.ca/zh/support',
-      'es-US': 'https://www.purrify.ca/es/support',
       'en-US': 'https://www.purrify.ca/support',
       'x-default': 'https://www.purrify.ca/support',
     },

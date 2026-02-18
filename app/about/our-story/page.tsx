@@ -98,6 +98,7 @@ export default function AboutPage() {
               src="/images/hero.webp"
               alt="Happy cat in a sunlit living room"
               fill
+              sizes="100vw"
               className="object-cover"
               priority
             />
@@ -171,6 +172,7 @@ export default function AboutPage() {
                         src="/images/mark-archer.webp"
                         alt="Mark Archer"
                         fill
+                        sizes="48px"
                         className="object-cover"
                       />
                     </div>
@@ -256,6 +258,7 @@ export default function AboutPage() {
                           src={photoSrc}
                           alt={member.name}
                           fill
+                          sizes="(max-width: 768px) 100vw, 25vw"
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                       ) : (
