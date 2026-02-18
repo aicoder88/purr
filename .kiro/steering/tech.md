@@ -2,7 +2,7 @@
 
 ## Core Framework
 
-- **Next.js 15** with Pages Router (NOT App Router)
+- **Next.js 15** with App Router
 - **React 19** with TypeScript (strict mode)
 - **Node.js 22.x** required
 

@@ -181,9 +181,12 @@ export const fr = {
     rabbitLitter: "Litière pour Lapin",
     fridgeSmells: "Odeurs de réfrigérateur",
     ferretCage: "Cage de furet",
-    eliminateCatOdors: "7 Jours Sans Odeur de Litière",
+    headline: "Retrouvez la Fraîcheur de votre Foyer.",
+    eliminateCatOdors: "Retrouvez la Fraîcheur de votre Foyer.",
+    tagline: "Versez. Mélangez. Respirez.",
+    subheadline: "Aimez votre chat, pas l'odeur de sa litière. Purrify neutralise l'ammoniaque en 30 secondes—ne laissant que de l'air frais. Soutenu par la science, 100% naturel.",
     instantly: "Instantanément",
-    description: "La technologie avancée au carbone activé neutralise l'ammoniac et les odeurs 3x plus rapidement que les solutions traditionnelles. Transformez votre litière de malodorante à fraîche en quelques secondes.",
+    description: "La technologie avancée au charbon actif neutralise l'ammoniaque et les odeurs 3x plus rapidement que les solutions traditionnelles. Redécouvrez le plaisir d'un foyer qui sent bon le propre, naturellement.",
     socialProof: {
       trustNumber: "Sans parfum",
       trustText: "additif au charbon actif",
@@ -234,10 +237,7 @@ export const fr = {
       moneyBackGuarantee: "Garantie Satisfait ou Rembours\u00e9 30 Jours",
       freeShippingOver: "Livraison gratuite sur les commandes de plus de 35$",
       headline: "Aimez votre chat. Éliminez les odeurs.",
-      subheadline: "Le charbon actif élimine les odeurs d'ammoniac à la source. Fonctionne avec toute litière."
-    },
-    headline: "Aimez votre chat. Éliminez les odeurs.",
-    subheadline: "Le charbon actif élimine les odeurs d'ammoniac à la source. Fonctionne avec toute litière."
+    }
   },
 
   // Features

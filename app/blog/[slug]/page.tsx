@@ -146,6 +146,8 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       description: metaDescription,
       url: canonicalUrl,
       type: 'article',
+      siteName: SITE_NAME,
+      locale: 'en_CA',
       publishedTime: post.date,
       authors: [post.author],
       images: [

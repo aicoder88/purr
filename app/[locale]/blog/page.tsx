@@ -55,6 +55,7 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
   return {
     title: localeMeta.title,
     description: localeMeta.description,
+    keywords: ['cat care blog', 'litter box tips', 'pet care advice', 'odor control', 'cat health'],
     alternates: {
       canonical: canonicalPath,
       languages: {
@@ -91,6 +92,14 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
           alt: localeMeta.title,
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@purrifyhq',
+      creator: '@purrifyhq',
+      title: localeMeta.title,
+      description: localeMeta.description,
+      images: [`${SITE_URL}/images/Logos/purrify-logo.png`],
     },
   };
 }

@@ -77,3 +77,22 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Scrolling Announcement Bar Animation */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 30s linear infinite;
+}
+
+/* Pause animation on hover for accessibility */
+.animate-scroll-left:hover {
+  animation-play-state: paused;
+}

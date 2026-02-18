@@ -183,10 +183,14 @@ export async function generateMetadata({ params }: ProvincePageProps): Promise<M
         'x-default': `${SITE_URL}/locations/province/${province.slug}/`,
       },
     },
+    keywords: [`cat litter ${province.name}`, `pet supplies ${province.name}`, `cat litter delivery ${province.name}`, `purrify ${province.name}`],
     openGraph: {
       title: seoTitle,
       description: seoDescription,
       url: canonicalUrl,
+      type: 'website',
+      siteName: SITE_NAME,
+      locale: 'en_CA',
       images: [
         {
           url: heroImage,
@@ -195,6 +199,24 @@ export async function generateMetadata({ params }: ProvincePageProps): Promise<M
           alt: `${province.name} Province Page`,
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@purrifyhq',
+      creator: '@purrifyhq',
+      title: seoTitle,
+      description: seoDescription,
+      images: [heroImage],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
   };
 }

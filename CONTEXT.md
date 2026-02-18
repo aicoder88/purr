@@ -1,14 +1,14 @@
 # Purrify.ca — Clean Context Handoff
-_Last updated: 2026-02-16_
+_Last updated: 2026-02-18_
 
 ---
 
 ## Business Overview
 
 - **Product:** Purrify — activated carbon cat litter additive, single product in 4 sizes
-- **Domain:** purrify.ca | Stack: Next.js 15 + TypeScript + Prisma + Stripe + Vercel
+- **Domain:** purrify.ca | Stack: Next.js 16 + TypeScript + Prisma + Stripe + Vercel
 - **Primary goal:** Rank #1 for "cat litter odour" + maximize direct DTC sales
-- **Markets:** Canada (primary), expanding to US (LA Spanish market) and has existing Chinese-only retail stores
+- **Markets:** Canada (primary), expanding to US
 
 ---
 
@@ -56,7 +56,7 @@ These pages are on page 2, one push to page 1 = major traffic:
 
 | Page | Mobile | Desktop | Notes |
 |---|---|---|---|
-| Homepage | 67 | 78 | Worst — needs work |
+| Homepage | 67 | 78 | **PRIORITY** — needs work |
 | Products | 77 | 90 | SEO: 85 mobile (should be 100) |
 | Blog Index | 77 | 97 | |
 | How It Works | 76 | 97 | |
@@ -88,7 +88,7 @@ These pages are on page 2, one push to page 1 = major traffic:
 
 ---
 
-## Completed Work (from current git state)
+## Completed Work
 
 - [x] Deleted B2B vertical pages (`cat-cafes`, `groomers`, `hospitality`, `shelters`, `veterinarians`) — consolidated into `/b2b/` with vertical components at `app/b2b/_components/verticals/`
 - [x] Deleted scripts graveyard (100+ one-off scripts)
@@ -97,35 +97,47 @@ These pages are on page 2, one push to page 1 = major traffic:
 - [x] Homepage CTA padding fixed
 - [x] Reduced Vercel edge requests (commit: `a5c1bc06`)
 - [x] Fixed Sentry errors (useTranslation server error, chunk loading, performanceMetrics)
+- [x] **Removed experiment system** — `src/lib/experiments/` and `src/components/experiments/` deleted
+- [x] **Products page no longer uses `force-dynamic`** — now static
+- [x] **Updated steering docs** — `.kiro/steering/` now reflects App Router (not Pages Router)
+- [x] **Removed A/B testing from homepage Hero** — eliminated blocking API call to `/api/ab-test/track`
+- [x] **Moved announcement bar animation styles to global CSS** — removed `dangerouslySetInnerHTML` blocking render
+- [x] **Optimized HeroVideo for mobile** — lazy loading poster on mobile, reduced quality, `preload="none"` for video on mobile
 
 ---
 
 ## Remaining P0 Issues
 
-### 1. Remove `force-dynamic` from Products Page (HIGHEST PRIORITY)
-**File:** `app/[locale]/products/page.tsx:12`
-```
-export const dynamic = 'force-dynamic';
-```
-**Cause:** Experiment/A/B testing system (`getCommercialExperimentState` imported from `@/lib/experiments/commercial-server`)
-**Action:** User does NOT want A/B testing. Remove the entire experiment system:
-- Remove `import { getCommercialExperimentState }`
-- Remove `import { ServerExperimentViewTracker }`
-- Remove `export const dynamic = 'force-dynamic'`
-- Delete `src/lib/experiments/` directory entirely
-- Delete `src/components/experiments/` directory
-- Make products page static (no dynamic export needed)
+### 1. Homepage Mobile Performance: 67 (HIGHEST PRIORITY)
+**File:** `app/page.tsx` already uses `export const dynamic = 'force-static'`
 
-### 2. Fix Trailing Slash / Canonical Inconsistency
-Two patterns exist:
-- Blog uses `/${locale}/blog/` (includes `/en/` prefix for English)
-- Products hardcodes `https://www.purrify.ca/products/` (no `/en/`)
-- `/ammonia-smell-cat-litter` vs `/ammonia-smell-cat-litter/` both indexed
+**Investigation needed:**
+- Render-blocking resources (CSS/JS)
+- LCP image optimization
+- Translation bundle size
+- Third-party scripts
 
-Enforce one pattern everywhere. Recommend: no locale prefix for English, trailing slash consistent.
+**Quick wins to try:**
+- Add `priority` prop to hero LCP image
+- Check if any heavy components can be lazy-loaded
+- Audit third-party scripts (analytics, tracking)
 
-### 3. Products Page SEO Score 85 (mobile)
-Investigate why Products page SEO is 85 on mobile but 100 on desktop. Likely a missing meta tag or viewport issue specific to the localized route.
+### 2. Products Page SEO Score 85 (mobile) vs 100 (desktop)
+**Files:** 
+- `app/[locale]/products/page.tsx` (localized — scores 85)
+- `app/products/page.tsx` (root — scores 100)
+
+**Investigation needed:**
+- Compare meta tags between both versions
+- Check viewport settings on localized version
+- Mobile-specific meta tag issues
+
+### 3. Fix Trailing Slash / Canonical Inconsistency
+**Issue:** `/ammonia-smell-cat-litter` vs `/ammonia-smell-cat-litter/` both indexed
+
+**Action:** Enforce one pattern. Next.js App Router should handle this via:
+- `trailingSlash` config in `next.config.js`
+- Consistent canonical URLs in metadata
 
 ---
 
@@ -137,25 +149,16 @@ This page has 2,101 impressions at position 13.1 — it's the single biggest tra
 - Improve the page's content depth / headings to target the exact query
 - Add FAQ schema targeting "activated charcoal vs baking soda for odors" (currently ranking #1 for that exact query on another page)
 
-### 5. Homepage Mobile Performance: 67
-Identify and fix what's dragging mobile score down (likely render-blocking resources, LCP image, or translation bundle size).
-
-### 6. Language Strategy: zh/es
-- **zh:** Keep — has real Chinese retail stores
-- **es:** Keep — LA expansion planned
-- **Risk:** AI-generated translations may trigger thin content penalty from Google
-- **Action:** Add `<meta name="robots" content="noindex">` to zh/es pages temporarily OR audit quality before indexing
-
 ---
 
 ## Remaining P2 Issues
 
-### 7. Vercel Edge Request Costs
+### 6. Vercel Edge Request Costs
 Already reduced (commit `a5c1bc06`). Investigate further:
 - Check which routes are edge-rendered vs static
-- Middleware runs on every request — audit `middleware.ts` for unnecessary executions
+- Middleware runs on every request — audit `proxy.ts` for unnecessary executions
 
-### 8. next.config.js Size
+### 7. next.config.js Size
 Currently still large. Could split redirects into `next.config.redirects.js` (already partially done per git status).
 
 ---
@@ -164,39 +167,38 @@ Currently still large. Could split redirects into `next.config.redirects.js` (al
 
 | Purpose | Path |
 |---|---|
+| Homepage | `app/page.tsx` |
 | Localized products page | `app/[locale]/products/page.tsx` |
-| Products page content | `app/products/PageContent.tsx` or `app/products/page.tsx` |
-| Experiment system (DELETE) | `src/lib/experiments/` |
-| Experiment components (DELETE) | `src/components/experiments/` |
+| Root products page | `app/products/page.tsx` |
+| Products page content | `app/products/PageContent.tsx` |
 | B2B consolidated page | `app/b2b/page.tsx` |
 | B2B vertical components | `app/b2b/_components/verticals/` |
 | Next config | `next.config.js` |
 | Redirects | `next.config.redirects.js` |
-| i18n config | `src/i18n/config.ts` or `i18n/config.ts` |
+| i18n config | `src/i18n/config.ts` |
 | Blog index | `app/[locale]/blog/page.tsx` |
 
 ---
 
 ## Architecture Notes
 
-- 4 locales: `en`, `fr`, `zh`, `es`
+- 2 locales: `en`, `fr`
 - `[locale]` catch-all routes for most pages
 - Some pages exist at both `/products/` (root) and `/[locale]/products/` — check for duplication
 - next-intl for i18n
 - Prisma + Supabase/Postgres for blog content
 - Stripe for payments (redirect checkout flow)
+- **App Router** — NOT Pages Router (migrated)
 
 ---
 
 ## Next Actions (Priority Order)
 
-1. **Remove experiment system** → fixes `force-dynamic` on products page → biggest perf win
-2. **Fix canonical/trailing slash** → consolidate split URL signals
-3. **Internal link push** for `/learn/activated-carbon-vs-baking-soda-deodorizers` → biggest traffic lever
-4. **Fix Products SEO 85 mobile** → investigate and fix
-5. **Fix homepage mobile perf 67** → identify bottleneck
-6. **Re-auth GA MCP** → `gcloud auth application-default login`
-7. **Audit zh/es index status** → decide noindex vs quality-audit
+1. **Fix homepage mobile perf 67** → Run PageSpeed analysis, identify bottlenecks
+2. **Fix Products SEO 85 mobile** → Compare localized vs root meta tags
+3. **Fix trailing slash inconsistency** → Configure `trailingSlash` in next.config.js
+4. **Internal link push** for `/learn/activated-carbon-vs-baking-soda-deodorizers` → biggest traffic lever
+5. **Re-auth GA MCP** → `gcloud auth application-default login`
 
 ---
 
@@ -206,4 +208,5 @@ Currently still large. Could split redirects into `next.config.redirects.js` (al
 - Do NOT create new vertical B2B pages (consolidated into /b2b/)
 - Do NOT add A/B testing or experiment infrastructure
 - Do NOT add more redirects without first checking if they're needed
-- zh/es translations are AI-generated — do not treat as high-quality content
+- Blog content is JSON files in `content/blog/{en,fr}/` — zh/es locale support has been removed
+- **Do NOT push changes unless explicitly instructed by the USER**

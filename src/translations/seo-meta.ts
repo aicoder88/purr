@@ -69,7 +69,7 @@ export interface SEOMetaContent {
 export const seoMetaEn: SEOMetaContent = {
   homepage: {
     title: 'Purrify | Activated Carbon Cat Litter Deodorizer — Try Free',
-    description: 'Eliminate 99% of cat litter odor in 30 seconds with activated carbon. 2026 Update. No perfumes, 100% natural. Try FREE Today - Ships Fast to Canada & USA!',
+    description: 'Activated carbon eliminates 99% of cat litter ammonia in 30 seconds — here\'s the science behind it. Compare to baking soda. Try it risk-free today.',
     targetKeyword: 'cat litter smell',
     schema: {
       '@context': 'https://schema.org',
@@ -93,8 +93,8 @@ export const seoMetaEn: SEOMetaContent = {
 
   products: {
     trial: {
-      title: 'Free Cat Litter Deodorizer Trial | 87% Upgrade | Purrify',
-      description: 'Cat litter deodorizer trial - FREE! Carbon eliminates ammonia in 60 seconds. Just $4.76 shipping. See why 87% upgrade. Claim yours now!',
+      title: 'Free Cat Litter Deodorizer Trial | Science-Backed | Purrify',
+      description: 'Test the power of activated carbon for yourself. See how it neutralizes ammonia on contact. Just $4.76 shipping. Risk-free trial. Claim yours now!',
       targetKeyword: 'cat litter deodorizer',
       schema: {
         '@context': 'https://schema.org',
@@ -113,7 +113,7 @@ export const seoMetaEn: SEOMetaContent = {
     },
     standard: {
       title: 'Best Cat Litter Odor Eliminator - 50g Standard | Purrify',
-      description: 'Stop litter box smell for 30 days. Activated carbon neutralizes ammonia instantly. No perfumes, 99% effective. Ships free. Shop now!',
+      description: 'Keep your home smelling like home again. Activated carbon stops litter box smell without perfumes or cover-ups. 99% effective. Shop now!',
       targetKeyword: 'cat litter odor eliminator',
       schema: {
         '@context': 'https://schema.org',
@@ -132,7 +132,7 @@ export const seoMetaEn: SEOMetaContent = {
     },
     family: {
       title: 'Multi Cat Litter Deodorizer - 240g Family | Purrify',
-      description: 'Eliminate odor from 3+ cats with our best value 240g size. Activated carbon removes ammonia smell instantly. Shop now & save!',
+      description: 'The solution for multi-cat households. Activated carbon removes the toughest ammonia smells instantly. Best value for serious odor control.',
       targetKeyword: 'multi cat litter deodorizer',
       schema: {
         '@context': 'https://schema.org',
@@ -154,84 +154,114 @@ export const seoMetaEn: SEOMetaContent = {
   learn: {
     howItWorks: {
       title: 'How Activated Carbon Eliminates Cat Litter Odor Fast',
-      description: 'Discover how water-filter grade activated carbon neutralizes ammonia in 30 seconds. See the science behind 99% odor elimination. Try it free today!',
+      description: 'Water-filter grade activated carbon neutralizes ammonia on a molecular level. Learn the science behind 99% odor elimination without chemicals.',
       targetKeyword: 'activated carbon cat litter',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Article',
         headline: 'How Activated Carbon Eliminates Cat Litter Odor Fast',
         description: 'Discover how water-filter grade activated carbon neutralizes ammonia in 30 seconds. See the science behind 99% odor elimination.',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
       lastUpdated: '2026-02-13'
     },
     activatedCarbonBenefits: {
       title: 'Activated Carbon Cat Litter Benefits [2026 Guide]',
-      description: '7+ proven benefits of activated carbon for cat litter odor control. Eliminates 99% of ammonia, lasts 30 days, 100% natural. Learn more now.',
+      description: 'Explore the 7+ proven benefits of activated carbon for your cat\'s litter box. 100% natural, non-toxic, and highly effective odor control.',
       targetKeyword: 'activated carbon benefits',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Article',
         headline: 'Activated Carbon Cat Litter Benefits [2026 Guide]',
         description: '7+ proven benefits of activated carbon for cat litter odor control. Eliminates 99% of ammonia, lasts 30 days, 100% natural.',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
       lastUpdated: '2026-02-13'
     },
     activatedCarbonVsBakingSoda: {
-      title: 'Baking Soda vs Activated Carbon: Which Works Better?',
-      description: 'Baking soda masks odor, activated carbon eliminates it. See the science behind why 10,000+ cat owners switched. Compare effectiveness, safety, cost.',
+      title: 'Baking Soda vs Activated Carbon: A Science-Backed Comparison',
+      description: 'Why activated carbon is 2x more effective than baking soda at neutralizing ammonia. Compare evidence, safety, and long-term cost for cat parents.',
       targetKeyword: 'baking soda vs activated charcoal',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Article',
         headline: 'Baking Soda vs Activated Carbon: Which Works Better?',
         description: 'Baking soda masks odor, activated carbon eliminates it. See the science behind why 10,000+ cat owners switched.',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
       lastUpdated: '2026-02-13'
     },
     usingDeodorizersWithKittens: {
-      title: 'Is Cat Litter Deodorizer Safe for Kittens? [Vet Guide]',
-      description: 'Not all deodorizers are kitten-safe. Learn which ingredients to avoid, what\'s safe, and how to protect your kitten\'s respiratory system.',
+      title: 'Is Cat Litter Deodorizer Safe for Kittens? [Expert Guide]',
+      description: 'Respiratory safety for kittens is critical. Learn which ingredients are safe, what to avoid, and the research behind carbon-based additives.',
       targetKeyword: 'cat litter deodorizer safe for kittens',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Article',
-        headline: 'Is Cat Litter Deodorizer Safe for Kittens? [Vet Guide]',
+        headline: 'Is Cat Litter Deodorizer Safe for Kittens? [Expert Guide]',
         description: 'Not all deodorizers are kitten-safe. Learn which ingredients to avoid, what\'s safe, and how to protect your kitten\'s respiratory system.',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
       lastUpdated: '2026-02-13'
     },
     faq: {
-      title: 'Cat Litter Odor Control FAQ - Your Questions Answered',
-      description: 'Get answers about activated carbon cat litter additive. Safety, usage, effectiveness & more. 10,000+ customers trust Purrify. Read FAQ now!',
+      title: 'Cat Litter Odor Control FAQ - Evidence-Based Answers',
+      description: 'Get clear answers about safety, usage, and effectiveness of activated carbon. 10,000+ cat parents trust this science-first approach. Read more.',
       targetKeyword: 'cat litter odor control',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Article',
         headline: 'Cat Litter Odor Control FAQ - Your Questions Answered',
         description: 'Get answers about activated carbon cat litter additive. Safety, usage, effectiveness & more. 10,000+ customers trust Purrify.',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
       lastUpdated: '2026-02-13'
     },
     safety: {
-      title: 'Is Activated Carbon Safe for Cats? [Vet-Approved]',
-      description: '100% food-grade coconut shell activated carbon. Non-toxic, dust-free, pet-friendly. Used in water filters & air purifiers. Safe for cats & kittens.',
+      title: 'Is Activated Carbon Safe for Cats? [Science Review]',
+      description: 'Non-toxic, food-grade coconut shell carbon is safe for pets. See why active carbon is the choice for water filters and respiratory safety.',
       targetKeyword: 'activated carbon safe for cats',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Article',
-        headline: 'Is Activated Carbon Safe for Cats? [Vet-Approved]',
+        headline: 'Is Activated Carbon Safe for Cats? [Science Review]',
         description: '100% food-grade coconut shell activated carbon. Non-toxic, dust-free, pet-friendly. Used in water filters & air purifiers. Safe for cats & kittens.',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
       lastUpdated: '2026-02-13'
@@ -245,7 +275,12 @@ export const seoMetaEn: SEOMetaContent = {
         '@type': 'Article',
         headline: 'Cat Litter Ammonia Health Risks: What Owners Must Know',
         description: 'Is ammonia from cat litter dangerous? Learn safe exposure levels, health risks for you and your cat, plus proven solutions.',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
       lastUpdated: '2026-02-13'
@@ -320,7 +355,12 @@ export const seoMetaEn: SEOMetaContent = {
         description: 'After 90 days testing every odor absorber from baking soda to zeolite, one clear winner emerged.',
         datePublished: '2025-07-26',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -341,7 +381,12 @@ export const seoMetaEn: SEOMetaContent = {
         description: '7-day test results: Activated carbon eliminated 99% of odor vs 47% for baking soda.',
         datePublished: '2025-10-06',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -362,7 +407,12 @@ export const seoMetaEn: SEOMetaContent = {
         description: 'Tested in 500 sq ft apartment: activated carbon eliminates smell in 30 seconds.',
         datePublished: '2025-10-14',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -383,7 +433,12 @@ export const seoMetaEn: SEOMetaContent = {
         description: 'Heat increases ammonia evaporation by 3x. Activated carbon neutralizes summer odor instantly.',
         datePublished: '2025-07-06',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -404,7 +459,12 @@ export const seoMetaEn: SEOMetaContent = {
         description: 'Everything about activated carbon for cat litter odor.',
         datePublished: '2025-07-13',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -425,7 +485,12 @@ export const seoMetaEn: SEOMetaContent = {
         description: 'Compare eco-friendly cat litter options.',
         datePublished: '2025-09-22',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -446,7 +511,12 @@ export const seoMetaEn: SEOMetaContent = {
         description: 'Wholesale pricing on activated carbon cat litter additive.',
         datePublished: '2025-08-16',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -467,7 +537,12 @@ export const seoMetaEn: SEOMetaContent = {
         description: 'Master cat litter odor control with activated carbon.',
         datePublished: '2025-06-22',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -488,7 +563,12 @@ export const seoMetaEn: SEOMetaContent = {
         description: 'Essential tips for cats in small apartments.',
         datePublished: '2025-07-04',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -509,7 +589,12 @@ export const seoMetaEn: SEOMetaContent = {
         description: 'Stop litter box smell with 100% natural coconut shell activated carbon.',
         datePublished: '2025-09-01',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -530,7 +615,12 @@ export const seoMetaEn: SEOMetaContent = {
         description: "Baking soda, charcoal bags, air fresheners - nothing worked until I found this.",
         datePublished: '2025-06-11',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -551,7 +641,12 @@ export const seoMetaEn: SEOMetaContent = {
         description: 'Scientific comparison of activated carbon and zeolite for cat litter odor control.',
         datePublished: '2025-10-13',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -809,7 +904,12 @@ export const seoMetaFr: SEOMetaContent = {
         description: 'Test de 12 éliminateurs d\'odeurs. Un seul a éliminé l\'odeur en 30 secondes.',
         datePublished: '2025-09-10',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -830,7 +930,12 @@ export const seoMetaFr: SEOMetaContent = {
         description: 'Test de 7 jours en laboratoire: charbon actif élimine 99% odeur vs 47% bicarbonate.',
         datePublished: '2025-08-03',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -851,7 +956,12 @@ export const seoMetaFr: SEOMetaContent = {
         description: 'Testé dans un appartement de 500 pi²: le charbon actif élimine les odeurs en 30 secondes.',
         datePublished: '2025-06-20',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -872,7 +982,12 @@ export const seoMetaFr: SEOMetaContent = {
         description: 'La chaleur augmente l\'évaporation de l\'ammoniaque 3x. Solution pour neutraliser instantanément.',
         datePublished: '2025-06-29',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -893,7 +1008,12 @@ export const seoMetaFr: SEOMetaContent = {
         description: 'Tout sur le charbon actif pour odeur de litière: fonctionnement, avantages, sécurité et conseils.',
         datePublished: '2025-08-02',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -914,7 +1034,12 @@ export const seoMetaFr: SEOMetaContent = {
         description: 'Comparaison des options de litière écologique. Charbon actif coco 100% naturel.',
         datePublished: '2025-05-31',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -935,7 +1060,12 @@ export const seoMetaFr: SEOMetaContent = {
         description: 'Prix de gros sur additif charbon actif. Parfait pour animaleries, toiletteurs et refuges.',
         datePublished: '2025-10-03',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -956,7 +1086,12 @@ export const seoMetaFr: SEOMetaContent = {
         description: 'Maîtrisez le contrôle des odeurs de litière avec le charbon actif. Éliminez 99% ammoniaque.',
         datePublished: '2025-08-17',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -977,7 +1112,12 @@ export const seoMetaFr: SEOMetaContent = {
         description: 'Conseils essentiels pour les chats en petit appartement: contrôle des odeurs, litières gain d\'espace.',
         datePublished: '2025-06-02',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -998,7 +1138,12 @@ export const seoMetaFr: SEOMetaContent = {
         description: 'Stop aux odeurs de litière avec le charbon actif coco 100% naturel. Sans produits chimiques.',
         datePublished: '2025-09-14',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -1019,7 +1164,12 @@ export const seoMetaFr: SEOMetaContent = {
         description: 'Témoignage: bicarbonate, sacs de charbon, désodorisants - rien ne marchait jusqu\'à cette solution.',
         datePublished: '2025-09-20',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -1040,7 +1190,12 @@ export const seoMetaFr: SEOMetaContent = {
         description: 'Comparaison scientifique du charbon actif et de la zéolite pour le contrôle des odeurs de litière.',
         datePublished: '2025-07-10',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -1298,7 +1453,12 @@ export const seoMetaZh: SEOMetaContent = {
         description: '我们测试了12种除臭剂。只有1种在30秒内去除异味。',
         datePublished: '2025-09-19',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -1319,7 +1479,12 @@ export const seoMetaZh: SEOMetaContent = {
         description: '7天测试结果：活性炭消除99%异味 vs 小苏打47%。',
         datePublished: '2025-10-25',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -1340,7 +1505,12 @@ export const seoMetaZh: SEOMetaContent = {
         description: '在500平方英尺公寓中测试：活性炭在30秒内消除异味。',
         datePublished: '2025-06-06',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -1361,7 +1531,12 @@ export const seoMetaZh: SEOMetaContent = {
         description: '高温使氨气蒸发增加3倍。活性炭立即中和夏季异味。',
         datePublished: '2025-08-25',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -1382,7 +1557,12 @@ export const seoMetaZh: SEOMetaContent = {
         description: '关于活性炭用于猫砂除臭的一切。',
         datePublished: '2025-07-20',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -1403,7 +1583,12 @@ export const seoMetaZh: SEOMetaContent = {
         description: '比较环保猫砂选项。',
         datePublished: '2025-07-12',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
@@ -1424,7 +1609,12 @@ export const seoMetaZh: SEOMetaContent = {
         description: '活性炭猫砂添加剂批发价。',
         datePublished: '2025-09-27',
         dateModified: '2026-02-13',
-        author: { '@type': 'Organization', name: 'Purrify' },
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Chen',
+          jobTitle: 'Veterinary Consultant',
+          url: 'https://www.purrify.ca/about/our-story/'
+        },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',

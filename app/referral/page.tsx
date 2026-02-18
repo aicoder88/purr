@@ -7,8 +7,34 @@ import { SITE_NAME } from '@/lib/constants';
 export const metadata: Metadata = {
   title: `Referral Program - Give $5, Get $5 | ${SITE_NAME}`,
   description: 'Share Purrify with friends and earn rewards. Give $5 off to your friends and get $5 credit when they make their first purchase.',
+  keywords: [
+    'purrify referral',
+    'referral program',
+    'give 5 get 5',
+    'cat litter referral',
+    'pet product rewards',
+    'share and earn',
+  ],
   alternates: {
     canonical: 'https://www.purrify.ca/referral/',
+    languages: {
+      'en-CA': 'https://www.purrify.ca/referral/',
+      'fr-CA': 'https://www.purrify.ca/fr/referral/',
+      'zh-CN': 'https://www.purrify.ca/zh/referral/',
+      'es-US': 'https://www.purrify.ca/es/referral/',
+      'en-US': 'https://www.purrify.ca/referral/',
+      'x-default': 'https://www.purrify.ca/referral/',
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   openGraph: {
     type: 'website',

@@ -1,6 +1,157 @@
 /** @type {import('next').Redirect[]} */
 const REDIRECTS = [
 
+  // --- DOMAIN & PROTOCOL NORMALIZATION ---
+  // Redirect non-www to www
+  {
+    source: "/:path*",
+    has: [{ type: "host", value: "purrify.ca" }],
+    destination: "https://www.purrify.ca/:path*",
+    permanent: true
+  },
+  // Redirect HTTP to HTTPS
+  {
+    source: "/:path*",
+    has: [{ type: "header", key: "x-forwarded-proto", value: "http" }],
+    destination: "https://www.purrify.ca/:path*",
+    permanent: true
+  },
+
+  // --- TRAILING SLASH NORMALIZATION ---
+  // Redirect paths without trailing slash to with trailing slash (for consistency with trailingSlash: true)
+  // These fix specific paths Google is crawling both versions of
+  {
+    source: "/faq",
+    destination: "/faq/",
+    permanent: true
+  },
+  {
+    source: "/reviews",
+    destination: "/reviews/",
+    permanent: true
+  },
+  {
+    source: "/terms",
+    destination: "/terms/",
+    permanent: true
+  },
+  {
+    source: "/tos",
+    destination: "/tos/",
+    permanent: true
+  },
+  {
+    source: "/privacy",
+    destination: "/privacy/",
+    permanent: true
+  },
+  {
+    source: "/privacy-policy",
+    destination: "/privacy-policy/",
+    permanent: true
+  },
+  {
+    source: "/contact",
+    destination: "/contact/",
+    permanent: true
+  },
+  {
+    source: "/stores",
+    destination: "/stores/",
+    permanent: true
+  },
+  {
+    source: "/stockists",
+    destination: "/stockists/",
+    permanent: true
+  },
+  {
+    source: "/products",
+    destination: "/products/",
+    permanent: true
+  },
+  {
+    source: "/blog",
+    destination: "/blog/",
+    permanent: true
+  },
+  {
+    source: "/case-studies",
+    destination: "/case-studies/",
+    permanent: true
+  },
+  {
+    source: "/invest",
+    destination: "/invest/",
+    permanent: true
+  },
+  {
+    source: "/affiliate",
+    destination: "/affiliate/",
+    permanent: true
+  },
+  {
+    source: "/referral",
+    destination: "/referral/",
+    permanent: true
+  },
+  {
+    source: "/support",
+    destination: "/support/",
+    permanent: true
+  },
+  {
+    source: "/free",
+    destination: "/free/",
+    permanent: true
+  },
+  {
+    source: "/learn",
+    destination: "/learn/",
+    permanent: true
+  },
+  {
+    source: "/locations",
+    destination: "/locations/",
+    permanent: true
+  },
+  // Localized versions
+  {
+    source: "/fr/faq",
+    destination: "/fr/faq/",
+    permanent: true
+  },
+  {
+    source: "/fr/reviews",
+    destination: "/fr/reviews/",
+    permanent: true
+  },
+  {
+    source: "/fr/terms",
+    destination: "/fr/terms/",
+    permanent: true
+  },
+  {
+    source: "/fr/contact",
+    destination: "/fr/contact/",
+    permanent: true
+  },
+  {
+    source: "/fr/stores",
+    destination: "/fr/stores/",
+    permanent: true
+  },
+  {
+    source: "/fr/products",
+    destination: "/fr/products/",
+    permanent: true
+  },
+  {
+    source: "/fr/blog",
+    destination: "/fr/blog/",
+    permanent: true
+  },
+
 
   // --- SUBDOMAIN & LOCALE FIXES ---
   // Fix double mentions of locale in path for subdomains
@@ -61,12 +212,17 @@ const REDIRECTS = [
   // --- SPECIFIC FIXES ---
   {
     source: "/_ignore_locations/:path*",
-    destination: "/stores",
+    destination: "/stores/",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)/blog/how-to-use-cat-litter-deodorizer",
-    destination: "/:locale/learn/how-to-use-deodorizer",
+    source: "/:locale(fr)/blog/how-to-use-cat-litter-deodorizer",
+    destination: "/:locale/learn/how-to-use-deodorizer/",
+    permanent: true
+  },
+  {
+    source: "/:locale(zh|es)/blog/how-to-use-cat-litter-deodorizer",
+    destination: "/learn/how-to-use-deodorizer/",
     permanent: true
   },
 
@@ -167,8 +323,13 @@ const REDIRECTS = [
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/revelstoke",
-    destination: "/:locale/stores",
+    source: "/:locale(fr)/locations/revelstoke",
+    destination: "/:locale/stores/",
+    permanent: true
+  },
+  {
+    source: "/:locale(zh|es)/locations/revelstoke",
+    destination: "/stores/",
     permanent: true
   },
   {
@@ -373,6 +534,17 @@ const REDIRECTS = [
     destination: "https://www.purrify.ca/:path*",
     permanent: true,
     locale: false
+  },
+  // Catchall for removed locales
+  {
+    source: "/zh/:path*",
+    destination: "/:path*",
+    permanent: true
+  },
+  {
+    source: "/es/:path*",
+    destination: "/:path*",
+    permanent: true
   },
   {
     source: "/:path*",
@@ -1254,10 +1426,16 @@ const REDIRECTS = [
     destination: "/learn/how-to-use-deodorizer",
     permanent: true
   },
-  // All other blog posts redirect to their canonical /en/blog path
+  // Redirect /en/blog/* to canonical /blog/* (English is default, no locale prefix needed)
   {
-    source: "/blog/:slug*",
-    destination: "/en/blog/:slug*",
+    source: "/en/blog/:slug*",
+    destination: "/blog/:slug*",
+    permanent: true
+  },
+  // Trailing slash normalization for blog posts (without /en/ prefix)
+  {
+    source: "/blog/:slug",
+    destination: "/blog/:slug/",
     permanent: true
   },
   {
@@ -1456,18 +1634,33 @@ const REDIRECTS = [
     permanent: true
   },
   {
-    source: "/:locale(fr|es|zh)/products/:path+/",
+    source: "/:locale(fr)/products/:path+/",
     destination: "/:locale/products/:path*",
     permanent: true
   },
   {
-    source: "/:locale(fr|es|zh)/about",
+    source: "/:locale(zh|es)/products/:path+/",
+    destination: "/products/:path*",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr)/about",
     destination: "/:locale/about/our-story",
     permanent: true
   },
   {
-    source: "/:locale(fr|es|zh)/contact-us",
+    source: "/:locale(zh|es)/about",
+    destination: "/about/our-story",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr)/contact-us",
     destination: "/:locale/contact",
+    permanent: true
+  },
+  {
+    source: "/:locale(zh|es)/contact-us",
+    destination: "/contact",
     permanent: true
   },
   {
@@ -1475,6 +1668,108 @@ const REDIRECTS = [
     destination: "/",
     permanent: false
   },
+  // ============================================================
+  // CATCH-ALL TRAILING SLASH NORMALIZATION (Must be near end)
+  // These fix the duplicate URL issues Google is crawling
+  // ============================================================
+  // Learn pages
+  {
+    source: "/learn/:path",
+    destination: "/learn/:path/",
+    permanent: true
+  },
+  // French learn pages
+  {
+    source: "/fr/learn/:path",
+    destination: "/fr/learn/:path/",
+    permanent: true
+  },
+
+  // Solutions pages (legacy redirects handle most, but catch stragglers)
+  {
+    source: "/solutions/:path",
+    destination: "/solutions/:path/",
+    permanent: true
+  },
+  // French solutions pages
+  {
+    source: "/fr/solutions/:path",
+    destination: "/fr/solutions/:path/",
+    permanent: true
+  },
+
+  // Product pages
+  {
+    source: "/products/:path",
+    destination: "/products/:path/",
+    permanent: true
+  },
+  // French product pages
+  {
+    source: "/fr/products/:path",
+    destination: "/fr/products/:path/",
+    permanent: true
+  },
+
+  // Location pages
+  {
+    source: "/locations/:path",
+    destination: "/locations/:path/",
+    permanent: true
+  },
+
+  // French location pages
+  {
+    source: "/fr/locations/:path",
+    destination: "/fr/locations/:path/",
+    permanent: true
+  },
+  // Support pages
+  {
+    source: "/support/:path",
+    destination: "/support/:path/",
+    permanent: true
+  },
+  // French support pages
+  {
+    source: "/fr/support/:path",
+    destination: "/fr/support/:path/",
+    permanent: true
+  },
+  // About pages
+  {
+    source: "/about/:path",
+    destination: "/about/:path/",
+    permanent: true
+  },
+  // French about pages
+  {
+    source: "/fr/about/:path",
+    destination: "/fr/about/:path/",
+    permanent: true
+  },
+  // Tools pages
+  {
+    source: "/tools/:path",
+    destination: "/tools/:path/",
+    permanent: true
+  },
+  // Customers pages
+  {
+    source: "/customers/:path",
+    destination: "/customers/:path/",
+    permanent: true
+  },
+  // French customers pages
+  {
+    source: "/fr/customers/:path",
+    destination: "/fr/customers/:path/",
+    permanent: true
+  },
+
+  // ============================================================
+  // CATCH-ALL REDIRECTS (Must be last)
+  // ============================================================
   {
     source: "/test",
     destination: "/",

@@ -5,7 +5,6 @@ import { LazyLoad } from '@/components/performance/LazyLoad';
 import { ErrorBoundary } from '@/components/ui/error-boundary';
 import { ScrollAnchor } from '@/components/ui/scroll-anchor';
 import { CurrencyProvider } from '@/lib/currency-context';
-import { useABTestWithTracking, AB_TEST_SLUGS } from '@/lib/ab-testing';
 import type { Currency } from '@/lib/geo/currency-detector';
 
 // Section skeleton for loading states
@@ -40,16 +39,11 @@ interface HomepageClientProps {
 }
 
 export function HomepageClient({ currency }: HomepageClientProps) {
-  // A/B Test: Social Proof Position (badges moved to bottom of page)
-  const { trackConversion: trackSocialProofConversion } = useABTestWithTracking(
-    AB_TEST_SLUGS.SOCIAL_PROOF_POSITION
-  );
-
   return (
     <CurrencyProvider detectedCurrency={currency}>
-      {/* Enhanced Product Comparison - Track conversion when user scrolls here */}
+      {/* Enhanced Product Comparison */}
       <div className="cv-auto cis-960">
-        <ScrollAnchor id="products" onVisible={trackSocialProofConversion} />
+        <ScrollAnchor id="products" />
         <ErrorBoundary>
           <LazyLoad placeholder={sectionSkeleton('h-96', 'rounded-lg')}>
             <EnhancedProductComparison />

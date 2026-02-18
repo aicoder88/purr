@@ -11,6 +11,17 @@ export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
+// Map locale to OpenGraph locale format
+function getOgLocale(locale: string): string {
+  const localeMap: Record<string, string> = {
+    'en': 'en_CA',
+    'fr': 'fr_CA',
+    'zh': 'zh_CN',
+    'es': 'es_US',
+  };
+  return localeMap[locale] || 'en_CA';
+}
+
 export async function generateMetadata({ params }: LocalizedProductsPageProps): Promise<Metadata> {
   const { locale } = await params;
 
@@ -25,6 +36,31 @@ export async function generateMetadata({ params }: LocalizedProductsPageProps): 
   return {
     title: 'Purrify Products - Activated Carbon Litter Additive',
     description: '★ 4.8 Rating | FREE Trial Available | Shop Purrify activated carbon litter additives. Eliminates odors instantly. Ships to USA & Canada. 30-day guarantee.',
+    keywords: ['Purrify products', 'cat litter additive', 'activated carbon', 'odor control', 'trial size', 'family pack'],
+    openGraph: {
+      type: 'website',
+      url: localizedPath,
+      siteName: 'Purrify',
+      title: 'Purrify Products - Activated Carbon Litter Additive',
+      description: '★ 4.8 Rating | FREE Trial Available | Shop Purrify activated carbon litter additives. Eliminates odors instantly.',
+      locale: getOgLocale(locale),
+      images: [
+        {
+          url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+          width: 1200,
+          height: 800,
+          alt: 'Purrify Products',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@purrifyhq',
+      creator: '@purrifyhq',
+      title: 'Purrify Products - Activated Carbon Litter Additive',
+      description: '★ 4.8 Rating | FREE Trial Available | Shop Purrify activated carbon litter additives. Eliminates odors instantly.',
+      images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
+    },
     alternates: {
       canonical: localizedPath,
       languages: {
@@ -34,6 +70,16 @@ export async function generateMetadata({ params }: LocalizedProductsPageProps): 
         'es-US': 'https://www.purrify.ca/es/products/',
         'en-US': 'https://www.purrify.ca/products/',
         'x-default': 'https://www.purrify.ca/products/',
+      },
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
       },
     },
   };

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Container } from '@/components/ui/container';
 import ThankYouClient from './ThankYouClient';
 import Stripe from 'stripe';
+import { SITE_NAME } from '@/lib/constants';
 
 const getStripeInstance = () => {
   const secretKey = process.env.STRIPE_SECRET_KEY;
@@ -89,20 +90,47 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     ? `Thank You for Your Order, ${firstName}! - Purrify`
     : 'Thank You for Your Order! - Purrify';
 
+  const description = 'Your Purrify order has been confirmed. Get ready to experience an odor-free home!';
+
   return {
     title,
-    description: 'Your Purrify order has been confirmed. Get ready to experience an odor-free home!',
+    description,
+    keywords: ['Purrify order confirmation', 'thank you', 'order complete'],
     robots: {
       index: false,
       follow: false,
     },
     alternates: {
-      canonical: 'https://www.purrify.ca/thank-you/'
+      canonical: 'https://www.purrify.ca/thank-you/',
+      languages: {
+        'en-CA': 'https://www.purrify.ca/thank-you/',
+        'fr-CA': 'https://www.purrify.ca/fr/thank-you/',
+        'en-US': 'https://www.purrify.ca/thank-you/',
+        'x-default': 'https://www.purrify.ca/thank-you/',
+      },
     },
     openGraph: {
       url: 'https://www.purrify.ca/thank-you/',
+      siteName: SITE_NAME,
+      locale: 'en_CA',
       title,
-      description: 'Your Purrify order has been confirmed. Get ready to experience an odor-free home!',
+      description,
+      images: [
+        {
+          url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+          width: 1200,
+          height: 630,
+          alt: 'Purrify',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@purrifyhq',
+      creator: '@purrifyhq',
+      title,
+      description,
+      images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
     },
   };
 }

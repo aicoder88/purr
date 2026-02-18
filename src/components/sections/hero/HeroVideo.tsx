@@ -1,13 +1,26 @@
+'use client';
+
 import { useVideoPlayer } from './useVideoPlayer';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 export const HeroVideo = () => {
   const { videoRef, mediaContainerRef, state, replay, toggleMute, handleVolumeChange } = useVideoPlayer([]);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Determine video sources based on existing assets (placeholder for new exports)
-  // Note: These will be updated once the user provides the new 1920x800 and 1080x1350 files
+  // Video sources
   const desktopSrc = "/videos/purrify-activated-carbon-litter-additive-demo.mp4";
-  const mobileSrc = "/videos/purrify-activated-carbon-litter-additive-demo.mp4"; // User indicated updated video is in same spot
+  const mobileSrc = "/videos/purrify-activated-carbon-litter-additive-demo.mp4";
+
+  // Detect mobile for optimized loading
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768 || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <div className="relative group flex flex-col items-center w-full">
@@ -67,17 +80,21 @@ export const HeroVideo = () => {
 
         {/* Media Content */}
         <div ref={mediaContainerRef} className="relative w-full h-full">
+          {/* Poster Image - optimized loading strategy */}
           {state.showPoster && (
             <Image
               src="/images/purrify-demo-poster.webp"
               alt="How to use Purrify: Pouring activated carbon litter additive onto litter instantly neutralizing odors."
               fill
               className="object-cover object-top"
-              sizes="(max-width: 480px) 100vw, 800px"
-              priority
+              sizes="(max-width: 768px) 100vw, 800px"
+              priority={!isMobile} // Priority on desktop, lazy on mobile
+              loading={isMobile ? 'lazy' : 'eager'}
+              quality={isMobile ? 75 : 85} // Lower quality on mobile for faster load
             />
           )}
 
+          {/* Video - only load when in viewport */}
           {state.shouldLoadVideo && (
             <video
               ref={videoRef}
@@ -85,7 +102,8 @@ export const HeroVideo = () => {
               autoPlay
               muted={state.isMuted}
               playsInline
-              preload="metadata"
+              preload={isMobile ? 'none' : 'metadata'} // Don't preload on mobile until visible
+              poster="/images/purrify-demo-poster.webp"
               aria-label="How to use Purrify: Pouring activated carbon litter additive onto litter to instantly neutralize odors."
               role="img"
               tabIndex={-1}

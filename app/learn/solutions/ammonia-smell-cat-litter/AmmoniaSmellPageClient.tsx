@@ -11,10 +11,10 @@ export default function AmmoniaSmellPageClient() {
   const canonicalUrl = 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter/';
 
   // Ammonia smell solution images
-  const heroImage = '/images/ammonia-hero.webp';
-  const sectionImage1 = '/images/ammonia-science.webp';
-  const sectionImage2 = '/images/ammonia-fresh-home.webp';
-  const solutionImage = '/images/ammonia-happy-cat.webp';
+  const heroImage = '/images/ammonia-hero-ghibli.webp';
+  const sectionImage1 = '/images/ammonia-science.webp'; // Keep the original — it's great
+  const sectionImage2 = '/images/ammonia-fresh-home-ghibli.webp';
+  const solutionImage = '/images/ammonia-happy-cat-ghibli.webp';
 
   // HowTo steps for fixing ammonia smell
   const howToSteps = [
@@ -67,156 +67,161 @@ export default function AmmoniaSmellPageClient() {
 
   return (
     <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
-      <section className="py-20 px-4">
+
+      {/* ── SECTION 1: Hook — empathy-first headline ── */}
+      <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
-            Stop That Sharp Ammonia Smell!
+            That Eye-Watering Ammonia Smell? Here&apos;s Exactly Why It Happens
           </h1>
-          <p className="text-xl text-gray-700 dark:text-gray-200 mb-8">
-            Finally! A solution that destroys ammonia smell instead of masking it. Your nose (and your guests) will thank you.
+          <p className="text-xl text-gray-700 dark:text-gray-200 mb-4 max-w-2xl mx-auto">
+            Your cat isn&apos;t doing anything wrong — it&apos;s pure chemistry. And once you understand it,
+            the fix becomes obvious.
           </p>
-
-          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 max-w-2xl mx-auto">
-            <h2 className="text-2xl font-heading font-bold mb-4 text-electric-indigo dark:text-electric-indigo-400">Powerful Ammonia Destroyer</h2>
-            <p className="text-lg mb-6 text-gray-700 dark:text-gray-200">This isn&apos;t your typical air freshener. Purrify uses the same activated carbon grade found in military gas masks to destroy ammonia molecules instantly.</p>
-
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 mb-6 text-left">
-              <h3 className="font-heading text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">Why Ammonia Smell Develops</h3>
-              <p className="text-gray-700 dark:text-gray-200 mb-3">
-                Ammonia smell in cat litter boxes occurs when bacteria break down urea in cat urine. This natural process
-                produces ammonia gas, which has that distinctive sharp, pungent odor that makes you want to hold your breath.
-              </p>
-              <p className="text-gray-700 dark:text-gray-200">
-                Traditional clay litters can trap some odors, but they can&apos;t neutralize ammonia at the molecular level.
-                That&apos;s where activated carbon technology makes the difference.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-4 mb-8">
-              <div className="text-center">
-                <div className="text-3xl mb-2">⚡</div>
-                <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100">Instant Results</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Works immediately upon application</p>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl mb-2">🌿</div>
-                <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100">100% Natural</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Safe for cats and humans</p>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl mb-2">💰</div>
-                <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100">Cost Effective</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Small amount goes a long way</p>
-              </div>
-            </div>
-
-            <Link
-              href="/products/trial-size"
-              className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-3 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
-            >
-              Get Purrify Now - Stop The Stink
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* Hero Image */}
-      <section className="py-8 px-4">
-        <div className="max-w-5xl mx-auto">
+      {/* ── SECTION 2: Hero Image ── */}
+      <section className="py-4 px-4">
+        <div className="max-w-4xl mx-auto">
           <div className="relative rounded-3xl overflow-hidden shadow-2xl">
             <Image
               src={heroImage}
-              alt="Person bothered by strong ammonia smell from cat litter box"
+              alt="Curious cat sitting beside a litter box with ammonia wisps rising like little spirits"
               width={1200}
               height={675}
-              className="w-full h-auto"
+              className="w-full max-h-[480px] object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-              <div className="p-8 text-white dark:text-gray-100">
-                <h2 className="font-heading text-3xl font-bold mb-2">No More Holding Your Breath!</h2>
-                <p className="text-xl opacity-90">Eliminate ammonia smell at the molecular level</p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
+      {/* ── SECTION 3: Educational Explainer — WHY ammonia forms ── */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-heading font-bold text-center mb-12 text-gray-900 dark:text-gray-100">How It Works</h2>
+          <h2 className="text-3xl font-heading font-bold text-center mb-10 text-gray-900 dark:text-gray-100">
+            Why Does Cat Litter Smell Like Ammonia?
+          </h2>
 
-          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 mb-12 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:scale-105 transition-all duration-300">
-            <h3 className="text-2xl font-heading font-semibold mb-6 text-gray-900 dark:text-gray-100">The Science Behind Ammonia Elimination</h3>
+          <div className="grid md:grid-cols-2 gap-8 mb-10">
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20">
+              <div className="text-3xl mb-3">🐱</div>
+              <h3 className="font-heading text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">The Chemistry</h3>
+              <p className="text-gray-700 dark:text-gray-200">
+                Cat urine contains <strong>urea</strong> — a nitrogen compound. When bacteria in the litter
+                break down urea, they produce <strong>ammonia gas (NH₃)</strong>. That sharp, eye-watering
+                smell is ammonia escaping into the air.
+              </p>
+            </div>
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20">
+              <div className="text-3xl mb-3">⏱️</div>
+              <h3 className="font-heading text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">Why It Gets Worse Over Time</h3>
+              <p className="text-gray-700 dark:text-gray-200">
+                The process starts within <strong>2–4 hours</strong> of urination. The longer waste sits,
+                the more bacteria multiply, and the more ammonia is produced. A litter box that smelled
+                fine yesterday can reek by tomorrow.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 rounded-xl p-6 mb-8">
+            <h3 className="font-heading text-lg font-semibold mb-3 text-amber-900 dark:text-amber-200">
+              🧪 Why Baking Soda Doesn&apos;t Work
+            </h3>
+            <p className="text-amber-800 dark:text-amber-300">
+              Baking soda is <strong>alkaline</strong>. Ammonia is also <strong>alkaline</strong>. Alkaline
+              substances don&apos;t neutralize each other — they&apos;re on the same side of the pH scale.
+              Sprinkling baking soda in the litter box is like trying to put out a fire with more fire.
+              It masks the smell briefly, but the ammonia is still there.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 4: AI Quotable Block — the "ah-ha" moment ── */}
+      <section className="py-4 px-4">
+        <div className="max-w-4xl mx-auto">
+          <AIQuotableBlock
+            fact="Baking soda cannot neutralize ammonia because both are alkaline substances. Activated carbon works through adsorption—physically trapping ammonia molecules in microscopic pores—which is why it's 10x more effective than baking soda."
+            explanation="One gram of activated carbon has a surface area of 1,000-2,000 square meters (roughly 4 tennis courts), providing massive capacity for trapping odor molecules."
+            icon="science"
+            variant="highlight"
+          />
+        </div>
+      </section>
+
+      {/* ── SECTION 5: The Science — How activated carbon works ── */}
+      <section className="py-16 px-4">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-heading font-bold text-center mb-12 text-gray-900 dark:text-gray-100">
+            What Actually Eliminates Ammonia
+          </h2>
+
+          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 mb-10 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20">
+            <h3 className="text-2xl font-heading font-semibold mb-6 text-gray-900 dark:text-gray-100">
+              The Science of Adsorption
+            </h3>
             <p className="text-gray-700 dark:text-gray-200 mb-4">
-              Activated carbon works through a process called adsorption (not absorption). The carbon has millions of
-              microscopic pores that create an enormous surface area - just one gram has the surface area of a football field!
+              Activated carbon works through a process called <strong>adsorption</strong> (not absorption).
+              The carbon has millions of microscopic pores that create an enormous surface area — just one
+              gram has the surface area of a football field!
             </p>
             <p className="text-gray-700 dark:text-gray-200 mb-4">
-              When ammonia molecules come into contact with activated carbon, they become trapped in these pores through
-              chemical attraction. Unlike air fresheners that just mask odors, this process actually removes the ammonia
-              from the air permanently.
+              When ammonia molecules come into contact with activated carbon, they become trapped in these
+              pores through chemical attraction. Unlike air fresheners that just mask odors, this process
+              actually <strong>removes the ammonia from the air permanently</strong>.
             </p>
             <p className="text-gray-700 dark:text-gray-200">
-              This is why Purrify works so effectively - it doesn&apos;t just cover up the smell, it eliminates the source
-              of the odor at the molecular level.
+              This is the same technology used in water filters, gas masks, and industrial air purifiers —
+              proven at the molecular level.
             </p>
           </div>
 
-          {/* Science Image */}
-          <div className="mb-12">
+          {/* Science Image — KEEP ORIGINAL */}
+          <div className="mb-10">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <Image
                 src={sectionImage1}
                 alt="Molecular science of activated carbon trapping ammonia molecules"
                 width={1200}
                 height={675}
-                className="w-full h-auto"
+                className="w-full max-h-[520px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8 text-white dark:text-gray-100">
-                  <h3 className="font-heading text-2xl font-bold mb-2">Military-Grade Carbon Technology</h3>
-                  <p className="text-lg opacity-90">Same technology used in water filters and gas masks</p>
+                  <h3 className="font-heading text-2xl font-bold mb-2">Activated Carbon Pore Network</h3>
+                  <p className="text-lg opacity-90">Ammonia molecules get permanently trapped — not masked</p>
                 </div>
               </div>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="bg-gradient-to-br from-electric-indigo to-deep-coral w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-heading font-bold text-white dark:text-gray-100">1</span>
-              </div>
-              <h3 className="text-xl font-heading font-bold mb-2 text-gray-900 dark:text-gray-100">Sprinkle</h3>
-              <p className="text-gray-700 dark:text-gray-200">Add Purrify to your existing litter - works with any brand</p>
-            </div>
-            <div className="text-center">
-              <div className="bg-gradient-to-br from-electric-indigo to-deep-coral w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-heading font-bold text-white dark:text-gray-100">2</span>
-              </div>
-              <h3 className="text-xl font-heading font-bold mb-2 text-gray-900 dark:text-gray-100">Activate</h3>
-              <p className="text-gray-700 dark:text-gray-200">Activated carbon absorbs ammonia molecules at the source</p>
-            </div>
-            <div className="text-center">
-              <div className="bg-gradient-to-br from-electric-indigo to-deep-coral w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-heading font-bold text-white dark:text-gray-100">3</span>
-              </div>
-              <h3 className="text-xl font-heading font-bold mb-2 text-gray-900 dark:text-gray-100">Eliminate</h3>
-              <p className="text-gray-700 dark:text-gray-200">Odors are permanently trapped - no more ammonia smell</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Clean Home Image */}
+      {/* ── SECTION 6: HowTo Steps ── */}
+      <section className="py-12 px-4 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-4xl mx-auto">
+          <HowToSection
+            title="How to Stop Cat Litter Ammonia Smell"
+            description="Follow these 5 steps to eliminate ammonia odor at the source and keep your home fresh."
+            steps={howToSteps}
+            totalTime="PT15M"
+            timeDisplay="15 minutes for setup"
+            url={canonicalUrl}
+          />
+        </div>
+      </section>
+
+      {/* ── SECTION 7: Fresh Home Image ── */}
       <section className="py-8 px-4">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <div className="relative rounded-3xl overflow-hidden shadow-2xl">
             <Image
               src={sectionImage2}
-              alt="Clean, fresh-smelling home environment without ammonia odor"
+              alt="Magical sunlit living room with a content cat and golden sparkles in the air"
               width={1200}
               height={675}
-              className="w-full h-auto"
+              className="w-full max-h-[480px] object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
               <div className="p-8 text-white dark:text-gray-100">
@@ -228,22 +233,31 @@ export default function AmmoniaSmellPageClient() {
         </div>
       </section>
 
+      {/* ── SECTION 8: PRODUCT REVEAL — now they're ready ── */}
       <section className="py-16 px-4 bg-white dark:bg-gray-800">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">Ready to Solve Your Ammonia Smell Problem?</h2>
-            <p className="text-xl mb-8 text-gray-700 dark:text-gray-200">Join 1,000+ satisfied cat owners who&apos;ve eliminated litter box odors</p>
+            <h2 className="text-3xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">
+              Ready to Solve Your Ammonia Smell Problem?
+            </h2>
+            <p className="text-xl mb-2 text-gray-700 dark:text-gray-200">
+              Purrify uses the same activated carbon grade found in military gas masks — the most effective
+              ammonia-trapping material available.
+            </p>
+            <p className="text-lg text-gray-600 dark:text-gray-300">
+              Join 1,000+ satisfied cat owners who&apos;ve eliminated litter box odors for good.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:scale-105 transition-all duration-300">
-              <h3 className="text-xl font-heading font-semibold mb-4 text-gray-900 dark:text-gray-100">Why Choose Purrify?</h3>
+              <h3 className="text-xl font-heading font-semibold mb-4 text-gray-900 dark:text-gray-100">Why Purrify Works</h3>
               <ul className="space-y-3 text-gray-700 dark:text-gray-200">
                 <li>✓ Works with any litter brand you already use</li>
-                <li>✓ 100% natural activated carbon - safe for cats and humans</li>
+                <li>✓ 100% natural activated carbon — safe for cats and humans</li>
                 <li>✓ Eliminates ammonia at the molecular level</li>
                 <li>✓ No artificial fragrances or chemicals</li>
-                <li>✓ Cost-effective - a little goes a long way</li>
+                <li>✓ Cost-effective — a little goes a long way</li>
               </ul>
             </div>
 
@@ -259,15 +273,15 @@ export default function AmmoniaSmellPageClient() {
             </div>
           </div>
 
-          {/* Solution Image - Happy Cat */}
+          {/* Happy Cat Image */}
           <div className="mb-12">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl max-w-3xl mx-auto">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl max-w-2xl mx-auto">
               <Image
                 src={solutionImage}
-                alt="Happy cat in odor-free home thanks to Purrify ammonia elimination"
-                width={1200}
-                height={675}
-                className="w-full h-auto"
+                alt="Blissful fluffy cat surrounded by cherry blossoms and golden sparkles"
+                width={800}
+                height={800}
+                className="w-full max-h-[480px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8 text-white dark:text-gray-100">
@@ -295,37 +309,11 @@ export default function AmmoniaSmellPageClient() {
         </div>
       </section>
 
-      {/* AI Quotable Fact */}
-      <section className="py-12 px-4">
-        <div className="max-w-4xl mx-auto">
-          <AIQuotableBlock
-            fact="Baking soda cannot neutralize ammonia because both are alkaline substances. Activated carbon works through adsorption—physically trapping ammonia molecules in microscopic pores—which is why it's 10x more effective than baking soda."
-            explanation="One gram of activated carbon has a surface area of 1,000-2,000 square meters (roughly 4 tennis courts), providing massive capacity for trapping odor molecules."
-            icon="science"
-            variant="highlight"
-          />
-        </div>
-      </section>
-
-      {/* HowTo Section */}
-      <section className="py-12 px-4 bg-gray-50 dark:bg-gray-800">
-        <div className="max-w-4xl mx-auto">
-          <HowToSection
-            title="How to Stop Cat Litter Ammonia Smell"
-            description="Follow these 5 steps to eliminate ammonia odor at the source and keep your home fresh."
-            steps={howToSteps}
-            totalTime="PT15M"
-            timeDisplay="15 minutes for setup"
-            url={canonicalUrl}
-          />
-        </div>
-      </section>
-
-      {/* Related Ammonia Content - Internal Linking Cluster */}
+      {/* ── SECTION 9: Internal Linking Cluster ── */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100 mb-6 text-center">
-            Learn More About Ammonia & Cat Litter
+            Learn More About Ammonia &amp; Cat Litter
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Link
@@ -380,7 +368,7 @@ export default function AmmoniaSmellPageClient() {
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* ── SECTION 10: FAQ ── */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <RelatedQuestions

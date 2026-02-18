@@ -1,41 +1,44 @@
-export const dynamic = 'force-static';
+'use client';
 
-import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
-import { SITE_NAME } from '@/lib/constants';
-
-export const metadata: Metadata = {
-  title: `About Us - ${SITE_NAME}`,
-  description: 'Learn about Purrify and our mission to eliminate cat litter odors naturally with activated carbon technology.',
-  alternates: {
-    canonical: 'https://www.purrify.ca/about/',
-  },
-  openGraph: {
-    type: 'website',
-    url: 'https://www.purrify.ca/about/',
-    siteName: SITE_NAME,
-    title: `About Us - ${SITE_NAME}`,
-    description: 'Learn about Purrify and our mission to eliminate cat litter odors naturally with activated carbon technology.',
-    locale: 'en_CA',
-    images: [
-      {
-        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
-        width: 1200,
-        height: 800,
-        alt: `About ${SITE_NAME}`,
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    site: '@purrifyhq',
-    creator: '@purrifyhq',
-    title: `About Us - ${SITE_NAME}`,
-    description: 'Learn about Purrify and our mission to eliminate cat litter odors naturally with activated carbon technology.',
-    images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
-  },
-};
+import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
 
 export default function AboutRedirectPage() {
-  redirect('/about/our-story');
+  const { schema, additionalSchemas } = useEnhancedSEO({
+    path: '/about',
+    title: 'About Purrify',
+    description: 'Learn about Purrify and our mission to eliminate cat litter odors naturally with activated carbon technology.',
+    schemaType: 'organization',
+    schemaData: {
+      description: 'Purrify is a Canadian company creating innovative cat litter additives using activated carbon technology for natural odor elimination.',
+      socialLinks: [
+        'https://www.instagram.com/purrifyhq',
+        'https://twitter.com/purrifyhq',
+        'https://www.facebook.com/purrify',
+        'https://www.youtube.com/@PurrifyHQ',
+        'https://www.linkedin.com/company/purrify',
+        'https://www.tiktok.com/@purrifyhq',
+      ],
+    },
+  });
+
+  const allSchemas = [schema, ...additionalSchemas].filter(Boolean);
+
+  return (
+    <>
+      {allSchemas.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              allSchemas.length === 1
+                ? allSchemas[0]
+                : { '@context': 'https://schema.org', '@graph': allSchemas }
+            ),
+          }}
+        />
+      )}
+      {redirect('/about/our-story')}
+    </>
+  );
 }

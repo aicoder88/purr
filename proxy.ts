@@ -319,8 +319,8 @@ export const config = {
   matcher: [
     // Exclude API routes from middleware to avoid counting health checks (and other API traffic)
     // as Vercel Edge Requests. Locale/experiments/country-bot logic is not needed for /api/*.
-    // Also exclude Sentry tunnel route to keep client error delivery out of middleware.
+
     // Exclude common bot magnets + static asset/file requests.
-    '/((?!_next/static|_next/image|_next/data|favicon.ico|robots\\.txt|sitemap\\.xml|api(?:/|$)|monitoring(?:/|$)|.*\\.).*)',
+    '/((?!_next/static|_next/image|_next/data|favicon.ico|robots\\.txt|sitemap\\.xml|api(?:/|$)|.*\\.).*)',
   ],
 };

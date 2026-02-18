@@ -4,11 +4,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Purrify is an e-commerce site for an activated carbon cat litter additive. Serves Canada (CAD) and USA (USD) in four languages (en, fr, zh, es). Built on Next.js 16 App Router with Stripe payments, Prisma/PostgreSQL, and AI-powered blog generation.
+Purrify is an e-commerce site for an activated carbon cat litter additive. Serves Canada (CAD) and USA (USD) in two languages (en, fr). Built on Next.js 16 App Router with Stripe payments, Prisma/PostgreSQL, and manual blog generation scripts.
 
 - **Site**: https://www.purrify.ca
 - **Package manager**: pnpm (never use npm or yarn)
 - **Node**: >= 22.x
+
+## Agent Memory (Persistent Defaults)
+
+- Start by scoping with fast search (`rg --files`, `rg "<pattern>"`) before editing.
+- Make the smallest viable change first; avoid broad refactors unless explicitly requested.
+- Reuse existing project patterns/components before introducing new abstractions.
+- Validate claims before completion: run the smallest relevant check (typecheck, lint, test, or targeted script) for touched areas.
+- When requirements are ambiguous, state assumptions explicitly in the final handoff.
+- If a new recurring preference appears, persist it in both `docs/AGENTS.md` and `docs/CLAUDE.md`.
 
 ## Commands
 
@@ -38,7 +47,7 @@ pnpm clear-cache        # Clear webpack cache
 ### Framework & Routing
 - **Next.js 16 App Router** with `next-intl` (v4) for i18n
 - URL structure: `/{locale}/path` (e.g., `/fr/products`). Default locale `en`.
-- Locales: `en`, `fr`, `zh`, `es` — configured in `src/i18n/config.ts`
+- Locales: `en`, `fr` — configured in `src/i18n/config.ts`
 - **Middleware**: `proxy.ts` (NOT `middleware.ts` — Next.js 16 change). Handles auth, i18n, AI crawler detection, security headers.
 - Path aliases: `@/*` → `src/*`, `@translations/*` → `src/translations/*`
 
@@ -48,7 +57,7 @@ pnpm clear-cache        # Clear webpack cache
 - `src/components/ui/` — Radix UI-based components (shadcn/ui style)
 - `src/lib/` — Utilities organized by domain (auth/, blog/, seo/, security/, affiliate/, geo/)
 - `src/translations/` — Translation files per locale + `types.ts` interface + `seo-meta.ts`
-- `content/blog/{en,fr,zh,es}/` — Blog post JSON files
+- `content/blog/{en,fr}/` — Blog post JSON files
 - `scripts/` — Build, SEO, image, and blog automation scripts
 
 ### Data Layer
@@ -61,7 +70,7 @@ pnpm clear-cache        # Clear webpack cache
   - `import { useTranslation } from '@/lib/translation-context'` — context-based, no arg needed: `const { t } = useTranslation()`
   - `import { useTranslation } from '@/translations'` — direct, takes locale: `useTranslation('en')`
 - Access: `t.hero.headline` (object property access, not string keys)
-- Adding translations: update `src/translations/types.ts` interface, then all 4 locale files, run `pnpm test:translations`
+- Adding translations: update `src/translations/types.ts` interface, then both locale files (en, fr), run `pnpm test:translations`
 - All user-facing text must use translation keys. No hardcoded strings.
 
 ### Currency System
@@ -86,7 +95,7 @@ pnpm clear-cache        # Clear webpack cache
 - `SKIP_SEO_VALIDATION=true` env var as emergency build bypass
 
 ### Blog System
-- JSON files in `content/blog/{lang}/slug.json`
+- JSON files in `content/blog/{en,fr}/slug.json`
 - AI generation: `pnpm blog:auto:generate`
 - Fix broken posts: `pnpm repair-blog`
 - Style guide: `docs/BLOG_STYLE_GUIDE.md`

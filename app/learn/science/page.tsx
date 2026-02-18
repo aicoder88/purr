@@ -42,6 +42,16 @@ export const metadata: Metadata = {
     description: 'Explore the molecular science behind activated carbon.',
     images: ['https://www.purrify.ca/optimized/benefits-hero-science.webp'],
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 // JSON-LD Schema for Article

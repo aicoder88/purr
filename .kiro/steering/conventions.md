@@ -64,24 +64,32 @@ import { Button } from '../../../components/ui/button'
 ## API Route Patterns
 
 ```typescript
-// pages/api/example.ts
-import type { NextApiRequest, NextApiResponse } from 'next'
+// app/api/example/route.ts
+import { NextRequest, NextResponse } from 'next/server'
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  // Validate method
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' })
-  }
-  
-  // Handle request
+export async function GET(request: NextRequest) {
   try {
     // Business logic
-    return res.status(200).json({ success: true })
+    return NextResponse.json({ success: true })
   } catch (error) {
-    return res.status(500).json({ error: 'Internal server error' })
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    )
+  }
+}
+
+export async function POST(request: NextRequest) {
+  // Validate method is implicit (only POST requests reach here)
+  try {
+    const body = await request.json()
+    // Business logic
+    return NextResponse.json({ success: true })
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    )
   }
 }
 ```

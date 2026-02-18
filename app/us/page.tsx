@@ -51,6 +51,16 @@ export const metadata: Metadata = {
       'x-default': 'https://www.purrify.ca/',
     },
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   other: {
     'last-modified': '2026-01-15',
   },

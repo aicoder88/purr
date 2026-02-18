@@ -25,7 +25,7 @@ async function handler(request: NextRequest) {
         }
 
         // In production, you might want to send this to a logging service
-        // like Sentry, LogRocket, or your own logging infrastructure
+        // like LogRocket, or your own logging infrastructure
 
         return NextResponse.json({ success: true }, { status: 200 });
     } catch (error) {

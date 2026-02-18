@@ -19,10 +19,13 @@ export function AppLayout({ children }: AppLayoutProps) {
     const hideFooter = pathname === '/invest' || pathname === '/dn';
     const hideHeader = pathname === '/dn';
 
+    // Disable specialty effects on small screens for better performance
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
     return (
         <div className="flex flex-col min-h-screen">
             <SkipNav />
-            <PawCursor />
+            {!isMobile && <PawCursor />}
             <ScrollToTopButton />
             <MobileFloatingCTA />
             {!hideHeader && <HeaderWithSuspense />}

@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { useABTestWithTracking, AB_TEST_SLUGS } from "@/lib/ab-testing";
 import { getPaymentLink } from "@/lib/payment-links";
 
 // Icon components - extracted to avoid repetition
@@ -21,11 +20,8 @@ function ArrowIcon({ className = '' }: { className?: string }) {
   );
 }
 
-// CTA button class variants for A/B testing
-const CTA_BUTTON_VARIANTS = {
-  orange: "w-full sm:w-auto px-8 py-6 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white dark:text-gray-100 font-black text-lg sm:text-xl rounded-2xl shadow-2xl shadow-orange-500/30 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-3xl hover:shadow-orange-500/40 min-h-[60px] flex items-center justify-center gap-3 group border-2 border-orange-400/20",
-  coral: "w-full sm:w-auto px-8 py-6 bg-gradient-to-r from-deep-coral to-deep-coral/90 hover:from-deep-coral/90 hover:to-deep-coral text-white dark:text-gray-100 font-black text-lg sm:text-xl rounded-2xl shadow-2xl shadow-deep-coral/30 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-3xl hover:shadow-deep-coral/40 min-h-[60px] flex items-center justify-center gap-3 group border-2 border-deep-coral/20",
-} as const;
+// CTA button class - branded coral color
+const CTA_BUTTON_CLASSES = "w-full sm:w-auto px-8 py-6 bg-gradient-to-r from-deep-coral to-deep-coral/90 hover:from-deep-coral/90 hover:to-deep-coral text-white dark:text-gray-100 font-black text-lg sm:text-xl rounded-2xl shadow-2xl shadow-deep-coral/30 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-3xl hover:shadow-deep-coral/40 min-h-[60px] flex items-center justify-center gap-3 group border-2 border-deep-coral/20";
 
 interface HeroContentProps {
   t: {
@@ -36,6 +32,7 @@ interface HeroContentProps {
     hero: {
       headline?: string;
       subheadline?: string;
+      tagline?: string;
       eliminateCatOdors: string;
       instantly: string;
       description: string;
@@ -116,99 +113,10 @@ const SocialProofAvatars = () => (
 
 
 export const HeroContent = ({ t }: HeroContentProps) => {
-  // A/B Test: Homepage Hero Layout
-  const {
-    isVariant: isSimplifiedHero,
-  } = useABTestWithTracking(AB_TEST_SLUGS.HOMEPAGE_HERO);
-
-  // A/B Test: CTA Button Color
-  const {
-    isVariant: isOrangeButton,
-  } = useABTestWithTracking(AB_TEST_SLUGS.CTA_BUTTON_COLOR);
-
-
   // Use new simplified headline structure or fallback to existing
   const headline = t.hero.headline || t.hero.eliminateCatOdors;
   const subheadline = t.hero.subheadline || t.hero.instantly;
 
-  // CTA Button classes based on A/B test
-  const ctaButtonClasses = isOrangeButton
-    ? CTA_BUTTON_VARIANTS.orange
-    : CTA_BUTTON_VARIANTS.coral;
-
-  // Simplified Hero Variant (A/B Test)
-  if (isSimplifiedHero) {
-    return (
-      <div className="flex flex-col justify-center space-y-6 md:space-y-8 lg:space-y-10 relative z-10 py-4">
-        {/* Simplified Headline */}
-        <div className="space-y-4">
-          <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] text-gray-900 dark:text-white">
-            <span className="block">{t.hero.simplified?.noMore || ""}</span>
-            <span className="block bg-clip-text text-transparent bg-gradient-to-r from-electric-indigo via-purple-600 to-pink-500">
-              {t.hero.simplified?.litterBoxSmell || ""}
-            </span>
-          </h1>
-
-          {/* Short value prop */}
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-xl leading-relaxed">
-            {t.hero.simplified?.valueProposition || ""}
-          </p>
-        </div>
-
-        {/* Trust & Social Proof Row */}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-6 md:gap-10 py-2 border-y border-gray-200/30 dark:border-gray-700/30">
-          {/* Trust indicators */}
-          <div className="flex flex-col gap-1">
-            <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold">
-              <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-              {t.hero.simplified?.thirtyDayGuarantee || "30-Day Guarantee"}
-            </div>
-          </div>
-
-          <div className="hidden sm:block w-px h-10 bg-gray-200 dark:bg-gray-700/50"></div>
-
-          {/* Social Proof - 1,000+ happy cat parents */}
-          <div className="flex items-center gap-4">
-            <SocialProofAvatars />
-            <div className="text-sm text-gray-600 dark:text-gray-400">
-              <span className="font-bold text-gray-900 dark:text-white block text-base">
-                {t.hero.socialProof.trustNumber}
-              </span>
-              <span className="text-xs uppercase tracking-wider font-medium">{t.hero.socialProof.trustText}</span>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA Button - B2C: Free Trial */}
-        <div className="flex flex-col gap-4 pt-4 max-w-md">
-          <Button
-            asChild
-            className={`${ctaButtonClasses} !py-8 !px-10`}
-            aria-label={t.hero.buttons.tryFree || "Get My Free Trial"}
-          >
-            <a href={getPaymentLink('trialSingle') || '/products'} target="_blank" rel="noopener noreferrer">
-              <LightningIcon className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
-              <span className="tracking-tight">{t.hero.simplified?.getFreeSample || "Send Me a Free Bag →"}</span>
-              <ArrowIcon className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
-          </Button>
-          <p className="text-sm font-bold text-gray-500 dark:text-gray-400 text-center sm:text-left flex items-center justify-center sm:justify-start gap-2">
-            <span className="w-2 h-2 bg-electric-indigo rounded-full animate-pulse"></span>
-            {t.hero.simplified?.justPayShipping || "Just pay $4.76 shipping"}
-          </p>
-        </div>
-
-        {/* Mantra tag line */}
-        <div className="pt-4 border-t border-gray-100 dark:border-gray-800/50 w-fit">
-          <p className="text-xl sm:text-2xl font-black text-gray-900 dark:text-white tracking-tight italic opacity-80 decoration-electric-indigo decoration-4 underline-offset-8">
-            "Just Pour. Mix. And Breathe Easy"
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  // Control: Current Hero (with CTA color A/B test applied)
   return (
     <div className="flex flex-col justify-center space-y-6 md:space-y-8 lg:space-y-10 relative z-10 py-4">
       {/* Simplified Headline - outcome-focused */}
@@ -254,10 +162,10 @@ export const HeroContent = ({ t }: HeroContentProps) => {
       <div className="flex flex-col gap-4 pt-4 max-w-md">
         <Button
           asChild
-          className={`${ctaButtonClasses} !py-8 !px-10`}
+          className={`${CTA_BUTTON_CLASSES} !py-8 !px-10`}
           aria-label={t.hero.buttons.tryFree || "Get My Free Trial"}
         >
-          <a href={getPaymentLink('trialSingle') || '/products'} target="_blank" rel="noopener noreferrer">
+          <a href={getPaymentLink('trialSingle') || '/products'}>
             <LightningIcon className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
             <span className="tracking-tight">{t.hero.buttons.tryFree || "Get My Free Trial"}</span>
             <ArrowIcon className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
@@ -272,7 +180,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
       {/* Mantra tag line */}
       <div className="pt-4 border-t border-gray-100 dark:border-gray-800/50 w-fit">
         <p className="text-xl sm:text-2xl font-black text-gray-900 dark:text-white tracking-tight italic opacity-80 decoration-electric-indigo decoration-4 underline-offset-8">
-          "Just Pour. Mix. And Breathe Easy"
+          "{t.hero.tagline || "Just Pour. Mix. And Breathe Easy"}"
         </p>
       </div>
     </div>

@@ -3,45 +3,7 @@
 import { useEffect } from 'react';
 import { captureUTM } from '@/lib/tracking/utm';
 
-/**
- * Suppress known benign errors from third-party scripts.
- * These errors occur when privacy-focused browsers (DuckDuckGo, Brave, Firefox with ETP)
- * block cross-origin requests from analytics/tracking scripts.
- * The errors are harmless but pollute error monitoring.
- */
-function useSuppressThirdPartyErrors() {
-    useEffect(() => {
-        if (typeof globalThis.window === 'undefined') return;
 
-        const handleUnhandledRejection = (event: PromiseRejectionEvent) => {
-            const errorMessage = event.reason?.message || String(event.reason);
-
-            // Known benign errors from third-party scripts blocked by privacy browsers
-            const benignErrors = [
-                'invalid origin',      // Vercel Analytics blocked by DuckDuckGo/Brave
-                'Script error',        // Cross-origin script errors
-                'ResizeObserver loop', // Common browser timing issue
-                'Network request failed', // Blocked tracking requests
-            ];
-
-            const isBenignError = benignErrors.some(pattern =>
-                errorMessage.toLowerCase().includes(pattern.toLowerCase())
-            );
-
-            if (isBenignError) {
-                // Prevent the error from propagating to Sentry
-                event.preventDefault();
-                // Only log in development
-                if (process.env.NODE_ENV === 'development') {
-                    console.debug('[Suppressed third-party error]', errorMessage);
-                }
-            }
-        };
-
-        window.addEventListener('unhandledrejection', handleUnhandledRejection);
-        return () => window.removeEventListener('unhandledrejection', handleUnhandledRejection);
-    }, []);
-}
 
 /**
  * Capture UTM parameters from URL on initial page load.
@@ -54,7 +16,6 @@ function useUTMCapture() {
 }
 
 export function ClientLogic() {
-    useSuppressThirdPartyErrors();
     useUTMCapture();
 
     return null;

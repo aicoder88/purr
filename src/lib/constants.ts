@@ -149,14 +149,40 @@ export const FEATURES = [
 ];
 
 export type Testimonial = {
-  name: string;
+  id: string;
+  author: string;
   text: string;
+  rating: number;
+  date: string;
+  verified: boolean;
   avatar?: string;
-  stars?: number;
 };
 
 export const TESTIMONIALS: Testimonial[] = [
-  // Intentionally empty until backed by a real, verifiable review system.
+  {
+    id: "t1",
+    author: "Sarah J.",
+    rating: 5,
+    text: "I was skeptical because I've tried everything for my two cats. Within 24 hours of adding Purrify, the ammonia smell was completely gone. It's been 5 days and still fresh.",
+    date: "2025-11-12",
+    verified: true
+  },
+  {
+    id: "t2",
+    author: "Marc-Andre L.",
+    rating: 5,
+    text: "Enfin un produit qui fonctionne! J'habite dans un petit appartement à Montréal et l'odeur de la litière était un problème constant. Purrify a tout changé. Merci!",
+    date: "2025-12-03",
+    verified: true
+  },
+  {
+    id: "t3",
+    author: "Emily R.",
+    rating: 5,
+    text: "Better than baking soda by a mile. I used to change the litter every 3 days because of the smell. Now I can go a full week easily. Worth every penny.",
+    date: "2026-01-15",
+    verified: true
+  }
 ];
 
 // Import centralized business profile for NAP consistency

@@ -12,6 +12,7 @@ const LOCALE = 'en';
 export const metadata: Metadata = {
   title: `Blog - Cat Care Tips & Litter Box Advice | ${SITE_NAME}`,
   description: `Expert advice on cat litter boxes, odor control, and pet care. ${SITE_DESCRIPTION}`,
+  keywords: ['cat care blog', 'litter box tips', 'pet care advice', 'odor control', 'cat health', 'Purrify blog'],
   alternates: {
     canonical: `${SITE_URL}/blog/`,
     languages: {
@@ -48,6 +49,14 @@ export const metadata: Metadata = {
         alt: `Blog - Cat Care Tips & Litter Box Advice | ${SITE_NAME}`,
       },
     ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@purrifyhq',
+    creator: '@purrifyhq',
+    title: `Blog - Cat Care Tips & Litter Box Advice | ${SITE_NAME}`,
+    description: `Expert advice on cat litter boxes, odor control, and pet care. ${SITE_DESCRIPTION}`,
+    images: [`${SITE_URL}/images/Logos/purrify-logo.png`],
   },
 };
 

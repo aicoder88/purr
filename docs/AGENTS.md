@@ -8,6 +8,14 @@
 - This project uses `pnpm` exclusively.
 - Do not use `npm` or `yarn` for manual commands.
 
+### Agent Memory (Persistent Defaults)
+- Start by scoping with fast search (`rg --files`, `rg "<pattern>"`) before editing.
+- Make the smallest viable change first; avoid broad refactors unless explicitly requested.
+- Reuse existing project patterns/components before introducing new abstractions.
+- Validate claims before completion: run the smallest relevant check (typecheck, lint, test, or targeted script) for touched areas.
+- When requirements are ambiguous, state assumptions explicitly in the final handoff.
+- If a new recurring preference appears, persist it in both `docs/AGENTS.md` and `docs/CLAUDE.md`.
+
 ### No Fabrication Rule
 - Never fabricate or assume the existence of:
   - contact info, social handles, hashtags
@@ -22,7 +30,7 @@
 
 ## Project Overview
 
-**Purrify** is an e-commerce website for an activated carbon cat litter additive product. It serves Canada (CAD) and USA (USD) in four languages (English, French, Chinese, Spanish), with a full store, blog, affiliate system, retailer workflows, and SEO tooling.
+**Purrify** is an e-commerce website for an activated carbon cat litter additive product. It serves Canada (CAD) and USA (USD) in two languages (English, French), with a full store, blog, affiliate system, retailer workflows, and SEO tooling.
 
 - **Website**: https://www.purrify.ca
 - **Primary Market**: Canada (CAD)
@@ -63,10 +71,10 @@
 
 ### AI & Content
 - **Anthropic SDK** and **OpenAI SDK**
-- Blog automation scripts in `scripts/` and blog JSON content under `content/blog/{en,fr,zh,es}/`
+- Blog automation scripts in `scripts/` and blog JSON content under `content/blog/{en,fr}/`
+- Blog generation is manual: `pnpm blog:auto:generate` (no automatic scheduling)
 
 ### Monitoring & Analytics
-- **Sentry**
 - **Vercel Analytics**
 - Custom UTM tracking
 
@@ -118,7 +126,7 @@
 │   ├── hooks/
 │   ├── emails/
 │   └── types/
-├── content/blog/{en,fr,zh,es}/ # Blog post JSON
+├── content/blog/{en,fr}/       # Blog post JSON
 ├── prisma/                     # Prisma schema + migrations
 ├── scripts/                    # Build, SEO, image, blog scripts
 ├── proxy.ts                    # Middleware entry (Next.js 16)
@@ -257,8 +265,6 @@ pnpm test -- --testNamePattern="specific test name"
 ### Supported Locales
 - `en` (default)
 - `fr`
-- `zh`
-- `es`
 
 ### i18n Architecture
 - Locale routing/config under `src/i18n/`
@@ -288,7 +294,7 @@ function ComponentWithDirectLocale() {
 
 ### Adding New Translations
 1. Update `src/translations/types.ts`
-2. Add keys to `en.ts`, `fr.ts`, `zh.ts`, and `es.ts`
+2. Add keys to `en.ts` and `fr.ts`
 3. Run `pnpm test:translations`
 
 ## Currency System
@@ -374,7 +380,7 @@ pnpm seo:report
 - Check `/api/health/storage`
 - Verify Stripe webhooks
 - Validate checkout/login critical paths
-- Monitor Sentry for regressions
+- Monitor Vercel logs for regressions
 
 ## Common Issues & Solutions
 

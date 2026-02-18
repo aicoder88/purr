@@ -33,8 +33,6 @@ module.exports = {
     '/static/*',
     '/free',
     '/fr/free',
-    '/zh/free',
-    '/es/free',
     '/test',
     '/demo/*',
 
@@ -42,16 +40,10 @@ module.exports = {
     // Server-side redirect pages (these redirect to other pages)
     '/free-trial',              // Redirects to /try-free
     '/fr/free-trial',
-    '/zh/free-trial',
-    '/es/free-trial',
     '/buy',                     // Redirects to /products
     '/fr/buy',
-    '/zh/buy',
-    '/es/buy',
     '/about',                   // Redirects to /about/our-story
     '/fr/about',
-    '/zh/about',
-    '/es/about',
     '/montreal',                // Redirects to /locations/montreal
     '/support/contact',         // Redirects to /contact
     '/documents',               // Redirects to /invest (per next.config.js)
@@ -113,8 +105,6 @@ module.exports = {
     '/my-account-2',
     '/trial',
     '/fr/trial',
-    '/zh/trial',
-    '/es/trial',
 
     // Old blog redirects
     '/blog/activated-carbon-science',
@@ -146,13 +136,12 @@ module.exports = {
     '/es/customer/referrals',
     '/es/retailer/portal/login',
 
-    // Spanish utility pages
-    '/es/pos',
-    '/es/pos/*',
-    '/es/tools/*',
+    '/pos',
+    '/pos/*',
+    '/tools/*',
 
     // System pages
-    '/sentry-example-page',
+
     '/offline',
 
     '/thank-you',
@@ -175,28 +164,20 @@ module.exports = {
     '/fr/affiliate/activate',
     '/fr/affiliate/signup',
 
-    // Customer portal pages (require authentication - should be noindex)
     '/customer/portal',
     '/customer/referrals',
     '/fr/customer/portal',
     '/fr/customer/referrals',
-    '/zh/customer/portal',
-    '/zh/customer/referrals',
 
-    // Retailer portal (require authentication)
     '/retailer/portal/login',
     '/fr/retailer/portal/login',
-    '/zh/retailer/portal/login',
 
     // Admin pages
     '/admin',
     '/admin/*',
 
-    // Results page (post-purchase/utility - noindex)
     '/results',
     '/fr/results',
-    '/zh/results',
-    '/es/results',
 
     // Private/internal pages (noindex)
     '/dialergptpitchdeck',
@@ -232,42 +213,15 @@ module.exports = {
     '/fr/locations/qc',
     '/fr/locations/sk',
     '/fr/locations/yt',
-    '/zh/locations/ab',
-    '/zh/locations/bc',
-    '/zh/locations/mb',
-    '/zh/locations/nb',
-    '/zh/locations/nl',
-    '/zh/locations/ns',
-    '/zh/locations/nt',
-    '/zh/locations/nu',
-    '/zh/locations/on',
-    '/zh/locations/pe',
-    '/zh/locations/qc',
-    '/zh/locations/sk',
-    '/zh/locations/yt',
 
-    // === NON-ENGLISH LOCATION PAGES (noindexed to prevent thin content) ===
     '/fr/locations',
     '/fr/locations/*',
-    '/zh/locations',
-    '/zh/locations/*',
-    '/es/locations',
-    // === SPANISH PROTECTED/PORTAL PAGES ===
-    '/es/affiliate/*',
-    '/es/retailer/*',
-    '/es/customer/*',
-    '/es/admin/*',
-    '/es/invest',
-    '/es/dialergptpitchdeck',
-    '/es/documents',
 
 
   ],
   alternateRefs: [
     { href: 'https://www.purrify.ca/', hreflang: 'en-CA' },
     { href: 'https://www.purrify.ca/fr/', hreflang: 'fr-CA' },
-    { href: 'https://www.purrify.ca/zh/', hreflang: 'zh-CN' },
-    { href: 'https://www.purrify.ca/es/', hreflang: 'es-US' },
     { href: 'https://www.purrify.ca/us/', hreflang: 'en-US' },
     { href: 'https://www.purrify.ca/', hreflang: 'x-default' },
   ],
@@ -283,18 +237,6 @@ module.exports = {
     // Locale homepages - IMPORTANT for indexable pages not in sitemap
     {
       loc: '/fr/',
-      changefreq: 'daily',
-      priority: 0.9,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/zh/',
-      changefreq: 'daily',
-      priority: 0.9,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/es/',
       changefreq: 'daily',
       priority: 0.9,
       lastmod: new Date().toISOString(),
@@ -354,31 +296,6 @@ module.exports = {
       loc: '/products/',
       changefreq: 'daily',
       priority: 0.85,
-      lastmod: new Date().toISOString(),
-    },
-    // Spanish products
-    {
-      loc: '/es/products/trial-size/',
-      changefreq: 'weekly',
-      priority: 0.85,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/es/products/standard/',
-      changefreq: 'weekly',
-      priority: 0.85,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/es/products/family-pack/',
-      changefreq: 'weekly',
-      priority: 0.85,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/es/products/',
-      changefreq: 'weekly',
-      priority: 0.8,
       lastmod: new Date().toISOString(),
     },
     // French products  
@@ -492,25 +409,6 @@ module.exports = {
       priority: 0.7,
       lastmod: new Date().toISOString(),
     },
-    // Spanish learn pages
-    {
-      loc: '/es/learn/',
-      changefreq: 'weekly',
-      priority: 0.75,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/es/learn/how-it-works/',
-      changefreq: 'monthly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/es/learn/faq/',
-      changefreq: 'monthly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
     // French learn pages
     {
       loc: '/fr/learn/',
@@ -570,12 +468,6 @@ module.exports = {
       priority: 0.6,
       lastmod: new Date().toISOString(),
     },
-    {
-      loc: '/es/contact/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
     // About pages
     {
       loc: '/about/our-story/',
@@ -602,12 +494,6 @@ module.exports = {
       priority: 0.7,
       lastmod: new Date().toISOString(),
     },
-    {
-      loc: '/es/reviews/',
-      changefreq: 'weekly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
     // Case studies
     {
       loc: '/case-studies/',
@@ -624,18 +510,6 @@ module.exports = {
     },
     {
       loc: '/fr/stores/',
-      changefreq: 'weekly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/zh/stores/',
-      changefreq: 'weekly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/es/stores/',
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date().toISOString(),
@@ -750,12 +624,6 @@ module.exports = {
       lastmod: new Date().toISOString(),
     },
     {
-      loc: '/es/privacy-policy/',
-      changefreq: 'monthly',
-      priority: 0.3,
-      lastmod: new Date().toISOString(),
-    },
-    {
       loc: '/terms/',
       changefreq: 'monthly',
       priority: 0.3,
@@ -763,12 +631,6 @@ module.exports = {
     },
     {
       loc: '/fr/terms/',
-      changefreq: 'monthly',
-      priority: 0.3,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/es/terms/',
       changefreq: 'monthly',
       priority: 0.3,
       lastmod: new Date().toISOString(),
@@ -1020,30 +882,8 @@ module.exports = {
       };
     }
 
-    // Spanish pages - Include alternateRefs for proper hreflang
-    if (normalizedPath.startsWith('/es/') || normalizedPath === '/es/') {
-      return {
-        loc: normalizedPath,
-        changefreq: 'weekly',
-        priority: 0.7,
-        lastmod: new Date().toISOString(),
-        alternateRefs: config.alternateRefs,
-      };
-    }
-
     // French pages - Include alternateRefs for proper hreflang
     if (normalizedPath.startsWith('/fr/') || normalizedPath === '/fr/') {
-      return {
-        loc: normalizedPath,
-        changefreq: 'weekly',
-        priority: 0.7,
-        lastmod: new Date().toISOString(),
-        alternateRefs: config.alternateRefs,
-      };
-    }
-
-    // Chinese pages - Include alternateRefs for proper hreflang
-    if (normalizedPath.startsWith('/zh/') || normalizedPath === '/zh/') {
       return {
         loc: normalizedPath,
         changefreq: 'weekly',

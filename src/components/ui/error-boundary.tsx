@@ -143,7 +143,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
 
   private reportToErrorService = async (errorReport: Record<string, unknown>) => {
     try {
-      // Send to error reporting service (e.g., Sentry, LogRocket, etc.)
+      // Send to error reporting service
       await fetch('/api/error-report', {
         method: 'POST',
         headers: {

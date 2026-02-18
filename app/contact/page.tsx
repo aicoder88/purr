@@ -36,6 +36,24 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: 'https://www.purrify.ca/contact/',
+    languages: {
+      'en-CA': 'https://www.purrify.ca/contact/',
+      'fr-CA': 'https://www.purrify.ca/fr/contact/',
+      'zh-CN': 'https://www.purrify.ca/zh/contact/',
+      'es-US': 'https://www.purrify.ca/es/contact/',
+      'en-US': 'https://www.purrify.ca/contact/',
+      'x-default': 'https://www.purrify.ca/contact/',
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   openGraph: {
     type: 'website',

@@ -48,8 +48,6 @@ export async function generateMetadata(): Promise<Metadata> {
   const alternates: Record<string, string> = {
     'en-CA': `${baseUrl}/`,
     'fr-CA': `${baseUrl}/fr/`,
-    'zh-CN': `${baseUrl}/zh/`,
-    'es-US': `${baseUrl}/es/`,
     'en-US': `${baseUrl}/us/`,
     'x-default': `${baseUrl}/`,
   };
@@ -93,6 +91,13 @@ export async function generateMetadata(): Promise<Metadata> {
       'max-image-preview': 'large',
       'max-snippet': -1,
       'max-video-preview': -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+        'max-video-preview': -1,
+      },
     },
     applicationName: SITE_NAME,
     appleWebApp: {

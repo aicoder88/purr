@@ -96,6 +96,7 @@ export interface TranslationType {
     description: string;
     headline?: string;
     subheadline?: string;
+    tagline?: string;
     socialProof: {
       trustNumber: string;
       trustText: string;

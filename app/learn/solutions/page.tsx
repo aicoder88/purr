@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: 'https://www.purrify.ca/learn/solutions/',
+    siteName: SITE_NAME,
     title: `Cat Litter Odor Solutions - Expert Guides | ${SITE_NAME}`,
     description: 'Find the right solution for your cat litter odor problem. Expert guides for ammonia smell, apartment living, multiple cats, senior cats, and more.',
     locale: 'en_CA',
@@ -38,6 +39,19 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@purrifyhq',
     creator: '@purrifyhq',
+    title: `Cat Litter Odor Solutions - Expert Guides | ${SITE_NAME}`,
+    description: 'Find the right solution for your cat litter odor problem. Expert guides for ammonia smell, apartment living, multiple cats, and more.',
+    images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 

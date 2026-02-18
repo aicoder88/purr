@@ -192,7 +192,7 @@ export function B2BCaseStudies({
                             “{TESTIMONIALS[benefit.testimonialIndex].text}”
                           </p>
                           <p className="mt-2 text-xs font-semibold text-gray-800 dark:text-gray-200">
-                            — {TESTIMONIALS[benefit.testimonialIndex].name}
+                            — {TESTIMONIALS[benefit.testimonialIndex].author}
                           </p>
                         </div>
                       </div>

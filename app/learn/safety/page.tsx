@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'article',
     url: 'https://www.purrify.ca/learn/safety/',
+    siteName: SITE_NAME,
     title: `Is Activated Carbon Safe for Cats? | ${SITE_NAME}`,
     description: 'Comprehensive technical datasheet and safety information for Purrify Activated Carbon.',
     locale: 'en_CA',
@@ -37,6 +38,19 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@purrifyhq',
     creator: '@purrifyhq',
+    title: `Is Activated Carbon Safe for Cats? | ${SITE_NAME}`,
+    description: 'Comprehensive technical datasheet and safety information for Purrify Activated Carbon.',
+    images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 

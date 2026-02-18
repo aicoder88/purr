@@ -42,6 +42,16 @@ export const metadata: Metadata = {
     description: "Discover the science behind Purrify's activated carbon technology.",
     images: ['https://www.purrify.ca/optimized/micropores_magnified_view.webp'],
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 // JSON-LD Schema for Article

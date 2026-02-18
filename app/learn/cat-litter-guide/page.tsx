@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'article',
     url: 'https://www.purrify.ca/learn/cat-litter-guide/',
+    siteName: SITE_NAME,
     title: `Cat Litter Guide: Types & Best Practices | ${SITE_NAME}`,
     description: 'Comprehensive guide to cat litter types, maintenance tips, and solving common problems.',
     locale: 'en_CA',
@@ -37,6 +38,19 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@purrifyhq',
     creator: '@purrifyhq',
+    title: `Cat Litter Guide: Types & Best Practices | ${SITE_NAME}`,
+    description: 'Comprehensive guide to cat litter types and maintenance tips. Learn how to choose the best litter for your cat and keep it fresh longer.',
+    images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 

@@ -1,6 +1,7 @@
 export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
+import { SITE_NAME } from '../../../src/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Cat Litter Odor FAQ - Activated Carbon Questions | Purrify',
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: 'https://www.purrify.ca/learn/faq/',
-    siteName: 'Purrify',
+    siteName: SITE_NAME,
     title: 'Cat Litter Odor FAQ - Activated Carbon Questions | Purrify',
     description: 'Get expert answers about activated carbon cat litter additives: how they work, usage tips, safety, and troubleshooting.',
     locale: 'en_CA',
@@ -54,6 +55,16 @@ export const metadata: Metadata = {
   },
   other: {
     'last-modified': '2025-01-09',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 

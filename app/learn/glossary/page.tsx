@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'article',
     url: 'https://www.purrify.ca/learn/glossary/',
+    siteName: SITE_NAME,
     title: `Cat Litter & Activated Carbon Glossary - ${SITE_NAME}`,
     description: 'Learn key terms about activated carbon, cat litter odor control, and pet care science.',
     locale: 'en_CA',
@@ -37,6 +38,19 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@purrifyhq',
     creator: '@purrifyhq',
+    title: `Cat Litter & Activated Carbon Glossary - ${SITE_NAME}`,
+    description: 'Learn key terms about activated carbon, cat litter odor control, and pet care science. Definitions of adsorption, ammonia, activated carbon, and more.',
+    images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 

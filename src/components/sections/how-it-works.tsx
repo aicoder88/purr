@@ -7,7 +7,7 @@ import { ArrowDown } from 'lucide-react';
 import Link from 'next/link';
 
 export function HowItWorks() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
 
   const steps = (t.howItWorks?.steps || []).map((step, index) => ({
     number: step.number,
@@ -89,9 +89,9 @@ export function HowItWorks() {
 
         {/* Transition teaser - Better visual treatment */}
         {t.howItWorks?.transitionTeaser && (
-          <div className="mt-16 sm:mt-24 w-full flex justify-center relative z-20">
+          <div className="mt-16 sm:mt-24 w-full flex flex-col items-center gap-8 relative z-20">
             {/* Horizontal divider line that the pill sits on */}
-            <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-200 dark:via-purple-800 to-transparent transform -translate-y-1/2"></div>
+            <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-200 dark:via-purple-800 to-transparent transform -translate-y-1/2 hidden md:block"></div>
 
             <Link
               href="#why-purrify"
@@ -103,6 +103,13 @@ export function HowItWorks() {
               <div className="w-10 h-10 rounded-full bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition-all duration-500">
                 <ArrowDown className="w-5 h-5 group-hover:animate-bounce" />
               </div>
+            </Link>
+
+            <Link
+              href={`${locale === 'fr' ? '/fr' : ''}/learn/activated-carbon-vs-baking-soda-deodorizers`}
+              className="text-purple-600 dark:text-purple-400 font-bold hover:underline underline-offset-4 decoration-2"
+            >
+              {t.nav.carbonVsBakingSoda} →
             </Link>
           </div>
         )}

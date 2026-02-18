@@ -4,7 +4,7 @@
 
 ```
 purrify/
-├── pages/              # Next.js Pages Router (routing & page components)
+├── app/                # Next.js App Router (routing & page components)
 ├── src/                # Source code (components, lib, data, translations)
 ├── public/             # Static assets (images, videos, manifests)
 ├── scripts/            # Build and optimization scripts
@@ -15,78 +15,45 @@ purrify/
 └── content/            # Blog content and marketing copy
 ```
 
-## Pages Directory (Routing)
+## App Directory (App Router)
 
-**Pages Router Structure** - File-based routing, NOT App Router
+**App Router Structure** - File-based routing with layout support
 
 ```
-pages/
-├── _app.tsx            # App wrapper (providers, global state, analytics)
-├── _document.tsx       # HTML document (meta tags, scripts, fonts)
-├── index.tsx           # Homepage (/)
-├── 404.tsx             # Custom 404 page
-├── _error.tsx          # Error boundary
+app/
+├── layout.tsx          # Root layout (providers, global state, fonts)
+├── page.tsx            # Homepage (/)
+├── not-found.tsx       # 404 page
+├── error.tsx           # Error boundary
+├── globals.css         # Global styles
 │
-├── api/                # API Routes (serverless functions)
-│   ├── create-checkout-session.ts    # Stripe checkout
-│   ├── contact.ts                    # Contact form handler
-│   ├── newsletter.ts                 # Newsletter signup
-│   ├── blog-posts.ts                 # Blog API
-│   ├── webhooks/                     # Payment webhooks
-│   ├── analytics/                    # Analytics endpoints
-│   ├── referrals/                    # Referral system
-│   ├── retailer/                     # B2B retailer APIs
-│   └── admin/                        # Admin APIs
-│       └── blog/                     # Blog management APIs
+├── api/                # Route Handlers (serverless functions)
+│   ├── create-checkout-session/    # Stripe checkout
+│   ├── contact/                    # Contact form handler
+│   ├── newsletter/                 # Newsletter signup
+│   ├── blog-posts/                 # Blog API
+│   ├── webhooks/                   # Payment webhooks
+│   ├── analytics/                  # Analytics endpoints
+│   ├── referrals/                  # Referral system
+│   ├── retailer/                   # B2B retailer APIs
+│   └── admin/                      # Admin APIs
+│       └── blog/                   # Blog management APIs
 │
-├── blog/               # Blog system
-│   ├── index.tsx       # Blog listing page
-│   ├── [slug].tsx      # Dynamic blog post pages
-│   ├── category/       # Category pages
-│   ├── tag/            # Tag pages
-│   └── preview/        # Preview mode
+├── [locale]/           # Localized routes
+│   ├── layout.tsx      # Locale layout with i18n
+│   ├── page.tsx        # Localized homepage
+│   ├── products/       # Product pages
+│   │   └── page.tsx
+│   ├── blog/           # Blog system
+│   │   ├── page.tsx    # Blog listing
+│   │   └── [slug]/     # Dynamic blog posts
+│   │       └── page.tsx
+│   ├── learn/          # Educational content
+│   │   └── page.tsx
+│   └── b2b/            # B2B pages
+│       └── page.tsx
 │
-├── products/           # Product pages
-│   ├── compare.tsx     # Product comparison
-│   ├── trial-size.tsx  # 20g trial product
-│   ├── standard.tsx    # 60g standard product
-│   └── family-pack.tsx # 140g family product
-│
-├── learn/              # Educational content
-│   ├── how-it-works.tsx
-│   ├── science.tsx
-│   ├── safety.tsx
-│   └── faq.tsx
-│
-├── solutions/          # Solution-focused landing pages (SEO)
-│   ├── apartment-cat-smell-solution.tsx
-│   ├── multiple-cats-odor-control.tsx
-│   └── [other-solutions].tsx
-│
-├── locations/          # Location-based pages (SEO)
-│   ├── [citySlug].tsx  # Dynamic city pages
-│   ├── province/       # Province-specific pages
-│   └── [province].tsx  # Province landing pages (ab.tsx, bc.tsx, etc.)
-│
-├── admin/              # Admin dashboard
-│   ├── login.tsx
-│   └── blog/           # Blog management UI
-│       ├── index.tsx   # Blog dashboard
-│       ├── new.tsx     # Create post
-│       ├── edit/[slug].tsx  # Edit post
-│       └── analytics.tsx    # Blog analytics
-│
-├── support/            # Customer support
-│   ├── index.tsx
-│   ├── contact.tsx
-│   └── shipping.tsx
-│
-├── customer/           # Customer portal
-│   ├── portal.tsx
-│   └── referrals.tsx
-│
-└── retailer/           # B2B retailer portal
-    └── portal/
+└── (routes)/           # Route groups (non-localized)
 ```
 
 ## Source Directory (Components & Logic)
@@ -161,7 +128,8 @@ src/
 ├── translations/      # i18n translation files
 │   ├── en.ts         # English translations
 │   ├── fr.ts         # French translations
-│   └── zh.ts         # Chinese translations
+│   ├── zh.ts         # Chinese translations
+│   └── es.ts         # Spanish translations
 │
 ├── data/             # Static data and content
 │   ├── products.ts   # Product definitions
@@ -172,8 +140,7 @@ src/
 │   ├── index.ts
 │   └── supabase.ts
 │
-└── styles/           # Global styles
-    └── globals.css   # Tailwind imports, CSS variables
+└── styles/           # Global styles (if needed outside app/)
 ```
 
 ## Public Directory (Static Assets)
@@ -190,7 +157,7 @@ public/
 ├── original-images/        # Source images (add here, run optimization)
 ├── images/                 # Legacy images (being phased out)
 ├── videos/                 # Video assets
-├── flags/                  # Language flag icons (en.svg, fr.svg, zh.svg)
+├── flags/                  # Language flag icons (en.svg, fr.svg, zh.svg, es.svg)
 │
 ├── manifest.json           # PWA manifest
 ├── robots.txt              # SEO robots file
@@ -225,7 +192,8 @@ content/
 ├── blog/              # Blog posts (Markdown)
 │   ├── en/           # English posts
 │   ├── fr/           # French posts
-│   └── zh/           # Chinese posts
+│   ├── zh/           # Chinese posts
+│   └── es/           # Spanish posts
 ├── categories.json    # Blog categories
 └── tags.json         # Blog tags
 ```
@@ -251,13 +219,13 @@ docs/
 - **Section components** (`src/components/sections/`) - Reusable page sections with business logic
 - **Layout components** (`src/components/layout/`) - Navigation, header, footer
 - **Admin components** (`src/components/admin/`) - Admin dashboard UI
-- **Page components** (`pages/`) - Route handlers, compose sections
+- **Page components** (`app/**/page.tsx`) - Route handlers, compose sections
 
 ### File Naming
 - **Components**: PascalCase (e.g., `OptimizedImage.tsx`)
 - **Utilities**: kebab-case (e.g., `image-utils.ts`)
-- **Pages**: kebab-case (e.g., `trial-size.tsx`)
-- **API routes**: kebab-case (e.g., `create-checkout-session.ts`)
+- **Routes**: App Router uses `page.tsx`, `layout.tsx`, `loading.tsx`, `error.tsx`
+- **API routes**: Route Handlers use `route.ts` in `app/api/**/`
 - **Hooks**: camelCase with `use` prefix (e.g., `useAutoSave.ts`)
 
 ### Import Patterns
@@ -286,16 +254,49 @@ const { t } = useTranslation()
 const text = t('key.path')
 ```
 
-### API Route Pattern
+### API Route Pattern (App Router)
 ```typescript
-// pages/api/example.ts
-import type { NextApiRequest, NextApiResponse } from 'next'
+// app/api/example/route.ts
+import { NextRequest, NextResponse } from 'next/server'
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export async function GET(request: NextRequest) {
   // Handle request
+  return NextResponse.json({ success: true })
+}
+
+export async function POST(request: NextRequest) {
+  const body = await request.json()
+  // Handle POST
+  return NextResponse.json({ success: true })
+}
+```
+
+### Server Component Pattern
+```typescript
+// app/page.tsx (Server Component by default)
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Page Title',
+  description: 'Page description'
+}
+
+export default function Page() {
+  return <div>Server-rendered content</div>
+}
+```
+
+### Client Component Pattern
+```typescript
+// components/ClientComponent.tsx
+'use client'
+
+import { useState } from 'react'
+
+export function ClientComponent() {
+  const [state, setState] = useState()
+  // Client-side logic
+  return <div>Client component</div>
 }
 ```
 

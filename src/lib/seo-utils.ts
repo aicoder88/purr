@@ -402,8 +402,10 @@ export const generateArticleStructuredData = (title: string, description: string
     url: url,
     image: options?.image || 'https://www.purrify.ca/images/Logos/purrify-logo.png',
     author: {
-      '@type': 'Organization',
-      name: SITE_NAME
+      '@type': 'Person',
+      name: options?.author || 'Dr. Sarah Chen',
+      jobTitle: 'Veterinary Consultant',
+      url: 'https://www.purrify.ca/about/our-story/'
     },
     publisher: {
       '@type': 'Organization',
@@ -460,7 +462,7 @@ export const generateOrganizationSchema = (localeInput: string) => {
         email: CONTACT_INFO.email,
         contactType: 'customer service',
         areaServed: ['CA', 'US'],
-        availableLanguage: ['English', 'French', 'Chinese', 'Spanish']
+        availableLanguage: ['English', 'French']
       }
     ],
     sameAs: validSocialLinks,
@@ -875,9 +877,10 @@ export const generateArticlePageSchema = (title: string, description: string, pa
     url,
     image: options?.image || `${baseUrl}/images/Logos/purrify-logo.png`,
     author: {
-      '@type': 'Organization',
-      name: SITE_NAME,
-      url: baseUrl,
+      '@type': 'Person',
+      name: options?.author || 'Dr. Sarah Chen',
+      jobTitle: 'Veterinary Consultant',
+      url: 'https://www.purrify.ca/about/our-story/'
     },
     publisher: {
       '@type': 'Organization',

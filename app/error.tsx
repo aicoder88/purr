@@ -247,7 +247,7 @@ export default function Error({ error, reset }: ErrorPageProps) {
     checkAuth();
   }, [error]);
 
-  // Report to Sentry and log analytics
+  // Log analytics
 
   useEffect(() => {
     if (process.env.NODE_ENV === 'development') {

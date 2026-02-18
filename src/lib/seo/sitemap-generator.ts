@@ -148,7 +148,7 @@ export function shouldExclude(route: string, excludePatterns: string[]): boolean
     '/404',
     '/500',
     '/offline',
-    '/sentry-example-page',
+
     '/server-sitemap',
 
     // === REDIRECTING PAGES (3XX) ===

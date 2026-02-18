@@ -93,10 +93,25 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
         },
       ],
     },
+    keywords: [`cat litter ${city.name}`, `pet odor removal ${city.profile.province}`, `cat litter delivery ${city.name}`, `purrify ${city.name}`],
     robots: {
       // Only index English pages for SEO
       index: city.profile?.indexed !== false,
       follow: true,
+      googleBot: {
+        index: city.profile?.indexed !== false,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@purrifyhq',
+      creator: '@purrifyhq',
+      title: seoTitle,
+      description: seoDescription,
+      images: [`${SITE_URL}/images/Logos/purrify-logo.png`],
     },
   };
 }
