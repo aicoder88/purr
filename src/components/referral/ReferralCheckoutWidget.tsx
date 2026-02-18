@@ -36,11 +36,7 @@ export function ReferralCheckoutWidget({
   const referralCodePlaceholder =
     locale === 'fr'
       ? 'ex.: SARAH15-PURR'
-      : locale === 'zh'
-        ? '例如：SARAH15-PURR'
-        : locale === 'es'
-          ? 'p. ej., SARAH15-PURR'
-          : 'e.g., SARAH15-PURR';
+      : 'e.g., SARAH15-PURR';
 
   const applyCode = useCallback(async () => {
     if (!code.trim()) {

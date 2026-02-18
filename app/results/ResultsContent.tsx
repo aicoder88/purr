@@ -25,19 +25,11 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
   const breadcrumbLabel =
     locale === 'fr'
       ? 'Fil d Ariane'
-      : locale === 'zh'
-        ? '面包屑导航'
-        : locale === 'es'
-          ? 'Miga de pan'
-          : 'Breadcrumb';
+      : 'Breadcrumb';
   const resultsBreadcrumb =
     locale === 'fr'
       ? 'Resultats'
-      : locale === 'zh'
-        ? '效果'
-        : locale === 'es'
-          ? 'Resultados'
-          : 'Results';
+      : 'Results';
 
   // Stats data
   const stats = [
@@ -379,7 +371,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
                 className="inline-flex items-center gap-2 text-sm text-[#FF3131] dark:text-[#FF5050] hover:underline font-medium"
               >
                 <Quote className="w-4 h-4" />
-                {locale === 'fr' ? 'Voir tous les avis clients →' : locale === 'zh' ? '查看所有客户评价 →' : 'Read all customer reviews →'}
+                {locale === 'fr' ? 'Voir tous les avis clients →' : 'Read all customer reviews →'}
               </Link>
             </div>
           </div>

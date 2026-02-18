@@ -43,11 +43,7 @@ export default function ThankYouClient({ orderDetails, error, sessionId }: Thank
   const anytimeLabel =
     locale === 'fr'
       ? 'Nimporte quand'
-      : locale === 'zh'
-        ? '随时'
-        : locale === 'es'
-          ? 'En cualquier momento'
-          : 'Anytime';
+      : 'Anytime';
   const formattedAmount = orderDetails?.amount ? (orderDetails.amount / 100).toFixed(2) : null;
   const [referralCode, setReferralCode] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);

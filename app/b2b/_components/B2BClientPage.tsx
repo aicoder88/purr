@@ -86,20 +86,12 @@ export default function B2BClientPage() {
   const breadcrumbAriaLabel =
     locale === 'fr'
       ? "Fil d'Ariane"
-      : locale === 'zh'
-        ? '面包屑导航'
-        : locale === 'es'
-          ? 'Miga de pan'
-          : 'Breadcrumb';
+      : 'Breadcrumb';
 
   const homeLabel =
     locale === 'fr'
       ? 'Accueil'
-      : locale === 'zh'
-        ? '首页'
-        : locale === 'es'
-          ? 'Inicio'
-          : 'Home';
+      : 'Home';
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-12 bg-white dark:bg-gray-900 min-h-screen">

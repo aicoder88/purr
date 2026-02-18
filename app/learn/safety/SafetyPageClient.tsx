@@ -41,7 +41,7 @@ type SafetyCopy = {
   ctaButton: string;
 };
 
-const SAFETY_COPY: Record<'en' | 'fr' | 'zh' | 'es', SafetyCopy> = {
+const SAFETY_COPY: Record<'en' | 'fr', SafetyCopy> = {
   en: {
     breadcrumbAria: 'Breadcrumb',
     badge: 'Safety Documentation',
@@ -134,99 +134,8 @@ const SAFETY_COPY: Record<'en' | 'fr' | 'zh' | 'es', SafetyCopy> = {
     ctaBody: 'Notre equipe peut partager des references techniques supplementaires et des conseils d utilisation.',
     ctaButton: 'Contacter le Support',
   },
-  zh: {
-    breadcrumbAria: '面包屑导航',
-    badge: '安全文档',
-    title: '安全信息与技术数据',
-    subtitle: 'Purrify 活性炭 - 椰壳颗粒活性炭（8x30 目）',
-    description: '用于猫砂异味控制的过滤级活性炭。具备高吸附、低粉尘和稳定颗粒特性。',
-    labTitle: '实验室验证质量',
-    labDescription: '按行业质量与安全标准进行生产与审核。',
-    carbonTitle: '优质椰壳活性炭',
-    carbonDescription: '微孔结构针对氨气分子捕获进行优化。',
-    featuresHeading: '特性与优势',
-    featuresSubheading: '适用于异味控制和过滤场景的核心性能指标。',
-    features: [
-      { title: '微孔结构', description: '对氨气等小分子异味具有高捕获能力。' },
-      { title: '高硬度', description: '低磨损，使用周期内性能稳定。' },
-      { title: '低粉尘', description: '减少游离颗粒，处理更干净。' },
-      { title: '粒径一致', description: '颗粒均匀，应用表现更可预测。' },
-    ],
-    bestPracticesTitle: '小型宠物环境使用建议',
-    bestPracticesBody: '用于小型宠物环境时，建议装入密封袋或盒中并保持通风，使用前冲洗掉松散颗粒。',
-    specsHeading: '典型技术参数',
-    specsSubheading: '下列参数为典型参考范围。',
-    specsNote: '如需采购批次证书，请联系 Purrify 支持团队。',
-    propertyHeader: '指标',
-    valueHeader: '数值',
-    particleTitle: '可用粒径',
-    particlePrimary: '8x30 目（2.36 - 0.60 mm）- 常规异味与过滤规格',
-    particleSecondary: '可按需求提供其他目数规格。',
-    certificationsHeading: '认证与标准',
-    certificationsSubheading: '用于质量与安全评估的合规参考。',
-    certifications: [
-      '符合 NSF/ANSI 61 与 AWWA B604 指南方向',
-      '符合 FCC（食品化学品法典）',
-      '符合清真与犹太洁食要求',
-      '采用可持续椰壳原料制造',
-    ],
-    applicationsHeading: '常见应用',
-    applications: [
-      '猫砂异味控制与氨气减缓',
-      '水处理与空气过滤辅助',
-      '多猫与高负荷异味环境',
-    ],
-    ctaTitle: '需要安全或合规支持？',
-    ctaBody: '我们可以提供更多技术资料与使用建议。',
-    ctaButton: '联系支持',
-  },
-  es: {
-    breadcrumbAria: 'Ruta de navegacion',
-    badge: 'Documentacion de Seguridad',
-    title: 'Informacion de Seguridad y Ficha Tecnica',
-    subtitle: 'Carbon activado Purrify - Carbon granular de cascara de coco (8x30 mesh)',
-    description: 'Carbon activado de grado filtracion para control de olor en arena. Alto desempeno de adsorcion, bajo polvo y tamano de granulo consistente.',
-    labTitle: 'Calidad Probada en Laboratorio',
-    labDescription: 'Disenado segun estandares reconocidos de seguridad y calidad.',
-    carbonTitle: 'Carbon Premium de Cascara de Coco',
-    carbonDescription: 'Estructura microporosa optimizada para captura de amoniaco.',
-    featuresHeading: 'Caracteristicas y Beneficios',
-    featuresSubheading: 'Propiedades de desempeno usadas en aplicaciones de olor y filtracion.',
-    features: [
-      { title: 'Estructura Microporosa', description: 'Alta afinidad por moleculas pequenas de olor como el amoniaco.' },
-      { title: 'Alta Dureza', description: 'Baja abrasion para rendimiento estable durante el uso.' },
-      { title: 'Bajo Contenido de Polvo', description: 'Manipulacion mas limpia con menos particulas sueltas.' },
-      { title: 'Tamano Consistente', description: 'Granulos uniformes para aplicacion mas predecible.' },
-    ],
-    bestPracticesTitle: 'Buenas Practicas para Entornos de Mascotas Pequenas',
-    bestPracticesBody: 'Para mascotas pequenas, usa el carbon en bolsas o cartuchos sellados, manten ventilacion y enjuaga particulas sueltas antes de usar.',
-    specsHeading: 'Especificaciones Tipicas',
-    specsSubheading: 'Los valores mostrados son rangos de referencia.',
-    specsNote: 'Contacta al soporte de Purrify para certificados de compra especificos.',
-    propertyHeader: 'Propiedad',
-    valueHeader: 'Valor',
-    particleTitle: 'Tamano de Particula Disponible',
-    particlePrimary: '8x30 mesh (2.36 - 0.60 mm) - tamano estandar para olor y filtracion',
-    particleSecondary: 'Otros tamanos de malla disponibles bajo solicitud.',
-    certificationsHeading: 'Certificaciones y Estandares',
-    certificationsSubheading: 'Referencias de cumplimiento usadas para revision de calidad y seguridad.',
-    certifications: [
-      'Alineado con lineamientos NSF/ANSI 61 y AWWA B604',
-      'Cumple con Food Chemicals Codex (FCC)',
-      'Cumple con Halal y Kosher',
-      'Fabricado con materia prima sostenible de cascara de coco',
-    ],
-    applicationsHeading: 'Aplicaciones Comunes',
-    applications: [
-      'Control de olor de caja de arena y reduccion de amoniaco',
-      'Purificacion de agua y apoyo de filtracion de aire',
-      'Hogares con multiples gatos y alta carga de olor',
-    ],
-    ctaTitle: 'Necesitas Ayuda de Seguridad o Cumplimiento?',
-    ctaBody: 'Nuestro equipo puede compartir referencias tecnicas adicionales y guia de uso.',
-    ctaButton: 'Contactar Soporte',
-  },
 };
+
 
 const SPECIFICATIONS = [
   { key: 'Iodine Number', value: '>= 1000 mg/g' },
@@ -240,8 +149,8 @@ const SPECIFICATIONS = [
 
 export default function SafetyPageClient() {
   const { locale, t } = useTranslation();
-  const language = locale === 'fr' || locale === 'zh' || locale === 'es' ? locale : 'en';
-  const copy = SAFETY_COPY[language];
+  const language = locale === 'fr' ? locale : 'en';
+  const copy = SAFETY_COPY[language as 'en' | 'fr'];
 
   const features = [
     { icon: Leaf, ...copy.features[0] },

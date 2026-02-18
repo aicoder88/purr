@@ -169,11 +169,7 @@ export function RelatedArticles({ currentPath, limit = 3 }: { currentPath?: stri
   const relatedAriaLabel =
     locale === 'fr'
       ? 'Articles connexes'
-      : locale === 'zh'
-        ? '相关文章'
-        : locale === 'es'
-          ? 'Articulos relacionados'
-          : 'Related articles';
+      : 'Related articles';
 
   if (items.length === 0) return null;
 

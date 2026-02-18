@@ -1,7 +1,7 @@
 import { en } from './en';
 import { fr } from './fr';
-import { zh } from './zh';
-import { es } from './es';
+// import { zh } from './zh';
+// import { es } from './es';
 import { TranslationType } from './types';
 import type { Locale } from '@/i18n/config';
 
@@ -11,8 +11,8 @@ export * from './seo-meta';
 export const translations: Record<Locale, TranslationType> = {
   en,
   fr,
-  zh,
-  es
+  // zh,
+  // es
 };
 
 export type { Locale };

@@ -19,32 +19,14 @@ export function About() {
         poresAlt: 'Vue microscopique des pores du charbon actif',
         happyCatAlt: 'Chat heureux dans un foyer frais et propre',
       }
-      : locale === 'zh'
-        ? {
-          discoverScience: '探索其科学原理',
-          behindOur: '了解我们的',
-          activatedCarbonFormula: '活性炭配方',
-          granulesAlt: '活性炭颗粒 - 天然除味',
-          poresAlt: '活性炭孔隙的显微图',
-          happyCatAlt: '清新居家环境中的开心猫咪',
-        }
-        : locale === 'es'
-          ? {
-            discoverScience: 'Descubre la ciencia',
-            behindOur: 'detras de nuestra',
-            activatedCarbonFormula: 'formula de carbon activado',
-            granulesAlt: 'Granulos de carbon activado - eliminacion natural del olor',
-            poresAlt: 'Vista microscopica de poros de carbon activado',
-            happyCatAlt: 'Gato feliz en un hogar limpio y fresco',
-          }
-          : {
-            discoverScience: 'Discover the science',
-            behindOur: 'behind our',
-            activatedCarbonFormula: 'activated carbon formula',
-            granulesAlt: 'Activated carbon granules - natural odor elimination',
-            poresAlt: 'Microscopic view of activated carbon pores',
-            happyCatAlt: 'Happy cat in fresh, clean home environment',
-          };
+      : {
+        discoverScience: 'Discover the science',
+        behindOur: 'behind our',
+        activatedCarbonFormula: 'activated carbon formula',
+        granulesAlt: 'Activated carbon granules - natural odor elimination',
+        poresAlt: 'Microscopic view of activated carbon pores',
+        happyCatAlt: 'Happy cat in fresh, clean home environment',
+      };
   return (
     <section className="pt-20 pb-16 bg-gradient-to-b from-[#FFFFF5] to-background dark:from-gray-900 dark:to-gray-800 transition-colors duration-300" id="about">
       <Container>

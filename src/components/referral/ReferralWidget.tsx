@@ -43,11 +43,7 @@ export function ReferralWidget({
   const shareLabels =
     locale === 'fr'
       ? { whatsapp: 'WhatsApp', facebook: 'Facebook' }
-      : locale === 'zh'
-        ? { whatsapp: 'WhatsApp', facebook: 'Facebook' }
-        : locale === 'es'
-          ? { whatsapp: 'WhatsApp', facebook: 'Facebook' }
-          : { whatsapp: 'WhatsApp', facebook: 'Facebook' };
+      : { whatsapp: 'WhatsApp', facebook: 'Facebook' };
 
   const copyToClipboard = useCallback(async (text: string, type: 'code' | 'url') => {
     try {

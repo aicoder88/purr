@@ -15,23 +15,11 @@ export function WhyPurrify() {
         title: 'Pourquoi les parents de chats l adorent',
         subtitle: 'Sans parfum. Sans camouflage. Juste une solution qui fonctionne vraiment.',
       }
-      : locale === 'zh'
-        ? {
-          badge: 'Purrify 有何不同',
-          title: '猫家长喜爱的原因',
-          subtitle: '无香精，无掩盖。只有真正有效的方案。',
-        }
-        : locale === 'es'
-          ? {
-            badge: 'Que hace diferente a Purrify',
-            title: 'Por que los tutores de gatos lo aman',
-            subtitle: 'Sin perfumes. Sin encubrimientos. Solo lo que realmente funciona.',
-          }
-          : {
-            badge: 'What Makes Purrify Different',
-            title: 'Why Cat Parents Love It',
-            subtitle: 'No perfumes. No cover-ups. Just the good stuff that actually works.',
-          };
+      : {
+        badge: 'What Makes Purrify Different',
+        title: 'Why Cat Parents Love It',
+        subtitle: 'No perfumes. No cover-ups. Just the good stuff that actually works.',
+      };
 
   const reasons = [
     {

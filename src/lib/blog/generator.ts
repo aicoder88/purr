@@ -103,9 +103,7 @@ export async function generateAutomatedBlogPost() {
       author:
         topic.locale === 'fr'
           ? 'Laboratoire de recherche Purrify'
-          : topic.locale === 'zh'
-            ? 'Purrify 科研小组'
-            : 'Purrify Research Lab',
+          : 'Purrify Research Lab',
       excerpt: parsedPayload.excerpt,
       content: parsedPayload.contentHtml,
       heroImageUrl: heroImage.url,

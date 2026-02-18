@@ -209,11 +209,7 @@ export function ExitIntentPopup({
   const closePopupLabel =
     locale === 'fr'
       ? 'Fermer la fenetre'
-      : locale === 'zh'
-        ? '关闭弹窗'
-        : locale === 'es'
-          ? 'Cerrar ventana'
-          : 'Close popup';
+      : 'Close popup';
 
   return (
     <div

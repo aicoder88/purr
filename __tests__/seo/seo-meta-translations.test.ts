@@ -7,7 +7,7 @@ import {
   SEO_META,
   getSEOMeta,
   getSolutionSEOMeta,
-  _SEOMetaContent,
+  SEOMetaContent,
   PageMeta,
 } from '../../src/translations/seo-meta';
 import { LocaleCode } from '../../src/lib/seo/types';
@@ -29,7 +29,7 @@ function getSolutionPages(locale: LocaleCode): PageMeta[] {
 }
 
 describe('SEO Meta Translations Structure', () => {
-  const locales: LocaleCode[] = ['en', 'fr', 'zh', 'es'];
+  const locales: LocaleCode[] = ['en', 'fr'];
 
   describe('All Locales Present', () => {
     it('should have meta content for all 4 locales', () => {
@@ -108,7 +108,7 @@ describe('SEO Meta Translations Structure', () => {
 });
 
 describe('SEO Meta Title Optimization', () => {
-  const locales: LocaleCode[] = ['en', 'fr', 'zh', 'es'];
+  const locales: LocaleCode[] = ['en', 'fr'];
 
   describe('Title Length Requirements', () => {
     it('should have reasonable titles for homepage (not empty)', () => {
@@ -206,7 +206,7 @@ describe('SEO Meta Title Optimization', () => {
 });
 
 describe('SEO Meta Description Optimization', () => {
-  const locales: LocaleCode[] = ['en', 'fr', 'zh', 'es'];
+  const locales: LocaleCode[] = ['en', 'fr'];
 
   describe('Description Length Requirements', () => {
     it('should have meaningful descriptions for homepage', () => {
@@ -388,7 +388,7 @@ describe('getSEOMeta Helper Function', () => {
   });
 
   it('should work for all locales', () => {
-    const locales: LocaleCode[] = ['en', 'fr', 'zh', 'es'];
+    const locales: LocaleCode[] = ['en', 'fr'];
 
     locales.forEach(locale => {
       const meta = getSEOMeta(locale, 'homepage');
@@ -413,7 +413,7 @@ describe('getSolutionSEOMeta Helper Function', () => {
 
   it('should work for all solution pages', () => {
     const solutionPages = ['ammoniaSmellCatLitter', 'howToNeutralizeAmmonia', 'litterBoxSmellElimination', 'multipleCatsOdorControl'];
-    const locales: LocaleCode[] = ['en', 'fr', 'zh', 'es'];
+    const locales: LocaleCode[] = ['en', 'fr'];
 
     locales.forEach(locale => {
       solutionPages.forEach(page => {
@@ -429,44 +429,28 @@ describe('Translation Consistency', () => {
   it('should have same number of products across all locales', () => {
     const enProducts = Object.keys(SEO_META.en.products);
     const frProducts = Object.keys(SEO_META.fr.products);
-    const zhProducts = Object.keys(SEO_META.zh.products);
-    const esProducts = Object.keys(SEO_META.es.products);
 
     expect(enProducts.length).toBe(frProducts.length);
-    expect(enProducts.length).toBe(zhProducts.length);
-    expect(enProducts.length).toBe(esProducts.length);
   });
 
   it('should have same number of learn pages across all locales', () => {
     const enLearn = Object.keys(SEO_META.en.learn);
     const frLearn = Object.keys(SEO_META.fr.learn);
-    const zhLearn = Object.keys(SEO_META.zh.learn);
-    const esLearn = Object.keys(SEO_META.es.learn);
 
     expect(enLearn.length).toBe(frLearn.length);
-    expect(enLearn.length).toBe(zhLearn.length);
-    expect(enLearn.length).toBe(esLearn.length);
   });
 
   it('should have same number of blog posts across all locales', () => {
     const enBlog = Object.keys(SEO_META.en.blog);
     const frBlog = Object.keys(SEO_META.fr.blog);
-    const zhBlog = Object.keys(SEO_META.zh.blog);
-    const esBlog = Object.keys(SEO_META.es.blog);
 
     expect(enBlog.length).toBe(frBlog.length);
-    expect(enBlog.length).toBe(zhBlog.length);
-    expect(enBlog.length).toBe(esBlog.length);
   });
 
   it('should have same number of solution pages across all locales', () => {
     const enSolutions = Object.keys(SEO_META.en.learn.solutions);
     const frSolutions = Object.keys(SEO_META.fr.learn.solutions);
-    const zhSolutions = Object.keys(SEO_META.zh.learn.solutions);
-    const esSolutions = Object.keys(SEO_META.es.learn.solutions);
 
     expect(enSolutions.length).toBe(frSolutions.length);
-    expect(enSolutions.length).toBe(zhSolutions.length);
-    expect(enSolutions.length).toBe(esSolutions.length);
   });
 });

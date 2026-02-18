@@ -28,8 +28,7 @@ import {
 import { defaultLocale } from '@/i18n/config';
 import { en } from '@/translations/en';
 import { fr } from '@/translations/fr';
-import { zh } from '@/translations/zh';
-import { es } from '@/translations/es';
+
 import type { Currency } from '@/lib/geo/currency-detector';
 import { SITE_NAME } from '@/lib/constants';
 import { buildLanguageAlternates, normalizeLocale, stripContext } from '@/lib/seo-utils';
@@ -46,7 +45,7 @@ import {
 import { Testimonials } from '@/components/sections/testimonials';
 
 // Translation data mapping
-const translations = { en, fr, zh, es };
+const translations = { en, fr };
 
 // Generate metadata for the ammonia control page
 export async function generateMetadata(): Promise<Metadata> {
@@ -84,7 +83,7 @@ export async function generateMetadata(): Promise<Metadata> {
       url: canonicalUrl,
       title: ammonia.meta.title,
       description: ammonia.meta.description,
-      locale: normalizedLocale === 'fr' ? 'fr_CA' : normalizedLocale === 'zh' ? 'zh_CN' : normalizedLocale === 'es' ? 'es_ES' : 'en_CA',
+      locale: normalizedLocale === 'fr' ? 'fr_CA' : 'en_CA',
       siteName: SITE_NAME,
       images: [
         {

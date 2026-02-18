@@ -224,7 +224,7 @@ const EN_COPY: AlternativeCopy = {
     ],
 };
 
-const COPY: Record<'en' | 'fr' | 'zh' | 'es', AlternativeCopy> = {
+const COPY: Record<'en' | 'fr', AlternativeCopy> = {
     en: EN_COPY,
     fr: {
         ...EN_COPY,
@@ -234,28 +234,12 @@ const COPY: Record<'en' | 'fr' | 'zh' | 'es', AlternativeCopy> = {
         titleHighlight: 'Voici pourquoi (et une meilleure option)',
         ctaSecondary: 'Voir Tous les Produits',
     },
-    zh: {
-        ...EN_COPY,
-        breadcrumbAria: '面包屑导航',
-        badge: '产品对比',
-        titleTop: 'Arm & Hammer 效果不稳定？',
-        titleHighlight: '原因在这里（以及更有效的方案）',
-        ctaSecondary: '查看全部产品',
-    },
-    es: {
-        ...EN_COPY,
-        breadcrumbAria: 'Ruta de navegacion',
-        badge: 'Comparacion de Producto',
-        titleTop: 'Arm & Hammer no esta funcionando?',
-        titleHighlight: 'Aqui esta por que (y que funciona mejor)',
-        ctaSecondary: 'Ver Todos los Productos',
-    },
 };
 
 export default function ArmAndHammerClient() {
     const { locale, t } = useTranslation();
     const { currency } = useCurrency();
-    const language = locale === 'fr' || locale === 'zh' || locale === 'es' ? locale : 'en';
+    const language = locale === 'fr' ? locale : 'en';
     const copy = COPY[language];
 
     const trialPrice = formatProductPrice('trial', currency, locale);

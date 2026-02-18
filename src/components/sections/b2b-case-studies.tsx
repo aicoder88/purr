@@ -94,19 +94,11 @@ export function B2BCaseStudies({
   const challengeLabel =
     locale === 'fr'
       ? 'Le defi'
-      : locale === 'zh'
-        ? '挑战'
-        : locale === 'es'
-          ? 'El desafio'
-          : 'The Challenge';
+      : 'The Challenge';
   const helpsLabel =
     locale === 'fr'
       ? 'Comment Purrify aide'
-      : locale === 'zh'
-        ? 'Purrify 如何帮助'
-        : locale === 'es'
-          ? 'Como ayuda Purrify'
-          : 'How Purrify Helps';
+      : 'How Purrify Helps';
 
   // Filter and limit benefits
   const filteredBenefits = businessType

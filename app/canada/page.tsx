@@ -43,7 +43,7 @@ export async function generateMetadata(): Promise<Metadata> {
       url: canonicalUrl,
       title: pageTitle,
       description: pageDescription,
-      locale: normalizedLocale === 'fr' ? 'fr_CA' : normalizedLocale === 'zh' ? 'zh_CN' : normalizedLocale === 'es' ? 'es_ES' : 'en_CA',
+      locale: normalizedLocale === 'fr' ? 'fr_CA' : 'en_CA',
       siteName: SITE_NAME,
       images: [
         {

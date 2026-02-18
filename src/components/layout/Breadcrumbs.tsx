@@ -24,19 +24,11 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
   const breadcrumbLabel =
     locale === 'fr'
       ? 'Fil d Ariane'
-      : locale === 'zh'
-        ? '面包屑导航'
-        : locale === 'es'
-          ? 'Miga de pan'
-          : 'Breadcrumb';
+      : 'Breadcrumb';
   const homeAriaLabel =
     locale === 'fr'
       ? 'Accueil'
-      : locale === 'zh'
-        ? '首页'
-        : locale === 'es'
-          ? 'Inicio'
-          : 'Home';
+      : 'Home';
   const baseUrl = 'https://www.purrify.ca';
 
   // Generate breadcrumb structured data

@@ -1,4 +1,4 @@
-export type Locale = 'en' | 'fr' | 'zh';
+export type Locale = 'en' | 'fr';
 
 export type BlogTopic = {
   key: string;

@@ -17,7 +17,7 @@ import { useEffect, useRef, useCallback, useState } from 'react';
 import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
 import { useAggregateReview } from '@/hooks/useAggregateReview';
 import { trackTikTokClientEvent } from '@/lib/tiktok-tracking';
-type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
+type SupportedLocale = 'en' | 'fr';
 const STANDARD_PAGE_COPY: Record<SupportedLocale, {
   breadcrumbProducts: string;
   badgeMostPopular: string;
@@ -114,74 +114,7 @@ const STANDARD_PAGE_COPY: Record<SupportedLocale, {
     backToAllSizes: 'Retour a tous les formats',
     productFaqName: 'Format standard (50g)',
   },
-  zh: {
-    breadcrumbProducts: '产品',
-    badgeMostPopular: '最受欢迎',
-    verifiedStories: '活性炭添加剂',
-    heroDescription: '单猫家庭的理想选择。50克高比表面积活性炭，在异味进入鼻子前先吸附氨气。',
-    shipsNextBusinessDay: '下一个工作日发货',
-    lifestyleImageAlt: 'Purrify 标准装使用场景',
-    provenBadge: '科学验证',
-    headlineTop: '别再掩盖异味。',
-    headlineBottom: '开始真正消除。',
-    scienceDescription: '多数除味产品依赖浓香掩盖气味。Purrify 像磁铁一样，把氨分子锁进数百万个微孔中。这与饮用水系统和医院空气净化器使用的是同级过滤技术。',
-    benefits: [
-      '非常适合单猫家庭',
-      '持续 4-6 周除味',
-      '高性能活性炭配方',
-      '100% 天然、无香精、更安全',
-      '可立即改善猫砂盆异味',
-    ],
-    valueCardOneTitle: '专业级品质',
-    valueCardOneBody: '已被加拿大多家兽医机构和专业清洁服务采用。',
-    valueCardTwoTitle: '100% 猫咪安全',
-    valueCardTwoBody: '无香精、无化学添加，误食也更安心。',
-    valueCardThreeTitle: '性价比更高',
-    valueCardThreeBody: '一包标准装可替代 4-5 罐喷雾或昂贵插电除味器。',
-    detailHeadlineTop: '高比表面积',
-    detailHeadlineBottom: '分子级过滤',
-    detailDescription: '我们的活性炭来自优质椰壳，经工艺优化后拥有更高比表面积来捕捉异味颗粒。仅 1 克的表面积就接近一个网球场。',
-    resultsLabel: '真实效果',
-    testimonialQuote: '"我丈夫以前一进门就会抱怨。用了标准装后，他几乎感觉不到猫砂区的味道了。对我们的小公寓来说是巨大改变。"',
-    testimonialAttribution: '- Sarah L., 多伦多',
-    granulesImageAlt: 'Purrify 活性炭颗粒特写',
-    backToAllSizes: '返回全部规格',
-    productFaqName: '标准装 (50g)',
-  },
-  es: {
-    breadcrumbProducts: 'Productos',
-    badgeMostPopular: 'Mas popular',
-    verifiedStories: 'Aditivo de carbon activado',
-    heroDescription: 'La solucion perfecta para hogares con un solo gato. 50 gramos de carbon activado de alta superficie que atrapa el amoniaco antes de que llegue a tu nariz.',
-    shipsNextBusinessDay: 'Envia el siguiente dia habil',
-    lifestyleImageAlt: 'Tamano regular de Purrify en uso',
-    provenBadge: 'Comprobado cientificamente',
-    headlineTop: 'Deja de enmascarar.',
-    headlineBottom: 'Empieza a eliminar.',
-    scienceDescription: 'La mayoria de los desodorizantes usan perfumes fuertes para ocultar olores. Purrify funciona como un iman y atrapa moleculas de amoniaco dentro de millones de poros microscopicos. Es la misma tecnologia de filtracion usada en sistemas de agua potable y purificadores de aire hospitalarios.',
-    benefits: [
-      'Ideal para hogares con un solo gato',
-      '4-6 semanas de control continuo de olores',
-      'Formula avanzada de carbon activado',
-      '100% natural, sin fragancia y seguro',
-      'Actua al instante sobre olores de la caja de arena',
-    ],
-    valueCardOneTitle: 'Grado profesional',
-    valueCardOneBody: 'Usado por veterinarios y servicios de limpieza profesional en Canada.',
-    valueCardTwoTitle: '100% seguro para gatos',
-    valueCardTwoBody: 'Sin fragancias, sin quimicos y seguro incluso si se ingiere accidentalmente.',
-    valueCardThreeTitle: 'Mejor valor',
-    valueCardThreeBody: 'Un tamano regular reemplaza 4-5 aerosoles o difusores costosos.',
-    detailHeadlineTop: 'Alta superficie',
-    detailHeadlineBottom: 'Filtracion molecular',
-    detailDescription: 'Nuestro carbon activado proviene de cascara de coco premium y se procesa para maximizar la superficie que captura particulas de olor. Un solo gramo tiene una superficie equivalente a una cancha de tenis.',
-    resultsLabel: 'Resultados reales',
-    testimonialQuote: '"Mi esposo solia quejarse apenas entraba por la puerta. Desde que usamos el tamano regular, ya ni nota el area de la caja de arena. Cambio total para nuestro apartamento pequeno."',
-    testimonialAttribution: '- Sarah L., Toronto',
-    granulesImageAlt: 'Primer plano de granulos de carbono Purrify',
-    backToAllSizes: 'Volver a todos los tamanos',
-    productFaqName: 'Tamano estandar (50g)',
-  },
+
 };
 export default function StandardSizePage() {
   const { t, locale } = useTranslation();
@@ -232,7 +165,7 @@ export default function StandardSizePage() {
     handleBuyClick(false, quantity);
   }, [handleBuyClick]);
   // Use optimized SEO meta content
-  const seoMeta = getSEOMeta(locale as 'en' | 'fr' | 'zh' | 'es', 'products', 'standard');
+  const seoMeta = getSEOMeta(locale, 'products', 'standard');
   const pageTitle = seoMeta?.title || `${productName} - Cat Litter Freshener & Charcoal Additive | Purrify`;
   const pageDescription = seoMeta?.description || "Best cat litter freshener for single-cat homes. 50g activated charcoal cat litter additive eliminates ammonia odors for 4-6 weeks. Natural, fragrance-free, works with any litter. Ships to USA & Canada.";
   // Get aggregate review data

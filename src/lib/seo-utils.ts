@@ -7,20 +7,16 @@ import type { Currency } from './geo/currency-detector';
 interface TranslatedContent {
   en: string;
   fr: string;
-  zh: string;
-  es: string;
 }
 
 export type OfferAvailability = 'InStock' | 'OutOfStock' | 'PreOrder';
-type LocaleCode = 'en' | 'fr' | 'zh' | 'es';
+type LocaleCode = 'en' | 'fr';
 
 const DEFAULT_LOCALE: LocaleCode = 'en';
-const SUPPORTED_LOCALES: LocaleCode[] = ['en', 'fr', 'zh', 'es'];
+const SUPPORTED_LOCALES: LocaleCode[] = ['en', 'fr'];
 const LOCALE_HREFLANG_MAP: Record<LocaleCode, string> = {
   en: 'en-CA',    // English - Canada (primary market)
   fr: 'fr-CA',    // French - Canada
-  zh: 'zh-CN',    // Chinese - China (Simplified)
-  es: 'es-US',    // Spanish - USA
 };
 const SCHEMA_ORG_BASE_URL = 'https://schema.org';
 const DEFAULT_PRICE_VALIDITY_DAYS = 365;
@@ -54,15 +50,11 @@ export const stripContext = (schema: unknown) => {
 export const SEO_TRANSLATIONS = {
   siteDescription: {
     en: SITE_DESCRIPTION,
-    fr: "Additif de litiere pour chat a base de charbon actif qui elimine les odeurs a la source.",
-    zh: "活性炭猫砂添加剂，从源头消除异味。",
-    es: "Aditivo de carbon activado para arena de gatos que elimina los olores en la fuente."
+    fr: "Additif de litiere pour chat a base de charbon actif qui elimine les odeurs a la source."
   },
   organizationDescription: {
     en: "Premium activated carbon cat litter additive that eliminates odors at the molecular level. Made in Canada with natural ingredients.",
-    fr: "Additif premium pour litiere pour chat a base de charbon actif qui elimine les odeurs au niveau moleculaire. Fabrique au Canada avec des ingredients naturels.",
-    zh: "优质活性炭猫砂添加剂，在分子级别消除异味。采用天然成分在加拿大制造。",
-    es: "Aditivo premium de carbon activado para arena de gatos que elimina olores a nivel molecular. Fabricado en Canada con ingredientes naturales."
+    fr: "Additif premium pour litiere pour chat a base de charbon actif qui elimine les odeurs au niveau moleculaire. Fabrique au Canada avec des ingredients naturels."
   },
   keywords: {
     en: [
@@ -427,7 +419,7 @@ export const generateArticleStructuredData = (title: string, description: string
     dateModified: options?.dateModified || new Date().toISOString(),
     articleSection: options?.category || 'Pet Care',
     keywords: options?.keywords?.join(', ') || getLocalizedKeywords(locale).join(', '),
-    inLanguage: locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : locale === 'es' ? 'es' : 'en-CA',
+    inLanguage: locale === 'fr' ? 'fr-CA' : 'en-CA',
     about: {
       '@type': 'Thing',
       name: 'Cat Litter Odor Control'
@@ -539,7 +531,7 @@ export const generateWebsiteSchema = (localeInput: string) => {
     alternateName: `${SITE_NAME} - ${getLocalizedContent(SEO_TRANSLATIONS.siteDescription, locale)}`,
     url: localizedUrl || baseUrl,
     description: getLocalizedContent(SEO_TRANSLATIONS.siteDescription, locale),
-    inLanguage: locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : locale === 'es' ? 'es' : 'en-CA',
+    inLanguage: locale === 'fr' ? 'fr-CA' : 'en-CA',
     publisher: {
       '@id': `${baseUrl}/#organization`
     },
@@ -684,7 +676,7 @@ export const generateLocalBusinessSchema = (cityName: string, province: string, 
       email: CONTACT_INFO.email,
       contactType: 'customer service',
       areaServed: 'CA',
-      availableLanguage: locale === 'fr' ? 'French' : locale === 'zh' ? 'Chinese' : locale === 'es' ? 'Spanish' : 'English'
+      availableLanguage: locale === 'fr' ? 'French' : 'English'
     },
     openingHoursSpecification: Object.entries(CONTACT_INFO.hours)
       .filter(([, hours]) => hours !== 'Closed')
@@ -900,7 +892,7 @@ export const generateArticlePageSchema = (title: string, description: string, pa
     },
     datePublished,
     dateModified,
-    inLanguage: locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : locale === 'es' ? 'es' : 'en-CA',
+    inLanguage: locale === 'fr' ? 'fr-CA' : 'en-CA',
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': url

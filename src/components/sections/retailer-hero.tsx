@@ -18,29 +18,13 @@ export function RetailerHero() {
         inventoryTurn: 'Vitesse de rotation',
         inventoryDescription: "Reassort moyen tous les 14 jours. Ne laissez pas cet espace rayon inactif.",
       }
-      : locale === 'zh'
-        ? {
-          mainDescription: '加入 21 家成熟零售商，共同销售加拿大排名第一的猫砂除味方案，利润率可达 50%+。',
-          heroImageAlt: '宠物门店零售陈列',
-          fastSelling: '快速动销',
-          inventoryTurn: '库存周转',
-          inventoryDescription: '平均每 14 天补货一次，别让你的货架空间浪费。',
-        }
-        : locale === 'es'
-          ? {
-            mainDescription: 'Unete a 21 minoristas establecidos que venden la solucion #1 contra olores de gato en Canada con margenes de 50%+.',
-            heroImageAlt: 'Exhibicion minorista en tienda de mascotas',
-            fastSelling: 'Alta rotacion',
-            inventoryTurn: 'Rotacion de inventario',
-            inventoryDescription: 'Reabastecimiento promedio cada 14 dias. No dejes que tu espacio en estanteria se desperdicie.',
-          }
-          : {
-            mainDescription: "Join 21 established retailers selling Canada's #1 cat odor solution with 50%+ margins.",
-            heroImageAlt: 'Pet store retail display',
-            fastSelling: 'Fast-Selling',
-            inventoryTurn: 'Inventory Turn',
-            inventoryDescription: "Average retailer restocking every 14 days. Don't let your shelf space go to waste.",
-          };
+      : {
+        mainDescription: "Join 21 established retailers selling Canada's #1 cat odor solution with 50%+ margins.",
+        heroImageAlt: 'Pet store retail display',
+        fastSelling: 'Fast-Selling',
+        inventoryTurn: 'Inventory Turn',
+        inventoryDescription: "Average retailer restocking every 14 days. Don't let your shelf space go to waste.",
+      };
 
   return (
     <section className="relative w-full pt-32 pb-24 overflow-hidden bg-white dark:bg-gray-950 transition-colors duration-300">
@@ -51,6 +35,7 @@ export function RetailerHero() {
         <div className="absolute -top-[20%] right-[10%] w-[600px] h-[600px] bg-gradient-to-br from-[#5B2EFF]/10 to-[#3694FF]/10 dark:from-[#5B2EFF]/20 dark:to-[#3694FF]/20 rounded-full blur-3xl animate-pulse" />
         <div className="absolute top-[20%] -left-[10%] w-[500px] h-[500px] bg-gradient-to-tr from-[#3694FF]/10 to-[#5B2EFF]/10 dark:from-[#3694FF]/20 dark:to-[#5B2EFF]/20 rounded-full blur-3xl" />
       </div>
+
 
       <Container className="relative z-10">
         <div className="max-w-7xl mx-auto">

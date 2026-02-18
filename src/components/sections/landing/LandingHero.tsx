@@ -30,11 +30,7 @@ export function LandingHero({
   const breadcrumbAriaLabel =
     locale === 'fr'
       ? 'Fil d Ariane'
-      : locale === 'zh'
-        ? '面包屑导航'
-        : locale === 'es'
-          ? 'Miga de pan'
-          : 'Breadcrumb';
+      : 'Breadcrumb';
 
   return (
     <section className="bg-white dark:bg-gray-900 py-12 lg:py-20">

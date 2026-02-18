@@ -69,7 +69,7 @@ export async function generateMetadata({ params }: LocalizedHomepageProps): Prom
             url: canonicalUrl,
             title: pageTitle,
             description: pageDescription,
-            locale: normalizedLocale === 'fr' ? 'fr_CA' : normalizedLocale === 'zh' ? 'zh_CN' : normalizedLocale === 'es' ? 'es_US' : 'en_CA',
+            locale: normalizedLocale === 'fr' ? 'fr_CA' : 'en_CA',
             siteName: SITE_NAME,
             images: [
                 {

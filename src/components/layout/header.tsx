@@ -45,20 +45,10 @@ export function Header() {
         logoAlt: "Purrify - additif premium de charbon actif pour litiere - accueil",
         signOutAria: 'Se deconnecter',
       }
-      : locale === 'zh'
-        ? {
-          logoAlt: 'Purrify - 高端活性炭猫砂添加剂 - 首页',
-          signOutAria: '退出登录',
-        }
-        : locale === 'es'
-          ? {
-            logoAlt: 'Purrify - aditivo premium de carbon activado para arena - inicio',
-            signOutAria: 'Cerrar sesion',
-          }
-          : {
-            logoAlt: 'Purrify - Premium Activated Carbon Cat Litter Additive - Home',
-            signOutAria: 'Sign out',
-          };
+      : {
+        logoAlt: 'Purrify - Premium Activated Carbon Cat Litter Additive - Home',
+        signOutAria: 'Sign out',
+      };
   const localePrefix = locale === 'en' ? '' : `/${locale}`;
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -356,34 +346,34 @@ export function Header() {
                       <ChevronDown className="ml-1 h-4 w-4" />
                     </button>
                     {activeDropdown === item.id && (
-                        <div
-                          className="absolute top-full left-0 mt-1 bg-white dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 z-50 w-64 max-h-96 overflow-y-auto p-2"
-                          role="menu"
-                          aria-labelledby={`dropdown-${item.id}`}
-                          data-dropdown
-                        >
-                          {item.dropdownItems?.map((dropdownItem) =>
-                            dropdownItem.isGroupHeader ? (
-                              <div
-                                key={dropdownItem.label}
-                                className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2 first:mt-0"
-                              >
-                                {dropdownItem.label}
-                              </div>
-                            ) : (
-                              <Link
-                                key={dropdownItem.label}
-                                href={dropdownItem.href || ""}
-                                prefetch={false}
-                                className={`block py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 focus:text-brand-red dark:focus:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:ring-offset-1 ${dropdownItem.indent ? "pl-6" : "px-4"}`}
-                                role="menuitem"
-                              >
-                                {dropdownItem.label}
-                              </Link>
-                            ),
-                          )}
-                        </div>
-                      )}
+                      <div
+                        className="absolute top-full left-0 mt-1 bg-white dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 z-50 w-64 max-h-96 overflow-y-auto p-2"
+                        role="menu"
+                        aria-labelledby={`dropdown-${item.id}`}
+                        data-dropdown
+                      >
+                        {item.dropdownItems?.map((dropdownItem) =>
+                          dropdownItem.isGroupHeader ? (
+                            <div
+                              key={dropdownItem.label}
+                              className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2 first:mt-0"
+                            >
+                              {dropdownItem.label}
+                            </div>
+                          ) : (
+                            <Link
+                              key={dropdownItem.label}
+                              href={dropdownItem.href || ""}
+                              prefetch={false}
+                              className={`block py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 focus:text-brand-red dark:focus:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:ring-offset-1 ${dropdownItem.indent ? "pl-6" : "px-4"}`}
+                              role="menuitem"
+                            >
+                              {dropdownItem.label}
+                            </Link>
+                          ),
+                        )}
+                      </div>
+                    )}
                   </>
                 ) : (
                   <Link

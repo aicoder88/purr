@@ -81,8 +81,7 @@ function getLocaleFromAcceptLanguage(header: string | null): Locale {
   const normalized = header.toLowerCase();
 
   if (normalized.includes('fr')) return 'fr';
-  if (normalized.includes('zh')) return 'zh';
-  if (normalized.includes('es')) return 'es';
+
 
   return defaultLocale;
 }

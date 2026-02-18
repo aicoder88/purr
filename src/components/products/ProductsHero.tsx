@@ -18,23 +18,11 @@ export function ProductsHero() {
                 regular: 'Purrify format regulier',
                 trial: 'Purrify format essai',
             }
-            : locale === 'zh'
-                ? {
-                    family: 'Purrify 家庭装',
-                    regular: 'Purrify 常规装',
-                    trial: 'Purrify 试用装',
-                }
-                : locale === 'es'
-                    ? {
-                        family: 'Purrify tamano familiar',
-                        regular: 'Purrify tamano regular',
-                        trial: 'Purrify tamano de prueba',
-                    }
-                    : {
-                        family: 'Purrify Family Size',
-                        regular: 'Purrify Regular Size',
-                        trial: 'Purrify Trial Size',
-                    };
+            : {
+                family: 'Purrify Family Size',
+                regular: 'Purrify Regular Size',
+                trial: 'Purrify Trial Size',
+            };
     const useEnglishVariantHeadline = false;
     const useEnglishVariantCta = false;
     const containerRef = useRef<HTMLDivElement>(null);
@@ -53,7 +41,7 @@ export function ProductsHero() {
         >
             <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400" />
             <span>
-                {locale === 'fr' ? "Aditif sans parfum" : locale === 'zh' ? "无香型添加剂" : locale === 'es' ? "Aditivo sin fragancia" : "Fragrance-free additive"}
+                {locale === 'fr' ? "Aditif sans parfum" : "Fragrance-free additive"}
             </span>
         </motion.div>
     );

@@ -35,11 +35,7 @@ export default function ProductsPage() {
   const breadcrumbAriaLabel =
     locale === 'fr'
       ? 'Fil d Ariane'
-      : locale === 'zh'
-        ? '面包屑导航'
-        : locale === 'es'
-          ? 'Miga de pan'
-          : 'Breadcrumb';
+      : 'Breadcrumb';
   const useEnglishVariantCtaCopy = false;
 
   const trialPrice = formatProductPrice('trial', currency, locale);

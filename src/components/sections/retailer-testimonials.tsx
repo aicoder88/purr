@@ -76,58 +76,58 @@ function ClockIcon() {
 
 // Data
 const TESTIMONIALS: Testimonial[] = [
-    {
-      name: 'Pattes et Griffes – Sainte‑Thérèse',
-      title: 'Store Owner / Manager',
-      location: 'Sainte‑Thérèse, QC',
-      quote: "Our customers ask for Purrify by name now. It's an easy recommendation at the counter and reorders have been consistent month after month.",
-      logo: {
-        src: 'https://pattesgriffes.com/static/frontend/Sm/petshop_child/fr_FR/images/fonts/logo.svg',
-        alt: 'Pattes et Griffes Logo',
-        width: 64,
-        height: 64,
-        whiteBg: true
-      },
-      stats: {
-        label: 'Average Reorder Cycle',
-        value: '30 days'
-      }
+  {
+    name: 'Pattes et Griffes – Sainte‑Thérèse',
+    title: 'Store Owner / Manager',
+    location: 'Sainte‑Thérèse, QC',
+    quote: "Our customers ask for Purrify by name now. It's an easy recommendation at the counter and reorders have been consistent month after month.",
+    logo: {
+      src: 'https://pattesgriffes.com/static/frontend/Sm/petshop_child/fr_FR/images/fonts/logo.svg',
+      alt: 'Pattes et Griffes Logo',
+      width: 64,
+      height: 64,
+      whiteBg: true
     },
-    {
-      name: 'Chico – Boul. St‑Laurent (Montreal)',
-      title: 'Store Manager',
-      location: 'Montreal, QC',
-      quote: 'Simple to stock, strong margins, and it moves. The POS materials helped our team explain the benefits quickly to shoppers.',
-      logo: {
-        src: 'https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg',
-        alt: "Chico - Boutique d'animaux Logo",
-        width: 64,
-        height: 64,
-        whiteBg: true
-      },
-      stats: {
-        label: 'Shelf Sell‑Through',
-        value: 'High'
-      }
+    stats: {
+      label: 'Average Reorder Cycle',
+      value: '30 days'
+    }
+  },
+  {
+    name: 'Chico – Boul. St‑Laurent (Montreal)',
+    title: 'Store Manager',
+    location: 'Montreal, QC',
+    quote: 'Simple to stock, strong margins, and it moves. The POS materials helped our team explain the benefits quickly to shoppers.',
+    logo: {
+      src: 'https://www.chico.ca/wp-content/themes/boutiquechico/img/chico.svg',
+      alt: "Chico - Boutique d'animaux Logo",
+      width: 64,
+      height: 64,
+      whiteBg: true
     },
-    {
-      name: 'KONG ANIMALERIE',
-      title: 'Owner',
-      location: 'Montreal, QC',
-      quote: "Great add‑on at checkout. Customers come back for the larger sizes after trying it once, which tells us it's delivering results.",
-      logo: {
-        src: '/optimized/stores/kong-animalerie.webp',
-        alt: 'KONG ANIMALERIE - Montreal Pet Store Logo',
-        width: 64,
-        height: 64,
-        whiteBg: true
-      },
-      stats: {
-        label: 'Repeat Purchases',
-        value: 'Strong',
-      },
+    stats: {
+      label: 'Shelf Sell‑Through',
+      value: 'High'
+    }
+  },
+  {
+    name: 'KONG ANIMALERIE',
+    title: 'Owner',
+    location: 'Montreal, QC',
+    quote: "Great add‑on at checkout. Customers come back for the larger sizes after trying it once, which tells us it's delivering results.",
+    logo: {
+      src: '/optimized/stores/kong-animalerie.webp',
+      alt: 'KONG ANIMALERIE - Montreal Pet Store Logo',
+      width: 64,
+      height: 64,
+      whiteBg: true
     },
-  ];
+    stats: {
+      label: 'Repeat Purchases',
+      value: 'Strong',
+    },
+  },
+];
 
 const BUSINESS_METRICS: BusinessMetric[] = [
   {
@@ -166,26 +166,12 @@ export function RetailerTestimonials() {
         download: 'Telecharger les etudes de cas',
         schedule: 'Planifier un appel avec un representant',
       }
-      : locale === 'zh'
-        ? {
-          title: '想看更详细的案例研究？',
-          description: '下载我们的零售成功案例，了解其他门店如何借助 Purrify 提升业绩。',
-          download: '下载案例研究',
-          schedule: '预约代表电话',
-        }
-        : locale === 'es'
-          ? {
-            title: 'Quieres ver estudios de caso detallados?',
-            description: 'Descarga nuestras historias de exito minorista para ver como otras tiendas han crecido con Purrify.',
-            download: 'Descargar estudios de caso',
-            schedule: 'Programar llamada con un representante',
-          }
-          : {
-            title: 'Want to see detailed case studies?',
-            description: 'Download our retail success stories to see how other stores have grown their business with Purrify.',
-            download: 'Download Case Studies',
-            schedule: 'Schedule Call with Rep',
-          };
+      : {
+        title: 'Want to see detailed case studies?',
+        description: 'Download our retail success stories to see how other stores have grown their business with Purrify.',
+        download: 'Download Case Studies',
+        schedule: 'Schedule Call with Rep',
+      };
 
   return (
     <section className="py-16 bg-gray-50 dark:bg-gray-800">

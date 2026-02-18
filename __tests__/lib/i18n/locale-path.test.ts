@@ -4,8 +4,6 @@ describe('locale-path helpers', () => {
   describe('getLocaleFromPath', () => {
     it('extracts locale from prefixed paths', () => {
       expect(getLocaleFromPath('/fr/blog')).toBe('fr');
-      expect(getLocaleFromPath('/zh/learn')).toBe('zh');
-      expect(getLocaleFromPath('/es')).toBe('es');
     });
 
     it('returns null for non-localized paths', () => {
@@ -18,7 +16,6 @@ describe('locale-path helpers', () => {
     it('removes locale prefix', () => {
       expect(stripLocaleFromPath('/fr/blog')).toBe('/blog');
       expect(stripLocaleFromPath('/en')).toBe('/');
-      expect(stripLocaleFromPath('/es/learn/faq')).toBe('/learn/faq');
     });
 
     it('keeps non-localized paths intact', () => {
@@ -37,15 +34,11 @@ describe('locale-path helpers', () => {
 
     it('keeps unsupported paths unprefixed', () => {
       expect(localizePath('/learn/faq', 'fr')).toBe('/learn/faq');
-      expect(localizePath('/fr/learn/faq', 'es')).toBe('/learn/faq');
-      expect(localizePath('/about/our-story', 'zh')).toBe('/about/our-story');
     });
 
     it('localizes supported commercial routes', () => {
       expect(localizePath('/learn', 'fr')).toBe('/fr/learn');
       expect(localizePath('/fr/learn', 'en')).toBe('/learn');
-      expect(localizePath('/products', 'es')).toBe('/es/products');
-      expect(localizePath('/es/products', 'en')).toBe('/products');
     });
 
     it('preserves query strings and hash fragments', () => {

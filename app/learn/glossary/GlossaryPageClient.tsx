@@ -22,7 +22,7 @@ interface GlossaryTerm {
   category: 'science' | 'product' | 'usage' | 'comparison';
 }
 
-type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
+type SupportedLocale = 'en' | 'fr';
 
 const GLOSSARY_UI_COPY: Record<SupportedLocale, {
   breadcrumbAriaLabel: string;
@@ -114,66 +114,7 @@ const GLOSSARY_UI_COPY: Record<SupportedLocale, {
     relatedSafetyDescription: 'Consultez les certifications, normes et details de securite du produit.',
     trialPrefix: 'Essayer sans risque',
   },
-  zh: {
-    breadcrumbAriaLabel: '面包屑导航',
-    homeSrOnly: '首页',
-    breadcrumbLearn: '学习中心',
-    breadcrumbGlossary: '术语表',
-    heroTitle: '猫砂与活性炭术语表',
-    heroSubtitle: '了解除味背后的科学原理',
-    heroDescription: '掌握活性炭技术、猫砂科学与高效除味的核心术语。 ',
-    searchPlaceholder: '搜索术语...',
-    allTerms: '全部术语',
-    scienceCategory: '科学与化学',
-    productCategory: '产品类型',
-    comparisonCategory: '对比说明',
-    termLabelSingular: '个术语',
-    termLabelPlural: '个术语',
-    foundLabel: '已找到',
-    relatedLabel: '相关：',
-    emptyTitle: '未找到术语',
-    emptyDescription: '请尝试调整关键词或分类筛选',
-    ctaTitle: '查看活性炭的实际效果',
-    ctaDescription: '既然你已了解原理，现在就亲自体验我们的无风险试用。',
-    ctaLearnHow: '了解工作原理',
-    continueLearning: '继续学习',
-    relatedHowItWorksTitle: '工作原理',
-    relatedHowItWorksDescription: '深入了解活性炭与分子吸附背后的科学。',
-    relatedFaqDescription: '查看关于活性炭和 Purrify 的常见问题解答。',
-    relatedSafetyTitle: '安全信息',
-    relatedSafetyDescription: '了解认证标准与产品安全细节。',
-    trialPrefix: '无风险试用',
-  },
-  es: {
-    breadcrumbAriaLabel: 'Miga de pan',
-    homeSrOnly: 'Inicio',
-    breadcrumbLearn: 'Aprender',
-    breadcrumbGlossary: 'Glosario',
-    heroTitle: 'Glosario de Arena para Gatos y Carbon Activado',
-    heroSubtitle: 'Entiende la ciencia detras del control de olores',
-    heroDescription: 'Aprende los terminos clave sobre tecnologia de carbon activado, ciencia de arena para gatos y eliminacion efectiva de olores.',
-    searchPlaceholder: 'Buscar terminos...',
-    allTerms: 'Todos los terminos',
-    scienceCategory: 'Ciencia y quimica',
-    productCategory: 'Tipos de producto',
-    comparisonCategory: 'Comparaciones',
-    termLabelSingular: 'termino',
-    termLabelPlural: 'terminos',
-    foundLabel: 'encontrados',
-    relatedLabel: 'Relacionado:',
-    emptyTitle: 'No se encontraron terminos',
-    emptyDescription: 'Intenta ajustar la busqueda o el filtro de categoria',
-    ctaTitle: 'Ve el carbon activado en accion',
-    ctaDescription: 'Ahora que entiendes la ciencia, pruebalo con nuestra prueba sin riesgo.',
-    ctaLearnHow: 'Aprende como funciona',
-    continueLearning: 'Seguir aprendiendo',
-    relatedHowItWorksTitle: 'Como Funciona',
-    relatedHowItWorksDescription: 'Profundiza en la ciencia del carbon activado y la adsorcion molecular.',
-    relatedFaqDescription: 'Obtén respuestas a preguntas comunes sobre carbon activado y Purrify.',
-    relatedSafetyTitle: 'Informacion de seguridad',
-    relatedSafetyDescription: 'Conoce certificaciones, normas y detalles de seguridad del producto.',
-    trialPrefix: 'Probar sin riesgo',
-  },
+
 };
 
 export default function GlossaryPageClient() {
@@ -184,9 +125,7 @@ export default function GlossaryPageClient() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const trialPrice = formatProductPrice('trial', locale);
   const trialCtaLabel =
-    locale === 'zh'
-      ? `${glossaryUi.trialPrefix} - ${trialPrice}（含运费）`
-      : `${glossaryUi.trialPrefix} - ${trialPrice} (shipping included)`;
+    `${glossaryUi.trialPrefix} - ${trialPrice} (shipping included)`;
 
   // Breadcrumb items
   const breadcrumbItems = [
@@ -411,11 +350,10 @@ export default function GlossaryPageClient() {
               <button
                 key={category.id}
                 onClick={() => handleCategoryClick(category.id)}
-                className={`px-4 py-2 rounded-full font-medium transition-all ${
-                  selectedCategory === category.id
-                    ? 'bg-electric-indigo text-white dark:text-gray-100 shadow-lg'
-                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
-                }`}
+                className={`px-4 py-2 rounded-full font-medium transition-all ${selectedCategory === category.id
+                  ? 'bg-electric-indigo text-white dark:text-gray-100 shadow-lg'
+                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                  }`}
               >
                 {category.name} ({category.count})
               </button>

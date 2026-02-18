@@ -150,7 +150,7 @@ export function shouldExclude(route: string, excludePatterns: string[]): boolean
     '/offline',
     '/sentry-example-page',
     '/server-sitemap',
-    
+
     // === REDIRECTING PAGES (3XX) ===
     '/thank-you',
     '/checkout',
@@ -204,7 +204,7 @@ export function shouldExclude(route: string, excludePatterns: string[]): boolean
     '/privacy',
     '/my-account',
     '/trial',
-    
+
     // Old province abbreviations (redirects)
     '/locations/ab',
     '/locations/bc',
@@ -219,7 +219,7 @@ export function shouldExclude(route: string, excludePatterns: string[]): boolean
     '/locations/qc',
     '/locations/sk',
     '/locations/yt',
-    
+
     // === NOINDEX PAGES (protected portals) ===
     '/affiliate/dashboard',
     '/affiliate/login',
@@ -231,23 +231,23 @@ export function shouldExclude(route: string, excludePatterns: string[]): boolean
     '/results',
     '/auth/signin',
     '/affiliate/forgot-password',
-    
+
     // === NON-CANONICAL PAGES ===
     '/es/opiniones', // Canonical points to /reviews
-    
+
     // Non-English location pages (noindexed)
     '/fr/locations',
-    '/zh/locations',
-    '/es/locations',
+    // '/zh/locations',
+    // '/es/locations',
     // Spanish protected pages
-    '/es/affiliate',
-    '/es/retailer',
-    '/es/customer',
-    '/es/admin',
-    '/es/results',
-    '/es/invest',
-    '/es/dialergptpitchdeck',
-    '/es/documents',
+    // '/es/affiliate',
+    // '/es/retailer',
+    // '/es/customer',
+    // '/es/admin',
+    // '/es/results',
+    // '/es/invest',
+    // '/es/dialergptpitchdeck',
+    // '/es/documents',
   ];
 
   const allExcludePatterns = [...alwaysExclude, ...excludePatterns];
@@ -279,7 +279,7 @@ export async function generateSitemapEntries(config: SitemapConfig): Promise<Sit
     if (shouldExclude(route, exclude)) continue;
 
     // Skip individual blog post routes - we'll add them from content directory
-    if (route.match(/^\/blog\/[^/]+$/) || route.match(/^\/(fr|zh|es)\/blog\/[^/]+$/)) {
+    if (route.match(/^\/blog\/[^/]+$/) || route.match(/^\/(fr)\/blog\/[^/]+$/)) {
       continue;
     }
 
@@ -295,7 +295,7 @@ export async function generateSitemapEntries(config: SitemapConfig): Promise<Sit
   }
 
   // Add blog posts for all locales
-  const locales = ['en', 'fr', 'zh', 'es'];
+  const locales = ['en', 'fr'];
   for (const locale of locales) {
     const slugs = await getBlogPostSlugs(locale);
     const prefix = locale === 'en' ? '' : `/${locale}`;
@@ -336,8 +336,8 @@ export function entriesToXML(entries: SitemapEntry[]): string {
   const urlsets = entries.map(entry => {
     const alternatesXML = entry.alternates
       ? entry.alternates.map(alt =>
-          `    <xhtml:link rel="alternate" hreflang="${alt.hreflang}" href="${alt.href}" />`
-        ).join('\n')
+        `    <xhtml:link rel="alternate" hreflang="${alt.hreflang}" href="${alt.href}" />`
+      ).join('\n')
       : '';
 
     return `  <url>

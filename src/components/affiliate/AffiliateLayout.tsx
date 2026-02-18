@@ -31,11 +31,7 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
   const uiCopy =
     locale === 'fr'
       ? { affiliateTitle: 'Affilie Purrify', viewSite: 'Voir le site' }
-      : locale === 'zh'
-        ? { affiliateTitle: 'Purrify 联盟', viewSite: '查看网站' }
-        : locale === 'es'
-          ? { affiliateTitle: 'Afiliado Purrify', viewSite: 'Ver sitio' }
-          : { affiliateTitle: 'Purrify Affiliate', viewSite: 'View Site' };
+      : { affiliateTitle: 'Purrify Affiliate', viewSite: 'View Site' };
 
   const affiliateCode = (session?.user as { affiliateCode?: string })?.affiliateCode || '';
 
@@ -124,11 +120,10 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
                     key={item.href}
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                      isActive
+                    className={`flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors ${isActive
                         ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
                         : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-                    }`}
+                      }`}
                   >
                     <Icon className="w-5 h-5 mr-3" />
                     {item.name}
@@ -191,11 +186,10 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                    isActive
+                  className={`flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors ${isActive
                       ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
                       : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-                  }`}
+                    }`}
                 >
                   <Icon className="w-5 h-5 mr-3" />
                   {item.name}

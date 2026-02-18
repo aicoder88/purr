@@ -102,7 +102,7 @@ const EN_COPY: FamilyCopy = {
   imageThreeTitle: 'Best Value Option',
   imageThreeBody: 'Lower price-per-gram for long-term use.',
 };
-const COPY: Record<'en' | 'fr' | 'zh' | 'es', FamilyCopy> = {
+const COPY: Record<'en' | 'fr', FamilyCopy> = {
   en: EN_COPY,
   fr: {
     ...EN_COPY,
@@ -115,34 +115,12 @@ const COPY: Record<'en' | 'fr' | 'zh' | 'es', FamilyCopy> = {
     reviewButton: 'Lire les Avis',
     backButton: 'Retour aux Produits',
   },
-  zh: {
-    ...EN_COPY,
-    breadcrumbAria: '面包屑导航',
-    productsLabel: '产品',
-    pageLabel: '家庭装',
-    heroTitle: 'Purrify 家庭装',
-    heroSubtitle: '120g 猫砂除味',
-    reviewsLabel: '评价',
-    reviewButton: '查看评价',
-    backButton: '返回全部产品',
-  },
-  es: {
-    ...EN_COPY,
-    breadcrumbAria: 'Ruta de navegacion',
-    productsLabel: 'Productos',
-    pageLabel: 'Paquete Familiar',
-    heroTitle: 'Purrify Paquete Familiar',
-    heroSubtitle: 'Control de olor 120g',
-    reviewsLabel: 'opiniones',
-    reviewButton: 'Leer Opiniones',
-    backButton: 'Volver a Productos',
-  },
 };
 const TESTIMONIALS: Array<{ name: string; text: string; rating: number; petName: string }> = [];
 export default function FamilyPackPage() {
   const { t, locale } = useTranslation();
   const { currency } = useCurrency();
-  const language = locale === 'fr' || locale === 'zh' || locale === 'es' ? locale : 'en';
+  const language = locale === 'fr' ? locale : 'en';
   const copy = COPY[language];
   const viewTracked = useRef(false);
   const productKey = 'family';
@@ -154,7 +132,7 @@ export default function FamilyPackPage() {
   const standardPrice = formatProductPrice('standard', currency, locale);
   const familyPerUnit = familyPriceAmount / 12;
   const standardPerUnit = standardPriceAmount / 5;
-  const seoMeta = getSEOMeta(locale as 'en' | 'fr' | 'zh' | 'es', 'products', 'family');
+  const seoMeta = getSEOMeta(locale, 'products', 'family');
   const pageTitle = seoMeta?.title || `${SITE_NAME} Family Pack`;
   const pageDescription = seoMeta?.description || 'Family-size activated carbon litter additive for multi-cat homes.';
   const { data: reviewData } = useAggregateReview(productKey, locale);

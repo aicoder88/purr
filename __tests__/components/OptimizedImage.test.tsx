@@ -270,7 +270,7 @@ describe('OptimizedImage', () => {
     jest.resetModules();
     jest.doMock('next/image', () => ({
       __esModule: true,
-      default: function MockImage({ _onLoad }: { onLoad?: () => void }) {
+      default: function MockImage({ onLoad: _onLoad }: { onLoad?: () => void }) {
         return <img data-testid="next-image" />;
       },
     }));

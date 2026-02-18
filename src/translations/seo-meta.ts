@@ -2032,9 +2032,7 @@ export const seoMetaEs: SEOMetaContent = {
 // Export all SEO meta content indexed by locale
 export const SEO_META: Record<LocaleCode, SEOMetaContent> = {
   en: seoMetaEn,
-  fr: seoMetaFr,
-  zh: seoMetaZh,
-  es: seoMetaEs
+  fr: seoMetaFr
 };
 
 // Type for non-solutions learn keys

@@ -7,11 +7,7 @@ function CalculatorLoading() {
   const loadingText =
     locale === 'fr'
       ? 'Chargement du calculateur...'
-      : locale === 'zh'
-        ? '计算器加载中...'
-        : locale === 'es'
-          ? 'Cargando calculadora...'
-          : 'Loading calculator...';
+      : 'Loading calculator...';
 
   return (
     <div className="w-full h-96 flex items-center justify-center bg-white/50 dark:bg-gray-800/50 rounded-2xl border border-gray-200 dark:border-gray-700">

@@ -3,7 +3,7 @@
  * Provides type safety for all SEO-related data structures
  */
 
-export type LocaleCode = 'en' | 'fr' | 'zh' | 'es';
+export type LocaleCode = 'en' | 'fr';
 
 export type PageType = 'homepage' | 'product' | 'blog' | 'learn' | 'location' | 'other';
 

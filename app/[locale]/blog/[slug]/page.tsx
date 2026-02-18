@@ -360,7 +360,7 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
       const d = new Date(dateStr);
       if (isNaN(d.getTime())) return dateStr;
       return d.toLocaleDateString(
-        locale === 'fr' ? 'fr-FR' : locale === 'es' ? 'es-ES' : locale === 'zh' ? 'zh-CN' : 'en-US',
+        locale === 'fr' ? 'fr-FR' : 'en-US',
         { year: 'numeric', month: 'long', day: 'numeric' }
       );
     } catch {
@@ -439,7 +439,7 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
                   {post.heroImageCaption && <span>{post.heroImageCaption}</span>}
                   {post.heroImageCredit && (
                     <span className="ml-2">
-                      {locale === 'fr' ? 'Credit :' : locale === 'zh' ? '来源：' : locale === 'es' ? 'Credito:' : 'Credit:'} {post.heroImageCredit}
+                      {locale === 'fr' ? 'Credit :' : 'Credit:'} {post.heroImageCredit}
                     </span>
                   )}
                 </div>

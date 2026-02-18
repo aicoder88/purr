@@ -9,8 +9,6 @@
 import {
   seoMetaEn,
   seoMetaFr,
-  seoMetaZh,
-  seoMetaEs,
   SEO_META,
   PageMeta,
   SEOMetaContent
@@ -28,8 +26,8 @@ const QUALITY_PATTERNS = {
   numbers: /\d+/,
   percentages: /\d+%/,
   year: /202[4-9]/,
-  cta: /(free|try|get|learn|discover|see|stop|shop|order|start|buy|contact|gratis|essai|gratuit|prueba|免费|试用)/i,
-  benefit: /(eliminate|stop|remove|control|prevent|save|protect|reduce|解决|消除|élimine|elimina)/i
+  cta: /(free|try|get|learn|discover|see|stop|shop|order|start|buy|contact|gratis|essai|gratuit)/i,
+  benefit: /(eliminate|stop|remove|control|prevent|save|protect|reduce|élimine)/i
 };
 
 // Helper function to count characters (handling multi-byte characters)
@@ -133,12 +131,10 @@ describe('SEO Meta Content', () => {
     it('should have all required locales', () => {
       expect(SEO_META).toHaveProperty('en');
       expect(SEO_META).toHaveProperty('fr');
-      expect(SEO_META).toHaveProperty('zh');
-      expect(SEO_META).toHaveProperty('es');
     });
 
     it('should have homepage meta for all locales', () => {
-      (['en', 'fr', 'zh', 'es'] as LocaleCode[]).forEach((locale) => {
+      (['en', 'fr'] as LocaleCode[]).forEach((locale) => {
         expect(SEO_META[locale].homepage).toBeDefined();
         expect(SEO_META[locale].homepage.title).toBeDefined();
         expect(SEO_META[locale].homepage.description).toBeDefined();
@@ -146,7 +142,7 @@ describe('SEO Meta Content', () => {
     });
 
     it('should have all product pages for all locales', () => {
-      (['en', 'fr', 'zh', 'es'] as LocaleCode[]).forEach((locale) => {
+      (['en', 'fr'] as LocaleCode[]).forEach((locale) => {
         expect(SEO_META[locale].products.trial).toBeDefined();
         expect(SEO_META[locale].products.standard).toBeDefined();
         expect(SEO_META[locale].products.family).toBeDefined();
@@ -154,7 +150,7 @@ describe('SEO Meta Content', () => {
     });
 
     it('should have learn pages for all locales', () => {
-      (['en', 'fr', 'zh', 'es'] as LocaleCode[]).forEach((locale) => {
+      (['en', 'fr'] as LocaleCode[]).forEach((locale) => {
         expect(SEO_META[locale].learn.howItWorks).toBeDefined();
         expect(SEO_META[locale].learn.activatedCarbonBenefits).toBeDefined();
         expect(SEO_META[locale].learn.activatedCarbonVsBakingSoda).toBeDefined();
@@ -164,7 +160,7 @@ describe('SEO Meta Content', () => {
     });
 
     it('should have solution pages for all locales', () => {
-      (['en', 'fr', 'zh', 'es'] as LocaleCode[]).forEach((locale) => {
+      (['en', 'fr'] as LocaleCode[]).forEach((locale) => {
         expect(SEO_META[locale].learn.solutions.ammoniaSmellCatLitter).toBeDefined();
         expect(SEO_META[locale].learn.solutions.howToNeutralizeAmmonia).toBeDefined();
         expect(SEO_META[locale].learn.solutions.litterBoxSmellElimination).toBeDefined();
@@ -173,7 +169,7 @@ describe('SEO Meta Content', () => {
     });
 
     it('should have blog posts for all locales', () => {
-      (['en', 'fr', 'zh', 'es'] as LocaleCode[]).forEach((locale) => {
+      (['en', 'fr'] as LocaleCode[]).forEach((locale) => {
         const blogKeys = Object.keys(SEO_META[locale].blog);
         expect(blogKeys.length).toBeGreaterThanOrEqual(10);
       });
@@ -232,72 +228,41 @@ describe('SEO Meta Content', () => {
     });
   });
 
-  describe('Chinese Meta Quality', () => {
-    const pages = getAllPageMetas(seoMetaZh);
+});
 
-    // Chinese characters display wider, so we use different thresholds
-    it.each(pages)('$key should have reasonable title length', ({ pageMeta }) => {
-      const titleLength = getCharacterCount(pageMeta.title);
-      // Chinese titles can be shorter in character count but similar visual width
-      expect(titleLength).toBeGreaterThan(10);
-      expect(titleLength).toBeLessThan(100);
-    });
+describe('Quality Patterns', () => {
+  const locales: LocaleCode[] = ['en', 'fr'];
 
-    it.each(pages)('$key should have reasonable description length', ({ pageMeta }) => {
-      const descLength = getCharacterCount(pageMeta.description);
-      expect(descLength).toBeGreaterThan(30);
-      expect(descLength).toBeLessThan(200);
+  it('all homepage descriptions should have CTA', () => {
+    locales.forEach((locale) => {
+      const result = validatePageMeta(SEO_META[locale].homepage);
+      expect(result.hasCTA).toBe(true);
     });
   });
 
-  describe('Spanish Meta Quality', () => {
-    const pages = getAllPageMetas(seoMetaEs);
-
-    it.each(pages)('$key should have valid title length', ({ pageMeta }) => {
-      const result = validatePageMeta(pageMeta);
-      expect(result.titleInRange).toBe(true);
-    });
-
-    it.each(pages)('$key should have valid description length', ({ pageMeta }) => {
-      const result = validatePageMeta(pageMeta);
-      expect(result.descInRange).toBe(true);
+  it('all product pages should have numbers', () => {
+    locales.forEach((locale) => {
+      Object.entries(SEO_META[locale].products).forEach(([, pageMeta]) => {
+        const result = validatePageMeta(pageMeta);
+        expect(result.hasNumbers).toBe(true);
+      });
     });
   });
 
-  describe('Quality Patterns', () => {
-    const locales: LocaleCode[] = ['en', 'fr', 'zh', 'es'];
-
-    it('all homepage descriptions should have CTA', () => {
-      locales.forEach((locale) => {
-        const result = validatePageMeta(SEO_META[locale].homepage);
-        expect(result.hasCTA).toBe(true);
+  it('no title should end with ellipsis (truncated)', () => {
+    locales.forEach((locale) => {
+      const pages = getAllPageMetas(SEO_META[locale]);
+      pages.forEach(({ pageMeta }) => {
+        expect(pageMeta.title.endsWith('...')).toBe(false);
       });
     });
+  });
 
-    it('all product pages should have numbers', () => {
-      locales.forEach((locale) => {
-        Object.entries(SEO_META[locale].products).forEach(([, pageMeta]) => {
-          const result = validatePageMeta(pageMeta);
-          expect(result.hasNumbers).toBe(true);
-        });
-      });
-    });
-
-    it('no title should end with ellipsis (truncated)', () => {
-      locales.forEach((locale) => {
-        const pages = getAllPageMetas(SEO_META[locale]);
-        pages.forEach(({ pageMeta }) => {
-          expect(pageMeta.title.endsWith('...')).toBe(false);
-        });
-      });
-    });
-
-    it('no description should end with ellipsis (truncated)', () => {
-      locales.forEach((locale) => {
-        const pages = getAllPageMetas(SEO_META[locale]);
-        pages.forEach(({ pageMeta }) => {
-          expect(pageMeta.description.endsWith('...')).toBe(false);
-        });
+  it('no description should end with ellipsis (truncated)', () => {
+    locales.forEach((locale) => {
+      const pages = getAllPageMetas(SEO_META[locale]);
+      pages.forEach(({ pageMeta }) => {
+        expect(pageMeta.description.endsWith('...')).toBe(false);
       });
     });
   });

@@ -39,14 +39,6 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
       title: `Blog - Conseils pour Chats & Litière | ${SITE_NAME}`,
       description: `Conseils d'experts sur les bacs à litière, le contrôle des odeurs et les soins pour animaux. ${SITE_DESCRIPTION}`,
     },
-    es: {
-      title: `Blog - Consejos para Gatos & Arena | ${SITE_NAME}`,
-      description: `Asesoramiento experto sobre areneros, control de olores y cuidado de mascotas. ${SITE_DESCRIPTION}`,
-    },
-    zh: {
-      title: `博客 - 猫咪护理与猫砂建议 | ${SITE_NAME}`,
-      description: `关于猫砂盆、除臭和宠物护理的专家建议。${SITE_DESCRIPTION}`,
-    },
   };
 
   const localeMeta = metadataByLocale[locale] || {
@@ -56,9 +48,7 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
 
   // Build hreflang alternates with self-referencing support
   const hrefLang = locale === 'en' ? 'en-CA' :
-    locale === 'fr' ? 'fr-CA' :
-      locale === 'zh' ? 'zh-CN' :
-        locale === 'es' ? 'es-US' : 'en-CA';
+    locale === 'fr' ? 'fr-CA' : 'en-CA';
 
   const canonicalPath = locale === 'en' ? `${SITE_URL}/blog/` : `${SITE_URL}/${locale}/blog/`;
 
@@ -70,8 +60,6 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
       languages: {
         'en-CA': `${SITE_URL}/blog/`,
         'fr-CA': `${SITE_URL}/fr/blog/`,
-        'zh-CN': `${SITE_URL}/zh/blog/`,
-        'es-US': `${SITE_URL}/es/blog/`,
         'en-US': `${SITE_URL}/blog/`,
         'x-default': `${SITE_URL}/blog/`,
         // Self-reference for the current locale
@@ -94,7 +82,7 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
       url: canonicalPath,
       type: 'website',
       siteName: SITE_NAME,
-      locale: locale === 'fr' ? 'fr_CA' : locale === 'zh' ? 'zh_CN' : locale === 'es' ? 'es_US' : 'en_CA',
+      locale: locale === 'fr' ? 'fr_CA' : 'en_CA',
       images: [
         {
           url: `${SITE_URL}/images/Logos/purrify-logo.png`,
@@ -190,22 +178,6 @@ const uiStrings: Record<string, { backToBlog: string; readMore: string; previous
     page: 'Page',
     of: 'sur',
   },
-  es: {
-    backToBlog: 'Volver al Blog',
-    readMore: 'Leer Más',
-    previous: '← Anterior',
-    next: 'Siguiente →',
-    page: 'Página',
-    of: 'de',
-  },
-  zh: {
-    backToBlog: '返回博客',
-    readMore: '阅读更多',
-    previous: '← 上一页',
-    next: '下一页 →',
-    page: '页',
-    of: '/',
-  },
   en: {
     backToBlog: 'Back to Blog',
     readMore: 'Read More',
@@ -299,14 +271,10 @@ export default async function LocalizedBlogIndexPage({
               <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
                 {locale === 'en' && 'Purrify Blog'}
                 {locale === 'fr' && 'Blog Purrify'}
-                {locale === 'es' && 'Blog Purrify'}
-                {locale === 'zh' && 'Purrify 博客'}
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
                 {locale === 'en' && 'Expert tips on cat care, litter odor control, and a healthier home.'}
                 {locale === 'fr' && 'Conseils d\'experts sur les soins pour chats, le contrôle des odeurs de litière et plus encore.'}
-                {locale === 'es' && 'Consejos expertos sobre el cuidado de gatos, control de olores de arena y más.'}
-                {locale === 'zh' && '关于猫咪护理、猫砂除臭等方面的专家建议。'}
               </p>
             </div>
           </Container>
@@ -340,7 +308,7 @@ export default async function LocalizedBlogIndexPage({
                           try {
                             const d = new Date(post.date);
                             if (isNaN(d.getTime())) return post.date || 'Unknown date';
-                            return d.toLocaleDateString(locale === 'fr' ? 'fr-FR' : locale === 'es' ? 'es-ES' : locale === 'zh' ? 'zh-CN' : 'en-US', {
+                            return d.toLocaleDateString(locale === 'fr' ? 'fr-FR' : 'en-US', {
                               year: 'numeric',
                               month: 'short',
                               day: 'numeric',

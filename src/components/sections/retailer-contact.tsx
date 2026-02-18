@@ -152,23 +152,11 @@ export function RetailerContact() {
         copyWholesaleAria: "Copier l adresse e-mail de vente en gros",
         copied: 'Copie!',
       }
-      : locale === 'zh'
-        ? {
-          partnerNetwork: 'Purrify 合作伙伴网络！',
-          copyWholesaleAria: '复制批发邮箱地址',
-          copied: '已复制！',
-        }
-        : locale === 'es'
-          ? {
-            partnerNetwork: 'Red de socios de Purrify!',
-            copyWholesaleAria: 'Copiar direccion de correo mayorista',
-            copied: 'Copiado!',
-          }
-          : {
-            partnerNetwork: 'Purrify Partner Network!',
-            copyWholesaleAria: 'Copy wholesale email address',
-            copied: 'Copied!',
-          };
+      : {
+        partnerNetwork: 'Purrify Partner Network!',
+        copyWholesaleAria: 'Copy wholesale email address',
+        copied: 'Copied!',
+      };
 
   // Build business types from translations
   const businessTypes = useMemo(() => [

@@ -18,11 +18,7 @@ export function ThemeToggle() {
   const themeLabels =
     locale === 'fr'
       ? { light: 'Clair', dark: 'Sombre', system: 'Systeme' }
-      : locale === 'zh'
-        ? { light: '浅色', dark: '深色', system: '系统' }
-        : locale === 'es'
-          ? { light: 'Claro', dark: 'Oscuro', system: 'Sistema' }
-          : { light: 'Light', dark: 'Dark', system: 'System' };
+      : { light: 'Light', dark: 'Dark', system: 'System' };
 
   const setLightTheme = useCallback(() => setTheme("light"), [setTheme]);
   const setDarkTheme = useCallback(() => setTheme("dark"), [setTheme]);

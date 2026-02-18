@@ -28,8 +28,8 @@ export class CategoryManager {
    */
   async getCategoriesWithStats(): Promise<CategoryWithStats[]> {
     const categories = await this.contentStore.getCategories();
-    const locales = ['en', 'fr', 'zh'];
-    
+    const locales = ['en', 'fr'];
+
     const categoriesWithStats: CategoryWithStats[] = [];
 
     for (const category of categories) {
@@ -39,14 +39,14 @@ export class CategoryManager {
       for (const locale of locales) {
         const posts = await this.contentStore.getAllPosts(locale, true);
         const categoryPosts = posts.filter(p => p.categories.includes(category.id));
-        
+
         postCount += categoryPosts.length;
 
         if (categoryPosts.length > 0) {
-          const latestPost = categoryPosts.sort((a, b) => 
+          const latestPost = categoryPosts.sort((a, b) =>
             new Date(b.modifiedDate).getTime() - new Date(a.modifiedDate).getTime()
           )[0];
-          
+
           if (!lastUsed || new Date(latestPost.modifiedDate) > new Date(lastUsed)) {
             lastUsed = latestPost.modifiedDate;
           }
@@ -68,8 +68,8 @@ export class CategoryManager {
    */
   async getTagsWithStats(): Promise<TagWithStats[]> {
     const tags = await this.contentStore.getTags();
-    const locales = ['en', 'fr', 'zh'];
-    
+    const locales = ['en', 'fr'];
+
     const tagsWithStats: TagWithStats[] = [];
 
     for (const tag of tags) {
@@ -80,14 +80,14 @@ export class CategoryManager {
       for (const locale of locales) {
         const posts = await this.contentStore.getAllPosts(locale, true);
         const tagPosts = posts.filter(p => p.tags.includes(tag.id));
-        
+
         postCount += tagPosts.length;
 
         if (tagPosts.length > 0) {
-          const latestPost = tagPosts.sort((a, b) => 
+          const latestPost = tagPosts.sort((a, b) =>
             new Date(b.modifiedDate).getTime() - new Date(a.modifiedDate).getTime()
           )[0];
-          
+
           if (!lastUsed || new Date(latestPost.modifiedDate) > new Date(lastUsed)) {
             lastUsed = latestPost.modifiedDate;
           }
@@ -125,7 +125,7 @@ export class CategoryManager {
    */
   async createCategory(category: Category): Promise<void> {
     const categories = await this.contentStore.getCategories();
-    
+
     // Check for duplicate slug
     if (categories.some(c => c.slug === category.slug)) {
       throw new Error(`Category with slug "${category.slug}" already exists`);
@@ -171,10 +171,10 @@ export class CategoryManager {
       }
 
       // Reassign posts to new category
-      const locales = ['en', 'fr', 'zh'];
+      const locales = ['en', 'fr'];
       for (const locale of locales) {
         const posts = await this.contentStore.getAllPosts(locale, true);
-        
+
         for (const post of posts) {
           if (post.categories.includes(id)) {
             post.categories = post.categories.filter(c => c !== id);
@@ -197,7 +197,7 @@ export class CategoryManager {
    */
   async createTag(tag: Tag): Promise<void> {
     const tags = await this.contentStore.getTags();
-    
+
     // Check for duplicate slug
     if (tags.some(t => t.slug === tag.slug)) {
       throw new Error(`Tag with slug "${tag.slug}" already exists`);
@@ -234,10 +234,10 @@ export class CategoryManager {
     }
 
     // Remove tag from all posts
-    const locales = ['en', 'fr', 'zh'];
+    const locales = ['en', 'fr'];
     for (const locale of locales) {
       const posts = await this.contentStore.getAllPosts(locale, true);
-      
+
       for (const post of posts) {
         if (post.tags.includes(id)) {
           post.tags = post.tags.filter(t => t !== id);
@@ -263,13 +263,13 @@ export class CategoryManager {
     }
 
     // Update all posts using source tags
-    const locales = ['en', 'fr', 'zh'];
+    const locales = ['en', 'fr'];
     for (const locale of locales) {
       const posts = await this.contentStore.getAllPosts(locale, true);
-      
+
       for (const post of posts) {
         const hasSourceTag = post.tags.some(t => sourceIds.includes(t));
-        
+
         if (hasSourceTag) {
           // Remove source tags and add target tag
           post.tags = post.tags.filter(t => !sourceIds.includes(t));
@@ -295,10 +295,10 @@ export class CategoryManager {
 
     return tags.filter(tag => {
       const tagNormalized = tag.name.toLowerCase().trim();
-      
+
       // Exact match
       if (tagNormalized === normalized) return true;
-      
+
       // Very similar (Levenshtein distance <= 2)
       const distance = this.levenshteinDistance(tagNormalized, normalized);
       return distance <= 2;

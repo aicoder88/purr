@@ -99,18 +99,5 @@ export const AUTOMATED_BLOG_TOPICS: BlogTopic[] = [
     targetAudience: 'Households needing hypoallergenic solutions.',
     cta: 'Activated carbon absorbs odors without synthetic perfume.'
   },
-  {
-    key: 'zh-clean-home-guide',
-    locale: 'zh',
-    title: '10个保持猫砂盆清新的科学方法 (含活性炭技巧)',
-    slug: 'zh-clean-cat-litter-guide',
-    primaryKeyword: '活性炭猫砂除臭',
-    secondaryKeywords: ['猫砂除臭技巧', '无香猫砂除臭'],
-    intent: 'Educational / actionable',
-    hook: '综合100+户家庭的测试数据，用科学步骤保持家中空气清新。',
-    shareability: '中文可分享图表 + 分步指南。',
-    contentAngle: '强调活性炭吸附、湿度管理、日常习惯。',
-    targetAudience: '讲中文的猫奴，尤其是公寓住户。',
-    cta: '立即订购 Purrify 活性炭除臭颗粒。'
-  }
+
 ];

@@ -169,7 +169,7 @@ type ToolCopy = {
   shareBodySuffix: string;
 };
 
-const COPY: Record<'en' | 'fr' | 'zh' | 'es', ToolCopy> = {
+const COPY: Record<'en' | 'fr', ToolCopy> = {
   en: {
     breadcrumbAria: 'Breadcrumb',
     home: 'Home',
@@ -298,139 +298,11 @@ const COPY: Record<'en' | 'fr' | 'zh' | 'es', ToolCopy> = {
     shareBodyPrefix: 'Cout annuel estime :',
     shareBodySuffix: 'avec cette configuration.',
   },
-  zh: {
-    breadcrumbAria: '面包屑导航',
-    home: '首页',
-    pageName: '猫砂计算器',
-    heroTitle: '猫砂成本计算器',
-    heroDescription: '估算年度猫砂成本并比较不同猫砂类型。',
-    detailsHeading: '输入参数',
-    catsLabel: '猫咪数量',
-    litterLabel: '猫砂类型',
-    customPriceLabel: '自定义单价（每公斤）',
-    customPricePlaceholder: '输入自定义价格',
-    propertiesHeading: '猫砂属性',
-    odorLabel: '除味',
-    dustLabel: '粉尘',
-    clumpingLabel: '结团',
-    ecoLabel: '环保',
-    yes: '是',
-    no: '否',
-    ecoTrue: '可降解',
-    ecoFalse: '不可降解',
-    annualCostHeading: '年度猫砂成本',
-    yearlySuffix: '/年',
-    monthlyLabel: '每月',
-    dailyLabel: '每日',
-    usageHeading: '猫砂用量',
-    monthlyUsageLabel: '月用量',
-    annualUsageLabel: '年用量',
-    potentialSavingsHeading: '潜在节省',
-    potentialSavingsBodyPrefix: '切换到',
-    potentialSavingsBodySuffix: '可降低年度成本。',
-    addDeodorizer: '加入除味添加剂',
-    addDeodorizerBody: '活性炭可延长猫砂使用周期并减少异味。',
-    deodorizerCostLabel: '添加剂成本',
-    litterSavingsLabel: '猫砂节省',
-    netCostLabel: '净成本',
-    copiedLink: '链接已复制',
-    shareResults: '分享结果',
-    compareHeading: '所有猫砂类型对比',
-    litterTypeHeader: '类型',
-    priceHeader: '每公斤价格',
-    annualCostHeader: '年度成本',
-    odorHeader: '除味',
-    ecoHeader: '环保',
-    selectedBadge: '已选',
-    annualShort: '/年',
-    tableFootnotePrefix: '以下年度成本基于',
-    tableFootnoteSuffix: '只猫估算，实际情况因家庭而异。',
-    tipsHeading: '降低猫砂成本建议',
-    tips: [
-      { title: '大包装采购', description: '大包装通常每公斤更便宜。' },
-      { title: '每日铲砂', description: '可延长整盆更换周期。' },
-      { title: '使用猫砂垫', description: '减少带出浪费。' },
-      { title: '合理使用活性炭', description: '减少因异味提前整盆更换。' },
-      { title: '匹配猫砂盆尺寸', description: '过大猫砂盆通常会增加消耗。' },
-      { title: '订阅优惠', description: '周期配送有时更省。' },
-    ],
-    ctaTitle: '想同时控制成本和异味？',
-    ctaBody: 'Purrify 使用椰壳活性炭在分子层面捕捉异味。',
-    ctaPrimary: '免费试用（仅付运费）',
-    ctaSecondary: '查看原理',
-    shareTitle: '猫砂成本计算器',
-    shareBodyPrefix: '年度成本估算：',
-    shareBodySuffix: '（当前配置）。',
-  },
-  es: {
-    breadcrumbAria: 'Ruta de navegacion',
-    home: 'Inicio',
-    pageName: 'Calculadora de Arena',
-    heroTitle: 'Calculadora de Costo de Arena para Gatos',
-    heroDescription: 'Calcula costos anuales, compara tipos de arena y encuentra oportunidades de ahorro.',
-    detailsHeading: 'Tus Datos',
-    catsLabel: 'Numero de Gatos',
-    litterLabel: 'Tipo de Arena',
-    customPriceLabel: 'Tu precio por kg (opcional)',
-    customPricePlaceholder: 'Ingresa un precio personalizado',
-    propertiesHeading: 'Propiedades de la Arena',
-    odorLabel: 'Olor',
-    dustLabel: 'Polvo',
-    clumpingLabel: 'Aglomerante',
-    ecoLabel: 'Eco',
-    yes: 'Si',
-    no: 'No',
-    ecoTrue: 'Biodegradable',
-    ecoFalse: 'No biodegradable',
-    annualCostHeading: 'Costo Anual de Arena',
-    yearlySuffix: '/ano',
-    monthlyLabel: 'Mensual',
-    dailyLabel: 'Diario',
-    usageHeading: 'Uso de Arena',
-    monthlyUsageLabel: 'Uso mensual',
-    annualUsageLabel: 'Uso anual',
-    potentialSavingsHeading: 'Ahorro Potencial',
-    potentialSavingsBodyPrefix: 'Cambiar a',
-    potentialSavingsBodySuffix: 'puede reducir tu costo anual.',
-    addDeodorizer: 'Agregar Desodorizante',
-    addDeodorizerBody: 'El carbon activado puede extender la vida de la arena y reducir olores.',
-    deodorizerCostLabel: 'Costo desodorizante',
-    litterSavingsLabel: 'Ahorro en arena',
-    netCostLabel: 'Costo neto',
-    copiedLink: 'Enlace copiado',
-    shareResults: 'Compartir resultados',
-    compareHeading: 'Comparar Todos los Tipos de Arena',
-    litterTypeHeader: 'Tipo',
-    priceHeader: '$/kg',
-    annualCostHeader: 'Costo Anual',
-    odorHeader: 'Olor',
-    ecoHeader: 'Eco',
-    selectedBadge: 'Seleccionado',
-    annualShort: '/ano',
-    tableFootnotePrefix: 'Costos anuales estimados para',
-    tableFootnoteSuffix: 'gato(s). El costo real puede variar.',
-    tipsHeading: 'Consejos para Reducir Costos',
-    tips: [
-      { title: 'Compra al por mayor', description: 'Los paquetes grandes suelen bajar el costo por kg.' },
-      { title: 'Retira desechos a diario', description: 'Extiende la vida util de la arena.' },
-      { title: 'Usa tapete para arena', description: 'Reduce perdida por arrastre fuera de la caja.' },
-      { title: 'Usa carbono activado', description: 'Puede reducir cambios completos anticipados.' },
-      { title: 'Tamano correcto de caja', description: 'Una caja sobredimensionada aumenta consumo.' },
-      { title: 'Descuentos por suscripcion', description: 'Las entregas recurrentes pueden costar menos.' },
-    ],
-    ctaTitle: 'Controlar Olor y Costo al Mismo Tiempo?',
-    ctaBody: 'Purrify usa carbono activado de coco para atrapar olor en la fuente.',
-    ctaPrimary: 'Prueba Gratis (Solo Envio)',
-    ctaSecondary: 'Ver Como Funciona',
-    shareTitle: 'Calculadora de Costo de Arena',
-    shareBodyPrefix: 'Costo anual estimado:',
-    shareBodySuffix: 'con esta configuracion.',
-  },
 };
 
 export default function CatLitterCalculatorPage() {
   const { locale } = useTranslation();
-  const language = locale === 'fr' || locale === 'zh' || locale === 'es' ? locale : 'en';
+  const language = locale === 'fr' ? locale : 'en';
   const copy = COPY[language];
 
   const [numberOfCats, setNumberOfCats] = useState(1);
@@ -736,11 +608,10 @@ export default function CatLitterCalculatorPage() {
                   {calculations.allLitterCosts.map((litter, index) => (
                     <tr
                       key={litter.id}
-                      className={`border-t border-gray-100 dark:border-gray-700 ${
-                        litter.id === selectedLitter
-                          ? 'bg-green-50 dark:bg-green-900/20'
-                          : index % 2 === 0 ? 'bg-white dark:bg-gray-900' : 'bg-gray-50 dark:bg-gray-800/50'
-                      }`}
+                      className={`border-t border-gray-100 dark:border-gray-700 ${litter.id === selectedLitter
+                        ? 'bg-green-50 dark:bg-green-900/20'
+                        : index % 2 === 0 ? 'bg-white dark:bg-gray-900' : 'bg-gray-50 dark:bg-gray-800/50'
+                        }`}
                     >
                       <td className="px-4 py-3 text-sm text-gray-900 dark:text-gray-100 font-medium">
                         {litter.name}

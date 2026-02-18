@@ -10,23 +10,11 @@ export function RetailerBenefits() {
         { value: '$2.3M', label: 'Revenus annuels en detail' },
         { value: '98%', label: 'Satisfaction des partenaires' },
       ]
-      : locale === 'zh'
-        ? [
-          { value: '17', label: '当前零售合作伙伴' },
-          { value: '$2.3M', label: '年度零售营收' },
-          { value: '98%', label: '合作伙伴满意度' },
-        ]
-        : locale === 'es'
-          ? [
-            { value: '17', label: 'Socios minoristas actuales' },
-            { value: '$2.3M', label: 'Ingresos minoristas anuales' },
-            { value: '98%', label: 'Satisfaccion de socios' },
-          ]
-          : [
-            { value: '17', label: 'Current Retail Partners' },
-            { value: '$2.3M', label: 'Annual Retail Revenue' },
-            { value: '98%', label: 'Partner Satisfaction' },
-          ];
+      : [
+        { value: '17', label: 'Current Retail Partners' },
+        { value: '$2.3M', label: 'Annual Retail Revenue' },
+        { value: '98%', label: 'Partner Satisfaction' },
+      ];
 
   const benefits = [
     {

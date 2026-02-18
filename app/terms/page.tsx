@@ -106,7 +106,7 @@ const EN_SECTIONS: TermsSection[] = [
   },
 ];
 
-const TERMS_COPY: Record<'en' | 'fr' | 'zh' | 'es', TermsCopy> = {
+const TERMS_COPY: Record<'en' | 'fr', TermsCopy> = {
   en: {
     breadcrumbAria: 'Breadcrumb',
     pageTitle: `Terms of Service | ${SITE_NAME}`,
@@ -141,45 +141,11 @@ const TERMS_COPY: Record<'en' | 'fr' | 'zh' | 'es', TermsCopy> = {
     contactPhoneLabel: 'Telephone',
     contactAddressLabel: 'Adresse',
   },
-  zh: {
-    breadcrumbAria: '面包屑导航',
-    pageTitle: `${SITE_NAME} 服务条款`,
-    pageDescription: '查看 Purrify 的服务条款、使用规则与购买相关条件。',
-    heading: '服务条款',
-    lastUpdated: '最后更新：2026年2月12日',
-    intro: [
-      '在使用我们的网站和服务前，请先阅读本条款。',
-      '访问或使用本服务即表示您同意受本条款约束。',
-    ],
-    sections: EN_SECTIONS,
-    contactHeading: '12. 联系我们',
-    contactLabel: '如果您对条款有疑问：',
-    contactEmailLabel: '邮箱',
-    contactPhoneLabel: '电话',
-    contactAddressLabel: '地址',
-  },
-  es: {
-    breadcrumbAria: 'Ruta de navegacion',
-    pageTitle: `Terminos de Servicio | ${SITE_NAME}`,
-    pageDescription: 'Lee los terminos de servicio de Purrify y las condiciones para usar nuestros productos y servicios.',
-    heading: 'Terminos de Servicio',
-    lastUpdated: 'Ultima actualizacion: 12 de febrero de 2026',
-    intro: [
-      'Lee estos terminos cuidadosamente antes de usar nuestro sitio y servicios.',
-      'Al acceder o usar el Servicio, aceptas quedar sujeto a estos terminos.',
-    ],
-    sections: EN_SECTIONS,
-    contactHeading: '12. Contacto',
-    contactLabel: 'Si tienes preguntas sobre estos terminos:',
-    contactEmailLabel: 'Correo',
-    contactPhoneLabel: 'Telefono',
-    contactAddressLabel: 'Direccion',
-  },
 };
 
 export default function TermsPage() {
   const { locale, t } = useTranslation();
-  const language = locale === 'fr' || locale === 'zh' || locale === 'es' ? locale : 'en';
+  const language = locale === 'fr' ? locale : 'en';
   const copy = TERMS_COPY[language];
 
   const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({

@@ -188,27 +188,15 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
   const breadcrumbAriaLabel =
     locale === 'fr'
       ? 'Fil d Ariane'
-      : locale === 'zh'
-        ? '面包屑导航'
-        : locale === 'es'
-          ? 'Miga de pan'
-          : 'Breadcrumb';
+      : 'Breadcrumb';
   const preparingCityGuideText =
     locale === 'fr'
       ? 'Preparation du guide de la ville...'
-      : locale === 'zh'
-        ? '正在准备城市指南...'
-        : locale === 'es'
-          ? 'Preparando guia de la ciudad...'
-          : 'Preparing City Guide...';
+      : 'Preparing City Guide...';
   const loadingTipsPrefix =
     locale === 'fr'
       ? 'Chargement des meilleurs conseils anti-odeurs pour'
-      : locale === 'zh'
-        ? '正在加载适合以下城市的新鲜除味建议：'
-        : locale === 'es'
-          ? 'Cargando los mejores consejos de control de olor para'
-          : 'Loading the freshest odor control tips for';
+      : 'Loading the freshest odor control tips for';
 
   // Use initialProfile if provided (SSR), otherwise lookup (CSR fallback)
   const cityRecord = useMemo(() => {
@@ -307,7 +295,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
 
   const seasonalTip = climateInsights[0] ?? 'changing seasons';
   const painPoint = scentPainPoints[0] ?? 'constant litter box odors';
-  const schemaLocale = locale === 'fr' || locale === 'zh' ? locale : 'en';
+  const schemaLocale = locale === 'fr' ? locale : 'en';
 
   const provinceWidePills = locale === 'fr'
     ? {
@@ -318,32 +306,14 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
       description: `Des conseils et des ressources utiles pour reduire l'odeur de la litiere dans tout le ${provinceName}.`,
       explore: `Explorer plus de pages au ${provinceName} →`,
     }
-    : locale === 'zh'
-      ? {
-        pill1: '无香型添加剂',
-        pill2: '适用于大多数猫砂',
-        pill3: `${provinceName}快速配送`,
-        heading: `${provinceName}的猫主人选择Purrify`,
-        description: `实用指南与资源，帮助你减少猫砂盆异味。`,
-        explore: `查看更多${provinceName}页面 →`,
-      }
-      : locale === 'es'
-        ? {
-          pill1: 'Aditivo sin fragancia',
-          pill2: 'Funciona con la mayoria de arenas',
-          pill3: `Envio rapido a ${provinceName}`,
-          heading: `Duenos de gatos en ${provinceName} eligen Purrify`,
-          description: `Guias y recursos practicos para reducir el olor de la caja de arena en ${provinceName}.`,
-          explore: `Explorar mas paginas en ${provinceName} →`,
-        }
-        : {
-          pill1: 'Fragrance-free additive',
-          pill2: 'Works with most litter',
-          pill3: `Fast ${provinceName} shipping`,
-          heading: `Cat owners across ${provinceName} choose Purrify`,
-          description: `Helpful guides and resources to reduce litter box odor across ${provinceName}.`,
-          explore: `Explore more ${provinceName} pages →`,
-        };
+    : {
+      pill1: 'Fragrance-free additive',
+      pill2: 'Works with most litter',
+      pill3: `Fast ${provinceName} shipping`,
+      heading: `Cat owners across ${provinceName} choose Purrify`,
+      description: `Helpful guides and resources to reduce litter box odor across ${provinceName}.`,
+      explore: `Explore more ${provinceName} pages →`,
+    };
 
   useEffect(() => {
     if (!profile) return;
@@ -505,11 +475,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
             <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-8">
               {locale === 'fr'
                 ? `Aditif au charbon actif pour reduire les odeurs de litiere a ${profile.name}, ${provinceName}.`
-                : locale === 'zh'
-                  ? `${profile.name}（${provinceName}）猫砂除味活性炭添加剂指南。`
-                  : locale === 'es'
-                    ? `Aditivo de carbon activado para reducir el olor de la caja de arena en ${profile.name}, ${provinceName}.`
-                    : `Activated carbon additive to reduce litter box odor in ${profile.name}, ${provinceName}.`}
+                : `Activated carbon additive to reduce litter box odor in ${profile.name}, ${provinceName}.`}
             </p>
 
             <div className="bg-white dark:bg-gray-800/90 rounded-lg p-6 shadow-lg max-w-3xl mx-auto">

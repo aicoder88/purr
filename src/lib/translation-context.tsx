@@ -17,7 +17,7 @@ type TranslationContextType = {
 
 export const TranslationContext = createContext<TranslationContextType | undefined>(undefined);
 
-const VALID_LOCALES: Locale[] = ['en', 'fr', 'zh', 'es'];
+const VALID_LOCALES: Locale[] = ['en', 'fr'];
 
 export function TranslationProvider({
   children,

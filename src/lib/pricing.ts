@@ -22,8 +22,6 @@ const priceById = PRODUCTS.reduce<Record<ProductCatalogId, number>>((acc, produc
 
 const resolveLocale = (locale?: string) => {
   if (locale === 'fr') return 'fr-CA';
-  if (locale === 'zh') return 'zh-CN';
-  if (locale === 'es') return 'es-ES';
   return locale ?? 'en-CA';
 };
 
@@ -68,7 +66,7 @@ export const formatProductPrice = (
 ): string => {
   // Backward compatibility: if currencyOrLocale looks like a locale, treat it as such
   // Explicitly check for all known locale codes and locale patterns
-  const knownLocales = ['en', 'fr', 'zh', 'es'];
+  const knownLocales = ['en', 'fr'];
   const isLocale = currencyOrLocale !== 'CAD' && currencyOrLocale !== 'USD' &&
     (currencyOrLocale.includes('-') ||
       currencyOrLocale.includes('_') ||
@@ -88,7 +86,7 @@ export const formatProductPrice = (
 
 export const getPriceRange = (currencyOrLocale: Currency | string = 'CAD', locale?: string) => {
   // Backward compatibility: if first param looks like a locale, treat it as such
-  const knownLocales = ['en', 'fr', 'zh', 'es'];
+  const knownLocales = ['en', 'fr'];
   const isLocale = currencyOrLocale !== 'CAD' && currencyOrLocale !== 'USD' &&
     (currencyOrLocale.includes('-') ||
       currencyOrLocale.includes('_') ||
@@ -132,7 +130,7 @@ export const PRODUCT_PRICES = (Object.keys(PRODUCT_ID_ALIAS) as ProductPriceKey[
 
 export const formatCurrencyValue = (value: number, currencyOrLocale: Currency | string = 'CAD', locale?: string): string => {
   // Backward compatibility: if second param looks like a locale, treat it as such
-  const knownLocales = ['en', 'fr', 'zh', 'es'];
+  const knownLocales = ['en', 'fr'];
   const isLocale = currencyOrLocale !== 'CAD' && currencyOrLocale !== 'USD' &&
     (currencyOrLocale.includes('-') ||
       currencyOrLocale.includes('_') ||

@@ -46,7 +46,7 @@ export default function TrialSizePage() {
     setPriceValidUntil(new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]);
   }, []);
 
-  const seoMeta = getSEOMeta(locale as 'en' | 'fr' | 'zh' | 'es', 'products', 'trial');
+  const seoMeta = getSEOMeta(locale, 'products', 'trial');
   const pageTitle = seoMeta?.title || '';
   const pageDescription = seoMeta?.description || '';
 

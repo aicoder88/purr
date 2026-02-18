@@ -30,7 +30,7 @@ import { stripContext } from '@/lib/seo-utils';
 
 // FAQ Schema Generator
 function generateFAQSchema(questions: { question: string; answer: string }[], locale: string) {
-  const inLanguage = locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : locale === 'es' ? 'es-US' : 'en-CA';
+  const inLanguage = locale === 'fr' ? 'fr-CA' : 'en-CA';
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -48,7 +48,7 @@ function generateFAQSchema(questions: { question: string; answer: string }[], lo
   };
 }
 
-type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
+type SupportedLocale = 'en' | 'fr';
 
 const FAQ_UI_COPY: Record<SupportedLocale, {
   breadcrumbAriaLabel: string;
@@ -92,34 +92,7 @@ const FAQ_UI_COPY: Record<SupportedLocale, {
     happyOwnerTitle: 'Rejoignez des milliers de proprietaires satisfaits',
     happyOwnerSubtitle: 'Decouvrez la difference Purrify des aujourd hui',
   },
-  zh: {
-    breadcrumbAriaLabel: '面包屑导航',
-    lastUpdatedLabel: '最近更新：',
-    heroImageAlt: '猫主人正在查看 Purrify 产品信息与常见问题',
-    curiousCatImageAlt: '好奇猫咪正在了解 Purrify 猫砂添加剂问题',
-    curiousCatTitle: '连猫咪也有问题',
-    curiousCatSubtitle: '我们一起来找到答案',
-    supportTeamImageAlt: '友好的客服团队随时解答 Purrify 相关问题',
-    supportTeamTitle: '专业支持团队',
-    supportTeamSubtitle: '随时为你答疑',
-    happyOwnerImageAlt: '猫主人在使用 Purrify 后享受无异味居家环境',
-    happyOwnerTitle: '加入成千上万满意猫主人',
-    happyOwnerSubtitle: '立即体验 Purrify 的不同',
-  },
-  es: {
-    breadcrumbAriaLabel: 'Miga de pan',
-    lastUpdatedLabel: 'Ultima actualizacion:',
-    heroImageAlt: 'Dueno de gato revisando informacion de Purrify y preguntas frecuentes',
-    curiousCatImageAlt: 'Gato curioso con preguntas sobre el aditivo Purrify para arena',
-    curiousCatTitle: 'Hasta tu gato tiene preguntas',
-    curiousCatSubtitle: 'Encontremos respuestas juntos',
-    supportTeamImageAlt: 'Equipo de soporte listo para ayudar con preguntas sobre Purrify',
-    supportTeamTitle: 'Equipo de soporte experto',
-    supportTeamSubtitle: 'Listo para responder tus preguntas',
-    happyOwnerImageAlt: 'Dueno de gato feliz disfrutando un hogar sin olores con Purrify',
-    happyOwnerTitle: 'Unete a miles de duenos felices',
-    happyOwnerSubtitle: 'Vive hoy la diferencia Purrify',
-  },
+
 };
 
 export default function FAQPageClient() {
@@ -133,11 +106,7 @@ export default function FAQPageClient() {
   const trialCtaLabel = faqPage?.tryRiskFree ||
     (locale === 'fr'
       ? `Envoyer Mon Essai GRATUIT - ${trialPrice}`
-      : locale === 'zh'
-        ? `发送我的免费试用 - ${trialPrice}`
-        : locale === 'es'
-          ? `Envía Mi Prueba GRATIS - ${trialPrice}`
-          : `Send My FREE Trial - ${trialPrice}`);
+      : `Send My FREE Trial - ${trialPrice}`);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [openItems, setOpenItems] = useState<number[]>([]);
@@ -305,7 +274,7 @@ export default function FAQPageClient() {
               </p>
               <p className="text-sm mb-8 opacity-75">
                 {uiCopy.lastUpdatedLabel} {new Date(lastUpdated).toLocaleDateString(
-                  locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : locale === 'es' ? 'es-ES' : 'en-US',
+                  locale === 'fr' ? 'fr-CA' : 'en-US',
                   { year: 'numeric', month: 'long', day: 'numeric' },
                 )}
               </p>

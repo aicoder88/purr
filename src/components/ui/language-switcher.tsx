@@ -27,18 +27,6 @@ const languages: LanguageOption[] = [
     name: 'Francais',
     flag: '/flags/fr.svg',
     alt: 'French Flag'
-  },
-  {
-    locale: 'zh',
-    name: '中文',
-    flag: '/flags/zh.svg',
-    alt: 'Chinese Flag'
-  },
-  {
-    locale: 'es',
-    name: 'Español',
-    flag: '/flags/mx.svg',
-    alt: 'Mexican Flag'
   }
 ];
 
@@ -153,8 +141,8 @@ export function LanguageSwitcher() {
               <li key={language.locale}>
                 <button
                   className={`flex items-center px-3 py-2 text-sm w-full text-left ${locale === language.locale
-                      ? 'bg-[#FFFFF5] dark:bg-gray-700 text-[#FF3131] dark:text-[#FF5050] font-medium'
-                      : 'text-gray-700 dark:text-gray-200 hover:bg-[#FFFFF5] dark:hover:bg-gray-700 hover:text-[#FF3131] dark:hover:text-[#FF5050]'
+                    ? 'bg-[#FFFFF5] dark:bg-gray-700 text-[#FF3131] dark:text-[#FF5050] font-medium'
+                    : 'text-gray-700 dark:text-gray-200 hover:bg-[#FFFFF5] dark:hover:bg-gray-700 hover:text-[#FF3131] dark:hover:text-[#FF5050]'
                     }`}
                   onClick={createLanguageClickHandler(language.locale)}
                   type="button"
