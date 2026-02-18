@@ -1,10 +1,10 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
 import { HeaderWithSuspense } from './header-suspense';
 import { Footer } from './footer';
 import { SkipNav } from '../ui/skip-nav';
 import dynamic from 'next/dynamic';
+import { useEffect, useState } from 'react';
 
 interface AppLayoutProps {
     children: React.ReactNode;
@@ -15,22 +15,21 @@ const ScrollToTopButton = dynamic(() => import("../ui/scroll-to-top"), { ssr: fa
 const MobileFloatingCTA = dynamic(() => import("../ui/MobileFloatingCTA").then(mod => ({ default: mod.MobileFloatingCTA })), { ssr: false });
 
 export function AppLayout({ children }: AppLayoutProps) {
-    const pathname = usePathname();
-    const hideFooter = pathname === '/invest' || pathname === '/dn';
-    const hideHeader = pathname === '/dn';
-
-    // Disable specialty effects on small screens for better performance
-    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-
+    const [mounted, setMounted] = useState(false);
+    
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+    
     return (
         <div className="flex flex-col min-h-screen">
             <SkipNav />
-            {!isMobile && <PawCursor />}
-            <ScrollToTopButton />
-            <MobileFloatingCTA />
-            {!hideHeader && <HeaderWithSuspense />}
+            {mounted && <PawCursor />}
+            {mounted && <ScrollToTopButton />}
+            {mounted && <MobileFloatingCTA />}
+            <HeaderWithSuspense />
             <main id="main-content" className="flex-grow">{children}</main>
-            {!hideFooter && <Footer />}
+            <Footer />
         </div>
     );
 }

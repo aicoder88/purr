@@ -33,7 +33,10 @@ function normalizePathname(pathname: string): string {
 }
 
 function isCommercialRoute(pathname: string): boolean {
-  return COMMERCIAL_ROUTE_PATHS.includes(normalizeRoutePath(pathname) as (typeof COMMERCIAL_ROUTE_PATHS)[number]);
+  const normalizedPath = normalizeRoutePath(pathname);
+  return COMMERCIAL_ROUTE_PATHS.some((path) =>
+    normalizedPath === path || normalizedPath.startsWith(`${path}/`)
+  );
 }
 
 function supportsLocalePrefix(pathWithoutLocale: string): boolean {

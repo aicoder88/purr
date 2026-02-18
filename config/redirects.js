@@ -17,140 +17,7 @@ const REDIRECTS = [
     permanent: true
   },
 
-  // --- TRAILING SLASH NORMALIZATION ---
-  // Redirect paths without trailing slash to with trailing slash (for consistency with trailingSlash: true)
-  // These fix specific paths Google is crawling both versions of
-  {
-    source: "/faq",
-    destination: "/faq/",
-    permanent: true
-  },
-  {
-    source: "/reviews",
-    destination: "/reviews/",
-    permanent: true
-  },
-  {
-    source: "/terms",
-    destination: "/terms/",
-    permanent: true
-  },
-  {
-    source: "/tos",
-    destination: "/tos/",
-    permanent: true
-  },
-  {
-    source: "/privacy",
-    destination: "/privacy/",
-    permanent: true
-  },
-  {
-    source: "/privacy-policy",
-    destination: "/privacy-policy/",
-    permanent: true
-  },
-  {
-    source: "/contact",
-    destination: "/contact/",
-    permanent: true
-  },
-  {
-    source: "/stores",
-    destination: "/stores/",
-    permanent: true
-  },
-  {
-    source: "/stockists",
-    destination: "/stockists/",
-    permanent: true
-  },
-  {
-    source: "/products",
-    destination: "/products/",
-    permanent: true
-  },
-  {
-    source: "/blog",
-    destination: "/blog/",
-    permanent: true
-  },
-  {
-    source: "/case-studies",
-    destination: "/case-studies/",
-    permanent: true
-  },
-  {
-    source: "/invest",
-    destination: "/invest/",
-    permanent: true
-  },
-  {
-    source: "/affiliate",
-    destination: "/affiliate/",
-    permanent: true
-  },
-  {
-    source: "/referral",
-    destination: "/referral/",
-    permanent: true
-  },
-  {
-    source: "/support",
-    destination: "/support/",
-    permanent: true
-  },
-  {
-    source: "/free",
-    destination: "/free/",
-    permanent: true
-  },
-  {
-    source: "/learn",
-    destination: "/learn/",
-    permanent: true
-  },
-  {
-    source: "/locations",
-    destination: "/locations/",
-    permanent: true
-  },
-  // Localized versions
-  {
-    source: "/fr/faq",
-    destination: "/fr/faq/",
-    permanent: true
-  },
-  {
-    source: "/fr/reviews",
-    destination: "/fr/reviews/",
-    permanent: true
-  },
-  {
-    source: "/fr/terms",
-    destination: "/fr/terms/",
-    permanent: true
-  },
-  {
-    source: "/fr/contact",
-    destination: "/fr/contact/",
-    permanent: true
-  },
-  {
-    source: "/fr/stores",
-    destination: "/fr/stores/",
-    permanent: true
-  },
-  {
-    source: "/fr/products",
-    destination: "/fr/products/",
-    permanent: true
-  },
-  {
-    source: "/fr/blog",
-    destination: "/fr/blog/",
-    permanent: true
-  },
+
 
 
   // --- SUBDOMAIN & LOCALE FIXES ---
@@ -528,13 +395,6 @@ const REDIRECTS = [
     permanent: true
   },
 
-  {
-    source: "/:path*",
-    has: [{ type: "host", value: "purrify.ca" }],
-    destination: "https://www.purrify.ca/:path*",
-    permanent: true,
-    locale: false
-  },
   // Catchall for removed locales
   {
     source: "/zh/:path*",
@@ -545,13 +405,6 @@ const REDIRECTS = [
     source: "/es/:path*",
     destination: "/:path*",
     permanent: true
-  },
-  {
-    source: "/:path*",
-    has: [{ type: "header", key: "x-forwarded-proto", value: "http" }],
-    destination: "https://www.purrify.ca/:path*",
-    permanent: true,
-    locale: false
   },
   {
     source: "/:path+/es/:path2*",
@@ -798,7 +651,7 @@ const REDIRECTS = [
   },
   {
     source: "/products/compare",
-    destination: "/products",
+    destination: "/products/",
     permanent: true
   },
   {
@@ -1575,32 +1428,32 @@ const REDIRECTS = [
   },
   {
     source: "/category/:path*",
-    destination: "/products",
+    destination: "/products/",
     permanent: true
   },
   {
     source: "/tag/:path*",
-    destination: "/products",
+    destination: "/products/",
     permanent: true
   },
   {
     source: "/collections/:path*",
-    destination: "/products",
+    destination: "/products/",
     permanent: true
   },
   {
     source: "/collections",
-    destination: "/products",
+    destination: "/products/",
     permanent: true
   },
   {
     source: "/brands/:path*",
-    destination: "/products",
+    destination: "/products/",
     permanent: true
   },
   {
     source: "/brand/:path*",
-    destination: "/products",
+    destination: "/products/",
     permanent: true
   },
   {
@@ -1634,13 +1487,13 @@ const REDIRECTS = [
     permanent: true
   },
   {
-    source: "/:locale(fr)/products/:path+/",
-    destination: "/:locale/products/:path*",
+    source: "/:locale(fr)/about/",
+    destination: "/:locale/about/our-story/",
     permanent: true
   },
   {
-    source: "/:locale(zh|es)/products/:path+/",
-    destination: "/products/:path*",
+    source: "/:locale(zh|es)/about/",
+    destination: "/about/our-story/",
     permanent: true
   },
   {

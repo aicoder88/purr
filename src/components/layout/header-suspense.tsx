@@ -1,7 +1,14 @@
 'use client';
 
 import { Suspense } from 'react';
-import { Header } from './header';
+import dynamic from 'next/dynamic';
+
+// Dynamically import Header with SSR disabled to prevent hydration issues
+// Header uses useSearchParams which requires client-side rendering
+const Header = dynamic(() => import('./header').then(mod => ({ default: mod.Header })), {
+  ssr: false,
+  loading: () => <HeaderFallback />,
+});
 
 export function HeaderWithSuspense() {
   return (

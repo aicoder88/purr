@@ -29,7 +29,8 @@ function getOgLocale(locale: string): string {
 }
 
 export async function generateMetadata({ params }: LocalizedProductsPageProps): Promise<Metadata> {
-  const { locale } = await params;
+  const resolvedParams = await params;
+  const locale = resolvedParams?.locale || 'en';
 
   if (!isValidLocale(locale)) {
     return { title: 'Not Found' };
@@ -90,7 +91,8 @@ export async function generateMetadata({ params }: LocalizedProductsPageProps): 
 }
 
 export default async function LocalizedProductsPage({ params }: LocalizedProductsPageProps) {
-  const { locale } = await params;
+  const resolvedParams = await params;
+  const locale = resolvedParams?.locale || 'en';
 
   if (!isValidLocale(locale)) {
     notFound();
