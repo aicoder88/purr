@@ -1,6 +1,5 @@
 import { requireAuth } from '@/lib/auth/session';
 import prismaClient from '@/lib/prisma';
-import * as Sentry from '@sentry/nextjs';
 import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 interface RouteParams {
@@ -47,7 +46,6 @@ export async function GET(req: Request, { params }: RouteParams) {
 
     return Response.json(lead, { status: 200, headers: rateLimitHeaders });
   } catch (error) {
-    Sentry.captureException(error);
     return Response.json({ error: 'Internal server error' }, { status: 500, headers: rateLimitHeaders });
   }
 }
@@ -72,8 +70,7 @@ export async function PUT(req: Request, { params }: RouteParams) {
   }
 
   const { id } = await params;
-  const { logger } = Sentry;
-
+  
   if (!id || typeof id !== 'string') {
     return Response.json({ error: 'Invalid lead ID' }, { status: 400 });
   }
@@ -99,15 +96,14 @@ export async function PUT(req: Request, { params }: RouteParams) {
       data: updateData
     });
 
-    logger.info('Lead updated', { leadId: id, updates: Object.keys(updateData) });
+    console.info('Lead updated', { leadId: id, updates: Object.keys(updateData) });
 
     return Response.json({ success: true, lead }, { status: 200, headers: rateLimitHeaders });
   } catch (error) {
     if ((error as { code?: string }).code === 'P2025') {
       return Response.json({ error: 'Lead not found' }, { status: 404, headers: rateLimitHeaders });
     }
-    Sentry.captureException(error);
-    logger.error('Lead API error', { error: error instanceof Error ? error.message : 'Unknown error', leadId: id });
+    console.error('Lead API error', { error: error instanceof Error ? error.message : 'Unknown error', leadId: id });
     return Response.json({ error: 'Internal server error' }, { status: 500, headers: rateLimitHeaders });
   }
 }
@@ -138,8 +134,7 @@ export async function DELETE(req: Request, { params }: RouteParams) {
   }
 
   const { id } = await params;
-  const { logger } = Sentry;
-
+  
   if (!id || typeof id !== 'string') {
     return Response.json({ error: 'Invalid lead ID' }, { status: 400 });
   }
@@ -153,15 +148,14 @@ export async function DELETE(req: Request, { params }: RouteParams) {
       where: { id }
     });
 
-    logger.info('Lead deleted', { leadId: id });
+    console.info('Lead deleted', { leadId: id });
 
     return Response.json({ success: true }, { status: 200, headers: rateLimitHeaders });
   } catch (error) {
     if ((error as { code?: string }).code === 'P2025') {
       return Response.json({ error: 'Lead not found' }, { status: 404, headers: rateLimitHeaders });
     }
-    Sentry.captureException(error);
-    logger.error('Lead API error', { error: error instanceof Error ? error.message : 'Unknown error', leadId: id });
+    console.error('Lead API error', { error: error instanceof Error ? error.message : 'Unknown error', leadId: id });
     return Response.json({ error: 'Internal server error' }, { status: 500, headers: rateLimitHeaders });
   }
 }

@@ -12,7 +12,6 @@ import {
   generateShareUrls,
   REFERRAL_CONFIG,
 } from '@/lib/referral';
-import * as Sentry from '@sentry/nextjs';
 
 interface _GenerateReferralResponse {
   success: boolean;
@@ -191,7 +190,6 @@ export async function POST(req: Request): Promise<Response> {
     }, { status: 201, headers });
   } catch (error) {
     console.error('Error generating referral code:', error);
-    Sentry.captureException(error);
 
     return Response.json({
       success: false,

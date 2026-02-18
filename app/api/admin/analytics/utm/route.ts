@@ -5,7 +5,6 @@
  * Shows which traffic sources and campaigns drive the most revenue.
  */
 
-import * as Sentry from '@sentry/nextjs';
 import { requireAuth } from '@/lib/auth/session';
 import prismaClient from '@/lib/prisma';
 import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
@@ -239,7 +238,6 @@ export async function GET(req: Request): Promise<Response> {
 
     return Response.json(response, { headers: rateLimitHeaders });
   } catch (error) {
-    Sentry.captureException(error);
     return Response.json(
       {
         success: false,

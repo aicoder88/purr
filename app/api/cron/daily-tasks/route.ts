@@ -1,5 +1,4 @@
 import type { NextRequest } from 'next/server';
-import * as Sentry from '@sentry/nextjs';
 
 // Import handlers from other cron tasks
 import { ContentStore } from '@/lib/blog/content-store';
@@ -25,15 +24,10 @@ export async function POST(req: NextRequest): Promise<Response> {
 }
 
 async function handleDailyTasks(req: NextRequest): Promise<Response> {
-  return Sentry.startSpan(
-    {
-      op: 'cron.job',
-      name: 'Daily Tasks',
-    },
-    async (span) => {
-      const { logger: sentryLogger } = Sentry;
-
-      sentryLogger.info('Daily tasks cron started', {
+  // Removed Sentry.startSpan wrapper
+// async (span) => {
+      
+      console.info('Daily tasks cron started', {
         method: req.method
       });
 
@@ -41,14 +35,14 @@ async function handleDailyTasks(req: NextRequest): Promise<Response> {
       const cronSecret = extractCronSecret(req);
 
       if (cronSecret !== process.env.CRON_SECRET) {
-        sentryLogger.warn('Unauthorized cron job attempt', {
+        console.warn('Unauthorized cron job attempt', {
           hasSecret: !!cronSecret
         });
         return Response.json({ error: 'Unauthorized' }, { status: 401 });
       }
 
       if (!prisma) {
-        sentryLogger.error('Prisma client not initialized');
+        console.error('Prisma client not initialized');
         return Response.json({ error: 'Database connection unavailable' }, { status: 500 });
       }
 
@@ -57,7 +51,7 @@ async function handleDailyTasks(req: NextRequest): Promise<Response> {
 
       // Task 1: Publish Scheduled Posts
       try {
-        sentryLogger.info('Running task: Publish Scheduled Posts');
+        console.info('Running task: Publish Scheduled Posts');
         const store = new ContentStore();
         const logger = new AuditLogger();
         const sitemapGenerator = new SitemapGenerator();
@@ -98,7 +92,6 @@ async function handleDailyTasks(req: NextRequest): Promise<Response> {
           details: { published: published.length, posts: published }
         });
       } catch (error) {
-        Sentry.captureException(error);
         results.push({
           task: 'publishScheduledPosts',
           success: false,
@@ -108,7 +101,7 @@ async function handleDailyTasks(req: NextRequest): Promise<Response> {
 
       // Task 2: Low Stock Alerts
       try {
-        sentryLogger.info('Running task: Low Stock Alerts');
+        console.info('Running task: Low Stock Alerts');
         const lowStockProducts = await prisma.product.findMany({
           where: {
             stockQuantity: { lte: 10 },
@@ -146,7 +139,6 @@ async function handleDailyTasks(req: NextRequest): Promise<Response> {
           details: { alertsSent: lowStockProducts.length > 0 ? 1 : 0, products: lowStockProducts.length }
         });
       } catch (error) {
-        Sentry.captureException(error);
         results.push({
           task: 'lowStockAlerts',
           success: false,
@@ -156,7 +148,7 @@ async function handleDailyTasks(req: NextRequest): Promise<Response> {
 
       // Task 3: Review Requests (7 days after delivery)
       try {
-        sentryLogger.info('Running task: Review Requests');
+        console.info('Running task: Review Requests');
         const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
 
         const ordersForReview = await prisma.order.findMany({
@@ -201,7 +193,6 @@ async function handleDailyTasks(req: NextRequest): Promise<Response> {
 
                 emailsSent++;
               } catch (emailError) {
-                Sentry.captureException(emailError);
               }
             }
           }
@@ -213,7 +204,6 @@ async function handleDailyTasks(req: NextRequest): Promise<Response> {
           details: { emailsSent, ordersChecked: ordersForReview.length }
         });
       } catch (error) {
-        Sentry.captureException(error);
         results.push({
           task: 'reviewRequests',
           success: false,
@@ -223,7 +213,7 @@ async function handleDailyTasks(req: NextRequest): Promise<Response> {
 
       // Task 4: Subscription Reminders (3 days before next delivery)
       try {
-        sentryLogger.info('Running task: Subscription Reminders');
+        console.info('Running task: Subscription Reminders');
         const threeDaysFromNow = new Date(now.getTime() + 3 * 24 * 60 * 60 * 1000);
         const fourDaysFromNow = new Date(now.getTime() + 4 * 24 * 60 * 60 * 1000);
 
@@ -265,7 +255,6 @@ async function handleDailyTasks(req: NextRequest): Promise<Response> {
 
                 remindersSent++;
               } catch (emailError) {
-                Sentry.captureException(emailError);
               }
             }
           }
@@ -277,7 +266,6 @@ async function handleDailyTasks(req: NextRequest): Promise<Response> {
           details: { remindersSent, subscriptionsChecked: upcomingSubscriptions.length }
         });
       } catch (error) {
-        Sentry.captureException(error);
         results.push({
           task: 'subscriptionReminders',
           success: false,
@@ -287,7 +275,7 @@ async function handleDailyTasks(req: NextRequest): Promise<Response> {
 
       // Task 5: Expire Referral Rewards
       try {
-        sentryLogger.info('Running task: Expire Referral Rewards');
+        console.info('Running task: Expire Referral Rewards');
 
         const expiredRewards = await prisma.referralReward.updateMany({
           where: {
@@ -301,7 +289,7 @@ async function handleDailyTasks(req: NextRequest): Promise<Response> {
           }
         });
 
-        sentryLogger.info('Expired referral rewards', {
+        console.info('Expired referral rewards', {
           count: expiredRewards.count
         });
 
@@ -311,7 +299,6 @@ async function handleDailyTasks(req: NextRequest): Promise<Response> {
           details: { expiredCount: expiredRewards.count }
         });
       } catch (error) {
-        Sentry.captureException(error);
         results.push({
           task: 'expireReferralRewards',
           success: false,
@@ -320,10 +307,10 @@ async function handleDailyTasks(req: NextRequest): Promise<Response> {
       }
 
       const successCount = results.filter(r => r.success).length;
-      span.setAttribute('tasksCompleted', successCount);
-      span.setAttribute('totalTasks', results.length);
+      // // // // span.setAttribute('tasksCompleted', successCount);
+      // // // // span.setAttribute('totalTasks', results.length);
 
-      sentryLogger.info('Daily tasks completed', {
+      console.info('Daily tasks completed', {
         successCount,
         totalTasks: results.length,
         results
@@ -337,5 +324,3 @@ async function handleDailyTasks(req: NextRequest): Promise<Response> {
         timestamp: now.toISOString()
       });
     }
-  );
-}

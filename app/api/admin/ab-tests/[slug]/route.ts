@@ -7,7 +7,6 @@
  * DELETE - Archive test
  */
 
-import * as Sentry from '@sentry/nextjs';
 import { requireAuth } from '@/lib/auth/session';
 import prismaClient from '@/lib/prisma';
 import { calculateSignificance } from '@/lib/ab-testing';
@@ -137,7 +136,6 @@ export async function GET(req: Request, { params }: RouteParams): Promise<Respon
 
     return Response.json(response, { headers: rateLimitHeaders });
   } catch (error) {
-    Sentry.captureException(error);
     return Response.json(
       {
         success: false,
@@ -238,7 +236,6 @@ export async function PUT(req: Request, { params }: RouteParams): Promise<Respon
 
     return Response.json(response, { headers: rateLimitHeaders });
   } catch (error) {
-    Sentry.captureException(error);
     return Response.json(
       {
         success: false,
@@ -385,7 +382,6 @@ export async function POST(req: Request, { params }: RouteParams): Promise<Respo
 
     return Response.json(response, { headers: rateLimitHeaders });
   } catch (error) {
-    Sentry.captureException(error);
     return Response.json(
       {
         success: false,
@@ -464,7 +460,6 @@ export async function DELETE(req: Request, { params }: RouteParams): Promise<Res
 
     return Response.json(response, { headers: rateLimitHeaders });
   } catch (error) {
-    Sentry.captureException(error);
     return Response.json(
       {
         success: false,

@@ -10,7 +10,6 @@
  */
 
 import type { NextRequest } from 'next/server';
-import * as Sentry from '@sentry/nextjs';
 import { Resend } from 'resend';
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
 import { extractCronSecret } from '@/lib/security/cron-secret';
@@ -50,15 +49,10 @@ export async function POST(req: NextRequest): Promise<Response> {
 }
 
 async function handleAbandonedCart(req: NextRequest): Promise<Response> {
-  return Sentry.startSpan(
-    {
-      op: 'cron.job',
-      name: 'Send Abandoned Cart Emails',
-    },
-    async (span) => {
-      const { logger } = Sentry;
-
-      logger.info('Abandoned cart cron job started', {
+  // Removed Sentry.startSpan wrapper
+// async (span) => {
+      
+      console.info('Abandoned cart cron job started', {
         method: req.method,
         timestamp: new Date().toISOString(),
       });
@@ -68,7 +62,7 @@ async function handleAbandonedCart(req: NextRequest): Promise<Response> {
       const expectedSecret = process.env.CRON_SECRET;
 
       if (!expectedSecret || cronSecret !== expectedSecret) {
-        logger.warn('Unauthorized abandoned cart cron attempt', {
+        console.warn('Unauthorized abandoned cart cron attempt', {
           hasSecret: !!cronSecret,
         });
         return Response.json({
@@ -79,7 +73,7 @@ async function handleAbandonedCart(req: NextRequest): Promise<Response> {
 
       // Check if Resend is configured
       if (!isResendConfigured()) {
-        logger.error('Resend email service not configured');
+        console.error('Resend email service not configured');
         return Response.json({
           success: false,
           message: 'Email service not configured',
@@ -92,18 +86,18 @@ async function handleAbandonedCart(req: NextRequest): Promise<Response> {
         // First, clean up old expired/converted carts
         const cleanedUp = await cleanupOldCarts();
         if (cleanedUp > 0) {
-          logger.info('Cleaned up old carts', { count: cleanedUp });
+          console.info('Cleaned up old carts', { count: cleanedUp });
         }
 
         // Get carts needing recovery emails
         const carts = await getCartsNeedingRecoveryEmails();
 
-        logger.info('Found carts needing recovery emails', {
+        console.info('Found carts needing recovery emails', {
           count: carts.length,
           maxPerRun: MAX_EMAILS_PER_RUN,
         });
 
-        span.setAttribute('eligibleCartsCount', carts.length);
+        // // // // span.setAttribute('eligibleCartsCount', carts.length);
 
         if (carts.length === 0) {
           return Response.json({
@@ -127,7 +121,7 @@ async function handleAbandonedCart(req: NextRequest): Promise<Response> {
         for (const cart of cartsToProcess) {
           // Skip if no email
           if (!cart.email) {
-            logger.warn('Cart has no email, skipping', { cartId: cart.id });
+            console.warn('Cart has no email, skipping', { cartId: cart.id });
             skippedCount++;
             details.push({
               cartId: cart.id,
@@ -139,7 +133,7 @@ async function handleAbandonedCart(req: NextRequest): Promise<Response> {
 
           // Skip if cart is empty
           if (!cart.items || cart.items.length === 0) {
-            logger.warn('Cart is empty, skipping', { cartId: cart.id });
+            console.warn('Cart is empty, skipping', { cartId: cart.id });
             skippedCount++;
             details.push({
               cartId: cart.id,
@@ -169,7 +163,7 @@ async function handleAbandonedCart(req: NextRequest): Promise<Response> {
 
             const emailSubject = getAbandonedCartEmailSubject(cart.locale, isSecondEmail);
 
-            logger.info('Sending abandoned cart email', {
+            console.info('Sending abandoned cart email', {
               cartId: cart.id,
               email: cart.email,
               locale: cart.locale,
@@ -192,7 +186,7 @@ async function handleAbandonedCart(req: NextRequest): Promise<Response> {
             });
 
             if (error) {
-              logger.error('Failed to send abandoned cart email', {
+              console.error('Failed to send abandoned cart email', {
                 cartId: cart.id,
                 email: cart.email,
                 error: error.message,
@@ -216,15 +210,14 @@ async function handleAbandonedCart(req: NextRequest): Promise<Response> {
               status: `sent - email #${cart.emailsSent + 1} - ${data?.id}`,
             });
 
-            logger.info('Abandoned cart email sent successfully', {
+            console.info('Abandoned cart email sent successfully', {
               cartId: cart.id,
               email: cart.email,
               emailId: data?.id,
               emailNumber: cart.emailsSent + 1,
             });
           } catch (cartError) {
-            Sentry.captureException(cartError);
-            logger.error('Error processing cart for recovery email', {
+            console.error('Error processing cart for recovery email', {
               cartId: cart.id,
               error: cartError instanceof Error ? cartError.message : 'Unknown error',
             });
@@ -237,11 +230,11 @@ async function handleAbandonedCart(req: NextRequest): Promise<Response> {
           }
         }
 
-        span.setAttribute('sentCount', sentCount);
-        span.setAttribute('skippedCount', skippedCount);
-        span.setAttribute('errorCount', errorCount);
+        // // // // span.setAttribute('sentCount', sentCount);
+        // // // // span.setAttribute('skippedCount', skippedCount);
+        // // // // span.setAttribute('errorCount', errorCount);
 
-        logger.info('Abandoned cart cron job completed', {
+        console.info('Abandoned cart cron job completed', {
           sent: sentCount,
           skipped: skippedCount,
           errors: errorCount,
@@ -258,8 +251,7 @@ async function handleAbandonedCart(req: NextRequest): Promise<Response> {
           details,
         });
       } catch (error) {
-        Sentry.captureException(error);
-        logger.error('Abandoned cart cron job failed', {
+        console.error('Abandoned cart cron job failed', {
           error: error instanceof Error ? error.message : 'Unknown error',
         });
 
@@ -267,7 +259,7 @@ async function handleAbandonedCart(req: NextRequest): Promise<Response> {
           success: false,
           message: error instanceof Error ? error.message : 'Internal server error',
         }, { status: 500 });
-      }
-    }
-  );
+      
+    
+  }
 }

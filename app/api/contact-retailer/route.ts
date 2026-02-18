@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { Resend } from 'resend';
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
-import * as Sentry from '@sentry/nextjs';
+
 
 // Define validation schema for retailer contact form
 const retailerContactSchema = z.object({
@@ -32,7 +32,7 @@ const ipRequestCounts = new Map<string, { count: number; resetTime: number }>();
  */
 function sanitizeForEmail(input: string): string {
   if (!input) return '';
-  
+
   // Remove newlines, carriage returns, and null bytes
   // These are the primary vectors for email header injection
   return input
@@ -171,7 +171,6 @@ Received: ${new Date().toLocaleString()}
 
       if (error) {
         console.error('Failed to send retailer contact email:', error);
-        Sentry.captureException(error);
         return NextResponse.json(
           { success: false, message: 'Failed to send your message. Please try again or contact us directly.' },
           { status: 500, headers }
@@ -192,7 +191,6 @@ Received: ${new Date().toLocaleString()}
       'Error processing retailer contact form:',
       error instanceof Error ? error.message : 'Unknown error'
     );
-    Sentry.captureException(error);
     return NextResponse.json(
       { success: false, message: 'An error occurred while sending your message. Please try again.' },
       { status: 500, headers }

@@ -1,5 +1,4 @@
 import { z } from 'zod';
-import * as Sentry from '@sentry/nextjs';
 import {
   createContactTicket,
   createB2BTicket,
@@ -182,7 +181,6 @@ export async function POST(req: Request): Promise<Response> {
   // Check Zendesk configuration
   if (!isZendeskConfigured()) {
     console.error('Zendesk not configured');
-    Sentry.captureMessage('Zendesk API not configured', 'error');
     return Response.json({
       success: false,
       message: 'Support system temporarily unavailable. Please email support@purrify.ca directly.',
@@ -251,7 +249,6 @@ export async function POST(req: Request): Promise<Response> {
     }, { headers });
   } catch (error) {
     console.error('Error creating Zendesk ticket:', error);
-    Sentry.captureException(error);
 
     return Response.json({
       success: false,

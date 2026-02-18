@@ -9,7 +9,6 @@
  */
 
 import type { NextRequest } from 'next/server';
-import * as Sentry from '@sentry/nextjs';
 import { Resend } from 'resend';
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
 import { getLowStockProducts } from '@/lib/inventory';
@@ -31,15 +30,10 @@ export async function POST(req: NextRequest): Promise<Response> {
 }
 
 async function handleLowStockAlerts(req: NextRequest): Promise<Response> {
-  return Sentry.startSpan(
-    {
-      op: 'cron.job',
-      name: 'Low Stock Alerts',
-    },
-    async (span) => {
-      const { logger } = Sentry;
-
-      logger.info('Low stock alert cron job started', {
+  // Removed Sentry.startSpan wrapper
+// async (span) => {
+      
+      console.info('Low stock alert cron job started', {
         timestamp: new Date().toISOString(),
       });
 
@@ -48,7 +42,7 @@ async function handleLowStockAlerts(req: NextRequest): Promise<Response> {
       const expectedSecret = process.env.CRON_SECRET;
 
       if (!expectedSecret || cronSecret !== expectedSecret) {
-        logger.warn('Unauthorized low stock alert cron attempt');
+        console.warn('Unauthorized low stock alert cron attempt');
         return Response.json({
           success: false,
           message: 'Unauthorized',
@@ -57,7 +51,7 @@ async function handleLowStockAlerts(req: NextRequest): Promise<Response> {
 
       // Check if Resend is configured
       if (!isResendConfigured()) {
-        logger.error('Resend email service not configured');
+        console.error('Resend email service not configured');
         return Response.json({
           success: false,
           message: 'Email service not configured',
@@ -68,9 +62,9 @@ async function handleLowStockAlerts(req: NextRequest): Promise<Response> {
         // Get all low stock products
         const lowStockProducts = await getLowStockProducts();
 
-        span.setAttribute('lowStockCount', lowStockProducts.length);
+        // // // // span.setAttribute('lowStockCount', lowStockProducts.length);
 
-        logger.info('Checked inventory levels', {
+        console.info('Checked inventory levels', {
           lowStockCount: lowStockProducts.length,
         });
 
@@ -123,7 +117,7 @@ async function handleLowStockAlerts(req: NextRequest): Promise<Response> {
         });
 
         if (error) {
-          logger.error('Failed to send low stock alert email', {
+          console.error('Failed to send low stock alert email', {
             error: error.message,
           });
           return Response.json({
@@ -132,7 +126,7 @@ async function handleLowStockAlerts(req: NextRequest): Promise<Response> {
           }, { status: 500 });
         }
 
-        logger.info('Low stock alert email sent', {
+        console.info('Low stock alert email sent', {
           emailId: data?.id,
           outOfStockCount: outOfStockProducts.length,
           lowStockCount: lowStockOnly.length,
@@ -148,8 +142,7 @@ async function handleLowStockAlerts(req: NextRequest): Promise<Response> {
           message: `Alert sent for ${lowStockProducts.length} products`,
         });
       } catch (error) {
-        Sentry.captureException(error);
-        logger.error('Low stock alert cron job failed', {
+        console.error('Low stock alert cron job failed', {
           error: error instanceof Error ? error.message : 'Unknown error',
         });
 
@@ -158,6 +151,5 @@ async function handleLowStockAlerts(req: NextRequest): Promise<Response> {
           message: error instanceof Error ? error.message : 'Internal server error',
         }, { status: 500 });
       }
-    }
-  );
+    
 }

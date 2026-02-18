@@ -12,7 +12,7 @@ const mockCreateRateLimitHeaders = jest.fn();
 const mockIsResendConfigured = jest.fn();
 const mockIsZendeskConfigured = jest.fn();
 const mockCreateContactTicket = jest.fn();
-const mockCaptureException = jest.fn();
+
 
 jest.mock('resend', () => ({
   Resend: mockResendConstructor,
@@ -38,9 +38,7 @@ jest.mock('@/lib/zendesk', () => ({
   isZendeskConfigured: mockIsZendeskConfigured,
 }));
 
-jest.mock('@sentry/nextjs', () => ({
-  captureException: mockCaptureException,
-}));
+
 
 const { POST } = require('../../app/api/contact/route') as typeof import('../../app/api/contact/route');
 

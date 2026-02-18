@@ -1,5 +1,4 @@
 import type { NextRequest } from 'next/server';
-import * as Sentry from '@sentry/nextjs';
 import { AutomatedContentGenerator } from '@/lib/blog/automated-content-generator';
 import { ContentStore } from '@/lib/blog/content-store';
 import { extractCronSecret } from '@/lib/security/cron-secret';
@@ -37,15 +36,10 @@ export async function POST(req: NextRequest): Promise<Response> {
 }
 
 async function handleGenerateBlogPost(req: NextRequest): Promise<Response> {
-  return Sentry.startSpan(
-    {
-      op: 'cron.job',
-      name: 'Generate Blog Post',
-    },
-    async (span) => {
-      const { logger } = Sentry;
-
-      logger.info('Blog post generation cron started', {
+  // Removed Sentry.startSpan wrapper
+// async (span) => {
+      
+      console.info('Blog post generation cron started', {
         method: req.method,
         forceRun: new URL(req.url).searchParams.get('force')
       });
@@ -54,14 +48,14 @@ async function handleGenerateBlogPost(req: NextRequest): Promise<Response> {
       if (expectedSecret) {
         const providedSecret = extractCronSecret(req);
         if (providedSecret !== expectedSecret) {
-          logger.warn('Invalid cron secret provided');
+          console.warn('Invalid cron secret provided');
           return Response.json({ error: 'Invalid cron secret' }, { status: 401 });
         }
       }
 
       const { searchParams } = new URL(req.url);
       const forceRun = searchParams.get('force') === 'true' || searchParams.get('force') === '1';
-      span.setAttribute('forceRun', forceRun);
+      // // // // span.setAttribute('forceRun', forceRun);
 
       // Check interval using filesystem instead of database
       if (!forceRun) {
@@ -70,7 +64,7 @@ async function handleGenerateBlogPost(req: NextRequest): Promise<Response> {
           const elapsed = Date.now() - latestPostDate.getTime();
           if (elapsed < THREE_DAYS_IN_MS) {
             const nextRunInHours = Math.round((THREE_DAYS_IN_MS - elapsed) / (1000 * 60 * 60));
-            logger.info('Interval not reached, skipping generation', {
+            console.info('Interval not reached, skipping generation', {
               elapsed,
               nextRunInHours
             });
@@ -86,17 +80,17 @@ async function handleGenerateBlogPost(req: NextRequest): Promise<Response> {
       try {
         // Use new ContentStore-based generator by default (filesystem, no database required)
         const useLegacyGenerator = process.env.USE_LEGACY_BLOG_GENERATOR === 'true';
-        span.setAttribute('useLegacyGenerator', useLegacyGenerator);
+        // // // // span.setAttribute('useLegacyGenerator', useLegacyGenerator);
 
         // Legacy generator requires database - only use if explicitly enabled
         if (useLegacyGenerator) {
-          logger.info('Using legacy blog generator');
+          console.info('Using legacy blog generator');
           const { generateAutomatedBlogPost } = await import('@/lib/blog/generator');
           const result = await generateAutomatedBlogPost();
 
-          span.setAttribute('postId', result.post.id);
-          span.setAttribute('slug', result.post.slug);
-          logger.info('Legacy blog post generated successfully', {
+          // // // // span.setAttribute('postId', result.post.id);
+          // // // // span.setAttribute('slug', result.post.slug);
+          console.info('Legacy blog post generated successfully', {
             postId: result.post.id,
             slug: result.post.slug,
             topic: result.topic
@@ -114,7 +108,7 @@ async function handleGenerateBlogPost(req: NextRequest): Promise<Response> {
         }
 
         // Default: Use filesystem-based generator (no database required)
-        logger.info('Using filesystem-based blog generator');
+        console.info('Using filesystem-based blog generator');
         const generator = new AutomatedContentGenerator();
 
         // Topic rotation
@@ -135,14 +129,14 @@ async function handleGenerateBlogPost(req: NextRequest): Promise<Response> {
         const topicIndex = daysSinceEpoch % topics.length;
         const selectedTopic = topics[topicIndex];
 
-        span.setAttribute('topic', selectedTopic);
-        logger.info('Generating blog post', { topic: selectedTopic });
+        // // // // span.setAttribute('topic', selectedTopic);
+        console.info('Generating blog post', { topic: selectedTopic });
 
         const result = await generator.generateBlogPost(selectedTopic);
 
         if (!result.success || !result.post) {
           const errorMessage = `Generation failed: ${result.validation.errors.map(e => e.message).join(', ')}`;
-          logger.error('Blog post generation validation failed', {
+          console.error('Blog post generation validation failed', {
             errors: result.validation.errors.map(e => e.message)
           });
           throw new Error(errorMessage);
@@ -150,11 +144,11 @@ async function handleGenerateBlogPost(req: NextRequest): Promise<Response> {
 
         await generator.publishPost(result.post);
 
-        span.setAttribute('postId', result.post.id);
-        span.setAttribute('slug', result.post.slug);
-        span.setAttribute('attempts', result.attempts || 0);
+        // // // // span.setAttribute('postId', result.post.id);
+        // // // // span.setAttribute('slug', result.post.slug);
+        // // // // span.setAttribute('attempts', result.attempts || 0);
 
-        logger.info('Blog post generated and published successfully', {
+        console.info('Blog post generated and published successfully', {
           postId: result.post.id,
           slug: result.post.slug,
           title: result.post.title,
@@ -172,8 +166,7 @@ async function handleGenerateBlogPost(req: NextRequest): Promise<Response> {
           attempts: result.attempts
         });
       } catch (error) {
-        Sentry.captureException(error);
-        logger.error('Blog post generation failed', {
+        console.error('Blog post generation failed', {
           error: (error as Error).message
         });
         return Response.json({
@@ -182,5 +175,3 @@ async function handleGenerateBlogPost(req: NextRequest): Promise<Response> {
         }, { status: 500 });
       }
     }
-  );
-}

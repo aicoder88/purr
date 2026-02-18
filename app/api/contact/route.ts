@@ -3,7 +3,6 @@ import { z } from 'zod';
 import { Resend } from 'resend';
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
 import { createContactTicket, isZendeskConfigured } from '@/lib/zendesk';
-import * as Sentry from '@sentry/nextjs';
 import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 /**
@@ -260,7 +259,6 @@ export async function POST(request: NextRequest) {
         );
       } catch (zendeskError) {
         console.error('Zendesk ticket creation failed:', zendeskError);
-        Sentry.captureException(zendeskError);
         // Fall through to Resend as backup
       }
     }

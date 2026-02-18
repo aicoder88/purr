@@ -5,7 +5,6 @@
  * POST - Create a new A/B test
  */
 
-import * as Sentry from '@sentry/nextjs';
 import { requireAuth } from '@/lib/auth/session';
 import prismaClient from '@/lib/prisma';
 import { calculateSignificance } from '@/lib/ab-testing-server';
@@ -120,7 +119,6 @@ export async function GET(req: Request): Promise<Response> {
 
     return Response.json(response, { headers: rateLimitHeaders });
   } catch (error) {
-    Sentry.captureException(error);
     return Response.json(
       {
         success: false,
@@ -218,7 +216,6 @@ export async function POST(req: Request): Promise<Response> {
 
     return Response.json(response, { status: 201, headers: rateLimitHeaders });
   } catch (error) {
-    Sentry.captureException(error);
     return Response.json(
       {
         success: false,

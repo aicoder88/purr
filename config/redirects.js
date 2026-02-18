@@ -1,5 +1,7 @@
 /** @type {import('next').Redirect[]} */
 const REDIRECTS = [
+
+
   // --- SUBDOMAIN & LOCALE FIXES ---
   // Fix double mentions of locale in path for subdomains
   {

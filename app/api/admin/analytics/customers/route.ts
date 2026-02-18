@@ -4,7 +4,6 @@
  * Returns customer segmentation and LTV data for the admin dashboard.
  */
 
-import * as Sentry from '@sentry/nextjs';
 import { requireAuth } from '@/lib/auth/session';
 import prismaClient from '@/lib/prisma';
 import type { CustomerSegment } from '@/generated/client/client';
@@ -204,7 +203,6 @@ export async function GET(req: Request): Promise<Response> {
 
     return Response.json(response, { headers: rateLimitHeaders });
   } catch (error) {
-    Sentry.captureException(error);
     return Response.json(
       {
         success: false,

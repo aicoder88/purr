@@ -1,7 +1,6 @@
 import { requireAuth } from '@/lib/auth/session';
 import prismaClient from '@/lib/prisma';
 import { LeadStatus } from '@/generated/client/client';
-import * as Sentry from '@sentry/nextjs';
 import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 interface BulkUpdateRequest {
@@ -29,8 +28,7 @@ export async function POST(req: Request) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const { logger } = Sentry;
-
+  
   if (!prismaClient) {
     return Response.json({ error: 'Database not configured' }, { status: 503 });
   }
@@ -63,7 +61,7 @@ export async function POST(req: Request) {
         data: updateData
       });
 
-      logger.info('Bulk status update', { count: result.count, status });
+      console.info('Bulk status update', { count: result.count, status });
 
       return Response.json({
         success: true,
@@ -76,7 +74,7 @@ export async function POST(req: Request) {
         where: { id: { in: ids } }
       });
 
-      logger.info('Bulk delete', { count: result.count });
+      console.info('Bulk delete', { count: result.count });
 
       return Response.json({
         success: true,
@@ -86,8 +84,7 @@ export async function POST(req: Request) {
 
     return Response.json({ error: 'Invalid action' }, { status: 400, headers: rateLimitHeaders });
   } catch (error) {
-    Sentry.captureException(error);
-    logger.error('Bulk leads API error', { error: error instanceof Error ? error.message : 'Unknown error' });
+    console.error('Bulk leads API error', { error: error instanceof Error ? error.message : 'Unknown error' });
     return Response.json({ error: 'Internal server error' }, { status: 500, headers: rateLimitHeaders });
   }
 }

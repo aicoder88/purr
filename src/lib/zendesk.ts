@@ -7,7 +7,7 @@
  * @see https://developer.zendesk.com/api-reference/
  */
 
-import * as Sentry from '@sentry/nextjs';
+
 
 // Zendesk Configuration
 const ZENDESK_CONFIG = {
@@ -51,13 +51,7 @@ async function zendeskFetch<T>(
   if (!response.ok) {
     const errorText = await response.text();
     const error = new Error(`Zendesk API Error: ${response.status} - ${errorText}`);
-    Sentry.captureException(error, {
-      extra: {
-        endpoint,
-        status: response.status,
-        errorText,
-      },
-    });
+    console.error('Zendesk API Error:', error);
     throw error;
   }
 

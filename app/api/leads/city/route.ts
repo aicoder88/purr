@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
-import * as Sentry from '@sentry/nextjs';
 
 interface CityLeadPayload {
   name?: string;
@@ -168,7 +167,6 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error('Failed to persist city lead:', error);
-    Sentry.captureException(error);
     return NextResponse.json(
       { success: false, error: 'Failed to save lead.' },
       { status: 500, headers }

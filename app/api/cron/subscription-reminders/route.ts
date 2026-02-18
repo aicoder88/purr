@@ -9,7 +9,6 @@
  */
 
 import type { NextRequest } from 'next/server';
-import * as Sentry from '@sentry/nextjs';
 import { Resend } from 'resend';
 import prismaClient from '@/lib/prisma';
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
@@ -94,15 +93,10 @@ export async function POST(req: NextRequest): Promise<Response> {
 }
 
 async function handleSubscriptionReminders(req: NextRequest): Promise<Response> {
-  return Sentry.startSpan(
-    {
-      op: 'cron.job',
-      name: 'Subscription Reminders',
-    },
-    async (span) => {
-      const { logger } = Sentry;
-
-      logger.info('Subscription reminder cron job started', {
+  // Removed Sentry.startSpan wrapper
+// async (span) => {
+      
+      console.info('Subscription reminder cron job started', {
         timestamp: new Date().toISOString(),
       });
 
@@ -111,7 +105,7 @@ async function handleSubscriptionReminders(req: NextRequest): Promise<Response> 
       const expectedSecret = process.env.CRON_SECRET;
 
       if (!expectedSecret || cronSecret !== expectedSecret) {
-        logger.warn('Unauthorized subscription reminder cron attempt');
+        console.warn('Unauthorized subscription reminder cron attempt');
         return Response.json({
           success: false,
           message: 'Unauthorized',
@@ -120,7 +114,7 @@ async function handleSubscriptionReminders(req: NextRequest): Promise<Response> 
 
       // Check if Resend is configured
       if (!isResendConfigured()) {
-        logger.error('Resend email service not configured');
+        console.error('Resend email service not configured');
         return Response.json({
           success: false,
           message: 'Email service not configured',
@@ -161,9 +155,9 @@ async function handleSubscriptionReminders(req: NextRequest): Promise<Response> 
           take: MAX_EMAILS_PER_RUN,
         });
 
-        span.setAttribute('subscriptionsFound', subscriptions.length);
+        // // // // span.setAttribute('subscriptionsFound', subscriptions.length);
 
-        logger.info('Found subscriptions needing reminders', {
+        console.info('Found subscriptions needing reminders', {
           count: subscriptions.length,
           targetDate: targetDate.toISOString(),
         });
@@ -254,7 +248,7 @@ async function handleSubscriptionReminders(req: NextRequest): Promise<Response> 
             });
 
             if (error) {
-              logger.error('Failed to send subscription reminder', {
+              console.error('Failed to send subscription reminder', {
                 subscriptionId: subscription.id,
                 error: error.message,
               });
@@ -273,15 +267,14 @@ async function handleSubscriptionReminders(req: NextRequest): Promise<Response> 
 
             sentCount++;
 
-            logger.info('Subscription reminder sent', {
+            console.info('Subscription reminder sent', {
               subscriptionId: subscription.id,
               email: subscription.email,
               emailId: data?.id,
               nextDeliveryDate: subscription.nextDeliveryDate.toISOString(),
             });
           } catch (subError) {
-            Sentry.captureException(subError);
-            logger.error('Error processing subscription reminder', {
+            console.error('Error processing subscription reminder', {
               subscriptionId: subscription.id,
               error:
                 subError instanceof Error ? subError.message : 'Unknown error',
@@ -290,10 +283,10 @@ async function handleSubscriptionReminders(req: NextRequest): Promise<Response> 
           }
         }
 
-        span.setAttribute('sentCount', sentCount);
-        span.setAttribute('errorCount', errorCount);
+        // // // // span.setAttribute('sentCount', sentCount);
+        // // // // span.setAttribute('errorCount', errorCount);
 
-        logger.info('Subscription reminder cron job completed', {
+        console.info('Subscription reminder cron job completed', {
           sent: sentCount,
           skipped: skippedCount,
           errors: errorCount,
@@ -308,8 +301,7 @@ async function handleSubscriptionReminders(req: NextRequest): Promise<Response> 
           message: `Sent ${sentCount} reminders, skipped ${skippedCount}, ${errorCount} errors`,
         });
       } catch (error) {
-        Sentry.captureException(error);
-        logger.error('Subscription reminder cron job failed', {
+        console.error('Subscription reminder cron job failed', {
           error: error instanceof Error ? error.message : 'Unknown error',
         });
 
@@ -319,6 +311,5 @@ async function handleSubscriptionReminders(req: NextRequest): Promise<Response> 
             error instanceof Error ? error.message : 'Internal server error',
         }, { status: 500 });
       }
-    }
-  );
+    
 }

@@ -14,7 +14,9 @@ function normalizeRoutePath(pathname: string): string {
     return '/';
   }
 
-  const stripped = pathname.replace(/\/+$/, '');
+  // Collapse multiple slashes to single slash
+  const cleanPath = pathname.replace(/\/+/g, '/');
+  const stripped = cleanPath.replace(/\/+$/, '');
   return stripped.length === 0 ? '/' : stripped;
 }
 
@@ -24,7 +26,9 @@ function normalizePathname(pathname: string): string {
   }
 
   const withLeadingSlash = pathname.startsWith('/') ? pathname : `/${pathname}`;
-  const trimmed = withLeadingSlash.replace(/\/+$/, '');
+  // Collapse multiple slashes to single slash
+  const cleanPath = withLeadingSlash.replace(/\/+/g, '/');
+  const trimmed = cleanPath.replace(/\/+$/, '');
   return trimmed.length === 0 ? '/' : trimmed;
 }
 

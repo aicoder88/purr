@@ -13,7 +13,7 @@ const mockStripeConstructor = jest.fn().mockImplementation(() => ({
 const mockOrderFindUnique = jest.fn();
 const mockCheckRateLimit = jest.fn();
 const mockCreateRateLimitHeaders = jest.fn();
-const mockCaptureException = jest.fn();
+
 
 jest.mock('stripe', () => ({
   __esModule: true,
@@ -34,9 +34,7 @@ jest.mock('@/lib/rate-limit', () => ({
   createRateLimitHeaders: mockCreateRateLimitHeaders,
 }));
 
-jest.mock('@sentry/nextjs', () => ({
-  captureException: mockCaptureException,
-}));
+
 
 const { POST } = require('../../app/api/checkout/route') as typeof import('../../app/api/checkout/route');
 
@@ -368,6 +366,5 @@ describe('/api/checkout', () => {
     expect(response.status).toBe(500);
     const data = await getResponseData(response);
     expect(data.error).toBe('Failed to create checkout session');
-    expect(mockCaptureException).toHaveBeenCalledTimes(1);
   });
 });

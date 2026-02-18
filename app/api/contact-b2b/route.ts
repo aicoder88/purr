@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { isZendeskConfigured, createB2BTicket } from '@/lib/zendesk';
-import * as Sentry from '@sentry/nextjs';
 
 // Define validation schema for B2B contact form
 const b2bContactSchema = z.object({
@@ -74,7 +73,6 @@ export async function POST(request: NextRequest) {
         );
       } catch (zendeskError) {
         console.error('Zendesk error:', zendeskError);
-        Sentry.captureException(zendeskError);
       }
     }
 
@@ -85,7 +83,6 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error('B2B contact error:', error);
-    Sentry.captureException(error);
 
     return NextResponse.json(
       { success: false, message: 'Something went wrong. Please try again.' },

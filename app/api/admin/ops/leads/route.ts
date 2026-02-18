@@ -1,7 +1,6 @@
 import { requireAuth } from '@/lib/auth/session';
 import prismaClient from '@/lib/prisma';
 import { LeadStatus } from '@/generated/client/client';
-import * as Sentry from '@sentry/nextjs';
 import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 interface LeadsQueryParams {
@@ -35,8 +34,7 @@ export async function GET(req: Request) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const { logger } = Sentry;
-
+  
   try {
     const url = new URL(req.url);
     const {
@@ -120,7 +118,7 @@ export async function GET(req: Request) {
       {} as Record<LeadStatus, number>
     );
 
-    logger.info('Leads fetched', {
+    console.info('Leads fetched', {
       count: leads.length,
       page: pageNum,
       totalCount
@@ -137,8 +135,7 @@ export async function GET(req: Request) {
       statusCounts: statusCountsObj
     }, { status: 200, headers: rateLimitHeaders });
   } catch (error) {
-    Sentry.captureException(error);
-    logger.error('Leads API error', { error: error instanceof Error ? error.message : 'Unknown error' });
+    console.error('Leads API error', { error: error instanceof Error ? error.message : 'Unknown error' });
     return Response.json({ error: 'Internal server error' }, { status: 500, headers: rateLimitHeaders });
   }
 }
@@ -162,8 +159,7 @@ export async function POST(req: Request) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const { logger } = Sentry;
-
+  
   try {
     const leadData = await req.json();
 
@@ -217,12 +213,11 @@ export async function POST(req: Request) {
       }
     });
 
-    logger.info('Lead created', { leadId: lead.id, companyName: lead.companyName });
+    console.info('Lead created', { leadId: lead.id, companyName: lead.companyName });
 
     return Response.json({ success: true, lead }, { status: 201, headers: rateLimitHeaders });
   } catch (error) {
-    Sentry.captureException(error);
-    logger.error('Leads API error', { error: error instanceof Error ? error.message : 'Unknown error' });
+    console.error('Leads API error', { error: error instanceof Error ? error.message : 'Unknown error' });
     return Response.json({ error: 'Internal server error' }, { status: 500, headers: rateLimitHeaders });
   }
 }

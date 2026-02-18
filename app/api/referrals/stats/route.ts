@@ -13,7 +13,6 @@ import {
   maskEmail,
 
 } from '@/lib/referral';
-import * as Sentry from '@sentry/nextjs';
 
 interface ReferralActivity {
   id: string;
@@ -233,7 +232,6 @@ export async function GET(): Promise<Response> {
     }, { headers });
   } catch (error) {
     console.error('Error fetching referral stats:', error);
-    Sentry.captureException(error);
 
     return Response.json({
       success: false,

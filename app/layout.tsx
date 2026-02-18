@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import '../src/index.css';
 import { defaultLocale } from '@/i18n/config';
 import { LocaleDetector } from '@/components/LocaleDetector';
@@ -167,6 +168,7 @@ export default async function RootLayout({
           </AppLayout>
 
         </Providers>
+        <SpeedInsights />
       </body>
     </html >
   );

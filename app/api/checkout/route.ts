@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { z } from 'zod';
-import * as Sentry from '@sentry/nextjs';
 import prisma from '@/lib/prisma';
 import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 import { verifyCheckoutToken, isOrderExpired } from '@/lib/security/checkout-token';
@@ -142,7 +141,6 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error('Checkout error:', error);
-    Sentry.captureException(error);
 
     return NextResponse.json(
       { error: 'Failed to create checkout session' },

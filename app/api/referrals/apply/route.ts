@@ -11,7 +11,6 @@ import {
   validateReferralCodeFormat,
   REFERRAL_CONFIG,
 } from '@/lib/referral';
-import * as Sentry from '@sentry/nextjs';
 
 // Input validation schema
 const applyReferralSchema = z.object({
@@ -222,7 +221,6 @@ export async function POST(req: Request): Promise<Response> {
     }, { headers });
   } catch (error) {
     console.error('Error applying referral code:', error);
-    Sentry.captureException(error);
 
     return Response.json({
       success: false,

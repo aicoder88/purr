@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import * as Sentry from '@sentry/nextjs';
 import prisma from '@/lib/prisma';
 import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit-app';
 
@@ -82,19 +81,12 @@ async function handler(request: NextRequest) {
     });
 
     // Log successful subscription
-    Sentry.addBreadcrumb({
-      category: 'subscription',
-      message: `New email subscriber from ${source}`,
-      level: 'info',
-      data: { source, locale },
-    });
-
+    
     return NextResponse.json(
       { success: true, message: 'Successfully subscribed! Check your email for your discount code.' },
       { status: 201 }
     );
   } catch (error) {
-    Sentry.captureException(error);
     console.error('Subscription error:', error);
 
     return NextResponse.json(

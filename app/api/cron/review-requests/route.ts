@@ -8,7 +8,6 @@
  */
 
 import type { NextRequest } from 'next/server';
-import * as Sentry from '@sentry/nextjs';
 import { Resend } from 'resend';
 import prisma from '@/lib/prisma';
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
@@ -44,15 +43,10 @@ export async function POST(req: NextRequest): Promise<Response> {
 }
 
 async function handleReviewRequests(req: NextRequest): Promise<Response> {
-  return Sentry.startSpan(
-    {
-      op: 'cron.job',
-      name: 'Send Review Request Emails',
-    },
-    async (span) => {
-      const { logger } = Sentry;
-
-      logger.info('Review request cron job started', {
+  // Removed Sentry.startSpan wrapper
+// async (span) => {
+      
+      console.info('Review request cron job started', {
         method: req.method,
         timestamp: new Date().toISOString()
       });
@@ -62,7 +56,7 @@ async function handleReviewRequests(req: NextRequest): Promise<Response> {
       const expectedSecret = process.env.CRON_SECRET;
 
       if (!expectedSecret || cronSecret !== expectedSecret) {
-        logger.warn('Unauthorized review request cron attempt', {
+        console.warn('Unauthorized review request cron attempt', {
           hasSecret: !!cronSecret
         });
         return Response.json({
@@ -73,7 +67,7 @@ async function handleReviewRequests(req: NextRequest): Promise<Response> {
 
       // Check if database is configured
       if (!prisma) {
-        logger.error('Database not configured for review request cron');
+        console.error('Database not configured for review request cron');
         return Response.json({
           success: false,
           message: 'Database not configured'
@@ -82,7 +76,7 @@ async function handleReviewRequests(req: NextRequest): Promise<Response> {
 
       // Check if Resend is configured
       if (!isResendConfigured()) {
-        logger.error('Resend email service not configured');
+        console.error('Resend email service not configured');
         return Response.json({
           success: false,
           message: 'Email service not configured'
@@ -96,7 +90,7 @@ async function handleReviewRequests(req: NextRequest): Promise<Response> {
         const cutoffDate = new Date();
         cutoffDate.setDate(cutoffDate.getDate() - DAYS_AFTER_DELIVERY);
 
-        logger.info('Querying orders for review requests', {
+        console.info('Querying orders for review requests', {
           cutoffDate: cutoffDate.toISOString(),
           daysAfterDelivery: DAYS_AFTER_DELIVERY
         });
@@ -124,12 +118,12 @@ async function handleReviewRequests(req: NextRequest): Promise<Response> {
           }
         });
 
-        logger.info('Found eligible orders for review requests', {
+        console.info('Found eligible orders for review requests', {
           count: eligibleOrders.length,
           maxPerRun: MAX_EMAILS_PER_RUN
         });
 
-        span.setAttribute('eligibleOrdersCount', eligibleOrders.length);
+        // // // // span.setAttribute('eligibleOrdersCount', eligibleOrders.length);
 
         if (eligibleOrders.length === 0) {
           return Response.json({
@@ -151,7 +145,7 @@ async function handleReviewRequests(req: NextRequest): Promise<Response> {
 
           // Skip if no customer email
           if (!customer?.email) {
-            logger.warn('Order has no customer email, skipping', {
+            console.warn('Order has no customer email, skipping', {
               orderId: order.id
             });
             skippedCount++;
@@ -186,7 +180,7 @@ async function handleReviewRequests(req: NextRequest): Promise<Response> {
 
             const emailSubject = getReviewRequestEmailSubject(locale);
 
-            logger.info('Sending review request email', {
+            console.info('Sending review request email', {
               orderId: order.id,
               email: customer.email,
               locale,
@@ -207,7 +201,7 @@ async function handleReviewRequests(req: NextRequest): Promise<Response> {
             });
 
             if (error) {
-              logger.error('Failed to send review request email', {
+              console.error('Failed to send review request email', {
                 orderId: order.id,
                 email: customer.email,
                 error: error.message
@@ -237,15 +231,14 @@ async function handleReviewRequests(req: NextRequest): Promise<Response> {
               status: `sent - ${data?.id}`
             });
 
-            logger.info('Review request email sent successfully', {
+            console.info('Review request email sent successfully', {
               orderId: order.id,
               email: customer.email,
               emailId: data?.id
             });
 
           } catch (orderError) {
-            Sentry.captureException(orderError);
-            logger.error('Error processing order for review request', {
+            console.error('Error processing order for review request', {
               orderId: order.id,
               error: orderError instanceof Error ? orderError.message : 'Unknown error'
             });
@@ -258,11 +251,11 @@ async function handleReviewRequests(req: NextRequest): Promise<Response> {
           }
         }
 
-        span.setAttribute('sentCount', sentCount);
-        span.setAttribute('skippedCount', skippedCount);
-        span.setAttribute('errorCount', errorCount);
+        // // // // span.setAttribute('sentCount', sentCount);
+        // // // // span.setAttribute('skippedCount', skippedCount);
+        // // // // span.setAttribute('errorCount', errorCount);
 
-        logger.info('Review request cron job completed', {
+        console.info('Review request cron job completed', {
           sent: sentCount,
           skipped: skippedCount,
           errors: errorCount
@@ -278,8 +271,7 @@ async function handleReviewRequests(req: NextRequest): Promise<Response> {
         });
 
       } catch (error) {
-        Sentry.captureException(error);
-        logger.error('Review request cron job failed', {
+        console.error('Review request cron job failed', {
           error: error instanceof Error ? error.message : 'Unknown error'
         });
 
@@ -289,5 +281,3 @@ async function handleReviewRequests(req: NextRequest): Promise<Response> {
         }, { status: 500 });
       }
     }
-  );
-}

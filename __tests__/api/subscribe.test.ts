@@ -3,8 +3,7 @@ import type { NextRequest } from 'next/server';
 const mockEmailSubscriberFindUnique = jest.fn();
 const mockEmailSubscriberCreate = jest.fn();
 const mockEmailSubscriberUpdate = jest.fn();
-const mockAddBreadcrumb = jest.fn();
-const mockCaptureException = jest.fn();
+
 const mockWithRateLimit = jest.fn((_config: unknown, handler: unknown) => handler);
 
 jest.mock('@/lib/prisma', () => ({
@@ -18,10 +17,7 @@ jest.mock('@/lib/prisma', () => ({
   },
 }));
 
-jest.mock('@sentry/nextjs', () => ({
-  addBreadcrumb: mockAddBreadcrumb,
-  captureException: mockCaptureException,
-}));
+
 
 jest.mock('@/lib/security/rate-limit-app', () => ({
   RATE_LIMITS: {
@@ -80,12 +76,6 @@ describe('/api/subscribe', () => {
         status: 'ACTIVE',
         welcomeEmailSent: false,
       },
-    });
-    expect(mockAddBreadcrumb).toHaveBeenCalledWith({
-      category: 'subscription',
-      message: 'New email subscriber from homepage',
-      level: 'info',
-      data: { source: 'homepage', locale: 'fr' },
     });
   });
 

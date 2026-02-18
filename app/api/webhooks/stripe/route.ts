@@ -1,7 +1,6 @@
 import type { NextRequest } from 'next/server';
 import Stripe from 'stripe';
 import { Resend } from 'resend';
-import * as Sentry from '@sentry/nextjs';
 import prisma from '@/lib/prisma';
 import { OrderConfirmationEmailHTML, getOrderConfirmationEmailSubject } from '@/emails/order-confirmation';
 import { recordAffiliateConversion, parseAffiliateMetadata } from '@/lib/affiliate/conversion';
@@ -70,28 +69,17 @@ async function sendAdminNotification({
   amount: number;
   isPaymentLink?: boolean;
 }): Promise<{ success: boolean; error?: string }> {
-  return Sentry.startSpan(
-    {
-      op: 'email.send',
-      name: 'Send Admin Notification',
-    },
-    async (span) => {
-      const { logger } = Sentry;
 
-      span.setAttribute('orderNumber', orderNumber);
-      span.setAttribute('amount', amount);
-      span.setAttribute('isPaymentLink', isPaymentLink);
+  if (!process.env.RESEND_API_KEY) {
+    console.error('RESEND_API_KEY not configured for admin notification');
+    return { success: false, error: 'Email service not configured' };
+  }
 
-      if (!process.env.RESEND_API_KEY) {
-        logger.error('RESEND_API_KEY not configured for admin notification');
-        return { success: false, error: 'Email service not configured' };
-      }
+  try {
+    const formattedAmount = (amount / 100).toFixed(2);
+    const orderSource = isPaymentLink ? '(via Payment Link)' : '(via Website Checkout)';
 
-      try {
-        const formattedAmount = (amount / 100).toFixed(2);
-        const orderSource = isPaymentLink ? '(via Payment Link)' : '(via Website Checkout)';
-
-        const emailHTML = `
+    const emailHTML = `
           <!DOCTYPE html>
           <html>
             <head>
@@ -120,38 +108,37 @@ async function sendAdminNotification({
           </html>
         `;
 
-        const { data, error } = await getResend().emails.send({
-          from: 'Purrify Notifications <support@purrify.ca>',
-          to: ADMIN_EMAIL,
-          subject: `🎉 New Sale: $${formattedAmount} - ${productName}`,
-          html: emailHTML,
-        });
+    const { data, error } = await getResend().emails.send({
+      from: 'Purrify Notifications <support@purrify.ca>',
+      to: ADMIN_EMAIL,
+      subject: `🎉 New Sale: $${formattedAmount} - ${productName}`,
+      html: emailHTML,
+    });
 
-        if (error) {
-          logger.error('Admin notification failed', {
-            error: error.message,
-            orderNumber
-          });
-          return { success: false, error: error.message };
-        }
-
-        span.setAttribute('emailId', data?.id || '');
-        logger.info('Admin notification sent successfully', {
-          emailId: data?.id,
-          to: ADMIN_EMAIL,
-          orderNumber
-        });
-        return { success: true };
-      } catch (err) {
-        Sentry.captureException(err);
-        logger.error('Error sending admin notification', {
-          error: err instanceof Error ? err.message : 'Unknown error',
-          orderNumber
-        });
-        return { success: false, error: err instanceof Error ? err.message : 'Unknown error' };
-      }
+    if (error) {
+      console.error('Admin notification failed', {
+        error: error.message,
+        orderNumber
+      });
+      return { success: false, error: error.message };
     }
-  );
+
+    // // // // // span.setAttribute('emailId', data?.id || '');
+    console.info('Admin notification sent successfully', {
+      emailId: data?.id,
+      to: ADMIN_EMAIL,
+      orderNumber
+    });
+    return { success: true };
+  } catch (err) {
+    console.error('Error sending admin notification', {
+      error: err instanceof Error ? err.message : 'Unknown error',
+      orderNumber
+    });
+    return { success: false, error: err instanceof Error ? err.message : 'Unknown error' };
+  }
+  // }
+  // );
 }
 
 /**
@@ -175,176 +162,156 @@ async function sendThankYouEmail({
   amount: number;
   locale?: string;
 }): Promise<{ success: boolean; error?: string }> {
-  return Sentry.startSpan(
-    {
-      op: 'email.send',
-      name: 'Send Thank You Email',
-    },
-    async (span) => {
-      const { logger } = Sentry;
 
-      span.setAttribute('orderNumber', orderNumber);
-      span.setAttribute('locale', locale);
-      span.setAttribute('amount', amount);
 
-      // Validate Resend API key exists (Resend will validate the key itself)
-      if (!process.env.RESEND_API_KEY) {
-        logger.error('RESEND_API_KEY not configured for customer email');
-        return { success: false, error: 'Email service not configured' };
-      }
+  // Validate Resend API key exists (Resend will validate the key itself)
+  if (!process.env.RESEND_API_KEY) {
+    console.error('RESEND_API_KEY not configured for customer email');
+    return { success: false, error: 'Email service not configured' };
+  }
 
-      try {
-        const emailHTML = OrderConfirmationEmailHTML({
-          customerEmail,
-          customerName,
-          orderNumber,
-          productName,
-          quantity,
-          amount,
-          locale
-        });
+  try {
+    const emailHTML = OrderConfirmationEmailHTML({
+      customerEmail,
+      customerName,
+      orderNumber,
+      productName,
+      quantity,
+      amount,
+      locale
+    });
 
-        const emailSubject = getOrderConfirmationEmailSubject(locale);
+    const emailSubject = getOrderConfirmationEmailSubject(locale);
 
-        const { data, error } = await getResend().emails.send({
-          from: 'Purrify Support <support@purrify.ca>',
-          to: customerEmail,
-          subject: emailSubject,
-          html: emailHTML,
-        });
+    const { data, error } = await getResend().emails.send({
+      from: 'Purrify Support <support@purrify.ca>',
+      to: customerEmail,
+      subject: emailSubject,
+      html: emailHTML,
+    });
 
-        if (error) {
-          logger.error('Customer email failed', {
-            error: error.message,
-            orderNumber,
-            customerEmail
-          });
-          return { success: false, error: error.message };
-        }
-
-        span.setAttribute('emailId', data?.id || '');
-        logger.info('Customer email sent successfully', {
-          emailId: data?.id,
-          to: customerEmail,
-          orderNumber
-        });
-        return { success: true };
-      } catch (err) {
-        Sentry.captureException(err);
-        logger.error('Error sending customer email', {
-          error: err instanceof Error ? err.message : 'Unknown error',
-          orderNumber
-        });
-        return { success: false, error: err instanceof Error ? err.message : 'Unknown error' };
-      }
+    if (error) {
+      console.error('Customer email failed', {
+        error: error.message,
+        orderNumber,
+        customerEmail
+      });
+      return { success: false, error: error.message };
     }
-  );
+
+    // // // // // span.setAttribute('emailId', data?.id || '');
+    console.info('Customer email sent successfully', {
+      emailId: data?.id,
+      to: customerEmail,
+      orderNumber
+    });
+    return { success: true };
+  } catch (err) {
+    console.error('Error sending customer email', {
+      error: err instanceof Error ? err.message : 'Unknown error',
+      orderNumber
+    });
+    return { success: false, error: err instanceof Error ? err.message : 'Unknown error' };
+  }
 }
 
+
+
 export async function POST(req: NextRequest): Promise<Response> {
-  return Sentry.startSpan(
-    {
-      op: 'webhook.stripe',
-      name: 'POST /api/webhooks/stripe',
-    },
-    async (span) => {
-      const { logger } = Sentry;
+  // Get raw body for signature verification
+  const payload = await req.text();
+  const sig = req.headers.get('stripe-signature');
 
-      // Get raw body for signature verification
-      const payload = await req.text();
-      const sig = req.headers.get('stripe-signature');
+  if (!sig) {
+    console.warn('Missing stripe-signature header');
+    return Response.json({ message: 'Missing stripe-signature header' }, { status: 400 });
+  }
 
-      if (!sig) {
-        logger.warn('Missing stripe-signature header');
-        return Response.json({ message: 'Missing stripe-signature header' }, { status: 400 });
-      }
+  // Verify webhook signature with environment-appropriate secret
+  let event: Stripe.Event;
+  try {
+    const secret = getWebhookSecret();
+    event = getStripe().webhooks.constructEvent(payload, sig, secret);
+  } catch (err) {
+    const error = err instanceof Error ? err : new Error('Unknown error');
+    console.error('Webhook signature verification failed', {
+      error: error.message,
+    });
+    return new Response('Webhook signature verification failed', { status: 400 });
+  }
 
-      // Verify webhook signature with environment-appropriate secret
-      let event: Stripe.Event;
-      try {
-        const secret = getWebhookSecret();
-        event = getStripe().webhooks.constructEvent(payload, sig, secret);
-      } catch (err) {
-        const error = err instanceof Error ? err : new Error('Unknown error');
-        Sentry.captureException(error);
-        logger.error('Webhook signature verification failed', {
-          error: error.message,
-        });
-        return new Response('Webhook signature verification failed', { status: 400 });
-      }
+  // // // // // span.setAttribute('eventType', event.type);
+  // // // // // span.setAttribute('eventId', event.id);
+  console.info('Stripe webhook received', {
+    eventType: event.type,
+    eventId: event.id,
+  });
 
-      span.setAttribute('eventType', event.type);
-      span.setAttribute('eventId', event.id);
-      logger.info('Stripe webhook received', {
-        eventType: event.type,
+  // Idempotency: check if this event was already processed
+  // Stripe event IDs are globally unique (e.g., evt_1234...)
+  if (prisma) {
+    const alreadyProcessed = await prisma.auditLog.findFirst({
+      where: {
+        entity: 'stripe_webhook',
+        entityId: event.id,
+        action: 'PAYMENT_PROCESSED',
+      },
+    });
+
+    if (alreadyProcessed) {
+      console.info('Webhook event already processed (idempotent skip)', {
         eventId: event.id,
+        eventType: event.type,
+        processedAt: alreadyProcessed.createdAt,
       });
+      return Response.json({ received: true, deduplicated: true });
+    }
+  }
 
-      // Idempotency: check if this event was already processed
-      // Stripe event IDs are globally unique (e.g., evt_1234...)
-      if (prisma) {
-        const alreadyProcessed = await prisma.auditLog.findFirst({
-          where: {
-            entity: 'stripe_webhook',
-            entityId: event.id,
-            action: 'PAYMENT_PROCESSED',
-          },
+  try {
+    switch (event.type) {
+      case 'checkout.session.completed': {
+        const session = event.data.object as Stripe.Checkout.Session;
+        const orderId = session.metadata?.orderId;
+        const orderType = session.metadata?.type;
+
+        // // // // // span.setAttribute('sessionId', session.id);
+        // // // // // span.setAttribute('orderType', orderType || 'consumer');
+        // if (orderId) // // // // // span.setAttribute('orderId', orderId);
+
+        console.info('Checkout session completed', {
+          sessionId: session.id,
+          orderId,
+          orderType,
+          amount: session.amount_total
         });
 
-        if (alreadyProcessed) {
-          logger.info('Webhook event already processed (idempotent skip)', {
-            eventId: event.id,
-            eventType: event.type,
-            processedAt: alreadyProcessed.createdAt,
-          });
-          return Response.json({ received: true, deduplicated: true });
-        }
-      }
+        // Handle Affiliate Starter Kit purchase
+        if (orderType === 'affiliate_starter_kit') {
+          const affiliateId = session.metadata?.affiliateId;
+          if (affiliateId && prisma) {
+            try {
+              // Activate the affiliate
+              await prisma.affiliate.update({
+                where: { id: affiliateId },
+                data: {
+                  activatedAt: new Date(),
+                  starterKitOrderId: session.id,
+                },
+              });
+              console.info('Affiliate activated via starter kit purchase', {
+                affiliateId,
+                sessionId: session.id
+              });
 
-      try {
-        switch (event.type) {
-          case 'checkout.session.completed': {
-            const session = event.data.object as Stripe.Checkout.Session;
-            const orderId = session.metadata?.orderId;
-            const orderType = session.metadata?.type;
-
-            span.setAttribute('sessionId', session.id);
-            span.setAttribute('orderType', orderType || 'consumer');
-            if (orderId) span.setAttribute('orderId', orderId);
-
-            logger.info('Checkout session completed', {
-              sessionId: session.id,
-              orderId,
-              orderType,
-              amount: session.amount_total
-            });
-
-            // Handle Affiliate Starter Kit purchase
-            if (orderType === 'affiliate_starter_kit') {
-              const affiliateId = session.metadata?.affiliateId;
-              if (affiliateId && prisma) {
-                try {
-                  // Activate the affiliate
-                  await prisma.affiliate.update({
-                    where: { id: affiliateId },
-                    data: {
-                      activatedAt: new Date(),
-                      starterKitOrderId: session.id,
-                    },
-                  });
-                  logger.info('Affiliate activated via starter kit purchase', {
-                    affiliateId,
-                    sessionId: session.id
-                  });
-
-                  // Send activation confirmation email
-                  const customerEmail = session.customer_details?.email;
-                  if (customerEmail) {
-                    await getResend().emails.send({
-                      from: 'Purrify Affiliates <support@purrify.ca>',
-                      to: customerEmail,
-                      subject: 'Your Purrify Affiliate Account is Now Active! 🎉',
-                      html: `
+              // Send activation confirmation email
+              const customerEmail = session.customer_details?.email;
+              if (customerEmail) {
+                await getResend().emails.send({
+                  from: 'Purrify Affiliates <support@purrify.ca>',
+                  to: customerEmail,
+                  subject: 'Your Purrify Affiliate Account is Now Active! 🎉',
+                  html: `
                         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
                           <h2 style="color: #9333ea;">Your Affiliate Account is Active!</h2>
                           <p>Thank you for purchasing the Affiliate Starter Kit. Your account is now fully activated and ready to earn commissions!</p>
@@ -360,392 +327,388 @@ export async function POST(req: NextRequest): Promise<Response> {
                           <p style="color: #666; font-size: 12px;">The Purrify Affiliate Team</p>
                         </div>
                       `,
-                    });
-                  }
-                } catch (err) {
-                  logger.error('Failed to activate affiliate', {
-                    affiliateId,
-                    error: err instanceof Error ? err.message : 'Unknown error'
-                  });
-                  Sentry.captureException(err);
-                }
-              }
-              break;
-            }
-
-            // Determine if this is a Payment Link (no orderId) or website checkout
-            const isPaymentLink = !orderId;
-            span.setAttribute('isPaymentLink', isPaymentLink);
-
-            // Extract customer details for email
-            const customerEmail = session.customer_details?.email || session.customer_email;
-            const customerName = session.customer_details?.name || undefined;
-
-            // Generate order number: use orderId if available, otherwise use session ID
-            const orderNumber = orderId || session.id.slice(-12).toUpperCase();
-
-            // Get line items to extract product details
-            let productName = 'Purrify';
-            let quantity = 1;
-            const amount = session.amount_total || 0;
-
-            try {
-              const lineItems = await getStripe().checkout.sessions.listLineItems(session.id, { limit: 5 });
-              if (lineItems.data.length > 0) {
-                const item = lineItems.data[0];
-                productName = item.description || item.price?.product?.toString() || 'Purrify';
-                quantity = lineItems.data.reduce((sum, li) => sum + (li.quantity || 0), 0);
+                });
               }
             } catch (err) {
-              console.error('Error fetching line items:', err);
-              // Continue with defaults
-            }
-
-            // Handle Payment Links (no database order to update)
-            if (isPaymentLink) {
-              logger.info('Payment Link checkout completed', {
-                sessionId: session.id,
-                amount: session.amount_total
+              console.error('Failed to activate affiliate', {
+                affiliateId,
+                error: err instanceof Error ? err.message : 'Unknown error'
               });
-
-              // Send customer confirmation email
-              if (customerEmail) {
-                const emailResult = await sendThankYouEmail({
-                  customerEmail,
-                  customerName,
-                  orderNumber,
-                  productName,
-                  quantity,
-                  amount,
-                  locale: 'en'
-                });
-
-                if (!emailResult.success) {
-                  logger.warn('Failed to send Payment Link thank you email', {
-                    error: emailResult.error,
-                    sessionId: session.id
-                  });
-                }
-              }
-
-              // Send admin notification
-              if (customerEmail) {
-                const adminResult = await sendAdminNotification({
-                  customerEmail,
-                  customerName,
-                  orderNumber,
-                  productName,
-                  quantity,
-                  amount,
-                  isPaymentLink: true,
-                });
-
-                if (!adminResult.success) {
-                  logger.warn('Failed to send admin notification', {
-                    error: adminResult.error,
-                    sessionId: session.id
-                  });
-                }
-              }
-
-              // Process affiliate conversion for Payment Link orders
-              const paymentLinkAffiliateRef = session.metadata?.affiliate_ref;
-              if (paymentLinkAffiliateRef) {
-                const affiliateData = parseAffiliateMetadata(paymentLinkAffiliateRef);
-                if (affiliateData) {
-                  const orderSubtotalDollars = (amount || 0) / 100;
-
-                  const conversionResult = await recordAffiliateConversion({
-                    affiliateCode: affiliateData.code,
-                    affiliateSessionId: affiliateData.sessionId,
-                    orderId: orderNumber,
-                    orderSubtotal: orderSubtotalDollars,
-                  });
-
-                  if (conversionResult.success) {
-                    logger.info('Affiliate conversion recorded for Payment Link', {
-                      conversionId: conversionResult.conversionId,
-                      affiliateCode: affiliateData.code,
-                      orderId: orderNumber,
-                    });
-                  } else {
-                    logger.warn('Failed to record affiliate conversion for Payment Link', {
-                      error: conversionResult.error,
-                      affiliateCode: affiliateData.code,
-                      orderId: orderNumber,
-                    });
-                  }
-                }
-              }
-
-              break;
             }
+          }
+          break;
+        }
 
-            // Database operations require prisma
-            if (!prisma) {
-              throw new Error('Database connection not established');
-            }
+        // Determine if this is a Payment Link (no orderId) or website checkout
+        const isPaymentLink = !orderId;
+        // // // // // span.setAttribute('isPaymentLink', isPaymentLink);
 
-            // Handle retailer orders differently
-            if (orderType === 'retailer_order') {
-              const paymentIntent = session.payment_intent as string;
+        // Extract customer details for email
+        const customerEmail = session.customer_details?.email || session.customer_email;
+        const customerName = session.customer_details?.name || undefined;
 
-              // Check current order status before updating (idempotency guard)
-              const currentRetailerOrder = await prisma.retailerOrder.findUnique({
-                where: { id: orderId },
-                select: { status: true },
-              });
+        // Generate order number: use orderId if available, otherwise use session ID
+        const orderNumber = orderId || session.id.slice(-12).toUpperCase();
 
-              if (!currentRetailerOrder) {
-                logger.warn('Retailer order not found for webhook', { orderId });
-                break;
-              }
+        // Get line items to extract product details
+        let productName = 'Purrify';
+        let quantity = 1;
+        const amount = session.amount_total || 0;
 
-              if (currentRetailerOrder.status === 'PAID') {
-                logger.info('Retailer order already paid, skipping', { orderId });
-                break;
-              }
+        try {
+          const lineItems = await getStripe().checkout.sessions.listLineItems(session.id, { limit: 5 });
+          if (lineItems.data.length > 0) {
+            const item = lineItems.data[0];
+            productName = item.description || item.price?.product?.toString() || 'Purrify';
+            quantity = lineItems.data.reduce((sum, li) => sum + (li.quantity || 0), 0);
+          }
+        } catch (err) {
+          console.error('Error fetching line items:', err);
+          // Continue with defaults
+        }
 
-              if (currentRetailerOrder.status === 'CANCELLED') {
-                logger.info('Retailer order cancelled, skipping', { orderId });
-                break;
-              }
+        // Handle Payment Links (no database order to update)
+        if (isPaymentLink) {
+          console.info('Payment Link checkout completed', {
+            sessionId: session.id,
+            amount: session.amount_total
+          });
 
-              // Update retailer order status
-              await prisma.retailerOrder.update({
-                where: { id: orderId },
-                data: {
-                  status: 'PAID',
-                  stripePaymentIntentId: paymentIntent,
-                },
-              });
-
-              logger.info('Retailer order paid successfully', {
-                orderId,
-                paymentIntent,
-                amount: session.amount_total
-              });
-
-              // Send thank you email to retailer
-              if (customerEmail) {
-                const emailResult = await sendThankYouEmail({
-                  customerEmail,
-                  customerName,
-                  orderNumber: orderId,
-                  productName,
-                  quantity,
-                  amount,
-                  locale: 'en'
-                });
-
-                if (!emailResult.success) {
-                  logger.warn('Failed to send retailer thank you email', {
-                    error: emailResult.error,
-                    orderId
-                  });
-                }
-
-                // Send admin notification for retailer order
-                await sendAdminNotification({
-                  customerEmail,
-                  customerName,
-                  orderNumber: orderId,
-                  productName,
-                  quantity,
-                  amount,
-                  isPaymentLink: false,
-                });
-              }
-
-              break;
-            }
-
-            // Check current order status before updating (idempotency guard)
-            const currentOrder = await prisma.order.findUnique({
-              where: { id: orderId },
-              select: { status: true },
+          // Send customer confirmation email
+          if (customerEmail) {
+            const emailResult = await sendThankYouEmail({
+              customerEmail,
+              customerName,
+              orderNumber,
+              productName,
+              quantity,
+              amount,
+              locale: 'en'
             });
 
-            if (!currentOrder) {
-              logger.warn('Order not found for webhook', { orderId });
-              break;
-            }
-
-            if (currentOrder.status === 'PAID') {
-              logger.info('Order already paid, skipping', { orderId });
-              break;
-            }
-
-            if (currentOrder.status === 'CANCELLED') {
-              logger.info('Order cancelled, skipping', { orderId });
-              break;
-            }
-
-            // Handle consumer orders
-            await prisma.order.update({
-              where: { id: orderId },
-              data: { status: 'PAID' },
-            });
-
-            // Generate referral code if this is a first-time customer
-            const order = await prisma.order.findUnique({
-              where: { id: orderId },
-              include: {
-                user: {
-                  include: {
-                    orders: true,
-                  },
-                },
-              },
-            });
-
-            if (order?.user && order.user.orders.length === 1) {
-              // Generate cryptographically secure referral code
-              const { randomBytes } = await import('crypto');
-              const referralCode = randomBytes(3).toString('hex').toUpperCase();
-
-              await prisma.referral.create({
-                data: {
-                  code: referralCode,
-                  orderId,
-                  referrerId: order.user.id,
-                  refereeId: order.user.id, // Initially set to self, will be updated when used
-                },
+            if (!emailResult.success) {
+              console.warn('Failed to send Payment Link thank you email', {
+                error: emailResult.error,
+                sessionId: session.id
               });
             }
-
-            // Send thank you email to customer
-            if (customerEmail) {
-              const emailResult = await sendThankYouEmail({
-                customerEmail,
-                customerName,
-                orderNumber: orderId,
-                productName,
-                quantity,
-                amount,
-                locale: 'en' // TODO: Get from session metadata or customer preference
-              });
-
-              if (!emailResult.success) {
-                logger.warn('Failed to send thank you email', {
-                  error: emailResult.error,
-                  orderId
-                });
-                // Don't fail the webhook if email fails
-              }
-
-              // Send admin notification for consumer order
-              await sendAdminNotification({
-                customerEmail,
-                customerName,
-                orderNumber: orderId,
-                productName,
-                quantity,
-                amount,
-                isPaymentLink: false,
-              });
-            }
-
-            // Process affiliate conversion if applicable
-            const affiliateRef = session.metadata?.affiliate_ref;
-            if (affiliateRef) {
-              const affiliateData = parseAffiliateMetadata(affiliateRef);
-              if (affiliateData) {
-                // Calculate order subtotal (amount in cents, convert to dollars)
-                const orderSubtotalDollars = (amount || 0) / 100;
-
-                const conversionResult = await recordAffiliateConversion({
-                  affiliateCode: affiliateData.code,
-                  affiliateSessionId: affiliateData.sessionId,
-                  orderId: orderNumber,
-                  orderSubtotal: orderSubtotalDollars,
-                });
-
-                if (conversionResult.success) {
-                  logger.info('Affiliate conversion recorded', {
-                    conversionId: conversionResult.conversionId,
-                    affiliateCode: affiliateData.code,
-                    orderId: orderNumber,
-                  });
-                } else {
-                  logger.warn('Failed to record affiliate conversion', {
-                    error: conversionResult.error,
-                    affiliateCode: affiliateData.code,
-                    orderId: orderNumber,
-                  });
-                }
-              }
-            }
-
-            break;
           }
 
-          case 'checkout.session.expired': {
-            if (!prisma) {
-              throw new Error('Database connection not established');
-            }
-            const session = event.data.object as Stripe.Checkout.Session;
-            const orderId = session.metadata?.orderId;
-            const orderType = session.metadata?.type;
+          // Send admin notification
+          if (customerEmail) {
+            const adminResult = await sendAdminNotification({
+              customerEmail,
+              customerName,
+              orderNumber,
+              productName,
+              quantity,
+              amount,
+              isPaymentLink: true,
+            });
 
-            if (orderId) {
-              if (orderType === 'retailer_order') {
-                await prisma.retailerOrder.update({
-                  where: { id: orderId },
-                  data: { status: 'CANCELLED' },
+            if (!adminResult.success) {
+              console.warn('Failed to send admin notification', {
+                error: adminResult.error,
+                sessionId: session.id
+              });
+            }
+          }
+
+          // Process affiliate conversion for Payment Link orders
+          const paymentLinkAffiliateRef = session.metadata?.affiliate_ref;
+          if (paymentLinkAffiliateRef) {
+            const affiliateData = parseAffiliateMetadata(paymentLinkAffiliateRef);
+            if (affiliateData) {
+              const orderSubtotalDollars = (amount || 0) / 100;
+
+              const conversionResult = await recordAffiliateConversion({
+                affiliateCode: affiliateData.code,
+                affiliateSessionId: affiliateData.sessionId,
+                orderId: orderNumber,
+                orderSubtotal: orderSubtotalDollars,
+              });
+
+              if (conversionResult.success) {
+                console.info('Affiliate conversion recorded for Payment Link', {
+                  conversionId: conversionResult.conversionId,
+                  affiliateCode: affiliateData.code,
+                  orderId: orderNumber,
                 });
               } else {
-                await prisma.order.update({
-                  where: { id: orderId },
-                  data: { status: 'CANCELLED' },
+                console.warn('Failed to record affiliate conversion for Payment Link', {
+                  error: conversionResult.error,
+                  affiliateCode: affiliateData.code,
+                  orderId: orderNumber,
                 });
               }
             }
+          }
+
+          break;
+        }
+
+        // Database operations require prisma
+        if (!prisma) {
+          throw new Error('Database connection not established');
+        }
+
+        // Handle retailer orders differently
+        if (orderType === 'retailer_order') {
+          const paymentIntent = session.payment_intent as string;
+
+          // Check current order status before updating (idempotency guard)
+          const currentRetailerOrder = await prisma.retailerOrder.findUnique({
+            where: { id: orderId },
+            select: { status: true },
+          });
+
+          if (!currentRetailerOrder) {
+            console.warn('Retailer order not found for webhook', { orderId });
             break;
           }
 
-          default:
-            logger.debug('Unhandled Stripe event type', {
-              eventType: event.type,
-              eventId: event.id
+          if (currentRetailerOrder.status === 'PAID') {
+            console.info('Retailer order already paid, skipping', { orderId });
+            break;
+          }
+
+          if (currentRetailerOrder.status === 'CANCELLED') {
+            console.info('Retailer order cancelled, skipping', { orderId });
+            break;
+          }
+
+          // Update retailer order status
+          await prisma.retailerOrder.update({
+            where: { id: orderId },
+            data: {
+              status: 'PAID',
+              stripePaymentIntentId: paymentIntent,
+            },
+          });
+
+          console.info('Retailer order paid successfully', {
+            orderId,
+            paymentIntent,
+            amount: session.amount_total
+          });
+
+          // Send thank you email to retailer
+          if (customerEmail) {
+            const emailResult = await sendThankYouEmail({
+              customerEmail,
+              customerName,
+              orderNumber: orderId,
+              productName,
+              quantity,
+              amount,
+              locale: 'en'
             });
+
+            if (!emailResult.success) {
+              console.warn('Failed to send retailer thank you email', {
+                error: emailResult.error,
+                orderId
+              });
+            }
+
+            // Send admin notification for retailer order
+            await sendAdminNotification({
+              customerEmail,
+              customerName,
+              orderNumber: orderId,
+              productName,
+              quantity,
+              amount,
+              isPaymentLink: false,
+            });
+          }
+
+          break;
         }
 
-        // Record successful processing for idempotency
-        if (prisma) {
-          try {
-            await prisma.auditLog.create({
-              data: {
-                action: 'PAYMENT_PROCESSED',
-                entity: 'stripe_webhook',
-                entityId: event.id,
-                changes: { eventType: event.type },
+        // Check current order status before updating (idempotency guard)
+        const currentOrder = await prisma.order.findUnique({
+          where: { id: orderId },
+          select: { status: true },
+        });
+
+        if (!currentOrder) {
+          console.warn('Order not found for webhook', { orderId });
+          break;
+        }
+
+        if (currentOrder.status === 'PAID') {
+          console.info('Order already paid, skipping', { orderId });
+          break;
+        }
+
+        if (currentOrder.status === 'CANCELLED') {
+          console.info('Order cancelled, skipping', { orderId });
+          break;
+        }
+
+        // Handle consumer orders
+        await prisma.order.update({
+          where: { id: orderId },
+          data: { status: 'PAID' },
+        });
+
+        // Generate referral code if this is a first-time customer
+        const order = await prisma.order.findUnique({
+          where: { id: orderId },
+          include: {
+            user: {
+              include: {
+                orders: true,
               },
+            },
+          },
+        });
+
+        if (order?.user && order.user.orders.length === 1) {
+          // Generate cryptographically secure referral code
+          const { randomBytes } = await import('crypto');
+          const referralCode = randomBytes(3).toString('hex').toUpperCase();
+
+          await prisma.referral.create({
+            data: {
+              code: referralCode,
+              orderId,
+              referrerId: order.user.id,
+              refereeId: order.user.id, // Initially set to self, will be updated when used
+            },
+          });
+        }
+
+        // Send thank you email to customer
+        if (customerEmail) {
+          const emailResult = await sendThankYouEmail({
+            customerEmail,
+            customerName,
+            orderNumber: orderId,
+            productName,
+            quantity,
+            amount,
+            locale: 'en' // TODO: Get from session metadata or customer preference
+          });
+
+          if (!emailResult.success) {
+            console.warn('Failed to send thank you email', {
+              error: emailResult.error,
+              orderId
             });
-          } catch (auditErr) {
-            // Non-fatal: log but don't fail the webhook
-            logger.warn('Failed to write idempotency audit log', {
-              error: auditErr instanceof Error ? auditErr.message : 'Unknown',
-              eventId: event.id,
+            // Don't fail the webhook if email fails
+          }
+
+          // Send admin notification for consumer order
+          await sendAdminNotification({
+            customerEmail,
+            customerName,
+            orderNumber: orderId,
+            productName,
+            quantity,
+            amount,
+            isPaymentLink: false,
+          });
+        }
+
+        // Process affiliate conversion if applicable
+        const affiliateRef = session.metadata?.affiliate_ref;
+        if (affiliateRef) {
+          const affiliateData = parseAffiliateMetadata(affiliateRef);
+          if (affiliateData) {
+            // Calculate order subtotal (amount in cents, convert to dollars)
+            const orderSubtotalDollars = (amount || 0) / 100;
+
+            const conversionResult = await recordAffiliateConversion({
+              affiliateCode: affiliateData.code,
+              affiliateSessionId: affiliateData.sessionId,
+              orderId: orderNumber,
+              orderSubtotal: orderSubtotalDollars,
             });
+
+            if (conversionResult.success) {
+              console.info('Affiliate conversion recorded', {
+                conversionId: conversionResult.conversionId,
+                affiliateCode: affiliateData.code,
+                orderId: orderNumber,
+              });
+            } else {
+              console.warn('Failed to record affiliate conversion', {
+                error: conversionResult.error,
+                affiliateCode: affiliateData.code,
+                orderId: orderNumber,
+              });
+            }
           }
         }
 
-        logger.info('Webhook processed successfully', {
-          eventType: event.type,
-          eventId: event.id
-        });
+        break;
+      }
 
-        return Response.json({ received: true });
-      } catch (error) {
-        Sentry.captureException(error);
-        logger.error('Error processing webhook', {
-          error: error instanceof Error ? error.message : 'Unknown error',
+      case 'checkout.session.expired': {
+        if (!prisma) {
+          throw new Error('Database connection not established');
+        }
+        const session = event.data.object as Stripe.Checkout.Session;
+        const orderId = session.metadata?.orderId;
+        const orderType = session.metadata?.type;
+
+        if (orderId) {
+          if (orderType === 'retailer_order') {
+            await prisma.retailerOrder.update({
+              where: { id: orderId },
+              data: { status: 'CANCELLED' },
+            });
+          } else {
+            await prisma.order.update({
+              where: { id: orderId },
+              data: { status: 'CANCELLED' },
+            });
+          }
+        }
+        break;
+      }
+
+      default:
+        console.debug('Unhandled Stripe event type', {
           eventType: event.type,
           eventId: event.id
         });
-        return Response.json({ message: 'Error processing webhook' }, { status: 500 });
+    }
+
+    // Record successful processing for idempotency
+    if (prisma) {
+      try {
+        await prisma.auditLog.create({
+          data: {
+            action: 'PAYMENT_PROCESSED',
+            entity: 'stripe_webhook',
+            entityId: event.id,
+            changes: { eventType: event.type },
+          },
+        });
+      } catch (auditErr) {
+        // Non-fatal: log but don't fail the webhook
+        console.warn('Failed to write idempotency audit log', {
+          error: auditErr instanceof Error ? auditErr.message : 'Unknown',
+          eventId: event.id,
+        });
       }
     }
-  );
+
+    console.info('Webhook processed successfully', {
+      eventType: event.type,
+      eventId: event.id
+    });
+
+    return Response.json({ received: true });
+  } catch (error) {
+    console.error('Error processing webhook', {
+      error: error instanceof Error ? error.message : 'Unknown error',
+      eventType: event.type,
+      eventId: event.id
+    });
+    return Response.json({ message: 'Error processing webhook' }, { status: 500 });
+  }
 }

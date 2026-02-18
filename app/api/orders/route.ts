@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { checkRateLimit } from '@/lib/security/rate-limit-app';
 import { signOrderId } from '@/lib/security/checkout-token';
-import * as Sentry from '@sentry/nextjs';
 interface CartItem {
   id: string;
   quantity: number;
@@ -126,15 +125,7 @@ export async function POST(request: NextRequest) {
         userEmail: customer.email || 'anonymous',
         ip: forwarded || 'unknown'
       });
-      Sentry.captureMessage('Price tampering detected', {
-        level: 'warning',
-        extra: {
-          clientTotal,
-          serverTotal,
-          userEmail: customer.email,
-        },
-      });
-    }
+          }
     const order = await prisma.order.create({
       data: {
         totalAmount: serverTotal, // Use server-calculated total only
@@ -169,7 +160,6 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error('Error creating order:', error);
-    Sentry.captureException(error);
     
     if (error instanceof Error) {
       if (error.message.includes('Product not found') || 

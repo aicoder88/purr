@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as Sentry from '@sentry/nextjs';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { PlusCircle } from 'lucide-react';
@@ -50,82 +50,69 @@ export function FreeGiveawayForm() {
   });
 
   const onSubmit = async (data: FreeGiveawayFormData) => {
-    Sentry.startSpan(
-      {
-        op: 'ui.form.submit',
-        name: 'Free Giveaway Form Submit',
-      },
-      async (span) => {
-        const { logger } = Sentry;
+    setIsSubmitting(true);
+    setSubmitStatus({});
 
-        setIsSubmitting(true);
-        setSubmitStatus({});
+    try {
+      // Filter out empty cat names
+      const filteredCatNames = data.catNames?.filter(cat => cat.value && cat.value.trim() !== '') || [];
 
-        try {
-          // Filter out empty cat names
-          const filteredCatNames = data.catNames?.filter(cat => cat.value && cat.value.trim() !== '') || [];
+      const formData = {
+        ...data,
+        catNames: filteredCatNames.map(cat => cat.value),
+      };
 
-          const formData = {
-            ...data,
-            catNames: filteredCatNames.map(cat => cat.value),
-          };
+      console.log('Submitting free giveaway request', {
+        catCount: filteredCatNames.length,
+        hasEmail: !!data.email
+      });
 
-          span.setAttribute('catCount', filteredCatNames.length);
-          logger.info('Submitting free giveaway request', {
-            catCount: filteredCatNames.length,
-            hasEmail: !!data.email
-          });
+      const response = await fetch('/api/free-giveaway', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-          const response = await fetch('/api/free-giveaway', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-          });
+      const responseData = await response.json();
 
-          const responseData = await response.json();
-
-          span.setAttribute('responseStatus', response.status);
-
-          if (response.ok) {
-            logger.info('Free giveaway request submitted successfully');
-            setSubmitStatus({
-              success: true,
-              message: responseData.message || (t.freeGiveaway?.successMessage || 'Your free bag request has been submitted successfully!'),
-            });
-            // Reset form on success
-            reset();
-          } else {
-            logger.warn('Free giveaway request failed', {
-              status: response.status,
-              message: responseData.message
-            });
-            setSubmitStatus({
-              success: false,
-              message: responseData.message || (t.freeGiveaway?.errorMessage || 'Failed to submit your request. Please try again.'),
-            });
-          }
-        } catch (error) {
-          Sentry.captureException(error);
-          logger.error('Error submitting free giveaway request', {
-            error: error instanceof Error ? error.message : 'Unknown error'
-          });
-          setSubmitStatus({
-            success: false,
-            message: t.freeGiveaway?.errorGeneric || 'An error occurred. Please try again later.',
-          });
-        } finally {
-          setIsSubmitting(false);
-        }
+      if (response.ok) {
+        console.log('Free giveaway request submitted successfully');
+        setSubmitStatus({
+          success: true,
+          message: responseData.message || (t.freeGiveaway?.successMessage || 'Your free bag request has been submitted successfully!'),
+        });
+        // Reset form on success
+        reset();
+      } else {
+        console.warn('Free giveaway request failed', {
+          status: response.status,
+          message: responseData.message
+        });
+        setSubmitStatus({
+          success: false,
+          message: responseData.message || (t.freeGiveaway?.errorMessage || 'Failed to submit your request. Please try again.'),
+        });
       }
-    );
+    } catch (error) {
+      console.error('Error submitting free giveaway request', {
+        error: error instanceof Error ? error.message : 'Unknown error'
+      });
+      setSubmitStatus({
+        success: false,
+        message: t.freeGiveaway?.errorGeneric || 'An error occurred. Please try again later.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
 
   return (
     <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-8 border border-[#E0EFC7] dark:border-gray-800 transition-colors duration-300">
       <h2 className="font-heading text-2xl font-bold text-[#1E1B4B] dark:text-white dark:text-gray-100 dark:text-gray-100 mb-6">{t.freeGiveaway?.formTitle || ""}</h2>
-      
+
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-6"
@@ -180,7 +167,7 @@ export function FreeGiveawayForm() {
           <label htmlFor="cat-names" className="block text-sm font-medium text-[#333333] dark:text-gray-200 mb-2">
             {t.freeGiveaway?.catNames || ""}
           </label>
-          
+
           <div className="space-y-3">
             {fields.map((field, index) => (
               <div key={field.id}>
@@ -193,7 +180,7 @@ export function FreeGiveawayForm() {
               </div>
             ))}
           </div>
-          
+
           <Button
             type="button"
             variant="outline"
@@ -208,11 +195,10 @@ export function FreeGiveawayForm() {
 
         {submitStatus.message && (
           <div
-            className={`rounded-md p-4 ${
-              submitStatus.success
+            className={`rounded-md p-4 ${submitStatus.success
                 ? 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200'
                 : 'bg-red-50 dark:bg-red-900/20 text-red-800'
-            }`}
+              }`}
             role="alert"
             aria-live="polite"
           >
@@ -228,7 +214,7 @@ export function FreeGiveawayForm() {
         >
           {isSubmitting ? (t.freeGiveaway?.submitting || 'Submitting...') : (t.freeGiveaway?.submitButton || 'GET MY FREE BAG NOW')}
         </Button>
-        
+
         <p className="text-xs text-center text-gray-500 dark:text-gray-400 dark:text-gray-400 mt-4">
           {t.freeGiveaway?.privacyNotice || ""}
         </p>

@@ -3,7 +3,7 @@
 import { useEffect, useCallback, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import * as Sentry from '@sentry/nextjs';
+
 import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { SITE_NAME } from '@/lib/constants';
@@ -248,20 +248,8 @@ export default function Error({ error, reset }: ErrorPageProps) {
   }, [error]);
 
   // Report to Sentry and log analytics
-  useEffect(() => {
-    // Capture exception in Sentry
-    Sentry.captureException(error, {
-      tags: {
-        errorType: 'app-router-error',
-        statusCode: statusCode.toString()
-      },
-      extra: {
-        digest: error.digest,
-        url: typeof window !== 'undefined' ? window.location.href : undefined
-      }
-    });
 
-    // Log to console in development
+  useEffect(() => {
     if (process.env.NODE_ENV === 'development') {
       console.error('App Router Error:', {
         error: error.message,

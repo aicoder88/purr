@@ -1,7 +1,6 @@
 import { requireAuth } from '@/lib/auth/session';
 import prismaClient from '@/lib/prisma';
 import { LeadStatus } from '@/generated/client/client';
-import * as Sentry from '@sentry/nextjs';
 import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
 interface CSVLead {
@@ -75,8 +74,7 @@ export async function POST(req: Request) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const { logger } = Sentry;
-
+  
   if (!prismaClient) {
     return Response.json({ error: 'Database not configured' }, { status: 503 });
   }
@@ -203,7 +201,7 @@ export async function POST(req: Request) {
       );
     }
 
-    logger.info('CSV import completed', {
+    console.info('CSV import completed', {
       created: results.created,
       updated: results.updated,
       skipped: results.skipped,
@@ -215,8 +213,7 @@ export async function POST(req: Request) {
       results
     }, { status: 200, headers: rateLimitHeaders });
   } catch (error) {
-    Sentry.captureException(error);
-    logger.error('CSV import error', { error: error instanceof Error ? error.message : 'Unknown error' });
+    console.error('CSV import error', { error: error instanceof Error ? error.message : 'Unknown error' });
     return Response.json({ error: 'Internal server error' }, { status: 500, headers: rateLimitHeaders });
   }
 }
