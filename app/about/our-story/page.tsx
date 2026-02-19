@@ -169,7 +169,7 @@ export default function AboutPage() {
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full overflow-hidden relative border-2 border-white shadow-md">
                       <Image
-                        src="/images/mark-archer.webp"
+                        src="/images/team/mark-archer.webp"
                         alt="Mark Archer"
                         fill
                         sizes="48px"
@@ -243,7 +243,7 @@ export default function AboutPage() {
                 const isDrMike = member.name === 'Dr. Michael Rodriguez';
                 const hasPhoto = isMark || isDrMike;
                 const photoSrc = isMark
-                  ? '/images/mark-archer.webp'
+                  ? '/images/team/mark-archer.webp'
                   : isDrMike
                     ? '/images/dr-michael-rodriguez.jpg'
                     : null;
