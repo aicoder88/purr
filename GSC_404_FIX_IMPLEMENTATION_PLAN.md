@@ -1,13 +1,5 @@
 # Google Search Console 404 Error Fix - Implementation Plan
 
-**Date**: 2026-02-19
-**Status**: Ready for Implementation
-**Priority**: High (Affects SEO and user experience)
-
----
-
-## Executive Summary
-
 Your codebase has **4 critical issues** causing 404s in Google Search Console. The root causes are:
 
 1. **Locale mismatch in `locations` page** (generates invalid zh URLs)
@@ -108,10 +100,6 @@ const uiStrings: Record<string, { ... }> = {
   // Remove: es, zh
 };
 ```
-
-**Impact**: Stops Google from trying to crawl non-existent zh/es blog pages.
-
----
 
 ### 3. **MEDIUM: Robots.txt - Block Template URLs**
 
@@ -260,17 +248,6 @@ if (normalizedPath.includes('[') || normalizedPath.includes('{')) {
 - [ ] **4.1** Add template URL disallows to `public/robots.txt`
 
 ### Phase 5: Submit to Google Search Console (CRITICAL)
-
-After all fixes are deployed:
-
-- [ ] **5.1** Wait 24-48 hours for Google to re-crawl
-- [ ] **5.2** Go to **GSC → Coverage**
-- [ ] **5.3** Request URL inspection for a few example bad URLs:
-  - `https://www.purrify.ca/zh/locations/vancouver`
-  - `https://www.purrify.ca/es/blog/example-post`
-  - Verify they now redirect correctly
-- [ ] **5.4** If still showing errors after redirect, use GSC → "Request indexing" or "Mark as fixed"
-- [ ] **5.5** Monitor Coverage tab daily until error count drops to 0
 
 ---
 

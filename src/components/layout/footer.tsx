@@ -356,8 +356,8 @@ export function Footer() {
                   <Link prefetch={false}
                     href={
                       locale === "fr"
-                        ? "/fr/products/standard"
-                        : "/products/standard"
+                        ? "/fr/products/"
+                        : "/products/"
                     }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
@@ -368,8 +368,8 @@ export function Footer() {
                   <Link prefetch={false}
                     href={
                       locale === "fr"
-                        ? "/fr/products/family-pack"
-                        : "/products/family-pack"
+                        ? "/fr/products/"
+                        : "/products/"
                     }
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >

@@ -162,14 +162,6 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
     image: '/optimized/17g-transparent-v2.webp',
     alt: 'Trial size Purrify pouch',
   },
-  '/products/standard': {
-    image: '/optimized/60g-transparent.webp',
-    alt: 'Standard Purrify pouch',
-  },
-  '/products/family-pack': {
-    image: '/optimized/three-bags-no-bg.webp',
-    alt: 'Family pack Purrify bundle',
-  },
 
   // Other pages
   '/contact': {

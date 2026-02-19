@@ -381,6 +381,26 @@ const REDIRECTS = [
     permanent: true
   },
   {
+    source: "/products/standard",
+    destination: "/products/",
+    permanent: true
+  },
+  {
+    source: "/products/family-pack",
+    destination: "/products/",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr)/products/standard",
+    destination: "/:locale/products/",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr)/products/family-pack",
+    destination: "/:locale/products/",
+    permanent: true
+  },
+  {
     source: "/products/purrify-50g",
     destination: "/products/",
     permanent: true

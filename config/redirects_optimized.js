@@ -250,27 +250,27 @@ const REDIRECTS = [
   },
   {
     source: "/products/purrify-50g",
-    destination: "/products/standard/",
+    destination: "/products/",
     permanent: true
   },
   {
     source: "/products/purrify-120g",
-    destination: "/products/family-pack/",
+    destination: "/products/",
     permanent: true
   },
   {
     source: "/products/medium-size",
-    destination: "/products/standard/",
+    destination: "/products/",
     permanent: true
   },
   {
     source: "/products/large-size",
-    destination: "/products/family-pack/",
+    destination: "/products/",
     permanent: true
   },
   {
     source: "/products/family",
-    destination: "/products/family-pack/",
+    destination: "/products/",
     permanent: true
   },
   {

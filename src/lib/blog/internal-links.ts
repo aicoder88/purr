@@ -29,10 +29,8 @@ export const INTERNAL_LINK_OPTIONS = [
   { label: '90-Day Litter Deodorizer Test Results', url: '/blog/tried-every-litter-deodorizer-90-days-results' },
   { label: 'Purrify vs Spray Litter Deodorizer', url: '/blog/powder-vs-spray-litter-deodorizer' },
   // Products
-  { label: 'Shop the Standard Size Purrify Kit', url: '/products/standard' },
-  { label: 'Shop the Family Pack for Multi-Cat Homes', url: '/products/family-pack' },
   { label: 'Shop the Trial Size Starter Kit', url: '/products/trial-size' },
-  { label: 'Compare All Product Sizes', url: '/products' },
+  { label: 'Shop All Purrify Products', url: '/products' },
   // Other
   { label: 'Customer Reviews & Before/After Photos', url: '/reviews' },
   { label: 'Our Story', url: '/about/our-story' },

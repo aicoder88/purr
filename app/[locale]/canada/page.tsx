@@ -465,7 +465,7 @@ export default async function CanadaPage({ params }: CanadaPageProps) {
                 Start with Trial Size - {trialPrice}
               </Link>
               <Link
-                href="/products/standard"
+                href="/products/"
                 className="inline-flex items-center justify-center gap-2 bg-white/20 dark:bg-white/10 text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/30 dark:hover:bg-white/20 transition-all border border-white/30 dark:border-white/20"
               >
                 Standard Size - {standardPrice}

@@ -51,9 +51,8 @@ interface SEOStats {
 // Pages known to use useEnhancedSEO (updated as migrations happen)
 const PAGES_WITH_ENHANCED_SEO = [
   // Product pages
+  '/products',
   '/products/trial-size',
-  '/products/standard',
-  '/products/family-pack',
   // Main pages
   '/',
   '/about',
@@ -106,7 +105,7 @@ export async function GET(): Promise<NextResponse> {
     }));
 
     // Count pages by type
-    const productPages = 3; // trial-size, standard, family-pack
+    const productPages = 2; // products overview + trial-size
     const blogPages = suggestions.filter((s) => s.toPage.includes('/blog/')).length;
     const learnPages = suggestions.filter((s) => s.toPage.includes('/learn/')).length;
 

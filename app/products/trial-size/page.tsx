@@ -2,7 +2,7 @@ export const dynamic = 'force-static';
 
 import type { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
-import PageContent from '@/app/products/PageContent';
+import TrialSizePageContent from '@/app/products/trial-size/TrialSizePageContent';
 import { isValidLocale } from '@/i18n/config';
 
 export const viewport: Viewport = {
@@ -85,5 +85,5 @@ export default async function TrialSizePage({ params }: TrialSizePageProps) {
     notFound();
   }
 
-  return <PageContent />;
+  return <TrialSizePageContent locale={locale} />;
 }

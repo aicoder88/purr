@@ -445,7 +445,7 @@ export default function SciencePage() {
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <Link
-                    href="/products/standard"
+                    href="/products/"
                     className="px-8 py-3 bg-[#FF3131] dark:bg-[#FF5050] text-white dark:text-gray-100 rounded-full font-semibold shadow-lg hover:bg-[#FF5151] transition-colors"
                   >
                     Shop Purrify

@@ -98,12 +98,7 @@ class SitemapGenerator {
         priority: 0.9
       },
       {
-        loc: '/products/standard',
-        changefreq: 'weekly',
-        priority: 0.9
-      },
-      {
-        loc: '/products/family-pack',
+        loc: '/products',
         changefreq: 'weekly',
         priority: 0.9
       },
@@ -211,12 +206,7 @@ class SitemapGenerator {
         priority: 0.9
       },
       {
-        loc: '/fr/products/standard',
-        changefreq: 'weekly',
-        priority: 0.9
-      },
-      {
-        loc: '/fr/products/family-pack',
+        loc: '/fr/products',
         changefreq: 'weekly',
         priority: 0.9
       },

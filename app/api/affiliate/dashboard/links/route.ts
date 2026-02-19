@@ -23,18 +23,6 @@ const LINK_TEMPLATES = [
     path: '/products/trial-size',
   },
   {
-    id: 'standard',
-    name: 'Standard Pouch',
-    description: 'Standard product page',
-    path: '/products/standard',
-  },
-  {
-    id: 'family-pack',
-    name: 'Family Pack',
-    description: 'Family pack product page',
-    path: '/products/family-pack',
-  },
-  {
     id: 'blog',
     name: 'Blog',
     description: 'Blog articles',

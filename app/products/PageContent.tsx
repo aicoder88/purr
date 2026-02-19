@@ -251,7 +251,7 @@ export default function ProductsPage() {
       sku: 'purrify-50g',
       mpn: 'PURRIFY-50G',
       image: 'https://www.purrify.ca/optimized/60g-transparent.webp',
-      url: `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/standard`,
+      url: `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/#standard`,
       shippingRate: '6.99',
     },
     {
@@ -261,7 +261,7 @@ export default function ProductsPage() {
       sku: 'purrify-120g',
       mpn: 'PURRIFY-120G',
       image: 'https://www.purrify.ca/optimized/60g-transparent.webp',
-      url: `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/family-pack`,
+      url: `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/#family-pack`,
       shippingRate: '0',
     },
   ];
