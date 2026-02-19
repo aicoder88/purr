@@ -371,32 +371,32 @@ const REDIRECTS = [
   },
   {
     source: "/products/purrify-50g",
-    destination: "/products/standard/",
+    destination: "/products/",
     permanent: true
   },
   {
     source: "/products/purrify-120g",
-    destination: "/products/family-pack/",
+    destination: "/products/",
     permanent: true
   },
   {
     source: "/products/medium-size",
-    destination: "/products/standard/",
+    destination: "/products/",
     permanent: true
   },
   {
     source: "/products/large-size",
-    destination: "/products/family-pack/",
+    destination: "/products/",
     permanent: true
   },
   {
     source: "/products/family",
-    destination: "/products/family-pack/",
+    destination: "/products/",
     permanent: true
   },
   {
     source: "/products/trial",
-    destination: "/products/trial-size/",
+    destination: "/products/",
     permanent: true
   },
   {
@@ -405,6 +405,17 @@ const REDIRECTS = [
     permanent: true
   },
 
+  // --- CONSOLIDATED PRODUCT PAGES ---
+  {
+    source: "/products/standard",
+    destination: "/products/",
+    permanent: true
+  },
+  {
+    source: "/products/family-pack",
+    destination: "/products/",
+    permanent: true
+  },
   // --- TRIAL REDIRECTS ---
   {
     source: "/trial",
@@ -872,11 +883,7 @@ const REDIRECTS = [
     destination: "/reviews/",
     permanent: true
   },
-  {
-    source: "/reviews",
-    destination: "/reviews/",
-    permanent: true
-  },
+
   {
     source: "/documents",
     destination: "/invest/",
@@ -909,11 +916,7 @@ const REDIRECTS = [
     destination: "/stores/",
     permanent: true
   },
-  {
-    source: "/retailers",
-    destination: "/stores/",
-    permanent: true
-  },
+  // NOTE: /retailers page exists and should NOT redirect - it's the B2B wholesale page
 
   // --- AFFILIATE REDIRECTS ---
   {
@@ -992,26 +995,14 @@ const REDIRECTS = [
     destination: "/blog/best-cat-litter-multiple-cats-odor-control/",
     permanent: true
   },
-  {
-    source: "/blog/how-to-eliminate-cat-litter-odor",
-    destination: "/blog/how-to-eliminate-cat-litter-odor/",
-    permanent: true
-  },
-  {
-    source: "/blog/how-to-neutralize-ammonia-cat-litter",
-    destination: "/blog/how-to-neutralize-ammonia-cat-litter/",
-    permanent: true
-  },
+
+
   {
     source: "/blog/how-to-reduce-litter-box-odor",
     destination: "/blog/how-to-eliminate-cat-litter-odor/",
     permanent: true
   },
-  {
-    source: "/blog/how-to-use-cat-litter-deodorizer",
-    destination: "/blog/how-to-use-cat-litter-deodorizer/",
-    permanent: true
-  },
+
   {
     source: "/blog/using-purrify",
     destination: "/blog/how-to-use-cat-litter-deodorizer/",
@@ -1281,11 +1272,7 @@ const REDIRECTS = [
     destination: "/stores/",
     permanent: true
   },
-  {
-    source: "/:locale(fr)/blog/how-to-use-cat-litter-deodorizer",
-    destination: "/:locale/blog/how-to-use-cat-litter-deodorizer/",
-    permanent: true
-  },
+
 
   // --- INVALID LOCATION REDIRECTS (OPTIMIZED) ---
   // These redirect to /stores/ with trailing slash
@@ -1921,11 +1908,7 @@ const REDIRECTS = [
   },
 
   // --- FREE/OTHER REDIRECTS ---
-  {
-    source: "/free",
-    destination: "/free/",
-    permanent: true
-  },
+
 
   // --- MONTREAL REDIRECT ---
   {
@@ -1941,6 +1924,39 @@ const REDIRECTS = [
   { source: "/", has: [{ type: "query", key: "p", value: "131" }], destination: "/blog/", permanent: true },
   { source: "/", has: [{ type: "query", key: "p", value: "132" }], destination: "/blog/", permanent: true },
   { source: "/", has: [{ type: "query", key: "p", value: "134" }], destination: "/blog/", permanent: true },
+
+  // --- MISSING FOOTER LINKS ---
+  {
+    source: "/groomers",
+    destination: "/b2b/",
+    permanent: true
+  },
+  {
+    source: "/hospitality",
+    destination: "/b2b/",
+    permanent: true
+  },
+  {
+    source: "/shelters",
+    destination: "/b2b/",
+    permanent: true
+  },
+  // Localized versions
+  {
+    source: "/:locale(fr|es|zh)/groomers",
+    destination: "/b2b/",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|es|zh)/hospitality",
+    destination: "/b2b/",
+    permanent: true
+  },
+  {
+    source: "/:locale(fr|es|zh)/shelters",
+    destination: "/b2b/",
+    permanent: true
+  },
 ];
 
 module.exports = { REDIRECTS };
