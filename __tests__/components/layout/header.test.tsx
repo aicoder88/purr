@@ -2,7 +2,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Header } from '@/components/layout/header';
 // Create a mutable mock that we can change per test
-let mockSession: any = { data: null };
+let mockSession: { data: { user?: { email: string; name: string } } | null } = { data: null };
 // Mock next/link
 jest.mock('next/link', () => ({
   __esModule: true,
@@ -40,6 +40,7 @@ jest.mock('next/image', () => ({
     className?: string;
     priority?: boolean;
   }) {
+    // eslint-disable-next-line @next/next/no-img-element
     return <img src={src} alt={alt} className={className} data-priority={priority} />;
   },
 }));

@@ -102,7 +102,7 @@ export default function LeadsPage() {
       setStatusCounts(data.statusCounts);
       setSelectedIds([]);
       setSelectedIds([]);
-    } catch {
+    } catch (_error) {
       toast({
         title: 'Error',
         description: 'Failed to fetch leads',
@@ -171,8 +171,8 @@ export default function LeadsPage() {
         });
 
         if (!response.ok) {
-          const error = await response.json();
-          throw new Error(error.error || 'Failed to create lead');
+          const errorData = await response.json();
+          throw new Error(errorData.error || 'Failed to create lead');
         }
 
         toast({
@@ -187,8 +187,8 @@ export default function LeadsPage() {
         });
 
         if (!response.ok) {
-          const error = await response.json();
-          throw new Error(error.error || 'Failed to update lead');
+          const errorData = await response.json();
+          throw new Error(errorData.error || 'Failed to update lead');
         }
 
         toast({
@@ -231,7 +231,7 @@ export default function LeadsPage() {
 
       setDeleteConfirmLead(null);
       fetchLeads(pagination.page);
-    } catch {
+    } catch (_error) {
       toast({
         title: 'Error',
         description: 'Failed to delete lead',
@@ -262,7 +262,7 @@ export default function LeadsPage() {
         title: 'Status Updated',
         description: `Lead status changed to ${statusConfig[status].label}`
       });
-    } catch {
+    } catch (_error) {
       toast({
         title: 'Error',
         description: 'Failed to update status',
@@ -334,7 +334,7 @@ export default function LeadsPage() {
 
       setBulkDeleteConfirm(false);
       fetchLeads(pagination.page);
-    } catch {
+    } catch (_error) {
       toast({
         title: 'Error',
         description: 'Failed to delete leads',
@@ -424,14 +424,14 @@ export default function LeadsPage() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
-              {Object.entries(statusConfig).map(([status, config]) => (
+              {Object.entries(statusConfig).map(([status]) => (
                 <DropdownMenuItem
                   key={status}
                   onClick={() => handleBulkStatusChange(status as LeadStatus)}
                   className="cursor-pointer text-gray-900 dark:text-gray-100"
                 >
                   <LeadStatusBadge status={status as LeadStatus} className="mr-2" />
-                  {config.label}
+                  {statusConfig[status as LeadStatus].label}
                 </DropdownMenuItem>
               ))}
             </DropdownMenuContent>

@@ -36,115 +36,6 @@ interface BadgeConfig {
   hoverColor: string;
 }
 
-type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
-
-const footerUiCopy: Record<SupportedLocale, {
-  logoAlt: string;
-  socialAria: {
-    instagram: string;
-    x: string;
-    facebook: string;
-    linkedin: string;
-    youtube: string;
-    tiktok: string;
-    medium: string;
-  };
-  regions: {
-    britishColumbia: string;
-    alberta: string;
-    ontario: string;
-    quebec: string;
-    atlanticCanada: string;
-    prairies: string;
-    north: string;
-  };
-}> = {
-  en: {
-    logoAlt: 'Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page',
-    socialAria: {
-      instagram: 'Follow Purrify on Instagram',
-      x: 'Follow Purrify on X',
-      facebook: 'Follow Purrify on Facebook',
-      linkedin: 'Follow Purrify on LinkedIn',
-      youtube: 'Subscribe to Purrify on YouTube',
-      tiktok: 'Follow Purrify on TikTok',
-      medium: 'Read Purrify on Medium',
-    },
-    regions: {
-      britishColumbia: 'British Columbia',
-      alberta: 'Alberta',
-      ontario: 'Ontario',
-      quebec: 'Quebec',
-      atlanticCanada: 'Atlantic Canada',
-      prairies: 'Prairies',
-      north: 'The North',
-    },
-  },
-  fr: {
-    logoAlt: "Purrify - Additif premium de charbon actif pour litiere - Retour a l'accueil",
-    socialAria: {
-      instagram: 'Suivre Purrify sur Instagram',
-      x: 'Suivre Purrify sur X',
-      facebook: 'Suivre Purrify sur Facebook',
-      linkedin: 'Suivre Purrify sur LinkedIn',
-      youtube: 'S abonner a Purrify sur YouTube',
-      tiktok: 'Suivre Purrify sur TikTok',
-      medium: 'Lire Purrify sur Medium',
-    },
-    regions: {
-      britishColumbia: 'Colombie-Britannique',
-      alberta: 'Alberta',
-      ontario: 'Ontario',
-      quebec: 'Quebec',
-      atlanticCanada: 'Canada atlantique',
-      prairies: 'Prairies',
-      north: 'Le Nord',
-    },
-  },
-  zh: {
-    logoAlt: 'Purrify - 高端活性炭猫砂添加剂 - 返回首页',
-    socialAria: {
-      instagram: '在 Instagram 关注 Purrify',
-      x: '在 X 关注 Purrify',
-      facebook: '在 Facebook 关注 Purrify',
-      linkedin: '在 LinkedIn 关注 Purrify',
-      youtube: '在 YouTube 订阅 Purrify',
-      tiktok: '在 TikTok 关注 Purrify',
-      medium: '在 Medium 阅读 Purrify',
-    },
-    regions: {
-      britishColumbia: '不列颠哥伦比亚省',
-      alberta: '阿尔伯塔省',
-      ontario: '安大略省',
-      quebec: '魁北克省',
-      atlanticCanada: '加拿大大西洋地区',
-      prairies: '草原省份',
-      north: '北部地区',
-    },
-  },
-  es: {
-    logoAlt: 'Purrify - Aditivo premium de carbon activado para arena - Volver al inicio',
-    socialAria: {
-      instagram: 'Seguir a Purrify en Instagram',
-      x: 'Seguir a Purrify en X',
-      facebook: 'Seguir a Purrify en Facebook',
-      linkedin: 'Seguir a Purrify en LinkedIn',
-      youtube: 'Suscribirse a Purrify en YouTube',
-      tiktok: 'Seguir a Purrify en TikTok',
-      medium: 'Leer Purrify en Medium',
-    },
-    regions: {
-      britishColumbia: 'Columbia Britanica',
-      alberta: 'Alberta',
-      ontario: 'Ontario',
-      quebec: 'Quebec',
-      atlanticCanada: 'Canada Atlantico',
-      prairies: 'Praderas',
-      north: 'El Norte',
-    },
-  },
-};
-
 const badgeConfigs: BadgeConfig[] = [
   {
     key: 'trustpilot',
@@ -230,30 +121,28 @@ const defaultPlatformNames: Record<string, string> = {
 export function Footer() {
   const currentYear = new Date().getFullYear();
   const { t, locale } = useTranslation();
-  const localePrefix = locale === 'en' ? '' : `/${locale}`;
-  const copy = footerUiCopy[locale as SupportedLocale] || footerUiCopy.en;
 
   return (
     <footer className="bg-[#FFFFF5] dark:bg-gray-900 border-t border-[#E0EFC7] dark:border-gray-800 transition-colors duration-300">
       <Container>
         {/* Main Footer Content */}
         <div className="py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             <div className="space-y-4">
               <div className="flex items-center mb-4">
-                <Link prefetch={false} href={localePrefix || '/'} className="group">
+                <Link href={locale === "fr" ? "/fr/" : "/"} className="group">
                   <div className="h-6 w-auto mr-2 flex items-center">
                     <Image
-                      src="/optimized/logo-light-pink.webp"
-                      alt={copy.logoAlt}
+                      src="/optimized/logo-light.webp"
+                      alt="Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page"
                       width={120}
-                      height={57}
+                      height={40}
                       loading="lazy"
                       className="h-full w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
                     />
                     <Image
                       src="/optimized/logo-dark.webp"
-                      alt={copy.logoAlt}
+                      alt="Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page"
                       width={84}
                       height={40}
                       loading="lazy"
@@ -270,8 +159,8 @@ export function Footer() {
                   href={SOCIAL_LINKS.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  aria-label={copy.socialAria.instagram}
+                  className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  aria-label="Follow Purrify on Instagram"
                 >
                   <Instagram className="h-5 w-5" />
                 </a>
@@ -279,8 +168,8 @@ export function Footer() {
                   href={SOCIAL_LINKS.x}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  aria-label={copy.socialAria.x}
+                  className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  aria-label="Follow Purrify on X"
                 >
                   <Twitter className="h-5 w-5" />
                 </a>
@@ -288,8 +177,8 @@ export function Footer() {
                   href={SOCIAL_LINKS.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  aria-label={copy.socialAria.facebook}
+                  className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  aria-label="Follow Purrify on Facebook"
                 >
                   <Facebook className="h-5 w-5" />
                 </a>
@@ -297,8 +186,8 @@ export function Footer() {
                   href={SOCIAL_LINKS.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  aria-label={copy.socialAria.linkedin}
+                  className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  aria-label="Follow Purrify on LinkedIn"
                 >
                   <Linkedin className="h-5 w-5" />
                 </a>
@@ -306,8 +195,8 @@ export function Footer() {
                   href={SOCIAL_LINKS.youtube}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  aria-label={copy.socialAria.youtube}
+                  className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  aria-label="Subscribe to Purrify on YouTube"
                 >
                   <Youtube className="h-5 w-5" />
                 </a>
@@ -315,8 +204,8 @@ export function Footer() {
                   href={SOCIAL_LINKS.tiktok}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  aria-label={copy.socialAria.tiktok}
+                  className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  aria-label="Follow Purrify on TikTok"
                 >
                   <TikTokIcon className="h-5 w-5" />
                 </a>
@@ -324,8 +213,8 @@ export function Footer() {
                   href={SOCIAL_LINKS.medium}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  aria-label={copy.socialAria.medium}
+                  className="text-[#333333]/70 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  aria-label="Read Purrify on Medium"
                 >
                   <MediumIcon className="h-5 w-5" />
                 </a>
@@ -341,54 +230,58 @@ export function Footer() {
               <ul className="space-y-2 text-sm dark:text-sm">
                 {/* B2C: HIDDEN PRODUCT PURCHASE LINKS
                 <li>
-                  <Link prefetch={false}
+                  <Link
                     href={
                       locale === "fr"
                         ? "/fr/products/trial-size"
                         : "/products/trial-size"
                     }
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.trialSize || ""}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
+                  <Link
                     href={
                       locale === "fr"
                         ? "/fr/products/standard"
                         : "/products/standard"
                     }
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.standardSize || ""}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
+                  <Link
                     href={
                       locale === "fr"
                         ? "/fr/products/family-pack"
                         : "/products/family-pack"
                     }
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.familyPack || ""}
                   </Link>
                 </li>
                 */}
                 <li>
-                  <Link prefetch={false}
-                    href={`${localePrefix}/stores`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300 font-medium"
+                  <Link
+                    href={locale === "fr" ? "/fr/stores" : "/stores"}
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300 font-medium"
                   >
                     {t.nav?.findStore || "Find a Store"}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
-                    href={`${localePrefix}/products`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  <Link
+                    href={
+                      locale === "fr"
+                        ? "/fr/products"
+                        : "/products"
+                    }
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.compareSizes || ""}
                   </Link>
@@ -402,132 +295,136 @@ export function Footer() {
               </h3>
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
-                  <Link prefetch={false}
-                    href={`${localePrefix}/learn/how-it-works`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  <Link
+                    href={
+                      locale === "fr"
+                        ? "/fr/learn/how-it-works"
+                        : "/learn/how-it-works"
+                    }
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.howItWorks || ""}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
-                    href={`${localePrefix}/learn/faq`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  <Link
+                    href={locale === "fr" ? "/fr/learn/faq" : "/learn/faq"}
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.faq || ""}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
-                    href={`${localePrefix}/learn/science`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  <Link
+                    href={
+                      locale === "fr" ? "/fr/learn/science" : "/learn/science"
+                    }
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.science || ""}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
+                  <Link
                     href="/learn/science"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300 flex items-center gap-1"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300 flex items-center gap-1"
                   >
                     <Microscope className="w-3 h-3" />
                     {t.footerNav?.scienceHub || "Research Citations"}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
+                  <Link
                     href="/learn/cat-litter-answers"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.catLitterAnswers || "Cat Litter Q&A"}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
+                  <Link
                     href="/learn/activated-carbon-vs-baking-soda-deodorizers"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.carbonVsBakingSoda || "Carbon vs Baking Soda"}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
-                    href={`${localePrefix}/learn/safety`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  <Link
+                    href={
+                      locale === "fr" ? "/fr/learn/safety" : "/learn/safety"
+                    }
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.safetyInfo || ""}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
-                    href={`${localePrefix}/learn/cat-litter-guide`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  <Link
+                    href={
+                      locale === "fr"
+                        ? "/fr/learn/cat-litter-guide"
+                        : "/learn/cat-litter-guide"
+                    }
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.catLitterGuide || ""}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
+                  <Link
                     href="/learn/solutions/ammonia-smell-cat-litter"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.ammoniaSolutions || "Ammonia Smell Control"}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
+                  <Link
                     href="/learn/solutions/apartment-cat-smell-solution"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.nav?.apartmentLiving || "Apartment Living"}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
+                  <Link
                     href="/learn/solutions/litter-box-smell-elimination"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.nav?.litterBoxOdor || "Litter Box Odor"}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
+                  <Link
                     href="/learn/solutions/multiple-cats-odor-control"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.nav?.multipleCats || "Multiple Cats"}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
+                  <Link
                     href="/learn/solutions/natural-cat-litter-additive"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.nav?.naturalAdditive || "Natural Additive"}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
+                  <Link
                     href="/learn/solutions/senior-cat-litter-solutions"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.nav?.seniorCats || "Senior Cats"}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
+                  <Link
                     href="/tools/cat-litter-calculator"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.litterCalculator || "Litter Calculator"}
-                  </Link>
-                </li>
-                <li>
-                  <Link prefetch={false}
-                    href="/learn/cat-litter-answers"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  >
-                    {t.footerNav?.catLitterAnswers || "Cat Litter Q&A"}
                   </Link>
                 </li>
               </ul>
@@ -539,41 +436,41 @@ export function Footer() {
               </h3>
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
-                  <Link prefetch={false}
-                    href="/blog/house-smells-like-cat-litter-solutions"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  <Link
+                    href="/en/blog/house-smells-like-cat-litter-solutions"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.houseSmells || ""}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
-                    href="/blog/multi-cat-litter-deodorizer-guide"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  <Link
+                    href="/en/blog/multi-cat-litter-deodorizer-guide"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.multiCatGuide || ""}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
-                    href="/blog/tried-everything-cat-litter-smell-solutions"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  <Link
+                    href="/en/blog/tried-everything-cat-litter-smell-solutions"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.triedEverything || ""}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
-                    href="/blog/most-powerful-odor-absorber"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  <Link
+                    href="/en/blog/most-powerful-odor-absorber"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.powerfulAbsorber || ""}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
-                    href="/blog/best-litter-odor-remover-small-apartments"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  <Link
+                    href="/en/blog/best-litter-odor-remover-small-apartments"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.smallApartments || ""}
                   </Link>
@@ -587,210 +484,153 @@ export function Footer() {
               </h3>
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
-                  <Link prefetch={false}
-                    href={`${localePrefix}/about/our-story`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  <Link
+                    href={
+                      locale === "fr"
+                        ? "/fr/about/our-story"
+                        : "/about/our-story"
+                    }
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.about || ""}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
-                    href={`${localePrefix}/blog`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  <Link
+                    href={locale === "fr" ? "/fr/blog" : "/blog"}
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.blog || ""}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
-                    href={`${localePrefix}/reviews`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  <Link
+                    href={locale === "fr" ? "/fr/reviews" : "/reviews"}
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.testimonials || ""}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
-                    href={`${localePrefix}/retailers`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  <Link
+                    href={locale === "fr" ? "/fr/retailers" : "/retailers"}
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.retailers || ""}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
+                  <Link
                     href="/retailer/portal/login"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.retailerPortal || "Retailer Portal"}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
-                    href={`${localePrefix}/hospitality`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  <Link
+                    href={locale === "fr" ? "/fr/hospitality" : "/hospitality"}
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.hospitality || "Hospitality"}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
-                    href={`${localePrefix}/groomers`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  <Link
+                    href={locale === "fr" ? "/fr/groomers" : "/groomers"}
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.groomers || "For Groomers"}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
-                    href={`${localePrefix}/shelters`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  <Link
+                    href={locale === "fr" ? "/fr/shelters" : "/shelters"}
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.shelters || "Shelters"}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
+                  <Link
+                    href={locale === "fr" ? "/fr/veterinarians" : "/veterinarians"}
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.veterinarians || "For Veterinarians"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="https://purrify.ca"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
+                  >
+                    {t.footerNav?.canada || "Purrify Canada"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href="/b2b"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.b2bInquiry || "B2B Inquiry"}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
+                  <Link
                     href="/invest"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.invest || "Investors"}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
+                  <Link
                     href="/affiliate"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.affiliateProgram || ""}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
+                  <Link
                     href="/results"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.results || "Success Stories"}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
+                  <Link
                     href="/case-studies"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.caseStudies || "Case Studies"}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
+                  <Link
                     href="/fun"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.fun || "Fun & Games"}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
+                  <Link
                     href="/viral"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.viral || "Viral"}
                   </Link>
                 </li>
                 <li>
-                  <Link prefetch={false}
-                    href={`${localePrefix}/contact`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  <Link
+                    href={locale === "fr" ? "/fr/contact" : "/contact"}
+                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
                   >
                     {t.footerNav?.contact || ""}
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div className="space-y-4">
-              <h3 className="font-heading text-sm font-semibold text-[#333333] dark:text-gray-100">
-                {t.footerNav?.locations || "Locations"}
-              </h3>
-              <ul className="space-y-2 text-sm dark:text-sm">
-                <li>
-                  <Link prefetch={false}
-                    href="/locations"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  >
-                    {t.footerNav?.allLocations || "All Locations"}
-                  </Link>
-                </li>
-                <li>
-                  <Link prefetch={false}
-                    href="/canada"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  >
-                    {t.footerNav?.canada || "Canada Wide"}
-                  </Link>
-                </li>
-                <li>
-                  <Link prefetch={false}
-                    href="/locations/province/british-columbia"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  >
-                    {copy.regions.britishColumbia}
-                  </Link>
-                </li>
-                <li>
-                  <Link prefetch={false}
-                    href="/locations/province/alberta"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  >
-                    {copy.regions.alberta}
-                  </Link>
-                </li>
-                <li>
-                  <Link prefetch={false}
-                    href="/locations/province/ontario"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  >
-                    {copy.regions.ontario}
-                  </Link>
-                </li>
-                <li>
-                  <Link prefetch={false}
-                    href="/locations/province/quebec"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  >
-                    {copy.regions.quebec}
-                  </Link>
-                </li>
-                <li>
-                  <Link prefetch={false}
-                    href="/locations/province/atlantic"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  >
-                    {copy.regions.atlanticCanada}
-                  </Link>
-                </li>
-                <li>
-                  <Link prefetch={false}
-                    href="/locations/province/prairies"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  >
-                    {copy.regions.prairies}
-                  </Link>
-                </li>
-                <li>
-                  <Link prefetch={false}
-                    href="/locations/province/north"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  >
-                    {copy.regions.north}
                   </Link>
                 </li>
               </ul>
@@ -833,28 +673,30 @@ export function Footer() {
 
           <div className="mt-12 pt-8 border-t border-[#E0EFC7] dark:border-gray-800">
             <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-4 mb-4">
-              <Link prefetch={false}
-                href={`${localePrefix}/privacy-policy`}
-                className="text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+              <Link
+                href={
+                  locale === "fr" ? "/fr/privacy-policy" : "/privacy-policy"
+                }
+                className="text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
               >
                 {t.nav.privacyPolicy}
               </Link>
-              <Link prefetch={false}
-                href={`${localePrefix}/terms`}
-                className="text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+              <Link
+                href={locale === "fr" ? "/fr/terms" : "/terms"}
+                className="text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
               >
                 {t.nav.termsOfService}
               </Link>
-              <Link prefetch={false}
+              <Link
                 href="/sitemap.xml"
-                className="text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                className="text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors duration-300"
               >
                 {t.footerNav?.sitemap || "Sitemap"}
               </Link>
             </div>
             <p className="text-center text-xs text-[#333333]/80 dark:text-gray-300">
               © {currentYear}{" "}
-              <span className="text-[#991D1D] dark:text-[#FF8585] font-medium">
+              <span className="text-[#FF3131] dark:text-[#FF5050] font-medium">
                 {t.siteName}
               </span>{" "}
               |{t.footer.allRightsReserved}
@@ -870,6 +712,6 @@ export function Footer() {
         strategy="lazyOnload"
         defer
       />
-    </footer>
+    </footer >
   );
 }

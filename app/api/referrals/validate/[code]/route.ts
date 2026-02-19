@@ -6,26 +6,8 @@
  */
 
 import prisma from '@/lib/prisma';
-import {
-
-  REFERRAL_CONFIG,
-} from '@/lib/referral';
+import { REFERRAL_CONFIG } from '@/lib/referral';
 import { getProductPrice, formatProductPrice } from '@/lib/pricing';
-
-interface _ReferralCodeValidation {
-  isValid: boolean;
-  code?: string;
-  referrerName?: string;
-  discount?: {
-    type: 'percentage' | 'fixed' | 'free_trial';
-    value: number;
-    description: string;
-  };
-  expiresAt?: string;
-  usesRemaining?: number;
-  message?: string;
-  error?: string;
-}
 
 // Fallback mock data for when database is not available
 interface MockReferralCode {
@@ -207,50 +189,10 @@ export async function GET(
       usesRemaining,
       message: `${mockCode.referrerName} has shared Purrify with you! Get your free trial size and see why they love it.`,
     });
-  } catch (error) {
-    console.error('Error validating referral code:', error);
+  } catch {
     return Response.json({
       isValid: false,
       error: 'Failed to validate referral code',
     }, { status: 500 });
   }
-}
-
-// Helper function to apply referral discount to cart
-interface CartItem {
-  productId: string;
-  sku: string;
-  name: string;
-  price: number;
-  originalPrice?: number;
-  quantity: number;
-  isReferralReward?: boolean;
-  referralCode?: string;
-}
-
-function _applyReferralDiscount(
-  cartItems: CartItem[],
-  referralCode: string
-): CartItem[] {
-  const hasTrialSize = cartItems.some(
-    (item) => item.productId === '12g' || item.sku === 'purrify-12g'
-  );
-
-  if (!hasTrialSize) {
-    return [
-      ...cartItems,
-      {
-        productId: '12g',
-        sku: 'purrify-12g',
-        name: 'Purrify 12g Trial Size - FREE (Referral)',
-        price: 0,
-        originalPrice: getProductPrice('trial'),
-        quantity: 1,
-        isReferralReward: true,
-        referralCode,
-      },
-    ];
-  }
-
-  return cartItems;
 }

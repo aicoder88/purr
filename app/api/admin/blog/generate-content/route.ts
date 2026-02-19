@@ -120,7 +120,6 @@ export async function POST(request: Request) {
   headers.set('X-RateLimit-Reset', new Date(userRateLimit.resetTime).toISOString());
 
   if (!userRateLimit.allowed) {
-    console.warn(`[RATE LIMIT] User ${userId} exceeded AI generation limit`);
     return Response.json({
       error: AI_GENERATION_RATE_LIMIT.message,
       retryAfter: userRateLimit.retryAfter || Math.ceil((userRateLimit.resetTime - Date.now()) / 1000)
@@ -226,10 +225,9 @@ export async function POST(request: Request) {
         resetTime: userRateLimit.resetTime
       }
     }, { headers });
-  } catch (error) {
-    console.error('Content generation error:', error);
+  } catch (_error) {
     return Response.json({
-      error: error instanceof Error ? error.message : 'Failed to generate content'
+      error: _error instanceof Error ? _error.message : 'Failed to generate content'
     }, { status: 500, headers });
   }
 }

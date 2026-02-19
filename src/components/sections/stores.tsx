@@ -2,6 +2,7 @@
 
 import { Container } from "@/components/ui/container";
 import Image from "next/image";
+import SectionHeader from "@/components/ui/section-header";
 import { useTranslation } from "@/lib/translation-context";
 import { useState, useEffect } from "react";
 
@@ -31,6 +32,11 @@ interface LogoConfig {
 // Constants
 // ============================================================================
 
+const GRADIENTS = {
+  section: 'bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900',
+  redButton: 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131]',
+  redIcon: 'bg-gradient-to-br from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80',
+} as const;
 
 const DEFAULT_LOGO_CONFIG = {
   className: 'w-16 h-16 object-contain',
@@ -60,60 +66,6 @@ const STORE_LOGOS: Record<string, Omit<LogoConfig, 'className' | 'width' | 'heig
 
 // List of stores that should have white background for their logo
 const WHITE_BG_STORES = Object.keys(STORE_LOGOS);
-
-type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
-
-const storesUiCopy: Record<SupportedLocale, {
-  sectionBadge: string;
-  headingPrefix: string;
-  headingHighlight: string;
-  subtitle: string;
-  websiteLabel: string;
-  requestTitle: string;
-  requestSubtitle: string;
-  requestButton: string;
-}> = {
-  en: {
-    sectionBadge: 'Find Purrify Near You',
-    headingPrefix: 'Our Retail',
-    headingHighlight: 'Partners',
-    subtitle: 'Find Purrify at these premium pet retailers across Montreal and beyond.',
-    websiteLabel: 'Website',
-    requestTitle: "Don't see your favorite store?",
-    requestSubtitle: "Let us know where you shop, and we'll contact them!",
-    requestButton: 'Request a Store',
-  },
-  fr: {
-    sectionBadge: 'Trouvez Purrify pres de vous',
-    headingPrefix: 'Nos partenaires',
-    headingHighlight: 'detail',
-    subtitle: 'Trouvez Purrify dans des animaleries premium a Montreal et ailleurs.',
-    websiteLabel: 'Site web',
-    requestTitle: 'Vous ne voyez pas votre boutique preferee?',
-    requestSubtitle: 'Dites-nous ou vous magasinez, et nous les contacterons.',
-    requestButton: 'Demander un magasin',
-  },
-  zh: {
-    sectionBadge: '在你附近找到 Purrify',
-    headingPrefix: '我们的零售',
-    headingHighlight: '合作伙伴',
-    subtitle: '在蒙特利尔及周边优质宠物门店找到 Purrify。',
-    websiteLabel: '官网',
-    requestTitle: '没看到你常去的门店？',
-    requestSubtitle: '告诉我们你常去哪里，我们会联系他们！',
-    requestButton: '申请新增门店',
-  },
-  es: {
-    sectionBadge: 'Encuentra Purrify cerca de ti',
-    headingPrefix: 'Nuestros socios',
-    headingHighlight: 'minoristas',
-    subtitle: 'Encuentra Purrify en tiendas premium para mascotas en Montreal y mas alla.',
-    websiteLabel: 'Sitio web',
-    requestTitle: 'No ves tu tienda favorita?',
-    requestSubtitle: 'Dinos donde compras y nos pondremos en contacto con ellos.',
-    requestButton: 'Solicitar una tienda',
-  },
-};
 
 // ============================================================================
 // Helper Functions
@@ -345,6 +297,36 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
 // Subcomponents
 // ============================================================================
 
+function StoreIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+      />
+    </svg>
+  );
+}
+
+function PhoneIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+      />
+    </svg>
+  );
+}
 
 function WebsiteIcon({ className }: { className?: string }) {
   return (
@@ -395,8 +377,7 @@ function StoreLogoImage({
 }
 
 export function Stores() {
-  const { t, locale } = useTranslation();
-  const uiCopy = storesUiCopy[locale as SupportedLocale] || storesUiCopy.en;
+  const { t } = useTranslation();
   const stores = getStoresWithTranslations(t);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -428,7 +409,7 @@ export function Stores() {
         setSubmitStatus('error');
         setStatusMessage(data.message || t.storesSection?.requestError || 'Failed to send request. Please try again or contact us directly.');
       }
-    } catch {
+    } catch (error) {
       setSubmitStatus('error');
       setStatusMessage(t.storesSection?.requestError || 'An error occurred. Please contact us directly at support@purrify.ca');
     } finally {
@@ -437,24 +418,20 @@ export function Stores() {
   };
 
   return (
-    <section id="stores" className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <section id="stores" className="py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <Container>
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 mb-6">
-            <span className="h-px w-8 bg-gradient-to-r from-transparent to-[#FF8E3C]"></span>
-            <span className="text-[#FF8E3C] font-bold tracking-wider text-sm uppercase flex items-center gap-2">
-              <span className="text-lg">📍</span> {uiCopy.sectionBadge}
-            </span>
-            <span className="h-px w-8 bg-gradient-to-l from-transparent to-[#FF8E3C]"></span>
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-orange-50 dark:bg-orange-900/20 text-[#FF8E3C] dark:text-[#FF8E3C] font-bold text-sm mb-6 border border-orange-100 dark:border-orange-800/30">
+            📍 Find Purrify Near You
           </div>
-          <h2 className="font-heading text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-6">
-            {uiCopy.headingPrefix}
+          <h2 className="font-heading text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-6">
+            Our Retail
             <span className="bg-gradient-to-r from-[#FF8E3C] to-[#FF5050] bg-clip-text text-transparent ml-2">
-              {uiCopy.headingHighlight}
+              Partners
             </span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-10">
-            {uiCopy.subtitle}
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-10">
+            Find Purrify at these premium pet retailers across Montreal and beyond.
           </p>
 
           {/* Search/Filter Controls - Placeholder for future implementation if needed, utilizing browser search for now via the grid below */}
@@ -496,8 +473,7 @@ export function Stores() {
                         href={`https://maps.google.com/?q=${encodeURIComponent(`${store.address}`)}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-start text-sm text-gray-600 dark:text-gray-300 hover:text-[#FF8E3C] dark:hover:text-[#FF8E3C] transition-colors gap-2 min-h-[44px]"
-                        aria-label={`View ${store.name} on Google Maps`}
+                        className="flex items-start text-sm text-gray-600 dark:text-gray-300 hover:text-[#FF8E3C] dark:hover:text-[#FF8E3C] transition-colors gap-2"
                       >
                         <svg className="w-4 h-4 text-gray-400 dark:text-gray-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -509,8 +485,7 @@ export function Stores() {
                       {store.phone && (
                         <a
                           href={`tel:${store.phone.replace(/[^\d+]/g, '')}`}
-                          className="flex items-center text-sm text-gray-600 dark:text-gray-300 hover:text-[#FF8E3C] dark:hover:text-[#FF8E3C] transition-colors gap-2 min-h-[44px]"
-                          aria-label={`Call ${store.name} at ${store.phone}`}
+                          className="flex items-center text-sm text-gray-600 dark:text-gray-300 hover:text-[#FF8E3C] dark:hover:text-[#FF8E3C] transition-colors gap-2"
                         >
                           <svg className="w-4 h-4 text-gray-400 dark:text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -524,11 +499,10 @@ export function Stores() {
                           href={store.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors gap-2 min-h-[44px]"
-                          aria-label={`${uiCopy.websiteLabel} - ${store.name}`}
+                          className="flex items-center text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors gap-2"
                         >
                           <WebsiteIcon className="w-4 h-4 flex-shrink-0" />
-                          <span>{uiCopy.websiteLabel}</span>
+                          <span>Website</span>
                         </a>
                       )}
                     </div>
@@ -544,10 +518,10 @@ export function Stores() {
           <div className="inline-block p-1 bg-gradient-to-r from-[#FF8E3C] to-[#FF5050] rounded-2xl shadow-lg shadow-orange-500/20">
             <div className="bg-white dark:bg-gray-900 rounded-xl px-8 py-10 md:px-16">
               <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-white mb-3">
-                {uiCopy.requestTitle}
+                Don't see your favorite store?
               </h3>
               <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-lg mx-auto">
-                {uiCopy.requestSubtitle}
+                Let us know where you shop, and we'll contact them!
               </p>
               <button
                 onClick={handleRequestStore}
@@ -570,7 +544,7 @@ export function Stores() {
                 ) : (
                   <>
                     <span className="text-xl">📝</span>
-                    {t.storesSection?.requestStoreAvailability || uiCopy.requestButton}
+                    Request a Store
                   </>
                 )}
               </button>

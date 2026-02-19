@@ -135,13 +135,6 @@ function verifyCSRFToken(req: Request): boolean {
 // API HANDLER
 // ============================================================================
 
-type _ResponseData = {
-  success: boolean;
-  message: string;
-  ticketId?: number;
-  ticketUrl?: string;
-};
-
 export async function POST(req: Request): Promise<Response> {
   // Security headers
   const headers = new Headers();
@@ -180,7 +173,7 @@ export async function POST(req: Request): Promise<Response> {
 
   // Check Zendesk configuration
   if (!isZendeskConfigured()) {
-    console.error('Zendesk not configured');
+    // Zendesk not configured
     return Response.json({
       success: false,
       message: 'Support system temporarily unavailable. Please email support@purrify.ca directly.',
@@ -193,7 +186,7 @@ export async function POST(req: Request): Promise<Response> {
     const validationResult = ticketSchema.safeParse(body);
 
     if (!validationResult.success) {
-      console.error('Validation error:', validationResult.error.issues);
+      // Validation error
       return Response.json({
         success: false,
         message: 'Invalid form data. Please check your inputs and try again.',
@@ -247,8 +240,8 @@ export async function POST(req: Request): Promise<Response> {
       message: "Thank you for contacting us! We'll get back to you within 24 hours.",
       ticketId: ticketResponse.ticket.id,
     }, { headers });
-  } catch (error) {
-    console.error('Error creating Zendesk ticket:', error);
+  } catch {
+    // Error creating ticket
 
     return Response.json({
       success: false,

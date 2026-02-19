@@ -78,8 +78,7 @@ export class MediaLibrary {
       return mediaItems.sort((a, b) => 
         new Date(b.uploadDate).getTime() - new Date(a.uploadDate).getTime()
       );
-    } catch (error) {
-      console.error('Error getting all media:', error);
+    } catch (_error) {
       return [];
     }
   }
@@ -107,8 +106,7 @@ export class MediaLibrary {
       }
 
       return [...new Set(usedIn)]; // Remove duplicates
-    } catch (error) {
-      console.error(`Error getting usage for ${filename}:`, error);
+    } catch (_error) {
       return [];
     }
   }
@@ -145,9 +143,8 @@ export class MediaLibrary {
       // Update metadata
       const updatedMedia = media.filter(m => m.id !== id);
       await this.saveMetadata(updatedMedia);
-    } catch (error) {
-      console.error(`Error deleting media ${id}:`, error);
-      throw error;
+    } catch (_error) {
+      throw _error;
     }
   }
 
@@ -168,9 +165,8 @@ export class MediaLibrary {
 
       media[index] = { ...media[index], ...updates };
       await this.saveMetadata(media);
-    } catch (error) {
-      console.error(`Error updating media ${id}:`, error);
-      throw error;
+    } catch (_error) {
+      throw _error;
     }
   }
 
@@ -211,9 +207,8 @@ export class MediaLibrary {
         JSON.stringify(media, null, 2),
         'utf-8'
       );
-    } catch (error) {
-      console.error('Error saving metadata:', error);
-      throw error;
+    } catch (_error) {
+      throw _error;
     }
   }
 

@@ -44,8 +44,7 @@ export async function GET(
     }
 
     return Response.json(post, { headers: rateLimitHeaders });
-  } catch (error) {
-    console.error('Error handling post request:', error);
+  } catch (_error) {
     return Response.json({ error: 'Internal server error' }, { status: 500, headers: rateLimitHeaders });
   }
 }
@@ -103,8 +102,7 @@ export async function DELETE(
     });
 
     return Response.json({ success: true }, { headers: rateLimitHeaders });
-  } catch (error) {
-    console.error('Error handling post request:', error);
+  } catch (_error) {
     return Response.json({ error: 'Internal server error' }, { status: 500, headers: rateLimitHeaders });
   }
 }

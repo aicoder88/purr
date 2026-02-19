@@ -7,7 +7,6 @@
 "use client";
 
 import { useState, useEffect, useCallback } from 'react';
-import Link from 'next/link';
 import {
   TrendingUp,
   Users,
@@ -19,7 +18,6 @@ import {
 } from 'lucide-react';
 import { Container } from '@/components/ui/container';
 import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
 interface UTMData {
@@ -169,12 +167,7 @@ export default function AnalyticsDashboard() {
             <option value="30">Last 30 days</option>
             <option value="90">Last 90 days</option>
           </select>
-          <Link href="/admin/analytics/ab-tests">
-            <Button variant="outline">
-              <Target className="w-4 h-4 mr-2" />
-              A/B Tests
-            </Button>
-          </Link>
+
         </div>
       </div>
 

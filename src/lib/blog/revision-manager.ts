@@ -149,9 +149,8 @@ export class RevisionManager {
       await this.saveHistory(history);
 
       return revision;
-    } catch (error) {
-      console.error('Error creating revision:', error);
-      throw error;
+    } catch (_error) {
+      throw _error;
     }
   }
 
@@ -180,13 +179,12 @@ export class RevisionManager {
           currentVersion: 0
         };
       }
-    } catch (error) {
-      if (error instanceof Error && error.message.includes('Path traversal')) {
-        console.error(`[SECURITY] Blocked path traversal attempt in getRevisionHistory for slug: ${slug}`);
-        throw error;
+    } catch (_error) {
+      if (_error instanceof Error && _error.message.includes('Path traversal')) {
+        // Security: Blocked path traversal attempt
+        throw _error;
       }
-      console.error('Error getting revision history:', error);
-      throw error;
+      throw _error;
     }
   }
 
@@ -211,12 +209,11 @@ export class RevisionManager {
 
       const content = await fs.readFile(revisionPath, 'utf-8');
       return JSON.parse(content);
-    } catch (error) {
-      if (error instanceof Error && error.message.includes('Path traversal')) {
-        console.error(`[SECURITY] Blocked path traversal attempt in getRevision for slug: ${slug}`);
+    } catch (_error) {
+      if (_error instanceof Error && _error.message.includes('Path traversal')) {
+        // Security: Blocked path traversal attempt
         return null;
       }
-      console.error(`Error getting revision v${version}:`, error);
       return null;
     }
   }
@@ -265,8 +262,7 @@ export class RevisionManager {
           featuredImage: rev1.content.featuredImage?.url !== rev2.content.featuredImage?.url
         }
       };
-    } catch (error) {
-      console.error('Error comparing revisions:', error);
+    } catch (_error) {
       return null;
     }
   }
@@ -289,9 +285,8 @@ export class RevisionManager {
       // Return the post content from the revision
       // The caller should save this as a new revision
       return revision.content;
-    } catch (error) {
-      console.error('Error restoring revision:', error);
-      throw error;
+    } catch (_error) {
+      throw _error;
     }
   }
 
@@ -337,8 +332,8 @@ export class RevisionManager {
               try {
                 await fs.unlink(revisionPath);
                 deletedCount++;
-              } catch (error) {
-                console.error(`Failed to delete revision ${revision.id}:`, error);
+              } catch (_error) {
+                // Failed to delete revision, continue
               }
             }
           }
@@ -346,18 +341,16 @@ export class RevisionManager {
           // Update history
           history.revisions = revisionsToKeep;
           await this.saveHistory(history);
-        } catch (error) {
-          if (error instanceof Error && error.message.includes('Invalid slug')) {
-            console.warn(`[SECURITY] Skipping invalid slug during cleanup: ${slug}`);
+        } catch (_error) {
+          if (_error instanceof Error && _error.message.includes('Invalid slug')) {
+            // Security: Skipping invalid slug during cleanup
             continue;
           }
-          console.error(`Error processing slug ${slug} during cleanup:`, error);
         }
       }
 
       return deletedCount;
-    } catch (error) {
-      console.error('Error cleaning up revisions:', error);
+    } catch (_error) {
       return 0;
     }
   }

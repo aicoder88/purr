@@ -26,8 +26,7 @@ export async function GET(request: Request) {
     const templates = manager.getTemplates();
 
     return Response.json(templates, { headers: rateLimitHeaders });
-  } catch (error) {
-    console.error('Templates API error:', error);
+  } catch (_error) {
     return Response.json({ error: 'Internal server error' }, { status: 500, headers: rateLimitHeaders });
   }
 }

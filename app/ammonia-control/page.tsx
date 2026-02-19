@@ -182,7 +182,7 @@ export default async function AmmoniaControlPage() {
     { q: ammonia.faq.q8, a: ammonia.faq.a8 },
   ];
 
-  // Currency symbol (static CAD for SSR)
+  // Prices (static CAD for SSR)
   const lowPrice = '4.76';
   const highPrice = '34.99';
 

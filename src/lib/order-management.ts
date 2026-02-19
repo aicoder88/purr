@@ -87,8 +87,7 @@ export class OrderManager {
       });
 
       return this.formatOrderResponse(order);
-    } catch (err) {
-      console.error('Failed to create order:', err);
+    } catch (_err) {
       throw new Error('Failed to create order');
     }
   }
@@ -117,8 +116,7 @@ export class OrderManager {
       });
 
       return this.formatOrderResponse(order);
-    } catch (err) {
-      console.error('Failed to update order:', err);
+    } catch (_err) {
       throw new Error('Failed to update order');
     }
   }
@@ -137,8 +135,7 @@ export class OrderManager {
       });
 
       return order ? this.formatOrderResponse(order) : null;
-    } catch (error) {
-      console.error('Failed to get order:', error);
+    } catch (_error) {
       return null;
     }
   }
@@ -158,8 +155,7 @@ export class OrderManager {
       });
 
       return orders.map(order => this.formatOrderResponse(order));
-    } catch (error) {
-      console.error('Failed to get customer orders:', error);
+    } catch (_error) {
       return [];
     }
   }
@@ -169,7 +165,6 @@ export class OrderManager {
       const validation = await PaymentValidator.validateCheckoutSession(stripeSessionId);
 
       if (!validation.isValid) {
-        console.error('Payment validation failed:', validation.errors);
         await this.updateOrderStatus(orderId, { status: 'CANCELLED' });
         return false;
       }
@@ -187,8 +182,7 @@ export class OrderManager {
       });
 
       return true;
-    } catch (error) {
-      console.error('Failed to process payment:', error);
+    } catch (_error) {
       await this.updateOrderStatus(orderId, { status: 'CANCELLED' });
       return false;
     }
@@ -212,8 +206,7 @@ export class OrderManager {
       }
 
       return true;
-    } catch (err) {
-      console.error('Failed to cancel order:', err);
+    } catch (_err) {
       return false;
     }
   }
@@ -276,8 +269,7 @@ export class OrderManager {
         statusBreakdown,
         topProducts,
       };
-    } catch (err) {
-      console.error('Failed to get order analytics:', err);
+    } catch (_err) {
       throw new Error('Failed to retrieve order analytics');
     }
   }

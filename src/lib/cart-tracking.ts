@@ -46,7 +46,7 @@ export async function saveCart({
   locale?: string;
 }): Promise<CartData | null> {
   if (!prisma) {
-    console.error('Database not configured for cart tracking');
+    // Database not configured for cart tracking
     return null;
   }
 
@@ -74,8 +74,8 @@ export async function saveCart({
       ...cart,
       items: cart.items as unknown as CartItem[],
     };
-  } catch (error) {
-    console.error('Error saving cart:', error);
+  } catch (_error) {
+    // Failed to save cart
     return null;
   }
 }
@@ -85,7 +85,7 @@ export async function saveCart({
  */
 export async function getCartBySessionId(sessionId: string): Promise<CartData | null> {
   if (!prisma) {
-    console.error('Database not configured for cart tracking');
+    // Database not configured for cart tracking
     return null;
   }
 
@@ -100,8 +100,8 @@ export async function getCartBySessionId(sessionId: string): Promise<CartData | 
       ...cart,
       items: cart.items as unknown as CartItem[],
     };
-  } catch (error) {
-    console.error('Error getting cart:', error);
+  } catch (_error) {
+    // Failed to get cart
     return null;
   }
 }
@@ -111,7 +111,7 @@ export async function getCartBySessionId(sessionId: string): Promise<CartData | 
  */
 export async function updateCartEmail(sessionId: string, email: string): Promise<boolean> {
   if (!prisma) {
-    console.error('Database not configured for cart tracking');
+    // Database not configured for cart tracking
     return false;
   }
 
@@ -124,8 +124,8 @@ export async function updateCartEmail(sessionId: string, email: string): Promise
       },
     });
     return true;
-  } catch (error) {
-    console.error('Error updating cart email:', error);
+  } catch (_error) {
+    // Failed to update cart email
     return false;
   }
 }
@@ -135,7 +135,7 @@ export async function updateCartEmail(sessionId: string, email: string): Promise
  */
 export async function markCartAsRecovered(sessionId: string): Promise<boolean> {
   if (!prisma) {
-    console.error('Database not configured for cart tracking');
+    // Database not configured for cart tracking
     return false;
   }
 
@@ -148,8 +148,8 @@ export async function markCartAsRecovered(sessionId: string): Promise<boolean> {
       },
     });
     return true;
-  } catch (error) {
-    console.error('Error marking cart as recovered:', error);
+  } catch (_error) {
+    // Failed to mark cart as recovered
     return false;
   }
 }
@@ -159,7 +159,7 @@ export async function markCartAsRecovered(sessionId: string): Promise<boolean> {
  */
 export async function markCartAsExpired(cartId: string): Promise<boolean> {
   if (!prisma) {
-    console.error('Database not configured for cart tracking');
+    // Database not configured for cart tracking
     return false;
   }
 
@@ -171,8 +171,8 @@ export async function markCartAsExpired(cartId: string): Promise<boolean> {
       },
     });
     return true;
-  } catch (error) {
-    console.error('Error marking cart as expired:', error);
+  } catch (_error) {
+    // Failed to mark cart as expired
     return false;
   }
 }
@@ -184,7 +184,7 @@ export async function markCartAsExpired(cartId: string): Promise<boolean> {
  */
 export async function getCartsNeedingRecoveryEmails(): Promise<CartData[]> {
   if (!prisma) {
-    console.error('Database not configured for cart tracking');
+    // Database not configured for cart tracking
     return [];
   }
 
@@ -228,8 +228,8 @@ export async function getCartsNeedingRecoveryEmails(): Promise<CartData[]> {
       ...cart,
       items: cart.items as unknown as CartItem[],
     }));
-  } catch (error) {
-    console.error('Error getting carts needing recovery emails:', error);
+  } catch (_error) {
+    // Failed to get carts needing recovery emails
     return [];
   }
 }
@@ -239,7 +239,7 @@ export async function getCartsNeedingRecoveryEmails(): Promise<CartData[]> {
  */
 export async function recordRecoveryEmailSent(cartId: string): Promise<boolean> {
   if (!prisma) {
-    console.error('Database not configured for cart tracking');
+    // Database not configured for cart tracking
     return false;
   }
 
@@ -253,8 +253,8 @@ export async function recordRecoveryEmailSent(cartId: string): Promise<boolean> 
       },
     });
     return true;
-  } catch (error) {
-    console.error('Error recording recovery email sent:', error);
+  } catch (_error) {
+    // Failed to record recovery email sent
     return false;
   }
 }
@@ -283,7 +283,7 @@ export function calculateCartTotal(items: CartItem[]): number {
  */
 export async function cleanupOldCarts(): Promise<number> {
   if (!prisma) {
-    console.error('Database not configured for cart tracking');
+    // Database not configured for cart tracking
     return 0;
   }
 
@@ -299,8 +299,8 @@ export async function cleanupOldCarts(): Promise<number> {
       },
     });
     return result.count;
-  } catch (error) {
-    console.error('Error cleaning up old carts:', error);
+  } catch (_error) {
+    // Failed to clean up old carts
     return 0;
   }
 }

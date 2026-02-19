@@ -63,12 +63,6 @@ interface SocialShareStats {
   total: number;
 }
 
-interface _DashboardResponse {
-  success: boolean;
-  data?: ReferralStats;
-  error?: string;
-}
-
 // Rate limit for dashboard access: 30 requests per minute per IP
 const RATE_LIMIT_WINDOW = 60 * 1000;
 const MAX_REQUESTS_PER_WINDOW = 30;
@@ -238,7 +232,6 @@ export async function GET(
     const isAdmin = ['admin', 'superadmin'].includes(userRole);
 
     if (userId !== authenticatedUserId && !isAdmin) {
-      console.warn(`[SECURITY] Unauthorized dashboard access attempt: User ${authenticatedUserId} tried to access dashboard for ${userId}`);
       return Response.json({
         success: false,
         error: 'Forbidden: You can only view your own referral dashboard'
@@ -264,46 +257,10 @@ export async function GET(
       data: referralStats
     }, { headers });
 
-  } catch (error) {
-    console.error('Error fetching referral dashboard:', error);
+  } catch {
     return Response.json({
       success: false,
       error: 'Failed to fetch referral dashboard data'
     }, { status: 500, headers });
   }
-}
-
-// Helper function to calculate referral performance metrics
-function _calculateReferralMetrics(stats: ReferralStats) {
-  const conversionRate = stats.totalReferrals > 0
-    ? (stats.completedReferrals / stats.totalReferrals) * 100
-    : 0;
-
-  const averageOrderValue = stats.recentActivity
-    .filter(activity => activity.orderValue)
-    .reduce((sum, activity) => sum + (activity.orderValue || 0), 0) /
-    stats.completedReferrals || 0;
-
-  const earningsPerReferral = stats.totalEarnings / stats.completedReferrals || 0;
-
-  return {
-    conversionRate: Math.round(conversionRate * 10) / 10,
-    averageOrderValue: Math.round(averageOrderValue * 100) / 100,
-    earningsPerReferral: Math.round(earningsPerReferral * 100) / 100,
-    socialShareEffectiveness: stats.socialShares.total / stats.totalReferrals || 0
-  };
-}
-
-// Helper function to generate achievement badges
-function _generateAchievementBadges(completedReferrals: number) {
-  const badges = [];
-
-  if (completedReferrals >= 1) badges.push({ name: 'First Referral', icon: '🎯' });
-  if (completedReferrals >= 3) badges.push({ name: 'Triple Threat', icon: '🏆' });
-  if (completedReferrals >= 5) badges.push({ name: 'High Five', icon: '🖐️' });
-  if (completedReferrals >= 10) badges.push({ name: 'Perfect Ten', icon: '💎' });
-  if (completedReferrals >= 25) badges.push({ name: 'Super Referrer', icon: '⭐' });
-  if (completedReferrals >= 50) badges.push({ name: 'Referral Master', icon: '👑' });
-
-  return badges;
 }

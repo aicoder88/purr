@@ -34,8 +34,7 @@ async function getOrderDetails(sessionId: string | undefined): Promise<{ orderDe
     let stripe;
     try {
       stripe = getStripeInstance();
-    } catch (stripeError) {
-      console.error('Stripe configuration error:', stripeError);
+    } catch {
       return {
         orderDetails: null,
         error: 'Unable to load order details due to configuration issue'
@@ -62,13 +61,12 @@ async function getOrderDetails(sessionId: string | undefined): Promise<{ orderDe
         orderDetails.productName = item.description || 'Purrify';
         orderDetails.quantity = item.quantity || 1;
       }
-    } catch (err) {
-      console.error('Error fetching line items:', err);
+    } catch {
+      // Silently ignore line items fetch errors
     }
 
     return { orderDetails };
-  } catch (error) {
-    console.error('Error fetching Stripe session:', error);
+  } catch {
     return {
       orderDetails: null,
       error: 'Unable to load order details'

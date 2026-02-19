@@ -45,7 +45,7 @@ export async function GET(req: Request, { params }: RouteParams) {
     }
 
     return Response.json(lead, { status: 200, headers: rateLimitHeaders });
-  } catch (error) {
+  } catch {
     return Response.json({ error: 'Internal server error' }, { status: 500, headers: rateLimitHeaders });
   }
 }

@@ -29,10 +29,9 @@ export async function GET(request: Request) {
   try {
     const tags = await categoryManager.getTagsWithStats();
     return Response.json(tags, { headers: rateLimitHeaders });
-  } catch (error) {
-    console.error('Tag management error:', error);
+  } catch (_error) {
     return Response.json({
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: 'Internal server error'
     }, { status: 500, headers: rateLimitHeaders });
   }
 }
@@ -96,10 +95,9 @@ export async function POST(request: Request) {
     });
 
     return Response.json({ success: true, tag }, { status: 201, headers: rateLimitHeaders });
-  } catch (error) {
-    console.error('Tag management error:', error);
+  } catch (_error) {
     return Response.json({
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: 'Internal server error'
     }, { status: 500, headers: rateLimitHeaders });
   }
 }
@@ -145,10 +143,9 @@ export async function PUT(request: Request) {
     });
 
     return Response.json({ success: true }, { headers: rateLimitHeaders });
-  } catch (error) {
-    console.error('Tag management error:', error);
+  } catch (_error) {
     return Response.json({
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: 'Internal server error'
     }, { status: 500, headers: rateLimitHeaders });
   }
 }
@@ -195,10 +192,9 @@ export async function DELETE(request: Request) {
     });
 
     return Response.json({ success: true }, { headers: rateLimitHeaders });
-  } catch (error) {
-    console.error('Tag management error:', error);
+  } catch (_error) {
     return Response.json({
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: 'Internal server error'
     }, { status: 500, headers: rateLimitHeaders });
   }
 }

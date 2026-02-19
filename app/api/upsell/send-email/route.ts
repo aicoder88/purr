@@ -14,13 +14,6 @@ interface SendUpsellEmailRequest {
   sessionId?: string;
 }
 
-interface _SendUpsellEmailResponse {
-  success: boolean;
-  message?: string;
-  error?: string;
-  emailId?: string;
-}
-
 // Strict rate limit for email sending: 5 per minute per IP
 import { checkRateLimit } from '@/lib/rate-limit';
 
@@ -79,7 +72,7 @@ export async function POST(req: Request): Promise<Response> {
 
   // Verify Resend is configured
   if (!isResendConfigured()) {
-    console.error('[Upsell Email] Resend is not configured');
+    // Resend not configured
     return Response.json({
       success: false,
       error: 'Email service not configured'
@@ -145,7 +138,7 @@ export async function POST(req: Request): Promise<Response> {
 
     // Check for errors
     if (result.error) {
-      console.error(`[Upsell Email] Error sending ${type} email:`, result.error);
+      // Email sending failed
       return Response.json({
         success: false,
         error: result.error.message || 'Failed to send email'
@@ -161,7 +154,7 @@ export async function POST(req: Request): Promise<Response> {
     }, { headers });
 
   } catch (error) {
-    console.error('[Upsell Email] Error sending email:', error);
+    // Error sending email
 
     return Response.json({
       success: false,

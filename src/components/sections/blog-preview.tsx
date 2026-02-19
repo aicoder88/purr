@@ -1,50 +1,50 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { Container } from '@/components/ui/container';
-import { Button } from '@/components/ui/button';
-import { getTranslation } from '@/translations';
-import { ContentStore } from '@/lib/blog/content-store';
-import { isValidLocale, type Locale } from '@/i18n/config';
+"use client";
 
-type PreviewPost = {
+import { useEffect, useState } from "react";
+import { Container } from "@/components/ui/container";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { useTranslation } from "@/lib/translation-context";
+import Image from 'next/image';
+import { sampleBlogPosts } from "@/data/blog-posts";
+
+interface BlogPost {
   title: string;
   excerpt: string;
   author: string;
   date: string;
   image: string;
-  imageAlt: string;
   link: string;
-};
-
-async function getPreviewPosts(locale: Locale, limit: number): Promise<PreviewPost[]> {
-  const store = new ContentStore();
-  const posts = await store.getAllPosts(locale, false);
-
-  return posts.slice(0, limit).map((post) => {
-    const date = post.publishDate?.includes('T')
-      ? post.publishDate.split('T')[0]
-      : post.publishDate;
-
-    return {
-      title: post.title,
-      excerpt: post.excerpt,
-      author: post.author?.name || 'Purrify Team',
-      date,
-      image: post.featuredImage.url,
-      imageAlt: post.featuredImage.alt || post.title,
-      link: locale === 'en' ? `/blog/${post.slug}` : `/${locale}/blog/${post.slug}`,
-    };
-  });
 }
 
-export async function BlogPreview({ locale }: { locale: string }) {
-  const resolvedLocale: Locale = isValidLocale(locale) ? locale : 'en';
-  const t = getTranslation(resolvedLocale);
+export function BlogPreview() {
+  const { t } = useTranslation();
+  // Initialize with static data immediately to prevent blinking
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>(sampleBlogPosts.slice(0, 3));
 
-  let blogPosts = await getPreviewPosts(resolvedLocale, 3);
-  if (blogPosts.length === 0 && resolvedLocale !== 'en') {
-    blogPosts = await getPreviewPosts('en', 3);
-  }
+  useEffect(() => {
+    let isMounted = true;
+    async function fetchBlogPosts() {
+      try {
+        const response = await fetch("/api/blog-posts?limit=3");
+        if (!response.ok) {
+          throw new Error(`Failed to fetch blog posts (status ${response.status})`);
+        }
+        const data = await response.json();
+        // Only update if we got different data to avoid unnecessary re-renders
+        if (isMounted && data.length > 0) {
+          setBlogPosts(data);
+        }
+      } catch (err) {
+        // Already initialized with static data, no need to update on error
+        // Silently fall back to static content
+      }
+    }
+    fetchBlogPosts();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return (
     <section
@@ -53,15 +53,13 @@ export async function BlogPreview({ locale }: { locale: string }) {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 mb-6">
-            <span className="h-px w-8 bg-gradient-to-r from-transparent to-[#03E46A] dark:to-[#3694FF]"></span>
-            <span className="text-[#03E46A] dark:text-[#3694FF] font-bold tracking-wider text-sm uppercase">{t.blogSection.catCareTips}</span>
-            <span className="h-px w-8 bg-gradient-to-l from-transparent to-[#03E46A] dark:to-[#3694FF]"></span>
+          <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-[#5B2EFF]/30 rounded-full text-[#FF3131] dark:text-[#E0EFC7] font-medium text-sm mb-4">
+            {t.blogSection.catCareTips}
           </div>
-          <h2 className="font-heading text-5xl font-bold tracking-tight mb-4 text-[#03E46A] dark:text-[#3694FF]">
+          <h2 className="font-heading text-3xl md:text-5xl font-bold tracking-tight mb-4 text-[#03E46A] dark:text-[#3694FF]">
             {t.blogSection.fromOurBlog}
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 text-lg">
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300">
             {t.blogSection.description}
           </p>
         </div>
@@ -69,21 +67,20 @@ export async function BlogPreview({ locale }: { locale: string }) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {blogPosts.map((post, index) => (
             <Link
-              key={post.link}
-              href={post.link}
-              prefetch={false}
+              key={post.link || `blog-post-${index}`}
+              href={`/blog/${post.link.split('/').pop()}`}
               className="block bg-white dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-[#E0EFC7] dark:border-gray-700 transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#5B2EFF]/30 hover:-translate-y-2 group cursor-pointer"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#03E46A]/20 to-[#5B2EFF]/20 dark:from-[#5B2EFF]/30 dark:to-[#03E46A]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#03E46A]/20 to-[#5B2EFF]/20 dark:from-[#5B2EFF]/30 dark:to-[#03E46A]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="relative w-full h-[200px] sm:h-[250px]">
                   <Image
                     src={post.image}
-                    alt={post.imageAlt}
+                    alt={`Featured image for blog post: ${post.title} - Purrify cat litter knowledge`}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    className={`w-full h-full ${post.image.includes('carbon_magnified') ? 'object-contain' : 'object-cover'} transition-transform duration-700 group-hover:scale-110`}
                     priority={index === 0}
                     quality={75}
                   />
@@ -107,10 +104,7 @@ export async function BlogPreview({ locale }: { locale: string }) {
                 </div>
               </div>
               <div className="px-6 pb-6 pt-0">
-                <div
-                  className="text-[#03C45A] dark:text-[#4B2AEF] font-medium flex items-center hover:text-[#03C45A]/80 dark:hover:text-[#4B2AEF]/80 transition-colors"
-                  aria-label={`${t.blogSection.readFullArticle}: ${post.title}`}
-                >
+                <div className="text-[#03E46A] dark:text-[#5B2EFF] font-medium flex items-center hover:text-[#03E46A]/80 dark:hover:text-[#5B2EFF]/80 transition-colors">
                   {t.blogSection.readFullArticle}
                   <svg
                     className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
@@ -136,7 +130,7 @@ export async function BlogPreview({ locale }: { locale: string }) {
             asChild
             className="bg-gradient-to-r from-[#03E46A] to-[#5B2EFF] dark:from-[#5B2EFF] dark:to-[#03E46A] hover:from-[#03E46A]/90 hover:to-[#5B2EFF] dark:hover:from-[#5B2EFF]/90 dark:hover:to-[#03E46A] text-white dark:text-gray-100 font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0"
           >
-            <Link href={resolvedLocale === 'en' ? '/blog' : `/${resolvedLocale}/blog`} prefetch={false}>
+            <Link href={typeof window !== 'undefined' && window.location.pathname.startsWith('/fr') ? '/fr/blog' : typeof window !== 'undefined' && window.location.pathname.startsWith('/es') ? '/es/blog' : typeof window !== 'undefined' && window.location.pathname.startsWith('/zh') ? '/zh/blog' : '/blog'}>
               {t.blogSection.viewAllArticles}
             </Link>
           </Button>

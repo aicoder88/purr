@@ -114,7 +114,7 @@ describe('Sanitization', () => {
                 }
             };
 
-            const cleanPost = sanitizeBlogPost(rawPost as any);
+            const cleanPost = sanitizeBlogPost(rawPost as unknown as Parameters<typeof sanitizeBlogPost>[0]);
 
             expect(cleanPost.title).toBe('Title');
             expect(cleanPost.content).not.toContain('<script>');

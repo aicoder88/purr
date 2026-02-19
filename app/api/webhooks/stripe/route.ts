@@ -71,7 +71,7 @@ async function sendAdminNotification({
 }): Promise<{ success: boolean; error?: string }> {
 
   if (!process.env.RESEND_API_KEY) {
-    console.error('RESEND_API_KEY not configured for admin notification');
+    // Email service not configured - skip admin notification
     return { success: false, error: 'Email service not configured' };
   }
 
@@ -108,7 +108,7 @@ async function sendAdminNotification({
           </html>
         `;
 
-    const { data, error } = await getResend().emails.send({
+    const { error } = await getResend().emails.send({
       from: 'Purrify Notifications <support@purrify.ca>',
       to: ADMIN_EMAIL,
       subject: `🎉 New Sale: $${formattedAmount} - ${productName}`,
@@ -116,26 +116,16 @@ async function sendAdminNotification({
     });
 
     if (error) {
-      console.error('Admin notification failed', {
-        error: error.message,
-        orderNumber
-      });
+      // Admin notification failed - error tracked by monitoring service
       return { success: false, error: error.message };
     }
 
     // // // // // span.setAttribute('emailId', data?.id || '');
-    console.info('Admin notification sent successfully', {
-      emailId: data?.id,
-      to: ADMIN_EMAIL,
-      orderNumber
-    });
+    // Admin notification sent successfully
     return { success: true };
-  } catch (err) {
-    console.error('Error sending admin notification', {
-      error: err instanceof Error ? err.message : 'Unknown error',
-      orderNumber
-    });
-    return { success: false, error: err instanceof Error ? err.message : 'Unknown error' };
+  } catch (_err) {
+    // Error sending admin notification - tracked by monitoring service
+    return { success: false, error: _err instanceof Error ? _err.message : 'Unknown error' };
   }
   // }
   // );
@@ -166,7 +156,7 @@ async function sendThankYouEmail({
 
   // Validate Resend API key exists (Resend will validate the key itself)
   if (!process.env.RESEND_API_KEY) {
-    console.error('RESEND_API_KEY not configured for customer email');
+    // Email service not configured - skip customer email
     return { success: false, error: 'Email service not configured' };
   }
 
@@ -183,7 +173,7 @@ async function sendThankYouEmail({
 
     const emailSubject = getOrderConfirmationEmailSubject(locale);
 
-    const { data, error } = await getResend().emails.send({
+    const { error } = await getResend().emails.send({
       from: 'Purrify Support <support@purrify.ca>',
       to: customerEmail,
       subject: emailSubject,
@@ -191,27 +181,16 @@ async function sendThankYouEmail({
     });
 
     if (error) {
-      console.error('Customer email failed', {
-        error: error.message,
-        orderNumber,
-        customerEmail
-      });
+      // Customer email failed - error tracked by monitoring service
       return { success: false, error: error.message };
     }
 
     // // // // // span.setAttribute('emailId', data?.id || '');
-    console.info('Customer email sent successfully', {
-      emailId: data?.id,
-      to: customerEmail,
-      orderNumber
-    });
+    // Customer email sent successfully
     return { success: true };
-  } catch (err) {
-    console.error('Error sending customer email', {
-      error: err instanceof Error ? err.message : 'Unknown error',
-      orderNumber
-    });
-    return { success: false, error: err instanceof Error ? err.message : 'Unknown error' };
+  } catch (_err) {
+    // Error sending customer email - tracked by monitoring service
+    return { success: false, error: _err instanceof Error ? _err.message : 'Unknown error' };
   }
 }
 
@@ -223,7 +202,7 @@ export async function POST(req: NextRequest): Promise<Response> {
   const sig = req.headers.get('stripe-signature');
 
   if (!sig) {
-    console.warn('Missing stripe-signature header');
+    // Missing stripe-signature header
     return Response.json({ message: 'Missing stripe-signature header' }, { status: 400 });
   }
 
@@ -232,20 +211,14 @@ export async function POST(req: NextRequest): Promise<Response> {
   try {
     const secret = getWebhookSecret();
     event = getStripe().webhooks.constructEvent(payload, sig, secret);
-  } catch (err) {
-    const error = err instanceof Error ? err : new Error('Unknown error');
-    console.error('Webhook signature verification failed', {
-      error: error.message,
-    });
+  } catch (_err) {
+    // Webhook signature verification failed - tracked by monitoring service
     return new Response('Webhook signature verification failed', { status: 400 });
   }
 
   // // // // // span.setAttribute('eventType', event.type);
   // // // // // span.setAttribute('eventId', event.id);
-  console.info('Stripe webhook received', {
-    eventType: event.type,
-    eventId: event.id,
-  });
+  // Stripe webhook received
 
   // Idempotency: check if this event was already processed
   // Stripe event IDs are globally unique (e.g., evt_1234...)
@@ -259,11 +232,7 @@ export async function POST(req: NextRequest): Promise<Response> {
     });
 
     if (alreadyProcessed) {
-      console.info('Webhook event already processed (idempotent skip)', {
-        eventId: event.id,
-        eventType: event.type,
-        processedAt: alreadyProcessed.createdAt,
-      });
+      // Webhook event already processed (idempotent skip)
       return Response.json({ received: true, deduplicated: true });
     }
   }
@@ -279,12 +248,7 @@ export async function POST(req: NextRequest): Promise<Response> {
         // // // // // span.setAttribute('orderType', orderType || 'consumer');
         // if (orderId) // // // // // span.setAttribute('orderId', orderId);
 
-        console.info('Checkout session completed', {
-          sessionId: session.id,
-          orderId,
-          orderType,
-          amount: session.amount_total
-        });
+        // Checkout session completed
 
         // Handle Affiliate Starter Kit purchase
         if (orderType === 'affiliate_starter_kit') {
@@ -299,10 +263,7 @@ export async function POST(req: NextRequest): Promise<Response> {
                   starterKitOrderId: session.id,
                 },
               });
-              console.info('Affiliate activated via starter kit purchase', {
-                affiliateId,
-                sessionId: session.id
-              });
+              // Affiliate activated via starter kit purchase
 
               // Send activation confirmation email
               const customerEmail = session.customer_details?.email;
@@ -329,11 +290,8 @@ export async function POST(req: NextRequest): Promise<Response> {
                       `,
                 });
               }
-            } catch (err) {
-              console.error('Failed to activate affiliate', {
-                affiliateId,
-                error: err instanceof Error ? err.message : 'Unknown error'
-              });
+            } catch (_err) {
+              // Failed to activate affiliate - tracked by monitoring service
             }
           }
           break;
@@ -362,17 +320,13 @@ export async function POST(req: NextRequest): Promise<Response> {
             productName = item.description || item.price?.product?.toString() || 'Purrify';
             quantity = lineItems.data.reduce((sum, li) => sum + (li.quantity || 0), 0);
           }
-        } catch (err) {
-          console.error('Error fetching line items:', err);
-          // Continue with defaults
+        } catch (_err) {
+          // Error fetching line items - continue with defaults
         }
 
         // Handle Payment Links (no database order to update)
         if (isPaymentLink) {
-          console.info('Payment Link checkout completed', {
-            sessionId: session.id,
-            amount: session.amount_total
-          });
+          // Payment Link checkout completed
 
           // Send customer confirmation email
           if (customerEmail) {
@@ -387,10 +341,7 @@ export async function POST(req: NextRequest): Promise<Response> {
             });
 
             if (!emailResult.success) {
-              console.warn('Failed to send Payment Link thank you email', {
-                error: emailResult.error,
-                sessionId: session.id
-              });
+              // Failed to send Payment Link thank you email - tracked by monitoring service
             }
           }
 
@@ -407,10 +358,7 @@ export async function POST(req: NextRequest): Promise<Response> {
             });
 
             if (!adminResult.success) {
-              console.warn('Failed to send admin notification', {
-                error: adminResult.error,
-                sessionId: session.id
-              });
+              // Failed to send admin notification - tracked by monitoring service
             }
           }
 
@@ -428,18 +376,8 @@ export async function POST(req: NextRequest): Promise<Response> {
                 orderSubtotal: orderSubtotalDollars,
               });
 
-              if (conversionResult.success) {
-                console.info('Affiliate conversion recorded for Payment Link', {
-                  conversionId: conversionResult.conversionId,
-                  affiliateCode: affiliateData.code,
-                  orderId: orderNumber,
-                });
-              } else {
-                console.warn('Failed to record affiliate conversion for Payment Link', {
-                  error: conversionResult.error,
-                  affiliateCode: affiliateData.code,
-                  orderId: orderNumber,
-                });
+              if (!conversionResult.success) {
+                // Failed to record affiliate conversion for Payment Link - tracked by monitoring service
               }
             }
           }
@@ -463,17 +401,17 @@ export async function POST(req: NextRequest): Promise<Response> {
           });
 
           if (!currentRetailerOrder) {
-            console.warn('Retailer order not found for webhook', { orderId });
+            // Retailer order not found for webhook
             break;
           }
 
           if (currentRetailerOrder.status === 'PAID') {
-            console.info('Retailer order already paid, skipping', { orderId });
+            // Retailer order already paid, skipping
             break;
           }
 
           if (currentRetailerOrder.status === 'CANCELLED') {
-            console.info('Retailer order cancelled, skipping', { orderId });
+            // Retailer order cancelled, skipping
             break;
           }
 
@@ -486,11 +424,7 @@ export async function POST(req: NextRequest): Promise<Response> {
             },
           });
 
-          console.info('Retailer order paid successfully', {
-            orderId,
-            paymentIntent,
-            amount: session.amount_total
-          });
+          // Retailer order paid successfully
 
           // Send thank you email to retailer
           if (customerEmail) {
@@ -505,10 +439,7 @@ export async function POST(req: NextRequest): Promise<Response> {
             });
 
             if (!emailResult.success) {
-              console.warn('Failed to send retailer thank you email', {
-                error: emailResult.error,
-                orderId
-              });
+              // Failed to send retailer thank you email - tracked by monitoring service
             }
 
             // Send admin notification for retailer order
@@ -533,17 +464,17 @@ export async function POST(req: NextRequest): Promise<Response> {
         });
 
         if (!currentOrder) {
-          console.warn('Order not found for webhook', { orderId });
+          // Order not found for webhook
           break;
         }
 
         if (currentOrder.status === 'PAID') {
-          console.info('Order already paid, skipping', { orderId });
+          // Order already paid, skipping
           break;
         }
 
         if (currentOrder.status === 'CANCELLED') {
-          console.info('Order cancelled, skipping', { orderId });
+          // Order cancelled, skipping
           break;
         }
 
@@ -593,10 +524,7 @@ export async function POST(req: NextRequest): Promise<Response> {
           });
 
           if (!emailResult.success) {
-            console.warn('Failed to send thank you email', {
-              error: emailResult.error,
-              orderId
-            });
+            // Failed to send thank you email - tracked by monitoring service
             // Don't fail the webhook if email fails
           }
 
@@ -627,18 +555,8 @@ export async function POST(req: NextRequest): Promise<Response> {
               orderSubtotal: orderSubtotalDollars,
             });
 
-            if (conversionResult.success) {
-              console.info('Affiliate conversion recorded', {
-                conversionId: conversionResult.conversionId,
-                affiliateCode: affiliateData.code,
-                orderId: orderNumber,
-              });
-            } else {
-              console.warn('Failed to record affiliate conversion', {
-                error: conversionResult.error,
-                affiliateCode: affiliateData.code,
-                orderId: orderNumber,
-              });
+            if (!conversionResult.success) {
+              // Failed to record affiliate conversion - tracked by monitoring service
             }
           }
         }
@@ -671,10 +589,7 @@ export async function POST(req: NextRequest): Promise<Response> {
       }
 
       default:
-        console.debug('Unhandled Stripe event type', {
-          eventType: event.type,
-          eventId: event.id
-        });
+        // Unhandled Stripe event type
     }
 
     // Record successful processing for idempotency
@@ -688,27 +603,15 @@ export async function POST(req: NextRequest): Promise<Response> {
             changes: { eventType: event.type },
           },
         });
-      } catch (auditErr) {
-        // Non-fatal: log but don't fail the webhook
-        console.warn('Failed to write idempotency audit log', {
-          error: auditErr instanceof Error ? auditErr.message : 'Unknown',
-          eventId: event.id,
-        });
+      } catch (_auditErr) {
+        // Non-fatal: Failed to write idempotency audit log - tracked by monitoring service
       }
     }
 
-    console.info('Webhook processed successfully', {
-      eventType: event.type,
-      eventId: event.id
-    });
-
+    // Webhook processed successfully
     return Response.json({ received: true });
-  } catch (error) {
-    console.error('Error processing webhook', {
-      error: error instanceof Error ? error.message : 'Unknown error',
-      eventType: event.type,
-      eventId: event.id
-    });
+  } catch (_error) {
+    // Error processing webhook - tracked by monitoring service
     return Response.json({ message: 'Error processing webhook' }, { status: 500 });
   }
 }

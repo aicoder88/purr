@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "next dev",
+    "preinstall": "npx only-allow pnpm",
     "postinstall": "prisma generate",
     "blog:generate-featured-image-map": "tsx scripts/blog/generate-blog-featured-image-map.ts",
     "prebuild": "node scripts/validate-no-middleware.js && pnpm blog:generate-featured-image-map && pnpm validate-i18n:hardcoded && pnpm validate-dark-mode && pnpm blog:validate-hero-preview && tsx scripts/seo/prebuild-validation.ts",

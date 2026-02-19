@@ -819,6 +819,9 @@ export const fr = {
     contact: "Contact",
     privacyPolicy: "Politique de Confidentialité",
     termsOfService: "Conditions d'Utilisation",
+    // Partner links
+    veterinarians: "Pour Vétérinaires",
+    canada: "Purrify Canada",
     // Review platforms
     trustpilot: "Trustpilot",
     googleReviews: "Avis Google",

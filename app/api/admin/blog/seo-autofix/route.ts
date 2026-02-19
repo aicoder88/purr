@@ -87,10 +87,9 @@ export async function POST(request: Request) {
     }
 
     return Response.json({ result }, { headers: rateLimitHeaders });
-  } catch (error) {
-    console.error('SEO autofix error:', error);
+  } catch (_error) {
     return Response.json({
-      error: error instanceof Error ? error.message : 'Internal server error'
+      error: _error instanceof Error ? _error.message : 'Internal server error'
     }, { status: 500, headers: rateLimitHeaders });
   }
 }

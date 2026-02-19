@@ -39,9 +39,12 @@ interface HomepageClientProps {
 }
 
 export function HomepageClient({ currency }: HomepageClientProps) {
+  // A/B Test: Social Proof Position (badges moved to bottom of page)
+  // Removed
+
   return (
     <CurrencyProvider detectedCurrency={currency}>
-      {/* Enhanced Product Comparison */}
+      {/* Enhanced Product Comparison - Track conversion when user scrolls here */}
       <div className="cv-auto cis-960">
         <ScrollAnchor id="products" />
         <ErrorBoundary>

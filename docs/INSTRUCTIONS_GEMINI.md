@@ -6,17 +6,6 @@
 
 ---
 
-## 🚀 Concurrency
-
-Gemini's tasks can run **in parallel** with Kimi's work because they touch different directories:
-
-- **Gemini works on**: `public/`, `scripts/`, analysis tasks
-- **Kimi works on**: `app/`, `src/`, `pages/`
-
-**No conflicts** - run simultaneously.
-
----
-
 ## ⚡ Phase 3: Assets & Performance
 
 ### Session 3.2.1: Image Optimization Pipeline

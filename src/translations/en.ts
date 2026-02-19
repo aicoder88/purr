@@ -844,6 +844,8 @@ export const en = {
     contact: "Contact",
     privacyPolicy: "Privacy Policy",
     termsOfService: "Terms of Service",
+    // Partner links
+    veterinarians: "For Veterinarians",
     // Review platforms
     trustpilot: "Trustpilot",
     googleReviews: "Google Reviews",

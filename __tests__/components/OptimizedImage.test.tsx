@@ -47,6 +47,7 @@ jest.mock('next/image', () => ({
     }, [onLoad]);
 
     return (
+      // eslint-disable-next-line @next/next/no-img-element
       <img
         src={src}
         alt={alt}
@@ -271,7 +272,8 @@ describe('OptimizedImage', () => {
     jest.doMock('next/image', () => ({
       __esModule: true,
       default: function MockImage({ onLoad: _onLoad }: { onLoad?: () => void }) {
-        return <img data-testid="next-image" />;
+        // eslint-disable-next-line @next/next/no-img-element
+        return <img data-testid="next-image" alt="" />;
       },
     }));
 

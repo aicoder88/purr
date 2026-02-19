@@ -753,6 +753,9 @@ export const es: TranslationType = {
     contact: "Contacto",
     privacyPolicy: "Politica de Privacidad",
     termsOfService: "Terminos de Servicio",
+    // Partner links
+    veterinarians: "Para Veterinarios",
+    canada: "Purrify Canadá",
     // Review platforms
     trustpilot: "Trustpilot",
     googleReviews: "Opiniones de Google",

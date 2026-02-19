@@ -31,8 +31,7 @@ export default function ActivateContent() {
                 }
                 const data = await response.json();
                 setAffiliate(data);
-            } catch (err) {
-                console.error('Failed to fetch affiliate:', err);
+            } catch {
                 setError('Failed to load affiliate data');
             } finally {
                 setIsLoading(false);

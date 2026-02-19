@@ -13,18 +13,6 @@ import {
   REFERRAL_CONFIG,
 } from '@/lib/referral';
 
-interface _GenerateReferralResponse {
-  success: boolean;
-  data?: {
-    code: string;
-    shareUrl: string;
-    shareUrls: ReturnType<typeof generateShareUrls>;
-    expiresAt?: string;
-    maxReferrals: number;
-  };
-  error?: string;
-}
-
 // Rate limiting setup
 import { checkRateLimit } from '@/lib/rate-limit';
 
@@ -33,7 +21,6 @@ export async function POST(req: Request): Promise<Response> {
   const forwardedFor = req.headers.get('x-forwarded-for');
   const clientIp = forwardedFor?.split(',')[0] || 'unknown';
 
-  // Apply rate limiting
   // Apply rate limiting
   const { success, remaining, limit, reset, retryAfter } = await checkRateLimit(clientIp, 'standard');
   const headers = new Headers();
@@ -188,9 +175,7 @@ export async function POST(req: Request): Promise<Response> {
         maxReferrals: REFERRAL_CONFIG.MAX_REFERRALS_PER_USER,
       },
     }, { status: 201, headers });
-  } catch (error) {
-    console.error('Error generating referral code:', error);
-
+  } catch {
     return Response.json({
       success: false,
       error: 'Failed to generate referral code. Please try again.',

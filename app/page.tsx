@@ -1,23 +1,19 @@
 export const dynamic = 'force-static';
 
+// Rename to avoid conflict with route segment config
+import dynamicLoader from 'next/dynamic';
 import { Metadata } from 'next';
 import { Hero } from '@/components/sections/hero';
-import { AgitationSection } from '@/components/sections/agitation-section';
-import { ScienceSection } from '@/components/sections/science-section';
-import { HowItWorks } from '@/components/sections/how-it-works';
-import { WhyPurrify } from '@/components/sections/why-purrify';
-import { BlogPreview } from '@/components/sections/blog-preview';
 import { ScrollingAnnouncementBar } from '@/components/sections/scrolling-announcement-bar';
-import { Stores } from '@/components/sections/stores';
+import { SkipNav } from '@/components/ui/skip-nav';
 import { ErrorBoundary } from '@/components/ui/error-boundary';
 import { TrustBadges } from '@/components/social-proof/TrustBadges';
-import { LazyClientLocationsMap } from '@/components/maps/LazyClientLocationsMap';
 
 import { SITE_NAME, SITE_DESCRIPTION } from '@/lib/constants';
 import { getSEOMeta } from '@/translations/seo-meta';
 import {
-  getPriceValidityDate,
   generateHomepageSchema,
+  buildLanguageAlternates,
   getLocalizedKeywords,
   normalizeLocale,
 } from '@/lib/seo-utils';
@@ -26,6 +22,15 @@ import type { Currency } from '@/lib/geo/currency-detector';
 
 // Import client components
 import { HomepageClient } from './homepage-client';
+
+// Lazy load below-the-fold sections to reduce TBT and bundle size
+const ScienceSection = dynamicLoader(() => import('@/components/sections/science-section').then(mod => mod.ScienceSection));
+const HowItWorks = dynamicLoader(() => import('@/components/sections/how-it-works').then(mod => mod.HowItWorks));
+const WhyPurrify = dynamicLoader(() => import('@/components/sections/why-purrify').then(mod => mod.WhyPurrify));
+const BlogPreview = dynamicLoader(() => import('@/components/sections/blog-preview').then(mod => mod.BlogPreview));
+const Stores = dynamicLoader(() => import('@/components/sections/stores').then(mod => mod.Stores));
+// Wrapper component handles ssr: false internally to avoid Server Component limitations
+import { ClientOnlyLocationsMap } from '@/components/maps/ClientOnlyLocationsMap';
 
 // Generate metadata for the homepage
 export async function generateMetadata(): Promise<Metadata> {
@@ -41,15 +46,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
   // Build canonical and alternate URLs
   const baseUrl = 'https://www.purrify.ca';
-  const canonicalUrl = `${baseUrl}/`;
+  const canonicalUrl = `${baseUrl}${normalizedLocale === 'en' ? '' : `/${normalizedLocale}`}/`;
+  const languageAlternates = buildLanguageAlternates('/');
 
   // Convert language alternates to Next.js format
-  const alternates: Record<string, string> = {
-    'en-CA': `${baseUrl}/`,
-    'fr-CA': `${baseUrl}/fr/`,
-    'en-US': `${baseUrl}/us/`,
-    'x-default': `${baseUrl}/`,
-  };
+  const alternates: Record<string, string> = {};
+  languageAlternates.forEach((alt) => {
+    alternates[alt.hrefLang] = alt.href;
+  });
 
   return {
     title: pageTitle,
@@ -90,13 +94,6 @@ export async function generateMetadata(): Promise<Metadata> {
       'max-image-preview': 'large',
       'max-snippet': -1,
       'max-video-preview': -1,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-        'max-video-preview': -1,
-      },
     },
     applicationName: SITE_NAME,
     appleWebApp: {
@@ -124,18 +121,13 @@ export default async function HomePage() {
   // The actual currency/locale detection happens client-side via HomepageClient
   const currency: Currency = 'CAD';
 
-  // Get price validity date (replaces getStaticProps)
-  const priceValidUntil = getPriceValidityDate();
-
-  // Get normalized locale for SEO
-  const _normalizedLocale = normalizeLocale(defaultLocale);
-
-
   // Generate structured data
   const structuredData = await generateStructuredData(defaultLocale, currency);
 
   return (
     <>
+      <SkipNav />
+
       {/* Enhanced JSON-LD Schemas - Auto-generated Homepage Schema */}
       <script
         type="application/ld+json"
@@ -154,31 +146,24 @@ export default async function HomePage() {
         {/* Scrolling Announcement Bar below hero */}
         <ScrollingAnnouncementBar />
 
-        {/* Agitation Section - feel the pain before the solution */}
+        {/* Science Section */}
         <div className="cv-auto cis-720">
           <ErrorBoundary>
-            <AgitationSection locale={defaultLocale} />
+            <ScienceSection />
           </ErrorBoundary>
         </div>
 
-        {/* How It Works Section - the answer reveal */}
+        {/* How It Works Section */}
         <div className="cv-auto cis-720">
           <ErrorBoundary>
             <HowItWorks />
           </ErrorBoundary>
         </div>
 
-        {/* Why Purrify Section - benefit stack */}
+        {/* Why Purrify Section */}
         <div className="cv-auto cis-720">
           <ErrorBoundary>
             <WhyPurrify />
-          </ErrorBoundary>
-        </div>
-
-        {/* Science Section - moved down for conversational flow */}
-        <div className="cv-auto cis-720">
-          <ErrorBoundary>
-            <ScienceSection />
           </ErrorBoundary>
         </div>
 
@@ -199,7 +184,7 @@ export default async function HomePage() {
         {/* Client Locations Map */}
         <div className="cv-auto cis-720">
           <ErrorBoundary>
-            <LazyClientLocationsMap
+            <ClientOnlyLocationsMap
               className="bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900"
               height="400"
             />
@@ -216,7 +201,7 @@ export default async function HomePage() {
         {/* Blog Preview */}
         <div className="cv-auto cis-720">
           <ErrorBoundary>
-            <BlogPreview locale={defaultLocale} />
+            <BlogPreview />
           </ErrorBoundary>
         </div>
 

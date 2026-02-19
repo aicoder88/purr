@@ -18,6 +18,13 @@ jest.mock('../../src/hooks/useBreadcrumb');
 const mockUseTranslation = useTranslation as jest.MockedFunction<typeof useTranslation>;
 const mockUseCurrency = useCurrency as jest.MockedFunction<typeof useCurrency>;
 
+// Mock types
+interface MockProductSchema {
+  offers?: {
+    priceCurrency?: string;
+  };
+}
+
 describe('useEnhancedSEO', () => {
   beforeEach(() => {
     // Reset mocks
@@ -25,14 +32,14 @@ describe('useEnhancedSEO', () => {
 
     // Default mock implementations
     mockUseTranslation.mockReturnValue({
-      t: {} as any,
+      t: {},
       locale: 'en',
-    } as any);
+    } as unknown as ReturnType<typeof useTranslation>);
 
     mockUseCurrency.mockReturnValue({
       currency: 'CAD',
       formatPrice: jest.fn(),
-    } as any);
+    } as unknown as ReturnType<typeof useCurrency>);
 
     // Mock meta optimizer
     const { optimizeMetaTitle, optimizeMetaDescription } = require('../../src/lib/seo/meta-optimizer');
@@ -347,7 +354,7 @@ describe('useEnhancedSEO', () => {
         })
       );
 
-      expect((result.current.schema as any)?.offers?.priceCurrency).toBe('CAD');
+      expect((result.current.schema as MockProductSchema)?.offers?.priceCurrency).toBe('CAD');
     });
 
     it('should use USD currency for product schema', () => {
@@ -372,16 +379,16 @@ describe('useEnhancedSEO', () => {
         })
       );
 
-      expect((result.current.schema as any)?.offers?.priceCurrency).toBe('USD');
+      expect((result.current.schema as MockProductSchema)?.offers?.priceCurrency).toBe('USD');
     });
   });
 
   describe('Locale Handling', () => {
     it('should handle French locale', () => {
       mockUseTranslation.mockReturnValue({
-        t: {} as any,
+        t: {},
         locale: 'fr',
-      } as any);
+      } as unknown as ReturnType<typeof useTranslation>);
 
       const { result } = renderHook(() =>
         useEnhancedSEO({
@@ -396,9 +403,9 @@ describe('useEnhancedSEO', () => {
 
     it('should handle Chinese locale', () => {
       mockUseTranslation.mockReturnValue({
-        t: {} as any,
+        t: {},
         locale: 'zh',
-      } as any);
+      } as unknown as ReturnType<typeof useTranslation>);
 
       const { result } = renderHook(() =>
         useEnhancedSEO({
@@ -413,9 +420,9 @@ describe('useEnhancedSEO', () => {
 
     it('should default to en_CA for unknown locales', () => {
       mockUseTranslation.mockReturnValue({
-        t: {} as any,
+        t: {},
         locale: 'unknown',
-      } as any);
+      } as unknown as ReturnType<typeof useTranslation>);
 
       const { result } = renderHook(() =>
         useEnhancedSEO({

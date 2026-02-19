@@ -19,11 +19,6 @@ interface TrackingRequest {
   ttp?: string;
 }
 
-interface _TrackingResponse {
-  success: boolean;
-  error?: string;
-}
-
 export async function POST(req: Request): Promise<Response> {
   try {
     const body = await req.json() as TrackingRequest;

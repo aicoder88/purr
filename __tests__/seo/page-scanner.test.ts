@@ -23,9 +23,7 @@ describe('Page Scanner', () => {
       const pages = await scanAllPages();
 
       const staticPages = pages.filter((p) => p.pageType === 'static');
-      // These may or may not exist, just verify they can be computed
-      const _dynamicPages = pages.filter((p) => p.pageType === 'dynamic');
-      const _catchAllPages = pages.filter((p) => p.pageType === 'catch-all');
+      // Dynamic and catch-all pages may or may not exist, just check static pages
 
       expect(staticPages.length).toBeGreaterThan(0);
       // Dynamic and catch-all may or may not exist

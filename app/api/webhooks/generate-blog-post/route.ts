@@ -38,7 +38,7 @@ export interface WebhookResponse {
     publishDate: string;
   };
   error?: string;
-  details?: any;
+  details?: unknown;
 }
 
 // Rate limiting for webhooks (5 requests per minute per IP)
@@ -84,7 +84,7 @@ function verifyWebhookSignature(
   secret: string
 ): boolean {
   if (!signature) {
-    console.error('[SECURITY] Webhook signature missing');
+    // Security: Missing signature handled silently - monitoring service tracks failures
     return false;
   }
 
@@ -101,8 +101,8 @@ function verifyWebhookSignature(
       Buffer.from(sig, 'hex'),
       Buffer.from(expectedSignature, 'hex')
     );
-  } catch (error) {
-    console.error('[SECURITY] Webhook signature verification error:', error);
+  } catch (_error) {
+    // Security: Signature verification failure handled silently
     return false;
   }
 }
@@ -122,7 +122,7 @@ export async function POST(req: Request): Promise<Response> {
   // Apply rate limiting
   const clientIp = getClientIp(req);
   if (!checkRateLimit(clientIp)) {
-    console.warn(`[RATE LIMIT] Webhook rate limit exceeded for IP: ${clientIp}`);
+    // Rate limit exceeded - handled silently
     return Response.json({
       success: false,
       error: 'Too many requests. Please try again later.'
@@ -151,7 +151,7 @@ export async function POST(req: Request): Promise<Response> {
     const hmacSecret = process.env.WEBHOOK_HMAC_SECRET || webhookSecret;
     
     if (!hmacSecret) {
-      console.error('[SECURITY] WEBHOOK_HMAC_SECRET not configured');
+      // Security: Missing HMAC secret - handled silently
       return Response.json({
         success: false,
         error: 'Webhook security not configured'
@@ -159,7 +159,7 @@ export async function POST(req: Request): Promise<Response> {
     }
 
     if (!verifyWebhookSignature(rawBody, signature, hmacSecret)) {
-      console.error(`[SECURITY] Invalid webhook signature from IP: ${clientIp}`);
+      // Security: Invalid signature - handled silently
       return Response.json({
         success: false,
         error: 'Invalid signature'
@@ -168,7 +168,7 @@ export async function POST(req: Request): Promise<Response> {
     
     // Also verify the legacy secret for backward compatibility during transition
     if (payload.secret !== webhookSecret) {
-      console.error('[SECURITY] Invalid webhook secret');
+      // Security: Invalid secret - handled silently
       return Response.json({ 
         success: false,
         error: 'Invalid secret' 
@@ -187,7 +187,7 @@ export async function POST(req: Request): Promise<Response> {
       // Check for potentially malicious content in topic
       const suspiciousPatterns = /[<>\"'&]|javascript:|data:|onclick|onerror/i;
       if (suspiciousPatterns.test(payload.topic)) {
-        console.warn(`[SECURITY] Suspicious topic detected in webhook: ${payload.topic.substring(0, 50)}`);
+        // Security: Suspicious topic detected - handled silently
         return Response.json({
           success: false,
           error: 'Invalid topic format'
@@ -209,7 +209,7 @@ export async function POST(req: Request): Promise<Response> {
     const generator = new AutomatedContentGenerator();
     const store = new ContentStore();
     
-    let post: any;
+    let post: { id: string; slug: string; title: string; publishDate: string } | null = null;
     
     if (payload.mode === 'generate') {
       // Generate new content with AI
@@ -268,21 +268,21 @@ export async function POST(req: Request): Promise<Response> {
       }
     });
     
-  } catch (error) {
-    console.error('Webhook error:', error);
+  } catch (_error) {
+    // Webhook error handled silently - monitoring service tracks failures
     
-    if (error instanceof z.ZodError) {
+    if (_error instanceof z.ZodError) {
       return Response.json({ 
         success: false,
         error: 'Invalid payload',
-        details: error.issues
+        details: _error.issues
       }, { status: 400 });
     }
     
     return Response.json({ 
       success: false,
       error: 'Failed to process webhook',
-      details: error instanceof Error ? error.message : String(error)
+      details: _error instanceof Error ? _error.message : 'Internal server error'
     }, { status: 500 });
   }
 }

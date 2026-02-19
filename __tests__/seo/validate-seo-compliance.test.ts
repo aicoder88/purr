@@ -270,20 +270,7 @@ describe('SEO Compliance Validation System', () => {
     });
 
     it('should detect matching canonical and OG URLs', () => {
-      const _mockContent = `
-        export default function Page() {
-          const canonicalUrl = 'https://example.com/test';
-          return (
-            <NextSeo
-              canonical={canonicalUrl}
-              openGraph={{
-                url: canonicalUrl,
-              }}
-            />
-          );
-        }
-      `;
-
+      // Mock returns empty array when canonical and OG URLs match
       (validateOGPageFile as jest.Mock).mockReturnValue([]);
 
       const issues = validateOGPageFile('/test-page.tsx');

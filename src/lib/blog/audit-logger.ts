@@ -54,12 +54,8 @@ export class AuditLogger {
       // Write back to file
       await fs.writeFile(logFile, JSON.stringify(logs, null, 2), 'utf-8');
 
-      // Also log to console in development
-      if (process.env.NODE_ENV === 'development') {
-        console.log('[AUDIT]', log);
-      }
-    } catch (error) {
-      console.error('Failed to write audit log:', error);
+    } catch (_error) {
+      // Failed to write audit log, ignore
     }
   }
 
@@ -99,8 +95,8 @@ export class AuditLogger {
           );
         }
       }
-    } catch (error) {
-      console.error('Failed to read audit logs:', error);
+    } catch (_error) {
+      // Failed to read audit logs, ignore
     }
 
     return allLogs.sort((a, b) =>
@@ -127,8 +123,8 @@ export class AuditLogger {
         const logs: AuditLog[] = JSON.parse(content);
         allLogs.push(...logs);
       }
-    } catch (error) {
-      console.error('Failed to read audit logs:', error);
+    } catch (_error) {
+      // Failed to read audit logs, ignore
     }
 
     return allLogs

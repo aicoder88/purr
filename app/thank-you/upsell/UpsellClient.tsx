@@ -34,13 +34,8 @@ const sendUpsellEmail = async (
 
     const data = await response.json();
 
-    if (!data.success) {
-      console.error('Failed to send upsell email:', data.error);
-    }
-
     return data;
   } catch (error) {
-    console.error('Error sending upsell email:', error);
     return { success: false, error };
   }
 };

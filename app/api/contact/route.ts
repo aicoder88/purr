@@ -99,7 +99,6 @@ async function sendEmailViaResend(
   subject: string
 ): Promise<{ success: boolean; message: string }> {
   if (!isResendConfigured()) {
-    console.error('Resend not properly configured. Missing API key.');
     return {
       success: false,
       message: 'Email service not available. Please contact us directly at support@purrify.ca'
@@ -155,7 +154,6 @@ ${sanitizedMessage}
     });
 
     if (error) {
-      console.error('Resend API error:', error);
       return {
         success: false,
         message: 'Failed to send email. Please try again later.'
@@ -166,8 +164,7 @@ ${sanitizedMessage}
       success: true,
       message: 'Message sent successfully!'
     };
-  } catch (error) {
-    console.error('Error sending email via Resend:', error instanceof Error ? error.message : 'Unknown error');
+  } catch (_error) {
     return {
       success: false,
       message: 'An error occurred while sending your message.'
@@ -211,7 +208,6 @@ export async function POST(request: NextRequest) {
     const validationResult = contactFormSchema.safeParse(body);
 
     if (!validationResult.success) {
-      console.warn(`[SECURITY] Invalid contact form submission from ${clientIp}:`, validationResult.error.issues);
       return NextResponse.json(
         { success: false, message: 'Invalid form data. Please check your inputs and try again.' },
         { status: 400, headers }
@@ -234,7 +230,6 @@ export async function POST(request: NextRequest) {
 
     for (const pattern of suspiciousPatterns) {
       if (pattern.test(message)) {
-        console.warn(`[SECURITY] Potential email injection attempt from ${clientIp}`);
         return NextResponse.json(
           { success: false, message: 'Invalid message format.' },
           { status: 400, headers }
@@ -257,8 +252,7 @@ export async function POST(request: NextRequest) {
           { success: true, message: "Thank you for contacting us! We'll get back to you within 24 hours." },
           { status: 200, headers }
         );
-      } catch (zendeskError) {
-        console.error('Zendesk ticket creation failed:', zendeskError);
+      } catch (_zendeskError) {
         // Fall through to Resend as backup
       }
     }
@@ -278,8 +272,7 @@ export async function POST(request: NextRequest) {
       { success: true, message: "Thank you for contacting us! We'll get back to you within 24 hours." },
       { status: 200, headers }
     );
-  } catch (error) {
-    console.error('Error processing contact form:', error instanceof Error ? error.message : 'Unknown error');
+  } catch (_error) {
     return NextResponse.json(
       { success: false, message: 'An error occurred while sending your message.' },
       { status: 500, headers }

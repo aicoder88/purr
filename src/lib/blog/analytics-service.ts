@@ -92,8 +92,7 @@ export class AnalyticsService {
       await this.cacheAnalytics(slug, mockData);
 
       return mockData;
-    } catch (error) {
-      console.error('Error getting post analytics:', error);
+    } catch (_error) {
       return null;
     }
   }
@@ -162,9 +161,8 @@ export class AnalyticsService {
           engagementChange: Math.random() * 30 - 10
         }
       };
-    } catch (error) {
-      console.error('Error getting dashboard metrics:', error);
-      throw error;
+    } catch (_error) {
+      throw _error;
     }
   }
 
@@ -208,8 +206,8 @@ export class AnalyticsService {
       });
 
       await fs.writeFile(viewsPath, JSON.stringify(views, null, 2), 'utf-8');
-    } catch (error) {
-      console.error('Error tracking view:', error);
+    } catch (_error) {
+      // Error tracking view, ignore
     }
   }
 
@@ -245,8 +243,7 @@ export class AnalyticsService {
       } catch {
         return [];
       }
-    } catch (error) {
-      console.error('Error getting recent activity:', error);
+    } catch (_error) {
       return [];
     }
   }
@@ -263,8 +260,8 @@ export class AnalyticsService {
         JSON.stringify({ data, timestamp: Date.now() }, null, 2),
         'utf-8'
       );
-    } catch (error) {
-      console.error('Error caching analytics:', error);
+    } catch (_error) {
+      // Error caching analytics, ignore
     }
   }
 

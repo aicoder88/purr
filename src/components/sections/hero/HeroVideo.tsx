@@ -1,34 +1,22 @@
-'use client';
-
 import { useVideoPlayer } from './useVideoPlayer';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 
 export const HeroVideo = () => {
+  // Removed isMobile state to prevent hydration mismatch and layout shift
+  // Now using CSS container queries/media queries for aspect ratio
   const { videoRef, mediaContainerRef, state, replay, toggleMute, handleVolumeChange } = useVideoPlayer([]);
-  const [isMobile, setIsMobile] = useState(false);
 
-  // Video sources
+  // Determine video sources based on existing assets
   const desktopSrc = "/videos/purrify-activated-carbon-litter-additive-demo.mp4";
-  const mobileSrc = "/videos/purrify-activated-carbon-litter-additive-demo.mp4";
-
-  // Detect mobile for optimized loading
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768 || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  const mobileSrc = "/videos/purrify-activated-carbon-litter-additive-demo.mp4"; // User indicated updated video is in same spot
 
   return (
     <div className="relative group flex flex-col items-center w-full">
       {/* Background Glow */}
       <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
 
-      {/* Video Container - Responsive Aspect Ratio */}
-      <div className="relative overflow-hidden rounded-3xl shadow-2xl dark:shadow-gray-800 group-hover:shadow-[#E0EFC7]/50 dark:group-hover:shadow-[#3694FF]/30 transition-all duration-500 w-full bg-gray-100 dark:bg-gray-800 mx-auto aspect-[3/4] max-w-md lg:aspect-[4/5] lg:max-w-lg xl:max-w-xl">
+      {/* Video Container - Responsive Aspect Ratio handled by CSS */}
+      <div className={`relative overflow-hidden rounded-3xl shadow-2xl dark:shadow-gray-800 group-hover:shadow-[#E0EFC7]/50 dark:group-hover:shadow-[#3694FF]/30 transition-all duration-500 w-full bg-gray-100 dark:bg-gray-800 mx-auto aspect-[3/4] lg:aspect-[4/5] max-w-md lg:max-w-xl`}>
 
         {/* Replay Button Overlay */}
         {state.showReplayButton && (
@@ -80,21 +68,17 @@ export const HeroVideo = () => {
 
         {/* Media Content */}
         <div ref={mediaContainerRef} className="relative w-full h-full">
-          {/* Poster Image - optimized loading strategy */}
           {state.showPoster && (
             <Image
               src="/images/purrify-demo-poster.webp"
               alt="How to use Purrify: Pouring activated carbon litter additive onto litter instantly neutralizing odors."
               fill
               className="object-cover object-top"
-              sizes="(max-width: 768px) 100vw, 800px"
-              priority={true} // Priority on both desktop and mobile for LCP
-              loading="eager"
-              quality={85} // Maintain quality for critical hero image
+              sizes="(max-width: 480px) 100vw, 800px"
+              priority
             />
           )}
 
-          {/* Video - only load when in viewport */}
           {state.shouldLoadVideo && (
             <video
               ref={videoRef}
@@ -102,36 +86,40 @@ export const HeroVideo = () => {
               autoPlay
               muted={state.isMuted}
               playsInline
-              preload={isMobile ? 'none' : 'metadata'} // Don't preload on mobile until visible
-              poster="/images/purrify-demo-poster.webp"
+              preload="metadata"
               aria-label="How to use Purrify: Pouring activated carbon litter additive onto litter to instantly neutralize odors."
-              tabIndex={0} // Make focusable for screen readers
+              role="img"
+              tabIndex={-1}
               controls={false}
               disablePictureInPicture
               disableRemotePlayback
               crossOrigin="anonymous"
-              loop={true}
+              loop={false}
             >
+              {/* Mobile Sources - max-width: 1023px to match 'lg' breakpoint used in layout */}
               <source
                 src={mobileSrc.replace('.mp4', '.webm')}
                 type="video/webm"
                 media="(max-width: 1023px)"
               />
               <source
-                src={desktopSrc.replace('.mp4', '.webm')}
-                type="video/webm"
-                media="(min-width: 1024px)"
-              />
-              <source
                 src={mobileSrc}
                 type="video/mp4"
                 media="(max-width: 1023px)"
+              />
+
+              {/* Desktop Sources */}
+              <source
+                src={desktopSrc.replace('.mp4', '.webm')}
+                type="video/webm"
+                media="(min-width: 1024px)"
               />
               <source
                 src={desktopSrc}
                 type="video/mp4"
                 media="(min-width: 1024px)"
               />
+
               <p>Your browser does not support the video tag.</p>
             </video>
           )}

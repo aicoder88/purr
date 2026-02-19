@@ -18,17 +18,6 @@ const applyReferralSchema = z.object({
   email: z.string().email('Invalid email format'),
 });
 
-interface _ApplyReferralResponse {
-  success: boolean;
-  data?: {
-    code: string;
-    discount: number;
-    referrerName?: string;
-    message: string;
-  };
-  error?: string;
-}
-
 // Rate limiting setup
 const RATE_LIMIT_WINDOW = 60 * 1000;
 const MAX_REQUESTS_PER_WINDOW = 10;
@@ -219,9 +208,7 @@ export async function POST(req: Request): Promise<Response> {
         message: `$${REFERRAL_CONFIG.REFEREE_DISCOUNT} discount applied from ${referrerName}'s referral!`,
       },
     }, { headers });
-  } catch (error) {
-    console.error('Error applying referral code:', error);
-
+  } catch (_error) {
     return Response.json({
       success: false,
       error: 'Failed to apply referral code. Please try again.',

@@ -10,8 +10,6 @@ import prisma from '@/lib/prisma';
 import {
   generateShareUrls,
   calculateMilestoneProgress,
-  maskEmail,
-
 } from '@/lib/referral';
 
 interface ReferralActivity {
@@ -32,32 +30,6 @@ interface AvailableReward {
   status: string;
   expiresAt?: string;
   createdAt: string;
-}
-
-interface _StatsResponse {
-  success: boolean;
-  data?: {
-    code: string;
-    shareUrl: string;
-    shareUrls: ReturnType<typeof generateShareUrls>;
-    stats: {
-      totalClicks: number;
-      totalSignups: number;
-      totalOrders: number;
-      totalEarnings: number;
-      pendingReferrals: number;
-      availableCredit: number;
-    };
-    milestoneProgress: {
-      current: number;
-      target: number;
-      progress: number;
-      nextReward: string;
-    };
-    recentActivity: ReferralActivity[];
-    availableRewards: AvailableReward[];
-  };
-  error?: string;
 }
 
 // Rate limiting setup
@@ -188,7 +160,7 @@ export async function GET(): Promise<Response> {
     // Format recent activity with masked emails
     const recentActivity: ReferralActivity[] = referralCode.redemptions.map((r) => ({
       id: r.id,
-      refereeEmail: maskEmail(r.refereeEmail),
+      refereeEmail: r.refereeEmail.replace(/(.{2}).+(@.+)/, '$1***$2'),
       status: r.status,
       refereeDiscount: r.refereeDiscount,
       referrerCredit: r.referrerCredit,
@@ -230,9 +202,7 @@ export async function GET(): Promise<Response> {
         availableRewards,
       },
     }, { headers });
-  } catch (error) {
-    console.error('Error fetching referral stats:', error);
-
+  } catch {
     return Response.json({
       success: false,
       error: 'Failed to fetch referral statistics',

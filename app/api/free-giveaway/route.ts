@@ -118,11 +118,9 @@ export async function POST(req: Request): Promise<Response> {
       });
 
       if (!getResponse.ok) {
-        console.error(`Failed to submit to Google Apps Script: ${getResponse.status} ${getResponse.statusText}`);
-        throw new Error(`Failed to submit to Google Apps Script: ${getResponse.statusText}`);
+        throw new Error('Failed to submit to Google Apps Script');
       }
-    } catch (error) {
-      console.error('Error submitting to Google Apps Script:', error);
+    } catch (_error) {
       return Response.json({
         success: false,
         message: 'Failed to save your information. Please try again later.',
@@ -147,8 +145,7 @@ export async function POST(req: Request): Promise<Response> {
         'Content-Security-Policy': "default-src 'self'",
       }
     });
-  } catch (error) {
-    console.error('Error processing free giveaway form:', error instanceof Error ? error.message : 'Unknown error');
+  } catch (_error) {
     return Response.json({
       success: false,
       message: 'An error occurred while processing your request'

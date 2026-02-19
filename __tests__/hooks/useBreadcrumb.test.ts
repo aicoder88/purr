@@ -13,15 +13,29 @@ jest.mock('../../src/lib/seo-utils');
 
 const mockUseTranslation = useTranslation as jest.MockedFunction<typeof useTranslation>;
 
+// Mock types
+interface MockSchema {
+  '@context': string;
+  '@type': string;
+  itemListElement: MockListItem[];
+}
+
+interface MockListItem {
+  '@type': string;
+  position: number;
+  name: string;
+  item: string;
+}
+
 describe('useBreadcrumb', () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
     // Default mock: English locale
     mockUseTranslation.mockReturnValue({
-      t: {} as any,
+      t: {},
       locale: 'en',
-    } as any);
+    } as unknown as ReturnType<typeof useTranslation>);
 
     // Mock getLocalizedUrl
     const { getLocalizedUrl } = require('../../src/lib/seo-utils');
@@ -93,9 +107,9 @@ describe('useBreadcrumb', () => {
   describe('Multi-language support', () => {
     it('should generate French breadcrumbs', () => {
       mockUseTranslation.mockReturnValue({
-        t: {} as any,
+        t: {},
         locale: 'fr',
-      } as any);
+      } as unknown as ReturnType<typeof useTranslation>);
 
       const { result } = renderHook(() => useBreadcrumb('/products/trial-size'));
 
@@ -108,9 +122,9 @@ describe('useBreadcrumb', () => {
 
     it('should generate Chinese breadcrumbs', () => {
       mockUseTranslation.mockReturnValue({
-        t: {} as any,
+        t: {},
         locale: 'zh',
-      } as any);
+      } as unknown as ReturnType<typeof useTranslation>);
 
       const { result } = renderHook(() => useBreadcrumb('/products/standard'));
 
@@ -175,9 +189,9 @@ describe('useBreadcrumb', () => {
 
     it('should include locale in URLs for non-English', () => {
       mockUseTranslation.mockReturnValue({
-        t: {} as any,
+        t: {},
         locale: 'fr',
-      } as any);
+      } as unknown as ReturnType<typeof useTranslation>);
 
       const { result } = renderHook(() => useBreadcrumb('/products'));
 
@@ -204,9 +218,9 @@ describe('useBreadcrumb', () => {
     it('should use correct position numbering', () => {
       const { result } = renderHook(() => useBreadcrumb('/a/b/c/d'));
 
-      const schema = result.current.schema as any;
+      const schema = result.current.schema as MockSchema;
       const positions = schema.itemListElement.map(
-        (item: any) => item.position
+        (item: MockListItem) => item.position
       );
       expect(positions).toEqual([1, 2, 3, 4, 5]);
     });

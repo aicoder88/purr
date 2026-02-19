@@ -512,3 +512,57 @@ npm run validate-images
 ---
 
 *Last Updated: January 2026*
+
+---
+
+## 10. Content Writing & Copywriting
+
+**Before writing ANY customer-facing copy**, read this section.
+
+### Product Rules
+- **Never use "safe"** → use "non-toxic", "food-grade", "pet-friendly"
+- **Never fabricate** statistics, reviews, or image paths
+- Product is **activated carbon** (coconut shell), lasts **7+ days**
+- **No competitor comparisons** → use partnership positioning
+
+### The Greased Slide Principle
+
+Every piece of copy must flow like a **greased slide**. Once readers start, they can't stop.
+
+**The goal:** "I only meant to skim the headline... but I read every word."
+
+### Voice & Feel
+
+Write like a **warm nuzzle from a cat**—comforting, genuine, impossible to ignore.
+
+Blend these masters:
+
+| Copywriter | What to Channel |
+|------------|-----------------|
+| **John Carlton** | Brutal directness. No throat-clearing. Get to the point like a punch. |
+| **Gary Halbert** | Swagger and showmanship. Make every sentence sizzle. Inject personality. |
+| **Gary Bencivenga** | Elegant proof. Stack credibility so high doubt crumbles. |
+| **David Ogilvy** | Sophisticated clarity. Respect the reader's intelligence. |
+| **Lorrie Morgan-Ferrero** | Feminine warmth. Conversational flow. Write like you're talking to a friend. |
+
+### The Greased Slide Checklist
+
+Before publishing any copy:
+
+- [ ] **Headline hooks instantly** — Would you stop scrolling?
+- [ ] **First line earns the second** — Does it create a question that demands an answer?
+- [ ] **Every sentence pulls forward** — Read it aloud. Any friction? Any place to stop?
+- [ ] **Bullets are mini-headlines** — Each one should make them hungry for more
+- [ ] **Subheads re-hook scanners** — Someone skimming should get pulled back in
+- [ ] **One clear action** — They know exactly what to do next
+- [ ] **Zero wasted words** — If it doesn't earn its place, cut it
+
+### What Kills the Slide
+
+❌ **Throat-clearing intros** — "In today's world..." DELETE.
+❌ **Corporate speak** — "Leverage synergies" makes people leave.
+❌ **Weak verbs** — "Is," "was," "seems." Find the verb with muscle.
+❌ **Buried leads** — The best sentence is hiding in paragraph three. Move it up.
+❌ **Features without benefits** — They don't care what it does. They care what it does *for them*.
+❌ **Long blocks of text** — Walls of words are walls to escape. Break it up.
+

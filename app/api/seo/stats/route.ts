@@ -48,13 +48,6 @@ interface SEOStats {
   };
 }
 
-interface _StatsResponse {
-  success: boolean;
-  data?: SEOStats;
-  generatedAt?: string;
-  error?: string;
-}
-
 // Pages known to use useEnhancedSEO (updated as migrations happen)
 const PAGES_WITH_ENHANCED_SEO = [
   // Product pages

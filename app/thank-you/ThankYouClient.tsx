@@ -34,10 +34,9 @@ interface OrderDetails {
 interface ThankYouClientProps {
   orderDetails: OrderDetails | null;
   error?: string;
-  sessionId?: string;
 }
 
-export default function ThankYouClient({ orderDetails, error, sessionId }: ThankYouClientProps) {
+export default function ThankYouClient({ orderDetails, error }: ThankYouClientProps) {
   const { t, locale } = useTranslation();
   const thankYou = t.thankYou!;
   const anytimeLabel =
@@ -84,8 +83,8 @@ export default function ThankYouClient({ orderDetails, error, sessionId }: Thank
             currency: 'CAD',
           });
         }
-      } catch (err) {
-        console.debug('TikTok purchase tracking failed:', err);
+      } catch {
+        // Silently ignore tracking errors
       }
     };
 
@@ -126,8 +125,8 @@ export default function ThankYouClient({ orderDetails, error, sessionId }: Thank
           const data = await response.json();
           setReferralCode(data.data?.code);
         }
-      } catch (err) {
-        console.error('Failed to generate referral code:', err);
+      } catch {
+        // Silently ignore referral generation errors
       } finally {
         setReferralLoading(false);
       }

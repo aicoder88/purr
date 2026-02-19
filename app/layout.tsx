@@ -1,20 +1,17 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import { headers } from 'next/headers';
 import '../src/index.css';
 import { defaultLocale } from '@/i18n/config';
 import { LocaleDetector } from '@/components/LocaleDetector';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { Providers } from './providers';
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants';
-import '@/lib/chunk-retry-handler';
 
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
-  weight: ['400', '600', '700'],
+  weight: ['400', '500', '600', '700', '800', '900'],
 });
 
 // OG Locale mapping (OpenGraph uses underscores)
@@ -32,32 +29,21 @@ export async function generateMetadata(): Promise<Metadata> {
   const ogLocale = OG_LOCALE_MAP[locale] ?? 'en_CA';
   const baseUrl = SITE_URL;
 
-  // Get the current pathname from headers for dynamic canonical URL
-  const headersList = await headers();
-  const pathname = headersList.get('x-invoke-path') || headersList.get('x-matched-path') || '/';
-  const currentPath = pathname === '/' ? '/' : pathname;
-
-  // Build canonical URL - ensure trailing slash for consistency
-  const canonicalPath = currentPath.endsWith('/') || currentPath === '/'
-    ? currentPath
-    : `${currentPath}/`;
-  const canonicalUrl = `${baseUrl}${canonicalPath}`;
-
   // Build language alternates for hreflang
   // Maps language-region codes to their corresponding URLs
   const languages: Record<string, string> = {
     // Canadian English (default)
-    'en-CA': `${baseUrl}${canonicalPath}`,
+    'en-CA': `${baseUrl}/`,
     // Canadian French
-    'fr-CA': `${baseUrl}/fr${canonicalPath === '/' ? '/' : canonicalPath}`,
+    'fr-CA': `${baseUrl}/fr`,
     // US English (dedicated landing page)
-    'en-US': `${baseUrl}/us${canonicalPath === '/' ? '/' : canonicalPath}`,
+    'en-US': `${baseUrl}/us`,
     // x-default for users whose language doesn't match any above
-    'x-default': `${baseUrl}${canonicalPath}`,
+    'x-default': `${baseUrl}/`,
   };
 
   const alternates = {
-    canonical: canonicalUrl,
+    canonical: baseUrl,
     languages: languages as Record<string, string>,
   };
 
@@ -97,13 +83,13 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: 'website',
       locale: ogLocale,
-      url: canonicalUrl,
+      url: baseUrl,
       siteName: SITE_NAME,
       title: `${SITE_NAME} - Cat Litter Odor Control`,
       description: SITE_DESCRIPTION,
       images: [
         {
-          url: '/images/Logos/purr-pink-og.png',
+          url: '/images/Logos/purrify-logo.png',
           width: 1200,
           height: 800,
           alt: SITE_NAME,
@@ -117,7 +103,7 @@ export async function generateMetadata(): Promise<Metadata> {
       creator: '@purrify',
       title: `${SITE_NAME} - Cat Litter Odor Control`,
       description: SITE_DESCRIPTION,
-      images: ['/images/Logos/purr-pink-og.png'],
+      images: ['/images/Logos/purrify-logo.png'],
     },
     robots: {
       index: true,
@@ -166,12 +152,6 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className={inter.variable} suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://www.google-analytics.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
       <body className="font-sans">
         <Providers locale={locale} messages={messages}>
           <LocaleDetector />
@@ -180,7 +160,6 @@ export default async function RootLayout({
           </AppLayout>
 
         </Providers>
-        <SpeedInsights />
       </body>
     </html >
   );

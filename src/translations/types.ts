@@ -745,6 +745,7 @@ export interface TranslationType {
     caseStudies?: string;
     fun?: string;
     viral?: string;
+    veterinarians?: string;
   };
 
   // Free Trial

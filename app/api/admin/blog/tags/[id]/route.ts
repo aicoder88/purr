@@ -49,8 +49,7 @@ export async function DELETE(
     await fs.writeFile(tagsPath, JSON.stringify(filteredTags, null, 2));
 
     return Response.json({ success: true }, { headers: rateLimitHeaders });
-  } catch (error) {
-    console.error('Error handling tag request:', error);
+  } catch (_error) {
     return Response.json({ error: 'Internal server error' }, { status: 500, headers: rateLimitHeaders });
   }
 }

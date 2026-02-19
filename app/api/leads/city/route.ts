@@ -41,10 +41,10 @@ async function forwardToWebhook(record: CityLeadRecord) {
     });
 
     if (!response.ok) {
-      console.error('City lead webhook returned non-200 status', response.statusText);
+      // City lead webhook returned non-200 status
     }
-  } catch (error) {
-    console.error('City lead webhook forwarding failed:', error);
+  } catch (_error) {
+    // City lead webhook forwarding failed
   }
 }
 
@@ -68,10 +68,10 @@ async function notifySlack(record: CityLeadRecord) {
     });
 
     if (!response.ok) {
-      console.error('Slack notification failed:', response.statusText);
+      // Slack notification failed
     }
-  } catch (error) {
-    console.error('Slack notification error:', error);
+  } catch (_error) {
+    // Slack notification error
   }
 }
 
@@ -85,10 +85,10 @@ async function appendLead(record: CityLeadRecord) {
     if (Array.isArray(parsed)) {
       existing = parsed;
     }
-  } catch (error) {
-    const code = (error as NodeJS.ErrnoException).code;
+  } catch (_error) {
+    const code = (_error as NodeJS.ErrnoException).code;
     if (code && code !== 'ENOENT') {
-      console.error('Failed to read leads log:', error);
+      // Failed to read leads log
     }
   }
 
@@ -155,18 +155,13 @@ export async function POST(request: NextRequest) {
       notifySlack(record),
     ]);
     
-    console.info('City lead captured:', {
-      citySlug: record.citySlug,
-      email: record.email,
-      marketingConsent: record.marketingConsent,
-    });
+    // City lead captured
 
     return NextResponse.json(
       { success: true },
       { status: 200, headers }
     );
-  } catch (error) {
-    console.error('Failed to persist city lead:', error);
+  } catch (_error) {
     return NextResponse.json(
       { success: false, error: 'Failed to save lead.' },
       { status: 500, headers }

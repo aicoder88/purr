@@ -19,7 +19,7 @@ declare global {
       toHaveFocus(): R;
       toContainElement(element: HTMLElement): R;
       toContainHTML(html: string): R;
-      toHaveStyle(css: string | Record<string, any>): R;
+      toHaveStyle(css: string | Record<string, unknown>): R;
     }
   }
 }

@@ -29,11 +29,9 @@ export async function POST(req: Request) {
       success: true,
       message: 'Sitemaps updated successfully'
     }, { headers: rateLimitHeaders });
-  } catch (error) {
-    console.error('Error updating sitemaps:', error);
+  } catch (_error) {
     return Response.json({
-      error: 'Failed to update sitemaps',
-      details: error instanceof Error ? error.message : 'Unknown error'
+      error: 'Failed to update sitemaps'
     }, { status: 500, headers: rateLimitHeaders });
   }
 }

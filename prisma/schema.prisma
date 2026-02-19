@@ -752,51 +752,6 @@ enum SubscriptionFrequency {
   BIMONTHLY // Every 2 months
 }
 
-// ===== A/B Testing Models =====
-
-// A/B test experiments
-model ABTest {
-  id          String       @id @default(cuid())
-  name        String // Display name
-  slug        String       @unique // URL-friendly identifier
-  description String?
-  status      ABTestStatus @default(DRAFT)
-  // Test configuration
-  targetPage  String // Page path to test (e.g., "/try-free")
-  trafficSplit Float       @default(50) // Percentage to variant (0-100)
-  // Variants
-  controlName String       @default("Control")
-  variantName String       @default("Variant")
-  controlConfig Json?      // JSON config for control
-  variantConfig Json?      // JSON config for variant
-  // Results
-  controlViews      Int    @default(0)
-  variantViews      Int    @default(0)
-  controlConversions Int   @default(0)
-  variantConversions Int   @default(0)
-  controlOrders     Int    @default(0)
-  variantOrders     Int    @default(0)
-  controlRevenue    Float  @default(0)
-  variantRevenue    Float  @default(0)
-  // Dates
-  startedAt   DateTime?
-  endedAt     DateTime?
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-  createdBy   String? // Admin who created
-
-  @@index([status])
-  @@index([targetPage])
-  @@map("ab_tests")
-}
-
-enum ABTestStatus {
-  DRAFT // Not yet running
-  RUNNING // Currently active
-  PAUSED // Temporarily stopped
-  COMPLETED // Test finished, winner determined
-  ARCHIVED // Old test, no longer relevant
-}
 
 // ===== Affiliate Program Models =====
 

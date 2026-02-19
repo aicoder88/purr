@@ -127,8 +127,7 @@ export async function POST(req: Request): Promise<Response> {
           error: 'Invalid action. Must be: click, signup, or purchase'
         } satisfies TrackingResponse, { status: 400 });
     }
-  } catch (error) {
-    console.error('Error tracking referral:', error);
+  } catch {
     return Response.json({
       success: false,
       error: 'Failed to track referral activity'

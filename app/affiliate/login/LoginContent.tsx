@@ -50,8 +50,7 @@ export default function LoginContent() {
                 setError('Login failed. Please try again.');
                 setLoading(false);
             }
-        } catch (err) {
-            console.error('Affiliate login error:', err);
+        } catch {
             setError('An error occurred. Please try again.');
             setLoading(false);
         }

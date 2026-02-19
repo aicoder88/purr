@@ -151,8 +151,7 @@ export default function StatsContent() {
 
             setChartData(chartJson);
             setConversions(conversionsJson);
-        } catch (err) {
-            console.error('Failed to fetch stats:', err);
+        } catch {
             setError(t.affiliateDashboard?.errors?.loadFailed || 'Failed to load stats');
         } finally {
             setIsLoading(false);

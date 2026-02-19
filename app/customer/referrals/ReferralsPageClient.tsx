@@ -35,8 +35,8 @@ export default function ReferralsPageClient() {
           setShareUrl(stats.shareUrl);
           setHasReferralCode(true);
         }
-      } catch (error) {
-        console.error('Error checking referral code:', error);
+      } catch {
+        // Silently ignore referral check errors
       }
     };
 
@@ -63,8 +63,8 @@ export default function ReferralsPageClient() {
           });
         }
       }
-    } catch (error) {
-      console.error('Error generating referral code:', error);
+    } catch {
+      // Silently ignore referral generation errors
     } finally {
       setIsGeneratingCode(false);
     }

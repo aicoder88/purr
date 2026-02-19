@@ -55,8 +55,7 @@ export async function POST(req: Request): Promise<Response> {
       message: 'Referral code applied successfully',
       referrerName: referral.referrer.name,
     });
-  } catch (error) {
-    console.error('Error validating referral code:', error);
+  } catch (_error) {
     return Response.json({ message: 'Error validating referral code' }, { status: 500 });
   }
 }

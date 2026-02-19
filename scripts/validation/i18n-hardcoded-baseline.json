@@ -1,5 +1,28 @@
 {
   "version": 1,
-  "generatedAt": "2026-02-12T22:57:19.007Z",
-  "violations": []
+  "generatedAt": "2026-02-19T10:47:18.640Z",
+  "violations": [
+    "src/components/layout/footer.tsx|jsx-attribute|alt=\"Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page\"",
+    "src/components/layout/footer.tsx|jsx-attribute|aria-label=\"Follow Purrify on Facebook\"",
+    "src/components/layout/footer.tsx|jsx-attribute|aria-label=\"Follow Purrify on Instagram\"",
+    "src/components/layout/footer.tsx|jsx-attribute|aria-label=\"Follow Purrify on LinkedIn\"",
+    "src/components/layout/footer.tsx|jsx-attribute|aria-label=\"Follow Purrify on TikTok\"",
+    "src/components/layout/footer.tsx|jsx-attribute|aria-label=\"Follow Purrify on X\"",
+    "src/components/layout/footer.tsx|jsx-attribute|aria-label=\"Read Purrify on Medium\"",
+    "src/components/layout/footer.tsx|jsx-attribute|aria-label=\"Subscribe to Purrify on YouTube\"",
+    "src/components/layout/header.tsx|jsx-attribute|alt=\"Purrify - Premium Activated Carbon Cat Litter Additive - Home\"",
+    "src/components/layout/header.tsx|jsx-attribute|aria-label=\"Sign out\"",
+    "src/components/sections/how-it-works.tsx|jsx-text|Ridiculously Easy to Use",
+    "src/components/sections/stores.tsx|jsx-text|Don't see your favorite store?",
+    "src/components/sections/stores.tsx|jsx-text|Find Purrify at these premium pet retailers across Montreal and beyond.",
+    "src/components/sections/stores.tsx|jsx-text|Let us know where you shop, and we'll contact them!",
+    "src/components/sections/stores.tsx|jsx-text|Our Retail",
+    "src/components/sections/stores.tsx|jsx-text|Partners",
+    "src/components/sections/stores.tsx|jsx-text|Request a Store",
+    "src/components/sections/stores.tsx|jsx-text|Website",
+    "src/components/sections/stores.tsx|jsx-text|📍 Find Purrify Near You",
+    "src/components/sections/why-purrify.tsx|jsx-text|No perfumes. No cover-ups. Just the good stuff that actually works.",
+    "src/components/sections/why-purrify.tsx|jsx-text|What Makes Purrify Different",
+    "src/components/sections/why-purrify.tsx|jsx-text|Why Cat Parents Love It"
+  ]
 }

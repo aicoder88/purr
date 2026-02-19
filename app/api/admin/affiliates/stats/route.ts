@@ -85,8 +85,7 @@ export async function GET(req: Request) {
         (affiliateStats._sum.availableBalance || 0),
       averageConversionRate,
     }, { headers: rateLimitHeaders });
-  } catch (error) {
-    console.error('Failed to fetch affiliate stats:', error);
+  } catch (_error) {
     return Response.json({ error: 'Failed to fetch stats' }, { status: 500, headers: rateLimitHeaders });
   }
 }

@@ -4,9 +4,6 @@ import { ContentStore } from '@/lib/blog/content-store';
 import { AuditLogger } from '@/lib/blog/audit-logger';
 import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 
-// Define Zod schemas for validation
-const _bulkOperationTypeSchema = z.enum(['delete', 'changeStatus', 'assignCategories', 'assignTags']);
-
 const bulkOperationSchema = z.discriminatedUnion('type', [
   z.object({
     type: z.literal('delete')
@@ -35,9 +32,6 @@ const bulkRequestSchema = z.object({
   ).min(1).max(100) // Limit to 100 posts per bulk operation
 });
 
-// Type inference from Zod schema
-type _BulkRequest = z.infer<typeof bulkRequestSchema>;
-
 export async function POST(request: Request) {
   // Apply rate limiting (standard: 20 req/min for writes)
   const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
@@ -62,7 +56,6 @@ export async function POST(request: Request) {
   const parseResult = bulkRequestSchema.safeParse(body);
   
   if (!parseResult.success) {
-    console.warn('[SECURITY] Invalid bulk operation request:', parseResult.error.issues);
     return Response.json({
       error: 'Invalid request data',
       details: parseResult.error.issues.map(issue => ({
@@ -165,8 +158,7 @@ export async function POST(request: Request) {
         }
 
         results.successful.push(slug);
-      } catch (error) {
-        console.error(`Failed to process ${slug}:`, error);
+      } catch (_error) {
         results.failed.push({
           slug,
           error: error instanceof Error ? error.message : 'Unknown error'
@@ -178,8 +170,7 @@ export async function POST(request: Request) {
       success: true,
       results
     }, { headers: rateLimitHeaders });
-  } catch (error) {
-    console.error('Bulk operation error:', error);
+  } catch (_error) {
     return Response.json({ error: 'Internal server error' }, { status: 500, headers: rateLimitHeaders });
   }
 }

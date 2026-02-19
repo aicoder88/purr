@@ -46,21 +46,21 @@ export function ScienceSection() {
                             {t.scienceSection?.badge || ""}
                         </div>
 
-                        <h2 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+                        <h2 className="font-heading text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
                             {t.scienceSection?.headline || ""} <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric-indigo to-purple-600">
                                 {t.scienceSection?.headlineHighlight || ""}
                             </span>
                         </h2>
 
-                        <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                        <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                             {t.scienceSection?.description || ""}
                         </p>
 
                         <div className="space-y-8 mb-10">
                             {featureItems.map((feature, index) => (
                                 <div key={index} className="flex items-start gap-4 group">
-                                    <div className="w-12 h-12 rounded-2xl bg-gray-50 dark:bg-gray-800 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                                    <div className="w-14 h-14 rounded-2xl bg-white dark:bg-gray-800 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-md border border-gray-100 dark:border-gray-700">
                                         {featureIcons[index] || featureIcons[0]}
                                     </div>
                                     <div>

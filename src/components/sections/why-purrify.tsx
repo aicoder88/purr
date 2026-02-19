@@ -1,25 +1,12 @@
 "use client";
 
 import { Container } from "@/components/ui/container";
-import { Wind, Cat, Clock, Layers, Sparkles, PiggyBank, ArrowDown } from "lucide-react"; // Changed Leaf to Sparkles, added ArrowDown
+import { Wind, Cat, Clock, Layers, Sparkles, PiggyBank } from "lucide-react"; // Changed Leaf to Sparkles
 import Image from 'next/image';
 import { useTranslation } from "@/lib/translation-context";
-import Link from "next/link";
 
 export function WhyPurrify() {
-  const { t, locale } = useTranslation();
-  const heroCopy =
-    locale === 'fr'
-      ? {
-        badge: 'Ce qui rend Purrify different',
-        title: 'Pourquoi les parents de chats l adorent',
-        subtitle: 'Sans parfum. Sans camouflage. Juste une solution qui fonctionne vraiment.',
-      }
-      : {
-        badge: 'What Makes Purrify Different',
-        title: 'Why Cat Parents Love It',
-        subtitle: 'No perfumes. No cover-ups. Just the good stuff that actually works.',
-      };
+  const { t } = useTranslation();
 
   const reasons = [
     {
@@ -75,7 +62,7 @@ export function WhyPurrify() {
 
   return (
     <section
-      className="relative pt-16 pb-8 md:pt-24 md:pb-12 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900 transition-colors duration-300 overflow-hidden"
+      className="relative pt-20 pb-12 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900 transition-colors duration-300 overflow-hidden"
       id="why-purrify"
     >
       {/* Animated background elements */}
@@ -85,33 +72,31 @@ export function WhyPurrify() {
       </div>
 
       <Container className="relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/40 dark:to-pink-900/40 rounded-full mb-6 md:mb-8 border border-purple-200 dark:border-purple-800 shadow-lg">
-            <span className="text-purple-700 dark:text-purple-300 font-semibold">{heroCopy.badge}</span>
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/40 dark:to-pink-900/40 rounded-full mb-8 border border-purple-200 dark:border-purple-800 shadow-lg">
+            <span className="text-purple-700 dark:text-purple-300 font-semibold">What Makes Purrify Different</span>
           </div>
 
-          <h2 className="font-heading text-5xl md:text-7xl font-black tracking-tight mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent">
-            {heroCopy.title}
+          <h2 className="font-heading text-3xl md:text-5xl font-black tracking-tight mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent">
+            Why Cat Parents Love It
           </h2>
           <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-medium">
-            {heroCopy.subtitle}
+            No perfumes. No cover-ups. Just the good stuff that actually works.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {reasons.map((reason, index) => {
             const theme = colorThemes[index % 3];
             const IconComponent = reason.icon;
             return (
               <div
                 key={reason.title}
-                className={`bg-white dark:bg-gray-800 backdrop-blur-sm rounded-3xl shadow-2xl border-2 ${theme.border} ${theme.hoverBorder} transition-all duration-500 hover:${theme.shadow} hover:-translate-y-4 group overflow-hidden flex flex-col`}
+                className={`relative bg-white dark:bg-gray-800 backdrop-blur-sm rounded-3xl shadow-xl border-2 ${theme.border} ${theme.hoverBorder} transition-all duration-500 hover:${theme.shadow} hover:-translate-y-2 group overflow-hidden flex flex-col`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                {/* Gradient overlay on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${theme.bgGradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-3xl`}></div>
 
-                <div className="aspect-[4/3] w-full overflow-hidden flex items-center justify-center relative">
+                <div className="aspect-[4/3] w-full overflow-hidden flex items-center justify-center relative bg-gray-50 dark:bg-gray-900/50">
                   <Image
                     src={reason.image}
                     alt={reason.title}
@@ -119,55 +104,54 @@ export function WhyPurrify() {
                     height={300}
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
                     loading={index < 3 ? "eager" : "lazy"}
-                    className={"w-full h-full transition-transform duration-700 group-hover:scale-105"}
+                    className={"w-full h-full transition-transform duration-700 group-hover:scale-110"}
                     style={{
                       objectFit: 'cover',
                       objectPosition: 'center',
                     }}
                   />
                 </div>
+
                 <div className="p-6 sm:p-8 flex flex-col flex-grow relative z-10">
                   <div className="flex items-center mb-4">
                     <div
-                      className={`p-3 sm:p-4 rounded-2xl shadow-xl mr-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 bg-gradient-to-r ${theme.bgGradient}`}
+                      className={`p-3 sm:p-4 rounded-2xl shadow-md mr-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 bg-gradient-to-r ${theme.bgGradient}`}
                     >
-                      <IconComponent className="h-6 w-6 text-white dark:text-gray-100" />
+                      <IconComponent className="h-6 w-6 text-slate-50" />
                     </div>
-                    <h3 className={`font-black text-lg sm:text-xl ${theme.textClass}`}>
+                    <h3 className={`font-black text-xl sm:text-2xl ${theme.textClass} leading-tight`}>
                       {reason.title}
                     </h3>
                   </div>
-                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base sm:text-lg flex-grow font-medium">
-                    {reason.description.split('\n').map((line) => (
-                      <span key={line} className="block mb-1">{line}</span>
-                    ))}
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-base flex-grow font-medium">
+                    {reason.description}
                   </p>
                 </div>
               </div>
             );
           })}
         </div>
-
-        {/* Transition teaser - Greased Slide Design */}
-        {t.sectionTeasers?.whyPurrify && (
-          <div className="mt-16 sm:mt-20 w-full flex justify-center relative z-20">
-            {/* Horizontal divider line that the pill sits on */}
-            <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-200 dark:via-purple-800 to-transparent transform -translate-y-1/2"></div>
-
-            <Link
-              href="#science"
-              className="relative bg-white dark:bg-gray-900 border border-purple-100 dark:border-purple-800 rounded-full px-10 py-5 shadow-2xl hover:shadow-[0_20px_50px_rgba(168,85,247,0.2)] hover:border-purple-300 dark:hover:border-purple-600 transition-all duration-500 hover:-translate-y-1 group flex items-center gap-4"
-            >
-              <span className="text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 group-hover:from-purple-600 group-hover:to-pink-600 transition-all duration-500">
-                {t.sectionTeasers.whyPurrify}
-              </span>
-              <div className="w-10 h-10 rounded-full bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition-all duration-500">
-                <ArrowDown className="w-5 h-5 group-hover:animate-bounce" />
-              </div>
-            </Link>
-          </div>
-        )}
       </Container>
+
+      {/* Enhanced scroll indicator */}
+      <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-4 z-20 flex justify-center w-full">
+        <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-full p-2 shadow-lg">
+          <svg
+            className="w-8 h-8 animate-bounce"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 9l6 6 6-6"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
+      </div>
     </section>
   );
 }

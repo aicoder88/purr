@@ -38,17 +38,15 @@ describe('validateProductSchema', () => {
   });
 
   it('should reject product missing required @context', () => {
-    const invalid = { ...validProduct };
-    delete (invalid as any)['@context'];
-    const result = validateProductSchema(invalid);
+    const { '@context': _, ...invalid } = validProduct;
+    const result = validateProductSchema(invalid as typeof validProduct);
     expect(result.isValid).toBe(false);
     expect(result.errors.length).toBeGreaterThan(0);
   });
 
   it('should reject product missing name', () => {
-    const invalid = { ...validProduct };
-    delete (invalid as any).name;
-    const result = validateProductSchema(invalid);
+    const { name: _, ...invalid } = validProduct;
+    const result = validateProductSchema(invalid as typeof validProduct);
     expect(result.isValid).toBe(false);
     const hasNameError = result.errors.some((e) =>
       e.message.includes('name')
@@ -57,9 +55,8 @@ describe('validateProductSchema', () => {
   });
 
   it('should reject product missing image', () => {
-    const invalid = { ...validProduct };
-    delete (invalid as any).image;
-    const result = validateProductSchema(invalid);
+    const { image: _, ...invalid } = validProduct;
+    const result = validateProductSchema(invalid as typeof validProduct);
     expect(result.isValid).toBe(false);
     const hasImageError = result.errors.some((e) =>
       e.message.includes('image')
@@ -68,9 +65,8 @@ describe('validateProductSchema', () => {
   });
 
   it('should reject product missing offers', () => {
-    const invalid = { ...validProduct };
-    delete (invalid as any).offers;
-    const result = validateProductSchema(invalid);
+    const { offers: _, ...invalid } = validProduct;
+    const result = validateProductSchema(invalid as typeof validProduct);
     expect(result.isValid).toBe(false);
     const hasOffersError = result.errors.some((e) =>
       e.message.includes('offers')
@@ -104,9 +100,8 @@ describe('validateProductSchema', () => {
   });
 
   it('should provide fix suggestions for errors', () => {
-    const invalid = { ...validProduct };
-    delete (invalid as any).name;
-    const result = validateProductSchema(invalid);
+    const { name: _, ...invalid } = validProduct;
+    const result = validateProductSchema(invalid as typeof validProduct);
     expect(result.errors[0].fix).toBeTruthy();
   });
 });
@@ -131,9 +126,8 @@ describe('validateArticleSchema', () => {
   });
 
   it('should reject article missing headline', () => {
-    const invalid = { ...validArticle };
-    delete (invalid as any).headline;
-    const result = validateArticleSchema(invalid);
+    const { headline: _, ...invalid } = validArticle;
+    const result = validateArticleSchema(invalid as typeof validArticle);
     expect(result.isValid).toBe(false);
   });
 
@@ -218,9 +212,8 @@ describe('validateFAQSchema', () => {
   });
 
   it('should reject FAQ missing mainEntity', () => {
-    const invalid = { ...validFAQ };
-    delete (invalid as any).mainEntity;
-    const result = validateFAQSchema(invalid);
+    const { mainEntity: _, ...invalid } = validFAQ;
+    const result = validateFAQSchema(invalid as typeof validFAQ);
     expect(result.isValid).toBe(false);
   });
 
@@ -282,16 +275,14 @@ describe('validateOrganizationSchema', () => {
   });
 
   it('should reject organization missing name', () => {
-    const invalid = { ...validOrganization };
-    delete (invalid as any).name;
-    const result = validateOrganizationSchema(invalid);
+    const { name: _, ...invalid } = validOrganization;
+    const result = validateOrganizationSchema(invalid as typeof validOrganization);
     expect(result.isValid).toBe(false);
   });
 
   it('should reject organization missing url', () => {
-    const invalid = { ...validOrganization };
-    delete (invalid as any).url;
-    const result = validateOrganizationSchema(invalid);
+    const { url: _, ...invalid } = validOrganization;
+    const result = validateOrganizationSchema(invalid as typeof validOrganization);
     expect(result.isValid).toBe(false);
   });
 
@@ -434,21 +425,18 @@ describe('validateSchemas (batch)', () => {
   });
 
   it('should report all errors from multiple schemas', () => {
-    const invalidProduct = { ...product };
-    delete (invalidProduct as any).name;
-    const invalidArticle = { ...article };
-    delete (invalidArticle as any).headline;
+    const { name: _productName, ...invalidProduct } = product;
+    const { headline: _articleHeadline, ...invalidArticle } = article;
 
-    const result = validateSchemas([invalidProduct, invalidArticle]);
+    const result = validateSchemas([invalidProduct as typeof product, invalidArticle as typeof article]);
     expect(result.isValid).toBe(false);
     expect(result.errors.length).toBeGreaterThanOrEqual(2);
   });
 
   it('should label errors with schema index', () => {
-    const invalidProduct = { ...product };
-    delete (invalidProduct as any).name;
+    const { name: _, ...invalidProduct } = product;
 
-    const result = validateSchemas([invalidProduct, article]);
+    const result = validateSchemas([invalidProduct as typeof product, article]);
     expect(result.isValid).toBe(false);
     expect(result.errors[0].page).toBe('Schema 1');
   });

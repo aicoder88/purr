@@ -253,8 +253,7 @@ export async function GET(req: Request): Promise<Response> {
       generatedAt: new Date().toISOString()
     });
 
-  } catch (error) {
-    console.error('Error fetching referral analytics:', error);
+  } catch (_error) {
     return Response.json({
       success: false,
       error: 'Failed to fetch analytics data'
@@ -278,49 +277,4 @@ function getMetricValue(data: ReferralAnalytics, metric: string): number | null 
   return metricMap[metric] || null;
 }
 
-// Helper function for A/B testing insights
-function _calculateTestSignificance(
-  controlConversions: number,
-  controlTotal: number,
-  testConversions: number,
-  testTotal: number
-): { significant: boolean; confidenceLevel: number; improvement: number } {
-  const controlRate = controlConversions / controlTotal;
-  const testRate = testConversions / testTotal;
-  const improvement = ((testRate - controlRate) / controlRate) * 100;
 
-  // Simplified significance test - in production use proper statistical testing
-  const pooledRate = (controlConversions + testConversions) / (controlTotal + testTotal);
-  const standardError = Math.sqrt(pooledRate * (1 - pooledRate) * (1 / controlTotal + 1 / testTotal));
-  const zScore = Math.abs(testRate - controlRate) / standardError;
-  const confidenceLevel = (1 - 2 * (1 - normalCDF(Math.abs(zScore)))) * 100;
-
-  return {
-    significant: confidenceLevel > 95,
-    confidenceLevel: Math.round(confidenceLevel * 10) / 10,
-    improvement: Math.round(improvement * 10) / 10
-  };
-}
-
-// Normal cumulative distribution function approximation
-function normalCDF(x: number): number {
-  return 0.5 * (1 + erf(x / Math.sqrt(2)));
-}
-
-// Error function approximation
-function erf(x: number): number {
-  const a1 = 0.254829592;
-  const a2 = -0.284496736;
-  const a3 = 1.421413741;
-  const a4 = -1.453152027;
-  const a5 = 1.061405429;
-  const p = 0.3275911;
-
-  const sign = x < 0 ? -1 : 1;
-  x = Math.abs(x);
-
-  const t = 1.0 / (1.0 + p * x);
-  const y = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
-
-  return sign * y;
-}

@@ -18,10 +18,8 @@ export class CanonicalValidator {
     this.debug = debug;
   }
 
-  private log(...args: unknown[]): void {
-    if (this.debug) {
-      console.log(...args);
-    }
+  private log(..._args: unknown[]): void {
+    // Debug logging disabled for production
   }
 
   async validateCanonicals(siteUrl: string): Promise<CanonicalIssue[]> {
@@ -110,8 +108,8 @@ export class CanonicalValidator {
             });
           }
         }
-      } catch (err) {
-        console.error(`Error validating canonical for ${pageUrl}:`, err instanceof Error ? err.message : err);
+      } catch (_err) {
+        // Error validating canonical, continue
       }
     }
 
@@ -225,8 +223,7 @@ export class CanonicalValidator {
       });
 
       return urls;
-    } catch (err) {
-      console.error('Error fetching sitemap:', err);
+    } catch (_err) {
       return [];
     }
   }

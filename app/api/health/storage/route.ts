@@ -27,8 +27,7 @@ export async function GET(): Promise<Response> {
       await fs.writeFile(testFile, 'test');
       await fs.unlink(testFile);
       isWritable = true;
-    } catch (error) {
-      console.error('Storage health check failed:', error);
+    } catch (_error) {
       isWritable = false;
     }
 
@@ -47,8 +46,7 @@ export async function GET(): Promise<Response> {
     };
 
     return Response.json(response, { status: isWritable ? 200 : 503 });
-  } catch (error) {
-    console.error('Storage health check critical error:', error);
+  } catch (_error) {
     return Response.json({
       status: 'unhealthy',
       timestamp: new Date().toISOString(),

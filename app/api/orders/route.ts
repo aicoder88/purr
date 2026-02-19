@@ -17,7 +17,6 @@ interface CustomerData {
   postalCode?: string;
   phone?: string;
 }
-// Rate limit for order creation: 10 per minute per IP
 const ORDER_RATE_LIMIT = {
   windowMs: 60 * 1000,
   maxRequests: 10,
@@ -28,8 +27,7 @@ const ORDER_RATE_LIMIT = {
  * Fetches current product prices from database and calculates total
  */
 async function recalculateOrderTotal(
-  items: CartItem[],
-  _currency: string
+  items: CartItem[]
 ): Promise<{ total: number; validatedItems: Array<{ productId: string; quantity: number; price: number }> }> {
   if (!prisma) {
     throw new Error('Database not available');
@@ -117,15 +115,11 @@ export async function POST(request: NextRequest) {
       );
     }
     // Recalculate total server-side to prevent price tampering
-    const { total: serverTotal, validatedItems } = await recalculateOrderTotal(items, currency);
+    const { total: serverTotal, validatedItems } = await recalculateOrderTotal(items);
     // Log if there's a significant discrepancy (for security monitoring)
     if (clientTotal && Math.abs(clientTotal - serverTotal) > 0.01) {
-      const forwarded = request.headers.get('x-forwarded-for');
-      console.warn(`[SECURITY] Price tampering detected: Client total ${clientTotal} != Server total ${serverTotal}`, {
-        userEmail: customer.email || 'anonymous',
-        ip: forwarded || 'unknown'
-      });
-          }
+      // Price tampering detected - using server-calculated total
+    }
     const order = await prisma.order.create({
       data: {
         totalAmount: serverTotal, // Use server-calculated total only
@@ -158,17 +152,15 @@ export async function POST(request: NextRequest) {
       { orderId: order.id, checkoutToken },
       { status: 200, headers }
     );
-  } catch (error) {
-    console.error('Error creating order:', error);
-    
-    if (error instanceof Error) {
-      if (error.message.includes('Product not found') || 
-          error.message.includes('Insufficient stock')) {
-        return NextResponse.json(
-          { message: error.message },
-          { status: 400, headers }
-        );
-      }
+  } catch (_error) {
+    // Check for validation errors that can be safely exposed to client
+    const errorMessage = _error instanceof Error ? _error.message : '';
+    if (errorMessage.includes('Product not found') || 
+        errorMessage.includes('Insufficient stock')) {
+      return NextResponse.json(
+        { message: errorMessage },
+        { status: 400, headers }
+      );
     }
     
     return NextResponse.json(

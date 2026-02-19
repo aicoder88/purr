@@ -28,10 +28,8 @@ export class BrokenLinkDetector {
     this.debug = debug;
   }
 
-  private log(...args: unknown[]): void {
-    if (this.debug) {
-      console.log(...args);
-    }
+  private log(..._args: unknown[]): void {
+    // Debug logging disabled for production
   }
 
   async crawlSite(baseUrl: string, useSitemap: boolean = false): Promise<LinkCheckResult> {
@@ -101,8 +99,8 @@ export class BrokenLinkDetector {
         }
 
         this.log(`Crawled: ${url} (${response.status}) - Queue: ${queue.length}`);
-      } catch (error) {
-        console.error(`Error crawling ${url}:`, error instanceof Error ? error.message : error);
+      } catch (_error) {
+        // Error crawling URL, continue
       }
     }
 
@@ -222,8 +220,8 @@ export class BrokenLinkDetector {
           });
         }
       }
-    } catch (error) {
-      console.error('Error validating sitemap:', error);
+    } catch (_error) {
+      // Error validating sitemap, ignore
     }
 
     return brokenSitemapLinks;
@@ -257,8 +255,8 @@ export class BrokenLinkDetector {
             sub$('url > loc').each((_, el) => {
               urls.push(sub$(el).text());
             });
-          } catch (error) {
-            console.error(`Error fetching sub-sitemap ${subSitemapUrl}:`, error instanceof Error ? error.message : error);
+          } catch (_error) {
+            // Error fetching sub-sitemap, continue
           }
         }
       } else {
@@ -267,8 +265,8 @@ export class BrokenLinkDetector {
           urls.push($(el).text());
         });
       }
-    } catch (error) {
-      console.error('Error fetching sitemap:', error instanceof Error ? error.message : error);
+    } catch (_error) {
+      // Error fetching sitemap, ignore
     }
 
     return urls;

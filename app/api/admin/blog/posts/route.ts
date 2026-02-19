@@ -33,8 +33,7 @@ export async function GET(request: Request) {
 
     const posts = await store.getAllPosts(locale, includeUnpublished);
     return Response.json(posts);
-  } catch (error) {
-    console.error('Error handling posts request:', error);
+  } catch (_error) {
     return Response.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
@@ -126,15 +125,13 @@ export async function POST(request: Request) {
     if (post.status === 'published') {
       try {
         await sitemapGenerator.updateAllSitemaps();
-      } catch (error) {
-        console.error('Failed to update sitemap:', error);
+      } catch {
         // Don't fail the request if sitemap update fails
       }
     }
 
     return Response.json({ success: true, post }, { status: 201, headers: rateLimitHeaders });
-  } catch (error) {
-    console.error('Error handling posts request:', error);
+  } catch (_error) {
     return Response.json(
       { error: 'Internal server error' },
       { status: 500, headers: rateLimitHeaders }
@@ -218,15 +215,13 @@ export async function PUT(request: Request) {
     if (post.status === 'published') {
       try {
         await sitemapGenerator.updateAllSitemaps();
-      } catch (error) {
-        console.error('Failed to update sitemap:', error);
+      } catch {
         // Don't fail the request if sitemap update fails
       }
     }
 
     return Response.json({ success: true, post }, { headers: rateLimitHeaders });
-  } catch (error) {
-    console.error('Error handling posts request:', error);
+  } catch (_error) {
     return Response.json(
       { error: 'Internal server error' },
       { status: 500, headers: rateLimitHeaders }

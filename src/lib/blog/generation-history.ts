@@ -36,8 +36,8 @@ export class GenerationHistoryManager {
   private async ensureHistoryDir(): Promise<void> {
     try {
       await fs.mkdir(this.historyDir, { recursive: true });
-    } catch (error) {
-      console.error('Error creating history directory:', error);
+    } catch (_error) {
+      // Error creating history directory, ignore
     }
   }
 
@@ -58,9 +58,8 @@ export class GenerationHistoryManager {
       const filePath = path.join(this.historyDir, `${id}.json`);
       await fs.writeFile(filePath, JSON.stringify(fullRecord, null, 2), 'utf-8');
       return fullRecord;
-    } catch (error) {
-      console.error('Error saving generation:', error);
-      throw error;
+    } catch (_error) {
+      throw _error;
     }
   }
 
@@ -83,8 +82,7 @@ export class GenerationHistoryManager {
       return records.sort((a, b) => 
         new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
       );
-    } catch (error) {
-      console.error('Error loading generations:', error);
+    } catch (_error) {
       return [];
     }
   }
@@ -115,9 +113,8 @@ export class GenerationHistoryManager {
       const updated = { ...existing, ...updates };
       const filePath = path.join(this.historyDir, `${id}.json`);
       await fs.writeFile(filePath, JSON.stringify(updated, null, 2), 'utf-8');
-    } catch (error) {
-      console.error('Error updating generation:', error);
-      throw error;
+    } catch (_error) {
+      throw _error;
     }
   }
 
@@ -153,8 +150,8 @@ export class GenerationHistoryManager {
       );
 
       // Cleanup completed silently
-    } catch (error) {
-      console.error('Error cleaning up generations:', error);
+    } catch (_error) {
+      // Error cleaning up generations, ignore
     }
   }
 

@@ -39,8 +39,8 @@ export class ImageOptimizer {
         const avifPath = `${slug}-${size}w.avif`;
         await fs.writeFile(path.join(this.outputDir, avifPath), avif);
         result.optimized.avif.push(`/optimized/${avifPath}`);
-      } catch (error) {
-        console.warn('AVIF generation failed, skipping:', error);
+      } catch (_error) {
+        // AVIF generation failed, skip this format
       }
 
       // Generate WebP (good compression, wide support)
@@ -127,8 +127,8 @@ export class ImageOptimizer {
       await Promise.all(
         slugFiles.map(file => fs.unlink(path.join(this.outputDir, file)))
       );
-    } catch (error) {
-      console.error(`Error deleting optimized images for ${slug}:`, error);
+    } catch (_error) {
+      // Error deleting optimized images, ignore
     }
   }
 

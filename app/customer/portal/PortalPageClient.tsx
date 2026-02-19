@@ -32,8 +32,7 @@ export default function PortalPageClient() {
           localStorage.removeItem('customer_session');
         }
       }
-    } catch (error) {
-      console.error('Error checking session:', error);
+    } catch {
       localStorage.removeItem('customer_session');
     } finally {
       setLoading(false);

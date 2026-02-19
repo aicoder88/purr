@@ -33,14 +33,8 @@ export class AutomatedContentGenerator {
     const apiKey = process.env.ANTHROPIC_API_KEY;
 
     if (!apiKey) {
-      console.error('ANTHROPIC_API_KEY not configured');
       throw new Error('ANTHROPIC_API_KEY not configured');
     }
-
-    console.log('Calling Claude API', {
-      model: 'claude-3-5-sonnet-20241022',
-      maxTokens
-    });
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -65,22 +59,11 @@ export class AutomatedContentGenerator {
 
     if (!response.ok) {
       const errorData = await response.json();
-      console.error('Claude API request failed', {
-        status: response.status,
-        error: errorData.error?.message
-      });
       throw new Error(`Claude API error: ${response.status} - ${errorData.error?.message || 'Unknown error'}`);
     }
 
     const data = await response.json();
-    const responseText = data.content[0].text;
-
-    console.log('Claude API call successful', {
-      responseLength: responseText.length,
-      tokensUsed: data.usage?.total_tokens
-    });
-
-    return responseText;
+    return data.content[0].text;
   }
 
 
@@ -91,14 +74,11 @@ export class AutomatedContentGenerator {
     const apiKey = process.env.FAL_API_KEY;
 
     if (!apiKey) {
-      console.warn('FAL_API_KEY not configured, skipping AI image generation');
+      // FAL_API_KEY not configured, skipping AI image generation
       return null;
     }
 
     try {
-      console.log('Generating AI image', {
-        promptLength: prompt.length
-      });
 
       const response = await fetch('https://fal.run/fal-ai/flux-pro', {
         method: 'POST',
@@ -117,9 +97,6 @@ export class AutomatedContentGenerator {
       });
 
       if (!response.ok) {
-        console.error('AI image generation failed', {
-          status: response.status
-        });
         throw new Error(`fal.ai API error: ${response.status}`);
       }
 
@@ -127,8 +104,6 @@ export class AutomatedContentGenerator {
 
       if (data.images && data.images.length > 0) {
         const imageUrl = data.images[0].url;
-
-        console.log('AI image generated successfully, downloading and optimizing');
 
         // Download and optimize the generated image
         const imageResponse = await fetch(imageUrl);
@@ -149,11 +124,6 @@ export class AutomatedContentGenerator {
         // Clean up temp file
         await fs.unlink(tempPath);
 
-        console.log('AI image optimized successfully', {
-          width: optimized.width,
-          height: optimized.height
-        });
-
         return {
           url: optimized.optimized.webp[0] || imageUrl,
           alt: prompt,
@@ -162,12 +132,10 @@ export class AutomatedContentGenerator {
         };
       }
 
-      console.warn('No images returned from AI generation');
+      // No images returned from AI generation
       return null;
-    } catch (error) {
-      console.error('Error generating AI image', {
-        error: error instanceof Error ? error.message : 'Unknown error'
-      });
+    } catch (_error) {
+      // Failed to generate AI image
       return null;
     }
   }
@@ -186,17 +154,17 @@ export class AutomatedContentGenerator {
 
         // Validate generated content for template variables
         if (this.validator.containsTemplateVariables(content.title)) {
-          console.warn(`Attempt ${attempt}: Generated title contains template variables, retrying...`);
+          // Generated title contains template variables, retrying
           continue;
         }
 
         if (this.validator.containsTemplateVariables(content.excerpt)) {
-          console.warn(`Attempt ${attempt}: Generated excerpt contains template variables, retrying...`);
+          // Generated excerpt contains template variables, retrying
           continue;
         }
 
         if (this.validator.containsTemplateVariables(content.content)) {
-          console.warn(`Attempt ${attempt}: Generated content contains template variables, retrying...`);
+          // Generated content contains template variables, retrying
           continue;
         }
 
@@ -235,15 +203,12 @@ export class AutomatedContentGenerator {
         // Validate complete post
         const validation = this.validator.validatePost(post);
 
-        if (!validation.valid) {
-          console.warn(`Attempt ${attempt}: Post validation failed:`, validation.errors);
-          if (attempt < this.maxRetries) {
-            continue;
-          }
+        if (!validation.valid && attempt < this.maxRetries) {
+          // Post validation failed, will retry
+          continue;
         }
 
         // Successfully generated valid post
-
         return {
           success: true,
           post,
@@ -251,9 +216,7 @@ export class AutomatedContentGenerator {
           attempts: attempt
         };
 
-      } catch (error) {
-        console.error(`Attempt ${attempt} failed:`, error);
-
+      } catch (_error) {
         if (attempt === this.maxRetries) {
           return {
             success: false,
@@ -295,8 +258,8 @@ export class AutomatedContentGenerator {
           return images[0];
         }
       }
-    } catch (error) {
-      console.warn('Failed to fetch relevant images, using fallback:', error);
+    } catch (_error) {
+      // Failed to fetch relevant images, using fallback
     }
 
     // Fallback to default Purrify logo
@@ -335,9 +298,8 @@ export class AutomatedContentGenerator {
         tags: parsed.tags || ['cat-litter', 'odor-elimination'],
         seoKeywords: parsed.seoKeywords || parsed.tags || []
       };
-    } catch (error) {
-      console.error('Error generating content:', error);
-      // Return fallback content
+    } catch (_error) {
+      // Failed to generate content, returning fallback
       return this.getFallbackContent(topic);
     }
   }
@@ -392,7 +354,6 @@ Make the content genuinely helpful and informative, not promotional.
     }
 
     // Fallback to default Purrify logo
-    console.warn('AI image generation not available, using default image');
     return [];
   }
 
@@ -522,8 +483,8 @@ Make the content genuinely helpful and informative, not promotional.
         tags: parsed.tags || ['cat-litter', 'odor-elimination'],
         seoKeywords: parsed.seoKeywords || parsed.tags || []
       };
-    } catch (error) {
-      console.error('Error generating content with config:', error);
+    } catch (_error) {
+      // Failed to generate content with config
       return this.getFallbackContent(config.topic);
     }
   }
@@ -557,9 +518,9 @@ Make the content genuinely helpful and informative, not promotional.
       sections[sectionIndex] = newSection;
 
       return sections.join('');
-    } catch (error) {
-      console.error('Error regenerating section:', error);
-      throw error;
+    } catch (_error) {
+      // Failed to regenerate section
+      throw _error;
     }
   }
 
@@ -573,8 +534,8 @@ Make the content genuinely helpful and informative, not promotional.
       try {
         const content = await this.generateContent(topic);
         variations.push(content.content);
-      } catch (error) {
-        console.error(`Error generating variation ${i + 1}:`, error);
+      } catch (_error) {
+        // Failed to generate variation
       }
     }
 
@@ -616,9 +577,9 @@ Make the content genuinely helpful and informative, not promotional.
       const systemPrompt = 'You are an expert content writer for Purrify. Fill in the provided template with relevant, helpful content.';
       const userPrompt = `Fill in this template about "${data.topic}" using these keywords: ${data.keywords.join(', ')}\n\nTemplate:\n${html}\n\nProvide the complete HTML with all sections filled in with relevant content.`;
       return await this.callClaudeAPI(systemPrompt, userPrompt, 4000);
-    } catch (error) {
-      console.error('Error applying template:', error);
-      return html; // Return template as fallback
+    } catch (_error) {
+      // Failed to apply template, returning as fallback
+      return html;
     }
   }
 
@@ -678,9 +639,8 @@ Make the content genuinely helpful and informative, not promotional.
           width: optimized.width,
           height: optimized.height
         };
-      } catch (error) {
-        console.error('Error downloading featured image:', error);
-        // Fallback to default
+      } catch (_error) {
+        // Failed to download featured image, using fallback
         featuredImage = {
           url: '/optimized/purrify-logo.avif',
           alt: data.title,

@@ -303,8 +303,8 @@ export async function GET(req: Request) {
     };
 
     return Response.json(stats, { status: 200, headers: rateLimitHeaders });
-  } catch (error) {
-    console.error('Error fetching ops stats:', error);
+  } catch {
+    // Error fetching ops stats
     return Response.json({ error: 'Failed to fetch stats' }, { status: 500, headers: rateLimitHeaders });
   }
 }
