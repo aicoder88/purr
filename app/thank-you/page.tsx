@@ -144,7 +144,6 @@ export default async function ThankYouPage({ searchParams }: Props) {
         <ThankYouClient
           orderDetails={orderDetails}
           error={error}
-          sessionId={sessionId}
         />
       </Container>
     </main>

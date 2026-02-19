@@ -3,11 +3,11 @@
 import { Container } from "@/components/ui/container";
 import Image from 'next/image';
 import { useTranslation } from "@/lib/translation-context";
-import Link from "next/link";
+
 import { PackageOpen, Sparkles, Wind } from "lucide-react";
 
 export function HowItWorks() {
-  const { t, locale } = useTranslation();
+  const { t } = useTranslation();
 
   const steps = (t.howItWorks?.steps || []).map((step, index) => ({
     number: step.number,

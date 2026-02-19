@@ -1,6 +1,7 @@
 /**
  * @jest-environment jsdom
  */
+import React from 'react';
 import { CatBlessingTool } from '@/components/fun/CatBlessingTool';
 // Mock next/dynamic to render components immediately
 jest.mock('next/dynamic', () => ({

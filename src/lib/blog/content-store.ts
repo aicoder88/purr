@@ -265,7 +265,7 @@ export class ContentStore {
         validation: { valid: true, errors: [] as ValidationError[], warnings: [] as ValidationWarning[] },
         post: syncedPost,
       };
-    } catch (_error) {
+    } catch (error) {
       // Failed to save post
       return {
         success: false,

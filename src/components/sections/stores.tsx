@@ -2,7 +2,7 @@
 
 import { Container } from "@/components/ui/container";
 import Image from "next/image";
-import SectionHeader from "@/components/ui/section-header";
+
 import { useTranslation } from "@/lib/translation-context";
 import { useState, useEffect } from "react";
 
@@ -31,12 +31,6 @@ interface LogoConfig {
 // ============================================================================
 // Constants
 // ============================================================================
-
-const GRADIENTS = {
-  section: 'bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900',
-  redButton: 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131]',
-  redIcon: 'bg-gradient-to-br from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80',
-} as const;
 
 const DEFAULT_LOGO_CONFIG = {
   className: 'w-16 h-16 object-contain',
@@ -297,37 +291,6 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
 // Subcomponents
 // ============================================================================
 
-function StoreIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-      />
-    </svg>
-  );
-}
-
-function PhoneIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-      />
-    </svg>
-  );
-}
-
 function WebsiteIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -409,7 +372,7 @@ export function Stores() {
         setSubmitStatus('error');
         setStatusMessage(data.message || t.storesSection?.requestError || 'Failed to send request. Please try again or contact us directly.');
       }
-    } catch (error) {
+    } catch (_error) {
       setSubmitStatus('error');
       setStatusMessage(t.storesSection?.requestError || 'An error occurred. Please contact us directly at support@purrify.ca');
     } finally {

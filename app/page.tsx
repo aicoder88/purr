@@ -16,6 +16,7 @@ import {
   buildLanguageAlternates,
   getLocalizedKeywords,
   normalizeLocale,
+  getPriceValidityDate,
 } from '@/lib/seo-utils';
 import { defaultLocale } from '@/i18n/config';
 import type { Currency } from '@/lib/geo/currency-detector';
@@ -169,7 +170,7 @@ export default async function HomePage() {
 
         {/* Client-side wrapped sections for interactivity */}
         <HomepageClient
-          priceValidUntil={priceValidUntil}
+          priceValidUntil={getPriceValidityDate()}
           locale={defaultLocale}
           currency={currency}
         />

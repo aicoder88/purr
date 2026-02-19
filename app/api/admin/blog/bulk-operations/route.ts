@@ -158,7 +158,7 @@ export async function POST(request: Request) {
         }
 
         results.successful.push(slug);
-      } catch (_error) {
+      } catch (error) {
         results.failed.push({
           slug,
           error: error instanceof Error ? error.message : 'Unknown error'

@@ -216,7 +216,7 @@ export class AutomatedContentGenerator {
           attempts: attempt
         };
 
-      } catch (_error) {
+      } catch (error) {
         if (attempt === this.maxRetries) {
           return {
             success: false,

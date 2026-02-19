@@ -35,7 +35,7 @@ export function BlogPreview() {
         if (isMounted && data.length > 0) {
           setBlogPosts(data);
         }
-      } catch (err) {
+      } catch (_err) {
         // Already initialized with static data, no need to update on error
         // Silently fall back to static content
       }

@@ -2,6 +2,7 @@ import { z } from 'zod';
 import crypto from 'crypto';
 import { AutomatedContentGenerator } from '@/lib/blog/automated-content-generator';
 import { ContentStore } from '@/lib/blog/content-store';
+import type { BlogPost } from '@/types/blog';
 
 // Validation schema for webhook payload
 const webhookSchema = z.object({
@@ -209,7 +210,7 @@ export async function POST(req: Request): Promise<Response> {
     const generator = new AutomatedContentGenerator();
     const store = new ContentStore();
     
-    let post: { id: string; slug: string; title: string; publishDate: string } | null = null;
+    let fullPost: BlogPost | null = null;
     
     if (payload.mode === 'generate') {
       // Generate new content with AI
@@ -231,7 +232,10 @@ export async function POST(req: Request): Promise<Response> {
       }
       
       // Generate post
-      post = await generator.generateBlogPost(topic);
+      const result = await generator.generateBlogPost(topic);
+      if (result.success && result.post) {
+        fullPost = result.post;
+      }
       
     } else if (payload.mode === 'publish') {
       // Publish provided content
@@ -243,10 +247,13 @@ export async function POST(req: Request): Promise<Response> {
       }
       
       // Create post object from provided data
-      post = await generator.createPostFromContent(payload.post);
+      const result = await generator.createPostFromContent(payload.post);
+      if (result.success && result.post) {
+        fullPost = result.post;
+      }
     }
     
-    if (!post) {
+    if (!fullPost) {
       return Response.json({
         success: false,
         error: 'Failed to create post'
@@ -254,17 +261,17 @@ export async function POST(req: Request): Promise<Response> {
     }
     
     // Publish the post
-    await generator.publishPost(post);
+    await generator.publishPost(fullPost);
     
     // Return success response
     return Response.json({
       success: true,
       post: {
-        id: post.id,
-        slug: post.slug,
-        title: post.title,
-        url: `https://purrify.ca/blog/${post.slug}`,
-        publishDate: post.publishDate
+        id: fullPost.id,
+        slug: fullPost.slug,
+        title: fullPost.title,
+        url: `https://purrify.ca/blog/${fullPost.slug}`,
+        publishDate: fullPost.publishDate
       }
     });
     

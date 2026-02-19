@@ -57,7 +57,7 @@ export class AnalyticsService {
   /**
    * Get analytics for a specific post
    */
-  async getPostAnalytics(slug: string, dateRange?: DateRange): Promise<PostAnalytics | null> {
+  async getPostAnalytics(slug: string, _dateRange?: DateRange): Promise<PostAnalytics | null> {
     try {
       // Try to load from cache first
       const cached = await this.loadCachedAnalytics(slug);

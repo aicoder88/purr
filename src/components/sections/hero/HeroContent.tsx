@@ -1,9 +1,8 @@
 "use client";
 
-import { useCallback, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { scrollToSection } from "@/lib/utils";
-import Link from "next/link";
+
 import { heroTestimonials } from "@/data/hero-testimonials";
 import { getPaymentLink } from "@/lib/payment-links";
 
@@ -155,10 +154,6 @@ const StarRating = ({ rating = 5 }: { rating?: number }) => {
 };
 
 export const HeroContent = ({ t }: HeroContentProps) => {
-  const handleScrollToProducts = useCallback(() => {
-    scrollToSection("products");
-  }, []);
-
   // Rotating testimonials - rotating every 1.5 seconds
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
