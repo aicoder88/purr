@@ -16,6 +16,7 @@ export default getRequestConfig(async () => {
   return {
     locale,
     messages,
+    timeZone: 'America/Toronto',
     onError: (error) => {
       console.warn('i18n error:', error);
     },

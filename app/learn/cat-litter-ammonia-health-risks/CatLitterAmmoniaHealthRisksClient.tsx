@@ -337,7 +337,7 @@ export default function CatLitterAmmoniaHealthRisksClient() {
             <div className="mt-12 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
               <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-4">Related Ammonia Guides</h3>
               <div className="space-y-3">
-                <Link href="/learn/solutions/ammonia-smell-cat-litter" className="flex items-center gap-2 text-[#FF3131] dark:text-[#FF5050] hover:underline font-medium">
+                <Link href="/blog/how-to-neutralize-ammonia-cat-litter" className="flex items-center gap-2 text-[#FF3131] dark:text-[#FF5050] hover:underline font-medium">
                   → Stop That Ammonia Smell: Complete Solution Guide
                 </Link>
                 <Link href="/learn/ammonia-science" className="flex items-center gap-2 text-[#FF3131] dark:text-[#FF5050] hover:underline font-medium">

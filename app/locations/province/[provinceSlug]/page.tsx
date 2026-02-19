@@ -134,14 +134,10 @@ const interpolate = (template: string, vars: Record<string, string>): string =>
 
 // Generate static params for all provinces
 export async function generateStaticParams() {
-  const locales = ['en', 'fr', 'zh'];
-
-  // Pre-render ALL province pages for all locales
-  const paths = locales.flatMap(() =>
-    locationsByProvince.map((province) => ({
-      provinceSlug: province.slug,
-    }))
-  );
+  // Pre-render ALL province pages
+  const paths = locationsByProvince.map((province) => ({
+    provinceSlug: province.slug,
+  }));
 
   return paths;
 }

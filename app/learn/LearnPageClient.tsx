@@ -67,7 +67,7 @@ const MAIN_GUIDES: LearnCard[] = [
   {
     title: 'Activated Carbon Benefits',
     description: 'Explore all the benefits of activated carbon for cat litter odor control and beyond.',
-    href: '/learn/activated-carbon-benefits',
+    href: '/blog/activated-carbon-litter-additive-benefits',
     image: '/optimized/activated-carbon-benefits.webp',
     alt: 'Benefits of activated carbon',
     icon: Leaf,
@@ -83,7 +83,7 @@ const MAIN_GUIDES: LearnCard[] = [
   {
     title: 'How to Use',
     description: 'Step-by-step instructions for getting the most out of Purrify with any litter type.',
-    href: '/learn/how-to-use-deodorizer',
+    href: '/blog/how-to-use-cat-litter-deodorizer',
     image: '/optimized/application-technique-ghibli.webp',
     alt: 'How to use Purrify deodorizer',
     icon: Settings2,
@@ -91,7 +91,7 @@ const MAIN_GUIDES: LearnCard[] = [
   {
     title: 'Technology Comparison',
     description: 'See how activated carbon compares to baking soda and other deodorizer technologies.',
-    href: '/learn/activated-carbon-vs-baking-soda-deodorizers',
+    href: '/blog/activated-carbon-vs-baking-soda-comparison',
     image: '/optimized/activated-carbon-vs-baking-soda-comparison.webp',
     alt: 'Activated carbon vs baking soda comparison',
     icon: Scale,
@@ -102,7 +102,7 @@ const SOLUTIONS: LearnCard[] = [
   {
     title: 'Ammonia Smell Control',
     description: 'That sharp ammonia smell? Learn why bacteria convert urine to ammonia gas and how activated carbon neutralizes it.',
-    href: '/learn/solutions/ammonia-smell-cat-litter',
+    href: '/blog/how-to-neutralize-ammonia-cat-litter',
     image: '/images/ammonia-hero.webp',
     alt: 'Stop ammonia smell from cat litter',
     icon: Wind,
@@ -110,7 +110,7 @@ const SOLUTIONS: LearnCard[] = [
   {
     title: 'Apartment Living',
     description: 'Living in a small space with your cat? Specialized tips for keeping apartments fresh without overwhelming scents.',
-    href: '/learn/solutions/apartment-cat-smell-solution',
+    href: '/blog/best-litter-odor-remover-small-apartments',
     image: '/images/apartment-hero.webp',
     alt: 'Fresh apartment living with cats',
     icon: Building2,
@@ -118,7 +118,7 @@ const SOLUTIONS: LearnCard[] = [
   {
     title: 'Litter Box Odor',
     description: 'Complete guide to eliminating litter box odors. From daily maintenance to deep cleaning strategies.',
-    href: '/learn/solutions/litter-box-smell-elimination',
+    href: '/blog/how-to-eliminate-cat-litter-odor',
     image: '/images/litter-box-hero.webp',
     alt: 'Clean litter box in a fresh home',
     icon: Cat,
@@ -126,7 +126,7 @@ const SOLUTIONS: LearnCard[] = [
   {
     title: 'Multiple Cats',
     description: 'Managing odor with multiple cats is challenging. Learn proven strategies that work for multi-cat households.',
-    href: '/learn/solutions/multiple-cats-odor-control',
+    href: '/blog/best-cat-litter-multiple-cats-odor-control',
     image: '/images/ammonia-fresh-home.webp',
     alt: 'Multi-cat household odor solutions',
     icon: Users,
@@ -134,7 +134,7 @@ const SOLUTIONS: LearnCard[] = [
   {
     title: 'Natural Additive',
     description: 'Looking for natural solutions? Compare natural additives and learn which ones actually work for odor control.',
-    href: '/learn/solutions/natural-cat-litter-additive',
+    href: '/blog/best-natural-cat-litter-odor-control',
     image: '/images/ammonia-happy-cat.webp',
     alt: 'Natural cat care solutions',
     icon: Leaf,
@@ -142,7 +142,7 @@ const SOLUTIONS: LearnCard[] = [
   {
     title: 'Senior Cats',
     description: 'Older cats have unique needs. Gentle solutions that work for senior cats with sensitive health conditions.',
-    href: '/learn/solutions/senior-cat-litter-solutions',
+    href: '/blog/best-cat-litter-multiple-cats-odor-control',
     image: '/images/apartment-living-room.webp',
     alt: 'Comfortable solutions for senior cats',
     icon: Heart,

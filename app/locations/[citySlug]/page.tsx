@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { locales } from '@/i18n/config';
 import { notFound } from 'next/navigation';
 import { getCityBySlug, getAllCities } from '@/data/locations';
 import { CityPageTemplate } from '@/components/sections/locations/createCityPage';
@@ -24,14 +25,10 @@ const interpolate = (template: string, vars: Record<string, string>): string =>
 // Generate static params for all cities
 export async function generateStaticParams() {
   const allCities = getAllCities();
-  const locales = ['en', 'fr', 'zh'];
-
-  // Generate paths for ALL cities across all available locales
-  const paths = locales.flatMap(() =>
-    allCities.map((city) => ({
-      citySlug: city.slug,
-    }))
-  );
+  // Generate paths for ALL cities
+  const paths = allCities.map((city) => ({
+    citySlug: city.slug,
+  }));
 
   return paths;
 }

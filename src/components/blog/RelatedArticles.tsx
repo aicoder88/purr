@@ -103,25 +103,25 @@ const ALL_ARTICLES: Article[] = [
   },
   {
     title: 'Ammonia Smell from Cat Litter Solution',
-    href: '/learn/solutions/ammonia-smell-cat-litter',
+    href: '/blog/how-to-neutralize-ammonia-cat-litter',
     image: '/optimized/catonbed.avif',
     alt: 'Cat relaxing on a freshly made bed in a clean home'
   },
   {
     title: 'Apartment Cat Smell Solution',
-    href: '/learn/solutions/apartment-cat-smell-solution',
+    href: '/blog/best-litter-odor-remover-small-apartments',
     image: '/optimized/small-apartment-odor-control.webp',
     alt: 'Modern apartment living space'
   },
   {
     title: 'Natural Cat Litter Additive Guide',
-    href: '/learn/solutions/natural-cat-litter-additive',
+    href: '/blog/best-natural-cat-litter-odor-control',
     image: '/optimized/natural-cat-litter.webp',
     alt: 'Natural ingredients for cat care'
   },
   {
     title: 'Multiple Cats Odor Control Solutions',
-    href: '/learn/solutions/multiple-cats-odor-control',
+    href: '/blog/best-cat-litter-multiple-cats-odor-control',
     image: '/optimized/multiple-cats-together.webp',
     alt: 'Multiple cats in a home environment'
   },
@@ -133,7 +133,7 @@ const ALL_ARTICLES: Article[] = [
   },
   {
     title: 'Activated Carbon Benefits for Cat Owners',
-    href: '/learn/activated-carbon-benefits',
+    href: '/blog/activated-carbon-litter-additive-benefits',
     image: '/optimized/activated-carbon-science-benefits-ghibli.webp',
     alt: 'Happy cat owner in fresh environment'
   },
@@ -145,19 +145,19 @@ const ALL_ARTICLES: Article[] = [
   },
   {
     title: 'How to Neutralize Ammonia in Cat Litter',
-    href: '/learn/solutions/how-to-neutralize-ammonia-cat-litter',
+    href: '/blog/how-to-neutralize-ammonia-cat-litter',
     image: '/images/ammonia-science.webp',
     alt: 'Scientific approach to neutralizing ammonia odors'
   },
   {
     title: 'Litter Box Smell Elimination Guide',
-    href: '/learn/solutions/litter-box-smell-elimination',
+    href: '/blog/how-to-eliminate-cat-litter-odor',
     image: '/images/litter-box-hero.webp',
     alt: 'Clean litter box in a fresh home'
   },
   {
     title: 'Senior Cat Litter Solutions',
-    href: '/learn/solutions/senior-cat-litter-solutions',
+    href: '/blog/best-cat-litter-multiple-cats-odor-control',
     image: '/optimized/cat-long-lasting-freshness-800x500.webp',
     alt: 'Comfortable litter solutions for senior cats'
   },

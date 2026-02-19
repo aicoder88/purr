@@ -776,7 +776,7 @@ export default function ProductsPage() {
                   </div>
                 </Link>
               ))}
-              <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/activated-carbon-vs-baking-soda-deodorizers`} className="group">
+              <Link href="/blog/activated-carbon-vs-baking-soda-comparison" className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-brand-light dark:border-gray-700 hover:shadow-xl transition-shadow">
                   <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-brand-purple transition-colors">
                     {t('nav.carbonVsBakingSoda')}

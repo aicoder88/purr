@@ -365,7 +365,7 @@ export default async function USALandingPage() {
                     src="/optimized/realistic-carbon-effect.webp"
                     alt="Realistic macro view of carbon action"
                     fill
-                    className="object-cover transition-transform duration-[2s] hover:scale-110"
+                    className="object-cover transition-transform duration-[2000ms] hover:scale-110"
                   />
                 </div>
               </div>

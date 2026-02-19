@@ -123,7 +123,7 @@ export function HowItWorks() {
             </Link>
 
             <Link
-              href={`${locale === 'fr' ? '/fr' : ''}/learn/activated-carbon-vs-baking-soda-deodorizers`}
+              href="/blog/activated-carbon-vs-baking-soda-comparison"
               className="text-purple-600 dark:text-purple-400 font-bold hover:underline underline-offset-4 decoration-2"
             >
               {t('nav.carbonVsBakingSoda')} →

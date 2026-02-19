@@ -207,7 +207,7 @@ export function Header() {
         },
         {
           label: t('nav.activatedCarbonBenefits'),
-          href: `${localePrefix}/learn/activated-carbon-benefits`,
+          href: `/blog/activated-carbon-litter-additive-benefits`,
         },
         {
           label: t('nav.catLitterGuide'),
@@ -215,16 +215,15 @@ export function Header() {
         },
         {
           label: t('nav.howToUse'),
-          href: `${localePrefix}/learn/how-to-use-deodorizer`,
+          href: `/blog/how-to-use-cat-litter-deodorizer`,
         },
         {
           label: t('nav.technologyComparison'),
-          href: `${localePrefix}/learn/activated-carbon-vs-baking-soda-deodorizers`,
+          href: `/blog/activated-carbon-vs-baking-soda-comparison`,
         },
-        // SEO FIX (Feb 2026): Added direct links to reduce redirect chains
         {
           label: t('nav.catLitterAnswers') || "Cat Litter Q&A",
-          href: "/learn/cat-litter-answers",
+          href: "/learn/faq",
         },
         {
           label: t('nav.scienceHub') || "Research Citations",
@@ -237,32 +236,32 @@ export function Header() {
         { label: t('nav.solutions'), isGroupHeader: true },
         {
           label: t('nav.ammoniaSmellControl'),
-          href: `${localePrefix}/learn/solutions/ammonia-smell-cat-litter`,
+          href: `/blog/how-to-neutralize-ammonia-cat-litter`,
           indent: true,
         },
         {
           label: t('nav.apartmentLiving'),
-          href: `${localePrefix}/learn/solutions/apartment-cat-smell-solution`,
+          href: `/blog/best-litter-odor-remover-small-apartments`,
           indent: true,
         },
         {
           label: t('nav.litterBoxOdor'),
-          href: `${localePrefix}/learn/solutions/litter-box-smell-elimination`,
+          href: `/blog/how-to-eliminate-cat-litter-odor`,
           indent: true,
         },
         {
           label: t('nav.multipleCats'),
-          href: `${localePrefix}/learn/solutions/multiple-cats-odor-control`,
+          href: `/blog/best-cat-litter-multiple-cats-odor-control`,
           indent: true,
         },
         {
           label: t('nav.naturalAdditive'),
-          href: `${localePrefix}/learn/solutions/natural-cat-litter-additive`,
+          href: `/blog/best-natural-cat-litter-odor-control`,
           indent: true,
         },
         {
           label: t('nav.seniorCats'),
-          href: `${localePrefix}/learn/solutions/senior-cat-litter-solutions`,
+          href: `/blog/best-cat-litter-multiple-cats-odor-control`,
           indent: true,
         },
       ],

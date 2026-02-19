@@ -134,7 +134,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
               </Link>
               <span className="hidden sm:block text-gray-400 dark:text-gray-600">•</span>
               <Link
-                href="/learn/how-to-use-deodorizer"
+                href="/blog/how-to-use-cat-litter-deodorizer"
                 className={`font-semibold ${COLORS.text.primary} hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors`}
               >
                 {r?.hero?.howToLink || 'How to use the additive'}

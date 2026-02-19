@@ -21,13 +21,15 @@ interface BlogPostPageProps {
   }>;
 }
 
-// Generate static params for all blog posts across all locales (including default 'en')
+// Generate static params for all blog posts across non-default locales only
+// English (default locale) is served at /blog/[slug]/ via app/blog/[slug]/page.tsx
 export async function generateStaticParams() {
   const store = new ContentStore();
   const params: Array<{ locale: string; slug: string }> = [];
 
-  // Get posts for each locale (including default 'en')
+  // Get posts for each locale EXCEPT 'en' (default locale has its own route at /blog/[slug]/)
   for (const locale of locales) {
+    if (locale === 'en') continue; // Skip English - handled by app/blog/[slug]/page.tsx
     try {
       const posts = await store.getAllPosts(locale, false);
       posts.forEach((post) => {
@@ -61,9 +63,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
   // Build hreflang alternates with self-referencing support
   const hrefLang = locale === 'en' ? 'en-CA' :
-    locale === 'fr' ? 'fr-CA' :
-      locale === 'zh' ? 'zh-CN' :
-        locale === 'es' ? 'es-US' : 'en-CA';
+    locale === 'fr' ? 'fr-CA' : 'en-CA';
 
   const metaTitle = post.seoTitle || post.title;
   const metaDescription = post.seoDescription || post.excerpt;
@@ -81,8 +81,6 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       languages: {
         'en-CA': `${SITE_URL}/blog/${slug}/`,
         'fr-CA': `${SITE_URL}/fr/blog/${slug}/`,
-        'zh-CN': `${SITE_URL}/zh/blog/${slug}/`,
-        'es-US': `${SITE_URL}/es/blog/${slug}/`,
         'en-US': `${SITE_URL}/blog/${slug}/`,
         'x-default': `${SITE_URL}/blog/${slug}/`,
         // Self-reference for the current locale
@@ -214,22 +212,6 @@ const uiStrings: Record<string, { backToBlog: string; allArticles: string; visit
     references: 'Références',
     minRead: 'min de lecture',
     faqTitle: 'Questions Fréquemment Posées',
-  },
-  es: {
-    backToBlog: 'Volver al Blog',
-    allArticles: 'Todos los Artículos',
-    visitStore: 'Visitar la Tienda',
-    references: 'Referencias',
-    minRead: 'min de lectura',
-    faqTitle: 'Preguntas Frecuentes',
-  },
-  zh: {
-    backToBlog: '返回博客',
-    allArticles: '所有文章',
-    visitStore: '访问商店',
-    references: '参考资料',
-    minRead: '分钟阅读',
-    faqTitle: '常见问题',
   },
   en: {
     backToBlog: 'Back to Blog',

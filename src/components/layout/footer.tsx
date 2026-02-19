@@ -437,7 +437,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/learn/cat-litter-answers"
+                    href="/learn/faq"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('footerNav.catLitterAnswers') || "Cat Litter Q&A"}
@@ -445,7 +445,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/learn/activated-carbon-vs-baking-soda-deodorizers"
+                    href="/blog/activated-carbon-vs-baking-soda-comparison"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('footerNav.carbonVsBakingSoda') || "Carbon vs Baking Soda"}
@@ -469,7 +469,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/learn/solutions/ammonia-smell-cat-litter"
+                    href="/blog/how-to-neutralize-ammonia-cat-litter"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('footerNav.ammoniaSolutions') || "Ammonia Smell Control"}
@@ -477,7 +477,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/learn/solutions/apartment-cat-smell-solution"
+                    href="/blog/best-litter-odor-remover-small-apartments"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('nav.apartmentLiving') || "Apartment Living"}
@@ -485,7 +485,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/learn/solutions/litter-box-smell-elimination"
+                    href="/blog/how-to-eliminate-cat-litter-odor"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('nav.litterBoxOdor') || "Litter Box Odor"}
@@ -493,7 +493,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/learn/solutions/multiple-cats-odor-control"
+                    href="/blog/best-cat-litter-multiple-cats-odor-control"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('nav.multipleCats') || "Multiple Cats"}
@@ -501,7 +501,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/learn/solutions/natural-cat-litter-additive"
+                    href="/blog/best-natural-cat-litter-odor-control"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('nav.naturalAdditive') || "Natural Additive"}
@@ -509,7 +509,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/learn/solutions/senior-cat-litter-solutions"
+                    href="/blog/best-cat-litter-multiple-cats-odor-control"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('nav.seniorCats') || "Senior Cats"}
@@ -525,7 +525,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/learn/cat-litter-answers"
+                    href="/learn/faq"
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('footerNav.catLitterAnswers') || "Cat Litter Q&A"}
@@ -811,8 +811,10 @@ export function Footer() {
             </div>
             <div className="flex flex-wrap items-center justify-center gap-4">
               {badgeConfigs.map((badge) => {
-                // Extremely defensive badge name retrieval
-                const badgeName = defaultPlatformNames[badge.key] || badge.key;
+                const platformTranslationKey = `socialProofBadges.platforms.${badge.key}` as any;
+                const badgeName = t.has(platformTranslationKey)
+                  ? t(platformTranslationKey)
+                  : (defaultPlatformNames[badge.key] || badge.key);
 
                 const ariaLabel = t('socialProofBadges.viewOnPlatform' as any, { platform: badgeName as any });
 

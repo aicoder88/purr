@@ -16,9 +16,10 @@ interface BlogIndexPageProps {
   searchParams: Promise<{ page?: string }>;
 }
 
-// Generate static params for all supported locales (including default 'en')
+// Generate static params for non-default locales only
+// English (default locale) is served at /blog/ via app/blog/page.tsx
 export async function generateStaticParams() {
-  return locales.map((locale) => ({
+  return locales.filter((locale) => locale !== 'en').map((locale) => ({
     locale,
   }));
 }

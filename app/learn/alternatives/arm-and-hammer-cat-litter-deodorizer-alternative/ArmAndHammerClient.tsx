@@ -117,12 +117,12 @@ const EN_COPY: AlternativeCopy = {
         {
             title: 'Activated Carbon vs Baking Soda',
             description: 'Side-by-side technical comparison.',
-            href: '/learn/activated-carbon-vs-baking-soda-deodorizers',
+            href: '/blog/activated-carbon-vs-baking-soda-comparison',
         },
         {
             title: 'Stop Ammonia Smell',
             description: 'Practical ammonia control guide.',
-            href: '/learn/solutions/ammonia-smell-cat-litter',
+            href: '/blog/how-to-neutralize-ammonia-cat-litter',
         },
         {
             title: 'Neutralization Methods',

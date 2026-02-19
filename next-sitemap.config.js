@@ -63,6 +63,30 @@ module.exports = {
     '/solutions',
     '/solutions/*',
 
+    // === DELETED LEARN PAGES - Redirect to blog (consolidation cleanup) ===
+    // English locale variants
+    '/en/learn/solutions',
+    '/en/learn/solutions/*',
+    '/en/learn/cat-litter-answers',
+    '/en/learn/answers/*',
+    '/en/learn/activated-carbon-benefits',
+    '/en/learn/activated-carbon-vs-baking-soda-deodorizers',
+    '/en/learn/how-to-use-deodorizer',
+    '/en/learn/using-deodorizers-with-kittens',
+    // Root variants (if generated)
+    '/learn/solutions',
+    '/learn/solutions/*',
+    '/learn/cat-litter-answers',
+    '/learn/answers/*',
+    '/learn/activated-carbon-benefits',
+    '/learn/activated-carbon-vs-baking-soda-deodorizers',
+    '/learn/how-to-use-deodorizer',
+    '/learn/using-deodorizers-with-kittens',
+    // French locale variants
+    '/fr/learn/solutions',
+    '/fr/learn/solutions/*',
+    '/fr/learn/answers/*',
+
     // Legacy redirects
     '/checkout',
     '/cart-2',
@@ -340,49 +364,6 @@ module.exports = {
       priority: 0.6,
       lastmod: new Date().toISOString(),
     },
-    // Learn solutions
-    {
-      loc: '/learn/solutions/',
-      changefreq: 'weekly',
-      priority: 0.75,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/learn/solutions/ammonia-smell-cat-litter/',
-      changefreq: 'monthly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/learn/solutions/apartment-cat-smell-solution/',
-      changefreq: 'monthly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/learn/solutions/litter-box-smell-elimination/',
-      changefreq: 'monthly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/learn/solutions/multiple-cats-odor-control/',
-      changefreq: 'monthly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/learn/solutions/natural-cat-litter-additive/',
-      changefreq: 'monthly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/learn/solutions/senior-cat-litter-solutions/',
-      changefreq: 'monthly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
     // French learn pages
     {
       loc: '/fr/learn/',
@@ -611,98 +592,7 @@ module.exports = {
       priority: 0.6,
       lastmod: new Date().toISOString(),
     },
-    // Learn answers
-    {
-      loc: '/learn/cat-litter-answers/',
-      changefreq: 'weekly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/learn/answers/does-activated-carbon-work-for-cat-litter/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/learn/answers/how-do-i-keep-my-house-from-smelling-like-cat-litter/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/learn/answers/how-do-i-stop-my-cat-litter-from-smelling/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/learn/answers/how-often-should-i-change-cat-litter/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/learn/answers/how-to-eliminate-cat-litter-odor/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/learn/answers/how-to-keep-litter-box-from-smelling/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/learn/answers/is-it-safe-to-sleep-in-a-room-with-cat-litter/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/learn/answers/what-absorbs-cat-litter-odor/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/learn/answers/what-cat-litter-controls-odor-best/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/learn/answers/what-eliminates-cat-litter-odor/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/learn/answers/why-does-cat-litter-smell-worse-in-summer/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/learn/answers/why-does-my-house-smell-like-cat-pee/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
     // More learn pages
-    {
-      loc: '/learn/activated-carbon-benefits/',
-      changefreq: 'monthly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/learn/activated-carbon-vs-baking-soda-deodorizers/',
-      changefreq: 'monthly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
     {
       loc: '/learn/ammonia-science/',
       changefreq: 'monthly',
@@ -717,18 +607,6 @@ module.exports = {
     },
     {
       loc: '/learn/how-activated-carbon-works/',
-      changefreq: 'monthly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/learn/how-to-use-deodorizer/',
-      changefreq: 'monthly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/learn/using-deodorizers-with-kittens/',
       changefreq: 'monthly',
       priority: 0.7,
       lastmod: new Date().toISOString(),
