@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { Users, TrendingUp, Leaf } from 'lucide-react';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 
 export function UrgencyBanner() {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const [recentPurchases, setRecentPurchases] = useState<number>(23);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export function UrgencyBanner() {
           {/* Left side - Natural Message */}
           <div className="flex items-center space-x-3">
             <Leaf className="w-5 h-5" />
-            <span className="font-bold text-lg">{t.homepage.socialProof.nationalDelivery}</span>
+            <span className="font-bold text-lg">{t('homepage.socialProof.nationalDelivery')}</span>
           </div>
 
           {/* Center - Free Shipping */}
@@ -45,7 +45,7 @@ export function UrgencyBanner() {
           <div className="flex items-center space-x-2">
             <TrendingUp className="w-4 h-4" />
             <span className="text-sm font-medium">
-              {t.homepage.socialProof.fastDelivery}
+              {t('homepage.socialProof.fastDelivery')}
             </span>
           </div>
 
@@ -53,7 +53,7 @@ export function UrgencyBanner() {
           <div className="flex items-center space-x-2">
             <Users className="w-4 h-4" />
             <span className="text-sm">
-              <span className="font-bold text-yellow-300 dark:text-yellow-200 inline-block min-w-[2ch] text-center" style={{ fontVariantNumeric: 'tabular-nums' as const }}>{recentPurchases}</span> {t.homepage.socialProof.recentOrders}
+              <span className="font-bold text-yellow-300 dark:text-yellow-200 inline-block min-w-[2ch] text-center" style={{ fontVariantNumeric: 'tabular-nums' as const }}>{recentPurchases}</span> {t('homepage.socialProof.recentOrders')}
             </span>
           </div>
         </div>

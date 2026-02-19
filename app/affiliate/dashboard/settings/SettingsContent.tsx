@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import AffiliateLayout from '@/components/affiliate/AffiliateLayout';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import {
     User,
     CreditCard,
@@ -31,7 +31,7 @@ interface SettingsData {
 }
 
 export default function SettingsContent() {
-    const { t } = useTranslation();
+    const t = useTranslations();
     const router = useRouter();
     const [data, setData] = useState<SettingsData | null>(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -70,11 +70,11 @@ export default function SettingsContent() {
             setPayoutEmail(settingsData.payment.email || '');
         } catch (err) {
             console.error('Failed to fetch settings:', err);
-            setError(t.affiliateDashboard?.errors?.loadFailed || 'Failed to load settings');
+            setError(t('affiliateDashboard.errors.loadFailed') || 'Failed to load settings');
         } finally {
             setIsLoading(false);
         }
-    }, [t.affiliateDashboard?.errors?.loadFailed, router]);
+    }, [t('affiliateDashboard.errors.loadFailed'), router]);
 
     useEffect(() => {
         fetchSettings();
@@ -157,7 +157,7 @@ export default function SettingsContent() {
             {/* Header */}
             <div className="mb-8">
                 <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100">
-                    {t.affiliateDashboard?.settings || 'Settings'}
+                    {t('affiliateDashboard.settings') || 'Settings'}
                 </h1>
                 <p className="text-gray-600 dark:text-gray-400 mt-1">
                     Manage your account and payment settings.

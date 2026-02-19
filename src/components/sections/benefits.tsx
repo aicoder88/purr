@@ -1,7 +1,7 @@
 import { Container } from "@/components/ui/container";
 import SectionHeader from "@/components/ui/section-header";
 import { createColorClasses, createCardClasses, createSectionClasses, GRADIENTS, COLORS } from "@/lib/theme-utils";
-import { useTranslation } from "@/lib/translation-context";
+import { useTranslations, useLocale } from "next-intl";
 
 interface BenefitProps {
   title: string;
@@ -102,11 +102,24 @@ const benefitIcons = [<ShieldIcon key="shield" />, <LightningIcon key="lightning
 const benefitColors: Array<'green' | 'purple' | 'red'> = ['green', 'purple', 'red'];
 
 export function Benefits() {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const sectionClasses = createSectionClasses('light');
 
-  // Use translated benefits if available, otherwise use defaults
-  const benefitItems = t.benefitsSection?.items || defaultBenefits;
+  // Build benefits array from individual translation keys with fallback to defaults
+  const benefitItems: Array<{ title: string; description: string }> = [
+    {
+      title: t('benefitsSection.item1.title') || defaultBenefits[0].title,
+      description: t('benefitsSection.item1.description') || defaultBenefits[0].description
+    },
+    {
+      title: t('benefitsSection.item2.title') || defaultBenefits[1].title,
+      description: t('benefitsSection.item2.description') || defaultBenefits[1].description
+    },
+    {
+      title: t('benefitsSection.item3.title') || defaultBenefits[2].title,
+      description: t('benefitsSection.item3.description') || defaultBenefits[2].description
+    }
+  ];
 
   return (
     <section
@@ -115,17 +128,17 @@ export function Benefits() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <SectionHeader text={t.benefitsSection?.sectionHeader || ""} />
+          <SectionHeader text={t('benefitsSection.sectionHeader')} />
           <h2 className={`text-5xl font-bold tracking-tight mb-4 ${GRADIENTS.text.primary} ${GRADIENTS.text.primaryDark}`}>
-            {t.benefitsSection?.title || ""}
+            {t('benefitsSection.title')}
           </h2>
           <p className={`${COLORS.text.tertiary} text-xl`}>
-            {t.benefitsSection?.subtitle || ""}
+            {t('benefitsSection.subtitle')}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {benefitItems.map((benefit, index) => (
+          {benefitItems.map((benefit: { title: string; description: string }, index: number) => (
             <BenefitCard
               key={index}
               title={benefit.title}

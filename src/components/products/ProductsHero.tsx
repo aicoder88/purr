@@ -7,10 +7,11 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 
 export function ProductsHero() {
-    const { t, locale } = useTranslation();
+    const t = useTranslations();
+  const locale = useLocale();
     const productImageAlts =
         locale === 'fr'
             ? {
@@ -72,7 +73,7 @@ export function ProductsHero() {
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 dark:bg-purple-500 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
                             </span>
-                            {t.productsHero.pill}
+                            {t('productsHero.pill')}
                         </motion.div>
 
                         {/* Heading */}
@@ -84,7 +85,7 @@ export function ProductsHero() {
                         >
                             {useEnglishVariantHeadline
                                 ? 'Stop Litter Box Odor at the Source'
-                                : t.productsHero.headline}
+                                : t('productsHero.headline')}
                         </motion.h1>
 
                         {/* Subheading */}
@@ -96,7 +97,7 @@ export function ProductsHero() {
                         >
                             {useEnglishVariantHeadline
                                 ? 'Choose the format that matches your home and eliminate ammonia before it spreads.'
-                                : t.productsHero.subheadline}
+                                : t('productsHero.subheadline')}
                         </motion.p>
 
                         {trustBadge}
@@ -114,7 +115,7 @@ export function ProductsHero() {
                                 className="bg-brand-purple hover:bg-brand-purple/90 text-white dark:text-gray-100 font-bold text-lg px-8 py-6 h-auto shadow-xl shadow-brand-purple/20 transition-all hover:scale-105"
                             >
                                 <Link href="#product-comparison">
-                                    {useEnglishVariantCta ? 'Choose My Best Fit' : t.productsHero.findSizeButton}
+                                    {useEnglishVariantCta ? 'Choose My Best Fit' : t('productsHero.findSizeButton')}
                                 </Link>
                             </Button>
                             <Button
@@ -124,7 +125,7 @@ export function ProductsHero() {
                                 className="text-gray-600 dark:text-gray-300 hover:text-brand-purple dark:hover:text-purple-400 hover:bg-transparent font-medium group"
                             >
                                 <Link href="#science" className="flex items-center gap-2">
-                                    {t.productsHero.scienceButton}
+                                    {t('productsHero.scienceButton')}
                                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                 </Link>
                             </Button>

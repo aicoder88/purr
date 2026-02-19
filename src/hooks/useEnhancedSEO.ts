@@ -4,7 +4,7 @@
  * GEO (Generative Engine Optimization) compliant with ClaimReview and expert author schemas
  */
 
-import { useTranslation } from '../lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import { useCurrency } from '../lib/currency-context';
 import { optimizeMetaTitle, optimizeMetaDescription } from '../lib/seo/meta-optimizer';
 import { getLocalizedUrl, buildLanguageAlternates } from '../lib/seo-utils';
@@ -138,7 +138,7 @@ function getOGLocale(locale: string): string {
  * Provides optimized SEO props with automatic i18n, currency, and schema support
  */
 export function useEnhancedSEO(config: SEOConfig): EnhancedSEOResult {
-  const { locale } = useTranslation();
+  const locale = useLocale();
   const { currency } = useCurrency();
 
   // Optimize meta content

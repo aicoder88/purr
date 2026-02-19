@@ -25,12 +25,12 @@ import {
   CheckCircle,
   Sparkles,
 } from 'lucide-react';
-import { defaultLocale } from '@/i18n/config';
+import { locales } from '@/i18n/config';
 import { en } from '@/translations/en';
 import { fr } from '@/translations/fr';
 
 import type { Currency } from '@/lib/geo/currency-detector';
-import { SITE_NAME } from '@/lib/constants';
+import { SITE_NAME, SITE_URL } from '@/lib/constants';
 import { buildLanguageAlternates, normalizeLocale, stripContext } from '@/lib/seo-utils';
 
 // Force static generation
@@ -47,13 +47,27 @@ import { Testimonials } from '@/components/sections/testimonials';
 // Translation data mapping
 const translations = { en, fr };
 
+interface AmmoniaControlPageProps {
+  params: Promise<{
+    locale: string;
+  }>;
+}
+
+// Generate static params for all supported locales
+export async function generateStaticParams() {
+  return locales.map((locale) => ({
+    locale,
+  }));
+}
+
 // Generate metadata for the ammonia control page
-export async function generateMetadata(): Promise<Metadata> {
-  const normalizedLocale = normalizeLocale(defaultLocale);
+export async function generateMetadata({ params }: AmmoniaControlPageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const normalizedLocale = normalizeLocale(locale);
   const t = translations[normalizedLocale as keyof typeof translations] || en;
   const ammonia = t.ammonia;
 
-  const canonicalUrl = `https://www.purrify.ca/${normalizedLocale === 'en' ? '' : normalizedLocale + '/'}ammonia-control/`;
+  const canonicalUrl = normalizedLocale === 'en' ? `${SITE_URL}/ammonia-control/` : `${SITE_URL}/${normalizedLocale}/ammonia-control/`;
   const languageAlternates = buildLanguageAlternates('/ammonia-control');
 
   // Convert language alternates to Next.js format
@@ -73,7 +87,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'cat litter ammonia control',
       'activated carbon ammonia',
     ],
-    metadataBase: new URL('https://www.purrify.ca'),
+    metadataBase: new URL(SITE_URL),
     alternates: {
       canonical: canonicalUrl,
       languages: alternates,
@@ -87,7 +101,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: SITE_NAME,
       images: [
         {
-          url: '/images/og/ammonia-control.jpg',
+          url: `${SITE_URL}/images/ammonia-hero.webp`,
           width: 1200,
           height: 630,
           alt: ammonia.meta.title,
@@ -100,7 +114,7 @@ export async function generateMetadata(): Promise<Metadata> {
       creator: '@purrifyhq',
       title: ammonia.meta.title,
       description: ammonia.meta.description,
-      images: ['/images/og/ammonia-control.jpg'],
+      images: [`${SITE_URL}/images/ammonia-hero.webp`],
     },
     robots: {
       index: true,
@@ -116,16 +130,17 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 // Async server component for the ammonia control page
-export default async function AmmoniaControlPage() {
+export default async function AmmoniaControlPage({ params }: AmmoniaControlPageProps) {
+  const { locale } = await params;
   // Static generation with default CAD currency
   // Client-side detection can adjust if needed
   const currency: Currency = 'CAD';
 
-  const normalizedLocale = normalizeLocale(defaultLocale);
+  const normalizedLocale = normalizeLocale(locale);
   const t = translations[normalizedLocale as keyof typeof translations] || en;
   const ammonia = t.ammonia;
 
-  const canonicalUrl = `https://www.purrify.ca/${normalizedLocale === 'en' ? '' : normalizedLocale + '/'}ammonia-control/`;
+  const canonicalUrl = normalizedLocale === 'en' ? `${SITE_URL}/ammonia-control/` : `${SITE_URL}/${normalizedLocale}/ammonia-control/`;
 
   // Problem cards data
   const problemCards = [
@@ -182,7 +197,7 @@ export default async function AmmoniaControlPage() {
     { q: ammonia.faq.q8, a: ammonia.faq.a8 },
   ];
 
-  // Prices (static CAD for SSR)
+  // Currency symbol (static CAD for SSR)
   const lowPrice = '4.76';
   const highPrice = '34.99';
 
@@ -229,7 +244,7 @@ export default async function AmmoniaControlPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://www.purrify.ca',
+        item: SITE_URL,
       },
       {
         '@type': 'ListItem',

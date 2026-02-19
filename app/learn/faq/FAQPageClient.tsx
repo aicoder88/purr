@@ -5,6 +5,7 @@ import { useState, useCallback } from 'react';
 import { Container } from '../../../src/components/ui/container';
 import { Button } from '../../../src/components/ui/button';
 import { useTranslation } from '../../../src/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import { useCurrency } from '../../../src/lib/currency-context';
 import { RelatedContent } from '../../../src/components/seo/RelatedContent';
 import { formatProductPrice } from '../../../src/lib/pricing';
@@ -95,12 +96,16 @@ const FAQ_UI_COPY: Record<SupportedLocale, {
 
 };
 
+type FAQItem = { id: number; question: string; answer: string; category: string; featured: boolean };
+type FAQCategory = { id: string; name: string; icon: any; count: number };
+
 export default function FAQPageClient() {
   const { t, locale } = useTranslation();
+  const _locale = useLocale();
   const { currency } = useCurrency();
   const localePrefix = locale === 'en' ? '' : `/${locale}`;
   const uiCopy = FAQ_UI_COPY[locale as SupportedLocale] || FAQ_UI_COPY.en;
-  const faqPage = t.faqPage;
+  const faqPage = t.faqPage as Record<string, any>;
   const trialPrice = formatProductPrice('trial', currency, locale);
   const trialCheckoutUrl = getPaymentLink('trialSingle') || '/products/trial-size';
   const trialCtaLabel = faqPage?.tryRiskFree ||
@@ -122,7 +127,7 @@ export default function FAQPageClient() {
   const categoryCounts = [38, 14, 9, 6, 4, 2, 2, 1];
   const categoryIds = ['all', 'product', 'usage', 'comparison', 'troubleshooting', 'shipping', 'payment', 'support'];
 
-  const categories = (faqPage?.categoryList || []).map((cat, index) => ({
+  const categories = (faqPage?.categoryList || []).map((cat: { name: string }, index: number) => ({
     id: categoryIds[index],
     name: cat.name,
     icon: categoryIcons[index],
@@ -140,7 +145,7 @@ export default function FAQPageClient() {
     return 'support';
   };
 
-  const faqItems = (faqPage?.faqItems || []).map((item, index) => ({
+  const faqItems = (faqPage?.faqItems || []).map((item: { question: string; answer: string }, index: number) => ({
     id: index + 1,
     question: item.question,
     answer: item.answer,
@@ -175,14 +180,14 @@ export default function FAQPageClient() {
     toggleItem(id);
   }, [toggleItem]);
 
-  const filteredFAQs = faqItems.filter(item => {
+  const filteredFAQs = faqItems.filter((item: { id: number; question: string; answer: string; category: string; featured: boolean }) => {
     const matchesSearch = item.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.answer.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
-  const popularFAQs = faqItems.filter(item => item.featured).slice(0, 4);
+  const popularFAQs = faqItems.filter((item: { featured: boolean }) => item.featured).slice(0, 4);
 
   // Breadcrumb items
   const breadcrumbItems = [
@@ -191,7 +196,7 @@ export default function FAQPageClient() {
   ];
 
   // Generate FAQ schema from all items
-  const faqSchema = generateFAQSchema(faqItems.map(item => ({
+  const faqSchema = generateFAQSchema(faqItems.map((item: { question: string; answer: string }) => ({
     question: item.question,
     answer: item.answer,
   })), locale);
@@ -328,7 +333,7 @@ export default function FAQPageClient() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {popularFAQs.map((item) => (
+              {popularFAQs.map((item: FAQItem) => (
                 <div key={item.id} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:scale-105 transition-all duration-300">
                   <h3 className="faq-question speakable-content text-lg font-heading font-bold mb-3 text-gray-900 dark:text-gray-100">
                     {item.question}
@@ -374,7 +379,7 @@ export default function FAQPageClient() {
                   {faqPage?.categories || 'Categories'}
                 </h3>
                 <div className="space-y-2">
-                  {categories.map((category) => (
+                  {categories.map((category: FAQCategory) => (
                     <button
                       key={category.id}
                       onClick={() => handleCategoryClick(category.id)}
@@ -418,7 +423,7 @@ export default function FAQPageClient() {
                 </div>
 
                 <div className="space-y-4">
-                  {filteredFAQs.map((item) => (
+                  {filteredFAQs.map((item: FAQItem) => (
                     <div key={item.id} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 overflow-hidden hover:shadow-xl transition-all duration-300">
                       <button
                         onClick={() => handleToggleItem(item.id)}
@@ -435,7 +440,7 @@ export default function FAQPageClient() {
                               </span>
                             )}
                             <span className="px-2 py-1 bg-electric-indigo/10 dark:bg-electric-indigo/40 text-electric-indigo dark:text-white rounded-full text-xs font-medium">
-                              {categories.find(cat => cat.id === item.category)?.name}
+                              {categories.find((cat: FAQCategory) => cat.id === item.category)?.name}
                             </span>
                           </div>
                         </div>
@@ -457,7 +462,7 @@ export default function FAQPageClient() {
                                 size="sm"
                                 className="mt-4 bg-gradient-to-r from-deep-coral to-electric-indigo hover:from-deep-coral-600 hover:to-electric-indigo-600 text-white dark:text-gray-100 font-semibold hover:scale-105 transition-all duration-300"
                               >
-                                {(t.nav?.safetyInfo || 'Safety Information') + ' →'}
+                                {((t.nav as any)?.safetyInfo || 'Safety Information') + ' \u2192'}
                               </Button>
                             </Link>
                           )}
@@ -530,12 +535,12 @@ export default function FAQPageClient() {
                 </div>
 
                 <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 text-center hover:scale-105 transition-all duration-300">
-                  <Phone className="w-8 h-8 text-[#03E46A] mx-auto mb-4" />
-                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">{faqPage?.phoneSupport || 'Phone Support'}</h3>
+                  <Phone className="w-8 h-8 text-[#03E46A] dark:text-[#04D162] mx-auto mb-4" />
+                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">{faqPage?.emailSupport || 'Email Support'}</h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                     {faqPage?.speakDirectlyTeam || 'Speak with our team directly'}
                   </p>
-                  <Button size="sm" variant="outline" className="border-[#03E46A] text-[#03E46A] hover:bg-[#03E46A] hover:text-white dark:text-gray-100">
+                  <Button size="sm" variant="outline" className="border-[#03E46A] dark:border-[#04D162] text-[#03E46A] dark:text-[#04D162] hover:bg-[#03E46A] dark:hover:bg-[#04D162] hover:text-white dark:hover:text-gray-900 dark:text-gray-100">
                     {faqPage?.callNow || 'Call Now'}
                   </Button>
                 </div>

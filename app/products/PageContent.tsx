@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import { useCurrency } from '@/lib/currency-context';
 import {
   CheckCircle,
@@ -30,7 +30,8 @@ import { formatProductPrice, getProductPrice, formatCurrencyValue } from '@/lib/
 import { getPaymentLink } from '@/lib/payment-links';
 
 export default function ProductsPage() {
-  const { locale, t } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const { currency } = useCurrency();
   const breadcrumbAriaLabel =
     locale === 'fr'
@@ -112,7 +113,7 @@ export default function ProductsPage() {
     },
   };
 
-  const _products = t.productComparison.products.map((product) => {
+  const _products = ([] as any[]).map((product: any) => {
     const priceKey = productIdAlias[product.id] ?? 'regular';
     const displayName = productDisplayNames[product.id] || { name: product.name, nameFr: product.name, subtitle: product.subtitle, subtitleFr: product.subtitle };
     const imageData = productImages[product.id] || { src: '/optimized/60g-transparent.webp', size: 'md' as const };
@@ -135,7 +136,7 @@ export default function ProductsPage() {
     };
   });
 
-  const _comparisonFeatures = t.productComparison.comparisonFeatures.map((item, index) => ({
+  const _comparisonFeatures = ([] as any[]).map((item: any, index: number) => ({
     feature: item.feature,
     trial: index < 4,
     regular: true,
@@ -148,47 +149,47 @@ export default function ProductsPage() {
   const usageCalculator = [
     {
       cats: 1,
-      litterChanges: t.productComparison.units.weekly,
-      trial: `1 ${t.productComparison.units.week}`,
-      regular: `30 ${t.productComparison.units.days}`,
-      large: `10-12 ${t.productComparison.units.weeks}`
+      litterChanges: t('productComparison.units.weekly'),
+      trial: `1 ${t('productComparison.units.week')}`,
+      regular: `30 ${t('productComparison.units.days')}`,
+      large: `10-12 ${t('productComparison.units.weeks')}`
     },
     {
       cats: 2,
-      litterChanges: `2x ${t.productComparison.units.perWeek}`,
-      trial: `3-4 ${t.productComparison.units.days}`,
-      regular: `2-3 ${t.productComparison.units.weeks}`,
-      large: `5-6 ${t.productComparison.units.weeks}`
+      litterChanges: `2x ${t('productComparison.units.perWeek')}`,
+      trial: `3-4 ${t('productComparison.units.days')}`,
+      regular: `2-3 ${t('productComparison.units.weeks')}`,
+      large: `5-6 ${t('productComparison.units.weeks')}`
     },
     {
       cats: 3,
-      litterChanges: `3x ${t.productComparison.units.perWeek}`,
-      trial: `2-3 ${t.productComparison.units.days}`,
-      regular: `1-2 ${t.productComparison.units.weeks}`,
-      large: `3-4 ${t.productComparison.units.weeks}`
+      litterChanges: `3x ${t('productComparison.units.perWeek')}`,
+      trial: `2-3 ${t('productComparison.units.days')}`,
+      regular: `1-2 ${t('productComparison.units.weeks')}`,
+      large: `3-4 ${t('productComparison.units.weeks')}`
     }
   ];
 
   // Quick decision helper data - using new copywriting translations
   const quickPicks = [
     {
-      question: t.productsPage?.quickDecision?.trial?.question || "Skeptical? Good. Prove it to yourself.",
-      answer: t.productsPage?.quickDecision?.trial?.answer || "The FREE Trial Bag",
-      detail: t.productsPage?.quickDecision?.trial?.detail || "Just pay shipping. If your nose isn't convinced in 7 days, we've both learned something.",
+      question: t('productsPage.quickDecision.trial.question') || "Skeptical? Good. Prove it to yourself.",
+      answer: t('productsPage.quickDecision.trial.answer') || "The FREE Trial Bag",
+      detail: t('productsPage.quickDecision.trial.detail') || "Just pay shipping. If your nose isn't convinced in 7 days, we've both learned something.",
       productId: "trial",
       icon: <Sparkles className="w-6 h-6" />,
     },
     {
-      question: t.productsPage?.quickDecision?.regular?.question || "One or two furry overlords at home?",
-      answer: t.productsPage?.quickDecision?.regular?.answer || "The Regular Bag",
-      detail: t.productsPage?.quickDecision?.regular?.detail || "3 months of 'wait, where's the litter box?' moments. Our most popular size for a reason.",
+      question: t('productsPage.quickDecision.regular.question') || "One or two furry overlords at home?",
+      answer: t('productsPage.quickDecision.regular.answer') || "The Regular Bag",
+      detail: t('productsPage.quickDecision.regular.detail') || "3 months of 'wait, where's the litter box?' moments. Our most popular size for a reason.",
       productId: "regular",
       icon: <Cat className="w-6 h-6" />,
     },
     {
-      question: t.productsPage?.quickDecision?.large?.question || "Running a cat hotel? (No judgment.)",
-      answer: t.productsPage?.quickDecision?.large?.answer || "The Large Bag",
-      detail: t.productsPage?.quickDecision?.large?.detail || "For multi-cat homes where odor control isn't optional. Free shipping. Maximum freshness.",
+      question: t('productsPage.quickDecision.large.question') || "Running a cat hotel? (No judgment.)",
+      answer: t('productsPage.quickDecision.large.answer') || "The Large Bag",
+      detail: t('productsPage.quickDecision.large.detail') || "For multi-cat homes where odor control isn't optional. Free shipping. Maximum freshness.",
       productId: "large",
       icon: <Users className="w-6 h-6" />,
     },
@@ -198,18 +199,18 @@ export default function ProductsPage() {
   const trustSignals = [
     {
       icon: <Shield className="w-8 h-8" />,
-      title: t.productsPage?.trustSignals?.waterFilter?.title || "The Same Stuff in Your Brita",
-      description: t.productsPage?.trustSignals?.waterFilter?.description || "Meets NSF/ANSI 61 standards. If it's good enough to make tap water drinkable, imagine what it does to ammonia.",
+      title: t('productsPage.trustSignals.waterFilter.title') || "The Same Stuff in Your Brita",
+      description: t('productsPage.trustSignals.waterFilter.description') || "Meets NSF/ANSI 61 standards. If it's good enough to make tap water drinkable, imagine what it does to ammonia.",
     },
     {
       icon: <Leaf className="w-8 h-8" />,
-      title: t.productsPage?.trustSignals?.ingredients?.title || "Ingredients: Coconut Shells. That's It.",
-      description: t.productsPage?.trustSignals?.ingredients?.description || "No fragrance to stress your cat. No chemicals to worry about. Just pure, activated carbon from coconut shells.",
+      title: t('productsPage.trustSignals.ingredients.title') || "Ingredients: Coconut Shells. That's It.",
+      description: t('productsPage.trustSignals.ingredients.description') || "No fragrance to stress your cat. No chemicals to worry about. Just pure, activated carbon from coconut shells.",
     },
     {
       icon: <Droplets className="w-8 h-8" />,
-      title: t.productsPage?.trustSignals?.science?.title || "Science, Not Perfume",
-      description: t.productsPage?.trustSignals?.science?.description || "One gram has the surface area of a football field. Those microscopic tunnels trap odor molecules permanently. Gone. Not hiding.",
+      title: t('productsPage.trustSignals.science.title') || "Science, Not Perfume",
+      description: t('productsPage.trustSignals.science.description') || "One gram has the surface area of a football field. Those microscopic tunnels trap odor molecules permanently. Gone. Not hiding.",
     },
   ];
 
@@ -426,10 +427,10 @@ export default function ProductsPage() {
                   {/* Testimonial Content */}
                   <div className="md:col-span-2">
                     <h2 className="font-heading text-2xl font-bold text-brand-purple dark:text-purple-400 mb-4">
-                      “{t.productsPage?.testimonial?.headline || "Game changer for my apartment!"}”
+                      “{t('productsPage.testimonial.headline') || "Game changer for my apartment!"}”
                     </h2>
                     <blockquote className="text-lg text-gray-700 dark:text-gray-200 mb-6 leading-relaxed">
-                      “{t.productsPage?.testimonial?.quote || "I live in a small studio apartment with two cats, and the litter box smell was becoming unbearable. Purrify completely eliminated the odor within 24 hours. I was skeptical about the price at first, but it lasts so much longer than other products I've tried. Worth every penny!"}”
+                      “{t('productsPage.testimonial.quote') || "I live in a small studio apartment with two cats, and the litter box smell was becoming unbearable. Purrify completely eliminated the odor within 24 hours. I was skeptical about the price at first, but it lasts so much longer than other products I've tried. Worth every penny!"}”
                     </blockquote>
                     <div className="flex items-center gap-3">
                       <div className="flex gap-1">
@@ -438,7 +439,7 @@ export default function ProductsPage() {
                         ))}
                       </div>
                       <span className="text-gray-600 dark:text-gray-300">
-                        — <span className="font-semibold">{t.productsPage?.testimonial?.author || "Sarah M."}</span>, {t.productsPage?.testimonial?.location || "Montreal, QC"} ({t.productsPage?.testimonial?.details || "2 cats, small apartment"})
+                        — <span className="font-semibold">{t('productsPage.testimonial.author') || "Sarah M."}</span>, {t('productsPage.testimonial.location') || "Montreal, QC"} ({t('productsPage.testimonial.details') || "2 cats, small apartment"})
                       </span>
                     </div>
                   </div>
@@ -608,12 +609,12 @@ export default function ProductsPage() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {(t.productsPage?.whatYouGet?.benefits || [
-                  { title: "Water-Filter Grade Activated Carbon", description: "The exact same material used in Brita filters and hospital air purification. Not 'similar to.' The same." },
-                  { title: "Zero Fragrances. Zero Chemicals. Zero Worries.", description: "Cats have 200 million scent receptors. Artificial fragrances stress them. Purrify works invisibly." },
-                  { title: "Clay, Crystal, Clumping, Natural... We Don't Judge", description: "Works with whatever litter your cat has trained you to buy. No switching drama." },
-                  { title: "Open. Sprinkle. Done.", description: "A thin layer on top. 30 seconds of effort for 7 days of results." }
-                ]).map((benefit, index) => (
+                {([
+                  { title: t('productsPage.whatYouGet.benefits.0.title') || "Water-Filter Grade Activated Carbon", description: t('productsPage.whatYouGet.benefits.0.description') || "The exact same material used in Brita filters and hospital air purification. Not 'similar to.' The same." },
+                  { title: t('productsPage.whatYouGet.benefits.1.title') || "Zero Fragrances. Zero Chemicals. Zero Worries.", description: t('productsPage.whatYouGet.benefits.1.description') || "Cats have 200 million scent receptors. Artificial fragrances stress them. Purrify works invisibly." },
+                  { title: t('productsPage.whatYouGet.benefits.2.title') || "Clay, Crystal, Clumping, Natural... We Don't Judge", description: t('productsPage.whatYouGet.benefits.2.description') || "Works with whatever litter your cat has trained you to buy. No switching drama." },
+                  { title: t('productsPage.whatYouGet.benefits.3.title') || "Open. Sprinkle. Done.", description: t('productsPage.whatYouGet.benefits.3.description') || "A thin layer on top. 30 seconds of effort for 7 days of results." }
+                ]).map((benefit: { title: string; description: string }, index: number) => (
                   <div key={index} className="flex items-start space-x-4">
                     <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
                       <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
@@ -645,10 +646,10 @@ export default function ProductsPage() {
           <Container>
             <div className="text-center mb-12">
               <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-                {t.productComparison.howLongWillEachSizeLast}
+                {t('productComparison.howLongWillEachSizeLast')}
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
-                {t.productComparison.usageCalculator.subtitle}
+                {t('productComparison.usageCalculator.subtitle')}
               </p>
             </div>
 
@@ -657,8 +658,8 @@ export default function ProductsPage() {
                 <table className="w-full">
                   <thead className="bg-gradient-to-r from-brand-purple to-brand-red text-white dark:text-gray-100">
                     <tr>
-                      <th className="px-6 py-4 text-left font-bold">{t.productComparison.usageCalculator.numberOfCats}</th>
-                      <th className="px-6 py-4 text-center font-bold">{t.productComparison.usageCalculator.typicalChanges}</th>
+                      <th className="px-6 py-4 text-left font-bold">{t('productComparison.usageCalculator.numberOfCats')}</th>
+                      <th className="px-6 py-4 text-center font-bold">{t('productComparison.usageCalculator.typicalChanges')}</th>
                       <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Format Essai' : 'Trial Bag'}</th>
                       <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Format Régulier' : 'Regular Bag'}</th>
                       <th className="px-6 py-4 text-center font-bold">{locale === 'fr' ? 'Grand Format' : 'Large Bag'}</th>
@@ -668,7 +669,7 @@ export default function ProductsPage() {
                     {usageCalculator.map((row, index) => (
                       <tr key={index} className={`${index % 2 === 0 ? 'bg-gray-50 dark:bg-gray-700/50' : 'bg-white dark:bg-gray-800'}`}>
                         <td className="px-6 py-4 font-bold text-brand-purple">
-                          {row.cats} {row.cats > 1 ? t.productComparison.units.cats : t.productComparison.units.cat}
+                          {row.cats} {row.cats > 1 ? t('productComparison.units.cats') : t('productComparison.units.cat')}
                         </td>
                         <td className="px-6 py-4 text-center text-gray-600 dark:text-gray-300">
                           {row.litterChanges}
@@ -763,7 +764,7 @@ export default function ProductsPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {(t.productsPage?.relatedPages || t.productComparison.relatedPages).map((page, index) => (
+              {((t.raw('productsPage.relatedPages') || t.raw('productComparison.relatedPages')) as Array<{ link: string; title: string; description: string }>).map((page: { link: string; title: string; description: string }, index: number) => (
                 <Link href={`${locale === 'fr' ? '/fr' : ''}${page.link}`} key={index} className="group">
                   <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-brand-light dark:border-gray-700 hover:shadow-xl transition-shadow">
                     <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-brand-purple transition-colors">
@@ -778,10 +779,10 @@ export default function ProductsPage() {
               <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/activated-carbon-vs-baking-soda-deodorizers`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-brand-light dark:border-gray-700 hover:shadow-xl transition-shadow">
                   <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-brand-purple transition-colors">
-                    {t.nav.carbonVsBakingSoda}
+                    {t('nav.carbonVsBakingSoda')}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    {t.nav.carbonVsBakingSodaDesc}
+                    {t('nav.carbonVsBakingSodaDesc')}
                   </p>
                 </div>
               </Link>

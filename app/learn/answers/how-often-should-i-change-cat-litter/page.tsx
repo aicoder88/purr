@@ -45,8 +45,8 @@ export default function QuestionPage() {
     <main className="min-h-screen bg-white dark:bg-gray-900">
       <header className="bg-[#1E4D6B] dark:bg-[#1E4D6B] py-6 px-4">
         <div className="max-w-3xl mx-auto flex items-center gap-4">
-          <Link 
-            href="/learn/cat-litter-answers" 
+          <Link
+            href="/learn/cat-litter-answers"
             className="text-white dark:text-white/80 dark:text-white dark:text-white/80 hover:text-white dark:text-white flex items-center gap-2 text-sm"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -80,7 +80,7 @@ export default function QuestionPage() {
             <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
               Quick Reference Chart
             </h2>
-            
+
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
@@ -124,7 +124,7 @@ export default function QuestionPage() {
             <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
               <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Multi-Cat Adjustment</h3>
               <p className="text-blue-800 dark:text-blue-300 text-sm">
-                Have multiple cats? Reduce the "Full Change" timeline by 30-50% per additional cat. 
+                Have multiple cats? Reduce the "Full Change" timeline by 30-50% per additional cat.
                 <br />
                 <strong>Example:</strong> 2 cats with clumping = change every 1 week (not 2).
               </p>
@@ -155,7 +155,7 @@ export default function QuestionPage() {
               </p>
               <Link
                 href="/products/"
-                className="inline-flex items-center justify-center px-6 py-3 bg-[#F7A41D] hover:bg-[#E09400] text-white dark:text-white font-semibold rounded-full transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 bg-[#F7A41D] dark:bg-[#FFA726] hover:bg-[#E09400] dark:hover:bg-[#FFA726]/90 text-white dark:text-gray-900 font-semibold rounded-full transition-colors"
               >
                 Try Purrify
               </Link>

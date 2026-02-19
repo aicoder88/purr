@@ -1,11 +1,11 @@
 'use client';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import {  Download, Search, Calendar } from 'lucide-react';
 import { useState } from 'react';
 import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
 import { CONTACT_INFO } from '@/lib/constants';
 export default function DocumentsPage() {
-  const { locale } = useTranslation();
+  const locale = useLocale();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedLanguage, setSelectedLanguage] = useState('all');

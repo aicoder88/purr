@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Container } from '../../../src/components/ui/container';
 import { Button } from '../../../src/components/ui/button';
 import { useTranslation } from '../../../src/lib/translation-context';
+import { useLocale } from 'next-intl';
 import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
 import Image from 'next/image';
 import {
@@ -475,7 +476,7 @@ const GUIDE_COPY: Record<SupportedLocale, GuideCopy> = {
 const MAINTENANCE_ICONS = [Clock, Droplets, Shield, Heart];
 
 export default function CatLitterGuidePageContent() {
-  const { locale } = useTranslation();
+  const locale = useLocale();
   const localePrefix = locale === 'en' ? '' : `/${locale}`;
   const homePath = localePrefix || '/';
   const copy = GUIDE_COPY[locale as SupportedLocale] || GUIDE_COPY.en;
@@ -531,275 +532,275 @@ export default function CatLitterGuidePageContent() {
         />
       )}
       <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
-      {/* Breadcrumb Navigation */}
-      <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
-        <Container>
-          <nav aria-label={copy.breadcrumbAriaLabel} className="flex items-center text-sm">
-            <Link href={homePath} className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
-              <Home className="w-4 h-4" />
-              <span className="sr-only">{copy.homeSrOnly}</span>
-            </Link>
-            {breadcrumbItems.map((item, index, arr) => (
-              <span key={item.path} className="flex items-center">
-                <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
-                {index === arr.length - 1 ? (
-                  <span aria-current="page" className="font-medium text-gray-900 dark:text-gray-100">{item.name}</span>
-                ) : (
-                  <Link href={item.path} className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
-                    {item.name}
-                  </Link>
-                )}
-              </span>
-            ))}
-          </nav>
-        </Container>
-      </section>
-
-      {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
-        <Container>
-          <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
-            <BookOpen className="w-16 h-16 mx-auto mb-6 opacity-90" />
-            <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">
-              {copy.heroTitle}
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 opacity-90">
-              {copy.heroDescription}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href={trialCheckoutUrl} target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
-                  {trialCtaLabel}
-                  <ChevronRight className="w-5 h-5 ml-2" />
-                </Button>
-              </a>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* Hero Image */}
-      <section className="py-8">
-        <Container>
-          <div className="max-w-4xl mx-auto">
-            <Image
-              src={heroImage}
-              alt={copy.heroImageAlt}
-              width={1600}
-              height={1067}
-              className="w-full h-auto rounded-lg shadow-lg"
-            />
-          </div>
-        </Container>
-      </section>
-
-      {/* Litter Types Comparison */}
-      <section className="py-16">
-        <Container>
-          <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-              {copy.litterTypesTitle}
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              {copy.litterTypesDescription}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {copy.litterTypes.map((litter, index) => (
-              <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100">
-                    {litter.name}
-                  </h3>
-                  <div className="flex">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`w-5 h-5 ${i < litter.rating ? 'text-yellow-400 fill-current' : 'text-gray-300 dark:text-gray-600'}`}
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-semibold text-green-600 dark:text-green-400 mb-2">{copy.prosLabel}</h4>
-                    <ul className="space-y-1">
-                      {litter.pros.map((pro, i) => (
-                        <li key={i} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
-                          <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400 mr-2 flex-shrink-0" />
-                          {pro}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold text-red-600 dark:text-red-400 mb-2">{copy.consLabel}</h4>
-                    <ul className="space-y-1">
-                      {litter.cons.map((con, i) => (
-                        <li key={i} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
-                          <XCircle className="w-4 h-4 text-red-500 dark:text-red-400 mr-2 flex-shrink-0" />
-                          {con}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Section Image - Different Litter Types */}
-      <section className="py-8">
-        <Container>
-          <div className="max-w-4xl mx-auto">
-            <Image
-              src={sectionImage1}
-              alt={copy.sectionImageAlt}
-              width={1600}
-              height={1067}
-              className="w-full h-auto rounded-lg shadow-md"
-            />
-          </div>
-        </Container>
-      </section>
-
-      {/* Maintenance Tips */}
-      <section className="py-16 bg-[#E0EFC7]/30 dark:bg-gray-800/50">
-        <Container>
-          <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-              {copy.maintenanceTitle}
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              {copy.maintenanceDescription}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {copy.maintenanceTips.map((tip, index) => {
-              const TipIcon = MAINTENANCE_ICONS[index] || Clock;
-              return (
-                <div key={index} className="text-center">
-                  <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <TipIcon className="w-8 h-8 text-white dark:text-gray-100" />
-                  </div>
-                  <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">
-                    {tip.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    {tip.description}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </Container>
-      </section>
-
-      {/* Section Image - Cat Owner Maintenance */}
-      <section className="py-8">
-        <Container>
-          <div className="max-w-4xl mx-auto">
-            <Image
-              src={sectionImage2}
-              alt={copy.maintenanceImageAlt}
-              width={1600}
-              height={1067}
-              className="w-full h-auto rounded-lg shadow-md"
-            />
-          </div>
-        </Container>
-      </section>
-
-      {/* Common Problems & Solutions */}
-      <section className="py-16">
-        <Container>
-          <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-              {copy.problemsTitle}
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              {copy.problemsDescription}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {copy.commonProblems.map((item, index) => (
-              <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
-                <h3 className="font-heading text-xl font-bold mb-3 text-red-600 dark:text-red-400">
-                  {copy.problemLabel} {item.problem}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  <span className="font-semibold text-green-600 dark:text-green-400">{copy.solutionLabel}</span> {item.solution}
-                </p>
-                {item.link && (
-                  <Link href={`${localePrefix}${item.link}`}>
-                    <Button variant="outline" size="sm">
-                      {copy.learnMoreLabel}
-                      <ChevronRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </Link>
-                )}
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Solution Image - Happy Multi-Cat Household */}
-      <section className="py-8">
-        <Container>
-          <div className="max-w-4xl mx-auto">
-            <Image
-              src={solutionImage}
-              alt={copy.solutionImageAlt}
-              width={1600}
-              height={1067}
-              className="w-full h-auto rounded-lg shadow-md"
-            />
-          </div>
-        </Container>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
-        <Container>
-          <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-              {copy.ctaTitle}
-            </h2>
-            <p className="text-xl mb-8 opacity-90">
-              {copy.ctaDescription}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href={trialCheckoutUrl} target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
-                  {trialCtaLabel}
-                  <ChevronRight className="w-5 h-5 ml-2" />
-                </Button>
-              </a>
-              <Link href={`${localePrefix}/reviews`}>
-                <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
-                  {copy.readSuccessStoriesLabel}
-                </Button>
+        {/* Breadcrumb Navigation */}
+        <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
+          <Container>
+            <nav aria-label={copy.breadcrumbAriaLabel} className="flex items-center text-sm">
+              <Link href={homePath} className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+                <Home className="w-4 h-4" />
+                <span className="sr-only">{copy.homeSrOnly}</span>
               </Link>
-            </div>
-          </div>
-        </Container>
-      </section>
+              {breadcrumbItems.map((item, index, arr) => (
+                <span key={item.path} className="flex items-center">
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  {index === arr.length - 1 ? (
+                    <span aria-current="page" className="font-medium text-gray-900 dark:text-gray-100">{item.name}</span>
+                  ) : (
+                    <Link href={item.path} className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
+                      {item.name}
+                    </Link>
+                  )}
+                </span>
+              ))}
+            </nav>
+          </Container>
+        </section>
 
-      {/* Related Articles */}
-      <section className="py-16">
-        <Container>
-          <RelatedContent currentUrl="/learn/cat-litter-guide" />
-        </Container>
-      </section>
-    </main>
+        {/* Hero Section */}
+        <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
+          <Container>
+            <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
+              <BookOpen className="w-16 h-16 mx-auto mb-6 opacity-90" />
+              <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">
+                {copy.heroTitle}
+              </h1>
+              <p className="text-xl md:text-2xl mb-8 opacity-90">
+                {copy.heroDescription}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href={trialCheckoutUrl} target="_blank" rel="noopener noreferrer">
+                  <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] dark:text-[#818CF8] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
+                    {trialCtaLabel}
+                    <ChevronRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </a>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Hero Image */}
+        <section className="py-8">
+          <Container>
+            <div className="max-w-4xl mx-auto">
+              <Image
+                src={heroImage}
+                alt={copy.heroImageAlt}
+                width={1600}
+                height={1067}
+                className="w-full h-auto rounded-lg shadow-lg"
+              />
+            </div>
+          </Container>
+        </section>
+
+        {/* Litter Types Comparison */}
+        <section className="py-16">
+          <Container>
+            <div className="text-center mb-12">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+                {copy.litterTypesTitle}
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                {copy.litterTypesDescription}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {copy.litterTypes.map((litter, index) => (
+                <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100">
+                      {litter.name}
+                    </h3>
+                    <div className="flex">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`w-5 h-5 ${i < litter.rating ? 'text-yellow-400 fill-current' : 'text-gray-300 dark:text-gray-600'}`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold text-green-600 dark:text-green-400 mb-2">{copy.prosLabel}</h4>
+                      <ul className="space-y-1">
+                        {litter.pros.map((pro, i) => (
+                          <li key={i} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
+                            <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400 mr-2 flex-shrink-0" />
+                            {pro}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 className="font-semibold text-red-600 dark:text-red-400 mb-2">{copy.consLabel}</h4>
+                      <ul className="space-y-1">
+                        {litter.cons.map((con, i) => (
+                          <li key={i} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
+                            <XCircle className="w-4 h-4 text-red-500 dark:text-red-400 mr-2 flex-shrink-0" />
+                            {con}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
+
+        {/* Section Image - Different Litter Types */}
+        <section className="py-8">
+          <Container>
+            <div className="max-w-4xl mx-auto">
+              <Image
+                src={sectionImage1}
+                alt={copy.sectionImageAlt}
+                width={1600}
+                height={1067}
+                className="w-full h-auto rounded-lg shadow-md"
+              />
+            </div>
+          </Container>
+        </section>
+
+        {/* Maintenance Tips */}
+        <section className="py-16 bg-[#E0EFC7]/30 dark:bg-gray-800/50">
+          <Container>
+            <div className="text-center mb-12">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+                {copy.maintenanceTitle}
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                {copy.maintenanceDescription}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {copy.maintenanceTips.map((tip, index) => {
+                const TipIcon = MAINTENANCE_ICONS[index] || Clock;
+                return (
+                  <div key={index} className="text-center">
+                    <div className="w-16 h-16 bg-[#5B2EFF] dark:bg-[#818CF8] rounded-full flex items-center justify-center mx-auto mb-4">
+                      <TipIcon className="w-8 h-8 text-white dark:text-gray-900" />
+                    </div>
+                    <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">
+                      {tip.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      {tip.description}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </Container>
+        </section>
+
+        {/* Section Image - Cat Owner Maintenance */}
+        <section className="py-8">
+          <Container>
+            <div className="max-w-4xl mx-auto">
+              <Image
+                src={sectionImage2}
+                alt={copy.maintenanceImageAlt}
+                width={1600}
+                height={1067}
+                className="w-full h-auto rounded-lg shadow-md"
+              />
+            </div>
+          </Container>
+        </section>
+
+        {/* Common Problems & Solutions */}
+        <section className="py-16">
+          <Container>
+            <div className="text-center mb-12">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+                {copy.problemsTitle}
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                {copy.problemsDescription}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {copy.commonProblems.map((item, index) => (
+                <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
+                  <h3 className="font-heading text-xl font-bold mb-3 text-red-600 dark:text-red-400">
+                    {copy.problemLabel} {item.problem}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">
+                    <span className="font-semibold text-green-600 dark:text-green-400">{copy.solutionLabel}</span> {item.solution}
+                  </p>
+                  {item.link && (
+                    <Link href={`${localePrefix}${item.link}`}>
+                      <Button variant="outline" size="sm">
+                        {copy.learnMoreLabel}
+                        <ChevronRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </Link>
+                  )}
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
+
+        {/* Solution Image - Happy Multi-Cat Household */}
+        <section className="py-8">
+          <Container>
+            <div className="max-w-4xl mx-auto">
+              <Image
+                src={solutionImage}
+                alt={copy.solutionImageAlt}
+                width={1600}
+                height={1067}
+                className="w-full h-auto rounded-lg shadow-md"
+              />
+            </div>
+          </Container>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-16 bg-gradient-to-br from-[#5B2EFF] to-[#FF3131]">
+          <Container>
+            <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
+                {copy.ctaTitle}
+              </h2>
+              <p className="text-xl mb-8 opacity-90">
+                {copy.ctaDescription}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href={trialCheckoutUrl} target="_blank" rel="noopener noreferrer">
+                  <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] dark:text-[#818CF8] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
+                    {trialCtaLabel}
+                    <ChevronRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </a>
+                <Link href={`${localePrefix}/reviews`}>
+                  <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
+                    {copy.readSuccessStoriesLabel}
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Related Articles */}
+        <section className="py-16">
+          <Container>
+            <RelatedContent currentUrl="/learn/cat-litter-guide" />
+          </Container>
+        </section>
+      </main>
     </>
   );
 }

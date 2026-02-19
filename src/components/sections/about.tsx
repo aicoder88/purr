@@ -2,13 +2,14 @@
 
 import { Container } from "@/components/ui/container";
 import SectionHeader from "@/components/ui/section-header";
-import { useTranslation } from "@/lib/translation-context";
+import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 
 import Image from 'next/image';
 
 export function About() {
-  const { t, locale } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const aboutUiCopy =
     locale === 'fr'
       ? {
@@ -31,9 +32,9 @@ export function About() {
     <section className="pt-20 pb-16 bg-gradient-to-b from-[#FFFFF5] to-background dark:from-gray-900 dark:to-gray-800 transition-colors duration-300" id="about">
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <SectionHeader text={t.features.longLastingFreshness.title} />
+          <SectionHeader text={t('features.longLastingFreshness.title')} />
 
-          <h2 className="font-heading text-4xl md:text-5xl mt-3 font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent">{t.about.naturalAndEffective}</h2>
+          <h2 className="font-heading text-4xl md:text-5xl mt-3 font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent">{t('about.naturalAndEffective')}</h2>
 
           <div className="relative group flex flex-col items-center my-8">
             {/* Pre-allocate space for the image with a fixed height container */}
@@ -41,7 +42,7 @@ export function About() {
             <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-[#E0EFC7]/50 dark:shadow-white/20 transition duration-300 w-10/12 h-[400px] bg-white dark:bg-white/95 p-4">
               <Image
                 src="/optimized/Carbon-sktech.webp"
-                alt={t.homepage.altText.scientificDiagram}
+                alt={t('homepage.altText.scientificDiagram')}
                 width={800}
                 height={400}
                 className="w-full h-[120%] object-cover object-top -mt-[10%] group-hover:scale-105 transition duration-700"
@@ -52,7 +53,7 @@ export function About() {
           </div>
 
           <p className="text-3xl font-semibold text-foreground mb-6">
-            {t.features.catFriendly.description} <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`} className="text-[#FF3131] hover:text-[#FF3131]/80 underline font-medium">{aboutUiCopy.discoverScience}</Link> {aboutUiCopy.behindOur} <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`} className="text-[#5B2EFF] hover:text-[#5B2EFF]/80 underline font-medium">{aboutUiCopy.activatedCarbonFormula}</Link>.
+            {t('features.catFriendly.description')} <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`} className="text-[#FF3131] hover:text-[#FF3131]/80 underline font-medium">{aboutUiCopy.discoverScience}</Link> {aboutUiCopy.behindOur} <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`} className="text-[#5B2EFF] hover:text-[#5B2EFF]/80 underline font-medium">{aboutUiCopy.activatedCarbonFormula}</Link>.
           </p>
         </div>
 
@@ -96,18 +97,18 @@ export function About() {
           </div>
           <div className="space-y-6">
             <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-lg dark:text-gray-300">
-              {t.features.odorElimination.description}
+              {t('features.odorElimination.description')}
             </p>
             <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-lg dark:text-gray-300">
-              {t.features.catFriendly.description}
+              {t('features.catFriendly.description')}
             </p>
             <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-lg dark:text-gray-300">
               <span className="font-bold text-[#FF3131] dark:text-[#FF5050]">
-                {t.siteName} {t.features.odorElimination.title}.
+                {t('siteName')} {t('features.odorElimination.title')}.
               </span>
             </p>
             <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-lg dark:text-gray-300">
-              {t.features.longLastingFreshness.description} {t.features.worksWithAnyLitter.description}
+              {t('features.longLastingFreshness.description')} {t('features.worksWithAnyLitter.description')}
             </p>
           </div>
         </div>

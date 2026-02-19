@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Award, Check, CheckCircle2, ChevronRight, FileCheck, Home, Leaf, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import { localizePath } from '@/lib/i18n/locale-path';
 
 type SafetyCopy = {
@@ -148,7 +148,8 @@ const SPECIFICATIONS = [
 ];
 
 export default function SafetyPageClient() {
-  const { locale, t } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale() as 'en' | 'fr';
   const language = locale === 'fr' ? locale : 'en';
   const copy = SAFETY_COPY[language as 'en' | 'fr'];
 
@@ -172,7 +173,7 @@ export default function SafetyPageClient() {
             </Link>
             <span className="flex items-center">
               <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
-              <span className="text-gray-500 dark:text-gray-400">{t.nav.learn}</span>
+              <span className="text-gray-500 dark:text-gray-400">{t('nav.learn')}</span>
             </span>
             <span className="flex items-center">
               <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Home } from 'lucide-react';
 import Script from 'next/script';
 import { Container } from '@/components/ui/container';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import { StructuredDataGenerator } from '@/lib/seo/structured-data-generator';
 
 interface BreadcrumbItem {
@@ -19,7 +19,8 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
   items,
   className = "py-4 border-b border-[#E0EFC7] dark:border-gray-800"
 }) => {
-  const { locale, t } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const homeHref = locale === 'en' ? '/' : `/${locale}`;
   const breadcrumbLabel =
     locale === 'fr'
@@ -33,7 +34,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 
   // Generate breadcrumb structured data
   const breadcrumbItems = [
-    { name: t.nav?.home || 'Home', url: `${baseUrl}${homeHref}` },
+    { name: t('nav.home') || 'Home', url: `${baseUrl}${homeHref}` },
     ...items
       .filter(item => item.href) // Only include items with hrefs
       .map(item => ({

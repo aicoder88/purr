@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import AffiliateLayout from '@/components/affiliate/AffiliateLayout';
 import { PayoutRequestModal } from '@/components/affiliate/PayoutRequestModal';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import {
     Wallet,
     Clock,
@@ -104,7 +104,7 @@ function BalanceCard({
 }
 
 export default function PayoutsContent() {
-    const { t } = useTranslation();
+    const t = useTranslations();
     const router = useRouter();
     const [data, setData] = useState<PayoutsData | null>(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -125,11 +125,11 @@ export default function PayoutsContent() {
             setData(payoutsData);
         } catch (err) {
             console.error('Failed to fetch payouts:', err);
-            setError(t.affiliateDashboard?.errors?.loadFailed || 'Failed to load payout data');
+            setError(t('affiliateDashboard.errors.loadFailed') || 'Failed to load payout data');
         } finally {
             setIsLoading(false);
         }
-    }, [t.affiliateDashboard?.errors?.loadFailed, router]);
+    }, [t('affiliateDashboard.errors.loadFailed'), router]);
 
     useEffect(() => {
         fetchPayouts();
@@ -155,11 +155,11 @@ export default function PayoutsContent() {
         };
 
         const statusLabels: Record<string, string> = {
-            PENDING: t.affiliateDashboard?.payoutsSection?.statusPending || 'Pending',
-            PROCESSING: t.affiliateDashboard?.payoutsSection?.statusProcessing || 'Processing',
-            COMPLETED: t.affiliateDashboard?.payoutsSection?.statusCompleted || 'Completed',
-            FAILED: t.affiliateDashboard?.payoutsSection?.statusRejected || 'Failed',
-            REJECTED: t.affiliateDashboard?.payoutsSection?.statusRejected || 'Rejected',
+            PENDING: t('affiliateDashboard.payoutsSection.statusPending') || 'Pending',
+            PROCESSING: t('affiliateDashboard.payoutsSection.statusProcessing') || 'Processing',
+            COMPLETED: t('affiliateDashboard.payoutsSection.statusCompleted') || 'Completed',
+            FAILED: t('affiliateDashboard.payoutsSection.statusRejected') || 'Failed',
+            REJECTED: t('affiliateDashboard.payoutsSection.statusRejected') || 'Rejected',
         };
 
         const style = styles[status as keyof typeof styles] || styles.PENDING;
@@ -183,7 +183,7 @@ export default function PayoutsContent() {
                 {/* Header */}
                 <div className="mb-8">
                     <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100">
-                        {t.affiliateDashboard?.payouts || 'Payouts'}
+                        {t('affiliateDashboard.payouts') || 'Payouts'}
                     </h1>
                     <p className="text-gray-600 dark:text-gray-400 mt-1">
                         Manage your earnings and request payouts.

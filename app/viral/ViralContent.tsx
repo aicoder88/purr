@@ -157,8 +157,8 @@ export default function ViralContent() {
                     <h1 className="text-7xl md:text-9xl font-black mb-6 italic tracking-tighter">
                         THE <span className="gradient-text">VIRAL</span> VAULT
                     </h1>
-                    <p className="text-xl md:text-3xl text-gray-400 dark:text-gray-500 font-light max-w-4xl mx-auto">
-                        Stop guessing why your videos die in obscurity. We have dissected the <span className="text-white dark:text-gray-100 font-bold italic underline decoration-[#FF006E]">Viral Anchors</span> of the pet care world to build your profit machine.
+                    <p className="text-xl md:text-3xl text-gray-400 dark:text-gray-300 font-light max-w-4xl mx-auto">
+                        Stop guessing why your videos die in obscurity. We have dissected the <span className="text-white dark:text-white font-bold italic underline decoration-[#FF006E]">Viral Anchors</span> of the pet care world to build your profit machine.
                     </p>
                     <div className="mt-12 flex flex-wrap justify-center gap-6">
                         <div className="p-6 bg-[#1e293b] rounded-3xl border-b-4 border-[#FFBE0B]">
@@ -177,15 +177,15 @@ export default function ViralContent() {
                     {/* SECTION 1: THE PSYCHOLOGY OF ODOUR */}
                     <section className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div className="space-y-6">
-                            <h2 className="text-5xl font-black text-[#FB5607] italic leading-none">The &quot;Nose Blind&quot; Threat.<br /><span className="text-white dark:text-gray-100 text-3xl">Your friends know. You do not.</span></h2>
+                            <h2 className="text-5xl font-black text-[#FB5607] dark:text-[#FF7033] italic leading-none">The &quot;Nose Blind&quot; Threat.<br /><span className="text-white dark:text-white text-3xl">Your friends know. You do not.</span></h2>
                             <div className="bucket-brigade">
-                                <p className="text-xl text-gray-300 dark:text-gray-400 leading-relaxed mb-4">
+                                <p className="text-xl text-gray-300 dark:text-gray-200 leading-relaxed mb-4">
                                     Most brands try to sell &quot;Cleanliness.&quot; That is a mistake.
                                 </p>
-                                <p className="text-lg text-gray-400 dark:text-gray-500 mb-4">
+                                <p className="text-lg text-gray-400 dark:text-gray-300 mb-4">
                                     The masters of virality sell **Social Status Protection.** They trigger the deep-seated fear of being &quot;that house&quot; with the smell. If you can make an owner feel self-conscious in 3 seconds, you have already made the sale.
                                 </p>
-                                <p className="text-lg text-white dark:text-gray-100 font-bold italic">
+                                <p className="text-lg text-white dark:text-white font-bold italic">
                                     The &quot;Nose Blind&quot; hook is not about the cat; it is about the guest.
                                 </p>
                             </div>
@@ -202,8 +202,8 @@ export default function ViralContent() {
                     <section className="space-y-10">
                         <div className="text-center">
                             <h2 className="text-5xl font-black italic">The Viral Benchmarks</h2>
-                            <p className="text-gray-400 dark:text-gray-500 mt-2 italic">Real. Stable. High-Authority Data.</p>
-                            <p className="text-xs text-[#FF006E] font-bold mt-2 uppercase tracking-widest leading-loose">
+                            <p className="text-gray-400 dark:text-gray-300 mt-2 italic">Real. Stable. High-Authority Data.</p>
+                            <p className="text-xs text-[#FF006E] dark:text-[#FF3385] font-bold mt-2 uppercase tracking-widest leading-loose">
                                 Note: Links may be blocked by sandbox security. <br />
                                 If they do not open, please copy-paste the URL or search the ID directly on YouTube.
                             </p>
@@ -219,11 +219,11 @@ export default function ViralContent() {
                                         <th className="p-6">Why It Printed Views</th>
                                     </tr>
                                 </thead>
-                                <tbody className="text-gray-300 dark:text-gray-400 divide-y divide-slate-800">
+                                <tbody className="text-gray-300 dark:text-gray-200 divide-y divide-slate-800">
                                     {/* Video 1 */}
                                     <tr className="hover:bg-white/5 transition">
                                         <td className="p-6">
-                                            <span className="font-bold text-white dark:text-gray-100 block">YouTube</span>
+                                            <span className="font-bold text-white dark:text-white block">YouTube</span>
                                             <span className="text-xs text-gray-500 dark:text-gray-400 italic">100M+ Views</span>
                                         </td>
                                         <td className="p-6">
@@ -238,7 +238,7 @@ export default function ViralContent() {
                                     {/* Video 2 */}
                                     <tr className="hover:bg-white/5 transition">
                                         <td className="p-6">
-                                            <span className="font-bold text-white dark:text-gray-100 block">YouTube</span>
+                                            <span className="font-bold text-white dark:text-white block">YouTube</span>
                                             <span className="text-xs text-gray-500 dark:text-gray-400 italic">1.7M Views</span>
                                         </td>
                                         <td className="p-6">
@@ -253,7 +253,7 @@ export default function ViralContent() {
                                     {/* Video 3 */}
                                     <tr className="hover:bg-white/5 transition">
                                         <td className="p-6">
-                                            <span className="font-bold text-white dark:text-gray-100 block">YouTube</span>
+                                            <span className="font-bold text-white dark:text-white block">YouTube</span>
                                             <span className="text-xs text-gray-500 dark:text-gray-400 italic">5M+ Views</span>
                                         </td>
                                         <td className="p-6">
@@ -268,7 +268,7 @@ export default function ViralContent() {
                                     {/* Video 4 */}
                                     <tr className="hover:bg-white/5 transition">
                                         <td className="p-6">
-                                            <span className="font-bold text-white dark:text-gray-100 block">YouTube</span>
+                                            <span className="font-bold text-white dark:text-white block">YouTube</span>
                                             <span className="text-xs text-gray-500 dark:text-gray-400 italic">Multi-Million</span>
                                         </td>
                                         <td className="p-6">
@@ -283,7 +283,7 @@ export default function ViralContent() {
                                     {/* Video 5 */}
                                     <tr className="hover:bg-white/5 transition">
                                         <td className="p-6">
-                                            <span className="font-bold text-white dark:text-gray-100 block">YouTube</span>
+                                            <span className="font-bold text-white dark:text-white block">YouTube</span>
                                             <span className="text-xs text-gray-500 dark:text-gray-400 italic">1.4M Views</span>
                                         </td>
                                         <td className="p-6">
@@ -298,7 +298,7 @@ export default function ViralContent() {
                                     {/* Video 6 */}
                                     <tr className="hover:bg-white/5 transition">
                                         <td className="p-6">
-                                            <span className="font-bold text-white dark:text-gray-100 block">YouTube</span>
+                                            <span className="font-bold text-white dark:text-white block">YouTube</span>
                                             <span className="text-xs text-gray-500 dark:text-gray-400 italic">1M+ Views</span>
                                         </td>
                                         <td className="p-6">
@@ -307,13 +307,13 @@ export default function ViralContent() {
                                             </a>
                                             <span className="block text-[10px] text-gray-500 dark:text-gray-400 mt-1 font-mono">ID: REDACTED (Remy&apos;s Owner)</span>
                                         </td>
-                                        <td className="p-6"><span className="bg-[#3A86FF]/20 text-[#3A86FF] px-3 py-1 rounded-full text-xs font-bold uppercase">Jump Scare</span></td>
+                                        <td className="p-6"><span className="bg-[#3A86FF]/20 text-[#3A86FF] dark:text-[#6699FF] px-3 py-1 rounded-full text-xs font-bold uppercase">Jump Scare</span></td>
                                         <td className="p-6 text-sm">Viral &quot;flying cat&quot; moment. Pattern interrupt + shock value = instant watch-again appeal.</td>
                                     </tr>
                                     {/* Video 7 */}
                                     <tr className="hover:bg-white/5 transition">
                                         <td className="p-6">
-                                            <span className="font-bold text-white dark:text-gray-100 block">YouTube</span>
+                                            <span className="font-bold text-white dark:text-white block">YouTube</span>
                                             <span className="text-xs text-gray-500 dark:text-gray-400 italic">Review / React</span>
                                         </td>
                                         <td className="p-6">
@@ -353,15 +353,15 @@ export default function ViralContent() {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
                                 <div className="space-y-4">
                                     <h4 className="text-[#FF006E] text-2xl font-black italic underline decoration-4">1. The &quot;Shock&quot; Hook</h4>
-                                    <p className="text-gray-400 dark:text-gray-500 text-lg leading-relaxed">Start with a guest pinching their nose. Use silence. No music. The visual of &quot;Social Failure&quot; is a **pattern interrupt** that no cat owner can ignore.</p>
+                                    <p className="text-gray-400 dark:text-gray-300 text-lg leading-relaxed">Start with a guest pinching their nose. Use silence. No music. The visual of &quot;Social Failure&quot; is a **pattern interrupt** that no cat owner can ignore.</p>
                                 </div>
                                 <div className="space-y-4">
                                     <h4 className="text-[#3A86FF] text-2xl font-black italic underline decoration-4">2. The &quot;Magic&quot; ASMR</h4>
-                                    <p className="text-gray-400 dark:text-gray-500 text-lg leading-relaxed">Pouring Purrify powder should sound like a waterfall. Use high-fidelity audio of beads hitting the litter. It triggers &quot;Sensory Satisfaction&quot; and builds product trust.</p>
+                                    <p className="text-gray-400 dark:text-gray-300 text-lg leading-relaxed">Pouring Purrify powder should sound like a waterfall. Use high-fidelity audio of beads hitting the litter. It triggers &quot;Sensory Satisfaction&quot; and builds product trust.</p>
                                 </div>
                             </div>
                             <div className="pt-8">
-                                <button className="bg-[#FF006E] hover:bg-[#FFBE0B] text-white dark:text-gray-100 hover:text-black transition-all px-20 py-8 rounded-full font-black text-3xl uppercase italic shadow-[0_0_50px_rgba(255,0,110,0.5)] tracking-tighter">
+                                <button className="bg-[#FF006E] dark:bg-[#FF3385] hover:bg-[#FFBE0B] dark:hover:bg-[#FFD147] text-white dark:text-white hover:text-black transition-all px-20 py-8 rounded-full font-black text-3xl uppercase italic shadow-[0_0_50px_rgba(255,0,110,0.5)] tracking-tighter">
                                     Deploy Viral Script
                                 </button>
                             </div>

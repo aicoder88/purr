@@ -279,15 +279,15 @@ export default function LearnPageContent() {
           </h2>
           <div className="grid grid-cols-3 gap-4 text-center">
             <div>
-              <p className="text-2xl font-bold text-[#03E46A]">Fragrance-free</p>
+              <p className="text-2xl font-bold text-[#03E46A] dark:text-[#04D162]">Fragrance-free</p>
               <p className="text-xs text-gray-600 dark:text-gray-400">No perfumes</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-[#03E46A]">Any litter</p>
+              <p className="text-2xl font-bold text-[#03E46A] dark:text-[#04D162]">Any litter</p>
               <p className="text-xs text-gray-600 dark:text-gray-400">Additive, not a litter</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-[#03E46A]">Citations</p>
+              <p className="text-2xl font-bold text-[#03E46A] dark:text-[#04D162]">Citations</p>
               <p className="text-xs text-gray-600 dark:text-gray-400">Science hub</p>
             </div>
           </div>
@@ -461,7 +461,7 @@ export default function LearnPageContent() {
               </p>
               <Link
                 href="/products/trial-size"
-                className="inline-flex items-center justify-center px-8 py-4 bg-[#03E46A] hover:bg-[#02c75b] text-white dark:text-gray-900 font-bold rounded-full transition-colors shadow-lg hover:shadow-xl"
+                className="inline-flex items-center justify-center px-8 py-4 bg-[#03E46A] dark:bg-[#04D162] hover:bg-[#02c75b] dark:hover:bg-[#04D162]/90 text-white dark:text-gray-900 font-bold rounded-full transition-colors shadow-lg hover:shadow-xl"
               >
                 Try Purrify Risk-Free
                 <ChevronRight className="w-5 h-5 ml-2" />

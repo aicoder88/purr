@@ -35,5 +35,40 @@
     "readTime": "分钟阅读",
     "author": "作者",
     "publishedOn": "发布于"
+  },
+  "howItWorks": {
+    "simpleAs123": "使用非常简单",
+    "step1": {
+      "number": "01",
+      "title": "打开袋子",
+      "description": "这是最难的部分。真的。无需测量，无需混合碗，无需说明书。"
+    },
+    "step2": {
+      "number": "02",
+      "title": "撒在新猫砂上",
+      "description": "在猫咪喜欢的猫砂上轻轻撒一层。适用于粘土、水晶、结团、天然——任何他们已经喜欢的类型。"
+    },
+    "step3": {
+      "number": "03",
+      "title": "混合并享受清洁",
+      "description": "轻轻搅拌一下。现在享受7天不用考虑猫砂盆的时光。您的鼻子（和客人）会感谢您。"
+    },
+    "nav": {
+      "carbonVsBakingSoda": "活性炭与小苏打",
+      "carbonVsBakingSodaDesc": "了解活性炭在控制异味方面为何优于小苏打的科学原理。"
+    }
+  },
+  "socialProofBadges": {
+    "trustedVerified": "可信且已验证",
+    "findUsOn": "在以下平台找到我们",
+    "viewOnPlatform": "在{platform}上查看Purrify",
+    "platforms": {
+      "trustpilot": "Trustpilot",
+      "googleBusiness": "Google Business",
+      "crunchbase": "Crunchbase",
+      "productHunt": "Product Hunt",
+      "yelp": "Yelp",
+      "wellfound": "Wellfound"
+    }
   }
 }

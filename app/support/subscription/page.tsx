@@ -131,18 +131,18 @@ export default function SubscriptionPage() {
           <nav className="py-6 text-sm">
             <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
               <li>
-                <Link href="/" className="hover:text-[#03E46A] transition-colors">
+                <Link href="/" className="hover:text-[#03E46A] dark:hover:text-[#04D162] transition-colors">
                   Home
                 </Link>
               </li>
               <li className="text-gray-400 dark:text-gray-500">/</li>
               <li>
-                <Link href="/support" className="hover:text-[#03E46A] transition-colors">
+                <Link href="/support" className="hover:text-[#03E46A] dark:hover:text-[#04D162] transition-colors">
                   Support
                 </Link>
               </li>
               <li className="text-gray-400 dark:text-gray-500">/</li>
-              <li className="text-[#03E46A] font-semibold">Subscription</li>
+              <li className="text-[#03E46A] dark:text-[#04D162] font-semibold">Subscription</li>
             </ol>
           </nav>
         </Container>
@@ -162,7 +162,7 @@ export default function SubscriptionPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/#products">
-                  <Button size="lg" className="bg-[#03E46A] hover:bg-[#02C55A] text-white dark:text-gray-900 font-bold text-lg px-8">
+                  <Button size="lg" className="bg-[#03E46A] dark:bg-[#04D162] hover:bg-[#02C55A] dark:hover:bg-[#04D162]/90 text-white dark:text-gray-900 font-bold text-lg px-8">
                     Start Saving Now
                   </Button>
                 </Link>
@@ -241,19 +241,19 @@ export default function SubscriptionPage() {
                   </h3>
                   <ul className="space-y-3 text-gray-600 dark:text-gray-300">
                     <li className="flex items-start gap-2">
-                      <Sparkles className="w-5 h-5 text-[#03E46A] mt-0.5 flex-shrink-0" />
+                      <Sparkles className="w-5 h-5 text-[#03E46A] dark:text-[#04D162] mt-0.5 flex-shrink-0" />
                       Change delivery frequency anytime
                     </li>
                     <li className="flex items-start gap-2">
-                      <Sparkles className="w-5 h-5 text-[#03E46A] mt-0.5 flex-shrink-0" />
+                      <Sparkles className="w-5 h-5 text-[#03E46A] dark:text-[#04D162] mt-0.5 flex-shrink-0" />
                       Skip a shipment if needed
                     </li>
                     <li className="flex items-start gap-2">
-                      <Sparkles className="w-5 h-5 text-[#03E46A] mt-0.5 flex-shrink-0" />
+                      <Sparkles className="w-5 h-5 text-[#03E46A] dark:text-[#04D162] mt-0.5 flex-shrink-0" />
                       Update shipping address
                     </li>
                     <li className="flex items-start gap-2">
-                      <Sparkles className="w-5 h-5 text-[#03E46A] mt-0.5 flex-shrink-0" />
+                      <Sparkles className="w-5 h-5 text-[#03E46A] dark:text-[#04D162] mt-0.5 flex-shrink-0" />
                       Switch product sizes
                     </li>
                   </ul>
@@ -266,19 +266,19 @@ export default function SubscriptionPage() {
                   </h3>
                   <ul className="space-y-3 text-gray-600 dark:text-gray-300">
                     <li className="flex items-start gap-2">
-                      <Sparkles className="w-5 h-5 text-[#03E46A] mt-0.5 flex-shrink-0" />
+                      <Sparkles className="w-5 h-5 text-[#03E46A] dark:text-[#04D162] mt-0.5 flex-shrink-0" />
                       Secure payment processing
                     </li>
                     <li className="flex items-start gap-2">
-                      <Sparkles className="w-5 h-5 text-[#03E46A] mt-0.5 flex-shrink-0" />
+                      <Sparkles className="w-5 h-5 text-[#03E46A] dark:text-[#04D162] mt-0.5 flex-shrink-0" />
                       7-day reminder before each shipment
                     </li>
                     <li className="flex items-start gap-2">
-                      <Sparkles className="w-5 h-5 text-[#03E46A] mt-0.5 flex-shrink-0" />
+                      <Sparkles className="w-5 h-5 text-[#03E46A] dark:text-[#04D162] mt-0.5 flex-shrink-0" />
                       Update payment methods easily
                     </li>
                     <li className="flex items-start gap-2">
-                      <Sparkles className="w-5 h-5 text-[#03E46A] mt-0.5 flex-shrink-0" />
+                      <Sparkles className="w-5 h-5 text-[#03E46A] dark:text-[#04D162] mt-0.5 flex-shrink-0" />
                       View billing history anytime
                     </li>
                   </ul>
@@ -302,7 +302,7 @@ export default function SubscriptionPage() {
                   className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700"
                 >
                   <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-white mb-3 flex items-start gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-[#03E46A] mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-[#03E46A] dark:text-[#04D162] mt-0.5 flex-shrink-0" />
                     {faq.question}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 ml-7">{faq.answer}</p>
@@ -313,7 +313,7 @@ export default function SubscriptionPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-16 bg-gradient-to-r from-[#03E46A] to-[#02C55A]">
+        <section className="py-16 bg-gradient-to-r from-[#03E46A] to-[#02C55A] dark:from-[#04D162]/80 dark:to-[#04D162]/60">
           <Container>
             <div className="text-center text-white dark:text-gray-900 max-w-3xl mx-auto">
               <RefreshCw className="w-16 h-16 mx-auto mb-6 opacity-80" />

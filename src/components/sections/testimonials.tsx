@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/container";
 import { TESTIMONIALS } from "@/lib/constants";
 import SectionHeader from "@/components/ui/section-header";
 import Image from "next/image";
-import { useTranslation } from "@/lib/translation-context";
+import { useTranslations, useLocale } from "next-intl";
 import { createColorClasses, createSectionClasses, GRADIENTS, COLORS } from "@/lib/theme-utils";
 import { generateStarRating, generateAvatarUrl, QuoteIcon, createStaggeredAnimation } from "@/lib/component-utils";
 
@@ -60,7 +60,7 @@ const TestimonialCard = ({ testimonial, index, colorScheme }: TestimonialCardPro
 };
 
 export function Testimonials() {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   const colorSchemes: ('red' | 'purple' | 'green')[] = ['red', 'purple', 'green'];
 
@@ -74,12 +74,12 @@ export function Testimonials() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <SectionHeader text={t.testimonialsSection?.customerLove || ""} />
+          <SectionHeader text={t('testimonialsSection.customerLove')} />
           <h2 id="testimonials-heading" className={`text-5xl font-bold tracking-tight mb-4 ${GRADIENTS.text.primary} ${GRADIENTS.text.primaryDark}`}>
-            {t.testimonialsSection?.littersOfLove || ""}
+            {t('testimonialsSection.littersOfLove')}
           </h2>
           <p className={`${COLORS.text.tertiary} text-xl max-w-2xl mx-auto`}>
-            {t.testimonialsSection?.dontJustTakeOurWord || ""}
+            {t('testimonialsSection.dontJustTakeOurWord')}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
@@ -91,14 +91,14 @@ export function Testimonials() {
                 }
               }}
               className={`inline-flex items-center px-6 py-3 ${GRADIENTS.background.primary} text-white dark:text-gray-100 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95`}
-              aria-label={t.homepage.altText.customerTestimonials}
+              aria-label={t('homepage.altText.customerTestimonials')}
             >
-              {t.nav.testimonials}
+              {t('nav.testimonials')}
             </button>
             <button
               onClick={() => window.open('https://g.page/r/CUB8bZ_ibMbwEBM/review', '_blank')}
               className={`inline-flex items-center px-6 py-3 ${COLORS.surface.light} text-[#5B2EFF] font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 border-2 border-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white dark:text-gray-100`}
-              aria-label={t.homepage.altText.leaveGoogleReview}
+              aria-label={t('homepage.altText.leaveGoogleReview')}
             >
               <svg
                 className="w-5 h-5 mr-2"
@@ -111,7 +111,7 @@ export function Testimonials() {
                 <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
                 <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
               </svg>
-              {t.nav.leaveReview}
+              {t('nav.leaveReview')}
             </button>
           </div>
         </div>
@@ -137,7 +137,7 @@ export function Testimonials() {
             rel="noopener noreferrer"
             className={`inline-flex items-center px-6 py-3 ${COLORS.surface.light} rounded-full shadow-md hover:shadow-lg text-[#5B2EFF] hover:text-[#5B2EFF]/80 font-medium transition-all duration-300 group`}
           >
-            {t.testimonialsSection?.readMoreReviews || ""}
+            {t('testimonialsSection.readMoreReviews')}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"

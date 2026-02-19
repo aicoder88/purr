@@ -9,7 +9,7 @@ import { useCurrency } from '@/lib/currency-context';
 import { localizePath } from '@/lib/i18n/locale-path';
 import { getPaymentLink } from '@/lib/payment-links';
 import { formatProductPrice } from '@/lib/pricing';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 
 type ComparisonRow = {
     feature: string;
@@ -237,14 +237,15 @@ const COPY: Record<'en' | 'fr', AlternativeCopy> = {
 };
 
 export default function ArmAndHammerClient() {
-    const { locale, t } = useTranslation();
+    const t = useTranslations();
+  const locale = useLocale() as 'en' | 'fr';
     const { currency } = useCurrency();
     const language = locale === 'fr' ? locale : 'en';
     const copy = COPY[language];
 
     const trialPrice = formatProductPrice('trial', currency, locale);
     const trialCheckoutUrl = getPaymentLink('trialSingle') || '/products/trial-size';
-    const trialCtaLabel = `${t.nav.trialSize} - ${trialPrice}`;
+    const trialCtaLabel = `${t('nav.trialSize')} - ${trialPrice}`;
 
     return (
         <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
@@ -257,7 +258,7 @@ export default function ArmAndHammerClient() {
                         <span className="flex items-center">
                             <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
                             <Link href={localizePath('/learn', locale)} className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
-                                {t.nav.learn}
+                                {t('nav.learn')}
                             </Link>
                         </span>
                         <span className="flex items-center">

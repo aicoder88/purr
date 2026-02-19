@@ -1,5 +1,5 @@
 import { Container } from '@/components/ui/container';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 
 type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
 
@@ -72,7 +72,8 @@ const marketingSupportUiCopy: Record<SupportedLocale, {
 };
 
 export function MarketingSupport() {
-  const { t, locale } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const uiCopy = marketingSupportUiCopy[locale as SupportedLocale] || marketingSupportUiCopy.en;
 
   const supportItems = [
@@ -134,10 +135,10 @@ export function MarketingSupport() {
       <Container>
         <div className="text-center mb-12">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4">
-            {t.retailers?.marketing?.title || 'Complete Marketing Support'}
+            {t('retailers.marketing.title') || 'Complete Marketing Support'}
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            {t.retailers?.marketing?.description || 'We provide everything you need to successfully sell Purrify. From in-store displays to staff training, we\'ve got you covered.'}
+            {t('retailers.marketing.description') || 'We provide everything you need to successfully sell Purrify. From in-store displays to staff training, we\'ve got you covered.'}
           </p>
         </div>
 
@@ -180,10 +181,10 @@ export function MarketingSupport() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
-                {t.retailers?.marketing?.coop?.title || 'Co-op Advertising Program'}
+                {t('retailers.marketing.coop.title') || 'Co-op Advertising Program'}
               </h3>
               <p className="text-gray-700 dark:text-gray-200 mb-6">
-                {t.retailers?.marketing?.coop?.description || 'Qualify for advertising credits to promote Purrify in your local market. We\'ll help cover costs for newspaper ads, radio spots, and local marketing campaigns.'}
+                {t('retailers.marketing.coop.description') || 'Qualify for advertising credits to promote Purrify in your local market. We\'ll help cover costs for newspaper ads, radio spots, and local marketing campaigns.'}
               </p>
               <ul className="space-y-3">
                 <li className="flex items-center text-gray-700 dark:text-gray-200">

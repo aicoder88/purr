@@ -1,7 +1,7 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 
-import { useTranslation } from "@/lib/translation-context";
+import { useTranslations, useLocale } from "next-intl";
 import { Check, Star, Truck, Shield, Clock, Zap } from 'lucide-react';
 import { formatProductPrice, getProductPrice, formatCurrencyValue } from '@/lib/pricing';
 import { getPaymentLink, PaymentLinkKey } from '@/lib/payment-links';
@@ -24,7 +24,8 @@ type SubscriptionPlan = {
 
 
 export function SubscriptionOffer() {
-  const { t, locale } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const familyPrice = getProductPrice('family');
   const familyAutoshipPrice = getProductPrice('familyAutoship');
 
@@ -37,36 +38,36 @@ export function SubscriptionOffer() {
 
   const formatPerMonth = (price: number) => {
     const formatted = formatCurrencyValue(price / 3, locale);
-    const template = t.subscriptionOfferExtended?.perMonthLabel || '≈ {price}/month effective';
+    const template = t('subscriptionOfferExtended.perMonthLabel') || '≈ {price}/month effective';
     return template.replace('{price}', formatted);
   };
 
   const formatSavingsText = (percent: number) => {
-    const template = t.subscriptionOfferExtended?.saveVsOneTime || 'Save {percent}% vs one-time purchase';
+    const template = t('subscriptionOfferExtended.saveVsOneTime') || 'Save {percent}% vs one-time purchase';
     return template.replace('{percent}', percent.toString());
   };
 
   const plans: SubscriptionPlan[] = [
     {
       id: 'family-autoship',
-      name: t.subscriptionOfferExtended?.familyPlanTitle || 'Best Value Autoship – 3 × Regular size 120g',
+      name: t('subscriptionOfferExtended.familyPlanTitle') || 'Best Value Autoship – 3 × Regular size 120g',
       description:
-        t.subscriptionOfferExtended?.familyDescription ||
+        t('subscriptionOfferExtended.familyDescription') ||
         'Designed for multi-cat and allergy-prone homes. Our best price per scoop.',
       priceFormatted: formatProductPrice('familyAutoship', locale),
       perMonthLabel: formatPerMonth(familyAutoshipPrice),
-      billingLabel: t.subscriptionOfferExtended?.quarterlyBilling || 'Billed every 3 months',
-      shippingNote: t.subscriptionOfferExtended?.freeShippingIncluded || 'Free shipping included',
+      billingLabel: t('subscriptionOfferExtended.quarterlyBilling') || 'Billed every 3 months',
+      shippingNote: t('subscriptionOfferExtended.freeShippingIncluded') || 'Free shipping included',
       savingsPercent: computeSavings(familyPrice, familyAutoshipPrice),
       features: [
-        t.subscriptionOfferExtended?.includesThreeFamily || 'Includes 3 × Regular size 120g packs (delivered together)',
-        t.subscriptionOfferExtended?.freeShippingIncluded || 'Free shipping included',
-        t.subscriptionOfferExtended?.priorityCustomerSupport || 'Priority customer support',
+        t('subscriptionOfferExtended.includesThreeFamily') || 'Includes 3 × Regular size 120g packs (delivered together)',
+        t('subscriptionOfferExtended.freeShippingIncluded') || 'Free shipping included',
+        t('subscriptionOfferExtended.priorityCustomerSupport') || 'Priority customer support',
       ],
       highlight: true,
-      badge: t.subscriptionOfferExtended?.bestValueBadge || 'Best Value',
+      badge: t('subscriptionOfferExtended.bestValueBadge') || 'Best Value',
       linkKey: 'familyAutoship',
-      ctaLabel: t.subscriptionOfferExtended?.startAutoship || 'Start Autoship',
+      ctaLabel: t('subscriptionOfferExtended.startAutoship') || 'Start Autoship',
     },
   ];
 
@@ -84,15 +85,15 @@ export function SubscriptionOffer() {
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/40 dark:to-pink-900/40 rounded-full mb-8 border border-purple-200 dark:border-purple-800 shadow-lg">
               <Zap className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-              <span className="font-bold text-purple-700 dark:text-purple-300">{t.subscriptionOfferExtended?.autoshipBadge || 'Quarterly Autoship'}</span>
+              <span className="font-bold text-purple-700 dark:text-purple-300">{t('subscriptionOfferExtended.autoshipBadge') || 'Quarterly Autoship'}</span>
             </div>
 
             <h2 className="font-heading text-5xl md:text-7xl font-black tracking-tight mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent leading-tight">
-              {t.subscriptionOfferExtended?.headline || 'Subscribe & Save'}
+              {t('subscriptionOfferExtended.headline') || 'Subscribe & Save'}
             </h2>
 
             <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-medium">
-              {t.subscriptionOfferExtended?.supportingCopy || 'Choose the bundle that automatically restocks every 3 months, keeps your home fresh, and protects your budget.'}
+              {t('subscriptionOfferExtended.supportingCopy') || 'Choose the bundle that automatically restocks every 3 months, keeps your home fresh, and protects your budget.'}
             </p>
           </div>
 
@@ -192,7 +193,7 @@ export function SubscriptionOffer() {
                           className="w-full py-6 text-xl font-black bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-400 opacity-60"
                           disabled
                         >
-                          {t.subscriptionOfferExtended?.linkComingSoon || 'Payment link coming soon'}
+                          {t('subscriptionOfferExtended.linkComingSoon') || 'Payment link coming soon'}
                         </Button>
                       )}
                     </div>
@@ -209,10 +210,10 @@ export function SubscriptionOffer() {
                 <Truck className="w-10 h-10 text-white dark:text-gray-100" />
               </div>
               <h4 className="font-black text-lg text-gray-900 dark:text-white mb-2">
-                {t.homepage.subscription.fastDelivery}
+                {t('homepage.subscription.fastDelivery')}
               </h4>
               <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                {t.homepage.subscription.quickReliableShipping}
+                {t('homepage.subscription.quickReliableShipping')}
               </p>
             </div>
 
@@ -221,10 +222,10 @@ export function SubscriptionOffer() {
                 <Shield className="w-10 h-10 text-white dark:text-gray-100" />
               </div>
               <h4 className="font-black text-lg text-gray-900 dark:text-white mb-2">
-                {t.homepage.subscription.thirtyDayGuarantee}
+                {t('homepage.subscription.thirtyDayGuarantee')}
               </h4>
               <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                {t.homepage.subscription.moneyBackPromise}
+                {t('homepage.subscription.moneyBackPromise')}
               </p>
             </div>
 
@@ -233,10 +234,10 @@ export function SubscriptionOffer() {
                 <Clock className="w-10 h-10 text-white dark:text-gray-100" />
               </div>
               <h4 className="font-black text-lg text-gray-900 dark:text-white mb-2">
-                {t.homepage.subscription.skipAnytime}
+                {t('homepage.subscription.skipAnytime')}
               </h4>
               <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                {t.homepage.subscription.fullControlDeliveries}
+                {t('homepage.subscription.fullControlDeliveries')}
               </p>
             </div>
 
@@ -245,10 +246,10 @@ export function SubscriptionOffer() {
                 <Star className="w-10 h-10 text-white dark:text-gray-100" />
               </div>
               <h4 className="font-black text-lg text-gray-900 dark:text-white mb-2">
-                {t.homepage.subscription.fiveStarRated}
+                {t('homepage.subscription.fiveStarRated')}
               </h4>
               <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                {t.homepage.subscription.lovedByCustomers}
+                {t('homepage.subscription.lovedByCustomers')}
               </p>
             </div>
           </div>
@@ -256,18 +257,18 @@ export function SubscriptionOffer() {
           {/* Social Proof - Enhanced */}
           <div className="mt-16 text-center bg-white dark:bg-gray-800 rounded-3xl p-10 shadow-2xl border-2 border-purple-200 dark:border-purple-800">
             <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg font-semibold">
-              {t.homepage.subscription.joinSatisfiedCustomers}
+              {t('homepage.subscription.joinSatisfiedCustomers')}
             </p>
             <div className="flex justify-center items-center space-x-1 mb-6">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-8 h-8 fill-yellow-400 text-yellow-400 dark:text-yellow-300" />
               ))}
               <span className="ml-3 text-gray-900 dark:text-white font-black text-xl">
-                {t.homepage.subscription.reviewsRating}
+                {t('homepage.subscription.reviewsRating')}
               </span>
             </div>
             <p className="text-lg text-gray-600 dark:text-gray-300 italic font-medium max-w-2xl mx-auto leading-relaxed">
-              "{t.homepage.subscription.testimonialQuote}"
+              "{t('homepage.subscription.testimonialQuote')}"
             </p>
           </div>
         </div>

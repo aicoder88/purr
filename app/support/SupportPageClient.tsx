@@ -7,6 +7,7 @@ import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { CONTACT_INFO } from '../../src/lib/constants';
 import { useTranslation } from '../../src/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 
 type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
 
@@ -280,7 +281,8 @@ const SUPPORT_COPY: Record<SupportedLocale, SupportCopy> = {
 };
 
 export default function SupportPageClient() {
-  const { t, locale } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const localePrefix = locale === 'en' ? '' : `/${locale}`;
   const copy = SUPPORT_COPY[locale as SupportedLocale] || SUPPORT_COPY.en;
 
@@ -292,7 +294,7 @@ export default function SupportPageClient() {
           <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
             <li>
               <Link href={localePrefix || '/'} className="hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors">
-                {t.nav?.home || 'Home'}
+                {t('nav.home') || 'Home'}
               </Link>
             </li>
             <li className="text-gray-400 dark:text-gray-500">/</li>

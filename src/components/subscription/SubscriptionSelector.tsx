@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Check, Zap, Calendar, Shield, Truck, Star } from 'lucide-react';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import { formatCurrencyValue } from '@/lib/pricing';
 import { getPaymentLink } from '@/lib/payment-links';
 import {
@@ -156,7 +156,7 @@ export function SubscriptionSelector({
   onPlanSelect,
   selectedPlan = null
 }: SubscriptionSelectorProps) {
-  const { locale } = useTranslation();
+  const locale = useLocale();
   const [hoveredPlan, setHoveredPlan] = useState<string | null>(null);
 
   const copy = SUBSCRIPTION_UI_COPY[locale as SupportedLocale] || SUBSCRIPTION_UI_COPY.en;

@@ -178,7 +178,7 @@ export default function SciencePage() {
               </div>
 
               <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-50 mb-6 leading-tight">
-                The Science Behind <span className="text-[#FF3131]">Purrify</span>
+                The Science Behind <span className="text-[#FF3131] dark:text-[#FF5050]">Purrify</span>
               </h1>
 
               <p className="article-summary text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
@@ -446,7 +446,7 @@ export default function SciencePage() {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <Link
                     href="/products/standard"
-                    className="px-8 py-3 bg-[#FF3131] text-white rounded-full font-semibold shadow-lg hover:bg-[#FF5151] transition-colors"
+                    className="px-8 py-3 bg-[#FF3131] dark:bg-[#FF5050] text-white dark:text-gray-100 rounded-full font-semibold shadow-lg hover:bg-[#FF5151] transition-colors"
                   >
                     Shop Purrify
                   </Link>

@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import AffiliateLayout from '@/components/affiliate/AffiliateLayout';
 import { PerformanceChart } from '@/components/affiliate/PerformanceChart';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import {
     MousePointer,
     ShoppingCart,
@@ -120,7 +120,7 @@ function SummaryCard({
 }
 
 export default function StatsContent() {
-    const { t } = useTranslation();
+    const t = useTranslations();
     const router = useRouter();
     const [chartData, setChartData] = useState<ChartDataResponse | null>(null);
     const [conversions, setConversions] = useState<ConversionsResponse | null>(null);
@@ -151,12 +151,13 @@ export default function StatsContent() {
 
             setChartData(chartJson);
             setConversions(conversionsJson);
-        } catch {
-            setError(t.affiliateDashboard?.errors?.loadFailed || 'Failed to load stats');
+        } catch (err) {
+            console.error('Failed to fetch stats:', err);
+            setError(t('affiliateDashboard.errors.loadFailed') || 'Failed to load stats');
         } finally {
             setIsLoading(false);
         }
-    }, [dateRange, t.affiliateDashboard?.errors?.loadFailed, router]);
+    }, [dateRange, t('affiliateDashboard.errors.loadFailed'), router]);
 
     useEffect(() => {
         fetchData();

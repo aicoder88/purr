@@ -1,7 +1,7 @@
 'use client';
 
 import { Container } from '@/components/ui/container';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import { Sparkles, Building2, Shield, Clock, Leaf, DollarSign, Quote } from 'lucide-react';
 import { TESTIMONIALS } from '@/lib/constants';
 
@@ -90,7 +90,8 @@ export function B2BCaseStudies({
   title,
   subtitle,
 }: B2BPartnerBenefitsProps) {
-  const { t, locale } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const challengeLabel =
     locale === 'fr'
       ? 'Le defi'
@@ -109,8 +110,8 @@ export function B2BCaseStudies({
   // If filtering by type and no matches, show all
   const benefitsToShow = displayBenefits.length > 0 ? displayBenefits : b2bPartnerBenefits.slice(0, limit);
 
-  const sectionTitle = title || t.b2bCaseStudies?.title || 'Partner Benefits by Business Type';
-  const sectionSubtitle = subtitle || t.b2bCaseStudies?.subtitle || 'See how Purrify helps businesses like yours';
+  const sectionTitle = title || t('b2bCaseStudies.title') || 'Partner Benefits by Business Type';
+  const sectionSubtitle = subtitle || t('b2bCaseStudies.subtitle') || 'See how Purrify helps businesses like yours';
 
   return (
     <section className="py-16 bg-gray-50 dark:bg-gray-800">
@@ -120,7 +121,7 @@ export function B2BCaseStudies({
           <div className="text-center mb-12">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-[#10B981]/10 to-[#3694FF]/10 dark:from-[#10B981]/20 dark:to-[#3694FF]/20 text-brand-green-700 dark:text-[#34D399] font-bold text-sm mb-4">
               <DollarSign className="w-4 h-4 mr-2" />
-              {t.b2bCaseStudies?.badge || 'Wholesale Program'}
+              {t('b2bCaseStudies.badge') || 'Wholesale Program'}
             </div>
             <h2 className="font-heading text-3xl md:text-4xl font-black text-gray-900 dark:text-gray-50 mb-4">
               {sectionTitle}
@@ -206,13 +207,13 @@ export function B2BCaseStudies({
           {/* CTA */}
           <div className="mt-12 text-center">
             <p className="text-gray-600 dark:text-gray-400 mb-4">
-              {t.b2bCaseStudies?.cta || 'Interested in wholesale pricing for your business?'}
+              {t('b2bCaseStudies.cta') || 'Interested in wholesale pricing for your business?'}
             </p>
             <a
               href="mailto:wholesale@purrify.ca"
               className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#10B981] to-[#3694FF] hover:from-[#059669] hover:to-[#2563EB] text-white dark:text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              {t.b2bCaseStudies?.ctaButton || 'Contact Our Partnership Team'}
+              {t('b2bCaseStudies.ctaButton') || 'Contact Our Partnership Team'}
             </a>
           </div>
         </div>

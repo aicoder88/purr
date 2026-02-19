@@ -1,4 +1,4 @@
-import { useTranslation } from "@/lib/translation-context";
+import { useTranslations, useLocale } from "next-intl";
 
 // Default highlight texts for fallback
 const defaultHighlightTexts = [
@@ -7,8 +7,8 @@ const defaultHighlightTexts = [
 ];
 
 const SectionHeader = ({ text }: { text: string }) => {
-  const { t } = useTranslation();
-  const highlightTexts = t.sectionHeaderHighlights || defaultHighlightTexts;
+  const t = useTranslations();
+  const highlightTexts = t('sectionHeaderHighlights') || defaultHighlightTexts;
   const normalized = text.trim();
   const isHighlighted = highlightTexts.includes(normalized);
 

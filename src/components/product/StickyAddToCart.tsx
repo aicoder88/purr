@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Minus, Plus, ShoppingCart } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 
 export interface StickyAddToCartProps {
   /** Product name to display */
@@ -45,7 +45,7 @@ export function StickyAddToCart({
   targetRef,
   className,
 }: StickyAddToCartProps) {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const [isVisible, setIsVisible] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [isClient, setIsClient] = useState(false);
@@ -112,7 +112,7 @@ export function StickyAddToCart({
         className
       )}
       role="complementary"
-      aria-label={t.productsSection?.stickyCart || 'Quick add to cart'}
+      aria-label={t('productsSection.stickyCart') || 'Quick add to cart'}
       aria-hidden={!isVisible}
     >
       <div className="max-w-4xl mx-auto px-4 py-3">
@@ -148,7 +148,7 @@ export function StickyAddToCart({
                 'focus:outline-none focus:ring-2 focus:ring-deep-coral focus:ring-offset-1',
                 'dark:focus:ring-offset-gray-800'
               )}
-              aria-label={t.productsSection?.decreaseQuantity || 'Decrease quantity'}
+              aria-label={t('productsSection.decreaseQuantity') || 'Decrease quantity'}
             >
               <Minus className="w-4 h-4" />
             </button>
@@ -171,7 +171,7 @@ export function StickyAddToCart({
                 'focus:outline-none focus:ring-2 focus:ring-deep-coral focus:ring-offset-1',
                 'dark:focus:ring-offset-gray-800'
               )}
-              aria-label={t.productsSection?.increaseQuantity || 'Increase quantity'}
+              aria-label={t('productsSection.increaseQuantity') || 'Increase quantity'}
             >
               <Plus className="w-4 h-4" />
             </button>
@@ -202,7 +202,7 @@ export function StickyAddToCart({
             >
               <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
               <span className="hidden xs:inline sm:inline">
-                {t.productsSection?.addToCart || 'Add to Cart'}
+                {t('productsSection.addToCart') || 'Add to Cart'}
               </span>
             </a>
           </Button>

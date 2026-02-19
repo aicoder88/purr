@@ -3,7 +3,7 @@
 import React from 'react';
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { useTranslation } from "@/lib/translation-context";
+import { useTranslations, useLocale } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { GRADIENTS } from "@/lib/theme-utils";
@@ -39,7 +39,7 @@ const customerAvatars = [
 ];
 
 export const CTA = React.memo(function CTA() {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const paymentLink = getPaymentLink('trialSingle') || '/products';
 
   return (
@@ -64,7 +64,7 @@ export const CTA = React.memo(function CTA() {
           {/* Background image */}
           <Image
             src="/optimized/pet-safety-home.webp"
-            alt={t.homepage?.altText?.happyCatAlt || "Happy cat"}
+            alt={t('homepage.altText.happyCatAlt') || "Happy cat"}
             width={800}
             height={800}
             sizes="(max-width: 768px) 50vw, 33vw"
@@ -74,11 +74,11 @@ export const CTA = React.memo(function CTA() {
           {/* Content section */}
           <div className="text-gray-900 dark:text-gray-100 max-w-2xl bg-gray-50 dark:bg-gray-900 px-6 py-8 rounded-xl">
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight text-gray-900 dark:text-gray-100">
-              {t.cta?.title || ""}
+              {t('cta.title')}
             </h2>
 
             <p className="text-gray-700 dark:text-gray-100/90 text-lg">
-              {t.cta?.subtitle || ""}
+              {t('cta.subtitle')}
             </p>
 
             {/* Social proof */}
@@ -88,12 +88,12 @@ export const CTA = React.memo(function CTA() {
                   <CustomerAvatar
                     key={index}
                     src={src}
-                    alt={t.homepage?.altText?.userAvatar || "User"}
+                    alt={t('homepage.altText.userAvatar') || "User"}
                   />
                 ))}
               </div>
               <p className="text-gray-700 dark:text-gray-100/90 text-sm font-medium">
-                {t.cta?.joinText || ""}
+                {t('cta.joinText')}
               </p>
             </div>
           </div>
@@ -111,7 +111,7 @@ export const CTA = React.memo(function CTA() {
                 className="w-full md:w-auto bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-500 text-white font-bold py-7 px-10 rounded-xl shadow-lg hover:shadow-2xl hover:shadow-orange-500/30 hover:-translate-y-1 active:translate-y-0 active:scale-95 transition-all duration-200 text-lg cursor-pointer relative overflow-hidden"
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  {t.cta?.buttonText || "Get My Free Trial"}
+                  {t('cta.buttonText') || "Get My Free Trial"}
                   <ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />
                 </span>
                 {/* Shine effect on hover */}
@@ -120,7 +120,7 @@ export const CTA = React.memo(function CTA() {
             </Link>
 
             <p className="text-gray-600 dark:text-gray-100/80 text-xs text-center mt-2">
-              {t.cta?.guarantee || "30-Day Money-Back Guarantee • Made in Canada 🇨🇦"}
+              {t('cta.guarantee') || "30-Day Money-Back Guarantee • Made in Canada 🇨🇦"}
             </p>
           </div>
         </div>

@@ -7,7 +7,7 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { CONTACT_INFO, PHONE_MESSAGING } from '@/lib/constants';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 
 // ============================================================================
 // Types
@@ -132,8 +132,15 @@ function SuccessStoryCard({ icon, gradient, businessName, businessType, quote, m
 // ============================================================================
 
 export function RetailerContact() {
-  const { t, locale } = useTranslation();
-  const contact = t.retailers?.contact;
+  const t = useTranslations();
+  const locale = useLocale();
+  // Try to get contact data, fallback to empty object if not available
+  let contact: Record<string, any> = {};
+  try {
+    contact = t.raw('retailers.contact') as Record<string, any>;
+  } catch {
+    contact = {};
+  }
   const form = contact?.form;
   const success = contact?.success;
   const stories = contact?.successStories;

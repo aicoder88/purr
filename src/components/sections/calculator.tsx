@@ -1,9 +1,9 @@
 import dynamic from "next/dynamic";
 import { Container } from "@/components/ui/container";
-import { useTranslation } from "@/lib/translation-context";
+import { useTranslations, useLocale } from "next-intl";
 
 function CalculatorLoading() {
-  const { locale } = useTranslation();
+  const locale = useLocale();
   const loadingText =
     locale === 'fr'
       ? 'Chargement du calculateur...'
@@ -32,7 +32,7 @@ const CostCalculator = dynamic(
 );
 
 export function Calculator() {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   return (
     <section
@@ -42,10 +42,10 @@ export function Calculator() {
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h2 className="font-heading text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[#03E46A] to-[#5B2EFF] dark:from-[#3694FF] dark:to-[#FF5050] bg-clip-text text-transparent">
-            {t.calculatorSection?.title || ""}
+            {t('calculatorSection.title')}
           </h2>
           <p className="text-gray-600 dark:text-gray-300">
-            {t.calculatorSection?.description || ""}
+            {t('calculatorSection.description')}
           </p>
         </div>
 

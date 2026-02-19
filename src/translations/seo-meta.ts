@@ -9,6 +9,7 @@
  */
 
 import { LocaleCode } from '../lib/seo/types';
+import { SITE_URL } from '@/lib/constants';
 
 export interface PageMeta {
   title: string;
@@ -77,14 +78,14 @@ export const seoMetaEn: SEOMetaContent = {
         {
           '@type': 'Organization',
           name: 'Purrify',
-          url: 'https://www.purrify.ca',
-          logo: 'https://www.purrify.ca/images/purrify-logo.png',
+          url: SITE_URL,
+          logo: `${SITE_URL}/images/purrify-logo.png`,
           sameAs: ['https://facebook.com/purrify', 'https://instagram.com/purrify']
         },
         {
           '@type': 'WebSite',
           name: 'Purrify',
-          url: 'https://www.purrify.ca'
+          url: SITE_URL
         }
       ]
     },
@@ -165,7 +166,7 @@ export const seoMetaEn: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
@@ -184,7 +185,7 @@ export const seoMetaEn: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
@@ -203,7 +204,7 @@ export const seoMetaEn: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
@@ -222,7 +223,7 @@ export const seoMetaEn: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
@@ -241,7 +242,7 @@ export const seoMetaEn: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
@@ -260,7 +261,7 @@ export const seoMetaEn: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
@@ -279,7 +280,7 @@ export const seoMetaEn: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: { '@type': 'Organization', name: 'Purrify' }
       },
@@ -359,12 +360,12 @@ export const seoMetaEn: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -385,12 +386,12 @@ export const seoMetaEn: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -411,12 +412,12 @@ export const seoMetaEn: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -437,12 +438,12 @@ export const seoMetaEn: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -463,12 +464,12 @@ export const seoMetaEn: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -489,12 +490,12 @@ export const seoMetaEn: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -515,12 +516,12 @@ export const seoMetaEn: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -541,12 +542,12 @@ export const seoMetaEn: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -567,12 +568,12 @@ export const seoMetaEn: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -593,12 +594,12 @@ export const seoMetaEn: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -619,12 +620,12 @@ export const seoMetaEn: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -645,12 +646,12 @@ export const seoMetaEn: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     }
@@ -669,13 +670,13 @@ export const seoMetaFr: SEOMetaContent = {
         {
           '@type': 'Organization',
           name: 'Purrify',
-          url: 'https://www.purrify.ca/fr',
-          logo: 'https://www.purrify.ca/images/purrify-logo.png'
+          url: `${SITE_URL}/fr`,
+          logo: `${SITE_URL}/images/purrify-logo.png`
         },
         {
           '@type': 'WebSite',
           name: 'Purrify France',
-          url: 'https://www.purrify.ca/fr'
+          url: `${SITE_URL}/fr`
         }
       ]
     },
@@ -908,12 +909,12 @@ export const seoMetaFr: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -934,12 +935,12 @@ export const seoMetaFr: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -960,12 +961,12 @@ export const seoMetaFr: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -986,12 +987,12 @@ export const seoMetaFr: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -1012,12 +1013,12 @@ export const seoMetaFr: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -1038,12 +1039,12 @@ export const seoMetaFr: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -1064,12 +1065,12 @@ export const seoMetaFr: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -1090,12 +1091,12 @@ export const seoMetaFr: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -1116,12 +1117,12 @@ export const seoMetaFr: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -1142,12 +1143,12 @@ export const seoMetaFr: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -1168,12 +1169,12 @@ export const seoMetaFr: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -1194,12 +1195,12 @@ export const seoMetaFr: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     }
@@ -1219,13 +1220,13 @@ export const seoMetaZh: SEOMetaContent = {
         {
           '@type': 'Organization',
           name: 'Purrify',
-          url: 'https://www.purrify.ca/zh',
-          logo: 'https://www.purrify.ca/images/purrify-logo.png'
+          url: `${SITE_URL}/zh`,
+          logo: `${SITE_URL}/images/purrify-logo.png`
         },
         {
           '@type': 'WebSite',
           name: 'Purrify 中国',
-          url: 'https://www.purrify.ca/zh'
+          url: `${SITE_URL}/zh`
         }
       ]
     }
@@ -1457,12 +1458,12 @@ export const seoMetaZh: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -1483,12 +1484,12 @@ export const seoMetaZh: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -1509,12 +1510,12 @@ export const seoMetaZh: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -1535,12 +1536,12 @@ export const seoMetaZh: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -1561,12 +1562,12 @@ export const seoMetaZh: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -1587,12 +1588,12 @@ export const seoMetaZh: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -1613,12 +1614,12 @@ export const seoMetaZh: SEOMetaContent = {
           '@type': 'Person',
           name: 'Dr. Sarah Chen',
           jobTitle: 'Veterinary Consultant',
-          url: 'https://www.purrify.ca/about/our-story/'
+          url: `${SITE_URL}/about/our-story/`
         },
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -1639,7 +1640,7 @@ export const seoMetaZh: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -1660,7 +1661,7 @@ export const seoMetaZh: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -1681,7 +1682,7 @@ export const seoMetaZh: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -1702,7 +1703,7 @@ export const seoMetaZh: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -1723,7 +1724,7 @@ export const seoMetaZh: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     }
@@ -1743,13 +1744,13 @@ export const seoMetaEs: SEOMetaContent = {
         {
           '@type': 'Organization',
           name: 'Purrify',
-          url: 'https://www.purrify.ca/es',
-          logo: 'https://www.purrify.ca/images/purrify-logo.png'
+          url: `${SITE_URL}/es`,
+          logo: `${SITE_URL}/images/purrify-logo.png`
         },
         {
           '@type': 'WebSite',
           name: 'Purrify España',
-          url: 'https://www.purrify.ca/es'
+          url: `${SITE_URL}/es`
         }
       ]
     }
@@ -1981,7 +1982,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -2002,7 +2003,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -2023,7 +2024,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -2044,7 +2045,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -2065,7 +2066,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -2086,7 +2087,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -2107,7 +2108,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -2128,7 +2129,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -2149,7 +2150,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -2170,7 +2171,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -2191,7 +2192,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     },
@@ -2212,7 +2213,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: 'https://www.purrify.ca/images/purrify-logo.png' }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
         }
       }
     }

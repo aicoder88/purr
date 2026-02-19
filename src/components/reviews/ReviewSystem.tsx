@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Star, ThumbsUp, ThumbsDown, User, CheckCircle, Filter, SortAsc } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 
 // ============================================================================
 // Types & Interfaces
@@ -65,7 +65,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
   compact = false,
   includeSchema = false
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const [reviews] = useState<Review[]>(SAMPLE_REVIEWS);
   const [filteredReviews, setFilteredReviews] = useState<Review[]>(SAMPLE_REVIEWS);
   const [sortBy, setSortBy] = useState<SortOption>('newest');
@@ -138,10 +138,10 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
     return (
       <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
         <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-          {t.reviewSystem?.customerReviews || ""}
+          {t('reviewSystem.customerReviews')}
         </h3>
         <p className="text-gray-600 dark:text-gray-300 text-sm">
-          {t.reviewSystem?.comingSoon || ""}
+          {t('reviewSystem.comingSoon')}
         </p>
       </div>
     );
@@ -153,12 +153,12 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
         <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100">
-              {t.reviewSystem?.customerReviews || ""}
+              {t('reviewSystem.customerReviews')}
             </h3>
           </div>
 
           <p className="text-gray-600 dark:text-gray-300 text-sm">
-            {t.reviewSystem?.comingSoon || ""}
+            {t('reviewSystem.comingSoon')}
           </p>
 
           <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
@@ -166,7 +166,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
               variant="outline"
               className="w-full border-[#5B2EFF] text-[#5B2EFF] dark:text-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white dark:hover:text-gray-100"
             >
-              {t.reviewSystem?.viewAllReviews || ""}
+              {t('reviewSystem.viewAllReviews')}
             </Button>
           </div>
         </div>
@@ -181,10 +181,10 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
         <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
           <div>
             <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-              {t.reviewSystem?.customerReviews || "Customer Reviews"}
+              {t('reviewSystem.customerReviews') || "Customer Reviews"}
             </h3>
             <p className="text-gray-600 dark:text-gray-300">
-              {t.reviewSystem?.comingSoon || 'Customer reviews will appear here once our review system is live.'}
+              {t('reviewSystem.comingSoon') || 'Customer reviews will appear here once our review system is live.'}
             </p>
           </div>
 
@@ -204,12 +204,12 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                     onChange={(e) => setFilterRating(e.target.value ? parseInt(e.target.value) : null)}
                     className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   >
-                    <option value="">{t.reviewSystem?.filters?.allRatings || ""}</option>
-                    <option value="5">5 {t.reviewSystem?.filters?.stars || ""}</option>
-                    <option value="4">4 {t.reviewSystem?.filters?.stars || ""}</option>
-                    <option value="3">3 {t.reviewSystem?.filters?.stars || ""}</option>
-                    <option value="2">2 {t.reviewSystem?.filters?.stars || ""}</option>
-                    <option value="1">1 {t.reviewSystem?.filters?.star || ""}</option>
+                    <option value="">{t('reviewSystem.filters.allRatings')}</option>
+                    <option value="5">5 {t('reviewSystem.filters.stars')}</option>
+                    <option value="4">4 {t('reviewSystem.filters.stars')}</option>
+                    <option value="3">3 {t('reviewSystem.filters.stars')}</option>
+                    <option value="2">2 {t('reviewSystem.filters.stars')}</option>
+                    <option value="1">1 {t('reviewSystem.filters.star')}</option>
                   </select>
                 </div>
 
@@ -219,10 +219,10 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                   onChange={(e) => setFilterSize(e.target.value || null)}
                   className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                 >
-                  <option value="">{t.reviewSystem?.filters?.allSizes || ""}</option>
-                  <option value="12g">{t.reviewSystem?.filters?.trial || ""}</option>
-                  <option value="50g">{t.reviewSystem?.filters?.regular || ""}</option>
-                  <option value="120g">{t.reviewSystem?.filters?.large || ""}</option>
+                  <option value="">{t('reviewSystem.filters.allSizes')}</option>
+                  <option value="12g">{t('reviewSystem.filters.trial')}</option>
+                  <option value="50g">{t('reviewSystem.filters.regular')}</option>
+                  <option value="120g">{t('reviewSystem.filters.large')}</option>
                 </select>
               </div>
 
@@ -234,11 +234,11 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                   onChange={(e) => setSortBy(e.target.value as SortOption)}
                   className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                 >
-                  <option value="newest">{t.reviewSystem?.sort?.newestFirst || ""}</option>
-                  <option value="oldest">{t.reviewSystem?.sort?.oldestFirst || ""}</option>
-                  <option value="highest">{t.reviewSystem?.sort?.highestRated || ""}</option>
-                  <option value="lowest">{t.reviewSystem?.sort?.lowestRated || ""}</option>
-                  <option value="helpful">{t.reviewSystem?.sort?.mostHelpful || ""}</option>
+                  <option value="newest">{t('reviewSystem.sort.newestFirst')}</option>
+                  <option value="oldest">{t('reviewSystem.sort.oldestFirst')}</option>
+                  <option value="highest">{t('reviewSystem.sort.highestRated')}</option>
+                  <option value="lowest">{t('reviewSystem.sort.lowestRated')}</option>
+                  <option value="helpful">{t('reviewSystem.sort.mostHelpful')}</option>
                 </select>
               </div>
             </div>
@@ -263,7 +263,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                       {review.verified && (
                         <div className="flex items-center space-x-1 text-green-600 dark:text-green-400">
                           <CheckCircle className="w-4 h-4" />
-                          <span className="text-xs">{t.reviewSystem?.review?.verifiedPurchase || ""}</span>
+                          <span className="text-xs">{t('reviewSystem.review.verifiedPurchase')}</span>
                         </div>
                       )}
                     </div>
@@ -277,9 +277,9 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                 </div>
 
                 <div className="text-right text-sm text-gray-500 dark:text-gray-400">
-                  <div>{t.reviewSystem?.review?.size || ""}: {review.productSize}</div>
-                  <div>{review.catCount} {review.catCount > 1 ? (t.reviewSystem?.review?.cats || "") : (t.reviewSystem?.review?.cat || "")}</div>
-                  <div>{t.reviewSystem?.review?.usingFor || ""} {review.usageDuration}</div>
+                  <div>{t('reviewSystem.review.size')}: {review.productSize}</div>
+                  <div>{review.catCount} {review.catCount > 1 ? (t('reviewSystem.review.cats')) : (t('reviewSystem.review.cat'))}</div>
+                  <div>{t('reviewSystem.review.usingFor')} {review.usageDuration}</div>
                 </div>
               </div>
 
@@ -301,7 +301,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                     aria-label={`Mark review as helpful (${review.helpful} votes)`}
                   >
                     <ThumbsUp className="w-4 h-4" />
-                    <span className="text-sm">{t.reviewSystem?.review?.helpful || ""} ({review.helpful})</span>
+                    <span className="text-sm">{t('reviewSystem.review.helpful')} ({review.helpful})</span>
                   </button>
                   <button
                     className="flex items-center space-x-1 text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors"
@@ -315,7 +315,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
                 {review.wouldRecommend && (
                   <div className="flex items-center space-x-1 text-green-600 dark:text-green-400">
                     <CheckCircle className="w-4 h-4" />
-                    <span className="text-sm font-medium">{t.reviewSystem?.review?.recommendsProduct || ""}</span>
+                    <span className="text-sm font-medium">{t('reviewSystem.review.recommendsProduct')}</span>
                   </div>
                 )}
               </div>
@@ -330,7 +330,7 @@ export const ReviewSystem: React.FC<ReviewSystemProps> = ({
               variant="outline"
               className="border-[#5B2EFF] text-[#5B2EFF] dark:text-[#5B2EFF] hover:bg-[#5B2EFF] hover:text-white dark:hover:text-gray-100"
             >
-              {t.reviewSystem?.loadMoreReviews || ""}
+              {t('reviewSystem.loadMoreReviews')}
             </Button>
           </div>
         )}

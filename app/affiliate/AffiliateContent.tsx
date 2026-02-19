@@ -5,7 +5,7 @@ import { Container } from '@/components/ui/container';
 import { CheckCircle2, ArrowRight, Star, DollarSign, Users, TrendingUp, Award, Zap, Gift } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 
 // Tier configuration
 const TIERS = {
@@ -17,7 +17,7 @@ const TIERS = {
 type TierKey = keyof typeof TIERS;
 
 export default function AffiliateContent() {
-    const { t } = useTranslation();
+    const t = useTranslations();
     const [standardReferrals, setStandardReferrals] = useState(10);
     const [familyPackReferrals, setFamilyPackReferrals] = useState(5);
     const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -37,7 +37,7 @@ export default function AffiliateContent() {
     const yearlyIncome = monthlyIncome * 12;
 
     // Handle missing translations gracefully - show error page instead of crashing
-    if (!t.affiliate) {
+    if (!t('affiliate')) {
         return (
             <div className="min-h-screen bg-white dark:bg-gray-950 flex items-center justify-center p-4">
                 <div className="max-w-md text-center">
@@ -75,17 +75,17 @@ export default function AffiliateContent() {
                             </div>
 
                             <h1 className="font-heading text-5xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-blue-200 dark:from-white dark:via-blue-100 dark:to-blue-200">
-                                {t.affiliate.hero.title}
+                                {t('affiliate.hero.title')}
                             </h1>
 
                             <p className="text-xl text-gray-400 dark:text-gray-400 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                                {t.affiliate.hero.subtitle}
+                                {t('affiliate.hero.subtitle')}
                             </p>
 
                             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
                                 <Link href="/affiliate/signup" className="w-full sm:w-auto">
                                     <button className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-blue-600 hover:bg-blue-500 dark:bg-blue-600 dark:hover:bg-blue-500 text-white dark:text-white text-lg font-semibold rounded-xl shadow-[0_0_20px_rgba(37,99,235,0.3)] transition-all duration-200 hover:scale-105">
-                                        {t.affiliate.hero.primaryCTA}
+                                        {t('affiliate.hero.primaryCTA')}
                                         <ArrowRight className="w-5 h-5 ml-2" />
                                     </button>
                                 </Link>
@@ -317,10 +317,10 @@ export default function AffiliateContent() {
                     <div className="max-w-5xl mx-auto">
                         <div className="text-center mb-16">
                             <h2 className="font-heading text-4xl md:text-5xl font-bold text-white dark:text-white mb-6">
-                                {t.affiliate.calculator.title}
+                                {t('affiliate.calculator.title')}
                             </h2>
                             <p className="text-xl text-gray-400 dark:text-gray-400 font-light max-w-2xl mx-auto">
-                                {t.affiliate.calculator.subtitle}
+                                {t('affiliate.calculator.subtitle')}
                             </p>
                         </div>
 
@@ -377,7 +377,7 @@ export default function AffiliateContent() {
                                     <div>
                                         <div className="flex justify-between items-end mb-6">
                                             <label className="text-xl font-medium text-gray-200 dark:text-gray-200">
-                                                {t.affiliate.calculator.standardProduct}
+                                                {t('affiliate.calculator.standardProduct')}
                                             </label>
                                             <div className="text-right">
                                                 <span className="text-4xl font-bold text-blue-400 dark:text-blue-400">
@@ -403,7 +403,7 @@ export default function AffiliateContent() {
                                     <div>
                                         <div className="flex justify-between items-end mb-6">
                                             <label className="text-xl font-medium text-gray-200 dark:text-gray-200">
-                                                {t.affiliate.calculator.familyPack}
+                                                {t('affiliate.calculator.familyPack')}
                                             </label>
                                             <div className="text-right">
                                                 <span className="text-4xl font-bold text-blue-400 dark:text-blue-400">
@@ -429,7 +429,7 @@ export default function AffiliateContent() {
                                 <div className="flex flex-col justify-center">
                                     <div className="bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-600 dark:to-blue-700 rounded-2xl p-8 text-center shadow-xl transform transition-transform lg:scale-105 border border-blue-400/20 dark:border-blue-400/20">
                                         <p className="text-blue-100 dark:text-blue-100 font-medium mb-2 uppercase tracking-wider text-sm">
-                                            {t.affiliate.calculator.monthlyIncome}
+                                            {t('affiliate.calculator.monthlyIncome')}
                                         </p>
                                         <p className="text-5xl lg:text-6xl font-bold text-white dark:text-white mb-8 tracking-tight">
                                             ${monthlyIncome.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
@@ -437,7 +437,7 @@ export default function AffiliateContent() {
 
                                         <div className="pt-8 border-t border-blue-500/30 dark:border-blue-500/30">
                                             <p className="text-blue-200 dark:text-blue-200 text-sm mb-1 uppercase tracking-wider">
-                                                {t.affiliate.calculator.yearlyIncome}
+                                                {t('affiliate.calculator.yearlyIncome')}
                                             </p>
                                             <p className="text-3xl font-bold text-white dark:text-white">
                                                 ${yearlyIncome.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
@@ -445,7 +445,7 @@ export default function AffiliateContent() {
                                         </div>
                                     </div>
                                     <p className="text-center text-xs text-gray-500 dark:text-gray-500 mt-6">
-                                        {t.affiliate.calculator.disclaimer}
+                                        {t('affiliate.calculator.disclaimer')}
                                     </p>
                                 </div>
                             </div>
@@ -459,7 +459,7 @@ export default function AffiliateContent() {
                 <Container>
                     <div className="max-w-6xl mx-auto">
                         <h2 className="font-heading text-4xl md:text-5xl font-bold text-center text-white dark:text-white mb-20">
-                            {t.affiliate.howItWorks.title}
+                            {t('affiliate.howItWorks.title')}
                         </h2>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
@@ -471,10 +471,10 @@ export default function AffiliateContent() {
                                     <span className="text-3xl font-bold text-blue-400 dark:text-blue-400 group-hover:text-blue-300 dark:group-hover:text-blue-300">1</span>
                                 </div>
                                 <h3 className="font-heading text-2xl font-bold text-white dark:text-white mb-4 group-hover:text-blue-400 dark:group-hover:text-blue-400 transition-colors">
-                                    {t.affiliate.howItWorks.step1.title}
+                                    {t('affiliate.howItWorks.step1.title')}
                                 </h3>
                                 <p className="text-gray-400 dark:text-gray-400 leading-relaxed px-4">
-                                    {t.affiliate.howItWorks.step1.description}
+                                    {t('affiliate.howItWorks.step1.description')}
                                 </p>
                             </div>
 
@@ -484,10 +484,10 @@ export default function AffiliateContent() {
                                     <span className="text-3xl font-bold text-blue-400 dark:text-blue-400 group-hover:text-blue-300 dark:group-hover:text-blue-300">2</span>
                                 </div>
                                 <h3 className="font-heading text-2xl font-bold text-white dark:text-white mb-4 group-hover:text-blue-400 dark:group-hover:text-blue-400 transition-colors">
-                                    {t.affiliate.howItWorks.step2.title}
+                                    {t('affiliate.howItWorks.step2.title')}
                                 </h3>
                                 <p className="text-gray-400 dark:text-gray-400 leading-relaxed px-4">
-                                    {t.affiliate.howItWorks.step2.description}
+                                    {t('affiliate.howItWorks.step2.description')}
                                 </p>
                             </div>
 
@@ -497,10 +497,10 @@ export default function AffiliateContent() {
                                     <span className="text-3xl font-bold text-blue-400 dark:text-blue-400 group-hover:text-blue-300 dark:group-hover:text-blue-300">3</span>
                                 </div>
                                 <h3 className="font-heading text-2xl font-bold text-white dark:text-white mb-4 group-hover:text-blue-400 dark:group-hover:text-blue-400 transition-colors">
-                                    {t.affiliate.howItWorks.step3.title}
+                                    {t('affiliate.howItWorks.step3.title')}
                                 </h3>
                                 <p className="text-gray-400 dark:text-gray-400 leading-relaxed px-4">
-                                    {t.affiliate.howItWorks.step3.description}
+                                    {t('affiliate.howItWorks.step3.description')}
                                 </p>
                             </div>
                         </div>
@@ -513,10 +513,10 @@ export default function AffiliateContent() {
                 <Container>
                     <div className="text-center mb-20">
                         <h2 className="font-heading text-4xl md:text-5xl font-bold text-white dark:text-white mb-6">
-                            {t.affiliate.benefits.title}
+                            {t('affiliate.benefits.title')}
                         </h2>
                         <p className="text-xl text-gray-400 dark:text-gray-400 font-light max-w-2xl mx-auto">
-                            {t.affiliate.benefits.subtitle}
+                            {t('affiliate.benefits.subtitle')}
                         </p>
                     </div>
 
@@ -541,10 +541,10 @@ export default function AffiliateContent() {
                                     <Star className="w-6 h-6 text-blue-400 dark:text-blue-400" />
                                 </div>
                                 <h3 className="font-heading text-3xl font-bold text-white dark:text-white mb-6">
-                                    {t.affiliate.benefits.benefit1.title}
+                                    {t('affiliate.benefits.benefit1.title')}
                                 </h3>
                                 <p className="text-lg text-gray-400 dark:text-gray-400 leading-relaxed mb-6">
-                                    {t.affiliate.benefits.benefit1.description}
+                                    {t('affiliate.benefits.benefit1.description')}
                                 </p>
                                 <div className="bg-gray-800/50 dark:bg-gray-800/50 rounded-xl p-6 border border-gray-700 dark:border-gray-700">
                                     <p className="text-gray-300 dark:text-gray-300 italic">&quot;The easiest product I&apos;ve ever promoted. My followers love the eco-friendly aspect!&quot;</p>
@@ -559,13 +559,13 @@ export default function AffiliateContent() {
                                     <TrendingUp className="w-6 h-6 text-purple-400 dark:text-purple-400" />
                                 </div>
                                 <h3 className="font-heading text-3xl font-bold text-white dark:text-white mb-6">
-                                    {t.affiliate.benefits.benefit2.title}
+                                    {t('affiliate.benefits.benefit2.title')}
                                 </h3>
                                 <p className="text-lg text-gray-400 dark:text-gray-400 leading-relaxed">
-                                    {t.affiliate.benefits.benefit2.description}
+                                    {t('affiliate.benefits.benefit2.description')}
                                 </p>
                                 <ul className="mt-8 space-y-4">
-                                    {[t.affiliate.benefits.benefit3.title, t.affiliate.benefits.benefit4.title].map((item, i) => (
+                                    {[t('affiliate.benefits.benefit3.title'), t('affiliate.benefits.benefit4.title')].map((item, i) => (
                                         <li key={i} className="flex items-center gap-3 text-gray-300 dark:text-gray-300">
                                             <CheckCircle2 className="w-5 h-5 text-blue-500 dark:text-blue-500 flex-shrink-0" />
                                             <span>{item}</span>
@@ -596,16 +596,16 @@ export default function AffiliateContent() {
                 <Container>
                     <div className="max-w-3xl mx-auto">
                         <h2 className="font-heading text-4xl md:text-5xl font-bold text-center text-white dark:text-white mb-16">
-                            {t.affiliate.faq.title}
+                            {t('affiliate.faq.title')}
                         </h2>
 
                         <div className="space-y-4">
                             {[
-                                { q: t.affiliate.faq.question1, a: t.affiliate.faq.answer1 },
-                                { q: t.affiliate.faq.question2, a: t.affiliate.faq.answer2 },
-                                { q: t.affiliate.faq.question3, a: t.affiliate.faq.answer3 },
-                                { q: t.affiliate.faq.question4, a: t.affiliate.faq.answer4 },
-                                { q: t.affiliate.faq.question5, a: t.affiliate.faq.answer5 },
+                                { q: t('affiliate.faq.question1'), a: t('affiliate.faq.answer1') },
+                                { q: t('affiliate.faq.question2'), a: t('affiliate.faq.answer2') },
+                                { q: t('affiliate.faq.question3'), a: t('affiliate.faq.answer3') },
+                                { q: t('affiliate.faq.question4'), a: t('affiliate.faq.answer4') },
+                                { q: t('affiliate.faq.question5'), a: t('affiliate.faq.answer5') },
                             ].map((faq, index) => (
                                 <div
                                     key={index}
@@ -652,19 +652,19 @@ export default function AffiliateContent() {
                 <Container className="relative z-10">
                     <div className="max-w-4xl mx-auto text-center">
                         <h2 className="font-heading text-4xl md:text-6xl font-bold text-white dark:text-white mb-8 tracking-tight">
-                            {t.affiliate.finalCTA.title}
+                            {t('affiliate.finalCTA.title')}
                         </h2>
                         <p className="text-xl text-blue-100 dark:text-blue-100 mb-12 font-light max-w-2xl mx-auto">
-                            {t.affiliate.finalCTA.subtitle}
+                            {t('affiliate.finalCTA.subtitle')}
                         </p>
                         <Link href="/affiliate/signup">
                             <button className="inline-flex items-center px-10 py-5 bg-white dark:bg-white text-blue-600 dark:text-blue-600 text-xl font-bold rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-200">
-                                {t.affiliate.finalCTA.cta}
+                                {t('affiliate.finalCTA.cta')}
                                 <ArrowRight className="w-6 h-6 ml-3" />
                             </button>
                         </Link>
                         <p className="text-sm text-blue-200/60 dark:text-blue-200/60 mt-8">
-                            {t.affiliate.finalCTA.disclaimer}
+                            {t('affiliate.finalCTA.disclaimer')}
                         </p>
                     </div>
                 </Container>

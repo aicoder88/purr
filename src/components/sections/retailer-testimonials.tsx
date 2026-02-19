@@ -1,5 +1,5 @@
 import { Container } from '@/components/ui/container';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 
@@ -157,7 +157,8 @@ const BUSINESS_METRICS: BusinessMetric[] = [
 ];
 
 export function RetailerTestimonials() {
-  const { t, locale } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const caseStudyCopy =
     locale === 'fr'
       ? {
@@ -178,10 +179,10 @@ export function RetailerTestimonials() {
       <Container>
         <div className="text-center mb-12">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4">
-            {t.retailers?.testimonials?.title || 'What Our Retail Partners Say'}
+            {t('retailers.testimonials.title') || 'What Our Retail Partners Say'}
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            {t.retailers?.testimonials?.description || 'Real feedback from successful pet store owners and managers across Canada.'}
+            {t('retailers.testimonials.description') || 'Real feedback from successful pet store owners and managers across Canada.'}
           </p>
         </div>
 
@@ -222,7 +223,7 @@ export function RetailerTestimonials() {
         {/* Business Metrics */}
         <div className={`bg-gradient-to-r ${GRADIENTS.background} rounded-2xl p-8`}>
           <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-8 text-center">
-            {t.retailers?.testimonials?.metrics?.title || 'Proven Business Results'}
+            {t('retailers.testimonials.metrics.title') || 'Proven Business Results'}
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

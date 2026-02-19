@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '@/components/ui/container';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 
 type Article = {
   title: string;
@@ -164,7 +164,8 @@ const ALL_ARTICLES: Article[] = [
 ];
 
 export function RelatedArticles({ currentPath, limit = 3 }: { currentPath?: string; limit?: number }) {
-  const { t, locale } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const items = ALL_ARTICLES.filter(a => a.href !== currentPath).slice(0, limit);
   const relatedAriaLabel =
     locale === 'fr'
@@ -177,7 +178,7 @@ export function RelatedArticles({ currentPath, limit = 3 }: { currentPath?: stri
     <section aria-label={relatedAriaLabel} className="py-12">
       <Container>
         <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
-          {t.relatedArticles?.title || ""}
+          {t('relatedArticles.title')}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {items.map((item) => (
@@ -191,7 +192,7 @@ export function RelatedArticles({ currentPath, limit = 3 }: { currentPath?: stri
                     {item.title}
                   </h3>
                   <p className="text-sm text-[#03E46A] dark:text-[#3694FF] mt-2">
-                    {t.relatedArticles?.readMore || ""} →
+                    {t('relatedArticles.readMore')} →
                   </p>
                 </div>
               </Link>

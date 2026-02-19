@@ -3,7 +3,7 @@
  * Generates breadcrumb navigation and structured data for SEO
  */
 
-import { useTranslation } from '../lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import { getLocalizedUrl } from '../lib/seo-utils';
 
 export interface BreadcrumbItem {
@@ -112,7 +112,7 @@ function getHomeLabel(locale: string): string {
  * ```
  */
 export function useBreadcrumb(path: string): BreadcrumbResult {
-  const { locale } = useTranslation();
+  const locale = useLocale();
 
   // Parse path into segments
   const segments = path.split('/').filter(Boolean);

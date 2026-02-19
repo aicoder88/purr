@@ -8,7 +8,7 @@
  */
 
 import React, { useState, useCallback } from 'react';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import { Card, CardContent, CardDescription, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -38,7 +38,8 @@ export function ReferralWidget({
   className = '',
   compact = false,
 }: ReferralWidgetProps) {
-  const { t, locale } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const [copied, setCopied] = useState<'code' | 'url' | null>(null);
   const shareLabels =
     locale === 'fr'
@@ -84,10 +85,10 @@ export function ReferralWidget({
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <p className="font-semibold text-white dark:text-gray-100">
-              {t.referral?.widget?.giveGet || 'Give $5, Get $5'}
+              {t('referral.widget.giveGet') || 'Give $5, Get $5'}
             </p>
             <p className="text-sm text-purple-100 dark:text-purple-200">
-              {t.referral?.widget?.shareDescription || 'Share your code with friends'}
+              {t('referral.widget.shareDescription') || 'Share your code with friends'}
             </p>
           </div>
           <div className="flex items-center gap-2">
@@ -100,7 +101,7 @@ export function ReferralWidget({
               onClick={() => copyToClipboard(code, 'code')}
               className="bg-white text-purple-600 hover:bg-gray-100 dark:bg-gray-100 dark:text-purple-700 dark:hover:bg-gray-200"
             >
-              {copied === 'code' ? (t.referral?.widget?.copied || 'Copied!') : (t.referral?.widget?.copy || 'Copy')}
+              {copied === 'code' ? (t('referral.widget.copied') || 'Copied!') : (t('referral.widget.copy') || 'Copy')}
             </Button>
           </div>
         </div>
@@ -113,10 +114,10 @@ export function ReferralWidget({
       {/* Header with gradient */}
       <div className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-700 dark:to-pink-700 p-6 text-white dark:text-gray-100">
         <CardTitle className="text-2xl text-white dark:text-gray-100">
-          {t.referral?.widget?.title || 'Give $5, Get $5'}
+          {t('referral.widget.title') || 'Give $5, Get $5'}
         </CardTitle>
         <CardDescription className="text-purple-100 dark:text-purple-200 mt-1">
-          {t.referral?.widget?.description || 'Share your code with friends. They get $5 off, you get $5 credit!'}
+          {t('referral.widget.description') || 'Share your code with friends. They get $5 off, you get $5 credit!'}
         </CardDescription>
       </div>
 
@@ -124,7 +125,7 @@ export function ReferralWidget({
         {/* Referral Code */}
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            {t.referral?.widget?.yourCode || 'Your Referral Code'}
+            {t('referral.widget.yourCode') || 'Your Referral Code'}
           </label>
           <div className="flex gap-2">
             <Input
@@ -139,12 +140,12 @@ export function ReferralWidget({
               {copied === 'code' ? (
                 <span className="flex items-center gap-1">
                   <CheckIcon className="h-4 w-4" />
-                  {t.referral?.widget?.copied || 'Copied!'}
+                  {t('referral.widget.copied') || 'Copied!'}
                 </span>
               ) : (
                 <span className="flex items-center gap-1">
                   <CopyIcon className="h-4 w-4" />
-                  {t.referral?.widget?.copyCode || 'Copy Code'}
+                  {t('referral.widget.copyCode') || 'Copy Code'}
                 </span>
               )}
             </Button>
@@ -154,7 +155,7 @@ export function ReferralWidget({
         {/* Share Link */}
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            {t.referral?.widget?.shareLink || 'Share Link'}
+            {t('referral.widget.shareLink') || 'Share Link'}
           </label>
           <div className="flex gap-2">
             <Input
@@ -167,7 +168,7 @@ export function ReferralWidget({
               onClick={() => copyToClipboard(shareUrl, 'url')}
               className={copied === 'url' ? 'border-green-500 text-green-600 dark:border-green-400 dark:text-green-400' : 'border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300'}
             >
-              {copied === 'url' ? (t.referral?.widget?.copied || 'Copied!') : (t.referral?.widget?.copyLink || 'Copy Link')}
+              {copied === 'url' ? (t('referral.widget.copied') || 'Copied!') : (t('referral.widget.copyLink') || 'Copy Link')}
             </Button>
           </div>
         </div>
@@ -175,7 +176,7 @@ export function ReferralWidget({
         {/* Social Share Buttons */}
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
-            {t.referral?.widget?.shareVia || 'Share via'}
+            {t('referral.widget.shareVia') || 'Share via'}
           </label>
           <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
             {/* Email */}
@@ -185,7 +186,7 @@ export function ReferralWidget({
               className="flex flex-col items-center gap-1 h-auto py-3 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
             >
               <EmailIcon className="h-5 w-5" />
-              <span className="text-xs">{t.referral?.share?.email || 'Email'}</span>
+              <span className="text-xs">{t('referral.share.email') || 'Email'}</span>
             </Button>
 
             {/* SMS */}
@@ -195,7 +196,7 @@ export function ReferralWidget({
               className="flex flex-col items-center gap-1 h-auto py-3 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
             >
               <SmsIcon className="h-5 w-5" />
-              <span className="text-xs">{t.referral?.share?.sms || 'SMS'}</span>
+              <span className="text-xs">{t('referral.share.sms') || 'SMS'}</span>
             </Button>
 
             {/* WhatsApp */}
@@ -235,7 +236,7 @@ export function ReferralWidget({
               className="flex flex-col items-center gap-1 h-auto py-3 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
             >
               <LinkIcon className="h-5 w-5" />
-              <span className="text-xs">{t.referral?.share?.link || 'Link'}</span>
+              <span className="text-xs">{t('referral.share.link') || 'Link'}</span>
             </Button>
           </div>
         </div>
@@ -243,20 +244,20 @@ export function ReferralWidget({
         {/* How it works */}
         <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
           <h4 className="font-medium text-gray-900 dark:text-gray-50 mb-3">
-            {t.referral?.widget?.howItWorks || 'How it works'}
+            {t('referral.widget.howItWorks') || 'How it works'}
           </h4>
           <ol className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
             <li className="flex gap-2">
               <span className="flex-shrink-0 w-5 h-5 bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-400 rounded-full flex items-center justify-center text-xs font-medium">1</span>
-              {t.referral?.widget?.step1 || 'Share your code or link with friends'}
+              {t('referral.widget.step1') || 'Share your code or link with friends'}
             </li>
             <li className="flex gap-2">
               <span className="flex-shrink-0 w-5 h-5 bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-400 rounded-full flex items-center justify-center text-xs font-medium">2</span>
-              {t.referral?.widget?.step2 || 'They get $5 off their first order'}
+              {t('referral.widget.step2') || 'They get $5 off their first order'}
             </li>
             <li className="flex gap-2">
               <span className="flex-shrink-0 w-5 h-5 bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-400 rounded-full flex items-center justify-center text-xs font-medium">3</span>
-              {t.referral?.widget?.step3 || 'You get $5 credit when they purchase'}
+              {t('referral.widget.step3') || 'You get $5 credit when they purchase'}
             </li>
           </ol>
         </div>

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import AffiliateLayout from '@/components/affiliate/AffiliateLayout';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import {
     Download,
     Image as ImageIcon,
@@ -373,14 +373,14 @@ function ColorSwatch({ name, hex }: { name: string; hex: string }) {
 }
 
 export default function AssetsContent() {
-    const { t } = useTranslation();
+    const t = useTranslations();
     const [activeTab, setActiveTab] = useState<'banners' | 'products' | 'social' | 'brand'>('banners');
 
     const tabs = [
-        { id: 'banners' as const, name: t.affiliateDashboard?.assets?.banners || 'Banners', icon: ImageIcon },
-        { id: 'products' as const, name: t.affiliateDashboard?.assets?.productImages || 'Product Images', icon: ImageIcon },
-        { id: 'social' as const, name: t.affiliateDashboard?.assets?.socialPosts || 'Social Posts', icon: MessageSquare },
-        { id: 'brand' as const, name: t.affiliateDashboard?.assets?.brandGuide || 'Brand Guide', icon: Palette },
+        { id: 'banners' as const, name: t('affiliateDashboard.assets.banners') || 'Banners', icon: ImageIcon },
+        { id: 'products' as const, name: t('affiliateDashboard.assets.productImages') || 'Product Images', icon: ImageIcon },
+        { id: 'social' as const, name: t('affiliateDashboard.assets.socialPosts') || 'Social Posts', icon: MessageSquare },
+        { id: 'brand' as const, name: t('affiliateDashboard.assets.brandGuide') || 'Brand Guide', icon: Palette },
     ];
 
     return (
@@ -388,10 +388,10 @@ export default function AssetsContent() {
             {/* Header */}
             <div className="mb-8">
                 <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100">
-                    {t.affiliateDashboard?.assets?.title || 'Marketing Assets'}
+                    {t('affiliateDashboard.assets.title') || 'Marketing Assets'}
                 </h1>
                 <p className="text-gray-600 dark:text-gray-400 mt-1">
-                    {t.affiliateDashboard?.assets?.description || 'Download banners, product images, and copy for your promotions.'}
+                    {t('affiliateDashboard.assets.description') || 'Download banners, product images, and copy for your promotions.'}
                 </p>
             </div>
 
@@ -471,7 +471,7 @@ export default function AssetsContent() {
                     {/* Brand Colors */}
                     <div>
                         <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
-                            {t.affiliateDashboard?.assets?.brandColors || 'Brand Colors'}
+                            {t('affiliateDashboard.assets.brandColors') || 'Brand Colors'}
                         </h2>
                         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
                             <ColorSwatch name="Primary Purple" hex={brandColors.primary} />
@@ -508,7 +508,7 @@ export default function AssetsContent() {
                     {/* Brand Guidelines */}
                     <div>
                         <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
-                            {t.affiliateDashboard?.assets?.guidelines || 'Usage Guidelines'}
+                            {t('affiliateDashboard.assets.guidelines') || 'Usage Guidelines'}
                         </h2>
                         <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
                             <div className="space-y-4 text-sm text-gray-700 dark:text-gray-300">

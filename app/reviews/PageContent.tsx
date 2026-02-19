@@ -37,7 +37,7 @@ export default function Reviews() {
 
               {/* Header */}
               <div className="text-center mb-16">
-                <div className="inline-block px-4 py-1 bg-[#E0EFC7] rounded-full text-[#FF3131] font-medium text-sm mb-4">
+                <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-green-900/40 rounded-full text-[#FF3131] dark:text-[#FF4D4D] font-medium text-sm mb-4">
                   Customer Feedback
                 </div>
                 <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
@@ -53,8 +53,8 @@ export default function Reviews() {
                 <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-8 mb-16 cv-auto cis-480 order-2">
                   <div className="grid md:grid-cols-3 gap-6">
                     <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-full bg-[#FF3131]/10 flex items-center justify-center flex-shrink-0">
-                        <Info className="w-5 h-5 text-[#FF3131]" />
+                      <div className="w-10 h-10 rounded-full bg-[#FF3131]/10 dark:bg-[#FF5050]/20 flex items-center justify-center flex-shrink-0">
+                        <Info className="w-5 h-5 text-[#FF3131] dark:text-[#FF5050]" />
                       </div>
                       <div>
                         <h2 className="font-heading text-lg font-bold text-gray-900 dark:text-gray-50 mb-1">
@@ -66,8 +66,8 @@ export default function Reviews() {
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-full bg-[#FF3131]/10 flex items-center justify-center flex-shrink-0">
-                        <FlaskConical className="w-5 h-5 text-[#FF3131]" />
+                      <div className="w-10 h-10 rounded-full bg-[#FF3131]/10 dark:bg-[#FF5050]/20 flex items-center justify-center flex-shrink-0">
+                        <FlaskConical className="w-5 h-5 text-[#FF3131] dark:text-[#FF5050]" />
                       </div>
                       <div>
                         <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-gray-50 mb-1">
@@ -78,15 +78,15 @@ export default function Reviews() {
                         </p>
                         <Link
                           href="/science"
-                          className="inline-flex items-center text-sm font-semibold text-[#FF3131] hover:text-[#FF3131]/80 transition-colors mt-2"
+                          className="inline-flex items-center text-sm font-semibold text-[#FF3131] dark:text-[#FF5050] hover:text-[#FF3131]/80 dark:hover:text-[#FF5050]/80 transition-colors mt-2"
                         >
                           View research citations
                         </Link>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-full bg-[#FF3131]/10 flex items-center justify-center flex-shrink-0">
-                        <Mail className="w-5 h-5 text-[#FF3131]" />
+                      <div className="w-10 h-10 rounded-full bg-[#FF3131]/10 dark:bg-[#FF5050]/20 flex items-center justify-center flex-shrink-0">
+                        <Mail className="w-5 h-5 text-[#FF3131] dark:text-[#FF5050]" />
                       </div>
                       <div>
                         <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-gray-50 mb-1">
@@ -97,7 +97,7 @@ export default function Reviews() {
                         </p>
                         <Link
                           href="/contact"
-                          className="inline-flex items-center text-sm font-semibold text-[#FF3131] hover:text-[#FF3131]/80 transition-colors mt-2"
+                          className="inline-flex items-center text-sm font-semibold text-[#FF3131] dark:text-[#FF5050] hover:text-[#FF3131]/80 dark:hover:text-[#FF5050]/80 transition-colors mt-2"
                         >
                           Contact us
                         </Link>
@@ -109,7 +109,7 @@ export default function Reviews() {
 
               {/* Call to Action */}
               <div className="text-center cv-auto cis-480">
-                <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#E0EFC7] border border-[#FF3131]/20 rounded-xl p-8">
+                <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#E0EFC7] dark:from-[#311010] dark:to-green-900/20 border border-[#FF3131]/20 dark:border-[#FF3131]/10 rounded-xl p-8">
                   <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
                     Ready to Experience the Difference?
                   </h2>
@@ -127,7 +127,7 @@ export default function Reviews() {
                       href={getPaymentLink('trialSingle') || '#'}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block border border-[#FF3131] text-[#FF3131] px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/5 transition-colors"
+                      className="inline-block border border-[#FF3131] text-[#FF3131] dark:text-[#FF5050] dark:border-[#FF5050]/50 px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/5 dark:hover:bg-[#FF5050]/10 transition-colors"
                     >
                       Try Free Sample
                     </a>

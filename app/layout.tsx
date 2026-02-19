@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import '../src/index.css';
 import { defaultLocale } from '@/i18n/config';
-import { LocaleDetector } from '@/components/LocaleDetector';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { Providers } from './providers';
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants';
@@ -154,7 +153,6 @@ export default async function RootLayout({
     <html lang={locale} className={inter.variable} suppressHydrationWarning>
       <body className="font-sans">
         <Providers locale={locale} messages={messages}>
-          <LocaleDetector />
           <AppLayout>
             {children}
           </AppLayout>

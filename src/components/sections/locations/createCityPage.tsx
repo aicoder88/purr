@@ -8,7 +8,7 @@ import { ChevronRight, Home } from 'lucide-react';
 
 import { LocationSchema } from '@/components/seo/json-ld-schema';
 import { getCityBySlug } from '@/data/locations';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import { safeTrackEvent } from '@/lib/analytics';
 import { CityLeadCaptureCTA } from './CityLeadCaptureCTA';
 import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
@@ -184,7 +184,8 @@ export interface CityPageTemplateProps {
 }
 
 export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateProps) => {
-  const { t, locale } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const breadcrumbAriaLabel =
     locale === 'fr'
       ? 'Fil d Ariane'
@@ -266,12 +267,12 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
 
 
   const seoTitle = profile
-    ? interpolate(t.cityPage?.seo?.title ?? 'Cat Litter Deodorizer in {{city}} | Purrify Activated Carbon', { city: profile.name })
+    ? interpolate(t('cityPage.seo.title') ?? 'Cat Litter Deodorizer in {{city}} | Purrify Activated Carbon', { city: profile.name })
     : '';
   const seoDescription = profile
     ? (populationLabel
-      ? interpolate(t.cityPage?.seo?.descriptionWithPopulation ?? 'Cat litter smell in {{city}}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across {{province}}. Loved by {{population}}+ cat owners.', { city: profile.name, province: provinceName, population: populationLabel })
-      : interpolate(t.cityPage?.seo?.descriptionDefault ?? 'Cat litter smell in {{city}}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across {{province}}. Safe for cats & kittens.', { city: profile.name, province: provinceName }))
+      ? interpolate(t('cityPage.seo.descriptionWithPopulation') ?? 'Cat litter smell in {{city}}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across {{province}}. Loved by {{population}}+ cat owners.', { city: profile.name, province: provinceName, population: populationLabel })
+      : interpolate(t('cityPage.seo.descriptionDefault') ?? 'Cat litter smell in {{city}}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across {{province}}. Safe for cats & kittens.', { city: profile.name, province: provinceName }))
     : '';
 
   const heroImage = useMemo(() => {
@@ -470,7 +471,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
 
           <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
             <h1 className={`font-heading text-4xl md:text-6xl font-bold mb-6 ${GRADIENTS.headingText}`}>
-              {interpolate(t.cityPage?.hero?.heading ?? 'Best Cat Litter Odor Eliminator in {{city}}', { city: profile.name })}
+              {interpolate(t('cityPage.hero.heading') ?? 'Best Cat Litter Odor Eliminator in {{city}}', { city: profile.name })}
             </h1>
             <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-8">
               {locale === 'fr'
@@ -480,13 +481,13 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
 
             <div className="bg-white dark:bg-gray-800/90 rounded-lg p-6 shadow-lg max-w-3xl mx-auto">
               <h2 className="font-heading text-2xl font-bold mb-4 text-gray-900 dark:text-gray-50">
-                {interpolate(t.cityPage?.whyChoose?.heading ?? 'Why {{city}} Cat Parents Choose Purrify', { city: profile.name })}
+                {interpolate(t('cityPage.whyChoose.heading') ?? 'Why {{city}} Cat Parents Choose Purrify', { city: profile.name })}
               </h2>
               <ul className="text-left space-y-2 text-gray-700 dark:text-gray-200">
                 {keyFeatures.map((feature) => (
                   <li key={feature} className="flex items-start">
                     <span className="text-green-500 dark:text-green-400 mr-2 mt-1">✓</span>
-                    <span>{interpolate(t.cityPage?.whyChoose?.perfectFor ?? 'Perfect for {{feature}}', { feature: feature.toLowerCase() })}</span>
+                    <span>{interpolate(t('cityPage.whyChoose.perfectFor') ?? 'Perfect for {{feature}}', { feature: feature.toLowerCase() })}</span>
                   </li>
                 ))}
                 <li className="flex items-start">
@@ -495,11 +496,11 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 dark:text-green-400 mr-2 mt-1">✓</span>
-                  <span>{interpolate(t.cityPage?.whyChoose?.fastShipping ?? 'Fast shipping across {{province}}', { province: provinceName })}</span>
+                  <span>{interpolate(t('cityPage.whyChoose.fastShipping') ?? 'Fast shipping across {{province}}', { province: provinceName })}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 dark:text-green-400 mr-2 mt-1">✓</span>
-                  <span>{t.cityPage?.whyChoose?.worksWithAllBrands ?? 'Works with every litter brand you already love'}</span>
+                  <span>{t('cityPage.whyChoose.worksWithAllBrands') ?? 'Works with every litter brand you already love'}</span>
                 </li>
               </ul>
 
@@ -508,7 +509,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
                   href="/products/trial-size"
                   className={CTA_BUTTON_CLASSES}
                 >
-                  {interpolate(t.cityPage?.cta?.tryInCity ?? 'Try Purrify in {{city}}', { city: profile.name })}
+                  {interpolate(t('cityPage.cta.tryInCity') ?? 'Try Purrify in {{city}}', { city: profile.name })}
                 </Link>
                 <CityLeadCaptureCTA
                   cityName={profile.name}
@@ -521,7 +522,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
                   href="/learn/faq"
                   className="inline-flex items-center justify-center text-orange-600 dark:text-orange-300 font-semibold"
                 >
-                  {t.cityPage?.cta?.seeHowItWorks ?? 'See how the carbon technology works →'}
+                  {t('cityPage.cta.seeHowItWorks') ?? 'See how the carbon technology works →'}
                 </Link>
               </div>
             </div>
@@ -540,32 +541,32 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
             <div className="grid gap-10 lg:grid-cols-2 items-start">
               <div className="order-2 lg:order-1">
                 <h2 className="font-heading text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50">
-                  {interpolate(t.cityPage?.whereToFind?.heading ?? 'Where to Find Purrify in {{city}}', { city: profile.name })}
+                  {interpolate(t('cityPage.whereToFind.heading') ?? 'Where to Find Purrify in {{city}}', { city: profile.name })}
                 </h2>
                 <div className="space-y-6">
                   <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700">
                     <h3 className="font-heading text-xl font-bold mb-3 text-blue-900 dark:text-blue-200">
-                      {t.cityPage?.whereToFind?.localStore?.heading ?? 'Ask Your Local Pet Store'}
+                      {t('cityPage.whereToFind.localStore.heading') ?? 'Ask Your Local Pet Store'}
                     </h3>
                     <p className="text-gray-700 dark:text-gray-200 mb-2">
-                      {interpolate(t.cityPage?.whereToFind?.localStore?.description ?? 'Independent pet stores across {{city}} stock the odor eliminator cat parents talk about.', { city: profile.name })}
+                      {interpolate(t('cityPage.whereToFind.localStore.description') ?? 'Independent pet stores across {{city}} stock the odor eliminator cat parents talk about.', { city: profile.name })}
                     </p>
                     <p className="text-sm text-gray-600 dark:text-gray-300">
-                      {t.cityPage?.whereToFind?.localStore?.tip ?? 'Start with your favourite neighbourhood shop or tell them you want to see Purrify on the shelf.'}
+                      {t('cityPage.whereToFind.localStore.tip') ?? 'Start with your favourite neighbourhood shop or tell them you want to see Purrify on the shelf.'}
                     </p>
                   </div>
                   <div className="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-lg border border-purple-200 dark:border-purple-700">
                     <h3 className="font-heading text-xl font-bold mb-3 text-purple-900 dark:text-purple-200">
-                      {t.cityPage?.whereToFind?.orderDirect?.heading ?? 'Order Direct With Fast Shipping'}
+                      {t('cityPage.whereToFind.orderDirect.heading') ?? 'Order Direct With Fast Shipping'}
                     </h3>
                     <p className="text-gray-700 dark:text-gray-200 mb-4">
-                      {interpolate(t.cityPage?.whereToFind?.orderDirect?.description ?? 'Prefer doorstep delivery? Order online and receive fresh air in 2-3 business days anywhere in {{province}}.', { province: provinceName })}
+                      {interpolate(t('cityPage.whereToFind.orderDirect.description') ?? 'Prefer doorstep delivery? Order online and receive fresh air in 2-3 business days anywhere in {{province}}.', { province: provinceName })}
                     </p>
                     <Link
                       href="/products/trial-size"
                       className={CTA_BUTTON_CLASSES}
                     >
-                      {t.cityPage?.cta?.shopOnline ?? 'Shop Online Now'}
+                      {t('cityPage.cta.shopOnline') ?? 'Shop Online Now'}
                     </Link>
                   </div>
                 </div>
@@ -573,20 +574,20 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
               <div className="order-1 lg:order-2">
                 <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-xl p-6">
                   <h3 className="font-heading text-xl font-semibold text-gray-900 dark:text-gray-50 mb-4">
-                    {interpolate(t.cityPage?.playbook?.heading ?? 'Fresh Air Playbook for {{city}}', { city: profile.name })}
+                    {interpolate(t('cityPage.playbook.heading') ?? 'Fresh Air Playbook for {{city}}', { city: profile.name })}
                   </h3>
                   <ol className="space-y-3 text-left text-gray-700 dark:text-gray-200">
                     <li className="flex items-start">
                       <span className="text-orange-500 dark:text-orange-300 font-semibold mr-3">1</span>
-                      <span>{t.cityPage?.playbook?.step1 ?? 'Sprinkle 2 tablespoons on top of your litter box after every scoop.'}</span>
+                      <span>{t('cityPage.playbook.step1') ?? 'Sprinkle 2 tablespoons on top of your litter box after every scoop.'}</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-orange-500 dark:text-orange-300 font-semibold mr-3">2</span>
-                      <span>{interpolate(t.cityPage?.playbook?.step2 ?? 'Refresh every other day if your home deals with {{painPoint}}.', { painPoint: painPoint.toLowerCase() })}</span>
+                      <span>{interpolate(t('cityPage.playbook.step2') ?? 'Refresh every other day if your home deals with {{painPoint}}.', { painPoint: painPoint.toLowerCase() })}</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-orange-500 dark:text-orange-300 font-semibold mr-3">3</span>
-                      <span>{t.cityPage?.playbook?.step3 ?? 'Replace your litter box as usual—Purrify works with clumping, clay, and natural litters.'}</span>
+                      <span>{t('cityPage.playbook.step3') ?? 'Replace your litter box as usual—Purrify works with clumping, clay, and natural litters.'}</span>
                     </li>
                   </ol>
                 </div>
@@ -599,11 +600,11 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
           <section className="py-16 px-4 bg-white dark:bg-gray-800">
             <div className="max-w-6xl mx-auto">
               <h2 className="font-heading text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-50">
-                {interpolate(t.cityPage?.testimonials?.heading ?? 'What {{city}} Cat Owners Say', { city: profile.name })}
+                {interpolate(t('cityPage.testimonials.heading') ?? 'What {{city}} Cat Owners Say', { city: profile.name })}
               </h2>
               <div className="grid md:grid-cols-3 gap-8">
                 {testimonials.map((testimonial) => (
-                  <TestimonialCard key={testimonial.author} testimonial={testimonial} wasHelpfulText={t.cityPage?.testimonials?.wasHelpful ?? 'Was this helpful?'} />
+                  <TestimonialCard key={testimonial.author} testimonial={testimonial} wasHelpfulText={t('cityPage.testimonials.wasHelpful') ?? 'Was this helpful?'} />
                 ))}
               </div>
             </div>
@@ -644,32 +645,32 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="font-heading text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-50">
-              {interpolate(t.cityPage?.faq?.heading ?? '{{city}} FAQ', { city: profile.name })}
+              {interpolate(t('cityPage.faq.heading') ?? '{{city}} FAQ', { city: profile.name })}
             </h2>
             <div className="space-y-6">
               <FAQItem
-                question={interpolate(t.cityPage?.faq?.delivery?.question ?? 'Do you deliver to {{city}}, {{province}}?', { city: profile.name, province: provinceName })}
-                answer={interpolate(t.cityPage?.faq?.delivery?.answer ?? 'Yes! Fast shipping across {{province}}, including every neighbourhood in {{city}}. Orders arrive within 2-3 business days.', { city: profile.name, province: provinceName })}
+                question={interpolate(t('cityPage.faq.delivery.question') ?? 'Do you deliver to {{city}}, {{province}}?', { city: profile.name, province: provinceName })}
+                answer={interpolate(t('cityPage.faq.delivery.answer') ?? 'Yes! Fast shipping across {{province}}, including every neighbourhood in {{city}}. Orders arrive within 2-3 business days.', { city: profile.name, province: provinceName })}
               />
               <FAQItem
-                question={interpolate(t.cityPage?.faq?.painPoint?.question ?? 'How does Purrify support homes dealing with {{painPoint}}?', { painPoint: painPoint.toLowerCase() })}
-                answer={interpolate(t.cityPage?.faq?.painPoint?.answer ?? "Sprinkle Purrify on top of your usual litter. The activated carbon bonds to ammonia molecules, even when {{painPoint}}. Fresh air without changing your cat's routine.", { painPoint: painPoint.toLowerCase() })}
+                question={interpolate(t('cityPage.faq.painPoint.question') ?? 'How does Purrify support homes dealing with {{painPoint}}?', { painPoint: painPoint.toLowerCase() })}
+                answer={interpolate(t('cityPage.faq.painPoint.answer') ?? "Sprinkle Purrify on top of your usual litter. The activated carbon bonds to ammonia molecules, even when {{painPoint}}. Fresh air without changing your cat's routine.", { painPoint: painPoint.toLowerCase() })}
               />
               <FAQItem
-                question={interpolate(t.cityPage?.faq?.litterBrands?.question ?? 'Which litter brands work best with Purrify in {{city}}?', { city: profile.name })}
-                answer={interpolate(t.cityPage?.faq?.litterBrands?.answer ?? "Purrify works with every litter type—clumping clay, crystal, natural pine, corn, wheat, and tofu litters. {{city}} cat owners pair it with the litter brands they already buy from independent pet shops, and it enhances them all without changing your cat's preferences.", { city: profile.name })}
+                question={interpolate(t('cityPage.faq.litterBrands.question') ?? 'Which litter brands work best with Purrify in {{city}}?', { city: profile.name })}
+                answer={interpolate(t('cityPage.faq.litterBrands.answer') ?? "Purrify works with every litter type—clumping clay, crystal, natural pine, corn, wheat, and tofu litters. {{city}} cat owners pair it with the litter brands they already buy from independent pet shops, and it enhances them all without changing your cat's preferences.", { city: profile.name })}
               />
               <FAQItem
-                question={interpolate(t.cityPage?.faq?.climate?.question ?? 'How does Purrify handle {{seasonalTip}} in {{province}}?', { seasonalTip: seasonalTip.toLowerCase(), province: provinceName })}
-                answer={interpolate(t.cityPage?.faq?.climate?.answer ?? "The activated carbon technology works independently of temperature and humidity. Whether you're dealing with {{seasonalTip}} in {{city}}, Purrify's molecular odor capture continues 24/7. Perfect for {{keyFeature}} facing {{province}}'s climate challenges.", { seasonalTip: seasonalTip.toLowerCase(), city: profile.name, keyFeature: keyFeatures[0]?.toLowerCase() || 'busy households', province: provinceName })}
+                question={interpolate(t('cityPage.faq.climate.question') ?? 'How does Purrify handle {{seasonalTip}} in {{province}}?', { seasonalTip: seasonalTip.toLowerCase(), province: provinceName })}
+                answer={interpolate(t('cityPage.faq.climate.answer') ?? "The activated carbon technology works independently of temperature and humidity. Whether you're dealing with {{seasonalTip}} in {{city}}, Purrify's molecular odor capture continues 24/7. Perfect for {{keyFeature}} facing {{province}}'s climate challenges.", { seasonalTip: seasonalTip.toLowerCase(), city: profile.name, keyFeature: keyFeatures[0]?.toLowerCase() || 'busy households', province: provinceName })}
               />
               <FAQItem
-                question={interpolate(t.cityPage?.faq?.stores?.question ?? 'Can I find Purrify at pet stores in {{city}}?', { city: profile.name })}
-                answer={interpolate(t.cityPage?.faq?.stores?.answer ?? 'Many independent retailers in {{city}} stock Purrify. Call ahead to check availability, or order online for guaranteed 2-3 day delivery anywhere in {{province}}.', { city: profile.name, province: provinceName })}
+                question={interpolate(t('cityPage.faq.stores.question') ?? 'Can I find Purrify at pet stores in {{city}}?', { city: profile.name })}
+                answer={interpolate(t('cityPage.faq.stores.answer') ?? 'Many independent retailers in {{city}} stock Purrify. Call ahead to check availability, or order online for guaranteed 2-3 day delivery anywhere in {{province}}.', { city: profile.name, province: provinceName })}
               />
               <FAQItem
-                question={interpolate(t.cityPage?.faq?.multiCat?.question ?? 'Is Purrify safe for multi-cat households in {{city}}?', { city: profile.name })}
-                answer={interpolate(t.cityPage?.faq?.multiCat?.answer ?? "Absolutely! Purrify is completely safe for homes with multiple cats. Many {{city}} families use it across 2-4 litter boxes. The activated carbon is non-toxic, fragrance-free, and won't irritate sensitive cats. Perfect for {{keyFeature}}.", { city: profile.name, keyFeature: keyFeatures[1]?.toLowerCase() || 'multi-cat families' })}
+                question={interpolate(t('cityPage.faq.multiCat.question') ?? 'Is Purrify safe for multi-cat households in {{city}}?', { city: profile.name })}
+                answer={interpolate(t('cityPage.faq.multiCat.answer') ?? "Absolutely! Purrify is completely safe for homes with multiple cats. Many {{city}} families use it across 2-4 litter boxes. The activated carbon is non-toxic, fragrance-free, and won't irritate sensitive cats. Perfect for {{keyFeature}}.", { city: profile.name, keyFeature: keyFeatures[1]?.toLowerCase() || 'multi-cat families' })}
               />
             </div>
           </div>

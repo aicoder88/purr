@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { scrollToSection } from '@/lib/utils';
 import { useCallback, useMemo } from 'react';
 import { PHONE_MESSAGING } from '@/lib/constants';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 
 // Types
 interface PricingTier {
@@ -196,9 +196,15 @@ function TierCard({ tier, onCtaClick, packageIncludesLabel, featuresLabel, index
 }
 
 export function WholesalePricing() {
-  const { t } = useTranslation();
-  const pricing = t.retailers?.wholesalePricing;
-  const featuresLabel = t.productComparison?.features || 'Features';
+  const t = useTranslations();
+  // Try to get pricing data, fallback to empty object if not available
+  let pricing: Record<string, any> = {};
+  try {
+    pricing = t.raw('retailers.wholesalePricing') as Record<string, any>;
+  } catch {
+    pricing = {};
+  }
+  const featuresLabel = t('productComparison.features') || 'Features';
 
   const handleScrollToRetailer = useCallback(() => {
     scrollToSection('retailer-contact');

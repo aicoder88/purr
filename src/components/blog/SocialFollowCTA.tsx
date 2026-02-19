@@ -1,6 +1,6 @@
 import { Instagram, Twitter, Youtube, Facebook, Linkedin } from 'lucide-react';
 import { SOCIAL_LINKS } from '@/lib/constants';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 
 interface SocialFollowCTAProps {
   variant?: 'inline' | 'card';
@@ -58,10 +58,10 @@ const socialLinks = [
 ];
 
 export function SocialFollowCTA({ variant = 'card', className = '' }: SocialFollowCTAProps) {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
-  const headlineText = t.socialFollow?.headline || 'Follow us for more tips';
-  const descriptionText = t.socialFollow?.description || 'Join our community for cat care tips and exclusive offers.';
+  const headlineText = t('socialFollow.headline') || 'Follow us for more tips';
+  const descriptionText = t('socialFollow.description') || 'Join our community for cat care tips and exclusive offers.';
 
   if (variant === 'inline') {
     return (

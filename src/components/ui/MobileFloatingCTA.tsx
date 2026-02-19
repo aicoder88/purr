@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ShoppingBag } from 'lucide-react';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 
 /**
  * MobileFloatingCTA - A floating call-to-action button for mobile devices
@@ -18,7 +18,8 @@ import { useTranslation } from '@/lib/translation-context';
  */
 export function MobileFloatingCTA() {
   const pathname = usePathname();
-  const { t, locale } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const [isClient, setIsClient] = useState(false);
 
   // Avoid hydration mismatch
@@ -75,7 +76,7 @@ export function MobileFloatingCTA() {
         focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2
         dark:focus:ring-orange-500 dark:focus:ring-offset-gray-900
       "
-      aria-label={t.nav?.buyNow || 'Buy Now'}
+      aria-label={t('nav.buyNow') || 'Buy Now'}
     >
       <ShoppingBag className="w-6 h-6" aria-hidden="true" />
     </Link>

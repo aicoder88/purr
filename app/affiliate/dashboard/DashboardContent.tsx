@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import AffiliateLayout from '@/components/affiliate/AffiliateLayout';
 import { StatsCard } from '@/components/affiliate/StatsCard';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import {
     MousePointer,
     ShoppingCart,
@@ -261,7 +261,7 @@ function TierProgressCard({ tier, monthlyProgress }: { tier: DashboardStats['tie
 }
 
 function RecentConversions({ conversions }: { conversions: DashboardStats['recentConversions'] }) {
-    const { t } = useTranslation();
+    const t = useTranslations();
 
     const getStatusBadge = (status: string) => {
         const styles = {
@@ -272,10 +272,10 @@ function RecentConversions({ conversions }: { conversions: DashboardStats['recen
         };
 
         const statusLabels: Record<string, string> = {
-            PENDING: t.affiliateDashboard?.conversions?.statusPending || 'Pending',
-            CLEARED: t.affiliateDashboard?.conversions?.statusCleared || 'Cleared',
-            PAID: t.affiliateDashboard?.conversions?.statusPaid || 'Paid',
-            VOIDED: t.affiliateDashboard?.conversions?.statusVoided || 'Voided',
+            PENDING: t('affiliateDashboard.conversions.statusPending') || 'Pending',
+            CLEARED: t('affiliateDashboard.conversions.statusCleared') || 'Cleared',
+            PAID: t('affiliateDashboard.conversions.statusPaid') || 'Paid',
+            VOIDED: t('affiliateDashboard.conversions.statusVoided') || 'Voided',
         };
 
         return (
@@ -289,10 +289,10 @@ function RecentConversions({ conversions }: { conversions: DashboardStats['recen
         return (
             <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
-                    {t.affiliateDashboard?.conversions?.title || 'Recent Conversions'}
+                    {t('affiliateDashboard.conversions.title') || 'Recent Conversions'}
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400 text-center py-8">
-                    {t.affiliateDashboard?.conversions?.noConversions || 'No conversions yet. Share your link to start earning!'}
+                    {t('affiliateDashboard.conversions.noConversions') || 'No conversions yet. Share your link to start earning!'}
                 </p>
             </div>
         );
@@ -302,7 +302,7 @@ function RecentConversions({ conversions }: { conversions: DashboardStats['recen
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
             <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                    {t.affiliateDashboard?.conversions?.title || 'Recent Conversions'}
+                    {t('affiliateDashboard.conversions.title') || 'Recent Conversions'}
                 </h3>
                 <Link
                     href="/affiliate/dashboard/stats"
@@ -341,7 +341,7 @@ function RecentConversions({ conversions }: { conversions: DashboardStats['recen
 }
 
 export default function DashboardContent() {
-    const { t } = useTranslation();
+    const t = useTranslations();
     const router = useRouter();
     const [data, setData] = useState<DashboardStats | null>(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -361,11 +361,11 @@ export default function DashboardContent() {
             setData(data);
         } catch (err) {
             console.error('Failed to fetch dashboard stats:', err);
-            setError(t.affiliateDashboard?.errors?.loadFailed || 'Failed to load dashboard data');
+            setError(t('affiliateDashboard.errors.loadFailed') || 'Failed to load dashboard data');
         } finally {
             setIsLoading(false);
         }
-    }, [t.affiliateDashboard?.errors?.loadFailed, router]);
+    }, [t('affiliateDashboard.errors.loadFailed'), router]);
 
     useEffect(() => {
         fetchStats();
@@ -379,7 +379,7 @@ export default function DashboardContent() {
             {/* Header */}
             <div className="mb-8">
                 <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100">
-                    {t.affiliateDashboard?.overview?.welcome || 'Welcome back'}{data?.affiliate?.name ? `, ${data.affiliate.name.split(' ')[0]}` : ''}!
+                    {t('affiliateDashboard.overview.welcome') || 'Welcome back'}{data?.affiliate?.name ? `, ${data.affiliate.name.split(' ')[0]}` : ''}!
                 </h1>
                 <p className="text-gray-600 dark:text-gray-400 mt-1">
                     Here&apos;s how your affiliate account is performing.
@@ -395,7 +395,7 @@ export default function DashboardContent() {
             {/* Stats Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 <StatsCard
-                    title={t.affiliateDashboard?.stats?.totalClicks || 'Total Clicks'}
+                    title={t('affiliateDashboard.stats.totalClicks') || 'Total Clicks'}
                     value={data?.stats.totalClicks || 0}
                     icon={<MousePointer className="w-5 h-5 text-purple-600 dark:text-purple-400" />}
                     change={data?.trends.clicksChange}
@@ -403,7 +403,7 @@ export default function DashboardContent() {
                     isLoading={isLoading}
                 />
                 <StatsCard
-                    title={t.affiliateDashboard?.stats?.totalConversions || 'Conversions'}
+                    title={t('affiliateDashboard.stats.totalConversions') || 'Conversions'}
                     value={data?.stats.totalConversions || 0}
                     icon={<ShoppingCart className="w-5 h-5 text-purple-600 dark:text-purple-400" />}
                     change={data?.trends.conversionsChange}
@@ -411,14 +411,14 @@ export default function DashboardContent() {
                     isLoading={isLoading}
                 />
                 <StatsCard
-                    title={t.affiliateDashboard?.stats?.conversionRate || 'Conversion Rate'}
+                    title={t('affiliateDashboard.stats.conversionRate') || 'Conversion Rate'}
                     value={data?.stats.conversionRate || 0}
                     format="percentage"
                     icon={<Percent className="w-5 h-5 text-purple-600 dark:text-purple-400" />}
                     isLoading={isLoading}
                 />
                 <StatsCard
-                    title={t.affiliateDashboard?.stats?.totalEarnings || 'Total Earnings'}
+                    title={t('affiliateDashboard.stats.totalEarnings') || 'Total Earnings'}
                     value={data?.stats.totalEarnings || 0}
                     format="currency"
                     icon={<DollarSign className="w-5 h-5 text-purple-600 dark:text-purple-400" />}
@@ -427,15 +427,15 @@ export default function DashboardContent() {
                     isLoading={isLoading}
                 />
                 <StatsCard
-                    title={t.affiliateDashboard?.stats?.pendingEarnings || 'Pending'}
+                    title={t('affiliateDashboard.stats.pendingEarnings') || 'Pending'}
                     value={data?.stats.pendingEarnings || 0}
                     format="currency"
                     icon={<Clock className="w-5 h-5 text-purple-600 dark:text-purple-400" />}
-                    note={t.affiliateDashboard?.stats?.pendingNote || '30-day hold'}
+                    note={t('affiliateDashboard.stats.pendingNote') || '30-day hold'}
                     isLoading={isLoading}
                 />
                 <StatsCard
-                    title={t.affiliateDashboard?.stats?.availableBalance || 'Available'}
+                    title={t('affiliateDashboard.stats.availableBalance') || 'Available'}
                     value={data?.stats.availableBalance || 0}
                     format="currency"
                     icon={<Wallet className="w-5 h-5 text-purple-600 dark:text-purple-400" />}

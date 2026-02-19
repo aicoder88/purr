@@ -29,34 +29,15 @@ const REDIRECTS = [
     permanent: true
   },
   {
-    source: "/zh/:path*",
-    has: [{ type: "host", value: "zh.purrify.ca" }],
-    destination: "https://www.purrify.ca/zh/:path*",
-    permanent: true
-  },
-  {
-    source: "/es/:path*",
-    has: [{ type: "host", value: "es.purrify.ca" }],
-    destination: "https://www.purrify.ca/es/:path*",
-    permanent: true
-  },
-  // Redirect subdomains to main domain with locale
-  {
-    source: "/:path*",
-    has: [{ type: "host", value: "fr.purrify.ca" }],
-    destination: "https://www.purrify.ca/fr/:path*",
-    permanent: true
-  },
-  {
     source: "/:path*",
     has: [{ type: "host", value: "zh.purrify.ca" }],
-    destination: "https://www.purrify.ca/zh/:path*",
+    destination: "https://www.purrify.ca/:path*",
     permanent: true
   },
   {
     source: "/:path*",
     has: [{ type: "host", value: "es.purrify.ca" }],
-    destination: "https://www.purrify.ca/es/:path*",
+    destination: "https://www.purrify.ca/:path*",
     permanent: true
   },
   // Fix double locale paths (e.g. /fr/fr/...)
@@ -65,16 +46,7 @@ const REDIRECTS = [
     destination: "/fr/:path*",
     permanent: true
   },
-  {
-    source: "/zh/zh/:path*",
-    destination: "/zh/:path*",
-    permanent: true
-  },
-  {
-    source: "/es/es/:path*",
-    destination: "/es/:path*",
-    permanent: true
-  },
+
 
   // --- SPECIFIC FIXES ---
   {
@@ -87,105 +59,100 @@ const REDIRECTS = [
     destination: "/:locale/learn/how-to-use-deodorizer/",
     permanent: true
   },
-  {
-    source: "/:locale(zh|es)/blog/how-to-use-cat-litter-deodorizer",
-    destination: "/learn/how-to-use-deodorizer/",
-    permanent: true
-  },
 
   // --- INVALID LOCATION REDIRECTS ---
   {
-    source: "/:locale(fr|zh|es)?/locations/lake-louise",
+    source: "/:locale(fr)?/locations/lake-louise",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/medicine-hat",
+    source: "/:locale(fr)?/locations/medicine-hat",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/tuktoyaktuk",
+    source: "/:locale(fr)?/locations/tuktoyaktuk",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/kimberley",
+    source: "/:locale(fr)?/locations/kimberley",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/saguenay",
+    source: "/:locale(fr)?/locations/saguenay",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/victoria",
+    source: "/:locale(fr)?/locations/victoria",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/swan-river",
+    source: "/:locale(fr)?/locations/swan-river",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/port-hawkesbury",
+    source: "/:locale(fr)?/locations/port-hawkesbury",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/fredericton",
+    source: "/:locale(fr)?/locations/fredericton",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/wabana",
+    source: "/:locale(fr)?/locations/wabana",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/st-johns",
+    source: "/:locale(fr)?/locations/st-johns",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/penticton",
+    source: "/:locale(fr)?/locations/penticton",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/labrador-city",
+    source: "/:locale(fr)?/locations/labrador-city",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/sainte-anne-de-beaupre",
+    source: "/:locale(fr)?/locations/sainte-anne-de-beaupre",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/grand-fallswindsor",
+    source: "/:locale(fr)?/locations/grand-fallswindsor",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/campbell-river",
+    source: "/:locale(fr)?/locations/campbell-river",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/inuvik",
+    source: "/:locale(fr)?/locations/inuvik",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/glace-bay",
+    source: "/:locale(fr)?/locations/glace-bay",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/chilliwack",
+    source: "/:locale(fr)?/locations/chilliwack",
     destination: "/:locale/stores",
     permanent: true
   },
@@ -195,202 +162,197 @@ const REDIRECTS = [
     permanent: true
   },
   {
-    source: "/:locale(zh|es)/locations/revelstoke",
-    destination: "/stores/",
-    permanent: true
-  },
-  {
-    source: "/:locale(fr|zh|es)?/locations/fort-smith",
+    source: "/:locale(fr)?/locations/fort-smith",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/saint-albert",
+    source: "/:locale(fr)?/locations/saint-albert",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/saint-anthony",
+    source: "/:locale(fr)?/locations/saint-anthony",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/saint-john",
+    source: "/:locale(fr)?/locations/saint-john",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/happy-valleygoose-bay",
+    source: "/:locale(fr)?/locations/happy-valleygoose-bay",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/churchill",
+    source: "/:locale(fr)?/locations/churchill",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/pictou",
+    source: "/:locale(fr)?/locations/pictou",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/sainte-therese",
+    source: "/:locale(fr)?/locations/sainte-therese",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/iroquois-falls",
+    source: "/:locale(fr)?/locations/iroquois-falls",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/bathurst",
+    source: "/:locale(fr)?/locations/bathurst",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/fort-saint-john",
+    source: "/:locale(fr)?/locations/fort-saint-john",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/esquimalt",
+    source: "/:locale(fr)?/locations/esquimalt",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/hope",
+    source: "/:locale(fr)?/locations/hope",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/iqaluit",
+    source: "/:locale(fr)?/locations/iqaluit",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/sarnia-clearwater",
+    source: "/:locale(fr)?/locations/sarnia-clearwater",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/delta",
+    source: "/:locale(fr)?/locations/delta",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/dauphin",
+    source: "/:locale(fr)?/locations/dauphin",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/corner-brook",
+    source: "/:locale(fr)?/locations/corner-brook",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/powell-river",
+    source: "/:locale(fr)?/locations/powell-river",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/yellowknife",
+    source: "/:locale(fr)?/locations/yellowknife",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/thompson",
+    source: "/:locale(fr)?/locations/thompson",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/caraquet",
+    source: "/:locale(fr)?/locations/caraquet",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/ferryland",
+    source: "/:locale(fr)?/locations/ferryland",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/saint-boniface",
+    source: "/:locale(fr)?/locations/saint-boniface",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/kirkland-lake",
+    source: "/:locale(fr)?/locations/kirkland-lake",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/vernon",
+    source: "/:locale(fr)?/locations/vernon",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/mb",
+    source: "/:locale(fr)?/locations/mb",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/prince-rupert",
+    source: "/:locale(fr)?/locations/prince-rupert",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/saint-eustache",
+    source: "/:locale(fr)?/locations/saint-eustache",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/waskaganish",
+    source: "/:locale(fr)?/locations/waskaganish",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/kamloops",
+    source: "/:locale(fr)?/locations/kamloops",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/brandon",
+    source: "/:locale(fr)?/locations/brandon",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/nanaimo",
+    source: "/:locale(fr)?/locations/nanaimo",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/moncton",
+    source: "/:locale(fr)?/locations/moncton",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/brantford",
+    source: "/:locale(fr)?/locations/brantford",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/chatham-kent",
+    source: "/:locale(fr)?/locations/chatham-kent",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/digby",
+    source: "/:locale(fr)?/locations/digby",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/west-vancouver",
+    source: "/:locale(fr)?/locations/west-vancouver",
     destination: "/:locale/stores",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)?/locations/white-rock",
+    source: "/:locale(fr)?/locations/white-rock",
     destination: "/:locale/stores",
     permanent: true
   },
@@ -406,21 +368,7 @@ const REDIRECTS = [
     destination: "/:path*",
     permanent: true
   },
-  {
-    source: "/:path+/es/:path2*",
-    destination: "/es/:path2*",
-    permanent: true
-  },
-  {
-    source: "/:path+/fr/:path2*",
-    destination: "/fr/:path2*",
-    permanent: true
-  },
-  {
-    source: "/:path+/zh/:path2*",
-    destination: "/zh/:path2*",
-    permanent: true
-  },
+
   {
     source: "//(.*)",
     destination: "/$1",
@@ -452,17 +400,17 @@ const REDIRECTS = [
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)/blog/activated-carbon-science",
+    source: "/:locale(fr)/blog/activated-carbon-science",
     destination: "/:locale/blog/activated-carbon-litter-additive-benefits",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)/blog/fresh-home-multiple-cats",
+    source: "/:locale(fr)/blog/fresh-home-multiple-cats",
     destination: "/:locale/blog/multi-cat-litter-deodorizer-guide",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)/blog/beyond-masking-odors",
+    source: "/:locale(fr)/blog/beyond-masking-odors",
     destination: "/:locale/blog/most-powerful-odor-absorber",
     permanent: true
   },
@@ -660,7 +608,7 @@ const REDIRECTS = [
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)/trial",
+    source: "/:locale(fr)/trial",
     destination: "/:locale/products/trial-size",
     permanent: true
   },
@@ -676,12 +624,12 @@ const REDIRECTS = [
   },
   {
     source: "/zh/stockists",
-    destination: "/zh/stores",
+    destination: "/stores",
     permanent: true
   },
   {
     source: "/es/stockists",
-    destination: "/es/stores",
+    destination: "/stores",
     permanent: true
   },
   {
@@ -780,83 +728,83 @@ const REDIRECTS = [
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)/locations/province/prince-edward-island",
+    source: "/:locale(fr)/locations/province/prince-edward-island",
     destination: "/:locale/locations",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)/locations/province/northwest-territories",
+    source: "/:locale(fr)/locations/province/northwest-territories",
     destination: "/:locale/locations",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)/locations/province/nunavut",
+    source: "/:locale(fr)/locations/province/nunavut",
     destination: "/:locale/locations",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)/locations/province/yukon",
+    source: "/:locale(fr)/locations/province/yukon",
     destination: "/:locale/locations",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)/locations/province/new-brunswick",
+    source: "/:locale(fr)/locations/province/new-brunswick",
     destination: "/:locale/locations",
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)/locations/province/newfoundland-and-labrador",
+    source: "/:locale(fr)/locations/province/newfoundland-and-labrador",
     destination: "/:locale/locations",
     permanent: true
   },
   {
     source: "/es/locations/montreal",
-    destination: "/es/stores",
+    destination: "/stores",
     permanent: true
   },
   {
     source: "/es/locations/province/alberta",
-    destination: "/es/stores",
+    destination: "/stores",
     permanent: true
   },
   {
     source: "/es/locations/province/british-columbia",
-    destination: "/es/stores",
+    destination: "/stores",
     permanent: true
   },
   {
     source: "/es/locations/province/manitoba",
-    destination: "/es/stores",
+    destination: "/stores",
     permanent: true
   },
   {
     source: "/es/locations/province/nova-scotia",
-    destination: "/es/stores",
+    destination: "/stores",
     permanent: true
   },
   {
     source: "/es/locations/province/ontario",
-    destination: "/es/stores",
+    destination: "/stores",
     permanent: true
   },
   {
     source: "/es/locations/province/quebec",
-    destination: "/es/stores",
+    destination: "/stores",
     permanent: true
   },
   {
     source: "/es/locations/province/saskatchewan",
-    destination: "/es/stores",
+    destination: "/stores",
     permanent: true
   },
   {
     source: "/es/opiniones",
-    destination: "/es/reviews",
+    destination: "/products",
     permanent: true
   },
   {
     source: "/es/reviews",
-    destination: "/es/products",
+    destination: "/products",
     permanent: true
   },
   {
@@ -1005,7 +953,7 @@ const REDIRECTS = [
     permanent: true
   },
   {
-    source: "/:locale(fr|zh|es)/checkout",
+    source: "/:locale(fr)/checkout",
     destination: "/:locale/products",
     permanent: true
   },
@@ -1492,28 +1440,13 @@ const REDIRECTS = [
     permanent: true
   },
   {
-    source: "/:locale(zh|es)/about/",
-    destination: "/about/our-story/",
-    permanent: true
-  },
-  {
     source: "/:locale(fr)/about",
     destination: "/:locale/about/our-story",
     permanent: true
   },
   {
-    source: "/:locale(zh|es)/about",
-    destination: "/about/our-story",
-    permanent: true
-  },
-  {
     source: "/:locale(fr)/contact-us",
     destination: "/:locale/contact",
-    permanent: true
-  },
-  {
-    source: "/:locale(zh|es)/contact-us",
-    destination: "/contact",
     permanent: true
   },
   {

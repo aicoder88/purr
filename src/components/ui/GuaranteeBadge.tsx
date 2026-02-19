@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ShieldCheck } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 
 export interface GuaranteeBadgeProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
@@ -26,7 +26,7 @@ export function GuaranteeBadge({
   showIcon = true,
   ...props
 }: GuaranteeBadgeProps) {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   const sizeClasses = {
     sm: 'px-2.5 py-1 text-xs gap-1.5',
@@ -58,7 +58,7 @@ export function GuaranteeBadge({
           aria-hidden="true"
         />
       )}
-      <span>{t.ui.moneyBackGuarantee}</span>
+      <span>{t('ui.moneyBackGuarantee')}</span>
     </div>
   );
 }

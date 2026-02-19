@@ -1,6 +1,6 @@
 import type { Locale } from '@/i18n/config';
 
-const LOCALE_SEGMENT_PATTERN = /^\/(en|fr|zh|es)(?=\/|$)/;
+const LOCALE_SEGMENT_PATTERN = /^\/(en|fr)(?=\/|$)/;
 
 const COMMERCIAL_ROUTE_PATHS = [
   '/products',

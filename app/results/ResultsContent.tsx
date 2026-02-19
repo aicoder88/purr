@@ -10,7 +10,7 @@ interface Testimonial {
   text: string;
   stars?: number;
 }
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import { Quote, CheckCircle, Users, Clock, Sparkles, ArrowRight, Shield, Zap, Home, ChevronRight } from 'lucide-react';
 import { COLORS, GRADIENTS, createCardClasses, createSectionClasses } from '@/lib/theme-utils';
 import { generateStarRating, generateAvatarUrl } from '@/lib/component-utils';
@@ -20,8 +20,9 @@ interface ResultsContentProps {
 }
 
 export function ResultsContent({ testimonials }: ResultsContentProps) {
-  const { t, locale } = useTranslation();
-  const r = t.results || {};
+  const t = useTranslations();
+  const locale = useLocale();
+  const r = (t.raw('results') || {}) as Record<string, any>;
   const breadcrumbLabel =
     locale === 'fr'
       ? 'Fil d Ariane'
@@ -107,8 +108,8 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
         <Container>
           <div className="max-w-4xl mx-auto text-center">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#E0EFC7] dark:bg-[#E0EFC7]/20 rounded-full mb-6">
-              <Sparkles className="w-4 h-4 text-[#FF3131]" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#E0EFC7] dark:bg-green-900/40 rounded-full mb-6">
+              <Sparkles className="w-4 h-4 text-[#FF3131] dark:text-[#FF4D4D]" />
               <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">
                 {r?.hero?.badge || 'Customer Results'}
               </span>
@@ -127,14 +128,14 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8 text-sm">
               <Link
                 href="/science"
-                className={`font-semibold ${COLORS.text.primary} hover:text-[#FF3131] transition-colors`}
+                className={`font-semibold ${COLORS.text.primary} hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors`}
               >
                 {r?.hero?.scienceLink || 'See research citations'}
               </Link>
               <span className="hidden sm:block text-gray-400 dark:text-gray-600">•</span>
               <Link
                 href="/learn/how-to-use-deodorizer"
-                className={`font-semibold ${COLORS.text.primary} hover:text-[#FF3131] transition-colors`}
+                className={`font-semibold ${COLORS.text.primary} hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors`}
               >
                 {r?.hero?.howToLink || 'How to use the additive'}
               </Link>
@@ -144,7 +145,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/products/trial-size"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#FF3131] hover:bg-[#FF3131]/90 text-white dark:text-gray-100 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#FF3131] dark:bg-[#FF5050] hover:bg-[#FF3131]/90 dark:hover:bg-[#FF5050]/90 text-white dark:text-gray-100 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 {r?.hero?.tryCta || 'Try Risk-Free - Just $4.76 S&H'}
                 <ArrowRight className="w-5 h-5" />
@@ -249,7 +250,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
                 >
                   {/* Avatar and Name */}
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#E0EFC7] dark:border-gray-600">
+                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#E0EFC7] dark:border-white/10">
                       <Image
                         src={generateAvatarUrl(testimonial.name, index)}
                         alt={testimonial.name}
@@ -268,7 +269,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
 
                   {/* Quote */}
                   <div className="relative">
-                    <Quote className="absolute -top-2 -left-1 w-6 h-6 text-[#FF3131]/20 dark:text-[#FF5050]/20" />
+                    <Quote className="absolute -top-2 -left-1 w-6 h-6 text-[#FF3131]/20 dark:text-[#FF5050]/30" />
                     <p className={`${COLORS.text.secondary} text-sm leading-relaxed pl-4`}>
                       {testimonial.text}
                     </p>
@@ -335,7 +336,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/products/trial-size"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#FF3131] hover:bg-[#FF3131]/90 text-white dark:text-gray-100 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#FF3131] dark:bg-[#FF5050] hover:bg-[#FF3131]/90 dark:hover:bg-[#FF5050]/90 text-white dark:text-gray-100 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 {r?.cta?.primaryButton || 'Get Your Trial - $4.76 S&H'}
                 <ArrowRight className="w-5 h-5" />

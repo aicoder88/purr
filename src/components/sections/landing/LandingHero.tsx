@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { ChevronRight, Home } from 'lucide-react';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 
 interface LandingHeroProps {
   breadcrumb: string;
@@ -26,7 +26,8 @@ export function LandingHero({
   image,
   imageAlt = '',
 }: LandingHeroProps) {
-  const { t, locale } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const breadcrumbAriaLabel =
     locale === 'fr'
       ? 'Fil d Ariane'
@@ -44,7 +45,7 @@ export function LandingHero({
                 className="flex items-center gap-1 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
               >
                 <Home className="w-4 h-4" />
-                <span>{t.nav?.home || ""}</span>
+                <span>{t('nav.home')}</span>
               </Link>
             </li>
             <li>

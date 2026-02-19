@@ -8,7 +8,7 @@ const COOKIE_NAME = 'NEXT_LOCALE';
 export async function getUserLocale(): Promise<Locale> {
   const headersStore = await headers();
   const headerLocale = headersStore.get('x-purrify-locale');
-  if (headerLocale && ['en', 'fr', 'zh', 'es'].includes(headerLocale)) {
+  if (headerLocale && ['en', 'fr'].includes(headerLocale)) {
     return headerLocale as Locale;
   }
 

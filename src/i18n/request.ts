@@ -11,9 +11,11 @@ export default getRequestConfig(async () => {
     ? (userLocale as Locale) 
     : defaultLocale;
 
+  const messages = (await import(`../translations/${locale}.ts`))[locale];
+
   return {
     locale,
-    messages: (await import(`./messages/${locale}.json`)).default,
+    messages,
     onError: (error) => {
       console.warn('i18n error:', error);
     },

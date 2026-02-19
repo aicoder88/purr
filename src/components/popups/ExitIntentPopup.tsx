@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { X, Mail, Gift, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import {
   WELCOME_DISCOUNT_CODE,
   WELCOME_DISCOUNT_PERCENT,
@@ -40,7 +40,8 @@ export function ExitIntentPopup({
   discountCode = WELCOME_DISCOUNT_CODE,
   className,
 }: ExitIntentPopupProps) {
-  const { t, locale } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const [isVisible, setIsVisible] = useState(false);
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -191,19 +192,19 @@ export function ExitIntentPopup({
   if (!isVisible) return null;
 
   const content = {
-    title: t.exitPopup?.title || "",
+    title: t('exitPopup.title'),
     subtitle:
-      t.exitPopup?.subtitle ||
+      t('exitPopup.subtitle') ||
       `Get ${discountPercent}% off your first order`,
     description:
-      t.exitPopup?.description ||
+      t('exitPopup.description') ||
       'Join our community of happy cat parents and receive exclusive deals.',
-    placeholder: t.exitPopup?.placeholder || 'Enter your email',
-    button: t.exitPopup?.button || 'Get My Discount',
-    noThanks: t.exitPopup?.noThanks || 'No thanks, I prefer full price',
-    successTitle: t.exitPopup?.successTitle || "",
+    placeholder: t('exitPopup.placeholder') || 'Enter your email',
+    button: t('exitPopup.button') || 'Get My Discount',
+    noThanks: t('exitPopup.noThanks') || 'No thanks, I prefer full price',
+    successTitle: t('exitPopup.successTitle'),
     successMessage:
-      t.exitPopup?.successMessage ||
+      t('exitPopup.successMessage') ||
       `Use code ${discountCode} at checkout for ${discountPercent}% off!`,
   };
   const closePopupLabel =

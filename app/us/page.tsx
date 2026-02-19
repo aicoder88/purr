@@ -172,7 +172,7 @@ export default async function USALandingPage() {
               <div className="flex flex-col sm:flex-row gap-4 mb-10">
                 <Link
                   href="/products/"
-                  className="inline-flex items-center justify-center gap-2 bg-[#FF3131] text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-[#E02828] transition-all transform hover:scale-105 shadow-2xl hover:shadow-red-500/20"
+                  className="inline-flex items-center justify-center gap-2 bg-[#FF3131] text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-[#E02828] transition-all transform hover:scale-105 shadow-2xl hover:shadow-red-500/20 dark:hover:shadow-red-900/40"
                 >
                   Join the Waitlist
                 </Link>

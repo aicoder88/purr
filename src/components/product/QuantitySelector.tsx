@@ -3,7 +3,7 @@
 import { useCallback } from 'react';
 import { Minus, Plus } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 
 export interface QuantitySelectorProps {
   /** Current quantity value */
@@ -37,7 +37,7 @@ export function QuantitySelector({
   size = 'md',
   className,
 }: QuantitySelectorProps) {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   const handleDecrease = useCallback(() => {
     if (quantity > min) {
@@ -82,7 +82,7 @@ export function QuantitySelector({
         className
       )}
       role="group"
-      aria-label={t.productsSection?.quantity || 'Quantity'}
+      aria-label={t('productsSection.quantity') || 'Quantity'}
     >
       <button
         type="button"
@@ -97,7 +97,7 @@ export function QuantitySelector({
           'dark:focus:ring-offset-gray-800',
           classes.button
         )}
-        aria-label={t.productsSection?.decreaseQuantity || 'Decrease quantity'}
+        aria-label={t('productsSection.decreaseQuantity') || 'Decrease quantity'}
       >
         <Minus className={classes.icon} />
       </button>
@@ -124,7 +124,7 @@ export function QuantitySelector({
           'dark:focus:ring-offset-gray-800',
           classes.button
         )}
-        aria-label={t.productsSection?.increaseQuantity || 'Increase quantity'}
+        aria-label={t('productsSection.increaseQuantity') || 'Increase quantity'}
       >
         <Plus className={classes.icon} />
       </button>

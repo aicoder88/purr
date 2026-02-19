@@ -1,10 +1,8 @@
 import { Container } from "@/components/ui/container";
 import { NewsletterSignup } from "@/components/newsletter/NewsletterSignup";
-import { useTranslation } from "@/lib/translation-context";
 import { createSectionClasses } from "@/lib/theme-utils";
 
 export function Newsletter() {
-  useTranslation();
 
   const sectionClasses = createSectionClasses('light');
 

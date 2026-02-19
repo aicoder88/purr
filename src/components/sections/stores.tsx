@@ -2,8 +2,8 @@
 
 import { Container } from "@/components/ui/container";
 import Image from "next/image";
-
-import { useTranslation } from "@/lib/translation-context";
+import { useTranslations, useLocale } from "next-intl";
+import { useTranslation as __useTranslation } from "@/lib/translation-context";
 import { useState, useEffect } from "react";
 
 
@@ -31,6 +31,7 @@ interface LogoConfig {
 // ============================================================================
 // Constants
 // ============================================================================
+
 
 const DEFAULT_LOGO_CONFIG = {
   className: 'w-16 h-16 object-contain',
@@ -60,6 +61,60 @@ const STORE_LOGOS: Record<string, Omit<LogoConfig, 'className' | 'width' | 'heig
 
 // List of stores that should have white background for their logo
 const WHITE_BG_STORES = Object.keys(STORE_LOGOS);
+
+type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
+
+const storesUiCopy: Record<SupportedLocale, {
+  sectionBadge: string;
+  headingPrefix: string;
+  headingHighlight: string;
+  subtitle: string;
+  websiteLabel: string;
+  requestTitle: string;
+  requestSubtitle: string;
+  requestButton: string;
+}> = {
+  en: {
+    sectionBadge: 'Find Purrify Near You',
+    headingPrefix: 'Our Retail',
+    headingHighlight: 'Partners',
+    subtitle: 'Find Purrify at these premium pet retailers across Montreal and beyond.',
+    websiteLabel: 'Website',
+    requestTitle: "Don't see your favorite store?",
+    requestSubtitle: "Let us know where you shop, and we'll contact them!",
+    requestButton: 'Request a Store',
+  },
+  fr: {
+    sectionBadge: 'Trouvez Purrify pres de vous',
+    headingPrefix: 'Nos partenaires',
+    headingHighlight: 'detail',
+    subtitle: 'Trouvez Purrify dans des animaleries premium a Montreal et ailleurs.',
+    websiteLabel: 'Site web',
+    requestTitle: 'Vous ne voyez pas votre boutique preferee?',
+    requestSubtitle: 'Dites-nous ou vous magasinez, et nous les contacterons.',
+    requestButton: 'Demander un magasin',
+  },
+  zh: {
+    sectionBadge: '在你附近找到 Purrify',
+    headingPrefix: '我们的零售',
+    headingHighlight: '合作伙伴',
+    subtitle: '在蒙特利尔及周边优质宠物门店找到 Purrify。',
+    websiteLabel: '官网',
+    requestTitle: '没看到你常去的门店？',
+    requestSubtitle: '告诉我们你常去哪里，我们会联系他们！',
+    requestButton: '申请新增门店',
+  },
+  es: {
+    sectionBadge: 'Encuentra Purrify cerca de ti',
+    headingPrefix: 'Nuestros socios',
+    headingHighlight: 'minoristas',
+    subtitle: 'Encuentra Purrify en tiendas premium para mascotas en Montreal y mas alla.',
+    websiteLabel: 'Sitio web',
+    requestTitle: 'No ves tu tienda favorita?',
+    requestSubtitle: 'Dinos donde compras y nos pondremos en contacto con ellos.',
+    requestButton: 'Solicitar una tienda',
+  },
+};
 
 // ============================================================================
 // Helper Functions
@@ -91,7 +146,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "190 Boulevard du Curé-Labelle, Sainte-Thérèse, QC J7E 2X5",
     phone: "1-450-818-1310",
     url: "https://www.pattesgriffes.com/pages/trouvez-une-boutique",
-    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || ""
+    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || 'Complete pet care and supplies'
   },
   {
     name: "Chico (Sainte‑Thérèse)",
@@ -99,7 +154,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "95 Boulevard du Curé-Labelle, Sainte-Thérèse, QC J7E 2Z7",
     phone: "1-450-965-3906",
     url: "https://www.chico.ca/boutique/chico-sainte-therese/",
-    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || ""
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || 'Premium pet boutique'
   },
   {
     name: "Chico (Sainte‑Marthe‑sur‑le‑Lac)",
@@ -107,7 +162,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "2860 B Boulevard des Promenades, Sainte-Marthe-sur-le-Lac, QC J0N 1P0",
     phone: "1-450-598-2860",
     url: "https://www.chico.ca/boutique/chico-ste-marthe/",
-    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || ""
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || 'Premium pet boutique'
   },
   {
     name: "Animal Shop GIGI",
@@ -115,7 +170,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "356 Boulevard Arthur-Sauvé, Saint-Eustache, QC J7R 2J3",
     phone: "1-450-598-3444",
     url: "https://www.animaleriegigi.com/",
-    description: t.storesSection?.storeDescriptions?.familyOwnedPetStore || ""
+    description: t.storesSection?.storeDescriptions?.familyOwnedPetStore || 'Family-owned pet store'
   },
   {
     name: "Chico (Laval-Est)",
@@ -123,7 +178,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "5405 Boulevard Robert-Bourassa, Laval, QC H7E 0A4",
     phone: "1-450-239-0354",
     url: "https://www.chico.ca/en/boutique/chico-laval-east/",
-    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || ""
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || 'Premium pet boutique'
   },
   {
     name: "Chico (Laval Ouest)",
@@ -131,7 +186,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "4511 Bd Arthur-Sauvé, Laval, QC H7R 5P8",
     phone: "1-450-314-2442",
     url: "https://www.chico.ca/boutique/chico-laval-ouest/",
-    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || ""
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || 'Premium pet boutique'
   },
   {
     name: "Pattes et Griffes (Laval)",
@@ -139,7 +194,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "1682 Boulevard Saint-Martin Ouest, Laval, QC H7S 1M9",
     phone: "1-579-640-1857",
     url: "https://www.pattesgriffes.com/pages/trouvez-une-boutique",
-    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || ""
+    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || 'Complete pet care and supplies'
   },
   {
     name: "Pitou Minou & Compagnons (Kirkland)",
@@ -147,7 +202,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "16936 Autoroute Transcanadienne, Kirkland, QC H9H 0C5",
     phone: "1-514-695-5005",
     url: "https://pitou-minou.ca/global-pet-foods-succursales-quebec/",
-    description: t.storesSection?.storeDescriptions?.globalPetFoodsLocation || ""
+    description: t.storesSection?.storeDescriptions?.globalPetFoodsLocation || 'Global Pet Foods location'
   },
   {
     name: "Chico (Saint‑Laurent)",
@@ -155,7 +210,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "7001 Boulevard Saint-Laurent, Montréal, QC H2S 3E3",
     phone: "1-514-657-5813",
     url: "https://www.chico.ca/boutique/chico-boul-st-laurent-montreal/",
-    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || ""
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || 'Premium pet boutique'
   },
   {
     name: "Doghaus",
@@ -163,7 +218,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "5671 Rue Sherbrooke Ouest, Montréal, QC H4A 1W6",
     phone: "514-483-3555",
     url: "https://www.doghausmtl.com/",
-    description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || ""
+    description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || 'Premium pet products and supplies'
   },
   {
     name: "Kong Animalerie",
@@ -171,7 +226,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "5555 Bd Décarie, Montréal, QC H3W 3H8",
     phone: "514-662-8373",
     url: "https://www.facebook.com/konganimalerie/",
-    description: t.storesSection?.storeDescriptions?.fullServicePetStore || ""
+    description: t.storesSection?.storeDescriptions?.fullServicePetStore || 'Full-service pet store'
   },
   {
     name: "Coquette et Finegueule",
@@ -179,7 +234,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "5203 Rue Bannantyne, Verdun, QC H4H 1E6",
     phone: "514-761-4221",
     url: "https://coquetteetfinegueule.com/",
-    description: t.storesSection?.storeDescriptions?.petStoreWithGroomingServices || ""
+    description: t.storesSection?.storeDescriptions?.petStoreWithGroomingServices || 'Pet store with grooming services'
   },
   {
     name: "Pitou Minou & Compagnons (Verdun)",
@@ -187,7 +242,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "4100 Rue Wellington, Verdun, QC H4G 1V7",
     phone: "514-732-0555",
     url: "https://pitou-minou.ca/global-pet-foods-succursales-quebec/",
-    description: t.storesSection?.storeDescriptions?.globalPetFoodsLocation || ""
+    description: t.storesSection?.storeDescriptions?.globalPetFoodsLocation || 'Global Pet Foods location'
   },
   {
     name: "Chico (Plateau Mont‑Royal)",
@@ -195,7 +250,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "2016 Avenue du Mont-Royal E., Montréal, QC H2H 1J6",
     phone: "514-521-0201",
     url: "https://www.chico.ca/boutique/chico-plateau-mont-royal-montreal/",
-    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || ""
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || 'Premium pet boutique'
   },
   {
     name: "Chico (Hochelaga‑Maisonneuve)",
@@ -203,7 +258,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "8646 Rue Hochelaga, Montréal, QC H1L 2M4",
     phone: "514-419-9850",
     url: "https://www.chico.ca/boutique/chico-rue-ontario-montreal/",
-    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || ""
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || 'Premium pet boutique'
   },
   {
     name: "Chico (Plateau Mont-Royal — alternate)",
@@ -211,7 +266,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "3911 Rue Ontario E., Montréal, QC H1W 1S7",
     phone: "514-527-1371",
     url: "https://www.chico.ca/boutique/chico-rue-ontario-montreal/",
-    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || ""
+    description: t.storesSection?.storeDescriptions?.premiumPetBoutique || 'Premium pet boutique'
   },
   {
     name: "Animalerie Mamiwouff Inc",
@@ -219,7 +274,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "2048 Route 112, Saint-Césaire, QC J0L 1T0",
     phone: "450-469-4560",
     url: "https://www.animaleriemamiwouff.com/",
-    description: t.storesSection?.storeDescriptions?.familyOwnedPetStore || ""
+    description: t.storesSection?.storeDescriptions?.familyOwnedPetStore || 'Family-owned pet store'
   },
   {
     name: "Animalerie Lamifidel",
@@ -227,7 +282,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "1295 Avenue du Pont S, Alma, QC G8B 2V6",
     phone: "418-668-0117",
     url: "https://www.lamifidel.net/",
-    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || ""
+    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || 'Complete pet care and supplies'
   },
   {
     name: "Animalerie Petmobile Nathamo",
@@ -235,7 +290,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "161 Rue de l'Hydravion, Shawinigan, QC G0X 1L0",
     phone: "819-695-2329",
     url: "",
-    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || ""
+    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || 'Complete pet care and supplies'
   },
   {
     name: "Animalerie Club Wouf Miaou",
@@ -243,7 +298,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "3175 boulevard des Récollets, Trois-Rivières, QC G9A 6M1",
     phone: "+1 819-376-0973",
     url: "https://woufmiaou.ca/",
-    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || ""
+    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || 'Complete pet care and supplies'
   },
   {
     name: "Little Bit Western Feed and Supplies Inc.",
@@ -251,7 +306,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "372 Algonquin Blvd.West, TIMMINS, ON P4N 2S2",
     phone: "",
     url: "https://www.littlebitwestern.ca/",
-    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || ""
+    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || 'Complete pet care and supplies'
   },
   {
     name: "K&K Pet Foods Dunbar",
@@ -259,7 +314,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "4595 Dunbar St, Vancouver, BC V6S 2G2",
     phone: "+1 604-224-2513",
     url: "https://www.kandkpetfoods.ca/",
-    description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || ""
+    description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || 'Premium pet products and supplies'
   },
   {
     name: "Viva Pets",
@@ -267,7 +322,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "Montreal, QC",
     phone: "780-489-7387",
     url: "https://www.vivapets.ca/",
-    description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || ""
+    description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || 'Premium pet products and supplies'
   },
   {
     name: "Best Cat",
@@ -275,7 +330,7 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "3455 Fairview St., Unit 15A, Burlington, ON L7N 2R4",
     phone: "1-905-333-4060",
     url: "https://bestcat.ca/",
-    description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || ""
+    description: t.storesSection?.storeDescriptions?.premiumPetProductsAndSupplies || 'Premium pet products and supplies'
   },
   {
     name: "Camlachie Feed",
@@ -283,13 +338,14 @@ const getStoresWithTranslations = (t: ReturnType<typeof import('../../lib/transl
     address: "3912 Egremont Rd, Camlachie, Ontario, N0N 1E0",
     phone: "519-899-2285",
     url: "https://www.camlachiefeed.ca/",
-    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || ""
+    description: t.storesSection?.storeDescriptions?.completePetCareAndSupplies || 'Complete pet care and supplies'
   },
 ];
 
 // ============================================================================
 // Subcomponents
 // ============================================================================
+
 
 function WebsiteIcon({ className }: { className?: string }) {
   return (
@@ -340,7 +396,9 @@ function StoreLogoImage({
 }
 
 export function Stores() {
-  const { t } = useTranslation();
+  const locale = useLocale();
+  const { t } = __useTranslation();
+  const uiCopy = storesUiCopy[locale as SupportedLocale] || storesUiCopy.en;
   const stores = getStoresWithTranslations(t);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -372,7 +430,7 @@ export function Stores() {
         setSubmitStatus('error');
         setStatusMessage(data.message || t.storesSection?.requestError || 'Failed to send request. Please try again or contact us directly.');
       }
-    } catch (_error) {
+    } catch {
       setSubmitStatus('error');
       setStatusMessage(t.storesSection?.requestError || 'An error occurred. Please contact us directly at support@purrify.ca');
     } finally {
@@ -381,20 +439,24 @@ export function Stores() {
   };
 
   return (
-    <section id="stores" className="py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <section id="stores" className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <Container>
         <div className="text-center mb-12">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-orange-50 dark:bg-orange-900/20 text-[#FF8E3C] dark:text-[#FF8E3C] font-bold text-sm mb-6 border border-orange-100 dark:border-orange-800/30">
-            📍 Find Purrify Near You
+          <div className="inline-flex items-center gap-2 mb-6">
+            <span className="h-px w-8 bg-gradient-to-r from-transparent to-[#FF8E3C]"></span>
+            <span className="text-[#FF8E3C] font-bold tracking-wider text-sm uppercase flex items-center gap-2">
+              <span className="text-lg">📍</span> {uiCopy.sectionBadge}
+            </span>
+            <span className="h-px w-8 bg-gradient-to-l from-transparent to-[#FF8E3C]"></span>
           </div>
-          <h2 className="font-heading text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-6">
-            Our Retail
+          <h2 className="font-heading text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-6">
+            {uiCopy.headingPrefix}
             <span className="bg-gradient-to-r from-[#FF8E3C] to-[#FF5050] bg-clip-text text-transparent ml-2">
-              Partners
+              {uiCopy.headingHighlight}
             </span>
           </h2>
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-10">
-            Find Purrify at these premium pet retailers across Montreal and beyond.
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-10">
+            {uiCopy.subtitle}
           </p>
 
           {/* Search/Filter Controls - Placeholder for future implementation if needed, utilizing browser search for now via the grid below */}
@@ -436,7 +498,8 @@ export function Stores() {
                         href={`https://maps.google.com/?q=${encodeURIComponent(`${store.address}`)}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-start text-sm text-gray-600 dark:text-gray-300 hover:text-[#FF8E3C] dark:hover:text-[#FF8E3C] transition-colors gap-2"
+                        className="flex items-start text-sm text-gray-600 dark:text-gray-300 hover:text-[#FF8E3C] dark:hover:text-[#FF8E3C] transition-colors gap-2 min-h-[44px]"
+                        aria-label={`View ${store.name} on Google Maps`}
                       >
                         <svg className="w-4 h-4 text-gray-400 dark:text-gray-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -448,7 +511,8 @@ export function Stores() {
                       {store.phone && (
                         <a
                           href={`tel:${store.phone.replace(/[^\d+]/g, '')}`}
-                          className="flex items-center text-sm text-gray-600 dark:text-gray-300 hover:text-[#FF8E3C] dark:hover:text-[#FF8E3C] transition-colors gap-2"
+                          className="flex items-center text-sm text-gray-600 dark:text-gray-300 hover:text-[#FF8E3C] dark:hover:text-[#FF8E3C] transition-colors gap-2 min-h-[44px]"
+                          aria-label={`Call ${store.name} at ${store.phone}`}
                         >
                           <svg className="w-4 h-4 text-gray-400 dark:text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -462,10 +526,11 @@ export function Stores() {
                           href={store.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors gap-2"
+                          className="flex items-center text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors gap-2 min-h-[44px]"
+                          aria-label={`${uiCopy.websiteLabel} - ${store.name}`}
                         >
                           <WebsiteIcon className="w-4 h-4 flex-shrink-0" />
-                          <span>Website</span>
+                          <span>{uiCopy.websiteLabel}</span>
                         </a>
                       )}
                     </div>
@@ -481,10 +546,10 @@ export function Stores() {
           <div className="inline-block p-1 bg-gradient-to-r from-[#FF8E3C] to-[#FF5050] rounded-2xl shadow-lg shadow-orange-500/20">
             <div className="bg-white dark:bg-gray-900 rounded-xl px-8 py-10 md:px-16">
               <h3 className="font-heading text-2xl font-black text-gray-900 dark:text-white mb-3">
-                Don't see your favorite store?
+                {uiCopy.requestTitle}
               </h3>
               <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-lg mx-auto">
-                Let us know where you shop, and we'll contact them!
+                {uiCopy.requestSubtitle}
               </p>
               <button
                 onClick={handleRequestStore}
@@ -507,7 +572,7 @@ export function Stores() {
                 ) : (
                   <>
                     <span className="text-xl">📝</span>
-                    Request a Store
+                    {t.storesSection?.requestStoreAvailability || uiCopy.requestButton}
                   </>
                 )}
               </button>

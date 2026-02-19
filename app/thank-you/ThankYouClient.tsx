@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import { CONTACT_INFO } from '@/lib/constants';
 
 interface OrderDetails {
@@ -34,11 +34,13 @@ interface OrderDetails {
 interface ThankYouClientProps {
   orderDetails: OrderDetails | null;
   error?: string;
+  sessionId?: string;
 }
 
-export default function ThankYouClient({ orderDetails, error }: ThankYouClientProps) {
-  const { t, locale } = useTranslation();
-  const thankYou = t.thankYou!;
+export default function ThankYouClient({ orderDetails, error, sessionId }: ThankYouClientProps) {
+  const t = useTranslations();
+  const locale = useLocale();
+  const thankYou = t.raw('thankYou') as Record<string, any>;
   const anytimeLabel =
     locale === 'fr'
       ? 'Nimporte quand'
@@ -83,8 +85,8 @@ export default function ThankYouClient({ orderDetails, error }: ThankYouClientPr
             currency: 'CAD',
           });
         }
-      } catch {
-        // Silently ignore tracking errors
+      } catch (err) {
+        console.debug('TikTok purchase tracking failed:', err);
       }
     };
 
@@ -125,8 +127,8 @@ export default function ThankYouClient({ orderDetails, error }: ThankYouClientPr
           const data = await response.json();
           setReferralCode(data.data?.code);
         }
-      } catch {
-        // Silently ignore referral generation errors
+      } catch (err) {
+        console.error('Failed to generate referral code:', err);
       } finally {
         setReferralLoading(false);
       }
@@ -149,11 +151,11 @@ export default function ThankYouClient({ orderDetails, error }: ThankYouClientPr
     <div className="max-w-4xl mx-auto py-12 md:py-16">
       {/* Success Header */}
       <div className="text-center mb-12">
-        <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-[#03E46A]/10 dark:bg-[#03E46A]/20 mb-6 animate-bounce">
-          <CheckCircle2 className="w-14 h-14 text-[#03E46A]" />
+        <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-[#03E46A]/10 dark:bg-[#04D162]/20 mb-6 animate-bounce">
+          <CheckCircle2 className="w-14 h-14 text-[#03E46A] dark:text-[#04D162]" />
         </div>
 
-        <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4 text-[#03E46A]">
+        <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4 text-[#03E46A] dark:text-[#04D162]">
           {firstName !== 'there'
             ? thankYou.headingWithName.replace('{{name}}', firstName)
             : thankYou.heading}
@@ -174,7 +176,7 @@ export default function ThankYouClient({ orderDetails, error }: ThankYouClientPr
       {orderDetails && (
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 md:p-8 mb-8 border border-gray-100 dark:border-gray-700">
           <h2 className="font-heading text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100 flex items-center gap-3">
-            <Package className="w-6 h-6 text-[#03E46A]" />
+            <Package className="w-6 h-6 text-[#03E46A] dark:text-[#04D162]" />
             {thankYou.orderConfirmed}
           </h2>
 
@@ -201,7 +203,7 @@ export default function ThankYouClient({ orderDetails, error }: ThankYouClientPr
               {formattedAmount && (
                 <div className="flex justify-between py-3 border-t-2 border-gray-200 dark:border-gray-600 mt-2">
                   <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">{thankYou.total}</span>
-                  <span className="text-lg font-bold text-[#03E46A]">${formattedAmount}</span>
+                  <span className="text-lg font-bold text-[#03E46A] dark:text-[#04D162]">${formattedAmount}</span>
                 </div>
               )}
             </div>
@@ -226,7 +228,7 @@ export default function ThankYouClient({ orderDetails, error }: ThankYouClientPr
 
           {orderDetails.customerEmail && (
             <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-4 flex items-start gap-3">
-              <Mail className="w-5 h-5 text-[#03E46A] mt-0.5 flex-shrink-0" />
+              <Mail className="w-5 h-5 text-[#03E46A] dark:text-[#04D162] mt-0.5 flex-shrink-0" />
               <div>
                 <p className="text-sm text-gray-700 dark:text-gray-300">
                   {thankYou.confirmationSent} <strong>{orderDetails.customerEmail}</strong>
@@ -249,7 +251,7 @@ export default function ThankYouClient({ orderDetails, error }: ThankYouClientPr
 
         <div className="space-y-6">
           <div className="flex gap-4">
-            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#03E46A] text-white dark:text-gray-900 flex items-center justify-center font-bold text-lg">
+            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#03E46A] dark:bg-[#04D162] text-white dark:text-gray-900 flex items-center justify-center font-bold text-lg">
               1
             </div>
             <div>
@@ -375,17 +377,17 @@ export default function ThankYouClient({ orderDetails, error }: ThankYouClientPr
 
       {/* Upgrade to Subscription (if one-time purchase) */}
       {orderDetails && !orderDetails.isSubscription && (
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 md:p-8 mb-8 border-2 border-[#03E46A] dark:border-[#03E46A]">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 md:p-8 mb-8 border-2 border-[#03E46A] dark:border-[#04D162]">
           <div className="flex items-start gap-4 mb-6">
-            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#03E46A]/10 dark:bg-[#03E46A]/20 flex items-center justify-center">
-              <Zap className="w-6 h-6 text-[#03E46A]" />
+            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#03E46A]/10 dark:bg-[#04D162]/20 flex items-center justify-center">
+              <Zap className="w-6 h-6 text-[#03E46A] dark:text-[#04D162]" />
             </div>
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100">
                   {thankYou.autoshipCta.heading}
                 </h2>
-                <span className="bg-[#03E46A] text-white dark:text-gray-900 text-xs font-bold px-2 py-1 rounded-full">
+                <span className="bg-[#03E46A] dark:bg-[#04D162] text-white dark:text-gray-900 text-xs font-bold px-2 py-1 rounded-full">
                   {thankYou.autoshipCta.saveBadge}
                 </span>
               </div>
@@ -397,21 +399,21 @@ export default function ThankYouClient({ orderDetails, error }: ThankYouClientPr
 
           <div className="grid md:grid-cols-3 gap-4 mb-6">
             <div className="text-center p-4 bg-gray-50 dark:bg-gray-900 rounded-xl">
-              <p className="text-2xl font-bold text-[#03E46A]">30%</p>
+              <p className="text-2xl font-bold text-[#03E46A] dark:text-[#04D162]">30%</p>
               <p className="text-sm text-gray-600 dark:text-gray-400">{thankYou.autoshipCta.savings}</p>
             </div>
             <div className="text-center p-4 bg-gray-50 dark:bg-gray-900 rounded-xl">
-              <p className="text-2xl font-bold text-[#03E46A]">FREE</p>
+              <p className="text-2xl font-bold text-[#03E46A] dark:text-[#04D162]">FREE</p>
               <p className="text-sm text-gray-600 dark:text-gray-400">{thankYou.autoshipCta.shipping}</p>
             </div>
             <div className="text-center p-4 bg-gray-50 dark:bg-gray-900 rounded-xl">
-              <p className="text-2xl font-bold text-[#03E46A]">{anytimeLabel}</p>
+              <p className="text-2xl font-bold text-[#03E46A] dark:text-[#04D162]">{anytimeLabel}</p>
               <p className="text-sm text-gray-600 dark:text-gray-400">{thankYou.autoshipCta.cancel}</p>
             </div>
           </div>
 
           <Link href="/#products">
-            <Button className="w-full bg-[#03E46A] hover:bg-[#02C55A] text-white dark:text-gray-900 font-bold py-4 text-lg">
+            <Button className="w-full bg-[#03E46A] dark:bg-[#04D162] hover:bg-[#02C55A] dark:hover:bg-[#04D162]/90 text-white dark:text-gray-900 font-bold py-4 text-lg">
               {thankYou.autoshipCta.button} <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </Link>
@@ -433,7 +435,7 @@ export default function ThankYouClient({ orderDetails, error }: ThankYouClientPr
           </a>
           <Link
             href="/"
-            className="inline-flex items-center justify-center px-6 py-3 text-base font-medium rounded-lg text-white dark:text-gray-900 bg-[#03E46A] hover:bg-[#02C55A] transition-colors"
+            className="inline-flex items-center justify-center px-6 py-3 text-base font-medium rounded-lg text-white dark:text-gray-900 bg-[#03E46A] dark:bg-[#04D162] hover:bg-[#02C55A] transition-colors"
           >
             {thankYou.helpSection.returnHome}
           </Link>

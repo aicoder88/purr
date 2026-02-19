@@ -5,7 +5,7 @@ import { useMemo, useState } from 'react';
 import { Calculator, Cat, Check, ChevronRight, DollarSign, Home, Info, Leaf, Share2, TrendingDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import { localizePath } from '@/lib/i18n/locale-path';
 
 interface LitterType {
@@ -301,7 +301,7 @@ const COPY: Record<'en' | 'fr', ToolCopy> = {
 };
 
 export default function CalculatorContent() {
-  const { locale } = useTranslation();
+  const locale = useLocale() as 'en' | 'fr';
   const language = locale === 'fr' ? locale : 'en';
   const copy = COPY[language];
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import {
   Store,
   Coffee,
@@ -38,7 +38,8 @@ interface TabConfig {
 }
 
 export default function B2BClientPage() {
-  const { t, locale } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const [activeTab, setActiveTab] = useState<VerticalTab>('retail');
 
   const tabs: TabConfig[] = [
@@ -201,16 +202,16 @@ export default function B2BClientPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href={`mailto:${t.contact.partnersEmail}`}
+              href={`mailto:${t('contact.partnersEmail')}`}
               className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors"
             >
-              {t.contact.partnersEmail}
+              {t('contact.partnersEmail')}
             </a>
             <a
-              href={`tel:${t.contact.phone}`}
+              href={`tel:${t('contact.phone')}`}
               className="inline-flex items-center justify-center gap-2 border border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 bg-white dark:bg-gray-800 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
             >
-              {t.contact.phone}
+              {t('contact.phone')}
             </a>
           </div>
         </div>

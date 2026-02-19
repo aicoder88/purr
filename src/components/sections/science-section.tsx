@@ -2,7 +2,7 @@
 
 import { Container } from "@/components/ui/container";
 import Image from "next/image";
-import { useTranslation } from "@/lib/translation-context";
+import { useTranslations, useLocale } from "next-intl";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, Microscope, ShieldCheck, Leaf } from "lucide-react";
@@ -30,10 +30,11 @@ const featureIcons = [
 ];
 
 export function ScienceSection() {
-    const { t, locale } = useTranslation();
+    const t = useTranslations();
+    const locale = useLocale();
 
-    // Use translated features if available, otherwise use defaults
-    const featureItems = t.scienceSection?.features || defaultFeatures;
+    // Use default features for stability
+    const featureItems: Array<{ title: string; description: string }> = defaultFeatures;
 
     return (
         <section id="science" className="pt-12 pb-24 md:pt-16 md:pb-24 bg-white dark:bg-gray-900 overflow-hidden">
@@ -43,24 +44,24 @@ export function ScienceSection() {
                     <div className="relative z-10">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-electric-indigo/10 text-electric-indigo text-sm font-bold mb-6">
                             <Microscope className="w-4 h-4" />
-                            {t.scienceSection?.badge || ""}
+                            {t('scienceSection.badge')}
                         </div>
 
-                        <h2 className="font-heading text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-                            {t.scienceSection?.headline || ""} <br />
+                        <h2 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+                            {t('scienceSection.headline')} <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric-indigo to-purple-600">
-                                {t.scienceSection?.headlineHighlight || ""}
+                                {t('scienceSection.headlineHighlight')}
                             </span>
                         </h2>
 
-                        <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                            {t.scienceSection?.description || ""}
+                        <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                            {t('scienceSection.description')}
                         </p>
 
                         <div className="space-y-8 mb-10">
-                            {featureItems.map((feature, index) => (
+                            {featureItems.map((feature: { title: string; description: string }, index: number) => (
                                 <div key={index} className="flex items-start gap-4 group">
-                                    <div className="w-14 h-14 rounded-2xl bg-white dark:bg-gray-800 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-md border border-gray-100 dark:border-gray-700">
+                                    <div className="w-12 h-12 rounded-2xl bg-gray-50 dark:bg-gray-800 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-sm">
                                         {featureIcons[index] || featureIcons[0]}
                                     </div>
                                     <div>
@@ -78,12 +79,12 @@ export function ScienceSection() {
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button asChild className="bg-gray-900 hover:bg-gray-800 text-gray-50 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200 rounded-full px-8 py-6 text-lg font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
                                 <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`}>
-                                    {t.scienceSection?.learnMore || ""} <ArrowRight className="w-5 h-5 ml-2" />
+                                    {t('scienceSection.learnMore')} <ArrowRight className="w-5 h-5 ml-2" />
                                 </Link>
                             </Button>
                             <Button asChild variant="outline" className="rounded-full px-8 py-6 text-lg font-bold border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all hover:-translate-y-1">
                                 <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/activated-carbon-vs-baking-soda-deodorizers`}>
-                                    {t.nav.carbonVsBakingSoda}
+                                    {t('nav.carbonVsBakingSoda')}
                                 </Link>
                             </Button>
                         </div>
@@ -98,7 +99,7 @@ export function ScienceSection() {
                             <div className="relative rounded-[2rem] overflow-hidden aspect-square bg-gray-100 dark:bg-gray-900">
                                 <Image
                                     src="/optimized/Carbon-sktech.webp"
-                                    alt={t.homepage?.altText?.scientificDiagram || 'Activated Carbon Mechanism'}
+                                    alt={t('homepage.altText.scientificDiagram') || 'Activated Carbon Mechanism'}
                                     fill
                                     className="object-cover"
                                     sizes="(max-width: 768px) 100vw, 600px"
@@ -111,10 +112,10 @@ export function ScienceSection() {
                                 <div className="absolute bottom-8 left-8 right-8">
                                     <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-md p-4 rounded-xl border border-white/20 shadow-lg">
                                         <p className="font-bold text-gray-900 dark:text-white text-sm mb-1">
-                                            {t.scienceSection?.floatingLabel?.title || ""}
+                                            {t('scienceSection.floatingLabel.title')}
                                         </p>
                                         <p className="text-xs text-gray-600 dark:text-gray-400">
-                                            {t.scienceSection?.floatingLabel?.description || ""}
+                                            {t('scienceSection.floatingLabel.description')}
                                         </p>
                                     </div>
                                 </div>
@@ -128,8 +129,8 @@ export function ScienceSection() {
                                     <Leaf className="w-5 h-5 text-green-600 dark:text-green-400" />
                                 </div>
                                 <div>
-                                    <p className="font-bold text-sm text-gray-900 dark:text-white">{t.scienceSection?.naturalBadge?.title || ""}</p>
-                                    <p className="text-xs text-gray-500 dark:text-gray-400">{t.scienceSection?.naturalBadge?.subtitle || ""}</p>
+                                    <p className="font-bold text-sm text-gray-900 dark:text-white">{t('scienceSection.naturalBadge.title')}</p>
+                                    <p className="text-xs text-gray-500 dark:text-gray-400">{t('scienceSection.naturalBadge.subtitle')}</p>
                                 </div>
                             </div>
                         </div>
@@ -137,11 +138,11 @@ export function ScienceSection() {
                 </div>
 
                 {/* Transition teaser - Better visual treatment */}
-                {t.sectionTeasers?.science && (
+                {t('sectionTeasers.science') && (
                     <div className="mt-24 col-span-full flex justify-center">
                         <Link href="#products" className="bg-white dark:bg-gray-800 rounded-full px-8 py-4 shadow-xl border border-gray-100 dark:border-gray-700 flex items-center gap-4 group hover:-translate-y-1 transition-transform duration-300">
                             <p className="text-xl font-bold text-gray-900 dark:text-white">
-                                {t.sectionTeasers.science}
+                                {t('sectionTeasers.science')}
                             </p>
                             <div className="w-10 h-10 rounded-full bg-electric-indigo text-gray-50 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                                 <ArrowRight className="w-5 h-5 animate-pulse" />

@@ -2,7 +2,7 @@
 
 import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { Check, Star, Truck, ShieldCheck, Clock, Sparkles } from 'lucide-react';
 import { getProductPrice, formatProductPrice } from '@/lib/pricing';
@@ -15,12 +15,13 @@ import { trackTikTokClientEvent } from '@/lib/tiktok-tracking';
 
 
 export function TryFreeClient() {
-  const { t, locale } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const viewTracked = useRef(false);
 
   // Fallback to empty object if translation is missing to prevent crash
   // In a real app we might want to ensure types guarantee this exists
-  const copy = t.tryFreePage || {
+  const copy = (t.raw('tryFreePage') as Record<string, any>) || {
     urgencyBadge: '',
     shippingSuffix: '',
     valueLabel: '',
@@ -132,14 +133,14 @@ export function TryFreeClient() {
                     </div>
                     <div className="text-right">
                       <p className="text-sm text-gray-500 dark:text-gray-400">{copy.shippingOnlyLabel}</p>
-                      <p className="text-2xl font-bold text-[#03E46A]">{trialPrice}</p>
+                      <p className="text-2xl font-bold text-[#03E46A] dark:text-[#04D162]">{trialPrice}</p>
                     </div>
                   </div>
 
                   <Button
                     asChild
                     size="lg"
-                    className="w-full bg-[#03E46A] hover:bg-[#02C55A] text-white dark:text-gray-900 font-bold text-lg py-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
+                    className="w-full bg-[#03E46A] dark:bg-[#04D162] hover:bg-[#02C55A] dark:hover:bg-[#04D162]/90 text-white dark:text-gray-900 font-bold text-lg py-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
                     onClick={handleGetTrial}
                   >
                     <a href={checkoutUrl}>
@@ -155,7 +156,7 @@ export function TryFreeClient() {
                 <div className="grid grid-cols-3 gap-4">
                   {socialProof.map((item, i) => (
                     <div key={i} className="text-center">
-                      <p className="text-2xl md:text-3xl font-bold text-[#03E46A]">{item.stat}</p>
+                      <p className="text-2xl md:text-3xl font-bold text-[#03E46A] dark:text-[#04D162]">{item.stat}</p>
                       <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400">{item.label}</p>
                     </div>
                   ))}
@@ -173,7 +174,7 @@ export function TryFreeClient() {
                   className="object-contain drop-shadow-2xl"
                   priority
                 />
-                <div className="absolute -top-2 -right-2 bg-[#FF3131] text-white dark:text-gray-100 font-bold px-4 py-2 rounded-full text-sm shadow-lg transform rotate-12">
+                <div className="absolute -top-2 -right-2 bg-[#FF3131] dark:bg-[#FF5050] text-white dark:text-gray-100 font-bold px-4 py-2 rounded-full text-sm shadow-lg transform rotate-12">
                   {copy.freeBadgeLabel}
                 </div>
               </div>
@@ -194,7 +195,7 @@ export function TryFreeClient() {
                 key={i}
                 className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-xl"
               >
-                <benefit.icon className="h-10 w-10 mx-auto mb-3 text-[#03E46A]" />
+                <benefit.icon className="h-10 w-10 mx-auto mb-3 text-[#03E46A] dark:text-[#04D162]" />
                 <p className="text-sm md:text-base font-medium text-gray-700 dark:text-gray-200">
                   {benefit.text}
                 </p>
@@ -211,9 +212,9 @@ export function TryFreeClient() {
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {(copy.steps || []).map((item, i) => (
+            {(copy.steps || []).map((item: { step?: string; title: string; description?: string; desc?: string }, i: number) => (
               <div key={i} className="text-center">
-                <div className="w-12 h-12 bg-[#03E46A] text-white dark:text-gray-900 font-bold text-xl rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-12 h-12 bg-[#03E46A] dark:bg-[#04D162] text-white dark:text-gray-900 font-bold text-xl rounded-full flex items-center justify-center mx-auto mb-4">
                   {item.step}
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 dark:text-gray-50 mb-2">{item.title}</h3>
@@ -242,7 +243,7 @@ export function TryFreeClient() {
         </Container>
       </section>
 
-      <section className="py-12 bg-gradient-to-r from-[#03E46A] to-[#02C55A]">
+      <section className="py-12 bg-gradient-to-r from-[#03E46A] to-[#02C55A] dark:from-[#04D162]/80 dark:to-[#04D162]/60">
         <Container>
           <div className="text-center text-white dark:text-gray-900">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
@@ -254,7 +255,7 @@ export function TryFreeClient() {
             <Button
               asChild
               size="lg"
-              className="bg-white dark:bg-gray-900 text-[#03E46A] hover:bg-gray-100 dark:hover:bg-gray-800 font-bold text-lg px-8 py-6 rounded-xl shadow-lg"
+              className="bg-white dark:bg-gray-900 text-[#03E46A] dark:text-[#04D162] hover:bg-gray-100 dark:hover:bg-gray-800 font-bold text-lg px-8 py-6 rounded-xl shadow-lg"
               onClick={handleGetTrial}
             >
               <a href={checkoutUrl}>

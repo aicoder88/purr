@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react';
 import { signIn, getSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function LoginContent() {
-    const { t } = useTranslation();
+    const t = useTranslations();
     const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -39,7 +39,7 @@ export default function LoginContent() {
             });
 
             if (result?.error) {
-                setError(t.affiliateDashboard?.login?.invalidCredentials || 'Invalid email or password');
+                setError(t('affiliateDashboard.login.invalidCredentials') || 'Invalid email or password');
                 setLoading(false);
             } else if (result?.ok) {
                 // Wait a moment for session to be set, then redirect
@@ -66,7 +66,7 @@ export default function LoginContent() {
                         </h1>
                     </Link>
                     <h2 className="font-heading mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-gray-100">
-                        {t.affiliateDashboard?.loginTitle || 'Affiliate Login'}
+                        {t('affiliateDashboard.loginTitle') || 'Affiliate Login'}
                     </h2>
                     <p className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
                         Sign in to your affiliate dashboard
@@ -83,7 +83,7 @@ export default function LoginContent() {
                     <div className="rounded-md shadow-sm -space-y-px">
                         <div>
                             <label htmlFor="email" className="sr-only">
-                                {t.affiliateDashboard?.login?.email || 'Email address'}
+                                {t('affiliateDashboard.login.email') || 'Email address'}
                             </label>
                             <input
                                 id="email"
@@ -92,14 +92,14 @@ export default function LoginContent() {
                                 autoComplete="email"
                                 required
                                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-800 rounded-t-md focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
-                                placeholder={t.affiliateDashboard?.login?.email || 'Email address'}
+                                placeholder={t('affiliateDashboard.login.email') || 'Email address'}
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div>
                             <label htmlFor="password" className="sr-only">
-                                {t.affiliateDashboard?.login?.password || 'Password'}
+                                {t('affiliateDashboard.login.password') || 'Password'}
                             </label>
                             <input
                                 id="password"
@@ -108,7 +108,7 @@ export default function LoginContent() {
                                 autoComplete="current-password"
                                 required
                                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-800 rounded-b-md focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
-                                placeholder={t.affiliateDashboard?.login?.password || 'Password'}
+                                placeholder={t('affiliateDashboard.login.password') || 'Password'}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
@@ -122,8 +122,8 @@ export default function LoginContent() {
                             className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white dark:text-gray-100 bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                         >
                             {loading
-                                ? (t.affiliateDashboard?.login?.loggingIn || 'Signing in...')
-                                : (t.affiliateDashboard?.login?.loginButton || 'Sign in')
+                                ? (t('affiliateDashboard.login.loggingIn') || 'Signing in...')
+                                : (t('affiliateDashboard.login.loginButton') || 'Sign in')
                             }
                         </button>
                     </div>
@@ -131,12 +131,12 @@ export default function LoginContent() {
 
                 <div className="text-center space-y-2">
                     <p className="text-sm text-gray-600 dark:text-gray-400">
-                        {t.affiliateDashboard?.login?.noAccount || ""}{' '}
+                        {t('affiliateDashboard.login.noAccount')}{' '}
                         <Link
                             href="/affiliate"
                             className="font-medium text-purple-600 hover:text-purple-500 dark:text-purple-400 dark:hover:text-purple-300"
                         >
-                            {t.affiliateDashboard?.login?.applyNow || 'Apply to become an affiliate'}
+                            {t('affiliateDashboard.login.applyNow') || 'Apply to become an affiliate'}
                         </Link>
                     </p>
                     <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -144,7 +144,7 @@ export default function LoginContent() {
                             href="/affiliate/forgot-password"
                             className="font-medium text-purple-600 hover:text-purple-500 dark:text-purple-400 dark:hover:text-purple-300"
                         >
-                            {t.affiliateDashboard?.login?.forgotPassword || 'Forgot your password?'}
+                            {t('affiliateDashboard.login.forgotPassword') || 'Forgot your password?'}
                         </Link>
                     </p>
                 </div>

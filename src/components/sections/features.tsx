@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 import { FEATURES } from "@/lib/constants";
 import { Zap, Heart, Clock, Check, Leaf, DollarSign } from "lucide-react";
 import SectionHeader from "@/components/ui/section-header";
-import { useTranslation } from "@/lib/translation-context";
+import { useTranslations, useLocale } from "next-intl";
 
 const iconMap = {
   Zap: Zap,
@@ -15,7 +15,8 @@ const iconMap = {
 };
 
 export function Features() {
-  const { t, locale } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const localePrefix = locale === 'fr' ? '/fr' : '';
   const learnMoreHref = `${localePrefix}/learn/how-it-works`;
 
@@ -26,18 +27,18 @@ export function Features() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <SectionHeader text={t.featuresSection?.badge || ""} />
+          <SectionHeader text={t('featuresSection.badge')} />
           <h2 className="font-heading text-4xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent">
-            {t.featuresSection?.title || ""}
+            {t('featuresSection.title')}
           </h2>
           <p className="text-gray-600 dark:text-gray-300 dark:text-gray-300 leading-relaxed text-lg dark:text-gray-300">
-            {t.featuresSection?.paragraph1 || ""}
+            {t('featuresSection.paragraph1')}
           </p>
           <p className="text-gray-600 dark:text-gray-300 leading-relaxed mt-4 text-lg dark:text-gray-300">
-            {t.featuresSection?.paragraph2 || ""}
+            {t('featuresSection.paragraph2')}
           </p>
           <p className="text-[#333333] leading-relaxed mt-4 font-bold text-3xl dark:text-foreground">
-            {t.featuresSection?.tagline || ""}
+            {t('featuresSection.tagline')}
           </p>
         </div>
 
@@ -85,7 +86,7 @@ export function Features() {
                           : "text-green-700 dark:text-green-500 group-hover:text-green-800 dark:group-hover:text-green-400"
                       }`}
                   >
-                    {t.featuresSection?.learnMore || ""}
+                    {t('featuresSection.learnMore')}
                     <svg
                       className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
                       fill="none"

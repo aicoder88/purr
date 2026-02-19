@@ -43,8 +43,8 @@ export default function QuestionPage() {
     <main className="min-h-screen bg-white dark:bg-gray-900">
       <header className="bg-[#1E4D6B] dark:bg-[#1E4D6B] py-6 px-4">
         <div className="max-w-3xl mx-auto flex items-center gap-4">
-          <Link 
-            href="/learn/cat-litter-answers" 
+          <Link
+            href="/learn/cat-litter-answers"
             className="text-white dark:text-white/80 dark:text-white dark:text-white/80 hover:text-white dark:text-white flex items-center gap-2 text-sm"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -83,17 +83,17 @@ export default function QuestionPage() {
                 { step: 4, action: 'Mix in activated carbon additive', time: '1 min', highlight: true },
                 { step: 5, action: 'Set daily scooping reminder', time: '1 min' },
               ].map((item) => (
-                <div 
-                  key={item.step} 
-                  className={`flex items-start gap-4 p-4 rounded-lg ${item.highlight ? 'bg-[#F7A41D]/10 border border-[#F7A41D]/30' : 'bg-gray-50 dark:bg-gray-800'}`}
+                <div
+                  key={item.step}
+                  className={`flex items-start gap-4 p-4 rounded-lg ${item.highlight ? 'bg-[#F7A41D]/10 dark:bg-[#FFA726]/20 border border-[#F7A41D]/30 dark:border-[#FFA726]/30' : 'bg-gray-50 dark:bg-gray-800'}`}
                 >
-                  <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${item.highlight ? 'bg-[#F7A41D] text-white dark:text-white' : 'bg-gray-200 text-gray-700 dark:text-gray-300'}`}>
+                  <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${item.highlight ? 'bg-[#F7A41D] dark:bg-[#FFA726] text-white dark:text-gray-900' : 'bg-gray-200 text-gray-700 dark:text-gray-300'}`}>
                     {item.step}
                   </div>
                   <div className="flex-grow">
                     <p className={`font-medium ${item.highlight ? 'text-gray-900 dark:text-white' : 'text-gray-700 dark:text-gray-300'}`}>
                       {item.action}
-                      {item.highlight && <span className="ml-2 text-[#F7A41D] text-sm font-bold">← Most Important</span>}
+                      {item.highlight && <span className="ml-2 text-[#F7A41D] dark:text-[#FFA726] text-sm font-bold">← Most Important</span>}
                     </p>
                   </div>
                   <span className="text-sm text-gray-400 dark:text-gray-500 flex-shrink-0">{item.time}</span>
@@ -117,7 +117,7 @@ export default function QuestionPage() {
               </p>
               <Link
                 href="/products/"
-                className="inline-flex items-center justify-center px-6 py-3 bg-[#F7A41D] hover:bg-[#E09400] text-white dark:text-white font-semibold rounded-full transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 bg-[#F7A41D] dark:bg-[#FFA726] hover:bg-[#E09400] dark:hover:bg-[#FFA726]/90 text-white dark:text-gray-900 font-semibold rounded-full transition-colors"
               >
                 Get Activated Carbon
               </Link>

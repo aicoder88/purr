@@ -2,7 +2,7 @@ import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
 
-import { useTranslation } from "@/lib/translation-context";
+import { useTranslations, useLocale } from "next-intl";
 import { useCurrency } from "@/lib/currency-context";
 import { CheckCircle, Star, Award, ChevronRight, Clock, Users, MapPin, Sparkles } from 'lucide-react';
 import Image from 'next/image';
@@ -31,7 +31,8 @@ type ProductCard = {
 };
 
 export function EnhancedProductComparison() {
-  const { t, locale } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const { currency } = useCurrency();
 
   const trialPrice = formatProductPrice('trial', currency, locale);
@@ -59,8 +60,57 @@ export function EnhancedProductComparison() {
     },
   };
 
-  // Get translated products data
-  const translatedProducts = t.productComparison?.products || [];
+  // Default product data for fallback
+  const defaultProducts = [
+    {
+      features: [
+        'One week of fresh-air confidence',
+        'Just $4.76 shipping',
+        'Zero risk, zero commitment'
+      ],
+      bestFor: "Cat parents who've been burned before. Test it yourself. Your nose doesn't lie."
+    },
+    {
+      features: [
+        'One month supply',
+        'Most popular choice',
+        'Works with any litter'
+      ],
+      bestFor: "Single cat homes. The size that keeps customers coming back."
+    },
+    {
+      features: [
+        'Best value per gram',
+        'Flexible dosing',
+        'Perfect for multiple boxes'
+      ],
+      bestFor: "Multi-cat households, foster parents, or anyone who's lost count."
+    }
+  ];
+
+  // Helper function to get translated features array with fallback
+  const getTranslatedFeatures = (index: number): string[] => {
+    const prefix = `productComparison.product${index + 1}.features`;
+    const translated = t(prefix);
+    // If translation exists and is an array, use it; otherwise use default
+    if (translated && translated !== prefix) {
+      try {
+        // Try to parse as JSON array if it's stored as a string
+        const parsed = JSON.parse(translated as string);
+        if (Array.isArray(parsed)) return parsed;
+      } catch {
+        // If not JSON, return as single item array or check individual keys
+      }
+    }
+    return defaultProducts[index]?.features || [];
+  };
+
+  // Helper function to get translated bestFor string with fallback
+  const getTranslatedBestFor = (index: number): string => {
+    const key = `productComparison.product${index + 1}.bestFor`;
+    const translated = t(key);
+    return translated !== key ? translated : defaultProducts[index]?.bestFor || '';
+  };
 
   const products: ProductCard[] = [
     {
@@ -70,12 +120,8 @@ export function EnhancedProductComparison() {
       description: 'One sprinkle delivers 7 full days of zero litter box smell. Your nose gets the proof, your wallet risks just $4.76 shipping. Over 1,000 cat parents tried the sample and became customers—now it\'s your turn.',
       duration: '7+ days',
       idealFor: '1 cat',
-      features: translatedProducts[0]?.features || [
-        'One week of fresh-air confidence',
-        'Just $4.76 shipping',
-        'Zero risk, zero commitment'
-      ],
-      bestFor: translatedProducts[0]?.bestFor || "Cat parents who've been burned before. Test it yourself. Your nose doesn't lie.",
+      features: getTranslatedFeatures(0),
+      bestFor: getTranslatedBestFor(0),
       image: '/optimized/17g-transparent-v2.webp',
       imageSize: 'sm',
       color: 'from-green-500 to-green-600',
@@ -93,18 +139,14 @@ export function EnhancedProductComparison() {
       description: 'Not too little, not too much—this is the size most customers reorder. Lasts about a month of fresh litter for single-cat homes. The perfect amount without waste.',
       duration: '30 days',
       idealFor: '1 cat',
-      features: translatedProducts[1]?.features || [
-        'One month supply',
-        'Most popular choice',
-        'Works with any litter'
-      ],
-      bestFor: translatedProducts[1]?.bestFor || "Single cat homes. The size that keeps customers coming back.",
+      features: getTranslatedFeatures(1),
+      bestFor: getTranslatedBestFor(1),
       image: '/optimized/60g-transparent.webp',
       imageSize: 'md',
       color: 'from-deep-coral to-rose-600',
       badge: {
         type: 'popular',
-        label: t.productComparison?.popular || 'POPULAR',
+        label: t('productComparison.popular') || 'POPULAR',
       },
       ctaType: 'store',
     },
@@ -115,18 +157,14 @@ export function EnhancedProductComparison() {
       description: 'Best value per gram. Lasts 7+ days per application across multiple litter boxes. Perfect for multi-cat homes that refuse to compromise on freshness.',
       duration: '7+ days per application',
       idealFor: '2+ cats',
-      features: translatedProducts[2]?.features || [
-        'Best value per gram',
-        'Flexible dosing',
-        'Perfect for multiple boxes'
-      ],
-      bestFor: translatedProducts[2]?.bestFor || "Multi-cat households, foster parents, or anyone who's lost count.",
+      features: getTranslatedFeatures(2),
+      bestFor: getTranslatedBestFor(2),
       image: '/optimized/60g-transparent.webp',
       imageSize: 'lg',
       color: 'from-electric-indigo to-purple-600',
       badge: {
         type: 'recommended',
-        label: t.productComparison?.bestValue || 'BEST VALUE',
+        label: t('productComparison.bestValue') || 'BEST VALUE',
       },
       ctaType: 'store',
     },
@@ -143,7 +181,7 @@ export function EnhancedProductComparison() {
       <Container className="relative z-10">
         <div className="text-center mb-12">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            {t.productComparison?.title || "Choose Your Perfect Size"}
+            {t('productComparison.title') || "Choose Your Perfect Size"}
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             {locale === 'fr'
@@ -222,19 +260,19 @@ export function EnhancedProductComparison() {
                   <div className="grid grid-cols-2 gap-4 mb-6">
                     <div className="text-center">
                       <Clock className="w-6 h-6 mx-auto mb-2 text-brand-purple dark:text-purple-400" />
-                      <p className="text-sm text-gray-600 dark:text-gray-300">{t.productComparison?.duration || "Duration"}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-300">{t('productComparison.duration') || "Duration"}</p>
                       <p className="font-semibold text-gray-900 dark:text-gray-100">{product.duration}</p>
                     </div>
                     <div className="text-center">
                       <Users className="w-6 h-6 mx-auto mb-2 text-brand-purple dark:text-purple-400" />
-                      <p className="text-sm text-gray-600 dark:text-gray-300">{t.productComparison?.idealFor || "Ideal For"}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-300">{t('productComparison.idealFor') || "Ideal For"}</p>
                       <p className="font-semibold text-gray-900 dark:text-gray-100">{product.idealFor}</p>
                     </div>
                   </div>
 
                   {/* Features */}
                   <div className="mb-6">
-                    <h4 className="font-heading font-bold mb-3 text-gray-900 dark:text-gray-100">{t.productComparison?.features || "Features"}:</h4>
+                    <h4 className="font-heading font-bold mb-3 text-gray-900 dark:text-gray-100">{t('productComparison.features') || "Features"}:</h4>
                     <ul className="space-y-2">
                       {product.features.map((feature, index) => (
                         <li key={index} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
@@ -248,7 +286,7 @@ export function EnhancedProductComparison() {
                   {/* Best For */}
                   <div className="mb-6 p-4 bg-brand-light/30 dark:bg-gray-700/30 rounded-lg min-h-[88px]">
                     <p className="text-sm text-gray-600 dark:text-gray-300">
-                      <span className="font-semibold">{t.productComparison?.idealFor || "Ideal For"}:</span> {product.bestFor}
+                      <span className="font-semibold">{t('productComparison.idealFor') || "Ideal For"}:</span> {product.bestFor}
                     </p>
                   </div>
 
@@ -280,7 +318,7 @@ export function EnhancedProductComparison() {
                             className="w-full bg-brand-purple hover:bg-brand-purple/90 text-white dark:text-gray-100"
                           >
                             <MapPin className="w-5 h-5 mr-2" />
-                            {t.nav?.findStore || "Get Purrify Near You"}
+                            {t('nav.findStore') || "Get Purrify Near You"}
                             <ChevronRight className="w-5 h-5 ml-2" />
                           </Button>
                         </Link>

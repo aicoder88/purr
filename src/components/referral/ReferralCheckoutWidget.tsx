@@ -8,7 +8,7 @@
  */
 
 import React, { useState, useCallback } from 'react';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
@@ -25,7 +25,8 @@ export function ReferralCheckoutWidget({
   onRemoved,
   className = '',
 }: ReferralCheckoutWidgetProps) {
-  const { t, locale } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const [code, setCode] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -40,12 +41,12 @@ export function ReferralCheckoutWidget({
 
   const applyCode = useCallback(async () => {
     if (!code.trim()) {
-      setError(t.referral?.checkout?.enterCode || 'Please enter a referral code');
+      setError(t('referral.checkout.enterCode') || 'Please enter a referral code');
       return;
     }
 
     if (!email) {
-      setError(t.referral?.checkout?.emailRequired || 'Please enter your email first');
+      setError(t('referral.checkout.emailRequired') || 'Please enter your email first');
       return;
     }
 
@@ -73,15 +74,15 @@ export function ReferralCheckoutWidget({
         onApplied(data.data.discount, data.data.code);
         setShowInput(false);
       } else {
-        setError(data.error || t.referral?.checkout?.invalidCode || 'Invalid referral code');
+        setError(data.error || t('referral.checkout.invalidCode') || 'Invalid referral code');
       }
     } catch (err) {
-      setError(t.referral?.checkout?.error || 'Failed to apply code. Please try again.');
+      setError(t('referral.checkout.error') || 'Failed to apply code. Please try again.');
       console.error('Error applying referral code:', err);
     } finally {
       setLoading(false);
     }
-  }, [code, email, onApplied, t.referral?.checkout]);
+  }, [code, email, onApplied, t('referral.checkout')]);
 
   const removeCode = useCallback(() => {
     setAppliedCode(null);
@@ -101,14 +102,14 @@ export function ReferralCheckoutWidget({
             <CheckCircleIcon className="h-5 w-5 text-green-600 dark:text-green-400" />
             <div>
               <p className="font-medium text-green-800 dark:text-green-200">
-                {t.referral?.checkout?.applied || 'Referral code applied!'}
+                {t('referral.checkout.applied') || 'Referral code applied!'}
               </p>
               <p className="text-sm text-green-600 dark:text-green-400">
                 {referrerName
-                  ? (t.referral?.checkout?.referredBy || 'Referred by {name}').replace('{name}', referrerName)
+                  ? (t('referral.checkout.referredBy') || 'Referred by {name}').replace('{name}', referrerName)
                   : appliedCode}
                 {' - '}
-                <span className="font-semibold">${discount.toFixed(2)} {t.referral?.checkout?.off || 'off'}</span>
+                <span className="font-semibold">${discount.toFixed(2)} {t('referral.checkout.off') || 'off'}</span>
               </p>
             </div>
           </div>
@@ -118,7 +119,7 @@ export function ReferralCheckoutWidget({
             onClick={removeCode}
             className="text-green-700 dark:text-green-300 hover:text-green-900 dark:hover:text-green-100 hover:bg-green-100 dark:hover:bg-green-800"
           >
-            {t.referral?.checkout?.remove || 'Remove'}
+            {t('referral.checkout.remove') || 'Remove'}
           </Button>
         </div>
       </div>
@@ -132,7 +133,7 @@ export function ReferralCheckoutWidget({
         onClick={() => setShowInput(true)}
         className={`text-left w-full text-sm text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 underline cursor-pointer ${className}`}
       >
-        {t.referral?.checkout?.haveCode || 'Have a referral code? Click here'}
+        {t('referral.checkout.haveCode') || 'Have a referral code? Click here'}
       </button>
     );
   }
@@ -142,7 +143,7 @@ export function ReferralCheckoutWidget({
     <div className={`bg-gray-50 dark:bg-gray-800 rounded-lg p-4 ${className}`}>
       <div className="flex items-center justify-between mb-3">
         <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-          {t.referral?.checkout?.enterReferralCode || 'Enter Referral Code'}
+          {t('referral.checkout.enterReferralCode') || 'Enter Referral Code'}
         </label>
         <button
           onClick={() => {
@@ -175,10 +176,10 @@ export function ReferralCheckoutWidget({
         <Button
           onClick={applyCode}
           loading={loading}
-          loadingText={t.referral?.checkout?.applying || 'Applying...'}
+          loadingText={t('referral.checkout.applying') || 'Applying...'}
           disabled={!code.trim() || loading}
         >
-          {t.referral?.checkout?.apply || 'Apply'}
+          {t('referral.checkout.apply') || 'Apply'}
         </Button>
       </div>
 
@@ -190,7 +191,7 @@ export function ReferralCheckoutWidget({
       )}
 
       <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-        {t.referral?.checkout?.discountNote || 'Get $5 off your order with a friend\'s referral code'}
+        {t('referral.checkout.discountNote') || 'Get $5 off your order with a friend\'s referral code'}
       </p>
     </div>
   );

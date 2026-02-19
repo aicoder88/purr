@@ -2972,7 +2972,7 @@ export const en = {
   socialProofBadges: {
     trustedVerified: "Trusted & Verified",
     findUsOn: "Find Us On",
-    viewOnPlatform: "View Purrify on {{platform}}",
+    viewOnPlatform: "View Purrify on {platform}",
     platforms: {
       trustpilot: "Trustpilot",
       googleBusiness: "Google Business",

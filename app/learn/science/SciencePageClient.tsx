@@ -3,6 +3,7 @@
 import { Container } from '../../../src/components/ui/container';
 import { Button } from '../../../src/components/ui/button';
 import { useTranslation } from '../../../src/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import { formatProductPrice } from '../../../src/lib/pricing';
 import Link from 'next/link';
 import { ArrowLeft, Atom, Zap, Shield, Microscope, FlaskConical, BarChart3, Home, ChevronRight } from 'lucide-react';
@@ -99,67 +100,60 @@ const SCIENCE_UI_COPY: Record<SupportedLocale, {
 };
 
 export default function SciencePageClient() {
-  const { t, locale } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const uiCopy = SCIENCE_UI_COPY[locale as SupportedLocale] || SCIENCE_UI_COPY.en;
 
-  const scienceFacts = t.sciencePage?.scienceFacts.facts.map((fact, index) => ({
-    icon: [Atom, Microscope, Zap, Shield][index],
-    title: fact.title,
-    description: fact.description
-  })) || [
+  const scienceFacts = [
       {
         icon: Atom,
-        title: "Engineered Pore Architecture",
-        description: "Working with research scientists, we optimized the exact ratio of micropores (< 2nm), mesopores (2-50nm), and macropores (> 50nm) to create the perfect trap for cat litter odor molecules."
+        title: t('sciencePage.scienceFacts.facts.0.title') || "Engineered Pore Architecture",
+        description: t('sciencePage.scienceFacts.facts.0.description') || "Working with research scientists, we optimized the exact ratio of micropores (< 2nm), mesopores (2-50nm), and macropores (> 50nm) to create the perfect trap for cat litter odor molecules."
       },
       {
         icon: Microscope,
-        title: "Ammonia Capture Mastery",
-        description: "Ammonia molecules (NH₃) from cat urine are tiny—only 0.26 nanometers. Our micropore-rich structure creates millions of perfectly sized capture sites that lock away ammonia before you can smell it."
+        title: t('sciencePage.scienceFacts.facts.1.title') || "Ammonia Capture Mastery",
+        description: t('sciencePage.scienceFacts.facts.1.description') || "Ammonia molecules (NH\u2083) from cat urine are tiny\u2014only 0.26 nanometers. Our micropore-rich structure creates millions of perfectly sized capture sites that lock away ammonia before you can smell it."
       },
       {
         icon: Zap,
-        title: "Mercaptan Elimination",
-        description: "Mercaptans (sulfur compounds) give feces that distinctive rotten-egg smell. Our mesopore channels are specifically sized to trap these larger, more complex molecules permanently."
+        title: t('sciencePage.scienceFacts.facts.2.title') || "Mercaptan Elimination",
+        description: t('sciencePage.scienceFacts.facts.2.description') || "Mercaptans (sulfur compounds) give feces that distinctive rotten-egg smell. Our mesopore channels are specifically sized to trap these larger, more complex molecules permanently."
       },
       {
         icon: Shield,
-        title: "Triple-Pore Synergy",
-        description: "Macropores act as highways delivering odor molecules deep into the carbon. Mesopores catch medium-sized sulfur compounds. Micropores trap the smallest ammonia molecules. Nothing escapes."
+        title: t('sciencePage.scienceFacts.facts.3.title') || "Triple-Pore Synergy",
+        description: t('sciencePage.scienceFacts.facts.3.description') || "Macropores act as highways delivering odor molecules deep into the carbon. Mesopores catch medium-sized sulfur compounds. Micropores trap the smallest ammonia molecules. Nothing escapes."
       }
     ];
 
-  const processSteps = t.sciencePage?.processTimeline.steps.map((step, index) => ({
-    step: String(index + 1),
-    title: step.title,
-    description: step.description
-  })) || [
+  const processSteps = [
       {
         step: "1",
-        title: "The Culprits: Ammonia & Mercaptans",
-        description: "Cat urine breaks down into ammonia (NH₃)—that sharp, eye-watering smell. Feces releases mercaptans—sulfur compounds that smell like rotten eggs or sewage. These are the molecules we engineered Purrify to capture."
+        title: t('sciencePage.processTimeline.steps.0.title') || "The Culprits: Ammonia & Mercaptans",
+        description: t('sciencePage.processTimeline.steps.0.description') || "Cat urine breaks down into ammonia (NH\u2083)\u2014that sharp, eye-watering smell. Feces releases mercaptans\u2014sulfur compounds that smell like rotten eggs or sewage. These are the molecules we engineered Purrify to capture."
       },
       {
         step: "2",
-        title: "Macropores: The Express Lanes",
-        description: "Large macropores (> 50nm) act as highways, rapidly transporting odor molecules deep into the carbon structure. Think of them as the entry points that prevent bottlenecks."
+        title: t('sciencePage.processTimeline.steps.1.title') || "Macropores: The Express Lanes",
+        description: t('sciencePage.processTimeline.steps.1.description') || "Large macropores (> 50nm) act as highways, rapidly transporting odor molecules deep into the carbon structure. Think of them as the entry points that prevent bottlenecks."
       },
       {
         step: "3",
-        title: "Mesopores: The Mercaptan Traps",
-        description: "Medium-sized mesopores (2-50nm) are perfectly sized to capture mercaptans and other sulfur compounds from feces. These pores create a tight grip that won't let go."
+        title: t('sciencePage.processTimeline.steps.2.title') || "Mesopores: The Mercaptan Traps",
+        description: t('sciencePage.processTimeline.steps.2.description') || "Medium-sized mesopores (2-50nm) are perfectly sized to capture mercaptans and other sulfur compounds from feces. These pores create a tight grip that won't let go."
       },
       {
         step: "4",
-        title: "Micropores: The Ammonia Eliminators",
-        description: "Tiny micropores (< 2nm) are optimized for ammonia's 0.26nm size. With millions of these capture sites per gram, ammonia molecules get locked away permanently before you can smell them."
+        title: t('sciencePage.processTimeline.steps.3.title') || "Micropores: The Ammonia Eliminators",
+        description: t('sciencePage.processTimeline.steps.3.description') || "Tiny micropores (< 2nm) are optimized for ammonia's 0.26nm size. With millions of these capture sites per gram, ammonia molecules get locked away permanently before you can smell them."
       }
     ];
 
   // Breadcrumb items
   const breadcrumbItems = [
-    { name: t.sciencePage?.breadcrumb?.learn || 'Learn', path: '/learn' },
-    { name: t.sciencePage?.breadcrumb?.science || 'Science', path: '/learn/science' },
+    { name: t('sciencePage.breadcrumb.learn') || 'Learn', path: '/learn' },
+    { name: t('sciencePage.breadcrumb.science') || 'Science', path: '/learn/science' },
   ];
 
   return (
@@ -203,14 +197,14 @@ export default function SciencePageClient() {
               <FlaskConical className="w-8 h-8 text-white dark:text-gray-100" />
             </div>
             <h1 className="font-heading text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
-              {t.sciencePage?.hero.heading || ""}
+              {t('sciencePage.hero.heading')}
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-              {t.sciencePage?.hero.description || ""}
+              {t('sciencePage.hero.description')}
             </p>
             <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
               <Button size="lg" className="bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100 font-bold shadow-lg hover:shadow-xl transition-all duration-300">
-                {`${t.sciencePage?.hero.ctaButton || ""} - ${formatProductPrice('trial', locale)}`}
+                {`${t('sciencePage.hero.ctaButton')} - ${formatProductPrice('trial', locale)}`}
               </Button>
             </Link>
           </div>
@@ -222,10 +216,10 @@ export default function SciencePageClient() {
         <Container>
           <div className="text-center mb-12">
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-              {t.sciencePage?.understanding.sectionTitle || ""}
+              {t('sciencePage.understanding.sectionTitle')}
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              {t.sciencePage?.understanding.description || ""}
+              {t('sciencePage.understanding.description')}
             </p>
           </div>
 
@@ -235,25 +229,25 @@ export default function SciencePageClient() {
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-full mb-4">
                   <span className="text-3xl">💧</span>
                 </div>
-                <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-2">{t.sciencePage?.understanding.ammonia.title || ""}</h3>
-                <p className="text-sm text-red-600 dark:text-red-400 font-semibold">{t.sciencePage?.understanding.ammonia.subtitle || ""}</p>
+                <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-2">{t('sciencePage.understanding.ammonia.title')}</h3>
+                <p className="text-sm text-red-600 dark:text-red-400 font-semibold">{t('sciencePage.understanding.ammonia.subtitle')}</p>
               </div>
               <ul className="space-y-3 text-gray-700 dark:text-gray-200">
                 <li className="flex items-start space-x-2">
                   <span className="text-red-500 dark:text-red-400 mt-1">•</span>
-                  <span><strong>{uiCopy.smellLabel}</strong> {t.sciencePage?.understanding.ammonia.smell || ''}</span>
+                  <span><strong>{uiCopy.smellLabel}</strong> {t('sciencePage.understanding.ammonia.smell')}</span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <span className="text-red-500 dark:text-red-400 mt-1">•</span>
-                  <span><strong>{uiCopy.moleculeSizeLabel}</strong> {t.sciencePage?.understanding.ammonia.moleculeSize || ''}</span>
+                  <span><strong>{uiCopy.moleculeSizeLabel}</strong> {t('sciencePage.understanding.ammonia.moleculeSize')}</span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <span className="text-red-500 dark:text-red-400 mt-1">•</span>
-                  <span><strong>{uiCopy.problemLabel}</strong> {t.sciencePage?.understanding.ammonia.problem || ''}</span>
+                  <span><strong>{uiCopy.problemLabel}</strong> {t('sciencePage.understanding.ammonia.problem')}</span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <span className="text-red-500 dark:text-red-400 mt-1">•</span>
-                  <span><strong>{uiCopy.whyHardLabel}</strong> {t.sciencePage?.understanding.ammonia.whyHard || ''}</span>
+                  <span><strong>{uiCopy.whyHardLabel}</strong> {t('sciencePage.understanding.ammonia.whyHard')}</span>
                 </li>
               </ul>
             </div>
@@ -263,25 +257,25 @@ export default function SciencePageClient() {
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-yellow-100 dark:bg-yellow-900/30 rounded-full mb-4">
                   <span className="text-3xl">💩</span>
                 </div>
-                <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-2">{t.sciencePage?.understanding.mercaptans.title || ""}</h3>
-                <p className="text-sm text-yellow-600 dark:text-yellow-400 font-semibold">{t.sciencePage?.understanding.mercaptans.subtitle || ""}</p>
+                <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-2">{t('sciencePage.understanding.mercaptans.title')}</h3>
+                <p className="text-sm text-yellow-600 dark:text-yellow-400 font-semibold">{t('sciencePage.understanding.mercaptans.subtitle')}</p>
               </div>
               <ul className="space-y-3 text-gray-700 dark:text-gray-200">
                 <li className="flex items-start space-x-2">
                   <span className="text-yellow-500 dark:text-yellow-400 mt-1">•</span>
-                  <span><strong>{uiCopy.smellLabel}</strong> {t.sciencePage?.understanding.mercaptans.smell || ''}</span>
+                  <span><strong>{uiCopy.smellLabel}</strong> {t('sciencePage.understanding.mercaptans.smell')}</span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <span className="text-yellow-500 dark:text-yellow-400 mt-1">•</span>
-                  <span><strong>{uiCopy.moleculeSizeLabel}</strong> {t.sciencePage?.understanding.mercaptans.moleculeSize || ''}</span>
+                  <span><strong>{uiCopy.moleculeSizeLabel}</strong> {t('sciencePage.understanding.mercaptans.moleculeSize')}</span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <span className="text-yellow-500 dark:text-yellow-400 mt-1">•</span>
-                  <span><strong>{uiCopy.problemLabel}</strong> {t.sciencePage?.understanding.mercaptans.problem || ''}</span>
+                  <span><strong>{uiCopy.problemLabel}</strong> {t('sciencePage.understanding.mercaptans.problem')}</span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <span className="text-yellow-500 dark:text-yellow-400 mt-1">•</span>
-                  <span><strong>{uiCopy.whyHardLabel}</strong> {t.sciencePage?.understanding.mercaptans.whyHard || ''}</span>
+                  <span><strong>{uiCopy.whyHardLabel}</strong> {t('sciencePage.understanding.mercaptans.whyHard')}</span>
                 </li>
               </ul>
             </div>
@@ -289,7 +283,7 @@ export default function SciencePageClient() {
 
           <div className="mt-10 text-center bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-3xl mx-auto shadow-lg border border-gray-200 dark:border-gray-700">
             <p className="text-lg text-gray-700 dark:text-gray-200 leading-relaxed">
-              {t.sciencePage?.understanding.breakthrough || ""}
+              {t('sciencePage.understanding.breakthrough')}
             </p>
           </div>
 
@@ -305,8 +299,8 @@ export default function SciencePageClient() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8 text-white dark:text-gray-100">
-                  <h3 className="font-heading text-2xl font-bold mb-2">{t.sciencePage?.imageCaptions.freshHome.title || ""}</h3>
-                  <p className="text-lg opacity-90">{t.sciencePage?.imageCaptions.freshHome.description || ""}</p>
+                  <h3 className="font-heading text-2xl font-bold mb-2">{t('sciencePage.imageCaptions.freshHome.title')}</h3>
+                  <p className="text-lg opacity-90">{t('sciencePage.imageCaptions.freshHome.description')}</p>
                 </div>
               </div>
             </div>
@@ -320,8 +314,8 @@ export default function SciencePageClient() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8 text-white dark:text-gray-100">
-                  <h3 className="font-heading text-2xl font-bold mb-2">{t.sciencePage?.imageCaptions.noOdors.title || ""}</h3>
-                  <p className="text-lg opacity-90">{t.sciencePage?.imageCaptions.noOdors.description || ""}</p>
+                  <h3 className="font-heading text-2xl font-bold mb-2">{t('sciencePage.imageCaptions.noOdors.title')}</h3>
+                  <p className="text-lg opacity-90">{t('sciencePage.imageCaptions.noOdors.description')}</p>
                 </div>
               </div>
             </div>
@@ -337,77 +331,77 @@ export default function SciencePageClient() {
               <BarChart3 className="w-8 h-8 text-white dark:text-gray-100" />
             </div>
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-              {t.sciencePage?.poreSize.sectionTitle || ""}
+              {t('sciencePage.poreSize.sectionTitle')}
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              {t.sciencePage?.poreSize.description || ""}
+              {t('sciencePage.poreSize.description')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border-2 border-blue-200 dark:border-blue-800">
               <div className="text-center mb-4">
-                <div className="text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2">{t.sciencePage?.poreSize.micropores.size || ""}</div>
-                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">{t.sciencePage?.poreSize.micropores.title || ""}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">{t.sciencePage?.poreSize.micropores.specialist || ""}</p>
+                <div className="text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2">{t('sciencePage.poreSize.micropores.size')}</div>
+                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">{t('sciencePage.poreSize.micropores.title')}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">{t('sciencePage.poreSize.micropores.specialist')}</p>
               </div>
               <div className="space-y-3 text-gray-700 dark:text-gray-200">
-                <p><strong>{uiCopy.targetLabel}</strong> {t.sciencePage?.poreSize.micropores.target || ''}</p>
-                <p><strong>{uiCopy.densityLabel}</strong> {t.sciencePage?.poreSize.micropores.density || ''}</p>
-                <p><strong>{uiCopy.functionLabel}</strong> {t.sciencePage?.poreSize.micropores.function || ''}</p>
+                <p><strong>{uiCopy.targetLabel}</strong> {t('sciencePage.poreSize.micropores.target')}</p>
+                <p><strong>{uiCopy.densityLabel}</strong> {t('sciencePage.poreSize.micropores.density')}</p>
+                <p><strong>{uiCopy.functionLabel}</strong> {t('sciencePage.poreSize.micropores.function')}</p>
               </div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border-2 border-purple-200 dark:border-purple-800">
               <div className="text-center mb-4">
-                <div className="text-5xl font-bold text-purple-600 dark:text-purple-400 mb-2">{t.sciencePage?.poreSize.mesopores.size || ""}</div>
-                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">{t.sciencePage?.poreSize.mesopores.title || ""}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">{t.sciencePage?.poreSize.mesopores.specialist || ""}</p>
+                <div className="text-5xl font-bold text-purple-600 dark:text-purple-400 mb-2">{t('sciencePage.poreSize.mesopores.size')}</div>
+                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">{t('sciencePage.poreSize.mesopores.title')}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">{t('sciencePage.poreSize.mesopores.specialist')}</p>
               </div>
               <div className="space-y-3 text-gray-700 dark:text-gray-200">
-                <p><strong>{uiCopy.targetLabel}</strong> {t.sciencePage?.poreSize.mesopores.target || ''}</p>
-                <p><strong>{uiCopy.densityLabel}</strong> {t.sciencePage?.poreSize.mesopores.density || ''}</p>
-                <p><strong>{uiCopy.functionLabel}</strong> {t.sciencePage?.poreSize.mesopores.function || ''}</p>
+                <p><strong>{uiCopy.targetLabel}</strong> {t('sciencePage.poreSize.mesopores.target')}</p>
+                <p><strong>{uiCopy.densityLabel}</strong> {t('sciencePage.poreSize.mesopores.density')}</p>
+                <p><strong>{uiCopy.functionLabel}</strong> {t('sciencePage.poreSize.mesopores.function')}</p>
               </div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border-2 border-indigo-200 dark:border-indigo-800">
               <div className="text-center mb-4">
-                <div className="text-5xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">{t.sciencePage?.poreSize.macropores.size || ""}</div>
-                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">{t.sciencePage?.poreSize.macropores.title || ""}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">{t.sciencePage?.poreSize.macropores.specialist || ""}</p>
+                <div className="text-5xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">{t('sciencePage.poreSize.macropores.size')}</div>
+                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">{t('sciencePage.poreSize.macropores.title')}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">{t('sciencePage.poreSize.macropores.specialist')}</p>
               </div>
               <div className="space-y-3 text-gray-700 dark:text-gray-200">
-                <p><strong>{uiCopy.targetLabel}</strong> {t.sciencePage?.poreSize.macropores.target || ''}</p>
-                <p><strong>{uiCopy.densityLabel}</strong> {t.sciencePage?.poreSize.macropores.density || ''}</p>
-                <p><strong>{uiCopy.functionLabel}</strong> {t.sciencePage?.poreSize.macropores.function || ''}</p>
+                <p><strong>{uiCopy.targetLabel}</strong> {t('sciencePage.poreSize.macropores.target')}</p>
+                <p><strong>{uiCopy.densityLabel}</strong> {t('sciencePage.poreSize.macropores.density')}</p>
+                <p><strong>{uiCopy.functionLabel}</strong> {t('sciencePage.poreSize.macropores.function')}</p>
               </div>
             </div>
           </div>
 
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700 max-w-4xl mx-auto">
             <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center">
-              {t.sciencePage?.poreSize.surfaceArea.title || ""}
+              {t('sciencePage.poreSize.surfaceArea.title')}
             </h3>
             <p className="text-center text-gray-600 dark:text-gray-300 mb-6 text-lg">
-              {t.sciencePage?.poreSize.surfaceArea.description || ""}
+              {t('sciencePage.poreSize.surfaceArea.description')}
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
               <div className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-xl">
                 <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">≥1000</div>
-                <div className="text-xs text-gray-600 dark:text-gray-300">{t.sciencePage?.poreSize.surfaceArea.iodineNumber || 'Iodine Number mg/g'}</div>
+                <div className="text-xs text-gray-600 dark:text-gray-300">{t('sciencePage.poreSize.surfaceArea.iodineNumber') || 'Iodine Number mg/g'}</div>
               </div>
               <div className="p-4 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-xl">
                 <div className="text-2xl font-bold text-purple-600 dark:text-purple-400 mb-1">≥50%</div>
-                <div className="text-xs text-gray-600 dark:text-gray-300">{t.sciencePage?.poreSize.surfaceArea.ctcAdsorption || 'CTC Adsorption'}</div>
+                <div className="text-xs text-gray-600 dark:text-gray-300">{t('sciencePage.poreSize.surfaceArea.ctcAdsorption') || 'CTC Adsorption'}</div>
               </div>
               <div className="p-4 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-xl">
                 <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">≥98%</div>
-                <div className="text-xs text-gray-600 dark:text-gray-300">{t.sciencePage?.poreSize.surfaceArea.hardness || 'Hardness'}</div>
+                <div className="text-xs text-gray-600 dark:text-gray-300">{t('sciencePage.poreSize.surfaceArea.hardness') || 'Hardness'}</div>
               </div>
               <div className="p-4 bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 rounded-xl">
                 <div className="text-2xl font-bold text-red-600 dark:text-red-400 mb-1">≤5%</div>
-                <div className="text-xs text-gray-600 dark:text-gray-300">{t.sciencePage?.poreSize.surfaceArea.moisture || 'Moisture'}</div>
+                <div className="text-xs text-gray-600 dark:text-gray-300">{t('sciencePage.poreSize.surfaceArea.moisture') || 'Moisture'}</div>
               </div>
             </div>
           </div>
@@ -419,10 +413,10 @@ export default function SciencePageClient() {
         <Container>
           <div className="text-center mb-12">
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-              {t.sciencePage?.scienceFacts.sectionTitle || ""}
+              {t('sciencePage.scienceFacts.sectionTitle')}
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              {t.sciencePage?.scienceFacts.description || ""}
+              {t('sciencePage.scienceFacts.description')}
             </p>
           </div>
 
@@ -464,7 +458,7 @@ export default function SciencePageClient() {
                     className="w-full h-auto"
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                    <p className="text-white dark:text-gray-100 text-sm font-medium">{t.sciencePage?.microscopicView.imageCaptions.microscope || ""}</p>
+                    <p className="text-white dark:text-gray-100 text-sm font-medium">{t('sciencePage.microscopicView.imageCaptions.microscope')}</p>
                   </div>
                 </div>
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
@@ -476,7 +470,7 @@ export default function SciencePageClient() {
                     className="w-full h-auto"
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                    <p className="text-white dark:text-gray-100 text-sm font-medium">{t.sciencePage?.microscopicView.imageCaptions.labTesting || ""}</p>
+                    <p className="text-white dark:text-gray-100 text-sm font-medium">{t('sciencePage.microscopicView.imageCaptions.labTesting')}</p>
                   </div>
                 </div>
               </div>
@@ -491,38 +485,38 @@ export default function SciencePageClient() {
                     className="w-full h-auto"
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                    <p className="text-white dark:text-gray-100 text-sm font-medium">{t.sciencePage?.microscopicView.imageCaptions.molecular || ""}</p>
+                    <p className="text-white dark:text-gray-100 text-sm font-medium">{t('sciencePage.microscopicView.imageCaptions.molecular')}</p>
                   </div>
                 </div>
 
                 <div className="bg-gradient-to-br from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-[#FF3131]/20 dark:to-[#5B2EFF]/20 rounded-2xl p-6 border border-[#FF3131]/20 dark:border-[#5B2EFF]/30">
                   <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-3">
-                    {t.sciencePage?.microscopicView.whatYoureLookingAt.title || ""}
+                    {t('sciencePage.microscopicView.whatYoureLookingAt.title')}
                   </h3>
                   <p className="text-gray-700 dark:text-gray-200 leading-relaxed mb-4">
-                    {t.sciencePage?.microscopicView.whatYoureLookingAt.description || ""}
+                    {t('sciencePage.microscopicView.whatYoureLookingAt.description')}
                   </p>
                   <ul className="space-y-3 text-gray-700 dark:text-gray-200">
                     <li className="flex items-start space-x-2">
                       <span className="text-[#FF3131] mt-1">→</span>
-                      <span>{t.sciencePage?.microscopicView.whatYoureLookingAt.bullets?.[0] || ""}</span>
+                      <span>{t('sciencePage.microscopicView.whatYoureLookingAt.bullets')?.[0] || ""}</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <span className="text-[#5B2EFF] mt-1">→</span>
-                      <span>{t.sciencePage?.microscopicView.whatYoureLookingAt.bullets?.[1] || ""}</span>
+                      <span>{t('sciencePage.microscopicView.whatYoureLookingAt.bullets')?.[1] || ""}</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <span className="text-[#FF3131] mt-1">→</span>
-                      <span>{t.sciencePage?.microscopicView.whatYoureLookingAt.bullets?.[2] || ""}</span>
+                      <span>{t('sciencePage.microscopicView.whatYoureLookingAt.bullets')?.[2] || ""}</span>
                     </li>
                   </ul>
                 </div>
 
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
                   <p className="text-gray-700 dark:text-gray-200 italic">
-                    {t.sciencePage?.microscopicView.quote.text || ""}
+                    {t('sciencePage.microscopicView.quote.text')}
                   </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-3">{t.sciencePage?.microscopicView.quote.attribution || ""}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-3">{t('sciencePage.microscopicView.quote.attribution')}</p>
                 </div>
               </div>
             </div>
@@ -535,10 +529,10 @@ export default function SciencePageClient() {
         <Container>
           <div className="text-center mb-12">
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-              {t.sciencePage?.technicalPerformance.sectionTitle || ""}
+              {t('sciencePage.technicalPerformance.sectionTitle')}
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              {t.sciencePage?.technicalPerformance.description || ""}
+              {t('sciencePage.technicalPerformance.description')}
             </p>
           </div>
 
@@ -549,24 +543,24 @@ export default function SciencePageClient() {
                 <span className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-3">
                   <BarChart3 className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                 </span>
-                {t.sciencePage?.technicalPerformance.particleSize.title || ""}
+                {t('sciencePage.technicalPerformance.particleSize.title')}
               </h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
-                  <span className="text-gray-700 dark:text-gray-200 font-medium">{t.sciencePage?.technicalPerformance.particleSize.effectiveSize || 'Effective Size:'}</span>
-                  <span className="text-lg font-bold text-blue-600 dark:text-blue-400">{t.sciencePage?.technicalPerformance.particleSize.effectiveSize || ""}</span>
+                  <span className="text-gray-700 dark:text-gray-200 font-medium">{t('sciencePage.technicalPerformance.particleSize.effectiveSize') || 'Effective Size:'}</span>
+                  <span className="text-lg font-bold text-blue-600 dark:text-blue-400">{t('sciencePage.technicalPerformance.particleSize.effectiveSize')}</span>
                 </div>
                 <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
-                  <span className="text-gray-700 dark:text-gray-200 font-medium">{t.sciencePage?.technicalPerformance.particleSize.meanDiameter || 'Mean Diameter:'}</span>
-                  <span className="text-lg font-bold text-blue-600 dark:text-blue-400">{t.sciencePage?.technicalPerformance.particleSize.meanDiameter || ""}</span>
+                  <span className="text-gray-700 dark:text-gray-200 font-medium">{t('sciencePage.technicalPerformance.particleSize.meanDiameter') || 'Mean Diameter:'}</span>
+                  <span className="text-lg font-bold text-blue-600 dark:text-blue-400">{t('sciencePage.technicalPerformance.particleSize.meanDiameter')}</span>
                 </div>
                 <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
-                  <span className="text-gray-700 dark:text-gray-200 font-medium">{t.sciencePage?.technicalPerformance.particleSize.uniformityCoefficient || 'Uniformity Coefficient:'}</span>
-                  <span className="text-lg font-bold text-blue-600 dark:text-blue-400">{t.sciencePage?.technicalPerformance.particleSize.uniformityCoefficient || ""}</span>
+                  <span className="text-gray-700 dark:text-gray-200 font-medium">{t('sciencePage.technicalPerformance.particleSize.uniformityCoefficient') || 'Uniformity Coefficient:'}</span>
+                  <span className="text-lg font-bold text-blue-600 dark:text-blue-400">{t('sciencePage.technicalPerformance.particleSize.uniformityCoefficient')}</span>
                 </div>
                 <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
                   <p className="text-sm text-gray-700 dark:text-gray-200">
-                    {t.sciencePage?.technicalPerformance.particleSize.whyMatters || ''}
+                    {t('sciencePage.technicalPerformance.particleSize.whyMatters')}
                   </p>
                 </div>
               </div>
@@ -578,24 +572,24 @@ export default function SciencePageClient() {
                 <span className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mr-3">
                   <Zap className="w-5 h-5 text-purple-600 dark:text-purple-400" />
                 </span>
-                {t.sciencePage?.technicalPerformance.adsorption.title || ""}
+                {t('sciencePage.technicalPerformance.adsorption.title')}
               </h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
-                  <span className="text-gray-700 dark:text-gray-200 font-medium">{t.sciencePage?.technicalPerformance.adsorption.halfLength || 'Half-Length Value:'}</span>
-                  <span className="text-lg font-bold text-purple-600 dark:text-purple-400">{t.sciencePage?.technicalPerformance.adsorption.halfLength || ""}</span>
+                  <span className="text-gray-700 dark:text-gray-200 font-medium">{t('sciencePage.technicalPerformance.adsorption.halfLength') || 'Half-Length Value:'}</span>
+                  <span className="text-lg font-bold text-purple-600 dark:text-purple-400">{t('sciencePage.technicalPerformance.adsorption.halfLength')}</span>
                 </div>
                 <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
-                  <span className="text-gray-700 dark:text-gray-200 font-medium">{t.sciencePage?.technicalPerformance.adsorption.apparentDensity || 'Apparent Density:'}</span>
-                  <span className="text-lg font-bold text-purple-600 dark:text-purple-400">{t.sciencePage?.technicalPerformance.adsorption.apparentDensity || ""}</span>
+                  <span className="text-gray-700 dark:text-gray-200 font-medium">{t('sciencePage.technicalPerformance.adsorption.apparentDensity') || 'Apparent Density:'}</span>
+                  <span className="text-lg font-bold text-purple-600 dark:text-purple-400">{t('sciencePage.technicalPerformance.adsorption.apparentDensity')}</span>
                 </div>
                 <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
-                  <span className="text-gray-700 dark:text-gray-200 font-medium">{t.sciencePage?.technicalPerformance.adsorption.betSurface || 'BET Surface Area:'}</span>
-                  <span className="text-lg font-bold text-purple-600 dark:text-purple-400">{t.sciencePage?.technicalPerformance.adsorption.betSurface || ""}</span>
+                  <span className="text-gray-700 dark:text-gray-200 font-medium">{t('sciencePage.technicalPerformance.adsorption.betSurface') || 'BET Surface Area:'}</span>
+                  <span className="text-lg font-bold text-purple-600 dark:text-purple-400">{t('sciencePage.technicalPerformance.adsorption.betSurface')}</span>
                 </div>
                 <div className="mt-6 p-4 bg-purple-50 dark:bg-purple-900/20 rounded-xl">
                   <p className="text-sm text-gray-700 dark:text-gray-200">
-                    {t.sciencePage?.technicalPerformance.adsorption.whyMatters || ''}
+                    {t('sciencePage.technicalPerformance.adsorption.whyMatters')}
                   </p>
                 </div>
               </div>
@@ -612,23 +606,23 @@ export default function SciencePageClient() {
               </div>
               <div>
                 <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-3">
-                  {t.sciencePage?.engineeredPerformance.title || ""}
+                  {t('sciencePage.engineeredPerformance.title')}
                 </h3>
                 <p className="text-gray-700 dark:text-gray-200 leading-relaxed mb-4">
-                  {t.sciencePage?.engineeredPerformance.description || ""}
+                  {t('sciencePage.engineeredPerformance.description')}
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
                   <div className="text-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
-                    <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">{t.sciencePage?.engineeredPerformance.stats.temperatureRange || ""}</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">{t.sciencePage?.engineeredPerformance.stats.temperatureLabel || ""}</div>
+                    <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">{t('sciencePage.engineeredPerformance.stats.temperatureRange')}</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-300">{t('sciencePage.engineeredPerformance.stats.temperatureLabel')}</div>
                   </div>
                   <div className="text-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
                     <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">{uiCopy.stableValue}</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">{t.sciencePage?.engineeredPerformance.stats.performanceLabel || ""}</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-300">{t('sciencePage.engineeredPerformance.stats.performanceLabel')}</div>
                   </div>
                   <div className="text-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
                     <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">{uiCopy.minimalValue}</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">{t.sciencePage?.engineeredPerformance.stats.pressureLossLabel || ""}</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-300">{t('sciencePage.engineeredPerformance.stats.pressureLossLabel')}</div>
                   </div>
                 </div>
               </div>
@@ -642,10 +636,10 @@ export default function SciencePageClient() {
         <Container>
           <div className="text-center mb-12">
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-              {t.sciencePage?.processTimeline.sectionTitle || ""}
+              {t('sciencePage.processTimeline.sectionTitle')}
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              {t.sciencePage?.processTimeline.description || ""}
+              {t('sciencePage.processTimeline.description')}
             </p>
           </div>
 
@@ -688,36 +682,36 @@ export default function SciencePageClient() {
         <Container>
           <div className="text-center text-white dark:text-gray-100">
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-              {t.sciencePage?.researchSection.title || ""}
+              {t('sciencePage.researchSection.title')}
             </h2>
             <p className="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
-              {t.sciencePage?.researchSection.description || ""}
+              {t('sciencePage.researchSection.description')}
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
               <div className="text-center">
-                <div className="text-4xl font-bold mb-2">{t.sciencePage?.researchSection.stats.ammoniaSize || ""}</div>
-                <div className="text-lg opacity-90">{t.sciencePage?.researchSection.stats.ammoniaSizeLabel || ""}</div>
+                <div className="text-4xl font-bold mb-2">{t('sciencePage.researchSection.stats.ammoniaSize')}</div>
+                <div className="text-lg opacity-90">{t('sciencePage.researchSection.stats.ammoniaSizeLabel')}</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold mb-2">{t.sciencePage?.researchSection.stats.poreTypes || ""}</div>
-                <div className="text-lg opacity-90">{t.sciencePage?.researchSection.stats.poreTypesLabel || ""}</div>
+                <div className="text-4xl font-bold mb-2">{t('sciencePage.researchSection.stats.poreTypes')}</div>
+                <div className="text-lg opacity-90">{t('sciencePage.researchSection.stats.poreTypesLabel')}</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold mb-2">{t.sciencePage?.researchSection.stats.surfaceArea || ""}</div>
-                <div className="text-lg opacity-90">{t.sciencePage?.researchSection.stats.surfaceAreaLabel || ""}</div>
+                <div className="text-4xl font-bold mb-2">{t('sciencePage.researchSection.stats.surfaceArea')}</div>
+                <div className="text-lg opacity-90">{t('sciencePage.researchSection.stats.surfaceAreaLabel')}</div>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href={`${locale === 'fr' ? '/fr' : ''}/products/trial-size`}>
                 <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
-                  {t.sciencePage?.researchSection.buttons.experience || ""}
+                  {t('sciencePage.researchSection.buttons.experience')}
                 </Button>
               </Link>
               <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`}>
                 <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-white dark:text-gray-100 bg-transparent hover:bg-white/10 dark:hover:bg-gray-700/50 transition-colors">
-                  {t.sciencePage?.researchSection.buttons.learnMore || ""}
+                  {t('sciencePage.researchSection.buttons.learnMore')}
                 </Button>
               </Link>
             </div>
@@ -740,7 +734,7 @@ export default function SciencePageClient() {
             className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            {t.sciencePage?.backToLearn || ""}
+            {t('sciencePage.backToLearn')}
           </Link>
         </Container>
       </section>

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Container } from '../../../src/components/ui/container';
 import { Button } from '../../../src/components/ui/button';
 import { useTranslation } from '../../../src/lib/translation-context';
+import { useLocale } from 'next-intl';
 import {
   BookOpen,
   ChevronRight,
@@ -118,7 +119,7 @@ const GLOSSARY_UI_COPY: Record<SupportedLocale, {
 };
 
 export default function GlossaryPageClient() {
-  const { locale } = useTranslation();
+  const locale = useLocale();
   const localePrefix = locale === 'en' ? '' : `/${locale}`;
   const glossaryUi = GLOSSARY_UI_COPY[locale as SupportedLocale] || GLOSSARY_UI_COPY.en;
   const [searchTerm, setSearchTerm] = useState('');
@@ -266,9 +267,9 @@ export default function GlossaryPageClient() {
 
   const categories = [
     { id: 'all', name: glossaryUi.allTerms, count: glossaryTerms.length },
-    { id: 'science', name: glossaryUi.scienceCategory, count: glossaryTerms.filter(t => t.category === 'science').length },
-    { id: 'product', name: glossaryUi.productCategory, count: glossaryTerms.filter(t => t.category === 'product').length },
-    { id: 'comparison', name: glossaryUi.comparisonCategory, count: glossaryTerms.filter(t => t.category === 'comparison').length }
+    { id: 'science', name: glossaryUi.scienceCategory, count: glossaryTerms.filter((term: GlossaryTerm) => term.category === 'science').length },
+    { id: 'product', name: glossaryUi.productCategory, count: glossaryTerms.filter((term: GlossaryTerm) => term.category === 'product').length },
+    { id: 'comparison', name: glossaryUi.comparisonCategory, count: glossaryTerms.filter((term: GlossaryTerm) => term.category === 'comparison').length }
   ];
 
   const filteredTerms = glossaryTerms.filter(term => {
@@ -392,7 +393,7 @@ export default function GlossaryPageClient() {
                     <div className="flex flex-wrap gap-2 mt-4">
                       <span className="text-sm text-gray-500 dark:text-gray-500">{glossaryUi.relatedLabel}</span>
                       {term.relatedTerms.map((related) => {
-                        const relatedTerm = glossaryTerms.find(t => t.term === related);
+                        const relatedTerm = glossaryTerms.find((term: GlossaryTerm) => term.term === related);
                         return (
                           <a
                             key={related}

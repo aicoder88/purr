@@ -37,7 +37,7 @@ export default function OfflineContent() {
                     <div className="space-y-4">
                         <Button
                             onClick={handleRetry}
-                            className="w-full bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-white"
+                            className="w-full bg-[#5B2EFF] dark:bg-[#818CF8] hover:bg-[#5B2EFF]/90 dark:hover:bg-[#818CF8]/90 text-white dark:text-gray-900"
                         >
                             <RefreshCw className="w-4 h-4 mr-2" />
                             Try Again
@@ -80,7 +80,7 @@ export default function OfflineContent() {
                             </p>
                             <div className="flex items-center justify-center space-x-2 text-gray-600 dark:text-gray-400">
                                 <Phone className="w-4 h-4" />
-                                <a href={CONTACT_INFO.phoneHref} className="text-[#5B2EFF] hover:underline font-bold text-sm">
+                                <a href={CONTACT_INFO.phoneHref} className="text-[#5B2EFF] dark:text-[#818CF8] hover:underline font-bold text-sm">
                                     {PHONE_MESSAGING.callout}
                                 </a>
                             </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Shield, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import { formatCurrencyValue } from '@/lib/pricing';
 
 // Type declarations for Apple Pay and Google Pay
@@ -170,7 +170,8 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
   onPaymentError,
   className = ''
 }) => {
-  const { t, locale } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const uiCopy = mobilePaymentUiCopy[locale as SupportedLocale] || mobilePaymentUiCopy.en;
   const [availablePayments, setAvailablePayments] = useState<PaymentMethod[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -446,10 +447,10 @@ export const MobilePayment: React.FC<MobilePaymentProps> = ({
       <div className="mt-6 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
         <div className="flex items-center space-x-2 text-green-800 dark:text-green-200">
           <Shield className="w-5 h-5" />
-          <span className="font-semibold">{t.paymentSecurity?.securePayment || 'Secure Payment'}</span>
+          <span className="font-semibold">{t('paymentSecurity.securePayment') || 'Secure Payment'}</span>
         </div>
         <p className="text-green-700 dark:text-green-400 text-sm mt-1">
-          {t.paymentSecurity?.sslEncryptedCheckout || 'Your payment information is encrypted and secure. We never store your payment details.'}
+          {t('paymentSecurity.sslEncryptedCheckout') || 'Your payment information is encrypted and secure. We never store your payment details.'}
         </p>
       </div>
 
@@ -471,7 +472,7 @@ interface ExpressCheckoutButtonsProps {
 const ExpressCheckoutButtons: React.FC<ExpressCheckoutButtonsProps> = ({
   className = '',
 }) => {
-  const { locale } = useTranslation();
+  const locale = useLocale();
   const uiCopy = mobilePaymentUiCopy[locale as SupportedLocale] || mobilePaymentUiCopy.en;
   const [showApplePay, setShowApplePay] = useState(false);
   const [showGooglePay, setShowGooglePay] = useState(false);

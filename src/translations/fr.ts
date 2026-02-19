@@ -839,7 +839,7 @@ export const fr = {
   socialProofBadges: {
     trustedVerified: "Vérifié et Approuvé",
     findUsOn: "Trouvez-nous Sur",
-    viewOnPlatform: "Voir Purrify sur {{platform}}",
+    viewOnPlatform: "Voir Purrify sur {platform}",
     platforms: {
       trustpilot: "Trustpilot",
       googleBusiness: "Google Business",

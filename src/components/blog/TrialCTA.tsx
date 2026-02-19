@@ -6,7 +6,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 
 interface TrialCTAProps {
   /** Optional class name for styling */
@@ -20,13 +20,20 @@ interface TrialCTAProps {
  * Encourages blog readers to try the product with a compelling offer
  */
 export function TrialCTA({ className = '', variant = 'default' }: TrialCTAProps) {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   // Use nav.trialSize which is available in the translation type
-  const trialSizeText = t.nav?.trialSize || 'FREE Trial (Just Pay S&H)';
-  const tryFreeText = t.nav?.tryFree || 'Try Free';
-  const readMoreText = t.relatedArticles?.readMore || 'Learn more';
-  const trialImageAlt = t.products?.['purrify-12g']?.name || 'Purrify Trial Size';
+  const trialSizeText = t('nav.trialSize') || 'FREE Trial (Just Pay S&H)';
+  const tryFreeText = t('nav.tryFree') || 'Try Free';
+  const readMoreText = t('relatedArticles.readMore') || 'Learn more';
+  // Try to get product name from translations, fallback to default
+  let trialImageAlt = 'Purrify Trial Size';
+  try {
+    const products = t.raw('products') as Record<string, any>;
+    trialImageAlt = products?.['purrify-12g']?.name || 'Purrify Trial Size';
+  } catch {
+    trialImageAlt = 'Purrify Trial Size';
+  }
   const limitedOfferText = 'Limited Time Offer';
   const trialDescription =
     'Experience the power of activated carbon odor control risk-free.';

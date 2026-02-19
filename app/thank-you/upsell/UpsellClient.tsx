@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import { getLocalizedUrl } from '@/lib/seo-utils';
 import { formatProductPrice } from '@/lib/pricing';
 import Image from 'next/image';
@@ -46,7 +46,8 @@ interface UpsellClientProps {
 }
 
 export default function UpsellClient({ initialEmail, sessionId }: UpsellClientProps) {
-  const { t, locale } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const [timeLeft, setTimeLeft] = useState(TIMER_DURATION);
   const [isLoading, setIsLoading] = useState(false);
   const [customerEmail, setCustomerEmail] = useState<string | null>(initialEmail || null);
@@ -207,15 +208,15 @@ export default function UpsellClient({ initialEmail, sessionId }: UpsellClientPr
         <div className="inline-flex items-center justify-center bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 text-white dark:text-gray-100 px-6 py-3 rounded-full text-lg md:text-xl font-bold mb-4 shadow-lg">
           <Clock className="w-6 h-6 mr-2" />
           {isExpired
-            ? (t.upsell?.offerExpired || 'Offer Expired')
-            : `${t.upsell?.offerExpiresIn || 'Offer expires in'}: ${formatTime(timeLeft)}`
+            ? (t('upsell.offerExpired') || 'Offer Expired')
+            : `${t('upsell.offerExpiresIn') || 'Offer expires in'}: ${formatTime(timeLeft)}`
           }
         </div>
         <h1 className="font-heading text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-50">
-          {t.upsell?.headline || 'Wait! One-Time Exclusive Offer'}
+          {t('upsell.headline') || 'Wait! One-Time Exclusive Offer'}
         </h1>
         <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300">
-          {t.upsell?.subheadline || 'Add autoship to your order and save 25%'}
+          {t('upsell.subheadline') || 'Add autoship to your order and save 25%'}
         </p>
       </div>
 
@@ -228,13 +229,13 @@ export default function UpsellClient({ initialEmail, sessionId }: UpsellClientPr
             <div className="relative bg-white dark:bg-gray-700 rounded-2xl p-6 shadow-xl">
               <Image
                 src="/optimized/60g-transparent.webp"
-                alt={t.upsell?.productSubtitle || 'Purrify 50g Autoship - 3 Month Supply'}
+                alt={t('upsell.productSubtitle') || 'Purrify 50g Autoship - 3 Month Supply'}
                 width={300}
                 height={300}
                 className="w-full h-auto object-contain"
               />
-              <div className="absolute top-2 right-2 bg-[#03E46A] text-gray-900 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold">
-                {t.upsell?.saveBadge || `SAVE ${savingsPercent}`}
+              <div className="absolute top-2 right-2 bg-[#03E46A] dark:bg-[#04D162] text-gray-900 dark:text-gray-900 px-3 py-1 rounded-full text-sm font-bold">
+                {t('upsell.saveBadge') || `SAVE ${savingsPercent}`}
               </div>
             </div>
           </div>
@@ -243,10 +244,10 @@ export default function UpsellClient({ initialEmail, sessionId }: UpsellClientPr
           <div className="space-y-6">
             <div>
               <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3 text-gray-900 dark:text-gray-50">
-                {t.upsell?.productTitle || 'Purrify 50g Autoship'}
+                {t('upsell.productTitle') || 'Purrify 50g Autoship'}
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">
-                {t.upsell?.productSubtitle || '3-Month Supply (3 × 50g bags)'}
+                {t('upsell.productSubtitle') || '3-Month Supply (3 × 50g bags)'}
               </p>
 
               <div className="space-y-3">
@@ -258,8 +259,8 @@ export default function UpsellClient({ initialEmail, sessionId }: UpsellClientPr
                     {originalPrice}
                   </span>
                 </div>
-                <div className="inline-flex items-center bg-[#03E46A]/10 dark:bg-[#03E46A]/20 text-[#03E46A] dark:text-[#03E46A] px-4 py-2 rounded-full text-sm font-semibold">
-                  {t.upsell?.youSave || 'You save'} {savings} ({savingsPercent})
+                <div className="inline-flex items-center bg-[#03E46A]/10 dark:bg-[#04D162]/20 text-[#03E46A] dark:text-[#04D162] px-4 py-2 rounded-full text-sm font-semibold">
+                  {t('upsell.youSave') || 'You save'} {savings} ({savingsPercent})
                 </div>
               </div>
             </div>
@@ -267,14 +268,14 @@ export default function UpsellClient({ initialEmail, sessionId }: UpsellClientPr
             {/* Benefits List */}
             <div className="space-y-3">
               {[
-                t.upsell?.benefit1 || 'Never run out - delivered every 3 months',
-                t.upsell?.benefit2 || 'Free shipping included (save $7.99)',
-                t.upsell?.benefit3 || 'Lock in this special price forever',
-                t.upsell?.benefit4 || 'Cancel or skip anytime (no commitments)',
-                t.upsell?.benefit5 || 'Automatic reminders before each shipment'
+                t('upsell.benefit1') || 'Never run out - delivered every 3 months',
+                t('upsell.benefit2') || 'Free shipping included (save $7.99)',
+                t('upsell.benefit3') || 'Lock in this special price forever',
+                t('upsell.benefit4') || 'Cancel or skip anytime (no commitments)',
+                t('upsell.benefit5') || 'Automatic reminders before each shipment'
               ].map((benefit, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  <Check className="w-6 h-6 text-[#03E46A] flex-shrink-0 mt-0.5" />
+                  <Check className="w-6 h-6 text-[#03E46A] dark:text-[#04D162] flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 dark:text-gray-300">{benefit}</span>
                 </div>
               ))}
@@ -292,10 +293,10 @@ export default function UpsellClient({ initialEmail, sessionId }: UpsellClientPr
           >
             <Package className="w-6 h-6 mr-2" />
             {isLoading
-              ? (t.upsell?.processing || 'Processing...')
+              ? (t('upsell.processing') || 'Processing...')
               : isExpired
-                ? (t.upsell?.offerExpired || 'Offer Expired')
-                : (t.upsell?.addToOrder || 'Yes! Add to My Order')
+                ? (t('upsell.offerExpired') || 'Offer Expired')
+                : (t('upsell.addToOrder') || 'Yes! Add to My Order')
             }
           </Button>
 
@@ -304,7 +305,7 @@ export default function UpsellClient({ initialEmail, sessionId }: UpsellClientPr
             disabled={isLoading}
             className="w-full text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 font-medium py-3 transition-colors"
           >
-            {t.upsell?.noThanks || 'No thanks, I prefer to pay full price later'}
+            {t('upsell.noThanks') || 'No thanks, I prefer to pay full price later'}
           </button>
         </div>
       </div>
@@ -314,30 +315,30 @@ export default function UpsellClient({ initialEmail, sessionId }: UpsellClientPr
         <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg text-center">
           <Zap className="w-12 h-12 text-[#5B2EFF] dark:text-[#3694FF] mx-auto mb-3" />
           <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
-            {t.upsell?.feature1Title || 'Instant Activation'}
+            {t('upsell.feature1Title') || 'Instant Activation'}
           </h3>
           <p className="text-gray-600 dark:text-gray-300 text-sm">
-            {t.upsell?.feature1Description || 'Your autoship starts immediately after this order'}
+            {t('upsell.feature1Description') || 'Your autoship starts immediately after this order'}
           </p>
         </div>
 
         <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg text-center">
-          <Shield className="w-12 h-12 text-[#03E46A] mx-auto mb-3" />
+          <Shield className="w-12 h-12 text-[#03E46A] dark:text-[#04D162] mx-auto mb-3" />
           <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
-            {t.upsell?.feature2Title || '100% Satisfaction'}
+            {t('upsell.feature2Title') || '100% Satisfaction'}
           </h3>
           <p className="text-gray-600 dark:text-gray-300 text-sm">
-            {t.upsell?.feature2Description || '30-day money-back guarantee on every shipment'}
+            {t('upsell.feature2Description') || '30-day money-back guarantee on every shipment'}
           </p>
         </div>
 
         <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg text-center">
           <Package className="w-12 h-12 text-[#FF3131] dark:text-[#FF5050] mx-auto mb-3" />
           <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-gray-50">
-            {t.upsell?.feature3Title || 'Flexible Control'}
+            {t('upsell.feature3Title') || 'Flexible Control'}
           </h3>
           <p className="text-gray-600 dark:text-gray-300 text-sm">
-            {t.upsell?.feature3Description || 'Skip, pause, or cancel online anytime'}
+            {t('upsell.feature3Description') || 'Skip, pause, or cancel online anytime'}
           </p>
         </div>
       </div>
@@ -345,41 +346,41 @@ export default function UpsellClient({ initialEmail, sessionId }: UpsellClientPr
       {/* Testimonial */}
       <div className="bg-gradient-to-r from-[#5B2EFF]/10 to-[#FF3131]/10 dark:from-[#3694FF]/10 dark:to-[#FF5050]/10 rounded-xl p-8 mb-8 border border-gray-200 dark:border-gray-700">
         <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-4 italic">
-          “{t.upsell?.testimonialText || 'I almost skipped the autoship offer, but I\'m so glad I didn\'t! It\'s one less thing to remember, and the savings add up. Plus, I never run out right when I need it most.'}”
+          “{t('upsell.testimonialText') || 'I almost skipped the autoship offer, but I\'m so glad I didn\'t! It\'s one less thing to remember, and the savings add up. Plus, I never run out right when I need it most.'}”
         </p>
         <p className="font-semibold text-gray-900 dark:text-gray-50">
-          {t.upsell?.testimonialAuthor || '— Sarah M., Toronto'}
+          {t('upsell.testimonialAuthor') || '— Sarah M., Toronto'}
         </p>
       </div>
 
       {/* FAQ Section */}
       <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg">
         <h3 className="font-heading text-2xl font-bold mb-6 text-center text-gray-900 dark:text-gray-50">
-          {t.upsell?.faqTitle || 'Common Questions'}
+          {t('upsell.faqTitle') || 'Common Questions'}
         </h3>
         <div className="space-y-4">
           <div>
             <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">
-              {t.upsell?.faq1Question || 'Can I cancel anytime?'}
+              {t('upsell.faq1Question') || 'Can I cancel anytime?'}
             </h4>
             <p className="text-gray-600 dark:text-gray-300">
-              {t.upsell?.faq1Answer || 'Absolutely! Cancel, skip, or modify your subscription anytime from your account dashboard. No fees, no hassles.'}
+              {t('upsell.faq1Answer') || 'Absolutely! Cancel, skip, or modify your subscription anytime from your account dashboard. No fees, no hassles.'}
             </p>
           </div>
           <div>
             <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">
-              {t.upsell?.faq2Question || 'When will I be charged?'}
+              {t('upsell.faq2Question') || 'When will I be charged?'}
             </h4>
             <p className="text-gray-600 dark:text-gray-300">
-              {t.upsell?.faq2Answer || 'You\'ll be charged today for this special offer. Your next shipment will be in 3 months, and you\'ll receive a reminder email 7 days before.'}
+              {t('upsell.faq2Answer') || 'You\'ll be charged today for this special offer. Your next shipment will be in 3 months, and you\'ll receive a reminder email 7 days before.'}
             </p>
           </div>
           <div>
             <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">
-              {t.upsell?.faq3Question || 'Is the price locked in?'}
+              {t('upsell.faq3Question') || 'Is the price locked in?'}
             </h4>
             <p className="text-gray-600 dark:text-gray-300">
-              {t.upsell?.faq3Answer || 'Yes! This special price is locked in for as long as you remain subscribed. You\'ll never pay more than this rate.'}
+              {t('upsell.faq3Answer') || 'Yes! This special price is locked in for as long as you remain subscribed. You\'ll never pay more than this rate.'}
             </p>
           </div>
         </div>
@@ -388,13 +389,13 @@ export default function UpsellClient({ initialEmail, sessionId }: UpsellClientPr
       {/* Bottom CTA */}
       <div className="mt-8 text-center">
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-          {t.upsell?.bottomNote || 'This one-time offer is only available immediately after your first purchase'}
+          {t('upsell.bottomNote') || 'This one-time offer is only available immediately after your first purchase'}
         </p>
         <Link
           href={getLocalizedUrl('/', locale)}
           className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 underline"
         >
-          {t.upsell?.returnHome || 'Return to homepage'}
+          {t('upsell.returnHome') || 'Return to homepage'}
         </Link>
       </div>
     </div>

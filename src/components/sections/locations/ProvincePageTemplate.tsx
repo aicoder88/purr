@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 
 import { getProvinceBySlug, getCitiesByProvince, getCityCountByProvince } from '@/lib/locations/provinces';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import { safeTrackEvent } from '@/lib/analytics';
 
 export interface ProvincePageTemplateProps {
@@ -12,7 +12,7 @@ export interface ProvincePageTemplateProps {
 }
 
 export const ProvincePageTemplate = ({ provinceSlug }: ProvincePageTemplateProps) => {
-  const { locale } = useTranslation();
+  const locale = useLocale();
   const province = getProvinceBySlug(provinceSlug);
   const cities = getCitiesByProvince(provinceSlug);
 

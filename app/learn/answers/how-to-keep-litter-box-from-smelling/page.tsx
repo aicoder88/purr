@@ -45,8 +45,8 @@ export default function QuestionPage() {
     <main className="min-h-screen bg-white dark:bg-gray-900">
       <header className="bg-[#1E4D6B] dark:bg-[#1E4D6B] py-6 px-4">
         <div className="max-w-3xl mx-auto flex items-center gap-4">
-          <Link 
-            href="/learn/cat-litter-answers" 
+          <Link
+            href="/learn/cat-litter-answers"
             className="text-white dark:text-white/80 dark:text-white dark:text-white/80 hover:text-white dark:text-white flex items-center gap-2 text-sm"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -80,7 +80,7 @@ export default function QuestionPage() {
             <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
               Your Odor-Prevention Routine
             </h2>
-            
+
             <div className="grid md:grid-cols-2 gap-6">
               {/* Daily Tasks */}
               <div className="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-6 border border-orange-200 dark:border-orange-800 dark:border-orange-700">
@@ -147,7 +147,7 @@ export default function QuestionPage() {
               </p>
               <Link
                 href="/products/"
-                className="inline-flex items-center justify-center px-6 py-3 bg-[#F7A41D] hover:bg-[#E09400] text-white dark:text-white font-semibold rounded-full transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 bg-[#F7A41D] dark:bg-[#FFA726] hover:bg-[#E09400] dark:hover:bg-[#FFA726]/90 text-white dark:text-gray-900 font-semibold rounded-full transition-colors"
               >
                 Get Purrify
               </Link>

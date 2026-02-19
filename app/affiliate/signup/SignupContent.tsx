@@ -4,10 +4,10 @@ import { useState, useRef } from 'react';
 import { Container } from '@/components/ui/container';
 import { ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function SignupContent() {
-    const { t } = useTranslation();
+    const t = useTranslations();
     const successMessageRef = useRef<HTMLDivElement>(null);
     const [formData, setFormData] = useState({
         name: '',
@@ -81,7 +81,7 @@ export default function SignupContent() {
     };
 
     // Handle missing translations gracefully - show error page instead of crashing
-    if (!t.affiliate) {
+    if (!t('affiliate')) {
         return (
             <div className="min-h-screen bg-white dark:bg-gray-950 flex items-center justify-center p-4">
                 <div className="max-w-md text-center">

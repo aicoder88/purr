@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import AffiliateLayout from '@/components/affiliate/AffiliateLayout';
 import { LinkGenerator } from '@/components/affiliate/LinkGenerator';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import { Copy, Check, ExternalLink, QrCode } from 'lucide-react';
 import Image from 'next/image';
 
@@ -120,7 +120,7 @@ function QRCodeCard({ affiliateCode, baseUrl }: { affiliateCode: string; baseUrl
 }
 
 export default function LinksContent() {
-    const { t } = useTranslation();
+    const t = useTranslations();
     const router = useRouter();
     const [data, setData] = useState<LinksData | null>(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -140,11 +140,11 @@ export default function LinksContent() {
             setData(data);
         } catch (err) {
             console.error('Failed to fetch links:', err);
-            setError(t.affiliateDashboard?.errors?.loadFailed || 'Failed to load links');
+            setError(t('affiliateDashboard.errors.loadFailed') || 'Failed to load links');
         } finally {
             setIsLoading(false);
         }
-    }, [t.affiliateDashboard?.errors?.loadFailed, router]);
+    }, [t('affiliateDashboard.errors.loadFailed'), router]);
 
     useEffect(() => {
         fetchLinks();

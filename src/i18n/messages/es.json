@@ -35,5 +35,40 @@
     "readTime": "min de lectura",
     "author": "Por",
     "publishedOn": "Publicado el"
+  },
+  "howItWorks": {
+    "simpleAs123": "Ridículamente Fácil de Usar",
+    "step1": {
+      "number": "01",
+      "title": "Abre la Bolsa",
+      "description": "Esa es la parte más difícil. En serio. Sin medir, sin tazones de mezcla, sin manual de instrucciones necesario."
+    },
+    "step2": {
+      "number": "02",
+      "title": "Esparce sobre la Arena Fresca",
+      "description": "Una capa ligera sobre la arena favorita de tu gato. Funciona con arcilla, cristales, aglomerante, natural — cualquiera que ya les guste."
+    },
+    "step3": {
+      "number": "03",
+      "title": "Mezcla y Disfruta la Limpieza",
+      "description": "Dale una suave revuelta. Ahora disfruta de 7 días sin pensar en la caja de arena. Tu nariz (y tus invitados) te lo agradecerán."
+    },
+    "nav": {
+      "carbonVsBakingSoda": "Carbón vs Bicarbonato",
+      "carbonVsBakingSodaDesc": "Descubre la ciencia detrás de por qué el carbón activado supera al bicarbonato para el control de olores."
+    }
+  },
+  "socialProofBadges": {
+    "trustedVerified": "Confiable y Verificado",
+    "findUsOn": "Encuéntranos En",
+    "viewOnPlatform": "Ver Purrify en {platform}",
+    "platforms": {
+      "trustpilot": "Trustpilot",
+      "googleBusiness": "Google Business",
+      "crunchbase": "Crunchbase",
+      "productHunt": "Product Hunt",
+      "yelp": "Yelp",
+      "wellfound": "Wellfound"
+    }
   }
 }

@@ -2,25 +2,50 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Check, MapPin, Truck, Leaf, Shield, Star, ChevronRight, Home } from 'lucide-react';
-import { defaultLocale } from '@/i18n/config';
+import { locales } from '@/i18n/config';
 import type { Currency } from '@/lib/geo/currency-detector';
-import { SITE_NAME } from '@/lib/constants';
+import { SITE_NAME, SITE_URL } from '@/lib/constants';
 import { buildLanguageAlternates, normalizeLocale, stripContext } from '@/lib/seo-utils';
 import { getProductPrice, formatProductPrice } from '@/lib/pricing';
+
 // Force static generation
 export const dynamic = 'force-static';
+
+interface CanadaPageProps {
+  params: Promise<{
+    locale: string;
+  }>;
+}
+
+// Generate static params for all supported locales
+export async function generateStaticParams() {
+  return locales.map((locale) => ({
+    locale,
+  }));
+}
+
 // Generate metadata for the Canada page
-export async function generateMetadata(): Promise<Metadata> {
-  const normalizedLocale = normalizeLocale(defaultLocale);
-  const pageTitle = 'Best Cat Litter Deodorizer in Canada | Made in Canada | Purrify';
-  const pageDescription = 'Looking for cat litter odor control in Canada? Purrify is proudly made in Canada with premium coconut shell activated carbon. Free shipping across Canada on orders over $35.';
-  const canonicalUrl = 'https://www.purrify.ca/canada/';
+export async function generateMetadata({ params }: CanadaPageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const normalizedLocale = normalizeLocale(locale);
+
+  const pageTitle = normalizedLocale === 'fr'
+    ? 'Meilleur désodorisant pour litière pour chats au Canada | Fabriqué au Canada | Purrify'
+    : 'Best Cat Litter Deodorizer in Canada | Made in Canada | Purrify';
+
+  const pageDescription = normalizedLocale === 'fr'
+    ? 'Vous cherchez un contrôle des odeurs de litière pour chats au Canada ? Purrify est fièrement fabriqué au Canada. Livraison gratuite au Canada sur les commandes de plus de 35 $.'
+    : 'Looking for cat litter odor control in Canada? Purrify is proudly made in Canada with premium coconut shell activated carbon. Free shipping across Canada on orders over $35.';
+
+  const canonicalUrl = normalizedLocale === 'en' ? `${SITE_URL}/canada/` : `${SITE_URL}/${normalizedLocale}/canada/`;
   const languageAlternates = buildLanguageAlternates('/canada');
+
   // Convert language alternates to Next.js format
   const alternates: Record<string, string> = {};
   languageAlternates.forEach((alt) => {
     alternates[alt.hrefLang] = alt.href;
   });
+
   return {
     title: pageTitle,
     description: pageDescription,
@@ -33,7 +58,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'activated carbon cat litter Canada',
       'natural cat litter deodorizer Canada',
     ],
-    metadataBase: new URL('https://www.purrify.ca'),
+    metadataBase: new URL(SITE_URL),
     alternates: {
       canonical: canonicalUrl,
       languages: alternates,
@@ -47,7 +72,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: SITE_NAME,
       images: [
         {
-          url: 'https://www.purrify.ca/images/products/purrify-standard-bag.png',
+          url: `${SITE_URL}/images/purrify-standard-bag.webp`,
           width: 1200,
           height: 630,
           alt: pageTitle,
@@ -60,7 +85,7 @@ export async function generateMetadata(): Promise<Metadata> {
       creator: '@purrifyhq',
       title: pageTitle,
       description: pageDescription,
-      images: ['/images/products/purrify-standard-bag.png'],
+      images: [`${SITE_URL}/images/purrify-standard-bag.webp`],
     },
     robots: {
       index: true,
@@ -74,12 +99,15 @@ export async function generateMetadata(): Promise<Metadata> {
     },
   };
 }
+
 // Async server component for the Canada page
-export default async function CanadaPage() {
+export default async function CanadaPage({ params }: CanadaPageProps) {
+  const { locale } = await params;
+  const normalizedLocale = normalizeLocale(locale);
   // Static generation with default CAD currency
   // Client-side detection can adjust if needed
   const currency: Currency = 'CAD';
-  const normalizedLocale = normalizeLocale(defaultLocale);
+
   // Format prices
   const trialPrice = formatProductPrice('trial', currency, normalizedLocale);
   const standardPrice = formatProductPrice('standard', currency, normalizedLocale);
@@ -140,9 +168,9 @@ export default async function CanadaPage() {
     '@type': 'LocalBusiness',
     name: 'Purrify',
     description: 'Canadian manufacturer of activated carbon cat litter deodorizer',
-    url: 'https://www.purrify.ca',
-    logo: 'https://www.purrify.ca/images/icon-512.png',
-    image: 'https://www.purrify.ca/images/products/purrify-standard-bag.png',
+    url: SITE_URL,
+    logo: `${SITE_URL}/images/Logos/purrify-logo.png`,
+    image: `${SITE_URL}/images/purrify-standard-bag.webp`,
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'CA',
@@ -164,13 +192,13 @@ export default async function CanadaPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://www.purrify.ca',
+        item: SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Canada',
-        item: 'https://www.purrify.ca/canada',
+        item: `${SITE_URL}/canada`,
       },
     ],
   };
@@ -218,7 +246,7 @@ export default async function CanadaPage() {
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link
                   href="/products/trial-size"
-                  className="inline-flex items-center justify-center gap-2 bg-[#FF3131] text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#E02828] transition-all shadow-xl"
+                  className="inline-flex items-center justify-center gap-2 bg-[#FF3131] dark:bg-[#FF5050] text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#E02828] dark:hover:bg-[#E02828]/90 transition-all shadow-xl"
                 >
                   Try for {trialPrice}
                 </Link>
@@ -243,7 +271,7 @@ export default async function CanadaPage() {
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/products/purrify-standard-bag.png"
+                  src="/images/purrify-standard-bag.webp"
                   alt="Purrify cat litter deodorizer - Made in Canada"
                   width={500}
                   height={500}

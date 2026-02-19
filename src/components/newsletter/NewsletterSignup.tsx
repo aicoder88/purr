@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { Mail, X, Gift, Sparkles, Bell, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import { createButtonClasses, createCardClasses, GRADIENTS, COLORS, TRANSITIONS } from '@/lib/theme-utils';
 import { LoadingSpinner, CheckIcon } from '@/lib/component-utils';
 
@@ -18,7 +18,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = React.memo(func
   discount = 10,
   className = ''
 }) {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
@@ -28,7 +28,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = React.memo(func
 
     if (!email || !email.includes('@')) {
       setStatus('error');
-      setErrorMessage(t.newsletter?.errorInvalidEmail || 'Please enter a valid email address');
+      setErrorMessage(t('newsletter.errorInvalidEmail') || 'Please enter a valid email address');
       return;
     }
 
@@ -53,7 +53,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = React.memo(func
       setTimeout(() => setStatus('idle'), 3000);
     } catch (err) {
       setStatus('error');
-      setErrorMessage(err instanceof Error ? err.message : (t.newsletter?.errorGeneric || 'Something went wrong. Please try again.'));
+      setErrorMessage(err instanceof Error ? err.message : (t('newsletter.errorGeneric') || 'Something went wrong. Please try again.'));
       setTimeout(() => setStatus('idle'), 3000);
     }
   }, [t, email]);
@@ -61,23 +61,23 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = React.memo(func
   const benefits = [
     {
       icon: Gift,
-      title: t.newsletter?.joinFamily?.benefits?.firstOrder || `${discount}% Off First Order`,
-      description: t.newsletter?.joinFamily?.benefits?.firstOrderDesc || 'Exclusive discount for new subscribers'
+      title: t('newsletter.joinFamily.benefits.firstOrder') || `${discount}% Off First Order`,
+      description: t('newsletter.joinFamily.benefits.firstOrderDesc') || 'Exclusive discount for new subscribers'
     },
     {
       icon: Sparkles,
-      title: t.newsletter?.joinFamily?.benefits?.catCareTips || 'Cat Care Tips',
-      description: t.newsletter?.joinFamily?.benefits?.catCareTipsDesc || 'Weekly expert advice and litter tips'
+      title: t('newsletter.joinFamily.benefits.catCareTips') || 'Cat Care Tips',
+      description: t('newsletter.joinFamily.benefits.catCareTipsDesc') || 'Weekly expert advice and litter tips'
     },
     {
       icon: Bell,
-      title: t.newsletter?.joinFamily?.benefits?.earlyAccess || 'Early Access',
-      description: t.newsletter?.joinFamily?.benefits?.earlyAccessDesc || 'Be first to know about new products'
+      title: t('newsletter.joinFamily.benefits.earlyAccess') || 'Early Access',
+      description: t('newsletter.joinFamily.benefits.earlyAccessDesc') || 'Be first to know about new products'
     },
     {
       icon: Users,
-      title: t.newsletter?.joinFamily?.benefits?.communityStories || 'Community Stories',
-      description: t.newsletter?.joinFamily?.benefits?.communityStoriesDesc || 'Success stories from other cat owners'
+      title: t('newsletter.joinFamily.benefits.communityStories') || 'Community Stories',
+      description: t('newsletter.joinFamily.benefits.communityStoriesDesc') || 'Success stories from other cat owners'
     }
   ];
 
@@ -100,10 +100,10 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = React.memo(func
               <Mail className="w-8 h-8 text-white dark:text-white" />
             </div>
             <h3 className={`text-2xl font-bold ${COLORS.text.primary} mb-2`}>
-              {(t.newsletter?.popup?.title || `Get {discount}% Off Your First Order!`).replace('{discount}', discount.toString())}
+              {(t('newsletter.popup.title') || `Get {discount}% Off Your First Order!`).replace('{discount}', discount.toString())}
             </h3>
             <p className={COLORS.text.tertiary}>
-              {t.newsletter?.popup?.description || ""}
+              {t('newsletter.popup.description')}
             </p>
           </div>
 
@@ -114,7 +114,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = React.memo(func
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder={t.newsletter?.joinFamily?.emailPlaceholder || ""}
+                placeholder={t('newsletter.joinFamily.emailPlaceholder')}
                 className={`w-full pl-10 pr-4 py-3 ${COLORS.border.input} rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${COLORS.surface.light} ${COLORS.text.primary}`}
                 disabled={status === 'loading'}
               />
@@ -128,7 +128,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = React.memo(func
               {status === 'loading' && <LoadingSpinner size="w-5 h-5" />}
               {status === 'success' && <CheckIcon size="w-5 h-5" />}
               <span className={status === 'loading' || status === 'success' ? 'ml-2' : ''}>
-                {status === 'success' ? (t.newsletter?.joinFamily?.welcomeMessage || 'Welcome to Purrify!') : (t.newsletter?.popup?.buttonText || `Get {discount}% Off Now`).replace('{discount}', discount.toString())}
+                {status === 'success' ? (t('newsletter.joinFamily.welcomeMessage') || 'Welcome to Purrify!') : (t('newsletter.popup.buttonText') || `Get {discount}% Off Now`).replace('{discount}', discount.toString())}
               </span>
             </Button>
 
@@ -138,7 +138,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = React.memo(func
           </form>
 
           <p className={`text-xs ${COLORS.text.muted} text-center mt-4`}>
-            {t.newsletter?.privacyText || ""}
+            {t('newsletter.privacyText')}
           </p>
         </div>
       </div>
@@ -154,10 +154,10 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = React.memo(func
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-center md:text-left dark:text-center dark:md:text-left">
             <h3 className={`text-lg font-semibold ${COLORS.text.primary} mb-1`}>
-              {t.newsletter?.footer?.title || ""}
+              {t('newsletter.footer.title')}
             </h3>
             <p className={`${COLORS.text.tertiary} text-sm dark:text-sm`}>
-              {t.newsletter?.footer?.description || ""}
+              {t('newsletter.footer.description')}
             </p>
           </div>
 
@@ -166,7 +166,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = React.memo(func
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder={t.newsletter?.footer?.placeholder || ""}
+              placeholder={t('newsletter.footer.placeholder')}
               className={`flex-1 md:w-64 px-4 py-2 ${COLORS.border.input} rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${COLORS.surface.light} ${COLORS.text.primary}`}
               disabled={status === 'loading'}
             />
@@ -177,7 +177,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = React.memo(func
             >
               {status === 'loading' && <LoadingSpinner size="w-4 h-4" />}
               {status === 'success' && <CheckIcon size="w-4 h-4" />}
-              {status === 'idle' && (t.newsletter?.footer?.buttonText || 'Subscribe')}
+              {status === 'idle' && (t('newsletter.footer.buttonText') || 'Subscribe')}
             </Button>
           </form>
         </div>
@@ -197,10 +197,10 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = React.memo(func
         <div className="text-center mb-6">
           <Mail className={`w-12 h-12 ${COLORS.text.purple} mx-auto mb-4`} />
           <h3 className={`text-xl font-bold ${COLORS.text.primary} mb-2`}>
-            {t.newsletter?.inline?.title || ""}
+            {t('newsletter.inline.title')}
           </h3>
           <p className={COLORS.text.tertiary}>
-            {t.newsletter?.inline?.description || ""}
+            {t('newsletter.inline.description')}
           </p>
         </div>
 
@@ -210,7 +210,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = React.memo(func
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder={t.newsletter?.joinFamily?.emailPlaceholder || ""}
+              placeholder={t('newsletter.joinFamily.emailPlaceholder')}
               className={`w-full px-4 py-3 ${COLORS.border.input} rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${COLORS.surface.light} ${COLORS.text.primary}`}
               disabled={status === 'loading'}
             />
@@ -224,7 +224,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = React.memo(func
             {status === 'loading' && <LoadingSpinner size="w-5 h-5" />}
             {status === 'success' && <CheckIcon size="w-5 h-5" />}
             <span className={status === 'loading' || status === 'success' ? 'ml-2' : ''}>
-              {status === 'success' ? (t.newsletter?.inline?.successText || 'Successfully Subscribed!') : (t.newsletter?.inline?.buttonText || 'Subscribe for Free')}
+              {status === 'success' ? (t('newsletter.inline.successText') || 'Successfully Subscribed!') : (t('newsletter.inline.buttonText') || 'Subscribe for Free')}
             </span>
           </Button>
 
@@ -246,10 +246,10 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = React.memo(func
       <div className={`${GRADIENTS.background.purpleToRed} p-6 text-white dark:text-white text-center`}>
         <Mail className="w-12 h-12 mx-auto mb-4 opacity-90" />
         <h2 className="font-heading text-2xl md:text-3xl font-bold mb-2">
-          {t.newsletter?.joinFamily?.title || 'Join the Purrify Family'}
+          {t('newsletter.joinFamily.title') || 'Join the Purrify Family'}
         </h2>
         <p className="text-lg opacity-90">
-          {t.newsletter?.joinFamily?.subtitle || `Get ${discount}% off your first order plus exclusive cat care tips`}
+          {t('newsletter.joinFamily.subtitle') || `Get ${discount}% off your first order plus exclusive cat care tips`}
         </p>
       </div>
 
@@ -285,7 +285,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = React.memo(func
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder={t.newsletter?.joinFamily?.emailPlaceholder || ""}
+              placeholder={t('newsletter.joinFamily.emailPlaceholder')}
               className={`w-full pl-10 pr-4 py-3 ${COLORS.border.input} rounded-lg focus:ring-2 focus:ring-[#5B2EFF] focus:border-transparent ${COLORS.surface.light} ${COLORS.text.primary}`}
               disabled={status === 'loading'}
             />
@@ -299,7 +299,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = React.memo(func
             {status === 'loading' && <LoadingSpinner size="w-5 h-5" />}
             {status === 'success' && <CheckIcon size="w-5 h-5" />}
             <span className={status === 'loading' || status === 'success' ? 'ml-2' : ''}>
-              {status === 'success' ? 'Welcome to Purrify!' : (t.newsletter?.joinFamily?.ctaButton || `Get ${discount}% Off Your First Order`)}
+              {status === 'success' ? 'Welcome to Purrify!' : (t('newsletter.joinFamily.ctaButton') || `Get ${discount}% Off Your First Order`)}
             </span>
           </Button>
 
@@ -310,12 +310,12 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = React.memo(func
 
         <div className="mt-4 text-center">
           <p className={`text-xs ${COLORS.text.muted}`}>
-            {t.newsletter?.joinFamily?.joinText || 'Join 1,000+ happy customers • No spam, unsubscribe anytime'}
+            {t('newsletter.joinFamily.joinText') || 'Join 1,000+ happy customers • No spam, unsubscribe anytime'}
           </p>
           <div className={`flex items-center justify-center space-x-4 mt-2 text-xs ${COLORS.text.muted}`}>
-            <span>{t.newsletter?.joinFamily?.features?.weeklyTips || '✓ Weekly tips'}</span>
-            <span>{t.newsletter?.joinFamily?.features?.exclusiveOffers || '✓ Exclusive offers'}</span>
-            <span>{t.newsletter?.joinFamily?.features?.earlyAccessProducts || '✓ Early access'}</span>
+            <span>{t('newsletter.joinFamily.features.weeklyTips') || '✓ Weekly tips'}</span>
+            <span>{t('newsletter.joinFamily.features.exclusiveOffers') || '✓ Exclusive offers'}</span>
+            <span>{t('newsletter.joinFamily.features.earlyAccessProducts') || '✓ Early access'}</span>
           </div>
         </div>
       </div>

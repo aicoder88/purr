@@ -3,12 +3,19 @@
 import Image from 'next/image';
 import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import { scrollToSection } from '@/lib/utils';
 
 export function RetailerHero() {
-  const { t, locale } = useTranslation();
-  const hero = t.retailers?.hero;
+  const t = useTranslations();
+  const locale = useLocale();
+  // Try to get hero data, fallback to empty object if not available
+  let hero: Record<string, any> = {};
+  try {
+    hero = t.raw('retailers.hero') as Record<string, any>;
+  } catch {
+    hero = {};
+  }
   const heroUiCopy =
     locale === 'fr'
       ? {

@@ -3,6 +3,7 @@
 import { Container } from '../../../src/components/ui/container';
 import { Button } from '../../../src/components/ui/button';
 import { useTranslation } from '../../../src/lib/translation-context';
+import { useLocale } from 'next-intl';
 import { useCurrency } from '../../../src/lib/currency-context';
 import { RelatedContent } from '../../../src/components/seo/RelatedContent';
 import { formatProductPrice } from '../../../src/lib/pricing';
@@ -414,7 +415,7 @@ const HOW_IT_WORKS_COPY: Record<SupportedLocale, HowItWorksCopy> = {
 const SCIENCE_ICONS = [Microscope, Zap, Shield, Leaf];
 
 export default function HowItWorksPageClient() {
-  const { locale } = useTranslation();
+  const locale = useLocale();
   const { currency } = useCurrency();
 
   const localePrefix = locale === 'en' ? '' : `/${locale}`;

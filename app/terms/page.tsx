@@ -6,7 +6,7 @@ import { Container } from '@/components/ui/container';
 import { CONTACT_INFO, SITE_NAME } from '@/lib/constants';
 import { generateJSONLD } from '@/lib/seo-utils';
 import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import { localizePath } from '@/lib/i18n/locale-path';
 
 type TermsSection = {
@@ -144,7 +144,8 @@ const TERMS_COPY: Record<'en' | 'fr', TermsCopy> = {
 };
 
 export default function TermsPage() {
-  const { locale, t } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale() as 'en' | 'fr';
   const language = locale === 'fr' ? locale : 'en';
   const copy = TERMS_COPY[language];
 
@@ -237,7 +238,7 @@ export default function TermsPage() {
                   {`${copy.contactAddressLabel}: ${CONTACT_INFO.address}`}
                 </p>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  {t.nav.termsOfService}
+                  {t('nav.termsOfService')}
                 </p>
               </div>
             </div>

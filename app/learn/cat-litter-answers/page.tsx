@@ -273,12 +273,12 @@ export default function CatLitterAnswersPage() {
       <section className="relative bg-[#1E4D6B] dark:bg-[#1E4D6B] py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-            <HelpCircle className="w-4 h-4 text-[#F7A41D]" />
+            <HelpCircle className="w-4 h-4 text-[#F7A41D] dark:text-[#FFA726]" />
             <span className="text-white/90 dark:text-white/90 text-sm font-medium">People Also Ask</span>
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white dark:text-white mb-6 leading-tight">
             Cat Litter Questions,<br />
-            <span className="text-[#F7A41D]">Expert Answers</span>
+            <span className="text-[#F7A41D] dark:text-[#FFA726]">Expert Answers</span>
           </h1>
           <p className="text-xl text-white/80 dark:text-white/80 max-w-2xl mx-auto">
             Real answers to the most searched cat litter questions.
@@ -310,7 +310,7 @@ export default function CatLitterAnswersPage() {
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">Content types:</p>
           <div className="flex flex-wrap gap-4 text-sm">
             <span className="flex items-center gap-2">
-              <span className="px-2 py-1 bg-[#F7A41D]/10 text-[#F7A41D] rounded text-xs font-medium">Quick Answer</span>
+              <span className="px-2 py-1 bg-[#F7A41D]/10 dark:bg-[#FFA726]/20 text-[#F7A41D] dark:text-[#FFA726] rounded text-xs font-medium">Quick Answer</span>
               <span className="text-gray-500 dark:text-gray-400">Fast facts & checklists (~2 min read)</span>
             </span>
             <span className="flex items-center gap-2">
@@ -326,7 +326,7 @@ export default function CatLitterAnswersPage() {
           {categories.map((category) => (
             <div key={category} id={category.toLowerCase().replace(/\s+/g, '-')} className="mb-16">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 flex items-center gap-3">
-                <span className="w-1 h-8 bg-[#F7A41D] rounded-full"></span>
+                <span className="w-1 h-8 bg-[#F7A41D] dark:bg-[#FFA726] rounded-full"></span>
                 {category}
               </h2>
               <div className="grid md:grid-cols-2 gap-6">
@@ -336,13 +336,13 @@ export default function CatLitterAnswersPage() {
                     <Link
                       key={q.slug}
                       href={`/learn/answers/${q.slug}`}
-                      className="group bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm hover:shadow-xl border border-gray-100 dark:border-gray-700 hover:border-[#F7A41D]/30 transition-all duration-300"
+                      className="group bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm hover:shadow-xl border border-gray-100 dark:border-gray-700 hover:border-[#F7A41D]/30 dark:hover:border-[#FFA726]/30 transition-all duration-300"
                     >
                       <div className="flex items-start justify-between gap-3 mb-2">
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-[#1E4D6B] dark:group-hover:text-[#F7A41D] leading-snug">
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-[#1E4D6B] dark:group-hover:text-[#FFA726] leading-snug">
                           {q.question}
                         </h3>
-                        <span className="flex-shrink-0 px-2 py-1 bg-[#F7A41D]/10 text-[#F7A41D] text-xs font-medium rounded">
+                        <span className="flex-shrink-0 px-2 py-1 bg-[#F7A41D]/10 dark:bg-[#FFA726]/20 text-[#F7A41D] dark:text-[#FFA726] text-xs font-medium rounded">
                           Quick Answer
                         </span>
                       </div>
@@ -350,7 +350,7 @@ export default function CatLitterAnswersPage() {
                         {q.preview}
                       </p>
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center text-[#F7A41D] font-medium text-sm">
+                        <div className="flex items-center text-[#F7A41D] dark:text-[#FFA726] font-medium text-sm">
                           Read answer
                           <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                         </div>
@@ -375,7 +375,7 @@ export default function CatLitterAnswersPage() {
           </p>
           <Link
             href="/products/"
-            className="inline-flex items-center justify-center px-8 py-4 bg-[#F7A41D] hover:bg-[#E09400] text-white font-semibold rounded-full transition-colors"
+            className="inline-flex items-center justify-center px-8 py-4 bg-[#F7A41D] dark:bg-[#FFA726] hover:bg-[#E09400] dark:hover:bg-[#FFA726]/90 text-white dark:text-gray-900 font-semibold rounded-full transition-colors"
           >
             Get Your Free Trial
           </Link>

@@ -76,8 +76,8 @@ export default function InvestorContent() {
                   key={tab.id}
                   onClick={() => handleTabClick(tab.id)}
                   className={`px-3 py-1.5 text-sm font-medium transition-all duration-300 rounded-lg ${activeTab === tab.id
-                      ? 'bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white shadow-lg transform scale-105'
-                      : 'text-gray-600 dark:text-gray-300 hover:text-[#333333] dark:hover:text-white hover:bg-white dark:hover:bg-gray-700/50'
+                    ? 'bg-gradient-to-r from-[#FF3131] dark:from-[#FF5050] to-[#5B2EFF] dark:to-[#818CF8] text-white shadow-lg transform scale-105'
+                    : 'text-gray-600 dark:text-gray-300 hover:text-[#333333] dark:hover:text-white hover:bg-white dark:hover:bg-gray-700/50'
                     }`}
                 >
                   {tab.label}
@@ -95,7 +95,7 @@ export default function InvestorContent() {
             <div className="flex items-center space-x-3">
               <button
                 onClick={() => navigateTab('prev')}
-                className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-[#FF3131] dark:from-[#FF5050] to-[#5B2EFF] dark:to-[#818CF8] text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
               >
                 <span className="text-sm mr-1">←</span>
                 Previous
@@ -113,7 +113,7 @@ export default function InvestorContent() {
 
               <button
                 onClick={() => navigateTab('next')}
-                className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-[#5B2EFF] to-[#FF3131] text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                className="flex items-center px-4 py-2 text-sm bg-gradient-to-r from-[#5B2EFF] dark:from-[#818CF8] to-[#FF3131] dark:to-[#FF5050] text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
               >
                 Next
                 <span className="text-sm ml-1">→</span>
@@ -158,9 +158,9 @@ export default function InvestorContent() {
                       <ProgressRing percentage={75} label="Target Progress" color="#FF3131" size={80} className="mt-4" />
                     </div>
                     <div className="relative">
-                      <div className="text-3xl font-bold text-[#5B2EFF] mb-2 drop-shadow-sm">$1M</div>
+                      <div className="text-3xl font-bold text-[#5B2EFF] dark:text-[#818CF8] mb-2 drop-shadow-sm">$1M</div>
                       <div className="text-sm text-gray-600 dark:text-gray-300">Pre-Money Valuation</div>
-                      <ProgressRing percentage={100} label="Validated" color="#5B2EFF" size={80} className="mt-4" />
+                      <ProgressRing percentage={100} label="Validated" color="#5B2EFF" /* dark: #818CF8 */ size={80} className="mt-4" />
                     </div>
                     <div className="relative">
                       <div className="text-3xl font-bold text-[#FF3131] mb-2 drop-shadow-sm">16</div>
@@ -180,7 +180,7 @@ export default function InvestorContent() {
                       Purrify addresses the #1 pain point of urban cat owners: persistent litter box odor. Our premium activated carbon additive provides molecular-level odor elimination, creating a new product category in the $160M Canadian pet care market.
                     </p>
 
-                    <h3 className="font-heading text-xl font-semibold text-[#5B2EFF] mb-4 drop-shadow-sm">Competitive Advantages</h3>
+                    <h3 className="font-heading text-xl font-semibold text-[#5B2EFF] dark:text-[#818CF8] mb-4 drop-shadow-sm">Competitive Advantages</h3>
                     <ul className="space-y-2 text-gray-600 dark:text-gray-200">
                       <li className="flex items-start">
                         <span className="text-[#FF3131] mr-2 font-bold">✓</span>
@@ -218,7 +218,7 @@ export default function InvestorContent() {
                         <div className="text-xs text-gray-500 dark:text-gray-400">Zero Paid Ads</div>
                       </div>
                       <div className="bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-xl p-4 border border-white/30 dark:border-gray-600/50">
-                        <div className="text-2xl font-bold text-[#5B2EFF] drop-shadow-sm">18M</div>
+                        <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#818CF8] drop-shadow-sm">18M</div>
                         <div className="text-sm text-gray-600 dark:text-gray-300">To EBITDA+</div>
                         <div className="text-xs text-gray-500 dark:text-gray-400">Months</div>
                       </div>
@@ -270,7 +270,7 @@ export default function InvestorContent() {
                     <BarChart
                       data={[
                         { label: 'Cat Owners (Millions)', value: 52, color: 'bg-gradient-to-r from-[#FF3131] to-[#FF5050]' },
-                        { label: 'Market Size ($M)', value: 160, color: 'bg-gradient-to-r from-[#5B2EFF] to-[#3694FF]' },
+                        { label: 'Market Size ($M)', value: 160, color: 'bg-gradient-to-r from-[#5B2EFF] dark:from-[#818CF8] to-[#3694FF]' },
                         { label: 'Online CAGR (%)', value: 6.2, color: 'bg-gradient-to-r from-[#2ed573] to-[#7bed9f]' }
                       ]}
                       title="Canadian Market Overview"
@@ -283,7 +283,7 @@ export default function InvestorContent() {
                         <div className="text-xs text-gray-600 dark:text-gray-300">Cat Owners</div>
                       </div>
                       <div className="text-center bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-xl p-3 border border-white/30 dark:border-gray-600/50">
-                        <div className="text-2xl font-bold text-[#5B2EFF] drop-shadow-sm">$160M</div>
+                        <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#818CF8] drop-shadow-sm">$160M</div>
                         <div className="text-xs text-gray-600 dark:text-gray-300">TAM</div>
                       </div>
                       <div className="text-center bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-xl p-3 border border-white/30 dark:border-gray-600/50">
@@ -306,7 +306,7 @@ export default function InvestorContent() {
                         </div>
                       </div>
                       <div className="flex items-center p-3 bg-white dark:bg-gray-900/40 rounded-lg backdrop-blur-sm">
-                        <span className="text-[#5B2EFF] text-xl mr-3 font-bold">✓</span>
+                        <span className="text-[#5B2EFF] dark:text-[#818CF8] text-xl mr-3 font-bold">✓</span>
                         <div>
                           <span className="font-medium text-gray-800 dark:text-white">Premium Shift</span>
                           <p className="text-sm text-gray-600 dark:text-gray-300">Medium-high price segment dominates (35.2%)</p>
@@ -348,7 +348,7 @@ export default function InvestorContent() {
                       Premium coconut shell activated carbon that adsorbs odor molecules at the molecular level. Unlike competitors who mask odors with chemicals, we eliminate them completely through proven scientific principles.
                     </p>
 
-                    <h4 className="text-lg font-semibold text-[#5B2EFF] mb-3">Key Benefits</h4>
+                    <h4 className="text-lg font-semibold text-[#5B2EFF] dark:text-[#818CF8] mb-3">Key Benefits</h4>
                     <div className="space-y-3">
                       <div className="flex items-start">
                         <span className="text-[#FF3131] text-xl mr-3">✓</span>
@@ -385,7 +385,7 @@ export default function InvestorContent() {
                     <BarChart
                       data={[
                         { label: 'Trial Size (12g)', value: 28, color: 'bg-gradient-to-r from-[#FF3131] to-[#FF5050]' },
-                        { label: 'Medium (50g)', value: 47, color: 'bg-gradient-to-r from-[#5B2EFF] to-[#3694FF]' },
+                        { label: 'Medium (50g)', value: 47, color: 'bg-gradient-to-r from-[#5B2EFF] dark:from-[#818CF8] to-[#3694FF]' },
                         { label: 'Large (120g)', value: 40, color: 'bg-gradient-to-r from-[#2ed573] to-[#7bed9f]' }
                       ]}
                       title="Product Line Margins (%)"
@@ -403,7 +403,7 @@ export default function InvestorContent() {
                       <div className="bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-xl p-4 border border-white/30 dark:border-gray-600/50">
                         <div className="flex justify-between items-center mb-2">
                           <h4 className="font-semibold text-gray-800 dark:text-white">Medium (50g)</h4>
-                          <span className="text-[#5B2EFF] font-bold drop-shadow-sm">47% margin</span>
+                          <span className="text-[#5B2EFF] dark:text-[#818CF8] font-bold drop-shadow-sm">47% margin</span>
                         </div>
                         <p className="text-sm text-gray-600 dark:text-gray-300">Most popular, ideal for single-cat homes</p>
                       </div>
@@ -427,7 +427,7 @@ export default function InvestorContent() {
                     </div>
                     <div>
                       <div className="text-lg font-bold text-[#5B2EFF] mb-2">VS</div>
-                      <div className="w-8 h-8 mx-auto bg-[#5B2EFF] rounded-full flex items-center justify-center">
+                      <div className="w-8 h-8 mx-auto bg-[#5B2EFF] dark:bg-[#818CF8] rounded-full flex items-center justify-center">
                         <span className="text-white dark:text-white text-xl">⚡</span>
                       </div>
                     </div>
@@ -456,7 +456,7 @@ export default function InvestorContent() {
                   </div>
                   <div className="text-center bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-xl p-6 border border-white/30 dark:border-gray-600/50">
                     <ProgressRing percentage={25} label="Reorder Rate" color="#5B2EFF" size={60} />
-                    <div className="text-4xl font-bold text-[#5B2EFF] mb-2 drop-shadow-sm mt-4">4</div>
+                    <div className="text-4xl font-bold text-[#5B2EFF] dark:text-[#818CF8] mb-2 drop-shadow-sm mt-4">4</div>
                     <div className="text-sm text-gray-600 dark:text-gray-300">Stores Reordered</div>
                     <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">This Week</div>
                   </div>
@@ -468,7 +468,7 @@ export default function InvestorContent() {
                   </div>
                   <div className="text-center bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-xl p-6 border border-white/30 dark:border-gray-600/50">
                     <ProgressRing percentage={68} label="Product Mix" color="#5B2EFF" size={60} />
-                    <div className="text-4xl font-bold text-[#5B2EFF] mb-2 drop-shadow-sm mt-4">68%</div>
+                    <div className="text-4xl font-bold text-[#5B2EFF] dark:text-[#818CF8] mb-2 drop-shadow-sm mt-4">68%</div>
                     <div className="text-sm text-gray-600 dark:text-gray-300">Choose Medium</div>
                     <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Highest Margin</div>
                   </div>
@@ -478,7 +478,7 @@ export default function InvestorContent() {
                   <BarChart
                     data={[
                       { label: 'Stores Onboarded', value: 16, color: 'bg-gradient-to-r from-[#FF3131] to-[#FF5050]' },
-                      { label: 'Reorders This Week', value: 4, color: 'bg-gradient-to-r from-[#5B2EFF] to-[#3694FF]' },
+                      { label: 'Reorders This Week', value: 4, color: 'bg-gradient-to-r from-[#5B2EFF] dark:from-[#818CF8] to-[#3694FF]' },
                       { label: 'Revenue ($K)', value: 3, color: 'bg-gradient-to-r from-[#2ed573] to-[#7bed9f]' }
                     ]}
                     title="Current Traction Metrics"
@@ -493,7 +493,7 @@ export default function InvestorContent() {
                         <p className="italic mb-2 text-gray-700 dark:text-gray-200">&quot;My customers keep asking when you&apos;re restocking Purrify. They say it&apos;s the first thing that actually works!&quot;</p>
                         <div className="text-sm text-gray-600 dark:text-gray-400">— Chico Pet Store, Montreal</div>
                       </div>
-                      <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-4 border-l-4 border-[#5B2EFF]">
+                      <div className="bg-[#E0EFC7]/20 dark:bg-gray-700/50 rounded-xl p-4 border-l-4 border-[#5B2EFF] dark:border-[#818CF8]">
                         <p className="italic mb-2 text-gray-700 dark:text-gray-200">&quot;Finally, a product that eliminates odor instead of just covering it up. My apartment stays fresh for days.&quot;</p>
                         <div className="text-sm text-gray-600 dark:text-gray-400">— Verified Customer Review</div>
                       </div>
@@ -501,7 +501,7 @@ export default function InvestorContent() {
                   </div>
 
                   <div>
-                    <h3 className="font-heading text-xl font-semibold text-[#5B2EFF] mb-4">Foundation Built</h3>
+                    <h3 className="font-heading text-xl font-semibold text-[#5B2EFF] dark:text-[#818CF8] mb-4">Foundation Built</h3>
                     <div className="space-y-3">
                       <div className="flex items-center">
                         <span className="text-[#FF3131] text-xl mr-3">✓</span>
@@ -579,7 +579,7 @@ export default function InvestorContent() {
                     <PieChart
                       data={[
                         { label: 'Gross Profit', value: 47, color: '#FF3131' },
-                        { label: 'Raw Materials', value: 26.7, color: '#5B2EFF' },
+                        { label: 'Raw Materials', value: 26.7, color: '#5B2EFF' /* dark: #818CF8 */ },
                         { label: 'Packaging', value: 6.2, color: '#2ed573' },
                         { label: 'Labor', value: 5.3, color: '#FF6B47' },
                         { label: 'Fixed Costs', value: 5.8, color: '#3694FF' },
@@ -589,11 +589,11 @@ export default function InvestorContent() {
                       className="mb-6"
                     />
 
-                    <h3 className="font-heading text-xl font-semibold text-[#5B2EFF] mb-4 drop-shadow-sm">Scale Economics</h3>
+                    <h3 className="font-heading text-xl font-semibold text-[#5B2EFF] dark:text-[#818CF8] mb-4 drop-shadow-sm">Scale Economics</h3>
                     <div className="space-y-4">
-                      <div className="bg-[#5B2EFF]/10 dark:bg-purple-900/20 rounded-xl p-4">
+                      <div className="bg-[#5B2EFF]/10 dark:bg-[#818CF8]/20 rounded-xl p-4">
                         <h4 className="font-semibold mb-2 text-gray-800 dark:text-white">Current Scale (1K bags/month)</h4>
-                        <div className="text-2xl font-bold text-[#5B2EFF] mb-1">47%</div>
+                        <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#818CF8] mb-1">47%</div>
                         <p className="text-sm text-gray-600 dark:text-gray-300">Gross Margin</p>
                       </div>
                       <div className="bg-[#FF3131]/10 dark:bg-red-900/20 rounded-xl p-4">
@@ -623,7 +623,7 @@ export default function InvestorContent() {
                     </div>
                     <div>
                       <div className="text-lg font-bold mb-1 text-gray-800 dark:text-white">2026</div>
-                      <div className="text-2xl font-bold text-[#5B2EFF] mb-1">$2.4M</div>
+                      <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#818CF8] mb-1">$2.4M</div>
                       <div className="text-sm text-gray-600 dark:text-gray-400">Revenue</div>
                     </div>
                     <div>
@@ -633,7 +633,7 @@ export default function InvestorContent() {
                     </div>
                     <div>
                       <div className="text-lg font-bold mb-1 text-gray-800 dark:text-white">2028</div>
-                      <div className="text-2xl font-bold text-[#5B2EFF] mb-1">$24M</div>
+                      <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#818CF8] mb-1">$24M</div>
                       <div className="text-sm text-gray-600 dark:text-gray-400">Target Exit</div>
                     </div>
                   </div>
@@ -679,7 +679,7 @@ export default function InvestorContent() {
                     <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-[#5B2EFF] to-[#3694FF] rounded-full flex items-center justify-center">
                       <span className="text-white dark:text-white font-bold text-2xl">S</span>
                     </div>
-                    <h3 className="font-heading text-xl font-bold text-[#5B2EFF] mb-2">Sage Dean - COO</h3>
+                    <h3 className="font-heading text-xl font-bold text-[#5B2EFF] dark:text-[#818CF8] mb-2">Sage Dean - COO</h3>
                     <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">The Operations Machine</p>
                     <div className="text-left space-y-2 text-sm">
                       <div className="flex items-start">
@@ -695,8 +695,8 @@ export default function InvestorContent() {
                         <span className="text-gray-700 dark:text-gray-200">Backend systems architect</span>
                       </div>
                     </div>
-                    <div className="mt-4 p-3 bg-[#5B2EFF]/10 dark:bg-purple-900/20 rounded-lg">
-                      <div className="text-xs font-semibold text-[#5B2EFF]">SUPERPOWER</div>
+                    <div className="mt-4 p-3 bg-[#5B2EFF]/10 dark:bg-[#818CF8]/20 rounded-lg">
+                      <div className="text-xs font-semibold text-[#5B2EFF] dark:text-[#818CF8]">SUPERPOWER</div>
                       <div className="text-sm text-gray-600 dark:text-gray-300">Makes impossible things happen</div>
                     </div>
                   </div>
@@ -740,7 +740,7 @@ export default function InvestorContent() {
                       </div>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-[#5B2EFF] mb-3">Medium Term (2026-2028)</h4>
+                      <h4 className="font-semibold text-[#5B2EFF] dark:text-[#818CF8] mb-3">Medium Term (2026-2028)</h4>
                       <div className="space-y-2 text-sm">
                         <div className="text-gray-600 dark:text-gray-300">• Amazon US expansion + Chewy onboarding</div>
                         <div className="text-gray-600 dark:text-gray-300">• Major chain discussions and rollout</div>
@@ -765,7 +765,7 @@ export default function InvestorContent() {
                       <div className="text-center">
                         <div className="text-4xl font-bold text-[#FF3131] mb-2">$50K</div>
                         <div className="text-lg text-gray-600 dark:text-gray-400 mb-4">Current Round</div>
-                        <div className="text-2xl font-bold text-[#5B2EFF] mb-2">$1M Pre-Money</div>
+                        <div className="text-2xl font-bold text-[#5B2EFF] dark:text-[#818CF8] mb-2">$1M Pre-Money</div>
                         <div className="text-lg text-gray-600 dark:text-gray-400">SAFE Agreement</div>
                       </div>
                     </div>
@@ -776,9 +776,9 @@ export default function InvestorContent() {
                         <span className="text-gray-700 dark:text-gray-200">Marketing & Growth</span>
                         <span className="font-bold">65% ($32.5K)</span>
                       </div>
-                      <div className="flex justify-between items-center p-3 bg-[#5B2EFF]/10 dark:bg-purple-900/20 rounded-lg">
+                      <div className="flex justify-between items-center p-3 bg-[#5B2EFF]/10 dark:bg-[#818CF8]/20 rounded-lg">
                         <span className="text-gray-700 dark:text-gray-200">Inventory Scale-up</span>
-                        <span className="font-bold">20% ($10K)</span>
+                        <span className="font-bold text-gray-800 dark:text-white">20% ($10K)</span>
                       </div>
                       <div className="flex justify-between items-center p-3 bg-[#E0EFC7]/30 dark:bg-gray-700/50 rounded-lg">
                         <span className="text-gray-700 dark:text-gray-200">Working Capital</span>
@@ -791,7 +791,7 @@ export default function InvestorContent() {
                     <PieChart
                       data={[
                         { label: 'Marketing & Growth', value: 65, color: '#FF3131' },
-                        { label: 'Inventory Scale-up', value: 20, color: '#5B2EFF' },
+                        { label: 'Inventory Scale-up', value: 20, color: '#5B2EFF' /* dark: #818CF8 */ },
                         { label: 'Working Capital', value: 15, color: '#2ed573' }
                       ]}
                       title="Use of Funds Breakdown"

@@ -208,9 +208,9 @@ export default function CaseStudiesPage() {
             {/* Breadcrumb */}
             <nav className="mb-8">
               <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
-                <li><Link href="/" className="hover:text-[#FF3131]">Home</Link></li>
+                <li><Link href="/" className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">Home</Link></li>
                 <li>/</li>
-                <li className="text-[#FF3131]">Case Studies</li>
+                <li className="text-[#FF3131] dark:text-[#FF5050]">Case Studies</li>
               </ol>
             </nav>
 
@@ -230,19 +230,19 @@ export default function CaseStudiesPage() {
               {/* Quick Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-[#FF3131] mb-2">95%</div>
+                  <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-2">95%</div>
                   <div className="text-sm text-gray-600 dark:text-gray-300">Average Odor Reduction</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-[#FF3131] mb-2">24hrs</div>
+                  <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-2">24hrs</div>
                   <div className="text-sm text-gray-600 dark:text-gray-300">Time to See Results</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-[#FF3131] mb-2">100%</div>
+                  <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-2">100%</div>
                   <div className="text-sm text-gray-600 dark:text-gray-300">Customer Satisfaction</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-[#FF3131] mb-2">7+</div>
+                  <div className="text-3xl font-bold text-[#FF3131] dark:text-[#FF5050] mb-2">7+</div>
                   <div className="text-sm text-gray-600 dark:text-gray-300">Cats per Study</div>
                 </div>
               </div>
@@ -361,7 +361,7 @@ export default function CaseStudiesPage() {
                     </div>
 
                     {/* Quote */}
-                    <div className="bg-[#FF3131]/5 dark:bg-[#FF3131]/10 border-l-4 border-[#FF3131] p-6 mb-6">
+                    <div className="bg-[#FF3131]/5 dark:bg-[#311010]/20 border-l-4 border-[#FF3131] dark:border-[#FF5050] p-6 mb-6">
                       <blockquote className="text-gray-800 dark:text-gray-100 italic text-lg mb-3">
                         &ldquo;{study.quote}&rdquo;
                       </blockquote>
@@ -370,7 +370,7 @@ export default function CaseStudiesPage() {
 
                     {/* Outcome */}
                     <div className="flex items-start">
-                      <TrendingUp className="h-6 w-6 text-[#FF3131] mr-3 mt-1 flex-shrink-0" />
+                      <TrendingUp className="h-6 w-6 text-[#FF3131] dark:text-[#FF5050] mr-3 mt-1 flex-shrink-0" />
                       <div>
                         <h4 className="font-semibold text-gray-900 dark:text-gray-50 mb-2">Long-term Outcome</h4>
                         <p className="text-gray-700 dark:text-gray-200">{study.outcome}</p>
@@ -393,14 +393,14 @@ export default function CaseStudiesPage() {
                 <div className="space-x-4">
                   <Link
                     href="/products/"
-                    className="inline-flex items-center bg-[#FF3131] text-white dark:text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/90 transition-colors"
+                    className="inline-flex items-center bg-[#FF3131] dark:bg-[#FF5050] text-white dark:text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/90 dark:hover:bg-[#FF5050]/90 transition-colors"
                   >
                     Shop Purrify
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                   <Link
                     href="/free"
-                    className="inline-block border border-[#FF3131] text-[#FF3131] dark:text-[#FF4D4D] px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/5 transition-colors"
+                    className="inline-block border border-[#FF3131] dark:border-[#FF5050] text-[#FF3131] dark:text-[#FF5050] px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/5 dark:hover:bg-[#FF5050]/10 transition-colors"
                   >
                     Try Free Sample
                   </Link>
@@ -413,17 +413,17 @@ export default function CaseStudiesPage() {
               <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">More Customer Stories</h3>
               <div className="grid md:grid-cols-3 gap-6">
                 <Link href="/reviews" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
-                  <Users className="h-8 w-8 text-[#FF3131] mx-auto mb-3" />
+                  <Users className="h-8 w-8 text-[#FF3131] dark:text-[#FF5050] mx-auto mb-3" />
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Customer Reviews</h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">Customer feedback and how-to resources</p>
                 </Link>
                 <Link href="/reviews" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
-                  <CheckCircle className="h-8 w-8 text-[#FF3131] mx-auto mb-3" />
+                  <CheckCircle className="h-8 w-8 text-[#FF3131] dark:text-[#FF5050] mx-auto mb-3" />
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Video Testimonials</h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">Watch real customers share their experiences</p>
                 </Link>
                 <Link href="/blog/activated-carbon-vs-baking-soda-comparison" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
-                  <TrendingUp className="h-8 w-8 text-[#FF3131] mx-auto mb-3" />
+                  <TrendingUp className="h-8 w-8 text-[#FF3131] dark:text-[#FF5050] mx-auto mb-3" />
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Product Comparison</h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">See how Purrify outperforms competitors</p>
                 </Link>

@@ -1,5 +1,5 @@
 'use client';
-import {  CONTACT_INFO } from '@/lib/constants';
+import { CONTACT_INFO } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { Printer, Check } from 'lucide-react';
@@ -13,7 +13,7 @@ export default function SellSheetClientPage() {
       <div className="print:hidden fixed top-4 right-4 z-50 flex gap-2">
         <Button
           onClick={handlePrint}
-          className="bg-gradient-to-r from-[#10B981] to-[#3694FF] hover:from-[#059669] hover:to-[#2563EB] text-white dark:text-white font-bold shadow-xl"
+          className="bg-gradient-to-r from-[#10B981] dark:from-[#34D399] to-[#3694FF] dark:to-[#60A5FA] hover:from-[#059669] dark:hover:from-[#34D399]/90 hover:to-[#2563EB] dark:hover:to-[#60A5FA]/90 text-white dark:text-gray-900 font-bold shadow-xl"
         >
           <Printer className="w-5 h-5 mr-2" />
           Print / Save as PDF
@@ -30,7 +30,7 @@ export default function SellSheetClientPage() {
       <main className="min-h-screen bg-white dark:bg-gray-900 print:bg-white">
         <div className="max-w-[8.5in] mx-auto p-8 print:p-4">
           {/* Header */}
-          <header className="flex justify-between items-start mb-8 pb-6 border-b-4 border-[#10B981]">
+          <header className="flex justify-between items-start mb-8 pb-6 border-b-4 border-[#10B981] dark:border-[#34D399]">
             <div>
               <Image
                 src="/optimized/purrify-logo.webp"
@@ -39,137 +39,137 @@ export default function SellSheetClientPage() {
                 height={180}
                 className="h-16 w-auto mb-2"
               />
-              <p className="text-sm text-gray-600 dark:text-gray-600">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 Activated Carbon Cat Litter Additive
               </p>
             </div>
             <div className="text-right">
               <p className="text-lg font-bold text-brand-green-700 dark:text-brand-green">B2B Partner Program</p>
-              <p className="text-sm text-gray-600 dark:text-gray-600">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 {CONTACT_INFO.email}
               </p>
-              <p className="text-sm text-gray-600 dark:text-gray-600">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 {CONTACT_INFO.phone}
               </p>
-              <p className="text-sm text-gray-600 dark:text-gray-600">purrify.ca</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">purrify.ca</p>
             </div>
           </header>
           {/* Value Proposition */}
           <section className="mb-8">
-            <h2 className="text-2xl font-black text-gray-900 dark:text-gray-900 mb-4 text-brand-green-700 dark:text-brand-green">
+            <h2 className="text-2xl font-black text-gray-900 dark:text-white mb-4 text-brand-green-700 dark:text-brand-green">
               The Natural Solution to Litter Box Odor
             </h2>
-            <p className="text-gray-700 dark:text-gray-700 mb-4">
+            <p className="text-gray-700 dark:text-gray-300 mb-4">
               Purrify is a premium activated carbon litter additive made from 100%
               natural coconut shells. Unlike scented products that mask odors,
               Purrify uses molecular adsorption to eliminate ammonia and other
               odor compounds at the source.
             </p>
             <div className="grid grid-cols-4 gap-4 text-center">
-              <div className="bg-[#10B981]/10 rounded-lg p-3">
+              <div className="bg-[#10B981]/10 dark:bg-[#34D399]/20 rounded-lg p-3">
                 <p className="text-2xl font-black text-brand-green-700 dark:text-brand-green">100%</p>
-                <p className="text-xs text-gray-600 dark:text-gray-600">Natural</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Natural</p>
               </div>
-              <div className="bg-[#3694FF]/10 rounded-lg p-3">
-                <p className="text-2xl font-black text-[#3694FF]">7+</p>
-                <p className="text-xs text-gray-600 dark:text-gray-600">
+              <div className="bg-[#3694FF]/10 dark:bg-[#60A5FA]/20 rounded-lg p-3">
+                <p className="text-2xl font-black text-[#3694FF] dark:text-[#60A5FA]">7+</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">
                   Days Protection
                 </p>
               </div>
-              <div className="bg-[#F59E0B]/10 rounded-lg p-3">
-                <p className="text-2xl font-black text-[#F59E0B]">Carbon</p>
-                <p className="text-xs text-gray-600 dark:text-gray-600">
+              <div className="bg-[#F59E0B]/10 dark:bg-[#FBBF24]/20 rounded-lg p-3">
+                <p className="text-2xl font-black text-[#F59E0B] dark:text-[#FBBF24]">Carbon</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">
                   Activated
                 </p>
               </div>
-              <div className="bg-[#EC4899]/10 rounded-lg p-3">
-                <p className="text-2xl font-black text-[#EC4899]">Zero</p>
-                <p className="text-xs text-gray-600 dark:text-gray-600">Chemicals</p>
+              <div className="bg-[#EC4899]/10 dark:bg-[#F472B6]/20 rounded-lg p-3">
+                <p className="text-2xl font-black text-[#EC4899] dark:text-[#F472B6]">Zero</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Chemicals</p>
               </div>
             </div>
           </section>
           {/* Product Line */}
           <section className="mb-8">
-            <h3 className="text-xl font-black text-gray-900 dark:text-gray-900 mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
+            <h3 className="text-xl font-black text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
               Product Line & Wholesale Pricing
             </h3>
             <div className="overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
               <table className="w-full text-sm">
                 <thead className="bg-gray-100 dark:bg-gray-800">
                   <tr>
-                    <th className="text-left p-3 font-bold text-gray-900 dark:text-gray-900">
+                    <th className="text-left p-3 font-bold text-gray-900 dark:text-white">
                       Product
                     </th>
-                    <th className="text-center p-3 font-bold text-gray-900 dark:text-gray-900">
+                    <th className="text-center p-3 font-bold text-gray-900 dark:text-white">
                       Size
                     </th>
-                    <th className="text-center p-3 font-bold text-gray-900 dark:text-gray-900">
+                    <th className="text-center p-3 font-bold text-gray-900 dark:text-white">
                       MSRP
                     </th>
-                    <th className="text-center p-3 font-bold text-gray-900 dark:text-gray-900">
+                    <th className="text-center p-3 font-bold text-gray-900 dark:text-white">
                       Wholesale
                     </th>
-                    <th className="text-center p-3 font-bold text-gray-900 dark:text-gray-900">
+                    <th className="text-center p-3 font-bold text-gray-900 dark:text-white">
                       Margin
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-t border-gray-200 dark:border-gray-700">
-                    <td className="p-3 text-gray-700 dark:text-gray-700">
+                    <td className="p-3 text-gray-700 dark:text-gray-300">
                       Trial Size
                     </td>
-                    <td className="p-3 text-center text-gray-700 dark:text-gray-700">
+                    <td className="p-3 text-center text-gray-700 dark:text-gray-300">
                       12g
                     </td>
-                    <td className="p-3 text-center text-gray-700 dark:text-gray-700">
+                    <td className="p-3 text-center text-gray-700 dark:text-gray-300">
                       $4.99
                     </td>
                     <td className="p-3 text-center font-bold text-brand-green-700 dark:text-brand-green">
                       $2.99
                     </td>
-                    <td className="p-3 text-center text-gray-700 dark:text-gray-700">
+                    <td className="p-3 text-center text-gray-700 dark:text-gray-300">
                       40%
                     </td>
                   </tr>
-                  <tr className="border-t border-gray-200 dark:border-gray-700 bg-[#10B981]/5">
-                    <td className="p-3 text-gray-700 dark:text-gray-700 font-bold">
+                  <tr className="border-t border-gray-200 dark:border-gray-700 bg-[#10B981]/5 dark:bg-[#34D399]/10">
+                    <td className="p-3 text-gray-700 dark:text-gray-300 font-bold">
                       Standard Size ★
                     </td>
-                    <td className="p-3 text-center text-gray-700 dark:text-gray-700">
+                    <td className="p-3 text-center text-gray-700 dark:text-gray-300">
                       50g
                     </td>
-                    <td className="p-3 text-center text-gray-700 dark:text-gray-700">
+                    <td className="p-3 text-center text-gray-700 dark:text-gray-300">
                       $14.99
                     </td>
                     <td className="p-3 text-center font-bold text-brand-green-700 dark:text-brand-green">
                       $8.99
                     </td>
-                    <td className="p-3 text-center text-gray-700 dark:text-gray-700">
+                    <td className="p-3 text-center text-gray-700 dark:text-gray-300">
                       40%
                     </td>
                   </tr>
                   <tr className="border-t border-gray-200 dark:border-gray-700">
-                    <td className="p-3 text-gray-700 dark:text-gray-700">
+                    <td className="p-3 text-gray-700 dark:text-gray-300">
                       Family Pack
                     </td>
-                    <td className="p-3 text-center text-gray-700 dark:text-gray-700">
+                    <td className="p-3 text-center text-gray-700 dark:text-gray-300">
                       120g
                     </td>
-                    <td className="p-3 text-center text-gray-700 dark:text-gray-700">
+                    <td className="p-3 text-center text-gray-700 dark:text-gray-300">
                       $29.99
                     </td>
                     <td className="p-3 text-center font-bold text-brand-green-700 dark:text-brand-green">
                       $17.99
                     </td>
-                    <td className="p-3 text-center text-gray-700 dark:text-gray-700">
+                    <td className="p-3 text-center text-gray-700 dark:text-gray-300">
                       40%
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
               ★ Best seller - recommended starter SKU for new partners
             </p>
           </section>
@@ -177,7 +177,7 @@ export default function SellSheetClientPage() {
           <div className="grid grid-cols-2 gap-8 mb-8">
             {/* Key Benefits */}
             <section>
-              <h3 className="text-lg font-black text-gray-900 dark:text-gray-900 mb-3 border-b border-gray-200 dark:border-gray-700 pb-2">
+              <h3 className="text-lg font-black text-gray-900 dark:text-white mb-3 border-b border-gray-200 dark:border-gray-700 pb-2">
                 Why Customers Love Purrify
               </h3>
               <ul className="space-y-2">
@@ -191,7 +191,7 @@ export default function SellSheetClientPage() {
                 ].map((benefit, i) => (
                   <li key={i} className="flex items-start text-sm">
                     <Check className="w-4 h-4 text-brand-green-700 dark:text-brand-green mr-2 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700 dark:text-gray-700">
+                    <span className="text-gray-700 dark:text-gray-300">
                       {benefit}
                     </span>
                   </li>
@@ -216,7 +216,7 @@ export default function SellSheetClientPage() {
                     <span className="font-bold text-gray-900 dark:text-gray-900">
                       {partner.type}
                     </span>
-                    <span className="text-gray-500 dark:text-gray-500">
+                    <span className="text-gray-500 dark:text-gray-400">
                       {' '}
                       - {partner.desc}
                     </span>
@@ -226,7 +226,7 @@ export default function SellSheetClientPage() {
             </section>
           </div>
           {/* Partnership Benefits */}
-          <section className="mb-8 bg-gradient-to-r from-[#10B981]/10 to-[#3694FF]/10 rounded-lg p-6">
+          <section className="mb-8 bg-gradient-to-r from-[#10B981]/10 dark:from-[#34D399]/20 to-[#3694FF]/10 dark:to-[#60A5FA]/20 rounded-lg p-6">
             <h3 className="text-lg font-black text-gray-900 dark:text-gray-900 mb-4">
               Partnership Benefits
             </h3>
@@ -240,7 +240,7 @@ export default function SellSheetClientPage() {
                 </ul>
               </div>
               <div>
-                <p className="font-bold text-[#3694FF] mb-1">
+                <p className="font-bold text-[#3694FF] dark:text-[#60A5FA] mb-1">
                   Professional Partner
                 </p>
                 <ul className="text-xs text-gray-700 dark:text-gray-700 space-y-1">
@@ -250,7 +250,7 @@ export default function SellSheetClientPage() {
                 </ul>
               </div>
               <div>
-                <p className="font-bold text-[#F59E0B] mb-1">Enterprise</p>
+                <p className="font-bold text-[#F59E0B] dark:text-[#FBBF24] mb-1">Enterprise</p>
                 <ul className="text-xs text-gray-700 dark:text-gray-700 space-y-1">
                   <li>• 30%+ volume discounts</li>
                   <li>• Custom packaging</li>

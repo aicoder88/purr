@@ -2,7 +2,7 @@ import { ReactNode, useState } from 'react';
 import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useTranslation } from '@/lib/translation-context';
+import { useTranslations, useLocale } from 'next-intl';
 import {
   LayoutDashboard,
   Link as LinkIcon,
@@ -23,7 +23,8 @@ interface AffiliateLayoutProps {
 }
 
 export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
-  const { t, locale } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   const { data: session } = useSession();
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -37,12 +38,12 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
 
   const navigation = [
     {
-      name: t.affiliateDashboard?.dashboard || 'Dashboard',
+      name: t('affiliateDashboard.dashboard') || 'Dashboard',
       href: '/affiliate/dashboard',
       icon: LayoutDashboard,
     },
     {
-      name: t.affiliateDashboard?.stats?.totalClicks ? 'Links' : 'Links',
+      name: t('affiliateDashboard.stats.totalClicks') ? 'Links' : 'Links',
       href: '/affiliate/dashboard/links',
       icon: LinkIcon,
     },
@@ -52,17 +53,17 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
       icon: BarChart3,
     },
     {
-      name: t.affiliateDashboard?.assets?.title || 'Assets',
+      name: t('affiliateDashboard.assets.title') || 'Assets',
       href: '/affiliate/dashboard/assets',
       icon: Image,
     },
     {
-      name: t.affiliateDashboard?.payouts || 'Payouts',
+      name: t('affiliateDashboard.payouts') || 'Payouts',
       href: '/affiliate/dashboard/payouts',
       icon: DollarSign,
     },
     {
-      name: t.affiliateDashboard?.settings || 'Settings',
+      name: t('affiliateDashboard.settings') || 'Settings',
       href: '/affiliate/dashboard/settings',
       icon: Settings,
     },
@@ -135,7 +136,7 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
                 className="w-full flex items-center px-3 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               >
                 <LogOut className="w-5 h-5 mr-3" />
-                {t.affiliateDashboard?.logout || 'Sign Out'}
+                {t('affiliateDashboard.logout') || 'Sign Out'}
               </button>
             </nav>
           </div>
@@ -160,7 +161,7 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
           {/* Affiliate Code */}
           <div className="px-4 py-4 border-b border-gray-200 dark:border-gray-700">
             <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">
-              {t.affiliateDashboard?.overview?.yourCode || 'Your Code'}
+              {t('affiliateDashboard.overview.yourCode') || 'Your Code'}
             </p>
             <button
               onClick={copyCode}
@@ -229,7 +230,7 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
                 className="flex-1 flex items-center justify-center px-3 py-2 text-xs text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
               >
                 <LogOut className="w-3 h-3 mr-1" />
-                {t.affiliateDashboard?.logout || 'Sign Out'}
+                {t('affiliateDashboard.logout') || 'Sign Out'}
               </button>
             </div>
           </div>
