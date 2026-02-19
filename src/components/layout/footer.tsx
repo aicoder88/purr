@@ -428,24 +428,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/learn/science"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300 flex items-center gap-1"
-                  >
-                    <Microscope className="w-3 h-3" />
-                    {t('footerNav.scienceHub') || "Research Citations"}
-                  </Link>
-                </li>
-                <li>
-                  <Link prefetch={false}
-                    href="/learn/faq"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  >
-                    {t('footerNav.catLitterAnswers') || "Cat Litter Q&A"}
-                  </Link>
-                </li>
-                <li>
-                  <Link prefetch={false}
-                    href="/blog/activated-carbon-vs-baking-soda-comparison"
+                    href={`${localePrefix}/blog/activated-carbon-vs-baking-soda-comparison`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('footerNav.carbonVsBakingSoda') || "Carbon vs Baking Soda"}
@@ -469,7 +452,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/blog/how-to-neutralize-ammonia-cat-litter"
+                    href={`${localePrefix}/blog/how-to-neutralize-ammonia-cat-litter`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('footerNav.ammoniaSolutions') || "Ammonia Smell Control"}
@@ -477,7 +460,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/blog/best-litter-odor-remover-small-apartments"
+                    href={`${localePrefix}/blog/best-litter-odor-remover-small-apartments`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('nav.apartmentLiving') || "Apartment Living"}
@@ -485,7 +468,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/blog/how-to-eliminate-cat-litter-odor"
+                    href={`${localePrefix}/blog/how-to-eliminate-cat-litter-odor`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('nav.litterBoxOdor') || "Litter Box Odor"}
@@ -493,7 +476,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/blog/best-cat-litter-multiple-cats-odor-control"
+                    href={`${localePrefix}/blog/best-cat-litter-multiple-cats-odor-control`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('nav.multipleCats') || "Multiple Cats"}
@@ -501,7 +484,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/blog/best-natural-cat-litter-odor-control"
+                    href={`${localePrefix}/blog/best-natural-cat-litter-odor-control`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('nav.naturalAdditive') || "Natural Additive"}
@@ -509,7 +492,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/blog/best-cat-litter-multiple-cats-odor-control"
+                    href={`${localePrefix}/blog/best-cat-litter-senior-cats`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('nav.seniorCats') || "Senior Cats"}
@@ -517,18 +500,10 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/tools/cat-litter-calculator"
+                    href={`${localePrefix}/tools/cat-litter-calculator`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('footerNav.litterCalculator') || "Litter Calculator"}
-                  </Link>
-                </li>
-                <li>
-                  <Link prefetch={false}
-                    href="/learn/faq"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  >
-                    {t('footerNav.catLitterAnswers') || "Cat Litter Q&A"}
                   </Link>
                 </li>
               </ul>
@@ -541,7 +516,7 @@ export function Footer() {
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
                   <Link prefetch={false}
-                    href="/blog/house-smells-like-cat-litter-solutions"
+                    href={`${localePrefix}/blog/house-smells-like-cat-litter-solutions`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('footerNav.houseSmells')}
@@ -549,7 +524,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/blog/multi-cat-litter-deodorizer-guide"
+                    href={`${localePrefix}/blog/multi-cat-litter-deodorizer-guide`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('footerNav.multiCatGuide')}
@@ -557,7 +532,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/blog/tried-everything-cat-litter-smell-solutions"
+                    href={`${localePrefix}/blog/tried-everything-cat-litter-smell-solutions`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('footerNav.triedEverything')}
@@ -565,7 +540,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/blog/most-powerful-odor-absorber"
+                    href={`${localePrefix}/blog/most-powerful-odor-absorber`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('footerNav.powerfulAbsorber')}
@@ -573,7 +548,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/blog/best-litter-odor-remover-small-apartments"
+                    href={`${localePrefix}/blog/best-litter-odor-remover-small-apartments`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('footerNav.smallApartments')}
@@ -621,7 +596,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/retailer/portal/login"
+                    href={`${localePrefix}/retailer/portal/login`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('footerNav.retailerPortal') || "Retailer Portal"}
@@ -653,7 +628,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/b2b"
+                    href={`${localePrefix}/b2b`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('footerNav.b2bInquiry') || "B2B Inquiry"}
@@ -661,7 +636,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/invest"
+                    href={`${localePrefix}/invest`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('footerNav.invest') || "Investors"}
@@ -669,7 +644,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/affiliate"
+                    href={`${localePrefix}/affiliate`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('footerNav.affiliateProgram')}
@@ -677,7 +652,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/results"
+                    href={`${localePrefix}/results`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('footerNav.results') || "Success Stories"}
@@ -685,7 +660,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/case-studies"
+                    href={`${localePrefix}/case-studies`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('footerNav.caseStudies') || "Case Studies"}
@@ -693,7 +668,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/fun"
+                    href={`${localePrefix}/fun`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('footerNav.fun') || "Fun & Games"}
@@ -701,7 +676,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/viral"
+                    href={`${localePrefix}/viral`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('footerNav.viral') || "Viral"}
@@ -724,7 +699,7 @@ export function Footer() {
               <ul className="space-y-2 text-sm dark:text-sm">
                 <li>
                   <Link prefetch={false}
-                    href="/locations"
+                    href={`${localePrefix}/locations`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {t('footerNav.allLocations') || "All Locations"}
@@ -732,15 +707,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/canada"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  >
-                    {t('footerNav.canada') || "Canada Wide"}
-                  </Link>
-                </li>
-                <li>
-                  <Link prefetch={false}
-                    href="/locations/province/british-columbia"
+                    href={`${localePrefix}/locations/province/british-columbia`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {copy.regions.britishColumbia}
@@ -748,7 +715,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/locations/province/alberta"
+                    href={`${localePrefix}/locations/province/alberta`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {copy.regions.alberta}
@@ -756,7 +723,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/locations/province/ontario"
+                    href={`${localePrefix}/locations/province/ontario`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {copy.regions.ontario}
@@ -764,34 +731,10 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href="/locations/province/quebec"
+                    href={`${localePrefix}/locations/province/quebec`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >
                     {copy.regions.quebec}
-                  </Link>
-                </li>
-                <li>
-                  <Link prefetch={false}
-                    href="/locations/province/atlantic"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  >
-                    {copy.regions.atlanticCanada}
-                  </Link>
-                </li>
-                <li>
-                  <Link prefetch={false}
-                    href="/locations/province/prairies"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  >
-                    {copy.regions.prairies}
-                  </Link>
-                </li>
-                <li>
-                  <Link prefetch={false}
-                    href="/locations/province/north"
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  >
-                    {copy.regions.north}
                   </Link>
                 </li>
               </ul>
@@ -851,7 +794,7 @@ export function Footer() {
                 {t('nav.termsOfService')}
               </Link>
               <Link prefetch={false}
-                href="/sitemap.xml"
+                href={`${localePrefix}/sitemap.xml`}
                 className="text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
               >
                 {t('footerNav.sitemap') || "Sitemap"}

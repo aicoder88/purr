@@ -20,12 +20,45 @@ interface BlogPostPageProps {
 
 export async function generateStaticParams() {
   const store = new ContentStore();
+  const slugs = new Set<string>();
+
+  // Try to get slugs from ContentStore (filesystem)
   try {
     const posts = await store.getAllPosts(LOCALE, false);
-    return posts.map((post) => ({ slug: post.slug }));
+    posts.forEach((post) => slugs.add(post.slug));
   } catch {
-    return [];
+    // ContentStore failed, continue with fallback
   }
+
+  // Fallback: Add slugs from sampleBlogPosts to ensure critical pages are generated
+  // This ensures pages linked in the menu are always available
+  try {
+    sampleBlogPosts.forEach((post) => {
+      const slug = post.link.replace(/^\/blog\//, '').replace(/\/$/, '');
+      if (slug) slugs.add(slug);
+    });
+  } catch {
+    // sampleBlogPosts not available
+  }
+
+  // Critical menu-linked pages that MUST be generated
+  const criticalSlugs = [
+    'how-to-eliminate-cat-litter-odor',
+    'how-to-neutralize-ammonia-cat-litter',
+    'best-litter-odor-remover-small-apartments',
+    'best-cat-litter-multiple-cats-odor-control',
+    'best-natural-cat-litter-odor-control',
+    'activated-carbon-litter-additive-benefits',
+    'activated-carbon-vs-baking-soda-comparison',
+    'how-to-use-cat-litter-deodorizer',
+    'house-smells-like-cat-litter-solutions',
+    'multi-cat-litter-deodorizer-guide',
+    'tried-everything-cat-litter-smell-solutions',
+    'most-powerful-odor-absorber',
+  ];
+  criticalSlugs.forEach((slug) => slugs.add(slug));
+
+  return Array.from(slugs).map((slug) => ({ slug }));
 }
 
 interface BlogPost {
