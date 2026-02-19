@@ -194,7 +194,7 @@ module.exports = {
     '/documents',
 
     // === NON-CANONICAL PAGES - Fix for Ahrefs "Non-canonical page in sitemap" ===
-    // Note: /es/opiniones is a valid page with its own canonical - NOT excluded
+    // Note: /es/opiniones redirects to /products/ and is excluded in transform()
 
     // === OLD PROVINCE ABBREVIATION URLS (Redirect to /province/full-name) ===
     '/locations/ab',
@@ -459,12 +459,6 @@ module.exports = {
     // Stores/Retailers
     {
       loc: '/stores/',
-      changefreq: 'weekly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/fr/stores/',
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date().toISOString(),

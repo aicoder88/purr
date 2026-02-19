@@ -7,9 +7,9 @@ const AUTH_ROUTE_PREFIXES = ['/admin', '/customer', '/affiliate', '/retailer'];
 
 const COMMERCIAL_DYNAMIC_ROUTES = ['/products', '/learn', '/try-free', '/reviews'];
 
-const BLOG_ROUTE_REGEX = /^\/(?:en|fr|zh|es)?\/?blog(?:\/.*)?$/;
+const BLOG_ROUTE_REGEX = /^\/(?:en|fr)?\/?blog(?:\/.*)?$/;
 
-const LOCALE_OPTIONAL_PREFIX = /^(?:\/(?:en|fr|zh|es))(\/.*)$/;
+const LOCALE_OPTIONAL_PREFIX = /^(?:\/(?:en|fr))(\/.*)$/;
 
 function normalizeRoutePath(pathname: string): string {
   if (!pathname || pathname === '/') {

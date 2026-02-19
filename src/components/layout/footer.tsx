@@ -12,7 +12,6 @@ import {
   Youtube,
   Facebook,
   ExternalLink,
-  Microscope,
 } from "lucide-react";
 import { SOCIAL_LINKS } from "@/lib/constants";
 
@@ -794,7 +793,7 @@ export function Footer() {
                 {t('nav.termsOfService')}
               </Link>
               <Link prefetch={false}
-                href={`${localePrefix}/sitemap.xml`}
+                href="/sitemap.xml"
                 className="text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
               >
                 {t('footerNav.sitemap') || "Sitemap"}

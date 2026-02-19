@@ -47,7 +47,7 @@ class SitemapGenerator {
 
     // Add multilingual alternates if enabled - using domain-based i18n
     if (this.config.includeAlternates && !url.alternates) {
-      if (!normalizedPath.startsWith('/fr/') && !normalizedPath.startsWith('/zh/')) {
+      if (!normalizedPath.startsWith('/fr/')) {
         fullUrl.alternates = buildLanguageAlternates(normalizedPath === '' ? '/' : normalizedPath);
       }
     }

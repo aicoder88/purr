@@ -9,8 +9,7 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': `${SITE_URL}/tools/cat-litter-calculator/`,
       'fr-CA': `${SITE_URL}/fr/tools/cat-litter-calculator/`,
-      'zh-CN': `${SITE_URL}/zh/tools/cat-litter-calculator/`,
-      'es': `${SITE_URL}/es/tools/cat-litter-calculator/`,
+      'en-US': `${SITE_URL}/tools/cat-litter-calculator/`,
       'x-default': `${SITE_URL}/tools/cat-litter-calculator/`,
     },
   },

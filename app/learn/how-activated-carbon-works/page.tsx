@@ -13,8 +13,8 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/how-activated-carbon-works',
       'fr-CA': 'https://www.purrify.ca/fr/learn/how-activated-carbon-works',
-      'en-US': 'https://www.purrify.ca/es/learn/how-activated-carbon-works',
-      'x-default': 'https://www.purrify.ca/es/learn/how-activated-carbon-works',
+      'en-US': 'https://www.purrify.ca/learn/how-activated-carbon-works',
+      'x-default': 'https://www.purrify.ca/learn/how-activated-carbon-works',
     },
   },
   openGraph: {

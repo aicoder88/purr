@@ -23,7 +23,7 @@ export function CurrencyProvider({
   // Memoize formatPrice function
   const formatPrice = useMemo(() => {
     return (price: number, locale?: string): string => {
-      const resolvedLocale = locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : (locale ?? 'en-CA');
+      const resolvedLocale = locale === 'fr' ? 'fr-CA' : (locale ?? 'en-CA');
 
       const formatter = new Intl.NumberFormat(resolvedLocale, {
         style: 'currency',

@@ -130,7 +130,7 @@ export function BlogPreview() {
             asChild
             className="bg-gradient-to-r from-[#03E46A] to-[#5B2EFF] dark:from-[#5B2EFF] dark:to-[#03E46A] hover:from-[#03E46A]/90 hover:to-[#5B2EFF] dark:hover:from-[#5B2EFF]/90 dark:hover:to-[#03E46A] text-white dark:text-gray-100 font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0"
           >
-            <Link href={typeof window !== 'undefined' && window.location.pathname.startsWith('/fr') ? '/fr/blog' : typeof window !== 'undefined' && window.location.pathname.startsWith('/es') ? '/es/blog' : typeof window !== 'undefined' && window.location.pathname.startsWith('/zh') ? '/zh/blog' : '/blog'}>
+            <Link href={typeof window !== 'undefined' && window.location.pathname.startsWith('/fr') ? '/fr/blog' : '/blog'}>
               {t.blogSection.viewAllArticles}
             </Link>
           </Button>

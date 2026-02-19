@@ -18,8 +18,6 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': `${SITE_URL}/blog/`,
       'fr-CA': `${SITE_URL}/fr/blog/`,
-      'zh-CN': `${SITE_URL}/zh/blog/`,
-      'es-US': `${SITE_URL}/es/blog/`,
       'en-US': `${SITE_URL}/blog/`,
       'x-default': `${SITE_URL}/blog/`,
     },

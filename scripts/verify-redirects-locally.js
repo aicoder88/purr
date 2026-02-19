@@ -1,9 +1,10 @@
 const { REDIRECTS } = require('../config/redirects');
 
 const TEST_CASES = [
-    { path: '/products/standard', expectedDest: '/products/' },
-    { path: '/products/family-pack', expectedDest: '/products/' },
-    { path: '/products/trial-size', expectedDest: '/products/' },
+    { path: '/products/standard', expectedDest: null }, // Canonical page should remain indexable
+    { path: '/products/family-pack', expectedDest: null }, // Canonical page should remain indexable
+    { path: '/products/trial-size', expectedDest: null }, // Canonical page should remain indexable
+    { path: '/es/opiniones', expectedDest: '/products/' }, // Specific ES route should bypass /es/:path* catchall
     { path: '/retailers', expectedDest: null }, // Should NOT match any rule
     { path: '/blog/how-to-eliminate-cat-litter-odor', expectedDest: null }, // Should NOT match (removed self-loop)
 ];

@@ -244,7 +244,7 @@ export async function proxy(request: NextRequest) {
       const redirectUrl = request.nextUrl.clone();
       redirectUrl.pathname = pathWithoutLocale;
 
-      const redirectResponse = NextResponse.redirect(redirectUrl);
+      const redirectResponse = NextResponse.redirect(redirectUrl, 308);
       persistLocale(redirectResponse, pathLocale);
       applySecurityHeaders(redirectResponse);
       applyRouteCachePolicy(redirectResponse, pathname);

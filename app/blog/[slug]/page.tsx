@@ -158,8 +158,6 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       languages: {
         'en-CA': `${SITE_URL}/blog/${slug}/`,
         'fr-CA': `${SITE_URL}/fr/blog/${slug}/`,
-        'zh-CN': `${SITE_URL}/zh/blog/${slug}/`,
-        'es-US': `${SITE_URL}/es/blog/${slug}/`,
         'en-US': `${SITE_URL}/blog/${slug}/`,
         'x-default': `${SITE_URL}/blog/${slug}/`,
       },

@@ -19,8 +19,8 @@ export const metadata: Metadata = {
     languages: {
       'en-CA': 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter',
       'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/how-to-neutralize-ammonia-cat-litter',
-      'en-US': 'https://www.purrify.ca/es/learn/solutions/how-to-neutralize-ammonia-cat-litter',
-      'x-default': 'https://www.purrify.ca/es/learn/solutions/how-to-neutralize-ammonia-cat-litter',
+      'en-US': 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter',
+      'x-default': 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter',
     },
   },
   openGraph: {
