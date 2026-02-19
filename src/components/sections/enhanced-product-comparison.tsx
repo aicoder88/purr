@@ -4,7 +4,9 @@ import Link from 'next/link';
 
 import { useTranslations, useLocale } from "next-intl";
 import { useCurrency } from "@/lib/currency-context";
-import { CheckCircle, Star, Award, ChevronRight, Clock, Users, MapPin, Sparkles } from 'lucide-react';
+import { CheckCircle, ChevronRight, MapPin } from 'lucide-react';
+import { IconMoneyBack, IconCustomerLove } from '@/components/icons/custom-trust-icons';
+import { IconLongLasting, IconAnyLitter } from '@/components/icons/custom-benefit-icons';
 import Image from 'next/image';
 import { formatProductPrice } from '@/lib/pricing';
 import { getPaymentLink } from '@/lib/payment-links';
@@ -206,24 +208,24 @@ export function EnhancedProductComparison() {
               >
                 {/* Popular Badge */}
                 {product.badge?.type === 'popular' && (
-                  <div className="absolute top-4 right-4 bg-green-500 dark:bg-green-500 text-white dark:text-white px-3 py-1 rounded-full text-sm font-bold flex items-center z-10">
-                    <Star className="w-4 h-4 mr-1" />
+                  <div className="absolute top-4 right-4 bg-green-500 dark:bg-green-500 text-white dark:text-white px-3 py-1 rounded-full text-sm font-bold flex items-center shadow-md z-10">
+                    <IconCustomerLove className="w-4 h-4 mr-1" />
                     {product.badge.label}
                   </div>
                 )}
 
                 {/* Recommended Badge */}
                 {product.badge?.type === 'recommended' && (
-                  <div className="absolute top-4 right-4 bg-brand-red text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold flex items-center z-10">
-                    <Award className="w-4 h-4 mr-1" />
+                  <div className="absolute top-4 right-4 bg-brand-red text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold flex items-center shadow-md z-10">
+                    <IconMoneyBack className="w-4 h-4 mr-1" />
                     {product.badge.label}
                   </div>
                 )}
 
                 {/* Trial Badge */}
                 {product.badge?.type === 'trial' && (
-                  <div className="absolute top-4 right-4 bg-brand-light dark:bg-emerald-900/40 text-brand-dark dark:text-emerald-400 px-3 py-1 rounded-full text-sm font-bold flex items-center z-10">
-                    <Sparkles className="w-4 h-4 mr-1" />
+                  <div className="absolute top-4 right-4 bg-brand-light dark:bg-emerald-900/40 text-brand-dark dark:text-emerald-400 px-3 py-1 rounded-full text-sm font-bold flex items-center shadow-md z-10">
+                    <IconLongLasting className="w-4 h-4 mr-1" />
                     {product.badge.label}
                   </div>
                 )}
@@ -259,12 +261,12 @@ export function EnhancedProductComparison() {
                   {/* Quick Stats */}
                   <div className="grid grid-cols-2 gap-4 mb-6">
                     <div className="text-center">
-                      <Clock className="w-6 h-6 mx-auto mb-2 text-brand-purple dark:text-purple-400" />
+                      <IconLongLasting className="w-8 h-8 mx-auto mb-2 text-brand-purple dark:text-purple-400 drop-shadow-sm" />
                       <p className="text-sm text-gray-600 dark:text-gray-300">{t('productComparison.duration') || "Duration"}</p>
                       <p className="font-semibold text-gray-900 dark:text-gray-100">{product.duration}</p>
                     </div>
                     <div className="text-center">
-                      <Users className="w-6 h-6 mx-auto mb-2 text-brand-purple dark:text-purple-400" />
+                      <IconAnyLitter className="w-8 h-8 mx-auto mb-2 text-brand-purple dark:text-purple-400 drop-shadow-sm" />
                       <p className="text-sm text-gray-600 dark:text-gray-300">{t('productComparison.idealFor') || "Ideal For"}</p>
                       <p className="font-semibold text-gray-900 dark:text-gray-100">{product.idealFor}</p>
                     </div>
@@ -300,7 +302,7 @@ export function EnhancedProductComparison() {
                             size="lg"
                             className="w-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white dark:text-white font-bold shadow-lg hover:shadow-xl transition-all"
                           >
-                            <Sparkles className="w-5 h-5 mr-2" />
+                            <IconMoneyBack className="w-6 h-6 mr-2 -ml-2" />
                             {locale === 'fr' ? "Envoyer Mon Essai GRATUIT" : "Send My FREE Trial"}
                             <ChevronRight className="w-5 h-5 ml-2" />
                           </Button>

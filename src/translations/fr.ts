@@ -387,6 +387,8 @@ export const fr = {
     buttonText: "COMMANDER MAINTENANT",
     joinText: "Rejoignez 1 000+ Familles de Chats Heureuses - Visitez votre magasin local",
     guarantee: "Support personnalisé inclus",
+    moneyBackGuarantee: "Garantie 30 Jours",
+    madeInCanada: "Fabriqué au Canada",
     // B2B pivot keys
     b2bTitle: "Trouvez Purrify Près de Vous",
     b2bSubtitle: "Disponible dans les animaleries à travers le Canada. Demandez Purrify dans votre animalerie locale.",

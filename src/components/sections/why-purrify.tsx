@@ -1,7 +1,8 @@
 "use client";
 
 import { Container } from "@/components/ui/container";
-import { Wind, Cat, Clock, Layers, Sparkles, PiggyBank, ArrowDown } from "lucide-react"; // Changed Leaf to Sparkles, added ArrowDown
+import { ArrowDown } from "lucide-react";
+import { IconOdor, IconCatFriendly, IconLongLasting, IconAnyLitter, IconCostEffective, IconBeforeAfter } from "@/components/icons/custom-benefit-icons";
 import Image from 'next/image';
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
@@ -24,13 +25,13 @@ export function WhyPurrify() {
 
   const reasons = [
     {
-      icon: Wind,
+      icon: IconOdor,
       title: t('features.odorElimination.title').toUpperCase(),
       description: t('features.odorElimination.description'),
       image: "/optimized/catcoco.webp"
     },
     {
-      icon: Cat,
+      icon: IconCatFriendly,
       title: t('features.catFriendly.title').toUpperCase(),
       description: t('features.catFriendly.description'),
       image: "/optimized/cats-and-filters.webp",
@@ -38,19 +39,19 @@ export function WhyPurrify() {
       textColor: "text-[#2E7D32]",
     },
     {
-      icon: Clock,
+      icon: IconLongLasting,
       title: t('features.longLastingFreshness.title').toUpperCase(),
       description: t('features.longLastingFreshness.description'),
       image: "/optimized/catonbed.avif"
     },
     {
-      icon: Layers,
+      icon: IconAnyLitter,
       title: t('features.worksWithAnyLitter.title').toUpperCase(),
       description: t('features.worksWithAnyLitter.description'),
       image: "/optimized/cat-favorite-litter.webp"
     },
     {
-      icon: PiggyBank,
+      icon: IconCostEffective,
       title: t('features.costEffective.title').toUpperCase(),
       description: t('features.costEffective.description'),
       image: "/optimized/cost-effective.webp",
@@ -58,7 +59,7 @@ export function WhyPurrify() {
       textColor: "text-[#E65100]",
     },
     {
-      icon: Sparkles,
+      icon: IconBeforeAfter,
       title: t('features.beforeAfter.title').toUpperCase(),
       description: t('features.beforeAfter.description'),
       image: "/optimized/before-after.webp",
@@ -128,11 +129,9 @@ export function WhyPurrify() {
                   />
                 </div>
                 <div className="p-6 sm:p-8 flex flex-col flex-grow relative z-10">
-                  <div className="flex items-center mb-4">
-                    <div
-                      className={`p-3 sm:p-4 rounded-2xl shadow-xl mr-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 bg-gradient-to-r ${theme.bgGradient}`}
-                    >
-                      <IconComponent className="h-6 w-6 text-white dark:text-gray-100" />
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center mb-4 sm:mb-6">
+                    <div className="mb-3 sm:mb-0 mr-0 sm:mr-4 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-700">
+                      <IconComponent className="h-14 w-14 sm:h-16 sm:w-16 drop-shadow-xl" />
                     </div>
                     <h3 className={`font-black text-lg sm:text-xl ${theme.textClass}`}>
                       {reason.title}

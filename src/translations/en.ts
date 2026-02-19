@@ -366,6 +366,8 @@ export const en = {
     buttonText: "Get My Free Trial →",
     joinText: "30-Day Money-Back Guarantee • Made in Canada 🇨🇦",
     guarantee: "30-Day Money-Back Guarantee • Made in Canada 🇨🇦",
+    moneyBackGuarantee: "30-Day Guarantee",
+    madeInCanada: "Made in Canada",
     // B2B pivot keys
     b2bTitle: "Find Purrify Near You",
     b2bSubtitle: "Available at pet stores across Canada. Ask for Purrify at your local pet retailer.",

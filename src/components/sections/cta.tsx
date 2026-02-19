@@ -3,12 +3,13 @@
 import React from 'react';
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { GRADIENTS } from "@/lib/theme-utils";
 import { getPaymentLink } from "@/lib/payment-links";
 import { ArrowRight } from "lucide-react";
+import { IconMoneyBack, IconCanadaMade } from "@/components/icons/custom-trust-icons";
 
 interface DecorativeElementProps {
   className: string;
@@ -119,9 +120,21 @@ export const CTA = React.memo(function CTA() {
               </Button>
             </Link>
 
-            <p className="text-gray-600 dark:text-gray-100/80 text-xs text-center mt-2">
-              {t('cta.guarantee') || "30-Day Money-Back Guarantee • Made in Canada 🇨🇦"}
-            </p>
+            <div className="flex items-center justify-center gap-4 mt-3">
+              <div className="flex items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
+                <IconMoneyBack className="w-5 h-5 drop-shadow-sm" />
+                <span className="text-gray-600 dark:text-gray-100/90 text-xs font-medium">
+                  {t('cta.moneyBackGuarantee') || "30-Day Guarantee"}
+                </span>
+              </div>
+              <div className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
+              <div className="flex items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
+                <IconCanadaMade className="w-5 h-5 drop-shadow-sm" />
+                <span className="text-gray-600 dark:text-gray-100/90 text-xs font-medium">
+                  {t('cta.madeInCanada') || "Made in Canada"}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </Container>

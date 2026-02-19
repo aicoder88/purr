@@ -5,7 +5,9 @@ import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight, Microscope, ShieldCheck, Leaf } from "lucide-react";
+import { ArrowRight, Leaf } from "lucide-react";
+import { IconSciencePores, IconZeroPerfumes } from "@/components/icons/custom-trust-icons";
+import { IconOdor } from "@/components/icons/custom-benefit-icons";
 
 // Default features for fallback
 const defaultFeatures = [
@@ -24,9 +26,9 @@ const defaultFeatures = [
 ];
 
 const featureIcons = [
-    <Microscope key="microscope" className="w-6 h-6 text-electric-indigo" />,
-    <ShieldCheck key="shield" className="w-6 h-6 text-deep-coral" />,
-    <Leaf key="leaf" className="w-6 h-6 text-green-500 dark:text-green-400" />
+    <IconSciencePores key="microscope" className="w-8 h-8 drop-shadow-md" />,
+    <IconZeroPerfumes key="shield" className="w-8 h-8 drop-shadow-md" />,
+    <IconOdor key="leaf" className="w-8 h-8 drop-shadow-md" />
 ];
 
 export function ScienceSection() {
@@ -43,7 +45,7 @@ export function ScienceSection() {
                     {/* Text Content */}
                     <div className="relative z-10">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-electric-indigo/10 text-electric-indigo text-sm font-bold mb-6">
-                            <Microscope className="w-4 h-4" />
+                            <IconSciencePores className="w-5 h-5" />
                             {t('scienceSection.badge')}
                         </div>
 
