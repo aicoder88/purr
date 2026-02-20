@@ -1,8 +1,8 @@
-
 import { Container } from '@/components/ui/container';
-import { ReferralDashboard } from '@/components/referral/ReferralDashboard';
+import Link from 'next/link';
 import type { Metadata } from 'next';
 import { SITE_NAME } from '@/lib/constants';
+import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
   title: `Referral Program - Give $5, Get $5 | ${SITE_NAME}`,
@@ -95,11 +95,37 @@ export default function ReferralPage() {
                 Give $5, Get $5
               </h1>
               <p className="text-gray-600 dark:text-gray-400">
-                Share your unique referral code and earn rewards
+                Share Purrify with friends. They get $5 off and you earn $5 in credit.
               </p>
             </div>
-
-            <ReferralDashboard />
+            <div className="grid gap-4 md:grid-cols-3 mb-10">
+              <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+                <h2 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">Share</h2>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Send your referral link to friends and family.
+                </p>
+              </div>
+              <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+                <h2 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">They Save</h2>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  New customers get $5 off their first order.
+                </p>
+              </div>
+              <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+                <h2 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">You Earn</h2>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Receive $5 in credit when they complete a purchase.
+                </p>
+              </div>
+            </div>
+            <div className="text-center">
+              <Button asChild size="lg">
+                <Link href="/customer/referrals">Open My Referral Dashboard</Link>
+              </Button>
+              <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">
+                Sign in required to view your personal referral stats and links.
+              </p>
+            </div>
           </div>
         </Container>
       </main>

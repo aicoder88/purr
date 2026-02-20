@@ -61,7 +61,7 @@ export default function InvestorContent() {
       {/* Navigation Tabs */}
       <Container>
         <div className="pt-8 mb-4 relative z-10">
-          <div className="bg-white dark:bg-gray-900/60 backdrop-blur-md rounded-lg shadow-md border border-white/20 dark:border-gray-700/50 p-1">
+          <div className="w-fit mx-auto bg-white dark:bg-gray-900/60 backdrop-blur-md rounded-lg shadow-md border border-white/20 dark:border-gray-700/50 p-1">
             <div className="flex flex-wrap justify-center gap-1">
               {[
                 { id: 'overview', label: 'Executive Summary' },
@@ -91,7 +91,7 @@ export default function InvestorContent() {
       {/* Middle Navigation Buttons */}
       <Container>
         <div className="flex justify-center mb-4 relative z-10">
-          <div className="bg-white dark:bg-gray-900/80 backdrop-blur-md rounded-lg shadow-md border border-white/20 dark:border-gray-700/50 p-2">
+          <div className="w-fit mx-auto bg-white dark:bg-gray-900/80 backdrop-blur-md rounded-lg shadow-md border border-white/20 dark:border-gray-700/50 p-2">
             <div className="flex items-center space-x-3">
               <button
                 onClick={() => navigateTab('prev')}
@@ -136,13 +136,13 @@ export default function InvestorContent() {
                   <Image
                     src="/optimized/purrify-logo.webp"
                     alt="Purrify Logo"
-                    width={200}
-                    height={200}
-                    className="mx-auto mb-6"
+                    width={140}
+                    height={140}
+                    className="mx-auto mb-4"
                   />
                 </div>
 
-                <h1 className="font-heading text-4xl lg:text-6xl font-extrabold tracking-tight mb-6 text-[#333333] dark:text-white select-all cursor-text">
+                <h1 className="font-heading text-3xl lg:text-5xl font-bold tracking-tight mb-4 text-[#333333] dark:text-white select-all cursor-text">
                   Revolutionary Odor Solution for 52 Million North American Cat Owners
                 </h1>
 

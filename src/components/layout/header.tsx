@@ -5,8 +5,6 @@ import {
   Menu,
   X,
   ChevronDown,
-  LogOut,
-  User as UserIcon,
   MapPin,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -16,7 +14,6 @@ import { useTranslations, useLocale } from "next-intl";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import Image from "next/image";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useSession, signOut } from "next-auth/react";
 
 interface DropdownItem {
   label: string;
@@ -44,17 +41,14 @@ export function Header() {
     locale === 'fr'
       ? {
         logoAlt: "Purrify - additif premium de charbon actif pour litiere - accueil",
-        signOutAria: 'Se deconnecter',
       }
       : {
         logoAlt: 'Purrify - Premium Activated Carbon Cat Litter Additive - Home',
-        signOutAria: 'Sign out',
       };
   const localePrefix = locale === 'en' ? '' : `/${locale}`;
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const headerRef = useRef<HTMLElement | null>(null);
-  const { data: session } = useSession();
 
   // Shared handlers to avoid recreating inline functions in JSX
   const handleNavMouseEnter = useCallback(
@@ -390,26 +384,6 @@ export function Header() {
 
           <div className="hidden md:flex items-center space-x-3">
             <ThemeToggle />
-            {session?.user && (
-              <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-brand-green/10 to-brand-green/5 dark:from-purple-500/20 dark:to-purple-500/10 border border-brand-green/30 dark:border-purple-500/40 rounded-full">
-                <div className="w-6 h-6 rounded-full bg-brand-green dark:bg-purple-500 flex items-center justify-center">
-                  <UserIcon className="w-3.5 h-3.5 text-white dark:text-gray-100" />
-                </div>
-                <span className="text-sm font-medium text-brand-green-800 dark:text-purple-300">
-                  {session?.user?.email?.split('@')[0] || 'User'}
-                </span>
-              </div>
-            )}
-            {session?.user && (
-              <Button
-                onClick={() => signOut({ callbackUrl: "/" })}
-                variant="ghost"
-                className="flex items-center gap-2 text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100"
-              >
-                <LogOut className="w-4 h-4" />
-                <span>{t('nav.signOut')}</span>
-              </Button>
-            )}
             <Button
               asChild
               className="flex items-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
@@ -424,17 +398,6 @@ export function Header() {
 
           <div className="flex md:hidden items-center space-x-1">
             <ThemeToggle />
-            {session?.user && (
-              <Button
-                onClick={() => signOut({ callbackUrl: "/" })}
-                variant="ghost"
-                size="icon"
-                className="h-11 w-11 p-0"
-                aria-label={headerUiCopy.signOutAria}
-              >
-                <LogOut className="h-5 w-5" />
-              </Button>
-            )}
             <LanguageSwitcher />
             <Button
               variant="ghost"
@@ -515,31 +478,6 @@ export function Header() {
 
               {/* Quick Actions */}
               <div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2 space-y-2">
-                {session?.user && (
-                  <div className="px-3 py-3 bg-gradient-to-r from-brand-green/10 to-brand-green/5 dark:from-purple-500/20 dark:to-purple-500/10 border border-brand-green/30 dark:border-purple-500/40 rounded-xl">
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-full bg-brand-green dark:bg-purple-500 flex items-center justify-center">
-                          <UserIcon className="w-4 h-4 text-white dark:text-gray-100" />
-                        </div>
-                        <div>
-                          <span className="text-sm font-semibold text-brand-green-800 dark:text-purple-300 block">
-                            {session?.user?.email?.split('@')[0] || 'User'}
-                          </span>
-                          <span className="text-xs text-gray-500 dark:text-gray-400">{t('nav.signedIn')}</span>
-                        </div>
-                      </div>
-                    </div>
-                    <Button
-                      onClick={() => signOut({ callbackUrl: "/" })}
-                      variant="outline"
-                      className="w-full flex items-center justify-center gap-2 border-brand-green/30 dark:border-purple-500/40 text-brand-green-800 dark:text-purple-300 hover:bg-brand-green/10 dark:hover:bg-purple-500/20"
-                    >
-                      <LogOut className="w-4 h-4" />
-                      <span>{t('nav.signOut')}</span>
-                    </Button>
-                  </div>
-                )}
                 <Button
                   asChild
                   className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"

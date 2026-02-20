@@ -635,14 +635,6 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href={`${localePrefix}/invest`}
-                    className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  >
-                    {t('footerNav.invest') || "Investors"}
-                  </Link>
-                </li>
-                <li>
-                  <Link prefetch={false}
                     href={`${localePrefix}/affiliate`}
                     className="text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
                   >

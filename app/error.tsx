@@ -115,7 +115,7 @@ interface Suggestion {
   icon: React.ReactNode;
 }
 
-const getErrorSuggestions = (statusCode: number, isAuthenticated: boolean): Suggestion[] => {
+const getErrorSuggestions = (statusCode: number): Suggestion[] => {
   const commonPages: Suggestion[] = [
     {
       title: 'Home',
@@ -154,7 +154,7 @@ const getErrorSuggestions = (statusCode: number, isAuthenticated: boolean): Sugg
       {
         title: 'Sign In',
         path: '/api/auth/signin',
-        description: isAuthenticated ? 'Return to your account' : 'Sign in to your account',
+        description: 'Sign in to your account',
         icon: <Lock className="w-5 h-5" />
       },
       ...commonPages.slice(1)
@@ -227,24 +227,11 @@ const extractStatusCode = (error: Error & { digest?: string; statusCode?: number
 
 export default function Error({ error, reset }: ErrorPageProps) {
   const [statusCode, setStatusCode] = useState<number>(500);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // Extract status code on mount
   useEffect(() => {
     const code = extractStatusCode(error);
     setStatusCode(code);
-
-    // Check if user is authenticated (simplified check)
-    const checkAuth = async () => {
-      try {
-        const res = await fetch('/api/auth/session');
-        const session = await res.json();
-        setIsAuthenticated(!!session?.user);
-      } catch {
-        setIsAuthenticated(false);
-      }
-    };
-    checkAuth();
   }, [error]);
 
   // Log analytics
@@ -288,7 +275,7 @@ export default function Error({ error, reset }: ErrorPageProps) {
   }, [error, statusCode]);
 
   const errorInfo = statusCode ? getErrorMessage(statusCode) : getDefaultErrorInfo();
-  const suggestions = getErrorSuggestions(statusCode, isAuthenticated);
+  const suggestions = getErrorSuggestions(statusCode);
   const isServerError = statusCode >= 500;
   const isClientError = statusCode >= 400 && statusCode < 500;
 

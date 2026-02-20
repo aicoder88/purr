@@ -8,7 +8,7 @@ interface BarChartProps {
 
 export function BarChart({ data, title, className = "" }: BarChartProps) {
   const maxValue = Math.max(...data.map(d => d.value));
-  
+
   return (
     <div className={`bg-white dark:bg-gray-800/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-gray-700/50 shadow-lg ${className}`}>
       <h3 className="font-heading text-lg font-semibold text-gray-800 dark:text-white dark:text-gray-100 mb-4">{title}</h3>
@@ -17,13 +17,12 @@ export function BarChart({ data, title, className = "" }: BarChartProps) {
           <div key={index} className="relative">
             <div className="flex justify-between items-center mb-1">
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{item.label}</span>
-              <span className="text-sm font-bold text-gray-900 dark:text-white dark:text-gray-100">{item.value.toLocaleString()}</span>
+              <span className="text-sm font-bold text-gray-900 dark:text-white dark:text-gray-100">{item.value.toLocaleString('en-US')}</span>
             </div>
             <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
               <div
-                className={`h-full rounded-full transition-all duration-1000 ease-out ${
-                  item.color || 'bg-gradient-to-r from-[#FF3131] to-[#FF5050]'
-                }`}
+                className={`h-full rounded-full transition-all duration-1000 ease-out ${item.color || 'bg-gradient-to-r from-[#FF3131] to-[#FF5050]'
+                  }`}
                 style={{ width: `${(item.value / maxValue) * 100}%` }}
               />
             </div>
@@ -44,65 +43,67 @@ export function LineChart({ data, title, className = "" }: LineChartProps) {
   const maxValue = Math.max(...data.map(d => d.value));
   const minValue = Math.min(...data.map(d => d.value));
   const range = maxValue - minValue;
-  
+
   return (
     <div className={`bg-white dark:bg-gray-800/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-gray-700/50 shadow-lg ${className}`}>
       <h3 className="font-heading text-lg font-semibold text-gray-800 dark:text-white dark:text-gray-100 mb-4">{title}</h3>
-      <div className="relative h-48">
-        <svg className="w-full h-full" viewBox="0 0 400 180">
-          <defs>
-            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#FF3131" />
-              <stop offset="100%" stopColor="#5B2EFF" />
-            </linearGradient>
-          </defs>
-          
-          {/* Grid lines */}
-          {[0, 1, 2, 3, 4].map(i => (
-            <line
-              key={i}
-              x1="0"
-              y1={i * 45}
-              x2="400"
-              y2={i * 45}
-              stroke="currentColor"
-              strokeWidth="1"
-              opacity="0.1"
-              className="text-gray-400 dark:text-gray-600"
+      <div className="relative">
+        <div className="h-48 lg:h-56">
+          <svg className="w-full h-full" viewBox="0 0 400 180">
+            <defs>
+              <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#FF3131" />
+                <stop offset="100%" stopColor="#5B2EFF" />
+              </linearGradient>
+            </defs>
+
+            {/* Grid lines */}
+            {[0, 1, 2, 3, 4].map(i => (
+              <line
+                key={i}
+                x1="0"
+                y1={i * 45}
+                x2="400"
+                y2={i * 45}
+                stroke="currentColor"
+                strokeWidth="1"
+                opacity="0.1"
+                className="text-gray-400 dark:text-gray-600"
+              />
+            ))}
+
+            {/* Line path */}
+            <path
+              d={`M ${data.map((point, index) =>
+                `${(index / (data.length - 1)) * 400} ${180 - ((point.value - minValue) / range) * 160}`
+              ).join(' L ')}`}
+              fill="none"
+              stroke="url(#lineGradient)"
+              strokeWidth="3"
+              className="drop-shadow-sm"
             />
-          ))}
-          
-          {/* Line path */}
-          <path
-            d={`M ${data.map((point, index) => 
-              `${(index / (data.length - 1)) * 400} ${180 - ((point.value - minValue) / range) * 160}`
-            ).join(' L ')}`}
-            fill="none"
-            stroke="url(#lineGradient)"
-            strokeWidth="3"
-            className="drop-shadow-sm"
-          />
-          
-          {/* Data points */}
-          {data.map((point, index) => (
-            <circle
-              key={index}
-              cx={(index / (data.length - 1)) * 400}
-              cy={180 - ((point.value - minValue) / range) * 160}
-              r="6"
-              fill="url(#lineGradient)"
-              className="drop-shadow-md"
-            />
-          ))}
-        </svg>
-        
+
+            {/* Data points */}
+            {data.map((point, index) => (
+              <circle
+                key={index}
+                cx={(index / (data.length - 1)) * 400}
+                cy={180 - ((point.value - minValue) / range) * 160}
+                r="6"
+                fill="url(#lineGradient)"
+                className="drop-shadow-md"
+              />
+            ))}
+          </svg>
+        </div>
+
         {/* Labels */}
         <div className="flex justify-between mt-2">
           {data.map((point, index) => (
             <div key={index} className="text-center">
               <div className="text-xs text-gray-600 dark:text-gray-400">{point.label}</div>
               <div className="text-sm font-bold text-gray-900 dark:text-white dark:text-gray-100">
-                ${point.value.toLocaleString()}
+                ${point.value.toLocaleString('en-US')}
               </div>
             </div>
           ))}
@@ -135,7 +136,7 @@ export function PieChart({ data, title, className = "" }: PieChartProps) {
   return (
     <div className={`bg-white dark:bg-gray-800/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-gray-700/50 shadow-lg ${className}`}>
       <h3 className="font-heading text-lg font-semibold text-gray-800 dark:text-white dark:text-gray-100 mb-4">{title}</h3>
-      <div className="flex items-center justify-center space-x-8">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
         <div className="relative">
           <svg width="150" height="150" className="transform -rotate-90">
             {slices.map((slice, index) => {
@@ -189,7 +190,7 @@ export function ProgressRing({ percentage, label, color = "#FF3131", size = 120,
   const radius = (size - 20) / 2;
   const circumference = 2 * Math.PI * radius;
   const strokeDasharray = `${(percentage / 100) * circumference} ${circumference}`;
-  
+
   return (
     <div className={`flex flex-col items-center ${className}`}>
       <div className="relative">
