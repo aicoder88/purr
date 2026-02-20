@@ -54,7 +54,7 @@ function SimpleBreadcrumbs({
 }
 
 export default function AboutPage() {
-  const { schema, additionalSchemas } = useEnhancedSEO({
+  const { schema, additionalSchemas, nextSeoProps } = useEnhancedSEO({
     path: '/about/our-story',
     title: 'Our Story: Mission Behind Purrify',
     description: "Learn about Purrify's founding story, mission, and the team dedicated to solving cat litter odor problems. Discover our commitment to pets, families, and the environment.",
@@ -77,6 +77,7 @@ export default function AboutPage() {
 
   return (
     <>
+      <link rel="canonical" href={nextSeoProps.canonical || 'https://www.purrify.ca/about/our-story/'} />
       {allSchemas.length > 0 && (
         <script
           type="application/ld+json"

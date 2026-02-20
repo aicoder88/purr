@@ -65,10 +65,12 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   const metaDescription = post.seoDescription || post.excerpt;
   const metaImageUrl = post.image.startsWith('http') ? post.image : `${SITE_URL}${post.image}`;
 
+  // Each locale should have its own self-referencing canonical URL
   const canonicalSlugPath = locale === 'en'
     ? `${SITE_URL}/blog/${slug}/`
     : `${SITE_URL}/${locale}/blog/${slug}/`;
 
+  // Build language alternates for hreflang
   const languages: Record<string, string> = {
     'en-CA': `${SITE_URL}/blog/${slug}/`,
     'en-US': `${SITE_URL}/blog/${slug}/`,
@@ -82,6 +84,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     title: `${metaTitle} | ${SITE_NAME}`,
     description: metaDescription,
     alternates: {
+      // Self-referencing canonical for each locale
       canonical: canonicalSlugPath,
       languages,
     },

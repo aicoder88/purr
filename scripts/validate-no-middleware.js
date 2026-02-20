@@ -1,39 +1,35 @@
 #!/usr/bin/env node
 /**
- * Validates middleware configuration.
- * 
- * - Allows root middleware.ts (for Edge geo-blocking/WAF)
- * - Allows src/middleware/* for modular middleware
- * - proxy.ts is still used for server-side auth/api proxying
- * 
- * These serve different purposes and can coexist:
- * - middleware.ts: Edge middleware (runs at CDN, for geo-blocking)
- * - proxy.ts: Server proxy (runs on server, for auth/api routing)
+ * Validates Next.js 16 request interception configuration.
+ *
+ * Next.js 16 does not allow both middleware.ts and proxy.ts.
+ * We standardize on proxy.ts.
  */
 
 const fs = require('fs');
 const path = require('path');
 
 const projectRoot = path.join(__dirname, '..');
-
-// Check that our edge middleware exists
-const edgeMiddleware = path.join(projectRoot, 'middleware.ts');
-if (fs.existsSync(edgeMiddleware)) {
-  console.log('✓ Edge middleware.ts found (for geo-blocking at CDN level)');
-  
-  // Validate it has the expected content
-  const content = fs.readFileSync(edgeMiddleware, 'utf-8');
-  if (content.includes('BLOCKED_COUNTRIES') || content.includes('geo-blocking')) {
-    console.log('  - Contains geo-blocking logic');
-  }
-}
+const rootMiddlewareFile = path.join(projectRoot, 'middleware.ts');
+const srcMiddlewareFile = path.join(projectRoot, 'src', 'middleware.ts');
 
 // Check that proxy.ts exists (required for auth protection)
 const proxyFile = path.join(projectRoot, 'proxy.ts');
 if (fs.existsSync(proxyFile)) {
-  console.log('✓ proxy.ts found (for server-side auth/api proxying)');
+  console.log('✓ proxy.ts found');
 } else {
-  console.warn('⚠ WARNING: proxy.ts not found. Admin routes may not be protected.');
+  console.error('✗ proxy.ts not found.');
+  process.exit(1);
 }
 
-console.log('\nMiddleware validation passed: Edge middleware and server proxy are properly configured.');
+if (fs.existsSync(rootMiddlewareFile) || fs.existsSync(srcMiddlewareFile)) {
+  const offenders = [];
+  if (fs.existsSync(rootMiddlewareFile)) offenders.push('middleware.ts');
+  if (fs.existsSync(srcMiddlewareFile)) offenders.push('src/middleware.ts');
+
+  console.error(`✗ Disallowed file(s) found: ${offenders.join(', ')}`);
+  console.error('  Next.js 16 allows proxy.ts only. Remove middleware.ts to avoid build failures.');
+  process.exit(1);
+}
+
+console.log('Middleware validation passed: proxy.ts-only configuration is valid.');

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import InvestorContentWrapper from './investor-content-wrapper';
-import { SITE_NAME } from '@/lib/constants';
+import { SITE_NAME, SITE_URL } from '@/lib/constants';
 
 export const dynamic = 'force-static';
 
@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: `Invest in ${SITE_NAME} - Revolutionary Pet Care Innovation`,
   description: `Investment opportunity in ${SITE_NAME}: The first activated carbon cat litter additive in Canada. $1M pre-money valuation, 47% gross margins, proven traction with 16 retail partners.`,
   keywords: ['invest in Purrify', 'pet care investment', 'startup investment', 'angel investment Canada', 'pet industry startup'],
+  alternates: {
+    canonical: `${SITE_URL}/invest/`,
+  },
 };
 
 export default function InvestorRelations() {

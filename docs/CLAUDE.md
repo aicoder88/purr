@@ -16,6 +16,7 @@ Purrify is an e-commerce site for an activated carbon cat litter additive. Serve
 - Make the smallest viable change first; avoid broad refactors unless explicitly requested.
 - Reuse existing project patterns/components before introducing new abstractions.
 - Validate claims before completion: run the smallest relevant check (typecheck, lint, test, or targeted script) for touched areas.
+- For UI copy changes, run `pnpm validate-i18n:hardcoded` and review `reports/i18n-hardcoded-sweep.md` before handoff.
 - When requirements are ambiguous, state assumptions explicitly in the final handoff.
 - If a new recurring preference appears, persist it in both `docs/AGENTS.md` and `docs/CLAUDE.md`.
 
@@ -35,6 +36,7 @@ pnpm test:e2e:ui        # Playwright with browser UI
 pnpm seo:validate       # Lenient SEO check (same as prebuild)
 pnpm seo:validate:strict # Strict SEO check (fails on any error)
 pnpm validate-dark-mode # Check dark: variants exist for all elements
+pnpm validate-i18n:hardcoded # Check hardcoded UI string regressions (writes reports/i18n-hardcoded-sweep.md)
 pnpm validate-hydration # Check for hydration anti-patterns
 pnpm prisma generate    # Regenerate Prisma client (also runs on postinstall)
 pnpm prisma migrate dev --name migration_name
@@ -71,7 +73,7 @@ pnpm clear-cache        # Clear webpack cache
   - `import { useTranslation } from '@/translations'` — direct, takes locale: `useTranslation('en')`
 - Access: `t.hero.headline` (object property access, not string keys)
 - Adding translations: update `src/translations/types.ts` interface, then both locale files (en, fr), run `pnpm test:translations`
-- All user-facing text must use translation keys. No hardcoded strings.
+- All user-facing text must use translation keys. No hardcoded strings, including JSX attributes like `alt`, `aria-label`, `title`, and `placeholder`.
 
 ### Currency System
 - Geo-detection via Vercel `x-vercel-ip-country` header: US visitors get USD, all others get CAD

@@ -128,7 +128,7 @@ const breadcrumbItems = [
 ];
 
 export default function ContactPage() {
-  const { schema, additionalSchemas } = useEnhancedSEO({
+  const { schema, additionalSchemas, nextSeoProps } = useEnhancedSEO({
     path: '/contact',
     title: `Contact Us - ${SITE_NAME} Customer Support & Help`,
     description:
@@ -190,6 +190,7 @@ export default function ContactPage() {
 
   return (
     <>
+      <link rel="canonical" href={nextSeoProps.canonical || 'https://www.purrify.ca/contact/'} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

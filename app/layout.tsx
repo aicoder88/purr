@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import { headers } from 'next/headers';
 import '../src/index.css';
-import { defaultLocale, locales, Locale } from '@/i18n/config';
+import { defaultLocale, getLocaleFromPathname, Locale } from '@/i18n/config';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { Providers } from './providers';
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants';
@@ -66,7 +66,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 
   const alternates = {
-    canonical: `${baseUrl}/`,
+    // Note: Individual pages should define their own canonical URLs
+    // This is a fallback - child pages should override via their own metadata
     languages: languages as Record<string, string>,
   };
 
@@ -172,9 +173,8 @@ export default async function RootLayout({
 }) {
   // Detect locale from URL path for correct html lang attribute
   const headersList = await headers();
-  const pathname = headersList.get('x-pathname') || headersList.get('x-invoke-path') || '';
-  const pathLocale = pathname.split('/')[1];
-  const locale: Locale = locales.includes(pathLocale as Locale) ? (pathLocale as Locale) : defaultLocale;
+  const pathname = headersList.get('x-pathname') || '';
+  const locale: Locale = getLocaleFromPathname(pathname);
 
   // Load messages directly to avoid dynamic request config using cookies
   const translationModule = await import(`@/translations/${locale}.ts`);

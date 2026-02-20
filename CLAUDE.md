@@ -20,6 +20,7 @@
 
 ## 💻 Coding Standards
 - **i18n**: All user-facing text in `src/translations/*.ts`. No hardcoded strings.
+- **i18n Attributes**: Never hardcode JSX accessibility/UI copy (`alt`, `aria-label`, `title`, `placeholder`, button/link text). Use translation keys or localized copy objects.
 - **Dark Mode**: Every element needs `dark:` variant. `text-white` needs `dark:text-gray-900`. Validate with `pnpm validate-dark-mode`.
 - **Images**: Store in `public/images`, optimize to `public/optimized`. [Limits](docs/OPTIMIZED_IMAGES.md)
 - **Env Vars**: See `.env.local.example` for required variables.
@@ -39,6 +40,7 @@ pnpm prisma studio          # GUI
 ```bash
 pnpm lint                   # ESLint
 pnpm check-types            # TypeScript
+pnpm validate-i18n:hardcoded # Hardcoded UI string regression gate (writes reports/i18n-hardcoded-sweep.md)
 pnpm validate-dark-mode     # UI checks
 pnpm validate-images        # Size limits
 pnpm validate-hydration     # Safety check

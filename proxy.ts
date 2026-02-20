@@ -9,10 +9,23 @@ const ADMIN_LOGIN_ROUTE = /^\/admin\/login(?:\/|$)/;
 
 export async function proxy(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set('x-pathname', pathname);
+
+  const nextWithPathnameHeader = () =>
+    NextResponse.next({
+      request: {
+        headers: requestHeaders,
+      },
+    });
+
+  if (!pathname.startsWith('/admin')) {
+    return nextWithPathnameHeader();
+  }
 
   // Login page is intentionally public.
   if (ADMIN_LOGIN_ROUTE.test(pathname)) {
-    return NextResponse.next();
+    return nextWithPathnameHeader();
   }
 
   const token = await getToken({
@@ -36,9 +49,11 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(redirectUrl);
   }
 
-  return NextResponse.next();
+  return nextWithPathnameHeader();
 }
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: [
+    '/((?!_next/static|_next/image|favicon.ico|api/|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|json|js|css)$).*)',
+  ],
 };

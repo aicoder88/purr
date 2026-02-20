@@ -61,6 +61,8 @@
     "seo:validate:images": "tsx scripts/seo/validate-images.ts",
     "seo:validate:canonicals": "tsx scripts/seo/validate-canonicals.ts",
     "seo:validate:reviews": "tsx scripts/seo/validate-review-schema.ts",
+    "indexnow:submit": "tsx scripts/seo/indexnow-submit.ts",
+    "indexnow:submit:dry": "tsx scripts/seo/indexnow-submit.ts --dry-run",
     "seo:report": "tsx scripts/seo/generate-seo-report.ts",
     "bundle:analyze": "node scripts/bundle-analysis.js",
     "cache:optimize": "node scripts/cache-optimization.js",

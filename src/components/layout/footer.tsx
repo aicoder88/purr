@@ -158,7 +158,7 @@ export function Footer() {
                   <div className="h-6 w-auto mr-2 flex items-center">
                     <Image
                       src="/optimized/logos/logo-light-pink.webp"
-                      alt="Purrify"
+                      alt={copy.logoAlt}
                       width={120}
                       height={24}
                       className="h-6 w-auto object-contain dark:hidden"

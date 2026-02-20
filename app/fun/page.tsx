@@ -7,10 +7,14 @@ import { LaserChase } from '@/components/fun/LaserChase';
 import { CatTrivia } from '@/components/fun/CatTrivia';
 import { CatNameGenerator } from '@/components/fun/CatNameGenerator';
 import { Volume2, Sparkles, Zap, Brain } from 'lucide-react';
+import { SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Cat Arcade & Blessing Corner | Purrify',
   description: 'Play cat games with realistic meow sounds, get blessed by the Cat Goddess, find your perfect cat name, and test your feline knowledge!',
+  alternates: {
+    canonical: `${SITE_URL}/fun/`,
+  },
   robots: {
     index: true,
     follow: true,

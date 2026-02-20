@@ -13,6 +13,7 @@
 - Make the smallest viable change first; avoid broad refactors unless explicitly requested.
 - Reuse existing project patterns/components before introducing new abstractions.
 - Validate claims before completion: run the smallest relevant check (typecheck, lint, test, or targeted script) for touched areas.
+- For UI copy changes, run `pnpm validate-i18n:hardcoded` and inspect `reports/i18n-hardcoded-sweep.md` before handoff.
 - When requirements are ambiguous, state assumptions explicitly in the final handoff.
 - If a new recurring preference appears, persist it in both `docs/AGENTS.md` and `docs/CLAUDE.md`.
 
@@ -94,7 +95,7 @@
 | **The Reformatter** | Reformatting unrelated lines | Touch only requested/affected code |
 | **The Silent Changer** | Removing code without calling it out | Explain risk before deleting |
 | **The Powder User** | Calling Purrify a "powder" | Use "granules" or "additive" |
-| **The Hardcoder** | Hardcoded UI strings | Use translation keys/hook output |
+| **The Hardcoder** | Hardcoded UI strings (`alt`, `aria-label`, button/link text, JSX text) | Use translation keys/hook output |
 | **The White-on-White** | `text-white` on white/light bg | Ensure contrast in both light/dark |
 | **The Label Maker** | Labels on generated bags/bottles | Never use labels on AI images |
 | **The Dust Maker** | Black dust clouds | Show odor trapped/adsorbed only |
@@ -166,6 +167,7 @@ pnpm test:e2e:ui
 
 # Validation
 pnpm validate-dark-mode
+pnpm validate-i18n:hardcoded
 pnpm validate-hydration
 pnpm validate-images
 pnpm validate-links
