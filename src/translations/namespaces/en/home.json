@@ -511,19 +511,6 @@
     "title": "Save Money While Keeping Your Home Fresh",
     "description": "Purrify extends the life of your cat litter by up to 50%, saving you money while eliminating odors. See how much you could save with our calculator below."
   },
-  "socialProofBadges": {
-    "trustedVerified": "Trusted & Verified",
-    "findUsOn": "Find Us On",
-    "viewOnPlatform": "View Purrify on {{platform}}",
-    "platforms": {
-      "trustpilot": "Trustpilot",
-      "googleBusiness": "Google Business",
-      "crunchbase": "Crunchbase",
-      "productHunt": "Product Hunt",
-      "yelp": "Yelp",
-      "wellfound": "Wellfound"
-    }
-  },
   "scrollingBar": {
     "freeShipping": "Free Shipping on All Subscription Orders",
     "madeInCanada": "Manufactured in Canada from Domestic and Globally Sourced Ingredients"

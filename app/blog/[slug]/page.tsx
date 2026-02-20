@@ -137,6 +137,16 @@ async function getPost(slug: string): Promise<BlogPost | null> {
   return null;
 }
 
+async function hasPostInLocale(slug: string, locale: string): Promise<boolean> {
+  try {
+    const store = new ContentStore();
+    const localizedPost = await store.getPost(slug, locale);
+    return Boolean(localizedPost);
+  } catch {
+    return false;
+  }
+}
+
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPost(slug);
@@ -148,19 +158,24 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   const metaTitle = post.seoTitle || post.title;
   const metaDescription = post.seoDescription || post.excerpt;
   const metaImageUrl = post.image.startsWith('http') ? post.image : `${SITE_URL}${post.image}`;
-  const canonicalUrl = post.canonicalUrl || `${SITE_URL}/blog/${slug}/`;
+  const canonicalUrl = `${SITE_URL}/blog/${slug}/`;
+  const hasFrenchAlternate = await hasPostInLocale(slug, 'fr');
+  const languages: Record<string, string> = {
+    'en-CA': canonicalUrl,
+    'en-US': canonicalUrl,
+    'x-default': canonicalUrl,
+  };
+
+  if (hasFrenchAlternate) {
+    languages['fr-CA'] = `${SITE_URL}/fr/blog/${slug}/`;
+  }
 
   return {
     title: `${metaTitle} | ${SITE_NAME}`,
     description: metaDescription,
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        'en-CA': `${SITE_URL}/blog/${slug}/`,
-        'fr-CA': `${SITE_URL}/fr/blog/${slug}/`,
-        'en-US': `${SITE_URL}/blog/${slug}/`,
-        'x-default': `${SITE_URL}/blog/${slug}/`,
-      },
+      languages,
     },
     robots: {
       index: true,

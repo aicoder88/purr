@@ -506,19 +506,6 @@
     "title": "Économisez de l'Argent Tout en Gardant Votre Maison Fraîche",
     "description": "Purrify prolonge la durée de vie de la litière de votre chat jusqu'à 50%, vous faisant économiser de l'argent tout en éliminant les odeurs. Voyez combien vous pourriez économiser avec notre calculatrice ci-dessous."
   },
-  "socialProofBadges": {
-    "trustedVerified": "Vérifié et Approuvé",
-    "findUsOn": "Trouvez-nous Sur",
-    "viewOnPlatform": "Voir Purrify sur {{platform}}",
-    "platforms": {
-      "trustpilot": "Trustpilot",
-      "googleBusiness": "Google Business",
-      "crunchbase": "Crunchbase",
-      "productHunt": "Product Hunt",
-      "yelp": "Yelp",
-      "wellfound": "Wellfound"
-    }
-  },
   "scrollingBar": {
     "freeShipping": "Livraison Gratuite sur Tous les Abonnements",
     "madeInCanada": "Fabriqué au Canada avec des Ingrédients d'Origine Nationale et Mondiale"

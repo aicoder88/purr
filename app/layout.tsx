@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
+import { headers } from 'next/headers';
 import '../src/index.css';
-import { defaultLocale } from '@/i18n/config';
+import { defaultLocale, locales, Locale } from '@/i18n/config';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { Providers } from './providers';
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants';
@@ -57,15 +58,15 @@ export async function generateMetadata(): Promise<Metadata> {
     // Canadian English (default)
     'en-CA': `${baseUrl}/`,
     // Canadian French
-    'fr-CA': `${baseUrl}/fr`,
+    'fr-CA': `${baseUrl}/fr/`,
     // US English (dedicated landing page)
-    'en-US': `${baseUrl}/us`,
+    'en-US': `${baseUrl}/us/`,
     // x-default for users whose language doesn't match any above
     'x-default': `${baseUrl}/`,
   };
 
   const alternates = {
-    canonical: baseUrl,
+    canonical: `${baseUrl}/`,
     languages: languages as Record<string, string>,
   };
 
@@ -169,8 +170,11 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Use default locale for static generation (SSG)
-  const locale = defaultLocale;
+  // Detect locale from URL path for correct html lang attribute
+  const headersList = await headers();
+  const pathname = headersList.get('x-pathname') || headersList.get('x-invoke-path') || '';
+  const pathLocale = pathname.split('/')[1];
+  const locale: Locale = locales.includes(pathLocale as Locale) ? (pathLocale as Locale) : defaultLocale;
 
   // Load messages directly to avoid dynamic request config using cookies
   const translationModule = await import(`@/translations/${locale}.ts`);

@@ -879,19 +879,6 @@ export const fr = {
   },
 
   // Social Proof Badges
-  socialProofBadges: {
-    trustedVerified: "Vérifié et Approuvé",
-    findUsOn: "Trouvez-nous Sur",
-    viewOnPlatform: "Voir Purrify sur {platform}",
-    platforms: {
-      trustpilot: "Trustpilot",
-      googleBusiness: "Google Business",
-      crunchbase: "Crunchbase",
-      productHunt: "Product Hunt",
-      yelp: "Yelp",
-      wellfound: "Wellfound"
-    }
-  },
   // Enhanced Product Comparison
   enhancedProductComparison: {
     compareAndSave: "Comparer et Économiser",

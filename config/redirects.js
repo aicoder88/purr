@@ -1912,6 +1912,188 @@ const REDIRECTS = [
     permanent: true
   },
 
+  // --- AHREFS 404 CLEANUP (2026-02) ---
+  {
+    source: "/blog/best-cat-litter-senior-cats",
+    destination: "/blog/best-cat-litter-multiple-cats-odor-control/",
+    permanent: true
+  },
+  {
+    source: "/blog/best-cat-litter-for-odor-small-apartment",
+    destination: "/blog/best-litter-odor-remover-small-apartments/",
+    permanent: true
+  },
+  {
+    source: "/blog/best-cat-litter-for-odor-small-apartment/",
+    destination: "/blog/best-litter-odor-remover-small-apartments/",
+    permanent: true
+  },
+  {
+    source: "/fr/blog/best-cat-litter-multiple-cats",
+    destination: "/fr/blog/best-cat-litter-multiple-cats-odor-control/",
+    permanent: true
+  },
+  {
+    source: "/fr/blog/best-cat-litter-multiple-cats/",
+    destination: "/fr/blog/best-cat-litter-multiple-cats-odor-control/",
+    permanent: true
+  },
+  {
+    source: "/cdn-cgi/l/email-protection/:path*",
+    destination: "/contact/",
+    permanent: true
+  },
+  {
+    source: "/products/subscription",
+    destination: "/support/subscription/",
+    permanent: true
+  },
+  {
+    source: "/products/subscription/",
+    destination: "/support/subscription/",
+    permanent: true
+  },
+  {
+    source: "/products/purrify-activated-carbon",
+    destination: "/products/",
+    permanent: true
+  },
+  {
+    source: "/products/purrify-activated-carbon/",
+    destination: "/products/",
+    permanent: true
+  },
+  {
+    source: "/ammonia-control",
+    destination: "/learn/ammonia-science/",
+    permanent: true
+  },
+  {
+    source: "/canada",
+    destination: "/stores/",
+    permanent: true
+  },
+  {
+    source: "/fr/support",
+    destination: "/support/",
+    permanent: true
+  },
+  {
+    source: "/fr/support/:path*",
+    destination: "/support/:path*/",
+    permanent: true
+  },
+  {
+    source: "/fr/stores",
+    destination: "/stores/",
+    permanent: true
+  },
+  {
+    source: "/fr/case-studies",
+    destination: "/case-studies/",
+    permanent: true
+  },
+  {
+    source: "/fr/about/our-story",
+    destination: "/about/our-story/",
+    permanent: true
+  },
+  {
+    source: "/fr/invest",
+    destination: "/invest/",
+    permanent: true
+  },
+  {
+    source: "/fr/privacy-policy",
+    destination: "/privacy-policy/",
+    permanent: true
+  },
+  {
+    source: "/fr/affiliate",
+    destination: "/affiliate/",
+    permanent: true
+  },
+  {
+    source: "/fr/terms",
+    destination: "/terms/",
+    permanent: true
+  },
+  {
+    source: "/fr/contact",
+    destination: "/contact/",
+    permanent: true
+  },
+  {
+    source: "/fr/b2b",
+    destination: "/b2b/",
+    permanent: true
+  },
+  {
+    source: "/fr/referral",
+    destination: "/referral/",
+    permanent: true
+  },
+  {
+    source: "/fr/learn/ammonia-science",
+    destination: "/learn/ammonia-science/",
+    permanent: true
+  },
+  {
+    source: "/fr/learn/faq",
+    destination: "/learn/faq/",
+    permanent: true
+  },
+  {
+    source: "/fr/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative",
+    destination: "/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/",
+    permanent: true
+  },
+  {
+    source: "/fr/learn/cat-litter-ammonia-health-risks",
+    destination: "/learn/cat-litter-ammonia-health-risks/",
+    permanent: true
+  },
+  {
+    source: "/fr/learn/cat-litter-guide",
+    destination: "/learn/cat-litter-guide/",
+    permanent: true
+  },
+  {
+    source: "/fr/learn/how-activated-carbon-works",
+    destination: "/learn/how-activated-carbon-works/",
+    permanent: true
+  },
+  {
+    source: "/fr/learn/glossary",
+    destination: "/learn/glossary/",
+    permanent: true
+  },
+  {
+    source: "/fr/learn/how-it-works",
+    destination: "/learn/how-it-works/",
+    permanent: true
+  },
+  {
+    source: "/fr/learn/how-it-works/",
+    destination: "/learn/how-it-works/",
+    permanent: true
+  },
+  {
+    source: "/fr/learn/safety",
+    destination: "/learn/safety/",
+    permanent: true
+  },
+  {
+    source: "/fr/learn/science",
+    destination: "/learn/science/",
+    permanent: true
+  },
+  {
+    source: "/fr/locations/province/:province(alberta|british-columbia|manitoba|nova-scotia|ontario|quebec|saskatchewan)",
+    destination: "/locations/province/:province/",
+    permanent: true
+  },
+
   // --- FREE/OTHER REDIRECTS ---
 
 

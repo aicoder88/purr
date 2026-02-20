@@ -61,10 +61,6 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     };
   }
 
-  // Build hreflang alternates with self-referencing support
-  const hrefLang = locale === 'en' ? 'en-CA' :
-    locale === 'fr' ? 'fr-CA' : 'en-CA';
-
   const metaTitle = post.seoTitle || post.title;
   const metaDescription = post.seoDescription || post.excerpt;
   const metaImageUrl = post.image.startsWith('http') ? post.image : `${SITE_URL}${post.image}`;
@@ -73,19 +69,21 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     ? `${SITE_URL}/blog/${slug}/`
     : `${SITE_URL}/${locale}/blog/${slug}/`;
 
+  const languages: Record<string, string> = {
+    'en-CA': `${SITE_URL}/blog/${slug}/`,
+    'en-US': `${SITE_URL}/blog/${slug}/`,
+    'x-default': `${SITE_URL}/blog/${slug}/`,
+  };
+  if (locale === 'fr') {
+    languages['fr-CA'] = canonicalSlugPath;
+  }
+
   return {
     title: `${metaTitle} | ${SITE_NAME}`,
     description: metaDescription,
     alternates: {
-      canonical: post.canonicalUrl || canonicalSlugPath,
-      languages: {
-        'en-CA': `${SITE_URL}/blog/${slug}/`,
-        'fr-CA': `${SITE_URL}/fr/blog/${slug}/`,
-        'en-US': `${SITE_URL}/blog/${slug}/`,
-        'x-default': `${SITE_URL}/blog/${slug}/`,
-        // Self-reference for the current locale
-        [hrefLang]: canonicalSlugPath,
-      },
+      canonical: canonicalSlugPath,
+      languages,
     },
     robots: {
       index: true,

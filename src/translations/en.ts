@@ -3015,19 +3015,6 @@ export const en = {
   },
 
   // Social Proof Badges Section
-  socialProofBadges: {
-    trustedVerified: "Trusted & Verified",
-    findUsOn: "Find Us On",
-    viewOnPlatform: "View Purrify on {platform}",
-    platforms: {
-      trustpilot: "Trustpilot",
-      googleBusiness: "Google Business",
-      crunchbase: "Crunchbase",
-      productHunt: "Product Hunt",
-      yelp: "Yelp",
-      wellfound: "Wellfound"
-    }
-  },
 
   // B2B Partner Benefits Section
   b2bCaseStudies: {
