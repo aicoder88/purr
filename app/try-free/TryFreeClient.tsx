@@ -5,10 +5,8 @@ import { Button } from '@/components/ui/button';
 import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { Check, Star, Truck, ShieldCheck, Clock, Sparkles } from 'lucide-react';
-import { getProductPrice, formatProductPrice } from '@/lib/pricing';
+import { formatProductPrice } from '@/lib/pricing';
 import { getPaymentLink } from '@/lib/payment-links';
-import { useEffect, useRef, useCallback } from 'react';
-import { trackTikTokClientEvent } from '@/lib/tiktok-tracking';
 
 
 
@@ -17,7 +15,6 @@ import { trackTikTokClientEvent } from '@/lib/tiktok-tracking';
 export function TryFreeClient() {
   const t = useTranslations();
   const locale = useLocale();
-  const viewTracked = useRef(false);
 
   // Fallback to empty object if translation is missing to prevent crash
   // In a real app we might want to ensure types guarantee this exists
@@ -47,44 +44,8 @@ export function TryFreeClient() {
     claimCta: ''
   };
 
-  const productKey = 'trial';
-  const productName = 'Purrify Trial Size (12g)';
   const trialPrice = formatProductPrice('trial', locale);
-  const numericPrice = getProductPrice(productKey);
   const checkoutUrl = getPaymentLink('trialSingle') || '/products/trial-size';
-
-  useEffect(() => {
-    if (viewTracked.current) return;
-    viewTracked.current = true;
-
-    trackTikTokClientEvent('ViewContent', {
-      content_id: productKey,
-      content_name: productName,
-      content_type: 'product',
-      value: numericPrice,
-      currency: 'CAD',
-    });
-  }, [numericPrice]);
-
-  const handleGetTrial = useCallback(() => {
-    trackTikTokClientEvent('AddToCart', {
-      content_id: productKey,
-      content_name: productName,
-      content_type: 'product',
-      quantity: 1,
-      value: numericPrice,
-      currency: 'CAD',
-    });
-
-    trackTikTokClientEvent('InitiateCheckout', {
-      content_id: productKey,
-      content_name: productName,
-      content_type: 'product',
-      quantity: 1,
-      value: numericPrice,
-      currency: 'CAD',
-    });
-  }, [numericPrice]);
 
   const benefits = [
     { icon: Sparkles, text: copy.benefits?.[0] || '' },
@@ -141,7 +102,6 @@ export function TryFreeClient() {
                     asChild
                     size="lg"
                     className="w-full bg-[#03E46A] dark:bg-[#04D162] hover:bg-[#02C55A] dark:hover:bg-[#04D162]/90 text-white dark:text-gray-900 font-bold text-lg py-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
-                    onClick={handleGetTrial}
                   >
                     <a href={checkoutUrl}>
                       {copy.cta}
@@ -256,7 +216,6 @@ export function TryFreeClient() {
               asChild
               size="lg"
               className="bg-white dark:bg-gray-900 text-[#03E46A] dark:text-[#04D162] hover:bg-gray-100 dark:hover:bg-gray-800 font-bold text-lg px-8 py-6 rounded-xl shadow-lg"
-              onClick={handleGetTrial}
             >
               <a href={checkoutUrl}>
                 {copy.claimCta}

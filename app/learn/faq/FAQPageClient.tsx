@@ -5,7 +5,7 @@ import { useState, useCallback } from 'react';
 import { Container } from '../../../src/components/ui/container';
 import { Button } from '../../../src/components/ui/button';
 import { useTranslation } from '../../../src/lib/translation-context';
-import { useTranslations, useLocale } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { useCurrency } from '../../../src/lib/currency-context';
 import { RelatedContent } from '../../../src/components/seo/RelatedContent';
 import { formatProductPrice } from '../../../src/lib/pricing';
@@ -422,54 +422,72 @@ export default function FAQPageClient() {
                   )}
                 </div>
 
-                <div className="space-y-4">
-                  {filteredFAQs.map((item: FAQItem) => (
-                    <div key={item.id} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 overflow-hidden hover:shadow-xl transition-all duration-300">
-                      <button
-                        onClick={() => handleToggleItem(item.id)}
-                        className="w-full p-6 text-left flex items-center justify-between bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all duration-300"
-                      >
-                        <div className="flex-1">
-                          <h4 className="faq-question text-lg font-heading font-semibold text-gray-900 dark:text-gray-100 mb-2">
-                            {item.question}
-                          </h4>
-                          <div className="flex flex-wrap gap-2">
-                            {item.featured && (
-                              <span className="px-2 py-1 bg-deep-coral/10 dark:bg-deep-coral/40 text-deep-coral dark:text-white rounded-full text-xs font-medium">
-                                {faqPage?.popularTag || 'Popular'}
-                              </span>
-                            )}
-                            <span className="px-2 py-1 bg-electric-indigo/10 dark:bg-electric-indigo/40 text-electric-indigo dark:text-white rounded-full text-xs font-medium">
-                              {categories.find((cat: FAQCategory) => cat.id === item.category)?.name}
-                            </span>
-                          </div>
-                        </div>
-                        {openItems.includes(item.id) ? (
-                          <ChevronUp className="w-5 h-5 text-gray-400 dark:text-gray-500" />
-                        ) : (
-                          <ChevronDown className="w-5 h-5 text-gray-400 dark:text-gray-500" />
-                        )}
-                      </button>
+                <div className="space-y-8">
+                  {categories.filter((cat: FAQCategory) => cat.id !== 'all').map((category: FAQCategory) => {
+                    const categoryFAQs = filteredFAQs.filter((item: FAQItem) => item.category === category.id);
 
-                      {openItems.includes(item.id) && (
-                        <div className="px-6 pb-6 border-t border-gray-100 dark:border-gray-700 animate-in slide-in-from-top duration-300">
-                          <p className="faq-answer text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
-                            {item.answer}
-                          </p>
-                          {(item as { link?: string }).link && (
-                            <Link href={`${localePrefix}${(item as { link?: string }).link}`}>
-                              <Button
-                                size="sm"
-                                className="mt-4 bg-gradient-to-r from-deep-coral to-electric-indigo hover:from-deep-coral-600 hover:to-electric-indigo-600 text-white dark:text-gray-100 font-semibold hover:scale-105 transition-all duration-300"
-                              >
-                                {((t.nav as any)?.safetyInfo || 'Safety Information') + ' \u2192'}
-                              </Button>
-                            </Link>
-                          )}
+                    if (categoryFAQs.length === 0) return null;
+
+                    return (
+                      <div key={category.id} className="space-y-4">
+                        <div className="flex items-center gap-3 pb-2 border-b border-gray-200 dark:border-gray-700">
+                          <div className="p-2 bg-electric-indigo/10 dark:bg-electric-indigo/20 rounded-lg">
+                            <category.icon className="w-6 h-6 text-electric-indigo dark:text-electric-indigo-400" />
+                          </div>
+                          <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100">
+                            {category.name}
+                          </h3>
                         </div>
-                      )}
-                    </div>
-                  ))}
+
+                        <div className="space-y-4">
+                          {categoryFAQs.map((item: FAQItem) => (
+                            <div key={item.id} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl shadow-sm border border-electric-indigo/10 dark:border-electric-indigo/20 overflow-hidden hover:shadow-md transition-all duration-300">
+                              <button
+                                onClick={() => handleToggleItem(item.id)}
+                                className="w-full p-6 text-left flex items-center justify-between bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all duration-300"
+                              >
+                                <div className="flex-1">
+                                  <h4 className="faq-question text-lg font-heading font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                                    {item.question}
+                                  </h4>
+                                  <div className="flex flex-wrap gap-2">
+                                    {item.featured && (
+                                      <span className="px-2 py-1 bg-deep-coral/10 dark:bg-deep-coral/40 text-deep-coral dark:text-white rounded-full text-xs font-medium">
+                                        {faqPage?.popularTag || 'Popular'}
+                                      </span>
+                                    )}
+                                  </div>
+                                </div>
+                                {openItems.includes(item.id) ? (
+                                  <ChevronUp className="w-5 h-5 text-gray-400 dark:text-gray-500 shrink-0 ml-4" />
+                                ) : (
+                                  <ChevronDown className="w-5 h-5 text-gray-400 dark:text-gray-500 shrink-0 ml-4" />
+                                )}
+                              </button>
+
+                              {openItems.includes(item.id) && (
+                                <div className="px-6 pb-6 border-t border-gray-100 dark:border-gray-700 animate-in slide-in-from-top duration-300 bg-white/50 dark:bg-gray-800/50">
+                                  <p className="faq-answer text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
+                                    {item.answer}
+                                  </p>
+                                  {(item as { link?: string }).link && (
+                                    <Link href={`${localePrefix}${(item as { link?: string }).link}`}>
+                                      <Button
+                                        size="sm"
+                                        className="mt-4 bg-gradient-to-r from-deep-coral to-electric-indigo hover:from-deep-coral-600 hover:to-electric-indigo-600 text-white dark:text-gray-100 font-semibold hover:scale-105 transition-all duration-300"
+                                      >
+                                        {((t.nav as any)?.safetyInfo || 'Safety Information') + ' \u2192'}
+                                      </Button>
+                                    </Link>
+                                  )}
+                                </div>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
 
                 {filteredFAQs.length === 0 && (

@@ -2,10 +2,10 @@
 
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import { Calculator, Cat, Check, ChevronRight, DollarSign, Home, Info, Leaf, Share2, TrendingDown } from 'lucide-react';
+import { Calculator, Cat, Check, ChevronRight, DollarSign, Home, Info, Leaf, Share2, TrendingDown, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
-import { useTranslations, useLocale } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { localizePath } from '@/lib/i18n/locale-path';
 
 interface LitterType {
@@ -181,7 +181,7 @@ const COPY: Record<'en' | 'fr', ToolCopy> = {
     litterLabel: 'Litter Type',
     customPriceLabel: 'Your Price per kg (optional)',
     customPricePlaceholder: 'Enter a custom price',
-    propertiesHeading: 'Litter Properties',
+    propertiesHeading: 'Litter Properties (Without Purrify)',
     odorLabel: 'Odor',
     dustLabel: 'Dust',
     clumpingLabel: 'Clumping',
@@ -190,20 +190,20 @@ const COPY: Record<'en' | 'fr', ToolCopy> = {
     no: 'No',
     ecoTrue: 'Biodegradable',
     ecoFalse: 'Not biodegradable',
-    annualCostHeading: 'Your Annual Cat Litter Cost',
+    annualCostHeading: 'Your Annual Combined Cost',
     yearlySuffix: '/year',
     monthlyLabel: 'Monthly',
     dailyLabel: 'Daily',
-    usageHeading: 'Litter Usage',
+    usageHeading: 'Required Litter Volumes',
     monthlyUsageLabel: 'Monthly usage',
     annualUsageLabel: 'Annual usage',
     potentialSavingsHeading: 'Potential Savings',
     potentialSavingsBodyPrefix: 'Switching to',
     potentialSavingsBodySuffix: 'could reduce annual cost.',
-    addDeodorizer: 'Add Deodorizer',
+    addDeodorizer: 'Add Purrify Deodorizer',
     addDeodorizerBody: 'Activated carbon can extend litter life and reduce odor without perfume masking.',
     deodorizerCostLabel: 'Deodorizer cost',
-    litterSavingsLabel: 'Litter savings',
+    litterSavingsLabel: 'Litter savings (less frequent changes)',
     netCostLabel: 'Net cost',
     copiedLink: 'Link Copied',
     shareResults: 'Share Results',
@@ -254,20 +254,20 @@ const COPY: Record<'en' | 'fr', ToolCopy> = {
     no: 'Non',
     ecoTrue: 'Biodegradable',
     ecoFalse: 'Non biodegradable',
-    annualCostHeading: 'Cout Annuel de Litiere',
+    annualCostHeading: 'Votre Cout Annuel Total',
     yearlySuffix: '/an',
     monthlyLabel: 'Mensuel',
     dailyLabel: 'Quotidien',
-    usageHeading: 'Utilisation de Litiere',
-    monthlyUsageLabel: 'Utilisation mensuelle',
-    annualUsageLabel: 'Utilisation annuelle',
+    usageHeading: 'Volumes de Litiere Requis',
+    monthlyUsageLabel: 'Mensuellement',
+    annualUsageLabel: 'Annuellement',
     potentialSavingsHeading: 'Economies Potentielles',
     potentialSavingsBodyPrefix: 'Passer a',
     potentialSavingsBodySuffix: 'peut reduire votre cout annuel.',
-    addDeodorizer: 'Ajouter un Desodorisant',
-    addDeodorizerBody: 'Le carbone active peut prolonger la duree d usage de la litiere et reduire les odeurs.',
+    addDeodorizer: 'Ajouter le Desodorisant Purrify',
+    addDeodorizerBody: 'Le carbone active peut prolonger la duree d usage de la litiere et reduire les odeurs sans parfums masquants.',
     deodorizerCostLabel: 'Cout desodorisant',
-    litterSavingsLabel: 'Economies litiere',
+    litterSavingsLabel: 'Economies litiere (changements moins frequents)',
     netCostLabel: 'Cout net',
     copiedLink: 'Lien Copie',
     shareResults: 'Partager les Resultats',
@@ -315,14 +315,22 @@ export default function CalculatorContent() {
   const effectivePrice = customPricePerKg ?? selectedLitterType.pricePerKg;
 
   const calculations = useMemo(() => {
-    const monthlyUsageKg = selectedLitterType.usagePerCatPerMonth * numberOfCats;
-    const monthlyCost = monthlyUsageKg * effectivePrice;
-    const annualCost = monthlyCost * 12;
+    // Odor is the #1 reason for full litter changes, especially with clumping litter.
+    // Activated carbon extends the life dramatically. We estimate 40% reduction for clumping and 25% for non-clumping.
+    const savingsFactor = selectedLitterType.clumping ? 0.40 : 0.25;
+
+    const baseMonthlyUsageKg = selectedLitterType.usagePerCatPerMonth * numberOfCats;
+    const actualMonthlyUsageKg = useDeodorizer ? baseMonthlyUsageKg * (1 - savingsFactor) : baseMonthlyUsageKg;
+
+    const baseAnnualLitterCost = baseMonthlyUsageKg * effectivePrice * 12;
 
     const deodorizerMonthly = numberOfCats <= 1 ? 8.99 : numberOfCats <= 2 ? 12.99 : 16.99;
     const deodorizerAnnual = deodorizerMonthly * 12;
-    const litterSavings = annualCost * 0.2;
-    const netDeodorizerCost = deodorizerAnnual - litterSavings;
+
+    const litterSavings = useDeodorizer ? baseAnnualLitterCost * savingsFactor : 0;
+
+    const finalAnnualCost = (useDeodorizer ? (baseAnnualLitterCost - litterSavings) + deodorizerAnnual : baseAnnualLitterCost);
+    const finalMonthlyCost = finalAnnualCost / 12;
 
     const allLitterCosts = LITTER_TYPES.map((litter) => ({
       ...litter,
@@ -330,25 +338,25 @@ export default function CalculatorContent() {
     })).sort((a, b) => a.annualCost - b.annualCost);
 
     const cheapest = allLitterCosts[0];
-    const potentialSavings = annualCost - cheapest.annualCost;
+    const potentialSavings = baseAnnualLitterCost - cheapest.annualCost;
 
     return {
-      monthlyUsageKg,
-      monthlyCost,
-      annualCost,
-      costPerDay: annualCost / 365,
+      baseAnnualLitterCost,
+      actualMonthlyUsageKg,
+      finalMonthlyCost,
+      finalAnnualCost,
+      costPerDay: finalAnnualCost / 365,
       deodorizerAnnual,
       litterSavings,
-      netDeodorizerCost,
       allLitterCosts,
       cheapest,
       potentialSavings,
     };
-  }, [effectivePrice, numberOfCats, selectedLitterType.usagePerCatPerMonth]);
+  }, [effectivePrice, numberOfCats, selectedLitterType.usagePerCatPerMonth, selectedLitterType.clumping, useDeodorizer]);
 
   const handleShare = async () => {
     const url = `${window.location.origin}/tools/cat-litter-calculator?cats=${numberOfCats}&litter=${selectedLitter}`;
-    const text = `${copy.shareBodyPrefix} $${calculations.annualCost.toFixed(0)} ${copy.shareBodySuffix}`;
+    const text = `${copy.shareBodyPrefix} $${calculations.finalAnnualCost.toFixed(0)} ${copy.shareBodySuffix}`;
 
     if (navigator.share) {
       try {
@@ -369,304 +377,325 @@ export default function CalculatorContent() {
   };
 
   return (
-    <>
-      <div className="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+    <div className="bg-gray-50 dark:bg-gray-950 font-sans selection:bg-green-200 dark:selection:bg-green-900">
+      <div className="border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
         <Container>
-          <nav aria-label={copy.breadcrumbAria} className="py-3 flex items-center text-sm text-gray-600 dark:text-gray-300">
-            <Link href={localizePath('/', locale)} className="flex items-center hover:text-green-600 dark:hover:text-green-400">
+          <nav aria-label={copy.breadcrumbAria} className="py-3 flex items-center text-sm text-gray-600 dark:text-gray-400">
+            <Link href={localizePath('/', locale)} className="flex items-center hover:text-green-600 dark:hover:text-green-400 transition-colors">
               <Home className="w-4 h-4 mr-1" />
               {copy.home}
             </Link>
-            <ChevronRight className="w-4 h-4 mx-2" />
-            <span className="text-gray-900 dark:text-gray-100 font-medium">{copy.pageName}</span>
+            <ChevronRight className="w-4 h-4 mx-2 opacity-50" />
+            <span className="text-gray-900 dark:text-gray-200 font-medium">{copy.pageName}</span>
           </nav>
         </Container>
       </div>
 
-      <section className="bg-gradient-to-b from-green-50 to-white dark:from-gray-900 dark:to-gray-800 py-12">
-        <Container>
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full mb-6">
+      <section className="relative overflow-hidden bg-gradient-to-b from-green-50/50 via-white to-white dark:from-green-950/20 dark:via-gray-950 dark:to-gray-950 pt-16 pb-24">
+        {/* Decorative elements */}
+        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-green-100/50 dark:from-green-900/10 pointer-events-none rounded-b-[100px] blur-3xl opacity-50" />
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-green-300/30 dark:bg-green-700/20 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-48 -left-24 w-72 h-72 bg-emerald-300/20 dark:bg-emerald-800/20 rounded-full blur-[80px] pointer-events-none" />
+
+        <Container className="relative z-10">
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-white dark:bg-gray-800 rounded-2xl shadow-xl shadow-green-900/5 border border-green-100 dark:border-green-900/50 mb-8 transform -rotate-3 hover:rotate-0 transition-transform duration-300">
               <Calculator className="w-8 h-8 text-green-600 dark:text-green-400" />
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4">{copy.heroTitle}</h1>
-            <p className="text-lg text-gray-600 dark:text-gray-300">{copy.heroDescription}</p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-6">
+              {copy.heroTitle}
+            </h1>
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+              {copy.heroDescription}
+            </p>
           </div>
-        </Container>
-      </section>
 
-      <section className="py-12 bg-white dark:bg-gray-900">
-        <Container>
-          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-50 mb-6">{copy.detailsHeading}</h2>
+          <div className="max-w-6xl mx-auto border border-gray-200/50 dark:border-gray-800 bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl shadow-2xl shadow-gray-200/50 dark:shadow-black/50 rounded-3xl overflow-hidden grid lg:grid-cols-12 gap-0 relative">
+            {/* Split Grid */}
+            <div className="lg:col-span-7 p-6 md:p-10 border-r border-gray-200/50 dark:border-gray-800">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8 flex items-center gap-2">
+                <span className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-400 flex items-center justify-center text-sm">1</span>
+                {copy.detailsHeading}
+              </h2>
 
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
-                  <Cat className="w-4 h-4 inline mr-2" />
-                  {copy.catsLabel}
-                </label>
-                <div className="flex items-center gap-3">
-                  <button
-                    onClick={() => setNumberOfCats(Math.max(1, numberOfCats - 1))}
-                    className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 font-bold text-lg"
-                  >
-                    -
-                  </button>
-                  <span className="text-2xl font-bold text-gray-900 dark:text-gray-50 w-12 text-center">{numberOfCats}</span>
-                  <button
-                    onClick={() => setNumberOfCats(Math.min(10, numberOfCats + 1))}
-                    className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 font-bold text-lg"
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
+              <div className="space-y-8">
+                {/* Cats & Litter Type Row */}
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 flex items-center gap-2">
+                      <Cat className="w-4 h-4 text-gray-400 dark:text-gray-500" />
+                      {copy.catsLabel}
+                    </label>
+                    <div className="flex items-center bg-gray-50 dark:bg-gray-800 rounded-xl p-1 border border-gray-200 dark:border-gray-700 focus-within:ring-2 focus-within:ring-green-500 focus-within:border-transparent transition-all">
+                      <button
+                        onClick={() => setNumberOfCats(Math.max(1, numberOfCats - 1))}
+                        className="w-12 h-12 flex items-center justify-center rounded-lg hover:bg-white dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 shadow-sm transition-colors text-xl font-medium"
+                      >
+                        -
+                      </button>
+                      <span className="flex-1 text-2xl font-bold text-center text-gray-900 dark:text-white">{numberOfCats}</span>
+                      <button
+                        onClick={() => setNumberOfCats(Math.min(10, numberOfCats + 1))}
+                        className="w-12 h-12 flex items-center justify-center rounded-lg hover:bg-white dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 shadow-sm transition-colors text-xl font-medium"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
 
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">{copy.litterLabel}</label>
-                <select
-                  value={selectedLitter}
-                  onChange={(event) => {
-                    setSelectedLitter(event.target.value);
-                    setCustomPricePerKg(null);
-                  }}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500"
-                >
-                  {LITTER_TYPES.map((litter) => (
-                    <option key={litter.id} value={litter.id}>
-                      {`${litter.name} (~$${litter.pricePerKg.toFixed(2)}/kg)`}
-                    </option>
-                  ))}
-                </select>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">{selectedLitterType.notes}</p>
-              </div>
-
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
-                  <DollarSign className="w-4 h-4 inline mr-1" />
-                  {copy.customPriceLabel}
-                </label>
-                <input
-                  type="number"
-                  step="0.01"
-                  min="0"
-                  placeholder={copy.customPricePlaceholder}
-                  value={customPricePerKg ?? ''}
-                  onChange={(event) => setCustomPricePerKg(event.target.value ? parseFloat(event.target.value) : null)}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500"
-                />
-              </div>
-
-              <div className="bg-white dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-600">
-                <h3 className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-3">{copy.propertiesHeading}</h3>
-                <div className="grid grid-cols-2 gap-3 text-sm">
-                  <div className="flex items-center gap-2">
-                    <span className="text-gray-500 dark:text-gray-400">{copy.odorLabel}:</span>
-                    <div className="flex">
-                      {[1, 2, 3, 4, 5].map((rating) => (
-                        <span key={rating} className={rating <= selectedLitterType.odorRating ? 'text-yellow-500 dark:text-yellow-400' : 'text-gray-300 dark:text-gray-600'}>
-                          ★
-                        </span>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">{copy.litterLabel}</label>
+                    <select
+                      value={selectedLitter}
+                      onChange={(event) => {
+                        setSelectedLitter(event.target.value);
+                        setCustomPricePerKg(null);
+                      }}
+                      className="w-full h-[56px] px-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white font-medium focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all shadow-inner"
+                    >
+                      {LITTER_TYPES.map((litter) => (
+                        <option key={litter.id} value={litter.id}>
+                          {litter.name} (~${litter.pricePerKg.toFixed(2)}/kg)
+                        </option>
                       ))}
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-gray-500 dark:text-gray-400">{copy.dustLabel}:</span>
-                    <span className="text-gray-900 dark:text-gray-100">{selectedLitterType.dustLevel}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-gray-500 dark:text-gray-400">{copy.clumpingLabel}:</span>
-                    <span className={selectedLitterType.clumping ? 'text-green-600 dark:text-green-400' : 'text-gray-500 dark:text-gray-400'}>
-                      {selectedLitterType.clumping ? copy.yes : copy.no}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Leaf className={`w-4 h-4 ${selectedLitterType.biodegradable ? 'text-green-600 dark:text-green-400' : 'text-gray-400 dark:text-gray-500'}`} />
-                    <span className={selectedLitterType.biodegradable ? 'text-green-600 dark:text-green-400' : 'text-gray-500 dark:text-gray-400'}>
-                      {selectedLitterType.biodegradable ? copy.ecoTrue : copy.ecoFalse}
-                    </span>
+                    </select>
                   </div>
                 </div>
+
+                {/* THE MOST IMPORTANT PART: ADD PURRIFY DEODORIZER RIGHT UNDER LITTER */}
+                <div className={`mt-6 rounded-2xl p-5 md:p-6 border-2 transition-all duration-300 cursor-pointer overflow-hidden relative ${useDeodorizer ? 'bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/30 border-green-500/50 dark:border-green-400/50 shadow-md shadow-green-500/10' : 'bg-gray-50/50 dark:bg-gray-800/50 border-gray-200 hover:border-green-300 dark:border-gray-700 dark:hover:border-green-700'}`} onClick={() => setUseDeodorizer(!useDeodorizer)}>
+                  {useDeodorizer && (
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-green-400/10 dark:bg-green-400/5 rounded-full blur-3xl" />
+                  )}
+                  <div className="flex items-start gap-4 relative z-10">
+                    <div className="flex-shrink-0 mt-1">
+                      <div className={`w-6 h-6 rounded flex items-center justify-center border transition-colors ${useDeodorizer ? 'bg-green-600 border-green-600 text-white' : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900'}`}>
+                        {useDeodorizer && <Check className="w-4 h-4" />}
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className={`text-lg font-bold flex items-center gap-2 ${useDeodorizer ? 'text-green-800 dark:text-green-300' : 'text-gray-900 dark:text-gray-100'}`}>
+                        <Sparkles className={`w-5 h-5 ${useDeodorizer ? 'text-green-600 dark:text-green-400' : 'text-gray-400'}`} />
+                        {copy.addDeodorizer}
+                      </h3>
+                      <p className={`text-sm mt-1.5 leading-relaxed ${useDeodorizer ? 'text-green-700 dark:text-green-400' : 'text-gray-600 dark:text-gray-400'}`}>
+                        {copy.addDeodorizerBody}
+                      </p>
+
+                      {useDeodorizer && (
+                        <div className="mt-4 pt-4 border-t border-green-200/50 dark:border-green-800/50">
+                          <div className="grid grid-cols-2 gap-4 text-sm">
+                            <div className="bg-white/60 dark:bg-gray-900/50 rounded-lg p-3">
+                              <div className="text-green-800/70 dark:text-green-400/70 mb-1 font-medium">{copy.litterSavingsLabel}</div>
+                              <div className="font-bold text-green-700 dark:text-green-300 text-lg">-${calculations.litterSavings.toFixed(0)}/year</div>
+                            </div>
+                            <div className="bg-white/60 dark:bg-gray-900/50 rounded-lg p-3">
+                              <div className="text-green-800/70 dark:text-green-400/70 mb-1 font-medium">{copy.deodorizerCostLabel}</div>
+                              <div className="font-bold text-gray-700 dark:text-gray-300 text-lg">+${calculations.deodorizerAnnual.toFixed(0)}/year</div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-6 border-t border-gray-200 dark:border-gray-800">
+                  <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 flex items-center gap-2">
+                    <DollarSign className="w-4 h-4 text-gray-400 dark:text-gray-500" />
+                    {copy.customPriceLabel}
+                  </label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                      <span className="text-gray-500 dark:text-gray-400 font-medium">$</span>
+                    </div>
+                    <input
+                      type="number"
+                      step="0.01"
+                      min="0"
+                      placeholder={copy.customPricePlaceholder}
+                      value={customPricePerKg ?? ''}
+                      onChange={(event) => setCustomPricePerKg(event.target.value ? parseFloat(event.target.value) : null)}
+                      className="w-full pl-8 pr-4 py-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-lg text-gray-900 dark:text-white font-medium focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all shadow-inner"
+                    />
+                  </div>
+                </div>
+
               </div>
             </div>
 
-            <div className="space-y-6">
-              <div className="bg-gradient-to-br from-green-500 to-green-600 dark:from-green-600 dark:to-green-700 rounded-2xl p-6 text-white dark:text-gray-50 shadow-lg">
-                <h2 className="text-lg font-medium opacity-90 mb-2">{copy.annualCostHeading}</h2>
-                <div className="text-5xl font-bold mb-4">
-                  {`$${calculations.annualCost.toFixed(0)}`}
-                  <span className="text-xl font-normal opacity-80">{copy.yearlySuffix}</span>
-                </div>
-                <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/20">
-                  <div>
-                    <div className="text-sm opacity-80">{copy.monthlyLabel}</div>
-                    <div className="text-xl font-semibold">{`$${calculations.monthlyCost.toFixed(2)}`}</div>
+            {/* Results Sidebar */}
+            <div className="lg:col-span-5 bg-gradient-to-br from-green-600 to-emerald-800 dark:from-green-900 dark:to-emerald-950 p-6 md:p-10 text-white relative flex flex-col justify-between">
+              {/* Glossy overlay */}
+              <div className="absolute inset-0 bg-white/5 dark:bg-white/2 pointer-events-none" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-green-400/20 rounded-full blur-3xl pointer-events-none" />
+
+              <div className="relative z-10 flex-col flex gap-8">
+                <div>
+                  <h2 className="text-green-100 dark:text-green-200 font-medium text-lg mb-2 flex items-center gap-2 tracking-wide">
+                    {copy.annualCostHeading}
+                  </h2>
+                  <div className="flex items-baseline flex-wrap">
+                    {useDeodorizer && calculations.baseAnnualLitterCost !== calculations.finalAnnualCost && (
+                      <span className="text-3xl text-green-300/60 dark:text-green-500/60 line-through mr-4 font-semibold shrink-0">
+                        ${calculations.baseAnnualLitterCost.toFixed(0)}
+                      </span>
+                    )}
+                    <div className="text-6xl md:text-7xl font-extrabold tracking-tight drop-shadow-sm">
+                      ${calculations.finalAnnualCost.toFixed(0)}
+                    </div>
+                    <span className="text-xl text-green-200 dark:text-green-400 ml-2 font-medium">{copy.yearlySuffix}</span>
                   </div>
-                  <div>
-                    <div className="text-sm opacity-80">{copy.dailyLabel}</div>
-                    <div className="text-xl font-semibold">{`$${calculations.costPerDay.toFixed(2)}`}</div>
+
+                  {useDeodorizer && (calculations.baseAnnualLitterCost - calculations.finalAnnualCost) > 0 && (
+                    <div className="inline-block mt-4 bg-green-400/20 border border-green-300/30 dark:border-green-700/30 rounded-full px-4 py-1.5 text-green-50 dark:text-green-100 font-medium animate-pulse text-sm">
+                      ✨ You save ${(calculations.baseAnnualLitterCost - calculations.finalAnnualCost).toFixed(0)} per year!
+                    </div>
+                  )}
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-black/10 backdrop-blur-md rounded-2xl p-4 border border-white/10">
+                    <div className="text-green-200/80 dark:text-green-400/80 text-sm font-medium mb-1">{copy.monthlyLabel}</div>
+                    <div className="text-2xl font-bold">${calculations.finalMonthlyCost.toFixed(2)}</div>
+                  </div>
+                  <div className="bg-black/10 backdrop-blur-md rounded-2xl p-4 border border-white/10">
+                    <div className="text-green-200/80 dark:text-green-400/80 text-sm font-medium mb-1">{copy.dailyLabel}</div>
+                    <div className="text-2xl font-bold">${calculations.costPerDay.toFixed(2)}</div>
                   </div>
                 </div>
+
+                <div className="bg-black/10 backdrop-blur-md rounded-2xl p-5 border border-white/10">
+                  <h3 className="font-semibold text-white dark:text-gray-100 mb-4 flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-green-300 dark:text-green-500" />
+                    {copy.usageHeading}
+                  </h3>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-end border-b border-white/10 pb-2">
+                      <span className="text-green-100 dark:text-green-200 text-sm">{copy.monthlyUsageLabel}</span>
+                      <div className="text-right">
+                        {useDeodorizer && (
+                          <span className="block text-xs text-green-300/60 dark:text-green-500/60 line-through uppercase">{(selectedLitterType.usagePerCatPerMonth * numberOfCats).toFixed(1)} kg</span>
+                        )}
+                        <span className="font-bold text-lg">{calculations.actualMonthlyUsageKg.toFixed(1)} kg</span>
+                      </div>
+                    </div>
+                    <div className="flex justify-between items-end">
+                      <span className="text-green-100 dark:text-green-200 text-sm">{copy.annualUsageLabel}</span>
+                      <div className="text-right">
+                        {useDeodorizer && (
+                          <span className="block text-xs text-green-300/60 dark:text-green-500/60 line-through uppercase">{((selectedLitterType.usagePerCatPerMonth * numberOfCats) * 12).toFixed(0)} kg</span>
+                        )}
+                        <span className="font-bold text-lg">{(calculations.actualMonthlyUsageKg * 12).toFixed(0)} kg</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <Button
+                  onClick={handleShare}
+                  className="w-full bg-white text-green-900 hover:bg-gray-100 dark:bg-gray-900 dark:text-green-400 dark:hover:bg-gray-800 border-none h-14 rounded-xl text-lg font-bold shadow-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  {copied ? (
+                    <span className="flex items-center justify-center gap-2"><Check className="w-5 h-5" /> {copy.copiedLink}</span>
+                  ) : (
+                    <span className="flex items-center justify-center gap-2"><Share2 className="w-5 h-5" /> {copy.shareResults}</span>
+                  )}
+                </Button>
               </div>
-
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-5 border border-gray-200 dark:border-gray-700">
-                <h3 className="font-semibold text-gray-900 dark:text-gray-50 mb-3">{copy.usageHeading}</h3>
-                <div className="text-sm text-gray-600 dark:text-gray-300 space-y-2">
-                  <div className="flex justify-between">
-                    <span>{copy.monthlyUsageLabel}:</span>
-                    <span className="font-medium text-gray-900 dark:text-gray-100">{`${calculations.monthlyUsageKg.toFixed(1)} kg`}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>{copy.annualUsageLabel}:</span>
-                    <span className="font-medium text-gray-900 dark:text-gray-100">{`${(calculations.monthlyUsageKg * 12).toFixed(0)} kg`}</span>
-                  </div>
-                </div>
-              </div>
-
-              {calculations.potentialSavings > 20 && (
-                <div className="bg-amber-50 dark:bg-amber-900/30 rounded-xl p-5 border border-amber-200 dark:border-amber-700">
-                  <div className="flex items-start gap-3">
-                    <TrendingDown className="w-5 h-5 text-amber-600 dark:text-amber-400 mt-0.5" />
-                    <div>
-                      <h3 className="font-semibold text-amber-800 dark:text-amber-200">{copy.potentialSavingsHeading}</h3>
-                      <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">
-                        {`${copy.potentialSavingsBodyPrefix} ${calculations.cheapest.name} ${copy.potentialSavingsBodySuffix}`}
-                        {` $${calculations.potentialSavings.toFixed(0)}`}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              <div className="bg-blue-50 dark:bg-blue-900/30 rounded-xl p-5 border border-blue-200 dark:border-blue-700">
-                <label className="flex items-start gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={useDeodorizer}
-                    onChange={(event) => setUseDeodorizer(event.target.checked)}
-                    className="mt-1 w-5 h-5 rounded border-gray-300 dark:border-gray-600 text-green-600 dark:text-green-400 focus:ring-green-500"
-                  />
-                  <div>
-                    <span className="font-semibold text-blue-800 dark:text-blue-200">{copy.addDeodorizer}</span>
-                    <p className="text-sm text-blue-700 dark:text-blue-300 mt-1">{copy.addDeodorizerBody}</p>
-                  </div>
-                </label>
-
-                {useDeodorizer && (
-                  <div className="mt-4 pt-4 border-t border-blue-200 dark:border-blue-600 text-sm text-blue-800 dark:text-blue-200 space-y-2">
-                    <div className="flex justify-between">
-                      <span>{copy.deodorizerCostLabel}:</span>
-                      <span>{`$${calculations.deodorizerAnnual.toFixed(0)}/year`}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>{copy.litterSavingsLabel}:</span>
-                      <span className="text-green-600 dark:text-green-400">{`-$${calculations.litterSavings.toFixed(0)}/year`}</span>
-                    </div>
-                    <div className="flex justify-between font-semibold pt-2 border-t border-blue-200 dark:border-blue-600">
-                      <span>{copy.netCostLabel}:</span>
-                      <span>{`$${calculations.netDeodorizerCost.toFixed(0)}/year`}</span>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              <Button onClick={handleShare} variant="outline" className="w-full flex items-center justify-center gap-2">
-                {copied ? (
-                  <>
-                    <Check className="w-4 h-4" />
-                    {copy.copiedLink}
-                  </>
-                ) : (
-                  <>
-                    <Share2 className="w-4 h-4" />
-                    {copy.shareResults}
-                  </>
-                )}
-              </Button>
             </div>
           </div>
         </Container>
       </section>
 
-      <section className="py-12 bg-gray-50 dark:bg-gray-800">
+      {/* Info / Compare Section */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <Container>
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">{copy.compareHeading}</h2>
-            <div className="overflow-x-auto">
-              <table className="w-full bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{copy.compareHeading}</h2>
+              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">By understanding the base costs of different litters, you can see how pairing them with an extending agent like activated carbon can optimize both performance and price.</p>
+            </div>
+
+            <div className="overflow-x-auto rounded-2xl border border-gray-200 dark:border-gray-800 shadow-xl bg-white dark:bg-gray-900">
+              <table className="w-full">
                 <thead>
-                  <tr className="bg-gray-50 dark:bg-gray-800">
-                    <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 dark:text-gray-100">{copy.litterTypeHeader}</th>
-                    <th className="px-4 py-3 text-right text-sm font-semibold text-gray-900 dark:text-gray-100">{copy.priceHeader}</th>
-                    <th className="px-4 py-3 text-right text-sm font-semibold text-gray-900 dark:text-gray-100">{copy.annualCostHeader}</th>
-                    <th className="px-4 py-3 text-center text-sm font-semibold text-gray-900 dark:text-gray-100">{copy.odorHeader}</th>
-                    <th className="px-4 py-3 text-center text-sm font-semibold text-gray-900 dark:text-gray-100">{copy.ecoHeader}</th>
+                  <tr className="bg-gray-50/80 dark:bg-gray-800/80 border-b border-gray-200 dark:border-gray-800">
+                    <th className="px-6 py-5 text-left text-sm font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider">{copy.litterTypeHeader}</th>
+                    <th className="px-6 py-5 text-right text-sm font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider">{copy.priceHeader}</th>
+                    <th className="px-6 py-5 text-right text-sm font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider">{copy.annualCostHeader}</th>
+                    <th className="px-6 py-5 text-center text-sm font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider">{copy.odorHeader}</th>
+                    <th className="px-6 py-5 text-center text-sm font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider">{copy.ecoHeader}</th>
                   </tr>
                 </thead>
-                <tbody>
-                  {calculations.allLitterCosts.map((litter, index) => (
-                    <tr
-                      key={litter.id}
-                      className={`border-t border-gray-100 dark:border-gray-700 ${litter.id === selectedLitter
-                        ? 'bg-green-50 dark:bg-green-900/20'
-                        : index % 2 === 0 ? 'bg-white dark:bg-gray-900' : 'bg-gray-50 dark:bg-gray-800/50'
-                        }`}
-                    >
-                      <td className="px-4 py-3 text-sm text-gray-900 dark:text-gray-100 font-medium">
-                        {litter.name}
-                        {litter.id === selectedLitter && (
-                          <span className="ml-2 text-xs bg-green-100 dark:bg-green-800 text-green-700 dark:text-green-300 px-2 py-0.5 rounded">
-                            {copy.selectedBadge}
-                          </span>
-                        )}
-                      </td>
-                      <td className="px-4 py-3 text-sm text-right text-gray-700 dark:text-gray-300">{`$${litter.pricePerKg.toFixed(2)}`}</td>
-                      <td className="px-4 py-3 text-sm text-right font-semibold text-gray-900 dark:text-gray-100">
-                        {`$${litter.annualCost.toFixed(0)}`}
-                        <span className="text-gray-500 dark:text-gray-400 font-normal">{copy.annualShort}</span>
-                      </td>
-                      <td className="px-4 py-3 text-center">
-                        <div className="flex justify-center">
-                          {[1, 2, 3, 4, 5].map((rating) => (
-                            <span key={rating} className={`text-xs ${rating <= litter.odorRating ? 'text-yellow-500 dark:text-yellow-400' : 'text-gray-300 dark:text-gray-600'}`}>
-                              ★
-                            </span>
-                          ))}
-                        </div>
-                      </td>
-                      <td className="px-4 py-3 text-center">
-                        {litter.biodegradable ? (
-                          <Leaf className="w-4 h-4 text-green-500 dark:text-green-400 mx-auto" />
-                        ) : (
-                          <span className="text-gray-300 dark:text-gray-600">-</span>
-                        )}
-                      </td>
-                    </tr>
-                  ))}
+                <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
+                  {calculations.allLitterCosts.map((litter, index) => {
+                    const isSelected = litter.id === selectedLitter;
+                    return (
+                      <tr
+                        key={litter.id}
+                        className={`transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/50 ${isSelected ? 'bg-green-50/50 dark:bg-green-900/10' : ''}`}
+                      >
+                        <td className="px-6 py-5">
+                          <div className="flex items-center">
+                            <span className={`font-semibold ${isSelected ? 'text-green-700 dark:text-green-400' : 'text-gray-900 dark:text-gray-200'}`}>{litter.name}</span>
+                            {isSelected && (
+                              <span className="ml-3 text-[10px] font-bold uppercase tracking-wider bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 px-2 py-1 rounded-full">
+                                {copy.selectedBadge}
+                              </span>
+                            )}
+                          </div>
+                          <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">{litter.notes}</div>
+                        </td>
+                        <td className="px-6 py-5 text-sm text-right font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap">${litter.pricePerKg.toFixed(2)}</td>
+                        <td className="px-6 py-5 text-right whitespace-nowrap">
+                          <span className="font-bold text-gray-900 dark:text-gray-100">${litter.annualCost.toFixed(0)}</span>
+                          <span className="text-gray-500 dark:text-gray-500 text-sm">{copy.annualShort}</span>
+                        </td>
+                        <td className="px-6 py-5 text-center">
+                          <div className="flex justify-center gap-0.5">
+                            {[1, 2, 3, 4, 5].map((rating) => (
+                              <span key={rating} className={`text-lg transition-transform hover:scale-125 ${rating <= litter.odorRating ? 'text-yellow-400 dark:text-yellow-500' : 'text-gray-200 dark:text-gray-700'}`}>
+                                ★
+                              </span>
+                            ))}
+                          </div>
+                        </td>
+                        <td className="px-6 py-5 text-center">
+                          {litter.biodegradable ? (
+                            <Leaf className="w-5 h-5 text-green-500 dark:text-green-400 mx-auto" strokeWidth={2.5} />
+                          ) : (
+                            <span className="text-gray-300 dark:text-gray-600 font-bold">-</span>
+                          )}
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-4 text-center">
+            <p className="text-sm text-gray-500 dark:text-gray-500 mt-6 text-center italic">
               {`${copy.tableFootnotePrefix} ${numberOfCats} ${copy.tableFootnoteSuffix}`}
             </p>
           </div>
         </Container>
       </section>
 
-      <section className="py-12 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
         <Container>
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">{copy.tipsHeading}</h2>
-            <div className="space-y-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-10 text-center">{copy.tipsHeading}</h2>
+            <div className="grid md:grid-cols-2 gap-6">
               {copy.tips.map((tip, index) => (
-                <article key={tip.title} className="flex gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                  <div className="flex-shrink-0 w-8 h-8 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
-                    <span className="text-green-600 dark:text-green-400 font-bold text-sm">{index + 1}</span>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-gray-100">{tip.title}</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">{tip.description}</p>
+                <article key={tip.title} className="group p-6 bg-gray-50 dark:bg-gray-800/50 hover:bg-green-50 dark:hover:bg-green-900/10 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-green-200 dark:hover:border-green-800 transition-all duration-300">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-10 h-10 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 flex items-center justify-center group-hover:bg-green-100 dark:group-hover:bg-green-900/50 transition-colors">
+                      <span className="text-green-600 dark:text-green-400 font-bold">{index + 1}</span>
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-gray-900 dark:text-gray-100 text-lg mb-2">{tip.title}</h3>
+                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{tip.description}</p>
+                    </div>
                   </div>
                 </article>
               ))}
@@ -675,27 +704,36 @@ export default function CalculatorContent() {
         </Container>
       </section>
 
-      <section className="py-12 bg-green-50 dark:bg-gray-800">
+      <section className="py-24 bg-gradient-to-b from-green-50 to-white dark:from-green-900/20 dark:to-gray-950">
         <Container>
-          <div className="max-w-2xl mx-auto text-center">
-            <Info className="w-10 h-10 text-green-600 dark:text-green-400 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">{copy.ctaTitle}</h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-6">{copy.ctaBody}</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href={localizePath('/free', locale)}>
-                <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white dark:text-gray-100">
-                  {copy.ctaPrimary}
-                </Button>
-              </Link>
-              <Link href={localizePath('/learn/how-it-works', locale)}>
-                <Button size="lg" variant="outline">
-                  {copy.ctaSecondary}
-                </Button>
-              </Link>
+          <div className="max-w-4xl mx-auto bg-green-600 dark:bg-green-900 rounded-3xl p-8 md:p-12 text-center text-white shadow-2xl overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-black/10 rounded-full blur-2xl pointer-events-none" />
+
+            <div className="relative z-10 flex flex-col items-center">
+              <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-8 border border-white/20">
+                <Info className="w-8 h-8 text-green-100 dark:text-green-200" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-6">{copy.ctaTitle}</h2>
+              <p className="text-green-50 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-medium">
+                {copy.ctaBody}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center">
+                <Link href={localizePath('/free', locale)}>
+                  <Button size="lg" className="w-full sm:w-auto bg-white dark:bg-gray-800 text-green-700 dark:text-green-300 hover:bg-gray-100 dark:hover:bg-gray-700 h-14 px-8 text-lg font-bold rounded-xl shadow-lg border-none hover:scale-105 transition-transform">
+                    {copy.ctaPrimary}
+                  </Button>
+                </Link>
+                <Link href={localizePath('/learn/how-it-works', locale)}>
+                  <Button size="lg" variant="outline" className="w-full sm:w-auto text-white border-white/30 hover:bg-white/10 h-14 px-8 text-lg font-bold rounded-xl bg-transparent transition-all">
+                    {copy.ctaSecondary}
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </Container>
       </section>
-    </>
+    </div>
   );
 }

@@ -217,7 +217,12 @@ export function ProgressRing({ percentage, label, color = "#FF3131", size = 120,
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-2xl font-bold text-gray-900 dark:text-white dark:text-gray-100">{percentage}%</span>
+          <span className={`font-bold text-gray-900 dark:text-white dark:text-gray-100 ${size >= 120 ? 'text-2xl' :
+              size >= 80 ? 'text-xl' :
+                size >= 60 ? 'text-sm' : 'text-xs'
+            }`}>
+            {percentage}%
+          </span>
         </div>
       </div>
       <span className="mt-2 text-sm font-medium text-gray-700 dark:text-gray-300 text-center">{label}</span>

@@ -37,7 +37,7 @@ const IMAGE_LIMITS: Record<string, ImageLimit> = {
     exclude: ['blog'] // Exclude blog subfolder (has stricter limits)
   },
   // Product images should be reasonable (allow portrait)
-  'public/images/products': {
+  'public/original-images/products': {
     maxWidth: 1200,
     maxHeight: 1800,
     description: 'Product images'

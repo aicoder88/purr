@@ -20,7 +20,8 @@ const config = configManager.loadConfig();
 const PUBLIC_DIR = path.join(__dirname, '../../public');
 const OPTIMIZED_DIR = path.join(PUBLIC_DIR, 'optimized');
 const ORIGINAL_IMAGES_DIR = path.join(PUBLIC_DIR, 'original-images');
-const IMAGE_SOURCE_DIR = path.join(PUBLIC_DIR, 'images');
+const IMAGE_SOURCE_DIR = ORIGINAL_IMAGES_DIR;
+const SOURCE_CATEGORIES = ['logos', 'products', 'stores', 'team', 'icons', 'locations', 'blog', 'marketing'];
 
 // Initialize metadata generator
 const metadataGenerator = new MetadataGenerator(
@@ -99,11 +100,11 @@ async function getImageMetadata(filePath) {
 /**
  * Generate responsive image at specific width
  */
-async function generateResponsiveImage(filePath, format, width, quality, compressionLevel) {
+async function generateResponsiveImage(filePath, format, width, quality, compressionLevel, outputDir, outputPrefix) {
   const filename = path.basename(filePath, path.extname(filePath));
   const sanitizedFilename = filename.replaceAll(/\s+/g, '-');
-  const outputFilename = `${sanitizedFilename}-${width}w.${format}`;
-  const outputPath = path.join(OPTIMIZED_DIR, outputFilename);
+  const outputFilename = `${outputPrefix}${sanitizedFilename}-${width}w.${format}`;
+  const outputPath = path.join(outputDir, `${sanitizedFilename}-${width}w.${format}`);
 
   try {
     let pipeline = sharp(filePath).resize(width, null, {
@@ -133,7 +134,7 @@ async function generateResponsiveImage(filePath, format, width, quality, compres
 
     const outputStat = fs.statSync(outputPath);
     return {
-      path: `optimized/${outputFilename}`,
+      path: path.posix.join('optimized', outputFilename),
       size: outputStat.size,
       width
     };
@@ -169,6 +170,12 @@ async function optimizeImage(filePath) {
 
   try {
     const filename = path.basename(filePath);
+    const relativeSourcePath = path.relative(IMAGE_SOURCE_DIR, filePath);
+    const relativeDir = path.dirname(relativeSourcePath);
+    const normalizedRelativeDir = relativeDir === '.' ? '' : relativeDir.replaceAll(path.sep, '/');
+    const outputDir = path.join(OPTIMIZED_DIR, relativeDir);
+    const outputPrefix = normalizedRelativeDir ? `${normalizedRelativeDir}/` : '';
+    ensureDirectoryExists(outputDir);
 
     // Skip already optimized images
     if (filePath.includes('/optimized/')) {
@@ -227,7 +234,9 @@ async function optimizeImage(filePath) {
           format,
           size,
           profile.quality,
-          profile.compressionLevel
+          profile.compressionLevel,
+          outputDir,
+          outputPrefix
         );
 
         if (output) {
@@ -241,12 +250,6 @@ async function optimizeImage(filePath) {
     // Generate blur placeholder for images larger than 100KB
     if (originalSize > 100 * 1024) {
       result.blurDataURL = await generateBlurPlaceholder(filePath);
-    }
-
-    // Move original to backup directory
-    const backupPath = path.join(ORIGINAL_IMAGES_DIR, filename);
-    if (!fs.existsSync(backupPath)) {
-      fs.copyFileSync(filePath, backupPath);
     }
 
     const processingTime = Date.now() - startTime;
@@ -268,7 +271,7 @@ async function optimizeImage(filePath) {
  * Process all icons (special case for favicons and logos)
  */
 async function processIcons() {
-  const outputDir = path.join(PUBLIC_DIR, 'images');
+  const outputDir = path.join(IMAGE_SOURCE_DIR, 'icons');
   ensureDirectoryExists(outputDir);
 
   const iconPath = path.join(PUBLIC_DIR, 'purrify-logo-icon.png');
@@ -334,11 +337,16 @@ async function optimizeAllImages() {
     // Process icons first
     await processIcons();
 
-    // Find all images in the public/images directory
-    const imageFiles = glob.sync(`${IMAGE_SOURCE_DIR}/**/*.{png,jpg,jpeg,gif}`, {
+    for (const category of SOURCE_CATEGORIES) {
+      ensureDirectoryExists(path.join(IMAGE_SOURCE_DIR, category));
+      ensureDirectoryExists(path.join(OPTIMIZED_DIR, category));
+    }
+
+    // Find all images in the canonical originals directory
+    const imageFiles = glob.sync(`${IMAGE_SOURCE_DIR}/**/*.{png,jpg,jpeg,gif,webp,avif}`, {
       ignore: [
-        `${PUBLIC_DIR}/optimized/**`,
-        `${PUBLIC_DIR}/original-images/**`
+        `${OPTIMIZED_DIR}/**`,
+        `${IMAGE_SOURCE_DIR}/**/.DS_Store`
       ]
     });
 

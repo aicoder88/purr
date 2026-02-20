@@ -15,7 +15,8 @@ const MAX_WIDTH = 1920; // Maximum width for large images
 const PUBLIC_DIR = path.join(__dirname, '../../public');
 const OPTIMIZED_DIR = path.join(PUBLIC_DIR, 'optimized');
 const ORIGINAL_IMAGES_DIR = path.join(PUBLIC_DIR, 'original-images');
-const IMAGE_SOURCE_DIR = path.join(PUBLIC_DIR, 'images');
+const IMAGE_SOURCE_DIR = ORIGINAL_IMAGES_DIR;
+const SOURCE_CATEGORIES = ['logos', 'products', 'stores', 'team', 'icons', 'locations', 'blog', 'marketing'];
 
 // Reduce memory footprint
 try {
@@ -71,6 +72,9 @@ async function optimizeImage(filePath) {
     const filename = path.basename(filePath);
     const ext = path.extname(filename).toLowerCase();
     const baseName = path.basename(filename, ext);
+    const relativeSourcePath = path.relative(IMAGE_SOURCE_DIR, filePath);
+    const category = relativeSourcePath.split(path.sep)[0];
+    const relativeDir = path.dirname(relativeSourcePath);
 
     // Skip already optimized images
     if (filePath.includes('/optimized/')) {
@@ -96,20 +100,24 @@ async function optimizeImage(filePath) {
 
     // Handle spaces in filenames by creating sanitized versions
     const sanitizedBaseName = baseName.replaceAll(/\s+/g, '-');
+    const outputDir = path.join(OPTIMIZED_DIR, relativeDir);
+    ensureDirectoryExists(outputDir);
 
-    const webpOutputPath = path.join(OPTIMIZED_DIR, `${baseName}.webp`);
-    const sanitizedWebpOutputPath = path.join(OPTIMIZED_DIR, `${sanitizedBaseName}.webp`);
-    const avifOutputPath = path.join(OPTIMIZED_DIR, `${baseName}.avif`);
-    const sanitizedAvifOutputPath = path.join(OPTIMIZED_DIR, `${sanitizedBaseName}.avif`);
-    const optimizedOriginalPath = path.join(OPTIMIZED_DIR, filename);
+    const webpOutputPath = path.join(outputDir, `${baseName}.webp`);
+    const sanitizedWebpOutputPath = path.join(outputDir, `${sanitizedBaseName}.webp`);
+    const avifOutputPath = path.join(outputDir, `${baseName}.avif`);
+    const sanitizedAvifOutputPath = path.join(outputDir, `${sanitizedBaseName}.avif`);
+    const optimizedOriginalPath = path.join(outputDir, filename);
 
     const outputs = [webpOutputPath, avifOutputPath, optimizedOriginalPath];
     if (!needsUpdate(filePath, outputs)) {
       // Up to date; no work needed
       return {
         original: filename,
-        webp: `${baseName}.webp`,
-        avif: `${baseName}.avif`,
+        category,
+        relativeDir,
+        webp: path.posix.join(relativeDir.replaceAll(path.sep, '/'), `${baseName}.webp`),
+        avif: path.posix.join(relativeDir.replaceAll(path.sep, '/'), `${baseName}.avif`),
         width,
         height,
       };
@@ -137,8 +145,10 @@ async function optimizeImage(filePath) {
     // Return the dimensions for the image dimensions JSON file
     return {
       original: filename,
-      webp: `${baseName}.webp`,
-      avif: `${baseName}.avif`,
+      category,
+      relativeDir,
+      webp: path.posix.join(relativeDir.replaceAll(path.sep, '/'), `${baseName}.webp`),
+      avif: path.posix.join(relativeDir.replaceAll(path.sep, '/'), `${baseName}.avif`),
       width,
       height
     };
@@ -150,7 +160,7 @@ async function optimizeImage(filePath) {
 
 // Process all icons (special case for favicons and logos)
 async function processIcons() {
-  const outputDir = path.join(PUBLIC_DIR, 'images');
+  const outputDir = path.join(IMAGE_SOURCE_DIR, 'icons');
   ensureDirectoryExists(outputDir);
 
   // Optimize icon logo
@@ -220,11 +230,16 @@ async function optimizeAllImages() {
     // Process icons first
     await processIcons();
 
-    // Find all images in the public/images directory
-    const imageFiles = glob.sync(`${IMAGE_SOURCE_DIR}/**/*.{png,jpg,jpeg,gif}`, {
+    for (const category of SOURCE_CATEGORIES) {
+      ensureDirectoryExists(path.join(IMAGE_SOURCE_DIR, category));
+      ensureDirectoryExists(path.join(OPTIMIZED_DIR, category));
+    }
+
+    // Find all images in the canonical originals directory
+    const imageFiles = glob.sync(`${IMAGE_SOURCE_DIR}/**/*.{png,jpg,jpeg,gif,webp,avif}`, {
       ignore: [
-        `${PUBLIC_DIR}/optimized/**`,
-        `${PUBLIC_DIR}/original-images/**`
+        `${OPTIMIZED_DIR}/**`,
+        `${IMAGE_SOURCE_DIR}/**/.DS_Store`
       ]
     });
 
@@ -253,14 +268,8 @@ async function optimizeAllImages() {
           webpSanitized: `optimized/${sanitizedWebp}`,
           avif: `optimized/${result.avif}`,
           avifSanitized: `optimized/${sanitizedAvif}`,
-          optimized: `optimized/${result.original}`
+          optimized: `optimized/${path.posix.join(result.relativeDir.replaceAll(path.sep, '/'), result.original)}`
         };
-
-        // Move original to backup directory
-        const backupPath = path.join(ORIGINAL_IMAGES_DIR, path.basename(filePath));
-        if (!fs.existsSync(backupPath)) {
-          fs.copyFileSync(filePath, backupPath);
-        }
       }
     }
 

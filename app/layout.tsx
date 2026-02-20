@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
 import '../src/index.css';
 import { defaultLocale } from '@/i18n/config';
 import { AppLayout } from '@/components/layout/AppLayout';
@@ -18,6 +19,9 @@ const OG_LOCALE_MAP: Record<string, string> = {
   fr: 'fr_CA',
   en: 'en_CA',
 };
+
+const rawGtmId = process.env.NEXT_PUBLIC_GTM_ID?.trim();
+const gtmId = rawGtmId && /^GTM-[A-Z0-9]+$/.test(rawGtmId) ? rawGtmId : undefined;
 
 /**
  * Generate metadata for the app based on locale
@@ -153,6 +157,34 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={inter.variable} suppressHydrationWarning>
       <body className="font-sans">
+        {gtmId ? (
+          <>
+            <Script id="gtm-bootstrap" strategy="beforeInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};
+                (function(w,d,s,l,i){
+                  w[l]=w[l]||[];
+                  w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+                  var f=d.getElementsByTagName(s)[0],
+                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+                  j.async=true;
+                  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+                  f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','${gtmId}');
+              `}
+            </Script>
+            <noscript>
+              <iframe
+                title="gtm-noscript"
+                src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+                height="0"
+                width="0"
+                style={{ display: 'none', visibility: 'hidden' }}
+              />
+            </noscript>
+          </>
+        ) : null}
         <Providers locale={locale} messages={messages}>
           <AppLayout>
             {children}
