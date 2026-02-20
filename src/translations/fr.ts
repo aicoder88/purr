@@ -243,36 +243,32 @@ export const fr = {
   // Features
   features: {
     odorElimination: {
-      title: "Élimination des Odeurs",
-      description: "La formule avancée de Purrify élimine efficacement les odeurs désagréables de la litière à la source."
+      title: "Élimine les odeurs (ne les masque pas)",
+      description: "Les désodorisants masquent le problème avec du parfum. Le charbon actif de Purrify capture réellement les molécules d'ammoniac et les emprisonne. L'odeur disparaît pour de bon."
     },
     catFriendly: {
-      title: "Respectueux des Chats",
-      description: "Conçu en pensant au bien-être de votre chat, il est doux et respectueux des animaux."
+      title: "100% sûr pour les chats",
+      description: "Sans parfum, sans produits chimiques, sans poussière de silice. Juste du charbon de noix de coco pur, sûr pour les pattes, le nez et les poumons."
     },
-    longLastingFreshness: {
-      title: "Fraîcheur Longue Durée",
-      description: "Une seule application garde votre maison sans odeur pendant des jours. Profitez d'une fraîcheur continue sans entretien constant."
+    longLasting: {
+      title: "Efficace plus de 7 jours",
+      description: "Un seul saupoudrage garde votre litière fraîche pendant une semaine entière. Plus besoin de vider la boîte prématurément."
     },
-    worksWithAnyLitter: {
-      title: "Fonctionne avec Toute Litière",
-      description: "Compatible avec tous les types de litière, vous n'avez pas besoin de changer ce que votre chat aime déjà."
-    },
-    natural: {
-      title: "Naturel",
-      description: "Fabriqué à partir de coques de noix de coco activées, offrant une solution 100 % naturelle, sans produits chimiques ni parfums.",
+    anyLitter: {
+      title: "Fonctionne avec toutes les litières",
+      description: "Que vous utilisiez de l'argile, du cristal, du bois ou du maïs — Purrify améliore les performances de votre litière préférée."
     },
     costEffective: {
-      title: "Économique",
-      description: "Prolonge la durée de vie de la litière de votre chat en prévenant l'accumulation d'odeurs, vous faisant économiser de l'argent et réduisant les déchets."
+      title: "Vraies économies de litière",
+      description: "Vous changerez votre litière moins souvent car le charbon la garde fraîche plus longtemps. Il s'amortit par les économies réalisées sur la litière."
+    },
+    beforeAfter: {
+      title: "Voyez la différence",
+      description: "Transformez votre maison en quelques secondes. Remarquez la différence ou nous vous remboursons."
     },
     freePurrify: {
       title: "Purrify Gratuit",
       description: "Obtenez un échantillon gratuit de Purrify avec votre première commande."
-    },
-    beforeAfter: {
-      title: "Avant & Après",
-      description: "Voyez la différence que Purrify fait dans la litière de votre chat."
     }
   },
 
@@ -299,27 +295,59 @@ export const fr = {
       description: "Noté 4.8/5 par plus de 1000 propriétaires de chats satisfaits."
     }
   },
+  // Made in Canada / Ingredients Section
+  madeInCanada: {
+    badge: "Fabriqué au Canada 🇨🇦",
+    headline: "Avec des ingrédients que votre filtre à eau approuverait",
+    carbon: {
+      icon: "🌊",
+      title: "Charbon actif de qualité filtre à eau",
+      description: "La même science qui transforme l'eau du robinet en eau potable — maintenant au service de votre litière."
+    },
+    noPerfumes: {
+      icon: "🚫",
+      title: "Sans parfum. Sans produits chimiques. Sans compromis.",
+      description: "Nous ne masquons pas l'ammoniac avec un parfum de « coton frais ». Nous éliminons l'ammoniac."
+    },
+    loved: {
+      icon: "🐾",
+      title: "Adopté par 1 000+ parents de chats au Canada",
+      description: "Et ça continue. Avec un taux de réachat qui ferait envie à votre barista."
+    },
+    guarantee: "Garantie 30 jours — Satisfait ou remboursé. Sans formulaire. Sans sermon. Sans rancune."
+  },
+
+  // Why Purrify section header
+  whyPurrify: {
+    badge: "Pourquoi les parents de chats reviennent",
+    title: "(Indice : ça fonctionne vraiment)",
+    subtitle: "Sans parfum. Sans camouflage. Juste une solution qui fonctionne vraiment."
+  },
+
+  // Transition Teasers
+  sectionTeasers: {
+    whyPurrify: "Mais comment ça fonctionne réellement ?",
+    science: "Prêt à l'essayer vous-même ?"
+  },
 
   // How It Works
   howItWorks: {
     simpleAs123: "Simple comme 1-2-3",
-    steps: [
-      {
-        number: "01",
-        title: "Ouvrez le Sachet",
-        description: "Retirez l'étiquette et dézippez le sachet"
-      },
-      {
-        number: "02",
-        title: "Saupoudrez sur la litière",
-        description: "Saupoudrez simplement une fine couche de Purrify sur la litière propre de votre chat."
-      },
-      {
-        number: "03",
-        title: "Mélangez et profitez de la propreté !",
-        description: "Mélangez doucement dans la couche supérieure de la litière pour une efficacité maximale."
-      }
-    ],
+    step1: {
+      number: "01",
+      title: "Ouvrez le Sachet",
+      description: "Retirez l'étiquette et dézippez le sachet"
+    },
+    step2: {
+      number: "02",
+      title: "Saupoudrez sur la litière",
+      description: "Saupoudrez simplement une fine couche de Purrify sur la litière propre de votre chat."
+    },
+    step3: {
+      number: "03",
+      title: "Mélangez et profitez de la propreté !",
+      description: "Mélangez doucement dans la couche supérieure de la litière pour une efficacité maximale."
+    },
     litterTypes: {
       clumping: "AGGLOMÉRANTE",
       crystal: "CRISTAL",
@@ -329,7 +357,12 @@ export const fr = {
     },
     learnTheScience: "Découvrez la science",
     compareSizes: "comparez nos tailles",
-    coconutDescription: "Des coques de noix de coco pures et durables sont activées avec de la vapeur filtrée et pure à haute pression pour ouvrir des millions de trous, tunnels et passages permettant d'emprisonner les molécules d'odeur."
+    coconutDescription: "Des coques de noix de coco pures et durables sont activées avec de la vapeur filtrée et pure à haute pression pour ouvrir des millions de trous, tunnels et passages permettant d'emprisonner les molécules d'odeur.",
+    transitionTeaser: "Et voici pourquoi les parents de chats l'adorent encore plus...",
+    nav: {
+      carbonVsBakingSoda: "Charbon vs Bicarbonate",
+      carbonVsBakingSodaDesc: "Découvrez pourquoi le charbon actif surpasse le bicarbonate de soude pour le contrôle des odeurs."
+    }
   },
 
   // Products Section

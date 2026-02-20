@@ -178,15 +178,11 @@ export interface TranslationType {
       title: string;
       description: string;
     };
-    longLastingFreshness: {
+    longLasting: {
       title: string;
       description: string;
     };
-    natural: {
-      title: string;
-      description: string;
-    };
-    worksWithAnyLitter: {
+    anyLitter: {
       title: string;
       description: string;
     };
@@ -194,7 +190,7 @@ export interface TranslationType {
       title: string;
       description: string;
     };
-    freePurrify: {
+    freePurrify?: {
       title: string;
       description: string;
     };
@@ -327,11 +323,9 @@ export interface TranslationType {
   // How It Works
   howItWorks?: {
     simpleAs123: string;
-    steps: {
-      number: string;
-      title: string;
-      description: string;
-    }[];
+    step1: { number: string; title: string; description: string };
+    step2: { number: string; title: string; description: string };
+    step3: { number: string; title: string; description: string };
     litterTypes: {
       clumping: string;
       crystal: string;
@@ -343,6 +337,7 @@ export interface TranslationType {
     compareSizes?: string;
     coconutDescription?: string;
     transitionTeaser?: string;
+    nav?: { carbonVsBakingSoda: string; carbonVsBakingSodaDesc?: string };
   };
 
   // Products Section

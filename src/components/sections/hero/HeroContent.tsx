@@ -35,6 +35,7 @@ interface HeroContentProps {
     hero: {
       headline?: string;
       subheadline?: string;
+      tagline?: string;
       eliminateCatOdors: string;
       instantly: string;
       description: string;
@@ -248,14 +249,14 @@ export const HeroContent = ({ t }: HeroContentProps) => {
         </Button>
         <p className="text-sm font-bold text-gray-500 dark:text-gray-400 text-center sm:text-left flex items-center justify-center sm:justify-start gap-2">
           <span className="w-2 h-2 bg-electric-indigo rounded-full animate-pulse"></span>
-          {t.hero.simplified?.moneyBackGuarantee || "Try Risk Free for 30 Days"}
+          {t.hero.simplified?.justPayShipping || "Just $4.76 shipping. Zero risk."}
         </p>
       </div>
 
       {/* Mantra tag line */}
       <div className="pt-4 border-t border-gray-100 dark:border-gray-800/50 w-fit">
         <p className="text-xl sm:text-2xl font-black text-gray-900 dark:text-white tracking-tight italic opacity-80 decoration-electric-indigo decoration-4 underline-offset-8">
-          "Just Pour. Mix. And Breathe Easy"
+          &ldquo;{t.hero.tagline || "Just Pour. Mix. Done."}&rdquo;
         </p>
       </div>
     </div>

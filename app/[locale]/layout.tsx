@@ -19,7 +19,8 @@ export default async function LocaleLayout({
     // Load messages for the active locale
     let messages;
     try {
-        messages = (await import(`@/i18n/messages/${locale}.json`)).default;
+        const translationModule = await import(`@/translations/${locale}.ts`);
+        messages = translationModule[locale];
     } catch {
         notFound();
     }

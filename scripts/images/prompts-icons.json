@@ -1,0 +1,46 @@
+[
+    {
+        "prompt": "Hyperrealistic Studio Ghibli, Hayao Miyazaki style anime illustration. A glowing piece of black activated carbon. Wispy, magical purple odor vapor is physically being sucked INTO the pores of the carbon. Magical lighting, extremely detailed, vibrant colors, clean white background.",
+        "output": "benefit-odor.webp"
+    },
+    {
+        "prompt": "Hyperrealistic Studio Ghibli, Hayao Miyazaki style anime illustration. A healthy, adorable fluffy cat sleeping peacefully curled up next to a glowing green magical plant. Safe, non-toxic feeling. Magical lighting, extremely detailed, vibrant colors, clean white background.",
+        "output": "benefit-cat-safe.webp"
+    },
+    {
+        "prompt": "Hyperrealistic Studio Ghibli, Hayao Miyazaki style anime illustration. A beautiful magical hourglass containing glowing carbon dust instead of sand. Sunbeams shining through it. Represents long-lasting time. Extremely detailed, vibrant colors, clean white background.",
+        "output": "benefit-duration.webp"
+    },
+    {
+        "prompt": "Hyperrealistic Studio Ghibli, Hayao Miyazaki style anime illustration. A beautiful wooden litter box looking like a miniature japanese zen garden. Magical glowing sparkles above it. Extremely detailed, vibrant colors, clean white background.",
+        "output": "benefit-any-litter.webp"
+    },
+    {
+        "prompt": "Hyperrealistic Studio Ghibli, Hayao Miyazaki style anime illustration. A magical glowing pile of golden coins mixed with fresh green leaves. Represents saving money and cost effectiveness. Extremely detailed, vibrant colors, clean white background.",
+        "output": "benefit-cost.webp"
+    },
+    {
+        "prompt": "Hyperrealistic Studio Ghibli, Hayao Miyazaki style anime illustration. A magical gust of fresh, sparkling blue air blowing through an open window into a room. Represents a perfectly fresh home. Extremely detailed, vibrant colors, clean white background.",
+        "output": "benefit-before-after.webp"
+    },
+    {
+        "prompt": "Hyperrealistic Studio Ghibli, Hayao Miyazaki style anime illustration. Macro close-up of a glowing black porous rock (carbon). Tiny magical motes of light are being drawn deep into the dark tunnels of the rock. Extremely detailed, vibrant colors, clean white background.",
+        "output": "science-pores.webp"
+    },
+    {
+        "prompt": "Hyperrealistic Studio Ghibli, Hayao Miyazaki style anime illustration. A magical glowing energy shield protecting a peaceful sleeping cat. Artificial perfume bottles are bouncing harmlessly off the outside of the shield. Extremely detailed, vibrant colors, clean white background.",
+        "output": "science-zero-perfume.webp"
+    },
+    {
+        "prompt": "Hyperrealistic Studio Ghibli, Hayao Miyazaki style anime illustration. A magical glowing heart made of bright, sparkling yellow and gold stars hovering in the air. Represents customer love. Extremely detailed, vibrant colors, clean white background.",
+        "output": "trust-customer-love.webp"
+    },
+    {
+        "prompt": "Hyperrealistic Studio Ghibli, Hayao Miyazaki style anime illustration. A beautiful golden knight's shield resting peacefully in vibrant, lush green grass with magical sunbeams. Represents money-back guarantee. Extremely detailed, vibrant colors, clean white background.",
+        "output": "trust-money-back.webp"
+    },
+    {
+        "prompt": "Hyperrealistic Studio Ghibli, Hayao Miyazaki style anime illustration. A perfectly shaped, glowing red maple leaf floating in a magical forest with tiny light motes. Represents Made in Canada. Extremely detailed, vibrant colors, clean white background.",
+        "output": "trust-canada.webp"
+    }
+]

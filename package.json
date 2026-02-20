@@ -7,7 +7,8 @@
     "node": "22.x"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
+    "dev:turbo": "next dev",
     "preinstall": "npx only-allow pnpm",
     "postinstall": "prisma generate",
     "blog:generate-featured-image-map": "tsx scripts/blog/generate-blog-featured-image-map.ts",

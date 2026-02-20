@@ -43,22 +43,22 @@ export function EnhancedProductComparison() {
   // Product display names
   const productDisplayNames: Record<string, { name: string; nameFr: string; subtitle: string; subtitleFr: string }> = {
     trial: {
-      name: 'Free Trial',
-      nameFr: 'Format Essai',
-      subtitle: '12g · One Week of Proof',
-      subtitleFr: '12g · Une semaine de preuve'
+      name: 'FREE TRIAL',
+      nameFr: 'ESSAI GRATUIT',
+      subtitle: '12g · One Full Week of Proof',
+      subtitleFr: '12g · Une semaine complète de preuve'
     },
     regular: {
-      name: 'The Goldilocks Bag',
-      nameFr: 'Le Format Parfait',
-      subtitle: '50g · Regular Size',
-      subtitleFr: '50g · Format Standard'
+      name: 'The Month-Long Bag',
+      nameFr: 'Le Format Mensuel',
+      subtitle: '50g · 30 Days. One Cat. Zero Complaints.',
+      subtitleFr: '50g · 30 jours. Un chat. Zéro plainte.'
     },
     large: {
-      name: 'Family Size',
-      nameFr: 'Format Famille',
-      subtitle: '120g · Best Value Per Gram',
-      subtitleFr: '120g · Meilleur rapport qualité-prix'
+      name: 'The Big Cat Bag',
+      nameFr: 'Le Grand Format',
+      subtitle: '120g · For Homes With More Than One Furry Overlord',
+      subtitleFr: '120g · Pour les foyers avec plus d\'un maître félin'
     },
   };
 
@@ -66,25 +66,25 @@ export function EnhancedProductComparison() {
   const defaultProducts = [
     {
       features: [
-        'One week of fresh-air confidence',
-        'Just $4.76 shipping',
-        'Zero risk, zero commitment'
+        '7+ days of odour control',
+        'Works for 1 cat',
+        'One week to decide if your nose believes it'
       ],
-      bestFor: "Cat parents who've been burned before. Test it yourself. Your nose doesn't lie."
+      bestFor: "The truth: A bag of this costs more than $4.76 to make & ship. We're eating that cost because we know once you smell the difference — you'll be back."
     },
     {
       features: [
-        'One month supply',
-        'Most popular choice',
-        'Works with any litter'
+        'Full month supply',
+        'Works with any litter',
+        'The size customers reorder most'
       ],
       bestFor: "Single cat homes. The size that keeps customers coming back."
     },
     {
       features: [
         'Best value per gram',
-        'Flexible dosing',
-        'Perfect for multiple boxes'
+        'Flexible dosing for multiple boxes',
+        'For multi-cat homes, fosters, or the overachiever who just wants to stock up'
       ],
       bestFor: "Multi-cat households, foster parents, or anyone who's lost count."
     }
@@ -119,7 +119,7 @@ export function EnhancedProductComparison() {
       id: 'purrify-12g',
       name: locale === 'fr' ? productDisplayNames.trial.nameFr : productDisplayNames.trial.name,
       subtitle: locale === 'fr' ? productDisplayNames.trial.subtitleFr : productDisplayNames.trial.subtitle,
-      description: 'One sprinkle delivers 7 full days of zero litter box smell. Your nose gets the proof, your wallet risks just $4.76 shipping. Over 1,000 cat parents tried the sample and became customers—now it\'s your turn.',
+      description: 'One sprinkle delivers 7 full days of zero litter box smell. Your nose gets the proof, your wallet risks just $4.76 shipping.',
       duration: '7+ days',
       idealFor: '1 cat',
       features: getTranslatedFeatures(0),
@@ -138,7 +138,7 @@ export function EnhancedProductComparison() {
       id: 'purrify-50g',
       name: locale === 'fr' ? productDisplayNames.regular.nameFr : productDisplayNames.regular.name,
       subtitle: locale === 'fr' ? productDisplayNames.regular.subtitleFr : productDisplayNames.regular.subtitle,
-      description: 'Not too little, not too much—this is the size most customers reorder. Lasts about a month of fresh litter for single-cat homes. The perfect amount without waste.',
+      description: 'Not too little, not too much — this is the size most customers reorder. One full month of fresh air for single-cat homes.',
       duration: '30 days',
       idealFor: '1 cat',
       features: getTranslatedFeatures(1),
@@ -156,7 +156,7 @@ export function EnhancedProductComparison() {
       id: 'purrify-120g',
       name: locale === 'fr' ? productDisplayNames.large.nameFr : productDisplayNames.large.name,
       subtitle: locale === 'fr' ? productDisplayNames.large.subtitleFr : productDisplayNames.large.subtitle,
-      description: 'Best value per gram. Lasts 7+ days per application across multiple litter boxes. Perfect for multi-cat homes that refuse to compromise on freshness.',
+      description: 'Best value per gram. For homes with more than one furry overlord. Flexible dosing across multiple litter boxes.',
       duration: '7+ days per application',
       idealFor: '2+ cats',
       features: getTranslatedFeatures(2),
@@ -183,12 +183,10 @@ export function EnhancedProductComparison() {
       <Container className="relative z-10">
         <div className="text-center mb-12">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            {t('productComparison.title') || "Choose Your Perfect Size"}
+            {t('productComparison.title') || "Pick Your Size. Start Breathing Easier."}
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            {locale === 'fr'
-              ? "Tous les formats contiennent exactement la même formule. Choisissez simplement la quantité dont vous avez besoin."
-              : "All sizes contain the exact same formula. Just pick how much you need."}
+            {t('productComparison.subtitle') || "All the same formula. Just pick how long you want to go without thinking about the litter box."}
           </p>
         </div>
 
@@ -303,12 +301,12 @@ export function EnhancedProductComparison() {
                             className="w-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white dark:text-white font-bold shadow-lg hover:shadow-xl transition-all"
                           >
                             <IconMoneyBack className="w-6 h-6 mr-2 -ml-2" />
-                            {locale === 'fr' ? "Envoyer Mon Essai GRATUIT" : "Send My FREE Trial"}
+                            {locale === 'fr' ? "Envoyer Mon Essai GRATUIT →" : "Send My FREE Trial →"}
                             <ChevronRight className="w-5 h-5 ml-2" />
                           </Button>
                         </a>
                         <p className="text-xs text-center text-gray-500 dark:text-gray-400 italic">
-                          {locale === 'fr' ? `Juste ${trialPrice} pour l'expédition partout au Canada` : `Just ${trialPrice} shipping anywhere in Canada`}
+                          {locale === 'fr' ? `Juste ${trialPrice} d'expédition. Garantie 30 jours.` : `Just ${trialPrice} shipping. 30-day money-back guarantee. No fine print.`}
                         </p>
                       </div>
                     ) : (

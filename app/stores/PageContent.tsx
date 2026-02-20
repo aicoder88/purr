@@ -609,8 +609,15 @@ export default function StoresPage() {
                         {/* Address */}
                         <div className="flex items-start gap-3 mb-3">
                           <MapPin className="h-5 w-5 text-gray-400 dark:text-gray-500 mt-0.5 flex-shrink-0" />
-                          <div className="text-sm text-gray-700 dark:text-gray-300">
-                            {store.address}
+                          <div className="text-sm text-gray-700 dark:text-gray-300 leading-snug w-full">
+                            {store.address.includes(',') ? (
+                              <>
+                                <span className="block font-medium dark:text-gray-200">{store.address.substring(0, store.address.indexOf(','))}</span>
+                                <span className="block text-[13px] text-gray-500 dark:text-gray-400 mt-0.5">{store.address.substring(store.address.indexOf(',') + 1).trim()}</span>
+                              </>
+                            ) : (
+                              <span className="font-medium dark:text-gray-200">{store.address}</span>
+                            )}
                           </div>
                         </div>
 

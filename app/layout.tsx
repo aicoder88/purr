@@ -147,7 +147,8 @@ export default async function RootLayout({
   const locale = defaultLocale;
 
   // Load messages directly to avoid dynamic request config using cookies
-  const messages = (await import(`@/i18n/messages/${locale}.json`)).default;
+  const translationModule = await import(`@/translations/${locale}.ts`);
+  const messages = translationModule[locale];
 
   return (
     <html lang={locale} className={inter.variable} suppressHydrationWarning>

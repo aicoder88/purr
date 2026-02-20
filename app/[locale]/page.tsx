@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
 import { Hero } from '@/components/sections/hero';
-import { ScienceSection } from '@/components/sections/science-section';
 import { HowItWorks } from '@/components/sections/how-it-works';
+import { MadeInCanada } from '@/components/sections/made-in-canada';
+import { AgitationSection } from '@/components/sections/agitation-section';
 import { WhyPurrify } from '@/components/sections/why-purrify';
+import { ScienceSection } from '@/components/sections/science-section';
+import { HomepageTestimonials } from '@/components/sections/homepage-testimonials';
 import { BlogPreview } from '@/components/sections/blog-preview';
 import { ScrollingAnnouncementBar } from '@/components/sections/scrolling-announcement-bar';
 import { Stores } from '@/components/sections/stores';
@@ -106,35 +109,49 @@ export default async function LocalizedHomePage({ params }: LocalizedHomepagePro
                 id="main-content"
                 className="bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900"
             >
+                {/* Section 1: Hero */}
                 <ErrorBoundary>
                     <Hero />
                 </ErrorBoundary>
 
                 <ScrollingAnnouncementBar />
 
-                <div className="cv-auto cis-720">
-                    <ErrorBoundary>
-                        <ScienceSection />
-                    </ErrorBoundary>
-                </div>
+                {/* Section 2: How It Works (Three-Step) */}
+                <ErrorBoundary>
+                    <HowItWorks />
+                </ErrorBoundary>
 
-                <div className="cv-auto cis-720">
-                    <ErrorBoundary>
-                        <HowItWorks />
-                    </ErrorBoundary>
-                </div>
+                {/* Section 3: Made in Canada / Ingredients */}
+                <ErrorBoundary>
+                    <MadeInCanada />
+                </ErrorBoundary>
 
-                <div className="cv-auto cis-720">
-                    <ErrorBoundary>
-                        <WhyPurrify />
-                    </ErrorBoundary>
-                </div>
+                {/* Section 4: The Story ("The Embarrassed Cat Owner") */}
+                <ErrorBoundary>
+                    <AgitationSection />
+                </ErrorBoundary>
 
+                {/* Section 5: Why Cat Parents Keep Coming Back (Features) */}
+                <ErrorBoundary>
+                    <WhyPurrify />
+                </ErrorBoundary>
+
+                {/* Section 6: The Science ("The Secret Sauce") */}
+                <ErrorBoundary>
+                    <ScienceSection />
+                </ErrorBoundary>
+
+                {/* Section 7: Products / Offer + CTA */}
                 <HomepageClient
                     priceValidUntil={priceValidUntil}
                     locale={locale}
                     currency={currency}
                 />
+
+                {/* Social Proof: Named Testimonials */}
+                <ErrorBoundary>
+                    <HomepageTestimonials />
+                </ErrorBoundary>
 
                 <section className="py-10 cv-auto cis-480">
                     <div className="container mx-auto px-4">

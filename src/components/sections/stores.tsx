@@ -488,36 +488,44 @@ export function Stores() {
                     </div>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-1 group-hover:text-[#FF8E3C] transition-colors leading-tight">
+                    <h3 className="font-bold text-[17px] text-gray-900 dark:text-white mb-2.5 group-hover:text-[#FF8E3C] transition-colors leading-tight">
                       {store.name}
                     </h3>
-                    <p className="text-gray-500 dark:text-gray-400 text-sm font-medium mb-2">{store.location}</p>
 
-                    <div className="space-y-1.5">
+                    <div className="space-y-2">
                       <a
                         href={`https://maps.google.com/?q=${encodeURIComponent(`${store.address}`)}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-start text-sm text-gray-600 dark:text-gray-300 hover:text-[#FF8E3C] dark:hover:text-[#FF8E3C] transition-colors gap-2 min-h-[44px]"
+                        className="flex items-start text-[14px] text-gray-600 dark:text-gray-300 hover:text-[#FF8E3C] dark:hover:text-[#FF8E3C] transition-colors gap-2.5"
                         aria-label={`View ${store.name} on Google Maps`}
                       >
-                        <svg className="w-4 h-4 text-gray-400 dark:text-gray-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 text-gray-400 dark:text-gray-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
-                        <span className="leading-snug">{store.address}</span>
+                        <span className="leading-snug">
+                          {store.address.includes(',') ? (
+                            <>
+                              <span className="block font-medium dark:text-gray-200">{store.address.substring(0, store.address.indexOf(','))}</span>
+                              <span className="block text-[13px] text-gray-500 dark:text-gray-400 mt-0.5">{store.address.substring(store.address.indexOf(',') + 1).trim()}</span>
+                            </>
+                          ) : (
+                            <span className="font-medium dark:text-gray-200">{store.address}</span>
+                          )}
+                        </span>
                       </a>
 
                       {store.phone && (
                         <a
                           href={`tel:${store.phone.replace(/[^\d+]/g, '')}`}
-                          className="flex items-center text-sm text-gray-600 dark:text-gray-300 hover:text-[#FF8E3C] dark:hover:text-[#FF8E3C] transition-colors gap-2 min-h-[44px]"
+                          className="flex items-center text-[14px] text-gray-600 dark:text-gray-300 hover:text-[#FF8E3C] dark:hover:text-[#FF8E3C] transition-colors gap-2.5"
                           aria-label={`Call ${store.name} at ${store.phone}`}
                         >
                           <svg className="w-4 h-4 text-gray-400 dark:text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                           </svg>
-                          <span>{store.phone}</span>
+                          <span className="font-medium dark:text-gray-200">{store.phone}</span>
                         </a>
                       )}
 
@@ -526,11 +534,11 @@ export function Stores() {
                           href={store.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors gap-2 min-h-[44px]"
+                          className="flex items-center text-[14px] text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors gap-2.5"
                           aria-label={`${uiCopy.websiteLabel} - ${store.name}`}
                         >
-                          <WebsiteIcon className="w-4 h-4 flex-shrink-0" />
-                          <span>{uiCopy.websiteLabel}</span>
+                          <WebsiteIcon className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                          <span className="font-medium">{uiCopy.websiteLabel}</span>
                         </a>
                       )}
                     </div>

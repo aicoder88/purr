@@ -20,7 +20,13 @@ export function Providers({
   messages,
 }: ProvidersProps) {
   return (
-    <NextIntlClientProvider locale={locale} messages={messages}>
+    <NextIntlClientProvider
+      locale={locale}
+      messages={messages}
+      timeZone="America/Toronto"
+      getMessageFallback={({ namespace, key }) => `${namespace ? namespace + '.' : ''}${key}`}
+      onError={(error) => console.warn('i18n client error:', error)}
+    >
       <SessionProvider>
         <ThemeProvider
           defaultTheme="system"

@@ -10,18 +10,11 @@ import Link from "next/link";
 export function WhyPurrify() {
   const t = useTranslations();
   const locale = useLocale();
-  const heroCopy =
-    locale === 'fr'
-      ? {
-        badge: 'Ce qui rend Purrify different',
-        title: 'Pourquoi les parents de chats l adorent',
-        subtitle: 'Sans parfum. Sans camouflage. Juste une solution qui fonctionne vraiment.',
-      }
-      : {
-        badge: 'What Makes Purrify Different',
-        title: 'Why Cat Parents Love It',
-        subtitle: 'No perfumes. No cover-ups. Just the good stuff that actually works.',
-      };
+  const heroCopy = {
+    badge: t('whyPurrify.badge') || (locale === 'fr' ? 'Pourquoi les parents de chats reviennent' : 'Why Cat Parents Keep Coming Back'),
+    title: t('whyPurrify.title') || (locale === 'fr' ? '(Indice : ça fonctionne vraiment)' : '(Hint: It actually works)'),
+    subtitle: t('whyPurrify.subtitle') || (locale === 'fr' ? 'Sans parfum. Sans camouflage. Juste une solution qui fonctionne vraiment.' : 'No perfumes. No cover-ups. Just the good stuff that actually works.'),
+  };
 
   const reasons = [
     {
@@ -40,14 +33,14 @@ export function WhyPurrify() {
     },
     {
       icon: IconLongLasting,
-      title: t('features.longLastingFreshness.title').toUpperCase(),
-      description: t('features.longLastingFreshness.description'),
+      title: t('features.longLasting.title').toUpperCase(),
+      description: t('features.longLasting.description'),
       image: "/optimized/catonbed.avif"
     },
     {
       icon: IconAnyLitter,
-      title: t('features.worksWithAnyLitter.title').toUpperCase(),
-      description: t('features.worksWithAnyLitter.description'),
+      title: t('features.anyLitter.title').toUpperCase(),
+      description: t('features.anyLitter.description'),
       image: "/optimized/cat-favorite-litter.webp"
     },
     {

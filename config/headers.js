@@ -6,6 +6,13 @@ const scriptSrc = isDev
   ? "'self' 'unsafe-eval' 'unsafe-inline' *.google.com *.gstatic.com *.googletagmanager.com"
   : "'self' 'unsafe-inline' *.google.com *.gstatic.com *.googletagmanager.com";
 
+// Next.js dev runtimes can register extra Trusted Types policy names
+// (for example `nextjs#bundler` with webpack). Keep this list explicit
+// and environment-aware so local hydration does not break.
+const trustedTypesPolicies = isDev
+  ? "'allow-duplicates' nextjs nextjs-hydration nextjs#bundler gtm googletagmanager"
+  : "'allow-duplicates' nextjs nextjs-hydration gtm googletagmanager";
+
 const SECURITY_HEADERS = [
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -24,7 +31,7 @@ const SECURITY_HEADERS = [
   // Trusted Types: Allow all policies in development to prevent TrustedScriptURL/TrustedHTML errors
   {
     key: "Content-Security-Policy",
-    value: `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline' *.googleapis.com; img-src 'self' blob: data: *.purrify.ca *.google.com *.gstatic.com *.facebook.com *.fna.fbcdn.net *.dicebear.com *.unsplash.com *.randomuser.me unpkg.com *.unpkg.com *.tile.openstreetmap.org; font-src 'self' data:; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; block-all-mixed-content; upgrade-insecure-requests; trusted-types 'allow-duplicates' nextjs nextjs-hydration gtm googletagmanager;`
+    value: `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline' *.googleapis.com; img-src 'self' blob: data: *.purrify.ca *.google.com *.gstatic.com *.facebook.com *.fna.fbcdn.net *.dicebear.com *.unsplash.com *.randomuser.me unpkg.com *.unpkg.com *.tile.openstreetmap.org; font-src 'self' data:; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; block-all-mixed-content; upgrade-insecure-requests; trusted-types ${trustedTypesPolicies};`
   },
 ];
 

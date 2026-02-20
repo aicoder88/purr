@@ -9,6 +9,37 @@ export interface HeroTestimonial {
 }
 
 export const heroTestimonials: HeroTestimonial[] = [
+    // Lead testimonial from copy suggestions
+    {
+        rating: "5/5 stars",
+        stars: 5,
+        quote: "Blends right in — and the smell just... disappears",
+    },
+    // Named testimonials (abbreviated for rotating display)
+    {
+        rating: "5/5 stars",
+        stars: 5,
+        quote: "It smells like nothing. That's the point.",
+        location: "Verdun, Montréal"
+    },
+    {
+        rating: "5/5 stars",
+        stars: 5,
+        quote: "My cat didn't notice. My guests noticed immediately.",
+        location: "Terrebonne, QC"
+    },
+    {
+        rating: "5/5 stars",
+        stars: 5,
+        quote: "3 cats. Windows shut. Zero smell. Explain that.",
+        location: "Outremont, Montréal"
+    },
+    {
+        rating: "5/5 stars",
+        stars: 5,
+        quote: "The first one that actually eliminated the odour.",
+        location: "Boucherville, QC"
+    },
     // Original Pitou Minou testimonials
     {
         rating: "5/5 stars",
@@ -24,13 +55,13 @@ export const heroTestimonials: HeroTestimonial[] = [
     {
         rating: "5/5 stars",
         stars: 5,
-        quote: "Cats don't even notice it - works perfectly!",
+        quote: "Cats don't even notice it — works perfectly!",
         location: "Pitou Minou Customer"
     },
     {
         rating: "5/5 stars",
         stars: 5,
-        quote: "Controls the smell noticeably - pretty much immediately!",
+        quote: "Controls the smell noticeably — pretty much immediately!",
         location: "Pitou Minou Customer"
     },
     {
@@ -42,13 +73,13 @@ export const heroTestimonials: HeroTestimonial[] = [
     {
         rating: "4.5/5 stars",
         stars: 4.5,
-        quote: "Took 50% of the smell off - noticeable improvement!",
+        quote: "Took 50% of the smell off — noticeable improvement!",
         location: "Pitou Minou Customer"
     },
     {
         rating: "5/5 stars",
         stars: 5,
-        quote: "Works with any litter - clumping or not!",
+        quote: "Works with any litter — clumping or not!",
         location: "Pitou Minou Customer"
     },
     {
@@ -66,7 +97,7 @@ export const heroTestimonials: HeroTestimonial[] = [
     {
         rating: "5/5 stars",
         stars: 5,
-        quote: "Healthier for cats - no irritation!",
+        quote: "Healthier for cats — no irritation!",
         location: "Pitou Minou Customer"
     },
 

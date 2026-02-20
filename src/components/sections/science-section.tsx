@@ -13,15 +13,15 @@ import { IconOdor } from "@/components/icons/custom-benefit-icons";
 const defaultFeatures = [
     {
         title: "Micro-Pore Technology",
-        description: "Millions of microscopic pores trap odor molecules instantly upon contact.",
+        description: "Traps odour molecules on contact.",
     },
     {
-        title: "Safe & Non-Toxic",
-        description: "100% natural activated carbon. Safe for pets and humans.",
+        title: "100% Natural",
+        description: "Safe for pets, kids, and your conscience.",
     },
     {
         title: "Eco-Friendly",
-        description: "Sustainable materials that are biodegradable and earth-safe.",
+        description: "Biodegradable. Earth approved.",
     }
 ];
 

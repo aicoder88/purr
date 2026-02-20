@@ -251,15 +251,11 @@ export const es: TranslationType = {
       title: "Usado en Filtros de Agua y Aire Mundial",
       description: "Carbon de coco natural sin quimicos, fragancias ni colorantes.\n\nEl mismo tipo usado en filtros de agua y aire en todo el mundo, lo suficientemente potente para multiples gatos."
     },
-    longLastingFreshness: {
+    longLasting: {
       title: "7 Dias de Aire Fresco Por Aplicacion",
       description: "Una aplicacion = una semana completa sin ese vergonzoso olor de caja de arena. Deja de limpiar constantemente - empieza a respirar tranquilo."
     },
-    natural: {
-      title: "100% Ingredientes Naturales",
-      description: "Hecho de carbon activado de cascara de coco sin fragancias sinteticas ni rellenos. No toxico y libre de quimicos."
-    },
-    worksWithAnyLitter: {
+    anyLitter: {
       title: "Funciona con la Arena Favorita de Tu Gato",
       description: "Arcilla, cristal, aglomerante, no aglomerante - no importa! No necesitas estresar a tu gato con un cambio de arena. Purrify funciona con lo que ya usas."
     },
@@ -280,23 +276,21 @@ export const es: TranslationType = {
   // How It Works
   howItWorks: {
     simpleAs123: "Aire Fresco en 60 Segundos - Simple como 1-2-3",
-    steps: [
-      {
-        number: "01",
-        title: "Abrir y Verter",
-        description: "Abre la bolsa - tu nariz notara la diferencia inmediatamente! Sin ensamblaje, sin instrucciones complicadas."
-      },
-      {
-        number: "02",
-        title: "Espolvorear la Magia",
-        description: "Solo espolvorea una capa fina sobre la arena limpia. Funciona con CUALQUIER marca - arcilla, cristal, aglomerante, lo que sea."
-      },
-      {
-        number: "03",
-        title: "Mezclar y Disfrutar lo Limpio!",
-        description: "Mezcla suavemente y observa (huele?) la magia suceder. 7 dias de aire fresco empiezan AHORA. Tus invitados quedaran asombrados."
-      }
-    ],
+    step1: {
+      number: "01",
+      title: "Abrir y Verter",
+      description: "Abre la bolsa - tu nariz notara la diferencia inmediatamente! Sin ensamblaje, sin instrucciones complicadas."
+    },
+    step2: {
+      number: "02",
+      title: "Espolvorear la Magia",
+      description: "Solo espolvorea una capa fina sobre la arena limpia. Funciona con CUALQUIER marca - arcilla, cristal, aglomerante, lo que sea."
+    },
+    step3: {
+      number: "03",
+      title: "Mezclar y Disfrutar lo Limpio!",
+      description: "Mezcla suavemente y observa (huele?) la magia suceder. 7 dias de aire fresco empiezan AHORA. Tus invitados quedaran asombrados."
+    },
     litterTypes: {
       clumping: "AGLOMERANTE",
       crystal: "CRISTAL",

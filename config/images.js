@@ -30,7 +30,6 @@ const images = {
 };
 
 const OPTIMIZE_PACKAGE_IMPORTS = [
-  "lucide-react",
   "framer-motion",
   "recharts",
   // Radix UI packages
