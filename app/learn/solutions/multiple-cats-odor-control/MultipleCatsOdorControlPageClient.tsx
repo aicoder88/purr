@@ -12,8 +12,8 @@ export default function MultipleCatsOdorControlPageClient() {
   const canonicalUrl = 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control/';
 
   // SEO optimized images for multi-cat households
-  const heroImage = '/optimized/multiple-cats-together.webp';
-  const solutionImage = '/images/ammonia-fresh-home.webp';
+  const heroImage = '/optimized/blog/multiple-cats-together.webp';
+  const solutionImage = '/optimized/blog/ammonia-fresh-home.webp';
 
   // HowTo steps for multi-cat odor control
   const howToSteps = [

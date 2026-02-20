@@ -11,9 +11,9 @@ export default function SeniorCatPageClient() {
     const canonicalUrl = 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions/';
 
     // Senior cat litter solution images
-    const heroImage = '/images/senior-cat-hero.png';
-    const sectionImage1 = '/images/senior-cat-mobility.png';
-    const sectionImage2 = '/images/ammonia-fresh-home.webp'; // Using existing image as placeholder
+    const heroImage = '/optimized/blog/senior-cat-hero.png';
+    const sectionImage1 = '/optimized/blog/senior-cat-mobility.png';
+    const sectionImage2 = '/optimized/blog/ammonia-fresh-home.webp'; // Using existing image as placeholder
 
     // HowTo steps for senior cat litter setup
     const howToSteps = [

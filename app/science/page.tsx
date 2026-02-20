@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     modifiedTime: new Date().toISOString(),
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/science-hub-og.jpg',
+        url: 'https://www.purrify.ca/optimized/blog/benefits-hero-science.webp',
         width: 1200,
         height: 630,
         alt: 'The Science Behind Purrify',
@@ -92,7 +92,7 @@ export default function SciencePage() {
       'Explore the peer-reviewed scientific research supporting activated carbon for cat litter odor control.',
     datePublished: '2025-01-15',
     dateModified: new Date().toISOString().split('T')[0],
-    image: 'https://www.purrify.ca/optimized/science-hub-og.jpg',
+    image: 'https://www.purrify.ca/optimized/blog/benefits-hero-science.webp',
     author: {
       '@type': 'Organization',
       name: 'Purrify',
@@ -103,7 +103,7 @@ export default function SciencePage() {
       name: 'Purrify',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.purrify.ca/optimized/purrify-logo.avif',
+        url: 'https://www.purrify.ca/optimized/logos/purrify-logo.avif',
       },
     },
     mainEntityOfPage: {

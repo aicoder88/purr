@@ -10,7 +10,7 @@
       "subject": "Welcome to the Purrify Partner Program - Your Sample Kit is on the Way!",
       "preview_text": "Thank you for your interest in partnering with Purrify",
       "template": {
-        "header_image": "/optimized/logo-icon-512.webp",
+        "header_image": "/optimized/logos/logo-icon-512.webp",
         "greeting": "Dear {{contact_name}},",
         "body": [
           "Thank you for your interest in the Purrify Partner Program! We're excited to have {{clinic_name}} consider joining our growing network of pet professionals.",

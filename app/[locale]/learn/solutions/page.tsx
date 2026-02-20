@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             locale: locale === 'fr' ? 'fr_CA' : 'en_CA',
             images: [
                 {
-                    url: 'https://www.purrify.ca/images/ammonia-hero.webp',
+                    url: 'https://www.purrify.ca/optimized/blog/ammonia-hero.webp',
                     width: 1200,
                     height: 675,
                     alt: 'Cat litter odor solutions guide',
@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             creator: '@purrifyhq',
             title,
             description,
-            images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
+            images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'],
         },
         robots: {
             index: true,

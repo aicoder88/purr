@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/activated-carbon-vs-baking-soda-comparison.webp',
+        url: 'https://www.purrify.ca/optimized/blog/activated-carbon-vs-baking-soda-comparison.webp',
         width: 1200,
         height: 630,
         alt: 'Arm & Hammer cat litter deodorizer alternative - activated carbon comparison',
@@ -56,7 +56,7 @@ const articleSchema = {
   inLanguage: 'en-CA',
   headline: 'Arm & Hammer Cat Litter Deodorizer Not Working? Try This Instead',
   description: "Baking soda stops working after 48 hours. It can't neutralize ammonia (same pH). Here's the science-backed alternative that lasts 3x longer.",
-  image: 'https://www.purrify.ca/optimized/activated-carbon-vs-baking-soda-comparison.webp',
+  image: 'https://www.purrify.ca/optimized/blog/activated-carbon-vs-baking-soda-comparison.webp',
   datePublished: '2025-01-25T10:00:00Z',
   dateModified: new Date().toISOString(),
   author: {
@@ -69,7 +69,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+      url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
       width: 400,
       height: 400,
     },

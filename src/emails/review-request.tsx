@@ -130,7 +130,7 @@ export const ReviewRequestEmailHTML = ({
           <!-- Header -->
           <tr>
             <td style="padding: 40px 40px 20px; text-align: center; background: linear-gradient(135deg, #03E46A 0%, #02C55A 100%); border-radius: 12px 12px 0 0;">
-              <img src="https://www.purrify.ca/images/Logos/purrify-logo.png" alt="Purrify" style="width: 120px; height: auto; margin-bottom: 20px;">
+              <img src="https://www.purrify.ca/optimized/logos/purrify-logo.png" alt="Purrify" style="width: 120px; height: auto; margin-bottom: 20px;">
               <h1 style="margin: 0; font-size: 26px; font-weight: 700; color: #ffffff;">${t.subject}</h1>
             </td>
           </tr>

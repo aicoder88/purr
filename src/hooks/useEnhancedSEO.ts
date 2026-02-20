@@ -106,7 +106,7 @@ function generateOGImage(image: string | undefined, title: string): Array<{
   height?: number;
   alt: string;
 }> {
-  const defaultImage = 'https://www.purrify.ca/images/Logos/purrify-logo.png';
+  const defaultImage = 'https://www.purrify.ca/optimized/logos/purrify-logo.png';
   const imageUrl = image || defaultImage;
 
   return [
@@ -304,7 +304,7 @@ function generateSchema(
         '@type': 'Article',
         headline,
         description: data.description,
-        image: data.image || 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        image: data.image || 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
         datePublished: data.datePublished || new Date().toISOString(),
         dateModified: data.dateModified || data.datePublished || new Date().toISOString(),
         author: {
@@ -318,7 +318,7 @@ function generateSchema(
           url: 'https://www.purrify.ca',
           logo: {
             '@type': 'ImageObject',
-            url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+            url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
             width: 400,
             height: 400,
           },
@@ -401,7 +401,7 @@ function generateSchema(
         url: 'https://www.purrify.ca',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+          url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
           width: 400,
           height: 400,
         },

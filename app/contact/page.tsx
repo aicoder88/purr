@@ -151,7 +151,7 @@ export default function ContactPage() {
         email: 'support@purrify.ca',
       },
     },
-    image: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+    image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
     keywords: [
       'contact purrify',
       'cat litter customer support',

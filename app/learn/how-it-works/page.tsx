@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/micropores_magnified_view.webp',
+        url: 'https://www.purrify.ca/optimized/marketing/micropores-magnified-view.webp',
         width: 1200,
         height: 800,
         alt: 'How Purrify Works - Activated Carbon Science',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     creator: '@purrifyhq',
     title: `How Purrify Works - ${SITE_NAME} Activated Carbon Science`,
     description: "Discover the science behind Purrify's activated carbon technology.",
-    images: ['https://www.purrify.ca/optimized/micropores_magnified_view.webp'],
+    images: ['https://www.purrify.ca/optimized/marketing/micropores-magnified-view.webp'],
   },
   robots: {
     index: true,
@@ -61,7 +61,7 @@ const articleSchema = {
   inLanguage: 'en-CA',
   headline: `How Purrify Works - ${SITE_NAME} Activated Carbon Science`,
   description: "Discover the science behind Purrify's activated carbon technology. Learn how micropores trap odor molecules at the source for superior cat litter odor control.",
-  image: 'https://www.purrify.ca/optimized/micropores_magnified_view.webp',
+  image: 'https://www.purrify.ca/optimized/marketing/micropores-magnified-view.webp',
   datePublished: '2024-01-20T10:00:00Z',
   dateModified: new Date().toISOString(),
   author: {
@@ -74,7 +74,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+      url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
       width: 400,
       height: 400,
     },

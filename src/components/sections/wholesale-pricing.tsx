@@ -230,7 +230,7 @@ export function WholesalePricing() {
       highlighted: false,
       badge: pricing?.tiers?.starter?.badge || 'Quick Start',
       cta: pricing?.tiers?.starter?.cta || 'Get Started',
-      image: '/optimized/17g-transparent-v2.webp',
+      image: '/optimized/products/17g-transparent-v2.webp',
       imageAlt: 'Purrify Starter Pack',
     },
     {
@@ -251,7 +251,7 @@ export function WholesalePricing() {
       highlighted: true,
       badge: pricing?.tiers?.growth?.badge || 'Best Value',
       cta: pricing?.tiers?.growth?.cta || 'Start Growing Now',
-      image: '/optimized/60g-transparent.webp',
+      image: '/optimized/products/60g-transparent.webp',
       imageAlt: 'Purrify Growth Partner Package',
     },
     {
@@ -274,7 +274,7 @@ export function WholesalePricing() {
       highlighted: false,
       badge: pricing?.tiers?.scale?.badge || 'Enterprise',
       cta: pricing?.tiers?.scale?.cta || 'Get Started',
-      image: '/optimized/140g-transparent.webp',
+      image: '/optimized/products/140g-transparent.webp',
       imageAlt: 'Purrify Scale Success Package',
     },
   ], [pricing]);

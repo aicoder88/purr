@@ -264,7 +264,7 @@ export class AutomatedContentGenerator {
 
     // Fallback to default Purrify logo
     return {
-      url: '/optimized/purrify-logo.avif',
+      url: '/optimized/logos/purrify-logo.avif',
       alt: `${topic} - Purrify Blog`,
       width: 1200,
       height: 630
@@ -642,7 +642,7 @@ Make the content genuinely helpful and informative, not promotional.
       } catch (_error) {
         // Failed to download featured image, using fallback
         featuredImage = {
-          url: '/optimized/purrify-logo.avif',
+          url: '/optimized/logos/purrify-logo.avif',
           alt: data.title,
           width: 1200,
           height: 630
@@ -652,7 +652,7 @@ Make the content genuinely helpful and informative, not promotional.
       // Fetch default image from Unsplash
       const images = await this.fetchRelevantImages(data.title, 1);
       featuredImage = images[0] || {
-        url: '/optimized/purrify-logo.avif',
+        url: '/optimized/logos/purrify-logo.avif',
         alt: data.title,
         width: 1200,
         height: 630

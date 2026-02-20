@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/quality-control-lab.webp',
+        url: 'https://www.purrify.ca/optimized/marketing/quality-control-lab.webp',
         width: 1600,
         height: 1067,
         alt: 'Quality control laboratory testing for activated carbon',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     creator: '@purrifyhq',
     title: `Is Activated Carbon Safe for Cats? | ${SITE_NAME}`,
     description: 'Comprehensive technical datasheet and safety information for Purrify Activated Carbon.',
-    images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
+    images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'],
   },
   robots: {
     index: true,
@@ -61,7 +61,7 @@ const articleSchema = {
   inLanguage: 'en-CA',
   headline: `Is Activated Carbon Safe for Cats? | ${SITE_NAME}`,
   description: 'Comprehensive technical datasheet and safety information for Purrify Activated Carbon. Learn about certifications, specifications, and safe usage guidelines.',
-  image: 'https://www.purrify.ca/optimized/quality-control-lab.webp',
+  image: 'https://www.purrify.ca/optimized/marketing/quality-control-lab.webp',
   datePublished: '2024-01-10T10:00:00Z',
   dateModified: new Date().toISOString(),
   author: {
@@ -74,7 +74,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+      url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
       width: 400,
       height: 400,
     },
@@ -94,7 +94,7 @@ const productSchema = {
   '@type': 'Product',
   name: `${SITE_NAME} Activated Carbon`,
   description: 'Premium granular activated carbon produced from sustainable coconut shell with highly microporous structure.',
-  image: 'https://www.purrify.ca/optimized/activated-carbon-granules.webp',
+  image: 'https://www.purrify.ca/optimized/products/activated-carbon-granules.webp',
   brand: {
     '@type': 'Brand',
     name: SITE_NAME,

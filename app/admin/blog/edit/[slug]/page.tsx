@@ -115,7 +115,7 @@ export default function EditPostPage({ params }: EditPostPageProps) {
       modifiedDate: now,
       status: 'draft',
       featuredImage: {
-        url: featuredImage || '/optimized/purrify-logo.avif',
+        url: featuredImage || '/optimized/logos/purrify-logo.avif',
         alt: title,
         width: 1200,
         height: 630
@@ -261,7 +261,7 @@ export default function EditPostPage({ params }: EditPostPageProps) {
         status: publishNow ? 'published' : (scheduledDate ? 'scheduled' : status),
         scheduledDate: scheduledDate || undefined,
         featuredImage: {
-          url: featuredImage || '/optimized/purrify-logo.avif',
+          url: featuredImage || '/optimized/logos/purrify-logo.avif',
           alt: title,
           width: 1200,
           height: 630

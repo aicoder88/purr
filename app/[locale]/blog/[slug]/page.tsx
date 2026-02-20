@@ -167,7 +167,7 @@ async function getPost(slug: string, locale: string): Promise<BlogPost | null> {
         excerpt: blogPost.excerpt,
         author: blogPost.author?.name || 'Purrify Team',
         date: dateStr,
-        image: blogPost.featuredImage?.url || '/optimized/cat-litter-hero.webp',
+        image: blogPost.featuredImage?.url || '/optimized/blog/cat-litter-hero.webp',
         heroImageAlt: blogPost.featuredImage?.alt || blogPost.title,
         link: `/${locale}/blog/${blogPost.slug}`,
         content: blogPost.content,

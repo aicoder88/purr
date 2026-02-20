@@ -74,7 +74,7 @@ export default function POSContent() {
                         <div className="col-span-6 relative h-full flex items-center justify-center">
                             <div className="relative w-full h-[400px]">
                                 <Image
-                                    src="/optimized/60g-transparent.webp"
+                                    src="/optimized/products/60g-transparent.webp"
                                     alt="Purrify Product"
                                     fill
                                     sizes="(max-width: 768px) 100vw, 400px"

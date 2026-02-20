@@ -112,7 +112,7 @@ export default function AffiliateContent() {
                             <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border border-gray-800/50 dark:border-gray-800/50 bg-gray-900/50 dark:bg-gray-900/50 backdrop-blur-sm p-4">
                                 <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-gray-800 dark:bg-gray-800">
                                     <Image
-                                        src="/optimized/three-bags-no-bg.webp"
+                                        src="/optimized/products/three-bags-no-bg.webp"
                                         alt="Purrify Products"
                                         fill
                                         className="object-contain hover:scale-105 transition-transform duration-700"
@@ -134,7 +134,7 @@ export default function AffiliateContent() {
                         <div className="lg:w-1/2 relative">
                             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-800 dark:border-gray-800 bg-gray-900 dark:bg-gray-900 ring-1 ring-white/10 transform rotate-1 hover:rotate-0 transition-transform duration-500">
                                 <Image
-                                    src="/optimized/affiliate-dashboard.webp"
+                                    src="/optimized/marketing/affiliate-dashboard.webp"
                                     alt="Affiliate Earnings Dashboard"
                                     width={800}
                                     height={600}
@@ -527,7 +527,7 @@ export default function AffiliateContent() {
                                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-800 dark:border-gray-800 group">
                                     <div className="aspect-[4/3] relative">
                                         <Image
-                                            src="/optimized/happy-owner.webp"
+                                            src="/optimized/marketing/happy-owner.webp"
                                             alt="Happy Customer"
                                             fill
                                             className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -577,7 +577,7 @@ export default function AffiliateContent() {
                                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-800 dark:border-gray-800 group">
                                     <div className="aspect-[4/3] relative">
                                         <Image
-                                            src="/optimized/benefits-happy-cats.avif"
+                                            src="/optimized/blog/benefits-happy-cats.avif"
                                             alt="Effective Product"
                                             fill
                                             className="object-cover group-hover:scale-105 transition-transform duration-700"

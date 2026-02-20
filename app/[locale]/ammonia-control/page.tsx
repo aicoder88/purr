@@ -101,7 +101,7 @@ export async function generateMetadata({ params }: AmmoniaControlPageProps): Pro
       siteName: SITE_NAME,
       images: [
         {
-          url: `${SITE_URL}/images/ammonia-hero.webp`,
+          url: `${SITE_URL}/optimized/blog/ammonia-hero.webp`,
           width: 1200,
           height: 630,
           alt: ammonia.meta.title,
@@ -114,7 +114,7 @@ export async function generateMetadata({ params }: AmmoniaControlPageProps): Pro
       creator: '@purrifyhq',
       title: ammonia.meta.title,
       description: ammonia.meta.description,
-      images: [`${SITE_URL}/images/ammonia-hero.webp`],
+      images: [`${SITE_URL}/optimized/blog/ammonia-hero.webp`],
     },
     robots: {
       index: true,
@@ -279,7 +279,7 @@ export default async function AmmoniaControlPage({ params }: AmmoniaControlPageP
         subheadline={ammonia.hero.subheadline}
         primaryCTA={{ label: ammonia.hero.cta, href: '/products/' }}
         secondaryCTA={{ label: ammonia.hero.secondaryCta, href: '#how-it-works' }}
-        image="/images/ammonia-hero.webp"
+        image="/optimized/blog/ammonia-hero.webp"
         imageAlt="Purrify activated carbon cat litter deodorizer"
       />
 
@@ -367,7 +367,7 @@ export default async function AmmoniaControlPage({ params }: AmmoniaControlPageP
         id="how-it-works"
         headline={ammonia.solution.headline}
         description={ammonia.solution.description}
-        diagramSrc="/images/ammonia-science.webp"
+        diagramSrc="/optimized/blog/ammonia-science.webp"
         diagramAlt="How activated carbon captures ammonia molecules"
       />
 
@@ -562,7 +562,7 @@ export default async function AmmoniaControlPage({ params }: AmmoniaControlPageP
 
             <div className="relative">
               <Image
-                src="/images/ammonia-fresh-home.webp"
+                src="/optimized/blog/ammonia-fresh-home.webp"
                 alt="Fresh home with cat after using Purrify"
                 width={600}
                 height={600}

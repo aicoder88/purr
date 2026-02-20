@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
         width: 1200,
         height: 800,
         alt: 'Cat Litter Cost Calculator',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     creator: '@purrifyhq',
     title: 'Cat Litter Cost Calculator | Compare Litter Types',
     description: 'Free cat litter calculator: compare annual costs across litter types.',
-    images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
+    images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'],
   },
   alternates: {
     canonical: 'https://www.purrify.ca/tools/cat-litter-calculator/',

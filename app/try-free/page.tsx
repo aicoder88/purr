@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/17gpink.webp',
+        url: 'https://www.purrify.ca/optimized/products/17g-transparent.webp',
         width: 1200,
         height: 800,
         alt: 'FREE Purrify Trial | Just Pay Shipping | Eliminates Odors',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     site: '@purrifyhq',
     title: 'FREE Purrify Trial | Just Pay Shipping | Eliminates Odors',
     description: 'FREE Purrify Trial | Just Pay Shipping | Eliminates cat litter smell instantly with water-filter grade carbon. ★ 4.8 rating. Ships USA & Canada.',
-    images: ['https://www.purrify.ca/optimized/17gpink.webp'],
+    images: ['https://www.purrify.ca/optimized/products/17g-transparent.webp'],
   },
 };
 

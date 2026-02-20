@@ -74,12 +74,12 @@ export async function generateMetadata(): Promise<Metadata> {
     referrer: 'origin-when-cross-origin',
     icons: {
       icon: [
-        { url: '/optimized/favicon.svg', type: 'image/svg+xml' },
+        { url: '/optimized/icons/favicon.svg', type: 'image/svg+xml' },
       ],
       apple: [
-        { url: '/images/Logos/apple-touch-icon.png', sizes: '180x180' },
+        { url: '/optimized/icons/apple-touch-icon.png', sizes: '180x180' },
       ],
-      shortcut: ['/optimized/favicon.svg'],
+      shortcut: ['/optimized/icons/favicon.svg'],
     },
     manifest: '/manifest.json',
     alternates,
@@ -92,7 +92,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: SITE_DESCRIPTION,
       images: [
         {
-          url: '/images/Logos/purrify-logo.png',
+          url: '/optimized/logos/purrify-logo.png',
           width: 1200,
           height: 800,
           alt: SITE_NAME,
@@ -106,7 +106,7 @@ export async function generateMetadata(): Promise<Metadata> {
       creator: '@purrify',
       title: `${SITE_NAME} - Cat Litter Odor Control`,
       description: SITE_DESCRIPTION,
-      images: ['/images/Logos/purrify-logo.png'],
+      images: ['/optimized/logos/purrify-logo.png'],
     },
     robots: {
       index: true,

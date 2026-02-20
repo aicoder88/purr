@@ -3,7 +3,7 @@ import { BlogTopic, GeneratedImage } from './types';
 const FALLBACK_IMAGES: GeneratedImage[] = [
   {
     kind: 'HERO',
-    url: '/optimized/activated-carbon-benefits.webp',
+    url: '/optimized/blog/activated-carbon-benefits.webp',
     alt: 'Cat litter deodorizer - activated carbon granules keeping litter box fresh',
     caption: 'Activated carbon absorbs odor molecules before they escape the litter box.',
     credit: 'Purrify Product Image',
@@ -19,7 +19,7 @@ const FALLBACK_IMAGES: GeneratedImage[] = [
   },
   {
     kind: 'SECTION',
-    url: '/optimized/house-smells-cat-litter.webp',
+    url: '/optimized/blog/house-smells-cat-litter.webp',
     alt: 'Frustrated apartment renter holding nose near litter box',
     caption: 'Odor emergencies happen fast in small apartments without airflow.',
     credit: 'Purrify Product Image',

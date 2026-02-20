@@ -186,7 +186,7 @@ export const fr = {
     tagline: "Versez. Mélangez. Respirez.",
     subheadline: "Aimez votre chat, pas l'odeur de sa litière. Purrify neutralise l'ammoniaque en 30 secondes—ne laissant que de l'air frais. Soutenu par la science, 100% naturel.",
     instantly: "Instantanément",
-    description: "La technologie avancée au charbon actif neutralise l'ammoniaque et les odeurs 3x plus rapidement que les solutions traditionnelles. Redécouvrez le plaisir d'un foyer qui sent bon le propre, naturellement.",
+    description: "La technologie avancée au charbon actif neutralise l'ammoniaque et les odeurs 3x plus rapidement que les solutions traditionnelles. Redécouvrez le...",
     socialProof: {
       trustNumber: "Sans parfum",
       trustText: "additif au charbon actif",
@@ -244,7 +244,7 @@ export const fr = {
   features: {
     odorElimination: {
       title: "Élimine les odeurs (ne les masque pas)",
-      description: "Les désodorisants masquent le problème avec du parfum. Le charbon actif de Purrify capture réellement les molécules d'ammoniac et les emprisonne. L'odeur disparaît pour de bon."
+      description: "Les désodorisants masquent le problème avec du parfum. Le charbon actif de Purrify capture réellement les molécules d'ammoniac et les emprisonne..."
     },
     catFriendly: {
       title: "100% sûr pour les chats",
@@ -556,7 +556,7 @@ export const fr = {
       }
     },
     popup: {
-      title: "Obtenez {discount}% de réduction sur votre première commande !",
+      title: "Obtenez {discount}% de réduction sur votre...",
       description: "Rejoignez 1 000+ clients heureux et recevez des conseils exclusifs, des réductions et un accès anticipé aux nouveaux produits.",
       buttonText: "Obtenez {discount}% de réduction maintenant"
     },
@@ -609,17 +609,17 @@ export const fr = {
   seo: {
     keywords: "litière pour chat, contrôle des odeurs, charbon actif, additif de litière pour chat, odeur d'animal, élimination des odeurs de chat, litière écologique pour chat, contrôle naturel des odeurs, soins des chats, fournitures pour animaux, vidéo de chat",
     openGraph: {
-      title: "Purrify - Additif de Litière pour Chat à Base de Charbon Actif",
+      title: "Purrify - Additif de Litière pour Chat à Base...",
       description: "Additif de litière pour chat à base de charbon actif qui élimine les odeurs à la source."
     },
-    metaDescription: "Purrify est un additif premium de litière pour chat à base de charbon actif qui élimine les odeurs au niveau moléculaire. Fabriqué à partir de charbon de coque de coco naturel, il offre 7 jours de fraîcheur et fonctionne avec tous les types de litière. Fait confiance par plus de 1 000 propriétaires de chats au Canada."
+    metaDescription: "Purrify est un additif premium de litière pour chat à base de charbon actif qui élimine les odeurs au niveau moléculaire. Fabriqué à partir de charbon..."
   },
 
   // Structured Data
   structuredData: {
     organization: {
       name: "Purrify",
-      description: "Additif premium de litière pour chat à base de charbon actif qui élimine les odeurs au niveau moléculaire. Fabriqué au Canada avec du charbon de coque de coco naturel.",
+      description: "Additif premium de litière pour chat à base de charbon actif qui élimine les odeurs au niveau moléculaire. Fabriqué au Canada avec du charbon de coque...",
       foundingDate: "2023",
       contactPoint: {
         telephone: CONTACT_INFO.phoneInternational,
@@ -726,15 +726,15 @@ export const fr = {
     items: [
       {
         title: "Élimination des Odeurs",
-        description: "La formule avancée de Purrify élimine efficacement les odeurs désagréables de litière à la source. Dites adieu aux odeurs persistantes qui peuvent imprégner votre maison et accueillez un environnement plus frais et accueillant pour vous et votre ami à fourrure."
+        description: "La formule avancée de Purrify élimine efficacement les odeurs désagréables de litière à la source. Dites adieu aux odeurs persistantes qui peuvent..."
       },
       {
         title: "Simple",
-        description: "Purrify est formulé avec de simples coques de noix de coco, activées pour absorber les odeurs. Vous pouvez être sûr que vous offrez à votre chat un environnement de litière propre sans l'exposer à des produits chimiques ou des toxines."
+        description: "Purrify est formulé avec de simples coques de noix de coco, activées pour absorber les odeurs. Vous pouvez être sûr que vous offrez à votre chat un..."
       },
       {
         title: "Économique",
-        description: "Purrify aide à prolonger la durée de vie de la litière de votre chat en prévenant l'accumulation d'odeurs, ce qui signifie que vous devrez changer la litière moins souvent. Cela vous fait économiser de l'argent et réduit les déchets, un avantage pour votre portefeuille et l'environnement."
+        description: "Purrify aide à prolonger la durée de vie de la litière de votre chat en prévenant l'accumulation d'odeurs, ce qui signifie que vous devrez changer la..."
       }
     ]
   },
@@ -744,7 +744,7 @@ export const fr = {
     badge: "Le Côté Scientifique (C'est Rapide)",
     headline: "Comment le Charbon Actif",
     headlineHighlight: "Fonctionne Vraiment",
-    description: "Les désodorisants ne font que vaporiser du parfum sur le problème. Le charbon actif est différent — il possède des millions de minuscules tunnels qui piègent physiquement les molécules d'odeur. Une fois que l'ammoniac entre, il ne ressort pas. C'est pourquoi l'odeur disparaît vraiment au lieu de jouer à cache-cache.",
+    description: "Les désodorisants ne font que vaporiser du parfum sur le problème. Le charbon actif est différent — il possède des millions de minuscules tunnels qui...",
     learnMore: "Plongez Plus Profondément Dans la Science",
     features: [
       {
@@ -782,8 +782,8 @@ export const fr = {
 
   // Calculator Section (homepage component)
   calculatorSection: {
-    title: "Économisez de l'Argent Tout en Gardant Votre Maison Fraîche",
-    description: "Purrify prolonge la durée de vie de la litière de votre chat jusqu'à 50%, vous faisant économiser de l'argent tout en éliminant les odeurs. Voyez combien vous pourriez économiser avec notre calculatrice ci-dessous."
+    title: "Économisez de l'Argent Tout en Gardant Votre...",
+    description: "Purrify prolonge la durée de vie de la litière de votre chat jusqu'à 50%, vous faisant économiser de l'argent tout en éliminant les odeurs. Voyez..."
   },
 
   // Section Header highlights
@@ -1496,7 +1496,7 @@ export const fr = {
           description: "Les chats ont 200 millions de récepteurs olfactifs. Les parfums artificiels les stressent. Purrify agit invisiblement."
         },
         {
-          title: "Argile, cristal, agglomérante, naturelle... On ne juge pas",
+          title: "Argile, cristal, agglomérante, naturelle... On...",
           description: "Fonctionne avec la litière que votre chat vous a entraîné à acheter. Pas de drame de changement."
         },
         {
@@ -1508,7 +1508,7 @@ export const fr = {
 
     // Did You Know Fact Box
     didYouKnow: {
-      title: "La science dont votre chat se fiche (Mais votre nez sera ravi)",
+      title: "La science dont votre chat se fiche (Mais...",
       body: "Un seul gramme de charbon actif contient environ 3 000 mètres carrés de surface. C'est plus grand que la moitié d'un terrain de football — dans quelque chose plus petit qu'un petit pois.\n\nÀ l'intérieur se trouvent des millions de pores et tunnels microscopiques. Quand les molécules d'ammoniaque passent, elles sont piégées en permanence.\n\nCe n'est pas du masquage. C'est de la capture moléculaire. La même technologie utilisée dans les masques à gaz, les usines de traitement d'eau et la filtration d'air hospitalière. Maintenant sur la litière de votre chat."
     },
 
@@ -2165,7 +2165,7 @@ export const fr = {
   // Homepage specific translations
   homepage: {
     seo: {
-      pageTitle: "Additif naturel pour litière qui élimine les odeurs de chat instantanément",
+      pageTitle: "Additif naturel pour litière qui élimine les...",
       keywords: "additif litière chat, contrôle odeur, charbon actif, éliminateur odeur naturel, fraîcheur litière, produit chat Canada",
       openGraphImageAlt: "Purrify - Additif naturel pour litière de chat qui élimine les odeurs",
       videoAlt: "Démonstration de Purrify éliminant les odeurs de litière pour chat",
@@ -2235,8 +2235,8 @@ export const fr = {
   // Blog
   blog: {
     multiCat: {
-      title: "Meilleur Désodorisant pour Litière Multi-Chats : Guide Ultime de Contrôle des Odeurs 2024",
-      description: "Découvrez le désodorisant le plus efficace pour les foyers multi-chats. Solutions expertes pour éliminer les odeurs fortes de plusieurs chats utilisant la technologie au charbon actif éprouvée.",
+      title: "Meilleur Désodorisant pour Litière Multi-Chats...",
+      description: "Découvrez le désodorisant le plus efficace pour les foyers multi-chats. Solutions expertes pour éliminer les odeurs fortes de plusieurs chats utilisant...",
       category: "Guide Foyer Multi-Chats",
       publishDate: "Publié le 16 septembre 2024",
       readTime: "12 min de lecture",
@@ -2250,8 +2250,8 @@ export const fr = {
       }
     },
     odorAbsorber: {
-      title: "Absorbeur d'odeurs le plus puissant pour la litière : guide scientifique 2025",
-      description: "Découvrez les stratégies d'absorption d'odeurs les plus puissantes pour la litière. Comparez le carbone activé, la zéolite et les systèmes hybrides afin que votre maison puisse rester fraîche sans parfums agressifs.",
+      title: "Absorbeur d'odeurs le plus puissant pour la...",
+      description: "Découvrez les stratégies d'absorption d'odeurs les plus puissantes pour la litière. Comparez le carbone activé, la zéolite et les systèmes hybrides...",
       category: "Science et technologie des odeurs",
       publishDate: "Publié le 19 octobre 2025",
       readTime: "Lecture de 14 min",
@@ -2330,8 +2330,8 @@ export const fr = {
 
   // Affiliate Page
   affiliate: {
-    metaTitle: "Gagnez un Revenu Mensuel avec le Programme d'Affiliation Purrify",
-    metaDescription: "Recommandez Purrify aux propriétaires de chats et gagnez une commission récurrente de 30% à vie. Rejoignez des centaines d'affiliés qui gagnent un revenu passif en aidant les chats à vivre sans odeur.",
+    metaTitle: "Gagnez un Revenu Mensuel avec le Programme...",
+    metaDescription: "Recommandez Purrify aux propriétaires de chats et gagnez une commission récurrente de 30% à vie. Rejoignez des centaines d'affiliés qui gagnent un...",
     hero: {
       badge: "Rejoignez Notre Programme d'Affiliation",
       title: "Gagnez un Revenu Mensuel Avec Purrify",
@@ -2358,11 +2358,11 @@ export const fr = {
       },
       step2: {
         title: "Partagez Votre Lien",
-        description: "Partagez votre lien de parrainage avec votre audience via les médias sociaux, articles de blog, vidéos ou email. Nous fournissons du matériel marketing pour vous aider à réussir."
+        description: "Partagez votre lien de parrainage avec votre audience via les médias sociaux, articles de blog, vidéos ou email. Nous fournissons du matériel marketing..."
       },
       step3: {
         title: "Soyez Payé à Vie",
-        description: "Gagnez une commission récurrente de 30% sur chaque vente de vos parrainés - pas seulement le premier achat, mais pour toujours. Paiements envoyés mensuellement par votre méthode préférée."
+        description: "Gagnez une commission récurrente de 30% sur chaque vente de vos parrainés - pas seulement le premier achat, mais pour toujours. Paiements envoyés..."
       }
     },
     benefits: {
@@ -2370,11 +2370,11 @@ export const fr = {
       subtitle: "Nous avons conçu notre programme pour vous aider à réussir avec des commissions et un soutien de premier plan dans l'industrie",
       benefit1: {
         title: "Commissions à Vie de 30%",
-        description: "Contrairement à la plupart des programmes qui ne paient que sur la première vente, vous gagnez 30% sur chaque achat de vos parrainés - pour toujours. Construisez un véritable revenu passif."
+        description: "Contrairement à la plupart des programmes qui ne paient que sur la première vente, vous gagnez 30% sur chaque achat de vos parrainés - pour toujours..."
       },
       benefit2: {
         title: "Produit à Haute Conversion",
-        description: "Purrify résout un vrai problème auquel les propriétaires de chats sont confrontés quotidiennement. Avec 4,8/5 étoiles et un taux de satisfaction de 98%, nos produits se vendent tout seuls."
+        description: "Purrify résout un vrai problème auquel les propriétaires de chats sont confrontés quotidiennement. Avec 4,8/5 étoiles et un taux de satisfaction de..."
       },
       benefit3: {
         title: "Suivi en Temps Réel",
@@ -2382,7 +2382,7 @@ export const fr = {
       },
       benefit4: {
         title: "Ressources Marketing",
-        description: "Accédez à des bannières professionnelles, modèles d'email, images de produits et textes éprouvés. Nous fournissons tout ce dont vous avez besoin pour réussir."
+        description: "Accédez à des bannières professionnelles, modèles d'email, images de produits et textes éprouvés. Nous fournissons tout ce dont vous avez besoin pour..."
       }
     },
     testimonials: {
@@ -2427,8 +2427,8 @@ export const fr = {
   // Page Contrôle de l'Ammoniac
   ammonia: {
     meta: {
-      title: "Contrôle de l'Ammoniac pour Litière | Élimination Naturelle des Odeurs | Purrify",
-      description: "Éliminez l'odeur d'ammoniac de la litière avec la formule de charbon actif Purrify. Contrôle les odeurs à la source pendant 7+ jours. Sans danger pour les chats."
+      title: "Contrôle de l'Ammoniac pour Litière |...",
+      description: "Éliminez l'odeur d'ammoniac de la litière avec la formule de charbon actif Purrify. Contrôle les odeurs à la source pendant 7+ jours. Sans danger pour..."
     },
     breadcrumb: "Contrôle de l'Ammoniac",
     hero: {
@@ -2445,7 +2445,7 @@ export const fr = {
       intro: "Cette odeur distinctive de litière ne vient pas de votre chat—c'est un processus chimique qui se produit dans la litière elle-même. Comprendre ce processus est la première étape pour l'éliminer.",
       chemistry: {
         title: "La Chimie Derrière l'Odeur",
-        description: "Quand votre chat urine, l'urine contient un composé appelé urée. En seulement 2-4 heures, les bactéries naturellement présentes dans la litière commencent à décomposer cette urée en gaz ammoniac (NH₃). C'est l'odeur âcre et piquante qui peut envahir toute votre maison.",
+        description: "Quand votre chat urine, l'urine contient un composé appelé urée. En seulement 2-4 heures, les bactéries naturellement présentes dans la litière...",
         formula: "Urée + Bactéries + Temps = Gaz Ammoniac"
       },
       factors: {
@@ -2457,7 +2457,7 @@ export const fr = {
       },
       health: {
         title: "Problèmes de Santé Liés à l'Exposition à l'Ammoniac",
-        description: "L'exposition prolongée à l'ammoniac n'est pas qu'un désagrément—elle peut causer de vrais problèmes de santé. À des concentrations courantes près des litières mal entretenues, l'ammoniac peut irriter les yeux et le système respiratoire des humains et des chats. Les chats, avec leur nez sensible, peuvent même commencer à éviter une litière qui sent trop l'ammoniac, causant des accidents ailleurs dans votre maison."
+        description: "L'exposition prolongée à l'ammoniac n'est pas qu'un désagrément—elle peut causer de vrais problèmes de santé. À des concentrations courantes près des..."
       }
     },
     problem: {
@@ -2465,35 +2465,35 @@ export const fr = {
       intro: "Si vous avez essayé les litières parfumées, le bicarbonate de soude ou les désodorisants et trouvé qu'ils ne fonctionnent qu'un jour ou deux, il y a une raison scientifique: aucun d'eux n'élimine vraiment l'ammoniac.",
       card1: {
         title: "Masquer, Pas Résoudre",
-        description: "Les parfums et litières parfumées ajoutent simplement une odeur différente par-dessus l'ammoniac. Votre nez s'habitue au parfum en quelques heures, mais l'ammoniac est toujours là—toujours produit, toujours en accumulation. C'est pourquoi l'odeur revient toujours, souvent pire qu'avant."
+        description: "Les parfums et litières parfumées ajoutent simplement une odeur différente par-dessus l'ammoniac. Votre nez s'habitue au parfum en quelques heures..."
       },
       card2: {
         title: "Préoccupations de Santé pour les Chats",
-        description: "Les parfums artificiels ne sont pas seulement inefficaces—ils peuvent être nocifs. Les chats ont 200 millions de récepteurs olfactifs contre 5 millions pour nous. Les parfums forts peuvent causer des irritations respiratoires, déclencher de l'asthme, ou faire éviter la litière à votre chat."
+        description: "Les parfums artificiels ne sont pas seulement inefficaces—ils peuvent être nocifs. Les chats ont 200 millions de récepteurs olfactifs contre 5 millions..."
       },
       card3: {
         title: "Le Mythe du Bicarbonate de Soude",
-        description: "Le bicarbonate de soude est alcalin (pH ~8,3) et l'ammoniac est aussi alcalin (pH ~11,6). Pour une neutralisation, il faut une réaction acide-base—mais base plus base égale pas de réaction. Le bicarbonate ne peut pas neutraliser l'ammoniac; il n'absorbe que temporairement l'humidité."
+        description: "Le bicarbonate de soude est alcalin (pH ~8,3) et l'ammoniac est aussi alcalin (pH ~11,6). Pour une neutralisation, il faut une réaction acide-base—mais..."
       },
       card4: {
         title: "Coût & Effort Constants",
-        description: "Sans vraie élimination des odeurs, vous êtes coincé dans un cycle coûteux: changements fréquents de litière, achats de produits parfumés inefficaces, et inquiétude constante sur ce que les invités pourraient sentir. Cela peut coûter 50-100$+ par mois pour les foyers multi-chats."
+        description: "Sans vraie élimination des odeurs, vous êtes coincé dans un cycle coûteux: changements fréquents de litière, achats de produits parfumés inefficaces..."
       }
     },
     solution: {
       headline: "La Science de la Vraie Élimination des Odeurs",
       intro: "Le charbon actif fonctionne par un mécanisme totalement différent des agents masquants—et c'est pourquoi il fonctionne vraiment.",
-      description: "Le charbon actif possède une structure microporeuse avec des millions de petits pores qui capturent physiquement les molécules d'ammoniac. Contrairement aux agents masquants, le charbon actif capture l'odeur au niveau moléculaire par adsorption—vous ne la sentez plus jamais.",
+      description: "Le charbon actif possède une structure microporeuse avec des millions de petits pores qui capturent physiquement les molécules d'ammoniac...",
       adsorption: {
         title: "L'Adsorption: La Différence Clé",
-        description: "L'adsorption (avec un 'd') est différente de l'absorption. Quand les molécules d'ammoniac contactent le charbon actif, elles ne font pas que s'imbiber—elles se lient à la surface du charbon au niveau moléculaire. Ce processus physique fonctionne quel que soit le pH, le rendant efficace contre l'ammoniac là où le bicarbonate échoue."
+        description: "L'adsorption (avec un 'd') est différente de l'absorption. Quand les molécules d'ammoniac contactent le charbon actif, elles ne font pas que..."
       },
       pores: {
         title: "Structure de Pores Optimisée",
         micro: "Micropores (<2nm): Piègent les petites molécules d'ammoniac de façon permanente",
         meso: "Mésopores (2-50nm): Servent d'autoroutes guidant l'ammoniac vers les micropores",
         macro: "Macropores (>50nm): Points d'entrée permettant un accès rapide des gaz",
-        description: "Le charbon de noix de coco de Purrify est spécifiquement traité pour optimiser cette distribution de pores pour la capture de l'ammoniac. Résultat: efficacité maximale de piégeage pour les molécules exactes causant votre problème d'odeur."
+        description: "Le charbon de noix de coco de Purrify est spécifiquement traité pour optimiser cette distribution de pores pour la capture de l'ammoniac. Résultat:..."
       },
       surface: {
         title: "Surface Massive",
@@ -2508,17 +2508,17 @@ export const fr = {
       step1: {
         number: "1",
         title: "Saupoudrer",
-        description: "Saupoudrez 2-3 cuillères à soupe de Purrify uniformément sur la litière de votre chat. Pour de meilleurs résultats, ajoutez Purrify après avoir nettoyé quand la litière est relativement fraîche."
+        description: "Saupoudrez 2-3 cuillères à soupe de Purrify uniformément sur la litière de votre chat. Pour de meilleurs résultats, ajoutez Purrify après avoir nettoyé..."
       },
       step2: {
         number: "2",
         title: "Mélanger",
-        description: "Mélangez doucement les granulés de charbon dans la couche supérieure de la litière. Pas besoin de mélanger profondément—le charbon fonctionne mieux près de la surface où l'ammoniac est libéré."
+        description: "Mélangez doucement les granulés de charbon dans la couche supérieure de la litière. Pas besoin de mélanger profondément—le charbon fonctionne mieux..."
       },
       step3: {
         number: "3",
         title: "Entretenir",
-        description: "Ramassez quotidiennement comme d'habitude. Réappliquez Purrify tous les 5-7 jours, ou quand vous ajoutez de la litière fraîche. Un sachet de 50g dure généralement 2-3 semaines pour un seul chat."
+        description: "Ramassez quotidiennement comme d'habitude. Réappliquez Purrify tous les 5-7 jours, ou quand vous ajoutez de la litière fraîche. Un sachet de 50g dure..."
       },
       tips: {
         title: "Conseils Pro pour de Meilleurs Résultats",
@@ -2537,19 +2537,19 @@ export const fr = {
       pillar1: {
         title: "Science 100% Naturelle",
         intro: "Une solution 100% naturelle pour les odeurs de litière",
-        description: "Purrify est fait de charbon actif de noix de coco premium—rien d'autre. Pas de produits chimiques, parfums, additifs synthétiques ou charges. C'est le même matériau utilisé dans les purificateurs d'air de qualité hospitalière et les systèmes de filtration d'eau.",
+        description: "Purrify est fait de charbon actif de noix de coco premium—rien d'autre. Pas de produits chimiques, parfums, additifs synthétiques ou charges. C'est le...",
         detail: "Le charbon de noix de coco est prisé pour sa haute densité de micropores, le rendant particulièrement efficace pour piéger les petites molécules de gaz comme l'ammoniac."
       },
       pillar2: {
         title: "Protection Longue Durée",
         intro: "Protection longue durée contre les odeurs",
-        description: "Une application de Purrify offre un contrôle continu de l'ammoniac pendant 7+ jours. Contrairement aux parfums qui s'estompent en quelques heures ou au bicarbonate qui cesse de fonctionner après 48 heures, le charbon actif continue de fonctionner jusqu'à saturation de ses pores.",
+        description: "Une application de Purrify offre un contrôle continu de l'ammoniac pendant 7+ jours. Contrairement aux parfums qui s'estompent en quelques heures ou au...",
         detail: "La plupart des clients trouvent qu'ils peuvent réduire leurs changements complets de litière de 30-50%, économisant argent et temps."
       },
       pillar3: {
         title: "Sûr pour Tous les Chats",
         intro: "Sûr pour tous les chats et chatons",
-        description: "Parce que Purrify est totalement sans parfum et fait de charbon naturel, il est sûr pour les chats de tous âges et sensibilités. Chatons, seniors et chats avec des conditions respiratoires peuvent tous en bénéficier sans risque d'irritation.",
+        description: "Parce que Purrify est totalement sans parfum et fait de charbon naturel, il est sûr pour les chats de tous âges et sensibilités. Chatons, seniors et...",
         detail: "Beaucoup de chats préfèrent en fait les environnements de litière non parfumés. Vous remarquerez peut-être que votre chat utilise la litière plus régulièrement après être passé à Purrify."
       }
     },
@@ -2558,19 +2558,19 @@ export const fr = {
       intro: "Voici ce que les parents de chats expérimentent généralement après avoir ajouté Purrify à leur routine de litière.",
       day1: {
         title: "Dans les 24 Heures",
-        description: "Réduction notable de l'odeur d'ammoniac. La qualité âcre et piquante de l'odeur diminue significativement alors que le charbon commence à piéger les molécules d'ammoniac en suspension."
+        description: "Réduction notable de l'odeur d'ammoniac. La qualité âcre et piquante de l'odeur diminue significativement alors que le charbon commence à piéger les..."
       },
       day3: {
         title: "Jours 2-3",
-        description: "La plupart des odeurs existantes sont éliminées. Même les odeurs fortes et établies sont capturées alors que l'ammoniac continue d'être adsorbé. Les invités ne remarqueront aucune odeur de litière."
+        description: "La plupart des odeurs existantes sont éliminées. Même les odeurs fortes et établies sont capturées alors que l'ammoniac continue d'être adsorbé. Les..."
       },
       week1: {
         title: "Après Une Semaine",
-        description: "Fraîcheur constante maintenue. Le charbon actif fonctionne toujours, piégeant continuellement le nouvel ammoniac produit. Il est temps d'ajouter une nouvelle application."
+        description: "Fraîcheur constante maintenue. Le charbon actif fonctionne toujours, piégeant continuellement le nouvel ammoniac produit. Il est temps d'ajouter une..."
       },
       ongoing: {
         title: "Utilisation Continue",
-        description: "Avec une réapplication régulière, votre maison reste fraîche en permanence. Beaucoup de clients rapportent qu'ils 'oublient' qu'ils ont une litière car il n'y a simplement pas d'odeur pour leur rappeler."
+        description: "Avec une réapplication régulière, votre maison reste fraîche en permanence. Beaucoup de clients rapportent qu'ils 'oublient' qu'ils ont une litière car..."
       }
     },
     comparison: {
@@ -3109,7 +3109,7 @@ export const fr = {
   // City Page Translations (for location-based SEO pages)
   cityPage: {
     seo: {
-      title: "Désodorisant pour litière à {{city}} | Purrify Charbon Actif",
+      title: "Désodorisant pour litière à {{city}} | Purrify...",
       descriptionWithPopulation: "Odeur de litière à {{city}}? Le charbon actif Purrify élimine naturellement les odeurs d'ammoniaque. Livraison rapide partout au {{province}}. Aimé par {{population}}+ propriétaires de chats.",
       descriptionDefault: "Odeur de litière à {{city}}? Le charbon actif Purrify élimine naturellement les odeurs d'ammoniaque. Livraison rapide partout au {{province}}. Sans danger pour les chats et chatons."
     },
@@ -3155,7 +3155,7 @@ export const fr = {
       wasHelpful: "Cela vous a-t-il été utile?",
       shareStory: {
         heading: "Partagez votre succès à {{city}}",
-        description: "Êtes-vous un propriétaire de chat de {{city}} qui adore Purrify? Nous aimerions présenter votre histoire et aider d'autres parents de chats locaux à découvrir une vie sans odeurs."
+        description: "Êtes-vous un propriétaire de chat de {{city}} qui adore Purrify? Nous aimerions présenter votre histoire et aider d'autres parents de chats locaux à..."
       }
     },
     provinceWide: {
@@ -3199,7 +3199,7 @@ export const fr = {
     hub: {
       badge: "Couverture nationale",
       heading: "Contrôle des odeurs de litière partout au Canada",
-      description: "Découvrez les emplacements Purrify à travers le Canada. Sélectionnez votre province pour trouver des guides spécifiques à votre ville, des informations de livraison et des ressources locales pour les propriétaires de chats.",
+      description: "Découvrez les emplacements Purrify à travers le Canada. Sélectionnez votre province pour trouver des guides spécifiques à votre ville, des informations...",
       selectProvince: "Sélectionnez votre province",
       whyChoose: "Pourquoi choisir Purrify?",
       benefit1: "Technologie naturelle au charbon actif",
@@ -3225,7 +3225,7 @@ export const fr = {
     province: {
       badge: "Guide provincial",
       heading: "Contrôle des odeurs de litière au {{province}}",
-      description: "Trouvez des détaillants Purrify et des options de livraison rapide partout au {{province}}. Fait confiance par les propriétaires de chats dans toutes les grandes villes.",
+      description: "Trouvez des détaillants Purrify et des options de livraison rapide partout au {{province}}. Fait confiance par les propriétaires de chats dans toutes...",
       citiesHeading: "Villes que nous desservons au {{province}}",
       viewCityGuide: "Voir le guide de la ville",
       cityCardDescription: "Découvrez les solutions de contrôle des odeurs à {{city}}",
@@ -3536,7 +3536,7 @@ export const fr = {
   // Try Free Landing Page (for Ad Campaigns)
   tryFreePage: {
     meta: {
-      title: "Essayez Purrify Gratuitement - Seulement 4,76 $ de Livraison | Élimination des Odeurs de Litière pour Chat",
+      title: "Essayez Purrify Gratuitement - Seulement 4,76...",
       description: "Obtenez votre essai GRATUIT de Purrify - payez seulement 4,76 $ de livraison. Essayez-le dans votre routine de litière et voyez la différence."
     },
     hero: {
@@ -3623,7 +3623,7 @@ export const fr = {
   // Page hors ligne
   offlinePage: {
     title: "Vous êtes hors ligne",
-    description: "Il semble que vous ayez perdu votre connexion Internet. Ne vous inquiétez pas - vous pouvez toujours consulter certaines pages en cache hors ligne. Une fois que vous serez de nouveau en ligne, tout fonctionnera normalement.",
+    description: "Il semble que vous ayez perdu votre connexion Internet. Ne vous inquiétez pas - vous pouvez toujours consulter certaines pages en cache hors ligne. Une...",
     tryAgain: "Réessayer",
     goHome: "Aller à l'accueil",
     availableOffline: "Disponible hors ligne",
@@ -3673,8 +3673,8 @@ export const fr = {
   // Page Science
   sciencePage: {
     seo: {
-      title: "Comment le Charbon Actif Élimine l'Odeur de Litière pour Chats : La Science",
-      description: "Les molécules d'ammoniac mesurent 0,26 nm. Nos micropores sont dimensionnés pour les piéger. Voici comment l'architecture des pores conçue capture les odeurs d'urine (ammoniac) et de selles (mercaptans)."
+      title: "Comment le Charbon Actif Élimine l'Odeur de...",
+      description: "Les molécules d'ammoniac mesurent 0,26 nm. Nos micropores sont dimensionnés pour les piéger. Voici comment l'architecture des pores conçue capture les..."
     },
     breadcrumb: {
       home: "Accueil",
@@ -3683,7 +3683,7 @@ export const fr = {
     },
     hero: {
       heading: "Conçu pour Éliminer l'Odeur de Litière pour Chats",
-      description: "En collaboration avec des scientifiques chercheurs, nous avons conçu la structure de pores parfaite pour capturer l'ammoniac de l'urine et les mercaptans des selles, les deux molécules responsables de cette odeur distinctive de litière.",
+      description: "En collaboration avec des scientifiques chercheurs, nous avons conçu la structure de pores parfaite pour capturer l'ammoniac de l'urine et les...",
       ctaButton: "Essayez la Science"
     },
     understanding: {
@@ -3759,19 +3759,19 @@ export const fr = {
       facts: [
         {
           title: "Architecture de Pores Conçue",
-          description: "En collaboration avec des scientifiques chercheurs, nous avons optimisé le rapport exact de micropores (< 2nm), mésopores (2-50nm) et macropores (> 50nm) pour créer le piège parfait pour les molécules d'odeur de litière pour chats."
+          description: "En collaboration avec des scientifiques chercheurs, nous avons optimisé le rapport exact de micropores (< 2nm), mésopores (2-50nm) et macropores (>..."
         },
         {
           title: "Maîtrise de la Capture d'Ammoniac",
-          description: "Les molécules d'ammoniac (NH₃) de l'urine de chat sont minuscules—seulement 0,26 nanomètres. Notre structure riche en micropores crée des millions de sites de capture parfaitement dimensionnés qui enferment l'ammoniac avant que vous ne puissiez le sentir."
+          description: "Les molécules d'ammoniac (NH₃) de l'urine de chat sont minuscules—seulement 0,26 nanomètres. Notre structure riche en micropores crée des millions de..."
         },
         {
           title: "Élimination des Mercaptans",
-          description: "Les mercaptans (composés soufrés) donnent aux selles cette odeur distinctive d'œuf pourri. Nos canaux de mésopores sont spécifiquement dimensionnés pour piéger ces molécules plus grandes et complexes de manière permanente."
+          description: "Les mercaptans (composés soufrés) donnent aux selles cette odeur distinctive d'œuf pourri. Nos canaux de mésopores sont spécifiquement dimensionnés..."
         },
         {
           title: "Synergie Triple Pore",
-          description: "Les macropores agissent comme des autoroutes livrant les molécules odorantes profondément dans le charbon. Les mésopores capturent les composés soufrés de taille moyenne. Les micropores piègent les plus petites molécules d'ammoniac. Rien n'échappe."
+          description: "Les macropores agissent comme des autoroutes livrant les molécules odorantes profondément dans le charbon. Les mésopores capturent les composés soufrés..."
         }
       ]
     },
@@ -3783,7 +3783,7 @@ export const fr = {
       },
       whatYoureLookingAt: {
         title: "Ce Que Vous Regardez",
-        description: "Ces images montrent la recherche en laboratoire derrière notre structure de pores optimisée. Chaque petit canal et cavité est un piège attendant de capturer des molécules odorantes au niveau moléculaire.",
+        description: "Ces images montrent la recherche en laboratoire derrière notre structure de pores optimisée. Chaque petit canal et cavité est un piège attendant de...",
         bullets: [
           "Des millions de pores créent une surface spécifique massive (1050 m²/g)",
           "Différentes tailles de pores = différentes molécules odorantes capturées",
@@ -3815,7 +3815,7 @@ export const fr = {
     },
     engineeredPerformance: {
       title: "Conçu pour la Performance du Monde Réel",
-      description: "Les tests en laboratoire montrent que notre charbon actif de maille 8×30 maintient des caractéristiques de flux optimales et une perte de pression minimale à des températures variables (5-25°C). Cela signifie une capture d'odeurs constante que votre litière soit dans un sous-sol frais ou une salle de bain chaude.",
+      description: "Les tests en laboratoire montrent que notre charbon actif de maille 8×30 maintient des caractéristiques de flux optimales et une perte de pression...",
       stats: {
         temperatureRange: "5-25°C",
         temperatureLabel: "Plage de Température",
@@ -3829,25 +3829,25 @@ export const fr = {
       steps: [
         {
           title: "Les Coupables : Ammoniac et Mercaptans",
-          description: "L'urine de chat se décompose en ammoniac (NH₃)—cette odeur piquante qui irrite les yeux. Les selles libèrent des mercaptans—composés soufrés qui sentent les œufs pourris ou les égouts. Ce sont les molécules que nous avons conçu Purrify pour capturer."
+          description: "L'urine de chat se décompose en ammoniac (NH₃)—cette odeur piquante qui irrite les yeux. Les selles libèrent des mercaptans—composés soufrés qui..."
         },
         {
           title: "Macropores : Les Voies Express",
-          description: "Les grands macropores (> 50nm) agissent comme des autoroutes, transportant rapidement les molécules odorantes profondément dans la structure du charbon. Pensez à eux comme les points d'entrée qui préviennent les goulots d'étranglement."
+          description: "Les grands macropores (> 50nm) agissent comme des autoroutes, transportant rapidement les molécules odorantes profondément dans la structure du..."
         },
         {
           title: "Mésopores : Les Pièges à Mercaptans",
-          description: "Les mésopores de taille moyenne (2-50nm) sont parfaitement dimensionnés pour capturer les mercaptans et autres composés soufrés des selles. Ces pores créent une prise ferme qui ne lâchera pas."
+          description: "Les mésopores de taille moyenne (2-50nm) sont parfaitement dimensionnés pour capturer les mercaptans et autres composés soufrés des selles. Ces pores..."
         },
         {
           title: "Micropores : Les Éliminateurs d'Ammoniac",
-          description: "Les minuscules micropores (< 2nm) sont optimisés pour la taille de 0,26nm de l'ammoniac. Avec des millions de ces sites de capture par gramme, les molécules d'ammoniac sont enfermées de manière permanente avant que vous ne puissiez les sentir."
+          description: "Les minuscules micropores (< 2nm) sont optimisés pour la taille de 0,26nm de l'ammoniac. Avec des millions de ces sites de capture par gramme, les..."
         }
       ]
     },
     researchSection: {
-      title: "La Solution la Plus Efficace au Monde pour l'Odeur de Litière pour Chats",
-      description: "En concevant le rapport parfait micropores-mésopores-macropores, nous avons créé du charbon actif spécifiquement optimisé pour capturer l'ammoniac et les mercaptans—les molécules exactes qui font sentir les litières.",
+      title: "La Solution la Plus Efficace au Monde pour...",
+      description: "En concevant le rapport parfait micropores-mésopores-macropores, nous avons créé du charbon actif spécifiquement optimisé pour capturer l'ammoniac et...",
       stats: {
         ammoniaSize: "0,26nm",
         ammoniaSizeLabel: "Taille de la Molécule d'Ammoniac - Micropores Parfaitement Adaptés",

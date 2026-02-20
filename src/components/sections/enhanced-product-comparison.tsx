@@ -151,7 +151,7 @@ export function EnhancedProductComparison() {
       idealFor: '1 cat',
       features: getTranslatedFeatures(0),
       bestFor: getTranslatedBestFor(0),
-      image: '/optimized/17g-transparent-v2.webp',
+      image: '/optimized/products/17g-transparent-v2.webp',
       imageSize: 'sm',
       color: 'from-green-500 to-green-600',
       badge: {
@@ -170,7 +170,7 @@ export function EnhancedProductComparison() {
       idealFor: '1 cat',
       features: getTranslatedFeatures(1),
       bestFor: getTranslatedBestFor(1),
-      image: '/optimized/60g-transparent.webp',
+      image: '/optimized/products/60g-transparent.webp',
       imageSize: 'md',
       color: 'from-deep-coral to-rose-600',
       badge: {
@@ -188,7 +188,7 @@ export function EnhancedProductComparison() {
       idealFor: '2+ cats',
       features: getTranslatedFeatures(2),
       bestFor: getTranslatedBestFor(2),
-      image: '/optimized/60g-transparent.webp',
+      image: '/optimized/products/60g-transparent.webp',
       imageSize: 'lg',
       color: 'from-electric-indigo to-purple-600',
       badge: {

@@ -127,13 +127,13 @@ export function WhyPurrify() {
       icon: IconOdor,
       title: odorTitle.toUpperCase(),
       description: odorDescription,
-      image: "/optimized/catcoco.webp"
+      image: "/optimized/marketing/catcoco.webp"
     },
     {
       icon: IconCatFriendly,
       title: carbonTitle.toUpperCase(),
       description: carbonDescription,
-      image: "/optimized/cats-and-filters.webp",
+      image: "/optimized/marketing/cats-and-filters.webp",
       color: "bg-[#E8F5E9]",
       textColor: "text-[#2E7D32]",
     },
@@ -141,19 +141,19 @@ export function WhyPurrify() {
       icon: IconLongLasting,
       title: longLastingTitle.toUpperCase(),
       description: longLastingDescription,
-      image: "/optimized/catonbed.avif"
+      image: "/optimized/marketing/catonbed.avif"
     },
     {
       icon: IconAnyLitter,
       title: anyLitterTitle.toUpperCase(),
       description: anyLitterDescription,
-      image: "/optimized/cat-favorite-litter.webp"
+      image: "/optimized/blog/cat-favorite-litter.webp"
     },
     {
       icon: IconCostEffective,
       title: costEffectiveTitle.toUpperCase(),
       description: costEffectiveDescription,
-      image: "/optimized/cost-effective.webp",
+      image: "/optimized/marketing/cost-effective.webp",
       color: "bg-[#FFF3E0]",
       textColor: "text-[#E65100]",
     },
@@ -161,7 +161,7 @@ export function WhyPurrify() {
       icon: IconBeforeAfter,
       title: beforeAfterTitle.toUpperCase(),
       description: beforeAfterDescription,
-      image: "/optimized/before-after.webp",
+      image: "/optimized/marketing/before-after.webp",
       color: "bg-[#F3E5F5]",
       textColor: "text-[#7B1FA2]",
     },

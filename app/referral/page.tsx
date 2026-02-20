@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
         width: 1200,
         height: 800,
         alt: `${SITE_NAME} Referral Program`,
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     creator: '@purrifyhq',
     title: `Referral Program - Give $5, Get $5 | ${SITE_NAME}`,
     description: 'Share Purrify with friends and earn rewards. Give $5 off to your friends and get $5 credit.',
-    images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
+    images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'],
   },
   other: {
     'last-modified': '2025-11-17',

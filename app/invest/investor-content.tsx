@@ -134,7 +134,7 @@ export default function InvestorContent() {
               <div className="text-center max-w-4xl mx-auto mb-16">
                 <div className="mb-8">
                   <Image
-                    src="/optimized/purrify-logo.webp"
+                    src="/optimized/logos/purrify-logo.webp"
                     alt="Purrify Logo"
                     width={140}
                     height={140}

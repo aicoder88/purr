@@ -17,7 +17,7 @@ interface BlogPost {
   link: string;
 }
 
-const FALLBACK_BLOG_IMAGE = '/optimized/purrify-logo.avif';
+const FALLBACK_BLOG_IMAGE = '/optimized/logos/purrify-logo.avif';
 
 function normalizeBlogPosts(data: unknown): BlogPost[] {
   if (!Array.isArray(data)) {

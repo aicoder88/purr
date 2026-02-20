@@ -8,7 +8,7 @@ import { stripContext } from '../../../../src/lib/seo-utils';
 const pageTitle = `Non-Toxic Cat Litter Deodorizer: Safe for Cats, Effective for Odor | ${SITE_NAME}`;
 const pageDescription = 'Looking for a non-toxic cat litter deodorizer? Activated carbon is food-grade, fragrance-free, and safe if ingested. Works 10x longer than baking soda without chemicals.';
 const canonicalUrl = 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/';
-const heroImage = 'https://www.purrify.ca/images/litter-box-hero.webp';
+const heroImage = 'https://www.purrify.ca/optimized/blog/litter-box-hero.webp';
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -67,7 +67,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+      url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
       width: 400,
       height: 400,
     },

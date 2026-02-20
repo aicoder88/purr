@@ -301,7 +301,7 @@ export function Header() {
               className="flex items-center space-x-2 flex-shrink-0"
             >
               <Image
-                src="/optimized/logo-light-pink.webp"
+                src="/optimized/logos/logo-light-pink.webp"
                 alt={headerUiCopy.logoAlt}
                 width={120}
                 height={57}
@@ -309,7 +309,7 @@ export function Header() {
                 className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
               />
               <Image
-                src="/optimized/logo-dark.webp"
+                src="/optimized/logos/logo-dark.webp"
                 alt={headerUiCopy.logoAlt}
                 width={84}
                 height={40}

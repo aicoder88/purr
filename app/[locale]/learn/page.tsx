@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: LocalizedLearnPageProps): Pro
       description,
       locale: locale === 'fr' ? 'fr_CA' : 'en_CA',
       images: [{
-        url: `${SITE_URL}/images/Logos/purrify-logo.png`,
+        url: `${SITE_URL}/optimized/logos/purrify-logo.png`,
         width: 1200,
         height: 800,
         alt: title,
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: LocalizedLearnPageProps): Pro
       creator: '@purrifyhq',
       title,
       description,
-      images: [`${SITE_URL}/images/Logos/purrify-logo.png`],
+      images: [`${SITE_URL}/optimized/logos/purrify-logo.png`],
     },
     robots: {
       index: true,

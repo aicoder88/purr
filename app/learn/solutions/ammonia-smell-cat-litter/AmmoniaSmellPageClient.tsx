@@ -12,10 +12,10 @@ export default function AmmoniaSmellPageClient() {
   const canonicalUrl = 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter/';
 
   // Ammonia smell solution images
-  const heroImage = '/images/ammonia-hero-ghibli.webp';
-  const sectionImage1 = '/images/ammonia-science.webp'; // Keep the original — it's great
-  const sectionImage2 = '/images/ammonia-fresh-home-ghibli.webp';
-  const solutionImage = '/images/ammonia-happy-cat-ghibli.webp';
+  const heroImage = '/optimized/blog/ammonia-hero-ghibli.webp';
+  const sectionImage1 = '/optimized/blog/ammonia-science.webp'; // Keep the original — it's great
+  const sectionImage2 = '/optimized/blog/ammonia-fresh-home-ghibli.webp';
+  const solutionImage = '/optimized/blog/ammonia-happy-cat-ghibli.webp';
 
   // HowTo steps for fixing ammonia smell
   const howToSteps = [

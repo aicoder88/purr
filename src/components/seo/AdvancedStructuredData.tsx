@@ -487,7 +487,7 @@ export const PurrifyStructuredData: React.FC = () => {
   const organizationData = {
     name: "Purrify",
     url: "https://www.purrify.ca",
-    logo: "https://www.purrify.ca/images/Logos/purrify-logo.png",
+    logo: "https://www.purrify.ca/optimized/logos/purrify-logo.png",
     description: "Premium activated carbon cat litter additive that eliminates odors at the molecular level. Made in Canada with natural ingredients.",
     address: {
       addressLocality: "Mirabel",

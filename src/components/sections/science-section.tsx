@@ -100,7 +100,7 @@ export function ScienceSection() {
                         <div className="relative bg-white dark:bg-gray-800 rounded-[2.5rem] shadow-2xl p-4 border border-gray-100 dark:border-gray-700 rotate-3 hover:rotate-0 transition-transform duration-700 ease-out">
                             <div className="relative rounded-[2rem] overflow-hidden aspect-square bg-gray-100 dark:bg-gray-900">
                                 <Image
-                                    src="/optimized/Carbon-sktech.webp"
+                                    src="/optimized/blog/Carbon-sktech.webp"
                                     alt={t('homepage.altText.scientificDiagram') || 'Activated Carbon Mechanism'}
                                     fill
                                     className="object-cover"

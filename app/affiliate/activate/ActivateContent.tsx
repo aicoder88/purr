@@ -171,7 +171,7 @@ export default function ActivateContent() {
 
                                 <div className="relative h-48 rounded-xl overflow-hidden">
                                     <Image
-                                        src="/optimized/three-bags-no-bg.webp"
+                                        src="/optimized/products/three-bags-no-bg.webp"
                                         alt="Purrify Starter Kit"
                                         fill
                                         className="object-contain"

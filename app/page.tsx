@@ -70,7 +70,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: SITE_NAME,
       images: [
         {
-          url: '/images/Logos/purrify-logo.png',
+          url: '/optimized/logos/purrify-logo.png',
           width: 1200,
           height: 800,
           alt: pageTitle,
@@ -83,7 +83,7 @@ export async function generateMetadata(): Promise<Metadata> {
       creator: '@purrifyhq',
       title: pageTitle,
       description: pageDescription,
-      images: ['/images/Logos/purrify-logo.png'],
+      images: ['/optimized/logos/purrify-logo.png'],
     },
     robots: {
       index: true,

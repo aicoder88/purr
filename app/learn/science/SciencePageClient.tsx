@@ -291,7 +291,7 @@ export default function SciencePageClient() {
           <div className="mt-16 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <Image
-                src="/optimized/happy-cat-fresh-home.webp"
+                src="/optimized/blog/happy-cat-fresh-home.webp"
                 alt={uiCopy.happyCatAlt}
                 width={1600}
                 height={900}
@@ -306,7 +306,7 @@ export default function SciencePageClient() {
             </div>
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <Image
-                src="/optimized/content-cat-owner.webp"
+                src="/optimized/blog/content-cat-owner.webp"
                 alt={uiCopy.contentCatAlt}
                 width={1600}
                 height={900}
@@ -451,7 +451,7 @@ export default function SciencePageClient() {
               <div className="space-y-6">
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/optimized/science-microscope-research.webp"
+                    src="/optimized/blog/science-microscope-research.webp"
                     alt={uiCopy.microscopeAlt}
                     width={1200}
                     height={800}
@@ -463,7 +463,7 @@ export default function SciencePageClient() {
                 </div>
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/optimized/chemistry-lab-testing.webp"
+                    src="/optimized/blog/chemistry-lab-testing.webp"
                     alt={uiCopy.chemistryAlt}
                     width={1200}
                     height={800}
@@ -478,7 +478,7 @@ export default function SciencePageClient() {
               <div className="space-y-6">
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/optimized/molecular-structure-pore.webp"
+                    src="/optimized/marketing/molecular-structure-pore.webp"
                     alt={uiCopy.molecularAlt}
                     width={1200}
                     height={800}

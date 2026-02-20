@@ -187,7 +187,7 @@ export const en = {
     tagline: "Just Pour. Mix. Done.",
     subheadline: "Finally. A Litter Box That Doesn't Betray You.",
     instantly: "Finally. A Litter Box That Doesn't Betray You.",
-    description: "The same activated carbon that purifies your drinking water now eliminates cat odour at the source — not with perfume, not with baking soda, but by trapping ammonia molecules the moment they form. No smell. No cover-up. No embarrassment when someone walks through your door.",
+    description: "The same activated carbon that purifies your drinking water now eliminates cat odour at the source — not with perfume, not with baking soda, but by...",
     socialProof: {
       trustNumber: "1,000+",
       trustText: "Canadian cat parents breathing easier",
@@ -246,11 +246,11 @@ export const en = {
   features: {
     odorElimination: {
       title: "Traps It. Doesn't Fake It.",
-      description: "Air fresheners spray perfume on top of ammonia. Congratulations — now it smells like \"lavender and cat.\" Purrify's activated carbon captures ammonia molecules and locks them inside microscopic pores. The smell doesn't hide. It's gone."
+      description: "Air fresheners spray perfume on top of ammonia. Congratulations — now it smells like \"lavender and cat.\" Purrify's activated carbon captures ammonia..."
     },
     catFriendly: {
       title: "Water-Filter Grade Carbon",
-      description: "Made from coconut shells. Processed the same way water treatment plants purify your tap. Zero chemicals, zero fragrances. The ingredient list reads like it came from nature — because it did."
+      description: "Made from coconut shells. Processed the same way water treatment plants purify your tap. Zero chemicals, zero fragrances. The ingredient list reads..."
     },
     longLasting: {
       title: "One Sprinkle Lasts the Whole Week",
@@ -286,7 +286,7 @@ export const en = {
     step3: {
       number: "03",
       title: "Mix & Walk Away",
-      description: "One gentle stir. Now forget about it for a full week. No daily sprays. No candles burning 24/7. No apologies to guests. Just your home, smelling like a home."
+      description: "One gentle stir. Now forget about it for a full week. No daily sprays. No candles burning 24/7. No apologies to guests. Just your home, smelling like a..."
     },
     litterTypes: {
       clumping: "CLUMPING",
@@ -538,7 +538,7 @@ export const en = {
       title: "Purrify - Cat Litter Odor Control",
       description: "Activated carbon cat litter additive that eliminates odors at the source."
     },
-    metaDescription: "Purrify is a premium activated carbon cat litter additive that eliminates odors at the molecular level. Made from natural coconut shell carbon, it provides 7-day freshness and works with any litter type. Trusted by 1,000+ cat owners across Canada."
+    metaDescription: "Purrify is a premium activated carbon cat litter additive that eliminates odors at the molecular level. Made from natural coconut shell carbon, it..."
   },
 
   // Structured Data
@@ -676,15 +676,15 @@ export const en = {
     items: [
       {
         title: "Odor Elimination",
-        description: "Purrify's advanced formula effectively eliminates unpleasant litter box odors at their source. Say goodbye to the lingering smells that can permeate your home and welcome a fresher, more inviting environment for both you and your furry friend."
+        description: "Purrify's advanced formula effectively eliminates unpleasant litter box odors at their source. Say goodbye to the lingering smells that can permeate..."
       },
       {
         title: "Simple",
-        description: "Purrify is formulated with simple coconut shells, activated to soak up odor. You can trust that you're providing your cat with a clean smelling box environment without exposing them to chemicals or toxins."
+        description: "Purrify is formulated with simple coconut shells, activated to soak up odor. You can trust that you're providing your cat with a clean smelling box..."
       },
       {
         title: "Cost-Effective",
-        description: "Purrify helps extend the life of your cat's litter by preventing odor buildup, which means you'll need to change the litter less frequently. This not only saves you money but also reduces waste, making it a win-win for both your wallet and the environment."
+        description: "Purrify helps extend the life of your cat's litter by preventing odor buildup, which means you'll need to change the litter less frequently. This not..."
       }
     ]
   },
@@ -694,7 +694,7 @@ export const en = {
     badge: "The Secret Sauce",
     headline: "We Don't Mask The Smell.",
     headlineHighlight: "We Ambush It.",
-    description: "Picture a sponge the size of a football field, compressed into a teaspoon of granules. That's activated coconut carbon. Millions of microscopic tunnels — so small they catch individual ammonia molecules mid-air, pull them inside, and lock them away permanently. Not \"neutralized.\" Not \"reduced.\" Captured. That's not marketing copy. That's the same chemistry behind your water filter. The same reason your tap water doesn't taste like a swimming pool. Baking soda sits there hoping for the best. Air fresheners throw perfume at a chemistry problem. Activated carbon goes to work.",
+    description: "Picture a sponge the size of a football field, compressed into a teaspoon of granules. That's activated coconut carbon. Millions of microscopic tunnels...",
     learnMore: "Dive Deeper Into The Science",
     features: [
       {
@@ -1474,7 +1474,7 @@ export const en = {
 
     // Did You Know Fact Box
     didYouKnow: {
-      title: "The Science Your Cat Doesn't Care About (But Your Nose Will)",
+      title: "The Science Your Cat Doesn't Care About (But...",
       body: "A single gram of activated carbon contains roughly 3,000 square meters of surface area. That's bigger than half a football field — in something smaller than a pea.\n\nInside are millions of microscopic pores and tunnels. When ammonia molecules float past, they get trapped permanently.\n\nThis isn't masking. It's molecular capture. The same technology used in gas masks, water treatment plants, and hospital air filtration. Now sitting on top of your cat's litter."
     },
 
@@ -2082,7 +2082,7 @@ export const en = {
   blog: {
     multiCat: {
       title: "7 Ways to Control Multi-Cat Litter Odor",
-      description: "Overwhelmed by multiple cat litter box smell? These 7 proven methods eliminate even the strongest multi-cat ammonia odors. Stop dreading coming home to that awful stink!",
+      description: "Overwhelmed by multiple cat litter box smell? These 7 proven methods eliminate even the strongest multi-cat ammonia odors. Stop dreading coming home to...",
       category: "Multi-Cat Household Guide",
       publishDate: "Published September 16, 2024",
       readTime: "12 min read",
@@ -2096,8 +2096,8 @@ export const en = {
       }
     },
     odorAbsorber: {
-      title: "Most Powerful Odor Absorber for Cat Litter: Science-Backed 2025 Guide",
-      description: "Discover the most powerful odor absorber strategies for cat litter boxes. Compare activated carbon, zeolite, and hybrid systems so your home may stay fresh without harsh perfumes.",
+      title: "Most Powerful Odor Absorber for Cat Litter:...",
+      description: "Discover the most powerful odor absorber strategies for cat litter boxes. Compare activated carbon, zeolite, and hybrid systems so your home may stay...",
       category: "Odor Science & Technology",
       publishDate: "Published October 19, 2025",
       readTime: "14 min read",
@@ -2116,7 +2116,7 @@ export const en = {
   // Retailers & B2B
   retailers: {
     seo: {
-      pageTitle: "Wholesale Cat Litter Deodorizer | 50% Margins for Pet Stores",
+      pageTitle: "Wholesale Cat Litter Deodorizer | 50% Margins...",
       description: "Pet Retailers: 50%+ margins on Canada's #1 reordered cat litter deodorizer. Free POS materials + marketing support. Become a wholesale partner today.",
       openGraphAlt: "Wholesale Partners",
       keywords: "wholesale cat litter deodorizer, pet store wholesale, cat litter additive distributor, bulk cat litter products, wholesale pet supplies Canada, pet retail partnership"
@@ -2129,7 +2129,7 @@ export const en = {
       badge: "#1 Pet Store Partner in Canada",
       title: "Partner with Purrify",
       subtitle: "Wholesale Success",
-      description: "Join hundreds of pet stores and retailers offering Canada's #1 activated carbon cat litter additive. Proven sales, loyal customers, marketing support included.",
+      description: "Join hundreds of pet stores and retailers offering Canada's #1 activated carbon cat litter additive. Proven sales, loyal customers, marketing support...",
       cta: {
         primary: "View Wholesale Pricing",
         secondary: "Become a Partner",
@@ -2331,7 +2331,7 @@ export const en = {
       description: "We provide everything you need to successfully sell Purrify. From in-store displays to staff training, we've got you covered.",
       coop: {
         title: "Co-op Advertising Program",
-        description: "Qualify for advertising credits to promote Purrify in your local market. We'll help cover costs for newspaper ads, radio spots, and local marketing campaigns."
+        description: "Qualify for advertising credits to promote Purrify in your local market. We'll help cover costs for newspaper ads, radio spots, and local marketing..."
       }
     },
     testimonials: {
@@ -2565,7 +2565,7 @@ export const en = {
   // Affiliate Page
   affiliate: {
     metaTitle: "Earn Monthly Income with Purrify Affiliate Program",
-    metaDescription: "Refer cat owners to Purrify and earn 30% recurring commission for life. Join hundreds of successful affiliates earning passive income helping cats live odor-free.",
+    metaDescription: "Refer cat owners to Purrify and earn 30% recurring commission for life. Join hundreds of successful affiliates earning passive income helping cats live...",
     hero: {
       badge: "Join Our Affiliate Program",
       title: "Earn Monthly Income With Purrify",
@@ -2596,7 +2596,7 @@ export const en = {
       },
       step3: {
         title: "Get Paid for Life",
-        description: "Earn 30% recurring commission on every sale your referrals make - not just the first purchase, but forever. Payments sent monthly via your preferred method."
+        description: "Earn 30% recurring commission on every sale your referrals make - not just the first purchase, but forever. Payments sent monthly via your preferred..."
       }
     },
     benefits: {
@@ -2661,7 +2661,7 @@ export const en = {
   // Ammonia Control Landing Page
   ammonia: {
     meta: {
-      title: "Ammonia Control for Cat Litter | Natural Odor Elimination | Purrify",
+      title: "Ammonia Control for Cat Litter | Natural Odor...",
       description: "Eliminate litter box ammonia smell with Purrify's activated carbon formula. Controls odor at the source for 7+ days. Safe for cats. Shop now."
     },
     breadcrumb: "Ammonia Control",
@@ -2680,7 +2680,7 @@ export const en = {
       intro: "That distinctive litter box odor isn't actually from your cat—it's from a chemical process happening in the litter itself. Understanding this process is the first step to eliminating it.",
       chemistry: {
         title: "The Chemistry Behind the Smell",
-        description: "When your cat urinates, the urine contains a compound called urea. Within just 2-4 hours, bacteria naturally present in the litter box begin breaking down this urea into ammonia gas (NH₃). This is the sharp, pungent smell that can permeate your entire home.",
+        description: "When your cat urinates, the urine contains a compound called urea. Within just 2-4 hours, bacteria naturally present in the litter box begin breaking...",
         formula: "Urea + Bacteria + Time = Ammonia Gas"
       },
       factors: {
@@ -2692,7 +2692,7 @@ export const en = {
       },
       health: {
         title: "Health Concerns from Ammonia Exposure",
-        description: "Prolonged exposure to ammonia isn't just unpleasant—it can cause real health issues. At concentrations commonly found near poorly maintained litter boxes, ammonia can irritate eyes and respiratory systems in both humans and cats. Cats, with their sensitive noses, can actually start avoiding a litter box that smells too strongly of ammonia, leading to accidents elsewhere in your home."
+        description: "Prolonged exposure to ammonia isn't just unpleasant—it can cause real health issues. At concentrations commonly found near poorly maintained litter..."
       }
     },
     problem: {
@@ -2700,35 +2700,35 @@ export const en = {
       intro: "If you've tried scented litters, baking soda, or air fresheners and found they only work for a day or two, there's a scientific reason: none of these actually eliminate ammonia.",
       card1: {
         title: "Masking, Not Solving",
-        description: "Fragrances and scented litters simply layer a different smell on top of ammonia. Your nose becomes accustomed to the fragrance within hours, but the ammonia is still there—still being produced, still building up. That's why the smell always returns, often worse than before."
+        description: "Fragrances and scented litters simply layer a different smell on top of ammonia. Your nose becomes accustomed to the fragrance within hours, but the..."
       },
       card2: {
         title: "Health Concerns for Cats",
-        description: "Artificial scents aren't just ineffective—they can be harmful. Cats have 200 million scent receptors compared to our 5 million. Strong fragrances can cause respiratory irritation, trigger asthma, or make your cat avoid the litter box entirely."
+        description: "Artificial scents aren't just ineffective—they can be harmful. Cats have 200 million scent receptors compared to our 5 million. Strong fragrances can..."
       },
       card3: {
         title: "The Baking Soda Myth",
-        description: "Baking soda is alkaline (pH ~8.3) and ammonia is also alkaline (pH ~11.6). For neutralization, you need an acid-base reaction—but base plus base equals no reaction. Baking soda cannot neutralize ammonia; it only absorbs moisture temporarily."
+        description: "Baking soda is alkaline (pH ~8.3) and ammonia is also alkaline (pH ~11.6). For neutralization, you need an acid-base reaction—but base plus base equals..."
       },
       card4: {
         title: "Constant Cost & Effort",
-        description: "Without true odor elimination, you're stuck in an expensive cycle: frequent complete litter changes, buying scented products that don't work, and constantly worrying about what guests might smell. This can cost $50-100+ monthly for multi-cat households."
+        description: "Without true odor elimination, you're stuck in an expensive cycle: frequent complete litter changes, buying scented products that don't work, and..."
       }
     },
     solution: {
       headline: "The Science of True Odor Elimination",
       intro: "Activated carbon works through an entirely different mechanism than masking agents—and that's why it actually works.",
-      description: "Activated carbon has a microporous structure with millions of tiny pores that physically trap ammonia molecules. Unlike masking agents, activated carbon captures odor at the molecular level through adsorption—so you never smell it again.",
+      description: "Activated carbon has a microporous structure with millions of tiny pores that physically trap ammonia molecules. Unlike masking agents, activated...",
       adsorption: {
         title: "Adsorption: The Key Difference",
-        description: "Adsorption (with a 'd') is different from absorption. When ammonia molecules contact activated carbon, they don't just soak in—they bond to the carbon's surface at the molecular level. This physical process works regardless of pH, making it effective against ammonia where baking soda fails."
+        description: "Adsorption (with a 'd') is different from absorption. When ammonia molecules contact activated carbon, they don't just soak in—they bond to the..."
       },
       pores: {
         title: "Optimized Pore Structure",
         micro: "Micropores (<2nm): Trap small ammonia molecules permanently",
         meso: "Mesopores (2-50nm): Act as highways guiding ammonia to micropores",
         macro: "Macropores (>50nm): Entry points allowing rapid gas access",
-        description: "Purrify's coconut shell carbon is specifically processed to optimize this pore distribution for ammonia capture. The result: maximum trapping efficiency for the exact molecules causing your odor problem."
+        description: "Purrify's coconut shell carbon is specifically processed to optimize this pore distribution for ammonia capture. The result: maximum trapping..."
       },
       surface: {
         title: "Massive Surface Area",
@@ -2748,7 +2748,7 @@ export const en = {
       step2: {
         number: "2",
         title: "Mix",
-        description: "Gently mix the carbon granules into the top layer of litter. There's no need to mix deeply—the carbon works best near the surface where ammonia is released."
+        description: "Gently mix the carbon granules into the top layer of litter. There's no need to mix deeply—the carbon works best near the surface where ammonia is..."
       },
       step3: {
         number: "3",
@@ -2772,19 +2772,19 @@ export const en = {
       pillar1: {
         title: "100% Natural Science",
         intro: "Made from pure coconut shell activated carbon",
-        description: "Purrify is made from premium coconut shell activated carbon—nothing else. No chemicals, fragrances, synthetic additives, or fillers. It's the same material used in hospital-grade air purifiers and water filtration systems.",
+        description: "Purrify is made from premium coconut shell activated carbon—nothing else. No chemicals, fragrances, synthetic additives, or fillers. It's the same...",
         detail: "Coconut shell carbon is prized for its high density of micropores, making it particularly effective for trapping small gas molecules like ammonia."
       },
       pillar2: {
         title: "Long-Lasting Protection",
         intro: "7+ days of continuous odor control",
-        description: "One application of Purrify provides continuous ammonia control for 7+ days. Unlike fragrances that fade within hours or baking soda that stops working after 48 hours, activated carbon keeps working until its pores are fully saturated.",
+        description: "One application of Purrify provides continuous ammonia control for 7+ days. Unlike fragrances that fade within hours or baking soda that stops working...",
         detail: "Most customers find they can reduce their complete litter changes by 30-50%, saving both money and time."
       },
       pillar3: {
         title: "Safe for All Cats",
         intro: "Fragrance-free and safe for all cats",
-        description: "Because Purrify is completely fragrance-free and made from natural carbon, it's safe for cats of all ages and sensitivities. Kittens, seniors, and cats with respiratory conditions can all benefit without risk of irritation.",
+        description: "Because Purrify is completely fragrance-free and made from natural carbon, it's safe for cats of all ages and sensitivities. Kittens, seniors, and cats...",
         detail: "Many cats actually prefer unscented litter environments. You may notice your cat using the box more consistently after switching to Purrify."
       }
     },
@@ -2793,7 +2793,7 @@ export const en = {
       intro: "Here's what cat parents typically experience after adding Purrify to their litter routine.",
       day1: {
         title: "Within 24 Hours",
-        description: "Noticeable reduction in ammonia smell. The sharp, eye-watering quality of the odor diminishes significantly as the carbon begins trapping airborne ammonia molecules."
+        description: "Noticeable reduction in ammonia smell. The sharp, eye-watering quality of the odor diminishes significantly as the carbon begins trapping airborne..."
       },
       day3: {
         title: "Days 2-3",
@@ -2801,11 +2801,11 @@ export const en = {
       },
       week1: {
         title: "After One Week",
-        description: "Consistent freshness maintained. The activated carbon is still working, continuously trapping new ammonia as it's produced. Time to add a fresh application."
+        description: "Consistent freshness maintained. The activated carbon is still working, continuously trapping new ammonia as it's produced. Time to add a fresh..."
       },
       ongoing: {
         title: "Ongoing Use",
-        description: "With regular reapplication, your home stays fresh permanently. Many customers report they 'forget' they have a litter box because there's simply no smell to remind them."
+        description: "With regular reapplication, your home stays fresh permanently. Many customers report they 'forget' they have a litter box because there's simply no..."
       }
     },
     comparison: {
@@ -2922,7 +2922,7 @@ export const en = {
     finalDescriptionSuffix: "shipping",
     limitNotice: "Limit 1 per customer | Ships within 24 hours",
     meta: {
-      title: "Try Purrify Free - Just $4.76 Shipping | Cat Litter Odor Eliminator",
+      title: "Try Purrify Free - Just $4.76 Shipping | Cat...",
       description: "Get your FREE Purrify trial - just pay $4.76 shipping. Try it in your litter routine and see the difference."
     },
     hero: {
@@ -3542,7 +3542,7 @@ export const en = {
   // Offline Page
   offlinePage: {
     title: "You're Offline",
-    description: "It looks like you've lost your internet connection. Don't worry - you can still browse some cached pages while offline. Once you're back online, everything will work normally.",
+    description: "It looks like you've lost your internet connection. Don't worry - you can still browse some cached pages while offline. Once you're back online...",
     tryAgain: "Try Again",
     goHome: "Go to Homepage",
     availableOffline: "Available Offline",
@@ -3592,8 +3592,8 @@ export const en = {
   // Science Page
   sciencePage: {
     seo: {
-      title: "How Activated Carbon Eliminates Cat Litter Odor: The Science",
-      description: "Ammonia molecules are 0.26nm. Our micropores are sized to trap them. Here's how engineered pore architecture captures both urine (ammonia) and feces (mercaptan) odors."
+      title: "How Activated Carbon Eliminates Cat Litter...",
+      description: "Ammonia molecules are 0.26nm. Our micropores are sized to trap them. Here's how engineered pore architecture captures both urine (ammonia) and feces..."
     },
     breadcrumb: {
       home: "Home",
@@ -3602,7 +3602,7 @@ export const en = {
     },
     hero: {
       heading: "Engineered to Eliminate Cat Litter Odor",
-      description: "Working with research scientists, we engineered the perfect pore structure to capture ammonia from urine and mercaptans from feces—the two molecules responsible for that unmistakable litter box smell.",
+      description: "Working with research scientists, we engineered the perfect pore structure to capture ammonia from urine and mercaptans from feces—the two molecules...",
       ctaButton: "Try the Science"
     },
     understanding: {
@@ -3678,19 +3678,19 @@ export const en = {
       facts: [
         {
           title: "Engineered Pore Architecture",
-          description: "Working with research scientists, we optimized the exact ratio of micropores (< 2nm), mesopores (2-50nm), and macropores (> 50nm) to create the perfect trap for cat litter odor molecules."
+          description: "Working with research scientists, we optimized the exact ratio of micropores (< 2nm), mesopores (2-50nm), and macropores (> 50nm) to create the perfect..."
         },
         {
           title: "Ammonia Capture Mastery",
-          description: "Ammonia molecules (NH₃) from cat urine are tiny—only 0.26 nanometers. Our micropore-rich structure creates millions of perfectly sized capture sites that lock away ammonia before you can smell it."
+          description: "Ammonia molecules (NH₃) from cat urine are tiny—only 0.26 nanometers. Our micropore-rich structure creates millions of perfectly sized capture sites..."
         },
         {
           title: "Mercaptan Elimination",
-          description: "Mercaptans (sulfur compounds) give feces that distinctive rotten-egg smell. Our mesopore channels are specifically sized to trap these larger, more complex molecules permanently."
+          description: "Mercaptans (sulfur compounds) give feces that distinctive rotten-egg smell. Our mesopore channels are specifically sized to trap these larger, more..."
         },
         {
           title: "Triple-Pore Synergy",
-          description: "Macropores act as highways delivering odor molecules deep into the carbon. Mesopores catch medium-sized sulfur compounds. Micropores trap the smallest ammonia molecules. Nothing escapes."
+          description: "Macropores act as highways delivering odor molecules deep into the carbon. Mesopores catch medium-sized sulfur compounds. Micropores trap the smallest..."
         }
       ]
     },
@@ -3702,7 +3702,7 @@ export const en = {
       },
       whatYoureLookingAt: {
         title: "What You're Looking At",
-        description: "These images show the laboratory research behind our optimized pore structure. Each tiny channel and cavity is a trap waiting to capture odor molecules at the molecular level.",
+        description: "These images show the laboratory research behind our optimized pore structure. Each tiny channel and cavity is a trap waiting to capture odor molecules...",
         bullets: [
           "Millions of pores create massive surface area (1050 m²/g)",
           "Different pore sizes = different odor molecules captured",
@@ -3734,7 +3734,7 @@ export const en = {
     },
     engineeredPerformance: {
       title: "Engineered for Real-World Performance",
-      description: "Laboratory testing shows our 8×30 mesh activated carbon maintains optimal flow characteristics and minimal pressure loss across varying temperatures (5-25°C). This means consistent odor capture whether your litter box is in a cool basement or warm bathroom.",
+      description: "Laboratory testing shows our 8×30 mesh activated carbon maintains optimal flow characteristics and minimal pressure loss across varying temperatures...",
       stats: {
         temperatureRange: "5-25°C",
         temperatureLabel: "Temperature Range",
@@ -3748,25 +3748,25 @@ export const en = {
       steps: [
         {
           title: "The Culprits: Ammonia & Mercaptans",
-          description: "Cat urine breaks down into ammonia (NH₃)—that sharp, eye-watering smell. Feces releases mercaptans—sulfur compounds that smell like rotten eggs or sewage. These are the molecules we engineered Purrify to capture."
+          description: "Cat urine breaks down into ammonia (NH₃)—that sharp, eye-watering smell. Feces releases mercaptans—sulfur compounds that smell like rotten eggs or..."
         },
         {
           title: "Macropores: The Express Lanes",
-          description: "Large macropores (> 50nm) act as highways, rapidly transporting odor molecules deep into the carbon structure. Think of them as the entry points that prevent bottlenecks."
+          description: "Large macropores (> 50nm) act as highways, rapidly transporting odor molecules deep into the carbon structure. Think of them as the entry points that..."
         },
         {
           title: "Mesopores: The Mercaptan Traps",
-          description: "Medium-sized mesopores (2-50nm) are perfectly sized to capture mercaptans and other sulfur compounds from feces. These pores create a tight grip that won't let go."
+          description: "Medium-sized mesopores (2-50nm) are perfectly sized to capture mercaptans and other sulfur compounds from feces. These pores create a tight grip that..."
         },
         {
           title: "Micropores: The Ammonia Eliminators",
-          description: "Tiny micropores (< 2nm) are optimized for ammonia's 0.26nm size. With millions of these capture sites per gram, ammonia molecules get locked away permanently before you can smell them."
+          description: "Tiny micropores (< 2nm) are optimized for ammonia's 0.26nm size. With millions of these capture sites per gram, ammonia molecules get locked away..."
         }
       ]
     },
     researchSection: {
-      title: "The Most Effective Cat Litter Odor Solution in the World",
-      description: "By engineering the perfect micropore-mesopore-macropore ratio, we created activated carbon specifically optimized to capture ammonia and mercaptans—the exact molecules that make litter boxes smell.",
+      title: "The Most Effective Cat Litter Odor Solution in...",
+      description: "By engineering the perfect micropore-mesopore-macropore ratio, we created activated carbon specifically optimized to capture ammonia and mercaptans—the...",
       stats: {
         ammoniaSize: "0.26nm",
         ammoniaSizeLabel: "Ammonia Molecule Size - Perfectly Matched Micropores",
@@ -3786,7 +3786,7 @@ export const en = {
   // Veterinarians Page
   veterinarians: {
     seo: {
-      pageTitle: "Purrify for Veterinarians | Natural Odor Control for Clinics",
+      pageTitle: "Purrify for Veterinarians | Natural Odor...",
       description: "Help your feline patients' families eliminate litter box odor at home. Veterinary-recommended activated carbon solution with no fragrances or chemicals.",
       keywords: "veterinarian odor control, vet clinic cat litter smell, natural pet odor solution, veterinary recommended deodorizer",
       openGraphAlt: "Veterinarian recommended activated carbon litter additive"
@@ -3795,7 +3795,7 @@ export const en = {
       badge: "Trusted by Veterinary Professionals",
       titleLine1: "Help Your Clients",
       titleLine2: "Eliminate Home Odors",
-      description: "Give your clients a safe, natural solution for litter box odor that actually works. No fragrances to irritate sensitive cats—just pure activated carbon science.",
+      description: "Give your clients a safe, natural solution for litter box odor that actually works. No fragrances to irritate sensitive cats—just pure activated carbon...",
       highlight: "Vet Recommended",
       stats: {
         natural: "100% Natural",
@@ -4055,7 +4055,7 @@ export const en = {
   // Shelters Page  
   shelters: {
     seo: {
-      pageTitle: "Purrify for Shelters | Odor Control for Rescue Organizations",
+      pageTitle: "Purrify for Shelters | Odor Control for Rescue...",
       description: "Discounted pricing for animal shelters and rescue organizations. Help cats get adopted faster by eliminating odor barriers.",
       keywords: "animal shelter odor control, rescue cat litter smell, shelter deodorizer discount, nonprofit pet odor solution",
       openGraphAlt: "Shelter discount odor control program"
@@ -4131,7 +4131,7 @@ export const en = {
   // Hospitality Page
   hospitality: {
     seo: {
-      pageTitle: "Purrify for Pet-Friendly Hospitality | Zero Odor Solution",
+      pageTitle: "Purrify for Pet-Friendly Hospitality | Zero...",
       description: "Keep your pet-friendly Airbnbs and rentals odor-free. Discreet solution for hosts who accept pets.",
       keywords: "pet friendly airbnb, cat friendly rental, vacation rental pets, odor control rental property",
       openGraphAlt: "Hospitality partner program"

@@ -25,19 +25,19 @@ const PROVINCE_DISPLAY_OVERRIDES: Record<string, string> = {
 };
 
 const PROVINCE_HERO_FALLBACKS: Record<string, string> = {
-  ON: '/images/locations/provinces/ontario.png',
-  QC: '/images/locations/provinces/quebec.png',
-  AB: '/images/locations/provinces/alberta.png',
-  BC: '/images/locations/provinces/british-columbia.png',
-  NS: '/images/locations/provinces/atlantic.png',
-  NB: '/images/locations/provinces/atlantic.png',
-  PE: '/images/locations/provinces/atlantic.png',
-  NL: '/images/locations/provinces/atlantic.png',
-  MB: '/images/locations/provinces/prairies.png',
-  SK: '/images/locations/provinces/prairies.png',
-  YT: '/images/locations/provinces/north.png',
-  NT: '/images/locations/provinces/north.png',
-  NU: '/images/locations/provinces/north.png',
+  ON: '/optimized/locations/ontario.png',
+  QC: '/optimized/locations/quebec.png',
+  AB: '/optimized/locations/alberta.png',
+  BC: '/optimized/locations/british-columbia.png',
+  NS: '/optimized/locations/atlantic.png',
+  NB: '/optimized/locations/atlantic.png',
+  PE: '/optimized/locations/atlantic.png',
+  NL: '/optimized/locations/atlantic.png',
+  MB: '/optimized/locations/prairies.png',
+  SK: '/optimized/locations/prairies.png',
+  YT: '/optimized/locations/north.png',
+  NT: '/optimized/locations/north.png',
+  NU: '/optimized/locations/north.png',
 };
 
 const GRADIENTS = {

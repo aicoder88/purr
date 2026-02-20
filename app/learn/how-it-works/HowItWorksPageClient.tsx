@@ -112,21 +112,21 @@ const HOW_IT_WORKS_COPY: Record<SupportedLocale, HowItWorksCopy> = {
         number: '1',
         title: 'Sprinkle Purrify',
         description: 'Add a thin layer of Purrify on top of fresh or existing litter',
-        image: '/optimized/step-1-sprinkle.webp',
+        image: '/optimized/marketing/step-1-sprinkle.webp',
         tip: 'A little goes a long way - just 1-2 teaspoons per litter box change',
       },
       {
         number: '2',
         title: 'Mix Gently',
         description: 'Lightly mix Purrify into the top layer of litter',
-        image: '/optimized/step-2-mix.webp',
+        image: '/optimized/marketing/step-2-mix.webp',
         tip: 'No need to completely blend - surface coverage is most effective',
       },
       {
         number: '3',
         title: 'Enjoy Freshness',
         description: 'Experience immediate and long-lasting odor control',
-        image: '/optimized/step-3-enjoy.webp',
+        image: '/optimized/marketing/step-3-enjoy.webp',
         tip: 'Reapply when adding fresh litter or doing a complete change',
       },
     ],
@@ -199,21 +199,21 @@ const HOW_IT_WORKS_COPY: Record<SupportedLocale, HowItWorksCopy> = {
         number: '1',
         title: 'Saupoudrer Purrify',
         description: 'Ajoutez une fine couche de Purrify sur une litiere neuve ou existante',
-        image: '/optimized/step-1-sprinkle.webp',
+        image: '/optimized/marketing/step-1-sprinkle.webp',
         tip: 'Une petite quantite suffit, environ 1 a 2 cuilleres a cafe par changement de bac',
       },
       {
         number: '2',
         title: 'Melanger doucement',
         description: 'Melangez legerement Purrify dans la couche superieure',
-        image: '/optimized/step-2-mix.webp',
+        image: '/optimized/marketing/step-2-mix.webp',
         tip: 'Pas besoin de melanger en profondeur, la surface est la zone la plus efficace',
       },
       {
         number: '3',
         title: 'Profiter de la fraicheur',
         description: 'Profitez dun controle des odeurs immediat et durable',
-        image: '/optimized/step-3-enjoy.webp',
+        image: '/optimized/marketing/step-3-enjoy.webp',
         tip: 'Reappliquez lors de lajout de litiere propre ou dun changement complet',
       },
     ],
@@ -286,21 +286,21 @@ const HOW_IT_WORKS_COPY: Record<SupportedLocale, HowItWorksCopy> = {
         number: '1',
         title: '撒入 Purrify',
         description: '在新猫砂或现有猫砂表层均匀撒一薄层',
-        image: '/optimized/step-1-sprinkle.webp',
+        image: '/optimized/marketing/step-1-sprinkle.webp',
         tip: '少量即可，每次换砂约 1-2 茶匙',
       },
       {
         number: '2',
         title: '轻轻混合',
         description: '将 Purrify 轻轻混入猫砂上层',
-        image: '/optimized/step-2-mix.webp',
+        image: '/optimized/marketing/step-2-mix.webp',
         tip: '无需深度搅拌，表层覆盖通常更有效',
       },
       {
         number: '3',
         title: '享受清新',
         description: '体验即时且持久的异味控制',
-        image: '/optimized/step-3-enjoy.webp',
+        image: '/optimized/marketing/step-3-enjoy.webp',
         tip: '补充新猫砂或整盆更换时重新添加',
       },
     ],
@@ -373,21 +373,21 @@ const HOW_IT_WORKS_COPY: Record<SupportedLocale, HowItWorksCopy> = {
         number: '1',
         title: 'Espolvorea Purrify',
         description: 'Agrega una capa fina de Purrify sobre arena nueva o existente',
-        image: '/optimized/step-1-sprinkle.webp',
+        image: '/optimized/marketing/step-1-sprinkle.webp',
         tip: 'Rinde mucho: 1-2 cucharaditas por cambio de caja suelen ser suficientes',
       },
       {
         number: '2',
         title: 'Mezcla suavemente',
         description: 'Mezcla ligeramente Purrify en la capa superior de arena',
-        image: '/optimized/step-2-mix.webp',
+        image: '/optimized/marketing/step-2-mix.webp',
         tip: 'No hace falta mezclar por completo; la cobertura superficial funciona mejor',
       },
       {
         number: '3',
         title: 'Disfruta frescura',
         description: 'Experimenta control de olor inmediato y duradero',
-        image: '/optimized/step-3-enjoy.webp',
+        image: '/optimized/marketing/step-3-enjoy.webp',
         tip: 'Reaplica al agregar arena fresca o al hacer un cambio completo',
       },
     ],
@@ -478,7 +478,7 @@ export default function HowItWorksPageClient() {
               <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
               <div className="relative">
                 <Image
-                  src="/optimized/micropores-magnified.webp"
+                  src="/optimized/marketing/micropores-magnified.webp"
                   alt={copy.heroImageAlt}
                   width={600}
                   height={400}

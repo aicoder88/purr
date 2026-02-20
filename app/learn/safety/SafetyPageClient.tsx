@@ -206,7 +206,7 @@ export default function SafetyPageClient() {
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <Image
-                src="/optimized/quality-control-lab.webp"
+                src="/optimized/marketing/quality-control-lab.webp"
                 alt={copy.labTitle}
                 width={1600}
                 height={1067}
@@ -221,7 +221,7 @@ export default function SafetyPageClient() {
             </div>
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <Image
-                src="/optimized/activated-carbon-granules.webp"
+                src="/optimized/products/activated-carbon-granules.webp"
                 alt={copy.carbonTitle}
                 width={1600}
                 height={1067}

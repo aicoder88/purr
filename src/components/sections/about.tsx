@@ -41,7 +41,7 @@ export function About() {
             <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF3131]/10 dark:to-[#5B2EFF]/20 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
             <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-[#E0EFC7]/50 dark:shadow-white/20 transition duration-300 w-10/12 h-[400px] bg-white dark:bg-white/95 p-4">
               <Image
-                src="/optimized/Carbon-sktech.webp"
+                src="/optimized/blog/Carbon-sktech.webp"
                 alt={t('homepage.altText.scientificDiagram')}
                 width={800}
                 height={400}
@@ -62,7 +62,7 @@ export function About() {
             <div className="grid grid-cols-2 gap-4">
               <div className="overflow-hidden rounded-xl shadow-lg">
                 <Image
-                  src="/optimized/activated-carbon-granules-macro.webp"
+                  src="/optimized/products/activated-carbon-granules-macro.webp"
                   alt={aboutUiCopy.granulesAlt}
                   width={400}
                   height={300}
@@ -73,7 +73,7 @@ export function About() {
               </div>
               <div className="overflow-hidden rounded-xl shadow-lg">
                 <Image
-                  src="/optimized/activated-carbon-macro-obsidian.webp"
+                  src="/optimized/blog/activated-carbon-macro-obsidian.webp"
                   alt={aboutUiCopy.poresAlt}
                   width={400}
                   height={300}
@@ -84,7 +84,7 @@ export function About() {
               </div>
               <div className="overflow-hidden rounded-xl shadow-lg col-span-2">
                 <Image
-                  src="/optimized/happy-cat-ghibli.webp"
+                  src="/optimized/blog/happy-cat-ghibli.webp"
                   alt={aboutUiCopy.happyCatAlt}
                   width={800}
                   height={400}

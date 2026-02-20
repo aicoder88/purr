@@ -123,7 +123,7 @@ export default function NotFound() {
             <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl overflow-hidden border-4 border-[#E0EFC7] dark:border-white/10">
               <div className="relative aspect-square">
                 <Image
-                  src="/optimized/cat-owner-questions-ghibli-640w.webp"
+                  src="/optimized/blog/cat-owner-questions-ghibli-640w.webp"
                   alt="A confused cat owner looking for answers"
                   fill
                   sizes="(max-width: 768px) 100vw, 400px"

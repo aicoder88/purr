@@ -16,21 +16,21 @@ export function HowItWorks() {
       title: t('step1.title'),
       description: t('step1.description'),
       icon: "✨",
-      image: "/optimized/panel-1.webp",
+      image: "/optimized/marketing/panel-1.webp",
     },
     {
       number: t('step2.number'),
       title: t('step2.title'),
       description: t('step2.description'),
       icon: "🔄",
-      image: "/optimized/panel-2.webp",
+      image: "/optimized/marketing/panel-2.webp",
     },
     {
       number: t('step3.number'),
       title: t('step3.title'),
       description: t('step3.description'),
       icon: "😌",
-      image: "/optimized/panel-3.webp",
+      image: "/optimized/marketing/panel-3.webp",
     },
   ];
 

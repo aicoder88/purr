@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: TrialSizePageProps): Promise<
       locale: locale === 'fr' ? 'fr_CA' : 'en_CA',
       images: [
         {
-          url: 'https://www.purrify.ca/optimized/17g-transparent-v2.webp',
+          url: 'https://www.purrify.ca/optimized/products/17g-transparent-v2.webp',
           width: 1200,
           height: 1200,
           alt: 'Purrify 12g Trial Size',
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: TrialSizePageProps): Promise<
       creator: '@purrifyhq',
       title: 'Free Cat Litter Freshener Trial | Purrify',
       description: 'FREE trial of our activated charcoal cat litter additive. Natural coconut shell carbon litter freshener.',
-      images: ['https://www.purrify.ca/optimized/17g-transparent-v2.webp'],
+      images: ['https://www.purrify.ca/optimized/products/17g-transparent-v2.webp'],
     },
     alternates: {
       canonical: localizedPath,

@@ -39,7 +39,7 @@ export function AgitationSection() {
             <div className="absolute inset-0 bg-gradient-to-tr from-purple-100 to-orange-100 dark:from-purple-900/20 dark:to-orange-900/20 rounded-[2rem] transform -rotate-2 scale-105 blur-2xl" />
             <div className="relative bg-white dark:bg-gray-900 rounded-[2rem] shadow-2xl overflow-hidden border border-gray-100 dark:border-gray-800">
               <Image
-                src="/images/embarrassed-host.png"
+                src="/optimized/marketing/embarrassed-host.png"
                 alt={t('ui.imageAlt')}
                 width={800}
                 height={600}

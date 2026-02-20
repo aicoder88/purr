@@ -87,7 +87,7 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
       locale: locale === 'fr' ? 'fr_CA' : 'en_CA',
       images: [
         {
-          url: `${SITE_URL}/images/Logos/purrify-logo.png`,
+          url: `${SITE_URL}/optimized/logos/purrify-logo.png`,
           width: 1200,
           height: 630,
           alt: localeMeta.title,
@@ -100,7 +100,7 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
       creator: '@purrifyhq',
       title: localeMeta.title,
       description: localeMeta.description,
-      images: [`${SITE_URL}/images/Logos/purrify-logo.png`],
+      images: [`${SITE_URL}/optimized/logos/purrify-logo.png`],
     },
   };
 }
@@ -154,7 +154,7 @@ async function getBlogPosts(locale: string): Promise<BlogPost[]> {
         excerpt: post.excerpt,
         author: post.author?.name || 'Purrify Team',
         date: dateStr,
-        image: post.featuredImage?.url || '/optimized/cat-litter-hero.webp',
+        image: post.featuredImage?.url || '/optimized/blog/cat-litter-hero.webp',
         link: `/${locale}/blog/${post.slug}`,
         locale: post.locale || locale,
       };
@@ -256,7 +256,7 @@ export default async function LocalizedBlogIndexPage({
           url: SITE_URL,
           logo: {
             '@type': 'ImageObject',
-            url: `${SITE_URL}/images/Logos/purrify-logo.png`,
+            url: `${SITE_URL}/optimized/logos/purrify-logo.png`,
             width: 400,
             height: 400,
           },

@@ -155,7 +155,7 @@ export function ProductsHero() {
                                 {/* Family Bag (Hero - Largest) */}
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] md:w-[350px] z-20">
                                     <Image
-                                        src="/optimized/140g-transparent.webp"
+                                        src="/optimized/products/140g-transparent.webp"
                                         alt={productImageAlts.family}
                                         width={640}
                                         height={640}
@@ -169,7 +169,7 @@ export function ProductsHero() {
                                 {/* Regular Bag (Background Right - Medium) */}
                                 <div className="absolute top-1/3 right-0 lg:-right-6 w-[200px] md:w-[260px] z-10 opacity-90 blur-[0.5px]">
                                     <Image
-                                        src="/optimized/60g-transparent.webp"
+                                        src="/optimized/products/60g-transparent.webp"
                                         alt={productImageAlts.regular}
                                         width={640}
                                         height={640}
@@ -182,7 +182,7 @@ export function ProductsHero() {
                                 {/* Trial Bag (Foreground Left - Smallest) */}
                                 <div className="absolute bottom-12 left-4 md:left-8 w-[140px] md:w-[180px] z-30">
                                     <Image
-                                        src="/optimized/17g-transparent-v2.webp"
+                                        src="/optimized/products/17g-transparent-v2.webp"
                                         alt={productImageAlts.trial}
                                         width={640}
                                         height={640}

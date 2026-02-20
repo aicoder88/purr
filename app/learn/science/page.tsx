@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/benefits-hero-science.webp',
+        url: 'https://www.purrify.ca/optimized/blog/benefits-hero-science.webp',
         width: 1200,
         height: 800,
         alt: 'The Science of Activated Carbon',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     creator: '@purrifyhq',
     title: `The Science of Activated Carbon - ${SITE_NAME}`,
     description: 'Explore the molecular science behind activated carbon.',
-    images: ['https://www.purrify.ca/optimized/benefits-hero-science.webp'],
+    images: ['https://www.purrify.ca/optimized/blog/benefits-hero-science.webp'],
   },
   robots: {
     index: true,
@@ -61,7 +61,7 @@ const articleSchema = {
   inLanguage: 'en-CA',
   headline: `The Science of Activated Carbon - ${SITE_NAME}`,
   description: 'Explore the molecular science behind activated carbon. Learn how micropores, mesopores, and macropores work together to eliminate cat litter odors at the source.',
-  image: 'https://www.purrify.ca/optimized/benefits-hero-science.webp',
+  image: 'https://www.purrify.ca/optimized/blog/benefits-hero-science.webp',
   datePublished: '2024-01-15T10:00:00Z',
   dateModified: new Date().toISOString(),
   author: {
@@ -74,7 +74,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+      url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
       width: 400,
       height: 400,
     },

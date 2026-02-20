@@ -73,7 +73,7 @@ export default function TrialSizePageContent({ locale }: TrialSizePageContentPro
 
             <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-lg dark:border-gray-800 dark:bg-gray-950">
               <Image
-                src="/optimized/17g-transparent-v2.webp"
+                src="/optimized/products/17g-transparent-v2.webp"
                 alt="Purrify trial-size pack"
                 width={640}
                 height={640}

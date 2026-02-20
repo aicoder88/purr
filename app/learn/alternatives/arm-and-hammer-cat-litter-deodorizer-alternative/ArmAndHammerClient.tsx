@@ -290,7 +290,7 @@ export default function ArmAndHammerClient() {
                             <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70" />
                             <div className="relative">
                                 <Image
-                                    src="/optimized/activated-carbon-vs-baking-soda-comparison.webp"
+                                    src="/optimized/blog/activated-carbon-vs-baking-soda-comparison.webp"
                                     alt={copy.heroAlt}
                                     width={1200}
                                     height={630}

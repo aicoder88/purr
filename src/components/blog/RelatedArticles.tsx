@@ -14,151 +14,151 @@ const ALL_ARTICLES: Article[] = [
   {
     title: 'Strong Cat Urine Smell Solutions',
     href: '/blog/strong-cat-urine-smell-litter-box',
-    image: '/optimized/strong-cat-urine-smell.webp',
+    image: '/optimized/marketing/strong-cat-urine-smell.webp',
     alt: 'Odor-free home environment for cats'
   },
   {
     title: 'Activated Carbon Litter Additive Benefits',
     href: '/blog/activated-carbon-litter-additive-benefits',
-    image: '/optimized/activated-carbon-benefits.webp',
+    image: '/optimized/blog/activated-carbon-benefits.webp',
     alt: "Microscopic view of activated carbon's porous structure",
   },
   {
     title: 'How to Use a Cat Litter Deodorizer',
     href: '/blog/how-to-use-cat-litter-deodorizer',
-    image: '/optimized/before-after.webp',
+    image: '/optimized/marketing/before-after.webp',
     alt: 'Before and after using deodorizer in litter box',
   },
   {
     title: 'Best Litter Odor Remover for Small Apartments',
     href: '/blog/best-litter-odor-remover-small-apartments',
-    image: '/optimized/apartment-cat-lifestyle.webp',
+    image: '/optimized/marketing/apartment-cat-lifestyle.webp',
     alt: 'Compact 12g product ideal for small apartments',
   },
   {
     title: 'Multi-Cat Litter Deodorizer Guide',
     href: '/blog/multi-cat-litter-deodorizer-guide',
-    image: '/optimized/multi-cat-deodorizer.webp',
+    image: '/optimized/blog/multi-cat-deodorizer.webp',
     alt: 'Multiple product sizes for multi-cat households',
   },
   {
     title: 'Using Deodorizers with Kittens',
     href: '/blog/using-deodorizers-with-kittens',
-    image: '/optimized/deodorizers-with-kittens.webp',
+    image: '/optimized/blog/deodorizers-with-kittens.webp',
     alt: 'Kitten next to litter box',
   },
   {
     title: 'House Smells Like Cat Litter Solutions',
     href: '/blog/house-smells-like-cat-litter-solutions',
-    image: '/optimized/safe-cat-litter.webp',
+    image: '/optimized/blog/safe-cat-litter.webp',
     alt: 'Modern living room with fresh, clean air'
   },
   {
     title: 'Activated Carbon vs Baking Soda Comparison',
     href: '/blog/activated-carbon-vs-baking-soda-comparison',
-    image: '/optimized/activated-carbon-vs-baking-soda-comparison.webp',
+    image: '/optimized/blog/activated-carbon-vs-baking-soda-comparison.webp',
     alt: 'Scientific comparison of odor control methods'
   },
   {
     title: 'Tried Everything for Cat Litter Smell?',
     href: '/blog/tried-everything-cat-litter-smell-solutions',
-    image: '/optimized/tried-hero.jpg',
+    image: '/optimized/blog/tried-hero.jpg',
     alt: 'Frustrated cat owner seeking solutions'
   },
   {
     title: 'Most Powerful Odor Absorber',
     href: '/blog/most-powerful-odor-absorber',
-    image: '/optimized/science-molecule-lab.jpg',
+    image: '/optimized/blog/science-molecule-lab.jpg',
     alt: 'Powerful activated carbon odor absorption'
   },
   {
     title: 'Cat Litter Smells Worse in Summer',
     href: '/blog/cat-litter-smell-worse-summer',
-    image: '/optimized/summer-fresh-cat.webp',
+    image: '/optimized/marketing/summer-fresh-cat.webp',
     alt: 'Summer heat affecting litter odor'
   },
   {
     title: 'Cat Litter Smells Worse in Winter',
     href: '/blog/cat-litter-smell-worse-winter',
-    image: '/optimized/winter-fresh-cat.webp',
+    image: '/optimized/marketing/winter-fresh-cat.webp',
     alt: 'Winter indoor air quality for cats'
   },
   {
     title: 'Embarrassed When Guests Visit?',
     href: '/blog/embarrassed-guests-visit-cat-litter-smell',
-    image: '/optimized/embarrassed-hero.jpg',
+    image: '/optimized/blog/embarrassed-hero.jpg',
     alt: 'Welcoming guests to a fresh home'
   },
   {
     title: 'Purrify vs Spray Litter Deodorizer',
     href: '/blog/powder-vs-spray-litter-deodorizer',
-    image: '/optimized/powder_vs_spray_hero_v2.webp',
+    image: '/optimized/blog/powder_vs_spray_hero_v2.webp',
     alt: 'Comparing deodorizer application methods'
   },
   {
     title: '90 Days Testing Every Deodorizer',
     href: '/blog/tried-every-litter-deodorizer-90-days-results',
-    image: '/optimized/90day-hero.webp',
+    image: '/optimized/blog/90day-hero.webp',
     alt: '90-day deodorizer comparison test'
   },
   {
     title: 'Ammonia Smell from Cat Litter Solution',
     href: '/blog/how-to-neutralize-ammonia-cat-litter',
-    image: '/optimized/catonbed.avif',
+    image: '/optimized/marketing/catonbed.avif',
     alt: 'Cat relaxing on a freshly made bed in a clean home'
   },
   {
     title: 'Apartment Cat Smell Solution',
     href: '/blog/best-litter-odor-remover-small-apartments',
-    image: '/optimized/small-apartment-odor-control.webp',
+    image: '/optimized/blog/small-apartment-odor-control.webp',
     alt: 'Modern apartment living space'
   },
   {
     title: 'Natural Cat Litter Additive Guide',
     href: '/blog/best-natural-cat-litter-odor-control',
-    image: '/optimized/natural-cat-litter.webp',
+    image: '/optimized/blog/natural-cat-litter.webp',
     alt: 'Natural ingredients for cat care'
   },
   {
     title: 'Multiple Cats Odor Control Solutions',
     href: '/blog/best-cat-litter-multiple-cats-odor-control',
-    image: '/optimized/multiple-cats-together.webp',
+    image: '/optimized/blog/multiple-cats-together.webp',
     alt: 'Multiple cats in a home environment'
   },
   {
     title: 'How Cat Litter Deodorizers Work',
     href: '/learn/how-it-works',
-    image: '/optimized/cat-litter-deodorizer-guide.webp',
+    image: '/optimized/blog/cat-litter-deodorizer-guide.webp',
     alt: 'Scientific explanation of odor control'
   },
   {
     title: 'Activated Carbon Benefits for Cat Owners',
     href: '/blog/activated-carbon-litter-additive-benefits',
-    image: '/optimized/activated-carbon-science-benefits-ghibli.webp',
+    image: '/optimized/blog/activated-carbon-science-benefits-ghibli.webp',
     alt: 'Happy cat owner in fresh environment'
   },
   {
     title: 'Cat Litter Guide: Complete Care Manual',
     href: '/learn/cat-litter-guide',
-    image: '/optimized/cat-litter-deodorizer-guide.webp',
+    image: '/optimized/blog/cat-litter-deodorizer-guide.webp',
     alt: 'Complete cat care setup guide'
   },
   {
     title: 'How to Neutralize Ammonia in Cat Litter',
     href: '/blog/how-to-neutralize-ammonia-cat-litter',
-    image: '/images/ammonia-science.webp',
+    image: '/optimized/blog/ammonia-science.webp',
     alt: 'Scientific approach to neutralizing ammonia odors'
   },
   {
     title: 'Litter Box Smell Elimination Guide',
     href: '/blog/how-to-eliminate-cat-litter-odor',
-    image: '/images/litter-box-hero.webp',
+    image: '/optimized/blog/litter-box-hero.webp',
     alt: 'Clean litter box in a fresh home'
   },
   {
     title: 'Senior Cat Litter Solutions',
     href: '/blog/best-cat-litter-multiple-cats-odor-control',
-    image: '/optimized/cat-long-lasting-freshness-800x500.webp',
+    image: '/optimized/marketing/cat-long-lasting-freshness-800x500.webp',
     alt: 'Comfortable litter solutions for senior cats'
   },
 ];
