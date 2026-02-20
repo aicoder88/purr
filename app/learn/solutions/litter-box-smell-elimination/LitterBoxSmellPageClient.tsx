@@ -12,9 +12,9 @@ export default function LitterBoxSmellPageClient() {
   const canonicalUrl = 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/';
 
   // SEO optimized images for odor elimination
-  const heroImage = '/images/litter-box-hero.webp';
-  const solutionImage = '/images/ammonia-happy-cat.webp';
-  const scienceImage = '/images/ammonia-science.webp';
+  const heroImage = '/optimized/blog/litter-box-hero.webp';
+  const solutionImage = '/optimized/blog/ammonia-happy-cat.webp';
+  const scienceImage = '/optimized/blog/ammonia-science.webp';
 
   // HowTo steps for schema
   const howToSteps = [

@@ -27,9 +27,9 @@ export default function ResultsPage() {
     name: 'Purrify Cat Litter Deodorizer',
     description: 'Activated carbon cat litter additive that eliminates odors naturally',
     image: [
-      'https://www.purrify.ca/optimized/60g-transparent.webp',
-      'https://www.purrify.ca/optimized/120g-transparent.webp',
-      'https://www.purrify.ca/images/Logos/purrify-logo.png',
+      'https://www.purrify.ca/optimized/products/60g-transparent.webp',
+      'https://www.purrify.ca/optimized/products/140g-transparent.webp',
+      'https://www.purrify.ca/optimized/logos/purrify-logo.png',
     ],
     brand: {
       '@type': 'Brand',

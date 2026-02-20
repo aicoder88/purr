@@ -12,8 +12,8 @@ export default function ApartmentCatSmellPageClient() {
   const canonicalUrl = 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/';
 
   // SEO optimized images
-  const heroImage = '/images/apartment-hero.webp';
-  const solutionImage = '/images/apartment-living-room.webp';
+  const heroImage = '/optimized/blog/apartment-hero.webp';
+  const solutionImage = '/optimized/marketing/apartment-living-room.webp';
 
   // HowTo steps for apartment odor control
   const howToSteps = [

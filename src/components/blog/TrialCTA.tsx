@@ -74,7 +74,7 @@ export function TrialCTA({ className = '', variant = 'default' }: TrialCTAProps)
         >
           <div className="relative w-16 h-16 flex-shrink-0">
             <Image
-              src="/optimized/17g-transparent.webp"
+              src="/optimized/products/17g-transparent.webp"
               alt={trialImageAlt}
               fill
               className="object-contain"
@@ -117,7 +117,7 @@ export function TrialCTA({ className = '', variant = 'default' }: TrialCTAProps)
           {/* Image */}
           <div className="relative w-32 h-32 md:w-40 md:h-40 flex-shrink-0">
             <Image
-              src="/optimized/17g-transparent.webp"
+              src="/optimized/products/17g-transparent.webp"
               alt={trialImageAlt}
               fill
               className="object-contain drop-shadow-lg"

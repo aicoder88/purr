@@ -62,7 +62,7 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
               name: 'Purrify 50g',
               quantity: 1,
               price: 19.99,
-              image: '/optimized/60g-transparent.webp'
+              image: '/optimized/products/60g-transparent.webp'
             }
           ],
           trackingNumber: 'CA1234567890',
@@ -80,7 +80,7 @@ export function CustomerPortal({ customerId, onLogout }: CustomerPortalProps) {
               name: 'Purrify 120g',
               quantity: 1,
               price: 29.99,
-              image: '/optimized/60g-transparent.webp'
+              image: '/optimized/products/60g-transparent.webp'
             }
           ],
           trackingNumber: 'CA0987654321',

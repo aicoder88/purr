@@ -11,10 +11,10 @@ export default function NaturalCatLitterAdditivePageClient() {
   const canonicalUrl = 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/';
 
   // Natural cat litter additive images
-  const heroImage = '/images/litter-box-hero.webp';
-  const sectionImage1 = '/images/ammonia-science.webp';
-  const sectionImage2 = '/images/ammonia-happy-cat.webp';
-  const solutionImage = '/images/ammonia-fresh-home.webp';
+  const heroImage = '/optimized/blog/litter-box-hero.webp';
+  const sectionImage1 = '/optimized/blog/ammonia-science.webp';
+  const sectionImage2 = '/optimized/blog/ammonia-happy-cat.webp';
+  const solutionImage = '/optimized/blog/ammonia-fresh-home.webp';
 
   // HowTo steps for non-toxic deodorizer
   const howToSteps = [

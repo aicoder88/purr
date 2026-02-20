@@ -83,7 +83,7 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
       locale: 'en_CA',
       images: [
         {
-          url: `${SITE_URL}/images/Logos/purrify-logo.png`,
+          url: `${SITE_URL}/optimized/logos/purrify-logo.png`,
           width: 1200,
           height: 630,
           alt: seoTitle,
@@ -108,7 +108,7 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
       creator: '@purrifyhq',
       title: seoTitle,
       description: seoDescription,
-      images: [`${SITE_URL}/images/Logos/purrify-logo.png`],
+      images: [`${SITE_URL}/optimized/logos/purrify-logo.png`],
     },
   };
 }

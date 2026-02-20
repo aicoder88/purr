@@ -17,7 +17,7 @@ interface PageProps {
 
 const pageTitle = `Multi-Cat Household Odor Solution: Complete Guide for 2+ Cats | ${SITE_NAME}`;
 const pageDescription = 'Struggling with cat smell from multiple cats? Odors multiply exponentially with each cat. Activated carbon handles 3, 4, 5+ cats where other solutions fail. See dosage guide.';
-const heroImage = 'https://www.purrify.ca/optimized/multiple-cats-together.webp';
+const heroImage = 'https://www.purrify.ca/optimized/blog/multiple-cats-together.webp';
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { locale } = await params;
@@ -85,7 +85,7 @@ const articleSchema = {
         name: SITE_NAME,
         logo: {
             '@type': 'ImageObject',
-            url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+            url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
             width: 400,
             height: 400,
         },

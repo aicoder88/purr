@@ -8,7 +8,7 @@ import SeniorCatPageClient from './SeniorCatPageClient';
 const pageTitle = `Best Litter for Senior Cats with Arthritis & Mobility Issues | ${SITE_NAME}`;
 const pageDescription = "Senior cats need special care. Low dust, easy access, and superior odor control help aging cats stay comfortable and healthy. Discover litter solutions designed for senior cats.";
 const canonicalUrl = 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions/';
-const heroImage = 'https://www.purrify.ca/images/senior-cat-hero.png';
+const heroImage = 'https://www.purrify.ca/optimized/blog/senior-cat-hero.png';
 
 export const metadata: Metadata = {
     title: pageTitle,
@@ -67,7 +67,7 @@ const articleSchema = {
         name: SITE_NAME,
         logo: {
             '@type': 'ImageObject',
-            url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+            url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
             width: 400,
             height: 400,
         },

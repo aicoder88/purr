@@ -10,9 +10,9 @@ import { RelatedQuestions } from '../../../../src/components/seo/RelatedQuestion
 export default function HowToNeutralizeAmmoniaPageClient() {
   const canonicalUrl = 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/';
 
-  const heroImage = '/images/ammonia-hero.webp';
-  const scienceImage = '/images/ammonia-science.webp';
-  const freshHomeImage = '/images/ammonia-fresh-home.webp';
+  const heroImage = '/optimized/blog/ammonia-hero.webp';
+  const scienceImage = '/optimized/blog/ammonia-science.webp';
+  const freshHomeImage = '/optimized/blog/ammonia-fresh-home.webp';
 
   // HowTo steps for neutralizing ammonia
   const howToSteps = [

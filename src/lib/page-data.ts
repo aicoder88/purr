@@ -101,28 +101,28 @@ export const enStoryData = {
       role: "Founder & CEO",
       bio: "A lifelong cat lover with a background in environmental science. Mark's personal struggle with litter box odors led to the creation of Purrify.",
       location: "Toronto, ON",
-      image: "/images/team/mark-archer.png"
+      image: "/optimized/team/mark-archer.png"
     },
     {
       name: "Dr. Michael Rodriguez",
       role: "Chief Science Officer",
       bio: "Materials scientist with 15+ years experience in activated carbon technology. Leads our product development and quality assurance.",
       location: "Vancouver, BC",
-      image: "/images/team/michael-rodriguez.png"
+      image: "/optimized/marketing/michael-rodriguez.png"
     },
     {
       name: "Sage Dean",
       role: "Head of Customer Experience",
       bio: "Former veterinary technician passionate about improving the lives of pets and their families through better products.",
       location: "Montreal, QC",
-      image: "/images/team/sage-dean.png"
+      image: "/optimized/team/sage-dean.png"
     },
     {
       name: "David Kim",
       role: "Operations Director",
       bio: "Supply chain expert ensuring every Purrify order is processed quickly and delivered reliably across Canada and beyond.",
       location: "Calgary, AB",
-      image: "/images/team/david-kim.png"
+      image: "/optimized/team/david-kim.png"
     }
   ],
 
@@ -132,70 +132,70 @@ export const enStoryData = {
       role: "Regional Sales Manager",
       bio: "With over 12 years in pet product distribution, Leland leads our Eastern Canada expansion. His consultative approach has secured partnerships with over 200 independent pet retailers.",
       location: "Toronto, ON",
-      image: "/images/team/leland-brantley.png"
+      image: "/optimized/team/leland-brantley.png"
     },
     {
       name: "Ezekiel Voss",
       role: "Enterprise Sales Director",
       bio: "Ezekiel specializes in B2B partnerships and veterinary clinic networks. His background in animal health sales helps him connect practices with odor solutions their clients love.",
       location: "Vancouver, BC",
-      image: "/images/team/ezekiel-voss.png"
+      image: "/optimized/team/ezekiel-voss.png"
     },
     {
       name: "Trenton Harlow",
       role: "National Account Manager",
       bio: "Trenton manages our major retail partnerships across Canada. His relentless focus on customer success has grown our retail presence by 300% in two years.",
       location: "Calgary, AB",
-      image: "/images/team/trenton-harlow.png"
+      image: "/optimized/team/trenton-harlow.png"
     },
     {
       name: "Dorian Keller",
       role: "Sales Development Representative",
       bio: "Dorian is the friendly first contact for new retail partners. His enthusiasm for pet wellness and natural products makes every conversation memorable.",
       location: "Ottawa, ON",
-      image: "/images/team/dorian-keller.png"
+      image: "/optimized/marketing/dorian-keller.png"
     },
     {
       name: "Finnegan Crosby",
       role: "Territory Sales Manager",
       bio: "Covering the Prairie provinces, Finnegan builds lasting relationships with farm supply stores and rural pet retailers who appreciate Purrify's practical benefits.",
       location: "Edmonton, AB",
-      image: "/images/team/finnegan-crosby.png"
+      image: "/optimized/team/finnegan-crosby.png"
     },
     {
       name: "Cassian Reed",
       role: "Key Account Executive",
       bio: "Cassian works with our largest retail chains and distributors. His strategic mindset and deep industry knowledge keep our partnerships thriving.",
       location: "Montreal, QC",
-      image: "/images/team/cassian-reed.png"
+      image: "/optimized/team/cassian-reed.png"
     },
     {
       name: "Merrick Sullivan",
       role: "Inside Sales Specialist",
       bio: "Merrick handles inbound inquiries and helps new retailers get started with Purrify. His product expertise ensures every partner finds the right solution for their customers.",
       location: "Halifax, NS",
-      image: "/images/team/merrick-sullivan.png"
+      image: "/optimized/team/merrick-sullivan.png"
     },
     {
       name: "Orion Hampton",
       role: "Business Development Manager",
       bio: "Orion focuses on emerging markets and new verticals, from cat cafes to pet-friendly hotels. His creative approach opens doors to unique partnerships.",
       location: "Victoria, BC",
-      image: "/images/team/orion-hampton.png"
+      image: "/optimized/team/orion-hampton.png"
     },
     {
       name: "Gideon Fletcher",
       role: "Field Sales Representative",
       bio: "Gideon covers Ontario's Golden Horseshoe, visiting stores personally to train staff and ensure Purrify is positioned for success on every shelf.",
       location: "Hamilton, ON",
-      image: "/images/team/gideon-fletcher.png"
+      image: "/optimized/team/gideon-fletcher.png"
     },
     {
       name: "Silas Bennett",
       role: "Customer Success Manager",
       bio: "Silas ensures our retail partners thrive after signing on. From inventory planning to promotional support, he's dedicated to mutual growth.",
       location: "Winnipeg, MB",
-      image: "/images/team/silas-bennett.png"
+      image: "/optimized/marketing/silas-bennett.png"
     }
   ],
 

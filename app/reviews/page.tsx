@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
         width: 1200,
         height: 800,
         alt: 'Purrify Customer Reviews',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     creator: '@purrifyhq',
     title: 'Purrify Reviews - What Cat Owners Are Saying',
     description: 'Read customer feedback about Purrify and learn how cat owners use an activated carbon additive to reduce litter box odor.',
-    images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
+    images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'],
   },
   alternates: {
     canonical: 'https://www.purrify.ca/reviews/',
@@ -61,9 +61,9 @@ const productSchema = {
   name: SITE_NAME,
   description: 'Activated carbon cat litter deodorizer that eliminates odors at the molecular level',
   image: [
-    'https://www.purrify.ca/optimized/60g-transparent.webp',
-    'https://www.purrify.ca/optimized/120g-transparent.webp',
-    'https://www.purrify.ca/images/Logos/purrify-logo.png',
+    'https://www.purrify.ca/optimized/products/60g-transparent.webp',
+    'https://www.purrify.ca/optimized/products/140g-transparent.webp',
+    'https://www.purrify.ca/optimized/logos/purrify-logo.png',
   ],
   brand: {
     '@type': 'Brand',

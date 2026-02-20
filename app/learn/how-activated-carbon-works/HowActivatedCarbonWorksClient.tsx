@@ -7,7 +7,7 @@ import { RelatedQuestions } from '../../../src/components/seo/RelatedQuestions';
 import { HowToSection } from '../../../src/components/seo/HowToSection';
 
 export default function HowActivatedCarbonWorksClient() {
-  const heroImage = '/images/ammonia-science.webp';
+  const heroImage = '/optimized/blog/ammonia-science.webp';
   const canonicalUrl = 'https://www.purrify.ca/learn/how-activated-carbon-works/';
 
   // HowTo steps for using activated carbon
@@ -133,7 +133,7 @@ export default function HowActivatedCarbonWorksClient() {
                   </p>
                 </div>
                 <Image
-                  src="/optimized/coconut-shell-natural.webp"
+                  src="/optimized/marketing/coconut-shell-natural.webp"
                   alt="Natural coconut shells used for activated carbon"
                   width={800}
                   height={533}
@@ -190,7 +190,7 @@ export default function HowActivatedCarbonWorksClient() {
               variant="default"
             />
             <Image
-              src="/optimized/molecular-adsorption-science.webp"
+              src="/optimized/blog/molecular-adsorption-science.webp"
               alt="Diagram showing adsorption vs absorption"
               width={800}
               height={533}
@@ -269,7 +269,7 @@ export default function HowActivatedCarbonWorksClient() {
               of pores are created, each serving different purposes. It's this complex network that gives carbon its massive surface area.
             </p>
             <Image
-              src="/optimized/micropores-magnified-view.webp"
+              src="/optimized/marketing/micropores-magnified-view.webp"
               alt="Magnified view of activated carbon pore structure"
               width={800}
               height={533}

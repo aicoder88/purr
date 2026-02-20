@@ -71,7 +71,7 @@ const organizationSchema = {
   "name": "Purrify Wholesale",
   "description": "Wholesale cat litter deodorizer supplier for pet stores, veterinary clinics, and pet care businesses across Canada and USA.",
   "url": canonicalUrl,
-  "logo": "https://www.purrify.ca/images/purrify-logo.png",
+  "logo": "https://www.purrify.ca/optimized/logos/purrify-logo.png",
   "areaServed": ["Canada", "United States"],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",

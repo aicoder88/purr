@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: `${SITE_URL}/images/Logos/purrify-logo.png`,
+        url: `${SITE_URL}/optimized/logos/purrify-logo.png`,
         width: 1200,
         height: 630,
         alt: `Blog - Cat Care Tips & Litter Box Advice | ${SITE_NAME}`,
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     creator: '@purrifyhq',
     title: `Blog - Cat Care Tips & Litter Box Advice | ${SITE_NAME}`,
     description: `Expert advice on cat litter boxes, odor control, and pet care. ${SITE_DESCRIPTION}`,
-    images: [`${SITE_URL}/images/Logos/purrify-logo.png`],
+    images: [`${SITE_URL}/optimized/logos/purrify-logo.png`],
   },
 };
 
@@ -101,7 +101,7 @@ async function getBlogPosts(): Promise<BlogPost[]> {
         excerpt: post.excerpt,
         author: post.author?.name || 'Purrify Team',
         date: dateStr,
-        image: post.featuredImage?.url || '/optimized/cat-litter-hero.webp',
+        image: post.featuredImage?.url || '/optimized/blog/cat-litter-hero.webp',
         link: `/blog/${post.slug}`,
         locale: post.locale || LOCALE,
       };
@@ -166,7 +166,7 @@ export default async function BlogIndexPage({ searchParams }: PageProps) {
           url: SITE_URL,
           logo: {
             '@type': 'ImageObject',
-            url: `${SITE_URL}/images/Logos/purrify-logo.png`,
+            url: `${SITE_URL}/optimized/logos/purrify-logo.png`,
             width: 400,
             height: 400,
           },

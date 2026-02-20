@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: `${SITE_URL}/images/Logos/purrify-logo.png`,
+        url: `${SITE_URL}/optimized/logos/purrify-logo.png`,
         width: 1200,
         height: 630,
         alt: `${SITE_NAME} B2B Sell Sheet`,
@@ -40,7 +40,7 @@ const schema = {
       url: 'https://www.purrify.ca',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.purrify.ca/images/purrify-logo.png',
+        url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
         width: 400,
         height: 400,
       },

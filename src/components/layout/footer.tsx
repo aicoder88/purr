@@ -244,7 +244,7 @@ export function Footer() {
                 <Link prefetch={false} href={localePrefix || '/'} className="group">
                   <div className="h-6 w-auto mr-2 flex items-center">
                     <Image
-                      src="/optimized/logo-light-pink.webp"
+                      src="/optimized/logos/logo-light-pink.webp"
                       alt={copy.logoAlt}
                       width={120}
                       height={57}
@@ -252,7 +252,7 @@ export function Footer() {
                       className="h-full w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
                     />
                     <Image
-                      src="/optimized/logo-dark.webp"
+                      src="/optimized/logos/logo-dark.webp"
                       alt={copy.logoAlt}
                       width={84}
                       height={40}

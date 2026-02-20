@@ -121,7 +121,7 @@ export async function GET(req: Request): Promise<Response> {
       excerpt: post.excerpt.rendered.replaceAll(/<\/?[^>]+(>|$)/g, "").substring(0, 150) + "...",
       author: post._embedded?.author?.[0]?.name || "Purrify Team",
       date: new Date(post.date).toISOString().split('T')[0],
-      image: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/optimized/purrify-logo.avif",
+      image: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/optimized/logos/purrify-logo.avif",
       link: `/${locale}/blog/${post.slug}`,
       content: post.content.rendered,
       locale: 'en'

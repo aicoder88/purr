@@ -89,7 +89,7 @@ export default function AmmoniaSciencePageClient() {
 
             <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10">
               <Image
-                src="/images/ammonia-science.webp"
+                src="/optimized/blog/ammonia-science.webp"
                 alt={a('meta.title')}
                 width={1200}
                 height={675}

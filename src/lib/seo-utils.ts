@@ -400,7 +400,7 @@ export const generateArticleStructuredData = (title: string, description: string
     headline: title,
     description: description,
     url: url,
-    image: options?.image || 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+    image: options?.image || 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
     author: {
       '@type': 'Person',
       name: options?.author || 'Dr. Sarah Chen',
@@ -412,7 +412,7 @@ export const generateArticleStructuredData = (title: string, description: string
       name: SITE_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
         width: 400,
         height: 400
       }
@@ -445,8 +445,8 @@ export const generateOrganizationSchema = (localeInput: string) => {
     '@id': `${baseUrl}/#organization`,
     name: SITE_NAME,
     url: baseUrl,
-    logo: `${baseUrl}/images/Logos/purrify-logo.png`,
-    image: `${baseUrl}/images/Logos/purrify-logo.png`,
+    logo: `${baseUrl}/optimized/logos/purrify-logo.png`,
+    image: `${baseUrl}/optimized/logos/purrify-logo.png`,
     description: getLocalizedContent(SEO_TRANSLATIONS.organizationDescription, locale),
     address: {
       '@type': 'PostalAddress',
@@ -651,8 +651,8 @@ export const generateLocalBusinessSchema = (cityName: string, province: string, 
     name: `${SITE_NAME} - ${cityName}`,
     description: getLocalizedContent(SEO_TRANSLATIONS.organizationDescription, locale),
     url: getLocalizedUrl(`/locations/${cityName.toLowerCase()}`, locale),
-    logo: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
-    image: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+    logo: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
+    image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
     address: {
       '@type': 'PostalAddress',
       addressLocality: cityName,
@@ -780,7 +780,7 @@ export const generateProductPageSchema = (productId: string, localeInput: string
         brand: {
           '@type': 'Brand',
           name: SITE_NAME,
-          logo: `${baseUrl}/images/Logos/purrify-logo.png`
+          logo: `${baseUrl}/optimized/logos/purrify-logo.png`
         },
         manufacturer: {
           '@type': 'Organization',
@@ -875,7 +875,7 @@ export const generateArticlePageSchema = (title: string, description: string, pa
     headline,
     description,
     url,
-    image: options?.image || `${baseUrl}/images/Logos/purrify-logo.png`,
+    image: options?.image || `${baseUrl}/optimized/logos/purrify-logo.png`,
     author: {
       '@type': 'Person',
       name: options?.author || 'Dr. Sarah Chen',
@@ -888,7 +888,7 @@ export const generateArticlePageSchema = (title: string, description: string, pa
       url: baseUrl,
       logo: {
         '@type': 'ImageObject',
-        url: `${baseUrl}/images/Logos/purrify-logo.png`,
+        url: `${baseUrl}/optimized/logos/purrify-logo.png`,
         width: 400,
         height: 400
       }

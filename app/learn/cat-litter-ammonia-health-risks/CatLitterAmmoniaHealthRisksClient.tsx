@@ -144,7 +144,7 @@ export default function CatLitterAmmoniaHealthRisksClient() {
                 </div>
                 <div className="relative h-full min-h-[200px]">
                   <img
-                    src="/optimized/ammonia-science.webp"
+                    src="/optimized/blog/ammonia-science.webp"
                     alt="Scientific diagram of ammonia production from cat urine"
                     className="w-full h-full object-cover rounded-xl shadow-md"
                     loading="lazy"
@@ -192,7 +192,7 @@ export default function CatLitterAmmoniaHealthRisksClient() {
 
             <div className="mb-8">
               <img
-                src="/optimized/ammonia-haze-ghibli.webp"
+                src="/optimized/blog/ammonia-haze-ghibli.webp"
                 alt="Visual representation of potential ammonia exposure in the home"
                 className="w-full h-64 object-cover rounded-xl shadow-lg"
                 loading="lazy"
@@ -248,7 +248,7 @@ export default function CatLitterAmmoniaHealthRisksClient() {
                   </p>
                 </div>
                 <img
-                  src="/optimized/microscopic-carbon-odor-trap.webp"
+                  src="/optimized/blog/microscopic-carbon-odor-trap.webp"
                   alt="Microscopic view of activated carbon trapping ammonia molecules"
                   className="w-full rounded-xl shadow-lg border border-forest-700/50"
                   loading="lazy"

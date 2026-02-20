@@ -34,9 +34,9 @@ const CustomerAvatar = ({ src, alt }: { src: string; alt: string }) => (
 );
 
 const customerAvatars = [
-  '/optimized/cat-rose-thumbnail.webp',
-  '/optimized/multi-cat-household.webp',
-  '/optimized/deodorizers-with-kittens.webp'
+  '/optimized/marketing/cat-rose-thumbnail.webp',
+  '/optimized/blog/multi-cat-household.webp',
+  '/optimized/blog/deodorizers-with-kittens.webp'
 ];
 
 export const CTA = React.memo(function CTA() {
@@ -64,7 +64,7 @@ export const CTA = React.memo(function CTA() {
 
           {/* Background image */}
           <Image
-            src="/optimized/pet-safety-home.webp"
+            src="/optimized/marketing/pet-safety-home.webp"
             alt={t('homepage.altText.happyCatAlt') || "Happy cat"}
             width={800}
             height={800}

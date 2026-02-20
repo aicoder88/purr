@@ -76,7 +76,7 @@ export async function generateMetadata({ params }: LocalizedHomepageProps): Prom
             siteName: SITE_NAME,
             images: [
                 {
-                    url: '/images/Logos/purrify-logo.png',
+                    url: '/optimized/logos/purrify-logo.png',
                     width: 1200,
                     height: 800,
                     alt: pageTitle,

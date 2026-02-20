@@ -63,13 +63,13 @@ export default function AboutPage() {
     schemaData: {
       headline: 'Our Story: Mission Behind Purrify',
       description: 'The story behind Purrify cat litter additive and our mission to help cat owners create fresher, cleaner homes.',
-      image: 'https://www.purrify.ca/images/hero.webp',
+      image: 'https://www.purrify.ca/optimized/blog/hero.webp',
       datePublished: '2019-01-01T00:00:00Z',
       dateModified: '2025-11-13T00:00:00Z',
       category: 'About',
       keywords: ['Purrify story', 'company mission', 'cat litter innovation', 'pet care', 'environmental responsibility', 'Canadian company'],
     },
-    image: 'https://www.purrify.ca/images/hero.webp',
+    image: 'https://www.purrify.ca/optimized/blog/hero.webp',
     keywords: ['Purrify story', 'company mission', 'cat litter innovation', 'pet care', 'environmental responsibility', 'Canadian company'],
   });
 
@@ -95,7 +95,7 @@ export default function AboutPage() {
         <div className="relative w-full h-[600px] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 z-0">
             <Image
-              src="/images/hero.webp"
+              src="/optimized/blog/hero.webp"
               alt="Happy cat in a sunlit living room"
               fill
               sizes="100vw"
@@ -130,7 +130,7 @@ export default function AboutPage() {
               <div className="lg:w-1/2 relative">
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
                   <Image
-                    src="/images/mission.webp"
+                    src="/optimized/marketing/mission.webp"
                     alt="Woman hugging a cat in a clean home"
                     width={800}
                     height={600}
@@ -169,7 +169,7 @@ export default function AboutPage() {
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full overflow-hidden relative border-2 border-white shadow-md">
                       <Image
-                        src="/images/team/mark-archer.webp"
+                        src="/optimized/team/mark-archer.webp"
                         alt="Mark Archer"
                         fill
                         sizes="48px"
@@ -243,9 +243,9 @@ export default function AboutPage() {
                 const isDrMike = member.name === 'Dr. Michael Rodriguez';
                 const hasPhoto = isMark || isDrMike;
                 const photoSrc = isMark
-                  ? '/images/team/mark-archer.webp'
+                  ? '/optimized/team/mark-archer.webp'
                   : isDrMike
-                    ? '/images/dr-michael-rodriguez.jpg'
+                    ? '/optimized/marketing/dr-michael-rodriguez.jpg'
                     : null;
                 return (
                   <div
@@ -297,7 +297,7 @@ export default function AboutPage() {
 
         {/* Stats Section */}
         <section className="py-20 bg-electric-indigo text-white dark:text-gray-100 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/images/pattern-bg.png')] opacity-10 mix-blend-overlay" />
+          <div className="absolute inset-0 bg-[url('/optimized/marketing/subtle-cat-pattern.png')] opacity-10 mix-blend-overlay" />
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-deep-coral/20 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2" />
 

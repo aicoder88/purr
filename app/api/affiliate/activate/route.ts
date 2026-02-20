@@ -76,7 +76,7 @@ export async function POST(): Promise<Response> {
             product_data: {
               name: 'Purrify Affiliate Starter Kit',
               description: 'Includes 1 bag of Purrify (500g), marketing materials, and priority support',
-              images: [`${process.env.NEXT_PUBLIC_SITE_URL}/optimized/three_bags_no_bg.webp`],
+              images: [`${process.env.NEXT_PUBLIC_SITE_URL}/optimized/products/three-bags-no-bg.webp`],
             },
             unit_amount: STARTER_KIT_PRICE,
           },

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     url: 'https://www.purrify.ca/case-studies/',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/three_bags_no_bg.webp',
+        url: 'https://www.purrify.ca/optimized/products/three-bags-no-bg.webp',
         width: 1200,
         height: 630,
         alt: 'Purrify Customer Success Stories',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Success Stories - Real Customer Results',
     description: 'Before & After: Real photos showing 95% odor reduction. See why 1,000+ cat owners switched to Purrify.',
-    images: ['https://www.purrify.ca/optimized/three_bags_no_bg.webp'],
+    images: ['https://www.purrify.ca/optimized/products/three-bags-no-bg.webp'],
   },
   other: {
     'last-modified': '2026-01-19',
@@ -53,7 +53,7 @@ const caseStudies = [
     situation: "Studio Apartment Challenge",
     timeframe: "30 Days",
     cats: 2,
-    image: "/optimized/60g.webp",
+    image: "/optimized/products/60g.webp",
     challenge: {
       description: "Sarah lived in a 400 square foot studio apartment with two cats. The litter box was located near her living area due to space constraints, making odor control critical for her quality of life and ability to have guests over.",
       painPoints: [
@@ -93,7 +93,7 @@ const caseStudies = [
     situation: "Multi-Cat Family Home",
     timeframe: "90 Days",
     cats: 4,
-    image: "/optimized/140g.webp",
+    image: "/optimized/products/140g.webp",
     challenge: {
       description: "The Johnson family struggled with odor control for their 4 cats while maintaining a child-friendly environment. Previous solutions contained harsh chemicals or strong fragrances that concerned them.",
       painPoints: [
@@ -133,7 +133,7 @@ const caseStudies = [
     situation: "Senior Cat with Health Concerns",
     timeframe: "60 Days",
     cats: 1,
-    image: "/optimized/17gpink.webp",
+    image: "/optimized/products/17g-transparent.webp",
     challenge: {
       description: "Dr. Wong's 15-year-old cat developed respiratory sensitivities, making traditional scented deodorizers unsuitable. The cat needed effective odor control without any irritating chemicals or fragrances.",
       painPoints: [

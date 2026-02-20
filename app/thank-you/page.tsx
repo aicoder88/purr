@@ -115,7 +115,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
       description,
       images: [
         {
-          url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+          url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
           width: 1200,
           height: 630,
           alt: 'Purrify',
@@ -128,7 +128,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
       creator: '@purrifyhq',
       title,
       description,
-      images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
+      images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'],
     },
   };
 }

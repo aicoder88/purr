@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
         width: 1200,
         height: 800,
         alt: SITE_NAME,
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     creator: '@purrifyhq',
     title: 'Buy Purrify | Redirecting...',
     description: 'Redirecting to Purrify products page.',
-    images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
+    images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'],
   },
 };
 

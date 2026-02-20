@@ -52,19 +52,19 @@ const GRADIENTS = {
 } as const;
 
 const HERO_IMAGES: Record<string, string> = {
-  'qc': '/images/locations/provinces/quebec.png',
-  'on': '/images/locations/provinces/ontario.png',
-  'ab': '/images/locations/provinces/alberta.png',
-  'bc': '/images/locations/provinces/british-columbia.png',
-  'ns': '/images/locations/provinces/atlantic.png',
-  'nb': '/images/locations/provinces/atlantic.png',
-  'pe': '/images/locations/provinces/atlantic.png',
-  'nl': '/images/locations/provinces/atlantic.png',
-  'mb': '/images/locations/provinces/prairies.png',
-  'sk': '/images/locations/provinces/prairies.png',
-  'yt': '/images/locations/provinces/north.png',
-  'nt': '/images/locations/provinces/north.png',
-  'nu': '/images/locations/provinces/north.png',
+  'qc': '/optimized/locations/quebec.png',
+  'on': '/optimized/locations/ontario.png',
+  'ab': '/optimized/locations/alberta.png',
+  'bc': '/optimized/locations/british-columbia.png',
+  'ns': '/optimized/locations/atlantic.png',
+  'nb': '/optimized/locations/atlantic.png',
+  'pe': '/optimized/locations/atlantic.png',
+  'nl': '/optimized/locations/atlantic.png',
+  'mb': '/optimized/locations/prairies.png',
+  'sk': '/optimized/locations/prairies.png',
+  'yt': '/optimized/locations/north.png',
+  'nt': '/optimized/locations/north.png',
+  'nu': '/optimized/locations/north.png',
 };
 
 const CTA_BUTTON_CLASSES = `inline-flex items-center justify-center ${GRADIENTS.ctaButton} text-white dark:text-gray-100 font-bold py-3 px-6 rounded-lg transition-all`;
@@ -276,9 +276,9 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
     : '';
 
   const heroImage = useMemo(() => {
-    if (!profile?.provinceCode) return '/images/locations/provinces/ontario.png';
+    if (!profile?.provinceCode) return '/optimized/locations/ontario.png';
     const code = profile.provinceCode.toLowerCase();
-    return HERO_IMAGES[code] || '/images/locations/provinces/ontario.png';
+    return HERO_IMAGES[code] || '/optimized/locations/ontario.png';
   }, [profile?.provinceCode]);
 
   // Enhanced SEO with breadcrumbs (Home > Locations > City)

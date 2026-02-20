@@ -86,9 +86,9 @@ export default function ProductsPage() {
 
   // Product images matching the homepage
   const productImages: Record<string, { src: string; size: 'sm' | 'md' | 'lg' }> = {
-    trial: { src: '/optimized/17g-transparent-v2.webp', size: 'sm' },
-    regular: { src: '/optimized/60g-transparent.webp', size: 'md' },
-    large: { src: '/optimized/60g-transparent.webp', size: 'lg' },
+    trial: { src: '/optimized/products/17g-transparent-v2.webp', size: 'sm' },
+    regular: { src: '/optimized/products/60g-transparent.webp', size: 'md' },
+    large: { src: '/optimized/products/60g-transparent.webp', size: 'lg' },
   };
 
   // Display names that de-emphasize grams
@@ -116,7 +116,7 @@ export default function ProductsPage() {
   const _products = ([] as any[]).map((product: any) => {
     const priceKey = productIdAlias[product.id] ?? 'regular';
     const displayName = productDisplayNames[product.id] || { name: product.name, nameFr: product.name, subtitle: product.subtitle, subtitleFr: product.subtitle };
-    const imageData = productImages[product.id] || { src: '/optimized/60g-transparent.webp', size: 'md' as const };
+    const imageData = productImages[product.id] || { src: '/optimized/products/60g-transparent.webp', size: 'md' as const };
 
     return {
       ...product,
@@ -229,7 +229,7 @@ export default function ProductsPage() {
     description: pageDescription,
     targetKeyword: 'cat litter additive',
     keywords: ['Purrify products', 'cat litter additive', 'activated carbon', 'odor control', 'trial size', 'family pack'],
-    image: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+    image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
   });
 
   // Product data for complete structured data
@@ -240,7 +240,7 @@ export default function ProductsPage() {
       description: 'FREE trial of activated charcoal cat litter additive. Eliminates ammonia odors instantly.',
       sku: 'purrify-12g',
       mpn: 'PURRIFY-12G',
-      image: 'https://www.purrify.ca/optimized/17g-transparent-v2.webp',
+      image: 'https://www.purrify.ca/optimized/products/17g-transparent-v2.webp',
       url: `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/trial-size`,
       shippingRate: '4.76',
     },
@@ -250,7 +250,7 @@ export default function ProductsPage() {
       description: '50g activated charcoal cat litter additive. One month of odor control. 100% natural.',
       sku: 'purrify-50g',
       mpn: 'PURRIFY-50G',
-      image: 'https://www.purrify.ca/optimized/60g-transparent.webp',
+      image: 'https://www.purrify.ca/optimized/products/60g-transparent.webp',
       url: `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/#standard`,
       shippingRate: '6.99',
     },
@@ -260,7 +260,7 @@ export default function ProductsPage() {
       description: 'Best value 120g activated charcoal cat litter additive. Perfect for multi-cat households.',
       sku: 'purrify-120g',
       mpn: 'PURRIFY-120G',
-      image: 'https://www.purrify.ca/optimized/60g-transparent.webp',
+      image: 'https://www.purrify.ca/optimized/products/60g-transparent.webp',
       url: `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/#family-pack`,
       shippingRate: '0',
     },
@@ -294,7 +294,7 @@ export default function ProductsPage() {
                 "brand": {
                   "@type": "Brand",
                   "name": "Purrify",
-                  "logo": "https://www.purrify.ca/optimized/social-logo.webp"
+                  "logo": "https://www.purrify.ca/optimized/logos/social-logo.webp"
                 },
                 "manufacturer": {
                   "@type": "Organization",
@@ -447,7 +447,7 @@ export default function ProductsPage() {
                   <div className="relative hidden md:block">
                     <div className="relative h-64 w-full rounded-xl overflow-hidden shadow-lg">
                       <Image
-                        src="/optimized/sarah-montreal-testimonial.png"
+                        src="/optimized/marketing/sarah-montreal-testimonial.png"
                         alt={locale === 'fr' ? "Sarah de Montréal avec ses chats dans son appartement" : "Sarah from Montreal with her cats in her apartment"}
                         fill
                         className="object-cover"
@@ -496,7 +496,7 @@ export default function ProductsPage() {
                   </div>
                   <div className="relative h-64 md:h-auto min-h-[300px]">
                     <Image
-                      src="/optimized/microscopic-carbon-structure.png"
+                      src="/optimized/blog/microscopic-carbon-structure.png"
                       alt={locale === 'fr' ? "Structure microscopique du charbon actif piégeant les molécules" : "Microscopic structure of activated carbon trapping molecules"}
                       fill
                       className="object-cover"

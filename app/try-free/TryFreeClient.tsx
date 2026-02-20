@@ -127,7 +127,7 @@ export function TryFreeClient() {
             <div className="order-1 md:order-2 flex justify-center">
               <div className="relative w-64 md:w-80 aspect-[3/4]">
                 <Image
-                  src="/optimized/17gpink.webp"
+                  src="/optimized/products/17g-transparent.webp"
                   alt={copy.productImageAlt || ''}
                   fill
                   sizes="(max-width: 768px) 256px, 320px"

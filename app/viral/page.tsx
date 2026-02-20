@@ -33,7 +33,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/images/purrify-logo.png',
+      url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
     },
   },
   datePublished: '2026-01-19',

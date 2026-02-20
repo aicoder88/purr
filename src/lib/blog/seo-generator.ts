@@ -51,7 +51,7 @@ export class SEOGenerator {
         name: 'Purrify',
         logo: {
           '@type': 'ImageObject',
-          url: `${this.baseUrl}/images/Logos/purrify-logo.png`
+          url: `${this.baseUrl}/optimized/logos/purrify-logo.png`
         }
       },
       mainEntityOfPage: {

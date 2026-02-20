@@ -79,7 +79,7 @@ export const seoMetaEn: SEOMetaContent = {
           '@type': 'Organization',
           name: 'Purrify',
           url: SITE_URL,
-          logo: `${SITE_URL}/images/purrify-logo.png`,
+          logo: `${SITE_URL}/optimized/logos/purrify-logo.png`,
           sameAs: ['https://facebook.com/purrify', 'https://instagram.com/purrify']
         },
         {
@@ -365,7 +365,7 @@ export const seoMetaEn: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -391,7 +391,7 @@ export const seoMetaEn: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -417,7 +417,7 @@ export const seoMetaEn: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -443,7 +443,7 @@ export const seoMetaEn: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -469,7 +469,7 @@ export const seoMetaEn: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -495,7 +495,7 @@ export const seoMetaEn: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -521,7 +521,7 @@ export const seoMetaEn: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -547,7 +547,7 @@ export const seoMetaEn: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -573,7 +573,7 @@ export const seoMetaEn: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -599,7 +599,7 @@ export const seoMetaEn: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -625,7 +625,7 @@ export const seoMetaEn: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -651,7 +651,7 @@ export const seoMetaEn: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     }
@@ -671,7 +671,7 @@ export const seoMetaFr: SEOMetaContent = {
           '@type': 'Organization',
           name: 'Purrify',
           url: `${SITE_URL}/fr`,
-          logo: `${SITE_URL}/images/purrify-logo.png`
+          logo: `${SITE_URL}/optimized/logos/purrify-logo.png`
         },
         {
           '@type': 'WebSite',
@@ -914,7 +914,7 @@ export const seoMetaFr: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -940,7 +940,7 @@ export const seoMetaFr: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -966,7 +966,7 @@ export const seoMetaFr: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -992,7 +992,7 @@ export const seoMetaFr: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -1018,7 +1018,7 @@ export const seoMetaFr: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -1044,7 +1044,7 @@ export const seoMetaFr: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -1070,7 +1070,7 @@ export const seoMetaFr: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -1096,7 +1096,7 @@ export const seoMetaFr: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -1122,7 +1122,7 @@ export const seoMetaFr: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -1148,7 +1148,7 @@ export const seoMetaFr: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -1174,7 +1174,7 @@ export const seoMetaFr: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -1200,7 +1200,7 @@ export const seoMetaFr: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     }
@@ -1221,7 +1221,7 @@ export const seoMetaZh: SEOMetaContent = {
           '@type': 'Organization',
           name: 'Purrify',
           url: `${SITE_URL}/zh`,
-          logo: `${SITE_URL}/images/purrify-logo.png`
+          logo: `${SITE_URL}/optimized/logos/purrify-logo.png`
         },
         {
           '@type': 'WebSite',
@@ -1463,7 +1463,7 @@ export const seoMetaZh: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -1489,7 +1489,7 @@ export const seoMetaZh: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -1515,7 +1515,7 @@ export const seoMetaZh: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -1541,7 +1541,7 @@ export const seoMetaZh: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -1567,7 +1567,7 @@ export const seoMetaZh: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -1593,7 +1593,7 @@ export const seoMetaZh: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -1619,7 +1619,7 @@ export const seoMetaZh: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -1640,7 +1640,7 @@ export const seoMetaZh: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -1661,7 +1661,7 @@ export const seoMetaZh: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -1682,7 +1682,7 @@ export const seoMetaZh: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -1703,7 +1703,7 @@ export const seoMetaZh: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -1724,7 +1724,7 @@ export const seoMetaZh: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     }
@@ -1745,7 +1745,7 @@ export const seoMetaEs: SEOMetaContent = {
           '@type': 'Organization',
           name: 'Purrify',
           url: `${SITE_URL}/es`,
-          logo: `${SITE_URL}/images/purrify-logo.png`
+          logo: `${SITE_URL}/optimized/logos/purrify-logo.png`
         },
         {
           '@type': 'WebSite',
@@ -1982,7 +1982,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -2003,7 +2003,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -2024,7 +2024,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -2045,7 +2045,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -2066,7 +2066,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -2087,7 +2087,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -2108,7 +2108,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -2129,7 +2129,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -2150,7 +2150,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -2171,7 +2171,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -2192,7 +2192,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     },
@@ -2213,7 +2213,7 @@ export const seoMetaEs: SEOMetaContent = {
         publisher: {
           '@type': 'Organization',
           name: 'Purrify',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/purrify-logo.png` }
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/optimized/logos/purrify-logo.png` }
         }
       }
     }

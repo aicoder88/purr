@@ -140,7 +140,7 @@ export function RetailerHero() {
             <div className="relative">
               <div className="relative rounded-[40px] overflow-hidden shadow-2xl shadow-gray-200 dark:shadow-none border-8 border-white dark:border-gray-800 rotate-2 hover:rotate-0 transition-transform duration-700 aspect-[4/3]">
                 <Image
-                  src="/optimized/retailer-hero-lifestyle.png"
+                  src="/optimized/marketing/retailer-hero-lifestyle.png"
                   alt={heroUiCopy.heroImageAlt}
                   fill
                   className="object-cover"

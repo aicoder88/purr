@@ -43,9 +43,9 @@ const DEFAULT_LOGO_CONFIG = {
 } as const;
 
 const STORE_LOGOS: Record<string, Omit<LogoConfig, 'className' | 'width' | 'height'>> = {
-  'Chico': { src: '/optimized/chico-logo.svg', alt: 'Chico - Boutique d\'animaux Logo' },
+  'Chico': { src: '/optimized/logos/chico-logo.svg', alt: 'Chico - Boutique d\'animaux Logo' },
   'Pattes et Griffes': { src: '/optimized/stores/pattes.webp', alt: 'Pattes et Griffes Logo' },
-  'GIGI': { src: '/optimized/gigi.webp', alt: 'Animal Shop GIGI - Pet Store Logo' },
+  'GIGI': { src: '/optimized/marketing/gigi.webp', alt: 'Animal Shop GIGI - Pet Store Logo' },
   'Pitou Minou': { src: '/optimized/stores/pitou-minou.webp', alt: 'Pitou Minou & Compagnons - Pet Store Logo' },
   'Doghaus': { src: '/optimized/stores/doghaus.webp', alt: 'Doghaus Montreal - Premium Pet Store Logo' },
   'Kong': { src: '/optimized/stores/kong-animalerie.webp', alt: 'KONG ANIMALERIE - Montreal Pet Store Logo' },
@@ -55,7 +55,7 @@ const STORE_LOGOS: Record<string, Omit<LogoConfig, 'className' | 'width' | 'heig
   'Animalerie Petmobile Nathamo': { src: '/optimized/stores/nathamo.avif', alt: 'Animalerie Petmobile Nathamo - Complete Pet Care and Supplies Logo' },
   'Animalerie Club Wouf Miaou': { src: '/optimized/stores/woofmiao-logo.webp', alt: 'Animalerie Club Wouf Miaou - Pet Store Logo' },
   'K&K Pet Foods': { src: '/optimized/stores/kk.avif', alt: 'K&K Pet Foods Dunbar - Premium Pet Products & Supplies Logo' },
-  'Viva Pets': { src: '/optimized/viva-pets-original.avif', alt: 'Viva Pets - Premium Pet Products & Supplies Logo' },
+  'Viva Pets': { src: '/optimized/stores/viva-pets-original.avif', alt: 'Viva Pets - Premium Pet Products & Supplies Logo' },
   'Little Bit Western': { src: '/optimized/stores/little-bit-western.avif', alt: 'Little Bit Western Feed and Supplies Inc. - Pet and Feed Store Logo' },
 };
 
@@ -466,14 +466,14 @@ export default function StoresPage() {
         <section className="text-center mb-12">
           <div className="flex justify-center mb-6">
             <Image
-              src="/optimized/logo-light-pink.webp"
+              src="/optimized/logos/logo-light-pink.webp"
               alt="Purrify Logo"
               width={480}
               height={230}
               className="h-12 w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
             />
             <Image
-              src="/optimized/logo-dark.webp"
+              src="/optimized/logos/logo-dark.webp"
               alt="Purrify Logo"
               width={480}
               height={220}

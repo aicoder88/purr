@@ -70,7 +70,7 @@ export const HeroVideo = () => {
         <div ref={mediaContainerRef} className="relative w-full h-full">
           {state.showPoster && (
             <Image
-              src="/images/purrify-demo-poster.webp"
+              src="/optimized/marketing/purrify-demo-poster.webp"
               alt="How to use Purrify: Pouring activated carbon litter additive onto litter instantly neutralizing odors."
               fill
               className="object-cover object-top"

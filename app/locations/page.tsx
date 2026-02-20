@@ -35,7 +35,7 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: 'en_CA',
       images: [
         {
-          url: `${SITE_URL}/images/Logos/purrify-logo.png`,
+          url: `${SITE_URL}/optimized/logos/purrify-logo.png`,
           width: 1200,
           height: 630,
           alt: seoTitle,
@@ -87,8 +87,8 @@ const localBusinessSchema = {
   name: 'Purrify Canada',
   description: 'Canadian manufacturer of activated carbon cat litter deodorizer with shipping across all provinces',
   url: 'https://www.purrify.ca/locations/',
-  logo: 'https://www.purrify.ca/images/icon-512.png',
-  image: 'https://www.purrify.ca/images/products/purrify-standard-bag.png',
+  logo: 'https://www.purrify.ca/optimized/icons/icon-512.png',
+  image: 'https://www.purrify.ca/optimized/products/purrify-standard-bag.png',
   address: {
     '@type': 'PostalAddress',
     addressCountry: 'CA',

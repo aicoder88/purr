@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/images/Logos/purrify-logo.png',
+        url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
         width: 1200,
         height: 800,
         alt: `${SITE_NAME} Referral Dashboard`,
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     creator: '@purrifyhq',
     title: `Your Referral Dashboard - ${SITE_NAME}`,
     description: 'Track your referral performance, manage your rewards, and share Purrify with friends.',
-    images: ['https://www.purrify.ca/images/Logos/purrify-logo.png'],
+    images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'],
   },
   robots: {
     index: false,
