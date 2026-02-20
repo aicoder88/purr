@@ -26,7 +26,7 @@ export function StockAlertBanner() {
         <p className="mt-2 text-sm md:text-base">
           <Link
             href={`${localePrefix}/#newsletter`}
-            className="font-semibold underline underline-offset-2 hover:text-yellow-100 transition-colors"
+            className="font-semibold underline underline-offset-2 hover:text-yellow-100 dark:hover:text-yellow-100 transition-colors"
           >
             Click here to get on the waitlist
           </Link>{' '}
