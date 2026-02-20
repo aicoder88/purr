@@ -149,8 +149,8 @@ export const fr = {
       line2: 'sur toutes les commandes avec abonnement',
     },
     madeInCanada: {
-      line1: 'Fabriqué au Canada',
-      line2: 'à partir d\'ingrédients locaux et mondiaux',
+      line1: 'Fabriqué au Canada 🇨🇦',
+      line2: 'Avec des noix de coco 100 % durables, vapeur et pression',
     },
     naturalCarbon: {
       line1: 'Ingrédients non toxiques',

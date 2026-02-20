@@ -151,7 +151,7 @@ export const en = {
     },
     madeInCanada: {
       line1: 'Made in Canada 🇨🇦',
-      line2: 'With Real Ingredients You Can Pronounce',
+      line2: 'With 100% Sustainable Coconuts, steam, and pressure',
     },
     naturalCarbon: {
       line1: 'Water-Filter Grade Carbon',

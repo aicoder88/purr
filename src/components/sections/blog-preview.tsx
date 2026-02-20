@@ -17,6 +17,44 @@ interface BlogPost {
   link: string;
 }
 
+const FALLBACK_BLOG_IMAGE = '/optimized/purrify-logo.avif';
+
+function normalizeBlogPosts(data: unknown): BlogPost[] {
+  if (!Array.isArray(data)) {
+    return [];
+  }
+
+  return data
+    .map((item): BlogPost | null => {
+      if (!item || typeof item !== 'object') {
+        return null;
+      }
+
+      const candidate = item as Partial<BlogPost> & Record<string, unknown>;
+      const title = typeof candidate.title === 'string' && candidate.title.trim().length > 0
+        ? candidate.title
+        : 'Purrify Blog';
+      const excerpt = typeof candidate.excerpt === 'string'
+        ? candidate.excerpt
+        : '';
+      const author = typeof candidate.author === 'string' && candidate.author.trim().length > 0
+        ? candidate.author
+        : 'Purrify Team';
+      const date = typeof candidate.date === 'string' && candidate.date.trim().length > 0
+        ? candidate.date
+        : '';
+      const image = typeof candidate.image === 'string' && candidate.image.trim().length > 0
+        ? candidate.image
+        : FALLBACK_BLOG_IMAGE;
+      const link = typeof candidate.link === 'string' && candidate.link.trim().length > 0
+        ? candidate.link
+        : '/blog';
+
+      return { title, excerpt, author, date, image, link };
+    })
+    .filter((post): post is BlogPost => post !== null);
+}
+
 export function BlogPreview() {
   const { t } = useTranslation();
   // Initialize with static data immediately to prevent blinking
@@ -31,9 +69,10 @@ export function BlogPreview() {
           throw new Error(`Failed to fetch blog posts (status ${response.status})`);
         }
         const data = await response.json();
+        const normalizedPosts = normalizeBlogPosts(data);
         // Only update if we got different data to avoid unnecessary re-renders
-        if (isMounted && data.length > 0) {
-          setBlogPosts(data);
+        if (isMounted && normalizedPosts.length > 0) {
+          setBlogPosts(normalizedPosts);
         }
       } catch (_err) {
         // Already initialized with static data, no need to update on error
@@ -65,10 +104,15 @@ export function BlogPreview() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
+          {blogPosts.map((post, index) => {
+            const slug = post.link.split('/').filter(Boolean).pop();
+            const href = slug ? `/blog/${slug}` : '/blog';
+            const imageSrc = post.image && post.image.trim().length > 0 ? post.image : FALLBACK_BLOG_IMAGE;
+
+            return (
             <Link
-              key={post.link || `blog-post-${index}`}
-              href={`/blog/${post.link.split('/').pop()}`}
+              key={`${post.link || post.title || 'blog-post'}-${index}`}
+              href={href}
               className="block bg-white dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-[#E0EFC7] dark:border-gray-700 transition-all duration-500 hover:shadow-[#E0EFC7]/50 dark:hover:shadow-[#5B2EFF]/30 hover:-translate-y-2 group cursor-pointer"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
@@ -76,11 +120,11 @@ export function BlogPreview() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#03E46A]/20 to-[#5B2EFF]/20 dark:from-[#5B2EFF]/30 dark:to-[#03E46A]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="relative w-full h-[200px] sm:h-[250px]">
                   <Image
-                    src={post.image}
+                    src={imageSrc}
                     alt={`Featured image for blog post: ${post.title} - Purrify cat litter knowledge`}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className={`w-full h-full ${post.image.includes('carbon_magnified') ? 'object-contain' : 'object-cover'} transition-transform duration-700 group-hover:scale-110`}
+                    className={`w-full h-full ${imageSrc.includes('carbon_magnified') ? 'object-contain' : 'object-cover'} transition-transform duration-700 group-hover:scale-110`}
                     priority={index === 0}
                     quality={75}
                   />
@@ -122,7 +166,8 @@ export function BlogPreview() {
                 </div>
               </div>
             </Link>
-          ))}
+            );
+          })}
         </div>
 
         <div className="mt-16 text-center">

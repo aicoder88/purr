@@ -9,6 +9,7 @@ import { HomepageTestimonials } from '@/components/sections/homepage-testimonial
 import { BlogPreview } from '@/components/sections/blog-preview';
 import { ScrollingAnnouncementBar } from '@/components/sections/scrolling-announcement-bar';
 import { Stores } from '@/components/sections/stores';
+import { Newsletter } from '@/components/sections/newsletter';
 import { ErrorBoundary } from '@/components/ui/error-boundary';
 import { TrustBadges } from '@/components/social-proof/TrustBadges';
 import { ClientLocationsMap } from '@/components/maps/ClientLocationsMap';
@@ -168,6 +169,12 @@ export default async function LocalizedHomePage({ params }: LocalizedHomepagePro
                 <div className="cv-auto cis-720">
                     <ErrorBoundary>
                         <Stores />
+                    </ErrorBoundary>
+                </div>
+
+                <div className="cv-auto cis-720">
+                    <ErrorBoundary>
+                        <Newsletter />
                     </ErrorBoundary>
                 </div>
 

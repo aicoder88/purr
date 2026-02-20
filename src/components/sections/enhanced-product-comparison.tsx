@@ -37,6 +37,22 @@ export function EnhancedProductComparison() {
   const locale = useLocale();
   const { currency } = useCurrency();
 
+  const readMessage = (key: string): string | null => {
+    try {
+      return t(key as never);
+    } catch {
+      return null;
+    }
+  };
+
+  const readRawMessage = (key: string): unknown => {
+    try {
+      return t.raw(key as never);
+    } catch {
+      return null;
+    }
+  };
+
   const trialPrice = formatProductPrice('trial', currency, locale);
   const trialLink = getPaymentLink('trialSingle');
 
@@ -93,25 +109,36 @@ export function EnhancedProductComparison() {
   // Helper function to get translated features array with fallback
   const getTranslatedFeatures = (index: number): string[] => {
     const prefix = `productComparison.product${index + 1}.features`;
-    const translated = t(prefix);
-    // If translation exists and is an array, use it; otherwise use default
+
+    // Prefer raw so array translations don't throw in i18n formatters.
+    const raw = readRawMessage(prefix);
+    if (Array.isArray(raw)) {
+      return raw.filter((item): item is string => typeof item === 'string' && item.trim().length > 0);
+    }
+
+    const translated = readMessage(prefix);
     if (translated && translated !== prefix) {
       try {
-        // Try to parse as JSON array if it's stored as a string
-        const parsed = JSON.parse(translated as string);
-        if (Array.isArray(parsed)) return parsed;
+        const parsed = JSON.parse(translated);
+        if (Array.isArray(parsed)) {
+          return parsed.filter((item): item is string => typeof item === 'string' && item.trim().length > 0);
+        }
       } catch {
-        // If not JSON, return as single item array or check individual keys
+        // Intentionally ignore parse errors and use fallback values below.
       }
     }
+
     return defaultProducts[index]?.features || [];
   };
 
   // Helper function to get translated bestFor string with fallback
   const getTranslatedBestFor = (index: number): string => {
     const key = `productComparison.product${index + 1}.bestFor`;
-    const translated = t(key);
-    return translated !== key ? translated : defaultProducts[index]?.bestFor || '';
+    const translated = readMessage(key);
+    if (translated && translated !== key) {
+      return translated;
+    }
+    return defaultProducts[index]?.bestFor || '';
   };
 
   const products: ProductCard[] = [
@@ -204,29 +231,6 @@ export function EnhancedProductComparison() {
                     : "border-brand-light dark:border-gray-700"
                 )}
               >
-                {/* Popular Badge */}
-                {product.badge?.type === 'popular' && (
-                  <div className="absolute top-4 right-4 bg-green-500 dark:bg-green-500 text-white dark:text-white px-3 py-1 rounded-full text-sm font-bold flex items-center shadow-md z-10">
-                    <IconCustomerLove className="w-4 h-4 mr-1" />
-                    {product.badge.label}
-                  </div>
-                )}
-
-                {/* Recommended Badge */}
-                {product.badge?.type === 'recommended' && (
-                  <div className="absolute top-4 right-4 bg-brand-red text-white dark:text-gray-100 px-3 py-1 rounded-full text-sm font-bold flex items-center shadow-md z-10">
-                    <IconMoneyBack className="w-4 h-4 mr-1" />
-                    {product.badge.label}
-                  </div>
-                )}
-
-                {/* Trial Badge */}
-                {product.badge?.type === 'trial' && (
-                  <div className="absolute top-4 right-4 bg-brand-light dark:bg-emerald-900/40 text-brand-dark dark:text-emerald-400 px-3 py-1 rounded-full text-sm font-bold flex items-center shadow-md z-10">
-                    <IconLongLasting className="w-4 h-4 mr-1" />
-                    {product.badge.label}
-                  </div>
-                )}
 
                 {/* Header with Image */}
                 <div className={cn("bg-gradient-to-r p-6 text-white dark:text-gray-100 min-h-[160px]", product.color)}>
@@ -253,6 +257,21 @@ export function EnhancedProductComparison() {
                     </div>
                   </div>
                 </div>
+
+                {/* Badge strip — sits cleanly between header and card body */}
+                {product.badge && (
+                  <div className={cn(
+                    "flex items-center justify-center gap-1.5 px-4 py-2 text-sm font-bold tracking-wide",
+                    product.badge.type === 'popular' && "bg-green-500 text-white",
+                    product.badge.type === 'recommended' && "bg-brand-red text-white",
+                    product.badge.type === 'trial' && "bg-brand-light dark:bg-emerald-900/60 text-brand-dark dark:text-emerald-300"
+                  )}>
+                    {product.badge.type === 'popular' && <IconCustomerLove className="w-4 h-4" />}
+                    {product.badge.type === 'recommended' && <IconMoneyBack className="w-4 h-4" />}
+                    {product.badge.type === 'trial' && <IconLongLasting className="w-4 h-4" />}
+                    <span>{product.badge.label}</span>
+                  </div>
+                )}
 
                 {/* Content */}
                 <div className="p-6 flex-1 flex flex-col">

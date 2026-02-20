@@ -10,51 +10,157 @@ import Link from "next/link";
 export function WhyPurrify() {
   const t = useTranslations();
   const locale = useLocale();
-  const heroCopy = {
-    badge: t('whyPurrify.badge') || (locale === 'fr' ? 'Pourquoi les parents de chats reviennent' : 'Why Cat Parents Keep Coming Back'),
-    title: t('whyPurrify.title') || (locale === 'fr' ? '(Indice : ça fonctionne vraiment)' : '(Hint: It actually works)'),
-    subtitle: t('whyPurrify.subtitle') || (locale === 'fr' ? 'Sans parfum. Sans camouflage. Juste une solution qui fonctionne vraiment.' : 'No perfumes. No cover-ups. Just the good stuff that actually works.'),
+
+  const hasTranslation = (key: string): boolean => {
+    try {
+      return typeof t.has === 'function' ? t.has(key as never) : false;
+    } catch {
+      return false;
+    }
   };
+
+  const tSafe = (keys: string[], fallback: string) => {
+    const matchedKey = keys.find((key) => hasTranslation(key));
+
+    if (!matchedKey) {
+      return fallback;
+    }
+
+    try {
+      const value = t(matchedKey as never);
+      return typeof value === 'string' && value.trim().length > 0 ? value : fallback;
+    } catch {
+      return fallback;
+    }
+  };
+
+  const sanitizeDescription = (title: string, description: string) => {
+    const normalizedTitle = title.trim().toLowerCase();
+    const safeDescription = typeof description === 'string' ? description : '';
+
+    const lines = safeDescription
+      .split('\n')
+      .map((line) => line.trim())
+      .filter(Boolean);
+
+    if (lines[0]?.toLowerCase() === normalizedTitle) {
+      return lines.slice(1).join('\n');
+    }
+
+    return safeDescription;
+  };
+
+  const heroCopy = {
+    badge: tSafe(
+      ['whyPurrify.badge'],
+      locale === 'fr' ? 'Pourquoi les parents de chats reviennent' : 'Why Cat Parents Keep Coming Back'
+    ),
+    title: tSafe(
+      ['whyPurrify.title'],
+      locale === 'fr' ? '(Indice : ça fonctionne vraiment)' : '(Hint: It actually works)'
+    ),
+    subtitle: tSafe(
+      ['whyPurrify.subtitle'],
+      locale === 'fr'
+        ? 'Sans parfum. Sans camouflage. Juste une solution qui fonctionne vraiment.'
+        : 'No perfumes. No cover-ups. Just the good stuff that actually works.'
+    ),
+  };
+
+  const odorTitle = tSafe(['features.odorElimination.title'], "Traps It. Doesn't Fake It.");
+  const odorDescription = sanitizeDescription(
+    odorTitle,
+    tSafe(
+      ['features.odorElimination.description'],
+      "Air fresheners spray perfume on top of ammonia. Congratulations - now it smells like 'lavender and cat.' Purrify's activated carbon captures ammonia molecules and locks them inside microscopic pores. The smell doesn't hide. It's gone."
+    )
+  );
+  const carbonTitle = tSafe(['features.catFriendly.title'], 'Water-Filter Grade Carbon');
+  const carbonDescription = sanitizeDescription(
+    carbonTitle,
+    tSafe(
+      ['features.catFriendly.description'],
+      'Made from coconut shells. Processed the same way water treatment plants purify your tap. Zero chemicals, zero fragrances. The ingredient list reads like it came from nature - because it did.'
+    )
+  );
+  const longLastingTitle = tSafe(
+    ['features.longLasting.title', 'features.longLastingFreshness.title'],
+    'One Sprinkle Lasts The Whole Week'
+  );
+  const longLastingDescription = sanitizeDescription(
+    longLastingTitle,
+    tSafe(
+      ['features.longLasting.description', 'features.longLastingFreshness.description'],
+      'Most fresheners fade quickly. Purrify keeps working through the full litter cycle with one sprinkle per change.'
+    )
+  );
+  const anyLitterTitle = tSafe(
+    ['features.anyLitter.title', 'features.worksWithAnyLitter.title'],
+    'Works With Whatever Your Cat Already Uses'
+  );
+  const anyLitterDescription = sanitizeDescription(
+    anyLitterTitle,
+    tSafe(
+      ['features.anyLitter.description', 'features.worksWithAnyLitter.description'],
+      "Clay, crystal, clumping, natural - whatever your cat already uses. No need to switch brands. Just add Purrify on top."
+    )
+  );
+  const costEffectiveTitle = tSafe(['features.costEffective.title'], 'Your Litter Actually Lasts Longer');
+  const costEffectiveDescription = sanitizeDescription(
+    costEffectiveTitle,
+    tSafe(
+      ['features.costEffective.description'],
+      "When the odour's under control, you stop panic-dumping the whole box early. Change on schedule - not out of desperation."
+    )
+  );
+  const beforeAfterTitle = tSafe(['features.beforeAfter.title'], 'The Walk-In Test');
+  const beforeAfterDescription = sanitizeDescription(
+    beforeAfterTitle,
+    tSafe(
+      ['features.beforeAfter.description'],
+      "Come home after a few hours away. Notice what you don't smell. That's Purrify working."
+    )
+  );
 
   const reasons = [
     {
       icon: IconOdor,
-      title: t('features.odorElimination.title').toUpperCase(),
-      description: t('features.odorElimination.description'),
+      title: odorTitle.toUpperCase(),
+      description: odorDescription,
       image: "/optimized/catcoco.webp"
     },
     {
       icon: IconCatFriendly,
-      title: t('features.catFriendly.title').toUpperCase(),
-      description: t('features.catFriendly.description'),
+      title: carbonTitle.toUpperCase(),
+      description: carbonDescription,
       image: "/optimized/cats-and-filters.webp",
       color: "bg-[#E8F5E9]",
       textColor: "text-[#2E7D32]",
     },
     {
       icon: IconLongLasting,
-      title: t('features.longLasting.title').toUpperCase(),
-      description: t('features.longLasting.description'),
+      title: longLastingTitle.toUpperCase(),
+      description: longLastingDescription,
       image: "/optimized/catonbed.avif"
     },
     {
       icon: IconAnyLitter,
-      title: t('features.anyLitter.title').toUpperCase(),
-      description: t('features.anyLitter.description'),
+      title: anyLitterTitle.toUpperCase(),
+      description: anyLitterDescription,
       image: "/optimized/cat-favorite-litter.webp"
     },
     {
       icon: IconCostEffective,
-      title: t('features.costEffective.title').toUpperCase(),
-      description: t('features.costEffective.description'),
+      title: costEffectiveTitle.toUpperCase(),
+      description: costEffectiveDescription,
       image: "/optimized/cost-effective.webp",
       color: "bg-[#FFF3E0]",
       textColor: "text-[#E65100]",
     },
     {
       icon: IconBeforeAfter,
-      title: t('features.beforeAfter.title').toUpperCase(),
-      description: t('features.beforeAfter.description'),
+      title: beforeAfterTitle.toUpperCase(),
+      description: beforeAfterDescription,
       image: "/optimized/before-after.webp",
       color: "bg-[#F3E5F5]",
       textColor: "text-[#7B1FA2]",
@@ -142,17 +248,17 @@ export function WhyPurrify() {
         </div>
 
         {/* Transition teaser - Greased Slide Design */}
-        {t('sectionTeasers.whyPurrify') && (
+        {hasTranslation('sectionTeasers.whyPurrify') && (
           <div className="mt-16 sm:mt-20 w-full flex justify-center relative z-20">
             {/* Horizontal divider line that the pill sits on */}
             <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-200 dark:via-purple-800 to-transparent transform -translate-y-1/2"></div>
 
             <Link
               href="#science"
-              className="relative bg-white dark:bg-gray-900 border border-purple-100 dark:border-purple-800 rounded-full px-10 py-5 shadow-2xl hover:shadow-[0_20px_50px_rgba(168,85,247,0.2)] hover:border-purple-300 dark:hover:border-purple-600 transition-all duration-500 hover:-translate-y-1 group flex items-center gap-4"
-            >
+                className="relative bg-white dark:bg-gray-900 border border-purple-100 dark:border-purple-800 rounded-full px-10 py-5 shadow-2xl hover:shadow-[0_20px_50px_rgba(168,85,247,0.2)] hover:border-purple-300 dark:hover:border-purple-600 transition-all duration-500 hover:-translate-y-1 group flex items-center gap-4"
+              >
               <span className="text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 group-hover:from-purple-600 group-hover:to-pink-600 transition-all duration-500">
-                {t('sectionTeasers.whyPurrify')}
+                {tSafe(['sectionTeasers.whyPurrify'], '')}
               </span>
               <div className="w-10 h-10 rounded-full bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition-all duration-500">
                 <ArrowDown className="w-5 h-5 group-hover:animate-bounce" />
