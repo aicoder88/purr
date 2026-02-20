@@ -94,8 +94,8 @@ export const seoMetaEn: SEOMetaContent = {
 
   products: {
     trial: {
-      title: 'Free Cat Litter Deodorizer Trial | Science-Backed | Purrify',
-      description: 'Test the power of activated carbon for yourself. See how it neutralizes ammonia on contact. Just $4.76 shipping. Risk-free trial. Claim yours now!',
+      title: 'Free Cat Litter Odor Trial | 87% of Owners Upgrade',
+      description: "Your litter box shouldn't smell. Ever. Water-filter grade carbon eliminates ammonia in 60 seconds. FREE trial - $4.76 shipping. See why 87% upgrade.",
       targetKeyword: 'cat litter deodorizer',
       schema: {
         '@context': 'https://schema.org',
@@ -685,8 +685,8 @@ export const seoMetaFr: SEOMetaContent = {
 
   products: {
     trial: {
-      title: 'Essai Désodorisant Litière | GRATUIT 12g - Purrify',
-      description: 'Essai GRATUIT du désodorisant litière Purrify. Charbon actif élimine 99% odeurs d\'ammoniaque. Format découverte 12g. Juste 4,76$ livraison! Achetez!',
+      title: 'Essai Gratuit Litière Chat | 87% des Propriétaires Rachètent',
+      description: "Votre litière ne devrait jamais sentir. Charbon actif élimine l'ammoniaque en 60 secondes. Essai GRATUIT - 4,76$ livraison. 87% rachètent.",
       targetKeyword: 'essai désodorisant litière',
       schema: {
         '@context': 'https://schema.org',

@@ -29,10 +29,18 @@ function normalizeGtmId(rawId?: string): string | undefined {
   return /^GTM-[A-Z0-9]+$/.test(sanitizedId) ? sanitizedId : undefined;
 }
 
+function normalizeMetaValue(rawValue?: string): string | undefined {
+  if (!rawValue) return undefined;
+
+  const sanitizedValue = rawValue.trim().replace(/^["']|["']$/g, '');
+  return sanitizedValue.length > 0 ? sanitizedValue : undefined;
+}
+
 const normalizedGtmId = normalizeGtmId(process.env.NEXT_PUBLIC_GTM_ID);
 const gtmId = process.env.NODE_ENV === 'test'
   ? normalizedGtmId
   : (normalizedGtmId ?? DEFAULT_GTM_ID);
+const ahrefsSiteVerification = normalizeMetaValue(process.env.NEXT_PUBLIC_AHREFS_SITE_VERIFICATION);
 
 /**
  * Generate metadata for the app based on locale
@@ -135,6 +143,9 @@ export async function generateMetadata(): Promise<Metadata> {
       'apple-mobile-web-app-title': SITE_NAME,
       'format-detection': 'telephone=no',
       'p:domain_verify': 'd4a9556d272da1c274d3ee54b09e9f71',
+      ...(ahrefsSiteVerification
+        ? { 'ahrefs-site-verification': ahrefsSiteVerification }
+        : {}),
     },
   };
 }
@@ -170,7 +181,7 @@ export default async function RootLayout({
       <body className="font-sans">
         {gtmId ? (
           <>
-            <Script id="gtm-bootstrap" strategy="beforeInteractive">
+            <Script id="gtm-bootstrap" strategy="beforeInteractive" data-cfasync="false">
               {`
                 window.dataLayer = window.dataLayer || [];
                 window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};
