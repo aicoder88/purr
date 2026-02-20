@@ -245,12 +245,6 @@ module.exports = {
       priority: 0.9,
       lastmod: new Date().toISOString(),
     },
-    {
-      loc: '/us/',
-      changefreq: 'weekly',
-      priority: 0.85,
-      lastmod: new Date().toISOString(),
-    },
     // Main blog index
     {
       loc: '/blog/',
@@ -496,37 +490,6 @@ module.exports = {
       priority: 0.6,
       lastmod: new Date().toISOString(),
     },
-    // Veterinarians, Shelters, etc
-    {
-      loc: '/veterinarians/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/shelters/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/groomers/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/cat-cafes/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/hospitality/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
     // Science
     {
       loc: '/science/',
@@ -664,6 +627,11 @@ module.exports = {
       if (normalizedPath === pattern || normalizedPath === `${pattern}/`) {
         return null; // Exclude from sitemap
       }
+    }
+
+    // Skip default locale prefix (causes 308 redirects)
+    if (normalizedPath.startsWith('/en/') || normalizedPath === '/en/') {
+      return null;
     }
 
     // Skip noindex pages (protected portals)

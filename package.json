@@ -76,6 +76,7 @@
     "validate-i18n:hardcoded:update": "node --import tsx scripts/validation/validate-hardcoded-ui-i18n.ts --update-baseline",
     "validate-blog-images": "node scripts/validate-blog-images.js",
     "validate-images": "tsx scripts/images/validate-image-sizes.ts",
+    "fix-image-sizes": "tsx scripts/images/validate-image-sizes.ts --fix",
     "validate-image-refs": "node scripts/find-fix-broken-images.js",
     "fix-image-refs": "node scripts/find-fix-broken-images.js --fix",
     "validate-hydration": "node scripts/validate-hydration.js",

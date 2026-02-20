@@ -16,6 +16,7 @@ const PUBLIC_DIR = path.join(__dirname, '../../public');
 const OPTIMIZED_DIR = path.join(PUBLIC_DIR, 'optimized');
 const ORIGINAL_IMAGES_DIR = path.join(PUBLIC_DIR, 'original-images');
 const IMAGE_SOURCE_DIR = ORIGINAL_IMAGES_DIR;
+// Categories for image organization - images are stored in original-images/<category>/ subdirectories
 const SOURCE_CATEGORIES = ['logos', 'products', 'stores', 'team', 'icons', 'locations', 'blog', 'marketing'];
 
 // Reduce memory footprint
@@ -100,6 +101,7 @@ async function optimizeImage(filePath) {
 
     // Handle spaces in filenames by creating sanitized versions
     const sanitizedBaseName = baseName.replaceAll(/\s+/g, '-');
+    // Output to categorized directory structure: optimized/<category>/<filename>
     const outputDir = path.join(OPTIMIZED_DIR, relativeDir);
     ensureDirectoryExists(outputDir);
 
@@ -223,19 +225,21 @@ async function processIcons() {
 // Main function to optimize all images
 async function optimizeAllImages() {
   try {
-    // Ensure directories exist
+    // Ensure base directories exist
     ensureDirectoryExists(OPTIMIZED_DIR);
     ensureDirectoryExists(ORIGINAL_IMAGES_DIR);
 
     // Process icons first
     await processIcons();
 
+    // Ensure category subdirectories exist in both source and optimized directories
     for (const category of SOURCE_CATEGORIES) {
       ensureDirectoryExists(path.join(IMAGE_SOURCE_DIR, category));
       ensureDirectoryExists(path.join(OPTIMIZED_DIR, category));
     }
 
-    // Find all images in the canonical originals directory
+    // Find all images in categorized subdirectories of original-images
+    // Pattern: original-images/<category>/*.{ext}
     const imageFiles = glob.sync(`${IMAGE_SOURCE_DIR}/**/*.{png,jpg,jpeg,gif,webp,avif}`, {
       ignore: [
         `${OPTIMIZED_DIR}/**`,
@@ -256,6 +260,8 @@ async function optimizeAllImages() {
 
       const result = await optimizeImage(filePath);
       if (result) {
+        // Use full relative path from PUBLIC_DIR as the key
+        // e.g., "original-images/marketing/senior-cat-mobility.png"
         const relativePath = path.relative(PUBLIC_DIR, filePath);
         // Handle spaces in filenames for image dimensions
         const sanitizedWebp = result.webp.replaceAll(/\s+/g, '-');
@@ -274,6 +280,7 @@ async function optimizeAllImages() {
     }
 
     // Write image dimensions to a JSON file for reference
+    // Keys are full paths like "original-images/<category>/<filename>"
     fs.writeFileSync(
       path.join(PUBLIC_DIR, 'image-dimensions.json'),
       JSON.stringify(imageDimensions, null, 2)

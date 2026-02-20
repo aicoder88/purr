@@ -134,16 +134,20 @@ export const useVideoPlayer = (dependencies: any[] = []) => {
     const video = videoRef.current;
     if (!video || !state.shouldLoadVideo) return;
 
-    const handleCanPlay = () => {
+    const attemptPlay = () => {
       // Auto-play muted
       video.muted = true;
       play();
     };
 
-    video.addEventListener('canplay', handleCanPlay, { once: true });
+    if (video.readyState >= 3) {
+      attemptPlay();
+    } else {
+      video.addEventListener('canplay', attemptPlay, { once: true });
+    }
 
     return () => {
-      video.removeEventListener('canplay', handleCanPlay);
+      video.removeEventListener('canplay', attemptPlay);
     };
   }, [state.shouldLoadVideo, play]);
 
