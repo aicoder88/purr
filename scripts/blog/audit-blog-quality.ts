@@ -63,16 +63,16 @@ const DEFAULT_CATEGORIES: Record<Locale, string[]> = {
 };
 
 const IMAGE_LIBRARY = {
-  apartment: '/optimized/apartment-cat-lifestyle-ghibli.png',
-  carbon: '/optimized/activated-carbon-macro-obsidian.webp',
-  diagram: '/optimized/carbon-trapping-diagram-ghibli.webp',
-  freshHome: '/optimized/fresh-home-hero-ghibli.webp',
-  multiCat: '/optimized/multi-cat-happy-home-ghibli.webp',
-  kittens: '/optimized/deodorizers-with-kittens.webp',
-  myths: '/optimized/masking-products-ghibli.webp',
-  routine: '/optimized/scooping-routine-ghibli.webp',
-  results: '/optimized/before-after.webp',
-  science: '/optimized/science-diagram.webp',
+  apartment: '/optimized/blog/apartment-cat-lifestyle-ghibli.png',
+  carbon: '/optimized/blog/activated-carbon-macro-obsidian.webp',
+  diagram: '/optimized/blog/carbon-trapping-diagram-ghibli.webp',
+  freshHome: '/optimized/blog/fresh-home-hero-ghibli.webp',
+  multiCat: '/optimized/blog/multi-cat-happy-home-ghibli.webp',
+  kittens: '/optimized/blog/deodorizers-with-kittens.webp',
+  myths: '/optimized/products/masking-products-ghibli.webp',
+  routine: '/optimized/blog/scooping-routine-ghibli.webp',
+  results: '/optimized/marketing/before-after.webp',
+  science: '/optimized/blog/science-diagram.webp',
 } as const;
 
 const ALT_AND_CAPTION: Record<Locale, Array<{ alt: string; caption: string }>> = {

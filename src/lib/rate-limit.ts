@@ -57,6 +57,7 @@ if (typeof setInterval !== 'undefined') {
 
 // Track Redis availability for fail-closed logic
 let redisAvailable = true;
+let redisFallbackWarningLogged = false;
 
 // Check if Upstash Redis is configured
 function isRedisConfigured(): boolean {
@@ -108,6 +109,7 @@ export async function checkRateLimit(
 ): Promise<RateLimitResult> {
   const config = RATE_LIMIT_CONFIG[type];
   const key = `${type}:${identifier}`;
+  const redisConfigured = isRedisConfigured();
 
   // Try Redis first if configured
   const ratelimit = getRatelimitInstance(type);
@@ -125,14 +127,19 @@ export async function checkRateLimit(
     } catch (error) {
       console.error('Redis rate limit error:', error);
       redisAvailable = false;
-      // Fall through to fail-closed or in-memory fallback
+      // Fall through to in-memory fallback
     }
   } else {
     redisAvailable = false;
   }
 
-  // Fail-closed in production if Redis is unavailable
-  if (process.env.NODE_ENV === 'production' && !redisAvailable) {
+  // Optional fail-closed mode for production if explicitly enabled
+  if (
+    process.env.NODE_ENV === 'production' &&
+    redisConfigured &&
+    !redisAvailable &&
+    process.env.RATE_LIMIT_FAIL_CLOSED === 'true'
+  ) {
     return {
       success: false,
       limit: 0,
@@ -142,7 +149,13 @@ export async function checkRateLimit(
     };
   }
 
-  // In-memory fallback (only for non-production or if Redis was never configured)
+  // In-memory fallback keeps forms working when Redis is not configured/available.
+  if (process.env.NODE_ENV === 'production' && !redisAvailable && !redisFallbackWarningLogged) {
+    console.warn('Redis rate limiter unavailable; using in-memory fallback.');
+    redisFallbackWarningLogged = true;
+  }
+
+  // In-memory fallback
   return checkInMemoryRateLimit(key, config);
 }
 

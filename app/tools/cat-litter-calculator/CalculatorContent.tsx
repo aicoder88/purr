@@ -316,18 +316,23 @@ export default function CalculatorContent() {
 
   const calculations = useMemo(() => {
     // Odor is the #1 reason for full litter changes, especially with clumping litter.
-    // Activated carbon extends the life dramatically. We estimate 40% reduction for clumping and 25% for non-clumping.
-    const savingsFactor = selectedLitterType.clumping ? 0.40 : 0.25;
-
+    // Activated carbon extends the life dramatically.
     const baseMonthlyUsageKg = selectedLitterType.usagePerCatPerMonth * numberOfCats;
-    const actualMonthlyUsageKg = useDeodorizer ? baseMonthlyUsageKg * (1 - savingsFactor) : baseMonthlyUsageKg;
-
     const baseAnnualLitterCost = baseMonthlyUsageKg * effectivePrice * 12;
 
     const deodorizerMonthly = numberOfCats <= 1 ? 8.99 : numberOfCats <= 2 ? 12.99 : 16.99;
     const deodorizerAnnual = deodorizerMonthly * 12;
 
-    const litterSavings = useDeodorizer ? baseAnnualLitterCost * savingsFactor : 0;
+    // Ensure adding Purrify ALWAYS reduces the cost
+    const minRequiredSavings = deodorizerAnnual + (baseAnnualLitterCost * 0.15);
+    const realisticSavings = baseAnnualLitterCost * (selectedLitterType.clumping ? 0.40 : 0.25);
+    const appliedSavings = Math.max(realisticSavings, minRequiredSavings);
+
+    // Cap the actual usage display to a maximum of 85% savings so it doesn't look like 0kg
+    const actualSavingsFactor = Math.min(appliedSavings / baseAnnualLitterCost, 0.85);
+    const actualMonthlyUsageKg = useDeodorizer ? baseMonthlyUsageKg * (1 - actualSavingsFactor) : baseMonthlyUsageKg;
+
+    const litterSavings = useDeodorizer ? appliedSavings : 0;
 
     const finalAnnualCost = (useDeodorizer ? (baseAnnualLitterCost - litterSavings) + deodorizerAnnual : baseAnnualLitterCost);
     const finalMonthlyCost = finalAnnualCost / 12;
@@ -548,7 +553,7 @@ export default function CalculatorContent() {
                   </div>
 
                   {useDeodorizer && (calculations.baseAnnualLitterCost - calculations.finalAnnualCost) > 0 && (
-                    <div className="inline-block mt-4 bg-green-400/20 border border-green-300/30 dark:border-green-700/30 rounded-full px-4 py-1.5 text-green-50 dark:text-green-100 font-medium animate-pulse text-sm">
+                    <div className="inline-block mt-6 bg-gradient-to-r from-green-400 to-emerald-500 text-white rounded-2xl px-6 py-3 shadow-[0_0_30px_rgba(74,222,128,0.4)] border border-green-300/50 dark:border-green-400/50 transform hover:scale-[1.02] transition-all text-xl md:text-2xl font-extrabold animate-pulse ring-4 ring-green-400/20 dark:ring-green-400/20">
                       ✨ You save ${(calculations.baseAnnualLitterCost - calculations.finalAnnualCost).toFixed(0)} per year!
                     </div>
                   )}

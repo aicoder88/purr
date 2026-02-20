@@ -154,9 +154,13 @@ export default function SciencePage() {
         }}
       />
 
-      <main className="py-16 bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
-        <Container>
-          <div className="max-w-5xl mx-auto">
+      <main className="relative py-16 lg:py-24 overflow-hidden bg-gradient-to-br from-[#FFFFFF] via-[#F4F7FF] to-[#FFFFFF] dark:from-gray-900 dark:via-[#1A1C29] dark:to-gray-900">
+        {/* Decorative Background Elements */}
+        <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] bg-blue-400/20 dark:bg-blue-600/20 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] bg-electric-indigo/20 dark:bg-electric-indigo/20 rounded-full blur-[120px] pointer-events-none" />
+
+        <Container className="relative z-10">
+          <div className="max-w-5xl mx-auto relative">
             {/* Breadcrumb */}
             <nav className="mb-8">
               <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
@@ -171,77 +175,79 @@ export default function SciencePage() {
             </nav>
 
             {/* Hero Section */}
-            <header className="mb-16 text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-electric-indigo/10 text-electric-indigo rounded-full text-sm font-medium mb-6">
-                <Microscope className="w-4 h-4" />
-                <span>Evidence-Based Research</span>
+            <header className="mb-20 text-center relative">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 dark:bg-gray-800/60 backdrop-blur-md border border-gray-100 dark:border-gray-700 rounded-full text-sm font-medium mb-8 shadow-sm hover:shadow-md transition-shadow">
+                <Microscope className="w-4 h-4 text-electric-indigo dark:text-blue-400" />
+                <span className="text-gray-800 dark:text-gray-200">Evidence-Based Research</span>
               </div>
 
-              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-50 mb-6 leading-tight">
-                The Science Behind <span className="text-[#FF3131] dark:text-[#FF5050]">Purrify</span>
+              <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-white dark:via-gray-100 dark:to-gray-300 mb-6 leading-tight drop-shadow-sm tracking-tight">
+                The Science Behind <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF3131] to-[#FF6B6B] dark:from-[#FF5050] dark:to-[#FF8A8A]">Purrify</span>
               </h1>
 
-              <p className="article-summary text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              <p className="article-summary text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
                 This hub links to scientific research and authoritative guidance on activated carbon adsorption and odor
                 control. Use the citations below to verify specific claims and explore the underlying science.
               </p>
             </header>
 
             {/* Key Statistics */}
-            <section className="mb-16">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 text-center">
-                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">
+            <section className="mb-20">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-md border border-white/40 dark:border-gray-700/50 shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all duration-300 rounded-2xl p-6 text-center group">
+                  <div className="text-4xl font-extrabold text-blue-600 dark:text-blue-400 mb-2 group-hover:scale-110 transition-transform">
                     {SCIENTIFIC_CITATIONS.length}
                   </div>
-                  <div className="text-sm text-blue-700 dark:text-blue-300">Citations</div>
+                  <div className="text-sm font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Citations</div>
                 </div>
-                <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-6 text-center">
-                  <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-1">
+                <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-md border border-white/40 dark:border-gray-700/50 shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all duration-300 rounded-2xl p-6 text-center group">
+                  <div className="text-4xl font-extrabold text-green-600 dark:text-green-400 mb-2 group-hover:scale-110 transition-transform">
                     {CLAIM_REVIEWS.length}
                   </div>
-                  <div className="text-sm text-green-700 dark:text-green-300">Claim Checks</div>
+                  <div className="text-sm font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Claim Checks</div>
                 </div>
-                <div className="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-6 text-center">
-                  <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-1">
+                <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-md border border-white/40 dark:border-gray-700/50 shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all duration-300 rounded-2xl p-6 text-center group">
+                  <div className="text-4xl font-extrabold text-purple-600 dark:text-purple-400 mb-2 group-hover:scale-110 transition-transform">
                     {citationTopicCount}
                   </div>
-                  <div className="text-sm text-purple-700 dark:text-purple-300">Topics Covered</div>
+                  <div className="text-sm font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Topics Covered</div>
                 </div>
-                <div className="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-6 text-center">
-                  <div className="text-3xl font-bold text-orange-600 dark:text-orange-400 mb-1">
+                <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-md border border-white/40 dark:border-gray-700/50 shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all duration-300 rounded-2xl p-6 text-center group">
+                  <div className="text-4xl font-extrabold text-orange-600 dark:text-orange-400 mb-2 group-hover:scale-110 transition-transform">
                     {citationSourceTypeCount}
                   </div>
-                  <div className="text-sm text-orange-700 dark:text-orange-300">Source Types</div>
+                  <div className="text-sm font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Source Types</div>
                 </div>
               </div>
             </section>
 
             {/* Claim Reviews Section */}
-            <section className="mb-16">
+            <section className="mb-20">
               <div className="flex items-center gap-3 mb-8">
-                <CheckCircle className="w-6 h-6 text-green-500 dark:text-green-400" />
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50">Fact-Checked Claims</h2>
+                <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
+                  <CheckCircle className="w-6 h-6 text-green-600 dark:text-green-400" />
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 tracking-tight">Fact-Checked Claims</h2>
               </div>
 
               <div className="space-y-4">
                 {CLAIM_REVIEWS.map((claim) => (
                   <div
                     key={claim.claim}
-                    className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm"
+                    className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/60 dark:border-gray-700/50 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 group"
                   >
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-5">
                       <div
-                        className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${claim.rating === 5
-                          ? 'bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300'
-                          : 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400'
+                        className={`shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg shadow-inner ${claim.rating === 5
+                          ? 'bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900/60 dark:to-green-800/40 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-800/50'
+                          : 'bg-gradient-to-br from-yellow-100 to-yellow-200 dark:from-yellow-900/60 dark:to-yellow-800/40 text-yellow-800 dark:text-yellow-400 border border-yellow-200 dark:border-yellow-800/50'
                           }`}
                       >
                         {claim.rating}/5
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-semibold text-gray-900 dark:text-gray-50 mb-1">{claim.claim}</h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">{claim.explanation}</p>
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-2 group-hover:text-electric-indigo dark:group-hover:text-blue-400 transition-colors">{claim.claim}</h3>
+                        <p className="text-base text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">{claim.explanation}</p>
                         <div className="flex flex-wrap gap-2">
                           {claim.citationIds.map((id) => {
                             const citation = SCIENTIFIC_CITATIONS.find((c) => c.id === id);
@@ -251,9 +257,9 @@ export default function SciencePage() {
                                 href={citation.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1 px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-xs font-medium hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-electric-indigo/30 dark:hover:border-blue-500/30 hover:text-electric-indigo dark:hover:text-blue-400 transition-all shadow-sm"
                               >
-                                <FileText className="w-3 h-3" />
+                                <FileText className="w-3.5 h-3.5" />
                                 {citation.journal}{citation.year ? ` (${citation.year})` : ''}
                               </a>
                             ) : null;
@@ -397,34 +403,37 @@ export default function SciencePage() {
             </section>
 
             {/* Key Takeaways */}
-            <section className="mb-16">
-              <div className="bg-gradient-to-br from-[#E0EFC7] to-[#d4e8b8] dark:from-green-900/30 dark:to-green-800/20 rounded-2xl p-8">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6">Key Takeaways</h2>
-                <div className="key-takeaway space-y-4">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 shrink-0 mt-0.5" />
-                    <p className="text-gray-700 dark:text-gray-200">
+            <section className="mb-20">
+              <div className="relative overflow-hidden bg-gradient-to-br from-[#E0EFC7] to-[#d4e8b8] dark:from-green-900/40 dark:to-green-800/30 rounded-3xl p-8 md:p-10 border border-green-200/50 dark:border-green-800/50 shadow-xl">
+                {/* Decorative blob */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-white/20 dark:bg-black/10 rounded-full blur-[60px] -mr-20 -mt-20 pointer-events-none" />
+
+                <h2 className="text-3xl font-extrabold text-gray-900 dark:text-gray-50 mb-8 relative z-10">Key Takeaways</h2>
+                <div className="key-takeaway space-y-5 relative z-10">
+                  <div className="flex items-start gap-4 p-4 bg-white/40 dark:bg-gray-900/40 rounded-2xl backdrop-blur-sm shadow-sm border border-white/30 dark:border-gray-700/30">
+                    <CheckCircle className="w-6 h-6 text-green-700 dark:text-green-400 shrink-0 mt-0.5" />
+                    <p className="text-gray-800 dark:text-gray-200 leading-relaxed text-lg">
                       <strong>Activated carbon can adsorb ammonia</strong>, the key odor compound in cat urine, and its
                       performance depends on carbon properties and environment (e.g., moisture).
                     </p>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 shrink-0 mt-0.5" />
-                    <p className="text-gray-700 dark:text-gray-200">
+                  <div className="flex items-start gap-4 p-4 bg-white/40 dark:bg-gray-900/40 rounded-2xl backdrop-blur-sm shadow-sm border border-white/30 dark:border-gray-700/30">
+                    <CheckCircle className="w-6 h-6 text-green-700 dark:text-green-400 shrink-0 mt-0.5" />
+                    <p className="text-gray-800 dark:text-gray-200 leading-relaxed text-lg">
                       <strong>Activated carbon is used for gas-phase adsorption</strong> in many contexts, including
                       sulfur-containing odor compounds like hydrogen sulfide (H2S).
                     </p>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 shrink-0 mt-0.5" />
-                    <p className="text-gray-700 dark:text-gray-200">
+                  <div className="flex items-start gap-4 p-4 bg-white/40 dark:bg-gray-900/40 rounded-2xl backdrop-blur-sm shadow-sm border border-white/30 dark:border-gray-700/30">
+                    <CheckCircle className="w-6 h-6 text-green-700 dark:text-green-400 shrink-0 mt-0.5" />
+                    <p className="text-gray-800 dark:text-gray-200 leading-relaxed text-lg">
                       <strong>For indoor odor and gas reduction</strong>, EPA guidance describes activated carbon
                       filtration as an option for certain pollutants.
                     </p>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 shrink-0 mt-0.5" />
-                    <p className="text-gray-700 dark:text-gray-200">
+                  <div className="flex items-start gap-4 p-4 bg-white/40 dark:bg-gray-900/40 rounded-2xl backdrop-blur-sm shadow-sm border border-white/30 dark:border-gray-700/30">
+                    <CheckCircle className="w-6 h-6 text-green-700 dark:text-green-400 shrink-0 mt-0.5" />
+                    <p className="text-gray-800 dark:text-gray-200 leading-relaxed text-lg">
                       <strong>Pet health concerns should be discussed with your veterinarian</strong>, especially for
                       households with sensitive cats or respiratory issues.
                     </p>
@@ -434,25 +443,28 @@ export default function SciencePage() {
             </section>
 
             {/* CTA Section */}
-            <section>
-              <div className="text-center bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-100 dark:border-gray-700">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
+            <section className="pb-10">
+              <div className="relative text-center bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl p-10 md:p-14 border border-white/50 dark:border-gray-700/50 shadow-2xl overflow-hidden">
+                <div className="absolute top-0 right-[-10%] w-[30%] h-[100%] bg-gradient-to-l from-blue-100/30 dark:from-blue-900/20 to-transparent blur-[40px] pointer-events-none" />
+                <div className="absolute bottom-[-20%] left-[-10%] w-[40%] h-[100%] bg-gradient-to-t from-purple-100/30 dark:from-purple-900/20 to-transparent blur-[40px] pointer-events-none" />
+
+                <h2 className="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 mb-6 relative z-10">
                   Experience the Science Yourself
                 </h2>
-                <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto">
+                <p className="text-lg text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed relative z-10">
                   Backed by peer-reviewed research and trusted by thousands of cat parents. Try Purrify risk-free and see
                   why activated carbon is the gold standard for odor control.
                 </p>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
                   <Link
                     href="/products/"
-                    className="px-8 py-3 bg-[#FF3131] dark:bg-[#FF5050] text-white dark:text-gray-100 rounded-full font-semibold shadow-lg hover:bg-[#FF5151] transition-colors"
+                    className="px-8 py-4 bg-gradient-to-r from-[#FF3131] to-[#FF5050] dark:from-[#FF4040] dark:to-[#FF6B6B] text-white rounded-full font-bold shadow-[0_0_20px_rgba(255,49,49,0.3)] hover:shadow-[0_0_30px_rgba(255,49,49,0.5)] hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto text-lg"
                   >
                     Shop Purrify
                   </Link>
                   <Link
                     href="/learn/science"
-                    className="px-8 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-full font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                    className="px-8 py-4 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 rounded-full font-bold hover:border-gray-300 dark:hover:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-750 shadow-sm hover:shadow-md transition-all duration-300 w-full sm:w-auto text-lg"
                   >
                     Learn More
                   </Link>
@@ -477,28 +489,30 @@ function CitationCard({
   sourceTypeLabels: Record<string, string>;
 }) {
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
-      <div className="flex items-start gap-4">
-        <div className="shrink-0 w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400">
+    <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-md rounded-2xl p-6 border border-white/40 dark:border-gray-700/50 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+      <div className="flex items-start gap-5">
+        <div className="shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 shadow-inner border border-white/50 dark:border-gray-600/30 group-hover:scale-110 transition-transform">
           {sourceTypeIcons[citation.sourceType]}
         </div>
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 mb-1">
-            <span className="px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded text-xs font-medium">
+          <div className="flex items-center gap-3 mb-2">
+            <span className="px-2.5 py-1 bg-white/80 dark:bg-gray-900/80 border border-gray-100 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-md text-xs font-semibold uppercase tracking-wider shadow-sm">
               {sourceTypeLabels[citation.sourceType]}
             </span>
             {citation.year && (
-              <span className="text-xs text-gray-500 dark:text-gray-400">{citation.year}</span>
+              <span className="text-sm font-medium text-gray-500 dark:text-gray-400 flex items-center before:content-[''] before:w-1 before:h-1 before:bg-gray-300 dark:before:bg-gray-600 before:rounded-full before:mr-2">
+                {citation.year}
+              </span>
             )}
           </div>
-          <h4 className="font-semibold text-gray-900 dark:text-gray-50 mb-1">{citation.title}</h4>
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-            {citation.authors} • {citation.journal}
+          <h4 className="text-lg font-bold text-gray-900 dark:text-gray-50 mb-1.5 leading-snug group-hover:text-electric-indigo dark:group-hover:text-blue-400 transition-colors">{citation.title}</h4>
+          <p className="text-sm font-medium text-electric-indigo/80 dark:text-blue-400/80 mb-3">
+            {citation.authors} <span className="text-gray-400 dark:text-gray-600 mx-1">•</span> {citation.journal}
           </p>
-          <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{citation.summary}</p>
-          <div className="flex flex-wrap gap-2 mb-3">
+          <p className="text-base text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">{citation.summary}</p>
+          <div className="flex flex-wrap gap-2 mb-4">
             {citation.claims.slice(0, 3).map((claim, index) => (
-              <span key={index} className="px-2 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 rounded text-xs">
+              <span key={index} className="px-2.5 py-1 bg-blue-50/80 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg text-xs font-medium border border-blue-100/50 dark:border-blue-800/30">
                 {claim}
               </span>
             ))}
@@ -507,12 +521,14 @@ function CitationCard({
             href={citation.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-sm text-electric-indigo dark:text-blue-400 hover:underline"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-electric-indigo dark:text-blue-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
           >
-            <ExternalLink className="w-3 h-3" />
-            View Source
-            {citation.doi && <span className="text-gray-500 dark:text-gray-400">• DOI: {citation.doi}</span>}
-            {citation.pmid && <span className="text-gray-500 dark:text-gray-400">• PMID: {citation.pmid}</span>}
+            <ExternalLink className="w-4 h-4" />
+            View Full Source
+            <span className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5 ml-2">
+              {citation.doi && <span className="text-xs font-normal text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded">DOI: {citation.doi}</span>}
+              {citation.pmid && <span className="text-xs font-normal text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded">PMID: {citation.pmid}</span>}
+            </span>
           </a>
         </div>
       </div>

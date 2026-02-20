@@ -13,6 +13,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { execSync } from 'child_process';
+import sharp from 'sharp';
 
 // Image size limits (in pixels)
 interface ImageLimit {
@@ -51,6 +52,14 @@ interface ImageIssue {
   maxWidth: number;
   maxHeight: number;
   category: string;
+}
+
+interface ResizeResult {
+  file: string;
+  oldWidth: number;
+  oldHeight: number;
+  newWidth: number;
+  newHeight: number;
 }
 
 function getImageDimensions(imagePath: string): { width: number; height: number } | null {
@@ -143,8 +152,94 @@ function formatFileSize(bytes: number): string {
   return (bytes / (1024 * 1024)).toFixed(1) + 'MB';
 }
 
-function main() {
+function getScaleFactor(width: number, height: number, maxWidth: number, maxHeight: number): number {
+  const widthScale = maxWidth / width;
+  const heightScale = maxHeight / height;
+  return Math.min(widthScale, heightScale, 1);
+}
+
+async function resizeImage(
+  issue: ImageIssue,
+  dryRun: boolean
+): Promise<ResizeResult | null> {
+  const scale = getScaleFactor(issue.width, issue.height, issue.maxWidth, issue.maxHeight);
+
+  if (scale >= 1) {
+    return null;
+  }
+
+  const targetWidth = Math.max(1, Math.floor(issue.width * scale));
+  const targetHeight = Math.max(1, Math.floor(issue.height * scale));
+
+  if (dryRun) {
+    return {
+      file: issue.file,
+      oldWidth: issue.width,
+      oldHeight: issue.height,
+      newWidth: targetWidth,
+      newHeight: targetHeight
+    };
+  }
+
+  const ext = path.extname(issue.file).toLowerCase();
+  const tempPath = `${issue.file}.resize-tmp`;
+  let pipeline = sharp(issue.file).resize({
+    width: targetWidth,
+    height: targetHeight,
+    fit: 'inside',
+    withoutEnlargement: true
+  });
+
+  if (ext === '.jpg' || ext === '.jpeg') {
+    pipeline = pipeline.jpeg({ quality: 85, mozjpeg: true });
+  } else if (ext === '.png') {
+    pipeline = pipeline.png({ compressionLevel: 9, adaptiveFiltering: true });
+  } else if (ext === '.webp') {
+    pipeline = pipeline.webp({ quality: 85, effort: 6 });
+  } else if (ext === '.avif') {
+    pipeline = pipeline.avif({ quality: 70, effort: 6 });
+  }
+
+  await pipeline.toFile(tempPath);
+  fs.renameSync(tempPath, issue.file);
+
+  const updated = getImageDimensions(issue.file);
+  return {
+    file: issue.file,
+    oldWidth: issue.width,
+    oldHeight: issue.height,
+    newWidth: updated?.width || targetWidth,
+    newHeight: updated?.height || targetHeight
+  };
+}
+
+async function applyFixes(issues: ImageIssue[], dryRun: boolean): Promise<ResizeResult[]> {
+  const results: ResizeResult[] = [];
+
+  for (const issue of issues) {
+    try {
+      const result = await resizeImage(issue, dryRun);
+      if (result) {
+        results.push(result);
+      }
+    } catch (error) {
+      console.log(`⚠️  Failed to resize: ${issue.file}`);
+      console.log(`   ${(error as Error).message}`);
+    }
+  }
+
+  return results;
+}
+
+async function main() {
+  const args = process.argv.slice(2);
+  const fixMode = args.includes('--fix');
+  const dryRun = args.includes('--dry-run');
+
   console.log('🔍 Validating image sizes...\n');
+  if (fixMode) {
+    console.log(`🛠️  Fix mode enabled${dryRun ? ' (dry-run)' : ''}\n`);
+  }
 
   const issues = validateImages();
 
@@ -171,7 +266,40 @@ function main() {
   console.log('💡 To resize all images automatically:');
   console.log('   npm run optimize-images:enhanced\n');
 
+  if (fixMode) {
+    console.log(`🔧 ${dryRun ? 'Would resize' : 'Resizing'} ${issues.length} image(s)...\n`);
+    const resized = await applyFixes(issues, dryRun);
+    console.log(`✅ ${dryRun ? 'Would resize' : 'Resized'} ${resized.length} image(s)\n`);
+
+    if (resized.length > 0) {
+      resized.slice(0, 20).forEach((item) => {
+        console.log(
+          `  ${item.file}: ${item.oldWidth}x${item.oldHeight} -> ${item.newWidth}x${item.newHeight}`
+        );
+      });
+      if (resized.length > 20) {
+        console.log(`  ... and ${resized.length - 20} more`);
+      }
+      console.log('');
+    }
+
+    if (!dryRun) {
+      const remaining = validateImages();
+      if (remaining.length === 0) {
+        console.log('✅ All oversized images were fixed');
+        process.exit(0);
+      }
+      console.log(`⚠️  ${remaining.length} oversized image(s) remain after fix`);
+      process.exit(1);
+    }
+
+    process.exit(0);
+  }
+
   process.exit(1);
 }
 
-main();
+main().catch((error) => {
+  console.error('Error:', error);
+  process.exit(1);
+});

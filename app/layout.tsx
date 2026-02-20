@@ -20,8 +20,19 @@ const OG_LOCALE_MAP: Record<string, string> = {
   en: 'en_CA',
 };
 
-const rawGtmId = process.env.NEXT_PUBLIC_GTM_ID?.trim();
-const gtmId = rawGtmId && /^GTM-[A-Z0-9]+$/.test(rawGtmId) ? rawGtmId : undefined;
+const DEFAULT_GTM_ID = 'GTM-T8WZ5D7R';
+
+function normalizeGtmId(rawId?: string): string | undefined {
+  if (!rawId) return undefined;
+
+  const sanitizedId = rawId.trim().replace(/^["']|["']$/g, '').toUpperCase();
+  return /^GTM-[A-Z0-9]+$/.test(sanitizedId) ? sanitizedId : undefined;
+}
+
+const normalizedGtmId = normalizeGtmId(process.env.NEXT_PUBLIC_GTM_ID);
+const gtmId = process.env.NODE_ENV === 'test'
+  ? normalizedGtmId
+  : (normalizedGtmId ?? DEFAULT_GTM_ID);
 
 /**
  * Generate metadata for the app based on locale

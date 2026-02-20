@@ -153,7 +153,7 @@ export function EnhancedProductComparison() {
       bestFor: getTranslatedBestFor(0),
       image: '/optimized/products/17g-transparent-v2.webp',
       imageSize: 'sm',
-      color: 'from-green-500 to-green-600',
+      color: 'from-green-500 to-green-600 dark:from-emerald-800 dark:to-emerald-950',
       badge: {
         type: 'trial',
         label: locale === 'fr' ? 'ÉCHANTILLON' : 'FREE TRIAL',
@@ -172,7 +172,7 @@ export function EnhancedProductComparison() {
       bestFor: getTranslatedBestFor(1),
       image: '/optimized/products/60g-transparent.webp',
       imageSize: 'md',
-      color: 'from-deep-coral to-rose-600',
+      color: 'from-deep-coral to-rose-600 dark:from-rose-800 dark:to-rose-950',
       badge: {
         type: 'popular',
         label: t('productComparison.popular') || 'POPULAR',
@@ -190,7 +190,7 @@ export function EnhancedProductComparison() {
       bestFor: getTranslatedBestFor(2),
       image: '/optimized/products/60g-transparent.webp',
       imageSize: 'lg',
-      color: 'from-electric-indigo to-purple-600',
+      color: 'from-electric-indigo to-purple-600 dark:from-indigo-800 dark:to-purple-950',
       badge: {
         type: 'recommended',
         label: t('productComparison.bestValue') || 'BEST VALUE',
@@ -227,13 +227,13 @@ export function EnhancedProductComparison() {
                 className={cn(
                   "relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl border-2 overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col h-full",
                   isRecommended
-                    ? "border-brand-red dark:border-red-500"
-                    : "border-brand-light dark:border-gray-700"
+                    ? "border-brand-red dark:border-red-600"
+                    : "border-brand-light dark:border-gray-600"
                 )}
               >
 
                 {/* Header with Image */}
-                <div className={cn("bg-gradient-to-r p-6 text-white dark:text-gray-100 min-h-[160px]", product.color)}>
+                <div className={cn("bg-gradient-to-r p-6 text-white dark:text-white min-h-[160px]", product.color)}>
                   <div className="flex items-center gap-4">
                     {/* Product Image */}
                     <div className={cn(
@@ -262,9 +262,9 @@ export function EnhancedProductComparison() {
                 {product.badge && (
                   <div className={cn(
                     "flex items-center justify-center gap-1.5 px-4 py-2 text-sm font-bold tracking-wide",
-                    product.badge.type === 'popular' && "bg-green-500 text-white",
-                    product.badge.type === 'recommended' && "bg-brand-red text-white",
-                    product.badge.type === 'trial' && "bg-brand-light dark:bg-emerald-900/60 text-brand-dark dark:text-emerald-300"
+                    product.badge.type === 'popular' && "bg-green-500 dark:bg-green-700 text-white dark:text-emerald-50",
+                    product.badge.type === 'recommended' && "bg-brand-red dark:bg-red-800 text-white dark:text-red-50",
+                    product.badge.type === 'trial' && "bg-brand-light dark:bg-emerald-900/80 text-brand-dark dark:text-emerald-50"
                   )}>
                     {product.badge.type === 'popular' && <IconCustomerLove className="w-4 h-4" />}
                     {product.badge.type === 'recommended' && <IconMoneyBack className="w-4 h-4" />}
@@ -279,22 +279,22 @@ export function EnhancedProductComparison() {
                   <div className="grid grid-cols-2 gap-4 mb-6">
                     <div className="text-center">
                       <IconLongLasting className="w-8 h-8 mx-auto mb-2 text-brand-purple dark:text-purple-400 drop-shadow-sm" />
-                      <p className="text-sm text-gray-600 dark:text-gray-300">{t('productComparison.duration') || "Duration"}</p>
-                      <p className="font-semibold text-gray-900 dark:text-gray-100">{product.duration}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-200">{t('productComparison.duration') || "Duration"}</p>
+                      <p className="font-semibold text-gray-900 dark:text-white">{product.duration}</p>
                     </div>
                     <div className="text-center">
                       <IconAnyLitter className="w-8 h-8 mx-auto mb-2 text-brand-purple dark:text-purple-400 drop-shadow-sm" />
-                      <p className="text-sm text-gray-600 dark:text-gray-300">{t('productComparison.idealFor') || "Ideal For"}</p>
-                      <p className="font-semibold text-gray-900 dark:text-gray-100">{product.idealFor}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-200">{t('productComparison.idealFor') || "Ideal For"}</p>
+                      <p className="font-semibold text-gray-900 dark:text-white">{product.idealFor}</p>
                     </div>
                   </div>
 
                   {/* Features */}
                   <div className="mb-6">
-                    <h4 className="font-heading font-bold mb-3 text-gray-900 dark:text-gray-100">{t('productComparison.features') || "Features"}:</h4>
+                    <h4 className="font-heading font-bold mb-3 text-gray-900 dark:text-white">{t('productComparison.features') || "Features"}:</h4>
                     <ul className="space-y-2">
                       {product.features.map((feature, index) => (
-                        <li key={index} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
+                        <li key={index} className="flex items-center text-sm text-gray-600 dark:text-gray-200">
                           <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400 mr-2 flex-shrink-0" />
                           {feature}
                         </li>
@@ -303,9 +303,9 @@ export function EnhancedProductComparison() {
                   </div>
 
                   {/* Best For */}
-                  <div className="mb-6 p-4 bg-brand-light/30 dark:bg-gray-700/30 rounded-lg min-h-[88px]">
-                    <p className="text-sm text-gray-600 dark:text-gray-300">
-                      <span className="font-semibold">{t('productComparison.idealFor') || "Ideal For"}:</span> {product.bestFor}
+                  <div className="mb-6 p-4 bg-brand-light/30 dark:bg-gray-700/50 rounded-lg min-h-[88px]">
+                    <p className="text-sm text-gray-600 dark:text-gray-200">
+                      <span className="font-semibold dark:text-white">{t('productComparison.idealFor') || "Ideal For"}:</span> {product.bestFor}
                     </p>
                   </div>
 

@@ -6,6 +6,10 @@ const scriptSrc = isDev
   ? "'self' 'unsafe-eval' 'unsafe-inline' *.google.com *.gstatic.com *.googletagmanager.com"
   : "'self' 'unsafe-inline' *.google.com *.gstatic.com *.googletagmanager.com";
 
+const connectSrc = "'self' *.googletagmanager.com *.google-analytics.com *.analytics.google.com *.g.doubleclick.net";
+const frameSrc = "'self' https://www.google.com https://maps.google.com https://www.googletagmanager.com https://tagassistant.google.com";
+const trackingImgSrc = "*.google-analytics.com *.googletagmanager.com *.g.doubleclick.net";
+
 // Next.js dev runtimes can register extra Trusted Types policy names
 // (for example `nextjs#bundler` with webpack). Keep this list explicit
 // and environment-aware so local hydration does not break.
@@ -31,7 +35,7 @@ const SECURITY_HEADERS = [
   // Trusted Types: Allow all policies in development to prevent TrustedScriptURL/TrustedHTML errors
   {
     key: "Content-Security-Policy",
-    value: `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline' *.googleapis.com; img-src 'self' blob: data: *.purrify.ca *.google.com *.gstatic.com *.facebook.com *.fna.fbcdn.net *.dicebear.com *.unsplash.com *.randomuser.me unpkg.com *.unpkg.com *.tile.openstreetmap.org; font-src 'self' data:; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; block-all-mixed-content; upgrade-insecure-requests; trusted-types ${trustedTypesPolicies};`
+    value: `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline' *.googleapis.com; img-src 'self' blob: data: *.purrify.ca *.google.com *.gstatic.com *.facebook.com *.fna.fbcdn.net *.dicebear.com *.unsplash.com *.randomuser.me unpkg.com *.unpkg.com *.tile.openstreetmap.org ${trackingImgSrc}; font-src 'self' data:; connect-src ${connectSrc}; frame-src ${frameSrc}; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; block-all-mixed-content; upgrade-insecure-requests; trusted-types ${trustedTypesPolicies};`
   },
 ];
 

@@ -101,6 +101,32 @@ describe('/api/contact', () => {
     expect(mockCreateContactTicket).not.toHaveBeenCalled();
   });
 
+  it('sends to Zendesk when configured', async () => {
+    mockIsZendeskConfigured.mockReturnValue(true);
+    mockCreateContactTicket.mockResolvedValue({
+      ticket: { id: 12345 },
+    });
+
+    const response = await POST(createRequest({
+      name: 'Jane Doe',
+      email: 'jane@example.com',
+      message: 'I need help with my recent order and shipping timeline.',
+    }));
+
+    expect(response.status).toBe(200);
+    const data = await getResponseData(response);
+    expect(data.success).toBe(true);
+    expect(data.message).toContain('Thank you for contacting us');
+
+    expect(mockCreateContactTicket).toHaveBeenCalledWith({
+      name: 'Jane Doe',
+      email: 'jane@example.com',
+      message: 'I need help with my recent order and shipping timeline.',
+      locale: 'en',
+    });
+    expect(mockResendSend).not.toHaveBeenCalled();
+  });
+
   it('returns 400 when required fields are missing', async () => {
     const response = await POST(createRequest({
       name: 'Jane Doe',
