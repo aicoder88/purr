@@ -1,13 +1,12 @@
-import { Container } from "@/components/ui/container";
-import { NewsletterSignup } from "@/components/newsletter/NewsletterSignup";
-import { createSectionClasses } from "@/lib/theme-utils";
+import { Container } from '@/components/ui/container';
+import { WaitlistSignup } from '@/components/newsletter/NewsletterSignup';
+import { createSectionClasses } from '@/lib/theme-utils';
 
-export function Newsletter() {
-
+export function WaitlistSection() {
   const sectionClasses = createSectionClasses('light');
 
   return (
-    <section id="newsletter" className={`${sectionClasses} py-16`}>
+    <section id="waitlist" className={`${sectionClasses} py-16`}>
       <Container>
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
@@ -15,15 +14,11 @@ export function Newsletter() {
               Backorder Waitlist
             </h2>
             <p className="mt-3 text-base md:text-lg text-gray-700 dark:text-gray-300">
-              Join the waitlist and we will notify you as soon as shipping resumes.
+              Sign up here and we&apos;ll create a Zendesk request so our team can notify you when
+              shipping resumes.
             </p>
           </div>
-          <NewsletterSignup
-            variant="default"
-            showBenefits={true}
-            discount={10}
-            className=""
-          />
+          <WaitlistSignup className="" />
         </div>
       </Container>
     </section>
