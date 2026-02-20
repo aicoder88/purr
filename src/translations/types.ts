@@ -72,6 +72,14 @@ export interface TranslationType {
     ourStory?: string;
   };
 
+  stockAlertBanner?: {
+    headline: string;
+    line1: string;
+    line2: string;
+    line3: string;
+    cta: string;
+  };
+
   // Locations Menu
   locationsMenu?: {
     selectProvince: string;

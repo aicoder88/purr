@@ -28,7 +28,8 @@ const SECURITY_HEADERS = [
     value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
   },
   { key: "Cross-Origin-Embedder-Policy", value: "unsafe-none" },
-  { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+  // Tag Assistant preview uses a cross-origin popup handshake.
+  { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
   { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
   // CSP Note: 'unsafe-inline' for scripts is required for GTM.
   // In a production app, consider implementing nonce-based CSP for stricter security.

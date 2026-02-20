@@ -73,6 +73,14 @@ export const en = {
     ourStory: "Our Story"
   },
 
+  stockAlertBanner: {
+    headline: "⚠️ STOP - Read This Before You Order",
+    line1: "We're out of stock. Word got out. Orders flooded in. We're a tiny operation and we got absolutely buried.",
+    line2: "So here's the deal: We're back around March 3rd. Get on the list below and you'll be among the first to know the minute we're shipping again.",
+    line3: "Don't wait. The same thing that just happened... will happen again.",
+    cta: "Put Me on the List"
+  },
+
   locationsMenu: {
     selectProvince: "Select a Province",
     hoverPrompt: "Hover a province to view cities.",

@@ -72,6 +72,14 @@ export const fr = {
     ourStory: "Notre Histoire"
   },
 
+  stockAlertBanner: {
+    headline: "⚠️ STOP - Lisez ceci avant de commander",
+    line1: "Nous sommes en rupture de stock. Le mot s'est passé. Les commandes ont explosé. Nous sommes une toute petite équipe et nous avons été complètement débordés.",
+    line2: "Voici le plan: retour vers le 3 mars. Inscrivez-vous à la liste ci-dessous et vous serez parmi les premiers avertis dès la reprise des expéditions.",
+    line3: "N'attendez pas. Ce qui vient de se passer... va se reproduire.",
+    cta: "Mettez-moi sur la liste"
+  },
+
   locationsMenu: {
     selectProvince: "Sélectionnez une province",
     hoverPrompt: "Survolez une province pour voir les villes.",
