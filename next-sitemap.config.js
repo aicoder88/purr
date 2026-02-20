@@ -229,12 +229,6 @@ module.exports = {
 
 
   ],
-  alternateRefs: [
-    { href: 'https://www.purrify.ca/', hreflang: 'en-CA' },
-    { href: 'https://www.purrify.ca/fr/', hreflang: 'fr-CA' },
-    { href: 'https://www.purrify.ca/us/', hreflang: 'en-US' },
-    { href: 'https://www.purrify.ca/', hreflang: 'x-default' },
-  ],
   // === ADDITIONAL PATHS - Fix for Ahrefs "Indexable page not in sitemap" ===
   additionalPaths: async (config) => [
     // Core homepage
@@ -722,14 +716,13 @@ module.exports = {
       };
     }
 
-    // French pages - Include alternateRefs for proper hreflang
+    // French pages
     if (normalizedPath.startsWith('/fr/') || normalizedPath === '/fr/') {
       return {
         loc: normalizedPath,
         changefreq: 'weekly',
         priority: 0.7,
         lastmod: new Date().toISOString(),
-        alternateRefs: config.alternateRefs,
       };
     }
 
