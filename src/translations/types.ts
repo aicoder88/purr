@@ -1020,6 +1020,7 @@ export interface TranslationType {
       subtitle: string;
       secondary: string;
     };
+    relatedIntro?: string;
     relatedPages?: Array<{
       title: string;
       description: string;

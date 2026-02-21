@@ -1492,6 +1492,7 @@ export const en = {
       subtitle: "Ask for Purrify at your favorite pet store. If they don't carry it yet, they should.",
       secondary: "Not seeing your store? Let us know. We'll reach out and make it happen."
     },
+    relatedIntro: "Want to dig deeper before deciding? Read our <guide>cat litter guide</guide>, try our <calculator>cat litter calculator</calculator>, or explore <solutions>ammonia smell solutions</solutions>.",
 
     // Related Pages
     relatedPages: [

@@ -1513,6 +1513,7 @@ export const fr = {
       subtitle: "Demandez Purrify dans votre animalerie préférée. S'ils ne l'ont pas encore, ils devraient.",
       secondary: "Vous ne voyez pas votre magasin? Dites-le nous. On fera le nécessaire."
     },
+    relatedIntro: "Envie d'en savoir plus avant de vous décider? Lisez notre <guide>guide de litière pour chats</guide>, essayez notre <calculator>calculateur de litière</calculator>, ou explorez <solutions>des solutions</solutions>.",
 
     // Related Pages
     relatedPages: [

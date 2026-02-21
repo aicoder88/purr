@@ -754,9 +754,23 @@ export default function ProductsPage() {
           <Container>
             <div className="text-center mb-12">
               <p className="text-gray-600 dark:text-gray-400 mb-4 max-w-2xl mx-auto">
-                {locale === 'fr'
-                  ? <>Envie d&apos;en savoir plus avant de vous décider? Lisez notre <Link href="/learn/cat-litter-guide" className="text-brand-purple dark:text-purple-400 hover:underline font-medium">guide de litière pour chats</Link>, essayez notre <Link href="/tools/cat-litter-calculator" className="text-brand-purple dark:text-purple-400 hover:underline font-medium">calculateur de litière</Link>, ou explorez <Link href="/blog/how-to-neutralize-ammonia-cat-litter" className="text-brand-purple dark:text-purple-400 hover:underline font-medium">des solutions</Link>.</>
-                  : <>Want to dig deeper before deciding? Read our <Link href="/learn/cat-litter-guide" className="text-brand-purple dark:text-purple-400 hover:underline font-medium">cat litter guide</Link>, try our <Link href="/tools/cat-litter-calculator" className="text-brand-purple dark:text-purple-400 hover:underline font-medium">cat litter calculator</Link>, or explore <Link href="/blog/how-to-neutralize-ammonia-cat-litter" className="text-brand-purple dark:text-purple-400 hover:underline font-medium">ammonia smell solutions</Link>.</>}
+                {t.rich('productsPage.relatedIntro', {
+                  guide: (chunks) => (
+                    <Link href="/learn/cat-litter-guide" className="text-brand-purple dark:text-purple-400 hover:underline font-medium">
+                      {chunks}
+                    </Link>
+                  ),
+                  calculator: (chunks) => (
+                    <Link href="/tools/cat-litter-calculator" className="text-brand-purple dark:text-purple-400 hover:underline font-medium">
+                      {chunks}
+                    </Link>
+                  ),
+                  solutions: (chunks) => (
+                    <Link href="/blog/how-to-neutralize-ammonia-cat-litter" className="text-brand-purple dark:text-purple-400 hover:underline font-medium">
+                      {chunks}
+                    </Link>
+                  ),
+                })}
               </p>
               <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 {locale === 'fr' ? "En savoir plus" : "Learn More"}
