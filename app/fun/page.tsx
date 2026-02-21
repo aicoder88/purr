@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${SITE_URL}/fun/`,
   },
+  openGraph: {
+    url: `${SITE_URL}/fun/`,
+  },
   robots: {
     index: true,
     follow: true,

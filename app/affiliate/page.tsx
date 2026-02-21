@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${SITE_URL}/affiliate/`,
   },
+  openGraph: {
+    url: `${SITE_URL}/affiliate/`,
+  },
   robots: {
     index: true,
     follow: true,

@@ -53,6 +53,54 @@ export const metadata: Metadata = {
   },
 };
 
+const guideSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      '@id': 'https://www.purrify.ca/learn/cat-litter-guide/#article',
+      url: 'https://www.purrify.ca/learn/cat-litter-guide/',
+      inLanguage: 'en-CA',
+      headline: `Cat Litter Guide: Types & Best Practices | ${SITE_NAME}`,
+      description: 'Comprehensive guide to cat litter types and maintenance tips. Learn how to choose the best litter for your cat and keep it fresh longer.',
+      image: 'https://www.purrify.ca/optimized/blog/litter-guide-hero-setup.webp',
+      datePublished: '2024-01-01T10:00:00Z',
+      dateModified: new Date().toISOString(),
+      author: {
+        '@type': 'Organization',
+        name: SITE_NAME,
+        url: 'https://www.purrify.ca',
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: SITE_NAME,
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
+        },
+      },
+      articleSection: 'Cat Care',
+      keywords: ['cat litter guide', 'cat litter types', 'litter maintenance tips'],
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.purrify.ca' },
+        { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://www.purrify.ca/learn/' },
+        { '@type': 'ListItem', position: 3, name: 'Cat Litter Guide', item: 'https://www.purrify.ca/learn/cat-litter-guide/' },
+      ],
+    },
+  ],
+};
+
 export default function CatLitterGuidePage() {
-  return <CatLitterGuidePageContent />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(guideSchema) }}
+      />
+      <CatLitterGuidePageContent />
+    </>
+  );
 }

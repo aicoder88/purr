@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${SITE_URL}/invest/`,
   },
+  openGraph: {
+    url: `${SITE_URL}/invest/`,
+  },
 };
 
 // Organization schema for investor page

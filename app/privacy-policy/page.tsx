@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/privacy-policy',
   },
+  openGraph: {
+    url: '/privacy-policy',
+  },
 };
 
 // English privacy policy content (static for server component)

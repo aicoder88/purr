@@ -202,7 +202,7 @@ export function LaserCursor() {
   if (!isEnabled) return null;
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none z-[100] overflow-hidden">
       {paws.map((paw) => (
         <div
           key={paw.id}

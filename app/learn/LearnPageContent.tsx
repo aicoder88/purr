@@ -332,7 +332,7 @@ export default function LearnPageContent() {
                 Learn Everything About Cat Litter Odor Control
               </h1>
               <p className="text-xl text-gray-700 dark:text-gray-300 mb-8">
-                Explore our comprehensive guides, scientific explanations, and targeted solutions to keep your home fresh and your cat happy.
+                Explore our comprehensive guides, scientific explanations, and targeted solutions to keep your home fresh and your cat happy. Need help choosing? Read our <Link href="/learn/cat-litter-guide" className="text-[#5B2EFF] dark:text-[#3694FF] hover:underline font-medium">cat litter guide</Link>, calculate your savings with our <Link href="/tools/cat-litter-calculator" className="text-[#5B2EFF] dark:text-[#3694FF] hover:underline font-medium">cat litter calculator</Link>, or find <Link href="/learn#solutions-by-problem" className="text-[#5B2EFF] dark:text-[#3694FF] hover:underline font-medium">solutions by problem</Link>.
               </p>
             </div>
           </Container>

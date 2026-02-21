@@ -1,0 +1,90 @@
+# Initial SEO Health Index & Diagnostics
+
+Based on the initial baseline data collection (using `seo:validate:report` and scanning the latest `.seo-reports`), we have compiled the SEO findings into the required framework structure.
+
+---
+
+## 📈 Executive Summary
+
+The Purrify site has a solid foundation with no critical crawling or rendering errors, but it suffers from systemic internal linking weaknesses ("weak pages") and structural image optimization gaps that hold back total performance.
+
+### SEO Health Index
+
+* **Overall Score:** 79 / 100
+* **Health Status:** **Good**
+*(Solid performance with clear improvement areas)*
+
+#### Category Breakdown
+
+| Category | Score | Weight | Weighted Contribution |
+| :--- | :--- | :--- | :--- |
+| Crawlability & Indexation | 95 | 30 | 28.5 |
+| Technical Foundations | 85 | 25 | 21.25 |
+| On-Page Optimization | 88 | 20 | 17.6 |
+| Content Quality & E-E-A-T | 100 | 15 | 15.0 |
+| Authority & Trust | 70 | 10 | 7.0 |
+| **Total** | | **100** | **79.35 (79)** |
+
+---
+
+## 🔍 Detailed Findings & Discovered Issues
+
+### 1. Weak Internal Link Equity (Orphan Susceptibility)
+* **Category:** Authority & Trust Signals
+* **Evidence:** Validation report flagged **50 pages** (out of 69) as having only 1 incoming link. (e.g., `/case-studies`, `/documents`, `/tools/cat-litter-calculator`, multiple `/learn/*` articles).
+* **Severity:** Medium
+* **Confidence:** High (Direct scan)
+* **Why It Matters:** Pages with only one internal link lack established authority within the crawl architecture. Search engines view them as low-priority, meaning they are less likely to rank competitively.
+* **Score Impact:** -15 (Authority & Trust category) + -10 (On-Page linking architecture).
+* **Recommendation:** Implement a robust related-posts/siloing strategy (e.g., related articles components) and strengthen contextual cross-linking from hub pages (`/learn`, `/products`) to these weaker nodes.
+
+### 2. Overweight & Unoptimized Images
+* **Category:** Technical Foundations
+* **Evidence:** Validation report flagged **48 images** out of 844. Common issues: 
+  - PNG files exceeding 500KB (e.g., `/locations/*` map images, `/blog/*-ghibli.png` illustrations, `/team/*` headshots).
+  - Use of JPG formats instead of next-gen (e.g., `/blog/cat-fresh-home-ammonia.jpg`).
+* **Severity:** Medium
+* **Confidence:** High
+* **Why It Matters:** Large, unoptimized images directly bloat page weight, inflating LCP (Largest Contentful Paint) and potentially harming Core Web Vitals, especially on mobile networks.
+* **Score Impact:** -15 (Technical Foundations).
+* **Recommendation:** Batch convert large PNG and JPG assets to WebP or AVIF. Run `pnpm optimize-images:enhanced` or integrate `next/image` strict enforcement.
+
+### 3. Missing Open Graph Canonicals
+* **Category:** Crawlability & Indexation
+* **Evidence:** 4 pages (`/affiliate`, `/fun`, `/invest`, `/privacy-policy`) have canonical URLs but are missing the Open Graph (`og:url`) equivalent.
+* **Severity:** Low
+* **Confidence:** High
+* **Why It Matters:** While standard canonical tags exist, omitting `og:url` causes social crawlers (Facebook, Slack, LinkedIn) to lose clarity on the canonical version when the content is dynamically shared with tracking parameters.
+* **Score Impact:** -5 (Crawlability & Indexation).
+* **Recommendation:** Ensure the `url` property is populated inside the `openGraph` object in the Next.js Metadata layout/pages for these absolute paths.
+
+### 4. Partial Enhanced SEO / Schema Coverage
+* **Category:** On-Page Optimization
+* **Evidence:** Report [latest.json](file:///Users/macmini/dev/purr/.seo-reports/latest.json) indicates "pagesWithEnhancedSEO: 26 (Coverage: 52%)" with a target of 80%+.
+* **Severity:** Low
+* **Confidence:** High
+* **Why It Matters:** Only around half of the site leverages enriched schema markup (Aggregate Rating, Breadcrumbs, FAQ, Product). Missing schema leaves rich snippet real estate on the table in the SERPs.
+* **Score Impact:** -12 (On-Page Optimization).
+* **Recommendation:** Audit the 48% of pages without structured data and inject `Article`, `FAQ`, or [Product](file:///Users/macmini/dev/purr/app/affiliate/dashboard/assets/AssetsContent.tsx#26-33) JSON-LD where applicable.
+
+---
+
+## 🚀 Prioritized Action Plan
+
+### Tier 1: High-Impact Improvements
+1. **Strengthen Internal Linking Structure (Score recovery: ~20 points across categories)**
+   - Prioritize adding 2–4 contextual internal links to the 50 "weak pages". High priority targets: `/learn/cat-litter-guide`, `/tools/cat-litter-calculator`, and high-converting `/learn/solutions/*` pages.
+
+2. **Bulk Image Optimization (Score recovery: ~15 Technical points)**
+   - Automatically compress and convert the 48 oversized/legacy-format images (mostly in `/public/optimized/...`) to modern WebP/AVIF formats.
+
+### Tier 2: Quick Wins
+3. **Patch Open Graph Canonical URLs (Score recovery: ~5 Crawlability points)**
+   - Add `openGraph: { url: '...' }` to the metadata objects in [app/affiliate/page.tsx](file:///Users/macmini/dev/purr/app/affiliate/page.tsx), [app/fun/page.tsx](file:///Users/macmini/dev/purr/app/fun/page.tsx), [app/invest/page.tsx](file:///Users/macmini/dev/purr/app/invest/page.tsx), and [app/privacy-policy/page.tsx](file:///Users/macmini/dev/purr/app/privacy-policy/page.tsx).
+
+### Tier 3: Longer-Term Opportunities
+4. **Expand Schema Coverage (Score recovery: ~10 On-Page points)**
+   - Methodically scale Next.js structured data injection via metadata to hit the 80%+ enhanced SEO coverage target defined in the project goals.
+
+---
+*Limitations: This index is based on technical extraction and validation outputs. It measures readiness, not absolute organic ranking performance against competitors. E-E-A-T score is assumed max baseline due to no technical flags, but qualitative manual review of authorship signals is recommended later.*
