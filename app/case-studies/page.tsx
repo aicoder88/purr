@@ -13,10 +13,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.purrify.ca/case-studies/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/case-studies',
-      'fr-CA': 'https://www.purrify.ca/fr/case-studies',
-      'en-US': 'https://www.purrify.ca/case-studies',
-      'x-default': 'https://www.purrify.ca/case-studies',
+      'en-CA': 'https://www.purrify.ca/case-studies/',
+      'fr-CA': 'https://www.purrify.ca/fr/case-studies/',
+      'en-US': 'https://www.purrify.ca/case-studies/',
+      'x-default': 'https://www.purrify.ca/case-studies/',
     },
   },
   openGraph: {

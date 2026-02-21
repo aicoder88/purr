@@ -17,10 +17,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination',
-      'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/litter-box-smell-elimination',
-      'en-US': 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination',
-      'x-default': 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination',
+      'en-CA': 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/',
+      'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/litter-box-smell-elimination/',
+      'en-US': 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/',
+      'x-default': 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/',
     },
   },
   openGraph: {

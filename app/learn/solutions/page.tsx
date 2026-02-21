@@ -11,10 +11,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.purrify.ca/learn/solutions/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/learn/solutions',
-      'fr-CA': 'https://www.purrify.ca/fr/learn/solutions',
-      'en-US': 'https://www.purrify.ca/learn/solutions',
-      'x-default': 'https://www.purrify.ca/learn/solutions',
+      'en-CA': 'https://www.purrify.ca/learn/solutions/',
+      'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/',
+      'en-US': 'https://www.purrify.ca/learn/solutions/',
+      'x-default': 'https://www.purrify.ca/learn/solutions/',
     },
   },
   openGraph: {

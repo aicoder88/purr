@@ -33,10 +33,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.purrify.ca/reviews/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/reviews',
-      'fr-CA': 'https://www.purrify.ca/fr/reviews',
-      'en-US': 'https://www.purrify.ca/reviews',
-      'x-default': 'https://www.purrify.ca/reviews',
+      'en-CA': 'https://www.purrify.ca/reviews/',
+      'fr-CA': 'https://www.purrify.ca/fr/reviews/',
+      'en-US': 'https://www.purrify.ca/reviews/',
+      'x-default': 'https://www.purrify.ca/reviews/',
     },
   },
   robots: {

@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.purrify.ca/learn/glossary/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/learn/glossary',
-      'fr-CA': 'https://www.purrify.ca/fr/learn/glossary',
-      'en-US': 'https://www.purrify.ca/learn/glossary',
-      'x-default': 'https://www.purrify.ca/learn/glossary',
+      'en-CA': 'https://www.purrify.ca/learn/glossary/',
+      'fr-CA': 'https://www.purrify.ca/fr/learn/glossary/',
+      'en-US': 'https://www.purrify.ca/learn/glossary/',
+      'x-default': 'https://www.purrify.ca/learn/glossary/',
     },
   },
   openGraph: {

@@ -20,10 +20,10 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: `${SITE_URL}/locations/`,
       languages: {
-        'en-CA': `${SITE_URL}/locations`,
+        'en-CA': `${SITE_URL}/locations/`,
         // Note: Non-English location pages are excluded from sitemap (noindexed)
         // Only English version exists to prevent thin content
-        'x-default': `${SITE_URL}/locations`,
+        'x-default': `${SITE_URL}/locations/`,
       },
     },
     openGraph: {

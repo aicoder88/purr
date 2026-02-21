@@ -8,10 +8,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.purrify.ca/support/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/support',
-      'fr-CA': 'https://www.purrify.ca/fr/support',
-      'en-US': 'https://www.purrify.ca/support',
-      'x-default': 'https://www.purrify.ca/support',
+      'en-CA': 'https://www.purrify.ca/support/',
+      'fr-CA': 'https://www.purrify.ca/fr/support/',
+      'en-US': 'https://www.purrify.ca/support/',
+      'x-default': 'https://www.purrify.ca/support/',
     },
   },
   openGraph: {

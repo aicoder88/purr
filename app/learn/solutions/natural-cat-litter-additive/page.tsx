@@ -17,10 +17,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive',
-      'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/natural-cat-litter-additive',
-      'en-US': 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive',
-      'x-default': 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive',
+      'en-CA': 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/',
+      'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/natural-cat-litter-additive/',
+      'en-US': 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/',
+      'x-default': 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/',
     },
   },
   openGraph: {

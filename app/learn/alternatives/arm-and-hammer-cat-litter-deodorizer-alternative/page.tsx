@@ -19,10 +19,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
-      'fr-CA': 'https://www.purrify.ca/fr/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
-      'en-US': 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
-      'x-default': 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
+      'en-CA': 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/',
+      'fr-CA': 'https://www.purrify.ca/fr/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/',
+      'en-US': 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/',
+      'x-default': 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/',
     },
   },
   openGraph: {

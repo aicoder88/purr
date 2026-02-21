@@ -17,10 +17,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution',
-      'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/apartment-cat-smell-solution',
-      'en-US': 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution',
-      'x-default': 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution',
+      'en-CA': 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/',
+      'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/apartment-cat-smell-solution/',
+      'en-US': 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/',
+      'x-default': 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/',
     },
   },
   openGraph: {
