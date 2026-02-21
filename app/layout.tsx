@@ -181,6 +181,13 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className={inter.variable} suppressHydrationWarning>
+      <head>
+        {/* Contentsquare UX Analytics */}
+        <script
+          src="https://t.contentsquare.net/uxa/92035d15b29d9.js"
+          async
+        />
+      </head>
       <body className="font-sans">
         {gtmId ? (
           <>
