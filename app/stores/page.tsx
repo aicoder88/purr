@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import PageContent from './PageContent';
-import { SITE_NAME } from '@/lib/constants';
+import { SITE_NAME, CONTACT_INFO } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Find Purrify Near You - Store Locator | Purrify',
@@ -27,21 +27,35 @@ export const metadata: Metadata = {
   },
 };
 
-// LocalBusiness schema for Store Locator
-const localBusinessSchema = {
+// Organization schema for Store Locator (using Organization instead of LocalBusiness since this is a digital store locator, not a physical location)
+const storeLocatorSchema = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
+  '@type': 'WebPage',
+  '@id': 'https://www.purrify.ca/stores/#webpage',
   name: `${SITE_NAME} Store Locator`,
   description: 'Find pet stores selling Purrify across Canada. 25+ retail locations in Quebec, Ontario, and British Columbia.',
   url: 'https://www.purrify.ca/stores/',
-  logo: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
-  image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
-  areaServed: [
-    { '@type': 'State', name: 'Quebec' },
-    { '@type': 'State', name: 'Ontario' },
-    { '@type': 'State', name: 'British Columbia' },
-  ],
-  priceRange: '$$',
+  mainEntity: {
+    '@type': 'ItemList',
+    name: 'Purrify Retail Locations',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, item: { '@type': 'Place', name: 'Quebec', address: { '@type': 'PostalAddress', addressRegion: 'QC', addressCountry: 'CA' } } },
+      { '@type': 'ListItem', position: 2, item: { '@type': 'Place', name: 'Ontario', address: { '@type': 'PostalAddress', addressRegion: 'ON', addressCountry: 'CA' } } },
+      { '@type': 'ListItem', position: 3, item: { '@type': 'Place', name: 'British Columbia', address: { '@type': 'PostalAddress', addressRegion: 'BC', addressCountry: 'CA' } } },
+    ]
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: SITE_NAME,
+    url: 'https://www.purrify.ca',
+    logo: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: CONTACT_INFO.phoneInternational,
+      contactType: 'customer service',
+      email: CONTACT_INFO.email,
+    }
+  }
 };
 
 export default function StoresPage() {
@@ -49,7 +63,7 @@ export default function StoresPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(storeLocatorSchema) }}
       />
       <PageContent />
     </>

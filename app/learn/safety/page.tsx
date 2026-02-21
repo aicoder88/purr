@@ -93,19 +93,13 @@ const productSchema = {
   '@context': 'https://schema.org',
   '@type': 'Product',
   name: `${SITE_NAME} Activated Carbon`,
-  description: 'Premium granular activated carbon produced from sustainable coconut shell with highly microporous structure.',
+  description: 'Premium granular activated carbon produced from sustainable coconut shell with highly microporous structure. NSF/ANSI 61, AWWA B604, Food Chemicals Codex (FCC), Halal & Kosher certified.',
   image: 'https://www.purrify.ca/optimized/products/activated-carbon-granules.webp',
   brand: {
     '@type': 'Brand',
     name: SITE_NAME,
   },
   material: 'Coconut Shell Activated Carbon',
-  certifications: [
-    'NSF/ANSI 61',
-    'AWWA B604',
-    'Food Chemicals Codex (FCC)',
-    'Halal & Kosher',
-  ],
 };
 
 // Client component for the interactive parts

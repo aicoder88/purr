@@ -423,34 +423,31 @@ export default function StoresPage() {
     "mainEntity": {
       "@type": "ItemList",
       "numberOfItems": stores.length,
-      "itemListElement": stores.map((store, index) => ({
-        "@type": "Store",
-        "position": index + 1,
-        "name": store.name,
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": store.address.split(',')[0],
-          "addressLocality": store.location.split(',')[0],
-          "addressRegion": store.location.includes('QC') ? 'QC' : store.location.includes('ON') ? 'ON' : 'BC',
-          "addressCountry": "CA"
-        },
-        "telephone": store.phone || undefined,
-        "url": store.url || undefined,
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Purrify Cat Litter Products",
-          "itemListElement": [{
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Product",
-              "name": "Purrify Activated Carbon Cat Litter Deodorizer",
-              "brand": "Purrify"
-            },
-            "availability": availabilityUrl,
-            "priceValidUntil": priceValidUntil
-          }]
+      "itemListElement": stores.map((store, index) => {
+        // Build store item with only valid properties
+        const storeItem: Record<string, unknown> = {
+          "@type": "LocalBusiness",
+          "position": index + 1,
+          "name": store.name,
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": store.address.split(',')[0],
+            "addressLocality": store.location.split(',')[0],
+            "addressRegion": store.location.includes('QC') ? 'QC' : store.location.includes('ON') ? 'ON' : 'BC',
+            "addressCountry": "CA"
+          }
+        };
+        
+        // Only add optional fields if they exist
+        if (store.phone) {
+          storeItem["telephone"] = store.phone;
         }
-      }))
+        if (store.url) {
+          storeItem["url"] = store.url;
+        }
+        
+        return storeItem;
+      })
     }
   };
 
