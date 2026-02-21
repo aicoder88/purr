@@ -80,34 +80,25 @@ function generateBreadcrumbSchema(t: TranslationType) {
   };
 }
 
-// LocalBusiness schema for Locations page
-const localBusinessSchema = {
+// Organization schema for Locations page (shipping coverage)
+const organizationSchema = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
+  '@type': 'Organization',
+  '@id': 'https://www.purrify.ca/#organization',
   name: 'Purrify Canada',
   description: 'Canadian manufacturer of activated carbon cat litter deodorizer with shipping across all provinces',
   url: 'https://www.purrify.ca/locations/',
   logo: 'https://www.purrify.ca/optimized/icons/icon-512.png',
   image: 'https://www.purrify.ca/optimized/products/purrify-standard-bag.png',
-  address: {
-    '@type': 'PostalAddress',
-    addressCountry: 'CA',
-  },
   areaServed: [
-    { '@type': 'State', name: 'Ontario' },
-    { '@type': 'State', name: 'Quebec' },
-    { '@type': 'State', name: 'British Columbia' },
-    { '@type': 'State', name: 'Alberta' },
-    { '@type': 'State', name: 'Manitoba' },
-    { '@type': 'State', name: 'Saskatchewan' },
-    { '@type': 'State', name: 'Nova Scotia' },
-    { '@type': 'State', name: 'New Brunswick' },
-    { '@type': 'State', name: 'Newfoundland and Labrador' },
-    { '@type': 'State', name: 'Prince Edward Island' },
+    { '@type': 'Country', name: 'Canada' }
   ],
-  priceRange: '$$',
-  paymentAccepted: 'Credit Card, PayPal',
-  currenciesAccepted: 'CAD',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer service',
+    areaServed: 'CA',
+    availableLanguage: ['English', 'French']
+  }
 };
 
 export default function LocationsPage() {
@@ -132,10 +123,10 @@ export default function LocationsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
-      {/* LocalBusiness Schema */}
+      {/* Organization Schema */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
 
       <div className="min-h-screen bg-gradient-to-br from-orange-50 to-pink-50 dark:from-gray-900 dark:to-gray-800">

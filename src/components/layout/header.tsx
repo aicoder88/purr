@@ -115,27 +115,27 @@ export function Header() {
     {
       id: "products",
       label: t('nav.products'),
-      href: `${localePrefix}/#products`,
+      href: `${localePrefix}/`,
       hasDropdown: true,
       dropdownItems: [
         {
           label: t('nav.trialSize'),
-          href: `${localePrefix}/products/trial-size`,
+          href: `${localePrefix}/products/trial-size/`,
         },
         {
           label: t('nav.compareSizes'),
-          href: `${localePrefix}/products`,
+          href: `${localePrefix}/products/`,
         },
         {
           label: t('nav.shipsToUSA'),
-          href: "/us",
+          href: "/us/",
         },
       ],
     },
     {
       id: "retailers",
       label: t('nav.retailers'),
-      href: `${localePrefix}/retailers`,
+      href: `${localePrefix}/retailers/`,
       hasDropdown: true,
       dropdownItems: [
         {
@@ -157,22 +157,22 @@ export function Header() {
         { label: t('nav.partnerPrograms') || "Partner Programs", isGroupHeader: true },
         {
           label: t('nav.forGroomers') || "For Groomers",
-          href: `${localePrefix}/groomers`,
+          href: `${localePrefix}/retailers/`,
           indent: true,
         },
         {
           label: t('nav.forShelters') || "For Shelters",
-          href: `${localePrefix}/shelters`,
+          href: `${localePrefix}/retailers/`,
           indent: true,
         },
         {
           label: t('nav.affiliateProgram') || "Affiliate Program",
-          href: "/affiliate",
+          href: "/affiliate/",
           indent: true,
         },
         {
           label: t('nav.b2bInquiry') || "B2B Inquiry",
-          href: "/b2b",
+          href: "/b2b/",
           indent: true,
         },
       ],
@@ -180,82 +180,82 @@ export function Header() {
     {
       id: "learn",
       label: t('nav.learn'),
-      href: `${localePrefix}/learn`,
+      href: `${localePrefix}/learn/`,
       hasDropdown: true,
       dropdownItems: [
         {
           label: t('nav.howItWorksPage'),
-          href: `${localePrefix}/learn/how-it-works`,
+          href: `${localePrefix}/learn/how-it-works/`,
         },
         {
           label: t('nav.faq'),
-          href: `${localePrefix}/learn/faq`,
+          href: `${localePrefix}/learn/faq/`,
         },
         {
           label: t('nav.science'),
-          href: `${localePrefix}/learn/science`,
+          href: `${localePrefix}/learn/science/`,
         },
         {
           label: t('nav.safetyInfo'),
-          href: `${localePrefix}/learn/safety`,
+          href: `${localePrefix}/learn/safety/`,
         },
         {
           label: t('nav.activatedCarbonBenefits'),
-          href: `/blog/activated-carbon-litter-additive-benefits`,
+          href: `/blog/activated-carbon-litter-additive-benefits/`,
         },
         {
           label: t('nav.catLitterGuide'),
-          href: `${localePrefix}/learn/cat-litter-guide`,
+          href: `${localePrefix}/learn/cat-litter-guide/`,
         },
         {
           label: t('nav.howToUse'),
-          href: `/blog/how-to-use-cat-litter-deodorizer`,
+          href: `/blog/how-to-use-cat-litter-deodorizer/`,
         },
         {
           label: t('nav.technologyComparison'),
-          href: `/blog/activated-carbon-vs-baking-soda-comparison`,
+          href: `/blog/activated-carbon-vs-baking-soda-comparison/`,
         },
         {
           label: t('nav.catLitterAnswers') || "Cat Litter Q&A",
-          href: "/learn/faq",
+          href: "/learn/faq/",
         },
         {
           label: t('nav.scienceHub') || "Research Citations",
-          href: "/science",
+          href: "/science/",
         },
         {
           label: t('nav.litterCalculator') || "Litter Calculator",
-          href: "/tools/cat-litter-calculator",
+          href: "/tools/cat-litter-calculator/",
         },
         { label: t('nav.solutions'), isGroupHeader: true },
         {
           label: t('nav.ammoniaSmellControl'),
-          href: `/blog/how-to-neutralize-ammonia-cat-litter`,
+          href: `/blog/how-to-neutralize-ammonia-cat-litter/`,
           indent: true,
         },
         {
           label: t('nav.apartmentLiving'),
-          href: `/blog/best-litter-odor-remover-small-apartments`,
+          href: `/blog/best-litter-odor-remover-small-apartments/`,
           indent: true,
         },
         {
           label: t('nav.litterBoxOdor'),
-          href: `/blog/how-to-eliminate-cat-litter-odor`,
+          href: `/blog/how-to-eliminate-cat-litter-odor/`,
           indent: true,
         },
         {
           label: t('nav.multipleCats'),
-          href: `/blog/best-cat-litter-multiple-cats-odor-control`,
+          href: `/blog/best-cat-litter-multiple-cats-odor-control/`;
           indent: true,
         },
         {
           label: t('nav.naturalAdditive'),
-          href: `/blog/best-natural-cat-litter-odor-control`,
+          href: `/blog/best-natural-cat-litter-odor-control/`,
           indent: true,
         },
         {
           label: t('nav.seniorCats'),
-          href: `/blog/best-cat-litter-multiple-cats-odor-control`,
+          href: `/blog/best-cat-litter-multiple-cats-odor-control/`;
           indent: true,
         },
       ],
@@ -263,12 +263,12 @@ export function Header() {
     {
       id: "blog",
       label: t('nav.blog') || "Blog",
-      href: `${localePrefix}/blog`,
+      href: `${localePrefix}/blog/`,
     },
     {
       id: "about",
       label: t('nav.about'),
-      href: `${localePrefix}/about/our-story`,
+      href: `${localePrefix}/about/our-story/`,
       hasDropdown: true,
       dropdownItems: [
         {
@@ -277,11 +277,11 @@ export function Header() {
         },
         {
           label: t('nav.customerReviews') || "Reviews",
-          href: `${localePrefix}/reviews`,
+          href: `${localePrefix}/reviews/`,
         },
         {
           label: t('nav.contact') || "Contact",
-          href: `${localePrefix}/contact`,
+          href: `${localePrefix}/contact/`,
         },
       ],
     },
@@ -388,7 +388,7 @@ export function Header() {
               asChild
               className="flex items-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
             >
-              <Link href="/stores" prefetch={false}>
+              <Link href="/stores/" prefetch={false}>
                 <MapPin className="w-4 h-4" />
                 {t('nav.findStore') || "Find a Store"}
               </Link>
@@ -482,7 +482,7 @@ export function Header() {
                   asChild
                   className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                 >
-                  <Link href="/stores" prefetch={false} onClick={closeMenu}>
+                  <Link href="/stores/" prefetch={false} onClick={closeMenu}>
                     <MapPin className="w-4 h-4" />
                     {t('nav.findStore') || "Find a Store"}
                   </Link>
