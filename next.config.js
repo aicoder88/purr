@@ -26,6 +26,36 @@ const nextConfig = {
     "/blog/*": ["./content/blog/**/*"],
     "/blog/tag/*": ["./content/blog/**/*"],
   },
+  outputFileTracingExcludes: {
+    "/api/admin/blog/*": [
+      "./docs/**/*",
+      "./reports/**/*",
+      "./scripts/**/*",
+      "./migration-*.json",
+      "./reference-manifest.json",
+      "./blog_image_audit_report.json",
+      "./dark-mode-violations-report.json",
+      "./package-lock.json",
+      "./pnpm-lock.yaml",
+      "./public/optimized/**/*",
+      "./public/original-images/**/*",
+      "./public/temp/**/*",
+    ],
+    "/api/webhooks/*": [
+      "./docs/**/*",
+      "./reports/**/*",
+      "./scripts/**/*",
+      "./migration-*.json",
+      "./reference-manifest.json",
+      "./blog_image_audit_report.json",
+      "./dark-mode-violations-report.json",
+      "./package-lock.json",
+      "./pnpm-lock.yaml",
+      "./public/optimized/**/*",
+      "./public/original-images/**/*",
+      "./public/temp/**/*",
+    ],
+  },
 
   images,
   compress: true,
@@ -154,5 +184,3 @@ const nextConfig = {
 };
 
 module.exports = withNextIntl(withBundleAnalyzer(nextConfig));
-
-
