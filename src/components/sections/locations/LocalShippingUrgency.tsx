@@ -107,7 +107,7 @@ export function LocalShippingUrgency({
           {/* CTA */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/products/trial-size"
+              href="/products/trial-size/"
               className="inline-flex items-center justify-center bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-3 px-8 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
               <Package className="w-5 h-5 mr-2" />

@@ -255,9 +255,9 @@ export default async function BlogIndexPage({ searchParams }: PageProps) {
                     <Link
                       href={post.link}
                       className="inline-flex items-center gap-2 text-electric-indigo-600 dark:text-electric-indigo-400 font-semibold hover:gap-3 transition-all"
-                      aria-label={`Read More: ${post.title}`}
+                      aria-label={`Learn more about ${post.title}`}
                     >
-                      Read More
+                      Learn more about {post.title.split(':')[0].split('?')[0].substring(0, 30)}{post.title.length > 30 ? '...' : ''}
                       <ArrowRight className="w-4 h-4" />
                     </Link>
                   </div>

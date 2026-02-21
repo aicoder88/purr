@@ -68,7 +68,7 @@ export const ProvincePageTemplate = ({ provinceSlug }: ProvincePageTemplateProps
           <div className="max-w-6xl mx-auto text-center">
             <nav className="mb-6 text-sm">
               <Link
-                href="/locations"
+                href="/locations/"
                 prefetch={false}
                 className="text-orange-600 dark:text-orange-400 hover:underline"
               >
@@ -119,14 +119,14 @@ export const ProvincePageTemplate = ({ provinceSlug }: ProvincePageTemplateProps
 
               <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
-                  href="/products/trial-size"
+                  href="/products/trial-size/"
                   prefetch={false}
                   className="inline-flex items-center justify-center bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-3 px-6 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all"
                 >
                   {locale === 'fr' ? 'Essayer Purrify' : 'Try Purrify'}
                 </Link>
                 <Link
-                  href="/learn/how-it-works"
+                  href="/learn/how-it-works/"
                   prefetch={false}
                   className="inline-flex items-center justify-center text-orange-600 dark:text-orange-300 font-semibold"
                 >
@@ -288,14 +288,14 @@ export const ProvincePageTemplate = ({ provinceSlug }: ProvincePageTemplateProps
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/products/trial-size"
+                href="/products/trial-size/"
                 prefetch={false}
                 className="inline-flex items-center justify-center bg-gradient-to-r from-orange-500 to-pink-500 text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-orange-600 hover:to-pink-600 transition-all shadow-lg hover:shadow-xl text-lg"
               >
                 {locale === 'fr' ? 'Commander Maintenant' : 'Order Now'}
               </Link>
               <Link
-                href="/learn/faq"
+                href="/learn/faq/"
                 prefetch={false}
                 className="inline-flex items-center justify-center bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-semibold py-4 px-8 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-all border border-gray-300 dark:border-gray-600 text-lg"
               >

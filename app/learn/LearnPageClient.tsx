@@ -266,7 +266,7 @@ export default function LearnPageClient() {
               Solutions by Problem
             </h2>
             <Link
-              href="/learn/solutions"
+              href="/learn/solutions/"
               className="flex items-center text-[#5B2EFF] dark:text-[#3694FF] hover:text-[#03E46A] dark:hover:text-[#03E46A] font-medium text-sm transition-colors"
             >
               View all solutions
@@ -327,7 +327,7 @@ export default function LearnPageClient() {
               Put what you&apos;ve learned into practice. Try Purrify risk-free with our trial size and see why thousands of cat parents swear by it.
             </p>
             <Link
-              href="/products/trial-size"
+              href="/products/trial-size/"
               className="inline-flex items-center justify-center px-8 py-4 bg-[#03E46A] dark:bg-[#04D162] hover:bg-[#02c75b] dark:hover:bg-[#04D162]/90 text-white dark:text-gray-900 font-bold rounded-full transition-colors shadow-lg hover:shadow-xl"
             >
               Try Purrify Risk-Free

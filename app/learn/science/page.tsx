@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.purrify.ca/learn/science/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/learn/science',
-      'fr-CA': 'https://www.purrify.ca/fr/learn/science',
-      'en-US': 'https://www.purrify.ca/learn/science',
-      'x-default': 'https://www.purrify.ca/learn/science',
+      'en-CA': 'https://www.purrify.ca/learn/science/',
+      'fr-CA': 'https://www.purrify.ca/fr/learn/science/',
+      'en-US': 'https://www.purrify.ca/learn/science/',
+      'x-default': 'https://www.purrify.ca/learn/science/',
     },
   },
   openGraph: {

@@ -97,7 +97,7 @@ export function RelatedSolutions({ currentPath, limit = 3 }: RelatedSolutionsPro
         </div>
         <div className="mt-6 text-center">
           <Link
-            href="/learn/solutions"
+            href="/learn/solutions/"
             className="inline-flex items-center text-[#5B2EFF] dark:text-[#3694FF] font-medium hover:underline"
           >
             View all solutions

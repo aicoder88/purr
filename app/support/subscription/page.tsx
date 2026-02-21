@@ -329,7 +329,7 @@ export default function SubscriptionPage() {
                     Subscribe & Save 30%
                   </Button>
                 </Link>
-                <Link href="/customer/portal">
+                <Link href="/customer/portal/">
                   <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-white dark:text-gray-100 hover:bg-white/10 dark:hover:bg-gray-800 font-bold text-lg px-8">
                     Manage Subscription
                   </Button>

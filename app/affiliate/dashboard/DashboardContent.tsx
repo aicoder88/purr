@@ -117,7 +117,7 @@ function QuickLinkCard({ code }: { code: string }) {
             </div>
             <div className="mt-4 flex items-center space-x-4">
                 <Link
-                    href="/affiliate/dashboard/links"
+                    href="/affiliate/dashboard/links/"
                     className="text-sm text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 flex items-center"
                 >
                     Get more links
@@ -305,7 +305,7 @@ function RecentConversions({ conversions }: { conversions: DashboardStats['recen
                     {t('affiliateDashboard.conversions.title') || 'Recent Conversions'}
                 </h3>
                 <Link
-                    href="/affiliate/dashboard/stats"
+                    href="/affiliate/dashboard/stats/"
                     className="text-sm text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300"
                 >
                     View all

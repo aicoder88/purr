@@ -44,7 +44,7 @@ export function TrialCTA({ className = '', variant = 'default' }: TrialCTAProps)
         className={`my-8 p-4 bg-gradient-to-r from-[#03E46A]/10 to-[#5B2EFF]/10 dark:from-[#03E46A]/5 dark:to-[#5B2EFF]/5 border border-[#03E46A]/30 dark:border-[#03E46A]/20 rounded-lg ${className}`}
       >
         <Link
-          href="/products/trial-size"
+          href="/products/trial-size/"
           className="flex items-center justify-between group"
         >
           <div>
@@ -69,7 +69,7 @@ export function TrialCTA({ className = '', variant = 'default' }: TrialCTAProps)
         className={`my-6 p-4 bg-white dark:bg-gray-800 border border-[#E0EFC7] dark:border-gray-700 rounded-xl shadow-sm ${className}`}
       >
         <Link
-          href="/products/trial-size"
+          href="/products/trial-size/"
           className="flex items-center gap-4 group"
         >
           <div className="relative w-16 h-16 flex-shrink-0">
@@ -139,7 +139,7 @@ export function TrialCTA({ className = '', variant = 'default' }: TrialCTAProps)
 
             <div className="flex flex-col sm:flex-row items-center gap-3 justify-center md:justify-start">
               <Link
-                href="/products/trial-size"
+                href="/products/trial-size/"
                 className="inline-flex items-center justify-center px-6 py-3 bg-[#5B2EFF] hover:bg-[#5B2EFF]/90 text-white dark:text-gray-100 font-semibold rounded-full transition-all shadow-lg hover:shadow-xl hover:scale-105"
               >
                 {tryFreeText}

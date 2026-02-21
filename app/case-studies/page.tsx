@@ -399,7 +399,7 @@ export default function CaseStudiesPage() {
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                   <Link
-                    href="/free"
+                    href="/free/"
                     className="inline-block border border-[#FF3131] dark:border-[#FF5050] text-[#FF3131] dark:text-[#FF5050] px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/5 dark:hover:bg-[#FF5050]/10 transition-colors"
                   >
                     Try Free Sample
@@ -412,17 +412,17 @@ export default function CaseStudiesPage() {
             <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600 cv-auto cis-480">
               <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">More Customer Stories</h3>
               <div className="grid md:grid-cols-3 gap-6">
-                <Link href="/reviews" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
+                <Link href="/reviews/" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
                   <Users className="h-8 w-8 text-[#FF3131] dark:text-[#FF5050] mx-auto mb-3" />
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Customer Reviews</h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">Customer feedback and how-to resources</p>
                 </Link>
-                <Link href="/reviews" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
+                <Link href="/reviews/" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
                   <CheckCircle className="h-8 w-8 text-[#FF3131] dark:text-[#FF5050] mx-auto mb-3" />
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Video Testimonials</h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">Watch real customers share their experiences</p>
                 </Link>
-                <Link href="/blog/activated-carbon-vs-baking-soda-comparison" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
+                <Link href="/blog/activated-carbon-vs-baking-soda-comparison/" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
                   <TrendingUp className="h-8 w-8 text-[#FF3131] dark:text-[#FF5050] mx-auto mb-3" />
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Product Comparison</h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">See how Purrify outperforms competitors</p>

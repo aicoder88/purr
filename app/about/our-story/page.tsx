@@ -332,7 +332,7 @@ export default function AboutPage() {
                 Join thousands of happy cat owners who have transformed their homes with Purrify.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <Link href="/products/trial-size">
+                <Link href="/products/trial-size/">
                   <Button
                     size="lg"
                     className="h-auto py-4 px-8 flex items-center justify-center gap-4 bg-electric-indigo hover:bg-electric-indigo-600 text-white dark:text-gray-100 font-bold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 rounded-full group"
@@ -349,7 +349,7 @@ export default function AboutPage() {
                     <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
-                <Link href="/contact">
+                <Link href="/contact/">
                   <Button
                     size="lg"
                     variant="outline"

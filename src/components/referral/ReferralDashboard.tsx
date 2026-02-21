@@ -146,7 +146,7 @@ export function ReferralDashboard({ className = '' }: ReferralDashboardProps) {
         </CardHeader>
         <CardContent>
           <Button asChild>
-            <Link href="/admin/login">{t('referral.dashboard.signIn') || 'Sign In'}</Link>
+            <Link href="/admin/login/">{t('referral.dashboard.signIn') || 'Sign In'}</Link>
           </Button>
         </CardContent>
       </Card>

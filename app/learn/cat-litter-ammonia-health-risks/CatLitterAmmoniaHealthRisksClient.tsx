@@ -82,7 +82,7 @@ export default function CatLitterAmmoniaHealthRisksClient() {
             <span className="sr-only">Home</span>
           </Link>
           <ChevronRight className="w-4 h-4 mx-2" />
-          <Link href="/learn" className="hover:text-forest-600 dark:hover:text-forest-400 transition-colors">
+          <Link href="/learn/" className="hover:text-forest-600 dark:hover:text-forest-400 transition-colors">
             Learn
           </Link>
           <ChevronRight className="w-4 h-4 mx-2" />
@@ -353,7 +353,7 @@ export default function CatLitterAmmoniaHealthRisksClient() {
 
           <footer className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 dark:text-gray-400">
             <p>Published January 2025</p>
-            <Link href="/learn" className="mt-4 md:mt-0 px-6 py-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 rounded-full transition-colors duration-200">
+            <Link href="/learn/" className="mt-4 md:mt-0 px-6 py-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 rounded-full transition-colors duration-200">
               ← Back to Learn
             </Link>
           </footer>

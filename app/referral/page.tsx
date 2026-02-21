@@ -120,7 +120,7 @@ export default function ReferralPage() {
             </div>
             <div className="text-center">
               <Button asChild size="lg">
-                <Link href="/customer/referrals">Open My Referral Dashboard</Link>
+                <Link href="/customer/referrals/">Open My Referral Dashboard</Link>
               </Button>
               <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">
                 Sign in required to view your personal referral stats and links.

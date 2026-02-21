@@ -97,7 +97,7 @@ export function ReferralClient({ code, referralData }: ReferralClientProps) {
             {referralData.error || 'This referral code may have expired or reached its maximum uses.'}
           </p>
           <div className="space-x-4">
-            <Link href="/products/trial-size">
+            <Link href="/products/trial-size/">
               <Button>Shop Trial Size</Button>
             </Link>
             <Link href="/">

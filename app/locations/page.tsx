@@ -174,7 +174,7 @@ export default function LocationsPage() {
               </p>
               <div className="flex flex-wrap gap-3 justify-center">
                 <Link
-                  href="/products/trial-size"
+                  href="/products/trial-size/"
                   className="inline-flex items-center px-6 py-3 font-semibold text-white dark:text-gray-100 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg shadow-lg hover:from-orange-600 hover:to-pink-600 transition"
                 >
                   {locations.hub.shopCta}
@@ -195,7 +195,7 @@ export default function LocationsPage() {
                 {provinces.map((province: Province) => (
                   <Link
                     key={province.slug}
-                    href={`/locations/province/${province.slug}`}
+                    href={`/locations/province/${province.slug}/`}
                     className="group flex flex-col rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/70 p-6 transition hover:border-orange-300 dark:hover:border-orange-500/70 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 dark:focus-visible:ring-orange-400 focus-visible:ring-offset-2"
                   >
                     <div className="flex items-center justify-between mb-3">

@@ -711,7 +711,7 @@ export default function SciencePageClient() {
               </Link>
               <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/how-it-works`}>
                 <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-white dark:text-gray-100 bg-transparent hover:bg-white/10 dark:hover:bg-gray-700/50 transition-colors">
-                  {t('sciencePage.researchSection.buttons.learnMore')}
+                  {t('sciencePage.researchSection.buttons.learnMore') || 'Learn how Purrify eliminates odors'}
                 </Button>
               </Link>
             </div>

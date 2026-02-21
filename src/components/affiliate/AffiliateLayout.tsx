@@ -93,7 +93,7 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
       {/* Mobile Header */}
       <div className="lg:hidden sticky top-0 z-40 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
         <div className="flex items-center justify-between px-4 py-3">
-          <Link href="/affiliate/dashboard" className="flex items-center space-x-2">
+          <Link href="/affiliate/dashboard/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-purple-600 dark:bg-purple-500 rounded-lg flex items-center justify-center">
               <span className="text-white dark:text-gray-100 font-bold text-sm">P</span>
             </div>
@@ -148,7 +148,7 @@ export default function AffiliateLayout({ children }: AffiliateLayoutProps) {
         <aside className="hidden lg:flex lg:flex-col lg:w-64 lg:fixed lg:inset-y-0 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700">
           {/* Logo */}
           <div className="flex items-center h-16 px-6 border-b border-gray-200 dark:border-gray-700">
-            <Link href="/affiliate/dashboard" className="flex items-center space-x-2">
+            <Link href="/affiliate/dashboard/" className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-purple-600 dark:bg-purple-500 rounded-lg flex items-center justify-center">
                 <span className="text-white dark:text-gray-100 font-bold text-sm">P</span>
               </div>

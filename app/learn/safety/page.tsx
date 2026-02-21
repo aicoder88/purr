@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.purrify.ca/learn/safety/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/learn/safety',
-      'fr-CA': 'https://www.purrify.ca/fr/learn/safety',
-      'en-US': 'https://www.purrify.ca/learn/safety',
-      'x-default': 'https://www.purrify.ca/learn/safety',
+      'en-CA': 'https://www.purrify.ca/learn/safety/',
+      'fr-CA': 'https://www.purrify.ca/fr/learn/safety/',
+      'en-US': 'https://www.purrify.ca/learn/safety/',
+      'x-default': 'https://www.purrify.ca/learn/safety/',
     },
   },
   openGraph: {

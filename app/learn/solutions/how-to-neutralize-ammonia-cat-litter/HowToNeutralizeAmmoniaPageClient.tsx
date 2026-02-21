@@ -110,7 +110,7 @@ export default function HowToNeutralizeAmmoniaPageClient() {
               up to 7 days per application.
             </p>
             <Link
-              href="/products/trial-size"
+              href="/products/trial-size/"
               className="inline-block bg-green-600 hover:bg-green-700 text-white dark:text-gray-100 font-bold py-2 px-6 rounded-lg transition-colors"
             >
               Try Activated Carbon Solution →
@@ -499,7 +499,7 @@ export default function HowToNeutralizeAmmoniaPageClient() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/products/trial-size"
+                href="/products/trial-size/"
                 className="inline-block bg-white dark:bg-gray-100 text-electric-indigo font-bold py-4 px-8 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-200 hover:scale-105 transition-all duration-300 shadow-lg"
               >
                 Try Purrify Risk-Free
@@ -522,15 +522,15 @@ export default function HowToNeutralizeAmmoniaPageClient() {
             Related Guides
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <Link href="/learn/solutions/ammonia-smell-cat-litter" className="bg-white dark:bg-gray-700 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+            <Link href="/learn/solutions/ammonia-smell-cat-litter/" className="bg-white dark:bg-gray-700 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
               <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Cat Litter Smells Like Ammonia?</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">Quick fixes for immediate relief</p>
             </Link>
-            <Link href="/learn/activated-carbon-vs-baking-soda-deodorizers" className="bg-white dark:bg-gray-700 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+            <Link href="/learn/activated-carbon-vs-baking-soda-deodorizers/" className="bg-white dark:bg-gray-700 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
               <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Activated Carbon vs Baking Soda</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">Side-by-side comparison results</p>
             </Link>
-            <Link href="/learn/solutions/apartment-cat-smell-solution" className="bg-white dark:bg-gray-700 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+            <Link href="/learn/solutions/apartment-cat-smell-solution/" className="bg-white dark:bg-gray-700 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
               <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Apartment Odor Solutions</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">For small spaces with poor ventilation</p>
             </Link>

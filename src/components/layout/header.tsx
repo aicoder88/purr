@@ -140,7 +140,7 @@ export function Header() {
       dropdownItems: [
         {
           label: t('nav.retailers'),
-          href: `${localePrefix}/retailers`,
+          href: `${localePrefix}/retailers/`,
         },
         {
           label: t('nav.wholesalePricing'),
@@ -245,7 +245,7 @@ export function Header() {
         },
         {
           label: t('nav.multipleCats'),
-          href: `/blog/best-cat-litter-multiple-cats-odor-control/`;
+          href: `/blog/best-cat-litter-multiple-cats-odor-control/`,
           indent: true,
         },
         {
@@ -255,7 +255,7 @@ export function Header() {
         },
         {
           label: t('nav.seniorCats'),
-          href: `/blog/best-cat-litter-multiple-cats-odor-control/`;
+          href: `/blog/best-cat-litter-multiple-cats-odor-control/`,
           indent: true,
         },
       ],
@@ -273,7 +273,7 @@ export function Header() {
       dropdownItems: [
         {
           label: t('nav.ourStory') || "Our Story",
-          href: `${localePrefix}/about/our-story`,
+          href: `${localePrefix}/about/our-story/`,
         },
         {
           label: t('nav.customerReviews') || "Reviews",

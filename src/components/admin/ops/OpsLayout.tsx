@@ -49,7 +49,7 @@ export default function OpsLayout({ children, title }: OpsLayoutProps) {
           <div className="flex justify-between items-center h-16">
             {/* Logo and Title */}
             <div className="flex items-center space-x-4">
-              <Link href="/admin/ops" className="flex items-center space-x-2">
+              <Link href="/admin/ops/" className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-teal-500 dark:bg-teal-600 rounded-lg flex items-center justify-center">
                   <span className="text-white dark:text-gray-100 font-bold text-sm">P</span>
                 </div>
@@ -60,7 +60,7 @@ export default function OpsLayout({ children, title }: OpsLayoutProps) {
             {/* User Menu */}
             <div className="flex items-center space-x-4">
               <Link
-                href="/admin/blog"
+                href="/admin/blog/"
                 className="text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 flex items-center space-x-1"
               >
                 <span>Blog Admin</span>

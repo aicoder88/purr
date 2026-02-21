@@ -130,7 +130,7 @@ export default function LoginForm() {
             <div className="mt-4 text-center text-sm">
                 <p className="text-gray-500 dark:text-gray-400">
                     Don't have an affiliate account?{" "}
-                    <Link href="/affiliate/signup" className="text-blue-600 dark:text-blue-400 hover:underline">
+                    <Link href="/affiliate/signup/" className="text-blue-600 dark:text-blue-400 hover:underline">
                         Join now
                     </Link>
                 </p>

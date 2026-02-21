@@ -85,7 +85,7 @@ export function ScienceSection() {
                                 </Link>
                             </Button>
                             <Button asChild variant="outline" className="rounded-full px-8 py-6 text-lg font-bold border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all hover:-translate-y-1">
-                                <Link href="/blog/activated-carbon-vs-baking-soda-comparison">
+                                <Link href="/blog/activated-carbon-vs-baking-soda-comparison/">
                                     {t('nav.carbonVsBakingSoda')}
                                 </Link>
                             </Button>

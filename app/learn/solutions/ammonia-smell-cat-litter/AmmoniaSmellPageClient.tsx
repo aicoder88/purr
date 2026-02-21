@@ -301,7 +301,7 @@ export default function AmmoniaSmellPageClient() {
               Shop Purrify Now
             </Link>
             <Link
-              href="/learn/how-it-works"
+              href="/learn/how-it-works/"
               className="inline-block bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-200 font-bold py-4 px-8 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-500 transition-all text-lg"
             >
               Learn More
@@ -318,7 +318,7 @@ export default function AmmoniaSmellPageClient() {
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Link
-              href="/learn/ammonia-science"
+              href="/learn/ammonia-science/"
               className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] dark:hover:border-[#FF5050] transition-all group"
             >
               <div className="text-3xl mb-3">🔬</div>
@@ -330,7 +330,7 @@ export default function AmmoniaSmellPageClient() {
               </p>
             </Link>
             <Link
-              href="/learn/cat-litter-ammonia-health-risks"
+              href="/learn/cat-litter-ammonia-health-risks/"
               className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] dark:hover:border-[#FF5050] transition-all group"
             >
               <div className="text-3xl mb-3">⚠️</div>
@@ -342,7 +342,7 @@ export default function AmmoniaSmellPageClient() {
               </p>
             </Link>
             <Link
-              href="/blog/how-to-neutralize-ammonia-cat-litter"
+              href="/blog/how-to-neutralize-ammonia-cat-litter/"
               className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] dark:hover:border-[#FF5050] transition-all group"
             >
               <div className="text-3xl mb-3">✅</div>
@@ -354,7 +354,7 @@ export default function AmmoniaSmellPageClient() {
               </p>
             </Link>
             <Link
-              href="/learn/activated-carbon-vs-baking-soda-deodorizers"
+              href="/learn/activated-carbon-vs-baking-soda-deodorizers/"
               className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] dark:hover:border-[#FF5050] transition-all group"
             >
               <div className="text-3xl mb-3">⚖️</div>

@@ -181,20 +181,20 @@ export function QuickActions({ onSync, onExport }: QuickActionsProps) {
           title="Email Campaign"
           description="Send to leads"
           icon={Mail}
-          href="/admin/ops/leads"
+          href="/admin/ops/leads/"
         />
         <QuickActionCard
           title="Social Post"
           description="Create content"
           icon={Share2}
-          href="/admin/ops/social"
+          href="/admin/ops/social/"
           variant="primary"
         />
         <QuickActionCard
           title="Blog Content"
           description="Generate article"
           icon={FileText}
-          href="/admin/blog/new"
+          href="/admin/blog/new/"
         />
         <QuickActionCard
           title="Sync Leads"
@@ -222,7 +222,7 @@ export function QuickActions({ onSync, onExport }: QuickActionsProps) {
           title="Send Newsletter"
           description="To subscribers"
           icon={Send}
-          href="/admin/ops/leads"
+          href="/admin/ops/leads/"
         />
       </div>
     </motion.div>

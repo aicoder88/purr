@@ -147,7 +147,7 @@ export default function SEODashboard() {
           <p className="text-gray-600 dark:text-gray-400 mb-6">
             You must be logged in as an admin to view this page.
           </p>
-          <Link href="/admin/login">
+          <Link href="/admin/login/">
             <Button>Login</Button>
           </Link>
         </div>
@@ -399,7 +399,7 @@ export default function SEODashboard() {
           <ExternalLink className="w-4 h-4 text-gray-400 dark:text-gray-500 ml-auto" />
         </a>
         <Link
-          href="/admin/blog"
+          href="/admin/blog/"
           className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 transition-colors"
         >
           <FileText className="w-5 h-5 text-purple-500 dark:text-purple-400" />

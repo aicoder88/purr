@@ -85,7 +85,7 @@ export default function SolutionsPageClient() {
               <Home className="w-4 h-4" />
             </Link>
             <ChevronRight className="w-4 h-4 text-gray-400 dark:text-gray-500" />
-            <Link href="/learn/how-it-works" className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
+            <Link href="/learn/how-it-works/" className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
               Learn
             </Link>
             <ChevronRight className="w-4 h-4 text-gray-400 dark:text-gray-500" />
@@ -166,7 +166,7 @@ export default function SolutionsPageClient() {
               All our solutions feature Purrify&apos;s activated carbon technology. Start with our risk-free trial size.
             </p>
             <Link
-              href="/products/trial-size"
+              href="/products/trial-size/"
               className="inline-flex items-center justify-center px-8 py-4 bg-[#03E46A] dark:bg-[#04D162] hover:bg-[#02c75b] dark:hover:bg-[#04D162]/90 text-white dark:text-gray-900 font-bold rounded-full transition-colors shadow-lg hover:shadow-xl"
             >
               Try Purrify Risk-Free

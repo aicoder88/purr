@@ -570,13 +570,13 @@ export default function HowActivatedCarbonWorksClient() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/products/trial-size"
+                href="/products/trial-size/"
                 className="inline-block bg-white dark:bg-gray-100 text-electric-indigo font-bold py-4 px-8 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-200 hover:scale-105 transition-all duration-300 shadow-lg"
               >
                 Try Purrify Today
               </Link>
               <Link
-                href="/learn/ammonia-science"
+                href="/learn/ammonia-science/"
                 className="inline-block border-2 border-white dark:border-gray-100 text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:bg-white/10 dark:hover:bg-gray-100/10 hover:scale-105 transition-all duration-300"
               >
                 Learn About Ammonia
@@ -593,15 +593,15 @@ export default function HowActivatedCarbonWorksClient() {
             Related Articles
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <Link href="/learn/ammonia-science" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+            <Link href="/learn/ammonia-science/" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
               <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Why Cat Urine Smells Like Ammonia</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">The science behind the smell</p>
             </Link>
-            <Link href="/blog/how-to-neutralize-ammonia-cat-litter" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+            <Link href="/blog/how-to-neutralize-ammonia-cat-litter/" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
               <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">5 Methods to Neutralize Ammonia</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">Ranked by effectiveness</p>
             </Link>
-            <Link href="/blog/activated-carbon-vs-baking-soda-comparison" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+            <Link href="/blog/activated-carbon-vs-baking-soda-comparison/" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
               <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Activated Carbon vs Baking Soda</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">Head-to-head comparison</p>
             </Link>

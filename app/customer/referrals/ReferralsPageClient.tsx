@@ -78,7 +78,7 @@ export default function ReferralsPageClient() {
           <div className="max-w-4xl mx-auto">
             {/* Back to Portal */}
             <Link
-              href="/customer/portal"
+              href="/customer/portal/"
               className="inline-flex items-center text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 mb-8"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -219,7 +219,7 @@ export default function ReferralsPageClient() {
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center space-x-4">
               <Link
-                href="/customer/portal"
+                href="/customer/portal/"
                 className="inline-flex items-center text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />

@@ -506,7 +506,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
 
               <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
-                  href="/products/trial-size"
+                  href="/products/trial-size/"
                   className={CTA_BUTTON_CLASSES}
                 >
                   {interpolate(t('cityPage.cta.tryInCity') ?? 'Try Purrify in {{city}}', { city: profile.name })}
@@ -519,7 +519,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
                   scentFocus={scentPainPoints[0] ?? 'Local odor hotspots we see every week'}
                 />
                 <Link
-                  href="/learn/faq"
+                  href="/learn/faq/"
                   className="inline-flex items-center justify-center text-orange-600 dark:text-orange-300 font-semibold"
                 >
                   {t('cityPage.cta.seeHowItWorks') ?? 'See how the carbon technology works →'}
@@ -563,7 +563,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
                       {interpolate(t('cityPage.whereToFind.orderDirect.description') ?? 'Prefer doorstep delivery? Order online and receive fresh air in 2-3 business days anywhere in {{province}}.', { province: provinceName })}
                     </p>
                     <Link
-                      href="/products/trial-size"
+                      href="/products/trial-size/"
                       className={CTA_BUTTON_CLASSES}
                     >
                       {t('cityPage.cta.shopOnline') ?? 'Shop Online Now'}
