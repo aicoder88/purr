@@ -1,15 +1,87 @@
-# llms.txt — AI Crawler and Training Policy for Purrify
-# More info: https://llmstxt.org
+# Purrify
 
-User-agent: *
-Allow: /
+> Purrify is a Canadian-made activated carbon cat litter additive that eliminates ammonia odors at the molecular level. Our all-natural, chemical-free formula uses coconut-based activated carbon to absorb and neutralize unpleasant smells, making homes fresher for cat owners and their feline companions.
 
-# Disallow sensitive or dynamic endpoints
-Disallow: /api/
-Disallow: /admin/
-Disallow: /_next/
-Disallow: /static/
+## Overview
 
-# Contact
-Contact: info@purrify.ca
+Purrify provides an eco-friendly solution for cat litter odor control. The product is safe for cats, kittens, and humans, with a simple sprinkle-and-mix application. Available in multiple sizes to suit single-cat households to multi-cat families.
 
+## Key Information
+
+- **Website**: https://www.purrify.ca
+- **Contact**: info@purrify.ca
+- **Founded**: Canada
+- **Product Type**: Pet care / Cat litter additive
+- **Key Ingredient**: Activated carbon (coconut-based)
+
+## Main Sections
+
+### Products
+- [Products Overview](https://www.purrify.ca/products/) - All Purrify products and sizes
+- [Trial Size](https://www.purrify.ca/products/trial-size/) - 20g trial pack for first-time users
+- [Standard Size](https://www.purrify.ca/products/standard/) - Regular size for single-cat households
+- [Family Pack](https://www.purrify.ca/products/family-pack/) - Large size for multi-cat homes
+
+### Learn & Educate
+- [How It Works](https://www.purrify.ca/learn/how-it-works/) - The science behind Purrify
+- [FAQ](https://www.purrify.ca/learn/faq/) - Frequently asked questions
+- [Science of Activated Carbon](https://www.purrify.ca/learn/how-activated-carbon-works/) - How activated carbon eliminates odors
+- [Ammonia Science](https://www.purrify.ca/learn/ammonia-science/) - Understanding ammonia in cat litter
+- [Health Risks](https://www.purrify.ca/learn/cat-litter-ammonia-health-risks/) - Health impacts of ammonia exposure
+- [Cat Litter Guide](https://www.purrify.ca/learn/cat-litter-guide/) - Comprehensive guide to cat litter
+- [Safety Information](https://www.purrify.ca/learn/safety/) - Is Purrify safe for cats and kittens?
+- [Glossary](https://www.purrify.ca/learn/glossary/) - Pet care terminology
+
+### Solutions
+- [Ammonia Smell Solutions](https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter/) - Eliminating ammonia odors
+- [Multiple Cats Odor Control](https://www.purrify.ca/learn/solutions/multiple-cats-odor-control/) - Solutions for multi-cat households
+- [Apartment Solutions](https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/) - Small space odor control
+- [Senior Cat Solutions](https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions/) - Special care for older cats
+- [Litter Box Smell Elimination](https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/) - Complete odor elimination guide
+- [Natural Additive](https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/) - Natural odor control options
+- [Neutralize Ammonia](https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/) - Step-by-step ammonia neutralization
+
+### Company
+- [Our Story](https://www.purrify.ca/about/our-story/) - How Purrify started
+- [Reviews](https://www.purrify.ca/reviews/) - Customer testimonials and reviews
+- [Case Studies](https://www.purrify.ca/case-studies/) - Real-world success stories
+- [Science Page](https://www.purrify.ca/science/) - Research and scientific backing
+
+### Store & Retail
+- [Store Locator](https://www.purrify.ca/stores/) - Find physical retail locations
+- [Retailers](https://www.purrify.ca/retailers/) - Information for retail partners
+- [Locations](https://www.purrify.ca/locations/) - Regional availability
+
+### Support
+- [Contact Us](https://www.purrify.ca/contact/) - Get in touch
+- [Support Center](https://www.purrify.ca/support/) - Help and documentation
+- [Shipping Info](https://www.purrify.ca/support/shipping/) - Shipping policies
+
+### Special Programs
+- [Try Free](https://www.purrify.ca/try-free/) - Free trial program
+- [Referral Program](https://www.purrify.ca/referral/) - Refer friends and earn rewards
+- [Affiliate Program](https://www.purrify.ca/affiliate/) - Partner with Purrify
+- [B2B / Wholesale](https://www.purrify.ca/b2b/) - Business and retail partnerships
+
+### Blog
+- [Blog](https://www.purrify.ca/blog/) - Articles, tips, and cat care advice
+
+### Legal
+- [Privacy Policy](https://www.purrify.ca/privacy-policy/) - Data privacy and protection
+- [Terms of Service](https://www.purrify.ca/terms/) - Terms and conditions
+
+## International
+
+- [Canada](https://www.purrify.ca/canada/) - Canadian customers
+- [United States](https://www.purrify.ca/us/) - US customers
+- [Français](https://www.purrify.ca/fr/) - French Canadian version
+
+## Technical
+
+- [Sitemap](https://www.purrify.ca/sitemap.xml)
+- [Robots](https://www.purrify.ca/robots.txt)
+
+---
+
+*Last updated: 2026-02-21*
+*Format: llms.txt v1.0 (https://llmstxt.org)*
