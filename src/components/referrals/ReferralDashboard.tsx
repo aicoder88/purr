@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Share2, Copy, Trophy, Gift, Users, TrendingUp, Star, Mail, MessageSquare, Facebook, Twitter, Send, Linkedin } from 'lucide-react';
+import { Share2, Copy, Trophy, Gift, Users, TrendingUp, Star, Mail, MessageSquare, Facebook, Send, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -53,7 +53,6 @@ interface SocialShareStats {
   email: number;
   sms: number;
   facebook: number;
-  twitter: number;
   whatsapp: number;
   linkedin: number;
   total: number;
@@ -151,9 +150,6 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
     switch (platform) {
       case 'facebook':
         shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(message)}`;
-        break;
-      case 'twitter':
-        shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${message} ${url} #CatOdorSolution #PurrifyWorks`)}`;
         break;
       case 'whatsapp':
         shareUrl = `https://wa.me/?text=${encodeURIComponent(`${message} ${url}`)}`;
@@ -315,7 +311,7 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
           Share your referral code with friends and family. They get a free trial, you earn rewards!
         </p>
 
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
+        <div className="grid grid-cols-3 md:grid-cols-5 gap-3">
           <Button
             onClick={() => handleSocialShare('email')}
             variant="outline"
@@ -350,15 +346,6 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
           >
             <Facebook className="w-5 h-5 mb-1" />
             <span className="text-xs">Facebook</span>
-          </Button>
-
-          <Button
-            onClick={() => handleSocialShare('twitter')}
-            variant="outline"
-            className="flex flex-col items-center p-4 h-auto"
-          >
-            <Twitter className="w-5 h-5 mb-1" />
-            <span className="text-xs">Twitter</span>
           </Button>
 
           <Button

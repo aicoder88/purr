@@ -22,14 +22,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: {
-    card: 'summary_large_image',
-    site: '@purrifyhq',
-    creator: '@purrifyhq',
-    title: 'Purrify Reviews - What Cat Owners Are Saying',
-    description: 'Read customer feedback about Purrify and learn how cat owners use an activated carbon additive to reduce litter box odor.',
-    images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'],
-  },
   alternates: {
     canonical: 'https://www.purrify.ca/reviews/',
     languages: {

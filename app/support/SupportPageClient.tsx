@@ -6,8 +6,7 @@ import { Mail, Phone, Truck, MessageCircle, Clock, HelpCircle, Package, Shield }
 import { Container } from '../../src/components/ui/container';
 import { Button } from '../../src/components/ui/button';
 import { CONTACT_INFO } from '../../src/lib/constants';
-import { useTranslation } from '../../src/lib/translation-context';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
 

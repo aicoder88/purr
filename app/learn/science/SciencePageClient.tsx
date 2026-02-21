@@ -2,8 +2,8 @@
 
 import { Container } from '../../../src/components/ui/container';
 import { Button } from '../../../src/components/ui/button';
-import { useTranslation } from '../../../src/lib/translation-context';
-import { useTranslations, useLocale } from 'next-intl';
+
+import { useTranslations } from 'next-intl';
 import { formatProductPrice } from '../../../src/lib/pricing';
 import Link from 'next/link';
 import { ArrowLeft, Atom, Zap, Shield, Microscope, FlaskConical, BarChart3, Home, ChevronRight } from 'lucide-react';

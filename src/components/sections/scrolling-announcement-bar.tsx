@@ -1,7 +1,7 @@
 "use client";
 
 import { Truck, MapPin, Leaf, ShieldCheck, Users } from 'lucide-react';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 export function ScrollingAnnouncementBar() {
   const t = useTranslations();

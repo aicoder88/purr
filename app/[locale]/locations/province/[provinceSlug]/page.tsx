@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+
 import { locales, isValidLocale } from '@/i18n/config';
 import { locationsByProvince, getProvinceBySlug } from '@/data/locations';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';

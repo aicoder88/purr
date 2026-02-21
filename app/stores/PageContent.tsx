@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { MapPin, Phone, Globe, Search, Navigation, Store as StoreIcon } from 'lucide-react';
 import { useState, useMemo } from 'react';
-import { buildAvailabilityUrl, getPriceValidityDate } from '@/lib/seo-utils';
+
 
 // Note: This page uses client-side features (useState, useMemo) for interactivity
 // Metadata is defined in page.tsx (Server Component)
@@ -352,8 +352,6 @@ export default function StoresPage() {
   const [selectedRegion, setSelectedRegion] = useState<string>('all');
   const [selectedType, setSelectedType] = useState<string>('all');
 
-  const priceValidUntil = getPriceValidityDate();
-  const availabilityUrl = buildAvailabilityUrl();
   const canonicalUrl = 'https://www.purrify.ca/stores/';
 
   // Filter stores based on search and filters

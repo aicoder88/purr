@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import AffiliateLayout from '@/components/affiliate/AffiliateLayout';
 import { PerformanceChart } from '@/components/affiliate/PerformanceChart';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import {
     MousePointer,
     ShoppingCart,
@@ -157,7 +157,7 @@ export default function StatsContent() {
         } finally {
             setIsLoading(false);
         }
-    }, [dateRange, t('affiliateDashboard.errors.loadFailed'), router]);
+    }, [dateRange, t, router]);
 
     useEffect(() => {
         fetchData();

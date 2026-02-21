@@ -1,6 +1,6 @@
-import { Instagram, Twitter, Youtube, Facebook, Linkedin } from 'lucide-react';
+import { Instagram, Youtube, Facebook, Linkedin } from 'lucide-react';
 import { SOCIAL_LINKS } from '@/lib/constants';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 interface SocialFollowCTAProps {
   variant?: 'inline' | 'card';
@@ -24,12 +24,6 @@ const socialLinks = [
     url: SOCIAL_LINKS.instagram,
     icon: Instagram,
     color: 'hover:text-[#E4405F] dark:hover:text-[#E4405F]',
-  },
-  {
-    name: 'X',
-    url: SOCIAL_LINKS.x,
-    icon: Twitter,
-    color: 'hover:text-[#1DA1F2] dark:hover:text-[#1DA1F2]',
   },
   {
     name: 'Facebook',

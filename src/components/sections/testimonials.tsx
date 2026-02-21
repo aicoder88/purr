@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/container";
 import { TESTIMONIALS } from "@/lib/constants";
 import SectionHeader from "@/components/ui/section-header";
 import Image from "next/image";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import { createColorClasses, createSectionClasses, GRADIENTS, COLORS } from "@/lib/theme-utils";
 import { generateStarRating, generateAvatarUrl, QuoteIcon, createStaggeredAnimation } from "@/lib/component-utils";
 

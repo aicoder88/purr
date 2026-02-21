@@ -22,7 +22,6 @@ interface ReferralStats {
   socialShares: {
     facebook: number;
     instagram: number;
-    twitter: number;
     direct: number;
   };
 }
@@ -90,10 +89,7 @@ const SOCIAL_TEMPLATES = {
     text: "PSA for cat parents: This activated carbon additive CHANGED MY LIFE 🙌 No more embarrassing litter smells when guests come over! Works with ANY litter brand. Swipe for before/after! 25% OFF for my followers 💕",
     hashtags: ["#CatMom", "#CatDad", "#PetHacks", "#OdorControl", "#CatLife", "#PetParents", "#CatTips"]
   },
-  twitter: {
-    text: "Cat parents, listen up! 🐱 I've tried EVERYTHING for litter odors. Purrify is the only thing that actually works. Natural activated carbon that eliminates (not masks) smells. Get 25% off:",
-    hashtags: ["#CatParent", "#PetTips", "#CatLitter", "#OdorFree"]
-  },
+
   email: {
     subject: "Found the holy grail of cat odor control! 🐱",
     text: "Hey! I know you love your cats as much as I do, so I had to share this amazing discovery. I've been using Purrify for 2 months and my litter box literally has ZERO smell now. It's natural activated carbon that works with any litter. I'm obsessed! You can get 25% off with my referral link:"
@@ -113,7 +109,7 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
     currentTier: 'Cat Lover',
     nextTierProgress: 0,
     recentReferrals: [],
-    socialShares: { facebook: 0, instagram: 0, twitter: 0, direct: 0 },
+    socialShares: { facebook: 0, instagram: 0, direct: 0 },
     ...initialStats
   });
 
@@ -185,10 +181,6 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
     switch (platform) {
       case 'facebook':
         shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(referralLink)}&quote=${encodeURIComponent(fullText)}`;
-        break;
-      case 'twitter':
-        const hashtags = SOCIAL_TEMPLATES.twitter.hashtags.join(',');
-        shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(fullText)}&hashtags=${hashtags}`;
         break;
       case 'instagram':
         // Instagram doesn't have direct sharing, so copy to clipboard
@@ -394,12 +386,6 @@ export function ViralReferralSystem({ userId, initialStats }: ViralReferralSyste
                     className="bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100"
                   >
                     📘 Facebook
-                  </Button>
-                  <Button
-                    onClick={() => shareToSocial('twitter')}
-                    className="bg-sky-500 dark:bg-sky-600 text-white dark:text-gray-100"
-                  >
-                    🐦 Twitter
                   </Button>
                   <Button
                     onClick={() => shareToSocial('email')}

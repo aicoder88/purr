@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Facebook,
   Linkedin,
-  Twitter,
   Instagram,
   FileText,
   Link as LinkIcon,
@@ -32,14 +31,6 @@ const PLATFORMS = {
     hoverColor: 'hover:bg-blue-800',
     charLimit: 1300,
     label: 'LI'
-  },
-  twitter: {
-    name: 'Twitter/X',
-    icon: Twitter,
-    color: 'bg-gray-900 dark:bg-gray-700',
-    hoverColor: 'hover:bg-gray-800 dark:hover:bg-gray-600',
-    charLimit: 280,
-    label: 'X'
   },
   instagram: {
     name: 'Instagram',
@@ -69,7 +60,7 @@ export function ContentCreator({ onSubmit }: ContentCreatorProps) {
   const [content, setContent] = useState('');
   const [url, setUrl] = useState('');
   const [isExtractingUrl, setIsExtractingUrl] = useState(false);
-  const [selectedPlatforms, setSelectedPlatforms] = useState<PlatformKey[]>(['facebook', 'linkedin']);
+  const [selectedPlatforms, setSelectedPlatforms] = useState<PlatformKey[]>(['facebook', 'linkedin', 'instagram']);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [inputMode, setInputMode] = useState<'text' | 'url'>('text');

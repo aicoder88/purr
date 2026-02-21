@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import AffiliateLayout from '@/components/affiliate/AffiliateLayout';
 import { LinkGenerator } from '@/components/affiliate/LinkGenerator';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { Copy, Check, ExternalLink, QrCode } from 'lucide-react';
 import Image from 'next/image';
 
@@ -144,7 +144,7 @@ export default function LinksContent() {
         } finally {
             setIsLoading(false);
         }
-    }, [t('affiliateDashboard.errors.loadFailed'), router]);
+    }, [t, router]);
 
     useEffect(() => {
         fetchLinks();

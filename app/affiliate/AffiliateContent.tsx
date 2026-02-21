@@ -5,7 +5,7 @@ import { Container } from '@/components/ui/container';
 import { CheckCircle2, ArrowRight, Star, DollarSign, Users, TrendingUp, Award, Zap, Gift } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 // Tier configuration
 const TIERS = {

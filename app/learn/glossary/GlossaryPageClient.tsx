@@ -3,8 +3,7 @@
 import Link from 'next/link';
 import { Container } from '../../../src/components/ui/container';
 import { Button } from '../../../src/components/ui/button';
-import { useTranslation } from '../../../src/lib/translation-context';
-import { useLocale } from 'next-intl';
+
 import {
   BookOpen,
   ChevronRight,

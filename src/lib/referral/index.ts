@@ -157,9 +157,6 @@ export function generateShareUrls(code: string, referrerName: string) {
     facebook: {
       url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(fullMessage)}`,
     },
-    twitter: {
-      url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${message} ${shareUrl} #CatLitterDeodorizer #Purrify`)}`,
-    },
     whatsapp: {
       url: `https://wa.me/?text=${encodeURIComponent(`${fullMessage} ${shareUrl}`)}`,
     },

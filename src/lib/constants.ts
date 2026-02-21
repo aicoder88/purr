@@ -213,8 +213,6 @@ export const PHONE_MESSAGING = {
 };
 
 export const SOCIAL_LINKS = {
-  x: BUSINESS_PROFILE.socialMedia.twitter ?? 'https://x.com/PurrifyHQ',
-  twitter: BUSINESS_PROFILE.socialMedia.twitter ?? 'https://x.com/PurrifyHQ', // Alias for x
   instagram: BUSINESS_PROFILE.socialMedia.instagram ?? 'https://www.instagram.com/purrifyhq/',
   linkedin: BUSINESS_PROFILE.socialMedia.linkedin ?? 'https://www.linkedin.com/company/purrifyhq/',
   youtube: BUSINESS_PROFILE.socialMedia.youtube ?? 'https://www.youtube.com/@PurrifyHQ',

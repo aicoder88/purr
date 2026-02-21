@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { locales } from '@/i18n/config';
-import { notFound } from 'next/navigation';
+
+
 import { getCityBySlug, getAllCities } from '@/data/locations';
 import { CityPageTemplate } from '@/components/sections/locations/createCityPage';
 import { getTranslation } from '@/translations';

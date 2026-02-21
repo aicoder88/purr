@@ -6,7 +6,6 @@ import { formatDistanceToNow } from 'date-fns';
 import {
   Facebook,
   Linkedin,
-  Twitter,
   Instagram,
   FileText,
   Clock,
@@ -34,7 +33,6 @@ interface RecentSubmissionsProps {
 const platformIcons: Record<string, React.ElementType> = {
   facebook: Facebook,
   linkedin: Linkedin,
-  twitter: Twitter,
   instagram: Instagram,
   blog: FileText
 };
@@ -42,7 +40,6 @@ const platformIcons: Record<string, React.ElementType> = {
 const platformColors: Record<string, string> = {
   facebook: 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400',
   linkedin: 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300',
-  twitter: 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100',
   instagram: 'bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400',
   blog: 'bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400'
 };

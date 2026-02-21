@@ -66,7 +66,7 @@ function computeHash(filePath) {
   try {
     const content = fs.readFileSync(filePath);
     return crypto.createHash('sha256').update(content).digest('hex');
-  } catch (e) {
+  } catch (_e) {
     return null;
   }
 }
@@ -76,7 +76,7 @@ function getFileSize(filePath) {
   try {
     const stats = fs.statSync(filePath);
     return stats.size;
-  } catch (e) {
+  } catch (_e) {
     return 0;
   }
 }
@@ -313,7 +313,7 @@ async function generateManifest() {
   console.log(`\nFound ${variantGroups.size} variant groups`);
   
   // Ensure all variants in a group have the same category
-  for (const [groupName, groupFiles] of variantGroups) {
+  for (const [_groupName, groupFiles] of variantGroups) {
     const categories = new Set(groupFiles.map(f => f.category));
     if (categories.size > 1) {
       // Use the most common category or the first non-marketing category

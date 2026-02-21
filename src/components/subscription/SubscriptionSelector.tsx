@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Check, Zap, Calendar, Shield, Truck, Star } from 'lucide-react';
-import { useTranslations, useLocale } from 'next-intl';
+
 import { formatCurrencyValue } from '@/lib/pricing';
 import { getPaymentLink } from '@/lib/payment-links';
 import {

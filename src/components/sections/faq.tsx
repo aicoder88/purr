@@ -5,7 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import Script from 'next/script';
 import { createSectionClasses, createCardClasses, GRADIENTS, COLORS } from "@/lib/theme-utils";
 import SectionHeader from "@/components/ui/section-header";
@@ -17,7 +17,6 @@ interface FAQProps {
 
 export function FAQ({ includeStructuredData = false }: FAQProps) {
   const t = useTranslations();
-  const locale = useLocale();
   
   // Build FAQ items from individual translation keys
   // Check if the first item exists to determine if translations are available

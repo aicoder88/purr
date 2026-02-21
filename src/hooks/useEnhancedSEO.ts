@@ -4,7 +4,7 @@
  * GEO (Generative Engine Optimization) compliant with ClaimReview and expert author schemas
  */
 
-import { useTranslations, useLocale } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { useCurrency } from '../lib/currency-context';
 import { optimizeMetaTitle, optimizeMetaDescription } from '../lib/seo/meta-optimizer';
 import { getLocalizedUrl, buildLanguageAlternates } from '../lib/seo-utils';
@@ -168,8 +168,6 @@ export function useEnhancedSEO(config: SEOConfig): EnhancedSEOResult {
     },
     twitter: {
       cardType: 'summary_large_image',
-      handle: '@purrifyhq',
-      site: '@purrifyhq',
     },
     additionalMetaTags: [
       ...(config.keywords

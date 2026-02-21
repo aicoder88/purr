@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import AffiliateLayout from '@/components/affiliate/AffiliateLayout';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import {
     User,
     CreditCard,
@@ -74,7 +74,7 @@ export default function SettingsContent() {
         } finally {
             setIsLoading(false);
         }
-    }, [t('affiliateDashboard.errors.loadFailed'), router]);
+    }, [t, router]);
 
     useEffect(() => {
         fetchSettings();

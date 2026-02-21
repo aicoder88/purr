@@ -3,7 +3,7 @@
 import { useCallback } from 'react';
 import { Minus, Plus } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 export interface QuantitySelectorProps {
   /** Current quantity value */

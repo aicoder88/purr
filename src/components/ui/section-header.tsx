@@ -1,4 +1,4 @@
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 
 // Default highlight texts for fallback
 const defaultHighlightTexts = [

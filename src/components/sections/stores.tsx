@@ -2,7 +2,7 @@
 
 import { Container } from "@/components/ui/container";
 import Image from "next/image";
-import { useTranslations, useLocale } from "next-intl";
+import { useLocale } from "next-intl";
 import { useTranslation as __useTranslation } from "@/lib/translation-context";
 import { useState, useEffect } from "react";
 

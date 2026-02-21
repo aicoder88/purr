@@ -2,12 +2,11 @@
 
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Bomb } from "lucide-react";
 
 export function AgitationSection() {
   const t = useTranslations('agitationSection');
-  const locale = useLocale();
 
   // Fallback paragraphs in case translations aren't loaded
   const paragraphs: string[] = [];

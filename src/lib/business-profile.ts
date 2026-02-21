@@ -49,7 +49,6 @@ export interface BusinessProfile {
   socialMedia: {
     facebook?: string;
     instagram?: string;
-    twitter?: string;
     linkedin?: string;
     youtube?: string;
     tiktok?: string;
@@ -115,7 +114,6 @@ export const BUSINESS_PROFILE: BusinessProfile = {
   socialMedia: {
     facebook: 'https://www.facebook.com/Purrifyhq',
     instagram: 'https://www.instagram.com/purrifyhq/',
-    twitter: 'https://x.com/PurrifyHQ',
     linkedin: 'https://www.linkedin.com/company/purrifyhq/',
     youtube: 'https://www.youtube.com/@PurrifyHQ',
     tiktok: 'https://www.tiktok.com/@purrifyhq',

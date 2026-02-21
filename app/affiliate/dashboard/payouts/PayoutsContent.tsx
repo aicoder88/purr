@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import AffiliateLayout from '@/components/affiliate/AffiliateLayout';
 import { PayoutRequestModal } from '@/components/affiliate/PayoutRequestModal';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import {
     Wallet,
     Clock,
@@ -129,7 +129,7 @@ export default function PayoutsContent() {
         } finally {
             setIsLoading(false);
         }
-    }, [t('affiliateDashboard.errors.loadFailed'), router]);
+    }, [t, router]);
 
     useEffect(() => {
         fetchPayouts();

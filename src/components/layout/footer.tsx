@@ -7,7 +7,6 @@ import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import {
   Instagram,
-  Twitter,
   Linkedin,
   Youtube,
   Facebook,
@@ -33,7 +32,6 @@ const footerUiCopy: Record<SupportedLocale, {
   logoAlt: string;
   socialAria: {
     instagram: string;
-    x: string;
     facebook: string;
     linkedin: string;
     youtube: string;
@@ -54,7 +52,6 @@ const footerUiCopy: Record<SupportedLocale, {
     logoAlt: 'Purrify - Premium Activated Carbon Cat Litter Additive - Return to Home Page',
     socialAria: {
       instagram: 'Follow Purrify on Instagram',
-      x: 'Follow Purrify on X',
       facebook: 'Follow Purrify on Facebook',
       linkedin: 'Follow Purrify on LinkedIn',
       youtube: 'Subscribe to Purrify on YouTube',
@@ -96,7 +93,6 @@ const footerUiCopy: Record<SupportedLocale, {
     logoAlt: 'Purrify - 高端活性炭猫砂添加剂 - 返回首页',
     socialAria: {
       instagram: '在 Instagram 关注 Purrify',
-      x: '在 X 关注 Purrify',
       facebook: '在 Facebook 关注 Purrify',
       linkedin: '在 LinkedIn 关注 Purrify',
       youtube: '在 YouTube 订阅 Purrify',
@@ -117,7 +113,6 @@ const footerUiCopy: Record<SupportedLocale, {
     logoAlt: 'Purrify - Aditivo premium de carbon activado para arena - Volver al inicio',
     socialAria: {
       instagram: 'Seguir a Purrify en Instagram',
-      x: 'Seguir a Purrify en X',
       facebook: 'Seguir a Purrify en Facebook',
       linkedin: 'Seguir a Purrify en LinkedIn',
       youtube: 'Suscribirse a Purrify en YouTube',
@@ -186,15 +181,6 @@ export function Footer() {
                   aria-label={copy.socialAria.instagram}
                 >
                   <Instagram className="h-5 w-5" />
-                </a>
-                <a
-                  href={SOCIAL_LINKS.x}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
-                  aria-label={copy.socialAria.x}
-                >
-                  <Twitter className="h-5 w-5" />
                 </a>
                 <a
                   href={SOCIAL_LINKS.facebook}

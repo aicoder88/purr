@@ -4,7 +4,7 @@ import { useState, useRef } from 'react';
 import { Container } from '@/components/ui/container';
 import { ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 export default function SignupContent() {
     const t = useTranslations();

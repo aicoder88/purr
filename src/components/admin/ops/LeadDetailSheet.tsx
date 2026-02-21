@@ -30,7 +30,6 @@ import {
   MapPin,
   Facebook,
   Instagram,
-  Twitter,
   Youtube,
   Clock,
   FileText,
@@ -62,7 +61,6 @@ const emptyLead: Partial<Lead> = {
   instagram: '',
   tiktok: '',
   youtube: '',
-  twitter: '',
   openingHours: '',
   category: '',
   notes: '',
@@ -294,7 +292,6 @@ export default function LeadDetailSheet({
               <InputField label="Website" field="website" icon={Globe} placeholder="https://example.com" />
               <InputField label="Facebook" field="facebook" icon={Facebook} placeholder="facebook.com/company" />
               <InputField label="Instagram" field="instagram" icon={Instagram} placeholder="@company" />
-              <InputField label="Twitter" field="twitter" icon={Twitter} placeholder="@company" />
               <InputField label="YouTube" field="youtube" icon={Youtube} placeholder="youtube.com/company" />
               <InputField label="TikTok" field="tiktok" placeholder="@company" />
             </TabsContent>

@@ -36,6 +36,11 @@ export const useIntersectionObserver = (
     const element = elementRef.current;
     if (!element) return;
 
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      callback(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         callback(entry.isIntersecting);

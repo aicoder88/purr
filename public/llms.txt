@@ -1,15 +1,39 @@
-# llms.txt — AI Crawler and Training Policy for Purrify
-# More info: https://llmstxt.org
+# Purrify
 
-User-agent: *
-Allow: /
+> Purrify makes activated carbon cat litter odor-control granules that reduce ammonia and litter box odors at the source.
 
-# Disallow sensitive or dynamic endpoints
-Disallow: /api/
-Disallow: /admin/
-Disallow: /_next/
-Disallow: /static/
+This file provides a curated set of pages for LLM inference-time understanding of Purrify products, science, and customer support information.
 
-# Contact
-Contact: info@purrify.ca
+## Core
 
+- [Homepage](https://www.purrify.ca/): Primary overview of the brand and product positioning.
+- [Products](https://www.purrify.ca/products/): Product lineup, sizes, and purchase options.
+- [Trial Size](https://www.purrify.ca/products/trial-size/): Entry product and trial offer details.
+
+## Learn
+
+- [Learn Hub](https://www.purrify.ca/learn/): Educational landing page for odor-control content.
+- [How It Works](https://www.purrify.ca/learn/how-it-works/): Practical explanation of how Purrify granules are used.
+- [Science](https://www.purrify.ca/science/): Scientific context behind odor and ammonia control.
+- [Ammonia Science](https://www.purrify.ca/learn/ammonia-science/): Focused ammonia-related guidance.
+- [FAQ](https://www.purrify.ca/learn/faq/): Frequently asked questions.
+- [Blog](https://www.purrify.ca/blog/): Ongoing cat care and odor-control articles.
+
+## Support
+
+- [Support Center](https://www.purrify.ca/support/): Customer help and support paths.
+- [Contact](https://www.purrify.ca/contact/): Contact form and support access.
+- [Shipping](https://www.purrify.ca/support/shipping/): Shipping details and expectations.
+- [Subscription Support](https://www.purrify.ca/support/subscription/): Subscription-related help.
+- [Privacy Policy](https://www.purrify.ca/privacy-policy/): Privacy terms and data handling details.
+- [Terms](https://www.purrify.ca/terms/): Terms of service.
+
+## Optional
+
+- [About](https://www.purrify.ca/about/our-story/): Company story and background.
+- [Retail Locations](https://www.purrify.ca/locations/): Location and availability information.
+- [Store Locator](https://www.purrify.ca/stores/): Store lookup experience.
+- [Case Studies](https://www.purrify.ca/case-studies/): Real-world outcomes and customer stories.
+- [Reviews](https://www.purrify.ca/reviews/): Customer review summaries.
+- [B2B](https://www.purrify.ca/b2b/): Wholesale and business partnership information.
+- [Cat Litter Calculator](https://www.purrify.ca/tools/cat-litter-calculator/): Utility tool for litter planning.

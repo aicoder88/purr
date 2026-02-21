@@ -77,14 +77,6 @@ export async function generateMetadata(): Promise<Metadata> {
         },
       ],
     },
-    twitter: {
-      card: 'summary_large_image',
-      site: '@purrifyhq',
-      creator: '@purrifyhq',
-      title: pageTitle,
-      description: pageDescription,
-      images: ['/optimized/logos/purrify-logo.png'],
-    },
     robots: {
       index: true,
       follow: true,

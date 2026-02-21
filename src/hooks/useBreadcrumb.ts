@@ -3,7 +3,7 @@
  * Generates breadcrumb navigation and structured data for SEO
  */
 
-import { useTranslations, useLocale } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { getLocalizedUrl } from '../lib/seo-utils';
 
 export interface BreadcrumbItem {

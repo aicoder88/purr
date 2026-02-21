@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { locales, isValidLocale } from '@/i18n/config';
-import { SITE_NAME, CONTACT_INFO } from '@/lib/constants';
+import { SITE_NAME } from '@/lib/constants';
 import SupportPageClient from '@/app/support/SupportPageClient';
 
 interface LocalizedSupportPageProps {

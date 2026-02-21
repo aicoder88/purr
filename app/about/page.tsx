@@ -13,7 +13,6 @@ export default function AboutRedirectPage() {
       description: 'Purrify is a Canadian company creating innovative cat litter additives using activated carbon technology for natural odor elimination.',
       socialLinks: [
         'https://www.instagram.com/purrifyhq',
-        'https://twitter.com/purrifyhq',
         'https://www.facebook.com/purrify',
         'https://www.youtube.com/@PurrifyHQ',
         'https://www.linkedin.com/company/purrify',

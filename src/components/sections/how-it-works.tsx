@@ -2,13 +2,12 @@
 
 import { Container } from "@/components/ui/container";
 import Image from 'next/image';
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import { ArrowDown } from 'lucide-react';
 import Link from 'next/link';
 
 export function HowItWorks() {
   const t = useTranslations('howItWorks');
-  const locale = useLocale();
 
   const steps = [
     {

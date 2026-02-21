@@ -1,7 +1,6 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { LazyLoad } from '@/components/performance/LazyLoad';
 import { ErrorBoundary } from '@/components/ui/error-boundary';
 import { ScrollAnchor } from '@/components/ui/scroll-anchor';
 import { CurrencyProvider } from '@/lib/currency-context';
@@ -48,18 +47,14 @@ export function HomepageClient({ currency }: HomepageClientProps) {
       <div className="cv-auto cis-960">
         <ScrollAnchor id="products" />
         <ErrorBoundary>
-          <LazyLoad placeholder={sectionSkeleton('h-96', 'rounded-lg')}>
-            <EnhancedProductComparison />
-          </LazyLoad>
+          <EnhancedProductComparison />
         </ErrorBoundary>
       </div>
 
       {/* CTA Section */}
       <div className="cv-auto cis-480">
         <ErrorBoundary>
-          <LazyLoad placeholder={sectionSkeleton('h-64')}>
-            <CTA />
-          </LazyLoad>
+          <CTA />
         </ErrorBoundary>
       </div>
     </CurrencyProvider>

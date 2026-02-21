@@ -7,7 +7,6 @@ import {
   MapPin,
   MessageCircle,
   Instagram,
-  Twitter,
   Facebook,
   Youtube,
   Linkedin,
@@ -139,7 +138,6 @@ export default function ContactPage() {
       description: 'Purrify customer support and contact information. Get help with activated carbon cat litter additive products.',
       socialLinks: [
         SOCIAL_LINKS.instagram,
-        SOCIAL_LINKS.x,
         SOCIAL_LINKS.facebook,
         SOCIAL_LINKS.youtube,
         SOCIAL_LINKS.linkedin,
@@ -461,10 +459,9 @@ export default function ContactPage() {
               <p className="text-gray-500 dark:text-gray-400">Follow us for cat tips, updates, and exclusive offers.</p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               {[
                 { label: 'Instagram', handle: '@purrifyhq', icon: Instagram, url: SOCIAL_LINKS.instagram },
-                { label: 'X (Twitter)', handle: '@PurrifyHQ', icon: Twitter, url: SOCIAL_LINKS.x },
                 { label: 'Facebook', handle: 'Purrify Canada', icon: Facebook, url: SOCIAL_LINKS.facebook },
                 { label: 'YouTube', handle: '@PurrifyHQ', icon: Youtube, url: SOCIAL_LINKS.youtube },
                 { label: 'LinkedIn', handle: 'Purrify', icon: Linkedin, url: SOCIAL_LINKS.linkedin },

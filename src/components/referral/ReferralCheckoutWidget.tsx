@@ -82,7 +82,7 @@ export function ReferralCheckoutWidget({
     } finally {
       setLoading(false);
     }
-  }, [code, email, onApplied, t('referral.checkout')]);
+  }, [code, email, onApplied, t]);
 
   const removeCode = useCallback(() => {
     setAppliedCode(null);

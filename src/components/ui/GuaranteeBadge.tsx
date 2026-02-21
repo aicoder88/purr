@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ShieldCheck } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 export interface GuaranteeBadgeProps extends React.HTMLAttributes<HTMLDivElement> {
   /**

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import { Calculator, Cat, Check, ChevronRight, DollarSign, Home, Info, Leaf, Share2, TrendingDown, Sparkles } from 'lucide-react';
+import { Calculator, Cat, Check, ChevronRight, DollarSign, Home, Info, Leaf, Share2, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
 import { useLocale } from 'next-intl';
@@ -634,7 +634,7 @@ export default function CalculatorContent() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
-                  {calculations.allLitterCosts.map((litter, index) => {
+                  {calculations.allLitterCosts.map((litter, _index) => {
                     const isSelected = litter.id === selectedLitter;
                     return (
                       <tr

@@ -48,14 +48,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: {
-    card: 'summary_large_image',
-    site: '@purrifyhq',
-    creator: '@purrifyhq',
-    title: `Blog - Cat Care Tips & Litter Box Advice | ${SITE_NAME}`,
-    description: `Expert advice on cat litter boxes, odor control, and pet care. ${SITE_DESCRIPTION}`,
-    images: [`${SITE_URL}/optimized/logos/purrify-logo.png`],
-  },
 };
 
 interface BlogPost {

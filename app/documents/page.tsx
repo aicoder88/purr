@@ -1,5 +1,5 @@
 'use client';
-import { useTranslations, useLocale } from 'next-intl';
+import { useLocale } from 'next-intl';
 import {  Download, Search, Calendar } from 'lucide-react';
 import { useState } from 'react';
 import { useEnhancedSEO } from '@/hooks/useEnhancedSEO';

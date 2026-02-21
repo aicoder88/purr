@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Users, TrendingUp, Leaf } from 'lucide-react';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 export function UrgencyBanner() {
   const t = useTranslations();

@@ -2,7 +2,7 @@ import { Container } from "@/components/ui/container";
 import { CONTACT_INFO } from "@/lib/constants";
 import { MapPin, Phone, Clock, LucideIcon } from "lucide-react";
 import dynamic from "next/dynamic";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import { ReactNode } from "react";
 
 // Dynamically import the ContactForm component

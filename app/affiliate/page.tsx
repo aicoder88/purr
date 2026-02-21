@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import AffiliateContent from './AffiliateContent';
-import { SITE_NAME, SITE_URL } from '@/lib/constants';
+import { SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Affiliate Program',

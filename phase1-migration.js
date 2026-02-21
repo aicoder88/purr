@@ -54,7 +54,7 @@ function getFileMtime(sourcePath) {
     const fullPath = path.join(PUBLIC_DIR, '..', sourcePath);
     const stats = fs.statSync(fullPath);
     return stats.mtime.getTime();
-  } catch (err) {
+  } catch (_err) {
     return 0;
   }
 }
@@ -176,14 +176,12 @@ async function runMigration() {
   // Process each target group
   console.log('Processing files and resolving conflicts...');
   let processedCount = 0;
-  let conflictCount = 0;
 
   for (const [targetPath, files] of targetGroups) {
     // Resolve conflicts
     const { winner, losers } = resolveConflict(files);
 
     if (losers.length > 0) {
-      conflictCount++;
       report.conflictsResolved.push({
         targetPath,
         winner: winner.sourcePath,

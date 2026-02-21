@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef } from 'react';
-import { Share2, Copy, Mail, MessageSquare, Facebook, Twitter, Send, Linkedin, QrCode, Download } from 'lucide-react';
+import { Share2, Copy, Mail, MessageSquare, Facebook, Send, Linkedin, QrCode, Download } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -73,19 +73,7 @@ My friend can get a FREE trial with code {code}. If you're tired of holding your
 
 #CatParentLife #PurrifyWorks #CatLitter #OdorControl`
   },
-  {
-    platform: 'twitter',
-    icon: Twitter,
-    color: 'text-blue-400 dark:text-blue-300',
-    title: 'Twitter',
-    template: `🐱 GAME CHANGER for cat parents!
 
-Finally found something that eliminates litter box smell completely. No more embarrassment when guests visit!
-
-Get FREE trial: {code} at {url}
-
-#CatParentLife #PurrifyWorks #CatOdorSolution`
-  },
   {
     platform: 'linkedin',
     icon: Linkedin,
@@ -157,10 +145,6 @@ export function SocialShareTools({ referralCode, shareUrl, referrerName, classNa
 
       case 'facebook':
         shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(personalizedMessage)}`;
-        break;
-
-      case 'twitter':
-        shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(personalizedMessage)}`;
         break;
 
       case 'linkedin':
