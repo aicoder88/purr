@@ -6,7 +6,7 @@ import { stripContext } from '@/lib/seo-utils';
 import ArmAndHammerClient from './ArmAndHammerClient';
 
 export const metadata: Metadata = {
-  title: 'Arm & Hammer Not Working? Better Alternative | Purrify',
+  title: 'Arm & Hammer Not Working? Better Alternative',
   description: "Baking soda stops working after 48 hours. It can't neutralize ammonia (same pH). Here's the science-backed alternative that lasts 3x longer.",
   keywords: [
     'Arm & Hammer alternative',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'article',
     url: 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/',
-    title: 'Arm & Hammer Not Working? Better Alternative | Purrify',
+    title: 'Arm & Hammer Not Working? Better Alternative',
     description: "Baking soda stops working after 48 hours. It can't neutralize ammonia (same pH). Here's the science-backed alternative that lasts 3x longer.",
     locale: 'en_CA',
     images: [

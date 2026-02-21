@@ -5,7 +5,7 @@ import { stripContext } from '@/lib/seo-utils';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Cat Litter Odor Control USA | Free Shipping | Purrify',
+  title: 'Cat Litter Odor Control USA | Free Shipping',
   description: 'Eliminate cat litter odors at the source. Purrify is coming to USA in Q1 2026! Premium activated carbon cat litter deodorizer for odor control.',
   keywords: [
     'cat litter odor control',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://www.purrify.ca/us/',
     siteName: 'Purrify',
-    title: 'Cat Litter Odor Control USA | Free Shipping | Purrify',
+    title: 'Cat Litter Odor Control USA | Free Shipping',
     description: 'Eliminate cat litter odors at the source. Purrify is coming to the USA in Q1 2026!',
     locale: 'en_US',
     images: [
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@purrifyhq',
     creator: '@purrifyhq',
-    title: 'Cat Litter Odor Control USA | Free Shipping | Purrify',
+    title: 'Cat Litter Odor Control USA | Free Shipping',
     description: 'Eliminate cat litter odors at the source. Purrify is coming to the USA in Q1 2026!',
     images: ['https://www.purrify.ca/optimized/blog/realistic-modern-living.webp'],
   },

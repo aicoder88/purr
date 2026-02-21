@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import LinksContent from './LinksContent';
 
 export const metadata: Metadata = {
-  title: 'Affiliate Links | Purrify',
+  title: 'Affiliate Links',
   description: 'Generate and manage your Purrify affiliate links.',
   robots: {
     index: false,

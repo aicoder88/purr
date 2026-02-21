@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import CalculatorContent from './CalculatorContent';
 
 export const metadata: Metadata = {
-  title: 'Cat Litter Cost Calculator | Compare Litter Types | Purrify',
+  title: 'Cat Litter Cost Calculator | Compare Litter Types',
   description: 'Free cat litter calculator: compare annual costs across clay, silica, tofu, and natural litters. Estimate usage, costs, and savings with our interactive tool.',
   keywords: ['cat litter calculator', 'litter cost calculator', 'cat litter comparison', 'annual litter cost', 'cat litter savings'],
   openGraph: {

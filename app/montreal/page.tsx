@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Montreal Locations | Purrify',
+  title: 'Montreal Locations',
   description: 'Find Purrify retailers in Montreal.',
   robots: {
     index: false,

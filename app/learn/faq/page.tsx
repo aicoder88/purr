@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import { SITE_NAME } from '../../../src/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Cat Litter Odor FAQ - Activated Carbon Questions | Purrify',
+  title: 'Cat Litter Odor FAQ - Activated Carbon Questions',
   description: 'Get expert answers about activated carbon cat litter additives: how they work, usage tips, safety, and troubleshooting. Coconut shell carbon works best.',
   keywords: [
     'activated carbon cat litter FAQ',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://www.purrify.ca/learn/faq/',
     siteName: SITE_NAME,
-    title: 'Cat Litter Odor FAQ - Activated Carbon Questions | Purrify',
+    title: 'Cat Litter Odor FAQ - Activated Carbon Questions',
     description: 'Get expert answers about activated carbon cat litter additives: how they work, usage tips, safety, and troubleshooting.',
     locale: 'en_CA',
     images: [
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@purrifyhq',
     creator: '@purrifyhq',
-    title: 'Cat Litter Odor FAQ - Activated Carbon Questions | Purrify',
+    title: 'Cat Litter Odor FAQ - Activated Carbon Questions',
     description: 'Get expert answers about activated carbon cat litter additives: how they work, usage tips, safety, and troubleshooting.',
     images: ['https://www.purrify.ca/optimized/blog/cat-owner-questions-ghibli.webp'],
   },

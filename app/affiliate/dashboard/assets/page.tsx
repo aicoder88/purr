@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import AssetsContent from './AssetsContent';
 
 export const metadata: Metadata = {
-  title: 'Affiliate Assets | Purrify',
+  title: 'Affiliate Assets',
   description: 'Download marketing assets for your Purrify affiliate promotions.',
   robots: {
     index: false,

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import SettingsContent from './SettingsContent';
 
 export const metadata: Metadata = {
-  title: 'Affiliate Settings | Purrify',
+  title: 'Affiliate Settings',
   description: 'Manage your Purrify affiliate account settings.',
   robots: {
     index: false,

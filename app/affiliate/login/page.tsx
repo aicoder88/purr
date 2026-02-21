@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import LoginContent from './LoginContent';
 
 export const metadata: Metadata = {
-  title: 'Affiliate Login | Purrify',
+  title: 'Affiliate Login',
   description: 'Log in to your Purrify affiliate account.',
   robots: {
     index: false,

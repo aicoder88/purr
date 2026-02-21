@@ -4,7 +4,7 @@ import LoginForm from "@/components/auth/LoginForm";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-    title: "Admin Login | Purrify",
+    title: "Admin Login",
     description: "Sign in to the Purrify admin dashboard",
 };
 

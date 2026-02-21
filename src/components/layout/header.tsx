@@ -245,7 +245,7 @@ export function Header() {
         },
         {
           label: t('nav.multipleCats'),
-          href: `/blog/best-cat-litter-multiple-cats-odor-control/`;
+          href: `/blog/best-cat-litter-multiple-cats-odor-control/`,
           indent: true,
         },
         {
@@ -255,7 +255,7 @@ export function Header() {
         },
         {
           label: t('nav.seniorCats'),
-          href: `/blog/best-cat-litter-multiple-cats-odor-control/`;
+          href: `/blog/best-cat-litter-multiple-cats-odor-control/`,
           indent: true,
         },
       ],

@@ -3,7 +3,7 @@ import PageContent from './PageContent';
 import { SITE_NAME, CONTACT_INFO } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Find Purrify Near You - Store Locator | Purrify',
+  title: 'Find Purrify Near You - Store Locator',
   description: 'Find pet stores selling Purrify near you. Discover our partner retailers across Quebec, Ontario, and British Columbia. 25+ locations across Canada.',
   keywords: ['Purrify stores', 'pet store locator', 'find Purrify', 'cat litter additive retailers', 'where to buy Purrify'],
   openGraph: {

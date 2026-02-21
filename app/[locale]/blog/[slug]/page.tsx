@@ -81,7 +81,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   return {
-    title: `${metaTitle} | ${SITE_NAME}`,
+    title: metaTitle,
     description: metaDescription,
     alternates: {
       // Self-referencing canonical for each locale

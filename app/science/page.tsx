@@ -20,7 +20,7 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Science Behind Purrify: Research & Citations | Purrify',
+  title: 'Science Behind Purrify: Research & Citations',
   description:
     'Explore scientific research and authoritative resources supporting activated carbon for cat litter odor control, with citations to primary and trusted sources.',
   keywords: [
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.purrify.ca/science/'
   },
   openGraph: {
-    title: 'Science Behind Purrify: Research & Citations | Purrify',
+    title: 'Science Behind Purrify: Research & Citations',
     description:
       'Explore the peer-reviewed scientific research supporting activated carbon for cat litter odor control.',
     url: 'https://www.purrify.ca/science/',

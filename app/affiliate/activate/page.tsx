@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ActivateContent from './ActivateContent';
 
 export const metadata: Metadata = {
-  title: 'Activate Affiliate Account | Purrify',
+  title: 'Activate Affiliate Account',
   description: 'Activate your Purrify affiliate account.',
   robots: {
     index: false,
