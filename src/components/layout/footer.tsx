@@ -72,7 +72,6 @@ const footerUiCopy: Record<SupportedLocale, {
     logoAlt: "Purrify - Additif premium de charbon actif pour litiere - Retour a l'accueil",
     socialAria: {
       instagram: 'Suivre Purrify sur Instagram',
-      x: 'Suivre Purrify sur X',
       facebook: 'Suivre Purrify sur Facebook',
       linkedin: 'Suivre Purrify sur LinkedIn',
       youtube: 'S abonner a Purrify sur YouTube',

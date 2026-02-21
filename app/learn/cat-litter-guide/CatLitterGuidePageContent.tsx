@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useLocale } from 'next-intl';
 import { Container } from '../../../src/components/ui/container';
 import { Button } from '../../../src/components/ui/button';
 

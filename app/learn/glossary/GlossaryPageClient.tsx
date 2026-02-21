@@ -10,6 +10,7 @@ import {
   Home,
   Search,
 } from 'lucide-react';
+import { useLocale } from 'next-intl';
 import { useState, useCallback } from 'react';
 import { formatProductPrice } from '../../../src/lib/pricing';
 

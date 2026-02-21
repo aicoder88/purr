@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 
 import { getCityBySlug, getAllCities } from '@/data/locations';

@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import Link from 'next/link';
+import { useLocale } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Check, Zap, Calendar, Shield, Truck, Star } from 'lucide-react';
 

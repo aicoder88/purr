@@ -30,6 +30,39 @@ interface TierCardProps {
   index: number;
 }
 
+interface WholesaleTierCopy {
+  name?: string;
+  description?: string;
+  contents?: string[];
+  features?: string[];
+  badge?: string;
+  cta?: string;
+}
+
+interface WholesalePricingCopy {
+  sectionBadge?: string;
+  title?: string;
+  titleHighlight?: string;
+  subtitle?: string;
+  packageIncludes?: string;
+  tiers?: {
+    starter?: WholesaleTierCopy;
+    growth?: WholesaleTierCopy;
+    scale?: WholesaleTierCopy;
+  };
+  trustSignals?: {
+    noSetupFees?: string;
+    approval72hr?: string;
+    provenROI?: string;
+  };
+  bottomCta?: {
+    title?: string;
+    description?: string;
+    setupNote?: string;
+    primaryButton?: string;
+  };
+}
+
 // Shared gradient classes
 const GRADIENTS = {
   primary: 'from-[#5B2EFF] to-[#3694FF]',
@@ -199,10 +232,10 @@ export function WholesalePricing() {
   const t = useTranslations();
   const featuresLabel = t('productComparison.features') || 'Features';
   
-  // Try to get pricing data, fallback to empty object if not available
-  const pricing = useMemo(() => {
+  // Read optional raw pricing copy and keep a typed fallback when absent.
+  const pricing = useMemo<WholesalePricingCopy>(() => {
     try {
-      return t.raw('retailers.wholesalePricing') as Record<string, unknown>;
+      return t.raw('retailers.wholesalePricing') as WholesalePricingCopy;
     } catch {
       return {};
     }

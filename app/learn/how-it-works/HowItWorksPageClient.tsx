@@ -10,6 +10,7 @@ import { getPaymentLink } from '../../../src/lib/payment-links';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Microscope, Zap, Shield, Leaf, ChevronRight, Home } from 'lucide-react';
+import { useLocale } from 'next-intl';
 
 type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
 
