@@ -2,157 +2,108 @@
 
 import { Container } from "@/components/ui/container";
 import Image from "next/image";
-import { useTranslations, useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight, Leaf } from "lucide-react";
-import { IconSciencePores, IconZeroPerfumes } from "@/components/icons/custom-trust-icons";
+import { ArrowRight } from "lucide-react";
 import { IconOdor } from "@/components/icons/custom-benefit-icons";
+import { IconSciencePores, IconZeroPerfumes } from "@/components/icons/custom-trust-icons";
 
-// Default features for fallback
-const defaultFeatures = [
-    {
-        title: "Micro-Pore Technology",
-        description: "Traps odour molecules on contact.",
-    },
-    {
-        title: "100% Natural",
-        description: "Safe for pets, kids, and your conscience.",
-    },
-    {
-        title: "Eco-Friendly",
-        description: "Biodegradable. Earth approved.",
-    }
-];
+type ScienceFeature = {
+  title: string;
+  description: string;
+};
 
 const featureIcons = [
-    <IconSciencePores key="microscope" className="w-8 h-8 drop-shadow-md" />,
-    <IconZeroPerfumes key="shield" className="w-8 h-8 drop-shadow-md" />,
-    <IconOdor key="leaf" className="w-8 h-8 drop-shadow-md" />
+  <IconSciencePores key="science" className="w-5 h-5 text-gray-700 dark:text-gray-300" />,
+  <IconZeroPerfumes key="zero" className="w-5 h-5 text-gray-700 dark:text-gray-300" />,
+  <IconOdor key="odor" className="w-5 h-5 text-gray-700 dark:text-gray-300" />,
 ];
 
 export function ScienceSection() {
-    const t = useTranslations();
-    const locale = useLocale();
+  const t = useTranslations();
+  const locale = useLocale();
 
-    // Use default features for stability
-    const featureItems: Array<{ title: string; description: string }> = defaultFeatures;
+  const rawFeatures = t.raw("scienceSection.features");
+  const features: ScienceFeature[] = Array.isArray(rawFeatures)
+    ? rawFeatures.filter(
+        (item): item is ScienceFeature =>
+          typeof item === "object" &&
+          item !== null &&
+          "title" in item &&
+          "description" in item &&
+          typeof (item as { title?: unknown }).title === "string" &&
+          typeof (item as { description?: unknown }).description === "string"
+      )
+    : [];
 
-    return (
-        <section id="science" className="pt-12 pb-24 md:pt-16 md:pb-24 bg-white dark:bg-gray-900 overflow-hidden">
-            <Container>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    {/* Text Content */}
-                    <div className="relative z-10">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-electric-indigo/10 text-electric-indigo text-sm font-bold mb-6">
-                            <IconSciencePores className="w-5 h-5" />
-                            {t('scienceSection.badge')}
-                        </div>
+  return (
+    <section id="science" className="py-14 md:py-16 bg-white dark:bg-gray-950">
+      <Container>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 items-center">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-4 py-1.5 mb-4">
+              <IconSciencePores className="w-4 h-4 text-gray-700 dark:text-gray-300" />
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{t("scienceSection.badge")}</span>
+            </div>
 
-                        <h2 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-                            {t('scienceSection.headline')} <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric-indigo to-purple-600">
-                                {t('scienceSection.headlineHighlight')}
-                            </span>
-                        </h2>
+            <h2 className="font-heading text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white leading-tight">
+              {t("scienceSection.headline")}{" "}
+              <span className="text-gray-700 dark:text-gray-300">{t("scienceSection.headlineHighlight")}</span>
+            </h2>
 
-                        <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                            {t('scienceSection.description')}
-                        </p>
+            <p className="mt-4 text-base md:text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+              {t("scienceSection.description")}
+            </p>
 
-                        <div className="space-y-8 mb-10">
-                            {featureItems.map((feature: { title: string; description: string }, index: number) => (
-                                <div key={index} className="flex items-start gap-4 group">
-                                    <div className="w-12 h-12 rounded-2xl bg-gray-50 dark:bg-gray-800 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-sm">
-                                        {featureIcons[index] || featureIcons[0]}
-                                    </div>
-                                    <div>
-                                        <h3 className="font-heading font-bold text-lg text-gray-900 dark:text-white mb-1 group-hover:text-electric-indigo transition-colors">
-                                            {feature.title}
-                                        </h3>
-                                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                                            {feature.description}
-                                        </p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <Button asChild className="bg-gray-900 hover:bg-gray-800 text-gray-50 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200 rounded-full px-8 py-6 text-lg font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
-                                <Link href={`${locale === 'fr' ? '/fr' : ''}/learn/science`}>
-                                    {t('scienceSection.learnMore')} <ArrowRight className="w-5 h-5 ml-2" />
-                                </Link>
-                            </Button>
-                            <Button asChild variant="outline" className="rounded-full px-8 py-6 text-lg font-bold border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all hover:-translate-y-1">
-                                <Link href="/blog/activated-carbon-vs-baking-soda-comparison">
-                                    {t('nav.carbonVsBakingSoda')}
-                                </Link>
-                            </Button>
-                        </div>
-                    </div>
-
-                    {/* Visual Content */}
-                    <div className="relative">
-                        {/* Background Blobs */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-electric-indigo/20 to-purple-500/20 rounded-full blur-3xl animate-pulse-slow pointer-events-none" />
-
-                        <div className="relative bg-white dark:bg-gray-800 rounded-[2.5rem] shadow-2xl p-4 border border-gray-100 dark:border-gray-700 rotate-3 hover:rotate-0 transition-transform duration-700 ease-out">
-                            <div className="relative rounded-[2rem] overflow-hidden aspect-square bg-gray-100 dark:bg-gray-900">
-                                <Image
-                                    src="/optimized/blog/Carbon-sktech.webp"
-                                    alt={t('homepage.altText.scientificDiagram') || 'Activated Carbon Mechanism'}
-                                    fill
-                                    className="object-cover"
-                                    sizes="(max-width: 768px) 100vw, 600px"
-                                />
-
-                                {/* Overlay Gradient */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-
-                                {/* Floating Label */}
-                                <div className="absolute bottom-8 left-8 right-8">
-                                    <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-md p-4 rounded-xl border border-white/20 shadow-lg">
-                                        <p className="font-bold text-gray-900 dark:text-white text-sm mb-1">
-                                            {t('scienceSection.floatingLabel.title')}
-                                        </p>
-                                        <p className="text-xs text-gray-600 dark:text-gray-400">
-                                            {t('scienceSection.floatingLabel.description')}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Floating Elements */}
-                        <div className="absolute -top-10 -right-10 bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 animate-float">
-                            <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
-                                    <Leaf className="w-5 h-5 text-green-600 dark:text-green-400" />
-                                </div>
-                                <div>
-                                    <p className="font-bold text-sm text-gray-900 dark:text-white">{t('scienceSection.naturalBadge.title')}</p>
-                                    <p className="text-xs text-gray-500 dark:text-gray-400">{t('scienceSection.naturalBadge.subtitle')}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div className="mt-6 space-y-4">
+              {features.map((feature, index) => (
+                <div key={feature.title} className="flex items-start gap-3">
+                  <div className="mt-0.5 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-2">
+                    {featureIcons[index] || featureIcons[0]}
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 dark:text-white">{feature.title}</h3>
+                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
                 </div>
+              ))}
+            </div>
 
-                {/* Transition teaser - Better visual treatment */}
-                {t('sectionTeasers.science') && (
-                    <div className="mt-24 col-span-full flex justify-center">
-                        <Link href="#products" className="bg-white dark:bg-gray-800 rounded-full px-8 py-4 shadow-xl border border-gray-100 dark:border-gray-700 flex items-center gap-4 group hover:-translate-y-1 transition-transform duration-300">
-                            <p className="text-xl font-bold text-gray-900 dark:text-white">
-                                {t('sectionTeasers.science')}
-                            </p>
-                            <div className="w-10 h-10 rounded-full bg-electric-indigo text-gray-50 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                <ArrowRight className="w-5 h-5 animate-pulse" />
-                            </div>
-                        </Link>
-                    </div>
-                )}
-            </Container>
-        </section>
-    );
+            <div className="mt-7 flex flex-wrap items-center gap-3">
+              <Button asChild className="rounded-full bg-gray-900 hover:bg-gray-800 text-gray-50 dark:bg-gray-100 dark:hover:bg-gray-200 dark:text-gray-900">
+                <Link href={`${locale === "fr" ? "/fr" : ""}/learn/science`}>
+                  {t("scienceSection.learnMore")} <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </Button>
+              <Link
+                href="/blog/activated-carbon-vs-baking-soda-comparison"
+                className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white underline-offset-4 hover:underline"
+              >
+                {t("nav.carbonVsBakingSoda")}
+              </Link>
+            </div>
+          </div>
+
+          <div>
+            <div className="relative overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 aspect-square bg-gray-100 dark:bg-gray-900">
+              <Image
+                src="/optimized/blog/Carbon-sktech.webp"
+                alt={t("homepage.altText.scientificDiagram")}
+                fill
+                sizes="(max-width: 1024px) 100vw, 600px"
+                className="object-cover"
+              />
+              <div className="absolute bottom-3 left-3 right-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-950/90 px-4 py-3 backdrop-blur-sm">
+                <p className="text-sm font-semibold text-gray-900 dark:text-white">{t("scienceSection.floatingLabel.title")}</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">{t("scienceSection.floatingLabel.description")}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
 }

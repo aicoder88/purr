@@ -142,18 +142,21 @@
     "steps": [
       {
         "number": "01",
-        "title": "Ouvrez le Sachet",
-        "description": "Retirez l'étiquette et dézippez le sachet"
+        "title": "Ouvrir le sac",
+        "description": "Ouvrez et saupoudrez. Aucun dosage nécessaire.",
+        "image": "/optimized/marketing/step-01-open-bag.png"
       },
       {
         "number": "02",
-        "title": "Saupoudrez sur la litière",
-        "description": "Saupoudrez simplement une fine couche de Purrify sur la litière propre de votre chat."
+        "title": "Saupoudrer sur la litière fraîche",
+        "description": "Utilisez une fine couche sur la litière actuelle de votre chat.",
+        "image": "/optimized/marketing/step-02-sprinkle.png"
       },
       {
         "number": "03",
-        "title": "Mélangez et profitez de la propreté !",
-        "description": "Mélangez doucement dans la couche supérieure de la litière pour une efficacité maximale."
+        "title": "Mélanger et c'est tout",
+        "description": "Remuez une fois et profitez d'une maison plus saine.",
+        "image": "/optimized/marketing/step-03-mix.png"
       }
     ],
     "litterTypes": {

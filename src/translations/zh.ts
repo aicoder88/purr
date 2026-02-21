@@ -1,5 +1,7 @@
 import { CONTACT_INFO } from '../lib/constants';
 
+
+
 export const zh = {
   // Common
   siteName: "Purrify",
@@ -312,17 +314,20 @@ export const zh = {
       {
         number: "01",
         title: "打开袋子",
-        description: "这就是最难的部分。真的。不需要测量、不需要混合碗、不需要说明书。"
+        description: "这就是最难的部分。真的。不需要测量、不需要混合碗、不需要说明书。",
+        image: "/optimized/marketing/step-01-open-bag.png"
       },
       {
         number: "02",
         title: "撒在新鲜猫砂上",
-        description: "在猫咪喜爱的猫砂上轻轻撒一层。适用于粘土、水晶、结团、天然——无论它们已经习惯什么。"
+        description: "在猫咪喜爱的猫砂上轻轻撒一层。适用于粘土、水晶、结团、天然——无论它们已经习惯什么。",
+        image: "/optimized/marketing/step-02-sprinkle.png"
       },
       {
         number: "03",
         title: "混合并享受清新",
-        description: "轻轻搅拌一下。现在享受7天不用考虑猫砂盆的日子。您的鼻子（和您的客人）会感谢您。"
+        description: "轻轻搅拌一下。现在享受7天不用考虑猫砂盆的日子。您的鼻子（和您的客人）会感谢您。",
+        image: "/optimized/marketing/step-03-mix.png"
       }
     ],
     litterTypes: {
@@ -335,6 +340,16 @@ export const zh = {
     learnTheScience: "了解科学原理",
     compareSizes: "比较我们的规格",
     coconutDescription: "纯净、可持续的椰壳通过过滤后的纯净高压蒸汽活化，打开数百万个孔洞、隧道和通道，锁住异味分子。"
+  },
+
+  madeInCanada: {
+    badge: "加拿大制造 🇨🇦",
+  },
+
+  whyPurrify: {
+    badge: "为什么猫主人不断回头",
+    title: "它真的有效",
+    subtitle: ""
   },
 
   // Products Section

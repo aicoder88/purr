@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { Play, Pause, Volume2, VolumeX, Maximize, RotateCcw } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 interface VideoPlayerProps {
   src: string;
@@ -389,11 +390,15 @@ export function VideoGallery({ videos, className }: VideoGalleryProps) {
               )}
             >
               {video.poster && (
-                <img
-                  src={video.poster}
-                  alt={video.title}
-                  className="w-16 h-12 object-cover rounded flex-shrink-0"
-                />
+                <div className="relative w-16 h-12 flex-shrink-0">
+                  <Image
+                    src={video.poster}
+                    alt={video.title}
+                    fill
+                    sizes="64px"
+                    className="object-cover rounded"
+                  />
+                </div>
               )}
               <div className="flex-1 min-w-0">
                 <h4 className="font-medium text-gray-900 dark:text-gray-50 text-sm line-clamp-2">

@@ -113,7 +113,7 @@ export default function ProductsPage() {
     },
   };
 
-  const _products = ([] as any[]).map((product: any) => {
+  const _products = ([] as Array<{ id: string; name?: string; subtitle?: string }>).map((product) => {
     const priceKey = productIdAlias[product.id] ?? 'regular';
     const displayName = productDisplayNames[product.id] || { name: product.name, nameFr: product.name, subtitle: product.subtitle, subtitleFr: product.subtitle };
     const imageData = productImages[product.id] || { src: '/optimized/products/60g-transparent.webp', size: 'md' as const };
@@ -136,7 +136,7 @@ export default function ProductsPage() {
     };
   });
 
-  const _comparisonFeatures = ([] as any[]).map((item: any, index: number) => ({
+  const _comparisonFeatures = ([] as Array<{ feature: string }>).map((item, index: number) => ({
     feature: item.feature,
     trial: index < 4,
     regular: true,

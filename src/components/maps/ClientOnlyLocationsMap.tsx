@@ -10,6 +10,14 @@ const ClientLocationsMap = dynamic(
     }
 );
 
-export function ClientOnlyLocationsMap(props: any) {
+interface ClientLocationsMapProps {
+    className?: string;
+    height?: string;
+    showHeader?: boolean;
+    headerTitle?: string;
+    headerDescription?: string;
+}
+
+export function ClientOnlyLocationsMap(props: ClientLocationsMapProps) {
     return <ClientLocationsMap {...props} />;
 }

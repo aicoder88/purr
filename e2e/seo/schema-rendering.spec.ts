@@ -5,6 +5,15 @@
 
 import { test, expect } from '@playwright/test';
 
+type JsonLd = Record<string, unknown>;
+
+function asJsonLd(value: unknown): JsonLd {
+  if (typeof value === 'object' && value !== null) {
+    return value as JsonLd;
+  }
+  return {};
+}
+
 /**
  * Helper to extract all schemas from JSON-LD scripts, handling nested @graph arrays
  */
@@ -15,16 +24,16 @@ async function extractSchemas(page: import('@playwright/test').Page) {
   });
 
   // Recursively flatten schemas: handle nested @graph arrays
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function flattenSchemas(items: any[]): any[] {
-    const result: any[] = [];
+  function flattenSchemas(items: unknown[]): JsonLd[] {
+    const result: JsonLd[] = [];
     for (const item of items) {
-      if (item['@graph'] && Array.isArray(item['@graph'])) {
+      const schema = asJsonLd(item);
+      if (Array.isArray(schema['@graph'])) {
         // Recursively flatten nested @graph arrays
-        result.push(...flattenSchemas(item['@graph']));
-      } else if (item['@type']) {
+        result.push(...flattenSchemas(schema['@graph']));
+      } else if (schema['@type']) {
         // Only add items that have a @type (actual schemas)
-        result.push(item);
+        result.push(schema);
       }
     }
     return result;
@@ -47,6 +56,12 @@ test.describe('SEO Schema Rendering', () => {
       // Find product schema
       const productSchema = schemas.find(schema => schema['@type'] === 'Product');
       expect(productSchema).toBeDefined();
+      if (!productSchema) {
+        throw new Error('Product schema not found');
+      }
+      const offers = asJsonLd(productSchema.offers);
+      const brand = asJsonLd(productSchema.brand);
+      const aggregateRating = asJsonLd(productSchema.aggregateRating);
 
       // Validate required product fields
       expect(productSchema.name).toBeTruthy();
@@ -55,21 +70,21 @@ test.describe('SEO Schema Rendering', () => {
 
       // Validate offers
       expect(productSchema.offers).toBeDefined();
-      expect(productSchema.offers['@type']).toBe('Offer');
-      expect(productSchema.offers.priceCurrency).toMatch(/^(CAD|USD)$/);
-      expect(productSchema.offers.price).toBeTruthy();
-      expect(productSchema.offers.availability).toContain('schema.org');
+      expect(offers['@type']).toBe('Offer');
+      expect(offers.priceCurrency).toMatch(/^(CAD|USD)$/);
+      expect(offers.price).toBeTruthy();
+      expect(offers.availability).toContain('schema.org');
 
       // Validate brand
       expect(productSchema.brand).toBeDefined();
-      expect(productSchema.brand['@type']).toBe('Brand');
-      expect(productSchema.brand.name).toBe('Purrify');
+      expect(brand['@type']).toBe('Brand');
+      expect(brand.name).toBe('Purrify');
 
       // Validate aggregate rating if present
       if (productSchema.aggregateRating) {
-        expect(productSchema.aggregateRating['@type']).toBe('AggregateRating');
-        expect(productSchema.aggregateRating.ratingValue).toBeTruthy();
-        expect(productSchema.aggregateRating.reviewCount).toBeTruthy();
+        expect(aggregateRating['@type']).toBe('AggregateRating');
+        expect(aggregateRating.ratingValue).toBeTruthy();
+        expect(aggregateRating.reviewCount).toBeTruthy();
       }
     });
 
@@ -81,6 +96,9 @@ test.describe('SEO Schema Rendering', () => {
 
       const productSchema = schemas.find(schema => schema['@type'] === 'Product');
       expect(productSchema).toBeDefined();
+      if (!productSchema) {
+        throw new Error('Product schema not found');
+      }
       // Product names may vary by locale, just check it has a valid name
       expect(productSchema.name).toBeTruthy();
       expect(typeof productSchema.name).toBe('string');
@@ -94,7 +112,11 @@ test.describe('SEO Schema Rendering', () => {
 
       const productSchema = schemas.find(schema => schema['@type'] === 'Product');
       expect(productSchema).toBeDefined();
-      expect(productSchema.offers.priceCurrency).toMatch(/^(CAD|USD)$/);
+      if (!productSchema) {
+        throw new Error('Product schema not found');
+      }
+      const offers = asJsonLd(productSchema.offers);
+      expect(offers.priceCurrency).toMatch(/^(CAD|USD)$/);
     });
 
     test('should update currency in schema based on geo-detection', async ({ page }) => {
@@ -106,7 +128,11 @@ test.describe('SEO Schema Rendering', () => {
 
       const productSchema = schemas.find(schema => schema['@type'] === 'Product');
       // Currency should be either CAD or USD
-      expect(['CAD', 'USD']).toContain(productSchema.offers.priceCurrency);
+      if (!productSchema) {
+        throw new Error('Product schema not found');
+      }
+      const offers = asJsonLd(productSchema.offers);
+      expect(['CAD', 'USD']).toContain(offers.priceCurrency);
     });
   });
 
@@ -119,6 +145,11 @@ test.describe('SEO Schema Rendering', () => {
 
       const articleSchema = schemas.find(schema => schema['@type'] === 'Article');
       expect(articleSchema).toBeDefined();
+      if (!articleSchema) {
+        throw new Error('Article schema not found');
+      }
+      const author = asJsonLd(articleSchema.author);
+      const publisher = asJsonLd(articleSchema.publisher);
 
       // Validate required article fields
       expect(articleSchema.headline).toBeTruthy();
@@ -128,13 +159,13 @@ test.describe('SEO Schema Rendering', () => {
 
       // Validate author
       expect(articleSchema.author).toBeDefined();
-      expect(articleSchema.author['@type']).toBe('Organization');
-      expect(articleSchema.author.name).toBe('Purrify');
+      expect(author['@type']).toBe('Organization');
+      expect(author.name).toBe('Purrify');
 
       // Validate publisher
       expect(articleSchema.publisher).toBeDefined();
-      expect(articleSchema.publisher['@type']).toBe('Organization');
-      expect(articleSchema.publisher.logo).toBeDefined();
+      expect(publisher['@type']).toBe('Organization');
+      expect(publisher.logo).toBeDefined();
     });
 
     test('should render multiple schemas on blog page with FAQ', async ({ page }) => {
@@ -149,19 +180,24 @@ test.describe('SEO Schema Rendering', () => {
 
       expect(articleSchema).toBeDefined();
       expect(faqSchema).toBeDefined();
+      if (!faqSchema) {
+        throw new Error('FAQ schema not found');
+      }
 
       // Validate FAQ structure
       expect(faqSchema.mainEntity).toBeDefined();
       expect(Array.isArray(faqSchema.mainEntity)).toBe(true);
-      expect(faqSchema.mainEntity.length).toBeGreaterThan(0);
+      const mainEntity = Array.isArray(faqSchema.mainEntity) ? faqSchema.mainEntity : [];
+      expect(mainEntity.length).toBeGreaterThan(0);
 
       // Validate FAQ question structure
-      const firstQuestion = faqSchema.mainEntity[0];
+      const firstQuestion = asJsonLd(mainEntity[0]);
+      const acceptedAnswer = asJsonLd(firstQuestion.acceptedAnswer);
       expect(firstQuestion['@type']).toBe('Question');
       expect(firstQuestion.name).toBeTruthy();
       expect(firstQuestion.acceptedAnswer).toBeDefined();
-      expect(firstQuestion.acceptedAnswer['@type']).toBe('Answer');
-      expect(firstQuestion.acceptedAnswer.text).toBeTruthy();
+      expect(acceptedAnswer['@type']).toBe('Answer');
+      expect(acceptedAnswer.text).toBeTruthy();
     });
   });
 
@@ -174,11 +210,15 @@ test.describe('SEO Schema Rendering', () => {
 
       const faqSchema = schemas.find(schema => schema['@type'] === 'FAQPage');
       expect(faqSchema).toBeDefined();
+      if (!faqSchema) {
+        throw new Error('FAQ schema not found');
+      }
 
       // Validate FAQ structure
       expect(faqSchema.mainEntity).toBeDefined();
       expect(Array.isArray(faqSchema.mainEntity)).toBe(true);
-      expect(faqSchema.mainEntity.length).toBeGreaterThan(0);
+      const mainEntity = Array.isArray(faqSchema.mainEntity) ? faqSchema.mainEntity : [];
+      expect(mainEntity.length).toBeGreaterThan(0);
     });
   });
 
@@ -191,6 +231,9 @@ test.describe('SEO Schema Rendering', () => {
 
       const articleSchema = schemas.find(schema => schema['@type'] === 'Article');
       expect(articleSchema).toBeDefined();
+      if (!articleSchema) {
+        throw new Error('Article schema not found');
+      }
       expect(articleSchema.headline).toBeTruthy();
     });
 
@@ -202,6 +245,9 @@ test.describe('SEO Schema Rendering', () => {
 
       const articleSchema = schemas.find(schema => schema['@type'] === 'Article');
       expect(articleSchema).toBeDefined();
+      if (!articleSchema) {
+        throw new Error('Article schema not found');
+      }
     });
 
     test('should render article schema on safety page', async ({ page }) => {
@@ -212,6 +258,9 @@ test.describe('SEO Schema Rendering', () => {
 
       const articleSchema = schemas.find(schema => schema['@type'] === 'Article');
       expect(articleSchema).toBeDefined();
+      if (!articleSchema) {
+        throw new Error('Article schema not found');
+      }
     });
   });
 
@@ -224,6 +273,9 @@ test.describe('SEO Schema Rendering', () => {
 
       const orgSchema = schemas.find(schema => schema['@type'] === 'Organization');
       expect(orgSchema).toBeDefined();
+      if (!orgSchema) {
+        throw new Error('Organization schema not found');
+      }
 
       // Validate organization fields
       expect(orgSchema.name).toBe('Purrify');

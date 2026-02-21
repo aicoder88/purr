@@ -6,6 +6,18 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { useMemo, useEffect, useState } from "react";
 
+interface RetailerLocation {
+    store_name: string;
+    address: string;
+    city: string;
+    province: string;
+    postal_code: string;
+    phone?: string;
+    website?: string;
+    lat: number;
+    lng: number;
+}
+
 // Robust SVG-based marker icon using data URI to bypass CSP issues
 const blueMarkerSvg = `data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUiIGhlaWdodD0iNDEiIHZpZXdCb3g9IjAgMCAyNSA0MSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cGF0aCBkPSJNMTIuODUgMEM1Ljc0IDAgMCA1Ljc0IDAgMTIuODVjMCA5LjY0IDExLjI5IDI3LjM2IDEyLjg1IDI4LjE1IDEuNTYtLjc5IDEyLjg1LTE4LjUxIDEyLjg1LTI4LjE1QzI1LjcgNS43NCAxOS45NiAwIDEyLjg1IDB6IiBmaWxsPSIjMkE4MUJDIi8+CiAgPGNpcmNsZSBjeD0iMTIuOCIgY3k9IjEyLjgiIHI9IjUiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPg==`;
 
@@ -19,7 +31,7 @@ const customIcon = new L.Icon({
 });
 
 export default function RetailerMap() {
-    const [retailerData, setRetailerData] = useState<any[]>([]);
+    const [retailerData, setRetailerData] = useState<RetailerLocation[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -30,7 +42,7 @@ export default function RetailerMap() {
                 if (!res.ok) throw new Error("Failed to load retailer data");
                 return res.json();
             })
-            .then(data => {
+            .then((data: RetailerLocation[]) => {
                 console.log("RetailerMap data loaded:", data.length);
                 setRetailerData(data);
                 setLoading(false);
@@ -45,7 +57,7 @@ export default function RetailerMap() {
     // Filter valid locations
     const locations = useMemo(() => {
         const filtered = retailerData.filter(
-            (loc) => loc.lat && loc.lng && !isNaN(loc.lat) && !isNaN(loc.lng)
+            (loc) => Number.isFinite(loc.lat) && Number.isFinite(loc.lng)
         );
         console.log("Filtered locations for map:", filtered.length);
         return filtered;

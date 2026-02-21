@@ -9,15 +9,29 @@ export interface CheerioElement {
   length: number;
 }
 
+interface MockLinkData {
+  href: string;
+  text: string;
+  parent: string;
+}
+
+interface MockElement {
+  _linkData: MockLinkData;
+}
+
+interface CheerioSelection extends CheerioElement {
+  each?: (callback: (i: number, el: MockElement) => void) => void;
+}
+
 export interface CheerioAPI {
-  (selector: string): CheerioElement;
+  (selector: string | MockElement): CheerioSelection;
 }
 
 // Simple mock cheerio implementation
 export const load = (html: string): CheerioAPI => {
   // Parse HTML manually for testing purposes
   const linkRegex = /<a\s+[^>]*href=["']([^"']*)["'][^>]*>(.*?)<\/a>/gi;
-  const links: Array<{ href: string; text: string; parent: string }> = [];
+  const links: MockLinkData[] = [];
 
   let match;
   while ((match = linkRegex.exec(html)) !== null) {
@@ -32,7 +46,7 @@ export const load = (html: string): CheerioAPI => {
     links.push({ href, text, parent });
   }
 
-  const $ = ((selector: string | any): CheerioElement => {
+  const $ = ((selector: string | MockElement): CheerioSelection => {
     // Handle when selector is a mock element from each() callback
     if (selector && typeof selector === 'object' && selector._linkData) {
       const link = selector._linkData;
@@ -93,16 +107,16 @@ export const load = (html: string): CheerioAPI => {
         },
         length: links.length,
         // Mock each() method for iteration
-        each(callback: (i: number, el: any) => void): void {
+        each(callback: (i: number, el: MockElement) => void): void {
           links.forEach((link, i) => {
             // Create a mock element for this specific link
-            const mockEl = {
+            const mockEl: MockElement = {
               _linkData: link,
             };
             callback(i, mockEl);
           });
         },
-      } as any;
+      };
     }
 
     // Default element
@@ -123,4 +137,5 @@ export const load = (html: string): CheerioAPI => {
   return $;
 };
 
-export default { load };
+const cheerioMock = { load };
+export default cheerioMock;

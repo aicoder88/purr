@@ -306,30 +306,13 @@ export const fr = {
   // Made in Canada / Ingredients Section
   madeInCanada: {
     badge: "Fabriqué au Canada 🇨🇦",
-    headline: "Avec des ingrédients que votre filtre à eau approuverait",
-    carbon: {
-      icon: "🌊",
-      title: "Charbon actif de qualité filtre à eau",
-      description: "La même science qui transforme l'eau du robinet en eau potable — maintenant au service de votre litière."
-    },
-    noPerfumes: {
-      icon: "🚫",
-      title: "Sans parfum. Sans produits chimiques. Sans compromis.",
-      description: "Nous ne masquons pas l'ammoniac avec un parfum de « coton frais ». Nous éliminons l'ammoniac."
-    },
-    loved: {
-      icon: "🐾",
-      title: "Adopté par 1 000+ parents de chats au Canada",
-      description: "Et ça continue. Avec un taux de réachat qui ferait envie à votre barista."
-    },
-    guarantee: "Garantie 30 jours — Satisfait ou remboursé. Sans formulaire. Sans sermon. Sans rancune."
   },
 
   // Why Purrify section header
   whyPurrify: {
     badge: "Pourquoi les parents de chats reviennent",
-    title: "(Indice : ça fonctionne vraiment)",
-    subtitle: "Sans parfum. Sans camouflage. Juste une solution qui fonctionne vraiment."
+    title: "Ça fonctionne vraiment",
+    subtitle: ""
   },
 
   // Transition Teasers
@@ -341,21 +324,27 @@ export const fr = {
   // How It Works
   howItWorks: {
     simpleAs123: "Simple comme 1-2-3",
-    step1: {
-      number: "01",
-      title: "Ouvrez le Sachet",
-      description: "Retirez l'étiquette et dézippez le sachet"
-    },
-    step2: {
-      number: "02",
-      title: "Saupoudrez sur la litière",
-      description: "Saupoudrez simplement une fine couche de Purrify sur la litière propre de votre chat."
-    },
-    step3: {
-      number: "03",
-      title: "Mélangez et profitez de la propreté !",
-      description: "Mélangez doucement dans la couche supérieure de la litière pour une efficacité maximale."
-    },
+    stepLabel: "Étape",
+    steps: [
+      {
+        number: "01",
+        title: "Ouvrez le Sachet",
+        description: "Ouvrez et saupoudrez. Pas besoin de mesurer.",
+        image: "/optimized/marketing/step-01-open-bag.png"
+      },
+      {
+        number: "02",
+        title: "Saupoudrez sur la Litière",
+        description: "Appliquez une fine couche sur la litière actuelle.",
+        image: "/optimized/marketing/step-02-sprinkle.png"
+      },
+      {
+        number: "03",
+        title: "Mélangez et Respirez",
+        description: "Mélangez une fois et profitez de l'air frais.",
+        image: "/optimized/marketing/step-03-mix.png"
+      }
+    ],
     litterTypes: {
       clumping: "AGGLOMÉRANTE",
       crystal: "CRISTAL",
@@ -450,7 +439,7 @@ export const fr = {
     pivot: "Et si ça n'avait pas à être comme ça ?",
     transition: "Des propriétaires de chats partout au Canada découvrent enfin quelque chose qui fonctionne vraiment. Et ça prend 30 secondes...",
     ui: {
-      imageAlt: "Propriétaire de chat gêné",
+      imageAlt: "Personne se pinçant le nez à cause de l'odeur de la litière",
       imageCaption: "\"je te jure que je viens de nettoyer...\"",
       floatingCardTitle: "Bombe d'ammoniac",
       floatingCardDescription: "Les odeurs de litière peuvent se propager sur 6 m en quelques secondes.",

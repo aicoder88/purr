@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Search, X, Trash2, Check, Image as ImageIcon } from 'lucide-react';
 import { toast } from 'sonner';
+import Image from 'next/image';
 import LoadingSpinner from './LoadingSpinner';
 import type { MediaItem } from '@/lib/blog/media-library';
 
@@ -191,9 +192,11 @@ export default function MediaLibrary({
                 >
                   {/* Image */}
                   <div className="aspect-square relative">
-                    <img
+                    <Image
                       src={item.url}
                       alt={item.alt || item.filename}
+                      fill
+                      sizes="(max-width: 1024px) 33vw, 20vw"
                       className="w-full h-full object-cover"
                     />
 

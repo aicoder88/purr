@@ -1,271 +1,136 @@
 "use client";
 
 import { Container } from "@/components/ui/container";
-import { ArrowDown } from "lucide-react";
-import { IconOdor, IconCatFriendly, IconLongLasting, IconAnyLitter, IconCostEffective, IconBeforeAfter } from "@/components/icons/custom-benefit-icons";
-import Image from 'next/image';
-import { useTranslations, useLocale } from "next-intl";
-import Link from "next/link";
+import {
+  IconAnyLitter,
+  IconBeforeAfter,
+  IconCatFriendly,
+  IconCostEffective,
+  IconLongLasting,
+  IconOdor,
+} from "@/components/icons/custom-benefit-icons";
+import Image from "next/image";
+import { useTranslations } from "next-intl";
+import type { ComponentType } from "react";
+
+type CardConfig = {
+  icon: ComponentType<{ className?: string }>;
+  image: string;
+  titleKeys: string[];
+  descriptionKeys: string[];
+};
+
+const CARD_CONFIG: CardConfig[] = [
+  {
+    icon: IconOdor,
+    image: "/optimized/marketing/catcoco.webp",
+    titleKeys: ["features.odorElimination.title"],
+    descriptionKeys: ["features.odorElimination.description"],
+  },
+  {
+    icon: IconCatFriendly,
+    image: "/optimized/marketing/cats-and-filters.webp",
+    titleKeys: ["features.catFriendly.title"],
+    descriptionKeys: ["features.catFriendly.description"],
+  },
+  {
+    icon: IconLongLasting,
+    image: "/optimized/marketing/catonbed.avif",
+    titleKeys: ["features.longLasting.title", "features.longLastingFreshness.title"],
+    descriptionKeys: ["features.longLasting.description", "features.longLastingFreshness.description"],
+  },
+  {
+    icon: IconAnyLitter,
+    image: "/optimized/blog/cat-favorite-litter.webp",
+    titleKeys: ["features.anyLitter.title", "features.worksWithAnyLitter.title"],
+    descriptionKeys: ["features.anyLitter.description", "features.worksWithAnyLitter.description"],
+  },
+  {
+    icon: IconCostEffective,
+    image: "/optimized/marketing/cost-effective.webp",
+    titleKeys: ["features.costEffective.title"],
+    descriptionKeys: ["features.costEffective.description"],
+  },
+  {
+    icon: IconBeforeAfter,
+    image: "/optimized/marketing/before-after.webp",
+    titleKeys: ["features.beforeAfter.title"],
+    descriptionKeys: ["features.beforeAfter.description"],
+  },
+];
 
 export function WhyPurrify() {
   const t = useTranslations();
-  const locale = useLocale();
 
-  const hasTranslation = (key: string): boolean => {
-    try {
-      return typeof t.has === 'function' ? t.has(key as never) : false;
-    } catch {
-      return false;
+  const read = (keys: string[]): string => {
+    for (const key of keys) {
+      try {
+        const value = t(key as never);
+        if (value && typeof value === "string" && value.trim().length > 0) {
+          return value;
+        }
+      } catch {
+        continue;
+      }
     }
+    return "";
   };
 
-  const tSafe = (keys: string[], fallback: string) => {
-    const matchedKey = keys.find((key) => hasTranslation(key));
-
-    if (!matchedKey) {
-      return fallback;
-    }
-
-    try {
-      const value = t(matchedKey as never);
-      return typeof value === 'string' && value.trim().length > 0 ? value : fallback;
-    } catch {
-      return fallback;
-    }
-  };
-
-  const sanitizeDescription = (title: string, description: string) => {
-    const normalizedTitle = title.trim().toLowerCase();
-    const safeDescription = typeof description === 'string' ? description : '';
-
-    const lines = safeDescription
-      .split('\n')
-      .map((line) => line.trim())
-      .filter(Boolean);
-
-    if (lines[0]?.toLowerCase() === normalizedTitle) {
-      return lines.slice(1).join('\n');
-    }
-
-    return safeDescription;
-  };
-
-  const heroCopy = {
-    badge: tSafe(
-      ['whyPurrify.badge'],
-      locale === 'fr' ? 'Pourquoi les parents de chats reviennent' : 'Why Cat Parents Keep Coming Back'
-    ),
-    title: tSafe(
-      ['whyPurrify.title'],
-      locale === 'fr' ? '(Indice : ça fonctionne vraiment)' : '(Hint: It actually works)'
-    ),
-    subtitle: tSafe(
-      ['whyPurrify.subtitle'],
-      locale === 'fr'
-        ? 'Sans parfum. Sans camouflage. Juste une solution qui fonctionne vraiment.'
-        : 'No perfumes. No cover-ups. Just the good stuff that actually works.'
-    ),
-  };
-
-  const odorTitle = tSafe(['features.odorElimination.title'], "Traps It. Doesn't Fake It.");
-  const odorDescription = sanitizeDescription(
-    odorTitle,
-    tSafe(
-      ['features.odorElimination.description'],
-      "Air fresheners spray perfume on top of ammonia. Congratulations - now it smells like 'lavender and cat.' Purrify's activated carbon captures ammonia molecules and locks them inside microscopic pores. The smell doesn't hide. It's gone."
-    )
-  );
-  const carbonTitle = tSafe(['features.catFriendly.title'], 'Water-Filter Grade Carbon');
-  const carbonDescription = sanitizeDescription(
-    carbonTitle,
-    tSafe(
-      ['features.catFriendly.description'],
-      'Made from coconut shells. Processed the same way water treatment plants purify your tap. Zero chemicals, zero fragrances. The ingredient list reads like it came from nature - because it did.'
-    )
-  );
-  const longLastingTitle = tSafe(
-    ['features.longLasting.title', 'features.longLastingFreshness.title'],
-    'One Sprinkle Lasts The Whole Week'
-  );
-  const longLastingDescription = sanitizeDescription(
-    longLastingTitle,
-    tSafe(
-      ['features.longLasting.description', 'features.longLastingFreshness.description'],
-      'Most fresheners fade quickly. Purrify keeps working through the full litter cycle with one sprinkle per change.'
-    )
-  );
-  const anyLitterTitle = tSafe(
-    ['features.anyLitter.title', 'features.worksWithAnyLitter.title'],
-    'Works With Whatever Your Cat Already Uses'
-  );
-  const anyLitterDescription = sanitizeDescription(
-    anyLitterTitle,
-    tSafe(
-      ['features.anyLitter.description', 'features.worksWithAnyLitter.description'],
-      "Clay, crystal, clumping, natural - whatever your cat already uses. No need to switch brands. Just add Purrify on top."
-    )
-  );
-  const costEffectiveTitle = tSafe(['features.costEffective.title'], 'Your Litter Actually Lasts Longer');
-  const costEffectiveDescription = sanitizeDescription(
-    costEffectiveTitle,
-    tSafe(
-      ['features.costEffective.description'],
-      "When the odour's under control, you stop panic-dumping the whole box early. Change on schedule - not out of desperation."
-    )
-  );
-  const beforeAfterTitle = tSafe(['features.beforeAfter.title'], 'The Walk-In Test');
-  const beforeAfterDescription = sanitizeDescription(
-    beforeAfterTitle,
-    tSafe(
-      ['features.beforeAfter.description'],
-      "Come home after a few hours away. Notice what you don't smell. That's Purrify working."
-    )
-  );
-
-  const reasons = [
-    {
-      icon: IconOdor,
-      title: odorTitle.toUpperCase(),
-      description: odorDescription,
-      image: "/optimized/marketing/catcoco.webp"
-    },
-    {
-      icon: IconCatFriendly,
-      title: carbonTitle.toUpperCase(),
-      description: carbonDescription,
-      image: "/optimized/marketing/cats-and-filters.webp",
-      color: "bg-[#E8F5E9]",
-      textColor: "text-[#2E7D32]",
-    },
-    {
-      icon: IconLongLasting,
-      title: longLastingTitle.toUpperCase(),
-      description: longLastingDescription,
-      image: "/optimized/marketing/catonbed.avif"
-    },
-    {
-      icon: IconAnyLitter,
-      title: anyLitterTitle.toUpperCase(),
-      description: anyLitterDescription,
-      image: "/optimized/blog/cat-favorite-litter.webp"
-    },
-    {
-      icon: IconCostEffective,
-      title: costEffectiveTitle.toUpperCase(),
-      description: costEffectiveDescription,
-      image: "/optimized/marketing/cost-effective.webp",
-      color: "bg-[#FFF3E0]",
-      textColor: "text-[#E65100]",
-    },
-    {
-      icon: IconBeforeAfter,
-      title: beforeAfterTitle.toUpperCase(),
-      description: beforeAfterDescription,
-      image: "/optimized/marketing/before-after.webp",
-      color: "bg-[#F3E5F5]",
-      textColor: "text-[#7B1FA2]",
-    },
-  ];
-
-  // Define enhanced color themes
-  const colorThemes = [
-    { bgGradient: "from-purple-600 to-purple-500", textClass: "text-purple-600 dark:text-purple-400", shadow: "shadow-purple-500/30", border: "border-purple-200 dark:border-purple-800", hoverBorder: "hover:border-purple-400 dark:hover:border-purple-600" },
-    { bgGradient: "from-pink-600 to-pink-500", textClass: "text-pink-600 dark:text-pink-400", shadow: "shadow-pink-500/30", border: "border-pink-200 dark:border-pink-800", hoverBorder: "hover:border-pink-400 dark:hover:border-pink-600" },
-    { bgGradient: "from-orange-600 to-orange-500", textClass: "text-orange-600 dark:text-orange-400", shadow: "shadow-orange-500/30", border: "border-orange-200 dark:border-orange-800", hoverBorder: "hover:border-orange-400 dark:hover:border-orange-600" },
-  ];
+  const cards = CARD_CONFIG.map((card) => ({
+    icon: card.icon,
+    image: card.image,
+    title: read(card.titleKeys),
+    description: read(card.descriptionKeys),
+  })).filter((card) => card.title && card.description);
 
   return (
-    <section
-      className="relative pt-16 pb-8 md:pt-24 md:pb-12 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900 transition-colors duration-300 overflow-hidden"
-      id="why-purrify"
-    >
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-80 h-80 bg-purple-300/20 dark:bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-300/20 dark:bg-pink-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-      </div>
-
-      <Container className="relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/40 dark:to-pink-900/40 rounded-full mb-6 md:mb-8 border border-purple-200 dark:border-purple-800 shadow-lg">
-            <span className="text-purple-700 dark:text-purple-300 font-semibold">{heroCopy.badge}</span>
+    <section id="why-purrify" className="py-14 md:py-16 bg-gray-50 dark:bg-gray-900">
+      <Container>
+        <div className="max-w-3xl mx-auto text-center mb-10">
+          <div className="inline-flex items-center rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-950 px-4 py-1.5 mb-4">
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{t("whyPurrify.badge")}</span>
           </div>
-
-          <h2 className="font-heading text-5xl md:text-7xl font-black tracking-tight mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text text-transparent">
-            {heroCopy.title}
+          <h2 className="font-heading text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">
+            {t("whyPurrify.title")}
           </h2>
-          <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-medium">
-            {heroCopy.subtitle}
-          </p>
+          {t("whyPurrify.subtitle") && (
+            <p className="mt-3 text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+              {t("whyPurrify.subtitle")}
+            </p>
+          )}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {reasons.map((reason, index) => {
-            const theme = colorThemes[index % 3];
-            const IconComponent = reason.icon;
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {cards.map((card) => {
+            const Icon = card.icon;
             return (
-              <div
-                key={reason.title}
-                className={`bg-white dark:bg-gray-800 backdrop-blur-sm rounded-3xl shadow-2xl border-2 ${theme.border} ${theme.hoverBorder} transition-all duration-500 hover:${theme.shadow} hover:-translate-y-4 group overflow-hidden flex flex-col`}
-                style={{ transitionDelay: `${index * 100}ms` }}
+              <article
+                key={card.title}
+                className="overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-950"
               >
-                {/* Gradient overlay on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${theme.bgGradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-3xl`}></div>
-
-                <div className="aspect-[4/3] w-full overflow-hidden flex items-center justify-center relative">
+                <div className="relative aspect-[4/3] w-full">
                   <Image
-                    src={reason.image}
-                    alt={reason.title}
-                    width={400}
-                    height={300}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
-                    loading={index < 3 ? "eager" : "lazy"}
-                    className={"w-full h-full transition-transform duration-700 group-hover:scale-105"}
-                    style={{
-                      objectFit: 'cover',
-                      objectPosition: 'center',
-                    }}
+                    src={card.image}
+                    alt={card.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+                    className="object-cover"
+                    loading="lazy"
                   />
                 </div>
-                <div className="p-6 sm:p-8 flex flex-col flex-grow relative z-10">
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center mb-4 sm:mb-6">
-                    <div className="mb-3 sm:mb-0 mr-0 sm:mr-4 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-700">
-                      <IconComponent className="h-14 w-14 sm:h-16 sm:w-16 drop-shadow-xl" />
-                    </div>
-                    <h3 className={`font-black text-lg sm:text-xl ${theme.textClass}`}>
-                      {reason.title}
-                    </h3>
+                <div className="p-5">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Icon className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{card.title}</h3>
                   </div>
-                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base sm:text-lg flex-grow font-medium">
-                    {reason.description.split('\n').map((line) => (
-                      <span key={line} className="block mb-1">{line}</span>
-                    ))}
+                  <p className="text-sm md:text-base leading-relaxed text-gray-600 dark:text-gray-400">
+                    {card.description}
                   </p>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>
-
-        {/* Transition teaser - Greased Slide Design */}
-        {hasTranslation('sectionTeasers.whyPurrify') && (
-          <div className="mt-16 sm:mt-20 w-full flex justify-center relative z-20">
-            {/* Horizontal divider line that the pill sits on */}
-            <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-200 dark:via-purple-800 to-transparent transform -translate-y-1/2"></div>
-
-            <Link
-              href="#science"
-                className="relative bg-white dark:bg-gray-900 border border-purple-100 dark:border-purple-800 rounded-full px-10 py-5 shadow-2xl hover:shadow-[0_20px_50px_rgba(168,85,247,0.2)] hover:border-purple-300 dark:hover:border-purple-600 transition-all duration-500 hover:-translate-y-1 group flex items-center gap-4"
-              >
-              <span className="text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 group-hover:from-purple-600 group-hover:to-pink-600 transition-all duration-500">
-                {tSafe(['sectionTeasers.whyPurrify'], '')}
-              </span>
-              <div className="w-10 h-10 rounded-full bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition-all duration-500">
-                <ArrowDown className="w-5 h-5 group-hover:animate-bounce" />
-              </div>
-            </Link>
-          </div>
-        )}
       </Container>
     </section>
   );

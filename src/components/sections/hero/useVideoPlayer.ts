@@ -11,7 +11,7 @@ interface VideoPlayerState {
   volume: number;
 }
 
-export const useVideoPlayer = (dependencies: any[] = []) => {
+export const useVideoPlayer = (dependencies: unknown[] = []) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const mediaContainerRef = useRef<HTMLDivElement>(null);
   const hasEndedRef = useRef(false);

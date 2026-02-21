@@ -5,17 +5,19 @@ import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { useTranslations, useLocale } from 'next-intl';
 import { scrollToSection } from '@/lib/utils';
+import type { TranslationType } from '@/translations/types';
 
 export function RetailerHero() {
   const t = useTranslations();
   const locale = useLocale();
   // Try to get hero data, fallback to empty object if not available
-  let hero: Record<string, any> = {};
+  let hero: TranslationType['retailers']['hero'] | null = null;
   try {
-    hero = t.raw('retailers.hero') as Record<string, any>;
+    hero = t.raw('retailers.hero') as TranslationType['retailers']['hero'];
   } catch {
-    hero = {};
+    hero = null;
   }
+  const trustIndicatorTypes = hero?.trustIndicators?.types as Record<string, string> | undefined;
   const heroUiCopy =
     locale === 'fr'
       ? {
@@ -129,7 +131,7 @@ export function RetailerHero() {
                 <div className="flex flex-wrap justify-center lg:justify-start gap-3 items-center">
                   {['Pet Stores', 'Vet Clinics', 'Groomers', 'Distributors'].map((badge) => (
                     <span key={badge} className="px-5 py-2.5 bg-gray-50 dark:bg-gray-800/50 rounded-2xl text-xs font-bold text-gray-600 dark:text-gray-300 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm">
-                      {hero?.trustIndicators?.types?.[badge.toLowerCase().replace(' ', '') as keyof typeof hero.trustIndicators.types] || badge}
+                      {trustIndicatorTypes?.[badge.toLowerCase().replace(' ', '')] || badge}
                     </span>
                   ))}
                 </div>

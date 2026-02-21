@@ -362,10 +362,11 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
               {
                 '@type': 'Product',
                 name: `Purrify Cat Litter Odor Eliminator - ${profile.name}`,
+                image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
                 offers: {
                   '@type': 'Offer',
+                  price: '29.99',
                   availability: 'https://schema.org/InStock',
-                  priceCurrency: 'CAD',
                   areaServed: {
                     '@type': 'City',
                     name: profile.name,
@@ -389,6 +390,12 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
                     '@type': 'AdministrativeArea',
                     name: provinceName,
                   },
+                },
+                address: {
+                  '@type': 'PostalAddress',
+                  addressLocality: profile.name,
+                  addressRegion: provinceName,
+                  addressCountry: 'CA',
                 },
                 makesOffer: {
                   '@type': 'Offer',

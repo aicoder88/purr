@@ -16,7 +16,7 @@ const config: PlaywrightTestConfig = {
     trace: 'off',
   },
   webServer: {
-    command: 'npm run e2e:web',
+    command: 'pnpm e2e:web',
     port: 3010,
     reuseExistingServer: true,
     timeout: 300_000,

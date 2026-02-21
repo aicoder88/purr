@@ -14,6 +14,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Quote, CheckCircle, Users, Clock, Sparkles, ArrowRight, Shield, Zap, Home, ChevronRight } from 'lucide-react';
 import { COLORS, GRADIENTS, createCardClasses, createSectionClasses } from '@/lib/theme-utils';
 import { generateStarRating, generateAvatarUrl } from '@/lib/component-utils';
+import type { TranslationType } from '@/translations/types';
 
 interface ResultsContentProps {
   testimonials: Testimonial[];
@@ -22,7 +23,7 @@ interface ResultsContentProps {
 export function ResultsContent({ testimonials }: ResultsContentProps) {
   const t = useTranslations();
   const locale = useLocale();
-  const r = (t.raw('results') || {}) as Record<string, any>;
+  const r = (t.raw('results') || {}) as NonNullable<TranslationType['results']>;
   const breadcrumbLabel =
     locale === 'fr'
       ? 'Fil d Ariane'

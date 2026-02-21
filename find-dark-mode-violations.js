@@ -27,7 +27,7 @@ const showFix = args.includes('--fix');
 // Directories to scan
 const DIRECTORIES_TO_CHECK = [
   'app',
-  'src/components', 
+  'src/components',
   'content/blog',
   'components'
 ];
@@ -37,111 +37,111 @@ const EXTENSIONS = ['.tsx', '.ts', '.json'];
 
 // Colors that are problematic in dark mode without variants
 const PROBLEMATIC_PATTERNS = [
-  { 
-    pattern: /bg-\[#FF3131\](?!\/)/g, 
-    name: 'bg-[#FF3131] (red)', 
+  {
+    pattern: /bg-\[#FF3131\](?!\/)/g,
+    name: 'bg-[#FF3131] (red)',
     suggestion: 'dark:bg-[#FF5050]',
     fix: (str) => str.replace(/bg-\[#FF3131\](?!\/)/g, 'bg-[#FF3131] dark:bg-[#FF5050]')
   },
-  { 
-    pattern: /bg-\[#03E46A\](?!\/)/g, 
-    name: 'bg-[#03E46A] (green)', 
+  {
+    pattern: /bg-\[#03E46A\](?!\/)/g,
+    name: 'bg-[#03E46A] (green)',
     suggestion: 'dark:bg-[#04D162]',
     fix: (str) => str.replace(/bg-\[#03E46A\](?!\/)/g, 'bg-[#03E46A] dark:bg-[#04D162]')
   },
-  { 
-    pattern: /bg-\[#E0EFC7\](?!\/)/g, 
-    name: 'bg-[#E0EFC7] (light green)', 
+  {
+    pattern: /bg-\[#E0EFC7\](?!\/)/g,
+    name: 'bg-[#E0EFC7] (light green)',
     suggestion: 'dark:bg-green-900/30',
     fix: (str) => str.replace(/bg-\[#E0EFC7\](?!\/)/g, 'bg-[#E0EFC7] dark:bg-green-900/30')
   },
-  { 
-    pattern: /bg-\[#FFFFF5\](?!\/)/g, 
-    name: 'bg-[#FFFFF5] (cream)', 
+  {
+    pattern: /bg-\[#FFFFF5\](?!\/)/g,
+    name: 'bg-[#FFFFF5] (cream)',
     suggestion: 'dark:bg-gray-900',
     fix: (str) => str.replace(/bg-\[#FFFFF5\](?!\/)/g, 'bg-[#FFFFF5] dark:bg-gray-900')
   },
-  { 
-    pattern: /bg-\[#5B2EFF\](?!\/)/g, 
-    name: 'bg-[#5B2EFF] (purple)', 
+  {
+    pattern: /bg-\[#5B2EFF\](?!\/)/g,
+    name: 'bg-[#5B2EFF] (purple)',
     suggestion: 'dark:bg-[#818CF8]',
     fix: (str) => str.replace(/bg-\[#5B2EFF\](?!\/)/g, 'bg-[#5B2EFF] dark:bg-[#818CF8]')
   },
-  { 
-    pattern: /text-\[#FF3131\]/g, 
-    name: 'text-[#FF3131] (red text)', 
+  {
+    pattern: /text-\[#FF3131\]/g,
+    name: 'text-[#FF3131] (red text)',
     suggestion: 'dark:text-[#FF6B6B]',
     fix: (str) => str.replace(/text-\[#FF3131\]/g, 'text-[#FF3131] dark:text-[#FF6B6B]')
   },
-  { 
-    pattern: /text-\[#5B2EFF\]/g, 
-    name: 'text-[#5B2EFF] (purple text)', 
+  {
+    pattern: /text-\[#5B2EFF\]/g,
+    name: 'text-[#5B2EFF] (purple text)',
     suggestion: 'dark:text-[#C4B5FD]',
     fix: (str) => str.replace(/text-\[#5B2EFF\]/g, 'text-[#5B2EFF] dark:text-[#C4B5FD]')
   },
-  { 
-    pattern: /(?<!dark:)text-white(?!\/[0-9]|\.)/g, 
-    name: 'text-white without dark bg', 
+  {
+    pattern: /(?<!dark:)text-white(?!\/[0-9]|\.)/g,
+    name: 'text-white without dark bg',
     suggestion: 'Add dark:bg-* or use dark:text-gray-900',
     check: (value) => {
       // Check if there's a suitable dark background already
       return /bg-(gray|red|green|blue|purple|pink|indigo|orange|teal|emerald|cyan|sky|violet|fuchsia|rose|amber)-(600|700|800|900|950)\b/.test(value) ||
-             /bg-black\b/.test(value) ||
-             /bg-\[#[0-9a-fA-F]{3,6}\]/.test(value) ||
-             /bg-gradient/.test(value);
+        /bg-black\b/.test(value) ||
+        /bg-\[#[0-9a-fA-F]{3,6}\]/.test(value) ||
+        /bg-gradient/.test(value);
     }
   },
-  { 
-    pattern: /bg-white(?!\/[0-9])/g, 
-    name: 'bg-white', 
+  {
+    pattern: /bg-white(?!\/[0-9])/g,
+    name: 'bg-white',
     suggestion: 'dark:bg-gray-800',
     fix: (str) => str.replace(/bg-white(?!\/[0-9])/g, 'bg-white dark:bg-gray-800')
   },
-  { 
-    pattern: /bg-gray-50\b/g, 
-    name: 'bg-gray-50', 
+  {
+    pattern: /bg-gray-50\b/g,
+    name: 'bg-gray-50',
     suggestion: 'dark:bg-gray-800',
     fix: (str) => str.replace(/bg-gray-50\b/g, 'bg-gray-50 dark:bg-gray-800')
   },
-  { 
-    pattern: /bg-gray-100\b/g, 
-    name: 'bg-gray-100', 
+  {
+    pattern: /bg-gray-100\b/g,
+    name: 'bg-gray-100',
     suggestion: 'dark:bg-gray-800',
     fix: (str) => str.replace(/bg-gray-100\b/g, 'bg-gray-100 dark:bg-gray-800')
   },
-  { 
-    pattern: /bg-blue-50\b/g, 
-    name: 'bg-blue-50', 
+  {
+    pattern: /bg-blue-50\b/g,
+    name: 'bg-blue-50',
     suggestion: 'dark:bg-blue-900/30',
     fix: (str) => str.replace(/bg-blue-50\b/g, 'bg-blue-50 dark:bg-blue-900/30')
   },
-  { 
-    pattern: /bg-green-50\b/g, 
-    name: 'bg-green-50', 
+  {
+    pattern: /bg-green-50\b/g,
+    name: 'bg-green-50',
     suggestion: 'dark:bg-green-900/30',
     fix: (str) => str.replace(/bg-green-50\b/g, 'bg-green-50 dark:bg-green-900/30')
   },
-  { 
-    pattern: /bg-red-50\b/g, 
-    name: 'bg-red-50', 
+  {
+    pattern: /bg-red-50\b/g,
+    name: 'bg-red-50',
     suggestion: 'dark:bg-red-900/30',
     fix: (str) => str.replace(/bg-red-50\b/g, 'bg-red-50 dark:bg-red-900/30')
   },
-  { 
-    pattern: /bg-yellow-50\b/g, 
-    name: 'bg-yellow-50', 
+  {
+    pattern: /bg-yellow-50\b/g,
+    name: 'bg-yellow-50',
     suggestion: 'dark:bg-yellow-900/30',
     fix: (str) => str.replace(/bg-yellow-50\b/g, 'bg-yellow-50 dark:bg-yellow-900/30')
   },
-  { 
-    pattern: /border-gray-200\b/g, 
-    name: 'border-gray-200', 
+  {
+    pattern: /border-gray-200\b/g,
+    name: 'border-gray-200',
     suggestion: 'dark:border-gray-700',
     fix: (str) => str.replace(/border-gray-200\b/g, 'border-gray-200 dark:border-gray-700')
   },
-  { 
-    pattern: /border-gray-100\b/g, 
-    name: 'border-gray-100', 
+  {
+    pattern: /border-gray-100\b/g,
+    name: 'border-gray-100',
     suggestion: 'dark:border-gray-800',
     fix: (str) => str.replace(/border-gray-100\b/g, 'border-gray-100 dark:border-gray-800')
   },
@@ -150,20 +150,20 @@ const PROBLEMATIC_PATTERNS = [
 // Find files recursively
 function findFiles(dir, extensions) {
   const files = [];
-  
+
   if (!fs.existsSync(dir)) return files;
-  
+
   function scan(currentDir) {
     let entries;
     try {
       entries = fs.readdirSync(currentDir, { withFileTypes: true });
-    } catch (e) {
+    } catch (_e) {
       return;
     }
-    
+
     for (const entry of entries) {
       const fullPath = path.join(currentDir, entry.name);
-      
+
       if (entry.isDirectory()) {
         // Skip node_modules, .next, etc.
         if (['node_modules', '.next', '.git', 'dist', 'build', '.swc', '__tests__', 'e2e'].includes(entry.name)) {
@@ -175,7 +175,7 @@ function findFiles(dir, extensions) {
       }
     }
   }
-  
+
   scan(dir);
   return files;
 }
@@ -192,7 +192,7 @@ function hasDarkVariant(value, violationName) {
 // Extract class strings from various patterns
 function extractClassStrings(content, isJson = false) {
   const classStrings = [];
-  
+
   if (isJson) {
     // For JSON files, look for content field with HTML
     try {
@@ -209,7 +209,7 @@ function extractClassStrings(content, isJson = false) {
           classStrings.push({ value: match[1], line: 1, source: 'json-content' });
         }
       }
-    } catch (e) {
+    } catch (_e) {
       // Not valid JSON, skip
     }
   } else {
@@ -224,13 +224,13 @@ function extractClassStrings(content, isJson = false) {
         /cn\s*\(\s*\"([^\"]*)\"/g,
         /cn\s*\(\s*`([^`]*)`/g,
       ];
-      
+
       for (const pattern of patterns) {
         const matches = line.matchAll(pattern);
         for (const match of matches) {
-          classStrings.push({ 
-            value: match[1], 
-            line: index + 1, 
+          classStrings.push({
+            value: match[1],
+            line: index + 1,
             source: 'tsx',
             fullLine: line.trim()
           });
@@ -238,7 +238,7 @@ function extractClassStrings(content, isJson = false) {
       }
     });
   }
-  
+
   return classStrings;
 }
 
@@ -247,19 +247,19 @@ function checkFile(filePath) {
   const content = fs.readFileSync(filePath, 'utf8');
   const isJson = filePath.endsWith('.json');
   const violations = [];
-  
+
   const classStrings = extractClassStrings(content, isJson);
-  
+
   for (const { value, line, source, fullLine } of classStrings) {
     for (const { pattern, name, suggestion, check } of PROBLEMATIC_PATTERNS) {
       const matches = [...value.matchAll(pattern)];
-      
+
       for (const match of matches) {
         // Skip if the class string has dark: variant elsewhere
         if (hasDarkVariant(value, name)) {
           continue;
         }
-        
+
         // Special check for text-white
         if (name === 'text-white without dark bg') {
           if (check && check(value)) {
@@ -270,7 +270,7 @@ function checkFile(filePath) {
             continue;
           }
         }
-        
+
         violations.push({
           line,
           match: match[0],
@@ -282,27 +282,27 @@ function checkFile(filePath) {
       }
     }
   }
-  
+
   return violations;
 }
 
 // Main function
 function main() {
   console.log('🔍 Scanning for Dark Mode Violations...\n');
-  
+
   const allFiles = [];
   for (const dir of DIRECTORIES_TO_CHECK) {
     const fullPath = path.join(process.cwd(), dir);
     const files = findFiles(fullPath, EXTENSIONS);
     allFiles.push(...files);
   }
-  
+
   console.log(`Found ${allFiles.length} files to check\n`);
-  
+
   let totalViolations = 0;
   let filesWithViolations = 0;
   const results = [];
-  
+
   for (const filePath of allFiles) {
     let violations;
     try {
@@ -311,11 +311,11 @@ function main() {
       console.error(`Error checking ${filePath}:`, e.message);
       continue;
     }
-    
+
     if (violations.length > 0) {
       filesWithViolations++;
       totalViolations += violations.length;
-      
+
       const relativePath = path.relative(process.cwd(), filePath);
       results.push({
         file: relativePath,
@@ -323,7 +323,7 @@ function main() {
       });
     }
   }
-  
+
   // Output results
   if (!outputJson) {
     console.log('='.repeat(80));
@@ -335,13 +335,13 @@ function main() {
     console.log('='.repeat(80));
     console.log();
   }
-  
+
   // Group by file
   if (!outputJson) {
     for (const { file, violations } of results) {
       console.log(`\n❌ ${file}`);
       console.log('-'.repeat(80));
-      
+
       for (const v of violations) {
         console.log(`  Line ${v.line} [${v.type}]`);
         console.log(`    Found: ${v.match}`);
@@ -351,7 +351,7 @@ function main() {
       }
     }
   }
-  
+
   // Summary by violation type
   const typeCount = {};
   for (const { violations } of results) {
@@ -359,22 +359,22 @@ function main() {
       typeCount[v.type] = (typeCount[v.type] || 0) + 1;
     }
   }
-  
+
   if (!outputJson) {
     console.log('\n' + '='.repeat(80));
     console.log('VIOLATION SUMMARY BY TYPE');
     console.log('='.repeat(80));
-    
+
     const sortedTypes = Object.entries(typeCount).sort((a, b) => b[1] - a[1]);
     for (const [type, count] of sortedTypes) {
       console.log(`  ${type}: ${count} occurrences`);
     }
-    
+
     console.log('\n' + '='.repeat(80));
     console.log(totalViolations > 0 ? '❌ VIOLATIONS FOUND' : '✅ NO VIOLATIONS FOUND');
     console.log('='.repeat(80));
   }
-  
+
   // Output JSON if requested
   if (outputJson) {
     const jsonOutput = {
@@ -388,7 +388,7 @@ function main() {
     };
     console.log(JSON.stringify(jsonOutput, null, 2));
   }
-  
+
   // Output fix guide
   if (showFix) {
     console.log('\n' + '='.repeat(80));
@@ -417,7 +417,7 @@ For JSON blog content files, edit the HTML content directly to add dark: variant
 `);
     console.log('='.repeat(80));
   }
-  
+
   // Exit with error code if violations found
   process.exit(totalViolations > 0 ? 1 : 0);
 }

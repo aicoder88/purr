@@ -143,17 +143,20 @@
       {
         "number": "01",
         "title": "Open the Bag",
-        "description": "That's the hardest part. Seriously. No measuring, no mixing bowls, no instruction manual required."
+        "description": "Open and sprinkle. No measuring needed.",
+        "image": "/optimized/marketing/step-01-open-bag.png"
       },
       {
         "number": "02",
         "title": "Sprinkle on Fresh Litter",
-        "description": "A light layer on top of your cat's favorite litter. Works with clay, crystal, clumping, natural — whatever they're already happy with."
+        "description": "Use a light layer on your cat's current litter.",
+        "image": "/optimized/marketing/step-02-sprinkle.png"
       },
       {
         "number": "03",
-        "title": "Mix & Enjoy the Clean",
-        "description": "Give it a gentle stir. Now enjoy 7 days of not thinking about the litter box. Your nose (and your guests) will thank you."
+        "title": "Mix and Walk Away",
+        "description": "Stir once and enjoy a cleaner-smelling home.",
+        "image": "/optimized/marketing/step-03-mix.png"
       }
     ],
     "litterTypes": {

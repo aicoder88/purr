@@ -6,6 +6,7 @@
  */
 
 import { useMemo } from 'react';
+import Image from 'next/image';
 
 export interface HowToStep {
   name: string;
@@ -126,11 +127,12 @@ export function HowToSection({
 
                 {step.image && (
                   <div className="mt-3">
-                    <img
+                    <Image
                       src={step.image}
                       alt={`Step ${index + 1}: ${step.name}`}
+                      width={1200}
+                      height={675}
                       className="rounded-lg max-w-full h-auto"
-                      loading="lazy"
                     />
                   </div>
                 )}

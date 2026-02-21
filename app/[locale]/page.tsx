@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Hero } from '@/components/sections/hero';
 import { HowItWorks } from '@/components/sections/how-it-works';
-import { MadeInCanada } from '@/components/sections/made-in-canada';
 import { AgitationSection } from '@/components/sections/agitation-section';
 import { WhyPurrify } from '@/components/sections/why-purrify';
 import { ScienceSection } from '@/components/sections/science-section';
@@ -117,19 +116,14 @@ export default async function LocalizedHomePage({ params }: LocalizedHomepagePro
 
                 <ScrollingAnnouncementBar />
 
-                {/* Section 2: How It Works (Three-Step) */}
-                <ErrorBoundary>
-                    <HowItWorks />
-                </ErrorBoundary>
-
-                {/* Section 3: Made in Canada / Ingredients */}
-                <ErrorBoundary>
-                    <MadeInCanada />
-                </ErrorBoundary>
-
                 {/* Section 4: The Story ("The Embarrassed Cat Owner") */}
                 <ErrorBoundary>
                     <AgitationSection />
+                </ErrorBoundary>
+
+                {/* Section 2: How It Works (Three-Step) */}
+                <ErrorBoundary>
+                    <HowItWorks />
                 </ErrorBoundary>
 
                 {/* Section 5: Why Cat Parents Keep Coming Back (Features) */}

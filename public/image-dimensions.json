@@ -15311,5 +15311,76 @@
       ]
     },
     "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  },
+  "original-images/marketing/step-03-mix.png": {
+    "width": 640,
+    "height": 640,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/marketing/step-03-mix-640w.avif"
+      ],
+      "webp": [
+        "optimized/marketing/step-03-mix-640w.webp"
+      ],
+      "jpg": [
+        "optimized/marketing/step-03-mix-640w.jpg"
+      ]
+    },
+    "sizes": "100vw"
+  },
+  "original-images/marketing/step-02-sprinkle.png": {
+    "width": 640,
+    "height": 640,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/marketing/step-02-sprinkle-640w.avif"
+      ],
+      "webp": [
+        "optimized/marketing/step-02-sprinkle-640w.webp"
+      ],
+      "jpg": [
+        "optimized/marketing/step-02-sprinkle-640w.jpg"
+      ]
+    },
+    "sizes": "100vw"
+  },
+  "original-images/marketing/step-01-open-bag.png": {
+    "width": 640,
+    "height": 640,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/marketing/step-01-open-bag-640w.avif"
+      ],
+      "webp": [
+        "optimized/marketing/step-01-open-bag-640w.webp"
+      ],
+      "jpg": [
+        "optimized/marketing/step-01-open-bag-640w.jpg"
+      ]
+    },
+    "sizes": "100vw"
+  },
+  "original-images/holdnose.png": {
+    "width": 1024,
+    "height": 1536,
+    "aspectRatio": 0.6666666666666666,
+    "formats": {
+      "avif": [
+        "optimized/holdnose-640w.avif",
+        "optimized/holdnose-828w.avif"
+      ],
+      "webp": [
+        "optimized/holdnose-640w.webp",
+        "optimized/holdnose-828w.webp"
+      ],
+      "jpg": [
+        "optimized/holdnose-640w.jpg",
+        "optimized/holdnose-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   }
 }

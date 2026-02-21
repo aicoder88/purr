@@ -195,6 +195,7 @@ export default async function RootLayout({
                 Next.js <Script> wraps content in its loader JSON, hiding the
                 attribute from Cloudflare Rocket Loader which then rewrites the
                 type to a deferred hash — preventing GTM from executing. */}
+            {/* eslint-disable-next-line @next/next/next-script-for-ga */}
             <script
               data-cfasync="false"
               dangerouslySetInnerHTML={{

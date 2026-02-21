@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { Check, Star, Truck, ShieldCheck, Clock, Sparkles } from 'lucide-react';
 import { formatProductPrice } from '@/lib/pricing';
 import { getPaymentLink } from '@/lib/payment-links';
+import type { TranslationType } from '@/translations/types';
 
 
 
@@ -18,7 +19,7 @@ export function TryFreeClient() {
 
   // Fallback to empty object if translation is missing to prevent crash
   // In a real app we might want to ensure types guarantee this exists
-  const copy = (t.raw('tryFreePage') as Record<string, any>) || {
+  const copy = (t.raw('tryFreePage') as NonNullable<TranslationType['tryFreePage']>) || {
     urgencyBadge: '',
     shippingSuffix: '',
     valueLabel: '',

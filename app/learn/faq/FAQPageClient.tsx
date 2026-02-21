@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, type ComponentType } from 'react';
 import { Container } from '../../../src/components/ui/container';
 import { Button } from '../../../src/components/ui/button';
 import { useTranslation } from '../../../src/lib/translation-context';
@@ -97,7 +97,7 @@ const FAQ_UI_COPY: Record<SupportedLocale, {
 };
 
 type FAQItem = { id: number; question: string; answer: string; category: string; featured: boolean };
-type FAQCategory = { id: string; name: string; icon: any; count: number };
+type FAQCategory = { id: string; name: string; icon: ComponentType<{ className?: string }>; count: number };
 
 export default function FAQPageClient() {
   const { t, locale } = useTranslation();
@@ -105,7 +105,7 @@ export default function FAQPageClient() {
   const { currency } = useCurrency();
   const localePrefix = locale === 'en' ? '' : `/${locale}`;
   const uiCopy = FAQ_UI_COPY[locale as SupportedLocale] || FAQ_UI_COPY.en;
-  const faqPage = t.faqPage as Record<string, any>;
+  const faqPage = t.faqPage;
   const trialPrice = formatProductPrice('trial', currency, locale);
   const trialCheckoutUrl = getPaymentLink('trialSingle') || '/products/trial-size';
   const trialCtaLabel = faqPage?.tryRiskFree ||
@@ -476,7 +476,7 @@ export default function FAQPageClient() {
                                         size="sm"
                                         className="mt-4 bg-gradient-to-r from-deep-coral to-electric-indigo hover:from-deep-coral-600 hover:to-electric-indigo-600 text-white dark:text-gray-100 font-semibold hover:scale-105 transition-all duration-300"
                                       >
-                                        {((t.nav as any)?.safetyInfo || 'Safety Information') + ' \u2192'}
+                                        {(t.nav.safetyInfo || 'Safety Information') + ' \u2192'}
                                       </Button>
                                     </Link>
                                   )}

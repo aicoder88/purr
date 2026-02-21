@@ -19,6 +19,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { useTranslations, useLocale } from 'next-intl';
 import { CONTACT_INFO } from '@/lib/constants';
+import type { TranslationType } from '@/translations/types';
 
 interface OrderDetails {
   customerEmail?: string;
@@ -40,7 +41,7 @@ interface ThankYouClientProps {
 export default function ThankYouClient({ orderDetails, error, sessionId: _sessionId }: ThankYouClientProps) {
   const t = useTranslations();
   const locale = useLocale();
-  const thankYou = t.raw('thankYou') as Record<string, any>;
+  const thankYou = t.raw('thankYou') as NonNullable<TranslationType['thankYou']>;
   const anytimeLabel =
     locale === 'fr'
       ? 'Nimporte quand'

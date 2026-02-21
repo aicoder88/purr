@@ -246,7 +246,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
                   </label>
                   <select
                     value={config.tone}
-                    onChange={(e) => setConfig({ ...config, tone: e.target.value as any })}
+                    onChange={(e) => setConfig({ ...config, tone: e.target.value as AIGenerationConfig['tone'] })}
                     className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
                   >
                     <option value="professional">Professional</option>
@@ -262,7 +262,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
                   </label>
                   <select
                     value={config.length}
-                    onChange={(e) => setConfig({ ...config, length: e.target.value as any })}
+                    onChange={(e) => setConfig({ ...config, length: e.target.value as AIGenerationConfig['length'] })}
                     className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
                   >
                     <option value="short">Short (500-800 words)</option>
@@ -279,7 +279,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
                 </label>
                 <select
                   value={config.targetAudience}
-                  onChange={(e) => setConfig({ ...config, targetAudience: e.target.value as any })}
+                  onChange={(e) => setConfig({ ...config, targetAudience: e.target.value as AIGenerationConfig['targetAudience'] })}
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
                 >
                   <option value="beginners">Beginners</option>

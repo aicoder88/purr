@@ -3,10 +3,34 @@
 import Script from 'next/script';
 import { useEffect, useRef, useState } from 'react';
 
+interface ChartInstance {
+    destroy: () => void;
+}
+
+interface ChartTooltipItem {
+    chart: {
+        data: {
+            labels?: Array<string | string[]>;
+        };
+    };
+    dataIndex: number;
+}
+
+type ChartConstructor = new (element: HTMLCanvasElement, config: unknown) => ChartInstance;
+
+interface PlotlyApi {
+    newPlot: (
+        element: HTMLDivElement,
+        data: unknown[],
+        layout: Record<string, unknown>,
+        config: Record<string, unknown>
+    ) => void;
+}
+
 declare global {
     interface Window {
-        Chart: any;
-        Plotly: any;
+        Chart?: ChartConstructor;
+        Plotly?: PlotlyApi;
     }
 }
 
@@ -40,8 +64,13 @@ export default function ViralContent() {
                 plugins: {
                     tooltip: {
                         callbacks: {
-                            title: (items: any) => {
-                                const label = items[0].chart.data.labels[items[0].dataIndex];
+                            title: (items: ChartTooltipItem[]) => {
+                                const firstItem = items[0];
+                                if (!firstItem) {
+                                    return '';
+                                }
+                                const labels = firstItem.chart.data.labels;
+                                const label = labels?.[firstItem.dataIndex];
                                 return Array.isArray(label) ? label.join(' ') : label;
                             }
                         }

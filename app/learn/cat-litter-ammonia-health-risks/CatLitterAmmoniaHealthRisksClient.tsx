@@ -2,6 +2,7 @@
 
 import { Container } from '../../../src/components/ui/container';
 import Link from 'next/link';
+import Image from 'next/image';
 import { AlertTriangle, ShieldCheck, Wind, Heart, Home, ChevronRight, Check, X, Thermometer, Clock } from 'lucide-react';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 
@@ -143,11 +144,12 @@ export default function CatLitterAmmoniaHealthRisksClient() {
                   </p>
                 </div>
                 <div className="relative h-full min-h-[200px]">
-                  <img
+                  <Image
                     src="/optimized/blog/ammonia-science.webp"
                     alt="Scientific diagram of ammonia production from cat urine"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="w-full h-full object-cover rounded-xl shadow-md"
-                    loading="lazy"
                   />
                 </div>
               </div>
@@ -191,11 +193,12 @@ export default function CatLitterAmmoniaHealthRisksClient() {
             <h2 className="text-3xl font-bold mb-6 mt-12 text-gray-900 dark:text-gray-100">Who is at Risk?</h2>
 
             <div className="mb-8">
-              <img
+              <Image
                 src="/optimized/blog/ammonia-haze-ghibli.webp"
                 alt="Visual representation of potential ammonia exposure in the home"
+                width={1600}
+                height={640}
                 className="w-full h-64 object-cover rounded-xl shadow-lg"
-                loading="lazy"
               />
             </div>
 
@@ -247,11 +250,12 @@ export default function CatLitterAmmoniaHealthRisksClient() {
                     Unlike air fresheners that mask odors or baking soda that only neutralizes acids, activated carbon physically traps ammonia molecules through <strong>adsorption</strong>. The ammonia is permanently captured in the carbon&apos;s micropores, preventing it from ever reaching your nose - or your lungs.
                   </p>
                 </div>
-                <img
+                <Image
                   src="/optimized/blog/microscopic-carbon-odor-trap.webp"
                   alt="Microscopic view of activated carbon trapping ammonia molecules"
+                  width={1200}
+                  height={800}
                   className="w-full rounded-xl shadow-lg border border-forest-700/50"
-                  loading="lazy"
                 />
               </div>
               <div className="grid md:grid-cols-3 gap-4">

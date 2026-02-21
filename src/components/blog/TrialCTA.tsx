@@ -7,6 +7,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import type { TranslationType } from '@/translations/types';
 
 interface TrialCTAProps {
   /** Optional class name for styling */
@@ -29,7 +30,7 @@ export function TrialCTA({ className = '', variant = 'default' }: TrialCTAProps)
   // Try to get product name from translations, fallback to default
   let trialImageAlt = 'Purrify Trial Size';
   try {
-    const products = t.raw('products') as Record<string, any>;
+    const products = t.raw('products') as TranslationType['products'];
     trialImageAlt = products?.['purrify-12g']?.name || 'Purrify Trial Size';
   } catch {
     trialImageAlt = 'Purrify Trial Size';

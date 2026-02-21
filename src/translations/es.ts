@@ -1,7 +1,6 @@
 import { CONTACT_INFO } from '../lib/constants';
-import { TranslationType } from './types';
 
-export const es: TranslationType = {
+export const es = {
   // Common
   siteName: "Purrify",
   siteDescription: "Deja de avergonzarte por el olor de la arena para gatos. El carbon activado de grado filtro de agua elimina el olor a amoniaco al instante. Sin mas caja de arena apestosa - los invitados pensaran que no tienes gatos. Envios a EE.UU. y Canada.",
@@ -276,21 +275,26 @@ export const es: TranslationType = {
   // How It Works
   howItWorks: {
     simpleAs123: "Aire Fresco en 60 Segundos - Simple como 1-2-3",
-    step1: {
-      number: "01",
-      title: "Abrir y Verter",
-      description: "Abre la bolsa - tu nariz notara la diferencia inmediatamente! Sin ensamblaje, sin instrucciones complicadas."
-    },
-    step2: {
-      number: "02",
-      title: "Espolvorear la Magia",
-      description: "Solo espolvorea una capa fina sobre la arena limpia. Funciona con CUALQUIER marca - arcilla, cristal, aglomerante, lo que sea."
-    },
-    step3: {
-      number: "03",
-      title: "Mezclar y Disfrutar lo Limpio!",
-      description: "Mezcla suavemente y observa (huele?) la magia suceder. 7 dias de aire fresco empiezan AHORA. Tus invitados quedaran asombrados."
-    },
+    steps: [
+      {
+        number: "01",
+        title: "Abrir y Verter",
+        description: "Abre la bolsa - tu nariz notara la diferencia inmediatamente! Sin ensamblaje, sin instrucciones complicadas.",
+        image: "/optimized/marketing/step-01-open-bag.png"
+      },
+      {
+        number: "02",
+        title: "Espolvorear la Magia",
+        description: "Solo espolvorea una capa fina sobre la arena limpia. Funciona con CUALQUIER marca - arcilla, cristal, aglomerante, lo que sea.",
+        image: "/optimized/marketing/step-02-sprinkle.png"
+      },
+      {
+        number: "03",
+        title: "Mezclar y Disfrutar lo Limpio!",
+        description: "Mezcla suavemente y observa (huele?) la magia suceder. 7 dias de aire fresco empiezan AHORA. Tus invitados quedaran asombrados.",
+        image: "/optimized/marketing/step-03-mix.png"
+      }
+    ],
     litterTypes: {
       clumping: "AGLOMERANTE",
       crystal: "CRISTAL",
@@ -301,6 +305,16 @@ export const es: TranslationType = {
     learnTheScience: "Aprende la ciencia",
     compareSizes: "compara nuestros tamanos",
     coconutDescription: "Cascaras de coco puras y sostenibles son activadas con vapor de agua filtrado puro a alta presion para abrir millones de agujeros, tuneles y pasajes que atrapan las moleculas de olor."
+  },
+
+  madeInCanada: {
+    badge: "Hecho en Canadá 🇨🇦",
+  },
+
+  whyPurrify: {
+    badge: "¿Por qué los padres de gatos siguen regresando?",
+    title: "Realmente funciona",
+    subtitle: ""
   },
 
   // Products Section

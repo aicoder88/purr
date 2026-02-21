@@ -307,6 +307,13 @@ export interface TranslationType {
   // Section Header highlights
   sectionHeaderHighlights?: string[];
 
+  // Why Purrify
+  whyPurrify?: {
+    badge: string;
+    title: string;
+    subtitle: string;
+  };
+
   // Trust Bar
   trustBar?: {
     happyCats: string;
@@ -328,12 +335,20 @@ export interface TranslationType {
     };
   };
 
+  // Made in Canada
+  madeInCanada: {
+    badge: string;
+  };
+
   // How It Works
   howItWorks?: {
     simpleAs123: string;
-    step1: { number: string; title: string; description: string };
-    step2: { number: string; title: string; description: string };
-    step3: { number: string; title: string; description: string };
+    steps: Array<{
+      number: string;
+      title: string;
+      description: string;
+      image: string;
+    }>;
     litterTypes: {
       clumping: string;
       crystal: string;

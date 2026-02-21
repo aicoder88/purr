@@ -8,6 +8,7 @@ import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { CONTACT_INFO, PHONE_MESSAGING } from '@/lib/constants';
 import { useTranslations, useLocale } from 'next-intl';
+import type { TranslationType } from '@/translations/types';
 
 // ============================================================================
 // Types
@@ -135,11 +136,11 @@ export function RetailerContact() {
   const t = useTranslations();
   const locale = useLocale();
   // Try to get contact data, fallback to empty object if not available
-  let contact: Record<string, any> = {};
+  let contact: TranslationType['retailers']['contact'] | null = null;
   try {
-    contact = t.raw('retailers.contact') as Record<string, any>;
+    contact = t.raw('retailers.contact') as TranslationType['retailers']['contact'];
   } catch {
-    contact = {};
+    contact = null;
   }
   const form = contact?.form;
   const success = contact?.success;
