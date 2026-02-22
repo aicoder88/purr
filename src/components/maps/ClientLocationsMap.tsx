@@ -32,19 +32,26 @@ interface ClientLocationsMapProps {
   headerDescription?: string;
 }
 
+function normalizeHeight(height?: string): number {
+  const parsedHeight = Number.parseInt(height ?? "600", 10);
+  return Number.isFinite(parsedHeight) ? parsedHeight : 600;
+}
+
 export const ClientLocationsMap: React.FC<ClientLocationsMapProps> = ({
   className = "",
+  height,
   showHeader = true,
   headerTitle,
   headerDescription,
 }) => {
   const t = useTranslations();
+  const mapHeight = normalizeHeight(height);
 
   const title = headerTitle ?? t('maps.findNearYou') ?? "";
   const description = headerDescription ?? t('maps.discoverWhere') ?? "";
 
   return (
-    <section className={`py-12 md:py-20 ${className}`}>
+    <section className={`overflow-x-clip py-12 md:py-20 ${className}`}>
       {showHeader && (
         <div className="container mx-auto px-4 mb-10 md:mb-14">
           <div className="max-w-4xl mx-auto text-center">
@@ -59,7 +66,7 @@ export const ClientLocationsMap: React.FC<ClientLocationsMapProps> = ({
       )}
 
       <div className="container mx-auto px-4">
-        <RetailerMap />
+        <RetailerMap height={mapHeight} />
       </div>
     </section>
   );

@@ -75,10 +75,10 @@ export const en = {
 
   stockAlertBanner: {
     headline: "⚠️ STOP - Read This Before You Order",
-    line1: "Word got out. Orders flooded in. We're a tiny operation and we got absolutely buried. We're out of stock.",
-    line2: "So here's the deal: We're back around March 3rd. Get on the list and you'll be among the first to know the minute we're shipping again.",
-    line3: "Don't wait. The same thing that just happened.... will happen again",
-    cta: "YES! Free me from stink ASAP!"
+    line1: "Word got out. Orders flooded in. We're tiny and ran out of stock.",
+    line2: "We're shipping new orders starting March 3rd. Get on the list and be first to know the day we're shipping again. Or place your order and get in front of the line.",
+    line3: "But don't wait. The same thing that just happened.... will happen again",
+    cta: "Join the \"Free us from stink\" waitlist!"
   },
 
   locationsMenu: {
@@ -253,8 +253,8 @@ export const en = {
   // Features
   features: {
     odorElimination: {
-      title: "Traps Odor at the Source",
-      description: "The carbon granules in this blend lock in ammonia instead of masking it with fragrance."
+      title: "Sustainable coconut shells.",
+      description: "Steam activated coconut shells become mind-blowing odor sponges"
     },
     catFriendly: {
       title: "Filter-Grade Carbon You Can Trust",
@@ -262,7 +262,7 @@ export const en = {
     },
     longLasting: {
       title: "Freshness That Lasts",
-      description: "A light sprinkle keeps your space noticeably cleaner-smelling through your regular litter cycle."
+      description: "A little sprinkle every once in a while keeps your home noticeably cleaner-smelling"
     },
     anyLitter: {
       title: "Works with Your Current Litter",
@@ -286,19 +286,19 @@ export const en = {
       {
         number: "01",
         title: "Open the Bag",
-        description: "Open and sprinkle. No measuring needed.",
+        description: "Easy zipper-style bag",
         image: "/optimized/marketing/step-01-open-bag.png"
       },
       {
         number: "02",
-        title: "Sprinkle on Fresh Litter",
-        description: "Use a light layer on your cat's current litter.",
+        title: "Sprinkle on Litter",
+        description: "No measuring needed. More works better.",
         image: "/optimized/marketing/step-02-sprinkle.png"
       },
       {
         number: "03",
-        title: "Mix and Walk Away",
-        description: "Stir once and enjoy a cleaner-smelling home.",
+        title: "(Optional) Mix it in",
+        description: "Or let your cat(s) do it.",
         image: "/optimized/marketing/step-03-mix.png"
       }
     ],
@@ -706,9 +706,9 @@ export const en = {
   // Science Section (homepage component)
   scienceSection: {
     badge: "The Secret Sauce",
-    headline: "Why Activated Carbon",
+    headline: "Why Coconut Carbon",
     headlineHighlight: "Works So Well",
-    description: "Activated carbon contains millions of microscopic pores that pull in and trap odor molecules.",
+    description: "Activated coconut shells contains millions of microscopic pores that physically attract and trap odor molecules.",
     learnMore: "Dive Deeper Into The Science",
     features: [
       {
@@ -1061,8 +1061,8 @@ export const en = {
     readMoreReviews: "Read More Reviews",
     namedTestimonials: [
       { name: "Maïwenn Côté", location: "Hochelaga, Montréal", quote: "My cat's litter box is in my bedroom. Was. Now I can have guests over again." },
-      { name: "Anaïs Roberge", location: "Verdun, Montréal", quote: "It doesn't smell like flowers. It smells like nothing. That's the point." },
-      { name: "Darian Kovacevic", location: "Saint-Henri, Montréal", quote: "I thought my apartment just smelled like cats. Turns out it smelled like ammonia. Huge difference." },
+      { name: "Anaïs Roberge", location: "Verdun, Montréal", quote: "It doesn't smell like flowers- it smells like nothing." },
+      { name: "Darian Kovacevic", location: "Saint-Henri, Montréal", quote: "I thought my apartment just smelled like cats but it was the ammonia. Huge difference now- thank you!!" },
       { name: "Koralie Thibodeau", location: "Terrebonne, QC", quote: "My cat didn't notice I changed anything. My guests noticed immediately." },
       { name: "Yanis Beaulieu", location: "Villeray, Montréal", quote: "Real pet tax, is the litter box. Always paying with the smell. With Purrify, fini. I don't pay that anymore." },
       { name: "Éloïse Martel", location: "Boucherville, QC", quote: "Tried every spray, every powder, every litter, every 'odour eliminator.' This is the first one that actually eliminated the odour." },
@@ -1238,7 +1238,7 @@ export const en = {
 
   // Product Comparison
   productComparison: {
-    title: "Choose the Size That Fits Your Home",
+    title: "Your home. Your cat. Zero compromise.",
     subtitle: "Same formula, different bag sizes.",
     findPerfectSize: "Find your perfect size based on your needs",
     products: [

@@ -42,7 +42,7 @@ export function HowItWorks() {
               </div>
               <div className="flex-1">
                 <p className="text-sm font-semibold tracking-wider text-gray-500 dark:text-gray-400 capitalize">
-                  {t("steps")}.{step.number}
+                  {t("stepLabel")} {parseInt(step.number, 10)}
                 </p>
                 <h3 className="mt-2 text-xl font-semibold text-gray-900 dark:text-white">{step.title}</h3>
                 <p className="mt-3 text-base leading-relaxed text-gray-600 dark:text-gray-400">{step.description}</p>

@@ -6,8 +6,8 @@ import { MapPin, Star } from "lucide-react";
 
 const testimonials = [
   { name: "Maïwenn Côté", location: "Hochelaga, Montréal", quote: "My cat's litter box is in my bedroom. Was. Now I can have guests over again." },
-  { name: "Anaïs Roberge", location: "Verdun, Montréal", quote: "It doesn't smell like flowers. It smells like nothing. That's the point." },
-  { name: "Darian Kovacevic", location: "Saint-Henri, Montréal", quote: "I thought my apartment just smelled like cats. Turns out it smelled like ammonia. Huge difference." },
+  { name: "Anaïs Roberge", location: "Verdun, Montréal", quote: "It doesn't smell like flowers- it smells like nothing." },
+  { name: "Darian Kovacevic", location: "Saint-Henri, Montréal", quote: "I thought my apartment just smelled like cats but it was the ammonia. Huge difference now- thank you!!" },
   { name: "Koralie Thibodeau", location: "Terrebonne, QC", quote: "My cat didn't notice I changed anything. My guests noticed immediately." },
   { name: "Yanis Beaulieu", location: "Villeray, Montréal", quote: "Real pet tax, is the litter box. Always paying with the smell. With Purrify, fini. I don't pay that anymore." },
   { name: "Éloïse Martel", location: "Boucherville, QC", quote: "Tried every spray, every powder, every litter, every 'odour eliminator.' This is the first one that actually eliminated the odour." },

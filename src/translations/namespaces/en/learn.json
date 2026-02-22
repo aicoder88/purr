@@ -301,21 +301,22 @@
   },
   "howItWorks": {
     "simpleAs123": "Ridiculously Easy to Use",
+    "stepLabel": "Step",
     "steps": [
       {
         "number": "01",
         "title": "Open the Bag",
-        "description": "That's the hardest part. Seriously. No measuring, no mixing bowls, no instruction manual required."
+        "description": "Easy zipper-style bag"
       },
       {
         "number": "02",
-        "title": "Sprinkle on Fresh Litter",
-        "description": "A light layer on top of your cat's favorite litter. Works with clay, crystal, clumping, natural — whatever they're already happy with."
+        "title": "Sprinkle on Litter",
+        "description": "No measuring needed. More works better."
       },
       {
         "number": "03",
-        "title": "Mix & Enjoy the Clean",
-        "description": "Give it a gentle stir. Now enjoy 7 days of not thinking about the litter box. Your nose (and your guests) will thank you."
+        "title": "(Optional) Mix it in",
+        "description": "Or let your cat(s) do it."
       }
     ],
     "litterTypes": {

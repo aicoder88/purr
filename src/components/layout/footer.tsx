@@ -176,7 +176,7 @@ export function Footer() {
                   href={SOCIAL_LINKS.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#991D1D] dark:focus-visible:ring-[#FF8585] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFF5] dark:focus-visible:ring-offset-gray-900 transition-colors duration-300"
                   aria-label={copy.socialAria.instagram}
                 >
                   <Instagram className="h-5 w-5" />
@@ -185,7 +185,7 @@ export function Footer() {
                   href={SOCIAL_LINKS.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#991D1D] dark:focus-visible:ring-[#FF8585] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFF5] dark:focus-visible:ring-offset-gray-900 transition-colors duration-300"
                   aria-label={copy.socialAria.facebook}
                 >
                   <Facebook className="h-5 w-5" />
@@ -194,7 +194,7 @@ export function Footer() {
                   href={SOCIAL_LINKS.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#991D1D] dark:focus-visible:ring-[#FF8585] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFF5] dark:focus-visible:ring-offset-gray-900 transition-colors duration-300"
                   aria-label={copy.socialAria.linkedin}
                 >
                   <Linkedin className="h-5 w-5" />
@@ -203,7 +203,7 @@ export function Footer() {
                   href={SOCIAL_LINKS.youtube}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#991D1D] dark:focus-visible:ring-[#FF8585] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFF5] dark:focus-visible:ring-offset-gray-900 transition-colors duration-300"
                   aria-label={copy.socialAria.youtube}
                 >
                   <Youtube className="h-5 w-5" />
@@ -212,7 +212,7 @@ export function Footer() {
                   href={SOCIAL_LINKS.tiktok}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#991D1D] dark:focus-visible:ring-[#FF8585] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFF5] dark:focus-visible:ring-offset-gray-900 transition-colors duration-300"
                   aria-label={copy.socialAria.tiktok}
                 >
                   <TikTokIcon className="h-5 w-5" />
@@ -221,7 +221,7 @@ export function Footer() {
                   href={SOCIAL_LINKS.medium}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[#333333]/70 dark:text-gray-400 hover:text-[#991D1D] dark:hover:text-[#FF8585] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#991D1D] dark:focus-visible:ring-[#FF8585] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFF5] dark:focus-visible:ring-offset-gray-900 transition-colors duration-300"
                   aria-label={copy.socialAria.medium}
                 >
                   <MediumIcon className="h-5 w-5" />
@@ -493,19 +493,19 @@ export function Footer() {
             <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-4 mb-4">
               <Link prefetch={false}
                 href={`${localePrefix}/privacy-policy/`}
-                className="text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                className="inline-flex min-h-[44px] items-center px-1 text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
               >
                 {t('nav.privacyPolicy')}
               </Link>
               <Link prefetch={false}
                 href={`${localePrefix}/terms/`}
-                className="text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                className="inline-flex min-h-[44px] items-center px-1 text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
               >
                 {t('nav.termsOfService')}
               </Link>
               <Link prefetch={false}
                 href="/sitemap.xml"
-                className="text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
+                className="inline-flex min-h-[44px] items-center px-1 text-xs text-[#333333]/80 dark:text-gray-300 hover:text-[#991D1D] dark:hover:text-[#FF8585] transition-colors duration-300"
               >
                 {t('footerNav.sitemap') || "Sitemap"}
               </Link>

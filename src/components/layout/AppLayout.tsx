@@ -14,7 +14,7 @@ interface AppLayoutProps {
 
 export function AppLayout({ children }: AppLayoutProps) {
     return (
-        <div className="flex flex-col min-h-screen">
+        <div className="flex min-h-screen flex-col overflow-x-clip">
             <SkipNav />
             <LaserCursor />
             <ScrollToTopButton />

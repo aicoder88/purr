@@ -25,7 +25,7 @@ export function ScrollingAnnouncementBar() {
   ];
 
   return (
-    <section className="w-full py-6 bg-gray-50 dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800">
+    <section className="w-full overflow-x-clip border-y border-gray-200 bg-gray-50 py-6 dark:border-gray-800 dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
           {chips.map((chip) => {

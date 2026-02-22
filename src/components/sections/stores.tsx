@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/container";
 import Image from "next/image";
 import { useLocale } from "next-intl";
 import { useTranslation as __useTranslation } from "@/lib/translation-context";
-import { useState, useEffect } from "react";
+import { useState, useEffect, type FormEvent } from "react";
 
 
 // ============================================================================
@@ -403,21 +403,36 @@ export function Stores() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [statusMessage, setStatusMessage] = useState('');
+  const [requestForm, setRequestForm] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
 
-  const handleRequestStore = async () => {
+  const handleRequestStore = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
     try {
+      const safeMessage = requestForm.message.replace(/[<>"'&]/g, '').trim();
+      const message = [
+        'Store availability request from website visitor.',
+        '',
+        `Requested store details: ${safeMessage}`,
+        '',
+        'Please contact this customer and follow up with the retailer.',
+      ].join('\n');
+
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name: 'Store Availability Request',
-          email: 'customer@purrify.ca',
-          message: 'A customer has requested Purrify at their local pet store. Please follow up to understand which store they would like us to contact.',
+          name: requestForm.name.trim(),
+          email: requestForm.email.trim().toLowerCase(),
+          message,
         }),
       });
 
@@ -426,6 +441,11 @@ export function Stores() {
       if (response.ok && data.success) {
         setSubmitStatus('success');
         setStatusMessage(t.storesSection?.requestSuccess || 'Thank you! We\'ll reach out to help get Purrify at your local store.');
+        setRequestForm({
+          name: '',
+          email: '',
+          message: '',
+        });
       } else {
         setSubmitStatus('error');
         setStatusMessage(data.message || t.storesSection?.requestError || 'Failed to send request. Please try again or contact us directly.');
@@ -497,7 +517,7 @@ export function Stores() {
                         href={`https://maps.google.com/?q=${encodeURIComponent(`${store.address}`)}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-start text-[14px] text-gray-600 dark:text-gray-300 hover:text-[#FF8E3C] dark:hover:text-[#FF8E3C] transition-colors gap-2.5"
+                        className="flex min-h-[44px] items-start rounded-lg px-1 text-[14px] text-gray-600 dark:text-gray-300 hover:text-[#FF8E3C] dark:hover:text-[#FF8E3C] transition-colors gap-2.5"
                         aria-label={`View ${store.name} on Google Maps`}
                       >
                         <svg className="w-4 h-4 text-gray-400 dark:text-gray-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -519,7 +539,7 @@ export function Stores() {
                       {store.phone && (
                         <a
                           href={`tel:${store.phone.replace(/[^\d+]/g, '')}`}
-                          className="flex items-center text-[14px] text-gray-600 dark:text-gray-300 hover:text-[#FF8E3C] dark:hover:text-[#FF8E3C] transition-colors gap-2.5"
+                          className="flex min-h-[44px] items-center rounded-lg px-1 text-[14px] text-gray-600 dark:text-gray-300 hover:text-[#FF8E3C] dark:hover:text-[#FF8E3C] transition-colors gap-2.5"
                           aria-label={`Call ${store.name} at ${store.phone}`}
                         >
                           <svg className="w-4 h-4 text-gray-400 dark:text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -534,7 +554,7 @@ export function Stores() {
                           href={store.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center text-[14px] text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors gap-2.5"
+                          className="flex min-h-[44px] items-center rounded-lg px-1 text-[14px] text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors gap-2.5"
                           aria-label={`${uiCopy.websiteLabel} - ${store.name}`}
                         >
                           <WebsiteIcon className="w-4 h-4 flex-shrink-0 mt-0.5" />
@@ -559,33 +579,83 @@ export function Stores() {
               <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-lg mx-auto">
                 {uiCopy.requestSubtitle}
               </p>
-              <button
-                onClick={handleRequestStore}
-                disabled={isSubmitting || submitStatus === 'success'}
-                className="bg-gradient-to-r from-[#FF8E3C] to-[#FF5050] hover:from-[#E67E30] hover:to-[#E64040] text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 border-0 flex items-center justify-center gap-2 mx-auto min-w-[200px]"
-              >
-                {isSubmitting ? (
-                  <>
-                    <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white dark:text-gray-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    {t.storesSection?.sending || "Sending..."}
-                  </>
-                ) : submitStatus === 'success' ? (
-                  <>
-                    <span className="text-xl">✅</span>
-                    {t.storesSection?.requestSent || "Request Sent!"}
-                  </>
-                ) : (
-                  <>
-                    <span className="text-xl">📝</span>
-                    {t.storesSection?.requestStoreAvailability || uiCopy.requestButton}
-                  </>
-                )}
-              </button>
+              <form onSubmit={handleRequestStore} className="max-w-xl mx-auto space-y-4 text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <label className="block">
+                    <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200 mb-1.5">
+                      {t.contactPage?.form?.fullName}
+                    </span>
+                    <input
+                      type="text"
+                      required
+                      minLength={2}
+                      maxLength={50}
+                      value={requestForm.name}
+                      onChange={(event) => setRequestForm((prev) => ({ ...prev, name: event.target.value }))}
+                      className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-3 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#FF8E3C] focus:border-transparent"
+                    />
+                  </label>
+                  <label className="block">
+                    <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200 mb-1.5">
+                      {t.contactPage?.form?.emailAddress}
+                    </span>
+                    <input
+                      type="email"
+                      required
+                      maxLength={100}
+                      value={requestForm.email}
+                      onChange={(event) => setRequestForm((prev) => ({ ...prev, email: event.target.value }))}
+                      className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-3 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#FF8E3C] focus:border-transparent"
+                    />
+                  </label>
+                </div>
+                <label className="block">
+                  <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200 mb-1.5">
+                    {t.contactPage?.form?.message}
+                  </span>
+                  <textarea
+                    required
+                    minLength={10}
+                    maxLength={300}
+                    rows={4}
+                    value={requestForm.message}
+                    onChange={(event) => setRequestForm((prev) => ({ ...prev, message: event.target.value }))}
+                    placeholder={t.contactPage?.form?.messagePlaceholder}
+                    className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-3 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#FF8E3C] focus:border-transparent"
+                  />
+                </label>
+                <button
+                  type="submit"
+                  disabled={isSubmitting || submitStatus === 'success'}
+                  className="bg-gradient-to-r from-[#FF8E3C] to-[#FF5050] hover:from-[#E67E30] hover:to-[#E64040] text-white dark:text-gray-900 font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 border-0 flex items-center justify-center gap-2 mx-auto min-w-[240px] disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white dark:text-gray-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      {t.storesSection?.sending || "Sending..."}
+                    </>
+                  ) : submitStatus === 'success' ? (
+                    <>
+                      <span className="text-xl">✅</span>
+                      {t.storesSection?.requestSent || "Request Sent!"}
+                    </>
+                  ) : (
+                    <>
+                      <span className="text-xl">📝</span>
+                      {t.storesSection?.requestStoreAvailability || uiCopy.requestButton}
+                    </>
+                  )}
+                </button>
+              </form>
               {submitStatus !== 'idle' && statusMessage && (
-                <p className={`mt-4 text-sm font-medium ${submitStatus === 'success' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+                <p
+                  role="status"
+                  aria-live="polite"
+                  className={`mt-4 text-sm font-medium ${submitStatus === 'success' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}
+                >
                   {statusMessage}
                 </p>
               )}

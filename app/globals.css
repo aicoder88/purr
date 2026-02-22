@@ -96,3 +96,19 @@
 .animate-scroll-left:hover {
   animation-play-state: paused;
 }
+
+/* Home hero video: larger native audio controls for mute/unmute and volume */
+.hero-video-audio-controls::-webkit-media-controls-panel {
+  min-height: 64px;
+}
+
+.hero-video-audio-controls::-webkit-media-controls-mute-button {
+  transform: scale(1.65);
+  transform-origin: center;
+}
+
+.hero-video-audio-controls::-webkit-media-controls-volume-slider {
+  transform: scale(1.9);
+  transform-origin: left center;
+  margin-left: 0.75rem;
+}

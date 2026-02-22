@@ -94,9 +94,6 @@ export async function generateMetadata(): Promise<Metadata> {
     appleWebApp: {
       title: SITE_NAME,
     },
-    other: {
-      'viewport': 'width=device-width, initial-scale=1.0, maximum-scale=5.0',
-    },
   };
 }
 
@@ -119,10 +116,6 @@ export default async function HomePage() {
   // Get price validity date (replaces getStaticProps)
   const priceValidUntil = getPriceValidityDate();
 
-  // Get normalized locale for SEO
-  const _normalizedLocale = normalizeLocale(defaultLocale);
-
-
   // Generate structured data
   const structuredData = await generateStructuredData(defaultLocale, currency);
 
@@ -137,7 +130,7 @@ export default async function HomePage() {
       <main
         id="main-content"
         role="main"
-        className="bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900"
+        className="overflow-x-clip bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900"
       >
         {/* Section 1: Hero */}
         <ErrorBoundary>

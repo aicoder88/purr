@@ -30,25 +30,27 @@ const customIcon = new L.Icon({
     shadowSize: [41, 41]
 });
 
-export default function RetailerMap() {
+interface RetailerMapProps {
+    height?: number;
+}
+
+export default function RetailerMap({ height = 600 }: RetailerMapProps) {
     const [retailerData, setRetailerData] = useState<RetailerLocation[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const mapHeight = height;
 
     useEffect(() => {
-        console.log("RetailerMap fetching data...");
         fetch("/data/retailer_locations.json")
             .then(res => {
                 if (!res.ok) throw new Error("Failed to load retailer data");
                 return res.json();
             })
             .then((data: RetailerLocation[]) => {
-                console.log("RetailerMap data loaded:", data.length);
                 setRetailerData(data);
                 setLoading(false);
             })
             .catch(err => {
-                console.error("RetailerMap error:", err);
                 setError(err.message);
                 setLoading(false);
             });
@@ -59,13 +61,12 @@ export default function RetailerMap() {
         const filtered = retailerData.filter(
             (loc) => Number.isFinite(loc.lat) && Number.isFinite(loc.lng)
         );
-        console.log("Filtered locations for map:", filtered.length);
         return filtered;
     }, [retailerData]);
 
     if (loading) {
         return (
-            <div className="h-full w-full flex items-center justify-center bg-gray-50 dark:bg-gray-800/50">
+            <div className="w-full flex items-center justify-center bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700" style={{ minHeight: `${mapHeight}px` }}>
                 <div className="text-center">
                     <div className="w-10 h-10 border-4 border-orange-500 dark:border-orange-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
                     <p className="text-gray-500 dark:text-gray-400 font-medium">Loading locations...</p>
@@ -76,7 +77,7 @@ export default function RetailerMap() {
 
     if (error) {
         return (
-            <div className="h-full w-full flex items-center justify-center bg-red-50 dark:bg-red-900/10">
+            <div className="w-full flex items-center justify-center bg-red-50 dark:bg-red-900/10 rounded-xl border border-red-200 dark:border-red-800/40" style={{ minHeight: `${mapHeight}px` }}>
                 <p className="text-red-500 font-medium">Error: {error}</p>
             </div>
         );
@@ -86,7 +87,7 @@ export default function RetailerMap() {
     const center: [number, number] = [56.1304, -106.3468];
 
     return (
-        <div className="h-[600px] w-full rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 z-0">
+        <div className="w-full rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 z-0" style={{ height: `${mapHeight}px` }}>
             <MapContainer
                 center={center}
                 zoom={4}

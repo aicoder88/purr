@@ -1,6 +1,7 @@
 import { SITE_NAME, SITE_DESCRIPTION, PRODUCTS, CONTACT_INFO, SOCIAL_LINKS } from './constants';
 import { getProductPrice, getPriceRange } from './pricing';
 import type { Currency } from './geo/currency-detector';
+import { getLocalBusinessStructuredData } from './business-profile';
 
 // SEO utilities for comprehensive structured data and multilingual support
 
@@ -722,6 +723,9 @@ export const generateHomepageSchema = (localeInput: string, currency: string = '
 
       // Organization Schema
       stripContext(generateOrganizationSchema(locale)),
+
+      // LocalBusiness Schema (mobile/local intent and GBP consistency)
+      stripContext(getLocalBusinessStructuredData()),
 
       // Product Collection
       {

@@ -182,13 +182,23 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={inter.variable} suppressHydrationWarning>
       <head>
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* Contentsquare UX Analytics */}
         <script
           src="https://t.contentsquare.net/uxa/92035d15b29d9.js"
           async
         />
+        <link
+          rel="preload"
+          as="image"
+          href="/optimized/marketing/purrify-demo-poster.webp"
+          type="image/webp"
+          fetchPriority="high"
+        />
       </head>
-      <body className="font-sans">
+      <body className="font-sans overflow-x-clip">
         {gtmId ? (
           <>
             {/* Raw <script> so data-cfasync="false" lands on the element itself.
