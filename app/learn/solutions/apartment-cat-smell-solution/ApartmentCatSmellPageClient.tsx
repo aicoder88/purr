@@ -9,7 +9,7 @@ import { AIQuotableBlock } from '../../../../src/components/seo/AIQuotableBlock'
 import { RelatedQuestions } from '../../../../src/components/seo/RelatedQuestions';
 
 export default function ApartmentCatSmellPageClient() {
-  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/';
+  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/';/
 
   // SEO optimized images
   const heroImage = '/optimized/blog/apartment-hero.webp';
@@ -124,7 +124,7 @@ export default function ApartmentCatSmellPageClient() {
 
             <div className="text-center">
               <Link
-                href="/products/trial-size"
+                href="/products/trial-size/"
                 className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
               >
                 Try Purrify Risk-Free
@@ -274,13 +274,13 @@ export default function ApartmentCatSmellPageClient() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
-                href="/products/trial-size"
+                href="/products/trial-size/"
                 className="bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
               >
                 Start Your Trial
               </Link>
               <Link
-                href="/learn/how-it-works"
+                href="/learn/how-it-works/"
                 className="text-orange-600 dark:text-orange-400 hover:text-orange-800 dark:hover:text-orange-300 font-semibold underline"
               >
                 Learn How It Works

@@ -77,7 +77,7 @@ export default function Reviews() {
                           See primary sources and authoritative guidance on activated carbon adsorption in our science hub.
                         </p>
                         <Link
-                          href="/science"
+                          href="/learn/science/"
                           className="inline-flex items-center text-sm font-semibold text-[#FF3131] dark:text-[#FF5050] hover:text-[#FF3131]/80 dark:hover:text-[#FF5050]/80 transition-colors mt-2"
                         >
                           View research citations
@@ -96,7 +96,7 @@ export default function Reviews() {
                           Want to share your experience or a photo? Contact our team and we will route it to support.
                         </p>
                         <Link
-                          href="/contact"
+                          href="/contact/"
                           className="inline-flex items-center text-sm font-semibold text-[#FF3131] dark:text-[#FF5050] hover:text-[#FF3131]/80 dark:hover:text-[#FF5050]/80 transition-colors mt-2"
                         >
                           Contact us
@@ -143,7 +143,7 @@ export default function Reviews() {
                     <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Comparison Guide</h4>
                     <p className="text-gray-600 dark:text-gray-300 text-sm">See how Purrify compares to alternatives</p>
                   </Link>
-                  <Link href="/case-studies" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
+                  <Link href="/case-studies/" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
                     <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Case Studies</h4>
                     <p className="text-gray-600 dark:text-gray-300 text-sm">Real results from real customers</p>
                   </Link>

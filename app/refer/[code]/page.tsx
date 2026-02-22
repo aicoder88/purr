@@ -77,7 +77,7 @@ export async function generateMetadata({ params }: ReferralPageProps): Promise<M
     ? `${referralData.referrerName} has shared Purrify with you! Get a FREE 12g trial size (normally ${trialPrice}) and see why they love this cat litter deodorizer.`
     : 'This referral code is not valid or has expired.';
 
-  const canonicalUrl = `https://www.purrify.ca/refer/${code}/`;
+  const canonicalUrl = `https://www.purrify.ca/refer/$/{code}/`;
 
   return {
     title: pageTitle,
@@ -92,7 +92,7 @@ export async function generateMetadata({ params }: ReferralPageProps): Promise<M
       type: 'website',
       images: [
         {
-          url: 'https://www.purrify.ca/optimized/products/17g-transparent-v2.webp',
+          url: 'https://www.purrify.ca/optimized/products/17g-transparent-v2.webp',/
           width: 1200,
           height: 630,
           alt: 'Purrify Free Trial Offer',

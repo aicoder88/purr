@@ -15,7 +15,7 @@ import { getTranslation } from '@/translations';
 
 // Default to English for metadata
 const t = getTranslation('en');
-const canonicalUrl = 'https://www.purrify.ca/retailers/';
+const canonicalUrl = 'https://www.purrify.ca/retailers/';/
 
 export const metadata: Metadata = {
   title: `${SITE_NAME} - ${t.retailers.seo.pageTitle}`,
@@ -84,12 +84,7 @@ const organizationSchema = {
           "name": "Purrify Activated Carbon Cat Litter Deodorizer",
           "description": "Water-filter grade activated carbon for litter box odor control"
         },
-        "eligibleCustomerType": "Business",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "priceCurrency": "CAD",
-          "description": "50%+ retail margins, volume discounts available"
-        }
+        "eligibleCustomerType": "Business"
       }
     ]
   },
@@ -201,7 +196,7 @@ export default function RetailersPage() {
             </div>
             <div className="grid md:grid-cols-3 gap-6">
               <Link
-                href="/pos"
+                href="/pos/"
                 className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-200 dark:border-gray-700"
               >
                 <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-2">
@@ -212,7 +207,7 @@ export default function RetailersPage() {
                 </p>
               </Link>
               <Link
-                href="/b2b/sell-sheet"
+                href="/b2b/sell-sheet/"
                 className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-200 dark:border-gray-700"
               >
                 <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-2">
@@ -223,7 +218,7 @@ export default function RetailersPage() {
                 </p>
               </Link>
               <Link
-                href="/case-studies"
+                href="/case-studies/"
                 className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-200 dark:border-gray-700"
               >
                 <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-2">

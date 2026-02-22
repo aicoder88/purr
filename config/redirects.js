@@ -43,6 +43,26 @@ const REDIRECTS = [
     destination: "/fr/:path*",
     permanent: true
   },
+  {
+    source: "/cdn-cgi/l/email-protection",
+    destination: "/contact/",
+    permanent: true
+  },
+  {
+    source: "/fr/locations/",
+    destination: "/locations/",
+    permanent: true
+  },
+  {
+    source: "/fr/retailers/",
+    destination: "/retailers/",
+    permanent: true
+  },
+  {
+    source: "/fr/retailer/portal/login/",
+    destination: "/retailer/portal/login/",
+    permanent: true
+  },
 
   // --- LOCALE REMOVAL (OPTIMIZED WITH TRAILING SLASHES) ---
   // These redirect removed locales AND add trailing slash in one hop

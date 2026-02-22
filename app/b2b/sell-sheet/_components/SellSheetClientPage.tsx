@@ -29,6 +29,9 @@ export default function SellSheetClientPage() {
       {/* Sell Sheet Content - Optimized for printing */}
       <main className="min-h-screen bg-white dark:bg-gray-900 print:bg-white">
         <div className="max-w-[8.5in] mx-auto p-8 print:p-4">
+          <h1 className="text-3xl font-black text-gray-900 dark:text-gray-100 mb-6 print:text-2xl">
+            Purrify B2B Sell Sheet
+          </h1>
           {/* Header */}
           <header className="flex justify-between items-start mb-8 pb-6 border-b-4 border-[#10B981] dark:border-[#34D399]">
             <div>

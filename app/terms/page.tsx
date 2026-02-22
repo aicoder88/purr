@@ -170,7 +170,7 @@ export default function TermsPage() {
     <>
       <title>{nextSeoProps.title}</title>
       <meta name="description" content={nextSeoProps.description} />
-      <link rel="canonical" href={nextSeoProps.canonical || 'https://www.purrify.ca/terms/'} />
+      <link rel="canonical" href={nextSeoProps.canonical || 'https://www.purrify.ca/terms/'/} />
       {schema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={generateJSONLD(schema)} />
       )}

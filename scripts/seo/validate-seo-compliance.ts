@@ -77,9 +77,12 @@ export async function validateAllPages(options: {
 
   // 4. Validate images
   console.log('🖼️  Validating images...');
-  const imageValidationResults = await validateAllImages();
+  const imageValidationResults = await validateAllImages({
+    mode: 'runtime',
+    includeLegacyBacklog: true,
+  });
   // Convert image issues to validation errors
-  imageValidationResults.issues.forEach((issue) => {
+  imageValidationResults.actionableIssues.forEach((issue) => {
     const validationError: ValidationError = {
       page: issue.filePath,
       severity: issue.severity,
@@ -94,7 +97,14 @@ export async function validateAllPages(options: {
       warnings.push(validationError);
     }
   });
-  console.log(`  Image validation: ${imageValidationResults.issues.length} issues found\n`);
+  console.log(
+    `  Image validation: ${imageValidationResults.actionableIssues.length} actionable issues found`
+  );
+  if (imageValidationResults.legacyBacklog) {
+    console.log(`  Image backlog: ${imageValidationResults.legacyBacklog.length} non-blocking issues\n`);
+  } else {
+    console.log('');
+  }
 
   // 5. Validate OG/Canonical URL match
   console.log('🔗 Validating OG/Canonical URLs...');
@@ -127,7 +137,7 @@ export async function validateAllPages(options: {
     deadEndPages: linkAnalysisResults.deadEndCount,
     brokenLinks: 0, // TODO: implement broken link check
     totalImages: imageValidationResults.totalImages,
-    imagesWithIssues: imageValidationResults.totalImages - imageValidationResults.validImages,
+    imagesWithIssues: imageValidationResults.actionableIssues.length,
     imagesMissingAlt: imageValidationResults.stats.missingAlt,
     ogCanonicalMismatches: ogCanonicalResults.issues.length,
   };

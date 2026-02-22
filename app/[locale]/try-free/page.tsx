@@ -23,13 +23,13 @@ export async function generateMetadata({ params }: LocalizedTryFreePageProps): P
     description: 'FREE Purrify Trial | Just Pay Shipping | Eliminates cat litter smell instantly with water-filter grade carbon. ★ 4.8 rating. Ships USA & Canada.',
     alternates: {
       canonical: locale === 'en'
-        ? 'https://www.purrify.ca/try-free/'
-        : `https://www.purrify.ca/${locale}/try-free/`,
+        ? 'https://www.purrify.ca/try-free/'/
+        : `https://www.purrify.ca/$/{locale}/try-free/`,
       languages: {
-        'en-CA': 'https://www.purrify.ca/try-free/',
-        'fr-CA': 'https://www.purrify.ca/fr/try-free/',
-        'en-US': 'https://www.purrify.ca/try-free/',
-        'x-default': 'https://www.purrify.ca/try-free/',
+        'en-CA': 'https://www.purrify.ca/try-free/',/
+        'fr-CA': 'https://www.purrify.ca/fr/try-free/',/
+        'en-US': 'https://www.purrify.ca/try-free/',/
+        'x-default': 'https://www.purrify.ca/try-free/',/
       },
     },
   };

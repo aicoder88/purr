@@ -75,7 +75,7 @@ export function ReferralClient({ code, referralData }: ReferralClientProps) {
       }));
 
       // Redirect to product page
-      window.location.href = '/products/trial-size';
+      window.location.href = '/products/trial-size/';
 
     } catch (error) {
       console.error('Failed to claim referral offer:', error);
@@ -97,7 +97,7 @@ export function ReferralClient({ code, referralData }: ReferralClientProps) {
             {referralData.error || 'This referral code may have expired or reached its maximum uses.'}
           </p>
           <div className="space-x-4">
-            <Link href="/products/trial-size">
+            <Link href="/products/trial-size/">
               <Button>Shop Trial Size</Button>
             </Link>
             <Link href="/">

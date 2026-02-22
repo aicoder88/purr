@@ -60,13 +60,13 @@ export default function OfflineContent() {
                             <Link href="/" className="block text-blue-700 dark:text-blue-300 hover:underline">
                                 • Homepage
                             </Link>
-                            <Link href="/products/trial-size" className="block text-blue-700 dark:text-blue-300 hover:underline">
+                            <Link href="/products/trial-size/" className="block text-blue-700 dark:text-blue-300 hover:underline">
                                 • Trial Size Product
                             </Link>
-                            <Link href="/learn/how-it-works" className="block text-blue-700 dark:text-blue-300 hover:underline">
+                            <Link href="/learn/how-it-works/" className="block text-blue-700 dark:text-blue-300 hover:underline">
                                 • How It Works
                             </Link>
-                            <Link href="/contact" className="block text-blue-700 dark:text-blue-300 hover:underline">
+                            <Link href="/contact/" className="block text-blue-700 dark:text-blue-300 hover:underline">
                                 • Contact Support
                             </Link>
                         </div>

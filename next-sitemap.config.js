@@ -232,19 +232,9 @@ module.exports = {
   // === ADDITIONAL PATHS - Fix for Ahrefs "Indexable page not in sitemap" ===
   additionalPaths: async (config) => [
     // Core homepage
-    {
-      loc: '/',
-      changefreq: 'daily',
-      priority: 1,
-      lastmod: new Date().toISOString(),
-    },
+    
     // Locale homepages - IMPORTANT for indexable pages not in sitemap
-    {
-      loc: '/fr/',
-      changefreq: 'daily',
-      priority: 0.9,
-      lastmod: new Date().toISOString(),
-    },
+    
     // Main blog index
     {
       loc: '/blog/',
@@ -253,12 +243,7 @@ module.exports = {
       lastmod: new Date().toISOString(),
     },
     // Blog locale pages
-    {
-      loc: '/fr/blog/',
-      changefreq: 'weekly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
+    
     // Product pages
     {
       loc: '/products/trial-size/',
@@ -266,18 +251,8 @@ module.exports = {
       priority: 0.9,
       lastmod: new Date().toISOString(),
     },
-    {
-      loc: '/products/standard/',
-      changefreq: 'weekly',
-      priority: 0.9,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/products/family-pack/',
-      changefreq: 'weekly',
-      priority: 0.9,
-      lastmod: new Date().toISOString(),
-    },
+    
+    
     {
       loc: '/products/',
       changefreq: 'daily',
@@ -285,30 +260,10 @@ module.exports = {
       lastmod: new Date().toISOString(),
     },
     // French products  
-    {
-      loc: '/fr/products/trial-size/',
-      changefreq: 'weekly',
-      priority: 0.85,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/fr/products/standard/',
-      changefreq: 'weekly',
-      priority: 0.85,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/fr/products/family-pack/',
-      changefreq: 'weekly',
-      priority: 0.85,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/fr/products/',
-      changefreq: 'weekly',
-      priority: 0.8,
-      lastmod: new Date().toISOString(),
-    },
+    
+    
+    
+    
     // Learn pages
     {
       loc: '/learn/',
@@ -353,24 +308,9 @@ module.exports = {
       lastmod: new Date().toISOString(),
     },
     // French learn pages
-    {
-      loc: '/fr/learn/',
-      changefreq: 'weekly',
-      priority: 0.75,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/fr/learn/how-it-works/',
-      changefreq: 'monthly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: '/fr/learn/faq/',
-      changefreq: 'monthly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
+    
+    
+    
     // Locations
     {
       loc: '/locations/',
@@ -392,12 +332,7 @@ module.exports = {
       lastmod: new Date().toISOString(),
     },
     // French support
-    {
-      loc: '/fr/support/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
+    
     // Contact pages
     {
       loc: '/contact/',
@@ -405,12 +340,7 @@ module.exports = {
       priority: 0.6,
       lastmod: new Date().toISOString(),
     },
-    {
-      loc: '/fr/contact/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
+    
     // About pages
     {
       loc: '/about/our-story/',
@@ -418,12 +348,7 @@ module.exports = {
       priority: 0.6,
       lastmod: new Date().toISOString(),
     },
-    {
-      loc: '/fr/about/our-story/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
+    
     // Reviews
     {
       loc: '/reviews/',
@@ -431,12 +356,7 @@ module.exports = {
       priority: 0.7,
       lastmod: new Date().toISOString(),
     },
-    {
-      loc: '/fr/reviews/',
-      changefreq: 'weekly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
+    
     // Case studies
     {
       loc: '/case-studies/',
@@ -470,12 +390,7 @@ module.exports = {
       priority: 0.6,
       lastmod: new Date().toISOString(),
     },
-    {
-      loc: '/fr/b2b/',
-      changefreq: 'monthly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
+    
     // Referral
     {
       loc: '/referral/',
@@ -498,12 +413,7 @@ module.exports = {
       lastmod: new Date().toISOString(),
     },
     // Canada/US pages
-    {
-      loc: '/canada/',
-      changefreq: 'weekly',
-      priority: 0.8,
-      lastmod: new Date().toISOString(),
-    },
+    
     {
       loc: '/try-free/',
       changefreq: 'weekly',
@@ -517,24 +427,14 @@ module.exports = {
       priority: 0.3,
       lastmod: new Date().toISOString(),
     },
-    {
-      loc: '/fr/privacy-policy/',
-      changefreq: 'monthly',
-      priority: 0.3,
-      lastmod: new Date().toISOString(),
-    },
+    
     {
       loc: '/terms/',
       changefreq: 'monthly',
       priority: 0.3,
       lastmod: new Date().toISOString(),
     },
-    {
-      loc: '/fr/terms/',
-      changefreq: 'monthly',
-      priority: 0.3,
-      lastmod: new Date().toISOString(),
-    },
+    
     // === MISSING INDEXABLE PAGES - Adding all important pages ===
     // Learn alternatives
     {
@@ -570,12 +470,7 @@ module.exports = {
       priority: 0.7,
       lastmod: new Date().toISOString(),
     },
-    {
-      loc: '/fr/affiliate/',
-      changefreq: 'weekly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
+    
     // Invest
     {
       loc: '/invest/',
@@ -583,12 +478,7 @@ module.exports = {
       priority: 0.6,
       lastmod: new Date().toISOString(),
     },
-    {
-      loc: '/fr/invest/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
+    
     // Viral
     {
       loc: '/viral/',
@@ -597,12 +487,7 @@ module.exports = {
       lastmod: new Date().toISOString(),
     },
     // Ammonia control
-    {
-      loc: '/ammonia-control/',
-      changefreq: 'monthly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    },
+    
   ],
   transform: async (config, path) => {
     // Ensure path has trailing slash for consistency (except root)
@@ -696,12 +581,7 @@ module.exports = {
 
     // Home page gets highest priority
     if (normalizedPath === '' || normalizedPath === '/') {
-      return {
-        loc: '/',
-        changefreq: 'daily',
-        priority: 1,
-        lastmod: new Date().toISOString(),
-      };
+      return ;
     }
 
     // Product pages

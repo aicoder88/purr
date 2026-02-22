@@ -332,7 +332,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <section className="py-4 border-b border-gray-100 dark:border-gray-800">
           <Container>
             <Link
-              href="/blog"
+              href="/blog/"
               className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-electric-indigo transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
@@ -453,7 +453,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <Container>
             <div className="max-w-4xl mx-auto flex justify-between items-center">
               <Link
-                href="/blog"
+                href="/blog/"
                 className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-electric-indigo transition-colors"
               >
                 <ArrowLeft className="w-4 h-4" />

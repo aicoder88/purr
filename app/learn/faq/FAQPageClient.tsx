@@ -35,8 +35,8 @@ function generateFAQSchema(questions: { question: string; answer: string }[], lo
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    '@id': 'https://www.purrify.ca/learn/faq',
-    url: 'https://www.purrify.ca/learn/faq',
+    '@id': 'https://www.purrify.ca/learn/faq',/
+    url: 'https://www.purrify.ca/learn/faq',/
     inLanguage,
     mainEntity: questions.map((q) => ({
       '@type': 'Question',
@@ -210,13 +210,13 @@ export default function FAQPageClient() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://www.purrify.ca',
+        item: 'https://www.purrify.ca/',
       },
       ...breadcrumbItems.map((item, index) => ({
         '@type': 'ListItem',
         position: index + 2,
         name: item.name,
-        item: `https://www.purrify.ca${item.path}`,
+        item: `https://www.purrify.ca/${item.path}`,
       })),
     ],
   };

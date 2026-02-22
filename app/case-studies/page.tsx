@@ -11,22 +11,22 @@ export const metadata: Metadata = {
   description: "Before & After: See how 1,000+ cat owners eliminated litter box odors. Real photos, real results. '95% odor reduction in 24 hours.' Ships to USA & Canada.",
   keywords: ['Purrify case studies', 'cat odor success stories', 'customer results', 'before and after', 'cat litter deodorizer effectiveness'],
   alternates: {
-    canonical: 'https://www.purrify.ca/case-studies/',
+    canonical: 'https://www.purrify.ca/case-studies/',/
     languages: {
-      'en-CA': 'https://www.purrify.ca/case-studies',
-      'fr-CA': 'https://www.purrify.ca/fr/case-studies',
-      'en-US': 'https://www.purrify.ca/case-studies',
-      'x-default': 'https://www.purrify.ca/case-studies',
+      'en-CA': 'https://www.purrify.ca/case-studies/',/
+      'fr-CA': 'https://www.purrify.ca/fr/case-studies/',/
+      'en-US': 'https://www.purrify.ca/case-studies/',/
+      'x-default': 'https://www.purrify.ca/case-studies/',/
     },
   },
   openGraph: {
     title: 'Success Stories - Real Customer Results',
     description: 'Before & After: See how 1,000+ cat owners eliminated litter box odors. Real photos, real results in 24 hours.',
     type: 'website',
-    url: 'https://www.purrify.ca/case-studies/',
+    url: 'https://www.purrify.ca/case-studies/',/
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/products/three-bags-no-bg.webp',
+        url: 'https://www.purrify.ca/optimized/products/three-bags-no-bg.webp',/
         width: 1200,
         height: 630,
         alt: 'Purrify Customer Success Stories',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Success Stories - Real Customer Results',
     description: 'Before & After: Real photos showing 95% odor reduction. See why 1,000+ cat owners switched to Purrify.',
-    images: ['https://www.purrify.ca/optimized/products/three-bags-no-bg.webp'],
+    images: ['https://www.purrify.ca/optimized/products/three-bags-no-bg.webp'/],
   },
   other: {
     'last-modified': '2026-01-19',
@@ -48,7 +48,7 @@ const caseStudies = [
   {
     id: 1,
     title: "Small Apartment, Big Results: Sarah's Odor-Free Studio",
-    subtitle: "How one Montreal cat owner eliminated litter box odors in a 400 sq ft studio apartment",
+    subtitle: "How one Montreal cat owner eliminated litter box odors in a...",
     customer: "Sarah M., Montreal, QC",
     situation: "Studio Apartment Challenge",
     timeframe: "30 Days",
@@ -88,7 +88,7 @@ const caseStudies = [
   {
     id: 2,
     title: "Multi-Cat Household Success: The Johnson Family's Journey",
-    subtitle: "Managing odors for 4 cats in a busy family home with children",
+    subtitle: "Managing odors for 4 cats in a busy family home with childr...",
     customer: "Michael & Lisa Johnson, Toronto, ON",
     situation: "Multi-Cat Family Home",
     timeframe: "90 Days",
@@ -128,7 +128,7 @@ const caseStudies = [
   {
     id: 3,
     title: "Senior Cat Care: Gentle Solutions for Sensitive Pets",
-    subtitle: "How Purrify helped a 15-year-old cat with respiratory sensitivities",
+    subtitle: "How Purrify helped a 15-year-old cat with respiratory sensi...",
     customer: "Dr. Patricia Wong, Vancouver, BC",
     situation: "Senior Cat with Health Concerns",
     timeframe: "60 Days",
@@ -169,13 +169,13 @@ const caseStudies = [
 
 // Generate JSON-LD schema
 function generateSchema() {
-  const baseUrl = 'https://www.purrify.ca';
+  const baseUrl = 'https://www.purrify.ca/';
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Purrify Customer Case Studies",
     "description": "Detailed success stories from Purrify customers across Canada",
-    "url": `${baseUrl}/case-studies`,
+    "url": `${baseUrl}/case-studies/`,
     "mainEntity": caseStudies.map(study => ({
       "@type": "Article",
       "headline": study.title,
@@ -399,7 +399,7 @@ export default function CaseStudiesPage() {
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                   <Link
-                    href="/free"
+                    href="/free/"
                     className="inline-block border border-[#FF3131] dark:border-[#FF5050] text-[#FF3131] dark:text-[#FF5050] px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/5 dark:hover:bg-[#FF5050]/10 transition-colors"
                   >
                     Try Free Sample
@@ -412,12 +412,12 @@ export default function CaseStudiesPage() {
             <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600 cv-auto cis-480">
               <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">More Customer Stories</h3>
               <div className="grid md:grid-cols-3 gap-6">
-                <Link href="/reviews" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
+                <Link href="/reviews/" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
                   <Users className="h-8 w-8 text-[#FF3131] dark:text-[#FF5050] mx-auto mb-3" />
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Customer Reviews</h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">Customer feedback and how-to resources</p>
                 </Link>
-                <Link href="/reviews" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
+                <Link href="/reviews/" className="block p-6 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
                   <CheckCircle className="h-8 w-8 text-[#FF3131] dark:text-[#FF5050] mx-auto mb-3" />
                   <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Video Testimonials</h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">Watch real customers share their experiences</p>

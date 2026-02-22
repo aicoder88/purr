@@ -379,7 +379,7 @@ export default function EditPostPage({ params }: EditPostPageProps) {
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <Link
-          href="/admin/blog"
+          href="/admin/blog/"
           className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
         >
           <ArrowLeft className="w-5 h-5" />

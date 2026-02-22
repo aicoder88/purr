@@ -17,7 +17,7 @@ interface PageProps {
 
 const pageTitle = `Multi-Cat Household Odor Solution: Complete Guide for 2+ Cats | ${SITE_NAME}`;
 const pageDescription = 'Struggling with cat smell from multiple cats? Odors multiply exponentially with each cat. Activated carbon handles 3, 4, 5+ cats where other solutions fail. See dosage guide.';
-const heroImage = 'https://www.purrify.ca/optimized/blog/multiple-cats-together.webp';
+const heroImage = 'https://www.purrify.ca/optimized/blog/multiple-cats-together.webp';/
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { locale } = await params;
@@ -67,8 +67,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    '@id': 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control/',
-    url: 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control/',
+    '@id': 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control/',/
+    url: 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control/',/
     inLanguage: 'en-CA',
     headline: pageTitle,
     description: pageDescription,
@@ -78,21 +78,21 @@ const articleSchema = {
     author: {
         '@type': 'Organization',
         name: SITE_NAME,
-        url: 'https://www.purrify.ca',
+        url: 'https://www.purrify.ca/',
     },
     publisher: {
         '@type': 'Organization',
         name: SITE_NAME,
         logo: {
             '@type': 'ImageObject',
-            url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
+            url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
             width: 400,
             height: 400,
         },
     },
     mainEntityOfPage: {
         '@type': 'WebPage',
-        '@id': 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control/',
+        '@id': 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control/',/
     },
     articleSection: 'Multi-Cat Solutions',
     keywords: ['multiple cats', 'multi-cat household', 'odor control', 'cat colony', 'large cat family', 'several cats', 'many cats'],

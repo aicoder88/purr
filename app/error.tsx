@@ -476,7 +476,7 @@ export default function Error({ error, reset }: ErrorPageProps) {
           <p className="mt-8 text-sm text-gray-500 dark:text-gray-500">
             If this problem persists, please{' '}
             <Link
-              href="/support"
+              href="/support/"
               className="text-[#5B2EFF] hover:text-[#4B1EEF] dark:text-[#8B5CF6] dark:hover:text-[#A78BFA] underline underline-offset-2 transition-colors"
             >
               contact our support team

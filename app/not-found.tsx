@@ -242,7 +242,7 @@ export default function NotFound() {
                   <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
                     Cats spend 70% of their lives sleeping. Maybe this page is just
                     taking a cat nap! In the meantime, try our{' '}
-                    <Link href="/learn/science" className="text-[#5B2EFF] hover:underline font-medium">
+                    <Link href="/learn/science/" className="text-[#5B2EFF] hover:underline font-medium">
                       Science page
                     </Link>{' '}
                     to learn how Purrify works.
@@ -263,7 +263,7 @@ export default function NotFound() {
           <p className="text-gray-500 dark:text-gray-400 text-sm">
             Still can&apos;t find what you&apos;re looking for?{' '}
             <Link
-              href="/contact"
+              href="/contact/"
               className="text-[#5B2EFF] font-medium hover:underline inline-flex items-center gap-1"
             >
               Contact our support team

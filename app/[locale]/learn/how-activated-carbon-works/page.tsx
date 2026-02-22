@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: LocalizedHowActivatedCarbonWo
   }
 
   const isFrench = locale === 'fr';
-  const baseUrl = 'https://www.purrify.ca';
+  const baseUrl = 'https://www.purrify.ca/';
   const canonicalPath = `${baseUrl}${isFrench ? '/fr' : ''}/learn/how-activated-carbon-works/`;
 
   return {

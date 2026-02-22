@@ -87,9 +87,9 @@ const organizationSchema = {
   '@id': 'https://www.purrify.ca/#organization',
   name: 'Purrify Canada',
   description: 'Canadian manufacturer of activated carbon cat litter deodorizer with shipping across all provinces',
-  url: 'https://www.purrify.ca/locations/',
-  logo: 'https://www.purrify.ca/optimized/icons/icon-512.png',
-  image: 'https://www.purrify.ca/optimized/products/purrify-standard-bag.png',
+  url: 'https://www.purrify.ca/locations/',/
+  logo: 'https://www.purrify.ca/optimized/icons/icon-512.png',/
+  image: 'https://www.purrify.ca/optimized/products/purrify-standard-bag.png',/
   areaServed: [
     { '@type': 'Country', name: 'Canada' }
   ],
@@ -174,7 +174,7 @@ export default function LocationsPage() {
               </p>
               <div className="flex flex-wrap gap-3 justify-center">
                 <Link
-                  href="/products/trial-size"
+                  href="/products/trial-size/"
                   className="inline-flex items-center px-6 py-3 font-semibold text-white dark:text-gray-100 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg shadow-lg hover:from-orange-600 hover:to-pink-600 transition"
                 >
                   {locations.hub.shopCta}

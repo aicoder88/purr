@@ -76,21 +76,26 @@ async function runPrebuildValidation(): Promise<ValidationSummary> {
   // 2. Run Image Validation (optional - only warn on issues)
   console.log('2️⃣  Running Image Validation...\n');
   try {
-    const imageResult = await validateAllImages();
+    const imageResult = await validateAllImages({
+      mode: 'runtime',
+      includeLegacyBacklog: true,
+    });
 
-    const imageIssues = imageResult.issues.filter(
+    const imageIssues = imageResult.actionableIssues.filter(
       (i) => i.severity === 'critical' || i.severity === 'error'
     ).length;
 
     summary.details.images = {
       passed: imageIssues === 0,
-      issues: imageResult.issues.length,
+      issues: imageResult.actionableIssues.length,
     };
 
     // Don't fail build on image issues, just warn
-    summary.warnings += imageResult.issues.length;
+    summary.warnings += imageResult.actionableIssues.length;
 
-    console.log(`   ℹ️  Image Validation: ${imageResult.issues.length} issues (warnings only)\n`);
+    console.log(
+      `   ℹ️  Image Validation: ${imageResult.actionableIssues.length} actionable issues (warnings only)\n`
+    );
   } catch (error) {
     console.error(`   ✗ Image validation failed: ${error}\n`);
     // Don't fail build on image validation errors

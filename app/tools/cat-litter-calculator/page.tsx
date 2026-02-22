@@ -7,14 +7,14 @@ export const metadata: Metadata = {
   keywords: ['cat litter calculator', 'litter cost calculator', 'cat litter comparison', 'annual litter cost', 'cat litter savings'],
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/tools/cat-litter-calculator/',
+    url: 'https://www.purrify.ca/tools/cat-litter-calculator/',/
     siteName: 'Purrify',
     title: 'Cat Litter Cost Calculator | Compare Litter Types',
     description: 'Free cat litter calculator: compare annual costs across litter types.',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
+        url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
         width: 1200,
         height: 800,
         alt: 'Cat Litter Cost Calculator',
@@ -27,10 +27,10 @@ export const metadata: Metadata = {
     creator: '@purrifyhq',
     title: 'Cat Litter Cost Calculator | Compare Litter Types',
     description: 'Free cat litter calculator: compare annual costs across litter types.',
-    images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'],
+    images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'/],
   },
   alternates: {
-    canonical: 'https://www.purrify.ca/tools/cat-litter-calculator/',
+    canonical: 'https://www.purrify.ca/tools/cat-litter-calculator/',/
   },
   robots: {
     index: true,
@@ -50,7 +50,7 @@ const calculatorSchema = {
     {
       '@type': 'WebPage',
       '@id': 'https://www.purrify.ca/tools/cat-litter-calculator/#webpage',
-      url: 'https://www.purrify.ca/tools/cat-litter-calculator/',
+      url: 'https://www.purrify.ca/tools/cat-litter-calculator/',/
       name: 'Cat Litter Cost Calculator | Compare Litter Types',
       description: 'Free cat litter calculator: compare annual costs across clay, silica, tofu, and natural litters.',
       inLanguage: 'en-CA',
@@ -61,7 +61,7 @@ const calculatorSchema = {
       name: 'Cat Litter Cost Calculator',
       applicationCategory: 'UtilitiesApplication',
       operatingSystem: 'Web Browser',
-      url: 'https://www.purrify.ca/tools/cat-litter-calculator/',
+      url: 'https://www.purrify.ca/tools/cat-litter-calculator/',/
       description: 'Free interactive calculator comparing annual cat litter costs across clay, silica, tofu, wood, and natural litter types. Includes Purrify savings estimation.',
       offers: {
         '@type': 'Offer',
@@ -72,9 +72,9 @@ const calculatorSchema = {
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.purrify.ca' },
-        { '@type': 'ListItem', position: 2, name: 'Tools', item: 'https://www.purrify.ca/tools/' },
-        { '@type': 'ListItem', position: 3, name: 'Cat Litter Calculator', item: 'https://www.purrify.ca/tools/cat-litter-calculator/' },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.purrify.ca/' },
+        { '@type': 'ListItem', position: 2, name: 'Tools', item: 'https://www.purrify.ca/tools/'/ },
+        { '@type': 'ListItem', position: 3, name: 'Cat Litter Calculator', item: 'https://www.purrify.ca/tools/cat-litter-calculator/'/ },
       ],
     },
   ],

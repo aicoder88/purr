@@ -6,6 +6,7 @@
 import {
   validateAllImages,
   generateImageReport,
+  ImageValidationOptions,
 } from './lib/image-validator';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -15,11 +16,24 @@ async function main() {
   const generateReportFile = args.includes('--report');
   const failOnError = args.includes('--fail-on-error');
   const failOnWarning = args.includes('--fail-on-warning');
+  const modeArgIndex = args.indexOf('--mode');
+  const modeValue = modeArgIndex >= 0 ? args[modeArgIndex + 1] : undefined;
+  const mode: ImageValidationOptions['mode'] =
+    modeValue === 'inventory' ? 'inventory' : 'runtime';
+  const includeLegacyBacklog = !args.includes('--no-legacy-backlog');
 
   console.log('🖼️  Image SEO Validation\n');
   console.log('═'.repeat(60) + '\n');
+  console.log(`Mode: ${mode}`);
+  if (mode === 'runtime') {
+    console.log(`Legacy Backlog: ${includeLegacyBacklog ? 'enabled' : 'disabled'}`);
+  }
+  console.log('');
 
-  const result = await validateAllImages();
+  const result = await validateAllImages({
+    mode,
+    includeLegacyBacklog,
+  });
 
   // Display summary
   console.log('\n' + '═'.repeat(60));
@@ -27,16 +41,19 @@ async function main() {
   console.log('═'.repeat(60));
   console.log(`Total Images: ${result.totalImages}`);
   console.log(`Valid Images: ${result.validImages}`);
-  console.log(`Images with Issues: ${result.totalImages - result.validImages}`);
+  console.log(`Actionable Issues: ${result.actionableIssues.length}`);
   console.log(`Missing Alt Text: ${result.stats.missingAlt}`);
   console.log(`Oversized Images: ${result.stats.oversized}`);
   console.log(`Suboptimal Formats: ${result.stats.wrongFormat}`);
+  if (result.legacyBacklog) {
+    console.log(`Legacy Backlog Issues: ${result.legacyBacklog.length}`);
+  }
 
   // Display issues
-  if (result.issues.length > 0) {
-    const criticalIssues = result.issues.filter((i) => i.severity === 'critical');
-    const errorIssues = result.issues.filter((i) => i.severity === 'error');
-    const warningIssues = result.issues.filter((i) => i.severity === 'warning');
+  if (result.actionableIssues.length > 0) {
+    const criticalIssues = result.actionableIssues.filter((i) => i.severity === 'critical');
+    const errorIssues = result.actionableIssues.filter((i) => i.severity === 'error');
+    const warningIssues = result.actionableIssues.filter((i) => i.severity === 'warning');
 
     if (criticalIssues.length > 0) {
       console.log('\n🚨 Critical Issues:');
@@ -87,10 +104,10 @@ async function main() {
   }
 
   // Determine exit code
-  const hasErrors = result.issues.some(
+  const hasErrors = result.actionableIssues.some(
     (i) => i.severity === 'critical' || i.severity === 'error'
   );
-  const hasWarnings = result.issues.some((i) => i.severity === 'warning');
+  const hasWarnings = result.actionableIssues.some((i) => i.severity === 'warning');
 
   console.log('\n' + '═'.repeat(60));
 

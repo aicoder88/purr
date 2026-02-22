@@ -275,7 +275,7 @@ export default function PayoutsContent() {
                                                 Please set up your payment method and email before requesting a payout.
                                             </p>
                                             <Link
-                                                href="/affiliate/dashboard/settings"
+                                                href="/affiliate/dashboard/settings/"
                                                 className="inline-flex items-center text-sm text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 mt-2"
                                             >
                                                 Go to Settings

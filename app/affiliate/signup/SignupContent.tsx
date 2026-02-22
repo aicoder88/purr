@@ -146,7 +146,7 @@ export default function SignupContent() {
                                         <p className="text-green-700 dark:text-green-200 mb-4">
                                             Thank you for applying to our affiliate program. We&apos;ll review your application and get back to you within 1-2 business days.
                                         </p>
-                                        <Link href="/affiliate">
+                                        <Link href="/affiliate/">
                                             <button className="inline-flex items-center px-4 py-2 bg-green-600 dark:bg-green-700 hover:bg-green-700 dark:hover:bg-green-600 text-white dark:text-gray-100 rounded-lg text-sm font-semibold transition-colors">
                                                 Back to Affiliate Info
                                                 <ArrowRight className="w-4 h-4 ml-2" />
@@ -339,7 +339,7 @@ export default function SignupContent() {
                                         {isSubmitting ? 'Submitting...' : 'Submit Application'}
                                         {!isSubmitting && <ArrowRight className="w-5 h-5 ml-2" />}
                                     </button>
-                                    <Link href="/affiliate">
+                                    <Link href="/affiliate/">
                                         <button
                                             type="button"
                                             className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 font-semibold transition-colors"

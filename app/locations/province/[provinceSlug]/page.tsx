@@ -301,7 +301,7 @@ export default async function ProvincePage({ params }: ProvincePageProps) {
               <li className="flex items-center">
                 <ChevronRight className="h-4 w-4 mx-2 text-gray-400 dark:text-gray-500" />
                 <Link
-                  href="/locations"
+                  href="/locations/"
                   className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
                 >
                   Locations
@@ -348,7 +348,7 @@ export default async function ProvincePage({ params }: ProvincePageProps) {
 
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
-                href="/products/trial-size"
+                href="/products/trial-size/"
                 className="inline-flex items-center px-8 py-4 font-bold text-white dark:text-gray-100 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg shadow-xl hover:from-orange-600 hover:to-pink-600 transition-all transform hover:-translate-y-1"
               >
                 {locations.hub.shopCta}

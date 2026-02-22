@@ -185,7 +185,7 @@ export default function OpsPage() {
           change={stats?.leadsGrowth}
           changeLabel="vs last month"
           icon={Users}
-          href="/admin/ops/leads"
+          href="/admin/ops/leads/"
           isLoading={isLoading}
         />
         <AnimatedMetricCard
@@ -194,7 +194,7 @@ export default function OpsPage() {
           change={stats?.pendingRetailers}
           changeLabel="pending"
           icon={Store}
-          href="/admin/ops/retailers"
+          href="/admin/ops/retailers/"
           isLoading={isLoading}
         />
         <AnimatedMetricCard
@@ -204,7 +204,7 @@ export default function OpsPage() {
           change={stats?.revenueGrowth}
           changeLabel="vs last month"
           icon={ShoppingCart}
-          href="/admin/ops/orders"
+          href="/admin/ops/orders/"
           isLoading={isLoading}
         />
         <AnimatedMetricCard
@@ -256,19 +256,19 @@ export default function OpsPage() {
             title="Email Campaign"
             description="Send to leads"
             icon={Mail}
-            href="/admin/ops/leads"
+            href="/admin/ops/leads/"
           />
           <QuickAction
             title="Social Post"
             description="Create content"
             icon={Share2}
-            href="/admin/ops/social"
+            href="/admin/ops/social/"
           />
           <QuickAction
             title="Blog Content"
             description="Generate article"
             icon={FileText}
-            href="/admin/blog/new"
+            href="/admin/blog/new/"
           />
           <QuickAction
             title="Sync Leads"
@@ -300,7 +300,7 @@ export default function OpsPage() {
             )}
           </div>
           <Link
-            href="/admin/ops/leads"
+            href="/admin/ops/leads/"
             className="block mt-4 text-center text-sm text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300"
           >
             View all leads &rarr;
@@ -319,7 +319,7 @@ export default function OpsPage() {
             </div>
           </div>
           <Link
-            href="/admin/ops/retailers"
+            href="/admin/ops/retailers/"
             className="block mt-4 text-center text-sm text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300"
           >
             Review applications &rarr;
@@ -344,7 +344,7 @@ export default function OpsPage() {
             </div>
           </div>
           <Link
-            href="/admin/ops/orders"
+            href="/admin/ops/orders/"
             className="block mt-4 text-center text-sm text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300"
           >
             View all orders &rarr;

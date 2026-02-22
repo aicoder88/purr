@@ -71,10 +71,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 
   return {
-    title: {
-      template: `%s | ${SITE_NAME}`,
-      default: `${SITE_NAME} - Cat Litter Odor Control`,
-    },
+    title: `${SITE_NAME} - Cat Litter Odor Control`,
     description: SITE_DESCRIPTION,
     metadataBase: new URL(baseUrl),
     applicationName: SITE_NAME,

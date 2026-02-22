@@ -51,6 +51,15 @@ export default function InvestorRelations() {
           <div className="absolute bottom-10 left-1/3 w-80 h-80 bg-[#E0EFC7]/30 dark:bg-green-900/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
         </div>
 
+        <section className="relative z-10 max-w-4xl mx-auto px-4 pt-12">
+          <h1 className="font-heading text-3xl md:text-5xl font-bold text-gray-900 dark:text-gray-100">
+            Invest in Purrify
+          </h1>
+          <p className="mt-4 text-lg text-gray-700 dark:text-gray-300">
+            Review traction, unit economics, and terms for our current investor round.
+          </p>
+        </section>
+
         <InvestorContentWrapper />
       </main>
     </>

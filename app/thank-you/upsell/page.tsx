@@ -20,23 +20,23 @@ export async function generateMetadata(): Promise<Metadata> {
       follow: false,
     },
     alternates: {
-      canonical: 'https://www.purrify.ca/thank-you/upsell/',
+      canonical: 'https://www.purrify.ca/thank-you/upsell/',/
       languages: {
-        'en-CA': 'https://www.purrify.ca/thank-you/upsell/',
-        'fr-CA': 'https://www.purrify.ca/fr/thank-you/upsell/',
-        'en-US': 'https://www.purrify.ca/thank-you/upsell/',
-        'x-default': 'https://www.purrify.ca/thank-you/upsell/',
+        'en-CA': 'https://www.purrify.ca/thank-you/upsell/',/
+        'fr-CA': 'https://www.purrify.ca/fr/thank-you/upsell/',/
+        'en-US': 'https://www.purrify.ca/thank-you/upsell/',/
+        'x-default': 'https://www.purrify.ca/thank-you/upsell/',/
       },
     },
     openGraph: {
-      url: 'https://www.purrify.ca/thank-you/upsell/',
+      url: 'https://www.purrify.ca/thank-you/upsell/',/
       siteName: SITE_NAME,
       locale: 'en_CA',
       title,
       description,
       images: [
         {
-          url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
+          url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
           width: 1200,
           height: 630,
           alt: 'Purrify',
@@ -49,7 +49,7 @@ export async function generateMetadata(): Promise<Metadata> {
       creator: '@purrifyhq',
       title,
       description,
-      images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'],
+      images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'/],
     },
   };
 }

@@ -31,13 +31,13 @@ export const metadata: Metadata = {
     'pubmed research',
   ],
   alternates: {
-    canonical: 'https://www.purrify.ca/science/'
+    canonical: 'https://www.purrify.ca/science/'/
   },
   openGraph: {
     title: 'Science Behind Purrify: Research & Citations',
     description:
       'Explore the peer-reviewed scientific research supporting activated carbon for cat litter odor control.',
-    url: 'https://www.purrify.ca/science/',
+    url: 'https://www.purrify.ca/science/',/
     type: 'article',
     siteName: SITE_NAME,
     locale: 'en_CA',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     modifiedTime: new Date().toISOString(),
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/blog/benefits-hero-science.webp',
+        url: 'https://www.purrify.ca/optimized/blog/benefits-hero-science.webp',/
         width: 1200,
         height: 630,
         alt: 'The Science Behind Purrify',
@@ -92,23 +92,23 @@ export default function SciencePage() {
       'Explore the peer-reviewed scientific research supporting activated carbon for cat litter odor control.',
     datePublished: '2025-01-15',
     dateModified: new Date().toISOString().split('T')[0],
-    image: 'https://www.purrify.ca/optimized/blog/benefits-hero-science.webp',
+    image: 'https://www.purrify.ca/optimized/blog/benefits-hero-science.webp',/
     author: {
       '@type': 'Organization',
       name: 'Purrify',
-      url: 'https://www.purrify.ca',
+      url: 'https://www.purrify.ca/',
     },
     publisher: {
       '@type': 'Organization',
       name: 'Purrify',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.purrify.ca/optimized/logos/purrify-logo.avif',
+        url: 'https://www.purrify.ca/optimized/logos/purrify-logo.avif',/
       },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': 'https://www.purrify.ca/science',
+      '@id': 'https://www.purrify.ca/science',/
     },
   };
 
@@ -118,7 +118,7 @@ export default function SciencePage() {
     '@type': 'CollectionPage',
     name: 'Scientific Research & Citations',
     description: 'Peer-reviewed research supporting activated carbon for cat litter odor control',
-    url: 'https://www.purrify.ca/science/',
+    url: 'https://www.purrify.ca/science/',/
     mainEntity: {
       '@type': 'ItemList',
       itemListElement: SCIENTIFIC_CITATIONS.map((citation, index) => ({
@@ -463,7 +463,7 @@ export default function SciencePage() {
                     Shop Purrify
                   </Link>
                   <Link
-                    href="/learn/science"
+                    href="/learn/science/"
                     className="px-8 py-4 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 rounded-full font-bold hover:border-gray-300 dark:hover:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-750 shadow-sm hover:shadow-md transition-all duration-300 w-full sm:w-auto text-lg"
                   >
                     Learn More

@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: LocalizedArmAndHammerPageProp
   }
 
   const isFrench = locale === 'fr';
-  const baseUrl = 'https://www.purrify.ca';
+  const baseUrl = 'https://www.purrify.ca/';
   const canonicalPath = `${baseUrl}${isFrench ? '/fr' : ''}/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/`;
 
   return {

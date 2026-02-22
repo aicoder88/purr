@@ -14,18 +14,18 @@ export const metadata: Metadata = {
     'B2B pet products',
   ],
   alternates: {
-    canonical: 'https://www.purrify.ca/b2b/',
+    canonical: 'https://www.purrify.ca/b2b/',/
   },
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/b2b/',
+    url: 'https://www.purrify.ca/b2b/',/
     siteName: SITE_NAME,
     title: `Purrify B2B Wholesale | Retail Partnerships`,
     description: 'Become a Purrify retail partner. Wholesale program for pet stores and distributors across Canada. Attractive margins and marketing support.',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
+        url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
         width: 1200,
         height: 800,
         alt: `${SITE_NAME} B2B Wholesale`,
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     creator: '@purrifyhq',
     title: `Purrify B2B Wholesale | Retail Partnerships`,
     description: 'Become a Purrify retail partner. Wholesale program for pet stores and distributors across Canada.',
-    images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'],
+    images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'/],
   },
   other: {
     'last-modified': '2026-01-08',
@@ -50,10 +50,10 @@ const organizationSchema = {
   '@type': 'Organization',
   name: SITE_NAME,
   description: 'Premium activated carbon cat litter additive manufacturer seeking retail partners across Canada',
-  url: 'https://www.purrify.ca',
+  url: 'https://www.purrify.ca/',
   logo: {
     '@type': 'ImageObject',
-    url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
+    url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
     width: 400,
     height: 400,
   },

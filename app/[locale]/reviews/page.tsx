@@ -17,19 +17,26 @@ export async function generateMetadata({ params }: LocalizedReviewsPageProps): P
   if (!isValidLocale(locale)) {
     return { title: 'Not Found' };
   }
+  const isFrench = locale === 'fr';
+  const title = isFrench
+    ? 'Avis Purrify - Ce que disent les proprietaires de chats'
+    : 'Purrify Reviews - What Cat Owners Are Saying';
+  const description = isFrench
+    ? "Consultez les avis clients sur Purrify et voyez comment les proprietaires de chats reduisent les odeurs de litiere."
+    : 'Read customer feedback about Purrify and learn how cat owners use an activated carbon additive to reduce litter box odor.';
 
   return {
-    title: 'Purrify Reviews - What Cat Owners Are Saying',
-    description: 'Read customer feedback about Purrify and learn how cat owners use an activated carbon additive to reduce litter box odor.',
+    title,
+    description,
     alternates: {
       canonical: locale === 'en'
-        ? 'https://www.purrify.ca/reviews/'
-        : `https://www.purrify.ca/${locale}/reviews/`,
+        ? 'https://www.purrify.ca/reviews/'/
+        : `https://www.purrify.ca/$/{locale}/reviews/`,
       languages: {
-        'en-CA': 'https://www.purrify.ca/reviews/',
-        'fr-CA': 'https://www.purrify.ca/fr/reviews/',
-        'en-US': 'https://www.purrify.ca/reviews/',
-        'x-default': 'https://www.purrify.ca/reviews/',
+        'en-CA': 'https://www.purrify.ca/reviews/',/
+        'fr-CA': 'https://www.purrify.ca/fr/reviews/',/
+        'en-US': 'https://www.purrify.ca/reviews/',/
+        'x-default': 'https://www.purrify.ca/reviews/',/
       },
     },
   };

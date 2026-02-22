@@ -17,7 +17,7 @@ interface PageProps {
 
 const pageTitle = `Cat in a 400 Sq Ft Apartment? How to Eliminate Litter Smell Completely | ${SITE_NAME}`;
 const pageDescription = 'No windows near your litter box. No ventilation. Roommates complaining. Here are 5 solutions that work in small apartments—guests will never know you have a cat.';
-const heroImage = 'https://www.purrify.ca/optimized/blog/apartment-hero.webp';
+const heroImage = 'https://www.purrify.ca/optimized/blog/apartment-hero.webp';/
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { locale } = await params;
@@ -67,8 +67,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    '@id': 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/',
-    url: 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/',
+    '@id': 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/',/
+    url: 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/',/
     inLanguage: 'en-CA',
     headline: pageTitle,
     description: pageDescription,
@@ -78,21 +78,21 @@ const articleSchema = {
     author: {
         '@type': 'Organization',
         name: SITE_NAME,
-        url: 'https://www.purrify.ca',
+        url: 'https://www.purrify.ca/',
     },
     publisher: {
         '@type': 'Organization',
         name: SITE_NAME,
         logo: {
             '@type': 'ImageObject',
-            url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
+            url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
             width: 400,
             height: 400,
         },
     },
     mainEntityOfPage: {
         '@type': 'WebPage',
-        '@id': 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/',
+        '@id': 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/',/
     },
     articleSection: 'Pet Care Solutions',
     keywords: ['apartment living', 'cat odor control', 'small space solutions', 'activated carbon'],

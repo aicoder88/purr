@@ -149,7 +149,7 @@ export default function ContactPage() {
         email: 'support@purrify.ca',
       },
     },
-    image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
+    image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
     keywords: [
       'contact purrify',
       'cat litter customer support',
@@ -180,7 +180,7 @@ export default function ContactPage() {
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: `https://www.purrify.ca${item.path === '/' ? '' : item.path}`,
+      item: `https://www.purrify.ca/${item.path === '/' ? '' : item.path}`,
     })),
   };
 
@@ -188,7 +188,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <link rel="canonical" href={nextSeoProps.canonical || 'https://www.purrify.ca/contact/'} />
+      <link rel="canonical" href={nextSeoProps.canonical || 'https://www.purrify.ca/contact/'/} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

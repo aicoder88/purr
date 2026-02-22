@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: LocalizedFAQPageProps): Promi
   }
 
   const isFrench = locale === 'fr';
-  const baseUrl = 'https://www.purrify.ca';
+  const baseUrl = 'https://www.purrify.ca/';
   const canonicalPath = `${baseUrl}${isFrench ? '/fr' : ''}/learn/faq/`;
 
   return {

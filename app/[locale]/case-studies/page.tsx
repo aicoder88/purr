@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: LocalizedCaseStudiesPageProps
   }
 
   const isFrench = locale === 'fr';
-  const baseUrl = 'https://www.purrify.ca';
+  const baseUrl = 'https://www.purrify.ca/';
   const canonicalPath = `${baseUrl}${isFrench ? '/fr' : ''}/case-studies/`;
 
   return {

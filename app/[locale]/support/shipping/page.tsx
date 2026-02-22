@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: LocalizedShippingPageProps): 
   }
 
   const isFrench = locale === 'fr';
-  const baseUrl = 'https://www.purrify.ca';
+  const baseUrl = 'https://www.purrify.ca/';
   const canonicalPath = `${baseUrl}${isFrench ? '/fr' : ''}/support/shipping/`;
 
   return {

@@ -361,19 +361,23 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
             '@graph': [
               {
                 '@type': 'Product',
+                '@id': `https://www.purrify.ca/products/#city-${profile.slug}`,
+                url: 'https://www.purrify.ca/products/',
                 name: `Purrify Cat Litter Odor Eliminator - ${profile.name}`,
                 image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
+                brand: {
+                  '@type': 'Brand',
+                  name: 'Purrify',
+                },
                 offers: {
                   '@type': 'Offer',
                   price: '29.99',
+                  priceCurrency: 'CAD',
+                  url: 'https://www.purrify.ca/products/',
                   availability: 'https://schema.org/InStock',
                   areaServed: {
-                    '@type': 'City',
-                    name: profile.name,
-                    containedInPlace: {
-                      '@type': 'AdministrativeArea',
-                      name: provinceName,
-                    },
+                    '@type': 'AdministrativeArea',
+                    name: `${profile.name}, ${provinceName}`,
                   },
                 },
               },
@@ -382,14 +386,10 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
                 '@type': 'LocalBusiness',
                 name: `Purrify - ${profile.name}`,
                 description: `Cat litter deodorizer for ${profile.name}, ${provinceName} pet owners. Activated carbon eliminates ammonia odors naturally.`,
-                url: `https://www.purrify.ca/locations/${profile.slug}`,
+                url: `https://www.purrify.ca/locations/${profile.slug}/`,
                 areaServed: {
-                  '@type': 'City',
-                  name: profile.name,
-                  containedInPlace: {
-                    '@type': 'AdministrativeArea',
-                    name: provinceName,
-                  },
+                  '@type': 'AdministrativeArea',
+                  name: `${profile.name}, ${provinceName}`,
                 },
                 address: {
                   '@type': 'PostalAddress',
@@ -399,6 +399,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
                 },
                 makesOffer: {
                   '@type': 'Offer',
+                  priceCurrency: 'CAD',
                   itemOffered: {
                     '@type': 'Product',
                     name: 'Purrify Cat Litter Deodorizer',

@@ -160,13 +160,13 @@ export default function LearnPageContent() {
     schemaData: {
       headline: 'Learn - Cat Litter Odor Control Guides & Science',
       description: 'Comprehensive guides on cat litter odor control. Learn how activated carbon works, explore solutions for every situation, and discover the science behind Purrify.',
-      image: 'https://www.purrify.ca/optimized/marketing/micropores-magnified-view.webp',
+      image: 'https://www.purrify.ca/optimized/marketing/micropores-magnified-view.webp',/
       datePublished: '2024-01-01T10:00:00Z',
       dateModified: new Date().toISOString(),
       category: 'Education',
       keywords: ['cat litter odor control', 'activated carbon guide', 'how to eliminate litter box smell', 'cat litter tips', 'ammonia smell solutions', 'multi-cat odor control'],
     },
-    image: 'https://www.purrify.ca/optimized/marketing/micropores-magnified-view.webp',
+    image: 'https://www.purrify.ca/optimized/marketing/micropores-magnified-view.webp',/
     keywords: ['cat litter odor control', 'activated carbon guide', 'how to eliminate litter box smell', 'cat litter tips', 'ammonia smell solutions', 'multi-cat odor control'],
   });
 
@@ -176,7 +176,7 @@ export default function LearnPageContent() {
     '@type': 'CollectionPage',
     name: 'Learn - Cat Litter Odor Control Guides & Science',
     description: 'Comprehensive guides on cat litter odor control. Learn how activated carbon works, explore solutions for every situation, and discover the science behind Purrify.',
-    url: 'https://www.purrify.ca/learn/',
+    url: 'https://www.purrify.ca/learn/',/
     inLanguage: 'en-CA',
     mainEntity: {
       '@type': 'ItemList',
@@ -184,63 +184,63 @@ export default function LearnPageContent() {
         {
           '@type': 'ListItem',
           position: 1,
-          url: 'https://www.purrify.ca/learn/how-it-works/',
+          url: 'https://www.purrify.ca/learn/how-it-works/',/
           name: 'How It Works',
           description: "Discover the science behind Purrify's activated carbon technology.",
         },
         {
           '@type': 'ListItem',
           position: 2,
-          url: 'https://www.purrify.ca/learn/faq/',
+          url: 'https://www.purrify.ca/learn/faq/',/
           name: 'FAQ',
           description: 'Get answers to the most common questions about Purrify.',
         },
         {
           '@type': 'ListItem',
           position: 3,
-          url: 'https://www.purrify.ca/learn/science/',
+          url: 'https://www.purrify.ca/learn/science/',/
           name: 'The Science',
           description: 'Deep dive into the scientific principles behind activated carbon.',
         },
         {
           '@type': 'ListItem',
           position: 4,
-          url: 'https://www.purrify.ca/learn/safety/',
+          url: 'https://www.purrify.ca/learn/safety/',/
           name: 'Safety Information',
           description: 'Learn why Purrify is safe for cats, kittens, and humans.',
         },
         {
           '@type': 'ListItem',
           position: 5,
-          url: 'https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits/',
+          url: 'https://www.purrify.ca/blog/activated-carbon-litter-additive-benefits/',/
           name: 'Activated Carbon Benefits',
           description: 'Explore all the benefits of activated carbon for cat litter odor control.',
         },
         {
           '@type': 'ListItem',
           position: 6,
-          url: 'https://www.purrify.ca/learn/cat-litter-guide/',
+          url: 'https://www.purrify.ca/learn/cat-litter-guide/',/
           name: 'Cat Litter Guide',
           description: 'The complete guide to choosing and using cat litter.',
         },
         {
           '@type': 'ListItem',
           position: 7,
-          url: 'https://www.purrify.ca/blog/how-to-use-cat-litter-deodorizer/',
+          url: 'https://www.purrify.ca/blog/how-to-use-cat-litter-deodorizer/',/
           name: 'How to Use',
           description: 'Step-by-step instructions for getting the most out of Purrify.',
         },
         {
           '@type': 'ListItem',
           position: 8,
-          url: 'https://www.purrify.ca/blog/activated-carbon-vs-baking-soda-comparison/',
+          url: 'https://www.purrify.ca/blog/activated-carbon-vs-baking-soda-comparison/',/
           name: 'Technology Comparison',
           description: 'See how activated carbon compares to baking soda and other deodorizers.',
         },
         {
           '@type': 'ListItem',
           position: 9,
-          url: 'https://www.purrify.ca/blog/',
+          url: 'https://www.purrify.ca/blog/',/
           name: 'All Guides',
           description: 'Targeted guides for every cat litter odor problem.',
         },
@@ -257,13 +257,13 @@ export default function LearnPageContent() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://www.purrify.ca',
+        item: 'https://www.purrify.ca/',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Learn',
-        item: 'https://www.purrify.ca/learn/',
+        item: 'https://www.purrify.ca/learn/',/
       },
     ],
   };
@@ -332,7 +332,7 @@ export default function LearnPageContent() {
                 Learn Everything About Cat Litter Odor Control
               </h1>
               <p className="text-xl text-gray-700 dark:text-gray-300 mb-8">
-                Explore our comprehensive guides, scientific explanations, and targeted solutions to keep your home fresh and your cat happy. Need help choosing? Read our <Link href="/learn/cat-litter-guide" className="text-[#5B2EFF] dark:text-[#3694FF] hover:underline font-medium">cat litter guide</Link>, calculate your savings with our <Link href="/tools/cat-litter-calculator" className="text-[#5B2EFF] dark:text-[#3694FF] hover:underline font-medium">cat litter calculator</Link>, or find <Link href="/learn#solutions-by-problem" className="text-[#5B2EFF] dark:text-[#3694FF] hover:underline font-medium">solutions by problem</Link>.
+                Explore our comprehensive guides, scientific explanations, and targeted solutions to keep your home fresh and your cat happy. Need help choosing? Read our <Link href="/learn/cat-litter-guide/" className="text-[#5B2EFF] dark:text-[#3694FF] hover:underline font-medium">cat litter guide</Link>, calculate your savings with our <Link href="/tools/cat-litter-calculator/" className="text-[#5B2EFF] dark:text-[#3694FF] hover:underline font-medium">cat litter calculator</Link>, or find <Link href="/learn#solutions-by-problem" className="text-[#5B2EFF] dark:text-[#3694FF] hover:underline font-medium">solutions by problem</Link>.
               </p>
             </div>
           </Container>
@@ -399,7 +399,7 @@ export default function LearnPageContent() {
                 Solutions by Problem
               </h2>
               <Link
-                href="/blog"
+                href="/blog/"
                 className="flex items-center text-[#5B2EFF] dark:text-[#3694FF] hover:text-[#03E46A] dark:hover:text-[#03E46A] font-medium text-sm transition-colors"
               >
                 View all guides
@@ -460,7 +460,7 @@ export default function LearnPageContent() {
                 Put what you&apos;ve learned into practice. Try Purrify risk-free with our trial size and see why thousands of cat parents swear by it.
               </p>
               <Link
-                href="/products/trial-size"
+                href="/products/trial-size/"
                 className="inline-flex items-center justify-center px-8 py-4 bg-[#03E46A] dark:bg-[#04D162] hover:bg-[#02c75b] dark:hover:bg-[#04D162]/90 text-white dark:text-gray-900 font-bold rounded-full transition-colors shadow-lg hover:shadow-xl"
               >
                 Try Purrify Risk-Free

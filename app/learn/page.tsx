@@ -14,24 +14,24 @@ export const metadata: Metadata = {
     'multi-cat odor control',
   ],
   alternates: {
-    canonical: 'https://www.purrify.ca/learn/',
+    canonical: 'https://www.purrify.ca/learn/',/
     languages: {
-      'en-CA': 'https://www.purrify.ca/learn/',
-      'fr-CA': 'https://www.purrify.ca/fr/learn/',
-      'en-US': 'https://www.purrify.ca/learn/',
-      'x-default': 'https://www.purrify.ca/learn/',
+      'en-CA': 'https://www.purrify.ca/learn/',/
+      'fr-CA': 'https://www.purrify.ca/fr/learn/',/
+      'en-US': 'https://www.purrify.ca/learn/',/
+      'x-default': 'https://www.purrify.ca/learn/',/
     },
   },
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/learn/',
+    url: 'https://www.purrify.ca/learn/',/
     siteName: SITE_NAME,
     title: `Cat Litter Odor Guides & Science | ${SITE_NAME}`,
     description: 'Comprehensive guides on cat litter odor control. Learn how activated carbon works, explore solutions for every situation, and discover Purrify.',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/marketing/micropores_magnified_view.webp',
+        url: 'https://www.purrify.ca/optimized/marketing/micropores_magnified_view.webp',/
         width: 1200,
         height: 800,
         alt: 'Learn about cat litter odor control with Purrify',
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     creator: '@purrifyhq',
     title: `Cat Litter Odor Guides & Science | ${SITE_NAME}`,
     description: 'Comprehensive guides on cat litter odor control. Learn how activated carbon works, explore solutions for every situation, and discover Purrify.',
-    images: ['https://www.purrify.ca/optimized/marketing/micropores_magnified_view.webp'],
+    images: ['https://www.purrify.ca/optimized/marketing/micropores_magnified_view.webp'/],
   },
   robots: {
     index: true,

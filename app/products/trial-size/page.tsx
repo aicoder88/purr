@@ -30,8 +30,8 @@ export async function generateMetadata({ params }: TrialSizePageProps): Promise<
   const metadataDescription = seoMeta?.description ?? "Your litter box shouldn't smell. Ever. Water-filter grade carbon eliminates ammonia in 60 seconds. FREE trial - $4.76 shipping. See why 87% upgrade.";
 
   const localizedPath = locale === 'en'
-    ? 'https://www.purrify.ca/products/trial-size/'
-    : `https://www.purrify.ca/${locale}/products/trial-size/`;
+    ? 'https://www.purrify.ca/products/trial-size/'/
+    : `https://www.purrify.ca/$/{locale}/products/trial-size/`;
 
   return {
     title: metadataTitle,
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: TrialSizePageProps): Promise<
       locale: locale === 'fr' ? 'fr_CA' : 'en_CA',
       images: [
         {
-          url: 'https://www.purrify.ca/optimized/products/17g-transparent-v2.webp',
+          url: 'https://www.purrify.ca/optimized/products/17g-transparent-v2.webp',/
           width: 1200,
           height: 1200,
           alt: 'Purrify 12g Trial Size',
@@ -59,15 +59,15 @@ export async function generateMetadata({ params }: TrialSizePageProps): Promise<
       creator: '@purrifyhq',
       title: metadataTitle,
       description: metadataDescription,
-      images: ['https://www.purrify.ca/optimized/products/17g-transparent-v2.webp'],
+      images: ['https://www.purrify.ca/optimized/products/17g-transparent-v2.webp'/],
     },
     alternates: {
       canonical: localizedPath,
       languages: {
-        'en-CA': 'https://www.purrify.ca/products/trial-size/',
-        'fr-CA': 'https://www.purrify.ca/fr/products/trial-size/',
-        'en-US': 'https://www.purrify.ca/products/trial-size/',
-        'x-default': 'https://www.purrify.ca/products/trial-size/',
+        'en-CA': 'https://www.purrify.ca/products/trial-size/',/
+        'fr-CA': 'https://www.purrify.ca/fr/products/trial-size/',/
+        'en-US': 'https://www.purrify.ca/products/trial-size/',/
+        'x-default': 'https://www.purrify.ca/products/trial-size/',/
       },
     },
     robots: {

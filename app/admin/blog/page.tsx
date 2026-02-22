@@ -212,7 +212,7 @@ export default function AdminBlogPage() {
           <p className="text-gray-600 dark:text-gray-400 mt-1">{filteredPosts.length} posts</p>
         </div>
         <Link
-          href="/admin/blog/new"
+          href="/admin/blog/new/"
           className="flex items-center space-x-2 px-4 py-2 bg-purple-600 text-white dark:text-gray-100 rounded-lg hover:bg-purple-700 transition-colors"
         >
           <Plus className="w-5 h-5" />
@@ -272,7 +272,7 @@ export default function AdminBlogPage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-12 text-center">
           <p className="text-gray-500 dark:text-gray-400 text-lg">No posts found</p>
           <Link
-            href="/admin/blog/new"
+            href="/admin/blog/new/"
             className="inline-flex items-center space-x-2 mt-4 text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300"
           >
             <Plus className="w-5 h-5" />

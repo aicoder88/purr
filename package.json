@@ -79,6 +79,7 @@
     "validate:function-size": "node --import tsx scripts/validation/validate-serverless-function-size.ts",
     "validate-blog-images": "node scripts/validate-blog-images.js",
     "validate-images": "tsx scripts/images/validate-image-sizes.ts",
+    "fix-images:png-oversize": "tsx scripts/images/fix-oversized-pngs.ts",
     "fix-image-sizes": "tsx scripts/images/validate-image-sizes.ts --fix",
     "validate-image-refs": "node scripts/find-fix-broken-images.js",
     "fix-image-refs": "node scripts/find-fix-broken-images.js --fix",

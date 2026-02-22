@@ -128,7 +128,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8 text-sm">
               <Link
-                href="/science"
+                href="/learn/science/"
                 className={`font-semibold ${COLORS.text.primary} hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors`}
               >
                 {r?.hero?.scienceLink || 'See research citations'}
@@ -145,7 +145,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
             {/* CTA */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/products/trial-size"
+                href="/products/trial-size/"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#FF3131] dark:bg-[#FF5050] hover:bg-[#FF3131]/90 dark:hover:bg-[#FF5050]/90 text-white dark:text-gray-100 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 {r?.hero?.tryCta || 'Try Risk-Free - Just $4.76 S&H'}
@@ -282,7 +282,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
             {/* More Reviews Link */}
             <div className="text-center mt-12">
               <Link
-                href="/reviews"
+                href="/reviews/"
                 className={`inline-flex items-center gap-2 px-6 py-3 ${COLORS.surface.light} rounded-full shadow-md hover:shadow-lg transition-all duration-300 ${COLORS.text.primary} font-medium`}
               >
                 {r?.testimonials?.viewAll || 'View All Reviews'}
@@ -336,7 +336,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/products/trial-size"
+                href="/products/trial-size/"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#FF3131] dark:bg-[#FF5050] hover:bg-[#FF3131]/90 dark:hover:bg-[#FF5050]/90 text-white dark:text-gray-100 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 {r?.cta?.primaryButton || 'Get Your Trial - $4.76 S&H'}
@@ -369,7 +369,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
             {/* Link to Reviews */}
             <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
               <Link
-                href="/reviews"
+                href="/reviews/"
                 className="inline-flex items-center gap-2 text-sm text-[#FF3131] dark:text-[#FF5050] hover:underline font-medium"
               >
                 <Quote className="w-4 h-4" />

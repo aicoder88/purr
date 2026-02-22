@@ -9,7 +9,7 @@ import { AIQuotableBlock } from '../../../../src/components/seo/AIQuotableBlock'
 import { RelatedQuestions } from '../../../../src/components/seo/RelatedQuestions';
 
 export default function LitterBoxSmellPageClient() {
-  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/';
+  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/';/
 
   // SEO optimized images for odor elimination
   const heroImage = '/optimized/blog/litter-box-hero.webp';
@@ -138,13 +138,13 @@ export default function LitterBoxSmellPageClient() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
-                  href="/products/trial-size"
+                  href="/products/trial-size/"
                   className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
                 >
                   Try Purrify Risk-Free
                 </Link>
                 <Link
-                  href="/learn/how-it-works"
+                  href="/learn/how-it-works/"
                   className="inline-block border-2 border-electric-indigo dark:border-electric-indigo text-electric-indigo dark:text-electric-indigo-400 px-8 py-4 rounded-lg font-bold text-lg hover:bg-electric-indigo/10 dark:hover:bg-electric-indigo/20 hover:scale-105 transition-all duration-300"
                 >
                   Learn the Science

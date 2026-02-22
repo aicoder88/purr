@@ -95,7 +95,7 @@ const getMockReferralStats = (userId: string): ReferralStats => {
   return {
     userId,
     referralCode: 'SARAH15-CAT',
-    shareUrl: 'https://www.purrify.ca/refer/SARAH15-CAT',
+    shareUrl: 'https://www.purrify.ca/refer/SARAH15-CAT',/
     totalReferrals: 12,
     completedReferrals: 8,
     pendingReferrals: 4,

@@ -186,7 +186,7 @@ export default function AffiliateDetailPage() {
             {error || 'Affiliate not found'}
           </h2>
           <Link
-            href="/admin/ops/affiliates"
+            href="/admin/ops/affiliates/"
             className="text-teal-600 hover:text-teal-700 dark:text-teal-400 dark:hover:text-teal-300"
           >
             Back to Affiliates
@@ -201,7 +201,7 @@ export default function AffiliateDetailPage() {
       {/* Header */}
       <div className="mb-8">
         <Link
-          href="/admin/ops/affiliates"
+          href="/admin/ops/affiliates/"
           className="inline-flex items-center text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 mb-4"
         >
           <ArrowLeft className="w-4 h-4 mr-1" />

@@ -22,8 +22,6 @@ function getOgLocale(locale: string): string {
   const localeMap: Record<string, string> = {
     'en': 'en_CA',
     'fr': 'fr_CA',
-    'zh': 'zh_CN',
-    'es': 'es_US',
   };
   return localeMap[locale] || 'en_CA';
 }
@@ -37,23 +35,30 @@ export async function generateMetadata({ params }: LocalizedProductsPageProps): 
   }
 
   const localizedPath = locale === 'en'
-    ? 'https://www.purrify.ca/products/'
-    : `https://www.purrify.ca/${locale}/products/`;
+    ? 'https://www.purrify.ca/products/'/
+    : `https://www.purrify.ca/$/{locale}/products/`;
+  const isFrench = locale === 'fr';
+  const title = isFrench
+    ? 'Produits Purrify - Additif de litiere au charbon actif'
+    : 'Purrify Products - Activated Carbon Litter Additive';
+  const description = isFrench
+    ? "Magasinez les produits Purrify pour reduire les odeurs de litiere avec du charbon actif."
+    : 'Shop Purrify activated carbon litter additives for proven odor control.';
 
   return {
-    title: 'Purrify Products - Activated Carbon Litter Additive',
-    description: '★ 4.8 Rating | FREE Trial Available | Shop Purrify activated carbon litter additives. Eliminates odors instantly. Ships to USA & Canada. 30-day guarantee.',
+    title,
+    description,
     keywords: ['Purrify products', 'cat litter additive', 'activated carbon', 'odor control', 'trial size', 'family pack'],
     openGraph: {
       type: 'website',
       url: localizedPath,
       siteName: 'Purrify',
-      title: 'Purrify Products - Activated Carbon Litter Additive',
-      description: '★ 4.8 Rating | FREE Trial Available | Shop Purrify activated carbon litter additives. Eliminates odors instantly.',
+      title,
+      description,
       locale: getOgLocale(locale),
       images: [
         {
-          url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
+          url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
           width: 1200,
           height: 800,
           alt: 'Purrify Products',
@@ -64,17 +69,17 @@ export async function generateMetadata({ params }: LocalizedProductsPageProps): 
       card: 'summary_large_image',
       site: '@purrifyhq',
       creator: '@purrifyhq',
-      title: 'Purrify Products - Activated Carbon Litter Additive',
-      description: '★ 4.8 Rating | FREE Trial Available | Shop Purrify activated carbon litter additives. Eliminates odors instantly.',
-      images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'],
+      title,
+      description,
+      images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'/],
     },
     alternates: {
       canonical: localizedPath,
       languages: {
-        'en-CA': 'https://www.purrify.ca/products/',
-        'fr-CA': 'https://www.purrify.ca/fr/products/',
-        'en-US': 'https://www.purrify.ca/products/',
-        'x-default': 'https://www.purrify.ca/products/',
+        'en-CA': 'https://www.purrify.ca/products/',/
+        'fr-CA': 'https://www.purrify.ca/fr/products/',/
+        'en-US': 'https://www.purrify.ca/products/',/
+        'x-default': 'https://www.purrify.ca/products/',/
       },
     },
     robots: {

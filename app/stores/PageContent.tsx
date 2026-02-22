@@ -352,7 +352,7 @@ export default function StoresPage() {
   const [selectedRegion, setSelectedRegion] = useState<string>('all');
   const [selectedType, setSelectedType] = useState<string>('all');
 
-  const canonicalUrl = 'https://www.purrify.ca/stores/';
+  const canonicalUrl = 'https://www.purrify.ca/stores/';/
 
   // Filter stores based on search and filters
   const filteredStores = useMemo(() => {
@@ -422,10 +422,8 @@ export default function StoresPage() {
       "@type": "ItemList",
       "numberOfItems": stores.length,
       "itemListElement": stores.map((store, index) => {
-        // Build store item with only valid properties
         const storeItem: Record<string, unknown> = {
           "@type": "LocalBusiness",
-          "position": index + 1,
           "name": store.name,
           "address": {
             "@type": "PostalAddress",
@@ -444,7 +442,11 @@ export default function StoresPage() {
           storeItem["url"] = store.url;
         }
         
-        return storeItem;
+        return {
+          "@type": "ListItem",
+          "position": index + 1,
+          "item": storeItem,
+        };
       })
     }
   };
@@ -543,7 +545,7 @@ export default function StoresPage() {
                 Try adjusting your search criteria or contact us.
               </p>
               <Link
-                href="/contact"
+                href="/contact/"
                 className="inline-block bg-brand-red text-white dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-brand-red/90 transition-colors"
               >
                 Contact Us
@@ -676,13 +678,13 @@ export default function StoresPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/contact"
+              href="/contact/"
               className="inline-block bg-brand-red text-white dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-brand-red/90 transition-colors"
             >
               Request for my store
             </Link>
             <Link
-              href="/b2b"
+              href="/b2b/"
               className="inline-block border-2 border-brand-red text-brand-red dark:text-brand-red-400 px-6 py-3 rounded-lg font-semibold hover:bg-brand-red/10 transition-colors"
             >
               Become a retailer

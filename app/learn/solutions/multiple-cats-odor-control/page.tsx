@@ -7,20 +7,20 @@ import MultipleCatsOdorControlPageClient from './MultipleCatsOdorControlPageClie
 
 const pageTitle = `Multi-Cat Household Odor Solution: Complete Guide for 2+ Cats | ${SITE_NAME}`;
 const pageDescription = 'Struggling with cat smell from multiple cats? Odors multiply exponentially with each cat. Activated carbon handles 3, 4, 5+ cats where other solutions fail. See dosage guide.';
-const canonicalUrl = 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control/';
-const heroImage = 'https://www.purrify.ca/optimized/blog/multiple-cats-together.webp';
+const canonicalUrl = 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control/';/
+const heroImage = 'https://www.purrify.ca/optimized/blog/multiple-cats-together.webp';/
 
 export const metadata: Metadata = {
   title: pageTitle,
   description: pageDescription,
   keywords: ['multi cat household odor solution', 'multiple cats smell', 'how to control cat smell with multiple cats', 'best litter for multiple cats', 'cat odor 3 cats 4 cats 5 cats', 'multi-cat litter box odor'],
   alternates: {
-    canonical: 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control/',
+    canonical: 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control/',/
     languages: {
-      'en-CA': 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control',
-      'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/multiple-cats-odor-control',
-      'en-US': 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control',
-      'x-default': 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control',
+      'en-CA': 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control',/
+      'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/multiple-cats-odor-control',/
+      'en-US': 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control',/
+      'x-default': 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control',/
     },
   },
   openGraph: {
@@ -60,14 +60,14 @@ const articleSchema = {
   author: {
     '@type': 'Organization',
     name: SITE_NAME,
-    url: 'https://www.purrify.ca',
+    url: 'https://www.purrify.ca/',
   },
   publisher: {
     '@type': 'Organization',
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
+      url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
       width: 400,
       height: 400,
     },

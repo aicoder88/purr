@@ -8,6 +8,11 @@ import path from 'path';
 import fs from 'fs';
 import imageSize from 'image-size';
 
+export interface ImageValidationOptions {
+  mode?: 'runtime' | 'inventory';
+  includeLegacyBacklog?: boolean;
+}
+
 export interface ImageIssue {
   filePath: string;
   severity: 'critical' | 'error' | 'warning';
@@ -26,6 +31,8 @@ export interface ImageValidationResult {
   totalImages: number;
   validImages: number;
   issues: ImageIssue[];
+  actionableIssues: ImageIssue[];
+  legacyBacklog?: ImageIssue[];
   stats: {
     missingAlt: number;
     oversized: number;
@@ -42,9 +49,105 @@ interface ImageReference {
   line?: number;
 }
 
+interface RuntimeImageReference {
+  imagePath: string;
+  sourceFile: string;
+  resolvedPath?: string;
+}
+
 const MAX_IMAGE_SIZE_KB = 500; // 500KB max recommended
 const MAX_WIDTH = 3200; // Max width in pixels
 const MAX_HEIGHT = 3200; // Max height in pixels
+const IMAGE_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif']);
+const RUNTIME_SOURCE_GLOBS = [
+  'app/**/*.{ts,tsx,js,jsx,json,md,mdx,yml,yaml}',
+  'src/**/*.{ts,tsx,js,jsx,json,md,mdx,yml,yaml}',
+  'content/**/*.{ts,tsx,js,jsx,json,md,mdx,yml,yaml}',
+];
+
+function removeQueryAndHash(value: string): string {
+  return value.split(/[?#]/, 1)[0];
+}
+
+function isExternalReference(value: string): boolean {
+  return /^(https?:)?\/\//.test(value) || value.startsWith('data:') || value.startsWith('blob:');
+}
+
+function normalizeImageReferenceToFilePath(
+  imagePath: string,
+  sourceFile: string
+): string | undefined {
+  const cleanPath = removeQueryAndHash(imagePath.trim());
+  if (!cleanPath || isExternalReference(cleanPath)) {
+    return undefined;
+  }
+
+  const ext = path.extname(cleanPath).toLowerCase();
+  if (!IMAGE_EXTENSIONS.has(ext)) {
+    return undefined;
+  }
+
+  const cwd = process.cwd();
+  if (cleanPath.startsWith('/')) {
+    return path.join(cwd, 'public', cleanPath.replace(/^\/+/, ''));
+  }
+
+  if (cleanPath.startsWith('public/')) {
+    return path.join(cwd, cleanPath);
+  }
+
+  if (cleanPath.startsWith('./') || cleanPath.startsWith('../')) {
+    return path.resolve(cwd, path.dirname(sourceFile), cleanPath);
+  }
+
+  return path.resolve(cwd, cleanPath);
+}
+
+async function scanRuntimeImageReferences(): Promise<RuntimeImageReference[]> {
+  const references: RuntimeImageReference[] = [];
+  const sourceFiles = await fg(RUNTIME_SOURCE_GLOBS, {
+    cwd: process.cwd(),
+    ignore: ['**/node_modules/**', '**/.next/**'],
+  });
+
+  const referenceRegex =
+    /(?:["'`(=:\s])((?:\/|\.{1,2}\/)[^"'`\s)]+\.(?:jpe?g|png|gif|webp|svg|avif))(?:[?#][^"'`\s)]*)?/gi;
+  const markdownImageRegex = /!\[[^\]]*]\(([^)\s]+)\)/gi;
+
+  for (const sourceFile of sourceFiles) {
+    const content = fs.readFileSync(path.join(process.cwd(), sourceFile), 'utf-8');
+    const localSeen = new Set<string>();
+    let match: RegExpExecArray | null;
+
+    while ((match = referenceRegex.exec(content)) !== null) {
+      const imagePath = match[1];
+      if (localSeen.has(imagePath)) {
+        continue;
+      }
+      localSeen.add(imagePath);
+      references.push({
+        imagePath,
+        sourceFile,
+        resolvedPath: normalizeImageReferenceToFilePath(imagePath, sourceFile),
+      });
+    }
+
+    while ((match = markdownImageRegex.exec(content)) !== null) {
+      const imagePath = match[1];
+      if (localSeen.has(imagePath)) {
+        continue;
+      }
+      localSeen.add(imagePath);
+      references.push({
+        imagePath,
+        sourceFile,
+        resolvedPath: normalizeImageReferenceToFilePath(imagePath, sourceFile),
+      });
+    }
+  }
+
+  return references;
+}
 
 /**
  * Scan source files for image references
@@ -109,24 +212,28 @@ export async function scanImageReferences(): Promise<ImageReference[]> {
  * Scan physical image files
  */
 export async function scanImageFiles(): Promise<string[]> {
-  const imageFiles = await fg(
-    ['public/**/*.{jpg,jpeg,png,gif,webp,svg,avif}'],
-    {
-      cwd: process.cwd(),
-      ignore: ['**/node_modules/**', '**/.next/**', '**/original-images/**', '**/images/**'],
-    }
-  );
+  const imageFiles = await fg(['public/**/*.{jpg,jpeg,png,gif,webp,svg,avif}'], {
+    cwd: process.cwd(),
+    ignore: ['**/node_modules/**', '**/.next/**', '**/original-images/**', '**/images/**'],
+  });
 
   return imageFiles.map((file) => path.join(process.cwd(), file));
+}
+
+function hasModernFormatSibling(filePath: string): boolean {
+  const baseName = filePath.replace(/\.(jpe?g)$/i, '');
+  return fs.existsSync(`${baseName}.webp`) || fs.existsSync(`${baseName}.avif`);
 }
 
 /**
  * Validate a single image file
  */
 export function validateImageFile(
-  filePath: string
+  filePath: string,
+  options: { checkFormat?: boolean } = {}
 ): { valid: boolean; issues: ImageIssue[] } {
   const issues: ImageIssue[] = [];
+  const checkFormat = options.checkFormat ?? true;
 
   try {
     // Check if file exists
@@ -196,14 +303,13 @@ export function validateImageFile(
 
     // Check format recommendations
     const ext = path.extname(filePath).toLowerCase();
-    if (ext === '.jpg' || ext === '.jpeg') {
-      // Suggest WebP or AVIF for better compression
+    if (checkFormat && (ext === '.jpg' || ext === '.jpeg') && !hasModernFormatSibling(filePath)) {
       issues.push({
         filePath,
         severity: 'warning',
         type: 'format',
-        message: 'Consider using WebP or AVIF format for better compression',
-        fix: 'Convert to WebP or AVIF using image optimization tools',
+        message: 'Referenced JPG/JPEG has no same-basename WebP/AVIF sibling',
+        fix: 'Add .webp or .avif version with the same basename',
         details: { format: ext },
       });
     }
@@ -225,10 +331,7 @@ export function validateImageFile(
 /**
  * Validate alt text quality
  */
-export function validateAltText(
-  altText: string | undefined,
-  imagePath: string
-): ImageIssue[] {
+export function validateAltText(altText: string | undefined, imagePath: string): ImageIssue[] {
   const issues: ImageIssue[] = [];
 
   if (!altText || altText.trim() === '') {
@@ -289,10 +392,16 @@ export function validateAltText(
 /**
  * Validate all images in the project
  */
-export async function validateAllImages(): Promise<ImageValidationResult> {
+export async function validateAllImages(
+  options: ImageValidationOptions = {}
+): Promise<ImageValidationResult> {
+  const mode = options.mode ?? 'runtime';
+  const includeLegacyBacklog = options.includeLegacyBacklog ?? true;
+
   console.log('🖼️  Validating images...\n');
 
-  const issues: ImageIssue[] = [];
+  const actionableIssues: ImageIssue[] = [];
+  const legacyBacklog: ImageIssue[] = [];
   let missingAlt = 0;
   let oversized = 0;
   let wrongFormat = 0;
@@ -303,14 +412,14 @@ export async function validateAllImages(): Promise<ImageValidationResult> {
   const references = await scanImageReferences();
   console.log(`  Found ${references.length} image references\n`);
 
-  // 2. Validate alt text for each reference
+  // 2. Validate alt text for each reference (kept as-is)
   console.log('🏷️  Validating alt text...');
   for (const ref of references) {
     const altIssues = validateAltText(ref.altText, ref.imagePath);
     if (altIssues.length > 0) {
       missingAlt++;
       altIssues.forEach((issue) => {
-        issues.push({
+        actionableIssues.push({
           ...issue,
           filePath: `${ref.sourceFile}:${ref.line} (${ref.imagePath})`,
         });
@@ -324,17 +433,40 @@ export async function validateAllImages(): Promise<ImageValidationResult> {
   const imageFiles = await scanImageFiles();
   console.log(`  Found ${imageFiles.length} image files\n`);
 
-  // 4. Validate each image file
-  console.log('✅ Validating image files...');
+  // 4. Resolve runtime image files
+  const runtimeReferences = await scanRuntimeImageReferences();
+  const runtimeFileSet = new Set<string>();
+  let unresolvedRuntimeRefs = 0;
+
+  if (mode === 'runtime') {
+    runtimeReferences.forEach((ref) => {
+      if (!ref.resolvedPath) {
+        return;
+      }
+      if (fs.existsSync(ref.resolvedPath)) {
+        runtimeFileSet.add(ref.resolvedPath);
+      } else {
+        unresolvedRuntimeRefs += 1;
+      }
+    });
+    console.log(`🎯 Runtime mode: ${runtimeFileSet.size} referenced image files\n`);
+    if (unresolvedRuntimeRefs > 0) {
+      console.log(`ℹ️  Runtime scan skipped ${unresolvedRuntimeRefs} unresolved references\n`);
+    }
+  }
+
+  // 5. Validate actionable image files
+  console.log('✅ Validating actionable image files...');
+  const actionableFiles = mode === 'runtime' ? [...runtimeFileSet] : imageFiles;
   let validCount = 0;
 
-  for (const filePath of imageFiles) {
+  for (const filePath of actionableFiles) {
     const result = validateImageFile(filePath);
 
     if (result.valid) {
       validCount++;
     } else {
-      issues.push(...result.issues);
+      actionableIssues.push(...result.issues);
 
       result.issues.forEach((issue) => {
         if (issue.type === 'file-size' && issue.details?.fileSize) {
@@ -348,12 +480,28 @@ export async function validateAllImages(): Promise<ImageValidationResult> {
     }
   }
 
-  console.log(`  ${validCount}/${imageFiles.length} images passed validation\n`);
+  console.log(`  ${validCount}/${actionableFiles.length} actionable images passed validation\n`);
+
+  // 6. Optional inventory backlog (non-blocking)
+  if (mode === 'runtime' && includeLegacyBacklog) {
+    const legacyFiles = imageFiles.filter((filePath) => !runtimeFileSet.has(filePath));
+    console.log(`📚 Inventory backlog scan: ${legacyFiles.length} unreferenced image files...`);
+
+    for (const filePath of legacyFiles) {
+      const result = validateImageFile(filePath);
+      if (!result.valid) {
+        legacyBacklog.push(...result.issues);
+      }
+    }
+    console.log(`  Legacy backlog issues: ${legacyBacklog.length}\n`);
+  }
 
   return {
-    totalImages: imageFiles.length,
+    totalImages: actionableFiles.length,
     validImages: validCount,
-    issues,
+    issues: actionableIssues,
+    actionableIssues,
+    legacyBacklog: includeLegacyBacklog ? legacyBacklog : undefined,
     stats: {
       missingAlt,
       oversized,
@@ -376,16 +524,16 @@ export function generateImageReport(result: ImageValidationResult): string {
   lines.push('## Summary\n');
   lines.push(`- **Total Images**: ${result.totalImages}\n`);
   lines.push(`- **Valid Images**: ${result.validImages}\n`);
-  lines.push(`- **Images with Issues**: ${result.totalImages - result.validImages}\n`);
+  lines.push(`- **Actionable Issues**: ${result.actionableIssues.length}\n`);
   lines.push(`- **Missing Alt Text**: ${result.stats.missingAlt}\n`);
   lines.push(`- **Oversized Images**: ${result.stats.oversized}\n`);
   lines.push(`- **Suboptimal Formats**: ${result.stats.wrongFormat}\n\n`);
 
-  if (result.issues.length > 0) {
+  if (result.actionableIssues.length > 0) {
     // Group by severity
-    const criticalIssues = result.issues.filter((i) => i.severity === 'critical');
-    const errorIssues = result.issues.filter((i) => i.severity === 'error');
-    const warningIssues = result.issues.filter((i) => i.severity === 'warning');
+    const criticalIssues = result.actionableIssues.filter((i) => i.severity === 'critical');
+    const errorIssues = result.actionableIssues.filter((i) => i.severity === 'error');
+    const warningIssues = result.actionableIssues.filter((i) => i.severity === 'warning');
 
     if (criticalIssues.length > 0) {
       lines.push('## Critical Issues\n\n');
@@ -422,6 +570,11 @@ export function generateImageReport(result: ImageValidationResult): string {
         lines.push(`... and ${warningIssues.length - 20} more warnings\n\n`);
       }
     }
+  }
+
+  if (result.legacyBacklog && result.legacyBacklog.length > 0) {
+    lines.push('## Legacy Inventory Backlog (Non-Blocking)\n\n');
+    lines.push(`- Backlog Issues: ${result.legacyBacklog.length}\n\n`);
   }
 
   return lines.join('');

@@ -7,20 +7,20 @@ import { stripContext } from '../../../../src/lib/seo-utils';
 
 const pageTitle = `Cat in a 400 Sq Ft Apartment? How to Eliminate Litter Smell Completely | ${SITE_NAME}`;
 const pageDescription = 'No windows near your litter box. No ventilation. Roommates complaining. Here are 5 solutions that work in small apartments—guests will never know you have a cat.';
-const canonicalUrl = 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/';
-const heroImage = 'https://www.purrify.ca/optimized/blog/apartment-hero.webp';
+const canonicalUrl = 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/';/
+const heroImage = 'https://www.purrify.ca/optimized/blog/apartment-hero.webp';/
 
 export const metadata: Metadata = {
   title: pageTitle,
   description: pageDescription,
   keywords: ['best litter for apartments with no ventilation', 'how to get rid of cat litter smell in apartment', 'odor control cat litter small apartment', 'apartment cat smell solution', 'cat litter for small spaces'],
   alternates: {
-    canonical: 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/',
+    canonical: 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/',/
     languages: {
-      'en-CA': 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution',
-      'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/apartment-cat-smell-solution',
-      'en-US': 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution',
-      'x-default': 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution',
+      'en-CA': 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution',/
+      'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/apartment-cat-smell-solution',/
+      'en-US': 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution',/
+      'x-default': 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution',/
     },
   },
   openGraph: {
@@ -60,14 +60,14 @@ const articleSchema = {
   author: {
     '@type': 'Organization',
     name: SITE_NAME,
-    url: 'https://www.purrify.ca',
+    url: 'https://www.purrify.ca/',
   },
   publisher: {
     '@type': 'Organization',
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
+      url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
       width: 400,
       height: 400,
     },

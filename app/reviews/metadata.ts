@@ -12,9 +12,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Purrify Reviews | Customer Feedback',
     description: 'Read customer feedback about Purrify and learn how cat owners use an activated carbon additive for litter box odor control.',
-    images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'],
+    images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'/],
   },
   alternates: {
-    canonical: 'https://www.purrify.ca/reviews/'
+    canonical: 'https://www.purrify.ca/reviews/'/
   },
 };

@@ -11,17 +11,17 @@ export const metadata: Metadata = {
   description: 'Learn about Purrify autoship subscriptions. Save 30%, get free shipping, and never run out. Cancel, pause, or modify anytime.',
   keywords: ['subscription', 'autoship', 'recurring orders', 'save money', 'automatic delivery'],
   alternates: {
-    canonical: 'https://www.purrify.ca/support/subscription/',
+    canonical: 'https://www.purrify.ca/support/subscription/',/
     languages: {
-      'en-CA': 'https://www.purrify.ca/support/subscription',
-      'fr-CA': 'https://www.purrify.ca/fr/support/subscription',
-      'en-US': 'https://www.purrify.ca/support/subscription',
-      'x-default': 'https://www.purrify.ca/support/subscription',
+      'en-CA': 'https://www.purrify.ca/support/subscription',/
+      'fr-CA': 'https://www.purrify.ca/fr/support/subscription',/
+      'en-US': 'https://www.purrify.ca/support/subscription',/
+      'x-default': 'https://www.purrify.ca/support/subscription',/
     },
   },
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/support/subscription/',
+    url: 'https://www.purrify.ca/support/subscription/',/
     title: `Subscription & Autoship - ${SITE_NAME} Help Center`,
     description: 'Learn about Purrify autoship subscriptions. Save 30%, get free shipping, and never run out.',
     locale: 'en_CA',
@@ -137,7 +137,7 @@ export default function SubscriptionPage() {
               </li>
               <li className="text-gray-400 dark:text-gray-500">/</li>
               <li>
-                <Link href="/support" className="hover:text-[#03E46A] dark:hover:text-[#04D162] transition-colors">
+                <Link href="/support/" className="hover:text-[#03E46A] dark:hover:text-[#04D162] transition-colors">
                   Support
                 </Link>
               </li>
@@ -329,7 +329,7 @@ export default function SubscriptionPage() {
                     Subscribe & Save 30%
                   </Button>
                 </Link>
-                <Link href="/customer/portal">
+                <Link href="/customer/portal/">
                   <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-white dark:text-gray-100 hover:bg-white/10 dark:hover:bg-gray-800 font-bold text-lg px-8">
                     Manage Subscription
                   </Button>

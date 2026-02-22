@@ -83,7 +83,7 @@ export default function AffiliateContent() {
                             </p>
 
                             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-                                <Link href="/affiliate/signup" className="w-full sm:w-auto">
+                                <Link href="/affiliate/signup/" className="w-full sm:w-auto">
                                     <button className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-blue-600 hover:bg-blue-500 dark:bg-blue-600 dark:hover:bg-blue-500 text-white dark:text-white text-lg font-semibold rounded-xl shadow-[0_0_20px_rgba(37,99,235,0.3)] transition-all duration-200 hover:scale-105">
                                         {t('affiliate.hero.primaryCTA')}
                                         <ArrowRight className="w-5 h-5 ml-2" />
@@ -657,7 +657,7 @@ export default function AffiliateContent() {
                         <p className="text-xl text-blue-100 dark:text-blue-100 mb-12 font-light max-w-2xl mx-auto">
                             {t('affiliate.finalCTA.subtitle')}
                         </p>
-                        <Link href="/affiliate/signup">
+                        <Link href="/affiliate/signup/">
                             <button className="inline-flex items-center px-10 py-5 bg-white dark:bg-white text-blue-600 dark:text-blue-600 text-xl font-bold rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-200">
                                 {t('affiliate.finalCTA.cta')}
                                 <ArrowRight className="w-6 h-6 ml-3" />

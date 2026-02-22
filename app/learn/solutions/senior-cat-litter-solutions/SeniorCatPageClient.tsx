@@ -8,7 +8,7 @@ import { AIQuotableBlock } from '../../../../src/components/seo/AIQuotableBlock'
 import { RelatedQuestions } from '../../../../src/components/seo/RelatedQuestions';
 
 export default function SeniorCatPageClient() {
-    const canonicalUrl = 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions/';
+    const canonicalUrl = 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions/';/
 
     // Senior cat litter solution images
     const heroImage = '/optimized/blog/senior-cat-hero.png';
@@ -108,7 +108,7 @@ export default function SeniorCatPageClient() {
                         </div>
 
                         <Link
-                            href="/products/trial-size"
+                            href="/products/trial-size/"
                             className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-3 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
                         >
                             Try Purrify for Your Senior Cat
@@ -290,7 +290,7 @@ export default function SeniorCatPageClient() {
                             Shop Purrify Now
                         </Link>
                         <Link
-                            href="/learn/how-it-works"
+                            href="/learn/how-it-works/"
                             className="inline-block bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-200 font-bold py-4 px-8 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-500 transition-all text-lg"
                         >
                             Learn More
@@ -333,7 +333,7 @@ export default function SeniorCatPageClient() {
                     </h2>
                     <div className="grid md:grid-cols-3 gap-6">
                         <Link
-                            href="/learn/solutions/litter-box-smell-elimination"
+                            href="/learn/solutions/litter-box-smell-elimination/"
                             className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] dark:hover:border-[#FF5050] transition-all group"
                         >
                             <div className="text-3xl mb-3">🚫</div>
@@ -345,7 +345,7 @@ export default function SeniorCatPageClient() {
                             </p>
                         </Link>
                         <Link
-                            href="/learn/solutions/multiple-cats-odor-control"
+                            href="/learn/solutions/multiple-cats-odor-control/"
                             className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg hover:border-[#FF3131] dark:hover:border-[#FF5050] transition-all group"
                         >
                             <div className="text-3xl mb-3">🐱🐱</div>

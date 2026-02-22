@@ -8,7 +8,7 @@ import { AIQuotableBlock } from '../../../../src/components/seo/AIQuotableBlock'
 import { RelatedQuestions } from '../../../../src/components/seo/RelatedQuestions';
 
 export default function NaturalCatLitterAdditivePageClient() {
-  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/';
+  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/';/
 
   // Natural cat litter additive images
   const heroImage = '/optimized/blog/litter-box-hero.webp';
@@ -97,7 +97,7 @@ export default function NaturalCatLitterAdditivePageClient() {
             </div>
 
             <Link
-              href="/products/trial-size"
+              href="/products/trial-size/"
               className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-3 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
             >
               Try Purrify Risk-Free

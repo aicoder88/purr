@@ -245,7 +245,7 @@ export default async function CanadaPage({ params }: CanadaPageProps) {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link
-                  href="/products/trial-size"
+                  href="/products/trial-size/"
                   className="inline-flex items-center justify-center gap-2 bg-[#FF3131] dark:bg-[#FF5050] text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#E02828] dark:hover:bg-[#E02828]/90 transition-all shadow-xl"
                 >
                   Try for {trialPrice}
@@ -459,7 +459,7 @@ export default async function CanadaPage({ params }: CanadaPageProps) {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link
-                href="/products/trial-size"
+                href="/products/trial-size/"
                 className="inline-flex items-center justify-center gap-2 bg-white dark:bg-gray-100 text-[#FF3131] px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 dark:hover:bg-gray-200 transition-all shadow-xl"
               >
                 Start with Trial Size - {trialPrice}
@@ -542,7 +542,7 @@ export default async function CanadaPage({ params }: CanadaPageProps) {
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               <Link
-                href="/learn/how-activated-carbon-works"
+                href="/learn/how-activated-carbon-works/"
                 className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all border border-gray-200 dark:border-gray-700 group"
               >
                 <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-[#FF3131] dark:group-hover:text-[#FF5050] transition-colors">
@@ -553,7 +553,7 @@ export default async function CanadaPage({ params }: CanadaPageProps) {
                 </p>
               </Link>
               <Link
-                href="/learn/solutions/apartment-cat-smell-solution"
+                href="/learn/solutions/apartment-cat-smell-solution/"
                 className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all border border-gray-200 dark:border-gray-700 group"
               >
                 <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-[#FF3131] dark:group-hover:text-[#FF5050] transition-colors">
@@ -564,7 +564,7 @@ export default async function CanadaPage({ params }: CanadaPageProps) {
                 </p>
               </Link>
               <Link
-                href="/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative"
+                href="/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/"
                 className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all border border-gray-200 dark:border-gray-700 group"
               >
                 <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-[#FF3131] dark:group-hover:text-[#FF5050] transition-colors">

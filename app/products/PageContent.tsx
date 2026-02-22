@@ -229,7 +229,7 @@ export default function ProductsPage() {
     description: pageDescription,
     targetKeyword: 'cat litter additive',
     keywords: ['Purrify products', 'cat litter additive', 'activated carbon', 'odor control', 'trial size', 'family pack'],
-    image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
+    image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
   });
 
   // Product data for complete structured data
@@ -240,8 +240,8 @@ export default function ProductsPage() {
       description: 'FREE trial of activated charcoal cat litter additive. Eliminates ammonia odors instantly.',
       sku: 'purrify-12g',
       mpn: 'PURRIFY-12G',
-      image: 'https://www.purrify.ca/optimized/products/17g-transparent-v2.webp',
-      url: `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/trial-size`,
+      image: 'https://www.purrify.ca/optimized/products/17g-transparent-v2.webp',/
+      url: `https://www.purrify.ca/${locale === 'fr' ? '/fr' : ''}/products/trial-size`,
       shippingRate: '4.76',
     },
     {
@@ -250,8 +250,8 @@ export default function ProductsPage() {
       description: '50g activated charcoal cat litter additive. One month of odor control. 100% natural.',
       sku: 'purrify-50g',
       mpn: 'PURRIFY-50G',
-      image: 'https://www.purrify.ca/optimized/products/60g-transparent.webp',
-      url: `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/#standard`,
+      image: 'https://www.purrify.ca/optimized/products/60g-transparent.webp',/
+      url: `https://www.purrify.ca/${locale === 'fr' ? '/fr' : ''}/products/#standard`,
       shippingRate: '6.99',
     },
     {
@@ -260,8 +260,8 @@ export default function ProductsPage() {
       description: 'Best value 120g activated charcoal cat litter additive. Perfect for multi-cat households.',
       sku: 'purrify-120g',
       mpn: 'PURRIFY-120G',
-      image: 'https://www.purrify.ca/optimized/products/60g-transparent.webp',
-      url: `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products/#family-pack`,
+      image: 'https://www.purrify.ca/optimized/products/60g-transparent.webp',/
+      url: `https://www.purrify.ca/${locale === 'fr' ? '/fr' : ''}/products/#family-pack`,
       shippingRate: '0',
     },
   ];
@@ -274,7 +274,7 @@ export default function ProductsPage() {
         "@type": "CollectionPage",
         "name": pageTitle,
         "description": pageDescription,
-        "url": `https://www.purrify.ca${locale === 'fr' ? '/fr' : ''}/products`,
+        "url": `https://www.purrify.ca/${locale === 'fr' ? '/fr' : ''}/products`,
         "mainEntity": {
           "@type": "ItemList",
           "itemListElement": productStructuredData.map((product, index) => {
@@ -299,7 +299,7 @@ export default function ProductsPage() {
                 "manufacturer": {
                   "@type": "Organization",
                   "name": "Purrify",
-                  "url": "https://www.purrify.ca"
+                  "url": "https://www.purrify.ca/"
                 },
                 "category": "Pet Supplies > Cat Supplies > Cat Litter Additives",
                 "offers": {
@@ -756,12 +756,12 @@ export default function ProductsPage() {
               <p className="text-gray-600 dark:text-gray-400 mb-4 max-w-2xl mx-auto">
                 {t.rich('productsPage.relatedIntro', {
                   guide: (chunks) => (
-                    <Link href="/learn/cat-litter-guide" className="text-brand-purple dark:text-purple-400 hover:underline font-medium">
+                    <Link href="/learn/cat-litter-guide/" className="text-brand-purple dark:text-purple-400 hover:underline font-medium">
                       {chunks}
                     </Link>
                   ),
                   calculator: (chunks) => (
-                    <Link href="/tools/cat-litter-calculator" className="text-brand-purple dark:text-purple-400 hover:underline font-medium">
+                    <Link href="/tools/cat-litter-calculator/" className="text-brand-purple dark:text-purple-400 hover:underline font-medium">
                       {chunks}
                     </Link>
                   ),
