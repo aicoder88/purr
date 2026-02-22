@@ -18,14 +18,14 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/us/',/
+    url: 'https://www.purrify.ca/us/',
     siteName: 'Purrify',
     title: 'Cat Litter Odor Control USA | Free Shipping',
     description: 'Eliminate cat litter odors at the source. Purrify is coming to the USA in Q1 2026!',
     locale: 'en_US',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/blog/realistic-modern-living.webp',/
+        url: 'https://www.purrify.ca/optimized/blog/realistic-modern-living.webp',
         width: 1200,
         height: 800,
         alt: 'Purrify USA - Coming Q1 2026',
@@ -38,15 +38,15 @@ export const metadata: Metadata = {
     creator: '@purrifyhq',
     title: 'Cat Litter Odor Control USA | Free Shipping',
     description: 'Eliminate cat litter odors at the source. Purrify is coming to the USA in Q1 2026!',
-    images: ['https://www.purrify.ca/optimized/blog/realistic-modern-living.webp'/],
+    images: ['https://www.purrify.ca/optimized/blog/realistic-modern-living.webp'],
   },
   alternates: {
-    canonical: 'https://www.purrify.ca/us/',/
+    canonical: 'https://www.purrify.ca/us/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/',/
-      'fr-CA': 'https://www.purrify.ca/fr/',/
-      'en-US': 'https://www.purrify.ca/us/',/
-      'x-default': 'https://www.purrify.ca/',/
+      'en-CA': 'https://www.purrify.ca/',
+      'fr-CA': 'https://www.purrify.ca/fr/',
+      'en-US': 'https://www.purrify.ca/us/',
+      'x-default': 'https://www.purrify.ca/',
     },
   },
   robots: {
@@ -69,7 +69,7 @@ const productSchema = {
   '@context': 'https://schema.org',
   '@type': 'Product',
   '@id': 'https://www.purrify.ca/products/#usa',
-  url: 'https://www.purrify.ca/products/',/
+  url: 'https://www.purrify.ca/products/',
   name: 'Purrify Activated Carbon Cat Litter Deodorizer - USA Edition',
   description: 'Premium activated carbon litter additive for extreme odor control, launching in USA Q1 2026.',
   brand: {
@@ -77,7 +77,7 @@ const productSchema = {
     name: 'Purrify',
   },
   category: 'Pet Supplies > Cat Supplies > Cat Litter Accessories',
-  image: 'https://www.purrify.ca/optimized/blog/realistic-modern-living.webp',/
+  image: 'https://www.purrify.ca/optimized/blog/realistic-modern-living.webp',
 };
 
 // LocalBusiness schema for USA
@@ -87,9 +87,9 @@ const localBusinessSchema = {
   '@id': 'https://www.purrify.ca/us/#localbusiness',
   name: 'Purrify USA',
   description: 'Premium activated carbon cat litter deodorizer coming to USA in Q1 2026',
-  url: 'https://www.purrify.ca/us/',/
-  logo: 'https://www.purrify.ca/optimized/icons/icon-512.png',/
-  image: 'https://www.purrify.ca/optimized/blog/realistic-modern-living.webp',/
+  url: 'https://www.purrify.ca/us/',
+  logo: 'https://www.purrify.ca/optimized/icons/icon-512.png',
+  image: 'https://www.purrify.ca/optimized/blog/realistic-modern-living.webp',
   address: {
     '@type': 'PostalAddress',
     addressCountry: 'US',

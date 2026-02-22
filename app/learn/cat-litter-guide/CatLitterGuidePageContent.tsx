@@ -490,13 +490,13 @@ export default function CatLitterGuidePageContent() {
     schemaData: {
       headline: 'Complete Cat Litter Guide - Types, Tips & Best Practices',
       description: 'Comprehensive guide to cat litter types, maintenance tips, and solving common problems. Learn how to choose the best litter for your cat and keep it fresh longer.',
-      image: 'https://www.purrify.ca/optimized/blog/litter-guide-hero-setup.webp',/
+      image: 'https://www.purrify.ca/optimized/blog/litter-guide-hero-setup.webp',
       datePublished: '2024-01-01T10:00:00Z',
       dateModified: new Date().toISOString(),
       category: 'Pet Care Guides',
       keywords: ['cat litter guide', 'cat litter types', 'litter maintenance tips', 'clay litter', 'clumping litter', 'silica litter', 'natural cat litter'],
     },
-    image: 'https://www.purrify.ca/optimized/blog/litter-guide-hero-setup.webp',/
+    image: 'https://www.purrify.ca/optimized/blog/litter-guide-hero-setup.webp',
     keywords: ['cat litter guide', 'cat litter types', 'litter maintenance tips', 'clay litter', 'clumping litter', 'silica litter', 'natural cat litter'],
   });
 

@@ -160,7 +160,7 @@ export const buildLanguageAlternates = (canonicalPath: string): LanguageAlternat
   // Add en-US variant - points to /us for homepage, or locale equivalent for other pages
   const isRootPath = normalizedPath === '/' || normalizedPath === '';
   const usHref = isRootPath
-    ? 'https://www.purrify.ca/us/'/
+    ? 'https://www.purrify.ca/us/'
     : enCaHref;
 
   const result: LanguageAlternate[] = [...alternates];
@@ -401,19 +401,19 @@ export const generateArticleStructuredData = (title: string, description: string
     headline: title,
     description: description,
     url: url,
-    image: options?.image || 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
+    image: options?.image || 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
     author: {
       '@type': 'Person',
       name: options?.author || 'Dr. Sarah Chen',
       jobTitle: 'Veterinary Consultant',
-      url: 'https://www.purrify.ca/about/our-story/'/
+      url: 'https://www.purrify.ca/about/our-story/'
     },
     publisher: {
       '@type': 'Organization',
       name: SITE_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
+        url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
         width: 400,
         height: 400
       }
@@ -652,8 +652,8 @@ export const generateLocalBusinessSchema = (cityName: string, province: string, 
     name: `${SITE_NAME} - ${cityName}`,
     description: getLocalizedContent(SEO_TRANSLATIONS.organizationDescription, locale),
     url: getLocalizedUrl(`/locations/${cityName.toLowerCase()}`, locale),
-    logo: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
-    image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
+    logo: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
+    image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
     address: {
       '@type': 'PostalAddress',
       addressLocality: cityName,
@@ -879,7 +879,7 @@ export const generateArticlePageSchema = (title: string, description: string, pa
       '@type': 'Person',
       name: options?.author || 'Dr. Sarah Chen',
       jobTitle: 'Veterinary Consultant',
-      url: 'https://www.purrify.ca/about/our-story/'/
+      url: 'https://www.purrify.ca/about/our-story/'
     },
     publisher: {
       '@type': 'Organization',

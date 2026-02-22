@@ -87,9 +87,9 @@ const organizationSchema = {
   '@id': 'https://www.purrify.ca/#organization',
   name: 'Purrify Canada',
   description: 'Canadian manufacturer of activated carbon cat litter deodorizer with shipping across all provinces',
-  url: 'https://www.purrify.ca/locations/',/
-  logo: 'https://www.purrify.ca/optimized/icons/icon-512.png',/
-  image: 'https://www.purrify.ca/optimized/products/purrify-standard-bag.png',/
+  url: 'https://www.purrify.ca/locations/',
+  logo: 'https://www.purrify.ca/optimized/icons/icon-512.png',
+  image: 'https://www.purrify.ca/optimized/products/purrify-standard-bag.png',
   areaServed: [
     { '@type': 'Country', name: 'Canada' }
   ],

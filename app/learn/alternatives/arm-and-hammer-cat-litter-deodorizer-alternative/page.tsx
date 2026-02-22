@@ -17,23 +17,23 @@ export const metadata: Metadata = {
     'cat litter smell solution',
   ],
   alternates: {
-    canonical: 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/',/
+    canonical: 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',/
-      'fr-CA': 'https://www.purrify.ca/fr/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',/
-      'en-US': 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',/
-      'x-default': 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',/
+      'en-CA': 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
+      'fr-CA': 'https://www.purrify.ca/fr/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
+      'en-US': 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
+      'x-default': 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
     },
   },
   openGraph: {
     type: 'article',
-    url: 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/',/
+    url: 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/',
     title: 'Arm & Hammer Not Working? Better Alternative',
     description: "Baking soda stops working after 48 hours. It can't neutralize ammonia (same pH). Here's the science-backed alternative that lasts 3x longer.",
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/blog/activated-carbon-vs-baking-soda-comparison.webp',/
+        url: 'https://www.purrify.ca/optimized/blog/activated-carbon-vs-baking-soda-comparison.webp',
         width: 1200,
         height: 630,
         alt: 'Arm & Hammer cat litter deodorizer alternative - activated carbon comparison',
@@ -51,12 +51,12 @@ export const metadata: Metadata = {
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  '@id': 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',/
-  url: 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/',/
+  '@id': 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
+  url: 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/',
   inLanguage: 'en-CA',
   headline: 'Arm & Hammer Cat Litter Deodorizer Not Working? Try This Instead',
   description: "Baking soda stops working after 48 hours. It can't neutralize ammonia (same pH). Here's the science-backed alternative that lasts 3x longer.",
-  image: 'https://www.purrify.ca/optimized/blog/activated-carbon-vs-baking-soda-comparison.webp',/
+  image: 'https://www.purrify.ca/optimized/blog/activated-carbon-vs-baking-soda-comparison.webp',
   datePublished: '2025-01-25T10:00:00Z',
   dateModified: new Date().toISOString(),
   author: {
@@ -69,14 +69,14 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
+      url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
       width: 400,
       height: 400,
     },
   },
   mainEntityOfPage: {
     '@type': 'WebPage',
-    '@id': 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',/
+    '@id': 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative',
   },
   articleSection: 'Product Comparison',
   keywords: [
@@ -94,7 +94,7 @@ const howToSchema = {
   name: 'How to Switch from Arm & Hammer to Activated Carbon',
   description: "Making the switch is simple. You don't need to change your litter or routine dramatically.",
   totalTime: 'PT5M',
-  url: 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/',/
+  url: 'https://www.purrify.ca/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/',
   step: [
     {
       '@type': 'HowToStep',

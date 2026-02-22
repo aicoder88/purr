@@ -51,7 +51,7 @@ export default function ReferralsPageClient() {
 
       if (newCode) {
         setReferralCode(newCode);
-        setShareUrl(`https://www.purrify.ca/refer/$/{newCode}`);
+        setShareUrl(`https://www.purrify.ca/refer/${newCode}`);
         setHasReferralCode(true);
 
         // Track referral code generation

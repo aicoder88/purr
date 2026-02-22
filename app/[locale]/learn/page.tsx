@@ -29,13 +29,13 @@ export async function generateMetadata({ params }: LocalizedLearnPageProps): Pro
     keywords: ['cat litter odor control', 'activated carbon guide', 'Purrify science', 'litter box tips', 'odor elimination'],
     alternates: {
       canonical: locale === 'en'
-        ? 'https://www.purrify.ca/learn/'/
-        : `https://www.purrify.ca/$/{locale}/learn/`,
+        ? 'https://www.purrify.ca/learn/'
+        : `https://www.purrify.ca/${locale}/learn/`,
       languages: {
-        'en-CA': 'https://www.purrify.ca/learn/',/
-        'fr-CA': 'https://www.purrify.ca/fr/learn/',/
-        'en-US': 'https://www.purrify.ca/learn/',/
-        'x-default': 'https://www.purrify.ca/learn/',/
+        'en-CA': 'https://www.purrify.ca/learn/',
+        'fr-CA': 'https://www.purrify.ca/fr/learn/',
+        'en-US': 'https://www.purrify.ca/learn/',
+        'x-default': 'https://www.purrify.ca/learn/',
       },
     },
     openGraph: {

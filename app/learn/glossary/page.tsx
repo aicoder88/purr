@@ -8,24 +8,24 @@ export const metadata: Metadata = {
   description: 'Learn key terms about activated carbon, cat litter odor control, and pet care science. Definitions of adsorption, ammonia, activated carbon, and more.',
   keywords: ['activated carbon glossary', 'cat litter terms', 'adsorption definition', 'ammonia science', 'coconut shell carbon', 'VOCs', 'pet care science'],
   alternates: {
-    canonical: 'https://www.purrify.ca/learn/glossary/',/
+    canonical: 'https://www.purrify.ca/learn/glossary/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/learn/glossary',/
-      'fr-CA': 'https://www.purrify.ca/fr/learn/glossary',/
-      'en-US': 'https://www.purrify.ca/learn/glossary',/
-      'x-default': 'https://www.purrify.ca/learn/glossary',/
+      'en-CA': 'https://www.purrify.ca/learn/glossary',
+      'fr-CA': 'https://www.purrify.ca/fr/learn/glossary',
+      'en-US': 'https://www.purrify.ca/learn/glossary',
+      'x-default': 'https://www.purrify.ca/learn/glossary',
     },
   },
   openGraph: {
     type: 'article',
-    url: 'https://www.purrify.ca/learn/glossary/',/
+    url: 'https://www.purrify.ca/learn/glossary/',
     siteName: SITE_NAME,
     title: `Cat Litter & Activated Carbon Glossary - ${SITE_NAME}`,
     description: 'Learn key terms about activated carbon, cat litter odor control, and pet care science.',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/blog/carbon-microscopic.webp',/
+        url: 'https://www.purrify.ca/optimized/blog/carbon-microscopic.webp',
         width: 1200,
         height: 800,
         alt: 'Cat Litter and Activated Carbon Glossary',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     creator: '@purrifyhq',
     title: `Cat Litter & Activated Carbon Glossary - ${SITE_NAME}`,
     description: 'Learn key terms about activated carbon, cat litter odor control, and pet care science. Definitions of adsorption, ammonia, activated carbon, and more.',
-    images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'/],
+    images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'],
   },
   robots: {
     index: true,
@@ -59,15 +59,15 @@ const definedTermSetSchema = {
   '@id': 'https://www.purrify.ca/learn/glossary/#glossary',
   name: 'Cat Litter and Activated Carbon Glossary',
   description: 'Comprehensive glossary of terms related to activated carbon, cat litter odor control, and pet care science.',
-  url: 'https://www.purrify.ca/learn/glossary/',/
+  url: 'https://www.purrify.ca/learn/glossary/',
 };
 
 // JSON-LD Schema for Article
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  '@id': 'https://www.purrify.ca/learn/glossary',/
-  url: 'https://www.purrify.ca/learn/glossary/',/
+  '@id': 'https://www.purrify.ca/learn/glossary',
+  url: 'https://www.purrify.ca/learn/glossary/',
   inLanguage: 'en-CA',
   headline: `Cat Litter & Activated Carbon Glossary - ${SITE_NAME}`,
   description: 'Learn key terms about activated carbon, cat litter odor control, and pet care science.',
@@ -83,14 +83,14 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
+      url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
       width: 400,
       height: 400,
     },
   },
   mainEntityOfPage: {
     '@type': 'WebPage',
-    '@id': 'https://www.purrify.ca/learn/glossary',/
+    '@id': 'https://www.purrify.ca/learn/glossary',
   },
   articleSection: 'Pet Care Science',
   keywords: ['activated carbon glossary', 'cat litter terms', 'adsorption definition', 'ammonia science'],
@@ -105,7 +105,7 @@ const speakableSchema = {
     '@type': 'SpeakableSpecification',
     cssSelector: ['.term-definition', '.term-name', '.speakable-content'],
   },
-  url: 'https://www.purrify.ca/learn/glossary/',/
+  url: 'https://www.purrify.ca/learn/glossary/',
 };
 
 // Client component for the interactive parts

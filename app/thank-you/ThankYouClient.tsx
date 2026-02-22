@@ -95,7 +95,7 @@ export default function ThankYouClient({ orderDetails, error, sessionId: _sessio
     generateReferralCode();
   }, [orderDetails]);
 
-  const shareUrl = referralCode ? `https://www.purrify.ca/refer/$/{referralCode}` : 'https://www.purrify.ca/';
+  const shareUrl = referralCode ? `https://www.purrify.ca/refer/${referralCode}` : 'https://www.purrify.ca/';
 
   const handleCopyLink = async () => {
     await navigator.clipboard.writeText(shareUrl);

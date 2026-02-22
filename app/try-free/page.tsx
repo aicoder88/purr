@@ -6,23 +6,23 @@ export const metadata: Metadata = {
   title: 'FREE Purrify Trial | Just Pay Shipping | Eliminates Odors',
   description: 'FREE Purrify Trial | Just Pay Shipping | Eliminates cat litter smell instantly with water-filter grade carbon. ★ 4.8 rating. Ships USA & Canada.',
   alternates: {
-    canonical: 'https://www.purrify.ca/try-free/',/
+    canonical: 'https://www.purrify.ca/try-free/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/try-free/',/
-      'fr-CA': 'https://www.purrify.ca/fr/try-free/',/
-      'en-US': 'https://www.purrify.ca/try-free/',/
-      'x-default': 'https://www.purrify.ca/try-free/',/
+      'en-CA': 'https://www.purrify.ca/try-free/',
+      'fr-CA': 'https://www.purrify.ca/fr/try-free/',
+      'en-US': 'https://www.purrify.ca/try-free/',
+      'x-default': 'https://www.purrify.ca/try-free/',
     },
   },
   keywords: ['free trial', 'cat litter freshener', 'odor eliminator sample', 'free shipping'],
   openGraph: {
     title: 'FREE Purrify Trial | Just Pay Shipping | Eliminates Odors',
     description: 'FREE Purrify Trial | Just Pay Shipping | Eliminates cat litter smell instantly with water-filter grade carbon. ★ 4.8 rating. Ships USA & Canada.',
-    url: 'https://www.purrify.ca/try-free/',/
+    url: 'https://www.purrify.ca/try-free/',
     siteName: SITE_NAME,
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/products/17g-transparent.webp',/
+        url: 'https://www.purrify.ca/optimized/products/17g-transparent.webp',
         width: 1200,
         height: 800,
         alt: 'FREE Purrify Trial | Just Pay Shipping | Eliminates Odors',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     site: '@purrifyhq',
     title: 'FREE Purrify Trial | Just Pay Shipping | Eliminates Odors',
     description: 'FREE Purrify Trial | Just Pay Shipping | Eliminates cat litter smell instantly with water-filter grade carbon. ★ 4.8 rating. Ships USA & Canada.',
-    images: ['https://www.purrify.ca/optimized/products/17g-transparent.webp'/],
+    images: ['https://www.purrify.ca/optimized/products/17g-transparent.webp'],
   },
 };
 

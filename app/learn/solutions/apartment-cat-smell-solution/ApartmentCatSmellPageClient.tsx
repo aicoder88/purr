@@ -9,7 +9,7 @@ import { AIQuotableBlock } from '../../../../src/components/seo/AIQuotableBlock'
 import { RelatedQuestions } from '../../../../src/components/seo/RelatedQuestions';
 
 export default function ApartmentCatSmellPageClient() {
-  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/';/
+  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/';
 
   // SEO optimized images
   const heroImage = '/optimized/blog/apartment-hero.webp';

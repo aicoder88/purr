@@ -9,7 +9,7 @@ import { AIQuotableBlock } from '../../../../src/components/seo/AIQuotableBlock'
 import { RelatedQuestions } from '../../../../src/components/seo/RelatedQuestions';
 
 export default function AmmoniaSmellPageClient() {
-  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter/';/
+  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter/';
 
   // Ammonia smell solution images
   const heroImage = '/optimized/blog/ammonia-hero-ghibli.webp';

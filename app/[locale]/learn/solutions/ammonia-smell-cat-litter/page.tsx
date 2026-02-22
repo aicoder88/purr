@@ -17,7 +17,7 @@ interface PageProps {
 
 const pageTitle = `Cat Litter Smells Like Ammonia? Baking Soda Can't Fix It (Here's Why) | ${SITE_NAME}`;
 const pageDescription = "That eye-watering ammonia isn't your cat's fault—it's chemistry. Baking soda and ammonia are BOTH alkaline, so they don't neutralize each other. Here's what actually works.";
-const heroImage = 'https://www.purrify.ca/optimized/blog/ammonia-hero.webp';/
+const heroImage = 'https://www.purrify.ca/optimized/blog/ammonia-hero.webp';
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { locale } = await params;
@@ -67,8 +67,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    '@id': 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter/',/
-    url: 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter/',/
+    '@id': 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter/',
+    url: 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter/',
     inLanguage: 'en-CA',
     headline: pageTitle,
     description: pageDescription,
@@ -85,14 +85,14 @@ const articleSchema = {
         name: SITE_NAME,
         logo: {
             '@type': 'ImageObject',
-            url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
+            url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
             width: 400,
             height: 400,
         },
     },
     mainEntityOfPage: {
         '@type': 'WebPage',
-        '@id': 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter/',/
+        '@id': 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter/',
     },
     articleSection: 'Pet Odor Solutions',
     keywords: ['ammonia smell', 'cat litter odor', 'activated carbon', 'odor elimination'],

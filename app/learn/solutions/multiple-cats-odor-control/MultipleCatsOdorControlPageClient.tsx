@@ -9,7 +9,7 @@ import { AIQuotableBlock } from '../../../../src/components/seo/AIQuotableBlock'
 import { RelatedQuestions } from '../../../../src/components/seo/RelatedQuestions';
 
 export default function MultipleCatsOdorControlPageClient() {
-  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control/';/
+  const canonicalUrl = 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control/';
 
   // SEO optimized images for multi-cat households
   const heroImage = '/optimized/blog/multiple-cats-together.webp';

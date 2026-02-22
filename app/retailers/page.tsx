@@ -15,7 +15,7 @@ import { getTranslation } from '@/translations';
 
 // Default to English for metadata
 const t = getTranslation('en');
-const canonicalUrl = 'https://www.purrify.ca/retailers/';/
+const canonicalUrl = 'https://www.purrify.ca/retailers/';
 
 export const metadata: Metadata = {
   title: `${SITE_NAME} - ${t.retailers.seo.pageTitle}`,

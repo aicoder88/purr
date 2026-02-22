@@ -116,7 +116,7 @@ export default function TrialSizePageContent({ locale }: TrialSizePageContentPro
         count: reviewData.reviewCount,
       },
     },
-    image: 'https://www.purrify.ca/optimized/products/17g-transparent-v2.webp',/
+    image: 'https://www.purrify.ca/optimized/products/17g-transparent-v2.webp',
     keywords: ['cat litter freshener', 'charcoal litter additive', 'cat litter deodorizer', 'free trial'],
   });
 

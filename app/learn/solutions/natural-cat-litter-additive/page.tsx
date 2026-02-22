@@ -7,20 +7,20 @@ import { stripContext } from '../../../../src/lib/seo-utils';
 
 const pageTitle = `Non-Toxic Cat Litter Deodorizer: Safe for Cats, Effective for Odor | ${SITE_NAME}`;
 const pageDescription = 'Looking for a non-toxic cat litter deodorizer? Activated carbon is food-grade, fragrance-free, and safe if ingested. Works 10x longer than baking soda without chemicals.';
-const canonicalUrl = 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/';/
-const heroImage = 'https://www.purrify.ca/optimized/blog/litter-box-hero.webp';/
+const canonicalUrl = 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/';
+const heroImage = 'https://www.purrify.ca/optimized/blog/litter-box-hero.webp';
 
 export const metadata: Metadata = {
   title: pageTitle,
   description: pageDescription,
   keywords: ['non-toxic cat litter deodorizer', 'safe cat litter deodorizer', 'natural litter deodorizer', 'fragrance-free cat litter', 'chemical-free cat odor control', 'pet-safe litter additive'],
   alternates: {
-    canonical: 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/',/
+    canonical: 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive',/
-      'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/natural-cat-litter-additive',/
-      'en-US': 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive',/
-      'x-default': 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive',/
+      'en-CA': 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive',
+      'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/natural-cat-litter-additive',
+      'en-US': 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive',
+      'x-default': 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive',
     },
   },
   openGraph: {
@@ -67,7 +67,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
+      url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
       width: 400,
       height: 400,
     },

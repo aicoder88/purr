@@ -17,7 +17,7 @@ interface PageProps {
 
 const pageTitle = `Non-Toxic Cat Litter Deodorizer: Safe for Cats, Effective for Odor | ${SITE_NAME}`;
 const pageDescription = 'Looking for a non-toxic cat litter deodorizer? Activated carbon is food-grade, fragrance-free, and safe if ingested. Works 10x longer than baking soda without chemicals.';
-const heroImage = 'https://www.purrify.ca/optimized/blog/litter-box-hero.webp';/
+const heroImage = 'https://www.purrify.ca/optimized/blog/litter-box-hero.webp';
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { locale } = await params;
@@ -67,8 +67,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    '@id': 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/',/
-    url: 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/',/
+    '@id': 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/',
+    url: 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/',
     inLanguage: 'en-CA',
     headline: pageTitle,
     description: pageDescription,
@@ -85,14 +85,14 @@ const articleSchema = {
         name: SITE_NAME,
         logo: {
             '@type': 'ImageObject',
-            url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
+            url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
             width: 400,
             height: 400,
         },
     },
     mainEntityOfPage: {
         '@type': 'WebPage',
-        '@id': 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/',/
+        '@id': 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/',
     },
     articleSection: 'Pet Safety',
     keywords: ['non-toxic', 'cat safe', 'natural deodorizer', 'fragrance-free'],

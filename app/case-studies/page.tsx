@@ -11,22 +11,22 @@ export const metadata: Metadata = {
   description: "Before & After: See how 1,000+ cat owners eliminated litter box odors. Real photos, real results. '95% odor reduction in 24 hours.' Ships to USA & Canada.",
   keywords: ['Purrify case studies', 'cat odor success stories', 'customer results', 'before and after', 'cat litter deodorizer effectiveness'],
   alternates: {
-    canonical: 'https://www.purrify.ca/case-studies/',/
+    canonical: 'https://www.purrify.ca/case-studies/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/case-studies/',/
-      'fr-CA': 'https://www.purrify.ca/fr/case-studies/',/
-      'en-US': 'https://www.purrify.ca/case-studies/',/
-      'x-default': 'https://www.purrify.ca/case-studies/',/
+      'en-CA': 'https://www.purrify.ca/case-studies/',
+      'fr-CA': 'https://www.purrify.ca/fr/case-studies/',
+      'en-US': 'https://www.purrify.ca/case-studies/',
+      'x-default': 'https://www.purrify.ca/case-studies/',
     },
   },
   openGraph: {
     title: 'Success Stories - Real Customer Results',
     description: 'Before & After: See how 1,000+ cat owners eliminated litter box odors. Real photos, real results in 24 hours.',
     type: 'website',
-    url: 'https://www.purrify.ca/case-studies/',/
+    url: 'https://www.purrify.ca/case-studies/',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/products/three-bags-no-bg.webp',/
+        url: 'https://www.purrify.ca/optimized/products/three-bags-no-bg.webp',
         width: 1200,
         height: 630,
         alt: 'Purrify Customer Success Stories',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Success Stories - Real Customer Results',
     description: 'Before & After: Real photos showing 95% odor reduction. See why 1,000+ cat owners switched to Purrify.',
-    images: ['https://www.purrify.ca/optimized/products/three-bags-no-bg.webp'/],
+    images: ['https://www.purrify.ca/optimized/products/three-bags-no-bg.webp'],
   },
   other: {
     'last-modified': '2026-01-19',

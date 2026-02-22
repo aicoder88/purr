@@ -8,7 +8,7 @@ import { AIQuotableBlock } from '../../../../src/components/seo/AIQuotableBlock'
 import { RelatedQuestions } from '../../../../src/components/seo/RelatedQuestions';
 
 export default function SeniorCatPageClient() {
-    const canonicalUrl = 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions/';/
+    const canonicalUrl = 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions/';
 
     // Senior cat litter solution images
     const heroImage = '/optimized/blog/senior-cat-hero.png';

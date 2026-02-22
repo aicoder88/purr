@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'The Viral Odour Vault: Purrify Profit Report',
   description: 'Stop guessing why your videos die in obscurity. We have dissected the Viral Anchors of the pet care world to build your profit machine.',
   alternates: {
-    canonical: 'https://www.purrify.ca/viral/'/
+    canonical: 'https://www.purrify.ca/viral/'
   },
   openGraph: {
     url: '/viral',
@@ -33,11 +33,11 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
+      url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
     },
   },
   datePublished: '2026-01-19',
-  url: 'https://www.purrify.ca/viral/',/
+  url: 'https://www.purrify.ca/viral/',
 };
 
 export default function ViralReportPage() {

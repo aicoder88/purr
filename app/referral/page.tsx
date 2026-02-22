@@ -16,12 +16,12 @@ export const metadata: Metadata = {
     'share and earn',
   ],
   alternates: {
-    canonical: 'https://www.purrify.ca/referral/',/
+    canonical: 'https://www.purrify.ca/referral/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/referral/',/
-      'fr-CA': 'https://www.purrify.ca/fr/referral/',/
-      'en-US': 'https://www.purrify.ca/referral/',/
-      'x-default': 'https://www.purrify.ca/referral/',/
+      'en-CA': 'https://www.purrify.ca/referral/',
+      'fr-CA': 'https://www.purrify.ca/fr/referral/',
+      'en-US': 'https://www.purrify.ca/referral/',
+      'x-default': 'https://www.purrify.ca/referral/',
     },
   },
   robots: {
@@ -36,14 +36,14 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/referral/',/
+    url: 'https://www.purrify.ca/referral/',
     siteName: SITE_NAME,
     title: `Referral Program - Give $5, Get $5 | ${SITE_NAME}`,
     description: 'Share Purrify with friends and earn rewards. Give $5 off to your friends and get $5 credit when they make their first purchase.',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
+        url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
         width: 1200,
         height: 800,
         alt: `${SITE_NAME} Referral Program`,
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     creator: '@purrifyhq',
     title: `Referral Program - Give $5, Get $5 | ${SITE_NAME}`,
     description: 'Share Purrify with friends and earn rewards. Give $5 off to your friends and get $5 credit.',
-    images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'/],
+    images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'],
   },
   other: {
     'last-modified': '2025-11-17',

@@ -12,18 +12,18 @@ export const metadata: Metadata = {
     follow: false,
   },
   alternates: {
-    canonical: 'https://www.purrify.ca/buy/',/
+    canonical: 'https://www.purrify.ca/buy/',
   },
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/buy/',/
+    url: 'https://www.purrify.ca/buy/',
     siteName: SITE_NAME,
     title: 'Buy Purrify | Redirecting...',
     description: 'Redirecting to Purrify products page.',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
+        url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
         width: 1200,
         height: 800,
         alt: SITE_NAME,
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     creator: '@purrifyhq',
     title: 'Buy Purrify | Redirecting...',
     description: 'Redirecting to Purrify products page.',
-    images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'/],
+    images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'],
   },
 };
 

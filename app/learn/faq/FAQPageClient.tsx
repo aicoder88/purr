@@ -35,8 +35,8 @@ function generateFAQSchema(questions: { question: string; answer: string }[], lo
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    '@id': 'https://www.purrify.ca/learn/faq',/
-    url: 'https://www.purrify.ca/learn/faq',/
+    '@id': 'https://www.purrify.ca/learn/faq',
+    url: 'https://www.purrify.ca/learn/faq',
     inLanguage,
     mainEntity: questions.map((q) => ({
       '@type': 'Question',

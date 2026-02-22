@@ -7,20 +7,20 @@ import SeniorCatPageClient from './SeniorCatPageClient';
 
 const pageTitle = `Best Litter for Senior Cats with Arthritis & Mobility Issues | ${SITE_NAME}`;
 const pageDescription = "Senior cats need special care. Low dust, easy access, and superior odor control help aging cats stay comfortable and healthy. Discover litter solutions designed for senior cats.";
-const canonicalUrl = 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions/';/
-const heroImage = 'https://www.purrify.ca/optimized/blog/senior-cat-hero.png';/
+const canonicalUrl = 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions/';
+const heroImage = 'https://www.purrify.ca/optimized/blog/senior-cat-hero.png';
 
 export const metadata: Metadata = {
     title: pageTitle,
     description: pageDescription,
     keywords: ['senior cat litter solutions', 'best litter for senior cats', 'best cat litter for older cats', 'litter box for senior cats with arthritis', 'low dust litter for senior cats', 'senior cat litter box'],
     alternates: {
-        canonical: 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions/',/
+        canonical: 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions/',
         languages: {
-            'en-CA': 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions',/
-            'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/senior-cat-litter-solutions',/
-            'en-US': 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions',/
-            'x-default': 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions',/
+            'en-CA': 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions',
+            'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/senior-cat-litter-solutions',
+            'en-US': 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions',
+            'x-default': 'https://www.purrify.ca/learn/solutions/senior-cat-litter-solutions',
         },
     },
     openGraph: {
@@ -67,7 +67,7 @@ const articleSchema = {
         name: SITE_NAME,
         logo: {
             '@type': 'ImageObject',
-            url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
+            url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
             width: 400,
             height: 400,
         },

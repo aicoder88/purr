@@ -17,7 +17,7 @@ interface PageProps {
 
 const pageTitle = `How to Neutralize Ammonia in Cat Litter (5 Methods That Actually Work) | ${SITE_NAME}`;
 const pageDescription = 'Cat litter ammonia smell making you gag? Activated carbon neutralizes ammonia 10x better than baking soda. See the 5 proven methods ranked by effectiveness.';
-const heroImage = 'https://www.purrify.ca/optimized/blog/ammonia-hero.webp';/
+const heroImage = 'https://www.purrify.ca/optimized/blog/ammonia-hero.webp';
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { locale } = await params;
@@ -67,8 +67,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    '@id': 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/',/
-    url: 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/',/
+    '@id': 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/',
+    url: 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/',
     inLanguage: 'en-CA',
     headline: pageTitle,
     description: pageDescription,
@@ -85,14 +85,14 @@ const articleSchema = {
         name: SITE_NAME,
         logo: {
             '@type': 'ImageObject',
-            url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
+            url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
             width: 400,
             height: 400,
         },
     },
     mainEntityOfPage: {
         '@type': 'WebPage',
-        '@id': 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/',/
+        '@id': 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/',
     },
     articleSection: 'Pet Odor Solutions',
     keywords: ['ammonia neutralizer', 'cat litter ammonia', 'odor control', 'activated carbon'],

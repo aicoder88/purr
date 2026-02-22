@@ -352,7 +352,7 @@ export default function StoresPage() {
   const [selectedRegion, setSelectedRegion] = useState<string>('all');
   const [selectedType, setSelectedType] = useState<string>('all');
 
-  const canonicalUrl = 'https://www.purrify.ca/stores/';/
+  const canonicalUrl = 'https://www.purrify.ca/stores/';
 
   // Filter stores based on search and filters
   const filteredStores = useMemo(() => {

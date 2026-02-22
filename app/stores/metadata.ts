@@ -15,10 +15,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Purrify Stores - Find a Retailer Near You',
     description: 'Find pet stores selling Purrify near you. Discover our partner retailers across Quebec, Ontario, and British Columbia.',
-    images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'/],
+    images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'],
   },
   alternates: {
-    canonical: 'https://www.purrify.ca/stores/'/
+    canonical: 'https://www.purrify.ca/stores/'
   },
   other: {
     'geo.region': 'CA',

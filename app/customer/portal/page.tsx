@@ -15,11 +15,11 @@ export const metadata: Metadata = {
     'customer service',
   ],
   alternates: {
-    canonical: 'https://www.purrify.ca/customer/portal/'/
+    canonical: 'https://www.purrify.ca/customer/portal/'
   },
   openGraph: {
     type: 'website',
-    url: 'https://www.purrify.ca/customer/portal/',/
+    url: 'https://www.purrify.ca/customer/portal/',
     title: `Customer Portal | Manage Orders | ${SITE_NAME}`,
     description: 'Access your Purrify customer portal to track orders and manage subscriptions. Easy order tracking and account management.'
   },

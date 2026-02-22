@@ -229,7 +229,7 @@ export default function ProductsPage() {
     description: pageDescription,
     targetKeyword: 'cat litter additive',
     keywords: ['Purrify products', 'cat litter additive', 'activated carbon', 'odor control', 'trial size', 'family pack'],
-    image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
+    image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
   });
 
   // Product data for complete structured data
@@ -240,7 +240,7 @@ export default function ProductsPage() {
       description: 'FREE trial of activated charcoal cat litter additive. Eliminates ammonia odors instantly.',
       sku: 'purrify-12g',
       mpn: 'PURRIFY-12G',
-      image: 'https://www.purrify.ca/optimized/products/17g-transparent-v2.webp',/
+      image: 'https://www.purrify.ca/optimized/products/17g-transparent-v2.webp',
       url: `https://www.purrify.ca/${locale === 'fr' ? '/fr' : ''}/products/trial-size`,
       shippingRate: '4.76',
     },
@@ -250,7 +250,7 @@ export default function ProductsPage() {
       description: '50g activated charcoal cat litter additive. One month of odor control. 100% natural.',
       sku: 'purrify-50g',
       mpn: 'PURRIFY-50G',
-      image: 'https://www.purrify.ca/optimized/products/60g-transparent.webp',/
+      image: 'https://www.purrify.ca/optimized/products/60g-transparent.webp',
       url: `https://www.purrify.ca/${locale === 'fr' ? '/fr' : ''}/products/#standard`,
       shippingRate: '6.99',
     },
@@ -260,7 +260,7 @@ export default function ProductsPage() {
       description: 'Best value 120g activated charcoal cat litter additive. Perfect for multi-cat households.',
       sku: 'purrify-120g',
       mpn: 'PURRIFY-120G',
-      image: 'https://www.purrify.ca/optimized/products/60g-transparent.webp',/
+      image: 'https://www.purrify.ca/optimized/products/60g-transparent.webp',
       url: `https://www.purrify.ca/${locale === 'fr' ? '/fr' : ''}/products/#family-pack`,
       shippingRate: '0',
     },

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Free Trial - Purrify',
   description: 'Get your free Purrify trial. Just pay shipping. Eliminate cat litter odors naturally with activated carbon.',
   alternates: {
-    canonical: 'https://www.purrify.ca/free-trial/'/
+    canonical: 'https://www.purrify.ca/free-trial/'
   },
   openGraph: {
     url: '/free-trial',

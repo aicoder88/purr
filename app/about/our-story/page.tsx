@@ -63,13 +63,13 @@ export default function AboutPage() {
     schemaData: {
       headline: 'Our Story: Mission Behind Purrify',
       description: 'The story behind Purrify cat litter additive and our mission to help cat owners create fresher, cleaner homes.',
-      image: 'https://www.purrify.ca/optimized/blog/hero.webp',/
+      image: 'https://www.purrify.ca/optimized/blog/hero.webp',
       datePublished: '2019-01-01T00:00:00Z',
       dateModified: '2025-11-13T00:00:00Z',
       category: 'About',
       keywords: ['Purrify story', 'company mission', 'cat litter innovation', 'pet care', 'environmental responsibility', 'Canadian company'],
     },
-    image: 'https://www.purrify.ca/optimized/blog/hero.webp',/
+    image: 'https://www.purrify.ca/optimized/blog/hero.webp',
     keywords: ['Purrify story', 'company mission', 'cat litter innovation', 'pet care', 'environmental responsibility', 'Canadian company'],
   });
 
@@ -77,7 +77,7 @@ export default function AboutPage() {
 
   return (
     <>
-      <link rel="canonical" href={nextSeoProps.canonical || 'https://www.purrify.ca/about/our-story/'/} />
+      <link rel="canonical" href={nextSeoProps.canonical || 'https://www.purrify.ca/about/our-story/'} />
       {allSchemas.length > 0 && (
         <script
           type="application/ld+json"

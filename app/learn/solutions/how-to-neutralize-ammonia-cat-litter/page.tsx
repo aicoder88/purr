@@ -7,20 +7,20 @@ import { stripContext } from '../../../../src/lib/seo-utils';
 
 const pageTitle = `How to Neutralize Ammonia in Cat Litter (5 Methods That Actually Work) | ${SITE_NAME}`;
 const pageDescription = 'Cat litter ammonia smell making you gag? Activated carbon neutralizes ammonia 10x better than baking soda. See the 5 proven methods ranked by effectiveness.';
-const canonicalUrl = 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/';/
-const heroImage = 'https://www.purrify.ca/optimized/blog/ammonia-hero.webp';/
+const canonicalUrl = 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/';
+const heroImage = 'https://www.purrify.ca/optimized/blog/ammonia-hero.webp';
 
 export const metadata: Metadata = {
   title: pageTitle,
   description: pageDescription,
   keywords: ['how to neutralize ammonia in cat litter', 'cat litter ammonia neutralizer', 'reduce ammonia in litter box', 'best cat litter for ammonia control', 'ammonia absorber for cat litter', 'cat urine ammonia smell'],
   alternates: {
-    canonical: 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/',/
+    canonical: 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/',
     languages: {
-      'en-CA': 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter',/
-      'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/how-to-neutralize-ammonia-cat-litter',/
-      'en-US': 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter',/
-      'x-default': 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter',/
+      'en-CA': 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter',
+      'fr-CA': 'https://www.purrify.ca/fr/learn/solutions/how-to-neutralize-ammonia-cat-litter',
+      'en-US': 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter',
+      'x-default': 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter',
     },
   },
   openGraph: {
@@ -67,7 +67,7 @@ const articleSchema = {
     name: SITE_NAME,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
+      url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
       width: 400,
       height: 400,
     },

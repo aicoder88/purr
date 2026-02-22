@@ -17,7 +17,7 @@ interface PageProps {
 
 const pageTitle = `Litter Box Stinks After Cleaning? Here's Why (And How to Fix It) | ${SITE_NAME}`;
 const pageDescription = 'Why does your litter box smell bad even after cleaning? Bacteria create ammonia within hours. Activated carbon traps odor molecules at the source—works 10x longer than baking soda.';
-const heroImage = 'https://www.purrify.ca/optimized/blog/litter-box-hero.webp';/
+const heroImage = 'https://www.purrify.ca/optimized/blog/litter-box-hero.webp';
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { locale } = await params;
@@ -67,8 +67,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    '@id': 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/',/
-    url: 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/',/
+    '@id': 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/',
+    url: 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/',
     inLanguage: 'en-CA',
     headline: pageTitle,
     description: pageDescription,
@@ -85,14 +85,14 @@ const articleSchema = {
         name: SITE_NAME,
         logo: {
             '@type': 'ImageObject',
-            url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',/
+            url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
             width: 400,
             height: 400,
         },
     },
     mainEntityOfPage: {
         '@type': 'WebPage',
-        '@id': 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/',/
+        '@id': 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/',
     },
     articleSection: 'Pet Odor Solutions',
     keywords: ['litter box odor', 'smell elimination', 'activated carbon', 'natural solutions'],

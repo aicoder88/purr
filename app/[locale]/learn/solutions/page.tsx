@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             locale: locale === 'fr' ? 'fr_CA' : 'en_CA',
             images: [
                 {
-                    url: 'https://www.purrify.ca/optimized/blog/ammonia-hero.webp',/
+                    url: 'https://www.purrify.ca/optimized/blog/ammonia-hero.webp',
                     width: 1200,
                     height: 675,
                     alt: 'Cat litter odor solutions guide',
@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             creator: '@purrifyhq',
             title,
             description,
-            images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'/],
+            images: ['https://www.purrify.ca/optimized/logos/purrify-logo.png'],
         },
         robots: {
             index: true,
@@ -82,7 +82,7 @@ const collectionPageSchema = {
     '@type': 'CollectionPage',
     name: `Cat Litter Odor Solutions - Expert Guides | ${SITE_NAME}`,
     description: 'Find the right solution for your cat litter odor problem. Expert guides for ammonia smell, apartment living, multiple cats, senior cats, and more.',
-    url: 'https://www.purrify.ca/learn/solutions/',/
+    url: 'https://www.purrify.ca/learn/solutions/',
     inLanguage: 'en-CA',
     mainEntity: {
         '@type': 'ItemList',
@@ -90,42 +90,42 @@ const collectionPageSchema = {
             {
                 '@type': 'ListItem',
                 position: 1,
-                url: 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter/',/
+                url: 'https://www.purrify.ca/learn/solutions/ammonia-smell-cat-litter/',
                 name: 'Ammonia Smell Solutions',
                 description: 'That sharp ammonia smell? Learn why bacteria convert urine to ammonia gas and how activated carbon neutralizes it at the molecular level.',
             },
             {
                 '@type': 'ListItem',
                 position: 2,
-                url: 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/',/
+                url: 'https://www.purrify.ca/learn/solutions/how-to-neutralize-ammonia-cat-litter/',
                 name: 'How to Neutralize Ammonia',
                 description: 'Step-by-step guide to neutralizing ammonia in your cat litter. Discover why baking soda fails and what actually works.',
             },
             {
                 '@type': 'ListItem',
                 position: 3,
-                url: 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/',/
+                url: 'https://www.purrify.ca/learn/solutions/apartment-cat-smell-solution/',
                 name: 'Apartment Cat Smell Solutions',
                 description: 'Living in a small space with your cat? Specialized tips for keeping apartments fresh without overwhelming scents.',
             },
             {
                 '@type': 'ListItem',
                 position: 4,
-                url: 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/',/
+                url: 'https://www.purrify.ca/learn/solutions/litter-box-smell-elimination/',
                 name: 'Litter Box Smell Elimination',
                 description: 'Complete guide to eliminating litter box odors. From daily maintenance to deep cleaning strategies.',
             },
             {
                 '@type': 'ListItem',
                 position: 5,
-                url: 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control/',/
+                url: 'https://www.purrify.ca/learn/solutions/multiple-cats-odor-control/',
                 name: 'Multiple Cats Odor Control',
                 description: 'Managing odor with multiple cats is challenging. Learn proven strategies that work for multi-cat households.',
             },
             {
                 '@type': 'ListItem',
                 position: 6,
-                url: 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/',/
+                url: 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/',
                 name: 'Natural Cat Litter Additives',
                 description: 'Looking for natural solutions? Compare natural additives and learn which ones actually work for odor control.',
             },
@@ -148,13 +148,13 @@ const breadcrumbSchema = {
             '@type': 'ListItem',
             position: 2,
             name: 'Learn',
-            item: 'https://www.purrify.ca/learn/how-it-works',/
+            item: 'https://www.purrify.ca/learn/how-it-works',
         },
         {
             '@type': 'ListItem',
             position: 3,
             name: 'Solutions',
-            item: 'https://www.purrify.ca/learn/solutions',/
+            item: 'https://www.purrify.ca/learn/solutions',
         },
     ],
 };
