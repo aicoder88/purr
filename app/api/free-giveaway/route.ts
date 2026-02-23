@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { verifyOrigin } from '@/lib/security/origin-check';
 
 // Define validation schema with Zod
 const freeGiveawayFormSchema = z.object({
@@ -21,6 +22,17 @@ export async function POST(req: Request): Promise<Response> {
 
   const rateLimitResult = await checkRateLimit(clientIp, 'sensitive');
 
+  const securityHeaders = {
+    'X-Content-Type-Options': 'nosniff',
+    'X-Frame-Options': 'DENY',
+    'Content-Security-Policy': "default-src 'self'",
+  };
+
+  // Verify request origin
+  if (!verifyOrigin(req)) {
+    return Response.json({ success: false, message: 'Forbidden' }, { status: 403, headers: securityHeaders });
+  }
+
   if (!rateLimitResult.success) {
     return Response.json({
       success: false,
@@ -28,9 +40,7 @@ export async function POST(req: Request): Promise<Response> {
     }, {
       status: 429,
       headers: {
-        'X-Content-Type-Options': 'nosniff',
-        'X-Frame-Options': 'DENY',
-        'Content-Security-Policy': "default-src 'self'",
+        ...securityHeaders,
         'Retry-After': rateLimitResult.retryAfter?.toString() || '60',
         'X-RateLimit-Limit': rateLimitResult.limit.toString(),
         'X-RateLimit-Remaining': rateLimitResult.remaining.toString(),

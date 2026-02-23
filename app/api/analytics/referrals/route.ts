@@ -1,13 +1,5 @@
 // TODO: Replace this mock analytics endpoint with real Prisma database queries and derived metrics.
-type GtagFunction = (command: 'event' | 'config', action: string, params?: Record<string, unknown>) => void;
-
-const getGtag = (): GtagFunction | undefined => {
-  if (typeof global === 'undefined') {
-    return undefined;
-  }
-  const maybeGtag = (global as typeof globalThis & { gtag?: unknown }).gtag;
-  return typeof maybeGtag === 'function' ? (maybeGtag as GtagFunction) : undefined;
-};
+import { requireAuth } from '@/lib/auth/session';
 
 // Analytics data interfaces
 interface ReferralAnalytics {
@@ -212,6 +204,12 @@ const getMockAnalytics = (): ReferralAnalytics => {
 };
 
 export async function GET(req: Request): Promise<Response> {
+  // Auth check — admin only
+  const { authorized } = await requireAuth();
+  if (!authorized) {
+    return Response.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   const { searchParams } = new URL(req.url);
   const timeframe = searchParams.get('timeframe') || '30d';
   const metric = searchParams.get('metric');
@@ -234,16 +232,6 @@ export async function GET(req: Request): Promise<Response> {
       if (metricValue !== null) {
         return Response.json({ metric, value: metricValue, timeframe });
       }
-    }
-
-    // Track analytics dashboard access
-    const gtag = getGtag();
-    if (gtag) {
-      gtag('event', 'referral_analytics_view', {
-        event_category: 'analytics',
-        event_label: 'dashboard_access',
-        custom_parameter_1: timeframe
-      });
     }
 
     return Response.json({
@@ -276,5 +264,3 @@ function getMetricValue(data: ReferralAnalytics, metric: string): number | null 
 
   return metricMap[metric] || null;
 }
-
-

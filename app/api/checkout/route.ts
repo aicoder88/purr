@@ -21,6 +21,7 @@ const createCheckoutSchema = z.object({
   orderId: z.string().uuid('Invalid order ID format'),
   checkoutToken: z.string().min(1, 'Checkout token is required'),
   currency: z.enum(['CAD', 'USD'], { message: 'Currency must be CAD or USD' }),
+  locale: z.enum(['en', 'fr']).default('en'),
   customer: z.object({
     email: z.string().email('Invalid email format').max(254, 'Email too long'),
     name: z.string().min(1, 'Name is required').max(100, 'Name too long').optional(),
@@ -63,7 +64,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { orderId, checkoutToken, currency, customer } = validationResult.data;
+    const { orderId, checkoutToken, currency, locale, customer } = validationResult.data;
 
     // Verify checkout token for ownership
     if (!verifyCheckoutToken(orderId, checkoutToken)) {
@@ -132,6 +133,7 @@ export async function POST(request: NextRequest) {
       metadata: {
         orderId: order.id,
         customerName: customer.name || '',
+        locale,
       },
     });
 

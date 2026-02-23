@@ -12,11 +12,20 @@ import {
   generateShareUrls,
   REFERRAL_CONFIG,
 } from '@/lib/referral';
+import { verifyOrigin } from '@/lib/security/origin-check';
 
 // Rate limiting setup
 import { checkRateLimit } from '@/lib/rate-limit';
 
 export async function POST(req: Request): Promise<Response> {
+  // Verify request origin before exposing rate limit information
+  if (!verifyOrigin(req)) {
+    return Response.json({
+      success: false,
+      error: 'Forbidden',
+    }, { status: 403 });
+  }
+
   // Get client IP for rate limiting
   const forwardedFor = req.headers.get('x-forwarded-for');
   const clientIp = forwardedFor?.split(',')[0] || 'unknown';
@@ -39,20 +48,11 @@ export async function POST(req: Request): Promise<Response> {
 
   headers.set('X-RateLimit-Remaining', remaining.toString());
 
-  // CSRF protection - check origin for state-changing operations
-  const origin = req.headers.get('origin') || req.headers.get('referer');
-  const allowedOrigins = [
-    process.env.NEXT_PUBLIC_SITE_URL || 'https://purrify.ca',
-    'https://purrify.ca',
-    'https://www.purrify.ca/',
-    'http://localhost:3000',
-    'http://localhost:3001'
-  ];
-
-  if (!origin || !allowedOrigins.some(allowed => origin.startsWith(allowed))) {
+  // Verify request origin
+  if (!verifyOrigin(req)) {
     return Response.json({
       success: false,
-      error: 'Invalid origin',
+      error: 'Forbidden',
     }, { status: 403, headers });
   }
 

@@ -1,15 +1,5 @@
 import { auth } from '@/auth';
 
-type GtagFunction = (command: 'event' | 'config', action: string, params?: Record<string, unknown>) => void;
-
-const getGtag = (): GtagFunction | undefined => {
-  if (typeof global === 'undefined') {
-    return undefined;
-  }
-  const maybeGtag = (global as typeof globalThis & { gtag?: unknown }).gtag;
-  return typeof maybeGtag === 'function' ? (maybeGtag as GtagFunction) : undefined;
-};
-
 interface ReferralStats {
   userId: string;
   referralCode: string;
@@ -238,24 +228,10 @@ export async function GET(
       }, { status: 403, headers });
     }
 
-    // In production, this would be database queries
-    // const referralStats = await getReferralStatsFromDB(userId);
-    const referralStats = getMockReferralStats(userId);
-
-    // Track dashboard view (only if authenticated and authorized)
-    const gtag = getGtag();
-    if (gtag) {
-      gtag('event', 'referral_dashboard_view', {
-        event_category: 'referrals',
-        event_label: 'dashboard_access',
-        custom_parameter_1: userId
-      });
-    }
-
     return Response.json({
-      success: true,
-      data: referralStats
-    }, { headers });
+      success: false,
+      error: 'Referral dashboard is not yet available'
+    }, { status: 501, headers });
 
   } catch {
     return Response.json({

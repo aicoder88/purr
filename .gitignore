@@ -82,6 +82,9 @@ src/generated/
 # Python Virtual Environments
 .venv-rembg/
 
+# Data exports (never commit raw analytics exports)
+*.csv
+
 # Temp files
 missing_refs.txt
 optimized_files.txt

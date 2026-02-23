@@ -105,6 +105,7 @@ export async function GET(req: Request) {
       recentOrders,
       totalRevenue,
       recentRevenue,
+      lastMonthRevenue,
       recentLeads,
       recentRetailerActivity,
       recentOrderActivity
@@ -187,6 +188,15 @@ export async function GET(req: Request) {
         _sum: { totalAmount: true },
         where: {
           createdAt: { gte: startOfMonth },
+          status: { in: [OrderStatus.PAID, OrderStatus.SHIPPED, OrderStatus.DELIVERED] }
+        }
+      }),
+
+      // Last month's revenue (for growth calculation)
+      db.order.aggregate({
+        _sum: { totalAmount: true },
+        where: {
+          createdAt: { gte: startOfLastMonth, lte: endOfLastMonth },
           status: { in: [OrderStatus.PAID, OrderStatus.SHIPPED, OrderStatus.DELIVERED] }
         }
       }),
@@ -279,8 +289,12 @@ export async function GET(req: Request) {
       new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
     );
 
-    // Calculate revenue growth (placeholder - would need last month's data)
-    const revenueGrowth = 0; // TODO: Calculate properly
+    // Calculate revenue growth vs last month
+    const thisMonthRev = recentRevenue._sum.totalAmount || 0;
+    const lastMonthRev = lastMonthRevenue._sum.totalAmount || 0;
+    const revenueGrowth = lastMonthRev > 0
+      ? Math.round(((thisMonthRev - lastMonthRev) / lastMonthRev) * 100)
+      : thisMonthRev > 0 ? 100 : 0;
 
     const stats: OpsStats = {
       totalLeads,

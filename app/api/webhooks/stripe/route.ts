@@ -304,6 +304,7 @@ export async function POST(req: NextRequest): Promise<Response> {
         // Extract customer details for email
         const customerEmail = session.customer_details?.email || session.customer_email;
         const customerName = session.customer_details?.name || undefined;
+        const locale = (session.metadata?.locale as 'en' | 'fr') || 'en';
 
         // Generate order number: use orderId if available, otherwise use session ID
         const orderNumber = orderId || session.id.slice(-12).toUpperCase();
@@ -337,7 +338,7 @@ export async function POST(req: NextRequest): Promise<Response> {
               productName,
               quantity,
               amount,
-              locale: 'en'
+              locale
             });
 
             if (!emailResult.success) {
@@ -435,7 +436,7 @@ export async function POST(req: NextRequest): Promise<Response> {
               productName,
               quantity,
               amount,
-              locale: 'en'
+              locale
             });
 
             if (!emailResult.success) {
@@ -520,7 +521,7 @@ export async function POST(req: NextRequest): Promise<Response> {
             productName,
             quantity,
             amount,
-            locale: 'en' // TODO: Get from session metadata or customer preference
+            locale
           });
 
           if (!emailResult.success) {

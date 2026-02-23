@@ -1,5 +1,6 @@
 import prisma from '@/lib/prisma';
 import { getProductPrice } from '@/lib/pricing';
+import { verifyOrigin } from '@/lib/security/origin-check';
 import {
   REFERRAL_MAX_CREDITS_PER_USER,
   REFERRAL_CREDIT_AMOUNT,
@@ -50,7 +51,18 @@ const MAX_MILESTONE_REWARDS_PER_USER = 5;
 const REWARD_EXPIRY_DAYS = 90;
 const MILESTONE_EXPIRY_DAYS = 180;
 
+const SECURITY_HEADERS = {
+  'X-Content-Type-Options': 'nosniff',
+  'X-Frame-Options': 'DENY',
+  'Content-Security-Policy': "default-src 'self'",
+};
+
 export async function POST(req: Request): Promise<Response> {
+  // Verify request origin
+  if (!verifyOrigin(req)) {
+    return Response.json({ success: false, error: 'Forbidden' } satisfies TrackingResponse, { status: 403, headers: SECURITY_HEADERS });
+  }
+
   try {
     const body = (await req.json()) as TrackReferralRequestBody;
     const {

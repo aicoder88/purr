@@ -4,6 +4,7 @@ import { Resend } from 'resend';
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
 import { createContactTicket, isZendeskConfigured } from '@/lib/zendesk';
 import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
+import { verifyOrigin } from '@/lib/security/origin-check';
 
 /**
  * Sanitize string to prevent email header injection attacks
@@ -188,6 +189,11 @@ export async function POST(request: NextRequest) {
   headers.set('X-Content-Type-Options', 'nosniff');
   headers.set('X-Frame-Options', 'DENY');
   headers.set('Content-Security-Policy', "default-src 'self'");
+
+  // Verify request origin
+  if (!verifyOrigin(request)) {
+    return NextResponse.json({ success: false, message: 'Forbidden' }, { status: 403, headers });
+  }
 
   // Add rate limit headers
   Object.entries(rateLimitHeaders).forEach(([key, value]) => {

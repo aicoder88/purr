@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { Resend } from 'resend';
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
+import { verifyOrigin } from '@/lib/security/origin-check';
 
 
 // Define validation schema for retailer contact form
@@ -59,6 +60,11 @@ export async function POST(request: NextRequest) {
   headers.set('X-Content-Type-Options', 'nosniff');
   headers.set('X-Frame-Options', 'DENY');
   headers.set('Content-Security-Policy', "default-src 'self'");
+
+  // Verify request origin
+  if (!verifyOrigin(request)) {
+    return NextResponse.json({ success: false, message: 'Forbidden' }, { status: 403, headers });
+  }
 
   try {
     // Apply rate limiting

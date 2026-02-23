@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { isZendeskConfigured, createB2BTicket } from '@/lib/zendesk';
+import { verifyOrigin } from '@/lib/security/origin-check';
 
 // Define validation schema for B2B contact form
 const b2bContactSchema = z.object({
@@ -22,6 +23,11 @@ export async function POST(request: NextRequest) {
   const headers = new Headers();
   headers.set('X-Content-Type-Options', 'nosniff');
   headers.set('X-Frame-Options', 'DENY');
+
+  // Verify request origin
+  if (!verifyOrigin(request)) {
+    return NextResponse.json({ success: false, message: 'Forbidden' }, { status: 403, headers });
+  }
 
   // Apply rate limiting
   const clientIp = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
