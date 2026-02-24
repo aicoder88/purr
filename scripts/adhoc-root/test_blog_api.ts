@@ -8,7 +8,7 @@ async function runBlogApiTest() {
       console.log('API Error:', response.status);
     }
   } catch (err) {
-    console.log('Fetch failed (server probably not running):', err.message);
+    console.log('Fetch failed (server probably not running):', err instanceof Error ? err.message : err);
   }
 }
 
