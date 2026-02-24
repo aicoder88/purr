@@ -1,4 +1,4 @@
-async function test() {
+async function runBlogApiTest() {
   try {
     const response = await fetch('http://localhost:3000/api/blog-posts?limit=2');
     if (response.ok) {
@@ -12,4 +12,4 @@ async function test() {
   }
 }
 
-test();
+runBlogApiTest();
