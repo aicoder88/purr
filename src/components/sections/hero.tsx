@@ -14,7 +14,7 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-center">
           <HeroContent t={t} locale={locale} />
           <div className="relative h-full flex items-center justify-center lg:justify-end">
-            <HeroVideo playLabel={t.hero.ariaLabels.playVideo} />
+            <HeroVideo playLabel={t.hero.ariaLabels.playVideo} posterAlt={t.hero.ariaLabels.posterAlt} />
           </div>
         </div>
       </Container>

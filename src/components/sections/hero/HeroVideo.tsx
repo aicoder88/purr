@@ -4,9 +4,10 @@ import { useCallback, useRef, useState } from "react";
 
 interface HeroVideoProps {
   playLabel: string;
+  posterAlt: string;
 }
 
-export const HeroVideo = ({ playLabel }: HeroVideoProps) => {
+export const HeroVideo = ({ playLabel, posterAlt }: HeroVideoProps) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isVideoActive, setIsVideoActive] = useState(false);
 
@@ -47,7 +48,7 @@ export const HeroVideo = ({ playLabel }: HeroVideoProps) => {
               <source srcSet={posterSrc} type="image/webp" />
               <img
                 src={posterSrc}
-                alt=""
+                alt={posterAlt}
                 width={406}
                 height={720}
                 fetchPriority="high"

@@ -214,7 +214,8 @@ export const fr = {
     ariaLabels: {
       shopNow: "Acheter les produits Purrify maintenant",
       reviews: "Lire les avis clients",
-      playVideo: "Lire la vidéo de démonstration montrant Purrify éliminant les odeurs de litière pour chat"
+      playVideo: "Lire la vidéo de démonstration montrant Purrify éliminant les odeurs de litière pour chat",
+      posterAlt: "Démo du désodorisant Purrify au charbon actif — appuyez pour voir comment il élimine les odeurs"
     },
     dualPath: {
       consumer: {

@@ -785,32 +785,32 @@ const REDIRECTS = [
   {
     source: "/login",
     destination: "/admin/login/",
-    permanent: false
+    permanent: true
   },
   {
     source: "/signin",
     destination: "/admin/login/",
-    permanent: false
+    permanent: true
   },
   {
     source: "/auth/signin",
     destination: "/admin/login/",
-    permanent: false
+    permanent: true
   },
   {
     source: "/sign-out",
     destination: "/",
-    permanent: false
+    permanent: true
   },
   {
     source: "/logout",
     destination: "/",
-    permanent: false
+    permanent: true
   },
   {
     source: "/affiliate/forgot-password",
     destination: "/affiliate/",
-    permanent: false
+    permanent: true
   },
 
   // --- SUPPORT/CONTACT REDIRECTS ---

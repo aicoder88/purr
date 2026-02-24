@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
 import PageContent from '@/app/products/PageContent';
 import { locales, isValidLocale } from '@/i18n/config';
+import { buildLanguageAlternates, getLocalizedUrl } from '@/lib/seo-utils';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -34,9 +35,7 @@ export async function generateMetadata({ params }: LocalizedProductsPageProps): 
     return { title: 'Not Found' };
   }
 
-  const localizedPath = locale === 'en'
-    ? 'https://www.purrify.ca/products/'
-    : `https://www.purrify.ca/${locale}/products/`;
+  const localizedPath = getLocalizedUrl('/products/', locale);
   const isFrench = locale === 'fr';
   const title = isFrench
     ? 'Produits Purrify - Additif de litiere au charbon actif'
@@ -75,12 +74,9 @@ export async function generateMetadata({ params }: LocalizedProductsPageProps): 
     },
     alternates: {
       canonical: localizedPath,
-      languages: {
-        'en-CA': 'https://www.purrify.ca/products/',
-        'fr-CA': 'https://www.purrify.ca/fr/products/',
-        'en-US': 'https://www.purrify.ca/products/',
-        'x-default': 'https://www.purrify.ca/products/',
-      },
+      languages: Object.fromEntries(
+        buildLanguageAlternates('/products/').map((alt) => [alt.hrefLang, alt.href])
+      ),
     },
     robots: {
       index: true,

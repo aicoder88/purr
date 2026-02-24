@@ -391,13 +391,7 @@ module.exports = {
       lastmod: new Date().toISOString(),
     },
     
-    // Referral
-    {
-      loc: '/referral/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
+    // Referral (noindex - excluded from sitemap)
     // Fun/Tools
     {
       loc: '/fun/',
@@ -471,13 +465,7 @@ module.exports = {
       lastmod: new Date().toISOString(),
     },
     
-    // Invest
-    {
-      loc: '/invest/',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
+    // Invest (noindex - excluded from sitemap)
     
     // Viral
     {

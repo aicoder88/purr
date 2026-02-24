@@ -125,6 +125,7 @@ export interface TranslationType {
       shopNow: string;
       reviews: string;
       playVideo: string;
+      posterAlt: string;
     };
     dualPath?: {
       consumer: {

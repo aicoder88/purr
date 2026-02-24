@@ -6,7 +6,7 @@ type Message = {
   content: string;
 };
 
-const DEFAULT_ANTHROPIC_MODEL = process.env.BLOG_ANTHROPIC_MODEL ?? 'claude-3-5-sonnet-20241022';
+const DEFAULT_ANTHROPIC_MODEL = process.env.BLOG_ANTHROPIC_MODEL ?? 'claude-sonnet-4-6';
 const DEFAULT_OPENAI_MODEL = process.env.BLOG_OPENAI_MODEL ?? 'gpt-4.1-mini';
 
 type AiProvider = 'anthropic' | 'openai';

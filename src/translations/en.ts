@@ -215,7 +215,8 @@ export const en = {
     ariaLabels: {
       shopNow: "Try Purrify free with just shipping cost",
       reviews: "Read customer reviews from cat parents",
-      playVideo: "Play demonstration video showing Purrify eliminating cat litter odors"
+      playVideo: "Play demonstration video showing Purrify eliminating cat litter odors",
+      posterAlt: "Purrify activated carbon cat litter deodorizer demo — tap to watch how it eliminates odors"
     },
     dualPath: {
       consumer: {

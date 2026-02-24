@@ -119,8 +119,8 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      site: '@purrify',
-      creator: '@purrify',
+      site: '@purrifyhq',
+      creator: '@purrifyhq',
       title: `${SITE_NAME} - Cat Litter Odor Control`,
       description: SITE_DESCRIPTION,
       images: ['/optimized/logos/purrify-logo.png'],

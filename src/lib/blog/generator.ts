@@ -1,10 +1,12 @@
 import { z } from 'zod';
 import prisma from '../prisma';
 import { callAi } from './ai-client';
+import { ContentStore } from './content-store';
 import { loadGuidelines } from './guidelines';
 import { getNextTopic } from './topic-queue';
 import { buildBlogPrompt } from './prompt-builder';
 import { selectImages } from './image-selection';
+import type { BlogPost } from '@/types/blog';
 import { BlogTopic } from './types';
 
 const GeneratedBlogSchema = z.object({
@@ -142,6 +144,52 @@ export async function generateAutomatedBlogPost() {
         keywords: image.keywords,
       })),
     });
+  }
+
+  // Write to filesystem so the blog API (which reads filesystem first) serves the post immediately.
+  const now = new Date().toISOString();
+  const authorName =
+    topic.locale === 'fr'
+      ? 'Laboratoire de recherche Purrify'
+      : 'Purrify Research Lab';
+
+  const filesystemPost: BlogPost = {
+    id: createdPost.id,
+    slug,
+    title: parsedPayload.title,
+    excerpt: parsedPayload.excerpt,
+    content: parsedPayload.contentHtml,
+    author: {
+      name: authorName,
+      avatar: '/optimized/team/team-avatar.png',
+    },
+    publishDate: now.split('T')[0],
+    modifiedDate: now,
+    status: 'published',
+    featuredImage: {
+      url: heroImage.url,
+      alt: heroImage.alt,
+      width: 1200,
+      height: 675,
+    },
+    categories: ['Science & Education'],
+    tags: parsedPayload.keywords.slice(0, 5),
+    locale: topic.locale,
+    translations: {},
+    seo: {
+      title: `${parsedPayload.title} | Purrify`,
+      description: parsedPayload.metaDescription,
+      keywords: parsedPayload.keywords,
+      ogImage: heroImage.url,
+    },
+    readingTime: Math.max(1, Math.round(countWords(parsedPayload.contentHtml) / 200)),
+    faq: parsedPayload.faq,
+  };
+
+  const store = new ContentStore();
+  const saveResult = await store.savePost(filesystemPost, { skipValidation: true });
+  if (!saveResult.success) {
+    console.warn('[auto-blog] Filesystem write failed — post exists in DB only:', saveResult.validation.errors);
   }
 
   return {
