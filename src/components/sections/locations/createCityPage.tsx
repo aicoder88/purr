@@ -6,7 +6,6 @@ import dynamic from 'next/dynamic';
 import { useEffect, useMemo, useState } from 'react';
 import { ChevronRight, Home } from 'lucide-react';
 
-import { LocationSchema } from '@/components/seo/json-ld-schema';
 import { getCityBySlug } from '@/data/locations';
 import { useTranslations, useLocale } from 'next-intl';
 import { safeTrackEvent } from '@/lib/analytics';
@@ -296,7 +295,6 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
 
   const seasonalTip = climateInsights[0] ?? 'changing seasons';
   const painPoint = scentPainPoints[0] ?? 'constant litter box odors';
-  const schemaLocale = locale === 'fr' ? locale : 'en';
 
   const provinceWidePills = locale === 'fr'
     ? {
@@ -345,77 +343,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
   }
 
   return (
-    <>
-
-      <LocationSchema
-        cityName={profile.name}
-        province={provinceName}
-        locale={schemaLocale}
-      />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@graph': [
-              {
-                '@type': 'Product',
-                '@id': `https://www.purrify.ca/products/#city-${profile.slug}`,
-                url: 'https://www.purrify.ca/products/',
-                name: `Purrify Cat Litter Odor Eliminator - ${profile.name}`,
-                image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
-                brand: {
-                  '@type': 'Brand',
-                  name: 'Purrify',
-                },
-                offers: {
-                  '@type': 'Offer',
-                  price: '29.99',
-                  priceCurrency: 'CAD',
-                  url: 'https://www.purrify.ca/products/',
-                  availability: 'https://schema.org/InStock',
-                  areaServed: {
-                    '@type': 'AdministrativeArea',
-                    name: `${profile.name}, ${provinceName}`,
-                  },
-                },
-              },
-              // LocalBusiness schema for local SEO
-              {
-                '@type': 'LocalBusiness',
-                name: `Purrify - ${profile.name}`,
-                description: `Cat litter deodorizer for ${profile.name}, ${provinceName} pet owners. Activated carbon eliminates ammonia odors naturally.`,
-                url: `https://www.purrify.ca/locations/${profile.slug}/`,
-                areaServed: {
-                  '@type': 'AdministrativeArea',
-                  name: `${profile.name}, ${provinceName}`,
-                },
-                address: {
-                  '@type': 'PostalAddress',
-                  addressLocality: profile.name,
-                  addressRegion: provinceName,
-                  addressCountry: 'CA',
-                },
-                makesOffer: {
-                  '@type': 'Offer',
-                  priceCurrency: 'CAD',
-                  itemOffered: {
-                    '@type': 'Product',
-                    name: 'Purrify Cat Litter Deodorizer',
-                    description: 'Activated carbon cat litter deodorizer that eliminates ammonia smell naturally.',
-                  },
-                },
-                priceRange: '$$',
-              },
-              // Breadcrumb schema from hook
-              ...(breadcrumb ? [breadcrumb.schema] : []),
-            ],
-          }),
-        }}
-      />
-
-      <div className={`min-h-screen ${GRADIENTS.pageBackground}`}>
+    <div className={`min-h-screen ${GRADIENTS.pageBackground}`}>
         {/* Visual Breadcrumb Navigation */}
         {breadcrumb && breadcrumb.items.length > 1 && (
           <nav
@@ -688,8 +616,7 @@ export const CityPageTemplate = ({ citySlug, initialProfile }: CityPageTemplateP
           cityName={profile.name}
           provinceName={provinceName}
         />
-      </div>
-    </>
+    </div>
   );
 };
 

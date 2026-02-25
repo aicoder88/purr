@@ -647,7 +647,7 @@ export const generateLocalBusinessSchema = (cityName: string, province: string, 
 
   return {
     '@context': 'https://schema.org',
-    '@type': ['Organization', 'LocalBusiness'],
+    '@type': 'LocalBusiness',
     '@id': `https://www.purrify.ca/#organization-${cityName.toLowerCase()}`,
     name: `${SITE_NAME} - ${cityName}`,
     description: getLocalizedContent(SEO_TRANSLATIONS.organizationDescription, locale),
@@ -921,7 +921,26 @@ export const generateLocationPageSchema = (cityName: string, province: string, l
     '@context': 'https://schema.org',
     '@graph': [
       // Local Business Schema
-      generateLocalBusinessSchema(cityName, province, locale, currency),
+      stripContext(generateLocalBusinessSchema(cityName, province, locale, currency)),
+
+      // Product Schema
+      {
+        '@type': 'Product',
+        '@id': `https://www.purrify.ca/products/#city-${cityName.toLowerCase()}`,
+        url: 'https://www.purrify.ca/products/',
+        name: `Purrify Cat Litter Odor Eliminator - ${cityName}`,
+        description: 'Activated carbon cat litter deodorizer that eliminates ammonia smell naturally.',
+        image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
+        brand: { '@type': 'Brand', name: 'Purrify' },
+        offers: {
+          '@type': 'Offer',
+          price: getProductPrice(PRODUCTS[0].id, currency as Currency).toFixed(2),
+          priceCurrency: currency,
+          url: 'https://www.purrify.ca/products/',
+          availability: 'https://schema.org/InStock',
+          areaServed: { '@type': 'AdministrativeArea', name: `${cityName}, ${province}` },
+        },
+      },
 
       // Service Area Schema
       {
@@ -941,7 +960,7 @@ export const generateLocationPageSchema = (cityName: string, province: string, l
       },
 
       // Breadcrumb Schema
-      generateBreadcrumbSchema(`/locations/${cityName.toLowerCase()}`, locale)
+      stripContext(generateBreadcrumbSchema(`/locations/${cityName.toLowerCase()}`, locale))
     ]
   };
 };
