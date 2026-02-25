@@ -81,7 +81,7 @@ function checkRateLimit(ip: string): { allowed: boolean; remaining: number } {
 }
 
 // Mock data - replace with database queries
-const getMockReferralStats = (userId: string): ReferralStats => {
+const _getMockReferralStats = (userId: string): ReferralStats => {
   return {
     userId,
     referralCode: 'SARAH15-CAT',

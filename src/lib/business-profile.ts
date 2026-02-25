@@ -219,6 +219,7 @@ export const getLocalBusinessStructuredData = (location?: BusinessLocation) => {
     url: loc.website,
     telephone: getPhoneNumberInternational(),
     email: loc.email,
+    image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
     address: {
       '@type': 'PostalAddress',
       streetAddress: loc.address.streetAddress,

@@ -88,22 +88,6 @@ const articleSchema = {
   keywords: ['activated carbon safety', 'pet-safe deodorizer', 'food grade carbon', 'NSF certified', 'technical specifications'],
 };
 
-// Product schema for the activated carbon
-const productSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Product',
-  '@id': 'https://www.purrify.ca/products/#activated-carbon',
-  url: 'https://www.purrify.ca/products/',
-  name: `${SITE_NAME} Activated Carbon`,
-  description: 'Premium granular activated carbon produced from sustainable coconut shell with highly microporous structure. NSF/ANSI 61, AWWA B604, Food Chemicals Codex (FCC), Halal & Kosher certified.',
-  image: 'https://www.purrify.ca/optimized/products/activated-carbon-granules.webp',
-  brand: {
-    '@type': 'Brand',
-    name: SITE_NAME,
-  },
-  material: 'Coconut Shell Activated Carbon',
-};
-
 // Client component for the interactive parts
 import SafetyPageClient from './SafetyPageClient';
 
@@ -113,10 +97,6 @@ export default function SafetyPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
       />
       <SafetyPageClient />
     </>

@@ -2,7 +2,7 @@
 
 ## Overview
 
-**Goal**: Eliminate all hardcoded English text from user-facing pages and ensure full translation support for French (fr), Chinese (zh), and Spanish (es).
+**Goal**: Eliminate all hardcoded English text from user-facing pages and ensure full translation support for French (fr)
 
 **Current State**: 58% of pages properly use translations, 14.6% have hardcoded text issues.
 
