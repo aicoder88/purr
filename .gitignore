@@ -94,3 +94,8 @@ TASK_14_COMPLETION.md
 
 # Local-only: previous submodule that should not be tracked/deployed
 /purrify-retail-training/
+
+# MCP Configs
+.mcp.json
+.cursor/mcp.json
+
