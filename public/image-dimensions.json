@@ -15522,5 +15522,31 @@
       ]
     },
     "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "original-images/comparison.png": {
+    "width": 1536,
+    "height": 1024,
+    "aspectRatio": 1.5,
+    "formats": {
+      "avif": [
+        "optimized/comparison-640w.avif",
+        "optimized/comparison-828w.avif",
+        "optimized/comparison-1080w.avif",
+        "optimized/comparison-1200w.avif"
+      ],
+      "webp": [
+        "optimized/comparison-640w.webp",
+        "optimized/comparison-828w.webp",
+        "optimized/comparison-1080w.webp",
+        "optimized/comparison-1200w.webp"
+      ],
+      "jpg": [
+        "optimized/comparison-640w.jpg",
+        "optimized/comparison-828w.jpg",
+        "optimized/comparison-1080w.jpg",
+        "optimized/comparison-1200w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
   }
 }

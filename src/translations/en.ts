@@ -81,6 +81,14 @@ export const en = {
     cta: "Join the \"Free us from stink\" waitlist!"
   },
 
+  waitlist: {
+    placeholder: "Enter your email",
+    buttonText: "Join Waitlist",
+    loading: "Joining...",
+    success: "Thanks for joining!",
+    errorGeneric: "Something went wrong."
+  },
+
   locationsMenu: {
     selectProvince: "Select a Province",
     hoverPrompt: "Hover a province to view cities.",
