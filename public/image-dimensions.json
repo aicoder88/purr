@@ -978,46 +978,6 @@
     },
     "sizes": "(max-width: 640px) 100vw, 50vw"
   },
-  "original-images/blog/Carbon-sktech.avif": {
-    "width": 1024,
-    "height": 1024,
-    "aspectRatio": 1,
-    "formats": {
-      "avif": [
-        "optimized/blog/Carbon-sktech-640w.avif",
-        "optimized/blog/Carbon-sktech-828w.avif"
-      ],
-      "webp": [
-        "optimized/blog/Carbon-sktech-640w.webp",
-        "optimized/blog/Carbon-sktech-828w.webp"
-      ],
-      "jpg": [
-        "optimized/blog/Carbon-sktech-640w.jpg",
-        "optimized/blog/Carbon-sktech-828w.jpg"
-      ]
-    },
-    "sizes": "(max-width: 640px) 100vw, 50vw"
-  },
-  "original-images/blog/Carbon-sktech.webp": {
-    "width": 1024,
-    "height": 1024,
-    "aspectRatio": 1,
-    "formats": {
-      "avif": [
-        "optimized/blog/Carbon-sktech-640w.avif",
-        "optimized/blog/Carbon-sktech-828w.avif"
-      ],
-      "webp": [
-        "optimized/blog/Carbon-sktech-640w.webp",
-        "optimized/blog/Carbon-sktech-828w.webp"
-      ],
-      "jpg": [
-        "optimized/blog/Carbon-sktech-640w.jpg",
-        "optimized/blog/Carbon-sktech-828w.jpg"
-      ]
-    },
-    "sizes": "(max-width: 640px) 100vw, 50vw"
-  },
   "original-images/blog/carbon-trapping-diagram-ghibli.webp": {
     "width": 800,
     "height": 800,
@@ -7641,58 +7601,6 @@
     },
     "sizes": "(max-width: 640px) 100vw, 50vw"
   },
-  "original-images/marketing/catcoco.avif": {
-    "width": 1200,
-    "height": 800,
-    "aspectRatio": 1.5,
-    "formats": {
-      "avif": [
-        "optimized/marketing/catcoco-640w.avif",
-        "optimized/marketing/catcoco-828w.avif",
-        "optimized/marketing/catcoco-1080w.avif",
-        "optimized/marketing/catcoco-1200w.avif"
-      ],
-      "webp": [
-        "optimized/marketing/catcoco-640w.webp",
-        "optimized/marketing/catcoco-828w.webp",
-        "optimized/marketing/catcoco-1080w.webp",
-        "optimized/marketing/catcoco-1200w.webp"
-      ],
-      "jpg": [
-        "optimized/marketing/catcoco-640w.jpg",
-        "optimized/marketing/catcoco-828w.jpg",
-        "optimized/marketing/catcoco-1080w.jpg",
-        "optimized/marketing/catcoco-1200w.jpg"
-      ]
-    },
-    "sizes": "(max-width: 640px) 100vw, 50vw"
-  },
-  "original-images/marketing/catcoco.webp": {
-    "width": 1200,
-    "height": 800,
-    "aspectRatio": 1.5,
-    "formats": {
-      "avif": [
-        "optimized/marketing/catcoco-640w.avif",
-        "optimized/marketing/catcoco-828w.avif",
-        "optimized/marketing/catcoco-1080w.avif",
-        "optimized/marketing/catcoco-1200w.avif"
-      ],
-      "webp": [
-        "optimized/marketing/catcoco-640w.webp",
-        "optimized/marketing/catcoco-828w.webp",
-        "optimized/marketing/catcoco-1080w.webp",
-        "optimized/marketing/catcoco-1200w.webp"
-      ],
-      "jpg": [
-        "optimized/marketing/catcoco-640w.jpg",
-        "optimized/marketing/catcoco-828w.jpg",
-        "optimized/marketing/catcoco-1080w.jpg",
-        "optimized/marketing/catcoco-1200w.jpg"
-      ]
-    },
-    "sizes": "(max-width: 640px) 100vw, 50vw"
-  },
   "original-images/marketing/catonbed-1080w.webp": {
     "width": 1080,
     "height": 720,
@@ -7737,27 +7645,30 @@
     "sizes": "(max-width: 640px) 100vw, 50vw"
   },
   "original-images/marketing/catonbed.avif": {
-    "width": 1086,
-    "height": 724,
+    "width": 1536,
+    "height": 1024,
     "aspectRatio": 1.5,
     "formats": {
       "avif": [
         "optimized/marketing/catonbed-640w.avif",
         "optimized/marketing/catonbed-828w.avif",
-        "optimized/marketing/catonbed-1080w.avif"
+        "optimized/marketing/catonbed-1080w.avif",
+        "optimized/marketing/catonbed-1200w.avif"
       ],
       "webp": [
         "optimized/marketing/catonbed-640w.webp",
         "optimized/marketing/catonbed-828w.webp",
-        "optimized/marketing/catonbed-1080w.webp"
+        "optimized/marketing/catonbed-1080w.webp",
+        "optimized/marketing/catonbed-1200w.webp"
       ],
       "jpg": [
         "optimized/marketing/catonbed-640w.jpg",
         "optimized/marketing/catonbed-828w.jpg",
-        "optimized/marketing/catonbed-1080w.jpg"
+        "optimized/marketing/catonbed-1080w.jpg",
+        "optimized/marketing/catonbed-1200w.jpg"
       ]
     },
-    "sizes": "(max-width: 640px) 100vw, 50vw"
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
   },
   "original-images/marketing/catonbed.webp": {
     "width": 1086,
@@ -15363,22 +15274,251 @@
     },
     "sizes": "100vw"
   },
-  "original-images/holdnose.png": {
+  "original-images/lady holdnose.png": {
     "width": 1024,
     "height": 1536,
     "aspectRatio": 0.6666666666666666,
     "formats": {
       "avif": [
-        "optimized/holdnose-640w.avif",
-        "optimized/holdnose-828w.avif"
+        "optimized/lady-holdnose-640w.avif",
+        "optimized/lady-holdnose-828w.avif"
       ],
       "webp": [
-        "optimized/holdnose-640w.webp",
-        "optimized/holdnose-828w.webp"
+        "optimized/lady-holdnose-640w.webp",
+        "optimized/lady-holdnose-828w.webp"
       ],
       "jpg": [
-        "optimized/holdnose-640w.jpg",
-        "optimized/holdnose-828w.jpg"
+        "optimized/lady-holdnose-640w.jpg",
+        "optimized/lady-holdnose-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "original-images/cost effective .png": {
+    "width": 1024,
+    "height": 1536,
+    "aspectRatio": 0.6666666666666666,
+    "formats": {
+      "avif": [
+        "optimized/cost-effective--640w.avif",
+        "optimized/cost-effective--828w.avif"
+      ],
+      "webp": [
+        "optimized/cost-effective--640w.webp",
+        "optimized/cost-effective--828w.webp"
+      ],
+      "jpg": [
+        "optimized/cost-effective--640w.jpg",
+        "optimized/cost-effective--828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "original-images/cat on bed fresh.png": {
+    "width": 1536,
+    "height": 1024,
+    "aspectRatio": 1.5,
+    "formats": {
+      "avif": [
+        "optimized/cat-on-bed-fresh-640w.avif",
+        "optimized/cat-on-bed-fresh-828w.avif",
+        "optimized/cat-on-bed-fresh-1080w.avif",
+        "optimized/cat-on-bed-fresh-1200w.avif"
+      ],
+      "webp": [
+        "optimized/cat-on-bed-fresh-640w.webp",
+        "optimized/cat-on-bed-fresh-828w.webp",
+        "optimized/cat-on-bed-fresh-1080w.webp",
+        "optimized/cat-on-bed-fresh-1200w.webp"
+      ],
+      "jpg": [
+        "optimized/cat-on-bed-fresh-640w.jpg",
+        "optimized/cat-on-bed-fresh-828w.jpg",
+        "optimized/cat-on-bed-fresh-1080w.jpg",
+        "optimized/cat-on-bed-fresh-1200w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  },
+  "original-images/Cat explores different litter options.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/Cat-explores-different-litter-options-640w.avif",
+        "optimized/Cat-explores-different-litter-options-828w.avif"
+      ],
+      "webp": [
+        "optimized/Cat-explores-different-litter-options-640w.webp",
+        "optimized/Cat-explores-different-litter-options-828w.webp"
+      ],
+      "jpg": [
+        "optimized/Cat-explores-different-litter-options-640w.jpg",
+        "optimized/Cat-explores-different-litter-options-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "original-images/marketing/holdnose.png": {
+    "width": 1024,
+    "height": 1536,
+    "aspectRatio": 0.6666666666666666,
+    "formats": {
+      "avif": [
+        "optimized/marketing/holdnose-640w.avif",
+        "optimized/marketing/holdnose-828w.avif"
+      ],
+      "webp": [
+        "optimized/marketing/holdnose-640w.webp",
+        "optimized/marketing/holdnose-828w.webp"
+      ],
+      "jpg": [
+        "optimized/marketing/holdnose-640w.jpg",
+        "optimized/marketing/holdnose-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "original-images/marketing/catcoco.png": {
+    "width": 1536,
+    "height": 1024,
+    "aspectRatio": 1.5,
+    "formats": {
+      "avif": [
+        "optimized/marketing/catcoco-640w.avif",
+        "optimized/marketing/catcoco-828w.avif",
+        "optimized/marketing/catcoco-1080w.avif",
+        "optimized/marketing/catcoco-1200w.avif"
+      ],
+      "webp": [
+        "optimized/marketing/catcoco-640w.webp",
+        "optimized/marketing/catcoco-828w.webp",
+        "optimized/marketing/catcoco-1080w.webp",
+        "optimized/marketing/catcoco-1200w.webp"
+      ],
+      "jpg": [
+        "optimized/marketing/catcoco-640w.jpg",
+        "optimized/marketing/catcoco-828w.jpg",
+        "optimized/marketing/catcoco-1080w.jpg",
+        "optimized/marketing/catcoco-1200w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  },
+  "original-images/blog/Carbon-sktech.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/blog/Carbon-sktech-640w.avif",
+        "optimized/blog/Carbon-sktech-828w.avif"
+      ],
+      "webp": [
+        "optimized/blog/Carbon-sktech-640w.webp",
+        "optimized/blog/Carbon-sktech-828w.webp"
+      ],
+      "jpg": [
+        "optimized/blog/Carbon-sktech-640w.jpg",
+        "optimized/blog/Carbon-sktech-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "original-images/Old Versions/original-images/blog/cat-favorite-litter.webp": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/Old Versions/original-images/blog/cat-favorite-litter-640w.avif",
+        "optimized/Old Versions/original-images/blog/cat-favorite-litter-828w.avif"
+      ],
+      "webp": [
+        "optimized/Old Versions/original-images/blog/cat-favorite-litter-640w.webp",
+        "optimized/Old Versions/original-images/blog/cat-favorite-litter-828w.webp"
+      ],
+      "jpg": [
+        "optimized/Old Versions/original-images/blog/cat-favorite-litter-640w.jpg",
+        "optimized/Old Versions/original-images/blog/cat-favorite-litter-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "original-images/Old Versions/original-images/blog/cat-favorite-litter.avif": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/Old Versions/original-images/blog/cat-favorite-litter-640w.avif",
+        "optimized/Old Versions/original-images/blog/cat-favorite-litter-828w.avif"
+      ],
+      "webp": [
+        "optimized/Old Versions/original-images/blog/cat-favorite-litter-640w.webp",
+        "optimized/Old Versions/original-images/blog/cat-favorite-litter-828w.webp"
+      ],
+      "jpg": [
+        "optimized/Old Versions/original-images/blog/cat-favorite-litter-640w.jpg",
+        "optimized/Old Versions/original-images/blog/cat-favorite-litter-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "original-images/Old Versions/original-images/blog/cat-favorite-litter-640w.webp": {
+    "width": 640,
+    "height": 640,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/Old Versions/original-images/blog/cat-favorite-litter-640w-640w.avif"
+      ],
+      "webp": [
+        "optimized/Old Versions/original-images/blog/cat-favorite-litter-640w-640w.webp"
+      ],
+      "jpg": [
+        "optimized/Old Versions/original-images/blog/cat-favorite-litter-640w-640w.jpg"
+      ]
+    },
+    "sizes": "100vw"
+  },
+  "original-images/Old Versions/original-images/blog/Carbon-sktech.webp": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/Old Versions/original-images/blog/Carbon-sktech-640w.avif",
+        "optimized/Old Versions/original-images/blog/Carbon-sktech-828w.avif"
+      ],
+      "webp": [
+        "optimized/Old Versions/original-images/blog/Carbon-sktech-640w.webp",
+        "optimized/Old Versions/original-images/blog/Carbon-sktech-828w.webp"
+      ],
+      "jpg": [
+        "optimized/Old Versions/original-images/blog/Carbon-sktech-640w.jpg",
+        "optimized/Old Versions/original-images/blog/Carbon-sktech-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "original-images/Old Versions/original-images/blog/Carbon-sktech.avif": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/Old Versions/original-images/blog/Carbon-sktech-640w.avif",
+        "optimized/Old Versions/original-images/blog/Carbon-sktech-828w.avif"
+      ],
+      "webp": [
+        "optimized/Old Versions/original-images/blog/Carbon-sktech-640w.webp",
+        "optimized/Old Versions/original-images/blog/Carbon-sktech-828w.webp"
+      ],
+      "jpg": [
+        "optimized/Old Versions/original-images/blog/Carbon-sktech-640w.jpg",
+        "optimized/Old Versions/original-images/blog/Carbon-sktech-828w.jpg"
       ]
     },
     "sizes": "(max-width: 640px) 100vw, 50vw"
