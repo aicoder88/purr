@@ -287,6 +287,13 @@ function generateSchema(
           availability: data.availability || 'https://schema.org/InStock',
           itemCondition: 'https://schema.org/NewCondition',
         },
+        aggregateRating: data.rating ? {
+          '@type': 'AggregateRating',
+          ratingValue: data.rating.value,
+          reviewCount: data.rating.count,
+          bestRating: '5',
+          worstRating: '1',
+        } : undefined,
       };
       return productSchema;
     }
@@ -403,6 +410,7 @@ function generateSchema(
           width: 400,
           height: 400,
         },
+        image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
         sameAs: data.socialLinks || [],
         contactPoint: data.contactPoint
           ? {

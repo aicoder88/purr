@@ -938,3 +938,14 @@ enum PayoutStatus {
   COMPLETED   // Payout sent
   REJECTED    // Rejected by admin
 }
+
+// ===== Waitlist Models =====
+
+model Waitlist {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@map("waitlists")
+}

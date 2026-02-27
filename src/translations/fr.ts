@@ -80,6 +80,14 @@ export const fr = {
     cta: "Mettez-moi sur la liste"
   },
 
+  waitlist: {
+    placeholder: "Entrez votre courriel",
+    buttonText: "Rejoindre la liste",
+    loading: "Inscription...",
+    success: "Merci de votre inscription !",
+    errorGeneric: "Une erreur s'est produite."
+  },
+
   locationsMenu: {
     selectProvince: "Sélectionnez une province",
     hoverPrompt: "Survolez une province pour voir les villes.",

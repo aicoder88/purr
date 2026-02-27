@@ -2,7 +2,6 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { z } from 'zod';
 import prisma from '../prisma';
-import type { Locale } from './types';
 
 const KeywordEntrySchema = z.object({
   keyword: z.string().min(3),

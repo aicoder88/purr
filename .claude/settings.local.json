@@ -22,8 +22,6 @@
       "Bash(npx depcheck:*)",
       "Bash(git commit:*)",
       "Bash(timeout 10 npm run dev)",
-      "WebFetch(domain:driversnet.io)",
-      "WebFetch(domain:sonarcloud.io)",
       "Bash(ANALYZE=true npm run build)",
       "Bash(timeout 30 npm run build)",
       "Bash(npx tsx:*)",

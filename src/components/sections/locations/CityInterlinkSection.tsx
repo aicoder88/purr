@@ -77,7 +77,7 @@ export function CityInterlinkSection({
             {otherProvinces.map((candidateProvince) => (
               <Link
                 key={candidateProvince.slug}
-                href={`/locations/province/${candidateProvince.slug}`}
+                href={`/locations/province/${candidateProvince.slug}/`}
                 prefetch={false}
                 className="inline-flex items-center rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/70 px-4 py-2 text-sm font-medium text-gray-900 dark:text-gray-100 transition hover:border-orange-300 dark:hover:border-orange-500/70 hover:text-orange-600 dark:hover:text-orange-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange-500 dark:focus-visible:ring-orange-400"
               >

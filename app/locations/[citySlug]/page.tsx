@@ -7,7 +7,7 @@ import { CityPageTemplate } from '@/components/sections/locations/createCityPage
 import { getTranslation } from '@/translations';
 import type { TranslationType } from '@/translations/types';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
-import { generateLocalBusinessSchema } from '@/lib/seo-utils';
+import { generateLocationPageSchema } from '@/lib/seo-utils';
 import { StructuredData } from '@/components/seo/StructuredData';
 
 interface CityPageProps {
@@ -122,8 +122,8 @@ export default async function CityPage({ params }: CityPageProps) {
     notFound();
   }
 
-  // Generate LocalBusiness schema for this city
-  const localBusinessSchema = generateLocalBusinessSchema(
+  // Generate Location page schema for this city
+  const locationPageSchema = generateLocationPageSchema(
     city.name,
     city.profile.province,
     'en',
@@ -132,7 +132,7 @@ export default async function CityPage({ params }: CityPageProps) {
 
   return (
     <>
-      <StructuredData schema={localBusinessSchema} />
+      <StructuredData schema={locationPageSchema} />
       <CityPageTemplate citySlug={citySlug} initialProfile={city.profile} />
     </>
   );

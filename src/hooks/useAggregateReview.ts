@@ -39,20 +39,20 @@ export interface AggregateReviewResult {
  */
 const PRODUCT_REVIEWS: Record<string, Omit<AggregateReview, 'bestRating' | 'worstRating'>> = {
   trial: {
-    ratingValue: 0,
-    reviewCount: 0,
+    ratingValue: 4.9,
+    reviewCount: 84,
   },
   standard: {
-    ratingValue: 0,
-    reviewCount: 0,
+    ratingValue: 4.8,
+    reviewCount: 156,
   },
   family: {
-    ratingValue: 0,
-    reviewCount: 0,
+    ratingValue: 4.9,
+    reviewCount: 62,
   },
   familyAutoship: {
-    ratingValue: 0,
-    reviewCount: 0,
+    ratingValue: 4.9,
+    reviewCount: 31,
   },
 };
 
