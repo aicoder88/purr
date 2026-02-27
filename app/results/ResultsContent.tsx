@@ -23,7 +23,7 @@ interface ResultsContentProps {
 export function ResultsContent({ testimonials }: ResultsContentProps) {
   const t = useTranslations();
   const locale = useLocale();
-  const r = (t.raw('results') || {}) as NonNullable<TranslationType['results']>;
+  const r = (t.has('results') ? t.raw('results') : {}) as NonNullable<TranslationType['results']>;
   const breadcrumbLabel =
     locale === 'fr'
       ? 'Fil d Ariane'

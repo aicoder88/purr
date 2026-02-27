@@ -103,6 +103,10 @@ export default function SciencePageClient() {
   const t = useTranslations();
   const locale = useLocale();
   const uiCopy = SCIENCE_UI_COPY[locale as SupportedLocale] || SCIENCE_UI_COPY.en;
+  const rawMicroscopeBullets = t.raw('sciencePage.microscopicView.whatYoureLookingAt.bullets');
+  const microscopeBullets = Array.isArray(rawMicroscopeBullets)
+    ? rawMicroscopeBullets.filter((value): value is string => typeof value === 'string')
+    : [];
 
   const scienceFacts = [
       {
@@ -499,15 +503,15 @@ export default function SciencePageClient() {
                   <ul className="space-y-3 text-gray-700 dark:text-gray-200">
                     <li className="flex items-start space-x-2">
                       <span className="text-[#FF3131] mt-1">→</span>
-                      <span>{t('sciencePage.microscopicView.whatYoureLookingAt.bullets')?.[0] || ""}</span>
+                      <span>{microscopeBullets[0] || ""}</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <span className="text-[#5B2EFF] mt-1">→</span>
-                      <span>{t('sciencePage.microscopicView.whatYoureLookingAt.bullets')?.[1] || ""}</span>
+                      <span>{microscopeBullets[1] || ""}</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <span className="text-[#FF3131] mt-1">→</span>
-                      <span>{t('sciencePage.microscopicView.whatYoureLookingAt.bullets')?.[2] || ""}</span>
+                      <span>{microscopeBullets[2] || ""}</span>
                     </li>
                   </ul>
                 </div>

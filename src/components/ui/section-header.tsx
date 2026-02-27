@@ -8,7 +8,10 @@ const defaultHighlightTexts = [
 
 const SectionHeader = ({ text }: { text: string }) => {
   const t = useTranslations();
-  const highlightTexts = t('sectionHeaderHighlights') || defaultHighlightTexts;
+  const rawHighlights = t.raw('sectionHeaderHighlights');
+  const highlightTexts = Array.isArray(rawHighlights)
+    ? rawHighlights.filter((value): value is string => typeof value === 'string')
+    : defaultHighlightTexts;
   const normalized = text.trim();
   const isHighlighted = highlightTexts.includes(normalized);
 

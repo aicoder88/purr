@@ -77,8 +77,8 @@ export const zh = {
   locationsMenu: {
     selectProvince: "选择省份",
     hoverPrompt: "将鼠标悬停在省份上即可查看城市。",
-    provinceCitiesHeading: "{{province}} 城市",
-    viewProvinceGuide: "查看 {{province}} 省指南"
+    provinceCitiesHeading: "{province} 城市",
+    viewProvinceGuide: "查看 {province} 省指南"
   },
   seoKeywords: {
     headTerms: [
@@ -3094,7 +3094,7 @@ export const zh = {
   socialProofBadges: {
     trustedVerified: "已验证信赖",
     findUsOn: "在以下平台找到我们",
-    viewOnPlatform: "在{{platform}}查看Purrify",
+    viewOnPlatform: "在{platform}查看Purrify",
     platforms: {
       trustpilot: "Trustpilot",
       googleBusiness: "Google Business",
@@ -3199,87 +3199,87 @@ export const zh = {
   // City Page Translations (for location-based SEO pages)
   cityPage: {
     seo: {
-      title: "{{city}}猫砂除臭剂 | Purrify活性炭",
-      descriptionWithPopulation: "{{city}}猫砂有味道？Purrify活性炭自然消除氨气异味。{{province}}全境快速配送。{{population}}+猫主人信赖之选。",
-      descriptionDefault: "{{city}}猫砂有味道？Purrify活性炭自然消除氨气异味。{{province}}全境快速配送。对猫咪和幼猫安全。"
+      title: "{city}猫砂除臭剂 | Purrify活性炭",
+      descriptionWithPopulation: "{city}猫砂有味道？Purrify活性炭自然消除氨气异味。{province}全境快速配送。{population}+猫主人信赖之选。",
+      descriptionDefault: "{city}猫砂有味道？Purrify活性炭自然消除氨气异味。{province}全境快速配送。对猫咪和幼猫安全。"
     },
     loading: "正在跳转...",
     hero: {
-      heading: "{{city}}最佳猫砂除臭剂",
-      subheading: "{{city}}及{{province}}全境{{audience}}+猫主人信赖之选"
+      heading: "{city}最佳猫砂除臭剂",
+      subheading: "{city}及{province}全境{audience}+猫主人信赖之选"
     },
     whyChoose: {
-      heading: "为什么{{city}}猫主人选择Purrify",
-      perfectFor: "非常适合{{feature}}",
-      fastShipping: "{{province}}全境快速配送",
+      heading: "为什么{city}猫主人选择Purrify",
+      perfectFor: "非常适合{feature}",
+      fastShipping: "{province}全境快速配送",
       worksWithAllBrands: "适用于您喜爱的所有猫砂品牌"
     },
     cta: {
-      tryInCity: "在{{city}}试用Purrify",
+      tryInCity: "在{city}试用Purrify",
       seeHowItWorks: "了解活性炭技术原理 →",
       shopOnline: "立即在线购买",
       submitVideo: "📹 提交您的视频评价",
       writeReview: "✍️ 撰写评价",
-      exploreTestimonials: "查看更多{{province}}用户评价 →"
+      exploreTestimonials: "查看更多{province}用户评价 →"
     },
     whereToFind: {
-      heading: "在{{city}}哪里可以买到Purrify",
+      heading: "在{city}哪里可以买到Purrify",
       localStore: {
         heading: "咨询当地宠物店",
-        description: "{{city}}的独立宠物店销售这款备受猫主人好评的除臭剂。",
+        description: "{city}的独立宠物店销售这款备受猫主人好评的除臭剂。",
         tip: "从您喜欢的社区店开始，或者告诉他们您想在货架上看到Purrify。"
       },
       orderDirect: {
         heading: "直接订购，快速配送",
-        description: "更喜欢送货上门？在线订购，{{province}}全境2-3个工作日内送达清新空气。"
+        description: "更喜欢送货上门？在线订购，{province}全境2-3个工作日内送达清新空气。"
       }
     },
     playbook: {
-      heading: "{{city}}清新空气指南",
+      heading: "{city}清新空气指南",
       step1: "每次清理猫砂后，在顶部撒上2汤匙。",
-      step2: "如果您的家面临{{painPoint}}，每隔一天刷新一次。",
+      step2: "如果您的家面临{painPoint}，每隔一天刷新一次。",
       step3: "照常更换猫砂——Purrify适用于结团砂、膨润土砂和天然猫砂。"
     },
     testimonials: {
-      heading: "{{city}}猫主人怎么说",
+      heading: "{city}猫主人怎么说",
       wasHelpful: "这对您有帮助吗？",
       shareStory: {
-        heading: "分享您在{{city}}的成功故事",
-        description: "您是喜爱Purrify的{{city}}猫主人吗？我们很乐意展示您的故事，帮助其他当地猫主人发现无异味生活。"
+        heading: "分享您在{city}的成功故事",
+        description: "您是喜爱Purrify的{city}猫主人吗？我们很乐意展示您的故事，帮助其他当地猫主人发现无异味生活。"
       }
     },
     provinceWide: {
-      heading: "{{province}}全境猫主人都喜爱Purrify",
-      description: "加入{{province}}数千名已彻底消除猫砂异味的满意猫主人。",
+      heading: "{province}全境猫主人都喜爱Purrify",
+      description: "加入{province}数千名已彻底消除猫砂异味的满意猫主人。",
       averageRating: "⭐ 平均评分4.8/5",
-      happyHomes: "🏠 {{audience}}+幸福家庭",
-      fastShipping: "🚚 {{province}}快速配送"
+      happyHomes: "🏠 {audience}+幸福家庭",
+      fastShipping: "🚚 {province}快速配送"
     },
     faq: {
-      heading: "{{city}}常见问题",
+      heading: "{city}常见问题",
       delivery: {
-        question: "你们配送到{{city}}，{{province}}吗？",
-        answer: "是的！{{province}}全境快速配送，包括{{city}}的每个社区。订单在2-3个工作日内送达。"
+        question: "你们配送到{city}，{province}吗？",
+        answer: "是的！{province}全境快速配送，包括{city}的每个社区。订单在2-3个工作日内送达。"
       },
       painPoint: {
-        question: "Purrify如何帮助面临{{painPoint}}的家庭？",
-        answer: "在您常用的猫砂上撒上Purrify。活性炭与氨分子结合，即使在{{painPoint}}时也有效。无需改变猫咪的习惯即可获得清新空气。"
+        question: "Purrify如何帮助面临{painPoint}的家庭？",
+        answer: "在您常用的猫砂上撒上Purrify。活性炭与氨分子结合，即使在{painPoint}时也有效。无需改变猫咪的习惯即可获得清新空气。"
       },
       litterBrands: {
-        question: "哪些猫砂品牌与{{city}}的Purrify搭配最佳？",
-        answer: "Purrify适用于所有类型的猫砂——结团粘土、水晶、天然松木、玉米、小麦和豆腐猫砂。{{city}}猫主人将其与他们从独立宠物店购买的猫砂品牌搭配使用，它增强了所有猫砂的效果，而不会改变猫咪的偏好。"
+        question: "哪些猫砂品牌与{city}的Purrify搭配最佳？",
+        answer: "Purrify适用于所有类型的猫砂——结团粘土、水晶、天然松木、玉米、小麦和豆腐猫砂。{city}猫主人将其与他们从独立宠物店购买的猫砂品牌搭配使用，它增强了所有猫砂的效果，而不会改变猫咪的偏好。"
       },
       climate: {
-        question: "Purrify如何应对{{province}}的{{seasonalTip}}？",
-        answer: "活性炭技术独立于温度和湿度运作。无论您在{{city}}面临{{seasonalTip}}，Purrify的分子除臭功能全天候持续工作。非常适合面临{{province}}气候挑战的{{keyFeature}}。"
+        question: "Purrify如何应对{province}的{seasonalTip}？",
+        answer: "活性炭技术独立于温度和湿度运作。无论您在{city}面临{seasonalTip}，Purrify的分子除臭功能全天候持续工作。非常适合面临{province}气候挑战的{keyFeature}。"
       },
       stores: {
-        question: "我能在{{city}}的宠物店找到Purrify吗？",
-        answer: "{{city}}的许多独立零售商都有Purrify库存。提前致电确认库存，或在线订购，{{province}}全境保证2-3天送达。"
+        question: "我能在{city}的宠物店找到Purrify吗？",
+        answer: "{city}的许多独立零售商都有Purrify库存。提前致电确认库存，或在线订购，{province}全境保证2-3天送达。"
       },
       multiCat: {
-        question: "Purrify对{{city}}的多猫家庭安全吗？",
-        answer: "绝对安全！Purrify对多猫家庭完全安全。许多{{city}}家庭在2-4个猫砂盆中使用它。活性炭无毒、无香味，不会刺激敏感的猫咪。非常适合{{keyFeature}}。"
+        question: "Purrify对{city}的多猫家庭安全吗？",
+        answer: "绝对安全！Purrify对多猫家庭完全安全。许多{city}家庭在2-4个猫砂盆中使用它。活性炭无毒、无香味，不会刺激敏感的猫咪。非常适合{keyFeature}。"
       }
     }
   },
@@ -3296,7 +3296,7 @@ export const zh = {
       benefit2: "适用于所有猫砂类型",
       benefit3: "加拿大全境快速配送",
       shopCta: "购买Purrify",
-      citiesAvailable: "{{count}}个城市可用",
+      citiesAvailable: "{count}个城市可用",
       cityAvailable: "1个城市可用",
       viewGuide: "查看省份指南 →",
       fastShipping: {
@@ -3314,21 +3314,21 @@ export const zh = {
     },
     province: {
       badge: "省份指南",
-      heading: "{{province}}猫砂异味控制",
-      description: "查找{{province}}全境的Purrify零售商和快速配送选项。各大城市猫主人信赖之选。",
-      citiesHeading: "我们在{{province}}服务的城市",
+      heading: "{province}猫砂异味控制",
+      description: "查找{province}全境的Purrify零售商和快速配送选项。各大城市猫主人信赖之选。",
+      citiesHeading: "我们在{province}服务的城市",
       viewCityGuide: "查看城市指南",
-      cityCardDescription: "了解{{city}}的除臭解决方案",
+      cityCardDescription: "了解{city}的除臭解决方案",
       exploreOther: "探索其他省份",
       orderOnline: "在线订购快速配送",
-      orderDescription: "找不到当地商店？{{province}}全境2-3个工作日内Purrify送货上门。"
+      orderDescription: "找不到当地商店？{province}全境2-3个工作日内Purrify送货上门。"
     }
   },
 
   // Thank You / Order Confirmation Page
   thankYou: {
     heading: "谢谢您！",
-    headingWithName: "谢谢您，{{name}}！",
+    headingWithName: "谢谢您，{name}！",
     subheading: "您的订单已确认。",
     subheadingExtended: "您的订单已确认。准备好体验您拥有过的最清新的家吧！",
     orderConfirmed: "订单已确认",
@@ -3406,7 +3406,7 @@ export const zh = {
     mostHelpful: "最有帮助",
     highestRated: "评分最高",
     lowestRated: "评分最低",
-    showingReviews: "显示{{count}}条评价",
+    showingReviews: "显示{count}条评价",
     noReviews: "暂无评价。成为第一个分享体验的人！",
     loadMore: "加载更多评价"
   },
