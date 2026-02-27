@@ -1162,7 +1162,87 @@ export const en = {
     disclaimer: "Offer valid for new customers only. One trial per household. Shipping rates may vary by location."
   },
 
-
+  // Canada Page
+  canadaPage: {
+    // Meta
+    pageTitle: "Best Cat Litter Deodorizer in Canada | Made in Canada | Purrify",
+    pageDescription: "Looking for cat litter odor control in Canada? Purrify is proudly made in Canada with premium coconut shell activated carbon. Free shipping across Canada on orders over $35.",
+    // Breadcrumb
+    breadcrumb: "Canada",
+    // Hero
+    badge: "Proudly Made in Canada",
+    heroTitle: "Canada's Best Cat Litter Deodorizer",
+    heroDescription: "Canadian cat owners trust Purrify to eliminate litter box odours. Made in Canada with premium coconut shell activated carbon—the same filtration-grade material used in water purifiers.",
+    ctaTrial: "Try for {price}",
+    ctaProducts: "View All Products",
+    shippingBadge: "Free shipping over $35",
+    guaranteeBadge: "100% satisfaction guarantee",
+    heroImageAlt: "Purrify cat litter deodorizer - Made in Canada",
+    // Benefits Section
+    benefitsTitle: "Why Canadian Cat Owners Choose Purrify",
+    benefitsSubtitle: "Supporting Canadian businesses means faster shipping, local support, and products designed for Canadian homes.",
+    benefitMadeInCanada: "Made in Canada",
+    benefitMadeInCanadaDesc: "Proudly manufactured in Canada using premium coconut shell activated carbon.",
+    benefitFreeShipping: "Free Canadian Shipping",
+    benefitFreeShippingDesc: "Free shipping on orders over $35 anywhere in Canada. Fast delivery coast to coast.",
+    benefitNatural: "100% Natural",
+    benefitNaturalDesc: "Water-filter grade activated carbon. No fragrances, no chemicals, no fillers.",
+    benefitSupport: "Canadian Customer Support",
+    benefitSupportDesc: "Real support from a Canadian team who understands Canadian pet owners.",
+    // Story Section
+    storyTitle: "Our Canadian Story",
+    storyP1: "Purrify was born from a simple frustration: why couldn't we find a cat litter deodorizer that actually worked without overpowering fragrances or questionable ingredients?",
+    storyP2: "As Canadian cat parents, we set out to create something better. We source premium coconut shell activated carbon—the same water-filter grade material used in municipal water treatment—and manufacture right here in Canada.",
+    storyP3: "The result? A 100% natural, fragrance-free solution that eliminates odours at the molecular level. No masking. No chemicals. Just clean air and happy cats.",
+    statCanadianMade: "Canadian Made",
+    statDays: "7+ Days",
+    statDaysLabel: "Odour Control",
+    statFragrances: "Added Fragrances",
+    statFragrancesLabel: "Zero",
+    // Shipping Section
+    shippingTitle: "Fast Shipping Across Canada",
+    shippingSubtitle: "We ship to every province and territory. Most orders arrive within 3-7 business days.",
+    shippingOptionsTitle: "Shipping Options",
+    freeShippingTitle: "Free Standard Shipping",
+    freeShippingDesc: "On orders over $35 CAD • 5-7 business days",
+    expeditedTitle: "Expedited Shipping",
+    expeditedDesc: "Available at checkout • 2-4 business days",
+    // Reviews Section
+    reviewsTitle: "What Canadian Cat Parents Say",
+    reviewsSubtitle: "Join thousands of Canadian cat owners who've switched to Purrify.",
+    review1: "Finally, a Canadian product that actually works! No more embarrassing smells when guests come over. Shipping from within Canada was fast too.",
+    review1Author: "— Sarah M., Toronto, ON",
+    review2: "I love supporting Canadian businesses, and Purrify is the real deal. Works way better than the American brands I used to order. Plus no crazy shipping fees!",
+    review2Author: "— Michael R., Vancouver, BC",
+    review3: "Living in a Montreal condo, odour control is essential. Purrify solved the problem without any fragrance. My neighbours have no idea I have three cats!",
+    review3Author: "— Julie L., Montreal, QC",
+    // CTA Section
+    ctaTitle: "Try Canada's Best Cat Litter Deodorizer",
+    ctaSubtitle: "Made in Canada. Shipped from Canada. Loved by Canadian cat parents. Join the thousands who've discovered the Purrify difference.",
+    ctaTrialButton: "Start with Trial Size - {price}",
+    ctaStandardButton: "Standard Size - {price}",
+    ctaFooter: "Free shipping on orders over $35 CAD • 100% satisfaction guarantee • Made in Canada 🇨🇦",
+    // FAQ Section
+    faqTitle: "Frequently Asked Questions",
+    faq1Q: "Is Purrify really made in Canada?",
+    faq1A: "Yes! Purrify is proudly manufactured in Canada. We source premium coconut shell activated carbon and produce our product domestically, supporting Canadian jobs and ensuring quality control.",
+    faq2Q: "Do you ship to all provinces and territories?",
+    faq2A: "Yes, we ship to every province and territory in Canada. Free standard shipping is available on orders over $35 CAD. Remote areas may have slightly longer delivery times.",
+    faq3Q: "How long does shipping take within Canada?",
+    faq3A: "Standard shipping typically takes 5-7 business days. Major cities (Toronto, Vancouver, Montreal, Calgary, Ottawa) often receive orders within 3-5 days. Expedited shipping (2-4 days) is available at checkout.",
+    faq4Q: "What makes Purrify different from other cat litter deodorizers in Canada?",
+    faq4A: "Unlike baking soda-based products (like Arm & Hammer), Purrify uses activated carbon which physically traps ammonia molecules. It's 100% natural, fragrance-free, and lasts 3-7x longer than traditional deodorizers. Plus, you're supporting a Canadian business.",
+    faq5Q: "Can I buy Purrify in Canadian stores?",
+    faq5A: "Currently, Purrify is available online at purrify.ca with free shipping across Canada. We're working on expanding to Canadian retailers. Sign up for our newsletter to be notified when we're available in stores near you.",
+    // Related Content
+    relatedTitle: "Learn More About Cat Litter Odour Control",
+    relatedCarbonTitle: "How Activated Carbon Works",
+    relatedCarbonDesc: "The science behind odour elimination",
+    relatedApartmentTitle: "Odour Control for Apartments",
+    relatedApartmentDesc: "Perfect for Canadian condos and apartments",
+    relatedAlternativeTitle: "Arm & Hammer Alternative",
+    relatedAlternativeDesc: "Why activated carbon works better than baking soda",
+  },
 
   // Contact Page
   contactPage: {
@@ -2809,7 +2889,8 @@ export const en = {
       ongoing: {
         title: "Ongoing Use",
         description: "With regular reapplication, your home stays fresh permanently. Many customers report they 'forget' they have a litter box because there's simply no..."
-      }
+      },
+      imageAlt: "Fresh home with cat after using Purrify"
     },
     comparison: {
       headline: "How Purrify Compares",
@@ -3105,7 +3186,7 @@ export const en = {
   // City Page Translations (for location-based SEO pages)
   cityPage: {
     seo: {
-      title: "Best Cat Litter Deodorizer in {city} | Purrify",
+      title: "Best Cat Litter Deodorizer in {city}, {provinceCode} | Fast Shipping",
       descriptionWithPopulation: "Stop cat litter smell in your {city} home. Activated carbon deodorizer works 7+ days. Loved by {population}+ cat owners. Shop online or find local retailers.",
       descriptionDefault: "Stop cat litter smell in your {city} home. Activated carbon deodorizer works 7+ days. Shop online or find {city} retailers. Free shipping across {province}."
     },
@@ -3543,6 +3624,56 @@ export const en = {
       contactSupport: "Contact Support"
     },
     emergencyContact: "For immediate assistance, you can also call us"
+  },
+
+  errorPages: {
+    common: {
+      tryAgain: "Try Again",
+      goHome: "Go Home",
+      errorId: "Error ID",
+      debugInfo: "Debug Information",
+      support: "Support",
+    },
+    locale: {
+      title: "Something Went Wrong",
+      message: "We apologize for the inconvenience. An unexpected error occurred while loading this page.",
+      backToHome: "Back to Homepage",
+      reference: "Reference",
+      developerDetails: "Developer Details",
+      localeLabel: "Locale",
+      digestLabel: "Digest",
+      notAvailable: "N/A",
+    },
+    blog: {
+      title: "Unable to Load Blog",
+      message: "We encountered an issue while loading the blog. This might be temporary. Please try again.",
+      contactSupport: "Contact support",
+    },
+    blogPost: {
+      title: "Article Unavailable",
+      message: "We're having trouble loading this article. It might be temporarily unavailable or has been moved.",
+      allArticles: "All Articles",
+      backToBlog: "Back to Blog",
+      slugLabel: "Slug",
+      localeLabel: "Locale",
+      notAvailable: "N/A",
+    },
+    learn: {
+      title: "Learning Center Unavailable",
+      message: "We're having trouble loading the learning center content. Please try refreshing the page.",
+      backToLearn: "Back to Learning Center",
+      relatedResources: "You might also be interested in:",
+      blog: "Blog",
+      support: "Support",
+    },
+    products: {
+      title: "Products Unavailable",
+      message: "We're having trouble loading our products. Please try again or browse other sections.",
+      backToProducts: "Back to Products",
+      popularPages: "Popular pages:",
+      tryFree: "Try Free",
+      contactSupport: "Contact Support",
+    },
   },
 
   // Forms (standardized messages)

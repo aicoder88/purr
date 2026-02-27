@@ -207,31 +207,40 @@ export const getFormattedBusinessHours = (locale: 'en' | 'fr' = 'en') => {
 // Generate structured data for LocalBusiness
 export const getLocalBusinessStructuredData = (location?: BusinessLocation) => {
   const loc = location || getPrimaryLocation();
+  
+  // Ensure all address fields are present with fallbacks to prevent "1 field" errors
+  const address = loc?.address || {
+    streetAddress: '109-17680 Rue Charles',
+    addressLocality: 'Mirabel',
+    addressRegion: 'QC',
+    postalCode: 'J7J 0T6',
+    addressCountry: 'CA'
+  };
 
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    '@id': `https://www.purrify.ca/locations/${loc.id}`,
+    '@id': `https://www.purrify.ca/locations/${loc?.id || 'headquarters-mirabel'}`,
     name: BUSINESS_PROFILE.name,
     legalName: BUSINESS_PROFILE.legalName,
     description: BUSINESS_PROFILE.description,
     foundingDate: BUSINESS_PROFILE.foundingDate,
-    url: loc.website,
+    url: loc?.website || 'https://www.purrify.ca',
     telephone: getPhoneNumberInternational(),
-    email: loc.email,
+    email: loc?.email || 'hello@purrify.ca',
     image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: loc.address.streetAddress,
-      addressLocality: loc.address.addressLocality,
-      addressRegion: loc.address.addressRegion,
-      postalCode: loc.address.postalCode,
-      addressCountry: loc.address.addressCountry
+      streetAddress: address.streetAddress || '109-17680 Rue Charles',
+      addressLocality: address.addressLocality || 'Mirabel',
+      addressRegion: address.addressRegion || 'QC',
+      postalCode: address.postalCode || 'J7J 0T6',
+      addressCountry: address.addressCountry || 'CA'
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: loc.geo.latitude.toString(),
-      longitude: loc.geo.longitude.toString()
+      latitude: (loc?.geo?.latitude ?? 45.6501).toString(),
+      longitude: (loc?.geo?.longitude ?? -73.8359).toString()
     },
     openingHoursSpecification: BUSINESS_PROFILE.businessHours
       .filter(hours => !hours.closed)

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
-import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit-app';
+import { withRateLimit, RATE_LIMITS } from '@/lib/rate-limit';
 
 interface SubscribeRequest {
   email: string;

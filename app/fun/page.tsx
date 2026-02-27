@@ -17,6 +17,15 @@ export const metadata: Metadata = {
   },
   openGraph: {
     url: `${SITE_URL}/fun/`,
+    images: [
+      {
+        url: '/optimized/logos/purrify-logo.png',
+        width: 1200,
+        height: 800,
+        alt: 'Purrify',
+        type: 'image/png',
+      },
+    ],
   },
   robots: {
     index: true,

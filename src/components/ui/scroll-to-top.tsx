@@ -38,20 +38,15 @@ export default function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
   const [isReducedMotion, setIsReducedMotion] = useState(false);
 
-  // Set isClient to true once component mounts
+  // Combined mount effect for client detection and reduced motion preference
   useEffect(() => {
     setIsClient(true);
-  }, []);
-
-  // Check for reduced motion preference
-  useEffect(() => {
+    
     if (typeof globalThis.window === 'undefined') return;
 
     try {
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      setIsReducedMotion(prefersReducedMotion);
-
       const mediaQueryList = window.matchMedia('(prefers-reduced-motion: reduce)');
+      setIsReducedMotion(mediaQueryList.matches);
 
       const handleMotionPreferenceChange = (e: MediaQueryListEvent) => {
         setIsReducedMotion(e.matches);

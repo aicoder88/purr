@@ -2,10 +2,10 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { RelatedSolutions } from '../../../../src/components/learn/RelatedSolutions';
-import { HowToSection } from '../../../../src/components/seo/HowToSection';
-import { AIQuotableBlock } from '../../../../src/components/seo/AIQuotableBlock';
-import { RelatedQuestions } from '../../../../src/components/seo/RelatedQuestions';
+import { RelatedSolutions } from '@/components/learn/RelatedSolutions';
+import { HowToSection } from '@/components/seo/HowToSection';
+import { AIQuotableBlock } from '@/components/seo/AIQuotableBlock';
+import { RelatedQuestions } from '@/components/seo/RelatedQuestions';
 
 export default function NaturalCatLitterAdditivePageClient() {
   const canonicalUrl = 'https://www.purrify.ca/learn/solutions/natural-cat-litter-additive/';

@@ -1,4 +1,11 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
+
+// Define handleReload as a standalone utility to avoid recreation
+const handleReload = () => {
+  if (typeof window !== 'undefined') {
+    window.location.reload();
+  }
+};
 import { Play, Pause, Volume2, VolumeX, Maximize, RotateCcw } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
@@ -37,9 +44,12 @@ export function VideoPlayer({
   const [duration, setDuration] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-  const handleReload = useCallback(() => {
-    window.location.reload();
-  }, []);
+
+  // Store callbacks in refs to avoid dependency changes
+  const callbacksRef = useRef({ onPlay, onPause, onEnded });
+  useEffect(() => {
+    callbacksRef.current = { onPlay, onPause, onEnded };
+  }, [onPlay, onPause, onEnded]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -56,17 +66,17 @@ export function VideoPlayer({
 
     const handlePlay = () => {
       setIsPlaying(true);
-      onPlay?.();
+      callbacksRef.current.onPlay?.();
     };
 
     const handlePause = () => {
       setIsPlaying(false);
-      onPause?.();
+      callbacksRef.current.onPause?.();
     };
 
     const handleEnded = () => {
       setIsPlaying(false);
-      onEnded?.();
+      callbacksRef.current.onEnded?.();
     };
 
     const handleError = () => {
@@ -89,7 +99,7 @@ export function VideoPlayer({
       video.removeEventListener('ended', handleEnded);
       video.removeEventListener('error', handleError);
     };
-  }, [onPlay, onPause, onEnded]);
+  }, []); // Empty deps - callbacks accessed via ref
 
   const togglePlay = () => {
     const video = videoRef.current;

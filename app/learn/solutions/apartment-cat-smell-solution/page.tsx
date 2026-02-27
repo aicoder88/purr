@@ -1,9 +1,9 @@
 export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
-import { SITE_NAME } from '../../../../src/lib/constants';
+import { SITE_NAME } from '@/lib/constants';
 import ApartmentCatSmellPageClient from './ApartmentCatSmellPageClient';
-import { stripContext } from '../../../../src/lib/seo-utils';
+import { stripContext } from '@/lib/seo-utils';
 
 const pageTitle = `Cat in a 400 Sq Ft Apartment? How to Eliminate Litter Smell Completely | ${SITE_NAME}`;
 const pageDescription = 'No windows near your litter box. No ventilation. Roommates complaining. Here are 5 solutions that work in small apartments—guests will never know you have a cat.';

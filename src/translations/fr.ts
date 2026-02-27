@@ -1182,6 +1182,88 @@ export const fr = {
     disclaimer: "100% Gratuit. Aucune carte de crédit requise. Offre à durée limitée. Un sac gratuit par foyer. Des restrictions d'expédition peuvent s'appliquer. Nous nous réservons le droit de mettre fin à cette promotion à tout moment"
   },
 
+  // Canada Page
+  canadaPage: {
+    // Meta
+    pageTitle: "Meilleur Désodorisant pour Litière au Canada | Fabriqué au Canada | Purrify",
+    pageDescription: "Vous cherchez un contrôle des odeurs de litière au Canada? Purrify est fièrement fabriqué au Canada. Livraison gratuite au Canada sur les commandes de plus de 35$.",
+    // Breadcrumb
+    breadcrumb: "Canada",
+    // Hero
+    badge: "Fièrement Fabriqué au Canada",
+    heroTitle: "Le Meilleur Désodorisant pour Litière au Canada",
+    heroDescription: "Les propriétaires de chats canadiens font confiance à Purrify pour éliminer les odeurs de litière. Fabriqué au Canada avec du charbon actif de coquille de noix de coco premium—le même matériau de qualité filtration utilisé dans les purificateurs d'eau.",
+    ctaTrial: "Essayer pour {price}",
+    ctaProducts: "Voir Tous les Produits",
+    shippingBadge: "Livraison gratuite sur les commandes de plus de 35$",
+    guaranteeBadge: "Garantie de satisfaction 100%",
+    heroImageAlt: "Désodorisant pour litière Purrify - Fabriqué au Canada",
+    // Benefits Section
+    benefitsTitle: "Pourquoi les Propriétaires de Chats Canadiens Choisissent Purrify",
+    benefitsSubtitle: "Soutenir les entreprises canadiennes signifie une livraison plus rapide, un support local et des produits conçus pour les foyers canadiens.",
+    benefitMadeInCanada: "Fabriqué au Canada",
+    benefitMadeInCanadaDesc: "Fièrement fabriqué au Canada en utilisant du charbon actif de coquille de noix de coco premium.",
+    benefitFreeShipping: "Livraison Gratuite au Canada",
+    benefitFreeShippingDesc: "Livraison gratuite sur les commandes de plus de 35$ partout au Canada. Livraison rapide d'un océan à l'autre.",
+    benefitNatural: "100% Naturel",
+    benefitNaturalDesc: "Charbon actif de qualité filtration d'eau. Sans parfums, sans produits chimiques, sans charges.",
+    benefitSupport: "Support Client Canadien",
+    benefitSupportDesc: "Un vrai support d'une équipe canadienne qui comprend les propriétaires d'animaux canadiens.",
+    // Story Section
+    storyTitle: "Notre Histoire Canadienne",
+    storyP1: "Purrify est né d'une frustration simple : pourquoi ne pouvions-nous pas trouver un désodorisant pour litière qui fonctionnait réellement sans parfums écrasants ou ingrédients discutables?",
+    storyP2: "En tant que parents de chats canadiens, nous nous sommes mis en tête de créer quelque chose de mieux. Nous sourçons du charbon actif de coquille de noix de coco premium—le même matériau de qualité filtration d'eau utilisé dans les usines de traitement d'eau municipales—et fabriquons ici même au Canada.",
+    storyP3: "Le résultat? Une solution 100% naturelle, sans parfum qui élimine les odeurs au niveau moléculaire. Pas de masquage. Pas de produits chimiques. Juste de l'air pur et des chats heureux.",
+    statCanadianMade: "Fabriqué au Canada",
+    statDays: "7+ Jours",
+    statDaysLabel: "Contrôle des Odeurs",
+    statFragrances: "Parfums Ajoutés",
+    statFragrancesLabel: "Zéro",
+    // Shipping Section
+    shippingTitle: "Livraison Rapide Partout au Canada",
+    shippingSubtitle: "Nous livrons à chaque province et territoire. La plupart des commandes arrivent dans un délai de 3 à 7 jours ouvrables.",
+    shippingOptionsTitle: "Options de Livraison",
+    freeShippingTitle: "Livraison Standard Gratuite",
+    freeShippingDesc: "Sur les commandes de plus de 35$ CAD • 5-7 jours ouvrables",
+    expeditedTitle: "Livraison Expédiée",
+    expeditedDesc: "Disponible à la caisse • 2-4 jours ouvrables",
+    // Reviews Section
+    reviewsTitle: "Ce que Disent les Parents de Chats Canadiens",
+    reviewsSubtitle: "Rejoignez les milliers de propriétaires de chats canadiens qui sont passés à Purrify.",
+    review1: "Enfin, un produit canadien qui fonctionne vraiment! Plus d'odeurs embarrassantes quand les invités viennent. La livraison depuis le Canada était rapide aussi.",
+    review1Author: "— Sarah M., Toronto, ON",
+    review2: "J'adore soutenir les entreprises canadiennes, et Purrify est authentique. Fonctionne beaucoup mieux que les marques américaines que je commandais avant. En plus, pas de frais d'expédition fous!",
+    review2Author: "— Michael R., Vancouver, C.-B.",
+    review3: "Vivant dans un condo à Montréal, le contrôle des odeurs est essentiel. Purrify a résolu le problème sans aucun parfum. Mes voisins n'ont aucune idée que j'ai trois chats!",
+    review3Author: "— Julie L., Montréal, QC",
+    // CTA Section
+    ctaTitle: "Essayez le Meilleur Désodorisant pour Litière au Canada",
+    ctaSubtitle: "Fabriqué au Canada. Expédié du Canada. Adoré par les parents de chats canadiens. Rejoignez les milliers qui ont découvert la différence Purrify.",
+    ctaTrialButton: "Commencer avec la Taille d'Essai - {price}",
+    ctaStandardButton: "Taille Standard - {price}",
+    ctaFooter: "Livraison gratuite sur les commandes de plus de 35$ CAD • Garantie de satisfaction 100% • Fabriqué au Canada 🇨🇦",
+    // FAQ Section
+    faqTitle: "Questions Fréquemment Posées",
+    faq1Q: "Est-ce que Purrify est vraiment fabriqué au Canada?",
+    faq1A: "Oui! Purrify est fièrement fabriqué au Canada. Nous sourçons du charbon actif de coquille de noix de coco premium et produisons notre produit localement, soutenant les emplois canadiens et assurant le contrôle qualité.",
+    faq2Q: "Livrez-vous à toutes les provinces et territoires?",
+    faq2A: "Oui, nous livrons à chaque province et territoire au Canada. La livraison standard gratuite est disponible sur les commandes de plus de 35$ CAD. Les régions éloignées peuvent avoir des délais de livraison légèrement plus longs.",
+    faq3Q: "Combien de temps prend la livraison au Canada?",
+    faq3A: "La livraison standard prend généralement 5-7 jours ouvrables. Les grandes villes (Toronto, Vancouver, Montréal, Calgary, Ottawa) reçoivent souvent les commandes dans un délai de 3-5 jours. La livraison expédiée (2-4 jours) est disponible à la caisse.",
+    faq4Q: "Qu'est-ce qui rend Purrify différent des autres désodorisants au Canada?",
+    faq4A: "Contrairement aux produits à base de bicarbonate de soude (comme Arm & Hammer), Purrify utilise du charbon actif qui piège physiquement les molécules d'ammoniac. C'est 100% naturel, sans parfum, et dure 3-7x plus longtemps que les désodorisants traditionnels. En plus, vous soutenez une entreprise canadienne.",
+    faq5Q: "Puis-je acheter Purrify dans les magasins canadiens?",
+    faq5A: "Actuellement, Purrify est disponible en ligne à purrify.ca avec livraison gratuite partout au Canada. Nous travaillons à nous développer chez les détaillants canadiens. Inscrivez-vous à notre infolettre pour être informé quand nous serons disponibles dans des magasins près de chez vous.",
+    // Related Content
+    relatedTitle: "En Savoir Plus sur le Contrôle des Odeurs de Litière",
+    relatedCarbonTitle: "Comment Fonctionne le Charbon Actif",
+    relatedCarbonDesc: "La science derrière l'élimination des odeurs",
+    relatedApartmentTitle: "Contrôle des Odeurs pour Appartements",
+    relatedApartmentDesc: "Parfait pour les condos et appartements canadiens",
+    relatedAlternativeTitle: "Alternative à Arm & Hammer",
+    relatedAlternativeDesc: "Pourquoi le charbon actif fonctionne mieux que le bicarbonate de soude",
+  },
+
   // Contact Page
   contactPage: {
     title: "Nous Sommes Là Pour Vous Aider",
@@ -2565,7 +2647,8 @@ export const fr = {
       ongoing: {
         title: "Utilisation Continue",
         description: "Avec une réapplication régulière, votre maison reste fraîche en permanence. Beaucoup de clients rapportent qu'ils 'oublient' qu'ils ont une litière car..."
-      }
+      },
+      imageAlt: "Maison fraîche avec chat après utilisation de Purrify"
     },
     comparison: {
       headline: "Comment Purrify Se Compare",
@@ -3103,7 +3186,7 @@ export const fr = {
   // City Page Translations (for location-based SEO pages)
   cityPage: {
     seo: {
-      title: "Désodorisant pour litière à {city} | Purrify...",
+      title: "Désodorisant pour litière à {city}, {provinceCode} | Livraison Rapide",
       descriptionWithPopulation: "Odeur de litière à {city}? Le charbon actif Purrify élimine naturellement les odeurs d'ammoniaque. Livraison rapide partout au {province}. Aimé par {population}+ propriétaires de chats.",
       descriptionDefault: "Odeur de litière à {city}? Le charbon actif Purrify élimine naturellement les odeurs d'ammoniaque. Livraison rapide partout au {province}. Sans danger pour les chats et chatons."
     },
@@ -3628,6 +3711,56 @@ export const fr = {
       contactSupport: "Contactez le support"
     },
     emergencyContact: "Pour une assistance immédiate, vous pouvez également nous appeler"
+  },
+
+  errorPages: {
+    common: {
+      tryAgain: "Réessayer",
+      goHome: "Retour à l'accueil",
+      errorId: "ID de l'erreur",
+      debugInfo: "Informations de débogage",
+      support: "Support",
+    },
+    locale: {
+      title: "Une erreur est survenue",
+      message: "Nous nous excusons pour ce désagrément. Une erreur inattendue est survenue lors du chargement de cette page.",
+      backToHome: "Retour à l'accueil",
+      reference: "Référence",
+      developerDetails: "Détails développeur",
+      localeLabel: "Langue",
+      digestLabel: "Digest",
+      notAvailable: "N/D",
+    },
+    blog: {
+      title: "Impossible de charger le blog",
+      message: "Nous avons rencontré un problème lors du chargement du blog. Cela peut être temporaire. Veuillez réessayer.",
+      contactSupport: "Contacter le support",
+    },
+    blogPost: {
+      title: "Article indisponible",
+      message: "Nous avons des difficultés à charger cet article. Il est peut-être temporairement indisponible ou déplacé.",
+      allArticles: "Tous les articles",
+      backToBlog: "Retour au blog",
+      slugLabel: "Slug",
+      localeLabel: "Langue",
+      notAvailable: "N/D",
+    },
+    learn: {
+      title: "Centre d'apprentissage indisponible",
+      message: "Nous avons des difficultés à charger le contenu du centre d'apprentissage. Veuillez actualiser la page.",
+      backToLearn: "Retour au centre d'apprentissage",
+      relatedResources: "Vous pourriez aussi être intéressé par :",
+      blog: "Blog",
+      support: "Support",
+    },
+    products: {
+      title: "Produits indisponibles",
+      message: "Nous avons des difficultés à charger nos produits. Veuillez réessayer ou consulter d'autres sections.",
+      backToProducts: "Retour aux produits",
+      popularPages: "Pages populaires :",
+      tryFree: "Essai gratuit",
+      contactSupport: "Contacter le support",
+    },
   },
 
   // Formulaires (messages standardisés)

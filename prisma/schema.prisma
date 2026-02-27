@@ -458,8 +458,10 @@ enum AuditAction {
 
 model BlogPost {
   id               String         @id @default(cuid())
-  slug             String         @unique
+  slug             String
   locale           String         @default("en")
+
+  @@unique([locale, slug])
   title            String
   author           String         @default("Purrify Research Lab")
   excerpt          String         @db.Text
@@ -493,6 +495,7 @@ model BlogPost {
   @@index([status])
   @@index([publishedAt])
   @@index([topicKey])
+  @@index([locale, slug])
   @@map("blog_posts")
 }
 

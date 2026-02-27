@@ -2,9 +2,9 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { AIQuotableBlock } from '../../../src/components/seo/AIQuotableBlock';
-import { RelatedQuestions } from '../../../src/components/seo/RelatedQuestions';
-import { HowToSection } from '../../../src/components/seo/HowToSection';
+import { AIQuotableBlock } from '@/components/seo/AIQuotableBlock';
+import { RelatedQuestions } from '@/components/seo/RelatedQuestions';
+import { HowToSection } from '@/components/seo/HowToSection';
 
 export default function HowActivatedCarbonWorksClient() {
   const heroImage = '/optimized/blog/ammonia-science.webp';

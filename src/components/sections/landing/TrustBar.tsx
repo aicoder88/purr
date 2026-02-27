@@ -1,15 +1,14 @@
-'use client';
-
 import Image from 'next/image';
 import { Star } from 'lucide-react';
 import { Container } from '@/components/ui/container';
-import { useTranslations } from 'next-intl';
 
 interface TrustBarProps {
   customerCount: string;
   rating: number;
   reviewCount: number;
   badges?: Array<{ src: string; alt: string }>;
+  reviewsLabel?: string;
+  happyCatsLabel?: string;
 }
 
 export function TrustBar({
@@ -17,8 +16,9 @@ export function TrustBar({
   rating,
   reviewCount,
   badges = [],
+  reviewsLabel = 'reviews',
+  happyCatsLabel = 'happy cats',
 }: TrustBarProps) {
-  const t = useTranslations();
   // Generate filled/empty stars based on rating
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 >= 0.5;
@@ -47,7 +47,7 @@ export function TrustBar({
               {rating}
             </span>
             <span className="text-gray-600 dark:text-gray-400">
-              ({reviewCount.toLocaleString()} {t('trustBar.reviews')})
+              ({reviewCount.toLocaleString()} {reviewsLabel})
             </span>
           </div>
 
@@ -59,7 +59,7 @@ export function TrustBar({
             <span className="font-semibold text-gray-900 dark:text-gray-100">
               {customerCount}
             </span>
-            <span>{t('trustBar.happyCats')}</span>
+            <span>{happyCatsLabel}</span>
           </div>
 
           {/* Badges */}

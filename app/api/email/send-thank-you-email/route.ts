@@ -2,7 +2,7 @@
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
 import { OrderConfirmationEmailHTML, getOrderConfirmationEmailSubject } from '@/emails/order-confirmation';
 import { resend } from '@/lib/resend';
-import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit-app';
+import { withRateLimit, RATE_LIMITS } from '@/lib/rate-limit';
 import { requireAuth } from '@/lib/auth/session';
 import { NextRequest } from 'next/server';
 

@@ -49,11 +49,11 @@ export async function generateMetadata({ params }: LocalizedProvincePageProps): 
   
   // Use translations if available, fall back to English
   const seoTitle = locations
-    ? `${locations.province.heading.replace('{{province}}', displayName)} (${province.code}) | ${SITE_NAME}`
+    ? `${locations.province.heading.replace('{province}', displayName)} (${province.code}) | ${SITE_NAME}`
     : `Cat Litter Odor Control in ${displayName} (${province.code}) | ${SITE_NAME}`;
     
   const seoDescription = locations
-    ? locations.province.description.replace('{{province}}', province.name)
+    ? locations.province.description.replace('{province}', province.name)
     : `Find Purrify in ${province.name}. Fast shipping and local support for cat litter odor control.`;
     
   const canonicalUrl = `${SITE_URL}${isFrench ? '/fr' : ''}/locations/province/${province.slug}/`;

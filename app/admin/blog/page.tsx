@@ -11,14 +11,16 @@ import { Plus, Search, Filter, Edit, Trash2, Eye } from 'lucide-react';
 import { toast } from 'sonner';
 
 async function fetchBlogData() {
-  const response = await fetch('/api/admin/blog/posts?includeUnpublished=true');
+  const [response, categoriesResponse, tagsResponse] = await Promise.all([
+    fetch('/api/admin/blog/posts?includeUnpublished=true'),
+    fetch('/api/admin/blog/categories'),
+    fetch('/api/admin/blog/tags'),
+  ]);
+
   if (!response.ok) throw new Error('Failed to fetch posts');
   const posts = await response.json();
 
-  const categoriesResponse = await fetch('/api/admin/blog/categories');
   const categories = categoriesResponse.ok ? await categoriesResponse.json() : [];
-
-  const tagsResponse = await fetch('/api/admin/blog/tags');
   const tags = tagsResponse.ok ? await tagsResponse.json() : [];
 
   return { posts, categories, tags };

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { AlertTriangle, Clock, TrendingUp, Users, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -75,21 +75,20 @@ export function ScarcityIndicator({
   }, [productId]);
 
   useEffect(() => {
-     
     setInventory(INVENTORY_DATA);
 
     // Simulate recent sales activity
     const salesCount = 12 + Math.floor(Math.random() * 8);
-     
     setRecentSales(salesCount);
 
     // Update recent sales every 30 seconds
+    // Use ref to avoid recreating interval on productId change
     const salesInterval = setInterval(() => {
       setRecentSales(prev => Math.max(5, prev + (Math.random() < 0.6 ? 1 : -1)));
     }, 30000);
 
     return () => clearInterval(salesInterval);
-  }, [productId]);
+  }, []); // Empty deps - interval should persist, productId not used in effect
 
   const product = inventory[productId];
   if (!product) return null;
@@ -298,26 +297,29 @@ export function CountdownTimer({
 export function StockMovementIndicator({ productId }: { productId: string }) {
   const [movement, setMovement] = useState<'high' | 'medium' | 'low'>('medium');
   const [viewCount, setViewCount] = useState(0);
+  const productIdRef = useRef(productId);
+  
+  // Keep ref updated without triggering effect
+  productIdRef.current = productId;
 
   useEffect(() => {
     // Simulate stock movement based on product popularity
     const movements = ['high', 'medium', 'low'] as const;
     const randomMovement = movements[Math.floor(Math.random() * movements.length)];
-     
     setMovement(randomMovement);
 
     // Simulate view count
     const views = 127 + Math.floor(Math.random() * 73);
-     
     setViewCount(views);
 
     // Update periodically
+    // Use ref inside interval to avoid stale closure
     const interval = setInterval(() => {
       setViewCount(prev => Math.max(50, prev + (Math.random() < 0.7 ? 1 : -1)));
     }, 15000);
 
     return () => clearInterval(interval);
-  }, [productId]);
+  }, []); // Empty deps - interval persists, productId only used for initial display
 
   const getMovementData = () => {
     switch (movement) {

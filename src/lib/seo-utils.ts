@@ -1,7 +1,7 @@
 import { SITE_NAME, SITE_DESCRIPTION, PRODUCTS, CONTACT_INFO, SOCIAL_LINKS } from './constants';
 import { getProductPrice, getPriceRange } from './pricing';
 import type { Currency } from './geo/currency-detector';
-import { getLocalBusinessStructuredData } from './business-profile';
+import { getLocalBusinessStructuredData, getPrimaryLocation } from './business-profile';
 
 // SEO utilities for comprehensive structured data and multilingual support
 
@@ -458,6 +458,7 @@ export const generateOrganizationSchema = (localeInput: string) => {
     description: getLocalizedContent(SEO_TRANSLATIONS.organizationDescription, locale),
     address: {
       '@type': 'PostalAddress',
+      streetAddress: '109-17680 Rue Charles',
       addressLocality: 'Mirabel',
       addressRegion: 'QC',
       postalCode: 'J7J 0T6',
@@ -580,7 +581,7 @@ interface Product {
   id: string;
   name: string;
   description: string;
-  price: number;
+  price?: number;
   image: string;
   size: string;
 }
@@ -592,7 +593,7 @@ export const generateOfferSchema = (product: Product, localeInput: string, curre
 
   return {
     '@type': 'Offer',
-    price: product.price.toFixed(2),
+    price: getProductPrice(product.id as typeof PRODUCTS[number]['id'], currency as Currency).toFixed(2),
     priceCurrency: currency,
     availability: buildAvailabilityUrl(),
     url: localizedUrl,
@@ -651,6 +652,9 @@ export const generateLocalBusinessSchema = (cityName: string, province: string, 
   };
 
   const coords = cityCoordinates[cityName as keyof typeof cityCoordinates] || { lat: '45.4215', lon: '-75.6972' };
+  
+  // Get primary location for complete address fields (required for LocalBusiness schema)
+  const primaryLocation = getPrimaryLocation();
 
   return {
     '@context': 'https://schema.org',
@@ -663,8 +667,10 @@ export const generateLocalBusinessSchema = (cityName: string, province: string, 
     image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
     address: {
       '@type': 'PostalAddress',
+      streetAddress: primaryLocation?.address?.streetAddress || '109-17680 Rue Charles',
       addressLocality: cityName,
       addressRegion: province,
+      postalCode: primaryLocation?.address?.postalCode || 'J7J 0T6',
       addressCountry: 'CA'
     },
     geo: {
@@ -692,20 +698,8 @@ export const generateLocalBusinessSchema = (cityName: string, province: string, 
         opens: hours.split(' - ')[0],
         closes: hours.split(' - ')[1]
       })),
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Cat Litter Odor Control Products',
-      itemListElement: PRODUCTS.map(product => ({
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Product',
-          name: product.name,
-          description: product.description.split('\n')[0]
-        },
-        price: getProductPrice(product.id as typeof PRODUCTS[number]['id'], currency as Currency).toFixed(2),
-        priceCurrency: currency
-      }))
-    },
+    // Note: Removed hasOfferCatalog with incomplete Product references
+    // Location pages should not have Product schema - use Service instead
     priceRange: getPriceRange(currency as Currency, locale).formatted
   };
 };
@@ -745,7 +739,7 @@ export const generateHomepageSchema = (localeInput: string, currency: string = '
             '@id': getLocalizedUrl(`/products/${product.id}`, locale),
             name: product.name,
             description: product.description.split('\n')[0],
-            image: `${baseUrl}${product.image}`,
+            image: [`${baseUrl}${product.image}`],
             offers: generateOfferSchema(product, locale, currency),
             hasMerchantReturnPolicy: {
               '@type': 'MerchantReturnPolicy',
@@ -754,6 +748,13 @@ export const generateHomepageSchema = (localeInput: string, currency: string = '
               merchantReturnDays: 30,
               returnMethod: 'https://schema.org/ReturnByMail',
               returnFees: 'https://schema.org/FreeReturn'
+            },
+            aggregateRating: {
+              '@type': 'AggregateRating',
+              ratingValue: '4.8',
+              reviewCount: '127',
+              bestRating: '5',
+              worstRating: '1',
             }
           }
         }))
@@ -934,42 +935,31 @@ export const generateLocationPageSchema = (cityName: string, province: string, l
   return {
     '@context': 'https://schema.org',
     '@graph': [
-      // Local Business Schema
+      // Local Business Schema (primary entity for location pages)
       stripContext(generateLocalBusinessSchema(cityName, province, locale, currency)),
 
-      // Product Schema
+      // WebPage Schema (location-specific landing page)
       {
-        '@type': 'Product',
-        '@id': `https://www.purrify.ca/products/#city-${cityName.toLowerCase()}`,
-        url: 'https://www.purrify.ca/products/',
-        name: `Purrify Cat Litter Odor Eliminator - ${cityName}`,
-        description: 'Activated carbon cat litter deodorizer that eliminates ammonia smell naturally.',
-        image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
-        brand: { '@type': 'Brand', name: 'Purrify' },
-        offers: {
-          '@type': 'Offer',
-          price: getProductPrice(PRODUCTS[0].id, currency as Currency).toFixed(2),
-          priceCurrency: currency,
-          url: 'https://www.purrify.ca/products/',
-          availability: 'https://schema.org/InStock',
-          areaServed: { '@type': 'AdministrativeArea', name: `${cityName}, ${province}` },
-          priceValidUntil: getPriceValidityDate(),
-          itemCondition: 'https://schema.org/NewCondition',
+        '@type': 'WebPage',
+        '@id': url,
+        url: url,
+        name: `Cat Litter Deodorizer in ${cityName}, ${province} | Purrify`,
+        description: `Fast shipping of activated carbon cat litter deodorizer to ${cityName}, ${province}. Eliminate litter box odors naturally.`,
+        inLanguage: locale === 'fr' ? 'fr-CA' : 'en-CA',
+        isPartOf: {
+          '@id': 'https://www.purrify.ca/#website'
         },
-        aggregateRating: {
-          '@type': 'AggregateRating',
-          ratingValue: '4.8',
-          reviewCount: '127',
-          bestRating: '5',
-          worstRating: '1',
-        },
+        about: {
+          '@type': 'Thing',
+          name: 'Cat Litter Odor Control'
+        }
       },
 
-      // Service Area Schema
+      // Service Area Schema (delivery service for this location)
       {
         '@type': 'Service',
         '@id': `${url}/#service`,
-        name: `Cat Litter Odor Control Services in ${cityName}`,
+        name: `Cat Litter Odor Control Product Delivery in ${cityName}`,
         description: `Professional-grade activated carbon cat litter additive delivery in ${cityName}, ${province}`,
         provider: {
           '@id': `https://www.purrify.ca/#organization-${cityName.toLowerCase()}`
@@ -978,8 +968,7 @@ export const generateLocationPageSchema = (cityName: string, province: string, l
           '@type': 'AdministrativeArea',
           name: `${cityName}, ${province}`
         },
-        serviceType: 'Pet Product Delivery',
-        offers: PRODUCTS.map(product => generateOfferSchema(product, locale, currency))
+        serviceType: 'Pet Product Delivery'
       },
 
       // Breadcrumb Schema

@@ -1,0 +1,143 @@
+'use client';
+
+/**
+ * Related Content Client Component
+ * Handles lazy loading with IntersectionObserver
+ */
+
+import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Container } from '@/components/ui/container';
+
+
+interface RelatedContentClientProps {
+  currentUrl: string;
+  relatedPages: Array<{ url: string; title: string; type: 'hub' | 'spoke' }>;
+  clusterName: string;
+  title: string;
+  readMoreText: string;
+  className?: string;
+}
+
+function getPageImage(url: string): { image: string; alt: string } {
+  const pageImages: Record<string, { image: string; alt: string }> = {
+    '/learn': { image: '/optimized/blog/litter-box-maintenance.webp', alt: 'Cat litter box maintenance guide' },
+    '/learn/faq': { image: '/optimized/blog/multi-cat-household.webp', alt: 'Multi-cat household tips' },
+    '/learn/cat-litter-guide': { image: '/optimized/blog/litter-substrate-deep-dive.webp', alt: 'Cat litter substrate guide' },
+    '/learn/how-it-works': { image: '/optimized/blog/activated-carbon-filtering-closeup-microscope-1000x.webp', alt: 'How activated carbon works' },
+    '/learn/science': { image: '/optimized/blog/microscopic-carbon-pore-structure-10000x.webp', alt: 'Science of activated carbon' },
+    '/learn/safety': { image: '/optimized/blog/deodorizers-with-kittens.webp', alt: 'Safety information' },
+    '/learn/glossary': { image: '/optimized/blog/litter-box-maintenance.webp', alt: 'Glossary of terms' },
+    '/learn/alternatives': { image: '/optimized/blog/cat-litter-deodorizer-powder-product-display-on-table-with-cat-in-background-square.webp', alt: 'Product alternatives' },
+    '/b2b': { image: '/optimized/blog/b2b-wholesale-partnership.webp', alt: 'B2B wholesale partnership' },
+    '/contact': { image: '/optimized/blog/customer-support-help-center.webp', alt: 'Contact us' },
+  };
+
+  return pageImages[url] || { image: '/optimized/blog/litter-box-maintenance.webp', alt: 'Related article' };
+}
+
+export function RelatedContentClient({
+  currentUrl: _currentUrl,
+  relatedPages,
+  clusterName,
+  title,
+  readMoreText,
+  className = '',
+}: RelatedContentClientProps) {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '100px' }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Show skeleton placeholder while not visible
+  if (!isVisible) {
+    return (
+      <section ref={sectionRef} aria-label="Related articles" className={`py-12 ${className}`}>
+        <Container>
+          <div className="animate-pulse">
+            <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-1/3 mb-6"></div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="h-48 bg-gray-200 dark:bg-gray-700 rounded"></div>
+              <div className="h-48 bg-gray-200 dark:bg-gray-700 rounded"></div>
+              <div className="h-48 bg-gray-200 dark:bg-gray-700 rounded"></div>
+            </div>
+          </div>
+        </Container>
+      </section>
+    );
+  }
+
+  if (relatedPages.length === 0) {
+    return null;
+  }
+
+  return (
+    <section ref={sectionRef} aria-label="Related articles" className={`py-12 ${className}`}>
+      <Container>
+        <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+          {title}
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {relatedPages.map((page) => {
+            const pageImage = getPageImage(page.url);
+            return (
+              <article
+                key={page.url}
+                className="group rounded-xl overflow-hidden border border-[#E0EFC7] dark:border-gray-700 bg-white dark:bg-gray-800/80 shadow-sm hover:shadow-md transition-all"
+              >
+                <Link prefetch={false}
+                  href={page.url}
+                  className="block focus:outline-none focus:ring-2 focus:ring-[#03E46A]"
+                >
+                  <div className="relative aspect-video overflow-hidden">
+                    <Image
+                      src={pageImage.image}
+                      alt={pageImage.alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {page.type === 'hub' && (
+                      <div className="absolute top-2 right-2">
+                        <span className="inline-block text-xs font-medium text-white dark:text-gray-100 bg-blue-600 dark:bg-blue-500 px-2 py-1 rounded shadow-sm">
+                          {clusterName} Hub
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-heading text-lg font-semibold text-[#5B2EFF] dark:text-[#3694FF] group-hover:text-[#5B2EFF]/80 dark:group-hover:text-[#3694FF]/80">
+                      {page.title}
+                    </h3>
+                    <p className="text-sm text-[#03E46A] dark:text-[#3694FF] mt-2">
+                      {readMoreText} →
+                    </p>
+                  </div>
+                </Link>
+              </article>
+            );
+          })}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+export default RelatedContentClient;

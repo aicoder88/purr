@@ -15,7 +15,7 @@ interface ProductSchema extends SchemaBase {
   name: string;
   description?: string;
   image: string[];
-  brand?: { '@type': string; name: string };
+  brand: { '@type': string; name: string };
   sku?: string;
   offers: {
     '@type': string;
@@ -66,7 +66,7 @@ interface BlogPostingSchema extends SchemaBase {
 interface OrganizationSchema extends SchemaBase {
   name: string;
   url: string;
-  logo?: string;
+  logo: string;
   description?: string;
   contactPoint?: {
     '@type': string;
@@ -286,6 +286,24 @@ export interface HowToData {
   }>;
 }
 
+export interface LocalBusinessData {
+  name: string;
+  description: string;
+  url: string;
+  telephone: string;
+  email: string;
+  address: {
+    streetAddress: string;
+    addressLocality: string;
+    addressRegion: string;
+    postalCode: string;
+    addressCountry: string;
+  };
+  openingHours?: string[];
+  priceRange?: string;
+  image?: string;
+}
+
 export class StructuredDataGenerator {
   private baseUrl: string;
   private organizationName: string;
@@ -302,18 +320,103 @@ export class StructuredDataGenerator {
   }
 
   /**
+   * Helper method to validate required fields and log warnings
+   */
+  private validateRequiredFields(
+    schemaType: string,
+    data: Record<string, unknown>,
+    requiredFields: string[],
+    warningsFields?: string[]
+  ): string[] {
+    const warnings: string[] = [];
+
+    // Check required fields
+    for (const field of requiredFields) {
+      const value = data[field];
+      if (value === undefined || value === null || value === '') {
+        console.warn(`[StructuredData] Warning: ${schemaType} missing required field: ${field}`);
+      }
+    }
+
+    // Check recommended fields
+    if (warningsFields) {
+      for (const field of warningsFields) {
+        const value = data[field];
+        if (value === undefined || value === null || value === '') {
+          warnings.push(`${schemaType} missing recommended field: ${field}`);
+        }
+      }
+    }
+
+    return warnings;
+  }
+
+  /**
+   * Validate address object for required PostalAddress fields
+   */
+  private validateAddress(
+    address: LocalBusinessData['address'],
+    context: string
+  ): { valid: boolean; missingFields: string[] } {
+    const requiredFields = [
+      'streetAddress',
+      'addressLocality',
+      'addressRegion',
+      'postalCode',
+      'addressCountry',
+    ] as const;
+
+    const missingFields: string[] = [];
+
+    for (const field of requiredFields) {
+      if (!address[field] || address[field].trim() === '') {
+        missingFields.push(field);
+      }
+    }
+
+    if (missingFields.length > 0) {
+      console.warn(
+        `[StructuredData] Warning: ${context} address missing required fields: ${missingFields.join(', ')}`
+      );
+    }
+
+    return {
+      valid: missingFields.length === 0,
+      missingFields,
+    };
+  }
+
+  /**
    * Generate Product schema
    */
   generateProduct(product: ProductData): string {
+    // Validate required fields
+    this.validateRequiredFields(
+      'Product',
+      product as unknown as Record<string, unknown>,
+      ['name', 'images', 'price', 'url'],
+      ['description', 'sku']
+    );
+
+    // Ensure images is an array
+    const images = Array.isArray(product.images) ? product.images : [product.images].filter(Boolean);
+
+    if (images.length === 0) {
+      console.warn('[StructuredData] Warning: Product must have at least one image');
+    }
+
+    // Ensure brand is always present
+    const brand = product.brand || this.organizationName;
+
     const schema: ProductSchema = {
       '@context': 'https://schema.org',
       '@type': 'Product',
       name: product.name,
       description: product.description,
-      image: product.images,
+      image: images,
       brand: {
         '@type': 'Brand',
-        name: product.brand || this.organizationName,
+        name: brand,
       },
       offers: {
         '@type': 'Offer',
@@ -403,6 +506,14 @@ export class StructuredDataGenerator {
    * Generate Organization schema
    */
   generateOrganization(org: OrganizationData): string {
+    // Validate required fields
+    this.validateRequiredFields(
+      'Organization',
+      org as unknown as Record<string, unknown>,
+      ['name', 'url', 'logo'],
+      ['description', 'email', 'phone', 'address']
+    );
+
     const schema: OrganizationSchema = {
       '@context': 'https://schema.org',
       '@type': 'Organization',
@@ -432,14 +543,17 @@ export class StructuredDataGenerator {
 
     // Add address if provided
     if (org.address) {
-      schema.address = {
-        '@type': 'PostalAddress',
-        streetAddress: org.address.streetAddress,
-        addressLocality: org.address.addressLocality,
-        addressRegion: org.address.addressRegion,
-        postalCode: org.address.postalCode,
-        addressCountry: org.address.addressCountry,
-      };
+      const addressValidation = this.validateAddress(org.address, 'Organization');
+      if (addressValidation.valid) {
+        schema.address = {
+          '@type': 'PostalAddress',
+          streetAddress: org.address.streetAddress,
+          addressLocality: org.address.addressLocality,
+          addressRegion: org.address.addressRegion,
+          postalCode: org.address.postalCode,
+          addressCountry: org.address.addressCountry,
+        };
+      }
     }
 
     // Add social profiles
@@ -526,23 +640,18 @@ export class StructuredDataGenerator {
   /**
    * Generate LocalBusiness schema
    */
-  generateLocalBusiness(business: {
-    name: string;
-    description: string;
-    url: string;
-    telephone: string;
-    email: string;
-    address: {
-      streetAddress: string;
-      addressLocality: string;
-      addressRegion: string;
-      postalCode: string;
-      addressCountry: string;
-    };
-    openingHours?: string[];
-    priceRange?: string;
-    image?: string;
-  }): string {
+  generateLocalBusiness(business: LocalBusinessData): string {
+    // Validate required fields
+    this.validateRequiredFields(
+      'LocalBusiness',
+      business as unknown as Record<string, unknown>,
+      ['name', 'description', 'url', 'telephone', 'email', 'address'],
+      ['image', 'openingHours', 'priceRange']
+    );
+
+    // Validate address fields
+    this.validateAddress(business.address, 'LocalBusiness');
+
     const schema: LocalBusinessSchema = {
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
@@ -565,7 +674,7 @@ export class StructuredDataGenerator {
       schema.image = business.image;
     }
 
-    if (business.openingHours) {
+    if (business.openingHours && business.openingHours.length > 0) {
       schema.openingHoursSpecification = business.openingHours.map((hours) => ({
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: hours.split(' ')[0],
@@ -820,6 +929,8 @@ export class StructuredDataGenerator {
         this.validateBlogPostingSchema(schema, errors, warnings);
       } else if (schemaType === 'Organization') {
         this.validateOrganizationSchema(schema, errors, warnings);
+      } else if (schemaType === 'LocalBusiness') {
+        this.validateLocalBusinessSchema(schema, errors, warnings);
       } else if (schemaType === 'BreadcrumbList') {
         this.validateBreadcrumbSchema(schema, errors);
       } else if (schemaType === 'FAQPage') {
@@ -851,6 +962,7 @@ export class StructuredDataGenerator {
       errors.push('Product image array is empty');
     }
     if (!schema.offers) errors.push('Product missing required field: offers');
+    if (!schema.brand) errors.push('Product missing required field: brand');
 
     // Validate offers
     const offers = schema.offers as Record<string, unknown> | undefined;
@@ -858,11 +970,17 @@ export class StructuredDataGenerator {
       if (!offers.price) errors.push('Product offers missing price');
       if (!offers.priceCurrency) errors.push('Product offers missing priceCurrency');
       if (!offers.availability) warnings.push('Product offers missing availability');
+      if (!offers.url) errors.push('Product offers missing url');
+    }
+
+    // Validate brand
+    const brand = schema.brand as Record<string, unknown> | undefined;
+    if (brand) {
+      if (!brand.name) errors.push('Product brand missing name');
     }
 
     // Recommended fields
     if (!schema.description) warnings.push('Product missing recommended field: description');
-    if (!schema.brand) warnings.push('Product missing recommended field: brand');
     if (!schema.sku) warnings.push('Product missing recommended field: sku');
 
     // Validate aggregate rating if present
@@ -934,16 +1052,61 @@ export class StructuredDataGenerator {
     // Required fields
     if (!schema.name) errors.push('Organization missing required field: name');
     if (!schema.url) errors.push('Organization missing required field: url');
+    if (!schema.logo) errors.push('Organization missing required field: logo');
 
     // Recommended fields
-    if (!schema.logo) warnings.push('Organization missing recommended field: logo');
     if (!schema.description) warnings.push('Organization missing recommended field: description');
     if (!schema.contactPoint) warnings.push('Organization missing recommended field: contactPoint');
+    if (!schema.address) warnings.push('Organization missing recommended field: address');
 
     // Validate URL format
     const url = schema.url as string;
     if (url && !this.isValidUrl(url)) {
       errors.push('Organization url is not a valid URL');
+    }
+
+    // Validate logo URL
+    const logo = schema.logo as string;
+    if (logo && !this.isValidUrl(logo)) {
+      errors.push('Organization logo is not a valid URL');
+    }
+  }
+
+  /**
+   * Validate LocalBusiness schema
+   */
+  private validateLocalBusinessSchema(
+    schema: Record<string, unknown>,
+    errors: string[],
+    warnings: string[]
+  ): void {
+    // Required fields
+    if (!schema.name) errors.push('LocalBusiness missing required field: name');
+    if (!schema.description) errors.push('LocalBusiness missing required field: description');
+    if (!schema.url) errors.push('LocalBusiness missing required field: url');
+    if (!schema.telephone) errors.push('LocalBusiness missing required field: telephone');
+    if (!schema.email) errors.push('LocalBusiness missing required field: email');
+    if (!schema.address) errors.push('LocalBusiness missing required field: address');
+
+    // Validate address
+    const address = schema.address as Record<string, unknown> | undefined;
+    if (address) {
+      if (!address.streetAddress) errors.push('LocalBusiness address missing streetAddress');
+      if (!address.addressLocality) errors.push('LocalBusiness address missing addressLocality');
+      if (!address.addressRegion) errors.push('LocalBusiness address missing addressRegion');
+      if (!address.postalCode) errors.push('LocalBusiness address missing postalCode');
+      if (!address.addressCountry) errors.push('LocalBusiness address missing addressCountry');
+    }
+
+    // Recommended fields
+    if (!schema.image) warnings.push('LocalBusiness missing recommended field: image');
+    if (!schema.openingHoursSpecification) warnings.push('LocalBusiness missing recommended field: openingHoursSpecification');
+    if (!schema.priceRange) warnings.push('LocalBusiness missing recommended field: priceRange');
+
+    // Validate URL format
+    const url = schema.url as string;
+    if (url && !this.isValidUrl(url)) {
+      errors.push('LocalBusiness url is not a valid URL');
     }
   }
 

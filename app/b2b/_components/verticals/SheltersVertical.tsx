@@ -1,5 +1,4 @@
-'use client';
-import { Heart,  Shield, DollarSign, Cat, Home,  Truck } from 'lucide-react';
+import { Heart, Shield, DollarSign, Cat, Home, Truck } from 'lucide-react';
 interface SheltersVerticalProps {
   locale: string;
 }

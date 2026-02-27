@@ -51,14 +51,12 @@ export function StickyAddToCart({
   const [isClient, setIsClient] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
-  // Avoid hydration mismatch
+  // Combined effect for client detection and Intersection Observer setup
   useEffect(() => {
+    // Set client flag to avoid hydration mismatch
     setIsClient(true);
-  }, []);
-
-  // Set up Intersection Observer
-  useEffect(() => {
-    if (!isClient || !targetRef.current) return;
+    
+    if (!targetRef.current) return;
 
     const options: IntersectionObserverInit = {
       root: null, // viewport
@@ -80,7 +78,7 @@ export function StickyAddToCart({
         observerRef.current.disconnect();
       }
     };
-  }, [isClient, targetRef]);
+  }, [targetRef]);
 
   const handleQuantityChange = useCallback((delta: number) => {
     setQuantity((prev) => Math.max(1, Math.min(10, prev + delta)));

@@ -1,17 +1,14 @@
-import { useTranslations } from "next-intl";
+interface SectionHeaderProps {
+  text: string;
+  highlightTexts?: string[];
+}
 
-// Default highlight texts for fallback
 const defaultHighlightTexts = [
   '7 Days of Fresh Air Guaranteed',
   'Fresh Air in 60 Seconds - Simple as 1-2-3'
 ];
 
-const SectionHeader = ({ text }: { text: string }) => {
-  const t = useTranslations();
-  const rawHighlights = t.raw('sectionHeaderHighlights');
-  const highlightTexts = Array.isArray(rawHighlights)
-    ? rawHighlights.filter((value): value is string => typeof value === 'string')
-    : defaultHighlightTexts;
+const SectionHeader = ({ text, highlightTexts = defaultHighlightTexts }: SectionHeaderProps) => {
   const normalized = text.trim();
   const isHighlighted = highlightTexts.includes(normalized);
 

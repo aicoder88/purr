@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import Image from 'next/image';
 import { Package, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -17,7 +17,6 @@ export function OrdersTab({
   formatCurrency,
   getStatusColor
 }: OrdersTabProps) {
-  const [filteredOrders, setFilteredOrders] = useState(orders);
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(false);
@@ -51,7 +50,8 @@ export function OrdersTab({
     return () => handleTrackPackage(trackingNumber);
   }, []);
 
-  useEffect(() => {
+  // Use useMemo for derived filtered orders instead of useEffect
+  const filteredOrders = useMemo(() => {
     let filtered = orders;
 
     // Filter by status
@@ -69,7 +69,7 @@ export function OrdersTab({
       );
     }
 
-    setFilteredOrders(filtered);
+    return filtered;
   }, [orders, statusFilter, searchTerm]);
 
   const handleReorder = async (order: Order) => {

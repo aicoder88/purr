@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
-import { checkRateLimit } from '@/lib/security/rate-limit-app';
+import { checkRateLimit, getClientIp } from '@/lib/rate-limit';
 import { signOrderId } from '@/lib/security/checkout-token';
 interface CartItem {
   id: string;
@@ -79,9 +79,15 @@ export async function POST(request: NextRequest) {
   headers.set('X-Frame-Options', 'DENY');
   try {
     // Apply rate limiting to prevent abuse
-    const { allowed, remaining } = checkRateLimit(request, ORDER_RATE_LIMIT);
-    headers.set('X-RateLimit-Remaining', remaining.toString());
-    if (!allowed) {
+    const clientIp = getClientIp(request);
+    const rateLimitResult = await checkRateLimit(clientIp, 'standard');
+    headers.set('X-RateLimit-Limit', rateLimitResult.limit.toString());
+    headers.set('X-RateLimit-Remaining', rateLimitResult.remaining.toString());
+    headers.set('X-RateLimit-Reset', rateLimitResult.reset.toString());
+    if (!rateLimitResult.success) {
+      if (rateLimitResult.retryAfter) {
+        headers.set('Retry-After', rateLimitResult.retryAfter.toString());
+      }
       return NextResponse.json(
         { message: ORDER_RATE_LIMIT.message },
         { status: 429, headers }

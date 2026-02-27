@@ -64,20 +64,25 @@ export const metadata: Metadata = {
   },
 };
 
-// JSON-LD structured data - Product + LocalBusiness
-const productSchema = {
+// JSON-LD structured data - WebPage for USA landing page (not a product page)
+const webPageSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Product',
-  '@id': 'https://www.purrify.ca/products/#usa',
-  url: 'https://www.purrify.ca/products/',
-  name: 'Purrify Activated Carbon Cat Litter Deodorizer - USA Edition',
+  '@type': 'WebPage',
+  '@id': 'https://www.purrify.ca/us/',
+  url: 'https://www.purrify.ca/us/',
+  name: 'Purrify Activated Carbon Cat Litter Deodorizer - USA Launch',
   description: 'Premium activated carbon litter additive for extreme odor control, launching in USA Q1 2026.',
-  brand: {
-    '@type': 'Brand',
-    name: 'Purrify',
+  inLanguage: 'en-US',
+  primaryImageOfPage: {
+    '@type': 'ImageObject',
+    url: 'https://www.purrify.ca/optimized/blog/realistic-modern-living.webp',
+    width: 1200,
+    height: 800,
   },
-  category: 'Pet Supplies > Cat Supplies > Cat Litter Accessories',
-  image: 'https://www.purrify.ca/optimized/blog/realistic-modern-living.webp',
+  isPartOf: {
+    '@type': 'WebSite',
+    '@id': 'https://www.purrify.ca/#website',
+  },
 };
 
 // LocalBusiness schema for USA
@@ -136,7 +141,7 @@ export default async function USALandingPage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@graph': [
-              stripContext(productSchema),
+              stripContext(webPageSchema),
               stripContext(localBusinessSchema),
             ],
           }),

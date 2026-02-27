@@ -99,5 +99,5 @@ export default async function LocalizedProductsPage({ params }: LocalizedProduct
     notFound();
   }
 
-  return <PageContent />;
+  return <PageContent locale={locale} />;
 }

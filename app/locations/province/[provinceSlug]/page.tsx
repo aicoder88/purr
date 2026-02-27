@@ -125,10 +125,10 @@ const buildProvinceTestimonial = (
   };
 };
 
-/** Replace {{key}} placeholders with values */
+/** Replace {key} placeholders with values */
 const interpolate = (template: string, vars: Record<string, string>): string =>
   Object.entries(vars).reduce(
-    (result, [key, value]) => result.replace(new RegExp(`{{${key}}}`, 'g'), value),
+    (result, [key, value]) => result.replace(new RegExp(`\\{${key}\\}`, 'g'), value),
     template
   );
 

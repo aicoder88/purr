@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { onCLS, onINP, onFCP, onLCP, onTTFB } from 'web-vitals';
 
 interface MetricValue {
@@ -115,13 +115,19 @@ export function usePerformanceMonitoring() {
     observer.observe({ entryTypes: ['navigation'] });
 
     return () => observer.disconnect();
-  }, []);
+  }, []); // Empty deps is correct - only setup once on mount
 }
 
 // Real User Monitoring component
 export function RealUserMonitoring() {
+  // Use refs to maintain latest values in callbacks without re-subscribing
+  const urlRef = useRef<string>('');
+  
   useEffect(() => {
     if (typeof globalThis.window === 'undefined') return;
+    
+    // Keep ref updated with current URL for use in callbacks
+    urlRef.current = window.location.href;
 
     // Monitor resource loading
     const resourceObserver = new PerformanceObserver((list) => {
@@ -131,7 +137,7 @@ export function RealUserMonitoring() {
       if (slowResources.length > 0) {
         console.warn('Slow loading resources detected:', slowResources);
 
-        // Report slow resources
+        // Use ref to get current URL without stale closure
         fetch('/api/analytics/performance-issues', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -142,7 +148,7 @@ export function RealUserMonitoring() {
               duration: r.duration,
               size: (r as PerformanceResourceTiming).transferSize
             })),
-            url: window.location.href
+            url: urlRef.current
           })
         }).catch(() => {});
       }
@@ -165,7 +171,7 @@ export function RealUserMonitoring() {
               duration: t.duration,
               startTime: t.startTime
             })),
-            url: window.location.href
+            url: urlRef.current
           })
         }).catch(() => {});
       }
@@ -183,18 +189,27 @@ export function RealUserMonitoring() {
       resourceObserver.disconnect();
       longTaskObserver.disconnect();
     };
-  }, []);
+  }, []); // Empty deps - observers should only be created once
 
   return null;
 }
 
 // Performance budget monitoring
 export function PerformanceBudgetMonitor() {
+  // Use ref to avoid stale closure issues with window.location.href
+  const urlRef = useRef<string>('');
+  const userAgentRef = useRef<string>('');
+  
   useEffect(() => {
     if (typeof globalThis.window === 'undefined') return;
+    
+    // Store current values in refs to avoid stale closures
+    urlRef.current = window.location.href;
+    userAgentRef.current = navigator.userAgent;
 
     const checkBudgets = () => {
       const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+      if (!navigation) return;
 
       const budgets = {
         LCP: 2500, // ms
@@ -222,8 +237,8 @@ export function PerformanceBudgetMonitor() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             violations,
-            url: window.location.href,
-            userAgent: navigator.userAgent
+            url: urlRef.current,
+            userAgent: userAgentRef.current
           })
         }).catch(() => {});
       }
@@ -231,7 +246,7 @@ export function PerformanceBudgetMonitor() {
 
     window.addEventListener('load', checkBudgets);
     return () => window.removeEventListener('load', checkBudgets);
-  }, []);
+  }, []); // Empty deps - only run once on mount
 
   return null;
 }

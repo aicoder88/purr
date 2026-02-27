@@ -1,7 +1,7 @@
 import * as bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import prisma from '@/lib/prisma';
-import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit-app';
+import { withRateLimit, RATE_LIMITS } from '@/lib/rate-limit';
 import { NextRequest } from 'next/server';
 
 const JWT_SECRET = process.env.RETAILER_JWT_SECRET;

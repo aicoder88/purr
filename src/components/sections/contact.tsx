@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { ReactNode } from "react";
 
 // Dynamically import the ContactForm component
-const ContactForm = dynamic(() => import("../../../components/ContactForm"), {
+const ContactForm = dynamic(() => import("@/components/ContactForm"), {
   ssr: true,
 });
 

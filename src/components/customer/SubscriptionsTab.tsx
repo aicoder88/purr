@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { Calendar } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { Subscription } from './customer-portal-types';
@@ -16,23 +16,30 @@ export function SubscriptionsTab({
   formatCurrency,
   getStatusColor
 }: SubscriptionsTabProps) {
-  const [subscriptionList, setSubscriptionList] = useState(subscriptions);
+  // Use subscriptions directly since parent manages the data
+  // Local state only for optimistic updates during actions
+  const [localSubscriptions, setLocalSubscriptions] = useState<Record<string, Partial<Subscription>>>({});
   const [loading, setLoading] = useState(false);
+
+  // Merge local optimistic updates with props
+  const subscriptionList = subscriptions.map(sub => ({
+    ...sub,
+    ...localSubscriptions[sub.id]
+  }));
 
   const handleFrequencyChange = useCallback(async (subscriptionId: string, newFrequency: string) => {
     setLoading(true);
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
 
-      setSubscriptionList(prev => prev.map(sub =>
-        sub.id === subscriptionId
-          ? {
-            ...sub,
-            frequency: newFrequency as Subscription['frequency'],
-            nextDelivery: calculateNextDelivery(newFrequency)
-          }
-          : sub
-      ));
+      setLocalSubscriptions(prev => ({
+        ...prev,
+        [subscriptionId]: {
+          ...prev[subscriptionId],
+          frequency: newFrequency as Subscription['frequency'],
+          nextDelivery: calculateNextDelivery(newFrequency)
+        }
+      }));
     } catch {
       // Silently fail
     } finally {
@@ -72,14 +79,13 @@ export function SubscriptionsTab({
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
 
-      setSubscriptionList(prev => prev.map(sub =>
-        sub.id === subscriptionId
-          ? {
-            ...sub,
-            status: action === 'pause' ? 'paused' : action === 'resume' ? 'active' : 'cancelled'
-          }
-          : sub
-      ));
+      setLocalSubscriptions(prev => ({
+        ...prev,
+        [subscriptionId]: {
+          ...prev[subscriptionId],
+          status: action === 'pause' ? 'paused' : action === 'resume' ? 'active' : 'cancelled'
+        }
+      }));
 
       if (typeof globalThis.window !== 'undefined' && window.gtag) {
         window.gtag('event', 'subscription_action', {
@@ -107,9 +113,7 @@ export function SubscriptionsTab({
     return () => handleSubscriptionAction(subscriptionId, 'cancel');
   }, [handleSubscriptionAction]);
 
-  useEffect(() => {
-    setSubscriptionList(subscriptions);
-  }, [subscriptions]);
+
 
   return (
     <div className="space-y-6">

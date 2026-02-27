@@ -38,7 +38,7 @@ async function ensureUniqueSlug(baseSlug: string) {
   if (!prisma) {
     throw new Error('Database connection not established');
   }
-  const existing = await prisma.blogPost.findUnique({ where: { slug: slugCandidate } });
+  const existing = await prisma.blogPost.findFirst({ where: { slug: slugCandidate } });
   if (!existing) {
     return slugCandidate;
   }

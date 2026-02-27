@@ -272,6 +272,8 @@ function generateSchema(
         name: data.name,
         description: data.description,
         image: data.image,
+        sku: data.sku,
+        mpn: data.mpn,
         brand: {
           '@type': 'Brand',
           name: SITE_NAME,
@@ -284,6 +286,46 @@ function generateSchema(
           priceValidUntil: data.priceValidUntil,
           availability: data.availability || 'https://schema.org/InStock',
           itemCondition: 'https://schema.org/NewCondition',
+          seller: {
+            '@type': 'Organization',
+            name: SITE_NAME,
+          },
+          ...(data.shippingRate ? {
+            shippingDetails: {
+              '@type': 'OfferShippingDetails',
+              shippingRate: {
+                '@type': 'MonetaryAmount',
+                value: data.shippingRate,
+                currency: currency,
+              },
+              shippingDestination: {
+                '@type': 'DefinedRegion',
+                addressCountry: currency === 'USD' ? 'US' : 'CA',
+              },
+              deliveryTime: {
+                '@type': 'ShippingDeliveryTime',
+                handlingTime: {
+                  '@type': 'QuantitativeValue',
+                  minValue: 1,
+                  maxValue: 2,
+                  unitCode: 'd',
+                },
+                transitTime: {
+                  '@type': 'QuantitativeValue',
+                  minValue: 2,
+                  maxValue: 5,
+                  unitCode: 'd',
+                },
+              },
+            },
+          } : {}),
+          hasMerchantReturnPolicy: {
+            '@type': 'MerchantReturnPolicy',
+            returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+            merchantReturnDays: 30,
+            returnMethod: 'https://schema.org/ReturnByMail',
+            returnFees: 'https://schema.org/FreeReturn',
+          },
         },
         aggregateRating: data.rating ? {
           '@type': 'AggregateRating',
@@ -410,6 +452,14 @@ function generateSchema(
         },
         image: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
         sameAs: data.socialLinks || [],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: '109-17680 Rue Charles',
+          addressLocality: 'Mirabel',
+          addressRegion: 'QC',
+          postalCode: 'J7J 0T6',
+          addressCountry: 'CA'
+        },
         contactPoint: data.contactPoint
           ? {
             '@type': 'ContactPoint',

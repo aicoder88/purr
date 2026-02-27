@@ -30,21 +30,24 @@ export const TouchGallery: React.FC<TouchGalleryProps> = ({
   const galleryRef = useRef<HTMLDivElement>(null);
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Auto-play functionality
+  // Auto-play functionality with proper cleanup
   useEffect(() => {
-    if (isAutoPlaying) {
+    // Clear any existing interval first
+    if (autoPlayRef.current) {
+      clearInterval(autoPlayRef.current);
+      autoPlayRef.current = null;
+    }
+    
+    if (isAutoPlaying && images.length > 1) {
       autoPlayRef.current = setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % images.length);
       }, autoPlayInterval);
-    } else {
-      if (autoPlayRef.current) {
-        clearInterval(autoPlayRef.current);
-      }
     }
 
     return () => {
       if (autoPlayRef.current) {
         clearInterval(autoPlayRef.current);
+        autoPlayRef.current = null;
       }
     };
   }, [isAutoPlaying, autoPlayInterval, images.length]);
@@ -100,7 +103,7 @@ export const TouchGallery: React.FC<TouchGalleryProps> = ({
     setIsAutoPlaying(!isAutoPlaying);
   }, [isAutoPlaying]);
 
-  // Keyboard navigation
+  // Keyboard navigation - consolidated with all dependencies
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowLeft') {
@@ -109,13 +112,13 @@ export const TouchGallery: React.FC<TouchGalleryProps> = ({
         goToNext();
       } else if (e.key === ' ') {
         e.preventDefault();
-        setIsAutoPlaying(!isAutoPlaying);
+        setIsAutoPlaying(prev => !prev); // Use functional update to avoid dependency
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isAutoPlaying, goToNext, goToPrevious]);
+  }, [goToNext, goToPrevious]); // isAutoPlaying removed - uses functional update
 
   if (images.length === 0) return null;
 

@@ -15,7 +15,7 @@ const REMOTE_IMAGE_HOSTS = [
 
 /** @type {import('next').NextConfig['images']} */
 const images = {
-  unoptimized: true,
+  unoptimized: false,
   remotePatterns: REMOTE_IMAGE_HOSTS.map((hostname) => ({
     protocol: "https",
     hostname,

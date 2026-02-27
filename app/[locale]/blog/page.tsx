@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '@/components/ui/container';
@@ -16,10 +16,9 @@ interface BlogIndexPageProps {
   searchParams: Promise<{ page?: string }>;
 }
 
-// Generate static params for non-default locales only
-// English (default locale) is served at /blog/ via app/blog/page.tsx
+// Generate static params for all supported locales
 export async function generateStaticParams() {
-  return locales.filter((locale) => locale !== 'en').map((locale) => ({
+  return locales.map((locale) => ({
     locale,
   }));
 }
@@ -51,7 +50,7 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
   const hrefLang = locale === 'en' ? 'en-CA' :
     locale === 'fr' ? 'fr-CA' : 'en-CA';
 
-  const canonicalPath = locale === 'en' ? `${SITE_URL}/blog/` : `${SITE_URL}/${locale}/blog/`;
+  const canonicalPath = `${SITE_URL}/${locale}/blog/`;
 
   return {
     title: localeMeta.title,
@@ -60,10 +59,10 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
     alternates: {
       canonical: canonicalPath,
       languages: {
-        'en-CA': `${SITE_URL}/blog/`,
+        'en-CA': `${SITE_URL}/en/blog/`,
         'fr-CA': `${SITE_URL}/fr/blog/`,
-        'en-US': `${SITE_URL}/blog/`,
-        'x-default': `${SITE_URL}/blog/`,
+        'en-US': `${SITE_URL}/en/blog/`,
+        'x-default': `${SITE_URL}/en/blog/`,
         // Self-reference for the current locale
         [hrefLang]: canonicalPath,
       },
@@ -203,11 +202,6 @@ export default async function LocalizedBlogIndexPage({
   searchParams,
 }: BlogIndexPageProps) {
   const { locale } = await params;
-
-  // English is served at /blog/ (no locale prefix)
-  if (locale === 'en') {
-    redirect('/blog/');
-  }
 
   // Validate locale
   if (!isValidLocale(locale)) {

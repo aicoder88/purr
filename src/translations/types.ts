@@ -816,7 +816,87 @@ export interface TranslationType {
     disclaimer: string;
   };
 
-
+  // Canada Page
+  canadaPage: {
+    // Meta
+    pageTitle: string;
+    pageDescription: string;
+    // Breadcrumb
+    breadcrumb: string;
+    // Hero
+    badge: string;
+    heroTitle: string;
+    heroDescription: string;
+    ctaTrial: string;
+    ctaProducts: string;
+    shippingBadge: string;
+    guaranteeBadge: string;
+    heroImageAlt: string;
+    // Benefits Section
+    benefitsTitle: string;
+    benefitsSubtitle: string;
+    benefitMadeInCanada: string;
+    benefitMadeInCanadaDesc: string;
+    benefitFreeShipping: string;
+    benefitFreeShippingDesc: string;
+    benefitNatural: string;
+    benefitNaturalDesc: string;
+    benefitSupport: string;
+    benefitSupportDesc: string;
+    // Story Section
+    storyTitle: string;
+    storyP1: string;
+    storyP2: string;
+    storyP3: string;
+    statCanadianMade: string;
+    statDays: string;
+    statDaysLabel: string;
+    statFragrances: string;
+    statFragrancesLabel: string;
+    // Shipping Section
+    shippingTitle: string;
+    shippingSubtitle: string;
+    shippingOptionsTitle: string;
+    freeShippingTitle: string;
+    freeShippingDesc: string;
+    expeditedTitle: string;
+    expeditedDesc: string;
+    // Reviews Section
+    reviewsTitle: string;
+    reviewsSubtitle: string;
+    review1: string;
+    review1Author: string;
+    review2: string;
+    review2Author: string;
+    review3: string;
+    review3Author: string;
+    // CTA Section
+    ctaTitle: string;
+    ctaSubtitle: string;
+    ctaTrialButton: string;
+    ctaStandardButton: string;
+    ctaFooter: string;
+    // FAQ Section
+    faqTitle: string;
+    faq1Q: string;
+    faq1A: string;
+    faq2Q: string;
+    faq2A: string;
+    faq3Q: string;
+    faq3A: string;
+    faq4Q: string;
+    faq4A: string;
+    faq5Q: string;
+    faq5A: string;
+    // Related Content
+    relatedTitle: string;
+    relatedCarbonTitle: string;
+    relatedCarbonDesc: string;
+    relatedApartmentTitle: string;
+    relatedApartmentDesc: string;
+    relatedAlternativeTitle: string;
+    relatedAlternativeDesc: string;
+  };
 
   // Contact Page
   contactPage: {
@@ -2137,6 +2217,7 @@ export interface TranslationType {
       day3: { title: string; description: string };
       week1: { title: string; description: string };
       ongoing: { title: string; description: string };
+      imageAlt: string;
     };
     comparison: {
       headline: string;
@@ -2718,6 +2799,56 @@ export interface TranslationType {
       contactSupport: string;
     };
     emergencyContact: string;
+  };
+
+  errorPages?: {
+    common: {
+      tryAgain: string;
+      goHome: string;
+      errorId: string;
+      debugInfo: string;
+      support: string;
+    };
+    locale: {
+      title: string;
+      message: string;
+      backToHome: string;
+      reference: string;
+      developerDetails: string;
+      localeLabel: string;
+      digestLabel: string;
+      notAvailable: string;
+    };
+    blog: {
+      title: string;
+      message: string;
+      contactSupport: string;
+    };
+    blogPost: {
+      title: string;
+      message: string;
+      allArticles: string;
+      backToBlog: string;
+      slugLabel: string;
+      localeLabel: string;
+      notAvailable: string;
+    };
+    learn: {
+      title: string;
+      message: string;
+      backToLearn: string;
+      relatedResources: string;
+      blog: string;
+      support: string;
+    };
+    products: {
+      title: string;
+      message: string;
+      backToProducts: string;
+      popularPages: string;
+      tryFree: string;
+      contactSupport: string;
+    };
   };
 
   // Forms (standardized messages)

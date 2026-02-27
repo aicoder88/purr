@@ -1,14 +1,14 @@
 'use client';
 
-import { Container } from '../../../src/components/ui/container';
-import { Button } from '../../../src/components/ui/button';
+import { Container } from '@/components/ui/container';
+import { Button } from '@/components/ui/button';
 
 import { useTranslations, useLocale } from 'next-intl';
-import { formatProductPrice } from '../../../src/lib/pricing';
+import { formatProductPrice } from '@/lib/pricing';
 import Link from 'next/link';
 import { ArrowLeft, Atom, Zap, Shield, Microscope, FlaskConical, BarChart3, Home, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
-import { RelatedContent } from '../../../src/components/seo/RelatedContent';
+import { RelatedContent } from '@/components/seo/RelatedContent';
 
 type SupportedLocale = 'en' | 'fr' | 'zh' | 'es';
 

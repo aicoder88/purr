@@ -284,5 +284,121 @@ export async function applyRateLimit(
   };
 }
 
+// Additional rate limit presets for common use cases
+export const RATE_LIMITS = {
+  // Strict limits for authentication
+  AUTH: {
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    maxRequests: 5,
+    message: 'Too many login attempts. Please try again later.',
+  },
+  // Moderate limits for content creation
+  CREATE: {
+    windowMs: 60 * 1000, // 1 minute
+    maxRequests: 10,
+    message: 'Too many requests. Please slow down.',
+  },
+  // Lenient limits for reading
+  READ: {
+    windowMs: 60 * 1000, // 1 minute
+    maxRequests: 100,
+    message: 'Too many requests. Please slow down.',
+  },
+  // Image upload limits
+  UPLOAD: {
+    windowMs: 60 * 1000, // 1 minute
+    maxRequests: 15,
+    message: 'Too many uploads. Please wait a moment.',
+  },
+  // Bulk operations - stricter limits
+  BULK: {
+    windowMs: 60 * 1000, // 1 minute
+    maxRequests: 5,
+    message: 'Too many bulk operations. Please wait a moment.',
+  },
+  // Export operations - strict limits to prevent abuse
+  EXPORT: {
+    windowMs: 60 * 1000, // 1 minute
+    maxRequests: 3,
+    message: 'Too many export requests. Please wait a moment.',
+  },
+};
+
+interface RateLimitPreset {
+  windowMs: number;
+  maxRequests: number;
+  message?: string;
+}
+
+type RouteHandler<T extends Request = Request> = (req: T) => Promise<Response> | Response;
+
+/**
+ * Middleware to apply rate limiting to route handlers
+ * Provides similar API to the deprecated rate-limit-app.ts
+ */
+export function withRateLimit<T extends Request>(
+  config: RateLimitPreset,
+  handler: RouteHandler<T>
+): RouteHandler<T> {
+  // Simple in-memory store for withRateLimit (per-instance)
+  const store = new Map<string, { count: number; resetTime: number }>();
+
+  return async (req: T): Promise<Response> => {
+    const clientIp = getClientIp(req);
+    const url = new URL(req.url).pathname;
+    const key = `${url}:${clientIp}`;
+    const now = Date.now();
+
+    // Get or create entry
+    let entry = store.get(key);
+    if (!entry || entry.resetTime < now) {
+      entry = {
+        count: 0,
+        resetTime: now + config.windowMs,
+      };
+      store.set(key, entry);
+    }
+
+    // Increment count
+    entry.count++;
+
+    const allowed = entry.count <= config.maxRequests;
+    const remaining = Math.max(0, config.maxRequests - entry.count);
+
+    if (!allowed) {
+      return new Response(
+        JSON.stringify({
+          error: config.message || 'Too many requests',
+          retryAfter: Math.ceil((entry.resetTime - now) / 1000),
+        }),
+        {
+          status: 429,
+          headers: {
+            'Content-Type': 'application/json',
+            'X-RateLimit-Limit': config.maxRequests.toString(),
+            'X-RateLimit-Remaining': '0',
+            'X-RateLimit-Reset': new Date(entry.resetTime).toISOString(),
+            'Retry-After': Math.ceil((entry.resetTime - now) / 1000).toString(),
+          },
+        }
+      );
+    }
+
+    // Execute handler
+    const response = await handler(req);
+
+    // Add rate limit headers to successful response
+    try {
+      response.headers.set('X-RateLimit-Limit', config.maxRequests.toString());
+      response.headers.set('X-RateLimit-Remaining', remaining.toString());
+      response.headers.set('X-RateLimit-Reset', new Date(entry.resetTime).toISOString());
+    } catch {
+      // Ignore if headers are immutable
+    }
+
+    return response;
+  };
+}
+
 // Export types and config for use in other modules
 export { RATE_LIMIT_CONFIG, type RateLimitType };

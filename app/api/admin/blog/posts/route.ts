@@ -3,7 +3,7 @@ import { ContentStore } from '@/lib/blog/content-store';
 import { AuditLogger } from '@/lib/blog/audit-logger';
 import { RevisionManager } from '@/lib/blog/revision-manager';
 import { SitemapGenerator } from '@/lib/blog/sitemap-generator';
-import { sanitizeBlogPost } from '@/lib/security/sanitize';
+import { sanitizeBlogPost, validateSanitizedBlogPost } from '@/lib/security/sanitize';
 import { checkRateLimit, createRateLimitHeaders } from '@/lib/rate-limit';
 import { z } from 'zod';
 import type { BlogPost } from '@/types/blog';
@@ -97,6 +97,15 @@ export async function POST(request: Request) {
     // Sanitize post content to prevent XSS
     post = sanitizeBlogPost(post as unknown as Parameters<typeof sanitizeBlogPost>[0]) as BlogPost;
 
+    // Validate sanitized output shape before saving
+    const validation = validateSanitizedBlogPost(post);
+    if (!validation.valid) {
+      return Response.json(
+        { error: 'Validation failed', details: validation.errors },
+        { status: 400, headers: rateLimitHeaders }
+      );
+    }
+
     // Save post
     await store.savePost(post);
 
@@ -184,6 +193,15 @@ export async function PUT(request: Request) {
 
     // Sanitize post content to prevent XSS
     post = sanitizeBlogPost(post as unknown as Parameters<typeof sanitizeBlogPost>[0]) as BlogPost;
+
+    // Validate sanitized output shape before saving
+    const validation = validateSanitizedBlogPost(post);
+    if (!validation.valid) {
+      return Response.json(
+        { error: 'Validation failed', details: validation.errors },
+        { status: 400, headers: rateLimitHeaders }
+      );
+    }
 
     // Update modified date
     post.modifiedDate = new Date().toISOString();

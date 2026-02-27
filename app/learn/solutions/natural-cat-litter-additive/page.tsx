@@ -1,9 +1,9 @@
 export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
-import { SITE_NAME } from '../../../../src/lib/constants';
+import { SITE_NAME } from '@/lib/constants';
 import NaturalCatLitterAdditivePageClient from './NaturalCatLitterAdditivePageClient';
-import { stripContext } from '../../../../src/lib/seo-utils';
+import { stripContext } from '@/lib/seo-utils';
 
 const pageTitle = `Non-Toxic Cat Litter Deodorizer: Safe for Cats, Effective for Odor | ${SITE_NAME}`;
 const pageDescription = 'Looking for a non-toxic cat litter deodorizer? Activated carbon is food-grade, fragrance-free, and safe if ingested. Works 10x longer than baking soda without chemicals.';

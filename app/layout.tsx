@@ -6,6 +6,8 @@ import { defaultLocale, getLocaleFromPathname, Locale } from '@/i18n/config';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { Providers } from './providers';
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -194,49 +196,50 @@ export default async function RootLayout({
           type="image/webp"
           fetchPriority="high"
         />
+        {gtmId ? (
+          /* Raw <script> so data-cfasync="false" lands on the element itself.
+             Next.js <Script> wraps content in its loader JSON, hiding the
+             attribute from Cloudflare Rocket Loader which then rewrites the
+             type to a deferred hash — preventing GTM from executing. */
+          /* eslint-disable-next-line @next/next/next-script-for-ga */
+          <script
+            data-cfasync="false"
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer=window.dataLayer||[];
+                window.gtag=window.gtag||function(){window.dataLayer.push(arguments);};
+                (function(w,d,s,l,i){
+                  w[l]=w[l]||[];
+                  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+                  var f=d.getElementsByTagName(s)[0],
+                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+                  j.async=true;
+                  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+                  f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','${gtmId}');
+              `,
+            }}
+          />
+        ) : null}
       </head>
       <body className="font-sans overflow-x-clip">
         {gtmId ? (
-          <>
-            {/* Raw <script> so data-cfasync="false" lands on the element itself.
-                Next.js <Script> wraps content in its loader JSON, hiding the
-                attribute from Cloudflare Rocket Loader which then rewrites the
-                type to a deferred hash — preventing GTM from executing. */}
-            {/* eslint-disable-next-line @next/next/next-script-for-ga */}
-            <script
-              data-cfasync="false"
-              dangerouslySetInnerHTML={{
-                __html: `
-                  window.dataLayer=window.dataLayer||[];
-                  window.gtag=window.gtag||function(){window.dataLayer.push(arguments);};
-                  (function(w,d,s,l,i){
-                    w[l]=w[l]||[];
-                    w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
-                    var f=d.getElementsByTagName(s)[0],
-                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
-                    j.async=true;
-                    j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-                    f.parentNode.insertBefore(j,f);
-                  })(window,document,'script','dataLayer','${gtmId}');
-                `,
-              }}
+          <noscript>
+            <iframe
+              title="gtm-noscript"
+              src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
             />
-            <noscript>
-              <iframe
-                title="gtm-noscript"
-                src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
-                height="0"
-                width="0"
-                style={{ display: 'none', visibility: 'hidden' }}
-              />
-            </noscript>
-          </>
+          </noscript>
         ) : null}
         <Providers locale={locale} messages={messages}>
           <AppLayout>
             {children}
           </AppLayout>
-
+          <Analytics />
+          <SpeedInsights />
         </Providers>
       </body>
     </html >

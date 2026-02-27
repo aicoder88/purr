@@ -1,6 +1,6 @@
 'use client';
 
-import { Container } from '../../../src/components/ui/container';
+import { Container } from '@/components/ui/container';
 import Link from 'next/link';
 import Image from 'next/image';
 import { AlertTriangle, ShieldCheck, Wind, Heart, Home, ChevronRight, Check, X, Thermometer, Clock } from 'lucide-react';

@@ -10,6 +10,7 @@ export function LocaleDetector() {
     const pathname = usePathname();
 
     useEffect(() => {
+        // Only check when pathname changes to avoid unnecessary re-renders
         // Read cookie directly to avoid server roundtrip
         const cookieLocale = document.cookie
             .split('; ')
@@ -21,7 +22,9 @@ export function LocaleDetector() {
         if (cookieLocale && cookieLocale !== locale && ['en', 'fr'].includes(cookieLocale)) {
             setLocaleClient(cookieLocale);
         }
-    }, [pathname, setLocaleClient, locale]);
+        // Only depend on pathname changes, not locale/setLocaleClient to prevent infinite loops
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pathname]);
 
     return null;
 }

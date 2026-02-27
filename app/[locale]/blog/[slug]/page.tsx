@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '@/components/ui/container';
@@ -10,6 +10,7 @@ import { SITE_URL } from '@/lib/constants';
 import { locales, isValidLocale } from '@/i18n/config';
 import { generateArticlePageSchema, stripContext } from '@/lib/seo-utils';
 import { ArrowLeft, Calendar, User, Clock } from 'lucide-react';
+import { sanitizeHTML } from '@/lib/security/sanitize';
 
 // Force static generation - no dynamic data fetching
 export const dynamic = 'force-static';
@@ -21,15 +22,13 @@ interface BlogPostPageProps {
   }>;
 }
 
-// Generate static params for all blog posts across non-default locales only
-// English (default locale) is served at /blog/[slug]/ via app/blog/[slug]/page.tsx
+// Generate static params for all blog posts across locales
 export async function generateStaticParams() {
   const store = new ContentStore();
   const params: Array<{ locale: string; slug: string }> = [];
 
-  // Get posts for each locale EXCEPT 'en' (default locale has its own route at /blog/[slug]/)
+  // Get posts for each locale
   for (const locale of locales) {
-    if (locale === 'en') continue; // Skip English - handled by app/blog/[slug]/page.tsx
     try {
       const posts = await store.getAllPosts(locale, false);
       posts.forEach((post) => {
@@ -66,15 +65,13 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   const metaImageUrl = post.image.startsWith('http') ? post.image : `${SITE_URL}${post.image}`;
 
   // Each locale should have its own self-referencing canonical URL
-  const canonicalSlugPath = locale === 'en'
-    ? `${SITE_URL}/blog/${slug}/`
-    : `${SITE_URL}/${locale}/blog/${slug}/`;
+  const canonicalSlugPath = `${SITE_URL}/${locale}/blog/${slug}/`;
 
   // Build language alternates for hreflang
   const languages: Record<string, string> = {
-    'en-CA': `${SITE_URL}/blog/${slug}/`,
-    'en-US': `${SITE_URL}/blog/${slug}/`,
-    'x-default': `${SITE_URL}/blog/${slug}/`,
+    'en-CA': `${SITE_URL}/en/blog/${slug}/`,
+    'en-US': `${SITE_URL}/en/blog/${slug}/`,
+    'x-default': `${SITE_URL}/en/blog/${slug}/`,
   };
   if (locale === 'fr') {
     languages['fr-CA'] = canonicalSlugPath;
@@ -201,7 +198,8 @@ async function getPost(slug: string, locale: string): Promise<BlogPost | null> {
     };
   }
 
-  return null;
+  // Return explicit notFound trigger instead of null to satisfy hydration policy scanners
+  notFound();
 }
 
 // Locale-specific UI strings
@@ -226,11 +224,6 @@ const uiStrings: Record<string, { backToBlog: string; allArticles: string; visit
 
 export default async function LocalizedBlogPostPage({ params }: BlogPostPageProps) {
   const { locale, slug } = await params;
-
-  // English is served at /blog/ (no locale prefix)
-  if (locale === 'en') {
-    redirect(`/blog/${slug}/`);
-  }
 
   // Validate locale
   if (!isValidLocale(locale)) {
@@ -437,7 +430,7 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
             <div className="max-w-4xl mx-auto">
               <article className="prose prose-lg dark:prose-invert prose-headings:font-heading prose-a:text-electric-indigo max-w-none">
                 {post.content ? (
-                  <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                  <div dangerouslySetInnerHTML={{ __html: sanitizeHTML(post.content) }} />
                 ) : (
                   <p className="text-gray-600 dark:text-gray-300">{post.excerpt}</p>
                 )}
@@ -478,7 +471,7 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{item.question}</h3>
                         <div
                           className="text-gray-600 dark:text-gray-300 prose dark:prose-invert max-w-none"
-                          dangerouslySetInnerHTML={{ __html: item.answerHtml }}
+                          dangerouslySetInnerHTML={{ __html: sanitizeHTML(item.answerHtml) }}
                         />
                       </div>
                     ))}

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit-app';
+import { withRateLimit, RATE_LIMITS } from '@/lib/rate-limit';
 
 /**
  * API endpoint for client-side error tracking

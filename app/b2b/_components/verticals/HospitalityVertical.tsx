@@ -1,5 +1,4 @@
-'use client';
-import { Building2, Star,   CheckCircle,  Phone, Mail } from 'lucide-react';
+import { Building2, Star, CheckCircle, Phone, Mail } from 'lucide-react';
 interface HospitalityVerticalProps {
   locale: string;
 }

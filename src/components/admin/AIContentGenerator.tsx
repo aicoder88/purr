@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Sparkles, RefreshCw, Check, X, History } from 'lucide-react';
 import LoadingSpinner from './LoadingSpinner';
 import { toast } from 'sonner';
@@ -56,11 +56,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
   const [showHistory, setShowHistory] = useState(false);
   const [history, setHistory] = useState<AIHistoryRecord[]>([]);
 
-  useEffect(() => {
-    loadTemplates();
-  }, []);
-
-  const loadTemplates = async () => {
+  const loadTemplates = useCallback(async () => {
     try {
       const response = await fetch('/api/admin/blog/templates');
       if (response.ok) {
@@ -70,7 +66,11 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
     } catch {
       // Silently fail - templates are optional
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    loadTemplates();
+  }, [loadTemplates]);
 
   const loadHistory = async () => {
     try {

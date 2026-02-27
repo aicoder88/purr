@@ -1,0 +1,25 @@
+# Build outputs
+.next
+out
+dist
+
+# Dependencies
+node_modules
+
+# Generated files
+src/generated
+*.generated.ts
+*.generated.tsx
+
+# Logs
+*.log
+
+# Cache
+.cache
+.eslintcache
+
+# Misc
+*.min.js
+*.min.css
+public/optimized
+content/blog

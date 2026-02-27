@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Container } from '../../../src/components/ui/container';
-import { RelatedArticles } from '../../../src/components/blog/RelatedArticles';
+import { Container } from '@/components/ui/container';
+import { RelatedArticles } from '@/components/blog/RelatedArticles';
 import { ChevronRight, Home, Sparkles, Wind, Cat, Building2, Users, Leaf, Heart } from 'lucide-react';
 
 interface SolutionCard {

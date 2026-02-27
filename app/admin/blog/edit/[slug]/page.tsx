@@ -36,14 +36,16 @@ interface EditPostPageProps {
 }
 
 async function fetchPostData(slug: string) {
-  const response = await fetch(`/api/admin/blog/posts/${slug}`);
+  const [response, categoriesResponse, tagsResponse] = await Promise.all([
+    fetch(`/api/admin/blog/posts/${slug}`),
+    fetch('/api/admin/blog/categories'),
+    fetch('/api/admin/blog/tags'),
+  ]);
+
   if (!response.ok) throw new Error('Failed to fetch post');
   const post = await response.json();
 
-  const categoriesResponse = await fetch('/api/admin/blog/categories');
   const categories = categoriesResponse.ok ? await categoriesResponse.json() : [];
-
-  const tagsResponse = await fetch('/api/admin/blog/tags');
   const tags = tagsResponse.ok ? await tagsResponse.json() : [];
 
   return { post, categories, tags };

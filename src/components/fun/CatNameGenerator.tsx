@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Copy, RefreshCw, Cat, Crown, Heart, Star, PartyPopper } from "lucide-react";
 import { playRandomMeow, playRandomPurr, initAudioContext } from "@/lib/sounds/cat-sounds";
@@ -95,16 +95,12 @@ function getNameTypeLabel(type: string) {
 }
 
 export function CatNameGenerator() {
-    const [generatedName, setGeneratedName] = useState<GeneratedName | null>(null);
+    // Generate initial name using useMemo instead of useEffect
+    const initialName = useMemo(() => generateCatName(), []);
+    const [generatedName, setGeneratedName] = useState<GeneratedName | null>(initialName);
     const [copied, setCopied] = useState(false);
     const [isGenerating, setIsGenerating] = useState(false);
     const [history, setHistory] = useState<GeneratedName[]>([]);
-
-    // Generate a name on mount
-    useEffect(() => {
-        const name = generateCatName();
-        setGeneratedName(name);
-    }, []);
 
     const generateName = useCallback(() => {
         initAudioContext();

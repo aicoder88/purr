@@ -17,11 +17,9 @@ interface AutoSaveIndicatorProps {
 }
 
 export default function AutoSaveIndicator({ state }: AutoSaveIndicatorProps) {
-  const [currentTime, setCurrentTime] = useState(0);
+  const [currentTime, setCurrentTime] = useState(() => Date.now());
 
   useEffect(() => {
-    // Set initial time
-    setCurrentTime(Date.now());
     // Update every second
     const interval = setInterval(() => {
       setCurrentTime(Date.now());

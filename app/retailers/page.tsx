@@ -64,7 +64,7 @@ const retailerFaqs = [
   }
 ];
 
-// Organization schema for B2B Wholesale
+// Organization schema for B2B Wholesale (no Product schema - this is not a product page)
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -73,21 +73,6 @@ const organizationSchema = {
   "url": canonicalUrl,
   "logo": "https://www.purrify.ca/optimized/logos/purrify-logo.png",
   "areaServed": ["Canada", "United States"],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Purrify Wholesale Products",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Product",
-          "name": "Purrify Activated Carbon Cat Litter Deodorizer",
-          "description": "Water-filter grade activated carbon for litter box odor control"
-        },
-        "eligibleCustomerType": "Business"
-      }
-    ]
-  },
   "contactPoint": {
     "@type": "ContactPoint",
     "contactType": "wholesale inquiries",

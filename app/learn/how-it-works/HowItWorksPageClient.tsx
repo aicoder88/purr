@@ -1,12 +1,12 @@
 'use client';
 
-import { Container } from '../../../src/components/ui/container';
-import { Button } from '../../../src/components/ui/button';
+import { Container } from '@/components/ui/container';
+import { Button } from '@/components/ui/button';
 
-import { useCurrency } from '../../../src/lib/currency-context';
-import { RelatedContent } from '../../../src/components/seo/RelatedContent';
-import { formatProductPrice } from '../../../src/lib/pricing';
-import { getPaymentLink } from '../../../src/lib/payment-links';
+import { useCurrency } from '@/lib/currency-context';
+import { RelatedContent } from '@/components/seo/RelatedContent';
+import { formatProductPrice } from '@/lib/pricing';
+import { getPaymentLink } from '@/lib/payment-links';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Microscope, Zap, Shield, Leaf, ChevronRight, Home } from 'lucide-react';

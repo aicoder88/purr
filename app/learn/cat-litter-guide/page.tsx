@@ -1,7 +1,7 @@
 export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
-import { SITE_NAME } from '../../../src/lib/constants';
+import { SITE_NAME } from '@/lib/constants';
 import CatLitterGuidePageContent from './CatLitterGuidePageContent';
 
 export const metadata: Metadata = {

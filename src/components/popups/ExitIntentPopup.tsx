@@ -50,7 +50,7 @@ export function ExitIntentPopup({
   const hasTriggered = useRef(false);
   const isDelayPassed = useRef(false);
 
-  // Check if should show popup
+  // Combined effect for popup initialization and event listeners
   useEffect(() => {
     if (typeof globalThis.window === 'undefined') return;
 
@@ -68,15 +68,8 @@ export function ExitIntentPopup({
       isDelayPassed.current = true;
     }, delayMs);
 
-    return () => clearTimeout(timer);
-  }, [delayMs]);
-
-  // Desktop: Mouse-out detection
-  useEffect(() => {
-    if (typeof globalThis.window === 'undefined') return;
-
+    // Desktop: Mouse-out detection
     const handleMouseOut = (e: MouseEvent) => {
-      // Only trigger if mouse leaves through the top of the page
       if (
         !hasTriggered.current &&
         isDelayPassed.current &&
@@ -89,14 +82,7 @@ export function ExitIntentPopup({
       }
     };
 
-    document.addEventListener('mouseout', handleMouseOut);
-    return () => document.removeEventListener('mouseout', handleMouseOut);
-  }, []);
-
-  // Mobile: Scroll-up detection (aggressive scroll back up = leaving)
-  useEffect(() => {
-    if (typeof globalThis.window === 'undefined') return;
-
+    // Mobile: Scroll-up detection
     let lastScrollY = window.scrollY;
     let scrollUpDistance = 0;
 
@@ -104,10 +90,7 @@ export function ExitIntentPopup({
       const currentScrollY = window.scrollY;
 
       if (currentScrollY < lastScrollY) {
-        // Scrolling up
         scrollUpDistance += lastScrollY - currentScrollY;
-
-        // If scrolled up more than 200px quickly, trigger
         if (
           !hasTriggered.current &&
           isDelayPassed.current &&
@@ -119,16 +102,20 @@ export function ExitIntentPopup({
           localStorage.setItem(STORAGE_KEY, 'true');
         }
       } else {
-        // Reset if scrolling down
         scrollUpDistance = 0;
       }
-
       lastScrollY = currentScrollY;
     };
 
+    document.addEventListener('mouseout', handleMouseOut);
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener('mouseout', handleMouseOut);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [delayMs]);
 
   const handleClose = useCallback(() => {
     setIsVisible(false);

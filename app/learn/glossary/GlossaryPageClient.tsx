@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { Container } from '../../../src/components/ui/container';
-import { Button } from '../../../src/components/ui/button';
+import { Container } from '@/components/ui/container';
+import { Button } from '@/components/ui/button';
 
 import {
   BookOpen,
@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 import { useLocale } from 'next-intl';
 import { useState, useCallback } from 'react';
-import { formatProductPrice } from '../../../src/lib/pricing';
+import { formatProductPrice } from '@/lib/pricing';
 
 interface GlossaryTerm {
   id: string;

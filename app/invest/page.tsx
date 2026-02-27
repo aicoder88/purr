@@ -13,6 +13,15 @@ export const metadata: Metadata = {
   },
   openGraph: {
     url: `${SITE_URL}/invest/`,
+    images: [
+      {
+        url: '/optimized/logos/purrify-logo.png',
+        width: 1200,
+        height: 800,
+        alt: 'Purrify',
+        type: 'image/png',
+      },
+    ],
   },
 };
 

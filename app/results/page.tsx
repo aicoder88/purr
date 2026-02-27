@@ -24,28 +24,22 @@ export const metadata: Metadata = {
 };
 
 export default function ResultsPage() {
-  // Product schema for structured data
+  // WebPage schema for Results/Testimonials page (not a product page)
   const schema = {
     '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: 'Purrify Cat Litter Deodorizer',
-    description: 'Activated carbon cat litter additive that eliminates odors naturally',
-    image: [
-      'https://www.purrify.ca/optimized/products/60g-transparent.webp',
-      'https://www.purrify.ca/optimized/products/140g-transparent.webp',
-      'https://www.purrify.ca/optimized/logos/purrify-logo.png',
-    ],
-    brand: {
-      '@type': 'Brand',
-      name: 'Purrify',
+    '@type': 'WebPage',
+    '@id': 'https://www.purrify.ca/results/',
+    url: 'https://www.purrify.ca/results/',
+    name: 'Customer Results & Testimonials | Purrify',
+    description: 'See real customer results and testimonials for Purrify activated carbon cat litter deodorizer.',
+    inLanguage: 'en-CA',
+    primaryImageOfPage: {
+      '@type': 'ImageObject',
+      url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
     },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'CAD',
-      price: '4.76',
-      availability: 'https://schema.org/InStock',
-      url: 'https://www.purrify.ca/',
-      itemCondition: 'https://schema.org/NewCondition',
+    isPartOf: {
+      '@type': 'WebSite',
+      '@id': 'https://www.purrify.ca/#website',
     },
   };
 

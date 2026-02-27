@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect } from 'react';
+import { useCallback, useState, useMemo } from 'react';
 import type { MouseEvent } from 'react';
 import { Check, Star, Zap, Gift, Crown, Truck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -139,15 +139,14 @@ export function SubscriptionPlans({
   showAnnualSavings = true 
 }: SubscriptionPlansProps) {
   const [hoveredPlan, setHoveredPlan] = useState<string | null>(null);
-  const [animationDelay, setAnimationDelay] = useState<Record<string, number>>({});
-
-  useEffect(() => {
-    // Stagger animations for visual appeal
+  
+  // Use useMemo for static animation delays instead of useEffect
+  const animationDelay = useMemo(() => {
     const delays: Record<string, number> = {};
     SUBSCRIPTION_PLANS.forEach((plan, index) => {
       delays[plan.id] = index * 100;
     });
-    setAnimationDelay(delays);
+    return delays;
   }, []);
 
   const handleSelectPlan = useCallback((planId: string) => {

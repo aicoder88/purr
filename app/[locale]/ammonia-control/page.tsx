@@ -134,7 +134,7 @@ export default async function AmmoniaControlPage({ params }: AmmoniaControlPageP
   const { locale } = await params;
   // Static generation with default CAD currency
   // Client-side detection can adjust if needed
-  const currency: Currency = 'CAD';
+  const _currency: Currency = 'CAD';
 
   const normalizedLocale = normalizeLocale(locale);
   const t = translations[normalizedLocale as keyof typeof translations] || en;
@@ -198,26 +198,25 @@ export default async function AmmoniaControlPage({ params }: AmmoniaControlPageP
   ];
 
   // Currency symbol (static CAD for SSR)
-  const lowPrice = '4.76';
-  const highPrice = '34.99';
+  const _lowPrice = '4.76';
+  const _highPrice = '34.99';
 
-  // Structured Data - Product
-  const productSchema = {
+  // Structured Data - WebPage for Ammonia Control landing page (not a product page)
+  const webPageSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: 'Purrify Cat Litter Deodorizer',
+    '@type': 'WebPage',
+    '@id': `${SITE_URL}/${locale === 'en' ? '' : locale + '/'}ammonia-control/`,
+    url: `${SITE_URL}/${locale === 'en' ? '' : locale + '/'}ammonia-control/`,
+    name: ammonia.meta.title,
     description: ammonia.meta.description,
-    brand: {
-      '@type': 'Brand',
-      name: 'Purrify',
+    inLanguage: normalizedLocale === 'fr' ? 'fr-CA' : 'en-CA',
+    primaryImageOfPage: {
+      '@type': 'ImageObject',
+      url: `${SITE_URL}/optimized/logos/purrify-logo.png`,
     },
-    offers: {
-      '@type': 'AggregateOffer',
-      priceCurrency: currency,
-      lowPrice: lowPrice,
-      highPrice: highPrice,
-      offerCount: '3',
-      availability: 'https://schema.org/InStock',
+    isPartOf: {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
     },
   };
 
@@ -264,7 +263,7 @@ export default async function AmmoniaControlPage({ params }: AmmoniaControlPageP
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@graph': [
-              stripContext(productSchema),
+              stripContext(webPageSchema),
               stripContext(faqSchema),
               stripContext(breadcrumbSchema),
             ],
@@ -563,7 +562,7 @@ export default async function AmmoniaControlPage({ params }: AmmoniaControlPageP
             <div className="relative">
               <Image
                 src="/optimized/blog/ammonia-fresh-home.webp"
-                alt="Fresh home with cat after using Purrify"
+                alt={ammonia.results.imageAlt}
                 width={600}
                 height={600}
                 className="rounded-2xl shadow-xl"

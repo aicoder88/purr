@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { gtmEvent } from '@/lib/gtm-events';
 
 interface PerformanceMetrics {
@@ -21,11 +21,18 @@ export const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
   reportInterval = 30000, // 30 seconds
   sampleRate = 0.1 // 10% of users
 }) => {
+  // Use refs to avoid stale closures in callbacks
+  const metricsRef = useRef<PerformanceMetrics>({});
+  const reportIntervalRef = useRef(reportInterval);
+  
+  // Keep ref updated with latest value
+  reportIntervalRef.current = reportInterval;
+
   useEffect(() => {
     if (!enabled || Math.random() > sampleRate) return;
 
-    const metrics: PerformanceMetrics = {};
-    let reportTimeout: NodeJS.Timeout;
+    const metrics = metricsRef.current;
+    let reportTimeout: NodeJS.Timeout | null = null;
 
     // Core Web Vitals monitoring
     const observeWebVitals = () => {
@@ -284,17 +291,18 @@ export const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
       monitorErrors();
     };
 
-    // Periodic reporting
+    // Periodic reporting - use ref for interval to avoid stale closure
     const startPeriodicReporting = () => {
       reportTimeout = setInterval(() => {
-        if (Object.keys(metrics).length > 0) {
+        const currentMetrics = metricsRef.current;
+        if (Object.keys(currentMetrics).length > 0) {
           gtmEvent('performance_summary', {
-            ...metrics,
+            ...currentMetrics,
             page_path: window.location.pathname,
             timestamp: Date.now()
           });
         }
-      }, reportInterval);
+      }, reportIntervalRef.current);
     };
 
     // Start monitoring
@@ -305,12 +313,13 @@ export const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
     return () => {
       if (reportTimeout) {
         clearInterval(reportTimeout);
+        reportTimeout = null;
       }
       // Clean up error monitoring listeners
       window.removeEventListener('error', handleError);
       window.removeEventListener('unhandledrejection', handleRejection);
     };
-  }, [enabled, reportInterval, sampleRate]);
+  }, [enabled, sampleRate]); // reportInterval removed - uses ref
 
   return null; // This component doesn't render anything
 };

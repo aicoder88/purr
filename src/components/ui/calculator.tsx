@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, ReactNode } from "react";
+import { useState, useMemo, useCallback, ReactNode } from "react";
 import { Button } from "./button";
 import { Slider } from "./slider";
 import { motion } from "framer-motion";
@@ -72,23 +72,6 @@ export function CostCalculator({ className }: CostCalculatorProps) {
   const [catsCount, setCatsCount] = useState(1);
   const [litterCost, setLitterCost] = useState(20);
   const [changeFrequency, setChangeFrequency] = useState(7); // days
-  const [annualSavings, setAnnualSavings] = useState(0);
-  const [tenYearSavings, setTenYearSavings] = useState(0);
-  const [environmentalImpact, setEnvironmentalImpact] =
-    useState<EnvironmentalImpact>({
-      carbonSaved: 0,
-      treesEquivalent: 0,
-      carsRemoved: 0,
-      catsSaved: 0,
-    });
-  const [tenYearEnvironmentalImpact, setTenYearEnvironmentalImpact] =
-    useState<EnvironmentalImpact>({
-      carbonSaved: 0,
-      treesEquivalent: 0,
-      carsRemoved: 0,
-      catsSaved: 0,
-    });
-
   const handleCatsCountChange = useCallback((value: number[]) => {
     setCatsCount(value[0]);
   }, []);
@@ -101,9 +84,13 @@ export function CostCalculator({ className }: CostCalculatorProps) {
     setChangeFrequency(value[0]);
   }, []);
 
-
-  // Calculate savings and environmental impact
-  useEffect(() => {
+  // Calculate savings and environmental impact using useMemo instead of useEffect
+  const {
+    annualSavings,
+    tenYearSavings,
+    environmentalImpact,
+    tenYearEnvironmentalImpact,
+  } = useMemo(() => {
     // Calculate how many times they change litter per year
     const changesPerYear = 365 / changeFrequency;
 
@@ -125,24 +112,22 @@ export function CostCalculator({ className }: CostCalculatorProps) {
     const carsRemoved = carbonSaved / 4600;
     const catsSaved = Math.ceil(litterChangesSaved / 10); // Arbitrary: every 10 litter changes saved helps one shelter cat
 
-
-    setAnnualSavings(savings);
-
-    setTenYearSavings(tenYearSave);
-
-    setEnvironmentalImpact({
-      carbonSaved,
-      treesEquivalent,
-      carsRemoved,
-      catsSaved,
-    });
-
-    setTenYearEnvironmentalImpact({
-      carbonSaved: carbonSaved * 10,
-      treesEquivalent: treesEquivalent * 10,
-      carsRemoved: carsRemoved * 10,
-      catsSaved: catsSaved * 10,
-    });
+    return {
+      annualSavings: savings,
+      tenYearSavings: tenYearSave,
+      environmentalImpact: {
+        carbonSaved,
+        treesEquivalent,
+        carsRemoved,
+        catsSaved,
+      },
+      tenYearEnvironmentalImpact: {
+        carbonSaved: carbonSaved * 10,
+        treesEquivalent: treesEquivalent * 10,
+        carsRemoved: carsRemoved * 10,
+        catsSaved: catsSaved * 10,
+      },
+    };
   }, [catsCount, litterCost, changeFrequency]);
 
   // Generate data for the savings graph

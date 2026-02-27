@@ -138,11 +138,23 @@ interface RawBlogPostInput {
     width?: number;
     height?: number;
   };
+  faq?: Array<{ question?: string; answerHtml?: string }>;
   [key: string]: unknown;
 }
 
 /**
+ * Sanitize FAQ items (question + answerHtml)
+ */
+function sanitizeFAQItem(item: { question?: string; answerHtml?: string }): { question: string; answerHtml: string } {
+  return {
+    question: sanitizeText(item.question || ''),
+    answerHtml: sanitizeHTML(item.answerHtml || ''),
+  };
+}
+
+/**
  * Sanitize blog post data before saving
+ * Covers content, FAQ answers, and all text fields
  */
 export function sanitizeBlogPost(post: RawBlogPostInput): Partial<BlogPost> {
   return {
@@ -169,5 +181,66 @@ export function sanitizeBlogPost(post: RawBlogPostInput): Partial<BlogPost> {
       width: post.featuredImage.width || 0,
       height: post.featuredImage.height || 0,
     } : undefined,
+    faq: Array.isArray(post.faq)
+      ? post.faq.map(sanitizeFAQItem)
+      : undefined,
   };
+}
+
+/**
+ * Validate sanitized blog post shape
+ * Ensures required fields exist and have valid content
+ */
+export function validateSanitizedBlogPost(post: Partial<BlogPost>): { valid: boolean; errors: string[] } {
+  const errors: string[] = [];
+
+  // Required fields
+  if (!post.title || post.title.trim().length === 0) {
+    errors.push('Title is required');
+  }
+  if (!post.slug || post.slug.trim().length === 0) {
+    errors.push('Slug is required');
+  }
+  if (!post.content || post.content.trim().length === 0) {
+    errors.push('Content is required');
+  }
+  if (!post.excerpt || post.excerpt.trim().length === 0) {
+    errors.push('Excerpt is required');
+  }
+
+  // Validate FAQ structure if present
+  if (post.faq !== undefined) {
+    if (!Array.isArray(post.faq)) {
+      errors.push('FAQ must be an array');
+    } else {
+      post.faq.forEach((item, index) => {
+        if (!item.question || item.question.trim().length === 0) {
+          errors.push(`FAQ[${index}]: question is required`);
+        }
+        if (typeof item.answerHtml !== 'string') {
+          errors.push(`FAQ[${index}]: answerHtml must be a string`);
+        }
+      });
+    }
+  }
+
+  // Content should not contain dangerous patterns after sanitization
+  if (post.content) {
+    const dangerousPatterns = [
+      /<script\b/i,
+      /<iframe\b/i,
+      /<object\b/i,
+      /<embed\b/i,
+      /javascript:/i,
+      /on\w+\s*=/i,
+    ];
+    for (const pattern of dangerousPatterns) {
+      if (pattern.test(post.content)) {
+        errors.push('Content contains dangerous HTML patterns after sanitization');
+        break;
+      }
+    }
+  }
+
+  return { valid: errors.length === 0, errors };
 }

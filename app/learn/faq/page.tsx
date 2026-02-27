@@ -1,7 +1,7 @@
 export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
-import { SITE_NAME } from '../../../src/lib/constants';
+import { SITE_NAME } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Cat Litter Odor FAQ - Activated Carbon Questions',

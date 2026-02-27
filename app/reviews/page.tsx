@@ -46,28 +46,24 @@ export const metadata: Metadata = {
   },
 };
 
-// Product schema for Reviews page (no Review/AggregateRating schema)
-const productSchema = {
+// WebPage schema for Reviews page (not a product page)
+const webPageSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Product',
-  name: SITE_NAME,
-  description: 'Activated carbon cat litter deodorizer that eliminates odors at the molecular level',
-  image: [
-    'https://www.purrify.ca/optimized/products/60g-transparent.webp',
-    'https://www.purrify.ca/optimized/products/140g-transparent.webp',
-    'https://www.purrify.ca/optimized/logos/purrify-logo.png',
-  ],
-  brand: {
-    '@type': 'Brand',
-    name: SITE_NAME,
+  '@type': 'WebPage',
+  '@id': 'https://www.purrify.ca/reviews/',
+  url: 'https://www.purrify.ca/reviews/',
+  name: `Customer Reviews | ${SITE_NAME}`,
+  description: 'Read verified customer reviews and testimonials about Purrify activated carbon cat litter deodorizer.',
+  inLanguage: 'en-CA',
+  primaryImageOfPage: {
+    '@type': 'ImageObject',
+    url: 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
+    width: 400,
+    height: 400,
   },
-  offers: {
-    '@type': 'Offer',
-    priceCurrency: 'CAD',
-    price: '4.76',
-    availability: 'https://schema.org/InStock',
-    url: 'https://www.purrify.ca/',
-    itemCondition: 'https://schema.org/NewCondition',
+  isPartOf: {
+    '@type': 'WebSite',
+    '@id': 'https://www.purrify.ca/#website',
   },
 };
 
@@ -76,7 +72,7 @@ export default function ReviewsPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
       />
       <PageContent />
     </>

@@ -16,10 +16,10 @@ interface CityPageProps {
   }>;
 }
 
-/** Replace {{key}} placeholders with values */
+/** Replace {key} placeholders with values */
 const interpolate = (template: string, vars: Record<string, string>): string =>
   Object.entries(vars).reduce(
-    (result, [key, value]) => result.replace(new RegExp(`{{${key}}}`, 'g'), value),
+    (result, [key, value]) => result.replace(new RegExp(`\\{${key}\\}`, 'g'), value),
     template
   );
 
@@ -49,17 +49,17 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
   const cityPageTranslations = t.cityPage;
 
   const seoTitle = cityPageTranslations?.seo?.title
-    ? `${interpolate(cityPageTranslations.seo.title, { city: city.name })} | ${SITE_NAME}`
-    : `Cat Litter Deodorizer in ${city.name} | ${SITE_NAME}`;
+    ? interpolate(cityPageTranslations.seo.title, { city: city.name, provinceCode: city.provinceCode })
+    : `Cat Litter Deodorizer in ${city.name}, ${city.provinceCode} | ${SITE_NAME}`;
 
   const seoDescription = city?.profile?.populationLabel
-    ? `${cityPageTranslations?.seo?.descriptionWithPopulation ?? 'Cat litter smell in {{city}}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across {{province}}. Loved by {{population}}+ cat owners.'}`
-      .replace('{{city}}', city.name)
-      .replace('{{province}}', city.profile.province)
-      .replace('{{population}}', city.profile.populationLabel)
-    : `${cityPageTranslations?.seo?.descriptionDefault ?? 'Cat litter smell in {{city}}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across {{province}}. Safe for cats & kittens.'}`
-      .replace('{{city}}', city.name)
-      .replace('{{province}}', city.profile.province);
+    ? `${cityPageTranslations?.seo?.descriptionWithPopulation ?? 'Cat litter smell in {city}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across {province}. Loved by {population}+ cat owners.'}`
+      .replace('{city}', city.name)
+      .replace('{province}', city.profile.province)
+      .replace('{population}', city.profile.populationLabel)
+    : `${cityPageTranslations?.seo?.descriptionDefault ?? 'Cat litter smell in {city}? Purrify activated carbon eliminates ammonia odors naturally. Ships fast across {province}. Safe for cats & kittens.'}`
+      .replace('{city}', city.name)
+      .replace('{province}', city.profile.province);
 
   const canonicalUrl = `${SITE_URL}/locations/${city.slug}/`;
 

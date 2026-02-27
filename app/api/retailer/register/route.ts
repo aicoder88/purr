@@ -1,7 +1,7 @@
 import * as bcrypt from 'bcryptjs';
 import { z } from 'zod';
 import prisma from '@/lib/prisma';
-import { withRateLimit, RATE_LIMITS } from '@/lib/security/rate-limit-app';
+import { withRateLimit, RATE_LIMITS } from '@/lib/rate-limit';
 import { NextRequest } from 'next/server';
 
 interface RegisterRequest {
