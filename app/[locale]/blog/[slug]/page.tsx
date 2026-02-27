@@ -22,6 +22,14 @@ interface BlogPostPageProps {
   }>;
 }
 
+const getBlogBasePath = (locale: string) => (
+  locale === 'en' ? '/blog' : `/${locale}/blog`
+);
+
+const getBlogPostPath = (locale: string, slug: string, trailingSlash = false) => (
+  `${getBlogBasePath(locale)}/${slug}${trailingSlash ? '/' : ''}`
+);
+
 // Generate static params for all blog posts across locales
 export async function generateStaticParams() {
   const store = new ContentStore();
@@ -65,13 +73,13 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   const metaImageUrl = post.image.startsWith('http') ? post.image : `${SITE_URL}${post.image}`;
 
   // Each locale should have its own self-referencing canonical URL
-  const canonicalSlugPath = `${SITE_URL}/${locale}/blog/${slug}/`;
+  const canonicalSlugPath = `${SITE_URL}${getBlogPostPath(locale, slug, true)}`;
 
   // Build language alternates for hreflang
   const languages: Record<string, string> = {
-    'en-CA': `${SITE_URL}/en/blog/${slug}/`,
-    'en-US': `${SITE_URL}/en/blog/${slug}/`,
-    'x-default': `${SITE_URL}/en/blog/${slug}/`,
+    'en-CA': `${SITE_URL}${getBlogPostPath('en', slug, true)}`,
+    'en-US': `${SITE_URL}${getBlogPostPath('en', slug, true)}`,
+    'x-default': `${SITE_URL}${getBlogPostPath('en', slug, true)}`,
   };
   if (locale === 'fr') {
     languages['fr-CA'] = canonicalSlugPath;
@@ -167,7 +175,7 @@ async function getPost(slug: string, locale: string): Promise<BlogPost | null> {
         date: dateStr,
         image: blogPost.featuredImage?.url || '/optimized/blog/cat-litter-hero.webp',
         heroImageAlt: blogPost.featuredImage?.alt || blogPost.title,
-        link: `/${locale}/blog/${blogPost.slug}`,
+        link: getBlogPostPath(locale, blogPost.slug),
         content: blogPost.content,
         locale: (blogPost.locale as string) || locale,
         canonicalUrl: blogPost.seo?.canonical || undefined,
@@ -192,7 +200,7 @@ async function getPost(slug: string, locale: string): Promise<BlogPost | null> {
     const content = getBlogPostContent();
     return {
       ...samplePost,
-      link: `/${locale}/blog${samplePost.link.replace('/blog', '')}`,
+      link: `${getBlogBasePath(locale)}${samplePost.link.replace('/blog', '')}`,
       content: content || samplePost.excerpt,
       locale: samplePost.locale || locale,
     };
@@ -244,7 +252,7 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
   const articleSchema = generateArticlePageSchema(
     post.title,
     post.excerpt,
-    `/${locale}/blog/${slug}/`,
+    getBlogPostPath(locale, slug, true),
     locale,
     {
       author: post.author,
@@ -278,7 +286,7 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
           stepData.image = { '@type': 'ImageObject', url: step.image };
         }
         // Only add url if the step has a specific anchor
-        const stepUrl = `${SITE_URL}/${locale}/blog/${slug}`;
+        const stepUrl = `${SITE_URL}${getBlogPostPath(locale, slug, true)}`;
         stepData.url = stepUrl;
         return stepData;
       }),
@@ -361,7 +369,7 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
         <section className="py-4 border-b border-gray-100 dark:border-gray-800">
           <Container>
             <Link
-              href={`/${locale}/blog`}
+              href={getBlogBasePath(locale)}
               className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-electric-indigo transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
@@ -480,7 +488,7 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
               )}
 
               {/* Related Content */}
-              <RelatedContent currentUrl={`/${locale}/blog/${slug}`} className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700" />
+              <RelatedContent currentUrl={getBlogPostPath(locale, slug)} className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700" />
             </div>
           </Container>
         </section>
@@ -490,7 +498,7 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
           <Container>
             <div className="max-w-4xl mx-auto flex justify-between items-center">
               <Link
-                href={`/${locale}/blog`}
+                href={getBlogBasePath(locale)}
                 className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-electric-indigo transition-colors"
               >
                 <ArrowLeft className="w-4 h-4" />

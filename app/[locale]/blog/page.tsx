@@ -16,6 +16,10 @@ interface BlogIndexPageProps {
   searchParams: Promise<{ page?: string }>;
 }
 
+const getBlogBasePath = (locale: string) => (
+  locale === 'en' ? '/blog' : `/${locale}/blog`
+);
+
 // Generate static params for all supported locales
 export async function generateStaticParams() {
   return locales.map((locale) => ({
@@ -50,7 +54,7 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
   const hrefLang = locale === 'en' ? 'en-CA' :
     locale === 'fr' ? 'fr-CA' : 'en-CA';
 
-  const canonicalPath = `${SITE_URL}/${locale}/blog/`;
+  const canonicalPath = `${SITE_URL}${getBlogBasePath(locale)}/`;
 
   return {
     title: localeMeta.title,
@@ -59,10 +63,10 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
     alternates: {
       canonical: canonicalPath,
       languages: {
-        'en-CA': `${SITE_URL}/en/blog/`,
+        'en-CA': `${SITE_URL}/blog/`,
         'fr-CA': `${SITE_URL}/fr/blog/`,
-        'en-US': `${SITE_URL}/en/blog/`,
-        'x-default': `${SITE_URL}/en/blog/`,
+        'en-US': `${SITE_URL}/blog/`,
+        'x-default': `${SITE_URL}/blog/`,
         // Self-reference for the current locale
         [hrefLang]: canonicalPath,
       },
@@ -130,7 +134,7 @@ async function getBlogPosts(locale: string): Promise<BlogPost[]> {
           author: post.author,
           date: post.date,
           image: post.image,
-          link: `/${locale}/blog${post.link.replace('/blog', '')}`,
+          link: `${getBlogBasePath(locale)}${post.link.replace('/blog', '')}`,
           locale: post.locale || 'en',
         }));
     }
@@ -154,7 +158,7 @@ async function getBlogPosts(locale: string): Promise<BlogPost[]> {
         author: post.author?.name || 'Purrify Team',
         date: dateStr,
         image: post.featuredImage?.url || '/optimized/blog/cat-litter-hero.webp',
-        link: `/${locale}/blog/${post.slug}`,
+        link: `${getBlogBasePath(locale)}/${post.slug}`,
         locale: post.locale || locale,
       };
     });
@@ -169,7 +173,7 @@ async function getBlogPosts(locale: string): Promise<BlogPost[]> {
         author: post.author,
         date: post.date,
         image: post.image,
-        link: `/${locale}/blog${post.link.replace('/blog', '')}`,
+        link: `${getBlogBasePath(locale)}${post.link.replace('/blog', '')}`,
         locale: post.locale || 'en',
       }));
   }
@@ -224,7 +228,7 @@ export default async function LocalizedBlogIndexPage({
     '@context': 'https://schema.org',
     '@type': 'Blog',
     name: `${SITE_NAME} Blog - ${locale.toUpperCase()}`,
-    url: `${SITE_URL}/${locale}/blog/`,  // non-English locales only reach here
+    url: `${SITE_URL}${getBlogBasePath(locale)}/`,
     description: SITE_DESCRIPTION,
     blogPost: currentPosts.map((post) => {
       // Ensure date is in ISO 8601 format
@@ -356,7 +360,7 @@ export default async function LocalizedBlogIndexPage({
               <div className="flex justify-center items-center gap-4 mt-12">
                 {currentPage > 1 ? (
                   <Link
-                    href={`/${locale}/blog?page=${currentPage - 1}`}
+                    href={`${getBlogBasePath(locale)}?page=${currentPage - 1}`}
                     className="px-6 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm hover:shadow-md transition-all text-gray-700 dark:text-gray-200 font-medium flex items-center gap-2"
                   >
                     {t.previous}
@@ -373,7 +377,7 @@ export default async function LocalizedBlogIndexPage({
 
                 {currentPage < totalPages ? (
                   <Link
-                    href={`/${locale}/blog?page=${currentPage + 1}`}
+                    href={`${getBlogBasePath(locale)}?page=${currentPage + 1}`}
                     className="px-6 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm hover:shadow-md transition-all text-gray-700 dark:text-gray-200 font-medium flex items-center gap-2"
                   >
                     {t.next}

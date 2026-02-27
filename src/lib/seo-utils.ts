@@ -125,11 +125,7 @@ export const getLocalizedUrl = (path: string, localeInput: string) => {
   const locale = normalizeLocale(localeInput);
   const baseUrl = 'https://www.purrify.ca/';
   const normalizedPath = normalizeCanonicalPath(path);
-
-  // Special handling for blog paths which are only available under /[locale]/blog
-  // but redirected from /blog. We want to point to the 200 OK version.
-  const isBlogPath = normalizedPath.startsWith('/blog/') || normalizedPath === '/blog';
-  const localePrefix = (locale === 'en' && isBlogPath) ? '/en' : (locale === 'en' ? '' : `/${locale}`);
+  const localePrefix = locale === 'en' ? '' : `/${locale}`;
 
   if (normalizedPath === '/') {
     return `${baseUrl}/`;
