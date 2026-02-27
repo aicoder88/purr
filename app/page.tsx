@@ -40,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
     : getLocalizedKeywords(normalizedLocale);
 
   // Build canonical and alternate URLs
-  const baseUrl = 'https://www.purrify.ca/';
+  const baseUrl = 'https://www.purrify.ca';
   const canonicalUrl = `${baseUrl}/`;
 
   // Convert language alternates to Next.js format

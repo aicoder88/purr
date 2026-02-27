@@ -8,6 +8,7 @@ import { Providers } from './providers';
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { MetaPixel } from '@/components/analytics/MetaPixel';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -184,11 +185,7 @@ export default async function RootLayout({
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* Contentsquare UX Analytics */}
-        <script
-          src="https://t.contentsquare.net/uxa/92035d15b29d9.js"
-          async
-        />
+
         <link
           rel="preload"
           as="image"
@@ -240,6 +237,7 @@ export default async function RootLayout({
           </AppLayout>
           <Analytics />
           <SpeedInsights />
+          <MetaPixel />
         </Providers>
       </body>
     </html >

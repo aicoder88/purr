@@ -123,7 +123,7 @@ export const normalizeLocale = (locale: string): LocaleCode => {
 
 export const getLocalizedUrl = (path: string, localeInput: string) => {
   const locale = normalizeLocale(localeInput);
-  const baseUrl = 'https://www.purrify.ca/';
+  const baseUrl = 'https://www.purrify.ca';
   const normalizedPath = normalizeCanonicalPath(path);
   const localePrefix = locale === 'en' ? '' : `/${locale}`;
 
@@ -425,7 +425,6 @@ export const generateArticleStructuredData = (title: string, description: string
     dateModified: options?.dateModified || new Date().toISOString(),
     articleSection: options?.category || 'Pet Care',
     keywords: options?.keywords?.join(', ') || getLocalizedKeywords(locale).join(', '),
-    inLanguage: locale === 'fr' ? 'fr-CA' : 'en-CA',
     about: {
       '@type': 'Thing',
       name: 'Cat Litter Odor Control'
@@ -538,7 +537,6 @@ export const generateWebsiteSchema = (localeInput: string) => {
     alternateName: `${SITE_NAME} - ${getLocalizedContent(SEO_TRANSLATIONS.siteDescription, locale)}`,
     url: localizedUrl || baseUrl,
     description: getLocalizedContent(SEO_TRANSLATIONS.siteDescription, locale),
-    inLanguage: locale === 'fr' ? 'fr-CA' : 'en-CA',
     publisher: {
       '@id': `${baseUrl}/#organization`
     },
@@ -600,6 +598,14 @@ export const generateOfferSchema = (product: Product, localeInput: string, curre
     },
     priceValidUntil: getPriceValidityDate(),
     itemCondition: 'https://schema.org/NewCondition',
+    hasMerchantReturnPolicy: {
+      '@type': 'MerchantReturnPolicy',
+      applicableCountry: ['CA', 'US'],
+      returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+      merchantReturnDays: 30,
+      returnMethod: 'https://schema.org/ReturnByMail',
+      returnFees: 'https://schema.org/FreeReturn'
+    },
     eligibleRegion: [
       { '@type': 'Country', name: 'CA' },
       { '@type': 'Country', name: 'US' }
@@ -905,7 +911,6 @@ export const generateArticlePageSchema = (title: string, description: string, pa
     },
     datePublished,
     dateModified,
-    inLanguage: locale === 'fr' ? 'fr-CA' : 'en-CA',
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': url
@@ -941,7 +946,6 @@ export const generateLocationPageSchema = (cityName: string, province: string, l
         url: url,
         name: `Cat Litter Deodorizer in ${cityName}, ${province} | Purrify`,
         description: `Fast shipping of activated carbon cat litter deodorizer to ${cityName}, ${province}. Eliminate litter box odors naturally.`,
-        inLanguage: locale === 'fr' ? 'fr-CA' : 'en-CA',
         isPartOf: {
           '@id': 'https://www.purrify.ca/#website'
         },

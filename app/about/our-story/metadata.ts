@@ -6,6 +6,10 @@ export const metadata: Metadata = {
     "Learn about Purrify's founding story, mission, and the team dedicated to solving cat litter odor problems.",
   alternates: {
     canonical: 'https://www.purrify.ca/about/our-story/',
+    languages: {
+      'en-CA': 'https://www.purrify.ca/about/our-story/',
+      'x-default': 'https://www.purrify.ca/about/our-story/',
+    },
   },
   openGraph: {
     title: 'Our Story: Mission Behind Purrify',

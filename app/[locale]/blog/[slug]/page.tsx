@@ -6,7 +6,7 @@ import { Container } from '@/components/ui/container';
 import { RelatedContent } from '@/components/seo/RelatedContent';
 import { ContentStore } from '@/lib/blog/content-store';
 import { sampleBlogPosts, getBlogPostContent, type BlogPost as DataBlogPost } from '@/data/blog-posts';
-import { SITE_URL } from '@/lib/constants';
+import { SITE_NAME, SITE_URL } from '@/lib/constants';
 import { locales, isValidLocale } from '@/i18n/config';
 import { generateArticlePageSchema, stripContext } from '@/lib/seo-utils';
 import { ArrowLeft, Calendar, User, Clock } from 'lucide-react';
@@ -68,7 +68,10 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     };
   }
 
-  const metaTitle = post.seoTitle || post.title;
+  const rawMetaTitle = post.seoTitle || post.title;
+  const metaTitle = rawMetaTitle === post.title && !rawMetaTitle.includes(SITE_NAME)
+    ? `${rawMetaTitle} | ${SITE_NAME}`
+    : rawMetaTitle;
   const metaDescription = post.seoDescription || post.excerpt;
   const metaImageUrl = post.image.startsWith('http') ? post.image : `${SITE_URL}${post.image}`;
 

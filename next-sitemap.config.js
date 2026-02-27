@@ -134,6 +134,7 @@ module.exports = {
     '/blog/activated-carbon-science',
     '/blog/beyond-masking-odors',
     '/blog/fresh-home-multiple-cats',
+    '/fr/blog/best-cat-litter-multiple-cats',
     '/blog/purrify-vs-arm-hammer',
     '/learn/purrify-vs-arm-hammer',
     '/learn/safe-for-kittens',

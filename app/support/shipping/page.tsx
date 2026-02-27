@@ -260,7 +260,7 @@ export default function ShippingPage() {
                   </Button>
                 </Link>
                 <a href={`mailto:${CONTACT_INFO.email}`}>
-                  <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-white dark:text-gray-100 hover:bg-white/10 dark:hover:bg-gray-800 font-bold text-lg px-8">
+                  <Button size="lg" variant="outline" className="border-blue-900 dark:border-blue-200 bg-blue-900 dark:bg-blue-100 text-white dark:text-gray-900 hover:bg-blue-800 dark:hover:bg-blue-200 font-bold text-lg px-8">
                     Contact Support
                   </Button>
                 </a>

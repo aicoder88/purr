@@ -149,7 +149,7 @@ export default function TermsPage() {
   const language = locale === 'fr' ? locale : 'en';
   const copy = TERMS_COPY[language];
 
-  const { nextSeoProps, schema, breadcrumb } = useEnhancedSEO({
+  const { schema, breadcrumb } = useEnhancedSEO({
     path: '/terms',
     title: copy.pageTitle,
     description: copy.pageDescription,
@@ -168,9 +168,6 @@ export default function TermsPage() {
 
   return (
     <>
-      <title>{nextSeoProps.title}</title>
-      <meta name="description" content={nextSeoProps.description} />
-      <link rel="canonical" href={nextSeoProps.canonical || 'https://www.purrify.ca/terms/'} />
       {schema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={generateJSONLD(schema)} />
       )}

@@ -3,10 +3,10 @@ const isDev = process.env.NODE_ENV === 'development';
 // CSP: 'unsafe-eval' allowed only in dev mode for debugging/hot reload
 // 'unsafe-inline' kept for GTM compatibility
 const scriptSrc = isDev
-  ? "'self' 'unsafe-eval' 'unsafe-inline' *.google.com *.gstatic.com *.googletagmanager.com static.hotjar.com analytics.ahrefs.com"
-  : "'self' 'unsafe-inline' *.google.com *.gstatic.com *.googletagmanager.com static.hotjar.com analytics.ahrefs.com";
+  ? "'self' 'unsafe-eval' 'unsafe-inline' *.google.com *.gstatic.com *.googletagmanager.com static.hotjar.com analytics.ahrefs.com va.vercel-scripts.com"
+  : "'self' 'unsafe-inline' *.google.com *.gstatic.com *.googletagmanager.com static.hotjar.com analytics.ahrefs.com va.vercel-scripts.com";
 
-const connectSrc = "'self' *.googletagmanager.com *.google-analytics.com *.analytics.google.com *.g.doubleclick.net *.hotjar.com *.hotjar.io analytics.ahrefs.com *.ahrefs.com wss://*.hotjar.com";
+const connectSrc = "'self' *.googletagmanager.com *.google-analytics.com *.analytics.google.com *.g.doubleclick.net *.hotjar.com *.hotjar.io analytics.ahrefs.com *.ahrefs.com wss://*.hotjar.com v.vercel-insights.com va.vercel-scripts.com";
 const frameSrc = "'self' https://www.google.com https://maps.google.com https://www.googletagmanager.com https://tagassistant.google.com";
 const trackingImgSrc = "*.google-analytics.com *.googletagmanager.com *.g.doubleclick.net *.hotjar.com *.hotjar.io analytics.ahrefs.com *.ahrefs.com";
 

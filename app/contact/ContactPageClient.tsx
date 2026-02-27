@@ -127,7 +127,7 @@ const breadcrumbItems = [
 ];
 
 export default function ContactPage() {
-  const { schema, additionalSchemas, nextSeoProps } = useEnhancedSEO({
+  const { schema, additionalSchemas } = useEnhancedSEO({
     path: '/contact',
     title: `Contact Us - ${SITE_NAME} Customer Support & Help`,
     description:
@@ -180,7 +180,7 @@ export default function ContactPage() {
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: `https://www.purrify.ca/${item.path === '/' ? '' : item.path}`,
+      item: item.path === '/' ? 'https://www.purrify.ca/' : `https://www.purrify.ca${item.path}`,
     })),
   };
 
@@ -188,7 +188,6 @@ export default function ContactPage() {
 
   return (
     <>
-      <link rel="canonical" href={nextSeoProps.canonical || 'https://www.purrify.ca/contact/'} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
