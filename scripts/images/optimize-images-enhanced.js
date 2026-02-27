@@ -55,6 +55,43 @@ const stats = {
 };
 
 /**
+ * Parse scoped source file list from env for targeted optimization runs.
+ * Expected entries are paths like:
+ *   public/original-images/blog/example.jpg
+ * or absolute paths under the same directory.
+ */
+function getScopedSources() {
+  const raw = process.env.OPTIMIZE_ONLY_SOURCES;
+  if (!raw) return null;
+
+  const entries = raw
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  if (entries.length === 0) return null;
+
+  const scoped = new Set();
+
+  for (const entry of entries) {
+    if (path.isAbsolute(entry)) {
+      scoped.add(path.normalize(entry));
+      continue;
+    }
+
+    if (entry.startsWith('public/')) {
+      scoped.add(path.normalize(path.join(PUBLIC_DIR, entry.slice('public/'.length))));
+      continue;
+    }
+
+    // Allow passing paths relative to public/
+    scoped.add(path.normalize(path.join(PUBLIC_DIR, entry)));
+  }
+
+  return scoped;
+}
+
+/**
  * Create directories if they don't exist
  */
 function ensureDirectoryExists(directory) {
@@ -331,12 +368,19 @@ async function optimizeAllImages() {
   console.log('Starting image optimization...\n');
 
   try {
+    const scopedSources = getScopedSources();
+    const scopedMode = Boolean(scopedSources);
+
     // Ensure base directories exist
     ensureDirectoryExists(OPTIMIZED_DIR);
     ensureDirectoryExists(ORIGINAL_IMAGES_DIR);
 
-    // Process icons first
-    await processIcons();
+    if (scopedMode) {
+      console.log(`Scoped mode enabled: processing ${scopedSources.size} source file(s)\n`);
+    } else {
+      // Process icons only for full runs
+      await processIcons();
+    }
 
     // Ensure category subdirectories exist in both source and optimized directories
     for (const category of SOURCE_CATEGORIES) {
@@ -346,18 +390,27 @@ async function optimizeAllImages() {
 
     // Find all images in categorized subdirectories of original-images
     // Pattern: original-images/<category>/*.{ext}
-    const imageFiles = glob.sync(`${IMAGE_SOURCE_DIR}/**/*.{png,jpg,jpeg,gif,webp,avif}`, {
+    let imageFiles = glob.sync(`${IMAGE_SOURCE_DIR}/**/*.{png,jpg,jpeg,gif,webp,avif}`, {
       ignore: [
         `${OPTIMIZED_DIR}/**`,
         `${IMAGE_SOURCE_DIR}/**/.DS_Store`
       ]
     });
 
+    if (scopedMode) {
+      imageFiles = imageFiles.filter((filePath) => scopedSources.has(path.normalize(filePath)));
+    }
+
     stats.totalImages = imageFiles.length;
     console.log(`\nFound ${imageFiles.length} images to process\n`);
 
-    // Load existing metadata for cleanup
-    const existingMetadata = metadataGenerator.loadExistingMetadata();
+    if (imageFiles.length === 0) {
+      console.log('No matching images to optimize for the provided scope.\n');
+      return;
+    }
+
+    // Load existing metadata for cleanup only in full runs.
+    const existingMetadata = scopedMode ? null : metadataGenerator.loadExistingMetadata();
 
     // Process each image and collect results
     const results = [];
@@ -377,9 +430,6 @@ async function optimizeAllImages() {
       }
     }
 
-    // Clean up metadata for removed images
-    const cleanedMetadata = metadataGenerator.cleanupMetadata(existingMetadata, processedPaths);
-
     // Check error threshold
     if (errorHandler.shouldHaltBuild(stats.failed, stats.totalImages)) {
       const errorRate = stats.failed / stats.totalImages;
@@ -389,18 +439,25 @@ async function optimizeAllImages() {
       process.exit(1);
     }
 
-    // Generate and validate metadata (merge with cleaned existing metadata)
-    // Keys in metadata are full paths like "original-images/<category>/<filename>"
-    const newMetadata = metadataGenerator.generateMetadata(results);
-    const finalMetadata = { ...cleanedMetadata, ...newMetadata };
-    await metadataGenerator.writeMetadataFile(finalMetadata);
+    if (!scopedMode) {
+      // Clean up metadata for removed images
+      const cleanedMetadata = metadataGenerator.cleanupMetadata(existingMetadata, processedPaths);
 
-    // Generate and write processing report
-    const report = errorHandler.generateReport(stats);
-    await errorHandler.writeReport(
-      report,
-      path.join(PUBLIC_DIR, 'image-optimization-report.json')
-    );
+      // Generate and validate metadata (merge with cleaned existing metadata)
+      // Keys in metadata are full paths like "original-images/<category>/<filename>"
+      const newMetadata = metadataGenerator.generateMetadata(results);
+      const finalMetadata = { ...cleanedMetadata, ...newMetadata };
+      await metadataGenerator.writeMetadataFile(finalMetadata);
+
+      // Generate and write processing report
+      const report = errorHandler.generateReport(stats);
+      await errorHandler.writeReport(
+        report,
+        path.join(PUBLIC_DIR, 'image-optimization-report.json')
+      );
+    } else {
+      console.log('Scoped run: skipped metadata/report regeneration.');
+    }
 
     // Print summary
     console.log('\n' + '='.repeat(60));

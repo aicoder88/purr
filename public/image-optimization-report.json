@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-02-26T13:03:57.454Z",
-  "totalImages": 807,
-  "successful": 788,
+  "timestamp": "2026-02-27T13:48:23.345Z",
+  "totalImages": 810,
+  "successful": 791,
   "failed": 0,
   "skipped": 19,
   "errors": [],
   "statistics": {
     "totalSizeReduction": 0,
-    "averageProcessingTime": 2199.1230964467004,
+    "averageProcessingTime": 2150.402022756005,
     "formatBreakdown": {
-      "avif": 1571,
-      "webp": 1571,
-      "jpg": 1571
+      "avif": 1577,
+      "webp": 1577,
+      "jpg": 1577
     }
   }
 }

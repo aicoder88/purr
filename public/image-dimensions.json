@@ -15548,5 +15548,65 @@
       ]
     },
     "sizes": "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  },
+  "original-images/blog/coconut-carbon-pores-ghibli.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/blog/coconut-carbon-pores-ghibli-640w.avif",
+        "optimized/blog/coconut-carbon-pores-ghibli-828w.avif"
+      ],
+      "webp": [
+        "optimized/blog/coconut-carbon-pores-ghibli-640w.webp",
+        "optimized/blog/coconut-carbon-pores-ghibli-828w.webp"
+      ],
+      "jpg": [
+        "optimized/blog/coconut-carbon-pores-ghibli-640w.jpg",
+        "optimized/blog/coconut-carbon-pores-ghibli-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "original-images/blog/clean-apartment-ghibli.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/blog/clean-apartment-ghibli-640w.avif",
+        "optimized/blog/clean-apartment-ghibli-828w.avif"
+      ],
+      "webp": [
+        "optimized/blog/clean-apartment-ghibli-640w.webp",
+        "optimized/blog/clean-apartment-ghibli-828w.webp"
+      ],
+      "jpg": [
+        "optimized/blog/clean-apartment-ghibli-640w.jpg",
+        "optimized/blog/clean-apartment-ghibli-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
+  },
+  "original-images/blog/apartment-stink-trap-ghibli.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "formats": {
+      "avif": [
+        "optimized/blog/apartment-stink-trap-ghibli-640w.avif",
+        "optimized/blog/apartment-stink-trap-ghibli-828w.avif"
+      ],
+      "webp": [
+        "optimized/blog/apartment-stink-trap-ghibli-640w.webp",
+        "optimized/blog/apartment-stink-trap-ghibli-828w.webp"
+      ],
+      "jpg": [
+        "optimized/blog/apartment-stink-trap-ghibli-640w.jpg",
+        "optimized/blog/apartment-stink-trap-ghibli-828w.jpg"
+      ]
+    },
+    "sizes": "(max-width: 640px) 100vw, 50vw"
   }
 }
