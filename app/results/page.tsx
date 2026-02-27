@@ -8,10 +8,14 @@ export const metadata: Metadata = {
   title: `Real Results From Real Cat Parents | ${SITE_NAME}`,
   description: 'See practical ways cat owners use an activated carbon additive to reduce litter box odor, with tips and examples.',
   keywords: ['purrify results', 'cat litter odor', 'odor control tips', 'activated carbon additive', 'before after'],
+  alternates: {
+    canonical: 'https://www.purrify.ca/results/',
+  },
   openGraph: {
     title: `Real Results From Real Cat Parents | ${SITE_NAME}`,
     description: 'See practical ways cat owners use an activated carbon additive to reduce litter box odor, with tips and examples.',
     type: 'website',
+    url: 'https://www.purrify.ca/results/',
   },
   robots: {
     index: true,

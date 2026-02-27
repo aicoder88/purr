@@ -232,22 +232,8 @@ export function shouldExclude(route: string, excludePatterns: string[]): boolean
     '/auth/signin',
     '/affiliate/forgot-password',
 
-    // === NON-CANONICAL PAGES ===
-    '/es/opiniones', // Canonical points to /reviews
-
     // Non-English location pages (noindexed)
     '/fr/locations',
-    // '/zh/locations',
-    // '/es/locations',
-    // Spanish protected pages
-    // '/es/affiliate',
-    // '/es/retailer',
-    // '/es/customer',
-    // '/es/admin',
-    // '/es/results',
-    // '/es/invest',
-    // '/es/dialergptpitchdeck',
-    // '/es/documents',
   ];
 
   const allExcludePatterns = [...alwaysExclude, ...excludePatterns];

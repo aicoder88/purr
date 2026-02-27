@@ -126,8 +126,6 @@ function getOGLocale(locale: string): string {
   const localeMap: Record<string, string> = {
     en: 'en_CA',
     fr: 'fr_CA',
-    zh: 'zh_CN',
-    es: 'es_ES',
   };
 
   return localeMap[locale] || 'en_CA';
@@ -263,7 +261,7 @@ function generateSchema(
     '@context': 'https://schema.org',
     '@id': url,
     url,
-    inLanguage: locale === 'fr' ? 'fr-CA' : locale === 'zh' ? 'zh-CN' : 'en-CA',
+    inLanguage: locale === 'fr' ? 'fr-CA' : 'en-CA',
   };
 
   switch (type) {

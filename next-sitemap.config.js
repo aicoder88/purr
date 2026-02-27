@@ -194,7 +194,6 @@ module.exports = {
     '/documents',
 
     // === NON-CANONICAL PAGES - Fix for Ahrefs "Non-canonical page in sitemap" ===
-    // Note: /es/opiniones redirects to /products/ and is excluded in transform()
 
     // === OLD PROVINCE ABBREVIATION URLS (Redirect to /province/full-name) ===
     '/locations/ab',
@@ -493,7 +492,6 @@ module.exports = {
       '/checkout',
       '/cart-2',
       '/products/compare',
-      '/es/opiniones',
     ];
 
     for (const pattern of redirectingPatterns) {

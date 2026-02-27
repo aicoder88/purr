@@ -22,8 +22,6 @@ function getOgLocale(locale: string): string {
   const localeMap: Record<string, string> = {
     'en': 'en_CA',
     'fr': 'fr_CA',
-    'zh': 'zh_CN',
-    'es': 'es_US',
   };
   return localeMap[locale] || 'en_CA';
 }

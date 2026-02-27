@@ -89,7 +89,7 @@ export const ReviewRequestEmailHTML = ({
       incentiveTitle: '下次订单可享受10%折扣！',
       incentiveText: '感谢您抽出时间分享您的体验，在结账时使用代码 REVIEW10 即可享受下次购买10%的折扣。',
       ctaButton: '留下评价',
-      ctaUrl: 'https://www.purrify.ca/zh/reviews',
+      ctaUrl: 'https://www.purrify.ca/reviews',
       alternativeText: '您也可以在Google上给我们留下评价：',
       googleReviewCta: '在Google上评价',
       benefits: {

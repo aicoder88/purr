@@ -28,6 +28,14 @@ export async function generateMetadata({ params }: LocalizedReviewsPageProps): P
   return {
     title,
     description,
+    openGraph: {
+      type: 'website',
+      url: locale === 'en'
+        ? 'https://www.purrify.ca/reviews/'
+        : `https://www.purrify.ca/${locale}/reviews/`,
+      title,
+      description,
+    },
     alternates: {
       canonical: locale === 'en'
         ? 'https://www.purrify.ca/reviews/'

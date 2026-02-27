@@ -36,7 +36,7 @@ function readJsonFile(filePath: string): RawBlogPost | null {
 
 function main() {
   const contentRoot = path.join(process.cwd(), 'content', 'blog');
-  const locales = ['en', 'fr', 'es', 'zh'] as const;
+  const locales = ['en', 'fr'] as const;
 
   const map: Record<string, BlogImageEntry> = {};
   const warnings: string[] = [];

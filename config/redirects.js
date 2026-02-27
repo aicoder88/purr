@@ -2115,12 +2115,28 @@ const REDIRECTS = [
   },
 
   // --- FREE/OTHER REDIRECTS ---
-
+  // Force permanent one-hop redirects for legacy conversion URLs.
+  // This avoids route-level 307 -> trailing-slash 308 chains.
+  {
+    source: "/buy",
+    destination: "/products/",
+    permanent: true
+  },
+  {
+    source: "/free",
+    destination: "/products/trial-size/",
+    permanent: true
+  },
+  {
+    source: "/free-trial",
+    destination: "/try-free/",
+    permanent: true
+  },
 
   // --- MONTREAL REDIRECT ---
   {
     source: "/montreal",
-    destination: "/fr/montreal/",
+    destination: "/locations/montreal/",
     permanent: true
   },
 
