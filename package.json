@@ -89,6 +89,7 @@
     "validate-hydration": "playwright test e2e/home.spec.ts",
     "validate-no-middleware": "node scripts/validate-no-middleware.js",
     "validate-links": "tsx scripts/validation/validate-links.ts",
+    "validate-button-contrast": "node scripts/validation/validate-button-contrast-sitewide.js",
     "validate-schemas": "tsx scripts/validate-schemas.ts",
     "validate-sitemap": "tsx scripts/validate-sitemap.ts",
     "audit:isr": "tsx scripts/audit-isr.ts",

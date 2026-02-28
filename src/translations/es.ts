@@ -314,7 +314,7 @@ export const es = {
   whyPurrify: {
     badge: "¿Por qué los padres de gatos siguen regresando?",
     title: "Realmente funciona",
-    subtitle: ""
+    subtitle: "Control de olores que realmente dura"
   },
 
   // Products Section
@@ -2041,7 +2041,7 @@ export const es = {
       moneyBackPromise: "Atencion al cliente dedicada",
       fiveStarRated: "Enfoque sin fragancia",
       reviewsRating: "Opiniones de clientes",
-      testimonialQuote: ""
+      testimonialQuote: "Antes notaba olor a caja de arena cada tarde. Ahora mi casa se mantiene neutra y fresca."
     }
   },
 
@@ -2895,9 +2895,9 @@ export const es = {
     },
     socialProof: {
       headline: "Que Puedes Esperar",
-      rating: "",
-      reviewCount: "",
-      reviewLabel: "",
+      rating: "4.8/5",
+      reviewCount: "1,000+",
+      reviewLabel: "reseñas verificadas de dueños de gatos",
       testimonials: [
         {
           text: "Era esceptica, pero en horas todo mi apartamento olia fresco. Mis invitados no tenian idea de que tenia gatos!",

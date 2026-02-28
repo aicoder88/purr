@@ -79,14 +79,15 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   const canonicalSlugPath = `${SITE_URL}${getBlogPostPath(locale, slug, true)}`;
 
   // Build language alternates for hreflang
+  // fr-CA always included (even if translation doesn't exist, per hreflang spec)
+  // en-US intentionally omitted — blog posts have no distinct US landing page
+  const enUrl = `${SITE_URL}${getBlogPostPath('en', slug, true)}`;
+  const frUrl = `${SITE_URL}${getBlogPostPath('fr', slug, true)}`;
   const languages: Record<string, string> = {
-    'en-CA': `${SITE_URL}${getBlogPostPath('en', slug, true)}`,
-    'en-US': `${SITE_URL}${getBlogPostPath('en', slug, true)}`,
-    'x-default': `${SITE_URL}${getBlogPostPath('en', slug, true)}`,
+    'en-CA': enUrl,
+    'fr-CA': frUrl,
+    'x-default': enUrl,
   };
-  if (locale === 'fr') {
-    languages['fr-CA'] = canonicalSlugPath;
-  }
 
   return {
     title: metaTitle,

@@ -18,6 +18,22 @@ type AffiliateSignupData = {
   message: string;
 };
 
+type PrismaErrorLike = {
+  code?: string;
+  message?: string;
+};
+
+function isMissingVerificationColumnError(error: unknown): boolean {
+  const prismaError = error as PrismaErrorLike;
+
+  if (prismaError.code !== 'P2022') {
+    return false;
+  }
+
+  const message = prismaError.message || '';
+  return /emailVerified|verifyToken|verifyExpiresAt/i.test(message);
+}
+
 export async function POST(req: Request): Promise<Response> {
   // Apply rate limiting (standard: 20 req/min)
   const clientIp = req.headers.get('x-forwarded-for') || 'unknown';
@@ -69,77 +85,113 @@ export async function POST(req: Request): Promise<Response> {
     const verifyToken = randomBytes(32).toString('hex');
     const verifyExpiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours from now
 
+    const applicationData = {
+      name: data.name.trim(),
+      website: data.website?.trim() || null,
+      audience: data.audience.trim(),
+      trafficSource: data.trafficSource,
+      monthlyVisitors: data.monthlyVisitors,
+      experience: data.experience,
+      message: data.message?.trim() || null,
+      reviewedAt: null,
+      reviewedBy: null,
+      rejectionReason: null,
+    };
+
+    let emailVerificationEnabled = true;
+
     if (existingApplication) {
       if (existingApplication.status === 'PENDING') {
         // Update with new token for re-verification
-        await prisma.affiliateApplication.update({
-          where: { email: normalizedEmail },
-          data: {
-            name: data.name.trim(),
-            website: data.website?.trim() || null,
-            audience: data.audience.trim(),
-            trafficSource: data.trafficSource,
-            monthlyVisitors: data.monthlyVisitors,
-            experience: data.experience,
-            message: data.message?.trim() || null,
-            emailVerified: false,
-            verifyToken,
-            verifyExpiresAt,
-            reviewedAt: null,
-            reviewedBy: null,
-            rejectionReason: null,
-          },
-        });
+        try {
+          await prisma.affiliateApplication.update({
+            where: { email: normalizedEmail },
+            data: {
+              ...applicationData,
+              emailVerified: false,
+              verifyToken,
+              verifyExpiresAt,
+            },
+          });
+        } catch (error) {
+          if (!isMissingVerificationColumnError(error)) {
+            throw error;
+          }
+
+          emailVerificationEnabled = false;
+          await prisma.affiliateApplication.update({
+            where: { email: normalizedEmail },
+            data: applicationData,
+          });
+        }
       } else if (existingApplication.status === 'APPROVED') {
         return Response.json({
           error: 'An account with this email already exists. Please log in.',
         }, { status: 400 });
       } else {
         // If rejected, allow reapplication by updating the existing record
-        await prisma.affiliateApplication.update({
-          where: { email: normalizedEmail },
+        try {
+          await prisma.affiliateApplication.update({
+            where: { email: normalizedEmail },
+            data: {
+              ...applicationData,
+              status: 'PENDING',
+              emailVerified: false,
+              verifyToken,
+              verifyExpiresAt,
+            },
+          });
+        } catch (error) {
+          if (!isMissingVerificationColumnError(error)) {
+            throw error;
+          }
+
+          emailVerificationEnabled = false;
+          await prisma.affiliateApplication.update({
+            where: { email: normalizedEmail },
+            data: {
+              ...applicationData,
+              status: 'PENDING',
+            },
+          });
+        }
+      }
+    } else {
+      // Create new application in database with verification token
+      try {
+        await prisma.affiliateApplication.create({
           data: {
-            name: data.name.trim(),
-            website: data.website?.trim() || null,
-            audience: data.audience.trim(),
-            trafficSource: data.trafficSource,
-            monthlyVisitors: data.monthlyVisitors,
-            experience: data.experience,
-            message: data.message?.trim() || null,
+            ...applicationData,
+            email: normalizedEmail,
             status: 'PENDING',
             emailVerified: false,
             verifyToken,
             verifyExpiresAt,
-            reviewedAt: null,
-            reviewedBy: null,
-            rejectionReason: null,
+          },
+        });
+      } catch (error) {
+        if (!isMissingVerificationColumnError(error)) {
+          throw error;
+        }
+
+        emailVerificationEnabled = false;
+        await prisma.affiliateApplication.create({
+          data: {
+            ...applicationData,
+            email: normalizedEmail,
+            status: 'PENDING',
           },
         });
       }
-    } else {
-      // Create new application in database with verification token
-      await prisma.affiliateApplication.create({
-        data: {
-          name: data.name.trim(),
-          email: normalizedEmail,
-          website: data.website?.trim() || null,
-          audience: data.audience.trim(),
-          trafficSource: data.trafficSource,
-          monthlyVisitors: data.monthlyVisitors,
-          experience: data.experience,
-          message: data.message?.trim() || null,
-          status: 'PENDING',
-          emailVerified: false,
-          verifyToken,
-          verifyExpiresAt,
-        },
-      });
     }
 
     // Send verification email if Resend is configured
     // Admin notification is sent after email verification via /api/affiliate/verify
-    if (isResendConfigured()) {
-      const verifyUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/api/affiliate/verify?token=${verifyToken}`;
+    let verificationEmailSent = false;
+
+    if (emailVerificationEnabled && isResendConfigured()) {
+      const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.purrify.ca';
+      const verifyUrl = `${siteUrl}/api/affiliate/verify?token=${verifyToken}`;
 
       const verificationEmailContent = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -183,18 +235,30 @@ export async function POST(req: Request): Promise<Response> {
         </div>
       `;
 
-      await resend.emails.send({
-        from: `${RESEND_CONFIG.fromName} <${RESEND_CONFIG.fromEmail}>`,
-        to: normalizedEmail,
-        subject: 'Verify Your Email - Purrify Affiliate Application',
-        html: verificationEmailContent,
-      });
+      try {
+        const { error: emailError } = await resend.emails.send({
+          from: `${RESEND_CONFIG.fromName} <${RESEND_CONFIG.fromEmail}>`,
+          to: normalizedEmail,
+          subject: 'Verify Your Email - Purrify Affiliate Application',
+          html: verificationEmailContent,
+        });
+
+        if (emailError) {
+          console.error('Affiliate signup verification email error:', emailError);
+        } else {
+          verificationEmailSent = true;
+        }
+      } catch (emailError) {
+        console.error('Affiliate signup verification email send failed:', emailError);
+      }
     }
 
     return Response.json(
       {
         success: true,
-        message: 'Application submitted successfully. Please check your email to verify your address.',
+        message: verificationEmailSent
+          ? 'Application submitted successfully. Please check your email to verify your address.'
+          : 'Application submitted successfully. Our team will review your application shortly.',
       },
       { headers: rateLimitHeaders }
     );

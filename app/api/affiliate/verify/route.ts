@@ -3,10 +3,27 @@ import { resend } from '@/lib/resend';
 import { RESEND_CONFIG, isResendConfigured } from '@/lib/resend-config';
 import { escapeHtml } from '@/lib/security/sanitize';
 
+type PrismaErrorLike = {
+  code?: string;
+  message?: string;
+};
+
+function isMissingVerificationColumnError(error: unknown): boolean {
+  const prismaError = error as PrismaErrorLike;
+
+  if (prismaError.code !== 'P2022') {
+    return false;
+  }
+
+  const message = prismaError.message || '';
+  return /emailVerified|verifyToken|verifyExpiresAt/i.test(message);
+}
+
 export async function GET(req: Request): Promise<Response> {
   try {
     const { searchParams } = new URL(req.url);
     const token = searchParams.get('token');
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.purrify.ca';
 
     if (!token) {
       return Response.json(
@@ -23,9 +40,20 @@ export async function GET(req: Request): Promise<Response> {
     }
 
     // Look up application by verifyToken
-    const application = await prisma.affiliateApplication.findUnique({
-      where: { verifyToken: token },
-    });
+    let application;
+    try {
+      application = await prisma.affiliateApplication.findUnique({
+        where: { verifyToken: token },
+      });
+    } catch (error) {
+      if (isMissingVerificationColumnError(error)) {
+        return Response.json(
+          { error: 'Verification is temporarily unavailable. Please submit a new application.' },
+          { status: 503 }
+        );
+      }
+      throw error;
+    }
 
     if (!application) {
       return Response.json(
@@ -51,14 +79,24 @@ export async function GET(req: Request): Promise<Response> {
     }
 
     // Update application: set emailVerified=true, clear verifyToken/verifyExpiresAt
-    await prisma.affiliateApplication.update({
-      where: { id: application.id },
-      data: {
-        emailVerified: true,
-        verifyToken: null,
-        verifyExpiresAt: null,
-      },
-    });
+    try {
+      await prisma.affiliateApplication.update({
+        where: { id: application.id },
+        data: {
+          emailVerified: true,
+          verifyToken: null,
+          verifyExpiresAt: null,
+        },
+      });
+    } catch (error) {
+      if (isMissingVerificationColumnError(error)) {
+        return Response.json(
+          { error: 'Verification is temporarily unavailable. Please submit a new application.' },
+          { status: 503 }
+        );
+      }
+      throw error;
+    }
 
     // Send admin notification email
     if (isResendConfigured()) {
@@ -84,7 +122,7 @@ export async function GET(req: Request): Promise<Response> {
 
         <hr />
         <p>
-          <a href="${process.env.NEXT_PUBLIC_SITE_URL}/admin/ops/affiliates/applications">
+          <a href="${siteUrl}/admin/ops/affiliates/applications">
             Review Applications in Admin Dashboard
           </a>
         </p>
@@ -93,13 +131,21 @@ export async function GET(req: Request): Promise<Response> {
         </p>
       `;
 
-      await resend.emails.send({
-        from: `${RESEND_CONFIG.fromName} <${RESEND_CONFIG.fromEmail}>`,
-        to: process.env.ADMIN_EMAIL || RESEND_CONFIG.toEmail,
-        replyTo: application.email,
-        subject: `New Verified Affiliate Application: ${escapeHtml(application.name)}`,
-        html: adminEmailContent,
-      });
+      try {
+        const { error: emailError } = await resend.emails.send({
+          from: `${RESEND_CONFIG.fromName} <${RESEND_CONFIG.fromEmail}>`,
+          to: process.env.ADMIN_EMAIL || RESEND_CONFIG.toEmail,
+          replyTo: application.email,
+          subject: `New Verified Affiliate Application: ${escapeHtml(application.name)}`,
+          html: adminEmailContent,
+        });
+
+        if (emailError) {
+          console.error('Affiliate verification admin email error:', emailError);
+        }
+      } catch (emailError) {
+        console.error('Affiliate verification admin email send failed:', emailError);
+      }
     }
 
     // Return success response with HTML for browser display
@@ -178,7 +224,7 @@ export async function GET(req: Request): Promise<Response> {
             <h1>Email Verified!</h1>
             <p>Thank you for verifying your email address. Your affiliate application has been submitted for review.</p>
             <p>We'll review your application within 2-3 business days and send you an email with your login credentials once approved.</p>
-            <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://purrify.ca'}" class="button">Go to Purrify</a>
+            <a href="${siteUrl}" class="button">Go to Purrify</a>
           </div>
         </body>
       </html>

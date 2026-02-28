@@ -193,6 +193,8 @@ module.exports = {
     // Private/internal pages (noindex)
     '/dialergptpitchdeck',
     '/documents',
+    '/invest',
+    '/fr/invest',
 
     // === NON-CANONICAL PAGES - Fix for Ahrefs "Non-canonical page in sitemap" ===
 
@@ -232,9 +234,9 @@ module.exports = {
   // === ADDITIONAL PATHS - Fix for Ahrefs "Indexable page not in sitemap" ===
   additionalPaths: async (config) => [
     // Core homepage
-    
+
     // Locale homepages - IMPORTANT for indexable pages not in sitemap
-    
+
     // Main blog index
     {
       loc: '/blog/',
@@ -243,7 +245,7 @@ module.exports = {
       lastmod: new Date().toISOString(),
     },
     // Blog locale pages
-    
+
     // Product pages
     {
       loc: '/products/trial-size/',
@@ -251,8 +253,8 @@ module.exports = {
       priority: 0.9,
       lastmod: new Date().toISOString(),
     },
-    
-    
+
+
     {
       loc: '/products/',
       changefreq: 'daily',
@@ -260,10 +262,10 @@ module.exports = {
       lastmod: new Date().toISOString(),
     },
     // French products  
-    
-    
-    
-    
+
+
+
+
     // Learn pages
     {
       loc: '/learn/',
@@ -308,9 +310,9 @@ module.exports = {
       lastmod: new Date().toISOString(),
     },
     // French learn pages
-    
-    
-    
+
+
+
     // Locations
     {
       loc: '/locations/',
@@ -332,7 +334,7 @@ module.exports = {
       lastmod: new Date().toISOString(),
     },
     // French support
-    
+
     // Contact pages
     {
       loc: '/contact/',
@@ -340,7 +342,7 @@ module.exports = {
       priority: 0.6,
       lastmod: new Date().toISOString(),
     },
-    
+
     // About pages
     {
       loc: '/about/our-story/',
@@ -348,7 +350,7 @@ module.exports = {
       priority: 0.6,
       lastmod: new Date().toISOString(),
     },
-    
+
     // Reviews
     {
       loc: '/reviews/',
@@ -356,7 +358,7 @@ module.exports = {
       priority: 0.7,
       lastmod: new Date().toISOString(),
     },
-    
+
     // Case studies
     {
       loc: '/case-studies/',
@@ -390,7 +392,7 @@ module.exports = {
       priority: 0.6,
       lastmod: new Date().toISOString(),
     },
-    
+
     // Referral (noindex - excluded from sitemap)
     // Fun/Tools
     {
@@ -407,7 +409,7 @@ module.exports = {
       lastmod: new Date().toISOString(),
     },
     // Canada/US pages
-    
+
     {
       loc: '/try-free/',
       changefreq: 'weekly',
@@ -421,14 +423,14 @@ module.exports = {
       priority: 0.3,
       lastmod: new Date().toISOString(),
     },
-    
+
     {
       loc: '/terms/',
       changefreq: 'monthly',
       priority: 0.3,
       lastmod: new Date().toISOString(),
     },
-    
+
     // === MISSING INDEXABLE PAGES - Adding all important pages ===
     // Learn alternatives
     {
@@ -464,9 +466,9 @@ module.exports = {
       priority: 0.7,
       lastmod: new Date().toISOString(),
     },
-    
+
     // Invest (noindex - excluded from sitemap)
-    
+
     // Viral
     {
       loc: '/viral/',
@@ -475,7 +477,7 @@ module.exports = {
       lastmod: new Date().toISOString(),
     },
     // Ammonia control
-    
+
   ],
   transform: async (config, path) => {
     // Ensure path has trailing slash for consistency (except root)
@@ -568,7 +570,7 @@ module.exports = {
 
     // Home page gets highest priority
     if (normalizedPath === '' || normalizedPath === '/') {
-      return ;
+      return;
     }
 
     // Product pages

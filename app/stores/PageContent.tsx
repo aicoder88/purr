@@ -546,7 +546,7 @@ export default function StoresPage() {
               </p>
               <Link
                 href="/contact/"
-                className="inline-block bg-brand-red text-white dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-brand-red/90 transition-colors"
+                className="inline-block bg-brand-red-600 text-white dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-brand-red-700 transition-colors"
               >
                 Contact Us
               </Link>
@@ -653,7 +653,7 @@ export default function StoresPage() {
                             href={`https://maps.google.com/maps?q=${encodeURIComponent(store.address)}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-brand-red text-white dark:text-white text-sm font-medium rounded-lg hover:bg-brand-red/90 transition-colors"
+                            className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-brand-red-600 text-white dark:text-white text-sm font-medium rounded-lg hover:bg-brand-red-700 transition-colors"
                           >
                             <Navigation className="h-4 w-4" />
                             Get Directions
@@ -679,13 +679,13 @@ export default function StoresPage() {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/contact/"
-              className="inline-block bg-brand-red text-white dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-brand-red/90 transition-colors"
+              className="inline-block bg-brand-red-600 text-white dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-brand-red-700 transition-colors"
             >
               Request for my store
             </Link>
             <Link
               href="/b2b/"
-              className="inline-block border-2 border-brand-red text-brand-red dark:text-brand-red-400 px-6 py-3 rounded-lg font-semibold hover:bg-brand-red/10 transition-colors"
+              className="inline-block border-2 border-brand-red-700 text-brand-red-700 dark:border-brand-red-700 dark:text-brand-red-700 px-6 py-3 rounded-lg font-semibold hover:bg-brand-red-700/10 dark:hover:bg-brand-red-700/10 transition-colors"
             >
               Become a retailer
             </Link>

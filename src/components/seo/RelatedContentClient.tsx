@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '@/components/ui/container';
+import { BLOG_FEATURED_IMAGE_MAP } from '@/generated/blog-featured-image-map';
 
 
 interface RelatedContentClientProps {
@@ -20,21 +21,33 @@ interface RelatedContentClientProps {
   className?: string;
 }
 
+function normalizePath(url: string): string {
+  const withoutQuery = url.split('?')[0].split('#')[0];
+  return withoutQuery.replace(/\/+$/, '') || '/';
+}
+
 function getPageImage(url: string): { image: string; alt: string } {
+  const normalizedUrl = normalizePath(url);
+  const localeAgnosticUrl = normalizedUrl.replace(/^\/(en|fr|es|zh)(?=\/)/, '') || '/';
+  const blogImage = BLOG_FEATURED_IMAGE_MAP[normalizedUrl] || BLOG_FEATURED_IMAGE_MAP[localeAgnosticUrl];
+  if (blogImage) {
+    return blogImage;
+  }
+
   const pageImages: Record<string, { image: string; alt: string }> = {
-    '/learn': { image: '/optimized/blog/litter-box-maintenance.webp', alt: 'Cat litter box maintenance guide' },
+    '/learn': { image: '/optimized/blog/cat-litter-deodorizer-guide.webp', alt: 'Cat litter box maintenance guide' },
     '/learn/faq': { image: '/optimized/blog/multi-cat-household.webp', alt: 'Multi-cat household tips' },
-    '/learn/cat-litter-guide': { image: '/optimized/blog/litter-substrate-deep-dive.webp', alt: 'Cat litter substrate guide' },
-    '/learn/how-it-works': { image: '/optimized/blog/activated-carbon-filtering-closeup-microscope-1000x.webp', alt: 'How activated carbon works' },
-    '/learn/science': { image: '/optimized/blog/microscopic-carbon-pore-structure-10000x.webp', alt: 'Science of activated carbon' },
+    '/learn/cat-litter-guide': { image: '/optimized/blog/cat-litter-deodorizer-guide.webp', alt: 'Cat litter substrate guide' },
+    '/learn/how-it-works': { image: '/optimized/blog/Carbon-sktech.webp', alt: 'How activated carbon works' },
+    '/learn/science': { image: '/optimized/blog/science-molecule-lab.webp', alt: 'Science of activated carbon' },
     '/learn/safety': { image: '/optimized/blog/deodorizers-with-kittens.webp', alt: 'Safety information' },
-    '/learn/glossary': { image: '/optimized/blog/litter-box-maintenance.webp', alt: 'Glossary of terms' },
-    '/learn/alternatives': { image: '/optimized/blog/cat-litter-deodorizer-powder-product-display-on-table-with-cat-in-background-square.webp', alt: 'Product alternatives' },
-    '/b2b': { image: '/optimized/blog/b2b-wholesale-partnership.webp', alt: 'B2B wholesale partnership' },
-    '/contact': { image: '/optimized/blog/customer-support-help-center.webp', alt: 'Contact us' },
+    '/learn/glossary': { image: '/optimized/blog/cat-litter-deodorizer-guide.webp', alt: 'Glossary of terms' },
+    '/learn/alternatives': { image: '/optimized/blog/powder-vs-spray-hero-828w.avif', alt: 'Product alternatives' },
+    '/b2b': { image: '/optimized/blog/multi-cat-household.webp', alt: 'B2B wholesale partnership' },
+    '/contact': { image: '/optimized/blog/happy-owner-cat-ghibli.webp', alt: 'Contact us' },
   };
 
-  return pageImages[url] || { image: '/optimized/blog/litter-box-maintenance.webp', alt: 'Related article' };
+  return pageImages[normalizedUrl] || { image: '/optimized/blog/cat-litter-deodorizer-guide.webp', alt: 'Related article' };
 }
 
 export function RelatedContentClient({

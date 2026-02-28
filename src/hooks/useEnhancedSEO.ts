@@ -257,11 +257,11 @@ function generateSchema(
   locale: string,
   currency: string
 ): object {
+  const schemaLanguage = locale === 'fr' ? 'fr-CA' : 'en-CA';
   const baseSchema = {
     '@context': 'https://schema.org',
     '@id': url,
     url,
-    inLanguage: locale === 'fr' ? 'fr-CA' : 'en-CA',
   };
 
   switch (type) {
@@ -321,6 +321,7 @@ function generateSchema(
           } : {}),
           hasMerchantReturnPolicy: {
             '@type': 'MerchantReturnPolicy',
+            applicableCountry: ['CA', 'US'],
             returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
             merchantReturnDays: 30,
             returnMethod: 'https://schema.org/ReturnByMail',
@@ -347,6 +348,7 @@ function generateSchema(
       const articleSchema: Record<string, unknown> = {
         ...baseSchema,
         '@type': 'Article',
+        inLanguage: schemaLanguage,
         headline,
         description: data.description,
         image: data.image || 'https://www.purrify.ca/optimized/logos/purrify-logo.png',
@@ -402,6 +404,7 @@ function generateSchema(
       return {
         ...baseSchema,
         '@type': 'FAQPage',
+        inLanguage: schemaLanguage,
         mainEntity: data.questions.map((q: { question: string; answer: string }) => ({
           '@type': 'Question',
           name: q.question,
@@ -474,6 +477,7 @@ function generateSchema(
       return {
         ...baseSchema,
         '@type': 'HowTo',
+        inLanguage: schemaLanguage,
         name: data.name,
         description: data.description,
         image: data.image,
@@ -491,6 +495,7 @@ function generateSchema(
       return {
         ...baseSchema,
         '@type': 'ClaimReview',
+        inLanguage: schemaLanguage,
         claimReviewed: data.claim,
         reviewRating: {
           '@type': 'Rating',
@@ -522,6 +527,7 @@ function generateSchema(
         return data.claims.map((claim: { claim: string; rating: number; ratingLabel?: string }) => ({
           '@context': 'https://schema.org',
           '@type': 'ClaimReview',
+          inLanguage: schemaLanguage,
           claimReviewed: claim.claim,
           reviewRating: {
             '@type': 'Rating',

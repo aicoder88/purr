@@ -120,7 +120,7 @@ export default function RetailerMap({ height = 600 }: RetailerMapProps) {
                                             href={loc.website}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="bg-orange-500 hover:bg-orange-600 dark:bg-orange-600 dark:hover:bg-orange-700 text-white text-xs font-bold py-2 px-3 rounded-lg text-center transition-colors"
+                                            className="bg-orange-700 hover:bg-orange-800 dark:bg-orange-600 dark:hover:bg-orange-700 text-white text-xs font-bold py-2 px-3 rounded-lg text-center transition-colors"
                                         >
                                             Visit Website →
                                         </a>
@@ -129,7 +129,7 @@ export default function RetailerMap({ height = 600 }: RetailerMapProps) {
                                         href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${loc.address}, ${loc.city}, ${loc.province}, ${loc.postal_code}`)}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 text-xs font-bold py-2 px-3 rounded-lg text-center transition-colors"
+                                        className="bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 text-gray-900 dark:text-gray-100 text-xs font-bold py-2 px-3 rounded-lg text-center transition-colors"
                                     >
                                         Get Directions
                                     </a>

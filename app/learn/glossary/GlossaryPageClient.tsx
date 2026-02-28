@@ -352,7 +352,7 @@ export default function GlossaryPageClient() {
                 key={category.id}
                 onClick={() => handleCategoryClick(category.id)}
                 className={`px-4 py-2 rounded-full font-medium transition-all ${selectedCategory === category.id
-                  ? 'bg-electric-indigo text-white dark:text-gray-100 shadow-lg'
+                  ? 'bg-electric-indigo-700 text-white dark:text-white shadow-lg'
                   : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
                   }`}
               >
@@ -398,7 +398,7 @@ export default function GlossaryPageClient() {
                           <a
                             key={related}
                             href={relatedTerm ? `#${relatedTerm.id}` : '#'}
-                            className="text-sm px-2 py-1 bg-electric-indigo/10 dark:bg-electric-indigo/20 text-electric-indigo dark:text-electric-indigo-400 rounded-full hover:bg-electric-indigo/20 dark:hover:bg-electric-indigo/30 transition-colors"
+                            className="text-sm px-2 py-1 bg-electric-indigo/10 dark:bg-electric-indigo-800 text-electric-indigo-700 dark:text-electric-indigo-100 rounded-full hover:bg-electric-indigo/20 dark:hover:bg-electric-indigo-700 transition-colors"
                           >
                             {related}
                           </a>
@@ -437,13 +437,13 @@ export default function GlossaryPageClient() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href={`${localePrefix}/products/trial-size`}>
-                <Button size="lg" className="bg-white dark:bg-gray-900 text-electric-indigo hover:bg-gray-100 hover:scale-105 dark:hover:bg-gray-700 font-bold transition-all duration-300">
+                <Button size="lg" className="bg-white dark:bg-gray-900 text-electric-indigo-800 dark:text-electric-indigo-100 hover:bg-gray-100 hover:scale-105 dark:hover:bg-gray-700 font-bold transition-all duration-300">
                   {trialCtaLabel}
                   <ChevronRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
               <Link href={`${localePrefix}/learn/how-it-works`}>
-                <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 hover:bg-white hover:scale-105 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-50 transition-all duration-300">
+                <Button size="lg" variant="outline" className="!bg-electric-indigo-800 border-electric-indigo-700 dark:!bg-electric-indigo-700 dark:border-electric-indigo-600 text-white dark:text-white hover:!bg-electric-indigo-700 hover:scale-105 dark:hover:!bg-electric-indigo-600 hover:text-white dark:hover:text-white transition-all duration-300">
                   {glossaryUi.ctaLearnHow}
                 </Button>
               </Link>

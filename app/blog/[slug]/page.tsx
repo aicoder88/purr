@@ -24,9 +24,24 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
 
-  return generateLocalizedMetadata({
+  const metadata = await generateLocalizedMetadata({
     params: Promise.resolve({ locale: defaultLocale, slug }),
   });
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.purrify.ca';
+  const canonicalUrl = `${siteUrl}/blog/${slug}/`;
+
+  return {
+    ...metadata,
+    alternates: {
+      ...metadata.alternates,
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      ...metadata.openGraph,
+      url: canonicalUrl,
+    },
+  };
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {

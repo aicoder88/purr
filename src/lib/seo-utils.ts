@@ -377,10 +377,10 @@ export const generateProductStructuredData = (productId: string, localeInput: st
     },
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '127',
-      bestRating: '5',
-      worstRating: '1',
+      ratingValue: 4.8,
+      reviewCount: 127,
+      bestRating: 5,
+      worstRating: 1,
     },
   };
 };
@@ -445,11 +445,11 @@ export const generateOrganizationSchema = (localeInput: string) => {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    '@id': `${baseUrl}/#organization`,
+    '@id': `${baseUrl}#organization`,
     name: SITE_NAME,
     url: baseUrl,
-    logo: `${baseUrl}/optimized/logos/purrify-logo.png`,
-    image: `${baseUrl}/optimized/logos/purrify-logo.png`,
+    logo: `${baseUrl}optimized/logos/purrify-logo.png`,
+    image: `${baseUrl}optimized/logos/purrify-logo.png`,
     description: getLocalizedContent(SEO_TRANSLATIONS.organizationDescription, locale),
     address: {
       '@type': 'PostalAddress',
@@ -532,13 +532,13 @@ export const generateWebsiteSchema = (localeInput: string) => {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    '@id': `${baseUrl}/#website`,
+    '@id': `${baseUrl}#website`,
     name: SITE_NAME,
     alternateName: `${SITE_NAME} - ${getLocalizedContent(SEO_TRANSLATIONS.siteDescription, locale)}`,
     url: localizedUrl || baseUrl,
     description: getLocalizedContent(SEO_TRANSLATIONS.siteDescription, locale),
     publisher: {
-      '@id': `${baseUrl}/#organization`
+      '@id': `${baseUrl}#organization`
     },
     potentialAction: {
       '@type': 'SearchAction',
@@ -654,7 +654,7 @@ export const generateLocalBusinessSchema = (cityName: string, province: string, 
   };
 
   const coords = cityCoordinates[cityName as keyof typeof cityCoordinates] || { lat: '45.4215', lon: '-75.6972' };
-  
+
   // Get primary location for complete address fields (required for LocalBusiness schema)
   const primaryLocation = getPrimaryLocation();
 
@@ -753,10 +753,10 @@ export const generateHomepageSchema = (localeInput: string, currency: string = '
             },
             aggregateRating: {
               '@type': 'AggregateRating',
-              ratingValue: '4.8',
-              reviewCount: '127',
-              bestRating: '5',
-              worstRating: '1',
+              ratingValue: 4.8,
+              reviewCount: 127,
+              bestRating: 5,
+              worstRating: 1,
             }
           }
         }))
@@ -790,7 +790,7 @@ export const generateProductPageSchema = (productId: string, localeInput: string
         brand: {
           '@type': 'Brand',
           name: SITE_NAME,
-          logo: `${baseUrl}/optimized/logos/purrify-logo.png`
+          logo: `${baseUrl}optimized/logos/purrify-logo.png`
         },
         manufacturer: {
           '@type': 'Organization',
@@ -843,10 +843,10 @@ export const generateProductPageSchema = (productId: string, localeInput: string
         },
         aggregateRating: {
           '@type': 'AggregateRating',
-          ratingValue: '4.8',
-          reviewCount: '127',
-          bestRating: '5',
-          worstRating: '1',
+          ratingValue: 4.8,
+          reviewCount: 127,
+          bestRating: 5,
+          worstRating: 1,
         },
       },
 
@@ -891,7 +891,7 @@ export const generateArticlePageSchema = (title: string, description: string, pa
     headline,
     description,
     url,
-    image: options?.image || `${baseUrl}/optimized/logos/purrify-logo.png`,
+    image: options?.image || `${baseUrl}optimized/logos/purrify-logo.png`,
     author: {
       '@type': 'Person',
       name: options?.author || 'Dr. Sarah Chen',
@@ -904,7 +904,7 @@ export const generateArticlePageSchema = (title: string, description: string, pa
       url: baseUrl,
       logo: {
         '@type': 'ImageObject',
-        url: `${baseUrl}/optimized/logos/purrify-logo.png`,
+        url: `${baseUrl}optimized/logos/purrify-logo.png`,
         width: 400,
         height: 400
       }

@@ -239,14 +239,8 @@ export default function AboutPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {team.map((member) => {
-                const isMark = member.name === 'Mark Archer';
-                const isDrMike = member.name === 'Dr. Michael Rodriguez';
-                const hasPhoto = isMark || isDrMike;
-                const photoSrc = isMark
-                  ? '/optimized/team/mark-archer.webp'
-                  : isDrMike
-                    ? '/optimized/marketing/dr-michael-rodriguez.jpg'
-                    : null;
+                const hasPhoto = Boolean(member.image);
+                const photoSrc = member.image ?? null;
                 return (
                   <div
                     key={member.name}

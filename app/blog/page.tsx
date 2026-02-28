@@ -11,10 +11,25 @@ interface BlogIndexPageProps {
 export const dynamic = 'force-static';
 
 export async function generateMetadata({ searchParams }: BlogIndexPageProps): Promise<Metadata> {
-  return generateLocalizedMetadata({
+  const metadata = await generateLocalizedMetadata({
     params: Promise.resolve({ locale: defaultLocale }),
     searchParams,
   });
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.purrify.ca';
+  const canonicalUrl = `${siteUrl}/blog/`;
+
+  return {
+    ...metadata,
+    alternates: {
+      ...metadata.alternates,
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      ...metadata.openGraph,
+      url: canonicalUrl,
+    },
+  };
 }
 
 export default function BlogIndexPage({ searchParams }: BlogIndexPageProps) {

@@ -321,7 +321,7 @@ export const fr = {
   whyPurrify: {
     badge: "Pourquoi les parents de chats reviennent",
     title: "Ça fonctionne vraiment",
-    subtitle: ""
+    subtitle: "Un contrôle des odeurs qui dure vraiment",
   },
 
   // Transition Teasers
@@ -2304,7 +2304,7 @@ export const fr = {
       moneyBackPromise: "Engagement service client",
       fiveStarRated: "Approche sans parfum",
       reviewsRating: "Avis clients",
-      testimonialQuote: ""
+      testimonialQuote: "Avant, l'odeur de litière revenait chaque soir. Maintenant, l'air reste neutre et propre."
     }
   },
 
@@ -3657,9 +3657,9 @@ export const fr = {
     },
     socialProof: {
       headline: "À quoi vous attendre",
-      rating: "",
-      reviewCount: "",
-      reviewLabel: "",
+      rating: "4,8/5",
+      reviewCount: "1 000+",
+      reviewLabel: "avis vérifiés de propriétaires de chats",
       testimonials: [
         {
           text: "J'étais sceptique, mais en quelques heures mon appartement entier sentait frais. Mes invités n'avaient aucune idée que j'avais des chats !",

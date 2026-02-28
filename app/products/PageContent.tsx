@@ -77,7 +77,7 @@ export default function ProductsPage({ locale: localeProp }: PageContentProps = 
       sku: 'purrify-12g',
       mpn: 'PURRIFY-12G',
       image: 'https://www.purrify.ca/optimized/products/17g-transparent-v2.webp',
-      url: `https://www.purrify.ca/${locale === 'fr' ? '/fr' : ''}/products/trial-size`,
+      url: `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}products/trial-size`,
       shippingRate: '4.76',
     },
     {
@@ -87,7 +87,7 @@ export default function ProductsPage({ locale: localeProp }: PageContentProps = 
       sku: 'purrify-50g',
       mpn: 'PURRIFY-50G',
       image: 'https://www.purrify.ca/optimized/products/60g-transparent.webp',
-      url: `https://www.purrify.ca/${locale === 'fr' ? '/fr' : ''}/products/#standard`,
+      url: `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}products/#standard`,
       shippingRate: '6.99',
     },
     {
@@ -97,7 +97,7 @@ export default function ProductsPage({ locale: localeProp }: PageContentProps = 
       sku: 'purrify-120g',
       mpn: 'PURRIFY-120G',
       image: 'https://www.purrify.ca/optimized/products/60g-transparent.webp',
-      url: `https://www.purrify.ca/${locale === 'fr' ? '/fr' : ''}/products/#family-pack`,
+      url: `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}products/#family-pack`,
       shippingRate: '0',
     },
   ];
@@ -109,7 +109,7 @@ export default function ProductsPage({ locale: localeProp }: PageContentProps = 
         "@type": "CollectionPage",
         "name": pageTitle,
         "description": pageDescription,
-        "url": `https://www.purrify.ca/${locale === 'fr' ? '/fr' : ''}/products`,
+        "url": `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}products`,
         "mainEntity": {
           "@type": "ItemList",
           "itemListElement": productStructuredData.map((product, index) => {
@@ -150,6 +150,7 @@ export default function ProductsPage({ locale: localeProp }: PageContentProps = 
                   },
                   "hasMerchantReturnPolicy": {
                     "@type": "MerchantReturnPolicy",
+                    "applicableCountry": ["CA", "US"],
                     "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
                     "merchantReturnDays": 30,
                     "returnMethod": "https://schema.org/ReturnByMail",
