@@ -4,6 +4,9 @@ export const fr = {
   // Common
   siteName: "Purrify",
   siteDescription: "Additif de litière pour chat à base de charbon actif qui élimine les odeurs à la source.",
+  accessibility: {
+    gtmNoscriptTitle: "Google Tag Manager (noscript)"
+  },
 
   // Navigation
   nav: {

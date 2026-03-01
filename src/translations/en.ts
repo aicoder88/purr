@@ -4,6 +4,9 @@ export const en = {
   // Common
   siteName: "Purrify",
   siteDescription: "Love your cat, lose the smell. Water-filter grade activated carbon eliminates ammonia odors — no perfumes, just science. Try FREE (just pay shipping). Made in Canada, ships across North America.",
+  accessibility: {
+    gtmNoscriptTitle: "Google Tag Manager (noscript)"
+  },
 
   // Navigation
   nav: {

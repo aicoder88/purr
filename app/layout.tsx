@@ -178,6 +178,8 @@ export default async function RootLayout({
   // Load messages directly to avoid dynamic request config using cookies
   const translationModule = await import(`@/translations/${locale}.ts`);
   const allMessages = translationModule[locale] as Record<string, unknown>;
+  const accessibilityMessages = allMessages.accessibility as { gtmNoscriptTitle?: string } | undefined;
+  const gtmNoscriptTitle = accessibilityMessages?.gtmNoscriptTitle;
 
   // Namespaces used ONLY in server components (pages / API routes).
   // Removing them from the client payload reduces the serialized __NEXT_DATA__
@@ -252,7 +254,7 @@ export default async function RootLayout({
         {gtmId ? (
           <noscript>
             <iframe
-              title="gtm-noscript"
+              title={gtmNoscriptTitle}
               src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
               height="0"
               width="0"
