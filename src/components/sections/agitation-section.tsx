@@ -37,7 +37,7 @@ export function AgitationSection() {
                 height={600}
                 className="w-full h-auto object-cover"
               />
-              <p className="absolute bottom-0 left-0 right-0 text-sm text-gray-50 dark:text-gray-900 bg-black/45 px-4 py-3">
+              <p className="absolute bottom-0 left-0 right-0 text-sm text-gray-50 dark:text-gray-100 bg-black/45 px-4 py-3">
                 {imageCaption}
               </p>
             </div>

@@ -102,7 +102,7 @@ export function TryFreeClient() {
                   <Button
                     asChild
                     size="lg"
-                    className="w-full bg-[#03E46A] dark:bg-[#04D162] hover:bg-[#02C55A] dark:hover:bg-[#04D162]/90 text-white dark:text-gray-900 font-bold text-lg py-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
+                    className="w-full bg-[#03E46A] dark:bg-[#04D162] hover:bg-[#02C55A] dark:hover:bg-[#04D162]/90 text-gray-900 dark:text-gray-900 font-bold text-lg py-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
                   >
                     <a href={checkoutUrl}>
                       {copy.cta}
@@ -175,7 +175,7 @@ export function TryFreeClient() {
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {(copy.steps || []).map((item: { step?: string; title: string; description?: string; desc?: string }, i: number) => (
               <div key={i} className="text-center">
-                <div className="w-12 h-12 bg-[#03E46A] dark:bg-[#04D162] text-white dark:text-gray-900 font-bold text-xl rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-12 h-12 bg-[#03E46A] dark:bg-[#04D162] text-gray-900 dark:text-gray-900 font-bold text-xl rounded-full flex items-center justify-center mx-auto mb-4">
                   {item.step}
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 dark:text-gray-50 mb-2">{item.title}</h3>

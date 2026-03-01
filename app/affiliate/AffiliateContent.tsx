@@ -90,7 +90,7 @@ export default function AffiliateContent() {
                                     </button>
                                 </Link>
                                 <Link href="#calculator" className="w-full sm:w-auto">
-                                    <button className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-gray-800/50 hover:bg-gray-800 dark:bg-gray-800/50 dark:hover:bg-gray-800 text-gray-300 hover:text-white dark:text-gray-300 dark:hover:text-white border border-gray-700 hover:border-gray-600 dark:border-gray-700 dark:hover:border-gray-600 text-lg font-semibold rounded-xl transition-all duration-200 backdrop-blur-sm">
+                                    <button className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-gray-800/70 hover:bg-gray-800 dark:bg-gray-800/70 dark:hover:bg-gray-800 text-gray-100 hover:text-white dark:text-gray-100 dark:hover:text-white border border-gray-600 hover:border-gray-500 dark:border-gray-600 dark:hover:border-gray-500 text-lg font-semibold rounded-xl transition-all duration-200 backdrop-blur-sm">
                                         Calculate Income
                                     </button>
                                 </Link>

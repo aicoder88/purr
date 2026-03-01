@@ -162,7 +162,7 @@ export default function SubscriptionPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/#products">
-                  <Button size="lg" className="bg-[#03E46A] dark:bg-[#04D162] hover:bg-[#02C55A] dark:hover:bg-[#04D162]/90 text-white dark:text-gray-900 font-bold text-lg px-8">
+                  <Button size="lg" className="bg-[#03E46A] dark:bg-[#04D162] hover:bg-[#02C55A] dark:hover:bg-[#04D162]/90 text-gray-900 dark:text-gray-900 font-bold text-lg px-8">
                     Start Saving Now
                   </Button>
                 </Link>

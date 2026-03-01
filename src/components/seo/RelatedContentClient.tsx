@@ -139,7 +139,7 @@ export function RelatedContentClient({
                     <h3 className="font-heading text-lg font-semibold text-[#5B2EFF] dark:text-[#3694FF] group-hover:text-[#5B2EFF]/80 dark:group-hover:text-[#3694FF]/80">
                       {page.title}
                     </h3>
-                    <p className="text-sm text-[#03E46A] dark:text-[#3694FF] mt-2">
+                    <p className="text-sm text-electric-indigo-600 dark:text-indigo-400 mt-2">
                       {readMoreText} →
                     </p>
                   </div>

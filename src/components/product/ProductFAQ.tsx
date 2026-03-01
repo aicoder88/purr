@@ -162,7 +162,7 @@ export function ProductFAQ({
               value={`item-${index}`}
               className="border-b border-gray-200 dark:border-gray-700 last:border-0"
             >
-              <AccordionTrigger className="text-left font-semibold text-base text-gray-900 dark:text-white hover:text-electric-indigo dark:hover:text-electric-indigo transition-colors py-4">
+              <AccordionTrigger className="text-left font-semibold text-base text-gray-900 dark:text-white hover:text-electric-indigo-600 dark:hover:text-electric-indigo-400 transition-colors py-4">
                 {faq.question}
               </AccordionTrigger>
               <AccordionContent className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm pb-4">

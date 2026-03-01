@@ -155,7 +155,7 @@ export const createButtonClasses = (variant: 'primary' | 'secondary' | 'outline'
 
   switch (variant) {
     case 'primary':
-      return `${baseClasses} bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 hover:from-[#FF3131]/90 hover:to-[#FF3131] text-white dark:text-gray-100`;
+      return `${baseClasses} bg-gradient-to-r from-[#CC2727] to-[#991D1D] hover:from-[#991D1D] hover:to-[#7A1717] text-white dark:from-[#991D1D] dark:to-[#CC2727] dark:hover:from-[#7A1717] dark:hover:to-[#991D1D] dark:text-gray-100`;
     case 'secondary':
       return `${baseClasses} ${COLORS.surface.light} ${COLORS.text.primary}`;
     case 'outline':

@@ -182,7 +182,7 @@ export async function generateAutomatedBlogPost() {
       keywords: parsedPayload.keywords,
       ogImage: heroImage.url,
     },
-    readingTime: Math.max(1, Math.round(countWords(parsedPayload.contentHtml) / 200)),
+    readingTime: Math.max(1, Math.ceil(countWords(parsedPayload.contentHtml) / 200)),
     faq: parsedPayload.faq,
   };
 

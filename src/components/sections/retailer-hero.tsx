@@ -130,7 +130,7 @@ export function RetailerHero() {
                 </p>
                 <div className="flex flex-wrap justify-center lg:justify-start gap-3 items-center">
                   {['Pet Stores', 'Vet Clinics', 'Groomers', 'Distributors'].map((badge) => (
-                    <span key={badge} className="px-5 py-2.5 bg-gray-50 dark:bg-gray-800/50 rounded-2xl text-xs font-bold text-gray-600 dark:text-gray-300 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm">
+                    <span key={badge} className="px-5 py-2.5 bg-gray-50 dark:bg-gray-800 rounded-2xl text-xs font-bold text-gray-600 dark:text-gray-200 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm">
                       {trustIndicatorTypes?.[badge.toLowerCase().replace(' ', '')] || badge}
                     </span>
                   ))}

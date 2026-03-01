@@ -386,7 +386,7 @@ export function Header() {
             <ThemeToggle />
             <Button
               asChild
-              className="flex items-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+              className="flex items-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 dark:from-brand-red-700 dark:to-brand-red-600 hover:from-brand-red/90 hover:to-brand-red dark:hover:from-brand-red-800 dark:hover:to-brand-red-700 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
             >
               <Link href="/stores/" prefetch={false}>
                 <MapPin className="w-4 h-4" />
@@ -480,7 +480,7 @@ export function Header() {
               <div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2 space-y-2">
                 <Button
                   asChild
-                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red text-white dark:text-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 dark:from-brand-red-700 dark:to-brand-red-600 hover:from-brand-red/90 hover:to-brand-red dark:hover:from-brand-red-800 dark:hover:to-brand-red-700 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                 >
                   <Link href="/stores/" prefetch={false} onClick={closeMenu}>
                     <MapPin className="w-4 h-4" />

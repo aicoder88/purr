@@ -209,7 +209,7 @@ export default function ThankYouClient({ orderDetails, error, sessionId: _sessio
 
         <div className="space-y-6">
           <div className="flex gap-4">
-            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#03E46A] dark:bg-[#04D162] text-white dark:text-gray-900 flex items-center justify-center font-bold text-lg">
+            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#03E46A] dark:bg-[#04D162] text-gray-900 dark:text-gray-900 flex items-center justify-center font-bold text-lg">
               1
             </div>
             <div>
@@ -371,7 +371,7 @@ export default function ThankYouClient({ orderDetails, error, sessionId: _sessio
           </div>
 
           <Link href="/#products">
-            <Button className="w-full bg-[#03E46A] dark:bg-[#04D162] hover:bg-[#02C55A] dark:hover:bg-[#04D162]/90 text-white dark:text-gray-900 font-bold py-4 text-lg">
+            <Button className="w-full bg-[#03E46A] dark:bg-[#04D162] hover:bg-[#02C55A] dark:hover:bg-[#04D162]/90 text-gray-900 dark:text-gray-900 font-bold py-4 text-lg">
               {thankYou.autoshipCta.button} <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </Link>
@@ -393,7 +393,7 @@ export default function ThankYouClient({ orderDetails, error, sessionId: _sessio
           </a>
           <Link
             href="/"
-            className="inline-flex items-center justify-center px-6 py-3 text-base font-medium rounded-lg text-white dark:text-gray-900 bg-[#03E46A] dark:bg-[#04D162] hover:bg-[#02C55A] transition-colors"
+            className="inline-flex items-center justify-center px-6 py-3 text-base font-medium rounded-lg text-gray-900 dark:text-gray-900 bg-[#03E46A] dark:bg-[#04D162] hover:bg-[#02C55A] transition-colors"
           >
             {thankYou.helpSection.returnHome}
           </Link>
