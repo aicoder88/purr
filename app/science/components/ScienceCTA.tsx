@@ -27,7 +27,7 @@ export function ScienceCTA() {
             href="/learn/science/"
             className="px-8 py-4 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 rounded-full font-bold hover:border-gray-300 dark:hover:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-750 shadow-sm hover:shadow-md transition-all duration-300 w-full sm:w-auto text-lg"
           >
-            Learn More
+            Explore the full science guide
           </Link>
         </div>
       </div>

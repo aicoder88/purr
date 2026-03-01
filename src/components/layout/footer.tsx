@@ -456,6 +456,22 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
+                    href="/b2b/sell-sheet/"
+                    className={footerLinkClass}
+                  >
+                    {t('nav.wholesalePricing')}
+                  </Link>
+                </li>
+                <li>
+                  <Link prefetch={false}
+                    href={`${localePrefix}/invest/`}
+                    className={footerLinkClass}
+                  >
+                    {t('footerNav.invest') || "Investors"}
+                  </Link>
+                </li>
+                <li>
+                  <Link prefetch={false}
                     href={`${localePrefix}/affiliate/`}
                     className={footerLinkClass}
                   >
@@ -464,10 +480,18 @@ export function Footer() {
                 </li>
                 <li>
                   <Link prefetch={false}
-                    href={`${localePrefix}/invest/`}
+                    href={`${localePrefix}/support/`}
                     className={footerLinkClass}
                   >
                     {t('footerNav.contact')}
+                  </Link>
+                </li>
+                <li>
+                  <Link prefetch={false}
+                    href={`${localePrefix}/support/shipping/`}
+                    className={footerLinkClass}
+                  >
+                    {t('nav.faq')}
                   </Link>
                 </li>
               </ul>

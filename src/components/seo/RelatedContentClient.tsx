@@ -140,7 +140,7 @@ export function RelatedContentClient({
                       {page.title}
                     </h3>
                     <p className="text-sm text-electric-indigo-600 dark:text-indigo-400 mt-2">
-                      {readMoreText} →
+                      {readMoreText}: {page.title} →
                     </p>
                   </div>
                 </Link>
