@@ -134,6 +134,8 @@ module.exports = {
     '/blog/activated-carbon-science',
     '/blog/beyond-masking-odors',
     '/blog/fresh-home-multiple-cats',
+    '/blog/how-often-change-cat-litter',
+    '/blog/how-to-reduce-litter-box-odor',
     '/fr/blog/best-cat-litter-multiple-cats',
     '/blog/purrify-vs-arm-hammer',
     '/learn/purrify-vs-arm-hammer',
@@ -495,6 +497,8 @@ module.exports = {
       '/checkout',
       '/cart-2',
       '/products/compare',
+      '/blog/how-often-change-cat-litter',
+      '/blog/how-to-reduce-litter-box-odor',
     ];
 
     for (const pattern of redirectingPatterns) {

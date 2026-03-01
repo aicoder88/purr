@@ -246,11 +246,6 @@ const REDIRECTS = [
     destination: "/learn/safety/",
     permanent: true
   },
-  {
-    source: "/blog/how-often-change-cat-litter",
-    destination: "/learn/cat-litter-guide/",
-    permanent: true
-  },
 
   // --- FRENCH BLOG TO LEARN (pages that stay in /learn/) ---
   {
@@ -1026,12 +1021,6 @@ const REDIRECTS = [
     permanent: true
   },
 
-
-  {
-    source: "/blog/how-to-reduce-litter-box-odor",
-    destination: "/blog/how-to-eliminate-cat-litter-odor/",
-    permanent: true
-  },
 
   {
     source: "/blog/using-purrify",

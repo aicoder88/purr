@@ -345,7 +345,7 @@ export default function ThankYouClient({ orderDetails, error, sessionId: _sessio
                 <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100">
                   {thankYou.autoshipCta.heading}
                 </h2>
-                <span className="bg-[#03E46A] dark:bg-[#04D162] text-white dark:text-gray-900 text-xs font-bold px-2 py-1 rounded-full">
+                <span className="bg-[#03E46A] dark:bg-[#04D162] text-gray-900 text-xs font-bold px-2 py-1 rounded-full">
                   {thankYou.autoshipCta.saveBadge}
                 </span>
               </div>

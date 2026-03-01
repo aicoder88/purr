@@ -175,11 +175,6 @@ const REDIRECTS = [
     destination: "/learn/activated-carbon-benefits/",
     permanent: true
   },
-  {
-    source: "/blog/how-often-change-cat-litter",
-    destination: "/learn/cat-litter-guide/",
-    permanent: true
-  },
 
   // --- FRENCH BLOG TO LEARN ---
   {
@@ -881,12 +876,6 @@ const REDIRECTS = [
     destination: "/learn/solutions/how-to-neutralize-ammonia-cat-litter/",
     permanent: true
   },
-  {
-    source: "/blog/how-to-reduce-litter-box-odor",
-    destination: "/learn/solutions/litter-box-smell-elimination/",
-    permanent: true
-  },
-
   // --- LEGACY BLOG POSTS ---
   {
     source: "/blog/how-to-use-cat-litter-deodorizer/",

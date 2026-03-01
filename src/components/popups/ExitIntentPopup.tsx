@@ -316,7 +316,7 @@ export function ExitIntentPopup({
                 className={cn(
                   'w-full py-4 rounded-xl font-bold text-lg',
                   'bg-[#03E46A] hover:bg-[#02C55A]',
-                  'text-white',
+                  'text-gray-900',
                   'shadow-lg shadow-[#03E46A]/30',
                   'transition-all',
                   'disabled:opacity-50'

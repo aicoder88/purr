@@ -9,6 +9,7 @@ import { sampleBlogPosts, getBlogPostContent, type BlogPost as DataBlogPost } fr
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
 import { locales, isValidLocale } from '@/i18n/config';
 import { generateArticlePageSchema, stripContext } from '@/lib/seo-utils';
+import { optimizeMetaTitle } from '@/lib/seo/meta-optimizer';
 import { ArrowLeft, Calendar, User, Clock } from 'lucide-react';
 import { sanitizeHTML } from '@/lib/security/sanitize';
 
@@ -69,9 +70,10 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   const rawMetaTitle = post.seoTitle || post.title;
-  const metaTitle = rawMetaTitle === post.title && !rawMetaTitle.includes(SITE_NAME)
+  const candidateMetaTitle = rawMetaTitle === post.title && !rawMetaTitle.includes(SITE_NAME)
     ? `${rawMetaTitle} | ${SITE_NAME}`
     : rawMetaTitle;
+  const metaTitle = optimizeMetaTitle(candidateMetaTitle).title;
   const metaDescription = post.seoDescription || post.excerpt;
   const metaImageUrl = post.image.startsWith('http') ? post.image : `${SITE_URL}${post.image}`;
 
@@ -249,6 +251,11 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
     notFound();
   }
 
+  // Some editorial HTML posts include a full in-content hero/header block.
+  // Avoid rendering the page-level hero in that case to prevent double heroes.
+  const leadingContent = post.content?.slice(0, 2500) ?? '';
+  const hasEmbeddedHero = /<header\b[^>]*>/i.test(leadingContent);
+
   // Generate comprehensive Article schema using centralized utility
   const wordCount = post.content ? post.content.split(/\s+/).length : 0;
   const readingTime = wordCount > 0 ? Math.ceil(wordCount / 200) : 0;
@@ -382,59 +389,60 @@ export default async function LocalizedBlogPostPage({ params }: BlogPostPageProp
           </Container>
         </section>
 
-        {/* Hero Section */}
-        <section className="py-12 md:py-16">
-          <Container>
-            <div className="max-w-4xl mx-auto">
-              {/* Meta Info */}
-              <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-6">
-                <span className="flex items-center gap-1">
-                  <Calendar className="w-4 h-4" />
-                  {formatDate(post.date)}
-                </span>
-                <span className="flex items-center gap-1">
-                  <User className="w-4 h-4" />
-                  {post.author}
-                </span>
-                {post.content && (
+        {!hasEmbeddedHero && (
+          <section className="py-12 md:py-16">
+            <Container>
+              <div className="max-w-4xl mx-auto">
+                {/* Meta Info */}
+                <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-6">
                   <span className="flex items-center gap-1">
-                    <Clock className="w-4 h-4" />
-                    {Math.ceil(post.content.split(' ').length / 200)} {t.minRead}
+                    <Calendar className="w-4 h-4" />
+                    {formatDate(post.date)}
                   </span>
-                )}
-              </div>
-
-              {/* Title */}
-              <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-                {post.title}
-              </h1>
-
-              {/* Excerpt */}
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">{post.excerpt}</p>
-
-              {/* Featured Image */}
-              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src={post.image}
-                  alt={post.heroImageAlt || post.title}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-              {(post.heroImageCaption || post.heroImageCredit) && (
-                <div className="mt-3 text-sm text-gray-500 dark:text-gray-400 text-center">
-                  {post.heroImageCaption && <span>{post.heroImageCaption}</span>}
-                  {post.heroImageCredit && (
-                    <span className="ml-2">
-                      {locale === 'fr' ? 'Credit :' : 'Credit:'} {post.heroImageCredit}
+                  <span className="flex items-center gap-1">
+                    <User className="w-4 h-4" />
+                    {post.author}
+                  </span>
+                  {post.content && (
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-4 h-4" />
+                      {Math.ceil(post.content.split(' ').length / 200)} {t.minRead}
                     </span>
                   )}
                 </div>
-              )}
-            </div>
-          </Container>
-        </section>
+
+                {/* Title */}
+                <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+                  {post.title}
+                </h1>
+
+                {/* Excerpt */}
+                <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">{post.excerpt}</p>
+
+                {/* Featured Image */}
+                <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl">
+                  <Image
+                    src={post.image}
+                    alt={post.heroImageAlt || post.title}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+                {(post.heroImageCaption || post.heroImageCredit) && (
+                  <div className="mt-3 text-sm text-gray-500 dark:text-gray-400 text-center">
+                    {post.heroImageCaption && <span>{post.heroImageCaption}</span>}
+                    {post.heroImageCredit && (
+                      <span className="ml-2">
+                        {locale === 'fr' ? 'Credit :' : 'Credit:'} {post.heroImageCredit}
+                      </span>
+                    )}
+                  </div>
+                )}
+              </div>
+            </Container>
+          </section>
+        )}
 
         {/* Content Section */}
         <section className="py-8 md:py-12">

@@ -2,7 +2,6 @@
 
 import { ReactNode } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
-import { ThemeProvider } from '@/components/theme/theme-provider';
 import { CurrencyProvider } from '@/lib/currency-context';
 import { TranslationProvider } from '@/lib/translation-context';
 import { ClientLogic } from '@/components/layout/ClientLogic';
@@ -26,17 +25,12 @@ export function Providers({
       getMessageFallback={({ namespace, key }) => `${namespace ? namespace + '.' : ''}${key}`}
       onError={(error) => console.warn('i18n client error:', error)}
     >
-      <ThemeProvider
-        defaultTheme="system"
-        storageKey="purrify-ui-theme"
-      >
-        <CurrencyProvider detectedCurrency="CAD">
-          <TranslationProvider language={locale}>
-            <ClientLogic />
-            {children}
-          </TranslationProvider>
-        </CurrencyProvider>
-      </ThemeProvider>
+      <CurrencyProvider detectedCurrency="CAD">
+        <TranslationProvider language={locale}>
+          <ClientLogic />
+          {children}
+        </TranslationProvider>
+      </CurrencyProvider>
     </NextIntlClientProvider>
   );
 }

@@ -11,7 +11,6 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
 import { useTranslations, useLocale } from "next-intl";
-import { ThemeToggle } from "@/components/theme/theme-toggle";
 import Image from "next/image";
 import { usePathname, useSearchParams } from "next/navigation";
 
@@ -383,7 +382,6 @@ export function Header() {
           </nav>
 
           <div className="hidden md:flex items-center space-x-3">
-            <ThemeToggle />
             <Button
               asChild
               className="flex items-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 dark:from-brand-red-700 dark:to-brand-red-600 hover:from-brand-red/90 hover:to-brand-red dark:hover:from-brand-red-800 dark:hover:to-brand-red-700 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
@@ -397,7 +395,6 @@ export function Header() {
           </div>
 
           <div className="flex md:hidden items-center space-x-1">
-            <ThemeToggle />
             <LanguageSwitcher />
             <Button
               variant="ghost"

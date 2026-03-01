@@ -180,7 +180,7 @@ export default async function RootLayout({
   const messages = translationModule[locale];
 
   return (
-    <html lang={locale} className={inter.variable} suppressHydrationWarning>
+    <html lang={locale} className={`${inter.variable} dark`} suppressHydrationWarning>
       <head>
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
