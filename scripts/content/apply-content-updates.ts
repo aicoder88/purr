@@ -24,6 +24,7 @@ type Tier = 'P0' | 'P1' | 'P2';
 
 type ParsedArgs = {
   write: boolean;
+  applyContentBlocks: boolean;
   limit: number;
   tiers: Tier[];
   reportPath?: string;
@@ -31,6 +32,7 @@ type ParsedArgs = {
 
 function parseArgs(argv: string[]): ParsedArgs {
   let write = false;
+  let applyContentBlocks = false;
   let limit = 10;
   let tiers: Tier[] = ['P0', 'P1'];
   let reportPath: string | undefined;
@@ -38,6 +40,8 @@ function parseArgs(argv: string[]): ParsedArgs {
   for (const arg of argv) {
     if (arg === '--write') {
       write = true;
+    } else if (arg === '--apply-content-blocks') {
+      applyContentBlocks = true;
     } else if (arg.startsWith('--limit=')) {
       const parsed = Number(arg.split('=')[1]);
       if (Number.isFinite(parsed) && parsed > 0) {
@@ -63,7 +67,7 @@ function parseArgs(argv: string[]): ParsedArgs {
     }
   }
 
-  return { write, limit, tiers, reportPath };
+  return { write, applyContentBlocks, limit, tiers, reportPath };
 }
 
 function resolveAuditPath(reportPath?: string): string {
@@ -100,7 +104,7 @@ function h3Count(content: string): number {
 }
 
 function trimToLength(input: string, max: number): string {
-  const clean = input.replaceAll(/\s+/g, ' ').trim();
+  const clean = input.replaceAll(/\s+/g, ' ').replaceAll(/[.…]+$/g, '').trim();
   if (clean.length <= max) {
     return clean;
   }
@@ -116,10 +120,10 @@ function ensureSeo(post: BlogPost, locale: Locale): string[] {
   const changes: string[] = [];
   const slug = post.slug ?? '';
   post.seo ??= {};
-  const titleBase = (post.seo.title ?? post.title ?? slug.replaceAll('-', ' ')).trim();
-  const titleWithBrand = titleBase.includes('Purrify') ? titleBase : `${titleBase} | Purrify`;
-  const normalizedTitle = trimToLength(titleWithBrand, 70);
-  if (!post.seo.title || post.seo.title !== normalizedTitle) {
+
+  const titleBase = (post.title ?? post.seo.title ?? slug.replaceAll('-', ' ')).trim();
+  const normalizedTitle = trimToLength(titleBase, 70);
+  if (!post.seo.title && normalizedTitle) {
     post.seo.title = normalizedTitle;
     changes.push('seo.title');
   }
@@ -131,7 +135,7 @@ function ensureSeo(post: BlogPost, locale: Locale): string[] {
       : 'Use a repeatable routine to keep litter odor under control.';
   let normalizedDescription = descBase.length >= 120 ? descBase : `${descBase} ${fallbackSuffix}`.trim();
   normalizedDescription = trimToLength(normalizedDescription, 170);
-  if (!post.seo.description || post.seo.description !== normalizedDescription) {
+  if (!post.seo.description && normalizedDescription) {
     post.seo.description = normalizedDescription;
     changes.push('seo.description');
   }
@@ -152,17 +156,13 @@ function ensureSeo(post: BlogPost, locale: Locale): string[] {
     deduped.push(locale === 'fr' ? 'controle odeur litiere chat' : 'cat litter odor control');
   }
   const normalizedKeywords = deduped.slice(0, 10);
-  if (
-    !post.seo.keywords ||
-    post.seo.keywords.length !== normalizedKeywords.length ||
-    post.seo.keywords.some((value, index) => value !== normalizedKeywords[index])
-  ) {
+  if (!post.seo.keywords || post.seo.keywords.length === 0) {
     post.seo.keywords = normalizedKeywords;
     changes.push('seo.keywords');
   }
 
-  const expectedCanonical = `https://www.purrify.ca/${locale}/blog/${slug}`;
-  if (!post.seo.canonical || post.seo.canonical !== expectedCanonical) {
+  const expectedCanonical = locale === 'fr' ? `https://www.purrify.ca/fr/blog/${slug}` : `https://www.purrify.ca/blog/${slug}`;
+  if (!post.seo.canonical) {
     post.seo.canonical = expectedCanonical;
     changes.push('seo.canonical');
   }
@@ -373,10 +373,12 @@ function run(): void {
     const fieldChanges: string[] = [];
     fieldChanges.push(...ensureSeo(post, locale));
 
-    const contentResult = applyContentFixes(post.content, entry, locale, slug);
-    if (contentResult.content !== post.content) {
-      post.content = contentResult.content;
-      fieldChanges.push(...contentResult.changes);
+    if (args.applyContentBlocks) {
+      const contentResult = applyContentFixes(post.content, entry, locale, slug);
+      if (contentResult.content !== post.content) {
+        post.content = contentResult.content;
+        fieldChanges.push(...contentResult.changes);
+      }
     }
 
     const next = `${JSON.stringify(post, null, 2)}\n`;
@@ -401,6 +403,7 @@ function run(): void {
     '',
     `- Generated: ${new Date().toISOString()}`,
     `- Mode: ${args.write ? 'write' : 'dry-run'}`,
+    `- Content blocks: ${args.applyContentBlocks ? 'enabled' : 'disabled (default)'}`,
     `- Source audit: ${auditPath}`,
     `- Tiers: ${args.tiers.join(', ')}`,
     `- Candidates scanned: ${scanned}`,

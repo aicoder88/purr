@@ -14,6 +14,8 @@ const DEFAULT_RENDER_SETTLE_CHECK_MS = 200;
 const DEFAULT_TARGETS = 'buttons';
 const SUPPORTED_INTERACTION_STATES = ['rest', 'hover'];
 const DEFAULT_INTERACTION_STATES = ['rest', 'hover'];
+const DEFAULT_DISCOVER_LINKS = true;
+const DEFAULT_MAX_DISCOVERED_URLS = 2000;
 
 function parseArgs(argv) {
   const args = {
@@ -26,6 +28,8 @@ function parseArgs(argv) {
     renderSettleIterations: DEFAULT_RENDER_SETTLE_ITERATIONS,
     targets: DEFAULT_TARGETS,
     interactionStates: [...DEFAULT_INTERACTION_STATES],
+    discoverLinks: DEFAULT_DISCOVER_LINKS,
+    maxDiscoveredUrls: DEFAULT_MAX_DISCOVERED_URLS,
     limit: null,
     includePathPrefixes: [],
     excludePathPrefixes: [],
@@ -115,6 +119,24 @@ function parseArgs(argv) {
         .split(',')
         .map((value) => value.trim().toLowerCase())
         .filter(Boolean);
+    } else if (arg === '--discover-links' && argv[index + 1]) {
+      const value = argv[index + 1].trim().toLowerCase();
+      args.discoverLinks = value !== 'false' && value !== '0' && value !== 'no';
+      index += 1;
+    } else if (arg.startsWith('--discover-links=')) {
+      const value = arg.slice('--discover-links='.length).trim().toLowerCase();
+      args.discoverLinks = value !== 'false' && value !== '0' && value !== 'no';
+    } else if (arg === '--max-discovered-urls' && argv[index + 1]) {
+      const parsed = Number.parseInt(argv[index + 1], 10);
+      if (Number.isFinite(parsed) && parsed > 0) {
+        args.maxDiscoveredUrls = parsed;
+      }
+      index += 1;
+    } else if (arg.startsWith('--max-discovered-urls=')) {
+      const parsed = Number.parseInt(arg.slice('--max-discovered-urls='.length), 10);
+      if (Number.isFinite(parsed) && parsed > 0) {
+        args.maxDiscoveredUrls = parsed;
+      }
     } else if (arg === '--limit' && argv[index + 1]) {
       const limit = Number.parseInt(argv[index + 1], 10);
       if (Number.isFinite(limit) && limit > 0) {
@@ -186,6 +208,8 @@ function printHelp() {
   console.log('  --render-settle-iterations <n>  Stable render loops before scan (default: 3)');
   console.log('  --targets <buttons|all> Scan button-like only or broader UI targets (default: buttons)');
   console.log('  --interaction-states <rest,hover> Comma-separated interaction states to audit (default: rest,hover)');
+  console.log('  --discover-links <bool> Discover additional internal links while scanning (default: true)');
+  console.log('  --max-discovered-urls <n> Max new URLs to add from link discovery (default: 2000)');
   console.log('  --limit <n>            Maximum number of URLs to scan');
   console.log('  --include <prefix>     Include only paths starting with prefix (repeatable)');
   console.log('  --exclude <prefix>     Exclude paths starting with prefix (repeatable)');
@@ -289,41 +313,50 @@ function toPathPrefix(prefix) {
   return prefix.startsWith('/') ? prefix : `/${prefix}`;
 }
 
-function filterCustomerFacingUrls(urls, options) {
+function isUrlAllowedByFilters(rawUrl, options) {
+  let parsed;
+  try {
+    parsed = new URL(rawUrl);
+  } catch {
+    return false;
+  }
+
+  if (parsed.origin !== options.baseUrl) {
+    return false;
+  }
+
+  const pathname = parsed.pathname || '/';
   const defaultExcludedPrefixes = ['/api', '/_next', '/admin'];
   const includePrefixes = options.includePathPrefixes.map(toPathPrefix);
   const excludePrefixes = [...defaultExcludedPrefixes, ...options.excludePathPrefixes.map(toPathPrefix)];
+
+  const excluded = excludePrefixes.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`));
+  if (excluded) {
+    return false;
+  }
+
+  if (includePrefixes.length > 0) {
+    const included = includePrefixes.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`));
+    if (!included) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function filterCustomerFacingUrls(urls, options) {
   const seen = new Set();
   const filtered = [];
 
   for (const rawUrl of urls) {
-    let parsed;
-    try {
-      parsed = new URL(rawUrl);
-    } catch {
+    if (!isUrlAllowedByFilters(rawUrl, options)) {
       continue;
     }
 
-    if (parsed.origin !== options.baseUrl) {
-      continue;
-    }
-
-    const normalized = normalizeUrl(parsed.toString());
+    const normalized = normalizeUrl(rawUrl);
     if (seen.has(normalized)) {
       continue;
-    }
-
-    const pathname = parsed.pathname || '/';
-    const excluded = excludePrefixes.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`));
-    if (excluded) {
-      continue;
-    }
-
-    if (includePrefixes.length > 0) {
-      const included = includePrefixes.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`));
-      if (!included) {
-        continue;
-      }
     }
 
     seen.add(normalized);
@@ -337,6 +370,46 @@ function filterCustomerFacingUrls(urls, options) {
   }
 
   return filtered;
+}
+
+async function discoverInternalLinksOnCurrentPage(page, options) {
+  const rawLinks = await page.evaluate(() => {
+    const links = [];
+    const anchors = Array.from(document.querySelectorAll('a[href]'));
+    for (const anchor of anchors) {
+      const href = anchor.getAttribute('href');
+      if (!href) {
+        continue;
+      }
+      if (href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) {
+        continue;
+      }
+
+      try {
+        links.push(new URL(href, window.location.href).toString());
+      } catch {
+        // Ignore malformed URLs.
+      }
+    }
+    return links;
+  });
+
+  const discovered = [];
+  const localSeen = new Set();
+  for (const rawLink of rawLinks) {
+    if (!isUrlAllowedByFilters(rawLink, options)) {
+      continue;
+    }
+
+    const normalized = normalizeUrl(rawLink);
+    if (localSeen.has(normalized)) {
+      continue;
+    }
+    localSeen.add(normalized);
+    discovered.push(normalized);
+  }
+
+  return discovered;
 }
 
 async function setThemeClass(page, theme, themeStorageKey) {
@@ -859,6 +932,95 @@ async function auditHoveredCandidatesOnCurrentPage(page, theme, minContrast, tar
             .slice(0, 120);
         }
 
+        function collectTextColorSamples(element) {
+          const samples = [];
+          const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, {
+            acceptNode(node) {
+              const value = node.nodeValue || '';
+              if (!value.trim()) {
+                return NodeFilter.FILTER_REJECT;
+              }
+
+              const parent = node.parentElement;
+              if (!parent) {
+                return NodeFilter.FILTER_REJECT;
+              }
+              if (parent.closest('[aria-hidden="true"]')) {
+                return NodeFilter.FILTER_REJECT;
+              }
+
+              const styles = getComputedStyle(parent);
+              if (
+                styles.display === 'none'
+                || styles.visibility === 'hidden'
+                || Number.parseFloat(styles.opacity) <= 0.01
+              ) {
+                return NodeFilter.FILTER_REJECT;
+              }
+
+              return NodeFilter.FILTER_ACCEPT;
+            },
+          });
+
+          let current = walker.nextNode();
+          while (current) {
+            const textNode = current;
+            const holder = textNode.parentElement;
+            if (holder) {
+              samples.push({
+                holder,
+                text: (textNode.nodeValue || '').replace(/\s+/g, ' ').trim(),
+              });
+            }
+            current = walker.nextNode();
+          }
+
+          if (samples.length === 0) {
+            const fallbackText = (element.innerText || element.textContent || '').replace(/\s+/g, ' ').trim();
+            if (fallbackText) {
+              samples.push({
+                holder: element,
+                text: fallbackText,
+              });
+            }
+          }
+
+          return samples;
+        }
+
+        function computeWorstTextContrast(element, backgroundOpaque) {
+          const samples = collectTextColorSamples(element);
+          let worst = null;
+
+          for (const sample of samples) {
+            const styles = getComputedStyle(sample.holder);
+            const foregroundRaw = parseColor(styles.color);
+            if (!foregroundRaw) {
+              continue;
+            }
+
+            const foregroundOpaque = foregroundRaw.a >= 1 ? foregroundRaw : blendOver(foregroundRaw, backgroundOpaque);
+            const ratio = contrastRatio(foregroundOpaque, backgroundOpaque);
+            const fontSize = Number.parseFloat(styles.fontSize);
+            const fontWeight = Number.parseInt(styles.fontWeight, 10);
+            const isLargeText = fontSize >= 24 || (fontSize >= 18.66 && fontWeight >= 700);
+            const requiredContrast = isLargeText ? 3 : minContrastRatio;
+
+            if (!worst || ratio < worst.ratio) {
+              worst = {
+                ratio,
+                requiredContrast,
+                fontSize: Number.isFinite(fontSize) ? Number(fontSize.toFixed(2)) : null,
+                fontWeight: Number.isFinite(fontWeight) ? fontWeight : null,
+                foreground: foregroundOpaque,
+                textFragment: sample.text.slice(0, 120),
+              };
+            }
+          }
+
+          return worst;
+        }
+
         const candidate = document.querySelector(`[data-contrast-hover-id="${currentCandidateId}"]`);
         if (!(candidate instanceof HTMLElement)) {
           return null;
@@ -869,27 +1031,18 @@ async function auditHoveredCandidatesOnCurrentPage(page, theme, minContrast, tar
           return null;
         }
 
-        const styles = getComputedStyle(candidate);
-        const foregroundRaw = parseColor(styles.color);
-        if (!foregroundRaw) {
-          return null;
-        }
-
         const backgroundResolved = resolveBackground(candidate);
         if (!backgroundResolved || !backgroundResolved.color) {
           return null;
         }
 
         const backgroundOpaque = toOpaque(backgroundResolved.color);
-        const foregroundOpaque = foregroundRaw.a >= 1 ? foregroundRaw : blendOver(foregroundRaw, backgroundOpaque);
-        const ratio = contrastRatio(foregroundOpaque, backgroundOpaque);
+        const worstText = computeWorstTextContrast(candidate, backgroundOpaque);
+        if (!worstText) {
+          return null;
+        }
 
-        const fontSize = Number.parseFloat(styles.fontSize);
-        const fontWeight = Number.parseInt(styles.fontWeight, 10);
-        const isLargeText = fontSize >= 24 || (fontSize >= 18.66 && fontWeight >= 700);
-        const requiredContrast = isLargeText ? 3 : minContrastRatio;
-
-        if (ratio >= requiredContrast) {
+        if (worstText.ratio >= worstText.requiredContrast) {
           return null;
         }
 
@@ -902,15 +1055,16 @@ async function auditHoveredCandidatesOnCurrentPage(page, theme, minContrast, tar
           selector: selectorFor(candidate),
           className: candidate.getAttribute('class') || '',
           href: candidate.tagName.toLowerCase() === 'a' ? candidate.getAttribute('href') || '' : '',
-          ratio: Number(ratio.toFixed(2)),
-          required: Number(requiredContrast.toFixed(2)),
-          contrastRatio: Number(ratio.toFixed(2)),
-          requiredContrast,
-          foreground: formatColor(foregroundOpaque),
+          ratio: Number(worstText.ratio.toFixed(2)),
+          required: Number(worstText.requiredContrast.toFixed(2)),
+          contrastRatio: Number(worstText.ratio.toFixed(2)),
+          requiredContrast: worstText.requiredContrast,
+          foreground: formatColor(worstText.foreground),
           background: formatColor(backgroundOpaque),
           backgroundSource: `${backgroundResolved.source}:${backgroundResolved.sourceTag}`,
-          fontSize: Number.isFinite(fontSize) ? Number(fontSize.toFixed(2)) : null,
-          fontWeight: Number.isFinite(fontWeight) ? fontWeight : null,
+          fontSize: worstText.fontSize,
+          fontWeight: worstText.fontWeight,
+          textFragment: worstText.textFragment,
         };
       }, { activeTheme: theme, minContrastRatio: minContrast, currentCandidateId: candidateId });
 
@@ -1277,6 +1431,95 @@ async function auditButtonsOnCurrentPage(page, theme, minContrast, targets) {
         .slice(0, 120);
     }
 
+    function collectTextColorSamples(element) {
+      const samples = [];
+      const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+          const value = node.nodeValue || '';
+          if (!value.trim()) {
+            return NodeFilter.FILTER_REJECT;
+          }
+
+          const parent = node.parentElement;
+          if (!parent) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          if (parent.closest('[aria-hidden="true"]')) {
+            return NodeFilter.FILTER_REJECT;
+          }
+
+          const styles = getComputedStyle(parent);
+          if (
+            styles.display === 'none'
+            || styles.visibility === 'hidden'
+            || Number.parseFloat(styles.opacity) <= 0.01
+          ) {
+            return NodeFilter.FILTER_REJECT;
+          }
+
+          return NodeFilter.FILTER_ACCEPT;
+        },
+      });
+
+      let current = walker.nextNode();
+      while (current) {
+        const textNode = current;
+        const holder = textNode.parentElement;
+        if (holder) {
+          samples.push({
+            holder,
+            text: (textNode.nodeValue || '').replace(/\s+/g, ' ').trim(),
+          });
+        }
+        current = walker.nextNode();
+      }
+
+      if (samples.length === 0) {
+        const fallbackText = (element.innerText || element.textContent || '').replace(/\s+/g, ' ').trim();
+        if (fallbackText) {
+          samples.push({
+            holder: element,
+            text: fallbackText,
+          });
+        }
+      }
+
+      return samples;
+    }
+
+    function computeWorstTextContrast(element, backgroundOpaque) {
+      const samples = collectTextColorSamples(element);
+      let worst = null;
+
+      for (const sample of samples) {
+        const styles = getComputedStyle(sample.holder);
+        const foregroundRaw = parseColor(styles.color);
+        if (!foregroundRaw) {
+          continue;
+        }
+
+        const foregroundOpaque = foregroundRaw.a >= 1 ? foregroundRaw : blendOver(foregroundRaw, backgroundOpaque);
+        const ratio = contrastRatio(foregroundOpaque, backgroundOpaque);
+        const fontSize = Number.parseFloat(styles.fontSize);
+        const fontWeight = Number.parseInt(styles.fontWeight, 10);
+        const isLargeText = fontSize >= 24 || (fontSize >= 18.66 && fontWeight >= 700);
+        const requiredContrast = isLargeText ? 3 : minContrastRatio;
+
+        if (!worst || ratio < worst.ratio) {
+          worst = {
+            ratio,
+            requiredContrast,
+            fontSize: Number.isFinite(fontSize) ? Number(fontSize.toFixed(2)) : null,
+            fontWeight: Number.isFinite(fontWeight) ? fontWeight : null,
+            foreground: foregroundOpaque,
+            textFragment: sample.text.slice(0, 120),
+          };
+        }
+      }
+
+      return worst;
+    }
+
     const findings = [];
     const candidates = collectCandidates();
 
@@ -1286,27 +1529,18 @@ async function auditButtonsOnCurrentPage(page, theme, minContrast, targets) {
         continue;
       }
 
-      const styles = getComputedStyle(candidate);
-      const foregroundRaw = parseColor(styles.color);
-      if (!foregroundRaw) {
-        continue;
-      }
-
       const backgroundResolved = resolveBackground(candidate);
       if (!backgroundResolved || !backgroundResolved.color) {
         continue;
       }
 
       const backgroundOpaque = toOpaque(backgroundResolved.color);
-      const foregroundOpaque = foregroundRaw.a >= 1 ? foregroundRaw : blendOver(foregroundRaw, backgroundOpaque);
-      const ratio = contrastRatio(foregroundOpaque, backgroundOpaque);
+      const worstText = computeWorstTextContrast(candidate, backgroundOpaque);
+      if (!worstText) {
+        continue;
+      }
 
-      const fontSize = Number.parseFloat(styles.fontSize);
-      const fontWeight = Number.parseInt(styles.fontWeight, 10);
-      const isLargeText = fontSize >= 24 || (fontSize >= 18.66 && fontWeight >= 700);
-      const requiredContrast = isLargeText ? 3 : minContrastRatio;
-
-      if (ratio < requiredContrast) {
+      if (worstText.ratio < worstText.requiredContrast) {
         findings.push({
           state: 'rest',
           theme: activeTheme,
@@ -1316,15 +1550,16 @@ async function auditButtonsOnCurrentPage(page, theme, minContrast, targets) {
           selector: selectorFor(candidate),
           className: candidate.getAttribute('class') || '',
           href: candidate.tagName.toLowerCase() === 'a' ? candidate.getAttribute('href') || '' : '',
-          ratio: Number(ratio.toFixed(2)),
-          required: Number(requiredContrast.toFixed(2)),
-          contrastRatio: Number(ratio.toFixed(2)),
-          requiredContrast,
-          foreground: formatColor(foregroundOpaque),
+          ratio: Number(worstText.ratio.toFixed(2)),
+          required: Number(worstText.requiredContrast.toFixed(2)),
+          contrastRatio: Number(worstText.ratio.toFixed(2)),
+          requiredContrast: worstText.requiredContrast,
+          foreground: formatColor(worstText.foreground),
           background: formatColor(backgroundOpaque),
           backgroundSource: `${backgroundResolved.source}:${backgroundResolved.sourceTag}`,
-          fontSize: Number.isFinite(fontSize) ? Number(fontSize.toFixed(2)) : null,
-          fontWeight: Number.isFinite(fontWeight) ? fontWeight : null,
+          fontSize: worstText.fontSize,
+          fontWeight: worstText.fontWeight,
+          textFragment: worstText.textFragment,
         });
       }
     }
@@ -1366,6 +1601,8 @@ async function main() {
   console.log(`Minimum contrast: ${args.minContrast}`);
   console.log(`Targets: ${args.targets}`);
   console.log(`Interaction states: ${args.interactionStates.join(', ')}`);
+  console.log(`Discover links: ${args.discoverLinks ? 'enabled' : 'disabled'}`);
+  console.log(`Max discovered URLs: ${args.maxDiscoveredUrls}`);
   console.log(`Hydration wait: ${args.hydrationWaitMs}ms`);
   console.log(`Theme storage key: ${args.themeStorageKey}`);
   console.log(`Render settle iterations: ${args.renderSettleIterations}`);
@@ -1404,11 +1641,14 @@ async function main() {
 
   const findings = [];
   const pageErrors = [];
+  const queuedUrls = [...pageUrls];
+  const queuedUrlSet = new Set(queuedUrls);
+  let discoveredUrlCount = 0;
 
   try {
-    for (let index = 0; index < pageUrls.length; index += 1) {
-      const pageUrl = pageUrls[index];
-      console.log(`[${index + 1}/${pageUrls.length}] ${pageUrl}`);
+    for (let index = 0; index < queuedUrls.length; index += 1) {
+      const pageUrl = queuedUrls[index];
+      console.log(`[${index + 1}/${queuedUrls.length}] ${pageUrl}`);
 
       try {
         await page.goto(pageUrl, {
@@ -1416,6 +1656,25 @@ async function main() {
           timeout: args.timeoutMs,
         });
         await page.waitForTimeout(args.hydrationWaitMs);
+
+        if (args.discoverLinks && discoveredUrlCount < args.maxDiscoveredUrls) {
+          const discoveredLinks = await discoverInternalLinksOnCurrentPage(page, args);
+          for (const discoveredUrl of discoveredLinks) {
+            if (queuedUrlSet.has(discoveredUrl)) {
+              continue;
+            }
+            if (args.limit && queuedUrls.length >= args.limit) {
+              break;
+            }
+            if (discoveredUrlCount >= args.maxDiscoveredUrls) {
+              break;
+            }
+
+            queuedUrls.push(discoveredUrl);
+            queuedUrlSet.add(discoveredUrl);
+            discoveredUrlCount += 1;
+          }
+        }
 
         for (const theme of ['light', 'dark']) {
           await setThemeClass(page, theme, args.themeStorageKey);
@@ -1461,7 +1720,8 @@ async function main() {
   }
 
   console.log('\nAudit summary');
-  console.log(`Scanned pages: ${pageUrls.length}`);
+  console.log(`Scanned pages: ${queuedUrls.length}`);
+  console.log(`Discovered additional URLs: ${discoveredUrlCount}`);
   console.log(`Pages with contrast issues: ${findingsByUrl.size}`);
   console.log(`Total failing ${args.targets === 'buttons' ? 'buttons' : 'targets'}: ${findings.length}`);
   console.log(`Page load errors: ${pageErrors.length}`);
@@ -1495,11 +1755,14 @@ async function main() {
       renderSettleIterations: args.renderSettleIterations,
       targets: args.targets,
       interactionStates: args.interactionStates,
+      discoverLinks: args.discoverLinks,
+      maxDiscoveredUrls: args.maxDiscoveredUrls,
       limit: args.limit,
       includePathPrefixes: args.includePathPrefixes,
       excludePathPrefixes: args.excludePathPrefixes,
     },
-    scannedPageCount: pageUrls.length,
+    scannedPageCount: queuedUrls.length,
+    discoveredUrlCount,
     findingsCount: findings.length,
     pageErrorCount: pageErrors.length,
     findings,
