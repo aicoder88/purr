@@ -8,15 +8,19 @@ interface LitterTypesSectionProps {
   copy: {
     litterTypesTitle: string;
     litterTypesDescription: string;
+    litterTypesDeepDiveTitle: string;
+    litterTypesDeepDiveParagraphs: string[];
     prosLabel: string;
     consLabel: string;
+    bestForLabel: string;
+    watchOutLabel: string;
     litterTypes: LitterTypeItem[];
   };
 }
 
 export default function LitterTypesSection({ copy }: LitterTypesSectionProps) {
   return (
-    <section className="py-16">
+    <section id="types" className="py-16">
       <Container>
         <div className="text-center mb-12">
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">{copy.litterTypesTitle}</h2>
@@ -59,9 +63,29 @@ export default function LitterTypesSection({ copy }: LitterTypesSectionProps) {
                     ))}
                   </ul>
                 </div>
+
+                <div className="pt-2 border-t border-gray-200 dark:border-gray-700">
+                  <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
+                    <span className="font-semibold text-gray-900 dark:text-gray-100">{copy.bestForLabel}</span> {litter.bestFor}
+                  </p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300">
+                    <span className="font-semibold text-gray-900 dark:text-gray-100">{copy.watchOutLabel}</span> {litter.watchOut}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-12 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 md:p-8">
+          <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">{copy.litterTypesDeepDiveTitle}</h3>
+          <div className="space-y-4">
+            {copy.litterTypesDeepDiveParagraphs.map((paragraph, index) => (
+              <p key={index} className="text-gray-700 dark:text-gray-300">
+                {paragraph}
+              </p>
+            ))}
+          </div>
         </div>
       </Container>
     </section>

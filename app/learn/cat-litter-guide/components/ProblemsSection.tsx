@@ -23,7 +23,7 @@ interface ProblemsSectionProps {
 export default function ProblemsSection({ localePrefix, copy }: ProblemsSectionProps) {
   return (
     <>
-      <section className="py-16">
+      <section id="problems" className="py-16">
         <Container>
           <div className="text-center mb-12">
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">{copy.problemsTitle}</h2>
