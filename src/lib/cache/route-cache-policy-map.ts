@@ -5,7 +5,7 @@ export interface RouteCachePolicy {
 
 const AUTH_ROUTE_PREFIXES = ['/admin', '/customer', '/affiliate', '/retailer'];
 
-const COMMERCIAL_DYNAMIC_ROUTES = ['/products', '/learn', '/try-free', '/reviews'];
+const COMMERCIAL_DYNAMIC_ROUTES = ['/products', '/learn', '/reviews'];
 
 const BLOG_ROUTE_REGEX = /^\/(?:en|fr)?\/?blog(?:\/.*)?$/;
 

@@ -21,5 +21,5 @@ export const metadata: Metadata = {
 };
 
 export default function FreeTrialRedirectPage() {
-  redirect('/try-free');
+  redirect('/products/trial-size');
 }

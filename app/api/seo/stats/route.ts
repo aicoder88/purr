@@ -74,7 +74,6 @@ const PAGES_WITH_ENHANCED_SEO = [
   '/ammonia-control',
   '/documents',
   '/support',
-  '/try-free',
   '/tools/cat-litter-calculator',
   // Dynamic pages with enhanced SEO
   '/refer/[code]',

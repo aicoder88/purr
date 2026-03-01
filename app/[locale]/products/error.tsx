@@ -105,7 +105,7 @@ export default function ProductsError({ error, reset }: ProductsErrorProps) {
             </p>
             <div className="flex flex-wrap justify-center gap-2">
               <Link
-                href={`/${locale}/try-free`}
+                href={`/${locale}/products/trial-size`}
                 className="inline-flex items-center px-3 py-1.5 text-sm bg-[#FF3131]/10 hover:bg-[#FF3131]/20 text-[#FF3131] rounded-full transition-colors"
                 >
                   <ShoppingBag className="w-3.5 h-3.5 mr-1.5" />

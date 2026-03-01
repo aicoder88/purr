@@ -38,7 +38,7 @@ module.exports = {
 
     // === REDIRECTING PAGES - Fix for Ahrefs "3XX redirect in sitemap" ===
     // Server-side redirect pages (these redirect to other pages)
-    '/free-trial',              // Redirects to /try-free
+    '/free-trial',              // Redirects to /products/trial-size
     '/fr/free-trial',
     '/buy',                     // Redirects to /products
     '/fr/buy',
@@ -411,13 +411,6 @@ module.exports = {
       lastmod: new Date().toISOString(),
     },
     // Canada/US pages
-
-    {
-      loc: '/try-free/',
-      changefreq: 'weekly',
-      priority: 0.8,
-      lastmod: new Date().toISOString(),
-    },
     // Legal pages
     {
       loc: '/privacy-policy/',

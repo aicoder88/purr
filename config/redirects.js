@@ -2118,7 +2118,7 @@ const REDIRECTS = [
   },
   {
     source: "/free-trial",
-    destination: "/try-free/",
+    destination: "/products/trial-size/",
     permanent: true
   },
 

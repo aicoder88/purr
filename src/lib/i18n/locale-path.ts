@@ -5,7 +5,6 @@ const LOCALE_SEGMENT_PATTERN = /^\/(en|fr)(?=\/|$)/;
 const COMMERCIAL_ROUTE_PATHS = [
   '/products',
   '/learn',
-  '/try-free',
   '/reviews',
 ] as const;
 
