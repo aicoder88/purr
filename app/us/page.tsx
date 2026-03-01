@@ -148,31 +148,31 @@ export default async function USALandingPage() {
         }}
       />
 
-      <div className="bg-cream-50 dark:bg-gray-900 min-h-screen">
+      <div className="bg-cream-50 bg-gray-900 min-h-screen">
         {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto pt-6 pb-4 px-4 flex items-center text-sm text-gray-500 dark:text-gray-400">
-          <Link href="/" className="hover:text-forest-600 dark:hover:text-forest-400 transition-colors">
+        <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto pt-6 pb-4 px-4 flex items-center text-sm text-gray-500 text-gray-400">
+          <Link href="/" className="hover:text-forest-600 hover:text-forest-400 transition-colors">
             <Home className="w-4 h-4" />
             <span className="sr-only">Home</span>
           </Link>
           <ChevronRight className="w-4 h-4 mx-2" />
-          <span className="text-gray-900 dark:text-gray-100 font-medium">USA</span>
+          <span className="text-gray-900 text-gray-100 font-medium">USA</span>
         </nav>
 
         {/* Hero Section */}
         <header className="max-w-6xl mx-auto px-4 py-12 md:py-20 lg:py-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-semibold mb-6 animate-pulse">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 bg-blue-900/30 text-blue-700 text-blue-300 text-sm font-semibold mb-6 animate-pulse">
                 <MapPin className="w-4 h-4" />
                 <span>Launching USA Shipping Q1 2026</span>
               </div>
 
-              <h1 className="font-heading text-4xl md:text-6xl font-extrabold mb-6 text-gray-900 dark:text-gray-50 leading-tight">
-                The Science of <span className="text-forest-600 dark:text-forest-400">Odorless</span> Living
+              <h1 className="font-heading text-4xl md:text-6xl font-extrabold mb-6 text-gray-900 text-gray-50 leading-tight">
+                The Science of <span className="text-forest-600 text-forest-400">Odorless</span> Living
               </h1>
 
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed max-w-xl">
+              <p className="text-xl text-gray-600 text-gray-300 mb-8 leading-relaxed max-w-xl">
                 Tired of masking cat litter smells? Purrify uses high-grade activated carbon to eliminate
                 odors at the molecular level. Fresh air is coming to American homes in 2026.
               </p>
@@ -180,31 +180,31 @@ export default async function USALandingPage() {
               <div className="flex flex-col sm:flex-row gap-4 mb-10">
                 <Link
                   href="/products/"
-                  className="inline-flex items-center justify-center gap-2 bg-[#FF3131] text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-[#E02828] transition-all transform hover:scale-105 shadow-2xl hover:shadow-red-500/20 dark:hover:shadow-red-900/40"
+                  className="inline-flex items-center justify-center gap-2 bg-[#FF3131] text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-[#E02828] transition-all transform hover:scale-105 shadow-2xl hover:shadow-red-500/20 hover:shadow-red-900/40"
                 >
                   Join the Waitlist
                 </Link>
                 <div className="flex flex-col justify-center text-sm">
-                  <span className="font-bold text-gray-900 dark:text-gray-100">Coming Soon</span>
-                  <span className="text-gray-500 dark:text-gray-400">Shipping starts Q1 2026</span>
+                  <span className="font-bold text-gray-900 text-gray-100">Coming Soon</span>
+                  <span className="text-gray-500 text-gray-400">Shipping starts Q1 2026</span>
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center gap-6 text-sm text-gray-600 dark:text-gray-400 border-t border-gray-100 dark:border-gray-800 pt-8">
+              <div className="flex flex-wrap items-center gap-6 text-sm text-gray-600 text-gray-400 border-t border-gray-100 border-gray-800 pt-8">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-green-50 dark:bg-green-900/20 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-full bg-green-50 bg-green-900/20 flex items-center justify-center">
                     <Check className="w-4 h-4 text-green-600" />
                   </div>
                   <span>Fragrance Free</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-green-50 dark:bg-green-900/20 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-full bg-green-50 bg-green-900/20 flex items-center justify-center">
                     <Check className="w-4 h-4 text-green-600" />
                   </div>
                   <span>100% Natural</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-green-50 dark:bg-green-900/20 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-full bg-green-50 bg-green-900/20 flex items-center justify-center">
                     <Check className="w-4 h-4 text-green-600" />
                   </div>
                   <span>Dust Free</span>
@@ -230,7 +230,7 @@ export default async function USALandingPage() {
                 </div>
               </div>
               {/* USA Flag Badge */}
-              <div className="absolute -top-6 -right-6 bg-white dark:bg-gray-800 rounded-full p-4 shadow-2xl border-4 border-white dark:border-gray-900 transform rotate-12 transition-transform hover:rotate-0">
+              <div className="absolute -top-6 -right-6 bg-white bg-gray-800 rounded-full p-4 shadow-2xl border-4 border-white border-gray-900 transform rotate-12 transition-transform hover:rotate-0">
                 <div className="text-4xl">🇺🇸</div>
               </div>
             </div>
@@ -238,7 +238,7 @@ export default async function USALandingPage() {
         </header>
 
         {/* The Ghibli Magic Section */}
-        <section className="bg-white dark:bg-gray-800 py-24 overflow-hidden">
+        <section className="bg-white bg-gray-800 py-24 overflow-hidden">
           <div className="max-w-6xl mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div>
@@ -251,10 +251,10 @@ export default async function USALandingPage() {
                 />
               </div>
               <div>
-                <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 dark:text-gray-50 mb-6">
+                <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 text-gray-50 mb-6">
                   Experience the Purrify Peace of Mind
                 </h2>
-                <div className="space-y-6 text-lg text-gray-600 dark:text-gray-300">
+                <div className="space-y-6 text-lg text-gray-600 text-gray-300">
                   <p>
                     Cat box odors aren&apos;t just annoying; they&apos;re caused by ammonia molecules that can saturate your living space.
                   </p>
@@ -263,7 +263,7 @@ export default async function USALandingPage() {
                     adsorption process that pulls odors out of the air and traps them deep inside our premium
                     carbon pores.
                   </p>
-                  <p className="font-semibold text-forest-700 dark:text-forest-400">
+                  <p className="font-semibold text-forest-700 text-forest-400">
                     Imagine a home where the only thing you notice about your cat is their purr.
                   </p>
                 </div>
@@ -273,23 +273,23 @@ export default async function USALandingPage() {
         </section>
 
         {/* Benefits Grid */}
-        <section className="bg-cream-50 dark:bg-gray-900 py-24">
+        <section className="bg-cream-50 bg-gray-900 py-24">
           <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-3xl md:text-5xl font-heading font-bold text-center text-gray-900 dark:text-gray-50 mb-4">
+            <h2 className="text-3xl md:text-5xl font-heading font-bold text-center text-gray-900 text-gray-50 mb-4">
               Coming to America: Q1 2026
             </h2>
-            <p className="text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-16 text-lg">
+            <p className="text-center text-gray-600 text-gray-300 max-w-2xl mx-auto mb-16 text-lg">
               We&apos;re preparing our US logistics to bring you the highest quality cat litter odor control products starting early next year.
             </p>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {usBenefits.map((benefit) => (
-                <div key={benefit.title} className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-shadow group">
-                  <div className="w-14 h-14 bg-forest-100 dark:bg-forest-900/30 rounded-2xl flex items-center justify-center mb-6 border border-forest-200 dark:border-forest-800 transition-transform group-hover:-translate-y-1">
-                    <benefit.icon className="w-7 h-7 text-forest-600 dark:text-forest-400" />
+                <div key={benefit.title} className="bg-white bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 border-gray-700 hover:shadow-xl transition-shadow group">
+                  <div className="w-14 h-14 bg-forest-100 bg-forest-900/30 rounded-2xl flex items-center justify-center mb-6 border border-forest-200 border-forest-800 transition-transform group-hover:-translate-y-1">
+                    <benefit.icon className="w-7 h-7 text-forest-600 text-forest-400" />
                   </div>
-                  <h3 className="font-bold text-xl text-gray-900 dark:text-gray-100 mb-3">{benefit.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">{benefit.description}</p>
+                  <h3 className="font-bold text-xl text-gray-900 text-gray-100 mb-3">{benefit.title}</h3>
+                  <p className="text-gray-600 text-gray-400 leading-relaxed text-sm">{benefit.description}</p>
                 </div>
               ))}
             </div>
@@ -340,15 +340,15 @@ export default async function USALandingPage() {
         </section>
 
         {/* Macro Realism Section */}
-        <section className="bg-white dark:bg-gray-800 py-24">
+        <section className="bg-white bg-gray-800 py-24">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="bg-gray-50 dark:bg-gray-900 rounded-[3rem] overflow-hidden shadow-inner border border-gray-100 dark:border-gray-800">
+            <div className="bg-gray-50 bg-gray-900 rounded-[3rem] overflow-hidden shadow-inner border border-gray-100 border-gray-800">
               <div className="grid lg:grid-cols-2 lg:items-stretch">
                 <div className="p-12 md:p-16 lg:p-20 flex flex-col justify-center">
-                  <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 dark:text-gray-50 mb-6">
+                  <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 text-gray-50 mb-6">
                     Professional Grade Filtration
                   </h2>
-                  <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                  <p className="text-lg text-gray-600 text-gray-300 mb-8 leading-relaxed">
                     We use the same filtration-grade material found in luxury water purification systems.
                     Our carbon granules are optimized specifically for the high-ammonia environment of a cat litter box.
                   </p>
@@ -359,7 +359,7 @@ export default async function USALandingPage() {
                       'No messy dust or tracking',
                       'Effective for multi-cat households'
                     ].map((item) => (
-                      <li key={item} className="flex items-center gap-3 text-gray-700 dark:text-gray-200">
+                      <li key={item} className="flex items-center gap-3 text-gray-700 text-gray-200">
                         <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0">
                           <Check className="w-4 h-4 text-white" />
                         </div>
@@ -382,9 +382,9 @@ export default async function USALandingPage() {
         </section>
 
         {/* FAQ - Odor Control Focus */}
-        <section className="py-24 px-4 bg-cream-50 dark:bg-gray-900">
+        <section className="py-24 px-4 bg-cream-50 bg-gray-900">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-center text-gray-900 dark:text-gray-50 mb-16">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-center text-gray-900 text-gray-50 mb-16">
               Odor Control FAQ
             </h2>
 
@@ -407,9 +407,9 @@ export default async function USALandingPage() {
                   a: "We are officially launching USA shipping in Q1 2026. You can join our waitlist now to receive a 25% launch discount when we go live."
                 }
               ].map((faq, i) => (
-                <div key={i} className="bg-white dark:bg-gray-800 p-8 rounded-3xl border border-gray-100 dark:border-gray-700">
-                  <h3 className="font-bold text-xl text-gray-900 dark:text-gray-100 mb-4">{faq.q}</h3>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{faq.a}</p>
+                <div key={i} className="bg-white bg-gray-800 p-8 rounded-3xl border border-gray-100 border-gray-700">
+                  <h3 className="font-bold text-xl text-gray-900 text-gray-100 mb-4">{faq.q}</h3>
+                  <p className="text-gray-600 text-gray-400 leading-relaxed">{faq.a}</p>
                 </div>
               ))}
             </div>
@@ -433,7 +433,7 @@ export default async function USALandingPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link
                   href="/products/"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white dark:bg-white text-[#FF3131] px-10 py-5 rounded-full font-bold text-xl hover:bg-gray-100 dark:hover:bg-gray-100 transition-all shadow-xl hover:-translate-y-1"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white bg-white text-[#FF3131] px-10 py-5 rounded-full font-bold text-xl hover:bg-gray-100 hover:bg-gray-100 transition-all shadow-xl hover:-translate-y-1"
                 >
                   Join the Waitlist Now
                 </Link>

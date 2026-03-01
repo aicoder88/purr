@@ -8,7 +8,7 @@ const ClientLocationsMap = dynamic(
   () => import('./ClientLocationsMap').then((mod) => mod.ClientLocationsMap),
   {
     ssr: false,
-    loading: () => <div className="h-[620px] w-full bg-gray-100 dark:bg-gray-800 animate-pulse rounded-lg" aria-hidden="true" />
+    loading: () => <div className="h-[620px] w-full bg-gray-100 bg-gray-800 animate-pulse rounded-lg" aria-hidden="true" />
   }
 );
 
@@ -69,7 +69,7 @@ export function LazyClientLocationsMap(props: ComponentProps<typeof OriginalClie
         <ClientLocationsMap {...props} />
       ) : (
         <div
-          className="w-full bg-gray-100 dark:bg-gray-800 animate-pulse rounded-lg"
+          className="w-full bg-gray-100 bg-gray-800 animate-pulse rounded-lg"
           style={{ minHeight: `${reservedHeight}px` }}
           aria-hidden="true"
         />

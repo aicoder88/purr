@@ -36,7 +36,7 @@ export const ProductCard = React.memo(function ProductCard({
     return 'jumboAutoship'; // purrify-240g
   };
 
-  const cardClasses = `bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-xl border ${COLORS.border.accent} ${TRANSITIONS.slow} hover:shadow-[0_20px_50px_rgba(224,239,199,0.5)] hover:-translate-y-2 group relative z-10`;
+  const cardClasses = `bg-white bg-gray-900 rounded-3xl overflow-hidden shadow-xl border ${COLORS.border.accent} ${TRANSITIONS.slow} hover:shadow-[0_20px_50px_rgba(224,239,199,0.5)] hover:-translate-y-2 group relative z-10`;
 
   return (
     <div
@@ -59,7 +59,7 @@ export const ProductCard = React.memo(function ProductCard({
       )}
 
       <div className="relative">
-        <div className="relative bg-gradient-to-br from-[#FFFFF5] to-[#F8F9FA] dark:from-gray-800 dark:to-gray-700 rounded-t-2xl overflow-hidden group-hover:shadow-2xl transition-all duration-500">
+        <div className="relative bg-gradient-to-br from-[#FFFFF5] to-[#F8F9FA] from-gray-800 to-gray-700 rounded-t-2xl overflow-hidden group-hover:shadow-2xl transition-all duration-500">
           <div className="relative h-60 sm:h-72 overflow-hidden">
             {/* Background overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[#FF3131]/3 to-[#FF3131]/8 z-10"></div>
@@ -88,15 +88,15 @@ export const ProductCard = React.memo(function ProductCard({
 
             {/* Description overlay */}
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 sm:p-4 z-20">
-              <p className="text-white dark:text-gray-100 font-bold text-xs sm:text-sm drop-shadow-lg line-clamp-2">
+              <p className="text-white text-gray-100 font-bold text-xs sm:text-sm drop-shadow-lg line-clamp-2">
                 {t.products[product.id]?.description.split('\n')[0]}
               </p>
             </div>
           </div>
 
           {/* Size badge - High contrast for WCAG AA compliance */}
-          <div className="absolute top-3 sm:top-4 right-3 sm:right-4 bg-red-700 dark:bg-red-800 bg-gradient-to-r from-[#DC2626] to-[#B91C1C] dark:from-red-700 dark:to-red-800 px-3 sm:px-5 py-1.5 sm:py-2 rounded-full shadow-lg transform rotate-2 group-hover:rotate-0 transition-transform duration-300 z-30">
-            <span className="text-white dark:text-white font-bold text-sm sm:text-lg drop-shadow-md bg-inherit">{product.size}</span>
+          <div className="absolute top-3 sm:top-4 right-3 sm:right-4 bg-red-700 bg-red-800 bg-gradient-to-r from-[#DC2626] to-[#B91C1C] from-red-700 to-red-800 px-3 sm:px-5 py-1.5 sm:py-2 rounded-full shadow-lg transform rotate-2 group-hover:rotate-0 transition-transform duration-300 z-30">
+            <span className="text-white text-white font-bold text-sm sm:text-lg drop-shadow-md bg-inherit">{product.size}</span>
           </div>
         </div>
       </div>

@@ -222,45 +222,45 @@ export default async function CanadaPage({ params }: CanadaPageProps) {
           }),
         }}
       />
-      <div className="bg-cream-50 dark:bg-gray-900 min-h-screen">
+      <div className="bg-cream-50 bg-gray-900 min-h-screen">
         {/* Breadcrumb */}
-        <nav aria-label={c.breadcrumb} className="max-w-6xl mx-auto pt-6 pb-4 px-4 flex items-center text-sm text-gray-500 dark:text-gray-400">
-          <Link href="/" className="hover:text-forest-600 dark:hover:text-forest-400 transition-colors">
+        <nav aria-label={c.breadcrumb} className="max-w-6xl mx-auto pt-6 pb-4 px-4 flex items-center text-sm text-gray-500 text-gray-400">
+          <Link href="/" className="hover:text-forest-600 hover:text-forest-400 transition-colors">
             <Home className="w-4 h-4" />
             <span className="sr-only">{t.nav?.home || "Home"}</span>
           </Link>
           <ChevronRight className="w-4 h-4 mx-2" />
-          <span className="text-gray-900 dark:text-gray-100 font-medium">{c.breadcrumb}</span>
+          <span className="text-gray-900 text-gray-100 font-medium">{c.breadcrumb}</span>
         </nav>
         {/* Hero Section */}
         <header className="max-w-6xl mx-auto px-4 py-12 md:py-16">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-sm font-medium mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-100 bg-red-900/30 text-red-700 text-red-300 text-sm font-medium mb-6">
                 <MapPin className="w-4 h-4" />
                 <span>{c.badge}</span>
               </div>
-              <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-50 leading-tight">
+              <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6 text-gray-900 text-gray-50 leading-tight">
                 {c.heroTitle}
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              <p className="text-xl text-gray-600 text-gray-300 mb-8 leading-relaxed">
                 {c.heroDescription}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link
                   href="/products/trial-size/"
-                  className="inline-flex items-center justify-center gap-2 bg-[#FF3131] dark:bg-[#FF5050] text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#E02828] dark:hover:bg-[#E02828]/90 transition-all shadow-xl"
+                  className="inline-flex items-center justify-center gap-2 bg-[#FF3131] bg-[#FF5050] text-white text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#E02828] hover:bg-[#E02828]/90 transition-all shadow-xl"
                 >
                   {c.ctaTrial.replace('{price}', trialPrice)}
                 </Link>
                 <Link
                   href="/products/"
-                  className="inline-flex items-center justify-center gap-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all border border-gray-200 dark:border-gray-700"
+                  className="inline-flex items-center justify-center gap-2 bg-white bg-gray-800 text-gray-900 text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 hover:bg-gray-700 transition-all border border-gray-200 border-gray-700"
                 >
                   {c.ctaProducts}
                 </Link>
               </div>
-              <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+              <div className="flex items-center gap-4 text-sm text-gray-600 text-gray-400">
                 <div className="flex items-center gap-1">
                   <Truck className="w-4 h-4" />
                   <span>{c.shippingBadge}</span>
@@ -283,29 +283,29 @@ export default async function CanadaPage({ params }: CanadaPageProps) {
                 />
               </div>
               {/* Canadian flag badge */}
-              <div className="absolute -top-4 -right-4 bg-white dark:bg-gray-800 rounded-full p-3 shadow-lg border border-gray-200 dark:border-gray-700">
+              <div className="absolute -top-4 -right-4 bg-white bg-gray-800 rounded-full p-3 shadow-lg border border-gray-200 border-gray-700">
                 <div className="text-3xl">🇨🇦</div>
               </div>
             </div>
           </div>
         </header>
         {/* Why Canadian Section */}
-        <section className="bg-white dark:bg-gray-800 py-16">
+        <section className="bg-white bg-gray-800 py-16">
           <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-3xl font-heading font-bold text-center text-gray-900 dark:text-gray-50 mb-4">
+            <h2 className="text-3xl font-heading font-bold text-center text-gray-900 text-gray-50 mb-4">
               {c.benefitsTitle}
             </h2>
-            <p className="text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-12">
+            <p className="text-center text-gray-600 text-gray-300 max-w-2xl mx-auto mb-12">
               {c.benefitsSubtitle}
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {canadianBenefits.map((benefit) => (
                 <div key={benefit.title} className="text-center">
-                  <div className="w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <benefit.icon className="w-8 h-8 text-red-600 dark:text-red-400" />
+                  <div className="w-16 h-16 bg-red-100 bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <benefit.icon className="w-8 h-8 text-red-600 text-red-400" />
                   </div>
-                  <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">{benefit.title}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">{benefit.description}</p>
+                  <h3 className="font-bold text-gray-900 text-gray-100 mb-2">{benefit.title}</h3>
+                  <p className="text-sm text-gray-600 text-gray-400">{benefit.description}</p>
                 </div>
               ))}
             </div>
@@ -314,82 +314,82 @@ export default async function CanadaPage({ params }: CanadaPageProps) {
         {/* Made in Canada Story */}
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-br from-red-50 to-white dark:from-red-900/20 dark:to-gray-800 rounded-2xl p-8 md:p-12 border border-red-100 dark:border-red-900/50">
+            <div className="bg-gradient-to-br from-red-50 to-white from-red-900/20 to-gray-800 rounded-2xl p-8 md:p-12 border border-red-100 border-red-900/50">
               <div className="flex items-center gap-3 mb-6">
                 <div className="text-4xl">🍁</div>
-                <h2 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-50">
+                <h2 className="text-2xl font-heading font-bold text-gray-900 text-gray-50">
                   {c.storyTitle}
                 </h2>
               </div>
-              <div className="prose prose-lg dark:prose-invert max-w-none">
-                <p className="text-gray-700 dark:text-gray-300">
+              <div className="prose prose-lg prose-invert max-w-none">
+                <p className="text-gray-700 text-gray-300">
                   {c.storyP1}
                 </p>
-                <p className="text-gray-700 dark:text-gray-300">
+                <p className="text-gray-700 text-gray-300">
                   {c.storyP2}
                 </p>
-                <p className="text-gray-700 dark:text-gray-300">
+                <p className="text-gray-700 text-gray-300">
                   {c.storyP3}
                 </p>
               </div>
               <div className="mt-8 grid grid-cols-3 gap-6 text-center">
                 <div>
-                  <div className="text-3xl font-bold text-red-600 dark:text-red-400">100%</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">{c.statCanadianMade}</div>
+                  <div className="text-3xl font-bold text-red-600 text-red-400">100%</div>
+                  <div className="text-sm text-gray-600 text-gray-400">{c.statCanadianMade}</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-red-600 dark:text-red-400">{c.statDays}</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">{c.statDaysLabel}</div>
+                  <div className="text-3xl font-bold text-red-600 text-red-400">{c.statDays}</div>
+                  <div className="text-sm text-gray-600 text-gray-400">{c.statDaysLabel}</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-red-600 dark:text-red-400">0</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">{c.statFragrances}</div>
+                  <div className="text-3xl font-bold text-red-600 text-red-400">0</div>
+                  <div className="text-sm text-gray-600 text-gray-400">{c.statFragrances}</div>
                 </div>
               </div>
             </div>
           </div>
         </section>
         {/* Shipping Across Canada */}
-        <section className="bg-gray-50 dark:bg-gray-800/50 py-16 px-4">
+        <section className="bg-gray-50 bg-gray-800/50 py-16 px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-heading font-bold text-center text-gray-900 dark:text-gray-50 mb-4">
+            <h2 className="text-3xl font-heading font-bold text-center text-gray-900 text-gray-50 mb-4">
               {c.shippingTitle}
             </h2>
-            <p className="text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-12">
+            <p className="text-center text-gray-600 text-gray-300 max-w-2xl mx-auto mb-12">
               {c.shippingSubtitle}
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
               {majorCities.map((city) => (
                 <div
                   key={city.name}
-                  className="bg-white dark:bg-gray-800 rounded-lg p-4 text-center border border-gray-200 dark:border-gray-700"
+                  className="bg-white bg-gray-800 rounded-lg p-4 text-center border border-gray-200 border-gray-700"
                 >
-                  <div className="font-medium text-gray-900 dark:text-gray-100">{city.name}</div>
-                  <div className="text-sm text-gray-500 dark:text-gray-400">{city.province}</div>
+                  <div className="font-medium text-gray-900 text-gray-100">{city.name}</div>
+                  <div className="text-sm text-gray-500 text-gray-400">{city.province}</div>
                 </div>
               ))}
             </div>
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-4 text-center">
+            <div className="bg-white bg-gray-800 rounded-xl p-6 border border-gray-200 border-gray-700">
+              <h3 className="font-bold text-gray-900 text-gray-100 mb-4 text-center">
                 {c.shippingOptionsTitle}
               </h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Check className="w-5 h-5 text-green-600 dark:text-green-400" />
+                  <div className="w-10 h-10 bg-green-100 bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Check className="w-5 h-5 text-green-600 text-green-400" />
                   </div>
                   <div>
-                    <div className="font-medium text-gray-900 dark:text-gray-100">{c.freeShippingTitle}</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">{c.freeShippingDesc}</div>
+                    <div className="font-medium text-gray-900 text-gray-100">{c.freeShippingTitle}</div>
+                    <div className="text-sm text-gray-600 text-gray-400">{c.freeShippingDesc}</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Truck className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  <div className="w-10 h-10 bg-blue-100 bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Truck className="w-5 h-5 text-blue-600 text-blue-400" />
                   </div>
                   <div>
-                    <div className="font-medium text-gray-900 dark:text-gray-100">{c.expeditedTitle}</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">{c.expeditedDesc}</div>
+                    <div className="font-medium text-gray-900 text-gray-100">{c.expeditedTitle}</div>
+                    <div className="text-sm text-gray-600 text-gray-400">{c.expeditedDesc}</div>
                   </div>
                 </div>
               </div>
@@ -399,52 +399,52 @@ export default async function CanadaPage({ params }: CanadaPageProps) {
         {/* Canadian Reviews */}
         <section className="py-16 px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-heading font-bold text-center text-gray-900 dark:text-gray-50 mb-4">
+            <h2 className="text-3xl font-heading font-bold text-center text-gray-900 text-gray-50 mb-4">
               {c.reviewsTitle}
             </h2>
-            <p className="text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-12">
+            <p className="text-center text-gray-600 text-gray-300 max-w-2xl mx-auto mb-12">
               {c.reviewsSubtitle}
             </p>
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+              <div className="bg-white bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 border-gray-700">
                 <div className="flex items-center gap-1 mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:fill-yellow-300 dark:text-yellow-300" />
+                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 fill-yellow-300 text-yellow-300" />
                   ))}
                 </div>
-                <p className="text-gray-700 dark:text-gray-300 italic mb-4">
+                <p className="text-gray-700 text-gray-300 italic mb-4">
                   {`"${c.review1}"`}
                 </p>
-                <div className="text-sm text-gray-500 dark:text-gray-400">{c.review1Author}</div>
+                <div className="text-sm text-gray-500 text-gray-400">{c.review1Author}</div>
               </div>
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+              <div className="bg-white bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 border-gray-700">
                 <div className="flex items-center gap-1 mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:fill-yellow-300 dark:text-yellow-300" />
+                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 fill-yellow-300 text-yellow-300" />
                   ))}
                 </div>
-                <p className="text-gray-700 dark:text-gray-300 italic mb-4">
+                <p className="text-gray-700 text-gray-300 italic mb-4">
                   {`"${c.review2}"`}
                 </p>
-                <div className="text-sm text-gray-500 dark:text-gray-400">{c.review2Author}</div>
+                <div className="text-sm text-gray-500 text-gray-400">{c.review2Author}</div>
               </div>
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+              <div className="bg-white bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 border-gray-700">
                 <div className="flex items-center gap-1 mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 dark:fill-yellow-300 dark:text-yellow-300" />
+                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400 fill-yellow-300 text-yellow-300" />
                   ))}
                 </div>
-                <p className="text-gray-700 dark:text-gray-300 italic mb-4">
+                <p className="text-gray-700 text-gray-300 italic mb-4">
                   {`"${c.review3}"`}
                 </p>
-                <div className="text-sm text-gray-500 dark:text-gray-400">{c.review3Author}</div>
+                <div className="text-sm text-gray-500 text-gray-400">{c.review3Author}</div>
               </div>
             </div>
           </div>
         </section>
         {/* CTA Section */}
         <section className="bg-gradient-to-r from-[#FF3131] to-[#FF5050] py-16 px-4">
-          <div className="max-w-4xl mx-auto text-center text-white dark:text-gray-100">
+          <div className="max-w-4xl mx-auto text-center text-white text-gray-100">
             <h2 className="text-3xl font-heading font-bold mb-4">
               {c.ctaTitle}
             </h2>
@@ -454,13 +454,13 @@ export default async function CanadaPage({ params }: CanadaPageProps) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link
                 href="/products/trial-size/"
-                className="inline-flex items-center justify-center gap-2 bg-white dark:bg-gray-100 text-[#FF3131] px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 dark:hover:bg-gray-200 transition-all shadow-xl"
+                className="inline-flex items-center justify-center gap-2 bg-white bg-gray-100 text-[#FF3131] px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 hover:bg-gray-200 transition-all shadow-xl"
               >
                 {c.ctaTrialButton.replace('{price}', trialPrice)}
               </Link>
               <Link
                 href="/products/"
-                className="inline-flex items-center justify-center gap-2 bg-white/20 dark:bg-white/10 text-white dark:text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/30 dark:hover:bg-white/20 transition-all border border-white/30 dark:border-white/20"
+                className="inline-flex items-center justify-center gap-2 bg-white/20 bg-white/10 text-white text-gray-100 px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/30 hover:bg-white/20 transition-all border border-white/30 border-white/20"
               >
                 {c.ctaStandardButton.replace('{price}', standardPrice)}
               </Link>
@@ -473,47 +473,47 @@ export default async function CanadaPage({ params }: CanadaPageProps) {
         {/* FAQ Section */}
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-heading font-bold text-center text-gray-900 dark:text-gray-50 mb-12">
+            <h2 className="text-3xl font-heading font-bold text-center text-gray-900 text-gray-50 mb-12">
               {c.faqTitle}
             </h2>
             <div className="space-y-6">
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">
+              <div className="bg-white bg-gray-800 rounded-xl p-6 border border-gray-200 border-gray-700">
+                <h3 className="font-bold text-gray-900 text-gray-100 mb-2">
                   {c.faq1Q}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-gray-600 text-gray-300">
                   {c.faq1A}
                 </p>
               </div>
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">
+              <div className="bg-white bg-gray-800 rounded-xl p-6 border border-gray-200 border-gray-700">
+                <h3 className="font-bold text-gray-900 text-gray-100 mb-2">
                   {c.faq2Q}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-gray-600 text-gray-300">
                   {c.faq2A}
                 </p>
               </div>
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">
+              <div className="bg-white bg-gray-800 rounded-xl p-6 border border-gray-200 border-gray-700">
+                <h3 className="font-bold text-gray-900 text-gray-100 mb-2">
                   {c.faq3Q}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-gray-600 text-gray-300">
                   {c.faq3A}
                 </p>
               </div>
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">
+              <div className="bg-white bg-gray-800 rounded-xl p-6 border border-gray-200 border-gray-700">
+                <h3 className="font-bold text-gray-900 text-gray-100 mb-2">
                   {c.faq4Q}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-gray-600 text-gray-300">
                   {c.faq4A}
                 </p>
               </div>
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">
+              <div className="bg-white bg-gray-800 rounded-xl p-6 border border-gray-200 border-gray-700">
+                <h3 className="font-bold text-gray-900 text-gray-100 mb-2">
                   {c.faq5Q}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-gray-600 text-gray-300">
                   {c.faq5A}
                 </p>
               </div>
@@ -521,42 +521,42 @@ export default async function CanadaPage({ params }: CanadaPageProps) {
           </div>
         </section>
         {/* Related Content */}
-        <section className="bg-gray-50 dark:bg-gray-800/50 py-16 px-4">
+        <section className="bg-gray-50 bg-gray-800/50 py-16 px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-50 mb-8">
+            <h2 className="text-2xl font-heading font-bold text-gray-900 text-gray-50 mb-8">
               {c.relatedTitle}
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               <Link
                 href="/learn/how-activated-carbon-works/"
-                className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all border border-gray-200 dark:border-gray-700 group"
+                className="bg-white bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all border border-gray-200 border-gray-700 group"
               >
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-[#FF3131] dark:group-hover:text-[#FF5050] transition-colors">
+                <h3 className="font-bold text-gray-900 text-gray-100 mb-2 group-hover:text-[#FF3131] group-hover:text-[#FF5050] transition-colors">
                   {c.relatedCarbonTitle}
                 </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-sm text-gray-600 text-gray-400">
                   {c.relatedCarbonDesc}
                 </p>
               </Link>
               <Link
                 href="/learn/solutions/apartment-cat-smell-solution/"
-                className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all border border-gray-200 dark:border-gray-700 group"
+                className="bg-white bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all border border-gray-200 border-gray-700 group"
               >
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-[#FF3131] dark:group-hover:text-[#FF5050] transition-colors">
+                <h3 className="font-bold text-gray-900 text-gray-100 mb-2 group-hover:text-[#FF3131] group-hover:text-[#FF5050] transition-colors">
                   {c.relatedApartmentTitle}
                 </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-sm text-gray-600 text-gray-400">
                   {c.relatedApartmentDesc}
                 </p>
               </Link>
               <Link
                 href="/learn/alternatives/arm-and-hammer-cat-litter-deodorizer-alternative/"
-                className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all border border-gray-200 dark:border-gray-700 group"
+                className="bg-white bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all border border-gray-200 border-gray-700 group"
               >
-                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-[#FF3131] dark:group-hover:text-[#FF5050] transition-colors">
+                <h3 className="font-bold text-gray-900 text-gray-100 mb-2 group-hover:text-[#FF3131] group-hover:text-[#FF5050] transition-colors">
                   {c.relatedAlternativeTitle}
                 </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-sm text-gray-600 text-gray-400">
                   {c.relatedAlternativeDesc}
                 </p>
               </Link>

@@ -161,23 +161,23 @@ export default function SafetyPageClient() {
   ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
-      <section className="py-4 border-b border-gray-200 dark:border-gray-800">
+    <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] from-gray-900 via-gray-950 to-gray-900">
+      <section className="py-4 border-b border-gray-200 border-gray-800">
         <Container>
           <nav aria-label={copy.breadcrumbAria} className="flex items-center space-x-2 text-sm">
             <Link
               href={localizePath('/', locale)}
-              className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+              className="flex items-center text-gray-500 text-gray-400 hover:text-[#FF3131] hover:text-[#FF5050] transition-colors"
             >
               <Home className="w-4 h-4" />
             </Link>
             <span className="flex items-center">
-              <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
-              <span className="text-gray-500 dark:text-gray-400">{t('nav.learn')}</span>
+              <ChevronRight className="w-4 h-4 mx-1 text-gray-400 text-gray-500" />
+              <span className="text-gray-500 text-gray-400">{t('nav.learn')}</span>
             </span>
             <span className="flex items-center">
-              <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
-              <span className="font-medium text-gray-900 dark:text-gray-100">{copy.title}</span>
+              <ChevronRight className="w-4 h-4 mx-1 text-gray-400 text-gray-500" />
+              <span className="font-medium text-gray-900 text-gray-100">{copy.title}</span>
             </span>
           </nav>
         </Container>
@@ -187,18 +187,18 @@ export default function SafetyPageClient() {
         <Container>
           <div className="text-center max-w-4xl mx-auto">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full mb-6">
-              <FileCheck className="w-8 h-8 text-white dark:text-gray-100" />
+              <FileCheck className="w-8 h-8 text-white text-gray-100" />
             </div>
-            <p className="text-sm font-semibold tracking-wide uppercase text-[#FF3131] dark:text-[#FF5050] mb-3">
+            <p className="text-sm font-semibold tracking-wide uppercase text-[#FF3131] text-[#FF5050] mb-3">
               {copy.badge}
             </p>
             <h1 className="font-heading text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] bg-clip-text text-transparent">
               {copy.title}
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
+            <p className="text-xl text-gray-600 text-gray-300 mb-3 leading-relaxed">
               {copy.subtitle}
             </p>
-            <p className="text-lg text-gray-700 dark:text-gray-200 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-lg text-gray-700 text-gray-200 leading-relaxed max-w-3xl mx-auto">
               {copy.description}
             </p>
           </div>
@@ -213,7 +213,7 @@ export default function SafetyPageClient() {
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/65 to-transparent flex items-end">
-                <div className="p-8 text-white dark:text-gray-100">
+                <div className="p-8 text-white text-gray-100">
                   <h2 className="font-heading text-2xl font-bold mb-2">{copy.labTitle}</h2>
                   <p className="text-lg opacity-90">{copy.labDescription}</p>
                 </div>
@@ -228,7 +228,7 @@ export default function SafetyPageClient() {
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/65 to-transparent flex items-end">
-                <div className="p-8 text-white dark:text-gray-100">
+                <div className="p-8 text-white text-gray-100">
                   <h2 className="font-heading text-2xl font-bold mb-2">{copy.carbonTitle}</h2>
                   <p className="text-lg opacity-90">{copy.carbonDescription}</p>
                 </div>
@@ -238,13 +238,13 @@ export default function SafetyPageClient() {
         </Container>
       </section>
 
-      <section className="py-14 bg-white dark:bg-gray-800/20">
+      <section className="py-14 bg-white bg-gray-800/20">
         <Container>
           <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 text-white">
               {copy.featuresHeading}
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 text-gray-300 max-w-3xl mx-auto">
               {copy.featuresSubheading}
             </p>
           </div>
@@ -253,17 +253,17 @@ export default function SafetyPageClient() {
             {features.map((feature) => (
               <div
                 key={feature.title}
-                className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700"
+                className="bg-white bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 border-gray-700"
               >
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-lg flex items-center justify-center flex-shrink-0">
-                    <feature.icon className="w-6 h-6 text-white dark:text-gray-100" />
+                    <feature.icon className="w-6 h-6 text-white text-gray-100" />
                   </div>
                   <div>
-                    <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 dark:text-white">
+                    <h3 className="font-heading text-xl font-bold mb-2 text-gray-900 text-white">
                       {feature.title}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <p className="text-gray-600 text-gray-300 leading-relaxed">
                       {feature.description}
                     </p>
                   </div>
@@ -272,9 +272,9 @@ export default function SafetyPageClient() {
             ))}
           </div>
 
-          <div className="bg-green-100 dark:bg-green-900/30 rounded-xl p-6 border-l-4 border-green-600 dark:border-green-400">
-            <h3 className="font-bold text-gray-900 dark:text-white mb-2">{copy.bestPracticesTitle}</h3>
-            <p className="text-gray-800 dark:text-gray-100 leading-relaxed">{copy.bestPracticesBody}</p>
+          <div className="bg-green-100 bg-green-900/30 rounded-xl p-6 border-l-4 border-green-600 border-green-400">
+            <h3 className="font-bold text-gray-900 text-white mb-2">{copy.bestPracticesTitle}</h3>
+            <p className="text-gray-800 text-gray-100 leading-relaxed">{copy.bestPracticesBody}</p>
           </div>
         </Container>
       </section>
@@ -282,28 +282,28 @@ export default function SafetyPageClient() {
       <section className="py-14">
         <Container>
           <div className="text-center mb-10">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-3 text-gray-900 dark:text-white">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-3 text-gray-900 text-white">
               {copy.specsHeading}
             </h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-1">{copy.specsSubheading}</p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">{copy.specsNote}</p>
+            <p className="text-gray-600 text-gray-300 mb-1">{copy.specsSubheading}</p>
+            <p className="text-sm text-gray-500 text-gray-400">{copy.specsNote}</p>
           </div>
 
           <div className="max-w-3xl mx-auto">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden border border-gray-200 dark:border-gray-700">
+            <div className="bg-white bg-gray-800 rounded-2xl shadow-xl overflow-hidden border border-gray-200 border-gray-700">
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white dark:text-gray-100">
+                    <tr className="bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white text-gray-100">
                       <th className="px-6 py-4 text-left font-bold">{copy.propertyHeader}</th>
                       <th className="px-6 py-4 text-left font-bold">{copy.valueHeader}</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                  <tbody className="divide-y divide-gray-200 divide-gray-700">
                     {SPECIFICATIONS.map((spec) => (
-                      <tr key={spec.key} className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-                        <td className="px-6 py-4 font-medium text-gray-900 dark:text-white">{spec.key}</td>
-                        <td className="px-6 py-4 text-gray-700 dark:text-gray-200">{spec.value}</td>
+                      <tr key={spec.key} className="hover:bg-gray-50 hover:bg-gray-700/50 transition-colors">
+                        <td className="px-6 py-4 font-medium text-gray-900 text-white">{spec.key}</td>
+                        <td className="px-6 py-4 text-gray-700 text-gray-200">{spec.value}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -311,10 +311,10 @@ export default function SafetyPageClient() {
               </div>
             </div>
 
-            <div className="mt-8 bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 border border-blue-200 dark:border-blue-700">
-              <h3 className="font-heading font-bold text-gray-900 dark:text-white mb-2">{copy.particleTitle}</h3>
-              <p className="text-gray-700 dark:text-gray-200 mb-1">{copy.particlePrimary}</p>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">{copy.particleSecondary}</p>
+            <div className="mt-8 bg-blue-50 bg-blue-900/20 rounded-xl p-6 border border-blue-200 border-blue-700">
+              <h3 className="font-heading font-bold text-gray-900 text-white mb-2">{copy.particleTitle}</h3>
+              <p className="text-gray-700 text-gray-200 mb-1">{copy.particlePrimary}</p>
+              <p className="text-gray-600 text-gray-300 text-sm">{copy.particleSecondary}</p>
             </div>
           </div>
         </Container>
@@ -322,8 +322,8 @@ export default function SafetyPageClient() {
 
       <section className="py-14 bg-gradient-to-r from-[#5B2EFF] to-[#FF3131]">
         <Container>
-          <div className="text-center text-white dark:text-gray-100 mb-10">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-white dark:bg-gray-900 rounded-full mb-6">
+          <div className="text-center text-white text-gray-100 mb-10">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-white bg-gray-900 rounded-full mb-6">
               <Award className="w-8 h-8 text-[#5B2EFF]" />
             </div>
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">{copy.certificationsHeading}</h2>
@@ -332,16 +332,16 @@ export default function SafetyPageClient() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-10">
             {copy.certifications.map((cert) => (
-              <div key={cert} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg flex items-start space-x-4">
-                <CheckCircle2 className="w-6 h-6 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
-                <p className="text-gray-800 dark:text-gray-100">{cert}</p>
+              <div key={cert} className="bg-white bg-gray-800 rounded-xl p-6 shadow-lg flex items-start space-x-4">
+                <CheckCircle2 className="w-6 h-6 text-green-600 text-green-400 flex-shrink-0 mt-0.5" />
+                <p className="text-gray-800 text-gray-100">{cert}</p>
               </div>
             ))}
           </div>
 
-          <div className="max-w-4xl mx-auto bg-white/10 dark:bg-black/20 rounded-2xl p-6">
-            <h3 className="font-heading text-2xl font-bold text-white dark:text-gray-100 mb-4">{copy.applicationsHeading}</h3>
-            <ul className="space-y-2 text-white/95 dark:text-gray-100">
+          <div className="max-w-4xl mx-auto bg-white/10 bg-black/20 rounded-2xl p-6">
+            <h3 className="font-heading text-2xl font-bold text-white text-gray-100 mb-4">{copy.applicationsHeading}</h3>
+            <ul className="space-y-2 text-white/95 text-gray-100">
               {copy.applications.map((item) => (
                 <li key={item} className="flex items-start gap-2">
                   <Check className="w-4 h-4 mt-0.5 flex-shrink-0" />
@@ -356,10 +356,10 @@ export default function SafetyPageClient() {
       <section className="py-16">
         <Container>
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">{copy.ctaTitle}</h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">{copy.ctaBody}</p>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 text-white mb-4">{copy.ctaTitle}</h2>
+            <p className="text-lg text-gray-600 text-gray-300 mb-8">{copy.ctaBody}</p>
             <Link href={localizePath('/contact', locale)}>
-              <Button size="lg" className="bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white dark:text-gray-100">
+              <Button size="lg" className="bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] text-white text-gray-100">
                 {copy.ctaButton}
               </Button>
             </Link>

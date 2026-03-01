@@ -10,16 +10,16 @@ export function BarChart({ data, title, className = "" }: BarChartProps) {
   const maxValue = Math.max(...data.map(d => d.value));
 
   return (
-    <div className={`bg-white dark:bg-gray-800/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-gray-700/50 shadow-lg ${className}`}>
-      <h3 className="font-heading text-lg font-semibold text-gray-800 dark:text-white dark:text-gray-100 mb-4">{title}</h3>
+    <div className={`bg-white bg-gray-800/80 bg-gray-800/80 backdrop-blur-md rounded-xl p-6 border border-white/20 border-gray-700/50 shadow-lg ${className}`}>
+      <h3 className="font-heading text-lg font-semibold text-gray-800 text-white text-gray-100 mb-4">{title}</h3>
       <div className="space-y-3">
         {data.map((item, index) => (
           <div key={index} className="relative">
             <div className="flex justify-between items-center mb-1">
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{item.label}</span>
-              <span className="text-sm font-bold text-gray-900 dark:text-white dark:text-gray-100">{item.value.toLocaleString('en-US')}</span>
+              <span className="text-sm font-medium text-gray-700 text-gray-300">{item.label}</span>
+              <span className="text-sm font-bold text-gray-900 text-white text-gray-100">{item.value.toLocaleString('en-US')}</span>
             </div>
-            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
+            <div className="w-full bg-gray-200 bg-gray-700 rounded-full h-3 overflow-hidden">
               <div
                 className={`h-full rounded-full transition-all duration-1000 ease-out ${item.color || 'bg-gradient-to-r from-[#FF3131] to-[#FF5050]'
                   }`}
@@ -45,8 +45,8 @@ export function LineChart({ data, title, className = "" }: LineChartProps) {
   const range = maxValue - minValue;
 
   return (
-    <div className={`bg-white dark:bg-gray-800/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-gray-700/50 shadow-lg ${className}`}>
-      <h3 className="font-heading text-lg font-semibold text-gray-800 dark:text-white dark:text-gray-100 mb-4">{title}</h3>
+    <div className={`bg-white bg-gray-800/80 bg-gray-800/80 backdrop-blur-md rounded-xl p-6 border border-white/20 border-gray-700/50 shadow-lg ${className}`}>
+      <h3 className="font-heading text-lg font-semibold text-gray-800 text-white text-gray-100 mb-4">{title}</h3>
       <div className="relative">
         <div className="h-48 lg:h-56">
           <svg className="w-full h-full" viewBox="0 0 400 180">
@@ -68,7 +68,7 @@ export function LineChart({ data, title, className = "" }: LineChartProps) {
                 stroke="currentColor"
                 strokeWidth="1"
                 opacity="0.1"
-                className="text-gray-400 dark:text-gray-600"
+                className="text-gray-400 text-gray-600"
               />
             ))}
 
@@ -101,8 +101,8 @@ export function LineChart({ data, title, className = "" }: LineChartProps) {
         <div className="flex justify-between mt-2">
           {data.map((point, index) => (
             <div key={index} className="text-center">
-              <div className="text-xs text-gray-600 dark:text-gray-400">{point.label}</div>
-              <div className="text-sm font-bold text-gray-900 dark:text-white dark:text-gray-100">
+              <div className="text-xs text-gray-600 text-gray-400">{point.label}</div>
+              <div className="text-sm font-bold text-gray-900 text-white text-gray-100">
                 ${point.value.toLocaleString('en-US')}
               </div>
             </div>
@@ -134,8 +134,8 @@ export function PieChart({ data, title, className = "" }: PieChartProps) {
   });
 
   return (
-    <div className={`bg-white dark:bg-gray-800/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-gray-700/50 shadow-lg ${className}`}>
-      <h3 className="font-heading text-lg font-semibold text-gray-800 dark:text-white dark:text-gray-100 mb-4">{title}</h3>
+    <div className={`bg-white bg-gray-800/80 bg-gray-800/80 backdrop-blur-md rounded-xl p-6 border border-white/20 border-gray-700/50 shadow-lg ${className}`}>
+      <h3 className="font-heading text-lg font-semibold text-gray-800 text-white text-gray-100 mb-4">{title}</h3>
       <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
         <div className="relative">
           <svg width="150" height="150" className="transform -rotate-90">
@@ -166,8 +166,8 @@ export function PieChart({ data, title, className = "" }: PieChartProps) {
                 className="w-4 h-4 rounded-full"
                 style={{ backgroundColor: item.color }}
               />
-              <span className="text-sm text-gray-700 dark:text-gray-300">{item.label}</span>
-              <span className="text-sm font-bold text-gray-900 dark:text-white dark:text-gray-100">
+              <span className="text-sm text-gray-700 text-gray-300">{item.label}</span>
+              <span className="text-sm font-bold text-gray-900 text-white text-gray-100">
                 {((item.value / total) * 100).toFixed(1)}%
               </span>
             </div>
@@ -202,7 +202,7 @@ export function ProgressRing({ percentage, label, color = "#FF3131", size = 120,
             fill="none"
             stroke="currentColor"
             strokeWidth="10"
-            className="text-gray-200 dark:text-gray-700"
+            className="text-gray-200 text-gray-700"
           />
           <circle
             cx={size / 2}
@@ -217,7 +217,7 @@ export function ProgressRing({ percentage, label, color = "#FF3131", size = 120,
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className={`font-bold text-gray-900 dark:text-white dark:text-gray-100 ${size >= 120 ? 'text-2xl' :
+          <span className={`font-bold text-gray-900 text-white text-gray-100 ${size >= 120 ? 'text-2xl' :
               size >= 80 ? 'text-xl' :
                 size >= 60 ? 'text-sm' : 'text-xs'
             }`}>
@@ -225,7 +225,7 @@ export function ProgressRing({ percentage, label, color = "#FF3131", size = 120,
           </span>
         </div>
       </div>
-      <span className="mt-2 text-sm font-medium text-gray-700 dark:text-gray-300 text-center">{label}</span>
+      <span className="mt-2 text-sm font-medium text-gray-700 text-gray-300 text-center">{label}</span>
     </div>
   );
 }

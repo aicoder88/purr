@@ -23,31 +23,31 @@ const socialLinks = [
     name: 'Instagram',
     url: SOCIAL_LINKS.instagram,
     icon: Instagram,
-    color: 'hover:text-[#E4405F] dark:hover:text-[#E4405F]',
+    color: 'hover:text-[#E4405F] hover:text-[#E4405F]',
   },
   {
     name: 'Facebook',
     url: SOCIAL_LINKS.facebook,
     icon: Facebook,
-    color: 'hover:text-[#1877F2] dark:hover:text-[#1877F2]',
+    color: 'hover:text-[#1877F2] hover:text-[#1877F2]',
   },
   {
     name: 'YouTube',
     url: SOCIAL_LINKS.youtube,
     icon: Youtube,
-    color: 'hover:text-[#FF0000] dark:hover:text-[#FF0000]',
+    color: 'hover:text-[#FF0000] hover:text-[#FF0000]',
   },
   {
     name: 'TikTok',
     url: SOCIAL_LINKS.tiktok,
     icon: TikTokIcon,
-    color: 'hover:text-[#000000] dark:hover:text-white',
+    color: 'hover:text-[#000000] hover:text-white',
   },
   {
     name: 'LinkedIn',
     url: SOCIAL_LINKS.linkedin,
     icon: Linkedin,
-    color: 'hover:text-[#0A66C2] dark:hover:text-[#0A66C2]',
+    color: 'hover:text-[#0A66C2] hover:text-[#0A66C2]',
   },
 ];
 
@@ -60,7 +60,7 @@ export function SocialFollowCTA({ variant = 'card', className = '' }: SocialFoll
   if (variant === 'inline') {
     return (
       <div className={`flex flex-wrap items-center justify-center gap-4 py-4 ${className}`}>
-        <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+        <span className="text-sm font-medium text-gray-600 text-gray-400">
           {headlineText}:
         </span>
         <div className="flex items-center gap-3">
@@ -72,7 +72,7 @@ export function SocialFollowCTA({ variant = 'card', className = '' }: SocialFoll
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`text-gray-500 dark:text-gray-400 ${social.color} transition-colors duration-200`}
+                className={`text-gray-500 text-gray-400 ${social.color} transition-colors duration-200`}
                 aria-label={`Follow Purrify on ${social.name}`}
               >
                 <IconComponent className="h-5 w-5" />
@@ -85,12 +85,12 @@ export function SocialFollowCTA({ variant = 'card', className = '' }: SocialFoll
   }
 
   return (
-    <div className={`bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl p-6 border border-purple-100 dark:border-purple-800/50 ${className}`}>
+    <div className={`bg-gradient-to-r from-purple-50 to-pink-50 from-purple-900/20 to-pink-900/20 rounded-xl p-6 border border-purple-100 border-purple-800/50 ${className}`}>
       <div className="text-center">
-        <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-50 mb-2">
+        <h3 className="font-heading text-lg font-semibold text-gray-900 text-gray-50 mb-2">
           {headlineText}
         </h3>
-        <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+        <p className="text-sm text-gray-600 text-gray-400 mb-4">
           {descriptionText}
         </p>
         <div className="flex items-center justify-center gap-4">
@@ -102,7 +102,7 @@ export function SocialFollowCTA({ variant = 'card', className = '' }: SocialFoll
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`p-2.5 rounded-full bg-white dark:bg-gray-800 shadow-sm text-gray-500 dark:text-gray-400 ${social.color} transition-all duration-200 hover:shadow-md`}
+                className={`p-2.5 rounded-full bg-white bg-gray-800 shadow-sm text-gray-500 text-gray-400 ${social.color} transition-all duration-200 hover:shadow-md`}
                 aria-label={`Follow Purrify on ${social.name}`}
               >
                 <IconComponent className="h-5 w-5" />

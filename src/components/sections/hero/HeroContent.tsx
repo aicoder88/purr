@@ -20,7 +20,7 @@ function ArrowIcon({ className = "" }: { className?: string }) {
 }
 
 const CTA_BUTTON_CLASSES =
-  "w-full sm:w-auto px-8 py-5 bg-gray-900 hover:bg-gray-800 dark:bg-gray-100 dark:hover:bg-gray-200 text-gray-50 dark:text-gray-900 font-semibold text-base sm:text-lg rounded-full shadow-sm transition-colors duration-200 min-h-[56px] flex items-center justify-center gap-2";
+  "w-full sm:w-auto px-8 py-5 bg-gray-900 hover:bg-gray-800 bg-gray-100 hover:bg-gray-200 text-gray-50 text-gray-900 font-semibold text-base sm:text-lg rounded-full shadow-sm transition-colors duration-200 min-h-[56px] flex items-center justify-center gap-2";
 
 interface HeroContentProps {
   t: {
@@ -65,19 +65,19 @@ export const HeroContent = ({ t }: HeroContentProps) => {
   return (
     <div className="flex flex-col justify-center space-y-6 md:space-y-7 py-2">
       <div className="flex flex-wrap items-center gap-2 self-start">
-        <div className="inline-flex items-center rounded-full border border-gray-200 dark:border-gray-700 px-4 py-1.5 bg-gray-50 dark:bg-gray-900">
-          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{eyebrow}</span>
+        <div className="inline-flex items-center rounded-full border border-gray-200 border-gray-700 px-4 py-1.5 bg-gray-50 bg-gray-900">
+          <span className="text-sm font-medium text-gray-700 text-gray-300">{eyebrow}</span>
         </div>
-        <div className="inline-flex items-center rounded-full border border-gray-200 dark:border-gray-700 px-4 py-1.5 bg-gray-50 dark:bg-gray-900">
-          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{canadaBadge}</span>
+        <div className="inline-flex items-center rounded-full border border-gray-200 border-gray-700 px-4 py-1.5 bg-gray-50 bg-gray-900">
+          <span className="text-sm font-medium text-gray-700 text-gray-300">{canadaBadge}</span>
         </div>
       </div>
 
       <div className="space-y-3">
-        <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-gray-900 dark:text-white">
+        <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-gray-900 text-white">
           {headline}
         </h1>
-        <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-xl leading-relaxed">
+        <p className="text-lg sm:text-xl text-gray-600 text-gray-400 max-w-xl leading-relaxed">
           {supportingCopy}
         </p>
       </div>
@@ -90,7 +90,7 @@ export const HeroContent = ({ t }: HeroContentProps) => {
             <ArrowIcon />
           </a>
         </Button>
-        <p className="text-sm text-gray-600 dark:text-gray-400">{reassurance}</p>
+        <p className="text-sm text-gray-600 text-gray-400">{reassurance}</p>
       </div>
     </div>
   );

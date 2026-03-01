@@ -89,7 +89,7 @@ function SortableHeader({ field, children, sortField, sortOrder, onSort }: Sorta
 
   return (
     <button
-      className="flex items-center space-x-1 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+      className="flex items-center space-x-1 hover:text-gray-900 hover:text-gray-100 transition-colors"
       onClick={() => {
         if (isActive) {
           onSort(field, sortOrder === 'asc' ? 'desc' : 'asc');
@@ -99,7 +99,7 @@ function SortableHeader({ field, children, sortField, sortOrder, onSort }: Sorta
       }}
     >
       <span>{children}</span>
-      <Icon className={cn('w-4 h-4', isActive ? 'text-teal-500 dark:text-teal-400' : 'text-gray-400 dark:text-gray-500')} />
+      <Icon className={cn('w-4 h-4', isActive ? 'text-teal-500 text-teal-400' : 'text-gray-400 text-gray-500')} />
     </button>
   );
 }
@@ -179,23 +179,23 @@ export default function LeadTable({
       <div className="flex flex-col sm:flex-row gap-4">
         <form onSubmit={handleSearchSubmit} className="flex-1">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-gray-500" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 text-gray-500" />
             <Input
               placeholder="Search by company, contact, email, or city..."
               value={localSearch}
               onChange={(e) => setLocalSearch(e.target.value)}
-              className="pl-10 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100"
+              className="pl-10 bg-white bg-gray-800 border-gray-200 border-gray-700 text-gray-900 text-gray-100"
             />
           </div>
         </form>
         <Select value={statusFilter} onValueChange={(v) => onStatusFilter(v as LeadStatus | 'ALL')}>
-          <SelectTrigger className="w-[180px] bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100">
+          <SelectTrigger className="w-[180px] bg-white bg-gray-800 border-gray-200 border-gray-700 text-gray-900 text-gray-100">
             <SelectValue placeholder="Filter by status" />
           </SelectTrigger>
-          <SelectContent className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
-            <SelectItem value="ALL" className="text-gray-900 dark:text-gray-100">All Statuses</SelectItem>
+          <SelectContent className="bg-white bg-gray-800 border-gray-200 border-gray-700">
+            <SelectItem value="ALL" className="text-gray-900 text-gray-100">All Statuses</SelectItem>
             {Object.keys(statusConfig).map((status) => (
-              <SelectItem key={status} value={status} className="text-gray-900 dark:text-gray-100">
+              <SelectItem key={status} value={status} className="text-gray-900 text-gray-100">
                 {statusConfig[status as LeadStatus].label}
               </SelectItem>
             ))}
@@ -204,73 +204,73 @@ export default function LeadTable({
       </div>
 
       {/* Table */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+      <div className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 overflow-hidden">
         <div className="overflow-x-auto">
           <Table>
             <TableHeader>
-              <TableRow className="bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
-                <TableHead className="w-12 text-gray-700 dark:text-gray-300">
+              <TableRow className="bg-gray-50 bg-gray-900 border-b border-gray-200 border-gray-700">
+                <TableHead className="w-12 text-gray-700 text-gray-300">
                   <Checkbox
                     checked={leads.length > 0 && selectedIds.length === leads.length}
                     onCheckedChange={handleSelectAll}
-                    className="border-gray-300 dark:border-gray-600"
+                    className="border-gray-300 border-gray-600"
                   />
                 </TableHead>
-                <TableHead className="text-gray-700 dark:text-gray-300">
+                <TableHead className="text-gray-700 text-gray-300">
                   <SortableHeader field="companyName" sortField={sortField} sortOrder={sortOrder} onSort={onSort}>
                     Company
                   </SortableHeader>
                 </TableHead>
-                <TableHead className="text-gray-700 dark:text-gray-300">Contact</TableHead>
-                <TableHead className="text-gray-700 dark:text-gray-300">
+                <TableHead className="text-gray-700 text-gray-300">Contact</TableHead>
+                <TableHead className="text-gray-700 text-gray-300">
                   <SortableHeader field="city" sortField={sortField} sortOrder={sortOrder} onSort={onSort}>
                     Location
                   </SortableHeader>
                 </TableHead>
-                <TableHead className="text-gray-700 dark:text-gray-300">
+                <TableHead className="text-gray-700 text-gray-300">
                   <SortableHeader field="status" sortField={sortField} sortOrder={sortOrder} onSort={onSort}>
                     Status
                   </SortableHeader>
                 </TableHead>
-                <TableHead className="text-gray-700 dark:text-gray-300">
+                <TableHead className="text-gray-700 text-gray-300">
                   <SortableHeader field="lastContact" sortField={sortField} sortOrder={sortOrder} onSort={onSort}>
                     Last Contact
                   </SortableHeader>
                 </TableHead>
-                <TableHead className="w-12 text-gray-700 dark:text-gray-300"></TableHead>
+                <TableHead className="w-12 text-gray-700 text-gray-300"></TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {isLoading ? (
                 // Loading skeleton
                 Array.from({ length: 10 }).map((_, i) => (
-                  <TableRow key={i} className="border-b border-gray-100 dark:border-gray-700">
+                  <TableRow key={i} className="border-b border-gray-100 border-gray-700">
                     <TableCell>
-                      <div className="w-4 h-4 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
+                      <div className="w-4 h-4 bg-gray-200 bg-gray-700 rounded animate-pulse" />
                     </TableCell>
                     <TableCell>
-                      <div className="w-40 h-4 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
+                      <div className="w-40 h-4 bg-gray-200 bg-gray-700 rounded animate-pulse" />
                     </TableCell>
                     <TableCell>
-                      <div className="w-32 h-4 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
+                      <div className="w-32 h-4 bg-gray-200 bg-gray-700 rounded animate-pulse" />
                     </TableCell>
                     <TableCell>
-                      <div className="w-24 h-4 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
+                      <div className="w-24 h-4 bg-gray-200 bg-gray-700 rounded animate-pulse" />
                     </TableCell>
                     <TableCell>
-                      <div className="w-20 h-6 bg-gray-200 dark:bg-gray-700 rounded-full animate-pulse" />
+                      <div className="w-20 h-6 bg-gray-200 bg-gray-700 rounded-full animate-pulse" />
                     </TableCell>
                     <TableCell>
-                      <div className="w-20 h-4 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
+                      <div className="w-20 h-4 bg-gray-200 bg-gray-700 rounded animate-pulse" />
                     </TableCell>
                     <TableCell>
-                      <div className="w-8 h-8 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
+                      <div className="w-8 h-8 bg-gray-200 bg-gray-700 rounded animate-pulse" />
                     </TableCell>
                   </TableRow>
                 ))
               ) : leads.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={7} className="text-center py-12 text-gray-500 dark:text-gray-400">
+                  <TableCell colSpan={7} className="text-center py-12 text-gray-500 text-gray-400">
                     No leads found. Try adjusting your search or filters.
                   </TableCell>
                 </TableRow>
@@ -279,24 +279,24 @@ export default function LeadTable({
                   <TableRow
                     key={lead.id}
                     className={cn(
-                      'border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors',
-                      selectedIds.includes(lead.id) && 'bg-teal-50 dark:bg-teal-900/20'
+                      'border-b border-gray-100 border-gray-700 hover:bg-gray-50 hover:bg-gray-700/50 transition-colors',
+                      selectedIds.includes(lead.id) && 'bg-teal-50 bg-teal-900/20'
                     )}
                   >
                     <TableCell>
                       <Checkbox
                         checked={selectedIds.includes(lead.id)}
                         onCheckedChange={() => handleSelectOne(lead.id)}
-                        className="border-gray-300 dark:border-gray-600"
+                        className="border-gray-300 border-gray-600"
                       />
                     </TableCell>
                     <TableCell>
                       <div className="min-w-[200px]">
-                        <div className="font-medium text-gray-900 dark:text-gray-100">
+                        <div className="font-medium text-gray-900 text-gray-100">
                           {lead.companyName}
                         </div>
                         {lead.category && (
-                          <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                          <div className="text-xs text-gray-500 text-gray-400 mt-0.5">
                             {lead.category}
                           </div>
                         )}
@@ -306,7 +306,7 @@ export default function LeadTable({
                               href={lead.website.startsWith('http') ? lead.website : `https://${lead.website}`}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-gray-400 hover:text-teal-500 dark:text-gray-500 dark:hover:text-teal-400"
+                              className="text-gray-400 hover:text-teal-500 text-gray-500 hover:text-teal-400"
                             >
                               <Globe className="w-3.5 h-3.5" />
                             </a>
@@ -314,7 +314,7 @@ export default function LeadTable({
                           {lead.phone && (
                             <a
                               href={`tel:${lead.phone}`}
-                              className="text-gray-400 hover:text-teal-500 dark:text-gray-500 dark:hover:text-teal-400"
+                              className="text-gray-400 hover:text-teal-500 text-gray-500 hover:text-teal-400"
                             >
                               <Phone className="w-3.5 h-3.5" />
                             </a>
@@ -322,7 +322,7 @@ export default function LeadTable({
                           {lead.email && (
                             <a
                               href={`mailto:${lead.email}`}
-                              className="text-gray-400 hover:text-teal-500 dark:text-gray-500 dark:hover:text-teal-400"
+                              className="text-gray-400 hover:text-teal-500 text-gray-500 hover:text-teal-400"
                             >
                               <Mail className="w-3.5 h-3.5" />
                             </a>
@@ -331,20 +331,20 @@ export default function LeadTable({
                       </div>
                     </TableCell>
                     <TableCell>
-                      <div className="min-w-[120px] text-gray-900 dark:text-gray-100">
-                        {lead.contactName || <span className="text-gray-400 dark:text-gray-500">-</span>}
+                      <div className="min-w-[120px] text-gray-900 text-gray-100">
+                        {lead.contactName || <span className="text-gray-400 text-gray-500">-</span>}
                       </div>
                     </TableCell>
                     <TableCell>
                       <div className="min-w-[120px]">
                         {lead.city ? (
-                          <div className="flex items-center text-gray-600 dark:text-gray-300">
-                            <MapPin className="w-3.5 h-3.5 mr-1 text-gray-400 dark:text-gray-500" />
+                          <div className="flex items-center text-gray-600 text-gray-300">
+                            <MapPin className="w-3.5 h-3.5 mr-1 text-gray-400 text-gray-500" />
                             {lead.city}
                             {lead.province && `, ${lead.province}`}
                           </div>
                         ) : (
-                          <span className="text-gray-400 dark:text-gray-500">-</span>
+                          <span className="text-gray-400 text-gray-500">-</span>
                         )}
                       </div>
                     </TableCell>
@@ -355,14 +355,14 @@ export default function LeadTable({
                             <LeadStatusBadge status={lead.status} />
                           </button>
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent align="start" className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+                        <DropdownMenuContent align="start" className="bg-white bg-gray-800 border-gray-200 border-gray-700">
                           {Object.entries(statusConfig).map(([status, config]) => (
                             <DropdownMenuItem
                               key={status}
                               onClick={() => onQuickStatusChange(lead.id, status as LeadStatus)}
                               className={cn(
-                                'cursor-pointer text-gray-900 dark:text-gray-100',
-                                lead.status === status && 'bg-gray-100 dark:bg-gray-700'
+                                'cursor-pointer text-gray-900 text-gray-100',
+                                lead.status === status && 'bg-gray-100 bg-gray-700'
                               )}
                             >
                               <LeadStatusBadge status={status as LeadStatus} className="mr-2" />
@@ -373,10 +373,10 @@ export default function LeadTable({
                       </DropdownMenu>
                     </TableCell>
                     <TableCell>
-                      <div className="text-sm text-gray-600 dark:text-gray-400">
+                      <div className="text-sm text-gray-600 text-gray-400">
                         {lead.lastContact
                           ? new Date(lead.lastContact).toLocaleDateString()
-                          : <span className="text-gray-400 dark:text-gray-500">Never</span>}
+                          : <span className="text-gray-400 text-gray-500">Never</span>}
                       </div>
                     </TableCell>
                     <TableCell>
@@ -385,30 +385,30 @@ export default function LeadTable({
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="h-8 w-8 p-0 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
+                            className="h-8 w-8 p-0 text-gray-500 text-gray-400 hover:text-gray-900 hover:text-gray-100"
                           >
                             <MoreHorizontal className="w-4 h-4" />
                           </Button>
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end" className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+                        <DropdownMenuContent align="end" className="bg-white bg-gray-800 border-gray-200 border-gray-700">
                           <DropdownMenuItem
                             onClick={() => onViewLead(lead)}
-                            className="cursor-pointer text-gray-900 dark:text-gray-100"
+                            className="cursor-pointer text-gray-900 text-gray-100"
                           >
                             <Eye className="w-4 h-4 mr-2" />
                             View Details
                           </DropdownMenuItem>
                           <DropdownMenuItem
                             onClick={() => onEditLead(lead)}
-                            className="cursor-pointer text-gray-900 dark:text-gray-100"
+                            className="cursor-pointer text-gray-900 text-gray-100"
                           >
                             <Edit className="w-4 h-4 mr-2" />
                             Edit
                           </DropdownMenuItem>
-                          <DropdownMenuSeparator className="bg-gray-200 dark:bg-gray-700" />
+                          <DropdownMenuSeparator className="bg-gray-200 bg-gray-700" />
                           <DropdownMenuItem
                             onClick={() => onDeleteLead(lead)}
-                            className="cursor-pointer text-red-600 dark:text-red-400"
+                            className="cursor-pointer text-red-600 text-red-400"
                           >
                             <Trash2 className="w-4 h-4 mr-2" />
                             Delete
@@ -424,18 +424,18 @@ export default function LeadTable({
         </div>
 
         {/* Pagination */}
-        <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
-          <div className="text-sm text-gray-600 dark:text-gray-400">
+        <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200 border-gray-700 bg-gray-50 bg-gray-900">
+          <div className="text-sm text-gray-600 text-gray-400">
             Showing{' '}
-            <span className="font-medium text-gray-900 dark:text-gray-100">
+            <span className="font-medium text-gray-900 text-gray-100">
               {Math.min((pagination.page - 1) * pagination.limit + 1, pagination.totalCount)}
             </span>{' '}
             to{' '}
-            <span className="font-medium text-gray-900 dark:text-gray-100">
+            <span className="font-medium text-gray-900 text-gray-100">
               {Math.min(pagination.page * pagination.limit, pagination.totalCount)}
             </span>{' '}
             of{' '}
-            <span className="font-medium text-gray-900 dark:text-gray-100">{pagination.totalCount}</span>{' '}
+            <span className="font-medium text-gray-900 text-gray-100">{pagination.totalCount}</span>{' '}
             leads
           </div>
           <div className="flex items-center space-x-2">
@@ -444,14 +444,14 @@ export default function LeadTable({
               size="sm"
               onClick={() => onPageChange(pagination.page - 1)}
               disabled={pagination.page === 1}
-              className="border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="border-gray-200 border-gray-700 text-gray-700 text-gray-300 hover:bg-gray-100 hover:bg-gray-800"
             >
               <ChevronLeft className="w-4 h-4" />
             </Button>
             <div className="flex items-center space-x-1">
               {pageNumbers.map((pageNum, idx) =>
                 pageNum === 'ellipsis' ? (
-                  <span key={`ellipsis-${idx}`} className="px-2 text-gray-400 dark:text-gray-500">
+                  <span key={`ellipsis-${idx}`} className="px-2 text-gray-400 text-gray-500">
                     ...
                   </span>
                 ) : (
@@ -463,8 +463,8 @@ export default function LeadTable({
                     className={cn(
                       'w-8 h-8 p-0',
                       pagination.page === pageNum
-                        ? 'bg-teal-500 dark:bg-teal-600 text-white dark:text-gray-100 hover:bg-teal-600 dark:hover:bg-teal-700'
-                        : 'border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                        ? 'bg-teal-500 bg-teal-600 text-white text-gray-100 hover:bg-teal-600 hover:bg-teal-700'
+                        : 'border-gray-200 border-gray-700 text-gray-700 text-gray-300 hover:bg-gray-100 hover:bg-gray-800'
                     )}
                   >
                     {pageNum}
@@ -477,7 +477,7 @@ export default function LeadTable({
               size="sm"
               onClick={() => onPageChange(pagination.page + 1)}
               disabled={pagination.page === pagination.totalPages}
-              className="border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="border-gray-200 border-gray-700 text-gray-700 text-gray-300 hover:bg-gray-100 hover:bg-gray-800"
             >
               <ChevronRight className="w-4 h-4" />
             </Button>

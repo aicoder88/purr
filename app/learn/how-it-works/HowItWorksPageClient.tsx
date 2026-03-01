@@ -431,29 +431,29 @@ export default function HowItWorksPageClient() {
   ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
+    <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] from-gray-900 via-gray-950 to-gray-900">
       {/* Breadcrumb Navigation */}
-      <section className="py-4 border-b border-gray-200 dark:border-gray-800">
+      <section className="py-4 border-b border-gray-200 border-gray-800">
         <Container>
           <nav aria-label={copy.breadcrumbAriaLabel} className="flex items-center space-x-2 text-sm">
             <Link
               href={localePrefix || '/'}
               aria-label={copy.breadcrumbHome}
-              className="flex items-center justify-center min-h-11 min-w-11 p-2 text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+              className="flex items-center justify-center min-h-11 min-w-11 p-2 text-gray-500 text-gray-400 hover:text-[#FF3131] hover:text-[#FF5050] transition-colors"
             >
               <Home className="w-4 h-4" />
             </Link>
             {breadcrumbItems.map((item, index, arr) => (
               <span key={item.path} className="flex items-center">
-                <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                <ChevronRight className="w-4 h-4 mx-1 text-gray-400 text-gray-500" />
                 {index === arr.length - 1 ? (
-                  <span className="font-medium text-gray-900 dark:text-gray-100">
+                  <span className="font-medium text-gray-900 text-gray-100">
                     {item.name}
                   </span>
                 ) : (
                   <Link
                     href={item.path}
-                    className="inline-flex items-center min-h-11 px-2 text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+                    className="inline-flex items-center min-h-11 px-2 text-gray-500 text-gray-400 hover:text-[#FF3131] hover:text-[#FF5050] transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -468,14 +468,14 @@ export default function HowItWorksPageClient() {
       <section className="py-16">
         <Container>
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="font-heading text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] dark:from-[#FF5050] dark:to-[#3694FF] bg-clip-text text-transparent">
+            <h1 className="font-heading text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] from-[#FF5050] to-[#3694FF] bg-clip-text text-transparent">
               {copy.heroTitle}
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-600 text-gray-300 mb-8 leading-relaxed">
               {copy.heroDescription}
             </p>
             <div className="relative max-w-2xl mx-auto">
-              <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
+              <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 from-[#FF5050]/10 to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
               <div className="relative">
                 <Image
                   src="/optimized/marketing/micropores-magnified.webp"
@@ -486,7 +486,7 @@ export default function HowItWorksPageClient() {
                   className="w-full h-auto rounded-2xl shadow-2xl"
                   priority
                 />
-                <div className="absolute bottom-4 left-4 bg-black/70 text-white dark:text-gray-100 px-3 py-1 rounded-lg text-sm">
+                <div className="absolute bottom-4 left-4 bg-black/70 text-white text-gray-100 px-3 py-1 rounded-lg text-sm">
                   {copy.heroImageCaption}
                 </div>
               </div>
@@ -496,13 +496,13 @@ export default function HowItWorksPageClient() {
       </section>
 
       {/* Science Explanation */}
-      <section className="py-16 bg-white dark:bg-gray-800/50">
+      <section className="py-16 bg-white bg-gray-800/50">
         <Container>
           <div className="text-center mb-16">
-            <h2 className="font-heading text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+            <h2 className="font-heading text-4xl font-bold mb-4 text-gray-900 text-gray-100">
               {copy.scienceHeading}
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 text-gray-300 max-w-3xl mx-auto">
               {copy.scienceSubheading}
             </p>
           </div>
@@ -511,21 +511,21 @@ export default function HowItWorksPageClient() {
             {copy.sciencePoints.map((point, index) => {
               const Icon = SCIENCE_ICONS[index] || Microscope;
               return (
-                <div key={index} className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div key={index} className="bg-white bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0">
                       <div className="w-12 h-12 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-xl flex items-center justify-center">
-                        <Icon className="w-6 h-6 text-white dark:text-gray-100" />
+                        <Icon className="w-6 h-6 text-white text-gray-100" />
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-100">
+                      <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 text-gray-100">
                         {point.title}
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                      <p className="text-gray-600 text-gray-300 mb-4 leading-relaxed">
                         {point.description}
                       </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                      <p className="text-sm text-gray-500 text-gray-400 leading-relaxed">
                         {point.detail}
                       </p>
                     </div>
@@ -541,10 +541,10 @@ export default function HowItWorksPageClient() {
       <section className="py-16">
         <Container>
           <div className="text-center mb-16">
-            <h2 className="font-heading text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+            <h2 className="font-heading text-4xl font-bold mb-4 text-gray-900 text-gray-100">
               {copy.usageHeading}
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 text-gray-300 max-w-2xl mx-auto">
               {copy.usageSubheading}
             </p>
           </div>
@@ -555,24 +555,24 @@ export default function HowItWorksPageClient() {
                 <div className={`space-y-6 ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
                   <div className="flex items-center space-x-4">
                     <div className="w-16 h-16 bg-gradient-to-r from-[#FF3131] to-[#5B2EFF] rounded-full flex items-center justify-center">
-                      <span className="text-white dark:text-gray-100 font-bold text-2xl">{step.number}</span>
+                      <span className="text-white text-gray-100 font-bold text-2xl">{step.number}</span>
                     </div>
-                    <h3 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100">
+                    <h3 className="font-heading text-3xl font-bold text-gray-900 text-gray-100">
                       {step.title}
                     </h3>
                   </div>
-                  <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+                  <p className="text-xl text-gray-600 text-gray-300 leading-relaxed">
                     {step.description}
                   </p>
-                  <div className="bg-[#E0EFC7]/50 dark:bg-gray-700/50 p-4 rounded-xl">
-                    <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <div className="bg-[#E0EFC7]/50 bg-gray-700/50 p-4 rounded-xl">
+                    <p className="text-sm font-medium text-gray-700 text-gray-300">
                       💡 <strong>{copy.proTipLabel}</strong> {step.tip}
                     </p>
                   </div>
                 </div>
                 <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
                   <div className="relative">
-                    <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF5050]/10 dark:to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
+                    <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 from-[#FF5050]/10 to-[#3694FF]/20 rounded-3xl blur-xl opacity-70"></div>
                     <div className="relative">
                       <Image
                         src={step.image}
@@ -591,24 +591,24 @@ export default function HowItWorksPageClient() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-white dark:bg-gray-800/50">
+      <section className="py-16 bg-white bg-gray-800/50">
         <Container>
           <div className="text-center mb-16">
-            <h2 className="font-heading text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+            <h2 className="font-heading text-4xl font-bold mb-4 text-gray-900 text-gray-100">
               {copy.faqHeading}
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300">
+            <p className="text-xl text-gray-600 text-gray-300">
               {copy.faqSubheading}
             </p>
           </div>
 
           <div className="max-w-4xl mx-auto space-y-6">
             {copy.faqs.map((faq, index) => (
-              <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-                <h3 className="font-heading text-lg font-bold mb-3 text-gray-900 dark:text-gray-100">
+              <div key={index} className="bg-white bg-gray-800 p-6 rounded-xl shadow-lg">
+                <h3 className="font-heading text-lg font-bold mb-3 text-gray-900 text-gray-100">
                   {faq.question}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p className="text-gray-600 text-gray-300 leading-relaxed">
                   {faq.answer}
                 </p>
               </div>
@@ -616,7 +616,7 @@ export default function HowItWorksPageClient() {
           </div>
 
           <div className="text-center mt-12">
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
+            <p className="text-gray-600 text-gray-300 mb-4">
               {copy.faqPrompt}
             </p>
             <Link href={`${localePrefix}/contact`}>
@@ -631,7 +631,7 @@ export default function HowItWorksPageClient() {
       {/* CTA Section */}
       <section className="py-16">
         <Container>
-          <div className="bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] dark:from-[#3694FF] dark:to-[#FF5050] rounded-3xl p-12 text-center text-white dark:text-gray-100">
+          <div className="bg-gradient-to-r from-[#5B2EFF] to-[#03E46A] from-[#3694FF] to-[#FF5050] rounded-3xl p-12 text-center text-white text-gray-100">
             <h2 className="font-heading text-4xl font-bold mb-4">
               {copy.ctaTitle}
             </h2>
@@ -640,13 +640,13 @@ export default function HowItWorksPageClient() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href={trialCheckoutUrl} target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="bg-white dark:bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
+                <Button size="lg" className="bg-white bg-gray-900 text-[#5B2EFF] hover:bg-gray-100 hover:bg-gray-700 font-bold">
                   {trialSizeCtaLabel}
                   <ChevronRight className="w-5 h-5 ml-2" />
                 </Button>
               </a>
               <Link href={`${localePrefix}/#products`}>
-                <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
+                <Button size="lg" variant="outline" className="border-white border-gray-600 text-gray-900 text-gray-50 bg-white bg-gray-800 hover:bg-gray-50 hover:bg-gray-700 hover:text-gray-900 transition-colors">
                   {copy.viewProductsButton}
                 </Button>
               </Link>
@@ -670,7 +670,7 @@ export default function HowItWorksPageClient() {
       </section>
 
       {/* Related Articles */}
-      <section className="py-16 border-t border-gray-200 dark:border-gray-800">
+      <section className="py-16 border-t border-gray-200 border-gray-800">
         <Container>
           <RelatedContent currentUrl="/learn/how-it-works" />
         </Container>

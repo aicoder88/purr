@@ -92,7 +92,7 @@ export function RelatedQuestions({
 
       <section className={`related-questions ${className}`}>
         {title && (
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6">
+          <h2 className="text-2xl font-bold text-gray-900 text-gray-50 mb-6">
             {title}
           </h2>
         )}
@@ -104,19 +104,19 @@ export function RelatedQuestions({
             return (
               <div
                 key={index}
-                className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden"
+                className="border border-gray-200 border-gray-700 rounded-lg overflow-hidden"
               >
                 <button
                   onClick={() => toggleItem(index)}
-                  className="w-full px-4 py-4 flex items-center justify-between text-left bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2 min-h-[48px]"
+                  className="w-full px-4 py-4 flex items-center justify-between text-left bg-white bg-gray-900 hover:bg-gray-50 hover:bg-gray-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2 min-h-[48px]"
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${index}`}
                 >
-                  <span className="font-medium text-gray-900 dark:text-gray-100 pr-4">
+                  <span className="font-medium text-gray-900 text-gray-100 pr-4">
                     {item.question}
                   </span>
                   <svg
-                    className={`w-5 h-5 text-gray-500 dark:text-gray-400 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''
+                    className={`w-5 h-5 text-gray-500 text-gray-400 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''
                       }`}
                     fill="none"
                     viewBox="0 0 24 24"
@@ -138,7 +138,7 @@ export function RelatedQuestions({
                   role="region"
                   aria-labelledby={`faq-question-${index}`}
                 >
-                  <div className="px-4 pb-4 pt-0 text-gray-700 dark:text-gray-300 border-t border-gray-100 dark:border-gray-800">
+                  <div className="px-4 pb-4 pt-0 text-gray-700 text-gray-300 border-t border-gray-100 border-gray-800">
                     <div className="pt-3">{item.answer}</div>
                   </div>
                 </div>

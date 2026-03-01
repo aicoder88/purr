@@ -156,10 +156,7 @@ export async function generateMetadata(): Promise<Metadata> {
  * Separated from metadata for better caching in Next.js App Router
  */
 export const viewport: Viewport = {
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#FF3131' },
-    { media: '(prefers-color-scheme: dark)', color: '#121212' },
-  ],
+  themeColor: '#121212',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -180,7 +177,7 @@ export default async function RootLayout({
   const messages = translationModule[locale];
 
   return (
-    <html lang={locale} className={`${inter.variable} dark`} suppressHydrationWarning>
+    <html lang={locale} className={inter.variable} suppressHydrationWarning>
       <head>
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />

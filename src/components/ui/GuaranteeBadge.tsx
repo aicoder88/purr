@@ -43,7 +43,7 @@ export function GuaranteeBadge({
       className={cn(
         'inline-flex items-center rounded-md border font-medium',
         'bg-green-50 text-green-700 border-green-200',
-        'dark:bg-green-900/20 dark:text-green-300 dark:border-green-800',
+        'bg-green-900/20 text-green-300 border-green-800',
         sizeClasses[size],
         className
       )}

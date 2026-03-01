@@ -327,7 +327,7 @@ function StoreLogoImage({
   const [hasError, setHasError] = useState(false);
 
   if (!logoConfig || hasError) {
-    return <StoreIcon className="w-6 h-6 text-white dark:text-gray-100" />;
+    return <StoreIcon className="w-6 h-6 text-white text-gray-100" />;
   }
 
   return (
@@ -458,7 +458,7 @@ export default function StoresPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 py-12 bg-white dark:bg-gray-900 min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 py-12 bg-white bg-gray-900 min-h-screen">
         {/* Hero Section */}
         <section className="text-center mb-12">
           <div className="flex justify-center mb-6">
@@ -467,37 +467,37 @@ export default function StoresPage() {
               alt="Purrify Logo"
               width={480}
               height={230}
-              className="h-12 w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
+              className="h-12 w-auto filter drop-shadow-sm transition-all duration-300 hidden"
             />
             <Image
               src="/optimized/logos/logo-dark.webp"
               alt="Purrify Logo"
               width={480}
               height={220}
-              className="h-12 w-auto filter drop-shadow-sm transition-all duration-300 hidden dark:block"
+              className="h-12 w-auto filter drop-shadow-sm transition-all duration-300 hidden block"
             />
           </div>
-          <h1 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h1 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 text-white mb-6">
             Find Purrify Near You
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 text-gray-300 mb-8 max-w-3xl mx-auto">
             Discover our {stores.length} partner pet stores selling Purrify across Canada.
           </p>
         </section>
 
         {/* Search and Filters */}
         <section className="mb-12">
-          <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-8">
+          <div className="bg-gray-50 bg-gray-800 rounded-lg p-6 mb-8">
             <div className="grid gap-4 md:grid-cols-3">
               {/* Search Input */}
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 h-5 w-5" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-gray-500 h-5 w-5" />
                 <input
                   type="text"
                   placeholder="Search by city, name..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 border-gray-600 rounded-lg bg-white bg-gray-700 text-gray-900 text-white focus:ring-2 focus:ring-brand-red focus:ring-brand-red-400 focus:border-transparent"
                 />
               </div>
 
@@ -505,7 +505,7 @@ export default function StoresPage() {
               <select
                 value={selectedRegion}
                 onChange={(e) => setSelectedRegion(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 border-gray-600 rounded-lg bg-white bg-gray-700 text-gray-900 text-white focus:ring-2 focus:ring-brand-red focus:ring-brand-red-400 focus:border-transparent"
               >
                 {regions.map(region => (
                   <option key={region.value} value={region.value}>
@@ -518,7 +518,7 @@ export default function StoresPage() {
               <select
                 value={selectedType}
                 onChange={(e) => setSelectedType(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 border-gray-600 rounded-lg bg-white bg-gray-700 text-gray-900 text-white focus:ring-2 focus:ring-brand-red focus:ring-brand-red-400 focus:border-transparent"
               >
                 {storeTypes.map(type => (
                   <option key={type.value} value={type.value}>
@@ -528,7 +528,7 @@ export default function StoresPage() {
               </select>
             </div>
 
-            <div className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+            <div className="mt-4 text-sm text-gray-600 text-gray-400">
               {filteredStores.length} store(s) found
             </div>
           </div>
@@ -538,15 +538,15 @@ export default function StoresPage() {
         <section className="mb-16">
           {Object.keys(storesByRegion).length === 0 ? (
             <div className="text-center py-12">
-              <h3 className="font-heading text-xl font-semibold text-gray-900 dark:text-white mb-4">
+              <h3 className="font-heading text-xl font-semibold text-gray-900 text-white mb-4">
                 No stores found
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
+              <p className="text-gray-600 text-gray-300 mb-6">
                 Try adjusting your search criteria or contact us.
               </p>
               <Link
                 href="/contact/"
-                className="inline-block bg-brand-red-600 text-white dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-brand-red-700 transition-colors"
+                className="inline-block bg-brand-red-600 text-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-brand-red-700 transition-colors"
               >
                 Contact Us
               </Link>
@@ -554,9 +554,9 @@ export default function StoresPage() {
           ) : (
             Object.entries(storesByRegion).map(([region, regionStores]) => (
               <div key={region} className="mb-12">
-                <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                <h2 className="font-heading text-2xl font-bold text-gray-900 text-white mb-6">
                   {regionLabels[region]}
-                  <span className="ml-2 text-sm font-normal text-gray-500 dark:text-gray-400">
+                  <span className="ml-2 text-sm font-normal text-gray-500 text-gray-400">
                     ({regionStores.length})
                   </span>
                 </h2>
@@ -569,25 +569,25 @@ export default function StoresPage() {
                     return (
                       <div
                         key={`${store.name}-${store.location}`}
-                        className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300"
+                        className="bg-white bg-gray-800 border border-gray-200 border-gray-700 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300"
                       >
                         {/* Store Header with Logo */}
                         <div className="flex items-start gap-4 mb-4">
                           <div className={`w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0 ${shouldUseWhiteBg
-                            ? 'bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700'
+                            ? 'bg-white bg-gray-900 border border-gray-200 border-gray-700'
                             : 'bg-gradient-to-br from-brand-red to-brand-red/80'
                             }`}>
                             <StoreLogoImage logoConfig={logoConfig} storeName={store.name} />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-white mb-1 truncate">
+                            <h3 className="font-heading text-lg font-semibold text-gray-900 text-white mb-1 truncate">
                               {store.name}
                             </h3>
                             <span className={`inline-block px-2 py-0.5 text-xs rounded-full ${store.type === 'independent'
-                              ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300'
+                              ? 'bg-green-100 bg-green-900/30 text-green-800 text-green-300'
                               : store.type === 'franchise'
-                                ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300'
-                                : 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300'
+                                ? 'bg-blue-100 bg-blue-900/30 text-blue-800 text-blue-300'
+                                : 'bg-purple-100 bg-purple-900/30 text-purple-800 text-purple-300'
                               }`}>
                               {store.type === 'independent' && 'Independent'}
                               {store.type === 'franchise' && 'Franchise'}
@@ -598,22 +598,22 @@ export default function StoresPage() {
 
                         {/* Description */}
                         {store.description && (
-                          <p className="text-sm text-gray-500 dark:text-gray-400 mb-3 italic">
+                          <p className="text-sm text-gray-500 text-gray-400 mb-3 italic">
                             {store.description}
                           </p>
                         )}
 
                         {/* Address */}
                         <div className="flex items-start gap-3 mb-3">
-                          <MapPin className="h-5 w-5 text-gray-400 dark:text-gray-500 mt-0.5 flex-shrink-0" />
-                          <div className="text-sm text-gray-700 dark:text-gray-300 leading-snug w-full">
+                          <MapPin className="h-5 w-5 text-gray-400 text-gray-500 mt-0.5 flex-shrink-0" />
+                          <div className="text-sm text-gray-700 text-gray-300 leading-snug w-full">
                             {store.address.includes(',') ? (
                               <>
-                                <span className="block font-medium dark:text-gray-200">{store.address.substring(0, store.address.indexOf(','))}</span>
-                                <span className="block text-[13px] text-gray-500 dark:text-gray-400 mt-0.5">{store.address.substring(store.address.indexOf(',') + 1).trim()}</span>
+                                <span className="block font-medium text-gray-200">{store.address.substring(0, store.address.indexOf(','))}</span>
+                                <span className="block text-[13px] text-gray-500 text-gray-400 mt-0.5">{store.address.substring(store.address.indexOf(',') + 1).trim()}</span>
                               </>
                             ) : (
-                              <span className="font-medium dark:text-gray-200">{store.address}</span>
+                              <span className="font-medium text-gray-200">{store.address}</span>
                             )}
                           </div>
                         </div>
@@ -622,7 +622,7 @@ export default function StoresPage() {
                         <div className="space-y-2 mb-4">
                           {store.phone && (
                             <div className="flex items-center gap-3">
-                              <Phone className="h-4 w-4 text-gray-400 dark:text-gray-500" />
+                              <Phone className="h-4 w-4 text-gray-400 text-gray-500" />
                               <a
                                 href={`tel:${store.phone.replace(/[^0-9+]/g, '')}`}
                                 className="text-sm text-brand-red hover:underline"
@@ -634,12 +634,12 @@ export default function StoresPage() {
 
                           {store.url && (
                             <div className="flex items-center gap-3">
-                              <Globe className="h-4 w-4 text-gray-400 dark:text-gray-500" />
+                              <Globe className="h-4 w-4 text-gray-400 text-gray-500" />
                               <a
                                 href={store.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                                className="text-sm text-blue-600 text-blue-400 hover:underline"
                               >
                                 Visit website
                               </a>
@@ -648,12 +648,12 @@ export default function StoresPage() {
                         </div>
 
                         {/* Actions */}
-                        <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+                        <div className="pt-4 border-t border-gray-200 border-gray-700">
                           <a
                             href={`https://maps.google.com/maps?q=${encodeURIComponent(store.address)}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-brand-red-600 text-white dark:text-white text-sm font-medium rounded-lg hover:bg-brand-red-700 transition-colors"
+                            className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-brand-red-600 text-white text-white text-sm font-medium rounded-lg hover:bg-brand-red-700 transition-colors"
                           >
                             <Navigation className="h-4 w-4" />
                             Get Directions
@@ -669,23 +669,23 @@ export default function StoresPage() {
         </section>
 
         {/* Call to Action */}
-        <section className="text-center bg-gradient-to-br from-brand-red/5 to-brand-red/10 dark:from-brand-red/10 dark:to-brand-red/20 rounded-2xl p-8">
-          <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-4">
+        <section className="text-center bg-gradient-to-br from-brand-red/5 to-brand-red/10 from-brand-red/10 to-brand-red/20 rounded-2xl p-8">
+          <h2 className="font-heading text-2xl font-bold text-gray-900 text-white mb-4">
             Your store doesn&apos;t carry Purrify yet?
           </h2>
-          <p className="text-gray-700 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
+          <p className="text-gray-700 text-gray-300 mb-6 max-w-2xl mx-auto">
             Ask your local pet store to order Purrify or contact us to become a partner retailer.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/contact/"
-              className="inline-block bg-brand-red-600 text-white dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-brand-red-700 transition-colors"
+              className="inline-block bg-brand-red-600 text-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-brand-red-700 transition-colors"
             >
               Request for my store
             </Link>
             <Link
               href="/b2b/"
-              className="inline-block border-2 border-brand-red-700 text-brand-red-700 dark:border-brand-red-700 dark:text-brand-red-700 px-6 py-3 rounded-lg font-semibold hover:bg-brand-red-700/10 dark:hover:bg-brand-red-700/10 transition-colors"
+              className="inline-block border-2 border-brand-red-700 text-brand-red-700 border-brand-red-700 text-brand-red-700 px-6 py-3 rounded-lg font-semibold hover:bg-brand-red-700/10 hover:bg-brand-red-700/10 transition-colors"
             >
               Become a retailer
             </Link>

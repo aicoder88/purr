@@ -101,9 +101,9 @@ export function StickyAddToCart({
         // Base styles
         'fixed bottom-0 left-0 right-0 z-40',
         // Background and border with dark mode
-        'bg-white dark:bg-gray-900',
-        'border-t border-gray-200 dark:border-gray-700',
-        'shadow-[0_-4px_20px_rgba(0,0,0,0.1)] dark:shadow-[0_-4px_20px_rgba(0,0,0,0.3)]',
+        'bg-white bg-gray-900',
+        'border-t border-gray-200 border-gray-700',
+        'shadow-[0_-4px_20px_rgba(0,0,0,0.1)] shadow-[0_-4px_20px_rgba(0,0,0,0.3)]',
         // Animation
         'transition-transform duration-300 ease-out',
         isVisible ? 'translate-y-0' : 'translate-y-full',
@@ -117,41 +117,41 @@ export function StickyAddToCart({
         <div className="flex items-center justify-between gap-3 sm:gap-6">
           {/* Product Info - Hidden on very small screens */}
           <div className="hidden sm:flex flex-col min-w-0">
-            <span className="font-bold text-gray-900 dark:text-white truncate text-sm sm:text-base">
+            <span className="font-bold text-gray-900 text-white truncate text-sm sm:text-base">
               {productName}
             </span>
-            <span className="text-xs text-gray-500 dark:text-gray-400">
+            <span className="text-xs text-gray-500 text-gray-400">
               {productSize}
             </span>
           </div>
 
           {/* Price - Always visible */}
           <div className="flex-shrink-0">
-            <span className="font-bold text-lg sm:text-xl text-gray-900 dark:text-white">
+            <span className="font-bold text-lg sm:text-xl text-gray-900 text-white">
               {price}
             </span>
           </div>
 
           {/* Quantity Selector */}
-          <div className="flex items-center gap-1 sm:gap-2 bg-gray-100 dark:bg-gray-800 rounded-lg p-1">
+          <div className="flex items-center gap-1 sm:gap-2 bg-gray-100 bg-gray-800 rounded-lg p-1">
             <button
               type="button"
               onClick={() => handleQuantityChange(-1)}
               disabled={quantity <= 1}
               className={cn(
                 'p-1.5 sm:p-2 rounded-md transition-colors',
-                'text-gray-700 dark:text-gray-300',
-                'hover:bg-gray-200 dark:hover:bg-gray-700',
+                'text-gray-700 text-gray-300',
+                'hover:bg-gray-200 hover:bg-gray-700',
                 'disabled:opacity-50 disabled:cursor-not-allowed',
                 'focus:outline-none focus:ring-2 focus:ring-deep-coral focus:ring-offset-1',
-                'dark:focus:ring-offset-gray-800'
+                'focus:ring-offset-gray-800'
               )}
               aria-label={t('productsSection.decreaseQuantity') || 'Decrease quantity'}
             >
               <Minus className="w-4 h-4" />
             </button>
             <span
-              className="w-6 sm:w-8 text-center font-bold text-gray-900 dark:text-white text-sm sm:text-base"
+              className="w-6 sm:w-8 text-center font-bold text-gray-900 text-white text-sm sm:text-base"
               aria-live="polite"
               aria-atomic="true"
             >
@@ -163,11 +163,11 @@ export function StickyAddToCart({
               disabled={quantity >= 10}
               className={cn(
                 'p-1.5 sm:p-2 rounded-md transition-colors',
-                'text-gray-700 dark:text-gray-300',
-                'hover:bg-gray-200 dark:hover:bg-gray-700',
+                'text-gray-700 text-gray-300',
+                'hover:bg-gray-200 hover:bg-gray-700',
                 'disabled:opacity-50 disabled:cursor-not-allowed',
                 'focus:outline-none focus:ring-2 focus:ring-deep-coral focus:ring-offset-1',
-                'dark:focus:ring-offset-gray-800'
+                'focus:ring-offset-gray-800'
               )}
               aria-label={t('productsSection.increaseQuantity') || 'Increase quantity'}
             >
@@ -182,7 +182,7 @@ export function StickyAddToCart({
             className={cn(
               'flex-shrink-0',
               'bg-deep-coral hover:bg-deep-coral/90',
-              'text-white dark:text-white',
+              'text-white text-white',
               'font-bold',
               'px-4 sm:px-6 py-2.5 sm:py-3',
               'rounded-xl',

@@ -85,29 +85,29 @@ function SummaryCard({
     };
 
     return (
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-4">
+        <div className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 p-4">
             <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-gray-600 dark:text-gray-400">{title}</span>
-                <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
+                <span className="text-sm text-gray-600 text-gray-400">{title}</span>
+                <div className="p-2 bg-purple-100 bg-purple-900/30 rounded-lg">
                     {icon}
                 </div>
             </div>
-            <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+            <p className="text-2xl font-bold text-gray-900 text-gray-100">
                 {formatValue(value)}
             </p>
             {change !== undefined && (
                 <div className="flex items-center mt-1">
                     {change > 0 ? (
-                        <TrendingUp className="w-4 h-4 text-green-500 dark:text-green-400 mr-1" />
+                        <TrendingUp className="w-4 h-4 text-green-500 text-green-400 mr-1" />
                     ) : change < 0 ? (
-                        <TrendingDown className="w-4 h-4 text-red-500 dark:text-red-400 mr-1" />
+                        <TrendingDown className="w-4 h-4 text-red-500 text-red-400 mr-1" />
                     ) : null}
                     <span
                         className={`text-sm ${change > 0
-                                ? 'text-green-600 dark:text-green-400'
+                                ? 'text-green-600 text-green-400'
                                 : change < 0
-                                    ? 'text-red-600 dark:text-red-400'
-                                    : 'text-gray-500 dark:text-gray-400'
+                                    ? 'text-red-600 text-red-400'
+                                    : 'text-gray-500 text-gray-400'
                             }`}
                     >
                         {change > 0 ? '+' : ''}
@@ -165,10 +165,10 @@ export default function StatsContent() {
 
     const getStatusBadge = (status: string) => {
         const styles = {
-            PENDING: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300',
-            CLEARED: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300',
-            PAID: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300',
-            VOIDED: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300',
+            PENDING: 'bg-yellow-100 text-yellow-700 bg-yellow-900/30 text-yellow-300',
+            CLEARED: 'bg-green-100 text-green-700 bg-green-900/30 text-green-300',
+            PAID: 'bg-blue-100 text-blue-700 bg-blue-900/30 text-blue-300',
+            VOIDED: 'bg-red-100 text-red-700 bg-red-900/30 text-red-300',
         };
         return (
             <span
@@ -184,25 +184,25 @@ export default function StatsContent() {
             {/* Header */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
                 <div>
-                    <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100">
+                    <h1 className="font-heading text-3xl font-bold text-gray-900 text-gray-100">
                         Performance Stats
                     </h1>
-                    <p className="text-gray-600 dark:text-gray-400 mt-1">
+                    <p className="text-gray-600 text-gray-400 mt-1">
                         Track your affiliate performance over time.
                     </p>
                 </div>
 
                 {/* Date Range Selector */}
                 <div className="mt-4 sm:mt-0 flex items-center space-x-2">
-                    <Calendar className="w-4 h-4 text-gray-500 dark:text-gray-400" />
-                    <div className="flex bg-gray-100 dark:bg-gray-800 rounded-lg p-1">
+                    <Calendar className="w-4 h-4 text-gray-500 text-gray-400" />
+                    <div className="flex bg-gray-100 bg-gray-800 rounded-lg p-1">
                         {(['7', '30', '90'] as const).map((range) => (
                             <button
                                 key={range}
                                 onClick={() => setDateRange(range)}
                                 className={`px-3 py-1 text-sm font-medium rounded-md transition-colors ${dateRange === range
-                                        ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm'
-                                        : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'
+                                        ? 'bg-white bg-gray-700 text-gray-900 text-gray-100 shadow-sm'
+                                        : 'text-gray-600 text-gray-400 hover:text-gray-900 hover:text-gray-100'
                                     }`}
                             >
                                 {range}d
@@ -213,8 +213,8 @@ export default function StatsContent() {
             </div>
 
             {error && (
-                <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-                    <p className="text-red-700 dark:text-red-300">{error}</p>
+                <div className="mb-6 p-4 bg-red-50 bg-red-900/20 border border-red-200 border-red-800 rounded-lg">
+                    <p className="text-red-700 text-red-300">{error}</p>
                 </div>
             )}
 
@@ -225,15 +225,15 @@ export default function StatsContent() {
                         {[1, 2, 3].map((i) => (
                             <div
                                 key={i}
-                                className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-4 animate-pulse"
+                                className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 p-4 animate-pulse"
                             >
-                                <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-24 mb-4" />
-                                <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-32" />
+                                <div className="h-4 bg-gray-200 bg-gray-700 rounded w-24 mb-4" />
+                                <div className="h-8 bg-gray-200 bg-gray-700 rounded w-32" />
                             </div>
                         ))}
                     </div>
-                    <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 animate-pulse">
-                        <div className="h-48 bg-gray-200 dark:bg-gray-700 rounded" />
+                    <div className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 p-6 animate-pulse">
+                        <div className="h-48 bg-gray-200 bg-gray-700 rounded" />
                     </div>
                 </div>
             ) : chartData ? (
@@ -243,24 +243,24 @@ export default function StatsContent() {
                         <SummaryCard
                             title={`Clicks (${dateRange} days)`}
                             value={chartData.totals.clicks}
-                            icon={<MousePointer className="w-5 h-5 text-purple-600 dark:text-purple-400" />}
+                            icon={<MousePointer className="w-5 h-5 text-purple-600 text-purple-400" />}
                         />
                         <SummaryCard
                             title={`Conversions (${dateRange} days)`}
                             value={chartData.totals.conversions}
-                            icon={<ShoppingCart className="w-5 h-5 text-purple-600 dark:text-purple-400" />}
+                            icon={<ShoppingCart className="w-5 h-5 text-purple-600 text-purple-400" />}
                         />
                         <SummaryCard
                             title={`Earnings (${dateRange} days)`}
                             value={chartData.totals.earnings}
                             format="currency"
-                            icon={<DollarSign className="w-5 h-5 text-purple-600 dark:text-purple-400" />}
+                            icon={<DollarSign className="w-5 h-5 text-purple-600 text-purple-400" />}
                         />
                     </div>
 
                     {/* Clicks Chart */}
-                    <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                    <div className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 p-6">
+                        <h3 className="text-lg font-semibold text-gray-900 text-gray-100 mb-4">
                             Clicks Over Time
                         </h3>
                         <PerformanceChart
@@ -271,8 +271,8 @@ export default function StatsContent() {
                     </div>
 
                     {/* Earnings Chart */}
-                    <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                    <div className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 p-6">
+                        <h3 className="text-lg font-semibold text-gray-900 text-gray-100 mb-4">
                             Earnings Over Time
                         </h3>
                         <PerformanceChart
@@ -285,46 +285,46 @@ export default function StatsContent() {
 
                     {/* Recent Conversions Table */}
                     {conversions && conversions.conversions.length > 0 && (
-                        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
-                            <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                        <div className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 overflow-hidden">
+                            <div className="px-6 py-4 border-b border-gray-200 border-gray-700">
+                                <h3 className="text-lg font-semibold text-gray-900 text-gray-100">
                                     Recent Conversions
                                 </h3>
                             </div>
                             <div className="overflow-x-auto">
                                 <table className="w-full">
-                                    <thead className="bg-gray-50 dark:bg-gray-700/50">
+                                    <thead className="bg-gray-50 bg-gray-700/50">
                                         <tr>
-                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-gray-400 uppercase tracking-wider">
                                                 Order
                                             </th>
-                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-gray-400 uppercase tracking-wider">
                                                 Date
                                             </th>
-                                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 text-gray-400 uppercase tracking-wider">
                                                 Order Value
                                             </th>
-                                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 text-gray-400 uppercase tracking-wider">
                                                 Commission
                                             </th>
-                                            <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                            <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 text-gray-400 uppercase tracking-wider">
                                                 Status
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                                    <tbody className="divide-y divide-gray-200 divide-gray-700">
                                         {conversions.conversions.map((conv) => (
                                             <tr key={conv.id}>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-100">
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-gray-100">
                                                     #{conv.orderId.slice(-8)}
                                                 </td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400">
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 text-gray-400">
                                                     {new Date(conv.purchasedAt).toLocaleDateString()}
                                                 </td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400 text-right">
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 text-gray-400 text-right">
                                                     ${conv.orderSubtotal.toFixed(2)}
                                                 </td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-green-600 dark:text-green-400 text-right">
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-green-600 text-green-400 text-right">
                                                     +${conv.commissionAmount.toFixed(2)}
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-center">
@@ -340,15 +340,15 @@ export default function StatsContent() {
 
                     {/* Status Breakdown */}
                     {conversions && Object.keys(conversions.statusBreakdown).length > 0 && (
-                        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
-                            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                        <div className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 p-6">
+                            <h3 className="text-lg font-semibold text-gray-900 text-gray-100 mb-4">
                                 Conversion Status Breakdown
                             </h3>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                                 {Object.entries(conversions.statusBreakdown).map(([status, count]) => (
                                     <div key={status} className="text-center">
                                         <div className="mb-2">{getStatusBadge(status)}</div>
-                                        <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                                        <p className="text-2xl font-bold text-gray-900 text-gray-100">
                                             {count}
                                         </p>
                                     </div>

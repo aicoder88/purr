@@ -17,7 +17,7 @@ const BenefitCard = ({ title, description, icon, colorScheme }: BenefitProps) =>
   return (
     <div className={`flex flex-col h-full ${cardClasses}`}>
       <div className={`bg-gradient-to-r ${COLORS.primary[colorScheme].gradient} ${COLORS.primary[colorScheme].gradientDark} p-4 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300`}>
-        <div className="h-10 w-10 text-white dark:text-gray-100">
+        <div className="h-10 w-10 text-white text-gray-100">
           {icon}
         </div>
       </div>

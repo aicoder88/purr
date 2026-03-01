@@ -136,8 +136,8 @@ export function EnhancedChart({
   }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-3">
-          <p className="font-medium text-gray-900 dark:text-gray-50 mb-1">{label}</p>
+        <div className="bg-white bg-gray-800 border border-gray-200 border-gray-700 rounded-lg shadow-lg p-3">
+          <p className="font-medium text-gray-900 text-gray-50 mb-1">{label}</p>
           {payload.map((entry, index) => (
             <p key={index} className="text-sm" style={{ color: entry.color }}>
               {entry.name}: {typeof entry.value === 'number' ? entry.value.toLocaleString() : entry.value}
@@ -162,7 +162,7 @@ export function EnhancedChart({
       case 'line':
         return (
           <LineChart data={data} {...commonProps}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" className="dark:stroke-gray-700" />
+            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" className="stroke-gray-700" />
             <XAxis 
               dataKey={xAxisKey} 
               stroke="#6b7280" 
@@ -202,7 +202,7 @@ export function EnhancedChart({
                 </linearGradient>
               ))}
             </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" className="dark:stroke-gray-700" />
+            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" className="stroke-gray-700" />
             <XAxis 
               dataKey={xAxisKey} 
               stroke="#6b7280" 
@@ -233,7 +233,7 @@ export function EnhancedChart({
       case 'bar':
         return (
           <BarChart data={data} {...commonProps}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" className="dark:stroke-gray-700" />
+            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" className="stroke-gray-700" />
             <XAxis 
               dataKey={xAxisKey} 
               stroke="#6b7280" 
@@ -304,16 +304,16 @@ export function EnhancedChart({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6"
+      className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 p-6"
     >
       <div className="flex items-center justify-between mb-4">
-        <h3 className="font-semibold text-gray-900 dark:text-gray-50">{title}</h3>
+        <h3 className="font-semibold text-gray-900 text-gray-50">{title}</h3>
         
         {showExport && (
           <div className="relative">
             <button
               onClick={() => setExportMenuOpen(!exportMenuOpen)}
-              className="flex items-center space-x-1 px-3 py-1.5 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+              className="flex items-center space-x-1 px-3 py-1.5 text-sm text-gray-600 text-gray-400 hover:text-gray-900 hover:text-gray-100 hover:bg-gray-100 hover:bg-gray-700 rounded-lg transition-colors"
             >
               <Download className="w-4 h-4" />
               <span>Export</span>
@@ -326,17 +326,17 @@ export function EnhancedChart({
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="absolute right-0 top-full mt-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg py-1 z-10 min-w-[120px]"
+                  className="absolute right-0 top-full mt-1 bg-white bg-gray-800 border border-gray-200 border-gray-700 rounded-lg shadow-lg py-1 z-10 min-w-[120px]"
                 >
                   <button
                     onClick={() => handleExport('png')}
-                    className="w-full px-4 py-2 text-left text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    className="w-full px-4 py-2 text-left text-sm text-gray-700 text-gray-300 hover:bg-gray-100 hover:bg-gray-700"
                   >
                     Export PNG
                   </button>
                   <button
                     onClick={() => handleExport('csv')}
-                    className="w-full px-4 py-2 text-left text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    className="w-full px-4 py-2 text-left text-sm text-gray-700 text-gray-300 hover:bg-gray-100 hover:bg-gray-700"
                   >
                     Export CSV
                   </button>

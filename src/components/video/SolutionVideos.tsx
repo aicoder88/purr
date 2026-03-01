@@ -26,12 +26,12 @@ export function HowToVideo({
   className
 }: HowToVideoProps) {
   return (
-    <div className={cn('bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg', className)}>
+    <div className={cn('bg-white bg-gray-800 rounded-2xl p-8 shadow-lg', className)}>
       <div className="text-center mb-8">
-        <h2 className="font-heading text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
+        <h2 className="font-heading text-3xl font-bold mb-4 text-gray-900 text-gray-50">
           {title}
         </h2>
-        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-600 text-gray-300 max-w-2xl mx-auto">
           {description}
         </p>
       </div>
@@ -49,11 +49,11 @@ export function HowToVideo({
           />
 
           {/* Video Description */}
-          <div className="mt-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-            <h3 className="font-heading font-semibold text-blue-900 dark:text-blue-200 mb-2">
+          <div className="mt-4 p-4 bg-blue-50 bg-blue-900/20 rounded-lg">
+            <h3 className="font-heading font-semibold text-blue-900 text-blue-200 mb-2">
               📹 What you'll learn:
             </h3>
-            <ul className="text-sm text-blue-800 dark:text-blue-300 space-y-1">
+            <ul className="text-sm text-blue-800 text-blue-300 space-y-1">
               <li>• Proper application technique</li>
               <li>• Optimal amount to use</li>
               <li>• When to reapply</li>
@@ -64,7 +64,7 @@ export function HowToVideo({
 
         {/* Step-by-Step Guide */}
         <div className="order-1 lg:order-2">
-          <h3 className="font-heading text-2xl font-bold mb-6 text-gray-900 dark:text-gray-50">
+          <h3 className="font-heading text-2xl font-bold mb-6 text-gray-900 text-gray-50">
             Step-by-Step Guide
           </h3>
 
@@ -72,17 +72,17 @@ export function HowToVideo({
             {steps.map((step) => (
               <div
                 key={step.step}
-                className="flex items-start space-x-4 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg"
+                className="flex items-start space-x-4 p-4 bg-gray-50 bg-gray-700/50 rounded-lg"
               >
-                <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white dark:text-gray-100 rounded-full flex items-center justify-center font-bold text-sm">
+                <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white text-gray-100 rounded-full flex items-center justify-center font-bold text-sm">
                   {step.step}
                 </div>
 
                 <div className="flex-1">
-                  <h4 className="font-semibold text-gray-900 dark:text-gray-50 mb-2">
+                  <h4 className="font-semibold text-gray-900 text-gray-50 mb-2">
                     {step.title}
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                  <p className="text-gray-600 text-gray-300 text-sm">
                     {step.description}
                   </p>
 
@@ -133,12 +133,12 @@ export function BeforeAfterVideo({
   className
 }: BeforeAfterVideoProps) {
   return (
-    <div className={cn('bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg', className)}>
+    <div className={cn('bg-white bg-gray-800 rounded-2xl p-8 shadow-lg', className)}>
       <div className="text-center mb-8">
-        <h2 className="font-heading text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
+        <h2 className="font-heading text-3xl font-bold mb-4 text-gray-900 text-gray-50">
           {title}
         </h2>
-        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-600 text-gray-300 max-w-2xl mx-auto">
           {description}
         </p>
       </div>
@@ -146,11 +146,11 @@ export function BeforeAfterVideo({
       <div className="grid md:grid-cols-2 gap-8">
         {/* Before Video */}
         <div className="text-center">
-          <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 rounded-lg">
-            <h3 className="font-heading text-xl font-bold text-red-700 dark:text-red-300 mb-2">
+          <div className="mb-4 p-3 bg-red-50 bg-red-900/20 rounded-lg">
+            <h3 className="font-heading text-xl font-bold text-red-700 text-red-300 mb-2">
               😤 Before Purrify
             </h3>
-            <p className="text-red-600 dark:text-red-400 text-sm">
+            <p className="text-red-600 text-red-400 text-sm">
               {beforeVideo.description}
             </p>
           </div>
@@ -165,11 +165,11 @@ export function BeforeAfterVideo({
 
         {/* After Video */}
         <div className="text-center">
-          <div className="mb-4 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
-            <h3 className="font-heading text-xl font-bold text-green-700 dark:text-green-300 mb-2">
+          <div className="mb-4 p-3 bg-green-50 bg-green-900/20 rounded-lg">
+            <h3 className="font-heading text-xl font-bold text-green-700 text-green-300 mb-2">
               ✨ After Purrify
             </h3>
-            <p className="text-green-600 dark:text-green-400 text-sm">
+            <p className="text-green-600 text-green-400 text-sm">
               {afterVideo.description}
             </p>
           </div>
@@ -184,22 +184,22 @@ export function BeforeAfterVideo({
       </div>
 
       {/* Results Summary */}
-      <div className="mt-8 text-center p-6 bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-lg">
-        <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
+      <div className="mt-8 text-center p-6 bg-gradient-to-r from-green-50 to-blue-50 from-green-900/20 to-blue-900/20 rounded-lg">
+        <h3 className="font-heading text-2xl font-bold text-gray-900 text-gray-50 mb-4">
           Amazing Results in Just 24 Hours!
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600 dark:text-green-400">99%</div>
-            <div className="text-sm text-gray-600 dark:text-gray-300">Odor Reduction</div>
+            <div className="text-3xl font-bold text-green-600 text-green-400">99%</div>
+            <div className="text-sm text-gray-600 text-gray-300">Odor Reduction</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">24hr</div>
-            <div className="text-sm text-gray-600 dark:text-gray-300">Maximum Effect</div>
+            <div className="text-3xl font-bold text-blue-600 text-blue-400">24hr</div>
+            <div className="text-sm text-gray-600 text-gray-300">Maximum Effect</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">100%</div>
-            <div className="text-sm text-gray-600 dark:text-gray-300">Natural & Safe</div>
+            <div className="text-3xl font-bold text-purple-600 text-purple-400">100%</div>
+            <div className="text-sm text-gray-600 text-gray-300">Natural & Safe</div>
           </div>
         </div>
       </div>
@@ -232,7 +232,7 @@ export function TestimonialVideo({
   className
 }: TestimonialVideoProps) {
   return (
-    <div className={cn('bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg', className)}>
+    <div className={cn('bg-white bg-gray-800 rounded-2xl p-8 shadow-lg', className)}>
       <div className="grid lg:grid-cols-2 gap-8 items-center">
         {/* Video */}
         <div>
@@ -259,10 +259,10 @@ export function TestimonialVideo({
               />
             )}
             <div>
-              <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50">
+              <h3 className="font-heading text-xl font-bold text-gray-900 text-gray-50">
                 {customer.name}
               </h3>
-              <p className="text-gray-600 dark:text-gray-300">
+              <p className="text-gray-600 text-gray-300">
                 {customer.location} • {customer.cats} cat{customer.cats > 1 ? 's' : ''}
               </p>
             </div>
@@ -277,28 +277,28 @@ export function TestimonialVideo({
                   'text-2xl',
                   i < testimonial.rating
                     ? 'text-yellow-400'
-                    : 'text-gray-300 dark:text-gray-600'
+                    : 'text-gray-300 text-gray-600'
                 )}
               >
                 ⭐
               </span>
             ))}
-            <span className="ml-2 text-gray-600 dark:text-gray-300">
+            <span className="ml-2 text-gray-600 text-gray-300">
               {testimonial.rating}/5 stars
             </span>
           </div>
 
           {/* Quote */}
-          <blockquote className="text-lg text-gray-700 dark:text-gray-200 italic mb-6">
+          <blockquote className="text-lg text-gray-700 text-gray-200 italic mb-6">
             "{testimonial.quote}"
           </blockquote>
 
           {/* Call to Action */}
-          <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-            <p className="text-blue-800 dark:text-blue-200 font-medium mb-2">
+          <div className="p-4 bg-blue-50 bg-blue-900/20 rounded-lg">
+            <p className="text-blue-800 text-blue-200 font-medium mb-2">
               Ready to get the same results?
             </p>
-            <p className="text-blue-600 dark:text-blue-300 text-sm">
+            <p className="text-blue-600 text-blue-300 text-sm">
               Try Purrify risk-free with our 30-day satisfaction guarantee.
             </p>
           </div>
@@ -331,12 +331,12 @@ export function ScienceVideo({
   className
 }: ScienceVideoProps) {
   return (
-    <div className={cn('bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg', className)}>
+    <div className={cn('bg-white bg-gray-800 rounded-2xl p-8 shadow-lg', className)}>
       <div className="text-center mb-8">
-        <h2 className="font-heading text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
+        <h2 className="font-heading text-3xl font-bold mb-4 text-gray-900 text-gray-50">
           {title}
         </h2>
-        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-600 text-gray-300 max-w-2xl mx-auto">
           {description}
         </p>
       </div>
@@ -355,22 +355,22 @@ export function ScienceVideo({
 
         {/* Key Scientific Points */}
         <div className="space-y-4">
-          <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-4">
+          <h3 className="font-heading text-xl font-bold text-gray-900 text-gray-50 mb-4">
             Key Scientific Facts
           </h3>
 
           {keyPoints.map((point, index) => (
             <div
               key={index}
-              className="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg"
+              className="p-4 bg-gray-50 bg-gray-700/50 rounded-lg"
             >
               <div className="flex items-start space-x-3">
                 <span className="text-2xl">{point.icon}</span>
                 <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-gray-50 text-sm mb-1">
+                  <h4 className="font-semibold text-gray-900 text-gray-50 text-sm mb-1">
                     {point.title}
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-xs">
+                  <p className="text-gray-600 text-gray-300 text-xs">
                     {point.description}
                   </p>
                 </div>

@@ -82,21 +82,21 @@ export default function ProductsPage({ locale: localeProp }: PageContentProps = 
     },
     {
       id: 'regular',
-      name: 'Purrify 50g - Best Cat Litter Freshener for Single-Cat Homes',
-      description: '50g activated charcoal cat litter additive. One month of odor control. 100% natural.',
-      sku: 'purrify-50g',
-      mpn: 'PURRIFY-50G',
+      name: 'Purrify 120g - Regular Size Cat Litter Freshener for 1-2 Cats',
+      description: '120g activated charcoal cat litter additive. Flexible dosing for single and dual-cat homes.',
+      sku: 'purrify-120g',
+      mpn: 'PURRIFY-120G',
       image: 'https://www.purrify.ca/optimized/products/60g-transparent.webp',
       url: `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}products/#standard`,
       shippingRate: '6.99',
     },
     {
       id: 'large',
-      name: 'Purrify 120g Family Size - Cat Litter Freshener for Multi-Cat Homes',
-      description: 'Best value 120g activated charcoal cat litter additive. Perfect for multi-cat households.',
-      sku: 'purrify-120g',
-      mpn: 'PURRIFY-120G',
-      image: 'https://www.purrify.ca/optimized/products/60g-transparent.webp',
+      name: 'Purrify 240g Family Size - Cat Litter Freshener for Multi-Cat Homes',
+      description: 'Best value 240g activated charcoal cat litter additive. Built for multi-cat households.',
+      sku: 'purrify-240g',
+      mpn: 'PURRIFY-240G',
+      image: 'https://www.purrify.ca/optimized/products/140g-transparent.webp',
       url: `https://www.purrify.ca/${locale === 'fr' ? 'fr/' : ''}products/#family-pack`,
       shippingRate: '0',
     },
@@ -171,26 +171,26 @@ export default function ProductsPage({ locale: localeProp }: PageContentProps = 
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
 
-      <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
+      <main className="min-h-screen bg-[#FFFFF5] bg-gray-900 transition-colors duration-300">
         {/* Breadcrumb Navigation */}
         {breadcrumb && breadcrumb.items.length > 1 && (
-          <nav aria-label={breadcrumbAriaLabel} className="py-4 border-b border-brand-light dark:border-gray-800">
+          <nav aria-label={breadcrumbAriaLabel} className="py-4 border-b border-brand-light border-gray-800">
             <Container>
               <ol className="flex items-center space-x-2 text-sm">
                 {breadcrumb.items.map((item, index) => {
                   const isLast = index === breadcrumb.items.length - 1;
                   return (
                     <li key={item.path} className="flex items-center">
-                      {index > 0 && <ChevronRight className="h-4 w-4 mx-2 text-gray-400 dark:text-gray-500" />}
+                      {index > 0 && <ChevronRight className="h-4 w-4 mx-2 text-gray-400 text-gray-500" />}
                       {index === 0 ? (
-                        <Link href={item.path} className="text-gray-600 dark:text-gray-400 hover:text-brand-red dark:hover:text-red-400 transition-colors">
+                        <Link href={item.path} className="text-gray-600 text-gray-400 hover:text-brand-red hover:text-red-400 transition-colors">
                           <Home className="h-4 w-4" />
                           <span className="sr-only">{item.name}</span>
                         </Link>
                       ) : isLast ? (
-                        <span className="font-medium text-gray-900 dark:text-gray-100" aria-current="page">{item.name}</span>
+                        <span className="font-medium text-gray-900 text-gray-100" aria-current="page">{item.name}</span>
                       ) : (
-                        <Link href={item.path} className="text-gray-600 dark:text-gray-400 hover:text-brand-red dark:hover:text-red-400 transition-colors">{item.name}</Link>
+                        <Link href={item.path} className="text-gray-600 text-gray-400 hover:text-brand-red hover:text-red-400 transition-colors">{item.name}</Link>
                       )}
                     </li>
                   );

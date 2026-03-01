@@ -129,27 +129,27 @@ export default function LocationsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
 
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-pink-50 dark:from-gray-900 dark:to-gray-800">
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-pink-50 from-gray-900 to-gray-800">
         {/* Visual Breadcrumb Navigation */}
         <nav
           aria-label="Breadcrumb"
-          className="bg-white/50 dark:bg-gray-800/50 border-b border-orange-100 dark:border-gray-700"
+          className="bg-white/50 bg-gray-800/50 border-b border-orange-100 border-gray-700"
         >
           <Container>
             <ol className="flex items-center space-x-2 text-sm py-3">
               <li className="flex items-center">
                 <Link
                   href="/"
-                  className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
+                  className="text-gray-600 text-gray-400 hover:text-orange-600 hover:text-orange-400 transition-colors"
                 >
                   <Home className="h-4 w-4" />
                   <span className="sr-only">{t.nav.home}</span>
                 </Link>
               </li>
               <li className="flex items-center">
-                <ChevronRight className="h-4 w-4 mx-2 text-gray-400 dark:text-gray-500" />
+                <ChevronRight className="h-4 w-4 mx-2 text-gray-400 text-gray-500" />
                 <span
-                  className="font-medium text-gray-900 dark:text-gray-100"
+                  className="font-medium text-gray-900 text-gray-100"
                   aria-current="page"
                 >
                   Locations
@@ -163,19 +163,19 @@ export default function LocationsPage() {
         <section className="py-20 px-4">
           <Container>
             <div className="max-w-5xl mx-auto text-center space-y-6">
-              <span className="inline-flex items-center px-4 py-1 rounded-full bg-white/80 dark:bg-gray-800/70 border border-orange-200 dark:border-orange-500/60 text-xs sm:text-sm font-semibold uppercase tracking-widest text-orange-600 dark:text-orange-300">
+              <span className="inline-flex items-center px-4 py-1 rounded-full bg-white/80 bg-gray-800/70 border border-orange-200 border-orange-500/60 text-xs sm:text-sm font-semibold uppercase tracking-widest text-orange-600 text-orange-300">
                 {locations.hub.badge}
               </span>
-              <h1 className="font-heading text-4xl md:text-6xl font-bold text-gray-900 dark:text-gray-50">
+              <h1 className="font-heading text-4xl md:text-6xl font-bold text-gray-900 text-gray-50">
                 {locations.hub.heading}
               </h1>
-              <p className="text-lg md:text-xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto">
+              <p className="text-lg md:text-xl text-gray-700 text-gray-200 max-w-3xl mx-auto">
                 {locations.hub.description}
               </p>
               <div className="flex flex-wrap gap-3 justify-center">
                 <Link
                   href="/products/trial-size/"
-                  className="inline-flex items-center px-6 py-3 font-semibold text-white dark:text-gray-100 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg shadow-lg hover:from-orange-600 hover:to-pink-600 transition"
+                  className="inline-flex items-center px-6 py-3 font-semibold text-white text-gray-100 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg shadow-lg hover:from-orange-600 hover:to-pink-600 transition"
                 >
                   {locations.hub.shopCta}
                 </Link>
@@ -185,10 +185,10 @@ export default function LocationsPage() {
         </section>
 
         {/* Provinces Grid */}
-        <section className="py-16 px-4 bg-white dark:bg-gray-900">
+        <section className="py-16 px-4 bg-white bg-gray-900">
           <Container>
             <div className="max-w-5xl mx-auto">
-              <h2 className="font-heading text-3xl font-bold text-center mb-10 text-gray-900 dark:text-gray-50">
+              <h2 className="font-heading text-3xl font-bold text-center mb-10 text-gray-900 text-gray-50">
                 {locations.hub.selectProvince}
               </h2>
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -196,23 +196,23 @@ export default function LocationsPage() {
                   <Link
                     key={province.slug}
                     href={`/locations/province/${province.slug}`}
-                    className="group flex flex-col rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/70 p-6 transition hover:border-orange-300 dark:hover:border-orange-500/70 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 dark:focus-visible:ring-orange-400 focus-visible:ring-offset-2"
+                    className="group flex flex-col rounded-lg border border-gray-200 border-gray-700 bg-gray-50 bg-gray-800/70 p-6 transition hover:border-orange-300 hover:border-orange-500/70 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-orange-400 focus-visible:ring-offset-2"
                   >
                     <div className="flex items-center justify-between mb-3">
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-50 group-hover:text-orange-600 dark:group-hover:text-orange-300">
+                      <h3 className="text-xl font-semibold text-gray-900 text-gray-50 group-hover:text-orange-600 group-hover:text-orange-300">
                         {province.name}
                       </h3>
-                      <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-300 font-bold text-sm group-hover:bg-orange-200 dark:group-hover:bg-orange-900/50 transition">
+                      <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-orange-100 bg-orange-900/30 text-orange-600 text-orange-300 font-bold text-sm group-hover:bg-orange-200 group-hover:bg-orange-900/50 transition">
                         {province.code}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                    <p className="text-sm text-gray-600 text-gray-300 mb-4">
                       {province.cities.length === 1
                         ? locations.hub.cityAvailable
                         : locations.hub.citiesAvailable.replace('{{count}}', String(province.cities.length))}
                     </p>
                     <div className="mt-auto">
-                      <span className="inline-flex items-center text-sm font-medium text-orange-600 dark:text-orange-300 group-hover:text-orange-700 dark:group-hover:text-orange-200">
+                      <span className="inline-flex items-center text-sm font-medium text-orange-600 text-orange-300 group-hover:text-orange-700 group-hover:text-orange-200">
                         {locations.hub.viewGuide}
                       </span>
                     </div>
@@ -224,43 +224,43 @@ export default function LocationsPage() {
         </section>
 
         {/* Information Section */}
-        <section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
+        <section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-purple-50 from-blue-900/20 to-purple-900/20">
           <Container>
             <div className="max-w-4xl mx-auto">
-              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50 mb-8 text-center">
+              <h2 className="font-heading text-3xl font-bold text-gray-900 text-gray-50 mb-8 text-center">
                 {locations.hub.whyChoose}
               </h2>
               <div className="grid gap-8 md:grid-cols-3">
                 <div className="text-center space-y-3">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white dark:bg-gray-800/70 border border-orange-200 dark:border-orange-500/60 mb-4">
-                    <svg className="w-8 h-8 text-orange-600 dark:text-orange-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white bg-gray-800/70 border border-orange-200 border-orange-500/60 mb-4">
+                    <svg className="w-8 h-8 text-orange-600 text-orange-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-50">{locations.hub.fastShipping.title}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                  <h3 className="font-semibold text-lg text-gray-900 text-gray-50">{locations.hub.fastShipping.title}</h3>
+                  <p className="text-sm text-gray-600 text-gray-300">
                     {locations.hub.fastShipping.description}
                   </p>
                 </div>
                 <div className="text-center space-y-3">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white dark:bg-gray-800/70 border border-orange-200 dark:border-orange-500/60 mb-4">
-                    <svg className="w-8 h-8 text-orange-600 dark:text-orange-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white bg-gray-800/70 border border-orange-200 border-orange-500/60 mb-4">
+                    <svg className="w-8 h-8 text-orange-600 text-orange-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
-                  <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-50">{locations.hub.naturalSolution.title}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                  <h3 className="font-semibold text-lg text-gray-900 text-gray-50">{locations.hub.naturalSolution.title}</h3>
+                  <p className="text-sm text-gray-600 text-gray-300">
                     {locations.hub.naturalSolution.description}
                   </p>
                 </div>
                 <div className="text-center space-y-3">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white dark:bg-gray-800/70 border border-orange-200 dark:border-orange-500/60 mb-4">
-                    <svg className="w-8 h-8 text-orange-600 dark:text-orange-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white bg-gray-800/70 border border-orange-200 border-orange-500/60 mb-4">
+                    <svg className="w-8 h-8 text-orange-600 text-orange-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                   </div>
-                  <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-50">{locations.hub.localSupport.title}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                  <h3 className="font-semibold text-lg text-gray-900 text-gray-50">{locations.hub.localSupport.title}</h3>
+                  <p className="text-sm text-gray-600 text-gray-300">
                     {locations.hub.localSupport.description}
                   </p>
                 </div>

@@ -145,11 +145,11 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 overflow-y-auto">
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-4xl w-full my-8">
+      <div className="bg-white bg-gray-800 rounded-lg shadow-xl max-w-4xl w-full my-8">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
-          <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 flex items-center space-x-2">
-            <Sparkles className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+        <div className="flex items-center justify-between p-6 border-b border-gray-200 border-gray-700">
+          <h2 className="font-heading text-2xl font-bold text-gray-900 text-gray-100 flex items-center space-x-2">
+            <Sparkles className="w-6 h-6 text-purple-600 text-purple-400" />
             <span>AI Content Generator</span>
           </h2>
           <div className="flex items-center space-x-2">
@@ -158,14 +158,14 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
                 setShowHistory(!showHistory);
                 if (!showHistory) loadHistory();
               }}
-              className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+              className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-600 text-gray-300 hover:bg-gray-100 hover:bg-gray-700 rounded-lg transition-colors"
             >
               <History className="w-4 h-4" />
               <span>History</span>
             </button>
             <button
               onClick={onClose}
-              className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-200"
+              className="text-gray-400 text-gray-500 hover:text-gray-600 hover:text-gray-200"
             >
               <X className="w-6 h-6" />
             </button>
@@ -177,28 +177,28 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
             /* Generation History */
             <div className="space-y-4">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100">Recent Generations</h3>
+                <h3 className="font-heading text-lg font-semibold text-gray-900 text-gray-100">Recent Generations</h3>
                 <button
                   onClick={() => setShowHistory(false)}
-                  className="text-sm text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300"
+                  className="text-sm text-purple-600 text-purple-400 hover:text-purple-700 hover:text-purple-300"
                 >
                   Back to Generator
                 </button>
               </div>
               {history.length === 0 ? (
-                <p className="text-center text-gray-500 dark:text-gray-400 py-8">No generation history yet</p>
+                <p className="text-center text-gray-500 text-gray-400 py-8">No generation history yet</p>
               ) : (
                 <div className="space-y-3">
                   {history.map((record) => (
                     <div
                       key={record.id}
-                      className="bg-gray-50 dark:bg-gray-900 rounded-lg p-4 border border-gray-200 dark:border-gray-700"
+                      className="bg-gray-50 bg-gray-900 rounded-lg p-4 border border-gray-200 border-gray-700"
                     >
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
-                          <h4 className="font-medium text-gray-900 dark:text-gray-100">{record.result.title}</h4>
-                          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{record.config.topic}</p>
-                          <div className="flex items-center space-x-3 mt-2 text-xs text-gray-500 dark:text-gray-400">
+                          <h4 className="font-medium text-gray-900 text-gray-100">{record.result.title}</h4>
+                          <p className="text-sm text-gray-600 text-gray-400 mt-1">{record.config.topic}</p>
+                          <div className="flex items-center space-x-3 mt-2 text-xs text-gray-500 text-gray-400">
                             <span>{record.config.tone} tone</span>
                             <span>•</span>
                             <span>{record.config.length} length</span>
@@ -211,7 +211,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
                             onGenerate(record.result);
                             onClose();
                           }}
-                          className="ml-4 px-3 py-1.5 text-sm bg-purple-600 text-white dark:text-gray-100 rounded-lg hover:bg-purple-700 dark:hover:bg-purple-600"
+                          className="ml-4 px-3 py-1.5 text-sm bg-purple-600 text-white text-gray-100 rounded-lg hover:bg-purple-700 hover:bg-purple-600"
                         >
                           Use This
                         </button>
@@ -226,7 +226,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
             <div className="space-y-6">
               {/* Topic */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-2">
                   Topic *
                 </label>
                 <input
@@ -234,20 +234,20 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
                   value={config.topic}
                   onChange={(e) => setConfig({ ...config, topic: e.target.value })}
                   placeholder="e.g., How to Eliminate Cat Litter Odor Naturally"
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                  className="w-full px-4 py-2 border border-gray-300 border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white bg-gray-900 text-gray-900 text-gray-100"
                 />
               </div>
 
               {/* Tone & Length */}
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-2">
                     Tone
                   </label>
                   <select
                     value={config.tone}
                     onChange={(e) => setConfig({ ...config, tone: e.target.value as AIGenerationConfig['tone'] })}
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                    className="w-full px-4 py-2 border border-gray-300 border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white bg-gray-900 text-gray-900 text-gray-100"
                   >
                     <option value="professional">Professional</option>
                     <option value="casual">Casual</option>
@@ -257,13 +257,13 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-2">
                     Length
                   </label>
                   <select
                     value={config.length}
                     onChange={(e) => setConfig({ ...config, length: e.target.value as AIGenerationConfig['length'] })}
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                    className="w-full px-4 py-2 border border-gray-300 border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white bg-gray-900 text-gray-900 text-gray-100"
                   >
                     <option value="short">Short (500-800 words)</option>
                     <option value="medium">Medium (1000-1500 words)</option>
@@ -274,13 +274,13 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
 
               {/* Target Audience */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-2">
                   Target Audience
                 </label>
                 <select
                   value={config.targetAudience}
                   onChange={(e) => setConfig({ ...config, targetAudience: e.target.value as AIGenerationConfig['targetAudience'] })}
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                  className="w-full px-4 py-2 border border-gray-300 border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white bg-gray-900 text-gray-900 text-gray-100"
                 >
                   <option value="beginners">Beginners</option>
                   <option value="intermediate">Intermediate</option>
@@ -290,13 +290,13 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
 
               {/* Content Template */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-2">
                   Content Template (Optional)
                 </label>
                 <select
                   value={config.templateId || ''}
                   onChange={(e) => setConfig({ ...config, templateId: e.target.value || undefined })}
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                  className="w-full px-4 py-2 border border-gray-300 border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white bg-gray-900 text-gray-900 text-gray-100"
                 >
                   <option value="">No template (free-form)</option>
                   {templates.map((template) => (
@@ -309,7 +309,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
 
               {/* Keywords */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-2">
                   Keywords
                 </label>
                 <div className="flex space-x-2 mb-2">
@@ -319,11 +319,11 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
                     onChange={(e) => setKeywordInput(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addKeyword())}
                     placeholder="Add keyword..."
-                    className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                    className="flex-1 px-4 py-2 border border-gray-300 border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white bg-gray-900 text-gray-900 text-gray-100"
                   />
                   <button
                     onClick={addKeyword}
-                    className="px-4 py-2 bg-purple-600 text-white dark:text-gray-100 rounded-lg hover:bg-purple-700 dark:hover:bg-purple-600"
+                    className="px-4 py-2 bg-purple-600 text-white text-gray-100 rounded-lg hover:bg-purple-700 hover:bg-purple-600"
                   >
                     Add
                   </button>
@@ -332,12 +332,12 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
                   {config.keywords.map((keyword) => (
                     <span
                       key={keyword}
-                      className="inline-flex items-center space-x-1 px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm"
+                      className="inline-flex items-center space-x-1 px-3 py-1 bg-purple-100 bg-purple-900/30 text-purple-700 text-purple-300 rounded-full text-sm"
                     >
                       <span>{keyword}</span>
                       <button
                         onClick={() => removeKeyword(keyword)}
-                        className="text-purple-700 dark:text-purple-300 hover:text-purple-900 dark:hover:text-purple-100"
+                        className="text-purple-700 text-purple-300 hover:text-purple-900 hover:text-purple-100"
                       >
                         ×
                       </button>
@@ -353,9 +353,9 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
                     type="checkbox"
                     checked={config.includeImages}
                     onChange={(e) => setConfig({ ...config, includeImages: e.target.checked })}
-                    className="rounded border-gray-300 dark:border-gray-600 text-purple-600 dark:text-purple-400 focus:ring-purple-500 dark:focus:ring-purple-400"
+                    className="rounded border-gray-300 border-gray-600 text-purple-600 text-purple-400 focus:ring-purple-500 focus:ring-purple-400"
                   />
-                  <span className="text-sm text-gray-700 dark:text-gray-300">Include images</span>
+                  <span className="text-sm text-gray-700 text-gray-300">Include images</span>
                 </label>
                 {config.includeImages && (
                   <input
@@ -364,7 +364,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
                     max="5"
                     value={config.imageCount}
                     onChange={(e) => setConfig({ ...config, imageCount: parseInt(e.target.value) })}
-                    className="w-20 px-3 py-1 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                    className="w-20 px-3 py-1 border border-gray-300 border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white bg-gray-900 text-gray-900 text-gray-100"
                   />
                 )}
               </div>
@@ -373,7 +373,7 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
               <button
                 onClick={handleGenerate}
                 disabled={generating || !config.topic.trim()}
-                className="w-full flex items-center justify-center space-x-2 px-6 py-3 bg-purple-600 text-white dark:text-gray-100 rounded-lg hover:bg-purple-700 dark:hover:bg-purple-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex items-center justify-center space-x-2 px-6 py-3 bg-purple-600 text-white text-gray-100 rounded-lg hover:bg-purple-700 hover:bg-purple-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {generating ? (
                   <>
@@ -391,13 +391,13 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
           ) : (
             /* Preview */
             <div className="space-y-6">
-              <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-6">
-                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+              <div className="bg-gray-50 bg-gray-900 rounded-lg p-6">
+                <h3 className="font-heading text-xl font-bold text-gray-900 text-gray-100 mb-2">
                   {preview.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">{preview.excerpt}</p>
+                <p className="text-gray-600 text-gray-400 mb-4">{preview.excerpt}</p>
                 <div
-                  className="prose dark:prose-invert max-w-none"
+                  className="prose prose-invert max-w-none"
                   dangerouslySetInnerHTML={{ __html: preview.content.substring(0, 500) + '...' }}
                 />
               </div>
@@ -405,14 +405,14 @@ export default function AIContentGenerator({ onGenerate, onClose }: AIContentGen
               <div className="flex space-x-3">
                 <button
                   onClick={handleRegenerate}
-                  className="flex-1 flex items-center justify-center space-x-2 px-6 py-3 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                  className="flex-1 flex items-center justify-center space-x-2 px-6 py-3 border border-gray-300 border-gray-700 rounded-lg hover:bg-gray-50 hover:bg-gray-700 transition-colors"
                 >
                   <RefreshCw className="w-5 h-5" />
                   <span>Regenerate</span>
                 </button>
                 <button
                   onClick={handleAccept}
-                  className="flex-1 flex items-center justify-center space-x-2 px-6 py-3 bg-purple-600 text-white dark:text-gray-100 rounded-lg hover:bg-purple-700 dark:hover:bg-purple-600 transition-colors"
+                  className="flex-1 flex items-center justify-center space-x-2 px-6 py-3 bg-purple-600 text-white text-gray-100 rounded-lg hover:bg-purple-700 hover:bg-purple-600 transition-colors"
                 >
                   <Check className="w-5 h-5" />
                   <span>Use This Content</span>

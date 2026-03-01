@@ -17,7 +17,7 @@ interface DecorativeElementProps {
 }
 
 const DecorativeElement = ({ className, style }: DecorativeElementProps) => (
-  <div className={`bg-gray-300 dark:bg-gray-800 rounded-full opacity-10 dark:opacity-10 ${className}`} style={style} />
+  <div className={`bg-gray-300 bg-gray-800 rounded-full opacity-10 opacity-10 ${className}`} style={style} />
 );
 
 const CustomerAvatar = ({ src, alt }: { src: string; alt: string }) => (
@@ -44,7 +44,7 @@ export const CTA = React.memo(function CTA() {
   const paymentLink = getPaymentLink('trialSingle') || '/products';
 
   return (
-    <section className={`py-12 relative overflow-hidden ${GRADIENTS.background.cta} opacity-90 dark:opacity-95 transition-colors duration-300`}>
+    <section className={`py-12 relative overflow-hidden ${GRADIENTS.background.cta} opacity-90 opacity-95 transition-colors duration-300`}>
       {/* Background overlay */}
       <div className={`absolute inset-0 ${GRADIENTS.background.cta} opacity-90`} />
 
@@ -60,7 +60,7 @@ export const CTA = React.memo(function CTA() {
       </div>
 
       <Container className="relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12 backdrop-blur-sm bg-white dark:bg-gray-800/10 dark:bg-gray-900/30 rounded-3xl p-10 border border-gray-200 dark:border-gray-700 shadow-2xl relative overflow-hidden">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12 backdrop-blur-sm bg-white bg-gray-800/10 bg-gray-900/30 rounded-3xl p-10 border border-gray-200 border-gray-700 shadow-2xl relative overflow-hidden">
 
           {/* Background image */}
           <Image
@@ -73,12 +73,12 @@ export const CTA = React.memo(function CTA() {
           />
 
           {/* Content section */}
-          <div className="text-gray-900 dark:text-gray-100 max-w-2xl bg-gray-50 dark:bg-gray-900 px-6 py-8 rounded-xl">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight text-gray-900 dark:text-gray-100">
+          <div className="text-gray-900 text-gray-100 max-w-2xl bg-gray-50 bg-gray-900 px-6 py-8 rounded-xl">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 leading-tight text-gray-900 text-gray-100">
               {t('cta.title')}
             </h2>
 
-            <p className="text-gray-700 dark:text-gray-100/90 text-lg">
+            <p className="text-gray-700 text-gray-100/90 text-lg">
               {t('cta.subtitle')}
             </p>
 
@@ -93,7 +93,7 @@ export const CTA = React.memo(function CTA() {
                   />
                 ))}
               </div>
-              <p className="text-gray-700 dark:text-gray-100/90 text-sm font-medium">
+              <p className="text-gray-700 text-gray-100/90 text-sm font-medium">
                 {t('cta.joinText')}
               </p>
             </div>
@@ -123,14 +123,14 @@ export const CTA = React.memo(function CTA() {
             <div className="flex items-center justify-center gap-4 mt-3">
               <div className="flex items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
                 <IconMoneyBack className="w-5 h-5 drop-shadow-sm" />
-                <span className="text-gray-600 dark:text-gray-100/90 text-xs font-medium">
+                <span className="text-gray-600 text-gray-100/90 text-xs font-medium">
                   {t('cta.moneyBackGuarantee') || "30-Day Guarantee"}
                 </span>
               </div>
-              <div className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
+              <div className="w-1 h-1 rounded-full bg-gray-300 bg-gray-600" />
               <div className="flex items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
                 <IconCanadaMade className="w-5 h-5 drop-shadow-sm" />
-                <span className="text-gray-600 dark:text-gray-100/90 text-xs font-medium">
+                <span className="text-gray-600 text-gray-100/90 text-xs font-medium">
                   {t('cta.madeInCanada') || "Made in Canada"}
                 </span>
               </div>

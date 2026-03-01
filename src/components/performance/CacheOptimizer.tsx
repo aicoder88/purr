@@ -395,7 +395,7 @@ export const CacheOptimizer: React.FC<CacheOptimizerProps> = ({
   // Development cache stats display
   if (process.env.NODE_ENV === 'development' && enabled) {
     return (
-      <div className="fixed bottom-4 right-4 bg-black/80 text-white dark:text-gray-100 p-2 rounded text-xs font-mono z-50">
+      <div className="fixed bottom-4 right-4 bg-black/80 text-white text-gray-100 p-2 rounded text-xs font-mono z-50">
         <div>Cache: {(cacheStats.totalSize / 1024).toFixed(1)}KB</div>
         <div>Entries: {cacheStats.entryCount}</div>
         <div>Hit Rate: {cacheStats.hitRate.toFixed(1)}%</div>

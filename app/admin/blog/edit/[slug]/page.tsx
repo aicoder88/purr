@@ -13,10 +13,10 @@ import AutoSaveIndicator from '@/components/admin/AutoSaveIndicator';
 const RichTextEditor = dynamic(() => import('@/components/admin/RichTextEditor'), {
   ssr: false,
   loading: () => (
-    <div className="min-h-[400px] bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center">
+    <div className="min-h-[400px] bg-gray-50 bg-gray-900 rounded-lg border border-gray-200 border-gray-700 flex items-center justify-center">
       <div className="flex flex-col items-center gap-3">
-        <div className="w-8 h-8 border-4 border-purple-500 dark:border-purple-400 border-t-transparent rounded-full animate-spin" />
-        <span className="text-sm text-gray-500 dark:text-gray-400">Loading editor...</span>
+        <div className="w-8 h-8 border-4 border-purple-500 border-purple-400 border-t-transparent rounded-full animate-spin" />
+        <span className="text-sm text-gray-500 text-gray-400">Loading editor...</span>
       </div>
     </div>
   ),
@@ -370,7 +370,7 @@ export default function EditPostPage({ params }: EditPostPageProps) {
     return (
       <AdminLayout>
         <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600 dark:border-purple-400"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600 border-purple-400"></div>
         </div>
       </AdminLayout>
     );
@@ -382,7 +382,7 @@ export default function EditPostPage({ params }: EditPostPageProps) {
       <div className="flex items-center justify-between mb-6">
         <Link
           href="/admin/blog/"
-          className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
+          className="flex items-center space-x-2 text-gray-600 text-gray-400 hover:text-gray-900 hover:text-gray-100"
         >
           <ArrowLeft className="w-5 h-5" />
           <span>Back to Posts</span>
@@ -393,14 +393,14 @@ export default function EditPostPage({ params }: EditPostPageProps) {
           <button
             onClick={handleDelete}
             disabled={deleting}
-            className="flex items-center space-x-2 px-4 py-2 border border-red-300 dark:border-red-700 text-red-600 dark:text-red-400 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors disabled:opacity-50"
+            className="flex items-center space-x-2 px-4 py-2 border border-red-300 border-red-700 text-red-600 text-red-400 rounded-lg hover:bg-red-50 hover:bg-red-900/20 transition-colors disabled:opacity-50"
           >
             <Trash2 className="w-5 h-5" />
             <span>Delete</span>
           </button>
           <button
             onClick={handlePreview}
-            className="flex items-center space-x-2 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+            className="flex items-center space-x-2 px-4 py-2 border border-gray-300 border-gray-700 rounded-lg hover:bg-gray-50 hover:bg-gray-800 transition-colors"
           >
             <Eye className="w-5 h-5" />
             <span>Preview</span>
@@ -408,7 +408,7 @@ export default function EditPostPage({ params }: EditPostPageProps) {
           <button
             onClick={() => handleSave(false)}
             disabled={saving}
-            className="flex items-center space-x-2 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors disabled:opacity-50"
+            className="flex items-center space-x-2 px-4 py-2 border border-gray-300 border-gray-700 rounded-lg hover:bg-gray-50 hover:bg-gray-800 transition-colors disabled:opacity-50"
           >
             <Save className="w-5 h-5" />
             <span>Save Draft</span>
@@ -416,7 +416,7 @@ export default function EditPostPage({ params }: EditPostPageProps) {
           <button
             onClick={() => handleSave(true)}
             disabled={saving}
-            className="flex items-center space-x-2 px-4 py-2 bg-purple-600 text-white dark:text-gray-100 rounded-lg hover:bg-purple-700 transition-colors disabled:opacity-50"
+            className="flex items-center space-x-2 px-4 py-2 bg-purple-600 text-white text-gray-100 rounded-lg hover:bg-purple-700 transition-colors disabled:opacity-50"
           >
             <span>{status === 'published' ? 'Update' : 'Publish'}</span>
           </button>
@@ -434,13 +434,13 @@ export default function EditPostPage({ params }: EditPostPageProps) {
               value={title}
               onChange={(e) => setTitle(sanitizeText(e.target.value))}
               placeholder="Add title..."
-              className="w-full text-4xl font-bold border-none focus:outline-none focus:ring-0 placeholder-gray-300 dark:placeholder-gray-600 bg-transparent dark:text-gray-100"
+              className="w-full text-4xl font-bold border-none focus:outline-none focus:ring-0 placeholder-gray-300 placeholder-gray-600 bg-transparent text-gray-100"
             />
-            <div className="flex items-center space-x-4 mt-2 text-sm text-gray-500 dark:text-gray-400">
-              <span className={title.length >= 50 && title.length <= 60 ? 'text-green-600 dark:text-green-400' : title.length > 60 ? 'text-red-600 dark:text-red-400' : ''}>
+            <div className="flex items-center space-x-4 mt-2 text-sm text-gray-500 text-gray-400">
+              <span className={title.length >= 50 && title.length <= 60 ? 'text-green-600 text-green-400' : title.length > 60 ? 'text-red-600 text-red-400' : ''}>
                 Title: {title.length} characters {title.length >= 50 && title.length <= 60 && '✓'}
               </span>
-              <span className="text-gray-400 dark:text-gray-600">•</span>
+              <span className="text-gray-400 text-gray-600">•</span>
               <span>
                 Reading time: {calculateReadingTime(content)} min
               </span>
@@ -457,7 +457,7 @@ export default function EditPostPage({ params }: EditPostPageProps) {
 
           {/* Excerpt */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-2">
               Excerpt (Optional)
             </label>
             <textarea
@@ -466,10 +466,10 @@ export default function EditPostPage({ params }: EditPostPageProps) {
               onChange={(e) => setExcerpt(sanitizeText(e.target.value))}
               placeholder="Write a short excerpt..."
               rows={3}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+              className="w-full px-3 py-2 border border-gray-300 border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white bg-gray-800 text-gray-900 text-gray-100"
             />
             <div className="mt-1 text-sm">
-              <span className={excerpt.length >= 150 && excerpt.length <= 160 ? 'text-green-600 dark:text-green-400' : excerpt.length > 160 ? 'text-red-600 dark:text-red-400' : 'text-gray-500 dark:text-gray-400'}>
+              <span className={excerpt.length >= 150 && excerpt.length <= 160 ? 'text-green-600 text-green-400' : excerpt.length > 160 ? 'text-red-600 text-red-400' : 'text-gray-500 text-gray-400'}>
                 {excerpt.length} / 160 characters {excerpt.length >= 150 && excerpt.length <= 160 && '✓'}
               </span>
             </div>
@@ -479,18 +479,18 @@ export default function EditPostPage({ params }: EditPostPageProps) {
         {/* Sidebar */}
         <div className="space-y-6">
           {/* Post Settings */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4">
-            <h3 className="font-heading font-semibold text-gray-900 dark:text-gray-100 mb-3">Post Settings</h3>
+          <div className="bg-white bg-gray-800 rounded-lg shadow-sm border border-gray-200 border-gray-700 p-4">
+            <h3 className="font-heading font-semibold text-gray-900 text-gray-100 mb-3">Post Settings</h3>
 
             {/* Status */}
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-2">
                 Status
               </label>
               <select
                 value={status}
                 onChange={(e) => setStatus(e.target.value as 'draft' | 'published' | 'scheduled')}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                className="w-full px-3 py-2 border border-gray-300 border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white bg-gray-900 text-gray-900 text-gray-100"
               >
                 <option value="draft">Draft</option>
                 <option value="scheduled">Scheduled</option>
@@ -501,7 +501,7 @@ export default function EditPostPage({ params }: EditPostPageProps) {
             {/* Scheduled Date */}
             {status === 'scheduled' && (
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-2">
                   Publish Date & Time
                 </label>
                 <input
@@ -509,10 +509,10 @@ export default function EditPostPage({ params }: EditPostPageProps) {
                   value={scheduledDate}
                   onChange={(e) => setScheduledDate(e.target.value)}
                   min={new Date().toISOString().slice(0, 16)}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                  className="w-full px-3 py-2 border border-gray-300 border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white bg-gray-900 text-gray-900 text-gray-100"
                 />
                 {scheduledDate && (
-                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                  <p className="mt-1 text-xs text-gray-500 text-gray-400">
                     Will publish on {new Date(scheduledDate).toLocaleString()}
                   </p>
                 )}
@@ -522,10 +522,10 @@ export default function EditPostPage({ params }: EditPostPageProps) {
 
           {/* SEO Score */}
           {seoScore && (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4">
-              <h3 className="font-heading font-semibold text-gray-900 dark:text-gray-100 mb-3">SEO Score</h3>
+            <div className="bg-white bg-gray-800 rounded-lg shadow-sm border border-gray-200 border-gray-700 p-4">
+              <h3 className="font-heading font-semibold text-gray-900 text-gray-100 mb-3">SEO Score</h3>
               <div className="flex items-center space-x-3 mb-3">
-                <div className="flex-1 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                <div className="flex-1 bg-gray-200 bg-gray-700 rounded-full h-2">
                   <div
                     className={`h-2 rounded-full ${seoScore.overall >= 80
                       ? 'bg-green-500'
@@ -536,12 +536,12 @@ export default function EditPostPage({ params }: EditPostPageProps) {
                     style={{ width: `${seoScore.overall}%` }}
                   />
                 </div>
-                <span className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                <span className="text-2xl font-bold text-gray-900 text-gray-100">
                   {seoScore.overall}
                 </span>
               </div>
               {seoScore.suggestions.length > 0 && (
-                <div className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                <div className="text-sm text-gray-600 text-gray-400 space-y-1">
                   {seoScore.suggestions.slice(0, 3).map((suggestion, i) => (
                     <p key={i}>• {typeof suggestion === 'string' ? suggestion : suggestion.message}</p>
                   ))}
@@ -551,8 +551,8 @@ export default function EditPostPage({ params }: EditPostPageProps) {
           )}
 
           {/* Categories */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4">
-            <h3 className="font-heading font-semibold text-gray-900 dark:text-gray-100 mb-3">Categories</h3>
+          <div className="bg-white bg-gray-800 rounded-lg shadow-sm border border-gray-200 border-gray-700 p-4">
+            <h3 className="font-heading font-semibold text-gray-900 text-gray-100 mb-3">Categories</h3>
             <div className="space-y-2">
               {categories.map((category) => (
                 <label key={category.id} className="flex items-center space-x-2 cursor-pointer">
@@ -560,29 +560,29 @@ export default function EditPostPage({ params }: EditPostPageProps) {
                     type="checkbox"
                     checked={selectedCategories.includes(category.id)}
                     onChange={() => toggleCategory(category.id)}
-                    className="rounded border-gray-300 dark:border-gray-600 text-purple-600 dark:text-purple-400 focus:ring-purple-500"
+                    className="rounded border-gray-300 border-gray-600 text-purple-600 text-purple-400 focus:ring-purple-500"
                   />
-                  <span className="text-sm text-gray-700 dark:text-gray-300">{category.name}</span>
+                  <span className="text-sm text-gray-700 text-gray-300">{category.name}</span>
                 </label>
               ))}
             </div>
           </div>
 
           {/* Tags */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4">
-            <h3 className="font-heading font-semibold text-gray-900 dark:text-gray-100 mb-3">Tags</h3>
+          <div className="bg-white bg-gray-800 rounded-lg shadow-sm border border-gray-200 border-gray-700 p-4">
+            <h3 className="font-heading font-semibold text-gray-900 text-gray-100 mb-3">Tags</h3>
             <div className="flex flex-wrap gap-2 mb-3">
               {selectedTags.map((tagId) => {
                 const tag = tags.find(t => t.id === tagId);
                 return tag ? (
                   <span
                     key={tagId}
-                    className="inline-flex items-center space-x-1 px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded text-sm"
+                    className="inline-flex items-center space-x-1 px-2 py-1 bg-purple-100 bg-purple-900/30 text-purple-700 text-purple-300 rounded text-sm"
                   >
                     <span>{tag.name}</span>
                     <button
                       onClick={() => removeTag(tagId)}
-                      className="hover:text-purple-900 dark:hover:text-purple-100 text-purple-700 dark:text-purple-300"
+                      className="hover:text-purple-900 hover:text-purple-100 text-purple-700 text-purple-300"
                     >
                       ×
                     </button>
@@ -597,7 +597,7 @@ export default function EditPostPage({ params }: EditPostPageProps) {
                   e.target.value = '';
                 }
               }}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+              className="w-full px-3 py-2 border border-gray-300 border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm bg-white bg-gray-900 text-gray-900 text-gray-100"
             >
               <option value="">Add tag...</option>
               {tags
@@ -611,8 +611,8 @@ export default function EditPostPage({ params }: EditPostPageProps) {
           </div>
 
           {/* Featured Image */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4">
-            <h3 className="font-heading font-semibold text-gray-900 dark:text-gray-100 mb-3">Featured Image</h3>
+          <div className="bg-white bg-gray-800 rounded-lg shadow-sm border border-gray-200 border-gray-700 p-4">
+            <h3 className="font-heading font-semibold text-gray-900 text-gray-100 mb-3">Featured Image</h3>
             {featuredImage ? (
               <div className="relative h-32">
                 <Image
@@ -624,7 +624,7 @@ export default function EditPostPage({ params }: EditPostPageProps) {
                 />
                 <button
                   onClick={() => setFeaturedImage('')}
-                  className="absolute top-2 right-2 px-2 py-1 bg-red-600 text-white dark:text-gray-100 text-xs rounded hover:bg-red-700 z-10"
+                  className="absolute top-2 right-2 px-2 py-1 bg-red-600 text-white text-gray-100 text-xs rounded hover:bg-red-700 z-10"
                 >
                   Remove
                 </button>
@@ -649,7 +649,7 @@ export default function EditPostPage({ params }: EditPostPageProps) {
                   };
                   input.click();
                 }}
-                className="w-full px-4 py-8 border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-lg hover:border-purple-500 transition-colors text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400"
+                className="w-full px-4 py-8 border-2 border-dashed border-gray-300 border-gray-700 rounded-lg hover:border-purple-500 transition-colors text-gray-600 text-gray-400 hover:text-purple-600 hover:text-purple-400"
               >
                 Click to upload
               </button>

@@ -200,7 +200,7 @@ const brandColors = {
     primary: '#9333EA', // Purple-600
     secondary: '#A855F7', // Purple-500
     accent: '#22C55E', // Green-500
-    dark: '#1F2937', // Gray-800
+    slate: '#1F2937', // Gray-800
     light: '#F9FAFB', // Gray-50
 };
 
@@ -217,8 +217,8 @@ function CopyButton({ text, label }: { text: string; label?: string }) {
         <button
             onClick={handleCopy}
             className={`inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${copied
-                ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300'
-                : 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 hover:bg-purple-200 dark:hover:bg-purple-900/50'
+                ? 'bg-green-100 bg-green-900/30 text-green-700 text-green-300'
+                : 'bg-purple-100 bg-purple-900/30 text-purple-700 text-purple-300 hover:bg-purple-200 hover:bg-purple-900/50'
                 }`}
         >
             {copied ? (
@@ -238,8 +238,8 @@ function CopyButton({ text, label }: { text: string; label?: string }) {
 
 function BannerCard({ banner }: { banner: BannerAsset }) {
     return (
-        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-            <div className="aspect-video bg-gray-100 dark:bg-gray-700 flex items-center justify-center p-4">
+        <div className="bg-white bg-gray-800 rounded-lg border border-gray-200 border-gray-700 overflow-hidden">
+            <div className="aspect-video bg-gray-100 bg-gray-700 flex items-center justify-center p-4">
                 <Image
                     src={banner.previewUrl}
                     alt={banner.name}
@@ -250,17 +250,17 @@ function BannerCard({ banner }: { banner: BannerAsset }) {
             </div>
             <div className="p-4">
                 <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-medium text-gray-900 dark:text-gray-100">
+                    <h3 className="font-medium text-gray-900 text-gray-100">
                         {banner.name}
                     </h3>
-                    <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                    <span className="text-xs text-gray-500 text-gray-400 bg-gray-100 bg-gray-700 px-2 py-1 rounded">
                         {banner.size}
                     </span>
                 </div>
                 <a
                     href={banner.url}
                     download
-                    className="inline-flex items-center px-3 py-2 bg-purple-600 hover:bg-purple-700 text-white dark:text-white text-sm font-medium rounded-lg transition-colors"
+                    className="inline-flex items-center px-3 py-2 bg-purple-600 hover:bg-purple-700 text-white text-white text-sm font-medium rounded-lg transition-colors"
                 >
                     <Download className="w-4 h-4 mr-2" />
                     Download SVG
@@ -272,8 +272,8 @@ function BannerCard({ banner }: { banner: BannerAsset }) {
 
 function ProductImageCard({ product }: { product: ProductImage }) {
     return (
-        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-            <div className="aspect-square bg-gray-100 dark:bg-gray-700 relative">
+        <div className="bg-white bg-gray-800 rounded-lg border border-gray-200 border-gray-700 overflow-hidden">
+            <div className="aspect-square bg-gray-100 bg-gray-700 relative">
                 <Image
                     src={product.previewUrl}
                     alt={product.name}
@@ -283,16 +283,16 @@ function ProductImageCard({ product }: { product: ProductImage }) {
                 />
             </div>
             <div className="p-4">
-                <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-1">
+                <h3 className="font-medium text-gray-900 text-gray-100 mb-1">
                     {product.name}
                 </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                <p className="text-sm text-gray-500 text-gray-400 mb-3">
                     {product.description}
                 </p>
                 <a
                     href={product.url}
                     download
-                    className="inline-flex items-center px-3 py-2 bg-purple-600 hover:bg-purple-700 text-white dark:text-white text-sm font-medium rounded-lg transition-colors"
+                    className="inline-flex items-center px-3 py-2 bg-purple-600 hover:bg-purple-700 text-white text-white text-sm font-medium rounded-lg transition-colors"
                 >
                     <Download className="w-4 h-4 mr-2" />
                     Download
@@ -311,31 +311,31 @@ function SocialPostCard({ post }: { post: SocialPost }) {
     };
 
     const platformColors = {
-        instagram: 'bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300',
-        facebook: 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300',
-        twitter: 'bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300',
-        email: 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300',
+        instagram: 'bg-pink-100 bg-pink-900/30 text-pink-700 text-pink-300',
+        facebook: 'bg-blue-100 bg-blue-900/30 text-blue-700 text-blue-300',
+        twitter: 'bg-sky-100 bg-sky-900/30 text-sky-700 text-sky-300',
+        email: 'bg-gray-100 bg-gray-700 text-gray-700 text-gray-300',
     };
 
     return (
-        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+        <div className="bg-white bg-gray-800 rounded-lg border border-gray-200 border-gray-700 p-4">
             <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center space-x-2">
                     <span className={`px-2 py-1 rounded text-xs font-medium ${platformColors[post.platform]}`}>
                         {platformIcons[post.platform]} {post.platform.charAt(0).toUpperCase() + post.platform.slice(1)}
                     </span>
-                    <h3 className="font-medium text-gray-900 dark:text-gray-100">
+                    <h3 className="font-medium text-gray-900 text-gray-100">
                         {post.title}
                     </h3>
                 </div>
                 <CopyButton text={post.content} label="Copy Text" />
             </div>
-            <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-3 max-h-48 overflow-y-auto">
-                <pre className="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-wrap font-sans">
+            <div className="bg-gray-50 bg-gray-700/50 rounded-lg p-3 max-h-48 overflow-y-auto">
+                <pre className="text-sm text-gray-700 text-gray-300 whitespace-pre-wrap font-sans">
                     {post.content}
                 </pre>
             </div>
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+            <p className="text-xs text-gray-500 text-gray-400 mt-2">
                 Remember to replace [YOUR LINK] with your affiliate link
             </p>
         </div>
@@ -354,17 +354,17 @@ function ColorSwatch({ name, hex }: { name: string; hex: string }) {
     return (
         <button
             onClick={handleCopy}
-            className="flex items-center space-x-3 p-3 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-md dark:hover:shadow-gray-900/30 transition-shadow group"
+            className="flex items-center space-x-3 p-3 bg-white bg-gray-800 rounded-lg border border-gray-200 border-gray-700 hover:shadow-md hover:shadow-gray-900/30 transition-shadow group"
         >
             <div
                 className="w-12 h-12 rounded-lg shadow-inner"
                 style={{ backgroundColor: hex }}
             />
             <div className="text-left">
-                <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                <p className="text-sm font-medium text-gray-900 text-gray-100">
                     {name}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 font-mono">
+                <p className="text-xs text-gray-500 text-gray-400 font-mono">
                     {copied ? 'Copied!' : hex}
                 </p>
             </div>
@@ -387,16 +387,16 @@ export default function AssetsContent() {
         <AffiliateLayout>
             {/* Header */}
             <div className="mb-8">
-                <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100">
+                <h1 className="font-heading text-3xl font-bold text-gray-900 text-gray-100">
                     {t('affiliateDashboard.assets.title') || 'Marketing Assets'}
                 </h1>
-                <p className="text-gray-600 dark:text-gray-400 mt-1">
+                <p className="text-gray-600 text-gray-400 mt-1">
                     {t('affiliateDashboard.assets.description') || 'Download banners, product images, and copy for your promotions.'}
                 </p>
             </div>
 
             {/* Tabs */}
-            <div className="mb-6 border-b border-gray-200 dark:border-gray-700">
+            <div className="mb-6 border-b border-gray-200 border-gray-700">
                 <nav className="-mb-px flex space-x-8 overflow-x-auto">
                     {tabs.map((tab) => {
                         const Icon = tab.icon;
@@ -405,8 +405,8 @@ export default function AssetsContent() {
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id)}
                                 className={`flex items-center whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors ${activeTab === tab.id
-                                    ? 'border-purple-500 text-purple-600 dark:text-purple-400'
-                                    : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
+                                    ? 'border-purple-500 text-purple-600 text-purple-400'
+                                    : 'border-transparent text-gray-500 text-gray-400 hover:text-gray-700 hover:text-gray-300 hover:border-gray-300 hover:border-gray-600'
                                     }`}
                             >
                                 <Icon className="w-4 h-4 mr-2" />
@@ -420,8 +420,8 @@ export default function AssetsContent() {
             {/* Tab Content */}
             {activeTab === 'banners' && (
                 <div>
-                    <div className="mb-6 p-4 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-lg">
-                        <p className="text-sm text-purple-800 dark:text-purple-200">
+                    <div className="mb-6 p-4 bg-purple-50 bg-purple-900/20 border border-purple-200 border-purple-800 rounded-lg">
+                        <p className="text-sm text-purple-800 text-purple-200">
                             <strong>Tip:</strong> Use these banners on your website, blog, or email newsletters.
                             Each banner includes your affiliate code - just download and use!
                         </p>
@@ -436,8 +436,8 @@ export default function AssetsContent() {
 
             {activeTab === 'products' && (
                 <div>
-                    <div className="mb-6 p-4 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-lg">
-                        <p className="text-sm text-purple-800 dark:text-purple-200">
+                    <div className="mb-6 p-4 bg-purple-50 bg-purple-900/20 border border-purple-200 border-purple-800 rounded-lg">
+                        <p className="text-sm text-purple-800 text-purple-200">
                             <strong>Tip:</strong> Use these high-quality product images in your social media posts,
                             blog articles, and promotional materials.
                         </p>
@@ -452,8 +452,8 @@ export default function AssetsContent() {
 
             {activeTab === 'social' && (
                 <div>
-                    <div className="mb-6 p-4 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-lg">
-                        <p className="text-sm text-purple-800 dark:text-purple-200">
+                    <div className="mb-6 p-4 bg-purple-50 bg-purple-900/20 border border-purple-200 border-purple-800 rounded-lg">
+                        <p className="text-sm text-purple-800 text-purple-200">
                             <strong>Tip:</strong> These pre-written posts are designed to convert.
                             Feel free to personalize them with your own experience!
                         </p>
@@ -470,34 +470,34 @@ export default function AssetsContent() {
                 <div className="space-y-8">
                     {/* Brand Colors */}
                     <div>
-                        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                        <h2 className="text-lg font-semibold text-gray-900 text-gray-100 mb-4">
                             {t('affiliateDashboard.assets.brandColors') || 'Brand Colors'}
                         </h2>
                         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
                             <ColorSwatch name="Primary Purple" hex={brandColors.primary} />
                             <ColorSwatch name="Secondary Purple" hex={brandColors.secondary} />
                             <ColorSwatch name="Accent Green" hex={brandColors.accent} />
-                            <ColorSwatch name="Dark" hex={brandColors.dark} />
+                            <ColorSwatch name="Dark" hex={brandColors.slate} />
                             <ColorSwatch name="Light" hex={brandColors.light} />
                         </div>
                     </div>
 
                     {/* Typography */}
                     <div>
-                        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                        <h2 className="text-lg font-semibold text-gray-900 text-gray-100 mb-4">
                             Typography
                         </h2>
-                        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+                        <div className="bg-white bg-gray-800 rounded-lg border border-gray-200 border-gray-700 p-6">
                             <div className="space-y-4">
                                 <div>
-                                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Headings</p>
-                                    <p className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100">
+                                    <p className="text-sm text-gray-500 text-gray-400 mb-1">Headings</p>
+                                    <p className="font-heading text-2xl font-bold text-gray-900 text-gray-100">
                                         Inter (Font Heading)
                                     </p>
                                 </div>
                                 <div>
-                                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Body Text</p>
-                                    <p className="text-base text-gray-700 dark:text-gray-300">
+                                    <p className="text-sm text-gray-500 text-gray-400 mb-1">Body Text</p>
+                                    <p className="text-base text-gray-700 text-gray-300">
                                         Inter - Clean and readable for all content
                                     </p>
                                 </div>
@@ -507,13 +507,13 @@ export default function AssetsContent() {
 
                     {/* Brand Guidelines */}
                     <div>
-                        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                        <h2 className="text-lg font-semibold text-gray-900 text-gray-100 mb-4">
                             {t('affiliateDashboard.assets.guidelines') || 'Usage Guidelines'}
                         </h2>
-                        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
-                            <div className="space-y-4 text-sm text-gray-700 dark:text-gray-300">
+                        <div className="bg-white bg-gray-800 rounded-lg border border-gray-200 border-gray-700 p-6">
+                            <div className="space-y-4 text-sm text-gray-700 text-gray-300">
                                 <div>
-                                    <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                                    <h3 className="font-semibold text-gray-900 text-gray-100 mb-2">
                                         ✅ Do&apos;s
                                     </h3>
                                     <ul className="list-disc list-inside space-y-1">
@@ -525,7 +525,7 @@ export default function AssetsContent() {
                                     </ul>
                                 </div>
                                 <div>
-                                    <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                                    <h3 className="font-semibold text-gray-900 text-gray-100 mb-2">
                                         ❌ Don&apos;ts
                                     </h3>
                                     <ul className="list-disc list-inside space-y-1">
@@ -538,7 +538,7 @@ export default function AssetsContent() {
                                     </ul>
                                 </div>
                                 <div>
-                                    <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                                    <h3 className="font-semibold text-gray-900 text-gray-100 mb-2">
                                         📝 Key Product Facts
                                     </h3>
                                     <ul className="list-disc list-inside space-y-1">
@@ -556,20 +556,20 @@ export default function AssetsContent() {
 
                     {/* Logo Download */}
                     <div>
-                        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                        <h2 className="text-lg font-semibold text-gray-900 text-gray-100 mb-4">
                             Logo Files
                         </h2>
-                        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+                        <div className="bg-white bg-gray-800 rounded-lg border border-gray-200 border-gray-700 p-6">
                             <div className="flex items-center justify-center mb-4">
                                 <div className="w-48 h-16 bg-purple-600 rounded-lg flex items-center justify-center">
-                                    <span className="text-white dark:text-white text-2xl font-bold">Purrify</span>
+                                    <span className="text-white text-white text-2xl font-bold">Purrify</span>
                                 </div>
                             </div>
                             <div className="flex justify-center space-x-4">
                                 <a
                                     href="/affiliate-assets/logo/purrify-logo-dark.svg"
                                     download
-                                    className="inline-flex items-center px-4 py-2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-sm font-medium rounded-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
+                                    className="inline-flex items-center px-4 py-2 bg-gray-900 bg-gray-100 text-white text-gray-900 text-sm font-medium rounded-lg hover:bg-gray-800 hover:bg-gray-200 transition-colors"
                                 >
                                     <Download className="w-4 h-4 mr-2" />
                                     Dark Logo
@@ -577,7 +577,7 @@ export default function AssetsContent() {
                                 <a
                                     href="/affiliate-assets/logo/purrify-logo-light.svg"
                                     download
-                                    className="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm font-medium rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                                    className="inline-flex items-center px-4 py-2 bg-white bg-gray-800 text-gray-900 text-white text-sm font-medium rounded-lg border border-gray-300 border-gray-600 hover:bg-gray-50 hover:bg-gray-700 transition-colors"
                                 >
                                     <Download className="w-4 h-4 mr-2" />
                                     Light Logo
@@ -587,17 +587,17 @@ export default function AssetsContent() {
                     </div>
 
                     {/* Need Help */}
-                    <div className="bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-xl p-6">
-                        <h3 className="text-lg font-semibold text-purple-900 dark:text-purple-100 mb-2">
+                    <div className="bg-purple-50 bg-purple-900/20 border border-purple-200 border-purple-800 rounded-xl p-6">
+                        <h3 className="text-lg font-semibold text-purple-900 text-purple-100 mb-2">
                             Need Custom Assets?
                         </h3>
-                        <p className="text-sm text-purple-800 dark:text-purple-200 mb-4">
+                        <p className="text-sm text-purple-800 text-purple-200 mb-4">
                             If you need custom banners, specific image sizes, or have questions about brand usage,
                             reach out to our affiliate support team.
                         </p>
                         <a
                             href="mailto:affiliates@purrify.ca"
-                            className="inline-flex items-center px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white dark:text-white text-sm font-medium rounded-lg transition-colors"
+                            className="inline-flex items-center px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-white text-sm font-medium rounded-lg transition-colors"
                         >
                             <ExternalLink className="w-4 h-4 mr-2" />
                             Contact Affiliate Support

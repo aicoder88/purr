@@ -226,6 +226,14 @@ export function Header() {
           label: t('nav.litterCalculator') || "Litter Calculator",
           href: "/tools/cat-litter-calculator/",
         },
+        {
+          label: t('nav.smellQuiz') || "Smell Quiz",
+          href: "/tools/smell-quiz/",
+        },
+        {
+          label: t('nav.toolsHub') || "All Tools",
+          href: "/tools/",
+        },
         { label: t('nav.solutions'), isGroupHeader: true },
         {
           label: t('nav.ammoniaSmellControl'),
@@ -289,7 +297,7 @@ export function Header() {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-50 w-full border-b border-brand-green-light/30 dark:border-purple-500/30 bg-white dark:bg-gray-900/90 backdrop-blur-md supports-[backdrop-filter]:bg-white dark:supports-[backdrop-filter]:bg-gray-900/85 shadow-lg transition-all duration-300"
+      className="sticky top-0 z-50 w-full border-b border-brand-green-light/30 border-purple-500/30 bg-white bg-gray-900/90 backdrop-blur-md supports-[backdrop-filter]:bg-white supports-[backdrop-filter]:bg-gray-900/85 shadow-lg transition-all duration-300"
     >
       <Container>
         <div className="flex h-16 items-center justify-between">
@@ -305,7 +313,7 @@ export function Header() {
                 width={120}
                 height={57}
                 priority
-                className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 dark:hidden"
+                className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 hidden"
               />
               <Image
                 src="/optimized/logos/logo-dark.webp"
@@ -313,7 +321,7 @@ export function Header() {
                 width={84}
                 height={40}
                 priority
-                className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 hidden dark:block"
+                className="h-10 w-auto filter drop-shadow-sm transition-all duration-300 hidden block"
               />
             </Link>
           </div>
@@ -325,7 +333,7 @@ export function Header() {
                   <>
                     <button
                       id={`dropdown-${item.id}`}
-                      className="flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 focus:text-brand-red dark:focus:text-brand-red-400 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 rounded-sm"
+                      className="flex items-center text-gray-700 text-gray-200 hover:text-brand-red hover:text-brand-red-400 focus:text-brand-red focus:text-brand-red-400 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-brand-red-400 focus:ring-offset-2 focus:ring-offset-white focus:ring-offset-gray-800 rounded-sm"
                       data-dropdown
                       data-menu-id={item.id}
                       aria-expanded={activeDropdown === item.id ? "true" : "false"}
@@ -340,7 +348,7 @@ export function Header() {
                     </button>
                     {activeDropdown === item.id && (
                       <div
-                        className="absolute top-full left-0 mt-1 bg-white dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 dark:border-gray-600/50 z-50 w-64 max-h-96 overflow-y-auto p-2"
+                        className="absolute top-full left-0 mt-1 bg-white bg-gray-800/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 border-gray-600/50 z-50 w-64 max-h-96 overflow-y-auto p-2"
                         role="menu"
                         aria-labelledby={`dropdown-${item.id}`}
                         data-dropdown
@@ -349,7 +357,7 @@ export function Header() {
                           dropdownItem.isGroupHeader ? (
                             <div
                               key={dropdownItem.label}
-                              className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2 first:mt-0"
+                              className="px-4 py-2 text-xs font-bold text-gray-500 text-gray-400 uppercase tracking-wider mt-2 first:mt-0"
                             >
                               {dropdownItem.label}
                             </div>
@@ -358,7 +366,7 @@ export function Header() {
                               key={dropdownItem.label}
                               href={dropdownItem.href || ""}
                               prefetch={false}
-                              className={`block py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 focus:text-brand-red dark:focus:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 focus:bg-gray-50 dark:focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-brand-red dark:focus:ring-brand-red-400 focus:ring-offset-1 ${dropdownItem.indent ? "pl-6" : "px-4"}`}
+                              className={`block py-2 text-sm text-gray-700 text-gray-200 hover:text-brand-red hover:text-brand-red-400 focus:text-brand-red focus:text-brand-red-400 hover:bg-gray-50 bg-gray-900/80 hover:bg-gray-700/80 focus:bg-gray-50 focus:bg-gray-700/80 transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-brand-red-400 focus:ring-offset-1 ${dropdownItem.indent ? "pl-6" : "px-4"}`}
                               role="menuitem"
                             >
                               {dropdownItem.label}
@@ -372,7 +380,7 @@ export function Header() {
                   <Link
                     href={item.href}
                     prefetch={false}
-                    className="text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 transition-colors font-medium"
+                    className="text-gray-700 text-gray-200 hover:text-brand-red hover:text-brand-red-400 transition-colors font-medium"
                   >
                     {item.label}
                   </Link>
@@ -384,7 +392,7 @@ export function Header() {
           <div className="hidden md:flex items-center space-x-3">
             <Button
               asChild
-              className="flex items-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 dark:from-brand-red-700 dark:to-brand-red-600 hover:from-brand-red/90 hover:to-brand-red dark:hover:from-brand-red-800 dark:hover:to-brand-red-700 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+              className="flex items-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 from-brand-red-700 to-brand-red-600 hover:from-brand-red/90 hover:to-brand-red hover:from-brand-red-800 hover:to-brand-red-700 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
             >
               <Link href="/stores/" prefetch={false}>
                 <MapPin className="w-4 h-4" />
@@ -416,7 +424,7 @@ export function Header() {
 
         {/* Mobile menu - Accordion style */}
         {isMenuOpen && (
-          <div id={mobileMenuId} className="md:hidden border-t border-brand-green-light/30 dark:border-purple-500/30 bg-white dark:bg-gray-900/95 backdrop-blur-md shadow-lg max-h-[80vh] overflow-y-auto">
+          <div id={mobileMenuId} className="md:hidden border-t border-brand-green-light/30 border-purple-500/30 bg-white bg-gray-900/95 backdrop-blur-md shadow-lg max-h-[80vh] overflow-y-auto">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navigationItems.map((item) => (
                 <div key={item.id}>
@@ -426,7 +434,7 @@ export function Header() {
                       <button
                         type="button"
                         onClick={() => setExpandedMobileSection(expandedMobileSection === item.id ? null : item.id)}
-                        className="w-full flex items-center justify-between px-3 py-3 min-h-[44px] text-sm font-semibold text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:hover:bg-gray-700/80 transition-colors rounded-md mx-1"
+                        className="w-full flex items-center justify-between px-3 py-3 min-h-[44px] text-sm font-semibold text-gray-700 text-gray-200 hover:text-brand-red hover:text-brand-red-400 hover:bg-gray-50 hover:bg-gray-700/80 transition-colors rounded-md mx-1"
                         aria-expanded={expandedMobileSection === item.id}
                       >
                         <span className="uppercase tracking-wider">{item.label}</span>
@@ -441,7 +449,7 @@ export function Header() {
                             dropdownItem.isGroupHeader ? (
                               <div
                                 key={dropdownItem.label}
-                                className="px-4 py-2 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-2"
+                                className="px-4 py-2 text-xs font-bold text-gray-500 text-gray-400 uppercase tracking-wider mt-2"
                               >
                                 {dropdownItem.label}
                               </div>
@@ -450,7 +458,7 @@ export function Header() {
                                 key={dropdownItem.label}
                                 href={dropdownItem.href || ""}
                                 prefetch={false}
-                                className={`block py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-0.5 ${dropdownItem.indent ? "pl-8" : "px-6"}`}
+                                className={`block py-3 min-h-[44px] flex items-center text-gray-700 text-gray-200 hover:text-brand-red hover:text-brand-red-400 hover:bg-gray-50 bg-gray-900/80 hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-0.5 ${dropdownItem.indent ? "pl-8" : "px-6"}`}
                                 onClick={closeMenu}
                               >
                                 {dropdownItem.label}
@@ -464,7 +472,7 @@ export function Header() {
                     <Link
                       href={item.href}
                       prefetch={false}
-                      className="block px-3 py-3 min-h-[44px] flex items-center text-gray-700 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red-400 hover:bg-gray-50 dark:bg-gray-900/80 dark:hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1"
+                      className="block px-3 py-3 min-h-[44px] flex items-center text-gray-700 text-gray-200 hover:text-brand-red hover:text-brand-red-400 hover:bg-gray-50 bg-gray-900/80 hover:bg-gray-700/80 transition-colors font-medium rounded-md mx-2 my-1"
                       onClick={closeMenu}
                     >
                       {item.label}
@@ -474,10 +482,10 @@ export function Header() {
               ))}
 
               {/* Quick Actions */}
-              <div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2 space-y-2">
+              <div className="border-t border-gray-200 border-gray-700 pt-2 mt-2 space-y-2">
                 <Button
                   asChild
-                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 dark:from-brand-red-700 dark:to-brand-red-600 hover:from-brand-red/90 hover:to-brand-red dark:hover:from-brand-red-800 dark:hover:to-brand-red-700 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-brand-red to-brand-red/80 from-brand-red-700 to-brand-red-600 hover:from-brand-red/90 hover:to-brand-red hover:from-brand-red-800 hover:to-brand-red-700 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                 >
                   <Link href="/stores/" prefetch={false} onClick={closeMenu}>
                     <MapPin className="w-4 h-4" />

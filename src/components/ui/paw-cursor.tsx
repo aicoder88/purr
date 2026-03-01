@@ -213,11 +213,11 @@ export function LaserCursor() {
             transform: `translate(-50%, -50%) rotate(${paw.rotation}deg)`,
           }}
         >
-          <PawPrint className="h-5 w-5 text-brand-green-600 dark:text-brand-green-400 opacity-80" />
+          <PawPrint className="h-5 w-5 text-brand-green-600 text-brand-green-400 opacity-80" />
         </div>
       ))}
       <div
-        className={`absolute rounded-full bg-brand-red-500 dark:bg-brand-red-400 blur-md transition-opacity duration-150 ${
+        className={`absolute rounded-full bg-brand-red-500 bg-brand-red-400 blur-md transition-opacity duration-150 ${
           isVisible ? "opacity-60" : "opacity-0"
         }`}
         style={{
@@ -229,7 +229,7 @@ export function LaserCursor() {
         }}
       />
       <div
-        className={`absolute rounded-full bg-brand-red-500 dark:bg-brand-red-400 transition-opacity duration-150 ${
+        className={`absolute rounded-full bg-brand-red-500 bg-brand-red-400 transition-opacity duration-150 ${
           isVisible ? "opacity-100" : "opacity-0"
         }`}
         style={{

@@ -65,11 +65,11 @@ interface ReferralDashboardProps {
 
 // Status color mapping for referral activity badges
 const STATUS_COLORS: Record<string, string> = {
-  purchased: 'bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-200',
-  signed_up: 'bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200',
-  clicked: 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-200',
-  expired: 'bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-200',
-  default: 'bg-gray-100 dark:bg-gray-900/20 text-gray-800 dark:text-gray-200',
+  purchased: 'bg-green-100 bg-green-900/20 text-green-800 text-green-200',
+  signed_up: 'bg-blue-100 bg-blue-900/20 text-blue-800 text-blue-200',
+  clicked: 'bg-yellow-100 bg-yellow-900/20 text-yellow-800 text-yellow-200',
+  expired: 'bg-red-100 bg-red-900/20 text-red-800 text-red-200',
+  default: 'bg-gray-100 bg-gray-900/20 text-gray-800 text-gray-200',
 } as const;
 
 export function ReferralDashboard({ userId, className }: ReferralDashboardProps) {
@@ -183,10 +183,10 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
     return (
       <div className={cn("space-y-6", className)}>
         <div className="animate-pulse">
-          <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded-lg mb-4"></div>
+          <div className="h-8 bg-gray-200 bg-gray-700 rounded-lg mb-4"></div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
             {[1, 2, 3].map(i => (
-              <div key={i} className="h-32 bg-gray-200 dark:bg-gray-700 rounded-lg"></div>
+              <div key={i} className="h-32 bg-gray-200 bg-gray-700 rounded-lg"></div>
             ))}
           </div>
         </div>
@@ -197,7 +197,7 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
   if (error || !stats) {
     return (
       <div className={cn("text-center py-12", className)}>
-        <div className="text-red-500 dark:text-red-400 mb-4">
+        <div className="text-red-500 text-red-400 mb-4">
           {error || 'No referral data available'}
         </div>
         <Button onClick={fetchReferralStats} variant="outline">
@@ -213,10 +213,10 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
     <div className={cn("space-y-8", className)}>
       {/* Header */}
       <div className="text-center">
-        <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+        <h1 className="font-heading text-3xl font-bold text-gray-900 text-gray-100 mb-2">
           Your Referral Dashboard
         </h1>
-        <p className="text-gray-600 dark:text-gray-300">
+        <p className="text-gray-600 text-gray-300">
           Share Purrify with friends and earn rewards for every successful referral!
         </p>
       </div>
@@ -225,48 +225,48 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <Card className="p-6">
           <div className="flex items-center space-x-3">
-            <div className="p-3 bg-blue-100 dark:bg-blue-900/20 rounded-lg">
-              <Users className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+            <div className="p-3 bg-blue-100 bg-blue-900/20 rounded-lg">
+              <Users className="w-6 h-6 text-blue-600 text-blue-400" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Total Referrals</p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">{stats.totalReferrals}</p>
+              <p className="text-sm text-gray-600 text-gray-400">Total Referrals</p>
+              <p className="text-2xl font-bold text-gray-900 text-gray-100">{stats.totalReferrals}</p>
             </div>
           </div>
         </Card>
 
         <Card className="p-6">
           <div className="flex items-center space-x-3">
-            <div className="p-3 bg-green-100 dark:bg-green-900/20 rounded-lg">
-              <TrendingUp className="w-6 h-6 text-green-600 dark:text-green-400" />
+            <div className="p-3 bg-green-100 bg-green-900/20 rounded-lg">
+              <TrendingUp className="w-6 h-6 text-green-600 text-green-400" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Completed</p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">{stats.completedReferrals}</p>
+              <p className="text-sm text-gray-600 text-gray-400">Completed</p>
+              <p className="text-2xl font-bold text-gray-900 text-gray-100">{stats.completedReferrals}</p>
             </div>
           </div>
         </Card>
 
         <Card className="p-6">
           <div className="flex items-center space-x-3">
-            <div className="p-3 bg-purple-100 dark:bg-purple-900/20 rounded-lg">
-              <Gift className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+            <div className="p-3 bg-purple-100 bg-purple-900/20 rounded-lg">
+              <Gift className="w-6 h-6 text-purple-600 text-purple-400" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Total Earnings</p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">${stats.totalEarnings}</p>
+              <p className="text-sm text-gray-600 text-gray-400">Total Earnings</p>
+              <p className="text-2xl font-bold text-gray-900 text-gray-100">${stats.totalEarnings}</p>
             </div>
           </div>
         </Card>
 
         <Card className="p-6">
           <div className="flex items-center space-x-3">
-            <div className="p-3 bg-yellow-100 dark:bg-yellow-900/20 rounded-lg">
-              <Star className="w-6 h-6 text-yellow-600 dark:text-yellow-400" />
+            <div className="p-3 bg-yellow-100 bg-yellow-900/20 rounded-lg">
+              <Star className="w-6 h-6 text-yellow-600 text-yellow-400" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Available Rewards</p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">{stats.availableRewards.length}</p>
+              <p className="text-sm text-gray-600 text-gray-400">Available Rewards</p>
+              <p className="text-2xl font-bold text-gray-900 text-gray-100">{stats.availableRewards.length}</p>
             </div>
           </div>
         </Card>
@@ -274,14 +274,14 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
 
       {/* Referral Code Section */}
       <Card className="p-6">
-        <h2 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+        <h2 className="font-heading text-xl font-bold text-gray-900 text-gray-100 mb-4 flex items-center">
           <Share2 className="w-5 h-5 mr-2" />
           Your Referral Code
         </h2>
 
         <div className="space-y-4">
-          <div className="flex items-center space-x-3 bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-            <code className="text-xl font-mono font-bold text-blue-600 dark:text-blue-400 flex-1">
+          <div className="flex items-center space-x-3 bg-gray-50 bg-gray-800 p-4 rounded-lg">
+            <code className="text-xl font-mono font-bold text-blue-600 text-blue-400 flex-1">
               {stats.referralCode}
             </code>
             <Button onClick={copyReferralCode} variant="outline" size="sm">
@@ -290,8 +290,8 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
             </Button>
           </div>
 
-          <div className="flex items-center space-x-3 bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-            <span className="text-sm text-gray-600 dark:text-gray-400 flex-1 break-all">
+          <div className="flex items-center space-x-3 bg-gray-50 bg-gray-800 p-4 rounded-lg">
+            <span className="text-sm text-gray-600 text-gray-400 flex-1 break-all">
               {stats.shareUrl}
             </span>
             <Button onClick={copyShareUrl} variant="outline" size="sm">
@@ -304,10 +304,10 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
 
       {/* Social Sharing */}
       <Card className="p-6">
-        <h2 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+        <h2 className="font-heading text-xl font-bold text-gray-900 text-gray-100 mb-4">
           Share & Earn
         </h2>
-        <p className="text-gray-600 dark:text-gray-300 mb-4">
+        <p className="text-gray-600 text-gray-300 mb-4">
           Share your referral code with friends and family. They get a free trial, you earn rewards!
         </p>
 
@@ -361,30 +361,30 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
 
       {/* Milestone Progress */}
       <Card className="p-6">
-        <h2 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+        <h2 className="font-heading text-xl font-bold text-gray-900 text-gray-100 mb-4 flex items-center">
           <Trophy className="w-5 h-5 mr-2" />
           Progress to Next Reward
         </h2>
 
         <div className="space-y-4">
           <div className="flex justify-between items-center">
-            <span className="text-gray-600 dark:text-gray-400">
+            <span className="text-gray-600 text-gray-400">
               {stats.milestoneProgress.current} of {stats.milestoneProgress.target} referrals
             </span>
-            <span className="font-semibold text-gray-900 dark:text-gray-100">
+            <span className="font-semibold text-gray-900 text-gray-100">
               {Math.round(stats.milestoneProgress.progress)}%
             </span>
           </div>
 
-          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+          <div className="w-full bg-gray-200 bg-gray-700 rounded-full h-3">
             <div
               className="bg-gradient-to-r from-blue-500 to-purple-600 h-3 rounded-full transition-all duration-500"
               style={{ width: `${stats.milestoneProgress.progress}%` }}
             />
           </div>
 
-          <p className="text-sm text-gray-600 dark:text-gray-400">
-            Next reward: <span className="font-semibold text-gray-900 dark:text-gray-100">
+          <p className="text-sm text-gray-600 text-gray-400">
+            Next reward: <span className="font-semibold text-gray-900 text-gray-100">
               {stats.milestoneProgress.nextReward}
             </span>
           </p>
@@ -394,7 +394,7 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
       {/* Available Rewards */}
       {stats.availableRewards.length > 0 && (
         <Card className="p-6">
-          <h2 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
+          <h2 className="font-heading text-xl font-bold text-gray-900 text-gray-100 mb-4 flex items-center">
             <Gift className="w-5 h-5 mr-2" />
             Your Rewards ({stats.availableRewards.length})
           </h2>
@@ -403,20 +403,20 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
             {stats.availableRewards.map((reward) => (
               <div
                 key={reward.id}
-                className="flex items-center justify-between p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800"
+                className="flex items-center justify-between p-4 bg-green-50 bg-green-900/20 rounded-lg border border-green-200 border-green-800"
               >
                 <div className="flex-1">
-                  <h3 className="font-heading font-semibold text-green-800 dark:text-green-200">
+                  <h3 className="font-heading font-semibold text-green-800 text-green-200">
                     {reward.description}
                   </h3>
                   {reward.code && (
-                    <p className="text-sm text-green-600 dark:text-green-400">
-                      Code: <code className="font-mono bg-green-100 dark:bg-green-900/30 px-2 py-1 rounded">
+                    <p className="text-sm text-green-600 text-green-400">
+                      Code: <code className="font-mono bg-green-100 bg-green-900/30 px-2 py-1 rounded">
                         {reward.code}
                       </code>
                     </p>
                   )}
-                  <p className="text-xs text-green-600 dark:text-green-400">
+                  <p className="text-xs text-green-600 text-green-400">
                     Expires: {new Date(reward.expiresAt).toLocaleDateString()}
                   </p>
                 </div>
@@ -432,7 +432,7 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
 
       {/* Recent Activity */}
       <Card className="p-6">
-        <h2 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+        <h2 className="font-heading text-xl font-bold text-gray-900 text-gray-100 mb-4">
           Recent Activity
         </h2>
 
@@ -441,11 +441,11 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
             stats.recentActivity.map((activity) => (
               <div
                 key={activity.id}
-                className="flex items-center justify-between p-4 border border-gray-200 dark:border-gray-700 rounded-lg"
+                className="flex items-center justify-between p-4 border border-gray-200 border-gray-700 rounded-lg"
               >
                 <div className="flex-1">
                   <div className="flex items-center space-x-2">
-                    <span className="font-medium text-gray-900 dark:text-gray-100">
+                    <span className="font-medium text-gray-900 text-gray-100">
                       {activity.refereeName || activity.refereeEmail}
                     </span>
                     <Badge className={getStatusColor(activity.status)}>
@@ -453,7 +453,7 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
                     </Badge>
                   </div>
 
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <p className="text-sm text-gray-600 text-gray-400">
                     {new Date(activity.createdAt).toLocaleDateString()}
                     {activity.orderValue && (
                       <span className="ml-2">• Order: ${activity.orderValue}</span>
@@ -462,14 +462,14 @@ export function ReferralDashboard({ userId, className }: ReferralDashboardProps)
                 </div>
 
                 {activity.rewardIssued && (
-                  <div className="text-green-600 dark:text-green-400">
+                  <div className="text-green-600 text-green-400">
                     <Gift className="w-5 h-5" />
                   </div>
                 )}
               </div>
             ))
           ) : (
-            <p className="text-center text-gray-500 dark:text-gray-400 py-8">
+            <p className="text-center text-gray-500 text-gray-400 py-8">
               No referral activity yet. Start sharing to see results here!
             </p>
           )}

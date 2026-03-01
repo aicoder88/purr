@@ -9,7 +9,7 @@ import type { Currency } from '@/lib/geo/currency-detector';
 // Section skeleton for loading states
 const sectionSkeleton = (height: string, rounding: string = 'rounded-2xl') => (
   <div
-    className={`${height} ${rounding} bg-gray-50 dark:bg-gray-800/70 animate-pulse`}
+    className={`${height} ${rounding} bg-gray-50 bg-gray-800/70 animate-pulse`}
     aria-hidden="true"
   />
 );

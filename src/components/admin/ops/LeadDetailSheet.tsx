@@ -125,15 +125,15 @@ export default function LeadDetailSheet({
     <div className="space-y-2">
       <Label
         htmlFor={field}
-        className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center"
+        className="text-sm font-medium text-gray-700 text-gray-300 flex items-center"
       >
-        {Icon && <Icon className="w-4 h-4 mr-2 text-gray-400 dark:text-gray-500" />}
+        {Icon && <Icon className="w-4 h-4 mr-2 text-gray-400 text-gray-500" />}
         {label}
       </Label>
       {isViewMode ? (
-        <div className="text-gray-900 dark:text-gray-100 py-2">
+        <div className="text-gray-900 text-gray-100 py-2">
           {(formData[field] as string) || (
-            <span className="text-gray-400 dark:text-gray-500">Not provided</span>
+            <span className="text-gray-400 text-gray-500">Not provided</span>
           )}
         </div>
       ) : (
@@ -143,7 +143,7 @@ export default function LeadDetailSheet({
           value={(formData[field] as string) || ''}
           onChange={(e) => handleChange(field, e.target.value)}
           placeholder={placeholder}
-          className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100"
+          className="bg-white bg-gray-800 border-gray-200 border-gray-700 text-gray-900 text-gray-100"
         />
       )}
     </div>
@@ -153,11 +153,11 @@ export default function LeadDetailSheet({
     <Sheet open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <SheetContent
         side="right"
-        className="w-full sm:max-w-lg bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 overflow-y-auto"
+        className="w-full sm:max-w-lg bg-white bg-gray-900 border-gray-200 border-gray-700 overflow-y-auto"
       >
-        <SheetHeader className="pb-4 border-b border-gray-200 dark:border-gray-700">
+        <SheetHeader className="pb-4 border-b border-gray-200 border-gray-700">
           <div className="flex items-center justify-between">
-            <SheetTitle className="text-xl font-semibold text-gray-900 dark:text-gray-50">
+            <SheetTitle className="text-xl font-semibold text-gray-900 text-gray-50">
               {title}
             </SheetTitle>
             {!isViewMode && lead && (
@@ -165,7 +165,7 @@ export default function LeadDetailSheet({
             )}
           </div>
           {lead && mode === 'view' && (
-            <SheetDescription className="text-gray-600 dark:text-gray-400">
+            <SheetDescription className="text-gray-600 text-gray-400">
               Created {new Date(lead.createdAt).toLocaleDateString()}
               {lead.lastContact && ` · Last contact ${new Date(lead.lastContact).toLocaleDateString()}`}
             </SheetDescription>
@@ -174,22 +174,22 @@ export default function LeadDetailSheet({
 
         <div className="py-6">
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="w-full grid grid-cols-3 bg-gray-100 dark:bg-gray-800">
+            <TabsList className="w-full grid grid-cols-3 bg-gray-100 bg-gray-800">
               <TabsTrigger
                 value="basic"
-                className="text-gray-700 dark:text-gray-300"
+                className="text-gray-700 text-gray-300"
               >
                 Basic Info
               </TabsTrigger>
               <TabsTrigger
                 value="location"
-                className="text-gray-700 dark:text-gray-300"
+                className="text-gray-700 text-gray-300"
               >
                 Location
               </TabsTrigger>
               <TabsTrigger
                 value="social"
-                className="text-gray-700 dark:text-gray-300"
+                className="text-gray-700 text-gray-300"
               >
                 Social
               </TabsTrigger>
@@ -205,7 +205,7 @@ export default function LeadDetailSheet({
               
               {/* Status Select */}
               <div className="space-y-2">
-                <Label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                <Label className="text-sm font-medium text-gray-700 text-gray-300">
                   Status
                 </Label>
                 {isViewMode ? (
@@ -217,12 +217,12 @@ export default function LeadDetailSheet({
                     value={formData.status}
                     onValueChange={(v) => handleChange('status', v)}
                   >
-                    <SelectTrigger className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100">
+                    <SelectTrigger className="bg-white bg-gray-800 border-gray-200 border-gray-700 text-gray-900 text-gray-100">
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+                    <SelectContent className="bg-white bg-gray-800 border-gray-200 border-gray-700">
                       {Object.entries(statusConfig).map(([status, config]) => (
-                        <SelectItem key={status} value={status} className="text-gray-900 dark:text-gray-100">
+                        <SelectItem key={status} value={status} className="text-gray-900 text-gray-100">
                           {config.label}
                         </SelectItem>
                       ))}
@@ -233,14 +233,14 @@ export default function LeadDetailSheet({
 
               {/* Notes */}
               <div className="space-y-2">
-                <Label className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center">
-                  <FileText className="w-4 h-4 mr-2 text-gray-400 dark:text-gray-500" />
+                <Label className="text-sm font-medium text-gray-700 text-gray-300 flex items-center">
+                  <FileText className="w-4 h-4 mr-2 text-gray-400 text-gray-500" />
                   Notes
                 </Label>
                 {isViewMode ? (
-                  <div className="text-gray-900 dark:text-gray-100 py-2 whitespace-pre-wrap">
+                  <div className="text-gray-900 text-gray-100 py-2 whitespace-pre-wrap">
                     {formData.notes || (
-                      <span className="text-gray-400 dark:text-gray-500">No notes</span>
+                      <span className="text-gray-400 text-gray-500">No notes</span>
                     )}
                   </div>
                 ) : (
@@ -249,7 +249,7 @@ export default function LeadDetailSheet({
                     onChange={(e) => handleChange('notes', e.target.value)}
                     placeholder="Add any notes about this lead..."
                     rows={4}
-                    className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100"
+                    className="bg-white bg-gray-800 border-gray-200 border-gray-700 text-gray-900 text-gray-100"
                   />
                 )}
               </div>
@@ -266,14 +266,14 @@ export default function LeadDetailSheet({
                 <InputField label="Neighborhood" field="neighborhood" placeholder="Downtown" />
               </div>
               <div className="space-y-2">
-                <Label className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center">
-                  <Clock className="w-4 h-4 mr-2 text-gray-400 dark:text-gray-500" />
+                <Label className="text-sm font-medium text-gray-700 text-gray-300 flex items-center">
+                  <Clock className="w-4 h-4 mr-2 text-gray-400 text-gray-500" />
                   Opening Hours
                 </Label>
                 {isViewMode ? (
-                  <div className="text-gray-900 dark:text-gray-100 py-2 whitespace-pre-wrap">
+                  <div className="text-gray-900 text-gray-100 py-2 whitespace-pre-wrap">
                     {formData.openingHours || (
-                      <span className="text-gray-400 dark:text-gray-500">Not provided</span>
+                      <span className="text-gray-400 text-gray-500">Not provided</span>
                     )}
                   </div>
                 ) : (
@@ -282,7 +282,7 @@ export default function LeadDetailSheet({
                     onChange={(e) => handleChange('openingHours', e.target.value)}
                     placeholder="Mon-Fri: 9am-5pm&#10;Sat: 10am-4pm&#10;Sun: Closed"
                     rows={3}
-                    className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100"
+                    className="bg-white bg-gray-800 border-gray-200 border-gray-700 text-gray-900 text-gray-100"
                   />
                 )}
               </div>
@@ -298,11 +298,11 @@ export default function LeadDetailSheet({
           </Tabs>
         </div>
 
-        <SheetFooter className="pt-4 border-t border-gray-200 dark:border-gray-700">
+        <SheetFooter className="pt-4 border-t border-gray-200 border-gray-700">
           {isViewMode ? (
             <Button
               onClick={onClose}
-              className="w-full bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700"
+              className="w-full bg-gray-100 bg-gray-800 text-gray-900 text-gray-100 hover:bg-gray-200 hover:bg-gray-700"
             >
               Close
             </Button>
@@ -311,7 +311,7 @@ export default function LeadDetailSheet({
               <Button
                 variant="outline"
                 onClick={onClose}
-                className="flex-1 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300"
+                className="flex-1 border-gray-200 border-gray-700 text-gray-700 text-gray-300"
               >
                 <X className="w-4 h-4 mr-2" />
                 Cancel
@@ -319,7 +319,7 @@ export default function LeadDetailSheet({
               <Button
                 onClick={handleSubmit}
                 disabled={isSaving || !formData.companyName}
-                className="flex-1 bg-teal-500 dark:bg-teal-600 text-white dark:text-gray-100 hover:bg-teal-600 dark:hover:bg-teal-700"
+                className="flex-1 bg-teal-500 bg-teal-600 text-white text-gray-100 hover:bg-teal-600 hover:bg-teal-700"
               >
                 <Save className="w-4 h-4 mr-2" />
                 {isSaving ? 'Saving...' : 'Save'}

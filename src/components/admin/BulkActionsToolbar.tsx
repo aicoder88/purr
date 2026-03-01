@@ -77,23 +77,23 @@ export default function BulkActionsToolbar({
   }
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 sm:left-1/2 sm:right-auto sm:transform sm:-translate-x-1/2 sm:w-auto bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 p-4 z-50">
+    <div className="fixed bottom-4 left-4 right-4 sm:left-1/2 sm:right-auto sm:transform sm:-translate-x-1/2 sm:w-auto bg-white bg-gray-800 rounded-lg shadow-xl border border-gray-200 border-gray-700 p-4 z-50">
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
         {/* Selection count */}
         <div className="flex items-center space-x-2">
-          <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
+          <span className="text-sm font-medium text-gray-900 text-gray-100">
             {selectedCount} selected
           </span>
           <button
             onClick={onClearSelection}
-            className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors"
+            className="p-1 hover:bg-gray-100 hover:bg-gray-700 rounded transition-colors"
             title="Clear selection"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
-        <div className="hidden sm:block w-px h-6 bg-gray-300 dark:bg-gray-600" />
+        <div className="hidden sm:block w-px h-6 bg-gray-300 bg-gray-600" />
 
         {/* Actions */}
         <div className="flex flex-wrap items-center gap-2">
@@ -101,22 +101,22 @@ export default function BulkActionsToolbar({
           <div className="relative">
             <button
               onClick={() => setShowCategorySelect(false)}
-              className="flex items-center space-x-2 px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-sm"
+              className="flex items-center space-x-2 px-3 py-2 border border-gray-300 border-gray-700 rounded-lg hover:bg-gray-50 hover:bg-gray-700 transition-colors text-sm"
               disabled={executing}
             >
               <FileText className="w-4 h-4" />
               <span>Status</span>
             </button>
-            <div className="absolute bottom-full mb-2 left-0 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-1 min-w-[150px] hidden group-hover:block">
+            <div className="absolute bottom-full mb-2 left-0 bg-white bg-gray-800 rounded-lg shadow-lg border border-gray-200 border-gray-700 py-1 min-w-[150px] hidden group-hover:block">
               <button
                 onClick={() => handleChangeStatus('published')}
-                className="w-full px-4 py-2 text-left text-sm hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="w-full px-4 py-2 text-left text-sm hover:bg-gray-100 hover:bg-gray-700"
               >
                 Publish
               </button>
               <button
                 onClick={() => handleChangeStatus('draft')}
-                className="w-full px-4 py-2 text-left text-sm hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="w-full px-4 py-2 text-left text-sm hover:bg-gray-100 hover:bg-gray-700"
               >
                 Draft
               </button>
@@ -130,7 +130,7 @@ export default function BulkActionsToolbar({
                 setShowCategorySelect(!showCategorySelect);
                 setShowTagSelect(false);
               }}
-              className="flex items-center space-x-2 px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-sm"
+              className="flex items-center space-x-2 px-3 py-2 border border-gray-300 border-gray-700 rounded-lg hover:bg-gray-50 hover:bg-gray-700 transition-colors text-sm"
               disabled={executing}
             >
               <Folder className="w-4 h-4" />
@@ -145,7 +145,7 @@ export default function BulkActionsToolbar({
                 setShowTagSelect(!showTagSelect);
                 setShowCategorySelect(false);
               }}
-              className="flex items-center space-x-2 px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-sm"
+              className="flex items-center space-x-2 px-3 py-2 border border-gray-300 border-gray-700 rounded-lg hover:bg-gray-50 hover:bg-gray-700 transition-colors text-sm"
               disabled={executing}
             >
               <Tag className="w-4 h-4" />
@@ -153,13 +153,13 @@ export default function BulkActionsToolbar({
             </button>
           )}
 
-          <div className="w-px h-6 bg-gray-300 dark:bg-gray-600" />
+          <div className="w-px h-6 bg-gray-300 bg-gray-600" />
 
           {/* Delete */}
           <button
             onClick={handleDelete}
             disabled={executing}
-            className="flex items-center space-x-2 px-3 py-2 bg-red-600 text-white dark:text-gray-100 rounded-lg hover:bg-red-700 dark:hover:bg-red-600 transition-colors text-sm disabled:opacity-50"
+            className="flex items-center space-x-2 px-3 py-2 bg-red-600 text-white text-gray-100 rounded-lg hover:bg-red-700 hover:bg-red-600 transition-colors text-sm disabled:opacity-50"
           >
             <Trash2 className="w-4 h-4" />
             <span>Delete</span>
@@ -169,7 +169,7 @@ export default function BulkActionsToolbar({
 
       {/* Category Selection Popup */}
       {showCategorySelect && (
-        <div className="mt-4 p-4 border-t border-gray-200 dark:border-gray-700">
+        <div className="mt-4 p-4 border-t border-gray-200 border-gray-700">
           <h4 className="text-sm font-medium mb-2">Select Categories</h4>
           <div className="space-y-2 max-h-48 overflow-y-auto">
             {categories.map((category) => (
@@ -184,7 +184,7 @@ export default function BulkActionsToolbar({
                       setSelectedCategories(selectedCategories.filter(id => id !== category.id));
                     }
                   }}
-                  className="rounded border-gray-300 dark:border-gray-600 text-purple-600 dark:text-purple-400 focus:ring-purple-500 dark:focus:ring-purple-400"
+                  className="rounded border-gray-300 border-gray-600 text-purple-600 text-purple-400 focus:ring-purple-500 focus:ring-purple-400"
                 />
                 <span className="text-sm">{category.name}</span>
               </label>
@@ -196,13 +196,13 @@ export default function BulkActionsToolbar({
                 setShowCategorySelect(false);
                 setSelectedCategories([]);
               }}
-              className="px-3 py-1 text-sm border border-gray-300 dark:border-gray-700 rounded hover:bg-gray-50 dark:hover:bg-gray-700"
+              className="px-3 py-1 text-sm border border-gray-300 border-gray-700 rounded hover:bg-gray-50 hover:bg-gray-700"
             >
               Cancel
             </button>
             <button
               onClick={handleAssignCategories}
-              className="px-3 py-1 text-sm bg-purple-600 text-white dark:text-gray-100 rounded hover:bg-purple-700 dark:hover:bg-purple-600"
+              className="px-3 py-1 text-sm bg-purple-600 text-white text-gray-100 rounded hover:bg-purple-700 hover:bg-purple-600"
             >
               Apply
             </button>
@@ -212,7 +212,7 @@ export default function BulkActionsToolbar({
 
       {/* Tag Selection Popup */}
       {showTagSelect && (
-        <div className="mt-4 p-4 border-t border-gray-200 dark:border-gray-700">
+        <div className="mt-4 p-4 border-t border-gray-200 border-gray-700">
           <h4 className="text-sm font-medium mb-2">Select Tags</h4>
           <div className="space-y-2 max-h-48 overflow-y-auto">
             {tags.map((tag) => (
@@ -227,7 +227,7 @@ export default function BulkActionsToolbar({
                       setSelectedTags(selectedTags.filter(id => id !== tag.id));
                     }
                   }}
-                  className="rounded border-gray-300 dark:border-gray-600 text-purple-600 dark:text-purple-400 focus:ring-purple-500 dark:focus:ring-purple-400"
+                  className="rounded border-gray-300 border-gray-600 text-purple-600 text-purple-400 focus:ring-purple-500 focus:ring-purple-400"
                 />
                 <span className="text-sm">{tag.name}</span>
               </label>
@@ -239,13 +239,13 @@ export default function BulkActionsToolbar({
                 setShowTagSelect(false);
                 setSelectedTags([]);
               }}
-              className="px-3 py-1 text-sm border border-gray-300 dark:border-gray-700 rounded hover:bg-gray-50 dark:hover:bg-gray-700"
+              className="px-3 py-1 text-sm border border-gray-300 border-gray-700 rounded hover:bg-gray-50 hover:bg-gray-700"
             >
               Cancel
             </button>
             <button
               onClick={handleAssignTags}
-              className="px-3 py-1 text-sm bg-purple-600 text-white dark:text-gray-100 rounded hover:bg-purple-700 dark:hover:bg-purple-600"
+              className="px-3 py-1 text-sm bg-purple-600 text-white text-gray-100 rounded hover:bg-purple-700 hover:bg-purple-600"
             >
               Apply
             </button>

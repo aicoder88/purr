@@ -32,10 +32,10 @@ export function QuickDecisionSection() {
   ];
 
   return (
-    <section className="py-12 bg-brand-light/30 dark:bg-gray-800/50">
+    <section className="py-12 bg-brand-light/30 bg-gray-800/50">
       <Container>
         <div className="text-center mb-8">
-          <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+          <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 text-gray-100 mb-2">
             {locale === 'fr'
               ? "Répondez à une question. Trouvez votre format."
               : "Answer One Question. Find Your Size."}
@@ -47,22 +47,22 @@ export function QuickDecisionSection() {
             <Link
               key={index}
               href={`${locale === 'fr' ? '/fr' : ''}/stores`}
-              className="group bg-white dark:bg-gray-700 rounded-xl p-6 hover:bg-brand-light dark:hover:bg-gray-600 transition-all hover:shadow-lg border-2 border-transparent hover:border-brand-purple"
+              className="group bg-white bg-gray-700 rounded-xl p-6 hover:bg-brand-light hover:bg-gray-600 transition-all hover:shadow-lg border-2 border-transparent hover:border-brand-purple"
             >
-              <div className="text-brand-purple dark:text-purple-400 mb-3">
+              <div className="text-brand-purple text-purple-400 mb-3">
                 {pick.icon}
               </div>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">{pick.question}</p>
-              <p className="font-heading font-bold text-xl text-gray-900 dark:text-gray-100 mb-2 group-hover:text-brand-purple transition-colors">
+              <p className="text-sm text-gray-500 text-gray-400 mb-1">{pick.question}</p>
+              <p className="font-heading font-bold text-xl text-gray-900 text-gray-100 mb-2 group-hover:text-brand-purple transition-colors">
                 {pick.answer} <MapPin className="inline w-4 h-4 ml-1" />
               </p>
-              <p className="text-sm text-gray-600 dark:text-gray-300">{pick.detail}</p>
+              <p className="text-sm text-gray-600 text-gray-300">{pick.detail}</p>
             </Link>
           ))}
         </div>
 
         {/* Transition to detailed comparison */}
-        <p className="text-center mt-10 text-gray-600 dark:text-gray-400">
+        <p className="text-center mt-10 text-gray-600 text-gray-400">
           {locale === 'fr'
             ? "Vous voulez tous les détails? Comparez côte à côte:"
             : "Want all the details? Compare side by side:"}

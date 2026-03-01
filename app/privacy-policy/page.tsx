@@ -70,20 +70,20 @@ export default function PrivacyPolicyPage() {
     <>
 
       <main className="max-w-4xl mx-auto py-12 px-4">
-        <h1 className="font-heading text-4xl font-bold mb-6 text-gray-900 dark:text-gray-50">
+        <h1 className="font-heading text-4xl font-bold mb-6 text-gray-900 text-gray-50">
           {privacyContent.title}
         </h1>
 
         {privacyContent.sections.map((section, index) => (
           <div key={index} className={index > 0 ? "mt-8" : ""}>
-            <h2 className="font-heading text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-50">
+            <h2 className="font-heading text-2xl font-semibold mb-4 text-gray-900 text-gray-50">
               {section.title}
             </h2>
-            <p className="mb-4 text-gray-700 dark:text-gray-200">
+            <p className="mb-4 text-gray-700 text-gray-200">
               {section.content}
             </p>
             {section.items && section.items.length > 0 && (
-              <ul className="list-disc pl-6 mb-6 text-gray-700 dark:text-gray-200">
+              <ul className="list-disc pl-6 mb-6 text-gray-700 text-gray-200">
                 {section.items.map((item, itemIndex) => (
                   <li key={itemIndex} dangerouslySetInnerHTML={{ __html: item }} />
                 ))}
@@ -93,37 +93,37 @@ export default function PrivacyPolicyPage() {
         ))}
 
         <div className="mt-8">
-          <h2 className="font-heading text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-50">
+          <h2 className="font-heading text-2xl font-semibold mb-4 text-gray-900 text-gray-50">
             Contact Us
           </h2>
-          <p className="mb-4 text-gray-700 dark:text-gray-200">
+          <p className="mb-4 text-gray-700 text-gray-200">
             If you have any questions, concerns, or requests regarding this Privacy Policy or your personal information, please contact us:
           </p>
-          <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-            <p className="mb-2 text-gray-700 dark:text-gray-200">
+          <div className="bg-gray-50 bg-gray-800 p-6 rounded-lg">
+            <p className="mb-2 text-gray-700 text-gray-200">
               <strong>Email:</strong>{" "}
               <a
                 href={`mailto:${privacyContent.contactInfo.email}`}
-                className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300"
+                className="text-blue-600 text-blue-400 underline hover:text-blue-800 hover:text-blue-300"
               >
                 {privacyContent.contactInfo.email}
               </a>
             </p>
-            <p className="mb-2 text-gray-700 dark:text-gray-200">
+            <p className="mb-2 text-gray-700 text-gray-200">
               <strong>Address:</strong> {privacyContent.contactInfo.address}
             </p>
-            <p className="text-gray-700 dark:text-gray-200">
+            <p className="text-gray-700 text-gray-200">
               <strong>Phone:</strong>{" "}
               <a
                 href={`tel:${privacyContent.contactInfo.phone.replace(/[^0-9+]/g, '')}`}
-                className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300"
+                className="text-blue-600 text-blue-400 underline hover:text-blue-800 hover:text-blue-300"
               >
                 {privacyContent.contactInfo.phone}
               </a>
             </p>
           </div>
 
-          <p className="mt-8 text-sm text-gray-500 dark:text-gray-400">
+          <p className="mt-8 text-sm text-gray-500 text-gray-400">
             {privacyContent.lastUpdated}
           </p>
         </div>

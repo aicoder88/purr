@@ -43,25 +43,25 @@ const IMAGE_BY_ID: Record<string, { image: string; imageSize: "sm" | "md" | "lg"
 
 const CARD_TONE_BY_ID: Record<string, { badge: string; glow: string; dot: string; storeButton: string }> = {
   trial: {
-    badge: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300",
+    badge: "bg-emerald-100 text-emerald-700 bg-emerald-900/40 text-emerald-300",
     glow: "before:bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.16),transparent_58%)]",
-    dot: "text-emerald-500 dark:text-emerald-300",
+    dot: "text-emerald-500 text-emerald-300",
     storeButton:
-      "bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 dark:bg-emerald-950/40 dark:hover:bg-emerald-900/40 dark:text-emerald-200 dark:border-emerald-800",
+      "bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 bg-emerald-950/40 hover:bg-emerald-900/40 text-emerald-200 border-emerald-800",
   },
   regular: {
-    badge: "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300",
+    badge: "bg-blue-100 text-blue-700 bg-blue-900/40 text-blue-300",
     glow: "before:bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.16),transparent_58%)]",
-    dot: "text-blue-500 dark:text-blue-300",
+    dot: "text-blue-500 text-blue-300",
     storeButton:
-      "bg-blue-50 hover:bg-blue-100 text-blue-800 border border-blue-200 dark:bg-blue-950/40 dark:hover:bg-blue-900/40 dark:text-blue-200 dark:border-blue-800",
+      "bg-blue-50 hover:bg-blue-100 text-blue-800 border border-blue-200 bg-blue-950/40 hover:bg-blue-900/40 text-blue-200 border-blue-800",
   },
   large: {
-    badge: "bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300",
+    badge: "bg-amber-100 text-amber-700 bg-amber-900/40 text-amber-300",
     glow: "before:bg-[radial-gradient(circle_at_top,rgba(245,158,11,0.16),transparent_58%)]",
-    dot: "text-amber-500 dark:text-amber-300",
+    dot: "text-amber-500 text-amber-300",
     storeButton:
-      "bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 dark:bg-amber-950/40 dark:hover:bg-amber-900/40 dark:text-amber-200 dark:border-amber-800",
+      "bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 bg-amber-950/40 hover:bg-amber-900/40 text-amber-200 border-amber-800",
   },
 };
 
@@ -131,13 +131,13 @@ export function EnhancedProductComparison() {
     }, []);
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#f8fafc_0%,#eef2ff_40%,#f8fafc_100%)] py-14 md:py-16 dark:bg-[linear-gradient(180deg,#020617_0%,#0f172a_45%,#020617_100%)]">
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#f8fafc_0%,#eef2ff_40%,#f8fafc_100%)] py-14 md:py-16 bg-[linear-gradient(180deg,#020617_0%,#0f172a_45%,#020617_100%)]">
       <Container>
         <div className="mx-auto mb-10 max-w-3xl text-center">
-          <h2 className="font-heading text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">
+          <h2 className="font-heading text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 text-white">
             {t("productComparison.title")}
           </h2>
-          <p className="mt-3 text-base md:text-lg text-gray-600 dark:text-gray-400">
+          <p className="mt-3 text-base md:text-lg text-gray-600 text-gray-400">
             {t("productComparison.subtitle")}
           </p>
         </div>
@@ -153,11 +153,11 @@ export function EnhancedProductComparison() {
                   "relative isolate flex h-full flex-col overflow-hidden rounded-[2rem] border border-gray-200/90 bg-white/95 shadow-[0_14px_36px_-26px_rgba(15,23,42,0.7)] backdrop-blur-sm transition-all duration-300",
                   "before:absolute before:inset-0 before:-z-10 before:content-['']",
                   "hover:-translate-y-1 hover:shadow-[0_22px_44px_-24px_rgba(15,23,42,0.8)]",
-                  "dark:border-gray-700 dark:bg-gray-950/90",
+                  "border-gray-700 bg-gray-950/90",
                   tone.glow,
                 ].join(" ")}
               >
-                <div className="border-b border-gray-200/80 px-6 pb-5 pt-6 dark:border-gray-800">
+                <div className="border-b border-gray-200/80 px-6 pb-5 pt-6 border-gray-800">
                   <div className="mb-5 flex items-center">
                     <span className={["inline-flex rounded-full px-3 py-1 text-[11px] font-semibold tracking-[0.14em]", tone.badge].join(" ")}>
                       {product.badgeLabel}
@@ -182,35 +182,35 @@ export function EnhancedProductComparison() {
                       />
                     </div>
                     <div className="min-w-0">
-                      <h3 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{product.name}</h3>
-                      <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{product.subtitle}</p>
+                      <h3 className="text-2xl font-semibold tracking-tight text-gray-900 text-white">{product.name}</h3>
+                      <p className="mt-1 text-sm text-gray-600 text-gray-400">{product.subtitle}</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="flex flex-1 flex-col px-6 pb-6 pt-5">
-                  <div className="mb-6 grid grid-cols-2 gap-4 border-y border-gray-200/80 py-4 dark:border-gray-800">
+                  <div className="mb-6 grid grid-cols-2 gap-4 border-y border-gray-200/80 py-4 border-gray-800">
                     <div>
-                      <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">
+                      <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-gray-500 text-gray-400">
                         {t("productComparison.duration")}
                       </p>
-                      <p className="mt-2 text-sm font-semibold text-gray-900 dark:text-white">{product.duration}</p>
+                      <p className="mt-2 text-sm font-semibold text-gray-900 text-white">{product.duration}</p>
                     </div>
                     <div>
-                      <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">
+                      <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-gray-500 text-gray-400">
                         {t("productComparison.idealFor")}
                       </p>
-                      <p className="mt-2 text-sm font-semibold text-gray-900 dark:text-white">{product.idealFor}</p>
+                      <p className="mt-2 text-sm font-semibold text-gray-900 text-white">{product.idealFor}</p>
                     </div>
                   </div>
 
                   <div className="mb-6">
-                    <h4 className="mb-3 text-[11px] font-medium uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">
+                    <h4 className="mb-3 text-[11px] font-medium uppercase tracking-[0.14em] text-gray-500 text-gray-400">
                       {t("productComparison.features")}
                     </h4>
                     <ul className="space-y-2.5">
                       {product.features.map((feature) => (
-                        <li key={feature} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+                        <li key={feature} className="flex items-start gap-2 text-sm text-gray-600 text-gray-400">
                           <CheckCircle2 className={["mt-0.5 h-4 w-4 shrink-0", tone.dot].join(" ")} />
                           <span>{feature}</span>
                         </li>
@@ -218,9 +218,9 @@ export function EnhancedProductComparison() {
                     </ul>
                   </div>
 
-                  <div className="mb-6 rounded-2xl border border-gray-200 bg-gray-50/80 p-4 dark:border-gray-700 dark:bg-gray-900">
-                    <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-                      <span className="font-semibold text-gray-900 dark:text-white">{t("productComparison.idealFor")}:</span>{" "}
+                  <div className="mb-6 rounded-2xl border border-gray-200 bg-gray-50/80 p-4 border-gray-700 bg-gray-900">
+                    <p className="text-sm leading-relaxed text-gray-600 text-gray-400">
+                      <span className="font-semibold text-gray-900 text-white">{t("productComparison.idealFor")}:</span>{" "}
                       {product.bestFor}
                     </p>
                   </div>
@@ -229,12 +229,12 @@ export function EnhancedProductComparison() {
                     {product.ctaType === "stripe" && product.stripeLink ? (
                       <div className="space-y-2">
                         <a href={product.stripeLink} target="_blank" rel="noopener noreferrer" className="block">
-                          <Button className="h-11 w-full rounded-full bg-gray-900 text-gray-50 hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200">
+                          <Button className="h-11 w-full rounded-full bg-gray-900 text-gray-50 hover:bg-gray-800 bg-gray-100 text-gray-900 hover:bg-gray-200">
                             {product.ctaLabel}
                             <ChevronRight className="w-4 h-4 ml-1" />
                           </Button>
                         </a>
-                        <p className="text-xs text-center text-gray-500 dark:text-gray-400">
+                        <p className="text-xs text-center text-gray-500 text-gray-400">
                           {t("hero.simplified.justPayShipping")} ({trialPrice})
                         </p>
                       </div>

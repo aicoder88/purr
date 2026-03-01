@@ -76,7 +76,7 @@ const COUNTRIES = [
   { value: 'United States', label: 'United States' },
 ] as const;
 
-const INPUT_CLASSES = 'w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 disabled:opacity-50';
+const INPUT_CLASSES = 'w-full px-3 py-2 border border-gray-300 border-gray-600 rounded-md bg-white bg-gray-700 text-gray-900 text-gray-50 disabled:opacity-50';
 
 // ============================================================================
 // Subcomponents
@@ -93,8 +93,8 @@ function ToggleSwitch({ checked, onChange, label, description }: ToggleSwitchPro
   return (
     <div className="flex items-center justify-between">
       <div>
-        <p className="text-sm font-medium text-gray-900 dark:text-gray-50">{label}</p>
-        <p className="text-sm text-gray-500 dark:text-gray-400">{description}</p>
+        <p className="text-sm font-medium text-gray-900 text-gray-50">{label}</p>
+        <p className="text-sm text-gray-500 text-gray-400">{description}</p>
       </div>
       <label className="relative inline-flex items-center cursor-pointer">
         <input
@@ -103,7 +103,7 @@ function ToggleSwitch({ checked, onChange, label, description }: ToggleSwitchPro
           onChange={onChange}
           className="sr-only peer"
         />
-        <div className="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 dark:after:border-gray-600 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+        <div className="w-11 h-6 bg-gray-200 bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border-gray-600 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
       </label>
     </div>
   );
@@ -116,9 +116,9 @@ interface FormSectionProps {
 
 function FormSection({ title, children }: FormSectionProps) {
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
-      <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-        <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50">{title}</h3>
+    <div className="bg-white bg-gray-800 rounded-lg shadow">
+      <div className="px-6 py-4 border-b border-gray-200 border-gray-700">
+        <h3 className="font-heading text-lg font-medium text-gray-900 text-gray-50">{title}</h3>
       </div>
       <div className="p-6 space-y-4">
         {children}
@@ -278,60 +278,60 @@ export function ProfileTab({ customer }: ProfileTabProps) {
     <div className="space-y-6">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Personal Information */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
-          <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-            <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50">Personal Information</h3>
+        <div className="bg-white bg-gray-800 rounded-lg shadow">
+          <div className="px-6 py-4 border-b border-gray-200 border-gray-700">
+            <h3 className="font-heading text-lg font-medium text-gray-900 text-gray-50">Personal Information</h3>
           </div>
           <div className="p-6 space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
                   First Name
                 </label>
                 <input
                   type="text"
                   value={profileData.firstName}
                   onChange={handleProfileFieldChange('firstName')}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 disabled:opacity-50"
+                  className="w-full px-3 py-2 border border-gray-300 border-gray-600 rounded-md bg-white bg-gray-700 text-gray-900 text-gray-50 disabled:opacity-50"
                   disabled={!editingProfile}
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
                   Last Name
                 </label>
                 <input
                   type="text"
                   value={profileData.lastName}
                   onChange={handleProfileFieldChange('lastName')}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 disabled:opacity-50"
+                  className="w-full px-3 py-2 border border-gray-300 border-gray-600 rounded-md bg-white bg-gray-700 text-gray-900 text-gray-50 disabled:opacity-50"
                   disabled={!editingProfile}
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
                 Email
               </label>
               <input
                 type="email"
                 value={profileData.email}
                 onChange={handleProfileFieldChange('email')}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 disabled:opacity-50"
+                className="w-full px-3 py-2 border border-gray-300 border-gray-600 rounded-md bg-white bg-gray-700 text-gray-900 text-gray-50 disabled:opacity-50"
                 disabled={!editingProfile}
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
                 Phone
               </label>
               <input
                 type="tel"
                 value={profileData.phone}
                 onChange={handleProfileFieldChange('phone')}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 disabled:opacity-50"
+                className="w-full px-3 py-2 border border-gray-300 border-gray-600 rounded-md bg-white bg-gray-700 text-gray-900 text-gray-50 disabled:opacity-50"
                 disabled={!editingProfile}
                 placeholder="(555) 123-4567"
               />
@@ -343,13 +343,13 @@ export function ProfileTab({ customer }: ProfileTabProps) {
                   <button
                     onClick={handleProfileSave}
                     disabled={loading}
-                    className="flex-1 px-4 py-2 bg-green-600 text-white dark:text-gray-100 font-medium rounded-md hover:bg-green-700 transition-colors disabled:opacity-50"
+                    className="flex-1 px-4 py-2 bg-green-600 text-white text-gray-100 font-medium rounded-md hover:bg-green-700 transition-colors disabled:opacity-50"
                   >
                     {loading ? 'Saving...' : 'Save Changes'}
                   </button>
                   <button
                     onClick={handleCancelProfileEdit}
-                    className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                    className="px-4 py-2 border border-gray-300 border-gray-600 text-gray-700 text-gray-200 rounded-md hover:bg-gray-50 hover:bg-gray-700 transition-colors"
                   >
                     Cancel
                   </button>
@@ -357,7 +357,7 @@ export function ProfileTab({ customer }: ProfileTabProps) {
               ) : (
                 <button
                   onClick={handleEditProfile}
-                  className="w-full px-4 py-2 bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 font-medium rounded-md hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors"
+                  className="w-full px-4 py-2 bg-blue-600 bg-blue-600 text-white text-gray-100 font-medium rounded-md hover:bg-blue-700 hover:bg-blue-500 transition-colors"
                 >
                   Edit Profile
                 </button>
@@ -367,39 +367,39 @@ export function ProfileTab({ customer }: ProfileTabProps) {
         </div>
 
         {/* Shipping Address */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
-          <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-            <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50">Shipping Address</h3>
+        <div className="bg-white bg-gray-800 rounded-lg shadow">
+          <div className="px-6 py-4 border-b border-gray-200 border-gray-700">
+            <h3 className="font-heading text-lg font-medium text-gray-900 text-gray-50">Shipping Address</h3>
           </div>
           <div className="p-6 space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
                 Street Address
               </label>
               <input
                 type="text"
                 value={addressData.street}
                 onChange={handleAddressFieldChange('street')}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 disabled:opacity-50"
+                className="w-full px-3 py-2 border border-gray-300 border-gray-600 rounded-md bg-white bg-gray-700 text-gray-900 text-gray-50 disabled:opacity-50"
                 disabled={!editingAddress}
               />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
                   City
                 </label>
                 <input
                   type="text"
                   value={addressData.city}
                   onChange={handleAddressFieldChange('city')}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 disabled:opacity-50"
+                  className="w-full px-3 py-2 border border-gray-300 border-gray-600 rounded-md bg-white bg-gray-700 text-gray-900 text-gray-50 disabled:opacity-50"
                   disabled={!editingAddress}
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
                   Province
                 </label>
                 <select
@@ -417,20 +417,20 @@ export function ProfileTab({ customer }: ProfileTabProps) {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
                   Postal Code
                 </label>
                 <input
                   type="text"
                   value={addressData.postalCode}
                   onChange={handleAddressFieldChange('postalCode')}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 disabled:opacity-50"
+                  className="w-full px-3 py-2 border border-gray-300 border-gray-600 rounded-md bg-white bg-gray-700 text-gray-900 text-gray-50 disabled:opacity-50"
                   disabled={!editingAddress}
                   placeholder="A1A 1A1"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
                   Country
                 </label>
                 <select
@@ -452,13 +452,13 @@ export function ProfileTab({ customer }: ProfileTabProps) {
                   <button
                     onClick={handleAddressSave}
                     disabled={loading}
-                    className="flex-1 px-4 py-2 bg-green-600 text-white dark:text-gray-100 font-medium rounded-md hover:bg-green-700 transition-colors disabled:opacity-50"
+                    className="flex-1 px-4 py-2 bg-green-600 text-white text-gray-100 font-medium rounded-md hover:bg-green-700 transition-colors disabled:opacity-50"
                   >
                     {loading ? 'Saving...' : 'Save Address'}
                   </button>
                   <button
                     onClick={handleCancelAddressEdit}
-                    className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                    className="px-4 py-2 border border-gray-300 border-gray-600 text-gray-700 text-gray-200 rounded-md hover:bg-gray-50 hover:bg-gray-700 transition-colors"
                   >
                     Cancel
                   </button>
@@ -466,7 +466,7 @@ export function ProfileTab({ customer }: ProfileTabProps) {
               ) : (
                 <button
                   onClick={handleEditAddress}
-                  className="w-full px-4 py-2 bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 font-medium rounded-md hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors"
+                  className="w-full px-4 py-2 bg-blue-600 bg-blue-600 text-white text-gray-100 font-medium rounded-md hover:bg-blue-700 hover:bg-blue-500 transition-colors"
                 >
                   Edit Address
                 </button>
@@ -478,31 +478,31 @@ export function ProfileTab({ customer }: ProfileTabProps) {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Security Settings */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
-          <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-            <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50">Security Settings</h3>
+        <div className="bg-white bg-gray-800 rounded-lg shadow">
+          <div className="px-6 py-4 border-b border-gray-200 border-gray-700">
+            <h3 className="font-heading text-lg font-medium text-gray-900 text-gray-50">Security Settings</h3>
           </div>
           <div className="p-6">
             {!showPasswordForm ? (
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-gray-900 dark:text-gray-50">Password</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Last changed 3 months ago</p>
+                    <p className="text-sm font-medium text-gray-900 text-gray-50">Password</p>
+                    <p className="text-sm text-gray-500 text-gray-400">Last changed 3 months ago</p>
                   </div>
                   <button
                     onClick={handleShowPasswordForm}
-                    className="px-4 py-2 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-md hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                    className="px-4 py-2 text-sm bg-gray-100 bg-gray-700 text-gray-700 text-gray-200 rounded-md hover:bg-gray-200 hover:bg-gray-600 transition-colors"
                   >
                     Change Password
                   </button>
                 </div>
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-gray-900 dark:text-gray-50">Two-Factor Authentication</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Add an extra layer of security</p>
+                    <p className="text-sm font-medium text-gray-900 text-gray-50">Two-Factor Authentication</p>
+                    <p className="text-sm text-gray-500 text-gray-400">Add an extra layer of security</p>
                   </div>
-                  <button className="px-4 py-2 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-md hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                  <button className="px-4 py-2 text-sm bg-gray-100 bg-gray-700 text-gray-700 text-gray-200 rounded-md hover:bg-gray-200 hover:bg-gray-600 transition-colors">
                     Enable 2FA
                   </button>
                 </div>
@@ -510,49 +510,49 @@ export function ProfileTab({ customer }: ProfileTabProps) {
             ) : (
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
                     Current Password
                   </label>
                   <input
                     type="password"
                     value={passwordData.currentPassword}
                     onChange={handlePasswordFieldChange('currentPassword')}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50"
+                    className="w-full px-3 py-2 border border-gray-300 border-gray-600 rounded-md bg-white bg-gray-700 text-gray-900 text-gray-50"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
                     New Password
                   </label>
                   <input
                     type="password"
                     value={passwordData.newPassword}
                     onChange={handlePasswordFieldChange('newPassword')}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50"
+                    className="w-full px-3 py-2 border border-gray-300 border-gray-600 rounded-md bg-white bg-gray-700 text-gray-900 text-gray-50"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-1">
                     Confirm New Password
                   </label>
                   <input
                     type="password"
                     value={passwordData.confirmPassword}
                     onChange={handlePasswordFieldChange('confirmPassword')}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50"
+                    className="w-full px-3 py-2 border border-gray-300 border-gray-600 rounded-md bg-white bg-gray-700 text-gray-900 text-gray-50"
                   />
                 </div>
                 <div className="flex gap-3">
                   <button
                     onClick={handlePasswordChange}
                     disabled={loading || !passwordData.currentPassword || !passwordData.newPassword || !passwordData.confirmPassword}
-                    className="flex-1 px-4 py-2 bg-green-600 text-white dark:text-gray-100 font-medium rounded-md hover:bg-green-700 transition-colors disabled:opacity-50"
+                    className="flex-1 px-4 py-2 bg-green-600 text-white text-gray-100 font-medium rounded-md hover:bg-green-700 transition-colors disabled:opacity-50"
                   >
                     {loading ? 'Updating...' : 'Update Password'}
                   </button>
                   <button
                     onClick={handleCancelPasswordForm}
-                    className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                    className="px-4 py-2 border border-gray-300 border-gray-600 text-gray-700 text-gray-200 rounded-md hover:bg-gray-50 hover:bg-gray-700 transition-colors"
                   >
                     Cancel
                   </button>
@@ -592,27 +592,27 @@ export function ProfileTab({ customer }: ProfileTabProps) {
       </div>
 
       {/* Account Summary */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
-        <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-          <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50">Account Summary</h3>
+      <div className="bg-white bg-gray-800 rounded-lg shadow">
+        <div className="px-6 py-4 border-b border-gray-200 border-gray-700">
+          <h3 className="font-heading text-lg font-medium text-gray-900 text-gray-50">Account Summary</h3>
         </div>
         <div className="p-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
-              <p className="text-2xl font-bold text-green-600 dark:text-green-400">{customer.totalOrders}</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Total Orders</p>
+              <p className="text-2xl font-bold text-green-600 text-green-400">{customer.totalOrders}</p>
+              <p className="text-sm text-gray-500 text-gray-400">Total Orders</p>
             </div>
             <div className="text-center">
-              <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+              <p className="text-2xl font-bold text-blue-600 text-blue-400">
                 {formatCurrencyValue(customer.totalSpent)}
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Total Spent</p>
+              <p className="text-sm text-gray-500 text-gray-400">Total Spent</p>
             </div>
             <div className="text-center">
-              <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">
+              <p className="text-2xl font-bold text-purple-600 text-purple-400">
                 {customer.memberSince ? new Date(customer.memberSince).getFullYear() : new Date().getFullYear()}
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Member Since</p>
+              <p className="text-sm text-gray-500 text-gray-400">Member Since</p>
             </div>
           </div>
         </div>

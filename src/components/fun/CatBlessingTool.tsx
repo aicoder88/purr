@@ -220,8 +220,8 @@ export function CatBlessingTool() {
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsMuted(!isMuted)}
             className={`p-2 rounded-full shadow-lg transition-colors ${isMuted
-              ? "bg-red-100 text-red-600 dark:bg-red-900/50 dark:text-red-400"
-              : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:text-purple-500"
+              ? "bg-red-100 text-red-600 bg-red-900/50 text-red-400"
+              : "bg-white bg-gray-800 text-gray-600 text-gray-300 hover:text-purple-500"
               }`}
             aria-label={isMuted ? "Unmute meows" : "Mute meows"}
             title={isMuted ? "Unmute sounds" : "Mute sounds"}
@@ -232,7 +232,7 @@ export function CatBlessingTool() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={handleHide}
-            className="p-2 bg-white dark:bg-gray-800 rounded-full shadow-lg text-gray-600 dark:text-gray-300 hover:text-red-500 transition-colors"
+            className="p-2 bg-white bg-gray-800 rounded-full shadow-lg text-gray-600 text-gray-300 hover:text-red-500 transition-colors"
             aria-label="Hide blessing tool"
             title="Hide"
           >
@@ -271,7 +271,7 @@ export function CatBlessingTool() {
               }}
               transition={{ duration: 0.4 }}
             >
-              <Cat className="w-8 h-8 text-white dark:text-gray-100" />
+              <Cat className="w-8 h-8 text-white text-gray-100" />
             </motion.div>
 
             {/* Sparkle effects */}
@@ -290,7 +290,7 @@ export function CatBlessingTool() {
 
           {/* Pulsing rings */}
           <motion.div
-            className="absolute inset-0 rounded-full border-2 border-purple-400 dark:border-purple-500"
+            className="absolute inset-0 rounded-full border-2 border-purple-400 border-purple-500"
             animate={{
               scale: [1, 1.5, 1.5],
               opacity: [0.5, 0, 0],
@@ -308,7 +308,7 @@ export function CatBlessingTool() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 3 }}
-          className="text-xs text-gray-500 dark:text-gray-400 bg-white/80 dark:bg-gray-800/80 px-2 py-1 rounded-full"
+          className="text-xs text-gray-500 text-gray-400 bg-white/80 bg-gray-800/80 px-2 py-1 rounded-full"
         >
           Press M to meow!
         </motion.p>
@@ -324,15 +324,15 @@ export function CatBlessingTool() {
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
             className="fixed bottom-28 right-6 z-50 w-80 sm:w-96 max-w-[90vw]"
           >
-            <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-6 sm:p-8 border-2 border-purple-200 dark:border-purple-800 relative overflow-hidden">
+            <div className="bg-white bg-gray-800 rounded-3xl shadow-2xl p-6 sm:p-8 border-2 border-purple-200 border-purple-800 relative overflow-hidden">
               {/* Background decoration */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-bl-full -mr-10 -mt-10" />
-              <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-orange-100 to-yellow-100 dark:from-orange-900/20 dark:to-yellow-900/20 rounded-tr-full -ml-8 -mb-8" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-100 to-pink-100 from-purple-900/30 to-pink-900/30 rounded-bl-full -mr-10 -mt-10" />
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-orange-100 to-yellow-100 from-orange-900/20 to-yellow-900/20 rounded-tr-full -ml-8 -mb-8" />
 
               {/* Close button */}
               <button
                 onClick={handleClose}
-                className="absolute top-3 right-3 p-2 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 transition-colors bg-gray-100 dark:bg-gray-700 rounded-full"
+                className="absolute top-3 right-3 p-2 text-gray-600 hover:text-gray-800 text-gray-400 hover:text-gray-200 transition-colors bg-gray-100 bg-gray-700 rounded-full"
                 aria-label="Close blessing"
               >
                 <X className="w-5 h-5" />
@@ -343,19 +343,19 @@ export function CatBlessingTool() {
                 {/* Type badge */}
                 <div className="flex items-center gap-2 mb-4">
                   {currentBlessing.type === "blessing" && (
-                    <span className="inline-flex items-center gap-1.5 text-sm font-bold text-pink-600 dark:text-pink-400 bg-pink-100 dark:bg-pink-900/30 px-3 py-1.5 rounded-full">
+                    <span className="inline-flex items-center gap-1.5 text-sm font-bold text-pink-600 text-pink-400 bg-pink-100 bg-pink-900/30 px-3 py-1.5 rounded-full">
                       <Heart className="w-4 h-4" />
                       Blessing
                     </span>
                   )}
                   {currentBlessing.type === "fact" && (
-                    <span className="inline-flex items-center gap-1.5 text-sm font-bold text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 px-3 py-1.5 rounded-full">
+                    <span className="inline-flex items-center gap-1.5 text-sm font-bold text-blue-600 text-blue-400 bg-blue-100 bg-blue-900/30 px-3 py-1.5 rounded-full">
                       <Sparkles className="w-4 h-4" />
                       Cat Fact
                     </span>
                   )}
                   {currentBlessing.type === "joke" && (
-                    <span className="inline-flex items-center gap-1.5 text-sm font-bold text-orange-600 dark:text-orange-400 bg-orange-100 dark:bg-orange-900/30 px-3 py-1.5 rounded-full">
+                    <span className="inline-flex items-center gap-1.5 text-sm font-bold text-orange-600 text-orange-400 bg-orange-100 bg-orange-900/30 px-3 py-1.5 rounded-full">
                       <Cat className="w-4 h-4" />
                       Meow-Joke
                     </span>
@@ -373,7 +373,7 @@ export function CatBlessingTool() {
                 </motion.div>
 
                 {/* Text */}
-                <p className="text-gray-800 dark:text-gray-200 text-lg sm:text-xl font-semibold leading-relaxed">
+                <p className="text-gray-800 text-gray-200 text-lg sm:text-xl font-semibold leading-relaxed">
                   {currentBlessing.text}
                 </p>
 
@@ -394,7 +394,7 @@ export function CatBlessingTool() {
                       await playPurr();
                     }}
                     disabled={isMuted}
-                    className="px-5 py-3 text-base font-bold text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed bg-purple-50 dark:bg-purple-900/20 rounded-full"
+                    className="px-5 py-3 text-base font-bold text-purple-600 text-purple-400 hover:text-purple-800 hover:text-purple-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed bg-purple-50 bg-purple-900/20 rounded-full"
                   >
                     💤 Purr
                   </motion.button>
@@ -402,7 +402,7 @@ export function CatBlessingTool() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={handleClose}
-                    className="px-5 py-3 text-base font-bold text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
+                    className="px-5 py-3 text-base font-bold text-gray-600 text-gray-400 hover:text-gray-800 hover:text-gray-200 transition-colors"
                   >
                     Thanks!
                   </motion.button>
@@ -411,7 +411,7 @@ export function CatBlessingTool() {
 
               {/* Cat paw decorations */}
               <div className="absolute bottom-3 left-3 opacity-20">
-                <Cat className="w-8 h-8 text-purple-400 dark:text-purple-300" />
+                <Cat className="w-8 h-8 text-purple-400 text-purple-300" />
               </div>
             </div>
           </motion.div>

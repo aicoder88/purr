@@ -123,7 +123,7 @@ export const TouchGallery: React.FC<TouchGalleryProps> = ({
   if (images.length === 0) return null;
 
   return (
-    <div className={`relative overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800 ${className}`}>
+    <div className={`relative overflow-hidden rounded-xl bg-gray-100 bg-gray-800 ${className}`}>
       {/* Main Gallery Container */}
       <div
         ref={galleryRef}
@@ -150,7 +150,7 @@ export const TouchGallery: React.FC<TouchGalleryProps> = ({
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
               {image.caption && (
-                <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white dark:text-gray-100 dark:text-gray-100 p-4">
+                <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-gray-100 text-gray-100 p-4">
                   <p className="text-sm">{image.caption}</p>
                 </div>
               )}
@@ -163,14 +163,14 @@ export const TouchGallery: React.FC<TouchGalleryProps> = ({
           <>
             <button
               onClick={goToPrevious}
-              className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white dark:text-gray-100 rounded-full p-2 transition-colors z-10"
+              className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white text-gray-100 rounded-full p-2 transition-colors z-10"
               aria-label="Previous image"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={goToNext}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white dark:text-gray-100 rounded-full p-2 transition-colors z-10"
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white text-gray-100 rounded-full p-2 transition-colors z-10"
               aria-label="Next image"
             >
               <ChevronRight className="w-5 h-5" />
@@ -179,7 +179,7 @@ export const TouchGallery: React.FC<TouchGalleryProps> = ({
         )}
 
         {/* Loading indicator for current image */}
-        <div className="absolute top-2 right-2 bg-black/50 text-white dark:text-gray-100 px-2 py-1 rounded text-xs">
+        <div className="absolute top-2 right-2 bg-black/50 text-white text-gray-100 px-2 py-1 rounded text-xs">
           {currentIndex + 1} / {images.length}
         </div>
       </div>
@@ -194,7 +194,7 @@ export const TouchGallery: React.FC<TouchGalleryProps> = ({
               className={`w-2 h-2 rounded-full transition-colors ${
                 index === currentIndex
                   ? 'bg-[#5B2EFF]'
-                  : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-50 dark:bg-gray-9000'
+                  : 'bg-gray-300 bg-gray-600 hover:bg-gray-400 hover:bg-gray-50 bg-gray-9000'
               }`}
               aria-label={`Go to image ${index + 1}`}
             />
@@ -203,7 +203,7 @@ export const TouchGallery: React.FC<TouchGalleryProps> = ({
       )}
 
       {/* Swipe Hint */}
-      <div className="md:hidden absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-black/50 text-white dark:text-gray-100 px-3 py-1 rounded-full text-xs">
+      <div className="md:hidden absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-black/50 text-white text-gray-100 px-3 py-1 rounded-full text-xs">
         Swipe to navigate
       </div>
 
@@ -211,7 +211,7 @@ export const TouchGallery: React.FC<TouchGalleryProps> = ({
       {autoPlay && (
         <button
           onClick={toggleAutoPlay}
-          className="absolute top-2 left-2 bg-black/50 hover:bg-black/70 text-white dark:text-gray-100 rounded-full p-2 transition-colors"
+          className="absolute top-2 left-2 bg-black/50 hover:bg-black/70 text-white text-gray-100 rounded-full p-2 transition-colors"
           aria-label={isAutoPlaying ? 'Pause slideshow' : 'Play slideshow'}
         >
           {isAutoPlaying ? (

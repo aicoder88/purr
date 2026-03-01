@@ -18,14 +18,14 @@ export function HomepageTestimonials() {
   const t = useTranslations('testimonialsSection');
 
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900">
+    <section className="py-16 md:py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 from-gray-950 via-purple-950/20 to-gray-900">
       <Container>
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-gray-800/80 border border-purple-200 dark:border-purple-800 mb-6">
-            <Star className="w-4 h-4 text-yellow-500 dark:text-yellow-400 fill-yellow-500 dark:fill-yellow-400" />
-            <span className="text-purple-700 dark:text-purple-300 font-semibold text-sm">{t('customerLove')}</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 bg-gray-800/80 border border-purple-200 border-purple-800 mb-6">
+            <Star className="w-4 h-4 text-yellow-500 text-yellow-400 fill-yellow-500 fill-yellow-400" />
+            <span className="text-purple-700 text-purple-300 font-semibold text-sm">{t('customerLove')}</span>
           </div>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 text-white">
             {t('littersOfLove')}
           </h2>
         </div>
@@ -34,25 +34,25 @@ export function HomepageTestimonials() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-shadow duration-300 flex flex-col"
+              className="bg-white bg-gray-800 rounded-2xl p-6 shadow-md border border-gray-100 border-gray-700 hover:shadow-lg transition-shadow duration-300 flex flex-col"
             >
               {/* Stars */}
               <div className="flex gap-0.5 mb-4">
                 {[1, 2, 3, 4, 5].map((star) => (
-                  <Star key={star} className="w-4 h-4 text-yellow-400 dark:text-yellow-300 fill-yellow-400 dark:fill-yellow-300" />
+                  <Star key={star} className="w-4 h-4 text-yellow-400 text-yellow-300 fill-yellow-400 fill-yellow-300" />
                 ))}
               </div>
 
               {/* Quote */}
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed flex-grow mb-4 italic">
+              <p className="text-gray-700 text-gray-300 leading-relaxed flex-grow mb-4 italic">
                 {`\u201C${testimonial.quote}\u201D`}
               </p>
 
               {/* Attribution */}
-              <div className="flex items-center gap-2 pt-4 border-t border-gray-100 dark:border-gray-700">
+              <div className="flex items-center gap-2 pt-4 border-t border-gray-100 border-gray-700">
                 <div>
-                  <p className="font-bold text-sm text-gray-900 dark:text-white">{testimonial.name}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
+                  <p className="font-bold text-sm text-gray-900 text-white">{testimonial.name}</p>
+                  <p className="text-xs text-gray-500 text-gray-400 flex items-center gap-1">
                     <MapPin className="w-3 h-3" />
                     {testimonial.location}
                   </p>

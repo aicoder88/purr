@@ -82,9 +82,9 @@ function CheckIcon({ className = '' }: { className?: string }) {
 // Trust signals component
 function TrustSignals({ labels }: { labels: { noSetupFees: string; approval72hr: string; provenROI: string } }) {
   const signals = [
-    { icon: 'check', label: labels.noSetupFees, bgColor: 'bg-green-500 dark:bg-green-600' },
-    { icon: 'clock', label: labels.approval72hr, bgColor: 'bg-blue-500 dark:bg-blue-600' },
-    { icon: 'verified', label: labels.provenROI, bgColor: 'bg-purple-500 dark:bg-purple-600' },
+    { icon: 'check', label: labels.noSetupFees, bgColor: 'bg-green-500 bg-green-600' },
+    { icon: 'clock', label: labels.approval72hr, bgColor: 'bg-blue-500 bg-blue-600' },
+    { icon: 'verified', label: labels.provenROI, bgColor: 'bg-purple-500 bg-purple-600' },
   ];
 
   const getIcon = (icon: string) => {
@@ -103,13 +103,13 @@ function TrustSignals({ labels }: { labels: { noSetupFees: string; approval72hr:
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 mt-8">
       {signals.map((signal) => (
-        <div key={signal.label} className="flex items-center justify-center space-x-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl p-3">
+        <div key={signal.label} className="flex items-center justify-center space-x-3 bg-gray-50 bg-gray-800/50 rounded-xl p-3">
           <div className={`w-8 h-8 ${signal.bgColor} rounded-full flex items-center justify-center shadow-md`}>
-            <svg className="w-4 h-4 text-white dark:text-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 text-white text-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {getIcon(signal.icon)}
             </svg>
           </div>
-          <span className="font-bold text-gray-800 dark:text-gray-200 text-sm">{signal.label}</span>
+          <span className="font-bold text-gray-800 text-gray-200 text-sm">{signal.label}</span>
         </div>
       ))}
     </div>
@@ -119,16 +119,16 @@ function TrustSignals({ labels }: { labels: { noSetupFees: string; approval72hr:
 // Tier card component
 function TierCard({ tier, onCtaClick, packageIncludesLabel, featuresLabel, index }: TierCardProps) {
   const cardClasses = tier.highlighted
-    ? `bg-white dark:bg-gray-800 border-2 border-[#5B2EFF] dark:border-[#3694FF] shadow-2xl shadow-[#5B2EFF]/15 transform lg:scale-105 z-10 ring-8 ring-[#5B2EFF]/5 dark:ring-[#3694FF]/5`
-    : 'bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-xl hover:shadow-2xl hover:border-gray-200 dark:hover:border-gray-600';
+    ? `bg-white bg-gray-800 border-2 border-[#5B2EFF] border-[#3694FF] shadow-2xl shadow-[#5B2EFF]/15 transform lg:scale-105 z-10 ring-8 ring-[#5B2EFF]/5 ring-[#3694FF]/5`
+    : 'bg-white bg-gray-800 border border-gray-100 border-gray-700 shadow-xl hover:shadow-2xl hover:border-gray-200 hover:border-gray-600';
 
   const badgeClasses = tier.highlighted
     ? `bg-gradient-to-r ${GRADIENTS.primary} text-white`
-    : 'bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900';
+    : 'bg-gray-900 bg-gray-100 text-white text-gray-900';
 
   const buttonClasses = tier.highlighted
     ? `bg-gradient-to-r ${GRADIENTS.primary} ${GRADIENTS.primaryHover} text-white shadow-xl shadow-[#5B2EFF]/20`
-    : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600';
+    : 'bg-gray-100 bg-gray-700 text-gray-900 text-white hover:bg-gray-200 hover:bg-gray-600';
 
   return (
     <motion.div
@@ -149,7 +149,7 @@ function TierCard({ tier, onCtaClick, packageIncludesLabel, featuresLabel, index
 
       {/* Product Image Section */}
       <div className="relative h-48 mb-8 mt-4 flex items-center justify-center group">
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 to-transparent dark:from-gray-900/30 rounded-[32px] -z-10 group-hover:scale-105 transition-transform duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 to-transparent from-gray-900/30 rounded-[32px] -z-10 group-hover:scale-105 transition-transform duration-500" />
         <div className="relative w-40 h-40 transform transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3">
           <Image
             src={tier.image}
@@ -163,30 +163,30 @@ function TierCard({ tier, onCtaClick, packageIncludesLabel, featuresLabel, index
         {/* Floating elements for visual interest */}
         {tier.highlighted && (
           <>
-            <div className="absolute top-0 right-4 w-12 h-12 bg-[#5B2EFF]/10 dark:bg-[#5B2EFF]/20 rounded-full blur-xl animate-pulse" />
-            <div className="absolute bottom-4 left-4 w-16 h-16 bg-[#3694FF]/10 dark:bg-[#3694FF]/20 rounded-full blur-xl animate-pulse delay-700" />
+            <div className="absolute top-0 right-4 w-12 h-12 bg-[#5B2EFF]/10 bg-[#5B2EFF]/20 rounded-full blur-xl animate-pulse" />
+            <div className="absolute bottom-4 left-4 w-16 h-16 bg-[#3694FF]/10 bg-[#3694FF]/20 rounded-full blur-xl animate-pulse delay-700" />
           </>
         )}
       </div>
 
       {/* Card Header */}
       <div className="text-center mb-8">
-        <h3 className="font-heading text-3xl font-black text-gray-900 dark:text-white mb-3 tracking-tight">
+        <h3 className="font-heading text-3xl font-black text-gray-900 text-white mb-3 tracking-tight">
           {tier.name}
         </h3>
-        <p className="text-gray-500 dark:text-gray-400 text-sm font-bold min-h-[40px] leading-relaxed">
+        <p className="text-gray-500 text-gray-400 text-sm font-bold min-h-[40px] leading-relaxed">
           {tier.description}
         </p>
 
         {/* Package Contents */}
-        <div className="mt-8 bg-gray-50 dark:bg-gray-800/40 rounded-[32px] p-6 border border-gray-100 dark:border-gray-700/50">
-          <div className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500 mb-4 text-left">
+        <div className="mt-8 bg-gray-50 bg-gray-800/40 rounded-[32px] p-6 border border-gray-100 border-gray-700/50">
+          <div className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 text-gray-500 mb-4 text-left">
             {packageIncludesLabel}
           </div>
           <ul className="space-y-3 text-left">
             {tier.contents.map((item, i) => (
-              <li key={i} className="text-sm text-gray-700 dark:text-gray-200 font-bold flex items-start leading-snug">
-                <span className="text-[#5B2EFF] dark:text-[#3694FF] mr-3 text-xl leading-none">•</span>
+              <li key={i} className="text-sm text-gray-700 text-gray-200 font-bold flex items-start leading-snug">
+                <span className="text-[#5B2EFF] text-[#3694FF] mr-3 text-xl leading-none">•</span>
                 {item.startsWith('BONUS') ? (
                   <span className="bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] bg-clip-text text-transparent">
                     {item}
@@ -201,14 +201,14 @@ function TierCard({ tier, onCtaClick, packageIncludesLabel, featuresLabel, index
       </div>
 
       <div className="flex-1 mb-10">
-        <div className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500 mb-5 text-left">
+        <div className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 text-gray-500 mb-5 text-left">
           {featuresLabel}
         </div>
         <ul className="space-y-4">
           {tier.features.map((feature, i) => (
-            <li key={i} className="flex items-start text-gray-600 dark:text-gray-300 text-sm">
-              <div className={`w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/20 flex items-center justify-center mr-4 flex-shrink-0 mt-0.5`}>
-                <CheckIcon className="w-3.5 h-3.5 text-green-600 dark:text-green-400" />
+            <li key={i} className="flex items-start text-gray-600 text-gray-300 text-sm">
+              <div className={`w-6 h-6 rounded-full bg-green-100 bg-green-900/20 flex items-center justify-center mr-4 flex-shrink-0 mt-0.5`}>
+                <CheckIcon className="w-3.5 h-3.5 text-green-600 text-green-400" />
               </div>
               <span className="font-bold leading-tight">{feature}</span>
             </li>
@@ -216,7 +216,7 @@ function TierCard({ tier, onCtaClick, packageIncludesLabel, featuresLabel, index
         </ul>
       </div>
 
-      <div className="mt-auto pt-8 border-t border-gray-100 dark:border-gray-700">
+      <div className="mt-auto pt-8 border-t border-gray-100 border-gray-700">
         <Button
           onClick={onCtaClick}
           className={`w-full py-8 px-6 rounded-3xl font-black text-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 border-0 shadow-lg ${buttonClasses}`}
@@ -321,19 +321,19 @@ export function WholesalePricing() {
   };
 
   return (
-    <section id="wholesale-pricing" className="py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <section id="wholesale-pricing" className="py-24 bg-gray-50 bg-gray-900 transition-colors duration-300">
       <Container>
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/20 text-[#3694FF] dark:text-[#3694FF] font-bold text-sm mb-6 border border-blue-100 dark:border-blue-800/30">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 bg-blue-900/20 text-[#3694FF] text-[#3694FF] font-bold text-sm mb-6 border border-blue-100 border-blue-800/30">
             💰 {pricing?.sectionBadge || 'Transparent Wholesale Pricing'}
           </div>
-          <h2 className="font-heading text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-6">
+          <h2 className="font-heading text-4xl md:text-5xl font-black text-gray-900 text-white mb-6">
             {pricing?.title || 'Choose Your'}
             <span className="bg-gradient-to-r from-[#5B2EFF] to-[#3694FF] bg-clip-text text-transparent ml-2">
               {pricing?.titleHighlight || 'Profit Level'}
             </span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 text-gray-300 max-w-2xl mx-auto">
             {pricing?.subtitle || "Start small or go big. We have a package that fits your store's needs."}
           </p>
         </div>
@@ -352,16 +352,16 @@ export function WholesalePricing() {
         </div>
 
         {/* Risk Reversal & Urgency */}
-        <div className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-3xl p-10 md:p-14 text-center border border-gray-100 dark:border-gray-700 shadow-2xl shadow-gray-200/50 dark:shadow-none">
+        <div className="relative overflow-hidden bg-white bg-gray-800 rounded-3xl p-10 md:p-14 text-center border border-gray-100 border-gray-700 shadow-2xl shadow-gray-200/50 shadow-none">
           {/* Background decorative blobs */}
           <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-[#5B2EFF]/5 to-[#3694FF]/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
           <div className="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-tl from-[#5B2EFF]/5 to-[#3694FF]/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
 
           <div className="relative z-10 max-w-4xl mx-auto">
-            <h3 className="font-heading text-3xl font-black text-gray-900 dark:text-white mb-6">
+            <h3 className="font-heading text-3xl font-black text-gray-900 text-white mb-6">
               🎯 {pricing?.bottomCta?.title || 'Ready to Boost Your Revenue?'}
             </h3>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-10">
+            <p className="text-xl text-gray-600 text-gray-300 mb-10">
               {pricing?.bottomCta?.description || 'Join 21 established Montreal and surrounding-area retailers already earning high margins with Purrify.'}
               <br className="hidden md:block" /> {pricing?.bottomCta?.setupNote || 'Setup takes less than 24 hours.'}
             </p>
@@ -380,12 +380,12 @@ export function WholesalePricing() {
               <Button
                 size="lg"
                 variant="outline"
-                className="bg-white dark:bg-gray-900 border-2 border-[#5B2EFF]/20 dark:border-[#3694FF]/30 text-[#5B2EFF] dark:text-[#3694FF] hover:bg-[#5B2EFF]/5 dark:hover:bg-[#3694FF]/10 font-bold py-7 px-10 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 text-lg"
+                className="bg-white bg-gray-900 border-2 border-[#5B2EFF]/20 border-[#3694FF]/30 text-[#5B2EFF] text-[#3694FF] hover:bg-[#5B2EFF]/5 hover:bg-[#3694FF]/10 font-bold py-7 px-10 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 text-lg"
               >
                 📞 {PHONE_MESSAGING.callout}
               </Button>
             </div>
-            <p className="text-center text-sm text-gray-500 dark:text-gray-400 font-medium italic mt-6">
+            <p className="text-center text-sm text-gray-500 text-gray-400 font-medium italic mt-6">
               {PHONE_MESSAGING.explanation}
             </p>
           </div>

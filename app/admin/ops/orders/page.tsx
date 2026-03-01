@@ -8,31 +8,31 @@ export default function OrdersPage() {
     <OpsLayout>
       {/* Header */}
       <div className="mb-8">
-        <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50">
+        <h1 className="font-heading text-3xl font-bold text-gray-900 text-gray-50">
           Order Management
         </h1>
-        <p className="text-gray-600 dark:text-gray-400 mt-1">
+        <p className="text-gray-600 text-gray-400 mt-1">
           View and manage customer and retailer orders
         </p>
       </div>
 
       {/* Placeholder Content */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-12 text-center">
-        <div className="p-4 bg-gray-100 dark:bg-gray-700 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-          <ShoppingCart className="w-8 h-8 text-gray-500 dark:text-gray-400" />
+      <div className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 p-12 text-center">
+        <div className="p-4 bg-gray-100 bg-gray-700 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+          <ShoppingCart className="w-8 h-8 text-gray-500 text-gray-400" />
         </div>
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-50 mb-2">
+        <h2 className="text-xl font-semibold text-gray-900 text-gray-50 mb-2">
           Order Dashboard Coming Soon
         </h2>
-        <p className="text-gray-600 dark:text-gray-400 max-w-md mx-auto">
+        <p className="text-gray-600 text-gray-400 max-w-md mx-auto">
           This page will show all orders from both consumer (Stripe) and B2B (retailer)
           channels with filtering and status management.
         </p>
-        <div className="mt-6 p-4 bg-teal-50 dark:bg-teal-900/20 rounded-lg max-w-sm mx-auto">
-          <p className="text-sm text-teal-700 dark:text-teal-300">
+        <div className="mt-6 p-4 bg-teal-50 bg-teal-900/20 rounded-lg max-w-sm mx-auto">
+          <p className="text-sm text-teal-700 text-teal-300">
             <strong>Coming Features:</strong>
           </p>
-          <ul className="text-sm text-teal-600 dark:text-teal-400 mt-2 text-left list-disc list-inside">
+          <ul className="text-sm text-teal-600 text-teal-400 mt-2 text-left list-disc list-inside">
             <li>Consumer orders from Stripe</li>
             <li>Retailer wholesale orders</li>
             <li>Status tracking & updates</li>

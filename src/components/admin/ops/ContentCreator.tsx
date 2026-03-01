@@ -138,9 +138,9 @@ export function ContentCreator({ onSubmit }: ContentCreatorProps) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6"
+      className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 p-6"
     >
-      <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-4">
+      <h2 className="text-lg font-semibold text-gray-900 text-gray-50 mb-4">
         Create Social Post
       </h2>
 
@@ -150,8 +150,8 @@ export function ContentCreator({ onSubmit }: ContentCreatorProps) {
           onClick={() => setInputMode('text')}
           className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
             inputMode === 'text'
-              ? 'bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300'
-              : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'
+              ? 'bg-teal-100 bg-teal-900/30 text-teal-700 text-teal-300'
+              : 'bg-gray-100 bg-gray-700 text-gray-600 text-gray-400 hover:bg-gray-200 hover:bg-gray-600'
           }`}
         >
           <FileText className="w-4 h-4" />
@@ -161,8 +161,8 @@ export function ContentCreator({ onSubmit }: ContentCreatorProps) {
           onClick={() => setInputMode('url')}
           className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
             inputMode === 'url'
-              ? 'bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300'
-              : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'
+              ? 'bg-teal-100 bg-teal-900/30 text-teal-700 text-teal-300'
+              : 'bg-gray-100 bg-gray-700 text-gray-600 text-gray-400 hover:bg-gray-200 hover:bg-gray-600'
           }`}
         >
           <LinkIcon className="w-4 h-4" />
@@ -185,12 +185,12 @@ export function ContentCreator({ onSubmit }: ContentCreatorProps) {
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 placeholder="Paste a URL to extract content..."
-                className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                className="flex-1 px-4 py-2 border border-gray-300 border-gray-600 rounded-lg bg-white bg-gray-700 text-gray-900 text-gray-50 placeholder-gray-500 placeholder-gray-400 focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               />
               <button
                 onClick={handleExtractUrl}
                 disabled={!url || isExtractingUrl}
-                className="px-4 py-2 bg-teal-600 dark:bg-teal-700 hover:bg-teal-700 dark:hover:bg-teal-600 text-white dark:text-gray-50 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+                className="px-4 py-2 bg-teal-600 bg-teal-700 hover:bg-teal-700 hover:bg-teal-600 text-white text-gray-50 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
               >
                 {isExtractingUrl ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
@@ -211,13 +211,13 @@ export function ContentCreator({ onSubmit }: ContentCreatorProps) {
           onChange={(e) => setContent(e.target.value)}
           placeholder="What do you want to share?"
           rows={6}
-          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none"
+          className="w-full px-4 py-3 border border-gray-300 border-gray-600 rounded-lg bg-white bg-gray-700 text-gray-900 text-gray-50 placeholder-gray-500 placeholder-gray-400 focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none"
         />
       </div>
 
       {/* Platform Selection */}
       <div className="mb-4">
-        <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <p className="text-sm font-medium text-gray-700 text-gray-300 mb-2">
           Select Platforms
         </p>
         <div className="flex flex-wrap gap-2">
@@ -233,8 +233,8 @@ export function ContentCreator({ onSubmit }: ContentCreatorProps) {
                 onClick={() => togglePlatform(key)}
                 className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
                   isSelected
-                    ? `${platform.color} text-white dark:text-gray-50 ${platform.hoverColor}`
-                    : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'
+                    ? `${platform.color} text-white text-gray-50 ${platform.hoverColor}`
+                    : 'bg-gray-100 bg-gray-700 text-gray-600 text-gray-400 hover:bg-gray-200 hover:bg-gray-600'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -259,10 +259,10 @@ export function ContentCreator({ onSubmit }: ContentCreatorProps) {
             
             return (
               <div key={key} className="flex items-center space-x-3">
-                <span className="text-sm text-gray-600 dark:text-gray-400 w-20">
+                <span className="text-sm text-gray-600 text-gray-400 w-20">
                   {platform.name}
                 </span>
-                <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                <div className="flex-1 h-2 bg-gray-200 bg-gray-700 rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${usage.percentage}%` }}
@@ -276,7 +276,7 @@ export function ContentCreator({ onSubmit }: ContentCreatorProps) {
                   />
                 </div>
                 <span className={`text-sm font-medium ${
-                  usage.isOver ? 'text-red-500 dark:text-red-400' : 'text-gray-600 dark:text-gray-400'
+                  usage.isOver ? 'text-red-500 text-red-400' : 'text-gray-600 text-gray-400'
                 }`}>
                   {usage.percentage.toFixed(0)}%
                 </span>
@@ -289,7 +289,7 @@ export function ContentCreator({ onSubmit }: ContentCreatorProps) {
       {/* Preview Cards */}
       {selectedPlatforms.length > 0 && content && (
         <div className="mb-4">
-          <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <p className="text-sm font-medium text-gray-700 text-gray-300 mb-2">
             Preview
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -302,20 +302,20 @@ export function ContentCreator({ onSubmit }: ContentCreatorProps) {
               return (
                 <div
                   key={key}
-                  className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 bg-gray-50 dark:bg-gray-900"
+                  className="border border-gray-200 border-gray-700 rounded-lg p-4 bg-gray-50 bg-gray-900"
                 >
                   <div className="flex items-center space-x-2 mb-2">
-                    <Icon className="w-4 h-4 text-gray-600 dark:text-gray-400" />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <Icon className="w-4 h-4 text-gray-600 text-gray-400" />
+                    <span className="text-sm font-medium text-gray-700 text-gray-300">
                       {platform.name}
                     </span>
                     {usage.isOver && (
-                      <span className="text-xs text-red-500 dark:text-red-400">
+                      <span className="text-xs text-red-500 text-red-400">
                         (truncated)
                       </span>
                     )}
                   </div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 whitespace-pre-wrap break-words">
+                  <p className="text-sm text-gray-600 text-gray-400 whitespace-pre-wrap break-words">
                     {truncatedContent}
                     {usage.isOver && '...'}
                   </p>
@@ -331,7 +331,7 @@ export function ContentCreator({ onSubmit }: ContentCreatorProps) {
         <button
           onClick={handleSubmit}
           disabled={!content || selectedPlatforms.length === 0 || isSubmitting}
-          className={`flex items-center space-x-2 px-6 py-2.5 rounded-lg text-white dark:text-gray-50 font-medium transition-all ${
+          className={`flex items-center space-x-2 px-6 py-2.5 rounded-lg text-white text-gray-50 font-medium transition-all ${
             submitStatus === 'success'
               ? 'bg-green-600 hover:bg-green-700'
               : submitStatus === 'error'

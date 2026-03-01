@@ -234,28 +234,28 @@ export default function FAQPageClient() {
         }}
       />
 
-      <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
+      <main className="min-h-screen bg-[#FFFFF5] bg-gray-900 transition-colors duration-300">
         {/* Breadcrumb Navigation */}
-        <section className="py-4 border-b border-[#E0EFC7] dark:border-gray-800">
+        <section className="py-4 border-b border-[#E0EFC7] border-gray-800">
           <Container>
             <nav aria-label={uiCopy.breadcrumbAriaLabel} className="flex items-center space-x-2 text-sm">
               <Link
                 href={localePrefix || '/'}
-                className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+                className="flex items-center text-gray-500 text-gray-400 hover:text-[#FF3131] hover:text-[#FF5050] transition-colors"
               >
                 <Home className="w-4 h-4" />
               </Link>
               {breadcrumbItems.map((item, index, arr) => (
                 <span key={item.path} className="flex items-center">
-                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
+                  <ChevronRight className="w-4 h-4 mx-1 text-gray-400 text-gray-500" />
                   {index === arr.length - 1 ? (
-                    <span className="font-medium text-gray-900 dark:text-gray-100">
+                    <span className="font-medium text-gray-900 text-gray-100">
                       {item.name}
                     </span>
                   ) : (
                     <Link
                       href={`${localePrefix}${item.path}`}
-                      className="text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+                      className="text-gray-500 text-gray-400 hover:text-[#FF3131] hover:text-[#FF5050] transition-colors"
                     >
                       {item.name}
                     </Link>
@@ -269,7 +269,7 @@ export default function FAQPageClient() {
         {/* Hero Section */}
         <section className="py-16 bg-gradient-to-br from-electric-indigo via-electric-indigo-600 to-deep-coral relative overflow-hidden">
           <Container>
-            <div className="text-center text-white dark:text-gray-100 max-w-4xl mx-auto">
+            <div className="text-center text-white text-gray-100 max-w-4xl mx-auto">
               <HelpCircle className="w-16 h-16 mx-auto mb-6 opacity-90" />
               <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6">
                 {faqPage?.title || 'Frequently Asked Questions'}
@@ -286,13 +286,13 @@ export default function FAQPageClient() {
 
               {/* Search Bar */}
               <div className="max-w-2xl mx-auto relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 text-gray-500" />
                 <input
                   type="text"
                   placeholder={faqPage?.searchPlaceholder || 'Search for answers...'}
                   value={searchTerm}
                   onChange={handleSearchChange}
-                  className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg text-gray-900 dark:text-gray-50 text-lg focus:outline-none focus:ring-2 focus:ring-white/50 transition-all"
+                  className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/95 bg-gray-800/95 backdrop-blur-lg text-gray-900 text-gray-50 text-lg focus:outline-none focus:ring-2 focus:ring-white/50 transition-all"
                 />
               </div>
             </div>
@@ -311,7 +311,7 @@ export default function FAQPageClient() {
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                <div className="p-8 text-white dark:text-gray-100">
+                <div className="p-8 text-white text-gray-100">
                   <h2 className="text-3xl font-heading font-bold mb-2">{faqPage?.title || 'Frequently Asked Questions'}</h2>
                   <p className="text-xl opacity-90">{faqPage?.subtitle || 'Everything you need to know about Purrify'}</p>
                 </div>
@@ -324,21 +324,21 @@ export default function FAQPageClient() {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-gray-900 text-gray-100">
                 {faqPage?.popularQuestions || 'Most Popular Questions'}
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300">
+              <p className="text-xl text-gray-600 text-gray-300">
                 {faqPage?.quickAnswers || 'Quick answers to what customers ask most'}
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {popularFAQs.map((item: FAQItem) => (
-                <div key={item.id} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:scale-105 transition-all duration-300">
-                  <h3 className="faq-question speakable-content text-lg font-heading font-bold mb-3 text-gray-900 dark:text-gray-100">
+                <div key={item.id} className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 hover:scale-105 transition-all duration-300">
+                  <h3 className="faq-question speakable-content text-lg font-heading font-bold mb-3 text-gray-900 text-gray-100">
                     {item.question}
                   </h3>
-                  <p className="faq-answer speakable-content text-gray-600 dark:text-gray-300 mb-4">
+                  <p className="faq-answer speakable-content text-gray-600 text-gray-300 mb-4">
                     {item.answer}
                   </p>
                 </div>
@@ -359,7 +359,7 @@ export default function FAQPageClient() {
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                <div className="p-8 text-white dark:text-gray-100">
+                <div className="p-8 text-white text-gray-100">
                   <h3 className="text-2xl font-heading font-bold mb-2">{uiCopy.curiousCatTitle}</h3>
                   <p className="text-lg opacity-90">{uiCopy.curiousCatSubtitle}</p>
                 </div>
@@ -369,12 +369,12 @@ export default function FAQPageClient() {
         </section>
 
         {/* FAQ Categories and Search */}
-        <section className="py-16 bg-[#E0EFC7]/30 dark:bg-gray-800/50">
+        <section className="py-16 bg-[#E0EFC7]/30 bg-gray-800/50">
           <Container>
             <div className="flex flex-col lg:flex-row gap-8">
               {/* Categories Sidebar */}
               <div className="lg:w-1/4">
-                <h3 className="text-xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100 flex items-center">
+                <h3 className="text-xl font-heading font-bold mb-6 text-gray-900 text-gray-100 flex items-center">
                   <Filter className="w-5 h-5 mr-2" />
                   {faqPage?.categories || 'Categories'}
                 </h3>
@@ -384,8 +384,8 @@ export default function FAQPageClient() {
                       key={category.id}
                       onClick={() => handleCategoryClick(category.id)}
                       className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors ${selectedCategory === category.id
-                        ? 'bg-electric-indigo text-white dark:text-gray-100 shadow-lg'
-                        : 'bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:scale-105 transition-all duration-300'
+                        ? 'bg-electric-indigo text-white text-gray-100 shadow-lg'
+                        : 'bg-white/80 bg-gray-800/80 backdrop-blur-lg text-gray-700 text-gray-300 hover:bg-gray-50 hover:bg-gray-700 hover:scale-105 transition-all duration-300'
                         }`}
                     >
                       <div className="flex items-center">
@@ -393,8 +393,8 @@ export default function FAQPageClient() {
                         <span className="font-medium">{category.name}</span>
                       </div>
                       <span className={`text-sm px-2 py-1 rounded-full ${selectedCategory === category.id
-                        ? 'bg-white dark:bg-electric-indigo/40 text-electric-indigo dark:text-white'
-                        : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
+                        ? 'bg-white bg-electric-indigo/40 text-electric-indigo text-white'
+                        : 'bg-gray-100 bg-gray-700 text-gray-600 text-gray-400'
                         }`}>
                         {category.count}
                       </span>
@@ -406,7 +406,7 @@ export default function FAQPageClient() {
               {/* FAQ Items */}
               <div className="lg:w-3/4">
                 <div className="mb-6 flex items-center justify-between">
-                  <h3 className="text-xl font-heading font-bold text-gray-900 dark:text-gray-100">
+                  <h3 className="text-xl font-heading font-bold text-gray-900 text-gray-100">
                     {filteredFAQs.length}{' '}
                     {filteredFAQs.length === 1
                       ? (faqPage?.questionsFound || 'Question')
@@ -430,51 +430,51 @@ export default function FAQPageClient() {
 
                     return (
                       <div key={category.id} className="space-y-4">
-                        <div className="flex items-center gap-3 pb-2 border-b border-gray-200 dark:border-gray-700">
-                          <div className="p-2 bg-electric-indigo/10 dark:bg-electric-indigo/20 rounded-lg">
-                            <category.icon className="w-6 h-6 text-electric-indigo dark:text-electric-indigo-400" />
+                        <div className="flex items-center gap-3 pb-2 border-b border-gray-200 border-gray-700">
+                          <div className="p-2 bg-electric-indigo/10 bg-electric-indigo/20 rounded-lg">
+                            <category.icon className="w-6 h-6 text-electric-indigo text-electric-indigo-400" />
                           </div>
-                          <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-gray-100">
+                          <h3 className="text-2xl font-heading font-bold text-gray-900 text-gray-100">
                             {category.name}
                           </h3>
                         </div>
 
                         <div className="space-y-4">
                           {categoryFAQs.map((item: FAQItem) => (
-                            <div key={item.id} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl shadow-sm border border-electric-indigo/10 dark:border-electric-indigo/20 overflow-hidden hover:shadow-md transition-all duration-300">
+                            <div key={item.id} className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl shadow-sm border border-electric-indigo/10 border-electric-indigo/20 overflow-hidden hover:shadow-md transition-all duration-300">
                               <button
                                 onClick={() => handleToggleItem(item.id)}
-                                className="w-full p-6 text-left flex items-center justify-between bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all duration-300"
+                                className="w-full p-6 text-left flex items-center justify-between bg-white/80 bg-gray-800/80 backdrop-blur-lg hover:bg-gray-50 hover:bg-gray-700/50 transition-all duration-300"
                               >
                                 <div className="flex-1">
-                                  <h4 className="faq-question text-lg font-heading font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                                  <h4 className="faq-question text-lg font-heading font-semibold text-gray-900 text-gray-100 mb-2">
                                     {item.question}
                                   </h4>
                                   <div className="flex flex-wrap gap-2">
                                     {item.featured && (
-                                      <span className="px-2 py-1 bg-deep-coral/10 dark:bg-deep-coral/40 text-deep-coral dark:text-white rounded-full text-xs font-medium">
+                                      <span className="px-2 py-1 bg-deep-coral/10 bg-deep-coral/40 text-deep-coral text-white rounded-full text-xs font-medium">
                                         {faqPage?.popularTag || 'Popular'}
                                       </span>
                                     )}
                                   </div>
                                 </div>
                                 {openItems.includes(item.id) ? (
-                                  <ChevronUp className="w-5 h-5 text-gray-400 dark:text-gray-500 shrink-0 ml-4" />
+                                  <ChevronUp className="w-5 h-5 text-gray-400 text-gray-500 shrink-0 ml-4" />
                                 ) : (
-                                  <ChevronDown className="w-5 h-5 text-gray-400 dark:text-gray-500 shrink-0 ml-4" />
+                                  <ChevronDown className="w-5 h-5 text-gray-400 text-gray-500 shrink-0 ml-4" />
                                 )}
                               </button>
 
                               {openItems.includes(item.id) && (
-                                <div className="px-6 pb-6 border-t border-gray-100 dark:border-gray-700 animate-in slide-in-from-top duration-300 bg-white/50 dark:bg-gray-800/50">
-                                  <p className="faq-answer text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
+                                <div className="px-6 pb-6 border-t border-gray-100 border-gray-700 animate-in slide-in-from-top duration-300 bg-white/50 bg-gray-800/50">
+                                  <p className="faq-answer text-gray-600 text-gray-300 mt-4 leading-relaxed">
                                     {item.answer}
                                   </p>
                                   {(item as { link?: string }).link && (
                                     <Link href={`${localePrefix}${(item as { link?: string }).link}`}>
                                       <Button
                                         size="sm"
-                                        className="mt-4 bg-gradient-to-r from-deep-coral to-electric-indigo hover:from-deep-coral-600 hover:to-electric-indigo-600 text-white dark:text-gray-100 font-semibold hover:scale-105 transition-all duration-300"
+                                        className="mt-4 bg-gradient-to-r from-deep-coral to-electric-indigo hover:from-deep-coral-600 hover:to-electric-indigo-600 text-white text-gray-100 font-semibold hover:scale-105 transition-all duration-300"
                                       >
                                         {(t.nav.safetyInfo || 'Safety Information') + ' \u2192'}
                                       </Button>
@@ -492,11 +492,11 @@ export default function FAQPageClient() {
 
                 {filteredFAQs.length === 0 && (
                   <div className="text-center py-12">
-                    <HelpCircle className="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
-                    <h3 className="font-heading text-xl font-semibold text-gray-600 dark:text-gray-400 mb-2">
+                    <HelpCircle className="w-16 h-16 text-gray-300 text-gray-600 mx-auto mb-4" />
+                    <h3 className="font-heading text-xl font-semibold text-gray-600 text-gray-400 mb-2">
                       {faqPage?.noQuestionsFound || 'No questions found'}
                     </h3>
-                    <p className="text-gray-500 dark:text-gray-500">
+                    <p className="text-gray-500 text-gray-500">
                       {faqPage?.adjustSearchTerms || 'Try adjusting your search terms or category filter'}
                     </p>
                   </div>
@@ -518,7 +518,7 @@ export default function FAQPageClient() {
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                <div className="p-8 text-white dark:text-gray-100">
+                <div className="p-8 text-white text-gray-100">
                   <h3 className="text-2xl font-heading font-bold mb-2">{uiCopy.supportTeamTitle}</h3>
                   <p className="text-lg opacity-90">{uiCopy.supportTeamSubtitle}</p>
                 </div>
@@ -531,46 +531,46 @@ export default function FAQPageClient() {
         <section className="py-16">
           <Container>
             <div className="text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-gray-900 text-gray-100">
                 {faqPage?.stillHaveQuestions || 'Still Have Questions?'}
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
+              <p className="text-xl text-gray-600 text-gray-300 mb-8">
                 {faqPage?.cantFindWhatLooking || 'Can\'t find what you\'re looking for? Our customer support team is here to help!'}
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 text-center hover:scale-105 transition-all duration-300">
-                  <Mail className="w-8 h-8 text-electric-indigo dark:text-electric-indigo-400 mx-auto mb-4" />
-                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">{faqPage?.emailSupport || 'Email Support'}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 text-center hover:scale-105 transition-all duration-300">
+                  <Mail className="w-8 h-8 text-electric-indigo text-electric-indigo-400 mx-auto mb-4" />
+                  <h3 className="font-heading font-bold text-gray-900 text-gray-100 mb-2">{faqPage?.emailSupport || 'Email Support'}</h3>
+                  <p className="text-gray-600 text-gray-300 text-sm mb-4">
                     {faqPage?.detailedEmailHelp || 'Get detailed answers via email'}
                   </p>
                   <Link href={`${localePrefix}/contact`}>
-                    <Button size="sm" className="bg-electric-indigo hover:bg-electric-indigo-600 hover:scale-105 text-white dark:text-gray-100 transition-all duration-300">
+                    <Button size="sm" className="bg-electric-indigo hover:bg-electric-indigo-600 hover:scale-105 text-white text-gray-100 transition-all duration-300">
                       {faqPage?.contactUs || 'Contact Us'}
                     </Button>
                   </Link>
                 </div>
 
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 text-center hover:scale-105 transition-all duration-300">
-                  <Phone className="w-8 h-8 text-[#03E46A] dark:text-[#04D162] mx-auto mb-4" />
-                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">{faqPage?.emailSupport || 'Email Support'}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 text-center hover:scale-105 transition-all duration-300">
+                  <Phone className="w-8 h-8 text-[#03E46A] text-[#04D162] mx-auto mb-4" />
+                  <h3 className="font-heading font-bold text-gray-900 text-gray-100 mb-2">{faqPage?.emailSupport || 'Email Support'}</h3>
+                  <p className="text-gray-600 text-gray-300 text-sm mb-4">
                     {faqPage?.speakDirectlyTeam || 'Speak with our team directly'}
                   </p>
-                  <Button size="sm" variant="outline" className="border-[#03E46A] dark:border-[#04D162] text-[#03E46A] dark:text-[#04D162] hover:bg-[#03E46A] dark:hover:bg-[#04D162] hover:text-white dark:hover:text-gray-900 dark:text-gray-100">
+                  <Button size="sm" variant="outline" className="border-[#03E46A] border-[#04D162] text-[#03E46A] text-[#04D162] hover:bg-[#03E46A] hover:bg-[#04D162] hover:text-white hover:text-gray-900 text-gray-100">
                     {faqPage?.callNow || 'Call Now'}
                   </Button>
                 </div>
 
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 text-center hover:scale-105 transition-all duration-300">
-                  <MessageCircle className="w-8 h-8 text-green-500 dark:text-green-400 mx-auto mb-4" />
-                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">{faqPage?.liveChat || 'Live Chat'}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 text-center hover:scale-105 transition-all duration-300">
+                  <MessageCircle className="w-8 h-8 text-green-500 text-green-400 mx-auto mb-4" />
+                  <h3 className="font-heading font-bold text-gray-900 text-gray-100 mb-2">{faqPage?.liveChat || 'Live Chat'}</h3>
+                  <p className="text-gray-600 text-gray-300 text-sm mb-4">
                     {faqPage?.realTimeChatHelp || 'Chat with us instantly'}
                   </p>
                   <a href="https://wa.me/385993433344?text=Hi%20I%27m%20interested%20in%20Purrify" target="_blank" rel="noopener noreferrer">
-                    <Button size="sm" variant="outline" className="border-green-500 dark:border-green-400 text-green-500 dark:text-green-400 hover:bg-green-500 hover:text-white dark:hover:bg-green-600 dark:hover:text-gray-100">
+                    <Button size="sm" variant="outline" className="border-green-500 border-green-400 text-green-500 text-green-400 hover:bg-green-500 hover:text-white hover:bg-green-600 hover:text-gray-100">
                       {faqPage?.startChat || 'Chat Now'}
                     </Button>
                   </a>
@@ -592,7 +592,7 @@ export default function FAQPageClient() {
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                <div className="p-8 text-white dark:text-gray-100">
+                <div className="p-8 text-white text-gray-100">
                   <h3 className="text-2xl font-heading font-bold mb-2">{uiCopy.happyOwnerTitle}</h3>
                   <p className="text-lg opacity-90">{uiCopy.happyOwnerSubtitle}</p>
                 </div>
@@ -604,7 +604,7 @@ export default function FAQPageClient() {
         {/* CTA Section */}
         <section className="py-16 bg-gradient-to-br from-electric-indigo via-electric-indigo-600 to-deep-coral relative overflow-hidden">
           <Container>
-            <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
+            <div className="text-center text-white text-gray-100 max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
                 {faqPage?.readyToTryPurrify || 'Ready to Try Purrify?'}
               </h2>
@@ -613,13 +613,13 @@ export default function FAQPageClient() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href={trialCheckoutUrl} target="_blank" rel="noopener noreferrer">
-                  <Button size="lg" className="bg-white dark:bg-gray-900 text-electric-indigo hover:bg-gray-100 hover:scale-105 dark:hover:bg-gray-700 font-bold transition-all duration-300">
+                  <Button size="lg" className="bg-white bg-gray-900 text-electric-indigo hover:bg-gray-100 hover:scale-105 hover:bg-gray-700 font-bold transition-all duration-300">
                     {trialCtaLabel}
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </a>
                 <Link href={`${localePrefix}/products`}>
-                  <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-gray-50 hover:bg-white hover:scale-105 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-50 transition-all duration-300">
+                  <Button size="lg" variant="outline" className="border-white border-gray-600 text-gray-900 text-gray-50 hover:bg-white hover:scale-105 hover:bg-gray-700 hover:text-gray-900 hover:text-gray-50 transition-all duration-300">
                     {faqPage?.compareAllSizes || 'Compare All Sizes'}
                   </Button>
                 </Link>
@@ -632,40 +632,40 @@ export default function FAQPageClient() {
         <section className="py-16">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4 text-gray-900 text-gray-100">
                 {faqPage?.learnMoreAboutPurrify || 'Learn More About Purrify'}
               </h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Link href={`${localePrefix}/learn/how-it-works`} className="group">
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
-                  <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
+                <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 text-gray-100 group-hover:text-electric-indigo transition-colors">
                     {faqPage?.howItWorks || 'How It Works'}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300">
+                  <p className="text-gray-600 text-gray-300">
                     {faqPage?.learnScience || 'Learn the science behind our activated carbon technology and why it\'s so effective.'}
                   </p>
                 </div>
               </Link>
 
               <Link href={`${localePrefix}/learn/cat-litter-guide`} className="group">
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
-                  <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
+                <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 text-gray-100 group-hover:text-electric-indigo transition-colors">
                     {faqPage?.catLitterGuide || 'Cat Litter Guide'}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300">
+                  <p className="text-gray-600 text-gray-300">
                     {faqPage?.completeGuide || 'Complete guide to cat litter types, maintenance tips, and best practices.'}
                   </p>
                 </div>
               </Link>
 
               <Link href={`${localePrefix}/reviews`} className="group">
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
-                  <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-electric-indigo transition-colors">
+                <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <h3 className="text-xl font-heading font-bold mb-3 text-gray-900 text-gray-100 group-hover:text-electric-indigo transition-colors">
                     {faqPage?.customerStories || 'Customer Stories'}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300">
+                  <p className="text-gray-600 text-gray-300">
                     {faqPage?.realExperiences || 'Read real experiences from cat owners who transformed their homes with Purrify.'}
                   </p>
                 </div>
@@ -675,7 +675,7 @@ export default function FAQPageClient() {
         </section>
 
         {/* Related Articles */}
-        <section className="py-16 border-t border-gray-200 dark:border-gray-800">
+        <section className="py-16 border-t border-gray-200 border-gray-800">
           <Container>
             <RelatedContent currentUrl="/learn/faq" />
           </Container>

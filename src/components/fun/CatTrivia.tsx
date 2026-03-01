@@ -144,28 +144,28 @@ export function CatTrivia() {
         const percentage = (score / QUESTIONS.length) * 100;
 
         return (
-            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-purple-200 dark:border-purple-800 w-full max-w-md mx-auto text-center">
+            <div className="bg-white/80 bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-purple-200 border-purple-800 w-full max-w-md mx-auto text-center">
                 <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="w-20 h-20 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/50 dark:to-pink-900/50 rounded-full flex items-center justify-center mx-auto mb-6"
+                    className="w-20 h-20 bg-gradient-to-br from-purple-100 to-pink-100 from-purple-900/50 to-pink-900/50 rounded-full flex items-center justify-center mx-auto mb-6"
                 >
                     {percentage === 100 ? (
-                        <Trophy className="w-10 h-10 text-yellow-500 dark:text-yellow-400" />
+                        <Trophy className="w-10 h-10 text-yellow-500 text-yellow-400" />
                     ) : percentage >= 70 ? (
-                        <Star className="w-10 h-10 text-purple-500 dark:text-purple-400" />
+                        <Star className="w-10 h-10 text-purple-500 text-purple-400" />
                     ) : (
-                        <Brain className="w-10 h-10 text-purple-600 dark:text-purple-400" />
+                        <Brain className="w-10 h-10 text-purple-600 text-purple-400" />
                     )}
                 </motion.div>
 
-                <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4">Quiz Complete!</h2>
+                <h2 className="text-2xl font-bold text-gray-800 text-gray-200 mb-4">Quiz Complete!</h2>
 
                 <div className="text-4xl font-black bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
                     {score} / {QUESTIONS.length}
                 </div>
 
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+                <p className="text-sm text-gray-500 text-gray-400 mb-6">
                     Best Streak: {maxStreak} 🔥
                 </p>
 
@@ -174,24 +174,24 @@ export function CatTrivia() {
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="bg-gradient-to-r from-yellow-100 to-orange-100 dark:from-yellow-900/30 dark:to-orange-900/30 p-4 rounded-xl"
+                            className="bg-gradient-to-r from-yellow-100 to-orange-100 from-yellow-900/30 to-orange-900/30 p-4 rounded-xl"
                         >
-                            <p className="text-orange-600 dark:text-orange-400 font-bold text-lg">🏆 PURRFECT SCORE! 🏆</p>
-                            <p className="text-sm text-orange-500 dark:text-orange-300">You're a certified Cat Genius!</p>
+                            <p className="text-orange-600 text-orange-400 font-bold text-lg">🏆 PURRFECT SCORE! 🏆</p>
+                            <p className="text-sm text-orange-500 text-orange-300">You're a certified Cat Genius!</p>
                         </motion.div>
                     ) : percentage >= 70 ? (
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 p-4 rounded-xl"
+                            className="bg-gradient-to-r from-purple-100 to-pink-100 from-purple-900/30 to-pink-900/30 p-4 rounded-xl"
                         >
-                            <p className="text-purple-600 dark:text-purple-400 font-bold text-lg">🌟 Excellent! 🌟</p>
-                            <p className="text-sm text-purple-500 dark:text-purple-300">You really know your kitties!</p>
+                            <p className="text-purple-600 text-purple-400 font-bold text-lg">🌟 Excellent! 🌟</p>
+                            <p className="text-sm text-purple-500 text-purple-300">You really know your kitties!</p>
                         </motion.div>
                     ) : percentage >= 50 ? (
-                        <p className="text-blue-600 dark:text-blue-400 font-medium">😺 Not bad! Keep learning!</p>
+                        <p className="text-blue-600 text-blue-400 font-medium">😺 Not bad! Keep learning!</p>
                     ) : (
-                        <p className="text-orange-600 dark:text-orange-400 font-medium">📚 Study those cat facts!</p>
+                        <p className="text-orange-600 text-orange-400 font-medium">📚 Study those cat facts!</p>
                     )}
                 </div>
 
@@ -209,27 +209,27 @@ export function CatTrivia() {
     }
 
     return (
-        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-purple-200 dark:border-purple-800 w-full max-w-md mx-auto">
+        <div className="bg-white/80 bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-purple-200 border-purple-800 w-full max-w-md mx-auto">
             {/* Header */}
             <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2">
-                    <Brain className="w-5 h-5 text-purple-500 dark:text-purple-400" />
+                <h2 className="text-xl font-bold text-gray-800 text-gray-200 flex items-center gap-2">
+                    <Brain className="w-5 h-5 text-purple-500 text-purple-400" />
                     Cat Trivia
                 </h2>
                 <div className="flex items-center gap-3">
                     {streak > 0 && (
-                        <span className="text-xs font-bold text-orange-500 dark:text-orange-400 bg-orange-100 dark:bg-orange-900/30 px-2 py-1 rounded-full">
+                        <span className="text-xs font-bold text-orange-500 text-orange-400 bg-orange-100 bg-orange-900/30 px-2 py-1 rounded-full">
                             🔥 {streak}
                         </span>
                     )}
-                    <span className="text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">
+                    <span className="text-sm font-medium text-gray-500 text-gray-400 bg-gray-100 bg-gray-700 px-3 py-1 rounded-full">
                         {currentQuestionIdx + 1} / {QUESTIONS.length}
                     </span>
                 </div>
             </div>
 
             {/* Progress bar */}
-            <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full mb-6 overflow-hidden">
+            <div className="w-full h-2 bg-gray-200 bg-gray-700 rounded-full mb-6 overflow-hidden">
                 <motion.div
                     className="h-full bg-gradient-to-r from-purple-500 to-pink-500"
                     initial={{ width: 0 }}
@@ -242,7 +242,7 @@ export function CatTrivia() {
             <div className="mb-6">
                 <div className="flex items-start gap-3 mb-4">
                     <span className="text-3xl">{currentQ.emoji}</span>
-                    <h3 className="text-lg font-medium text-gray-800 dark:text-gray-100 leading-relaxed">
+                    <h3 className="text-lg font-medium text-gray-800 text-gray-100 leading-relaxed">
                         {currentQ.question}
                     </h3>
                 </div>
@@ -253,14 +253,14 @@ export function CatTrivia() {
 
                         if (showResult) {
                             if (idx === currentQ.correctAnswer) {
-                                buttonClass += "bg-green-100 dark:bg-green-900/30 border-green-500 text-green-800 dark:text-green-200";
+                                buttonClass += "bg-green-100 bg-green-900/30 border-green-500 text-green-800 text-green-200";
                             } else if (idx === selectedOption) {
-                                buttonClass += "bg-red-100 dark:bg-red-900/30 border-red-500 text-red-800 dark:text-red-200";
+                                buttonClass += "bg-red-100 bg-red-900/30 border-red-500 text-red-800 text-red-200";
                             } else {
-                                buttonClass += "bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 opacity-50";
+                                buttonClass += "bg-gray-50 bg-gray-800 border-gray-200 border-gray-700 opacity-50";
                             }
                         } else {
-                            buttonClass += "bg-white dark:bg-gray-700/50 border-gray-200 dark:border-gray-600 hover:border-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:shadow-md";
+                            buttonClass += "bg-white bg-gray-700/50 border-gray-200 border-gray-600 hover:border-purple-400 hover:bg-purple-50 hover:bg-purple-900/20 hover:shadow-md";
                         }
 
                         return (
@@ -280,7 +280,7 @@ export function CatTrivia() {
                                             animate={{ scale: 1 }}
                                             transition={{ type: "spring", stiffness: 500 }}
                                         >
-                                            <Check className="w-5 h-5 text-green-600 dark:text-green-400" />
+                                            <Check className="w-5 h-5 text-green-600 text-green-400" />
                                         </motion.div>
                                     )}
                                     {showResult && idx === selectedOption && idx !== currentQ.correctAnswer && (
@@ -289,7 +289,7 @@ export function CatTrivia() {
                                             animate={{ scale: 1 }}
                                             transition={{ type: "spring", stiffness: 500 }}
                                         >
-                                            <X className="w-5 h-5 text-red-600 dark:text-red-400" />
+                                            <X className="w-5 h-5 text-red-600 text-red-400" />
                                         </motion.div>
                                     )}
                                 </div>
@@ -307,18 +307,18 @@ export function CatTrivia() {
                         animate={{ opacity: 1, y: 0, height: 'auto' }}
                         exit={{ opacity: 0, y: -10, height: 0 }}
                         className={`p-4 rounded-xl mb-4 ${isCorrect
-                            ? 'bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 border border-green-200 dark:border-green-800'
-                            : 'bg-gradient-to-r from-red-100 to-pink-100 dark:from-red-900/30 dark:to-pink-900/30 border border-red-200 dark:border-red-800'
+                            ? 'bg-gradient-to-r from-green-100 to-emerald-100 from-green-900/30 to-emerald-900/30 border border-green-200 border-green-800'
+                            : 'bg-gradient-to-r from-red-100 to-pink-100 from-red-900/30 to-pink-900/30 border border-red-200 border-red-800'
                             }`}
                     >
                         <div className="flex items-start gap-3">
                             <span className="text-2xl">{isCorrect ? '🎉' : '📚'}</span>
                             <div>
-                                <p className={`font-bold mb-1 ${isCorrect ? 'text-green-800 dark:text-green-200' : 'text-red-800 dark:text-red-200'
+                                <p className={`font-bold mb-1 ${isCorrect ? 'text-green-800 text-green-200' : 'text-red-800 text-red-200'
                                     }`}>
                                     {isCorrect ? 'Correct!' : 'Not quite!'}
                                 </p>
-                                <p className={`text-sm ${isCorrect ? 'text-green-700 dark:text-green-300' : 'text-red-700 dark:text-red-300'
+                                <p className={`text-sm ${isCorrect ? 'text-green-700 text-green-300' : 'text-red-700 text-red-300'
                                     }`}>
                                     {currentQ.fact}
                                 </p>

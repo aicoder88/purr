@@ -41,25 +41,25 @@ export default function BlogError({ error, reset }: BlogErrorProps) {
         <div className="max-w-xl mx-auto text-center">
           {/* Blog Icon */}
           <div className="flex justify-center mb-6">
-            <div className="p-4 rounded-full bg-orange-100 dark:bg-orange-900/30">
-              <BookOpen className="w-10 h-10 text-orange-500 dark:text-orange-400" />
+            <div className="p-4 rounded-full bg-orange-100 bg-orange-900/30">
+              <BookOpen className="w-10 h-10 text-orange-500 text-orange-400" />
             </div>
           </div>
 
           {/* Title */}
-          <h1 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-gray-50">
+          <h1 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-gray-900 text-gray-50">
             {t('errorPages.blog.title')}
           </h1>
 
           {/* Message */}
-          <p className="text-base md:text-lg mb-6 text-gray-600 dark:text-gray-300">
+          <p className="text-base md:text-lg mb-6 text-gray-600 text-gray-300">
             {t('errorPages.blog.message')}
           </p>
 
           {/* Error Digest */}
           {error.digest && (
-            <div className="mb-6 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg inline-block">
-              <p className="text-xs text-gray-500 dark:text-gray-400 font-mono">
+            <div className="mb-6 p-3 bg-gray-100 bg-gray-800 rounded-lg inline-block">
+              <p className="text-xs text-gray-500 text-gray-400 font-mono">
                 {t('errorPages.common.errorId')}: {error.digest}
               </p>
             </div>
@@ -79,7 +79,7 @@ export default function BlogError({ error, reset }: BlogErrorProps) {
             <Button
               asChild
               variant="outline"
-              className="border-gray-300 dark:border-gray-600 hover:border-[#5B2EFF] dark:hover:border-[#5B2EFF] rounded-full px-6"
+              className="border-gray-300 border-gray-600 hover:border-[#5B2EFF] hover:border-[#5B2EFF] rounded-full px-6"
             >
               <Link href={`/${locale}`}>
                 <Home className="w-4 h-4 mr-2" />
@@ -89,10 +89,10 @@ export default function BlogError({ error, reset }: BlogErrorProps) {
           </div>
 
           {/* Help Text */}
-          <p className="mt-6 text-sm text-gray-500 dark:text-gray-400">
+          <p className="mt-6 text-sm text-gray-500 text-gray-400">
             <Link 
               href={`/${locale}/support`}
-              className="text-[#5B2EFF] hover:text-[#4B1EEF] dark:text-[#8B5CF6] dark:hover:text-[#A78BFA] underline underline-offset-2"
+              className="text-[#5B2EFF] hover:text-[#4B1EEF] text-[#8B5CF6] hover:text-[#A78BFA] underline underline-offset-2"
             >
               {t('errorPages.blog.contactSupport')}
             </Link>
@@ -101,15 +101,15 @@ export default function BlogError({ error, reset }: BlogErrorProps) {
           {/* Development Details */}
           {process.env.NODE_ENV === 'development' && (
             <details className="mt-6 text-left">
-              <summary className="text-sm text-gray-500 dark:text-gray-400 cursor-pointer py-2 flex items-center justify-center gap-2">
+              <summary className="text-sm text-gray-500 text-gray-400 cursor-pointer py-2 flex items-center justify-center gap-2">
                 <AlertCircle className="w-4 h-4" />
                 {t('errorPages.common.debugInfo')}
               </summary>
-              <div className="mt-2 text-xs bg-gray-100 dark:bg-gray-800 rounded-lg p-4 text-left">
-                <p className="font-semibold text-gray-800 dark:text-gray-200 mb-1">
+              <div className="mt-2 text-xs bg-gray-100 bg-gray-800 rounded-lg p-4 text-left">
+                <p className="font-semibold text-gray-800 text-gray-200 mb-1">
                   {error.name}: {error.message}
                 </p>
-                <pre className="text-gray-600 dark:text-gray-400 whitespace-pre-wrap font-mono text-[10px] mt-2">
+                <pre className="text-gray-600 text-gray-400 whitespace-pre-wrap font-mono text-[10px] mt-2">
                   {error.stack}
                 </pre>
               </div>

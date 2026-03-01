@@ -139,7 +139,7 @@ function expectedCanonical(locale: Locale, slug: string): string {
 }
 
 function buildFigureHtml(url: string, alt: string, caption: string): string {
-  return `<figure class="my-8"><img src="${url}" alt="${alt}" class="w-full h-auto rounded-xl shadow-lg" loading="lazy" /><figcaption class="mt-2 text-sm text-gray-500 dark:text-gray-400">${caption}</figcaption></figure>`;
+  return `<figure class="my-8"><img src="${url}" alt="${alt}" class="w-full h-auto rounded-xl shadow-lg" loading="lazy" /><figcaption class="mt-2 text-sm text-gray-500 text-gray-400">${caption}</figcaption></figure>`;
 }
 
 function pickImageCandidates(slug: string): string[] {

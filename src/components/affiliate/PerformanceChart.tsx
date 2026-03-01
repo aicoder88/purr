@@ -46,10 +46,10 @@ export function PerformanceChart({
   if (data.length === 0) {
     return (
       <div
-        className="flex items-center justify-center bg-gray-50 dark:bg-gray-800 rounded-lg"
+        className="flex items-center justify-center bg-gray-50 bg-gray-800 rounded-lg"
         style={{ height }}
       >
-        <p className="text-sm text-gray-500 dark:text-gray-400">No data available</p>
+        <p className="text-sm text-gray-500 text-gray-400">No data available</p>
       </div>
     );
   }
@@ -58,7 +58,7 @@ export function PerformanceChart({
     <div className="relative" style={{ height }}>
       {/* Y-axis labels */}
       {showLabels && (
-        <div className="absolute left-0 top-0 bottom-0 w-12 flex flex-col justify-between text-xs text-gray-500 dark:text-gray-400 py-2">
+        <div className="absolute left-0 top-0 bottom-0 w-12 flex flex-col justify-between text-xs text-gray-500 text-gray-400 py-2">
           <span>{formatValue(chartData.max)}</span>
           <span>{formatValue(Math.round((chartData.max + (chartData.min || 0)) / 2))}</span>
           <span>{formatValue(chartData.min || 0)}</span>
@@ -81,7 +81,7 @@ export function PerformanceChart({
             stroke="currentColor"
             strokeOpacity="0.1"
             strokeDasharray="2 2"
-            className="text-gray-300 dark:text-gray-600"
+            className="text-gray-300 text-gray-600"
           />
           <line
             x1="0"
@@ -91,7 +91,7 @@ export function PerformanceChart({
             stroke="currentColor"
             strokeOpacity="0.1"
             strokeDasharray="2 2"
-            className="text-gray-300 dark:text-gray-600"
+            className="text-gray-300 text-gray-600"
           />
           <line
             x1="0"
@@ -101,7 +101,7 @@ export function PerformanceChart({
             stroke="currentColor"
             strokeOpacity="0.1"
             strokeDasharray="2 2"
-            className="text-gray-300 dark:text-gray-600"
+            className="text-gray-300 text-gray-600"
           />
 
           {/* Area fill */}
@@ -147,7 +147,7 @@ export function PerformanceChart({
       {/* X-axis labels */}
       {showLabels && data.length > 0 && (
         <div
-          className={`${showLabels ? 'ml-12' : ''} flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-1`}
+          className={`${showLabels ? 'ml-12' : ''} flex justify-between text-xs text-gray-500 text-gray-400 mt-1`}
         >
           <span>{new Date(data[0].date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
           {data.length > 2 && (

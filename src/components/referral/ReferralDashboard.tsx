@@ -135,12 +135,12 @@ export function ReferralDashboard({ className = '' }: ReferralDashboardProps) {
   // Not logged in state
   if (sessionStatus === 'unauthenticated') {
     return (
-      <Card className={`bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 ${className}`}>
+      <Card className={`bg-white bg-gray-900 border-gray-200 border-gray-700 ${className}`}>
         <CardHeader>
-          <CardTitle className="text-gray-900 dark:text-gray-50">
+          <CardTitle className="text-gray-900 text-gray-50">
             {t('referral.dashboard.title') || 'Referral Program'}
           </CardTitle>
-          <CardDescription className="text-gray-600 dark:text-gray-400">
+          <CardDescription className="text-gray-600 text-gray-400">
             {t('referral.dashboard.loginRequired') || 'Sign in to access your referral dashboard and start earning rewards.'}
           </CardDescription>
         </CardHeader>
@@ -156,14 +156,14 @@ export function ReferralDashboard({ className = '' }: ReferralDashboardProps) {
   // Loading state
   if (loading || sessionStatus === 'loading') {
     return (
-      <Card className={`bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 ${className}`}>
+      <Card className={`bg-white bg-gray-900 border-gray-200 border-gray-700 ${className}`}>
         <CardHeader>
-          <Skeleton className="h-8 w-48 bg-gray-200 dark:bg-gray-700" />
-          <Skeleton className="h-4 w-64 bg-gray-200 dark:bg-gray-700" />
+          <Skeleton className="h-8 w-48 bg-gray-200 bg-gray-700" />
+          <Skeleton className="h-4 w-64 bg-gray-200 bg-gray-700" />
         </CardHeader>
         <CardContent className="space-y-4">
-          <Skeleton className="h-24 w-full bg-gray-200 dark:bg-gray-700" />
-          <Skeleton className="h-32 w-full bg-gray-200 dark:bg-gray-700" />
+          <Skeleton className="h-24 w-full bg-gray-200 bg-gray-700" />
+          <Skeleton className="h-32 w-full bg-gray-200 bg-gray-700" />
         </CardContent>
       </Card>
     );
@@ -172,14 +172,14 @@ export function ReferralDashboard({ className = '' }: ReferralDashboardProps) {
   // Error state
   if (error && !stats) {
     return (
-      <Card className={`bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 ${className}`}>
+      <Card className={`bg-white bg-gray-900 border-gray-200 border-gray-700 ${className}`}>
         <CardHeader>
-          <CardTitle className="text-gray-900 dark:text-gray-50">
+          <CardTitle className="text-gray-900 text-gray-50">
             {t('referral.dashboard.title') || 'Referral Program'}
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-red-600 dark:text-red-400 mb-4">{error}</p>
+          <p className="text-red-600 text-red-400 mb-4">{error}</p>
           <Button onClick={fetchStats}>{t('referral.dashboard.retry') || 'Try Again'}</Button>
         </CardContent>
       </Card>
@@ -189,12 +189,12 @@ export function ReferralDashboard({ className = '' }: ReferralDashboardProps) {
   // No code yet - show generate button
   if (!stats?.code) {
     return (
-      <Card className={`bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 ${className}`}>
+      <Card className={`bg-white bg-gray-900 border-gray-200 border-gray-700 ${className}`}>
         <CardHeader>
-          <CardTitle className="text-gray-900 dark:text-gray-50">
+          <CardTitle className="text-gray-900 text-gray-50">
             {t('referral.dashboard.title') || 'Give $5, Get $5'}
           </CardTitle>
-          <CardDescription className="text-gray-600 dark:text-gray-400">
+          <CardDescription className="text-gray-600 text-gray-400">
             {t('referral.dashboard.generateDescription') || 'Generate your unique referral code and share it with friends. They get $5 off their first order, and you get $5 credit when they purchase!'}
           </CardDescription>
         </CardHeader>
@@ -208,7 +208,7 @@ export function ReferralDashboard({ className = '' }: ReferralDashboardProps) {
             {t('referral.dashboard.generateButton') || 'Generate My Referral Code'}
           </Button>
           {error && (
-            <p className="text-red-600 dark:text-red-400 mt-2 text-sm">{error}</p>
+            <p className="text-red-600 text-red-400 mt-2 text-sm">{error}</p>
           )}
         </CardContent>
       </Card>
@@ -228,45 +228,45 @@ export function ReferralDashboard({ className = '' }: ReferralDashboardProps) {
 
       {/* Stats Grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <Card className="bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
+        <Card className="bg-white bg-gray-900 border-gray-200 border-gray-700">
           <CardContent className="pt-6">
-            <div className="text-2xl font-bold text-gray-900 dark:text-gray-50">
+            <div className="text-2xl font-bold text-gray-900 text-gray-50">
               {stats.stats.totalOrders}
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm text-gray-600 text-gray-400">
               {t('referral.stats.completedReferrals') || 'Completed Referrals'}
             </p>
           </CardContent>
         </Card>
 
-        <Card className="bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
+        <Card className="bg-white bg-gray-900 border-gray-200 border-gray-700">
           <CardContent className="pt-6">
-            <div className="text-2xl font-bold text-green-600 dark:text-green-400">
+            <div className="text-2xl font-bold text-green-600 text-green-400">
               ${stats.stats.totalEarnings.toFixed(2)}
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm text-gray-600 text-gray-400">
               {t('referral.stats.totalEarned') || 'Total Earned'}
             </p>
           </CardContent>
         </Card>
 
-        <Card className="bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
+        <Card className="bg-white bg-gray-900 border-gray-200 border-gray-700">
           <CardContent className="pt-6">
-            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+            <div className="text-2xl font-bold text-blue-600 text-blue-400">
               ${stats.stats.availableCredit.toFixed(2)}
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm text-gray-600 text-gray-400">
               {t('referral.stats.availableCredit') || 'Available Credit'}
             </p>
           </CardContent>
         </Card>
 
-        <Card className="bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
+        <Card className="bg-white bg-gray-900 border-gray-200 border-gray-700">
           <CardContent className="pt-6">
-            <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">
+            <div className="text-2xl font-bold text-orange-600 text-orange-400">
               {stats.stats.pendingReferrals}
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm text-gray-600 text-gray-400">
               {t('referral.stats.pending') || 'Pending'}
             </p>
           </CardContent>
@@ -274,18 +274,18 @@ export function ReferralDashboard({ className = '' }: ReferralDashboardProps) {
       </div>
 
       {/* Milestone Progress */}
-      <Card className="bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
+      <Card className="bg-white bg-gray-900 border-gray-200 border-gray-700">
         <CardHeader>
-          <CardTitle className="text-lg text-gray-900 dark:text-gray-50">
+          <CardTitle className="text-lg text-gray-900 text-gray-50">
             {t('referral.milestone.title') || 'Milestone Progress'}
           </CardTitle>
-          <CardDescription className="text-gray-600 dark:text-gray-400">
+          <CardDescription className="text-gray-600 text-gray-400">
             {stats.milestoneProgress.current} / {stats.milestoneProgress.target} {t('referral.milestone.referrals') || 'referrals'}
           </CardDescription>
         </CardHeader>
         <CardContent>
           <Progress value={stats.milestoneProgress.progress} className="h-3" />
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          <p className="mt-2 text-sm text-gray-600 text-gray-400">
             {t('referral.milestone.nextReward') || 'Next reward'}: {stats.milestoneProgress.nextReward}
           </p>
         </CardContent>
@@ -293,9 +293,9 @@ export function ReferralDashboard({ className = '' }: ReferralDashboardProps) {
 
       {/* Available Rewards */}
       {stats.availableRewards.length > 0 && (
-        <Card className="bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
+        <Card className="bg-white bg-gray-900 border-gray-200 border-gray-700">
           <CardHeader>
-            <CardTitle className="text-lg text-gray-900 dark:text-gray-50">
+            <CardTitle className="text-lg text-gray-900 text-gray-50">
               {t('referral.rewards.title') || 'Your Rewards'}
             </CardTitle>
           </CardHeader>
@@ -304,17 +304,17 @@ export function ReferralDashboard({ className = '' }: ReferralDashboardProps) {
               {stats.availableRewards.map((reward) => (
                 <div
                   key={reward.id}
-                  className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg"
+                  className="flex items-center justify-between p-3 bg-gray-50 bg-gray-800 rounded-lg"
                 >
                   <div>
-                    <p className="font-medium text-gray-900 dark:text-gray-50">
+                    <p className="font-medium text-gray-900 text-gray-50">
                       ${reward.amount.toFixed(2)} {t('referral.rewards.credit') || 'Credit'}
                     </p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                    <p className="text-sm text-gray-600 text-gray-400">
                       {reward.description}
                     </p>
                   </div>
-                  <Badge className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                  <Badge className="bg-green-100 text-green-800 bg-green-900 text-green-200">
                     {t('referral.rewards.available') || 'Available'}
                   </Badge>
                 </div>
@@ -326,9 +326,9 @@ export function ReferralDashboard({ className = '' }: ReferralDashboardProps) {
 
       {/* Recent Activity */}
       {stats.recentActivity.length > 0 && (
-        <Card className="bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
+        <Card className="bg-white bg-gray-900 border-gray-200 border-gray-700">
           <CardHeader>
-            <CardTitle className="text-lg text-gray-900 dark:text-gray-50">
+            <CardTitle className="text-lg text-gray-900 text-gray-50">
               {t('referral.activity.title') || 'Recent Activity'}
             </CardTitle>
           </CardHeader>
@@ -337,23 +337,23 @@ export function ReferralDashboard({ className = '' }: ReferralDashboardProps) {
               {stats.recentActivity.map((activity) => (
                 <div
                   key={activity.id}
-                  className="flex items-center justify-between p-3 border-b border-gray-200 dark:border-gray-700 last:border-0"
+                  className="flex items-center justify-between p-3 border-b border-gray-200 border-gray-700 last:border-0"
                 >
                   <div>
-                    <p className="font-medium text-gray-900 dark:text-gray-50">
+                    <p className="font-medium text-gray-900 text-gray-50">
                       {activity.refereeEmail}
                     </p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                    <p className="text-sm text-gray-600 text-gray-400">
                       {new Date(activity.createdAt).toLocaleDateString()}
                     </p>
                   </div>
                   <Badge
                     className={
                       activity.status === 'COMPLETED'
-                        ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                        ? 'bg-green-100 text-green-800 bg-green-900 text-green-200'
                         : activity.status === 'PENDING'
-                          ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
-                          : 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200'
+                          ? 'bg-yellow-100 text-yellow-800 bg-yellow-900 text-yellow-200'
+                          : 'bg-gray-100 text-gray-800 bg-gray-800 text-gray-200'
                     }
                   >
                     {activity.status === 'COMPLETED'

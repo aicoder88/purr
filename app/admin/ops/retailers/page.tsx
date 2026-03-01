@@ -52,10 +52,10 @@ export default function RetailersPage() {
 
   const getStatusBadge = (status: Retailer['status']) => {
     const styles = {
-      PENDING: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300',
-      ACTIVE: 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300',
-      SUSPENDED: 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300',
-      REJECTED: 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+      PENDING: 'bg-yellow-100 bg-yellow-900/30 text-yellow-700 text-yellow-300',
+      ACTIVE: 'bg-green-100 bg-green-900/30 text-green-700 text-green-300',
+      SUSPENDED: 'bg-red-100 bg-red-900/30 text-red-700 text-red-300',
+      REJECTED: 'bg-gray-100 bg-gray-700 text-gray-700 text-gray-300'
     };
 
     return (
@@ -135,10 +135,10 @@ export default function RetailersPage() {
     <OpsLayout>
       {/* Header */}
       <div className="mb-8">
-        <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50">
+        <h1 className="font-heading text-3xl font-bold text-gray-900 text-gray-50">
           Retailer Management
         </h1>
-        <p className="text-gray-600 dark:text-gray-400 mt-1">
+        <p className="text-gray-600 text-gray-400 mt-1">
           Manage wholesale retailer applications and accounts
         </p>
       </div>
@@ -146,27 +146,27 @@ export default function RetailersPage() {
       {/* Pending Approvals */}
       {pendingRetailers.length > 0 && (
         <div className="mb-8">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-4">
+          <h2 className="text-lg font-semibold text-gray-900 text-gray-50 mb-4">
             Pending Approvals ({pendingRetailers.length})
           </h2>
           <div className="space-y-4">
             {pendingRetailers.map((retailer) => (
               <div
                 key={retailer.id}
-                className="bg-white dark:bg-gray-800 rounded-xl border border-yellow-200 dark:border-yellow-900/50 p-6"
+                className="bg-white bg-gray-800 rounded-xl border border-yellow-200 border-yellow-900/50 p-6"
               >
                 <div className="flex items-start justify-between">
                   <div>
                     <div className="flex items-center space-x-3 mb-2">
-                      <h3 className="font-semibold text-gray-900 dark:text-gray-50">
+                      <h3 className="font-semibold text-gray-900 text-gray-50">
                         {retailer.businessName}
                       </h3>
                       {getStatusBadge(retailer.status)}
                     </div>
-                    <p className="text-gray-600 dark:text-gray-400">
+                    <p className="text-gray-600 text-gray-400">
                       {retailer.contactName} &bull; {retailer.email}
                     </p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                    <p className="text-sm text-gray-500 text-gray-400 mt-1">
                       Applied: {formatDate(retailer.createdAt)}
                     </p>
                   </div>
@@ -174,7 +174,7 @@ export default function RetailersPage() {
                     <button
                       onClick={() => handleApprove(retailer.id)}
                       disabled={processingId === retailer.id}
-                      className="flex items-center space-x-1 px-3 py-2 bg-green-500 dark:bg-green-600 text-white dark:text-gray-100 rounded-lg hover:bg-green-600 dark:hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="flex items-center space-x-1 px-3 py-2 bg-green-500 bg-green-600 text-white text-gray-100 rounded-lg hover:bg-green-600 hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {processingId === retailer.id ? (
                         <Loader2 className="w-4 h-4 animate-spin" />
@@ -186,7 +186,7 @@ export default function RetailersPage() {
                     <button
                       onClick={() => handleReject(retailer.id)}
                       disabled={processingId === retailer.id}
-                      className="flex items-center space-x-1 px-3 py-2 border border-red-300 dark:border-red-700 text-red-600 dark:text-red-400 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="flex items-center space-x-1 px-3 py-2 border border-red-300 border-red-700 text-red-600 text-red-400 rounded-lg hover:bg-red-50 hover:bg-red-900/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {processingId === retailer.id ? (
                         <Loader2 className="w-4 h-4 animate-spin" />
@@ -205,61 +205,61 @@ export default function RetailersPage() {
 
       {/* Active Retailers */}
       <div>
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-4">
+        <h2 className="text-lg font-semibold text-gray-900 text-gray-50 mb-4">
           Active Retailers ({activeRetailers.length})
         </h2>
         {isLoading ? (
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-12 text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 dark:border-teal-400 mx-auto" />
-            <p className="text-gray-600 dark:text-gray-400 mt-4">Loading retailers...</p>
+          <div className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 p-12 text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 border-teal-400 mx-auto" />
+            <p className="text-gray-600 text-gray-400 mt-4">Loading retailers...</p>
           </div>
         ) : activeRetailers.length === 0 ? (
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-12 text-center">
-            <div className="p-4 bg-gray-100 dark:bg-gray-700 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-              <Store className="w-8 h-8 text-gray-500 dark:text-gray-400" />
+          <div className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 p-12 text-center">
+            <div className="p-4 bg-gray-100 bg-gray-700 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+              <Store className="w-8 h-8 text-gray-500 text-gray-400" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-50 mb-2">
+            <h3 className="text-xl font-semibold text-gray-900 text-gray-50 mb-2">
               No Active Retailers Yet
             </h3>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-gray-600 text-gray-400">
               Approved retailers will appear here.
             </p>
           </div>
         ) : (
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
-            <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-              <thead className="bg-gray-50 dark:bg-gray-700">
+          <div className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 overflow-hidden">
+            <table className="min-w-full divide-y divide-gray-200 divide-gray-700">
+              <thead className="bg-gray-50 bg-gray-700">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-gray-400 uppercase tracking-wider">
                     Business
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-gray-400 uppercase tracking-wider">
                     Contact
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-gray-400 uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-gray-400 uppercase tracking-wider">
                     Since
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+              <tbody className="divide-y divide-gray-200 divide-gray-700">
                 {activeRetailers.map((retailer) => (
-                  <tr key={retailer.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                  <tr key={retailer.id} className="hover:bg-gray-50 hover:bg-gray-700/50">
                     <td className="px-6 py-4">
-                      <div className="font-medium text-gray-900 dark:text-gray-50">
+                      <div className="font-medium text-gray-900 text-gray-50">
                         {retailer.businessName}
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="text-gray-900 dark:text-gray-50">{retailer.contactName}</div>
-                      <div className="text-sm text-gray-500 dark:text-gray-400">{retailer.email}</div>
+                      <div className="text-gray-900 text-gray-50">{retailer.contactName}</div>
+                      <div className="text-sm text-gray-500 text-gray-400">{retailer.email}</div>
                     </td>
                     <td className="px-6 py-4">
                       {getStatusBadge(retailer.status)}
                     </td>
-                    <td className="px-6 py-4 text-gray-500 dark:text-gray-400">
+                    <td className="px-6 py-4 text-gray-500 text-gray-400">
                       {formatDate(retailer.createdAt)}
                     </td>
                   </tr>

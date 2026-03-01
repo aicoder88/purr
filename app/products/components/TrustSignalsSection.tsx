@@ -28,18 +28,18 @@ export function TrustSignalsSection() {
   ];
 
   return (
-    <section className="py-12 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+    <section className="py-12 bg-white bg-gray-800 border-b border-gray-200 border-gray-700">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {trustSignals.map((signal, index) => (
             <div key={index} className="text-center">
-              <div className="text-brand-purple dark:text-purple-400 mb-3 flex justify-center">
+              <div className="text-brand-purple text-purple-400 mb-3 flex justify-center">
                 {signal.icon}
               </div>
-              <h3 className="font-heading font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
+              <h3 className="font-heading font-bold text-lg text-gray-900 text-gray-100 mb-2">
                 {signal.title}
               </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
+              <p className="text-sm text-gray-600 text-gray-300">
                 {signal.description}
               </p>
             </div>
@@ -47,7 +47,7 @@ export function TrustSignalsSection() {
         </div>
 
         {/* Transition to size selection */}
-        <p className="text-center mt-12 text-xl font-medium text-gray-800 dark:text-gray-200">
+        <p className="text-center mt-12 text-xl font-medium text-gray-800 text-gray-200">
           {locale === 'fr'
             ? "Maintenant, quelle taille vous convient le mieux?"
             : "Now, which size is right for you?"}

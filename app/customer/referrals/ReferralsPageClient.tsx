@@ -73,13 +73,13 @@ export default function ReferralsPageClient() {
   // No referral code state - show onboarding
   if (!hasReferralCode) {
     return (
-      <main className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <main className="min-h-screen bg-gray-50 bg-gray-900">
         <Container className="py-16">
           <div className="max-w-4xl mx-auto">
             {/* Back to Portal */}
             <Link
               href="/customer/portal/"
-              className="inline-flex items-center text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 mb-8"
+              className="inline-flex items-center text-orange-600 text-orange-400 hover:text-orange-700 hover:text-orange-300 mb-8"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Customer Portal
@@ -88,14 +88,14 @@ export default function ReferralsPageClient() {
             {/* Hero Section */}
             <div className="text-center mb-12">
               <div className="w-20 h-20 bg-gradient-to-br from-orange-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Share2 className="w-10 h-10 text-white dark:text-gray-100" />
+                <Share2 className="w-10 h-10 text-white text-gray-100" />
               </div>
 
-              <h1 className="font-heading text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+              <h1 className="font-heading text-4xl font-bold text-gray-900 text-gray-100 mb-4">
                 Share Purrify & Earn Rewards
               </h1>
 
-              <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-gray-600 text-gray-400 mb-8 max-w-2xl mx-auto">
                 Help other cat parents eliminate embarrassing litter box odors while earning
                 amazing rewards for yourself!
               </p>
@@ -104,37 +104,37 @@ export default function ReferralsPageClient() {
             {/* Benefits Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
               <Card className="text-center p-6">
-                <div className="w-16 h-16 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Gift className="w-8 h-8 text-green-600 dark:text-green-400" />
+                <div className="w-16 h-16 bg-green-100 bg-green-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Gift className="w-8 h-8 text-green-600 text-green-400" />
                 </div>
-                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+                <h3 className="font-heading text-xl font-bold text-gray-900 text-gray-100 mb-3">
                   15% Off Every Referral
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-gray-600 text-gray-400">
                   Earn 15% discount on your next purchase for every friend who buys Purrify
                 </p>
               </Card>
 
               <Card className="text-center p-6">
-                <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Trophy className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                <div className="w-16 h-16 bg-blue-100 bg-blue-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Trophy className="w-8 h-8 text-blue-600 text-blue-400" />
                 </div>
-                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+                <h3 className="font-heading text-xl font-bold text-gray-900 text-gray-100 mb-3">
                   Milestone Bonuses
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-gray-600 text-gray-400">
                   Get FREE products after every 3 successful referrals - no limits!
                 </p>
               </Card>
 
               <Card className="text-center p-6">
-                <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-8 h-8 text-purple-600 dark:text-purple-400" />
+                <div className="w-16 h-16 bg-purple-100 bg-purple-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-8 h-8 text-purple-600 text-purple-400" />
                 </div>
-                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+                <h3 className="font-heading text-xl font-bold text-gray-900 text-gray-100 mb-3">
                   Help Cat Parents
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-gray-600 text-gray-400">
                   Your friends get a FREE trial - everyone wins when they try Purrify!
                 </p>
               </Card>
@@ -142,37 +142,37 @@ export default function ReferralsPageClient() {
 
             {/* How it Works */}
             <Card className="p-8 mb-8">
-              <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 text-center">
+              <h2 className="font-heading text-2xl font-bold text-gray-900 text-gray-100 mb-6 text-center">
                 How It Works
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-xl font-bold text-orange-600 dark:text-orange-400">1</span>
+                  <div className="w-12 h-12 bg-orange-100 bg-orange-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-xl font-bold text-orange-600 text-orange-400">1</span>
                   </div>
-                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">Share Your Code</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
+                  <h3 className="font-heading font-bold text-gray-900 text-gray-100 mb-2">Share Your Code</h3>
+                  <p className="text-gray-600 text-gray-400 text-sm">
                     Get your personalized referral code and share it with friends & family
                   </p>
                 </div>
 
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-xl font-bold text-orange-600 dark:text-orange-400">2</span>
+                  <div className="w-12 h-12 bg-orange-100 bg-orange-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-xl font-bold text-orange-600 text-orange-400">2</span>
                   </div>
-                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">They Get FREE Trial</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
+                  <h3 className="font-heading font-bold text-gray-900 text-gray-100 mb-2">They Get FREE Trial</h3>
+                  <p className="text-gray-600 text-gray-400 text-sm">
                     {`Your friends receive a free 12g trial size (normally ${trialPrice})`}
                   </p>
                 </div>
 
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-xl font-bold text-orange-600 dark:text-orange-400">3</span>
+                  <div className="w-12 h-12 bg-orange-100 bg-orange-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-xl font-bold text-orange-600 text-orange-400">3</span>
                   </div>
-                  <h3 className="font-heading font-bold text-gray-900 dark:text-gray-100 mb-2">You Earn Rewards</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
+                  <h3 className="font-heading font-bold text-gray-900 text-gray-100 mb-2">You Earn Rewards</h3>
+                  <p className="text-gray-600 text-gray-400 text-sm">
                     Get 15% off + milestone bonuses when they make their first purchase
                   </p>
                 </div>
@@ -185,7 +185,7 @@ export default function ReferralsPageClient() {
                 onClick={handleGenerateReferralCode}
                 disabled={isGeneratingCode}
                 size="lg"
-                className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white dark:text-gray-100 px-8 py-4 text-lg font-bold shadow-lg"
+                className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white text-gray-100 px-8 py-4 text-lg font-bold shadow-lg"
               >
                 {isGeneratingCode ? (
                   <>
@@ -200,7 +200,7 @@ export default function ReferralsPageClient() {
                 )}
               </Button>
 
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
+              <p className="text-sm text-gray-500 text-gray-400 mt-4">
                 Free to join • No limits • Start earning immediately
               </p>
             </div>
@@ -212,7 +212,7 @@ export default function ReferralsPageClient() {
 
   // Has referral code state - show dashboard
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <main className="min-h-screen bg-gray-50 bg-gray-900">
       <Container className="py-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
@@ -220,7 +220,7 @@ export default function ReferralsPageClient() {
             <div className="flex items-center space-x-4">
               <Link
                 href="/customer/portal/"
-                className="inline-flex items-center text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300"
+                className="inline-flex items-center text-orange-600 text-orange-400 hover:text-orange-700 hover:text-orange-300"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Customer Portal
@@ -228,10 +228,10 @@ export default function ReferralsPageClient() {
             </div>
 
             <div className="text-right">
-              <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100">
+              <h2 className="font-heading text-2xl font-bold text-gray-900 text-gray-100">
                 Referral Center
               </h2>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-gray-600 text-gray-400">
                 Welcome back, {DEFAULT_USER_NAME}!
               </p>
             </div>
@@ -272,11 +272,11 @@ export default function ReferralsPageClient() {
 
             <TabsContent value="rewards" className="space-y-6">
               <Card className="p-8 text-center">
-                <Gift className="w-16 h-16 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
-                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+                <Gift className="w-16 h-16 text-gray-400 text-gray-500 mx-auto mb-4" />
+                <h3 className="font-heading text-xl font-bold text-gray-900 text-gray-100 mb-2">
                   Rewards Coming Soon
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-6">
+                <p className="text-gray-600 text-gray-400 mb-6">
                   Your earned rewards will appear here. Keep sharing to unlock amazing benefits!
                 </p>
                 <Button onClick={() => setActiveTab('share')}>

@@ -114,19 +114,19 @@ export function B2BCaseStudies({
   const sectionSubtitle = subtitle || t('b2bCaseStudies.subtitle') || 'See how Purrify helps businesses like yours';
 
   return (
-    <section className="py-16 bg-gray-50 dark:bg-gray-800">
+    <section className="py-16 bg-gray-50 bg-gray-800">
       <Container>
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-[#10B981]/10 to-[#3694FF]/10 dark:from-[#10B981]/20 dark:to-[#3694FF]/20 text-brand-green-700 dark:text-[#34D399] font-bold text-sm mb-4">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-[#10B981]/10 to-[#3694FF]/10 from-[#10B981]/20 to-[#3694FF]/20 text-brand-green-700 text-[#34D399] font-bold text-sm mb-4">
               <DollarSign className="w-4 h-4 mr-2" />
               {t('b2bCaseStudies.badge') || 'Wholesale Program'}
             </div>
-            <h2 className="font-heading text-3xl md:text-4xl font-black text-gray-900 dark:text-gray-50 mb-4">
+            <h2 className="font-heading text-3xl md:text-4xl font-black text-gray-900 text-gray-50 mb-4">
               {sectionTitle}
             </h2>
-            <p className="text-xl text-gray-700 dark:text-gray-200 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-700 text-gray-200 max-w-2xl mx-auto">
               {sectionSubtitle}
             </p>
           </div>
@@ -136,19 +136,19 @@ export function B2BCaseStudies({
             {benefitsToShow.map((benefit) => (
               <div
                 key={benefit.id}
-                className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+                className="bg-white bg-gray-900 rounded-2xl shadow-xl border border-gray-200 border-gray-700 overflow-hidden hover:shadow-2xl transition-shadow duration-300"
               >
                 {/* Header */}
-                <div className="bg-gradient-to-r from-[#10B981]/10 to-[#3694FF]/10 dark:from-[#10B981]/10 dark:to-[#3694FF]/10 p-6 border-b border-gray-200 dark:border-gray-700">
+                <div className="bg-gradient-to-r from-[#10B981]/10 to-[#3694FF]/10 from-[#10B981]/10 to-[#3694FF]/10 p-6 border-b border-gray-200 border-gray-700">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-[#10B981] to-[#3694FF] flex items-center justify-center text-white dark:text-gray-100">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-[#10B981] to-[#3694FF] flex items-center justify-center text-white text-gray-100">
                       {businessTypeIcons[benefit.businessType]}
                     </div>
-                    <h3 className="font-heading font-black text-xl text-gray-900 dark:text-gray-50">
+                    <h3 className="font-heading font-black text-xl text-gray-900 text-gray-50">
                       {businessTypeLabels[benefit.businessType]}
                     </h3>
                   </div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <p className="text-sm text-gray-600 text-gray-400">
                     {benefit.idealFor}
                   </p>
                 </div>
@@ -157,26 +157,26 @@ export function B2BCaseStudies({
                 <div className="p-6">
                   {/* Challenge */}
                   <div className="mb-6">
-                    <h4 className="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">
+                    <h4 className="text-sm font-bold text-gray-500 text-gray-400 uppercase tracking-wide mb-2">
                       {challengeLabel}
                     </h4>
-                    <p className="text-sm text-gray-700 dark:text-gray-300">
+                    <p className="text-sm text-gray-700 text-gray-300">
                       {benefit.challenge}
                     </p>
                   </div>
 
                   {/* Benefits List */}
                   <div>
-                    <h4 className="text-sm font-bold text-brand-green-700 dark:text-[#34D399] uppercase tracking-wide mb-3">
+                    <h4 className="text-sm font-bold text-brand-green-700 text-[#34D399] uppercase tracking-wide mb-3">
                       {helpsLabel}
                     </h4>
                     <ul className="space-y-2">
                       {benefit.benefits.map((item, index) => (
                         <li
                           key={index}
-                          className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300"
+                          className="flex items-start gap-2 text-sm text-gray-700 text-gray-300"
                         >
-                          <span className="text-brand-green-700 dark:text-[#34D399] mt-0.5">✓</span>
+                          <span className="text-brand-green-700 text-[#34D399] mt-0.5">✓</span>
                           {item}
                         </li>
                       ))}
@@ -185,14 +185,14 @@ export function B2BCaseStudies({
 
                   {/* Real Customer Testimonial */}
                   {benefit.testimonialIndex !== undefined && TESTIMONIALS[benefit.testimonialIndex] && (
-                    <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                    <div className="mt-6 pt-6 border-t border-gray-200 border-gray-700">
                       <div className="flex items-start gap-3">
-                        <Quote className="w-5 h-5 text-[#3694FF] dark:text-[#60A5FA] flex-shrink-0 mt-1" />
+                        <Quote className="w-5 h-5 text-[#3694FF] text-[#60A5FA] flex-shrink-0 mt-1" />
                         <div>
-                          <p className="text-sm text-gray-600 dark:text-gray-400 italic leading-relaxed">
+                          <p className="text-sm text-gray-600 text-gray-400 italic leading-relaxed">
                             “{TESTIMONIALS[benefit.testimonialIndex].text}”
                           </p>
-                          <p className="mt-2 text-xs font-semibold text-gray-800 dark:text-gray-200">
+                          <p className="mt-2 text-xs font-semibold text-gray-800 text-gray-200">
                             — {TESTIMONIALS[benefit.testimonialIndex].author}
                           </p>
                         </div>
@@ -206,12 +206,12 @@ export function B2BCaseStudies({
 
           {/* CTA */}
           <div className="mt-12 text-center">
-            <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <p className="text-gray-600 text-gray-400 mb-4">
               {t('b2bCaseStudies.cta') || 'Interested in wholesale pricing for your business?'}
             </p>
             <a
               href="mailto:wholesale@purrify.ca"
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#10B981] to-[#3694FF] hover:from-[#059669] hover:to-[#2563EB] text-white dark:text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#10B981] to-[#3694FF] hover:from-[#059669] hover:to-[#2563EB] text-white text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
               {t('b2bCaseStudies.ctaButton') || 'Contact Our Partnership Team'}
             </a>

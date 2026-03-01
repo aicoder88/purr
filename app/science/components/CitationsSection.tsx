@@ -32,14 +32,14 @@ export function CitationsSection() {
     <section className="mb-16">
       <div className="flex items-center gap-3 mb-8">
         <BookOpen className="w-6 h-6 text-electric-indigo" />
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50">Scientific Citations</h2>
+        <h2 className="text-2xl font-bold text-gray-900 text-gray-50">Scientific Citations</h2>
       </div>
 
       <div className="space-y-8">
         {/* Fundamentals */}
         {citationsByCategory.fundamentals.length > 0 && (
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-4 flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-gray-900 text-gray-50 mb-4 flex items-center gap-2">
               <BookOpen className="w-5 h-5 text-electric-indigo" />
               Activated Carbon Adsorption Fundamentals
             </h3>
@@ -59,8 +59,8 @@ export function CitationsSection() {
         {/* Ammonia Research */}
         {citationsByCategory.ammonia.length > 0 && (
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-4 flex items-center gap-2">
-              <FlaskConical className="w-5 h-5 text-blue-500 dark:text-blue-400" />
+            <h3 className="text-lg font-semibold text-gray-900 text-gray-50 mb-4 flex items-center gap-2">
+              <FlaskConical className="w-5 h-5 text-blue-500 text-blue-400" />
               Ammonia Adsorption Research
             </h3>
             <div className="space-y-4">
@@ -79,8 +79,8 @@ export function CitationsSection() {
         {/* Safety Research */}
         {citationsByCategory.safety.length > 0 && (
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-4 flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-green-500 dark:text-green-400" />
+            <h3 className="text-lg font-semibold text-gray-900 text-gray-50 mb-4 flex items-center gap-2">
+              <ShieldCheck className="w-5 h-5 text-green-500 text-green-400" />
               Safety & Toxicology
             </h3>
             <div className="space-y-4">
@@ -99,8 +99,8 @@ export function CitationsSection() {
         {/* Health Research */}
         {citationsByCategory.health.length > 0 && (
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-4 flex items-center gap-2">
-              <Microscope className="w-5 h-5 text-purple-500 dark:text-purple-400" />
+            <h3 className="text-lg font-semibold text-gray-900 text-gray-50 mb-4 flex items-center gap-2">
+              <Microscope className="w-5 h-5 text-purple-500 text-purple-400" />
               Health & Environmental Impact
             </h3>
             <div className="space-y-4">
@@ -119,8 +119,8 @@ export function CitationsSection() {
         {/* Comparison Studies */}
         {citationsByCategory.comparison.length > 0 && (
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-4 flex items-center gap-2">
-              <Award className="w-5 h-5 text-orange-500 dark:text-orange-400" />
+            <h3 className="text-lg font-semibold text-gray-900 text-gray-50 mb-4 flex items-center gap-2">
+              <Award className="w-5 h-5 text-orange-500 text-orange-400" />
               Comparative Studies
             </h3>
             <div className="space-y-4">
@@ -139,8 +139,8 @@ export function CitationsSection() {
         {/* Sulfur Research */}
         {citationsByCategory.sulfur.length > 0 && (
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-4 flex items-center gap-2">
-              <FlaskConical className="w-5 h-5 text-red-500 dark:text-red-400" />
+            <h3 className="text-lg font-semibold text-gray-900 text-gray-50 mb-4 flex items-center gap-2">
+              <FlaskConical className="w-5 h-5 text-red-500 text-red-400" />
               Sulfur Compound Research
             </h3>
             <div className="space-y-4">

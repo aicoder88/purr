@@ -30,27 +30,27 @@ export default function AdminOpsError({ error, reset }: AdminOpsErrorProps) {
 
   return (
     <div className="min-h-[60vh] flex items-center justify-center p-6">
-      <div className="w-full max-w-md rounded-lg border border-gray-200 bg-white p-6 text-center shadow-sm dark:border-gray-700 dark:bg-gray-800">
+      <div className="w-full max-w-md rounded-lg border border-gray-200 bg-white p-6 text-center shadow-sm border-gray-700 bg-gray-800">
         {/* Icon */}
         <div className="flex justify-center mb-4">
-          <div className="p-3 rounded-full bg-orange-100 dark:bg-orange-900/30">
-            <Server className="w-8 h-8 text-orange-500 dark:text-orange-400" />
+          <div className="p-3 rounded-full bg-orange-100 bg-orange-900/30">
+            <Server className="w-8 h-8 text-orange-500 text-orange-400" />
           </div>
         </div>
 
         {/* Title */}
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+        <h2 className="text-lg font-semibold text-gray-900 text-gray-100">
           Operations Error
         </h2>
 
         {/* Message */}
-        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+        <p className="mt-2 text-sm text-gray-600 text-gray-300">
           An error occurred while loading the operations section. Please try again or return to the dashboard.
         </p>
 
         {/* Error Digest */}
         {error.digest && (
-          <p className="mt-3 text-xs text-gray-500 dark:text-gray-400 font-mono">
+          <p className="mt-3 text-xs text-gray-500 text-gray-400 font-mono">
             Ref: {error.digest}
           </p>
         )}
@@ -60,7 +60,7 @@ export default function AdminOpsError({ error, reset }: AdminOpsErrorProps) {
           <button
             type="button"
             onClick={reset}
-            className="inline-flex items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-300"
+            className="inline-flex items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-gray-700 bg-gray-100 text-gray-900 hover:bg-gray-300"
           >
             <RefreshCw className="w-4 h-4 mr-2" />
             Try Again
@@ -69,7 +69,7 @@ export default function AdminOpsError({ error, reset }: AdminOpsErrorProps) {
           <Button
             asChild
             variant="outline"
-            className="border-gray-300 dark:border-gray-600"
+            className="border-gray-300 border-gray-600"
           >
             <Link href="/admin">
               <LayoutDashboard className="w-4 h-4 mr-2" />
@@ -81,7 +81,7 @@ export default function AdminOpsError({ error, reset }: AdminOpsErrorProps) {
         {/* Back Link */}
         <Link
           href="/admin"
-          className="mt-4 inline-flex items-center text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+          className="mt-4 inline-flex items-center text-sm text-gray-500 text-gray-400 hover:text-gray-700 hover:text-gray-300 transition-colors"
         >
           <ArrowLeft className="w-4 h-4 mr-1" />
           Back to Admin Dashboard
@@ -90,15 +90,15 @@ export default function AdminOpsError({ error, reset }: AdminOpsErrorProps) {
         {/* Development Details */}
         {process.env.NODE_ENV === 'development' && (
           <details className="mt-4 text-left">
-            <summary className="text-xs text-gray-500 dark:text-gray-400 cursor-pointer py-2 flex items-center gap-1">
+            <summary className="text-xs text-gray-500 text-gray-400 cursor-pointer py-2 flex items-center gap-1">
               <AlertTriangle className="w-3 h-3" />
               Debug Details
             </summary>
-            <div className="mt-2 text-xs bg-gray-100 dark:bg-gray-700 rounded p-3 overflow-auto">
-              <p className="font-semibold text-gray-800 dark:text-gray-200">
+            <div className="mt-2 text-xs bg-gray-100 bg-gray-700 rounded p-3 overflow-auto">
+              <p className="font-semibold text-gray-800 text-gray-200">
                 {error.name}: {error.message}
               </p>
-              <pre className="mt-2 text-gray-600 dark:text-gray-400 whitespace-pre-wrap font-mono text-[10px]">
+              <pre className="mt-2 text-gray-600 text-gray-400 whitespace-pre-wrap font-mono text-[10px]">
                 {error.stack}
               </pre>
             </div>

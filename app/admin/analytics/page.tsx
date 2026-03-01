@@ -112,7 +112,7 @@ export default function AnalyticsDashboard() {
   if (isAuthorized === null) {
     return (
       <Container className="py-16 flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-gray-400 dark:text-gray-500" />
+        <Loader2 className="w-8 h-8 animate-spin text-gray-400 text-gray-500" />
       </Container>
     );
   }
@@ -120,10 +120,10 @@ export default function AnalyticsDashboard() {
   if (!isAuthorized) {
     return (
       <Container className="py-16 text-center">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+        <h2 className="text-2xl font-bold text-gray-900 text-gray-100">
           Access Denied
         </h2>
-        <p className="text-gray-600 dark:text-gray-400 mt-4">
+        <p className="text-gray-600 text-gray-400 mt-4">
           Admin access required.
         </p>
       </Container>
@@ -137,12 +137,12 @@ export default function AnalyticsDashboard() {
     }).format(value);
 
   const segmentColors: Record<string, string> = {
-    NEW: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400',
-    RETURNING: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400',
-    LOYAL: 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400',
-    VIP: 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400',
-    AT_RISK: 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400',
-    CHURNED: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400',
+    NEW: 'bg-blue-100 text-blue-800 bg-blue-900/30 text-blue-400',
+    RETURNING: 'bg-green-100 text-green-800 bg-green-900/30 text-green-400',
+    LOYAL: 'bg-purple-100 text-purple-800 bg-purple-900/30 text-purple-400',
+    VIP: 'bg-amber-100 text-amber-800 bg-amber-900/30 text-amber-400',
+    AT_RISK: 'bg-orange-100 text-orange-800 bg-orange-900/30 text-orange-400',
+    CHURNED: 'bg-red-100 text-red-800 bg-red-900/30 text-red-400',
   };
 
   return (
@@ -150,10 +150,10 @@ export default function AnalyticsDashboard() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+          <h1 className="text-2xl font-bold text-gray-900 text-gray-100">
             Analytics Dashboard
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-1">
+          <p className="text-gray-600 text-gray-400 mt-1">
             UTM attribution, customer insights, and A/B testing
           </p>
         </div>
@@ -161,7 +161,7 @@ export default function AnalyticsDashboard() {
           <select
             value={dateRange}
             onChange={(e) => setDateRange(e.target.value)}
-            className="px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+            className="px-3 py-2 rounded-lg border border-gray-200 border-gray-700 bg-white bg-gray-800 text-gray-900 text-gray-100"
           >
             <option value="7">Last 7 days</option>
             <option value="30">Last 30 days</option>
@@ -173,68 +173,68 @@ export default function AnalyticsDashboard() {
 
       {loading ? (
         <div className="flex items-center justify-center py-20">
-          <Loader2 className="w-8 h-8 animate-spin text-gray-400 dark:text-gray-500" />
+          <Loader2 className="w-8 h-8 animate-spin text-gray-400 text-gray-500" />
         </div>
       ) : (
         <>
           {/* Summary Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-            <Card className="p-6 bg-white dark:bg-gray-800">
+            <Card className="p-6 bg-white bg-gray-800">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-gray-600 dark:text-gray-400">
+                <span className="text-sm text-gray-600 text-gray-400">
                   Total Revenue
                 </span>
-                <DollarSign className="w-5 h-5 text-green-500 dark:text-green-400" />
+                <DollarSign className="w-5 h-5 text-green-500 text-green-400" />
               </div>
-              <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+              <p className="text-2xl font-bold text-gray-900 text-gray-100">
                 {formatCurrency(utmData?.summary.totalRevenue || 0)}
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+              <p className="text-sm text-gray-500 text-gray-400 mt-1">
                 {utmData?.summary.totalOrders || 0} orders
               </p>
             </Card>
 
-            <Card className="p-6 bg-white dark:bg-gray-800">
+            <Card className="p-6 bg-white bg-gray-800">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-gray-600 dark:text-gray-400">
+                <span className="text-sm text-gray-600 text-gray-400">
                   Attribution Rate
                 </span>
-                <Target className="w-5 h-5 text-blue-500 dark:text-blue-400" />
+                <Target className="w-5 h-5 text-blue-500 text-blue-400" />
               </div>
-              <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+              <p className="text-2xl font-bold text-gray-900 text-gray-100">
                 {(utmData?.summary.attributionRate || 0).toFixed(1)}%
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+              <p className="text-sm text-gray-500 text-gray-400 mt-1">
                 {utmData?.summary.attributedOrders || 0} attributed
               </p>
             </Card>
 
-            <Card className="p-6 bg-white dark:bg-gray-800">
+            <Card className="p-6 bg-white bg-gray-800">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-gray-600 dark:text-gray-400">
+                <span className="text-sm text-gray-600 text-gray-400">
                   Total Customers
                 </span>
-                <Users className="w-5 h-5 text-purple-500 dark:text-purple-400" />
+                <Users className="w-5 h-5 text-purple-500 text-purple-400" />
               </div>
-              <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+              <p className="text-2xl font-bold text-gray-900 text-gray-100">
                 {customerData?.summary.totalCustomers || 0}
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+              <p className="text-sm text-gray-500 text-gray-400 mt-1">
                 Avg LTV: {formatCurrency(customerData?.summary.averageLTV || 0)}
               </p>
             </Card>
 
-            <Card className="p-6 bg-white dark:bg-gray-800">
+            <Card className="p-6 bg-white bg-gray-800">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-gray-600 dark:text-gray-400">
+                <span className="text-sm text-gray-600 text-gray-400">
                   Avg Order Value
                 </span>
-                <BarChart3 className="w-5 h-5 text-amber-500 dark:text-amber-400" />
+                <BarChart3 className="w-5 h-5 text-amber-500 text-amber-400" />
               </div>
-              <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+              <p className="text-2xl font-bold text-gray-900 text-gray-100">
                 {formatCurrency(customerData?.summary.averageOrderValue || 0)}
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+              <p className="text-sm text-gray-500 text-gray-400 mt-1">
                 Per transaction
               </p>
             </Card>
@@ -242,37 +242,37 @@ export default function AnalyticsDashboard() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Traffic Sources */}
-            <Card className="p-6 bg-white dark:bg-gray-800">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
-                <Activity className="w-5 h-5 mr-2 text-blue-500 dark:text-blue-400" />
+            <Card className="p-6 bg-white bg-gray-800">
+              <h2 className="text-lg font-semibold text-gray-900 text-gray-100 mb-4 flex items-center">
+                <Activity className="w-5 h-5 mr-2 text-blue-500 text-blue-400" />
                 Top Traffic Sources
               </h2>
               <div className="space-y-3">
                 {utmData?.bySource.slice(0, 5).map((source, idx) => (
                   <div
                     key={source.source}
-                    className="flex items-center justify-between py-2 border-b border-gray-100 dark:border-gray-700 last:border-0"
+                    className="flex items-center justify-between py-2 border-b border-gray-100 border-gray-700 last:border-0"
                   >
                     <div className="flex items-center">
-                      <span className="w-6 h-6 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-xs font-medium text-gray-600 dark:text-gray-400 mr-3">
+                      <span className="w-6 h-6 rounded-full bg-gray-100 bg-gray-700 flex items-center justify-center text-xs font-medium text-gray-600 text-gray-400 mr-3">
                         {idx + 1}
                       </span>
-                      <span className="font-medium text-gray-900 dark:text-gray-100">
+                      <span className="font-medium text-gray-900 text-gray-100">
                         {source.source}
                       </span>
                     </div>
                     <div className="text-right">
-                      <p className="font-semibold text-gray-900 dark:text-gray-100">
+                      <p className="font-semibold text-gray-900 text-gray-100">
                         {formatCurrency(source.revenue)}
                       </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">
+                      <p className="text-xs text-gray-500 text-gray-400">
                         {source.orders} orders
                       </p>
                     </div>
                   </div>
                 ))}
                 {(!utmData?.bySource || utmData.bySource.length === 0) && (
-                  <p className="text-gray-500 dark:text-gray-400 text-center py-4">
+                  <p className="text-gray-500 text-gray-400 text-center py-4">
                     No UTM data yet
                   </p>
                 )}
@@ -280,37 +280,37 @@ export default function AnalyticsDashboard() {
             </Card>
 
             {/* Top Campaigns */}
-            <Card className="p-6 bg-white dark:bg-gray-800">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
-                <TrendingUp className="w-5 h-5 mr-2 text-green-500 dark:text-green-400" />
+            <Card className="p-6 bg-white bg-gray-800">
+              <h2 className="text-lg font-semibold text-gray-900 text-gray-100 mb-4 flex items-center">
+                <TrendingUp className="w-5 h-5 mr-2 text-green-500 text-green-400" />
                 Top Campaigns
               </h2>
               <div className="space-y-3">
                 {utmData?.byCampaign.slice(0, 5).map((campaign, idx) => (
                   <div
                     key={campaign.campaign}
-                    className="flex items-center justify-between py-2 border-b border-gray-100 dark:border-gray-700 last:border-0"
+                    className="flex items-center justify-between py-2 border-b border-gray-100 border-gray-700 last:border-0"
                   >
                     <div className="flex items-center">
-                      <span className="w-6 h-6 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-xs font-medium text-gray-600 dark:text-gray-400 mr-3">
+                      <span className="w-6 h-6 rounded-full bg-gray-100 bg-gray-700 flex items-center justify-center text-xs font-medium text-gray-600 text-gray-400 mr-3">
                         {idx + 1}
                       </span>
-                      <span className="font-medium text-gray-900 dark:text-gray-100 truncate max-w-[200px]">
+                      <span className="font-medium text-gray-900 text-gray-100 truncate max-w-[200px]">
                         {campaign.campaign}
                       </span>
                     </div>
                     <div className="text-right">
-                      <p className="font-semibold text-gray-900 dark:text-gray-100">
+                      <p className="font-semibold text-gray-900 text-gray-100">
                         {formatCurrency(campaign.revenue)}
                       </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">
+                      <p className="text-xs text-gray-500 text-gray-400">
                         AOV: {formatCurrency(campaign.avgOrderValue)}
                       </p>
                     </div>
                   </div>
                 ))}
                 {(!utmData?.byCampaign || utmData.byCampaign.length === 0) && (
-                  <p className="text-gray-500 dark:text-gray-400 text-center py-4">
+                  <p className="text-gray-500 text-gray-400 text-center py-4">
                     No campaign data yet
                   </p>
                 )}
@@ -318,34 +318,34 @@ export default function AnalyticsDashboard() {
             </Card>
 
             {/* Customer Segments */}
-            <Card className="p-6 bg-white dark:bg-gray-800 lg:col-span-2">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4 flex items-center">
-                <Users className="w-5 h-5 mr-2 text-purple-500 dark:text-purple-400" />
+            <Card className="p-6 bg-white bg-gray-800 lg:col-span-2">
+              <h2 className="text-lg font-semibold text-gray-900 text-gray-100 mb-4 flex items-center">
+                <Users className="w-5 h-5 mr-2 text-purple-500 text-purple-400" />
                 Customer Segments
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                 {customerData?.segmentBreakdown.map((seg) => (
                   <div
                     key={seg.segment}
-                    className="text-center p-4 rounded-lg bg-gray-50 dark:bg-gray-700/50"
+                    className="text-center p-4 rounded-lg bg-gray-50 bg-gray-700/50"
                   >
-                    <Badge className={segmentColors[seg.segment] || 'bg-gray-100 dark:bg-gray-700'}>
+                    <Badge className={segmentColors[seg.segment] || 'bg-gray-100 bg-gray-700'}>
                       {seg.segment}
                     </Badge>
-                    <p className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-2">
+                    <p className="text-2xl font-bold text-gray-900 text-gray-100 mt-2">
                       {seg.count}
                     </p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <p className="text-sm text-gray-500 text-gray-400">
                       {seg.percentage.toFixed(1)}%
                     </p>
-                    <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">
+                    <p className="text-xs text-gray-400 text-gray-500 mt-1">
                       {formatCurrency(seg.revenue)}
                     </p>
                   </div>
                 ))}
                 {(!customerData?.segmentBreakdown ||
                   customerData.segmentBreakdown.length === 0) && (
-                    <p className="text-gray-500 dark:text-gray-400 text-center py-4 col-span-full">
+                    <p className="text-gray-500 text-gray-400 text-center py-4 col-span-full">
                       No customer data yet
                     </p>
                   )}

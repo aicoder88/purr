@@ -36,25 +36,25 @@ const benefits = [
     icon: Gift,
     title: 'Save 30%',
     description: 'Get our biggest discount on every shipment',
-    color: 'text-green-600 dark:text-green-400'
+    color: 'text-green-600 text-green-400'
   },
   {
     icon: RefreshCw,
     title: 'Free Shipping',
     description: 'Always free, no minimum order required',
-    color: 'text-blue-600 dark:text-blue-400'
+    color: 'text-blue-600 text-blue-400'
   },
   {
     icon: Calendar,
     title: 'Flexible Schedule',
     description: 'Choose delivery every 1, 2, or 3 months',
-    color: 'text-purple-600 dark:text-purple-400'
+    color: 'text-purple-600 text-purple-400'
   },
   {
     icon: PauseCircle,
     title: 'Pause Anytime',
     description: 'Going on vacation? Pause with one click',
-    color: 'text-orange-600 dark:text-orange-400'
+    color: 'text-orange-600 text-orange-400'
   }
 ];
 
@@ -125,24 +125,24 @@ export default function SubscriptionPage() {
           }),
         }}
       />
-      <main className="min-h-screen bg-gradient-to-br from-green-50 via-white to-emerald-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
+      <main className="min-h-screen bg-gradient-to-br from-green-50 via-white to-emerald-50 from-gray-950 via-gray-900 to-gray-950">
         {/* Breadcrumb */}
         <Container>
           <nav className="py-6 text-sm">
-            <ol className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
+            <ol className="flex items-center space-x-2 text-gray-600 text-gray-400">
               <li>
-                <Link href="/" className="hover:text-[#03E46A] dark:hover:text-[#04D162] transition-colors">
+                <Link href="/" className="hover:text-[#03E46A] hover:text-[#04D162] transition-colors">
                   Home
                 </Link>
               </li>
-              <li className="text-gray-400 dark:text-gray-500">/</li>
+              <li className="text-gray-400 text-gray-500">/</li>
               <li>
-                <Link href="/support/" className="hover:text-[#03E46A] dark:hover:text-[#04D162] transition-colors">
+                <Link href="/support/" className="hover:text-[#03E46A] hover:text-[#04D162] transition-colors">
                   Support
                 </Link>
               </li>
-              <li className="text-gray-400 dark:text-gray-500">/</li>
-              <li className="text-[#03E46A] dark:text-[#04D162] font-semibold">Subscription</li>
+              <li className="text-gray-400 text-gray-500">/</li>
+              <li className="text-[#03E46A] text-[#04D162] font-semibold">Subscription</li>
             </ol>
           </nav>
         </Container>
@@ -151,18 +151,18 @@ export default function SubscriptionPage() {
         <section className="py-16 md:py-24">
           <Container>
             <div className="text-center max-w-4xl mx-auto">
-              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-100 dark:bg-green-900/30 mb-6">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-100 bg-green-900/30 mb-6">
                 <RefreshCw className="w-10 h-10 text-[#03E46A]" />
               </div>
-              <h1 className="font-heading text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white">
+              <h1 className="font-heading text-4xl md:text-6xl font-bold mb-6 text-gray-900 text-white">
                 Subscribe & Save
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8">
+              <p className="text-xl text-gray-600 text-gray-300 max-w-2xl mx-auto mb-8">
                 Never run out of Purrify again. Save 30%, get free shipping, and enjoy hassle-free automatic deliveries.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/#products">
-                  <Button size="lg" className="bg-[#03E46A] dark:bg-[#04D162] hover:bg-[#02C55A] dark:hover:bg-[#04D162]/90 text-gray-900 dark:text-gray-900 font-bold text-lg px-8">
+                  <Button size="lg" className="bg-[#03E46A] bg-[#04D162] hover:bg-[#02C55A] hover:bg-[#04D162]/90 text-gray-900 text-gray-900 font-bold text-lg px-8">
                     Start Saving Now
                   </Button>
                 </Link>
@@ -172,9 +172,9 @@ export default function SubscriptionPage() {
         </section>
 
         {/* Benefits */}
-        <section className="py-16 bg-white dark:bg-gray-900">
+        <section className="py-16 bg-white bg-gray-900">
           <Container>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 text-white">
               Why Subscribe?
             </h2>
 
@@ -182,15 +182,15 @@ export default function SubscriptionPage() {
               {benefits.map((benefit, index) => (
                 <div
                   key={index}
-                  className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700 text-center"
+                  className="bg-gradient-to-br from-gray-50 to-white from-gray-800 to-gray-900 rounded-2xl p-6 shadow-lg border border-gray-100 border-gray-700 text-center"
                 >
-                  <div className="w-16 h-16 bg-white dark:bg-gray-700 rounded-2xl shadow-md flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-white bg-gray-700 rounded-2xl shadow-md flex items-center justify-center mx-auto mb-4">
                     <benefit.icon className={`w-8 h-8 ${benefit.color}`} />
                   </div>
-                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">
+                  <h3 className="font-heading text-xl font-bold text-gray-900 text-white mb-2">
                     {benefit.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300">{benefit.description}</p>
+                  <p className="text-gray-600 text-gray-300">{benefit.description}</p>
                 </div>
               ))}
             </div>
@@ -198,23 +198,23 @@ export default function SubscriptionPage() {
         </section>
 
         {/* How It Works */}
-        <section className="py-16 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/10 dark:to-emerald-900/10">
+        <section className="py-16 bg-gradient-to-r from-green-50 to-emerald-50 from-green-900/10 to-emerald-900/10">
           <Container>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 text-white">
               How It Works
             </h2>
 
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {howItWorks.map((item, index) => (
                 <div key={index} className="relative">
-                  <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700 text-center">
+                  <div className="bg-white bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 border-gray-700 text-center">
                     <div className="w-16 h-16 bg-[#03E46A] rounded-full flex items-center justify-center mx-auto mb-6">
-                      <span className="text-gray-900 font-bold text-2xl">{item.step}</span>
+                      <span className="text-gray-900 text-gray-900 font-bold text-2xl">{item.step}</span>
                     </div>
-                    <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-3">
+                    <h3 className="font-heading text-xl font-bold text-gray-900 text-white mb-3">
                       {item.title}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-300">{item.description}</p>
+                    <p className="text-gray-600 text-gray-300">{item.description}</p>
                   </div>
                   {index < howItWorks.length - 1 && (
                     <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-[#03E46A]/30" />
@@ -226,59 +226,59 @@ export default function SubscriptionPage() {
         </section>
 
         {/* Subscription Management */}
-        <section className="py-16 bg-white dark:bg-gray-900">
+        <section className="py-16 bg-white bg-gray-900">
           <Container>
             <div className="max-w-4xl mx-auto">
-              <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 text-white">
                 You&apos;re in Control
               </h2>
 
               <div className="grid md:grid-cols-2 gap-8">
-                <div className="bg-gradient-to-br from-green-50 to-white dark:from-green-900/20 dark:to-gray-800 rounded-2xl p-8 border border-green-100 dark:border-green-800">
-                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                    <CheckCircle2 className="w-6 h-6 text-green-600 dark:text-green-400" />
+                <div className="bg-gradient-to-br from-green-50 to-white from-green-900/20 to-gray-800 rounded-2xl p-8 border border-green-100 border-green-800">
+                  <h3 className="font-heading text-xl font-bold text-gray-900 text-white mb-4 flex items-center gap-2">
+                    <CheckCircle2 className="w-6 h-6 text-green-600 text-green-400" />
                     Easy Management
                   </h3>
-                  <ul className="space-y-3 text-gray-600 dark:text-gray-300">
+                  <ul className="space-y-3 text-gray-600 text-gray-300">
                     <li className="flex items-start gap-2">
-                      <Sparkles className="w-5 h-5 text-[#03E46A] dark:text-[#04D162] mt-0.5 flex-shrink-0" />
+                      <Sparkles className="w-5 h-5 text-[#03E46A] text-[#04D162] mt-0.5 flex-shrink-0" />
                       Change delivery frequency anytime
                     </li>
                     <li className="flex items-start gap-2">
-                      <Sparkles className="w-5 h-5 text-[#03E46A] dark:text-[#04D162] mt-0.5 flex-shrink-0" />
+                      <Sparkles className="w-5 h-5 text-[#03E46A] text-[#04D162] mt-0.5 flex-shrink-0" />
                       Skip a shipment if needed
                     </li>
                     <li className="flex items-start gap-2">
-                      <Sparkles className="w-5 h-5 text-[#03E46A] dark:text-[#04D162] mt-0.5 flex-shrink-0" />
+                      <Sparkles className="w-5 h-5 text-[#03E46A] text-[#04D162] mt-0.5 flex-shrink-0" />
                       Update shipping address
                     </li>
                     <li className="flex items-start gap-2">
-                      <Sparkles className="w-5 h-5 text-[#03E46A] dark:text-[#04D162] mt-0.5 flex-shrink-0" />
+                      <Sparkles className="w-5 h-5 text-[#03E46A] text-[#04D162] mt-0.5 flex-shrink-0" />
                       Switch product sizes
                     </li>
                   </ul>
                 </div>
 
-                <div className="bg-gradient-to-br from-purple-50 to-white dark:from-purple-900/20 dark:to-gray-800 rounded-2xl p-8 border border-purple-100 dark:border-purple-800">
-                  <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                    <CreditCard className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+                <div className="bg-gradient-to-br from-purple-50 to-white from-purple-900/20 to-gray-800 rounded-2xl p-8 border border-purple-100 border-purple-800">
+                  <h3 className="font-heading text-xl font-bold text-gray-900 text-white mb-4 flex items-center gap-2">
+                    <CreditCard className="w-6 h-6 text-purple-600 text-purple-400" />
                     Billing & Payments
                   </h3>
-                  <ul className="space-y-3 text-gray-600 dark:text-gray-300">
+                  <ul className="space-y-3 text-gray-600 text-gray-300">
                     <li className="flex items-start gap-2">
-                      <Sparkles className="w-5 h-5 text-[#03E46A] dark:text-[#04D162] mt-0.5 flex-shrink-0" />
+                      <Sparkles className="w-5 h-5 text-[#03E46A] text-[#04D162] mt-0.5 flex-shrink-0" />
                       Secure payment processing
                     </li>
                     <li className="flex items-start gap-2">
-                      <Sparkles className="w-5 h-5 text-[#03E46A] dark:text-[#04D162] mt-0.5 flex-shrink-0" />
+                      <Sparkles className="w-5 h-5 text-[#03E46A] text-[#04D162] mt-0.5 flex-shrink-0" />
                       7-day reminder before each shipment
                     </li>
                     <li className="flex items-start gap-2">
-                      <Sparkles className="w-5 h-5 text-[#03E46A] dark:text-[#04D162] mt-0.5 flex-shrink-0" />
+                      <Sparkles className="w-5 h-5 text-[#03E46A] text-[#04D162] mt-0.5 flex-shrink-0" />
                       Update payment methods easily
                     </li>
                     <li className="flex items-start gap-2">
-                      <Sparkles className="w-5 h-5 text-[#03E46A] dark:text-[#04D162] mt-0.5 flex-shrink-0" />
+                      <Sparkles className="w-5 h-5 text-[#03E46A] text-[#04D162] mt-0.5 flex-shrink-0" />
                       View billing history anytime
                     </li>
                   </ul>
@@ -289,9 +289,9 @@ export default function SubscriptionPage() {
         </section>
 
         {/* FAQs */}
-        <section className="py-16 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+        <section className="py-16 bg-gradient-to-r from-gray-50 to-gray-100 from-gray-900 to-gray-800">
           <Container>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 text-white">
               Subscription FAQs
             </h2>
 
@@ -299,13 +299,13 @@ export default function SubscriptionPage() {
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700"
+                  className="bg-white bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 border-gray-700"
                 >
-                  <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-white mb-3 flex items-start gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-[#03E46A] dark:text-[#04D162] mt-0.5 flex-shrink-0" />
+                  <h3 className="font-heading text-lg font-bold text-gray-900 text-white mb-3 flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-[#03E46A] text-[#04D162] mt-0.5 flex-shrink-0" />
                     {faq.question}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300 ml-7">{faq.answer}</p>
+                  <p className="text-gray-600 text-gray-300 ml-7">{faq.answer}</p>
                 </div>
               ))}
             </div>
@@ -313,9 +313,9 @@ export default function SubscriptionPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-16 bg-gradient-to-r from-[#03E46A] to-[#02C55A] dark:from-[#04D162]/80 dark:to-[#04D162]/60">
+        <section className="py-16 bg-gradient-to-r from-[#03E46A] to-[#02C55A] from-[#04D162]/80 to-[#04D162]/60">
           <Container>
-            <div className="text-center text-gray-900 max-w-3xl mx-auto">
+            <div className="text-center text-gray-900 text-gray-900 max-w-3xl mx-auto">
               <RefreshCw className="w-16 h-16 mx-auto mb-6 opacity-80" />
               <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
                 Start Saving Today
@@ -325,12 +325,12 @@ export default function SubscriptionPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/#products">
-                  <Button size="lg" className="bg-white dark:bg-gray-900 text-[#03E46A] hover:bg-gray-100 dark:hover:bg-gray-800 font-bold text-lg px-8">
+                  <Button size="lg" className="bg-white bg-gray-900 text-[#03E46A] hover:bg-gray-100 hover:bg-gray-800 font-bold text-lg px-8">
                     Subscribe & Save 30%
                   </Button>
                 </Link>
                 <Link href="/customer/portal/">
-                  <Button size="lg" variant="outline" className="border-gray-900 dark:border-gray-600 text-gray-900 dark:text-gray-100 hover:bg-gray-900/10 dark:hover:bg-gray-800 font-bold text-lg px-8">
+                  <Button size="lg" variant="outline" className="border-gray-900 border-gray-600 text-gray-900 text-gray-100 hover:bg-gray-900/10 hover:bg-gray-800 font-bold text-lg px-8">
                     Manage Subscription
                   </Button>
                 </Link>

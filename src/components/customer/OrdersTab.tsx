@@ -118,33 +118,33 @@ export function OrdersTab({
   return (
     <div className="space-y-6">
       {/* Order Statistics */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-        <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50 mb-4">Order Statistics</h3>
+      <div className="bg-white bg-gray-800 rounded-lg shadow p-6">
+        <h3 className="font-heading text-lg font-medium text-gray-900 text-gray-50 mb-4">Order Statistics</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="text-center">
-            <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">{getOrderStatusCount('all')}</p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Total Orders</p>
+            <p className="text-2xl font-bold text-blue-600 text-blue-400">{getOrderStatusCount('all')}</p>
+            <p className="text-sm text-gray-500 text-gray-400">Total Orders</p>
           </div>
           <div className="text-center">
-            <p className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">{getOrderStatusCount('processing')}</p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Processing</p>
+            <p className="text-2xl font-bold text-yellow-600 text-yellow-400">{getOrderStatusCount('processing')}</p>
+            <p className="text-sm text-gray-500 text-gray-400">Processing</p>
           </div>
           <div className="text-center">
-            <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">{getOrderStatusCount('shipped')}</p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Shipped</p>
+            <p className="text-2xl font-bold text-purple-600 text-purple-400">{getOrderStatusCount('shipped')}</p>
+            <p className="text-sm text-gray-500 text-gray-400">Shipped</p>
           </div>
           <div className="text-center">
-            <p className="text-2xl font-bold text-green-600 dark:text-green-400">{getOrderStatusCount('delivered')}</p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Delivered</p>
+            <p className="text-2xl font-bold text-green-600 text-green-400">{getOrderStatusCount('delivered')}</p>
+            <p className="text-sm text-gray-500 text-gray-400">Delivered</p>
           </div>
         </div>
       </div>
 
       {/* Filters and Search */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+      <div className="bg-white bg-gray-800 rounded-lg shadow p-6">
         <div className="flex flex-col md:flex-row gap-4">
           <div className="flex-1">
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-2">
               Search Orders
             </label>
             <input
@@ -152,17 +152,17 @@ export function OrdersTab({
               value={searchTerm}
               onChange={handleSearchChange}
               placeholder="Search by order number or product name..."
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-300 border-gray-600 rounded-md bg-white bg-gray-700 text-gray-900 text-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-gray-700 text-gray-300 mb-2">
               Filter by Status
             </label>
             <select
               value={statusFilter}
               onChange={handleStatusFilterChange}
-              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 border-gray-600 rounded-md bg-white bg-gray-700 text-gray-900 text-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               <option value="all">All Orders ({getOrderStatusCount('all')})</option>
               <option value="processing">Processing ({getOrderStatusCount('processing')})</option>
@@ -175,12 +175,12 @@ export function OrdersTab({
       </div>
 
       {/* Order History */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
-        <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-          <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50">
+      <div className="bg-white bg-gray-800 rounded-lg shadow">
+        <div className="px-6 py-4 border-b border-gray-200 border-gray-700">
+          <h3 className="font-heading text-lg font-medium text-gray-900 text-gray-50">
             Order History
             {statusFilter !== 'all' && (
-              <span className="text-sm font-normal text-gray-500 dark:text-gray-400 ml-2">
+              <span className="text-sm font-normal text-gray-500 text-gray-400 ml-2">
                 ({filteredOrders.length} {statusFilter} orders)
               </span>
             )}
@@ -190,12 +190,12 @@ export function OrdersTab({
           {filteredOrders.length > 0 ? (
             <div className="space-y-6">
               {filteredOrders.map((order) => (
-                <div key={order.id} className="border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-md transition-shadow">
+                <div key={order.id} className="border border-gray-200 border-gray-700 rounded-lg p-6 hover:shadow-md transition-shadow">
                   <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
                     <div className="flex-1">
-                      <h4 className="text-lg font-medium text-gray-900 dark:text-gray-50">#{order.orderNumber}</h4>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">Ordered on {formatDate(order.date)}</p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                      <h4 className="text-lg font-medium text-gray-900 text-gray-50">#{order.orderNumber}</h4>
+                      <p className="text-sm text-gray-500 text-gray-400">Ordered on {formatDate(order.date)}</p>
+                      <p className="text-sm text-gray-500 text-gray-400 mt-1">
                         {order.items.length} item{order.items.length > 1 ? 's' : ''}
                       </p>
                     </div>
@@ -203,7 +203,7 @@ export function OrdersTab({
                       <span className={cn('inline-flex px-3 py-1 text-sm font-medium rounded-full', getStatusColor(order.status))}>
                         {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
                       </span>
-                      <p className="text-lg font-bold text-gray-900 dark:text-gray-50">{formatCurrency(order.total)}</p>
+                      <p className="text-lg font-bold text-gray-900 text-gray-50">{formatCurrency(order.total)}</p>
                     </div>
                   </div>
 
@@ -217,20 +217,20 @@ export function OrdersTab({
                               src={item.image}
                               alt={item.name}
                               fill
-                              className="object-cover rounded border border-gray-200 dark:border-gray-600"
+                              className="object-cover rounded border border-gray-200 border-gray-600"
                             />
                           </div>
                         )}
                         <div className="flex-1">
-                          <p className="font-medium text-gray-900 dark:text-gray-50">{item.name}</p>
-                          <p className="text-sm text-gray-500 dark:text-gray-400">Quantity: {item.quantity}</p>
+                          <p className="font-medium text-gray-900 text-gray-50">{item.name}</p>
+                          <p className="text-sm text-gray-500 text-gray-400">Quantity: {item.quantity}</p>
                         </div>
                         <div className="text-right">
-                          <p className="font-medium text-gray-900 dark:text-gray-50">{formatCurrency(item.price)}</p>
+                          <p className="font-medium text-gray-900 text-gray-50">{formatCurrency(item.price)}</p>
                           <button
                             onClick={handleReorderItem(order, item)}
                             disabled={loading}
-                            className="text-xs text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 disabled:opacity-50"
+                            className="text-xs text-blue-600 text-blue-400 hover:text-blue-700 hover:text-blue-300 disabled:opacity-50"
                           >
                             Reorder this item
                           </button>
@@ -241,19 +241,19 @@ export function OrdersTab({
 
                   {/* Tracking Info */}
                   {order.trackingNumber && (
-                    <div className="mb-4 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+                    <div className="mb-4 p-4 bg-gray-50 bg-gray-700/50 rounded-lg">
                       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                         <div>
-                          <p className="text-sm font-medium text-gray-900 dark:text-gray-50">Tracking: {order.trackingNumber}</p>
+                          <p className="text-sm font-medium text-gray-900 text-gray-50">Tracking: {order.trackingNumber}</p>
                           {order.estimatedDelivery && (
-                            <p className="text-sm text-gray-500 dark:text-gray-400">
+                            <p className="text-sm text-gray-500 text-gray-400">
                               Estimated delivery: {formatDate(order.estimatedDelivery)}
                             </p>
                           )}
                         </div>
                         <button
                           onClick={handleTrackPackageCallback(order.trackingNumber!)}
-                          className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium"
+                          className="text-sm text-blue-600 text-blue-400 hover:text-blue-700 hover:text-blue-300 font-medium"
                         >
                           Track Package →
                         </button>
@@ -266,7 +266,7 @@ export function OrdersTab({
                     <button
                       onClick={handleReorderOrder(order)}
                       disabled={loading}
-                      className="px-4 py-2 bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 text-sm font-medium rounded-md hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors disabled:opacity-50 flex items-center gap-2"
+                      className="px-4 py-2 bg-blue-600 bg-blue-600 text-white text-gray-100 text-sm font-medium rounded-md hover:bg-blue-700 hover:bg-blue-500 transition-colors disabled:opacity-50 flex items-center gap-2"
                     >
                       {loading ? (
                         <>
@@ -283,20 +283,20 @@ export function OrdersTab({
 
                     <button
                       onClick={handleDownloadInvoiceCallback(order.orderNumber)}
-                      className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 text-sm font-medium rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2"
+                      className="px-4 py-2 border border-gray-300 border-gray-600 text-gray-700 text-gray-200 text-sm font-medium rounded-md hover:bg-gray-50 hover:bg-gray-700 transition-colors flex items-center gap-2"
                     >
                       <Download className="w-4 h-4" />
                       Download Invoice
                     </button>
 
                     {order.status === 'delivered' && (
-                      <button className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 text-sm font-medium rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                      <button className="px-4 py-2 border border-gray-300 border-gray-600 text-gray-700 text-gray-200 text-sm font-medium rounded-md hover:bg-gray-50 hover:bg-gray-700 transition-colors">
                         Leave Review
                       </button>
                     )}
 
                     {order.status === 'processing' && (
-                      <button className="px-4 py-2 border border-red-300 dark:border-red-600 text-red-700 dark:text-red-400 text-sm font-medium rounded-md hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+                      <button className="px-4 py-2 border border-red-300 border-red-600 text-red-700 text-red-400 text-sm font-medium rounded-md hover:bg-red-50 hover:bg-red-900/20 transition-colors">
                         Cancel Order
                       </button>
                     )}
@@ -306,8 +306,8 @@ export function OrdersTab({
             </div>
           ) : (
             <div className="text-center py-8">
-              <Package className="w-12 h-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
-              <p className="text-gray-500 dark:text-gray-400 mb-2">
+              <Package className="w-12 h-12 text-gray-400 text-gray-500 mx-auto mb-4" />
+              <p className="text-gray-500 text-gray-400 mb-2">
                 {searchTerm || statusFilter !== 'all'
                   ? 'No orders match your search criteria'
                   : 'No orders yet'
@@ -316,7 +316,7 @@ export function OrdersTab({
               {(searchTerm || statusFilter !== 'all') && (
                 <button
                   onClick={handleClearFilters}
-                  className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 text-sm font-medium"
+                  className="text-blue-600 text-blue-400 hover:text-blue-700 hover:text-blue-300 text-sm font-medium"
                 >
                   Clear filters
                 </button>

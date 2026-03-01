@@ -110,8 +110,8 @@ export function FreeGiveawayForm() {
 
 
   return (
-    <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-8 border border-[#E0EFC7] dark:border-gray-800 transition-colors duration-300">
-      <h2 className="font-heading text-2xl font-bold text-[#1E1B4B] dark:text-white dark:text-gray-100 dark:text-gray-100 mb-6">{t('freeGiveaway.formTitle')}</h2>
+    <div className="bg-white bg-gray-900 rounded-xl shadow-lg p-8 border border-[#E0EFC7] border-gray-800 transition-colors duration-300">
+      <h2 className="font-heading text-2xl font-bold text-[#1E1B4B] text-white text-gray-100 text-gray-100 mb-6">{t('freeGiveaway.formTitle')}</h2>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -121,7 +121,7 @@ export function FreeGiveawayForm() {
         <div>
           <label
             htmlFor="name"
-            className="block text-sm font-medium text-[#333333] dark:text-gray-200"
+            className="block text-sm font-medium text-[#333333] text-gray-200"
           >
             {t('freeGiveaway.fullName')} <span className="text-[#FF3131]">*</span>
           </label>
@@ -134,7 +134,7 @@ export function FreeGiveawayForm() {
             className="mt-1 block w-full border-[#E0EFC7] focus:border-[#FF3131] focus:ring-[#FF3131]"
           />
           {errors.name && (
-            <p id="name-error" className="mt-1 text-sm text-red-600 dark:text-red-400 dark:text-red-400">
+            <p id="name-error" className="mt-1 text-sm text-red-600 text-red-400 text-red-400">
               {errors.name.message}
             </p>
           )}
@@ -143,7 +143,7 @@ export function FreeGiveawayForm() {
         <div className="py-2">
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-[#333333] dark:text-gray-200"
+            className="block text-sm font-medium text-[#333333] text-gray-200"
           >
             {t('freeGiveaway.emailAddress')} <span className="text-[#FF3131]">*</span>
           </label>
@@ -157,14 +157,14 @@ export function FreeGiveawayForm() {
             placeholder={t('freeGiveaway.emailAddress')}
           />
           {errors.email && (
-            <p id="email-error" className="mt-1 text-sm text-red-600 dark:text-red-400">
+            <p id="email-error" className="mt-1 text-sm text-red-600 text-red-400">
               {errors.email.message}
             </p>
           )}
         </div>
 
         <div>
-          <label htmlFor="cat-names" className="block text-sm font-medium text-[#333333] dark:text-gray-200 mb-2">
+          <label htmlFor="cat-names" className="block text-sm font-medium text-[#333333] text-gray-200 mb-2">
             {t('freeGiveaway.catNames')}
           </label>
 
@@ -196,8 +196,8 @@ export function FreeGiveawayForm() {
         {submitStatus.message && (
           <div
             className={`rounded-md p-4 ${submitStatus.success
-                ? 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200'
-                : 'bg-red-50 dark:bg-red-900/20 text-red-800'
+                ? 'bg-green-50 bg-green-900/20 text-green-800 text-green-200'
+                : 'bg-red-50 bg-red-900/20 text-red-800'
               }`}
             role="alert"
             aria-live="polite"
@@ -209,13 +209,13 @@ export function FreeGiveawayForm() {
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-[#FF3131] hover:bg-[#FF3131]/90 text-white dark:text-gray-100 font-medium py-2.5"
+          className="w-full bg-[#FF3131] hover:bg-[#FF3131]/90 text-white text-gray-100 font-medium py-2.5"
           aria-busy={isSubmitting}
         >
           {isSubmitting ? (t('freeGiveaway.submitting') || 'Submitting...') : (t('freeGiveaway.submitButton') || 'GET MY FREE BAG NOW')}
         </Button>
 
-        <p className="text-xs text-center text-gray-500 dark:text-gray-400 dark:text-gray-400 mt-4">
+        <p className="text-xs text-center text-gray-500 text-gray-400 text-gray-400 mt-4">
           {t('freeGiveaway.privacyNotice')}
         </p>
       </form>

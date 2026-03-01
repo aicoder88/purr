@@ -66,7 +66,7 @@ export default function MultipleCatsOdorControlPageClient() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen bg-[#FFFFF5] bg-gray-900 transition-colors duration-300">
       {/* Hero Section */}
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
@@ -78,19 +78,19 @@ export default function MultipleCatsOdorControlPageClient() {
               height={675}
               className="w-full h-auto rounded-lg shadow-lg mb-8"
             />
-            <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
+            <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 text-gray-100">
               Multi-Cat Household Odor Solution
             </h1>
-            <p className="text-xl text-gray-700 dark:text-gray-200 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-700 text-gray-200 mb-8 max-w-3xl mx-auto">
               With 2, 3, or 4+ cats, odors don&apos;t just add up—they multiply exponentially. Standard litters can&apos;t keep up.
               Activated carbon tackles multi-cat odor at the molecular level, handling what other solutions can&apos;t.
             </p>
           </div>
 
           {/* Main Solution Card */}
-          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 max-w-4xl mx-auto mb-16">
-            <h2 className="text-3xl font-heading font-bold mb-6 text-electric-indigo dark:text-electric-indigo-400 text-center">The Multi-Cat Challenge</h2>
-            <p className="text-lg mb-8 text-gray-700 dark:text-gray-200 text-center">
+          <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 max-w-4xl mx-auto mb-16">
+            <h2 className="text-3xl font-heading font-bold mb-6 text-electric-indigo text-electric-indigo-400 text-center">The Multi-Cat Challenge</h2>
+            <p className="text-lg mb-8 text-gray-700 text-gray-200 text-center">
               Multi-cat households face compounded odor challenges. With 2, 3, 4, or more cats, odors don&apos;t just add up—they multiply.
               Multiple litter boxes, territorial marking, and concentrated waste create an overwhelming smell that traditional litters
               and deodorizers simply can&apos;t handle. Purrify&apos;s industrial-strength activated carbon absorbs odors at the molecular level,
@@ -108,25 +108,25 @@ export default function MultipleCatsOdorControlPageClient() {
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               <div className="text-center p-4">
                 <div className="text-4xl mb-3">⚡</div>
-                <h3 className="font-heading font-bold text-lg mb-2 text-gray-900 dark:text-gray-100">Instant Results</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Works immediately across all litter boxes</p>
+                <h3 className="font-heading font-bold text-lg mb-2 text-gray-900 text-gray-100">Instant Results</h3>
+                <p className="text-sm text-gray-600 text-gray-300">Works immediately across all litter boxes</p>
               </div>
               <div className="text-center p-4">
                 <div className="text-4xl mb-3">🌿</div>
-                <h3 className="font-heading font-bold text-lg mb-2 text-gray-900 dark:text-gray-100">100% Natural</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Safe for all your cats, no matter how many</p>
+                <h3 className="font-heading font-bold text-lg mb-2 text-gray-900 text-gray-100">100% Natural</h3>
+                <p className="text-sm text-gray-600 text-gray-300">Safe for all your cats, no matter how many</p>
               </div>
               <div className="text-center p-4">
                 <div className="text-4xl mb-3">💰</div>
-                <h3 className="font-heading font-bold text-lg mb-2 text-gray-900 dark:text-gray-100">Cost Effective</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Less expensive than buying premium litter for every box</p>
+                <h3 className="font-heading font-bold text-lg mb-2 text-gray-900 text-gray-100">Cost Effective</h3>
+                <p className="text-sm text-gray-600 text-gray-300">Less expensive than buying premium litter for every box</p>
               </div>
             </div>
 
             <div className="text-center">
               <Link
                 href="/products/trial-size/"
-                className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
+                className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
               >
                 Try Purrify Risk-Free
               </Link>
@@ -135,83 +135,83 @@ export default function MultipleCatsOdorControlPageClient() {
 
           {/* Multi-Cat Challenges Section */}
           <div className="grid md:grid-cols-2 gap-8 mb-16">
-            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 shadow-lg border border-deep-coral/10 dark:border-deep-coral/20 hover:scale-105 transition-all duration-300">
-              <h3 className="text-2xl font-heading font-bold mb-4 text-deep-coral dark:text-deep-coral-400">Multi-Cat Household Challenges</h3>
+            <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 shadow-lg border border-deep-coral/10 border-deep-coral/20 hover:scale-105 transition-all duration-300">
+              <h3 className="text-2xl font-heading font-bold mb-4 text-deep-coral text-deep-coral-400">Multi-Cat Household Challenges</h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
-                  <span className="text-red-500 dark:text-red-400 mr-3">❌</span>
+                  <span className="text-red-500 text-red-400 mr-3">❌</span>
                   <div>
-                    <strong className="text-gray-900 dark:text-gray-100">Exponential odor buildup</strong>
-                    <span className="text-gray-700 dark:text-gray-200"> - Each additional cat multiplies the smell problem</span>
+                    <strong className="text-gray-900 text-gray-100">Exponential odor buildup</strong>
+                    <span className="text-gray-700 text-gray-200"> - Each additional cat multiplies the smell problem</span>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-500 dark:text-red-400 mr-3">❌</span>
+                  <span className="text-red-500 text-red-400 mr-3">❌</span>
                   <div>
-                    <strong className="text-gray-900 dark:text-gray-100">Multiple litter boxes required</strong>
-                    <span className="text-gray-700 dark:text-gray-200"> - Rule of thumb: one per cat plus one extra</span>
+                    <strong className="text-gray-900 text-gray-100">Multiple litter boxes required</strong>
+                    <span className="text-gray-700 text-gray-200"> - Rule of thumb: one per cat plus one extra</span>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-500 dark:text-red-400 mr-3">❌</span>
+                  <span className="text-red-500 text-red-400 mr-3">❌</span>
                   <div>
-                    <strong className="text-gray-900 dark:text-gray-100">Territorial marking</strong>
-                    <span className="text-gray-700 dark:text-gray-200"> - Multiple cats can lead to competition and stronger scents</span>
+                    <strong className="text-gray-900 text-gray-100">Territorial marking</strong>
+                    <span className="text-gray-700 text-gray-200"> - Multiple cats can lead to competition and stronger scents</span>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-500 dark:text-red-400 mr-3">❌</span>
+                  <span className="text-red-500 text-red-400 mr-3">❌</span>
                   <div>
-                    <strong className="text-gray-900 dark:text-gray-100">Expensive litter costs</strong>
-                    <span className="text-gray-700 dark:text-gray-200"> - Premium litter for 3+ boxes adds up quickly</span>
+                    <strong className="text-gray-900 text-gray-100">Expensive litter costs</strong>
+                    <span className="text-gray-700 text-gray-200"> - Premium litter for 3+ boxes adds up quickly</span>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-500 dark:text-red-400 mr-3">❌</span>
+                  <span className="text-red-500 text-red-400 mr-3">❌</span>
                   <div>
-                    <strong className="text-gray-900 dark:text-gray-100">Constant maintenance</strong>
-                    <span className="text-gray-700 dark:text-gray-200"> - More cats means more frequent cleaning needed</span>
+                    <strong className="text-gray-900 text-gray-100">Constant maintenance</strong>
+                    <span className="text-gray-700 text-gray-200"> - More cats means more frequent cleaning needed</span>
                   </div>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:scale-105 transition-all duration-300">
-              <h3 className="text-2xl font-heading font-bold mb-4 text-electric-indigo dark:text-electric-indigo-400">Purrify Multi-Cat Solutions</h3>
+            <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 hover:scale-105 transition-all duration-300">
+              <h3 className="text-2xl font-heading font-bold mb-4 text-electric-indigo text-electric-indigo-400">Purrify Multi-Cat Solutions</h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
-                  <span className="text-green-500 dark:text-green-400 mr-3">✅</span>
+                  <span className="text-green-500 text-green-400 mr-3">✅</span>
                   <div>
-                    <strong className="text-gray-900 dark:text-gray-100">Industrial-strength absorption</strong>
-                    <span className="text-gray-700 dark:text-gray-200"> - Handles odors from any number of cats</span>
+                    <strong className="text-gray-900 text-gray-100">Industrial-strength absorption</strong>
+                    <span className="text-gray-700 text-gray-200"> - Handles odors from any number of cats</span>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-500 dark:text-green-400 mr-3">✅</span>
+                  <span className="text-green-500 text-green-400 mr-3">✅</span>
                   <div>
-                    <strong className="text-gray-900 dark:text-gray-100">Works in all litter boxes</strong>
-                    <span className="text-gray-700 dark:text-gray-200"> - One solution for your entire multi-cat setup</span>
+                    <strong className="text-gray-900 text-gray-100">Works in all litter boxes</strong>
+                    <span className="text-gray-700 text-gray-200"> - One solution for your entire multi-cat setup</span>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-500 dark:text-green-400 mr-3">✅</span>
+                  <span className="text-green-500 text-green-400 mr-3">✅</span>
                   <div>
-                    <strong className="text-gray-900 dark:text-gray-100">Neutralizes territorial scents</strong>
-                    <span className="text-gray-700 dark:text-gray-200"> - Reduces marking behavior by eliminating odor triggers</span>
+                    <strong className="text-gray-900 text-gray-100">Neutralizes territorial scents</strong>
+                    <span className="text-gray-700 text-gray-200"> - Reduces marking behavior by eliminating odor triggers</span>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-500 dark:text-green-400 mr-3">✅</span>
+                  <span className="text-green-500 text-green-400 mr-3">✅</span>
                   <div>
-                    <strong className="text-gray-900 dark:text-gray-100">Cost-effective for multiple boxes</strong>
-                    <span className="text-gray-700 dark:text-gray-200"> - Use affordable litter + Purrify in all boxes</span>
+                    <strong className="text-gray-900 text-gray-100">Cost-effective for multiple boxes</strong>
+                    <span className="text-gray-700 text-gray-200"> - Use affordable litter + Purrify in all boxes</span>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-500 dark:text-green-400 mr-3">✅</span>
+                  <span className="text-green-500 text-green-400 mr-3">✅</span>
                   <div>
-                    <strong className="text-gray-900 dark:text-gray-100">Extends time between changes</strong>
-                    <span className="text-gray-700 dark:text-gray-200"> - Superior odor control means less frequent cleaning</span>
+                    <strong className="text-gray-900 text-gray-100">Extends time between changes</strong>
+                    <span className="text-gray-700 text-gray-200"> - Superior odor control means less frequent cleaning</span>
                   </div>
                 </li>
               </ul>
@@ -219,43 +219,43 @@ export default function MultipleCatsOdorControlPageClient() {
           </div>
 
           {/* Usage Recommendations for Multi-Cat Households */}
-          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 mb-16">
-            <h3 className="text-3xl font-heading font-bold mb-8 text-center text-gray-900 dark:text-gray-100">Recommended Usage for Multiple Cats</h3>
+          <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 mb-16">
+            <h3 className="text-3xl font-heading font-bold mb-8 text-center text-gray-900 text-gray-100">Recommended Usage for Multiple Cats</h3>
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg">
+              <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-purple-50 from-blue-900/20 to-purple-900/20 rounded-lg">
                 <div className="text-5xl mb-4">2️⃣</div>
-                <h4 className="font-heading font-bold mb-3 text-lg text-gray-900 dark:text-gray-100">2 Cats</h4>
-                <p className="text-sm text-gray-700 dark:text-gray-200 mb-2">
-                  <strong className="text-gray-900 dark:text-gray-100">3 litter boxes recommended</strong>
+                <h4 className="font-heading font-bold mb-3 text-lg text-gray-900 text-gray-100">2 Cats</h4>
+                <p className="text-sm text-gray-700 text-gray-200 mb-2">
+                  <strong className="text-gray-900 text-gray-100">3 litter boxes recommended</strong>
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
+                <p className="text-sm text-gray-600 text-gray-300">
                   Add 2-3 tablespoons of Purrify per box, refresh every 3-4 days
                 </p>
               </div>
-              <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg">
+              <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-purple-50 from-blue-900/20 to-purple-900/20 rounded-lg">
                 <div className="text-5xl mb-4">3️⃣-4️⃣</div>
-                <h4 className="font-heading font-bold mb-3 text-lg text-gray-900 dark:text-gray-100">3-4 Cats</h4>
-                <p className="text-sm text-gray-700 dark:text-gray-200 mb-2">
-                  <strong className="text-gray-900 dark:text-gray-100">4-5 litter boxes recommended</strong>
+                <h4 className="font-heading font-bold mb-3 text-lg text-gray-900 text-gray-100">3-4 Cats</h4>
+                <p className="text-sm text-gray-700 text-gray-200 mb-2">
+                  <strong className="text-gray-900 text-gray-100">4-5 litter boxes recommended</strong>
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
+                <p className="text-sm text-gray-600 text-gray-300">
                   Add 3-4 tablespoons per box, refresh every 2-3 days for optimal results
                 </p>
               </div>
-              <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg">
+              <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-purple-50 from-blue-900/20 to-purple-900/20 rounded-lg">
                 <div className="text-5xl mb-4">5️⃣+</div>
-                <h4 className="font-heading font-bold mb-3 text-lg text-gray-900 dark:text-gray-100">5+ Cats (Colony)</h4>
-                <p className="text-sm text-gray-700 dark:text-gray-200 mb-2">
-                  <strong className="text-gray-900 dark:text-gray-100">6+ litter boxes recommended</strong>
+                <h4 className="font-heading font-bold mb-3 text-lg text-gray-900 text-gray-100">5+ Cats (Colony)</h4>
+                <p className="text-sm text-gray-700 text-gray-200 mb-2">
+                  <strong className="text-gray-900 text-gray-100">6+ litter boxes recommended</strong>
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
+                <p className="text-sm text-gray-600 text-gray-300">
                   Add 4-5 tablespoons per box, refresh daily. Consider our bulk sizes for cost savings
                 </p>
               </div>
             </div>
-            <div className="mt-8 p-6 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border-l-4 border-yellow-500 dark:border-yellow-400">
-              <h4 className="font-heading font-bold mb-2 text-gray-900 dark:text-gray-100">💡 Pro Tip for Multi-Cat Households</h4>
-              <p className="text-sm text-gray-700 dark:text-gray-200">
+            <div className="mt-8 p-6 bg-yellow-50 bg-yellow-900/20 rounded-lg border-l-4 border-yellow-500 border-yellow-400">
+              <h4 className="font-heading font-bold mb-2 text-gray-900 text-gray-100">💡 Pro Tip for Multi-Cat Households</h4>
+              <p className="text-sm text-gray-700 text-gray-200">
                 Distribute litter boxes across different areas of your home. This reduces territorial competition and
                 allows Purrify to work more effectively by preventing odor concentration in one location.
               </p>
@@ -263,36 +263,36 @@ export default function MultipleCatsOdorControlPageClient() {
           </div>
 
           {/* Customer Success Stories */}
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8 mb-16">
-            <h3 className="text-3xl font-heading font-bold mb-8 text-center text-gray-900 dark:text-gray-100">Multi-Cat Success Stories</h3>
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 from-blue-900/20 to-purple-900/20 rounded-2xl p-8 mb-16">
+            <h3 className="text-3xl font-heading font-bold mb-8 text-center text-gray-900 text-gray-100">Multi-Cat Success Stories</h3>
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-lg p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:scale-105 transition-all duration-300">
+              <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-lg p-6 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 hover:scale-105 transition-all duration-300">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center mr-4">
+                  <div className="w-12 h-12 bg-yellow-100 bg-yellow-900 rounded-full flex items-center justify-center mr-4">
                     <span className="text-xl">⭐</span>
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-900 dark:text-gray-100">Jennifer K. - Vancouver</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">3 cats, 4 litter boxes</p>
+                    <h4 className="font-bold text-gray-900 text-gray-100">Jennifer K. - Vancouver</h4>
+                    <p className="text-sm text-gray-600 text-gray-300">3 cats, 4 litter boxes</p>
                   </div>
                 </div>
-                <p className="text-gray-700 dark:text-gray-200 text-sm">
+                <p className="text-gray-700 text-gray-200 text-sm">
                   &quot;With three cats, my house used to smell terrible no matter what expensive litter I tried.
                   Purrify completely transformed my home! Now guests don&apos;t even know I have multiple cats.
                   I use it in all four boxes and it&apos;s been life-changing.&quot;
                 </p>
               </div>
-              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-lg p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:scale-105 transition-all duration-300">
+              <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-lg p-6 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 hover:scale-105 transition-all duration-300">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center mr-4">
+                  <div className="w-12 h-12 bg-yellow-100 bg-yellow-900 rounded-full flex items-center justify-center mr-4">
                     <span className="text-xl">⭐</span>
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-900 dark:text-gray-100">Robert M. - Toronto</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">5 cats (rescue colony)</p>
+                    <h4 className="font-bold text-gray-900 text-gray-100">Robert M. - Toronto</h4>
+                    <p className="text-sm text-gray-600 text-gray-300">5 cats (rescue colony)</p>
                   </div>
                 </div>
-                <p className="text-gray-700 dark:text-gray-200 text-sm">
+                <p className="text-gray-700 text-gray-200 text-sm">
                   &quot;I foster cats and currently have five. The odor was overwhelming until I discovered Purrify.
                   Now I can manage six litter boxes without the house smelling like a shelter. It&apos;s also way more
                   affordable than buying premium litter for every box. Absolute game-changer for multi-cat homes!&quot;
@@ -333,21 +333,21 @@ export default function MultipleCatsOdorControlPageClient() {
           </div>
 
           {/* Call to Action */}
-          <div className="text-center bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 mb-16">
-            <h3 className="text-3xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">Ready for a Fresh Multi-Cat Home?</h3>
-            <p className="text-lg text-gray-700 dark:text-gray-200 mb-6">
+          <div className="text-center bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 mb-16">
+            <h3 className="text-3xl font-heading font-bold mb-4 text-gray-900 text-gray-100">Ready for a Fresh Multi-Cat Home?</h3>
+            <p className="text-lg text-gray-700 text-gray-200 mb-6">
               Join hundreds of multi-cat households who&apos;ve discovered the power of activated carbon odor control.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 href="/products/trial-size/"
-                className="bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
+                className="bg-gradient-to-r from-electric-indigo to-deep-coral text-white text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
               >
                 Start Your Trial
               </Link>
               <Link
                 href="/learn/how-it-works/"
-                className="text-orange-600 dark:text-orange-400 hover:text-orange-800 dark:hover:text-orange-300 font-semibold underline"
+                className="text-orange-600 text-orange-400 hover:text-orange-800 hover:text-orange-300 font-semibold underline"
               >
                 Learn How It Works
               </Link>
@@ -359,7 +359,7 @@ export default function MultipleCatsOdorControlPageClient() {
       <RelatedSolutions currentPath="/learn/solutions/multiple-cats-odor-control" />
 
       {/* Related Articles */}
-      <section className="py-16 border-t border-gray-200 dark:border-gray-800">
+      <section className="py-16 border-t border-gray-200 border-gray-800">
         <div className="max-w-6xl mx-auto px-4">
           <RelatedContent currentUrl="/learn/solutions/multiple-cats-odor-control" />
         </div>

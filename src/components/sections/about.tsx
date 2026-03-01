@@ -29,17 +29,17 @@ export function About() {
         happyCatAlt: 'Happy cat in fresh, clean home environment',
       };
   return (
-    <section className="pt-20 pb-16 bg-gradient-to-b from-[#FFFFF5] to-background dark:from-gray-900 dark:to-gray-800 transition-colors duration-300" id="about">
+    <section className="pt-20 pb-16 bg-gradient-to-b from-[#FFFFF5] to-background from-gray-900 to-gray-800 transition-colors duration-300" id="about">
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
           <SectionHeader text={t('features.longLastingFreshness.title')} />
 
-          <h2 className="font-heading text-4xl md:text-5xl mt-3 font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 dark:from-[#FF5050] dark:to-[#FF5050]/80 bg-clip-text text-transparent">{t('about.naturalAndEffective')}</h2>
+          <h2 className="font-heading text-4xl md:text-5xl mt-3 font-bold tracking-tight mb-4 bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 from-[#FF5050] to-[#FF5050]/80 bg-clip-text text-transparent">{t('about.naturalAndEffective')}</h2>
 
           <div className="relative group flex flex-col items-center my-8">
             {/* Pre-allocate space for the image with a fixed height container */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 dark:from-[#FF3131]/10 dark:to-[#5B2EFF]/20 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
-            <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-[#E0EFC7]/50 dark:shadow-white/20 transition duration-300 w-10/12 h-[400px] bg-white dark:bg-white/95 p-4">
+            <div className="absolute -inset-4 bg-gradient-to-r from-[#FF3131]/20 to-[#5B2EFF]/30 from-[#FF3131]/10 to-[#5B2EFF]/20 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-700"></div>
+            <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-[#E0EFC7]/50 shadow-white/20 transition duration-300 w-10/12 h-[400px] bg-white bg-white/95 p-4">
               <Image
                 src="/optimized/blog/Carbon-sktech.webp"
                 alt={t('homepage.altText.scientificDiagram')}
@@ -96,18 +96,18 @@ export function About() {
             </div>
           </div>
           <div className="space-y-6">
-            <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-lg dark:text-gray-300">
+            <p className="text-gray-700 text-gray-200 leading-relaxed text-lg text-gray-300">
               {t('features.odorElimination.description')}
             </p>
-            <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-lg dark:text-gray-300">
+            <p className="text-gray-700 text-gray-200 leading-relaxed text-lg text-gray-300">
               {t('features.catFriendly.description')}
             </p>
-            <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-lg dark:text-gray-300">
-              <span className="font-bold text-[#FF3131] dark:text-[#FF5050]">
+            <p className="text-gray-700 text-gray-200 leading-relaxed text-lg text-gray-300">
+              <span className="font-bold text-[#FF3131] text-[#FF5050]">
                 {t('siteName')} {t('features.odorElimination.title')}.
               </span>
             </p>
-            <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-lg dark:text-gray-300">
+            <p className="text-gray-700 text-gray-200 leading-relaxed text-lg text-gray-300">
               {t('features.longLastingFreshness.description')} {t('features.worksWithAnyLitter.description')}
             </p>
           </div>

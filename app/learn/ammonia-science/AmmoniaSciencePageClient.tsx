@@ -58,18 +58,18 @@ export default function AmmoniaSciencePageClient() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
-      <section className="py-14 border-b border-gray-200 dark:border-gray-800">
+    <main className="min-h-screen bg-[#FFFFF5] bg-gray-900 transition-colors duration-300">
+      <section className="py-14 border-b border-gray-200 border-gray-800">
         <Container>
-          <nav className="text-sm text-gray-600 dark:text-gray-300">
+          <nav className="text-sm text-gray-600 text-gray-300">
             <ol className="flex items-center gap-2">
               <li>
-                <Link href={localizePath('/', locale)} className="hover:text-[#FF3131] dark:hover:text-[#FF5050]">
+                <Link href={localizePath('/', locale)} className="hover:text-[#FF3131] hover:text-[#FF5050]">
                   {t('nav.home')}
                 </Link>
               </li>
               <li>/</li>
-              <li className="font-medium text-gray-900 dark:text-gray-100">{a('breadcrumb')}</li>
+              <li className="font-medium text-gray-900 text-gray-100">{a('breadcrumb')}</li>
             </ol>
           </nav>
         </Container>
@@ -79,10 +79,10 @@ export default function AmmoniaSciencePageClient() {
         <Container>
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-10">
-              <h1 className="text-4xl md:text-5xl font-heading font-bold text-gray-900 dark:text-gray-50 mb-5">
+              <h1 className="text-4xl md:text-5xl font-heading font-bold text-gray-900 text-gray-50 mb-5">
                 {a('hero.headline')}
               </h1>
-              <p className="text-lg md:text-xl text-gray-700 dark:text-gray-200 max-w-4xl mx-auto">
+              <p className="text-lg md:text-xl text-gray-700 text-gray-200 max-w-4xl mx-auto">
                 {a('hero.subheadline')}
               </p>
             </div>
@@ -100,64 +100,64 @@ export default function AmmoniaSciencePageClient() {
         </Container>
       </section>
 
-      <section className="py-14 bg-white dark:bg-gray-800">
+      <section className="py-14 bg-white bg-gray-800">
         <Container>
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl font-heading font-bold text-gray-900 dark:text-gray-50 mb-4">
+            <h2 className="text-3xl font-heading font-bold text-gray-900 text-gray-50 mb-4">
               {a('understanding.headline')}
             </h2>
-            <p className="text-gray-700 dark:text-gray-200 mb-10">
+            <p className="text-gray-700 text-gray-200 mb-10">
               {a('understanding.intro')}
             </p>
 
             <div className="grid md:grid-cols-3 gap-6">
-              <article className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
-                <div className="w-11 h-11 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-4">
-                  <FlaskConical className="w-6 h-6 text-blue-600 dark:text-blue-300" />
+              <article className="bg-gray-50 bg-gray-700 rounded-xl p-6">
+                <div className="w-11 h-11 bg-blue-100 bg-blue-900/30 rounded-lg flex items-center justify-center mb-4">
+                  <FlaskConical className="w-6 h-6 text-blue-600 text-blue-300" />
                 </div>
-                <h3 className="font-bold text-gray-900 dark:text-gray-50 mb-2">
+                <h3 className="font-bold text-gray-900 text-gray-50 mb-2">
                   {a('understanding.chemistry.title')}
                 </h3>
-                <p className="text-gray-700 dark:text-gray-200 text-sm mb-4">
+                <p className="text-gray-700 text-gray-200 text-sm mb-4">
                   {a('understanding.chemistry.description')}
                 </p>
-                <p className="font-mono text-xs md:text-sm text-blue-700 dark:text-blue-300 bg-blue-100/80 dark:bg-blue-900/30 rounded-md p-3">
+                <p className="font-mono text-xs md:text-sm text-blue-700 text-blue-300 bg-blue-100/80 bg-blue-900/30 rounded-md p-3">
                   {a('understanding.chemistry.formula')}
                 </p>
               </article>
 
-              <article className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
-                <div className="w-11 h-11 bg-amber-100 dark:bg-amber-900/30 rounded-lg flex items-center justify-center mb-4">
-                  <Thermometer className="w-6 h-6 text-amber-600 dark:text-amber-300" />
+              <article className="bg-gray-50 bg-gray-700 rounded-xl p-6">
+                <div className="w-11 h-11 bg-amber-100 bg-amber-900/30 rounded-lg flex items-center justify-center mb-4">
+                  <Thermometer className="w-6 h-6 text-amber-600 text-amber-300" />
                 </div>
-                <h3 className="font-bold text-gray-900 dark:text-gray-50 mb-3">
+                <h3 className="font-bold text-gray-900 text-gray-50 mb-3">
                   {a('understanding.factors.title')}
                 </h3>
-                <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-200">
+                <ul className="space-y-2 text-sm text-gray-700 text-gray-200">
                   <li className="flex gap-2">
-                    <Thermometer className="w-4 h-4 mt-0.5 text-amber-500 dark:text-amber-300 flex-shrink-0" />
+                    <Thermometer className="w-4 h-4 mt-0.5 text-amber-500 text-amber-300 flex-shrink-0" />
                     <span>{a('understanding.factors.point1')}</span>
                   </li>
                   <li className="flex gap-2">
-                    <Droplets className="w-4 h-4 mt-0.5 text-blue-500 dark:text-blue-300 flex-shrink-0" />
+                    <Droplets className="w-4 h-4 mt-0.5 text-blue-500 text-blue-300 flex-shrink-0" />
                     <span>{a('understanding.factors.point2')}</span>
                   </li>
                   <li className="flex gap-2">
-                    <Layers className="w-4 h-4 mt-0.5 text-purple-500 dark:text-purple-300 flex-shrink-0" />
+                    <Layers className="w-4 h-4 mt-0.5 text-purple-500 text-purple-300 flex-shrink-0" />
                     <span>{a('understanding.factors.point3')}</span>
                   </li>
                   <li className="flex gap-2">
-                    <CircleDot className="w-4 h-4 mt-0.5 text-gray-500 dark:text-gray-300 flex-shrink-0" />
+                    <CircleDot className="w-4 h-4 mt-0.5 text-gray-500 text-gray-300 flex-shrink-0" />
                     <span>{a('understanding.factors.point4')}</span>
                   </li>
                 </ul>
               </article>
 
-              <article className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
-                <h3 className="font-bold text-gray-900 dark:text-gray-50 mb-2">
+              <article className="bg-gray-50 bg-gray-700 rounded-xl p-6">
+                <h3 className="font-bold text-gray-900 text-gray-50 mb-2">
                   {a('understanding.health.title')}
                 </h3>
-                <p className="text-gray-700 dark:text-gray-200 text-sm">
+                <p className="text-gray-700 text-gray-200 text-sm">
                   {a('understanding.health.description')}
                 </p>
               </article>
@@ -169,18 +169,18 @@ export default function AmmoniaSciencePageClient() {
       <section className="py-14">
         <Container>
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl font-heading font-bold text-gray-900 dark:text-gray-50 mb-4">
+            <h2 className="text-3xl font-heading font-bold text-gray-900 text-gray-50 mb-4">
               {a('problem.headline')}
             </h2>
-            <p className="text-gray-700 dark:text-gray-200 mb-10">
+            <p className="text-gray-700 text-gray-200 mb-10">
               {a('problem.intro')}
             </p>
 
             <div className="grid md:grid-cols-2 gap-6">
               {problemCards.map((card, index) => (
-                <article key={`${card.title}-${index}`} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
-                  <h3 className="font-bold text-gray-900 dark:text-gray-50 mb-2">{card.title}</h3>
-                  <p className="text-sm text-gray-700 dark:text-gray-200">{card.description}</p>
+                <article key={`${card.title}-${index}`} className="bg-white bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 border-gray-700">
+                  <h3 className="font-bold text-gray-900 text-gray-50 mb-2">{card.title}</h3>
+                  <p className="text-sm text-gray-700 text-gray-200">{card.description}</p>
                 </article>
               ))}
             </div>
@@ -188,38 +188,38 @@ export default function AmmoniaSciencePageClient() {
         </Container>
       </section>
 
-      <section className="py-14 bg-white dark:bg-gray-800">
+      <section className="py-14 bg-white bg-gray-800">
         <Container>
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl font-heading font-bold text-gray-900 dark:text-gray-50 mb-4">
+            <h2 className="text-3xl font-heading font-bold text-gray-900 text-gray-50 mb-4">
               {a('solution.headline')}
             </h2>
-            <p className="text-gray-700 dark:text-gray-200 mb-3">
+            <p className="text-gray-700 text-gray-200 mb-3">
               {a('solution.intro')}
             </p>
-            <p className="text-gray-700 dark:text-gray-200 mb-10">
+            <p className="text-gray-700 text-gray-200 mb-10">
               {a('solution.description')}
             </p>
 
             <div className="grid md:grid-cols-3 gap-6">
-              <article className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 border border-blue-100 dark:border-blue-800">
-                <h3 className="font-bold text-blue-900 dark:text-blue-200 mb-2">{a('solution.adsorption.title')}</h3>
-                <p className="text-sm text-gray-700 dark:text-gray-200">{a('solution.adsorption.description')}</p>
+              <article className="bg-blue-50 bg-blue-900/20 rounded-xl p-6 border border-blue-100 border-blue-800">
+                <h3 className="font-bold text-blue-900 text-blue-200 mb-2">{a('solution.adsorption.title')}</h3>
+                <p className="text-sm text-gray-700 text-gray-200">{a('solution.adsorption.description')}</p>
               </article>
-              <article className="bg-indigo-50 dark:bg-indigo-900/20 rounded-xl p-6 border border-indigo-100 dark:border-indigo-800">
-                <h3 className="font-bold text-indigo-900 dark:text-indigo-200 mb-2">{a('solution.pores.title')}</h3>
-                <ul className="space-y-1 text-sm text-gray-700 dark:text-gray-200 mb-3">
+              <article className="bg-indigo-50 bg-indigo-900/20 rounded-xl p-6 border border-indigo-100 border-indigo-800">
+                <h3 className="font-bold text-indigo-900 text-indigo-200 mb-2">{a('solution.pores.title')}</h3>
+                <ul className="space-y-1 text-sm text-gray-700 text-gray-200 mb-3">
                   <li>{a('solution.pores.micro')}</li>
                   <li>{a('solution.pores.meso')}</li>
                   <li>{a('solution.pores.macro')}</li>
                 </ul>
-                <p className="text-sm text-gray-700 dark:text-gray-200">{a('solution.pores.description')}</p>
+                <p className="text-sm text-gray-700 text-gray-200">{a('solution.pores.description')}</p>
               </article>
-              <article className="bg-emerald-50 dark:bg-emerald-900/20 rounded-xl p-6 border border-emerald-100 dark:border-emerald-800">
-                <h3 className="font-bold text-emerald-900 dark:text-emerald-200 mb-2">{a('solution.surface.title')}</h3>
-                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-300 mb-2">{a('solution.surface.stat')}</p>
-                <p className="text-sm text-gray-700 dark:text-gray-200 mb-3">{a('solution.surface.comparison')}</p>
-                <p className="text-sm text-gray-700 dark:text-gray-200">{a('solution.surface.explanation')}</p>
+              <article className="bg-emerald-50 bg-emerald-900/20 rounded-xl p-6 border border-emerald-100 border-emerald-800">
+                <h3 className="font-bold text-emerald-900 text-emerald-200 mb-2">{a('solution.surface.title')}</h3>
+                <p className="text-3xl font-black text-emerald-600 text-emerald-300 mb-2">{a('solution.surface.stat')}</p>
+                <p className="text-sm text-gray-700 text-gray-200 mb-3">{a('solution.surface.comparison')}</p>
+                <p className="text-sm text-gray-700 text-gray-200">{a('solution.surface.explanation')}</p>
               </article>
             </div>
           </div>
@@ -229,23 +229,23 @@ export default function AmmoniaSciencePageClient() {
       <section className="py-14">
         <Container>
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl font-heading font-bold text-gray-900 dark:text-gray-50 mb-4">
+            <h2 className="text-3xl font-heading font-bold text-gray-900 text-gray-50 mb-4">
               {a('howToUse.headline')}
             </h2>
-            <p className="text-gray-700 dark:text-gray-200 mb-8">
+            <p className="text-gray-700 text-gray-200 mb-8">
               {a('howToUse.intro')}
             </p>
 
             <div className="space-y-4 mb-8">
               {howToSteps.map((step) => (
-                <article key={step.number} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+                <article key={step.number} className="bg-white bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 border-gray-700">
                   <div className="flex items-start gap-4">
-                    <div className="w-9 h-9 rounded-full bg-[#FF3131] dark:bg-[#FF5050] text-white flex items-center justify-center font-bold">
+                    <div className="w-9 h-9 rounded-full bg-[#FF3131] bg-[#FF5050] text-white flex items-center justify-center font-bold">
                       {step.number}
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-900 dark:text-gray-50 mb-1">{step.title}</h3>
-                      <p className="text-sm text-gray-700 dark:text-gray-200">{step.description}</p>
+                      <h3 className="font-bold text-gray-900 text-gray-50 mb-1">{step.title}</h3>
+                      <p className="text-sm text-gray-700 text-gray-200">{step.description}</p>
                     </div>
                   </div>
                 </article>
@@ -253,30 +253,30 @@ export default function AmmoniaSciencePageClient() {
             </div>
 
             {a.has('howToUse.proTip.title') && (
-              <div className="bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-400 dark:border-amber-500 rounded-r-xl p-6">
-                <h3 className="font-bold text-amber-900 dark:text-amber-200 mb-2">{a('howToUse.proTip.title')}</h3>
-                <p className="text-sm text-gray-700 dark:text-gray-200">{a('howToUse.proTip.description')}</p>
+              <div className="bg-amber-50 bg-amber-900/20 border-l-4 border-amber-400 border-amber-500 rounded-r-xl p-6">
+                <h3 className="font-bold text-amber-900 text-amber-200 mb-2">{a('howToUse.proTip.title')}</h3>
+                <p className="text-sm text-gray-700 text-gray-200">{a('howToUse.proTip.description')}</p>
               </div>
             )}
           </div>
         </Container>
       </section>
 
-      <section className="py-14 bg-white dark:bg-gray-800">
+      <section className="py-14 bg-white bg-gray-800">
         <Container>
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl font-heading font-bold text-gray-900 dark:text-gray-50 mb-4">
+            <h2 className="text-3xl font-heading font-bold text-gray-900 text-gray-50 mb-4">
               {a('results.headline')}
             </h2>
-            <p className="text-gray-700 dark:text-gray-200 mb-8">
+            <p className="text-gray-700 text-gray-200 mb-8">
               {a('results.intro')}
             </p>
 
             <div className="grid md:grid-cols-2 gap-4">
               {results.map((result, index) => (
-                <article key={`${result.title}-${index}`} className="bg-gray-50 dark:bg-gray-700 rounded-xl p-5">
-                  <h3 className="font-bold text-gray-900 dark:text-gray-50 mb-2">{result.title}</h3>
-                  <p className="text-sm text-gray-700 dark:text-gray-200">{result.description}</p>
+                <article key={`${result.title}-${index}`} className="bg-gray-50 bg-gray-700 rounded-xl p-5">
+                  <h3 className="font-bold text-gray-900 text-gray-50 mb-2">{result.title}</h3>
+                  <p className="text-sm text-gray-700 text-gray-200">{result.description}</p>
                 </article>
               ))}
             </div>
@@ -287,50 +287,50 @@ export default function AmmoniaSciencePageClient() {
       <section className="py-14">
         <Container>
           <div className="max-w-5xl mx-auto overflow-x-auto">
-            <h2 className="text-3xl font-heading font-bold text-gray-900 dark:text-gray-50 mb-4">
+            <h2 className="text-3xl font-heading font-bold text-gray-900 text-gray-50 mb-4">
               {a('comparison.headline')}
             </h2>
-            <p className="text-gray-700 dark:text-gray-200 mb-8">{a('comparison.intro')}</p>
+            <p className="text-gray-700 text-gray-200 mb-8">{a('comparison.intro')}</p>
 
-            <table className="w-full bg-white dark:bg-gray-800 rounded-xl overflow-hidden">
+            <table className="w-full bg-white bg-gray-800 rounded-xl overflow-hidden">
               <thead>
-                <tr className="bg-gray-100 dark:bg-gray-700 text-left">
-                  <th className="p-4 text-gray-900 dark:text-gray-50">{a('comparison.headers.method')}</th>
-                  <th className="p-4 text-gray-900 dark:text-gray-50">{a('comparison.headers.effectiveness')}</th>
-                  <th className="p-4 text-gray-900 dark:text-gray-50">{a('comparison.headers.duration')}</th>
-                  <th className="p-4 text-gray-900 dark:text-gray-50">{a('comparison.headers.safety')}</th>
+                <tr className="bg-gray-100 bg-gray-700 text-left">
+                  <th className="p-4 text-gray-900 text-gray-50">{a('comparison.headers.method')}</th>
+                  <th className="p-4 text-gray-900 text-gray-50">{a('comparison.headers.effectiveness')}</th>
+                  <th className="p-4 text-gray-900 text-gray-50">{a('comparison.headers.duration')}</th>
+                  <th className="p-4 text-gray-900 text-gray-50">{a('comparison.headers.safety')}</th>
                 </tr>
               </thead>
               <tbody>
                 {comparisonRows.map((row, index) => (
-                  <tr key={`${row.method}-${index}`} className="border-t border-gray-200 dark:border-gray-700">
-                    <td className="p-4 text-gray-900 dark:text-gray-50">{row.method}</td>
-                    <td className="p-4 text-gray-700 dark:text-gray-200">{row.effectiveness}</td>
-                    <td className="p-4 text-gray-700 dark:text-gray-200">{row.duration}</td>
-                    <td className="p-4 text-gray-700 dark:text-gray-200">{row.safety}</td>
+                  <tr key={`${row.method}-${index}`} className="border-t border-gray-200 border-gray-700">
+                    <td className="p-4 text-gray-900 text-gray-50">{row.method}</td>
+                    <td className="p-4 text-gray-700 text-gray-200">{row.effectiveness}</td>
+                    <td className="p-4 text-gray-700 text-gray-200">{row.duration}</td>
+                    <td className="p-4 text-gray-700 text-gray-200">{row.safety}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
 
-            <p className="text-sm text-gray-600 dark:text-gray-300 mt-4">{a('comparison.note')}</p>
+            <p className="text-sm text-gray-600 text-gray-300 mt-4">{a('comparison.note')}</p>
           </div>
         </Container>
       </section>
 
-      <section className="py-14 bg-white dark:bg-gray-800">
+      <section className="py-14 bg-white bg-gray-800">
         <Container>
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-heading font-bold text-gray-900 dark:text-gray-50 mb-6">
+            <h2 className="text-3xl font-heading font-bold text-gray-900 text-gray-50 mb-6">
               {a('faq.headline')}
             </h2>
             <Accordion type="single" collapsible className="space-y-3">
               {faqItems.map((item, index) => (
-                <AccordionItem key={`${item.question}-${index}`} value={`faq-${index}`} className="bg-gray-50 dark:bg-gray-700 rounded-xl px-5 border-0">
-                  <AccordionTrigger className="text-left text-gray-900 dark:text-gray-50 hover:no-underline">
+                <AccordionItem key={`${item.question}-${index}`} value={`faq-${index}`} className="bg-gray-50 bg-gray-700 rounded-xl px-5 border-0">
+                  <AccordionTrigger className="text-left text-gray-900 text-gray-50 hover:no-underline">
                     {item.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-gray-700 dark:text-gray-200 pb-5">
+                  <AccordionContent className="text-gray-700 text-gray-200 pb-5">
                     {item.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -346,7 +346,7 @@ export default function AmmoniaSciencePageClient() {
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">{a('cta.headline')}</h2>
             <p className="text-lg opacity-90 max-w-2xl mx-auto mb-8">{a('cta.subheadline')}</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-6">
-              <Link href={localizePath('/products/trial-size', locale)} className="inline-flex items-center justify-center bg-white dark:bg-white text-electric-indigo dark:text-electric-indigo font-bold rounded-lg px-6 py-3 hover:bg-gray-100 dark:hover:bg-gray-100 transition-colors">
+              <Link href={localizePath('/products/trial-size', locale)} className="inline-flex items-center justify-center bg-white bg-white text-electric-indigo text-electric-indigo font-bold rounded-lg px-6 py-3 hover:bg-gray-100 hover:bg-gray-100 transition-colors">
                 {a('cta.secondaryButton')}
               </Link>
               <Link href={localizePath('/products', locale)} className="inline-flex items-center justify-center border-2 border-white font-bold rounded-lg px-6 py-3 hover:bg-white/10 transition-colors">

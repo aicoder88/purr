@@ -13,10 +13,10 @@ const EnhancedChart = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-full h-[280px] flex items-center justify-center bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
+      <div className="w-full h-[280px] flex items-center justify-center bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700">
         <div className="flex flex-col items-center gap-2">
-          <div className="w-6 h-6 border-3 border-teal-500 dark:border-teal-400 border-t-transparent rounded-full animate-spin" />
-          <span className="text-xs text-gray-500 dark:text-gray-400">Loading chart...</span>
+          <div className="w-6 h-6 border-3 border-teal-500 border-teal-400 border-t-transparent rounded-full animate-spin" />
+          <span className="text-xs text-gray-500 text-gray-400">Loading chart...</span>
         </div>
       </div>
     ),
@@ -91,13 +91,13 @@ function QuickAction({
   onClick?: () => void;
 }) {
   const Content = (
-    <div className="flex items-center space-x-4 p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-teal-300 dark:hover:border-teal-700 hover:shadow-md dark:hover:shadow-gray-900/30 transition-all cursor-pointer">
-      <div className="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg">
-        <Icon className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+    <div className="flex items-center space-x-4 p-4 bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 hover:border-teal-300 hover:border-teal-700 hover:shadow-md hover:shadow-gray-900/30 transition-all cursor-pointer">
+      <div className="p-3 bg-gray-100 bg-gray-700 rounded-lg">
+        <Icon className="w-5 h-5 text-gray-700 text-gray-300" />
       </div>
       <div>
-        <h3 className="font-medium text-gray-900 dark:text-gray-50">{title}</h3>
-        <p className="text-sm text-gray-500 dark:text-gray-400">{description}</p>
+        <h3 className="font-medium text-gray-900 text-gray-50">{title}</h3>
+        <p className="text-sm text-gray-500 text-gray-400">{description}</p>
       </div>
     </div>
   );
@@ -169,10 +169,10 @@ export default function OpsPage() {
     <OpsLayout>
       {/* Header */}
       <div className="mb-8">
-        <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-50">
+        <h1 className="font-heading text-3xl font-bold text-gray-900 text-gray-50">
           Operations Dashboard
         </h1>
-        <p className="text-gray-600 dark:text-gray-400 mt-1">
+        <p className="text-gray-600 text-gray-400 mt-1">
           Welcome back! Here&apos;s an overview of your business.
         </p>
       </div>
@@ -248,7 +248,7 @@ export default function OpsPage() {
 
       {/* Quick Actions */}
       <div className="mb-8">
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-4">
+        <h2 className="text-lg font-semibold text-gray-900 text-gray-50 mb-4">
           Quick Actions
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -282,70 +282,70 @@ export default function OpsPage() {
       {/* Status Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Lead Status Breakdown */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
-          <h3 className="font-semibold text-gray-900 dark:text-gray-50 mb-4">Lead Pipeline</h3>
+        <div className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 p-6">
+          <h3 className="font-semibold text-gray-900 text-gray-50 mb-4">Lead Pipeline</h3>
           <div className="space-y-3">
             {stats?.leadsByStatus.slice(0, 5).map(item => (
               <div key={item.status} className="flex justify-between items-center">
-                <span className="text-gray-600 dark:text-gray-400 text-sm">
+                <span className="text-gray-600 text-gray-400 text-sm">
                   {item.status.replace(/_/g, ' ')}
                 </span>
-                <span className="px-2 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded text-sm font-medium">
+                <span className="px-2 py-1 bg-teal-100 bg-teal-900/30 text-teal-700 text-teal-300 rounded text-sm font-medium">
                   {item.count}
                 </span>
               </div>
             ))}
             {!stats?.leadsByStatus.length && (
-              <p className="text-gray-500 dark:text-gray-400 text-sm">No leads yet</p>
+              <p className="text-gray-500 text-gray-400 text-sm">No leads yet</p>
             )}
           </div>
           <Link
             href="/admin/ops/leads/"
-            className="block mt-4 text-center text-sm text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300"
+            className="block mt-4 text-center text-sm text-teal-600 text-teal-400 hover:text-teal-700 hover:text-teal-300"
           >
             View all leads &rarr;
           </Link>
         </div>
 
         {/* Pending Approvals */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
-          <h3 className="font-semibold text-gray-900 dark:text-gray-50 mb-4">Pending Approvals</h3>
+        <div className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 p-6">
+          <h3 className="font-semibold text-gray-900 text-gray-50 mb-4">Pending Approvals</h3>
           <div className="space-y-3">
             <div className="flex justify-between items-center">
-              <span className="text-gray-600 dark:text-gray-400">Retailers</span>
-              <span className="px-2 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded text-sm font-medium">
+              <span className="text-gray-600 text-gray-400">Retailers</span>
+              <span className="px-2 py-1 bg-orange-100 bg-orange-900/30 text-orange-700 text-orange-300 rounded text-sm font-medium">
                 {stats?.pendingRetailers || 0}
               </span>
             </div>
           </div>
           <Link
             href="/admin/ops/retailers/"
-            className="block mt-4 text-center text-sm text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300"
+            className="block mt-4 text-center text-sm text-teal-600 text-teal-400 hover:text-teal-700 hover:text-teal-300"
           >
             Review applications &rarr;
           </Link>
         </div>
 
         {/* Recent Orders */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
-          <h3 className="font-semibold text-gray-900 dark:text-gray-50 mb-4">Recent Orders</h3>
+        <div className="bg-white bg-gray-800 rounded-xl border border-gray-200 border-gray-700 p-6">
+          <h3 className="font-semibold text-gray-900 text-gray-50 mb-4">Recent Orders</h3>
           <div className="space-y-3">
             <div className="flex justify-between items-center">
-              <span className="text-gray-600 dark:text-gray-400">This week</span>
-              <span className="px-2 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded text-sm font-medium">
+              <span className="text-gray-600 text-gray-400">This week</span>
+              <span className="px-2 py-1 bg-teal-100 bg-teal-900/30 text-teal-700 text-teal-300 rounded text-sm font-medium">
                 {stats?.recentOrders || 0}
               </span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-gray-600 dark:text-gray-400">Revenue</span>
-              <span className="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded text-sm font-medium">
+              <span className="text-gray-600 text-gray-400">Revenue</span>
+              <span className="px-2 py-1 bg-green-100 bg-green-900/30 text-green-700 text-green-300 rounded text-sm font-medium">
                 ${(stats?.recentRevenue || 0).toFixed(0)}
               </span>
             </div>
           </div>
           <Link
             href="/admin/ops/orders/"
-            className="block mt-4 text-center text-sm text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300"
+            className="block mt-4 text-center text-sm text-teal-600 text-teal-400 hover:text-teal-700 hover:text-teal-300"
           >
             View all orders &rarr;
           </Link>

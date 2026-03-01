@@ -207,27 +207,27 @@ export default function CSVImportModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>
-      <DialogContent className="sm:max-w-lg bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
+      <DialogContent className="sm:max-w-lg bg-white bg-gray-900 border-gray-200 border-gray-700">
         <DialogHeader>
-          <DialogTitle className="text-xl font-semibold text-gray-900 dark:text-gray-50">
+          <DialogTitle className="text-xl font-semibold text-gray-900 text-gray-50">
             Import Leads from CSV
           </DialogTitle>
-          <DialogDescription className="text-gray-600 dark:text-gray-400">
+          <DialogDescription className="text-gray-600 text-gray-400">
             Upload a CSV file with lead data. The file should have a header row with column names.
           </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4 py-4">
           {/* Template Download */}
-          <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+          <div className="flex items-center justify-between p-3 bg-gray-50 bg-gray-800 rounded-lg border border-gray-200 border-gray-700">
+            <div className="text-sm text-gray-600 text-gray-400">
               Need a template?
             </div>
             <Button
               variant="outline"
               size="sm"
               onClick={downloadTemplate}
-              className="border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300"
+              className="border-gray-200 border-gray-700 text-gray-700 text-gray-300"
             >
               <Download className="w-4 h-4 mr-2" />
               Download Template
@@ -236,15 +236,15 @@ export default function CSVImportModal({
 
           {/* File Upload */}
           <div className="space-y-2">
-            <Label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            <Label className="text-sm font-medium text-gray-700 text-gray-300">
               CSV File
             </Label>
             <div
               className={cn(
                 'border-2 border-dashed rounded-lg p-6 text-center cursor-pointer transition-colors',
                 file
-                  ? 'border-teal-500 dark:border-teal-400 bg-teal-50 dark:bg-teal-900/20'
-                  : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500'
+                  ? 'border-teal-500 border-teal-400 bg-teal-50 bg-teal-900/20'
+                  : 'border-gray-300 border-gray-600 hover:border-gray-400 hover:border-gray-500'
               )}
             >
               <input
@@ -257,19 +257,19 @@ export default function CSVImportModal({
               <label htmlFor="csv-upload" className="cursor-pointer">
                 {file ? (
                   <div className="flex flex-col items-center">
-                    <FileSpreadsheet className="w-10 h-10 text-teal-500 dark:text-teal-400 mb-2" />
-                    <p className="font-medium text-gray-900 dark:text-gray-100">{file.name}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <FileSpreadsheet className="w-10 h-10 text-teal-500 text-teal-400 mb-2" />
+                    <p className="font-medium text-gray-900 text-gray-100">{file.name}</p>
+                    <p className="text-sm text-gray-500 text-gray-400">
                       {parsedData.length} leads found
                     </p>
                   </div>
                 ) : (
                   <div className="flex flex-col items-center">
-                    <Upload className="w-10 h-10 text-gray-400 dark:text-gray-500 mb-2" />
-                    <p className="text-gray-600 dark:text-gray-400">
+                    <Upload className="w-10 h-10 text-gray-400 text-gray-500 mb-2" />
+                    <p className="text-gray-600 text-gray-400">
                       Click to upload or drag and drop
                     </p>
-                    <p className="text-sm text-gray-400 dark:text-gray-500">CSV files only</p>
+                    <p className="text-sm text-gray-400 text-gray-500">CSV files only</p>
                   </div>
                 )}
               </label>
@@ -279,23 +279,23 @@ export default function CSVImportModal({
           {/* Import Mode */}
           {parsedData.length > 0 && !results && (
             <div className="space-y-2">
-              <Label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              <Label className="text-sm font-medium text-gray-700 text-gray-300">
                 Duplicate Handling
               </Label>
               <Select value={importMode} onValueChange={(v) => setImportMode(v as 'skip' | 'update')}>
-                <SelectTrigger className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100">
+                <SelectTrigger className="bg-white bg-gray-800 border-gray-200 border-gray-700 text-gray-900 text-gray-100">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
-                  <SelectItem value="skip" className="text-gray-900 dark:text-gray-100">
+                <SelectContent className="bg-white bg-gray-800 border-gray-200 border-gray-700">
+                  <SelectItem value="skip" className="text-gray-900 text-gray-100">
                     Skip duplicates (recommended)
                   </SelectItem>
-                  <SelectItem value="update" className="text-gray-900 dark:text-gray-100">
+                  <SelectItem value="update" className="text-gray-900 text-gray-100">
                     Update existing leads
                   </SelectItem>
                 </SelectContent>
               </Select>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
+              <p className="text-xs text-gray-500 text-gray-400">
                 Duplicates are detected by matching company name and city.
               </p>
             </div>
@@ -304,7 +304,7 @@ export default function CSVImportModal({
           {/* Progress */}
           {isImporting && (
             <div className="space-y-2">
-              <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
+              <div className="flex items-center justify-between text-sm text-gray-600 text-gray-400">
                 <span>Importing leads...</span>
                 <span>{importProgress}%</span>
               </div>
@@ -314,53 +314,53 @@ export default function CSVImportModal({
 
           {/* Error */}
           {error && (
-            <div className="flex items-start p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-              <AlertCircle className="w-5 h-5 text-red-500 dark:text-red-400 mr-2 flex-shrink-0 mt-0.5" />
-              <p className="text-sm text-red-700 dark:text-red-300">{error}</p>
+            <div className="flex items-start p-3 bg-red-50 bg-red-900/20 border border-red-200 border-red-800 rounded-lg">
+              <AlertCircle className="w-5 h-5 text-red-500 text-red-400 mr-2 flex-shrink-0 mt-0.5" />
+              <p className="text-sm text-red-700 text-red-300">{error}</p>
             </div>
           )}
 
           {/* Results */}
           {results && (
-            <div className="space-y-3 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-              <h4 className="font-medium text-gray-900 dark:text-gray-100">Import Complete</h4>
+            <div className="space-y-3 p-4 bg-gray-50 bg-gray-800 rounded-lg border border-gray-200 border-gray-700">
+              <h4 className="font-medium text-gray-900 text-gray-100">Import Complete</h4>
               <div className="grid grid-cols-3 gap-4 text-center">
-                <div className="p-2 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                  <CheckCircle2 className="w-5 h-5 text-green-500 dark:text-green-400 mx-auto mb-1" />
-                  <div className="text-lg font-semibold text-green-700 dark:text-green-300">
+                <div className="p-2 bg-green-50 bg-green-900/20 rounded-lg">
+                  <CheckCircle2 className="w-5 h-5 text-green-500 text-green-400 mx-auto mb-1" />
+                  <div className="text-lg font-semibold text-green-700 text-green-300">
                     {results.created}
                   </div>
-                  <div className="text-xs text-green-600 dark:text-green-400">Created</div>
+                  <div className="text-xs text-green-600 text-green-400">Created</div>
                 </div>
-                <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                  <CheckCircle2 className="w-5 h-5 text-blue-500 dark:text-blue-400 mx-auto mb-1" />
-                  <div className="text-lg font-semibold text-blue-700 dark:text-blue-300">
+                <div className="p-2 bg-blue-50 bg-blue-900/20 rounded-lg">
+                  <CheckCircle2 className="w-5 h-5 text-blue-500 text-blue-400 mx-auto mb-1" />
+                  <div className="text-lg font-semibold text-blue-700 text-blue-300">
                     {results.updated}
                   </div>
-                  <div className="text-xs text-blue-600 dark:text-blue-400">Updated</div>
+                  <div className="text-xs text-blue-600 text-blue-400">Updated</div>
                 </div>
-                <div className="p-2 bg-gray-100 dark:bg-gray-700 rounded-lg">
-                  <XCircle className="w-5 h-5 text-gray-500 dark:text-gray-400 mx-auto mb-1" />
-                  <div className="text-lg font-semibold text-gray-700 dark:text-gray-300">
+                <div className="p-2 bg-gray-100 bg-gray-700 rounded-lg">
+                  <XCircle className="w-5 h-5 text-gray-500 text-gray-400 mx-auto mb-1" />
+                  <div className="text-lg font-semibold text-gray-700 text-gray-300">
                     {results.skipped}
                   </div>
-                  <div className="text-xs text-gray-600 dark:text-gray-400">Skipped</div>
+                  <div className="text-xs text-gray-600 text-gray-400">Skipped</div>
                 </div>
               </div>
               {results.errors.length > 0 && (
-                <div className="mt-3 p-3 bg-red-50 dark:bg-red-900/20 rounded-lg">
-                  <p className="text-sm font-medium text-red-700 dark:text-red-300 mb-2">
+                <div className="mt-3 p-3 bg-red-50 bg-red-900/20 rounded-lg">
+                  <p className="text-sm font-medium text-red-700 text-red-300 mb-2">
                     {results.errors.length} errors occurred:
                   </p>
                   <div className="max-h-32 overflow-y-auto space-y-1">
                     {results.errors.slice(0, 10).map((err, idx) => (
-                      <p key={idx} className="text-xs text-red-600 dark:text-red-400">
+                      <p key={idx} className="text-xs text-red-600 text-red-400">
                         Row {err.row}: {err.error}
                         {err.companyName && ` (${err.companyName})`}
                       </p>
                     ))}
                     {results.errors.length > 10 && (
-                      <p className="text-xs text-red-600 dark:text-red-400">
+                      <p className="text-xs text-red-600 text-red-400">
                         ...and {results.errors.length - 10} more errors
                       </p>
                     )}
@@ -375,7 +375,7 @@ export default function CSVImportModal({
           {results ? (
             <Button
               onClick={handleClose}
-              className="w-full bg-teal-500 dark:bg-teal-600 text-white dark:text-gray-100 hover:bg-teal-600 dark:hover:bg-teal-700"
+              className="w-full bg-teal-500 bg-teal-600 text-white text-gray-100 hover:bg-teal-600 hover:bg-teal-700"
             >
               Done
             </Button>
@@ -384,14 +384,14 @@ export default function CSVImportModal({
               <Button
                 variant="outline"
                 onClick={handleClose}
-                className="flex-1 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300"
+                className="flex-1 border-gray-200 border-gray-700 text-gray-700 text-gray-300"
               >
                 Cancel
               </Button>
               <Button
                 onClick={handleImport}
                 disabled={parsedData.length === 0 || isImporting}
-                className="flex-1 bg-teal-500 dark:bg-teal-600 text-white dark:text-gray-100 hover:bg-teal-600 dark:hover:bg-teal-700"
+                className="flex-1 bg-teal-500 bg-teal-600 text-white text-gray-100 hover:bg-teal-600 hover:bg-teal-700"
               >
                 {isImporting ? 'Importing...' : `Import ${parsedData.length} Leads`}
               </Button>

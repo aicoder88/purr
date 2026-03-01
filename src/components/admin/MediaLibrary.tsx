@@ -112,16 +112,16 @@ export default function MediaLibrary({
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-6xl w-full max-h-[90vh] flex flex-col">
+      <div className="bg-white bg-gray-800 rounded-lg shadow-xl max-w-6xl w-full max-h-[90vh] flex flex-col">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
-          <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100">
+        <div className="flex items-center justify-between p-6 border-b border-gray-200 border-gray-700">
+          <h2 className="font-heading text-2xl font-bold text-gray-900 text-gray-100">
             Media Library
           </h2>
           {onClose && (
             <button
               onClick={onClose}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+              className="p-2 hover:bg-gray-100 hover:bg-gray-700 rounded-lg transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -129,17 +129,17 @@ export default function MediaLibrary({
         </div>
 
         {/* Filters */}
-        <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+        <div className="p-6 border-b border-gray-200 border-gray-700">
           <div className="flex flex-col sm:flex-row gap-4">
             {/* Search */}
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 text-gray-500" />
               <input
                 type="text"
                 placeholder="Search images..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white bg-gray-900 text-gray-900 text-gray-100"
               />
             </div>
 
@@ -147,7 +147,7 @@ export default function MediaLibrary({
             <select
               value={filterBy}
               onChange={(e) => setFilterBy(e.target.value as 'all' | 'used' | 'unused')}
-              className="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+              className="px-4 py-2 border border-gray-300 border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white bg-gray-900 text-gray-900 text-gray-100"
             >
               <option value="all">All Images</option>
               <option value="used">Used</option>
@@ -155,7 +155,7 @@ export default function MediaLibrary({
             </select>
           </div>
 
-          <div className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+          <div className="mt-4 text-sm text-gray-600 text-gray-400">
             {filteredMedia.length} {filteredMedia.length === 1 ? 'image' : 'images'}
           </div>
         </div>
@@ -167,13 +167,13 @@ export default function MediaLibrary({
               <LoadingSpinner size="lg" text="Loading media library..." />
             </div>
           ) : filteredMedia.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-64 text-gray-500 dark:text-gray-400">
+            <div className="flex flex-col items-center justify-center h-64 text-gray-500 text-gray-400">
               <ImageIcon className="w-16 h-16 mb-4" />
               <p className="text-lg">No images found</p>
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="mt-2 text-purple-600 dark:text-purple-400 hover:underline"
+                  className="mt-2 text-purple-600 text-purple-400 hover:underline"
                 >
                   Clear search
                 </button>
@@ -184,7 +184,7 @@ export default function MediaLibrary({
               {filteredMedia.map((item) => (
                 <div
                   key={item.id}
-                  className={`group relative bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden cursor-pointer transition-all ${selectedItem === item.id
+                  className={`group relative bg-gray-100 bg-gray-700 rounded-lg overflow-hidden cursor-pointer transition-all ${selectedItem === item.id
                       ? 'ring-2 ring-purple-600'
                       : 'hover:ring-2 hover:ring-purple-400'
                     }`}
@@ -202,14 +202,14 @@ export default function MediaLibrary({
 
                     {/* Selected indicator */}
                     {selectedItem === item.id && (
-                      <div className="absolute top-2 right-2 bg-purple-600 text-white dark:text-gray-100 rounded-full p-1">
+                      <div className="absolute top-2 right-2 bg-purple-600 text-white text-gray-100 rounded-full p-1">
                         <Check className="w-4 h-4" />
                       </div>
                     )}
 
                     {/* Usage badge */}
                     {item.usedIn.length > 0 && (
-                      <div className="absolute top-2 left-2 bg-green-600 text-white dark:text-gray-100 text-xs px-2 py-1 rounded">
+                      <div className="absolute top-2 left-2 bg-green-600 text-white text-gray-100 text-xs px-2 py-1 rounded">
                         Used in {item.usedIn.length}
                       </div>
                     )}
@@ -222,7 +222,7 @@ export default function MediaLibrary({
                             e.stopPropagation();
                             handleSelect(item.url);
                           }}
-                          className="px-3 py-1 bg-purple-600 text-white dark:text-gray-100 rounded hover:bg-purple-700 text-sm"
+                          className="px-3 py-1 bg-purple-600 text-white text-gray-100 rounded hover:bg-purple-700 text-sm"
                         >
                           Select
                         </button>
@@ -233,7 +233,7 @@ export default function MediaLibrary({
                             e.stopPropagation();
                             handleDelete(item.id);
                           }}
-                          className="p-2 bg-red-600 text-white dark:text-gray-100 rounded hover:bg-red-700"
+                          className="p-2 bg-red-600 text-white text-gray-100 rounded hover:bg-red-700"
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
@@ -243,10 +243,10 @@ export default function MediaLibrary({
 
                   {/* Info */}
                   <div className="p-2">
-                    <p className="text-xs text-gray-600 dark:text-gray-400 truncate" title={item.filename}>
+                    <p className="text-xs text-gray-600 text-gray-400 truncate" title={item.filename}>
                       {item.filename}
                     </p>
-                    <div className="flex items-center justify-between mt-1 text-xs text-gray-500 dark:text-gray-500">
+                    <div className="flex items-center justify-between mt-1 text-xs text-gray-500 text-gray-500">
                       <span>{formatFileSize(item.size)}</span>
                       <span>{formatDate(item.uploadDate)}</span>
                     </div>
@@ -259,10 +259,10 @@ export default function MediaLibrary({
 
         {/* Footer */}
         {mode === 'select' && (
-          <div className="p-6 border-t border-gray-200 dark:border-gray-700 flex justify-end gap-3">
+          <div className="p-6 border-t border-gray-200 border-gray-700 flex justify-end gap-3">
             <button
               onClick={onClose}
-              className="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+              className="px-4 py-2 border border-gray-300 border-gray-700 rounded-lg hover:bg-gray-50 hover:bg-gray-700 transition-colors"
             >
               Cancel
             </button>
@@ -272,7 +272,7 @@ export default function MediaLibrary({
                 if (item) handleSelect(item.url);
               }}
               disabled={!selectedItem}
-              className="px-4 py-2 bg-purple-600 text-white dark:text-gray-100 rounded-lg hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-4 py-2 bg-purple-600 text-white text-gray-100 rounded-lg hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Insert Image
             </button>

@@ -7,7 +7,7 @@ export function StockAlertBanner() {
   const t = useTranslations();
 
   return (
-    <section className="border-b border-[#CF3F3F] bg-[#E84A4A] text-gray-950 dark:border-red-300 dark:bg-[#FF9C9C] dark:text-gray-900">
+    <section className="border-b border-[#CF3F3F] bg-[#E84A4A] text-gray-950 border-red-300 bg-[#FF9C9C] text-gray-900">
       <div className="container mx-auto px-4 py-5 text-center">
         <p className="text-xl md:text-2xl font-black tracking-tight leading-tight">
           {t('stockAlertBanner.headline')}

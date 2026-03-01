@@ -139,7 +139,7 @@ export default async function ThankYouPage({ searchParams }: Props) {
   const { orderDetails, error } = await getOrderDetails(sessionId);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-green-50 via-white to-emerald-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
+    <main className="min-h-screen bg-gradient-to-br from-green-50 via-white to-emerald-50 from-gray-950 via-gray-900 to-gray-950">
       <Container>
         <ThankYouClient
           orderDetails={orderDetails}

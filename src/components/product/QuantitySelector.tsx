@@ -81,7 +81,7 @@ export function QuantitySelector({
   return (
     <div
       className={cn(
-        'inline-flex items-center bg-gray-100 dark:bg-gray-800 rounded-lg p-1',
+        'inline-flex items-center bg-gray-100 bg-gray-800 rounded-lg p-1',
         classes.container,
         className
       )}
@@ -94,11 +94,11 @@ export function QuantitySelector({
         disabled={quantity <= min}
         className={cn(
           'rounded-md transition-colors',
-          'text-gray-700 dark:text-gray-300',
-          'hover:bg-gray-200 dark:hover:bg-gray-700',
+          'text-gray-700 text-gray-300',
+          'hover:bg-gray-200 hover:bg-gray-700',
           'disabled:opacity-50 disabled:cursor-not-allowed',
           'focus:outline-none focus:ring-2 focus:ring-deep-coral focus:ring-offset-1',
-          'dark:focus:ring-offset-gray-800',
+          'focus:ring-offset-gray-800',
           classes.button
         )}
         aria-label={decreaseLabel}
@@ -107,7 +107,7 @@ export function QuantitySelector({
       </button>
       <span
         className={cn(
-          'text-center font-bold text-gray-900 dark:text-white',
+          'text-center font-bold text-gray-900 text-white',
           classes.value
         )}
         aria-live="polite"
@@ -121,11 +121,11 @@ export function QuantitySelector({
         disabled={quantity >= max}
         className={cn(
           'rounded-md transition-colors',
-          'text-gray-700 dark:text-gray-300',
-          'hover:bg-gray-200 dark:hover:bg-gray-700',
+          'text-gray-700 text-gray-300',
+          'hover:bg-gray-200 hover:bg-gray-700',
           'disabled:opacity-50 disabled:cursor-not-allowed',
           'focus:outline-none focus:ring-2 focus:ring-deep-coral focus:ring-offset-1',
-          'dark:focus:ring-offset-gray-800',
+          'focus:ring-offset-gray-800',
           classes.button
         )}
         aria-label={increaseLabel}

@@ -31,23 +31,23 @@ function DefaultErrorFallback({ error, retry }: { error: Error; retry: () => voi
 
   return (
     <div className="min-h-[400px] flex items-center justify-center p-4">
-      <div className="max-w-lg w-full bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-8 text-center shadow-lg">
-        <div className="w-20 h-20 mx-auto mb-6 bg-red-100 dark:bg-red-900/40 rounded-full flex items-center justify-center">
-          <AlertTriangle className="w-10 h-10 text-red-600 dark:text-red-400" />
+      <div className="max-w-lg w-full bg-red-50 bg-red-900/20 border border-red-200 border-red-800 rounded-xl p-8 text-center shadow-lg">
+        <div className="w-20 h-20 mx-auto mb-6 bg-red-100 bg-red-900/40 rounded-full flex items-center justify-center">
+          <AlertTriangle className="w-10 h-10 text-red-600 text-red-400" />
         </div>
 
-        <h2 className="font-heading text-2xl font-bold text-red-800 dark:text-red-200 mb-3">
+        <h2 className="font-heading text-2xl font-bold text-red-800 text-red-200 mb-3">
           Something went wrong
         </h2>
 
-        <p className="text-red-600 dark:text-red-300 mb-6 leading-relaxed">
+        <p className="text-red-600 text-red-300 mb-6 leading-relaxed">
           We apologize for the inconvenience. Our team has been notified and is working to resolve this issue.
         </p>
 
         <div className="space-y-3 mb-6">
           <button
             onClick={retry}
-            className="w-full bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 text-white dark:text-white dark:text-gray-100 font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+            className="w-full bg-red-600 hover:bg-red-700 bg-red-500 hover:bg-red-600 text-white text-white text-gray-100 font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
           >
             <RefreshCw className="w-4 h-4" />
             Try Again
@@ -56,7 +56,7 @@ function DefaultErrorFallback({ error, retry }: { error: Error; retry: () => voi
           <div className="flex gap-3">
             <button
               onClick={navigateHome}
-              className="flex-1 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100 font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+              className="flex-1 bg-gray-100 bg-gray-700 hover:bg-gray-200 hover:bg-gray-600 text-gray-900 text-gray-100 font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
             >
               <Home className="w-4 h-4" />
               Home
@@ -64,7 +64,7 @@ function DefaultErrorFallback({ error, retry }: { error: Error; retry: () => voi
 
             <button
               onClick={navigateSupport}
-              className="flex-1 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100 font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+              className="flex-1 bg-gray-100 bg-gray-700 hover:bg-gray-200 hover:bg-gray-600 text-gray-900 text-gray-100 font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
             >
               <Mail className="w-4 h-4" />
               Support
@@ -72,20 +72,20 @@ function DefaultErrorFallback({ error, retry }: { error: Error; retry: () => voi
           </div>
         </div>
 
-        <div className="text-xs text-red-500 dark:text-red-400 bg-red-100 dark:bg-red-900/30 px-3 py-2 rounded-lg">
+        <div className="text-xs text-red-500 text-red-400 bg-red-100 bg-red-900/30 px-3 py-2 rounded-lg">
           Error ID: {errorId}
         </div>
 
         {process.env.NODE_ENV === 'development' && error && (
           <details className="mt-6 text-left">
-            <summary className="text-sm text-red-700 dark:text-red-300 cursor-pointer hover:text-red-800 dark:hover:text-red-200">
+            <summary className="text-sm text-red-700 text-red-300 cursor-pointer hover:text-red-800 hover:text-red-200">
               Developer Details
             </summary>
-            <div className="mt-3 text-xs bg-red-100 dark:bg-red-900/30 rounded-lg p-4">
-              <div className="mb-2 font-semibold text-red-800 dark:text-red-200">
+            <div className="mt-3 text-xs bg-red-100 bg-red-900/30 rounded-lg p-4">
+              <div className="mb-2 font-semibold text-red-800 text-red-200">
                 {error.name}: {error.message}
               </div>
-              <pre className="text-red-600 dark:text-red-400 overflow-auto whitespace-pre-wrap break-words">
+              <pre className="text-red-600 text-red-400 overflow-auto whitespace-pre-wrap break-words">
                 {error.stack}
               </pre>
             </div>

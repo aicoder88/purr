@@ -118,44 +118,44 @@ export function SubscriptionsTab({
   return (
     <div className="space-y-6">
       {/* Subscription Summary */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-        <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50 mb-4">Subscription Overview</h3>
+      <div className="bg-white bg-gray-800 rounded-lg shadow p-6">
+        <h3 className="font-heading text-lg font-medium text-gray-900 text-gray-50 mb-4">Subscription Overview</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="text-center">
-            <p className="text-2xl font-bold text-green-600 dark:text-green-400">
+            <p className="text-2xl font-bold text-green-600 text-green-400">
               {subscriptionList.filter(s => s.status === 'active').length}
             </p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Active</p>
+            <p className="text-sm text-gray-500 text-gray-400">Active</p>
           </div>
           <div className="text-center">
-            <p className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">
+            <p className="text-2xl font-bold text-yellow-600 text-yellow-400">
               {subscriptionList.filter(s => s.status === 'paused').length}
             </p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Paused</p>
+            <p className="text-sm text-gray-500 text-gray-400">Paused</p>
           </div>
           <div className="text-center">
-            <p className="text-2xl font-bold text-gray-900 dark:text-gray-50">
+            <p className="text-2xl font-bold text-gray-900 text-gray-50">
               {formatCurrency(subscriptionList.filter(s => s.status === 'active').reduce((sum, s) => sum + s.price, 0))}
             </p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Monthly Total</p>
+            <p className="text-sm text-gray-500 text-gray-400">Monthly Total</p>
           </div>
         </div>
       </div>
 
       {/* Subscription List */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
-        <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-          <h3 className="font-heading text-lg font-medium text-gray-900 dark:text-gray-50">Your Subscriptions</h3>
+      <div className="bg-white bg-gray-800 rounded-lg shadow">
+        <div className="px-6 py-4 border-b border-gray-200 border-gray-700">
+          <h3 className="font-heading text-lg font-medium text-gray-900 text-gray-50">Your Subscriptions</h3>
         </div>
         <div className="p-6">
           {subscriptionList.length > 0 ? (
             <div className="space-y-6">
               {subscriptionList.map((subscription) => (
-                <div key={subscription.id} className="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+                <div key={subscription.id} className="border border-gray-200 border-gray-700 rounded-lg p-6">
                   <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
                     <div className="flex-1">
-                      <h4 className="text-lg font-medium text-gray-900 dark:text-gray-50">{subscription.productName}</h4>
-                      <div className="flex flex-wrap gap-4 mt-2 text-sm text-gray-500 dark:text-gray-400">
+                      <h4 className="text-lg font-medium text-gray-900 text-gray-50">{subscription.productName}</h4>
+                      <div className="flex flex-wrap gap-4 mt-2 text-sm text-gray-500 text-gray-400">
                         <span>Quantity: {subscription.quantity}</span>
                         <span>Started: {formatDate(subscription.created)}</span>
                         <span>Last delivery: {formatDate(subscription.lastDelivery)}</span>
@@ -165,7 +165,7 @@ export function SubscriptionsTab({
                       <span className={cn('inline-flex px-3 py-1 text-sm font-medium rounded-full', getStatusColor(subscription.status))}>
                         {subscription.status.charAt(0).toUpperCase() + subscription.status.slice(1)}
                       </span>
-                      <p className="text-lg font-bold text-gray-900 dark:text-gray-50">{formatCurrency(subscription.price)}</p>
+                      <p className="text-lg font-bold text-gray-900 text-gray-50">{formatCurrency(subscription.price)}</p>
                     </div>
                   </div>
 
@@ -173,12 +173,12 @@ export function SubscriptionsTab({
                     <div className="flex-1">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <p className="text-sm font-medium text-gray-900 dark:text-gray-50">Delivery Frequency</p>
+                          <p className="text-sm font-medium text-gray-900 text-gray-50">Delivery Frequency</p>
                           <select
                             value={subscription.frequency}
                             onChange={handleFrequencyChangeCallback(subscription.id)}
                             disabled={loading || subscription.status === 'cancelled'}
-                            className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-sm text-gray-900 dark:text-gray-50 disabled:opacity-50"
+                            className="mt-1 block w-full rounded-md border border-gray-300 border-gray-600 bg-white bg-gray-700 px-3 py-2 text-sm text-gray-900 text-gray-50 disabled:opacity-50"
                           >
                             <option value="weekly">Weekly</option>
                             <option value="bi-weekly">Bi-weekly</option>
@@ -187,8 +187,8 @@ export function SubscriptionsTab({
                           </select>
                         </div>
                         <div>
-                          <p className="text-sm font-medium text-gray-900 dark:text-gray-50">Next Delivery</p>
-                          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{formatDate(subscription.nextDelivery)}</p>
+                          <p className="text-sm font-medium text-gray-900 text-gray-50">Next Delivery</p>
+                          <p className="text-sm text-gray-500 text-gray-400 mt-1">{formatDate(subscription.nextDelivery)}</p>
                         </div>
                       </div>
                     </div>
@@ -198,7 +198,7 @@ export function SubscriptionsTab({
                         <button
                           onClick={handleSubscriptionPause(subscription.id)}
                           disabled={loading}
-                          className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 text-sm font-medium rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors disabled:opacity-50"
+                          className="px-4 py-2 border border-gray-300 border-gray-600 text-gray-700 text-gray-200 text-sm font-medium rounded-md hover:bg-gray-50 hover:bg-gray-700 transition-colors disabled:opacity-50"
                         >
                           {loading ? 'Processing...' : 'Pause'}
                         </button>
@@ -206,7 +206,7 @@ export function SubscriptionsTab({
                         <button
                           onClick={handleSubscriptionResume(subscription.id)}
                           disabled={loading}
-                          className="px-4 py-2 bg-green-600 text-white dark:text-gray-100 text-sm font-medium rounded-md hover:bg-green-700 transition-colors disabled:opacity-50"
+                          className="px-4 py-2 bg-green-600 text-white text-gray-100 text-sm font-medium rounded-md hover:bg-green-700 transition-colors disabled:opacity-50"
                         >
                           {loading ? 'Processing...' : 'Resume'}
                         </button>
@@ -216,7 +216,7 @@ export function SubscriptionsTab({
                         <button
                           onClick={handleSubscriptionCancel(subscription.id)}
                           disabled={loading}
-                          className="px-4 py-2 bg-red-600 text-white dark:text-gray-100 text-sm font-medium rounded-md hover:bg-red-700 transition-colors disabled:opacity-50"
+                          className="px-4 py-2 bg-red-600 text-white text-gray-100 text-sm font-medium rounded-md hover:bg-red-700 transition-colors disabled:opacity-50"
                         >
                           {loading ? 'Processing...' : 'Cancel'}
                         </button>
@@ -228,9 +228,9 @@ export function SubscriptionsTab({
             </div>
           ) : (
             <div className="text-center py-8">
-              <Calendar className="w-12 h-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
-              <p className="text-gray-500 dark:text-gray-400 mb-4">No subscriptions found</p>
-              <button className="px-6 py-2 bg-blue-600 dark:bg-blue-600 text-white dark:text-gray-100 font-medium rounded-md hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors">
+              <Calendar className="w-12 h-12 text-gray-400 text-gray-500 mx-auto mb-4" />
+              <p className="text-gray-500 text-gray-400 mb-4">No subscriptions found</p>
+              <button className="px-6 py-2 bg-blue-600 bg-blue-600 text-white text-gray-100 font-medium rounded-md hover:bg-blue-700 hover:bg-blue-500 transition-colors">
                 Start a Subscription
               </button>
             </div>

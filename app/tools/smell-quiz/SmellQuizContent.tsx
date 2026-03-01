@@ -662,59 +662,59 @@ export default function SmellQuizContent() {
   };
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-950 font-sans selection:bg-green-200 dark:selection:bg-green-900">
-      <div className="border-b border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900">
+    <div className="bg-gray-50 bg-gray-950 font-sans selection:bg-green-200 selection:bg-green-900">
+      <div className="border-b border-gray-200 border-gray-800 bg-gray-100 bg-gray-900">
         <Container>
           <nav
             aria-label={copy.breadcrumbAria}
-            className="py-3 flex items-center text-sm text-gray-600 dark:text-gray-400"
+            className="py-3 flex items-center text-sm text-gray-600 text-gray-400"
           >
             <Link
               href={localizePath('/', language)}
-              className="flex items-center hover:text-green-600 dark:hover:text-green-400 transition-colors"
+              className="flex items-center hover:text-green-600 hover:text-green-400 transition-colors"
             >
               <Home className="w-4 h-4 mr-1" />
               {copy.home}
             </Link>
             <ChevronRight className="w-4 h-4 mx-2 opacity-50" />
-            <span className="text-gray-900 dark:text-gray-100 font-medium">{copy.pageName}</span>
+            <span className="text-gray-900 text-gray-100 font-medium">{copy.pageName}</span>
           </nav>
         </Container>
       </div>
 
-      <section className="relative overflow-hidden bg-gradient-to-b from-green-50/60 via-gray-50 to-gray-50 dark:from-green-950/20 dark:via-gray-950 dark:to-gray-950 py-16 md:py-24">
-        <div className="absolute top-0 inset-x-0 h-[420px] bg-gradient-to-b from-green-100/50 dark:from-green-900/10 pointer-events-none rounded-b-[96px] blur-3xl opacity-60" />
-        <div className="absolute -top-16 -right-16 w-80 h-80 bg-green-300/25 dark:bg-green-700/20 rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute top-40 -left-20 w-64 h-64 bg-emerald-300/20 dark:bg-emerald-700/20 rounded-full blur-[80px] pointer-events-none" />
+      <section className="relative overflow-hidden bg-gradient-to-b from-green-50/60 via-gray-50 to-gray-50 from-green-950/20 via-gray-950 to-gray-950 py-16 md:py-24">
+        <div className="absolute top-0 inset-x-0 h-[420px] bg-gradient-to-b from-green-100/50 from-green-900/10 pointer-events-none rounded-b-[96px] blur-3xl opacity-60" />
+        <div className="absolute -top-16 -right-16 w-80 h-80 bg-green-300/25 bg-green-700/20 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-40 -left-20 w-64 h-64 bg-emerald-300/20 bg-emerald-700/20 rounded-full blur-[80px] pointer-events-none" />
 
         <Container className="relative z-10">
           <div className="max-w-4xl mx-auto text-center mb-10">
-            <p className="inline-flex px-4 py-1 rounded-full bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 text-sm font-semibold border border-green-200 dark:border-green-800">
+            <p className="inline-flex px-4 py-1 rounded-full bg-green-100 bg-green-900/40 text-green-700 text-green-300 text-sm font-semibold border border-green-200 border-green-800">
               {copy.heroBadge}
             </p>
-            <h1 className="mt-5 text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">
+            <h1 className="mt-5 text-4xl md:text-5xl font-extrabold text-gray-900 text-gray-100 tracking-tight">
               {copy.heroTitle}
             </h1>
-            <p className="mt-5 text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto">
+            <p className="mt-5 text-lg text-gray-600 text-gray-300 leading-relaxed max-w-3xl mx-auto">
               {copy.heroDescription}
             </p>
           </div>
 
-          <div className="max-w-5xl mx-auto rounded-3xl border border-gray-200 dark:border-gray-800 bg-gray-100/70 dark:bg-gray-900/60 backdrop-blur-xl shadow-2xl shadow-gray-200/60 dark:shadow-black/40 overflow-hidden">
-            <div className="px-6 md:px-10 pt-6 md:pt-8 pb-4 border-b border-gray-200 dark:border-gray-800">
+          <div className="max-w-5xl mx-auto rounded-3xl border border-gray-200 border-gray-800 bg-gray-100/70 bg-gray-900/60 backdrop-blur-xl shadow-2xl shadow-gray-200/60 shadow-black/40 overflow-hidden">
+            <div className="px-6 md:px-10 pt-6 md:pt-8 pb-4 border-b border-gray-200 border-gray-800">
               <div
                 role="progressbar"
                 aria-valuenow={progress}
                 aria-valuemin={0}
                 aria-valuemax={100}
-                className="h-2 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden"
+                className="h-2 rounded-full bg-gray-200 bg-gray-800 overflow-hidden"
               >
                 <div
                   className="h-full bg-gradient-to-r from-green-500 via-yellow-400 to-red-500 transition-all duration-500"
                   style={{ width: `${progress}%` }}
                 />
               </div>
-              <p className="mt-3 text-sm text-gray-600 dark:text-gray-400" aria-live="polite">
+              <p className="mt-3 text-sm text-gray-600 text-gray-400" aria-live="polite">
                 {currentStep > 0 && currentStep <= copy.questions.length
                   ? `${copy.stepLabel} ${currentStep} / ${copy.questions.length}`
                   : currentStep === 6
@@ -733,19 +733,19 @@ export default function SmellQuizContent() {
                   transition={{ duration: 0.28 }}
                   className="px-6 md:px-10 py-12 text-center"
                 >
-                  <div className="w-14 h-14 mx-auto rounded-2xl bg-green-100 dark:bg-green-900/40 border border-green-200 dark:border-green-800 flex items-center justify-center mb-6">
-                    <Sparkles className="w-7 h-7 text-green-600 dark:text-green-400" />
+                  <div className="w-14 h-14 mx-auto rounded-2xl bg-green-100 bg-green-900/40 border border-green-200 border-green-800 flex items-center justify-center mb-6">
+                    <Sparkles className="w-7 h-7 text-green-600 text-green-400" />
                   </div>
-                  <p className="text-gray-700 dark:text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+                  <p className="text-gray-700 text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
                     {copy.heroDescription}
                   </p>
                   <Button
                     onClick={() => setCurrentStep(1)}
-                    className="h-12 px-7 bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-600 text-gray-50 dark:text-gray-900 border-none"
+                    className="h-12 px-7 bg-green-600 hover:bg-green-700 bg-green-700 hover:bg-green-600 text-gray-50 text-gray-900 border-none"
                   >
                     {copy.startQuiz}
                   </Button>
-                  <p className="mt-4 text-sm text-gray-500 dark:text-gray-500">{copy.introFootnote}</p>
+                  <p className="mt-4 text-sm text-gray-500 text-gray-500">{copy.introFootnote}</p>
                 </motion.div>
               )}
 
@@ -758,7 +758,7 @@ export default function SmellQuizContent() {
                   transition={{ duration: 0.28 }}
                   className="px-6 md:px-10 py-8 md:py-10"
                 >
-                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-gray-100 mb-8">
                     {currentQuestion.title}
                   </h2>
 
@@ -773,8 +773,8 @@ export default function SmellQuizContent() {
                           onClick={() => handleSelectOption(currentQuestion.id, option.id)}
                           className={`text-left rounded-2xl border p-4 md:p-5 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 ${
                             isSelected
-                              ? 'border-green-500 bg-green-50 dark:border-green-500 dark:bg-green-900/20 ring-2 ring-green-500/40'
-                              : 'border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 hover:border-green-300 dark:hover:border-green-700'
+                              ? 'border-green-500 bg-green-50 border-green-500 bg-green-900/20 ring-2 ring-green-500/40'
+                              : 'border-gray-200 border-gray-700 bg-gray-100 bg-gray-900 hover:border-green-300 hover:border-green-700'
                           }`}
                         >
                           <div className="flex items-start gap-3">
@@ -782,9 +782,9 @@ export default function SmellQuizContent() {
                               {option.emoji}
                             </span>
                             <div className="min-w-0">
-                              <p className="font-semibold text-gray-900 dark:text-gray-100">{option.label}</p>
+                              <p className="font-semibold text-gray-900 text-gray-100">{option.label}</p>
                             </div>
-                            {isSelected && <Check className="w-5 h-5 text-green-600 dark:text-green-400 ml-auto" />}
+                            {isSelected && <Check className="w-5 h-5 text-green-600 text-green-400 ml-auto" />}
                           </div>
                         </button>
                       );
@@ -795,7 +795,7 @@ export default function SmellQuizContent() {
                     <Button
                       variant="outline"
                       onClick={() => setCurrentStep((prev) => Math.max(0, prev - 1))}
-                      className="border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                      className="border-gray-300 border-gray-700 bg-gray-100 bg-gray-900 text-gray-900 text-gray-100"
                     >
                       {copy.back}
                     </Button>
@@ -811,7 +811,7 @@ export default function SmellQuizContent() {
                         setCurrentStep((prev) => prev + 1);
                       }}
                       disabled={!canAdvance}
-                      className="bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-600 text-gray-50 dark:text-gray-900 border-none"
+                      className="bg-green-600 hover:bg-green-700 bg-green-700 hover:bg-green-600 text-gray-50 text-gray-900 border-none"
                     >
                       {currentStep === copy.questions.length ? copy.finish : copy.next}
                     </Button>
@@ -828,21 +828,21 @@ export default function SmellQuizContent() {
                   transition={{ duration: 0.28 }}
                   className="px-6 md:px-10 py-8 md:py-10 space-y-8"
                 >
-                  <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 p-5 md:p-6">
+                  <div className="rounded-2xl border border-gray-200 border-gray-800 bg-gray-100 bg-gray-900 p-5 md:p-6">
                     <div className="flex flex-wrap items-end justify-between gap-6 mb-5">
                       <div>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide font-semibold">
+                        <p className="text-sm text-gray-500 text-gray-400 uppercase tracking-wide font-semibold">
                           {copy.scoreLabel}
                         </p>
-                        <p className="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-gray-100 mt-2">
+                        <p className="text-5xl md:text-6xl font-extrabold text-gray-900 text-gray-100 mt-2">
                           {displayScore}
                         </p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide font-semibold">
+                        <p className="text-sm text-gray-500 text-gray-400 uppercase tracking-wide font-semibold">
                           {copy.riskLabel}
                         </p>
-                        <p className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-2">
+                        <p className="text-2xl font-bold text-gray-900 text-gray-100 mt-2">
                           {copy.riskText[result.risk]}
                         </p>
                       </div>
@@ -850,7 +850,7 @@ export default function SmellQuizContent() {
 
                     <div className="h-3 rounded-full overflow-hidden bg-gradient-to-r from-green-500 via-yellow-400 via-50% to-red-500 relative">
                       <div
-                        className="absolute top-1/2 w-5 h-5 rounded-full border-2 border-gray-100 dark:border-gray-900 bg-gray-900 dark:bg-gray-100 shadow"
+                        className="absolute top-1/2 w-5 h-5 rounded-full border-2 border-gray-100 border-gray-900 bg-gray-900 bg-gray-100 shadow"
                         style={{
                           left: `clamp(10px, ${result.score}%, calc(100% - 10px))`,
                           transform: 'translate(-50%, -50%)',
@@ -859,29 +859,29 @@ export default function SmellQuizContent() {
                       />
                     </div>
 
-                    <p className="mt-5 text-gray-700 dark:text-gray-300">{copy.riskDescription[result.risk]}</p>
+                    <p className="mt-5 text-gray-700 text-gray-300">{copy.riskDescription[result.risk]}</p>
                   </div>
 
-                  <div className="rounded-2xl border border-green-200 dark:border-green-800 bg-green-50/70 dark:bg-green-900/15 p-5 md:p-6">
-                    <p className="text-sm uppercase tracking-wide font-semibold text-green-700 dark:text-green-400 mb-2">
+                  <div className="rounded-2xl border border-green-200 border-green-800 bg-green-50/70 bg-green-900/15 p-5 md:p-6">
+                    <p className="text-sm uppercase tracking-wide font-semibold text-green-700 text-green-400 mb-2">
                       {copy.recommendationTitle}
                     </p>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{selectedName}</h3>
-                    <p className="text-gray-700 dark:text-gray-300 mt-1">{selectedSize} • {selectedPrice}</p>
-                    <p className="mt-4 text-gray-700 dark:text-gray-300">
-                      <span className="font-semibold text-gray-900 dark:text-gray-100">{copy.whyThisSize}: </span>
+                    <h3 className="text-2xl font-bold text-gray-900 text-gray-100">{selectedName}</h3>
+                    <p className="text-gray-700 text-gray-300 mt-1">{selectedSize} • {selectedPrice}</p>
+                    <p className="mt-4 text-gray-700 text-gray-300">
+                      <span className="font-semibold text-gray-900 text-gray-100">{copy.whyThisSize}: </span>
                       {copy.whySize[result.risk]}
                     </p>
                     <div className="mt-6 flex flex-col sm:flex-row gap-3">
                       <Link href={localizePath(result.productHref, language)}>
-                        <Button className="bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-600 text-gray-50 dark:text-gray-900 border-none">
+                        <Button className="bg-green-600 hover:bg-green-700 bg-green-700 hover:bg-green-600 text-gray-50 text-gray-900 border-none">
                           {result.risk === 'low' ? copy.ctaTrial : copy.cta}
                         </Button>
                       </Link>
                       <Button
                         variant="outline"
                         onClick={handleShare}
-                        className="border-green-300 dark:border-green-700 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                        className="border-green-300 border-green-700 bg-gray-100 bg-gray-900 text-gray-900 text-gray-100"
                       >
                         <Share2 className="w-4 h-4 mr-2" />
                         {shareCopied ? copy.shareCopied : copy.share}
@@ -889,7 +889,7 @@ export default function SmellQuizContent() {
                       <Button
                         variant="outline"
                         onClick={resetQuiz}
-                        className="border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                        className="border-gray-300 border-gray-700 bg-gray-100 bg-gray-900 text-gray-900 text-gray-100"
                       >
                         <RotateCcw className="w-4 h-4 mr-2" />
                         {copy.retake}
@@ -897,41 +897,41 @@ export default function SmellQuizContent() {
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 p-5 md:p-6">
-                    <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">
+                  <div className="rounded-2xl border border-gray-200 border-gray-800 bg-gray-100 bg-gray-900 p-5 md:p-6">
+                    <h4 className="text-lg font-bold text-gray-900 text-gray-100 mb-2">
                       {copy.causesTitle}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-400 mb-4">{copy.causesLead}</p>
+                    <p className="text-gray-600 text-gray-400 mb-4">{copy.causesLead}</p>
                     <ul className="space-y-3">
                       {causeInsights.map((insight) => (
                         <li key={insight} className="flex items-start gap-3">
-                          <span className="mt-1 h-2.5 w-2.5 rounded-full bg-green-600 dark:bg-green-500 flex-shrink-0" />
-                          <p className="text-gray-700 dark:text-gray-300">{insight}</p>
+                          <span className="mt-1 h-2.5 w-2.5 rounded-full bg-green-600 bg-green-500 flex-shrink-0" />
+                          <p className="text-gray-700 text-gray-300">{insight}</p>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 p-5 md:p-6">
-                    <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">
+                  <div className="rounded-2xl border border-gray-200 border-gray-800 bg-gray-100 bg-gray-900 p-5 md:p-6">
+                    <h4 className="text-lg font-bold text-gray-900 text-gray-100 mb-2">
                       {copy.learningTitle}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-400 mb-5">{copy.learningDescription}</p>
+                    <p className="text-gray-600 text-gray-400 mb-5">{copy.learningDescription}</p>
                     <div className="grid md:grid-cols-2 gap-4">
                       {learningArticles.map((article) => (
                         <article
                           key={article.link}
-                          className="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 p-4"
+                          className="rounded-xl border border-gray-200 border-gray-700 bg-gray-50 bg-gray-950 p-4"
                         >
-                          <h5 className="text-base font-semibold text-gray-900 dark:text-gray-100 leading-snug">
+                          <h5 className="text-base font-semibold text-gray-900 text-gray-100 leading-snug">
                             {article.title}
                           </h5>
-                          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                          <p className="mt-2 text-sm text-gray-600 text-gray-400 leading-relaxed">
                             {article.excerpt}
                           </p>
                           <Link
                             href={localizePath(article.link, language)}
-                            className="mt-3 inline-flex text-sm font-semibold text-green-700 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 transition-colors"
+                            className="mt-3 inline-flex text-sm font-semibold text-green-700 text-green-400 hover:text-green-800 hover:text-green-300 transition-colors"
                           >
                             {copy.readArticle}
                           </Link>
@@ -940,12 +940,12 @@ export default function SmellQuizContent() {
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 p-5 md:p-6">
-                    <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2">
-                      <Mail className="w-5 h-5 text-green-600 dark:text-green-400" />
+                  <div className="rounded-2xl border border-gray-200 border-gray-800 bg-gray-100 bg-gray-900 p-5 md:p-6">
+                    <h4 className="text-lg font-bold text-gray-900 text-gray-100 flex items-center gap-2">
+                      <Mail className="w-5 h-5 text-green-600 text-green-400" />
                       {copy.emailTitle}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-400 mt-2">{copy.emailDescription}</p>
+                    <p className="text-gray-600 text-gray-400 mt-2">{copy.emailDescription}</p>
                     <form
                       className="mt-4 flex flex-col sm:flex-row gap-3"
                       onSubmit={(event) => {
@@ -963,13 +963,13 @@ export default function SmellQuizContent() {
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
                         placeholder={copy.emailPlaceholder}
-                        className="h-11 px-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500"
+                        className="h-11 px-4 rounded-xl border border-gray-300 border-gray-700 bg-gray-50 bg-gray-950 text-gray-900 text-gray-100 w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500"
                       />
                       <Button
                         type="submit"
                         loading={emailStatus === 'loading'}
                         disabled={emailStatus === 'loading'}
-                        className="bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-600 text-gray-50 dark:text-gray-900 border-none"
+                        className="bg-green-600 hover:bg-green-700 bg-green-700 hover:bg-green-600 text-gray-50 text-gray-900 border-none"
                       >
                         {copy.emailSubmit}
                       </Button>
@@ -978,8 +978,8 @@ export default function SmellQuizContent() {
                       <p
                         className={`mt-3 text-sm ${
                           emailStatus === 'success'
-                            ? 'text-green-700 dark:text-green-400'
-                            : 'text-red-600 dark:text-red-400'
+                            ? 'text-green-700 text-green-400'
+                            : 'text-red-600 text-red-400'
                         }`}
                       >
                         {emailMessage}

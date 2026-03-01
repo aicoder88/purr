@@ -61,7 +61,7 @@ export default function AdminReferralAnalyticsPage() {
   if (isAuthorized === null) {
     return (
       <Container className="py-16 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-400 dark:border-gray-500" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-400 border-gray-500" />
       </Container>
     );
   }
@@ -70,13 +70,13 @@ export default function AdminReferralAnalyticsPage() {
     return (
       <Container className="py-16">
         <div className="max-w-md mx-auto text-center">
-          <div className="w-16 h-16 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Shield className="w-8 h-8 text-red-600 dark:text-red-400" />
+          <div className="w-16 h-16 bg-red-100 bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Shield className="w-8 h-8 text-red-600 text-red-400" />
           </div>
-          <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+          <h2 className="font-heading text-2xl font-bold text-gray-900 text-gray-100 mb-4">
             Access Denied
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-8">
+          <p className="text-gray-600 text-gray-400 mb-8">
             Administrative privileges are required to view referral analytics.
           </p>
           <Button onClick={() => window.history.back()}>
@@ -93,10 +93,10 @@ export default function AdminReferralAnalyticsPage() {
       <div className="mb-8">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100">
+            <h1 className="font-heading text-3xl font-bold text-gray-900 text-gray-100">
               Admin Dashboard
             </h1>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-gray-600 text-gray-400">
               Referral Program Analytics & Management
             </p>
           </div>
@@ -120,12 +120,12 @@ export default function AdminReferralAnalyticsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           <Card className="p-4">
             <div className="flex items-center space-x-3">
-              <div className="p-2 bg-blue-100 dark:bg-blue-900/20 rounded-lg">
-                <Users className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+              <div className="p-2 bg-blue-100 bg-blue-900/20 rounded-lg">
+                <Users className="w-5 h-5 text-blue-600 text-blue-400" />
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Active Users</p>
-                <p className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                <p className="text-sm font-medium text-gray-600 text-gray-400">Active Users</p>
+                <p className="text-lg font-bold text-gray-900 text-gray-100">
                   {realTimeMetrics.activeUsers}
                 </p>
               </div>
@@ -134,12 +134,12 @@ export default function AdminReferralAnalyticsPage() {
 
           <Card className="p-4">
             <div className="flex items-center space-x-3">
-              <div className="p-2 bg-green-100 dark:bg-green-900/20 rounded-lg">
-                <TrendingUp className="w-5 h-5 text-green-600 dark:text-green-400" />
+              <div className="p-2 bg-green-100 bg-green-900/20 rounded-lg">
+                <TrendingUp className="w-5 h-5 text-green-600 text-green-400" />
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Conversions Today</p>
-                <p className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                <p className="text-sm font-medium text-gray-600 text-gray-400">Conversions Today</p>
+                <p className="text-lg font-bold text-gray-900 text-gray-100">
                   {realTimeMetrics.conversionsToday}
                 </p>
               </div>
@@ -148,12 +148,12 @@ export default function AdminReferralAnalyticsPage() {
 
           <Card className="p-4">
             <div className="flex items-center space-x-3">
-              <div className="p-2 bg-emerald-100 dark:bg-emerald-900/20 rounded-lg">
-                <DollarSign className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+              <div className="p-2 bg-emerald-100 bg-emerald-900/20 rounded-lg">
+                <DollarSign className="w-5 h-5 text-emerald-600 text-emerald-400" />
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Revenue Today</p>
-                <p className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                <p className="text-sm font-medium text-gray-600 text-gray-400">Revenue Today</p>
+                <p className="text-lg font-bold text-gray-900 text-gray-100">
                   ${realTimeMetrics.revenueToday.toFixed(2)}
                 </p>
               </div>
@@ -162,12 +162,12 @@ export default function AdminReferralAnalyticsPage() {
 
           <Card className="p-4">
             <div className="flex items-center space-x-3">
-              <div className="p-2 bg-purple-100 dark:bg-purple-900/20 rounded-lg">
-                <Activity className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+              <div className="p-2 bg-purple-100 bg-purple-900/20 rounded-lg">
+                <Activity className="w-5 h-5 text-purple-600 text-purple-400" />
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">System Uptime</p>
-                <p className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                <p className="text-sm font-medium text-gray-600 text-gray-400">System Uptime</p>
+                <p className="text-lg font-bold text-gray-900 text-gray-100">
                   {realTimeMetrics.systemUptime}
                 </p>
               </div>
@@ -177,14 +177,14 @@ export default function AdminReferralAnalyticsPage() {
 
         {/* System Alerts */}
         {systemHealth !== 'healthy' && (
-          <Card className="p-4 mb-6 border-yellow-200 dark:border-yellow-700 bg-yellow-50 dark:bg-yellow-900/20">
+          <Card className="p-4 mb-6 border-yellow-200 border-yellow-700 bg-yellow-50 bg-yellow-900/20">
             <div className="flex items-center space-x-3">
-              <AlertTriangle className="w-5 h-5 text-yellow-600 dark:text-yellow-400" />
+              <AlertTriangle className="w-5 h-5 text-yellow-600 text-yellow-400" />
               <div>
-                <p className="font-medium text-yellow-800 dark:text-yellow-200">
+                <p className="font-medium text-yellow-800 text-yellow-200">
                   System Performance Notice
                 </p>
-                <p className="text-sm text-yellow-700 dark:text-yellow-300">
+                <p className="text-sm text-yellow-700 text-yellow-300">
                   Some analytics data may be delayed. Monitoring team has been notified.
                 </p>
               </div>
@@ -198,7 +198,7 @@ export default function AdminReferralAnalyticsPage() {
 
       {/* Admin Actions */}
       <Card className="p-6 mt-8">
-        <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+        <h3 className="font-heading text-lg font-semibold text-gray-900 text-gray-100 mb-4">
           Administrative Actions
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -219,7 +219,7 @@ export default function AdminReferralAnalyticsPage() {
 
       {/* Data Export & Backup */}
       <Card className="p-6 mt-6">
-        <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+        <h3 className="font-heading text-lg font-semibold text-gray-900 text-gray-100 mb-4">
           Data Management
         </h3>
         <div className="flex flex-wrap gap-3">
@@ -239,8 +239,8 @@ export default function AdminReferralAnalyticsPage() {
       </Card>
 
       {/* Footer Info */}
-      <div className="mt-8 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-        <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
+      <div className="mt-8 p-4 bg-gray-50 bg-gray-800 rounded-lg">
+        <p className="text-sm text-gray-600 text-gray-400 text-center">
           Last updated: {new Date().toLocaleString()} •
           Data retention: 24 months •
           Compliance: GDPR, CCPA

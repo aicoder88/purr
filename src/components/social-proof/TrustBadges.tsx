@@ -20,7 +20,7 @@ export const TrustBadges: React.FC<TrustBadgesProps> = ({
   className = ''
 }) => {
   return (
-    <div className={`p-4 border border-dashed border-gray-300 dark:border-gray-600 rounded text-center text-sm ${className}`}>
+    <div className={`p-4 border border-dashed border-gray-300 border-gray-600 rounded text-center text-sm ${className}`}>
       Trust Badges Placeholder
     </div>
   );
@@ -32,7 +32,7 @@ export const SecurityBadges: React.FC<{ className?: string }> = ({ className = '
 
 export const CheckoutTrustBadges: React.FC<{ className?: string }> = ({ className = '' }) => {
   return (
-    <div className={`p-2 border border-dashed border-green-300 dark:border-green-600 rounded text-center text-xs ${className}`}>
+    <div className={`p-2 border border-dashed border-green-300 border-green-600 rounded text-center text-xs ${className}`}>
       Checkout Trust Badges Placeholder
     </div>
   );
@@ -40,7 +40,7 @@ export const CheckoutTrustBadges: React.FC<{ className?: string }> = ({ classNam
 
 export const SocialProofBadges: React.FC<{ className?: string }> = ({ className = '' }) => {
   return (
-    <div className={`p-2 border border-dashed border-blue-300 dark:border-blue-600 rounded text-center text-xs ${className}`}>
+    <div className={`p-2 border border-dashed border-blue-300 border-blue-600 rounded text-center text-xs ${className}`}>
       Social Proof Badges Placeholder
     </div>
   );

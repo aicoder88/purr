@@ -17,7 +17,7 @@ export function Skeleton({ className }: SkeletonProps) {
   return (
     <div
       className={cn(
-        'animate-pulse bg-gray-200 dark:bg-gray-700 rounded',
+        'animate-pulse bg-gray-200 bg-gray-700 rounded',
         className
       )}
     />
@@ -50,11 +50,11 @@ export function CardSkeleton({ className }: SkeletonProps) {
   return (
     <div
       className={cn(
-        'bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg animate-pulse',
+        'bg-white bg-gray-800 rounded-2xl overflow-hidden shadow-lg animate-pulse',
         className
       )}
     >
-      <div className="h-48 bg-gray-200 dark:bg-gray-700" />
+      <div className="h-48 bg-gray-200 bg-gray-700" />
       <div className="p-6 space-y-3">
         <div className="flex gap-4">
           <Skeleton className="h-4 w-24" />
@@ -112,7 +112,7 @@ export function ContactFormSkeleton({ className }: SkeletonProps) {
   return (
     <div
       className={cn(
-        'bg-white dark:bg-gray-800 p-10 rounded-3xl shadow-2xl border-2 border-purple-200 dark:border-purple-800 animate-pulse',
+        'bg-white bg-gray-800 p-10 rounded-3xl shadow-2xl border-2 border-purple-200 border-purple-800 animate-pulse',
         className
       )}
     >
@@ -139,11 +139,11 @@ export function ContactMethodCardSkeleton({ className }: SkeletonProps) {
   return (
     <div
       className={cn(
-        'bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-2xl animate-pulse',
+        'bg-white bg-gray-800 p-8 rounded-3xl shadow-2xl animate-pulse',
         className
       )}
     >
-      <div className="w-24 h-24 bg-gray-200 dark:bg-gray-700 rounded-2xl mx-auto mb-6" />
+      <div className="w-24 h-24 bg-gray-200 bg-gray-700 rounded-2xl mx-auto mb-6" />
       <Skeleton className="h-8 w-32 mx-auto mb-4" />
       <Skeleton className="h-6 w-48 mx-auto mb-2" />
       <Skeleton className="h-4 w-full mx-auto mb-6" />
@@ -159,12 +159,12 @@ export function CitationCardSkeleton({ className }: SkeletonProps) {
   return (
     <div
       className={cn(
-        'bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm animate-pulse',
+        'bg-white bg-gray-800 rounded-xl p-6 border border-gray-100 border-gray-700 shadow-sm animate-pulse',
         className
       )}
     >
       <div className="flex items-start gap-4">
-        <div className="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-lg shrink-0" />
+        <div className="w-10 h-10 bg-gray-200 bg-gray-700 rounded-lg shrink-0" />
         <div className="flex-1 space-y-3">
           <div className="flex gap-2">
             <Skeleton className="h-4 w-24" />
@@ -205,16 +205,16 @@ export function TeamMemberCardSkeleton({ className }: SkeletonProps) {
   return (
     <div
       className={cn(
-        'bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg animate-pulse',
+        'bg-white bg-gray-800 rounded-2xl overflow-hidden shadow-lg animate-pulse',
         className
       )}
     >
-      <div className="h-64 bg-gray-200 dark:bg-gray-700" />
+      <div className="h-64 bg-gray-200 bg-gray-700" />
       <div className="p-6 space-y-3">
         <Skeleton className="h-6 w-3/4" />
         <Skeleton className="h-4 w-1/2" />
         <Skeleton className="h-16 w-full" />
-        <div className="flex items-center pt-4 border-t border-gray-100 dark:border-gray-700">
+        <div className="flex items-center pt-4 border-t border-gray-100 border-gray-700">
           <Skeleton className="w-4 h-4 mr-2" />
           <Skeleton className="h-4 w-24" />
         </div>
@@ -265,11 +265,11 @@ export function RelatedContentCardSkeleton({ className }: SkeletonProps) {
   return (
     <article
       className={cn(
-        'rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 animate-pulse',
+        'rounded-xl overflow-hidden border border-gray-200 border-gray-700 bg-white bg-gray-800 animate-pulse',
         className
       )}
     >
-      <div className="relative aspect-video bg-gray-200 dark:bg-gray-700" />
+      <div className="relative aspect-video bg-gray-200 bg-gray-700" />
       <div className="p-4 space-y-2">
         <Skeleton className="h-5 w-full" />
         <Skeleton className="h-4 w-24" />
@@ -310,7 +310,7 @@ export function BlogPostContentSkeleton({ className }: SkeletonProps) {
         <Skeleton className="h-12 w-full" />
         <Skeleton className="h-6 w-3/4" />
       </div>
-      <div className="aspect-video bg-gray-200 dark:bg-gray-700 rounded-2xl mb-8" />
+      <div className="aspect-video bg-gray-200 bg-gray-700 rounded-2xl mb-8" />
       <div className="space-y-4">
         <TextSkeleton lines={5} />
         <Skeleton className="h-8 w-1/2" />
@@ -325,11 +325,11 @@ export function BlogPostContentSkeleton({ className }: SkeletonProps) {
  */
 export function FAQSectionSkeleton({ className }: SkeletonProps) {
   return (
-    <div className={cn('mt-12 pt-8 border-t border-gray-200 dark:border-gray-700 animate-pulse', className)}>
+    <div className={cn('mt-12 pt-8 border-t border-gray-200 border-gray-700 animate-pulse', className)}>
       <Skeleton className="h-8 w-48 mb-6" />
       <div className="space-y-4">
         {[...Array(3)].map((_, i) => (
-          <div key={i} className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 space-y-3">
+          <div key={i} className="bg-gray-50 bg-gray-800 rounded-xl p-6 space-y-3">
             <Skeleton className="h-6 w-3/4" />
             <TextSkeleton lines={3} />
           </div>
@@ -344,13 +344,13 @@ export function FAQSectionSkeleton({ className }: SkeletonProps) {
  */
 export function PageLayoutSkeleton({ className }: SkeletonProps) {
   return (
-    <div className={cn('min-h-screen bg-[#FFFFF5] dark:bg-gray-900 animate-pulse', className)}>
-      <div className="h-16 bg-gray-200 dark:bg-gray-800" />
+    <div className={cn('min-h-screen bg-[#FFFFF5] bg-gray-900 animate-pulse', className)}>
+      <div className="h-16 bg-gray-200 bg-gray-800" />
       <main className="container mx-auto px-4 py-8 space-y-8">
         <Skeleton className="h-64 w-full rounded-2xl" />
         <TextSkeleton lines={10} />
       </main>
-      <div className="h-32 bg-gray-200 dark:bg-gray-800 mt-auto" />
+      <div className="h-32 bg-gray-200 bg-gray-800 mt-auto" />
     </div>
   );
 }

@@ -132,7 +132,7 @@ export const generateStarRating = (stars: number = 5) => {
         return (
           <svg
             key={i}
-            className="w-4 h-4 text-yellow-400 dark:text-yellow-300 fill-current"
+            className="w-4 h-4 text-yellow-400 text-yellow-300 fill-current"
             viewBox="0 0 24 24"
             aria-hidden="true"
           >

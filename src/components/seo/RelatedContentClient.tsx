@@ -85,11 +85,11 @@ export function RelatedContentClient({
       <section ref={sectionRef} aria-label="Related articles" className={`py-12 ${className}`}>
         <Container>
           <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-1/3 mb-6"></div>
+            <div className="h-8 bg-gray-200 bg-gray-700 rounded w-1/3 mb-6"></div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="h-48 bg-gray-200 dark:bg-gray-700 rounded"></div>
-              <div className="h-48 bg-gray-200 dark:bg-gray-700 rounded"></div>
-              <div className="h-48 bg-gray-200 dark:bg-gray-700 rounded"></div>
+              <div className="h-48 bg-gray-200 bg-gray-700 rounded"></div>
+              <div className="h-48 bg-gray-200 bg-gray-700 rounded"></div>
+              <div className="h-48 bg-gray-200 bg-gray-700 rounded"></div>
             </div>
           </div>
         </Container>
@@ -104,7 +104,7 @@ export function RelatedContentClient({
   return (
     <section ref={sectionRef} aria-label="Related articles" className={`py-12 ${className}`}>
       <Container>
-        <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+        <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6 text-gray-900 text-gray-100">
           {title}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -113,7 +113,7 @@ export function RelatedContentClient({
             return (
               <article
                 key={page.url}
-                className="group rounded-xl overflow-hidden border border-[#E0EFC7] dark:border-gray-700 bg-white dark:bg-gray-800/80 shadow-sm hover:shadow-md transition-all"
+                className="group rounded-xl overflow-hidden border border-[#E0EFC7] border-gray-700 bg-white bg-gray-800/80 shadow-sm hover:shadow-md transition-all"
               >
                 <Link prefetch={false}
                   href={page.url}
@@ -129,17 +129,17 @@ export function RelatedContentClient({
                     />
                     {page.type === 'hub' && (
                       <div className="absolute top-2 right-2">
-                        <span className="inline-block text-xs font-medium text-white dark:text-gray-100 bg-blue-600 dark:bg-blue-500 px-2 py-1 rounded shadow-sm">
+                        <span className="inline-block text-xs font-medium text-white text-gray-100 bg-blue-600 bg-blue-500 px-2 py-1 rounded shadow-sm">
                           {clusterName} Hub
                         </span>
                       </div>
                     )}
                   </div>
                   <div className="p-4">
-                    <h3 className="font-heading text-lg font-semibold text-[#5B2EFF] dark:text-[#3694FF] group-hover:text-[#5B2EFF]/80 dark:group-hover:text-[#3694FF]/80">
+                    <h3 className="font-heading text-lg font-semibold text-[#5B2EFF] text-[#3694FF] group-hover:text-[#5B2EFF]/80 group-hover:text-[#3694FF]/80">
                       {page.title}
                     </h3>
-                    <p className="text-sm text-electric-indigo-600 dark:text-indigo-400 mt-2">
+                    <p className="text-sm text-electric-indigo-600 text-indigo-400 mt-2">
                       {readMoreText} →
                     </p>
                   </div>

@@ -87,18 +87,18 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
   return (
     <main className={createSectionClasses('light')}>
       {/* Breadcrumb Navigation */}
-      <section className="py-4 border-b border-gray-200 dark:border-gray-800">
+      <section className="py-4 border-b border-gray-200 border-gray-800">
         <Container>
           <nav aria-label={breadcrumbLabel} className="flex items-center space-x-2 text-sm">
             <Link
               href={locale === 'fr' ? '/fr' : '/'}
-              className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+              className="flex items-center text-gray-500 text-gray-400 hover:text-[#FF3131] hover:text-[#FF5050] transition-colors"
             >
               <Home className="w-4 h-4" />
             </Link>
             <span className="flex items-center">
-              <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
-              <span className="font-medium text-gray-900 dark:text-gray-100">{resultsBreadcrumb}</span>
+              <ChevronRight className="w-4 h-4 mx-1 text-gray-400 text-gray-500" />
+              <span className="font-medium text-gray-900 text-gray-100">{resultsBreadcrumb}</span>
             </span>
           </nav>
         </Container>
@@ -109,9 +109,9 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
         <Container>
           <div className="max-w-4xl mx-auto text-center">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#E0EFC7] dark:bg-green-900/40 rounded-full mb-6">
-              <Sparkles className="w-4 h-4 text-[#FF3131] dark:text-[#FF4D4D]" />
-              <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#E0EFC7] bg-green-900/40 rounded-full mb-6">
+              <Sparkles className="w-4 h-4 text-[#FF3131] text-[#FF4D4D]" />
+              <span className="text-sm font-semibold text-gray-800 text-gray-200">
                 {r?.hero?.badge || 'Customer Results'}
               </span>
             </div>
@@ -129,14 +129,14 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8 text-sm">
               <Link
                 href="/learn/science/"
-                className={`font-semibold ${COLORS.text.primary} hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors`}
+                className={`font-semibold ${COLORS.text.primary} hover:text-[#FF3131] hover:text-[#FF5050] transition-colors`}
               >
                 {r?.hero?.scienceLink || 'See research citations'}
               </Link>
-              <span className="hidden sm:block text-gray-400 dark:text-gray-600">•</span>
+              <span className="hidden sm:block text-gray-400 text-gray-600">•</span>
               <Link
                 href="/blog/how-to-use-cat-litter-deodorizer"
-                className={`font-semibold ${COLORS.text.primary} hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors`}
+                className={`font-semibold ${COLORS.text.primary} hover:text-[#FF3131] hover:text-[#FF5050] transition-colors`}
               >
                 {r?.hero?.howToLink || 'How to use the additive'}
               </Link>
@@ -146,7 +146,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/products/trial-size/"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#FF3131] dark:bg-[#FF5050] hover:bg-[#FF3131]/90 dark:hover:bg-[#FF5050]/90 text-white dark:text-gray-100 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#FF3131] bg-[#FF5050] hover:bg-[#FF3131]/90 hover:bg-[#FF5050]/90 text-white text-gray-100 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 {r?.hero?.tryCta || 'Try Risk-Free - Just $4.76 S&H'}
                 <ArrowRight className="w-5 h-5" />
@@ -157,15 +157,15 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
       </section>
 
       {/* Stats Bar */}
-      <section className="py-12 bg-white dark:bg-gray-800 border-y border-gray-100 dark:border-gray-700">
+      <section className="py-12 bg-white bg-gray-800 border-y border-gray-100 border-gray-700">
         <Container>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
             {stats.map((stat, index) => {
               const IconComponent = stat.icon;
               return (
                 <div key={index} className="text-center">
-                  <div className="inline-flex items-center justify-center w-12 h-12 bg-[#FF3131]/10 dark:bg-[#FF5050]/20 rounded-full mb-3">
-                    <IconComponent className="w-6 h-6 text-[#FF3131] dark:text-[#FF5050]" />
+                  <div className="inline-flex items-center justify-center w-12 h-12 bg-[#FF3131]/10 bg-[#FF5050]/20 rounded-full mb-3">
+                    <IconComponent className="w-6 h-6 text-[#FF3131] text-[#FF5050]" />
                   </div>
                   <div className={`text-3xl md:text-4xl font-bold ${COLORS.text.primary}`}>
                     {stat.value}
@@ -201,11 +201,11 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
                   >
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#FF3131] to-[#5B2EFF] rounded-full flex items-center justify-center">
-                        <IconComponent className="w-6 h-6 text-white dark:text-gray-100" />
+                        <IconComponent className="w-6 h-6 text-white text-gray-100" />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2">
-                          <span className="text-xs font-semibold uppercase tracking-wide text-red-500 dark:text-red-400">
+                          <span className="text-xs font-semibold uppercase tracking-wide text-red-500 text-red-400">
                             {r?.beforeAfter?.before || 'Before'}
                           </span>
                         </div>
@@ -213,7 +213,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
                           {item.before}
                         </p>
                         <div className="flex items-center gap-2 mb-2">
-                          <span className="text-xs font-semibold uppercase tracking-wide text-green-500 dark:text-green-400">
+                          <span className="text-xs font-semibold uppercase tracking-wide text-green-500 text-green-400">
                             {r?.beforeAfter?.after || 'After'}
                           </span>
                         </div>
@@ -232,7 +232,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
 
       {/* Testimonials (disabled until real, verifiable reviews exist) */}
       {testimonials.length > 0 && (
-        <section className="py-16 md:py-24 bg-gradient-to-br from-purple-50/50 via-pink-50/50 to-orange-50/50 dark:from-gray-900 dark:via-purple-950/20 dark:to-gray-900">
+        <section className="py-16 md:py-24 bg-gradient-to-br from-purple-50/50 via-pink-50/50 to-orange-50/50 from-gray-900 via-purple-950/20 to-gray-900">
           <Container>
             <div className="text-center mb-12">
               <h2 className={`font-heading text-3xl md:text-4xl font-bold mb-4 ${COLORS.text.primary}`}>
@@ -247,11 +247,11 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  className="bg-white bg-gray-800 border border-gray-100 border-gray-700 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
                   {/* Avatar and Name */}
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#E0EFC7] dark:border-white/10">
+                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#E0EFC7] border-white/10">
                       <Image
                         src={generateAvatarUrl(testimonial.name, index)}
                         alt={testimonial.name}
@@ -270,7 +270,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
 
                   {/* Quote */}
                   <div className="relative">
-                    <Quote className="absolute -top-2 -left-1 w-6 h-6 text-[#FF3131]/20 dark:text-[#FF5050]/30" />
+                    <Quote className="absolute -top-2 -left-1 w-6 h-6 text-[#FF3131]/20 text-[#FF5050]/30" />
                     <p className={`${COLORS.text.secondary} text-sm leading-relaxed pl-4`}>
                       {testimonial.text}
                     </p>
@@ -310,7 +310,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
               {steps.map((step, index) => (
                 <div key={index} className="text-center">
                   <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[#FF3131] to-[#5B2EFF] rounded-full flex items-center justify-center">
-                    <span className="text-2xl font-bold text-white dark:text-gray-100">{step.number}</span>
+                    <span className="text-2xl font-bold text-white text-gray-100">{step.number}</span>
                   </div>
                   <h3 className={`font-heading text-xl font-bold mb-2 ${COLORS.text.primary}`}>
                     {step.title}
@@ -324,7 +324,7 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-[#FF3131]/10 to-[#5B2EFF]/10 dark:from-[#FF3131]/5 dark:to-[#5B2EFF]/5">
+      <section className="py-16 md:py-24 bg-gradient-to-r from-[#FF3131]/10 to-[#5B2EFF]/10 from-[#FF3131]/5 to-[#5B2EFF]/5">
         <Container>
           <div className="max-w-3xl mx-auto text-center">
             <h2 className={`font-heading text-3xl md:text-4xl font-bold mb-4 ${COLORS.text.primary}`}>
@@ -337,14 +337,14 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/products/trial-size/"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#FF3131] dark:bg-[#FF5050] hover:bg-[#FF3131]/90 dark:hover:bg-[#FF5050]/90 text-white dark:text-gray-100 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#FF3131] bg-[#FF5050] hover:bg-[#FF3131]/90 hover:bg-[#FF5050]/90 text-white text-gray-100 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 {r?.cta?.primaryButton || 'Get Your Trial - $4.76 S&H'}
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/#products"
-                className={`inline-flex items-center justify-center gap-2 px-8 py-4 ${COLORS.surface.light} border-2 border-[#FF3131] dark:border-[#FF5050] text-[#FF3131] dark:text-[#FF5050] font-bold rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:bg-[#FF3131] hover:text-white dark:hover:bg-[#FF5050] dark:hover:text-white`}
+                className={`inline-flex items-center justify-center gap-2 px-8 py-4 ${COLORS.surface.light} border-2 border-[#FF3131] border-[#FF5050] text-[#FF3131] text-[#FF5050] font-bold rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:bg-[#FF3131] hover:text-white hover:bg-[#FF5050] hover:text-white`}
               >
                 {r?.cta?.secondaryButton || 'View All Products'}
               </Link>
@@ -353,24 +353,24 @@ export function ResultsContent({ testimonials }: ResultsContentProps) {
             {/* Trust indicators */}
             <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm">
               <div className="flex items-center gap-2">
-                <Shield className="w-4 h-4 text-green-500 dark:text-green-400" />
+                <Shield className="w-4 h-4 text-green-500 text-green-400" />
                 <span className={COLORS.text.tertiary}>{r?.cta?.trust1 || 'Fragrance-free'}</span>
               </div>
               <div className="flex items-center gap-2">
-                <Zap className="w-4 h-4 text-green-500 dark:text-green-400" />
+                <Zap className="w-4 h-4 text-green-500 text-green-400" />
                 <span className={COLORS.text.tertiary}>{r?.cta?.trust2 || 'Works with most litter'}</span>
               </div>
               <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-green-500 dark:text-green-400" />
+                <Sparkles className="w-4 h-4 text-green-500 text-green-400" />
                 <span className={COLORS.text.tertiary}>{r?.cta?.trust3 || 'See science citations'}</span>
               </div>
             </div>
 
             {/* Link to Reviews */}
-            <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+            <div className="mt-6 pt-6 border-t border-gray-200 border-gray-700">
               <Link
                 href="/reviews/"
-                className="inline-flex items-center gap-2 text-sm text-[#FF3131] dark:text-[#FF5050] hover:underline font-medium"
+                className="inline-flex items-center gap-2 text-sm text-[#FF3131] text-[#FF5050] hover:underline font-medium"
               >
                 <Quote className="w-4 h-4" />
                 {locale === 'fr' ? 'Voir tous les avis clients →' : 'Read all customer reviews →'}

@@ -65,18 +65,18 @@ export default function HowActivatedCarbonWorksClient() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen bg-[#FFFFF5] bg-gray-900 transition-colors duration-300">
       {/* Hero Section */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-medium mb-4">
+            <span className="inline-block px-4 py-1 bg-blue-100 bg-blue-900/30 text-blue-600 text-blue-400 rounded-full text-sm font-medium mb-4">
               Science Deep Dive
             </span>
-            <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
+            <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-gray-900 text-gray-100">
               How Does Activated Carbon Work?
             </h1>
-            <p className="text-xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-700 text-gray-200 max-w-3xl mx-auto">
               The complete science behind activated carbon&apos;s odor-eliminating power—from molecular structure
               to practical applications in cat litter and beyond.
             </p>
@@ -104,31 +104,31 @@ export default function HowActivatedCarbonWorksClient() {
       </section>
 
       {/* What Is Activated Carbon */}
-      <section className="py-12 px-4 bg-white dark:bg-gray-800">
+      <section className="py-12 px-4 bg-white bg-gray-800">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">
+          <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 text-gray-100">
             What Is Activated Carbon?
           </h2>
 
-          <div className="prose prose-lg dark:prose-invert max-w-none">
-            <p className="text-gray-700 dark:text-gray-200 mb-6">
+          <div className="prose prose-lg prose-invert max-w-none">
+            <p className="text-gray-700 text-gray-200 mb-6">
               Activated carbon (also called activated charcoal) is a form of carbon that has been processed to have
               extremely small pores, dramatically increasing its surface area. While regular charcoal might seem porous,
               activated carbon takes this to an extreme—creating an internal structure with surface area thousands of
               times greater than its external dimensions.
             </p>
 
-            <p className="text-gray-700 dark:text-gray-200 mb-6">
+            <p className="text-gray-700 text-gray-200 mb-6">
               The &quot;activation&quot; process involves heating carbon-rich materials (coconut shells, wood, coal, or peat)
               to very high temperatures (800-1000°C) in the presence of steam, oxygen, or chemical activating agents.
               This process burns away internal carbon atoms, creating an intricate network of pores throughout the material.
             </p>
 
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 mb-8">
+            <div className="bg-gray-50 bg-gray-700 rounded-xl p-6 mb-8">
               <div className="grid md:grid-cols-2 gap-8 items-center mb-6">
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Common Source Materials</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">
+                  <h3 className="text-xl font-bold text-gray-900 text-gray-100 mb-4">Common Source Materials</h3>
+                  <p className="text-gray-700 text-gray-300 mb-4">
                     While activated carbon can be made from various carbon-rich materials, the source material significantly impacts the final pore structure and effectiveness.
                   </p>
                 </div>
@@ -142,31 +142,31 @@ export default function HowActivatedCarbonWorksClient() {
               </div>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="flex items-start gap-3">
-                  <span className="text-green-500 dark:text-green-400 text-xl">1.</span>
+                  <span className="text-green-500 text-green-400 text-xl">1.</span>
                   <div>
-                    <strong className="text-gray-900 dark:text-gray-100">Coconut Shells</strong>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">Highest micropore content, ideal for gas adsorption</p>
+                    <strong className="text-gray-900 text-gray-100">Coconut Shells</strong>
+                    <p className="text-sm text-gray-600 text-gray-300">Highest micropore content, ideal for gas adsorption</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-green-500 dark:text-green-400 text-xl">2.</span>
+                  <span className="text-green-500 text-green-400 text-xl">2.</span>
                   <div>
-                    <strong className="text-gray-900 dark:text-gray-100">Wood</strong>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">Good for decolorization, larger pores</p>
+                    <strong className="text-gray-900 text-gray-100">Wood</strong>
+                    <p className="text-sm text-gray-600 text-gray-300">Good for decolorization, larger pores</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-green-500 dark:text-green-400 text-xl">3.</span>
+                  <span className="text-green-500 text-green-400 text-xl">3.</span>
                   <div>
-                    <strong className="text-gray-900 dark:text-gray-100">Coal</strong>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">Most common industrial source</p>
+                    <strong className="text-gray-900 text-gray-100">Coal</strong>
+                    <p className="text-sm text-gray-600 text-gray-300">Most common industrial source</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-green-500 dark:text-green-400 text-xl">4.</span>
+                  <span className="text-green-500 text-green-400 text-xl">4.</span>
                   <div>
-                    <strong className="text-gray-900 dark:text-gray-100">Bamboo</strong>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">Sustainable option, growing in popularity</p>
+                    <strong className="text-gray-900 text-gray-100">Bamboo</strong>
+                    <p className="text-sm text-gray-600 text-gray-300">Sustainable option, growing in popularity</p>
                   </div>
                 </div>
               </div>
@@ -178,7 +178,7 @@ export default function HowActivatedCarbonWorksClient() {
       {/* Adsorption vs Absorption */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">
+          <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 text-gray-100">
             Adsorption vs. Absorption: The Critical Difference
           </h2>
 
@@ -199,54 +199,54 @@ export default function HowActivatedCarbonWorksClient() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mt-8">
-            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 border border-blue-200 dark:border-blue-700">
-              <h3 className="text-xl font-bold text-blue-800 dark:text-blue-200 mb-4">Adsorption (What Carbon Does)</h3>
-              <ul className="space-y-3 text-gray-700 dark:text-gray-200">
+            <div className="bg-blue-50 bg-blue-900/20 rounded-xl p-6 border border-blue-200 border-blue-700">
+              <h3 className="text-xl font-bold text-blue-800 text-blue-200 mb-4">Adsorption (What Carbon Does)</h3>
+              <ul className="space-y-3 text-gray-700 text-gray-200">
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-500 dark:text-blue-400">•</span>
+                  <span className="text-blue-500 text-blue-400">•</span>
                   <span>Molecules stick to the <strong>surface</strong></span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-500 dark:text-blue-400">•</span>
+                  <span className="text-blue-500 text-blue-400">•</span>
                   <span>Held by Van der Waals forces</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-500 dark:text-blue-400">•</span>
+                  <span className="text-blue-500 text-blue-400">•</span>
                   <span>Surface area determines capacity</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-500 dark:text-blue-400">•</span>
+                  <span className="text-blue-500 text-blue-400">•</span>
                   <span>Molecules are trapped, not dissolved</span>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-6 border border-orange-200 dark:border-orange-700">
-              <h3 className="text-xl font-bold text-orange-800 dark:text-orange-200 mb-4">Absorption (Like a Sponge)</h3>
-              <ul className="space-y-3 text-gray-700 dark:text-gray-200">
+            <div className="bg-orange-50 bg-orange-900/20 rounded-xl p-6 border border-orange-200 border-orange-700">
+              <h3 className="text-xl font-bold text-orange-800 text-orange-200 mb-4">Absorption (Like a Sponge)</h3>
+              <ul className="space-y-3 text-gray-700 text-gray-200">
                 <li className="flex items-start gap-2">
-                  <span className="text-orange-500 dark:text-orange-400">•</span>
+                  <span className="text-orange-500 text-orange-400">•</span>
                   <span>Molecules soak <strong>into</strong> the material</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-orange-500 dark:text-orange-400">•</span>
+                  <span className="text-orange-500 text-orange-400">•</span>
                   <span>Distributed throughout volume</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-orange-500 dark:text-orange-400">•</span>
+                  <span className="text-orange-500 text-orange-400">•</span>
                   <span>Volume determines capacity</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-orange-500 dark:text-orange-400">•</span>
+                  <span className="text-orange-500 text-orange-400">•</span>
                   <span>Can often be squeezed out</span>
                 </li>
               </ul>
             </div>
           </div>
 
-          <div className="mt-8 bg-gray-100 dark:bg-gray-700 rounded-xl p-6">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-3">Why This Matters for Odor Control</h3>
-            <p className="text-gray-700 dark:text-gray-200">
+          <div className="mt-8 bg-gray-100 bg-gray-700 rounded-xl p-6">
+            <h3 className="text-lg font-bold text-gray-900 text-gray-100 mb-3">Why This Matters for Odor Control</h3>
+            <p className="text-gray-700 text-gray-200">
               Because activated carbon uses adsorption, odor molecules become physically bound to the carbon surface.
               They can&apos;t evaporate back into the air like they might from an absorbent material. Once trapped,
               ammonia and other odor molecules stay trapped until the carbon is disposed of. This is why activated
@@ -257,14 +257,14 @@ export default function HowActivatedCarbonWorksClient() {
       </section>
 
       {/* The Pore Structure */}
-      <section className="py-12 px-4 bg-white dark:bg-gray-800">
+      <section className="py-12 px-4 bg-white bg-gray-800">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">
+          <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 text-gray-100">
             Understanding Pore Structure
           </h2>
 
           <div className="grid md:grid-cols-2 gap-8 items-center mb-8">
-            <p className="text-gray-700 dark:text-gray-200">
+            <p className="text-gray-700 text-gray-200">
               Activated carbon&apos;s effectiveness depends entirely on its pore structure. During activation, three types
               of pores are created, each serving different purposes. It's this complex network that gives carbon its massive surface area.
             </p>
@@ -273,47 +273,47 @@ export default function HowActivatedCarbonWorksClient() {
               alt="Magnified view of activated carbon pore structure"
               width={800}
               height={533}
-              className="w-full rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 h-auto"
+              className="w-full rounded-xl shadow-lg border border-gray-200 border-gray-700 h-auto"
             />
           </div>
 
           <div className="space-y-6 mb-8">
-            <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-6 border border-green-200 dark:border-green-700">
+            <div className="bg-gradient-to-r from-green-50 to-emerald-50 from-green-900/20 to-emerald-900/20 rounded-xl p-6 border border-green-200 border-green-700">
               <div className="flex items-center gap-3 mb-3">
-                <span className="bg-green-500 text-white dark:text-gray-100 font-bold px-3 py-1 rounded-full text-sm">Micropores</span>
-                <span className="text-gray-600 dark:text-gray-300">&lt; 2 nanometers</span>
+                <span className="bg-green-500 text-white text-gray-100 font-bold px-3 py-1 rounded-full text-sm">Micropores</span>
+                <span className="text-gray-600 text-gray-300">&lt; 2 nanometers</span>
               </div>
-              <p className="text-gray-700 dark:text-gray-200 mb-2">
+              <p className="text-gray-700 text-gray-200 mb-2">
                 <strong>Best for:</strong> Small gas molecules like ammonia (NH₃), hydrogen sulfide (H₂S), and VOCs
               </p>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
+              <p className="text-gray-600 text-gray-300 text-sm">
                 Micropores provide the majority of surface area and are responsible for most odor adsorption.
                 Coconut shell carbon has the highest micropore content.
               </p>
             </div>
 
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
+            <div className="bg-gray-50 bg-gray-700 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-3">
-                <span className="bg-gray-500 dark:bg-gray-400 text-white dark:text-gray-100 font-bold px-3 py-1 rounded-full text-sm">Mesopores</span>
-                <span className="text-gray-600 dark:text-gray-300">2-50 nanometers</span>
+                <span className="bg-gray-500 bg-gray-400 text-white text-gray-100 font-bold px-3 py-1 rounded-full text-sm">Mesopores</span>
+                <span className="text-gray-600 text-gray-300">2-50 nanometers</span>
               </div>
-              <p className="text-gray-700 dark:text-gray-200 mb-2">
+              <p className="text-gray-700 text-gray-200 mb-2">
                 <strong>Best for:</strong> Medium-sized molecules, dyes, some organic compounds
               </p>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
+              <p className="text-gray-600 text-gray-300 text-sm">
                 Mesopores act as transport channels, allowing molecules to reach the micropores deep within the carbon structure.
               </p>
             </div>
 
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
+            <div className="bg-gray-50 bg-gray-700 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-3">
-                <span className="bg-gray-600 dark:bg-gray-500 text-white dark:text-gray-100 font-bold px-3 py-1 rounded-full text-sm">Macropores</span>
-                <span className="text-gray-600 dark:text-gray-300">&gt; 50 nanometers</span>
+                <span className="bg-gray-600 bg-gray-500 text-white text-gray-100 font-bold px-3 py-1 rounded-full text-sm">Macropores</span>
+                <span className="text-gray-600 text-gray-300">&gt; 50 nanometers</span>
               </div>
-              <p className="text-gray-700 dark:text-gray-200 mb-2">
+              <p className="text-gray-700 text-gray-200 mb-2">
                 <strong>Best for:</strong> Large molecules, bacteria, some liquids
               </p>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
+              <p className="text-gray-600 text-gray-300 text-sm">
                 Macropores serve as entry points and highways, allowing air and water to flow through the carbon structure.
               </p>
             </div>
@@ -331,60 +331,60 @@ export default function HowActivatedCarbonWorksClient() {
       {/* How It Works for Cat Litter */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">
+          <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 text-gray-100">
             How Activated Carbon Eliminates Cat Litter Odor
           </h2>
 
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg mb-8">
-            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6">The Ammonia Problem</h3>
+          <div className="bg-white bg-gray-800 rounded-xl p-8 shadow-lg mb-8">
+            <h3 className="text-xl font-bold text-gray-900 text-gray-100 mb-6">The Ammonia Problem</h3>
 
-            <p className="text-gray-700 dark:text-gray-200 mb-4">
+            <p className="text-gray-700 text-gray-200 mb-4">
               Cat urine contains urea, a nitrogen compound. When bacteria in the litter box break down urea,
               they produce ammonia gas (NH₃)—the sharp, pungent smell that makes litter boxes unpleasant.
             </p>
 
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 mb-6">
-              <p className="text-center font-mono text-gray-600 dark:text-gray-300">
+            <div className="bg-gray-50 bg-gray-700 rounded-lg p-4 mb-6">
+              <p className="text-center font-mono text-gray-600 text-gray-300">
                 Urea (from urine) + Bacteria → <strong>Ammonia (NH₃)</strong> + CO₂ + H₂O
               </p>
             </div>
 
-            <p className="text-gray-700 dark:text-gray-200">
+            <p className="text-gray-700 text-gray-200">
               This process begins within 2-4 hours of urination and intensifies over time. Traditional clay litters
               can clump urine but cannot stop ammonia from being released into the air.
             </p>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg mb-8">
-            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6">The Activated Carbon Solution</h3>
+          <div className="bg-white bg-gray-800 rounded-xl p-8 shadow-lg mb-8">
+            <h3 className="text-xl font-bold text-gray-900 text-gray-100 mb-6">The Activated Carbon Solution</h3>
 
             <div className="space-y-4">
               <div className="flex items-start gap-4">
-                <div className="bg-green-500 text-white dark:text-gray-100 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">1</div>
+                <div className="bg-green-500 text-white text-gray-100 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">1</div>
                 <div>
-                  <h4 className="font-bold text-gray-900 dark:text-gray-100">Contact</h4>
-                  <p className="text-gray-700 dark:text-gray-200">Ammonia molecules rise from the litter and encounter activated carbon particles</p>
+                  <h4 className="font-bold text-gray-900 text-gray-100">Contact</h4>
+                  <p className="text-gray-700 text-gray-200">Ammonia molecules rise from the litter and encounter activated carbon particles</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="bg-green-500 text-white dark:text-gray-100 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">2</div>
+                <div className="bg-green-500 text-white text-gray-100 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">2</div>
                 <div>
-                  <h4 className="font-bold text-gray-900 dark:text-gray-100">Entry</h4>
-                  <p className="text-gray-700 dark:text-gray-200">Molecules enter through macropores and travel through mesopores to reach micropores</p>
+                  <h4 className="font-bold text-gray-900 text-gray-100">Entry</h4>
+                  <p className="text-gray-700 text-gray-200">Molecules enter through macropores and travel through mesopores to reach micropores</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="bg-green-500 text-white dark:text-gray-100 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">3</div>
+                <div className="bg-green-500 text-white text-gray-100 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">3</div>
                 <div>
-                  <h4 className="font-bold text-gray-900 dark:text-gray-100">Adsorption</h4>
-                  <p className="text-gray-700 dark:text-gray-200">Van der Waals forces cause ammonia molecules to stick to micropore walls</p>
+                  <h4 className="font-bold text-gray-900 text-gray-100">Adsorption</h4>
+                  <p className="text-gray-700 text-gray-200">Van der Waals forces cause ammonia molecules to stick to micropore walls</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="bg-green-500 text-white dark:text-gray-100 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">4</div>
+                <div className="bg-green-500 text-white text-gray-100 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">4</div>
                 <div>
-                  <h4 className="font-bold text-gray-900 dark:text-gray-100">Permanent Trapping</h4>
-                  <p className="text-gray-700 dark:text-gray-200">Once adsorbed, molecules cannot escape back into the air—odor is eliminated</p>
+                  <h4 className="font-bold text-gray-900 text-gray-100">Permanent Trapping</h4>
+                  <p className="text-gray-700 text-gray-200">Once adsorbed, molecules cannot escape back into the air—odor is eliminated</p>
                 </div>
               </div>
             </div>
@@ -400,64 +400,64 @@ export default function HowActivatedCarbonWorksClient() {
       </section>
 
       {/* Comparison with Other Methods */}
-      <section className="py-12 px-4 bg-white dark:bg-gray-800">
+      <section className="py-12 px-4 bg-white bg-gray-800">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">
+          <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 text-gray-100">
             Activated Carbon vs. Other Odor Control Methods
           </h2>
 
           <div className="overflow-x-auto mb-8">
-            <table className="w-full bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden">
-              <thead className="bg-gray-100 dark:bg-gray-600">
+            <table className="w-full bg-white bg-gray-700 rounded-xl shadow-lg overflow-hidden">
+              <thead className="bg-gray-100 bg-gray-600">
                 <tr>
-                  <th className="px-4 py-3 text-left text-gray-900 dark:text-gray-100">Method</th>
-                  <th className="px-4 py-3 text-center text-gray-900 dark:text-gray-100">Mechanism</th>
-                  <th className="px-4 py-3 text-center text-gray-900 dark:text-gray-100">Effectiveness</th>
-                  <th className="px-4 py-3 text-center text-gray-900 dark:text-gray-100">Duration</th>
+                  <th className="px-4 py-3 text-left text-gray-900 text-gray-100">Method</th>
+                  <th className="px-4 py-3 text-center text-gray-900 text-gray-100">Mechanism</th>
+                  <th className="px-4 py-3 text-center text-gray-900 text-gray-100">Effectiveness</th>
+                  <th className="px-4 py-3 text-center text-gray-900 text-gray-100">Duration</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
-                <tr className="bg-green-50 dark:bg-green-900/20">
-                  <td className="px-4 py-3 font-medium text-gray-900 dark:text-gray-100">Activated Carbon</td>
-                  <td className="px-4 py-3 text-center text-gray-700 dark:text-gray-200">Physical adsorption</td>
-                  <td className="px-4 py-3 text-center text-green-600 dark:text-green-400 font-bold">92%</td>
-                  <td className="px-4 py-3 text-center text-gray-700 dark:text-gray-200">5-7 days</td>
+              <tbody className="divide-y divide-gray-200 divide-gray-600">
+                <tr className="bg-green-50 bg-green-900/20">
+                  <td className="px-4 py-3 font-medium text-gray-900 text-gray-100">Activated Carbon</td>
+                  <td className="px-4 py-3 text-center text-gray-700 text-gray-200">Physical adsorption</td>
+                  <td className="px-4 py-3 text-center text-green-600 text-green-400 font-bold">92%</td>
+                  <td className="px-4 py-3 text-center text-gray-700 text-gray-200">5-7 days</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-3 font-medium text-gray-900 dark:text-gray-100">Baking Soda</td>
-                  <td className="px-4 py-3 text-center text-gray-700 dark:text-gray-200">Chemical reaction</td>
-                  <td className="px-4 py-3 text-center text-yellow-600 dark:text-yellow-400 font-bold">38%</td>
-                  <td className="px-4 py-3 text-center text-gray-700 dark:text-gray-200">1-2 days</td>
+                  <td className="px-4 py-3 font-medium text-gray-900 text-gray-100">Baking Soda</td>
+                  <td className="px-4 py-3 text-center text-gray-700 text-gray-200">Chemical reaction</td>
+                  <td className="px-4 py-3 text-center text-yellow-600 text-yellow-400 font-bold">38%</td>
+                  <td className="px-4 py-3 text-center text-gray-700 text-gray-200">1-2 days</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-3 font-medium text-gray-900 dark:text-gray-100">Zeolite</td>
-                  <td className="px-4 py-3 text-center text-gray-700 dark:text-gray-200">Ion exchange</td>
-                  <td className="px-4 py-3 text-center text-yellow-600 dark:text-yellow-400 font-bold">45%</td>
-                  <td className="px-4 py-3 text-center text-gray-700 dark:text-gray-200">3-5 days</td>
+                  <td className="px-4 py-3 font-medium text-gray-900 text-gray-100">Zeolite</td>
+                  <td className="px-4 py-3 text-center text-gray-700 text-gray-200">Ion exchange</td>
+                  <td className="px-4 py-3 text-center text-yellow-600 text-yellow-400 font-bold">45%</td>
+                  <td className="px-4 py-3 text-center text-gray-700 text-gray-200">3-5 days</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-3 font-medium text-gray-900 dark:text-gray-100">Air Fresheners</td>
-                  <td className="px-4 py-3 text-center text-gray-700 dark:text-gray-200">Masking only</td>
-                  <td className="px-4 py-3 text-center text-red-600 dark:text-red-400 font-bold">0%</td>
-                  <td className="px-4 py-3 text-center text-gray-700 dark:text-gray-200">Hours</td>
+                  <td className="px-4 py-3 font-medium text-gray-900 text-gray-100">Air Fresheners</td>
+                  <td className="px-4 py-3 text-center text-gray-700 text-gray-200">Masking only</td>
+                  <td className="px-4 py-3 text-center text-red-600 text-red-400 font-bold">0%</td>
+                  <td className="px-4 py-3 text-center text-gray-700 text-gray-200">Hours</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-red-50 dark:bg-red-900/20 rounded-xl p-6 border border-red-200 dark:border-red-700">
-              <h3 className="font-bold text-red-800 dark:text-red-200 mb-3">Why Baking Soda Falls Short</h3>
-              <p className="text-gray-700 dark:text-gray-200 text-sm">
+            <div className="bg-red-50 bg-red-900/20 rounded-xl p-6 border border-red-200 border-red-700">
+              <h3 className="font-bold text-red-800 text-red-200 mb-3">Why Baking Soda Falls Short</h3>
+              <p className="text-gray-700 text-gray-200 text-sm">
                 Baking soda (sodium bicarbonate) is alkaline with a pH of ~8.4. Ammonia is also alkaline with a pH of ~11.6.
                 Alkaline substances don&apos;t neutralize each other effectively—they need an acid-base reaction. Baking soda
                 provides minimal, short-term odor absorption but cannot trap ammonia like activated carbon does.
               </p>
             </div>
 
-            <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-6 border border-yellow-200 dark:border-yellow-700">
-              <h3 className="font-bold text-yellow-800 dark:text-yellow-200 mb-3">Where Zeolite Comes Up Short</h3>
-              <p className="text-gray-700 dark:text-gray-200 text-sm">
+            <div className="bg-yellow-50 bg-yellow-900/20 rounded-xl p-6 border border-yellow-200 border-yellow-700">
+              <h3 className="font-bold text-yellow-800 text-yellow-200 mb-3">Where Zeolite Comes Up Short</h3>
+              <p className="text-gray-700 text-gray-200 text-sm">
                 Zeolite works through ion exchange, swapping ions with ammonia molecules. While effective for moisture
                 control, zeolite has less surface area than activated carbon and its ion exchange capacity depletes
                 faster. It also doesn&apos;t trap organic compounds as effectively.
@@ -482,62 +482,62 @@ export default function HowActivatedCarbonWorksClient() {
       </section>
 
       {/* Applications Beyond Cat Litter */}
-      <section className="py-12 px-4 bg-white dark:bg-gray-800">
+      <section className="py-12 px-4 bg-white bg-gray-800">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 dark:text-gray-100">
+          <h2 className="text-3xl font-heading font-bold mb-8 text-gray-900 text-gray-100">
             Other Applications of Activated Carbon
           </h2>
 
-          <p className="text-gray-700 dark:text-gray-200 mb-8">
+          <p className="text-gray-700 text-gray-200 mb-8">
             The same adsorption properties that make activated carbon effective for cat litter odor control
             are used across many industries:
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-5">
+            <div className="bg-gray-50 bg-gray-700 rounded-xl p-5">
               <div className="text-2xl mb-2">💧</div>
-              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Water Filtration</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
+              <h3 className="font-bold text-gray-900 text-gray-100 mb-2">Water Filtration</h3>
+              <p className="text-sm text-gray-600 text-gray-300">
                 Removes chlorine, sediment, VOCs, and improves taste in home and industrial water treatment
               </p>
             </div>
 
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-5">
+            <div className="bg-gray-50 bg-gray-700 rounded-xl p-5">
               <div className="text-2xl mb-2">🌬️</div>
-              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Air Purification</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
+              <h3 className="font-bold text-gray-900 text-gray-100 mb-2">Air Purification</h3>
+              <p className="text-sm text-gray-600 text-gray-300">
                 HVAC filters, air purifiers, and industrial ventilation systems
               </p>
             </div>
 
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-5">
+            <div className="bg-gray-50 bg-gray-700 rounded-xl p-5">
               <div className="text-2xl mb-2">😷</div>
-              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Gas Masks</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
+              <h3 className="font-bold text-gray-900 text-gray-100 mb-2">Gas Masks</h3>
+              <p className="text-sm text-gray-600 text-gray-300">
                 Military and industrial respirators use activated carbon to filter toxic gases
               </p>
             </div>
 
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-5">
+            <div className="bg-gray-50 bg-gray-700 rounded-xl p-5">
               <div className="text-2xl mb-2">🏥</div>
-              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Medical Treatment</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
+              <h3 className="font-bold text-gray-900 text-gray-100 mb-2">Medical Treatment</h3>
+              <p className="text-sm text-gray-600 text-gray-300">
                 Emergency treatment for certain poisonings and drug overdoses
               </p>
             </div>
 
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-5">
+            <div className="bg-gray-50 bg-gray-700 rounded-xl p-5">
               <div className="text-2xl mb-2">🍷</div>
-              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Food & Beverage</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
+              <h3 className="font-bold text-gray-900 text-gray-100 mb-2">Food & Beverage</h3>
+              <p className="text-sm text-gray-600 text-gray-300">
                 Decolorizing sugar, purifying spirits, and removing impurities from food products
               </p>
             </div>
 
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-5">
+            <div className="bg-gray-50 bg-gray-700 rounded-xl p-5">
               <div className="text-2xl mb-2">⛽</div>
-              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Fuel Vapor Recovery</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
+              <h3 className="font-bold text-gray-900 text-gray-100 mb-2">Fuel Vapor Recovery</h3>
+              <p className="text-sm text-gray-600 text-gray-300">
                 Capturing gasoline vapors at gas stations and in vehicle fuel systems
               </p>
             </div>
@@ -557,9 +557,9 @@ export default function HowActivatedCarbonWorksClient() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-4 bg-white dark:bg-gray-800">
+      <section className="py-16 px-4 bg-white bg-gray-800">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-r from-electric-indigo to-deep-coral rounded-2xl p-8 md:p-12 text-center text-white dark:text-gray-100">
+          <div className="bg-gradient-to-r from-electric-indigo to-deep-coral rounded-2xl p-8 md:p-12 text-center text-white text-gray-100">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
               Experience Activated Carbon in Action
             </h2>
@@ -571,13 +571,13 @@ export default function HowActivatedCarbonWorksClient() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/products/trial-size/"
-                className="inline-block bg-white dark:bg-gray-100 text-electric-indigo font-bold py-4 px-8 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-200 hover:scale-105 transition-all duration-300 shadow-lg"
+                className="inline-block bg-white bg-gray-100 text-electric-indigo font-bold py-4 px-8 rounded-lg hover:bg-gray-100 hover:bg-gray-200 hover:scale-105 transition-all duration-300 shadow-lg"
               >
                 Try Purrify Today
               </Link>
               <Link
                 href="/learn/ammonia-science/"
-                className="inline-block border-2 border-white dark:border-gray-100 text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:bg-white/10 dark:hover:bg-gray-100/10 hover:scale-105 transition-all duration-300"
+                className="inline-block border-2 border-white border-gray-100 text-white text-gray-100 font-bold py-4 px-8 rounded-lg hover:bg-white/10 hover:bg-gray-100/10 hover:scale-105 transition-all duration-300"
               >
                 Learn About Ammonia
               </Link>
@@ -589,21 +589,21 @@ export default function HowActivatedCarbonWorksClient() {
       {/* Related Content */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
+          <h2 className="text-2xl font-heading font-bold mb-6 text-gray-900 text-gray-100">
             Related Articles
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <Link href="/learn/ammonia-science/" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Why Cat Urine Smells Like Ammonia</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">The science behind the smell</p>
+            <Link href="/learn/ammonia-science/" className="bg-white bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+              <h3 className="font-bold text-gray-900 text-gray-100 mb-2">Why Cat Urine Smells Like Ammonia</h3>
+              <p className="text-sm text-gray-600 text-gray-300">The science behind the smell</p>
             </Link>
-            <Link href="/blog/how-to-neutralize-ammonia-cat-litter" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">5 Methods to Neutralize Ammonia</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">Ranked by effectiveness</p>
+            <Link href="/blog/how-to-neutralize-ammonia-cat-litter" className="bg-white bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+              <h3 className="font-bold text-gray-900 text-gray-100 mb-2">5 Methods to Neutralize Ammonia</h3>
+              <p className="text-sm text-gray-600 text-gray-300">Ranked by effectiveness</p>
             </Link>
-            <Link href="/blog/activated-carbon-vs-baking-soda-comparison" className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Activated Carbon vs Baking Soda</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">Head-to-head comparison</p>
+            <Link href="/blog/activated-carbon-vs-baking-soda-comparison" className="bg-white bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+              <h3 className="font-bold text-gray-900 text-gray-100 mb-2">Activated Carbon vs Baking Soda</h3>
+              <p className="text-sm text-gray-600 text-gray-300">Head-to-head comparison</p>
             </Link>
           </div>
         </div>

@@ -271,16 +271,16 @@ export default async function LocalizedBlogIndexPage({
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListSchema) }} />
 
-      <main className="min-h-screen bg-gradient-to-br from-[#FFFFF5] via-white to-[#FFFFF5] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+      <main className="min-h-screen bg-gradient-to-br from-[#FFFFF5] via-white to-[#FFFFF5] from-gray-900 via-gray-900 to-gray-800">
         {/* Hero Section */}
-        <section className="py-16 border-b border-gray-100 dark:border-gray-800">
+        <section className="py-16 border-b border-gray-100 border-gray-800">
           <Container>
             <div className="max-w-4xl mx-auto text-center">
-              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 text-white mb-6">
                 {locale === 'en' && 'Purrify Blog'}
                 {locale === 'fr' && 'Blog Purrify'}
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              <p className="text-xl text-gray-600 text-gray-300 max-w-2xl mx-auto">
                 {locale === 'en' && 'Expert tips on cat care, litter odor control, and a healthier home.'}
                 {locale === 'fr' && 'Conseils d\'experts sur les soins pour chats, le contrôle des odeurs de litière et plus encore.'}
               </p>
@@ -295,7 +295,7 @@ export default async function LocalizedBlogIndexPage({
               {currentPosts.map((post, index) => (
                 <article
                   key={post.link}
-                  className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 flex flex-col h-full"
+                  className="group bg-white bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 border-gray-700 flex flex-col h-full"
                 >
                   <Link href={post.link} className="block relative h-48 overflow-hidden">
                     <Image
@@ -311,7 +311,7 @@ export default async function LocalizedBlogIndexPage({
                   </Link>
 
                   <div className="p-6 flex flex-col flex-grow">
-                    <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-3">
+                    <div className="flex items-center gap-4 text-sm text-gray-500 text-gray-400 mb-3">
                       <span className="flex items-center gap-1">
                         <Calendar className="w-4 h-4" />
                         {(() => {
@@ -334,11 +334,11 @@ export default async function LocalizedBlogIndexPage({
                       </span>
                     </div>
 
-                    <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-electric-indigo transition-colors line-clamp-2">
+                    <h2 className="text-xl font-bold text-gray-900 text-white mb-3 group-hover:text-electric-indigo transition-colors line-clamp-2">
                       <Link href={post.link}>{post.title}</Link>
                     </h2>
 
-                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3 flex-grow">
+                    <p className="text-gray-600 text-gray-300 text-sm mb-4 line-clamp-3 flex-grow">
                       {post.excerpt}
                     </p>
 
@@ -361,29 +361,29 @@ export default async function LocalizedBlogIndexPage({
                 {currentPage > 1 ? (
                   <Link
                     href={`${getBlogBasePath(locale)}?page=${currentPage - 1}`}
-                    className="px-6 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm hover:shadow-md transition-all text-gray-700 dark:text-gray-200 font-medium flex items-center gap-2"
+                    className="px-6 py-3 bg-white bg-gray-800 border border-gray-200 border-gray-700 rounded-lg shadow-sm hover:shadow-md transition-all text-gray-700 text-gray-200 font-medium flex items-center gap-2"
                   >
                     {t.previous}
                   </Link>
                 ) : (
-                  <span className="px-6 py-3 bg-gray-100 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-800 rounded-lg text-gray-500 dark:text-gray-600 font-medium flex items-center gap-2 cursor-not-allowed">
+                  <span className="px-6 py-3 bg-gray-100 bg-gray-800/50 border border-gray-200 border-gray-800 rounded-lg text-gray-500 text-gray-600 font-medium flex items-center gap-2 cursor-not-allowed">
                     {t.previous}
                   </span>
                 )}
 
-                <span className="text-gray-600 dark:text-gray-400 font-medium">
+                <span className="text-gray-600 text-gray-400 font-medium">
                   {t.page} {currentPage} {t.of} {totalPages}
                 </span>
 
                 {currentPage < totalPages ? (
                   <Link
                     href={`${getBlogBasePath(locale)}?page=${currentPage + 1}`}
-                    className="px-6 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm hover:shadow-md transition-all text-gray-700 dark:text-gray-200 font-medium flex items-center gap-2"
+                    className="px-6 py-3 bg-white bg-gray-800 border border-gray-200 border-gray-700 rounded-lg shadow-sm hover:shadow-md transition-all text-gray-700 text-gray-200 font-medium flex items-center gap-2"
                   >
                     {t.next}
                   </Link>
                 ) : (
-                  <span className="px-6 py-3 bg-gray-100 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-800 rounded-lg text-gray-500 dark:text-gray-600 font-medium flex items-center gap-2 cursor-not-allowed">
+                  <span className="px-6 py-3 bg-gray-100 bg-gray-800/50 border border-gray-200 border-gray-800 rounded-lg text-gray-500 text-gray-600 font-medium flex items-center gap-2 cursor-not-allowed">
                     {t.next}
                   </span>
                 )}

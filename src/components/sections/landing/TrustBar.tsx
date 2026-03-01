@@ -24,7 +24,7 @@ export function TrustBar({
   const hasHalfStar = rating % 1 >= 0.5;
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-800 py-4 border-y border-gray-200 dark:border-gray-700">
+    <section className="bg-gray-50 bg-gray-800 py-4 border-y border-gray-200 border-gray-700">
       <Container>
         <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8 text-sm">
           {/* Star Rating */}
@@ -38,25 +38,25 @@ export function TrustBar({
                       ? 'text-yellow-400 fill-yellow-400'
                       : i === fullStars && hasHalfStar
                       ? 'text-yellow-400 fill-yellow-400/50'
-                      : 'text-gray-300 dark:text-gray-600'
+                      : 'text-gray-300 text-gray-600'
                   }`}
                 />
               ))}
             </div>
-            <span className="font-semibold text-gray-900 dark:text-gray-100">
+            <span className="font-semibold text-gray-900 text-gray-100">
               {rating}
             </span>
-            <span className="text-gray-600 dark:text-gray-400">
+            <span className="text-gray-600 text-gray-400">
               ({reviewCount.toLocaleString()} {reviewsLabel})
             </span>
           </div>
 
           {/* Divider */}
-          <span className="hidden md:block w-px h-4 bg-gray-300 dark:bg-gray-600" />
+          <span className="hidden md:block w-px h-4 bg-gray-300 bg-gray-600" />
 
           {/* Customer Count */}
-          <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-            <span className="font-semibold text-gray-900 dark:text-gray-100">
+          <div className="flex items-center gap-2 text-gray-700 text-gray-300">
+            <span className="font-semibold text-gray-900 text-gray-100">
               {customerCount}
             </span>
             <span>{happyCatsLabel}</span>
@@ -65,7 +65,7 @@ export function TrustBar({
           {/* Badges */}
           {badges.length > 0 && (
             <>
-              <span className="hidden md:block w-px h-4 bg-gray-300 dark:bg-gray-600" />
+              <span className="hidden md:block w-px h-4 bg-gray-300 bg-gray-600" />
               <div className="flex items-center gap-4">
                 {badges.map((badge, index) => (
                   <Image
@@ -74,7 +74,7 @@ export function TrustBar({
                     alt={badge.alt}
                     width={80}
                     height={32}
-                    className="h-6 w-auto opacity-70 dark:opacity-60 dark:invert"
+                    className="h-6 w-auto opacity-70 opacity-60 invert"
                   />
                 ))}
               </div>

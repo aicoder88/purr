@@ -62,7 +62,7 @@ export default function CatLitterGuidePageContent() {
           }}
         />
       )}
-      <main className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
+      <main className="min-h-screen bg-[#FFFFF5] bg-gray-900 transition-colors duration-300">
         <Breadcrumb localePrefix={localePrefix} copy={copy} />
         <HeroSection
           localePrefix={localePrefix}
@@ -74,9 +74,9 @@ export default function CatLitterGuidePageContent() {
         <section className="py-8">
           <Container>
             <div className="max-w-4xl mx-auto">
-              <div className="rounded-xl border border-blue-200 dark:border-blue-700 bg-blue-50 dark:bg-blue-900/20 p-6 md:p-8">
-                <h2 className="font-heading text-2xl md:text-3xl font-bold text-blue-900 dark:text-blue-100 mb-4">{copy.quickAnswerTitle}</h2>
-                <p className="text-blue-800 dark:text-blue-200">{copy.quickAnswerBody}</p>
+              <div className="rounded-xl border border-blue-200 border-blue-700 bg-blue-50 bg-blue-900/20 p-6 md:p-8">
+                <h2 className="font-heading text-2xl md:text-3xl font-bold text-blue-900 text-blue-100 mb-4">{copy.quickAnswerTitle}</h2>
+                <p className="text-blue-800 text-blue-200">{copy.quickAnswerBody}</p>
               </div>
             </div>
           </Container>
@@ -84,12 +84,12 @@ export default function CatLitterGuidePageContent() {
 
         <section className="pb-4">
           <Container>
-            <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 md:p-8">
-              <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">{copy.tocTitle}</h2>
+            <div className="max-w-4xl mx-auto bg-white bg-gray-800 border border-gray-200 border-gray-700 rounded-xl p-6 md:p-8">
+              <h2 className="font-heading text-2xl font-bold text-gray-900 text-gray-100 mb-4">{copy.tocTitle}</h2>
               <ol className="grid gap-2 md:grid-cols-2">
                 {copy.tocItems.map((item) => (
                   <li key={item.id}>
-                    <a href={`#${item.id}`} className="text-gray-700 dark:text-gray-300 hover:text-[#5B2EFF] dark:hover:text-[#818CF8]">
+                    <a href={`#${item.id}`} className="text-gray-700 text-gray-300 hover:text-[#5B2EFF] hover:text-[#818CF8]">
                       {item.label}
                     </a>
                   </li>
@@ -119,17 +119,17 @@ export default function CatLitterGuidePageContent() {
         <section id="selection-framework" className="py-16">
           <Container>
             <div className="max-w-4xl mx-auto">
-              <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">{copy.decisionFrameworkTitle}</h2>
-              <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">{copy.decisionFrameworkIntro}</p>
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 text-gray-100 mb-4">{copy.decisionFrameworkTitle}</h2>
+              <p className="text-lg text-gray-700 text-gray-300 mb-8">{copy.decisionFrameworkIntro}</p>
               <div className="space-y-6">
                 {copy.decisionSteps.map((step, index) => (
-                  <article key={index} className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6">
-                    <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">{step.title}</h3>
-                    <p className="text-gray-700 dark:text-gray-300 mb-4">{step.description}</p>
+                  <article key={index} className="rounded-xl border border-gray-200 border-gray-700 bg-white bg-gray-800 p-6">
+                    <h3 className="font-heading text-2xl font-bold text-gray-900 text-gray-100 mb-3">{step.title}</h3>
+                    <p className="text-gray-700 text-gray-300 mb-4">{step.description}</p>
                     <ul className="space-y-2">
                       {step.checklist.map((item, itemIndex) => (
-                        <li key={itemIndex} className="flex items-start text-gray-700 dark:text-gray-300">
-                          <span className="text-[#5B2EFF] dark:text-[#818CF8] mr-2">•</span>
+                        <li key={itemIndex} className="flex items-start text-gray-700 text-gray-300">
+                          <span className="text-[#5B2EFF] text-[#818CF8] mr-2">•</span>
                           <span>{item}</span>
                         </li>
                       ))}
@@ -143,22 +143,22 @@ export default function CatLitterGuidePageContent() {
 
         <section id="setup-routine" className="py-8">
           <Container>
-            <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 md:p-8">
-              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">{copy.setupTitle}</h2>
+            <div className="max-w-4xl mx-auto bg-white bg-gray-800 border border-gray-200 border-gray-700 rounded-xl p-6 md:p-8">
+              <h2 className="font-heading text-3xl font-bold text-gray-900 text-gray-100 mb-6">{copy.setupTitle}</h2>
               <div className="space-y-4">
                 {copy.setupParagraphs.map((paragraph, index) => (
-                  <p key={index} className="text-gray-700 dark:text-gray-300">
+                  <p key={index} className="text-gray-700 text-gray-300">
                     {paragraph}
                   </p>
                 ))}
               </div>
-              <p className="text-gray-700 dark:text-gray-300 mt-6">
+              <p className="text-gray-700 text-gray-300 mt-6">
                 Learn more about source control science on{' '}
-                <Link href={`${localePrefix}/learn/how-it-works/`} className="text-[#5B2EFF] dark:text-[#818CF8] hover:underline font-medium">
+                <Link href={`${localePrefix}/learn/how-it-works/`} className="text-[#5B2EFF] text-[#818CF8] hover:underline font-medium">
                   {locale === 'fr' ? 'How It Works' : 'How It Works'}
                 </Link>
                 , and review common safety questions on{' '}
-                <Link href={`${localePrefix}/learn/safety/`} className="text-[#5B2EFF] dark:text-[#818CF8] hover:underline font-medium">
+                <Link href={`${localePrefix}/learn/safety/`} className="text-[#5B2EFF] text-[#818CF8] hover:underline font-medium">
                   {locale === 'fr' ? 'Safety' : 'Safety'}
                 </Link>
                 .
@@ -172,23 +172,23 @@ export default function CatLitterGuidePageContent() {
         <section id="maintenance-schedule" className="py-8">
           <Container>
             <div className="max-w-4xl mx-auto">
-              <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">{copy.maintenanceScheduleTitle}</h2>
-              <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">{copy.maintenanceScheduleDescription}</p>
-              <div className="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
-                <table className="w-full bg-white dark:bg-gray-800">
-                  <thead className="bg-gray-100 dark:bg-gray-700">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 text-gray-100 mb-4">{copy.maintenanceScheduleTitle}</h2>
+              <p className="text-lg text-gray-700 text-gray-300 mb-6">{copy.maintenanceScheduleDescription}</p>
+              <div className="overflow-x-auto rounded-xl border border-gray-200 border-gray-700">
+                <table className="w-full bg-white bg-gray-800">
+                  <thead className="bg-gray-100 bg-gray-700">
                     <tr>
-                      <th className="text-left px-4 py-3 text-gray-900 dark:text-gray-100">{copy.frequencyLabel}</th>
-                      <th className="text-left px-4 py-3 text-gray-900 dark:text-gray-100">{copy.taskLabel}</th>
-                      <th className="text-left px-4 py-3 text-gray-900 dark:text-gray-100">{copy.reasonLabel}</th>
+                      <th className="text-left px-4 py-3 text-gray-900 text-gray-100">{copy.frequencyLabel}</th>
+                      <th className="text-left px-4 py-3 text-gray-900 text-gray-100">{copy.taskLabel}</th>
+                      <th className="text-left px-4 py-3 text-gray-900 text-gray-100">{copy.reasonLabel}</th>
                     </tr>
                   </thead>
                   <tbody>
                     {copy.maintenanceSchedule.map((row, index) => (
-                      <tr key={index} className="border-t border-gray-200 dark:border-gray-700">
-                        <td className="px-4 py-3 text-gray-900 dark:text-gray-100 font-medium">{row.frequency}</td>
-                        <td className="px-4 py-3 text-gray-700 dark:text-gray-300">{row.task}</td>
-                        <td className="px-4 py-3 text-gray-700 dark:text-gray-300">{row.reason}</td>
+                      <tr key={index} className="border-t border-gray-200 border-gray-700">
+                        <td className="px-4 py-3 text-gray-900 text-gray-100 font-medium">{row.frequency}</td>
+                        <td className="px-4 py-3 text-gray-700 text-gray-300">{row.task}</td>
+                        <td className="px-4 py-3 text-gray-700 text-gray-300">{row.reason}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -203,23 +203,23 @@ export default function CatLitterGuidePageContent() {
         <section id="warning-signs" className="py-16">
           <Container>
             <div className="max-w-4xl mx-auto">
-              <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">{copy.warningSignsTitle}</h2>
-              <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">{copy.warningSignsDescription}</p>
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 text-gray-100 mb-4">{copy.warningSignsTitle}</h2>
+              <p className="text-lg text-gray-700 text-gray-300 mb-8">{copy.warningSignsDescription}</p>
               <div className="space-y-4">
                 {copy.warningSigns.map((warning, index) => (
-                  <div key={index} className="rounded-xl border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/20 p-5">
-                    <h3 className="font-heading text-xl font-bold text-amber-900 dark:text-amber-100 mb-2">{warning.sign}</h3>
-                    <p className="text-amber-900/90 dark:text-amber-200">{warning.action}</p>
+                  <div key={index} className="rounded-xl border border-amber-200 border-amber-700 bg-amber-50 bg-amber-900/20 p-5">
+                    <h3 className="font-heading text-xl font-bold text-amber-900 text-amber-100 mb-2">{warning.sign}</h3>
+                    <p className="text-amber-900/90 text-amber-200">{warning.action}</p>
                   </div>
                 ))}
               </div>
-              <p className="text-gray-700 dark:text-gray-300 mt-6">
+              <p className="text-gray-700 text-gray-300 mt-6">
                 For broader care guidance, visit{' '}
-                <Link href={`${localePrefix}/learn/faq/`} className="text-[#5B2EFF] dark:text-[#818CF8] hover:underline font-medium">
+                <Link href={`${localePrefix}/learn/faq/`} className="text-[#5B2EFF] text-[#818CF8] hover:underline font-medium">
                   {locale === 'fr' ? 'FAQ' : 'FAQ'}
                 </Link>{' '}
                 and{' '}
-                <Link href={`${localePrefix}/learn/science/`} className="text-[#5B2EFF] dark:text-[#818CF8] hover:underline font-medium">
+                <Link href={`${localePrefix}/learn/science/`} className="text-[#5B2EFF] text-[#818CF8] hover:underline font-medium">
                   {locale === 'fr' ? 'Science' : 'Science'}
                 </Link>
                 .
@@ -230,15 +230,15 @@ export default function CatLitterGuidePageContent() {
 
         <section id="related-guides" className="py-8">
           <Container>
-            <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 md:p-8">
-              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3">{copy.relatedGuidesTitle}</h2>
-              <p className="text-gray-700 dark:text-gray-300 mb-5">{copy.relatedGuidesDescription}</p>
+            <div className="max-w-4xl mx-auto bg-white bg-gray-800 border border-gray-200 border-gray-700 rounded-xl p-6 md:p-8">
+              <h2 className="font-heading text-3xl font-bold text-gray-900 text-gray-100 mb-3">{copy.relatedGuidesTitle}</h2>
+              <p className="text-gray-700 text-gray-300 mb-5">{copy.relatedGuidesDescription}</p>
               <ul className="space-y-2">
                 {copy.relatedGuides.map((item, index) => (
                   <li key={index}>
                     <Link
                       href={`${localePrefix}${item.url}`}
-                      className="text-[#5B2EFF] dark:text-[#818CF8] hover:underline font-medium"
+                      className="text-[#5B2EFF] text-[#818CF8] hover:underline font-medium"
                     >
                       {item.label}
                     </Link>
@@ -251,9 +251,9 @@ export default function CatLitterGuidePageContent() {
 
         <section id="external-resources" className="py-8">
           <Container>
-            <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 md:p-8">
-              <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3">{copy.externalResourcesTitle}</h2>
-              <p className="text-gray-700 dark:text-gray-300 mb-5">{copy.externalResourcesDescription}</p>
+            <div className="max-w-4xl mx-auto bg-white bg-gray-800 border border-gray-200 border-gray-700 rounded-xl p-6 md:p-8">
+              <h2 className="font-heading text-3xl font-bold text-gray-900 text-gray-100 mb-3">{copy.externalResourcesTitle}</h2>
+              <p className="text-gray-700 text-gray-300 mb-5">{copy.externalResourcesDescription}</p>
               <ul className="space-y-2">
                 {copy.externalResources.map((item, index) => (
                   <li key={index}>
@@ -261,7 +261,7 @@ export default function CatLitterGuidePageContent() {
                       href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#5B2EFF] dark:text-[#818CF8] hover:underline font-medium"
+                      className="text-[#5B2EFF] text-[#818CF8] hover:underline font-medium"
                     >
                       {item.label}
                     </a>
@@ -275,12 +275,12 @@ export default function CatLitterGuidePageContent() {
         <section id="guide-faq" className="py-8">
           <Container>
             <div className="max-w-4xl mx-auto">
-              <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-8">{copy.faqTitle}</h2>
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 text-gray-100 mb-8">{copy.faqTitle}</h2>
               <div className="space-y-4">
                 {copy.faqItems.map((faq, index) => (
-                  <article key={index} className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6">
-                    <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">{faq.question}</h3>
-                    <p className="text-gray-700 dark:text-gray-300">{faq.answer}</p>
+                  <article key={index} className="rounded-xl border border-gray-200 border-gray-700 bg-white bg-gray-800 p-6">
+                    <h3 className="font-heading text-xl font-bold text-gray-900 text-gray-100 mb-3">{faq.question}</h3>
+                    <p className="text-gray-700 text-gray-300">{faq.answer}</p>
                   </article>
                 ))}
               </div>

@@ -66,7 +66,7 @@ export default function ApartmentCatSmellPageClient() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen bg-[#FFFFF5] bg-gray-900 transition-colors duration-300">
       {/* Hero Section */}
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
@@ -78,19 +78,19 @@ export default function ApartmentCatSmellPageClient() {
               height={675}
               className="w-full h-auto rounded-lg shadow-lg mb-8"
             />
-            <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
+            <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gray-900 text-gray-100">
               Best Litter for Apartments with No Ventilation
             </h1>
-            <p className="text-xl text-gray-700 dark:text-gray-200 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-700 text-gray-200 mb-8 max-w-3xl mx-auto">
               Living in an apartment with no windows near the litter box? These 5 proven solutions eliminate cat odors
               in studios and small spaces—even without proper ventilation.
             </p>
           </div>
 
           {/* Main Solution Card */}
-          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 max-w-4xl mx-auto mb-16">
-            <h2 className="text-3xl font-heading font-bold mb-6 text-electric-indigo dark:text-electric-indigo-400 text-center">The Purrify Apartment Solution</h2>
-            <p className="text-lg mb-8 text-gray-700 dark:text-gray-200 text-center">
+          <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 max-w-4xl mx-auto mb-16">
+            <h2 className="text-3xl font-heading font-bold mb-6 text-electric-indigo text-electric-indigo-400 text-center">The Purrify Apartment Solution</h2>
+            <p className="text-lg mb-8 text-gray-700 text-gray-200 text-center">
               Living in an apartment with cats presents unique challenges. Limited space means odors have nowhere to go,
               and close quarters with neighbors require discretion. Purrify eliminates odors at the source,
               giving you the freedom to enjoy apartment living with your feline friends.
@@ -108,24 +108,24 @@ export default function ApartmentCatSmellPageClient() {
               <div className="text-center p-4">
                 <div className="text-4xl mb-3">⚡</div>
                 <h3 className="font-heading font-bold text-lg mb-2">Instant Results</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Works immediately upon contact with odors</p>
+                <p className="text-sm text-gray-600 text-gray-300">Works immediately upon contact with odors</p>
               </div>
               <div className="text-center p-4">
                 <div className="text-4xl mb-3">🌿</div>
                 <h3 className="font-heading font-bold text-lg mb-2">100% Natural</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Safe for cats, humans, and the environment</p>
+                <p className="text-sm text-gray-600 text-gray-300">Safe for cats, humans, and the environment</p>
               </div>
               <div className="text-center p-4">
                 <div className="text-4xl mb-3">💰</div>
                 <h3 className="font-heading font-bold text-lg mb-2">Cost Effective</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Extends litter life and reduces waste</p>
+                <p className="text-sm text-gray-600 text-gray-300">Extends litter life and reduces waste</p>
               </div>
             </div>
 
             <div className="text-center">
               <Link
                 href="/products/trial-size/"
-                className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
+                className="inline-block bg-gradient-to-r from-electric-indigo to-deep-coral text-white text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
               >
                 Try Purrify Risk-Free
               </Link>
@@ -134,29 +134,29 @@ export default function ApartmentCatSmellPageClient() {
 
           {/* Apartment Challenges Section */}
           <div className="grid md:grid-cols-2 gap-8 mb-16">
-            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 shadow-lg border border-deep-coral/10 dark:border-deep-coral/20 hover:scale-105 transition-all duration-300">
-              <h3 className="text-2xl font-heading font-bold mb-4 text-deep-coral dark:text-deep-coral-400">Apartment Cat Challenges</h3>
+            <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 shadow-lg border border-deep-coral/10 border-deep-coral/20 hover:scale-105 transition-all duration-300">
+              <h3 className="text-2xl font-heading font-bold mb-4 text-deep-coral text-deep-coral-400">Apartment Cat Challenges</h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
-                  <span className="text-red-500 dark:text-red-400 mr-3">❌</span>
+                  <span className="text-red-500 text-red-400 mr-3">❌</span>
                   <div>
                     <strong>Limited ventilation</strong> - Odors get trapped in small spaces
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-500 dark:text-red-400 mr-3">❌</span>
+                  <span className="text-red-500 text-red-400 mr-3">❌</span>
                   <div>
                     <strong>Close neighbors</strong> - Need to be considerate of shared walls
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-500 dark:text-red-400 mr-3">❌</span>
+                  <span className="text-red-500 text-red-400 mr-3">❌</span>
                   <div>
                     <strong>Small litter areas</strong> - Often located in bathrooms or bedrooms
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-500 dark:text-red-400 mr-3">❌</span>
+                  <span className="text-red-500 text-red-400 mr-3">❌</span>
                   <div>
                     <strong>Frequent guests</strong> - First impressions matter in compact spaces
                   </div>
@@ -164,29 +164,29 @@ export default function ApartmentCatSmellPageClient() {
               </ul>
             </div>
 
-            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:scale-105 transition-all duration-300">
-              <h3 className="text-2xl font-heading font-bold mb-4 text-electric-indigo dark:text-electric-indigo-400">Purrify Solutions</h3>
+            <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-xl p-8 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 hover:scale-105 transition-all duration-300">
+              <h3 className="text-2xl font-heading font-bold mb-4 text-electric-indigo text-electric-indigo-400">Purrify Solutions</h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
-                  <span className="text-green-500 dark:text-green-400 mr-3">✅</span>
+                  <span className="text-green-500 text-green-400 mr-3">✅</span>
                   <div>
                     <strong>Activated carbon technology</strong> - Absorbs odors at the molecular level
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-500 dark:text-green-400 mr-3">✅</span>
+                  <span className="text-green-500 text-green-400 mr-3">✅</span>
                   <div>
                     <strong>Works with any litter</strong> - No need to change your cat&apos;s routine
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-500 dark:text-green-400 mr-3">✅</span>
+                  <span className="text-green-500 text-green-400 mr-3">✅</span>
                   <div>
                     <strong>Long-lasting protection</strong> - Continuous odor elimination
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-500 dark:text-green-400 mr-3">✅</span>
+                  <span className="text-green-500 text-green-400 mr-3">✅</span>
                   <div>
                     <strong>Guest-ready home</strong> - Always prepared for unexpected visitors
                   </div>
@@ -196,15 +196,15 @@ export default function ApartmentCatSmellPageClient() {
           </div>
 
           {/* How It Works in Apartments */}
-          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 mb-16">
-            <h3 className="text-3xl font-heading font-bold mb-8 text-center text-gray-900 dark:text-gray-100">How Purrify Works in Small Spaces</h3>
+          <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 mb-16">
+            <h3 className="text-3xl font-heading font-bold mb-8 text-center text-gray-900 text-gray-100">How Purrify Works in Small Spaces</h3>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
                 <div className="bg-gradient-to-br from-electric-indigo to-deep-coral w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">🏠</span>
                 </div>
                 <h4 className="font-heading font-bold mb-2">Step 1: Target Problem Areas</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
+                <p className="text-sm text-gray-600 text-gray-300">
                   In apartments, litter boxes are often in bathrooms, bedrooms, or closets where odors concentrate
                 </p>
               </div>
@@ -213,7 +213,7 @@ export default function ApartmentCatSmellPageClient() {
                   <span className="text-2xl">⚡</span>
                 </div>
                 <h4 className="font-heading font-bold mb-2">Step 2: Immediate Action</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
+                <p className="text-sm text-gray-600 text-gray-300">
                   Activated carbon instantly begins absorbing odor molecules before they can spread through your space
                 </p>
               </div>
@@ -222,7 +222,7 @@ export default function ApartmentCatSmellPageClient() {
                   <span className="text-2xl">🌟</span>
                 </div>
                 <h4 className="font-heading font-bold mb-2">Step 3: Fresh Environment</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
+                <p className="text-sm text-gray-600 text-gray-300">
                   Maintain a consistently fresh apartment that you&apos;re proud to call home
                 </p>
               </div>
@@ -230,35 +230,35 @@ export default function ApartmentCatSmellPageClient() {
           </div>
 
           {/* Customer Success Stories */}
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8 mb-16">
-            <h3 className="text-3xl font-heading font-bold mb-8 text-center text-gray-900 dark:text-gray-100">Apartment Success Stories</h3>
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 from-blue-900/20 to-purple-900/20 rounded-2xl p-8 mb-16">
+            <h3 className="text-3xl font-heading font-bold mb-8 text-center text-gray-900 text-gray-100">Apartment Success Stories</h3>
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-lg p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:scale-105 transition-all duration-300">
+              <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-lg p-6 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 hover:scale-105 transition-all duration-300">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center mr-4">
+                  <div className="w-12 h-12 bg-yellow-100 bg-yellow-900 rounded-full flex items-center justify-center mr-4">
                     <span className="text-xl">⭐</span>
                   </div>
                   <div>
                     <h4 className="font-bold">Sarah M. - Toronto Studio</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">400 sq ft apartment</p>
+                    <p className="text-sm text-gray-600 text-gray-300">400 sq ft apartment</p>
                   </div>
                 </div>
-                <p className="text-gray-700 dark:text-gray-200 text-sm">
+                <p className="text-gray-700 text-gray-200 text-sm">
                   &quot;Living in a tiny studio with my cat was embarrassing until I found Purrify.
                   Now I actually invite friends over without worrying about the smell!&quot;
                 </p>
               </div>
-              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-lg p-6 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 hover:scale-105 transition-all duration-300">
+              <div className="bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-lg p-6 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 hover:scale-105 transition-all duration-300">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center mr-4">
+                  <div className="w-12 h-12 bg-yellow-100 bg-yellow-900 rounded-full flex items-center justify-center mr-4">
                     <span className="text-xl">⭐</span>
                   </div>
                   <div>
                     <h4 className="font-bold">Mike R. - Montreal Condo</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">1-bedroom apartment</p>
+                    <p className="text-sm text-gray-600 text-gray-300">1-bedroom apartment</p>
                   </div>
                 </div>
-                <p className="text-gray-700 dark:text-gray-200 text-sm">
+                <p className="text-gray-700 text-gray-200 text-sm">
                   &quot;My neighbor actually complimented how fresh my hallway smells now.
                   Purrify made apartment living with two cats totally manageable.&quot;
                 </p>
@@ -267,21 +267,21 @@ export default function ApartmentCatSmellPageClient() {
           </div>
 
           {/* Call to Action */}
-          <div className="text-center bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg border border-electric-indigo/10 dark:border-electric-indigo/20 mb-16">
-            <h3 className="text-3xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">Ready for a Fresh Apartment?</h3>
-            <p className="text-lg text-gray-700 dark:text-gray-200 mb-6">
+          <div className="text-center bg-white/80 bg-gray-800/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg border border-electric-indigo/10 border-electric-indigo/20 mb-16">
+            <h3 className="text-3xl font-heading font-bold mb-4 text-gray-900 text-gray-100">Ready for a Fresh Apartment?</h3>
+            <p className="text-lg text-gray-700 text-gray-200 mb-6">
               Join thousands of apartment dwellers who&apos;ve transformed their living spaces with Purrify.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 href="/products/trial-size/"
-                className="bg-gradient-to-r from-electric-indigo to-deep-coral text-white dark:text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
+                className="bg-gradient-to-r from-electric-indigo to-deep-coral text-white text-gray-100 font-bold py-4 px-8 rounded-lg hover:from-electric-indigo-600 hover:to-deep-coral-600 hover:scale-105 transition-all duration-300 shadow-lg"
               >
                 Start Your Trial
               </Link>
               <Link
                 href="/learn/how-it-works/"
-                className="text-orange-600 dark:text-orange-400 hover:text-orange-800 dark:hover:text-orange-300 font-semibold underline"
+                className="text-orange-600 text-orange-400 hover:text-orange-800 hover:text-orange-300 font-semibold underline"
               >
                 Learn How It Works
               </Link>
@@ -324,7 +324,7 @@ export default function ApartmentCatSmellPageClient() {
       <RelatedSolutions currentPath="/learn/solutions/apartment-cat-smell-solution" />
 
       {/* Related Articles */}
-      <section className="py-16 border-t border-gray-200 dark:border-gray-800">
+      <section className="py-16 border-t border-gray-200 border-gray-800">
         <div className="max-w-6xl mx-auto px-4">
           <RelatedContent currentUrl="/learn/solutions/apartment-cat-smell-solution" />
         </div>

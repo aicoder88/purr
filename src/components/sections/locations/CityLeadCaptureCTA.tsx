@@ -116,12 +116,12 @@ export function CityLeadCaptureCTA({
       <DialogTrigger asChild>
         <Button
           variant="outline"
-          className="w-full sm:w-auto border-orange-400 text-orange-600 dark:border-orange-500 dark:text-orange-300 hover:bg-orange-50 dark:hover:bg-orange-500/10"
+          className="w-full sm:w-auto border-orange-400 text-orange-600 border-orange-500 text-orange-300 hover:bg-orange-50 hover:bg-orange-500/10"
         >
           Get a free odor playbook for {cityName}
         </Button>
       </DialogTrigger>
-      <DialogContent className="bg-white dark:bg-gray-900">
+      <DialogContent className="bg-white bg-gray-900">
         <DialogHeader>
           <DialogTitle>Claim your {cityName} odor plan</DialogTitle>
           <DialogDescription>
@@ -130,7 +130,7 @@ export function CityLeadCaptureCTA({
         </DialogHeader>
 
         {submissionState === 'success' ? (
-          <div className="rounded-md border border-green-300 dark:border-green-600 bg-green-50 dark:bg-green-900/20 p-4 text-sm text-green-800 dark:text-green-200">
+          <div className="rounded-md border border-green-300 border-green-600 bg-green-50 bg-green-900/20 p-4 text-sm text-green-800 text-green-200">
             Thanks! Your {cityName} odor blueprint is on the way. Watch your inbox for the trial offer and follow-up tips.
           </div>
         ) : (
@@ -146,7 +146,7 @@ export function CityLeadCaptureCTA({
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="lead-email">Email<span className="ml-1 text-red-600 dark:text-red-400">*</span></Label>
+              <Label htmlFor="lead-email">Email<span className="ml-1 text-red-600 text-red-400">*</span></Label>
               <Input
                 id="lead-email"
                 name="email"
@@ -157,8 +157,8 @@ export function CityLeadCaptureCTA({
                 onChange={(event) => setEmail(event.target.value)}
               />
             </div>
-            <div className="rounded-md border border-gray-200 dark:border-gray-700 bg-gray-50/70 dark:bg-gray-800/60 p-3 text-sm text-gray-900 dark:text-gray-100">
-              <p className="font-semibold text-gray-900 dark:text-gray-50">City insights we&apos;ll send:</p>
+            <div className="rounded-md border border-gray-200 border-gray-700 bg-gray-50/70 bg-gray-800/60 p-3 text-sm text-gray-900 text-gray-100">
+              <p className="font-semibold text-gray-900 text-gray-50">City insights we&apos;ll send:</p>
               <ul className="mt-2 list-disc space-y-1 pl-5">
                 <li>{scentFocus}</li>
                 <li>Climate checklist for {provinceName} homes</li>
@@ -171,12 +171,12 @@ export function CityLeadCaptureCTA({
                 checked={marketingConsent}
                 onCheckedChange={(checked) => setMarketingConsent(Boolean(checked))}
               />
-              <Label htmlFor="lead-consent" className="text-sm font-normal text-gray-600 dark:text-gray-300">
+              <Label htmlFor="lead-consent" className="text-sm font-normal text-gray-600 text-gray-300">
                 Yes, send me city-specific odor tips and limited offers. You can unsubscribe anytime.
               </Label>
             </div>
             {errorMessage && (
-              <div className="rounded-md border border-red-300 bg-red-50 p-3 text-sm text-red-700 dark:border-red-700 dark:bg-red-900/20 dark:text-red-200">
+              <div className="rounded-md border border-red-300 bg-red-50 p-3 text-sm text-red-700 border-red-700 bg-red-900/20 text-red-200">
                 {errorMessage}
               </div>
             )}

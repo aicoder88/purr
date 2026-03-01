@@ -14,7 +14,7 @@ export function ProductsCTASection() {
   return (
     <section className="py-16 bg-gradient-to-br from-brand-purple to-brand-red cv-auto cis-720">
       <Container>
-        <div className="text-center text-white dark:text-gray-100 max-w-3xl mx-auto">
+        <div className="text-center text-white text-gray-100 max-w-3xl mx-auto">
           <MapPin className="w-16 h-16 mx-auto mb-6 opacity-90" />
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
             {useEnglishVariantCtaCopy
@@ -37,7 +37,7 @@ export function ProductsCTASection() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href={`${locale === 'fr' ? '/fr' : ''}/stores`}>
-              <Button size="lg" className="bg-white dark:bg-gray-900 text-brand-purple hover:bg-gray-100 dark:hover:bg-gray-700 font-bold">
+              <Button size="lg" className="bg-white bg-gray-900 text-brand-purple hover:bg-gray-100 hover:bg-gray-700 font-bold">
                 <MapPin className="w-5 h-5 mr-2" />
                 {useEnglishVariantCtaCopy
                   ? 'Find Nearby Availability'
@@ -48,7 +48,7 @@ export function ProductsCTASection() {
               </Button>
             </Link>
             <Link href={`${locale === 'fr' ? '/fr' : ''}/contact`}>
-              <Button size="lg" variant="outline" className="border-white dark:border-gray-600 text-gray-900 dark:text-white bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 transition-colors">
+              <Button size="lg" variant="outline" className="border-white border-gray-600 text-gray-900 text-white bg-white bg-gray-800 hover:bg-gray-50 hover:bg-gray-700 hover:text-gray-900 transition-colors">
                 {useEnglishVariantCtaCopy
                   ? 'Talk to Product Support'
                   : locale === 'fr'

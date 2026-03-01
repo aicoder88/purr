@@ -196,10 +196,10 @@ export function SubscriptionSelector({
   return (
     <div className="w-full">
       <div className="text-center mb-8">
-        <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-2">
+        <h3 className="font-heading text-2xl font-bold text-gray-900 text-white mb-2">
           {copy.heading}
         </h3>
-        <p className="text-gray-600 dark:text-gray-300">
+        <p className="text-gray-600 text-gray-300">
           {copy.subtitle}
         </p>
       </div>
@@ -216,10 +216,10 @@ export function SubscriptionSelector({
             <div
               key={plan.id}
               className={`
-                relative bg-white dark:bg-gray-800 rounded-2xl p-6 border-2 transition-all duration-300
+                relative bg-white bg-gray-800 rounded-2xl p-6 border-2 transition-all duration-300
                 ${isSelected
                   ? 'border-[#FF3131] shadow-xl scale-105'
-                  : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500'
+                  : 'border-gray-200 border-gray-600 hover:border-gray-300 hover:border-gray-500'
                 }
                 ${isRecommended ? 'ring-4 ring-amber-400/20' : ''}
                 ${hoveredPlan === plan.id ? 'shadow-lg' : ''}
@@ -228,29 +228,29 @@ export function SubscriptionSelector({
               onMouseLeave={() => setHoveredPlan(null)}
             >
               {isRecommended && (
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-gray-900 dark:text-gray-800 px-4 py-1 rounded-full text-sm font-bold shadow-lg">
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-gray-900 text-gray-800 px-4 py-1 rounded-full text-sm font-bold shadow-lg">
                   ⭐ {copy.mostPopular}
                 </div>
               )}
 
               <div className="text-center mb-6">
-                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                <h4 className="text-xl font-bold text-gray-900 text-white mb-2">
                   {plan.name}
                 </h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
+                <p className="text-sm text-gray-600 text-gray-300">
                   {plan.description}
                 </p>
               </div>
 
               <div className="text-center mb-6">
-                <div className="text-4xl font-bold text-[#FF3131] dark:text-[#FF5555] mb-1">
+                <div className="text-4xl font-bold text-[#FF3131] text-[#FF5555] mb-1">
                   {formatCurrencyValue(monthlyPrice, locale)}
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-300">
+                <div className="text-sm text-gray-600 text-gray-300">
                   {getBillingPeriodText(plan)}
                 </div>
                 {plan.savingsPercentage > 0 && (
-                  <div className="inline-block bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 px-3 py-1 rounded-full text-sm font-bold mt-2">
+                  <div className="inline-block bg-green-100 bg-green-900/30 text-green-800 text-green-400 px-3 py-1 rounded-full text-sm font-bold mt-2">
                     {copy.savePrefix} {plan.savingsPercentage}%
                   </div>
                 )}
@@ -259,15 +259,15 @@ export function SubscriptionSelector({
               <ul className="space-y-3 mb-6">
                 {plan.features.map((feature, index) => (
                   <li key={index} className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-green-500 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-gray-700 dark:text-gray-300">{feature}</span>
+                    <Check className="w-4 h-4 text-green-500 text-green-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-gray-700 text-gray-300">{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 mb-6">
-                <div className="text-center text-sm text-gray-600 dark:text-gray-300">
-                  <div className="font-semibold text-gray-900 dark:text-white mb-1">
+              <div className="bg-gray-50 bg-gray-700/50 rounded-lg p-4 mb-6">
+                <div className="text-center text-sm text-gray-600 text-gray-300">
+                  <div className="font-semibold text-gray-900 text-white mb-1">
                     {copy.annualValue} {formatCurrencyValue(ltv, locale)}
                   </div>
                   <div>{copy.retentionRate} {Math.round(plan.retentionRate * 100)}%</div>
@@ -281,7 +281,7 @@ export function SubscriptionSelector({
                     w-full py-3 font-bold transition-all duration-300
                     ${isSelected || isRecommended
                       ? 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white hover:from-[#FF3131]/90 hover:to-[#FF3131] shadow-lg'
-                      : 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white hover:bg-[#FF3131] hover:text-white'
+                      : 'bg-gray-100 bg-gray-700 text-gray-800 text-white hover:bg-[#FF3131] hover:text-white'
                     }
                   `}
                 >
@@ -300,7 +300,7 @@ export function SubscriptionSelector({
                     w-full py-3 font-bold transition-all duration-300
                     ${isSelected || isRecommended
                       ? 'bg-gradient-to-r from-[#FF3131] to-[#FF3131]/80 text-white hover:from-[#FF3131]/90 hover:to-[#FF3131]'
-                      : 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white hover:bg-[#FF3131] hover:text-white'
+                      : 'bg-gray-100 bg-gray-700 text-gray-800 text-white hover:bg-[#FF3131] hover:text-white'
                     }
                   `}
                   onClick={() => handlePlanSelect(plan)}
@@ -309,8 +309,8 @@ export function SubscriptionSelector({
                 </Button>
               )}
 
-              <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600">
-                <div className="flex items-center justify-center gap-4 text-xs text-gray-500 dark:text-gray-400">
+              <div className="mt-4 pt-4 border-t border-gray-200 border-gray-600">
+                <div className="flex items-center justify-center gap-4 text-xs text-gray-500 text-gray-400">
                   <div className="flex items-center gap-1">
                     <Shield className="w-3 h-3" />
                     <span>{copy.trustSecure}</span>
@@ -330,9 +330,9 @@ export function SubscriptionSelector({
         })}
       </div>
 
-      <div className="mt-12 bg-gradient-to-r from-[#FF3131]/5 to-[#FF3131]/10 dark:from-gray-800 dark:to-gray-700/80 rounded-2xl p-8 border border-[#FF3131]/10 dark:border-gray-600">
+      <div className="mt-12 bg-gradient-to-r from-[#FF3131]/5 to-[#FF3131]/10 from-gray-800 to-gray-700/80 rounded-2xl p-8 border border-[#FF3131]/10 border-gray-600">
         <div className="text-center mb-6">
-          <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+          <h4 className="text-xl font-bold text-gray-900 text-white mb-2">
             {copy.whySubscribe}
           </h4>
         </div>
@@ -342,10 +342,10 @@ export function SubscriptionSelector({
             <div className="flex justify-center mb-2">
               <Zap className="w-8 h-8 text-[#FF3131]" />
             </div>
-            <div className="font-bold text-gray-900 dark:text-white mb-1">
+            <div className="font-bold text-gray-900 text-white mb-1">
               {copy.saveMoneyTitle}
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-300">
+            <div className="text-sm text-gray-600 text-gray-300">
               {copy.saveMoneyDescription}
             </div>
           </div>
@@ -353,10 +353,10 @@ export function SubscriptionSelector({
             <div className="flex justify-center mb-2">
               <Truck className="w-8 h-8 text-[#FF3131]" />
             </div>
-            <div className="font-bold text-gray-900 dark:text-white mb-1">
+            <div className="font-bold text-gray-900 text-white mb-1">
               {copy.freeShippingTitle}
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-300">
+            <div className="text-sm text-gray-600 text-gray-300">
               {copy.freeShippingDescription}
             </div>
           </div>
@@ -364,10 +364,10 @@ export function SubscriptionSelector({
             <div className="flex justify-center mb-2">
               <Star className="w-8 h-8 text-[#FF3131]" />
             </div>
-            <div className="font-bold text-gray-900 dark:text-white mb-1">
+            <div className="font-bold text-gray-900 text-white mb-1">
               {copy.vipTitle}
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-300">
+            <div className="text-sm text-gray-600 text-gray-300">
               {copy.vipDescription}
             </div>
           </div>
@@ -375,7 +375,7 @@ export function SubscriptionSelector({
       </div>
 
       <div className="mt-8 text-center">
-        <p className="text-sm text-gray-600 dark:text-gray-300">
+        <p className="text-sm text-gray-600 text-gray-300">
           {copy.faqPrompt} {' '}
           <Link href={`${localePrefix}/support/subscription`} className="text-[#FF3131] hover:underline">
             {copy.faqLink}

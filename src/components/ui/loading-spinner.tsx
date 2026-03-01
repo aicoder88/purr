@@ -17,7 +17,7 @@ export function LoadingSpinner({ size = 'md', className = '', text }: LoadingSpi
     <div className={`flex flex-col items-center justify-center ${className}`}>
       <div className={`${sizeClasses[size]} animate-spin`}>
         <svg
-          className="w-full h-full text-[#FF3131] dark:text-[#FF5050]"
+          className="w-full h-full text-[#FF3131] text-[#FF5050]"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -38,7 +38,7 @@ export function LoadingSpinner({ size = 'md', className = '', text }: LoadingSpi
         </svg>
       </div>
       {text && (
-        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 dark:text-gray-300 animate-pulse">
+        <p className="mt-2 text-sm text-gray-600 text-gray-300 text-gray-300 animate-pulse">
           {text}
         </p>
       )}
@@ -53,7 +53,7 @@ export function SkeletonLoader({ className = '', lines = 3 }: { className?: stri
       {Array.from({ length: lines }).map((_, index) => (
         <div
           key={index}
-          className={`bg-gray-200 dark:bg-gray-700 rounded h-4 ${
+          className={`bg-gray-200 bg-gray-700 rounded h-4 ${
             index === lines - 1 ? 'w-3/4' : 'w-full'
           } ${index > 0 ? 'mt-2' : ''}`}
         />
@@ -65,8 +65,8 @@ export function SkeletonLoader({ className = '', lines = 3 }: { className?: stri
 // Page loading overlay
 export function PageLoader() {
   return (
-    <div className="fixed inset-0 bg-white dark:bg-gray-800/80 dark:bg-gray-900/80 backdrop-blur-sm z-50 flex items-center justify-center">
-      <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-xl border border-gray-200 dark:border-gray-700">
+    <div className="fixed inset-0 bg-white bg-gray-800/80 bg-gray-900/80 backdrop-blur-sm z-50 flex items-center justify-center">
+      <div className="bg-white bg-gray-800 rounded-xl p-8 shadow-xl border border-gray-200 border-gray-700">
         <LoadingSpinner size="lg" text="Loading..." />
       </div>
     </div>

@@ -43,8 +43,8 @@ function ToolbarButton({
       type="button"
       onClick={onClick}
       title={title}
-      className={`p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors ${
-        isActive ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400' : 'text-gray-700 dark:text-gray-300'
+      className={`p-2 rounded hover:bg-gray-100 hover:bg-gray-800 transition-colors ${
+        isActive ? 'bg-purple-100 bg-purple-900/30 text-purple-600 text-purple-400' : 'text-gray-700 text-gray-300'
       }`}
     >
       {children}
@@ -132,7 +132,7 @@ export default function RichTextEditor({
     },
     editorProps: {
       attributes: {
-        class: 'prose prose-lg max-w-none dark:prose-invert focus:outline-none min-h-[400px] px-4 py-3'
+        class: 'prose prose-lg max-w-none prose-invert focus:outline-none min-h-[400px] px-4 py-3'
       }
     }
   });
@@ -149,23 +149,23 @@ export default function RichTextEditor({
   };
 
   return (
-    <div className="border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden bg-white dark:bg-gray-800">
+    <div className="border border-gray-300 border-gray-600 rounded-lg overflow-hidden bg-white bg-gray-800">
       {/* Upload Error Alert */}
       {uploadError && (
-        <div className="flex items-center gap-2 p-3 bg-red-50 dark:bg-red-900/20 border-b border-red-200 dark:border-red-800 text-red-700 dark:text-red-400">
+        <div className="flex items-center gap-2 p-3 bg-red-50 bg-red-900/20 border-b border-red-200 border-red-800 text-red-700 text-red-400">
           <AlertCircle className="w-5 h-5 flex-shrink-0" />
           <span className="flex-1 text-sm">{uploadError}</span>
           <button
             type="button"
             onClick={() => setUploadError(null)}
-            className="p-1 hover:bg-red-100 dark:hover:bg-red-900/40 rounded"
+            className="p-1 hover:bg-red-100 hover:bg-red-900/40 rounded"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
       )}
       {/* Toolbar */}
-      <div className="flex items-center gap-1 p-2 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
+      <div className="flex items-center gap-1 p-2 border-b border-gray-200 border-gray-700 bg-gray-50 bg-gray-900">
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleBold().run()}
           isActive={editor.isActive('bold')}
@@ -182,7 +182,7 @@ export default function RichTextEditor({
           <Italic className="w-5 h-5" />
         </ToolbarButton>
 
-        <div className="w-px h-6 bg-gray-300 dark:bg-gray-600 mx-1" />
+        <div className="w-px h-6 bg-gray-300 bg-gray-600 mx-1" />
 
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
@@ -200,7 +200,7 @@ export default function RichTextEditor({
           <Heading3 className="w-5 h-5" />
         </ToolbarButton>
 
-        <div className="w-px h-6 bg-gray-300 dark:bg-gray-600 mx-1" />
+        <div className="w-px h-6 bg-gray-300 bg-gray-600 mx-1" />
 
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleBulletList().run()}
@@ -226,9 +226,9 @@ export default function RichTextEditor({
           <Quote className="w-5 h-5" />
         </ToolbarButton>
 
-        <div className="w-px h-6 bg-gray-300 dark:bg-gray-600 mx-1" />
+        <div className="w-px h-6 bg-gray-300 bg-gray-600 mx-1" />
 
-        <label className="relative p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-700 dark:text-gray-300 cursor-pointer" title="Insert Image">
+        <label className="relative p-2 rounded hover:bg-gray-100 hover:bg-gray-800 transition-colors text-gray-700 text-gray-300 cursor-pointer" title="Insert Image">
           <ImageIcon className="w-5 h-5" />
           <input
             type="file"

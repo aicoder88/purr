@@ -19,17 +19,17 @@ export const TimelineSection: React.FC<TimelineSectionProps> = ({
   title,
   subtitle,
   items,
-  className = "py-16 bg-[#E0EFC7]/30 dark:bg-gray-800/50"
+  className = "py-16 bg-[#E0EFC7]/30 bg-gray-800/50"
 }) => {
   return (
     <section className={className}>
       <Container>
         <div className="text-center mb-12">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 text-gray-100">
             {title}
           </h2>
           {subtitle && (
-            <p className="text-xl text-gray-600 dark:text-gray-300">
+            <p className="text-xl text-gray-600 text-gray-300">
               {subtitle}
             </p>
           )}
@@ -46,26 +46,26 @@ export const TimelineSection: React.FC<TimelineSectionProps> = ({
               }`}>
                 {/* Content */}
                 <div className="lg:w-1/2">
-                  <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700">
+                  <div className="bg-white bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] border-gray-700">
                     <div className="flex items-center mb-4">
                       <div className="w-12 h-12 bg-[#5B2EFF] rounded-full flex items-center justify-center mr-4">
-                        <item.icon className="w-6 h-6 text-white dark:text-white dark:text-gray-100" />
+                        <item.icon className="w-6 h-6 text-white text-white text-gray-100" />
                       </div>
                       <div>
                         <div className="text-2xl font-bold text-[#FF3131]">{item.year}</div>
-                        <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-100">
+                        <h3 className="font-heading text-xl font-bold text-gray-900 text-gray-100">
                           {item.title}
                         </h3>
                       </div>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-300">
+                    <p className="text-gray-600 text-gray-300">
                       {item.description}
                     </p>
                   </div>
                 </div>
                 
                 {/* Timeline dot */}
-                <div className="hidden lg:block w-6 h-6 bg-[#FF3131] rounded-full border-4 border-white dark:border-gray-900 z-10"></div>
+                <div className="hidden lg:block w-6 h-6 bg-[#FF3131] rounded-full border-4 border-white border-gray-900 z-10"></div>
                 
                 {/* Spacer */}
                 <div className="lg:w-1/2"></div>

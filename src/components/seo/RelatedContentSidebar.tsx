@@ -19,8 +19,8 @@ export function RelatedContentSidebar({
   }
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
-      <h3 className="text-lg font-bold text-gray-900 dark:text-gray-50 mb-4">
+    <div className="bg-gray-50 bg-gray-800 rounded-lg p-6">
+      <h3 className="text-lg font-bold text-gray-900 text-gray-50 mb-4">
         {title}
       </h3>
 
@@ -29,11 +29,11 @@ export function RelatedContentSidebar({
           <li key={page.url}>
             <Link prefetch={false}
               href={page.url}
-              className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline"
+              className="text-blue-600 text-blue-400 hover:text-blue-700 hover:text-blue-300 hover:underline"
             >
               {page.title}
               {page.type === 'hub' && (
-                <span className="ml-2 text-xs text-gray-500 dark:text-gray-400">
+                <span className="ml-2 text-xs text-gray-500 text-gray-400">
                   (Guide)
                 </span>
               )}

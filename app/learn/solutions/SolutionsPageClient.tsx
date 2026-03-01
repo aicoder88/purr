@@ -76,20 +76,20 @@ const SOLUTIONS: SolutionCard[] = [
 
 export default function SolutionsPageClient() {
   return (
-    <div className="min-h-screen bg-[#FFFFF5] dark:bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen bg-[#FFFFF5] bg-gray-900 transition-colors duration-300">
       {/* Breadcrumb */}
-      <div className="bg-white/80 dark:bg-gray-800/80 border-b border-gray-200 dark:border-gray-700">
+      <div className="bg-white/80 bg-gray-800/80 border-b border-gray-200 border-gray-700">
         <Container>
           <nav className="flex items-center gap-2 py-3 text-sm">
-            <Link href="/" className="flex items-center text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
+            <Link href="/" className="flex items-center text-gray-500 text-gray-400 hover:text-gray-700 hover:text-gray-200">
               <Home className="w-4 h-4" />
             </Link>
-            <ChevronRight className="w-4 h-4 text-gray-400 dark:text-gray-500" />
-            <Link href="/learn/how-it-works/" className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
+            <ChevronRight className="w-4 h-4 text-gray-400 text-gray-500" />
+            <Link href="/learn/how-it-works/" className="text-gray-500 text-gray-400 hover:text-gray-700 hover:text-gray-200">
               Learn
             </Link>
-            <ChevronRight className="w-4 h-4 text-gray-400 dark:text-gray-500" />
-            <span className="text-gray-900 dark:text-gray-100 font-medium">Solutions</span>
+            <ChevronRight className="w-4 h-4 text-gray-400 text-gray-500" />
+            <span className="text-gray-900 text-gray-100 font-medium">Solutions</span>
           </nav>
         </Container>
       </div>
@@ -98,10 +98,10 @@ export default function SolutionsPageClient() {
       <section className="py-16 px-4">
         <Container>
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-gray-900 dark:text-gray-100">
+            <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-gray-900 text-gray-100">
               Find Your Perfect Odor Solution
             </h1>
-            <p className="text-xl text-gray-700 dark:text-gray-300 mb-8">
+            <p className="text-xl text-gray-700 text-gray-300 mb-8">
               Every cat household is different. Whether you&apos;re dealing with ammonia smell, living in a small apartment,
               or managing multiple cats, we have targeted solutions for your specific situation.
             </p>
@@ -119,7 +119,7 @@ export default function SolutionsPageClient() {
                 <Link
                   key={solution.href}
                   href={solution.href}
-                  className="group block bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-[#03E46A] dark:hover:border-[#03E46A]"
+                  className="group block bg-white bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200 border-gray-700 hover:border-[#03E46A] hover:border-[#03E46A]"
                 >
                   <div className="relative aspect-video overflow-hidden">
                     <Image
@@ -131,19 +131,19 @@ export default function SolutionsPageClient() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <div className="absolute bottom-4 left-4">
-                      <div className="bg-white/90 dark:bg-gray-900/90 p-2 rounded-lg">
-                        <Icon className="w-6 h-6 text-[#5B2EFF] dark:text-[#3694FF]" />
+                      <div className="bg-white/90 bg-gray-900/90 p-2 rounded-lg">
+                        <Icon className="w-6 h-6 text-[#5B2EFF] text-[#3694FF]" />
                       </div>
                     </div>
                   </div>
                   <div className="p-6">
-                    <h2 className="text-xl font-heading font-bold mb-2 text-gray-900 dark:text-gray-100 group-hover:text-[#5B2EFF] dark:group-hover:text-[#3694FF] transition-colors">
+                    <h2 className="text-xl font-heading font-bold mb-2 text-gray-900 text-gray-100 group-hover:text-[#5B2EFF] group-hover:text-[#3694FF] transition-colors">
                       {solution.title}
                     </h2>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                    <p className="text-gray-600 text-gray-400 text-sm leading-relaxed">
                       {solution.description}
                     </p>
-                    <div className="mt-4 flex items-center text-[#03E46A] dark:text-[#3694FF] font-medium text-sm">
+                    <div className="mt-4 flex items-center text-[#03E46A] text-[#3694FF] font-medium text-sm">
                       Learn more
                       <ChevronRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
                     </div>
@@ -156,18 +156,18 @@ export default function SolutionsPageClient() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-4 bg-gradient-to-r from-[#5B2EFF]/10 to-[#03E46A]/10 dark:from-[#5B2EFF]/20 dark:to-[#03E46A]/20">
+      <section className="py-16 px-4 bg-gradient-to-r from-[#5B2EFF]/10 to-[#03E46A]/10 from-[#5B2EFF]/20 to-[#03E46A]/20">
         <Container>
           <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl font-heading font-bold mb-4 text-gray-900 dark:text-gray-100">
+            <h2 className="text-3xl font-heading font-bold mb-4 text-gray-900 text-gray-100">
               Ready to Try the Solution?
             </h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
+            <p className="text-lg text-gray-700 text-gray-300 mb-8">
               All our solutions feature Purrify&apos;s activated carbon technology. Start with our risk-free trial size.
             </p>
             <Link
               href="/products/trial-size/"
-              className="inline-flex items-center justify-center px-8 py-4 bg-[#03E46A] dark:bg-[#04D162] hover:bg-[#02c75b] dark:hover:bg-[#04D162]/90 text-gray-900 dark:text-gray-900 font-bold rounded-full transition-colors shadow-lg hover:shadow-xl"
+              className="inline-flex items-center justify-center px-8 py-4 bg-[#03E46A] bg-[#04D162] hover:bg-[#02c75b] hover:bg-[#04D162]/90 text-gray-900 text-gray-900 font-bold rounded-full transition-colors shadow-lg hover:shadow-xl"
             >
               Try Purrify Risk-Free
               <ChevronRight className="w-5 h-5 ml-2" />

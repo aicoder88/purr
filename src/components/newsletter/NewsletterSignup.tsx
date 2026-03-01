@@ -79,7 +79,7 @@ export const WaitlistSignup: React.FC<WaitlistSignupProps> = React.memo(function
 
   return (
     <div className={`${cardClasses} overflow-hidden ${className}`}>
-      <div className={`${GRADIENTS.background.purpleToRed} p-6 text-white dark:text-white text-center`}>
+      <div className={`${GRADIENTS.background.purpleToRed} p-6 text-white text-white text-center`}>
         <Mail className="w-12 h-12 mx-auto mb-4 opacity-90" />
         <h3 className="font-heading text-2xl md:text-3xl font-bold mb-2">Backorder Waitlist</h3>
         <p className="text-base md:text-lg opacity-90">

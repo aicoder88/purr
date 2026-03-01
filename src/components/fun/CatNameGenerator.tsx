@@ -78,10 +78,10 @@ function generateCatName(): GeneratedName {
 
 function getNameIcon(type: string) {
     switch (type) {
-        case 'fancy': return <Crown className="w-5 h-5 text-yellow-500 dark:text-yellow-400" />;
-        case 'food': return <Heart className="w-5 h-5 text-pink-500 dark:text-pink-400" />;
-        case 'celestial': return <Star className="w-5 h-5 text-purple-500 dark:text-purple-400" />;
-        default: return <Cat className="w-5 h-5 text-blue-500 dark:text-blue-400" />;
+        case 'fancy': return <Crown className="w-5 h-5 text-yellow-500 text-yellow-400" />;
+        case 'food': return <Heart className="w-5 h-5 text-pink-500 text-pink-400" />;
+        case 'celestial': return <Star className="w-5 h-5 text-purple-500 text-purple-400" />;
+        default: return <Cat className="w-5 h-5 text-blue-500 text-blue-400" />;
     }
 }
 
@@ -129,34 +129,34 @@ export function CatNameGenerator() {
     }, [generatedName]);
 
     return (
-        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-purple-200 dark:border-purple-800 w-full max-w-sm mx-auto">
+        <div className="bg-white/80 bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-purple-200 border-purple-800 w-full max-w-sm mx-auto">
             {/* Header */}
             <div className="text-center mb-6">
                 <motion.div
-                    className="bg-gradient-to-br from-pink-100 to-purple-100 dark:from-pink-900/30 dark:to-purple-900/30 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3"
+                    className="bg-gradient-to-br from-pink-100 to-purple-100 from-pink-900/30 to-purple-900/30 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3"
                     whileHover={{ rotate: 10, scale: 1.1 }}
                 >
-                    <Sparkles className="w-7 h-7 text-pink-500 dark:text-pink-400" />
+                    <Sparkles className="w-7 h-7 text-pink-500 text-pink-400" />
                 </motion.div>
-                <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-1">
+                <h3 className="text-xl font-bold text-gray-800 text-gray-200 mb-1">
                     Cat Name Oracle
                 </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className="text-sm text-gray-500 text-gray-400">
                     Discover your kitty's true identity
                 </p>
             </div>
 
             {/* Name Display */}
-            <div className="bg-gradient-to-br from-gray-50 to-purple-50 dark:from-gray-900 dark:to-purple-900/20 rounded-2xl p-6 mb-4 relative group border-2 border-purple-100 dark:border-purple-800/50">
+            <div className="bg-gradient-to-br from-gray-50 to-purple-50 from-gray-900 to-purple-900/20 rounded-2xl p-6 mb-4 relative group border-2 border-purple-100 border-purple-800/50">
                 {/* Type badge */}
                 {generatedName && (
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="absolute -top-3 left-1/2 -translate-x-1/2 flex items-center gap-1 bg-white dark:bg-gray-800 px-3 py-1 rounded-full shadow-md border border-purple-100 dark:border-purple-800"
+                        className="absolute -top-3 left-1/2 -translate-x-1/2 flex items-center gap-1 bg-white bg-gray-800 px-3 py-1 rounded-full shadow-md border border-purple-100 border-purple-800"
                     >
                         {getNameIcon(generatedName.type)}
-                        <span className="text-xs font-medium text-gray-600 dark:text-gray-300">
+                        <span className="text-xs font-medium text-gray-600 text-gray-300">
                             {getNameTypeLabel(generatedName.type)}
                         </span>
                     </motion.div>
@@ -182,7 +182,7 @@ export function CatNameGenerator() {
                     onClick={copyToClipboard}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="absolute top-3 right-3 p-2 text-gray-500 dark:text-gray-400 hover:text-purple-500 dark:hover:text-purple-400 transition-colors bg-white dark:bg-gray-700 rounded-full shadow-sm"
+                    className="absolute top-3 right-3 p-2 text-gray-500 text-gray-400 hover:text-purple-500 hover:text-purple-400 transition-colors bg-white bg-gray-700 rounded-full shadow-sm"
                     title="Copy name"
                 >
                     {copied ? (
@@ -205,7 +205,7 @@ export function CatNameGenerator() {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0 }}
-                            className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-green-600 dark:bg-green-600 text-white text-xs font-bold px-2 py-1 rounded-full whitespace-nowrap shadow-sm"
+                            className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-green-600 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded-full whitespace-nowrap shadow-sm"
                         >
                             Copied!
                         </motion.div>
@@ -232,8 +232,8 @@ export function CatNameGenerator() {
 
             {/* History */}
             {history.length > 0 && (
-                <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-                    <p className="text-xs text-gray-400 dark:text-gray-500 mb-2 text-center">
+                <div className="mt-4 pt-4 border-t border-gray-200 border-gray-700">
+                    <p className="text-xs text-gray-400 text-gray-500 mb-2 text-center">
                         Previous names
                     </p>
                     <div className="flex flex-wrap gap-2 justify-center">
@@ -246,7 +246,7 @@ export function CatNameGenerator() {
                                 }}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-3 py-1.5 rounded-full hover:bg-purple-100 dark:hover:bg-purple-900/30 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                                className="text-xs bg-gray-100 bg-gray-700 text-gray-600 text-gray-300 px-3 py-1.5 rounded-full hover:bg-purple-100 hover:bg-purple-900/30 hover:text-purple-600 hover:text-purple-400 transition-colors"
                             >
                                 {name.full}
                             </motion.button>
@@ -256,7 +256,7 @@ export function CatNameGenerator() {
             )}
 
             {/* Fun footer */}
-            <p className="text-center text-xs text-gray-400 dark:text-gray-500 mt-4">
+            <p className="text-center text-xs text-gray-400 text-gray-500 mt-4">
                 Every cat deserves a legendary name 🐱✨
             </p>
         </div>

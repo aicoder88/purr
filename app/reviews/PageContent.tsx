@@ -10,20 +10,20 @@ import { getPaymentLink } from '@/lib/payment-links';
 export default function Reviews() {
   return (
     <>
-      <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+      <main className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-[#FFFFF5] to-[#FFFFFF] from-gray-900 via-gray-900 to-gray-800">
         {/* Breadcrumb Navigation */}
-        <section className="py-4 border-b border-gray-200 dark:border-gray-800">
+        <section className="py-4 border-b border-gray-200 border-gray-800">
           <Container>
             <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm">
               <Link
                 href="/"
-                className="flex items-center text-gray-500 dark:text-gray-400 hover:text-[#FF3131] dark:hover:text-[#FF5050] transition-colors"
+                className="flex items-center text-gray-500 text-gray-400 hover:text-[#FF3131] hover:text-[#FF5050] transition-colors"
               >
                 <Home className="w-4 h-4" />
               </Link>
               <span className="flex items-center">
-                <ChevronRight className="w-4 h-4 mx-1 text-gray-400 dark:text-gray-500" />
-                <span className="font-medium text-gray-900 dark:text-gray-100">
+                <ChevronRight className="w-4 h-4 mx-1 text-gray-400 text-gray-500" />
+                <span className="font-medium text-gray-900 text-gray-100">
                   Reviews
                 </span>
               </span>
@@ -37,67 +37,67 @@ export default function Reviews() {
 
               {/* Header */}
               <div className="text-center mb-16">
-                <div className="inline-block px-4 py-1 bg-[#E0EFC7] dark:bg-green-900/40 rounded-full text-[#FF3131] dark:text-[#FF4D4D] font-medium text-sm mb-4">
+                <div className="inline-block px-4 py-1 bg-[#E0EFC7] bg-green-900/40 rounded-full text-[#FF3131] text-[#FF4D4D] font-medium text-sm mb-4">
                   Customer Feedback
                 </div>
-                <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-50">
+                <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 text-gray-50">
                   What Our Customers Are Saying
                 </h1>
-                <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+                <p className="text-xl text-gray-600 text-gray-300 max-w-3xl mx-auto mb-8">
                   What to expect from an activated carbon additive, and how to use it in your own routine.
                 </p>
               </div>
 
               <div className="flex flex-col">
                 {/* Review Policy / How To Verify */}
-                <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-8 mb-16 cv-auto cis-480 order-2">
+                <div className="bg-white bg-gray-800 border border-gray-200 border-gray-700 rounded-xl p-8 mb-16 cv-auto cis-480 order-2">
                   <div className="grid md:grid-cols-3 gap-6">
                     <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-full bg-[#FF3131]/10 dark:bg-[#FF5050]/20 flex items-center justify-center flex-shrink-0">
-                        <Info className="w-5 h-5 text-[#FF3131] dark:text-[#FF5050]" />
+                      <div className="w-10 h-10 rounded-full bg-[#FF3131]/10 bg-[#FF5050]/20 flex items-center justify-center flex-shrink-0">
+                        <Info className="w-5 h-5 text-[#FF3131] text-[#FF5050]" />
                       </div>
                       <div>
-                        <h2 className="font-heading text-lg font-bold text-gray-900 dark:text-gray-50 mb-1">
+                        <h2 className="font-heading text-lg font-bold text-gray-900 text-gray-50 mb-1">
                           No On-Site Ratings Yet
                         </h2>
-                        <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                        <p className="text-sm text-gray-700 text-gray-300 leading-relaxed">
                           We do not publish aggregate star ratings or "verified review" claims on this page until a third-party review system is in place.
                         </p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-full bg-[#FF3131]/10 dark:bg-[#FF5050]/20 flex items-center justify-center flex-shrink-0">
-                        <FlaskConical className="w-5 h-5 text-[#FF3131] dark:text-[#FF5050]" />
+                      <div className="w-10 h-10 rounded-full bg-[#FF3131]/10 bg-[#FF5050]/20 flex items-center justify-center flex-shrink-0">
+                        <FlaskConical className="w-5 h-5 text-[#FF3131] text-[#FF5050]" />
                       </div>
                       <div>
-                        <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-gray-50 mb-1">
+                        <h3 className="font-heading text-lg font-bold text-gray-900 text-gray-50 mb-1">
                           Verify The Science
                         </h3>
-                        <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                        <p className="text-sm text-gray-700 text-gray-300 leading-relaxed">
                           See primary sources and authoritative guidance on activated carbon adsorption in our science hub.
                         </p>
                         <Link
                           href="/learn/science/"
-                          className="inline-flex items-center text-sm font-semibold text-[#FF3131] dark:text-[#FF5050] hover:text-[#FF3131]/80 dark:hover:text-[#FF5050]/80 transition-colors mt-2"
+                          className="inline-flex items-center text-sm font-semibold text-[#FF3131] text-[#FF5050] hover:text-[#FF3131]/80 hover:text-[#FF5050]/80 transition-colors mt-2"
                         >
                           View research citations
                         </Link>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-full bg-[#FF3131]/10 dark:bg-[#FF5050]/20 flex items-center justify-center flex-shrink-0">
-                        <Mail className="w-5 h-5 text-[#FF3131] dark:text-[#FF5050]" />
+                      <div className="w-10 h-10 rounded-full bg-[#FF3131]/10 bg-[#FF5050]/20 flex items-center justify-center flex-shrink-0">
+                        <Mail className="w-5 h-5 text-[#FF3131] text-[#FF5050]" />
                       </div>
                       <div>
-                        <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-gray-50 mb-1">
+                        <h3 className="font-heading text-lg font-bold text-gray-900 text-gray-50 mb-1">
                           Share Feedback
                         </h3>
-                        <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                        <p className="text-sm text-gray-700 text-gray-300 leading-relaxed">
                           Want to share your experience or a photo? Contact our team and we will route it to support.
                         </p>
                         <Link
                           href="/contact/"
-                          className="inline-flex items-center text-sm font-semibold text-[#FF3131] dark:text-[#FF5050] hover:text-[#FF3131]/80 dark:hover:text-[#FF5050]/80 transition-colors mt-2"
+                          className="inline-flex items-center text-sm font-semibold text-[#FF3131] text-[#FF5050] hover:text-[#FF3131]/80 hover:text-[#FF5050]/80 transition-colors mt-2"
                         >
                           Contact us
                         </Link>
@@ -109,17 +109,17 @@ export default function Reviews() {
 
               {/* Call to Action */}
               <div className="text-center cv-auto cis-480">
-                <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#E0EFC7] dark:from-[#311010] dark:to-green-900/20 border border-[#FF3131]/20 dark:border-[#FF3131]/10 rounded-xl p-8">
-                  <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
+                <div className="bg-gradient-to-r from-[#FF3131]/10 to-[#E0EFC7] from-[#311010] to-green-900/20 border border-[#FF3131]/20 border-[#FF3131]/10 rounded-xl p-8">
+                  <h2 className="font-heading text-2xl font-bold text-gray-900 text-gray-50 mb-4">
                     Ready to Experience the Difference?
                   </h2>
-                  <p className="text-gray-700 dark:text-gray-200 mb-6 max-w-2xl mx-auto">
+                  <p className="text-gray-700 text-gray-200 mb-6 max-w-2xl mx-auto">
                     Start with a low-risk trial and see how it fits into your litter routine.
                   </p>
                   <div className="space-x-4">
                     <Link
                       href="/products/"
-                      className="inline-block bg-[#FF3131] text-white dark:text-white dark:text-gray-100 px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/90 transition-colors"
+                      className="inline-block bg-[#FF3131] text-white text-white text-gray-100 px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/90 transition-colors"
                     >
                       Shop Now
                     </Link>
@@ -127,7 +127,7 @@ export default function Reviews() {
                       href={getPaymentLink('trialSingle') || '#'}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block border border-[#FF3131] text-[#FF3131] dark:text-[#FF5050] dark:border-[#FF5050]/50 px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/5 dark:hover:bg-[#FF5050]/10 transition-colors"
+                      className="inline-block border border-[#FF3131] text-[#FF3131] text-[#FF5050] border-[#FF5050]/50 px-8 py-3 rounded-lg font-semibold hover:bg-[#FF3131]/5 hover:bg-[#FF5050]/10 transition-colors"
                     >
                       Try Free Sample
                     </a>
@@ -136,24 +136,24 @@ export default function Reviews() {
               </div>
 
               {/* Related Links */}
-              <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-600 cv-auto cis-480">
-                <h3 className="font-heading text-xl font-bold text-gray-900 dark:text-gray-50 mb-6 text-center">Learn More</h3>
+              <div className="mt-16 pt-8 border-t border-gray-200 border-gray-600 cv-auto cis-480">
+                <h3 className="font-heading text-xl font-bold text-gray-900 text-gray-50 mb-6 text-center">Learn More</h3>
                 <div className="grid md:grid-cols-4 gap-4">
-                  <Link href="/blog/activated-carbon-vs-baking-soda-comparison" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
-                    <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Comparison Guide</h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">See how Purrify compares to alternatives</p>
+                  <Link href="/blog/activated-carbon-vs-baking-soda-comparison" className="block p-4 border border-gray-200 border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
+                    <h4 className="font-bold text-gray-900 text-gray-50 mb-2">Comparison Guide</h4>
+                    <p className="text-gray-600 text-gray-300 text-sm">See how Purrify compares to alternatives</p>
                   </Link>
-                  <Link href="/case-studies/" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
-                    <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Case Studies</h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">Real results from real customers</p>
+                  <Link href="/case-studies/" className="block p-4 border border-gray-200 border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
+                    <h4 className="font-bold text-gray-900 text-gray-50 mb-2">Case Studies</h4>
+                    <p className="text-gray-600 text-gray-300 text-sm">Real results from real customers</p>
                   </Link>
-                  <Link href="/blog/using-deodorizers-with-kittens" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
-                    <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Usage Tips</h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">How to use with kittens and cats</p>
+                  <Link href="/blog/using-deodorizers-with-kittens" className="block p-4 border border-gray-200 border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
+                    <h4 className="font-bold text-gray-900 text-gray-50 mb-2">Usage Tips</h4>
+                    <p className="text-gray-600 text-gray-300 text-sm">How to use with kittens and cats</p>
                   </Link>
-                  <Link href="/locations/montreal" className="block p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
-                    <h4 className="font-bold text-gray-900 dark:text-gray-50 mb-2">Store Locations</h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">Find a retailer near you</p>
+                  <Link href="/locations/montreal" className="block p-4 border border-gray-200 border-gray-600 rounded-lg hover:shadow-lg transition-shadow text-center">
+                    <h4 className="font-bold text-gray-900 text-gray-50 mb-2">Store Locations</h4>
+                    <p className="text-gray-600 text-gray-300 text-sm">Find a retailer near you</p>
                   </Link>
                 </div>
               </div>

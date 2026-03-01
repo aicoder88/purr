@@ -215,10 +215,10 @@ export function ExitIntentPopup({
       <div
         className={cn(
           'relative w-full max-w-md',
-          'bg-white dark:bg-gray-900',
+          'bg-white bg-gray-900',
           'rounded-2xl shadow-2xl',
           'animate-in zoom-in-95 duration-300',
-          'border border-gray-200 dark:border-gray-700'
+          'border border-gray-200 border-gray-700'
         )}
         onClick={(e) => e.stopPropagation()}
       >
@@ -228,8 +228,8 @@ export function ExitIntentPopup({
           className={cn(
             'absolute top-4 right-4 p-2 rounded-full',
             'text-gray-500 hover:text-gray-700',
-            'dark:text-gray-400 dark:hover:text-gray-200',
-            'hover:bg-gray-100 dark:hover:bg-gray-800',
+            'text-gray-400 hover:text-gray-200',
+            'hover:bg-gray-100 hover:bg-gray-800',
             'transition-colors'
           )}
           aria-label={closePopupLabel}
@@ -240,16 +240,16 @@ export function ExitIntentPopup({
         {isSuccess ? (
           /* Success State */
           <div className="p-8 text-center">
-            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
-              <Check className="w-8 h-8 text-green-600 dark:text-green-400" />
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-100 bg-green-900/30 flex items-center justify-center">
+              <Check className="w-8 h-8 text-green-600 text-green-400" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+            <h3 className="text-2xl font-bold text-gray-900 text-white mb-2">
               {content.successTitle}
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
+            <p className="text-gray-600 text-gray-300 mb-4">
               {content.successMessage}
             </p>
-            <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 border-2 border-dashed border-gray-300 dark:border-gray-600">
+            <div className="bg-gray-100 bg-gray-800 rounded-lg p-4 border-2 border-dashed border-gray-300 border-gray-600">
               <span className="text-2xl font-bold text-[#03E46A] tracking-wider">
                 {discountCode}
               </span>
@@ -260,13 +260,13 @@ export function ExitIntentPopup({
           <div className="p-8">
             {/* Icon */}
             <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#03E46A] to-[#02C55A] flex items-center justify-center shadow-lg shadow-[#03E46A]/20">
-              <Gift className="w-8 h-8 text-white dark:text-gray-900" />
+              <Gift className="w-8 h-8 text-white text-gray-900" />
             </div>
 
             {/* Title */}
             <h3
               id="exit-popup-title"
-              className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-2"
+              className="text-2xl font-bold text-center text-gray-900 text-white mb-2"
             >
               {content.title}
             </h3>
@@ -277,14 +277,14 @@ export function ExitIntentPopup({
             </p>
 
             {/* Description */}
-            <p className="text-center text-gray-600 dark:text-gray-400 mb-6">
+            <p className="text-center text-gray-600 text-gray-400 mb-6">
               {content.description}
             </p>
 
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 text-gray-500" />
                 <input
                   type="email"
                   value={email}
@@ -292,10 +292,10 @@ export function ExitIntentPopup({
                   placeholder={content.placeholder}
                   className={cn(
                     'w-full pl-12 pr-4 py-4 rounded-xl',
-                    'bg-gray-50 dark:bg-gray-800',
-                    'border border-gray-200 dark:border-gray-700',
-                    'text-gray-900 dark:text-white',
-                    'placeholder:text-gray-500 dark:placeholder:text-gray-400',
+                    'bg-gray-50 bg-gray-800',
+                    'border border-gray-200 border-gray-700',
+                    'text-gray-900 text-white',
+                    'placeholder:text-gray-500 placeholder:text-gray-400',
                     'focus:outline-none focus:ring-2 focus:ring-[#03E46A] focus:border-transparent',
                     'transition-all'
                   )}
@@ -305,7 +305,7 @@ export function ExitIntentPopup({
               </div>
 
               {error && (
-                <p className="text-red-500 dark:text-red-400 text-sm text-center">
+                <p className="text-red-500 text-red-400 text-sm text-center">
                   {error}
                 </p>
               )}
@@ -329,7 +329,7 @@ export function ExitIntentPopup({
             {/* No thanks link */}
             <button
               onClick={handleClose}
-              className="block w-full mt-4 text-center text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+              className="block w-full mt-4 text-center text-sm text-gray-500 text-gray-400 hover:text-gray-700 hover:text-gray-300 transition-colors"
             >
               {content.noThanks}
             </button>

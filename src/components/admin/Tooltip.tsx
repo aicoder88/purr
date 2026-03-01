@@ -17,10 +17,10 @@ export default function Tooltip({ content, children, position = 'top' }: Tooltip
   };
 
   const arrowClasses = {
-    top: 'top-full left-1/2 -translate-x-1/2 border-t-gray-900 dark:border-t-gray-700',
-    bottom: 'bottom-full left-1/2 -translate-x-1/2 border-b-gray-900 dark:border-b-gray-700',
-    left: 'left-full top-1/2 -translate-y-1/2 border-l-gray-900 dark:border-l-gray-700',
-    right: 'right-full top-1/2 -translate-y-1/2 border-r-gray-900 dark:border-r-gray-700'
+    top: 'top-full left-1/2 -translate-x-1/2 border-t-gray-900 border-t-gray-700',
+    bottom: 'bottom-full left-1/2 -translate-x-1/2 border-b-gray-900 border-b-gray-700',
+    left: 'left-full top-1/2 -translate-y-1/2 border-l-gray-900 border-l-gray-700',
+    right: 'right-full top-1/2 -translate-y-1/2 border-r-gray-900 border-r-gray-700'
   };
 
   return (
@@ -32,7 +32,7 @@ export default function Tooltip({ content, children, position = 'top' }: Tooltip
       {children}
       {show && (
         <div
-          className={`absolute z-50 px-3 py-2 text-sm text-white bg-gray-900 dark:bg-gray-700 rounded-lg shadow-lg whitespace-nowrap ${positionClasses[position]}`}
+          className={`absolute z-50 px-3 py-2 text-sm text-white bg-gray-900 bg-gray-700 rounded-lg shadow-lg whitespace-nowrap ${positionClasses[position]}`}
         >
           {content}
           <div

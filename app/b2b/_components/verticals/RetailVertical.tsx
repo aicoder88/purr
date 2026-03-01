@@ -23,7 +23,7 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
   const familyPrice = formatProductPrice('family', locale);
   const benefits = [
     {
-      icon: <TrendingUp className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
+      icon: <TrendingUp className="h-8 w-8 text-blue-600 text-blue-400" />,
       title: locale === 'fr' ? 'Marges Attractives' : 'Attractive Margins',
       description:
         locale === 'fr'
@@ -31,7 +31,7 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
           : 'Competitive retail margins with volume scaling and loyalty discounts for established partners.',
     },
     {
-      icon: <Users className="h-8 w-8 text-green-600 dark:text-green-400" />,
+      icon: <Users className="h-8 w-8 text-green-600 text-green-400" />,
       title: locale === 'fr' ? 'Support Marketing' : 'Marketing Support',
       description:
         locale === 'fr'
@@ -39,7 +39,7 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
           : 'Free promotional materials, product training, and local advertising support for your teams.',
     },
     {
-      icon: <Shield className="h-8 w-8 text-purple-600 dark:text-purple-400" />,
+      icon: <Shield className="h-8 w-8 text-purple-600 text-purple-400" />,
       title: locale === 'fr' ? 'Protection Territoriale' : 'Territory Protection',
       description:
         locale === 'fr'
@@ -47,7 +47,7 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
           : 'Regional exclusivity for dedicated partners and protection from direct online selling.',
     },
     {
-      icon: <Package className="h-8 w-8 text-orange-600 dark:text-orange-400" />,
+      icon: <Package className="h-8 w-8 text-orange-600 text-orange-400" />,
       title: locale === 'fr' ? 'Livraison Rapide' : 'Fast Delivery',
       description:
         locale === 'fr'
@@ -55,7 +55,7 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
           : 'Fast shipping on $500+ orders with express options for urgent restocking needs.',
     },
     {
-      icon: <Award className="h-8 w-8 text-red-600 dark:text-red-400" />,
+      icon: <Award className="h-8 w-8 text-red-600 text-red-400" />,
       title: locale === 'fr' ? 'Produit Primé' : 'Award-Winning Product',
       description:
         locale === 'fr'
@@ -63,7 +63,7 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
           : 'Made-in-Canada product with 96% customer satisfaction and complete money-back guarantee.',
     },
     {
-      icon: <DollarSign className="h-8 w-8 text-yellow-600 dark:text-yellow-400" />,
+      icon: <DollarSign className="h-8 w-8 text-yellow-600 text-yellow-400" />,
       title: locale === 'fr' ? 'Conditions Flexibles' : 'Flexible Terms',
       description:
         locale === 'fr'
@@ -146,23 +146,23 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
   return (
     <div className="space-y-16">
       {/* Hero Stats */}
-      <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
+      <div className="bg-blue-50 bg-blue-900/20 border border-blue-200 border-blue-800 rounded-lg p-6">
         <div className="grid md:grid-cols-3 gap-6 text-center">
           <div>
-            <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">96%</div>
-            <div className="text-sm text-gray-700 dark:text-gray-300">
+            <div className="text-3xl font-bold text-blue-600 text-blue-400 mb-2">96%</div>
+            <div className="text-sm text-gray-700 text-gray-300">
               {locale === 'fr' ? 'Satisfaction Client' : 'Customer Satisfaction'}
             </div>
           </div>
           <div>
-            <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">45%</div>
-            <div className="text-sm text-gray-700 dark:text-gray-300">
+            <div className="text-3xl font-bold text-blue-600 text-blue-400 mb-2">45%</div>
+            <div className="text-sm text-gray-700 text-gray-300">
               {locale === 'fr' ? 'Marge Maximale' : 'Max Wholesale Margin'}
             </div>
           </div>
           <div>
-            <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">150+</div>
-            <div className="text-sm text-gray-700 dark:text-gray-300">
+            <div className="text-3xl font-bold text-blue-600 text-blue-400 mb-2">150+</div>
+            <div className="text-sm text-gray-700 text-gray-300">
               {locale === 'fr' ? 'Partenaires Actifs' : 'Active Partners'}
             </div>
           </div>
@@ -170,7 +170,7 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
       </div>
       {/* Partnership Benefits */}
       <section>
-        <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
+        <h2 className="font-heading text-3xl font-bold text-gray-900 text-white mb-12 text-center">
           {locale === 'fr'
             ? 'Pourquoi Choisir Purrify Comme Partenaire'
             : 'Why Choose Purrify as Your Partner'}
@@ -179,20 +179,20 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 text-center shadow-sm hover:shadow-md transition-shadow duration-300"
+              className="bg-white bg-gray-800 border border-gray-200 border-gray-700 rounded-lg p-6 text-center shadow-sm hover:shadow-md transition-shadow duration-300"
             >
               <div className="flex justify-center mb-4">{benefit.icon}</div>
-              <h3 className="font-heading text-xl font-semibold text-gray-900 dark:text-white mb-3">
+              <h3 className="font-heading text-xl font-semibold text-gray-900 text-white mb-3">
                 {benefit.title}
               </h3>
-              <p className="text-gray-600 dark:text-gray-300">{benefit.description}</p>
+              <p className="text-gray-600 text-gray-300">{benefit.description}</p>
             </div>
           ))}
         </div>
       </section>
       {/* Wholesale Pricing */}
       <section id="wholesale-pricing">
-        <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
+        <h2 className="font-heading text-3xl font-bold text-gray-900 text-white mb-12 text-center">
           {locale === 'fr'
             ? 'Programme de Prix en Gros'
             : 'Wholesale Pricing Program'}
@@ -203,37 +203,37 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
               key={index}
               className={`rounded-lg p-8 ${
                 tier.highlighted
-                  ? 'bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-300 dark:border-blue-600 shadow-lg'
-                  : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm'
+                  ? 'bg-blue-50 bg-blue-900/20 border-2 border-blue-300 border-blue-600 shadow-lg'
+                  : 'bg-white bg-gray-800 border border-gray-200 border-gray-700 shadow-sm'
               }`}
             >
               {tier.highlighted && (
                 <div className="text-center mb-4">
-                  <span className="bg-blue-600 dark:bg-blue-600 text-white dark:text-white px-3 py-1 rounded-full text-sm font-semibold">
+                  <span className="bg-blue-600 bg-blue-600 text-white text-white px-3 py-1 rounded-full text-sm font-semibold">
                     {locale === 'fr' ? 'Plus Populaire' : 'Most Popular'}
                   </span>
                 </div>
               )}
               <div className="text-center mb-6">
-                <h3 className="font-heading text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                <h3 className="font-heading text-xl font-semibold text-gray-900 text-white mb-2">
                   {tier.name}
                 </h3>
-                <div className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                <div className="text-sm text-gray-600 text-gray-400 mb-4">
                   {locale === 'fr' ? 'Commande minimum:' : 'Minimum order:'}{' '}
                   {tier.minOrder}
                 </div>
-                <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+                <div className="text-4xl font-bold text-blue-600 text-blue-400 mb-2">
                   {tier.discount}
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">
+                <div className="text-sm text-gray-600 text-gray-400">
                   {locale === 'fr' ? 'remise sur PDSF' : 'off MSRP'}
                 </div>
               </div>
               <ul className="space-y-3 mb-8">
                 {tier.features.map((feature, idx) => (
                   <li key={idx} className="flex items-center gap-3">
-                    <CheckCircle className="h-5 w-5 text-green-500 dark:text-green-400 flex-shrink-0" />
-                    <span className="text-sm text-gray-700 dark:text-gray-300">
+                    <CheckCircle className="h-5 w-5 text-green-500 text-green-400 flex-shrink-0" />
+                    <span className="text-sm text-gray-700 text-gray-300">
                       {feature}
                     </span>
                   </li>
@@ -245,7 +245,7 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
       </section>
       {/* Success Stories */}
       <section>
-        <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
+        <h2 className="font-heading text-3xl font-bold text-gray-900 text-white mb-12 text-center">
           {locale === 'fr'
             ? 'Témoignages de Partenaires'
             : 'Partner Success Stories'}
@@ -254,29 +254,29 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
           {successStories.map((story, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm"
+              className="bg-white bg-gray-800 border border-gray-200 border-gray-700 rounded-lg p-6 shadow-sm"
             >
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center mr-4">
-                  <span className="font-bold text-blue-600 dark:text-blue-400">
+                <div className="w-12 h-12 bg-blue-100 bg-blue-900/20 rounded-full flex items-center justify-center mr-4">
+                  <span className="font-bold text-blue-600 text-blue-400">
                     {story.avatar}
                   </span>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white">
+                  <h4 className="font-semibold text-gray-900 text-white">
                     {story.store}
                   </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <p className="text-sm text-gray-600 text-gray-400">
                     {story.location}
                   </p>
                 </div>
               </div>
-              <p className="text-gray-700 dark:text-gray-300 italic mb-4">
+              <p className="text-gray-700 text-gray-300 italic mb-4">
                 {story.quote}
               </p>
               <div className="flex items-center justify-between">
-                <div className="text-yellow-400 dark:text-yellow-300">★★★★★</div>
-                <div className="text-sm font-semibold text-green-600 dark:text-green-400">
+                <div className="text-yellow-400 text-yellow-300">★★★★★</div>
+                <div className="text-sm font-semibold text-green-600 text-green-400">
                   {story.results}
                 </div>
               </div>
@@ -285,52 +285,52 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
         </div>
       </section>
       {/* Product Information */}
-      <section className="bg-gray-50 dark:bg-gray-800 rounded-lg p-8">
-        <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+      <section className="bg-gray-50 bg-gray-800 rounded-lg p-8">
+        <h2 className="font-heading text-3xl font-bold text-gray-900 text-white mb-8 text-center">
           {locale === 'fr'
             ? 'Gamme de Produits Purrify'
             : 'Purrify Product Line'}
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
           <div className="text-center">
-            <div className="bg-white dark:bg-gray-700 rounded-lg p-6 mb-4">
+            <div className="bg-white bg-gray-700 rounded-lg p-6 mb-4">
               <h3 className="font-heading text-lg font-semibold mb-2">
                 {locale === 'fr' ? 'Format Essai 12g' : 'Trial Size 12g'}
               </h3>
-              <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+              <div className="text-2xl font-bold text-blue-600 text-blue-400 mb-2">
                 {trialPrice}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+              <div className="text-sm text-gray-600 text-gray-400 mb-4">
                 {locale === 'fr' ? 'PDSF suggéré' : 'Suggested MSRP'}
               </div>
             </div>
           </div>
           <div className="text-center">
-            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-6 mb-4">
+            <div className="bg-blue-50 bg-blue-900/20 border border-blue-200 border-blue-700 rounded-lg p-6 mb-4">
               <h3 className="font-heading text-lg font-semibold mb-2">
                 {locale === 'fr'
                   ? 'Format Régulier 50g'
                   : 'Regular Size 50g'}
               </h3>
-              <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+              <div className="text-2xl font-bold text-blue-600 text-blue-400 mb-2">
                 {standardPrice}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+              <div className="text-sm text-gray-600 text-gray-400 mb-4">
                 {locale === 'fr' ? 'PDSF suggéré' : 'Suggested MSRP'}
               </div>
             </div>
           </div>
           <div className="text-center">
-            <div className="bg-white dark:bg-gray-700 rounded-lg p-6 mb-4">
+            <div className="bg-white bg-gray-700 rounded-lg p-6 mb-4">
               <h3 className="font-heading text-lg font-semibold mb-2">
                 {locale === 'fr'
                   ? 'Grand Format 120g'
                   : 'Large Size 120g'}
               </h3>
-              <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+              <div className="text-2xl font-bold text-blue-600 text-blue-400 mb-2">
                 {familyPrice}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+              <div className="text-sm text-gray-600 text-gray-400 mb-4">
                 {locale === 'fr' ? 'PDSF suggéré' : 'Suggested MSRP'}
               </div>
             </div>
@@ -338,47 +338,47 @@ export function RetailVertical({ locale }: RetailVerticalProps) {
         </div>
       </section>
       {/* Contact */}
-      <section className="text-center bg-gray-50 dark:bg-gray-800 rounded-lg p-8">
-        <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      <section className="text-center bg-gray-50 bg-gray-800 rounded-lg p-8">
+        <h2 className="font-heading text-2xl font-bold text-gray-900 text-white mb-6">
           {locale === 'fr'
             ? 'Questions? Parlons-en!'
             : "Questions? Let's Talk!"}
         </h2>
         <div className="grid md:grid-cols-3 gap-6">
           <div className="text-center">
-            <Phone className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-3" />
-            <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+            <Phone className="h-8 w-8 text-blue-600 text-blue-400 mx-auto mb-3" />
+            <h4 className="font-semibold text-gray-900 text-white mb-2">
               {locale === 'fr' ? 'Appelez-nous' : 'Call Us'}
             </h4>
             <a
               href={CONTACT_INFO.phoneHref}
-              className="text-blue-600 dark:text-blue-400 hover:underline font-bold"
+              className="text-blue-600 text-blue-400 hover:underline font-bold"
             >
               {PHONE_MESSAGING.callout}
             </a>
           </div>
           <div className="text-center">
-            <Mail className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-3" />
-            <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+            <Mail className="h-8 w-8 text-blue-600 text-blue-400 mx-auto mb-3" />
+            <h4 className="font-semibold text-gray-900 text-white mb-2">
               {locale === 'fr' ? 'Écrivez-nous' : 'Email Us'}
             </h4>
             <a
               href={`mailto:${partnerEmail}`}
-              className="text-blue-600 dark:text-blue-400 hover:underline"
+              className="text-blue-600 text-blue-400 hover:underline"
             >
               {partnerEmail}
             </a>
           </div>
           <div className="text-center">
-            <FileText className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-3" />
-            <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+            <FileText className="h-8 w-8 text-blue-600 text-blue-400 mx-auto mb-3" />
+            <h4 className="font-semibold text-gray-900 text-white mb-2">
               {locale === 'fr'
                 ? "Besoin de Plus d'Information?"
                 : 'Need More Information?'}
             </h4>
             <a
               href={`mailto:${partnerEmail}`}
-              className="text-blue-600 dark:text-blue-400 hover:underline"
+              className="text-blue-600 text-blue-400 hover:underline"
             >
               {locale === 'fr' ? 'Demander le Guide' : 'Request Guide'}
             </a>

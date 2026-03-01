@@ -24,7 +24,7 @@ export const GridSection: React.FC<GridSectionProps> = ({
   items,
   columns = 4,
   className = "py-16",
-  itemClassName = "text-center bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] dark:border-gray-700",
+  itemClassName = "text-center bg-white bg-gray-800 rounded-xl p-6 shadow-lg border border-[#E0EFC7] border-gray-700",
   renderItem
 }) => {
   const gridCols = {
@@ -38,13 +38,13 @@ export const GridSection: React.FC<GridSectionProps> = ({
     <div key={index} className={itemClassName}>
       {item.icon && (
         <div className="w-16 h-16 bg-[#5B2EFF] rounded-full flex items-center justify-center mx-auto mb-4">
-          <item.icon className="w-8 h-8 text-white dark:text-white dark:text-gray-100" />
+          <item.icon className="w-8 h-8 text-white text-white text-gray-100" />
         </div>
       )}
-      <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 dark:text-gray-100">
+      <h3 className="font-heading text-xl font-bold mb-3 text-gray-900 text-gray-100">
         {item.title}
       </h3>
-      <p className="text-gray-600 dark:text-gray-300">
+      <p className="text-gray-600 text-gray-300">
         {item.description}
       </p>
     </div>
@@ -54,11 +54,11 @@ export const GridSection: React.FC<GridSectionProps> = ({
     <section className={className}>
       <Container>
         <div className="text-center mb-12">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-gray-900 text-gray-100">
             {title}
           </h2>
           {subtitle && (
-            <p className="text-xl text-gray-600 dark:text-gray-300">
+            <p className="text-xl text-gray-600 text-gray-300">
               {subtitle}
             </p>
           )}

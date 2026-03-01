@@ -186,7 +186,7 @@ export function WhacAMouse() {
     };
 
     return (
-        <div className="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-purple-200 dark:border-purple-800 w-full max-w-md mx-auto overflow-hidden">
+        <div className="relative bg-white/80 bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-purple-200 border-purple-800 w-full max-w-md mx-auto overflow-hidden">
             {/* Floating texts */}
             <AnimatePresence>
                 {floatingTexts.map(ft => (
@@ -226,25 +226,25 @@ export function WhacAMouse() {
             </AnimatePresence>
 
             <div className="text-center mb-6">
-                <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200 flex items-center justify-center gap-2">
-                    <Cat className="w-6 h-6 text-purple-500 dark:text-purple-400" />
+                <h2 className="text-2xl font-bold text-gray-800 text-gray-200 flex items-center justify-center gap-2">
+                    <Cat className="w-6 h-6 text-purple-500 text-purple-400" />
                     Catch the Cat!
                 </h2>
 
-                <div className="flex justify-between items-center mt-4 bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                <div className="flex justify-between items-center mt-4 bg-purple-50 bg-purple-900/20 p-3 rounded-lg">
                     <div className="text-center">
-                        <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Score</p>
-                        <p className="text-xl font-bold text-purple-600 dark:text-purple-400">{score}</p>
+                        <p className="text-xs text-gray-500 text-gray-400 uppercase tracking-wider">Score</p>
+                        <p className="text-xl font-bold text-purple-600 text-purple-400">{score}</p>
                     </div>
                     <div className="text-center">
-                        <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Time</p>
-                        <p className={`text-xl font-bold ${timeLeft < 10 ? 'text-red-500 dark:text-red-400' : 'text-gray-700 dark:text-gray-300'}`}>
+                        <p className="text-xs text-gray-500 text-gray-400 uppercase tracking-wider">Time</p>
+                        <p className={`text-xl font-bold ${timeLeft < 10 ? 'text-red-500 text-red-400' : 'text-gray-700 text-gray-300'}`}>
                             {timeLeft}s
                         </p>
                     </div>
                     <div className="text-center">
-                        <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Best</p>
-                        <p className="text-xl font-bold text-orange-500 dark:text-orange-400 flex items-center gap-1">
+                        <p className="text-xs text-gray-500 text-gray-400 uppercase tracking-wider">Best</p>
+                        <p className="text-xl font-bold text-orange-500 text-orange-400 flex items-center gap-1">
                             <Trophy className="w-3 h-3" />
                             {highScore}
                         </p>
@@ -258,13 +258,13 @@ export function WhacAMouse() {
                         animate={{ opacity: 1, y: 0 }}
                         className="mt-3 flex items-center justify-center gap-2"
                     >
-                        <div className="flex items-center gap-1 bg-gradient-to-r from-orange-100 to-pink-100 dark:from-orange-900/30 dark:to-pink-900/30 px-3 py-1 rounded-full">
-                            <Zap className="w-4 h-4 text-orange-500 dark:text-orange-400" />
-                            <span className="text-sm font-bold text-orange-600 dark:text-orange-400">
+                        <div className="flex items-center gap-1 bg-gradient-to-r from-orange-100 to-pink-100 from-orange-900/30 to-pink-900/30 px-3 py-1 rounded-full">
+                            <Zap className="w-4 h-4 text-orange-500 text-orange-400" />
+                            <span className="text-sm font-bold text-orange-600 text-orange-400">
                                 Combo: {combo}
                             </span>
                             {combo >= 3 && (
-                                <Sparkles className="w-4 h-4 text-pink-500 dark:text-pink-400" />
+                                <Sparkles className="w-4 h-4 text-pink-500 text-pink-400" />
                             )}
                         </div>
                     </motion.div>
@@ -275,16 +275,16 @@ export function WhacAMouse() {
                 {Array.from({ length: GRID_SIZE }).map((_, i) => (
                     <motion.div
                         key={i}
-                        className="aspect-square bg-gradient-to-b from-purple-100 to-purple-200 dark:from-purple-900/30 dark:to-purple-900/50 rounded-xl relative overflow-hidden cursor-crosshair"
+                        className="aspect-square bg-gradient-to-b from-purple-100 to-purple-200 from-purple-900/30 to-purple-900/50 rounded-xl relative overflow-hidden cursor-crosshair"
                         onClick={(e) => handleWhack(i, e)}
                         whileTap={{ scale: 0.95 }}
                     >
                         {/* Hole shadow */}
-                        <div className="absolute bottom-0 w-full h-1/3 bg-gradient-to-t from-purple-300/50 to-transparent dark:from-purple-950/50 rounded-b-xl" />
+                        <div className="absolute bottom-0 w-full h-1/3 bg-gradient-to-t from-purple-300/50 to-transparent from-purple-950/50 rounded-b-xl" />
 
                         {/* Grass tufts */}
-                        <div className="absolute bottom-1 left-2 text-purple-300/30 dark:text-purple-400/30 text-xs">🌿</div>
-                        <div className="absolute bottom-1 right-2 text-purple-300/30 dark:text-purple-400/30 text-xs">🌿</div>
+                        <div className="absolute bottom-1 left-2 text-purple-300/30 text-purple-400/30 text-xs">🌿</div>
+                        <div className="absolute bottom-1 right-2 text-purple-300/30 text-purple-400/30 text-xs">🌿</div>
 
                         <AnimatePresence>
                             {activeHole === i && (
@@ -309,8 +309,8 @@ export function WhacAMouse() {
                                         </motion.div>
 
                                         {/* Eyes */}
-                                        <div className="absolute top-3 left-2 w-1.5 h-1.5 bg-gray-800 dark:bg-gray-200 rounded-full" />
-                                        <div className="absolute top-3 right-2 w-1.5 h-1.5 bg-gray-800 dark:bg-gray-200 rounded-full" />
+                                        <div className="absolute top-3 left-2 w-1.5 h-1.5 bg-gray-800 bg-gray-200 rounded-full" />
+                                        <div className="absolute top-3 right-2 w-1.5 h-1.5 bg-gray-800 bg-gray-200 rounded-full" />
                                     </div>
                                 </motion.div>
                             )}
@@ -319,7 +319,7 @@ export function WhacAMouse() {
                         {/* Target indicator on hover */}
                         {!isPlaying && (
                             <div className="absolute inset-0 flex items-center justify-center opacity-10">
-                                <Target className="w-8 h-8 text-purple-400 dark:text-purple-300" />
+                                <Target className="w-8 h-8 text-purple-400 text-purple-300" />
                             </div>
                         )}
                     </motion.div>
@@ -332,14 +332,14 @@ export function WhacAMouse() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={startGame}
-                        className="bg-gradient-to-r from-purple-500 to-pink-500 text-white dark:text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all w-full md:w-auto"
+                        className="bg-gradient-to-r from-purple-500 to-pink-500 text-white text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all w-full md:w-auto"
                     >
                         {score > 0 ? "Play Again 🎮" : "Start Game 🎮"}
                     </motion.button>
                 ) : (
                     <button
                         onClick={stopGame}
-                        className="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium py-2 px-6 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors flex items-center gap-2 mx-auto"
+                        className="bg-gray-200 bg-gray-700 text-gray-700 text-gray-300 font-medium py-2 px-6 rounded-full hover:bg-gray-300 hover:bg-gray-600 transition-colors flex items-center gap-2 mx-auto"
                     >
                         <RotateCcw className="w-4 h-4" />
                         End Game
@@ -348,7 +348,7 @@ export function WhacAMouse() {
             </div>
 
             {/* Instructions */}
-            <p className="text-center text-xs text-gray-400 dark:text-gray-500 mt-4">
+            <p className="text-center text-xs text-gray-400 text-gray-500 mt-4">
                 Click the cats as they pop up! Build combos for bonus points! 🐱
             </p>
         </div>
