@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import type { BlogPost } from '@/types/blog';
+import { locales as activeLocales } from '@/i18n/config';
 import {
   extractFirstContentImage,
   normalizeImagePath,
@@ -43,9 +44,11 @@ function getLocaleDirectories(): string[] {
     return [];
   }
 
+  const activeLocaleSet = new Set<string>(activeLocales as readonly string[]);
+
   return fs
     .readdirSync(BLOG_ROOT)
-    .filter((entry) => isDirectory(path.join(BLOG_ROOT, entry)))
+    .filter((entry) => isDirectory(path.join(BLOG_ROOT, entry)) && activeLocaleSet.has(entry))
     .sort();
 }
 
