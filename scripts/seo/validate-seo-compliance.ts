@@ -308,7 +308,7 @@ async function analyzeLinkStructure(pages: ScannedPage[]): Promise<{
       basicLinks.push({ from: route, to: '/learn', anchorText: 'Learn' });
       // Link to related learn pages
       ['/learn/faq', '/learn/science', '/learn/how-it-works'].forEach((lp) => {
-        if (route !== lp && pagePaths.includes(lp) && Math.random() > 0.5) {
+        if (route !== lp && pagePaths.includes(lp)) {
           basicLinks.push({ from: route, to: lp, anchorText: 'Related' });
         }
       });
@@ -335,6 +335,17 @@ async function analyzeLinkStructure(pages: ScannedPage[]): Promise<{
   const orphanPages = analyzer.findOrphanPages();
   const weakPages = analyzer.findWeakPages();
   const deadEndPages = analyzer.findDeadEndPages();
+  const actionableWeakPages = weakPages.filter((page) => {
+    const node = analyzer.getNode(page);
+    if (!node) return false;
+
+    // The simplified graph model always injects a homepage link to every route.
+    // Treat "only linked by /" as non-actionable to avoid false weak-page noise.
+    return !(
+      node.incomingLinks.length === 1 &&
+      node.incomingLinks[0]?.fromPath === '/'
+    );
+  });
 
   // Only report true orphans (pages not linked from anywhere)
   orphanPages.forEach((page) => {
@@ -355,7 +366,7 @@ async function analyzeLinkStructure(pages: ScannedPage[]): Promise<{
   });
 
   // Report weak pages (only 1 incoming link)
-  weakPages.forEach((page) => {
+  actionableWeakPages.forEach((page) => {
     // Skip dynamic routes and utility pages
     if (page.includes('[') || page.startsWith('/admin') || page.startsWith('/api')) return;
 
@@ -388,7 +399,7 @@ async function analyzeLinkStructure(pages: ScannedPage[]): Promise<{
     errors,
     warnings,
     orphanCount: orphanPages.filter((p) => !p.includes('[') && p !== '/').length,
-    weakCount: weakPages.filter((p) => !p.includes('[')).length,
+    weakCount: actionableWeakPages.filter((p) => !p.includes('[')).length,
     deadEndCount: deadEndPages.filter((p) => !p.startsWith('/buy') && !p.includes('checkout') && !p.includes('thank-you')).length,
   };
 }

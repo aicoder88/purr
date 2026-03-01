@@ -1,10 +1,9 @@
 /**
  * Related Content Component
- * Shared wrapper that computes related pages for server-rendered internal links
+ * Shared wrapper that computes related pages for internal links
  */
 
 import { getRelatedPages, getClustersForPage } from '@/lib/seo/topic-clusters';
-import { ContentStore } from '@/lib/blog/content-store';
 import { sampleBlogPosts } from '@/data/blog-posts';
 import { RelatedContentClient } from './RelatedContentClient';
 
@@ -32,7 +31,7 @@ function localizeBlogLink(link: string, locale: string): string {
   return buildLocalizedBlogPath(slug, locale);
 }
 
-export async function RelatedContent({
+export function RelatedContent({
   currentUrl,
   maxItems = 8,
   className = '',
@@ -44,16 +43,6 @@ export async function RelatedContent({
 
   for (const post of sampleBlogPosts) {
     fallbackPageMap.set(localizeBlogLink(post.link, locale), post.title);
-  }
-
-  try {
-    const store = new ContentStore();
-    const posts = await store.getAllPosts(locale, false);
-    posts.forEach((post) => {
-      fallbackPageMap.set(buildLocalizedBlogPath(post.slug, locale), post.title);
-    });
-  } catch (error) {
-    console.error('Failed to load related content fallback pages:', error);
   }
 
   const fallbackPages = Array.from(fallbackPageMap.entries()).map(([url, title]) => ({ url, title }));

@@ -5,6 +5,9 @@ import { Container } from '@/components/ui/container';
 export const metadata: Metadata = {
   title: 'Purrify Tools | Smell Quiz and Litter Calculator',
   description: 'Interactive tools to diagnose litter odor problems and compare litter costs.',
+  openGraph: {
+    url: 'https://www.purrify.ca/tools/',
+  },
   alternates: {
     canonical: 'https://www.purrify.ca/tools/',
   },
