@@ -418,11 +418,6 @@ export default function TrialSizePageContent({ locale }: TrialSizePageContentPro
                     </div>
                   </div>
                 </div>
-
-                <div className="mt-8 flex justify-center items-center gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-                  <Image src="/optimized/logos/chico-logo.svg" alt="Chico" width={100} height={32} className="h-8 w-auto dark:invert" />
-                  {/* other logos would go here */}
-                </div>
               </div>
 
             </div>

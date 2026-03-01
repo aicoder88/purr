@@ -572,18 +572,18 @@ export default function StoresPage() {
                         className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300"
                       >
                         {/* Store Header with Logo */}
-                        <div className="flex items-start gap-4 mb-4">
-                          <div className={`w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0 ${shouldUseWhiteBg
+                        <div className="flex items-start gap-4 mb-2">
+                          <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 ${shouldUseWhiteBg
                             ? 'bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700'
                             : 'bg-gradient-to-br from-brand-red to-brand-red/80'
                             }`}>
                             <StoreLogoImage logoConfig={logoConfig} storeName={store.name} />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h3 className="font-heading text-lg font-semibold text-gray-900 dark:text-white mb-1 truncate">
+                            <h3 className="font-heading text-base font-semibold text-gray-900 dark:text-white mb-0.5 truncate">
                               {store.name}
                             </h3>
-                            <span className={`inline-block px-2 py-0.5 text-xs rounded-full ${store.type === 'independent'
+                            <span className={`inline-block px-2 py-0.5 text-[10px] uppercase tracking-wider font-bold rounded-full ${store.type === 'independent'
                               ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300'
                               : store.type === 'franchise'
                                 ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300'
@@ -598,19 +598,19 @@ export default function StoresPage() {
 
                         {/* Description */}
                         {store.description && (
-                          <p className="text-sm text-gray-500 dark:text-gray-400 mb-3 italic">
+                          <p className="text-xs text-gray-500 dark:text-gray-400 mb-2 italic">
                             {store.description}
                           </p>
                         )}
 
                         {/* Address */}
-                        <div className="flex items-start gap-3 mb-3">
-                          <MapPin className="h-5 w-5 text-gray-400 dark:text-gray-500 mt-0.5 flex-shrink-0" />
-                          <div className="text-sm text-gray-700 dark:text-gray-300 leading-snug w-full">
+                        <div className="flex items-start gap-3 mb-2">
+                          <MapPin className="h-4 w-4 text-gray-400 dark:text-gray-500 mt-0.5 flex-shrink-0" />
+                          <div className="text-[13px] text-gray-700 dark:text-gray-300 leading-snug w-full">
                             {store.address.includes(',') ? (
                               <>
                                 <span className="block font-medium dark:text-gray-200">{store.address.substring(0, store.address.indexOf(','))}</span>
-                                <span className="block text-[13px] text-gray-500 dark:text-gray-400 mt-0.5">{store.address.substring(store.address.indexOf(',') + 1).trim()}</span>
+                                <span className="block text-gray-500 dark:text-gray-400">{store.address.substring(store.address.indexOf(',') + 1).trim()}</span>
                               </>
                             ) : (
                               <span className="font-medium dark:text-gray-200">{store.address}</span>
@@ -619,13 +619,13 @@ export default function StoresPage() {
                         </div>
 
                         {/* Contact Info */}
-                        <div className="space-y-2 mb-4">
+                        <div className="space-y-1 mb-3">
                           {store.phone && (
                             <div className="flex items-center gap-3">
                               <Phone className="h-4 w-4 text-gray-400 dark:text-gray-500" />
                               <a
                                 href={`tel:${store.phone.replace(/[^0-9+]/g, '')}`}
-                                className="text-sm text-brand-red hover:underline"
+                                className="text-[13px] text-brand-red hover:underline"
                               >
                                 {store.phone}
                               </a>
@@ -639,16 +639,16 @@ export default function StoresPage() {
                                 href={store.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                                className="text-[13px] text-blue-600 dark:text-blue-400 hover:underline"
                               >
-                                Visit website
+                                Website
                               </a>
                             </div>
                           )}
                         </div>
 
                         {/* Actions */}
-                        <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+                        <div className="pt-3 border-t border-gray-200 dark:border-gray-700">
                           <a
                             href={`https://maps.google.com/maps?q=${encodeURIComponent(store.address)}`}
                             target="_blank"
