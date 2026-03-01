@@ -103,7 +103,7 @@ async function generateStructuredData(locale: string, currency: Currency) {
   const homepageSchema = generateHomepageSchema(normalizedLocale, currency);
 
   return {
-    __html: JSON.stringify(homepageSchema, null, 2),
+    __html: JSON.stringify(homepageSchema),
   };
 }
 

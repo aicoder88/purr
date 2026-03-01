@@ -1,9 +1,11 @@
 /**
  * Related Content Component
- * Shared wrapper that computes related pages and passes to client component for lazy loading
+ * Shared wrapper that computes related pages for server-rendered internal links
  */
 
 import { getRelatedPages, getClustersForPage } from '@/lib/seo/topic-clusters';
+import { ContentStore } from '@/lib/blog/content-store';
+import { sampleBlogPosts } from '@/data/blog-posts';
 import { RelatedContentClient } from './RelatedContentClient';
 
 interface RelatedContentProps {
@@ -14,14 +16,48 @@ interface RelatedContentProps {
   readMoreText?: string;
 }
 
-export function RelatedContent({
+const LOCALE_PREFIX_REGEX = /^\/(en|fr|es|zh)(?=\/|$)/;
+
+function resolveLocale(url: string): string {
+  const match = url.match(LOCALE_PREFIX_REGEX);
+  return match?.[1] || 'en';
+}
+
+function buildLocalizedBlogPath(slug: string, locale: string): string {
+  return locale === 'en' ? `/blog/${slug}` : `/${locale}/blog/${slug}`;
+}
+
+function localizeBlogLink(link: string, locale: string): string {
+  const slug = link.replace(/^\/blog\//, '').replace(/\/+$/, '');
+  return buildLocalizedBlogPath(slug, locale);
+}
+
+export async function RelatedContent({
   currentUrl,
-  maxItems = 3,
+  maxItems = 8,
   className = '',
   title = 'Related Articles',
   readMoreText = 'Read more',
 }: RelatedContentProps) {
-  const relatedPages = getRelatedPages(currentUrl, maxItems);
+  const locale = resolveLocale(currentUrl);
+  const fallbackPageMap = new Map<string, string>();
+
+  for (const post of sampleBlogPosts) {
+    fallbackPageMap.set(localizeBlogLink(post.link, locale), post.title);
+  }
+
+  try {
+    const store = new ContentStore();
+    const posts = await store.getAllPosts(locale, false);
+    posts.forEach((post) => {
+      fallbackPageMap.set(buildLocalizedBlogPath(post.slug, locale), post.title);
+    });
+  } catch (error) {
+    console.error('Failed to load related content fallback pages:', error);
+  }
+
+  const fallbackPages = Array.from(fallbackPageMap.entries()).map(([url, title]) => ({ url, title }));
+  const relatedPages = getRelatedPages(currentUrl, maxItems, fallbackPages);
 
   if (relatedPages.length === 0) {
     return null;
@@ -32,7 +68,6 @@ export function RelatedContent({
 
   return (
     <RelatedContentClient
-      currentUrl={currentUrl}
       relatedPages={relatedPages}
       clusterName={clusterName}
       title={title}

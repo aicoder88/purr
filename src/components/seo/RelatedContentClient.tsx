@@ -1,11 +1,8 @@
-'use client';
-
 /**
- * Related Content Client Component
- * Handles lazy loading with IntersectionObserver
+ * Related Content Component
+ * Server-rendered to keep internal links visible in static HTML
  */
 
-import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '@/components/ui/container';
@@ -13,7 +10,6 @@ import { BLOG_FEATURED_IMAGE_MAP } from '@/generated/blog-featured-image-map';
 
 
 interface RelatedContentClientProps {
-  currentUrl: string;
   relatedPages: Array<{ url: string; title: string; type: 'hub' | 'spoke' }>;
   clusterName: string;
   title: string;
@@ -51,58 +47,18 @@ function getPageImage(url: string): { image: string; alt: string } {
 }
 
 export function RelatedContentClient({
-  currentUrl: _currentUrl,
   relatedPages,
   clusterName,
   title,
   readMoreText,
   className = '',
 }: RelatedContentClientProps) {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: '100px' }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  // Show skeleton placeholder while not visible
-  if (!isVisible) {
-    return (
-      <section ref={sectionRef} aria-label="Related articles" className={`py-12 ${className}`}>
-        <Container>
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-1/3 mb-6"></div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="h-48 bg-gray-200 dark:bg-gray-700 rounded"></div>
-              <div className="h-48 bg-gray-200 dark:bg-gray-700 rounded"></div>
-              <div className="h-48 bg-gray-200 dark:bg-gray-700 rounded"></div>
-            </div>
-          </div>
-        </Container>
-      </section>
-    );
-  }
-
   if (relatedPages.length === 0) {
     return null;
   }
 
   return (
-    <section ref={sectionRef} aria-label="Related articles" className={`py-12 ${className}`}>
+    <section aria-label="Related articles" className={`py-12 ${className}`}>
       <Container>
         <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
           {title}

@@ -92,6 +92,7 @@ export const TOPIC_CLUSTERS: TopicCluster[] = [
       '/blog/activated-carbon-litter-additive-benefits',
       '/blog/activated-carbon-vs-baking-soda-comparison',
       '/blog/most-powerful-odor-absorber',
+      '/learn/how-activated-carbon-works',
       '/learn/how-it-works',
       '/learn/science',
       '/learn/ammonia-science',

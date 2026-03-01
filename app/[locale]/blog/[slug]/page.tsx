@@ -31,6 +31,27 @@ const getBlogPostPath = (locale: string, slug: string, trailingSlash = false) =>
   `${getBlogBasePath(locale)}/${slug}${trailingSlash ? '/' : ''}`
 );
 
+const buildDistinctMetaTitle = (post: { title: string; seoTitle?: string }) => {
+  const rawMetaTitle = post.seoTitle || post.title;
+  const candidateMetaTitle = rawMetaTitle === post.title && !rawMetaTitle.includes(SITE_NAME)
+    ? `${rawMetaTitle} | ${SITE_NAME}`
+    : rawMetaTitle;
+
+  let optimizedTitle = optimizeMetaTitle(candidateMetaTitle).title;
+
+  // Some long titles drop the brand suffix during optimization and become identical to the H1.
+  // Use a compact fallback title variant to keep title and H1 distinct for SEO audits.
+  if (optimizedTitle === post.title) {
+    const compactGuideTitle = post.title.replace(/\((\d{4})\s+Guide\)/i, '($1)');
+    const fallbackTitle = compactGuideTitle === post.title
+      ? `${SITE_NAME}: ${post.title}`
+      : `${compactGuideTitle} | ${SITE_NAME}`;
+    optimizedTitle = optimizeMetaTitle(fallbackTitle).title;
+  }
+
+  return optimizedTitle;
+};
+
 // Generate static params for all blog posts across locales
 export async function generateStaticParams() {
   const store = new ContentStore();
@@ -69,11 +90,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     };
   }
 
-  const rawMetaTitle = post.seoTitle || post.title;
-  const candidateMetaTitle = rawMetaTitle === post.title && !rawMetaTitle.includes(SITE_NAME)
-    ? `${rawMetaTitle} | ${SITE_NAME}`
-    : rawMetaTitle;
-  const metaTitle = optimizeMetaTitle(candidateMetaTitle).title;
+  const metaTitle = buildDistinctMetaTitle(post);
   const metaDescription = post.seoDescription || post.excerpt;
   const metaImageUrl = post.image.startsWith('http') ? post.image : `${SITE_URL}${post.image}`;
 

@@ -327,7 +327,7 @@ export const GUIDE_COPY: Record<string, GuideCopy> = {
     externalResources: [
       { label: 'ASPCA - Common Cat Behavior Issues: Litter Box Problems', url: 'https://www.aspca.org/pet-care/cat-care/common-cat-behavior-issues/litter-box-problems' },
       { label: 'AAFP Cat Friendly Practice Guidance', url: 'https://catvets.com/guidelines' },
-      { label: 'Cornell Feline Health Center', url: 'https://www.vet.cornell.edu/departments/riney-canine-health-center/feline-health-topics' },
+      { label: 'Cornell Feline Health Center', url: 'https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center/health-information/feline-health-topics' },
     ],
     faqTitle: 'Frequently Asked Questions',
     faqItems: [
@@ -598,7 +598,7 @@ export const GUIDE_COPY: Record<string, GuideCopy> = {
     externalResources: [
       { label: 'ASPCA - Common Cat Behavior Issues: Litter Box Problems', url: 'https://www.aspca.org/pet-care/cat-care/common-cat-behavior-issues/litter-box-problems' },
       { label: 'AAFP Cat Friendly Practice Guidance', url: 'https://catvets.com/guidelines' },
-      { label: 'Cornell Feline Health Center', url: 'https://www.vet.cornell.edu/departments/riney-canine-health-center/feline-health-topics' },
+      { label: 'Cornell Feline Health Center', url: 'https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center/health-information/feline-health-topics' },
     ],
     faqTitle: 'Questions frequentes',
     faqItems: [

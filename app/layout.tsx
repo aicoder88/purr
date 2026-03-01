@@ -45,6 +45,87 @@ const gtmId = process.env.NODE_ENV === 'test'
   : (normalizedGtmId ?? DEFAULT_GTM_ID);
 const ahrefsSiteVerification = normalizeMetaValue(process.env.NEXT_PUBLIC_AHREFS_SITE_VERIFICATION);
 
+const SERVER_ONLY_NAMESPACES = new Set([
+  'privacyPolicy',
+  'structuredData',
+  'seoKeywords',
+  'groomers',
+  'shelters',
+  'catCafes',
+  'veterinarians',
+  'hospitality',
+  'canadaPage',
+]);
+
+// Keep only translation branches used by client components that rely on
+// next-intl useTranslations(). This trims serialized HTML significantly
+// without removing user-visible copy on hydrated routes.
+const CLIENT_MESSAGE_KEYS = new Set<string>([
+  'about',
+  'accessibility',
+  'affiliate',
+  'affiliateDashboard',
+  'agitationSection',
+  'ammonia',
+  'announcementBar',
+  'b2bCaseStudies',
+  'benefitsSection',
+  'calculatorSection',
+  'cityPage',
+  'contact',
+  'contactSection',
+  'cta',
+  'customerLove',
+  'enhancedProductComparison',
+  'errorPages',
+  'exitPopup',
+  'faq',
+  'features',
+  'featuresSection',
+  'footer',
+  'footerNav',
+  'freeGiveaway',
+  'hero',
+  'homepage',
+  'howItWorks',
+  'locationsMenu',
+  'maps',
+  'nav',
+  'paymentSecurity',
+  'productComparison',
+  'productsHero',
+  'productsPage',
+  'productsSection',
+  'referral',
+  'relatedArticles',
+  'retailers',
+  'reviewSystem',
+  'sciencePage',
+  'scienceSection',
+  'siteDescription',
+  'siteName',
+  'socialFollow',
+  'stockAlertBanner',
+  'subscriptionOfferExtended',
+  'testimonialsSection',
+  'ui',
+  'upsell',
+  'waitlist',
+  'whyPurrify',
+]);
+
+const GLOBAL_LAYOUT_KEYS = new Set<string>([
+  'accessibility',
+  'siteName',
+  'siteDescription',
+  'nav',
+  'locationsMenu',
+  'footer',
+  'footerNav',
+  'stockAlertBanner',
+  'waitlist',
+]);
+
 /**
  * Generate metadata for the app based on locale
  * Includes: OpenGraph, Twitter Cards, Robots, Icons, and Hreflang alternates
@@ -181,33 +262,15 @@ export default async function RootLayout({
   const accessibilityMessages = allMessages.accessibility as { gtmNoscriptTitle?: string } | undefined;
   const gtmNoscriptTitle = accessibilityMessages?.gtmNoscriptTitle;
 
-  // Namespaces used ONLY in server components (pages / API routes).
-  // Removing them from the client payload reduces the serialized __NEXT_DATA__
-  // blob without breaking any client-side rendering.
-  //
-  // Verified safe to exclude:
-  //   privacyPolicy  – static legal text, server-rendered page
-  //   structuredData – server-side JSON-LD schema building only
-  //   seoKeywords    – server-side <meta> generation only
-  //   groomers / shelters / catCafes / veterinarians / hospitality
-  //                  – B2B vertical components use inline locale ternaries,
-  //                    never call useTranslations()
-  //   canadaPage     – Canada landing page is a server component that uses
-  //                    getTranslations(), not the client provider
-  const SERVER_ONLY_NAMESPACES = new Set([
-    'privacyPolicy',
-    'structuredData',
-    'seoKeywords',
-    'groomers',
-    'shelters',
-    'catCafes',
-    'veterinarians',
-    'hospitality',
-    'canadaPage',
+  const selectedMessageKeys = new Set<string>([
+    ...CLIENT_MESSAGE_KEYS,
+    ...GLOBAL_LAYOUT_KEYS,
   ]);
 
   const messages = Object.fromEntries(
-    Object.entries(allMessages).filter(([key]) => !SERVER_ONLY_NAMESPACES.has(key))
+    Object.entries(allMessages).filter(([key]) =>
+      selectedMessageKeys.has(key) && !SERVER_ONLY_NAMESPACES.has(key)
+    )
   );
 
   return (

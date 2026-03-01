@@ -230,41 +230,7 @@ export default async function LocalizedBlogIndexPage({
     name: `${SITE_NAME} Blog - ${locale.toUpperCase()}`,
     url: `${SITE_URL}${getBlogBasePath(locale)}/`,
     description: SITE_DESCRIPTION,
-    blogPost: currentPosts.map((post) => {
-      // Ensure date is in ISO 8601 format
-      const datePublished = post.date?.includes('T')
-        ? post.date
-        : new Date(post.date).toISOString();
-
-      return {
-        '@type': 'BlogPosting',
-        headline: post.title?.length > 110 ? post.title.substring(0, 107) + '...' : post.title,
-        description: post.excerpt,
-        url: `${SITE_URL}${post.link}`,
-        image: post.image?.startsWith('http') ? post.image : `${SITE_URL}${post.image}`,
-        datePublished,
-        dateModified: datePublished,
-        author: {
-          '@type': 'Person',
-          name: post.author,
-        },
-        publisher: {
-          '@type': 'Organization',
-          name: SITE_NAME,
-          url: SITE_URL,
-          logo: {
-            '@type': 'ImageObject',
-            url: `${SITE_URL}/optimized/logos/purrify-logo.png`,
-            width: 400,
-            height: 400,
-          },
-        },
-        mainEntityOfPage: {
-          '@type': 'WebPage',
-          '@id': `${SITE_URL}${post.link}`,
-        },
-      };
-    }),
+    inLanguage: locale === 'fr' ? 'fr-CA' : 'en-CA',
   };
 
   return (
